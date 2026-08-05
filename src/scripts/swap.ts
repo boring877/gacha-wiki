@@ -78,6 +78,47 @@ const POOL_CREATED_TOPIC = keccak256(
   new TextEncoder().encode('PoolCreated(address,address,uint24,int24,address)'),
 );
 
+// 1inch Token API — returns ALL tokens on Robinhood Chain with logos in one
+// free call (no key). 282 tokens, all with logoURI (DexScreener CDN images).
+const ONEINCH_TOKENS_URL = 'https://tokens.1inch.io/v1.1/4663';
+
+// Cache: token address → logo URL, populated once from 1inch.
+let logoMap: Map<string, string> | null = null;
+
+/** Fetch the 1inch token map (address → {symbol, logoURI, decimals}) once,
+ *  then answer logo lookups from the in-memory cache. */
+async function getLogoMap(): Promise<Map<string, string>> {
+  if (logoMap) return logoMap;
+  logoMap = new Map();
+  try {
+    const res = await fetch(ONEINCH_TOKENS_URL);
+    if (res.ok) {
+      const json = (await res.json()) as Record<string, { symbol?: string; logoURI?: string; decimals?: number }>;
+      for (const [addr, info] of Object.entries(json)) {
+        if (info.logoURI) logoMap.set(addr.toLowerCase(), info.logoURI);
+      }
+    }
+  } catch {
+    /* offline — empty map, badges used */
+  }
+  return logoMap;
+}
+
+/** Cached full 1inch token map (address → {symbol, logo, decimals}) for
+ *  enriching both curated and indexed tokens. */
+let oneinchData: Record<string, { symbol: string; name: string; decimals: number; logoURI: string }> | null = null;
+
+async function getOneinchData(): Promise<typeof oneinchData> {
+  if (oneinchData) return oneinchData;
+  try {
+    const res = await fetch(ONEINCH_TOKENS_URL);
+    if (res.ok) oneinchData = await res.json();
+  } catch {
+    /* offline */
+  }
+  return oneinchData;
+}
+
 // Uniswap's curated list — used as a fast initial seed (symbol/name/decimals
 // known without on-chain reads) while the indexer catches up.
 const UNISWAP_TOKENLIST_URL =
@@ -180,89 +221,23 @@ export async function indexAllPoolTokens(): Promise<Set<string>> {
  * read straight from the chain. No API key, no curated-list limit.
  */
 /**
- * Resolve a logo URL for a token using multiple sources (fallback chain):
- *   1. DexScreener CDN (crypto tokens — fetched on-demand)
- *   2. Google favicon service (stock tokens — keyed by symbol→domain)
- *   3. null (caller falls back to the letter badge)
- *
- * For stock tokens (NVDA, TSLA, etc.) we map the symbol to the company's
- * website domain and pull the favicon via Google's free service.
+ * Resolve a logo URL for a token. Checks the 1inch logo map (populated from
+ * the bulk fetch). Returns null if not found (caller uses letter badge).
  */
-
-// Symbol → company domain for stock tokens on Robinhood Chain (xStock tokens).
-const STOCK_DOMAINS: Record<string, string> = {
-  NVDA: 'nvidia.com', TSLA: 'tesla.com', AAPL: 'apple.com', MSFT: 'microsoft.com',
-  AMD: 'amd.com', META: 'meta.com', GOOGL: 'google.com', AMZN: 'amazon.com',
-  NFLX: 'netflix.com', COIN: 'coinbase.com', SPY: 'statestreet.com', QQQ: 'invesco.com',
-  INTC: 'intel.com', PLTR: 'palantir.com', ORCL: 'oracle.com', AVGO: 'broadcom.com',
-  ARM: 'arm.com', SHOP: 'shopify.com', MSTR: 'microstrategy.com', GME: 'gamestop.com',
-  BABA: 'alibaba.com', TSM: 'tsmc.com', ASML: 'asml.com', COST: 'costco.com',
-  LLY: 'lilly.com', NOW: 'servicenow.com', CRWD: 'crowdstrike.com', DDOG: 'datadoghq.com',
-  ZM: 'zoom.us', RDDT: 'reddit.com', RKLB: 'rocketlabusa.com', RIVN: 'rivian.com',
-  HOOD: 'robinhood.com', U: 'unity.com', BA: 'boeing.com', F: 'ford.com',
-  XOM: 'exxonmobil.com', LULU: 'lululemon.com', UMC: 'umc.com', NOK: 'nokia.com',
-  SOFI: 'sofi.org', RBLX: 'roblox.com', DELL: 'dell.com', MRVL: 'marvell.com',
-  SMCI: 'supermicro.com', QCOM: 'qualcomm.com', MU: 'micron.com', NNE: 'nanonuclearenergy.com',
-  IREN: 'iren.com', CLSK: 'cleanspark.com', IONQ: 'ionq.com', RGTI: 'rigetti.com',
-  QBTS: 'dwavesys.com', AAOI: 'ao-inc.com', GLW: 'corning.com', FLNC: 'fluenceenergy.com',
-  ASTS: 'ast-science.com', SATS: 'echostar.com', LUNR: 'intuitivemachines.com',
-  RDW: 'redwirespace.com', APLD: 'applieddigital.com', NBIS: 'nebius.com', CORE: 'coreweave.com',
-  CBRS: 'cerebras.net', FUTU: 'futunn.com', INTU: 'intuit.com', MDB: 'mongodb.com',
-  WDAY: 'workday.com', ZS: 'zscaler.com', ELF: 'elfcosmetics.com', CCL: 'carnival.com',
-  UPS: 'ups.com', BE: 'bloomenergy.com', P: 'peloton.com',
-};
-
-const dexscreenerLogoCache = new Map<string, string | null>();
-
-/** Fetch a token's logo from DexScreener's CDN (covers crypto tokens). */
-async function fetchDexscreenerLogo(address: Address): Promise<string | null> {
-  const key = address.toLowerCase();
-  if (dexscreenerLogoCache.has(key)) return dexscreenerLogoCache.get(key) ?? null;
-  try {
-    const res = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${address}`);
-    if (res.ok) {
-      const json = (await res.json()) as { pairs?: Array<{ chainId?: string; info?: { imageUrl?: string } }> };
-      const rh = (json.pairs ?? []).find(p => p.chainId === 'robinhood');
-      const logo = rh?.info?.imageUrl ?? null;
-      dexscreenerLogoCache.set(key, logo);
-      return logo;
-    }
-  } catch {
-    /* network failure */
-  }
-  dexscreenerLogoCache.set(key, null);
-  return null;
+export async function resolveTokenLogo(address: Address): Promise<string | null> {
+  const map = await getLogoMap();
+  return map.get(address.toLowerCase()) ?? null;
 }
 
 /**
- * Resolve the best available logo URL for a token. Async because DexScreener
- * requires a network call. Returns null if no logo is available (caller uses
- * the letter badge fallback).
- */
-export async function resolveTokenLogo(symbol: string, address: Address): Promise<string | null> {
-  // 1. Stock tokens: Google favicon by company domain.
-  const domain = STOCK_DOMAINS[symbol.toUpperCase()];
-  if (domain) {
-    return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
-  }
-  // 2. Crypto tokens: DexScreener CDN.
-  if (address.toLowerCase() === NATIVE_TOKEN.toLowerCase()) {
-    // Native ETH has a well-known logo.
-    return 'https://www.google.com/s2/favicons?domain=ethereum.org&sz=64';
-  }
-  return fetchDexscreenerLogo(address);
-}
-
-/**
- * Fast seed: curated tokens only (ETH + $GW + WETH + Uniswap's 100-token list).
- * Returns immediately — used for instant picker rendering while the full
- * on-chain index runs in the background via fetchTokenList().
- *
- * Enriches each token with a logo: stock tokens get Google favicon URLs
- * instantly (no network call), crypto tokens get DexScreener logos resolved
- * lazily by the picker (resolvedTokenLogo).
+ * Fast seed: curated tokens with logos from 1inch (one bulk fetch covers all
+ * 282 tokens on RH chain). Returns ETH + $GW + WETH + Uniswap's 100 tokens,
+ * each enriched with its logo. Used for instant picker rendering.
  */
 export async function fetchCuratedTokens(): Promise<TokenInfo[]> {
+  // Fetch 1inch data (one call, covers everything including stock token logos).
+  const oneinch = await getOneinchData();
+
   const curated: TokenInfo[] = [];
   try {
     const res = await fetch(UNISWAP_TOKENLIST_URL);
@@ -271,17 +246,14 @@ export async function fetchCuratedTokens(): Promise<TokenInfo[]> {
         address: string; symbol: string; name: string; decimals: number; logoURI?: string;
       }>;
       for (const t of json) {
-        // Stock tokens get an instant logo via Google favicons (no network).
-        const domain = STOCK_DOMAINS[t.symbol.toUpperCase()];
-        const logoUri = domain
-          ? `https://www.google.com/s2/favicons?domain=${domain}&sz=64`
-          : undefined;
+        // Logo: prefer 1inch's logoURI (covers NVDA, TSLA, etc.).
+        const oneinchInfo = oneinch?.[t.address]?.logoURI;
         curated.push({
           address: t.address as Address,
           symbol: t.symbol,
           name: t.name,
           decimals: t.decimals,
-          logoUri,
+          logoUri: oneinchInfo,
         });
       }
     }
@@ -342,14 +314,19 @@ export async function fetchTokenList(): Promise<TokenInfo[]> {
       seen.add(key);
       merged.push(t);
     }
+    // Enrich indexed tokens with 1inch metadata (symbol/logo/decimals) where
+    // available; the rest stay address-only until resolved lazily on selection.
+    const oneinch = await getOneinchData();
     for (const addr of indexedAddrs) {
       if (seen.has(addr)) continue;
       seen.add(addr);
+      const info = oneinch?.[addr];
       merged.push({
         address: addr as Address,
-        symbol: '', // resolved lazily on selection
+        symbol: info?.symbol ?? '',
         name: '',
-        decimals: 18,
+        decimals: info?.decimals ?? 18,
+        logoUri: info?.logoURI,
       });
     }
 
