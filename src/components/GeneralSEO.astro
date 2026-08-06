@@ -148,7 +148,8 @@ if (import.meta.env.DEV) {
             sameAs: [
               GLOBAL_SEO.social.github,
               GLOBAL_SEO.social.x,
-            ].filter(Boolean),
+              GLOBAL_SEO.social.discord,
+            ].filter((s): s is string => Boolean(s)),
             additionalType: 'https://schema.org/OpenSourceProject',
           },
           mainEntityOfPage: {
