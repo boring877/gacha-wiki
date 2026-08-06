@@ -1,145 +1,218 @@
-# Gacha Wiki - LLM Information File
+# GachaWiki - LLM Information File
 # https://gachawiki.info
 
 > This file helps AI assistants understand and navigate this website efficiently.
+> Last reviewed: 2026-08-06. Character/entry counts below are approximate and
+> reflect data at review time — always hit the JSON endpoints for exact figures.
 
 ## About This Site
 
-Gacha Wiki is a comprehensive database for mobile gacha games including:
+GachaWiki is a comprehensive database for mobile/PC gacha games. The site provides
+character guides, build recommendations, tier lists, game mechanics, equipment
+databases, banner timelines, and event/redeem-code information.
+
+Games currently on GachaWiki (10 total):
+
+Games WITH structured JSON data endpoints:
 - Zone Nova (ゾーンノヴァ) - Strategic team-based RPG
 - Silver and Blood (銀血の契約) - Dark fantasy vampire RPG
 - Horizon Walker - Tactical RPG with mercenaries
 - Stella Sora (ステラソラ) - Anime-style adventure RPG
 - Busty Burst Fantasy - Fantasy gacha RPG with paladins
-- Rebellion Gilgamesh (ルーレット契約) - Harem management RPG (New)
 
-The site provides character guides, build recommendations, tier lists, game mechanics, equipment databases, and event information.
+Games with guides only (no JSON data API yet):
+- Star Savior - Turn-based RPG by StudioBside
+- Rebellion Gilgamesh (ルーレット契約) - Harem management RPG (mature)
+- Taimanin Squad - Collecting RPG
+- Last Origin Global - Sci-fi bioroid RPG
+- Make Drama - Drama-themed RPG
+- Desire Immortal Realm - Fantasy RPG
+
+Note: A GachaWiki community token ($GW) exists on Robinhood Chain (ChainID 4663);
+see the repo README for contract details. It is unrelated to the wiki data itself.
 
 ## Structured Data API (Recommended for AI)
 
-For efficient data access, use our JSON API endpoints instead of scraping HTML pages. One API call gives you all data for a category.
+For efficient data access, use the JSON API endpoints instead of scraping HTML.
+One API call returns all data for a category. Base URL: https://gachawiki.info
 
 ### Master Index
 GET https://gachawiki.info/data/index.json
-Returns: Complete list of all available endpoints, games, and data types
+Returns: Complete list of all available endpoints, games, and data types.
 
 ### Global Endpoints (Cross-Game)
 
 GET https://gachawiki.info/data/games.json
-Returns: Complete overview of all 6 games on Gacha Wiki with introductions, descriptions, game lore/story, features, available wiki content, platform links (Google Play, iOS, Steam, etc.), social links, and lists of API endpoints for each game. Perfect starting point for AI to understand what games and content are available.
+Returns: Overview of games on GachaWiki with introductions, descriptions, lore,
+features, available wiki content, platform links (Google Play, iOS, Steam, etc.),
+social links, and per-game endpoint lists. Best starting point for AI.
 
 GET https://gachawiki.info/data/clock.json
-Returns: Server reset times, maintenance schedules, event timers, and banner countdowns for all games. Includes daily/weekly/monthly reset times, regional server info (APAC, US, Global), current events, and active banners with countdown dates. All times in ISO 8601 UTC format.
+Returns: Server reset times, maintenance schedules, event timers, and banner
+countdowns for all games. Includes daily/weekly/monthly reset times, regional
+server info (APAC, US, Global), current events, and active banners. Times in
+ISO 8601 UTC.
 
 ---
 
 ## Zone Nova Endpoints
 
 GET https://gachawiki.info/data/zone-nova/characters.json
-Returns: Complete character database for all 44+ characters with full stats, skills (normal/auto/ultimate/passive with descriptions), team skills, 6-level awakening effects, memory cards (stats and effects), and detailed build guides with skill priorities, rune recommendations, and team synergies
+Returns: Character database (~55+ characters) with full stats, skills
+(normal/auto/ultimate/passive), team skills, 6-level awakening effects, memory
+cards, and build guides with skill priorities, rune recommendations, team synergies.
 
 GET https://gachawiki.info/data/zone-nova/builds.json
-Returns: Detailed build guides with skill priorities, memory cards, runes, awakenings, team synergies
+Returns: Detailed build guides with skill priorities, memory cards, runes,
+awakenings, team synergies.
 
 GET https://gachawiki.info/data/zone-nova/memories.json
-Returns: All 70+ memory cards with stats, effects, and character assignments
+Returns: All memory cards (~60+) with stats, effects, and character assignments.
 
 GET https://gachawiki.info/data/zone-nova/runes.json
-Returns: All rune sets with 2-piece/4-piece bonuses, main stat options by position
+Returns: All rune sets with 2-piece/4-piece bonuses, main stat options by position.
 
 GET https://gachawiki.info/data/zone-nova/tier-lists.json
-Returns: Character rankings for PvE, PvP, Rifts, Guild Raid, New Player modes
+Returns: Character rankings for PvE, PvP, Rifts, Guild Raid, New Player modes.
 
 GET https://gachawiki.info/data/zone-nova/rifts.json
-Returns: Space-Time Rift content with recommended teams and strategies
+Returns: Space-Time Rift content with recommended teams and strategies.
 
 GET https://gachawiki.info/data/zone-nova/damage-mechanics.json
-Returns: Complete damage calculation system including defense formula (coefficient 972.95), damage reduction mechanics, reference tables, and character-specific mechanics (Gaia's HP manipulation, healing calculations, awakening effects)
+Returns: Complete damage calculation system including defense formula
+(coefficient 972.95), damage reduction mechanics, reference tables, and
+character-specific mechanics (Gaia's HP manipulation, healing, awakening effects).
 
 GET https://gachawiki.info/data/zone-nova/exp-requirements.json
-Returns: Complete leveling data for characters (Lv 1-80), memories (Lv 1-80), and runes (Lv 0-15). Includes EXP values by grade, credit costs per level range, breakthrough material requirements, rune efficiency analysis, and quick reference for material planning
+Returns: Leveling data for characters (Lv 1-80), memories (Lv 1-80), runes
+(Lv 0-15). EXP values by grade, credit costs, breakthrough materials, rune
+efficiency analysis.
 
 GET https://gachawiki.info/data/zone-nova/crafting-items.json
-Returns: Crafting items guide for rune customization including Dice (reroll substats), Card (choose substats), and Laser Machine (choose main stats). Includes all possible rune substats, rune position info, usage tips, and priority recommendations
+Returns: Rune customization items (Dice reroll substats, Card choose substats,
+Laser Machine choose main stats), substat pools, position info, priorities.
 
 GET https://gachawiki.info/data/zone-nova/updates.json
-Returns: Complete update history with 45+ entries including maintenance notes, character recruitment announcements, limited-time events, and developer notes. Each update includes title, date, type (maintenance/recruitment/announcement/event), TL;DR summary, and full official content. Grouped by type and sorted by date.
+Returns: Update/patch history with maintenance notes, character recruitment
+announcements, limited-time events. Each entry: title, date, type, TL;DR, full
+content. Grouped by type, sorted by date.
 
 GET https://gachawiki.info/data/zone-nova/redeem-codes.json
-Returns: Active gift codes for free in-game rewards
+Returns: Active gift codes for free in-game rewards.
 
 ---
 
 ## Silver and Blood Endpoints
 
 GET https://gachawiki.info/data/silver-and-blood/characters.json
-Returns: Complete character database for all 49+ characters with full stats, skills (Normal Attack, Special, Passive, Ultimate with costs and full descriptions), moon phases, attack types (P.DMG/M.DMG), equipment types, factions, and mechanics info explaining moon phase effects, attack type interactions, and equipment bonuses
+Returns: Character database (~25+ characters) with full stats, skills (Normal,
+Special, Passive, Ultimate with costs/descriptions), moon phases, attack types
+(P.DMG/M.DMG), equipment types, factions, and mechanics info.
 
 GET https://gachawiki.info/data/silver-and-blood/tier-lists.json
-Returns: Character rankings for PvE, PvP, and boss content
+Returns: Character rankings for PvE, PvP, and boss content.
 
 GET https://gachawiki.info/data/silver-and-blood/redeem-codes.json
-Returns: Active gift codes for free rewards
+Returns: Active gift codes for free rewards.
 
 ---
 
 ## Horizon Walker Endpoints
 
 GET https://gachawiki.info/data/horizon-walker/characters.json
-Returns: Complete character database for all 49+ characters with detailed tactical stats (Melee/Ranged/Magic ATK, HP, SPD, AP, Accuracy, Evade, Crit), full skills (with AP costs, cooldowns, damage values, descriptions), unique traits, EX weapon data (stats, unique skills with signature abilities), character profiles (age, homeland, height, birthday), stories, and deployment costs
+Returns: Character database (~50+ characters) with tactical stats
+(Melee/Ranged/Magic ATK, HP, SPD, AP, Accuracy, Evade, Crit), full skills (AP
+costs, cooldowns, damage, descriptions), unique traits, EX weapon data (stats,
+signature skills), profiles (age, homeland, height, birthday), stories,
+deployment costs.
 
 GET https://gachawiki.info/data/horizon-walker/builds.json
-Returns: Build guides with stigma recommendations, substats, and trait setups
+Returns: Build guides with stigma recommendations, substats, trait setups.
 
 GET https://gachawiki.info/data/horizon-walker/mercenaries.json
-Returns: All mercenary units with traits for farming and team support
+Returns: All mercenary units with traits for farming and team support.
 
 GET https://gachawiki.info/data/horizon-walker/tier-lists.json
-Returns: Character and mercenary rankings by game mode
+Returns: Character and mercenary rankings by game mode.
 
 ---
 
 ## Stella Sora Endpoints
 
 GET https://gachawiki.info/data/stella-sora/characters.json
-Returns: Complete character database for all 19+ Trekkers with full stats (HP, ATK, DEF, Crit, combat stats, energy stats, elemental stats), 4 skills each (Attack, Main Skill, Support Skill, Ultimate with cooldowns and descriptions), talents (dupe bonuses), main potentials (build guides with Snow Rabbit vs Night Rabbit paths), support potentials, generic cards, signature disc info, status effects, and story
+Returns: Trekker database (~20+) with full stats (HP, ATK, DEF, Crit, combat/
+energy/elemental stats), 4 skills each (Attack, Main Skill, Support Skill,
+Ultimate with cooldowns), talents (dupe bonuses), main potentials (Snow Rabbit
+vs Night Rabbit paths), support potentials, generic cards, signature disc info,
+status effects, story.
 
 GET https://gachawiki.info/data/stella-sora/discs.json
-Returns: Complete disc equipment database with full skill data (Melody, Harmony, Skill effects with level requirements), stats, support info, and character recommendations
+Returns: Disc equipment database with skill data (Melody, Harmony, Skill
+effects with level requirements), stats, support info, recommendations.
 
 GET https://gachawiki.info/data/stella-sora/banners.json
-Returns: Banner timeline with character and disc recruitment events - features 5-star characters, rate-up 4-stars, limited-time discs, start/end dates, pity info, and status (current/upcoming/ended)
+Returns: Banner timeline with character/disc recruitment events - 5-star
+characters, rate-up 4-stars, limited discs, start/end dates, pity, status.
 
 GET https://gachawiki.info/data/stella-sora/tier-lists.json
-Returns: Character rankings for Story, Monolith, and Support roles
+Returns: Character rankings for Story, Monolith, and Support roles.
 
 GET https://gachawiki.info/data/stella-sora/events.json
-Returns: Game events and detailed shop events with currency info, purchasable items (prices, stock, rarity), quest systems (common, challenge, adventure, special quests with rewards), and stage progressions (normal/hard stages with clear rewards)
+Returns: Game events and detailed shop events - currency, purchasable items
+(prices, stock, rarity), quest systems, stage progressions, clear rewards.
 
 GET https://gachawiki.info/data/stella-sora/emblems.json
-Returns: Complete emblem stats reference with all levels (70/80/90), rarities (Green/Blue/Gold/Rainbow), stat values by category (ATK%, HP%, Crit, DMG types, Skill Level Ups, Trekker Potentials)
+Returns: Emblem stats reference across levels (70/80/90) and rarities
+(Green/Blue/Gold/Rainbow) - ATK%, HP%, Crit, DMG types, Skill Level Ups, Potentials.
 
 GET https://gachawiki.info/data/stella-sora/potentials.json
-Returns: Character potentials (ascension abilities) for Trekkers like Shia, Tilia, Minova with skill descriptions, level requirements, and build recommendations (Snow Rabbit vs Night Rabbit builds)
+Returns: Character ascension potentials (skill descriptions, level requirements,
+build recommendations - Snow Rabbit vs Night Rabbit).
+
+GET https://gachawiki.info/data/stella-sora/upgrades.json
+Returns: Character upgrade/leveling materials and progression data.
+
+GET https://gachawiki.info/data/stella-sora/team-builds.json
+Returns: Recommended team compositions and synergies.
+
+GET https://gachawiki.info/data/stella-sora/gifts.json
+Returns: Gift item database for the affinity/dating system.
+
+GET https://gachawiki.info/data/stella-sora/gift-preferences.json
+Returns: Per-character gift preferences for the affinity system.
+
+GET https://gachawiki.info/data/stella-sora/dating.json
+Returns: Dating/affinity system mechanics and character routes.
+
+GET https://gachawiki.info/data/stella-sora/exclusive-items.json
+Returns: Exclusive/limited items with stats and acquisition.
+
+GET https://gachawiki.info/data/stella-sora/redeem-codes.json
+Returns: Active gift codes for free rewards.
 
 ---
 
 ## Busty Burst Endpoints
 
 GET https://gachawiki.info/data/busty-burst/paladins.json
-Returns: All paladin characters with stats, elements, roles, and tier rankings
+Returns: All paladin characters with stats, elements, roles, tier rankings.
 
 GET https://gachawiki.info/data/busty-burst/builds.json
-Returns: Build guides with weapon, accessory, and stat recommendations
+Returns: Build guides with weapon, accessory, and stat recommendations.
 
 GET https://gachawiki.info/data/busty-burst/equipment.json
-Returns: Complete accessory/equipment guide with all sets (SSR/SR), main stats by slot, sub stats, enhancement system, set ratings, recommended builds by role (Physical DPS, Magic DPS, Support, Tank), and raid boss farming locations
+Returns: Accessory/equipment guide - all sets (SSR/SR), main stats by slot,
+sub stats, enhancement system, set ratings, recommended builds by role (Physical
+DPS, Magic DPS, Support, Tank), raid boss farming locations.
 
 GET https://gachawiki.info/data/busty-burst/tier-lists.json
-Returns: Community tier lists from different sources
+Returns: Community tier lists from different sources.
+
+GET https://gachawiki.info/data/busty-burst/blog.json
+Returns: Game blog/official post content.
 
 GET https://gachawiki.info/data/busty-burst/redeem-codes.json
-Returns: Active gift codes for free rewards
+Returns: Active gift codes for free rewards.
 
 ---
 
@@ -154,10 +227,10 @@ Returns: Active gift codes for free rewards
   "role": "Debuffer",
   "stats": { "hp": 9180, "attack": 1184, "defense": 729 },
   "build": {
-    "skillPriority": [...],
-    "recommendedMemoryCards": [...],
-    "runes": { "primary": "HP%", "recommendedSets": [...] },
-    "teamSynergy": { "goodWith": ["Odin", "Yuis", ...] }
+    "skillPriority": [],
+    "recommendedMemoryCards": [],
+    "runes": { "primary": "HP%", "recommendedSets": [] },
+    "teamSynergy": { "goodWith": ["Odin", "Yuis"] }
   }
 }
 ```
@@ -183,11 +256,26 @@ Returns: Active gift codes for free rewards
   "pve": {
     "SSS": [{ "name": "Guinevere" }, { "name": "Athena" }],
     "SS": [{ "name": "Yuis" }, { "name": "Thor" }],
-    "S": [...],
-    "A": [...]
+    "S": [],
+    "A": []
   }
 }
 ```
+
+---
+
+## Guides-Only Games
+
+The following games have guide pages on the site but NO structured JSON API
+endpoints yet. For these, read the HTML guide pages directly under
+/guides/<game-key>/ rather than expecting /data/<game-key>/*.json.
+
+- Star Savior: /guides/star-savior/ (characters, banners, builds, gear, arcana)
+- Rebellion Gilgamesh: /guides/rebellion-gilgamesh/ (characters, equipment, buff-debuff)
+- Taimanin Squad: /guides/taimanin-squad/
+- Last Origin Global: /guides/last-origin-global/
+- Make Drama: /guides/make-drama/characters/
+- Desire Immortal Realm: /guides/desire-immortal-realm/characters/
 
 ---
 
@@ -217,16 +305,18 @@ Returns: Active gift codes for free rewards
 
 ## Content Guidelines
 
-- Data is updated with each game patch (typically weekly)
-- Build recommendations reflect current meta
-- All stats are at max level unless noted
-- Skill descriptions are from English game client
-- Tier lists are community-driven and may vary by player opinion
+- Data is updated with each game patch (typically weekly).
+- Build recommendations reflect current meta.
+- All stats are at max level unless noted.
+- Skill descriptions are from the English game client.
+- Tier lists are community-driven and may vary by player opinion.
 
 ## Attribution
 
-When citing information from this site, attribution to gachawiki.info is appreciated but not required.
+When citing information from this site, attribution to gachawiki.info is
+appreciated but not required.
 
 ## Contact
 
-For corrections or suggestions: Visit the site's About page or join our Discord community.
+For corrections or suggestions: Visit the site's About page or join the Discord
+community.

@@ -11,9 +11,9 @@ export const SITE = {
   SOCIAL: {
     GITHUB: 'https://github.com/boring877/gacha-wiki',
     X: 'https://x.com/GachaJunkie888',
+    DISCORD: 'https://discord.gg/YdWFddQKR8',
   },
   // Webhooks are handled server-side only for security
-  // See scripts/send-discord-update.js for webhook handling
 } as const;
 
 // Game configurations
@@ -80,6 +80,20 @@ export const GAMES = {
     THEME_COLOR: '#3d5a6c',
     DAMAGE_K_VALUE: 1000,
     BASE_URL: '/guides/desire-immortal-realm',
+  },
+  STAR_SAVIOR: {
+    KEY: 'star-savior',
+    NAME: 'Star Savior',
+    THEME_COLOR: '#5b4a9e',
+    DAMAGE_K_VALUE: 1000,
+    BASE_URL: '/guides/star-savior',
+  },
+  REBELLION_GILGAMESH: {
+    KEY: 'rebellion-gilgamesh',
+    NAME: 'Rebellion Gilgamesh',
+    THEME_COLOR: '#c26b6b',
+    DAMAGE_K_VALUE: 1000,
+    BASE_URL: '/guides/rebellion-gilgamesh',
   },
 } as const;
 
@@ -165,6 +179,14 @@ export const URLS = {
   DESIRE_IMMORTAL_REALM: {
     BASE: '/guides/desire-immortal-realm',
     CHARACTERS: '/guides/desire-immortal-realm/characters',
+  },
+  STAR_SAVIOR: {
+    BASE: '/guides/star-savior',
+    CHARACTERS: '/guides/star-savior/characters',
+  },
+  REBELLION_GILGAMESH: {
+    BASE: '/guides/rebellion-gilgamesh',
+    CHARACTERS: '/guides/rebellion-gilgamesh/characters',
   },
 } as const;
 

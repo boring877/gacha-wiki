@@ -9,6 +9,10 @@ import { stellaSoraConfig } from '../../data/stella-sora/stella-sora.js';
 import { bustyBurstConfig } from '../../data/busty-burst/busty-burst.js';
 import { rebellionGilgameshConfig } from '../../data/rebellion-gilgamesh/rebellion-gilgamesh.js';
 import { starSaviorConfig } from '../../data/star-savior/star-savior.js';
+import { taimaninSquadConfig } from '../../data/taimanin-squad/taimanin-squad.js';
+import { lastOriginGlobalConfig } from '../../data/last-origin-global/last-origin-global.js';
+import { makeDramaConfig } from '../../data/make-drama/make-drama.js';
+import { desireImmortalRealmConfig } from '../../data/desire-immortal-realm/desire-immortal-realm.js';
 
 export const prerender = true;
 
@@ -269,6 +273,103 @@ export async function GET() {
       apiEndpoints: [],
       guides: starSaviorConfig.guides.map(g => ({
         category: 'database',
+        description: g.description,
+        pages: [{ title: g.title, url: g.url }],
+      })),
+    },
+
+    // Taimanin Squad (guides only - no JSON data API yet)
+    {
+      id: 'taimanin-squad',
+      name: 'Taimanin Squad',
+      japaneseName: null,
+      slug: 'taimanin-squad',
+      status: 'active',
+      genre: 'Turn-Based Collecting RPG',
+      description: taimaninSquadConfig.gameInfo.description,
+      heroImage: taimaninSquadConfig.meta.heroImage,
+      playUrl: taimaninSquadConfig.gameInfo.playUrl,
+      platforms: taimaninSquadConfig.gameInfo.platforms,
+      socialLinks: taimaninSquadConfig.gameInfo.socialLinks,
+      wikiUrl: '/guides/taimanin-squad/',
+      story: taimaninSquadConfig.story,
+      contentAvailable: {
+        characters: true,
+        tierLists: true,
+        blog: true,
+      },
+      apiEndpoints: [],
+      note: 'Guides available on the wiki - no structured JSON data API yet',
+      guides: (taimaninSquadConfig.categoryGroups || []).map(group => ({
+        category: group.title,
+        description: group.description,
+        pages: (group.guides || []).map(g => ({ title: g.title, url: g.url })),
+      })),
+    },
+
+    // Last Origin Global (guides only - no JSON data API yet)
+    {
+      id: 'last-origin-global',
+      name: 'Last Origin Global',
+      japaneseName: '라스트 오리진',
+      slug: 'last-origin-global',
+      status: 'pre-registration',
+      genre: 'Post-Apocalyptic Turn-Based Strategy RPG',
+      description: lastOriginGlobalConfig.gameInfo.description,
+      heroImage: lastOriginGlobalConfig.meta.heroImage,
+      platforms: lastOriginGlobalConfig.gameInfo.platforms,
+      socialLinks: lastOriginGlobalConfig.gameInfo.socialLinks,
+      wikiUrl: '/guides/last-origin-global/',
+      story: lastOriginGlobalConfig.story,
+      contentAvailable: {},
+      apiEndpoints: [],
+      note: 'Guides available on the wiki - no structured JSON data API yet',
+      guides: (lastOriginGlobalConfig.categoryGroups || []).map(group => ({
+        category: group.title,
+        description: group.description,
+        pages: (group.guides || []).map(g => ({ title: g.title, url: g.url })),
+      })),
+    },
+
+    // Make Drama (guides only - no JSON data API yet)
+    {
+      id: 'make-drama',
+      name: 'Make Drama',
+      japaneseName: null,
+      slug: 'make-drama',
+      status: 'pre-registration',
+      genre: 'Mobile Action Defense RPG',
+      description: makeDramaConfig.gameInfo.description,
+      wikiUrl: '/guides/make-drama/',
+      contentAvailable: {
+        characters: true,
+      },
+      apiEndpoints: [],
+      note: 'Guides available on the wiki - no structured JSON data API yet',
+      guides: (makeDramaConfig.guides || []).map(g => ({
+        category: g.category,
+        description: g.description,
+        pages: [{ title: g.title, url: g.url }],
+      })),
+    },
+
+    // Desire Immortal Realm (guides only - no JSON data API yet)
+    {
+      id: 'desire-immortal-realm',
+      name: 'Desire Immortal Realm',
+      japaneseName: '欲界仙途',
+      slug: 'desire-immortal-realm',
+      status: 'active',
+      genre: 'Xianxia Cultivation Tower-Defense Gacha',
+      description: desireImmortalRealmConfig.gameInfo.description,
+      wikiUrl: '/guides/desire-immortal-realm/',
+      contentAvailable: {
+        characters: true,
+      },
+      apiEndpoints: [],
+      note: 'Guides available on the wiki - no structured JSON data API yet',
+      guides: (desireImmortalRealmConfig.guides || []).map(g => ({
+        category: g.category,
         description: g.description,
         pages: [{ title: g.title, url: g.url }],
       })),
