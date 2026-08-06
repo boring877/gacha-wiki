@@ -385,35 +385,68 @@
 }
 
 /* --- Price alerts panel ------------------------------------------------ */
-.swap-alerts-current {
+/* HERO: the live price — the most prominent element, since it's the reference
+   point users compare their target against. Big, centered, with a gradient. */
+.swap-alerts-hero {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0.75rem;
-  margin-bottom: 1rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 1.4rem 1rem;
+  margin-bottom: 1.1rem;
+  background: linear-gradient(160deg, rgba(255, 183, 77, 0.12), rgba(0, 172, 193, 0.06));
+  border: 1px solid rgba(255, 183, 77, 0.3);
+  border-radius: 1rem;
+  text-align: center;
 }
 
-.swap-alerts-current-label {
-  font-size: 0.78rem;
-  opacity: 0.6;
-}
-
-.swap-alerts-current-value {
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 1.05rem;
+.swap-alerts-hero-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.55;
   font-weight: 700;
+}
+
+.swap-alerts-hero-value {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.1;
   color: var(--amber-glow, #ffb74d);
   font-variant-numeric: tabular-nums;
 }
 
+.swap-alerts-hero-sub {
+  font-size: 0.72rem;
+  opacity: 0.45;
+}
+
+/* CREATE section: a distinct card with its own heading so it reads as a unit. */
 .swap-alerts-create {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.7rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 0.85rem;
+  margin-bottom: 1.1rem;
+}
+
+.swap-alerts-create-title {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-inverse, #fff);
+  margin-bottom: 0.1rem;
+}
+
+.swap-alerts-field-label {
+  font-size: 0.74rem;
+  font-weight: 600;
+  opacity: 0.6;
+  margin-bottom: -0.3rem;
 }
 
 .swap-alerts-direction {
@@ -423,12 +456,12 @@
 
 .swap-alerts-dir {
   flex: 1;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  padding: 0.55rem;
+  border-radius: 0.55rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.03);
   color: var(--text-inverse, #fff);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 600;
   cursor: pointer;
 }
@@ -439,14 +472,28 @@
   color: var(--amber-glow, #ffb74d);
 }
 
+/* Target amount: bigger, with a $ prefix so it clearly reads as money. */
 .swap-alerts-amount {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 0.4rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 183, 77, 0.25);
   border-radius: 0.75rem;
-  padding: 0.7rem 0.9rem;
+  padding: 0.8rem 0.9rem;
+  transition: border-color 0.15s;
+}
+
+.swap-alerts-amount:focus-within {
+  border-color: var(--amber-glow, #ffb74d);
+}
+
+.swap-alerts-amount-prefix {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  opacity: 0.4;
+  flex-shrink: 0;
 }
 
 .swap-alerts-input {
@@ -457,18 +504,20 @@
   outline: none;
   color: var(--text-inverse, #fff);
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 700;
 }
 
 .swap-alerts-input::placeholder {
   color: var(--text-inverse, #fff);
-  opacity: 0.3;
+  opacity: 0.25;
 }
 
 .swap-alerts-unit {
-  font-size: 0.85rem;
-  opacity: 0.5;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.45;
   flex-shrink: 0;
 }
 

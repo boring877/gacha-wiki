@@ -152,18 +152,26 @@ import { SITE_TITLE } from '../consts';
            price and notifies the user when it crosses a target. No wallet
            needed; alerts persist in localStorage. -->
       <div class="swap-mode" id="swap-mode-alerts" role="tabpanel" hidden>
-        <div class="swap-alerts-current">
-          <span class="swap-alerts-current-label">Current GW price</span>
-          <span class="swap-alerts-current-value" id="alerts-price">—</span>
+        <!-- Hero: current price (the reference point, so it's the most prominent) -->
+        <div class="swap-alerts-hero">
+          <span class="swap-alerts-hero-label">GW now</span>
+          <span class="swap-alerts-hero-value" id="alerts-price">—</span>
+          <span class="swap-alerts-hero-sub" id="alerts-hero-sub">live price</span>
         </div>
 
+        <!-- Create alert: distinct section card with a heading -->
         <div class="swap-alerts-create">
-          <div class="swap-field-label">Notify me when GW goes</div>
+          <div class="swap-alerts-create-title">Create alert</div>
+
+          <label class="swap-alerts-field-label" for="alerts-target">Notify me when GW goes</label>
           <div class="swap-alerts-direction">
             <button class="swap-alerts-dir is-active" type="button" data-dir="up">above</button>
             <button class="swap-alerts-dir" type="button" data-dir="down">below</button>
           </div>
+
+          <label class="swap-alerts-field-label" for="alerts-target">Target price</label>
           <div class="swap-alerts-amount">
+            <span class="swap-alerts-amount-prefix">$</span>
             <input
               class="swap-alerts-input"
               id="alerts-target"
@@ -175,12 +183,13 @@ import { SITE_TITLE } from '../consts';
             />
             <span class="swap-alerts-unit">USD</span>
           </div>
+
           <button class="swap-action-btn" id="alerts-create-btn" type="button">Create alert</button>
           <div class="swap-status" id="alerts-status"></div>
         </div>
 
         <div class="swap-alerts-list-wrap">
-          <div class="swap-alerts-list-title">Active alerts</div>
+          <div class="swap-alerts-list-title">Your alerts</div>
           <div class="swap-alerts-list" id="alerts-list"></div>
         </div>
       </div>
@@ -506,8 +515,15 @@ import { SITE_TITLE } from '../consts';
 
   // --- event wiring ------------------------------------------------------
   amountInEl.addEventListener('input', () => {
-    // sanitize: allow only digits and one dot
-    amountInEl.value = amountInEl.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+    // sanitize: allow only digits and one dot. Only rewrite when something
+    // changed — reassigning .value mid-input resets the cursor and on some
+    // keyboards makes characters appear not to register.
+    const clean = amountInEl.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+    if (clean !== amountInEl.value) {
+      const pos = amountInEl.selectionStart ?? clean.length;
+      amountInEl.value = clean;
+      amountInEl.setSelectionRange(pos, pos);
+    }
     scheduleQuote();
   });
 
@@ -588,8 +604,14 @@ import { SITE_TITLE } from '../consts';
     btn.addEventListener('click', () => applySlippage(btn.dataset.slippage!));
   });
   slippageCustomEl.addEventListener('input', () => {
-    // sanitize to allow only digits and one dot
-    slippageCustomEl.value = slippageCustomEl.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+    // sanitize to allow only digits and one dot. Only rewrite when something
+    // changed — reassigning .value mid-input resets the cursor.
+    const clean = slippageCustomEl.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+    if (clean !== slippageCustomEl.value) {
+      const pos = slippageCustomEl.selectionStart ?? clean.length;
+      slippageCustomEl.value = clean;
+      slippageCustomEl.setSelectionRange(pos, pos);
+    }
     applySlippage(slippageCustomEl.value);
   });
 
@@ -755,7 +777,15 @@ import { SITE_TITLE } from '../consts';
   });
 
   alertsTargetEl.addEventListener('input', () => {
-    alertsTargetEl.value = alertsTargetEl.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+    // Strip non-digits/extra dots, but only rewrite when something actually
+    // changed — reassigning .value mid-input resets the cursor and on some
+    // keyboards makes characters appear not to register.
+    const clean = alertsTargetEl.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+    if (clean !== alertsTargetEl.value) {
+      const pos = alertsTargetEl.selectionStart ?? clean.length;
+      alertsTargetEl.value = clean;
+      alertsTargetEl.setSelectionRange(pos, pos);
+    }
   });
 
   alertsCreateBtn.addEventListener('click', async () => {
