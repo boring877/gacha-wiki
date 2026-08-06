@@ -711,7 +711,7 @@ import { SITE_TITLE } from '../consts';
       const word = a.dir === 'up' ? 'above' : 'below';
       row.innerHTML =
         `<span class="swap-alerts-row-cond">GW ${word} <strong>${fmtUsd(a.target)}</strong></span>` +
-        `<span class="swap-alerts-row-state">${a.fired ? '✓ triggered' : 'watching'}</span>` +
+        `<span class="swap-alerts-row-state">${a.fired ? 'triggered' : 'watching'}</span>` +
         `<button class="swap-alerts-del" type="button" aria-label="Delete alert">×</button>`;
       row.querySelector('.swap-alerts-del')!.addEventListener('click', () => {
         alerts = alerts.filter(x => x.id !== a.id);
