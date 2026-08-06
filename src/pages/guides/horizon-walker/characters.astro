@@ -169,6 +169,8 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                     data-faction={character.faction}
                     data-tags={character.tags ? character.tags.join(', ') : ''}
                     class="clickable-row"
+                    role="button"
+                    tabindex="0"
                   >
                     <td>{idx + 1}</td>
                     <td>
@@ -238,6 +240,8 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                 data-element={char.element}
                 data-faction={char.faction}
                 data-tags={char.tags ? char.tags.join(', ') : ''}
+                role="button"
+                tabindex="0"
                 style="cursor:pointer; touch-action: manipulation;"
               >
                 {/* Clean header section - image, name, rarity all together */}

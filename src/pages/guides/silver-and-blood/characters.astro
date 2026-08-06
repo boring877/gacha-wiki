@@ -162,6 +162,8 @@ const gameInfo = {
                     <tr
                       data-character-id={char.id}
                       data-url={`/guides/silver-and-blood/characters/${char.id}`}
+                      role="button"
+                      tabindex="0"
                       style="cursor:pointer;"
                     >
                       <td>{idx + 1}</td>
@@ -230,6 +232,8 @@ const gameInfo = {
                 class="mobile-character-card"
                 data-character-id={char.id}
                 data-url={`/guides/silver-and-blood/characters/${char.id}`}
+                role="button"
+                tabindex="0"
                 style="cursor:pointer;"
               >
                 <div class="mobile-card-header">
@@ -294,6 +298,13 @@ const gameInfo = {
       clickableElements.forEach(element => {
         element.addEventListener('click', () => {
           window.location.href = element.dataset.url;
+        });
+        // Keyboard support: rows/cards expose role="button" tabindex="0"
+        element.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+            e.preventDefault();
+            window.location.href = element.dataset.url;
+          }
         });
       });
 

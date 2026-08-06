@@ -414,6 +414,20 @@ const initialize = () => {
     }
   });
 
+  // Keyboard navigation: rows/cards expose role="button" tabindex="0".
+  // Enter/Space activates them the same as a click.
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Enter' && e.key !== ' ' && e.key !== 'Spacebar') return;
+    const clickableElement = e.target?.closest('[data-url]');
+    if (clickableElement) {
+      e.preventDefault();
+      const url = clickableElement.dataset.url;
+      if (url) {
+        window.location.href = url;
+      }
+    }
+  });
+
   // Also set styles for existing elements
   const clickableElements = document.querySelectorAll('[data-url]');
   clickableElements.forEach(element => {

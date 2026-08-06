@@ -189,6 +189,8 @@ const structuredData = {
                     data-rarity={character.rarity}
                     data-element={character.element}
                     data-role={character.role}
+                    role="button"
+                    tabindex="0"
                     data-slug={character.slug}
                   >
                     <td>{index + 1}</td>
@@ -264,6 +266,8 @@ const structuredData = {
                 data-name={character.name.toLowerCase()}
                 data-rarity={character.rarity}
                 data-element={character.element}
+                role="button"
+                tabindex="0"
                 data-role={character.role}
                 data-slug={character.slug}
                 data-hp={character.stats.hp}
@@ -380,12 +384,20 @@ const structuredData = {
     const clickableRows = document.querySelectorAll('.clickable-row');
     const clickableCards = document.querySelectorAll('.clickable-card');
 
-    // Add click event listeners to desktop table rows
+    // Add click + keyboard event listeners to desktop table rows
     clickableRows.forEach(row => {
-      row.addEventListener('click', function () {
-        const slug = this.dataset.slug;
+      const navigate = () => {
+        const slug = (row as HTMLElement).dataset.slug;
         if (slug) {
           window.location.href = `/guides/stella-sora/characters/${slug}`;
+        }
+      };
+      row.addEventListener('click', navigate);
+      // Keyboard support: rows expose role="button" tabindex="0"
+      row.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+          e.preventDefault();
+          navigate();
         }
       });
 
@@ -399,12 +411,19 @@ const structuredData = {
       });
     });
 
-    // Add click event listeners to mobile cards
+    // Add click + keyboard event listeners to mobile cards
     clickableCards.forEach(card => {
-      card.addEventListener('click', function () {
-        const slug = this.dataset.slug;
+      const navigate = () => {
+        const slug = (card as HTMLElement).dataset.slug;
         if (slug) {
           window.location.href = `/guides/stella-sora/characters/${slug}`;
+        }
+      };
+      card.addEventListener('click', navigate);
+      card.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+          e.preventDefault();
+          navigate();
         }
       });
 
