@@ -137,14 +137,13 @@ import { SITE_TITLE } from '../consts';
       <div class="swap-status" id="swap-status"></div>
     </div>
 
-    <!-- Live GW/WETH price chart (DexScreener embed). Same data source as the
-         token banner. tab=chart opens straight on the candlestick chart (the
-         embed's default includes info/txns tabs; this lands on chart first).
-         Loads lazily so it doesn't block the swap UI. -->
+    <!-- Live GW/WETH price chart (GeckoTerminal chart-only embed).
+         info=0&swaps=0 hide the info + transactions panels so this shows the
+         TradingView candlestick chart and nothing else. Loads lazily. -->
     <div class="swap-chart-card">
       <iframe
         class="swap-chart-frame"
-        src="https://dexscreener.com/robinhood/0xa9ffaf245686212f7c6f73e7ccd1592e9a5b4923?embed=1&theme=dark&tab=chart"
+        src="https://www.geckoterminal.com/robinhood/pools/0xa9ffaf245686212f7c6f73e7ccd1592e9a5b4923?embed=1&info=0&swaps=0&theme=dark"
         title="GW / WETH live chart"
         loading="lazy"
       ></iframe>
