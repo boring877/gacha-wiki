@@ -154,9 +154,12 @@ import { SITE_TITLE } from '../consts';
       <div class="swap-mode" id="swap-mode-alerts" role="tabpanel" hidden>
         <!-- Hero: current price (the reference point, so it's the most prominent) -->
         <div class="swap-alerts-hero">
-          <span class="swap-alerts-hero-label">Price</span>
+          <div class="swap-alerts-hero-title">
+            <img class="swap-alerts-hero-icon" src="/android-chrome-192x192.png" alt="" width="22" height="22" />
+            <span>Current GW price</span>
+          </div>
           <span class="swap-alerts-hero-value" id="alerts-price">—</span>
-          <span class="swap-alerts-hero-sub" id="alerts-hero-sub">current GW price</span>
+          <span class="swap-alerts-hero-sub" id="alerts-hero-sub">live · updates every 30s</span>
         </div>
 
         <!-- Create alert: distinct section card with a heading -->

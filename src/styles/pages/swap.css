@@ -407,12 +407,25 @@
   text-align: center;
 }
 
-.swap-alerts-hero-label {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  opacity: 0.55;
+/* Title row: a clear "Current GW price" heading with the token icon, sitting
+   above the big number so the value is unambiguously labeled. */
+.swap-alerts-hero-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 0.95rem;
   font-weight: 700;
+  color: var(--text-inverse, #fff);
+  margin-bottom: 0.35rem;
+}
+
+.swap-alerts-hero-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .swap-alerts-hero-value {
@@ -427,6 +440,7 @@
 .swap-alerts-hero-sub {
   font-size: 0.72rem;
   opacity: 0.45;
+  margin-top: 0.2rem;
 }
 
 /* CREATE section: a distinct card with its own heading so it reads as a unit. */
