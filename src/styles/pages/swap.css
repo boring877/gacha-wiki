@@ -526,7 +526,8 @@
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   font-size: 1.2rem;
   font-weight: 700;
-  opacity: 0.4;
+  color: var(--amber-glow, #ffb74d); /* explicit — otherwise inherits slate body text */
+  opacity: 0.5;
   flex-shrink: 0;
 }
 
@@ -537,9 +538,15 @@
   border: none;
   outline: none;
   color: var(--text-inverse, #fff);
+  caret-color: var(--amber-glow, #ffb74d);
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   font-size: 1.25rem;
   font-weight: 700;
+}
+
+/* Kill the default blue text-selection highlight inside the input. */
+.swap-alerts-input::selection {
+  background: rgba(255, 183, 77, 0.3);
 }
 
 .swap-alerts-input::placeholder {
@@ -551,6 +558,7 @@
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  color: var(--text-inverse, #fff);
   opacity: 0.45;
   flex-shrink: 0;
 }

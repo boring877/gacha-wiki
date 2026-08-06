@@ -725,19 +725,27 @@ import { SITE_TITLE } from '../consts';
   /** Check all un-fired alerts against the latest price; fire on cross. */
   function checkAlerts() {
     if (livePrice == null) return;
-    let anyFired = false;
+    const firedNow: PriceAlert[] = [];
     for (const a of alerts) {
       if (a.fired) continue;
       const crossed = a.dir === 'up' ? livePrice >= a.target : livePrice <= a.target;
       if (crossed) {
         a.fired = true;
-        anyFired = true;
+        firedNow.push(a);
         fireAlert(a);
       }
     }
-    if (anyFired) {
+    if (firedNow.length > 0) {
       saveAlerts();
       renderAlerts();
+      // Auto-remove triggered alerts after a few seconds so the list stays
+      // tidy — the notification + flash already captured the event.
+      setTimeout(() => {
+        const ids = new Set(firedNow.map(a => a.id));
+        alerts = alerts.filter(a => !ids.has(a.id));
+        saveAlerts();
+        renderAlerts();
+      }, 3500);
     }
   }
 
