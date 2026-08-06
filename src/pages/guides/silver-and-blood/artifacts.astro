@@ -315,7 +315,12 @@ const pageDescription = 'Complete artifact database for Silver and Blood. View a
       const dataScript = document.querySelector(`script[data-levels="${artifactKey}"]`);
       if (!dataScript) return;
 
-      const levels = JSON.parse(dataScript.innerHTML || dataScript.textContent || '[]');
+      let levels: any[];
+      try {
+        levels = JSON.parse(dataScript.innerHTML || dataScript.textContent || '[]');
+      } catch {
+        return; // malformed payload — abort this update silently
+      }
       const levelData = levels[level - 1];
       if (!levelData) return;
 
@@ -338,14 +343,22 @@ const pageDescription = 'Complete artifact database for Silver and Blood. View a
         if (!skillKey) return;
 
         const skillData = script.innerHTML || script.textContent || '{}';
-        const skill = JSON.parse(skillData);
+        let skill;
+        try {
+          skill = JSON.parse(skillData);
+        } catch {
+          return; // skip this skill — malformed payload
+        }
         const descEl = document.querySelector(`[data-skill-desc="${skillKey}"]`);
         if (descEl) {
           descEl.innerHTML = formatSkillDescHtml(skill, level);
         }
       });
 
-      // Update upgrade costs (cost to reach current level is stored at level-1)
+      // Update upgrade costs. levels[N-1].upgradeCost is the cost to upgrade
+      // FROM level N TO N+1, so the cost that was paid to reach the current
+      // level is at levels[level - 2]. At level 1 there's no prior upgrade,
+      // so fall back to levels[0] (the upcoming upgrade cost).
       const costLevelIndex = level > 1 ? level - 2 : 0;
       const costLevelData = levels[costLevelIndex];
       if (costLevelData && costLevelData.upgradeCost) {

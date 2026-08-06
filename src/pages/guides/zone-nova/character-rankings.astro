@@ -269,6 +269,12 @@ import ZNCharacterImage from '../../../components/zone-nova/ZNCharacterImage.ast
     };
   </script>
 
-  <!-- Load external optimized script -->
-  <script is:inline src="/scripts/character-rankings/zone-nova-rankings.js"></script>
+  <!-- Import + initialize the rankings manager (bundled & minified by Vite) -->
+  <script>
+    import { initializeZoneNovaRankings } from '../../../scripts/character-rankings/zone-nova-rankings.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeZoneNovaRankings();
+    });
+  </script>
 </CharacterRankingsLayout>

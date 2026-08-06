@@ -578,21 +578,22 @@ const EXPLORER_URL = 'https://robinhoodchain.blockscout.com';
     window.addEventListener('scroll', repositionOpen, { passive: true });
     window.addEventListener('resize', repositionOpen);
 
-    // --- wallet subscription (auto-restore on load) ------------------------
+    // --- wallet subscription (auto-restore on first interaction) ------------
     // The button reflects the real wallet session on every page load. This
     // keeps the header in sync with dApp pages (e.g. /swap) that also read the
     // session, so the two never disagree about connected state. AppKit's
     // session restore is async, so there may be a brief flash from
     // "Connect Wallet" → address pill; we accept that for consistency.
-    const idle = (cb: () => void) => {
-      if ('requestIdleCallback' in window) {
-        (window as Window).requestIdleCallback(cb, { timeout: 3000 });
-      } else {
-        setTimeout(cb, 1500);
-      }
-    };
-
-    idle(() => {
+    //
+    // The heavy wallet bundle (@reown/appkit + ethers) is deferred until the
+    // first real user interaction rather than auto-loaded on idle, so it never
+    // downloads/parses on pages a user bounces from without engaging. The
+    // connect() path below independently lazy-loads on click, so this only
+    // restores an existing session and wires change listeners.
+    let walletWired = false;
+    const wireWallet = () => {
+      if (walletWired) return;
+      walletWired = true;
       void (async () => {
         try {
           const { getAppKit, onWalletChange, getConnectedAddress } = await loadWallet();
@@ -618,7 +619,20 @@ const EXPLORER_URL = 'https://robinhoodchain.blockscout.com';
           console.warn('Wallet init skipped; connect button stays ready.', err);
         }
       })();
-    });
+    };
+
+    // Trigger on the first user interaction (most browsers fire pointerdown
+    // before click, so this also pre-warms ahead of a connect-button click).
+    const interactionEvents = ['pointerdown', 'keydown', 'touchstart'] as const;
+    const interactionHandler = () => {
+      wireWallet();
+      interactionEvents.forEach(evt =>
+        document.removeEventListener(evt, interactionHandler, { capture: true } as EventListenerOptions),
+      );
+    };
+    interactionEvents.forEach(evt =>
+      document.addEventListener(evt, interactionHandler, { capture: true, once: true } as AddEventListenerOptions),
+    );
   }
 
   if (document.readyState === 'loading') {

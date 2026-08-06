@@ -8,7 +8,8 @@ export type GameKey =
   | 'taimanin-squad'
   | 'star-savior'
   | 'last-origin-global'
-  | 'make-drama';
+  | 'make-drama'
+  | 'desire-immortal-realm';
 
 export interface NavigationLink {
   name: string;
@@ -424,6 +425,18 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
       {
         title: 'Resources',
         links: [],
+      },
+    ],
+  },
+  'desire-immortal-realm': {
+    name: 'Desire Immortal Realm',
+    image: '/images/games/desire-immortal-realm/icon.png',
+    sections: [
+      {
+        title: 'Characters',
+        links: [
+          { name: 'Database', href: '/guides/desire-immortal-realm/characters/' },
+        ],
       },
     ],
   },

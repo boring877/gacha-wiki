@@ -122,7 +122,12 @@ const safeJson = effectsJson;
 (function() {
   var dataEl = document.getElementById('effects-data');
   if (!dataEl) return;
-  var EFFECTS_DATA = JSON.parse(dataEl.getAttribute('data-effects'));
+  var EFFECTS_DATA;
+  try {
+    EFFECTS_DATA = JSON.parse(dataEl.getAttribute('data-effects') || '[]');
+  } catch (e) {
+    return; // malformed payload — abort silently
+  }
 
   var searchInput = document.getElementById('effect-search');
   var categoryFilter = document.getElementById('filter-category');

@@ -189,20 +189,23 @@ export function highlightSkillText(text, highlightPatterns, options = {}) {
     highlightedRanges.length = 0;
   }
 
-  // Performance: Cache the result
-  if (highlightCache.size < CACHE_MAX_SIZE) {
-    highlightCache.set(cacheKey, {
-      result: highlightedText,
-      timestamp: Date.now(),
-    });
-  }
-
-  // Convert newlines to HTML line breaks for better readability
+  // Convert newlines to HTML line breaks for better readability.
+  // NOTE: must happen BEFORE caching so a cache hit returns the fully
+  // converted text (previously the cache stored the pre-conversion value,
+  // so repeat renders of the same skill lost all line breaks).
   highlightedText = highlightedText.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
 
   // Wrap in paragraphs if there were double newlines
   if (highlightedText.includes('</p><p>')) {
     highlightedText = '<p>' + highlightedText + '</p>';
+  }
+
+  // Performance: Cache the fully-converted result
+  if (highlightCache.size < CACHE_MAX_SIZE) {
+    highlightCache.set(cacheKey, {
+      result: highlightedText,
+      timestamp: Date.now(),
+    });
   }
 
   return highlightedText;

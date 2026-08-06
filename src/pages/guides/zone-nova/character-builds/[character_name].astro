@@ -357,14 +357,6 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
             } as MemoryCardData;
           }
 
-          // Debug: Check if URL exists for this card
-          const hasUrl = memoryCardUrls[card.name];
-          console.log(`Memory Card: "${card.name}" - Has URL: ${hasUrl}`, {
-            cardName: card.name,
-            urlValue: hasUrl,
-            allUrls: Object.keys(memoryCardUrls),
-          });
-
           return (
             <div class={`memory-card-item ${card.characterSpecific ? 'character-specific' : ''}`}>
               <div class="memory-card-horizontal">
