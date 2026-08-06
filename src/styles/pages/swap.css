@@ -408,10 +408,18 @@
     flex-direction: column;
     align-items: center;
   }
+  .swap-card {
+    max-width: 28rem; /* back to the narrow card width when stacked */
+  }
   .swap-chart-card {
     width: 100%;
     max-width: 28rem; /* match the card width when stacked */
     margin-top: 1.25rem;
+    /* display:flex + flex:1 with no free vertical space collapses this to 0
+       in a column layout, so pin an explicit height (the base rule's flex
+       sizing wins otherwise). */
+    flex: none;
+    height: 420px;
   }
   .swap-chart-frame {
     height: 420px;
@@ -428,6 +436,10 @@
   }
   .swap-amount-input {
     font-size: 1.15rem;
+  }
+  .swap-chart-card {
+    flex: none;
+    height: 340px; /* match the smaller iframe on phones */
   }
   .swap-chart-frame {
     height: 340px;
