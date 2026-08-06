@@ -22,7 +22,6 @@ import {
   erc20Abi,
   encodeFunctionData,
   getAddress,
-  keccak256,
   parseUnits,
   formatUnits,
   type Address,
@@ -69,226 +68,11 @@ export const DEFAULT_TOKENS: TokenInfo[] = [
   { address: WETH_TOKEN, symbol: 'WETH', name: 'Wrapped Ether', decimals: 18, logoUri: 'https://www.google.com/s2/favicons?domain=ethereum.org&sz=64' },
 ];
 
-const TOKENLIST_CACHE_KEY = 'gacha-wiki:swap-tokenlist-v3'; // v3: on-chain indexed
-const TOKENLIST_TTL = 24 * 60 * 60_000; // 24h (historical pools don't change)
-
-// Uniswap V3 Factory PoolCreated event signature.
-// PoolCreated(address indexed token0, address indexed token1, uint24 indexed fee, int24 tickSpacing, address pool)
-const POOL_CREATED_TOPIC = keccak256(
-  new TextEncoder().encode('PoolCreated(address,address,uint24,int24,address)'),
-);
-
-// Uniswap's curated list — used as a fast initial seed (symbol/name/decimals
-// known without on-chain reads) while the indexer catches up.
-const UNISWAP_TOKENLIST_URL =
-  'https://raw.githubusercontent.com/Uniswap/default-token-list/main/src/tokens/robinhood.json';
-
-/**
- * Fetch a block of PoolCreated logs. Returns null if the range exceeds the
- * RPC's 10k-log limit (caller then halves the range).
- */
-async function fetchPoolLogs(fromBlock: number, toBlock: number): Promise<Array<{ topics: string[] }> | null> {
-  try {
-    const res = await fetch(RH_RPC, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        jsonrpc: '2.0',
-        id: 1,
-        method: 'eth_getLogs',
-        params: [{
-          address: V3_FACTORY,
-          topics: [POOL_CREATED_TOPIC],
-          fromBlock: '0x' + fromBlock.toString(16),
-          toBlock: '0x' + toBlock.toString(16),
-        }],
-      }),
-    });
-    const j = await res.json() as { result?: Array<{ topics: string[] }>; error?: unknown };
-    if (j.error) return null; // exceeded limit — caller halves the range
-    return j.result ?? [];
-  } catch {
-    return null;
-  }
-}
-
-/**
- * Index ALL tokens that have a Uniswap V3 pool on Robinhood Chain by scanning
- * PoolCreated events from the V3 Factory. Uses adaptive block-range chunking
- * (halves the range when the 10k-log limit is hit). There are ~76k pools /
- * ~76k unique tokens on-chain — far more than any curated list.
- *
- * Each token's symbol/decimals are resolved lazily on selection (on-chain read)
- * to avoid 76k RPC calls during indexing. Returns addresses only.
- */
-export async function indexAllPoolTokens(): Promise<Set<string>> {
-  // Get current block height.
-  let latest: number;
-  try {
-    const res = await fetch(RH_RPC, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'eth_blockNumber', params: [] }),
-    });
-    const j = await res.json() as { result?: string };
-    latest = parseInt(j.result ?? '0x0', 16);
-  } catch {
-    return new Set();
-  }
-  if (latest === 0) return new Set();
-
-  const tokens = new Set<string>();
-  // Adaptive scan: start with 200k-block chunks, halve when hitting the limit.
-  const MIN_CHUNK = 5000;
-  const stack: Array<[number, number]> = [[0, latest]];
-
-  while (stack.length > 0) {
-    const [from, to] = stack.pop()!;
-    const size = to - from + 1;
-    const logs = await fetchPoolLogs(from, to);
-    if (logs === null && size > MIN_CHUNK) {
-      // Limit hit — split into two halves.
-      const mid = from + Math.floor(size / 2);
-      stack.push([from, mid], [mid + 1, to]);
-    } else if (logs) {
-      for (const log of logs) {
-        // token0 = topics[1], token1 = topics[2] (each is a 32-byte word,
-        // the address is the last 20 bytes).
-        if (log.topics[1]) tokens.add('0x' + log.topics[1].slice(26).toLowerCase());
-        if (log.topics[2]) tokens.add('0x' + log.topics[2].slice(26).toLowerCase());
-      }
-    }
-    // If logs===null and size<=MIN_CHUNK, skip (extremely dense range).
-  }
-  return tokens;
-}
-
-/**
- * Fetch ALL swappable tokens on Robinhood Chain. Strategy:
- * 1) Start fast: Uniswap's curated 100-token list (has symbol/name/decimals).
- * 2) Index on-chain: scan all PoolCreated events to discover the full ~76k
- *    token set (addresses only; metadata resolved lazily on selection).
- * 3) Merge + dedupe. Cached 24h in sessionStorage (pools are append-only).
- *
- * This is the definitive token set — every token that has a Uniswap pool,
- * read straight from the chain. No API key, no curated-list limit.
- */
-/**
- * Fast seed: Uniswap's official token list for Robinhood Chain (100 tokens)
- * + defaults. Logos via Robinhood CDN (cdn.robinhood.com/ncw_assets/logos).
- * One fetch, instant. Used for picker rendering before the on-chain index.
- */
-export async function fetchCuratedTokens(): Promise<TokenInfo[]> {
-  const uniswapRes = await fetch(UNISWAP_TOKENLIST_URL)
-    .then(r => r.ok ? r.json() : [])
-    .catch(() => []);
-
-  const uniswapList = uniswapRes as Array<{
-    address: string; symbol: string; name: string; decimals: number;
-  }>;
-
-  const seen = new Set<string>();
-  const merged: TokenInfo[] = [];
-
-  // 1) Defaults first (ETH, GW, WETH).
-  for (const t of DEFAULT_TOKENS) {
-    const key = t.address.toLowerCase();
-    if (seen.has(key)) continue;
-    seen.add(key);
-    merged.push(t);
-  }
-
-  // 2) Uniswap's 100 stock tokens — logo via Robinhood CDN.
-  for (const t of uniswapList) {
-    const key = t.address.toLowerCase();
-    if (seen.has(key)) continue;
-    seen.add(key);
-    merged.push({
-      address: t.address as Address,
-      symbol: t.symbol,
-      name: t.name,
-      decimals: t.decimals,
-      logoUri: `https://cdn.robinhood.com/ncw_assets/logos/${key}.png`,
-    });
-  }
-
-  return merged;
-}
-
-let indexingInProgress: Promise<TokenInfo[]> | null = null;
-
-/**
- * Fetch ALL swappable tokens on Robinhood Chain. Returns the FULL set:
- * curated (fast) + every token discovered by scanning PoolCreated events
- * on-chain (76k+). This is slow on first run (~30s) — callers that need an
- * instant response should use fetchCuratedTokens() first, then call this.
- *
- * Idempotent + deduplicated. If already indexing, returns the in-flight
- * promise. Cached 24h in sessionStorage (pools are append-only).
- */
-export async function fetchTokenList(): Promise<TokenInfo[]> {
-  // cache check — if we already have the full indexed list, return instantly.
-  try {
-    const raw = sessionStorage.getItem(TOKENLIST_CACHE_KEY);
-    if (raw) {
-      const parsed = JSON.parse(raw) as { ts: number; tokens: TokenInfo[]; complete?: boolean };
-      if (parsed.complete && Date.now() - parsed.ts < TOKENLIST_TTL && parsed.tokens.length > 100) {
-        return parsed.tokens;
-      }
-    }
-  } catch {
-    /* ignore */
-  }
-
-  // Dedupe in-flight indexing.
-  if (indexingInProgress) return indexingInProgress;
-
-  indexingInProgress = (async () => {
-    // 1) Fast seed: curated tokens (full metadata).
-    const curated = await fetchCuratedTokens();
-
-    // 2) On-chain index: discover every token with a pool.
-    const indexedAddrs = await indexAllPoolTokens();
-
-    // 3) Merge: curated tokens first (full metadata), then indexed-only.
-    const seen = new Set<string>();
-    const merged: TokenInfo[] = [];
-    for (const t of curated) {
-      const key = t.address.toLowerCase();
-      if (seen.has(key)) continue;
-      seen.add(key);
-      merged.push(t);
-    }
-    // Indexed tokens: address-only, logo via Robinhood CDN, metadata resolved
-    // lazily on selection (on-chain read).
-    for (const addr of indexedAddrs) {
-      if (seen.has(addr)) continue;
-      seen.add(addr);
-      merged.push({
-        address: addr as Address,
-        symbol: '',
-        name: '',
-        decimals: 18,
-        logoUri: `https://cdn.robinhood.com/ncw_assets/logos/${addr}.png`,
-      });
-    }
-
-    try {
-      sessionStorage.setItem(TOKENLIST_CACHE_KEY, JSON.stringify({
-        ts: Date.now(),
-        tokens: merged,
-        complete: indexedAddrs.size > 0,
-      }));
-    } catch {
-      // sessionStorage may be full (76k tokens ~10MB) — skip caching, the
-      // merge result is still returned in-memory.
-    }
-    indexingInProgress = null;
-    return merged;
-  })();
-
-  return indexingInProgress;
-}
+// NOTE: This page swaps a single fixed pair (ETH ↔ $GW), so there's no token
+// picker, no curated-list fetch, and no on-chain metadata resolution here.
+// (An earlier version carried fetchCuratedTokens / fetchTokenList /
+// fetchTokenMeta / resolveToken for a Uniswap-style token picker; all removed
+// when the UI was narrowed to the GW/ETH pair.)
 
 // ---------------------------------------------------------------------------
 // viem clients
@@ -309,34 +93,6 @@ function getPublicClient(): PublicClient {
 // ---------------------------------------------------------------------------
 // Token metadata (fetch symbol/decimals on-chain for arbitrary addresses)
 // ---------------------------------------------------------------------------
-
-const tokenCache = new Map<string, TokenInfo>();
-
-/** Fetch on-chain metadata (symbol, name, decimals) for an ERC-20 address. */
-export async function fetchTokenMeta(address: Address): Promise<TokenInfo> {
-  const key = address.toLowerCase();
-  const cached = tokenCache.get(key);
-  if (cached) return cached;
-
-  const client = getPublicClient();
-  const [symbol, name, decimals] = await Promise.all([
-    client.readContract({ address, abi: erc20Abi, functionName: 'symbol' }),
-    client.readContract({ address, abi: erc20Abi, functionName: 'name' }),
-    client.readContract({ address, abi: erc20Abi, functionName: 'decimals' }),
-  ]);
-
-  const info: TokenInfo = { address, symbol: symbol as string, name: name as string, decimals: Number(decimals) };
-  tokenCache.set(key, info);
-  return info;
-}
-
-/** Resolve a token to its metadata (native ETH is a special case). */
-export async function resolveToken(address: Address): Promise<TokenInfo> {
-  if (address.toLowerCase() === NATIVE_TOKEN.toLowerCase()) {
-    return DEFAULT_TOKENS[0]; // ETH
-  }
-  return fetchTokenMeta(address);
-}
 
 // ---------------------------------------------------------------------------
 // Pool + quote (Uniswap V3 QuoterV2)
@@ -429,7 +185,7 @@ export async function getQuote(
     amountOut: best.amountOut,
     fee: best.fee,
     priceImpactPct,
-    routeDescription: `V3 ${best.fee / 10000}% • ${tIn === tokenIn ? 'direct' : 'direct'}`,
+    routeDescription: `V3 ${best.fee / 10000}% • direct`,
   };
 }
 
@@ -452,7 +208,7 @@ async function getQuoteTwoHop(
   };
 }
 
-/** Estimate price impact by quoting a tiny reference amount vs the actual amount. */
+/** Estimate price impact by quoting a small reference amount vs the actual amount. */
 async function estimatePriceImpact(
   tokenIn: Address,
   tokenOut: Address,
@@ -461,7 +217,13 @@ async function estimatePriceImpact(
   fee: number,
 ): Promise<number> {
   try {
-    // Quote a very small amount (1 smallest unit) to approximate the spot rate.
+    // Quote a SMALL fraction of amountIn to approximate the spot rate. Using a
+    // proportional reference avoids rounding-to-zero: the old code quoted 1 wei,
+    // which for 18-decimal tokens returns ~0 out and made impact always "—".
+    // ~0.01% of the trade is large enough to be non-zero but small enough to
+    // stay near the pool's spot price.
+    const refAmountIn = amountIn / 10_000n;
+    if (refAmountIn <= 0n) return 0;
     const client = getPublicClient();
     const pool = await getPoolAddress(tokenIn, tokenOut, fee);
     if (!pool) return 0;
@@ -469,15 +231,15 @@ async function estimatePriceImpact(
       address: QUOTER_V2,
       abi: QUOTER_V2_ABI,
       functionName: 'quoteExactInputSingle',
-      args: [{ tokenIn, tokenOut, amountIn: 1n, fee, sqrtPriceLimitX96: 0n }],
+      args: [{ tokenIn, tokenOut, amountIn: refAmountIn, fee, sqrtPriceLimitX96: 0n }],
     })) as { result: readonly [bigint, bigint, number, bigint] };
     const refOut = ref.result[0];
-    if (refOut === 0n) return 0;
-    // Expected (linear) = amountIn * refOut. Actual = amountOut.
-    // Impact = 1 - actual/expected.
-    const expected = (amountIn * refOut) / 1n;
-    if (expected === 0n) return 0;
-    const impact = Number((expected - amountOut) * 10000n / expected) / 100;
+    if (refOut <= 0n) return 0;
+    // Expected (linear) output at the spot rate: scale the reference quote up
+    // to the full amountIn. Actual = amountOut. Impact = 1 - actual/expected.
+    const expected = (amountIn * refOut) / refAmountIn;
+    if (expected <= 0n) return 0;
+    const impact = Number(((expected - amountOut) * 10000n) / expected) / 100;
     return Math.max(0, impact);
   } catch {
     return 0;
@@ -533,14 +295,16 @@ export async function getBalance(token: Address, holder: Address): Promise<bigin
 // ---------------------------------------------------------------------------
 
 /**
- * Execute a swap through the Universal Router using the connected wallet.
- * Handles: native ETH wrap, ERC-20 approval to Permit2, command encoding.
+ * Execute a swap through SwapRouter02 using the connected wallet.
+ * Handles: native ETH (via multicall so the router credits msg.value as WETH),
+ * ERC-20 approval to the router, and native-ETH output unwrapping.
  *
- * NOTE: The Universal Router uses a bespoke command bytecode. For a robust,
- * production-grade encode we'd use @uniswap/universal-router-sdk; to avoid that
- * heavy React-leaning dep, this implementation routes through SwapRouter02's
- * exactInputSingle instead (a standard viem tx). SwapRouter02 is approved by
- * the Universal Router deployment and gives identical fill on V3 pools.
+ * NOTE: We use SwapRouter02's exactInputSingle + multicall rather than the
+ * Universal Router (which needs its bespoke command bytecode / the
+ * @uniswap/universal-router-sdk) to avoid that heavy dependency. Fill on V3
+ * pools is identical. CRITICAL: native-ETH input MUST go through multicall —
+ * a bare exactInputSingle with msg.value reverts because the router only
+ * credits the incoming ETH inside its payable multicall() entrypoint.
  */
 export async function executeSwap(
   tokenIn: Address,
@@ -581,10 +345,30 @@ export async function executeSwap(
       }
     }
 
-    // 2) Build the SwapRouter02 exactInputSingle call.
+    // 2) Build the swap calldata. We ALWAYS route through multicall(bytes[]):
+    //
+    //  - Native ETH in: a bare exactInputSingle with msg.value REVERTS, because
+    //    SwapRouter02 only credits the incoming ETH to the payer inside its
+    //    payable multicall() entrypoint (which stores msg.value as a WETH
+    //    deposit). Calling exactInputSingle directly leaves the router's
+    //    internal "has paid WETH?" check short and the tx reverts after the
+    //    wallet signs it. This was the bug behind "I accept in wallet but the
+    //    tx don't go." Wrapping in multicall([exactInputSingle]) with
+    //    value = amountIn makes the router accept and spend the ETH.
+    //
+    //  - Native ETH out: pools are WETH-based, so the swap is sent to the
+    //    ROUTER and we append unwrapWETH9(minOut, from) so the router unwraps
+    //    the resulting WETH and forwards native ETH to the user. (Without it
+    //    the WETH just sits in the router.)
+    //
+    //  - ERC-20 in / out: multicall([exactInputSingle]) works identically to a
+    //    direct call; using it uniformly keeps one code path.
     onStatus?.('Sending swap…');
-    const deadline = BigInt(Math.floor(Date.now() / 1000) + 1200); // 20 min
-    const swapData = encodeFunctionData({
+    // SwapRouter02's exactInputSingle has NO deadline field (unlike the older
+    // V3 SwapRouter01). Deadline protection is applied via the multicall(bytes32,bytes[])
+    // overload instead; we use multicall(bytes[]) here without a blockhash check,
+    // which is fine for an immediate-execution swap.
+    const exactInputData = encodeFunctionData({
       abi: SWAP_ROUTER_02_ABI,
       functionName: 'exactInputSingle',
       args: [
@@ -592,18 +376,54 @@ export async function executeSwap(
           tokenIn: v3TokenIn,
           tokenOut: v3TokenOut,
           fee: quote.fee,
-          recipient: isNativeOut ? SWAP_ROUTER_02 : from, // router unwraps if native out
-          deadline,
+          recipient: isNativeOut ? SWAP_ROUTER_02 : from,
           amountIn,
-          amountOutMinimum: minAmountOut,
+          amountOutMinimum: isNativeOut ? 0n : minAmountOut,
           sqrtPriceLimitX96: 0n,
         },
       ],
     });
 
+    const calls: `0x${string}`[] = [exactInputData];
+    if (isNativeOut) {
+      // Append unwrap so the WETH bought is converted to native ETH for the user.
+      calls.push(encodeFunctionData({
+        abi: SWAP_ROUTER_02_ABI,
+        functionName: 'unwrapWETH9',
+        args: [minAmountOut, from],
+      }));
+    }
+    const data = encodeFunctionData({
+      abi: SWAP_ROUTER_02_ABI,
+      functionName: 'multicall',
+      args: [calls],
+    });
+
+    // Pre-flight: simulate the exact tx via eth_call from the connected
+    // account BEFORE asking the wallet to sign. This surfaces the real revert
+    // reason (decoded by viem) on the page status line, instead of the opaque
+    // "transaction may fail" the wallet shows. Reverts here are caught below.
+    // Uses a raw eth_call (not viem's client.call with an account object, which
+    // triggers gas-estimation/account-resolution that stalls on this RPC).
+    onStatus?.('Simulating swap…');
+    try {
+      await getPublicClient().request({
+        method: 'eth_call',
+        params: [{
+          from,
+          to: SWAP_ROUTER_02,
+          data,
+          value: ('0x' + (isNativeIn ? amountIn : 0n).toString(16)) as `0x${string}`,
+        }, 'latest'],
+      });
+    } catch (simErr) {
+      const reason = simErr instanceof Error ? simErr.message : String(simErr);
+      return { error: `Swap would revert: ${reason}` };
+    }
+
     const txHash = await sendTx(kit, {
       to: SWAP_ROUTER_02,
-      data: swapData,
+      data,
       value: isNativeIn ? amountIn : 0n,
     });
 
@@ -623,7 +443,6 @@ const SWAP_ROUTER_02_ABI = [
           { name: 'tokenOut', type: 'address' },
           { name: 'fee', type: 'uint24' },
           { name: 'recipient', type: 'address' },
-          { name: 'deadline', type: 'uint256' },
           { name: 'amountIn', type: 'uint256' },
           { name: 'amountOutMinimum', type: 'uint256' },
           { name: 'sqrtPriceLimitX96', type: 'uint160' },
@@ -634,6 +453,20 @@ const SWAP_ROUTER_02_ABI = [
     ],
     name: 'exactInputSingle',
     outputs: [{ name: 'amountOut', type: 'uint256' }],
+    stateMutability: 'payable',
+    type: 'function',
+  },
+  {
+    inputs: [{ name: 'amountOutMinimum', type: 'uint256' }, { name: 'recipient', type: 'address' }],
+    name: 'unwrapWETH9',
+    outputs: [],
+    stateMutability: 'payable',
+    type: 'function',
+  },
+  {
+    inputs: [{ name: 'data', type: 'bytes[]' }],
+    name: 'multicall',
+    outputs: [{ name: 'results', type: 'bytes[]' }],
     stateMutability: 'payable',
     type: 'function',
   },
@@ -655,18 +488,45 @@ async function sendTx(kit: Awaited<ReturnType<typeof getAppKit>>, tx: TxRequest)
   if (!provider) throw new Error('No wallet provider');
   const account = getConnectedAddress();
   if (!account) throw new Error('No connected account');
-  const hash = (await provider.request({
-    method: 'eth_sendTransaction',
-    params: [
-      {
-        from: account,
-        to: tx.to,
-        data: tx.data,
-        value: '0x' + (tx.value ?? 0n).toString(16),
-      },
-    ],
-  })) as `0x${string}`;
-  return hash;
+  try {
+    const hash = (await provider.request({
+      method: 'eth_sendTransaction',
+      params: [
+        {
+          from: account,
+          to: tx.to,
+          data: tx.data,
+          value: '0x' + (tx.value ?? 0n).toString(16),
+        },
+      ],
+    })) as `0x${string}`;
+    return hash;
+  } catch (err) {
+    // EIP-1193 errors bury the revert reason in different shapes per wallet.
+    // Pull the most informative string we can find so the UI shows the real
+    // cause (e.g. "execution reverted", "insufficient funds", a 4byte sig).
+    throw new Error(extractProviderError(err));
+  }
+}
+
+/** Dig the most useful message out of a wallet/EIP-1193 error object. */
+function extractProviderError(err: unknown): string {
+  if (err == null) return 'Transaction failed (no error detail)';
+  // Stringify path candidates where wallets stash the reason.
+  const e = err as Record<string, unknown>;
+  const candidates = [
+    e.message,
+    e.reason,
+    (e.data as Record<string, unknown> | undefined)?.message,
+    e.data,
+    e.code,
+  ].filter(v => v != null && v !== '');
+  // Prefer a human-readable string; fall back to code/data.
+  for (const c of candidates) {
+    if (typeof c === 'string' && c.trim()) return c;
+    if (typeof c === 'number') return `wallet error code ${c}`;
+  }
+  return err instanceof Error ? err.message : String(err);
 }
 
 /** Send a tx and wait for it to be mined. */

@@ -249,8 +249,14 @@ export function onWalletChange(
 
   const emit = () => cb(latest);
 
-  // Defer subscription creation until AppKit exists (it's lazy).
+  // Defer subscription creation until AppKit exists (it's lazy). Track
+  // cancelled state so an unsubscribe() that races the async init both stops
+  // the deferred setup AND tears down subscriptions that already attached.
+  let cancelled = false;
+  let cleanup: (() => void) | null = null;
+
   getAppKit().then(kit => {
+    if (cancelled) return; // caller unsubscribed before init finished
     const unsubAccount = kit.subscribeAccount(newState => {
       latest = {
         ...latest,
@@ -272,8 +278,8 @@ export function onWalletChange(
     };
   });
 
-  let cleanup: (() => void) | null = null;
   return () => {
+    cancelled = true; // prevent the deferred setup from ever subscribing
     if (cleanup) cleanup();
   };
 }

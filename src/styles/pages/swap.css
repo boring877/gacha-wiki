@@ -40,6 +40,130 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
+/* --- Settings row (slippage) ------------------------------------------- */
+
+.swap-settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.swap-settings-current {
+  font-size: 0.74rem;
+  color: var(--text-inverse, #fff);
+  opacity: 0.5;
+}
+
+.swap-settings-gear {
+  background: none;
+  border: none;
+  color: var(--text-inverse, #fff);
+  opacity: 0.5;
+  cursor: pointer;
+  padding: 0.2rem;
+  display: inline-flex;
+  border-radius: 0.35rem;
+}
+
+.swap-settings-gear:hover {
+  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Popover panel toggled by the gear. Sits under the row, full card width. */
+.swap-settings-popover {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.swap-settings-popover[hidden] {
+  display: none;
+}
+
+.swap-settings-popover-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-inverse, #fff);
+  opacity: 0.5;
+}
+
+.swap-slippage-presets {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
+}
+
+.swap-slippage-preset {
+  padding: 0.5rem 0.25rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-inverse, #fff);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.swap-slippage-preset:hover {
+  border-color: rgba(255, 183, 77, 0.4);
+}
+
+.swap-slippage-preset.is-active {
+  background: rgba(255, 183, 77, 0.15);
+  border-color: var(--amber-glow, #ffb74d);
+  color: var(--amber-glow, #ffb74d);
+}
+
+.swap-slippage-custom {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.7rem;
+}
+
+.swap-slippage-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-inverse, #fff);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.9rem;
+  min-width: 0;
+}
+
+.swap-slippage-input::placeholder {
+  color: var(--text-inverse, #fff);
+  opacity: 0.3;
+}
+
+.swap-slippage-unit {
+  color: var(--text-inverse, #fff);
+  opacity: 0.45;
+  font-size: 0.85rem;
+}
+
+.swap-slippage-warn {
+  font-size: 0.74rem;
+  color: #ffb74d;
+  min-height: 0;
+}
+
+.swap-slippage-warn[hidden] {
+  display: none;
+}
+
 /* Token field (input amount + token selector button side by side) */
 .swap-field {
   background: rgba(0, 0, 0, 0.25);
@@ -83,30 +207,31 @@
   opacity: 0.25;
 }
 
-/* Token selector button */
-.swap-token-select {
+/* Static token badge — big logo + symbol, fixed per field (no picker).
+   The GW↔ETH pair is the only swap, so this isn't a dropdown. */
+.swap-token-badge-static {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.4rem 0.7rem;
-  border-radius: 999px;
-  background: rgba(255, 183, 77, 0.12);
-  border: 1px solid rgba(255, 183, 77, 0.3);
-  color: var(--text-inverse, #fff);
-  font-weight: 700;
-  font-size: 0.95rem;
-  cursor: pointer;
-  white-space: nowrap;
+  gap: 0.5rem;
   flex-shrink: 0;
+}
+
+.swap-token-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.04);
+  /* Subtle ring matching the card border. */
+  box-shadow: 0 0 0 1px rgba(255, 183, 77, 0.25);
 }
 
 .swap-token-symbol {
-  color: var(--amber-glow, #ffb74d);
-}
-
-.swap-token-caret {
-  opacity: 0.6;
-  flex-shrink: 0;
+  color: var(--text-inverse, #fff);
+  font-weight: 700;
+  font-size: 1.05rem;
+  white-space: nowrap;
 }
 
 /* Balance hint under each field */
@@ -224,184 +349,6 @@
 
 .swap-status.is-success {
   color: var(--success-color, #4caf50);
-}
-
-/* --- Token picker modal ------------------------------------------------- */
-
-.swap-token-modal {
-  position: fixed;
-  inset: 0;
-  z-index: var(--z-modal, 2000);
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-}
-
-.swap-token-modal[hidden] {
-  display: none;
-}
-
-.swap-token-modal-inner {
-  width: 100%;
-  max-width: 26rem;
-  max-height: 80vh;
-  background: var(--bg-dark, #1c1c1c);
-  border: 1px solid rgba(255, 183, 77, 0.3);
-  border-radius: 1rem;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.swap-token-modal-header {
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid rgba(255, 183, 77, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.swap-token-modal-title {
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--text-inverse, #fff);
-}
-
-.swap-token-modal-close {
-  background: none;
-  border: none;
-  color: var(--text-inverse, #fff);
-  opacity: 0.6;
-  font-size: 1.3rem;
-  cursor: pointer;
-  padding: 0 0.4rem;
-  line-height: 1;
-}
-
-.swap-token-search {
-  padding: 0.75rem 1.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.swap-token-search-input {
-  width: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0.5rem;
-  padding: 0.6rem 0.8rem;
-  color: var(--text-inverse, #fff);
-  font-size: 0.9rem;
-  outline: none;
-}
-
-.swap-token-search-input::placeholder {
-  color: var(--text-inverse, #fff);
-  opacity: 0.3;
-}
-
-.swap-token-list {
-  overflow-y: auto;
-  flex: 1;
-  padding: 0.4rem;
-}
-
-/* Custom scrollbar for the token list — matches the dark theme. */
-.swap-token-list::-webkit-scrollbar {
-  width: 8px;
-}
-.swap-token-list::-webkit-scrollbar-track {
-  background: transparent;
-}
-.swap-token-list::-webkit-scrollbar-thumb {
-  background: rgba(255, 183, 77, 0.25);
-  border-radius: 4px;
-}
-.swap-token-list::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 183, 77, 0.4);
-}
-/* Firefox */
-.swap-token-list {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 183, 77, 0.25) transparent;
-}
-
-.swap-token-option {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  width: 100%;
-  padding: 0.7rem 0.8rem;
-  border: none;
-  background: transparent;
-  color: var(--text-inverse, #fff);
-  text-align: left;
-  border-radius: 0.5rem;
-  cursor: pointer;
-}
-
-.swap-token-option:hover {
-  background: rgba(255, 183, 77, 0.08);
-}
-
-/* Circular token badge — first letter of the symbol, gradient background.
-   Used as a fallback when a token has no logoUri icon. */
-.swap-token-badge {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--amber-glow, #ffb74d), var(--teal-crystal, #00acc1));
-  color: var(--bg-dark, #1c1c1c);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.95rem;
-  flex-shrink: 0;
-}
-
-/* Token icon image — same size/shape as the badge, sits on top of it. */
-.swap-token-icon {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.swap-token-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-  min-width: 0;
-}
-
-.swap-token-option-symbol {
-  font-weight: 700;
-  font-size: 0.95rem;
-}
-
-.swap-token-option-name {
-  font-size: 0.72rem;
-  opacity: 0.45;
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-}
-
-.swap-token-option-balance {
-  margin-left: auto;
-  font-size: 0.8rem;
-  font-variant-numeric: tabular-nums;
-  opacity: 0.6;
-}
-
-.swap-token-option-empty {
-  padding: 2rem 1rem;
-  text-align: center;
-  color: var(--text-inverse, #fff);
-  opacity: 0.4;
-  font-size: 0.85rem;
 }
 
 /* Responsive */

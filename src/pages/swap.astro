@@ -12,6 +12,40 @@ import { SITE_TITLE } from '../consts';
     <p class="swap-page-subtitle">Trade tokens on Robinhood Chain · Powered by Uniswap V3</p>
 
     <div class="swap-card">
+      <!-- Settings row: slippage tolerance -->
+      <div class="swap-settings-row">
+        <span class="swap-settings-current" id="swap-slippage-current">Slippage: 0.5%</span>
+        <button class="swap-settings-gear" id="swap-settings-btn" type="button" aria-label="Swap settings" aria-expanded="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" stroke="currentColor" stroke-width="2"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <!-- Slippage popover (toggled by the gear) -->
+      <div class="swap-settings-popover" id="swap-settings-popover" hidden>
+        <span class="swap-settings-popover-title">Slippage tolerance</span>
+        <div class="swap-slippage-presets">
+          <button class="swap-slippage-preset" type="button" data-slippage="0.1">0.1%</button>
+          <button class="swap-slippage-preset is-active" type="button" data-slippage="0.5">0.5%</button>
+          <button class="swap-slippage-preset" type="button" data-slippage="1">1%</button>
+          <button class="swap-slippage-preset" type="button" data-slippage="3">3%</button>
+        </div>
+        <div class="swap-slippage-custom">
+          <input
+            class="swap-slippage-input"
+            id="swap-slippage-custom"
+            type="text"
+            inputmode="decimal"
+            placeholder="Custom"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <span class="swap-slippage-unit">%</span>
+        </div>
+        <span class="swap-slippage-warn" id="swap-slippage-warn" hidden></span>
+      </div>
+
       <!-- Token IN -->
       <div class="swap-field">
         <span class="swap-field-label">You pay</span>
@@ -25,12 +59,14 @@ import { SITE_TITLE } from '../consts';
             autocomplete="off"
             spellcheck="false"
           />
-          <button class="swap-token-select" id="swap-select-in" type="button">
+          <div class="swap-token-badge-static" id="swap-badge-in">
+            <img class="swap-token-logo" id="swap-logo-in"
+                 src="https://assets.trustwalletapp.com/blockchains/ethereum/info/logo.png"
+                 data-fallback="/favicon.ico"
+                 onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}"
+                 alt="" width="48" height="48" />
             <span class="swap-token-symbol" id="swap-symbol-in">ETH</span>
-            <svg class="swap-token-caret" width="12" height="12" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
+          </div>
         </div>
         <div class="swap-field-balance">
           <span>Balance: <span id="swap-balance-in">—</span></span>
@@ -59,12 +95,14 @@ import { SITE_TITLE } from '../consts';
             readonly
             tabindex="-1"
           />
-          <button class="swap-token-select" id="swap-select-out" type="button">
+          <div class="swap-token-badge-static" id="swap-badge-out">
+            <img class="swap-token-logo" id="swap-logo-out"
+                 src="https://assets.trustwalletapp.com/blockchains/robinhoodchain/assets/0x50be7832849efedb15611799074fcc409522f27a/logo.png"
+                 data-fallback="/android-chrome-192x192.png"
+                 onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}"
+                 alt="" width="48" height="48" />
             <span class="swap-token-symbol" id="swap-symbol-out">GW</span>
-            <svg class="swap-token-caret" width="12" height="12" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
+          </div>
         </div>
         <div class="swap-field-balance">
           <span>Balance: <span id="swap-balance-out">—</span></span>
@@ -97,31 +135,7 @@ import { SITE_TITLE } from '../consts';
     </div>
   </div>
 
-  <!-- Token picker modal -->
-  <div class="swap-token-modal" id="swap-token-modal" hidden>
-    <div class="swap-token-modal-inner">
-      <div class="swap-token-modal-header">
-        <span class="swap-token-modal-title">Select a token</span>
-        <button class="swap-token-modal-close" id="swap-token-close" type="button" aria-label="Close">×</button>
-      </div>
-      <div class="swap-token-search">
-        <input
-          class="swap-token-search-input"
-          id="swap-token-search"
-          type="text"
-          placeholder="Search name or paste address"
-          autocomplete="off"
-          spellcheck="false"
-        />
-      </div>
-      <div class="swap-token-list" id="swap-token-list"></div>
-    </div>
-  </div>
-
-  <!-- is:global so dynamically-created elements (token picker options built
-       via createElement) also get styled. Astro's default scoping adds a
-       data-astro-cid attr that JS-created elements don't carry, leaving them
-       unstyled (browser default = black text). -->
+  <!-- is:global so dynamically-created elements also get styled. -->
   <style is:global>@import '../styles/pages/swap.css';</style>
 </HomeLayout>
 
@@ -129,11 +143,8 @@ import { SITE_TITLE } from '../consts';
   // Swap page controller. Lazy-loads src/scripts/swap.ts (which pulls viem) so
   // the heavy bundle only downloads on /swap. Mirrors the wallet.ts lazy pattern.
   // All on-chain calls are client-side (site output is 'static').
-
-  // --- HTML escape helper (prevents XSS from token symbols/names in innerHTML) ---
-  function esc(s: string): string {
-    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-  }
+  // This page swaps exactly one pair — ETH ↔ $GW — so there's no token picker:
+  // the fields are fixed and the flip button switches direction.
 
   let swapModPromise: Promise<typeof import('../scripts/swap')> | null = null;
   function loadSwap(): Promise<typeof import('../scripts/swap')> {
@@ -150,21 +161,44 @@ import { SITE_TITLE } from '../consts';
   }
 
   // --- state -------------------------------------------------------------
+  // The swap is fixed to the ETH ↔ $GW pair. Logos are pulled from the Trust
+  // Wallet assets CDN — the same source wallets (MetaMask, Trust, 1inch…) use
+  // to render token icons. GW isn't in that registry yet, so it falls back to
+  // the in-repo GachaWiki brand icon (the file Blockscout registers as GW's
+  // icon) via the <img onerror> handler in the markup.
   interface SwapToken {
     address: string;
     symbol: string;
     decimals: number;
-    logoUri?: string;
+    logo: string;       // primary (Trust Wallet CDN)
+    logoFallback: string; // used if the CDN logo 404s
   }
-  // Defaults: ETH -> $GW. NATIVE_TOKEN sentinel = 0x0.
+  const TRUST = 'https://assets.trustwalletapp.com/blockchains/robinhoodchain';
+  // NATIVE sentinel = 0x0 (native ETH). $GW ERC-20 on Robinhood Chain.
   const NATIVE = '0x0000000000000000000000000000000000000000';
-  let tokenIn: SwapToken = { address: NATIVE, symbol: 'ETH', decimals: 18 };
-  let tokenOut: SwapToken = { address: '0x50bE7832849EFEdB15611799074FcC409522f27A', symbol: 'GW', decimals: 18 };
+  let tokenIn: SwapToken = {
+    address: NATIVE, symbol: 'ETH', decimals: 18,
+    // ETH is ETH on every chain — pull the canonical Ethereum logo, not the
+    // per-chain one.
+    logo: 'https://assets.trustwalletapp.com/blockchains/ethereum/info/logo.png',
+    logoFallback: '/favicon.ico',
+  };
+  let tokenOut: SwapToken = {
+    address: '0x50bE7832849EFEdB15611799074FcC409522f27A', symbol: 'GW', decimals: 18,
+    logo: `${TRUST}/assets/0x50be7832849efedb15611799074fcc409522f27a/logo.png`,
+    logoFallback: '/android-chrome-192x192.png', // in-repo GachaWiki brand icon (Blockscout's GW icon_url)
+  };
 
-  let tokenList: SwapToken[] = [];
-  let pickingFor: 'in' | 'out' | null = null;
   let quoteTimer: ReturnType<typeof setTimeout> | undefined;
   let currentQuote: { amountOut: bigint; impact: number; route: string } | null = null;
+
+  // --- slippage tolerance ------------------------------------------------
+  // Stored as a fraction (0.005 = 0.5%). Default 0.5%; caps the min-received
+  // calc and the on-chain minAmountOut so a swap reverts if the price moves
+  // more than this between quote and execution.
+  let slippagePct = 0.5; // percent, e.g. 0.5 = 0.5%
+  const SLIPPAGE_MIN = 0.01; // 0.01%
+  const SLIPPAGE_MAX = 50;   // 50% (above this is almost certainly a typo)
 
   // --- element refs ------------------------------------------------------
   const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
@@ -183,12 +217,14 @@ import { SITE_TITLE } from '../consts';
   const impactEl = $('swap-impact');
   const minReceivedEl = $('swap-min-received');
   const routeEl = $('swap-route');
-  const selectInBtn = $('swap-select-in');
-  const selectOutBtn = $('swap-select-out');
-  const tokenModal = $('swap-token-modal');
-  const tokenSearchEl = $<HTMLInputElement>('swap-token-search');
-  const tokenListEl = $('swap-token-list');
-  const tokenCloseBtn = $('swap-token-close');
+  const slippageCurrentEl = $('swap-slippage-current');
+  const settingsBtn = $('swap-settings-btn');
+  const settingsPopover = $('swap-settings-popover');
+  const slippageCustomEl = $<HTMLInputElement>('swap-slippage-custom');
+  const slippageWarnEl = $('swap-slippage-warn');
+  const slippagePresetEls = Array.from(document.getElementsByClassName('swap-slippage-preset')) as HTMLButtonElement[];
+  const logoInEl = $<HTMLImageElement>('swap-logo-in');
+  const logoOutEl = $<HTMLImageElement>('swap-logo-out');
 
   // --- helpers -----------------------------------------------------------
   function fmtAmount(bi: bigint, decimals: number): string {
@@ -210,6 +246,20 @@ import { SITE_TITLE } from '../consts';
   function updateTokenLabels() {
     symbolInEl.textContent = tokenIn.symbol;
     symbolOutEl.textContent = tokenOut.symbol;
+    // Swap the logos to match the (possibly flipped) direction. data-fallback is
+    // read by the <img onerror> in the markup so a 404 on the Trust CDN falls
+    // back to the local icon without a JS round-trip.
+    logoInEl.dataset.fallback = tokenIn.logoFallback;
+    logoOutEl.dataset.fallback = tokenOut.logoFallback;
+    logoInEl.src = tokenIn.logo;
+    logoOutEl.src = tokenOut.logo;
+  }
+
+  /** Min amount out for the current slippage tolerance: amountOut * (1 - pct/100).
+   *  Uses bps internally (pct → basis points, integer) for exact bigint math. */
+  function minReceivedFor(amountOut: bigint): bigint {
+    const keepBps = BigInt(Math.round(10000 - slippagePct * 100)); // e.g. 0.5% → 9950
+    return (amountOut * keepBps) / 10000n;
   }
 
   // --- quote (debounced) -------------------------------------------------
@@ -250,8 +300,8 @@ import { SITE_TITLE } from '../consts';
       rateEl.textContent = `1 ${tokenIn.symbol} ≈ ${rateNum ? rateNum.toPrecision(4) : '—'} ${tokenOut.symbol}`;
       impactEl.textContent = q.priceImpactPct > 0 ? `${q.priceImpactPct.toFixed(2)}%` : '—';
       impactEl.className = 'swap-detail-value' + (q.priceImpactPct >= 5 ? ' is-danger' : q.priceImpactPct >= 1 ? ' is-warning' : '');
-      // min received = 99.5% of quoted (0.5% slippage tolerance)
-      const minOut = (q.amountOut * 995n) / 1000n;
+      // min received = quoted output minus the user's slippage tolerance
+      const minOut = minReceivedFor(q.amountOut);
       minReceivedEl.textContent = `${fmtAmount(minOut, tokenOut.decimals)} ${tokenOut.symbol}`;
       routeEl.textContent = q.routeDescription;
       detailEl.hidden = false;
@@ -327,7 +377,14 @@ import { SITE_TITLE } from '../consts';
 
   // --- swap execution ----------------------------------------------------
   async function handleAction() {
-    if (!walletConnected) {
+    // Re-read the live connection state at click time rather than trusting the
+    // cached walletConnected flag, which can drift out of sync with the header
+    // button's separate subscription (e.g. user disconnects via the header
+    // dropdown — the swap's flag would still be true). getConnectedAddress()
+    // is the single source of truth from the AppKit singleton.
+    const { getConnectedAddress } = await loadWallet();
+    const liveAddr = getConnectedAddress();
+    if (!liveAddr) {
       // Trigger the header connect flow.
       const { openConnectModal, ensureRobinhoodChain } = await loadWallet();
       try {
@@ -339,15 +396,28 @@ import { SITE_TITLE } from '../consts';
       await refreshWalletState();
       return;
     }
+    // Reconcile the cached flag/address so balances + button stay correct.
+    if (connectedAccount !== liveAddr) {
+      connectedAccount = liveAddr;
+      walletConnected = true;
+      void refreshBalances();
+    }
 
     // Execute the swap.
     actionBtn.classList.add('is-loading');
     actionBtn.textContent = 'Working…';
     try {
+      // Ensure the wallet is on Robinhood Chain BEFORE building the tx — the
+      // connect flow checks this once, but a user can switch networks after
+      // connecting, which would submit the swap to the wrong chain and revert.
+      setStatus('Checking network…');
+      const { ensureRobinhoodChain } = await loadWallet();
+      await ensureRobinhoodChain().catch(() => {});
+
       const { parseUnits, executeSwap } = await loadSwap();
       const amountIn = parseUnits(amountInEl.value.trim(), tokenIn.decimals);
       if (!currentQuote) throw new Error('No quote');
-      const minOut = (currentQuote.amountOut * 995n) / 1000n; // 0.5% slippage
+      const minOut = minReceivedFor(currentQuote.amountOut);
       const result = await executeSwap(
         tokenIn.address as `0x${string}`,
         tokenOut.address as `0x${string}`,
@@ -366,180 +436,6 @@ import { SITE_TITLE } from '../consts';
     } finally {
       actionBtn.classList.remove('is-loading');
       updateActionButton();
-    }
-  }
-
-  // --- token picker modal ------------------------------------------------
-  function openPicker(forSide: 'in' | 'out') {
-    pickingFor = forSide;
-    tokenSearchEl.value = '';
-    renderTokenList('');
-    tokenModal.hidden = false;
-    tokenSearchEl.focus();
-  }
-
-  function closePicker() {
-    tokenModal.hidden = true;
-    pickingFor = null;
-  }
-
-  async function renderTokenList(query: string) {
-    tokenListEl.innerHTML = '';
-    const q = query.trim().toLowerCase();
-
-    // Show a loading state if the list isn't populated yet.
-    if (tokenList.length === 0) {
-      tokenListEl.innerHTML = '<div class="swap-token-option-empty">Loading tokens…</div>';
-    }
-
-    // Phase 1: load curated tokens. fetchCuratedTokens fetches Uniswap's
-    // official token list (100 stock tokens + metadata). One fetch, ~1s.
-    // loads, show the 3 defaults (ETH/GW/WETH) so the picker isn't empty.
-    if (tokenList.length <= 3) {
-      // Render defaults immediately (don't await anything).
-      if (tokenList.length === 0) {
-        try {
-          const { DEFAULT_TOKENS } = await loadSwap();
-          tokenList = DEFAULT_TOKENS.map(t => ({ address: t.address, symbol: t.symbol, decimals: t.decimals, logoUri: t.logoUri }));
-        } catch { /* ignore */ }
-      }
-
-      // Then fetch the full curated set (Uniswap's 100 tokens) in the background.
-      try {
-        const { fetchCuratedTokens } = await loadSwap();
-        const curated = await fetchCuratedTokens();
-        if (curated.length > tokenList.length) {
-          tokenList = curated.map(t => ({ address: t.address, symbol: t.symbol, decimals: t.decimals, logoUri: t.logoUri }));
-        }
-      } catch {
-        /* fall back to whatever we have */
-      }
-      if (!q) tokenListEl.innerHTML = '';
-    }
-
-    let candidates: SwapToken[] = [...tokenList];
-
-    // If the query looks like a contract address, resolve its metadata + prepend.
-    if (q.startsWith('0x') && q.length >= 40) {
-      try {
-        const { fetchTokenMeta } = await loadSwap();
-        const meta = await fetchTokenMeta(q as `0x${string}`);
-        candidates = [{ address: meta.address, symbol: meta.symbol, decimals: meta.decimals }, ...candidates];
-      } catch {
-        /* invalid address / not a token — ignore */
-      }
-    }
-
-    const filtered = q && !q.startsWith('0x')
-      ? candidates.filter(t => (t.symbol && t.symbol.toLowerCase().includes(q)) || t.address.toLowerCase().includes(q))
-      : candidates;
-
-    if (filtered.length === 0) {
-      tokenListEl.innerHTML = '<div class="swap-token-option-empty">No tokens found</div>';
-      return;
-    }
-
-    // Cap rendered DOM nodes at 150 for performance (76k tokens would freeze
-    // the browser). The search box narrows the list; with no query we show the
-    // top 150 (curated known tokens first, since they have full metadata).
-    const RENDER_LIMIT = 150;
-    const toRender = filtered.length > RENDER_LIMIT ? filtered.slice(0, RENDER_LIMIT) : filtered;
-
-    for (const tok of toRender) {
-      const btn = document.createElement('button');
-      btn.className = 'swap-token-option';
-      btn.type = 'button';
-      const isNative = tok.address.toLowerCase() === NATIVE.toLowerCase();
-      const shortAddr = isNative ? 'Native ETH' : tok.address.slice(0, 6) + '…' + tok.address.slice(-4);
-      const displaySymbol = tok.symbol || shortAddr;
-      const initial = (tok.symbol || '?').charAt(0).toUpperCase();
-      const addrLower = tok.address.toLowerCase();
-      // Token icon — clean pattern like Uniswap: ONE logo URL, badge fallback.
-      // The logoUri comes from Robinhood CDN (cdn.robinhood.com).
-      // logos). If it fails to load, the badge with the symbol initial shows.
-      const logoSrc = tok.logoUri;
-      let iconHtml;
-      if (logoSrc) {
-        iconHtml = `<img class="swap-token-icon" src="${esc(logoSrc)}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex'"><span class="swap-token-badge" style="display:none">${esc(initial)}</span>`;
-      } else {
-        iconHtml = `<span class="swap-token-badge">${esc(initial)}</span>`;
-      }
-      btn.innerHTML = `
-        ${iconHtml}
-        <span class="swap-token-info">
-          <span class="swap-token-option-symbol">${esc(displaySymbol)}</span>
-          <span class="swap-token-option-name">${esc(tok.symbol ? shortAddr : (tok.address === NATIVE ? 'Native' : 'Indexed'))}</span>
-        </span>
-        <span class="swap-token-option-balance" id="picker-bal-${esc(tok.address.slice(2, 8))}"></span>
-      `;
-      btn.addEventListener('click', () => {
-        if (pickingFor === 'in') {
-          tokenIn = tok;
-        } else if (pickingFor === 'out') {
-          tokenOut = tok;
-        }
-        // If this token came from the on-chain indexer (no symbol yet), resolve
-        // its metadata on-chain now so the UI shows the real symbol/decimals.
-        if (!tok.symbol) {
-          void resolveSelectedToken();
-        }
-        updateTokenLabels();
-        closePicker();
-        amountInEl.value = '';
-        amountOutEl.value = '';
-        detailEl.hidden = true;
-        currentQuote = null;
-        updateActionButton();
-        if (walletConnected) void refreshBalances();
-      });
-      tokenListEl.appendChild(btn);
-    }
-
-    // If the list was capped, show how many more exist.
-    if (filtered.length > RENDER_LIMIT) {
-      const more = document.createElement('div');
-      more.className = 'swap-token-option-empty';
-      more.textContent = `+${filtered.length - RENDER_LIMIT} more — search to narrow`;
-      tokenListEl.appendChild(more);
-    }
-
-    // Optionally fill in balances for the visible tokens (best-effort).
-    if (walletConnected && connectedAccount) {
-      void fillPickerBalances(toRender);
-    }
-  }
-
-  /** Best-effort: show each token's balance next to it in the picker. */
-  async function fillPickerBalances(tokens: SwapToken[]) {
-    try {
-      const { getBalance } = await loadSwap();
-      for (const tok of tokens.slice(0, 12)) {
-        const bal = await getBalance(tok.address as `0x${string}`, connectedAccount as `0x${string}`);
-        const el = document.getElementById(`picker-bal-${tok.address.slice(2, 8)}`);
-        if (el && bal > 0n) {
-          el.textContent = fmtAmount(bal, tok.decimals);
-        }
-      }
-    } catch {
-      /* rpc failure — skip balances */
-    }
-  }
-
-  /** Resolve on-chain metadata (symbol/decimals) for a token that came from
-   *  the indexer without metadata. Updates the active tokenIn/tokenOut + UI. */
-  async function resolveSelectedToken() {
-    const target = pickingFor === 'in' ? tokenIn : tokenOut;
-    if (!target || target.symbol) return;
-    try {
-      const { resolveToken } = await loadSwap();
-      const meta = await resolveToken(target.address as `0x${string}`);
-      target.symbol = meta.symbol;
-      target.decimals = meta.decimals;
-      updateTokenLabels();
-      if (walletConnected) void refreshBalances();
-    } catch {
-      target.symbol = target.symbol || target.address.slice(0, 6) + '…';
-      updateTokenLabels();
     }
   }
 
@@ -571,18 +467,71 @@ import { SITE_TITLE } from '../consts';
     }
   });
 
-  selectInBtn.addEventListener('click', () => openPicker('in'));
-  selectOutBtn.addEventListener('click', () => openPicker('out'));
-  tokenCloseBtn.addEventListener('click', closePicker);
-  tokenModal.addEventListener('click', (e) => {
-    if (e.target === tokenModal) closePicker();
-  });
-  tokenSearchEl.addEventListener('input', () => renderTokenList(tokenSearchEl.value));
   actionBtn.addEventListener('click', () => void handleAction());
+
+  // --- slippage UI -------------------------------------------------------
+  function setSlippageLabel() {
+    // Trim trailing zeros so 0.5 stays "0.5%" not "0.50%".
+    const label = `${Number(slippagePct.toFixed(2))}%`;
+    slippageCurrentEl.textContent = `Slippage: ${label}`;
+    // Reflect the active preset (if any) in the pill row + clear custom box.
+    const matchPct = slippagePresetEls.find(b => Number(b.dataset.slippage) === slippagePct);
+    slippagePresetEls.forEach(b => b.classList.toggle('is-active', b === matchPct));
+    slippageCustomEl.value = matchPct ? '' : String(slippagePct);
+  }
+
+  /** Validate + apply a slippage value from a raw string. Clamps to bounds and
+   *  warns on aggressive (>5%) values. Returns true if accepted. */
+  function applySlippage(raw: string): boolean {
+    const v = Number(raw);
+    if (!isFinite(v) || v <= 0) {
+      slippageWarnEl.textContent = 'Enter a positive number';
+      slippageWarnEl.hidden = false;
+      return false;
+    }
+    slippageWarnEl.hidden = true;
+    if (v > SLIPPAGE_MAX) { slippagePct = SLIPPAGE_MAX; }
+    else if (v < SLIPPAGE_MIN) { slippagePct = SLIPPAGE_MIN; }
+    else slippagePct = Math.round(v * 100) / 100; // 2dp
+    setSlippageLabel();
+    // Warn (don't block) on aggressive tolerances — common for low-liquidity pairs.
+    if (slippagePct > 5) {
+      slippageWarnEl.textContent = 'High slippage — your trade may be front-run.';
+      slippageWarnEl.hidden = false;
+    }
+    // Re-run the quote so the displayed "min received" reflects new tolerance.
+    scheduleQuote();
+    return true;
+  }
+
+  settingsBtn.addEventListener('click', () => {
+    const open = settingsPopover.hidden;
+    settingsPopover.hidden = !open;
+    settingsBtn.setAttribute('aria-expanded', String(open));
+  });
+  // Close the popover when clicking outside it. composedPath() is reliable for
+  // events retargeted through <svg>/<path> children of the gear button.
+  document.addEventListener('click', (e) => {
+    if (settingsPopover.hidden) return;
+    const path = e.composedPath();
+    if (!path.includes(settingsPopover) && !path.includes(settingsBtn)) {
+      settingsPopover.hidden = true;
+      settingsBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+  slippagePresetEls.forEach(btn => {
+    btn.addEventListener('click', () => applySlippage(btn.dataset.slippage!));
+  });
+  slippageCustomEl.addEventListener('input', () => {
+    // sanitize to digits + one dot
+    slippageCustomEl.value = slippageCustomEl.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+    applySlippage(slippageCustomEl.value);
+  });
 
   // --- init --------------------------------------------------------------
   async function init() {
     updateTokenLabels();
+    setSlippageLabel();
 
     // Subscribe to wallet changes (account switch / connect / disconnect) so
     // the page reacts without a reload. Kept off the critical path.
@@ -606,30 +555,6 @@ import { SITE_TITLE } from '../consts';
 
     // Eagerly preload the swap module so the first quote is instant.
     void loadSwap();
-
-    // Background-index the full on-chain token set (76k+). Doesn't block the
-    // UI — the curated list is already usable. When done, updates tokenList
-    // so the picker shows everything. Cached 24h after first run.
-    void backgroundIndexTokens();
-  }
-
-  /** Index all on-chain pools in the background; refresh tokenList when done. */
-  async function backgroundIndexTokens() {
-    try {
-      const { fetchTokenList } = await loadSwap();
-      const full = await fetchTokenList();
-      // Only replace if we got more tokens than the curated set.
-      if (full.length > tokenList.length) {
-        tokenList = full.map(t => ({ address: t.address, symbol: t.symbol, decimals: t.decimals, logoUri: t.logoUri }));
-        // If the picker is currently open, re-render with the full list.
-        const modal = document.getElementById('swap-token-modal');
-        if (modal && !modal.hasAttribute('hidden')) {
-          renderTokenList(tokenSearchEl.value);
-        }
-      }
-    } catch {
-      /* indexing failed — curated list stays, which is still usable */
-    }
   }
 
   if (document.readyState === 'loading') {

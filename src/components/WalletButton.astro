@@ -313,15 +313,6 @@ const EXPLORER_URL = 'https://robinhoodchain.blockscout.com';
   // Global state shared across instances — every button reflects this.
   let currentAddress: string | undefined;
   let balanceTimer: ReturnType<typeof setInterval> | undefined;
-  // True once the user has clicked Connect on this page. We don't reflect
-  // AppKit's background auto-restore until then, so the button stays
-  // "Connect Wallet" on every load (no flicker) until the user opts in.
-  let userClickedConnect = false;
-
-  // NOTE: we intentionally do NOT cache/restore the connected address across
-  // page loads. Auto-restore fought the reload lifecycle (no View Transitions
-  // here) and caused flicker; instead the button starts as "Connect Wallet"
-  // every load and one click silently reconnects if a session exists.
 
   /** Update one instance's DOM to reflect the current shared address. */
   async function refreshBalance(address: string, balanceEls: HTMLElement[]) {
@@ -460,7 +451,6 @@ const EXPLORER_URL = 'https://robinhoodchain.blockscout.com';
   // --- connect / disconnect / copy (global, triggered from any instance) --
 
   async function connect(triggerConnectBtn?: HTMLElement) {
-    userClickedConnect = true; // opt in to reflecting wallet state on this page
     triggerConnectBtn?.classList.add('is-loading');
     try {
       const {
@@ -471,10 +461,9 @@ const EXPLORER_URL = 'https://robinhoodchain.blockscout.com';
       } = await loadWallet();
       await getAppKit();
 
-      // If a wallet session still exists from a previous connect (common right
-      // after a page refresh), reconnect silently instead of re-showing the
-      // full wallet picker. The onWalletChange subscription then renders the
-      // connected pill. Only open the modal when there's no prior session.
+      // With auto-restore, an existing session is already reflected on load,
+      // so if the user still sees "Connect Wallet" there's no session — open
+      // the picker. (If a session exists, this is a no-op re-sync.)
       const existing = getConnectedAddress();
       if (!existing) {
         await openConnectModal();
@@ -484,8 +473,6 @@ const EXPLORER_URL = 'https://robinhoodchain.blockscout.com';
       // network. Non-fatal if the user declines.
       await ensureRobinhoodChain().catch(() => {});
 
-      // If we silently reconnected, render it now (onWalletChange may have
-      // already done so, but this guarantees the pill shows).
       const addr = getConnectedAddress();
       if (addr) {
         await syncAllConnected(addr);
@@ -498,9 +485,6 @@ const EXPLORER_URL = 'https://robinhoodchain.blockscout.com';
   }
 
   async function disconnect() {
-    // After an explicit disconnect, ignore background reconnects until the
-    // user clicks connect again.
-    userClickedConnect = false;
     try {
       const { disconnectWallet } = await loadWallet();
       await disconnectWallet();
@@ -594,13 +578,12 @@ const EXPLORER_URL = 'https://robinhoodchain.blockscout.com';
     window.addEventListener('scroll', repositionOpen, { passive: true });
     window.addEventListener('resize', repositionOpen);
 
-    // --- wallet subscription (no auto-restore on load) --------------------
-    // We deliberately do NOT auto-restore a previous connection on page load.
-    // The site has no View Transitions (every nav is a full reload), and
-    // AppKit's async session-restore caused a visible flicker no matter how we
-    // guarded it. Instead the button shows "Connect Wallet" immediately, and
-    // clicking it reconnects silently if a session still exists (one click,
-    // no modal) — clean and flicker-free. See connect() for the logic.
+    // --- wallet subscription (auto-restore on load) ------------------------
+    // The button reflects the real wallet session on every page load. This
+    // keeps the header in sync with dApp pages (e.g. /swap) that also read the
+    // session, so the two never disagree about connected state. AppKit's
+    // session restore is async, so there may be a brief flash from
+    // "Connect Wallet" → address pill; we accept that for consistency.
     const idle = (cb: () => void) => {
       if ('requestIdleCallback' in window) {
         (window as Window).requestIdleCallback(cb, { timeout: 3000 });
@@ -612,18 +595,18 @@ const EXPLORER_URL = 'https://robinhoodchain.blockscout.com';
     idle(() => {
       void (async () => {
         try {
-          const { getAppKit, onWalletChange } = await loadWallet();
+          const { getAppKit, onWalletChange, getConnectedAddress } = await loadWallet();
           await getAppKit();
 
-          // Per the user's request, do NOT auto-restore on page load — the
-          // button stays "Connect Wallet" until they click. AppKit may still
-          // auto-restore the session in the background (so a click reconnects
-          // instantly), but we ignore those events until the user has opted in
-          // by clicking connect at least once on this page.
+          // Reflect any existing session immediately (auto-restore).
+          const existing = getConnectedAddress();
+          if (existing) {
+            void syncAllConnected(existing);
+          }
+
+          // React to connect / account switch / disconnect going forward.
           onWalletChange(state => {
             if (state.status === 'connecting' || state.status === 'reconnecting') return;
-            // Only reflect connected state after an explicit user click.
-            if (!userClickedConnect) return;
             if (state.isConnected && state.address) {
               void syncAllConnected(state.address);
             } else {
