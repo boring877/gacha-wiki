@@ -1,6 +1,6 @@
 ---
 // Site-wide banner announcing the GachaWiki ($GW) token launch.
-// Token is LIVE on Robinhood Chain (4663). The banner links to the launchpad
+// Token is LIVE on Robinhood Chain (4663). The banner links to the /swap page
 // and shows a LIVE $GW price + market cap chip, fetched from DexScreener's
 // free API (no key required, Robinhood Chain supported).
 // The interactive Connect Wallet flow lives in the header (WalletButton.astro).
@@ -8,13 +8,13 @@
 // reads as a natural part of the chrome, not a foreign element.
 // Rendered in HomeLayout.astro (below the Header) so it shows on every page.
 // To take down: remove this component and its import in HomeLayout.astro.
-const LAUNCH_URL = 'https://www.ponsfamily.com/launchpad/0x50bE7832849EFEdB15611799074FcC409522f27A';
+const SWAP_URL = '/swap';
 // Full contract address for verification (shown shortened in the banner)
 const CA = '0x50bE7832849EFEdB15611799074FcC409522f27A';
 const CA_SHORT = '0x50bE…f27A';
 ---
 
-<a class="token-banner" href={LAUNCH_URL} target="_blank" rel="noopener noreferrer" aria-label="GachaWiki ($GW) token is now live on Robinhood Chain — view token">
+<a class="token-banner" href={SWAP_URL} aria-label="GachaWiki ($GW) token is now live on Robinhood Chain — swap now">
   <div class="token-banner-inner">
     <span class="token-badge">
       <span class="token-dot" aria-hidden="true"></span>
