@@ -6,7 +6,7 @@ export const info = {
   "name": "Beautia",
   "displayName": "Beautia",
   "baseName": "Beautia",
-  "title": null,
+  "title": "The Health-Conscious Paladin of Love and Beauty",
   "rarity": "SR",
   "element": "Mind",
   "role": "Support",
@@ -23,7 +23,7 @@ export const info = {
     "Debuff"
   ],
   "image": "Beautia",
-  "introduction": "Middle Row、Magical、Support",
+  "introduction": "Fat is the ultimate enemy! A woman's lifelong foe! A shapely figure is justice! And to uphold justice, exercise is essential! Come on—let's work hard and get in shape together",
   "profile": {
     "height": "179cm",
     "bust": "118cm (M Cup)",

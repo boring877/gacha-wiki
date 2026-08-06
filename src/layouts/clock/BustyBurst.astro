@@ -247,34 +247,14 @@ const currentDateString = now.toLocaleDateString('en-US', dateOptions);
                           </div>
                         </div>
                         <div class="timer-card-subtitle">
-                          {game.maintenance.subtitle || 'No scheduled maintenance'}
+                          Recurring weekly — every Tuesday
                         </div>
                         <div class="timer-card-content">
-                          <!-- Maintenance Start Timer -->
-                          <div
-                            class="maintenance-item"
-                            id="maintenanceStartItem"
-                            style="display: none;"
-                          >
-                            <div class="maintenance-name" id="maintenanceStartLabel">
-                              Until Start
-                            </div>
-                            <div class="maintenance-time" id="maintenanceStartTime">--:--:--</div>
-                          </div>
-                          <!-- Maintenance End Timer -->
-                          <div
-                            class="maintenance-item"
-                            id="maintenanceEndItem"
-                            style="display: none;"
-                          >
-                            <div class="maintenance-name" id="maintenanceEndLabel">
-                              Servers Back
-                            </div>
-                            <div class="maintenance-time" id="maintenanceEndTime">--:--:--</div>
-                          </div>
-                          <!-- No Maintenance Message -->
-                          <div class="no-maintenance" id="noMaintenanceMessage">
-                            <div class="maintenance-name">No scheduled maintenance</div>
+                          <!-- Recurring Weekly Maintenance (every Tuesday 4:00 UTC) -->
+                          <div class="maintenance-item recurring-maintenance-item">
+                            <div class="maintenance-name">Next Weekly Maintenance</div>
+                            <div class="maintenance-subtitle">Every Tuesday at 04:00 UTC (3 hrs)</div>
+                            <div class="maintenance-time" id="weeklyMaintenanceTime">--:--:--</div>
                           </div>
                         </div>
                       </div>
@@ -301,19 +281,6 @@ const currentDateString = now.toLocaleDateString('en-US', dateOptions);
                           <div class="launch-counter">
                             <div class="launch-days" id="newyearTime">---</div>
                             <div class="launch-date">January 1st</div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- PI Busty Day Timer Card -->
-                      <div class="timer-card pi-busty-day-card">
-                        <div class="timer-card-header">
-                          <div class="bb-timer-card-title">PI Busty Day - Days Until</div>
-                        </div>
-                        <div class="launch-card-content">
-                          <div class="launch-counter">
-                            <div class="launch-days" id="piBustyDayTime">---</div>
-                            <div class="launch-date" id="piBustyDayDate">8th, 18th, 28th</div>
                           </div>
                         </div>
                       </div>
@@ -362,6 +329,37 @@ const currentDateString = now.toLocaleDateString('en-US', dateOptions);
                   </div>
                 </div>
               </div>
+            </div>
+
+            <!-- Busty Day Feature Section -->
+            <div class="master-clock-container">
+              <section class="busty-day-section">
+                <div class="busty-day-card">
+                  <div class="busty-day-banner-wrap">
+                    <img
+                      class="busty-day-banner-img"
+                      src="/images/games/Busty_Burst/events/oppaimonthday.png"
+                      alt="Busty Day - Burst Month event bonuses on the 8th, 18th, and 28th"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="busty-day-info">
+                    <h2 class="busty-day-title">BUSTY Day</h2>
+                    <p class="busty-day-subtitle">
+                      Every <strong>8th, 18th &amp; 28th</strong> of the month
+                    </p>
+                    <div class="busty-day-countdown-box">
+                      <div class="busty-day-countdown-label">Next Busty Day in</div>
+                      <div class="busty-day-countdown-value" id="bustyDayCountdown">---</div>
+                      <div class="busty-day-countdown-date" id="bustyDayDate">8th, 18th, 28th</div>
+                    </div>
+                    <p class="busty-day-desc">
+                      In Japanese number wordplay, <strong>8</strong> reads as <em>oppai</em> — making the 8th
+                      the ultimate celebration day. Enjoy boosted bonuses every Busty Day!
+                    </p>
+                  </div>
+                </div>
+              </section>
             </div>
           </div>
         </main>

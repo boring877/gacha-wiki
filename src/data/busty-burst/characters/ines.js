@@ -6,7 +6,7 @@ export const info = {
   "name": "Ines",
   "displayName": "Ines",
   "baseName": "Ines",
-  "title": null,
+  "title": "The Busty Archer Who Pierces Magical Beasts",
   "rarity": "SSR",
   "element": "Dark",
   "role": "Attacker",
@@ -23,7 +23,7 @@ export const info = {
     "Disrupt"
   ],
   "image": "Ines",
-  "introduction": "Back Row、Physical、Attacker",
+  "introduction": "Those who can harvest the fangs and horns of magical beasts without damaging them and sell them to wealthy collectors for a handsome profit are known as Beast Huntresses. Ines serves as the team's liaison and provides support during battle. Although she had been active in the Kingdom of Dominion, she set her sights on Elron, where magical beasts appear more frequently, in search of larger medium-class prey. Upon arriving, she immediately sought an audience with the local lord. However...",
   "profile": {
     "height": "178cm",
     "bust": "116cm (O Cup)",

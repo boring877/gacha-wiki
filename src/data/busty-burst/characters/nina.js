@@ -6,7 +6,7 @@ export const info = {
   "name": "Nina",
   "displayName": "Nina",
   "baseName": "Nina",
-  "title": null,
+  "title": "The Witch Who Lost Her Confidence Through Repeated Failure",
   "rarity": "SSR",
   "element": "Water",
   "role": "Attacker",
@@ -22,7 +22,7 @@ export const info = {
     "Debuff"
   ],
   "image": "Nina",
-  "introduction": "Middle Row、Magical、Attacker",
+  "introduction": "\"Bring Ophelio back to the Village of Witches.\" Entrusted with the elder's command, Nina, Ophelio's junior, arrives in Elron. Having lost to Ophelio time and time again, Nina's confidence has gradually faded. Determined to succeed this time, she prepares every scheme and trick she can think of…—",
   "profile": {
     "height": "158cm",
     "bust": "100cm (H Cup)",

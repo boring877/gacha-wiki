@@ -6,7 +6,7 @@ export const info = {
   "name": "Fionore",
   "displayName": "Fionore",
   "baseName": "Fionore",
-  "title": null,
+  "title": "The Ageless Beauty Aunt, Eight Years Older",
   "rarity": "SSR",
   "element": "Light",
   "role": "Tank",
@@ -23,7 +23,7 @@ export const info = {
     "Taunt"
   ],
   "image": "Fionore",
-  "introduction": "Front Row、Physical、Tank",
+  "introduction": "After returning to the role of a Paladin for the first time in five years—eight years older than the protagonist, a beautiful and voluptuous woman whose age places her closer to that of an older sister—she officially resumes her duties as a Bottom Class lord. However, due to the injury of a Paladin, she is forced to take the field once again as a Paladin herself. What awaits her is a road filled with thorns and hardship.",
   "profile": {
     "height": "163cm",
     "bust": "106cm (K Cup)",

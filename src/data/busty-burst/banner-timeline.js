@@ -5,7 +5,221 @@
  */
 
 export const bannerTimelineData = [
-  // #22 - Lilirara Rate Up (May 26 - Jun 2) - CURRENT
+  // #35 - Beast Huntress / Eva, Ines, Collie (Aug 1 - Aug 15) - CURRENT
+  {
+    id: 'beast-huntress-2026',
+    title: '"Beast Huntress" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: 'Eva',
+        rarity: 'SSR',
+        type: 'Tank',
+      },
+      {
+        name: 'Ines',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Collie',
+        rarity: 'SR',
+        type: 'Attacker',
+      },
+    ],
+    startDate: '2026-08-01T00:00:00Z',
+    endDate: '2026-08-15T03:00:00Z',
+    description: '"Beast Huntress" Event Summon! New Paladin Rate Up! Eva, the One-Strike Busty Beauty of Dominion. Ines, the Busty Archer Who Pierces Magical Beasts. Collie, the Busty Beast Dismantler. Three Beast Huntresses travel to Elron in search of magical beasts—and something is following them.',
+    note: 'Burst Month Part.1 event. Eva (SSR Dark Physical Tank), Ines (SSR Dark Physical Attacker), and Collie (SR Wind Physical Attacker). New Paladins will be added to the Standard Banner after the event ends.',
+    status: 'current',
+    image: 'banner-beast-huntress',
+  },
+  // #34 - Burst Month / Oppai Month 2026 (Aug 1 - Aug 31) - CURRENT
+  {
+    id: 'burst-month-2026',
+    title: '"Burst Month" Special Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [],
+    startDate: '2026-08-01T00:00:00Z',
+    endDate: '2026-08-31T23:59:59Z',
+    description: 'August is the "Burst Month"! Divided into two parts: Part.1 (8/1 to 8/15) and Part.2 (8/16 to 8/31). Furthermore, there will be special events on 8/1, 8/18, and 8/28! Detailed information announced in-game on 8/1.',
+    note: 'Month-long celebration event. Part.1: Aug 1-15, Part.2: Aug 16-31. Special events on Aug 1, Aug 18, and Aug 28.',
+    status: 'current',
+    image: 'banner-burst-month',
+  },
+  // #33 - FANZINE 1st / Fresh Out of the Pool Artia (Jul 28 - Aug 4) - ENDED
+  {
+    id: 'fanzine-1st-2026',
+    title: '"FANZINE" 1st Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: '[Fresh Out of the Pool] Artia',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+    ],
+    startDate: '2026-07-28T04:00:00Z',
+    endDate: '2026-08-04T03:00:00Z',
+    description: '"FANZINE" 1st Event Summon! New Paladin Rate Up! [Fresh Out of the Pool] Artia, a member of the swim team at Private Elron Academy, devoting herself to early morning training with her underclassman boyfriend before the preliminary tournament.',
+    note: '[Fresh Out of the Pool] Artia (SSR Water Magic Attacker). Also features Competitive Battle MIND. Maintenance 2026/7/28 4:00-7:00 UTC.',
+    status: 'ended',
+    image: 'banner-fanzine-1st',
+  },
+  // #32 - Underboob Cheerleader (Jul 14 - Jul 28) - ENDED
+  {
+    id: 'underboob-cheerleader-2026',
+    title: '"Underboob Cheerleader" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: '[Underboob Cheerleader] Gemini',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+      {
+        name: '[Underboob Cheerleader] Vanessa',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+      {
+        name: '[Underboob Cheerleader] Henrietti',
+        rarity: 'SR',
+        type: 'Support',
+      },
+    ],
+    startDate: '2026-07-14T04:00:00Z',
+    endDate: '2026-07-28T03:00:00Z',
+    description: '"Underboob Cheerleader" Event Summon! Limited-Time Paladin Rate Up! Gemini, the Swing Dancer. Vanessa, the Thief Dancer. Henrietti, the Dance Appraiser. Three unlucky souls guided by Marina the fortune teller to a sacred festival dance.',
+    note: '[Underboob Cheerleader] Gemini (SSR Wind Physical Support), Vanessa (SSR Water Magic Support), and Henrietti (SR Mind Physical Support). New Paladins will be added to the Standard Banner after the event ends.',
+    status: 'ended',
+    image: 'banner-underboob-cheerleader',
+  },
+  // #31 - Burst FES / Abigail (Jul 7 - Jul 14) - ENDED
+  {
+    id: 'burst-fes-2026',
+    title: '"Burst FES" Special Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: 'Abigail',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+    ],
+    startDate: '2026-07-07T04:00:00Z',
+    endDate: '2026-07-14T03:00:00Z',
+    description: '"Burst FES" Special Event Summon! New Paladin Rate Up! Abigail, the Sharp-Tongued and Rude Lady Doctor, highly skilled in healing magic, herbal medicine, and the practice of medicine.',
+    note: 'Abigail (SSR Fire Physical Support). Also features Chapter 11 of the Main Story. Maintenance 2026/7/7 4:00-7:00 UTC.',
+    status: 'ended',
+    image: 'banner-burst-fes',
+  },
+  // #30 - Twin Witches / Nina (Jun 30 - Jul 7) - ENDED
+  {
+    id: 'twin-witches-2026',
+    title: '"Twin Witches" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: 'Nina',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+    ],
+    startDate: '2026-06-30T04:00:00Z',
+    endDate: '2026-07-07T03:00:00Z',
+    description: 'New event "Twin Witches" Summon! Limited-Time Paladin Rate Up! Nina, the Witch Who Lost Her Confidence Through Repeated Failure, Ophelio\'s junior sent to bring her back to the Village of Witches.',
+    note: 'Nina (SSR Water Magic Attacker). Also features rerun of "Beauty Witch · Party People☆" and Competitive Battle WIND. Maintenance 2026/6/30 4:00-7:00 UTC. Compensation: Crystals x100, AP x100.',
+    status: 'ended',
+    image: 'banner-twin-witches',
+  },
+  // #29 - Chapter 10 / Yaksha (Jun 23 - Jul 7) - ENDED
+  {
+    id: 'chapter-10-yaksha-2026',
+    title: 'Main Story Chapter 10 Open Pick Up Summon',
+    bannerType: 'new',
+    featuredPaladins: [
+      {
+        name: 'Yaksha',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+    ],
+    startDate: '2026-06-23T04:00:00Z',
+    endDate: '2026-07-07T03:00:00Z',
+    description: 'Main Story Chapter 10 Open Pick Up Summon! New Paladin Rate Up! Yaksha, the Forgotten Assassin, the most skilled assassin among Shura\'s ranks.',
+    note: 'Yaksha (SSR Dark Physical Attacker). Also features HARD difficulty for "Fat is Justice—No, the Devil" and rerun of "Blade of Judgment". Maintenance 2026/6/23 4:00-7:00 UTC.',
+    status: 'ended',
+    image: 'banner-chapter-10-yaksha',
+  },
+  // #25 - Fat is Justice—No, the Devil / Half Anniversary 3rd (Jun 16 - Jun 23) - ENDED
+  {
+    id: 'fat-is-justice-2026',
+    title: '"Fat is Justice—No, the Devil" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: 'Raoul',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Cluul',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Beautia',
+        rarity: 'SR',
+        type: 'Support',
+      },
+    ],
+    startDate: '2026-06-16T04:00:00Z',
+    endDate: '2026-06-23T03:00:00Z',
+    description: 'New event "Fat is Justice—No, the Devil" Summon! Limited-Time Paladin Rate Up! Raoul, the Chubby and Adorable Twin Paladin. Cluul, the Chubby and Stoic Twin Paladin. Beautia, the Health-Conscious Paladin of Love and Beauty.',
+    note: 'Half Anniversary 3rd event. Raoul (SSR Mind Magic Attacker), Cluul (SSR Mind Magic Attacker), and Beautia (SR Mind Physical Support). Also features Competitive Battle MIND. Maintenance 2026/6/16 4:00-7:00 UTC. Compensation: Crystals x100, AP x100.',
+    status: 'ended',
+    image: 'banner-fat-is-justice',
+  },
+  // #24 - Project: Bunny / Half Anniversary 2nd (Jun 9 - Jun 23) - CURRENT
+  {
+    id: 'project-bunny-2026',
+    title: '"Project: Bunny" Anniversary Limited Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: '[Sweet Bunny] Artia',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+    ],
+    startDate: '2026-06-09T04:00:00Z',
+    endDate: '2026-06-23T03:00:00Z',
+    description: 'Anniversary Limited Event "Project: Bunny" Summon! Limited-Time Paladin Rate Up! [Sweet Bunny] Artia, who joins the Half Anniversary surprise celebration at the last minute.',
+    note: 'Half Anniversary 2nd event. [Sweet Bunny] Artia (SSR Mind Magic Support). Maintenance 2026/6/9 4:00-7:00 UTC.',
+    status: 'current',
+    image: 'banner-project-bunny',
+  },
+  // #23 - Half Anniversary / Fionore (Jun 2 - Jun 9) - ENDED
+  {
+    id: 'half-anniversary-fionore-2026',
+    title: '"Half Anniversary" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: 'Fionore',
+        rarity: 'SSR',
+        type: 'Tank',
+      },
+    ],
+    startDate: '2026-06-02T04:00:00Z',
+    endDate: '2026-06-09T03:00:00Z',
+    description: 'Half Anniversary Event Summon! Limited-Time Paladin Rate Up! Fionore, the Ageless Beauty Aunt Eight Years Older, who returns to the role of Paladin after five years.',
+    note: 'Half Anniversary 1st event. Fionore (SSR Light Physical Tank). Also features Tower of Trials "Resurrection of Mother\'s Milk", Competitive Battle WATER, and new Season Pass. Maintenance 2026/6/2 4:00-7:30 UTC.',
+    status: 'ended',
+    image: 'banner-half-anniversary-fionore',
+  },
+  // #22 - Lilirara Rate Up (May 26 - Jun 2) - ENDED
   {
     id: 'lilirara-2026',
     title: 'Lilirara Rate Up Summon',
@@ -21,7 +235,7 @@ export const bannerTimelineData = [
     endDate: '2026-06-02T03:00:00Z',
     description: 'Lilirara Rate Up Summon! New Paladin Rate Up! Lilirara, the Sweet-Toothed Leopard Beastgirl.',
     note: 'Lilirara (SSR Wind Physical Tank). New Paladin will be added to the Standard Banner after the event ends.',
-    status: 'current',
+    status: 'ended',
     image: 'banner-lilirara',
   },
   // #21 - Lilith Rate Up (May 19 - May 26) - ENDED
@@ -649,6 +863,30 @@ export const seasonalCharactersData = [
     status: 'current',
   },
 ];
+
+/**
+ * Compute banner status from dates relative to now (UTC).
+ * - 'upcoming' if start date is in the future
+ * - 'current' if now is between start and end date
+ * - 'ended' if end date has passed
+ */
+function computeStatus(banner) {
+  const now = Date.now();
+  const start = new Date(banner.startDate).getTime();
+  const end = new Date(banner.endDate).getTime();
+  if (now < start) return 'upcoming';
+  if (now >= start && now <= end) return 'current';
+  return 'ended';
+}
+
+// Overwrite hardcoded status with date-derived status for every banner
+bannerTimelineData.forEach(banner => {
+  banner.status = computeStatus(banner);
+});
+// Also apply to seasonal characters
+seasonalCharactersData.forEach(season => {
+  season.status = computeStatus(season);
+});
 
 /**
  * Get all banners sorted by start date (newest first)

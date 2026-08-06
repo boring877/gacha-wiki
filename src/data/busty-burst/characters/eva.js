@@ -6,7 +6,7 @@ export const info = {
   "name": "Eva",
   "displayName": "Eva",
   "baseName": "Eva",
-  "title": null,
+  "title": "The One-Strike Busty Beauty of Dominion",
   "rarity": "SSR",
   "element": "Dark",
   "role": "Tank",
@@ -23,7 +23,7 @@ export const info = {
     "Taunt"
   ],
   "image": "Eva",
-  "introduction": "Front Row、Physical、Tank",
+  "introduction": "A Beast Huntress is someone who hunts magical beasts and sells their valuable fangs and horns to wealthy collectors abroad. Eva is one of these elite hunters. Her specialty is bringing down magical beasts with a single decisive blow while leaving their fangs and horns completely undamaged. Though rough around the edges and blunt in both attitude and speech, her skills are second to none. Together with Ines and the others, she travels to Elron, where magical beasts have been appearing frequently. Unbeknownst to them, however, a group of men has been quietly following their every move...",
   "profile": {
     "height": "146cm",
     "bust": "103cm (O Cup)",
