@@ -154,9 +154,9 @@ import { SITE_TITLE } from '../consts';
       <div class="swap-mode" id="swap-mode-alerts" role="tabpanel" hidden>
         <!-- Hero: current price (the reference point, so it's the most prominent) -->
         <div class="swap-alerts-hero">
-          <span class="swap-alerts-hero-label">GW now</span>
+          <span class="swap-alerts-hero-label">Price</span>
           <span class="swap-alerts-hero-value" id="alerts-price">—</span>
-          <span class="swap-alerts-hero-sub" id="alerts-hero-sub">live price</span>
+          <span class="swap-alerts-hero-sub" id="alerts-hero-sub">current GW price</span>
         </div>
 
         <!-- Create alert: distinct section card with a heading -->
@@ -169,7 +169,7 @@ import { SITE_TITLE } from '../consts';
             <button class="swap-alerts-dir" type="button" data-dir="down">below</button>
           </div>
 
-          <label class="swap-alerts-field-label" for="alerts-target">Target price</label>
+          <label class="swap-alerts-field-label" for="alerts-target">The target price for alert</label>
           <div class="swap-alerts-amount">
             <span class="swap-alerts-amount-prefix">$</span>
             <input

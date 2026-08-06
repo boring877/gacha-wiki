@@ -335,6 +335,13 @@
   cursor: wait;
 }
 
+/* The "Create alert" button: force a solid, unmistakable amber so it never
+   reads as a washed-out/cool tint. */
+#alerts-create-btn {
+  background: #ffb74d;
+  color: #1c1c1c;
+}
+
 /* Status / error message */
 .swap-status {
   margin-top: 0.75rem;
@@ -386,7 +393,7 @@
 
 /* --- Price alerts panel ------------------------------------------------ */
 /* HERO: the live price — the most prominent element, since it's the reference
-   point users compare their target against. Big, centered, with a gradient. */
+   point users compare their target against. Big, centered. Solid background. */
 .swap-alerts-hero {
   display: flex;
   flex-direction: column;
@@ -394,7 +401,7 @@
   gap: 0.15rem;
   padding: 1.4rem 1rem;
   margin-bottom: 1.1rem;
-  background: linear-gradient(160deg, rgba(255, 183, 77, 0.12), rgba(0, 172, 193, 0.06));
+  background: rgba(255, 183, 77, 0.08);
   border: 1px solid rgba(255, 183, 77, 0.3);
   border-radius: 1rem;
   text-align: center;
