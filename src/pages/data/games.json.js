@@ -12,7 +12,6 @@ import { starSaviorConfig } from '../../data/star-savior/star-savior.js';
 import { taimaninSquadConfig } from '../../data/taimanin-squad/taimanin-squad.js';
 import { lastOriginGlobalConfig } from '../../data/last-origin-global/last-origin-global.js';
 import { makeDramaConfig } from '../../data/make-drama/make-drama.js';
-import { desireImmortalRealmConfig } from '../../data/desire-immortal-realm/desire-immortal-realm.js';
 
 export const prerender = true;
 
@@ -347,28 +346,6 @@ export async function GET() {
       apiEndpoints: [],
       note: 'Guides available on the wiki - no structured JSON data API yet',
       guides: (makeDramaConfig.guides || []).map(g => ({
-        category: g.category,
-        description: g.description,
-        pages: [{ title: g.title, url: g.url }],
-      })),
-    },
-
-    // Desire Immortal Realm (guides only - no JSON data API yet)
-    {
-      id: 'desire-immortal-realm',
-      name: 'Desire Immortal Realm',
-      japaneseName: '欲界仙途',
-      slug: 'desire-immortal-realm',
-      status: 'active',
-      genre: 'Xianxia Cultivation Tower-Defense Gacha',
-      description: desireImmortalRealmConfig.gameInfo.description,
-      wikiUrl: '/guides/desire-immortal-realm/',
-      contentAvailable: {
-        characters: true,
-      },
-      apiEndpoints: [],
-      note: 'Guides available on the wiki - no structured JSON data API yet',
-      guides: (desireImmortalRealmConfig.guides || []).map(g => ({
         category: g.category,
         description: g.description,
         pages: [{ title: g.title, url: g.url }],
