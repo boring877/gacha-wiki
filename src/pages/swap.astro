@@ -133,6 +133,18 @@ import { SITE_TITLE } from '../consts';
       <button class="swap-action-btn" id="swap-action-btn" type="button" disabled>Connect Wallet</button>
       <div class="swap-status" id="swap-status"></div>
     </div>
+
+    <!-- Live GW/WETH price chart (DexScreener embed). Same data source as the
+         token banner. Loads on every /swap visit but is a separate iframe, so
+         it doesn't block the swap UI. -->
+    <div class="swap-chart-card">
+      <iframe
+        class="swap-chart-frame"
+        src="https://dexscreener.com/robinhood/0xa9ffaf245686212f7c6f73e7ccd1592e9a5b4923?embed=1&theme=dark"
+        title="GW / WETH live chart"
+        loading="lazy"
+      ></iframe>
+    </div>
   </div>
 
   <!-- is:global so dynamically-created elements also get styled. -->
