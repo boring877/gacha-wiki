@@ -11,6 +11,9 @@ import { SITE_TITLE } from '../consts';
     <h1 class="swap-page-title">Swap</h1>
     <p class="swap-page-subtitle">Trade tokens on Robinhood Chain · Powered by Uniswap V3</p>
 
+    <!-- Two-column layout on wide screens: swap card (left) + live chart (right).
+         Stacks vertically on mobile. -->
+    <div class="swap-layout">
     <div class="swap-card">
       <!-- Settings row: slippage tolerance -->
       <div class="swap-settings-row">
@@ -135,15 +138,17 @@ import { SITE_TITLE } from '../consts';
     </div>
 
     <!-- Live GW/WETH price chart (DexScreener embed). Same data source as the
-         token banner. Loads on every /swap visit but is a separate iframe, so
-         it doesn't block the swap UI. -->
+         token banner. tab=chart opens straight on the candlestick chart (the
+         embed's default includes info/txns tabs; this lands on chart first).
+         Loads lazily so it doesn't block the swap UI. -->
     <div class="swap-chart-card">
       <iframe
         class="swap-chart-frame"
-        src="https://dexscreener.com/robinhood/0xa9ffaf245686212f7c6f73e7ccd1592e9a5b4923?embed=1&theme=dark"
+        src="https://dexscreener.com/robinhood/0xa9ffaf245686212f7c6f73e7ccd1592e9a5b4923?embed=1&theme=dark&tab=chart"
         title="GW / WETH live chart"
         loading="lazy"
       ></iframe>
+    </div>
     </div>
   </div>
 
