@@ -351,6 +351,209 @@
   color: var(--success-color, #4caf50);
 }
 
+/* --- Mode tabs (Swap | Alerts) ----------------------------------------- */
+.swap-tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.swap-tab {
+  flex: 1;
+  padding: 0.55rem 0.5rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-inverse, #fff);
+  opacity: 0.5;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: -1px; /* overlap the row's bottom border */
+}
+
+.swap-tab.is-active {
+  opacity: 1;
+  border-bottom-color: var(--amber-glow, #ffb74d);
+  color: var(--amber-glow, #ffb74d);
+}
+
+.swap-mode[hidden] {
+  display: none;
+}
+
+/* --- Price alerts panel ------------------------------------------------ */
+.swap-alerts-current {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.swap-alerts-current-label {
+  font-size: 0.78rem;
+  opacity: 0.6;
+}
+
+.swap-alerts-current-value {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--amber-glow, #ffb74d);
+  font-variant-numeric: tabular-nums;
+}
+
+.swap-alerts-create {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.swap-alerts-direction {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.swap-alerts-dir {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-inverse, #fff);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.swap-alerts-dir.is-active {
+  background: rgba(255, 183, 77, 0.15);
+  border-color: var(--amber-glow, #ffb74d);
+  color: var(--amber-glow, #ffb74d);
+}
+
+.swap-alerts-amount {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  padding: 0.7rem 0.9rem;
+}
+
+.swap-alerts-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-inverse, #fff);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.swap-alerts-input::placeholder {
+  color: var(--text-inverse, #fff);
+  opacity: 0.3;
+}
+
+.swap-alerts-unit {
+  font-size: 0.85rem;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+.swap-alerts-list-wrap {
+  margin-top: 1.1rem;
+}
+
+.swap-alerts-list-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.5;
+  margin-bottom: 0.5rem;
+}
+
+.swap-alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.swap-alerts-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.75rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.6rem;
+  font-size: 0.85rem;
+}
+
+.swap-alerts-row.is-fired {
+  border-color: rgba(76, 175, 80, 0.4);
+  background: rgba(76, 175, 80, 0.06);
+}
+
+.swap-alerts-row-cond {
+  flex: 1;
+  min-width: 0;
+}
+
+.swap-alerts-row-cond strong {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+.swap-alerts-row-state {
+  font-size: 0.74rem;
+  opacity: 0.6;
+}
+
+.swap-alerts-row.is-fired .swap-alerts-row-state {
+  color: var(--success-color, #4caf50);
+  opacity: 1;
+}
+
+.swap-alerts-del {
+  background: none;
+  border: none;
+  color: var(--text-inverse, #fff);
+  opacity: 0.4;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0.3rem;
+}
+
+.swap-alerts-del:hover {
+  opacity: 0.9;
+  color: #ff7676;
+}
+
+.swap-alerts-empty {
+  padding: 1rem 0.5rem;
+  text-align: center;
+  font-size: 0.82rem;
+  opacity: 0.4;
+}
+
+/* Alert-fired flash on the whole card. */
+.swap-card.is-alert-flash {
+  border-color: var(--success-color, #4caf50);
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.4), 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
 /* --- Live chart (DexScreener embed) ------------------------------------ */
 /* Two-column layout: swap card on the left, chart on the right. Sized up so
    neither panel feels small — wider overall, taller chart. Stacks on narrow

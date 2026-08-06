@@ -15,6 +15,14 @@ import { SITE_TITLE } from '../consts';
          Stacks vertically on mobile. -->
     <div class="swap-layout">
     <div class="swap-card">
+      <!-- Mode tabs: Swap (default) | Price Alerts -->
+      <div class="swap-tabs" role="tablist">
+        <button class="swap-tab is-active" id="swap-tab-swap" role="tab" aria-selected="true" type="button">Swap</button>
+        <button class="swap-tab" id="swap-tab-alerts" role="tab" aria-selected="false" type="button">Alerts</button>
+      </div>
+
+      <!-- ===== SWAP MODE ===== -->
+      <div class="swap-mode" id="swap-mode-swap" role="tabpanel">
       <!-- Settings row: slippage tolerance -->
       <div class="swap-settings-row">
         <span class="swap-settings-current" id="swap-slippage-current">Slippage: 0.5%</span>
@@ -135,6 +143,47 @@ import { SITE_TITLE } from '../consts';
       <!-- Action -->
       <button class="swap-action-btn" id="swap-action-btn" type="button" disabled>Connect Wallet</button>
       <div class="swap-status" id="swap-status"></div>
+      </div><!-- /swap-mode-swap -->
+
+      <!-- ===== ALERTS MODE =====
+           "Limit orders" can't execute on Robinhood Chain (UniswapX has no
+           keeper here — verified 0 fills in 29M blocks), so this offers the
+           closest working thing: price alerts. The page polls the live GW
+           price and notifies the user when it crosses a target. No wallet
+           needed; alerts persist in localStorage. -->
+      <div class="swap-mode" id="swap-mode-alerts" role="tabpanel" hidden>
+        <div class="swap-alerts-current">
+          <span class="swap-alerts-current-label">Current GW price</span>
+          <span class="swap-alerts-current-value" id="alerts-price">—</span>
+        </div>
+
+        <div class="swap-alerts-create">
+          <div class="swap-field-label">Notify me when GW goes</div>
+          <div class="swap-alerts-direction">
+            <button class="swap-alerts-dir is-active" type="button" data-dir="up">above</button>
+            <button class="swap-alerts-dir" type="button" data-dir="down">below</button>
+          </div>
+          <div class="swap-alerts-amount">
+            <input
+              class="swap-alerts-input"
+              id="alerts-target"
+              type="text"
+              inputmode="decimal"
+              placeholder="0.0000100"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <span class="swap-alerts-unit">USD</span>
+          </div>
+          <button class="swap-action-btn" id="alerts-create-btn" type="button">Create alert</button>
+          <div class="swap-status" id="alerts-status"></div>
+        </div>
+
+        <div class="swap-alerts-list-wrap">
+          <div class="swap-alerts-list-title">Active alerts</div>
+          <div class="swap-alerts-list" id="alerts-list"></div>
+        </div>
+      </div>
     </div>
 
     <!-- Live GW/WETH price chart (GeckoTerminal chart-only embed).
@@ -539,9 +588,198 @@ import { SITE_TITLE } from '../consts';
     btn.addEventListener('click', () => applySlippage(btn.dataset.slippage!));
   });
   slippageCustomEl.addEventListener('input', () => {
-    // sanitize to digits + one dot
+    // sanitize to allow only digits and one dot
     slippageCustomEl.value = slippageCustomEl.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
     applySlippage(slippageCustomEl.value);
+  });
+
+  // --- price alerts ------------------------------------------------------
+  // Limit orders can't execute on Robinhood Chain (UniswapX has no keeper),
+  // so we offer price alerts: poll the live GW USD price and fire a browser
+  // notification (+ page flash) when it crosses a user-set target. Alerts
+  // persist in localStorage; no wallet required.
+  const GW_ADDR = '0x50bE7832849EFEdB15611799074FcC409522f27A';
+  const PRICE_API = `https://api.dexscreener.com/latest/dex/tokens/${GW_ADDR}`;
+  const ALERTS_KEY = 'gacha-wiki:gw-price-alerts';
+
+  interface PriceAlert {
+    id: string;
+    dir: 'up' | 'down';   // notify when price goes above (up) or below (down)
+    target: number;       // USD
+    createdAt: number;
+    fired?: boolean;      // set once triggered so we don't re-fire
+  }
+
+  let alerts: PriceAlert[] = loadAlerts();
+  let alertDir: 'up' | 'down' = 'up';
+  let livePrice: number | null = null;
+  let pricePoll: ReturnType<typeof setInterval> | undefined;
+
+  const swapModeSwapEl = $('swap-mode-swap');
+  const swapModeAlertsEl = $('swap-mode-alerts');
+  const tabSwapEl = $<HTMLButtonElement>('swap-tab-swap');
+  const tabAlertsEl = $<HTMLButtonElement>('swap-tab-alerts');
+  const alertsPriceEl = $('alerts-price');
+  const alertsTargetEl = $<HTMLInputElement>('alerts-target');
+  const alertsCreateBtn = $<HTMLButtonElement>('alerts-create-btn');
+  const alertsStatusEl = $('alerts-status');
+  const alertsListEl = $('alerts-list');
+  const alertDirEls = Array.from(document.getElementsByClassName('swap-alerts-dir')) as HTMLButtonElement[];
+
+  function loadAlerts(): PriceAlert[] {
+    try {
+      const raw = localStorage.getItem(ALERTS_KEY);
+      if (raw) return JSON.parse(raw) as PriceAlert[];
+    } catch { /* ignore corrupt storage */ }
+    return [];
+  }
+
+  function saveAlerts() {
+    try { localStorage.setItem(ALERTS_KEY, JSON.stringify(alerts)); } catch { /* quota */ }
+  }
+
+  function setAlertsStatus(msg: string, kind: '' | 'error' | 'success' = '') {
+    alertsStatusEl.textContent = msg;
+    alertsStatusEl.className = 'swap-status' + (kind ? ` is-${kind}` : '');
+  }
+
+  /** Fetch the live GW USD price. Returns null on any failure. */
+  async function fetchGwPrice(): Promise<number | null> {
+    try {
+      const res = await fetch(PRICE_API);
+      if (!res.ok) return null;
+      const j = await res.json() as { pairs?: Array<{ priceUsd?: string }> };
+      const p = j.pairs?.[0]?.priceUsd;
+      return p ? Number(p) : null;
+    } catch {
+      return null;
+    }
+  }
+
+  /** Format a tiny USD price readably (GW is ~1e-5). */
+  function fmtUsd(n: number): string {
+    if (n === 0) return '$0';
+    if (n < 0.001) return `$${n.toPrecision(4)}`;
+    if (n < 1) return `$${n.toFixed(6)}`;
+    return `$${n.toLocaleString('en-US', { maximumFractionDigits: 4 })}`;
+  }
+
+  function renderAlerts() {
+    alertsListEl.innerHTML = '';
+    if (alerts.length === 0) {
+      const empty = document.createElement('div');
+      empty.className = 'swap-alerts-empty';
+      empty.textContent = 'No alerts yet — create one above.';
+      alertsListEl.appendChild(empty);
+      return;
+    }
+    for (const a of alerts) {
+      const row = document.createElement('div');
+      row.className = 'swap-alerts-row' + (a.fired ? ' is-fired' : '');
+      const word = a.dir === 'up' ? 'above' : 'below';
+      row.innerHTML =
+        `<span class="swap-alerts-row-cond">GW ${word} <strong>${fmtUsd(a.target)}</strong></span>` +
+        `<span class="swap-alerts-row-state">${a.fired ? '✓ triggered' : 'watching'}</span>` +
+        `<button class="swap-alerts-del" type="button" aria-label="Delete alert">×</button>`;
+      row.querySelector('.swap-alerts-del')!.addEventListener('click', () => {
+        alerts = alerts.filter(x => x.id !== a.id);
+        saveAlerts();
+        renderAlerts();
+      });
+      alertsListEl.appendChild(row);
+    }
+  }
+
+  /** Check all un-fired alerts against the latest price; fire on cross. */
+  function checkAlerts() {
+    if (livePrice == null) return;
+    let anyFired = false;
+    for (const a of alerts) {
+      if (a.fired) continue;
+      const crossed = a.dir === 'up' ? livePrice >= a.target : livePrice <= a.target;
+      if (crossed) {
+        a.fired = true;
+        anyFired = true;
+        fireAlert(a);
+      }
+    }
+    if (anyFired) {
+      saveAlerts();
+      renderAlerts();
+    }
+  }
+
+  /** Show a browser notification (if permitted) + flash the alerts panel. */
+  function fireAlert(a: PriceAlert) {
+    const word = a.dir === 'up' ? 'rose above' : 'dropped below';
+    const msg = `GW ${word} ${fmtUsd(a.target)} (now ${fmtUsd(livePrice ?? 0)})`;
+    setAlertsStatus(msg, 'success');
+    // OS-level notification (best-effort; requires permission).
+    if ('Notification' in window && Notification.permission === 'granted') {
+      try { new Notification('GachaWiki price alert', { body: msg }); } catch { /* ignore */ }
+    }
+    // In-page flash on the card.
+    const card = document.querySelector('.swap-card');
+    card?.classList.add('is-alert-flash');
+    setTimeout(() => card?.classList.remove('is-alert-flash'), 2500);
+  }
+
+  async function refreshPriceDisplay() {
+    const p = await fetchGwPrice();
+    if (p != null) {
+      livePrice = p;
+      alertsPriceEl.textContent = fmtUsd(p);
+      checkAlerts();
+    }
+  }
+
+  // --- alert tab wiring ---------------------------------------------------
+  function switchMode(mode: 'swap' | 'alerts') {
+    const isAlerts = mode === 'alerts';
+    tabSwapEl.classList.toggle('is-active', !isAlerts);
+    tabAlertsEl.classList.toggle('is-active', isAlerts);
+    tabSwapEl.setAttribute('aria-selected', String(!isAlerts));
+    tabAlertsEl.setAttribute('aria-selected', String(isAlerts));
+    swapModeSwapEl.hidden = isAlerts;
+    swapModeAlertsEl.hidden = !isAlerts;
+  }
+
+  tabSwapEl.addEventListener('click', () => switchMode('swap'));
+  tabAlertsEl.addEventListener('click', () => switchMode('alerts'));
+
+  alertDirEls.forEach(btn => {
+    btn.addEventListener('click', () => {
+      alertDirEls.forEach(b => b.classList.toggle('is-active', b === btn));
+      alertDir = btn.dataset.dir as 'up' | 'down';
+    });
+  });
+
+  alertsTargetEl.addEventListener('input', () => {
+    alertsTargetEl.value = alertsTargetEl.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+  });
+
+  alertsCreateBtn.addEventListener('click', async () => {
+    const v = Number(alertsTargetEl.value);
+    if (!isFinite(v) || v <= 0) {
+      setAlertsStatus('Enter a positive price', 'error');
+      return;
+    }
+    alerts.unshift({
+      id: Math.random().toString(36).slice(2, 10),
+      dir: alertDir,
+      target: v,
+      createdAt: Date.now(),
+    });
+    saveAlerts();
+    renderAlerts();
+    alertsTargetEl.value = '';
+    setAlertsStatus('Alert created', 'success');
+    // Ask for notification permission on first alert (browsers require a user gesture).
+    if ('Notification' in window && Notification.permission === 'default') {
+      try { await Notification.requestPermission(); } catch { /* ignore */ }
+    }
+    // Re-check immediately in case the price already crossed.
+    void refreshPriceDisplay();
   });
 
   // --- init --------------------------------------------------------------
@@ -571,6 +809,11 @@ import { SITE_TITLE } from '../consts';
 
     // Eagerly preload the swap module so the first quote is instant.
     void loadSwap();
+
+    // --- price alerts: render stored alerts + start polling ---
+    renderAlerts();
+    void refreshPriceDisplay(); // first fetch immediately
+    pricePoll = setInterval(refreshPriceDisplay, 30_000); // then every 30s
   }
 
   if (document.readyState === 'loading') {
