@@ -352,21 +352,23 @@
 }
 
 /* --- Live chart (DexScreener embed) ------------------------------------ */
-/* Two-column layout: swap card on the left, chart on the right. The chart
-   panel is wider (flex: 1.6) so the candles have room. Stacks on narrow
-   screens — see the responsive block below. */
+/* Two-column layout: swap card on the left, chart on the right. Sized up so
+   neither panel feels small — wider overall, taller chart. Stacks on narrow
+   screens (see the responsive block below). */
 .swap-layout {
   display: flex;
-  gap: 1.25rem;
-  align-items: flex-start;
+  gap: 1.5rem;
+  align-items: stretch; /* card + chart match the tallest panel's height */
   width: 100%;
-  max-width: 60rem;
+  max-width: 72rem; /* wider than before so both panels have room */
   justify-content: center;
 }
 
-/* Keep the swap card its fixed width on wide screens; let the chart grow. */
+/* Keep the swap card its fixed (now larger) width on wide screens; let the
+   chart grow. */
 @media (min-width: 900px) {
   .swap-card {
+    max-width: 34rem; /* was 28rem — more breathing room for the form */
     flex-shrink: 0;
     margin-bottom: 0;
   }
@@ -380,15 +382,23 @@
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  /* Match the card height-ish so the two panels line up nicely. */
-  min-height: 420px;
+  /* No fixed height: align-items:stretch on the row makes this match the card,
+     and the iframe fills it. */
+  display: flex;
+}
+
+/* On wide screens, give the chart a taller floor so it doesn't feel small. */
+@media (min-width: 900px) {
+  .swap-chart-card {
+    min-height: 560px;
+  }
 }
 
 .swap-chart-frame {
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 420px;
+  flex: 1;
   border: none;
 }
 
