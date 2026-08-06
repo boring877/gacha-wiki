@@ -33,10 +33,9 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Orbitron';
-  src: url('/fonts/orbitron-700.woff2') format('woff2');
-  font-weight: 400 900;
-  font-style: normal;
-  font-display: swap;
-}
+/* TODO: Orbitron self-host is temporarily disabled.
+   The previous public/fonts/orbitron-700.woff2 was a corrupt HTML file
+   (a saved 404 page), so weight 700 silently failed and fell back to
+   monospace. Drop a real orbitron-700.woff2 (or a variable-font woff2)
+   into public/fonts/ and re-add the @font-face block to restore it.
+   Until then, --font-accent ('Orbitron', monospace) resolves to monospace. */
