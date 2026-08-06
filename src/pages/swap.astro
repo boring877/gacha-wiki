@@ -164,15 +164,22 @@ import { SITE_TITLE } from '../consts';
 
         <!-- Create alert: distinct section card with a heading -->
         <div class="swap-alerts-create">
-          <div class="swap-alerts-create-title">Create alert</div>
-
-          <label class="swap-alerts-field-label" for="alerts-target">Notify me when GW goes</label>
-          <div class="swap-alerts-direction">
-            <button class="swap-alerts-dir is-active" type="button" data-dir="up">above</button>
-            <button class="swap-alerts-dir" type="button" data-dir="down">below</button>
+          <div class="swap-alerts-create-title">
+            <svg class="swap-alerts-create-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2a1 1 0 0 1 1 1v1.06a8 8 0 1 1-2 0V3a1 1 0 0 1 1-1Z" fill="currentColor"/>
+              <path d="M12 8a4 4 0 0 1 4 4v3l1.5 2.2a1 1 0 0 1-.8 1.6H7.3a1 1 0 0 1-.8-1.6L8 15v-3a4 4 0 0 1 4-4Z" fill="currentColor"/>
+              <path d="M10 20a2 2 0 1 0 4 0h-4Z" fill="currentColor"/>
+            </svg>
+            <span>Create alert</span>
           </div>
 
-          <label class="swap-alerts-field-label" for="alerts-target">The target price for alert</label>
+          <label class="swap-alerts-field-label" for="alerts-target">Direction</label>
+          <div class="swap-alerts-direction">
+            <button class="swap-alerts-dir is-active" type="button" data-dir="up">Notify when GW goes above</button>
+            <button class="swap-alerts-dir" type="button" data-dir="down">Notify when GW goes below</button>
+          </div>
+
+          <label class="swap-alerts-field-label" for="alerts-target">Target price (USD)</label>
           <div class="swap-alerts-amount">
             <span class="swap-alerts-amount-prefix">$</span>
             <input

@@ -455,35 +455,48 @@
   margin-bottom: 1.1rem;
 }
 
+/* Title row mirrors the hero treatment: icon + heading. */
 .swap-alerts-create-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-inverse, #fff);
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.swap-alerts-create-icon {
+  flex-shrink: 0;
+  color: var(--amber-glow, #ffb74d);
 }
 
 .swap-alerts-field-label {
-  font-size: 0.74rem;
+  display: block;
+  font-size: 0.78rem;
   font-weight: 600;
-  opacity: 0.6;
-  margin-bottom: -0.3rem;
+  opacity: 0.65;
+  margin-bottom: 0.35rem;
 }
 
+/* Direction options stack vertically since each spells out the full condition. */
 .swap-alerts-direction {
   display: flex;
+  flex-direction: column;
   gap: 0.4rem;
 }
 
 .swap-alerts-dir {
-  flex: 1;
-  padding: 0.55rem;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
   border-radius: 0.55rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.03);
   color: var(--text-inverse, #fff);
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 600;
+  text-align: left;
   cursor: pointer;
 }
 
