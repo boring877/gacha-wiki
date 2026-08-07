@@ -2,8 +2,9 @@
 import MakeDramaLayout from '../../layouts/make-drama/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { makeDramaConfig } from '../../data/make-drama/make-drama.js';
-import { Image } from 'astro:assets';
-import bgImg from '../../assetshttps://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/make-drama/logos/bg.jpg';
+
+// Background image served from Cloudflare R2
+const bgImg = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/make-drama/logos/bg.jpg';
 
 const { meta, gameInfo, story, categoryGroups } = makeDramaConfig;
 ---
