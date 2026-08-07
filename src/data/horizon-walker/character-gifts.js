@@ -11,7 +11,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'araha',
     name: 'Araha',
     rarity: 'SS',
-    image: '/images/games/horizon-walker/characters/Araha.jpg',
+    image: 'Araha.jpg',
     level5Bonus: {
       type: 'Ranged ATK',
       value: '10%',
@@ -52,7 +52,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'bella',
     name: 'Bella',
     rarity: 'S',
-    image: '/images/games/horizon-walker/characters/Bella.jpg',
+    image: 'Bella.jpg',
     level5Bonus: {
       type: 'Magic ATK',
       value: '10%',
@@ -85,7 +85,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'berga',
     name: 'Berga',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Berga.jpg',
+    image: 'Berga.jpg',
     level5Bonus: {
       type: 'Melee ATK',
       value: '10%',
@@ -126,7 +126,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'canisk',
     name: 'Canisk',
     rarity: 'S',
-    image: '/images/games/horizon-walker/characters/Canisk.jpg',
+    image: 'Canisk.jpg',
     favorites: [],
     likes: [],
   },
@@ -134,7 +134,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'cora',
     name: 'Cora',
     rarity: 'S',
-    image: '/images/games/horizon-walker/characters/Cora.jpg',
+    image: 'Cora.jpg',
     level5Bonus: {
       type: 'Special',
       value: '8% Heat Boost Increase',
@@ -184,7 +184,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'delia',
     name: 'Delia',
     rarity: 'A',
-    image: '/images/games/horizon-walker/characters/Delia.jpg',
+    image: 'Delia.jpg',
     favorites: [],
     likes: [],
   },
@@ -192,7 +192,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'efreeti',
     name: 'Efreeti',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Efreeti.jpg',
+    image: 'Efreeti.jpg',
     level5Bonus: {
       type: 'Max HP',
       value: '10%',
@@ -233,7 +233,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'echidna',
     name: 'Echidna',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Echidna.jpg',
+    image: 'Echidna.jpg',
     level5Bonus: {
       type: 'Magic ATK',
       value: '10%',
@@ -301,7 +301,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'emilia',
     name: 'Emilia',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Emilia.jpg',
+    image: 'Emilia.jpg',
     level5Bonus: {
       type: 'Magic ATK',
       value: '10%',
@@ -360,7 +360,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'erneste',
     name: 'Erneste',
     rarity: 'S',
-    image: '/images/games/horizon-walker/characters/Erneste.jpg',
+    image: 'Erneste.jpg',
     level5Bonus: {
       type: 'Melee ATK',
       value: '10%',
@@ -410,7 +410,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'everette',
     name: 'Everette',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Everette.jpg',
+    image: 'Everette.jpg',
     level5Bonus: {
       type: 'Magic ATK',
       value: '10%',
@@ -469,7 +469,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'fammene',
     name: 'Fammene',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Fammene.jpg',
+    image: 'Fammene.jpg',
     level5Bonus: {
       type: 'Magic ATK',
       value: '10%',
@@ -510,7 +510,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'griselda',
     name: 'Griselda',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Griselda.jpg',
+    image: 'Griselda.jpg',
     level5Bonus: {
       type: 'Magic ATK',
       value: '10%',
@@ -542,7 +542,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'gulam',
     name: 'Gulam',
     rarity: 'SS',
-    image: '/images/games/horizon-walker/characters/Gulam.jpg',
+    image: 'Gulam.jpg',
     favorites: [],
     likes: [],
   },
@@ -550,7 +550,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'gulsni',
     name: 'Gulsni',
     rarity: 'S',
-    image: '/images/games/horizon-walker/characters/Gulsni.jpg',
+    image: 'Gulsni.jpg',
     favorites: [],
     likes: [],
   },
@@ -558,7 +558,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'headless-knight',
     name: 'Headless Knight',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Headless_Knight.jpg',
+    image: 'Headless_Knight.jpg',
     favorites: [],
     likes: [],
   },
@@ -566,7 +566,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'ines',
     name: 'Ines',
     rarity: 'A',
-    image: '/images/games/horizon-walker/characters/Ines.jpg',
+    image: 'Ines.jpg',
     favorites: [
       {
         id: 'worn-banner-magnal-duchy',
@@ -612,7 +612,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'juha',
     name: 'Juha',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Juha.jpg',
+    image: 'Juha.jpg',
     level5Bonus: {
       type: 'Ranged ATK',
       value: '10%',
@@ -653,7 +653,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'kalina',
     name: 'Kalina',
     rarity: 'SS',
-    image: '/images/games/horizon-walker/characters/Kalina.jpg',
+    image: 'Kalina.jpg',
     level5Bonus: {
       type: 'Melee ATK',
       value: '10%',
@@ -694,7 +694,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'kaul',
     name: 'Kaul',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Kaul.jpg',
+    image: 'Kaul.jpg',
     level5Bonus: {
       type: 'Crit DMG',
       value: '16%',
@@ -735,7 +735,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'kilon',
     name: 'Kilon',
     rarity: 'SS',
-    image: '/images/games/horizon-walker/characters/Kilon.jpg',
+    image: 'Kilon.jpg',
     favorites: [],
     likes: [],
   },
@@ -743,7 +743,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'kim-ga-young',
     name: 'Kim Ga-young',
     rarity: 'S',
-    image: '/images/games/horizon-walker/characters/kim_Ga_young.jpg',
+    image: 'kim_Ga_young.jpg',
     level5Bonus: {
       type: 'Ranged ATK',
       value: '10%',
@@ -811,7 +811,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'korabi',
     name: 'Korabi',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Korabi.jpg',
+    image: 'Korabi.jpg',
     level5Bonus: {
       type: 'Crit DMG',
       value: '16%',
@@ -852,7 +852,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'lisandria',
     name: 'Lisandria',
     rarity: 'SS',
-    image: '/images/games/horizon-walker/characters/Lisandria.jpg',
+    image: 'Lisandria.jpg',
     level5Bonus: {
       type: 'Magic ATK',
       value: '10%',
@@ -894,7 +894,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'luise',
     name: 'Luise',
     rarity: 'SS',
-    image: '/images/games/horizon-walker/characters/Luise.jpg',
+    image: 'Luise.jpg',
     level5Bonus: {
       type: 'Magic ATK',
       value: '10%',
@@ -935,7 +935,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'mahari',
     name: 'Mahari',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Mahari.jpg',
+    image: 'Mahari.jpg',
     level5Bonus: {
       type: 'Melee ATK',
       value: '10%',
@@ -976,7 +976,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'marhim',
     name: 'Marhim',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Marhim.jpg',
+    image: 'Marhim.jpg',
     level5Bonus: {
       type: 'Melee ATK',
       value: '10%',
@@ -1026,7 +1026,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'matrotho',
     name: 'Matrotho',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Matrotho.jpg',
+    image: 'Matrotho.jpg',
     level5Bonus: {
       type: 'Melee ATK',
       value: '10%',
@@ -1058,7 +1058,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'min-eun-sol',
     name: 'Min Eun-sol',
     rarity: 'A',
-    image: '/images/games/horizon-walker/characters/Min_Eun_sol.jpg',
+    image: 'Min_Eun_sol.jpg',
     favorites: [
       {
         id: 'human-hair',
@@ -1086,7 +1086,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'nari',
     name: 'Nari',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Nari.jpg',
+    image: 'Nari.jpg',
     level5Bonus: {
       type: 'Ranged ATK',
       value: '10%',
@@ -1127,7 +1127,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'nika',
     name: 'Nika',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Nika.jpg',
+    image: 'Nika.jpg',
     level5Bonus: {
       type: 'Melee ATK',
       value: '10%',
@@ -1168,7 +1168,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'nonoha',
     name: 'Nonoha',
     rarity: 'A',
-    image: '/images/games/horizon-walker/characters/Nonoha.jpg',
+    image: 'Nonoha.jpg',
     favorites: [
       {
         id: 'magical-fairy-tale-book',
@@ -1232,7 +1232,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'nymset',
     name: 'Nymset',
     rarity: 'S',
-    image: '/images/games/horizon-walker/characters/Nymset.jpg',
+    image: 'Nymset.jpg',
     level5Bonus: {
       type: 'Max HP',
       value: '10%',
@@ -1274,7 +1274,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'olivia',
     name: 'Olivia',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Olivia.jpg',
+    image: 'Olivia.jpg',
     level5Bonus: {
       type: 'Melee ATK',
       value: '10%',
@@ -1315,7 +1315,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'osla',
     name: 'Osla',
     rarity: 'SS',
-    image: '/images/games/horizon-walker/characters/Osla.jpg',
+    image: 'Osla.jpg',
     level5Bonus: {
       type: 'Max HP',
       value: '10%',
@@ -1365,7 +1365,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'pantheri',
     name: 'Pantheri',
     rarity: 'S',
-    image: '/images/games/horizon-walker/characters/Pantheri.jpg',
+    image: 'Pantheri.jpg',
     level5Bonus: {
       type: 'Special',
       value: '10% Evade Bonus',
@@ -1397,7 +1397,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'palekar',
     name: 'Palekar',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Palekar.jpg',
+    image: 'Palekar.jpg',
     level5Bonus: {
       type: 'Magic ATK',
       value: '10%',
@@ -1456,7 +1456,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'platina',
     name: 'Platina',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Platina.jpg',
+    image: 'Platina.jpg',
     favorites: [],
     likes: [],
   },
@@ -1464,7 +1464,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 're-de-da',
     name: 'Re_De_Da',
     rarity: 'A',
-    image: '/images/games/horizon-walker/characters/Re_De_Da.jpg',
+    image: 'Re_De_Da.jpg',
     favorites: [],
     likes: [],
   },
@@ -1472,7 +1472,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'rhasadina',
     name: 'Rhasadina',
     rarity: 'A',
-    image: '/images/games/horizon-walker/characters/Rhasadina.jpg',
+    image: 'Rhasadina.jpg',
     favorites: [],
     likes: [],
   },
@@ -1480,7 +1480,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'samarika',
     name: 'Samarika',
     rarity: 'S',
-    image: '/images/games/horizon-walker/characters/Samarika.jpg',
+    image: 'Samarika.jpg',
     level5Bonus: {
       type: 'Melee ATK',
       value: '10%',
@@ -1521,7 +1521,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'so-joo-hee',
     name: 'So Joo-hee',
     rarity: 'A',
-    image: '/images/games/horizon-walker/characters/So_Joo_hee.jpg',
+    image: 'So_Joo_hee.jpg',
     level5Bonus: {
       type: 'Ranged ATK',
       value: '10%',
@@ -1562,7 +1562,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'valeta',
     name: 'Valeta',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Valeta.jpg',
+    image: 'Valeta.jpg',
     level5Bonus: {
       type: 'Special',
       value: '5% Melee ATK Bonus + 5% Magic ATK Bonus',
@@ -1594,7 +1594,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'vlissing',
     name: 'Vlissing',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Vlissing.jpg',
+    image: 'Vlissing.jpg',
     level5Bonus: {
       type: 'Magic ATK',
       value: '10%',
@@ -1635,7 +1635,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'yeon-chae-young',
     name: 'Yeon Chae-Young',
     rarity: 'S',
-    image: '/images/games/horizon-walker/characters/Yeon_Chae-Young.jpg',
+    image: 'Yeon_Chae-Young.jpg',
     level5Bonus: {
       type: 'Ranged ATK',
       value: '10%',
@@ -1667,7 +1667,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'yvonna',
     name: 'Yvonna',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Yvonna.jpg',
+    image: 'Yvonna.jpg',
     level5Bonus: {
       type: 'Magic ATK',
       value: '10%',
@@ -1699,7 +1699,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'tx-manticore',
     name: 'TX - Manticore',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/TX_Manticore.jpg',
+    image: 'TX_Manticore.jpg',
     favorites: [],
     likes: [],
   },
@@ -1707,7 +1707,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'yui',
     name: 'Yui',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Yui.jpg',
+    image: 'Yui.jpg',
     level5Bonus: {
       type: 'Ranged ATK',
       value: '10%',
@@ -1748,7 +1748,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'yeonwoo',
     name: 'Yeonwoo',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Yeonwoo.jpg',
+    image: 'Yeonwoo.jpg',
     level5Bonus: {
       type: 'Max HP',
       value: '10%',
@@ -1807,7 +1807,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'kalma',
     name: 'Kalma',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Kalma.jpg',
+    image: 'Kalma.jpg',
     level5Bonus: {
       type: 'Magic ATK',
       value: '10%',
@@ -1840,7 +1840,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'leah',
     name: 'Leah',
     rarity: 'SS',
-    image: '/images/games/horizon-walker/characters/Leah.jpg',
+    image: 'Leah.jpg',
     level5Bonus: {
       type: 'Evasion',
       value: '10%',
@@ -1890,7 +1890,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'eugenia',
     name: 'Eugenia',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Eugenia.jpg',
+    image: 'Eugenia.jpg',
     level5Bonus: {
       type: 'Melee ATK',
       value: '10%',
@@ -1931,7 +1931,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'maximilia',
     name: 'Maximilia',
     rarity: 'EX',
-    image: '/images/games/horizon-walker/characters/Maximilia.jpg',
+    image: 'Maximilia.jpg',
     level5Bonus: {
       type: 'Max HP',
       value: '10%',
@@ -1972,7 +1972,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     id: 'marika',
     name: 'Marika',
     rarity: 'A',
-    image: '/images/games/horizon-walker/characters/Marika.jpg',
+    image: 'Marika.jpg',
     favorites: [
       {
         id: 'forbidden-romance',
