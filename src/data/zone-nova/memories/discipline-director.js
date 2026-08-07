@@ -5,7 +5,7 @@ export const disciplineDirectorData = {
   id: 'discipline-director',
   slug: 'discipline-director',
   name: 'Discipline Director',
-  image: '/images/games/zone-nova/memories/Erikacard.png',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Erikacard.png',
   rarity: 'SSR',
   element: 'Wind',
   character: 'Erika',

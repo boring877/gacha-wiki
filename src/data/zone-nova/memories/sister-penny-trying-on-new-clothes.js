@@ -3,7 +3,7 @@ export const sisterPennyTryingOnNewClothesData = {
   id: 'sister-penny-trying-on-new-clothes',
   slug: 'sister-penny-trying-on-new-clothes',
   name: 'Sister Penny Trying on New Clothes',
-  image: '/images/games/zone-nova/memories/Sister-Penny-Trying-on-New Clothes.jpg',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Sister-Penny-Trying-on-New Clothes.jpg',
   rarity: 'SR',
   element: null, // No specific element
   character: null, // No specific character

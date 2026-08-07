@@ -415,7 +415,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
   },
   'make-drama': {
     name: 'Make Drama',
-    image: '/images/games/make-drama/icon.png',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/make-drama/icon.png',
     sections: [
       {
         title: 'Characters',

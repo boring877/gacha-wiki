@@ -5,7 +5,7 @@ export const theBeautyOfHeijingCastleData = {
   // Basic Memory Information
   name: 'The Beauty of Heijing Castle',
   chineseName: '平京城的绝美',
-  image: '/images/games/zone-nova/memories/Snowcard.jpg',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Snowcard.jpg',
   rarity: 'SR',
   character: 'Snow Girl',
 

@@ -6,7 +6,7 @@
 export const zoneNovaConfig = {
   id: 'zone-nova',
   name: 'Zone Nova',
-  image: '/images/games/zone-nova/zonenova.jpg',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/zonenova.jpg',
   hasRegions: true,
   currentRegion: 'ero-labs', // default region
   launchDate: '2025-04-29T00:00:00Z',

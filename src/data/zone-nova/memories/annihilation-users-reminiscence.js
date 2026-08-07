@@ -3,7 +3,7 @@ export const annihilationUsersReminiscenceData = {
   id: 'annihilation-users-reminiscence',
   slug: 'annihilation-users-reminiscence',
   name: 'Increase User Attack',
-  image: '/images/games/zone-nova/memories/Increase-User-Attack.jpg',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Increase-User-Attack.jpg',
   rarity: 'R',
   element: null, // No specific element
   character: null, // No specific character

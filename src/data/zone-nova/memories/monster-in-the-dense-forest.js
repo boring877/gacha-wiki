@@ -5,7 +5,7 @@ export const monsterInTheDenseForestData = {
   id: 'monster-in-the-dense-forest',
   slug: 'monster-in-the-dense-forest',
   name: 'Monster in the Dense Forest',
-  image: '/images/games/zone-nova/memories/MonsterInTheDenseForest.png',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/MonsterInTheDenseForest.png',
   rarity: 'SSR',
   character: 'Merlin',
   detailUrl: '/guides/zone-nova/characters/merlin/',

@@ -3,7 +3,7 @@ export const ancientMethodToEliminateFatigueData = {
   id: 'ancient-method-to-eliminate-fatigue',
   slug: 'ancient-method-to-eliminate-fatigue',
   name: 'Ancient Method to Eliminate Fatigue',
-  image: '/images/games/zone-nova/memories/Ancient-Method-to-Eliminate-Fatigue.jpg',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Ancient-Method-to-Eliminate-Fatigue.jpg',
   rarity: 'SR',
   element: null, // No specific element
   character: null, // No specific character

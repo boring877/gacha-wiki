@@ -5,7 +5,7 @@ export const helaMemoryData = {
   id: 'strange-gaze-full-of-desire',
   slug: 'strange-gaze-full-of-desire',
   name: 'Strange Gaze Full of Desire',
-  image: '/images/games/zone-nova/memories/Helacard.jpg',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Helacard.jpg',
   rarity: 'SSR',
   element: 'Chaos',
   character: 'Hela',

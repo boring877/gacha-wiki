@@ -3,7 +3,7 @@ export const deceptiveUltimateTemptationData = {
   id: 'deceptive-ultimate-temptation',
   slug: 'deceptive-ultimate-temptation',
   name: 'Deceptive Ultimate Temptation',
-  image: '/images/games/zone-nova/memories/Deceptive-Ultimate-Temptation.jpg',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Deceptive-Ultimate-Temptation.jpg',
   rarity: 'SR',
   element: null, // No specific element
   character: null, // No specific character

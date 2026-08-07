@@ -6,7 +6,7 @@ export const sharedBathTimeData = {
   id: 'shared-bath-time',
   slug: 'shared-bath-time',
   name: 'Shared Bath Time',
-  image: '/images/games/zone-nova/memories/Odincard.jpg',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Odincard.jpg',
   rarity: 'SSR',
   character: 'Odin',
   detailUrl: '/guides/zone-nova/characters/odin/',

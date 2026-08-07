@@ -6,7 +6,7 @@ export const theLoneliestMomentData = {
   id: 'the-loneliest-moment',
   slug: 'the-loneliest-moment',
   name: 'The Loneliest Moment',
-  image: '/images/games/zone-nova/memories/Apollocard.jpg',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Apollocard.jpg',
   rarity: 'SSR',
   character: 'Apollo',
   detailUrl: '/guides/zone-nova/characters/apollo/',

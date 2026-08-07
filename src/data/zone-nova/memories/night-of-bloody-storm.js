@@ -5,7 +5,7 @@ export const nightOfBloodStormData = {
   // Basic Memory Information
   name: 'Night of Bloody Storm',
   chineseName: '腥风血雨的晚上',
-  image: '/images/games/zone-nova/memories/Night-of-Bloody-Storm.png',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Night-of-Bloody-Storm.png',
   rarity: 'SSR',
   character: 'Arthur',
 

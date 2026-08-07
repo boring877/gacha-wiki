@@ -7,7 +7,7 @@ export const zoneNovaConfig = {
     description:
       'Complete Zone Nova wiki with character tier lists, SSR rankings, memory cards, damage mechanics, and team building guides. Latest Zone Nova character database, rifts, runes, and meta strategies for 2025.',
     gameTitle: 'Zone Nova',
-    heroImage: '/images/games/zone-nova/zonenova1.jpg',
+    heroImage: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/zonenova1.jpg',
   },
 
   gameInfo: {

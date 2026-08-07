@@ -1,214 +1,117 @@
 ---
-import { Image } from 'astro:assets';
+// Images served from Cloudflare R2
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories';
 
-// Import all Zone Nova memory images once
-import AfroditeCardImg from '../../assets/images/games/zone-nova/memories/Afroditecard.jpg';
-import AnubisCardImg from '../../assets/images/games/zone-nova/memories/Anubiscard.jpg';
-import ApepCardImg from '../../assets/images/games/zone-nova/memories/Apepcard.jpg';
-import ApolloCardImg from '../../assets/images/games/zone-nova/memories/Apollocard.jpg';
-import ApolloCardPngImg from '../../assets/images/games/zone-nova/memories/Apollocard.png';
-import ArtemisCardImg from '../../assets/images/games/zone-nova/memories/Artemiscard.jpg';
-import ArthurCardImg from '../../assets/images/games/zone-nova/memories/Arthurcard.jpg';
-import AthenaCardImg from '../../assets/images/games/zone-nova/memories/Athenacard.jpg';
-import BastetCardImg from '../../assets/images/games/zone-nova/memories/Bastetcard.jpg';
-import AnnoyingClassroomImg from '../../assets/images/games/zone-nova/memories/AnnoyingClassroom.png';
-import BelphegarCardImg from '../../assets/images/games/zone-nova/memories/Belphegarcard.jpg';
-import SleepyGuardianImg from '../../assets/images/games/zone-nova/memories/SleepyGuardian.png';
-import ChiyaCardImg from '../../assets/images/games/zone-nova/memories/Chiyacard.jpg';
-import LonelyDarkDeepNightImg from '../../assets/images/games/zone-nova/memories/LonelyDarkDeepNight.png';
-import CleopatraCardImg from '../../assets/images/games/zone-nova/memories/Cleopatracard.jpg';
-import ErikaCardPngImg from '../../assets/images/games/zone-nova/memories/Erikacard.png';
-import FreyaCardImg from '../../assets/images/games/zone-nova/memories/Freyacard.jpg';
-import FreyeCardImg from '../../assets/images/games/zone-nova/memories/Freyecard.jpg';
-import FriggaCardImg from '../../assets/images/games/zone-nova/memories/Friggacard.png';
-import GaiaCardImg from '../../assets/images/games/zone-nova/memories/Gaiacard.jpg';
-import NutritionStudiesImg from '../../assets/images/games/zone-nova/memories/NutritionStudies.png';
-import GreedMammonCardImg from '../../assets/images/games/zone-nova/memories/Greed-Mammon-card.jpg';
-import GuinevereCardImg from '../../assets/images/games/zone-nova/memories/Guinevere-card.jpg';
-import GuinevereCardPngImg from '../../assets/images/games/zone-nova/memories/Guinevere-card.png';
-import HelaCardImg from '../../assets/images/games/zone-nova/memories/Helacard.jpg';
-import HeraCardImg from '../../assets/images/games/zone-nova/memories/Heracard.jpg';
-import HiyoriCardPngImg from '../../assets/images/games/zone-nova/memories/Hiyoricard.png';
-import HorusCardImg from '../../assets/images/games/zone-nova/memories/Horuscard.jpg';
-import CuteLittleThingImg from '../../assets/images/games/zone-nova/memories/CuteLittleThing.png';
-import KingOfLustImg from '../../assets/images/games/zone-nova/memories/KingOfLust.png';
-import JoanofArcCardImg from '../../assets/images/games/zone-nova/memories/JoanofArccard.jpg';
-import JillCardImg from '../../assets/images/games/zone-nova/memories/Jillcard.jpg';
-import JorogumoCardImg from '../../assets/images/games/zone-nova/memories/Jorogumocard.jpg';
-import KelaCardImg from '../../assets/images/games/zone-nova/memories/kelacard.jpg';
-import KellerCardPngImg from '../../assets/images/games/zone-nova/memories/Kellercard.png';
-import LancelotCardImg from '../../assets/images/games/zone-nova/memories/Lancelotcard.jpg';
-import LancelotHerTrainerImg from '../../assets/images/games/zone-nova/memories/LancelotHerTrainer.png';
-import LaviniaCardImg from '../../assets/images/games/zone-nova/memories/Laviniacard.jpg';
-import LeviathanCardImg from '../../assets/images/games/zone-nova/memories/Leviathancard.jpg';
-import LilyCardImg from '../../assets/images/games/zone-nova/memories/Lilycard.jpg';
-import InTheCafeSneakingABiteImg from '../../assets/images/games/zone-nova/memories/InTheCafeSneakingABite.png';
-import LokiCardImg from '../../assets/images/games/zone-nova/memories/Lokicard.jpg';
-import LyraCardImg from '../../assets/images/games/zone-nova/memories/Lyracard.jpg';
-import MerlinCardImg from '../../assets/images/games/zone-nova/memories/Merlincard.jpg';
-import MorgancardImg from '../../assets/images/games/zone-nova/memories/Morgancard.jpg';
-import MonsterDenseForestImg from '../../assets/images/games/zone-nova/memories/MonsterInTheDenseForest.png';
-import AbsolutelyPerfectArmsImg from '../../assets/images/games/zone-nova/memories/AbsolutelyPerfectArms.png';
-import MordredCardImg from '../../assets/images/games/zone-nova/memories/mordredcard.png';
-import NaiyaCardImg from '../../assets/images/games/zone-nova/memories/naiyacard.jpg';
-import NinaCardImg from '../../assets/images/games/zone-nova/memories/Ninacard.jpg';
-import NiniCardImg from '../../assets/images/games/zone-nova/memories/ninicard.jpg';
-import OdinCardImg from '../../assets/images/games/zone-nova/memories/Odincard.jpg';
-import PennyCardImg from '../../assets/images/games/zone-nova/memories/pennycard.jpg';
-import RoseCardImg from '../../assets/images/games/zone-nova/memories/Rosecard.jpg';
-import ReorganizingRevolutionImg from '../../assets/images/games/zone-nova/memories/ReorganizingRevolution.png';
-import DuringMilitaryAcademyTrainingImg from '../../assets/images/games/zone-nova/memories/DuringMilitaryAcademyTraining.png';
-import ShannaCardImg from '../../assets/images/games/zone-nova/memories/Shannacard.jpg';
-import SharinCardPngImg from '../../assets/images/games/zone-nova/memories/Sharincard.png';
-import SigurdCardImg from '../../assets/images/games/zone-nova/memories/Sigurdcard.jpg';
-import SecretGardenImg from '../../assets/images/games/zone-nova/memories/SecretGarden.png';
-import IAmYourChristmasPresentImg from '../../assets/images/games/zone-nova/memories/IAmYourChristmasPresent.png';
-import ShuCardImg from '../../assets/images/games/zone-nova/memories/shucard.jpg';
-import BusyOfficerImg from '../../assets/images/games/zone-nova/memories/BusyOfficer.png';
-import SnowCardImg from '../../assets/images/games/zone-nova/memories/Snowcard.jpg';
-import TefnutCardImg from '../../assets/images/games/zone-nova/memories/Tefnutcard.jpg';
-import YuiCardImg from '../../assets/images/games/zone-nova/memories/Yuiscard.jpg';
-import LuciferCardPngImg from '../../assets/images/games/zone-nova/memories/Lucifercard.png';
-
-// Import missing R rarity memory images
-import AncientMethodImg from '../../assets/images/games/zone-nova/memories/Ancient-Method-to-Eliminate-Fatigue.jpg';
-import IncreaseUserAttackImg from '../../assets/images/games/zone-nova/memories/Increase-User-Attack.jpg';
-import IncreaseUserAttackTwoSwordsImg from '../../assets/images/games/zone-nova/memories/Increase-User-Attack-TwoSwords.jpg';
-import GuardianUserDefenceImg from '../../assets/images/games/zone-nova/memories/Guardian-User-Defence.jpg';
-import HealersMemoryImg from "../../assets/images/games/zone-nova/memories/Healer's-Memory.jpg";
-import HealersMemoryPngImg from '../../assets/images/games/zone-nova/memories/HealersMemory.png';
-import QianjuesReminiscenceImg from "../../assets/images/games/zone-nova/memories/Qianjue's-Reminiscence.jpg";
-import SupportUsersReminiscenceImg from "../../assets/images/games/zone-nova/memories/Support-User's-Reminiscence.jpg";
-import AxeAttackUserImg from '../../assets/images/games/zone-nova/memories/Axe-Attack-User.jpg';
-
-// Import missing SR rarity memory images
-import GreatMagesRolePlayingImg from "../../assets/images/games/zone-nova/memories/Great-Mage's-Role-Playing.jpg";
-import MorningSunlightImg from '../../assets/images/games/zone-nova/memories/Morning-Sunlight .jpg';
-import SummerAfternoonNapTimeImg from '../../assets/images/games/zone-nova/memories/Summer-Afternoon-Nap-Time.jpg';
-import SwimsuitGoddessImg from '../../assets/images/games/zone-nova/memories/Swimsuit-Goddess-Who-Makes-Hearts-Flutter.jpg';
-import DeceptiveUltimateTemptationImg from '../../assets/images/games/zone-nova/memories/Deceptive-Ultimate-Temptation.jpg';
-import SisterPennyTryingOnNewClothesImg from '../../assets/images/games/zone-nova/memories/Sister-Penny-Trying-on-New Clothes.jpg';
-import NightOfBloodyStormImg from '../../assets/images/games/zone-nova/memories/Night-of-Bloody-Storm.png';
-import ZashikiWarashiCardImg from '../../assets/images/games/zone-nova/memories/Zashiki-warashicard.jpg';
-import ThorCardImg from '../../assets/images/games/zone-nova/memories/Thorcard.jpg';
-import IbarakiDojiCardImg from '../../assets/images/games/zone-nova/memories/Ibaraki-dojicard.jpg';
-import ShutenDojiCardImg from '../../assets/images/games/zone-nova/memories/Shuten-dojicard.jpg';
-import TamamoNoMaeCardImg from '../../assets/images/games/zone-nova/memories/Tamamo-no-maecard.jpg';
-import PrideLuciferCardImg from '../../assets/images/games/zone-nova/memories/Lucifercard.jpg';
-import WrathSamaelCardImg from '../../assets/images/games/zone-nova/memories/Wrath_Samaelcard.jpg';
-import SuffocatingGraceImg from '../../assets/images/games/zone-nova/memories/SuffocatingGrace.png';
-import WrathSamaelCardPngImg from '../../assets/images/games/zone-nova/memories/Wrath_Samaelcard.png';
-
-// Centralized memory image mapping
-const memoryImageMap = {
-  'Afroditecard.jpg': AfroditeCardImg,
-  'Anubiscard.jpg': AnubisCardImg,
-  'Apepcard.jpg': ApepCardImg,
-  'Apollocard.jpg': ApolloCardImg,
-  'Apollocard.png': ApolloCardPngImg,
-  'Artemiscard.jpg': ArtemisCardImg,
-  'Arthurcard.jpg': ArthurCardImg,
-  'Athenacard.jpg': AthenaCardImg,
-  'Bastetcard.jpg': BastetCardImg,
-  'AnnoyingClassroom.png': AnnoyingClassroomImg,
-  'Belphegarcard.jpg': BelphegarCardImg,
-  'SleepyGuardian.png': SleepyGuardianImg,
-  'Chiyacard.jpg': ChiyaCardImg,
-  'LonelyDarkDeepNight.png': LonelyDarkDeepNightImg,
-  'Cleopatracard.jpg': CleopatraCardImg,
-  'Erikacard.png': ErikaCardPngImg,
-  'Erikacard.jpg': ErikaCardPngImg,
-  'Freyacard.jpg': FreyaCardImg,
-  'Freyecard.jpg': FreyeCardImg,
-  'Friggacard.png': FriggaCardImg,
-  'Gaiacard.jpg': GaiaCardImg,
-  'NutritionStudies.png': NutritionStudiesImg,
-  'Greed-Mammon-card.jpg': GreedMammonCardImg,
-  'Guinevere-card.jpg': GuinevereCardImg,
-  'Guinevere-card.png': GuinevereCardPngImg,
-  'Helacard.jpg': HelaCardImg,
-  'Heracard.jpg': HeraCardImg,
-  'Hiyoricard.png': HiyoriCardPngImg,
-  'Horuscard.jpg': HorusCardImg,
-  'CuteLittleThing.png': CuteLittleThingImg,
-  'KingOfLust.png': KingOfLustImg,
-  'JoanofArccard.jpg': JoanofArcCardImg,
-  'Jillcard.jpg': JillCardImg,
-  'Jillcard': JillCardImg,
-  'Jorogumocard.jpg': JorogumoCardImg,
-  'kelacard.jpg': KelaCardImg,
-  'Kellercard.png': KellerCardPngImg,
-  'Kellercard.jpg': KellerCardPngImg,
-  'Lancelotcard.jpg': LancelotCardImg,
-  'LancelotHerTrainer.png': LancelotHerTrainerImg,
-  'Laviniacard.jpg': LaviniaCardImg,
-  'Leviathancard.jpg': LeviathanCardImg,
-  'Lilycard.jpg': LilyCardImg,
-  'InTheCafeSneakingABite.png': InTheCafeSneakingABiteImg,
-  'Lokicard.jpg': LokiCardImg,
-  'Lyracard.jpg': LyraCardImg,
-  'Merlincard.jpg': MerlinCardImg,
-  'Morgancard.jpg': MorgancardImg,
-  'MonsterInTheDenseForest.png': MonsterDenseForestImg,
-  'AbsolutelyPerfectArms.png': AbsolutelyPerfectArmsImg,
-  'mordredcard.png': MordredCardImg,
-  'naiyacard.jpg': NaiyaCardImg,
-  'Ninacard.jpg': NinaCardImg,
-  'ninicard.jpg': NiniCardImg,
-  'Odincard.jpg': OdinCardImg,
-  'pennycard.jpg': PennyCardImg,
-  'Rosecard.jpg': RoseCardImg,
-  'ReorganizingRevolution.png': ReorganizingRevolutionImg,
-  'DuringMilitaryAcademyTraining.png': DuringMilitaryAcademyTrainingImg,
-  'Shannacard.jpg': ShannaCardImg,
-  'Sharincard.jpg': SharinCardPngImg,
-  'Sharincard': SharinCardPngImg,
-  'Sigurdcard.jpg': SigurdCardImg,
-  'SecretGarden.png': SecretGardenImg,
-  'IAmYourChristmasPresent.png': IAmYourChristmasPresentImg,
-  'shucard.jpg': ShuCardImg,
-  'BusyOfficer.png': BusyOfficerImg,
-  'Snowcard.jpg': SnowCardImg,
-  'Tefnutcard.jpg': TefnutCardImg,
-  'Yuiscard.jpg': YuiCardImg,
-  'Lucifercard.png': LuciferCardPngImg,
+// Centralized memory image mapping (URL strings served from R2)
+const memoryImageMap: Record<string, string> = {
+  'Afroditecard.jpg': `${R2}/Afroditecard.jpg`,
+  'Anubiscard.jpg': `${R2}/Anubiscard.jpg`,
+  'Apepcard.jpg': `${R2}/Apepcard.jpg`,
+  'Apollocard.jpg': `${R2}/Apollocard.jpg`,
+  'Apollocard.png': `${R2}/Apollocard.png`,
+  'Artemiscard.jpg': `${R2}/Artemiscard.jpg`,
+  'Arthurcard.jpg': `${R2}/Arthurcard.jpg`,
+  'Athenacard.jpg': `${R2}/Athenacard.jpg`,
+  'Bastetcard.jpg': `${R2}/Bastetcard.jpg`,
+  'AnnoyingClassroom.png': `${R2}/AnnoyingClassroom.png`,
+  'Belphegarcard.jpg': `${R2}/Belphegarcard.jpg`,
+  'SleepyGuardian.png': `${R2}/SleepyGuardian.png`,
+  'Chiyacard.jpg': `${R2}/Chiyacard.jpg`,
+  'LonelyDarkDeepNight.png': `${R2}/LonelyDarkDeepNight.png`,
+  'Cleopatracard.jpg': `${R2}/Cleopatracard.jpg`,
+  'Erikacard.png': `${R2}/Erikacard.png`,
+  'Erikacard.jpg': `${R2}/Erikacard.png`,
+  'Freyacard.jpg': `${R2}/Freyacard.jpg`,
+  'Freyecard.jpg': `${R2}/Freyecard.jpg`,
+  'Friggacard.png': `${R2}/Friggacard.png`,
+  'Gaiacard.jpg': `${R2}/Gaiacard.jpg`,
+  'NutritionStudies.png': `${R2}/NutritionStudies.png`,
+  'Greed-Mammon-card.jpg': `${R2}/Greed-Mammon-card.jpg`,
+  'Guinevere-card.jpg': `${R2}/Guinevere-card.jpg`,
+  'Guinevere-card.png': `${R2}/Guinevere-card.png`,
+  'Helacard.jpg': `${R2}/Helacard.jpg`,
+  'Heracard.jpg': `${R2}/Heracard.jpg`,
+  'Hiyoricard.png': `${R2}/Hiyoricard.png`,
+  'Horuscard.jpg': `${R2}/Horuscard.jpg`,
+  'CuteLittleThing.png': `${R2}/CuteLittleThing.png`,
+  'KingOfLust.png': `${R2}/KingOfLust.png`,
+  'JoanofArccard.jpg': `${R2}/JoanofArccard.jpg`,
+  'Jillcard.jpg': `${R2}/Jillcard.jpg`,
+  'Jillcard': `${R2}/Jillcard.jpg`,
+  'Jorogumocard.jpg': `${R2}/Jorogumocard.jpg`,
+  'kelacard.jpg': `${R2}/kelacard.jpg`,
+  'Kellercard.png': `${R2}/Kellercard.png`,
+  'Kellercard.jpg': `${R2}/Kellercard.png`,
+  'Lancelotcard.jpg': `${R2}/Lancelotcard.jpg`,
+  'LancelotHerTrainer.png': `${R2}/LancelotHerTrainer.png`,
+  'Laviniacard.jpg': `${R2}/Laviniacard.jpg`,
+  'Leviathancard.jpg': `${R2}/Leviathancard.jpg`,
+  'Lilycard.jpg': `${R2}/Lilycard.jpg`,
+  'InTheCafeSneakingABite.png': `${R2}/InTheCafeSneakingABite.png`,
+  'Lokicard.jpg': `${R2}/Lokicard.jpg`,
+  'Lyracard.jpg': `${R2}/Lyracard.jpg`,
+  'Merlincard.jpg': `${R2}/Merlincard.jpg`,
+  'Morgancard.jpg': `${R2}/Morgancard.jpg`,
+  'MonsterInTheDenseForest.png': `${R2}/MonsterInTheDenseForest.png`,
+  'AbsolutelyPerfectArms.png': `${R2}/AbsolutelyPerfectArms.png`,
+  'mordredcard.png': `${R2}/mordredcard.png`,
+  'naiyacard.jpg': `${R2}/naiyacard.jpg`,
+  'Ninacard.jpg': `${R2}/Ninacard.jpg`,
+  'ninicard.jpg': `${R2}/ninicard.jpg`,
+  'Odincard.jpg': `${R2}/Odincard.jpg`,
+  'pennycard.jpg': `${R2}/pennycard.jpg`,
+  'Rosecard.jpg': `${R2}/Rosecard.jpg`,
+  'ReorganizingRevolution.png': `${R2}/ReorganizingRevolution.png`,
+  'DuringMilitaryAcademyTraining.png': `${R2}/DuringMilitaryAcademyTraining.png`,
+  'Shannacard.jpg': `${R2}/Shannacard.jpg`,
+  'Sharincard.jpg': `${R2}/Sharincard.png`,
+  'Sharincard': `${R2}/Sharincard.png`,
+  'Sigurdcard.jpg': `${R2}/Sigurdcard.jpg`,
+  'SecretGarden.png': `${R2}/SecretGarden.png`,
+  'IAmYourChristmasPresent.png': `${R2}/IAmYourChristmasPresent.png`,
+  'shucard.jpg': `${R2}/shucard.jpg`,
+  'BusyOfficer.png': `${R2}/BusyOfficer.png`,
+  'Snowcard.jpg': `${R2}/Snowcard.jpg`,
+  'Tefnutcard.jpg': `${R2}/Tefnutcard.jpg`,
+  'Yuiscard.jpg': `${R2}/Yuiscard.jpg`,
+  'Lucifercard.png': `${R2}/Lucifercard.png`,
 
   // R rarity memory images
-  'Ancient-Method-to-Eliminate-Fatigue.jpg': AncientMethodImg,
-  'Increase-User-Attack.jpg': IncreaseUserAttackImg,
-  'Increase-User-Attack-TwoSwords.jpg': IncreaseUserAttackTwoSwordsImg,
-  'Guardian-User-Defence.jpg': GuardianUserDefenceImg,
-  "Healer's-Memory.jpg": HealersMemoryImg,
-  'HealersMemory.png': HealersMemoryPngImg,
-  "Qianjue's-Reminiscence.jpg": QianjuesReminiscenceImg,
-  "Support-User's-Reminiscence.jpg": SupportUsersReminiscenceImg,
-  'Axe-Attack-User.jpg': AxeAttackUserImg,
+  'Ancient-Method-to-Eliminate-Fatigue.jpg': `${R2}/Ancient-Method-to-Eliminate-Fatigue.jpg`,
+  'Increase-User-Attack.jpg': `${R2}/Increase-User-Attack.jpg`,
+  'Increase-User-Attack-TwoSwords.jpg': `${R2}/Increase-User-Attack-TwoSwords.jpg`,
+  'Guardian-User-Defence.jpg': `${R2}/Guardian-User-Defence.jpg`,
+  "Healer's-Memory.jpg": `${R2}/Healer's-Memory.jpg`,
+  'HealersMemory.png': `${R2}/HealersMemory.png`,
+  "Qianjue's-Reminiscence.jpg": `${R2}/Qianjue's-Reminiscence.jpg`,
+  "Support-User's-Reminiscence.jpg": `${R2}/Support-User's-Reminiscence.jpg`,
+  'Axe-Attack-User.jpg': `${R2}/Axe-Attack-User.jpg`,
 
   // SR rarity memory images
-  "Great-Mage's-Role-Playing.jpg": GreatMagesRolePlayingImg,
-  'Morning-Sunlight .jpg': MorningSunlightImg,
-  'Summer-Afternoon-Nap-Time.jpg': SummerAfternoonNapTimeImg,
-  'Swimsuit-Goddess-Who-Makes-Hearts-Flutter.jpg': SwimsuitGoddessImg,
-  'Deceptive-Ultimate-Temptation.jpg': DeceptiveUltimateTemptationImg,
-  'Sister-Penny-Trying-on-New Clothes.jpg': SisterPennyTryingOnNewClothesImg,
-  'Night-of-Bloody-Storm.png': NightOfBloodyStormImg,
-  'Zashiki-warashicard.jpg': ZashikiWarashiCardImg,
-  'Thorcard.jpg': ThorCardImg,
-  'Ibaraki-dojicard.jpg': IbarakiDojiCardImg,
-  'Ibaraki-dojicard': IbarakiDojiCardImg,
-  'Shuten-dojicard.jpg': ShutenDojiCardImg,
-  'Shuten-dojicard': ShutenDojiCardImg,
-  'Tamamo-no-maecard.jpg': TamamoNoMaeCardImg,
-  'Tamamo-no-maecard': TamamoNoMaeCardImg,
-  'Lucifercard.jpg': PrideLuciferCardImg,
-  'Lucifercard': PrideLuciferCardImg,
-  'lucifercard.jpg': PrideLuciferCardImg,
-  'lucifercard': PrideLuciferCardImg,
-  'lucifercard.png': LuciferCardPngImg,
-  'Wrath_Samaelcard.jpg': WrathSamaelCardImg,
-  'SuffocatingGrace.png': SuffocatingGraceImg,
-  'Wrath_Samaelcard': WrathSamaelCardImg,
-  'Wrath_Samaelcard.png': WrathSamaelCardPngImg,
+  "Great-Mage's-Role-Playing.jpg": `${R2}/Great-Mage's-Role-Playing.jpg`,
+  'Morning-Sunlight .jpg': `${R2}/Morning-Sunlight .jpg`,
+  'Summer-Afternoon-Nap-Time.jpg': `${R2}/Summer-Afternoon-Nap-Time.jpg`,
+  'Swimsuit-Goddess-Who-Makes-Hearts-Flutter.jpg': `${R2}/Swimsuit-Goddess-Who-Makes-Hearts-Flutter.jpg`,
+  'Deceptive-Ultimate-Temptation.jpg': `${R2}/Deceptive-Ultimate-Temptation.jpg`,
+  'Sister-Penny-Trying-on-New Clothes.jpg': `${R2}/Sister-Penny-Trying-on-New Clothes.jpg`,
+  'Night-of-Bloody-Storm.png': `${R2}/Night-of-Bloody-Storm.png`,
+  'Zashiki-warashicard.jpg': `${R2}/Zashiki-warashicard.jpg`,
+  'Thorcard.jpg': `${R2}/Thorcard.jpg`,
+  'Ibaraki-dojicard.jpg': `${R2}/Ibaraki-dojicard.jpg`,
+  'Ibaraki-dojicard': `${R2}/Ibaraki-dojicard.jpg`,
+  'Shuten-dojicard.jpg': `${R2}/Shuten-dojicard.jpg`,
+  'Shuten-dojicard': `${R2}/Shuten-dojicard.jpg`,
+  'Tamamo-no-maecard.jpg': `${R2}/Tamamo-no-maecard.jpg`,
+  'Tamamo-no-maecard': `${R2}/Tamamo-no-maecard.jpg`,
+  'Lucifercard.jpg': `${R2}/Lucifercard.jpg`,
+  'Lucifercard': `${R2}/Lucifercard.jpg`,
+  'lucifercard.jpg': `${R2}/Lucifercard.jpg`,
+  'lucifercard': `${R2}/Lucifercard.jpg`,
+  'lucifercard.png': `${R2}/Lucifercard.png`,
+  'Wrath_Samaelcard.jpg': `${R2}/Wrath_Samaelcard.jpg`,
+  'SuffocatingGrace.png': `${R2}/SuffocatingGrace.png`,
+  'Wrath_Samaelcard': `${R2}/Wrath_Samaelcard.jpg`,
+  'Wrath_Samaelcard.png': `${R2}/Wrath_Samaelcard.png`,
 };
 
 interface Props {
@@ -233,7 +136,7 @@ const {
   quality = 85,
 } = Astro.props;
 
-// Get the memory image from the imported assets
+// Get the memory image URL from the map
 // Handle both with and without extension
 let imageKey = imageName;
 if (!imageKey.includes('.')) {
@@ -247,15 +150,14 @@ const placeholderSrc = '/images/placeholder.png';
 
 {
   imageSrc ? (
-    <Image
+    <img
       src={imageSrc}
       alt={alt}
       width={width}
       height={height}
       class={className}
       loading={loading}
-      format={format}
-      quality={quality}
+      decoding="async"
     />
   ) : (
     <img

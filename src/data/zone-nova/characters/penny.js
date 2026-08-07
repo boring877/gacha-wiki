@@ -4,7 +4,7 @@
 export const pennyData = {
   // Basic Character Information
   name: 'Penny',
-  image: '/images/games/zone-nova/characters/penny.png', // Use full path
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/penny.png', // Use full path
   rarity: 'SSR', // SSR, SR, R
   element: 'Wind', // Fire, Ice, Wind, Holy, Chaos
   class: 'Guardian', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility

@@ -3,7 +3,7 @@ export const morningSunlightData = {
   id: 'morning-sunlight',
   slug: 'morning-sunlight',
   name: 'Morning Sunlight',
-  image: '/images/games/zone-nova/memories/Morning-Sunlight .jpg',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Morning-Sunlight .jpg',
   rarity: 'SR',
   element: null, // No specific element
   character: null, // No specific character

@@ -4,7 +4,7 @@
 export const lamplightStudyData = {
   name: 'Lamplight Study',
   chineseName: '',
-  image: '/images/games/zone-nova/memories/Friggacard.jpg',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Friggacard.jpg',
   rarity: 'SSR',
   character: 'Frigga',
 

@@ -27,6 +27,6 @@ export const rift16SEO = {
   description:
     'Complete guide for Rift XVI in Zone Nova, featuring Warrior and Buffer character synergies, team compositions, and strategies.',
   keywords: ['Zone Nova', 'Rift XVI', 'Warrior', 'Buffer', 'Team Synergy', 'Character Guide'],
-  image: '/images/games/zone-nova/rifts/rift-16.jpg',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/rifts/rift-16.jpg',
   url: '/guides/zone-nova/rifts/rift-16',
 };

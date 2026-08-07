@@ -3,7 +3,7 @@ export const qianjuesReminiscenceData = {
   id: 'qianjues-reminiscence',
   slug: 'qianjues-reminiscence',
   name: "Qianjue's Reminiscence",
-  image: "/images/games/zone-nova/memories/Qianjue's-Reminiscence.jpg",
+  image: "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Qianjue's-Reminiscence.jpg",
   rarity: 'R',
   element: null, // No specific element
   character: null, // No specific character

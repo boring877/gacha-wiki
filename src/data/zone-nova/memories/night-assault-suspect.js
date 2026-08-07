@@ -7,7 +7,7 @@ export const nightAssaultSuspectData = {
   rarity: 'SSR',
   element: 'Holy',
   class: 'Guardian', // Thor is a Guardian class character
-  image: '/images/games/zone-nova/memories/Thorcard.jpg',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Thorcard.jpg',
 
   // Level 80 Stats
   stats: {

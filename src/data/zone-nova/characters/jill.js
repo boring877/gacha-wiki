@@ -139,8 +139,8 @@ export const jill = {
   },
 
   images: {
-    portrait: '/images/games/zone-nova/characters/Jill.png',
-    card: '/images/games/zone-nova/memories/Jillcard.jpg',
+    portrait: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Jill.png',
+    card: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Jillcard.jpg',
   },
 
   tags: [

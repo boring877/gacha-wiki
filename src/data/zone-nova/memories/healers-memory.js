@@ -3,7 +3,7 @@ export const healersMemoryData = {
   id: 'healers-memory',
   slug: 'healers-memory',
   name: "Healer's Memory",
-  image: '/images/games/zone-nova/memories/HealersMemory.png',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/HealersMemory.png',
   rarity: 'R',
   element: null, // No specific element
   character: null, // No specific character

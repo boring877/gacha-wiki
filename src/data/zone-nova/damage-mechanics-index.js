@@ -16,7 +16,7 @@ export const damageMechanicsIndex = {
     subtitle: "Master Zone Nova's Combat System",
     description:
       'Comprehensive guides covering damage calculations, character-specific mechanics, and advanced combat strategies. From basic defense formulas to complex character interactions.',
-    featuredImage: '/images/games/zone-nova/mechanics/damage-mechanics-hero.jpg', // Optional hero image
+    featuredImage: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/mechanics/damage-mechanics-hero.jpg', // Optional hero image
     quickStats: [
       { label: 'Core Mechanics', value: '1', icon: '⚔️' },
       { label: 'Character Guides', value: '1', icon: '👥' },

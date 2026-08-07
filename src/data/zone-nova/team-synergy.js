@@ -29,10 +29,10 @@ export const ZONE_NOVA_TEAMS = [
     type: TEAM_TYPES.EXTRA_ATTACK,
     tier: TEAM_TIERS.S,
     characters: [
-      { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
-      { name: 'Apollo', image: '/images/games/zone-nova/characters/Apollo.jpg' },
-      { name: 'Jeanne D Arc', image: '/images/games/zone-nova/characters/JoanofArc.jpg' },
-      { name: 'Leviathan', image: '/images/games/zone-nova/characters/Leviathan.jpg' },
+      { name: 'Guinevere', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Guinevere.jpg' },
+      { name: 'Apollo', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Apollo.jpg' },
+      { name: 'Jeanne D Arc', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/JoanofArc.jpg' },
+      { name: 'Leviathan', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Leviathan.jpg' },
     ],
     notes:
       'Good Single Target damage Fire/wind Element weakness, main Dmg Dealer is Leviathan  She can hit 100k dmge with right gear so keep her alive ! ',
@@ -43,10 +43,10 @@ export const ZONE_NOVA_TEAMS = [
     type: TEAM_TYPES.EXTRA_ATTACK,
     tier: TEAM_TIERS.SS,
     characters: [
-      { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
-      { name: 'Apollo', image: '/images/games/zone-nova/characters/Apollo.jpg' },
-      { name: 'Yuis', image: '/images/games/zone-nova/characters/Yuis.jpg' },
-      { name: 'Gaia', image: '/images/games/zone-nova/characters/Gaia.jpg' },
+      { name: 'Guinevere', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Guinevere.jpg' },
+      { name: 'Apollo', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Apollo.jpg' },
+      { name: 'Yuis', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Yuis.jpg' },
+      { name: 'Gaia', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Gaia.jpg' },
     ],
     notes:
       'One of the strongest team for  Holy/Fire weakness, stack Crit damage on yuis and she going to melt the boss.',
@@ -57,10 +57,10 @@ export const ZONE_NOVA_TEAMS = [
     type: TEAM_TYPES.DOT,
     tier: TEAM_TIERS.SS,
     characters: [
-      { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
-      { name: 'Horus', image: '/images/games/zone-nova/characters/Horus.jpg' },
-      { name: 'Odin', image: '/images/games/zone-nova/characters/Odin.jpg' },
-      { name: 'Gaia', image: '/images/games/zone-nova/characters/Gaia.jpg' },
+      { name: 'Guinevere', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Guinevere.jpg' },
+      { name: 'Horus', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Horus.jpg' },
+      { name: 'Odin', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Odin.jpg' },
+      { name: 'Gaia', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Gaia.jpg' },
     ],
     notes:
       'Horus has Interrupt with her ultimate 3 cost and do DOT which scale Odin damage, she also inc dmg taken.',
@@ -71,10 +71,10 @@ export const ZONE_NOVA_TEAMS = [
     type: TEAM_TYPES.GENERAL,
     tier: TEAM_TIERS.S,
     characters: [
-      { name: 'Penny', image: '/images/games/zone-nova/characters/penny.jpg' },
-      { name: 'Snow Girl', image: '/images/games/zone-nova/characters/Snow.jpg' },
-      { name: 'Naiya', image: '/images/games/zone-nova/characters/Naiya.jpg' },
-      { name: 'Chiya', image: '/images/games/zone-nova/characters/Chiya.jpg' },
+      { name: 'Penny', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/penny.jpg' },
+      { name: 'Snow Girl', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Snow.jpg' },
+      { name: 'Naiya', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Naiya.jpg' },
+      { name: 'Chiya', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Chiya.jpg' },
     ],
     notes:
       'Ice-focused team. You can switch Snow Girl with kela, but Snow Girl has AOE Healing. Naiya and Chiya have very good combo together.',
@@ -85,10 +85,10 @@ export const ZONE_NOVA_TEAMS = [
     type: TEAM_TYPES.GENERAL,
     tier: TEAM_TIERS.S,
     characters: [
-      { name: 'Penny', image: '/images/games/zone-nova/characters/penny.jpg' },
-      { name: 'Naiya', image: '/images/games/zone-nova/characters/Naiya.jpg' },
-      { name: 'Hera', image: '/images/games/zone-nova/characters/Hera.jpg' },
-      { name: 'Gaia', image: '/images/games/zone-nova/characters/Gaia.jpg' },
+      { name: 'Penny', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/penny.jpg' },
+      { name: 'Naiya', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Naiya.jpg' },
+      { name: 'Hera', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Hera.jpg' },
+      { name: 'Gaia', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Gaia.jpg' },
     ],
     notes:
       'Build Hera for Crit and Crit DMG, Ignore her DOT. The Crit DMG Do more Damage and has better Team, She can reach 250K DMG.',
@@ -99,10 +99,10 @@ export const ZONE_NOVA_TEAMS = [
     type: TEAM_TYPES.GENERAL,
     tier: TEAM_TIERS.S,
     characters: [
-      { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
-      { name: 'Zashiki-warashi', image: '/images/games/zone-nova/characters/Zashiki-warashi.jpg' },
-      { name: 'Hera', image: '/images/games/zone-nova/characters/Hera.jpg' },
-      { name: 'Gaia', image: '/images/games/zone-nova/characters/Gaia.jpg' },
+      { name: 'Guinevere', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Guinevere.jpg' },
+      { name: 'Zashiki-warashi', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Zashiki-warashi.jpg' },
+      { name: 'Hera', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Hera.jpg' },
+      { name: 'Gaia', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Gaia.jpg' },
     ],
     notes:
       'Zashiki-warashi has crit rate inc Which help Hear to crit more, this team aslo good agasint Fire/Chaos, Hera Can Deal up to 200k dmg with crit.',
@@ -113,10 +113,10 @@ export const ZONE_NOVA_TEAMS = [
     type: TEAM_TYPES.GENERAL,
     tier: TEAM_TIERS.S,
     characters: [
-      { name: 'Lancelot', image: '/images/games/zone-nova/characters/Lancelot.jpg' },
-      { name: 'Kela', image: '/images/games/zone-nova/characters/kela.jpg' },
-      { name: 'Naiya', image: '/images/games/zone-nova/characters/Naiya.jpg' },
-      { name: 'Shanna', image: '/images/games/zone-nova/characters/Shanna.jpg' },
+      { name: 'Lancelot', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Lancelot.jpg' },
+      { name: 'Kela', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/kela.jpg' },
+      { name: 'Naiya', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Naiya.jpg' },
+      { name: 'Shanna', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Shanna.jpg' },
     ],
     notes:
       'Beginner-friendly team. Lancelot tanks, Kela heals, Naiya buffs, and Shanna DPS (Build more crit rate). Good starting team composition.',
@@ -127,10 +127,10 @@ export const ZONE_NOVA_TEAMS = [
     type: TEAM_TYPES.GENERAL,
     tier: TEAM_TIERS.S,
     characters: [
-      { name: 'Lancelot', image: '/images/games/zone-nova/characters/Lancelot.jpg' },
-      { name: 'Kela', image: '/images/games/zone-nova/characters/kela.jpg' },
-      { name: 'Zashiki-warashi', image: '/images/games/zone-nova/characters/Zashiki-warashi.jpg' },
-      { name: 'Mordred', image: '/images/games/zone-nova/characters/Mordred.jpg' },
+      { name: 'Lancelot', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Lancelot.jpg' },
+      { name: 'Kela', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/kela.jpg' },
+      { name: 'Zashiki-warashi', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Zashiki-warashi.jpg' },
+      { name: 'Mordred', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Mordred.jpg' },
     ],
     notes:
       'Fire/Holy team for beginners. Lancelot tanks, Kela heals, Zashiki buffs DMG & crit rate, Mordred HP scaling DPS, Build Crit on her she can do 80k DMG.',
@@ -141,10 +141,10 @@ export const ZONE_NOVA_TEAMS = [
     type: TEAM_TYPES.PVP,
     tier: TEAM_TIERS.SSS,
     characters: [
-      { name: 'Gaia', image: '/images/games/zone-nova/characters/Gaia.jpg' },
-      { name: 'Athena', image: '/images/games/zone-nova/characters/Athena.jpg' },
-      { name: 'Thor', image: '/images/games/zone-nova/characters/Thor.jpg' },
-      { name: 'Odin', image: '/images/games/zone-nova/characters/Odin.jpg' },
+      { name: 'Gaia', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Gaia.jpg' },
+      { name: 'Athena', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Athena.jpg' },
+      { name: 'Thor', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Thor.jpg' },
+      { name: 'Odin', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Odin.jpg' },
     ],
     notes:
       'Using Thor ultimate to casue DOT damage and Finishisng with Odin, Gaia buff that inc def for lowest in team at dupe 6 that increase to 2.',
@@ -155,10 +155,10 @@ export const ZONE_NOVA_TEAMS = [
     type: TEAM_TYPES.PVP,
     tier: TEAM_TIERS.SSS,
     characters: [
-      { name: 'Guinevere', image: '/images/games/zone-nova/characters/Guinevere.jpg' },
-      { name: 'Thor', image: '/images/games/zone-nova/characters/Thor.jpg' },
-      { name: 'Odin', image: '/images/games/zone-nova/characters/Odin.jpg' },
-      { name: 'Gaia', image: '/images/games/zone-nova/characters/Gaia.jpg' },
+      { name: 'Guinevere', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Guinevere.jpg' },
+      { name: 'Thor', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Thor.jpg' },
+      { name: 'Odin', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Odin.jpg' },
+      { name: 'Gaia', image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Gaia.jpg' },
     ],
     notes:
       'You need to Start with Thor with an enhanced ultimate, need dupe 1. so you can deal Dot Dmg and burst with Odin. very strong PVP Team Overall',

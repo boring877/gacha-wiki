@@ -2,7 +2,8 @@
 import ZoneNovaLandingLayout from '../../layouts/zone-nova/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { zoneNovaConfig } from '../../data/zone-nova/zone-nova.js';
-import heroImg from '../../assets/images/games/zone-nova/zonenova1.jpg';
+// Hero image served from Cloudflare R2
+const heroImg = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/zonenova1.jpg';
 
 // Extract data for easier use in template
 const { meta, gameInfo, categoryGroups } = zoneNovaConfig;

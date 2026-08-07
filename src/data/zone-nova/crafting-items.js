@@ -5,7 +5,7 @@ export const craftingItems = [
   {
     id: 'dice',
     name: 'Dice',
-    image: '/images/games/zone-nova/crafting/dice.jpg',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/crafting/dice.jpg',
     description:
       'Dice basically change the values you have in sub stats without changing the sub stat type. It reorganizes the improvements.',
     requirements: ['Fully maxed out rune +15', 'Rainbow runes'],
@@ -15,7 +15,7 @@ export const craftingItems = [
   {
     id: 'card',
     name: 'Card',
-    image: '/images/games/zone-nova/crafting/Card.jpg',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/crafting/Card.jpg',
     description:
       'Card lets you choose the sub stats you want from rainbow runes instead of getting random ones.',
     cost: 'Each sub stat you choose costs you one card',
@@ -26,7 +26,7 @@ export const craftingItems = [
   {
     id: 'laser-machine',
     name: 'Laser Machine',
-    image: '/images/games/zone-nova/crafting/laser.jpg',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/crafting/laser.jpg',
     description: 'Laser Machine lets you choose the main stats when crafting rainbow runes.',
     note: 'The main stat only changes in rune positions 4, 5, and 6. Positions 1, 2, and 3 have fixed main stats.',
     usage: 'Use when crafting rainbow runes for positions 4-6 to choose your main stat.',

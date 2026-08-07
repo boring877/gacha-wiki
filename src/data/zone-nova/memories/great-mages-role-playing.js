@@ -3,7 +3,7 @@ export const greatMagesRolePlayingData = {
   id: 'great-mages-role-playing',
   slug: 'great-mages-role-playing',
   name: "Great Mage's Role Playing",
-  image: "/images/games/zone-nova/memories/Great-Mage's-Role-Playing.jpg",
+  image: "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Great-Mage's-Role-Playing.jpg",
   rarity: 'SR',
   element: null, // No specific element
   character: null, // No specific character

@@ -92,7 +92,7 @@ export const zoneNovaRedeemCodes = {
         id: 'step-1',
         title: 'Go to Settings',
         description: 'Open Zone Nova and tap the Settings (gear icon) as shown below:',
-        image: '/images/games/zone-nova/redeemcodes/1.jpg',
+        image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/redeemcodes/1.jpg',
         imageAlt: 'Zone Nova Settings Location',
       },
       {
@@ -105,7 +105,7 @@ export const zoneNovaRedeemCodes = {
           'A popup will appear - enter your code exactly as shown',
           'Submit the code and check your in-game mail for rewards instantly',
         ],
-        image: '/images/games/zone-nova/redeemcodes/2.jpg',
+        image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/redeemcodes/2.jpg',
         imageAlt: 'Zone Nova Account and Redeem Code Location',
       },
     ],

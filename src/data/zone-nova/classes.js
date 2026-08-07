@@ -5,70 +5,70 @@ export const CHARACTER_CLASSES = {
   Guardian: {
     name: 'Guardian',
     role: 'Tank',
-    icon: '/images/games/zone-nova/classes/Guardian.jpg',
+    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Guardian.jpg',
     memoryCompatibility: 'This unit only can equip Guardian memories',
   },
 
   Warrior: {
     name: 'Warrior',
     role: 'DPS',
-    icon: '/images/games/zone-nova/classes/Warrior.jpg',
+    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Warrior.jpg',
     memoryCompatibility: 'This unit only can equip Warrior memories',
   },
 
   Attacker: {
     name: 'Attacker',
     role: 'DPS',
-    icon: '/images/games/zone-nova/classes/Warrior.jpg',
+    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Warrior.jpg',
     memoryCompatibility: 'This unit only can equip Attacker memories',
   },
 
   Rogue: {
     name: 'Rogue',
     role: 'DPS',
-    icon: '/images/games/zone-nova/classes/Rogue.jpg',
+    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Rogue.jpg',
     memoryCompatibility: 'This unit only can equip Rogue memories',
   },
 
   Mage: {
     name: 'Mage',
     role: 'DPS',
-    icon: '/images/games/zone-nova/classes/Mage.jpg',
+    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Mage.jpg',
     memoryCompatibility: 'This unit only can equip Mage memories',
   },
 
   Buffer: {
     name: 'Buffer',
     role: 'Buffer',
-    icon: '/images/games/zone-nova/classes/Buffer.jpg',
+    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Buffer.jpg',
     memoryCompatibility: 'This unit only can equip Buffer memories',
   },
 
   Debuffer: {
     name: 'Debuffer',
     role: 'Debuffer',
-    icon: '/images/games/zone-nova/classes/Debuffer.jpg',
+    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Debuffer.jpg',
     memoryCompatibility: 'This unit only can equip Debuffer memories',
   },
 
   Disruptor: {
     name: 'Disruptor',
     role: 'Debuffer',
-    icon: '/images/games/zone-nova/classes/Debuffer.jpg',
+    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Debuffer.jpg',
     memoryCompatibility: 'This unit only can equip Disruptor memories',
   },
 
   Healer: {
     name: 'Healer',
     role: 'Healer',
-    icon: '/images/games/zone-nova/classes/Healer.jpg',
+    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Healer.jpg',
     memoryCompatibility: 'This unit only can equip Healer memories',
   },
 
   Destroyer: {
     name: 'Destroyer',
     role: 'DPS',
-    icon: '/images/games/zone-nova/classes/Destroyer.jpg',
+    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Destroyer.jpg',
     memoryCompatibility: 'This unit only can equip Destroyer memories',
   },
 };

@@ -3,7 +3,7 @@ export const supportUsersReminiscenceData = {
   id: 'support-users-reminiscence',
   slug: 'support-users-reminiscence',
   name: "Support User's Reminiscence",
-  image: "/images/games/zone-nova/memories/Support-User's-Reminiscence.jpg",
+  image: "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Support-User's-Reminiscence.jpg",
   rarity: 'R',
   element: null, // No specific element
   character: null, // No specific character

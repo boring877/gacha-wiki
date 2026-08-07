@@ -3,7 +3,7 @@ export const swimsuitSovereignWhoMakesHeartsFlutterData = {
   id: 'swimsuit-sovereign-who-makes-hearts-flutter',
   slug: 'swimsuit-sovereign-who-makes-hearts-flutter',
   name: 'Swimsuit Sovereign Who Makes Hearts Flutter',
-  image: '/images/games/zone-nova/memories/Swimsuit-Goddess-Who-Makes-Hearts-Flutter.jpg',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Swimsuit-Goddess-Who-Makes-Hearts-Flutter.jpg',
   rarity: 'SR',
   element: null, // No specific element
   character: null, // No specific character

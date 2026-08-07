@@ -3,7 +3,7 @@ export const guerrillaUsersReminiscenceData = {
   id: 'guerrilla-users-reminiscence',
   slug: 'guerrilla-users-reminiscence',
   name: "Guerrilla User's Reminiscence",
-  image: '/images/games/zone-nova/memories/Increase-User-Attack-TwoSwords.jpg',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Increase-User-Attack-TwoSwords.jpg',
   rarity: 'R',
   element: null, // No specific element
   character: null, // No specific character

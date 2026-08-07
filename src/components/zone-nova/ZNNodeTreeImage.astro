@@ -1,32 +1,14 @@
 ---
-import { Image } from 'astro:assets';
+// Zone Nova node tree image component — images served from Cloudflare R2
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/nodetree';
 
-// Import all Zone Nova node tree images once
-import Node1Img from '../../assets/images/games/zone-nova/nodetree/1.jpg';
-import Node2Img from '../../assets/images/games/zone-nova/nodetree/2.jpg';
-import Node3Img from '../../assets/images/games/zone-nova/nodetree/3.jpg';
-import FullTreeImg from '../../assets/images/games/zone-nova/nodetree/FullTree.jpg';
-import SkillsImg from '../../assets/images/games/zone-nova/nodetree/skills.jpg';
-
-// Centralized node tree image mapping
 const nodeTreeImageMap = {
-  '1.jpg': Node1Img,
-  '2.jpg': Node2Img,
-  '3.jpg': Node3Img,
-  'FullTree.jpg': FullTreeImg,
-  'skills.jpg': SkillsImg,
+  '1.jpg': `${R2}/1.jpg`,
+  '2.jpg': `${R2}/2.jpg`,
+  '3.jpg': `${R2}/3.jpg`,
+  'FullTree.jpg': `${R2}/FullTree.jpg`,
+  'skills.jpg': `${R2}/skills.jpg`,
 };
-
-interface Props {
-  imageName: string;
-  alt: string;
-  width?: number;
-  height?: number;
-  class?: string;
-  loading?: 'lazy' | 'eager';
-  format?: 'webp' | 'avif' | 'jpg' | 'png';
-  quality?: number;
-}
 
 const {
   imageName,
@@ -35,26 +17,21 @@ const {
   height = 100,
   class: className = '',
   loading = 'lazy',
-  format = 'webp',
-  quality = 85,
 } = Astro.props;
 
-// Get the node tree image from the imported assets
-// Handle both with and without extension
 let imageKey = imageName;
 if (!imageKey.includes('.')) {
   imageKey = `${imageKey}.jpg`;
 }
-const imageSrc = nodeTreeImageMap[imageKey] || nodeTreeImageMap['FullTree.jpg'];
+const imageSrc = nodeTreeImageMap[imageKey] || `${R2}/FullTree.jpg`;
 ---
 
-<Image
+<img
   src={imageSrc}
   alt={alt}
   width={width}
   height={height}
   class={className}
   loading={loading}
-  format={format}
-  quality={quality}
+  decoding="async"
 />

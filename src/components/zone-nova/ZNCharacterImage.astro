@@ -1,222 +1,122 @@
 ---
-import { Image } from 'astro:assets';
+// Images served from Cloudflare R2
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters';
 
-// Import all Zone Nova character images once
-import AfroditeImg from '../../assets/images/games/zone-nova/characters/Afrodite.jpg';
-import AnubisImg from '../../assets/images/games/zone-nova/characters/Anubis.jpg';
-import AnubisPngImg from '../../assets/images/games/zone-nova/characters/Anubis.png';
-import ApepImg from '../../assets/images/games/zone-nova/characters/Apep.jpg';
-import ApepPngImg from '../../assets/images/games/zone-nova/characters/Apep.png';
-import ApolloImg from '../../assets/images/games/zone-nova/characters/Apollo.jpg';
-import ApolloPngImg from '../../assets/images/games/zone-nova/characters/Apollo.png';
-import AsmodeusImg from '../../assets/images/games/zone-nova/characters/Asmodeus.png';
-import ArtemisImg from '../../assets/images/games/zone-nova/characters/Artemis.jpg';
-import ArtemisPngImg from '../../assets/images/games/zone-nova/characters/Artemis.png';
-import ArthurImg from '../../assets/images/games/zone-nova/characters/Arthur.jpg';
-import AthenaImg from '../../assets/images/games/zone-nova/characters/Athena.jpg';
-import AthenaPngImg from '../../assets/images/games/zone-nova/characters/Athena.png';
-import BastetImg from '../../assets/images/games/zone-nova/characters/Bastet.jpg';
-import BastetPngImg from '../../assets/images/games/zone-nova/characters/Bastet.png';
-import BelphegarImg from '../../assets/images/games/zone-nova/characters/belphegar.jpg';
-import BelphegarPngImg from '../../assets/images/games/zone-nova/characters/belphegar.png';
-import ChiyaImg from '../../assets/images/games/zone-nova/characters/Chiya.jpg';
-import ChiyaPngImg from '../../assets/images/games/zone-nova/characters/Chiya.png';
-import CleopatraImg from '../../assets/images/games/zone-nova/characters/Cleopatra.jpg';
-import CleopatraPngImg from '../../assets/images/games/zone-nova/characters/Cleopatra.png';
-import ErikaPngImg from '../../assets/images/games/zone-nova/characters/Erika.png';
-import FreyaImg from '../../assets/images/games/zone-nova/characters/Freya.jpg';
-import FreyaPngImg from '../../assets/images/games/zone-nova/characters/Freya.png';
-import FriggaImg from '../../assets/images/games/zone-nova/characters/Frigga.jpg';
-import FriggaPngImg from '../../assets/images/games/zone-nova/characters/Frigga.png';
-import GaiaImg from '../../assets/images/games/zone-nova/characters/Gaia.jpg';
-import GaiaPngImg from '../../assets/images/games/zone-nova/characters/Gaia.png';
-import BeelzebubImg from '../../assets/images/games/zone-nova/characters/Beelzebub.png';
-import GreedMammonImg from '../../assets/images/games/zone-nova/characters/GreedMammon.jpg';
-import GreedMammonPngImg from '../../assets/images/games/zone-nova/characters/GreedMammon.png';
-import GuinevereImg from '../../assets/images/games/zone-nova/characters/Guinevere.jpg';
-import GuineverePngImg from '../../assets/images/games/zone-nova/characters/Guinevere.png';
-import HelaImg from '../../assets/images/games/zone-nova/characters/Hela.jpg';
-import HelaPngImg from '../../assets/images/games/zone-nova/characters/Hela.png';
-import HeraImg from '../../assets/images/games/zone-nova/characters/Hera.jpg';
-import HiyoriPngImg from '../../assets/images/games/zone-nova/characters/Hiyori.png';
-import HorusImg from '../../assets/images/games/zone-nova/characters/Horus.jpg';
-import HorusPngImg from '../../assets/images/games/zone-nova/characters/Horus.png';
-import IbarakiDojiImg from '../../assets/images/games/zone-nova/characters/Ibaraki-doji.jpg';
-import IbarakiDojiPngImg from '../../assets/images/games/zone-nova/characters/Ibaraki-doji.png';
-import JoanofArcImg from '../../assets/images/games/zone-nova/characters/JoanofArc.jpg';
-import JillPngImg from '../../assets/images/games/zone-nova/characters/Jill.png';
-import JorogumoImg from '../../assets/images/games/zone-nova/characters/Jorogumo.jpg';
-import JorogumoPngImg from '../../assets/images/games/zone-nova/characters/Jorogumo.png';
-import KelaImg from '../../assets/images/games/zone-nova/characters/kela.jpg';
-import KelaPngImg from '../../assets/images/games/zone-nova/characters/kela.png';
-import KellerPngImg from '../../assets/images/games/zone-nova/characters/Keller.png';
-import LancelotImg from '../../assets/images/games/zone-nova/characters/Lancelot.jpg';
-import LancelotPngImg from '../../assets/images/games/zone-nova/characters/Lancelot.png';
-import LaviniaImg from '../../assets/images/games/zone-nova/characters/Lavinia.jpg';
-import LeviathanImg from '../../assets/images/games/zone-nova/characters/Leviathan.jpg';
-import LeviathanPngImg from '../../assets/images/games/zone-nova/characters/Leviathan.png';
-import LilyImg from '../../assets/images/games/zone-nova/characters/Lily.jpg';
-import LilyPngImg from '../../assets/images/games/zone-nova/characters/Lily.png';
-import LokiImg from '../../assets/images/games/zone-nova/characters/Loki.jpg';
-import LokiPngImg from '../../assets/images/games/zone-nova/characters/Loki.png';
-import LuciferPngImg from '../../assets/images/games/zone-nova/characters/Lucifer.png';
-import LyraImg from '../../assets/images/games/zone-nova/characters/Lyra.jpg';
-import LyraPngImg from '../../assets/images/games/zone-nova/characters/Lyra.png';
-import MerlinImg from '../../assets/images/games/zone-nova/characters/Merlin.jpg';
-import MerlinPngImg from '../../assets/images/games/zone-nova/characters/Merlin.png';
-import MorganImg from '../../assets/images/games/zone-nova/characters/Morgan.jpg';
-import MorganPngImg from '../../assets/images/games/zone-nova/characters/Morgan.png';
-import MordredImg from '../../assets/images/games/zone-nova/characters/Mordred.jpg';
-import MordredPngImg from '../../assets/images/games/zone-nova/characters/Mordred.png';
-import NaiyaImg from '../../assets/images/games/zone-nova/characters/Naiya.jpg';
-import NaiyaPngImg from '../../assets/images/games/zone-nova/characters/Naiya.png';
-import NinaImg from '../../assets/images/games/zone-nova/characters/Nina.jpg';
-import NiniImg from '../../assets/images/games/zone-nova/characters/Nini.jpg';
-import OdinImg from '../../assets/images/games/zone-nova/characters/Odin.jpg';
-import OdinPngImg from '../../assets/images/games/zone-nova/characters/Odin.png';
-import PennyImg from '../../assets/images/games/zone-nova/characters/penny.jpg';
-import RoseImg from '../../assets/images/games/zone-nova/characters/Rose.jpg';
-import RosePngImg from '../../assets/images/games/zone-nova/characters/Rose.png';
-import ShannaImg from '../../assets/images/games/zone-nova/characters/Shanna.jpg';
-import ShannaPngImg from '../../assets/images/games/zone-nova/characters/Shanna.png';
-import SigurdImg from '../../assets/images/games/zone-nova/characters/Sigurd.jpg';
-import SigurdPngImg from '../../assets/images/games/zone-nova/characters/Sigurd.png';
-import SharinPngImg from '../../assets/images/games/zone-nova/characters/Sharin.png';
-import ShuImg from '../../assets/images/games/zone-nova/characters/Shu.jpg';
-import ShuPngImg from '../../assets/images/games/zone-nova/characters/Shu.png';
-import SnowImg from '../../assets/images/games/zone-nova/characters/Snow.jpg';
-import SnowPngImg from '../../assets/images/games/zone-nova/characters/Snow.png';
-import TefnutImg from '../../assets/images/games/zone-nova/characters/Tefnut.jpg';
-import TefnutPngImg from '../../assets/images/games/zone-nova/characters/Tefnut.png';
-import ThorImg from '../../assets/images/games/zone-nova/characters/Thor.jpg';
-import ThorPngImg from '../../assets/images/games/zone-nova/characters/Thor.png';
-import YuisImg from '../../assets/images/games/zone-nova/characters/Yuis.jpg';
-import YuisPngImg from '../../assets/images/games/zone-nova/characters/Yuis.png';
-import ZashikiWarashiImg from '../../assets/images/games/zone-nova/characters/Zashiki-warashi.jpg';
-import ZashikiWarashiPngImg from '../../assets/images/games/zone-nova/characters/Zashiki-warashi.png';
-import ShutenDojiImg from '../../assets/images/games/zone-nova/characters/Shuten-doji.jpg';
-import ShutenDojiPngImg from '../../assets/images/games/zone-nova/characters/Shuten-doji.png';
-import TamamoNoMaeImg from '../../assets/images/games/zone-nova/characters/Tamamo-no-mae.jpg';
-import TamamoNoMaePngImg from '../../assets/images/games/zone-nova/characters/Tamamo-no-mae.png';
-import PrideLuciferImg from '../../assets/images/games/zone-nova/characters/Lucifer.jpg';
-import WrathSamaelImg from '../../assets/images/games/zone-nova/characters/Wrath_Samael.jpg';
-import WrathSamaelPngImg from '../../assets/images/games/zone-nova/characters/Wrath_Samael.png';
-
-// Centralized character image mapping
-const characterImageMap = {
-  'Afrodite.jpg': AfroditeImg,
-  'Afrodite.png': '/images/games/zone-nova/characters/Afrodite.png',
-  'Anubis.jpg': AnubisImg,
-  'Anubis.png': AnubisPngImg,
-  'Apep.jpg': ApepImg,
-  'Apep.png': ApepPngImg,
-  'Apollo.jpg': ApolloImg,
-  'Apollo.png': ApolloPngImg,
-  'Asmodeus.png': AsmodeusImg,
-  'Artemis.jpg': ArtemisImg,
-  'Artemis.png': ArtemisPngImg,
-  'Arthur.jpg': ArthurImg,
-  'Arthur.png': '/images/games/zone-nova/characters/Arthur.png',
-  'Athena.jpg': AthenaImg,
-  'Athena.png': AthenaPngImg,
-  'Bastet.jpg': BastetImg,
-  'Bastet.png': BastetPngImg,
-  'belphegar.jpg': BelphegarImg,
-  'belphegar.png': BelphegarPngImg,
-  'Chiya.jpg': ChiyaImg,
-  'Chiya.png': ChiyaPngImg,
-  'Cleopatra.jpg': CleopatraImg,
-  'Cleopatra.png': CleopatraPngImg,
-  'Erika.png': ErikaPngImg,
-  'Erika.jpg': ErikaPngImg,
-  'Freya.jpg': FreyaImg,
-  'Freya.png': FreyaPngImg,
-  'Frigga.jpg': FriggaImg,
-  'Frigga.png': FriggaPngImg,
-  'Gaia.jpg': GaiaImg,
-  'Gaia.png': GaiaPngImg,
-  'Beelzebub.png': BeelzebubImg,
-  'GreedMammon.jpg': GreedMammonImg,
-  'GreedMammon.png': GreedMammonPngImg,
-  'Guinevere.jpg': GuinevereImg,
-  'Guinevere.png': GuineverePngImg,
-  'Hela.jpg': HelaImg,
-  'Hela.png': HelaPngImg,
-  'Hera.jpg': HeraImg,
-  'Hera.png': '/images/games/zone-nova/characters/Hera.png',
-  'Hiyori.png': HiyoriPngImg,
-  'Horus.jpg': HorusImg,
-  'Horus.png': HorusPngImg,
-  'Ibaraki-doji.jpg': IbarakiDojiImg,
-  'Ibaraki-doji.png': IbarakiDojiPngImg,
-  'Ibaraki-dōji.jpg': IbarakiDojiImg,
-  'Ibaraki-dōji.png': IbarakiDojiPngImg,
-  'JoanofArc.jpg': JoanofArcImg,
-  'JoanofArc.png': '/images/games/zone-nova/characters/JoanofArc.png',
-  'Jill.png': JillPngImg,
-  'Jill.jpg': JillPngImg,
-  'Jorogumo.jpg': JorogumoImg,
-  'Jorogumo.png': JorogumoPngImg,
-  'kela.jpg': KelaImg,
-  'kela.png': KelaPngImg,
-  'Keller.png': KellerPngImg,
-  'Keller.jpg': KellerPngImg,
-  'Lancelot.jpg': LancelotImg,
-  'Lancelot.png': LancelotPngImg,
-  'Lavinia.jpg': LaviniaImg,
-  'Lavinia.png': '/images/games/zone-nova/characters/Lavinia.png',
-  'Leviathan.jpg': LeviathanImg,
-  'Leviathan.png': LeviathanPngImg,
-  'Lily.jpg': LilyImg,
-  'Lily.png': LilyPngImg,
-  'Loki.jpg': LokiImg,
-  'Loki.png': LokiPngImg,
-  'Lucifer.png': LuciferPngImg,
-  'Lyra.jpg': LyraImg,
-  'Lyra.png': LyraPngImg,
-  'Merlin.jpg': MerlinImg,
-  'Merlin.png': MerlinPngImg,
-  'Morgan.jpg': MorganImg,
-  'Morgan.png': MorganPngImg,
-  'Mordred.jpg': MordredImg,
-  'Mordred.png': MordredPngImg,
-  'Naiya.jpg': NaiyaImg,
-  'Naiya.png': NaiyaPngImg,
-  'Nina.jpg': NinaImg,
-  'Nina.png': '/images/games/zone-nova/characters/Nina.png',
-  'Nini.jpg': NiniImg,
-  'Nini.png': '/images/games/zone-nova/characters/Nini.png',
-  'Odin.jpg': OdinImg,
-  'Odin.png': OdinPngImg,
-  'penny.jpg': PennyImg,
-  'penny.png': '/images/games/zone-nova/characters/penny.png',
-  'Rose.jpg': RoseImg,
-  'Rose.png': RosePngImg,
-  'Shanna.jpg': ShannaImg,
-  'Shanna.png': ShannaPngImg,
-  'Sharin.png': SharinPngImg,
-  'Sigurd.jpg': SigurdImg,
-  'Sigurd.png': SigurdPngImg,
-  'Shu.jpg': ShuImg,
-  'Shu.png': ShuPngImg,
-  'Snow.jpg': SnowImg,
-  'Snow.png': SnowPngImg,
-  'Tefnut.jpg': TefnutImg,
-  'Tefnut.png': TefnutPngImg,
-  'Thor.jpg': ThorImg,
-  'Thor.png': ThorPngImg,
-  'Yuis.jpg': YuisImg,
-  'Yuis.png': YuisPngImg,
-  'Zashiki-warashi.jpg': ZashikiWarashiImg,
-  'Zashiki-warashi.png': ZashikiWarashiPngImg,
-  'Shuten-doji.jpg': ShutenDojiImg,
-  'Shuten-doji.png': ShutenDojiPngImg,
-  'Tamamo-no-mae.jpg': TamamoNoMaeImg,
-  'Tamamo-no-mae.png': TamamoNoMaePngImg,
-  'Lucifer.jpg': PrideLuciferImg,
-  'lucifer.jpg': PrideLuciferImg,
-  'Wrath_Samael.jpg': WrathSamaelImg,
-  'Wrath_Samael.png': WrathSamaelPngImg,
+// Centralized character image mapping (URL strings served from R2)
+const characterImageMap: Record<string, string> = {
+  'Afrodite.jpg': `${R2}/Afrodite.jpg`,
+  'Afrodite.png': `${R2}/Afrodite.png`,
+  'Anubis.jpg': `${R2}/Anubis.jpg`,
+  'Anubis.png': `${R2}/Anubis.png`,
+  'Apep.jpg': `${R2}/Apep.jpg`,
+  'Apep.png': `${R2}/Apep.png`,
+  'Apollo.jpg': `${R2}/Apollo.jpg`,
+  'Apollo.png': `${R2}/Apollo.png`,
+  'Asmodeus.png': `${R2}/Asmodeus.png`,
+  'Artemis.jpg': `${R2}/Artemis.jpg`,
+  'Artemis.png': `${R2}/Artemis.png`,
+  'Arthur.jpg': `${R2}/Arthur.jpg`,
+  'Arthur.png': `${R2}/Arthur.png`,
+  'Athena.jpg': `${R2}/Athena.jpg`,
+  'Athena.png': `${R2}/Athena.png`,
+  'Bastet.jpg': `${R2}/Bastet.jpg`,
+  'Bastet.png': `${R2}/Bastet.png`,
+  'belphegar.jpg': `${R2}/belphegar.jpg`,
+  'belphegar.png': `${R2}/belphegar.png`,
+  'Chiya.jpg': `${R2}/Chiya.jpg`,
+  'Chiya.png': `${R2}/Chiya.png`,
+  'Cleopatra.jpg': `${R2}/Cleopatra.jpg`,
+  'Cleopatra.png': `${R2}/Cleopatra.png`,
+  'Erika.png': `${R2}/Erika.png`,
+  'Erika.jpg': `${R2}/Erika.png`,
+  'Freya.jpg': `${R2}/Freya.jpg`,
+  'Freya.png': `${R2}/Freya.png`,
+  'Frigga.jpg': `${R2}/Frigga.jpg`,
+  'Frigga.png': `${R2}/Frigga.png`,
+  'Gaia.jpg': `${R2}/Gaia.jpg`,
+  'Gaia.png': `${R2}/Gaia.png`,
+  'Beelzebub.png': `${R2}/Beelzebub.png`,
+  'GreedMammon.jpg': `${R2}/GreedMammon.jpg`,
+  'GreedMammon.png': `${R2}/GreedMammon.png`,
+  'Guinevere.jpg': `${R2}/Guinevere.jpg`,
+  'Guinevere.png': `${R2}/Guinevere.png`,
+  'Hela.jpg': `${R2}/Hela.jpg`,
+  'Hela.png': `${R2}/Hela.png`,
+  'Hera.jpg': `${R2}/Hera.jpg`,
+  'Hera.png': `${R2}/Hera.png`,
+  'Hiyori.png': `${R2}/Hiyori.png`,
+  'Horus.jpg': `${R2}/Horus.jpg`,
+  'Horus.png': `${R2}/Horus.png`,
+  'Ibaraki-doji.jpg': `${R2}/Ibaraki-doji.jpg`,
+  'Ibaraki-doji.png': `${R2}/Ibaraki-doji.png`,
+  'Ibaraki-dōji.jpg': `${R2}/Ibaraki-doji.jpg`,
+  'Ibaraki-dōji.png': `${R2}/Ibaraki-doji.png`,
+  'JoanofArc.jpg': `${R2}/JoanofArc.jpg`,
+  'JoanofArc.png': `${R2}/JoanofArc.png`,
+  'Jill.png': `${R2}/Jill.png`,
+  'Jill.jpg': `${R2}/Jill.png`,
+  'Jorogumo.jpg': `${R2}/Jorogumo.jpg`,
+  'Jorogumo.png': `${R2}/Jorogumo.png`,
+  'kela.jpg': `${R2}/kela.jpg`,
+  'kela.png': `${R2}/kela.png`,
+  'Keller.png': `${R2}/Keller.png`,
+  'Keller.jpg': `${R2}/Keller.png`,
+  'Lancelot.jpg': `${R2}/Lancelot.jpg`,
+  'Lancelot.png': `${R2}/Lancelot.png`,
+  'Lavinia.jpg': `${R2}/Lavinia.jpg`,
+  'Lavinia.png': `${R2}/Lavinia.png`,
+  'Leviathan.jpg': `${R2}/Leviathan.jpg`,
+  'Leviathan.png': `${R2}/Leviathan.png`,
+  'Lily.jpg': `${R2}/Lily.jpg`,
+  'Lily.png': `${R2}/Lily.png`,
+  'Loki.jpg': `${R2}/Loki.jpg`,
+  'Loki.png': `${R2}/Loki.png`,
+  'Lucifer.png': `${R2}/Lucifer.png`,
+  'Lyra.jpg': `${R2}/Lyra.jpg`,
+  'Lyra.png': `${R2}/Lyra.png`,
+  'Merlin.jpg': `${R2}/Merlin.jpg`,
+  'Merlin.png': `${R2}/Merlin.png`,
+  'Morgan.jpg': `${R2}/Morgan.jpg`,
+  'Morgan.png': `${R2}/Morgan.png`,
+  'Mordred.jpg': `${R2}/Mordred.jpg`,
+  'Mordred.png': `${R2}/Mordred.png`,
+  'Naiya.jpg': `${R2}/Naiya.jpg`,
+  'Naiya.png': `${R2}/Naiya.png`,
+  'Nina.jpg': `${R2}/Nina.jpg`,
+  'Nina.png': `${R2}/Nina.png`,
+  'Nini.jpg': `${R2}/Nini.jpg`,
+  'Nini.png': `${R2}/Nini.png`,
+  'Odin.jpg': `${R2}/Odin.jpg`,
+  'Odin.png': `${R2}/Odin.png`,
+  'penny.jpg': `${R2}/penny.jpg`,
+  'penny.png': `${R2}/penny.png`,
+  'Rose.jpg': `${R2}/Rose.jpg`,
+  'Rose.png': `${R2}/Rose.png`,
+  'Shanna.jpg': `${R2}/Shanna.jpg`,
+  'Shanna.png': `${R2}/Shanna.png`,
+  'Sharin.png': `${R2}/Sharin.png`,
+  'Sigurd.jpg': `${R2}/Sigurd.jpg`,
+  'Sigurd.png': `${R2}/Sigurd.png`,
+  'Shu.jpg': `${R2}/Shu.jpg`,
+  'Shu.png': `${R2}/Shu.png`,
+  'Snow.jpg': `${R2}/Snow.jpg`,
+  'Snow.png': `${R2}/Snow.png`,
+  'Tefnut.jpg': `${R2}/Tefnut.jpg`,
+  'Tefnut.png': `${R2}/Tefnut.png`,
+  'Thor.jpg': `${R2}/Thor.jpg`,
+  'Thor.png': `${R2}/Thor.png`,
+  'Yuis.jpg': `${R2}/Yuis.jpg`,
+  'Yuis.png': `${R2}/Yuis.png`,
+  'Zashiki-warashi.jpg': `${R2}/Zashiki-warashi.jpg`,
+  'Zashiki-warashi.png': `${R2}/Zashiki-warashi.png`,
+  'Shuten-doji.jpg': `${R2}/Shuten-doji.jpg`,
+  'Shuten-doji.png': `${R2}/Shuten-doji.png`,
+  'Tamamo-no-mae.jpg': `${R2}/Tamamo-no-mae.jpg`,
+  'Tamamo-no-mae.png': `${R2}/Tamamo-no-mae.png`,
+  'Lucifer.jpg': `${R2}/Lucifer.jpg`,
+  'lucifer.jpg': `${R2}/Lucifer.jpg`,
+  'Wrath_Samael.jpg': `${R2}/Wrath_Samael.jpg`,
+  'Wrath_Samael.png': `${R2}/Wrath_Samael.png`,
 };
 
 const {
@@ -239,7 +139,7 @@ const generateAltText = (imageKey: string) => {
   return `${characterName} - Zone Nova character portrait and artwork`;
 };
 
-// Process image key and get the imported image object from the map
+// Process image key and get the image URL from the map
 const processedImageKey = (() => {
   let key = imageName;
   if (key.includes('/')) {
@@ -258,18 +158,7 @@ const placeholderSrc = '/images/placeholder.png';
 ---
 
 {
-  imageSrc && typeof imageSrc !== 'string' ? (
-    <Image
-      src={imageSrc}
-      alt={finalAlt}
-      width={width}
-      height={height}
-      class={className}
-      loading={loading}
-      format={format}
-      quality={quality}
-    />
-  ) : imageSrc ? (
+  imageSrc ? (
     <img
       src={imageSrc}
       alt={finalAlt}

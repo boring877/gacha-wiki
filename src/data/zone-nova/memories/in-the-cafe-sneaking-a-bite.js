@@ -6,7 +6,7 @@ export const inTheCafeSneakingABiteData = {
   id: 'in-the-cafe-sneaking-a-bite',
   slug: 'in-the-cafe-sneaking-a-bite',
   name: 'In the Cafe, Sneaking a Bite',
-  image: '/images/games/zone-nova/memories/InTheCafeSneakingABite.png',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/InTheCafeSneakingABite.png',
   rarity: 'SSR',
   character: 'Lily',
   detailUrl: '/guides/zone-nova/memories/in-the-cafe-sneaking-a-bite/',

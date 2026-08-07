@@ -4,7 +4,7 @@
 export const busyOfficerData = {
   // Basic Memory Information
   name: 'Busy Officer (忙里偷闲)',
-  image: '/images/games/zone-nova/memories/BusyOfficer.png',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/BusyOfficer.png',
   rarity: 'SR',
   character: 'Shu',
 
