@@ -2,8 +2,10 @@
 // Busty Burst JP-server event/banner timeline page.
 // Mirrors the English (Global) banner-timeline.astro visual design:
 // full-width banner sections (image left, details right), grouped by year.
-// Banner images are stored locally under src/assets/.../Banner_Img_JP/.
-import { Image } from 'astro:assets';
+// Banner images are served as static files from public/images/.../Banner_Img_JP/
+// (NOT through astro:assets, to avoid generating responsive variants that would
+// exceed Cloudflare Pages' 20,000-file deployment limit).
+import { readdirSync } from 'node:fs';
 import BannerTimelineLayout from '../../../layouts/busty-burst/BannerTimelineLayout.astro';
 import {
   jpBannerTimelineData,
@@ -16,21 +18,18 @@ const pageDescription =
   'Chronological timeline of all limited events and summon banners on the Japanese server of Busty Burst (巨乳ファンタジーバースト), from the 2023 launch to present. New→old, grouped by year.';
 const gameTitle = 'JP Event Timeline';
 
-// Load all local JP banner images into a map keyed by banner id.
-// Supports both .jpg and .png (one wiki image is a PNG mislabeled as .jpg).
-const bannerImageModules = import.meta.glob<{ default: ImageMetadata }>(
-  '../../../assets/images/games/Busty_Burst/Banner_Img_JP/*.{jpg,png}'
-);
-const bannerImageMap: Record<string, ImageMetadata> = {};
-for (const [path, mod] of Object.entries(bannerImageModules)) {
-  const file = path.split('/').pop()!.replace(/\.(jpg|png)$/, '');
-  bannerImageMap[file] = (await mod()).default;
-}
+// Build a map of which banner ids have a static image file in public/.
+const STATIC_DIR = 'public/images/games/Busty_Burst/Banner_Img_JP';
+const existingFiles = new Set(readdirSync(STATIC_DIR));
+const hasImage = (id: string) =>
+  existingFiles.has(`${id}.jpg`) || existingFiles.has(`${id}.png`);
+const imagePath = (id: string) =>
+  `/images/games/Busty_Burst/Banner_Img_JP/${id}.${existingFiles.has(`${id}.png`) ? 'png' : 'jpg'}`;
 
 const years = getJpTimelineYears();
 const totalEvents = jpBannerTimelineData.length;
 const rerunCount = jpBannerTimelineData.filter(b => b.bannerType === 'rerun').length;
-const withImage = jpBannerTimelineData.filter(b => bannerImageMap[b.id]).length;
+const withImage = jpBannerTimelineData.filter(b => hasImage(b.id)).length;
 
 // Global counter for the #N numbering, newest = highest number.
 const newestFirst = [...jpBannerTimelineData].sort(
@@ -144,7 +143,6 @@ const getStatusLabel = (status: string) => {
             </h2>
             {yearBanners.map(banner => {
               const number = newestFirst.findIndex(b => b.id === banner.id) + 1;
-              const img = bannerImageMap[banner.id];
               return (
                 <article
                   class="banner-section jp-banner-entry"
@@ -167,13 +165,11 @@ const getStatusLabel = (status: string) => {
                   <section class="banner-content">
                     <div class="banner-info">
                       <div class="summon-banner-card">
-                        {img ? (
+                        {hasImage(banner.id) ? (
                           <div class="bb-banner-image">
-                            <Image
-                              src={img}
+                            <img
+                              src={imagePath(banner.id)}
                               alt={banner.title}
-                              widths={[400, 800]}
-                              sizes="400px"
                               loading="lazy"
                               class="bb-banner-image__img"
                             />
