@@ -19,12 +19,6 @@ export const blogConfig = {
       category: 'Guide',
       tags: ['beginner', 'guide', 'tips', 'new-player'],
       content: `
-        <h2>Video Guide</h2>
-        <p>This beginner guide is based on the video below. Use the timestamps to jump to specific sections.</p>
-        <div class="sab-blog-video-embed">
-          <p><em>Video embed placeholder — add your video URL here.</em></p>
-        </div>
-
         <h2>Timestamps</h2>
         <table class="sab-blog-table">
           <thead>

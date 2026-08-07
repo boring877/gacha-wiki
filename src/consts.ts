@@ -5,7 +5,7 @@
 export const SITE = {
   TITLE: 'GachaWiki',
   DESCRIPTION:
-    'Comprehensive guides, character builds, and game strategies for popular gacha games like Zone Nova, Silver and Blood, Horizon Walker, Stella Sora, and Rebellion Gilgamesh. Complete wiki with character database, damage mechanics, and game strategies.',
+    'Comprehensive guides, character builds, tier lists, and game strategies for popular gacha games including Zone Nova, Silver and Blood, Horizon Walker, Stella Sora, Busty Burst, Star Savior, Last Origin, Rebellion Gilgamesh, and more. Complete wiki with character databases, damage mechanics, daily reset timers, and tools.',
   AUTHOR: 'GachaWiki',
   DEFAULT_IMAGE: '/images/about.jpg',
   SOCIAL: {

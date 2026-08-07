@@ -6,7 +6,7 @@ export const info = {
   "name": "Collie",
   "displayName": "Collie",
   "baseName": "Collie",
-  "title": null,
+  "title": "The Busty Beast Dismantler",
   "rarity": "SR",
   "element": "Wind",
   "role": "Attacker",
@@ -22,7 +22,7 @@ export const info = {
     "Buff"
   ],
   "image": "Collie",
-  "introduction": "Front Row、Physical、Attacker",
+  "introduction": "A famous military commander of old once declared, \"I came, I saw, I conquered.\" For Beast Huntresses, however, the motto is: \"Wait, Hunt, Dismantle.\" After Eva and the others bring down a magical beast, it's Collie's job to swiftly remove its horns and fangs before they can be damaged. Together with her two companions, Collie arrives in Elron and immediately begins searching for a medium-class magical beast. However...",
   "profile": {
     "height": "157cm",
     "bust": "111cm (M Cup)",

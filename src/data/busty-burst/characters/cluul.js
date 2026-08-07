@@ -6,7 +6,7 @@ export const info = {
   "name": "Cluul",
   "displayName": "Cluul",
   "baseName": "Cluul",
-  "title": null,
+  "title": "The Chubby and Stoic Twin Paladins",
   "rarity": "SSR",
   "element": "Mind",
   "role": "Attacker",
@@ -22,7 +22,7 @@ export const info = {
     "Debuff"
   ],
   "image": "Cluul",
-  "introduction": "Middle Row、Magical、Attacker",
+  "introduction": "One of the twin Paladins belonging to a top-ranked team in the Quarto Class. Though she appears cold and stoic on the outside, her passion for food may surpass even Raoul's",
   "profile": {
     "height": "140cm",
     "bust": "112cm (O Cup)",

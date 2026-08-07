@@ -23,7 +23,7 @@ export const info = {
     "Buff"
   ],
   "image": "Henrietti",
-  "introduction": "Middle Row、Physical、Support",
+  "introduction": "While handling an appraisal request, Henrietti declared an item to be a counterfeit, enraging its owner and getting herself thrown out of the estate. Talk about rotten luck. Hoping to turn her fortunes around, she visits Marina, the fortune teller of Elron, for advice. Marina simply tells her, \"Take part in a sacred festival. Dance.\" A spark of inspiration flashes through Henrietti's mind",
   "profile": {
     "height": "153cm",
     "bust": "97cm (J Cup)",

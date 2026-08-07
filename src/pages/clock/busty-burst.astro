@@ -69,6 +69,7 @@ const games = [
     updatePiBustyDay();
     updateAnniversary();
     updateMaintenance();
+    updateWeeklyMaintenance();
     updateLTC();
 
     // Update every second
@@ -82,6 +83,7 @@ const games = [
       updatePiBustyDay();
       updateAnniversary();
       updateMaintenance();
+      updateWeeklyMaintenance();
       updateLTC();
     }, 1000);
   }
@@ -265,11 +267,11 @@ const games = [
     }
   }
 
-  // Update PI Busty Day timer (8th, 18th, 28th of each month)
+  // Update Busty Day timer (8th, 18th, 28th of each month) — standalone section
   function updatePiBustyDay() {
-    const piBustyDayEl = document.getElementById('piBustyDayTime');
-    const piBustyDayDateEl = document.getElementById('piBustyDayDate');
-    if (!piBustyDayEl) return;
+    const bdCountdownEl = document.getElementById('bustyDayCountdown');
+    const bdDateEl = document.getElementById('bustyDayDate');
+    if (!bdCountdownEl && !bdDateEl) return;
 
     const now = new Date();
     const currentDay = now.getUTCDate();
@@ -281,7 +283,7 @@ const games = [
     let nextMonth = currentMonth;
     let nextYear = currentYear;
 
-    // Find the next PI Busty Day
+    // Find the next Busty Day
     const upcomingThisMonth = piBustyDays.find(d => d > currentDay);
     if (upcomingThisMonth) {
       nextPiDay = upcomingThisMonth;
@@ -299,26 +301,33 @@ const games = [
     const timeDiff = nextPiBustyDate.getTime() - now.getTime();
     const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
 
-    piBustyDayEl.textContent = `${days}d ${hours}h`;
+    const monthNames = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ];
 
-    // Update the subtitle to show which date is next
-    if (piBustyDayDateEl) {
-      const monthNames = [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec',
-      ];
-      piBustyDayDateEl.textContent = `${monthNames[nextMonth]} ${nextPiDay}`;
+    if (bdCountdownEl) {
+      // Detailed countdown: days, hours, minutes
+      if (days > 0) {
+        bdCountdownEl.textContent = `${days}d ${hours}h ${mins}m`;
+      } else {
+        bdCountdownEl.textContent = `${hours}h ${mins}m`;
+      }
+    }
+    if (bdDateEl) {
+      bdDateEl.textContent = `${monthNames[nextMonth]} ${nextPiDay}`;
     }
   }
 
@@ -415,6 +424,81 @@ const games = [
       if (maintenanceEndItem) maintenanceEndItem.style.display = 'none';
       if (noMaintenanceMessage) noMaintenanceMessage.style.display = 'block';
     }
+  }
+
+  // Recurring weekly maintenance: every Tuesday at 04:00 UTC (3 hours)
+  // Busty Burst maintenance follows a consistent Tuesday schedule.
+  function updateWeeklyMaintenance() {
+    const el = document.getElementById('weeklyMaintenanceTime');
+    if (!el) return;
+
+    const now = new Date();
+    const currentDay = now.getUTCDay(); // 0=Sun, 2=Tue
+    const currentHour = now.getUTCHours();
+    const currentMin = now.getUTCMinutes();
+    const currentSec = now.getUTCSeconds();
+
+    // Maintenance window: Tuesday 04:00 - 07:00 UTC
+    const MAINT_HOUR = 4;
+    const MAINT_END_HOUR = 7;
+    const TUESDAY = 2;
+
+    // Are we currently in the maintenance window?
+    const isMaintenanceDay = currentDay === TUESDAY;
+    const inWindow =
+      isMaintenanceDay &&
+      (currentHour >= MAINT_HOUR && currentHour < MAINT_END_HOUR);
+
+    if (inWindow) {
+      // During maintenance — countdown to 07:00 UTC
+      const endMs = Date.UTC(
+        now.getUTCFullYear(),
+        now.getUTCMonth(),
+        now.getUTCDate(),
+        MAINT_END_HOUR,
+        0,
+        0
+      );
+      let diff = endMs - now.getTime();
+      const h = Math.floor(diff / 3600000);
+      diff %= 3600000;
+      const m = Math.floor(diff / 60000);
+      diff %= 60000;
+      const s = Math.floor(diff / 1000);
+      el.textContent = `${h}h ${m}m ${s}s`;
+      return;
+    }
+
+    // Compute next Tuesday 04:00 UTC
+    let daysUntil = (TUESDAY - currentDay + 7) % 7;
+    // If today is Tuesday but past 04:00 (and past the window), go to next week
+    if (
+      daysUntil === 0 &&
+      (currentHour > MAINT_END_HOUR ||
+        (currentHour >= MAINT_END_HOUR))
+    ) {
+      daysUntil = 7;
+    }
+
+    const targetMs = Date.UTC(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate() + daysUntil,
+      MAINT_HOUR,
+      0,
+      0
+    );
+    let diff = targetMs - now.getTime();
+    const d = Math.floor(diff / 86400000);
+    diff %= 86400000;
+    const h = Math.floor(diff / 3600000);
+    diff %= 3600000;
+    const m = Math.floor(diff / 60000);
+    diff %= 60000;
+    const s = Math.floor(diff / 1000);
+
+    el.textContent =
+      d > 0 ? `${d}d ${h}h ${m}m` : `${h}h ${m}m ${s}s`;
   }
 
   // Update Limited Time Challenge timer

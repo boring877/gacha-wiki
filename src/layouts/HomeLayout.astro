@@ -15,15 +15,26 @@ import MobileMenu from '../components/MobileMenu.astro';
 export interface Props {
   title: string;
   description?: string;
+  keywords?: readonly string[];
+  image?: string;
+  pageType?: 'website' | 'article' | 'webapp';
+  noIndex?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, keywords, image, pageType, noIndex } = Astro.props;
 ---
 
 <html lang="en">
   <head>
     <GeneralBaseHead title={title} description={description || ''} />
-    <GeneralSEO title={title} description={description || ''} />
+    <GeneralSEO
+      title={title}
+      description={description || ''}
+      keywords={keywords}
+      image={image}
+      pageType={pageType}
+      noIndex={noIndex}
+    />
     <Analytics />
     <slot name="head" />
   </head>

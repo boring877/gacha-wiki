@@ -25,7 +25,7 @@ export const info = {
     "MP Recovery"
   ],
   "image": "Artia",
-  "introduction": "Middle Row、Magical、Support",
+  "introduction": "When Artia arrived in Elron to deliver good news, Margaret and the others were in the middle of a secret meeting. They were planning a surprise celebration to mark the lord's Half Anniversary. However, with very few people able to attend the celebration on the day itself, Artia decided to join the event at the last minute. Yet the outfit prepared for her was something she never could have expected——",
   "profile": {
     "height": "165cm",
     "bust": "95cm (G Cup)",

@@ -519,8 +519,10 @@ class ZoneNovaRankingsManagerOptimized {
   }
 }
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize the rankings manager. Exported so the page can import + call it
+// from a bundled Astro <script> (Vite minifies + emits it as a real asset,
+// instead of relying on a hand-copied file in public/scripts/).
+export function initializeZoneNovaRankings() {
   try {
     // Validate required data exists
     if (!window.zoneNovaRankingsData) {
@@ -574,7 +576,10 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     }
   }
-});
+}
+
+// Export the class for potential external use / debugging
+window.ZoneNovaRankingsManagerOptimized = ZoneNovaRankingsManagerOptimized;
 
 // Export for potential external use
 window.ZoneNovaRankingsManagerOptimized = ZoneNovaRankingsManagerOptimized;

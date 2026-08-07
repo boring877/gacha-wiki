@@ -6,7 +6,7 @@ export const info = {
   "name": "Yaksha",
   "displayName": "Yaksha",
   "baseName": "Yaksha",
-  "title": null,
+  "title": "The Forgotten Assassin",
   "rarity": "SSR",
   "element": "Dark",
   "role": "Attacker",
@@ -22,7 +22,7 @@ export const info = {
     "Debuff"
   ],
   "image": "Yaksha",
-  "introduction": "Front Row、Physical、Attacker",
+  "introduction": "The Kingdom of Dominion, which had secretly increased the number of Beasts in order to provoke the King of Vern into joining the war, decided to temporarily suspend the operation to avoid exposing its involvement. However, not everyone was willing to obey those orders. As a result, Dominion commissioned an assassination mission to Shura, a notorious assassin organization. The one who accepted the assignment was Yaksha—the most skilled assassin among Shura's ranks.",
   "profile": {
     "height": "176cm",
     "bust": "110cm (I Cup)",

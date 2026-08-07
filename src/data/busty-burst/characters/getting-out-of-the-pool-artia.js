@@ -6,7 +6,7 @@ export const info = {
   "name": "Getting Out of the Pool: Artia",
   "displayName": "Getting Out of the Pool: Artia",
   "baseName": "Artia",
-  "title": "Getting Out of the Pool",
+  "title": "Fresh Out of the Pool",
   "rarity": "SSR",
   "element": "Water",
   "role": "Attacker",
@@ -23,7 +23,7 @@ export const info = {
     "Disrupt"
   ],
   "image": "Artia",
-  "introduction": "Middle Row、Magical、Attacker",
+  "introduction": "Artia is a member of the swim team at Private Elron Academy. She is dating an underclassman who is one year younger than she is. With the preliminary tournament fast approaching, the two of them once again devote themselves to an early morning training session, giving it their all",
   "profile": {
     "height": "165cm",
     "bust": "95cm (G Cup)",

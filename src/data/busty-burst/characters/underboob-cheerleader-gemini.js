@@ -22,7 +22,7 @@ export const info = {
     "Buff"
   ],
   "image": "Gemini",
-  "introduction": "Front Row、Physical、Support",
+  "introduction": "Treasure hunter Gemini, while exploring ancient ruins, once again comes across an empty treasure chest and collapses to the ground in frustration. Convinced that she has been cursed by the god of misfortune, she seeks advice on how to break her streak of bad luck. The fortune teller Marina of Elron offers her this answer: \"If you can, try helping more people through sacred rituals...\" —",
   "profile": {
     "height": "166cm",
     "bust": "114cm (M Cup)",

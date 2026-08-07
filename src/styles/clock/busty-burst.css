@@ -296,6 +296,17 @@
   margin-bottom: 0;
 }
 
+.recurring-maintenance-item {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--bb-border);
+}
+
+.maintenance-subtitle {
+  font-size: var(--text-xs);
+  color: var(--bb-text-tertiary);
+  margin: 0.15rem 0 0.4rem;
+}
+
 .maintenance-name {
   font-weight: var(--font-semibold);
   color: var(--bb-text-primary);
@@ -335,6 +346,114 @@
 
 .newyear-card .launch-days {
   color: var(--bb-primary-light);
+}
+
+/* === BUSTY DAY FEATURE SECTION === */
+.busty-day-section {
+  margin-top: 2rem;
+}
+
+.busty-day-card {
+  display: flex;
+  flex-direction: row;
+  background: var(--bb-bg-card);
+  border: 1px solid var(--bb-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.busty-day-banner-wrap {
+  flex: 0 0 45%;
+  display: flex;
+  align-items: stretch;
+  border-right: 1px solid var(--bb-border);
+}
+
+.busty-day-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.busty-day-info {
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.busty-day-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--bb-primary-light);
+  margin: 0;
+}
+
+.busty-day-subtitle {
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+  margin: 0;
+}
+
+.busty-day-countdown-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0.75rem 0;
+  padding: 1rem 1.5rem;
+  background: var(--bb-primary-dark);
+  border: 1px solid var(--bb-border-light);
+  border-radius: 10px;
+}
+
+.busty-day-countdown-label {
+  font-size: var(--text-xs);
+  color: var(--bb-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.busty-day-countdown-value {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: var(--font-bold);
+  color: var(--bb-primary-light);
+  line-height: 1.2;
+}
+
+.busty-day-countdown-date {
+  font-size: var(--text-sm);
+  color: var(--bb-text-secondary);
+}
+
+.busty-day-desc {
+  font-size: var(--text-sm);
+  color: var(--bb-text-tertiary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Responsive: stack vertically on narrow screens */
+@media (max-width: 720px) {
+  .busty-day-card {
+    flex-direction: column;
+  }
+  .busty-day-banner-wrap {
+    flex: none;
+    border-right: none;
+    border-bottom: 1px solid var(--bb-border);
+  }
+  .busty-day-banner-img {
+    max-height: 200px;
+  }
+  .busty-day-info {
+    padding: 1.25rem;
+  }
 }
 
 /* === BUSTY BURST LTC CARD === */

@@ -109,6 +109,8 @@ export const prerender = true;
                     data-rarity={mercenary.rarity}
                     data-tags={mercenary.tags ? mercenary.tags.join(', ') : ''}
                     class="clickable-row"
+                    role="button"
+                    tabindex="0"
                   >
                     <td>{idx + 1}</td>
                     <td>
@@ -170,6 +172,8 @@ export const prerender = true;
                 data-name={mercenary.name}
                 data-rarity={mercenary.rarity}
                 data-tags={mercenary.tags ? mercenary.tags.join(', ') : ''}
+                role="button"
+                tabindex="0"
                 style="cursor:pointer; touch-action: manipulation;"
               >
                 {/* Clean header section - image, name, rarity all together */}

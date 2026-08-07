@@ -97,4 +97,9 @@ const { title, description } = Astro.props;
     </section>
 
   </main>
+
+  <!-- Render default-slot children passed from the page (e.g. JSON-LD blocks).
+       Without this, <HomePageLayout>...</HomePageLayout> content was silently
+       dropped, which is why the homepage's structured data never rendered. -->
+  <slot />
 </HomeLayout>

@@ -7,6 +7,7 @@ import { SITE, GAMES } from '../consts';
 export interface SocialLinks {
   readonly github: string;
   readonly x: string;
+  readonly discord?: string;
 }
 
 export interface GlobalSEOConfig {
@@ -71,6 +72,7 @@ export const GLOBAL_SEO: GlobalSEOConfig = {
   social: {
     github: SITE.SOCIAL.GITHUB,
     x: SITE.SOCIAL.X,
+    discord: SITE.SOCIAL.DISCORD,
   },
 } as const;
 
@@ -917,7 +919,8 @@ export function generateGameStructuredData(
       sameAs: [
         GLOBAL_SEO.social.github,
         GLOBAL_SEO.social.x,
-      ].filter(Boolean),
+        GLOBAL_SEO.social.discord,
+      ].filter((s): s is string => Boolean(s)),
       additionalType: 'https://schema.org/OpenSourceProject',
     },
     offers: {

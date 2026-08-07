@@ -96,9 +96,6 @@ export default defineConfig({
             }
             // Vendor chunks for third-party libraries
             if (id.includes('node_modules')) {
-              if (id.includes('chart.js') || id.includes('chartjs')) {
-                return 'vendor-chart';
-              }
               // Split other node_modules
               return 'vendor';
             }
@@ -180,7 +177,7 @@ export default defineConfig({
     ],
     // Optimize dependencies
     optimizeDeps: {
-      include: ['chart.js'],
+      // (chart.js is loaded via CDN dynamic import, not bundled — no entries here)
     },
     // Enable esbuild for faster builds with Bun
     esbuild: {

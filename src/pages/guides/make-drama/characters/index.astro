@@ -50,6 +50,7 @@ const factions = MAKE_DRAMA_FACTIONS;
   const filterBtns = document.querySelectorAll('.md-filter-btn');
 
   function updateDisplay() {
+    if (!search || !grid) return;
     const query = search.value.toLowerCase();
     const activeFilter = document.querySelector('.md-filter-btn.active')?.getAttribute('data-filter') || 'all';
     const cards = grid?.querySelectorAll('.md-char-card') as NodeListOf<HTMLElement>;

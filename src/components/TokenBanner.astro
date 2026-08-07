@@ -376,9 +376,20 @@ const CA_SHORT = '0x50bE…f27A';
     }
   }
 
+  // Defer the fetch until the browser is idle so it doesn't contend with
+  // first paint on any page (the banner is in the global header). The chip
+  // stays hidden until data arrives, so there's no visible downside.
+  const start = () => {
+    if ('requestIdleCallback' in window) {
+      (window as Window).requestIdleCallback(() => loadStats(), { timeout: 4000 });
+    } else {
+      setTimeout(loadStats, 2000);
+    }
+  };
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadStats);
+    document.addEventListener('DOMContentLoaded', start);
   } else {
-    loadStats();
+    start();
   }
 </script>

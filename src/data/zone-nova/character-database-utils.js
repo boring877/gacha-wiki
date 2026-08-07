@@ -126,6 +126,14 @@ export function initializeCharacterDatabase() {
       tableRows.forEach((row, index) => {
         const card = mobileCardsContainer.children[index];
 
+        // Table rows and mobile cards are meant to be 1:1, but guard against
+        // a positional mismatch (e.g. an extra table row with no mobile card)
+        // so a missing card can't throw and abort the whole filter pass.
+        if (!card) {
+          row.style.display = 'none';
+          return;
+        }
+
         const elementText = row.querySelector('.element-badge')?.textContent?.trim() || '';
         const rarityText = row.querySelector('.rarity-badge')?.textContent?.trim() || '';
         const roleText = row.querySelector('.role-badge')?.textContent?.trim() || '';
@@ -345,19 +353,28 @@ export function initializeCharacterDatabase() {
       }
     });
 
-    // --- Click to detail ---
+    // --- Click + keyboard activation to detail ---
+    // Rows/cards expose role="button" tabindex="0" in markup so keyboard users
+    // can open a character detail with Enter/Space, mirroring the click path.
+    const navigateFrom = (el) => {
+      const url = el.dataset.url;
+      if (url) window.location.href = url;
+    };
+    const onKeydown = (e) => {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault();
+        navigateFrom(e.currentTarget);
+      }
+    };
+
     Array.from(tableBody.children).forEach(row => {
-      row.addEventListener('click', () => {
-        const url = row.dataset.url;
-        if (url) window.location.href = url;
-      });
+      row.addEventListener('click', () => navigateFrom(row));
+      row.addEventListener('keydown', onKeydown);
     });
 
     Array.from(mobileCardsContainer.children).forEach(card => {
-      card.addEventListener('click', () => {
-        const url = card.dataset.url;
-        if (url) window.location.href = url;
-      });
+      card.addEventListener('click', () => navigateFrom(card));
+      card.addEventListener('keydown', onKeydown);
     });
 
     // Sort alphabetically by default on page load

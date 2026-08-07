@@ -166,6 +166,11 @@
   font-size: var(--text-sm);
   min-width: fit-content;
   transition: all var(--nav-transition-fast);
+  /* Reset native button styling (trigger was a <div>, now a real <button>) */
+  font: inherit;
+  text-align: inherit;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .game-nav-desktop .section-name {

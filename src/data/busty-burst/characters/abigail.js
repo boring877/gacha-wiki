@@ -6,7 +6,7 @@ export const info = {
   "name": "Abigail",
   "displayName": "Abigail",
   "baseName": "Abigail",
-  "title": null,
+  "title": "The Sharp-Tongued and Rude Lady Doctor",
   "rarity": "SSR",
   "element": "Fire",
   "role": "Support",
@@ -25,7 +25,7 @@ export const info = {
     "Disrupt"
   ],
   "image": "Abigail",
-  "introduction": "Middle Row、Physical、Support",
+  "introduction": "This lady doctor has an exceptionally sharp tongue. Even if her patient is the lord himself, she will not hesitate to scold him loudly whenever he does something harmful to his health—all for his own well-being. That said, she is every bit a true physician, highly skilled in healing magic, herbal medicine, and the practice of medicine. However, she unexpectedly discovers a secret about the lord's son—",
   "profile": {
     "height": "182cm",
     "bust": "113cm (K Cup)",

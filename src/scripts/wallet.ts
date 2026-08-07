@@ -276,6 +276,9 @@ export function onWalletChange(
       unsubAccount();
       unsubNetwork();
     };
+  }).catch(() => {
+    // AppKit failed to initialize — leave `cleanup` null; the returned
+    // unsubscribe is a safe no-op. Avoids an unhandled promise rejection.
   });
 
   return () => {

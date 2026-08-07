@@ -22,7 +22,7 @@ export const info = {
     "Buff"
   ],
   "image": "Vanessa",
-  "introduction": "Middle Row、Magical、Support",
+  "introduction": "Whenever Vanessa breaks into a house, the vault is always empty… and the same misfortune keeps repeating itself. Determined to turn her luck around, she seeks the guidance of Marina, the fortune teller of Elron. Marina tells her, \"Taking part in a sacred festival will help—and dancing is the best way to do it.\" As fate would have it, Elron is just about to…—",
   "profile": {
     "height": "164cm",
     "bust": "100cm (I Cup)",

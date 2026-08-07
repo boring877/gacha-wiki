@@ -6,7 +6,7 @@ export const info = {
   "name": "Raoul",
   "displayName": "Raoul",
   "baseName": "Raoul",
-  "title": null,
+  "title": "The Chubby and Adorable Twin Paladins",
   "rarity": "SSR",
   "element": "Mind",
   "role": "Attacker",
@@ -22,7 +22,7 @@ export const info = {
     "Debuff"
   ],
   "image": "Raoul",
-  "introduction": "Middle Row、Magical、Attacker",
+  "introduction": "In Paladin battles, she takes pride in her undefeated record, achieved with her plump physique and exceptionally ample bust. Like Cluul, she is a member of one of the top teams in the Quarto Class. At last, the time has come to face off against Elron Team, currently ranked second—but…—",
   "profile": {
     "height": "140cm",
     "bust": "112cm (O Cup)",

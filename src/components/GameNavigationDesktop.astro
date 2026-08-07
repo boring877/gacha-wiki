@@ -105,9 +105,14 @@ const isActive = (href: string) => {
         {
           game.sections.map(section => (
             <div class="section-item">
-              <div class="section-trigger">
+              <button
+                type="button"
+                class="section-trigger"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
                 <span class="section-name">{section.title}</span>
-              </div>
+              </button>
               <div class="section-dropdown">
                 {section.links.map(link => (
                   <a
@@ -140,12 +145,38 @@ const isActive = (href: string) => {
     // Store timeout references for cleanup
     const hoverTimeouts = new Map();
 
-    // Close all dropdowns efficiently
+    // Close all dropdowns efficiently and sync aria-expanded on triggers
     const closeAllDropdowns = () => {
       dropdowns.forEach(dropdown => {
         (dropdown as HTMLElement).style.opacity = '0';
         (dropdown as HTMLElement).style.visibility = 'hidden';
       });
+      nav.querySelectorAll('.section-trigger').forEach(t => {
+        (t as HTMLElement).setAttribute('aria-expanded', 'false');
+      });
+    };
+
+    // Open a single dropdown and close the rest (used by click, key, focus)
+    const openDropdown = (dropdown: Element) => {
+      dropdowns.forEach(otherDropdown => {
+        if (otherDropdown !== dropdown) {
+          (otherDropdown as HTMLElement).style.opacity = '0';
+          (otherDropdown as HTMLElement).style.visibility = 'hidden';
+        }
+      });
+      const dropdownElement = dropdown as HTMLElement;
+      const trigger = dropdownElement.closest('.section-item')?.querySelector('.section-trigger');
+      dropdownElement.style.opacity = '1';
+      dropdownElement.style.visibility = 'visible';
+      trigger?.setAttribute('aria-expanded', 'true');
+    };
+
+    const closeDropdown = (dropdown: Element) => {
+      const dropdownElement = dropdown as HTMLElement;
+      const trigger = dropdownElement.closest('.section-item')?.querySelector('.section-trigger');
+      dropdownElement.style.opacity = '0';
+      dropdownElement.style.visibility = 'hidden';
+      trigger?.setAttribute('aria-expanded', 'false');
     };
 
     // Optimized dropdown toggle with event delegation
@@ -156,27 +187,36 @@ const isActive = (href: string) => {
       const trigger = target.closest('.section-trigger');
       if (!trigger) return;
 
-      e.preventDefault();
-      e.stopPropagation();
-
       const item = trigger.closest('.section-item');
       const dropdown = item?.querySelector('.section-dropdown');
 
       if (!dropdown) return;
 
-      // Close other dropdowns first
-      dropdowns.forEach(otherDropdown => {
-        if (otherDropdown !== dropdown) {
-          (otherDropdown as HTMLElement).style.opacity = '0';
-          (otherDropdown as HTMLElement).style.visibility = 'hidden';
-        }
-      });
-
-      // Toggle current dropdown
       const dropdownElement = dropdown as HTMLElement;
       const isVisible = dropdownElement.style.visibility === 'visible';
-      dropdownElement.style.opacity = isVisible ? '0' : '1';
-      dropdownElement.style.visibility = isVisible ? 'hidden' : 'visible';
+      if (isVisible) {
+        closeDropdown(dropdown);
+      } else {
+        openDropdown(dropdown);
+      }
+    });
+
+    // Keyboard support: Enter/Space on a trigger toggles its dropdown
+    nav.addEventListener('keydown', (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement;
+      const trigger = target.closest('.section-trigger');
+      if (!trigger) return;
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault();
+        const dropdown = trigger.closest('.section-item')?.querySelector('.section-dropdown');
+        if (!dropdown) return;
+        const isVisible = (dropdown as HTMLElement).style.visibility === 'visible';
+        if (isVisible) {
+          closeDropdown(dropdown);
+        } else {
+          openDropdown(dropdown);
+        }
+      }
     });
 
     // Close dropdowns when clicking outside
@@ -206,19 +246,7 @@ const isActive = (href: string) => {
           clearTimeout(existingTimeout);
           hoverTimeouts.delete(item);
         }
-
-        // Close other dropdowns
-        dropdowns.forEach(otherDropdown => {
-          if (otherDropdown !== dropdown) {
-            (otherDropdown as HTMLElement).style.opacity = '0';
-            (otherDropdown as HTMLElement).style.visibility = 'hidden';
-          }
-        });
-
-        // Show current dropdown
-        const dropdownElement = dropdown as HTMLElement;
-        dropdownElement.style.opacity = '1';
-        dropdownElement.style.visibility = 'visible';
+        openDropdown(dropdown);
       };
 
       const handleMouseLeave = () => {
@@ -231,9 +259,7 @@ const isActive = (href: string) => {
         // Set new timeout and store reference
         const timeoutId = window.setTimeout(() => {
           if (!item.matches(':hover')) {
-            const dropdownElement = dropdown as HTMLElement;
-            dropdownElement.style.opacity = '0';
-            dropdownElement.style.visibility = 'hidden';
+            closeDropdown(dropdown);
           }
           hoverTimeouts.delete(item);
         }, 100);

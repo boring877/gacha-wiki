@@ -195,6 +195,8 @@ import WalletButton from './WalletButton.astro';
         if (isMenuOpen) {
           // Simple menu opening without scroll manager
           mobileMenu.classList.add('active');
+          // Remove inert so the drawer re-enters the tab/accessibility tree
+          mobileMenu.removeAttribute('inert');
           document.body.style.overflow = 'hidden';
 
           // Ensure the menu drawer is visible by scrolling to top
@@ -202,10 +204,18 @@ import WalletButton from './WalletButton.astro';
           if (drawer) {
             drawer.scrollTop = 0;
           }
+
+          // Move focus into the drawer (close button) so keyboard users land inside
+          window.setTimeout(() => closeMenuBtn?.focus(), 0);
         } else {
           // Simple menu closing without scroll manager
           mobileMenu.classList.remove('active');
+          // Re-apply inert so closed-drawer contents leave the tab order
+          mobileMenu.setAttribute('inert', '');
           document.body.style.overflow = '';
+
+          // Restore focus to the hamburger so keyboard users don't lose their place
+          hamburger?.focus();
         }
       }
     }
