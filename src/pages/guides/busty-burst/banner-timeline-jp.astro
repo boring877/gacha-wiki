@@ -1,0 +1,430 @@
+---
+// Busty Burst JP-server event/banner timeline page.
+// Mirrors the English (Global) banner-timeline.astro visual design:
+// full-width banner sections (image left, details right), grouped by year.
+// Banner images are stored locally under src/assets/.../Banner_Img_JP/.
+import { Image } from 'astro:assets';
+import BannerTimelineLayout from '../../../layouts/busty-burst/BannerTimelineLayout.astro';
+import {
+  jpBannerTimelineData,
+  getJpTimelineYears,
+} from '../../../data/busty-burst/banner-timeline-jp.js';
+
+// SEO metadata
+const pageTitle = 'Busty Burst JP Event Timeline (巨乳ファンタジーバースト)';
+const pageDescription =
+  'Chronological timeline of all limited events and summon banners on the Japanese server of Busty Burst (巨乳ファンタジーバースト), from the 2023 launch to present. New→old, grouped by year.';
+const gameTitle = 'JP Event Timeline';
+
+// Load all local JP banner images into a map keyed by banner id.
+// Supports both .jpg and .png (one wiki image is a PNG mislabeled as .jpg).
+const bannerImageModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../../../assets/images/games/Busty_Burst/Banner_Img_JP/*.{jpg,png}'
+);
+const bannerImageMap: Record<string, ImageMetadata> = {};
+for (const [path, mod] of Object.entries(bannerImageModules)) {
+  const file = path.split('/').pop()!.replace(/\.(jpg|png)$/, '');
+  bannerImageMap[file] = (await mod()).default;
+}
+
+const years = getJpTimelineYears();
+const totalEvents = jpBannerTimelineData.length;
+const rerunCount = jpBannerTimelineData.filter(b => b.bannerType === 'rerun').length;
+const withImage = jpBannerTimelineData.filter(b => bannerImageMap[b.id]).length;
+
+// Global counter for the #N numbering, newest = highest number.
+const newestFirst = [...jpBannerTimelineData].sort(
+  (a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
+);
+const totalNumbered = newestFirst.length;
+
+// Format date (JST display). Stored dates are UTC maintenance-end instants.
+const formatDateJST = (dateString: string) => {
+  const date = new Date(dateString);
+  const jst = new Date(date.getTime() + 9 * 60 * 60 * 1000);
+  return jst.toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' });
+};
+
+const getBannerTypeLabel = (type: string) => {
+  switch (type) {
+    case 'event':
+      return 'New Event';
+    case 'rerun':
+      return 'Rerun (復刻)';
+    default:
+      return type;
+  }
+};
+
+const getStatusLabel = (status: string) => {
+  switch (status) {
+    case 'current':
+      return 'Active';
+    case 'upcoming':
+      return 'Upcoming';
+    case 'ended':
+      return 'Ended';
+    default:
+      return status;
+  }
+};
+---
+
+<BannerTimelineLayout title={pageTitle} description={pageDescription} gameTitle={gameTitle}>
+  <meta slot="head" />
+  <meta
+    name="keywords"
+    content="Busty Burst, 巨乳ファンタジーバースト, JP server, Japan server, event timeline, banner history, summon banners, gacha history, kyonyu fantasy burst"
+  />
+  <meta name="author" content="GachaWiki" />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDescription} />
+  <meta property="og:type" content="website" />
+  <meta
+    property="og:url"
+    content="https://gachawiki.info/guides/busty-burst/banner-timeline-jp"
+  />
+  <meta
+    property="og:image"
+    content="https://gachawiki.info/images/games/Busty_Burst/BG/gameLogo.webp"
+  />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={pageDescription} />
+
+  <main class="banner-timeline-content jp-timeline" role="main">
+    <p class="intro-text">
+      Japanese server (巨乳ファンタジーバースト) limited event &amp; summon banner history —
+      {totalEvents} events · {rerunCount} reruns · {withImage} banner images
+    </p>
+    <p class="jp-source">
+      Data sourced from
+      <a href="https://kyonyufantasyburst.wikiru.jp/?イベント一覧" target="_blank" rel="noopener"
+        >kyonyufantasyburst.wikiru.jp</a
+      >. Times shown in JST (UTC+9); maintenance ends 11:00 JST.
+    </p>
+
+    <!-- Filter controls -->
+    <div class="jp-controls">
+      <input
+        type="search"
+        id="jp-search"
+        class="jp-search"
+        placeholder="Filter events by name (e.g. ヴェルン, Fanzine, Halloween)…"
+        aria-label="Filter events by name"
+      />
+      <div class="jp-filter-chips" role="group" aria-label="Event type filter">
+        <button class="jp-chip active" data-filter="all" type="button">All</button>
+        <button class="jp-chip" data-filter="event" type="button">New Events</button>
+        <button class="jp-chip" data-filter="rerun" type="button">Reruns</button>
+      </div>
+    </div>
+
+    <!-- Year jump nav -->
+    <nav class="jp-year-nav" aria-label="Jump to year">
+      {
+        years.map(year => (
+          <a href={`#jp-year-${year}`} class="jp-year-link">
+            {year}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- Year sections — each event rendered in the same banner-section style as the English page -->
+    {
+      years.map(year => {
+        const yearBanners = jpBannerTimelineData
+          .filter(b => b.year === year)
+          .sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
+        return (
+          <section class="jp-year-section" id={`jp-year-${year}`}>
+            <h2 class="jp-year-heading">
+              {year} <span class="jp-year-count">({yearBanners.length})</span>
+            </h2>
+            {yearBanners.map(banner => {
+              const number = newestFirst.findIndex(b => b.id === banner.id) + 1;
+              const img = bannerImageMap[banner.id];
+              return (
+                <article
+                  class="banner-section jp-banner-entry"
+                  data-type={banner.bannerType}
+                  data-name={banner.title.toLowerCase()}
+                >
+                  <header class="banner-header">
+                    <h2>
+                      <span class="jp-number">#{number}</span>{' '}
+                      <span lang="ja">{banner.title}</span>
+                    </h2>
+                    <span class={`banner-type-badge banner-type-badge--${banner.bannerType}`}>
+                      {getBannerTypeLabel(banner.bannerType)}
+                    </span>
+                    <span class={`status-badge status-badge--${banner.status}`}>
+                      {getStatusLabel(banner.status)}
+                    </span>
+                  </header>
+
+                  <section class="banner-content">
+                    <div class="banner-info">
+                      <div class="summon-banner-card">
+                        {img ? (
+                          <div class="bb-banner-image">
+                            <Image
+                              src={img}
+                              alt={banner.title}
+                              widths={[400, 800]}
+                              sizes="400px"
+                              loading="lazy"
+                              class="bb-banner-image__img"
+                            />
+                          </div>
+                        ) : (
+                          <div class="bb-banner-image jp-banner-placeholder">
+                            <span class="jp-banner-placeholder-text" lang="ja">{banner.title}</span>
+                            <span class="jp-banner-placeholder-sub">No banner image</span>
+                          </div>
+                        )}
+                        <div class="featured-details">
+                          <h3>Event Info</h3>
+                          <div class="banner-details">
+                            <p>
+                              <strong>Period:</strong> {formatDateJST(banner.startDate)} –{' '}
+                              {formatDateJST(banner.endDate)} (JST)
+                            </p>
+                            <p>
+                              <strong>Wiki:</strong>{' '}
+                              <a
+                                class="jp-wiki-link"
+                                href={`https://kyonyufantasyburst.wikiru.jp/?${encodeURIComponent(banner.wikiPage)}`}
+                                target="_blank"
+                                rel="noopener"
+                              >
+                                View on Japanese wiki ↗
+                              </a>
+                            </p>
+                            <p class="jp-note">
+                              Featured characters not yet documented for this JP event.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </article>
+              );
+            })}
+          </section>
+        );
+      })
+    }
+
+    <p class="jp-footnote">
+      Featured characters are not yet listed for these JP events. A small number of older/special
+      events (collabs, quest events) lack a standard banner image and show a placeholder.
+    </p>
+  </main>
+</BannerTimelineLayout>
+
+<style>
+  /* JP-specific overrides on top of the shared banner-timeline CSS.
+     The shared classes (.banner-section, .summon-banner-card, etc.) come from
+     busty-burst-banner-timeline.css imported by the layout. */
+  .jp-timeline .jp-source {
+    text-align: center;
+    color: var(--bb-text-muted, #6b7280);
+    font-size: 0.85rem;
+    margin-top: -2rem;
+    margin-bottom: 2rem;
+  }
+  .jp-timeline .jp-source a {
+    color: var(--bb-primary, #e879f9);
+  }
+
+  /* Controls */
+  .jp-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: var(--bb-bg-card);
+    border: 1px solid var(--bb-border);
+    border-radius: 10px;
+  }
+  .jp-search {
+    flex: 1 1 250px;
+    min-width: 200px;
+    padding: 0.5rem 0.75rem;
+    background: var(--bb-bg-secondary);
+    border: 1px solid var(--bb-border);
+    border-radius: 8px;
+    color: var(--bb-text-primary);
+    font-size: 0.95rem;
+  }
+  .jp-search:focus {
+    outline: 2px solid var(--bb-primary, #e879f9);
+    outline-offset: -1px;
+  }
+  .jp-filter-chips {
+    display: flex;
+    gap: 0.4rem;
+  }
+  .jp-chip {
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--bb-border);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--bb-text-secondary);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.15s;
+  }
+  .jp-chip:hover {
+    border-color: var(--bb-primary, #e879f9);
+  }
+  .jp-chip.active {
+    background: var(--bb-primary, #e879f9);
+    color: var(--bb-bg, #1a1a2e);
+    border-color: var(--bb-primary, #e879f9);
+    font-weight: 600;
+  }
+
+  /* Year jump nav */
+  .jp-year-nav {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .jp-year-link {
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    background: var(--bb-bg-card);
+    border: 1px solid var(--bb-border);
+    color: var(--bb-text-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .jp-year-link:hover {
+    background: var(--bb-primary, #e879f9);
+    color: var(--bb-bg, #1a1a2e);
+  }
+
+  /* Year section */
+  .jp-year-section {
+    margin-bottom: 2.5rem;
+  }
+  .jp-year-heading {
+    font-size: 1.5rem;
+    color: var(--bb-text-primary);
+    border-bottom: 2px solid var(--bb-primary);
+    padding-bottom: 0.4rem;
+    margin-bottom: 1rem;
+  }
+  .jp-year-count {
+    font-size: 1rem;
+    color: var(--bb-text-muted);
+    font-weight: 400;
+  }
+
+  /* Per-entry tweaks */
+  .jp-banner-entry {
+    margin-bottom: 2rem;
+  }
+  .jp-number {
+    color: var(--bb-primary-light);
+  }
+  .jp-note {
+    font-style: italic;
+    color: var(--bb-text-muted);
+    font-size: 0.85rem;
+  }
+  .jp-wiki-link {
+    color: var(--bb-primary-light);
+  }
+
+  /* Placeholder for events without a banner image — sits inside .bb-banner-image */
+  .jp-banner-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, var(--bb-bg-secondary), var(--bb-bg-tertiary));
+    color: var(--bb-text-muted);
+    text-align: center;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  .jp-banner-placeholder-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--bb-text-secondary);
+    line-height: 1.3;
+  }
+  .jp-banner-placeholder-sub {
+    font-size: 0.75rem;
+    opacity: 0.6;
+  }
+
+  .jp-footnote {
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: var(--bb-text-muted);
+    font-style: italic;
+    text-align: center;
+  }
+
+  /* Hidden state for filtering */
+  .jp-banner-entry.is-filtered-out {
+    display: none;
+  }
+</style>
+
+<script>
+  // Client-side filter: search box + type chips.
+  document.addEventListener('DOMContentLoaded', () => {
+    const search = document.getElementById('jp-search') as HTMLInputElement | null;
+    const chips = document.querySelectorAll<HTMLButtonElement>('.jp-chip');
+    const entries = Array.from(document.querySelectorAll<HTMLElement>('.jp-banner-entry'));
+    const yearSections = Array.from(document.querySelectorAll<HTMLElement>('.jp-year-section'));
+
+    let activeFilter = 'all';
+    let searchTerm = '';
+
+    function applyFilters() {
+      const term = searchTerm.trim().toLowerCase();
+      for (const entry of entries) {
+        const name = entry.dataset.name || '';
+        const type = entry.dataset.type || '';
+        const typeOk = activeFilter === 'all' || type === activeFilter;
+        const nameOk = !term || name.includes(term);
+        entry.classList.toggle('is-filtered-out', !(typeOk && nameOk));
+      }
+      // Hide year sections with no visible entries
+      for (const section of yearSections) {
+        const visible = section.querySelectorAll<HTMLElement>(
+          '.jp-banner-entry:not(.is-filtered-out)'
+        );
+        section.style.display = visible.length === 0 ? 'none' : '';
+      }
+    }
+
+    search?.addEventListener('input', () => {
+      searchTerm = search.value;
+      applyFilters();
+    });
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        activeFilter = chip.dataset.filter || 'all';
+        applyFilters();
+      });
+    });
+  });
+</script>
