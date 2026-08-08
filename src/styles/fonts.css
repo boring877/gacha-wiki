@@ -11,6 +11,22 @@
 
 @font-face {
   font-family: 'DM Sans';
+  src: url('/fonts/dm-sans-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('/fonts/dm-sans-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Sans';
   src: url('/fonts/dm-sans-700.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
@@ -27,15 +43,30 @@
 
 @font-face {
   font-family: 'Space Grotesk';
+  src: url('/fonts/space-grotesk-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('/fonts/space-grotesk-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
   src: url('/fonts/space-grotesk-700.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
-/* TODO: Orbitron self-host is temporarily disabled.
-   The previous public/fonts/orbitron-700.woff2 was a corrupt HTML file
-   (a saved 404 page), so weight 700 silently failed and fell back to
-   monospace. Drop a real orbitron-700.woff2 (or a variable-font woff2)
-   into public/fonts/ and re-add the @font-face block to restore it.
-   Until then, --font-accent ('Orbitron', monospace) resolves to monospace. */
+/* Note: a previous 'Orbitron' accent font was removed — the woff2 was a
+   corrupt saved 404 page, and --font-accent was only used on two Horizon
+   Walker guide selectors (now switched to --font-mono / --font-primary).
+   To reintroduce an accent font, add the @font-face block above and a
+   matching --font-accent var in typography.css. */
