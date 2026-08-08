@@ -2039,5 +2039,5 @@ export const meta = {
   numericId: "20370",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/tris"
+  detailUrl: "/guides/silver-and-blood/characters/tris/"
 };

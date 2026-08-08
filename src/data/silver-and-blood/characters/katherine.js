@@ -1897,5 +1897,5 @@ export const meta = {
   numericId: "20240",
   rarity: "R",
   hasImage: false,
-  detailUrl: "/guides/silver-and-blood/characters/katherine"
+  detailUrl: "/guides/silver-and-blood/characters/katherine/"
 };

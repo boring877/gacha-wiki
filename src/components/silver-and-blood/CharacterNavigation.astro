@@ -6,8 +6,8 @@ const { currentCharacterSlug } = Astro.props;
 // Get prev/next URLs (server-side) - minimal approach
 const currentIndex = characters.findIndex(char => char.slug === currentCharacterSlug);
 
-let prevUrl = '/guides/silver-and-blood/characters';
-let nextUrl = '/guides/silver-and-blood/characters';
+let prevUrl = '/guides/silver-and-blood/characters/';
+let nextUrl = '/guides/silver-and-blood/characters/';
 let prevCharacterName = '';
 let nextCharacterName = '';
 
@@ -68,13 +68,13 @@ if (currentIndex !== -1) {
         return;
       }
 
-      if (e.key === 'ArrowLeft' && prevUrl && prevUrl !== '/guides/silver-and-blood/characters') {
+      if (e.key === 'ArrowLeft' && prevUrl && prevUrl !== '/guides/silver-and-blood/characters/') {
         e.preventDefault();
         window.location.href = prevUrl;
       } else if (
         e.key === 'ArrowRight' &&
         nextUrl &&
-        nextUrl !== '/guides/silver-and-blood/characters'
+        nextUrl !== '/guides/silver-and-blood/characters/'
       ) {
         e.preventDefault();
         window.location.href = nextUrl;
@@ -108,7 +108,7 @@ if (currentIndex !== -1) {
         touchDuration < 400 &&
         touchDuration > 50 &&
         prevUrl &&
-        prevUrl !== '/guides/silver-and-blood/characters'
+        prevUrl !== '/guides/silver-and-blood/characters/'
       ) {
         window.location.href = prevUrl;
       }
@@ -123,7 +123,7 @@ if (currentIndex !== -1) {
         touchDuration < 400 &&
         touchDuration > 50 &&
         nextUrl &&
-        nextUrl !== '/guides/silver-and-blood/characters'
+        nextUrl !== '/guides/silver-and-blood/characters/'
       ) {
         window.location.href = nextUrl;
       }

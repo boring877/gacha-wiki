@@ -1971,5 +1971,5 @@ export const meta = {
   numericId: "20200",
   rarity: "SR",
   hasImage: false,
-  detailUrl: "/guides/silver-and-blood/characters/gadric"
+  detailUrl: "/guides/silver-and-blood/characters/gadric/"
 };

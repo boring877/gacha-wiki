@@ -2069,5 +2069,5 @@ export const meta = {
   numericId: "20610",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/timeless-aiona"
+  detailUrl: "/guides/silver-and-blood/characters/timeless-aiona/"
 };

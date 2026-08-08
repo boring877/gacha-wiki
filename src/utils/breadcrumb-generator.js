@@ -10,7 +10,7 @@
 const GAME_CONFIG = {
   'zone-nova': {
     name: 'Zone Nova',
-    basePath: '/guides/zone-nova',
+    basePath: '/guides/zone-nova/',
     patterns: {
       characters: 'Characters',
       'character-rankings': 'Character Rankings',
@@ -24,7 +24,7 @@ const GAME_CONFIG = {
   },
   'silver-and-blood': {
     name: 'Silver & Blood',
-    basePath: '/guides/silver-and-blood',
+    basePath: '/guides/silver-and-blood/',
     patterns: {
       characters: 'Characters',
       'character-rankings': 'Character Rankings',
@@ -36,7 +36,7 @@ const GAME_CONFIG = {
   },
   'horizon-walker': {
     name: 'Horizon Walker',
-    basePath: '/guides/horizon-walker',
+    basePath: '/guides/horizon-walker/',
     patterns: {
       'tier-list': 'Tier List',
       characters: 'Characters',
@@ -49,7 +49,7 @@ const GAME_CONFIG = {
   },
   'rebellion-gilgamesh': {
     name: 'Rebellion Gilgamesh',
-    basePath: '/guides/rebellion-gilgamesh',
+    basePath: '/guides/rebellion-gilgamesh/',
     patterns: {
       characters: 'Characters',
       'character-comparison': 'Character Comparison',
@@ -65,7 +65,7 @@ const GAME_CONFIG = {
   },
   'stella-sora': {
     name: 'Stella Sora',
-    basePath: '/guides/stella-sora',
+    basePath: '/guides/stella-sora/',
     patterns: {
       characters: 'Characters',
       'character-database': 'Character Database',
@@ -81,7 +81,7 @@ const GAME_CONFIG = {
   },
   'busty-burst': {
     name: 'Busty Burst',
-    basePath: '/guides/busty-burst',
+    basePath: '/guides/busty-burst/',
     patterns: {
       'tier-list': 'Tier List',
       build: 'Character Builds',
@@ -89,7 +89,7 @@ const GAME_CONFIG = {
   },
   'taimanin-squad': {
     name: 'Taimanin Squad',
-    basePath: '/guides/taimanin-squad',
+    basePath: '/guides/taimanin-squad/',
     patterns: {
       blog: 'Blog',
     },

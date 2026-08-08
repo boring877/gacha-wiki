@@ -2052,5 +2052,5 @@ export const meta = {
   numericId: "20050",
   rarity: "SR",
   hasImage: false,
-  detailUrl: "/guides/silver-and-blood/characters/setti"
+  detailUrl: "/guides/silver-and-blood/characters/setti/"
 };

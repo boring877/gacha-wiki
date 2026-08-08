@@ -292,5 +292,5 @@ export const meta = {
   numericId: "20810",
   rarity: "SSR",
   hasImage: false,
-  detailUrl: "/guides/silver-and-blood/characters/transcendent-jestel"
+  detailUrl: "/guides/silver-and-blood/characters/transcendent-jestel/"
 };

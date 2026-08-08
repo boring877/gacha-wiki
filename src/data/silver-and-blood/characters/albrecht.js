@@ -2063,5 +2063,5 @@ export const meta = {
   numericId: "20600",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/albrecht"
+  detailUrl: "/guides/silver-and-blood/characters/albrecht/"
 };

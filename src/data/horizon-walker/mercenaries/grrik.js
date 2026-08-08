@@ -162,7 +162,7 @@ export const grrikMercenary = {
   ],
 
   // Detail page URL
-  detailUrl: '/guides/horizon-walker/mercenaries/grrik',
+  detailUrl: '/guides/horizon-walker/mercenaries/grrik/',
 
   // SEO and metadata
   seo: {

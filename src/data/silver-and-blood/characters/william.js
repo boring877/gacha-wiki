@@ -1904,5 +1904,5 @@ export const meta = {
   numericId: "20250",
   rarity: "R",
   hasImage: false,
-  detailUrl: "/guides/silver-and-blood/characters/william"
+  detailUrl: "/guides/silver-and-blood/characters/william/"
 };

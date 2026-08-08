@@ -147,5 +147,5 @@ export const meta = {
   numericId: "29010",
   rarity: "SSR",
   hasImage: false,
-  detailUrl: "/guides/silver-and-blood/characters/cannon"
+  detailUrl: "/guides/silver-and-blood/characters/cannon/"
 };

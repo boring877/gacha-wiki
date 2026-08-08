@@ -2060,5 +2060,5 @@ export const meta = {
   numericId: "20730",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/letitia"
+  detailUrl: "/guides/silver-and-blood/characters/letitia/"
 };

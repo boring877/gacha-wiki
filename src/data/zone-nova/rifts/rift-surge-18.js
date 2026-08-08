@@ -35,5 +35,5 @@ export const riftSurge18SEO = {
     'Character Guide',
   ],
   image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/rifts/rift-surge-18.jpg',
-  url: '/guides/zone-nova/rifts/rift-surge-18',
+  url: '/guides/zone-nova/rifts/rift-surge-18/',
 };

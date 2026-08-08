@@ -158,7 +158,7 @@ export const imperialShieldbearerMercenary = {
   ],
 
   // Detail page URL
-  detailUrl: '/guides/horizon-walker/mercenaries/imperial-shieldbearer',
+  detailUrl: '/guides/horizon-walker/mercenaries/imperial-shieldbearer/',
 
   // SEO and metadata
   seo: {

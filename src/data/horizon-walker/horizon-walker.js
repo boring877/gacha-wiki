@@ -124,7 +124,7 @@ export const horizonWalkerConfig = {
       description: 'AP system, traits, and stigma sub stats',
       size: 'medium',
       guides: [
-        { id: 'ap-guide', title: 'AP Guide', url: '/guides/horizon-walker/ap-guide' },
+        { id: 'ap-guide', title: 'AP Guide', url: '/guides/horizon-walker/ap-guide/' },
         { id: 'traits', title: 'Traits', url: '/guides/horizon-walker/traits/' },
         { id: 'stigma-sub-stats', title: 'Stigma Sub Stats', url: '/guides/horizon-walker/stigma-sub-stats/' },
       ],

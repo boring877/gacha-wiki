@@ -189,5 +189,5 @@ export const meta = {
   numericId: "20231",
   rarity: "UR",
   hasImage: false,
-  detailUrl: "/guides/silver-and-blood/characters/mirage"
+  detailUrl: "/guides/silver-and-blood/characters/mirage/"
 };

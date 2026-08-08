@@ -456,5 +456,5 @@ export const meta = {
   numericId: "20800",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/blooming-empousa"
+  detailUrl: "/guides/silver-and-blood/characters/blooming-empousa/"
 };

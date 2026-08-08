@@ -2055,5 +2055,5 @@ export const meta = {
   numericId: "20450",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/transcendent-hati"
+  detailUrl: "/guides/silver-and-blood/characters/transcendent-hati/"
 };

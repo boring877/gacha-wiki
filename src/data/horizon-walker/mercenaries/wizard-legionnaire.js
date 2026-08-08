@@ -181,7 +181,7 @@ export const wizardLegionnaireMercenary = {
   ],
 
   // Detail page URL
-  detailUrl: '/guides/horizon-walker/mercenaries/wizard-legionnaire',
+  detailUrl: '/guides/horizon-walker/mercenaries/wizard-legionnaire/',
 
   // SEO and metadata
   seo: {

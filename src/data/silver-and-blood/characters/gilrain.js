@@ -1998,5 +1998,5 @@ export const meta = {
   numericId: "20120",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/gilrain"
+  detailUrl: "/guides/silver-and-blood/characters/gilrain/"
 };

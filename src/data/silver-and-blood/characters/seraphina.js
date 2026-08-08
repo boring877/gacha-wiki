@@ -2071,5 +2071,5 @@ export const meta = {
   numericId: "20720",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/seraphina"
+  detailUrl: "/guides/silver-and-blood/characters/seraphina/"
 };

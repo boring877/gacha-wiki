@@ -1986,5 +1986,5 @@ export const meta = {
   numericId: "20340",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/thibault"
+  detailUrl: "/guides/silver-and-blood/characters/thibault/"
 };

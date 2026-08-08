@@ -182,7 +182,7 @@ export const goliathMercenary = {
   ],
 
   // Detail page URL
-  detailUrl: '/guides/horizon-walker/mercenaries/goliath',
+  detailUrl: '/guides/horizon-walker/mercenaries/goliath/',
 
   // SEO and metadata
   seo: {

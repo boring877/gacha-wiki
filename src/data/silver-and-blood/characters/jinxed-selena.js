@@ -1973,5 +1973,5 @@ export const meta = {
   numericId: "20650",
   rarity: "SR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/jinxed-selena"
+  detailUrl: "/guides/silver-and-blood/characters/jinxed-selena/"
 };

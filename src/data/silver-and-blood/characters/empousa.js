@@ -2027,5 +2027,5 @@ export const meta = {
   numericId: "20030",
   rarity: "SR",
   hasImage: false,
-  detailUrl: "/guides/silver-and-blood/characters/empousa"
+  detailUrl: "/guides/silver-and-blood/characters/empousa/"
 };

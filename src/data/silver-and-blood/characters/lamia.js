@@ -2062,5 +2062,5 @@ export const meta = {
   numericId: "20110",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/lamia"
+  detailUrl: "/guides/silver-and-blood/characters/lamia/"
 };

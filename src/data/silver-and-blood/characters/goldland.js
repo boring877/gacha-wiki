@@ -1998,5 +1998,5 @@ export const meta = {
   numericId: "20520",
   rarity: "SR",
   hasImage: false,
-  detailUrl: "/guides/silver-and-blood/characters/goldland"
+  detailUrl: "/guides/silver-and-blood/characters/goldland/"
 };

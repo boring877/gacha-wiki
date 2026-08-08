@@ -2063,5 +2063,5 @@ export const meta = {
   numericId: "20480",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/transcendent-ami"
+  detailUrl: "/guides/silver-and-blood/characters/transcendent-ami/"
 };

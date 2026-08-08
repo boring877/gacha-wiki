@@ -2147,5 +2147,5 @@ export const meta = {
   numericId: "20230",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/dalcarlo"
+  detailUrl: "/guides/silver-and-blood/characters/dalcarlo/"
 };

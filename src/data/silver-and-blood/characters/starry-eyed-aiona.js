@@ -2067,5 +2067,5 @@ export const meta = {
   numericId: "20290",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/starry-eyed-aiona"
+  detailUrl: "/guides/silver-and-blood/characters/starry-eyed-aiona/"
 };

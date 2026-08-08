@@ -169,7 +169,7 @@ export const koboldMercenary = {
   ],
 
   // Detail page URL
-  detailUrl: '/guides/horizon-walker/mercenaries/koblod',
+  detailUrl: '/guides/horizon-walker/mercenaries/koblod/',
 
   // SEO and metadata
   seo: {

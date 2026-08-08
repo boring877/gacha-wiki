@@ -19,7 +19,7 @@ export const buildConfig = {
       skills: ['Heal', 'Buff'],
       actionSpeed: 'Normal',
       tier: 'SSS',
-      buildLink: '/guides/busty-burst/build/festive-attire-estiriel',
+      buildLink: '/guides/busty-burst/build/festive-attire-estiriel/',
     },
     {
       id: 'shaty',
@@ -34,7 +34,7 @@ export const buildConfig = {
       skills: ['Physical'],
       actionSpeed: 'Normal',
       tier: 'SS',
-      buildLink: '/guides/busty-burst/build/shaty',
+      buildLink: '/guides/busty-burst/build/shaty/',
     },
     {
       id: 'kaguya',
@@ -48,7 +48,7 @@ export const buildConfig = {
       skills: ['Magic', 'Debuff'],
       actionSpeed: 'Slightly Fast',
       tier: 'A',
-      buildLink: '/guides/busty-burst/build/kaguya',
+      buildLink: '/guides/busty-burst/build/kaguya/',
     },
     {
       id: 'dragon_crusher_medusa',
@@ -62,7 +62,7 @@ export const buildConfig = {
       skills: ['Magic', 'Debuff'],
       actionSpeed: 'Normal',
       tier: 'SSS',
-      buildLink: '/guides/busty-burst/build/dragon-crusher-medusa',
+      buildLink: '/guides/busty-burst/build/dragon-crusher-medusa/',
     },
     {
       id: 'ophelio',
@@ -76,7 +76,7 @@ export const buildConfig = {
       skills: ['Magic', 'Debuff'],
       actionSpeed: 'Normal',
       tier: 'SS',
-      buildLink: '/guides/busty-burst/build/ophelio',
+      buildLink: '/guides/busty-burst/build/ophelio/',
     },
     {
       id: 'killer_bikini_theresia',
@@ -90,7 +90,7 @@ export const buildConfig = {
       skills: ['Buff', 'Debuff', 'Disrupt'],
       actionSpeed: 'Normal',
       tier: 'S',
-      buildLink: '/guides/busty-burst/build/killer-bikini-theresia',
+      buildLink: '/guides/busty-burst/build/killer-bikini-theresia/',
     },
     {
       id: 'seductive_high_cut_swimsuit_nerys',
@@ -104,7 +104,7 @@ export const buildConfig = {
       skills: ['Debuff', 'Disrupt'],
       actionSpeed: 'Normal',
       tier: 'A',
-      buildLink: '/guides/busty-burst/build/seductive-high-cut-swimsuit-nerys',
+      buildLink: '/guides/busty-burst/build/seductive-high-cut-swimsuit-nerys/',
     },
     {
       id: 'pastel',
@@ -118,7 +118,7 @@ export const buildConfig = {
       skills: ['Buff', 'Heal'],
       actionSpeed: 'Slightly Slow',
       tier: 'A',
-      buildLink: '/guides/busty-burst/build/pastel',
+      buildLink: '/guides/busty-burst/build/pastel/',
     },
     {
       id: 'lucie',
@@ -132,7 +132,7 @@ export const buildConfig = {
       skills: ['Buff', 'Debuff', 'Disrupt'],
       actionSpeed: 'Slightly Slow',
       tier: 'S',
-      buildLink: '/guides/busty-burst/build/lucie',
+      buildLink: '/guides/busty-burst/build/lucie/',
     },
     {
       id: 'rui',
@@ -146,7 +146,7 @@ export const buildConfig = {
       skills: ['Debuff'],
       actionSpeed: 'Slightly Fast',
       tier: 'SS',
-      buildLink: '/guides/busty-burst/build/rui',
+      buildLink: '/guides/busty-burst/build/rui/',
     },
     {
       id: 'nue',
@@ -160,7 +160,7 @@ export const buildConfig = {
       skills: ['Debuff', 'Disrupt'],
       actionSpeed: 'Slightly Slow',
       tier: 'S',
-      buildLink: '/guides/busty-burst/build/nue',
+      buildLink: '/guides/busty-burst/build/nue/',
     },
     {
       id: 'rosa',
@@ -174,7 +174,7 @@ export const buildConfig = {
       skills: ['Physical'],
       actionSpeed: 'Normal',
       tier: 'SSS',
-      buildLink: '/guides/busty-burst/build/rosa',
+      buildLink: '/guides/busty-burst/build/rosa/',
     },
     {
       id: 'lapis',
@@ -188,7 +188,7 @@ export const buildConfig = {
       skills: ['Magic', 'Buff'],
       actionSpeed: 'Fast',
       tier: 'SS',
-      buildLink: '/guides/busty-burst/build/lapis',
+      buildLink: '/guides/busty-burst/build/lapis/',
     },
     // Valentine's 2026 Chocolate Event Characters
     {
@@ -203,7 +203,7 @@ export const buildConfig = {
       skills: ['Heal', 'Buff', 'Debuff'],
       actionSpeed: 'Slightly Fast',
       tier: 'A',
-      buildLink: '/guides/busty-burst/build/chocolate-frey',
+      buildLink: '/guides/busty-burst/build/chocolate-frey/',
     },
     {
       id: 'chocolate_hildis',
@@ -217,7 +217,7 @@ export const buildConfig = {
       skills: ['Debuff', 'Disrupt'],
       actionSpeed: 'Very Fast',
       tier: 'SS',
-      buildLink: '/guides/busty-burst/build/chocolate-hildis',
+      buildLink: '/guides/busty-burst/build/chocolate-hildis/',
     },
     {
       id: 'chocolate_shaty',
@@ -231,7 +231,7 @@ export const buildConfig = {
       skills: ['Debuff'],
       actionSpeed: 'Slow',
       tier: 'SS',
-      buildLink: '/guides/busty-burst/build/chocolate-shaty',
+      buildLink: '/guides/busty-burst/build/chocolate-shaty/',
     },
     {
       id: 'giselle',
@@ -245,7 +245,7 @@ export const buildConfig = {
       skills: ['Buff', 'Debuff'],
       actionSpeed: 'Very Slow',
       tier: 'SS',
-      buildLink: '/guides/busty-burst/build/giselle',
+      buildLink: '/guides/busty-burst/build/giselle/',
     },
     {
       id: 'festival_empress_shamshel',
@@ -259,7 +259,7 @@ export const buildConfig = {
       skills: ['Debuff', 'Disrupt'],
       actionSpeed: 'Slightly Fast',
       tier: 'S',
-      buildLink: '/guides/busty-burst/build/festival-empress-shamshel',
+      buildLink: '/guides/busty-burst/build/festival-empress-shamshel/',
     },
     {
       id: 'artia',
@@ -273,7 +273,7 @@ export const buildConfig = {
       skills: ['Debuff', 'Disrupt', 'Taunt'],
       actionSpeed: 'Slightly Slow',
       tier: 'S',
-      buildLink: '/guides/busty-burst/build/artia',
+      buildLink: '/guides/busty-burst/build/artia/',
     },
     {
       id: 'gemini',
@@ -287,7 +287,7 @@ export const buildConfig = {
       skills: ['Debuff'],
       actionSpeed: 'Fast',
       tier: 'S',
-      buildLink: '/guides/busty-burst/build/gemini',
+      buildLink: '/guides/busty-burst/build/gemini/',
     },
     {
       id: 'hildis',
@@ -301,7 +301,7 @@ export const buildConfig = {
       skills: ['Buff', 'Debuff', 'Disrupt'],
       actionSpeed: 'Fast',
       tier: 'S',
-      buildLink: '/guides/busty-burst/build/hildis',
+      buildLink: '/guides/busty-burst/build/hildis/',
     },
     {
       id: 'lycorys',
@@ -315,7 +315,7 @@ export const buildConfig = {
       skills: ['Debuff', 'Disrupt'],
       actionSpeed: 'Normal',
       tier: 'S',
-      buildLink: '/guides/busty-burst/build/lycorys',
+      buildLink: '/guides/busty-burst/build/lycorys/',
     },
     {
       id: 'trish',
@@ -329,7 +329,7 @@ export const buildConfig = {
       skills: ['Heal', 'Buff', 'Cleanse'],
       actionSpeed: 'Normal',
       tier: 'SS',
-      buildLink: '/guides/busty-burst/build/trish',
+      buildLink: '/guides/busty-burst/build/trish/',
     },
     {
       id: 'katisha',
@@ -343,7 +343,7 @@ export const buildConfig = {
       skills: ['Debuff', 'Disrupt'],
       actionSpeed: 'Slow',
       tier: 'A',
-      buildLink: '/guides/busty-burst/build/katisha',
+      buildLink: '/guides/busty-burst/build/katisha/',
     },
     // SSS Tier
     {
@@ -358,7 +358,7 @@ export const buildConfig = {
       skills: ['Buff', 'Debuff'],
       actionSpeed: 'Normal',
       tier: 'SSS',
-      buildLink: '/guides/busty-burst/build/liesel',
+      buildLink: '/guides/busty-burst/build/liesel/',
     },
     {
       id: 'frey',
@@ -372,7 +372,7 @@ export const buildConfig = {
       skills: ['Taunt', 'Debuff'],
       actionSpeed: 'Normal',
       tier: 'SSS',
-      buildLink: '/guides/busty-burst/build/frey',
+      buildLink: '/guides/busty-burst/build/frey/',
     },
     {
       id: 'messeria',
@@ -386,7 +386,7 @@ export const buildConfig = {
       skills: ['Physical'],
       actionSpeed: 'Fast',
       tier: 'SSS',
-      buildLink: '/guides/busty-burst/build/messeria',
+      buildLink: '/guides/busty-burst/build/messeria/',
     },
     {
       id: 'top_dancer_messeria',
@@ -400,7 +400,7 @@ export const buildConfig = {
       skills: ['Buff', 'Debuff'],
       actionSpeed: 'Normal',
       tier: 'SSS',
-      buildLink: '/guides/busty-burst/build/top-dancer-messeria',
+      buildLink: '/guides/busty-burst/build/top-dancer-messeria/',
     },
     // SS Tier
     {
@@ -415,7 +415,7 @@ export const buildConfig = {
       skills: ['Heal', 'Buff'],
       actionSpeed: 'Normal',
       tier: 'SS',
-      buildLink: '/guides/busty-burst/build/teresia',
+      buildLink: '/guides/busty-burst/build/teresia/',
     },
     {
       id: 'dark_knight',
@@ -429,7 +429,7 @@ export const buildConfig = {
       skills: ['Taunt', 'Debuff'],
       actionSpeed: 'Slow',
       tier: 'SS',
-      buildLink: '/guides/busty-burst/build/dark-knight',
+      buildLink: '/guides/busty-burst/build/dark-knight/',
     },
     {
       id: 'luca',
@@ -443,7 +443,7 @@ export const buildConfig = {
       skills: ['Physical'],
       actionSpeed: 'Slightly Fast',
       tier: 'SS',
-      buildLink: '/guides/busty-burst/build/luca',
+      buildLink: '/guides/busty-burst/build/luca/',
     },
     {
       id: 'meinias',
@@ -457,7 +457,7 @@ export const buildConfig = {
       skills: ['Physical'],
       actionSpeed: 'Normal',
       tier: 'SS',
-      buildLink: '/guides/busty-burst/build/meinias',
+      buildLink: '/guides/busty-burst/build/meinias/',
     },
     {
       id: 'lust',
@@ -471,7 +471,7 @@ export const buildConfig = {
       skills: ['Magic', 'Debuff'],
       actionSpeed: 'Normal',
       tier: 'SS',
-      buildLink: '/guides/busty-burst/build/lust',
+      buildLink: '/guides/busty-burst/build/lust/',
     },
     {
       id: 'setsuka',
@@ -485,7 +485,7 @@ export const buildConfig = {
       skills: ['Physical'],
       actionSpeed: 'Fast',
       tier: 'SS',
-      buildLink: '/guides/busty-burst/build/setsuka',
+      buildLink: '/guides/busty-burst/build/setsuka/',
     },
     {
       id: 'elegant-portrait-shamshel',
@@ -499,7 +499,7 @@ export const buildConfig = {
       skills: ['Magic', 'Charm'],
       actionSpeed: 'Slightly Fast',
       tier: 'S',
-      buildLink: '/guides/busty-burst/build/elegant-portrait-shamshel',
+      buildLink: '/guides/busty-burst/build/elegant-portrait-shamshel/',
     },
     {
       id: 'natasha',
@@ -513,7 +513,7 @@ export const buildConfig = {
       skills: ['Physical', 'Stun', 'Taunt'],
       actionSpeed: 'Slightly Fast',
       tier: 'S',
-      buildLink: '/guides/busty-burst/build/natasha',
+      buildLink: '/guides/busty-burst/build/natasha/',
     },
     {
       id: 'seductive-vampire-soltina',
@@ -527,7 +527,7 @@ export const buildConfig = {
       skills: ['Physical', 'HP Absorb'],
       actionSpeed: 'Fast',
       tier: 'S',
-      buildLink: '/guides/busty-burst/build/seductive-vampire-soltina',
+      buildLink: '/guides/busty-burst/build/seductive-vampire-soltina/',
     },
     {
       id: 'noble-succubus-empress-shamshel',
@@ -541,7 +541,7 @@ export const buildConfig = {
       skills: ['Magic', 'Charm'],
       actionSpeed: 'Slightly Fast',
       tier: 'S',
-      buildLink: '/guides/busty-burst/build/noble-succubus-empress-shamshel',
+      buildLink: '/guides/busty-burst/build/noble-succubus-empress-shamshel/',
     },
     {
       id: 'yu-lima-elka',
@@ -555,7 +555,7 @@ export const buildConfig = {
       skills: ['Physical', 'Charm', 'Debuff'],
       actionSpeed: 'Slightly Slow',
       tier: 'A',
-      buildLink: '/guides/busty-burst/build/yu-lima-elka',
+      buildLink: '/guides/busty-burst/build/yu-lima-elka/',
     },
     {
       id: 'hisara',
@@ -569,7 +569,7 @@ export const buildConfig = {
       skills: ['Physical'],
       actionSpeed: 'Slightly Fast',
       tier: 'S',
-      buildLink: '/guides/busty-burst/build/hisara',
+      buildLink: '/guides/busty-burst/build/hisara/',
     },
     {
       id: 'viatrice',
@@ -583,7 +583,7 @@ export const buildConfig = {
       skills: ['Magic'],
       actionSpeed: 'Normal',
       tier: 'S',
-      buildLink: '/guides/busty-burst/build/viatrice',
+      buildLink: '/guides/busty-burst/build/viatrice/',
     },
     {
       id: 'the-strongest-witch-shaharl',
@@ -597,7 +597,7 @@ export const buildConfig = {
       skills: ['Magic', 'Support'],
       actionSpeed: 'Normal',
       tier: 'A',
-      buildLink: '/guides/busty-burst/build/the-strongest-witch-shaharl',
+      buildLink: '/guides/busty-burst/build/the-strongest-witch-shaharl/',
     },
     {
       id: 'samurai-cow-girl-setsuka',
@@ -611,7 +611,7 @@ export const buildConfig = {
       skills: ['Physical'],
       actionSpeed: 'Fast',
       tier: 'A',
-      buildLink: '/guides/busty-burst/build/samurai-cow-girl-setsuka',
+      buildLink: '/guides/busty-burst/build/samurai-cow-girl-setsuka/',
     },
     {
       id: 'raguen',
@@ -625,7 +625,7 @@ export const buildConfig = {
       skills: ['Physical', 'Taunt', 'Debuff'],
       actionSpeed: 'Normal',
       tier: 'A',
-      buildLink: '/guides/busty-burst/build/raguen',
+      buildLink: '/guides/busty-burst/build/raguen/',
     },
     {
       id: 'bianca',
@@ -639,7 +639,7 @@ export const buildConfig = {
       skills: ['Physical', 'Disrupt'],
       actionSpeed: 'Fast',
       tier: 'S',
-      buildLink: '/guides/busty-burst/build/bianca',
+      buildLink: '/guides/busty-burst/build/bianca/',
     },
     {
       id: 'ishtovia',
@@ -653,7 +653,7 @@ export const buildConfig = {
       skills: ['Magic', 'Heal', 'Debuff'],
       actionSpeed: 'Normal',
       tier: 'S',
-      buildLink: '/guides/busty-burst/build/ishtovia',
+      buildLink: '/guides/busty-burst/build/ishtovia/',
     },
     {
       id: 'magical-princess-luceria',
@@ -667,7 +667,7 @@ export const buildConfig = {
       skills: ['Magic', 'Heal', 'Buff'],
       actionSpeed: 'Normal',
       tier: 'A',
-      buildLink: '/guides/busty-burst/build/magical-princess-luceria',
+      buildLink: '/guides/busty-burst/build/magical-princess-luceria/',
     },
     {
       id: 'inrine',
@@ -681,7 +681,7 @@ export const buildConfig = {
       skills: ['Physical', 'Debuff'],
       actionSpeed: 'Very Slow',
       tier: 'S',
-      buildLink: '/guides/busty-burst/build/inrine',
+      buildLink: '/guides/busty-burst/build/inrine/',
     },
     {
       id: 'ruru',
@@ -695,7 +695,7 @@ export const buildConfig = {
       skills: ['Physical', 'Debuff'],
       actionSpeed: 'Normal',
       tier: 'S',
-      buildLink: '/guides/busty-burst/build/ruru',
+      buildLink: '/guides/busty-burst/build/ruru/',
     },
   ],
 };

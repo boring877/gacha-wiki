@@ -2089,5 +2089,5 @@ export const meta = {
   numericId: "20660",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/fleeting-bella"
+  detailUrl: "/guides/silver-and-blood/characters/fleeting-bella/"
 };

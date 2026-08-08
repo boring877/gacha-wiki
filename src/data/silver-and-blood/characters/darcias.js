@@ -2055,5 +2055,5 @@ export const meta = {
   numericId: "20170",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/darcias"
+  detailUrl: "/guides/silver-and-blood/characters/darcias/"
 };

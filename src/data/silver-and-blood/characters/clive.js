@@ -1998,5 +1998,5 @@ export const meta = {
   numericId: "20500",
   rarity: "SR",
   hasImage: false,
-  detailUrl: "/guides/silver-and-blood/characters/clive"
+  detailUrl: "/guides/silver-and-blood/characters/clive/"
 };

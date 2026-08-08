@@ -1904,5 +1904,5 @@ export const meta = {
   numericId: "20550",
   rarity: "R",
   hasImage: false,
-  detailUrl: "/guides/silver-and-blood/characters/leo"
+  detailUrl: "/guides/silver-and-blood/characters/leo/"
 };

@@ -2063,5 +2063,5 @@ export const meta = {
   numericId: "20210",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/acappella"
+  detailUrl: "/guides/silver-and-blood/characters/acappella/"
 };

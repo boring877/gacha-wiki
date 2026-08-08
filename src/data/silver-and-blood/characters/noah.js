@@ -1976,5 +1976,5 @@ export const meta = {
   numericId: "20000",
   rarity: "SR",
   hasImage: false,
-  detailUrl: "/guides/silver-and-blood/characters/noah"
+  detailUrl: "/guides/silver-and-blood/characters/noah/"
 };

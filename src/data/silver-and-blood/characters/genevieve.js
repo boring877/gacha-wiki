@@ -2055,5 +2055,5 @@ export const meta = {
   numericId: "20680",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/genevieve"
+  detailUrl: "/guides/silver-and-blood/characters/genevieve/"
 };

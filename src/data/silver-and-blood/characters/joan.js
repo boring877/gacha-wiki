@@ -2047,5 +2047,5 @@ export const meta = {
   numericId: "20420",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/joan"
+  detailUrl: "/guides/silver-and-blood/characters/joan/"
 };

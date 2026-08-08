@@ -169,7 +169,7 @@ export const warMercenaryMercenary = {
   ],
 
   // Detail page URL
-  detailUrl: '/guides/horizon-walker/mercenaries/war-mercenary',
+  detailUrl: '/guides/horizon-walker/mercenaries/war-mercenary/',
 
   // SEO and metadata
   seo: {

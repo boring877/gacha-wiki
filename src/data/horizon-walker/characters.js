@@ -97,7 +97,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Araha.jpg',
     slug: 'araha',
-    detailUrl: '/guides/horizon-walker/characters/araha',
+    detailUrl: '/guides/horizon-walker/characters/araha/',
     hasEXWeapon: true,
   },
   {
@@ -145,7 +145,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Bella.jpg',
     slug: 'bella',
-    detailUrl: '/guides/horizon-walker/characters/bella',
+    detailUrl: '/guides/horizon-walker/characters/bella/',
     hasEXWeapon: true,
   },
   {
@@ -191,7 +191,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Berga.jpg',
     slug: 'berga',
-    detailUrl: '/guides/horizon-walker/characters/berga',
+    detailUrl: '/guides/horizon-walker/characters/berga/',
   },
   {
     id: 4,
@@ -235,7 +235,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Canisk.jpg',
     slug: 'canisk',
-    detailUrl: '/guides/horizon-walker/characters/canisk',
+    detailUrl: '/guides/horizon-walker/characters/canisk/',
   },
   {
     id: 5,
@@ -280,7 +280,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Cora.jpg',
     slug: 'cora',
-    detailUrl: '/guides/horizon-walker/characters/cora',
+    detailUrl: '/guides/horizon-walker/characters/cora/',
   },
   {
     id: 6,
@@ -325,7 +325,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Delia.jpg',
     slug: 'delia',
-    detailUrl: '/guides/horizon-walker/characters/delia',
+    detailUrl: '/guides/horizon-walker/characters/delia/',
   },
   {
     id: 50,
@@ -375,7 +375,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Echidna.jpg',
     slug: 'echidna',
-    detailUrl: '/guides/horizon-walker/characters/echidna',
+    detailUrl: '/guides/horizon-walker/characters/echidna/',
     hasEXWeapon: true,
   },
   {
@@ -426,7 +426,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Erneste.jpg',
     slug: 'erneste',
-    detailUrl: '/guides/horizon-walker/characters/erneste',
+    detailUrl: '/guides/horizon-walker/characters/erneste/',
   },
   {
     id: 8,
@@ -471,7 +471,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Fammene.jpg',
     slug: 'fammene',
-    detailUrl: '/guides/horizon-walker/characters/fammene',
+    detailUrl: '/guides/horizon-walker/characters/fammene/',
   },
   {
     id: 9,
@@ -520,7 +520,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Efreeti.jpg',
     slug: 'efreeti',
-    detailUrl: '/guides/horizon-walker/characters/efreeti',
+    detailUrl: '/guides/horizon-walker/characters/efreeti/',
   },
   {
     id: 48,
@@ -570,7 +570,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Emilia',
     slug: 'emilia',
-    detailUrl: '/guides/horizon-walker/characters/emilia',
+    detailUrl: '/guides/horizon-walker/characters/emilia/',
     hasEXWeapon: true,
   },
   {
@@ -613,7 +613,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Everette.jpg',
     slug: 'everette',
-    detailUrl: '/guides/horizon-walker/characters/everette',
+    detailUrl: '/guides/horizon-walker/characters/everette/',
   },
   {
     id: 11,
@@ -658,7 +658,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Griselda.jpg',
     slug: 'griselda',
-    detailUrl: '/guides/horizon-walker/characters/griselda',
+    detailUrl: '/guides/horizon-walker/characters/griselda/',
   },
   {
     id: 12,
@@ -706,7 +706,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Gulam.jpg',
     slug: 'gulam',
-    detailUrl: '/guides/horizon-walker/characters/gulam',
+    detailUrl: '/guides/horizon-walker/characters/gulam/',
   },
   {
     id: 13,
@@ -753,7 +753,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Gulsni.jpg',
     slug: 'gulsni',
-    detailUrl: '/guides/horizon-walker/characters/gulsni',
+    detailUrl: '/guides/horizon-walker/characters/gulsni/',
   },
   {
     id: 14,
@@ -802,7 +802,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Headless_Knight.jpg',
     slug: 'headless-knight',
-    detailUrl: '/guides/horizon-walker/characters/headless-knight',
+    detailUrl: '/guides/horizon-walker/characters/headless-knight/',
   },
   {
     id: 15,
@@ -847,7 +847,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Ines.jpg',
     slug: 'ines',
-    detailUrl: '/guides/horizon-walker/characters/ines',
+    detailUrl: '/guides/horizon-walker/characters/ines/',
   },
   {
     id: 16,
@@ -896,7 +896,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Juha.jpg',
     slug: 'juha',
-    detailUrl: '/guides/horizon-walker/characters/juha',
+    detailUrl: '/guides/horizon-walker/characters/juha/',
   },
   {
     id: 17,
@@ -939,7 +939,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Kalina.jpg',
     slug: 'kalina',
-    detailUrl: '/guides/horizon-walker/characters/kalina',
+    detailUrl: '/guides/horizon-walker/characters/kalina/',
   },
   {
     id: 18,
@@ -984,7 +984,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Kilon.jpg',
     slug: 'kilon',
-    detailUrl: '/guides/horizon-walker/characters/kilon',
+    detailUrl: '/guides/horizon-walker/characters/kilon/',
   },
   {
     id: 19,
@@ -1032,7 +1032,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'kim_Ga_young.jpg',
     slug: 'kim-ga-young',
-    detailUrl: '/guides/horizon-walker/characters/kim-ga-young',
+    detailUrl: '/guides/horizon-walker/characters/kim-ga-young/',
   },
   {
     id: 47,
@@ -1084,7 +1084,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Kaul.jpg',
     slug: 'kaul',
-    detailUrl: '/guides/horizon-walker/characters/kaul',
+    detailUrl: '/guides/horizon-walker/characters/kaul/',
   },
   {
     id: 46,
@@ -1134,7 +1134,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Korabi.jpg',
     slug: 'korabi',
-    detailUrl: '/guides/horizon-walker/characters/korabi',
+    detailUrl: '/guides/horizon-walker/characters/korabi/',
   },
   {
     id: 20,
@@ -1182,7 +1182,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Luise.jpg',
     slug: 'luise',
-    detailUrl: '/guides/horizon-walker/characters/luise',
+    detailUrl: '/guides/horizon-walker/characters/luise/',
   },
   {
     id: 21,
@@ -1233,7 +1233,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Leah',
     slug: 'leah',
-    detailUrl: '/guides/horizon-walker/characters/leah',
+    detailUrl: '/guides/horizon-walker/characters/leah/',
     hasEXWeapon: true,
   },
   {
@@ -1283,7 +1283,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Mahari.jpg',
     slug: 'mahari',
-    detailUrl: '/guides/horizon-walker/characters/mahari',
+    detailUrl: '/guides/horizon-walker/characters/mahari/',
   },
   {
     id: 23,
@@ -1331,7 +1331,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Lisandria.jpg',
     slug: 'lisandria',
-    detailUrl: '/guides/horizon-walker/characters/lisandria',
+    detailUrl: '/guides/horizon-walker/characters/lisandria/',
   },
   {
     id: 23,
@@ -1376,7 +1376,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Marhim.jpg',
     slug: 'marhim',
-    detailUrl: '/guides/horizon-walker/characters/marhim',
+    detailUrl: '/guides/horizon-walker/characters/marhim/',
   },
   {
     id: 55,
@@ -1411,7 +1411,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Marika.jpg',
     slug: 'marika',
-    detailUrl: '/guides/horizon-walker/characters/marika',
+    detailUrl: '/guides/horizon-walker/characters/marika/',
   },
   {
     id: 24,
@@ -1456,7 +1456,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Matrotho.jpg',
     slug: 'matrotho',
-    detailUrl: '/guides/horizon-walker/characters/matrotho',
+    detailUrl: '/guides/horizon-walker/characters/matrotho/',
   },
   {
     id: 25,
@@ -1495,7 +1495,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Min_Eun_sol.jpg',
     slug: 'min-eun-sol',
-    detailUrl: '/guides/horizon-walker/characters/min-eun-sol',
+    detailUrl: '/guides/horizon-walker/characters/min-eun-sol/',
   },
   {
     id: 26,
@@ -1540,7 +1540,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Osla.jpg',
     slug: 'osla',
-    detailUrl: '/guides/horizon-walker/characters/osla',
+    detailUrl: '/guides/horizon-walker/characters/osla/',
   },
   {
     id: 27,
@@ -1589,7 +1589,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Nari.jpg',
     slug: 'nari',
-    detailUrl: '/guides/horizon-walker/characters/nari',
+    detailUrl: '/guides/horizon-walker/characters/nari/',
   },
   {
     id: 28,
@@ -1634,7 +1634,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Nika.jpg',
     slug: 'nika',
-    detailUrl: '/guides/horizon-walker/characters/nika',
+    detailUrl: '/guides/horizon-walker/characters/nika/',
   },
   {
     id: 29,
@@ -1682,7 +1682,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Nymset.jpg',
     slug: 'nymset',
-    detailUrl: '/guides/horizon-walker/characters/nymset',
+    detailUrl: '/guides/horizon-walker/characters/nymset/',
   },
   {
     id: 30,
@@ -1727,7 +1727,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Nonoha.jpg',
     slug: 'nonoha',
-    detailUrl: '/guides/horizon-walker/characters/nonoha',
+    detailUrl: '/guides/horizon-walker/characters/nonoha/',
   },
   {
     id: 31,
@@ -1770,7 +1770,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Olivia.jpg',
     slug: 'olivia',
-    detailUrl: '/guides/horizon-walker/characters/olivia',
+    detailUrl: '/guides/horizon-walker/characters/olivia/',
   },
   {
     id: 32,
@@ -1818,7 +1818,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Pantheri.jpg',
     slug: 'pantheri',
-    detailUrl: '/guides/horizon-walker/characters/pantheri',
+    detailUrl: '/guides/horizon-walker/characters/pantheri/',
   },
   {
     id: 33,
@@ -1868,7 +1868,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Platina.jpg',
     slug: 'platina',
-    detailUrl: '/guides/horizon-walker/characters/platina',
+    detailUrl: '/guides/horizon-walker/characters/platina/',
   },
   {
     id: 34,
@@ -1915,7 +1915,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Re_De_Da.jpg',
     slug: 're-de-da',
-    detailUrl: '/guides/horizon-walker/characters/re-de-da',
+    detailUrl: '/guides/horizon-walker/characters/re-de-da/',
   },
   {
     id: 35,
@@ -1960,7 +1960,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Rhasadina.jpg',
     slug: 'rhasadina',
-    detailUrl: '/guides/horizon-walker/characters/rhasadina',
+    detailUrl: '/guides/horizon-walker/characters/rhasadina/',
   },
   {
     id: 36,
@@ -2009,7 +2009,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Samarika.jpg',
     slug: 'samarika',
-    detailUrl: '/guides/horizon-walker/characters/samarika',
+    detailUrl: '/guides/horizon-walker/characters/samarika/',
   },
   {
     id: 37,
@@ -2056,7 +2056,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'So_Joo_hee.jpg',
     slug: 'so-joo-hee',
-    detailUrl: '/guides/horizon-walker/characters/so-joo-hee',
+    detailUrl: '/guides/horizon-walker/characters/so-joo-hee/',
   },
   {
     id: 38,
@@ -2100,7 +2100,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Yeon_Chae-Young.jpg',
     slug: 'yeon-chae-young',
-    detailUrl: '/guides/horizon-walker/characters/yeon-chae-young',
+    detailUrl: '/guides/horizon-walker/characters/yeon-chae-young/',
   },
   {
     id: 39,
@@ -2149,7 +2149,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Yvonna.jpg',
     slug: 'yvonna',
-    detailUrl: '/guides/horizon-walker/characters/yvonna',
+    detailUrl: '/guides/horizon-walker/characters/yvonna/',
   },
   {
     id: 40,
@@ -2198,7 +2198,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Valeta.jpg',
     slug: 'valeta',
-    detailUrl: '/guides/horizon-walker/characters/valeta',
+    detailUrl: '/guides/horizon-walker/characters/valeta/',
   },
   {
     id: 41,
@@ -2247,7 +2247,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Vlissing.jpg',
     slug: 'vlissing',
-    detailUrl: '/guides/horizon-walker/characters/vlissing',
+    detailUrl: '/guides/horizon-walker/characters/vlissing/',
   },
   {
     id: 42,
@@ -2296,7 +2296,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'TX_Manticore.jpg',
     slug: 'tx-manticore',
-    detailUrl: '/guides/horizon-walker/characters/tx-manticore',
+    detailUrl: '/guides/horizon-walker/characters/tx-manticore/',
   },
   {
     id: 43,
@@ -2342,7 +2342,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Yui.jpg',
     slug: 'yui',
-    detailUrl: '/guides/horizon-walker/characters/yui',
+    detailUrl: '/guides/horizon-walker/characters/yui/',
   },
   {
     id: 44,
@@ -2388,7 +2388,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Yeonwoo.jpg',
     slug: 'yeonwoo',
-    detailUrl: '/guides/horizon-walker/characters/yeonwoo',
+    detailUrl: '/guides/horizon-walker/characters/yeonwoo/',
   },
   {
     id: 45,
@@ -2435,7 +2435,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Kalma.jpg',
     slug: 'kalma',
-    detailUrl: '/guides/horizon-walker/characters/kalma',
+    detailUrl: '/guides/horizon-walker/characters/kalma/',
     hasEXWeapon: true,
   },
   {
@@ -2483,7 +2483,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Palekar.jpg',
     slug: 'palekar',
-    detailUrl: '/guides/horizon-walker/characters/palekar',
+    detailUrl: '/guides/horizon-walker/characters/palekar/',
     hasEXWeapon: true,
   },
   {
@@ -2514,7 +2514,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Eugenia.jpg',
     slug: 'eugenia',
-    detailUrl: '/guides/horizon-walker/characters/eugenia',
+    detailUrl: '/guides/horizon-walker/characters/eugenia/',
   },
   {
     id: 53,
@@ -2545,7 +2545,7 @@ export const HORIZON_WALKER_CHARACTERS = [
     },
     image: 'Maximilia.jpg',
     slug: 'maximilia',
-    detailUrl: '/guides/horizon-walker/characters/maximilia',
+    detailUrl: '/guides/horizon-walker/characters/maximilia/',
   },
 ];
 

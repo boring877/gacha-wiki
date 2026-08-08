@@ -2130,5 +2130,5 @@ export const meta = {
   numericId: "20270",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/piera"
+  detailUrl: "/guides/silver-and-blood/characters/piera/"
 };

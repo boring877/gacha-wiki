@@ -2046,5 +2046,5 @@ export const meta = {
   numericId: "20090",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/cain"
+  detailUrl: "/guides/silver-and-blood/characters/cain/"
 };

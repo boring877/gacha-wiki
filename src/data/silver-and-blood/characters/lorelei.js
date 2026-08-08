@@ -2093,5 +2093,5 @@ export const meta = {
   numericId: "20640",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/lorelei"
+  detailUrl: "/guides/silver-and-blood/characters/lorelei/"
 };

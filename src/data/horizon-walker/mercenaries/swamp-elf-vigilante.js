@@ -213,7 +213,7 @@ export const swampElfVigilanteMercenary = {
   ],
 
   // Detail page URL
-  detailUrl: '/guides/horizon-walker/mercenaries/swamp-elf-vigilante',
+  detailUrl: '/guides/horizon-walker/mercenaries/swamp-elf-vigilante/',
 
   // SEO and metadata
   seo: {

@@ -2060,5 +2060,5 @@ export const meta = {
   numericId: "20580",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/stella"
+  detailUrl: "/guides/silver-and-blood/characters/stella/"
 };

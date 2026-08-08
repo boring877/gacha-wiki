@@ -1992,5 +1992,5 @@ export const meta = {
   numericId: "20070",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/cecia"
+  detailUrl: "/guides/silver-and-blood/characters/cecia/"
 };

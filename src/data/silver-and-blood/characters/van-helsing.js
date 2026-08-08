@@ -2055,5 +2055,5 @@ export const meta = {
   numericId: "20400",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/van-helsing"
+  detailUrl: "/guides/silver-and-blood/characters/van-helsing/"
 };

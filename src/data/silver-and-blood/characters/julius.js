@@ -2070,5 +2070,5 @@ export const meta = {
   numericId: "20710",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/julius"
+  detailUrl: "/guides/silver-and-blood/characters/julius/"
 };

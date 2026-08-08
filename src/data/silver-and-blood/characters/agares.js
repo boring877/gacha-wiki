@@ -2043,5 +2043,5 @@ export const meta = {
   numericId: "20100",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/agares"
+  detailUrl: "/guides/silver-and-blood/characters/agares/"
 };

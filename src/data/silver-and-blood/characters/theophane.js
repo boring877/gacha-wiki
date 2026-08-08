@@ -1993,5 +1993,5 @@ export const meta = {
   numericId: "20190",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/theophane"
+  detailUrl: "/guides/silver-and-blood/characters/theophane/"
 };

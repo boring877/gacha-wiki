@@ -1975,5 +1975,5 @@ export const meta = {
   numericId: "20590",
   rarity: "SR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/regina"
+  detailUrl: "/guides/silver-and-blood/characters/regina/"
 };

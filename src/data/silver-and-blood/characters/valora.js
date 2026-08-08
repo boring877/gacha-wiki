@@ -2091,5 +2091,5 @@ export const meta = {
   numericId: "20690",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/valora"
+  detailUrl: "/guides/silver-and-blood/characters/valora/"
 };

@@ -466,5 +466,5 @@ export const meta = {
   numericId: "20780",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/lucille"
+  detailUrl: "/guides/silver-and-blood/characters/lucille/"
 };

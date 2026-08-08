@@ -125,7 +125,7 @@ export const zoneNovaRedeemCodes = {
       {
         id: 'contribute',
         text: 'Contribute',
-        url: '/guides/zone-nova/contributing',
+        url: '/guides/zone-nova/contributing/',
         type: 'contribute',
       },
       {

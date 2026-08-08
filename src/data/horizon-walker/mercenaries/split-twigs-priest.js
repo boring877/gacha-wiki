@@ -159,7 +159,7 @@ export const splitTwigsPriestMercenary = {
   ],
 
   // Detail page URL
-  detailUrl: '/guides/horizon-walker/mercenaries/split-twigs-priest',
+  detailUrl: '/guides/horizon-walker/mercenaries/split-twigs-priest/',
 
   // SEO and metadata
   seo: {

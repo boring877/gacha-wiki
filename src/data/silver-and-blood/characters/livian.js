@@ -2074,5 +2074,5 @@ export const meta = {
   numericId: "20750",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/livian"
+  detailUrl: "/guides/silver-and-blood/characters/livian/"
 };

@@ -1998,5 +1998,5 @@ export const meta = {
   numericId: "20020",
   rarity: "SR",
   hasImage: false,
-  detailUrl: "/guides/silver-and-blood/characters/jestel"
+  detailUrl: "/guides/silver-and-blood/characters/jestel/"
 };

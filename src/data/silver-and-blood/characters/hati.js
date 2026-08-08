@@ -2079,5 +2079,5 @@ export const meta = {
   numericId: "20130",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/hati"
+  detailUrl: "/guides/silver-and-blood/characters/hati/"
 };

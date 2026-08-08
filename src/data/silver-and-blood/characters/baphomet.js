@@ -1984,5 +1984,5 @@ export const meta = {
   numericId: "20490",
   rarity: "SR",
   hasImage: false,
-  detailUrl: "/guides/silver-and-blood/characters/baphomet"
+  detailUrl: "/guides/silver-and-blood/characters/baphomet/"
 };

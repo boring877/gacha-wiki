@@ -2092,5 +2092,5 @@ export const meta = {
   numericId: "20630",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/agnes"
+  detailUrl: "/guides/silver-and-blood/characters/agnes/"
 };

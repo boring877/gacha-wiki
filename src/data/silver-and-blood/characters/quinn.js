@@ -2048,5 +2048,5 @@ export const meta = {
   numericId: "20620",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/quinn"
+  detailUrl: "/guides/silver-and-blood/characters/quinn/"
 };

@@ -171,7 +171,7 @@ export const tortaWarriorMercenary = {
   ],
 
   // Detail page URL
-  detailUrl: '/guides/horizon-walker/mercenaries/torta-warrior',
+  detailUrl: '/guides/horizon-walker/mercenaries/torta-warrior/',
 
   // SEO and metadata
   seo: {

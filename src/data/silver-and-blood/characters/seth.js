@@ -1993,5 +1993,5 @@ export const meta = {
   numericId: "20220",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/seth"
+  detailUrl: "/guides/silver-and-blood/characters/seth/"
 };

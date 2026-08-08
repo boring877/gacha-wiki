@@ -2007,5 +2007,5 @@ export const meta = {
   numericId: "20330",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/nicole"
+  detailUrl: "/guides/silver-and-blood/characters/nicole/"
 };

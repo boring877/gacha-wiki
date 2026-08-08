@@ -1913,5 +1913,5 @@ export const meta = {
   numericId: "20530",
   rarity: "R",
   hasImage: false,
-  detailUrl: "/guides/silver-and-blood/characters/henry"
+  detailUrl: "/guides/silver-and-blood/characters/henry/"
 };

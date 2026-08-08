@@ -2050,5 +2050,5 @@ export const meta = {
   numericId: "20700",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/sirene"
+  detailUrl: "/guides/silver-and-blood/characters/sirene/"
 };

@@ -278,7 +278,7 @@ export const silverAndBloodRedeemCodes = {
       {
         id: 'contribute',
         text: 'Contribute',
-        url: '/guides/silver-and-blood/contributing',
+        url: '/guides/silver-and-blood/contributing/',
         type: 'contribute',
       },
       {

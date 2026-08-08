@@ -2003,5 +2003,5 @@ export const meta = {
   numericId: "20140",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/spectral-gilrain"
+  detailUrl: "/guides/silver-and-blood/characters/spectral-gilrain/"
 };

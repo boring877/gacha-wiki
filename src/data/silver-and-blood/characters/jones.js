@@ -1900,5 +1900,5 @@ export const meta = {
   numericId: "20260",
   rarity: "R",
   hasImage: false,
-  detailUrl: "/guides/silver-and-blood/characters/jones"
+  detailUrl: "/guides/silver-and-blood/characters/jones/"
 };

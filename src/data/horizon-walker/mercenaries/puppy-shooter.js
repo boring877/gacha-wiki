@@ -170,7 +170,7 @@ export const puppyShooterMercenary = {
   ],
 
   // Detail page URL
-  detailUrl: '/guides/horizon-walker/mercenaries/puppy-shooter',
+  detailUrl: '/guides/horizon-walker/mercenaries/puppy-shooter/',
 
   // SEO and metadata
   seo: {

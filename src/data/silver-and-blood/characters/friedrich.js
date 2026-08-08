@@ -1992,5 +1992,5 @@ export const meta = {
   numericId: "20180",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/friedrich"
+  detailUrl: "/guides/silver-and-blood/characters/friedrich/"
 };

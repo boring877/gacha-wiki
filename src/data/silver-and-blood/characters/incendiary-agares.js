@@ -2055,5 +2055,5 @@ export const meta = {
   numericId: "20350",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/incendiary-agares"
+  detailUrl: "/guides/silver-and-blood/characters/incendiary-agares/"
 };

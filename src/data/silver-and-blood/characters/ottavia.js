@@ -1984,5 +1984,5 @@ export const meta = {
   numericId: "20430",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/ottavia"
+  detailUrl: "/guides/silver-and-blood/characters/ottavia/"
 };

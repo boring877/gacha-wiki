@@ -2096,5 +2096,5 @@ export const meta = {
   numericId: "20760",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/ethereal-joan"
+  detailUrl: "/guides/silver-and-blood/characters/ethereal-joan/"
 };

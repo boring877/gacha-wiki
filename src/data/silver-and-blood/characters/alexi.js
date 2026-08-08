@@ -2067,5 +2067,5 @@ export const meta = {
   numericId: "20740",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/alexi"
+  detailUrl: "/guides/silver-and-blood/characters/alexi/"
 };

@@ -106,7 +106,7 @@ export const stellaSoraRedeemCodes = {
       {
         id: 'contribute',
         text: 'Contribute',
-        url: '/guides/stella-sora/contributing',
+        url: '/guides/stella-sora/contributing/',
         type: 'contribute',
       },
       {

@@ -2038,5 +2038,5 @@ export const meta = {
   numericId: "20510",
   rarity: "SR",
   hasImage: false,
-  detailUrl: "/guides/silver-and-blood/characters/clive-jr"
+  detailUrl: "/guides/silver-and-blood/characters/clive-jr/"
 };

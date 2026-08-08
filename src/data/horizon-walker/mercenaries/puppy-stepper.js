@@ -178,7 +178,7 @@ export const puppyStepperMercenary = {
   ],
 
   // Detail page URL
-  detailUrl: '/guides/horizon-walker/mercenaries/puppy-stepper',
+  detailUrl: '/guides/horizon-walker/mercenaries/puppy-stepper/',
 
   // SEO and metadata
   seo: {

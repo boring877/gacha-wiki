@@ -2048,5 +2048,5 @@ export const meta = {
   numericId: "20320",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/fanny"
+  detailUrl: "/guides/silver-and-blood/characters/fanny/"
 };

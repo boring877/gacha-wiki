@@ -39,7 +39,7 @@ export const damageMechanicsIndex = {
           title: 'Damage & Defense Formulas',
           description:
             'Learn the core damage calculation formula, defense coefficient system, and damage reduction mechanics',
-          url: '/guides/zone-nova/damage-mechanics/core-formulas',
+          url: '/guides/zone-nova/damage-mechanics/core-formulas/',
           difficulty: 'Beginner',
           estimatedTime: '10 min read',
           features: [
@@ -67,7 +67,7 @@ export const damageMechanicsIndex = {
           title: 'Gaia (Matriarch) Mechanics',
           description:
             'HP manipulation, healing calculations, and Motherly Love mechanics for the ultimate support character',
-          url: '/guides/zone-nova/damage-mechanics/gaia-mechanics',
+          url: '/guides/zone-nova/damage-mechanics/gaia-mechanics/',
           difficulty: 'Advanced',
           estimatedTime: '15 min read',
           features: [

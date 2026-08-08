@@ -2038,5 +2038,5 @@ export const meta = {
   numericId: "20040",
   rarity: "SR",
   hasImage: false,
-  detailUrl: "/guides/silver-and-blood/characters/aiona"
+  detailUrl: "/guides/silver-and-blood/characters/aiona/"
 };

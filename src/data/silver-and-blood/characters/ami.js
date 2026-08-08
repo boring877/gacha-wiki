@@ -2041,5 +2041,5 @@ export const meta = {
   numericId: "20060",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/ami"
+  detailUrl: "/guides/silver-and-blood/characters/ami/"
 };

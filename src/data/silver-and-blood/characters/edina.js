@@ -1977,5 +1977,5 @@ export const meta = {
   numericId: "20300",
   rarity: "SSR",
   hasImage: true,
-  detailUrl: "/guides/silver-and-blood/characters/edina"
+  detailUrl: "/guides/silver-and-blood/characters/edina/"
 };

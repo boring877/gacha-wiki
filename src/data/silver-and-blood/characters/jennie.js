@@ -1897,5 +1897,5 @@ export const meta = {
   numericId: "20540",
   rarity: "R",
   hasImage: false,
-  detailUrl: "/guides/silver-and-blood/characters/jennie"
+  detailUrl: "/guides/silver-and-blood/characters/jennie/"
 };
