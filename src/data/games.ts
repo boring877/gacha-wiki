@@ -1,35 +1,38 @@
-// Central games configuration
-// This file manages all games in the gacha wiki
-import GameIcon from '../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
+// Central games registry — the single source of truth for game identity.
+// Every other layer (consts.ts, game-navigation.ts, clock/landing.js) references
+// this instead of re-declaring id/name/image/url/themeColor.
+
 import RGIcon from '../assets/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg';
 import StellaSoraIcon from '../assets/images/games/stella-sora/gameimg/Icon.jpg';
 import BustyBurstIcon from '../assets/images/games/Busty_Burst/BG/Icon.png';
 import TaimaninSquadIcon from '../assets/images/games/taimanin-squad/gameimg/icon.jpg';
 import LastOriginGlobalIcon from '../assets/images/games/last-origin-global/gameimg/icon.jpg';
+import GameIcon from '../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
 
 export interface Game {
-  id: string;
-  name: string;
-  slug: string;
-  description: string;
-  image: string | any;
-  url: string;
-  status: 'active' | 'coming-soon' | 'archived';
-  sections: string[];
-  lastUpdated?: Date;
+  id: string; // kebab-case key, e.g. 'zone-nova' — the single key everywhere
+  name: string; // short English display name
+  slug: string; // URL slug (=== id for all games)
+  description: string; // one-line tagline for the guides index card
+  image: string | ImageMetadata; // imported Astro asset OR public path string
+  url: string; // '/guides/<game>/'
+  status: 'active' | 'coming-soon';
+  themeColor: string; // hex color, moved in from consts.ts
+  damageKValue?: number; // damage formula coefficient, only zone-nova sets it
+  sections: string[]; // short section labels for the guides index teaser
 }
 
 export const GAMES: Game[] = [
   {
     id: 'rebellion-gilgamesh',
-    name: 'Rebellion Gilgamesh ルーレット契約',
+    name: 'Rebellion Gilgamesh',
     slug: 'rebellion-gilgamesh',
     description: 'Adult Fantasy RPG • Characters • Club Management • Special Moves',
     image: RGIcon,
     url: '/guides/rebellion-gilgamesh/',
     status: 'active',
+    themeColor: '#c26b6b',
     sections: ['Characters', 'Club Management', 'Special Moves', 'Story', 'Events'],
-    lastUpdated: new Date(),
   },
   {
     id: 'zone-nova',
@@ -39,8 +42,9 @@ export const GAMES: Game[] = [
     image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/zonenova.jpg',
     url: '/guides/zone-nova/',
     status: 'active',
+    themeColor: '#4a90e2',
+    damageKValue: 972.95,
     sections: ['Characters', 'Memories', 'Rifts', 'Runes', 'Crafting', 'Updates'],
-    lastUpdated: new Date(),
   },
   {
     id: 'silver-and-blood',
@@ -50,8 +54,9 @@ export const GAMES: Game[] = [
     image: '/images/games/silver-and-blood/main-images/silver-and-blood-main4.jpg',
     url: '/guides/silver-and-blood/',
     status: 'active',
+    themeColor: '#5a7ba7',
+    damageKValue: 1300,
     sections: ['Characters', 'Equipment', 'Stories'],
-    lastUpdated: new Date(),
   },
   {
     id: 'horizon-walker',
@@ -62,30 +67,30 @@ export const GAMES: Game[] = [
     image: GameIcon,
     url: '/guides/horizon-walker/',
     status: 'active',
+    themeColor: '#e8a547',
     sections: ['Chosen Humans', 'Tier List', 'Rift Combat', 'Transcendence', 'Survivor Resources'],
-    lastUpdated: new Date(),
   },
   {
     id: 'stella-sora',
-    name: 'Stella Sora ステラソラ',
+    name: 'Stella Sora',
     slug: 'stella-sora',
     description: 'Fantasy RPG • Nova Continent Exploration • Trekker Collection • Top-Down Action',
     image: StellaSoraIcon,
     url: '/guides/stella-sora/',
     status: 'active',
+    themeColor: '#7dd3fc',
     sections: ['Characters', 'Combat', 'Monoliths', 'Trekkers', 'Resources'],
-    lastUpdated: new Date(),
   },
   {
     id: 'busty-burst',
-    name: 'Busty Burst Fantasy 巨乳ファンタジーバースト',
+    name: 'Busty Burst Fantasy',
     slug: 'busty-burst',
     description: 'Fantasy RPG • Character Guides • Game Systems • Strategies',
     image: BustyBurstIcon,
     url: '/guides/busty-burst/',
     status: 'active',
+    themeColor: '#FF1493',
     sections: ['Beginner Guide', 'Tier List', 'Game Systems', 'Redeem Codes', 'Events'],
-    lastUpdated: new Date(),
   },
   {
     id: 'taimanin-squad',
@@ -95,8 +100,8 @@ export const GAMES: Game[] = [
     image: TaimaninSquadIcon,
     url: '/guides/taimanin-squad/',
     status: 'active',
+    themeColor: '#6b5b7a',
     sections: ['Pre-Registration', 'Characters', 'Summoning', 'Equipment'],
-    lastUpdated: new Date(),
   },
   {
     id: 'star-savior',
@@ -106,8 +111,8 @@ export const GAMES: Game[] = [
     image: '/images/games/star-savior/icon.png',
     url: '/guides/star-savior/',
     status: 'active',
+    themeColor: '#5b4a9e',
     sections: ['Characters', 'Nova Burst', 'Limit Break', 'Star Grades'],
-    lastUpdated: new Date(),
   },
   {
     id: 'last-origin-global',
@@ -117,43 +122,35 @@ export const GAMES: Game[] = [
     image: LastOriginGlobalIcon,
     url: '/guides/last-origin-global/',
     status: 'active',
+    themeColor: '#e63946',
     sections: ['Pre-Registration', 'Bioroids', 'Grid Combat', 'Unit Types', 'Roles', 'Progression'],
-    lastUpdated: new Date(),
   },
   {
     id: 'make-drama',
-    name: 'Make Drama: M.A.D',
+    name: 'Make Drama',
     slug: 'make-drama',
     description: 'Mobile Action Defense RPG • Wemade Connect • Pre-Registration • 10 Characters Revealed',
     image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/make-drama/icon.png',
     url: '/guides/make-drama/',
     status: 'coming-soon',
+    themeColor: '#34d399',
     sections: ['Characters', 'Factions', 'Elements', 'Pre-Registration'],
-    lastUpdated: new Date(),
   },
   {
     id: 'desire-immortal-realm',
-    name: 'Desire Immortal Realm 欲界仙途',
+    name: 'Desire Immortal Realm',
     slug: 'desire-immortal-realm',
     description: 'Chinese Xianxia RPG • 40 Heroines • Tower Defense • Star-Tier Progression',
     image: '/images/games/desire-immortal-realm/icon.png',
     url: '/guides/desire-immortal-realm/',
     status: 'active',
+    themeColor: '#3d5a6c',
     sections: ['Characters', 'Classes', 'Stats', 'Skills'],
-    lastUpdated: new Date(),
   },
 ];
 
 export function getGameById(id: string): Game | undefined {
   return GAMES.find(game => game.id === id);
-}
-
-export function getGameBySlug(slug: string): Game | undefined {
-  return GAMES.find(game => game.slug === slug);
-}
-
-export function getActiveGames(): Game[] {
-  return GAMES.filter(game => game.status === 'active');
 }
 
 export function getAllGames(): Game[] {

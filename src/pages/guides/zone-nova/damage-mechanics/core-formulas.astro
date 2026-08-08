@@ -1,7 +1,10 @@
 ---
 import DamageMechanicsPageLayout from '../../../../layouts/zone-nova/DamageMechanicsPageLayout.astro';
 import DamageCalculator from '../../../../components/zone-nova/damage-mechanics/DamageCalculator.astro';
-import { GAMES } from '../../../../consts';
+import { getGameById } from '../../../../data/games';
+
+// Damage formula coefficient K - read once from the registry.
+const K = getGameById('zone-nova')!.damageKValue!;
 
 export const prerender = true;
 ---
@@ -41,9 +44,9 @@ export const prerender = true;
       <p><strong>Attack</strong>: The enemy's attack power</p>
       <p><strong>Defense</strong>: Your defense stat</p>
       <p>
-        <strong>K = Coefficient</strong>: A constant set to {GAMES.ZONE_NOVA.DAMAGE_K_VALUE}. It
+        <strong>K = Coefficient</strong>: A constant set to {K}. It
         controls how defense works. When your defense equals the coefficient ({
-          GAMES.ZONE_NOVA.DAMAGE_K_VALUE
+          K
         }), you take about 50% damage. Higher defense gives diminishing returns.
       </p>
       <p>
@@ -53,18 +56,18 @@ export const prerender = true;
 
       <div class="zn-cf-divider"></div>
 
-      <h2>How (K={GAMES.ZONE_NOVA.DAMAGE_K_VALUE}) Coefficient Works</h2>
+      <h2>How (K={K}) Coefficient Works</h2>
       <p>Using simplified example (Enemy Attack: 1000, Your Damage Reduction: 0%):</p>
 
       <h3>Defense = 500 (Lower than Coefficient)</h3>
       <div class="zn-cf-calculation-box">
         <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
-Final Damage = (1000 × {GAMES.ZONE_NOVA.DAMAGE_K_VALUE}) / (500 + {GAMES.ZONE_NOVA.DAMAGE_K_VALUE}) × (1 - 0)
-Final Damage = {(1000 * GAMES.ZONE_NOVA.DAMAGE_K_VALUE).toLocaleString()} / {(500 + GAMES.ZONE_NOVA.DAMAGE_K_VALUE).toFixed(2)} = {((1000 * GAMES.ZONE_NOVA.DAMAGE_K_VALUE) / (500 + GAMES.ZONE_NOVA.DAMAGE_K_VALUE)).toFixed(1)}</pre>
+Final Damage = (1000 × {K}) / (500 + {K}) × (1 - 0)
+Final Damage = {(1000 * K).toLocaleString()} / {(500 + K).toFixed(2)} = {((1000 * K) / (500 + K)).toFixed(1)}</pre>
       </div>
       <p><strong>You take 66.07% of the enemy's attack</strong></p>
 
-      <h3>Defense = {GAMES.ZONE_NOVA.DAMAGE_K_VALUE} (Equal to Coefficient)</h3>
+      <h3>Defense = {K} (Equal to Coefficient)</h3>
       <div class="zn-cf-calculation-box">
         <pre>Final Damage = (Attack × K) / (Defense + K) × (1 - Damage Reduction%)
 Final Damage = (1000 × 972.95) / (972.95 + 972.95) × (1 - 0)
@@ -97,7 +100,7 @@ Final Damage = 972,950 / 6,972.95 = 139.5</pre>
       <p><strong>You take 13.95% of the enemy's attack</strong></p>
 
       <p class="zn-cf-key-point">
-        <strong>Key Point</strong>: The coefficient ({GAMES.ZONE_NOVA.DAMAGE_K_VALUE}) is the middle
+        <strong>Key Point</strong>: The coefficient ({K}) is the middle
         point where you take exactly 50% damage. Notice how the damage percentage drops quickly at
         first, then more slowly at higher defense values.
       </p>
@@ -106,7 +109,7 @@ Final Damage = 972,950 / 6,972.95 = 139.5</pre>
 
       <h2>How Damage Reduction (%) Works:</h2>
       <p>
-        Using Defense = {GAMES.ZONE_NOVA.DAMAGE_K_VALUE} (the coefficient) and Enemy Attack = 1000 to
+        Using Defense = {K} (the coefficient) and Enemy Attack = 1000 to
         show how powerful damage reduction is:
       </p>
 
@@ -146,7 +149,7 @@ Final Damage = 972,950 / 1,945.9 × 0.25 = 125.0</pre>
         <strong>Key Point</strong>: Damage Reduction% is applied as the final step and affects ALL
         damage equally! Even small amounts of damage reduction can be more effective than massive
         defense increases. 25% damage reduction saves you 125 damage, which would require going from {
-          GAMES.ZONE_NOVA.DAMAGE_K_VALUE
+          K
         } defense to about 3900 defense to achieve the same result. Very effective against bosses!
       </p>
     </section>

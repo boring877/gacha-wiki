@@ -27,17 +27,15 @@ export interface GameData {
   sections: NavigationSection[];
 }
 
-import GameIcon from '../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
-import RGIcon from '../assets/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg';
-import StellaSoraIcon from '../assets/images/games/stella-sora/gameimg/Icon.jpg';
-import BustyBurstIcon from '../assets/images/games/Busty_Burst/BG/Icon.png';
-import TaimaninSquadIcon from '../assets/images/games/taimanin-squad/gameimg/icon.jpg';
-import LastOriginGlobalIcon from '../assets/images/games/last-origin-global/gameimg/icon.jpg';
+// Game identity (name, image) is sourced from the single registry in games.ts.
+// This file holds only the navigation structure (sections → links), which is
+// genuinely unique to navigation and not duplicated elsewhere.
+import { getGameById } from './games';
 
-export const GAMES_DATA: Record<GameKey, GameData> = {
+// Navigation sections per game. Name and image are intentionally omitted here —
+// getGameData() merges them in from the registry at lookup time.
+export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
   'silver-and-blood': {
-    name: 'Silver and Blood',
-    image: '/images/games/silver-and-blood/main-images/silver-and-blood-main4.jpg',
     sections: [
       {
         title: 'Characters',
@@ -82,8 +80,6 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
     ],
   },
   'zone-nova': {
-    name: 'Zone Nova',
-    image: '/images/games/zone-nova/zonenova.jpg',
     sections: [
       {
         title: 'Characters',
@@ -136,8 +132,6 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
     ],
   },
   'horizon-walker': {
-    name: 'Horizon Walker',
-    image: GameIcon,
     sections: [
       {
         title: 'Characters',
@@ -153,7 +147,7 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
       {
         title: 'Game Mechanics',
         links: [
-          { name: 'AP Guide', href: '/guides/horizon-walker/ap-guide' },
+          { name: 'AP Guide', href: '/guides/horizon-walker/ap-guide/' },
           { name: 'Traits', href: '/guides/horizon-walker/traits/' },
           { name: 'Stigma Sub Stats', href: '/guides/horizon-walker/stigma-sub-stats/' },
         ],
@@ -170,8 +164,6 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
     ],
   },
   'rebellion-gilgamesh': {
-    name: 'Rebellion Gilgamesh',
-    image: RGIcon,
     sections: [
       {
         title: 'Characters',
@@ -193,8 +185,6 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
     ],
   },
   'stella-sora': {
-    name: 'Stella Sora',
-    image: StellaSoraIcon,
     sections: [
       {
         title: 'Characters',
@@ -251,8 +241,6 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
     ],
   },
   'busty-burst': {
-    name: 'Busty Burst Fantasy',
-    image: BustyBurstIcon,
     sections: [
       {
         title: 'Characters',
@@ -269,39 +257,39 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         title: 'Guides',
         links: [
           { name: 'Tier List', href: '/guides/busty-burst/tier-list/' },
-          { name: 'Build', href: '/guides/busty-burst/build' },
+          { name: 'Build', href: '/guides/busty-burst/build/' },
           { name: 'Support Tier List', href: '/guides/busty-burst/support-tier-list/' },
-          { name: 'Summon or Skip?', href: '/guides/busty-burst/summon-or-skip' },
+          { name: 'Summon or Skip?', href: '/guides/busty-burst/summon-or-skip/' },
           { name: 'Bust & Booty', href: '/guides/busty-burst/bust-booty-ranking/' },
         ],
       },
       {
         title: 'Equipment',
         links: [
-          { name: 'Weapons', href: '/guides/busty-burst/weapons' },
-          { name: 'Best Weapons', href: '/guides/busty-burst/best-weapons' },
-          { name: 'Accessory Stats', href: '/guides/busty-burst/accessory-stats' },
-          { name: 'Accessory Items', href: '/guides/busty-burst/accessory-items' },
-          { name: 'Accessory Guide', href: '/guides/busty-burst/accessory-guide' },
-          { name: 'Raid Drops', href: '/guides/busty-burst/raid-drops' },
+          { name: 'Weapons', href: '/guides/busty-burst/weapons/' },
+          { name: 'Best Weapons', href: '/guides/busty-burst/best-weapons/' },
+          { name: 'Accessory Stats', href: '/guides/busty-burst/accessory-stats/' },
+          { name: 'Accessory Items', href: '/guides/busty-burst/accessory-items/' },
+          { name: 'Accessory Guide', href: '/guides/busty-burst/accessory-guide/' },
+          { name: 'Raid Drops', href: '/guides/busty-burst/raid-drops/' },
         ],
       },
       {
         title: 'Mechanics',
         links: [
-          { name: 'Buff & Debuff System', href: '/guides/busty-burst/buff-debuff-guide' },
-          { name: 'Physical DEF Down', href: '/guides/busty-burst/physical-defense-down' },
-          { name: 'Magic DEF Down', href: '/guides/busty-burst/magic-defense-down' },
-          { name: 'Element DEF Down', href: '/guides/busty-burst/element-defense-down' },
-          { name: 'Team Builder', href: '/guides/busty-burst/team-builder' },
+          { name: 'Buff & Debuff System', href: '/guides/busty-burst/buff-debuff-guide/' },
+          { name: 'Physical DEF Down', href: '/guides/busty-burst/physical-defense-down/' },
+          { name: 'Magic DEF Down', href: '/guides/busty-burst/magic-defense-down/' },
+          { name: 'Element DEF Down', href: '/guides/busty-burst/element-defense-down/' },
+          { name: 'Team Builder', href: '/guides/busty-burst/team-builder/' },
           { name: 'Skill Formulas', href: '/guides/busty-burst/skill-formulas/' },
         ],
       },
       {
         title: 'Events',
         links: [
-          { name: 'Banner Timeline', href: '/guides/busty-burst/banner-timeline' },
-          { name: 'JP Event Timeline', href: '/guides/busty-burst/banner-timeline-jp' },
+          { name: 'Banner Timeline', href: '/guides/busty-burst/banner-timeline/' },
+          { name: 'JP Event Timeline', href: '/guides/busty-burst/banner-timeline-jp/' },
           { name: 'Limited Time Challenges', href: '/guides/busty-burst/limited-time-challenges/' },
         ],
       },
@@ -310,14 +298,12 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
         links: [
           { name: 'Blog', href: '/guides/busty-burst/blog/' },
           { name: 'Clock', href: '/clock/busty-burst/' },
-          { name: 'Redeem Codes', href: '/guides/busty-burst/redeem-codes' },
+          { name: 'Redeem Codes', href: '/guides/busty-burst/redeem-codes/' },
         ],
       },
     ],
   },
   'taimanin-squad': {
-    name: 'Taimanin Squad',
-    image: TaimaninSquadIcon,
     sections: [
       {
         title: 'Characters',
@@ -355,8 +341,6 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
     ],
   },
   'star-savior': {
-    name: 'Star Savior',
-    image: '/images/games/star-savior/icon.png',
     sections: [
       {
         title: 'Characters',
@@ -401,8 +385,6 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
     ],
   },
   'last-origin-global': {
-    name: 'Last Origin Global',
-    image: LastOriginGlobalIcon,
     sections: [
       {
         title: 'Game',
@@ -414,8 +396,6 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
     ],
   },
   'make-drama': {
-    name: 'Make Drama',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/make-drama/icon.png',
     sections: [
       {
         title: 'Characters',
@@ -430,8 +410,6 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
     ],
   },
   'desire-immortal-realm': {
-    name: 'Desire Immortal Realm',
-    image: '/images/games/desire-immortal-realm/icon.png',
     sections: [
       {
         title: 'Characters',
@@ -444,12 +422,21 @@ export const GAMES_DATA: Record<GameKey, GameData> = {
 };
 
 export function isValidGameKey(key: unknown): key is GameKey {
-  return typeof key === 'string' && key in GAMES_DATA;
+  return typeof key === 'string' && key in NAV_DATA;
 }
 
 export function getGameData(gameKey: GameKey | undefined): GameData | null {
   if (!gameKey || !isValidGameKey(gameKey)) {
     return null;
   }
-  return GAMES_DATA[gameKey];
+  // Merge identity (name, image) from the single registry with nav structure.
+  const game = getGameById(gameKey);
+  if (!game) {
+    return null;
+  }
+  return {
+    name: game.name,
+    image: game.image,
+    sections: NAV_DATA[gameKey].sections,
+  };
 }

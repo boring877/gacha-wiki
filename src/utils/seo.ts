@@ -1,7 +1,27 @@
 // Centralized SEO Configuration and Utilities with TypeScript
 // This file manages all SEO-related functionality across games with proper type safety
 
-import { SITE, GAMES } from '../consts';
+import { SITE } from '../consts';
+import { getGameById } from '../data/games';
+
+// Local lookups into the single game registry (src/data/games.ts).
+// Replaces the old consts.GAMES shim; each game is read once here.
+const g = (id: string) => {
+  const game = getGameById(id);
+  if (!game) throw new Error(`Unknown game id in seo.ts: ${id}`);
+  return game;
+};
+const zoneNova = g('zone-nova');
+const silverAndBlood = g('silver-and-blood');
+const horizonWalker = g('horizon-walker');
+const stellaSora = g('stella-sora');
+const bustyBurst = g('busty-burst');
+const taimaninSquad = g('taimanin-squad');
+const lastOriginGlobal = g('last-origin-global');
+const makeDrama = g('make-drama');
+const desireImmortalRealm = g('desire-immortal-realm');
+const starSavior = g('star-savior');
+const rebellionGilgamesh = g('rebellion-gilgamesh');
 
 // Type definitions for better code quality and IntelliSense
 export interface SocialLinks {
@@ -107,11 +127,11 @@ export const OPEN_SOURCE_KEYWORDS = [
 
 // Game-specific SEO configurations with proper typing
 const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
-  [GAMES.ZONE_NOVA.KEY]: {
-    gameName: GAMES.ZONE_NOVA.NAME,
+  [zoneNova.id]: {
+    gameName: zoneNova.name,
     keywords: [
       // Core game names and variations (from GSC search data)
-      GAMES.ZONE_NOVA.NAME,
+      zoneNova.name,
       'zone nova',
       'zonenova',
       'zone-nova',
@@ -188,16 +208,16 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
       'zone nova download',
       'zone nova game',
     ] as const,
-    themeColor: GAMES.ZONE_NOVA.THEME_COLOR,
-    description: `Complete guide and wiki for ${GAMES.ZONE_NOVA.NAME} gacha game with character guides, damage mechanics, and more`,
+    themeColor: zoneNova.themeColor,
+    description: `Complete guide and wiki for ${zoneNova.name} gacha game with character guides, damage mechanics, and more`,
     genres: ['RPG', 'Gacha', 'Strategy'] as const,
     platform: 'Mobile',
   },
-  [GAMES.SILVER_AND_BLOOD.KEY]: {
-    gameName: GAMES.SILVER_AND_BLOOD.NAME,
+  [silverAndBlood.id]: {
+    gameName: silverAndBlood.name,
     keywords: [
       // Core game names and variations
-      GAMES.SILVER_AND_BLOOD.NAME,
+      silverAndBlood.name,
       'silver and blood',
       'silver blood',
       'sab',
@@ -281,16 +301,16 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
       'hero collection',
       'game strategy',
     ] as const,
-    themeColor: GAMES.SILVER_AND_BLOOD.THEME_COLOR,
-    description: `Complete guide and wiki for ${GAMES.SILVER_AND_BLOOD.NAME} - Dark fantasy vampire gacha game with character guides, builds, tier lists, and comprehensive game mechanics`,
+    themeColor: silverAndBlood.themeColor,
+    description: `Complete guide and wiki for ${silverAndBlood.name} - Dark fantasy vampire gacha game with character guides, builds, tier lists, and comprehensive game mechanics`,
     genres: ['RPG', 'Gacha', 'Strategy'] as const,
     platform: 'Mobile',
   },
-  [GAMES.HORIZON_WALKER.KEY]: {
-    gameName: GAMES.HORIZON_WALKER.NAME,
+  [horizonWalker.id]: {
+    gameName: horizonWalker.name,
     keywords: [
       // Core game names and variations
-      GAMES.HORIZON_WALKER.NAME,
+      horizonWalker.name,
       'horizon walker',
       'horizonwalker',
       'hw',
@@ -385,16 +405,16 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
       'horizon walker all characters',
       'horizon walker personajes',
     ] as const,
-    themeColor: GAMES.HORIZON_WALKER.THEME_COLOR,
-    description: `Complete guide and wiki for ${GAMES.HORIZON_WALKER.NAME} - Post-apocalyptic gacha RPG where humanity transcends mortality to battle Forsaken Entities through dimensional rifts`,
+    themeColor: horizonWalker.themeColor,
+    description: `Complete guide and wiki for ${horizonWalker.name} - Post-apocalyptic gacha RPG where humanity transcends mortality to battle Forsaken Entities through dimensional rifts`,
     genres: ['Fantasy RPG', 'Gacha', 'Adventure'] as const,
     platform: 'Mobile',
   },
-  [GAMES.STELLA_SORA.KEY]: {
-    gameName: GAMES.STELLA_SORA.NAME,
+  [stellaSora.id]: {
+    gameName: stellaSora.name,
     keywords: [
       // Core game names and variations
-      GAMES.STELLA_SORA.NAME,
+      stellaSora.name,
       'stella sora',
       'stellasora',
       'stellar sora',
@@ -524,16 +544,16 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
       'meta builds',
       'beginner guide',
     ] as const,
-    themeColor: GAMES.STELLA_SORA.THEME_COLOR,
-    description: `Complete guide and wiki for ${GAMES.STELLA_SORA.NAME} - Fantasy RPG exploring the Nova Continent with Trekker collection and top-down action gameplay`,
+    themeColor: stellaSora.themeColor,
+    description: `Complete guide and wiki for ${stellaSora.name} - Fantasy RPG exploring the Nova Continent with Trekker collection and top-down action gameplay`,
     genres: ['Fantasy RPG', 'Gacha', 'Adventure'] as const,
     platform: 'Mobile',
   },
-  [GAMES.BUSTY_BURST.KEY]: {
-    gameName: GAMES.BUSTY_BURST.NAME,
+  [bustyBurst.id]: {
+    gameName: bustyBurst.name,
     keywords: [
       // Core game names and variations (from GSC)
-      GAMES.BUSTY_BURST.NAME,
+      bustyBurst.name,
       'busty burst fantasy',
       'busty fantasy burst',
       'busty burst',
@@ -611,15 +631,15 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
       'paladin builds',
       'busty day',
     ] as const,
-    themeColor: GAMES.BUSTY_BURST.THEME_COLOR,
-    description: `Complete guide and wiki for ${GAMES.BUSTY_BURST.NAME} - Adult fantasy RPG featuring Rufus's journey to summon otherworldly paladins and save his lordship through strategic duels`,
+    themeColor: bustyBurst.themeColor,
+    description: `Complete guide and wiki for ${bustyBurst.name} - Adult fantasy RPG featuring Rufus's journey to summon otherworldly paladins and save his lordship through strategic duels`,
     genres: ['Adult RPG', 'Gacha', 'Fantasy'] as const,
     platform: 'Mobile',
   },
-  [GAMES.TAIMANIN_SQUAD.KEY]: {
-    gameName: GAMES.TAIMANIN_SQUAD.NAME,
+  [taimaninSquad.id]: {
+    gameName: taimaninSquad.name,
     keywords: [
-      GAMES.TAIMANIN_SQUAD.NAME,
+      taimaninSquad.name,
       'taimanin squad',
       'taimanin',
       'action taimanin',
@@ -652,15 +672,15 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
       'game wiki',
       'RPG',
     ] as const,
-    themeColor: GAMES.TAIMANIN_SQUAD.THEME_COLOR,
-    description: `Complete guide and wiki for ${GAMES.TAIMANIN_SQUAD.NAME} - Collecting RPG featuring legendary Taimanin characters with character guides, tier lists, and game strategies`,
+    themeColor: taimaninSquad.themeColor,
+    description: `Complete guide and wiki for ${taimaninSquad.name} - Collecting RPG featuring legendary Taimanin characters with character guides, tier lists, and game strategies`,
     genres: ['Collecting RPG', 'Gacha', 'Action'] as const,
     platform: 'Mobile, PC',
   },
-  'star-savior': {
-    gameName: 'Star Savior',
+  [starSavior.id]: {
+    gameName: starSavior.name,
     keywords: [
-      'Star Savior',
+      starSavior.name,
       'star savior',
       'studio bside',
       'turn-based rpg',
@@ -682,16 +702,16 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
       'RPG',
       'beginner guide',
     ] as const,
-    themeColor: '#5b4a9e',
+    themeColor: starSavior.themeColor,
     description: 'Complete guide and wiki for Star Savior by StudioBside - Turn-based RPG featuring 43 unique Saviors with Nova Burst abilities, Limit Break progression, and team building strategies',
     genres: ['Turn-Based RPG', 'Gacha', 'Strategy'] as const,
     platform: 'Mobile, PC',
   },
-  [GAMES.LAST_ORIGIN_GLOBAL.KEY]: {
-    gameName: GAMES.LAST_ORIGIN_GLOBAL.NAME,
+  [lastOriginGlobal.id]: {
+    gameName: lastOriginGlobal.name,
     keywords: [
       // Core game names and variations
-      GAMES.LAST_ORIGIN_GLOBAL.NAME,
+      lastOriginGlobal.name,
       'Last Origin',
       'last origin',
       'lastorigin',
@@ -749,15 +769,15 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
       'last origin download',
       'last origin pre-registration',
     ] as const,
-    themeColor: GAMES.LAST_ORIGIN_GLOBAL.THEME_COLOR,
-    description: `Complete guide and wiki for ${GAMES.LAST_ORIGIN_GLOBAL.NAME} - Post-apocalyptic turn-based strategy RPG with grid-based tactical combat, Bioroid squad building, and deep team synergy mechanics`,
+    themeColor: lastOriginGlobal.themeColor,
+    description: `Complete guide and wiki for ${lastOriginGlobal.name} - Post-apocalyptic turn-based strategy RPG with grid-based tactical combat, Bioroid squad building, and deep team synergy mechanics`,
     genres: ['Turn-Based Strategy RPG', 'Gacha', 'Tactical RPG'] as const,
     platform: 'Mobile',
   },
-  [GAMES.MAKE_DRAMA.KEY]: {
-    gameName: GAMES.MAKE_DRAMA.NAME,
+  [makeDrama.id]: {
+    gameName: makeDrama.name,
     keywords: [
-      GAMES.MAKE_DRAMA.NAME,
+      makeDrama.name,
       'make drama',
       'make drama mad',
       'MAD game',
@@ -787,15 +807,15 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
       'korean rpg',
       'wemade',
     ] as const,
-    themeColor: GAMES.MAKE_DRAMA.THEME_COLOR,
+    themeColor: makeDrama.themeColor,
     description: `Complete guide and wiki for Make Drama: M.A.D by Wemade Connect - Mobile Action Defense RPG featuring unique characters across 4 factions with strategic combat`,
     genres: ['Action Defense RPG', 'Gacha', 'Strategy'] as const,
     platform: 'Mobile',
   },
-  [GAMES.DESIRE_IMMORTAL_REALM.KEY]: {
-    gameName: GAMES.DESIRE_IMMORTAL_REALM.NAME,
+  [desireImmortalRealm.id]: {
+    gameName: desireImmortalRealm.name,
     keywords: [
-      GAMES.DESIRE_IMMORTAL_REALM.NAME,
+      desireImmortalRealm.name,
       'desire immortal realm',
       'desire immortal realm wiki',
       'desire immortal realm guide',
@@ -834,15 +854,15 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
       'gacha strategy',
       'mobile rpg',
     ] as const,
-    themeColor: GAMES.DESIRE_IMMORTAL_REALM.THEME_COLOR,
+    themeColor: desireImmortalRealm.themeColor,
     description: `Desire Immortal Realm (欲界仙途) wiki - Chinese xianxia cultivation gacha with 40 playable heroines reimagined from Chinese history and mythology. Full character database with verified stats, skills, and lore.`,
     genres: ['Xianxia RPG', 'Gacha', 'Strategy'] as const,
     platform: 'Mobile',
   },
-  [GAMES.REBELLION_GILGAMESH.KEY]: {
-    gameName: GAMES.REBELLION_GILGAMESH.NAME,
+  [rebellionGilgamesh.id]: {
+    gameName: rebellionGilgamesh.name,
     keywords: [
-      GAMES.REBELLION_GILGAMESH.NAME,
+      rebellionGilgamesh.name,
       'rebellion gilgamesh',
       'rebellion gilgamesh wiki',
       'rebellion gilgamesh guide',
@@ -864,8 +884,8 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
       'RPG',
       'beginner guide',
     ] as const,
-    themeColor: GAMES.REBELLION_GILGAMESH.THEME_COLOR,
-    description: `Complete guide and wiki for ${GAMES.REBELLION_GILGAMESH.NAME} (ルーレット契約) - Harem management RPG with character database, equipment guides, and buff/debuff references`,
+    themeColor: rebellionGilgamesh.themeColor,
+    description: `Complete guide and wiki for ${rebellionGilgamesh.name} (ルーレット契約) - Harem management RPG with character database, equipment guides, and buff/debuff references`,
     genres: ['Harem Management RPG', 'Gacha', 'Strategy'] as const,
     platform: 'Mobile, PC',
   },

@@ -1,7 +1,8 @@
 ---
 // Homepage - Now modular and clean
 import HomePageLayout from '../layouts/HomePageLayout.astro';
-import { SITE_TITLE, SITE_DESCRIPTION, SITE, GAMES } from '../consts';
+import { SITE_TITLE, SITE_DESCRIPTION, SITE } from '../consts';
+import { getAllGames } from '../data/games';
 import { getGameConfig } from '../utils/seo';
 
 // Main site structured data — sourced from consts so it never goes stale.
@@ -28,23 +29,23 @@ const websiteSchema = JSON.stringify({
   },
 });
 
-// Build the games ItemList from the single source of truth (consts GAMES),
+// Build the games ItemList from the single registry (src/data/games.ts),
 // enriching each entry with its SEO description so this never goes stale.
 const gamesItemList = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: 'Gacha Games Wiki Collection',
   description: 'Complete wiki collection for popular gacha games',
-  itemListElement: Object.values(GAMES).map((game, index) => {
-    const seo = getGameConfig(game.KEY);
+  itemListElement: getAllGames().map((game, index) => {
+    const seo = getGameConfig(game.id);
     return {
       '@type': 'ListItem',
       position: index + 1,
       item: {
         '@type': 'VideoGame',
-        name: game.NAME,
-        url: `https://gachawiki.info${game.BASE_URL}/`,
-        description: seo?.description || `${game.NAME} wiki and character database`,
+        name: game.name,
+        url: `https://gachawiki.info${game.url}`,
+        description: seo?.description || `${game.name} wiki and character database`,
       },
     };
   }),

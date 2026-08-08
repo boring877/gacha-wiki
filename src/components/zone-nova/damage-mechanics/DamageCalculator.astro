@@ -14,8 +14,8 @@ const {
   showFormula = true,
 } = Astro.props;
 
-import { GAMES } from '../../../consts';
-const K = GAMES.ZONE_NOVA.DAMAGE_K_VALUE;
+import { getGameById } from '../../../data/games';
+const K = getGameById('zone-nova')!.damageKValue!;
 ---
 
 <div class="zn-cf-calculator-content" data-damage-k={K}>
