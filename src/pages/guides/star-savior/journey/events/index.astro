@@ -1,10 +1,27 @@
 ---
 // Star Savior Journey Event Choices Database Page
 // Card-based layout showing all 46 events with choices, rewards, and best choice highlighting
+import { Image } from 'astro:assets';
 import CharacterDatabaseLayout from '../../../../../layouts/star-savior/CharacterDatabaseLayout.astro';
 import { JOURNEY_EVENTS } from '../../../../../data/star-savior/journey-events.js';
 
 import '../../../../../styles/games/star-savior/ss-journey-events.css';
+
+// Journey background images are imported from src/assets (not served from public)
+// so they go through Astro's image optimization pipeline.
+const journeyBgImages = import.meta.glob<{ default: ImageMetadata }>(
+  '../../../../../assets/images/games/star-savior/journey-bg/*.png',
+  { eager: true }
+);
+
+// Resolve a bgImage value (full public path or bare basename) to an imported asset.
+function resolveJourneyBg(bgImage: string | undefined): ImageMetadata | undefined {
+  if (!bgImage) return undefined;
+  const filename = bgImage.split('/').pop();
+  if (!filename) return undefined;
+  const key = Object.keys(journeyBgImages).find(k => k.endsWith('/' + filename));
+  return key ? journeyBgImages[key].default : undefined;
+}
 
 const CATEGORY_CLASS_MAP: Record<string, string> = {
   'Choice': 'choice',
@@ -69,10 +86,11 @@ const sorted = [...JOURNEY_EVENTS].sort((a, b) => {
           const arcanaName = (event as any).arcana;
           const arcanaGrade = (event as any).arcanaGrade;
           const bgImage = (event as any).bgImage;
+          const bgSrc = resolveJourneyBg(bgImage);
           const searchData = [event.name, event.description, event.category, arcanaName, arcanaGrade, event.choices.map(c => c.text).join(' ')].filter(Boolean).join(' ').toLowerCase();
           return (
             <div class="je-card" data-search={searchData}>
-              {bgImage && <div class="je-bg"><img src={bgImage} alt="" loading="lazy" /></div>}
+              {bgSrc && <div class="je-bg"><Image src={bgSrc} alt="" loading="lazy" /></div>}
               <div class="je-header">
                 <span class="je-num">{index + 1}</span>
                 <span class="je-category" data-cat={catClass}>{event.category}</span>
