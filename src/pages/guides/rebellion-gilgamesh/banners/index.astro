@@ -1,0 +1,141 @@
+---
+// Rebellion Gilgamesh Banner Gallery Page
+// Displays all gacha banners as a card gallery with filters (type, status, search)
+import CharacterDatabaseLayout from '../../../../layouts/rebellion-gilgamesh/CharacterDatabaseLayout.astro';
+import { REBELLION_GILGAMESH_BANNERS } from '../../../../data/rebellion-gilgamesh/banners.js';
+
+import '../../../../styles/games/rebellion-gilgamesh/rg-banner-database.css';
+import RGBannerImage from '../../../../components/rebellion-gilgamesh/RGBannerImage.astro';
+
+const total = REBELLION_GILGAMESH_BANNERS.length;
+const eventCount = REBELLION_GILGAMESH_BANNERS.filter(b => b.bannerType === 'Event').length;
+const pickupCount = REBELLION_GILGAMESH_BANNERS.filter(b => b.bannerType === 'Pickup').length;
+const permanentCount = REBELLION_GILGAMESH_BANNERS.filter(b => b.bannerType === 'Permanent').length;
+
+// Sort: events first by date (newest), then others by id
+const sorted = [...REBELLION_GILGAMESH_BANNERS].sort((a, b) => {
+  return a.id - b.id;
+});
+
+const typeClass = (t: string) => `rg-banner-type-${t.toLowerCase().replace(/[^a-z]/g, '')}`;
+---
+
+<CharacterDatabaseLayout
+  title="Banner Gallery - Rebellion Gilgamesh"
+  description="Complete gacha banner gallery for Rebellion Gilgamesh. Browse all event, pickup, permanent, and limited banners."
+  gameTitle="Banner Gallery"
+>
+  <div class="rg-banner-stats-bar">
+    <div class="rg-banner-stats-item">
+      <div class="rg-banner-stats-value">{total}</div>
+      <div class="rg-banner-stats-label">Total</div>
+    </div>
+    <div class="rg-banner-stats-divider"></div>
+    <div class="rg-banner-stats-item">
+      <div class="rg-banner-stats-value">{eventCount}</div>
+      <div class="rg-banner-stats-label">Events</div>
+    </div>
+    <div class="rg-banner-stats-divider"></div>
+    <div class="rg-banner-stats-item">
+      <div class="rg-banner-stats-value">{pickupCount}</div>
+      <div class="rg-banner-stats-label">Pickups</div>
+    </div>
+    <div class="rg-banner-stats-divider"></div>
+    <div class="rg-banner-stats-item">
+      <div class="rg-banner-stats-value">{permanentCount}</div>
+      <div class="rg-banner-stats-label">Permanent</div>
+    </div>
+  </div>
+
+  <div class="rg-banner-filter-section">
+    <div class="rg-banner-filter-row">
+      <div class="rg-banner-filter-group">
+        <label class="rg-banner-filter-label">Search</label>
+        <input type="text" id="banner-search" class="rg-banner-filter-input" placeholder="Search by name..." />
+      </div>
+      <div class="rg-banner-filter-group">
+        <label class="rg-banner-filter-label">Type</label>
+        <select id="filter-type" class="rg-banner-filter-input">
+          <option value="">All</option>
+          <option value="Event">Event</option>
+          <option value="Pickup">Pickup</option>
+          <option value="Permanent">Permanent</option>
+          <option value="Limited">Limited</option>
+          <option value="Step-up">Step-up</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="rg-banner-filter-group">
+        <label class="rg-banner-filter-label">Status</label>
+        <select id="filter-status" class="rg-banner-filter-input">
+          <option value="">All</option>
+          <option value="open">Active</option>
+          <option value="closed">Closed</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="rg-banner-grid" id="banner-grid">
+    {sorted.map((banner) => (
+      <div
+        class="rg-banner-card"
+        data-name={banner.name.toLowerCase()}
+        data-type={banner.bannerType}
+        data-status={banner.isOpen ? 'open' : 'closed'}
+      >
+        <RGBannerImage image={banner.image} alt={banner.name} />
+        <div class="rg-banner-card-body">
+          <div class="rg-banner-card-name">{banner.name}</div>
+          <div class="rg-banner-card-badges">
+            <span class={`rg-banner-type-badge ${typeClass(banner.bannerType)}`}>{banner.bannerType}</span>
+            <span class={`rg-banner-status-badge ${banner.isOpen ? 'rg-banner-status-open' : 'rg-banner-status-closed'}`}>
+              {banner.isOpen ? 'Active' : 'Closed'}
+            </span>
+          </div>
+          <div class="rg-banner-card-dates">
+            {banner.isPermanent ? 'Permanent' : `${banner.startDate} → ${banner.endDate}`}
+          </div>
+          {banner.pitch && <div class="rg-banner-card-pitch">{banner.pitch}</div>}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="rg-banner-no-results" id="no-results">
+    <div class="rg-banner-stats-value">?</div>
+    <div>No banners found</div>
+    <div class="rg-banner-no-results-hint">Try adjusting your filters</div>
+  </div>
+</CharacterDatabaseLayout>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('banner-search');
+  const typeFilter = document.getElementById('filter-type');
+  const statusFilter = document.getElementById('filter-status');
+  const noResults = document.getElementById('no-results');
+  const cards = document.querySelectorAll('.rg-banner-card');
+
+  function applyFilters() {
+    const search = searchInput.value.toLowerCase();
+    const type = typeFilter.value;
+    const status = statusFilter.value;
+    let visible = 0;
+
+    cards.forEach(card => {
+      const match = (!search || (card.dataset.name || '').includes(search))
+        && (!type || card.dataset.type === type)
+        && (!status || card.dataset.status === status);
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+  typeFilter.addEventListener('change', applyFilters);
+  statusFilter.addEventListener('change', applyFilters);
+});
+</script>

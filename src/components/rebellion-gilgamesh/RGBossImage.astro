@@ -1,0 +1,83 @@
+---
+// Rebellion Gilgamesh boss/enemy image component
+// Displays enemy art from assets/images/games/rebellion-gilgamesh/bosses/<picId>.png
+// Boss art is landscape (battle busts), so the wrapper adapts rather than forcing square.
+import { Image } from 'astro:assets';
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/rebellion-gilgamesh/bosses/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  image?: string;
+  alt: string;
+  width?: number;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const { image, alt, width = 64, class: className, loading = 'lazy' } = Astro.props;
+
+function findImage(search: string): ImageMetadata | null {
+  if (!search) return null;
+  const key = Object.keys(images).find(k => k.includes(search));
+  return key ? images[key].default : null;
+}
+
+const imageModule = findImage(image || '');
+---
+
+{imageModule ? (
+  <div class={`rg-boss-img-wrapper ${className || ''}`} style={`--rg-boss-img-width: ${width}px`}>
+    <Image
+      src={imageModule}
+      alt={alt}
+      width={width}
+      loading={loading}
+      format="webp"
+      quality={90}
+      class="rg-boss-img"
+    />
+  </div>
+) : (
+  <div class={`rg-boss-img-fallback ${className || ''}`} style={`--rg-boss-img-width: ${width}px`}>
+    <span>{alt[0] || '?'}</span>
+  </div>
+)}
+
+<style>
+  .rg-boss-img-wrapper {
+    width: var(--rg-boss-img-width, 64px);
+    border-radius: var(--rg-radius-md, 8px);
+    background: var(--rg-bg-tertiary);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .rg-boss-img-wrapper :global(img) {
+    width: 100%;
+    height: auto;
+    max-height: calc(var(--rg-boss-img-width, 64px) * 1.4);
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .rg-boss-img-fallback {
+    width: var(--rg-boss-img-width, 64px);
+    height: var(--rg-boss-img-width, 64px);
+    border-radius: var(--rg-radius-md, 8px);
+    background: var(--rg-bg-tertiary);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: var(--rg-text-muted);
+  }
+</style>

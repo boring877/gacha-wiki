@@ -42,7 +42,7 @@
     "typeName": "NormalAtk",
     "element": -1,
     "maxLevel": 1,
-    "attackDistance": 0.0,
+    "attackDistance": 0,
     "target": 3,
     "targetName": "Single Enemy",
     "costST": 0,
@@ -53,11 +53,11 @@
     "condition": 0,
     "triggerCommentFormat": null,
     "effectGroupId": 207700,
-    "multiplier": 100.0,
+    "multiplier": 100,
     "effects": [
       {
         "type": "damage",
-        "value": 100.0,
+        "value": 100,
         "perLevel": null
       }
     ],
@@ -76,7 +76,7 @@
       "typeName": "Active",
       "element": -1,
       "maxLevel": 6,
-      "attackDistance": 0.0,
+      "attackDistance": 0,
       "target": 1,
       "targetName": "Self",
       "costST": 0,
@@ -90,7 +90,7 @@
       "effects": [
         {
           "type": "heal",
-          "value": 25.0,
+          "value": 25,
           "perLevel": 1.5
         },
         {
@@ -122,7 +122,7 @@
       "typeName": "Active",
       "element": -1,
       "maxLevel": 6,
-      "attackDistance": 0.0,
+      "attackDistance": 0,
       "target": 4,
       "targetName": "All Allies",
       "costST": 0,
@@ -162,7 +162,7 @@
       "typeName": "Active",
       "element": -1,
       "maxLevel": 6,
-      "attackDistance": 0.0,
+      "attackDistance": 0,
       "target": 3,
       "targetName": "Single Enemy",
       "costST": 0,
@@ -173,12 +173,12 @@
       "condition": 0,
       "triggerCommentFormat": null,
       "effectGroupId": 207703,
-      "multiplier": 135.0,
+      "multiplier": 135,
       "multiplierPerLevel": 13.5,
       "effects": [
         {
           "type": "damage",
-          "value": 135.0,
+          "value": 135,
           "perLevel": 13.5
         }
       ],
@@ -203,7 +203,7 @@
       "typeName": "Passive",
       "element": -1,
       "maxLevel": 1,
-      "attackDistance": 0.0,
+      "attackDistance": 0,
       "target": 3,
       "targetName": "Single Enemy",
       "costST": 0,
@@ -214,11 +214,11 @@
       "condition": 6,
       "triggerCommentFormat": "【{3}】回合触发1次",
       "effectGroupId": 207704,
-      "multiplier": 200.0,
+      "multiplier": 200,
       "effects": [
         {
           "type": "damage",
-          "value": 200.0,
+          "value": 200,
           "perLevel": null
         }
       ],
@@ -238,7 +238,7 @@
     "typeName": "Ace",
     "element": -1,
     "maxLevel": 6,
-    "attackDistance": 0.0,
+    "attackDistance": 0,
     "target": 3,
     "targetName": "Single Enemy",
     "costST": 1000,
@@ -249,11 +249,11 @@
     "condition": 0,
     "triggerCommentFormat": null,
     "effectGroupId": 207707,
-    "multiplier": 362.0,
+    "multiplier": 362,
     "effects": [
       {
         "type": "damage",
-        "value": 362.0,
+        "value": 362,
         "perLevel": 36.2
       },
       {
@@ -270,7 +270,7 @@
       "Deal 362% damage",
       "100% chance to apply DEF Down 24% (2 turns)"
     ],
-    "multiplierMax": 543.0,
+    "multiplierMax": 543,
     "effectLinesMax": [
       "Deal 543% damage",
       "100% chance to apply DEF Down 24% (2 turns)"
@@ -288,7 +288,7 @@
       "typeName": "Trigger",
       "element": -1,
       "maxLevel": 1,
-      "attackDistance": 0.0,
+      "attackDistance": 0,
       "target": 1,
       "targetName": "Self",
       "costST": 0,
@@ -326,7 +326,7 @@
       "typeName": "Trigger",
       "element": -1,
       "maxLevel": 1,
-      "attackDistance": 0.0,
+      "attackDistance": 0,
       "target": 1,
       "targetName": "Self",
       "costST": 0,
@@ -740,6 +740,6 @@
     "antiNegativeBuff": 0,
     "initialST": 0
   },
-  "arms": 4,
-  "armsName": "Wand"
+  "arms": 6,
+  "armsName": "Gun"
 }

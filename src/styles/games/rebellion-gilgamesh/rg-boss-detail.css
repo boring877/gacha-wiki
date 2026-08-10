@@ -1,0 +1,209 @@
+/* Rebellion Gilgamesh Boss / Enemy Detail Styles */
+/* Boss detail page — clean header with landscape art, stat cards, skill blocks */
+/* Section spacing (.content-section / .section-title) is defined in rg-character-detail.css */
+
+.rg-boss-detail-header {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  background: var(--rg-bg-card);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-md);
+  padding: 1.25rem;
+}
+
+.rg-boss-detail-icon {
+  flex-shrink: 0;
+  width: 240px;
+  max-width: 40%;
+}
+
+.rg-boss-detail-icon :global(.rg-boss-img-wrapper) {
+  width: 100%;
+  border-radius: var(--rg-radius-md);
+  overflow: hidden;
+}
+
+.rg-boss-detail-icon :global(.rg-boss-img-wrapper img) {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.rg-boss-detail-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.rg-boss-detail-name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--rg-text-primary);
+  margin: 0 0 0.25rem;
+  line-height: 1.2;
+}
+
+.rg-boss-detail-cn-name {
+  font-size: 0.8125rem;
+  color: var(--rg-text-tertiary);
+  margin-bottom: 0.75rem;
+}
+
+.rg-boss-detail-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.rg-boss-detail-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.6rem;
+}
+
+.rg-boss-detail-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  background: var(--rg-bg-secondary);
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--rg-radius-sm);
+}
+
+.rg-boss-detail-field-label {
+  font-size: 0.625rem;
+  color: var(--rg-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rg-boss-detail-field-value {
+  font-size: 0.8125rem;
+  color: var(--rg-text-primary);
+  font-weight: 500;
+}
+
+/* Stat cards */
+.rg-boss-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 0.6rem;
+}
+
+.rg-boss-stat-card {
+  background: var(--rg-bg-card);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-md);
+  padding: 0.6rem;
+  text-align: center;
+}
+
+.rg-boss-stat-label {
+  font-size: 0.625rem;
+  color: var(--rg-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rg-boss-stat-value {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--rg-primary);
+  line-height: 1.2;
+  margin: 0.2rem 0;
+}
+
+.rg-boss-stat-growth {
+  font-size: 0.6875rem;
+  color: var(--rg-text-secondary);
+}
+
+/* Lore */
+.rg-boss-lore-text {
+  font-size: 0.875rem;
+  color: var(--rg-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  background: var(--rg-bg-secondary);
+  border-left: 3px solid var(--rg-primary);
+  border-radius: var(--rg-radius-sm);
+}
+
+/* Skill refinements (override/extend rg-character-detail.css for boss context) */
+.rg-detail-skills-list {
+  gap: 0.6rem;
+}
+
+.rg-detail-skill-card {
+  padding: 0.875rem 1rem;
+}
+
+.rg-detail-skill-name {
+  font-size: 0.9375rem;
+}
+
+.rg-detail-skill-desc {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  margin-bottom: 0.4rem;
+}
+
+.rg-detail-skill-meta {
+  gap: 0.375rem;
+  margin-top: 0.35rem;
+}
+
+.rg-detail-skill-meta-tag {
+  font-size: 0.625rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 3px;
+  background: var(--rg-bg-tertiary);
+  color: var(--rg-text-secondary);
+  border: 1px solid var(--rg-border);
+}
+
+.rg-detail-skill-effect-list {
+  list-style: none;
+  margin: 0.4rem 0 0 0;
+  padding: 0;
+}
+
+.rg-detail-skill-effect-line {
+  font-size: 0.75rem;
+  color: var(--rg-text-secondary);
+  line-height: 1.5;
+  padding: 0.1rem 0 0 0.75rem;
+  position: relative;
+}
+
+.rg-detail-skill-effect-line::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--rg-primary);
+  font-size: 0.625rem;
+}
+
+@media (max-width: 768px) {
+  .rg-boss-detail-header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .rg-boss-detail-icon {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .rg-boss-detail-name {
+    font-size: 1.35rem;
+  }
+}

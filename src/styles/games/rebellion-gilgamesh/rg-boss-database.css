@@ -1,0 +1,287 @@
+/* Rebellion Gilgamesh Boss / Bestiary Database Styles */
+/* Boss list page — clean, dense table + card grid */
+
+.rg-boss-stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 0.875rem 1.5rem;
+  background: var(--rg-bg-card);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-md);
+}
+
+.rg-boss-stats-item {
+  text-align: center;
+  padding: 0 0.75rem;
+}
+
+.rg-boss-stats-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--rg-border-light);
+}
+
+.rg-boss-stats-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--rg-primary);
+  line-height: 1;
+}
+
+.rg-boss-stats-label {
+  font-size: 0.6875rem;
+  color: var(--rg-text-secondary);
+  margin-top: 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rg-boss-filter-section {
+  background: var(--rg-bg-secondary);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-md);
+  padding: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.rg-boss-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+.rg-boss-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 140px;
+}
+
+.rg-boss-filter-label {
+  font-size: 0.6875rem;
+  color: var(--rg-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rg-boss-filter-input {
+  background: var(--rg-bg-tertiary);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-sm);
+  padding: 0.4rem 0.6rem;
+  color: var(--rg-text-primary);
+  font-size: 0.8125rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.rg-boss-filter-input:focus {
+  border-color: var(--rg-primary);
+}
+
+/* Table view — dense, scannable */
+.rg-boss-table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-md);
+}
+
+.rg-boss-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.rg-boss-table th {
+  background: var(--rg-bg-secondary);
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  color: var(--rg-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--rg-border);
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+}
+
+.rg-boss-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--rg-border-light);
+  color: var(--rg-text-primary);
+  vertical-align: middle;
+}
+
+.rg-boss-table tbody tr {
+  background: var(--rg-bg-card);
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.rg-boss-table tbody tr:hover {
+  background: var(--rg-bg-secondary);
+}
+
+.rg-boss-table-name {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.rg-boss-table-text {
+  font-size: 0.75rem;
+  color: var(--rg-text-secondary);
+}
+
+.rg-boss-table-icon-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.rg-boss-flag-badge {
+  display: inline-block;
+  font-size: 0.625rem;
+  font-weight: 600;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.rg-boss-flag-yes {
+  background: rgba(194, 107, 107, 0.18);
+  color: var(--rg-primary);
+  border: 1px solid rgba(194, 107, 107, 0.3);
+}
+
+.rg-boss-flag-no {
+  background: var(--rg-bg-tertiary);
+  color: var(--rg-text-tertiary);
+  border: 1px solid var(--rg-border-light);
+}
+
+/* Card grid — mobile + secondary view */
+.rg-boss-grid {
+  display: none;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.6rem;
+}
+
+.rg-boss-card {
+  background: var(--rg-bg-card);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.1s;
+}
+
+.rg-boss-card:hover {
+  border-color: var(--rg-primary);
+  transform: translateY(-1px);
+}
+
+.rg-boss-card-header {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.6rem;
+  align-items: center;
+}
+
+.rg-boss-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.rg-boss-card-name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--rg-text-primary);
+  margin: 0 0 0.2rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rg-boss-card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+.rg-boss-card-stats {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.6875rem;
+  color: var(--rg-text-secondary);
+  margin-top: 0.3rem;
+}
+
+.rg-boss-no-results {
+  text-align: center;
+  padding: 3rem;
+  color: var(--rg-text-secondary);
+  display: none;
+}
+
+.rg-boss-no-results-hint {
+  font-size: 0.8125rem;
+  opacity: 0.7;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .rg-boss-stats-bar {
+    gap: 0.25rem;
+    padding: 0.6rem 0.25rem;
+  }
+
+  .rg-boss-stats-item {
+    padding: 0 0.15rem;
+  }
+
+  .rg-boss-stats-value {
+    font-size: 1.1rem;
+  }
+
+  .rg-boss-filter-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .rg-boss-filter-group {
+    width: 100%;
+  }
+
+  .rg-boss-table-wrapper {
+    display: none !important;
+  }
+
+  .rg-boss-grid {
+    display: grid !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .rg-boss-stats-bar {
+    gap: 0.15rem;
+  }
+
+  .rg-boss-stats-value {
+    font-size: 1rem;
+  }
+
+  .rg-boss-grid {
+    grid-template-columns: 1fr;
+  }
+}

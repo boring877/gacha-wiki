@@ -1,0 +1,203 @@
+---
+// Rebellion Gilgamesh Boss / Bestiary Database Page
+// Displays all enemies with filters (element, boss flag) and table/grid view
+import CharacterDatabaseLayout from '../../../../layouts/rebellion-gilgamesh/CharacterDatabaseLayout.astro';
+import { REBELLION_GILGAMESH_BOSSES } from '../../../../data/rebellion-gilgamesh/bosses.js';
+
+import '../../../../styles/games/rebellion-gilgamesh/rg-boss-database.css';
+import RGBossImage from '../../../../components/rebellion-gilgamesh/RGBossImage.astro';
+import RGElementImage from '../../../../components/rebellion-gilgamesh/RGElementImage.astro';
+
+const total = REBELLION_GILGAMESH_BOSSES.length;
+const bossCount = REBELLION_GILGAMESH_BOSSES.filter(b => b.hasBossFlag).length;
+const mobCount = total - bossCount;
+
+const sorted = [...REBELLION_GILGAMESH_BOSSES].sort((a, b) => {
+  // boss-flagged first, then by element, then by id
+  if (a.hasBossFlag !== b.hasBossFlag) return a.hasBossFlag ? -1 : 1;
+  if (a.element !== b.element) return a.element - b.element;
+  return a.id - b.id;
+});
+---
+
+<CharacterDatabaseLayout
+  title="Boss Database - Rebellion Gilgamesh"
+  description="Complete bestiary database for Rebellion Gilgamesh. Browse all enemies and bosses with stats, skills, and filters."
+  gameTitle="Boss Database"
+>
+  <div class="rg-boss-stats-bar">
+    <div class="rg-boss-stats-item">
+      <div class="rg-boss-stats-value">{total}</div>
+      <div class="rg-boss-stats-label">Total</div>
+    </div>
+    <div class="rg-boss-stats-divider"></div>
+    <div class="rg-boss-stats-item">
+      <div class="rg-boss-stats-value">{bossCount}</div>
+      <div class="rg-boss-stats-label">Bosses</div>
+    </div>
+    <div class="rg-boss-stats-divider"></div>
+    <div class="rg-boss-stats-item">
+      <div class="rg-boss-stats-value">{mobCount}</div>
+      <div class="rg-boss-stats-label">Enemies</div>
+    </div>
+  </div>
+
+  <div class="rg-boss-filter-section">
+    <div class="rg-boss-filter-row">
+      <div class="rg-boss-filter-group">
+        <label class="rg-boss-filter-label">Search</label>
+        <input type="text" id="boss-search" class="rg-boss-filter-input" placeholder="Search by name..." />
+      </div>
+      <div class="rg-boss-filter-group">
+        <label class="rg-boss-filter-label">Element</label>
+        <select id="filter-element" class="rg-boss-filter-input">
+          <option value="">All</option>
+          <option value="Fire">Fire</option>
+          <option value="Water">Water</option>
+          <option value="Wood">Wood</option>
+          <option value="Chaos">Chaos</option>
+          <option value="Light">Light</option>
+          <option value="Dark">Dark</option>
+          <option value="None">None</option>
+        </select>
+      </div>
+      <div class="rg-boss-filter-group">
+        <label class="rg-boss-filter-label">Type</label>
+        <select id="filter-type" class="rg-boss-filter-input">
+          <option value="">All</option>
+          <option value="boss">Boss</option>
+          <option value="mob">Enemy</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="rg-boss-table-wrapper" id="table-view">
+    <table class="rg-boss-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Art</th>
+          <th>Name</th>
+          <th>Element</th>
+          <th>Type</th>
+          <th>HP</th>
+          <th>ATK</th>
+          <th>DEF</th>
+        </tr>
+      </thead>
+      <tbody id="boss-table-body">
+        {sorted.map((boss, i) => (
+          <tr
+            class="boss-row"
+            data-slug={boss.slug}
+            data-name={boss.name.toLowerCase()}
+            data-element={boss.elementName}
+            data-type={boss.hasBossFlag ? 'boss' : 'mob'}
+            onclick={`window.location.href='/guides/rebellion-gilgamesh/bosses/${encodeURIComponent(boss.slug)}/'`}
+          >
+            <td class="row-num">{i + 1}</td>
+            <td>
+              <RGBossImage image={boss.image} alt={boss.name} width={40} />
+            </td>
+            <td>
+              <div class="rg-boss-table-name">{boss.name}</div>
+            </td>
+            <td>
+              <div class="rg-boss-table-icon-cell">
+                <RGElementImage element={boss.element} alt={boss.elementName} width={20} />
+                <span class="rg-boss-table-text">{boss.elementName}</span>
+              </div>
+            </td>
+            <td>
+              <span class={`rg-boss-flag-badge ${boss.hasBossFlag ? 'rg-boss-flag-yes' : 'rg-boss-flag-no'}`}>
+                {boss.hasBossFlag ? 'Boss' : 'Mob'}
+              </span>
+            </td>
+            <td><span class="rg-boss-table-text">{boss.hp || '--'}</span></td>
+            <td><span class="rg-boss-table-text">{boss.atk || '--'}</span></td>
+            <td><span class="rg-boss-table-text">{boss.def || '--'}</span></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="rg-boss-grid" id="grid-view">
+    {sorted.map((boss) => (
+      <div
+        class="rg-boss-card"
+        data-slug={boss.slug}
+        data-name={boss.name.toLowerCase()}
+        data-element={boss.elementName}
+        data-type={boss.hasBossFlag ? 'boss' : 'mob'}
+        onclick={`window.location.href='/guides/rebellion-gilgamesh/bosses/${encodeURIComponent(boss.slug)}/'`}
+      >
+        <div class="rg-boss-card-header">
+          <RGBossImage image={boss.image} alt={boss.name} width={64} />
+          <div class="rg-boss-card-info">
+            <div class="rg-boss-card-name">{boss.name}</div>
+            <div class="rg-boss-card-badges">
+              <RGElementImage element={boss.element} alt={boss.elementName} width={18} />
+              <span class={`rg-boss-flag-badge ${boss.hasBossFlag ? 'rg-boss-flag-yes' : 'rg-boss-flag-no'}`}>
+                {boss.hasBossFlag ? 'Boss' : 'Mob'}
+              </span>
+            </div>
+            <div class="rg-boss-card-stats">
+              {boss.hp > 0 && <span>HP {boss.hp}</span>}
+              {boss.atk > 0 && <span>ATK {boss.atk}</span>}
+              {boss.def > 0 && <span>DEF {boss.def}</span>}
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="rg-boss-no-results" id="no-results">
+    <div class="rg-boss-stats-value">?</div>
+    <div>No enemies found</div>
+    <div class="rg-boss-no-results-hint">Try adjusting your filters</div>
+  </div>
+</CharacterDatabaseLayout>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('boss-search');
+  const elementFilter = document.getElementById('filter-element');
+  const typeFilter = document.getElementById('filter-type');
+  const noResults = document.getElementById('no-results');
+  const tableRows = document.querySelectorAll('.boss-row');
+  const gridCards = document.querySelectorAll('.rg-boss-card');
+
+  function applyFilters() {
+    const search = searchInput.value.toLowerCase();
+    const element = elementFilter.value;
+    const type = typeFilter.value;
+    let visible = 0;
+
+    tableRows.forEach(row => {
+      const match = matchesFilter(row, search, element, type);
+      row.style.display = match ? '' : 'none';
+      if (match) { visible++; row.querySelector('.row-num').textContent = visible; }
+    });
+
+    gridCards.forEach(card => {
+      const match = matchesFilter(card, search, element, type);
+      card.style.display = match ? '' : 'none';
+    });
+
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  function matchesFilter(el, search, element, type) {
+    return (!search || (el.dataset.name || '').includes(search))
+      && (!element || el.dataset.element === element)
+      && (!type || el.dataset.type === type);
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+  elementFilter.addEventListener('change', applyFilters);
+  typeFilter.addEventListener('change', applyFilters);
+});
+</script>

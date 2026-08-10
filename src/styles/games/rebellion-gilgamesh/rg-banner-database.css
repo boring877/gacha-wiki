@@ -1,0 +1,230 @@
+/* Rebellion Gilgamesh Banner Gallery Styles */
+/* Banner gallery page — landscape art cards in a responsive grid */
+
+.rg-banner-stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 0.875rem 1.5rem;
+  background: var(--rg-bg-card);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-md);
+}
+
+.rg-banner-stats-item {
+  text-align: center;
+  padding: 0 0.75rem;
+}
+
+.rg-banner-stats-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--rg-border-light);
+}
+
+.rg-banner-stats-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--rg-primary);
+  line-height: 1;
+}
+
+.rg-banner-stats-label {
+  font-size: 0.6875rem;
+  color: var(--rg-text-secondary);
+  margin-top: 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rg-banner-filter-section {
+  background: var(--rg-bg-secondary);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-md);
+  padding: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.rg-banner-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+.rg-banner-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 140px;
+}
+
+.rg-banner-filter-label {
+  font-size: 0.6875rem;
+  color: var(--rg-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rg-banner-filter-input {
+  background: var(--rg-bg-tertiary);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-sm);
+  padding: 0.4rem 0.6rem;
+  color: var(--rg-text-primary);
+  font-size: 0.8125rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.rg-banner-filter-input:focus {
+  border-color: var(--rg-primary);
+}
+
+/* Card grid */
+.rg-banner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0.875rem;
+}
+
+.rg-banner-card {
+  background: var(--rg-bg-card);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-md);
+  overflow: hidden;
+}
+
+/* Landscape art at top of card */
+.rg-banner-img-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--rg-bg-tertiary);
+  overflow: hidden;
+  line-height: 0;
+}
+
+.rg-banner-img-wrapper :global(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.rg-banner-img-fallback {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--rg-bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--rg-text-muted);
+  text-align: center;
+  padding: 0.5rem;
+}
+
+/* Card body */
+.rg-banner-card-body {
+  padding: 0.6rem 0.75rem;
+}
+
+.rg-banner-card-name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--rg-text-primary);
+  margin: 0 0 0.3rem 0;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.rg-banner-card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  align-items: center;
+  margin-bottom: 0.3rem;
+}
+
+.rg-banner-type-badge {
+  display: inline-block;
+  font-size: 0.625rem;
+  font-weight: 600;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.rg-banner-type-event { background: rgba(194, 107, 107, 0.2); color: var(--rg-primary); border: 1px solid rgba(194, 107, 107, 0.3); }
+.rg-banner-type-pickup { background: rgba(90, 123, 167, 0.2); color: #7ba4d4; border: 1px solid rgba(90, 123, 167, 0.3); }
+.rg-banner-type-permanent { background: var(--rg-bg-tertiary); color: var(--rg-text-secondary); border: 1px solid var(--rg-border); }
+.rg-banner-type-limited { background: rgba(232, 165, 71, 0.2); color: #e8a547; border: 1px solid rgba(232, 165, 71, 0.3); }
+.rg-banner-type-step-up { background: rgba(74, 144, 226, 0.15); color: #5a9ee8; border: 1px solid rgba(74, 144, 226, 0.3); }
+.rg-banner-type-other { background: var(--rg-bg-tertiary); color: var(--rg-text-tertiary); border: 1px solid var(--rg-border-light); }
+
+.rg-banner-status-badge {
+  font-size: 0.625rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+}
+
+.rg-banner-status-open { background: rgba(80, 200, 120, 0.15); color: #50c878; }
+.rg-banner-status-closed { background: var(--rg-bg-tertiary); color: var(--rg-text-muted); }
+
+.rg-banner-card-dates {
+  font-size: 0.6875rem;
+  color: var(--rg-text-tertiary);
+  margin-bottom: 0.25rem;
+}
+
+.rg-banner-card-pitch {
+  font-size: 0.6875rem;
+  color: var(--rg-text-secondary);
+  line-height: 1.4;
+}
+
+.rg-banner-no-results {
+  text-align: center;
+  padding: 3rem;
+  color: var(--rg-text-secondary);
+  display: none;
+}
+
+.rg-banner-no-results-hint {
+  font-size: 0.8125rem;
+  opacity: 0.7;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .rg-banner-stats-bar {
+    gap: 0.25rem;
+    padding: 0.6rem 0.25rem;
+    flex-wrap: wrap;
+  }
+
+  .rg-banner-stats-value {
+    font-size: 1.1rem;
+  }
+
+  .rg-banner-filter-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .rg-banner-filter-group {
+    width: 100%;
+  }
+
+  .rg-banner-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,234 @@
+---
+// Rebellion Gilgamesh Boss / Enemy Detail Page
+// Shows boss art, stats, skills, and lore
+import CharacterDetailLayout from '../../../../layouts/rebellion-gilgamesh/CharacterDetailLayout.astro';
+import { REBELLION_GILGAMESH_BOSSES } from '../../../../data/rebellion-gilgamesh/bosses.js';
+
+import '../../../../styles/games/rebellion-gilgamesh/rg-boss-detail.css';
+import '../../../../styles/games/rebellion-gilgamesh/rg-character-detail.css';
+import RGBossImage from '../../../../components/rebellion-gilgamesh/RGBossImage.astro';
+import RGElementImage from '../../../../components/rebellion-gilgamesh/RGElementImage.astro';
+import RGSkillImage from '../../../../components/rebellion-gilgamesh/RGSkillImage.astro';
+
+export function getStaticPaths() {
+  return REBELLION_GILGAMESH_BOSSES.map((b) => ({
+    params: { slug: b.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+
+const bossInfo = REBELLION_GILGAMESH_BOSSES.find((b: any) => b.slug === slug);
+
+if (!bossInfo) {
+  return Astro.redirect('/guides/rebellion-gilgamesh/bosses/');
+}
+
+const data = (await import(`../../../../data/rebellion-gilgamesh/bosses/${slug}.json`)).default || {};
+
+const description = `${data.name || bossInfo.name} - ${data.elementName || bossInfo.elementName} ${data.hasBossFlag ? 'boss' : 'enemy'} in Rebellion Gilgamesh.`;
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Rebellion Gilgamesh', url: '/guides/rebellion-gilgamesh/' },
+  { name: 'Boss Database', url: '/guides/rebellion-gilgamesh/bosses/' },
+  { name: data.name || bossInfo.name, url: '' },
+];
+
+const stats = data.stats || {};
+const normalAtk = data.normalAtk;
+const activeSkills: any[] = data.activeSkills || [];
+const triggerSkills: any[] = data.triggerSkills || [];
+const aceSkill = data.aceSkill;
+const passiveSkills: any[] = data.passiveSkills || [];
+const hasSkills = normalAtk || activeSkills.length > 0 || triggerSkills.length > 0 || aceSkill || passiveSkills.length > 0;
+---
+
+<CharacterDetailLayout
+  title={data.name || bossInfo.name}
+  description={description}
+  gameTitle={data.name || bossInfo.name}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="rg-boss-detail-header">
+    <div class="rg-boss-detail-icon">
+      <RGBossImage image={data.image || bossInfo.image} alt={data.name || bossInfo.name} width={240} />
+    </div>
+    <div class="rg-boss-detail-info">
+      <h2 class="rg-boss-detail-name">{data.name || bossInfo.name}</h2>
+      {data.cnName && data.cnName !== data.name && (
+        <div class="rg-boss-detail-cn-name">{data.cnName}</div>
+      )}
+      <div class="rg-boss-detail-meta">
+        <RGElementImage element={data.element ?? bossInfo.element} alt={data.elementName || bossInfo.elementName} width={28} />
+        <span class="rg-boss-detail-field-value">{data.elementName || bossInfo.elementName}</span>
+        <span class={`rg-boss-flag-badge ${data.hasBossFlag ? 'rg-boss-flag-yes' : 'rg-boss-flag-no'}`}>
+          {data.hasBossFlag ? 'Boss' : 'Enemy'}
+        </span>
+      </div>
+      <div class="rg-boss-detail-fields">
+        {data.actionTimes > 0 && (
+          <div class="rg-boss-detail-field">
+            <span class="rg-boss-detail-field-label">Actions / Turn</span>
+            <span class="rg-boss-detail-field-value">{data.actionTimes}</span>
+          </div>
+        )}
+        {data.hitDistance > 0 && (
+          <div class="rg-boss-detail-field">
+            <span class="rg-boss-detail-field-label">Range</span>
+            <span class="rg-boss-detail-field-value">{data.hitDistance}</span>
+          </div>
+        )}
+        <div class="rg-boss-detail-field">
+          <span class="rg-boss-detail-field-label">Pic ID</span>
+          <span class="rg-boss-detail-field-value">{data.picId}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {(stats.initialHP > 0 || stats.initialAtk > 0 || stats.def > 0) && (
+    <section class="content-section">
+      <h2 class="section-title">Base Stats</h2>
+      <div class="rg-boss-stats-grid">
+        {stats.initialHP > 0 && (
+          <div class="rg-boss-stat-card">
+            <div class="rg-boss-stat-label">HP</div>
+            <div class="rg-boss-stat-value">{stats.initialHP}</div>
+            <div class="rg-boss-stat-growth">+{stats.hpAdd}/lv</div>
+          </div>
+        )}
+        {stats.initialAtk > 0 && (
+          <div class="rg-boss-stat-card">
+            <div class="rg-boss-stat-label">ATK</div>
+            <div class="rg-boss-stat-value">{stats.initialAtk}</div>
+            <div class="rg-boss-stat-growth">+{stats.atkAdd}/lv</div>
+          </div>
+        )}
+        {stats.def > 0 && (
+          <div class="rg-boss-stat-card">
+            <div class="rg-boss-stat-label">DEF</div>
+            <div class="rg-boss-stat-value">{stats.def}</div>
+          </div>
+        )}
+        {stats.stRecover > 0 && (
+          <div class="rg-boss-stat-card">
+            <div class="rg-boss-stat-label">ST Recover</div>
+            <div class="rg-boss-stat-value">{stats.stRecover}</div>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  {hasSkills && (
+    <section class="content-section">
+      <h2 class="section-title">Skills</h2>
+      <div class="rg-detail-skills-list">
+        {normalAtk && (
+          <div class="rg-detail-skill-card">
+            <RGSkillImage icon={normalAtk.icon} skillType={normalAtk.type} element={data.element ?? bossInfo.element} alt={normalAtk.name} width={48} />
+            <div class="rg-detail-skill-info">
+              <div class="rg-detail-skill-name">{normalAtk.name}</div>
+              <div class="rg-detail-skill-desc">{normalAtk.comment}</div>
+              <div class="rg-detail-skill-meta">
+                <span class="rg-detail-skill-meta-tag">{normalAtk.typeName}</span>
+                {normalAtk.cdRound > 0 && <span class="rg-detail-skill-meta-tag">CD: {normalAtk.cdRound}</span>}
+                {normalAtk.showPower && <span class="rg-detail-skill-meta-tag">Power: {normalAtk.showPower}</span>}
+              </div>
+              {normalAtk.effectLines?.length > 0 && (
+                <ul class="rg-detail-skill-effect-list">
+                  {normalAtk.effectLines.map((line: string) => <li class="rg-detail-skill-effect-line">{line}</li>)}
+                </ul>
+              )}
+            </div>
+          </div>
+        )}
+
+        {activeSkills.map((skill: any) => (
+          <div class="rg-detail-skill-card">
+            <RGSkillImage icon={skill.icon} skillType={skill.type} element={data.element ?? bossInfo.element} alt={skill.name} width={48} />
+            <div class="rg-detail-skill-info">
+              <div class="rg-detail-skill-name">{skill.name}</div>
+              <div class="rg-detail-skill-desc">{skill.comment}</div>
+              <div class="rg-detail-skill-meta">
+                <span class="rg-detail-skill-meta-tag">{skill.typeName}</span>
+                {skill.cdRound > 0 && <span class="rg-detail-skill-meta-tag">CD: {skill.cdRound}</span>}
+                {skill.showPower && <span class="rg-detail-skill-meta-tag">Power: {skill.showPower}</span>}
+              </div>
+              {skill.effectLines?.length > 0 && (
+                <ul class="rg-detail-skill-effect-list">
+                  {skill.effectLines.map((line: string) => <li class="rg-detail-skill-effect-line">{line}</li>)}
+                </ul>
+              )}
+            </div>
+          </div>
+        ))}
+
+        {aceSkill && (
+          <div class="rg-detail-skill-card rg-detail-skill-card--ace">
+            <RGSkillImage icon={aceSkill.icon} skillType={aceSkill.type} element={data.element ?? bossInfo.element} alt={aceSkill.name} width={48} />
+            <div class="rg-detail-skill-info">
+              <div class="rg-detail-skill-name">{aceSkill.name}</div>
+              <div class="rg-detail-skill-desc">{aceSkill.comment}</div>
+              <div class="rg-detail-skill-meta">
+                <span class="rg-detail-skill-meta-tag">{aceSkill.typeName}</span>
+                {aceSkill.cdRound > 0 && <span class="rg-detail-skill-meta-tag">CD: {aceSkill.cdRound}</span>}
+                {aceSkill.showPower && <span class="rg-detail-skill-meta-tag">Power: {aceSkill.showPower}</span>}
+              </div>
+              {aceSkill.effectLines?.length > 0 && (
+                <ul class="rg-detail-skill-effect-list">
+                  {aceSkill.effectLines.map((line: string) => <li class="rg-detail-skill-effect-line">{line}</li>)}
+                </ul>
+              )}
+            </div>
+          </div>
+        )}
+
+        {triggerSkills.map((skill: any) => (
+          <div class="rg-detail-skill-card rg-detail-skill-trigger">
+            <RGSkillImage icon={skill.icon} skillType={skill.type} element={data.element ?? bossInfo.element} alt={skill.name} width={48} />
+            <div class="rg-detail-skill-info">
+              <div class="rg-detail-skill-name">{skill.name}</div>
+              <div class="rg-detail-skill-desc">{skill.comment}</div>
+              <div class="rg-detail-skill-meta">
+                <span class="rg-detail-skill-meta-tag">{skill.typeName}</span>
+                {skill.condition > 0 && <span class="rg-detail-skill-meta-tag">Conditional</span>}
+              </div>
+              {skill.effectLines?.length > 0 && (
+                <ul class="rg-detail-skill-effect-list">
+                  {skill.effectLines.map((line: string) => <li class="rg-detail-skill-effect-line">{line}</li>)}
+                </ul>
+              )}
+            </div>
+          </div>
+        ))}
+
+        {passiveSkills.map((skill: any) => (
+          <div class="rg-detail-skill-card">
+            <RGSkillImage icon={skill.icon} skillType={skill.type} element={data.element ?? bossInfo.element} alt={skill.name} width={48} />
+            <div class="rg-detail-skill-info">
+              <div class="rg-detail-skill-name">{skill.name}</div>
+              <div class="rg-detail-skill-desc">{skill.comment}</div>
+              <div class="rg-detail-skill-meta">
+                <span class="rg-detail-skill-meta-tag">{skill.typeName}</span>
+              </div>
+              {skill.effectLines?.length > 0 && (
+                <ul class="rg-detail-skill-effect-list">
+                  {skill.effectLines.map((line: string) => <li class="rg-detail-skill-effect-line">{line}</li>)}
+                </ul>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {data.comment && (
+    <section class="content-section">
+      <h2 class="section-title">Lore</h2>
+      <p class="rg-boss-lore-text" set:html={data.comment.replace(/\n/g, '<br />')} />
+    </section>
+  )}
+</CharacterDetailLayout>

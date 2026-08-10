@@ -1,5 +1,21 @@
 /* Rebellion Gilgamesh Character Detail Page Styles */
 /* Character detail page with hero section, stats, skills, and lore */
+/* Shared by character, equipment, and boss detail pages. */
+
+/* Section spacing — used by all detail pages (content-section / section-title) */
+.content-section {
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--rg-primary);
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--rg-border);
+  letter-spacing: 0.02em;
+}
 
 .rg-level-toggle-wrap {
   display: flex;

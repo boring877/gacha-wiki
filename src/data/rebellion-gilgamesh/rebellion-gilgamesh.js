@@ -18,6 +18,9 @@ export const rebellionGilgameshConfig = {
       twitter: 'https://x.com/rebgilgame',
       erolabs: 'https://game.erolabsshare.net/app/f302f717/Rebellion_Gilgamesh',
       dmm: 'https://rebgil.funyoursjapan.pink/res/rebgil.html',
+      apk: 'https://gofile.io/d/GST6Fu',
+      artistPixiv: 'https://www.pixiv.net/en/users/2326381',
+      spinePlayer: 'https://gofile.io/d/NAoWzd',
     },
     lastUpdated: new Date(),
   },
@@ -108,6 +111,26 @@ export const rebellionGilgameshConfig = {
       size: 'small',
       guides: [
         { id: 'equipment', title: 'Database', url: '/guides/rebellion-gilgamesh/equipment/' },
+      ],
+    },
+    {
+      id: 'bosses',
+      title: 'Bosses',
+      emoji: '',
+      description: 'Enemy and boss bestiary with stats and skills',
+      size: 'small',
+      guides: [
+        { id: 'bosses', title: 'Database', url: '/guides/rebellion-gilgamesh/bosses/' },
+      ],
+    },
+    {
+      id: 'banners',
+      title: 'Banners',
+      emoji: '',
+      description: 'Gacha banner gallery with art and schedules',
+      size: 'small',
+      guides: [
+        { id: 'banners', title: 'Gallery', url: '/guides/rebellion-gilgamesh/banners/' },
       ],
     },
   ],

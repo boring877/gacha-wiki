@@ -179,8 +179,16 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
         ],
       },
       {
-        title: 'Resources',
-        links: [],
+        title: 'Bosses',
+        links: [
+          { name: 'Database', href: '/guides/rebellion-gilgamesh/bosses/' },
+        ],
+      },
+      {
+        title: 'Banners',
+        links: [
+          { name: 'Gallery', href: '/guides/rebellion-gilgamesh/banners/' },
+        ],
       },
     ],
   },
