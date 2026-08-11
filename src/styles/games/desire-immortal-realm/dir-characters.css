@@ -1,0 +1,467 @@
+/* Desire Immortal Realm Character Database Styles */
+
+.dir-content-section {
+  margin-bottom: 2rem;
+}
+
+/* Toolbar: search + class filters */
+.dir-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--dir-bg-secondary);
+  border: 1px solid var(--dir-border);
+  border-radius: 12px;
+}
+
+.dir-search {
+  padding: 0.5rem 0.75rem;
+  background: var(--dir-bg-tertiary);
+  border: 1px solid var(--dir-border);
+  border-radius: 8px;
+  color: var(--dir-text-primary);
+  font-size: 0.875rem;
+  outline: none;
+  min-width: 180px;
+}
+
+.dir-search:focus {
+  border-color: var(--dir-primary);
+}
+
+.dir-search::placeholder {
+  color: var(--dir-text-muted);
+}
+
+.dir-filter-btn {
+  padding: 0.4rem 0.75rem;
+  background: var(--dir-bg-tertiary);
+  border: 1px solid var(--dir-border);
+  border-radius: 6px;
+  color: var(--dir-text-secondary);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.dir-filter-btn.active {
+  background: var(--dir-primary);
+  border-color: var(--dir-primary);
+  color: var(--dir-bg-primary);
+  font-weight: 600;
+}
+
+.dir-count {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--dir-text-muted);
+}
+
+/* Character grid */
+.dir-char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.dir-char-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--dir-bg-card);
+  border: 1px solid var(--dir-border);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  overflow: hidden;
+}
+
+.dir-char-art {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  object-position: center top;
+  background: var(--dir-bg-tertiary);
+  border-bottom: 1px solid var(--dir-border);
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+.dir-char-card-body {
+  padding: 0.75rem;
+}
+
+.dir-char-name-zh {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--dir-text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.dir-char-name-en {
+  font-size: 0.85rem;
+  color: var(--dir-primary);
+  margin: 0.1rem 0 0.5rem;
+  font-weight: 500;
+}
+
+.dir-char-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.dir-badge {
+  display: inline-block;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.dir-badge-class {
+  color: #fff;
+}
+
+.dir-badge-class.shooter { background: var(--dir-class-shooter); }
+.dir-badge-class.assassin { background: var(--dir-class-assassin); }
+.dir-badge-class.mage { background: var(--dir-class-mage); }
+.dir-badge-class.priest { background: var(--dir-class-priest); }
+.dir-badge-class.warrior { background: var(--dir-class-warrior); }
+
+.dir-badge-stat {
+  background: var(--dir-bg-tertiary);
+  color: var(--dir-text-secondary);
+  border: 1px solid var(--dir-border);
+}
+
+/* Detail page */
+.dir-detail-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.dir-detail-art {
+  width: 160px;
+  max-width: 100%;
+  border-radius: 12px;
+  object-fit: contain;
+  object-position: center top;
+  flex-shrink: 0;
+  border: 1px solid var(--dir-border);
+  background: var(--dir-bg-tertiary);
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+.dir-detail-info h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.8rem;
+  color: var(--dir-text-primary);
+}
+
+.dir-detail-name-en {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  color: var(--dir-primary);
+  font-weight: 500;
+}
+
+.dir-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.dir-detail-section {
+  background: var(--dir-bg-card);
+  border: 1px solid var(--dir-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.dir-detail-section h2 {
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+  color: var(--dir-primary);
+  font-weight: 600;
+}
+
+/* Stats grid */
+.dir-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.75rem;
+}
+
+.dir-stat-box {
+  background: var(--dir-bg-tertiary);
+  border: 1px solid var(--dir-border);
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.dir-stat-label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--dir-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.dir-stat-value {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--dir-text-primary);
+}
+
+.dir-stat-growth {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--dir-text-muted);
+  margin-top: 0.15rem;
+}
+
+/* Star progression table */
+.dir-star-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.dir-star-table th,
+.dir-star-table td {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--dir-border);
+}
+
+.dir-star-table th {
+  color: var(--dir-text-tertiary);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dir-star-table td {
+  color: var(--dir-text-secondary);
+}
+
+.dir-star-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Skills */
+.dir-skill {
+  margin-bottom: 1.25rem;
+}
+
+.dir-skill:last-child {
+  margin-bottom: 0;
+}
+
+/* Skill header: icon + name on one row */
+.dir-skill-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.dir-skill-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid var(--dir-border);
+  background: var(--dir-bg-tertiary);
+  object-fit: contain;
+}
+
+.dir-skill-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dir-primary);
+  margin: 0 0 0.5rem;
+}
+
+.dir-skill-desc {
+  color: var(--dir-text-secondary);
+  line-height: 1.6;
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+}
+
+.dir-skill-tier {
+  color: var(--dir-text-tertiary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-right: 0.4rem;
+}
+
+/* EN skill name shown after the ZH name */
+.dir-skill-name-en {
+  color: var(--dir-text-secondary);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* Each tier is a block: ZH on top, EN beneath */
+.dir-skill-tier-block {
+  margin-bottom: 0.75rem;
+  padding-left: 0.5rem;
+}
+
+.dir-skill-desc-en {
+  color: var(--dir-text-secondary);
+  line-height: 1.5;
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* Lore: EN shown first (primary), ZH beneath */
+.dir-lore-en {
+  color: var(--dir-text-primary);
+  line-height: 1.8;
+  font-size: 0.95rem;
+  margin: 0 0 1.25rem;
+  white-space: pre-line;
+}
+
+.dir-lore {
+  color: var(--dir-text-tertiary);
+  line-height: 1.7;
+  font-size: 0.88rem;
+  margin: 0;
+  white-space: pre-line;
+  border-top: 1px solid var(--dir-border);
+  padding-top: 1rem;
+}
+
+.dir-stat-formula-note {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--dir-bg-tertiary);
+  border-radius: 6px;
+  font-size: 0.78rem;
+  color: var(--dir-text-tertiary);
+  line-height: 1.5;
+}
+
+.dir-image-fallback {
+  border: 1px dashed var(--dir-border-light);
+}
+
+/* Detail header thumbnail strip (compact, next to the name) */
+.dir-detail-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.dir-thumb {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 6px;
+  border: 1px solid var(--dir-border);
+  background: var(--dir-bg-tertiary);
+}
+
+/* Portraits gallery on the detail page */
+.dir-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.dir-gallery-figure {
+  margin: 0;
+  text-align: center;
+}
+
+.dir-gallery-img {
+  width: 100%;
+  max-width: 160px;
+  object-fit: contain;
+  object-position: top;
+  border-radius: 8px;
+  border: 1px solid var(--dir-border);
+  background: var(--dir-bg-tertiary);
+}
+
+.dir-gallery-figure figcaption {
+  margin-top: 0.4rem;
+  font-size: 0.72rem;
+  color: var(--dir-text-tertiary);
+  word-break: break-all;
+  line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+  .dir-detail-thumbs {
+    justify-content: center;
+  }
+
+  .dir-thumb {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dir-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dir-search {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .dir-count {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .dir-char-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .dir-detail-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .dir-detail-art {
+    width: 140px;
+  }
+
+  .dir-meta {
+    justify-content: center;
+  }
+
+  .dir-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

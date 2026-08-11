@@ -1,0 +1,62 @@
+/* Desire Immortal Realm Color System - Ink-and-jade xianxia literati theme.
+   Calm, desaturated palette inspired by Chinese ink-wash painting:
+   deep ink-blue primary, muted jade accent, paper-warm near-black background.
+   Matches the muted-primary convention used by the other games on the wiki. */
+
+:root {
+  --dir-primary: #3d5a6c;
+  --dir-primary-light: #6b8395;
+  --dir-primary-dark: #2c4453;
+
+  --dir-secondary: #1a2630;
+  --dir-secondary-light: #2e4250;
+
+  --dir-accent: #6b9b8a;
+  --dir-accent-light: #a3c7b8;
+
+  --dir-bg-primary: #0c0f12;
+  --dir-bg-secondary: #14181c;
+  --dir-bg-tertiary: #1b2026;
+  --dir-bg-card: #161a1f;
+
+  --dir-text-primary: #eef2f4;
+  --dir-text-secondary: #a8b5bc;
+  --dir-text-tertiary: #6f7d85;
+  --dir-text-muted: #454f55;
+
+  --dir-border: #232d35;
+  --dir-border-light: #324351;
+  --dir-border-dark: #161a1f;
+
+  --dir-success: #4caf50;
+  --dir-warning: #ff9800;
+  --dir-error: #ef5350;
+  --dir-info: #42a5f5;
+
+  /* Class colors (RoleRaceType enum) - kept slightly muted to fit the calm palette */
+  --dir-class-shooter: #5b8dd9;
+  --dir-class-assassin: #c97070;
+  --dir-class-mage: #8e7bb0;
+  --dir-class-priest: #6b9b7a;
+  --dir-class-warrior: #c98a5b;
+
+  --dir-gradient-primary: linear-gradient(135deg, var(--dir-primary) 0%, var(--dir-primary-dark) 100%);
+  --dir-gradient-secondary: linear-gradient(135deg, var(--dir-secondary) 0%, var(--dir-secondary-light) 100%);
+  --dir-gradient-card: linear-gradient(135deg, var(--dir-bg-card) 0%, var(--dir-bg-secondary) 100%);
+}
+
+.dir-card {
+  background: var(--dir-gradient-card);
+  border: 1px solid var(--dir-border);
+  border-radius: 12px;
+}
+
+.dir-button {
+  background: var(--dir-gradient-primary);
+  color: var(--dir-text-primary);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+}

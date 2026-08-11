@@ -1,0 +1,104 @@
+---
+// Desire Immortal Realm character database (grid of 40 playable heroines).
+import DesireImmortalRealmLayout from '../../../../layouts/desire-immortal-realm/LandingLayout.astro';
+import DIRCharacterImage from '../../../../components/desire-immortal-realm/DIRCharacterImage.astro';
+import { desireImmortalRealmCharacters } from '../../../../data/desire-immortal-realm/characters.js';
+import '../../../../styles/games/desire-immortal-realm/dir-characters.css';
+
+const characters = desireImmortalRealmCharacters;
+
+// Build the distinct class list for filter buttons (only classes that appear).
+const classes = ['Shooter', 'Assassin', 'Mage'].filter(c =>
+  characters.some(ch => ch.occupation === c)
+);
+
+function classCss(cls) {
+  return (cls || '').toLowerCase();
+}
+---
+
+<DesireImmortalRealmLayout
+  title="Character Database - Desire Immortal Realm"
+  description="Complete character database for Desire Immortal Realm (欲界仙途). Browse all 40 playable heroines with class, verified stats, and skills."
+  gameTitle="Characters"
+>
+  <section class="dir-content-section">
+    <div class="dir-toolbar">
+      <input type="text" class="dir-search" placeholder="Search by Chinese or English name..." id="dir-search" />
+      <button class="dir-filter-btn active" data-filter="all">All</button>
+      {classes.map(c => (
+        <button class="dir-filter-btn" data-filter={c}>{c}</button>
+      ))}
+      <span class="dir-count" id="dir-count">{characters.length} characters</span>
+    </div>
+
+    <div class="dir-char-grid" id="dir-char-grid">
+      {characters.map(char => (
+        <a
+          href={`/guides/desire-immortal-realm/characters/${char.slug}/`}
+          class="dir-char-card"
+          data-class={char.occupation}
+          data-name-zh={(char.nameZh || '').toLowerCase()}
+          data-name-en={(char.nameEn || '').toLowerCase()}
+        >
+          <DIRCharacterImage
+            filename={char.icon}
+            alt={`${char.nameZh} ${char.nameEn}`}
+            class="dir-char-art"
+          />
+          <div class="dir-char-card-body">
+            <p class="dir-char-name-zh">{char.nameZh}</p>
+            <p class="dir-char-name-en">{char.nameEn}</p>
+            <p class="dir-char-meta">
+              <span class={`dir-badge dir-badge-class ${classCss(char.occupation)}`}>{char.occupation}</span>
+              {char.baseStats && (
+                <>
+                  <span class="dir-badge dir-badge-stat">ATK {char.baseStats.attack}</span>
+                  <span class="dir-badge dir-badge-stat">HP {char.baseStats.hp}</span>
+                </>
+              )}
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</DesireImmortalRealmLayout>
+
+<script>
+  const search = document.getElementById('dir-search') as HTMLInputElement;
+  const grid = document.getElementById('dir-char-grid');
+  const countEl = document.getElementById('dir-count');
+  const filterBtns = document.querySelectorAll('.dir-filter-btn');
+
+  function updateDisplay() {
+    if (!search || !grid) return;
+    const query = search.value.toLowerCase();
+    const activeFilter = document.querySelector('.dir-filter-btn.active')?.getAttribute('data-filter') || 'all';
+    const cards = grid?.querySelectorAll('.dir-char-card') as NodeListOf<HTMLElement>;
+    let visible = 0;
+
+    cards?.forEach(card => {
+      const nameZh = card.dataset.nameZh || '';
+      const nameEn = card.dataset.nameEn || '';
+      const cls = card.dataset.class || '';
+      const matchesSearch = nameZh.includes(query) || nameEn.includes(query);
+      const matchesFilter = activeFilter === 'all' || cls === activeFilter;
+      const show = matchesSearch && matchesFilter;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    if (countEl) countEl.textContent = `${visible} character${visible !== 1 ? 's' : ''}`;
+  }
+
+  search?.addEventListener('input', updateDisplay);
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      updateDisplay();
+    });
+  });
+</script>

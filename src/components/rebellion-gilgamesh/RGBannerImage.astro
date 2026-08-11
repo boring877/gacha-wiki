@@ -1,14 +1,7 @@
 ---
 // Rebellion Gilgamesh banner image component
-// Displays gacha banner art from assets/images/games/rebellion-gilgamesh/banners/<id>.png
-// Banner art is landscape (wide), so the wrapper uses cover-fit with a fixed aspect ratio.
-import { Image } from 'astro:assets';
-
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/images/games/rebellion-gilgamesh/banners/*.png',
-  { eager: true }
-);
-
+// Displays gacha banner art from public/images/games/rebellion-gilgamesh/banners/<id>.png
+// Uses public/ folder (plain URLs) instead of Astro Image to reduce build output.
 export interface Props {
   image?: string;
   alt: string;
@@ -17,27 +10,17 @@ export interface Props {
 }
 
 const { image, alt, class: className, loading = 'lazy' } = Astro.props;
-
-function findImage(search: string): ImageMetadata | null {
-  if (!search) return null;
-  const key = Object.keys(images).find(k => k.includes(search));
-  return key ? images[key].default : null;
-}
-
-const imageModule = findImage(image || '');
+const imgUrl = image ? `/images/games/rebellion-gilgamesh/banners/${image}` : '';
 ---
 
-{imageModule ? (
+{imgUrl ? (
   <div class={`rg-banner-img-wrapper ${className || ''}`}>
-    <Image
-      src={imageModule}
+    <img
+      src={imgUrl}
       alt={alt}
-      widths={[400, 600]}
-      sizes="(max-width: 768px) 100vw, 400px"
       loading={loading}
-      format="webp"
-      quality={90}
       class="rg-banner-img"
+      onerror="this.style.display='none';this.parentElement.classList.add('rg-banner-img-fallback');this.parentElement.innerHTML='<span>'+(this.alt.slice(0,20))+'</span>'"
     />
   </div>
 ) : (

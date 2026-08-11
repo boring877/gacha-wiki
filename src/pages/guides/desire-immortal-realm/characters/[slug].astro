@@ -1,0 +1,198 @@
+---
+// Per-character detail page for Desire Immortal Realm.
+import DesireImmortalRealmLayout from '../../../../layouts/desire-immortal-realm/LandingLayout.astro';
+import DIRCharacterImage from '../../../../components/desire-immortal-realm/DIRCharacterImage.astro';
+import DIRSkillIcon from '../../../../components/desire-immortal-realm/DIRSkillIcon.astro';
+import { desireImmortalRealmCharacters } from '../../../../data/desire-immortal-realm/characters.js';
+import '../../../../styles/games/desire-immortal-realm/dir-characters.css';
+
+export function getStaticPaths() {
+  return desireImmortalRealmCharacters.map(char => ({
+    params: { slug: char.slug },
+    props: { character: char },
+  }));
+}
+
+const { character: char } = Astro.props;
+const classCss = (char.occupation || '').toLowerCase();
+
+// Pre-compute skill tier labels (descriptions are upgrade tiers).
+const basicTiers = char.skills?.basic?.descriptions || [];
+const ultTiers = char.skills?.ultimate?.descriptions || [];
+const progression = char.starProgression || [];
+
+// Image gallery: all available portraits for this character.
+const gallery = (char.images || []).filter(Boolean);
+const primaryImage = gallery[0] || char.icon;
+const extraImages = gallery.slice(1);
+---
+
+<DesireImmortalRealmLayout
+  title={`${char.nameZh} ${char.nameEn} - Desire Immortal Realm Character`}
+  description={`${char.nameEn} (${char.nameZh}) character guide for Desire Immortal Realm. ${char.occupation} class with verified stats, skills, and lore.`}
+  gameTitle={char.nameZh}
+>
+  <section class="dir-content-section">
+    <div class="dir-detail-header">
+      <DIRCharacterImage
+        filename={primaryImage}
+        alt={`${char.nameZh} ${char.nameEn}`}
+        class="dir-detail-art"
+      />
+      <div class="dir-detail-info">
+        <h1>{char.nameZh}</h1>
+        <p class="dir-detail-name-en">{char.nameEn}</p>
+        <div class="dir-meta">
+          <span class={`dir-badge dir-badge-class ${classCss}`}>{char.occupation}</span>
+          <span class="dir-badge dir-badge-stat">ID {char.id}</span>
+        </div>
+        {extraImages.length > 0 && (
+          <div class="dir-detail-thumbs">
+            {gallery.map(img => (
+              <DIRCharacterImage filename={img} alt={`${char.nameZh} portrait`} class="dir-thumb" />
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  {gallery.length > 1 && (
+    <section class="dir-content-section">
+      <div class="dir-detail-section">
+        <h2>Portraits</h2>
+        <div class="dir-gallery">
+          {gallery.map((img, i) => (
+            <figure class="dir-gallery-figure">
+              <DIRCharacterImage filename={img} alt={`${char.nameZh} ${char.nameEn} portrait ${i + 1}`} class="dir-gallery-img" />
+              <figcaption>{img.replace(/\.png$/, '').replace(/_/g, ' ')}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {char.baseStats && (
+    <section class="dir-content-section">
+      <div class="dir-detail-section">
+        <h2>Stats by Star Tier</h2>
+        <p class="dir-stat-intro">
+          Max Attack and HP at each star tier's level cap. Values verified against
+          the game's code (Attack = BasicAttributes1 + (Level−1)×AttackBase;
+          HP = BasicAttributes2 + (Level−1)×HpBase).
+        </p>
+        <table class="dir-star-table dir-stat-table">
+          <thead>
+            <tr>
+              <th>Star</th>
+              <th>Max Level</th>
+              <th>ATK (max)</th>
+              <th>HP (max)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {(char.starProgression || []).map(tier => (
+              <tr>
+                <td>★{tier.starTier}</td>
+                <td>Lv{tier.levelCap}</td>
+                <td>{tier.max.attack.toLocaleString()}</td>
+                <td>{tier.max.hp.toLocaleString()}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )}
+
+  {(basicTiers.length > 0 || ultTiers.length > 0) && (
+    <section class="dir-content-section">
+      <div class="dir-detail-section">
+        <h2>Skills</h2>
+        {basicTiers.length > 0 && (
+          <div class="dir-skill">
+            <div class="dir-skill-header">
+              {char.skills.basic.icon && (
+                <DIRSkillIcon icon={char.skills.basic.icon} alt={char.skills.basic.name} class="dir-skill-icon" />
+              )}
+              <p class="dir-skill-name">
+                {char.skills.basic.name}
+                {char.basicEn?.name && <span class="dir-skill-name-en"> / {char.basicEn.name}</span>}
+              </p>
+            </div>
+            {basicTiers.map((desc, i) => (
+              <div class="dir-skill-tier-block">
+                <p class="dir-skill-desc"><span class="dir-skill-tier">T{i + 1}</span>{desc}</p>
+                {char.basicEn?.descriptions?.[i] && (
+                  <p class="dir-skill-desc-en">{char.basicEn.descriptions[i]}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+        {ultTiers.length > 0 && (
+          <div class="dir-skill">
+            <div class="dir-skill-header">
+              {char.skills.ultimate.icon && (
+                <DIRSkillIcon icon={char.skills.ultimate.icon} alt={char.skills.ultimate.name} class="dir-skill-icon" />
+              )}
+              <p class="dir-skill-name">
+                {char.skills.ultimate.name}
+                {char.ultimateEn?.name && <span class="dir-skill-name-en"> / {char.ultimateEn.name}</span>}
+              </p>
+            </div>
+            {ultTiers.map((desc, i) => (
+              <div class="dir-skill-tier-block">
+                <p class="dir-skill-desc"><span class="dir-skill-tier">T{i + 1}</span>{desc}</p>
+                {char.ultimateEn?.descriptions?.[i] && (
+                  <p class="dir-skill-desc-en">{char.ultimateEn.descriptions[i]}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  {progression.length > 0 && (
+    <section class="dir-content-section">
+      <div class="dir-detail-section">
+        <h2>Star Progression ({progression.length} tiers)</h2>
+        <table class="dir-star-table">
+          <thead>
+            <tr>
+              <th>Star</th>
+              <th>Level Cap</th>
+              <th>ATK (Lv 1 → max)</th>
+              <th>HP (Lv 1 → max)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {progression.map(tier => (
+              <tr>
+                <td>{tier.starTier}</td>
+                <td>{tier.levelCap}</td>
+                <td>{tier.base.attack} → {tier.max.attack}</td>
+                <td>{tier.base.hp} → {tier.max.hp}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )}
+
+  {char.description && (
+    <section class="dir-content-section">
+      <div class="dir-detail-section">
+        <h2>Lore</h2>
+        {char.descriptionEnFull && (
+          <p class="dir-lore-en">{char.descriptionEnFull}</p>
+        )}
+        <p class="dir-lore">{char.description}</p>
+      </div>
+    </section>
+  )}
+</DesireImmortalRealmLayout>

@@ -1,13 +1,8 @@
 ---
 // Rebellion Gilgamesh equipment icon image component
-// Displays equipment icons from assets/images/games/rebellion-gilgamesh/equipment/
+// Displays equipment icons from public/images/games/rebellion-gilgamesh/equipment/
 // Icon field from data (e.g. "劍_31") is matched as substring of filename
-import { Image } from 'astro:assets';
-
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/images/games/rebellion-gilgamesh/equipment/*.png',
-  { eager: true }
-);
+// Uses public/ folder (plain URLs) instead of Astro Image to reduce build output.
 
 export interface Props {
   icon?: string;
@@ -19,26 +14,21 @@ export interface Props {
 
 const { icon, alt, width = 64, class: className, loading = 'lazy' } = Astro.props;
 
-function findImage(search: string): ImageMetadata | null {
-  if (!search) return null;
-  const key = Object.keys(images).find(k => k.includes(search));
-  return key ? images[key].default : null;
-}
-
-const imageModule = findImage(icon || '');
+// Equipment icons are in public/images/games/rebellion-gilgamesh/equipment/
+// The icon field is a substring like "劍_31" that matches a filename
+const iconUrl = icon ? `/images/games/rebellion-gilgamesh/equipment/${icon}.png` : '';
 ---
 
-{imageModule ? (
+{iconUrl ? (
   <div class={`rg-equip-img-wrapper ${className || ''}`} style={`--rg-equip-img-width: ${width}px`}>
-    <Image
-      src={imageModule}
+    <img
+      src={iconUrl}
       alt={alt}
       width={width}
       height={width}
       loading={loading}
-      format="webp"
-      quality={90}
       class="rg-equip-img"
+      onerror="this.parentElement.className+=' rg-equip-img-fallback';this.style.display='none';this.parentElement.querySelector('span')||(this.parentElement.innerHTML='<span>'+(this.alt[0]||'?')+'</span>')"
     />
   </div>
 ) : (
@@ -57,6 +47,7 @@ const imageModule = findImage(icon || '');
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
   }
 
   .rg-equip-img-wrapper :global(img) {

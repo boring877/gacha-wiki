@@ -1,0 +1,68 @@
+---
+// Desire Immortal Realm landing page.
+import DesireImmortalRealmLayout from '../../layouts/desire-immortal-realm/LandingLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { desireImmortalRealmConfig } from '../../data/desire-immortal-realm/desire-immortal-realm.js';
+
+const { meta, gameInfo, story, translationNote, categoryGroups } = desireImmortalRealmConfig;
+---
+
+<DesireImmortalRealmLayout
+  title={meta.title}
+  description={meta.description}
+  gameTitle={meta.gameTitle}
+>
+  <section class="content-section">
+    <div class="story-content">
+      {story.content.map(paragraph => <p>{paragraph}</p>)}
+    </div>
+
+    <div class="game-description">
+      <p>{gameInfo.description}</p>
+    </div>
+
+    <div class="dir-translation-note">
+      <h3>{translationNote.title}</h3>
+      {translationNote.body.map(p => <p>{p}</p>)}
+    </div>
+
+    <p class="last-updated">
+      Last Updated: <FormattedDate date={gameInfo.lastUpdated} />
+    </p>
+  </section>
+
+  <section class="dir-resources-section">
+    <h2 class="dir-resources-title">Guides & Resources</h2>
+
+    <div class="dir-resources-grid">
+      {
+        categoryGroups.map(category => (
+          <div class={`dir-resource-category dir-category-${category.size}`}>
+            <div class="dir-category-header">
+              <h3>{category.title}</h3>
+              <p class="dir-category-description">{category.description}</p>
+            </div>
+            <div class="dir-buttons-grid">
+              {category.guides.map(guide => (
+                <a
+                  href={guide.url}
+                  class="dir-resource-button"
+                  aria-label={`Navigate to ${guide.title}`}
+                >
+                  {guide.title}
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="dir-info-banner">
+      <p><strong>Desire Immortal Realm</strong> (欲界仙途) is a live Chinese xianxia gacha distributed via the Erolabs platform.</p>
+      <p style="margin-top: 0.5rem;">Character data on this wiki is extracted directly from the game and verified against the game's own code. More guides will be added over time.</p>
+    </div>
+  </section>
+</DesireImmortalRealmLayout>

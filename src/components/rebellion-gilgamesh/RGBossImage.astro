@@ -1,14 +1,7 @@
 ---
 // Rebellion Gilgamesh boss/enemy image component
-// Displays enemy art from assets/images/games/rebellion-gilgamesh/bosses/<picId>.png
-// Boss art is landscape (battle busts), so the wrapper adapts rather than forcing square.
-import { Image } from 'astro:assets';
-
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/images/games/rebellion-gilgamesh/bosses/*.png',
-  { eager: true }
-);
-
+// Displays enemy art from public/images/games/rebellion-gilgamesh/bosses/<picId>.png
+// Uses public/ folder (plain URLs) instead of Astro Image to reduce build output.
 export interface Props {
   image?: string;
   alt: string;
@@ -18,26 +11,17 @@ export interface Props {
 }
 
 const { image, alt, width = 64, class: className, loading = 'lazy' } = Astro.props;
-
-function findImage(search: string): ImageMetadata | null {
-  if (!search) return null;
-  const key = Object.keys(images).find(k => k.includes(search));
-  return key ? images[key].default : null;
-}
-
-const imageModule = findImage(image || '');
+const imgUrl = image ? `/images/games/rebellion-gilgamesh/bosses/${image}` : '';
 ---
 
-{imageModule ? (
+{imgUrl ? (
   <div class={`rg-boss-img-wrapper ${className || ''}`} style={`--rg-boss-img-width: ${width}px`}>
-    <Image
-      src={imageModule}
+    <img
+      src={imgUrl}
       alt={alt}
-      width={width}
       loading={loading}
-      format="webp"
-      quality={90}
       class="rg-boss-img"
+      onerror="this.style.display='none';this.parentElement.classList.add('rg-boss-img-fallback');this.parentElement.innerHTML='<span>'+(this.alt[0]||'?')+'</span>'"
     />
   </div>
 ) : (
@@ -58,7 +42,6 @@ const imageModule = findImage(image || '');
     overflow: hidden;
     line-height: 0;
   }
-
   .rg-boss-img-wrapper :global(img) {
     width: 100%;
     height: auto;
@@ -67,7 +50,6 @@ const imageModule = findImage(image || '');
     object-fit: cover;
     object-position: center top;
   }
-
   .rg-boss-img-fallback {
     width: var(--rg-boss-img-width, 64px);
     height: var(--rg-boss-img-width, 64px);

@@ -1,0 +1,353 @@
+/* Desire Immortal Realm Landing Page Styles */
+
+.content-section {
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  background: var(--dir-bg-secondary);
+  border-radius: 16px;
+  border: 1px solid var(--dir-border);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--dir-primary);
+}
+
+.last-updated {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--dir-text-muted);
+  text-align: center;
+  font-weight: 500;
+}
+
+.story-content {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.story-content p {
+  color: var(--dir-text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.game-description p {
+  color: var(--dir-text-secondary);
+  line-height: 1.8;
+  text-align: center;
+}
+
+.dir-translation-note {
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: 1.5rem;
+  background: var(--dir-bg-card);
+  border: 1px solid var(--dir-border);
+  border-radius: 12px;
+}
+
+.dir-translation-note h3 {
+  margin: 0 0 0.75rem;
+  color: var(--dir-accent);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.dir-translation-note p {
+  margin: 0 0 0.5rem;
+  color: var(--dir-text-secondary);
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+.dir-translation-note p:last-child {
+  margin-bottom: 0;
+}
+
+.dir-social-links-container {
+  text-align: center;
+  margin: 2.5rem 0;
+}
+
+.dir-social-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.dir-social-link {
+  display: inline-flex;
+  align-items: center;
+  background: var(--dir-bg-tertiary);
+  color: var(--dir-text-primary);
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid var(--dir-border);
+}
+
+.dir-resources-section {
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  background: var(--dir-bg-secondary);
+  border-radius: 16px;
+  border: 1px solid var(--dir-border);
+}
+
+.dir-resources-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--dir-primary);
+}
+
+.dir-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 1.2rem;
+  margin-top: 3rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.dir-resource-category {
+  background: var(--dir-bg-card);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--dir-border);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.dir-category-large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.dir-category-medium {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.dir-category-small {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.dir-category-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.dir-category-header h3 {
+  color: var(--dir-text-primary);
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.dir-category-description {
+  color: var(--dir-text-tertiary);
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.dir-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-auto-rows: 80px;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.dir-resource-button {
+  box-sizing: border-box;
+  color: var(--dir-text-primary);
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 12px;
+  background: var(--dir-bg-tertiary);
+  border: 1px solid var(--dir-border);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-wrap: break-word;
+}
+
+.dir-info-banner {
+  text-align: center;
+  padding: 2rem;
+  background: var(--dir-bg-card);
+  border: 1px solid var(--dir-border);
+  border-radius: 16px;
+  margin-top: 1.5rem;
+}
+
+.dir-info-banner p {
+  color: var(--dir-text-secondary);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.dir-info-banner strong {
+  color: var(--dir-primary);
+}
+
+@media (max-width: 1024px) {
+  .dir-resources-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .dir-category-large,
+  .dir-category-medium,
+  .dir-category-small {
+    grid-column: span 1;
+    grid-row: span 1;
+    padding: 2rem;
+  }
+
+  .dir-buttons-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .dir-resource-button {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-section {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .dir-resources-section {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .dir-resources-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .dir-resources-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .dir-resource-category {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+
+  .dir-category-header {
+    margin-bottom: 1.25rem;
+    text-align: center;
+  }
+
+  .dir-buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .dir-resource-button {
+    box-sizing: border-box;
+    padding: 1rem 0.75rem;
+    font-size: 0.9rem;
+    min-height: 56px;
+    border-radius: 12px;
+    font-weight: 500;
+    line-height: 1.3;
+    white-space: normal;
+    word-break: normal;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-section {
+    padding: 1.25rem 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .dir-resources-section {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .dir-resources-grid {
+    gap: 1.25rem;
+  }
+
+  .dir-resource-category {
+    padding: 1rem;
+  }
+
+  .dir-buttons-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.625rem;
+  }
+
+  .dir-resource-button {
+    padding: 0.875rem 0.625rem;
+    font-size: 0.875rem;
+    min-height: 52px;
+    border-radius: 10px;
+    line-height: 1.2;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
+@media (max-width: 380px) {
+  .dir-resource-category {
+    padding: 0.875rem;
+  }
+
+  .dir-buttons-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .dir-resource-button {
+    padding: 1rem;
+    font-size: 0.9rem;
+    min-height: 48px;
+  }
+
+  .content-section {
+    padding: 1rem 0.5rem;
+  }
+}

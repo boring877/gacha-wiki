@@ -1,5 +1,11 @@
 # Claude Code Instructions
 
+## Git Rules (CRITICAL)
+
+- **NEVER `git commit` or `git push` without explicit permission from the user.**
+- Always make changes locally, tell the user what was changed, and wait for the user to verify and say "push it" before touching git.
+- Never push broken or unverified code. The user must test in the browser first.
+
 ## Environment
 
 - OS: Windows 11

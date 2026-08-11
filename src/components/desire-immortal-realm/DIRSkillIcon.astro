@@ -1,0 +1,31 @@
+---
+// Resolves a skill-icon key (e.g. "skill_100001_1") to an optimized <Image>.
+import { Image } from 'astro:assets';
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/desire-immortal-realm/skills/**/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  icon: string;          // skill icon key, e.g. "skill_100001_1"
+  alt?: string;
+  class?: string;
+}
+
+function findImage(icon: string): ImageMetadata | null {
+  if (!icon) return null;
+  const filename = icon.endsWith('.png') ? icon : `${icon}.png`;
+  const key = Object.keys(images).find(k => k.endsWith('/' + filename) || k.endsWith('/skills/' + filename));
+  return key ? images[key].default : null;
+}
+
+const { icon, alt = 'Skill icon', class: className = '' } = Astro.props;
+const imageData = findImage(icon);
+---
+
+{imageData ? (
+  <Image src={imageData} alt={alt} class={className} width={48} height={48} loading="lazy" format="webp" quality={95} />
+) : (
+  <div class={`dir-skill-icon-fallback ${className}`} style="background: var(--dir-bg-secondary); border: 1px dashed var(--dir-border-light); border-radius: 8px; min-width: 48px; min-height: 48px;"></div>
+)}

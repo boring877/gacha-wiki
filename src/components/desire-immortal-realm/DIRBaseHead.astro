@@ -1,0 +1,61 @@
+---
+// Base <head> metadata for Desire Immortal Realm pages.
+import { SITE_TITLE } from '../../consts';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = SITE_TITLE,
+  description = 'Desire Immortal Realm Wiki - Character Database, Stats, Skills & Lore',
+} = Astro.props;
+
+const metaTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | Desire Immortal Realm Wiki`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.json" />
+
+<title>{metaTitle}</title>
+<meta name="title" content={metaTitle} />
+<meta name="description" content={description} />
+<meta name="generator" content={Astro.generator} />
+
+<meta name="application-category" content="game" />
+<meta name="application-subcategory" content="rpg" />
+
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+
+<link rel="preload" href="/fonts/dm-sans-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/space-grotesk-600.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/dm-sans-600.woff2" as="font" type="font/woff2" crossorigin />
+
+<meta name="game:title" content="Desire Immortal Realm 欲界仙途" />
+<meta name="game:genre" content="Xianxia RPG, Gacha, Strategy" />
+<meta name="game:platform" content="Android" />
+<meta name="game:distribution" content="Erolabs" />
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'VideoGame',
+    name: 'Desire Immortal Realm',
+    alternateName: '欲界仙途',
+    description: 'Chinese xianxia cultivation gacha. 40 playable heroines reimagined from Chinese history and mythology, with tower-defense combat and star-tier progression.',
+    genre: ['Xianxia RPG', 'Gacha', 'Strategy'],
+    applicationCategory: 'Game',
+    operatingSystem: 'Android',
+    playMode: 'SinglePlayer',
+    url: canonicalURL,
+  })}
+/>
