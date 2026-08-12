@@ -1,8 +1,13 @@
 ---
 // Rebellion Gilgamesh character battle icon image component
-// Displays hero battle icons from assets/images/games/rebellion-gilgamesh/character-icons/
+// Prefers the polished hero-battle CG (hero-battle/), falls back to the
+// classic battle icon (character-icons/).
 import { Image } from 'astro:assets';
 
+const heroBattle = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/rebellion-gilgamesh/hero-battle/*.png',
+  { eager: true }
+);
 const images = import.meta.glob<{ default: ImageMetadata }>(
   '../../assets/images/games/rebellion-gilgamesh/character-icons/*.png',
   { eager: true }
@@ -20,6 +25,8 @@ const { image, alt, width = 64, class: className, loading = 'lazy' } = Astro.pro
 
 function findImage(fname: string): ImageMetadata | null {
   if (!fname) return null;
+  const hb = Object.keys(heroBattle).find(k => k.endsWith('/' + fname));
+  if (hb) return heroBattle[hb].default;
   const key = Object.keys(images).find(k => k.endsWith('/' + fname));
   return key ? images[key].default : null;
 }

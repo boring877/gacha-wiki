@@ -44,7 +44,7 @@ export const rebellionGilgameshConfig = {
     {
       id: 'resources',
       title: 'Game Resources',
-      type: 'coming-soon',
+      type: 'resources',
     },
   ],
 
@@ -131,6 +131,16 @@ export const rebellionGilgameshConfig = {
       size: 'small',
       guides: [
         { id: 'banners', title: 'Gallery', url: '/guides/rebellion-gilgamesh/banners/' },
+      ],
+    },
+    {
+      id: 'tier-list',
+      title: 'Tier List',
+      emoji: '🏆',
+      description: 'Character rankings for overall PvE, Seal Battle, and PvP',
+      size: 'small',
+      guides: [
+        { id: 'tier-list', title: 'Rankings', url: '/guides/rebellion-gilgamesh/tier-list/' },
       ],
     },
   ],

@@ -1,0 +1,401 @@
+---
+// Rebellion Gilgamesh Tier List page — modern "tier sections + grid" design.
+// PvE/PvP view + a drag-and-drop "Create Your Own" maker mode (localStorage).
+import CharacterDatabaseLayout from '../../../layouts/rebellion-gilgamesh/CharacterDatabaseLayout.astro';
+import { Image } from 'astro:assets';
+import { REBELLION_GILGAMESH_CHARACTERS } from '../../../data/rebellion-gilgamesh/characters.js';
+import { ALL_TIER_LISTS, TIER_DEFINITIONS, TIER_ORDER } from '../../../data/rebellion-gilgamesh/tier-lists.js';
+import raritySSR from '../../../assets/images/games/rebellion-gilgamesh/rarity/SSR.png';
+import raritySR from '../../../assets/images/games/rebellion-gilgamesh/rarity/SR.png';
+import rarityR from '../../../assets/images/games/rebellion-gilgamesh/rarity/R.png';
+
+import '../../../styles/games/rebellion-gilgamesh/rg-tier-list.css';
+
+// name -> character lookup so tier entries can join onto icon/rarity/slug.
+const characterMap: Record<string, any> = {};
+for (const c of REBELLION_GILGAMESH_CHARACTERS) {
+  characterMap[c.name] = c;
+}
+
+// Character art: prefer the polished hero-battle CG (hero-battle/), then the
+// large portrait (characters/), then the battle icon (character-icons/).
+const heroBattleModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../../../assets/images/games/rebellion-gilgamesh/hero-battle/*.png',
+  { eager: true }
+);
+const portraitModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../../../assets/images/games/rebellion-gilgamesh/characters/*.png',
+  { eager: true }
+);
+const iconModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../../../assets/images/games/rebellion-gilgamesh/character-icons/*.png',
+  { eager: true }
+);
+const heroBattleMap: Record<string, ImageMetadata> = {};
+const portraitMap: Record<string, ImageMetadata> = {};
+const iconMap: Record<string, ImageMetadata> = {};
+for (const [path, mod] of Object.entries(heroBattleModules)) heroBattleMap[path.split('/').pop() as string] = mod.default;
+for (const [path, mod] of Object.entries(portraitModules)) portraitMap[path.split('/').pop() as string] = mod.default;
+for (const [path, mod] of Object.entries(iconModules)) iconMap[path.split('/').pop() as string] = mod.default;
+
+function imgFor(image: string): ImageMetadata | undefined {
+  return heroBattleMap[image] || portraitMap[image] || iconMap[image];
+}
+
+// Rarity banner images (100x40) shown under each character name.
+const rarityImages: Record<string, ImageMetadata> = { SSR: raritySSR, SR: raritySR, R: rarityR };
+const rarityImageUrls: Record<string, string> = { SSR: raritySSR.src, SR: raritySR.src, R: rarityR.src };
+
+const lists = Object.values(ALL_TIER_LISTS);
+
+function tierSlug(tier: string): string {
+  return tier.toLowerCase();
+}
+
+function starString(stars: number | undefined): string {
+  return stars && stars > 0 ? '★'.repeat(stars) : '';
+}
+---
+
+<CharacterDatabaseLayout
+  title="Rebellion Gilgamesh Tier List 2025 - PvE & PvP Character Rankings | GachaWiki"
+  description="Rebellion Gilgamesh character tier list with separate PvE and PvP rankings, plus an interactive tier-list maker. S to D tiers derived from the community meta reviews. Find the best characters to pull and build."
+  gameTitle="Tier List"
+>
+  <div class="tier-list-container">
+    {/* Mode Toggle */}
+    <div class="mode-toggle">
+      <button class="mode-btn active" id="view-mode-btn">View Tier Lists</button>
+      <button class="mode-btn" id="maker-mode-btn">Create Your Own</button>
+    </div>
+
+    {/* View Mode Content */}
+    <div id="view-mode-content">
+      <div class="tier-list-selector">
+        {lists.map((list, idx) => (
+          <button class={`tier-type-btn${idx === 0 ? ' active' : ''}`} data-list-type={list.key}>
+            {list.tabLabel}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    {/* Maker Mode Content */}
+    <div id="maker-mode-content" style="display: none;">
+      <p class="tier-list-description" style="text-align: center; color: var(--rg-text-light); margin-bottom: 1rem;">
+        Drag characters from the pool below into the tiers. Your list is saved automatically in this browser.
+      </p>
+      <div class="maker-controls">
+        <button class="control-btn" id="reset-tier-list">Reset Tier List</button>
+      </div>
+    </div>
+
+    {/* Tier List Info (dynamic) */}
+    <div class="tier-list-info" id="tier-list-info">
+      <h2 class="tier-list-title" id="list-title">{lists[0]?.name}</h2>
+      <p class="tier-list-description" id="list-description">{lists[0]?.description}</p>
+      <p class="tier-list-updated" id="list-updated">Source: {lists[0]?.source} · Updated {lists[0]?.lastUpdated}</p>
+    </div>
+
+    {/* Maker Mode: Character Pool */}
+    <div id="maker-pool" style="display: none;">
+      <div class="maker-pool-grid">
+        {REBELLION_GILGAMESH_CHARACTERS.map(char => (
+          <div
+            class="pool-character-card draggable"
+            data-character={char.name}
+            data-rarity={char.rarity}
+            draggable="true"
+          >
+            <div class="pool-image-wrapper">
+              {imgFor(char.image) ? (
+                <Image src={imgFor(char.image)!} alt={char.name} width={60} height={60} loading="lazy" format="webp" />
+              ) : (
+                <img src="/favicon.svg" alt={char.name} width={60} height={60} loading="lazy" />
+              )}
+            </div>
+            <div class="pool-character-name">{char.name}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Maker Mode: Tier List (droppable sections) */}
+    <div id="maker-tier-list" style="display: none;">
+      {TIER_ORDER.map(tier => (
+        <section class={`tier-section tier-section-${tierSlug(tier)}`}>
+          <header class="tier-section-header">
+            <span class="tier-badge">{TIER_DEFINITIONS[tier].label}</span>
+          </header>
+          <div class="tier-characters droppable" data-tier={tier}>
+            <div class="drop-zone-hint">Drop characters here</div>
+          </div>
+        </section>
+      ))}
+    </div>
+
+    {/* Static Tier Lists (View mode) */}
+    {lists.map((list, idx) => (
+      <div class={`tier-list-display${idx === 0 ? ' active' : ''}`} id={`tier-list-${list.key}`} data-list-type={list.key} style={idx === 0 ? '' : 'display: none;'}>
+        {TIER_ORDER.map(tier => {
+          const entries = list.tiers[tier] || [];
+          return (
+            <section class={`tier-section tier-section-${tierSlug(tier)}`}>
+              <header class="tier-section-header">
+                <span class="tier-badge">{TIER_DEFINITIONS[tier].label}</span>
+              </header>
+              <div class="tier-characters" data-tier={tier}>
+                {entries.length === 0 ? (
+                  <div class="empty-tier">No characters in this tier</div>
+                ) : (
+                  entries.map(entry => {
+                    const char = characterMap[entry.name];
+                    if (!char) return null;
+                    const stars = starString(entry.stars);
+                    return (
+                      <a class="tier-character-card" data-rarity={char.rarity} href={`/guides/rebellion-gilgamesh/characters/${char.slug}/`} aria-label={`${char.name} — ${char.rarity} ${char.elementName}`}>
+                        <div class="character-image-wrapper">
+                          {imgFor(char.image) ? (
+                            <Image src={imgFor(char.image)!} alt={char.name} width={84} height={84} loading="lazy" format="webp" />
+                          ) : (
+                            <img src="/favicon.svg" alt={char.name} width={84} height={84} loading="lazy" />
+                          )}
+                        </div>
+                        {stars && <div class="tier-stars">{stars}</div>}
+                        <div class="character-name">{char.name}</div>
+                        {rarityImages[char.rarity] && (
+                          <Image src={rarityImages[char.rarity]} alt={char.rarity} class="tier-rarity" width={100} height={40} loading="lazy" />
+                        )}
+                      </a>
+                    );
+                  })
+                )}
+              </div>
+            </section>
+          );
+        })}
+      </div>
+    ))}
+  </div>
+
+  {/* Tier List View + Maker Script */}
+  <script define:vars={{ characterMap, rarityImageUrls, ALL_TIER_LISTS }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const listTitle = document.getElementById('list-title');
+      const listDescription = document.getElementById('list-description');
+      const listUpdated = document.getElementById('list-updated');
+      const typeButtons = document.querySelectorAll('.tier-type-btn');
+      const viewModeBtn = document.getElementById('view-mode-btn');
+      const makerModeBtn = document.getElementById('maker-mode-btn');
+      const viewModeContent = document.getElementById('view-mode-content');
+      const makerModeContent = document.getElementById('maker-mode-content');
+      const tierListInfo = document.getElementById('tier-list-info');
+      const tierListDisplays = document.querySelectorAll('.tier-list-display[data-list-type]');
+
+      const makerPool = document.getElementById('maker-pool');
+      const makerTierList = document.getElementById('maker-tier-list');
+      const resetBtn = document.getElementById('reset-tier-list');
+
+      let currentListType = Object.keys(ALL_TIER_LISTS)[0];
+      let selectedCharacter = null;
+      const tierAssignments = {};
+      const STORAGE_KEY = 'rg-custom-tier-list';
+      let makerInitialized = false;
+
+      function updateTierListInfo(listType) {
+        const tierList = ALL_TIER_LISTS[listType];
+        if (!tierList) return;
+        if (listTitle) listTitle.textContent = tierList.name;
+        if (listDescription) listDescription.textContent = tierList.description;
+        if (listUpdated) listUpdated.textContent = `Source: ${tierList.source} · Updated ${tierList.lastUpdated}`;
+        tierListDisplays.forEach(display => {
+          display.style.display = display.dataset.listType === listType ? 'flex' : 'none';
+        });
+      }
+
+      typeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const listType = button.dataset.listType;
+          if (!listType) return;
+          typeButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          currentListType = listType;
+          updateTierListInfo(listType);
+        });
+      });
+
+      viewModeBtn.addEventListener('click', () => {
+        viewModeBtn.classList.add('active');
+        makerModeBtn.classList.remove('active');
+        viewModeContent.style.display = 'block';
+        makerModeContent.style.display = 'none';
+        tierListInfo.style.display = 'block';
+        if (makerPool) makerPool.style.display = 'none';
+        if (makerTierList) makerTierList.style.display = 'none';
+        updateTierListInfo(currentListType);
+      });
+
+      makerModeBtn.addEventListener('click', () => {
+        makerModeBtn.classList.add('active');
+        viewModeBtn.classList.remove('active');
+        viewModeContent.style.display = 'none';
+        makerModeContent.style.display = 'block';
+        tierListInfo.style.display = 'none';
+        if (makerPool) makerPool.style.display = 'block';
+        if (makerTierList) makerTierList.style.display = 'flex';
+        tierListDisplays.forEach(d => d.style.display = 'none');
+        if (!makerInitialized) { initializeMaker(); makerInitialized = true; }
+      });
+
+      function initializeMaker() {
+        setupPoolCards();
+        setupDropZones();
+        loadFromStorage();
+      }
+
+      function setupPoolCards() {
+        document.querySelectorAll('#maker-pool .pool-character-card').forEach(card => {
+          const characterName = card.dataset.character;
+          card.addEventListener('dragstart', e => {
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('character', characterName);
+            e.dataTransfer.setData('source', 'pool');
+            card.classList.add('dragging');
+          });
+          card.addEventListener('dragend', () => card.classList.remove('dragging'));
+          card.addEventListener('click', () => {
+            if (selectedCharacter === characterName) {
+              card.classList.remove('selected');
+              selectedCharacter = null;
+              document.querySelectorAll('.tier-characters.droppable').forEach(z => z.classList.remove('awaiting-placement'));
+              return;
+            }
+            document.querySelectorAll('.pool-character-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tier-character-card.in-tier').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            selectedCharacter = characterName;
+            document.querySelectorAll('.tier-characters.droppable').forEach(z => z.classList.add('awaiting-placement'));
+          });
+        });
+      }
+
+      function setupDropZones() {
+        document.querySelectorAll('.tier-characters.droppable').forEach(zone => {
+          const tierName = zone.dataset.tier;
+          zone.addEventListener('dragover', e => { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; zone.classList.add('drag-over'); });
+          zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+          zone.addEventListener('drop', e => {
+            e.preventDefault();
+            zone.classList.remove('drag-over');
+            const characterName = e.dataTransfer.getData('character');
+            const source = e.dataTransfer.getData('source');
+            if (characterName) {
+              if (source === 'tier' && tierAssignments[characterName]) moveCardBetweenTiers(characterName, tierName);
+              else moveCardToTier(characterName, tierName);
+            }
+          });
+          zone.addEventListener('click', () => {
+            if (!selectedCharacter) return;
+            moveCardToTier(selectedCharacter, tierName);
+            document.querySelectorAll('.pool-character-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tier-character-card.in-tier').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tier-characters').forEach(z => z.classList.remove('awaiting-placement'));
+            selectedCharacter = null;
+          });
+        });
+      }
+
+      function moveCardToTier(characterName, tierName) {
+        const poolCard = document.querySelector(`#maker-pool [data-character="${characterName}"]`);
+        const targetZone = document.querySelector(`#maker-tier-list [data-tier="${tierName}"]`);
+        if (!poolCard || !targetZone) return;
+        poolCard.style.display = 'none';
+        const charData = characterMap[characterName];
+        const imgSrc = poolCard.querySelector('img')?.src || '';
+        const rarity = charData?.rarity || '';
+        const rarityUrl = rarityImageUrls[rarity] || '';
+        const tierCard = document.createElement('div');
+        tierCard.className = 'tier-character-card draggable in-tier';
+        tierCard.dataset.character = characterName;
+        tierCard.dataset.rarity = charData?.rarity || '';
+        tierCard.draggable = true;
+        tierCard.innerHTML = `
+          <div class="character-image-wrapper">
+            <img src="${imgSrc}" alt="${characterName}" loading="lazy" />
+          </div>
+          <div class="character-name">${characterName}</div>
+          ${rarityUrl ? `<img src="${rarityUrl}" alt="${rarity}" class="tier-rarity" />` : ''}
+          <button class="remove-btn" title="Remove from tier">&times;</button>
+        `;
+        setupTierCardEvents(tierCard, characterName);
+        const hint = targetZone.querySelector('.drop-zone-hint');
+        if (hint) hint.style.display = 'none';
+        targetZone.appendChild(tierCard);
+        tierAssignments[characterName] = tierName;
+        saveToStorage();
+      }
+
+      function setupTierCardEvents(card, characterName) {
+        card.addEventListener('dragstart', e => {
+          e.dataTransfer.effectAllowed = 'move';
+          e.dataTransfer.setData('character', characterName);
+          e.dataTransfer.setData('source', 'tier');
+          card.classList.add('dragging');
+        });
+        card.addEventListener('dragend', () => card.classList.remove('dragging'));
+        card.querySelector('.remove-btn')?.addEventListener('click', e => { e.stopPropagation(); returnCardToPool(characterName); });
+      }
+
+      function moveCardBetweenTiers(characterName, newTierName) {
+        const tierCard = document.querySelector(`#maker-tier-list .in-tier[data-character="${characterName}"]`);
+        const targetZone = document.querySelector(`#maker-tier-list [data-tier="${newTierName}"]`);
+        if (!tierCard || !targetZone) return;
+        const oldZone = tierCard.parentElement;
+        tierCard.remove();
+        targetZone.appendChild(tierCard);
+        tierAssignments[characterName] = newTierName;
+        if (oldZone) {
+          const hint = oldZone.querySelector('.drop-zone-hint');
+          const hasCards = oldZone.querySelectorAll('.in-tier').length > 0;
+          if (hint) hint.style.display = hasCards ? 'none' : 'block';
+        }
+        const hint = targetZone.querySelector('.drop-zone-hint');
+        if (hint) hint.style.display = 'none';
+        saveToStorage();
+      }
+
+      function returnCardToPool(characterName) {
+        const poolCard = document.querySelector(`#maker-pool [data-character="${characterName}"]`);
+        const tierCard = document.querySelector(`#maker-tier-list .in-tier[data-character="${characterName}"]`);
+        if (!poolCard || !tierCard) return;
+        const oldZone = tierCard.parentElement;
+        poolCard.style.display = '';
+        tierCard.remove();
+        delete tierAssignments[characterName];
+        if (oldZone) {
+          const hint = oldZone.querySelector('.drop-zone-hint');
+          const hasCards = oldZone.querySelectorAll('.in-tier').length > 0;
+          if (hint) hint.style.display = hasCards ? 'none' : 'block';
+        }
+        saveToStorage();
+      }
+
+      resetBtn?.addEventListener('click', () => {
+        Object.keys(tierAssignments).forEach(returnCardToPool);
+        localStorage.removeItem(STORAGE_KEY);
+      });
+
+      function saveToStorage() { localStorage.setItem(STORAGE_KEY, JSON.stringify(tierAssignments)); }
+      function loadFromStorage() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (!stored) return;
+        try {
+          const data = JSON.parse(stored);
+          Object.entries(data).forEach(([name, tier]) => { if (characterMap[name]) moveCardToTier(name, tier); });
+        } catch (e) { console.error('Failed to load tier list:', e); }
+      }
+
+      updateTierListInfo(currentListType);
+    });
+  </script>
+</CharacterDatabaseLayout>

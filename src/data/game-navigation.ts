@@ -190,6 +190,12 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
           { name: 'Gallery', href: '/guides/rebellion-gilgamesh/banners/' },
         ],
       },
+      {
+        title: 'Guides',
+        links: [
+          { name: 'Tier List', href: '/guides/rebellion-gilgamesh/tier-list/' },
+        ],
+      },
     ],
   },
   'stella-sora': {
