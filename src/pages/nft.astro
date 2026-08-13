@@ -1,0 +1,308 @@
+---
+// GachaWiki OGs — NFT collection landing page (1,000 unique collectibles on Robinhood Chain)
+import HomeLayout from '../layouts/HomeLayout.astro';
+import { SITE_TITLE } from '../consts';
+
+const gallery = ['nft-001','nft-042','nft-077','nft-100','nft-150','nft-200','nft-256','nft-500','nft-777'];
+
+const stats = [
+  { k: '1,000', v: 'Total supply' },
+  { k: '$2.00', v: 'Mint price' },
+  { k: 'Robinhood', v: 'Chain (L2)' },
+  { k: 'ERC-721', v: 'Standard' },
+];
+---
+
+<HomeLayout
+  title={`${SITE_TITLE} OGs — NFT Collection`}
+  description="GachaWiki OGs — a 1,000-piece generative NFT collection on Robinhood Chain. Each OG is a unique hand-drawn mascot with a motivational verse (EN + 日本語) and kaomoji."
+  keywords={['GachaWiki', 'NFT', 'Robinhood Chain', 'collectibles', 'gacha']}
+>
+  <div class="nft-page">
+    <!-- Ambient background video (Seven Mortal Sins NCED) — full-bleed top, fades out by mid-page -->
+    <div class="bg-video-wrap" aria-hidden="true">
+      <video class="bg-video" autoplay muted loop playsinline preload="auto">
+        <source src="/videos/sins-nced.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">◆ NFT Collection</span>
+        <h1 class="hero-title">GachaWiki <span class="accent">OGs</span></h1>
+        <p class="hero-sub">
+          1,000 unique collectibles on <strong>Robinhood Chain</strong>. Each OG is the hand-drawn
+          GachaWiki mascot carrying its own motivational verse in English &amp; 日本語 — plus a kaomoji.
+        </p>
+        <div class="cta-row">
+          <!-- OpenSea page isn't live yet -->
+          <a class="btn btn-primary btn-disabled" aria-disabled="true">OpenSea · Coming Soon</a>
+          <a class="btn btn-ghost" href="#gallery">See the collection</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img src="/images/nft/hero.png" alt="GachaWiki OGs sample NFT" width="512" height="512" loading="eager" />
+      </div>
+    </section>
+
+    <!-- COUNTDOWN to mint launch -->
+    <section class="countdown" data-target="2026-08-14T13:30:00Z">
+      <p class="cd-label">◆ Mint opens in</p>
+      <div class="cd-grid">
+        <div class="cd-box"><span class="cd-num" data-cd="d">00</span><span class="cd-unit">Days</span></div>
+        <div class="cd-box"><span class="cd-num" data-cd="h">00</span><span class="cd-unit">Hours</span></div>
+        <div class="cd-box"><span class="cd-num" data-cd="m">00</span><span class="cd-unit">Minutes</span></div>
+        <div class="cd-box"><span class="cd-num" data-cd="s">00</span><span class="cd-unit">Seconds</span></div>
+      </div>
+      <p class="cd-when">Friday, Aug 14 2026 · 9:30 AM ET</p>
+    </section>
+
+    <script>
+      // Live countdown to the mint launch (reads target from data-target).
+      const cd = document.querySelector('.countdown');
+      if (cd) {
+        const end = new Date(cd.dataset.target).getTime();
+        const label = cd.querySelector('.cd-label');
+        const pad = (n) => String(n).padStart(2, '0');
+        const set = (k, v) => {
+          const el = cd.querySelector('[data-cd="' + k + '"]');
+          if (el) el.textContent = v;
+        };
+        const tick = () => {
+          const diff = end - Date.now();
+          if (diff <= 0) {
+            ['d', 'h', 'm', 's'].forEach((k) => set(k, '00'));
+            label.textContent = '🎉 Mint is live!';
+            return;
+          }
+          set('d', pad(Math.floor(diff / 86400000)));
+          set('h', pad(Math.floor(diff / 3600000) % 24));
+          set('m', pad(Math.floor(diff / 60000) % 60));
+          set('s', pad(Math.floor(diff / 1000) % 60));
+        };
+        tick();
+        setInterval(tick, 1000);
+      }
+    </script>
+
+    <!-- STATS -->
+    <section class="stats">
+      {stats.map((s) => (
+        <div class="stat">
+          <span class="stat-k">{s.k}</span>
+          <span class="stat-v">{s.v}</span>
+        </div>
+      ))}
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="gallery">
+      <h2 class="sec-title">The Collection</h2>
+      <p class="sec-sub">A peek at a few of the 1,000 OGs.</p>
+      <div class="grid">
+        {gallery.map((id) => (
+          <div class="tile">
+            <img src={`/images/nft/${id}.png`} alt={`GachaWiki OG #${id.replace('nft-','')}`} width="512" height="512" loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- DISCLAIMER -->
+    <section class="disclaimer">
+      <p>
+        GachaWiki OGs is a fan-made, non-commercial community collectible and is not affiliated with
+        or endorsed by any game developer or publisher. Minting involves gas fees and is done at your
+        own risk. Always verify the contract address before minting.
+      </p>
+    </section>
+  </div>
+</HomeLayout>
+
+<style>
+  /* NFT collection landing page — styled to match the GachaWiki dark theme */
+  .nft-page {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 2.5rem) 4rem;
+    color: var(--text-inverse);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    position: relative;
+  }
+
+  /* keep real content above the ambient video */
+  .nft-page > section { position: relative; z-index: 1; }
+
+  /* Ambient background video — visible at top, fades to nothing by mid-page */
+  .bg-video-wrap {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 78vh;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.45;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 22%, transparent 82%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 22%, transparent 82%);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bg-video-wrap { display: none; }
+  }
+
+  /* HERO */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: center;
+    padding: clamp(1.5rem, 4vw, 3rem) 0;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-glow);
+    margin-bottom: 0.9rem;
+    font-weight: 600;
+  }
+  .hero-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.6rem, 7vw, 4.6rem);
+    line-height: 1;
+    margin: 0 0 1rem;
+    letter-spacing: -0.02em;
+  }
+  .accent { color: var(--amber-glow); }
+  .hero-sub {
+    font-size: clamp(1rem, 1.6vw, 1.18rem);
+    line-height: 1.65;
+    color: var(--neutral-300);
+    max-width: 46ch;
+    margin: 0 0 1.8rem;
+  }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.6rem;
+    border-radius: 0.7rem;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    min-height: 48px;
+  }
+  .btn-primary { background: var(--amber-glow); color: #1c1c1c; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(255, 183, 77, 0.3); }
+  .btn-ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.25); }
+  .btn-ghost:hover { border-color: var(--teal-crystal); color: var(--teal-crystal); }
+  .btn-disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
+
+  .hero-art img {
+    width: 100%;
+    max-width: 460px;
+    aspect-ratio: 1 / 1;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(255, 183, 77, 0.25);
+  }
+  .hero-art { display: flex; justify-content: center; }
+
+  /* COUNTDOWN */
+  .countdown { text-align: center; padding: 1.5rem 0 0.5rem; }
+  .cd-label { color: var(--amber-glow); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.85rem; margin: 0 0 1rem; }
+  .cd-grid { display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; }
+  .cd-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255, 183, 77, 0.35);
+    border-radius: 0.8rem;
+    padding: 0.9rem 1.1rem;
+    min-width: 84px;
+  }
+  .cd-num { display: block; font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 700; color: var(--amber-glow); line-height: 1; }
+  .cd-unit { display: block; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--neutral-400); margin-top: 0.4rem; }
+  .cd-when { color: var(--neutral-300); margin: 1rem 0 0; font-size: 0.95rem; }
+
+  /* STATS */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 2.5rem 0;
+  }
+  .stat {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 0.9rem;
+    padding: 1.3rem 1rem;
+    text-align: center;
+  }
+  .stat-k { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--amber-glow); }
+  .stat-v { display: block; font-size: 0.85rem; color: var(--neutral-400); margin-top: 0.25rem; }
+
+  /* SECTION TITLES */
+  .sec-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    margin: 0 0 0.4rem;
+    letter-spacing: -0.01em;
+  }
+  .sec-sub { color: var(--neutral-400); margin: 0 0 1.8rem; }
+  section { padding: 2.5rem 0; }
+
+  /* GALLERY */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .tile {
+    border-radius: 0.9rem;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+  }
+  .tile img { width: 100%; aspect-ratio: 1 / 1; display: block; }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    margin-top: 2rem;
+    padding: 1.4rem 1.6rem;
+    border-radius: 0.9rem;
+    background: rgba(255, 183, 77, 0.08);
+    border: 1px solid rgba(255, 183, 77, 0.4);
+  }
+  .disclaimer p { margin: 0; color: var(--neutral-300); font-size: 0.9rem; line-height: 1.6; }
+
+  /* RESPONSIVE */
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; text-align: center; }
+    .hero-copy { order: 2; }
+    .hero-art { order: 1; }
+    .eyebrow { margin-bottom: 0.6rem; }
+    .cta-row { justify-content: center; }
+    .hero-sub { margin-left: auto; margin-right: auto; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+
+<style is:global>
+  /* Let the ambient background video reach the full page width (left & right edges)
+     without introducing a horizontal scrollbar on the NFT page. */
+  main {
+    overflow-x: hidden;
+  }
+</style>
