@@ -123,9 +123,8 @@ const stats = [
               }),
             }).then((x) => x.json());
             if (r.result) {
-              // PublicDrop struct: uint80 mintPrice | uint32 maxPerWallet | uint48 startTime | …
-              const v = BigInt(r.result);
-              const start = Number((v >> 112n) & 0xffffffffffffn);
+              // PublicDrop returns ABI words: [mintPrice, start, end, maxPerWallet, maxMintable, flag]
+              const start = Number(BigInt('0x' + r.result.slice(66, 130)));
               if (start > 0) return schedule(start * 1000);
             }
           } catch { /* RPC unreachable — use the fallback */ }
