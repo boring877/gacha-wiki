@@ -83,6 +83,16 @@ const stats = [
         };
         let end = null;
 
+        const schedule = (ts) => {
+          end = ts;
+          label.textContent = '◆ Mint opens in';
+          const d = new Date(end);
+          const hh = pad(d.getUTCHours()), mm = pad(d.getUTCMinutes());
+          when.textContent = `${DAYS[d.getUTCDay()]}, ${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()} ${d.getUTCFullYear()} · ${hh}:${mm} UTC`;
+          tick();
+          setInterval(tick, 1000);
+        };
+
         const tick = () => {
           if (end === null) return;
           const diff = end - Date.now();
@@ -98,6 +108,9 @@ const stats = [
         };
 
         (async () => {
+          // Fallback start time from the OpenSea Studio drop schedule; replaced by
+          // the on-chain value as soon as OpenSea activates the public stage.
+          const FALLBACK = Date.parse('2026-08-14T14:45:11Z');
           try {
             const r = await fetch(RPC_URL, {
               method: 'POST',
@@ -113,17 +126,11 @@ const stats = [
               // PublicDrop struct: uint80 mintPrice | uint32 maxPerWallet | uint48 startTime | …
               const v = BigInt(r.result);
               const start = Number((v >> 112n) & 0xffffffffffffn);
-              if (start > 0) {
-                end = start * 1000;
-                label.textContent = '◆ Mint opens in';
-                const d = new Date(end);
-                const hh = pad(d.getUTCHours()), mm = pad(d.getUTCMinutes());
-                when.textContent = `${DAYS[d.getUTCDay()]}, ${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()} ${d.getUTCFullYear()} · ${hh}:${mm} UTC`;
-                tick();
-                setInterval(tick, 1000);
-              }
+              if (start > 0) return schedule(start * 1000);
             }
-          } catch { /* RPC unreachable — keep the "opening soon" state */ }
+          } catch { /* RPC unreachable — use the fallback */ }
+          if (FALLBACK > Date.now()) schedule(FALLBACK);
+          else { label.textContent = '🎉 Mint is live!'; }
         })();
       }
     </script>
