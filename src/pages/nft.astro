@@ -98,7 +98,7 @@ const stats = [
           const diff = end - Date.now();
           if (diff <= 0) {
             ['d', 'h', 'm', 's'].forEach((k) => set(k, '00'));
-            label.textContent = '🎉 Mint is live!';
+            label.textContent = '◆ Mint is live!';
             return;
           }
           set('d', pad(Math.floor(diff / 86400000)));
@@ -130,7 +130,7 @@ const stats = [
             }
           } catch { /* RPC unreachable — use the fallback */ }
           if (FALLBACK > Date.now()) schedule(FALLBACK);
-          else { label.textContent = '🎉 Mint is live!'; }
+          else { label.textContent = '◆ Mint is live!'; }
         })();
       }
     </script>
