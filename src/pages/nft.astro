@@ -41,8 +41,8 @@ const stats = [
         </div>
         <p class="contract-line">
           Contract:
-          <a href="https://robinhoodchain.blockscout.com/address/0x0f69E612DBd0044D8589a464ab47DdF6c98Fbe2a" target="_blank" rel="noopener noreferrer">0x0f69…Fbe2a</a>
-          (verified on Blockscout)
+          <a href="https://robinhoodchain.blockscout.com/address/0x34760673AFa1702661b473f53C631D4deE97E89c" target="_blank" rel="noopener noreferrer">0x3476…E89c</a>
+          (SeaDrop · verified on Blockscout)
         </p>
       </div>
       <div class="hero-art">
@@ -50,30 +50,41 @@ const stats = [
       </div>
     </section>
 
-    <!-- COUNTDOWN to mint launch -->
-    <section class="countdown" data-target="2026-08-14T13:30:00Z">
-      <p class="cd-label">◆ Mint opens in</p>
+    <!-- COUNTDOWN to mint launch (reads the drop's public stage from the SeaDrop contract) -->
+    <section class="countdown" id="countdown">
+      <p class="cd-label" id="cdLabel">◆ Mint opening soon</p>
       <div class="cd-grid">
         <div class="cd-box"><span class="cd-num" data-cd="d">00</span><span class="cd-unit">Days</span></div>
         <div class="cd-box"><span class="cd-num" data-cd="h">00</span><span class="cd-unit">Hours</span></div>
         <div class="cd-box"><span class="cd-num" data-cd="m">00</span><span class="cd-unit">Minutes</span></div>
         <div class="cd-box"><span class="cd-num" data-cd="s">00</span><span class="cd-unit">Seconds</span></div>
       </div>
-      <p class="cd-when">Friday, Aug 14 2026 · 9:30 AM ET</p>
+      <p class="cd-when" id="cdWhen">Launching exclusively on OpenSea</p>
     </section>
 
     <script>
-      // Live countdown to the mint launch (reads target from data-target).
+      // Countdown — start time is read live from the SeaDrop contract, so it is
+      // always correct even if the drop schedule changes in OpenSea Studio.
+      const TOKEN = '0x34760673AFa1702661b473f53C631D4deE97E89c';
+      const SEADROP = '0x00005EA00aC477B1030CE78506496e8C2DE24Bf5';
+      const RPC_URL = 'https://rpc.mainnet.chain.robinhood.com';
+      const GET_PUBLIC_DROP = '0xbc6a629c'; // getPublicDrop(address)
+      const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+      const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
       const cd = document.querySelector('.countdown');
       if (cd) {
-        const end = new Date(cd.dataset.target).getTime();
-        const label = cd.querySelector('.cd-label');
+        const label = document.getElementById('cdLabel');
+        const when = document.getElementById('cdWhen');
         const pad = (n) => String(n).padStart(2, '0');
         const set = (k, v) => {
           const el = cd.querySelector('[data-cd="' + k + '"]');
           if (el) el.textContent = v;
         };
+        let end = null;
+
         const tick = () => {
+          if (end === null) return;
           const diff = end - Date.now();
           if (diff <= 0) {
             ['d', 'h', 'm', 's'].forEach((k) => set(k, '00'));
@@ -85,9 +96,72 @@ const stats = [
           set('m', pad(Math.floor(diff / 60000) % 60));
           set('s', pad(Math.floor(diff / 1000) % 60));
         };
-        tick();
-        setInterval(tick, 1000);
+
+        (async () => {
+          try {
+            const r = await fetch(RPC_URL, {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify({
+                jsonrpc: '2.0',
+                id: 1,
+                method: 'eth_call',
+                params: [{ to: SEADROP, data: GET_PUBLIC_DROP + TOKEN.toLowerCase().slice(2).padStart(64, '0') }, 'latest'],
+              }),
+            }).then((x) => x.json());
+            if (r.result) {
+              // PublicDrop struct: uint80 mintPrice | uint32 maxPerWallet | uint48 startTime | …
+              const v = BigInt(r.result);
+              const start = Number((v >> 112n) & 0xffffffffffffn);
+              if (start > 0) {
+                end = start * 1000;
+                label.textContent = '◆ Mint opens in';
+                const d = new Date(end);
+                const hh = pad(d.getUTCHours()), mm = pad(d.getUTCMinutes());
+                when.textContent = `${DAYS[d.getUTCDay()]}, ${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()} ${d.getUTCFullYear()} · ${hh}:${mm} UTC`;
+                tick();
+                setInterval(tick, 1000);
+              }
+            }
+          } catch { /* RPC unreachable — keep the "opening soon" state */ }
+        })();
       }
+    </script>
+
+    <!-- MINT (hosted on OpenSea — native SeaDrop mint page) -->
+    <section class="mint" id="mint">
+      <div class="mint-card">
+        <p class="mint-label">◆ Mint an OG</p>
+        <div class="mint-row">
+          <a
+            class="btn btn-primary btn-mint"
+            href="https://opensea.io/collection/gachawiki-ogs"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Mint on OpenSea ↗</a>
+        </div>
+        <p class="mint-status">~$2 each · 5 per wallet · mystery box until reveal ★</p>
+        <p class="minted-count" id="mintedCount">…</p>
+      </div>
+    </section>
+
+    <script>
+      // Live minted counter, read straight from the SeaDrop contract.
+      const TOKEN_ADDR = '0x34760673AFa1702661b473f53C631D4deE97E89c';
+      const SUPPLY_SIG = '0x18160ddd'; // totalSupply()
+      const counter = document.getElementById('mintedCount');
+      async function refreshSupply() {
+        try {
+          const r = await fetch('https://rpc.mainnet.chain.robinhood.com', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'eth_call', params: [{ to: TOKEN_ADDR, data: SUPPLY_SIG }, 'latest'] }),
+          }).then((x) => x.json());
+          if (r.result) counter.textContent = `${Number(BigInt(r.result)).toLocaleString()} / 1,000 minted`;
+        } catch { counter.textContent = ''; }
+      }
+      refreshSupply();
+      setInterval(refreshSupply, 15000);
     </script>
 
     <!-- STATS -->
@@ -207,11 +281,11 @@ const stats = [
     font-weight: 700;
     font-size: 1rem;
     text-decoration: none;
-    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    transition: transform 0.15s ease, background 0.15s ease;
     min-height: 48px;
   }
   .btn-primary { background: var(--amber-glow); color: #1c1c1c; }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(255, 183, 77, 0.3); }
+  .btn-primary:hover { transform: translateY(-2px); }
   .btn-ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.25); }
   .btn-ghost:hover { border-color: var(--teal-crystal); color: var(--teal-crystal); }
   .btn-disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
@@ -239,6 +313,22 @@ const stats = [
   .cd-num { display: block; font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 700; color: var(--amber-glow); line-height: 1; }
   .cd-unit { display: block; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--neutral-400); margin-top: 0.4rem; }
   .cd-when { color: var(--neutral-300); margin: 1rem 0 0; font-size: 0.95rem; }
+
+  /* MINT WIDGET */
+  .mint { padding: 1rem 0 0.5rem; }
+  .mint-card {
+    background: rgba(255, 183, 77, 0.08);
+    border: 1px solid rgba(255, 183, 77, 0.4);
+    border-radius: 1rem;
+    padding: 1.4rem 1.6rem;
+    text-align: center;
+  }
+  .mint-label { color: var(--amber-glow); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.85rem; margin: 0 0 1rem; }
+  .mint-row { display: flex; gap: 0.8rem; justify-content: center; align-items: stretch; flex-wrap: wrap; }
+  .btn-mint { min-width: 240px; }
+  .mint-status { margin: 0.9rem 0 0; color: var(--neutral-300); font-size: 0.92rem; }
+  .mint-status a { color: var(--teal-crystal); }
+  .minted-count { margin: 0.35rem 0 0; color: var(--amber-glow); font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
 
   /* STATS */
   .stats {
