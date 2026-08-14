@@ -36,10 +36,14 @@ const stats = [
           GachaWiki mascot carrying its own motivational verse in English &amp; 日本語 — plus a kaomoji.
         </p>
         <div class="cta-row">
-          <!-- OpenSea page isn't live yet -->
-          <a class="btn btn-primary btn-disabled" aria-disabled="true">OpenSea · Coming Soon</a>
+          <a class="btn btn-primary" href="https://opensea.io/collection/gachawiki-ogs" target="_blank" rel="noopener noreferrer">View on OpenSea</a>
           <a class="btn btn-ghost" href="#gallery">See the collection</a>
         </div>
+        <p class="contract-line">
+          Contract:
+          <a href="https://robinhoodchain.blockscout.com/address/0x0f69E612DBd0044D8589a464ab47DdF6c98Fbe2a" target="_blank" rel="noopener noreferrer">0x0f69…Fbe2a</a>
+          (verified on Blockscout)
+        </p>
       </div>
       <div class="hero-art">
         <img src="/images/nft/hero.png" alt="GachaWiki OGs sample NFT" width="512" height="512" loading="eager" />
@@ -191,6 +195,9 @@ const stats = [
     margin: 0 0 1.8rem;
   }
   .cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+  .contract-line { margin: 1.1rem 0 0; font-size: 0.82rem; color: var(--neutral-400); }
+  .contract-line a { color: var(--teal-crystal); text-decoration: none; }
+  .contract-line a:hover { text-decoration: underline; }
   .btn {
     display: inline-flex;
     align-items: center;
