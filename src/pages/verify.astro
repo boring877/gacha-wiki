@@ -1,0 +1,279 @@
+---
+// OG holder verification for Discord — the second half of the bot's /verify
+// flow (gacha-wiki-bot /interactions + /verifylink). A holder gets a one-time
+// code from the Discord bot, connects the wallet holding their OG here, signs
+// the code, and the bot grants the OG Holder role that unlocks gated channels.
+import HomeLayout from '../layouts/HomeLayout.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<HomeLayout
+  title={`${SITE_TITLE} OG — Verify for Discord`}
+  description="Verify your GachaWiki OG NFT to unlock the OG Holder channels in the GachaWiki Discord."
+  keywords={['GachaWiki', 'NFT', 'verify', 'Discord', 'Robinhood Chain']}
+>
+  <div class="verify-page">
+    <section class="card">
+      <p class="label">◆ OG Holder Verification</p>
+      <h1>Unlock the OG channels on Discord</h1>
+      <p class="sub">
+        Sign a one-time code with the wallet that holds your GachaWiki OG and the bot
+        will grant you the <strong>OG Holder</strong> role — instant access to the
+        holder channels. If you transfer your OGs away, the role is removed automatically.
+      </p>
+
+      <ol class="steps">
+        <li>Run <code>/verify</code> in the GachaWiki Discord to get your one-time code</li>
+        <li>Connect that wallet below and sign the code</li>
+      </ol>
+
+      <button type="button" class="btn" id="connectBtn">Connect Wallet</button>
+      <p class="addr" id="addr" hidden></p>
+      <p class="bal" id="bal" hidden></p>
+
+      <div class="codeline">
+        <input id="code" maxlength="6" placeholder="6-char code" autocomplete="off" spellcheck="false" />
+      </div>
+      <button type="button" class="btn primary" id="signBtn" disabled>Sign &amp; Verify</button>
+
+      <p class="msg" id="msg" hidden></p>
+      <p class="fine">
+        The signature only proves you control this wallet — it grants no permissions
+        and moves nothing on-chain.
+      </p>
+    </section>
+  </div>
+</HomeLayout>
+
+<script>
+  // Verify widget — same Reown AppKit wallet stack as the /nft mint page
+  // (src/scripts/wallet.ts): connect, read the OG balance, then personal_sign
+  // "GachaWiki OG verification: <code>" and POST it to the bot's /verifylink.
+  const OG_CONTRACT = '0x9C0f41ce4F8e72F866CC79Acd80386472c53B40B';
+  const RPC_URL = 'https://rpc.mainnet.chain.robinhood.com';
+  const BOT_ENDPOINT = 'https://gacha-wiki-bot.elfhuyace.workers.dev/verifylink';
+  const MESSAGE_PREFIX = 'GachaWiki OG verification: ';
+
+  const $ = (id) => document.getElementById(id);
+  const btn = $('connectBtn');
+  const signBtn = $('signBtn');
+  const codeEl = $('code');
+  const msgEl = $('msg');
+
+  // Prefill the code from ?code= (the bot's Discord reply links here).
+  const urlCode = new URLSearchParams(location.search).get('code');
+  if (urlCode) codeEl.value = urlCode.toUpperCase().slice(0, 6);
+
+  let account = null;
+  let walletMod = null;
+  let kit = null;
+
+  const say = (text, isError = false) => {
+    msgEl.hidden = false;
+    msgEl.textContent = text;
+    msgEl.classList.toggle('err', isError);
+  };
+
+  async function loadWallet() {
+    if (!walletMod) {
+      walletMod = await import('../scripts/wallet');
+      kit = await walletMod.getAppKit();
+      walletMod.onWalletChange((s) => {
+        const next = s.isConnected ? s.address : null;
+        if (next !== account) {
+          account = next;
+          account ? onAccount() : onDisconnect();
+        }
+      });
+    }
+    return walletMod;
+  }
+  const getProvider = () => kit && kit.getProvider ? kit.getProvider('eip155') : null;
+
+  // Read-only: current OG balance for the connected address.
+  async function refreshBalance() {
+    try {
+      const padded = account.toLowerCase().replace('0x', '').padStart(64, '0');
+      const r = await fetch(RPC_URL, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'eth_call', params: [{ to: OG_CONTRACT, data: '0x70a08231' + padded }, 'latest'] }),
+      }).then((x) => x.json());
+      const n = BigInt(r.result);
+      const bal = $('bal');
+      bal.hidden = false;
+      bal.textContent = `OG balance: ${n}`;
+      bal.classList.toggle('zero', n === 0n);
+    } catch { /* cosmetic — the bot re-checks on-chain anyway */ }
+  }
+
+  function onAccount() {
+    btn.textContent = 'Switch Wallet';
+    const addr = $('addr');
+    addr.hidden = false;
+    addr.textContent = `${account.slice(0, 8)}…${account.slice(-6)}`;
+    signBtn.disabled = false;
+    void refreshBalance();
+  }
+  function onDisconnect() {
+    btn.textContent = 'Connect Wallet';
+    $('addr').hidden = true;
+    $('bal').hidden = true;
+    signBtn.disabled = true;
+  }
+
+  btn.addEventListener('click', async () => {
+    const m = await loadWallet();
+    if (!m.getConnectedAddress()) await m.openConnectModal();
+    await m.ensureRobinhoodChain().catch(() => {});
+    const addr = m.getConnectedAddress();
+    if (addr) { account = addr; onAccount(); }
+  });
+
+  codeEl.addEventListener('input', () => {
+    codeEl.value = codeEl.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6);
+    updateSignBtn();
+  });
+  function updateSignBtn() {
+    signBtn.disabled = !(account && /^[A-Z2-9]{6}$/.test(codeEl.value));
+  }
+  updateSignBtn();
+
+  signBtn.addEventListener('click', async () => {
+    if (!account || signBtn.dataset.busy) return;
+    const code = codeEl.value.trim();
+    if (!/^[A-Z2-9]{6}$/.test(code)) return say('Enter the 6-char code from /verify.', true);
+    const m = await loadWallet();
+    const provider = getProvider();
+    if (!provider) return say('Wallet is not connected.', true);
+
+    signBtn.dataset.busy = '1';
+    signBtn.textContent = 'Confirm in wallet…';
+    say('');
+    try {
+      await m.ensureRobinhoodChain().catch(() => {});
+      const message = MESSAGE_PREFIX + code;
+      const hexMessage = '0x' + Array.from(new TextEncoder().encode(message))
+        .map((b) => b.toString(16).padStart(2, '0')).join('');
+      const signature = await provider.request({
+        method: 'personal_sign',
+        params: [hexMessage, account],
+      });
+
+      signBtn.textContent = 'Verifying…';
+      const res = await fetch(BOT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ code, address: account, signature }),
+      });
+      const json = await res.json().catch(() => ({}));
+
+      if (res.ok && json.ok) {
+        say('✅ Verified! Check Discord — you now have the OG Holder role.');
+        await refreshBalance();
+      } else if (json.error === 'invalid_code') {
+        say('That code is invalid or expired — run /verify again in Discord.', true);
+      } else if (json.error === 'signature_mismatch') {
+        say('Signature check failed — sign with the wallet you connected.', true);
+      } else if (json.error === 'no_og') {
+        say('This wallet holds no GachaWiki OGs.', true);
+      } else {
+        say('Verification failed — try again in a minute.', true);
+      }
+    } catch (e) {
+      if (e && (e.code === 4001 || /rejected/i.test(e.message || ''))) {
+        say('Signature rejected — nothing was sent.', true);
+      } else {
+        say('Something went wrong — try again.', true);
+      }
+    } finally {
+      delete signBtn.dataset.busy;
+      signBtn.textContent = 'Sign & Verify';
+      updateSignBtn();
+    }
+  });
+</script>
+
+<style>
+  .verify-page {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: clamp(2rem, 6vw, 4rem) 1.25rem 5rem;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+  .card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 183, 77, 0.35);
+    border-radius: 1.1rem;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  .label {
+    color: var(--amber-glow, #ffb74b);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin: 0 0 0.8rem;
+  }
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    margin: 0 0 0.8rem;
+  }
+  .sub { line-height: 1.65; color: rgba(255, 255, 255, 0.75); margin: 0 0 1.2rem; }
+  .steps { color: rgba(255, 255, 255, 0.75); line-height: 1.8; margin: 0 0 1.5rem; padding-left: 1.2rem; }
+  .steps code {
+    background: rgba(255, 183, 77, 0.15);
+    border-radius: 0.35rem;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.9em;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.7rem;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+  .btn:hover { border-color: rgba(255, 183, 77, 0.6); }
+  .btn.primary {
+    background: var(--amber-glow, #ffb74b);
+    color: #1c1c1c;
+    border: none;
+    min-width: 220px;
+  }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .addr, .bal {
+    font-variant-numeric: tabular-nums;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0.6rem 0 0;
+    font-size: 0.95rem;
+  }
+  .bal.zero { color: #fca5a5; font-weight: 700; }
+  .codeline { margin: 1.4rem 0 0.9rem; }
+  #code {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.9rem 1rem;
+    border-radius: 0.7rem;
+    border: 1px solid rgba(255, 183, 77, 0.4);
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    font-family: 'Space Grotesk', monospace;
+    font-size: 1.5rem;
+    letter-spacing: 0.4em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  #code:focus { outline: 2px solid rgba(255, 183, 77, 0.6); }
+  .msg { margin: 1rem 0 0; line-height: 1.6; }
+  .msg.err { color: #fca5a5; }
+  .fine { margin: 1.6rem 0 0; font-size: 0.8rem; color: rgba(255, 255, 255, 0.5); }
+</style>
