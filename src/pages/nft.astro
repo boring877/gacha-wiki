@@ -9,7 +9,7 @@ const gallery = ['nft-001','nft-042','nft-077','nft-100','nft-150','nft-200','nf
 
 const stats = [
   { k: '1,000', v: 'Total supply' },
-  { k: '0.001068 ETH', v: 'Mint price (≈$2)' },
+  { k: '≈$2', v: 'Mint price · ETH or $GW' },
   { k: 'Robinhood', v: 'Chain (L2)' },
   { k: 'ERC-721', v: 'Standard' },
 ];
@@ -43,7 +43,7 @@ const stats = [
         </div>
         <p class="contract-line">
           Contract:
-          <a href="https://robinhoodchain.blockscout.com/address/0x33B4fC15A15D4D891B857a041c058da802B19136" target="_blank" rel="noopener noreferrer">0x33B4…9136</a>
+          <a href="https://robinhoodchain.blockscout.com/address/0x9C0f41ce4F8e72F866CC79Acd80386472c53B40B" target="_blank" rel="noopener noreferrer">0x9C0f…B40B</a>
           (ERC-721 · verified on Blockscout · art on Cloudflare)
         </p>
       </div>
@@ -52,10 +52,14 @@ const stats = [
       </div>
     </section>
 
-    <!-- MINT (directly on this page — no marketplace middleman) -->
+    <!-- MINT (directly on this page — pay with ETH or $GW) -->
     <section class="mint" id="mint">
       <div class="mint-card">
         <p class="mint-label">◆ Mint an OG</p>
+        <div class="pay-toggle" id="payToggle">
+          <button type="button" class="pay-opt active" data-pay="eth">Pay with ETH</button>
+          <button type="button" class="pay-opt" data-pay="gw">Pay with $GW 🔥</button>
+        </div>
         <div class="mint-row">
           <div class="qty" id="qtyBox">
             <button type="button" id="qtyMinus" aria-label="Mint one fewer">−</button>
@@ -64,17 +68,19 @@ const stats = [
           </div>
           <button type="button" class="btn btn-primary btn-mint" id="mintBtn">Connect Wallet</button>
         </div>
-        <p class="mint-price" id="mintPriceLine">0.001068 ETH each · ≈$2</p>
-        <p class="mint-status">5 per wallet · your art shows <strong>instantly</strong> — no reveal wait ★</p>
+        <p class="mint-price" id="mintPriceLine">…</p>
+        <p class="mint-status">5 per wallet · $GW spent on minting is burned forever</p>
         <p class="minted-count" id="mintedCount">…</p>
         <p class="mint-msg" id="mintMsg" hidden></p>
       </div>
     </section>
 
     <script>
-      // Embedded mint widget — talks to the GWOG contract on Robinhood Chain via the
-      // injected EIP-1193 provider (Robinhood Wallet / MetaMask). No libraries.
-      const CONTRACT = '0x33B4fC15A15D4D891B857a041c058da802B19136';
+      // Embedded mint widget — mints GWOG on Robinhood Chain via the injected
+      // EIP-1193 provider (Robinhood Wallet / MetaMask). Pays in ETH or $GW;
+      // $GW payments are burned (sent to 0x…dEaD by the contract). No libraries.
+      const CONTRACT = '0x9C0f41ce4F8e72F866CC79Acd80386472c53B40B';
+      const GW_TOKEN = '0x50bE7832849EFEdB15611799074FcC409522f27A';
       const RPC_URL = 'https://rpc.mainnet.chain.robinhood.com';
       const EXPLORER = 'https://robinhoodchain.blockscout.com';
       const CHAIN_ID = '0x1237'; // 4663
@@ -88,11 +94,15 @@ const stats = [
       // function selectors (keccak of the signatures)
       const SEL = {
         mint: '0xa0712d68', // mint(uint256)
+        gwMint: '0x4329f368', // gwMint(uint256)
         mintPrice: '0x6817c76c',
+        gwMintPrice: '0xacc14738',
         maxPerWallet: '0x453c2310',
         mintedPerWallet: '0x3a602b4d', // mintedPerWallet(address)
         totalSupply: '0x18160ddd',
         paused: '0x5c975abb',
+        approve: '0x095ea7b3', // approve(address,uint256) — called on GW_TOKEN
+        allowance: '0xdd62ed3e', // allowance(address,address) — called on GW_TOKEN
       };
       const MAX_SUPPLY = 1000;
 
@@ -103,7 +113,9 @@ const stats = [
       const qtyVal = $('qtyVal');
 
       let account = null;
-      let priceWei = 1068000000000000n; // on-chain value replaces this at load
+      let payMode = 'eth'; // 'eth' | 'gw'
+      let priceWei = 1065000000000000n; // on-chain value replaces this at load
+      let gwPriceWei = 360000n * 10n ** 18n; // on-chain value replaces this at load
       let maxPerWallet = 5;
       let minted = 0; // this wallet's minted count
       let qty = 1;
@@ -121,6 +133,10 @@ const stats = [
         a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.textContent = label;
         msg.appendChild(a);
       };
+      const fmtEth = (wei) => Number(wei) / 1e18;
+      const fmtGw = (wei) => (Number(wei) / 1e18).toLocaleString();
+      const word = (n) => BigInt(n).toString(16).padStart(64, '0');
+      const addrArg = (a) => a.toLowerCase().replace('0x', '').padStart(64, '0');
 
       // ── read-only chain calls via public RPC ─────────────────────────
       const call = async (data, to = CONTRACT) => {
@@ -146,17 +162,21 @@ const stats = [
         } catch { $('mintedCount').textContent = ''; }
       }
 
+      const priceLine = () => {
+        $('mintPriceLine').textContent = payMode === 'eth'
+          ? `${fmtEth(priceWei)} ETH each · ≈$2`
+          : `${fmtGw(gwPriceWei)} $GW each · ≈$2 · burned 🔥`;
+      };
+
       async function loadConfig() {
         try {
-          const [p, w, pausedHex] = await Promise.all([
-            call(SEL.mintPrice), call(SEL.maxPerWallet), call(SEL.paused),
+          const [p, g, w, pausedHex] = await Promise.all([
+            call(SEL.mintPrice), call(SEL.gwMintPrice), call(SEL.maxPerWallet), call(SEL.paused),
           ]);
-          priceWei = hexToBig(p);
+          if (hexToBig(p) > 0n) priceWei = hexToBig(p);
+          if (hexToBig(g) > 0n) gwPriceWei = hexToBig(g);
           maxPerWallet = Number(hexToBig(w));
-          if (priceWei > 0n) {
-            const priceEth = Number(priceWei) / 1e18;
-            $('mintPriceLine').textContent = `${priceEth} ETH each · ≈$${(priceEth * 1879).toFixed(2)}`;
-          }
+          priceLine();
           if (hexToBig(pausedHex) === 1n) {
             btn.disabled = true;
             btn.textContent = 'Minting paused';
@@ -168,7 +188,7 @@ const stats = [
       async function loadWalletCount() {
         if (!account) return;
         try {
-          minted = Number(hexToBig(await call(SEL.mintedPerWallet + account.toLowerCase().slice(2).padStart(64, '0'))));
+          minted = Number(hexToBig(await call(SEL.mintedPerWallet + addrArg(account))));
           clampQty();
           if (minted >= maxPerWallet) {
             btn.disabled = true;
@@ -200,9 +220,14 @@ const stats = [
         return true;
       }
 
+      const sendTx = (params) => eth().request({ method: 'eth_sendTransaction', params: [params] });
+
       const label = () => {
-        const total = priceWei * BigInt(qty);
-        btn.textContent = `Mint ${qty} OG${qty > 1 ? 's' : ''} · ${Number(total) / 1e18} ETH`;
+        if (!account) { btn.textContent = 'Connect Wallet'; return; }
+        const n = `Mint ${qty} OG${qty > 1 ? 's' : ''} · `;
+        btn.textContent = payMode === 'eth'
+          ? n + `${fmtEth(priceWei * BigInt(qty))} ETH`
+          : n + `${fmtGw(gwPriceWei * BigInt(qty))} $GW`;
       };
 
       function clampQty() {
@@ -219,7 +244,10 @@ const stats = [
         if (/Sold out/i.test(m)) return 'Sold out!';
         if (/Per-wallet limit/i.test(m)) return `Limit reached — ${maxPerWallet} per wallet.`;
         if (/Wrong ETH value/i.test(m)) return 'Wrong amount sent — reload the page and try again.';
-        if (/insufficient funds/i.test(m)) return 'Not enough ETH in your wallet for this mint.';
+        if (/GW mint disabled/i.test(m)) return '$GW minting is disabled right now.';
+        if (/insufficient allowance/i.test(m)) return '$GW approval missing — try again.';
+        if (/transfer amount exceeds balance/i.test(m)) return 'Not enough $GW in your wallet.';
+        if (/insufficient funds/i.test(m)) return 'Not enough ETH in your wallet for this mint (or for gas).';
         if (/enforced paus/i.test(m)) return 'Minting is paused right now.';
         return m ? `Mint failed: ${m}` : 'Mint failed — please try again.';
       }
@@ -246,28 +274,43 @@ const stats = [
         }
         busy = true;
         btn.disabled = true;
-        btn.textContent = 'Check wallet…';
         say('');
         try {
           await ensureChain();
-          const value = priceWei * BigInt(qty);
-          const txHash = await eth().request({
-            method: 'eth_sendTransaction',
-            params: [{
+          let txHash;
+          if (payMode === 'eth') {
+            btn.textContent = 'Confirm in wallet…';
+            txHash = await sendTx({
               from: account,
               to: CONTRACT,
-              value: '0x' + value.toString(16),
-              data: SEL.mint + qty.toString(16).padStart(64, '0'),
-            }],
-          });
+              value: '0x' + (priceWei * BigInt(qty)).toString(16),
+              data: SEL.mint + word(qty),
+            });
+          } else {
+            // $GW: approve the exact amount if the allowance is short, then mint
+            const need = gwPriceWei * BigInt(qty);
+            const allowed = hexToBig(await call(SEL.allowance + addrArg(account) + addrArg(CONTRACT), GW_TOKEN));
+            if (allowed < need) {
+              btn.textContent = 'Approve $GW…';
+              const ah = await sendTx({ from: account, to: GW_TOKEN, data: SEL.approve + addrArg(CONTRACT) + word(need) });
+              say('Approval sent — the mint follows automatically once it confirms…');
+              link(`${EXPLORER}/tx/${ah}`, 'View approval ↗');
+              const aok = await waitForTx(ah);
+              if (aok !== true) throw new Error('Approval did not confirm — nothing was minted.');
+            }
+            btn.textContent = 'Confirm in wallet…';
+            txHash = await sendTx({ from: account, to: CONTRACT, data: SEL.gwMint + word(qty) });
+          }
           btn.textContent = 'Confirming…';
-          say(`Transaction sent — confirming on chain… (${txHash.slice(0, 10)}…)`);
+          say('Transaction sent — confirming on chain…');
           link(`${EXPLORER}/tx/${txHash}`, 'View transaction ↗');
           const ok = await waitForTx(txHash);
           if (ok === true) {
             btn.textContent = 'Minted! ★';
-            say('');
-            link(`${EXPLORER}/tx/${txHash}`, `Minted ${qty} OG${qty > 1 ? 's' : ''}! Your art is live now — view transaction ↗`);
+            say(payMode === 'gw'
+              ? `Minted ${qty} OG${qty > 1 ? 's' : ''} — ${fmtGw(gwPriceWei * BigInt(qty))} $GW burned 🔥`
+              : `Minted ${qty} OG${qty > 1 ? 's' : ''}! Your art is live now`);
+            link(`${EXPLORER}/tx/${txHash}`, 'View transaction ↗');
             await Promise.all([refreshSupply(), loadWalletCount()]);
           } else if (ok === false) {
             say('Transaction reverted on chain. Nothing was minted.', true);
@@ -289,6 +332,14 @@ const stats = [
       btn.addEventListener('click', doMint);
       $('qtyMinus').addEventListener('click', () => { qty--; clampQty(); });
       $('qtyPlus').addEventListener('click', () => { qty++; clampQty(); });
+      document.querySelectorAll('#payToggle .pay-opt').forEach((el) => {
+        el.addEventListener('click', () => {
+          payMode = el.dataset.pay;
+          document.querySelectorAll('#payToggle .pay-opt').forEach((x) => x.classList.toggle('active', x === el));
+          priceLine();
+          label();
+        });
+      });
 
       if (eth()) {
         eth().request({ method: 'eth_accounts' }).then((accs) => {
@@ -309,6 +360,7 @@ const stats = [
       }
 
       clampQty();
+      priceLine();
       loadConfig();
       refreshSupply();
       setInterval(refreshSupply, 15000);
@@ -459,6 +511,23 @@ const stats = [
     text-align: center;
   }
   .mint-label { color: var(--amber-glow); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.85rem; margin: 0 0 1rem; }
+  .pay-toggle {
+    display: inline-flex;
+    border: 1px solid rgba(255, 183, 77, 0.4);
+    border-radius: 0.7rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .pay-opt {
+    background: transparent;
+    border: none;
+    color: var(--neutral-300);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.55rem 1.1rem;
+    cursor: pointer;
+  }
+  .pay-opt.active { background: rgba(255, 183, 77, 0.22); color: var(--amber-glow); }
   .mint-row { display: flex; gap: 0.8rem; justify-content: center; align-items: stretch; flex-wrap: wrap; }
   .btn-mint { min-width: 260px; }
   .qty {
