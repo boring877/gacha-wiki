@@ -52,14 +52,24 @@ const stats = [
       </div>
     </section>
 
-    <!-- MINT (directly on this page — pay with ETH or $GW) -->
+    <!-- MINT (directly on this page — pay with ETH or $GW, same wallet as the header) -->
     <section class="mint" id="mint">
       <div class="mint-card">
         <p class="mint-label">◆ Mint an OG</p>
-        <div class="pay-toggle" id="payToggle">
-          <button type="button" class="pay-opt active" data-pay="eth">Pay with ETH</button>
-          <button type="button" class="pay-opt" data-pay="gw">Pay with $GW 🔥</button>
+
+        <div class="pay-cards" id="payCards">
+          <button type="button" class="pay-card active" data-pay="eth">
+            <span class="pay-name">ETH</span>
+            <span class="pay-unit" id="unitEth">… ETH</span>
+            <span class="pay-note">per OG</span>
+          </button>
+          <button type="button" class="pay-card" data-pay="gw">
+            <span class="pay-name">$GW</span>
+            <span class="pay-unit" id="unitGw">… GW</span>
+            <span class="pay-note">per OG · burned</span>
+          </button>
         </div>
+
         <div class="mint-row">
           <div class="qty" id="qtyBox">
             <button type="button" id="qtyMinus" aria-label="Mint one fewer">−</button>
@@ -68,7 +78,9 @@ const stats = [
           </div>
           <button type="button" class="btn btn-primary btn-mint" id="mintBtn">Connect Wallet</button>
         </div>
-        <p class="mint-price" id="mintPriceLine">…</p>
+
+        <p class="mint-total" id="mintTotal">…</p>
+        <p class="mint-balance" id="mintBalance" hidden></p>
         <p class="mint-status">5 per wallet · $GW spent on minting is burned forever</p>
         <p class="minted-count" id="mintedCount">…</p>
         <p class="mint-msg" id="mintMsg" hidden></p>
@@ -76,21 +88,14 @@ const stats = [
     </section>
 
     <script>
-      // Embedded mint widget — mints GWOG on Robinhood Chain via the injected
-      // EIP-1193 provider (Robinhood Wallet / MetaMask). Pays in ETH or $GW;
-      // $GW payments are burned (sent to 0x…dEaD by the contract). No libraries.
+      // Embedded mint widget — mints GWOG on Robinhood Chain through the SAME
+      // Reown AppKit wallet stack the header button uses (src/scripts/wallet.ts):
+      // one session, one wallet-picker modal, synced across the page. Pays in
+      // ETH or $GW; $GW payments are burned (sent to 0x…dEaD by the contract).
       const CONTRACT = '0x9C0f41ce4F8e72F866CC79Acd80386472c53B40B';
       const GW_TOKEN = '0x50bE7832849EFEdB15611799074FcC409522f27A';
       const RPC_URL = 'https://rpc.mainnet.chain.robinhood.com';
       const EXPLORER = 'https://robinhoodchain.blockscout.com';
-      const CHAIN_ID = '0x1237'; // 4663
-      const CHAIN_PARAMS = {
-        chainId: CHAIN_ID,
-        chainName: 'Robinhood Chain',
-        nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
-        rpcUrls: ['https://rpc.mainnet.chain.robinhood.com'],
-        blockExplorerUrls: ['https://robinhoodchain.blockscout.com'],
-      };
       // function selectors (keccak of the signatures)
       const SEL = {
         mint: '0xa0712d68', // mint(uint256)
@@ -103,10 +108,10 @@ const stats = [
         paused: '0x5c975abb',
         approve: '0x095ea7b3', // approve(address,uint256) — called on GW_TOKEN
         allowance: '0xdd62ed3e', // allowance(address,address) — called on GW_TOKEN
+        gwBalance: '0x70a08231', // balanceOf(address) — called on GW_TOKEN
       };
       const MAX_SUPPLY = 1000;
 
-      const eth = () => window.ethereum;
       const $ = (id) => document.getElementById(id);
       const btn = $('mintBtn');
       const msg = $('mintMsg');
@@ -120,6 +125,7 @@ const stats = [
       let minted = 0; // this wallet's minted count
       let qty = 1;
       let busy = false;
+      let usdPerEth = 0; // fetched once for the total's USD hint (0 = unknown)
 
       const say = (text, isError = false) => {
         msg.hidden = !text;
@@ -137,6 +143,27 @@ const stats = [
       const fmtGw = (wei) => (Number(wei) / 1e18).toLocaleString();
       const word = (n) => BigInt(n).toString(16).padStart(64, '0');
       const addrArg = (a) => a.toLowerCase().replace('0x', '').padStart(64, '0');
+
+      // ── shared wallet stack (lazy — same policy as the header button) ──
+      let walletMod = null;
+      let kit = null;
+      async function loadWallet() {
+        if (!walletMod) {
+          walletMod = await import('../scripts/wallet');
+          kit = await walletMod.getAppKit();
+          // stay in sync with the header button's connect/disconnect/switch
+          walletMod.onWalletChange((s) => {
+            const next = s.isConnected ? s.address : null;
+            if (next !== account) {
+              account = next;
+              minted = 0;
+              if (account) void onAccount(); else onDisconnect();
+            }
+          });
+        }
+        return walletMod;
+      }
+      const getProvider = () => kit && kit.getProvider ? kit.getProvider('eip155') : null;
 
       // ── read-only chain calls via public RPC ─────────────────────────
       const call = async (data, to = CONTRACT) => {
@@ -156,16 +183,35 @@ const stats = [
           $('mintedCount').textContent = `${n.toLocaleString()} / 1,000 minted`;
           if (n >= MAX_SUPPLY) {
             btn.disabled = true;
-            btn.textContent = 'Sold out (╥﹏╥)';
+            btn.textContent = 'Sold out';
           }
           return n;
         } catch { $('mintedCount').textContent = ''; }
       }
 
-      const priceLine = () => {
-        $('mintPriceLine').textContent = payMode === 'eth'
-          ? `${fmtEth(priceWei)} ETH each · ≈$2`
-          : `${fmtGw(gwPriceWei)} $GW each · ≈$2 · burned 🔥`;
+      // ── price cards + qty-aware total ────────────────────────────────
+      function updatePrices() {
+        $('unitEth').textContent = `${fmtEth(priceWei)} ETH`;
+        $('unitGw').textContent = `${fmtGw(gwPriceWei)} $GW`;
+        updateTotal();
+      }
+      function updateTotal() {
+        const times = qty > 1 ? ` (${qty} × ${payMode === 'eth' ? fmtEth(priceWei) : fmtGw(gwPriceWei)})` : '';
+        if (payMode === 'eth') {
+          const t = fmtEth(priceWei * BigInt(qty));
+          const usdTxt = usdPerEth > 0 ? ` ≈ $${(t * usdPerEth).toFixed(2)}` : '';
+          $('mintTotal').textContent = `Total — ${t} ETH${usdTxt}${times}`;
+        } else {
+          $('mintTotal').textContent = `Total — ${fmtGw(gwPriceWei * BigInt(qty))} $GW${times}`;
+        }
+        label();
+      }
+      const label = () => {
+        if (!account) { btn.textContent = 'Connect Wallet'; return; }
+        const n = `Mint ${qty} OG${qty > 1 ? 's' : ''} · `;
+        btn.textContent = payMode === 'eth'
+          ? n + `${fmtEth(priceWei * BigInt(qty))} ETH`
+          : n + `${fmtGw(gwPriceWei * BigInt(qty))} $GW`;
       };
 
       async function loadConfig() {
@@ -176,13 +222,18 @@ const stats = [
           if (hexToBig(p) > 0n) priceWei = hexToBig(p);
           if (hexToBig(g) > 0n) gwPriceWei = hexToBig(g);
           maxPerWallet = Number(hexToBig(w));
-          priceLine();
+          updatePrices();
           if (hexToBig(pausedHex) === 1n) {
             btn.disabled = true;
             btn.textContent = 'Minting paused';
             say('Minting is temporarily paused by the team. Check back soon.', true);
           }
         } catch { /* keep defaults */ }
+        // USD hint for the ETH total (best-effort)
+        fetch('https://api.coinbase.com/v2/prices/ETH-USD/spot')
+          .then((x) => x.json())
+          .then((j) => { usdPerEth = parseFloat(j.data.amount) || 0; updateTotal(); })
+          .catch(() => {});
       }
 
       async function loadWalletCount() {
@@ -197,44 +248,49 @@ const stats = [
         } catch { /* ignore */ }
       }
 
-      // ── wallet helpers ────────────────────────────────────────────────
-      async function ensureChain() {
+      async function loadBalances() {
+        if (!account) return;
         try {
-          await eth().request({ method: 'wallet_switchEthereumChain', params: [{ chainId: CHAIN_ID }] });
-        } catch (e) {
-          if (e.code === 4902 || /unrecognized|unknown chain/i.test(e.message || '')) {
-            await eth().request({ method: 'wallet_addEthereumChain', params: [CHAIN_PARAMS] });
-          } else throw e;
-        }
+          const [ethRes, gwHex] = await Promise.all([
+            fetch(RPC_URL, {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'eth_getBalance', params: [account, 'latest'] }),
+            }).then((x) => x.json()),
+            call(SEL.gwBalance + addrArg(account), GW_TOKEN),
+          ]);
+          const ethBal = Number(hexToBig(ethRes.result)) / 1e18;
+          const gwBal = Number(hexToBig(gwHex)) / 1e18;
+          const bal = $('mintBalance');
+          bal.hidden = false;
+          bal.textContent = `Your balance — ${ethBal.toFixed(4)} ETH · ${gwBal.toLocaleString()} $GW`;
+        } catch { /* keep hidden */ }
       }
-
-      async function connect() {
-        if (!eth()) {
-          say('No wallet detected — open this page in the Robinhood Wallet browser or install MetaMask.', true);
-          return false;
-        }
-        const accounts = await eth().request({ method: 'eth_requestAccounts' });
-        account = accounts[0];
-        await ensureChain();
-        await loadWalletCount();
-        return true;
-      }
-
-      const sendTx = (params) => eth().request({ method: 'eth_sendTransaction', params: [params] });
-
-      const label = () => {
-        if (!account) { btn.textContent = 'Connect Wallet'; return; }
-        const n = `Mint ${qty} OG${qty > 1 ? 's' : ''} · `;
-        btn.textContent = payMode === 'eth'
-          ? n + `${fmtEth(priceWei * BigInt(qty))} ETH`
-          : n + `${fmtGw(gwPriceWei * BigInt(qty))} $GW`;
-      };
 
       function clampQty() {
         const room = Math.max(0, maxPerWallet - minted);
         qty = Math.min(Math.max(1, qty), Math.max(1, room));
         qtyVal.textContent = String(qty);
-        label();
+        updateTotal();
+      }
+
+      async function onAccount() {
+        btn.disabled = false;
+        await Promise.all([loadWalletCount(), loadBalances()]);
+      }
+      function onDisconnect() {
+        btn.disabled = false;
+        $('mintBalance').hidden = true;
+        clampQty();
+      }
+
+      // ── mint ─────────────────────────────────────────────────────────
+      async function connectFlow() {
+        const m = await loadWallet();
+        if (!m.getConnectedAddress()) await m.openConnectModal();
+        await m.ensureRobinhoodChain().catch(() => {});
+        const addr = m.getConnectedAddress();
+        if (addr) { account = addr; await onAccount(); }
       }
 
       function mapError(e) {
@@ -269,14 +325,18 @@ const stats = [
         if (busy) return;
         if (!account) {
           busy = true;
-          try { if (await connect() && account) await doMint(); } finally { busy = false; }
+          try { await connectFlow(); if (account) await doMint(); } finally { busy = false; }
           return;
         }
+        const m = await loadWallet();
         busy = true;
         btn.disabled = true;
         say('');
         try {
-          await ensureChain();
+          await m.ensureRobinhoodChain().catch(() => {});
+          const provider = getProvider();
+          if (!provider) throw new Error('Wallet is not connected.');
+          const sendTx = (params) => provider.request({ method: 'eth_sendTransaction', params: [params] });
           let txHash;
           if (payMode === 'eth') {
             btn.textContent = 'Confirm in wallet…';
@@ -306,12 +366,12 @@ const stats = [
           link(`${EXPLORER}/tx/${txHash}`, 'View transaction ↗');
           const ok = await waitForTx(txHash);
           if (ok === true) {
-            btn.textContent = 'Minted! ★';
+            btn.textContent = 'Minted!';
             say(payMode === 'gw'
-              ? `Minted ${qty} OG${qty > 1 ? 's' : ''} — ${fmtGw(gwPriceWei * BigInt(qty))} $GW burned 🔥`
-              : `Minted ${qty} OG${qty > 1 ? 's' : ''}! Your art is live now`);
+              ? `Minted ${qty} OG${qty > 1 ? 's' : ''} — ${fmtGw(gwPriceWei * BigInt(qty))} $GW burned`
+              : `Minted ${qty} OG${qty > 1 ? 's' : ''} — your art is live now`);
             link(`${EXPLORER}/tx/${txHash}`, 'View transaction ↗');
-            await Promise.all([refreshSupply(), loadWalletCount()]);
+            await Promise.all([refreshSupply(), loadWalletCount(), loadBalances()]);
           } else if (ok === false) {
             say('Transaction reverted on chain. Nothing was minted.', true);
           } else {
@@ -321,7 +381,7 @@ const stats = [
           say(mapError(e), true);
         } finally {
           busy = false;
-          if (!btn.textContent.startsWith('You minted') && btn.textContent !== 'Sold out (╥﹏╥)') {
+          if (!btn.textContent.startsWith('You minted') && btn.textContent !== 'Sold out') {
             btn.disabled = false;
             label();
           }
@@ -332,35 +392,31 @@ const stats = [
       btn.addEventListener('click', doMint);
       $('qtyMinus').addEventListener('click', () => { qty--; clampQty(); });
       $('qtyPlus').addEventListener('click', () => { qty++; clampQty(); });
-      document.querySelectorAll('#payToggle .pay-opt').forEach((el) => {
+      document.querySelectorAll('#payCards .pay-card').forEach((el) => {
         el.addEventListener('click', () => {
           payMode = el.dataset.pay;
-          document.querySelectorAll('#payToggle .pay-opt').forEach((x) => x.classList.toggle('active', x === el));
-          priceLine();
-          label();
+          document.querySelectorAll('#payCards .pay-card').forEach((x) => x.classList.toggle('active', x === el));
+          updateTotal();
         });
       });
 
-      if (eth()) {
-        eth().request({ method: 'eth_accounts' }).then((accs) => {
-          if (accs && accs[0]) { account = accs[0]; loadWalletCount(); }
+      // Restore an existing wallet session on first interaction — same
+      // lazy-load policy as the header WalletButton, so the two never disagree
+      // and the heavy wallet bundle never loads for people who just look.
+      let warmed = false;
+      const warm = () => {
+        if (warmed) return;
+        warmed = true;
+        loadWallet().then((m) => {
+          const a = m.getConnectedAddress();
+          if (a) { account = a; void onAccount(); }
         }).catch(() => {});
-        eth().on?.('accountsChanged', (accs) => {
-          account = accs && accs[0] ? accs[0] : null;
-          minted = 0;
-          if (account) {
-            loadWalletCount();
-          } else {
-            btn.disabled = false;
-            btn.textContent = 'Connect Wallet';
-            clampQty();
-          }
-        });
-        eth().on?.('chainChanged', () => { if (account) loadWalletCount(); });
-      }
+      };
+      ['pointerdown', 'keydown', 'touchstart'].forEach((e) =>
+        document.addEventListener(e, warm, { capture: true, once: true }));
 
       clampQty();
-      priceLine();
+      updatePrices();
       loadConfig();
       refreshSupply();
       setInterval(refreshSupply, 15000);
@@ -511,23 +567,47 @@ const stats = [
     text-align: center;
   }
   .mint-label { color: var(--amber-glow); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.85rem; margin: 0 0 1rem; }
-  .pay-toggle {
-    display: inline-flex;
-    border: 1px solid rgba(255, 183, 77, 0.4);
-    border-radius: 0.7rem;
-    overflow: hidden;
-    margin-bottom: 1rem;
+  /* two payment options — must read as clearly selectable alternatives */
+  .pay-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    max-width: 440px;
+    margin: 0 auto 1.2rem;
   }
-  .pay-opt {
-    background: transparent;
-    border: none;
-    color: var(--neutral-300);
-    font-weight: 700;
-    font-size: 0.9rem;
-    padding: 0.55rem 1.1rem;
+  .pay-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.85rem 0.6rem 0.7rem;
+    border-radius: 0.8rem;
     cursor: pointer;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: var(--neutral-300);
+    font-family: inherit;
   }
-  .pay-opt.active { background: rgba(255, 183, 77, 0.22); color: var(--amber-glow); }
+  .pay-card:hover { border-color: rgba(255, 183, 77, 0.45); }
+  .pay-card.active {
+    border-color: var(--amber-glow);
+    background: rgba(255, 183, 77, 0.1);
+    box-shadow: 0 0 0 1px var(--amber-glow) inset;
+  }
+  .pay-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; }
+  .pay-card.active .pay-name { color: var(--amber-glow); }
+  .pay-unit { font-size: 0.85rem; color: var(--neutral-400); font-variant-numeric: tabular-nums; }
+  .pay-card.active .pay-unit { color: var(--neutral-300); }
+  .pay-note { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--neutral-400); }
+  .mint-total {
+    margin: 1rem 0 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--amber-glow);
+    font-variant-numeric: tabular-nums;
+  }
+  .mint-balance { margin: 0.3rem 0 0; color: var(--neutral-400); font-size: 0.82rem; font-variant-numeric: tabular-nums; }
   .mint-row { display: flex; gap: 0.8rem; justify-content: center; align-items: stretch; flex-wrap: wrap; }
   .btn-mint { min-width: 260px; }
   .qty {
@@ -556,7 +636,6 @@ const stats = [
     font-weight: 700;
     font-size: 1.1rem;
   }
-  .mint-price { margin: 0.9rem 0 0; color: var(--neutral-300); font-size: 0.92rem; }
   .mint-status { margin: 0.35rem 0 0; color: var(--neutral-300); font-size: 0.92rem; }
   .mint-status a { color: var(--teal-crystal); }
   .minted-count { margin: 0.35rem 0 0; color: var(--amber-glow); font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
