@@ -418,6 +418,14 @@ import { SITE_TITLE } from '../consts';
   // --- wallet connection state ------------------------------------------
   let walletConnected = false;
   let connectedAccount: string | undefined;
+  // Raw bigint balance of the current "You pay" token (null = not loaded).
+  // MAX uses this instead of re-parsing the 6-decimal truncated display text.
+  let balanceInRaw: bigint | null = null;
+  // Gas reserve subtracted from MAX when paying native ETH: the swap tx needs
+  // ETH for gas, so spending the exact full balance reverts with "insufficient
+  // funds". 0.0001 ETH ≈ 6x a worst-case swap+approval at the chain's typical
+  // ~0.03 gwei / ~500k gas.
+  const NATIVE_GAS_RESERVE = 10n ** 14n;
 
   async function refreshWalletState() {
     try {
@@ -428,6 +436,7 @@ import { SITE_TITLE } from '../consts';
       if (walletConnected && connectedAccount) {
         await refreshBalances();
       } else {
+        balanceInRaw = null;
         balanceInEl.textContent = '—';
         balanceOutEl.textContent = '—';
       }
@@ -445,6 +454,7 @@ import { SITE_TITLE } from '../consts';
         getBalance(tokenIn.address as `0x${string}`, connectedAccount as `0x${string}`),
         getBalance(tokenOut.address as `0x${string}`, connectedAccount as `0x${string}`),
       ]);
+      balanceInRaw = bIn;
       balanceInEl.textContent = fmtAmount(bIn, tokenIn.decimals);
       balanceOutEl.textContent = fmtAmount(bOut, tokenOut.decimals);
     } catch {
@@ -568,11 +578,24 @@ import { SITE_TITLE } from '../consts';
   });
 
   maxBtn.addEventListener('click', () => {
-    const balText = balanceInEl.textContent;
-    if (balText && balText !== '—') {
-      amountInEl.value = balText;
-      scheduleQuote();
+    // MAX from the RAW balance (the display text is truncated to 6 decimals).
+    // When paying native ETH, keep a gas reserve — spending the exact full
+    // balance always reverts with "insufficient funds for gas".
+    if (balanceInRaw === null || balanceInRaw <= 0n) return;
+    let amount = balanceInRaw;
+    let note = '';
+    if (tokenIn.address.toLowerCase() === NATIVE) {
+      if (amount > NATIVE_GAS_RESERVE) {
+        amount -= NATIVE_GAS_RESERVE;
+        note = `Kept ${fmtAmount(NATIVE_GAS_RESERVE, 18)} ETH for gas`;
+      } else {
+        amount = (amount * 95n) / 100n; // tiny balance — leave 5% headroom
+        note = 'Balance too small to reserve gas — using 95%';
+      }
     }
+    amountInEl.value = fmtAmount(amount, tokenIn.decimals);
+    scheduleQuote();
+    if (note) setStatus(note);
   });
 
   actionBtn.addEventListener('click', () => void handleAction());

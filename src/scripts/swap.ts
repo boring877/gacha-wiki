@@ -6,10 +6,10 @@
 // Strategy: talk to the contracts DIRECTLY via viem rather than pulling in the
 // (React-leaning, heavy) @uniswap/v3-sdk. A swap needs only two on-chain calls:
 //   1. Quote  → QuoterV2.quoteExactInputSingle  (read-only eth_call)
-//   2. Execute → Universal Router SWEEP + V3_SWAP commands (wallet send)
+//   2. Execute → SwapRouter02 exactInputSingle wrapped in multicall (so native
+//      ETH is credited on the way in / unwrapped via unwrapWETH9 on the way out)
 //
 // Contracts on Robinhood Chain (verified via developers.uniswap.org deployments):
-//   UniversalRouter:  0x8876789976decbfcbbbe364623c63652db8c0904
 //   QuoterV2:         0x33e885ed0ec9bf04ecfb19341582aadcb4c8a9e7
 //   UniswapV3Factory: 0x1f7d7550b1b028f7571e69a784071f0205fd2efa
 //   SwapRouter02:     0xcaf681a66d020601342297493863e78c959e5cb2
@@ -98,11 +98,23 @@ function getPublicClient(): PublicClient {
 // Pool + quote (Uniswap V3 QuoterV2)
 // ---------------------------------------------------------------------------
 
-/** Call the V3 factory to get the deployed pool address for a pair + fee. */
+// Pool-discovery cache: "tokenA|tokenB|fee" (lowercased) → pool address, or
+// null when the factory has no pool for that tier. V3 pool deployments are
+// immutable, so a factory answer never changes within a session — caching
+// means only the FIRST quote pays the 4 getPool round-trips; every later
+// quote is 2 RPC calls (main + reference) instead of ~6 sequential ones,
+// which matters against the rate-limited public RPC.
+const poolCache = new Map<string, Address | null>();
+
+/** Call the V3 factory to get the deployed pool address for a pair + fee.
+ *  Results (including "no pool") are cached for the session — see poolCache. */
 export async function getPoolAddress(tokenA: Address, tokenB: Address, fee: number): Promise<Address | null> {
+  const key = `${tokenA.toLowerCase()}|${tokenB.toLowerCase()}|${fee}`;
+  if (poolCache.has(key)) return poolCache.get(key)!;
   const client = getPublicClient();
+  let pool: Address | null = null;
   try {
-    const pool = (await client.readContract({
+    const addr = (await client.readContract({
       address: V3_FACTORY,
       abi: [
         { inputs: [{ name: 'tokenA', type: 'address' }, { name: 'tokenB', type: 'address' }, { name: 'fee', type: 'uint24' }], name: 'getPool', outputs: [{ name: '', type: 'address' }], stateMutability: 'view', type: 'function' },
@@ -110,10 +122,12 @@ export async function getPoolAddress(tokenA: Address, tokenB: Address, fee: numb
       functionName: 'getPool',
       args: [tokenA, tokenB, fee],
     })) as Address;
-    return pool.toLowerCase() === NATIVE_TOKEN.toLowerCase() ? null : pool;
+    pool = addr.toLowerCase() === NATIVE_TOKEN.toLowerCase() ? null : addr;
   } catch {
-    return null;
+    pool = null;
   }
+  poolCache.set(key, pool);
+  return pool;
 }
 
 const V3_FEES = [100, 500, 3000, 10000]; // 0.01%, 0.05%, 0.3%, 1%
@@ -147,26 +161,30 @@ export async function getQuote(
 
   const client = getPublicClient();
 
-  // 1) Try direct pools across all fee tiers, pick the best output.
-  let best: { amountOut: bigint; fee: number } | null = null;
-  for (const fee of V3_FEES) {
-    const pool = await getPoolAddress(tIn, tOut, fee);
-    if (!pool) continue;
-    try {
-      const result = (await client.simulateContract({
-        address: QUOTER_V2,
-        abi: QUOTER_V2_ABI,
-        functionName: 'quoteExactInputSingle',
-        args: [{ tokenIn: tIn, tokenOut: tOut, amountIn, fee, sqrtPriceLimitX96: 0n }],
-      })) as { result: readonly [bigint, bigint, number, bigint] };
-      const amountOut = result.result[0];
-      if (!best || amountOut > best.amountOut) {
-        best = { amountOut, fee };
+  // 1) Try direct pools across all fee tiers — in PARALLEL, since the tiers
+  //    are independent — and pick the best output. Sequential fetches made one
+  //    quote round up to 6 chained RPC calls on the rate-limited public RPC.
+  const tierQuotes = await Promise.all(
+    V3_FEES.map(async fee => {
+      const pool = await getPoolAddress(tIn, tOut, fee);
+      if (!pool) return null;
+      try {
+        const result = (await client.simulateContract({
+          address: QUOTER_V2,
+          abi: QUOTER_V2_ABI,
+          functionName: 'quoteExactInputSingle',
+          args: [{ tokenIn: tIn, tokenOut: tOut, amountIn, fee, sqrtPriceLimitX96: 0n }],
+        })) as { result: readonly [bigint, bigint, number, bigint] };
+        return { amountOut: result.result[0], fee };
+      } catch {
+        return null; // pool exists but quote failed (e.g. no liquidity in this tier) — skip
       }
-    } catch {
-      /* pool exists but quote failed (e.g. no liquidity in this tier) — skip */
-    }
-  }
+    }),
+  );
+  const best = tierQuotes.reduce<{ amountOut: bigint; fee: number } | null>(
+    (best, q) => (q && (!best || q.amountOut > best.amountOut) ? q : best),
+    null,
+  );
 
   if (!best) {
     // 2) Try a 2-hop route via WETH (tokenIn → WETH → tokenOut) if neither side is WETH.
