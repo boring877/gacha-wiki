@@ -106,6 +106,7 @@ const stats = [
         mintedPerWallet: '0x3a602b4d', // mintedPerWallet(address)
         totalSupply: '0x18160ddd',
         paused: '0x5c975abb',
+        ownerOf: '0x6352211e', // ownerOf(uint256) — for the "your collection" scan
         approve: '0x095ea7b3', // approve(address,uint256) — called on GW_TOKEN
         allowance: '0xdd62ed3e', // allowance(address,address) — called on GW_TOKEN
         gwBalance: '0x70a08231', // balanceOf(address) — called on GW_TOKEN
@@ -276,12 +277,74 @@ const stats = [
 
       async function onAccount() {
         btn.disabled = false;
-        await Promise.all([loadWalletCount(), loadBalances()]);
+        await Promise.all([loadWalletCount(), loadBalances(), loadYourOgs()]);
       }
       function onDisconnect() {
         btn.disabled = false;
         $('mintBalance').hidden = true;
+        $('yourSub').textContent = 'Connect your wallet to see your OGs.';
+        $('yourGrid').innerHTML = '';
         clampQty();
+      }
+
+      // ── your collection — tokens owned by the connected wallet ───────
+      async function loadYourOgs() {
+        const sub = $('yourSub');
+        const grid = $('yourGrid');
+        if (!account) return;
+        sub.textContent = 'Scanning for your OGs…';
+        grid.innerHTML = '';
+        try {
+          const supply = Number(hexToBig(await call(SEL.totalSupply)));
+          if (supply === 0) {
+            sub.textContent = 'No OGs minted yet — yours could be #000.';
+            return;
+          }
+          // batch ownerOf calls (50 per JSON-RPC batch) instead of N requests
+          const owned = [];
+          const CHUNK = 50;
+          for (let i = 0; i < supply; i += CHUNK) {
+            const chunk = Array.from({ length: Math.min(CHUNK, supply - i) }, (_, j) => i + j);
+            const res = await fetch(RPC_URL, {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify(chunk.map((id, j) => ({
+                jsonrpc: '2.0', id: j, method: 'eth_call',
+                params: [{ to: CONTRACT, data: SEL.ownerOf + word(id) }, 'latest'],
+              }))),
+            }).then((x) => x.json());
+            if (!Array.isArray(res)) throw new Error('batch rpc unsupported');
+            for (const r of res) {
+              if (r.result && r.result.length >= 66) {
+                const a = '0x' + r.result.slice(26).toLowerCase();
+                if (a === account.toLowerCase()) owned.push(chunk[r.id]);
+              }
+            }
+          }
+          owned.sort((a, b) => a - b);
+          sub.textContent = owned.length > 0
+            ? `You hold ${owned.length} OG${owned.length > 1 ? 's' : ''}`
+            : 'You do not hold any OGs yet — mint one above.';
+          for (const id of owned) {
+            const a = document.createElement('a');
+            a.className = 'your-tile';
+            a.href = `${EXPLORER}/token/${CONTRACT}/${id}`;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            const img = document.createElement('img');
+            img.src = `https://gachawiki-ogs.pages.dev/images/${id}.png`;
+            img.alt = `GachaWiki OG #${String(id).padStart(3, '0')}`;
+            img.loading = 'lazy';
+            img.width = 512; img.height = 512;
+            const cap = document.createElement('span');
+            cap.textContent = `#${String(id).padStart(3, '0')}`;
+            a.appendChild(img);
+            a.appendChild(cap);
+            grid.appendChild(a);
+          }
+        } catch {
+          sub.textContent = 'Could not load your collection right now.';
+        }
       }
 
       // ── mint ─────────────────────────────────────────────────────────
@@ -371,7 +434,7 @@ const stats = [
               ? `Minted ${qty} OG${qty > 1 ? 's' : ''} — ${fmtGw(gwPriceWei * BigInt(qty))} $GW burned`
               : `Minted ${qty} OG${qty > 1 ? 's' : ''} — your art is live now`);
             link(`${EXPLORER}/tx/${txHash}`, 'View transaction ↗');
-            await Promise.all([refreshSupply(), loadWalletCount(), loadBalances()]);
+            await Promise.all([refreshSupply(), loadWalletCount(), loadBalances(), loadYourOgs()]);
           } else if (ok === false) {
             say('Transaction reverted on chain. Nothing was minted.', true);
           } else {
@@ -421,6 +484,13 @@ const stats = [
       refreshSupply();
       setInterval(refreshSupply, 15000);
     </script>
+
+    <!-- YOUR COLLECTION — OGs held by the connected wallet, art from Cloudflare -->
+    <section class="your-collection" id="yourCollection">
+      <h2 class="sec-title">Your collection</h2>
+      <p class="sec-sub" id="yourSub">Connect your wallet to see your OGs.</p>
+      <div class="your-grid" id="yourGrid"></div>
+    </section>
 
     <!-- HOLDER PERKS -->
     <section class="perks" id="perks">
@@ -662,9 +732,53 @@ const stats = [
   .mint-status { margin: 0.35rem 0 0; color: var(--neutral-300); font-size: 0.92rem; }
   .mint-status a { color: var(--teal-crystal); }
   .minted-count { margin: 0.35rem 0 0; color: var(--amber-glow); font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
-  .mint-msg { margin: 0.8rem 0 0; color: var(--neutral-300); font-size: 0.92rem; word-break: break-word; }
-  .mint-msg a { color: var(--teal-crystal); }
-  .mint-msg.mint-err { color: #fca5a5; }
+  /* status box — mint/approval progress, tx links, errors */
+  .mint-msg {
+    margin: 0.9rem auto 0;
+    max-width: 540px;
+    padding: 0.7rem 1rem;
+    border-radius: 0.6rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: var(--neutral-300);
+    font-size: 0.88rem;
+    line-height: 1.55;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+  .mint-msg a { color: var(--teal-crystal); font-weight: 600; text-decoration: none; }
+  .mint-msg a:hover { text-decoration: underline; }
+  .mint-msg.mint-err {
+    background: rgba(255, 118, 118, 0.08);
+    border-color: rgba(255, 118, 118, 0.35);
+    color: #fca5a5;
+  }
+
+  /* YOUR COLLECTION — OGs held by the connected wallet */
+  .your-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.8rem;
+  }
+  .your-tile {
+    display: block;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 183, 77, 0.3);
+    background: rgba(255, 255, 255, 0.03);
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .your-tile:hover { transform: translateY(-2px); border-color: var(--amber-glow); }
+  .your-tile img { width: 100%; aspect-ratio: 1 / 1; display: block; }
+  .your-tile span {
+    display: block;
+    padding: 0.35rem 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--neutral-300);
+    font-family: 'Space Grotesk', sans-serif;
+    text-align: center;
+  }
 
   /* HOLDER PERKS */
   .perk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
