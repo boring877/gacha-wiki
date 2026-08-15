@@ -424,6 +424,7 @@ const stats = [
       function mapError(e) {
         const m = (e && (e.message || e.data && e.data.message)) || '';
         if (e && e.code === 4001) return 'Transaction rejected in your wallet.';
+        if (/Wrong network/i.test(m)) return m;
         if (/Mint not started/i.test(m)) return 'Mint is not open yet.';
         if (/Sold out/i.test(m)) return 'Sold out!';
         if (/Per-wallet limit/i.test(m)) return `Limit reached — ${maxPerWallet} per wallet.`;
@@ -453,7 +454,12 @@ const stats = [
         if (busy) return;
         if (!account) {
           busy = true;
-          try { await connectFlow(); if (account) await doMint(); } finally { busy = false; }
+          try { await connectFlow(); }
+          finally { busy = false; }
+          // Connected → continue straight into the mint. The guard must be
+          // released first: the old code recursed while `busy` was still true,
+          // so the very first click after connecting silently did nothing.
+          if (account) return doMint();
           return;
         }
         const m = await loadWallet();
@@ -464,6 +470,15 @@ const stats = [
           await m.ensureRobinhoodChain().catch(() => {});
           const provider = getProvider();
           if (!provider) throw new Error('Wallet is not connected.');
+          // Network guard: ensureRobinhoodChain is best-effort (the user can
+          // decline), and a tx signed on the wrong chain NEVER shows up here —
+          // waitForTx would poll for 6 minutes while the wallet says "pending".
+          // Verify the wallet's actual chain before sending anything.
+          let chainId = null;
+          try { chainId = await provider.request({ method: 'eth_chainId' }); } catch { /* handled below */ }
+          if (String(chainId).toLowerCase() !== '0x123f') {
+            throw new Error('Wrong network — switch your wallet to Robinhood Chain and try again.');
+          }
           const sendTx = (params) => provider.request({ method: 'eth_sendTransaction', params: [params] });
           let txHash;
           if (payMode === 'eth') {

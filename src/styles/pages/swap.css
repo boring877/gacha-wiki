@@ -358,6 +358,18 @@
   color: var(--success-color, #4caf50);
 }
 
+/* Explorer link appended to post-send status lines (created by JS at runtime —
+   swap.astro imports this file with is:global, so no scoping issues). */
+.swap-status a {
+  color: var(--teal-crystal, #00acc1);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.swap-status a:hover {
+  text-decoration: underline;
+}
+
 /* --- Mode tabs (Swap | Alerts) ----------------------------------------- */
 .swap-tabs {
   display: flex;

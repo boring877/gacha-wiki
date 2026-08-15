@@ -27,7 +27,7 @@ import {
   type Address,
   type PublicClient,
 } from 'viem';
-import { getAppKit, getConnectedAddress } from './wallet';
+import { getAppKit, getConnectedAddress, robinhoodChain } from './wallet';
 
 // ---------------------------------------------------------------------------
 // Robinhood Chain config
@@ -340,6 +340,20 @@ export async function executeSwap(
     const isNativeIn = tokenIn.toLowerCase() === NATIVE_TOKEN.toLowerCase();
     const isNativeOut = tokenOut.toLowerCase() === NATIVE_TOKEN.toLowerCase();
 
+    // Network guard. ensureRobinhoodChain() upstream is best-effort (the user
+    // can decline the switch popup), and a tx signed on the WRONG chain simply
+    // never appears on this one — every receipt poll then comes back empty and
+    // the UI sits on "pending" forever. Verify the wallet's ACTUAL chain before
+    // sending anything; retry the switch once, then bail with a clear error.
+    let chainId = await getProviderChainId(kit);
+    if (chainId !== RH_CHAIN_ID) {
+      await kit.switchNetwork(robinhoodChain).catch(() => {});
+      chainId = await getProviderChainId(kit);
+    }
+    if (chainId !== RH_CHAIN_ID) {
+      return { error: 'Wrong network — switch your wallet to Robinhood Chain and try again.' };
+    }
+
     // The actual V3 tokens (pools use WETH for native).
     const v3TokenIn = isNativeIn ? WETH_TOKEN : tokenIn;
     const v3TokenOut = isNativeOut ? WETH_TOKEN : tokenOut;
@@ -547,10 +561,40 @@ function extractProviderError(err: unknown): string {
   return err instanceof Error ? err.message : String(err);
 }
 
+/** Read the wallet's CURRENT chain id via the EIP-1193 provider (null = unknown). */
+async function getProviderChainId(kit: Awaited<ReturnType<typeof getAppKit>>): Promise<number | null> {
+  const provider = kit.getProvider<{ request: (a: { method: string; params?: unknown[] }) => Promise<unknown> }>('eip155');
+  if (!provider) return null;
+  try {
+    const id = (await provider.request({ method: 'eth_chainId' })) as string | number;
+    return typeof id === 'string' ? parseInt(id, 16) : Number(id);
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Wait for a tx receipt. Never throws: returns 'success', 'reverted', or
+ * 'timeout' (after `timeoutMs` — the tx may still land later; show a link and
+ * let the user watch it rather than blocking the UI forever).
+ */
+export async function waitForReceipt(hash: `0x${string}`, timeoutMs = 90_000): Promise<'success' | 'reverted' | 'timeout'> {
+  try {
+    const receipt = await getPublicClient().waitForTransactionReceipt({ hash, timeout: timeoutMs });
+    return receipt.status === 'success' ? 'success' : 'reverted';
+  } catch {
+    return 'timeout';
+  }
+}
+
 /** Send a tx and wait for it to be mined. */
 async function sendAndWait(kit: Awaited<ReturnType<typeof getAppKit>>, tx: TxRequest): Promise<void> {
   const hash = await sendTx(kit, tx);
-  await getPublicClient().waitForTransactionReceipt({ hash });
+  const outcome = await waitForReceipt(hash, 120_000);
+  if (outcome === 'reverted') throw new Error('Approval transaction reverted.');
+  if (outcome === 'timeout') {
+    throw new Error('Approval is still pending — wait for it to confirm in your wallet, then swap again.');
+  }
 }
 
 // ---------------------------------------------------------------------------

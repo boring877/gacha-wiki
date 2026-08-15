@@ -339,9 +339,18 @@ import { SITE_TITLE } from '../consts';
     return s;
   }
 
-  function setStatus(msg: string, kind: '' | 'error' | 'success' = '') {
+  function setStatus(msg: string, kind: '' | 'error' | 'success' = '', txHash?: string) {
     statusEl.textContent = msg;
     statusEl.className = 'swap-status' + (kind ? ` is-${kind}` : '');
+    if (txHash) {
+      statusEl.appendChild(document.createTextNode(' '));
+      const a = document.createElement('a');
+      a.href = `https://robinhoodchain.blockscout.com/tx/${txHash}`;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.textContent = 'View on explorer ↗';
+      statusEl.appendChild(a);
+    }
   }
 
   function updateTokenLabels() {
@@ -525,7 +534,7 @@ import { SITE_TITLE } from '../consts';
       const { ensureRobinhoodChain } = await loadWallet();
       await ensureRobinhoodChain().catch(() => {});
 
-      const { parseUnits, executeSwap } = await loadSwap();
+      const { parseUnits, executeSwap, waitForReceipt } = await loadSwap();
       const amountIn = parseUnits(amountInEl.value.trim(), tokenIn.decimals);
       if (!currentQuote) throw new Error('No quote');
       const minOut = minReceivedFor(currentQuote.amountOut);
@@ -539,7 +548,18 @@ import { SITE_TITLE } from '../consts';
       if ('error' in result) {
         setStatus(result.error, 'error');
       } else {
-        setStatus(`Swap submitted! Tx ${result.txHash.slice(0, 10)}…`, 'success');
+        // Wait for the receipt instead of stopping at "submitted" — the old
+        // flow refreshed balances BEFORE the tx mined, so they stayed stale
+        // while the wallet still showed "Pending" and it looked stuck.
+        setStatus('Swap sent — confirming…', '', result.txHash);
+        const outcome = await waitForReceipt(result.txHash);
+        if (outcome === 'success') {
+          setStatus('Swap confirmed ✓', 'success', result.txHash);
+        } else if (outcome === 'reverted') {
+          setStatus('Swap reverted on chain — nothing was traded.', 'error', result.txHash);
+        } else {
+          setStatus('Still confirming — check the transaction link shortly.', '', result.txHash);
+        }
         await refreshBalances();
       }
     } catch (err) {
