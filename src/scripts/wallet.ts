@@ -142,7 +142,10 @@ export async function getAppKit(): Promise<ReturnType<typeof createAppKit>> {
 /** Open the wallet picker modal. */
 export async function openConnectModal(): Promise<void> {
   const kit = await getAppKit();
-  await kit.open();
+  // Force the Connect view — a bare open() shows the Account view (fund /
+  // swap / send / disconnect) whenever a session happens to exist, which is
+  // confusing when the user is explicitly trying to connect.
+  await kit.open({ view: 'Connect' });
 }
 
 /** Current connected EVM address, if any. */

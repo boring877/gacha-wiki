@@ -397,9 +397,27 @@ const stats = [
       // ── mint ─────────────────────────────────────────────────────────
       async function connectFlow() {
         const m = await loadWallet();
-        if (!m.getConnectedAddress()) await m.openConnectModal();
+        let addr = m.getConnectedAddress();
+        if (!addr) {
+          // A restored session can lag a beat behind AppKit init on a fresh
+          // page load. Wait briefly before deciding the user isn't connected —
+          // otherwise we pop a modal right as the session restores and AppKit
+          // shows the account view (fund/swap/send) instead of the wallet picker.
+          addr = await new Promise((resolve) => {
+            const t0 = Date.now();
+            const check = () => {
+              const a = m.getConnectedAddress();
+              if (a || Date.now() - t0 > 1500) resolve(a);
+              else setTimeout(check, 100);
+            };
+            check();
+          });
+        }
+        if (!addr) await m.openConnectModal();
+        // if the user was already connected, or picks a wallet, the shared
+        // onWalletChange subscription sets `account` and refreshes the card
+        addr = m.getConnectedAddress();
         await m.ensureRobinhoodChain().catch(() => {});
-        const addr = m.getConnectedAddress();
         if (addr) { account = addr; await onAccount(); }
       }
 
