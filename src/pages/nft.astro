@@ -422,6 +422,29 @@ const stats = [
       setInterval(refreshSupply, 15000);
     </script>
 
+    <!-- HOLDER PERKS -->
+    <section class="perks" id="perks">
+      <h2 class="sec-title">Holder perks</h2>
+      <p class="sec-sub">What holding a GachaWiki OG unlocks.</p>
+      <div class="perk-grid">
+        <div class="perk">
+          <span class="perk-tag">◆ Discord</span>
+          <h3>NSFW channel access</h3>
+          <p>OG holders get access to the private NSFW channel in the GachaWiki Discord.</p>
+        </div>
+        <div class="perk">
+          <span class="perk-tag">◆ Tools</span>
+          <h3>Asset extraction tools</h3>
+          <p>The GachaWiki extraction toolset — pull art, bundles and live data out of your games.</p>
+        </div>
+        <div class="perk">
+          <span class="perk-tag">◆ Exclusive</span>
+          <h3>Ecchi &amp; hentai scenes</h3>
+          <p>Holder-only ecchi and hentai scene releases.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- STATS -->
     <section class="stats">
       {stats.map((s) => (
@@ -643,6 +666,26 @@ const stats = [
   .mint-msg a { color: var(--teal-crystal); }
   .mint-msg.mint-err { color: #fca5a5; }
 
+  /* HOLDER PERKS */
+  .perk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .perk {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 183, 77, 0.25);
+    border-radius: 0.9rem;
+    padding: 1.2rem 1.1rem;
+  }
+  .perk-tag {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber-glow);
+    font-weight: 700;
+    margin-bottom: 0.45rem;
+  }
+  .perk h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; margin: 0 0 0.5rem; }
+  .perk p { margin: 0; color: var(--neutral-400); font-size: 0.88rem; line-height: 1.55; }
+
   /* STATS */
   .stats {
     display: grid;
@@ -703,6 +746,7 @@ const stats = [
     .cta-row { justify-content: center; }
     .hero-sub { margin-left: auto; margin-right: auto; }
     .stats { grid-template-columns: repeat(2, 1fr); }
+    .perk-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 520px) {
     .grid { grid-template-columns: repeat(2, 1fr); }
