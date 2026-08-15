@@ -81,6 +81,7 @@ const stats = [
 
         <p class="mint-total" id="mintTotal">…</p>
         <p class="mint-balance" id="mintBalance" hidden></p>
+        <p class="mint-left" id="mintLeft" hidden></p>
         <p class="mint-status">5 per wallet · $GW spent on minting is burned forever</p>
         <p class="minted-count" id="mintedCount">…</p>
         <p class="mint-msg" id="mintMsg" hidden></p>
@@ -127,6 +128,8 @@ const stats = [
       let qty = 1;
       let busy = false;
       let usdPerEth = 0; // fetched once for the total's USD hint (0 = unknown)
+      let ethBalWei = null; // connected wallet's balances (null = not loaded yet)
+      let gwBalWei = null;
 
       const say = (text, isError = false) => {
         msg.hidden = !text;
@@ -205,7 +208,7 @@ const stats = [
         } else {
           $('mintTotal').textContent = `Total — ${fmtGw(gwPriceWei * BigInt(qty))} $GW${times}`;
         }
-        label();
+        refreshButton();
       }
       const label = () => {
         if (!account) { btn.textContent = 'Connect Wallet'; return; }
@@ -242,10 +245,6 @@ const stats = [
         try {
           minted = Number(hexToBig(await call(SEL.mintedPerWallet + addrArg(account))));
           clampQty();
-          if (minted >= maxPerWallet) {
-            btn.disabled = true;
-            btn.textContent = `You minted ${minted}/${maxPerWallet}`;
-          }
         } catch { /* ignore */ }
       }
 
@@ -260,19 +259,64 @@ const stats = [
             }).then((x) => x.json()),
             call(SEL.gwBalance + addrArg(account), GW_TOKEN),
           ]);
-          const ethBal = Number(hexToBig(ethRes.result)) / 1e18;
-          const gwBal = Number(hexToBig(gwHex)) / 1e18;
+          ethBalWei = hexToBig(ethRes.result);
+          gwBalWei = hexToBig(gwHex);
           const bal = $('mintBalance');
           bal.hidden = false;
-          bal.textContent = `Your balance — ${ethBal.toFixed(4)} ETH · ${gwBal.toLocaleString()} $GW`;
+          bal.textContent = `Your balance — ${(Number(ethBalWei) / 1e18).toFixed(4)} ETH · ${(Number(gwBalWei) / 1e18).toLocaleString()} $GW`;
+          clampQty(); // affordability may have changed
         } catch { /* keep hidden */ }
       }
 
+      // how many more the wallet can actually pay for in the selected currency
+      // (ETH side keeps ~5% headroom for gas; Infinity while balances are unknown)
+      const affordable = () => {
+        if (!account) return Infinity;
+        if (payMode === 'eth') return ethBalWei === null ? Infinity : Number((ethBalWei * 95n) / 100n / priceWei);
+        return gwBalWei === null ? Infinity : Number(gwBalWei / gwPriceWei);
+      };
+
       function clampQty() {
         const room = Math.max(0, maxPerWallet - minted);
-        qty = Math.min(Math.max(1, qty), Math.max(1, room));
+        const aff = affordable();
+        const cap = Math.max(1, Math.min(room, Number.isFinite(aff) ? aff : room));
+        qty = Math.min(Math.max(1, qty), cap);
         qtyVal.textContent = String(qty);
         updateTotal();
+        updateMintedLine();
+      }
+
+      function updateMintedLine() {
+        const el = $('mintLeft');
+        if (!account) { el.hidden = true; return; }
+        const room = Math.max(0, maxPerWallet - minted);
+        const aff = affordable();
+        let t = `Minted ${minted}/${maxPerWallet} — ${room} left this wallet`;
+        if (Number.isFinite(aff) && aff < room) {
+          t += aff > 0 ? ` · balance covers ${aff}` : ' · balance too low';
+        }
+        if (payMode === 'gw' && ethBalWei === 0n) t += ' · needs a little ETH for gas';
+        el.hidden = false;
+        el.textContent = t;
+      }
+
+      // single source of truth for the mint button's enabled/label state
+      function refreshButton() {
+        if (btn.textContent === 'Sold out' || btn.textContent === 'Minting paused') return;
+        if (!account) { btn.disabled = false; btn.textContent = 'Connect Wallet'; return; }
+        if (minted >= maxPerWallet) {
+          btn.disabled = true;
+          btn.textContent = `You minted ${minted}/${maxPerWallet}`;
+          return;
+        }
+        const aff = affordable();
+        if (aff === 0) {
+          btn.disabled = true;
+          btn.textContent = payMode === 'eth' ? 'Not enough ETH' : 'Not enough $GW';
+          return;
+        }
+        btn.disabled = false;
+        label();
       }
 
       async function onAccount() {
@@ -281,7 +325,10 @@ const stats = [
       }
       function onDisconnect() {
         btn.disabled = false;
+        ethBalWei = null;
+        gwBalWei = null;
         $('mintBalance').hidden = true;
+        $('mintLeft').hidden = true;
         $('yourSub').textContent = 'Connect your wallet to see your OGs.';
         $('yourGrid').innerHTML = '';
         clampQty();
@@ -444,10 +491,7 @@ const stats = [
           say(mapError(e), true);
         } finally {
           busy = false;
-          if (!btn.textContent.startsWith('You minted') && btn.textContent !== 'Sold out') {
-            btn.disabled = false;
-            label();
-          }
+          refreshButton();
         }
       }
 
@@ -459,7 +503,7 @@ const stats = [
         el.addEventListener('click', () => {
           payMode = el.dataset.pay;
           document.querySelectorAll('#payCards .pay-card').forEach((x) => x.classList.toggle('active', x === el));
-          updateTotal();
+          clampQty(); // affordability differs between ETH and $GW
         });
       });
 
@@ -701,6 +745,7 @@ const stats = [
     font-variant-numeric: tabular-nums;
   }
   .mint-balance { margin: 0.3rem 0 0; color: var(--neutral-400); font-size: 0.82rem; font-variant-numeric: tabular-nums; }
+  .mint-left { margin: 0.2rem 0 0; color: var(--amber-glow); font-size: 0.82rem; font-weight: 600; font-variant-numeric: tabular-nums; }
   .mint-row { display: flex; gap: 0.8rem; justify-content: center; align-items: stretch; flex-wrap: wrap; }
   .btn-mint { min-width: 260px; }
   .qty {
