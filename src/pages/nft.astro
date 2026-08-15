@@ -328,12 +328,12 @@ const stats = [
           for (const id of owned) {
             const a = document.createElement('a');
             a.className = 'your-tile';
-            a.href = `${EXPLORER}/token/${CONTRACT}/${id}`;
+            a.href = `${EXPLORER}/token/${CONTRACT}?instance=${CONTRACT}.${id}`;
             a.target = '_blank';
             a.rel = 'noopener noreferrer';
             const img = document.createElement('img');
             img.src = `https://gachawiki-ogs.pages.dev/images/${id}.png`;
-            img.alt = `GachaWiki OG #${String(id).padStart(3, '0')}`;
+            img.alt = `OG #${String(id).padStart(3, '0')}`;
             img.loading = 'lazy';
             img.width = 512; img.height = 512;
             const cap = document.createElement('span');
@@ -746,21 +746,23 @@ const stats = [
     text-align: center;
     overflow-wrap: anywhere;
   }
-  .mint-msg a { color: var(--teal-crystal); font-weight: 600; text-decoration: none; }
-  .mint-msg a:hover { text-decoration: underline; }
+  /* :global() — these elements are created by JS at runtime, which Astro's
+     scoping doesn't reach (dynamic nodes carry no scope attribute). */
+  .mint-msg :global(a) { color: var(--teal-crystal); font-weight: 600; text-decoration: none; }
+  .mint-msg :global(a):hover { text-decoration: underline; }
   .mint-msg.mint-err {
     background: rgba(255, 118, 118, 0.08);
     border-color: rgba(255, 118, 118, 0.35);
     color: #fca5a5;
   }
 
-  /* YOUR COLLECTION — OGs held by the connected wallet */
+  /* YOUR COLLECTION — OGs held by the connected wallet (tiles built in JS) */
   .your-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: 0.8rem;
   }
-  .your-tile {
+  .your-grid :global(.your-tile) {
     display: block;
     border-radius: 0.8rem;
     overflow: hidden;
@@ -768,9 +770,9 @@ const stats = [
     background: rgba(255, 255, 255, 0.03);
     transition: transform 0.15s ease, border-color 0.15s ease;
   }
-  .your-tile:hover { transform: translateY(-2px); border-color: var(--amber-glow); }
-  .your-tile img { width: 100%; aspect-ratio: 1 / 1; display: block; }
-  .your-tile span {
+  .your-grid :global(.your-tile):hover { transform: translateY(-2px); border-color: var(--amber-glow); }
+  .your-grid :global(.your-tile img) { width: 100%; aspect-ratio: 1 / 1; display: block; }
+  .your-grid :global(.your-tile span) {
     display: block;
     padding: 0.35rem 0.5rem;
     font-size: 0.72rem;
