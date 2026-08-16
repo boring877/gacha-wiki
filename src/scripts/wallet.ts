@@ -295,3 +295,59 @@ export async function ensureRobinhoodChain(): Promise<void> {
   const kit = appKit ?? (await getAppKit());
   await kit.switchNetwork(robinhoodChain);
 }
+
+// ---------------------------------------------------------------------------
+// Active-chain resolution (used by /swap + /nft before sending transactions)
+// ---------------------------------------------------------------------------
+
+/** Parse a chain id from any shape wallets/providers hand back:
+ *  4663, '4663', '0x1237', or a CAIP id like 'eip155:4663'. Null = unparseable. */
+export function parseChainId(raw: unknown): number | null {
+  if (typeof raw === 'number' && Number.isFinite(raw)) return raw;
+  if (typeof raw === 'bigint') return Number(raw);
+  if (typeof raw === 'string') {
+    const s = raw.trim().toLowerCase();
+    if (s === '' || s === '0x') return null;
+    if (s.startsWith('eip155:')) {
+      const n = Number(s.slice(7));
+      return Number.isFinite(n) ? n : null;
+    }
+    const n = s.startsWith('0x') ? parseInt(s, 16) : Number(s);
+    return Number.isFinite(n) ? n : null;
+  }
+  return null;
+}
+
+/**
+ * Best-effort chain id of the CONNECTED wallet. Tries the EIP-1193 provider's
+ * eth_chainId first, then falls back to AppKit's event-synced network state
+ * (chainChanged/session updates — more reliable for WalletConnect sessions,
+ * where a raw request can fail or stall on the relay). Returns null when
+ * neither source answers.
+ *
+ * IMPORTANT for callers: treat null as "unknown", NOT "wrong". A failed or
+ * exotic-shaped check must never block a legitimately-connected user — only a
+ * DEFINITIVE non-4663 answer should (after a switch retry) surface the
+ * wrong-network error.
+ */
+export async function getActiveChainId(): Promise<number | null> {
+  const kit = appKit ?? (await getAppKit());
+  const provider = kit.getProvider<{ request: (a: { method: string }) => Promise<unknown> }>('eip155');
+  if (provider) {
+    try {
+      const id = parseChainId(await provider.request({ method: 'eth_chainId' }));
+      if (id !== null) return id;
+    } catch {
+      /* fall through to AppKit's tracked state */
+    }
+  }
+  try {
+    const net = kit.getCaipNetwork?.();
+    if (net && typeof net.id === 'number') return net.id;
+    const id = parseChainId(kit.getChainId?.());
+    if (id !== null) return id;
+  } catch {
+    /* ignore */
+  }
+  return null;
+}

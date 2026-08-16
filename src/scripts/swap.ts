@@ -27,7 +27,7 @@ import {
   type Address,
   type PublicClient,
 } from 'viem';
-import { getAppKit, getConnectedAddress, robinhoodChain } from './wallet';
+import { getAppKit, getConnectedAddress, robinhoodChain, getActiveChainId } from './wallet';
 
 // ---------------------------------------------------------------------------
 // Robinhood Chain config
@@ -340,18 +340,22 @@ export async function executeSwap(
     const isNativeIn = tokenIn.toLowerCase() === NATIVE_TOKEN.toLowerCase();
     const isNativeOut = tokenOut.toLowerCase() === NATIVE_TOKEN.toLowerCase();
 
-    // Network guard. ensureRobinhoodChain() upstream is best-effort (the user
-    // can decline the switch popup), and a tx signed on the WRONG chain simply
-    // never appears on this one — every receipt poll then comes back empty and
-    // the UI sits on "pending" forever. Verify the wallet's ACTUAL chain before
-    // sending anything; retry the switch once, then bail with a clear error.
-    let chainId = await getProviderChainId(kit);
-    if (chainId !== RH_CHAIN_ID) {
+    // Network guard (best-effort, FAIL-OPEN). ensureRobinhoodChain() upstream
+    // is advisory (the user can decline the popup), and a tx signed on the
+    // WRONG chain never appears on this one — every receipt poll comes back
+    // empty and the UI sits on "pending" forever. So: resolve the wallet's
+    // chain; if it's DEFINITIVELY wrong, retry the switch once and bail.
+    // When the chain can't be determined (request failed / exotic provider
+    // shape — seen with WalletConnect relays), PROCEED anyway: an
+    // inconclusive check must never block a connected user (the first version
+    // of this guard did exactly that and Robinhood-connected users hit it).
+    let chainId = await getActiveChainId();
+    if (chainId !== null && chainId !== RH_CHAIN_ID) {
       await kit.switchNetwork(robinhoodChain).catch(() => {});
-      chainId = await getProviderChainId(kit);
-    }
-    if (chainId !== RH_CHAIN_ID) {
-      return { error: 'Wrong network — switch your wallet to Robinhood Chain and try again.' };
+      chainId = await getActiveChainId();
+      if (chainId !== null && chainId !== RH_CHAIN_ID) {
+        return { error: 'Wrong network — switch your wallet to Robinhood Chain and try again.' };
+      }
     }
 
     // The actual V3 tokens (pools use WETH for native).
@@ -559,18 +563,6 @@ function extractProviderError(err: unknown): string {
     if (typeof c === 'number') return `wallet error code ${c}`;
   }
   return err instanceof Error ? err.message : String(err);
-}
-
-/** Read the wallet's CURRENT chain id via the EIP-1193 provider (null = unknown). */
-async function getProviderChainId(kit: Awaited<ReturnType<typeof getAppKit>>): Promise<number | null> {
-  const provider = kit.getProvider<{ request: (a: { method: string; params?: unknown[] }) => Promise<unknown> }>('eip155');
-  if (!provider) return null;
-  try {
-    const id = (await provider.request({ method: 'eth_chainId' })) as string | number;
-    return typeof id === 'string' ? parseInt(id, 16) : Number(id);
-  } catch {
-    return null;
-  }
 }
 
 /**

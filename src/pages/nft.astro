@@ -470,13 +470,14 @@ const stats = [
           await m.ensureRobinhoodChain().catch(() => {});
           const provider = getProvider();
           if (!provider) throw new Error('Wallet is not connected.');
-          // Network guard: ensureRobinhoodChain is best-effort (the user can
-          // decline), and a tx signed on the wrong chain NEVER shows up here —
-          // waitForTx would poll for 6 minutes while the wallet says "pending".
-          // Verify the wallet's actual chain before sending anything.
-          let chainId = null;
-          try { chainId = await provider.request({ method: 'eth_chainId' }); } catch { /* handled below */ }
-          if (String(chainId).toLowerCase() !== '0x123f') {
+          // Network guard (fail-open): a tx signed on the wrong chain never
+          // shows up here and waitForTx polls as "pending" forever — so bail
+          // ONLY on a definitive non-Robinhood chain id. An inconclusive check
+          // (request failed / exotic provider shape — seen with WalletConnect
+          // relays) must never block a connected user; getActiveChainId
+          // returns null for that and we proceed.
+          const netId = await m.getActiveChainId();
+          if (netId !== null && netId !== 4663) {
             throw new Error('Wrong network — switch your wallet to Robinhood Chain and try again.');
           }
           const sendTx = (params) => provider.request({ method: 'eth_sendTransaction', params: [params] });
