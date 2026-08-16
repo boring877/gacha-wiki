@@ -1,6 +1,7 @@
 ---
 import TaimaninSquadLandingLayout from '../../layouts/taimanin-squad/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
+import DiscordPromo from '../../components/DiscordPromo.astro';
 import { taimaninSquadConfig } from '../../data/taimanin-squad/taimanin-squad.js';
 import heroImage from '../../assets/images/games/taimanin-squad/gameimg/hero_image.jpg';
 import { Image } from 'astro:assets';
@@ -113,6 +114,8 @@ const breadcrumbs = [
         </a>
       </div>
     </div>
+
+    <DiscordPromo />
 
     <p class="last-updated">
       Last Updated: <FormattedDate date={gameInfo.lastUpdated} />

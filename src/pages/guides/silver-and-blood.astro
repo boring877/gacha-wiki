@@ -1,6 +1,7 @@
 ---
 import SilverAndBloodLandingLayout from '../../layouts/silver-and-blood/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
+import DiscordPromo from '../../components/DiscordPromo.astro';
 import { silverAndBloodConfig } from '../../data/silver-and-blood/silver-and-blood.js';
 import heroImg from '../../assets/images/games/silver-and-blood/main-images/silver-and-blood-main.jpg';
 
@@ -115,6 +116,8 @@ const breadcrumbs = [
     </div>
 
     <!-- Last updated date from gameInfo.lastUpdated -->
+    <DiscordPromo />
+
     <p class="last-updated">
       Last Updated: <FormattedDate date={gameInfo.lastUpdated} />
     </p>

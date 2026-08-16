@@ -1,6 +1,7 @@
 ---
 import ZoneNovaLandingLayout from '../../layouts/zone-nova/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
+import DiscordPromo from '../../components/DiscordPromo.astro';
 import { zoneNovaConfig } from '../../data/zone-nova/zone-nova.js';
 // Hero image served from Cloudflare R2
 const heroImg = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/zonenova1.jpg';
@@ -96,6 +97,8 @@ const breadcrumbs = [
         </a>
       </div>
     </div>
+
+    <DiscordPromo />
 
     <p class="last-updated">
       Last Updated: <FormattedDate date={gameInfo.lastUpdated} />

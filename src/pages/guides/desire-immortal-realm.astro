@@ -2,6 +2,7 @@
 // Desire Immortal Realm landing page.
 import DesireImmortalRealmLayout from '../../layouts/desire-immortal-realm/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
+import DiscordPromo from '../../components/DiscordPromo.astro';
 import { desireImmortalRealmConfig } from '../../data/desire-immortal-realm/desire-immortal-realm.js';
 
 const { meta, gameInfo, story, translationNote, categoryGroups } = desireImmortalRealmConfig;
@@ -25,6 +26,8 @@ const { meta, gameInfo, story, translationNote, categoryGroups } = desireImmorta
       <h3>{translationNote.title}</h3>
       {translationNote.body.map(p => <p>{p}</p>)}
     </div>
+
+    <DiscordPromo />
 
     <p class="last-updated">
       Last Updated: <FormattedDate date={gameInfo.lastUpdated} />

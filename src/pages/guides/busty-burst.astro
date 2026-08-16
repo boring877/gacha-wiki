@@ -1,6 +1,7 @@
 ---
 import BustyBurstLandingLayout from '../../layouts/busty-burst/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
+import DiscordPromo from '../../components/DiscordPromo.astro';
 import { bustyBurstConfig } from '../../data/busty-burst/busty-burst.js';
 import heroImg from '../../assets/images/games/Busty_Burst/BG/gameLogo.webp';
 
@@ -82,6 +83,8 @@ const { meta, gameInfo, gameNotes, categoryGroups } = bustyBurstConfig;
         </a>
       </div>
     </div>
+
+    <DiscordPromo />
 
     <p class="last-updated">
       Last Updated: <FormattedDate date={gameInfo.lastUpdated} />

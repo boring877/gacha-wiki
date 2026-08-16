@@ -1,6 +1,7 @@
 ---
 import RebellionGilgameshLandingLayout from '../../layouts/rebellion-gilgamesh/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
+import DiscordPromo from '../../components/DiscordPromo.astro';
 import { rebellionGilgameshConfig } from '../../data/rebellion-gilgamesh/rebellion-gilgamesh.js';
 import heroImg from '../../assets/images/games/rebellion-gilgamesh/main-images/BG1.jpg';
 
@@ -145,6 +146,8 @@ const { meta, gameInfo, story, categoryGroups } = rebellionGilgameshConfig;
         </a>
       </div>
     </div>
+
+    <DiscordPromo />
 
     <p class="last-updated">
       Last Updated: <FormattedDate date={gameInfo.lastUpdated} />

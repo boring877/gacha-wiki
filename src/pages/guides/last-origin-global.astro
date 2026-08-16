@@ -2,6 +2,7 @@
 // Last Origin Global landing page
 import LastOriginGlobalLandingLayout from '../../layouts/last-origin-global/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
+import DiscordPromo from '../../components/DiscordPromo.astro';
 import { lastOriginGlobalConfig } from '../../data/last-origin-global/last-origin-global.js';
 import heroImage from '../../assets/images/games/last-origin-global/gameimg/hero.png';
 
@@ -127,6 +128,8 @@ const { meta, gameInfo, story, gameInfo: { preRegistration, socialLinks }, categ
         </a>
       </div>
     </div>
+
+    <DiscordPromo />
 
     <p class="last-updated">
       Last Updated: <FormattedDate date={gameInfo.lastUpdated} />

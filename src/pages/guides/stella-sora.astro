@@ -1,6 +1,7 @@
 ---
 import StellaSoraLandingLayout from '../../layouts/stella-sora/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
+import DiscordPromo from '../../components/DiscordPromo.astro';
 import { stellaSoraConfig } from '../../data/stella-sora/stella-sora.js';
 import heroImg from '../../assets/images/games/stella-sora/gameimg/BG1.jpg';
 
@@ -203,6 +204,8 @@ const breadcrumbs = [
         </a>
       </div>
     </div>
+
+    <DiscordPromo />
 
     <p class="last-updated">
       Last Updated: <FormattedDate date={gameInfo.lastUpdated} />

@@ -1,6 +1,7 @@
 ---
 import StarSaviorLayout from '../../layouts/star-savior/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
+import DiscordPromo from '../../components/DiscordPromo.astro';
 import { starSaviorConfig } from '../../data/star-savior/star-savior.js';
 import { Image } from 'astro:assets';
 import heroImg from '../../assets/images/games/star-savior/hero.png';
@@ -18,6 +19,8 @@ const { meta, gameInfo, categoryGroups } = starSaviorConfig;
     <div class="game-description">
       <p>{gameInfo.description}</p>
     </div>
+
+    <DiscordPromo />
 
     <p class="last-updated">
       Last Updated: <FormattedDate date={gameInfo.lastUpdated} />

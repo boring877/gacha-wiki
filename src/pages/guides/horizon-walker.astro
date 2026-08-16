@@ -1,6 +1,7 @@
 ---
 import HorizonWalkerLayout from '../../layouts/horizon-walker/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
+import DiscordPromo from '../../components/DiscordPromo.astro';
 import HWGuideIcon from '../../components/horizon-walker/HWGuideIcon.astro';
 import { horizonWalkerConfig } from '../../data/horizon-walker/horizon-walker.js';
 import heroImg from '../../assets/images/games/horizon-walker/gameimg/1.png';
@@ -146,6 +147,8 @@ const hasPlatforms = gameInfo.platforms && gameInfo.platforms.length > 0;
         </div>
       )
     }
+
+    <DiscordPromo />
 
     <p class="last-updated">
       Last Updated: <FormattedDate date={gameInfo.lastUpdated} />

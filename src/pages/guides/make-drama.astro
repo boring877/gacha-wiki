@@ -1,6 +1,7 @@
 ---
 import MakeDramaLayout from '../../layouts/make-drama/LandingLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
+import DiscordPromo from '../../components/DiscordPromo.astro';
 import { makeDramaConfig } from '../../data/make-drama/make-drama.js';
 
 // Background image served from Cloudflare R2
@@ -33,6 +34,8 @@ const { meta, gameInfo, story, categoryGroups } = makeDramaConfig;
         <a href="https://x.com/MAkeDrama_KR" class="md-social-link" target="_blank" rel="noopener">X (Twitter)</a>
       </div>
     </div>
+
+    <DiscordPromo />
 
     <p class="last-updated">
       Last Updated: <FormattedDate date={gameInfo.lastUpdated} />
