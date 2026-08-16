@@ -515,7 +515,7 @@ const stats = [
               ? `Minted ${qty} OG${qty > 1 ? 's' : ''} — ${fmtGw(gwPriceWei * BigInt(qty))} $GW burned`
               : `Minted ${qty} OG${qty > 1 ? 's' : ''} — your art is live now`);
             link(`${EXPLORER}/tx/${txHash}`, 'View transaction ↗');
-            link('https://discord.gg/YdWFddQKR8', '🎁 Unlock holder perks on Discord ↗');
+            link('https://discord.gg/YdWFddQKR8', 'Unlock holder perks on Discord ↗');
             await Promise.all([refreshSupply(), loadWalletCount(), loadBalances(), loadYourOgs()]);
           } else if (ok === false) {
             say('Transaction reverted on chain. Nothing was minted.', true);
