@@ -3,9 +3,9 @@
 import MajoLayout from '../../../layouts/majo/LandingLayout.astro';
 import { majoCharacters } from '../../../data/majo/characters.js';
 import { SITE } from '../../../consts';
-import heroImg from '../../../assets/images/games/majo/hero.png';
 import '../../../styles/games/majo/majo-landing.css';
 
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo';
 const witches = majoCharacters.length;
 ---
 
@@ -13,7 +13,7 @@ const witches = majoCharacters.length;
   title="Home"
   description="MAJO: Witches Night (魔女之夜) wiki — R18 strategy gacha RPG on EROLABS. Witch database, skills, gacha mechanics, and lore."
   gameTitle="MAJO: Witches Night"
-  heroImage={heroImg}
+  heroImage={`${R2}/hero.webp`}
 >
   <!-- Ambient background video (avg_cg_C04_mc_memory_incident) — full-bleed top, fades out by mid-page -->
   <div class="majo-bg-video-wrap" aria-hidden="true">

@@ -32,7 +32,7 @@ function fmtDetail(s: string): string {
 }
 
 // Buff/debuff chips from the official skill text, matched to the game's own
-// buff icons (assets/images/games/majo/buffs) where one exists.
+// buff icons (R2 /majo namespace) where one exists.
 function parseEffects(en: string, zh: string): Array<{ label: string; kind: string; icon?: string }> {
   const text = `${en} ${zh}`.toLowerCase();
   const chips: Array<{ label: string; kind: string; icon?: string }> = [];

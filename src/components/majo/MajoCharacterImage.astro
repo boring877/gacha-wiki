@@ -1,11 +1,7 @@
 ---
-// Resolves a MAJO character art filename to an optimized <Image> via astro:assets glob.
-import { Image } from 'astro:assets';
-
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/images/games/majo/characters/**/*.png',
-  { eager: true }
-);
+// MAJO character art, served from the gachawiki-images R2 bucket (keeps the
+// Pages deployment under the 20,000-file limit). Flat /majo/ namespace, webp.
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo';
 
 export interface Props {
   filename: string;
@@ -14,27 +10,8 @@ export interface Props {
   loading?: 'eager' | 'lazy';
 }
 
-function findImage(filename: string): ImageMetadata | null {
-  const key = Object.keys(images).find(k => k.endsWith('/' + filename));
-  return key ? images[key].default : null;
-}
-
 const { filename, alt = 'Character', class: className = '', loading = 'lazy' } = Astro.props;
-const imageData = findImage(filename);
+const src = `${R2}/${filename.replace(/\.png$/, '.webp')}`;
 ---
 
-{imageData ? (
-  <Image
-    src={imageData}
-    alt={alt}
-    class={className}
-    loading={loading}
-    width={293}
-    format="webp"
-    quality={95}
-  />
-) : (
-  <div class={`majo-image-fallback ${className}`} style="min-height: 100px;">
-    {alt}
-  </div>
-)}
+<img src={src} alt={alt} class={className} loading={loading} decoding="async" width="293" height="512" />

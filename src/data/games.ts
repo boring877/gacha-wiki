@@ -141,7 +141,7 @@ export const GAMES: Game[] = [
     name: 'MAJO: Witches Night',
     slug: 'majo',
     description: 'R18 Strategy RPG • EROLABS • Witch Contracts • Real-Time Vertical Combat',
-    image: '/images/games/majo/icon.png',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/icon.webp',
     url: '/guides/majo/',
     status: 'active',
     themeColor: '#8577a8',

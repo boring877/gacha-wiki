@@ -1,25 +1,8 @@
 ---
-// Renders a MAJO in-game icon (rarity/class badges, skill icons, item icons) via astro:assets globs.
-import { Image } from 'astro:assets';
-
-const iconFiles = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/images/games/majo/icons/*.png',
-  { eager: true }
-);
-const skillFiles = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/images/games/majo/skills/*.png',
-  { eager: true }
-);
-const itemFiles = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/images/games/majo/items/*.png',
-  { eager: true }
-);
-const buffFiles = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/images/games/majo/buffs/*.png',
-  { eager: true }
-);
-
-const files = { ...iconFiles, ...skillFiles, ...itemFiles, ...buffFiles };
+// MAJO in-game icons (rarity/class badges, skill icons, item icons, buff icons),
+// served from the gachawiki-images R2 bucket (keeps the Pages deployment under
+// the 20,000-file limit). Flat /majo/ namespace, webp.
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo';
 
 export interface Props {
   /** full icon filename, e.g. 'CharacterDetails_Icon_UR.png' or 'P0016_ClassSkill.png' */
@@ -28,25 +11,8 @@ export interface Props {
   class?: string;
 }
 
-function findIcon(filename: string): ImageMetadata | null {
-  const key = Object.keys(files).find(k => k.endsWith('/' + filename));
-  return key ? files[key].default : null;
-}
-
 const { filename, alt = '', class: className = '' } = Astro.props;
-const iconData = findIcon(filename);
+const src = `${R2}/${filename.replace(/\.png$/, '.webp')}`;
 ---
 
-{iconData ? (
-  <Image
-    src={iconData}
-    alt={alt}
-    class={className}
-    loading="lazy"
-    width={128}
-    format="webp"
-    quality={95}
-  />
-) : (
-  <span class={`majo-icon-fallback ${className}`}>{alt}</span>
-)}
+<img src={src} alt={alt} class={className} loading="lazy" decoding="async" width="128" height="128" />
