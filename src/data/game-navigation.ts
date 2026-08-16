@@ -9,7 +9,8 @@ export type GameKey =
   | 'star-savior'
   | 'last-origin-global'
   | 'make-drama'
-  | 'desire-immortal-realm';
+  | 'desire-immortal-realm'
+  | 'majo';
 
 export interface NavigationLink {
   name: string;
@@ -429,6 +430,29 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
         title: 'Characters',
         links: [
           { name: 'Database', href: '/guides/desire-immortal-realm/characters/' },
+        ],
+      },
+    ],
+  },
+  'majo': {
+    sections: [
+      {
+        title: 'Characters',
+        links: [
+          { name: 'Database', href: '/guides/majo/characters/' },
+          { name: 'Tier List', href: '/guides/majo/tier-list/' },
+        ],
+      },
+      {
+        title: 'Equipment',
+        links: [
+          { name: 'Pieces & Sets', href: '/guides/majo/equipment/' },
+        ],
+      },
+      {
+        title: 'Items',
+        links: [
+          { name: 'Database', href: '/guides/majo/items/' },
         ],
       },
     ],

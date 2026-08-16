@@ -1,0 +1,190 @@
+---
+// MAJO: Witches Night individual witch detail page (art, skills, lore).
+import MajoLayout from '../../../../layouts/majo/LandingLayout.astro';
+import MajoCharacterImage from '../../../../components/majo/MajoCharacterImage.astro';
+import MajoIcon from '../../../../components/majo/MajoIcon.astro';
+import { majoCharacters } from '../../../../data/majo/characters.js';
+import '../../../../styles/games/majo/majo-characters.css';
+
+export async function getStaticPaths() {
+  return majoCharacters.map(char => ({
+    params: { slug: char.slug },
+    props: { char },
+  }));
+}
+
+const { char } = Astro.props;
+
+const skillSections: Array<{ key: string; label: string; tag: string; icon: string }> = [
+  { key: 'normal', label: 'Normal Skill', tag: '普攻', icon: 'NormalSkill' },
+  { key: 'auto', label: 'Auto Skill', tag: '特攻', icon: 'AutoSkill' },
+  { key: 'class', label: 'Class Skill', tag: '职系技', icon: 'ClassSkill' },
+  { key: 'extreme', label: 'Extreme Skill', tag: '极式', icon: 'ExtremeSkill' },
+  { key: 'interference', label: 'Interference Skill', tag: '干涉', icon: 'Interference' },
+  { key: 'passive', label: 'Passive Skill', tag: '被动', icon: 'PassiveSkill' },
+];
+
+// Convert the game's <color=#hex> markup to highlight spans (values/formulas glow gold).
+function fmtDetail(s: string): string {
+  return s
+    .replace(/<color=#[0-9A-Fa-f]+>/g, '<span class="majo-skill-val">')
+    .replace(/<\/color>/g, '</span>');
+}
+
+// Buff/debuff chips from the official skill text, matched to the game's own
+// buff icons (assets/images/games/majo/buffs) where one exists.
+function parseEffects(en: string, zh: string): Array<{ label: string; kind: string; icon?: string }> {
+  const text = `${en} ${zh}`.toLowerCase();
+  const chips: Array<{ label: string; kind: string; icon?: string }> = [];
+  const add = (label: string, kind: string, icon?: string) => {
+    if (!chips.some(c => c.label === label)) chips.push({ label, kind, icon });
+  };
+  if (/(attack power|attack speed|atk)[^.]*?(increas|boost|enhanc)|攻击力提升|攻击速度提升/.test(text)) add('ATK Up', 'buff');
+  if (/(attack speed|攻击速度)[^.]*?(increas|boost|up|提升)/.test(text)) add('Atk Speed Up', 'buff');
+  if (/(movement speed|移动速度)[^.]*?(increas|boost|up|提升)/.test(text)) add('Move Up', 'buff', 'MovingSpeedUp');
+  if (/crit[^.]*?damage[^.]*?(increas|up|boost)|暴击伤害/.test(text)) add('Crit DMG Up', 'buff', 'CriticalDamageUp');
+  else if (/crit[^.]*?(rate|increas|up|boost)|暴击(率)?(提升|上升)/.test(text)) add('Crit Up', 'buff', 'CriticalValueUp');
+  if (/(damage (taken|received)|受到伤害|受到的伤害)[^.]*?(reduc|decreas|down|降低|减少)/.test(text)) add('DMG Taken Down', 'buff', 'DamageResistanceUp');
+  if (/(attack|atk|damage output|造成的伤害)[^.]*?(decreas|weaken|down|reduc|降低|弱化)/.test(text)) add('ATK/DMG Down', 'debuff', 'AttackDown');
+  if (/(damage (taken|received)|受到伤害)[^.]*?(increas|up|提升)/.test(text)) add('DMG Taken Up', 'debuff', 'DamageResistanceDown');
+  if (/(defense|防御)[^.]*?(decreas|weaken|down|reduc|降低|弱化)/.test(text)) add('DEF Down', 'debuff', 'DefenseDown');
+  if (/(dodge|闪避)/.test(text)) add('Dodge Up', 'buff', 'DodgeValueUp');
+  if (/(max(imum)? hp|生命值)[^.]*?(increas|up|提升)/.test(text)) add('Max HP Up', 'buff', 'MaxHpUp');
+  if (/stun|晕眩|眩晕/.test(text)) add('Stun', 'debuff', 'Stun');
+  if (/knock ?(down|out)|击倒/.test(text)) add('Knockdown', 'debuff');
+  if (/heal|回复|恢复|治疗/.test(text)) add('Heal', 'util', 'ExtraHealUp');
+  if (/shield|护盾/.test(text)) add('Shield', 'util');
+  if (/taunt|嘲讽/.test(text)) add('Taunt', 'util', 'TauntUp');
+  if (/cool ?down[^.]*?(zero|reset)|冷却时间归零|重置/.test(text)) add('CD Reset', 'util');
+  return chips;
+}
+---
+
+<MajoLayout
+  title={`${char.nameEn} (${char.nameZh}) — ${char.rarity} ${char.cls}`}
+  description={`${char.nameZh} ${char.nameEn} — ${char.rarity} ${char.cls} witch in MAJO: Witches Night. Skills, awakened art, and lore. ${char.titleEn}`}
+  crumbName={char.nameEn}
+  seoKeywords={[char.nameZh, char.nameJa, char.titleZh, char.slug]}
+>
+  <section class="majo-content-section">
+    <div class="majo-detail-header">
+      <MajoCharacterImage
+        filename={char.image}
+        alt={`${char.nameZh} ${char.nameEn}`}
+        class="majo-detail-art"
+      />
+      <div class="majo-detail-info">
+        <h1>{char.nameEn}</h1>
+        <p class="majo-detail-name-zh">{char.nameZh} · {char.nameJa}</p>
+        <p class="majo-detail-title">{char.titleEn}</p>
+        <div class="majo-meta">
+          <MajoIcon
+            filename={`CharacterDetails_Icon_${char.rarity}.png`}
+            alt={char.rarity}
+            class="majo-icon-rarity majo-icon-lg"
+          />
+          <MajoIcon
+            filename={`GachaPage_Icon_${char.cls}.png`}
+            alt={char.cls}
+            class="majo-icon-class majo-icon-lg"
+          />
+        </div>
+      </div>
+    </div>
+
+    {char.skills && (
+      <div class="majo-detail-section">
+        <h2>Skills</h2>
+        {skillSections.map(({ key, label, tag, icon }) => char.skills[key] && (
+          <div class="majo-skill">
+            <div class="majo-skill-header">
+              <MajoIcon
+                filename={`${char.id}_${icon}.png`}
+                alt={label}
+                class="majo-skill-icon"
+              />
+              <p class="majo-skill-name">
+                <span class="majo-skill-tag">[{tag}]</span>
+                {label}
+              </p>
+            </div>
+            {char.skills[key].map((s, i) => {
+              const chips = parseEffects(s.detailEn || s.infoEn || '', s.detailZh || s.infoZh || '');
+              return (
+                <div>
+                  <p class="majo-skill-name">
+                    {s.nameZh} {s.nameEn && <span class="majo-skill-name-en">/ {s.nameEn}</span>}
+                    {char.skills[key].length > 1 && <span class="majo-skill-name-en"> (R{i})</span>}
+                  </p>
+                  {chips.length > 0 && (
+                    <div class="majo-skill-chips">
+                      {chips.map(c => c.icon ? (
+                        <span class={`majo-chip-icon ${c.kind}`} title={c.label}>
+                          <MajoIcon filename={`${c.icon}.png`} alt={c.label} class="majo-buff-icon" />
+                          <span class="majo-chip-icon-label">{c.label}</span>
+                        </span>
+                      ) : (
+                        <span class={`majo-chip ${c.kind}`}>{c.label}</span>
+                      ))}
+                    </div>
+                  )}
+                  {s.infoZh && <p class="majo-skill-desc">{s.infoZh}</p>}
+                  {s.infoEn && s.infoEn !== s.infoZh && <p class="majo-skill-desc-en">{s.infoEn}</p>}
+                  {s.detailEn && (
+                    <div class="majo-skill-detail">
+                      <p class="majo-skill-detail-en" set:html={fmtDetail(s.detailEn)} />
+                    </div>
+                  )}
+                  {s.detailZh && !s.detailEn && (
+                    <div class="majo-skill-detail">
+                      <p class="majo-skill-detail-en" set:html={fmtDetail(s.detailZh)} />
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+    )}
+
+    {(char.descriptionZh || char.descriptionEn) && (
+      <div class="majo-detail-section">
+        <h2>Lore</h2>
+        {char.descriptionEn && <p class="majo-lore">{char.descriptionEn}</p>}
+        {char.descriptionZh && char.descriptionZh !== char.descriptionEn && (
+          <p class="majo-lore-en">{char.descriptionZh}</p>
+        )}
+      </div>
+    )}
+
+    <div class="majo-detail-section">
+      <h2>Art</h2>
+      {char.image === char.awakenImage ? (
+        <div class="majo-art-pair">
+          <figure>
+            <MajoCharacterImage filename={char.image} alt={`${char.nameZh} art`} />
+            <figcaption>Awakened</figcaption>
+          </figure>
+        </div>
+      ) : (
+        <div class="majo-art-pair">
+          <figure>
+            <MajoCharacterImage
+              filename={char.image}
+              alt={`${char.nameZh} base art`}
+            />
+            <figcaption>Base</figcaption>
+          </figure>
+          <figure>
+            <MajoCharacterImage
+              filename={char.awakenImage}
+              alt={`${char.nameZh} awakened art`}
+            />
+            <figcaption>Awakened</figcaption>
+          </figure>
+        </div>
+      )}
+    </div>
+  </section>
+</MajoLayout>

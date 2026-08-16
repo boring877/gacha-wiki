@@ -1,0 +1,109 @@
+/* MAJO: Witches Night base layout chrome (body, container, page title).
+   Shared components live in majo-common.css; page-specific styles live in
+   majo-landing.css / majo-characters.css. */
+
+.majo-body {
+  background: var(--majo-bg-primary);
+  color: var(--majo-text-primary);
+  font-family: var(--font-primary);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+.majo-bg-primary {
+  background: var(--majo-bg-primary);
+}
+
+.majo-content {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+}
+
+.majo-container {
+  position: relative;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.majo-title-only-section {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+}
+
+.majo-hero-section {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.majo-hero-image-container {
+  width: 100%;
+  max-width: 62rem;
+  height: auto;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: 0 auto 1.5rem;
+  position: relative;
+  border: 1px solid var(--majo-border-light);
+}
+
+.majo-hero-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.majo-hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(to top, rgba(14, 15, 21, 0.55) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.majo-title-only-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--majo-primary-light);
+}
+
+.content-area {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .majo-container {
+    padding: 1rem;
+  }
+
+  .majo-title-only-heading {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .majo-container {
+    padding: 0.75rem;
+  }
+
+  .majo-title-only-heading {
+    font-size: var(--text-2xl);
+  }
+}

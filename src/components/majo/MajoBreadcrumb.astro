@@ -1,0 +1,151 @@
+---
+// Breadcrumb nav for MAJO pages (mirrors desire-immortal-realm's, majo classes).
+import {
+  generateBreadcrumbs,
+  getParentBreadcrumb,
+  generateBackNavigation,
+} from '../../utils/breadcrumb-generator.js';
+import type { BreadcrumbItem, BackNavigation } from '../../utils/breadcrumb-generator.js';
+
+export interface Props {
+  items?: Array<{
+    name: string;
+    href?: string;
+  }>;
+  autoGenerate?: boolean;
+  gameKey?: string;
+  currentPageName?: string;
+  includeHome?: boolean;
+  showBackButton?: boolean;
+}
+
+const {
+  items,
+  autoGenerate = false,
+  gameKey,
+  currentPageName,
+  includeHome = true,
+  showBackButton = true,
+} = Astro.props;
+
+let breadcrumbItems: BreadcrumbItem[] = items || [];
+let backNavigation: BackNavigation | null = null;
+
+if (autoGenerate) {
+  breadcrumbItems = generateBreadcrumbs(Astro.url.pathname, {
+    includeHome,
+    currentPageName,
+    gameKey,
+  });
+
+  if (showBackButton) {
+    backNavigation = generateBackNavigation(Astro.url.pathname, { gameKey });
+  }
+} else if (showBackButton && items) {
+  const parent = getParentBreadcrumb(items);
+  if (parent) {
+    backNavigation = {
+      href: parent.href || '/',
+      text: `Back to ${parent.name}`,
+      parentName: parent.name,
+    };
+  }
+}
+---
+
+<nav class="majo-breadcrumb" aria-label="Breadcrumb">
+  <div class="majo-breadcrumb-container">
+    {
+      backNavigation && (
+        <button
+          class="majo-breadcrumb-back"
+          onclick={`window.location.href='${backNavigation.href}'`}
+          aria-label={backNavigation.text}
+        >
+          ← {backNavigation.parentName}
+        </button>
+      )
+    }
+    <ol class="majo-breadcrumb-list">
+      {
+        breadcrumbItems.map((item, index) => (
+          <li class="majo-breadcrumb-item">
+            {item.href && index < breadcrumbItems.length - 1 ? (
+              <a href={item.href} class="majo-breadcrumb-link">
+                {item.name}
+              </a>
+            ) : (
+              <span class="majo-breadcrumb-current" aria-current="page">
+                {item.name}
+              </span>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</nav>
+
+<style>
+  .majo-breadcrumb {
+    margin-bottom: 1.5rem;
+  }
+
+  .majo-breadcrumb-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .majo-breadcrumb-back {
+    background: var(--majo-bg-tertiary);
+    border: 1px solid var(--majo-border);
+    color: var(--majo-text-secondary);
+    border-radius: 6px;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .majo-breadcrumb-back:hover {
+    border-color: var(--majo-primary);
+    color: var(--majo-text-primary);
+  }
+
+  .majo-breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+  }
+
+  .majo-breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .majo-breadcrumb-item:not(:last-child)::after {
+    content: '/';
+    color: var(--majo-text-muted);
+  }
+
+  .majo-breadcrumb-link {
+    color: var(--majo-text-secondary);
+    text-decoration: none;
+  }
+
+  .majo-breadcrumb-link:hover {
+    color: var(--majo-primary-light);
+  }
+
+  .majo-breadcrumb-current {
+    color: var(--majo-text-tertiary);
+  }
+</style>

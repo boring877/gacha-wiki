@@ -1,0 +1,53 @@
+---
+// MAJO provisional tier list, grouped by class.
+import MajoLayout from '../../../../layouts/majo/LandingLayout.astro';
+import MajoCharacterImage from '../../../../components/majo/MajoCharacterImage.astro';
+import MajoIcon from '../../../../components/majo/MajoIcon.astro';
+import { majoTierByClass } from '../../../../data/majo/tier-list.js';
+import '../../../../styles/games/majo/majo-tier.css';
+---
+
+<MajoLayout
+  title="Tier List"
+  description="Provisional tier list for MAJO: Witches Night, grouped by class (Fighter, Mage, Tank, Healer). Placeholder rankings until the meta develops."
+  gameTitle="Tier List"
+>
+  <section>
+    <p class="majo-tier-note">
+      Early tier list, under work. Please visit the
+      <a href="https://discord.gg/YdWFddQKR8" target="_blank" rel="noopener noreferrer" class="majo-tier-discord">Discord</a>.
+    </p>
+
+    {majoTierByClass.map(group => (
+      <div class="majo-tier-class-section">
+        <div class="majo-tier-class-header">
+          <MajoIcon filename={`GachaPage_Icon_${group.cls}.png`} alt={group.cls} class="majo-icon-class" />
+          <h2 class="majo-tier-class-title">{group.cls}<span class="majo-tier-class-zh">{group.clsZh}</span></h2>
+          <span class="majo-tier-class-count">
+            {group.tiers.reduce((n, t) => n + t.characters.length, 0)} witches
+          </span>
+        </div>
+        <div class="majo-tier-grid">
+          {group.tiers.map(row => (
+            <div class={`majo-tier-row tier-${row.tier.toLowerCase()}`}>
+              <div class="majo-tier-label">
+                <span class="majo-tier-name">{row.tier}</span>
+              </div>
+              <div class="majo-tier-characters">
+                {row.characters.map(c => (
+                  <a class="majo-tier-card" href={`/guides/majo/characters/${c.slug}/`}>
+                    <MajoCharacterImage filename={c.icon} alt={c.nameEn} class="majo-tier-thumb" />
+                    <span class="majo-tier-icons">
+                      <MajoIcon filename={`CharacterDetails_Icon_${c.rarity}.png`} alt={c.rarity} class="majo-icon-rarity" />
+                    </span>
+                    <span class="majo-tier-name-label">{c.nameEn}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </section>
+</MajoLayout>

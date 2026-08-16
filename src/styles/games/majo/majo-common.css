@@ -1,0 +1,287 @@
+/* MAJO: Witches Night shared content components — used by the landing page
+   AND the character database pages (sections, skills, badges, meta rows).
+   Loaded by the majo LandingLayout so every majo page gets these. */
+
+.majo-content-section {
+  margin-bottom: 2rem;
+}
+
+/* Section heading (shared by landing / items / equipment pages) */
+.majo-section-title {
+  font-size: 1.6rem;
+  margin-bottom: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--majo-primary-light);
+}
+
+/* Toolbar: search + filter buttons (shared by characters / items / equipment pages) */
+.majo-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--majo-bg-secondary);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+}
+
+.majo-search {
+  padding: 0.5rem 0.75rem;
+  background: var(--majo-bg-tertiary);
+  border: 1px solid var(--majo-border);
+  border-radius: 8px;
+  color: var(--majo-text-primary);
+  font-size: 0.875rem;
+  outline: none;
+  min-width: 180px;
+}
+
+.majo-search:focus {
+  border-color: var(--majo-primary);
+}
+
+.majo-search::placeholder {
+  color: var(--majo-text-muted);
+}
+
+.majo-filter-btn {
+  padding: 0.4rem 0.75rem;
+  background: var(--majo-bg-tertiary);
+  border: 1px solid var(--majo-border);
+  border-radius: 6px;
+  color: var(--majo-text-secondary);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.majo-filter-btn.active {
+  background: var(--majo-primary);
+  border-color: var(--majo-primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+.majo-count {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--majo-text-muted);
+}
+
+.majo-detail-section {
+  background: var(--majo-bg-card);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.majo-detail-section h2 {
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+  color: var(--majo-primary-light);
+  font-weight: 600;
+}
+
+.majo-skill {
+  margin-bottom: 1.25rem;
+}
+
+.majo-skill:last-child {
+  margin-bottom: 0;
+}
+
+.majo-skill-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.majo-skill-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--majo-border);
+  background: var(--majo-bg-tertiary);
+  flex-shrink: 0;
+}
+
+.majo-skill-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--majo-primary-light);
+  margin: 0 0 0.5rem;
+}
+
+.majo-skill-name-en {
+  color: var(--majo-text-secondary);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.majo-skill-desc {
+  color: var(--majo-text-secondary);
+  line-height: 1.6;
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+}
+
+/* English descriptions are the primary readable text on this wiki — keep them bright */
+.majo-skill-desc-en {
+  color: var(--majo-text-primary);
+  opacity: 0.92;
+  line-height: 1.6;
+  margin: 0.2rem 0 0;
+  font-size: 0.9rem;
+}
+
+.majo-skill-tag {
+  color: var(--majo-accent-light);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-right: 0.4rem;
+}
+
+/* Buff/debuff chips (derived from official skill text) */
+.majo-skill-chips {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0.15rem 0 0.5rem;
+}
+
+/* Icon chip: game buff icon + tiny label */
+.majo-chip-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.18rem 0.5rem 0.18rem 0.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--majo-border);
+  background: var(--majo-bg-tertiary);
+}
+
+.majo-chip-icon.buff { border-color: var(--majo-success); }
+.majo-chip-icon.debuff { border-color: var(--majo-error); }
+.majo-chip-icon.util { border-color: var(--majo-info); }
+
+.majo-buff-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.majo-chip-icon-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--majo-text-primary);
+  white-space: nowrap;
+}
+
+.majo-chip {
+  font-size: 0.68rem;
+  padding: 0.12rem 0.45rem;
+  border-radius: 4px;
+  font-weight: 600;
+  border: 1px solid;
+  line-height: 1.4;
+}
+
+.majo-chip.buff {
+  color: var(--majo-success);
+  border-color: var(--majo-success);
+  background: rgba(92, 171, 104, 0.08);
+}
+
+.majo-chip.debuff {
+  color: var(--majo-error);
+  border-color: var(--majo-error);
+  background: rgba(201, 106, 106, 0.08);
+}
+
+.majo-chip.util {
+  color: var(--majo-info);
+  border-color: var(--majo-info);
+  background: rgba(106, 155, 201, 0.08);
+}
+
+/* Skill detail box — in-game detail text with damage formulas and buff values */
+.majo-skill-detail {
+  margin: 0.35rem 0 0.9rem;
+  padding: 0.6rem 0.75rem;
+  background: var(--majo-bg-tertiary);
+  border-left: 2px solid var(--majo-primary);
+  border-radius: 0 6px 6px 0;
+}
+
+.majo-skill-detail-en {
+  color: var(--majo-text-primary);
+  opacity: 0.92;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 0.85rem;
+  white-space: pre-line;
+}
+
+/* Gold highlights carried over from the game's <color> markup (values/formulas) */
+.majo-skill-val {
+  color: var(--majo-rarity-ssr);
+  font-weight: 600;
+}
+
+.majo-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+/* In-game rarity/class icons (single source for all badge styling — do not
+   duplicate badge CSS in page stylesheets). Rarity crests are wide banners,
+   class emblems are round with detailed art — sized so both read clearly. */
+.majo-icon-rarity {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+}
+
+.majo-icon-class {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+}
+
+.majo-icon-lg {
+  height: 40px;
+}
+
+.majo-icon-class.majo-icon-lg {
+  height: 52px;
+}
+
+.majo-icon-fallback {
+  display: inline-block;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--majo-bg-tertiary);
+  color: var(--majo-text-secondary);
+  border: 1px solid var(--majo-border);
+}
+
+.majo-image-fallback {
+  border: 1px dashed var(--majo-border-light);
+  background: var(--majo-bg-tertiary);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--majo-text-muted);
+  font-size: 0.75rem;
+}

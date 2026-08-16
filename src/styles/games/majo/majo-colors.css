@@ -1,0 +1,52 @@
+/* MAJO: Witches Night color system — calm dusk-lavender & moonlight theme.
+   Muted, desaturated night palette (deep indigo-charcoal backgrounds, dusk-violet
+   primary, moonlit silver-blue accent) following the wiki's muted-primary convention.
+
+   Original saturated witch-purple (#9333ea) was retired 2026-08-16 as too loud
+   next to the other games' calm palettes. */
+
+:root {
+  --majo-primary: #8577a8;
+  --majo-primary-light: #a89bd1;
+  --majo-primary-dark: #5e5382;
+
+  --majo-secondary: #232030;
+  --majo-secondary-light: #34304a;
+
+  --majo-accent: #8fa8c9;
+  --majo-accent-light: #bccbe2;
+
+  --majo-bg-primary: #0e0f15;
+  --majo-bg-secondary: #14161f;
+  --majo-bg-tertiary: #1a1d29;
+  --majo-bg-card: #161823;
+
+  --majo-text-primary: #eceaf2;
+  --majo-text-secondary: #a8a5b8;
+  --majo-text-tertiary: #736f85;
+  --majo-text-muted: #474453;
+
+  --majo-border: #242638;
+  --majo-border-light: #333448;
+  --majo-border-dark: #161823;
+
+  --majo-success: #5cab68;
+  --majo-warning: #d99a5b;
+  --majo-error: #c96a6a;
+  --majo-info: #6a9bc9;
+
+  /* Class colors (Fighter 破阵 / Mage 飞袭 / Tank 守护 / Healer 支援) — muted */
+  --majo-class-fighter: #c07676;
+  --majo-class-mage: #9182b5;
+  --majo-class-tank: #6d93bd;
+  --majo-class-healer: #67b389;
+
+  /* Rarity colors — soft */
+  --majo-rarity-ur: #dbb06e;
+  --majo-rarity-ssr: #d6c689;
+  --majo-rarity-sr: #a9a3d4;
+
+  --majo-gradient-primary: linear-gradient(135deg, var(--majo-primary) 0%, var(--majo-primary-dark) 100%);
+  --majo-gradient-secondary: linear-gradient(135deg, var(--majo-secondary) 0%, var(--majo-secondary-light) 100%);
+  --majo-gradient-card: linear-gradient(135deg, var(--majo-bg-card) 0%, var(--majo-bg-secondary) 100%);
+}

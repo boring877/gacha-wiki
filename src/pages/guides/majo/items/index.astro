@@ -1,0 +1,91 @@
+---
+// MAJO: Witches Night item database (currencies, crystals, skill books, equipment, cosmetics).
+import MajoLayout from '../../../../layouts/majo/LandingLayout.astro';
+import MajoIcon from '../../../../components/majo/MajoIcon.astro';
+import { majoItems, majoItemCategories } from '../../../../data/majo/items.js';
+import '../../../../styles/games/majo/majo-items.css';
+
+const items = majoItems;
+// only categories that actually appear
+const categories = majoItemCategories.filter(c => items.some(i => i.category === c));
+---
+
+<MajoLayout
+  title="Item Database"
+  description="Complete item database for MAJO: Witches Night — currencies, witch crystals, skill books, star chart materials, equipment, avatars, titles and packs."
+  gameTitle="Items"
+>
+  <section class="majo-content-section">
+    <div class="majo-toolbar">
+      <input type="text" class="majo-search" placeholder="Search items..." id="majo-item-search" />
+      <button class="majo-filter-btn active" data-filter="all">All</button>
+      {categories.map(c => (
+        <button class="majo-filter-btn" data-filter={c}>{c}</button>
+      ))}
+      <span class="majo-count" id="majo-item-count">{items.length} items</span>
+    </div>
+
+    <div class="majo-item-grid" id="majo-item-grid">
+      {items.map(item => (
+        <div
+          class="majo-item-card"
+          data-category={item.category}
+          data-name-zh={(item.nameZh || '').toLowerCase()}
+          data-name-en={(item.nameEn || '').toLowerCase()}
+          data-id={item.id.toLowerCase()}
+          title={item.descEn || item.descZh || ''}
+        >
+          {item.icon ? (
+            <MajoIcon filename={`${item.icon}.png`} alt={item.nameEn || item.nameZh} class="majo-item-icon" />
+          ) : (
+            <span class="majo-item-icon majo-icon-fallback">?</span>
+          )}
+          <div class="majo-item-body">
+            <p class="majo-item-name-en">{item.nameEn || item.nameZh}</p>
+            <p class="majo-item-name-zh">{item.nameZh}</p>
+            <span class="majo-item-cat">{item.category}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</MajoLayout>
+
+<script>
+  const search = document.getElementById('majo-item-search') as HTMLInputElement;
+  const grid = document.getElementById('majo-item-grid');
+  const countEl = document.getElementById('majo-item-count');
+  const filterBtns = document.querySelectorAll('.majo-filter-btn');
+
+  function updateDisplay() {
+    if (!search || !grid) return;
+    const query = search.value.toLowerCase();
+    const activeFilter = document.querySelector('.majo-filter-btn.active')?.getAttribute('data-filter') || 'all';
+    const cards = grid?.querySelectorAll('.majo-item-card') as NodeListOf<HTMLElement>;
+    let visible = 0;
+
+    cards?.forEach(card => {
+      const nameZh = card.dataset.nameZh || '';
+      const nameEn = card.dataset.nameEn || '';
+      const id = card.dataset.id || '';
+      const cat = card.dataset.category || '';
+      const matchesSearch = nameZh.includes(query) || nameEn.includes(query) || id.includes(query);
+      const matchesFilter = activeFilter === 'all' || cat === activeFilter;
+      const show = matchesSearch && matchesFilter;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    if (countEl) countEl.textContent = `${visible} item${visible !== 1 ? 's' : ''}`;
+  }
+
+  search?.addEventListener('input', updateDisplay);
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      updateDisplay();
+    });
+  });
+</script>

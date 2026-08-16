@@ -1,0 +1,107 @@
+---
+// MAJO: Witches Night character database (grid of 26 launch witches).
+import MajoLayout from '../../../../layouts/majo/LandingLayout.astro';
+import MajoCharacterImage from '../../../../components/majo/MajoCharacterImage.astro';
+import MajoIcon from '../../../../components/majo/MajoIcon.astro';
+import { majoCharacters, majoClasses, majoRarities } from '../../../../data/majo/characters.js';
+import '../../../../styles/games/majo/majo-characters.css';
+
+const characters = majoCharacters;
+---
+
+<MajoLayout
+  title="Character Database"
+  description="Complete witch database for MAJO: Witches Night (魔女之夜). Browse all 26 launch witches with rarity, class, titles, skills, and lore."
+  gameTitle="Characters"
+>
+  <section class="majo-content-section">
+    <div class="majo-toolbar">
+      <input type="text" class="majo-search" placeholder="Search by Chinese, English or Japanese name..." id="majo-search" />
+      <button class="majo-filter-btn active" data-filter="all">All</button>
+      {majoRarities.map(r => (
+        <button class="majo-filter-btn" data-filter={r}>{r}</button>
+      ))}
+      {majoClasses.map(c => (
+        <button class="majo-filter-btn" data-filter={c}>{c}</button>
+      ))}
+      <span class="majo-count" id="majo-count">{characters.length} witches</span>
+    </div>
+
+    <div class="majo-char-grid" id="majo-char-grid">
+      {characters.map(char => (
+        <a
+          href={`/guides/majo/characters/${char.slug}/`}
+          class="majo-char-card"
+          data-rarity={char.rarity}
+          data-class={char.cls}
+          data-name-zh={(char.nameZh || '').toLowerCase()}
+          data-name-en={(char.nameEn || '').toLowerCase()}
+          data-name-ja={(char.nameJa || '').toLowerCase()}
+        >
+          <MajoCharacterImage
+            filename={char.image}
+            alt={`${char.nameZh} ${char.nameEn}`}
+            class="majo-char-art"
+          />
+          <div class="majo-char-card-body">
+            <p class="majo-char-name-en">{char.nameEn}</p>
+            <p class="majo-char-name-zh">{char.nameZh} · {char.nameJa}</p>
+            <p class="majo-char-title">{char.titleEn}</p>
+            <p class="majo-char-meta">
+              <MajoIcon
+                filename={`CharacterDetails_Icon_${char.rarity}.png`}
+                alt={char.rarity}
+                class="majo-icon-rarity"
+              />
+              <MajoIcon
+                filename={`GachaPage_Icon_${char.cls}.png`}
+                alt={char.cls}
+                class="majo-icon-class"
+              />
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</MajoLayout>
+
+<script>
+  const search = document.getElementById('majo-search') as HTMLInputElement;
+  const grid = document.getElementById('majo-char-grid');
+  const countEl = document.getElementById('majo-count');
+  const filterBtns = document.querySelectorAll('.majo-filter-btn');
+
+  function updateDisplay() {
+    if (!search || !grid) return;
+    const query = search.value.toLowerCase();
+    const activeFilter = document.querySelector('.majo-filter-btn.active')?.getAttribute('data-filter') || 'all';
+    const cards = grid?.querySelectorAll('.majo-char-card') as NodeListOf<HTMLElement>;
+    let visible = 0;
+
+    cards?.forEach(card => {
+      const nameZh = card.dataset.nameZh || '';
+      const nameEn = card.dataset.nameEn || '';
+      const nameJa = card.dataset.nameJa || '';
+      const cls = card.dataset.class || '';
+      const rarity = card.dataset.rarity || '';
+      const matchesSearch = nameZh.includes(query) || nameEn.includes(query) || nameJa.includes(query);
+      const matchesFilter = activeFilter === 'all' || cls === activeFilter || rarity === activeFilter;
+      const show = matchesSearch && matchesFilter;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    if (countEl) countEl.textContent = `${visible} witch${visible !== 1 ? 'es' : ''}`;
+  }
+
+  search?.addEventListener('input', updateDisplay);
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      updateDisplay();
+    });
+  });
+</script>

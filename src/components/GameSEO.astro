@@ -57,10 +57,14 @@ if (!gameConfig) {
   );
 }
 
+// Generate canonical URL
+const canonicalURL = includeCanonical ? new URL(Astro.url.pathname, Astro.site) : null;
+
 // Generate SEO data with validation
 const keywords = generateGameKeywords(gameKey, additionalKeywords);
 const finalThemeColor = themeColor || gameConfig.themeColor;
-const finalStructuredData = structuredData || generateGameStructuredData(gameKey, description);
+const finalStructuredData =
+  structuredData || generateGameStructuredData(gameKey, description, canonicalURL?.toString());
 
 // Validate generated SEO data in development
 if (import.meta.env.DEV) {
@@ -77,9 +81,6 @@ if (import.meta.env.DEV) {
     );
   }
 }
-
-// Generate canonical URL
-const canonicalURL = includeCanonical ? new URL(Astro.url.pathname, Astro.site) : null;
 ---
 
 <!-- Game-Specific SEO Meta Tags -->{keywords && <meta name="keywords" content={keywords} />}

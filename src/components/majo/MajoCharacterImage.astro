@@ -1,0 +1,32 @@
+---
+// Resolves a MAJO character art filename to an optimized <Image> via astro:assets glob.
+import { Image } from 'astro:assets';
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/majo/characters/**/*.png',
+  { eager: true }
+);
+
+export interface Props {
+  filename: string;
+  alt?: string;
+  class?: string;
+  loading?: 'eager' | 'lazy';
+}
+
+function findImage(filename: string): ImageMetadata | null {
+  const key = Object.keys(images).find(k => k.endsWith('/' + filename));
+  return key ? images[key].default : null;
+}
+
+const { filename, alt = 'Character', class: className = '', loading = 'lazy' } = Astro.props;
+const imageData = findImage(filename);
+---
+
+{imageData ? (
+  <Image src={imageData} alt={alt} class={className} loading={loading} format="webp" quality={95} />
+) : (
+  <div class={`majo-image-fallback ${className}`} style="min-height: 100px;">
+    {alt}
+  </div>
+)}

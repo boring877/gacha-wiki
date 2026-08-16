@@ -1,0 +1,44 @@
+---
+// Renders a MAJO in-game icon (rarity/class badges, skill icons, item icons) via astro:assets globs.
+import { Image } from 'astro:assets';
+
+const iconFiles = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/majo/icons/*.png',
+  { eager: true }
+);
+const skillFiles = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/majo/skills/*.png',
+  { eager: true }
+);
+const itemFiles = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/majo/items/*.png',
+  { eager: true }
+);
+const buffFiles = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/images/games/majo/buffs/*.png',
+  { eager: true }
+);
+
+const files = { ...iconFiles, ...skillFiles, ...itemFiles, ...buffFiles };
+
+export interface Props {
+  /** full icon filename, e.g. 'CharacterDetails_Icon_UR.png' or 'P0016_ClassSkill.png' */
+  filename: string;
+  alt?: string;
+  class?: string;
+}
+
+function findIcon(filename: string): ImageMetadata | null {
+  const key = Object.keys(files).find(k => k.endsWith('/' + filename));
+  return key ? files[key].default : null;
+}
+
+const { filename, alt = '', class: className = '' } = Astro.props;
+const iconData = findIcon(filename);
+---
+
+{iconData ? (
+  <Image src={iconData} alt={alt} class={className} loading="lazy" format="webp" quality={95} />
+) : (
+  <span class={`majo-icon-fallback ${className}`}>{alt}</span>
+)}

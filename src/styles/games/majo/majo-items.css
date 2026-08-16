@@ -1,0 +1,80 @@
+/* MAJO: Witches Night item database styles (toolbar reuses majo-characters.css
+   classes — this file holds only the item grid and cards). */
+
+.majo-item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 0.75rem;
+}
+
+.majo-item-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--majo-gradient-card);
+  border: 1px solid var(--majo-border);
+  border-radius: 10px;
+  transition: border-color 0.15s ease;
+  cursor: default;
+}
+
+.majo-item-card:hover {
+  border-color: var(--majo-primary);
+}
+
+.majo-item-icon {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  object-fit: contain;
+  border-radius: 8px;
+  background: var(--majo-bg-tertiary);
+  border: 1px solid var(--majo-border);
+}
+
+.majo-item-body {
+  min-width: 0;
+}
+
+.majo-item-name-en {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--majo-text-primary);
+  margin: 0;
+  line-height: 1.25;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.majo-item-name-zh {
+  font-size: 0.75rem;
+  color: var(--majo-primary-light);
+  margin: 0.1rem 0 0.3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.majo-item-cat {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--majo-text-tertiary);
+  border: 1px solid var(--majo-border);
+  border-radius: 4px;
+  padding: 0.08rem 0.35rem;
+}
+
+@media (max-width: 768px) {
+  .majo-item-grid {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .majo-item-icon {
+    width: 44px;
+    height: 44px;
+  }
+}

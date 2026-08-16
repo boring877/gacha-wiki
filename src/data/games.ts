@@ -137,6 +137,17 @@ export const GAMES: Game[] = [
     sections: ['Characters', 'Factions', 'Elements', 'Pre-Registration'],
   },
   {
+    id: 'majo',
+    name: 'MAJO: Witches Night',
+    slug: 'majo',
+    description: 'R18 Strategy RPG • EROLABS • Witch Contracts • Real-Time Vertical Combat',
+    image: '/images/games/majo/icon.png',
+    url: '/guides/majo/',
+    status: 'active',
+    themeColor: '#8577a8',
+    sections: ['Characters', 'Items', 'Gacha', 'Skills'],
+  },
+  {
     id: 'desire-immortal-realm',
     name: 'Desire Immortal Realm',
     slug: 'desire-immortal-realm',

@@ -1,0 +1,117 @@
+---
+// MAJO: Witches Night game overview landing page (mirrors desire-immortal-realm structure).
+import MajoLayout from '../../../layouts/majo/LandingLayout.astro';
+import { majoCharacters } from '../../../data/majo/characters.js';
+import { SITE } from '../../../consts';
+import heroImg from '../../../assets/images/games/majo/hero.png';
+import '../../../styles/games/majo/majo-landing.css';
+
+const witches = majoCharacters.length;
+---
+
+<MajoLayout
+  title="Home"
+  description="MAJO: Witches Night (魔女之夜) wiki — R18 strategy gacha RPG on EROLABS. Witch database, skills, gacha mechanics, and lore."
+  gameTitle="MAJO: Witches Night"
+  heroImage={heroImg}
+>
+  <!-- Ambient background video (avg_cg_C04_mc_memory_incident) — full-bleed top, fades out by mid-page -->
+  <div class="majo-bg-video-wrap" aria-hidden="true">
+    <video class="majo-bg-video" autoplay muted loop playsinline preload="auto">
+      <source src="/videos/majo-hero.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <section class="majo-content-section">
+    <div class="majo-story">
+      <p>
+        Memory is the most unreliable thing in this world. In a near future where humanity's
+        collective subconscious has been tampered with, you awaken as the era's
+        <strong>Observer</strong> — the only one who can perceive the truth. Contract with witches
+        from countless parallel worlds, fight beside them in real-time vertical combat, and build
+        bonds that go beyond words.
+      </p>
+      <p>
+        <strong>MAJO: Witches Night</strong> (魔女之夜) is an R18 apocalyptic strategy gacha on
+        the EROLABS platform, launched August 12, 2026, with a launch roster of {witches} witches
+        across four classes.
+      </p>
+    </div>
+
+    <div class="majo-download-row">
+      <a
+        class="majo-download-btn"
+        href="https://game.erolabsshare.live/app/f302f717/MAJO_Witches_Night"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Download &amp; Play MAJO: Witches Night
+        <span class="majo-download-arrow">→</span>
+      </a>
+
+      <a
+        class="majo-download-btn majo-discord-btn"
+        href={SITE.SOCIAL.DISCORD}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg
+          class="majo-discord-icon"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"
+          />
+        </svg>
+        Join our Discord
+      </a>
+    </div>
+  </section>
+
+  <section class="majo-resources-section">
+    <h2 class="majo-resources-title">Guides &amp; Resources</h2>
+
+    <div class="majo-resources-grid">
+      <div class="majo-resource-category">
+        <div class="majo-category-header">
+          <h3>Characters</h3>
+          <p class="majo-category-description">
+            All {witches} launch witches with rarity, class, skills and lore.
+          </p>
+        </div>
+        <div class="majo-buttons-grid">
+          <a href="/guides/majo/characters/" class="majo-resource-button">Witch Database</a>
+          <a href="/guides/majo/tier-list/" class="majo-resource-button">Tier List</a>
+        </div>
+      </div>
+
+      <div class="majo-resource-category">
+        <div class="majo-category-header">
+          <h3>Equipment</h3>
+          <p class="majo-category-description">
+            Set bonuses (2/4-piece) and SR equipment for all six gear slots.
+          </p>
+        </div>
+        <div class="majo-buttons-grid">
+          <a href="/guides/majo/equipment/" class="majo-resource-button">Pieces &amp; Sets</a>
+        </div>
+      </div>
+
+      <div class="majo-resource-category">
+        <div class="majo-category-header">
+          <h3>Items</h3>
+          <p class="majo-category-description">
+            Currencies, witch crystals, skill books, equipment and cosmetics.
+          </p>
+        </div>
+        <div class="majo-buttons-grid">
+          <a href="/guides/majo/items/" class="majo-resource-button">Item Database</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MajoLayout>

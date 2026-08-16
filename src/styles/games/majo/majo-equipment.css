@@ -1,0 +1,365 @@
+/* MAJO: Witches Night equipment styles — self-contained for the equipment
+   pages (index + piece detail). All classes are majo-eq- prefixed; only the
+   color variables from majo-colors.css are shared. */
+
+/* Section heading */
+.majo-eq-title {
+  font-size: 1.6rem;
+  margin-bottom: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--majo-primary-light);
+}
+
+/* Toolbar: search + slot filters */
+.majo-eq-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--majo-bg-secondary);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+}
+
+.majo-eq-search {
+  padding: 0.5rem 0.75rem;
+  background: var(--majo-bg-tertiary);
+  border: 1px solid var(--majo-border);
+  border-radius: 8px;
+  color: var(--majo-text-primary);
+  font-size: 0.875rem;
+  outline: none;
+  min-width: 180px;
+}
+
+.majo-eq-search:focus {
+  border-color: var(--majo-primary);
+}
+
+.majo-eq-search::placeholder {
+  color: var(--majo-text-muted);
+}
+
+.majo-eq-filter-btn {
+  padding: 0.4rem 0.75rem;
+  background: var(--majo-bg-tertiary);
+  border: 1px solid var(--majo-border);
+  border-radius: 6px;
+  color: var(--majo-text-secondary);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.majo-eq-filter-btn.active {
+  background: var(--majo-primary);
+  border-color: var(--majo-primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+.majo-eq-count {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--majo-text-muted);
+}
+
+/* Piece grid + cards */
+.majo-eq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 0.75rem;
+}
+
+.majo-eq-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--majo-gradient-card);
+  border: 1px solid var(--majo-border);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.majo-eq-card:hover {
+  border-color: var(--majo-primary);
+}
+
+.majo-eq-icon {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  object-fit: contain;
+  border-radius: 8px;
+  background: var(--majo-bg-tertiary);
+  border: 1px solid var(--majo-border);
+}
+
+.majo-eq-body {
+  min-width: 0;
+}
+
+.majo-eq-name-en {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--majo-text-primary);
+  margin: 0;
+  line-height: 1.25;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.majo-eq-name-zh {
+  font-size: 0.75rem;
+  color: var(--majo-primary-light);
+  margin: 0.1rem 0 0.3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.majo-eq-cat {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--majo-text-tertiary);
+  border: 1px solid var(--majo-border);
+  border-radius: 4px;
+  padding: 0.08rem 0.35rem;
+}
+
+/* Set bonus cards (index page) */
+.majo-eq-set-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.majo-eq-set-card {
+  background: var(--majo-bg-card);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.majo-eq-set-name {
+  margin: 0 0 0.9rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--majo-text-primary);
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.majo-eq-set-zh {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--majo-primary-light);
+}
+
+.majo-eq-bonus {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.majo-eq-bonus:last-child {
+  margin-bottom: 0;
+}
+
+.majo-eq-bonus p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--majo-text-primary);
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.majo-eq-bonus .majo-chip {
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+/* Detail page */
+.majo-eq-detail-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: var(--majo-bg-card);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+}
+
+.majo-eq-detail-art {
+  width: 180px;
+  max-width: 100%;
+  border-radius: 12px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border: 1px solid var(--majo-border-light);
+  background: var(--majo-bg-tertiary);
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+.majo-eq-detail-info h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.8rem;
+  color: var(--majo-text-primary);
+}
+
+.majo-eq-detail-name-zh {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  color: var(--majo-primary-light);
+  font-weight: 500;
+}
+
+.majo-eq-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.majo-eq-detail-section {
+  background: var(--majo-bg-card);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.majo-eq-detail-section h2 {
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+  color: var(--majo-primary-light);
+  font-weight: 600;
+}
+
+.majo-eq-desc-en {
+  color: var(--majo-text-primary);
+  opacity: 0.92;
+  line-height: 1.6;
+  margin: 0 0 0.6rem;
+  font-size: 0.9rem;
+}
+
+.majo-eq-desc {
+  color: var(--majo-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+/* Set bonus reference list (detail page) */
+.majo-eq-set-ref-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.75rem;
+}
+
+.majo-eq-set-ref {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  background: var(--majo-bg-tertiary);
+  border: 1px solid var(--majo-border);
+  border-radius: 8px;
+  font-size: 0.82rem;
+}
+
+.majo-eq-set-ref-name {
+  font-weight: 700;
+  color: var(--majo-text-primary);
+}
+
+.majo-eq-set-ref-bonus {
+  color: var(--majo-text-secondary);
+}
+
+/* Fact rows (Details section on the piece page) */
+.majo-eq-fact-row {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--majo-border);
+  font-size: 0.88rem;
+}
+
+.majo-eq-fact-row:last-child {
+  border-bottom: none;
+}
+
+.majo-eq-fact-label {
+  flex: 0 0 90px;
+  font-weight: 600;
+  color: var(--majo-text-tertiary);
+}
+
+.majo-eq-fact-value {
+  color: var(--majo-text-primary);
+  opacity: 0.92;
+  line-height: 1.55;
+}
+
+/* Icon fallback (when a piece has no shipped icon) */
+.majo-eq-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--majo-text-muted);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .majo-eq-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .majo-eq-search {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .majo-eq-count {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .majo-eq-grid {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .majo-eq-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .majo-eq-detail-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .majo-eq-detail-art {
+    width: 150px;
+  }
+
+  .majo-eq-meta {
+    justify-content: center;
+  }
+}

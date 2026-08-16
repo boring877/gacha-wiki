@@ -1,0 +1,230 @@
+/* MAJO: Witches Night landing page styles (mirrors dir-landing.css structure).
+   Imported only by /guides/majo/index.astro. */
+
+/* Ambient background video — visible at top, fades to nothing by mid-page (nft.astro pattern) */
+.majo-bg-video-wrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 70vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.majo-bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.45;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 22%, transparent 82%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 22%, transparent 82%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .majo-bg-video-wrap {
+    display: none;
+  }
+}
+
+/* keep content above the ambient video */
+.majo-content-section,
+.majo-resources-section {
+  position: relative;
+  z-index: 1;
+}
+
+.majo-content-section {
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  background: var(--majo-bg-secondary);
+  border-radius: 16px;
+  border: 1px solid var(--majo-border);
+}
+
+.majo-story {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.majo-story p {
+  color: var(--majo-text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.majo-story strong {
+  color: var(--majo-accent-light);
+  font-weight: 600;
+}
+
+/* Download row */
+.majo-download-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.majo-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--majo-gradient-primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 10px;
+  text-decoration: none;
+  border: 1px solid var(--majo-primary);
+  transition: all 0.15s ease;
+}
+
+.majo-download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(133, 119, 168, 0.3);
+}
+
+.majo-download-arrow {
+  font-size: 1.1rem;
+}
+
+/* Discord variant of the download button (blurple, Discord logo mark) */
+.majo-discord-btn {
+  background: #5865f2;
+  border-color: #5865f2;
+}
+
+.majo-discord-btn:hover {
+  box-shadow: 0 6px 18px rgba(88, 101, 242, 0.35);
+}
+
+/* Resources grid */
+.majo-resources-section {
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  background: var(--majo-bg-secondary);
+  border-radius: 16px;
+  border: 1px solid var(--majo-border);
+}
+
+.majo-resources-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--majo-primary-light);
+}
+
+.majo-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.majo-resource-category {
+  background: var(--majo-bg-card);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--majo-border);
+  display: flex;
+  flex-direction: column;
+}
+
+.majo-category-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.majo-category-header h3 {
+  color: var(--majo-text-primary);
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.majo-category-description {
+  color: var(--majo-text-tertiary);
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.majo-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-auto-rows: 72px;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.majo-resource-button {
+  box-sizing: border-box;
+  color: var(--majo-text-primary);
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 12px;
+  background: var(--majo-bg-tertiary);
+  border: 1px solid var(--majo-border);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-wrap: break-word;
+  transition: border-color 0.15s ease;
+}
+
+.majo-resource-button:hover {
+  border-color: var(--majo-primary);
+}
+
+@media (max-width: 768px) {
+  .majo-content-section,
+  .majo-resources-section {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .majo-resources-title {
+    font-size: 1.6rem;
+  }
+
+  .majo-resources-grid {
+    margin-top: 1.5rem;
+  }
+
+  .majo-resource-category {
+    padding: 1.25rem;
+  }
+
+  .majo-download-row {
+    flex-direction: column;
+  }
+
+  .majo-download-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .majo-content-section,
+  .majo-resources-section {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .majo-resource-category {
+    padding: 1rem;
+  }
+}

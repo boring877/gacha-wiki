@@ -94,6 +94,23 @@ const GAME_CONFIG = {
       blog: 'Blog',
     },
   },
+  'desire-immortal-realm': {
+    name: 'Desire Immortal Realm',
+    basePath: '/guides/desire-immortal-realm/',
+    patterns: {
+      characters: 'Characters',
+    },
+  },
+  majo: {
+    name: 'MAJO: Witches Night',
+    basePath: '/guides/majo/',
+    patterns: {
+      characters: 'Characters',
+      'tier-list': 'Tier List',
+      equipment: 'Equipment',
+      items: 'Items',
+    },
+  },
 };
 
 /**
@@ -212,10 +229,24 @@ export function generateBreadcrumbs(pathname, options = {}) {
       const config = detectedGameKey ? GAME_CONFIG[detectedGameKey] : null;
       const patternName = config?.patterns?.[lastSegment];
 
-      // Only add if this segment isn't already in breadcrumbs (check both formatted and pattern name)
-      const alreadyExists = breadcrumbs.some(
-        crumb => crumb.name === formattedName || crumb.name === patternName
-      );
+      // Only add if this segment isn't already in breadcrumbs (check both
+      // formatted and pattern name). Normalized comparison so the game-key
+      // segment still dedups against styled names ("majo" vs
+      // "MAJO: Witches Night", "silver-and-blood" vs "Silver & Blood").
+      const norm = (s) =>
+        typeof s === 'string'
+          ? s.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]/g, '')
+          : '';
+      const normalizedFormatted = norm(formattedName);
+      const normalizedPattern = norm(patternName);
+      const alreadyExists = breadcrumbs.some(crumb => {
+        const crumbName = norm(crumb.name);
+        return (
+          crumbName === normalizedFormatted ||
+          crumbName === normalizedPattern ||
+          crumbName.startsWith(normalizedFormatted)
+        );
+      });
       if (!alreadyExists) {
         breadcrumbs.push({
           name: formattedName,

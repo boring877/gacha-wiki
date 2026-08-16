@@ -22,6 +22,7 @@ const makeDrama = g('make-drama');
 const desireImmortalRealm = g('desire-immortal-realm');
 const starSavior = g('star-savior');
 const rebellionGilgamesh = g('rebellion-gilgamesh');
+const majo = g('majo');
 
 // Type definitions for better code quality and IntelliSense
 export interface SocialLinks {
@@ -44,6 +45,11 @@ export interface GameSEOConfig {
   readonly description: string;
   readonly genres: readonly string[];
   readonly platform: string;
+  // Optional VideoGame structured-data enrichment
+  readonly alternateName?: readonly string[];
+  readonly inLanguage?: string;
+  readonly availableLanguage?: readonly string[];
+  readonly playMode?: string;
 }
 
 export interface StructuredDataGame {
@@ -53,6 +59,11 @@ export interface StructuredDataGame {
   readonly description: string;
   readonly genre: readonly string[];
   readonly platform: string;
+  readonly url?: string;
+  readonly alternateName?: readonly string[];
+  readonly inLanguage?: string;
+  readonly availableLanguage?: readonly string[];
+  readonly playMode?: string;
   readonly publisher: {
     readonly '@type': 'Organization';
     readonly name: string;
@@ -889,6 +900,64 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
     genres: ['Harem Management RPG', 'Gacha', 'Strategy'] as const,
     platform: 'Mobile, PC',
   },
+  [majo.id]: {
+    gameName: majo.name,
+    keywords: [
+      majo.name,
+      'majo witches night',
+      'majo witches night wiki',
+      'majo witches night guide',
+      'majo witches night characters',
+      'majo gacha',
+      // zh-Hans/zh-Hant (title 魔女之夜 is shared by both scripts)
+      '魔女之夜',
+      '魔女之夜 攻略',
+      '魔女之夜 wiki',
+      '魔女之夜 角色',
+      '魔女之夜 R18',
+      // Japanese (game ships ja; 魔女/攻略 are the ja search terms too)
+      'MAJO 魔女',
+      '魔女 ガチャ',
+      'MAJO 攻略',
+      // Korean
+      'MAJO 마녀',
+      '마녀 게임',
+      'majo erolabs',
+      'com.pinkcore.majo.erolabs',
+      // Character names (high-intent, en + native ja/ko/zh from game loc)
+      'xuanji',
+      '旋姬',
+      'シェンジ',
+      'xinzi',
+      '辛子',
+      'シンジ',
+      'isabelle majo',
+      '伊莎贝',
+      'イザベラ',
+      '이사벨',
+      'huarui',
+      'alice majo witches night',
+      // Game-type keywords
+      'r18 gacha',
+      'witch gacha game',
+      'erolabs games',
+      'real time rpg',
+      // Generic
+      'gacha game',
+      'character database',
+      'character skills',
+      'gacha strategy',
+      'mobile rpg',
+    ] as const,
+    themeColor: majo.themeColor,
+    description: `MAJO: Witches Night (魔女之夜) wiki - R18 strategy gacha RPG on EROLABS. Contract with witches from parallel worlds. Full witch database with rarity, class, skills, gacha rates, and lore.`,
+    genres: ['Strategy RPG', 'Gacha', 'R18'] as const,
+    platform: 'Mobile, PC',
+    alternateName: ['魔女之夜', 'MAJO：魔女之夜'],
+    inLanguage: 'en',
+    availableLanguage: ['en', 'ja', 'ko', 'zh-Hans', 'zh-Hant'],
+    playMode: 'SinglePlayer',
+  },
 } as const;
 
 /**
@@ -918,7 +987,8 @@ export function generateGameKeywords(
  */
 export function generateGameStructuredData(
   gameKey: string,
-  customDescription?: string | null
+  customDescription?: string | null,
+  canonicalUrl?: string | null
 ): StructuredDataGame | null {
   const gameConfig = GAME_SEO_CONFIG[gameKey];
   if (!gameConfig) {
@@ -933,6 +1003,13 @@ export function generateGameStructuredData(
     description: customDescription || gameConfig.description,
     genre: gameConfig.genres,
     platform: gameConfig.platform,
+    ...(canonicalUrl ? { url: canonicalUrl } : {}),
+    ...(gameConfig.alternateName ? { alternateName: gameConfig.alternateName } : {}),
+    ...(gameConfig.inLanguage ? { inLanguage: gameConfig.inLanguage } : {}),
+    ...(gameConfig.availableLanguage
+      ? { availableLanguage: gameConfig.availableLanguage }
+      : {}),
+    ...(gameConfig.playMode ? { playMode: gameConfig.playMode } : {}),
     publisher: {
       '@type': 'Organization',
       name: GLOBAL_SEO.siteName,

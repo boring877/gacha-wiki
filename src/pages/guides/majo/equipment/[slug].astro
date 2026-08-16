@@ -1,0 +1,116 @@
+---
+// MAJO: Witches Night individual equipment piece detail page.
+import MajoLayout from '../../../../layouts/majo/LandingLayout.astro';
+import MajoIcon from '../../../../components/majo/MajoIcon.astro';
+import { majoEquipmentSets, majoEquipmentPieces } from '../../../../data/majo/equipment.js';
+import '../../../../styles/games/majo/majo-equipment.css';
+
+export async function getStaticPaths() {
+  return majoEquipmentPieces.map(p => ({
+    params: { slug: p.id.replace(/^advanced_/, '') },
+    props: { piece: p },
+  }));
+}
+
+const { piece } = Astro.props;
+
+const SLOT_INFO: Record<string, { label: string; zh: string }> = {
+  Headgear: { label: 'Head gear', zh: '头部' },
+  Clothes: { label: 'Torso gear', zh: '躯干' },
+  Gloves: { label: 'Hand gear', zh: '手部' },
+  Supply: { label: 'Backpack', zh: '背包' },
+  Bottom: { label: 'Leg gear', zh: '腿部' },
+  Shoes: { label: 'Foot gear', zh: '脚部' },
+};
+
+const FAMILY_EN: Record<string, string> = {
+  ATK: 'Attack family (Carbon Fiber / Woven / Titanium Cotton)',
+  DEF: 'Defense family (Reinforced)',
+};
+
+// sets matching this piece's stat family (orientation derived from each set's
+// own 2-PC bonus), deduped by Chinese name + bonus (game data has duplicate ids)
+const seen = new Set<string>();
+const matchingSets = majoEquipmentSets.filter(s => {
+  if (s.orientation !== piece.stat) return false;
+  const key = `${s.nameZh}|${s.bonus2En}`;
+  if (seen.has(key)) return false;
+  seen.add(key);
+  return true;
+});
+
+const slotInfo = SLOT_INFO[piece.slot] ?? { label: piece.slot, zh: '' };
+---
+
+<MajoLayout
+  title={`${piece.nameEn} (${piece.nameZh}) — ${piece.tier} ${piece.slot}`}
+  description={`${piece.nameEn} equipment in MAJO: Witches Night — ${piece.tier} ${piece.slot} (${piece.stat} family).`}
+  crumbName={piece.nameEn?.trim() || piece.nameZh}
+>
+  <section>
+    <div class="majo-eq-detail-header">
+      {piece.icon ? (
+        <MajoIcon filename={`${piece.icon}.png`} alt={piece.nameEn || piece.nameZh} class="majo-eq-detail-art" />
+      ) : (
+        <span class="majo-eq-detail-art majo-eq-fallback">?</span>
+      )}
+      <div class="majo-eq-detail-info">
+        <h1>{piece.nameEn || piece.nameZh}</h1>
+        <p class="majo-eq-detail-name-zh">{piece.nameZh}</p>
+        <div class="majo-eq-meta">
+          <span class="majo-eq-cat">{slotInfo.label}</span>
+          <span class="majo-eq-cat">{piece.stat} family</span>
+          <span class="majo-eq-cat">{piece.tier}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="majo-eq-detail-section">
+      <h2>Details</h2>
+      <div class="majo-eq-fact-row">
+        <span class="majo-eq-fact-label">Slot</span>
+        <span class="majo-eq-fact-value">{slotInfo.label} ({slotInfo.zh}) — one of the 6 equipment slots</span>
+      </div>
+      <div class="majo-eq-fact-row">
+        <span class="majo-eq-fact-label">Family</span>
+        <span class="majo-eq-fact-value">{FAMILY_EN[piece.stat] ?? piece.stat}</span>
+      </div>
+      <div class="majo-eq-fact-row">
+        <span class="majo-eq-fact-label">Tier</span>
+        <span class="majo-eq-fact-value">{piece.tier}</span>
+      </div>
+      <div class="majo-eq-fact-row">
+        <span class="majo-eq-fact-label">Shared</span>
+        <span class="majo-eq-fact-value">
+          Equipment is shared among witches of the same class (Fighter / Mage / Tank / Healer) —
+          one set of gear per class, not per witch.
+        </span>
+      </div>
+    </div>
+
+    <div class="majo-eq-detail-section">
+      <h2>Sets for this {piece.stat} Piece</h2>
+      <div class="majo-eq-set-grid">
+        {matchingSets.map(s => (
+          <div class="majo-eq-set-card">
+            <h3 class="majo-eq-set-name">{s.nameEn || s.nameZh}<span class="majo-eq-set-zh">{s.nameZh}</span></h3>
+            <div class="majo-eq-bonus">
+              <span class="majo-chip buff">2-PC</span>
+              <p>{s.bonus2En}</p>
+            </div>
+            {s.bonus4En && (
+              <div class="majo-eq-bonus">
+                <span class="majo-chip util">4-PC</span>
+                <p>{s.bonus4En}</p>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+      <p class="majo-eq-desc" style="margin-top: 1rem;">
+        Exact piece-to-suit assignment is delivered by the game server (not in the client files) —
+        these are the suits whose bonuses match this piece's {piece.stat} family.
+      </p>
+    </div>
+  </section>
+</MajoLayout>

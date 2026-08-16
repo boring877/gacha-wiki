@@ -1,0 +1,110 @@
+---
+// MAJO: Witches Night equipment page — SR equipment pieces per slot + set bonuses.
+import MajoLayout from '../../../../layouts/majo/LandingLayout.astro';
+import MajoIcon from '../../../../components/majo/MajoIcon.astro';
+import { majoEquipmentSets, majoEquipmentSlots, majoEquipmentPieces } from '../../../../data/majo/equipment.js';
+import '../../../../styles/games/majo/majo-equipment.css';
+
+const pieces = majoEquipmentPieces;
+const sets = majoEquipmentSets;
+---
+
+<MajoLayout
+  title="Equipment"
+  description="Equipment guide for MAJO: Witches Night — SR equipment pieces per slot and full set bonus list (2-piece / 4-piece effects)."
+  gameTitle="Equipment"
+>
+  <section class="majo-eq-content">
+    <h2 class="majo-eq-title">Equipment Pieces</h2>
+    <div class="majo-eq-toolbar">
+      <input type="text" class="majo-eq-search" placeholder="Search equipment..." id="majo-eq-search" />
+      <button class="majo-eq-filter-btn active" data-filter="all">All</button>
+      {majoEquipmentSlots.map(s => (
+        <button class="majo-eq-filter-btn" data-filter={s}>{s}</button>
+      ))}
+      <span class="majo-eq-count" id="majo-eq-count">{pieces.length} pieces</span>
+    </div>
+
+    <div class="majo-eq-grid" id="majo-eq-grid">
+      {pieces.map(p => (
+        <a
+          class="majo-eq-card"
+          href={`/guides/majo/equipment/${p.id.replace(/^advanced_/, '')}/`}
+          data-category={p.slot}
+          data-name-zh={(p.nameZh || '').toLowerCase()}
+          data-name-en={(p.nameEn || '').toLowerCase()}
+        >
+          {p.icon ? (
+            <MajoIcon filename={`${p.icon}.png`} alt={p.nameEn || p.nameZh} class="majo-eq-icon" />
+          ) : (
+            <span class="majo-eq-icon majo-eq-fallback">?</span>
+          )}
+          <div class="majo-eq-body">
+            <p class="majo-eq-name-en">{p.nameEn || p.nameZh}</p>
+            <p class="majo-eq-name-zh">{p.nameZh}</p>
+            <span class="majo-eq-cat">{p.slot} · {p.stat} · {p.tier}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="majo-eq-content">
+    <h2 class="majo-eq-title">Set Bonuses</h2>
+    <div class="majo-eq-set-grid">
+      {sets.map(s => (
+        <div class="majo-eq-set-card">
+          <h3 class="majo-eq-set-name">{s.nameEn || s.nameZh}<span class="majo-eq-set-zh">{s.nameZh}</span></h3>
+          <div class="majo-eq-bonus">
+            <span class="majo-chip buff">2-PC</span>
+            <p>{s.bonus2En || s.bonus2Zh}</p>
+          </div>
+          {s.bonus4En && (
+            <div class="majo-eq-bonus">
+              <span class="majo-chip util">4-PC</span>
+              <p>{s.bonus4En || s.bonus4Zh}</p>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </section>
+</MajoLayout>
+
+<script>
+  const search = document.getElementById('majo-eq-search') as HTMLInputElement;
+  const grid = document.getElementById('majo-eq-grid');
+  const countEl = document.getElementById('majo-eq-count');
+  const filterBtns = document.querySelectorAll('.majo-eq-filter-btn');
+
+  function updateDisplay() {
+    if (!search || !grid) return;
+    const query = search.value.toLowerCase();
+    const activeFilter = document.querySelector('.majo-eq-filter-btn.active')?.getAttribute('data-filter') || 'all';
+    const cards = grid?.querySelectorAll('.majo-eq-card') as NodeListOf<HTMLElement>;
+    let visible = 0;
+
+    cards?.forEach(card => {
+      const nameZh = card.dataset.nameZh || '';
+      const nameEn = card.dataset.nameEn || '';
+      const slot = card.dataset.category || '';
+      const matchesSearch = nameZh.includes(query) || nameEn.includes(query);
+      const matchesFilter = activeFilter === 'all' || slot === activeFilter;
+      const show = matchesSearch && matchesFilter;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    if (countEl) countEl.textContent = `${visible} piece${visible !== 1 ? 's' : ''}`;
+  }
+
+  search?.addEventListener('input', updateDisplay);
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      updateDisplay();
+    });
+  });
+</script>

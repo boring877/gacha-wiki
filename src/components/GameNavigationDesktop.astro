@@ -1,5 +1,6 @@
 ---
 import { getGameData, isValidGameKey, type GameKey } from '../data/game-navigation';
+import { getGameById } from '../data/games';
 import { Image } from 'astro:assets';
 
 interface Props {
@@ -15,6 +16,8 @@ const isStellaSora = gameKey === 'stella-sora';
 // Validate and sanitize gameKey
 const validatedGameKey = isValidGameKey(gameKey) ? gameKey : undefined;
 const game = getGameData(validatedGameKey);
+// Game landing URL from the single registry (fixes every game at once — no per-game chain).
+const gameUrl = (validatedGameKey && getGameById(validatedGameKey)?.url) || '/guides/silver-and-blood/';
 
 const isActive = (href: string) => {
   if (
@@ -62,25 +65,7 @@ const isActive = (href: string) => {
     <div class="game-nav-header">
       <div class="game-info">
         <a
-          href={validatedGameKey === 'zone-nova'
-            ? '/guides/zone-nova/'
-            : validatedGameKey === 'horizon-walker'
-              ? '/guides/horizon-walker/'
-              : validatedGameKey === 'rebellion-gilgamesh'
-                ? '/guides/rebellion-gilgamesh/'
-                : validatedGameKey === 'stella-sora'
-                  ? '/guides/stella-sora/'
-                  : validatedGameKey === 'busty-burst'
-                    ? '/guides/busty-burst/'
-                    : validatedGameKey === 'taimanin-squad'
-                      ? '/guides/taimanin-squad/'
-                        : validatedGameKey === 'star-savior'
-                          ? '/guides/star-savior/'
-                          : validatedGameKey === 'last-origin-global'
-                            ? '/guides/last-origin-global/'
-                            : validatedGameKey === 'make-drama'
-                              ? '/guides/make-drama/'
-                              : '/guides/silver-and-blood/'}
+          href={gameUrl}
           class="game-link"
         >
           <div class="game-image-container">

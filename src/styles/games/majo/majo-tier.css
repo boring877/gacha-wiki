@@ -1,0 +1,164 @@
+/* MAJO tier list — class sections with tier rows. Static: no hover/glow. */
+
+.majo-tier-note {
+  text-align: center;
+  color: var(--majo-text-tertiary);
+  font-size: 0.85rem;
+  margin: 0 auto 2rem;
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+.majo-tier-discord {
+  color: var(--majo-primary-light);
+  font-weight: 600;
+}
+
+/* Class section */
+.majo-tier-class-section {
+  margin-bottom: 2.25rem;
+}
+
+.majo-tier-class-header {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.9rem 1.25rem;
+  background: var(--majo-bg-secondary);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+}
+
+.majo-tier-class-header .majo-icon-class {
+  height: 44px;
+}
+
+.majo-tier-class-title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--majo-text-primary);
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.majo-tier-class-zh {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--majo-primary-light);
+}
+
+.majo-tier-class-count {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--majo-text-tertiary);
+}
+
+/* Tier rows */
+.majo-tier-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.majo-tier-row {
+  display: flex;
+  align-items: stretch;
+  background: var(--majo-bg-secondary);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.majo-tier-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  flex-shrink: 0;
+  background: var(--majo-bg-tertiary);
+  border-right: 1px solid var(--majo-border);
+}
+
+.majo-tier-name {
+  font-weight: 700;
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  color: var(--majo-primary-light);
+}
+
+.majo-tier-characters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  flex: 1;
+  align-items: flex-start;
+}
+
+/* Character card */
+.majo-tier-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  width: 124px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.majo-tier-thumb {
+  width: 124px;
+  height: 150px;
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: center top;
+  border: 2px solid var(--majo-border-light);
+  background: var(--majo-bg-tertiary);
+}
+
+.majo-tier-icons .majo-icon-rarity {
+  height: 34px;
+}
+
+.majo-tier-name-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--majo-text-primary);
+  text-align: center;
+  max-width: 124px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+  .majo-tier-label {
+    width: 52px;
+  }
+
+  .majo-tier-name {
+    font-size: 1.3rem;
+  }
+
+  .majo-tier-card {
+    width: 100px;
+  }
+
+  .majo-tier-thumb {
+    width: 100px;
+    height: 122px;
+  }
+
+  .majo-tier-icons .majo-icon-rarity {
+    height: 28px;
+  }
+
+  .majo-tier-name-label {
+    font-size: 0.8rem;
+    max-width: 100px;
+  }
+}

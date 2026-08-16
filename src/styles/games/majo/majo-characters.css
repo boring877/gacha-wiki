@@ -1,0 +1,182 @@
+/* MAJO: Witches Night character database styles — grid, cards, detail page.
+   Toolbar/filter styles live in majo-common.css (shared with items page).
+   This file is imported by the characters pages only. */
+
+/* Detail page header */
+.majo-detail-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: var(--majo-bg-card);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+}
+
+.majo-detail-art {
+  width: 220px;
+  max-width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
+  border: 1px solid var(--majo-border-light);
+  background: var(--majo-bg-tertiary);
+}
+
+.majo-detail-info h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.8rem;
+  color: var(--majo-text-primary);
+}
+
+.majo-detail-name-zh {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+  color: var(--majo-primary-light);
+  font-weight: 500;
+}
+
+/* Character grid */
+.majo-char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.majo-char-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--majo-gradient-card);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  overflow: hidden;
+}
+
+.majo-char-card:hover {
+  border-color: var(--majo-primary);
+  transform: translateY(-2px);
+}
+
+.majo-char-art {
+  width: 100%;
+  aspect-ratio: 293 / 512;
+  object-fit: cover;
+  object-position: center top;
+  background: var(--majo-bg-tertiary);
+  border-bottom: 1px solid var(--majo-border);
+}
+
+.majo-char-card-body {
+  padding: 0.75rem;
+}
+
+/* English name is the primary name on this wiki */
+.majo-char-name-en {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--majo-text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.majo-char-name-zh {
+  font-size: 0.8rem;
+  color: var(--majo-primary-light);
+  margin: 0.15rem 0 0.35rem;
+  font-weight: 500;
+}
+
+.majo-char-title {
+  font-size: 0.72rem;
+  color: var(--majo-text-tertiary);
+  margin: 0 0 0.6rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.majo-char-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+/* Lore */
+.majo-detail-title {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  color: var(--majo-accent-light);
+  font-style: italic;
+}
+
+.majo-lore {
+  color: var(--majo-text-primary);
+  line-height: 1.8;
+  font-size: 0.95rem;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.majo-lore-en {
+  color: var(--majo-text-tertiary);
+  line-height: 1.7;
+  font-size: 0.88rem;
+  margin: 1.25rem 0 0;
+  white-space: pre-line;
+  border-top: 1px solid var(--majo-border);
+  padding-top: 1rem;
+}
+
+/* Awakened art pair */
+.majo-art-pair {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.majo-art-pair figure {
+  margin: 0;
+  text-align: center;
+}
+
+.majo-art-pair img {
+  width: 200px;
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--majo-border);
+  object-fit: cover;
+  object-position: top;
+}
+
+.majo-art-pair figcaption {
+  margin-top: 0.4rem;
+  font-size: 0.72rem;
+  color: var(--majo-text-tertiary);
+}
+
+@media (max-width: 768px) {
+  .majo-char-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .majo-detail-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .majo-detail-art {
+    width: 180px;
+  }
+
+  .majo-meta {
+    justify-content: center;
+  }
+}
