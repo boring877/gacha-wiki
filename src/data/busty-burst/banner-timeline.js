@@ -5,6 +5,25 @@
  */
 
 export const bannerTimelineData = [
+  // #36 - FANZINE 2nd / Tempting Naked Apron Diana (Aug 11 - Aug 18) - CURRENT
+  {
+    id: 'fanzine-2nd-2026',
+    title: '"FANZINE" 2nd Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: '[Tempting Naked Apron] Diana',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+    ],
+    startDate: '2026-08-11T04:00:00Z',
+    endDate: '2026-08-18T03:00:00Z',
+    description: '"FANZINE" 2nd Event Summon! New Paladin Rate Up! [Tempting Naked Apron] Diana. What if Diana were your beloved wife...? You\'ve come down with a cold and are lying in bed. By your side is your beloved wife, Diana, gently taking care of you. The next morning, you find her in the kitchen wearing nothing but an apron.',
+    note: '[Tempting Naked Apron] Diana (SSR Light Physical Attacker, characterId 2134). Also features Competitive Battle FIRE and HARD difficulty for "Beast Huntress". Maintenance 2026/8/11 4:00-7:00 UTC.',
+    status: 'current',
+    image: 'banner-fanzine-2nd',
+  },
   // #35 - Beast Huntress / Eva, Ines, Collie (Aug 1 - Aug 15) - CURRENT
   {
     id: 'beast-huntress-2026',
