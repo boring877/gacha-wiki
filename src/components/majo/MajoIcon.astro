@@ -38,7 +38,16 @@ const iconData = findIcon(filename);
 ---
 
 {iconData ? (
-  <Image src={iconData} alt={alt} class={className} loading="lazy" format="webp" quality={95} />
+  <Image
+    src={iconData}
+    alt={alt}
+    class={className}
+    loading="lazy"
+    width={128}
+    densities="1x"
+    format="webp"
+    quality={95}
+  />
 ) : (
   <span class={`majo-icon-fallback ${className}`}>{alt}</span>
 )}

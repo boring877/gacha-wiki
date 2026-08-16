@@ -24,7 +24,16 @@ const imageData = findImage(filename);
 ---
 
 {imageData ? (
-  <Image src={imageData} alt={alt} class={className} loading={loading} format="webp" quality={95} />
+  <Image
+    src={imageData}
+    alt={alt}
+    class={className}
+    loading={loading}
+    width={293}
+    densities="1x"
+    format="webp"
+    quality={95}
+  />
 ) : (
   <div class={`majo-image-fallback ${className}`} style="min-height: 100px;">
     {alt}
