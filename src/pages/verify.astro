@@ -195,11 +195,15 @@ import { SITE_TITLE } from '../consts';
 </script>
 
 <style>
+  /* Uses the site's design tokens (typography.css / colors.css are imported
+     by HomeLayout) so the page matches the rest of GachaWiki, per the /nft
+     hero pattern. */
   .verify-page {
-    max-width: 640px;
+    max-width: 680px;
     margin: 0 auto;
     padding: clamp(2rem, 6vw, 4rem) 1.25rem 5rem;
-    font-family: 'DM Sans', system-ui, sans-serif;
+    font-family: var(--font-primary, 'DM Sans', system-ui, sans-serif);
+    color: var(--text-inverse, #fff);
   }
   .card {
     background: rgba(255, 255, 255, 0.04);
@@ -209,23 +213,41 @@ import { SITE_TITLE } from '../consts';
   }
   .label {
     color: var(--amber-glow, #ffb74b);
+    font-family: var(--font-primary, 'DM Sans', sans-serif);
     font-weight: 700;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     font-size: 0.8rem;
-    margin: 0 0 0.8rem;
+    margin: 0 0 0.9rem;
   }
   h1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(1.6rem, 4vw, 2.2rem);
-    margin: 0 0 0.8rem;
+    /* Same display treatment as the /nft hero title (site typography system
+       also styles h1 globally — these scoped rules pin the verify page's
+       size/leading deliberately). */
+    font-family: var(--font-display, 'Space Grotesk', sans-serif);
+    font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem;
   }
-  .sub { line-height: 1.65; color: rgba(255, 255, 255, 0.75); margin: 0 0 1.2rem; }
-  .steps { color: rgba(255, 255, 255, 0.75); line-height: 1.8; margin: 0 0 1.5rem; padding-left: 1.2rem; }
+  .sub {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--neutral-300, rgba(255, 255, 255, 0.75));
+    margin: 0 0 1.2rem;
+  }
+  .steps {
+    color: var(--neutral-300, rgba(255, 255, 255, 0.75));
+    line-height: 1.8;
+    margin: 0 0 1.5rem;
+    padding-left: 1.2rem;
+  }
   .steps code {
     background: rgba(255, 183, 77, 0.15);
     border-radius: 0.35rem;
     padding: 0.1rem 0.4rem;
+    font-family: var(--font-mono, monospace);
     font-size: 0.9em;
   }
   .btn {
@@ -235,12 +257,14 @@ import { SITE_TITLE } from '../consts';
     min-height: 48px;
     padding: 0.8rem 1.5rem;
     border-radius: 0.7rem;
+    font-family: var(--font-primary, 'DM Sans', sans-serif);
     font-weight: 700;
     font-size: 1rem;
     cursor: pointer;
     background: transparent;
     color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.25);
+    transition: border-color 0.15s ease, transform 0.15s ease;
   }
   .btn:hover { border-color: rgba(255, 183, 77, 0.6); }
   .btn.primary {
@@ -249,10 +273,11 @@ import { SITE_TITLE } from '../consts';
     border: none;
     min-width: 220px;
   }
-  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn.primary:hover:not(:disabled) { transform: translateY(-2px); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
   .addr, .bal {
     font-variant-numeric: tabular-nums;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--neutral-300, rgba(255, 255, 255, 0.8));
     margin: 0.6rem 0 0;
     font-size: 0.95rem;
   }
@@ -266,14 +291,23 @@ import { SITE_TITLE } from '../consts';
     border: 1px solid rgba(255, 183, 77, 0.4);
     background: rgba(0, 0, 0, 0.3);
     color: #fff;
-    font-family: 'Space Grotesk', monospace;
-    font-size: 1.5rem;
-    letter-spacing: 0.4em;
+    font-family: var(--font-mono, monospace);
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.45em;
     text-align: center;
     text-transform: uppercase;
   }
   #code:focus { outline: 2px solid rgba(255, 183, 77, 0.6); }
-  .msg { margin: 1rem 0 0; line-height: 1.6; }
+  .msg {
+    font-family: var(--font-primary, 'DM Sans', sans-serif);
+    margin: 1rem 0 0;
+    line-height: 1.6;
+  }
   .msg.err { color: #fca5a5; }
-  .fine { margin: 1.6rem 0 0; font-size: 0.8rem; color: rgba(255, 255, 255, 0.5); }
+  .fine {
+    margin: 1.6rem 0 0;
+    font-size: 0.8rem;
+    color: var(--neutral-400, rgba(255, 255, 255, 0.5));
+  }
 </style>
