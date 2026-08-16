@@ -515,6 +515,7 @@ const stats = [
               ? `Minted ${qty} OG${qty > 1 ? 's' : ''} — ${fmtGw(gwPriceWei * BigInt(qty))} $GW burned`
               : `Minted ${qty} OG${qty > 1 ? 's' : ''} — your art is live now`);
             link(`${EXPLORER}/tx/${txHash}`, 'View transaction ↗');
+            link('https://discord.gg/YdWFddQKR8', '🎁 Unlock holder perks on Discord ↗');
             await Promise.all([refreshSupply(), loadWalletCount(), loadBalances(), loadYourOgs()]);
           } else if (ok === false) {
             say('Transaction reverted on chain. Nothing was minted.', true);
@@ -578,7 +579,7 @@ const stats = [
         <div class="perk">
           <span class="perk-tag">◆ Discord</span>
           <h3>NSFW channel access</h3>
-          <p>OG holders get access to the private NSFW channel in the GachaWiki Discord.</p>
+          <p>OG holders get access to the private NSFW channel in the <a href="https://discord.gg/YdWFddQKR8" target="_blank" rel="noopener noreferrer">GachaWiki Discord</a> — <a href="/verify">verify your OG</a> to unlock it instantly.</p>
         </div>
         <div class="perk">
           <span class="perk-tag">◆ Tools</span>
@@ -881,6 +882,8 @@ const stats = [
   }
   .perk h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; margin: 0 0 0.5rem; }
   .perk p { margin: 0; color: var(--neutral-400); font-size: 0.88rem; line-height: 1.55; }
+  .perk p a { color: var(--teal-crystal, #4dd0c4); text-decoration: none; }
+  .perk p a:hover { text-decoration: underline; }
 
   /* STATS */
   .stats {
