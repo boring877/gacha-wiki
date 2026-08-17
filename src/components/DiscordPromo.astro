@@ -1,14 +1,7 @@
 ---
 // Shared "Join the GachaWiki Discord" CTA banner for game landing pages.
-// Static design (no hover/glow), tinted per game via the accent prop.
+// Static design (no hover/glow).
 import { SITE } from '../consts';
-
-export interface Props {
-  /** game theme color (hex) — tints the accent rail */
-  accent?: string;
-}
-
-const { accent = '#5865f2' } = Astro.props;
 ---
 
 <a
@@ -16,7 +9,6 @@ const { accent = '#5865f2' } = Astro.props;
   target="_blank"
   rel="noopener noreferrer"
   class="gw-discord-promo"
-  style={`--gw-promo-accent: ${accent}`}
   aria-label="Join the GachaWiki Discord server"
 >
   <span class="gw-discord-logo" aria-hidden="true">
@@ -44,7 +36,6 @@ const { accent = '#5865f2' } = Astro.props;
     border-radius: 12px;
     background: rgba(16, 18, 27, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-left: 4px solid var(--gw-promo-accent, #5865f2);
     color: #fff;
     text-decoration: none;
   }
