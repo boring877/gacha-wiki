@@ -1,0 +1,133 @@
+---
+// Breadcrumb nav for Agent X pages (mirrors desire-immortal-realm's).
+import {
+  generateBreadcrumbs,
+  getParentBreadcrumb,
+  generateBackNavigation,
+} from '../../utils/breadcrumb-generator.js';
+import type { BreadcrumbItem, BackNavigation } from '../../utils/breadcrumb-generator.js';
+
+export interface Props {
+  items?: Array<{
+    name: string;
+    href?: string;
+  }>;
+  autoGenerate?: boolean;
+  gameKey?: string;
+  currentPageName?: string;
+  includeHome?: boolean;
+  showBackButton?: boolean;
+}
+
+const {
+  items,
+  autoGenerate = false,
+  gameKey,
+  currentPageName,
+  includeHome = true,
+  showBackButton = true,
+} = Astro.props;
+
+let breadcrumbItems: BreadcrumbItem[] = items || [];
+let backNavigation: BackNavigation | null = null;
+
+if (autoGenerate) {
+  breadcrumbItems = generateBreadcrumbs(Astro.url.pathname, {
+    includeHome,
+    currentPageName,
+    gameKey,
+  });
+
+  if (showBackButton) {
+    backNavigation = generateBackNavigation(Astro.url.pathname, { gameKey });
+  }
+} else if (showBackButton && items) {
+  const parent = getParentBreadcrumb(items);
+  if (parent) {
+    backNavigation = {
+      href: parent.href || '/',
+      name: parent.name,
+    };
+  }
+}
+---
+
+{breadcrumbItems.length > 0 && (
+  <nav class="dir-breadcrumb" aria-label="Breadcrumb">
+    <ol class="dir-breadcrumb-list">
+      {breadcrumbItems.map((item, index) => (
+        <li class="dir-breadcrumb-item">
+          {item.href && index < breadcrumbItems.length - 1 ? (
+            <a href={item.href} class="dir-breadcrumb-link">{item.name}</a>
+          ) : (
+            <span class="dir-breadcrumb-current" aria-current="page">{item.name}</span>
+          )}
+          {index < breadcrumbItems.length - 1 && <span class="dir-breadcrumb-separator">/</span>}
+        </li>
+      ))}
+    </ol>
+    {backNavigation && (
+      <a href={backNavigation.href} class="dir-breadcrumb-back">
+        ← {backNavigation.name}
+      </a>
+    )}
+  </nav>
+)}
+
+<style>
+  .dir-breadcrumb {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .dir-breadcrumb-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.8rem;
+  }
+
+  .dir-breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .dir-breadcrumb-link {
+    color: var(--ax-text-tertiary);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .dir-breadcrumb-link:hover {
+    color: var(--ax-primary);
+  }
+
+  .dir-breadcrumb-current {
+    color: var(--ax-text-secondary);
+    font-weight: 500;
+  }
+
+  .dir-breadcrumb-separator {
+    color: var(--ax-text-muted);
+  }
+
+  .dir-breadcrumb-back {
+    color: var(--ax-primary);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .dir-breadcrumb-back:hover {
+    text-decoration: underline;
+  }
+</style>

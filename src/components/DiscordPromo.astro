@@ -1,6 +1,14 @@
 ---
-// Shared "Join the GachaWiki Discord" CTA banner shown on every game landing page.
+// Shared "Join the GachaWiki Discord" CTA banner for game landing pages.
+// Static design (no hover/glow), tinted per game via the accent prop.
 import { SITE } from '../consts';
+
+export interface Props {
+  /** game theme color (hex) — tints the accent rail */
+  accent?: string;
+}
+
+const { accent = '#5865f2' } = Astro.props;
 ---
 
 <a
@@ -8,6 +16,7 @@ import { SITE } from '../consts';
   target="_blank"
   rel="noopener noreferrer"
   class="gw-discord-promo"
+  style={`--gw-promo-accent: ${accent}`}
   aria-label="Join the GachaWiki Discord server"
 >
   <span class="gw-discord-logo" aria-hidden="true">
@@ -33,70 +42,71 @@ import { SITE } from '../consts';
     max-width: 720px;
     padding: 14px 18px;
     border-radius: 12px;
-    background: linear-gradient(135deg, #4752c4 0%, #5865f2 55%, #6d7cff 100%);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    box-shadow: 0 4px 18px rgba(88, 101, 242, 0.35);
+    background: rgba(16, 18, 27, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-left: 4px solid var(--gw-promo-accent, #5865f2);
     color: #fff;
     text-decoration: none;
-    transition:
-      transform 0.15s ease,
-      box-shadow 0.15s ease,
-      filter 0.15s ease;
   }
-  .gw-discord-promo:hover,
-  .gw-discord-promo:focus-visible {
-    transform: translateY(-2px);
-    filter: brightness(1.06);
-    box-shadow: 0 6px 22px rgba(88, 101, 242, 0.45);
-  }
+
   .gw-discord-logo {
     flex-shrink: 0;
     display: grid;
     place-items: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.16);
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: #5865f2;
   }
+
   .gw-discord-logo svg {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     fill: #fff;
   }
+
   .gw-discord-text {
     display: flex;
     flex-direction: column;
     gap: 3px;
     min-width: 0;
+    flex: 1;
   }
+
   .gw-discord-title {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 700;
     letter-spacing: 0.2px;
     line-height: 1.2;
+    color: #fff;
   }
+
   .gw-discord-sub {
-    font-size: 0.85rem;
-    opacity: 0.85;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
     line-height: 1.35;
   }
+
   .gw-discord-cta {
-    margin-left: auto;
     flex-shrink: 0;
-    padding: 7px 14px;
-    border-radius: 999px;
-    background: #fff;
-    color: #4752c4;
     font-size: 0.85rem;
     font-weight: 700;
+    color: #fff;
+    background: #5865f2;
+    border-radius: 8px;
+    padding: 8px 16px;
     white-space: nowrap;
   }
-  @media (max-width: 520px) {
-    .gw-discord-cta {
-      display: none;
+
+  @media (max-width: 560px) {
+    .gw-discord-promo {
+      flex-wrap: wrap;
+      gap: 10px;
     }
-    .gw-discord-sub {
-      font-size: 0.8rem;
+
+    .gw-discord-cta {
+      width: 100%;
+      text-align: center;
     }
   }
 </style>

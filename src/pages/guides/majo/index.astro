@@ -3,6 +3,7 @@
 import MajoLayout from '../../../layouts/majo/LandingLayout.astro';
 import { majoCharacters } from '../../../data/majo/characters.js';
 import { SITE } from '../../../consts';
+import DiscordPromo from '../../../components/DiscordPromo.astro';
 import '../../../styles/games/majo/majo-landing.css';
 
 const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo';
@@ -127,4 +128,6 @@ const witches = majoCharacters.length;
       </div>
     </div>
   </section>
+
+  <DiscordPromo accent="#8577a8" />
 </MajoLayout>

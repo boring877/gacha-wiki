@@ -1,0 +1,66 @@
+---
+// Landing layout for Agent X (mirrors desire-immortal-realm's LandingLayout).
+import AgentXBaseHead from '../../components/agent-x/AgentXBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Analytics from '../../components/Analytics.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import Breadcrumb from '../../components/agent-x/Breadcrumb.astro';
+
+import '../../styles/games/agent-x/agentx-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/agent-x/agentx-layout.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+}
+
+const { title, description, gameTitle } = Astro.props;
+const seoTitle = `${title} | Agent X`;
+const seoDescription =
+  description || 'Complete guide for Agent X. Agent database, stats, skills, gacha rates, and lore for the R18 spy gacha RPG.';
+---
+
+<html lang="en">
+  <head>
+    <AgentXBaseHead title={seoTitle} description={seoDescription} />
+    <GameSEO gameKey="agent-x" title={seoTitle} description={seoDescription} />
+    <Analytics />
+  </head>
+  <body class="ax-body">
+    <CustomScrollbar />
+    <div class="bg-layer ax-bg-primary"></div>
+
+    <div class="ax-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="agent-x" />
+      <MobileMenu />
+
+      <div class="ax-container">
+        <main class="ax-main" id="main-content">
+          {gameTitle && (
+            <section class="ax-title-only-section">
+              <h1 class="ax-title-only-heading">{gameTitle}</h1>
+              <DecorativeLines />
+            </section>
+          )}
+
+          <Breadcrumb autoGenerate={true} gameKey="agent-x" showBackButton={true} />
+
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

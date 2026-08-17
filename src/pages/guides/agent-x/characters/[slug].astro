@@ -1,0 +1,110 @@
+---
+// Per-agent detail page for Agent X.
+import AgentXLayout from '../../../../layouts/agent-x/LandingLayout.astro';
+import AgentXCharacterImage from '../../../../components/agent-x/AgentXCharacterImage.astro';
+import { agentXCharacters } from '../../../../data/agent-x/characters.js';
+import '../../../../styles/games/agent-x/agentx-characters.css';
+
+export function getStaticPaths() {
+  return agentXCharacters.map(char => ({
+    params: { slug: char.slug },
+    props: { character: char },
+  }));
+}
+
+const { character: char } = Astro.props;
+const roleCss = (char.role || '').toLowerCase();
+const elemCss = (char.element || '').toLowerCase();
+---
+
+<AgentXLayout
+  title={`${char.name} - Agent X Agent`}
+  description={`${char.name} (${char.title}) agent guide for Agent X. ${char.rarity} ${char.element} ${char.role} with verified base stats, skills, profile and lore.`}
+  gameTitle={char.name}
+>
+  <section class="ax-content-section">
+    <div class="ax-detail-header">
+      <AgentXCharacterImage
+        filename={char.icon}
+        alt={char.name}
+        class="ax-detail-art"
+        loading="eager"
+      />
+      <div class="ax-detail-info">
+        <h1>{char.name}</h1>
+        {char.title && <p class="ax-detail-title">"{char.title}"</p>}
+        <div class="ax-meta">
+          <span class={`ax-badge ax-badge-rarity ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
+          <span class={`ax-badge ax-badge-elem ${elemCss}`}>{char.element}</span>
+          <span class={`ax-badge ax-badge-role ${roleCss}`}>{char.role}</span>
+          <span class="ax-badge ax-badge-stat">ID {char.id}</span>
+          {!char.playable && <span class="ax-badge ax-badge-stat">Upcoming</span>}
+        </div>
+        <div class="ax-profile">
+          {char.affiliation && (
+            <div class="ax-profile-item"><strong>Affiliation</strong>{char.affiliation}</div>
+          )}
+          {char.birthday && (
+            <div class="ax-profile-item"><strong>Birthday</strong>{char.birthday}</div>
+          )}
+          {char.measurements && (
+            <div class="ax-profile-item"><strong>B/W/H</strong>{char.measurements}</div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ax-content-section">
+    <div class="ax-detail-section">
+      <h2>Base Stats</h2>
+      <div class="ax-stats-grid">
+        <div class="ax-stat-box">
+          <span class="ax-stat-label">ATK</span>
+          <span class="ax-stat-value">{char.baseStats.atk.toLocaleString()}</span>
+          <span class="ax-stat-growth">growth {char.growthStats.atk}</span>
+        </div>
+        <div class="ax-stat-box">
+          <span class="ax-stat-label">DEF</span>
+          <span class="ax-stat-value">{char.baseStats.def.toLocaleString()}</span>
+          <span class="ax-stat-growth">growth {char.growthStats.def}</span>
+        </div>
+        <div class="ax-stat-box">
+          <span class="ax-stat-label">HP</span>
+          <span class="ax-stat-value">{char.baseStats.hp.toLocaleString()}</span>
+          <span class="ax-stat-growth">growth {char.growthStats.hp}</span>
+        </div>
+        <div class="ax-stat-box">
+          <span class="ax-stat-label">SPD</span>
+          <span class="ax-stat-value">{char.baseStats.spd}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {char.skills.length > 0 && (
+    <section class="ax-content-section">
+      <div class="ax-detail-section">
+        <h2>Starting Skills</h2>
+        {char.skills.map(skill => (
+          <div class="ax-skill">
+            <div class="ax-skill-header">
+              <p class="ax-skill-name">{skill.name}</p>
+              <span class="ax-skill-id">#{skill.id}</span>
+            </div>
+            {skill.desc && <p class="ax-skill-desc">{skill.desc}</p>}
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {char.description && (
+    <section class="ax-content-section">
+      <div class="ax-detail-section">
+        <h2>Lore</h2>
+        <p class="ax-lore">{char.description}</p>
+      </div>
+    </section>
+  )}
+</AgentXLayout>

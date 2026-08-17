@@ -1,0 +1,60 @@
+---
+// Base <head> metadata for Agent X pages (mirrors DIRBaseHead).
+import { SITE_TITLE } from '../../consts';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = SITE_TITLE,
+  description = 'Agent X Wiki - Character Database, Stats, Skills, Gacha & Lore',
+} = Astro.props;
+
+const metaTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | Agent X Wiki`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.json" />
+
+<title>{metaTitle}</title>
+<meta name="title" content={metaTitle} />
+<meta name="description" content={description} />
+<meta name="generator" content={Astro.generator} />
+
+<meta name="application-category" content="game" />
+<meta name="application-subcategory" content="rpg" />
+
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+
+<link rel="preload" href="/fonts/dm-sans-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/space-grotesk-600.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/dm-sans-600.woff2" as="font" type="font/woff2" crossorigin />
+
+<meta name="game:title" content="Agent X" />
+<meta name="game:genre" content="Spy RPG, Gacha, Strategy" />
+<meta name="game:platform" content="Android" />
+<meta name="game:distribution" content="Erolabs" />
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'VideoGame',
+    name: 'Agent X',
+    description: 'R18 spy-agency gacha RPG on EROLABS. Recruit agents, fight The Fallen, and uncover the truth in turn-based squad combat.',
+    genre: ['Spy RPG', 'Gacha', 'Strategy'],
+    applicationCategory: 'Game',
+    operatingSystem: 'Android',
+    playMode: 'SinglePlayer',
+    url: canonicalURL,
+  })}
+/>

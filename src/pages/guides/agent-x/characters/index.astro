@@ -1,0 +1,108 @@
+---
+// Agent X agent database (grid of all 36 agents).
+import AgentXLayout from '../../../../layouts/agent-x/LandingLayout.astro';
+import AgentXCharacterImage from '../../../../components/agent-x/AgentXCharacterImage.astro';
+import { agentXCharacters } from '../../../../data/agent-x/characters.js';
+import '../../../../styles/games/agent-x/agentx-characters.css';
+
+const characters = agentXCharacters;
+const roles = ['Defender', 'Fighter', 'Caster', 'Support', 'Ranger'];
+const elements = ['Fire', 'Wood', 'Water', 'Light', 'Dark'];
+
+function roleCss(r) {
+  return (r || '').toLowerCase();
+}
+
+function elemCss(e) {
+  return (e || '').toLowerCase();
+}
+---
+
+<AgentXLayout
+  title="Agent Database"
+  description={`Complete agent database for Agent X. Browse all ${characters.length} agents (SSR/UR) with element, role, verified stats, skills and lore.`}
+  gameTitle="Agent Database"
+>
+  <section class="ax-content-section">
+    <div class="ax-toolbar">
+      <input type="text" class="ax-search" placeholder="Search agent name or title..." id="ax-search" />
+      <button class="ax-filter-btn active" data-role="all" data-elem="all">All</button>
+      {roles.map(r => (
+        <button class="ax-filter-btn" data-role={r} data-elem="all">{r}</button>
+      ))}
+      {elements.map(e => (
+        <button class="ax-filter-btn" data-role="all" data-elem={e}>{e}</button>
+      ))}
+      <span class="ax-count" id="ax-count">{characters.length} agents</span>
+    </div>
+
+    <div class="ax-char-grid" id="ax-char-grid">
+      {characters.map(char => (
+        <a
+          href={`/guides/agent-x/characters/${char.slug}/`}
+          class="ax-char-card"
+          data-role={char.role}
+          data-elem={char.element}
+          data-name={char.name.toLowerCase()}
+          data-title={(char.title || '').toLowerCase()}
+        >
+          <AgentXCharacterImage
+            filename={char.icon}
+            alt={char.name}
+            class="ax-char-art"
+          />
+          <div class="ax-char-card-body">
+            <p class="ax-char-name">{char.name}</p>
+            {char.title && <p class="ax-char-title">{char.title}</p>}
+            <p class="ax-char-meta">
+              <span class={`ax-badge ax-badge-rarity ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
+              <span class={`ax-badge ax-badge-elem ${elemCss(char.element)}`}>{char.element}</span>
+              <span class={`ax-badge ax-badge-role ${roleCss(char.role)}`}>{char.role}</span>
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</AgentXLayout>
+
+<script>
+  const search = document.getElementById('ax-search') as HTMLInputElement;
+  const grid = document.getElementById('ax-char-grid');
+  const countEl = document.getElementById('ax-count');
+  const filterBtns = document.querySelectorAll('.ax-filter-btn');
+
+  function updateDisplay() {
+    if (!search || !grid) return;
+    const query = search.value.toLowerCase();
+    const activeRole = document.querySelector('.ax-filter-btn.active')?.getAttribute('data-role') || 'all';
+    const activeElem = document.querySelector('.ax-filter-btn.active')?.getAttribute('data-elem') || 'all';
+    const cards = grid?.querySelectorAll('.ax-char-card') as NodeListOf<HTMLElement>;
+    let visible = 0;
+
+    cards?.forEach(card => {
+      const name = card.dataset.name || '';
+      const title = card.dataset.title || '';
+      const role = card.dataset.role || '';
+      const elem = card.dataset.elem || '';
+      const matchesSearch = name.includes(query) || title.includes(query);
+      const matchesRole = activeRole === 'all' || role === activeRole;
+      const matchesElem = activeElem === 'all' || elem === activeElem;
+      const show = matchesSearch && matchesRole && matchesElem;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    if (countEl) countEl.textContent = `${visible} agent${visible !== 1 ? 's' : ''}`;
+  }
+
+  search?.addEventListener('input', updateDisplay);
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      updateDisplay();
+    });
+  });
+</script>

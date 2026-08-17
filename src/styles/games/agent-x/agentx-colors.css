@@ -1,0 +1,71 @@
+/* Agent X Color System - classified-dossier espionage theme.
+   Dark gunmetal slate base, amber-gold primary (agency seal), with
+   role colors tuned to the game's five RoleType classes. */
+
+:root {
+  --ax-primary: #d4a017;
+  --ax-primary-light: #e8bd4a;
+  --ax-primary-dark: #a67c00;
+
+  --ax-secondary: #23293a;
+  --ax-secondary-light: #343d54;
+
+  --ax-accent: #4a90d9;
+  --ax-accent-light: #7ab3e8;
+
+  --ax-bg-primary: #0b0d12;
+  --ax-bg-secondary: #12151d;
+  --ax-bg-tertiary: #191d28;
+  --ax-bg-card: #141822;
+
+  --ax-text-primary: #edf0f4;
+  --ax-text-secondary: #a9b2c0;
+  --ax-text-tertiary: #6d7787;
+  --ax-text-muted: #454e5c;
+
+  --ax-border: #242b3a;
+  --ax-border-light: #36415a;
+  --ax-border-dark: #141822;
+
+  --ax-success: #4caf50;
+  --ax-warning: #ff9800;
+  --ax-error: #ef5350;
+  --ax-info: #42a5f5;
+
+  /* Role colors (RoleType enum: Defender/Fighter/Caster/Support/Ranger) */
+  --ax-role-defender: #5b8dd9;
+  --ax-role-fighter: #d96b5b;
+  --ax-role-caster: #9b7bb8;
+  --ax-role-support: #6bb89a;
+  --ax-role-ranger: #d9a85b;
+
+  /* Element colors (ElementType enum: Fire/Wood/Water/Light/Dark) */
+  --ax-elem-fire: #e25822;
+  --ax-elem-wood: #58a05a;
+  --ax-elem-water: #4a90d9;
+  --ax-elem-light: #e8c84a;
+  --ax-elem-dark: #8a6bb8;
+
+  /* Rarity */
+  --ax-rarity-ur: #e8bd4a;
+  --ax-rarity-ssr: #b07be8;
+
+  --ax-gradient-primary: linear-gradient(135deg, var(--ax-primary) 0%, var(--ax-primary-dark) 100%);
+  --ax-gradient-secondary: linear-gradient(135deg, var(--ax-secondary) 0%, var(--ax-secondary-light) 100%);
+  --ax-gradient-card: linear-gradient(135deg, var(--ax-bg-card) 0%, var(--ax-bg-secondary) 100%);
+}
+
+.ax-card {
+  background: var(--ax-gradient-card);
+  border: 1px solid var(--ax-border);
+  border-radius: 12px;
+}
+
+.ax-button {
+  background: var(--ax-gradient-primary);
+  color: var(--ax-bg-primary);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 700;
+}

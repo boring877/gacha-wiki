@@ -1,0 +1,71 @@
+/* Agent X layout styles (mirrors desire-immortal-realm's dir-layout). */
+
+.ax-body {
+  background: var(--ax-bg-primary);
+  color: var(--ax-text-primary);
+  font-family: var(--font-primary);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+.ax-bg-primary {
+  background: var(--ax-bg-primary);
+}
+
+.ax-content {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+}
+
+.ax-container {
+  position: relative;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.ax-title-only-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+}
+
+.ax-title-only-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--ax-primary);
+}
+
+.content-area {
+  width: 100%;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .ax-container {
+    padding: 1rem;
+  }
+
+  .ax-title-only-heading {
+    font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .ax-container {
+    padding: 0.75rem;
+  }
+
+  .ax-title-only-heading {
+    font-size: var(--text-2xl);
+  }
+}

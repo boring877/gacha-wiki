@@ -1,0 +1,175 @@
+/* Agent X landing page styles (adapted from dir-landing). */
+
+.ax-landing-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2.5rem 1.5rem;
+  background: var(--ax-gradient-card);
+  border: 1px solid var(--ax-border);
+  border-radius: 16px;
+}
+
+.ax-landing-hero h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--ax-primary);
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.ax-landing-tagline {
+  font-size: 1.05rem;
+  color: var(--ax-text-secondary);
+  margin: 0 auto 1.25rem;
+  max-width: 640px;
+  line-height: 1.6;
+}
+
+.ax-landing-classified {
+  display: inline-block;
+  padding: 0.25rem 0.9rem;
+  border: 1px dashed var(--ax-primary-dark);
+  border-radius: 4px;
+  color: var(--ax-primary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.ax-story {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--ax-text-secondary);
+  max-width: 760px;
+  margin: 0 auto 1.5rem;
+}
+
+.ax-story strong {
+  color: var(--ax-text-primary);
+}
+
+.ax-download-row {
+  display: flex;
+  gap: 0.9rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 1.5rem 0;
+}
+
+.ax-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--ax-gradient-primary);
+  color: #14110a;
+  font-weight: 700;
+  padding: 0.85rem 1.6rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: transform 0.15s ease;
+}
+
+.ax-download-btn:hover {
+  transform: translateY(-2px);
+}
+
+.ax-download-btn.ghost {
+  background: transparent;
+  color: var(--ax-primary);
+  border: 1px solid var(--ax-primary-dark);
+}
+
+.ax-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.ax-resource-category {
+  background: var(--ax-bg-card);
+  border: 1px solid var(--ax-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.ax-category-header h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+  color: var(--ax-text-primary);
+}
+
+.ax-category-description {
+  margin: 0 0 0.9rem;
+  font-size: 0.82rem;
+  color: var(--ax-text-tertiary);
+  line-height: 1.5;
+}
+
+.ax-buttons-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ax-resource-button {
+  display: block;
+  padding: 0.6rem 0.9rem;
+  background: var(--ax-bg-tertiary);
+  border: 1px solid var(--ax-border);
+  border-radius: 8px;
+  color: var(--ax-text-secondary);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.ax-resource-button:hover {
+  border-color: var(--ax-primary-dark);
+  color: var(--ax-primary);
+}
+
+.ax-section-title {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--ax-text-primary);
+  margin: 2.5rem 0 0.5rem;
+}
+
+.ax-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+  max-width: 760px;
+  margin: 0 auto 1.5rem;
+}
+
+.ax-fact-box {
+  background: var(--ax-bg-tertiary);
+  border: 1px solid var(--ax-border);
+  border-radius: 8px;
+  padding: 0.85rem 0.5rem;
+  text-align: center;
+}
+
+.ax-fact-value {
+  display: block;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ax-primary);
+}
+
+.ax-fact-label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--ax-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0.2rem;
+}

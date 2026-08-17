@@ -1,0 +1,92 @@
+---
+// Agent X game overview landing page.
+import AgentXLayout from '../../../layouts/agent-x/LandingLayout.astro';
+import { agentXCharacters } from '../../../data/agent-x/characters.js';
+import { SITE } from '../../../consts';
+import '../../../styles/games/agent-x/agentx-landing.css';
+
+const agents = agentXCharacters.length;
+const urCount = agentXCharacters.filter(c => c.rarity === 'UR').length;
+const ssrCount = agentXCharacters.filter(c => c.rarity === 'SSR').length;
+---
+
+<AgentXLayout
+  title="Home"
+  description="Agent X wiki — R18 spy-agency gacha RPG on EROLABS. Agent database, skills, gacha rates, and lore. Recruit agents and fight The Fallen."
+  gameTitle="Agent X"
+>
+  <section class="ax-landing-hero">
+    <span class="ax-landing-classified">Classified — P.R.I.S.M. Archives</span>
+    <h1>Agent X</h1>
+    <p class="ax-landing-tagline">
+      The Fallen have seized the city. You command <strong>P.R.I.S.M.</strong>'s last
+      covert squad — recruit agents, master the elements, and take the fight to The Fallen
+      in turn-based squad combat.
+    </p>
+    <div class="ax-facts">
+      <div class="ax-fact-box"><span class="ax-fact-value">{agents}</span><span class="ax-fact-label">Agents</span></div>
+      <div class="ax-fact-box"><span class="ax-fact-value">{urCount}</span><span class="ax-fact-label">UR</span></div>
+      <div class="ax-fact-box"><span class="ax-fact-value">{ssrCount}</span><span class="ax-fact-label">SSR</span></div>
+      <div class="ax-fact-box"><span class="ax-fact-value">5</span><span class="ax-fact-label">Roles</span></div>
+      <div class="ax-fact-box"><span class="ax-fact-value">5</span><span class="ax-fact-label">Elements</span></div>
+    </div>
+    <div class="ax-download-row">
+      <a
+        class="ax-download-btn"
+        href="https://game.erolabsshare.live/app/f302f717/Agent_X"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Download &amp; Play Agent X <span>→</span>
+      </a>
+      <a
+        class="ax-download-btn ghost"
+        href={SITE.SOCIAL.DISCORD}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Join our Discord
+      </a>
+    </div>
+  </section>
+
+  <section class="ax-content-section">
+    <p class="ax-story">
+      <strong>Agent X</strong> is an R18 spy-agency gacha RPG on the EROLABS platform.
+      As commander of a covert task force, you recruit and train female agents — from
+      P.R.I.S.M. snipers to reformed Fallen operatives — each with an element
+      (Fire / Wood / Water / Light / Dark), one of five combat roles, and a personal
+      story that unlocks as you raise bonds. Duplicates convert to Cores for star-ups,
+      and a 50-pull pity guarantees an SSR on the limited banner.
+    </p>
+  </section>
+
+  <h2 class="ax-section-title">Guides &amp; Resources</h2>
+  <section class="ax-content-section">
+    <div class="ax-resources-grid">
+      <div class="ax-resource-category">
+        <div class="ax-category-header">
+          <h3>Agents</h3>
+          <p class="ax-category-description">
+            All {agents} agents with rarity, element, role, verified stats, skills and lore.
+          </p>
+        </div>
+        <div class="ax-buttons-grid">
+          <a href="/guides/agent-x/characters/" class="ax-resource-button">Agent Database</a>
+        </div>
+      </div>
+
+      <div class="ax-resource-category">
+        <div class="ax-category-header">
+          <h3>Gacha</h3>
+          <p class="ax-category-description">
+            Every recruitment pool with verified drop rates, pity rules and cost.
+          </p>
+        </div>
+        <div class="ax-buttons-grid">
+          <a href="/guides/agent-x/gacha/" class="ax-resource-button">Recruitment Rates</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</AgentXLayout>
