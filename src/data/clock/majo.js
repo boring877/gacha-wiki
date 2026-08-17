@@ -4,7 +4,7 @@
 export const majoClockConfig = {
   id: 'majo',
   name: 'MAJO: Witches Night',
-  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/icon.webp',
+  image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/icon.webp?v=2',
   launchDate: '2026-08-12T00:00:00Z',
   displayDate: 'August 12, 2026',
   timerDescription: 'Daily Server Reset',
