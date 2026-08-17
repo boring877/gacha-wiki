@@ -112,56 +112,63 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 2rem 1.25rem 1rem;
-  background: linear-gradient(to top, rgba(5, 6, 10, 0.92) 0%, rgba(5, 6, 10, 0.55) 55%, transparent 100%);
+  padding: 2.5rem 1.25rem 1.1rem;
+  background: linear-gradient(to top, rgba(5, 6, 10, 0.96) 0%, rgba(5, 6, 10, 0.65) 60%, transparent 100%);
   pointer-events: none;
 }
 
 .game-card-title {
-  font-family: var(--font-display); /* Use display font from typography system */
-  font-size: var(--text-xl); /* Use size from typography system */
-  font-weight: var(--font-semibold); /* Use semibold weight from typography system */
-  color: var(--amber-glow);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
   margin: 0;
-  line-height: 1.25;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+  line-height: 1.3;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Game identity kept as a colored accent bar under the title */
+.game-card-title::after {
+  content: '';
+  display: block;
+  width: 34px;
+  height: 3px;
+  border-radius: 2px;
+  margin-top: 0.5rem;
+  background: var(--amber-glow);
 }
 
 /* Game-specific title colors */
-.game-card[data-game-id='zone-nova'] .game-card-title {
-  color: #ffb74d;
+.game-card[data-game-id='zone-nova'] .game-card-title::after {
+  background: #ffb74d;
 }
 
-.game-card[data-game-id='silver-and-blood'] .game-card-title {
-  color: #e59595;
+.game-card[data-game-id='silver-and-blood'] .game-card-title::after {
+  background: #e59595;
 }
 
-.game-card[data-game-id='horizon-walker'] .game-card-title {
-  color: #f0b862;
+.game-card[data-game-id='horizon-walker'] .game-card-title::after {
+  background: #f0b862;
 }
 
-.game-card[data-game-id='stella-sora'] .game-card-title {
-  color: #9fe0ff;
+.game-card[data-game-id='stella-sora'] .game-card-title::after {
+  background: #9fe0ff;
 }
 
-/* Busty Burst - Dark teal theme */
-.game-card[data-game-id='busty-burst'] .game-card-title {
-  color: #7fb6cc;
+.game-card[data-game-id='busty-burst'] .game-card-title::after {
+  background: #7fb6cc;
 }
 
-/* Taimanin Squad - Soft purple theme */
-.game-card[data-game-id='taimanin-squad'] .game-card-title {
-  color: #a898b8;
+.game-card[data-game-id='taimanin-squad'] .game-card-title::after {
+  background: #a898b8;
 }
 
-/* Last Origin Global */
-.game-card[data-game-id='last-origin-global'] .game-card-title {
-  color: #f4a261;
+.game-card[data-game-id='last-origin-global'] .game-card-title::after {
+  background: #f4a261;
 }
 
-/* MAJO */
-.game-card[data-game-id='majo'] .game-card-title {
-  color: #a89bd1;
+.game-card[data-game-id='majo'] .game-card-title::after {
+  background: #a89bd1;
 }
 
 /* Timer Section */
@@ -231,7 +238,7 @@
   }
 
   .game-card-title {
-    font-size: var(--text-lg); /* Use size from typography system */
+    font-size: 1rem;
   }
 
 }
