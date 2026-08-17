@@ -19,3 +19,35 @@
   display: flex;
   flex-direction: column;
 }
+
+/* Game icon block — clean square frame, centered with the name */
+.majo-clock-body .game-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.majo-clock-body .game-image-container {
+  width: 96px;
+  height: 96px;
+  border-radius: 16px;
+  border: 1px solid var(--majo-border);
+  background: var(--majo-bg-tertiary);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.majo-clock-body .game-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.majo-clock-body .game-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+}
