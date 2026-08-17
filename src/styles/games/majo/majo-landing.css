@@ -104,6 +104,27 @@
   box-shadow: 0 6px 18px rgba(88, 101, 242, 0.35);
 }
 
+/* Title-theme video (click to play, no autoplay) */
+.majo-title-video-wrap {
+  max-width: 640px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.majo-title-video {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--majo-border-light);
+  background: var(--majo-bg-tertiary);
+  display: block;
+}
+
+.majo-title-video-caption {
+  margin: 0.5rem 0 0;
+  font-size: 0.78rem;
+  color: var(--majo-text-tertiary);
+}
+
 /* Resources grid */
 .majo-resources-section {
   padding: 2.5rem;
