@@ -63,7 +63,7 @@
 /* Character grid */
 .ax-char-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
   gap: 1rem;
 }
 
@@ -85,13 +85,11 @@
 
 .ax-char-art {
   width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  object-position: center;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  object-position: center top;
   background: var(--ax-bg-tertiary);
   border-bottom: 1px solid var(--ax-border);
-  padding: 0.5rem;
-  box-sizing: border-box;
 }
 
 .ax-char-card-body {
@@ -181,17 +179,32 @@
   margin-bottom: 2rem;
 }
 
+.ax-detail-art-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 280px;
+}
+
 .ax-detail-art {
-  width: 200px;
+  width: 100%;
   max-width: 100%;
   border-radius: 12px;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center top;
-  flex-shrink: 0;
   border: 1px solid var(--ax-border);
   background: var(--ax-bg-tertiary);
-  padding: 0.5rem;
-  box-sizing: border-box;
+}
+
+.ax-detail-icon {
+  position: absolute;
+  right: -14px;
+  bottom: -14px;
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  border: 2px solid var(--ax-primary-dark);
+  background: var(--ax-bg-secondary);
+  object-fit: cover;
 }
 
 .ax-detail-info h1 {
@@ -411,8 +424,8 @@
     text-align: center;
   }
 
-  .ax-detail-art {
-    width: 160px;
+  .ax-detail-art-wrap {
+    width: 220px;
   }
 
   .ax-meta,

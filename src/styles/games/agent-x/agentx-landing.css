@@ -1,23 +1,222 @@
 /* Agent X landing page styles (adapted from dir-landing). */
 
+/* Hero banner: text dossier on the left, standing art on the right */
+.ax-hero-section {
+  margin-bottom: 1rem;
+}
+
+.ax-hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid rgba(212, 160, 23, 0.35);
+  margin-bottom: 2rem;
+  max-height: 420px;
+}
+
+.ax-hero-image {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.ax-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11, 13, 18, 0.92) 0%, rgba(11, 13, 18, 0.25) 45%, transparent 100%);
+  pointer-events: none;
+}
+
 .ax-landing-hero {
-  text-align: center;
-  margin-bottom: 3rem;
-  padding: 2.5rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 2rem;
+  align-items: end;
+  text-align: left;
+  padding: 2.5rem 1.5rem 1.75rem;
   background: var(--ax-gradient-card);
   border: 1px solid var(--ax-border);
   border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 1.5rem;
+}
+
+.ax-landing-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 85% 20%, rgba(212, 160, 23, 0.12), transparent),
+    repeating-linear-gradient(0deg, transparent 0 3px, rgba(237, 240, 244, 0.015) 3px 4px);
+  pointer-events: none;
 }
 
 .ax-landing-hero h1 {
   font-family: var(--font-display);
-  font-size: var(--text-4xl);
+  font-size: var(--text-5xl);
   font-weight: 700;
   color: var(--ax-primary);
-  margin: 0 0 0.75rem;
+  margin: 0.5rem 0 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ax-hero-text {
+  position: relative;
+  z-index: 1;
+  text-align: left;
+}
+
+.ax-hero-text .ax-landing-tagline {
+  margin-bottom: 1.25rem;
+}
+
+.ax-hero-art {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.ax-hero-portrait {
+  max-height: 430px;
+  width: auto;
+  border-radius: 12px;
+  border: 1px solid var(--ax-border-light);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+}
+
+.ax-hero-caption {
+  margin: 0.5rem 0 0;
+  font-size: 0.75rem;
+  color: var(--ax-text-tertiary);
   letter-spacing: 0.04em;
 }
 
+/* Agent showcase strip */
+.ax-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.ax-showcase-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--ax-bg-card);
+  border: 1px solid var(--ax-border);
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.ax-showcase-card:hover {
+  border-color: var(--ax-primary-dark);
+  transform: translateY(-3px);
+}
+
+.ax-showcase-art {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  object-position: center top;
+  background: var(--ax-bg-tertiary);
+}
+
+.ax-showcase-body {
+  padding: 0.6rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.ax-showcase-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ax-text-primary);
+}
+
+.ax-showcase-name.ax-rarity-ur { color: var(--ax-rarity-ur); }
+.ax-showcase-name.ax-rarity-ssr { color: var(--ax-rarity-ssr); }
+
+.ax-showcase-title {
+  font-size: 0.72rem;
+  color: var(--ax-text-tertiary);
+}
+
+.ax-showcase-more {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.ax-showcase-more .ax-resource-button {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+}
+
+/* Gacha teaser */
+.ax-gacha-teaser {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 1.5rem;
+  background: var(--ax-bg-card);
+  border: 1px solid var(--ax-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  align-items: center;
+}
+
+.ax-gacha-teaser-img {
+  text-align: center;
+}
+
+.ax-gacha-banner-img {
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--ax-border);
+}
+
+.ax-gacha-teaser-body h3 {
+  margin: 0 0 0.75rem;
+  color: var(--ax-primary);
+  font-size: 1.15rem;
+}
+
+.ax-gacha-quick {
+  margin: 0 0 0.9rem;
+  padding-left: 1.2rem;
+  color: var(--ax-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.ax-gacha-teaser-body .ax-resource-button {
+  display: inline-block;
+  margin-top: 0.35rem;
+}
+
+@media (max-width: 900px) {
+  .ax-landing-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .ax-hero-art {
+    order: -1;
+  }
+
+  .ax-hero-portrait {
+    max-height: 360px;
+  }
+
+  .ax-gacha-teaser {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tagline + classified badge */
 .ax-landing-tagline {
   font-size: 1.05rem;
   color: var(--ax-text-secondary);

@@ -1,0 +1,143 @@
+---
+// Agent X gacha (recruitment) guide — verified drop rates from gacha_machine_info + LangENG.
+import AgentXLayout from '../../../layouts/agent-x/LandingLayout.astro';
+import '../../../styles/games/agent-x/agentx-characters.css';
+import '../../../styles/games/agent-x/agentx-landing.css';
+
+interface RateRow {
+  item: string;
+  rate: string;
+}
+
+interface Pool {
+  id: number;
+  name: string;
+  tagline: string;
+  rows: RateRow[];
+  note?: string;
+}
+
+const pools: Pool[] = [
+  {
+    id: 1,
+    name: 'Claire Recruit',
+    tagline: 'Rate-up banner — featured UR agent Claire (4014). Costs Adaptant Recruit Tickets.',
+    rows: [
+      { item: 'Featured Agent (UR)', rate: '0.60%' },
+      { item: 'SR Agent', rate: '5.10%' },
+      { item: 'R Memoria File', rate: '38.90%' },
+      { item: 'Star-Up Material', rate: '55.40%' },
+    ],
+    note: 'Duplicate agents you already own are automatically converted into Cores.',
+  },
+  {
+    id: 16,
+    name: 'Standard Recruit',
+    tagline: 'The permanent pool. SSR Agents and star-up materials.',
+    rows: [
+      { item: 'SSR Agent', rate: '1.15%' },
+      { item: 'SR Agent', rate: '16.00%' },
+      { item: 'Star-Up Material', rate: '82.85%' },
+    ],
+    note: 'Probabilities for individual agents of the same rarity are evenly distributed. Duplicates convert to Cores.',
+  },
+  {
+    id: 17,
+    name: "Newbie's Recruit",
+    tagline: 'Beginner banner — limited to 50 pulls with a hard SSR guarantee.',
+    rows: [
+      { item: 'SSR Agent', rate: '1.15%' },
+      { item: 'SR Agent', rate: '16.00%' },
+      { item: 'Star-Up Material', rate: '82.85%' },
+    ],
+    note: 'This pool is limited to 50 recruitments. At least 1 SSR Agent is guaranteed within 50 pulls — if none arrives in the first 49, the 50th is a 100% SSR. Duplicates convert to Resonance Cores.',
+  },
+  {
+    id: 400,
+    name: 'Limited Recruit',
+    tagline: 'Limited rate-up banner — currently featuring UR agent Ilya (4009).',
+    rows: [
+      { item: 'Featured Agent (UR)', rate: '0.60%' },
+      { item: 'SR Agent', rate: '5.10%' },
+      { item: 'R Memoria File', rate: '38.90%' },
+      { item: 'Star-Up Material', rate: '55.40%' },
+    ],
+    note: 'Duplicate agents you already own are automatically converted into Cores.',
+  },
+  {
+    id: 20,
+    name: 'Social Recruitment',
+    tagline: 'Friendship-point pool — no SSR agents.',
+    rows: [
+      { item: 'SR Agent', rate: '47.50%' },
+      { item: 'Star-Up Material', rate: '52.50%' },
+    ],
+    note: 'This pool only consumes Friendship Points and does not contain SSR agents.',
+  },
+  {
+    id: 399,
+    name: 'Memoria File',
+    tagline: 'Equipment (Memoria File) pool.',
+    rows: [
+      { item: 'SSR Memoria File', rate: '0.80%' },
+      { item: 'SR Memoria File', rate: '6.60%' },
+      { item: 'R Memoria File', rate: '92.60%' },
+    ],
+    note: 'Probabilities for all Memoria Files of the same rarity are evenly distributed.',
+  },
+  {
+    id: 4000,
+    name: 'Memoria Recruit',
+    tagline: 'Featured equipment pool — currently featuring Ilya\u2019s signature Memoria.',
+    rows: [
+      { item: 'Featured Memoria', rate: '0.80%' },
+      { item: 'SR Memoria', rate: '6.60%' },
+      { item: 'R Memoria', rate: '92.60%' },
+    ],
+  },
+];
+---
+
+<AgentXLayout
+  title="Gacha Recruitment Rates"
+  description="Agent X gacha guide — verified recruitment rates for every banner: standard, limited rate-up, newbie (50-pull SSR pity), social, and memoria pools."
+  gameTitle="Recruitment Rates"
+>
+  <section class="ax-content-section">
+    <p class="ax-story">
+      All rates below are read directly from the game's master data
+      (<code>gacha_machine_info</code> + localization) — not community estimates.
+      Agent X has {pools.length} recruitment machines. The only hard pity is the
+      <strong>Newbie's Recruit</strong> banner (50 pulls → guaranteed SSR); the limited
+      rate-up banners feature a single UR agent at 0.60%.
+    </p>
+  </section>
+
+  {pools.map(pool => (
+    <section class="ax-content-section">
+      <div class="ax-detail-section ax-gacha-pool">
+        <h3>{pool.name} <span class="ax-skill-id">#{pool.id}</span></h3>
+        <p class="ax-char-title">{pool.tagline}</p>
+        <table class="ax-gacha-rates">
+          <thead>
+            <tr><th>Item</th><th>Rate</th></tr>
+          </thead>
+          <tbody>
+            {pool.rows.map(r => (
+              <tr><td>{r.item}</td><td>{r.rate}</td></tr>
+            ))}
+          </tbody>
+        </table>
+        {pool.note && <p class="ax-gacha-note">{pool.note}</p>}
+      </div>
+    </section>
+  ))}
+
+  <section class="ax-content-section">
+    <div class="ax-gacha-note">
+      Source note: probabilities are the game's published expected values based on
+      large-sample statistics — individual results vary. Data extracted from version 1.0
+      live files (August 2026).
+    </div>
+  </section>
+</AgentXLayout>

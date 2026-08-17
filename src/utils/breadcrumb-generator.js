@@ -111,6 +111,14 @@ const GAME_CONFIG = {
       items: 'Items',
     },
   },
+  'agent-x': {
+    name: 'Agent X',
+    basePath: '/guides/agent-x/',
+    patterns: {
+      characters: 'Agents',
+      gacha: 'Recruitment Rates',
+    },
+  },
 };
 
 /**

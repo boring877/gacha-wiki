@@ -10,19 +10,22 @@ import MobileMenu from '../../components/MobileMenu.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import Breadcrumb from '../../components/agent-x/Breadcrumb.astro';
+import { Image } from 'astro:assets';
 
 import '../../styles/games/agent-x/agentx-colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/agent-x/agentx-layout.css';
+import '../../styles/games/agent-x/agentx-landing.css';
 
 export interface Props {
   title: string;
   description?: string;
   gameTitle?: string;
+  heroImage?: any;
 }
 
-const { title, description, gameTitle } = Astro.props;
+const { title, description, gameTitle, heroImage } = Astro.props;
 const seoTitle = `${title} | Agent X`;
 const seoDescription =
   description || 'Complete guide for Agent X. Agent database, stats, skills, gacha rates, and lore for the R18 spy gacha RPG.';
@@ -45,7 +48,24 @@ const seoDescription =
 
       <div class="ax-container">
         <main class="ax-main" id="main-content">
-          {gameTitle && (
+          {heroImage && gameTitle && (
+            <section class="ax-hero-section">
+              <div class="ax-hero-image-wrapper">
+                <Image
+                  src={heroImage}
+                  alt={gameTitle}
+                  class="ax-hero-image"
+                  width={1024}
+                  height={1536}
+                  loading="eager"
+                  decoding="async"
+                />
+                <div class="ax-hero-overlay" />
+              </div>
+            </section>
+          )}
+
+          {!heroImage && gameTitle && (
             <section class="ax-title-only-section">
               <h1 class="ax-title-only-heading">{gameTitle}</h1>
               <DecorativeLines />

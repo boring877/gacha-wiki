@@ -1,64 +1,128 @@
 ---
-// Agent X game overview landing page.
+// Agent X game overview landing page (MAJO-style: hero art, story, showcase, gacha, resources).
+import { Image } from 'astro:assets';
 import AgentXLayout from '../../../layouts/agent-x/LandingLayout.astro';
+import AgentXCharacterImage from '../../../components/agent-x/AgentXCharacterImage.astro';
 import { agentXCharacters } from '../../../data/agent-x/characters.js';
 import { SITE } from '../../../consts';
 import '../../../styles/games/agent-x/agentx-landing.css';
 
-const agents = agentXCharacters.length;
-const urCount = agentXCharacters.filter(c => c.rarity === 'UR').length;
-const ssrCount = agentXCharacters.filter(c => c.rarity === 'SSR').length;
+import heroIlya from '../../../assets/images/games/agent-x/gameimg/hero_ilya.png';
+import gachaBanner from '../../../assets/images/games/agent-x/gameimg/gacha_standard.png';
+
+const agents = agentXCharacters;
+const urCount = agents.filter(c => c.rarity === 'UR').length;
+const ssrCount = agents.filter(c => c.rarity === 'SSR').length;
+// Showcase: the current rate-up + faction faces, one per row of the strip.
+const showcase = ['4009', '3001', '4014', '4020', '4019', '4001', '3015', '4013']
+  .map(id => agents.find(c => String(c.id) === id))
+  .filter(Boolean);
 ---
 
 <AgentXLayout
   title="Home"
-  description="Agent X wiki — R18 spy-agency gacha RPG on EROLABS. Agent database, skills, gacha rates, and lore. Recruit agents and fight The Fallen."
+  description="Agent X wiki — R18 spy-agency gacha RPG on EROLABS. Agent database, skills, gacha rates, and lore. Recruit P.R.I.S.M. agents and fight The Fallen."
   gameTitle="Agent X"
+  heroImage={heroIlya}
 >
   <section class="ax-landing-hero">
-    <span class="ax-landing-classified">Classified — P.R.I.S.M. Archives</span>
-    <h1>Agent X</h1>
-    <p class="ax-landing-tagline">
-      The Fallen have seized the city. You command <strong>P.R.I.S.M.</strong>'s last
-      covert squad — recruit agents, master the elements, and take the fight to The Fallen
-      in turn-based squad combat.
-    </p>
-    <div class="ax-facts">
-      <div class="ax-fact-box"><span class="ax-fact-value">{agents}</span><span class="ax-fact-label">Agents</span></div>
-      <div class="ax-fact-box"><span class="ax-fact-value">{urCount}</span><span class="ax-fact-label">UR</span></div>
-      <div class="ax-fact-box"><span class="ax-fact-value">{ssrCount}</span><span class="ax-fact-label">SSR</span></div>
-      <div class="ax-fact-box"><span class="ax-fact-value">5</span><span class="ax-fact-label">Roles</span></div>
-      <div class="ax-fact-box"><span class="ax-fact-value">5</span><span class="ax-fact-label">Elements</span></div>
+    <div class="ax-hero-text">
+      <span class="ax-landing-classified">Classified — P.R.I.S.M. Archives</span>
+      <h1>Agent X</h1>
+      <p class="ax-landing-tagline">
+        The Fallen have seized the city. You are the Commander of <strong>P.R.I.S.M.</strong>'s
+        last covert squad — recruit agents, master the elements, and take the fight to
+        The Fallen in turn-based squad combat.
+      </p>
+      <div class="ax-facts">
+        <div class="ax-fact-box"><span class="ax-fact-value">{agents.length}</span><span class="ax-fact-label">Agents</span></div>
+        <div class="ax-fact-box"><span class="ax-fact-value">{urCount}</span><span class="ax-fact-label">UR</span></div>
+        <div class="ax-fact-box"><span class="ax-fact-value">{ssrCount}</span><span class="ax-fact-label">SSR</span></div>
+        <div class="ax-fact-box"><span class="ax-fact-value">5</span><span class="ax-fact-label">Roles</span></div>
+        <div class="ax-fact-box"><span class="ax-fact-value">5</span><span class="ax-fact-label">Elements</span></div>
+      </div>
+      <div class="ax-download-row">
+        <a
+          class="ax-download-btn"
+          href="https://game.erolabsshare.live/app/f302f717/Agent_X"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Download &amp; Play Agent X <span>→</span>
+        </a>
+        <a
+          class="ax-download-btn ghost"
+          href={SITE.SOCIAL.DISCORD}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Join our Discord
+        </a>
+      </div>
     </div>
-    <div class="ax-download-row">
-      <a
-        class="ax-download-btn"
-        href="https://game.erolabsshare.live/app/f302f717/Agent_X"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Download &amp; Play Agent X <span>→</span>
-      </a>
-      <a
-        class="ax-download-btn ghost"
-        href={SITE.SOCIAL.DISCORD}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Join our Discord
+    <div class="ax-hero-art">
+      <AgentXCharacterImage filename="4009_art.png" alt="Ilya — Agent X" class="ax-hero-portrait" loading="eager" />
+      <p class="ax-hero-caption">Ilya — "Whisper", Agent of The Fallen (current rate-up)</p>
+    </div>
+  </section>
+
+  <h2 class="ax-section-title">The Story</h2>
+  <section class="ax-content-section">
+    <p class="ax-story">
+      A near-future city sleeps under martial law. Ten years ago a dimensional event — the
+      <strong>Zero Point resonance</strong> — birthed <strong>The Fallen</strong>: humans twisted
+      into something no longer human. The intelligence agency <strong>P.R.I.S.M.</strong> was
+      founded to fight back, and its agents now walk the ruins in disguise — maids, medics,
+      students, assassins — every one of them carrying a Mark that lets her do the impossible.
+    </p>
+    <p class="ax-story">
+      You are the <strong>Commander</strong>, the rare "Syncher" whose resonance can drive an
+      agent's power to 100%. Recruit agents from both P.R.I.S.M. and The Fallen itself, raise
+      bonds through their personal stories, and uncover what really happened at Ground Zero —
+      where your own memories were taken from you. <strong>Agent X</strong> is an R18
+      spy-agency gacha RPG on the EROLABS platform with 36 agents at launch, five elements,
+      five combat roles, and a 50-pull SSR pity on the newbie banner.
+    </p>
+  </section>
+
+  <h2 class="ax-section-title">Featured Agents</h2>
+  <section class="ax-content-section">
+    <div class="ax-showcase-grid">
+      {showcase.map(char => (
+        <a href={`/guides/agent-x/characters/${char.slug}/`} class="ax-showcase-card">
+          <AgentXCharacterImage filename={char.art} alt={char.name} class="ax-showcase-art" />
+          <div class="ax-showcase-body">
+            <span class={`ax-showcase-name ax-rarity-${char.rarity.toLowerCase()}`}>{char.name}</span>
+            <span class="ax-showcase-title">{char.title}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+    <div class="ax-showcase-more">
+      <a href="/guides/agent-x/characters/" class="ax-resource-button">
+        View all {agents.length} agents in the database →
       </a>
     </div>
   </section>
 
+  <h2 class="ax-section-title">Recruitment</h2>
   <section class="ax-content-section">
-    <p class="ax-story">
-      <strong>Agent X</strong> is an R18 spy-agency gacha RPG on the EROLABS platform.
-      As commander of a covert task force, you recruit and train female agents — from
-      P.R.I.S.M. snipers to reformed Fallen operatives — each with an element
-      (Fire / Wood / Water / Light / Dark), one of five combat roles, and a personal
-      story that unlocks as you raise bonds. Duplicates convert to Cores for star-ups,
-      and a 50-pull pity guarantees an SSR on the limited banner.
-    </p>
+    <div class="ax-gacha-teaser">
+      <div class="ax-gacha-teaser-img">
+        <Image src={gachaBanner} alt="Agent X standard recruitment banner" class="ax-gacha-banner-img" width={376} height={190} loading="lazy" />
+      </div>
+      <div class="ax-gacha-teaser-body">
+        <h3>Drop Rates &amp; Pity</h3>
+        <ul class="ax-gacha-quick">
+          <li><strong>Standard:</strong> SSR 1.15% · SR 16.00%</li>
+          <li><strong>Rate-up (Ilya):</strong> Featured UR 0.60% · SR 5.10%</li>
+          <li><strong>Newbie:</strong> 50 pulls → guaranteed SSR</li>
+          <li><strong>Memoria:</strong> SSR 0.80% · SR 6.60%</li>
+        </ul>
+        <p class="ax-char-title">All rates read directly from the game's master data.</p>
+        <a href="/guides/agent-x/gacha/" class="ax-resource-button">Full recruitment guide →</a>
+      </div>
+    </div>
   </section>
 
   <h2 class="ax-section-title">Guides &amp; Resources</h2>
@@ -68,7 +132,7 @@ const ssrCount = agentXCharacters.filter(c => c.rarity === 'SSR').length;
         <div class="ax-category-header">
           <h3>Agents</h3>
           <p class="ax-category-description">
-            All {agents} agents with rarity, element, role, verified stats, skills and lore.
+            All {agents.length} agents with rarity, element, role, verified stats, skills and lore.
           </p>
         </div>
         <div class="ax-buttons-grid">
@@ -85,6 +149,19 @@ const ssrCount = agentXCharacters.filter(c => c.rarity === 'SSR').length;
         </div>
         <div class="ax-buttons-grid">
           <a href="/guides/agent-x/gacha/" class="ax-resource-button">Recruitment Rates</a>
+        </div>
+      </div>
+
+      <div class="ax-resource-category">
+        <div class="ax-category-header">
+          <h3>Data Source</h3>
+          <p class="ax-category-description">
+            Everything on this wiki is extracted from the live game files and verified —
+            no community guesses.
+          </p>
+        </div>
+        <div class="ax-buttons-grid">
+          <a href="https://game.erolabsshare.live/app/f302f717/Agent_X" class="ax-resource-button" target="_blank" rel="noopener noreferrer">Official Download</a>
         </div>
       </div>
     </div>

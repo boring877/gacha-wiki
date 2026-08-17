@@ -23,6 +23,7 @@ const desireImmortalRealm = g('desire-immortal-realm');
 const starSavior = g('star-savior');
 const rebellionGilgamesh = g('rebellion-gilgamesh');
 const majo = g('majo');
+const agentX = g('agent-x');
 
 // Type definitions for better code quality and IntelliSense
 export interface SocialLinks {
@@ -956,6 +957,40 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
     alternateName: ['魔女之夜', 'MAJO：魔女之夜'],
     inLanguage: 'en',
     availableLanguage: ['en', 'ja', 'ko', 'zh-Hans', 'zh-Hant'],
+    playMode: 'SinglePlayer',
+  },
+  [agentX.id]: {
+    gameName: agentX.name,
+    keywords: [
+      agentX.name,
+      'agent x game',
+      'agent x wiki',
+      'agent x guide',
+      'agent x characters',
+      'agent x gacha',
+      'agent x erolabs',
+      'com.armyentlim.agentx.erolabs.prod',
+      // Character names (high-intent, from game localization)
+      'fanny agent x',
+      'ilya agent x',
+      'claire agent x',
+      'evelyn agent x',
+      'raven agent x',
+      // Game-type keywords
+      'r18 gacha',
+      'spy gacha game',
+      'erolabs games',
+      'turn based rpg',
+      // Generic
+      'gacha game',
+      'character database',
+      'gacha rates',
+      'mobile rpg',
+    ] as const,
+    themeColor: agentX.themeColor,
+    description: `Agent X wiki - R18 spy-agency gacha RPG on EROLABS. Command P.R.I.S.M.'s covert squad against The Fallen. Full agent database with rarity, element, role, stats, skills, gacha rates, and lore.`,
+    genres: ['Spy RPG', 'Gacha', 'R18'] as const,
+    platform: 'Mobile, PC',
     playMode: 'SinglePlayer',
   },
 } as const;

@@ -8,6 +8,7 @@ import BustyBurstIcon from '../assets/images/games/Busty_Burst/BG/Icon.png';
 import TaimaninSquadIcon from '../assets/images/games/taimanin-squad/gameimg/icon.jpg';
 import LastOriginGlobalIcon from '../assets/images/games/last-origin-global/gameimg/icon.jpg';
 import GameIcon from '../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
+import AgentXIcon from '../assets/images/games/agent-x/gameimg/icon-3001.png';
 
 export interface Game {
   id: string; // kebab-case key, e.g. 'zone-nova' — the single key everywhere
@@ -157,6 +158,17 @@ export const GAMES: Game[] = [
     status: 'active',
     themeColor: '#3d5a6c',
     sections: ['Characters', 'Classes', 'Stats', 'Skills'],
+  },
+  {
+    id: 'agent-x',
+    name: 'Agent X',
+    slug: 'agent-x',
+    description: 'R18 Spy RPG • EROLABS • 36 Agents • Squad Combat • P.R.I.S.M. vs The Fallen',
+    image: AgentXIcon,
+    url: '/guides/agent-x/',
+    status: 'active',
+    themeColor: '#d4a017',
+    sections: ['Agents', 'Gacha', 'Elements', 'Roles'],
   },
 ];
 

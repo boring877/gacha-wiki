@@ -211,15 +211,18 @@
 /* Game info and timer display layout */
 .hero-main-content {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 4rem;
-  min-height: 200px;
+  gap: 1.75rem;
+  min-height: 0;
+  text-align: center;
 }
 
 .game-section {
-  flex: 1;
+  width: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 2rem;
 }
@@ -514,13 +517,10 @@
   .game-section {
     justify-content: center;
     gap: 1rem;
-    order: 2; /* Game info after timer on mobile */
   }
 
   .timer-section {
     text-align: center;
-    order: 1; /* Timer first on mobile */
-    margin-bottom: 1rem;
   }
 
   .game-image-container {

@@ -47,7 +47,7 @@ function elemCss(e) {
           data-title={(char.title || '').toLowerCase()}
         >
           <AgentXCharacterImage
-            filename={char.icon}
+            filename={char.art || char.icon}
             alt={char.name}
             class="ax-char-art"
           />

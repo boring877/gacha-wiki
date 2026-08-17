@@ -10,7 +10,8 @@ export type GameKey =
   | 'last-origin-global'
   | 'make-drama'
   | 'desire-immortal-realm'
-  | 'majo';
+  | 'majo'
+  | 'agent-x';
 
 export interface NavigationLink {
   name: string;
@@ -459,6 +460,22 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
         title: 'Resources',
         links: [
           { name: 'Clock', href: '/clock/majo/' },
+        ],
+      },
+    ],
+  },
+  'agent-x': {
+    sections: [
+      {
+        title: 'Agents',
+        links: [
+          { name: 'Database', href: '/guides/agent-x/characters/' },
+        ],
+      },
+      {
+        title: 'Gacha',
+        links: [
+          { name: 'Recruitment Rates', href: '/guides/agent-x/gacha/' },
         ],
       },
     ],

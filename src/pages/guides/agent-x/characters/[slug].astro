@@ -24,12 +24,19 @@ const elemCss = (char.element || '').toLowerCase();
 >
   <section class="ax-content-section">
     <div class="ax-detail-header">
-      <AgentXCharacterImage
-        filename={char.icon}
-        alt={char.name}
-        class="ax-detail-art"
-        loading="eager"
-      />
+      <div class="ax-detail-art-wrap">
+        <AgentXCharacterImage
+          filename={char.art || char.icon}
+          alt={char.name}
+          class="ax-detail-art"
+          loading="eager"
+        />
+        <AgentXCharacterImage
+          filename={char.icon}
+          alt={`${char.name} icon`}
+          class="ax-detail-icon"
+        />
+      </div>
       <div class="ax-detail-info">
         <h1>{char.name}</h1>
         {char.title && <p class="ax-detail-title">"{char.title}"</p>}
