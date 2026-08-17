@@ -91,12 +91,13 @@
   color: inherit;
 }
 
-/* Game Card Image */
+/* Game Card Image — uniform ratio across all games */
 .game-card-image-container {
   position: relative;
   width: 100%;
-  height: 200px;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .game-card-image {
@@ -105,21 +106,25 @@
   object-fit: cover;
 }
 
-/* Game Card Content */
-.game-card-content {
-  padding: 1.5rem;
+/* Title overlaid on the image bottom (gradient scrim) — always aligned */
+.game-card-title-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1.25rem 1rem;
+  background: linear-gradient(to top, rgba(5, 6, 10, 0.92) 0%, rgba(5, 6, 10, 0.55) 55%, transparent 100%);
+  pointer-events: none;
 }
 
 .game-card-title {
   font-family: var(--font-display); /* Use display font from typography system */
-  font-size: var(--text-xl); /* Reduced for better fit */
+  font-size: var(--text-xl); /* Use size from typography system */
   font-weight: var(--font-semibold); /* Use semibold weight from typography system */
   color: var(--amber-glow);
-  margin: 0 0 0.5rem 0;
-  line-height: var(--leading-normal); /* Use leading from typography system */
-  white-space: nowrap; /* Prevent wrapping */
-  overflow: hidden;
-  text-overflow: ellipsis;
+  margin: 0;
+  line-height: 1.25;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
 }
 
 /* Game-specific title colors */
@@ -128,57 +133,35 @@
 }
 
 .game-card[data-game-id='silver-and-blood'] .game-card-title {
-  color: #c26b6b;
+  color: #e59595;
 }
 
 .game-card[data-game-id='horizon-walker'] .game-card-title {
-  color: #e8a547;
+  color: #f0b862;
 }
 
 .game-card[data-game-id='stella-sora'] .game-card-title {
-  color: #7dd3fc;
-}
-
-.game-card[data-game-id='stella-sora'] .game-card-image-container {
-  height: 180px;
-  background: rgba(125, 211, 252, 0.05);
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.game-card[data-game-id='stella-sora'] .game-card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 4px;
+  color: #9fe0ff;
 }
 
 /* Busty Burst - Dark teal theme */
 .game-card[data-game-id='busty-burst'] .game-card-title {
-  color: #4a8399;
-}
-
-.game-card[data-game-id='busty-burst'] .game-card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  color: #7fb6cc;
 }
 
 /* Taimanin Squad - Soft purple theme */
 .game-card[data-game-id='taimanin-squad'] .game-card-title {
-  color: #6b5b7a;
+  color: #a898b8;
 }
 
-.game-card-description {
-  font-family: var(--font-primary); /* Use primary font from typography system */
-  font-size: var(--text-sm); /* Use size from typography system */
-  font-weight: var(--font-normal); /* Use normal weight from typography system */
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0 0 1rem 0;
-  line-height: var(--leading-normal); /* Use leading from typography system */
+/* Last Origin Global */
+.game-card[data-game-id='last-origin-global'] .game-card-title {
+  color: #f4a261;
+}
+
+/* MAJO */
+.game-card[data-game-id='majo'] .game-card-title {
+  color: #a89bd1;
 }
 
 /* Timer Section */
@@ -241,14 +224,6 @@
     gap: 1rem;
   }
 
-  .game-card-content {
-    padding: 1.25rem;
-  }
-
-  .game-card-image-container {
-    height: 180px;
-  }
-
   /* Enhanced mobile hover states */
   .game-card {
     border-radius: 16px;
@@ -259,10 +234,6 @@
     font-size: var(--text-lg); /* Use size from typography system */
   }
 
-  .game-card-description {
-    font-size: var(--text-xs); /* Use size from typography system */
-    line-height: var(--leading-normal); /* Use leading from typography system */
-  }
 }
 
 @media (max-width: 480px) {
@@ -278,16 +249,8 @@
     margin-bottom: 2rem;
   }
 
-  .game-card-content {
-    padding: 1rem;
-  }
-
   .game-card-timer {
     padding: 0.75rem;
-  }
-
-  .game-card-image-container {
-    height: 160px;
   }
 }
 

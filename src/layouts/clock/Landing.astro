@@ -101,7 +101,7 @@ const { title, description, games } = Astro.props;
                               loading={index === 0 ? 'eager' : 'lazy'}
                               fetchpriority={index === 0 ? 'high' : 'auto'}
                               width="600"
-                              height="338"
+                              height="375"
                             />
                           ) : (
                             <img
@@ -111,13 +111,13 @@ const { title, description, games } = Astro.props;
                               loading={index === 0 ? 'eager' : 'lazy'}
                               fetchpriority={index === 0 ? 'high' : 'auto'}
                               width="600"
-                              height="338"
+                              height="375"
                             />
                           )
                         }
-                      </div>
-                      <div class="game-card-content">
-                        <h3 class="game-card-title">{game.name}</h3>
+                        <div class="game-card-title-overlay">
+                          <h3 class="game-card-title">{game.name}</h3>
+                        </div>
                       </div>
                     </a>
                   </article>
