@@ -1,0 +1,21 @@
+/* MAJO clock theme — reuses the horizon-walker clock stylesheet structure by
+   re-defining its --hw-* color tokens with the majo dusk-lavender palette. */
+
+:root {
+  --hw-primary-warm: #8577a8;
+  --hw-accent-mint: #a89bd1;
+  --hw-secondary-coral: #8fa8c9;
+  --hw-text-white: #eceaf2;
+  --hw-text-dark: #a8a5b8;
+  --hw-text-muted: #736f85;
+  --hw-border-gray: #333448;
+}
+
+.majo-clock-body {
+  background: var(--majo-bg-primary);
+  color: var(--majo-text-primary);
+  font-family: var(--font-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

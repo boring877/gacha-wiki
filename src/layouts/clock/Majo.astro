@@ -1,0 +1,262 @@
+---
+// MAJO: Witches Night clock layout — daily reset countdown (21:00 UTC).
+import MajoBaseHead from '../../components/majo/MajoBaseHead.astro';
+import Header from '../../components/Header.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import Footer from '../../components/Footer.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import GeneralSEO from '../../components/GeneralSEO.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import MajoBreadcrumb from '../../components/majo/MajoBreadcrumb.astro';
+import Analytics from '../../components/Analytics.astro';
+import { Image } from 'astro:assets';
+
+import '../../styles/games/majo/majo-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/clock/layout.css';
+import '../../styles/clock/horizon-walker.css';
+import '../../styles/clock/majo.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  games: any[];
+}
+
+const { title, description, games } = Astro.props;
+const game = games[0];
+
+const now = new Date();
+const currentDateString = now.toLocaleDateString('en-US', {
+  weekday: 'short',
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <MajoBaseHead title={title} description={description} />
+    <GeneralSEO
+      title={title}
+      description={description}
+      keywords={[
+        'majo clock',
+        'majo witches night timer',
+        'majo daily reset',
+        'majo server reset time',
+      ]}
+      pageType="webapp"
+    />
+    <Analytics />
+  </head>
+
+  <body class="majo-clock-body">
+    <CustomScrollbar />
+
+    <div class="majo-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="majo" />
+      <MobileMenu />
+
+      <div class="clock-page-container">
+        <main class="modern-clock-page">
+          <div class="clock-container">
+            <section class="title-only-section">
+              <h1 class="hw-title-only-heading">MAJO: Witches Night Clock</h1>
+              <DecorativeLines />
+            </section>
+
+            <MajoBreadcrumb
+              items={[
+                { name: 'Home', href: '/' },
+                { name: 'Clocks', href: '/clock/' },
+                { name: 'MAJO Clock' },
+              ]}
+              showBackButton={true}
+            />
+
+            <div class="master-clock-container">
+              <div class="master-clock server-reset-card" id="masterClock">
+                <div class="clock-bg-animation"></div>
+
+                <div class="hero-top-section">
+                  <div class="utc-info">
+                    <p class="utc-note" id="utcNote">All times UTC — reset at 21:00 UTC (05:00 Taipei)</p>
+                  </div>
+                  <div class="current-time-info">
+                    <div class="current-date" id="currentDate">{currentDateString}</div>
+                    <div class="current-utc" id="currentUTC">UTC --:--:--</div>
+                  </div>
+                </div>
+
+                <div class="hero-main-content">
+                  <div class="game-section">
+                    <div class="game-info-container">
+                      <div class="game-wrapper">
+                        <div class="game-image-container" id="clockGameImageContainer">
+                          <Image
+                            class="game-image"
+                            id="clockGameImage"
+                            src={game.image}
+                            alt={game.name}
+                            loading="eager"
+                            width={200}
+                            height={208}
+                          />
+                        </div>
+                        <div class="game-info">
+                          <h3 class="hw-game-name" id="clockGameName">{game.name}</h3>
+                          <div class="region-badge">
+                            <span class="region-name">{game.server.name}</span>
+                          </div>
+                          <div class="game-status" set:html={game.server.status} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="timer-section">
+                    <div class="timer-description-section">
+                      <div class="hw-timer-main-label" id="timerDescription">
+                        {game.timerDescription}
+                      </div>
+                    </div>
+
+                    <div class="clock-display">
+                      <div class="time-unit-group">
+                        <div class="time-unit">
+                          <span class="time-value" id="clockHours">--</span>
+                          <span class="time-label">Hours</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                          <span class="time-value" id="clockMinutes">--</span>
+                          <span class="time-label">Minutes</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                          <span class="time-value" id="clockSeconds">--</span>
+                          <span class="time-label">Seconds</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="master-clock-container secondary-timers-container">
+              <div class="master-clock secondary-timers-card" id="secondaryTimers">
+                <div class="clock-bg-animation"></div>
+
+                <div class="game-timers-header">
+                  <div class="timer-description-section">
+                    <div class="hw-timer-main-label">MAJO Timers</div>
+                    <div class="timer-subtitle">
+                      Track MAJO resets and events
+                    </div>
+                  </div>
+                </div>
+
+                <div class="timers-grid-wrapper">
+                  <div class="timer-section-group primary-timers">
+                    <div class="timers-row">
+                      <div class="timer-card weekly-card priority-card">
+                        <div class="timer-card-header">
+                          <div class="hw-timer-card-title">Weekly & Monthly Reset</div>
+                        </div>
+                        <div class="timer-card-content">
+                          <div class="reset-item">
+                            <div class="reset-name">Weekly Reset</div>
+                            <div class="reset-subtitle">Every Monday at 21:00 UTC</div>
+                            <div class="reset-time" id="weeklyTime">--:--:--</div>
+                          </div>
+                          <div class="reset-item">
+                            <div class="reset-name">Monthly Reset</div>
+                            <div class="reset-subtitle">1st of each month at 21:00 UTC</div>
+                            <div class="reset-time" id="monthlyTime">--:--:--</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="timer-card maintenance-card priority-card">
+                        <div class="timer-card-header">
+                          <div class="hw-timer-card-title">Maintenance</div>
+                          <div class="server-status">
+                            <div class="status-dot" id="serverStatusDot"></div>
+                            <span class="status-text" id="serverStatusText">Online</span>
+                          </div>
+                        </div>
+                        <div class="timer-card-subtitle">{game.maintenance.subtitle}</div>
+                        <div class="timer-card-content">
+                          <div class="maintenance-item">
+                            <div class="maintenance-name">Status</div>
+                            <div class="maintenance-time">—</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="timer-section-group secondary-timers">
+                    <div class="timers-row">
+                      <div class="timer-card launch-card">
+                        <div class="timer-card-header">
+                          <div class="hw-timer-card-title">Launch - Days Since</div>
+                        </div>
+                        <div class="launch-card-content">
+                          <div class="launch-counter">
+                            <div class="launch-days" id="launchDays">---</div>
+                            <div class="launch-date">{game.displayDate}</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="timer-card halloween-card">
+                        <div class="timer-card-header">
+                          <div class="hw-timer-card-title">Halloween - Days Until</div>
+                        </div>
+                        <div class="launch-card-content">
+                          <div class="launch-counter">
+                            <div class="launch-days" id="halloweenTime">---</div>
+                            <div class="launch-date">October 31st</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="timer-card newyear-card">
+                        <div class="timer-card-header">
+                          <div class="hw-timer-card-title">New Year - Days Until</div>
+                        </div>
+                        <div class="launch-card-content">
+                          <div class="launch-counter">
+                            <div class="launch-days" id="newyearTime">---</div>
+                            <div class="launch-date">January 1st</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <Footer />
+
+    <script define:vars={{ config: game }}>
+      window.majoConfig = config;
+    </script>
+
+    <script src="../../scripts/clock/majo.js"></script>
+  </body>
+</html>

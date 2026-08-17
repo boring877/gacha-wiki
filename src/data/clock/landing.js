@@ -75,6 +75,15 @@ export const clockLandingGames = [
     themeColor: '#f4a261',
     active: true,
   },
+  {
+    id: 'majo',
+    name: 'MAJO: Witches Night',
+    description: 'R18 witch-contract strategy gacha',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/icon.webp',
+    url: '/clock/majo',
+    themeColor: '#8577a8',
+    active: true,
+  },
 ];
 
 /**

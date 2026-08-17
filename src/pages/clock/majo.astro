@@ -1,0 +1,35 @@
+---
+// MAJO: Witches Night clock page — daily reset countdown (21:00 UTC).
+import MajoClockLayout from '../../layouts/clock/Majo.astro';
+import { majoClockConfig } from '../../data/clock/majo.js';
+
+const title = 'MAJO Clock - Daily Reset Timer | GachaWiki';
+const description =
+  'MAJO: Witches Night daily reset timer — server resets at 21:00 UTC (05:00 Taipei). Track daily resets, weekly resets and events with a real-time countdown.';
+
+const games = [{ ...majoClockConfig }];
+---
+
+<MajoClockLayout title={title} description={description} games={games}>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "MAJO: Witches Night Reset Clock",
+      "description": "Real-time server reset timer for MAJO: Witches Night. Daily reset at 21:00 UTC (05:00 Taipei).",
+      "url": "https://gachawiki.info/clock/majo",
+      "mainEntity": {
+        "@type": "WebApplication",
+        "name": "MAJO Reset Clock & Timer",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web Browser",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GachaWiki",
+        "url": "https://gachawiki.info"
+      }
+    }
+  </script>
+</MajoClockLayout>
