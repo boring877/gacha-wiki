@@ -1,0 +1,126 @@
+/* Agent X tier list — class groups with tier rows (mirrors majo-tier layout). */
+
+.ax-tier-class-section {
+  margin-bottom: 2rem;
+}
+
+.ax-tier-class-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--ax-border);
+}
+
+.ax-tier-class-title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ax-text-primary);
+}
+
+.ax-tier-class-count {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--ax-text-tertiary);
+}
+
+.ax-tier-note {
+  font-size: 0.85rem;
+  color: var(--ax-text-tertiary);
+  text-align: center;
+  margin: 0 0 1.5rem;
+}
+
+.ax-tier-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  background: var(--ax-bg-card);
+  border: 1px solid var(--ax-border);
+  border-radius: 12px;
+  padding: 0.9rem;
+}
+
+.ax-tier-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.ax-tier-sss .ax-tier-label,
+.ax-tier-ss .ax-tier-label,
+.ax-tier-s .ax-tier-label,
+.ax-tier-a .ax-tier-label {
+  color: var(--ax-primary);
+  background: var(--ax-bg-tertiary);
+  border: 1px solid var(--ax-border);
+}
+
+.ax-tier-chars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.ax-tier-card {
+  display: flex;
+  flex-direction: column;
+  width: 86px;
+  text-decoration: none;
+}
+
+.ax-tier-art {
+  width: 86px;
+  height: 118px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 8px;
+  border: 1px solid var(--ax-border);
+  background: var(--ax-bg-tertiary);
+}
+
+.ax-tier-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+}
+
+.ax-tier-meta .ax-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.ax-tier-meta .ax-icon-rarity {
+  height: 16px;
+}
+
+.ax-tier-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ax-text-primary);
+  margin-top: 0.15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 640px) {
+  .ax-tier-row {
+    flex-direction: column;
+  }
+
+  .ax-tier-label {
+    width: 100%;
+    padding: 0.3rem 0;
+  }
+}

@@ -1,261 +1,73 @@
-/* Agent X landing page styles (adapted from dir-landing). */
+/* Agent X landing page styles — mirrors majo-landing.css structure.
+   Imported only by /guides/agent-x/index.astro. */
 
-/* Hero banner: text dossier on the left, standing art on the right */
-.ax-hero-section {
-  margin-bottom: 1rem;
+/* Ambient background video — visible at top, fades to nothing by mid-page (nft.astro pattern) */
+.ax-bg-video-wrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 70vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
 }
 
-.ax-hero-image-wrapper {
-  position: relative;
+.ax-bg-video {
   width: 100%;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 2px solid rgba(212, 160, 23, 0.35);
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.45;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 22%, transparent 82%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 22%, transparent 82%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ax-bg-video-wrap {
+    display: none;
+  }
+}
+
+/* keep content above the ambient video */
+.ax-content-section,
+.ax-resources-section {
+  position: relative;
+  z-index: 1;
+}
+
+.ax-content-section {
+  padding: 2.5rem;
   margin-bottom: 2rem;
-  max-height: 420px;
-}
-
-.ax-hero-image {
-  width: 100%;
-  max-width: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-}
-
-.ax-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(11, 13, 18, 0.92) 0%, rgba(11, 13, 18, 0.25) 45%, transparent 100%);
-  pointer-events: none;
-}
-
-.ax-landing-hero {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 2rem;
-  align-items: end;
-  text-align: left;
-  padding: 2.5rem 1.5rem 1.75rem;
-  background: var(--ax-gradient-card);
-  border: 1px solid var(--ax-border);
+  background: var(--ax-bg-secondary);
   border-radius: 16px;
-  position: relative;
-  overflow: hidden;
-  margin-top: 1.5rem;
-}
-
-.ax-landing-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 60% 50% at 85% 20%, rgba(212, 160, 23, 0.12), transparent),
-    repeating-linear-gradient(0deg, transparent 0 3px, rgba(237, 240, 244, 0.015) 3px 4px);
-  pointer-events: none;
-}
-
-.ax-landing-hero h1 {
-  font-family: var(--font-display);
-  font-size: var(--text-5xl);
-  font-weight: 700;
-  color: var(--ax-primary);
-  margin: 0.5rem 0 0.75rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.ax-hero-text {
-  position: relative;
-  z-index: 1;
-  text-align: left;
-}
-
-.ax-hero-text .ax-landing-tagline {
-  margin-bottom: 1.25rem;
-}
-
-.ax-hero-art {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-}
-
-.ax-hero-portrait {
-  max-height: 430px;
-  width: auto;
-  border-radius: 12px;
-  border: 1px solid var(--ax-border-light);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
-}
-
-.ax-hero-caption {
-  margin: 0.5rem 0 0;
-  font-size: 0.75rem;
-  color: var(--ax-text-tertiary);
-  letter-spacing: 0.04em;
-}
-
-/* Agent showcase strip */
-.ax-showcase-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 1rem;
-}
-
-.ax-showcase-card {
-  display: flex;
-  flex-direction: column;
-  background: var(--ax-bg-card);
   border: 1px solid var(--ax-border);
-  border-radius: 12px;
-  overflow: hidden;
-  text-decoration: none;
-  transition: all 0.15s ease;
-}
-
-.ax-showcase-card:hover {
-  border-color: var(--ax-primary-dark);
-  transform: translateY(-3px);
-}
-
-.ax-showcase-art {
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  object-fit: cover;
-  object-position: center top;
-  background: var(--ax-bg-tertiary);
-}
-
-.ax-showcase-body {
-  padding: 0.6rem 0.7rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.ax-showcase-name {
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--ax-text-primary);
-}
-
-.ax-showcase-name.ax-rarity-ur { color: var(--ax-rarity-ur); }
-.ax-showcase-name.ax-rarity-ssr { color: var(--ax-rarity-ssr); }
-
-.ax-showcase-title {
-  font-size: 0.72rem;
-  color: var(--ax-text-tertiary);
-}
-
-.ax-showcase-more {
-  margin-top: 1rem;
-  text-align: center;
-}
-
-.ax-showcase-more .ax-resource-button {
-  display: inline-block;
-  padding: 0.7rem 1.4rem;
-}
-
-/* Gacha teaser */
-.ax-gacha-teaser {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 1.5rem;
-  background: var(--ax-bg-card);
-  border: 1px solid var(--ax-border);
-  border-radius: 12px;
-  padding: 1.5rem;
-  align-items: center;
-}
-
-.ax-gacha-teaser-img {
-  text-align: center;
-}
-
-.ax-gacha-banner-img {
-  max-width: 100%;
-  border-radius: 8px;
-  border: 1px solid var(--ax-border);
-}
-
-.ax-gacha-teaser-body h3 {
-  margin: 0 0 0.75rem;
-  color: var(--ax-primary);
-  font-size: 1.15rem;
-}
-
-.ax-gacha-quick {
-  margin: 0 0 0.9rem;
-  padding-left: 1.2rem;
-  color: var(--ax-text-secondary);
-  font-size: 0.9rem;
-  line-height: 1.8;
-}
-
-.ax-gacha-teaser-body .ax-resource-button {
-  display: inline-block;
-  margin-top: 0.35rem;
-}
-
-@media (max-width: 900px) {
-  .ax-landing-hero {
-    grid-template-columns: 1fr;
-  }
-
-  .ax-hero-art {
-    order: -1;
-  }
-
-  .ax-hero-portrait {
-    max-height: 360px;
-  }
-
-  .ax-gacha-teaser {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Tagline + classified badge */
-.ax-landing-tagline {
-  font-size: 1.05rem;
-  color: var(--ax-text-secondary);
-  margin: 0 auto 1.25rem;
-  max-width: 640px;
-  line-height: 1.6;
-}
-
-.ax-landing-classified {
-  display: inline-block;
-  padding: 0.25rem 0.9rem;
-  border: 1px dashed var(--ax-primary-dark);
-  border-radius: 4px;
-  color: var(--ax-primary);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
 }
 
 .ax-story {
-  font-size: 0.95rem;
-  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.ax-story p {
   color: var(--ax-text-secondary);
-  max-width: 760px;
-  margin: 0 auto 1.5rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
 }
 
 .ax-story strong {
-  color: var(--ax-text-primary);
+  color: var(--ax-accent-light);
+  font-weight: 600;
 }
 
+/* Download row */
 .ax-download-row {
   display: flex;
-  gap: 0.9rem;
+  align-items: center;
   justify-content: center;
+  gap: 1rem;
   flex-wrap: wrap;
-  margin: 1.5rem 0;
 }
 
 .ax-download-btn {
@@ -265,110 +77,123 @@
   background: var(--ax-gradient-primary);
   color: #14110a;
   font-weight: 700;
-  padding: 0.85rem 1.6rem;
-  border-radius: 8px;
+  font-size: 1rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 10px;
   text-decoration: none;
-  font-size: 0.95rem;
-  transition: transform 0.15s ease;
+  border: 1px solid var(--ax-primary);
+  transition: all 0.15s ease;
 }
 
-.ax-download-btn:hover {
-  transform: translateY(-2px);
+
+.ax-download-arrow {
+  font-size: 1.1rem;
 }
 
-.ax-download-btn.ghost {
-  background: transparent;
-  color: var(--ax-primary);
-  border: 1px solid var(--ax-primary-dark);
+.ax-last-updated {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--ax-text-tertiary);
+  margin: 1.5rem 0 0;
+}
+
+/* Resources grid */
+.ax-resources-section {
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  background: var(--ax-bg-secondary);
+  border-radius: 16px;
+  border: 1px solid var(--ax-border);
+}
+
+.ax-resources-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--ax-primary-light);
 }
 
 .ax-resources-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
+  gap: 1.2rem;
+  margin-top: 2rem;
+  width: 100%;
 }
 
 .ax-resource-category {
   background: var(--ax-bg-card);
+  padding: 2rem;
+  border-radius: 16px;
   border: 1px solid var(--ax-border);
-  border-radius: 12px;
-  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.ax-category-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 .ax-category-header h3 {
-  margin: 0 0 0.35rem;
-  font-size: 1.05rem;
   color: var(--ax-text-primary);
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  font-weight: 700;
 }
 
 .ax-category-description {
-  margin: 0 0 0.9rem;
-  font-size: 0.82rem;
   color: var(--ax-text-tertiary);
-  line-height: 1.5;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.4;
 }
 
 .ax-buttons-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-auto-rows: 72px;
+  gap: 0.75rem;
+  flex: 1;
 }
 
 .ax-resource-button {
-  display: block;
-  padding: 0.6rem 0.9rem;
-  background: var(--ax-bg-tertiary);
-  border: 1px solid var(--ax-border);
-  border-radius: 8px;
-  color: var(--ax-text-secondary);
-  text-decoration: none;
-  font-size: 0.88rem;
-  font-weight: 500;
-  transition: all 0.15s ease;
-}
-
-.ax-resource-button:hover {
-  border-color: var(--ax-primary-dark);
-  color: var(--ax-primary);
-}
-
-.ax-section-title {
-  text-align: center;
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
+  box-sizing: border-box;
   color: var(--ax-text-primary);
-  margin: 2.5rem 0 0.5rem;
-}
-
-.ax-facts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 0.75rem;
-  max-width: 760px;
-  margin: 0 auto 1.5rem;
-}
-
-.ax-fact-box {
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 12px;
   background: var(--ax-bg-tertiary);
   border: 1px solid var(--ax-border);
-  border-radius: 8px;
-  padding: 0.85rem 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
   text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-wrap: break-word;
+  transition: border-color 0.15s ease;
 }
 
-.ax-fact-value {
-  display: block;
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--ax-primary);
-}
 
-.ax-fact-label {
-  display: block;
-  font-size: 0.7rem;
-  color: var(--ax-text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-top: 0.2rem;
+@media (max-width: 768px) {
+  .ax-content-section,
+  .ax-resources-section {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .ax-resources-title {
+    font-size: 1.6rem;
+  }
+
+  .ax-resources-grid {
+    margin-top: 1.5rem;
+  }
+
+  .ax-resource-category {
+    padding: 1.25rem;
+  }
 }

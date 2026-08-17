@@ -1,8 +1,8 @@
 ---
 // Agent X gacha (recruitment) guide — verified drop rates from gacha_machine_info + LangENG.
 import AgentXLayout from '../../../layouts/agent-x/LandingLayout.astro';
-import '../../../styles/games/agent-x/agentx-characters.css';
-import '../../../styles/games/agent-x/agentx-landing.css';
+import '../../../styles/games/agent-x/agentx-common.css';
+import '../../../styles/games/agent-x/agentx-gacha.css';
 
 interface RateRow {
   item: string;
@@ -21,9 +21,9 @@ const pools: Pool[] = [
   {
     id: 1,
     name: 'Claire Recruit',
-    tagline: 'Rate-up banner — featured UR agent Claire (4014). Costs Adaptant Recruit Tickets.',
+    tagline: 'Rate-up banner — featured SSR agent Claire (4014). Costs Adaptant Recruit Tickets.',
     rows: [
-      { item: 'Featured Agent (UR)', rate: '0.60%' },
+      { item: 'Featured Agent (SSR)', rate: '0.60%' },
       { item: 'SR Agent', rate: '5.10%' },
       { item: 'R Memoria File', rate: '38.90%' },
       { item: 'Star-Up Material', rate: '55.40%' },
@@ -55,9 +55,9 @@ const pools: Pool[] = [
   {
     id: 400,
     name: 'Limited Recruit',
-    tagline: 'Limited rate-up banner — currently featuring UR agent Ilya (4009).',
+    tagline: 'Limited rate-up banner — currently featuring SSR agent Ilya (4009).',
     rows: [
-      { item: 'Featured Agent (UR)', rate: '0.60%' },
+      { item: 'Featured Agent (SSR)', rate: '0.60%' },
       { item: 'SR Agent', rate: '5.10%' },
       { item: 'R Memoria File', rate: '38.90%' },
       { item: 'Star-Up Material', rate: '55.40%' },
@@ -104,12 +104,12 @@ const pools: Pool[] = [
   gameTitle="Recruitment Rates"
 >
   <section class="ax-content-section">
-    <p class="ax-story">
+    <p class="ax-gacha-intro">
       All rates below are read directly from the game's master data
       (<code>gacha_machine_info</code> + localization) — not community estimates.
       Agent X has {pools.length} recruitment machines. The only hard pity is the
       <strong>Newbie's Recruit</strong> banner (50 pulls → guaranteed SSR); the limited
-      rate-up banners feature a single UR agent at 0.60%.
+      rate-up banners feature a single SSR agent at 0.60%.
     </p>
   </section>
 

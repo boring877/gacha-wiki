@@ -16,7 +16,6 @@ import '../../styles/games/agent-x/agentx-colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/agent-x/agentx-layout.css';
-import '../../styles/games/agent-x/agentx-landing.css';
 
 export interface Props {
   title: string;
@@ -50,18 +49,20 @@ const seoDescription =
         <main class="ax-main" id="main-content">
           {heroImage && gameTitle && (
             <section class="ax-hero-section">
-              <div class="ax-hero-image-wrapper">
+              <div class="ax-hero-image-container">
                 <Image
                   src={heroImage}
                   alt={gameTitle}
                   class="ax-hero-image"
-                  width={1024}
-                  height={1536}
+                  width={1800}
+                  height={640}
                   loading="eager"
                   decoding="async"
                 />
                 <div class="ax-hero-overlay" />
               </div>
+              <h1 class="ax-title-only-heading">{gameTitle}</h1>
+              <DecorativeLines />
             </section>
           )}
 

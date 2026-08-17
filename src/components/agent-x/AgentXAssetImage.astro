@@ -1,0 +1,26 @@
+---
+// Agent X non-character assets (icons / skill cut-ins / buff icons), served from the
+// gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+// Folder is auto-detected from the filename: <id>_H -> skills/, numeric -> buffs/,
+// everything else -> icons/.
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/agent-x';
+
+export interface Props {
+  filename: string;
+  alt?: string;
+  class?: string;
+  loading?: 'eager' | 'lazy';
+}
+
+const { filename, alt = 'Agent X asset', class: className = '', loading = 'lazy' } = Astro.props;
+
+function folderOf(name: string): string {
+  if (/^\d{4}_H\.png$/.test(name)) return 'skills';
+  if (/^\d+\.png$/.test(name)) return 'buffs';
+  return 'icons';
+}
+
+const src = `${R2}/${folderOf(filename)}/${filename.replace(/\.png$/, '.webp')}`;
+---
+
+<img src={src} alt={alt} class={className} loading={loading} decoding="async" />

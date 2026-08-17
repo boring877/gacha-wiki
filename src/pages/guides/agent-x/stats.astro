@@ -1,0 +1,208 @@
+---
+// Agent X stats & battle formulas guide — formulas verified from the game's own
+// battle sim (Share.Battle.DamageContent.CalcDamage in libil2cpp.so).
+import AgentXLayout from '../../../layouts/agent-x/LandingLayout.astro';
+import AgentXAssetImage from '../../../components/agent-x/AgentXAssetImage.astro';
+import { axStarFlats, axClassWeights, axFormationBuffs, axDamageFormula } from '../../../data/agent-x/stats.js';
+import { axBuffs } from '../../../data/agent-x/buffs.js';
+import '../../../styles/games/agent-x/agentx-common.css';
+import '../../../styles/games/agent-x/agentx-gacha.css';
+
+const ELEM_ICON = { Fire: 'elem_fire.png', Wood: 'elem_wood.png', Water: 'elem_water.png', Light: 'elem_light.png', Dark: 'elem_dark.png' };
+const ELEM_LORE = { Fire: 'Inferno', Wood: 'Gale', Water: 'Glacier', Light: 'Sanction', Dark: 'Void' };
+const RARITY_NAME = { 1: 'N', 2: 'R', 3: 'SR', 4: 'SSR' };
+// characters only ship as rarity 3 (SR) and 4 (SSR)
+const charFlats = axStarFlats.filter(r => r.rarity >= 3);
+const STAT_TYPE = { 21: 'ATK%', 22: 'DEF%', 23: 'HP%', 24: 'SPD' };
+---
+
+<AgentXLayout
+  title="Stats & Battle Formulas"
+  description="Agent X stat system and damage formula guide — verified from the game's own battle code. Base/growth stats, star-up flats, class weights, formation buffs, element advantage and the defense mitigation formula."
+  gameTitle="Stats & Formulas"
+>
+  <section class="ax-content-section">
+    <div class="ax-detail-section">
+      <h2>Damage Formula</h2>
+      <p class="ax-skill-desc">
+        Verified by disassembling the game's client battle simulator
+        (<code>Share.Battle.DamageContent.CalcDamage</code>). Every hit resolves in this order:
+      </p>
+      <div class="ax-gacha-note">
+        <strong>1. Hit check</strong> — hit chance = clamp(attacker HIT + hit buffs − defender DODGE, 0…100), rolled against a d100.<br /><br />
+        <strong>2. Crit check</strong> — crit rate scales with attacker crit stat minus defender crit resistance; the base crit multiplier is
+        <strong>{axDamageFormula.basicCritMulti}</strong> and crit damage multiplies from there.<br /><br />
+        <strong>3. Element multiplier</strong> — advantage deals <strong>×{axDamageFormula.advantageMultiplier}</strong>, disadvantage deals
+        <strong>×{axDamageFormula.disadvantageMultiplier}</strong> (see the chart below; extra element effects add /1000).<br /><br />
+        <strong>4. Defense mitigation</strong> — with K = {axDamageFormula.defenseK}, defender level Lv and effective DEF:
+      </div>
+      <p class="ax-formula">
+        Damage = Base × Element × <strong>(K + {axDamageFormula.levelScale}·Lv) / (K + {axDamageFormula.levelScale}·Lv + DEF/{axDamageFormula.defenseDivisor})</strong>
+      </p>
+      <p class="ax-skill-desc">
+        Effective DEF is the defender's current (buffed) DEF, reduced by the attacker's DEF-ignore
+        (×(100 − ignore%)/100). Physical-type attacks apply one more accuracy-based modifier —
+        (att stat − def stat + 100) × (att stat − def stat + 100) / 10000 — clamped between 0.05 and 1.0.
+        Final damage floors at 0. Crit applies the crit multiplier to the post-mitigation number.
+      </p>
+    </div>
+  </section>
+
+  <section class="ax-content-section">
+    <div class="ax-detail-section">
+      <h2>Element Advantage</h2>
+      <p class="ax-skill-desc">
+        A three-way cycle plus a mutual pair — every agent's element (lore names in brackets):
+      </p>
+      <table class="ax-gacha-rates">
+        <thead>
+          <tr><th>Attacker</th><th>Beats (×1.5)</th><th>Weak to (×0.75 received)</th></tr>
+        </thead>
+        <tbody>
+          {Object.entries(axDamageFormula.advantage).map(([elem, beats]) => (
+            <tr>
+              <td>
+                <span class="ax-elem-cell">
+                  {ELEM_ICON[elem] && <AgentXAssetImage filename={ELEM_ICON[elem]} alt="" class="ax-icon" />}
+                  {elem} ({ELEM_LORE[elem]})
+                </span>
+              </td>
+              <td>
+                <span class="ax-elem-cell">
+                  {ELEM_ICON[beats] && <AgentXAssetImage filename={ELEM_ICON[beats]} alt="" class="ax-icon" />}
+                  {beats}
+                </span>
+              </td>
+              <td>
+                <span class="ax-elem-cell">
+                  {ELEM_ICON[axDamageFormula.disadvantage[elem]] && <AgentXAssetImage filename={ELEM_ICON[axDamageFormula.disadvantage[elem]]} alt="" class="ax-icon" />}
+                  {axDamageFormula.disadvantage[elem]}
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="ax-skill-desc">Light and Dark are strong <em>and</em> weak against each other — a pure 50/50 gamble matchup.</p>
+    </div>
+  </section>
+
+  <section class="ax-content-section">
+    <div class="ax-detail-section">
+      <h2>Stat Growth</h2>
+      <p class="ax-skill-desc">
+        Every agent has <strong>base stats</strong> (level 1) and <strong>growth values</strong> from
+        <code>character_info</code> — both listed on each agent's page. Star-ups add the flat
+        bonuses below per star tier (<code>star_flat_stat_map_info</code>; values are the game's
+        internal units, so treat them as relative weights). The exact per-level curve is computed
+        server-side and arrives pre-calculated in battle, so use base + growth as the reference
+        for comparing agents.
+      </p>
+      {charFlats.map(r => (
+        <div class="ax-skill">
+          <div class="ax-skill-header">
+            <p class="ax-skill-name">{RARITY_NAME[r.rarity]} star-up flats</p>
+          </div>
+          <table class="ax-gacha-rates">
+            <thead>
+              <tr><th>Star</th><th>ATK</th><th>DEF</th><th>HP</th></tr>
+            </thead>
+            <tbody>
+              {r.attack.map((_, i) => (
+                <tr>
+                  <td>★{i + 1}</td>
+                  <td>{r.attack[i]}</td>
+                  <td>{r.defense[i]}</td>
+                  <td>{r.health[i]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="ax-content-section">
+    <div class="ax-detail-section">
+      <h2>Class Weights</h2>
+      <p class="ax-skill-desc">
+        Internal per-class stat weights from <code>character_class_Multiplier</code> — why
+        Defenders stack HP while Rangers lean ATK:
+      </p>
+      <table class="ax-gacha-rates">
+        <thead>
+          <tr><th>Role</th><th>HP</th><th>ATK</th><th>DEF</th><th>SPD</th></tr>
+        </thead>
+        <tbody>
+          {axClassWeights.map(c => (
+            <tr><td>{c.class}</td><td>{c.hp}</td><td>{c.atk}</td><td>{c.def}</td><td>{c.spd}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="ax-content-section">
+    <div class="ax-detail-section">
+      <h2>Formation Element Buffs</h2>
+      <p class="ax-skill-desc">
+        Fielding multiple agents of one element grants stacking team buffs
+        (<code>formation_element_effect_info</code>) — value by number of same-element agents:
+      </p>
+      <table class="ax-gacha-rates">
+        <thead>
+          <tr><th>Element</th><th>Stat</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+        </thead>
+        <tbody>
+          {axFormationBuffs.map(f => (
+            <tr>
+              <td>
+                <span class="ax-elem-cell">
+                  {ELEM_ICON[f.element] && <AgentXAssetImage filename={ELEM_ICON[f.element]} alt="" class="ax-icon" />}
+                  {f.element}
+                </span>
+              </td>
+              <td>{STAT_TYPE[f.statType] || `#${f.statType}`}</td>
+              {f.values.map(v => <td>{v === 0 ? '—' : v}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="ax-content-section">
+    <div class="ax-detail-section" id="buffs">
+      <h2>Buffs &amp; Debuffs</h2>
+      <p class="ax-skill-desc">
+        Every buff and debuff in the game (<code>buff_info</code>, {axBuffs.length} entries with
+        text). Values ({'{0}'}) are filled per skill — see each agent's skill descriptions for
+        exact numbers.
+      </p>
+      <table class="ax-gacha-rates">
+        <thead>
+          <tr><th>Type</th><th>Name</th><th>Effect</th></tr>
+        </thead>
+        <tbody>
+          {axBuffs.map(b => (
+            <tr>
+              <td><span class={`ax-buff-kind ax-buff-${b.kind.toLowerCase()}`}>{b.kind}</span></td>
+              <td>{b.name}</td>
+              <td>{b.desc}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="ax-content-section">
+    <div class="ax-gacha-note">
+      Also affecting final stats: <strong>Connection (bond) levels</strong> (255 effect rows per
+      role — raise bonds for permanent team buffs), <strong>Memoria (light cones)</strong>,
+      <strong>equipment</strong>, and skill <code>AddAttri</code> bonuses — all extracted in
+      D:/AgentX/decoded and ready to be added here as tables if needed.
+    </div>
+  </section>
+</AgentXLayout>

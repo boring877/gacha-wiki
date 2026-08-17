@@ -1,11 +1,7 @@
 ---
-// Resolves an Agent X icon filename to an optimized <Image> via astro:assets glob.
-import { Image } from 'astro:assets';
-
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/images/games/agent-x/characters/**/*.png',
-  { eager: true }
-);
+// Agent X character art, served from the gachawiki-images R2 bucket (keeps the
+// Pages deployment under the 20,000-file limit). /agent-x/characters/ namespace, webp.
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/agent-x/characters';
 
 export interface Props {
   filename: string;
@@ -14,19 +10,8 @@ export interface Props {
   loading?: 'eager' | 'lazy';
 }
 
-function findImage(filename: string): ImageMetadata | null {
-  const key = Object.keys(images).find(k => k.endsWith('/' + filename));
-  return key ? images[key].default : null;
-}
-
 const { filename, alt = 'Agent', class: className = '', loading = 'lazy' } = Astro.props;
-const imageData = findImage(filename);
+const src = `${R2}/${filename.replace(/\.png$/, '.webp')}`;
 ---
 
-{imageData ? (
-  <Image src={imageData} alt={alt} class={className} loading={loading} format="webp" quality={95} />
-) : (
-  <div class={`ax-image-fallback ${className}`} style="background: var(--ax-bg-secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--ax-text-muted); font-size: 0.75rem; min-height: 100px;">
-    {alt}
-  </div>
-)}
+<img src={src} alt={alt} class={className} loading={loading} decoding="async" />

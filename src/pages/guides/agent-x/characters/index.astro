@@ -2,25 +2,24 @@
 // Agent X agent database (grid of all 36 agents).
 import AgentXLayout from '../../../../layouts/agent-x/LandingLayout.astro';
 import AgentXCharacterImage from '../../../../components/agent-x/AgentXCharacterImage.astro';
+import AgentXAssetImage from '../../../../components/agent-x/AgentXAssetImage.astro';
 import { agentXCharacters } from '../../../../data/agent-x/characters.js';
+import '../../../../styles/games/agent-x/agentx-common.css';
 import '../../../../styles/games/agent-x/agentx-characters.css';
+
+// Game icon assets (extracted from the FairyGUI CommonPackage atlases).
+const ELEM_ICON = { Fire: 'elem_fire.png', Wood: 'elem_wood.png', Water: 'elem_water.png', Light: 'elem_light.png', Dark: 'elem_dark.png' };
+const ROLE_ICON = { Defender: 'role_defender.png', Fighter: 'role_fighter.png', Caster: 'role_caster.png', Support: 'role_support.png', Ranger: 'role_ranger.png' };
+const RARITY_BADGE = { SSR: 'rarity_ssr.png', SR: 'rarity_sr.png' };
 
 const characters = agentXCharacters;
 const roles = ['Defender', 'Fighter', 'Caster', 'Support', 'Ranger'];
 const elements = ['Fire', 'Wood', 'Water', 'Light', 'Dark'];
-
-function roleCss(r) {
-  return (r || '').toLowerCase();
-}
-
-function elemCss(e) {
-  return (e || '').toLowerCase();
-}
 ---
 
 <AgentXLayout
   title="Agent Database"
-  description={`Complete agent database for Agent X. Browse all ${characters.length} agents (SSR/UR) with element, role, verified stats, skills and lore.`}
+  description={`Complete agent database for Agent X. Browse all ${characters.length} agents (SSR/SR) with element, role, verified stats, skills and lore.`}
   gameTitle="Agent Database"
 >
   <section class="ax-content-section">
@@ -54,11 +53,17 @@ function elemCss(e) {
           <div class="ax-char-card-body">
             <p class="ax-char-name">{char.name}</p>
             {char.title && <p class="ax-char-title">{char.title}</p>}
-            <p class="ax-char-meta">
-              <span class={`ax-badge ax-badge-rarity ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
-              <span class={`ax-badge ax-badge-elem ${elemCss(char.element)}`}>{char.element}</span>
-              <span class={`ax-badge ax-badge-role ${roleCss(char.role)}`}>{char.role}</span>
-            </p>
+            <div class="ax-char-meta">
+              {RARITY_BADGE[char.rarity] && (
+                <AgentXAssetImage filename={RARITY_BADGE[char.rarity]} alt={char.rarity} title={char.rarity} class="ax-icon-rarity" />
+              )}
+              {ELEM_ICON[char.element] && (
+                <AgentXAssetImage filename={ELEM_ICON[char.element]} alt={char.element} title={char.element} class="ax-icon" />
+              )}
+              {ROLE_ICON[char.role] && (
+                <AgentXAssetImage filename={ROLE_ICON[char.role]} alt={char.role} title={char.role} class="ax-icon" />
+              )}
+            </div>
           </div>
         </a>
       ))}

@@ -470,12 +470,19 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
         title: 'Agents',
         links: [
           { name: 'Database', href: '/guides/agent-x/characters/' },
+          { name: 'Tier List', href: '/guides/agent-x/tier-list/' },
         ],
       },
       {
         title: 'Gacha',
         links: [
           { name: 'Recruitment Rates', href: '/guides/agent-x/gacha/' },
+        ],
+      },
+      {
+        title: 'Mechanics',
+        links: [
+          { name: 'Stats & Formulas', href: '/guides/agent-x/stats/' },
         ],
       },
     ],

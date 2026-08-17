@@ -1,8 +1,5 @@
-/* Agent X character database styles (adapted from dir-characters with role/element badges). */
-
-.ax-content-section {
-  margin-bottom: 2rem;
-}
+/* Agent X agent database page styles: toolbar, grid, cards, detail header.
+   Shared badges/stat/skill styles live in agentx-common.css. */
 
 /* Toolbar: search + filters */
 .ax-toolbar {
@@ -78,10 +75,6 @@
   overflow: hidden;
 }
 
-.ax-char-card:hover {
-  border-color: var(--ax-primary-dark);
-  transform: translateY(-2px);
-}
 
 .ax-char-art {
   width: 100%;
@@ -114,64 +107,101 @@
 .ax-char-meta {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
-  flex-wrap: wrap;
+  gap: 0.5rem;
   margin: 0;
 }
 
-.ax-badge {
-  display: inline-block;
-  padding: 0.15rem 0.45rem;
-  border-radius: 4px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  line-height: 1.4;
+/* Standalone game icons (rarity badge / element / role) */
+.ax-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
-.ax-badge-role {
-  color: #fff;
+/* Rarity text badges (150x50 game art, 3:1) — size by height, width auto */
+.ax-icon-rarity {
+  height: 26px;
+  width: auto;
+  object-fit: contain;
 }
 
-.ax-badge-role.defender { background: var(--ax-role-defender); }
-.ax-badge-role.fighter { background: var(--ax-role-fighter); }
-.ax-badge-role.caster { background: var(--ax-role-caster); }
-.ax-badge-role.support { background: var(--ax-role-support); }
-.ax-badge-role.ranger { background: var(--ax-role-ranger); }
-
-.ax-badge-elem {
-  color: #fff;
+.ax-icon-rarity-lg {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
 }
 
-.ax-badge-elem.fire { background: var(--ax-elem-fire); }
-.ax-badge-elem.wood { background: var(--ax-elem-wood); }
-.ax-badge-elem.water { background: var(--ax-elem-water); }
-.ax-badge-elem.light { background: var(--ax-elem-light); color: #1a1400; }
-.ax-badge-elem.dark { background: var(--ax-elem-dark); }
-
-.ax-badge-rarity {
-  color: #fff;
-  font-weight: 700;
+.ax-icon-star {
+  width: 36px;
+  height: 36px;
 }
 
-.ax-badge-rarity.ur {
-  background: transparent;
-  color: var(--ax-rarity-ur);
-  border: 1px solid var(--ax-rarity-ur);
+.ax-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.9rem;
 }
 
-.ax-badge-rarity.ssr {
-  background: transparent;
-  color: var(--ax-rarity-ssr);
-  border: 1px solid var(--ax-rarity-ssr);
+.ax-icon-lg {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
 }
 
-.ax-badge-stat {
-  background: var(--ax-bg-tertiary);
+.ax-icon-row .ax-icon-star {
+  width: 48px;
+  height: 48px;
+}
+
+.ax-icon-caption {
+  font-size: 0.85rem;
   color: var(--ax-text-secondary);
-  border: 1px solid var(--ax-border);
+  letter-spacing: 0.02em;
 }
 
-/* Detail page */
+.ax-id-line {
+  font-size: 0.75rem;
+  color: var(--ax-text-muted);
+  font-family: monospace;
+  margin-bottom: 1rem;
+}
+
+/* Skill art gallery (cut-in heads + skill illustrations) */
+.ax-skill-art-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.ax-skill-art-figure {
+  margin: 0;
+  text-align: center;
+}
+
+.ax-skill-art-img {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--ax-border);
+  background: var(--ax-bg-tertiary);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.ax-skill-art-img.head {
+  max-width: 220px;
+  aspect-ratio: auto;
+}
+
+.ax-skill-art-figure figcaption {
+  margin-top: 0.4rem;
+  font-size: 0.72rem;
+  color: var(--ax-text-tertiary);
+}
+
+/* Detail page header */
 .ax-detail-header {
   display: flex;
   align-items: flex-start;
@@ -245,158 +275,6 @@
   margin-right: 0.35rem;
 }
 
-.ax-detail-section {
-  background: var(--ax-bg-card);
-  border: 1px solid var(--ax-border);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.ax-detail-section h2 {
-  margin: 0 0 1rem;
-  font-size: 1.2rem;
-  color: var(--ax-primary);
-  font-weight: 600;
-}
-
-/* Stats grid */
-.ax-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 0.75rem;
-}
-
-.ax-stat-box {
-  background: var(--ax-bg-tertiary);
-  border: 1px solid var(--ax-border);
-  border-radius: 8px;
-  padding: 0.75rem;
-  text-align: center;
-}
-
-.ax-stat-label {
-  display: block;
-  font-size: 0.7rem;
-  color: var(--ax-text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.25rem;
-}
-
-.ax-stat-value {
-  display: block;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--ax-text-primary);
-}
-
-.ax-stat-growth {
-  display: block;
-  font-size: 0.7rem;
-  color: var(--ax-text-muted);
-  margin-top: 0.15rem;
-}
-
-/* Skills */
-.ax-skill {
-  margin-bottom: 1.25rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--ax-border);
-}
-
-.ax-skill:last-child {
-  margin-bottom: 0;
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.ax-skill-header {
-  display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
-  margin-bottom: 0.5rem;
-}
-
-.ax-skill-id {
-  font-size: 0.72rem;
-  color: var(--ax-text-muted);
-  font-family: monospace;
-}
-
-.ax-skill-name {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--ax-primary);
-  margin: 0;
-}
-
-.ax-skill-desc {
-  color: var(--ax-text-secondary);
-  line-height: 1.6;
-  margin: 0;
-  font-size: 0.9rem;
-}
-
-/* Lore */
-.ax-lore {
-  color: var(--ax-text-secondary);
-  line-height: 1.8;
-  font-size: 0.95rem;
-  margin: 0;
-  white-space: pre-line;
-}
-
-.ax-image-fallback {
-  border: 1px dashed var(--ax-border-light);
-}
-
-/* Gacha page */
-.ax-gacha-pool {
-  margin-bottom: 1.5rem;
-}
-
-.ax-gacha-pool h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1.05rem;
-  color: var(--ax-text-primary);
-}
-
-.ax-gacha-rates {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.88rem;
-}
-
-.ax-gacha-rates th,
-.ax-gacha-rates td {
-  padding: 0.5rem 0.75rem;
-  text-align: left;
-  border-bottom: 1px solid var(--ax-border);
-}
-
-.ax-gacha-rates th {
-  color: var(--ax-text-tertiary);
-  font-weight: 600;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.ax-gacha-rates td {
-  color: var(--ax-text-secondary);
-}
-
-.ax-gacha-note {
-  padding: 0.9rem 1.1rem;
-  background: var(--ax-bg-tertiary);
-  border-left: 3px solid var(--ax-primary);
-  border-radius: 6px;
-  font-size: 0.85rem;
-  color: var(--ax-text-secondary);
-  line-height: 1.6;
-}
-
 @media (max-width: 768px) {
   .ax-toolbar {
     flex-direction: column;
@@ -431,9 +309,5 @@
   .ax-meta,
   .ax-profile {
     justify-content: center;
-  }
-
-  .ax-stats-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 }

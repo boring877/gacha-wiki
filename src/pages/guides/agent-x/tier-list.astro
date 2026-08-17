@@ -1,0 +1,72 @@
+---
+// Agent X tier list, grouped by role. Within each role: SSR Light/Dark rank highest
+// (mutual 1.5x element advantage), then other SSR, then SR Light/Dark, then other SR.
+import AgentXLayout from '../../../layouts/agent-x/LandingLayout.astro';
+import AgentXCharacterImage from '../../../components/agent-x/AgentXCharacterImage.astro';
+import AgentXAssetImage from '../../../components/agent-x/AgentXAssetImage.astro';
+import { agentXCharacters } from '../../../data/agent-x/characters.js';
+import '../../../styles/games/agent-x/agentx-common.css';
+import '../../../styles/games/agent-x/agentx-characters.css';
+import '../../../styles/games/agent-x/agentx-tier.css';
+
+const ELEM_ICON = { Fire: 'elem_fire.png', Wood: 'elem_wood.png', Water: 'elem_water.png', Light: 'elem_light.png', Dark: 'elem_dark.png' };
+const RARITY_BADGE = { SSR: 'rarity_ssr.png', SR: 'rarity_sr.png' };
+const ROLE_ICON = { Defender: 'role_defender.png', Fighter: 'role_fighter.png', Caster: 'role_caster.png', Support: 'role_support.png', Ranger: 'role_ranger.png' };
+const ROLES = ['Defender', 'Fighter', 'Caster', 'Support', 'Ranger'];
+
+const tier = (c) => {
+  const premium = c.element === 'Light' || c.element === 'Dark';
+  if (c.rarity === 'SSR') return premium ? 'SSS' : 'SS';
+  return premium ? 'S' : 'A';
+};
+
+const groups = ROLES.map(role => {
+  const chars = agentXCharacters.filter(c => c.playable && c.role === role);
+  const tiers = ['SSS', 'SS', 'S', 'A']
+    .map(t => ({ tier: t, characters: chars.filter(c => tier(c) === t).sort((a, b) => a.id - b.id) }))
+    .filter(t => t.characters.length > 0);
+  return { role, tiers };
+}).filter(g => g.tiers.length > 0);
+---
+
+<AgentXLayout
+  title="Tier List"
+  description="Agent X tier list grouped by role — all 30 playable agents ranked by class. SSR Light and Dark agents rank highest (element advantage)."
+  gameTitle="Tier List"
+>
+  <section class="ax-content-section">
+    <p class="ax-tier-note">
+      Light and Dark agents hold the strongest element matchup (mutual ×1.5) — SSR Light/Dark top
+      each class.
+    </p>
+
+    {groups.map(group => (
+      <div class="ax-tier-class-section">
+        <div class="ax-tier-class-header">
+          {ROLE_ICON[group.role] && <AgentXAssetImage filename={ROLE_ICON[group.role]} alt="" class="ax-icon-lg" />}
+          <h2 class="ax-tier-class-title">{group.role}</h2>
+          <span class="ax-tier-class-count">
+            {group.tiers.reduce((n, t) => n + t.characters.length, 0)} agents
+          </span>
+        </div>
+        {group.tiers.map(row => (
+          <div class={`ax-tier-row ax-tier-${row.tier.toLowerCase()}`}>
+            <div class="ax-tier-label"><span>{row.tier}</span></div>
+            <div class="ax-tier-chars">
+              {row.characters.map(c => (
+                <a class="ax-tier-card" href={`/guides/agent-x/characters/${c.slug}/`}>
+                  <AgentXCharacterImage filename={c.art || c.icon} alt={c.name} class="ax-tier-art" />
+                  <span class="ax-tier-meta">
+                    {RARITY_BADGE[c.rarity] && <AgentXAssetImage filename={RARITY_BADGE[c.rarity]} alt={c.rarity} class="ax-icon-rarity" />}
+                    {ELEM_ICON[c.element] && <AgentXAssetImage filename={ELEM_ICON[c.element]} alt={c.element} class="ax-icon" />}
+                  </span>
+                  <span class="ax-tier-name">{c.name}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    ))}
+  </section>
+</AgentXLayout>

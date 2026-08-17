@@ -1,0 +1,271 @@
+/* Agent X shared page styles: section cards, badges, stat boxes, skills, lore.
+   Imported by characters and gacha pages alongside their page-specific css. */
+
+.ax-content-section {
+  margin-bottom: 2rem;
+}
+
+/* Badges */
+.ax-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.ax-badge-role {
+  color: #fff;
+}
+
+.ax-badge-role.defender { background: var(--ax-role-defender); }
+.ax-badge-role.fighter { background: var(--ax-role-fighter); }
+.ax-badge-role.caster { background: var(--ax-role-caster); }
+.ax-badge-role.support { background: var(--ax-role-support); }
+.ax-badge-role.ranger { background: var(--ax-role-ranger); }
+
+.ax-badge-elem {
+  color: #fff;
+}
+
+.ax-badge-elem.fire { background: var(--ax-elem-fire); }
+.ax-badge-elem.wood { background: var(--ax-elem-wood); }
+.ax-badge-elem.water { background: var(--ax-elem-water); }
+.ax-badge-elem.light { background: var(--ax-elem-light); color: #1a1400; }
+.ax-badge-elem.dark { background: var(--ax-elem-dark); }
+
+.ax-badge-rarity {
+  color: #fff;
+  font-weight: 700;
+}
+
+.ax-badge-rarity.ur {
+  background: transparent;
+  color: var(--ax-rarity-ur);
+  border: 1px solid var(--ax-rarity-ur);
+}
+
+.ax-badge-rarity.ssr {
+  background: transparent;
+  color: var(--ax-rarity-ssr);
+  border: 1px solid var(--ax-rarity-ssr);
+}
+
+.ax-badge-stat {
+  background: var(--ax-bg-tertiary);
+  color: var(--ax-text-secondary);
+  border: 1px solid var(--ax-border);
+}
+
+/* Detail card */
+.ax-detail-section {
+  background: var(--ax-bg-card);
+  border: 1px solid var(--ax-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ax-detail-section h2 {
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+  color: var(--ax-primary);
+  font-weight: 600;
+}
+
+/* Stat level table */
+.ax-stat-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.ax-stat-table th,
+.ax-stat-table td {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--ax-border);
+}
+
+.ax-stat-table th {
+  color: var(--ax-text-tertiary);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ax-stat-table td {
+  color: var(--ax-text-secondary);
+}
+
+.ax-stat-table td:first-child {
+  color: var(--ax-text-primary);
+  font-weight: 600;
+}
+
+.ax-stat-table tr:last-child td {
+  border-bottom: none;
+}
+
+.ax-stat-note {
+  margin: 0.9rem 0 0;
+  font-size: 0.75rem;
+  color: var(--ax-text-tertiary);
+  line-height: 1.5;
+}
+
+/* Stats grid */
+.ax-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.75rem;
+}
+
+.ax-stat-box {
+  background: var(--ax-bg-tertiary);
+  border: 1px solid var(--ax-border);
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.ax-stat-label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--ax-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.ax-stat-value {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ax-text-primary);
+}
+
+.ax-stat-growth {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--ax-text-muted);
+  margin-top: 0.15rem;
+}
+
+/* Skills */
+.ax-skill {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--ax-border);
+}
+
+.ax-skill:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.ax-skill-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.ax-skill-id {
+  font-size: 0.72rem;
+  color: var(--ax-text-muted);
+  font-family: monospace;
+}
+
+.ax-buff-chips {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.ax-buff-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--ax-text-secondary);
+  background: var(--ax-bg-tertiary);
+  border: 1px solid var(--ax-border);
+  border-radius: 999px;
+  padding: 0.12rem 0.55rem;
+  text-decoration: none;
+  cursor: help;
+}
+
+.ax-buff-chip:hover {
+  color: var(--ax-primary);
+}
+
+.ax-buff-chip-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.ax-buff-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ax-buff-dot.ax-buff-buff { background: #4caf50; }
+.ax-buff-dot.ax-buff-debuff { background: #ef5350; }
+.ax-buff-dot.ax-buff-special { background: #6d7787; }
+
+.ax-skill-kind {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ax-text-tertiary);
+  background: var(--ax-bg-tertiary);
+  border: 1px solid var(--ax-border);
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+}
+
+.ax-skill-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ax-primary);
+  margin: 0;
+}
+
+.ax-skill-desc {
+  color: var(--ax-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Lore */
+.ax-lore {
+  color: var(--ax-text-secondary);
+  line-height: 1.8;
+  font-size: 0.95rem;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.ax-image-fallback {
+  border: 1px dashed var(--ax-border-light);
+}
+
+@media (max-width: 768px) {
+  .ax-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

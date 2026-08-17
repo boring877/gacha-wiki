@@ -1,0 +1,112 @@
+/* Agent X gacha (recruitment) page styles: pool cards, rate tables, notes.
+   Shared badges/section styles live in agentx-common.css. */
+
+.ax-gacha-pool {
+  margin-bottom: 1.5rem;
+}
+
+.ax-gacha-pool h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  color: var(--ax-text-primary);
+}
+
+.ax-gacha-pool .ax-char-title {
+  margin-bottom: 0.75rem;
+}
+
+.ax-gacha-rates {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.ax-gacha-rates th,
+.ax-gacha-rates td {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--ax-border);
+}
+
+.ax-gacha-rates th {
+  color: var(--ax-text-tertiary);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ax-gacha-rates td {
+  color: var(--ax-text-secondary);
+}
+
+.ax-gacha-rates tr:last-child td {
+  border-bottom: none;
+}
+
+.ax-gacha-note {
+  padding: 0.9rem 1.1rem;
+  background: var(--ax-bg-tertiary);
+  border: 1px solid var(--ax-border);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--ax-text-secondary);
+  line-height: 1.6;
+  margin: 1rem 0 0;
+}
+
+.ax-gacha-intro {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--ax-text-secondary);
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ax-gacha-intro strong {
+  color: var(--ax-text-primary);
+}
+
+/* Stats page */
+.ax-formula {
+  text-align: center;
+  font-family: monospace;
+  font-size: 0.95rem;
+  color: var(--ax-primary);
+  background: var(--ax-bg-tertiary);
+  border: 1px solid var(--ax-border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+.ax-elem-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+@media (max-width: 640px) {
+  .ax-gacha-rates th,
+  .ax-gacha-rates td {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Buff kind badges (stats page) */
+.ax-buff-kind {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+}
+
+.ax-buff-buff { color: #7bd88f; background: rgba(76, 175, 80, 0.12); border: 1px solid rgba(76, 175, 80, 0.4); }
+.ax-buff-debuff { color: #ef9a9a; background: rgba(239, 83, 80, 0.12); border: 1px solid rgba(239, 83, 80, 0.4); }
+.ax-buff-special { color: var(--ax-text-tertiary); background: var(--ax-bg-tertiary); border: 1px solid var(--ax-border); }

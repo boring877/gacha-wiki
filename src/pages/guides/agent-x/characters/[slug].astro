@@ -2,8 +2,14 @@
 // Per-agent detail page for Agent X.
 import AgentXLayout from '../../../../layouts/agent-x/LandingLayout.astro';
 import AgentXCharacterImage from '../../../../components/agent-x/AgentXCharacterImage.astro';
+import AgentXAssetImage from '../../../../components/agent-x/AgentXAssetImage.astro';
 import { agentXCharacters } from '../../../../data/agent-x/characters.js';
+import { axBuffs } from '../../../../data/agent-x/buffs.js';
+import '../../../../styles/games/agent-x/agentx-common.css';
 import '../../../../styles/games/agent-x/agentx-characters.css';
+
+// Every agent ships a skill cut-in head on the R2 bucket (skills/<id>_H.webp).
+const skillFiles = new Set(agentXCharacters.map(c => `${c.id}_H.png`));
 
 export function getStaticPaths() {
   return agentXCharacters.map(char => ({
@@ -15,6 +21,17 @@ export function getStaticPaths() {
 const { character: char } = Astro.props;
 const roleCss = (char.role || '').toLowerCase();
 const elemCss = (char.element || '').toLowerCase();
+
+// Game icon assets (extracted from the FairyGUI CommonPackage atlases).
+const ELEM_ICON = { Fire: 'elem_fire.png', Wood: 'elem_wood.png', Water: 'elem_water.png', Light: 'elem_light.png', Dark: 'elem_dark.png' };
+const ELEM_LORE = { Fire: 'Inferno', Wood: 'Gale', Water: 'Glacier', Light: 'Sanction', Dark: 'Void' };
+const ROLE_ICON = { Defender: 'role_defender.png', Fighter: 'role_fighter.png', Caster: 'role_caster.png', Support: 'role_support.png', Ranger: 'role_ranger.png' };
+const RARITY_BADGE = { SSR: 'rarity_ssr.png', SR: 'rarity_sr.png' };
+const SKILL_ICON = { Normal: 'skill_type_atk.png', Ultimate: 'skill_type_anger.png', Active: 'skill_type_active.png', Passive: 'skill_type_passive.png' };
+const BUFF_BY_NAME = Object.fromEntries(axBuffs.map(b => [b.name, b]));
+
+const cutinHead = `${char.id}_H.png`;
+const hasSkillArt = skillFiles.has(cutinHead);
 ---
 
 <AgentXLayout
@@ -40,13 +57,19 @@ const elemCss = (char.element || '').toLowerCase();
       <div class="ax-detail-info">
         <h1>{char.name}</h1>
         {char.title && <p class="ax-detail-title">"{char.title}"</p>}
-        <div class="ax-meta">
-          <span class={`ax-badge ax-badge-rarity ${char.rarity.toLowerCase()}`}>{char.rarity}</span>
-          <span class={`ax-badge ax-badge-elem ${elemCss}`}>{char.element}</span>
-          <span class={`ax-badge ax-badge-role ${roleCss}`}>{char.role}</span>
-          <span class="ax-badge ax-badge-stat">ID {char.id}</span>
-          {!char.playable && <span class="ax-badge ax-badge-stat">Upcoming</span>}
+        <div class="ax-icon-row">
+          {RARITY_BADGE[char.rarity] && (
+            <AgentXAssetImage filename={RARITY_BADGE[char.rarity]} alt={char.rarity} title={char.rarity} class="ax-icon-rarity-lg" />
+          )}
+          {ELEM_ICON[char.element] && (
+            <AgentXAssetImage filename={ELEM_ICON[char.element]} alt={char.element} title={`${ELEM_LORE[char.element] || char.element} (${char.element})`} class="ax-icon-lg" />
+          )}
+          {ROLE_ICON[char.role] && (
+            <AgentXAssetImage filename={ROLE_ICON[char.role]} alt={char.role} title={char.role} class="ax-icon-lg" />
+          )}
+          <span class="ax-icon-caption">{ELEM_LORE[char.element] || char.element} · {char.role}{!char.playable && ' · Upcoming'}</span>
         </div>
+        <div class="ax-id-line">ID {char.id}</div>
         <div class="ax-profile">
           {char.affiliation && (
             <div class="ax-profile-item"><strong>Affiliation</strong>{char.affiliation}</div>
@@ -64,42 +87,92 @@ const elemCss = (char.element || '').toLowerCase();
 
   <section class="ax-content-section">
     <div class="ax-detail-section">
-      <h2>Base Stats</h2>
-      <div class="ax-stats-grid">
-        <div class="ax-stat-box">
-          <span class="ax-stat-label">ATK</span>
-          <span class="ax-stat-value">{char.baseStats.atk.toLocaleString()}</span>
-          <span class="ax-stat-growth">growth {char.growthStats.atk}</span>
-        </div>
-        <div class="ax-stat-box">
-          <span class="ax-stat-label">DEF</span>
-          <span class="ax-stat-value">{char.baseStats.def.toLocaleString()}</span>
-          <span class="ax-stat-growth">growth {char.growthStats.def}</span>
-        </div>
-        <div class="ax-stat-box">
-          <span class="ax-stat-label">HP</span>
-          <span class="ax-stat-value">{char.baseStats.hp.toLocaleString()}</span>
-          <span class="ax-stat-growth">growth {char.growthStats.hp}</span>
-        </div>
-        <div class="ax-stat-box">
-          <span class="ax-stat-label">SPD</span>
-          <span class="ax-stat-value">{char.baseStats.spd}</span>
-        </div>
-      </div>
+      <h2>Stats</h2>
+      <table class="ax-stat-table">
+        <thead>
+          <tr><th></th><th>ATK</th><th>DEF</th><th>HP</th><th>SPD</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Base (Lv 1)</td>
+            <td>{char.baseStats.atk.toLocaleString()}</td>
+            <td>{char.baseStats.def.toLocaleString()}</td>
+            <td>{char.baseStats.hp.toLocaleString()}</td>
+            <td>{char.baseStats.spd}</td>
+          </tr>
+          <tr>
+            <td>Est. Lv 60</td>
+            <td>{char.estStats.lv60.atk.toLocaleString()}</td>
+            <td>{char.estStats.lv60.def.toLocaleString()}</td>
+            <td>{char.estStats.lv60.hp.toLocaleString()}</td>
+            <td>{char.baseStats.spd}</td>
+          </tr>
+          <tr>
+            <td>Est. Lv 100</td>
+            <td>{char.estStats.lv100.atk.toLocaleString()}</td>
+            <td>{char.estStats.lv100.def.toLocaleString()}</td>
+            <td>{char.estStats.lv100.hp.toLocaleString()}</td>
+            <td>{char.baseStats.spd}</td>
+          </tr>
+          <tr>
+            <td>Growth /lv</td>
+            <td>{char.growthStats.atk / 10}</td>
+            <td>{char.growthStats.def / 10}</td>
+            <td>{char.growthStats.hp / 10}</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="ax-stat-note">
+        Estimates use Base + Growth×(Lv−1)/10. The game computes exact stats server-side, so treat
+        high-level numbers as close approximations for comparing agents.
+      </p>
     </div>
   </section>
+
+  {hasSkillArt && (
+    <section class="ax-content-section">
+      <div class="ax-detail-section">
+        <h2>Skill Cut-in</h2>
+        <div class="ax-skill-art-grid">
+          {skillFiles.has(cutinHead) && (
+            <figure class="ax-skill-art-figure">
+              <AgentXAssetImage filename={cutinHead} alt={`${char.name} skill cut-in`} class="ax-skill-art-img head" />
+              <figcaption>Skill cut-in</figcaption>
+            </figure>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
 
   {char.skills.length > 0 && (
     <section class="ax-content-section">
       <div class="ax-detail-section">
-        <h2>Starting Skills</h2>
+        <h2>Skills</h2>
         {char.skills.map(skill => (
           <div class="ax-skill">
             <div class="ax-skill-header">
+              {SKILL_ICON[skill.kind] && <AgentXAssetImage filename={SKILL_ICON[skill.kind]} alt="" class="ax-icon" />}
               <p class="ax-skill-name">{skill.name}</p>
+              <span class="ax-skill-kind">{skill.kind}</span>
               <span class="ax-skill-id">#{skill.id}</span>
             </div>
             {skill.desc && <p class="ax-skill-desc">{skill.desc}</p>}
+            {skill.buffs && skill.buffs.length > 0 && (
+              <div class="ax-buff-chips">
+                {skill.buffs.map(name => {
+                  const b = BUFF_BY_NAME[name];
+                  return (
+                    <a class="ax-buff-chip" href="/guides/agent-x/stats/#buffs" title={b ? b.desc : name}>
+                      {b && b.icon && <AgentXAssetImage filename={b.icon} alt="" class="ax-buff-chip-icon" />}
+                      <span class={`ax-buff-dot ax-buff-${b ? b.kind.toLowerCase() : 'special'}`}></span>
+                      {name}
+                    </a>
+                  );
+                })}
+              </div>
+            )}
           </div>
         ))}
       </div>

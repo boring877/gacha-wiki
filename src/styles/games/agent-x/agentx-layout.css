@@ -1,4 +1,6 @@
-/* Agent X layout styles (mirrors desire-immortal-realm's dir-layout). */
+/* Agent X base layout chrome (body, container, hero banner) — mirrors majo-layout.css.
+   Shared components live in agentx-common.css; page-specific styles live in
+   agentx-landing.css / agentx-characters.css / agentx-gacha.css. */
 
 .ax-body {
   background: var(--ax-bg-primary);
@@ -33,21 +35,57 @@
 }
 
 .ax-title-only-section {
+  position: relative;
+  z-index: 1;
   text-align: center;
   margin-bottom: 3rem;
   padding: 2rem 0;
+}
+
+.ax-hero-section {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.ax-hero-image-container {
+  width: 100%;
+  max-width: 62rem;
+  height: auto;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: 0 auto 1.5rem;
+  position: relative;
+  border: 1px solid var(--ax-border-light);
+}
+
+.ax-hero-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.ax-hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(to top, rgba(14, 15, 21, 0.55) 0%, transparent 100%);
+  pointer-events: none;
 }
 
 .ax-title-only-heading {
   font-family: var(--font-display);
   font-size: var(--text-4xl);
   font-weight: 700;
-  color: var(--ax-primary);
+  color: var(--ax-primary-light);
 }
 
 .content-area {
   width: 100%;
-  position: relative;
 }
 
 @media (max-width: 768px) {

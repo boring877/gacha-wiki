@@ -116,7 +116,9 @@ const GAME_CONFIG = {
     basePath: '/guides/agent-x/',
     patterns: {
       characters: 'Agents',
+      'tier-list': 'Tier List',
       gacha: 'Recruitment Rates',
+      stats: 'Stats & Formulas',
     },
   },
 };
