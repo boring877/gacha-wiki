@@ -1,0 +1,80 @@
+---
+// Agent X Memoria (light cone) database — 40 items: 10 R / 15 SR / 15 SSR.
+import AgentXLayout from '../../../../layouts/agent-x/LandingLayout.astro';
+import { axMemoria } from '../../../../data/agent-x/memoria.js';
+import { agentXCharacters } from '../../../../data/agent-x/characters.js';
+import '../../../../styles/games/agent-x/agentx-common.css';
+import '../../../../styles/games/agent-x/agentx-characters.css';
+
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/agent-x';
+const ROLE_ICON = { Defender: 'role_defender', Fighter: 'role_fighter', Caster: 'role_caster', Support: 'role_support', Ranger: 'role_ranger' };
+const RARITY_IMG = { SSR: 'rarity_ssr', SR: 'rarity_sr', R: 'rarity_r_star' };
+const linked = Object.fromEntries(agentXCharacters.map(c => [c.id, c]));
+const rarities = ['SSR', 'SR', 'R'];
+---
+
+<AgentXLayout
+  title="Memoria Database"
+  description={`Agent X Memoria database — all ${axMemoria.length} Memoria files (10 R, 15 SR, 15 SSR) with stats, skills and linked agents.`}
+  gameTitle="Memoria Database"
+>
+  <section class="ax-content-section">
+    <div class="ax-toolbar">
+      <input type="text" class="ax-search" placeholder="Search Memoria name..." id="mem-search" />
+      <button class="ax-filter-btn active" data-r="all">All</button>
+      {rarities.map(r => (
+        <button class="ax-filter-btn" data-r={r}>{r}</button>
+      ))}
+      <span class="ax-count" id="mem-count">{axMemoria.length} Memoria</span>
+    </div>
+
+    <div class="ax-char-grid" id="mem-grid">
+      {axMemoria.map(m => (
+        <a
+          href={`/guides/agent-x/memories/${m.slug}/`}
+          class="ax-char-card"
+          data-r={m.rarity}
+          data-name={m.name.toLowerCase()}
+        >
+          <img src={`${R2}/lightcones/${m.image}.webp`} alt={m.name} class="ax-char-art" loading="lazy" />
+          <div class="ax-char-card-body">
+            <p class="ax-char-name">{m.name}</p>
+            <p class="ax-char-title">{m.charName ? `Signature · ${m.charName}` : m.role}</p>
+            <div class="ax-char-meta">
+              {RARITY_IMG[m.rarity] && <img src={`${R2}/icons/${RARITY_IMG[m.rarity]}.webp`} alt={m.rarity} title={m.rarity} class="ax-icon-rarity" loading="lazy" />}
+              {ROLE_ICON[m.role] && <img src={`${R2}/icons/${ROLE_ICON[m.role]}.webp`} alt={m.role} class="ax-icon" loading="lazy" />}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</AgentXLayout>
+
+<script>
+  const search = document.getElementById('mem-search') as HTMLInputElement;
+  const grid = document.getElementById('mem-grid');
+  const countEl = document.getElementById('mem-count');
+  const btns = document.querySelectorAll('.ax-filter-btn');
+
+  function update() {
+    if (!search || !grid) return;
+    const q = search.value.toLowerCase();
+    const active = document.querySelector('.ax-filter-btn.active')?.getAttribute('data-r') || 'all';
+    const cards = grid?.querySelectorAll('.ax-char-card') as NodeListOf<HTMLElement>;
+    let visible = 0;
+    cards?.forEach(card => {
+      const show = (card.dataset.name || '').includes(q) && (active === 'all' || card.dataset.r === active);
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    if (countEl) countEl.textContent = `${visible} Memoria`;
+  }
+
+  search?.addEventListener('input', update);
+  btns.forEach(b => b.addEventListener('click', () => {
+    btns.forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    update();
+  }));
+</script>

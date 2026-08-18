@@ -19,7 +19,7 @@ const GAME_CONFIG = {
       'tier-list': 'Tier List',
       'rift-teams': 'Rift Teams',
       updates: 'Updates',
-      memories: 'Memories',
+      memories: 'Memoria',
     },
   },
   'silver-and-blood': {
@@ -116,6 +116,7 @@ const GAME_CONFIG = {
     basePath: '/guides/agent-x/',
     patterns: {
       characters: 'Agents',
+      memories: 'Memoria',
       'tier-list': 'Tier List',
       gacha: 'Recruitment Rates',
       stats: 'Stats & Formulas',

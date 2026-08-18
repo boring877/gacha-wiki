@@ -91,12 +91,26 @@ const STAT_TYPE = { 21: 'ATK%', 22: 'DEF%', 23: 'HP%', 24: 'SPD' };
     <div class="ax-detail-section">
       <h2>Stat Growth</h2>
       <p class="ax-skill-desc">
-        Every agent has <strong>base stats</strong> (level 1) and <strong>growth values</strong> from
-        <code>character_info</code> — both listed on each agent's page. Star-ups add the flat
-        bonuses below per star tier (<code>star_flat_stat_map_info</code>; values are the game's
-        internal units, so treat them as relative weights). The exact per-level curve is computed
-        server-side and arrives pre-calculated in battle, so use base + growth as the reference
-        for comparing agents.
+        Every agent's stats follow an exact formula (verified against the game's own display and
+        recovered from the client's <code>CharacterStatCalculator</code>):
+      </p>
+      <p class="ax-formula" style="margin: 0.75rem 0;">
+        Stat = (Growth ÷ 1000) × ( Rarity × Rank × Star × 50·Lv × ClassWeight ÷ 100 + Base + StarFlats )
+      </p>
+      <p class="ax-skill-desc">
+        <strong>Rarity</strong>: R ×1.4, SR ×1.6, SSR ×1.9. <strong>Rank</strong> adds ×1 → ×1.9 across
+        16 tiers and raises the level cap (20/40/60/100/…/360). <strong>Star</strong> adds ×1 → ×2.2
+        plus the flat bonuses per tier below. <strong>SPD</strong> never scales — it stays at the base
+        value. Rank multipliers: 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.5, 1.6, 1.7, 1.75,
+        1.8, 1.85, 1.9. Star multipliers: 1, 1, 1, 1, 1.05, 1.15, 1.3, 1.45, 1.6, 1.75, 1.9, 2.05,
+        2.2, 2.2, 2.2, 2.2.
+      </p>
+      <p class="ax-skill-desc" style="margin-top: 0.75rem;">
+        <strong>Memoria use a separate, simpler curve</strong>: every stat is
+        <code>(Base + Growth × Lv) × rank multiplier</code>. Rank-ups raise the level cap
+        (<code>20 / 40 / 60 / 70 / 80</code>) and Rank 5 adds a <strong>×1.05</strong> bonus — so a
+        maxed Memoria is Lv 80 with ×1.05 applied. The values on each Memoria's page match the
+        in-game display exactly.
       </p>
       {charFlats.map(r => (
         <div class="ax-skill">

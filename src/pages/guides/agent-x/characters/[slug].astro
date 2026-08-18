@@ -94,38 +94,32 @@ const hasSkillArt = skillFiles.has(cutinHead);
         </thead>
         <tbody>
           <tr>
-            <td>Base (Lv 1)</td>
-            <td>{char.baseStats.atk.toLocaleString()}</td>
-            <td>{char.baseStats.def.toLocaleString()}</td>
-            <td>{char.baseStats.hp.toLocaleString()}</td>
-            <td>{char.baseStats.spd}</td>
+            <td>Lv 1</td>
+            <td>{char.lv1Stats.atk.toLocaleString()}</td>
+            <td>{char.lv1Stats.def.toLocaleString()}</td>
+            <td>{char.lv1Stats.hp.toLocaleString()}</td>
+            <td>{char.lv1Stats.spd}</td>
           </tr>
           <tr>
-            <td>Est. Lv 60</td>
-            <td>{char.estStats.lv60.atk.toLocaleString()}</td>
-            <td>{char.estStats.lv60.def.toLocaleString()}</td>
-            <td>{char.estStats.lv60.hp.toLocaleString()}</td>
-            <td>{char.baseStats.spd}</td>
+            <td>Max (Lv 360)</td>
+            <td>{char.maxStats.atk.toLocaleString()}</td>
+            <td>{char.maxStats.def.toLocaleString()}</td>
+            <td>{char.maxStats.hp.toLocaleString()}</td>
+            <td>{char.maxStats.spd}</td>
           </tr>
           <tr>
-            <td>Est. Lv 100</td>
-            <td>{char.estStats.lv100.atk.toLocaleString()}</td>
-            <td>{char.estStats.lv100.def.toLocaleString()}</td>
-            <td>{char.estStats.lv100.hp.toLocaleString()}</td>
-            <td>{char.baseStats.spd}</td>
-          </tr>
-          <tr>
-            <td>Growth /lv</td>
-            <td>{char.growthStats.atk / 10}</td>
-            <td>{char.growthStats.def / 10}</td>
-            <td>{char.growthStats.hp / 10}</td>
+            <td>Growth /1000·Lv</td>
+            <td>{char.growthStats.atk.toLocaleString()}</td>
+            <td>{char.growthStats.def.toLocaleString()}</td>
+            <td>{char.growthStats.hp.toLocaleString()}</td>
             <td>—</td>
           </tr>
         </tbody>
       </table>
       <p class="ax-stat-note">
-        Estimates use Base + Growth×(Lv−1)/10. The game computes exact stats server-side, so treat
-        high-level numbers as close approximations for comparing agents.
+        Stat = (Growth/1000) × (rarity × rank × star × 50·Lv × class weight/100 + Base + star flats),
+        verified against the game's own display (Ilya Lv 300 matches exactly). Max assumes Lv 360 with
+        max rank/star. SPD never scales.
       </p>
     </div>
   </section>

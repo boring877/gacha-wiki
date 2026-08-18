@@ -1,0 +1,101 @@
+---
+// Per-Memoria detail page for Agent X.
+import AgentXLayout from '../../../../layouts/agent-x/LandingLayout.astro';
+import { axMemoria } from '../../../../data/agent-x/memoria.js';
+import '../../../../styles/games/agent-x/agentx-common.css';
+import '../../../../styles/games/agent-x/agentx-characters.css';
+
+export function getStaticPaths() {
+  return axMemoria.map(m => ({
+    params: { slug: m.slug },
+    props: { memoria: m },
+  }));
+}
+
+const { memoria: m } = Astro.props;
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/agent-x';
+const ROLE_ICON = { Defender: 'role_defender', Fighter: 'role_fighter', Caster: 'role_caster', Support: 'role_support', Ranger: 'role_ranger' };
+const RARITY_IMG = { SSR: 'rarity_ssr', SR: 'rarity_sr', R: 'rarity_r_star' };
+---
+
+<AgentXLayout
+  title={`${m.name} - Agent X Memoria`}
+  description={`${m.name} (${m.rarity} ${m.role} Memoria) guide for Agent X — base and growth stats, skill, and linked agent.`}
+  gameTitle={m.name}
+>
+  <section class="ax-content-section">
+    <div class="ax-detail-header">
+      <div class="ax-detail-art-wrap">
+        <img src={`${R2}/lightcones/${m.image}.webp`} alt={m.name} class="ax-detail-art" loading="eager" />
+      </div>
+      <div class="ax-detail-info">
+        <h1>{m.name}</h1>
+        <p class="ax-detail-title">{m.charName ? `Signature Memoria — ${m.charName}` : `${m.role} Memoria`}</p>
+        <div class="ax-icon-row">
+          {RARITY_IMG[m.rarity] && <img src={`${R2}/icons/${RARITY_IMG[m.rarity]}.webp`} alt={m.rarity} title={m.rarity} class="ax-icon-rarity-lg" loading="lazy" />}
+          {ROLE_ICON[m.role] && <img src={`${R2}/icons/${ROLE_ICON[m.role]}.webp`} alt={m.role} class="ax-icon-lg" loading="lazy" />}
+          <span class="ax-icon-caption">{m.rarity} · {m.role}{m.charName && ' · Signature'}</span>
+        </div>
+        <div class="ax-id-line">Memoria #{m.id}</div>
+        {m.charSlug && (
+          <div class="ax-profile">
+            <div class="ax-profile-item">
+              <strong>Wearer</strong>
+              <a href={`/guides/agent-x/characters/${m.charSlug}/`} style="color: var(--ax-primary);">{m.charName}</a>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <section class="ax-content-section">
+    <div class="ax-detail-section">
+      <h2>Stats</h2>
+      <table class="ax-stat-table">
+        <thead>
+          <tr><th></th><th>ATK</th><th>DEF</th><th>HP</th><th>SPD</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lv 1</td>
+            <td>{m.lv1.atk.toLocaleString()}</td>
+            <td>{m.lv1.def.toLocaleString()}</td>
+            <td>{m.lv1.hp.toLocaleString()}</td>
+            <td>{m.lv1.spd}</td>
+          </tr>
+          <tr>
+            <td>Growth /lv</td>
+            <td>+{m.stats.atkG.toLocaleString()}</td>
+            <td>+{m.stats.defG.toLocaleString()}</td>
+            <td>+{m.stats.hpG.toLocaleString()}</td>
+            <td>+{m.stats.spdG}</td>
+          </tr>
+          <tr>
+            <td>Max (Lv 80 · Rank 5)</td>
+            <td>{m.max.atk.toLocaleString()}</td>
+            <td>{m.max.def.toLocaleString()}</td>
+            <td>{m.max.hp.toLocaleString()}</td>
+            <td>{m.max.spd}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="ax-stat-note">Stat = (Base + Growth × Lv) × rank multiplier. Rank 5 grants Lv 80 cap and a ×1.05 bonus (verified in-game).</p>
+    </div>
+  </section>
+
+  {m.skill && (
+    <section class="ax-content-section">
+      <div class="ax-detail-section">
+        <h2>Skill</h2>
+        <div class="ax-skill">
+          <div class="ax-skill-header">
+            <p class="ax-skill-name">{m.skill.name}</p>
+            <span class="ax-skill-kind">Memoria</span>
+          </div>
+          <p class="ax-skill-desc">{m.skill.desc}</p>
+        </div>
+      </div>
+    </section>
+  )}
+</AgentXLayout>
