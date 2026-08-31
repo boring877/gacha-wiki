@@ -40,6 +40,7 @@ const stats = [
         <div class="cta-row">
           <a class="btn btn-primary" href="#mint">Mint an OG — ~$2</a>
           <a class="btn btn-ghost" href="#gallery">See the collection</a>
+          <a class="btn btn-ghost" href="https://opensea.io/collection/gachawiki-ogs" target="_blank" rel="noopener noreferrer">View on OpenSea ↗</a>
         </div>
         <p class="contract-line">
           Contract:
@@ -83,6 +84,7 @@ const stats = [
         <p class="mint-balance" id="mintBalance" hidden></p>
         <p class="mint-left" id="mintLeft" hidden></p>
         <p class="mint-status">5 per wallet · $GW spent on minting is burned forever</p>
+        <p class="mint-marketplace">Collection on <a href="https://opensea.io/collection/gachawiki-ogs" target="_blank" rel="noopener noreferrer">OpenSea ↗</a></p>
         <p class="minted-count" id="mintedCount">…</p>
         <p class="mint-msg" id="mintMsg" hidden></p>
       </div>
@@ -97,6 +99,7 @@ const stats = [
       const GW_TOKEN = '0x50bE7832849EFEdB15611799074FcC409522f27A';
       const RPC_URL = 'https://rpc.mainnet.chain.robinhood.com';
       const EXPLORER = 'https://robinhoodchain.blockscout.com';
+      const OPENSEA = 'https://opensea.io/collection/gachawiki-ogs';
       // function selectors (keccak of the signatures)
       const SEL = {
         mint: '0xa0712d68', // mint(uint256)
@@ -515,6 +518,7 @@ const stats = [
               ? `Minted ${qty} OG${qty > 1 ? 's' : ''} — ${fmtGw(gwPriceWei * BigInt(qty))} $GW burned`
               : `Minted ${qty} OG${qty > 1 ? 's' : ''} — your art is live now`);
             link(`${EXPLORER}/tx/${txHash}`, 'View transaction ↗');
+            link(OPENSEA, 'View collection on OpenSea ↗');
             link('https://discord.gg/YdWFddQKR8', 'Unlock holder perks on Discord ↗');
             await Promise.all([refreshSupply(), loadWalletCount(), loadBalances(), loadYourOgs()]);
           } else if (ok === false) {
@@ -811,6 +815,9 @@ const stats = [
   }
   .mint-status { margin: 0.35rem 0 0; color: var(--neutral-300); font-size: 0.92rem; }
   .mint-status a { color: var(--teal-crystal); }
+  .mint-marketplace { margin: 0.3rem 0 0; color: var(--neutral-400); font-size: 0.82rem; }
+  .mint-marketplace a { color: var(--teal-crystal); text-decoration: none; font-weight: 600; }
+  .mint-marketplace a:hover { text-decoration: underline; }
   .minted-count { margin: 0.35rem 0 0; color: var(--amber-glow); font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
   /* status box — mint/approval progress, tx links, errors */
   .mint-msg {
