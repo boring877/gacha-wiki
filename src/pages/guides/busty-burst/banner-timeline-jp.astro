@@ -1,11 +1,10 @@
 ---
 // Busty Burst JP-server event/banner timeline page.
 // Mirrors the English (Global) banner-timeline.astro visual design.
-// Banner images are stored under src/assets/.../Banner_Img_JP/ and rendered
-// with astro:assets <Image> using single (original) dimensions — one output
-// file per source, matching how the Global BBBannerImage component works.
-import { Image } from 'astro:assets';
+// Banner images are served from the gachawiki-images R2 bucket
+// (Banner_Img_JP/*.webp) as plain <img> tags.
 import BannerTimelineLayout from '../../../layouts/busty-burst/BannerTimelineLayout.astro';
+import { R2, JP_BANNERS } from '../../../components/busty-burst/bb-r2';
 import {
   jpBannerTimelineData,
   getJpTimelineYears,
@@ -17,14 +16,12 @@ const pageDescription =
   'Chronological timeline of all limited events and summon banners on the Japanese server of Busty Burst (巨乳ファンタジーバースト), from the 2023 launch to present. New→old, grouped by year.';
 const gameTitle = 'JP Event Timeline';
 
-// Load all local JP banner images into a map keyed by banner id (jpg + png).
-const bannerImageModules = import.meta.glob<{ default: ImageMetadata }>(
-  '../../../assets/images/games/Busty_Burst/Banner_Img_JP/*.{jpg,png}'
-);
-const bannerImageMap: Record<string, ImageMetadata> = {};
-for (const [path, mod] of Object.entries(bannerImageModules)) {
-  const file = path.split('/').pop()!.replace(/\.(jpg|png)$/, '');
-  bannerImageMap[file] = (await mod()).default;
+// R2 URL per banner id (null when the art isn't uploaded)
+const bannerImageMap: Record<string, string | null> = {};
+for (const b of jpBannerTimelineData) {
+  // ids with a trailing dot (e.g. 'jp-case-closed.') map to cleaned filenames on R2
+  const key = b.id.replace(/\.$/, '');
+  bannerImageMap[b.id] = JP_BANNERS.has(key) ? `${R2}/Banner_Img_JP/${key}.webp` : null;
 }
 
 const years = getJpTimelineYears();
@@ -169,14 +166,12 @@ const getStatusLabel = (status: string) => {
                       <div class="summon-banner-card">
                         {img ? (
                           <div class="bb-banner-image">
-                            <Image
+                            <img
                               src={img}
                               alt={banner.title}
-                              width={img.width}
-                              height={img.height}
-                              quality={90}
                               class="bb-banner-image__img"
                               loading="lazy"
+                              decoding="async"
                             />
                           </div>
                         ) : (

@@ -1,17 +1,6 @@
 ---
-import { Image } from 'astro:assets';
-
-// Import all images using glob patterns
-// Using sprites directory which has more character coverage (246 vs 106)
-const spriteImages = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/images/games/Busty_Burst/character/sprites/*.png',
-  { eager: true }
-);
-
-const bodyImages = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/images/games/Busty_Burst/character/full_body/No_*_body.png',
-  { eager: true }
-);
+// Character portrait/body art served from the gachawiki-images R2 bucket.
+import { R2, SPRITE_IDS, BODY_IDS } from './bb-r2';
 
 export interface Props {
   characterId: number;
@@ -20,8 +9,6 @@ export interface Props {
   height?: number;
   class?: string;
   loading?: 'lazy' | 'eager';
-  format?: 'webp' | 'jpg' | 'png';
-  quality?: number;
   imageType?: 'icon' | 'body';
 }
 
@@ -32,33 +19,18 @@ const {
   height = 180,
   class: className,
   loading = 'lazy',
-  format = 'webp',
-  quality = 95,
   imageType = 'icon', // Default to icon for small displays
 } = Astro.props;
 
-// Find the matching image based on characterId and imageType
-let imageModule: ImageMetadata | null = null;
-
+let url: string | null = null;
 if (imageType === 'body') {
-  // Look for body image: No_{id}_{id}_body.png
-  // No sprite fallback here — characters without body art yet show the
-  // placeholder until their art is added
-  const bodyKey = Object.keys(bodyImages).find(key =>
-    key.includes(`No_${characterId}_${characterId}_body.png`)
-  );
-  if (bodyKey) {
-    imageModule = bodyImages[bodyKey].default;
+  // No sprite fallback for the body slot — characters without body art show
+  // the placeholder until their art is uploaded to the bucket
+  if (characterId && BODY_IDS.has(characterId)) {
+    url = `${R2}/character/full_body/No_${characterId}_${characterId}_body.webp`;
   }
-} else {
-  // Look for sprite image: {id}.png
-  // Use includes() for cross-platform path compatibility
-  const spriteKey = Object.keys(spriteImages).find(key =>
-    key.includes(`/${characterId}.png`) || key.includes(`\\${characterId}.png`)
-  );
-  if (spriteKey) {
-    imageModule = spriteImages[spriteKey].default;
-  }
+} else if (characterId && SPRITE_IDS.has(characterId)) {
+  url = `${R2}/character/sprites/${characterId}.webp`;
 }
 
 // No art yet — monogram placeholder scaled to its container
@@ -69,16 +41,15 @@ const initial = (alt || '?')
   .toUpperCase() || '?';
 ---
 
-{imageModule ? (
+{url ? (
   <div class={`paladin-image-wrapper ${className || ''}`}>
-    <Image
-      src={imageModule}
+    <img
+      src={url}
       alt={alt}
       width={width}
       height={height}
       loading={loading}
-      format={format}
-      quality={quality}
+      decoding="async"
       class="paladin-image"
     />
   </div>

@@ -1,9 +1,7 @@
 ---
-import { Image } from 'astro:assets';
+import { R2 } from './bb-r2';
 
 // Import attack type images
-import PhysicalImg from '../../assets/images/games/Busty_Burst/TypeofATK/Physical.png';
-import MagicImg from '../../assets/images/games/Busty_Burst/TypeofATK/Magic.png';
 
 export interface Props {
   fileName: string;
@@ -17,9 +15,9 @@ export interface Props {
 const { fileName, alt, width = 40, height = 40, class: className, loading = 'lazy' } = Astro.props;
 
 // Map file names to imported image modules
-const imageMap: Record<string, ImageMetadata> = {
-  'Physical.png': PhysicalImg,
-  'Magic.png': MagicImg,
+const imageMap: Record<string, string> = {
+  'Physical.png':	R2 + '/TypeofATK/Physical.webp',
+  'Magic.png':	R2 + '/TypeofATK/Magic.webp',
 };
 
 // Get the image module based on the fileName
@@ -29,7 +27,7 @@ const imageModule = imageMap[fileName];
 {
   imageModule && (
     <div class={`typeofattk-image-wrapper ${className || ''}`}>
-      <Image
+      <img
         src={imageModule}
         alt={alt}
         width={width}

@@ -1,10 +1,7 @@
 ---
-import { Image } from 'astro:assets';
+import { R2 } from './bb-r2';
 
 // Import position images
-import BackImg from '../../assets/images/games/Busty_Burst/Position/Back.png';
-import FrontImg from '../../assets/images/games/Busty_Burst/Position/Front.png';
-import MidImg from '../../assets/images/games/Busty_Burst/Position/Mid.png';
 
 export interface Props {
   fileName: string;
@@ -18,10 +15,10 @@ export interface Props {
 const { fileName, alt, width = 40, height = 40, class: className, loading = 'lazy' } = Astro.props;
 
 // Map file names to imported image modules
-const imageMap: Record<string, ImageMetadata> = {
-  'Back.png': BackImg,
-  'Front.png': FrontImg,
-  'Mid.png': MidImg,
+const imageMap: Record<string, string> = {
+  'Back.png':	R2 + '/Position/Back.webp',
+  'Front.png':	R2 + '/Position/Front.webp',
+  'Mid.png':	R2 + '/Position/Mid.webp',
 };
 
 // Get the image module based on the fileName
@@ -31,7 +28,7 @@ const imageModule = imageMap[fileName];
 {
   imageModule && (
     <div class={`position-image-wrapper ${className || ''}`}>
-      <Image
+      <img
         src={imageModule}
         alt={alt}
         width={width}

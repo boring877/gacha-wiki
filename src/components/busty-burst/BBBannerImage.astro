@@ -1,100 +1,55 @@
 ---
-import { Image } from 'astro:assets';
+import { R2 } from './bb-r2';
 
 // Import banner images
-import bannerVernFestival from '../../assets/images/games/Busty_Burst/Banner_Img/banner-vern-founding-festival.jpg';
-import bannerShatyChapter6 from '../../assets/images/games/Busty_Burst/Banner_Img/banner-shaty-chapter-6.jpg';
-import bannerHolyNightCookies from '../../assets/images/games/Busty_Burst/Banner_Img/banner-holy-night-cookies.jpg';
-import bannerNewYear2025_1 from '../../assets/images/games/Busty_Burst/Banner_Img/banner-new-year-2025-1.png';
-import bannerNewYear2025_2 from '../../assets/images/games/Busty_Burst/Banner_Img/banner-new-year-2025-2.png';
-import bannerNewYear2025_3 from '../../assets/images/games/Busty_Burst/Banner_Img/banner-new-year-2025-3.png';
-import bannerSeason1Lorelia from '../../assets/images/games/Busty_Burst/Banner_Img/banner-season-1-lorelia.jpg';
-import bannerBeautyWitchPartyPeople from '../../assets/images/games/Busty_Burst/Banner_Img/banner-beauty-witch-party-people.png';
-import bannerOctoOctoBeachPanic from '../../assets/images/games/Busty_Burst/Banner_Img/banner-octo-octo-beach-panic.png';
-import bannerInfiniteSubjugationPastel from '../../assets/images/games/Busty_Burst/Banner_Img/banner-infinite-subjugation.png';
-import bannerBladeOfJudgment from '../../assets/images/games/Busty_Burst/Banner_Img/banner-blade-of-judgment.png';
-import bannerLapisMain7 from '../../assets/images/games/Busty_Burst/Banner_Img/banner-lapis.png';
-import bannerValentineEvent13 from '../../assets/images/games/Busty_Burst/Banner_Img/banner-valentine.png';
-import bannerTowerOfTrialsEvent8 from '../../assets/images/games/Busty_Burst/Banner_Img/banner-rosa.png';
-import bannerVillainHalloween from '../../assets/images/games/Busty_Burst/Banner_Img/banner-villain-halloween.png';
-import bannerInfiniteSubjugationRuru from '../../assets/images/games/Busty_Burst/Banner_Img/banner-infinite-subjugation-ruru.png';
-import bannerSmileDance from '../../assets/images/games/Busty_Burst/Banner_Img/banner-smile-dance.png';
-import bannerLustRaguen from '../../assets/images/games/Busty_Burst/Banner_Img/banner-lust-raguen.png';
-import bannerBattleSeasonSetsuka from '../../assets/images/games/Busty_Burst/Banner_Img/banner-battle-season-setsuka.png';
-import bannerBloodstainedBlade from '../../assets/images/games/Busty_Burst/Banner_Img/banner-bloodstained-blade.png';
-import bannerSwiftWindUnicorn from '../../assets/images/games/Busty_Burst/Banner_Img/banner-swift-wind-unicorn.png';
-import bannerPaladinIntroductionInrine from '../../assets/images/games/Busty_Burst/Banner_Img/banner-paladin-introduction-inrine.png';
-import bannerPaladinIntroductionViatrice from '../../assets/images/games/Busty_Burst/Banner_Img/banner-paladin-introduction-viatrice.png';
-import bannerPaladinIntroductionTrish from '../../assets/images/games/Busty_Burst/Banner_Img/banner-paladin-introduction-trish.png';
-import bannerMagdalena from '../../assets/images/games/Busty_Burst/Banner_Img/banner-magdalena.png';
-import bannerPaladinIntroductionDiana from '../../assets/images/games/Busty_Burst/Banner_Img/banner-paladin-introduction-diana.png';
-import bannerPriscilla from '../../assets/images/games/Busty_Burst/Banner_Img/banner-priscilla.png';
-import bannerLilith from '../../assets/images/games/Busty_Burst/Banner_Img/banner-lilith.png';
-import bannerLilirara from '../../assets/images/games/Busty_Burst/Banner_Img/banner-lilirara.png';
-import bannerHalfAnniversaryFionore from '../../assets/images/games/Busty_Burst/Banner_Img/banner-half-anniversary-fionore.png';
-import bannerProjectBunny from '../../assets/images/games/Busty_Burst/Banner_Img/banner-project-bunny.png';
-import bannerFatIsJustice from '../../assets/images/games/Busty_Burst/Banner_Img/banner-fat-is-justice.png';
-import bannerChapter10Yaksha from '../../assets/images/games/Busty_Burst/Banner_Img/banner-chapter-10-yaksha.png';
-import bannerTwinWitches from '../../assets/images/games/Busty_Burst/Banner_Img/banner-twin-witches.png';
-import bannerBurstFes from '../../assets/images/games/Busty_Burst/Banner_Img/banner-burst-fes.png';
-import bannerUnderboobCheerleader from '../../assets/images/games/Busty_Burst/Banner_Img/banner-underboob-cheerleader.png';
-import bannerFanzine1st from '../../assets/images/games/Busty_Burst/Banner_Img/banner-fanzine-1st.png';
-import bannerFanzine2nd from '../../assets/images/games/Busty_Burst/Banner_Img/banner-fanzine-2nd.png';
-import bannerBurstMonth from '../../assets/images/games/Busty_Burst/Banner_Img/banner-burst-month.png';
-import bannerBeastHuntress from '../../assets/images/games/Busty_Burst/Banner_Img/banner-beast-huntress.png';
-import bannerBattlePassSeason4 from '../../assets/images/games/Busty_Burst/Banner_Img/banner-battle-pass-season-4.png';
-import bannerGuildBattleWind from '../../assets/images/games/Busty_Burst/Banner_Img/banner-guild-battle-wind.png';
-import bannerNoMoreBet from '../../assets/images/games/Busty_Burst/Banner_Img/banner-no-more-bet.png';
-import bannerMainStory12 from '../../assets/images/games/Busty_Burst/Banner_Img/banner-main-story-12.png';
-import bannerBridalFestival from '../../assets/images/games/Busty_Burst/Banner_Img/banner-bridal-festival.png';
 
 // Image mapping by banner ID
-const bannerImages: Record<string, ImageMetadata> = {
-  'vern-founding-festival': bannerVernFestival,
-  'shaty-chapter-6': bannerShatyChapter6,
-  'holy-night-cookies': bannerHolyNightCookies,
-  'new-year-2025-1': bannerNewYear2025_1,
-  'new-year-2025-2': bannerNewYear2025_2,
-  'new-year-2025-3': bannerNewYear2025_3,
-  'season-1-lorelia': bannerSeason1Lorelia,
-  'beauty-witch-party-people': bannerBeautyWitchPartyPeople,
-  'octo-octo-beach-panic': bannerOctoOctoBeachPanic,
-  'infinite-subjugation-pastel': bannerInfiniteSubjugationPastel,
-  'blade-of-judgment': bannerBladeOfJudgment,
-  'banner-lapis': bannerLapisMain7,
-  'banner-valentine': bannerValentineEvent13,
-  'banner-rosa': bannerTowerOfTrialsEvent8,
-  'banner-villain-halloween': bannerVillainHalloween,
-  'banner-infinite-subjugation-ruru': bannerInfiniteSubjugationRuru,
-  'banner-smile-dance': bannerSmileDance,
-  'banner-lust-raguen': bannerLustRaguen,
-  'banner-battle-season-setsuka': bannerBattleSeasonSetsuka,
-  'banner-bloodstained-blade': bannerBloodstainedBlade,
-  'banner-swift-wind-unicorn': bannerSwiftWindUnicorn,
-  'banner-paladin-introduction-inrine': bannerPaladinIntroductionInrine,
-  'banner-paladin-introduction-viatrice': bannerPaladinIntroductionViatrice,
-  'banner-paladin-introduction-trish': bannerPaladinIntroductionTrish,
-  'magdalena-2108': bannerMagdalena,
-  'banner-paladin-introduction-diana': bannerPaladinIntroductionDiana,
-  'banner-priscilla': bannerPriscilla,
-  'banner-lilith': bannerLilith,
-  'banner-lilirara': bannerLilirara,
-  'banner-half-anniversary-fionore': bannerHalfAnniversaryFionore,
-  'banner-project-bunny': bannerProjectBunny,
-  'banner-fat-is-justice': bannerFatIsJustice,
-  'banner-chapter-10-yaksha': bannerChapter10Yaksha,
-  'banner-twin-witches': bannerTwinWitches,
-  'banner-burst-fes': bannerBurstFes,
-  'banner-underboob-cheerleader': bannerUnderboobCheerleader,
-  'banner-fanzine-1st': bannerFanzine1st,
-  'banner-fanzine-2nd': bannerFanzine2nd,
-  'banner-burst-month': bannerBurstMonth,
-  'banner-beast-huntress': bannerBeastHuntress,
-  'banner-battle-pass-season-4': bannerBattlePassSeason4,
-  'banner-guild-battle-wind': bannerGuildBattleWind,
-  'banner-no-more-bet': bannerNoMoreBet,
-  'banner-main-story-12': bannerMainStory12,
-  'banner-bridal-festival': bannerBridalFestival,
+const bannerImages: Record<string, string> = {
+  'vern-founding-festival':	R2 + '/Banner_Img/banner-vern-founding-festival.webp',
+  'shaty-chapter-6':	R2 + '/Banner_Img/banner-shaty-chapter-6.webp',
+  'holy-night-cookies':	R2 + '/Banner_Img/banner-holy-night-cookies.webp',
+  'new-year-2025-1':	R2 + '/Banner_Img/banner-new-year-2025-1.webp',
+  'new-year-2025-2':	R2 + '/Banner_Img/banner-new-year-2025-2.webp',
+  'new-year-2025-3':	R2 + '/Banner_Img/banner-new-year-2025-3.webp',
+  'season-1-lorelia':	R2 + '/Banner_Img/banner-season-1-lorelia.webp',
+  'beauty-witch-party-people':	R2 + '/Banner_Img/banner-beauty-witch-party-people.webp',
+  'octo-octo-beach-panic':	R2 + '/Banner_Img/banner-octo-octo-beach-panic.webp',
+  'infinite-subjugation-pastel':	R2 + '/Banner_Img/banner-infinite-subjugation.webp',
+  'blade-of-judgment':	R2 + '/Banner_Img/banner-blade-of-judgment.webp',
+  'banner-lapis':	R2 + '/Banner_Img/banner-lapis.webp',
+  'banner-valentine':	R2 + '/Banner_Img/banner-valentine.webp',
+  'banner-rosa':	R2 + '/Banner_Img/banner-rosa.webp',
+  'banner-villain-halloween':	R2 + '/Banner_Img/banner-villain-halloween.webp',
+  'banner-infinite-subjugation-ruru':	R2 + '/Banner_Img/banner-infinite-subjugation-ruru.webp',
+  'banner-smile-dance':	R2 + '/Banner_Img/banner-smile-dance.webp',
+  'banner-lust-raguen':	R2 + '/Banner_Img/banner-lust-raguen.webp',
+  'banner-battle-season-setsuka':	R2 + '/Banner_Img/banner-battle-season-setsuka.webp',
+  'banner-bloodstained-blade':	R2 + '/Banner_Img/banner-bloodstained-blade.webp',
+  'banner-swift-wind-unicorn':	R2 + '/Banner_Img/banner-swift-wind-unicorn.webp',
+  'banner-paladin-introduction-inrine':	R2 + '/Banner_Img/banner-paladin-introduction-inrine.webp',
+  'banner-paladin-introduction-viatrice':	R2 + '/Banner_Img/banner-paladin-introduction-viatrice.webp',
+  'banner-paladin-introduction-trish':	R2 + '/Banner_Img/banner-paladin-introduction-trish.webp',
+  'magdalena-2108':	R2 + '/Banner_Img/banner-magdalena.webp',
+  'banner-paladin-introduction-diana':	R2 + '/Banner_Img/banner-paladin-introduction-diana.webp',
+  'banner-priscilla':	R2 + '/Banner_Img/banner-priscilla.webp',
+  'banner-lilith':	R2 + '/Banner_Img/banner-lilith.webp',
+  'banner-lilirara':	R2 + '/Banner_Img/banner-lilirara.webp',
+  'banner-half-anniversary-fionore':	R2 + '/Banner_Img/banner-half-anniversary-fionore.webp',
+  'banner-project-bunny':	R2 + '/Banner_Img/banner-project-bunny.webp',
+  'banner-fat-is-justice':	R2 + '/Banner_Img/banner-fat-is-justice.webp',
+  'banner-chapter-10-yaksha':	R2 + '/Banner_Img/banner-chapter-10-yaksha.webp',
+  'banner-twin-witches':	R2 + '/Banner_Img/banner-twin-witches.webp',
+  'banner-burst-fes':	R2 + '/Banner_Img/banner-burst-fes.webp',
+  'banner-underboob-cheerleader':	R2 + '/Banner_Img/banner-underboob-cheerleader.webp',
+  'banner-fanzine-1st':	R2 + '/Banner_Img/banner-fanzine-1st.webp',
+  'banner-fanzine-2nd':	R2 + '/Banner_Img/banner-fanzine-2nd.webp',
+  'banner-burst-month':	R2 + '/Banner_Img/banner-burst-month.webp',
+  'banner-beast-huntress':	R2 + '/Banner_Img/banner-beast-huntress.webp',
+  'banner-battle-pass-season-4':	R2 + '/Banner_Img/banner-battle-pass-season-4.webp',
+  'banner-guild-battle-wind':	R2 + '/Banner_Img/banner-guild-battle-wind.webp',
+  'banner-no-more-bet':	R2 + '/Banner_Img/banner-no-more-bet.webp',
+  'banner-main-story-12':	R2 + '/Banner_Img/banner-main-story-12.webp',
+  'banner-bridal-festival':	R2 + '/Banner_Img/banner-bridal-festival.webp',
 };
 
 export interface Props {
@@ -116,12 +71,11 @@ const originalHeight = imageSrc?.height || height;
 {
   imageSrc && (
     <div class="bb-banner-image">
-      <Image
+      <img
         src={imageSrc}
         alt={alt}
         width={originalWidth}
         height={originalHeight}
-        quality={90}
         class="bb-banner-image__img"
         loading="lazy"
       />

@@ -1,19 +1,14 @@
 ---
-import { Image } from 'astro:assets';
+import { R2 } from './bb-r2';
 
 // Import all weapon inspiration icons
-import SlashIcon from '../../assets/images/games/Busty_Burst/support_bonus_named/307_Slash_Inspiration.png';
-import PierceIcon from '../../assets/images/games/Busty_Burst/support_bonus_named/308_Pierce_Inspiration.png';
-import StrikeIcon from '../../assets/images/games/Busty_Burst/support_bonus_named/309_Strike_Inspiration.png';
-import ShotIcon from '../../assets/images/games/Busty_Burst/support_bonus_named/310_Shot_Inspiration.png';
-import ThrowIcon from '../../assets/images/games/Busty_Burst/support_bonus_named/311_Throw_Inspiration.png';
 
-const weaponMap: Record<string, ImageMetadata> = {
-  'Slash': SlashIcon,
-  'Pierce': PierceIcon,
-  'Strike': StrikeIcon,
-  'Shot': ShotIcon,
-  'Throw': ThrowIcon,
+const weaponMap: Record<string, string> = {
+  'Slash':	R2 + '/support_bonus_named/307_Slash_Inspiration.webp',
+  'Pierce':	R2 + '/support_bonus_named/308_Pierce_Inspiration.webp',
+  'Strike':	R2 + '/support_bonus_named/309_Strike_Inspiration.webp',
+  'Shot':	R2 + '/support_bonus_named/310_Shot_Inspiration.webp',
+  'Throw':	R2 + '/support_bonus_named/311_Throw_Inspiration.webp',
 };
 
 export interface Props {
@@ -28,7 +23,7 @@ const imageSrc = weaponMap[weapon];
 ---
 
 {imageSrc && (
-  <Image
+  <img
     src={imageSrc}
     alt={weapon}
     width={width}

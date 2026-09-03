@@ -1,24 +1,12 @@
 ---
+import { R2 } from './bb-r2';
 // LimitBreakIcon Component for Busty Burst
 // Displays limit break level icons (0-5)
 
-import { Image } from 'astro:assets';
 
 // Import limit break icons (normal size)
-import lb0 from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_0.png';
-import lb1 from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_1.png';
-import lb2 from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_2.png';
-import lb3 from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_3.png';
-import lb4 from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_4.png';
-import lb5 from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_5.png';
 
 // Large icons
-import lb0L from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_L_0.png';
-import lb1L from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_L_1.png';
-import lb2L from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_L_2.png';
-import lb3L from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_L_3.png';
-import lb4L from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_L_4.png';
-import lb5L from '../../assets/images/games/Busty_Burst/limitover_icons/limitbreak_L_5.png';
 
 export interface Props {
   level: number; // 0-5
@@ -34,8 +22,8 @@ const { level, size = 'medium', width, height, class: className } = Astro.props;
 const lbLevel = Math.max(0, Math.min(5, level));
 
 // Icon mappings by size - use normal icons for all sizes (better quality)
-const normalIcons = { 0: lb0, 1: lb1, 2: lb2, 3: lb3, 4: lb4, 5: lb5 };
-const largeIcons = { 0: lb0L, 1: lb1L, 2: lb2L, 3: lb3L, 4: lb4L, 5: lb5L };
+const normalIcons: Record<number, string> = { 0: R2 + '/limitover_icons/limitbreak_0.webp', 1: R2 + '/limitover_icons/limitbreak_1.webp', 2: R2 + '/limitover_icons/limitbreak_2.webp', 3: R2 + '/limitover_icons/limitbreak_3.webp', 4: R2 + '/limitover_icons/limitbreak_4.webp', 5: R2 + '/limitover_icons/limitbreak_5.webp' };
+const largeIcons: Record<number, string> = { 0: R2 + '/limitover_icons/limitbreak_L_0.webp', 1: R2 + '/limitover_icons/limitbreak_L_1.webp', 2: R2 + '/limitover_icons/limitbreak_L_2.webp', 3: R2 + '/limitover_icons/limitbreak_L_3.webp', 4: R2 + '/limitover_icons/limitbreak_L_4.webp', 5: R2 + '/limitover_icons/limitbreak_L_5.webp' };
 
 // Select icon based on size - use normal icons for small/medium, large icons for large
 const iconMap = size === 'large' ? largeIcons : normalIcons;
@@ -52,7 +40,7 @@ const finalWidth = width || defaultSizes[size].width;
 const finalHeight = height || defaultSizes[size].height;
 ---
 
-<Image
+<img
   src={icon}
   alt={`Limit Break ${lbLevel}`}
   width={finalWidth}

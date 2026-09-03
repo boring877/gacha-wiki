@@ -1,37 +1,26 @@
 ---
-import { Image } from 'astro:assets';
+import { R2 } from './bb-r2';
 
 // Import all blessing icons
-import BlessingWind from '../../assets/images/games/Busty_Burst/support_bonus_named/301_Blessing_of_Wind.png';
-import BlessingWater from '../../assets/images/games/Busty_Burst/support_bonus_named/302_Blessing_of_Water.png';
-import BlessingFire from '../../assets/images/games/Busty_Burst/support_bonus_named/303_Blessing_of_Fire.png';
-import BlessingHoly from '../../assets/images/games/Busty_Burst/support_bonus_named/304_Blessing_of_Light.png';
-import BlessingDark from '../../assets/images/games/Busty_Burst/support_bonus_named/305_Blessing_of_Dark.png';
-import BlessingMind from '../../assets/images/games/Busty_Burst/support_bonus_named/306_Blessing_of_Mind.png';
 
 // Import all inspiration icons
-import InspirationSlash from '../../assets/images/games/Busty_Burst/support_bonus_named/307_Slash_Inspiration.png';
-import InspirationPierce from '../../assets/images/games/Busty_Burst/support_bonus_named/308_Pierce_Inspiration.png';
-import InspirationStrike from '../../assets/images/games/Busty_Burst/support_bonus_named/309_Strike_Inspiration.png';
-import InspirationShot from '../../assets/images/games/Busty_Burst/support_bonus_named/310_Shot_Inspiration.png';
-import InspirationThrow from '../../assets/images/games/Busty_Burst/support_bonus_named/311_Throw_Inspiration.png';
 
-const blessingMap: Record<string, ImageMetadata> = {
-  'Wind': BlessingWind,
-  'Water': BlessingWater,
-  'Fire': BlessingFire,
-  'Holy': BlessingHoly,
-  'Light': BlessingHoly, // Alias: some data uses 'Light' instead of 'Holy'
-  'Dark': BlessingDark,
-  'Mind': BlessingMind,
+const blessingMap: Record<string, string> = {
+  'Wind':	R2 + '/support_bonus_named/301_Blessing_of_Wind.webp',
+  'Water':	R2 + '/support_bonus_named/302_Blessing_of_Water.webp',
+  'Fire':	R2 + '/support_bonus_named/303_Blessing_of_Fire.webp',
+  'Holy':	R2 + '/support_bonus_named/304_Blessing_of_Light.webp',
+  'Light': R2 + '/support_bonus_named/304_Blessing_of_Light.webp',
+  'Dark':	R2 + '/support_bonus_named/305_Blessing_of_Dark.webp',
+  'Mind':	R2 + '/support_bonus_named/306_Blessing_of_Mind.webp',
 };
 
-const inspirationMap: Record<string, ImageMetadata> = {
-  'Slash': InspirationSlash,
-  'Pierce': InspirationPierce,
-  'Strike': InspirationStrike,
-  'Shot': InspirationShot,
-  'Throw': InspirationThrow,
+const inspirationMap: Record<string, string> = {
+  'Slash':	R2 + '/support_bonus_named/307_Slash_Inspiration.webp',
+  'Pierce':	R2 + '/support_bonus_named/308_Pierce_Inspiration.webp',
+  'Strike':	R2 + '/support_bonus_named/309_Strike_Inspiration.webp',
+  'Shot':	R2 + '/support_bonus_named/310_Shot_Inspiration.webp',
+  'Throw':	R2 + '/support_bonus_named/311_Throw_Inspiration.webp',
 };
 
 export interface Props {
@@ -45,7 +34,7 @@ export interface Props {
 
 const { type, element, weapon, width = 28, height = 28, class: className } = Astro.props;
 
-let imageSrc: ImageMetadata | null = null;
+let imageSrc: string | null = null;
 let altText = '';
 
 if (type === 'blessing' && element) {
@@ -58,7 +47,7 @@ if (type === 'blessing' && element) {
 ---
 
 {imageSrc && (
-  <Image
+  <img
     src={imageSrc}
     alt={altText}
     width={width}

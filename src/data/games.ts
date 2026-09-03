@@ -4,7 +4,6 @@
 
 import RGIcon from '../assets/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg';
 import StellaSoraIcon from '../assets/images/games/stella-sora/gameimg/Icon.jpg';
-import BustyBurstIcon from '../assets/images/games/Busty_Burst/BG/Icon.png';
 import TaimaninSquadIcon from '../assets/images/games/taimanin-squad/gameimg/icon.jpg';
 import LastOriginGlobalIcon from '../assets/images/games/last-origin-global/gameimg/icon.jpg';
 import GameIcon from '../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
@@ -86,7 +85,7 @@ export const GAMES: Game[] = [
     name: 'Busty Burst Fantasy',
     slug: 'busty-burst',
     description: 'Fantasy RPG • Character Guides • Game Systems • Strategies',
-    image: BustyBurstIcon,
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/busty-burst/BG/Icon.webp',
     url: '/guides/busty-burst/',
     status: 'active',
     themeColor: '#FF1493',

@@ -1,8 +1,5 @@
 ---
-import { Image } from 'astro:assets';
-import bgImage from '../../assets/images/games/Busty_Burst/BG/bg_02.webp';
-import gameLogo from '../../assets/images/games/Busty_Burst/BG/gameLogo.webp';
-import gameIcon from '../../assets/images/games/Busty_Burst/BG/Icon.png';
+import { R2 } from './bb-r2';
 
 export interface Props {
   imageName: string;
@@ -22,24 +19,22 @@ const {
   height = 400,
   class: className,
   loading = 'eager',
-  format = 'webp',
-  quality = 90,
 } = Astro.props;
 
 // Map image names to imported image modules - using actual Busty Burst game images
 const imageMap = {
-  'bg_02.webp': bgImage,
-  'gameLogo.webp': gameLogo,
-  'Icon.png': gameIcon,
-  'icon.png': gameIcon,
-  'hero.webp': gameLogo,
-  'busty-burst-hero.webp': gameLogo,
-  'busty-burst-bg.webp': bgImage,
-  'busty-burst-logo.webp': gameLogo,
-  'busty-burst-icon.webp': gameIcon,
-  'BG/bg_02.webp': bgImage,
-  'BG/gameLogo.webp': gameLogo,
-  'BG/Icon.png': gameIcon,
+  'bg_02.webp':	R2 + '/BG/bg_02.webp',
+  'gameLogo.webp':	R2 + '/BG/gameLogo.webp',
+  'Icon.png':	R2 + '/BG/Icon.webp',
+  'icon.png':	R2 + '/BG/Icon.webp',
+  'hero.webp':	R2 + '/BG/gameLogo.webp',
+  'busty-burst-hero.webp':	R2 + '/BG/gameLogo.webp',
+  'busty-burst-bg.webp':	R2 + '/BG/bg_02.webp',
+  'busty-burst-logo.webp':	R2 + '/BG/gameLogo.webp',
+  'busty-burst-icon.webp':	R2 + '/BG/Icon.webp',
+  'BG/bg_02.webp':	R2 + '/BG/bg_02.webp',
+  'BG/gameLogo.webp':	R2 + '/BG/gameLogo.webp',
+  'BG/Icon.png':	R2 + '/BG/Icon.webp',
 };
 
 // Get the image module based on the imageName
@@ -48,13 +43,11 @@ const imageModule = imageMap[imageName] || imageMap[filename] || gameLogo;
 ---
 
 <!-- Use Astro's Image component for optimization -->
-<Image
+<img
   src={imageModule}
   alt={alt}
   width={width}
   height={height}
   class={className}
   loading={loading}
-  format={format}
-  quality={quality}
 />

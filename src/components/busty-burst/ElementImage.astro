@@ -1,23 +1,17 @@
 ---
-import { Image } from 'astro:assets';
+import { R2 } from './bb-r2';
 
 // Import all element images
-import Fire from '../../assets/images/games/Busty_Burst/Elements/Fire.png';
-import Water from '../../assets/images/games/Busty_Burst/Elements/Water.png';
-import Wind from '../../assets/images/games/Busty_Burst/Elements/Wind.png';
-import Light from '../../assets/images/games/Busty_Burst/Elements/Light.png';
-import Dark from '../../assets/images/games/Busty_Burst/Elements/Dark.png';
-import Mind from '../../assets/images/games/Busty_Burst/Elements/Mind.png';
 
-const imageMap: Record<string, ImageMetadata> = {
-  Fire: Fire,
-  Water: Water,
-  Wind: Wind,
-  Light: Light,
-  Dark: Dark,
-  Mind: Mind,
-  Holy: Light, // Holy uses Light icon
-  Magic: Dark, // Magic uses Dark icon
+const imageMap: Record<string, string> = {
+  Fire:	R2 + '/Elements/Fire.webp',
+  Water:	R2 + '/Elements/Water.webp',
+  Wind:	R2 + '/Elements/Wind.webp',
+  Light:	R2 + '/Elements/Light.webp',
+  Dark:	R2 + '/Elements/Dark.webp',
+  Mind:	R2 + '/Elements/Mind.webp',
+  Holy: R2 + '/Elements/Light.webp', // Holy uses Light icon
+  Magic: R2 + '/Elements/Dark.webp', // Magic uses Dark icon
 };
 
 interface Props {
@@ -31,4 +25,4 @@ const { element, width = 24, height = 24, class: className } = Astro.props;
 const imageSrc = imageMap[element];
 ---
 
-{imageSrc && <Image src={imageSrc} alt={element} width={width} height={height} class={className} />}
+{imageSrc && <img src={imageSrc} alt={element} width={width} height={height} class={className} />}

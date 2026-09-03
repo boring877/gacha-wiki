@@ -1,11 +1,6 @@
 ---
-import { Image } from 'astro:assets';
-
-// Import all skill icons using glob pattern
-const skillIcons = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/images/games/Busty_Burst/skill_icons_final/sprite_skill*.png',
-  { eager: true }
-);
+// Skill icons served from R2 (skill_icons_final/sprite_skill*.webp)
+import { R2, SKILL_ICONS } from './bb-r2';
 
 export interface Props {
   skillId: string; // Format: "skill001/skill0004" or "skill0004" or "0004"
@@ -25,8 +20,6 @@ const {
   height = 48,
   class: className,
   loading = 'lazy',
-  format = 'webp',
-  quality = 90,
 } = Astro.props;
 
 // Extract skill number from various formats
@@ -34,48 +27,35 @@ const {
 // "skill0004" -> "0004"
 // "0004" -> "0004"
 function extractSkillNumber(id: string): string {
-  // Remove "skill001/" prefix if present
   let cleanId = id.replace(/^skill\d+\//, '');
-  // Remove "skill" prefix if present
   cleanId = cleanId.replace(/^skill/, '');
   return cleanId;
 }
 
 const skillNumber = extractSkillNumber(skillId);
 
-// Find matching icon
-// Icons are named: sprite_skill0004.png or sprite_skill0006_1.png (for ultimates)
-let imageModule: ImageMetadata | null = null;
-
-const iconKey = Object.keys(skillIcons).find(key =>
-  key.includes(`sprite_skill${skillNumber}.png`)
-);
-
-if (iconKey) {
-  imageModule = skillIcons[iconKey].default;
-}
+// Icons are named: sprite_skill0004 or sprite_skill0006_1 (ultimate ranks).
+// Manifest entries have no extension — match exactly or with a _rank suffix.
+const matches = (f: string, n: string) => f === `sprite_skill${n}` || f.startsWith(`sprite_skill${n}_`);
+let iconFile = SKILL_ICONS.find(f => matches(f, skillNumber));
 
 // Fallback to a default icon if not found
-if (!imageModule) {
-  const fallbackKey = Object.keys(skillIcons).find(key =>
-    key.includes('sprite_skill0001.png')
-  );
-  if (fallbackKey) {
-    imageModule = skillIcons[fallbackKey].default;
-  }
+if (!iconFile) {
+  iconFile = SKILL_ICONS.find(f => matches(f, '0001'));
 }
+
+const imageSrc = iconFile ? `${R2}/skill_icons_final/${iconFile}.webp` : null;
 ---
 
-{imageModule ? (
+{imageSrc ? (
   <div class={`skill-icon-wrapper ${className || ''}`}>
-    <Image
-      src={imageModule}
+    <img
+      src={imageSrc}
       alt={alt}
       width={width}
       height={height}
       loading={loading}
-      format={format}
-      quality={quality}
+      decoding="async"
       class="skill-icon"
     />
   </div>

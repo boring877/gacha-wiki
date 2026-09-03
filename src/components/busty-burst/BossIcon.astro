@@ -1,6 +1,6 @@
 ---
-// Displays boss icons from the Limited_Boss/icon-arrive-arrive-limit directory
-import { Image } from 'astro:assets';
+// Displays boss icons from R2 (icon-arrive-arrive-limit)
+import { R2, BOSS_ICONS } from './bb-r2';
 
 interface Props {
   fileName: string;
@@ -13,25 +13,16 @@ interface Props {
 
 const { fileName, alt, width, height, loading = 'lazy', class: className = '' } = Astro.props;
 
-// Import all boss icons from the Limited_Boss directory
-const bossImages = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/assets/images/games/Busty_Burst/Limited_Boss/icon-arrive-arrive-limit/*.png',
-  { eager: true }
-);
+const base = fileName.replace(/\.png$/, '');
+const imageSrc = BOSS_ICONS.has(base) ? `${R2}/Limited_Boss/icon-arrive-arrive-limit/${base}.webp` : null;
 
-// Find the matching image
-const imagePath = `/src/assets/images/games/Busty_Burst/Limited_Boss/icon-arrive-arrive-limit/${fileName}`;
-const imageModule = bossImages[imagePath];
-const imageSrc = imageModule?.default;
-
-// Use natural dimensions if width/height not specified
-const imageWidth = width || imageSrc?.width || 350;
-const imageHeight = height || imageSrc?.height || 350;
+const imageWidth = width || 350;
+const imageHeight = height || 350;
 ---
 
 {
   imageSrc ? (
-    <Image
+    <img
       src={imageSrc}
       alt={alt}
       width={imageWidth}
