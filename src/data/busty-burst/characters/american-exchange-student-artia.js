@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Even better with makeup on♪",
       "icon": "skill001/skill0019",
-      "description": "Gain MP Recovery 100 and Physical Attack 20%+40 UP for 15 seconds , 15 Action Speed 17%UP",
-      "descriptionLv1": "Gain MP Recovery 100 and Physical Attack 20%+40 UP for 15 seconds , 15 Action Speed 17%UP",
-      "descriptionLv90": "Gain MP Recovery 100 and Physical Attack 20%+850 UP for 15 seconds , 15 Action Speed 17%UP",
+      "description": "Gain MP Recovery 100 and Physical Attack 20%+40 UP for 15 seconds, 15s Action Speed 17%UP",
+      "descriptionLv1": "Gain MP Recovery 100 and Physical Attack 20%+40 UP for 15 seconds, 15s Action Speed 17%UP",
+      "descriptionLv90": "Gain MP Recovery 100 and Physical Attack 20%+850 UP for 15 seconds, 15s Action Speed 17%UP",
       "target": "Self",
       "castTime": 1.15,
       "damageScaling": null,
@@ -138,9 +172,9 @@ export const skills = {
       "slot": 3,
       "name": "Am I cute enough?",
       "icon": "skill001/skill0019",
-      "description": "Gain MP Recovery 100 and Physical Critical Damage 50 UP for 15 seconds , 15 Hit-Based Physical Damage UP(50%+550, 4 hit(s))",
-      "descriptionLv1": "Gain MP Recovery 100 and Physical Critical Damage 50 UP for 15 seconds , 15 Hit-Based Physical Damage UP(50%+550, 4 hit(s))",
-      "descriptionLv90": "Gain MP Recovery 100 and Physical Critical Damage 50 UP for 15 seconds , 15 Hit-Based Physical Damage UP(50%+550, 49504 hit(s))",
+      "description": "Gain MP Recovery 100 and Physical Critical Damage 50 UP for 15 seconds, 15s Hit-Based Physical Damage UP(50%+550, 4 hit(s))",
+      "descriptionLv1": "Gain MP Recovery 100 and Physical Critical Damage 50 UP for 15 seconds, 15s Hit-Based Physical Damage UP(50%+550, 4 hit(s))",
+      "descriptionLv90": "Gain MP Recovery 100 and Physical Critical Damage 50 UP for 15 seconds, 15s Hit-Based Physical Damage UP(50%+550, 49504 hit(s))",
       "target": "Self",
       "castTime": 1.15,
       "damageScaling": null,
@@ -183,7 +217,7 @@ export const skills = {
       "rank": 1,
       "name": "Excited Vivid Beam",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Wind Type Damage Taken UP(LV 1) for 8 seconds, and before activating the Ultimate,self10 Wind Type ATK UP(LV 1)",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Wind Type Damage Taken UP(LV 1) for 8 seconds, and before activating the Ultimate,self 10s Wind Type ATK UP(LV 1)",
       "effect": "450% + 600",
       "buffEffects": [
         {
@@ -204,7 +238,7 @@ export const skills = {
       "rank": 2,
       "name": "Excited Vivid Beam",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Wind Type Damage Taken UP(LV 2) for 8 seconds, and before activating the Ultimate,self10 Wind Type ATK UP(LV 2)",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Wind Type Damage Taken UP(LV 2) for 8 seconds, and before activating the Ultimate,self 10s Wind Type ATK UP(LV 2)",
       "effect": "530% + 750",
       "buffEffects": [
         {
@@ -225,7 +259,7 @@ export const skills = {
       "rank": 3,
       "name": "Excited Vivid Beam",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Wind Type Damage Taken UP(LV 3) for 8 seconds, and before activating the Ultimate,self10 Wind Type ATK UP(LV 3)",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Wind Type Damage Taken UP(LV 3) for 8 seconds, and before activating the Ultimate,self 10s Wind Type ATK UP(LV 3)",
       "effect": "585% + 900",
       "buffEffects": [
         {
@@ -246,7 +280,7 @@ export const skills = {
       "rank": 4,
       "name": "Excited Vivid Beam",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Wind Type Damage Taken UP(LV 4) for 8 seconds, and before activating the Ultimate,self10 Wind Type ATK UP(LV 4)",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Wind Type Damage Taken UP(LV 4) for 8 seconds, and before activating the Ultimate,self 10s Wind Type ATK UP(LV 4)",
       "effect": "630% + 1000",
       "buffEffects": [
         {
@@ -267,7 +301,7 @@ export const skills = {
       "rank": 5,
       "name": "Excited Vivid Beam",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Wind Type Damage Taken UP(LV 5) for 8 seconds, and before activating the Ultimate,self10 Wind Type ATK UP(LV 5)",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Wind Type Damage Taken UP(LV 5) for 8 seconds, and before activating the Ultimate,self 10s Wind Type ATK UP(LV 5)",
       "effect": "660% + 1100",
       "buffEffects": [
         {
@@ -288,19 +322,16 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "Physical Critical Damage+, Physical Critical Damage+",
+      "name": "Action Speed +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Physical Critical Damage+ (+60), Physical Critical Damage+",
+      "description": "Gain Action Speed UP, Physical Critical Damage UP",
+      "effect": "Physical Critical Damage+ (+60)",
       "effectValues": [
         {
           "name": "Physical Critical Damage+",
-          "value": 3,
-          "type": "percent"
-        },
-        {
-          "name": "Physical Critical Damage+",
-          "value": 0,
-          "type": "unknown"
+          "value": 60,
+          "type": "flat",
+          "gameText": "Physical Critical Damage UP"
         }
       ]
     },
@@ -308,17 +339,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Skill Enhancement Regol Cost DOWNWind",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Regol cost for enhancing Wind type Paladin skills -%",
       "effect": "Ultimate Damage + (+15%), Skill Enhancement Regol Cost DOWNWind (+5%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Skill Enhancement Regol Cost DOWNWind",
           "value": 5,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Regol cost for enhancing Wind type Paladin skills -%"
         }
       ]
     }
@@ -629,4 +663,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;
+};;;;;;;;;

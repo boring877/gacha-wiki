@@ -92,11 +92,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "I'll harvest properly",
+      "name": "Allow Me to Harvest",
       "icon": "skill001/skill0009",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -23%-50 DOWN for 6 seconds",
       "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -23%-50 DOWN for 6 seconds",
@@ -124,11 +158,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Wanna give it a try?",
+      "name": "Would You Like to Try One?",
       "icon": "skill001/skill0021",
-      "description": "nearest ally3restore HP and inflicts Debuff Resistance 50%UP for 10 seconds",
-      "descriptionLv1": "nearest ally3restore HP and inflicts Debuff Resistance 50%UP for 10 seconds",
-      "descriptionLv90": "nearest ally3restore HP and inflicts Debuff Resistance 50%UP for 10 seconds",
+      "description": "Heals HP to the nearest 3 allies and inflicts Debuff Resistance 50%UP for 10 seconds",
+      "descriptionLv1": "Heals HP to the nearest 3 allies and inflicts Debuff Resistance 50%UP for 10 seconds",
+      "descriptionLv90": "Heals HP to the nearest 3 allies and inflicts Debuff Resistance 50%UP for 10 seconds",
       "target": "Nearest Ally",
       "castTime": 1.08,
       "damageScaling": "850% ATK",
@@ -153,7 +187,7 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Now is the time to harvest!!",
+      "name": "Now… Time to Take It In!",
       "icon": "skill001/skill0003_1",
       "description": "Deals physical damage to the nearest enemy and inflicts Blind for 4 seconds and Action Speed DOWN(LV 1) for 10 seconds",
       "effect": "1150% + 900",
@@ -174,7 +208,7 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Now is the time to harvest!!",
+      "name": "Now… Time to Take It In!",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Blind for 5 seconds and Action Speed DOWN(LV 2) for 10 seconds",
       "effect": "1380% + 1100",
@@ -195,7 +229,7 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Now is the time to harvest!!",
+      "name": "Now… Time to Take It In!",
       "icon": "skill001/skill0003_3",
       "description": "Deals physical damage to the nearest enemy and inflicts Blind for 5 seconds and Action Speed DOWN(LV 3) for 10 seconds",
       "effect": "1540% + 1200",
@@ -216,7 +250,7 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Now is the time to harvest!!",
+      "name": "Now… Time to Take It In!",
       "icon": "skill001/skill0003_4",
       "description": "Deals physical damage to the nearest enemy and inflicts Blind for 6 seconds and Action Speed DOWN(LV 4) for 10 seconds",
       "effect": "1650% + 1350",
@@ -237,7 +271,7 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Now is the time to harvest!!",
+      "name": "Now… Time to Take It In!",
       "icon": "skill001/skill0003_5",
       "description": "Deals physical damage to the nearest enemy and inflicts Blind for 6 seconds and Action Speed DOWN(LV 5) for 10 seconds",
       "effect": "1700% + 1400",
@@ -262,17 +296,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Healing Amount +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Large), Healing Amount UP (Medium)",
       "effect": "Physical Attack + (+389), Healing Amount + (+15%)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Large)"
         },
         {
           "name": "Healing Amount +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Healing Amount UP (Medium)"
         }
       ]
     },
@@ -280,17 +317,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Accuracy +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Accuracy UP (Medium)",
       "effect": "Skill Damage + (+30%), Accuracy + (+20)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Accuracy +",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         }
       ]
     }
@@ -605,4 +645,4 @@ export const stats = {
       "ATK": 68
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

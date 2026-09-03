@@ -91,15 +91,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Bern Sacred Sword Art - Lightning Slash",
+      "name": "Vern Sacred Sword Art: Grand Zapper",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Cleanse for 3 seconds and Block-13 DOWN for 12 seconds",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Cleanse for 3 seconds and Block-13 DOWN for 12 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Cleanse for 3 seconds and Block-26 DOWN for 12 seconds",
+      "description": "Deals physical damage to the nearest enemyand inflicts Dispel for 3 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration) and Block-13 DOWN for 12 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemyand inflicts Dispel for 3 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration) and Block-13 DOWN for 12 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemyand inflicts Dispel for 3 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration) and Block-26 DOWN for 12 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.22,
       "damageScaling": "350% ATK",
@@ -130,11 +164,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Mirror Array",
+      "name": "Mirror Formation",
       "icon": "skill001/skill0019",
-      "description": "Applies HP Regeneration 5%+150 to self for 5 seconds and Hit-Based Shield(35%+10 hit(s)) for 10 seconds , 10 Debuff Resistance 70%UP",
-      "descriptionLv1": "Applies HP Regeneration 5%+150 to self for 5 seconds and Hit-Based Shield(35%+10 hit(s)) for 10 seconds , 10 Debuff Resistance 70%UP",
-      "descriptionLv90": "Applies HP Regeneration 5%+150 to self for 5 seconds and Hit-Based Shield(35%+10 hit(s)) for 10 seconds , 10 Debuff Resistance 70%UP",
+      "description": "Applies HP Regeneration 5%+150 to self for 5 seconds Hit-Based Shield(35%+10 hit(s)) for 10 seconds and Debuff Resistance 70%UP for 10 seconds",
+      "descriptionLv1": "Applies HP Regeneration 5%+150 to self for 5 seconds Hit-Based Shield(35%+10 hit(s)) for 10 seconds and Debuff Resistance 70%UP for 10 seconds",
+      "descriptionLv90": "Applies HP Regeneration 5%+150 to self for 5 seconds Hit-Based Shield(35%+10 hit(s)) for 10 seconds and Debuff Resistance 70%UP for 10 seconds",
       "target": "Self",
       "castTime": 1.22,
       "damageScaling": null,
@@ -174,9 +208,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Star Bell - Curse Pitcher",
+      "name": "Streinbel Caster",
       "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 1) for 8 seconds and Magic Attack DOWN(LV 1) for 8 seconds , apply to self8",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 1) for 8 seconds and Magic Attack DOWN(LV 1) for 8 seconds applies Taunt to self for 8 seconds",
       "effect": "1000% + 600",
       "buffEffects": [
         {
@@ -201,9 +235,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Star Bell - Curse Pitcher",
+      "name": "Streinbel Caster",
       "icon": "skill001/skill0012_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 2) for 9 seconds and Magic Attack DOWN(LV 2) for 9 seconds , apply to self9",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 2) for 9 seconds and Magic Attack DOWN(LV 2) for 9 seconds applies Taunt to self for 9 seconds",
       "effect": "1200% + 800",
       "buffEffects": [
         {
@@ -228,9 +262,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Star Bell - Curse Pitcher",
+      "name": "Streinbel Caster",
       "icon": "skill001/skill0012_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 3) for 10 seconds and Magic Attack DOWN(LV 3) for 10 seconds , apply to self10",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 3) for 10 seconds and Magic Attack DOWN(LV 3) for 10 seconds applies Taunt to self for 10 seconds",
       "effect": "1350% + 950",
       "buffEffects": [
         {
@@ -255,9 +289,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Star Bell - Curse Pitcher",
+      "name": "Streinbel Caster",
       "icon": "skill001/skill0012_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 4) for 11 seconds and Magic Attack DOWN(LV 4) for 11 seconds , apply to self11",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 4) for 11 seconds and Magic Attack DOWN(LV 4) for 11 seconds applies Taunt to self for 11 seconds",
       "effect": "1450% + 1050",
       "buffEffects": [
         {
@@ -282,9 +316,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Star Bell - Curse Pitcher",
+      "name": "Streinbel Caster",
       "icon": "skill001/skill0012_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 5) for 12 seconds and Magic Attack DOWN(LV 5) for 12 seconds , apply to self12",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack DOWN(LV 5) for 12 seconds and Magic Attack DOWN(LV 5) for 12 seconds applies Taunt to self for 12 seconds",
       "effect": "1500% + 1100",
       "buffEffects": [
         {
@@ -313,17 +347,14 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Debuff Resistance +",
       "icon": "skill001/skill1003",
-      "effect": "Max HP + (+3444), Debuff Resistance + (+30%)",
+      "description": "Gain Max HP UP (Large), Debuff Resistance UP (Small)",
+      "effect": "Max HP + (+3444)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
-        },
-        {
-          "name": "Debuff Resistance +",
-          "value": 30,
-          "type": "percent"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         }
       ]
     },
@@ -331,17 +362,20 @@ export const skills = {
       "slot": 2,
       "name": "Block+, Max HP +",
       "icon": "skill001/skill1003",
+      "description": "Gain Block UP (Small), Max HP UP (Large)",
       "effect": "Block+ (+10), Max HP + (+3444)",
       "effectValues": [
         {
           "name": "Block+",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Small)"
         },
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         }
       ]
     }
@@ -349,7 +383,7 @@ export const skills = {
   "name": "Raguen",
   "id": 2093,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Tank",
   "tags": [
     "Disrupt",
@@ -654,4 +688,4 @@ export const stats = {
       "HP": 786
     }
   ]
-};;;;;;;
+};;;;;;;;;

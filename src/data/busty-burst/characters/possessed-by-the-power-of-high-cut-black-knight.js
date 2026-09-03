@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -131,9 +165,9 @@ export const skills = {
       "slot": 3,
       "name": "Water Gate Blessing",
       "icon": "skill001/skill0019",
-      "description": "Applies Accuracy 9 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 15 seconds , when team has3 when10 Magic Type ATK 20%UP",
-      "descriptionLv1": "Applies Accuracy 9 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 15 seconds , when team has3 when10 Magic Type ATK 20%UP",
-      "descriptionLv90": "Applies Accuracy 18 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 15 seconds , when team has3 when10 Magic Type ATK 20%UP",
+      "description": "Applies Accuracy 9 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 15 seconds, when team has-type 3 when-type 10s Magic Type ATK 20%UP",
+      "descriptionLv1": "Applies Accuracy 9 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 15 seconds, when team has-type 3 when-type 10s Magic Type ATK 20%UP",
+      "descriptionLv90": "Applies Accuracy 18 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 15 seconds, when team has-type 3 when-type 10s Magic Type ATK 20%UP",
       "target": "All Allies",
       "castTime": 1.3,
       "damageScaling": null,
@@ -176,7 +210,7 @@ export const skills = {
       "rank": 1,
       "name": "Divine Festival Purification",
       "icon": "skill001/skill0022_1",
-      "description": "Applies HP RegenerationUP(LV 1) to all allies for 8 seconds and Debuff ResistanceUP(LV 1) for 8 seconds , 8 Mind Type Damage Taken DOWN(LV 1)",
+      "description": "Applies HP RegenerationUP(LV 1) to all allies for 8 seconds and Debuff ResistanceUP(LV 1) for 8 seconds, 8s Mind Type Damage Taken DOWN(LV 1)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -203,7 +237,7 @@ export const skills = {
       "rank": 2,
       "name": "Divine Festival Purification",
       "icon": "skill001/skill0022_2",
-      "description": "Applies HP RegenerationUP(LV 2) to all allies for 8 seconds and Debuff ResistanceUP(LV 2) for 8 seconds , 8 Mind Type Damage Taken DOWN(LV 2)",
+      "description": "Applies HP RegenerationUP(LV 2) to all allies for 8 seconds and Debuff ResistanceUP(LV 2) for 8 seconds, 8s Mind Type Damage Taken DOWN(LV 2)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -230,7 +264,7 @@ export const skills = {
       "rank": 3,
       "name": "Divine Festival Purification",
       "icon": "skill001/skill0022_3",
-      "description": "Applies HP RegenerationUP(LV 3) to all allies for 8 seconds and Debuff ResistanceUP(LV 3) for 8 seconds , 8 Mind Type Damage Taken DOWN(LV 3)",
+      "description": "Applies HP RegenerationUP(LV 3) to all allies for 8 seconds and Debuff ResistanceUP(LV 3) for 8 seconds, 8s Mind Type Damage Taken DOWN(LV 3)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -257,7 +291,7 @@ export const skills = {
       "rank": 4,
       "name": "Divine Festival Purification",
       "icon": "skill001/skill0022_4",
-      "description": "Applies HP RegenerationUP(LV 4) to all allies for 8 seconds and Debuff ResistanceUP(LV 4) for 8 seconds , 8 Mind Type Damage Taken DOWN(LV 4)",
+      "description": "Applies HP RegenerationUP(LV 4) to all allies for 8 seconds and Debuff ResistanceUP(LV 4) for 8 seconds, 8s Mind Type Damage Taken DOWN(LV 4)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -284,7 +318,7 @@ export const skills = {
       "rank": 5,
       "name": "Divine Festival Purification",
       "icon": "skill001/skill0022_5",
-      "description": "Applies HP RegenerationUP(LV 5) to all allies for 8 seconds and Debuff ResistanceUP(LV 5) for 8 seconds , 8 Mind Type Damage Taken DOWN(LV 5)",
+      "description": "Applies HP RegenerationUP(LV 5) to all allies for 8 seconds and Debuff ResistanceUP(LV 5) for 8 seconds, 8s Mind Type Damage Taken DOWN(LV 5)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -313,17 +347,20 @@ export const skills = {
       "slot": 1,
       "name": "Healing Received +, Max HP +",
       "icon": "skill001/skill1008",
+      "description": "Gain Healing Received UP (Tiny), Max HP UP (Small)",
       "effect": "Healing Received + (+10%), Max HP + (+1447)",
       "effectValues": [
         {
           "name": "Healing Received +",
           "value": 10,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Healing Received UP (Tiny)"
         },
         {
           "name": "Max HP +",
           "value": 1447,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Small)"
         }
       ]
     },
@@ -331,17 +368,20 @@ export const skills = {
       "slot": 2,
       "name": "Action Speed +, Damage UP(Cannot be Cleansed)",
       "icon": "skill001/skill1005",
+      "description": "Gain Action Speed UP (Medium), Damage UP (Cannot be Cleansed)",
       "effect": "Action Speed + (+10), Damage UP(Cannot be Cleansed) (+20%)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         },
         {
           "name": "Damage UP(Cannot be Cleansed)",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Damage UP (Cannot be Cleansed)"
         }
       ]
     }
@@ -663,4 +703,4 @@ export const stats = {
       "MP Charge": 4
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

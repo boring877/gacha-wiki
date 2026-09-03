@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -132,9 +166,9 @@ export const skills = {
       "slot": 3,
       "name": "You lose...",
       "icon": "skill001/skill0011",
-      "description": "Inflicts Mind Type Damage Taken 16%UP on the 3 nearest enemies for 10 seconds and Magic Defense-18%-30 DOWN for 10 seconds , 4s Blind for",
-      "descriptionLv1": "Inflicts Mind Type Damage Taken 16%UP on the 3 nearest enemies for 10 seconds and Magic Defense-18%-30 DOWN for 10 seconds , 4s Blind for",
-      "descriptionLv90": "Inflicts Mind Type Damage Taken 16%UP on the 3 nearest enemies for 10 seconds and Magic Defense-18%-210 DOWN for 10 seconds , 4s Blind for",
+      "description": "Inflicts Mind Type Damage Taken 16%UP on the 3 nearest enemies for 10 seconds and Magic Defense-18%-30 DOWN for 10 seconds, 4s Blind",
+      "descriptionLv1": "Inflicts Mind Type Damage Taken 16%UP on the 3 nearest enemies for 10 seconds and Magic Defense-18%-30 DOWN for 10 seconds, 4s Blind",
+      "descriptionLv90": "Inflicts Mind Type Damage Taken 16%UP on the 3 nearest enemies for 10 seconds and Magic Defense-18%-210 DOWN for 10 seconds, 4s Blind",
       "target": "Nearest Enemy",
       "castTime": 1.15,
       "damageScaling": null,
@@ -176,7 +210,7 @@ export const skills = {
       "rank": 1,
       "name": "Dawn Sky Burst",
       "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 1) for 10 seconds, and before activating the Ultimate,self10 Action Speed UP(LV 1), 10 Magic Attack UP(LV 1)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 1) for 10 seconds, and before activating the Ultimate,self 10s Action Speed UP(LV 1), 10s Magic Attack UP(LV 1)",
       "effect": "400% + 400",
       "buffEffects": [
         {
@@ -203,7 +237,7 @@ export const skills = {
       "rank": 2,
       "name": "Dawn Sky Burst",
       "icon": "skill001/skill0006_2",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 2) for 10 seconds, and before activating the Ultimate,self10 Action Speed UP(LV 2), 10 Magic Attack UP(LV 2)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 2) for 10 seconds, and before activating the Ultimate,self 10s Action Speed UP(LV 2), 10s Magic Attack UP(LV 2)",
       "effect": "470% + 600",
       "buffEffects": [
         {
@@ -230,7 +264,7 @@ export const skills = {
       "rank": 3,
       "name": "Dawn Sky Burst",
       "icon": "skill001/skill0006_3",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 3) for 10 seconds, and before activating the Ultimate,self10 Action Speed UP(LV 3), 10 Magic Attack UP(LV 3)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 3) for 10 seconds, and before activating the Ultimate,self 10s Action Speed UP(LV 3), 10s Magic Attack UP(LV 3)",
       "effect": "520% + 750",
       "buffEffects": [
         {
@@ -257,7 +291,7 @@ export const skills = {
       "rank": 4,
       "name": "Dawn Sky Burst",
       "icon": "skill001/skill0006_4",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 4) for 10 seconds, and before activating the Ultimate,self10 Action Speed UP(LV 4), 10 Magic Attack UP(LV 4)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 4) for 10 seconds, and before activating the Ultimate,self 10s Action Speed UP(LV 4), 10s Magic Attack UP(LV 4)",
       "effect": "560% + 900",
       "buffEffects": [
         {
@@ -284,7 +318,7 @@ export const skills = {
       "rank": 5,
       "name": "Dawn Sky Burst",
       "icon": "skill001/skill0006_5",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 5) for 10 seconds, and before activating the Ultimate,self10 Action Speed UP(LV 5), 10 Magic Attack UP(LV 5)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 5) for 10 seconds, and before activating the Ultimate,self 10s Action Speed UP(LV 5), 10s Magic Attack UP(LV 5)",
       "effect": "580% + 1000",
       "buffEffects": [
         {
@@ -313,17 +347,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, MP Recovery",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Large), MP Recovery",
       "effect": "Magic Attack + (+389), MP Recovery (+200%)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         },
         {
           "name": "MP Recovery",
           "value": 200,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         }
       ]
     },
@@ -331,17 +368,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Magic Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Magic Attack UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Magic Attack + (+259)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         }
       ]
     }
@@ -663,4 +703,4 @@ export const stats = {
       "MP Charge": 4
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

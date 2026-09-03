@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -124,9 +158,9 @@ export const skills = {
       "slot": 3,
       "name": "Oath to Lord Ded",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Action Speed 17%UP for 10 seconds , all allies10 Hit-Based Physical Damage UP(40%+450, 3 hit(s))",
-      "descriptionLv1": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Action Speed 17%UP for 10 seconds , all allies10 Hit-Based Physical Damage UP(40%+450, 3 hit(s))",
-      "descriptionLv90": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Action Speed 17%UP for 10 seconds , all allies10 Hit-Based Physical Damage UP(40%+450, 40503 hit(s))",
+      "description": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Action Speed 17%UP for 10 seconds, all allies 10s Hit-Based Physical Damage UP(40%+450, 3 hit(s))",
+      "descriptionLv1": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Action Speed 17%UP for 10 seconds, all allies 10s Hit-Based Physical Damage UP(40%+450, 3 hit(s))",
+      "descriptionLv90": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Action Speed 17%UP for 10 seconds, all allies 10s Hit-Based Physical Damage UP(40%+450, 40503 hit(s))",
       "target": "Self",
       "castTime": 0.95,
       "damageScaling": null,
@@ -169,7 +203,7 @@ export const skills = {
       "rank": 1,
       "name": "Regis Regalia",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 1) for 10 seconds, and before activating the Ultimate,apply to self10 Physical Attack UP(LV 1)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 1) for 10 seconds, and before activating the Ultimate, applies to self 10s Physical Attack UP(LV 1)",
       "effect": "1000% + 1200",
       "buffEffects": [
         {
@@ -190,7 +224,7 @@ export const skills = {
       "rank": 2,
       "name": "Regis Regalia",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 2) for 10 seconds, and before activating the Ultimate,apply to self10 Physical Attack UP(LV 2)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 2) for 10 seconds, and before activating the Ultimate, applies to self 10s Physical Attack UP(LV 2)",
       "effect": "1200% + 1500",
       "buffEffects": [
         {
@@ -211,7 +245,7 @@ export const skills = {
       "rank": 3,
       "name": "Regis Regalia",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 3) for 10 seconds, and before activating the Ultimate,apply to self10 Physical Attack UP(LV 3)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 3) for 10 seconds, and before activating the Ultimate, applies to self 10s Physical Attack UP(LV 3)",
       "effect": "1250% + 1750",
       "buffEffects": [
         {
@@ -232,7 +266,7 @@ export const skills = {
       "rank": 4,
       "name": "Regis Regalia",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 4) for 10 seconds, and before activating the Ultimate,apply to self10 Physical Attack UP(LV 4)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 4) for 10 seconds, and before activating the Ultimate, applies to self 10s Physical Attack UP(LV 4)",
       "effect": "1350% + 2000",
       "buffEffects": [
         {
@@ -253,7 +287,7 @@ export const skills = {
       "rank": 5,
       "name": "Regis Regalia",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 5) for 10 seconds, and before activating the Ultimate,apply to self10 Physical Attack UP(LV 5)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 5) for 10 seconds, and before activating the Ultimate, applies to self 10s Physical Attack UP(LV 5)",
       "effect": "1450% + 2200",
       "buffEffects": [
         {
@@ -276,17 +310,20 @@ export const skills = {
       "slot": 1,
       "name": "Holy Type ATK +, Damage UP",
       "icon": "skill001/skill1001",
+      "description": "Gain Holy Type ATK UP, Damage UP (Cannot be Cleansed)",
       "effect": "Holy Type ATK + (+3%), Damage UP (+9999%)",
       "effectValues": [
         {
           "name": "Holy Type ATK +",
           "value": 3,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Holy Type ATK UP"
         },
         {
           "name": "Damage UP",
           "value": 9999,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Damage UP (Cannot be Cleansed)"
         }
       ]
     },
@@ -294,17 +331,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+4.5%)",
+      "description": "Gain Skill Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         }
       ]
     }
@@ -312,7 +352,7 @@ export const skills = {
   "name": "Sonia",
   "id": 2215,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Attacker",
   "tags": [
     "Buff",
@@ -615,4 +655,4 @@ export const stats = {
       "ATK": 68
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

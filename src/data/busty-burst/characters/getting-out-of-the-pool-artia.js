@@ -341,7 +341,7 @@ export const skills = {
 export const stats = {
   "id": "getting-out-of-the-pool-artia",
   "characterId": 2130,
-  "name": "【Getting Out of the Pool】Artia",
+  "name": "【Fresh Out of the Pool】Artia",
   "rarity": "SSR",
   "element": "水",
   "weapon": "",
@@ -625,4 +625,4 @@ export const stats = {
       "MATK": 64
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

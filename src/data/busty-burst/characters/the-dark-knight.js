@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -275,17 +309,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Critical Damage+, Action Speed +",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Critical Damage UP (Medium), Action Speed UP (Medium)",
       "effect": "Magic Critical Damage+ (+90), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Magic Critical Damage+",
           "value": 90,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Medium)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     },
@@ -293,17 +330,20 @@ export const skills = {
       "slot": 2,
       "name": "Magic Type ATK +, Magic Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Type ATK UP (Medium), Magic Attack UP (Large)",
       "effect": "Magic Type ATK + (+10%), Magic Attack + (+389)",
       "effectValues": [
         {
           "name": "Magic Type ATK +",
           "value": 10,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Magic Type ATK UP (Medium)"
         },
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         }
       ]
     },
@@ -311,17 +351,20 @@ export const skills = {
       "slot": 3,
       "name": "Passive EX",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Magic Type ATK UP (Cannot be Cleansed), Action Speed UP (Cannot be Cleansed)",
       "effect": "Skill Damage + (+30%), Power of Darkness (+3%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Power of Darkness",
           "value": 3,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Magic Type ATK UP (Cannot be Cleansed)"
         }
       ]
     }
@@ -643,4 +686,4 @@ export const stats = {
       "Accuracy": 7
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -261,17 +295,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1002",
+      "description": "Gain Physical Defense UP (Medium), Magic Defense UP (Medium)",
       "effect": "Physical Defense + (+141), Magic Defense+ (+141)",
       "effectValues": [
         {
           "name": "Physical Defense +",
           "value": 141,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Defense UP (Medium)"
         },
         {
           "name": "Magic Defense+",
           "value": 141,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Defense UP (Medium)"
         }
       ]
     },
@@ -279,17 +316,20 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Block+",
       "icon": "skill001/skill1007",
+      "description": "Gain Physical Attack UP (Small), Block UP (Small)",
       "effect": "Physical Attack + (+130), Block+ (+10)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 130,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Small)"
         },
         {
           "name": "Block+",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Small)"
         }
       ]
     }
@@ -588,4 +628,4 @@ export const stats = {
       "HP Regen": 24
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

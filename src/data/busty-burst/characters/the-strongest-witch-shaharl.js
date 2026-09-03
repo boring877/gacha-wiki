@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Is my curse working?",
+      "name": "Is my curse working？",
       "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Curse for 3 seconds state and Magic Defense-23%-50 DOWN for 6 seconds",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Curse for 3 seconds state and Magic Defense-23%-50 DOWN for 6 seconds",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Curse for 3 seconds state and Magic Defense-23%-320 DOWN for 6 seconds",
+      "description": "Deals magic damage to the 3 nearest enemiesand inflicts Curse for 3 seconds and Magic Defense-23%-50 DOWN for 6 seconds",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemiesand inflicts Curse for 3 seconds and Magic Defense-23%-50 DOWN for 6 seconds",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemiesand inflicts Curse for 3 seconds and Magic Defense-23%-320 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.38,
       "damageScaling": "90% ATK",
@@ -129,11 +163,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Want to come with me?",
+      "name": "Wanna join me？",
       "icon": "skill001/skill0011",
-      "description": "Inflicts Fire Type ATK -20%DOWN on the 3 nearest enemies for 9 seconds and Fire Type Defense-20%DOWN for 9 seconds , 9",
-      "descriptionLv1": "Inflicts Fire Type ATK -20%DOWN on the 3 nearest enemies for 9 seconds and Fire Type Defense-20%DOWN for 9 seconds , 9",
-      "descriptionLv90": "Inflicts Fire Type ATK -20%DOWN on the 3 nearest enemies for 9 seconds and Fire Type Defense-20%DOWN for 9 seconds , 9",
+      "description": "Inflicts Fire Type ATK -20%DOWN on the 3 nearest enemies for 9 seconds and Fire Type Defense-20%DOWN for 9 seconds, 9s",
+      "descriptionLv1": "Inflicts Fire Type ATK -20%DOWN on the 3 nearest enemies for 9 seconds and Fire Type Defense-20%DOWN for 9 seconds, 9s",
+      "descriptionLv90": "Inflicts Fire Type ATK -20%DOWN on the 3 nearest enemies for 9 seconds and Fire Type Defense-20%DOWN for 9 seconds, 9s",
       "target": "Nearest Enemy",
       "castTime": 1.38,
       "damageScaling": null,
@@ -171,7 +205,7 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "A witch's hospitality!",
+      "name": "Witch’s Hospitality!",
       "icon": "skill001/skill0012_1",
       "description": "Deals magic damage to all enemies and inflicts Physical Critical DamageDOWN(LV 1) for 10 seconds and Magic Critical DamageDOWN(LV 1) for 10 seconds",
       "effect": "300% + 300",
@@ -192,7 +226,7 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "A witch's hospitality!",
+      "name": "Witch’s Hospitality!",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to all enemies and inflicts Physical Critical DamageDOWN(LV 2) for 10 seconds and Magic Critical DamageDOWN(LV 2) for 10 seconds",
       "effect": "400% + 400",
@@ -213,7 +247,7 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "A witch's hospitality!",
+      "name": "Witch’s Hospitality!",
       "icon": "skill001/skill0012_3",
       "description": "Deals magic damage to all enemies and inflicts Physical Critical DamageDOWN(LV 3) for 11 seconds and Magic Critical DamageDOWN(LV 3) for 11 seconds",
       "effect": "480% + 450",
@@ -234,7 +268,7 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "A witch's hospitality!",
+      "name": "Witch’s Hospitality!",
       "icon": "skill001/skill0012_4",
       "description": "Deals magic damage to all enemies and inflicts Physical Critical DamageDOWN(LV 4) for 11 seconds and Magic Critical DamageDOWN(LV 4) for 11 seconds",
       "effect": "550% + 500",
@@ -255,7 +289,7 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "A witch's hospitality!",
+      "name": "Witch’s Hospitality!",
       "icon": "skill001/skill0012_5",
       "description": "Deals magic damage to all enemies and inflicts Physical Critical DamageDOWN(LV 5) for 12 seconds and Magic Critical DamageDOWN(LV 5) for 12 seconds",
       "effect": "600% + 550",
@@ -280,17 +314,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Magic Critical Damage+",
       "icon": "skill001/skill1003",
+      "description": "Gain Magic Attack UP (Medium), Magic Critical Damage UP (Large)",
       "effect": "Magic Attack + (+259), Magic Critical Damage+ (+176)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         },
         {
           "name": "Magic Critical Damage+",
           "value": 176,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Large)"
         }
       ]
     },
@@ -298,17 +335,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Accuracy +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Accuracy UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Accuracy + (+20)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Accuracy +",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         }
       ]
     }
@@ -346,9 +386,9 @@ export const skills = {
 export const stats = {
   "id": "the-strongest-witch-shaharl",
   "characterId": 2081,
-  "name": "[The Strongest Witch] Shaharl",
+  "name": "【The Strongest Witch】Shaharl",
   "rarity": "SSR",
-  "element": "Fire",
+  "element": "火",
   "weapon": "",
   "role": "Support",
   "tags": [
@@ -630,4 +670,4 @@ export const stats = {
       "Magic Crit": 19
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

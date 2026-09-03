@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -113,9 +147,9 @@ export const skills = {
       "slot": 3,
       "name": "Snap snap snap~!!",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-18%-30 DOWN for 6 seconds, 1.5s Stun for",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-18%-30 DOWN for 6 seconds, 1.5s Stun for",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-18%-210 DOWN for 6 seconds, 1.5s Stun for",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-18%-30 DOWN for 6 seconds, 1.5s",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-18%-30 DOWN for 6 seconds, 1.5s",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-18%-210 DOWN for 6 seconds, 1.5s",
       "target": "Nearest Enemy",
       "castTime": 1.32,
       "damageScaling": "80% ATK",
@@ -150,7 +184,7 @@ export const skills = {
       "rank": 1,
       "name": "Fabulous Bang! Bang! Bang~!!",
       "icon": "skill001/skill0006_1",
-      "description": "to all enemiesmagic damage and inflicts BlockDOWN(LV 1) for 10 seconds and Action Speed DOWN(LV 1) for 10 seconds",
+      "description": "To all enemiesmagic damage and inflicts BlockDOWN(LV 1) for 10 seconds and Action Speed DOWN(LV 1) for 10 seconds",
       "effect": "500% + 500",
       "buffEffects": [
         {
@@ -171,7 +205,7 @@ export const skills = {
       "rank": 2,
       "name": "Fabulous Bang! Bang! Bang~!!",
       "icon": "skill001/skill0006_2",
-      "description": "to all enemiesmagic damage and inflicts BlockDOWN(LV 2) for 10 seconds and Action Speed DOWN(LV 2) for 10 seconds",
+      "description": "To all enemiesmagic damage and inflicts BlockDOWN(LV 2) for 10 seconds and Action Speed DOWN(LV 2) for 10 seconds",
       "effect": "700% + 750",
       "buffEffects": [
         {
@@ -192,7 +226,7 @@ export const skills = {
       "rank": 3,
       "name": "Fabulous Bang! Bang! Bang~!!",
       "icon": "skill001/skill0006_3",
-      "description": "to all enemiesmagic damage and inflicts BlockDOWN(LV 3) for 10 seconds and Action Speed DOWN(LV 3) for 10 seconds",
+      "description": "To all enemiesmagic damage and inflicts BlockDOWN(LV 3) for 10 seconds and Action Speed DOWN(LV 3) for 10 seconds",
       "effect": "850% + 900",
       "buffEffects": [
         {
@@ -213,7 +247,7 @@ export const skills = {
       "rank": 4,
       "name": "Fabulous Bang! Bang! Bang~!!",
       "icon": "skill001/skill0006_4",
-      "description": "to all enemiesmagic damage and inflicts BlockDOWN(LV 4) for 10 seconds and Action Speed DOWN(LV 4) for 10 seconds",
+      "description": "To all enemiesmagic damage and inflicts BlockDOWN(LV 4) for 10 seconds and Action Speed DOWN(LV 4) for 10 seconds",
       "effect": "950% + 1000",
       "buffEffects": [
         {
@@ -234,7 +268,7 @@ export const skills = {
       "rank": 5,
       "name": "Fabulous Bang! Bang! Bang~!!",
       "icon": "skill001/skill0006_5",
-      "description": "to all enemiesmagic damage and inflicts BlockDOWN(LV 5) for 10 seconds and Action Speed DOWN(LV 5) for 10 seconds",
+      "description": "To all enemiesmagic damage and inflicts BlockDOWN(LV 5) for 10 seconds and Action Speed DOWN(LV 5) for 10 seconds",
       "effect": "1000% + 1100",
       "buffEffects": [
         {
@@ -257,17 +291,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Critical Damage+, Magic Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Critical Damage UP (Large), Magic Attack UP (Medium)",
       "effect": "Magic Critical Damage+ (+176), Magic Attack + (+259)",
       "effectValues": [
         {
           "name": "Magic Critical Damage+",
           "value": 176,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Large)"
         },
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         }
       ]
     },
@@ -275,17 +312,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Magic Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Magic Attack UP (Medium)",
       "effect": "Skill Damage + (+30%), Magic Attack + (+259)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         }
       ]
     }
@@ -605,4 +645,4 @@ export const stats = {
       "MATK": 82
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

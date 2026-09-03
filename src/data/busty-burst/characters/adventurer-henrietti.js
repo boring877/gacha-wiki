@@ -91,15 +91,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Ah~ Ahh~!",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the farthest enemy and inflicts Stun for 3 seconds , 5s Blind for, 8 Physical Defense -23%-50 DOWN",
-      "descriptionLv1": "Deals physical damage to the farthest enemy and inflicts Stun for 3 seconds , 5s Blind for, 8 Physical Defense -23%-50 DOWN",
-      "descriptionLv90": "Deals physical damage to the farthest enemy and inflicts Stun for 3 seconds , 5s Blind for, 8 Physical Defense -23%-320 DOWN",
+      "description": "Deals physical damage to the farthest enemy and inflicts Stun for 3 seconds, 5s Blind, 8s Physical Defense -23%-50 DOWN",
+      "descriptionLv1": "Deals physical damage to the farthest enemy and inflicts Stun for 3 seconds, 5s Blind, 8s Physical Defense -23%-50 DOWN",
+      "descriptionLv90": "Deals physical damage to the farthest enemy and inflicts Stun for 3 seconds, 5s Blind, 8s Physical Defense -23%-320 DOWN",
       "target": "Back Enemy",
       "castTime": 1.4,
       "damageScaling": "350% ATK",
@@ -139,9 +173,9 @@ export const skills = {
       "slot": 3,
       "name": "You'll get burned!",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy, inflict 2s and Burn(HP --150 per second) for 20 seconds , 8 Fire Type Damage Taken 16%UP",
-      "descriptionLv1": "Deals physical damage to the nearest enemy, inflict 2s and Burn(HP --150 per second) for 20 seconds , 8 Fire Type Damage Taken 16%UP",
-      "descriptionLv90": "Deals physical damage to the nearest enemy, inflict 2s and Burn(HP --1500 per second) for 20 seconds , 8 Fire Type Damage Taken 16%UP",
+      "description": "Deals physical damage to the nearest enemy, applies 2s and Burn(HP --150 per second) for 20 seconds, 8s Fire Type Damage Taken 16%UP",
+      "descriptionLv1": "Deals physical damage to the nearest enemy, applies 2s and Burn(HP --150 per second) for 20 seconds, 8s Fire Type Damage Taken 16%UP",
+      "descriptionLv90": "Deals physical damage to the nearest enemy, applies 2s and Burn(HP --1500 per second) for 20 seconds, 8s Fire Type Damage Taken 16%UP",
       "target": "Nearest Enemy",
       "castTime": 1.3,
       "damageScaling": "280% ATK",
@@ -183,7 +217,7 @@ export const skills = {
       "rank": 1,
       "name": "I'll leave the rest to you!!",
       "icon": "skill001/skill0012_1",
-      "description": "to all enemiesphysical damage and inflicts Stun for 2 seconds , 3s Curse for, 10 Action Speed DOWN(LV 1)",
+      "description": "To all enemiesphysical damage and inflicts Stun for 2 seconds, 3s, 10s Action Speed DOWN(LV 1)",
       "effect": "600% + 800",
       "buffEffects": [
         {
@@ -210,7 +244,7 @@ export const skills = {
       "rank": 2,
       "name": "I'll leave the rest to you!!",
       "icon": "skill001/skill0012_2",
-      "description": "to all enemiesphysical damage and inflicts Stun for 3 seconds , 4s Curse for, 10 Action Speed DOWN(LV 2)",
+      "description": "To all enemiesphysical damage and inflicts Stun for 3 seconds, 4s, 10s Action Speed DOWN(LV 2)",
       "effect": "840% + 1100",
       "buffEffects": [
         {
@@ -237,7 +271,7 @@ export const skills = {
       "rank": 3,
       "name": "I'll leave the rest to you!!",
       "icon": "skill001/skill0012_3",
-      "description": "to all enemiesphysical damage and inflicts Stun for 3 seconds , 4s Curse for, 10 Action Speed DOWN(LV 3)",
+      "description": "To all enemiesphysical damage and inflicts Stun for 3 seconds, 4s, 10s Action Speed DOWN(LV 3)",
       "effect": "1019% + 1350",
       "buffEffects": [
         {
@@ -264,7 +298,7 @@ export const skills = {
       "rank": 4,
       "name": "I'll leave the rest to you!!",
       "icon": "skill001/skill0012_4",
-      "description": "to all enemiesphysical damage and inflicts Stun for 4 seconds , 5s Curse for, 10 Action Speed DOWN(LV 4)",
+      "description": "To all enemiesphysical damage and inflicts Stun for 4 seconds, 5s, 10s Action Speed DOWN(LV 4)",
       "effect": "1140% + 1600",
       "buffEffects": [
         {
@@ -291,7 +325,7 @@ export const skills = {
       "rank": 5,
       "name": "I'll leave the rest to you!!",
       "icon": "skill001/skill0012_5",
-      "description": "to all enemiesphysical damage and inflicts Stun for 4 seconds , 5s Curse for, 10 Action Speed DOWN(LV 5)",
+      "description": "To all enemiesphysical damage and inflicts Stun for 4 seconds, 5s, 10s Action Speed DOWN(LV 5)",
       "effect": "1200% + 1800",
       "buffEffects": [
         {
@@ -320,17 +354,14 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Debuff Resistance+",
       "icon": "skill001/skill1001",
-      "effect": "Action Speed + (+15), Debuff Resistance+ (+30%)",
+      "description": "Gain Action Speed UP (Large), Debuff Resistance UP (Small)",
+      "effect": "Action Speed + (+15)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
-          "type": "flat"
-        },
-        {
-          "name": "Debuff Resistance+",
-          "value": 30,
-          "type": "percent"
+          "type": "flat",
+          "gameText": "Action Speed UP (Large)"
         }
       ]
     },
@@ -338,17 +369,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Accuracy +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Accuracy UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Accuracy + (+20)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Accuracy +",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         }
       ]
     }
@@ -661,4 +695,4 @@ export const stats = {
       "ATK": 72
     }
   ]
-};;;;;;;
+};;;;;;;;;

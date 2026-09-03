@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -132,9 +166,9 @@ export const skills = {
       "slot": 3,
       "name": "I can't stop!",
       "icon": "skill001/skill0019",
-      "description": "self10%Max HPUP(max30% (max stacking: ) and HP Regeneration 5%+150 for 12 seconds and Taunt for 12 seconds",
-      "descriptionLv1": "self10%Max HPUP(max30% (max stacking: ) and HP Regeneration 5%+150 for 12 seconds and Taunt for 12 seconds",
-      "descriptionLv90": "self10%Max HPUP(max30% (max stacking: ) and HP Regeneration 5%+150 for 12 seconds and Taunt for 12 seconds",
+      "description": "Self 10%Max HPUP(max 30%stackable) and HP Regeneration 5%+150 for 12 seconds and Taunt for 12 seconds",
+      "descriptionLv1": "Self 10%Max HPUP(max 30%stackable) and HP Regeneration 5%+150 for 12 seconds and Taunt for 12 seconds",
+      "descriptionLv90": "Self 10%Max HPUP(max 30%stackable) and HP Regeneration 5%+150 for 12 seconds and Taunt for 12 seconds",
       "target": "Self",
       "castTime": 1.35,
       "damageScaling": null,
@@ -176,7 +210,7 @@ export const skills = {
       "rank": 1,
       "name": "Moo moo Fighting!!",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 1) for 10 seconds and applies Debuff ResistanceUP(LV 1) to self for 10 seconds , restore 6% of damage dealt as own HP6%HP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 1) for 10 seconds and applies Debuff ResistanceUP(LV 1) to self for 10 seconds, restore 6% of damage dealt as own HP 6%HP",
       "effect": "1200% + 1200",
       "buffEffects": [
         {
@@ -197,7 +231,7 @@ export const skills = {
       "rank": 2,
       "name": "Moo moo Fighting!!",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 2) for 10 seconds and applies Debuff ResistanceUP(LV 2) to self for 10 seconds , restore 6% of damage dealt as own HP6%HP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 2) for 10 seconds and applies Debuff ResistanceUP(LV 2) to self for 10 seconds, restore 6% of damage dealt as own HP 6%HP",
       "effect": "1440% + 1400",
       "buffEffects": [
         {
@@ -218,7 +252,7 @@ export const skills = {
       "rank": 3,
       "name": "Moo moo Fighting!!",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 3) for 10 seconds and applies Debuff ResistanceUP(LV 3) to self for 10 seconds , restore 6% of damage dealt as own HP6%HP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 3) for 10 seconds and applies Debuff ResistanceUP(LV 3) to self for 10 seconds, restore 6% of damage dealt as own HP 6%HP",
       "effect": "1620% + 1550",
       "buffEffects": [
         {
@@ -239,7 +273,7 @@ export const skills = {
       "rank": 4,
       "name": "Moo moo Fighting!!",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 4) for 10 seconds and applies Debuff ResistanceUP(LV 4) to self for 10 seconds , restore 6% of damage dealt as own HP6%HP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 4) for 10 seconds and applies Debuff ResistanceUP(LV 4) to self for 10 seconds, restore 6% of damage dealt as own HP 6%HP",
       "effect": "1739% + 1700",
       "buffEffects": [
         {
@@ -260,7 +294,7 @@ export const skills = {
       "rank": 5,
       "name": "Moo moo Fighting!!",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 5) for 10 seconds and applies Debuff ResistanceUP(LV 5) to self for 10 seconds , restore 6% of damage dealt as own HP6%HP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 5) for 10 seconds and applies Debuff ResistanceUP(LV 5) to self for 10 seconds, restore 6% of damage dealt as own HP 6%HP",
       "effect": "1800% + 1800",
       "buffEffects": [
         {
@@ -283,17 +317,14 @@ export const skills = {
       "slot": 1,
       "name": "Healing Received +, Max HP +",
       "icon": "skill001/skill1008",
-      "effect": "Healing Received + (+30%), Max HP + (0)",
+      "description": "Gain Healing Received UP (Medium), Max HP UP (Cannot be Cleansed)",
+      "effect": "Healing Received + (+30%)",
       "effectValues": [
         {
           "name": "Healing Received +",
           "value": 30,
-          "type": "percent"
-        },
-        {
-          "name": "Max HP +",
-          "value": 0,
-          "type": "flat"
+          "type": "percent",
+          "gameText": "Healing Received UP (Medium)"
         }
       ]
     },
@@ -301,17 +332,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Max HP +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Max HP UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     }
@@ -622,4 +656,4 @@ export const stats = {
       "HP": 917
     }
   ]
-};;;;;;;
+};;;;;;;;;

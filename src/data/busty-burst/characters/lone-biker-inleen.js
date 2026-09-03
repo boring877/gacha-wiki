@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -124,12 +158,12 @@ export const skills = {
       "slot": 3,
       "name": "Breaking Dust",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -17%DOWN for 12 seconds, 4s Blind for",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -17%DOWN for 12 seconds, 4s Blind for",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -17%DOWN for 12 seconds, 4s Blind for",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -17%DOWN for 12 seconds, 4s Blind",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -17%DOWN for 12 seconds, 4s Blind",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -17%DOWN for 12 seconds, 4s Blind",
       "target": "Nearest Enemy",
       "castTime": 1.5,
-      "damageScaling": "110% ATK",
+      "damageScaling": "110.00000000000001% ATK",
       "baseDamage": "+150",
       "levelGrowth": "+6",
       "lvl1": "110% + 150",
@@ -160,7 +194,7 @@ export const skills = {
       "rank": 1,
       "name": "Full Exhaust - Sonic Assault",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeApplies Action Speed UP(LV 1) to self for 10 seconds and Physical Attack UP(LV 1) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, before Ultimate activationApplies Action Speed UP(LV 1) to self for 10 seconds and Physical Attack UP(LV 1) for 10 seconds",
       "effect": "1200% + 1000",
       "buffEffects": [
         {
@@ -181,7 +215,7 @@ export const skills = {
       "rank": 2,
       "name": "Full Exhaust - Sonic Assault",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeApplies Action Speed UP(LV 2) to self for 10 seconds and Physical Attack UP(LV 2) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, before Ultimate activationApplies Action Speed UP(LV 2) to self for 10 seconds and Physical Attack UP(LV 2) for 10 seconds",
       "effect": "1440% + 1200",
       "buffEffects": [
         {
@@ -202,7 +236,7 @@ export const skills = {
       "rank": 3,
       "name": "Full Exhaust - Sonic Assault",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeApplies Action Speed UP(LV 3) to self for 10 seconds and Physical Attack UP(LV 3) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, before Ultimate activationApplies Action Speed UP(LV 3) to self for 10 seconds and Physical Attack UP(LV 3) for 10 seconds",
       "effect": "1620% + 1400",
       "buffEffects": [
         {
@@ -223,7 +257,7 @@ export const skills = {
       "rank": 4,
       "name": "Full Exhaust - Sonic Assault",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeApplies Action Speed UP(LV 4) to self for 10 seconds and Physical Attack UP(LV 4) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, before Ultimate activationApplies Action Speed UP(LV 4) to self for 10 seconds and Physical Attack UP(LV 4) for 10 seconds",
       "effect": "1739% + 1550",
       "buffEffects": [
         {
@@ -244,7 +278,7 @@ export const skills = {
       "rank": 5,
       "name": "Full Exhaust - Sonic Assault",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeApplies Action Speed UP(LV 5) to self for 10 seconds and Physical Attack UP(LV 5) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, before Ultimate activationApplies Action Speed UP(LV 5) to self for 10 seconds and Physical Attack UP(LV 5) for 10 seconds",
       "effect": "1800% + 1700",
       "buffEffects": [
         {
@@ -265,19 +299,16 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "Action Speed +, Action Speed +",
+      "name": "Action Speed +",
       "icon": "skill001/skill1003",
-      "effect": "Action Speed + (+15), Action Speed + (0%)",
+      "description": "Gain Action Speed UP (Large), Action Speed UP",
+      "effect": "Action Speed + (+15)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
-          "type": "flat"
-        },
-        {
-          "name": "Action Speed +",
-          "value": 0,
-          "type": "percent"
+          "type": "flat",
+          "gameText": "Action Speed UP (Large)"
         }
       ]
     },
@@ -285,17 +316,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+4.5%)",
+      "description": "Gain Ultimate Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         }
       ]
     }
@@ -606,4 +640,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;
+};;;;;;;;;

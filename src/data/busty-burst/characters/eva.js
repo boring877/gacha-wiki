@@ -90,11 +90,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Dragon Halberd Flash",
+      "name": "Dragon Halberd Strike",
       "icon": "skill001/skill0007",
       "description": "Deals physical damage to the nearest enemy and inflicts Accuracy -15 DOWN for 7 seconds",
       "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Accuracy -15 DOWN for 7 seconds",
@@ -122,11 +156,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "I'll kill you!",
+      "name": "Die！",
       "icon": "skill001/skill0019",
-      "description": "Applies Taunt to self for 12 seconds and Physical Attack 20%+40 UP for 12 seconds , 12 HP Regeneration 5%+150",
-      "descriptionLv1": "Applies Taunt to self for 12 seconds and Physical Attack 20%+40 UP for 12 seconds , 12 HP Regeneration 5%+150",
-      "descriptionLv90": "Applies Taunt to self for 12 seconds and Physical Attack 20%+850 UP for 12 seconds , 12 HP Regeneration 5%+150",
+      "description": "Applies Taunt to self for 12 seconds and Physical Attack 20%+40 UP for 12 seconds, 12s HP Regeneration 5%+150",
+      "descriptionLv1": "Applies Taunt to self for 12 seconds and Physical Attack 20%+40 UP for 12 seconds, 12s HP Regeneration 5%+150",
+      "descriptionLv90": "Applies Taunt to self for 12 seconds and Physical Attack 20%+850 UP for 12 seconds, 12s HP Regeneration 5%+150",
       "target": "Self",
       "castTime": 1.44,
       "damageScaling": null,
@@ -167,9 +201,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Dragon Tyrant Slash Charge Blade",
+      "name": "Dragon Conqueror Slash",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 1) for 10 seconds, 4s Blind for",
+      "description": "Deals physical damage to the nearest enemy. Also inflicts Physical Defense DOWN(LV 1) for 10 seconds and blind for 4 seconds",
       "effect": "1200% + 1000",
       "buffEffects": [
         {
@@ -188,9 +222,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Dragon Tyrant Slash Charge Blade",
+      "name": "Dragon Conqueror Slash",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 2) for 10 seconds, 5s Blind for",
+      "description": "Deals physical damage to the nearest enemy. Also inflicts Physical Defense DOWN(LV 2) for 10 seconds and blind for 5 seconds",
       "effect": "1440% + 1200",
       "buffEffects": [
         {
@@ -209,9 +243,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Dragon Tyrant Slash Charge Blade",
+      "name": "Dragon Conqueror Slash",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 3) for 10 seconds, 5s Blind for",
+      "description": "Deals physical damage to the nearest enemy. Also inflicts Physical Defense DOWN(LV 3) for 10 seconds and blind for 5 seconds",
       "effect": "1620% + 1380",
       "buffEffects": [
         {
@@ -230,9 +264,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Dragon Tyrant Slash Charge Blade",
+      "name": "Dragon Conqueror Slash",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 4) for 10 seconds, 6s Blind for",
+      "description": "Deals physical damage to the nearest enemy. Also inflicts Physical Defense DOWN(LV 4) for 10 seconds and blind for 6 seconds",
       "effect": "1739% + 1500",
       "buffEffects": [
         {
@@ -251,9 +285,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Dragon Tyrant Slash Charge Blade",
+      "name": "Dragon Conqueror Slash",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 5) for 10 seconds, 6s Blind for",
+      "description": "Deals physical damage to the nearest enemy. Also inflicts Physical Defense DOWN(LV 5) for 10 seconds and blind for 6 seconds",
       "effect": "1800% + 1600",
       "buffEffects": [
         {
@@ -276,22 +310,26 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Shield",
       "icon": "skill001/skill1001",
+      "description": "Gain Max HP UP (Large), Damage Reduction (Cannot be Cleansed)",
       "effect": "Max HP + (+3444), Shield (+9999%), Shield (+9999%)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         },
         {
           "name": "Shield",
           "value": 9999,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Damage Reduction (Cannot be Cleansed)"
         },
         {
           "name": "Shield",
           "value": 9999,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Damage Reduction (Cannot be Cleansed)"
         }
       ]
     },
@@ -299,17 +337,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Block+",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Block UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Block+ (+10)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Block+",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Medium)"
         }
       ]
     }
@@ -605,4 +646,4 @@ export const stats = {
       "HP": 786
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

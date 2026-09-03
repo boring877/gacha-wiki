@@ -89,18 +89,52 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Roaring Fury",
+      "name": "Bang!",
       "icon": "skill001/skill0005",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed -20%DOWN for 6 seconds",
       "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed -20%DOWN for 6 seconds",
       "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Action Speed -20%DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.3,
-      "damageScaling": "110% ATK",
+      "damageScaling": "110.00000000000001% ATK",
       "baseDamage": "+100",
       "levelGrowth": "+8",
       "lvl1": "110% + 100",
@@ -120,11 +154,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Depletion Mystery",
+      "name": "Unsolved mystery",
       "icon": "skill001/skill0011",
-      "description": "inflict8 Accuracy -9 DOWN, when team hasphysical when 3+ allies are present8 Physical Defense -18%-30 DOWN, when team hasmagic when 3+ allies are present8 Magic Defense-18%-30 DOWN",
-      "descriptionLv1": "inflict8 Accuracy -9 DOWN, when team hasphysical when 3+ allies are present8 Physical Defense -18%-30 DOWN, when team hasmagic when 3+ allies are present8 Magic Defense-18%-30 DOWN",
-      "descriptionLv90": "inflict8 Accuracy -18 DOWN, when team hasphysical when 3+ allies are present8 Physical Defense -18%-210 DOWN, when team hasmagic when 3+ allies are present8 Magic Defense-18%-210 DOWN",
+      "description": "Inflicts Accuracy -9 DOWN to all enemies for 8 seconds. Inflicts Physical Defense -18%-30 DOWN for 8 seconds if more than 3 team members are physis attribute. Inflicts Magic Defense-18%-30 DOWN for 8 seconds if more than 3 team members are magic attribute",
+      "descriptionLv1": "Inflicts Accuracy -9 DOWN to all enemies for 8 seconds. Inflicts Physical Defense -18%-30 DOWN for 8 seconds if more than 3 team members are physis attribute. Inflicts Magic Defense-18%-30 DOWN for 8 seconds if more than 3 team members are magic attribute",
+      "descriptionLv90": "Inflicts Accuracy -18 DOWN to all enemies for 8 seconds. Inflicts Physical Defense -18%-210 DOWN for 8 seconds if more than 3 team members are physis attribute. Inflicts Magic Defense-18%-210 DOWN for 8 seconds if more than 3 team members are magic attribute",
       "target": "All Enemies",
       "castTime": 1.3,
       "damageScaling": null,
@@ -168,7 +202,7 @@ export const skills = {
       "rank": 1,
       "name": "Sweet Dream Trick",
       "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts BlockDOWN(LV 1) for 10 seconds and Action Speed DOWN(LV 1) for 10 seconds , when team hasWater Type when 3+ allies are present8 Water Type Damage Taken UP(LV 1)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts BlockDOWN(LV 1) for 10 seconds and Action Speed DOWN(LV 1) for 10 seconds. Also inflicts Water Type Damage Taken UP(LV 1) for 8 seconds if more than 3 team members are water attribute",
       "effect": "370% + 500",
       "buffEffects": [
         {
@@ -195,7 +229,7 @@ export const skills = {
       "rank": 2,
       "name": "Sweet Dream Trick",
       "icon": "skill001/skill0006_2",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts BlockDOWN(LV 2) for 10 seconds and Action Speed DOWN(LV 2) for 10 seconds , when team hasWater Type when 3+ allies are present8 Water Type Damage Taken UP(LV 2)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts BlockDOWN(LV 2) for 10 seconds and Action Speed DOWN(LV 2) for 10 seconds. Also inflicts Water Type Damage Taken UP(LV 2) for 8 seconds if more than 3 team members are water attribute",
       "effect": "440% + 600",
       "buffEffects": [
         {
@@ -222,7 +256,7 @@ export const skills = {
       "rank": 3,
       "name": "Sweet Dream Trick",
       "icon": "skill001/skill0006_3",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts BlockDOWN(LV 3) for 10 seconds and Action Speed DOWN(LV 3) for 10 seconds , when team hasWater Type when 3+ allies are present8 Water Type Damage Taken UP(LV 3)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts BlockDOWN(LV 3) for 10 seconds and Action Speed DOWN(LV 3) for 10 seconds. Also inflicts Water Type Damage Taken UP(LV 3) for 8 seconds if more than 3 team members are water attribute",
       "effect": "490% + 680",
       "buffEffects": [
         {
@@ -249,7 +283,7 @@ export const skills = {
       "rank": 4,
       "name": "Sweet Dream Trick",
       "icon": "skill001/skill0006_4",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts BlockDOWN(LV 4) for 10 seconds and Action Speed DOWN(LV 4) for 10 seconds , when team hasWater Type when 3+ allies are present8 Water Type Damage Taken UP(LV 4)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts BlockDOWN(LV 4) for 10 seconds and Action Speed DOWN(LV 4) for 10 seconds. Also inflicts Water Type Damage Taken UP(LV 4) for 8 seconds if more than 3 team members are water attribute",
       "effect": "530% + 750",
       "buffEffects": [
         {
@@ -276,7 +310,7 @@ export const skills = {
       "rank": 5,
       "name": "Sweet Dream Trick",
       "icon": "skill001/skill0006_5",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts BlockDOWN(LV 5) for 10 seconds and Action Speed DOWN(LV 5) for 10 seconds , when team hasWater Type when 3+ allies are present8 Water Type Damage Taken UP(LV 5)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts BlockDOWN(LV 5) for 10 seconds and Action Speed DOWN(LV 5) for 10 seconds. Also inflicts Water Type Damage Taken UP(LV 5) for 8 seconds if more than 3 team members are water attribute",
       "effect": "550% + 800",
       "buffEffects": [
         {
@@ -305,17 +339,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Magic Critical Damage+",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Large), Magic Critical Damage UP (Medium)",
       "effect": "Magic Attack + (+389), Magic Critical Damage+ (+90)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         },
         {
           "name": "Magic Critical Damage+",
           "value": 90,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Medium)"
         }
       ]
     },
@@ -323,17 +360,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Water Type ATK +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Water Type ATK UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Water Type ATK + (+10%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Water Type ATK +",
           "value": 10,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Water Type ATK UP (Medium)"
         }
       ]
     }
@@ -653,4 +693,4 @@ export const stats = {
       "MATK": 63
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

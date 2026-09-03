@@ -89,15 +89,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Radiant Pyrope",
       "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Accuracy -13 DOWN for 6 seconds, having3[Fire Mark] when1[Burn Mark](treated as1HP-2000)",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Accuracy -13 DOWN for 6 seconds, having3[Fire Mark] when1[Burn Mark](treated as1HP-2000)",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Accuracy -26 DOWN for 6 seconds, having3[Fire Mark] when1[Burn Mark](treated as1HP-2000)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Accuracy -13 DOWN for 6 seconds, having 3 stacks[Fire Mark] when, 1 stacks[Burn Mark](treated as, 1 stacksHP-2000)",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Accuracy -13 DOWN for 6 seconds, having 3 stacks[Fire Mark] when, 1 stacks[Burn Mark](treated as, 1 stacksHP-2000)",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Accuracy -26 DOWN for 6 seconds, having 3 stacks[Fire Mark] when, 1 stacks[Burn Mark](treated as, 1 stacksHP-2000)",
       "target": "Nearest Enemy",
       "castTime": 1.1,
       "damageScaling": "105% ATK",
@@ -123,9 +157,9 @@ export const skills = {
       "slot": 3,
       "name": "Almandine of Refining Fire",
       "icon": "skill001/skill0014",
-      "description": "Applies Magic Attack 18%+35 UP to self for 10 seconds, self1[Fire Mark]([Fire Mark]1Fire Type ATK3%UP, max3)",
-      "descriptionLv1": "Applies Magic Attack 18%+35 UP to self for 10 seconds, self1[Fire Mark]([Fire Mark]1Fire Type ATK3%UP, max3)",
-      "descriptionLv90": "Applies Magic Attack 18%+665 UP to self for 10 seconds, self1[Fire Mark]([Fire Mark]1Fire Type ATK3%UP, max3)",
+      "description": "Applies Magic Attack 18%+35 UP to self for 10 seconds, self 1 stacks[Fire Mark]([Fire Mark]1 stacksFire Type ATK 3%UP, max 3 stacks)",
+      "descriptionLv1": "Applies Magic Attack 18%+35 UP to self for 10 seconds, self 1 stacks[Fire Mark]([Fire Mark]1 stacksFire Type ATK 3%UP, max 3 stacks)",
+      "descriptionLv90": "Applies Magic Attack 18%+665 UP to self for 10 seconds, self 1 stacks[Fire Mark]([Fire Mark]1 stacksFire Type ATK 3%UP, max 3 stacks)",
       "target": "Self",
       "castTime": 1.1,
       "damageScaling": null,
@@ -160,7 +194,7 @@ export const skills = {
       "rank": 1,
       "name": "Eternal Light. Touch it and let it burn to ashes!",
       "icon": "skill001/skill0006_1",
-      "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 1) for 10 seconds and BlockDOWN(LV 1) for 10 seconds , having3[Fire Mark] when1[Burn Mark](treated as1HP-2000)",
+      "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 1) for 10 seconds and BlockDOWN(LV 1) for 10 seconds, having 3 stacks[Fire Mark] when, 1 stacks[Burn Mark](treated as, 1 stacksHP-2000)",
       "effect": "229% + 300",
       "buffEffects": [
         {
@@ -181,7 +215,7 @@ export const skills = {
       "rank": 2,
       "name": "Eternal Light. Touch it and let it burn to ashes!",
       "icon": "skill001/skill0006_2",
-      "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 2) for 10 seconds and BlockDOWN(LV 2) for 10 seconds , having3[Fire Mark] when1[Burn Mark](treated as1HP-2000)",
+      "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 2) for 10 seconds and BlockDOWN(LV 2) for 10 seconds, having 3 stacks[Fire Mark] when, 1 stacks[Burn Mark](treated as, 1 stacksHP-2000)",
       "effect": "270% + 400",
       "buffEffects": [
         {
@@ -202,7 +236,7 @@ export const skills = {
       "rank": 3,
       "name": "Eternal Light. Touch it and let it burn to ashes!",
       "icon": "skill001/skill0006_3",
-      "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 3) for 10 seconds and BlockDOWN(LV 3) for 10 seconds , having3[Fire Mark] when1[Burn Mark](treated as1HP-2000)",
+      "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 3) for 10 seconds and BlockDOWN(LV 3) for 10 seconds, having 3 stacks[Fire Mark] when, 1 stacks[Burn Mark](treated as, 1 stacksHP-2000)",
       "effect": "300% + 500",
       "buffEffects": [
         {
@@ -223,7 +257,7 @@ export const skills = {
       "rank": 4,
       "name": "Eternal Light. Touch it and let it burn to ashes!",
       "icon": "skill001/skill0006_4",
-      "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 4) for 10 seconds and BlockDOWN(LV 4) for 10 seconds , having3[Fire Mark] when1[Burn Mark](treated as1HP-2000)",
+      "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 4) for 10 seconds and BlockDOWN(LV 4) for 10 seconds, having 3 stacks[Fire Mark] when, 1 stacks[Burn Mark](treated as, 1 stacksHP-2000)",
       "effect": "320% + 550",
       "buffEffects": [
         {
@@ -244,7 +278,7 @@ export const skills = {
       "rank": 5,
       "name": "Eternal Light. Touch it and let it burn to ashes!",
       "icon": "skill001/skill0006_5",
-      "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 5) for 10 seconds and BlockDOWN(LV 5) for 10 seconds , having3[Fire Mark] when1[Burn Mark](treated as1HP-2000)",
+      "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 5) for 10 seconds and BlockDOWN(LV 5) for 10 seconds, having 3 stacks[Fire Mark] when, 1 stacks[Burn Mark](treated as, 1 stacksHP-2000)",
       "effect": "340% + 600",
       "buffEffects": [
         {
@@ -267,17 +301,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Action Speed +",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Large), Action Speed UP (Medium)",
       "effect": "Magic Attack + (+389), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     },
@@ -285,17 +322,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Magic Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Magic Attack UP (Medium)",
       "effect": "Skill Damage + (+30%), Magic Attack + (+259)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         }
       ]
     }
@@ -615,4 +655,4 @@ export const stats = {
       "MATK": 55
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

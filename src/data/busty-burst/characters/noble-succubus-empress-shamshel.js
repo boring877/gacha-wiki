@@ -479,4 +479,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

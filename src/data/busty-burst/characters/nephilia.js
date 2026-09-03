@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -131,9 +165,9 @@ export const skills = {
       "slot": 3,
       "name": "Water Basin Punishment!",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Accuracy -11 DOWN for 10 seconds , 10 Action Speed -17%DOWN",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Accuracy -11 DOWN for 10 seconds , 10 Action Speed -17%DOWN",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Accuracy -23 DOWN for 10 seconds , 10 Action Speed -17%DOWN",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Accuracy -11 DOWN for 10 seconds, 10s Action Speed -17%DOWN",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Accuracy -11 DOWN for 10 seconds, 10s Action Speed -17%DOWN",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Accuracy -23 DOWN for 10 seconds, 10s Action Speed -17%DOWN",
       "target": "Nearest Enemy",
       "castTime": 0.75,
       "damageScaling": "120% ATK",
@@ -175,7 +209,7 @@ export const skills = {
       "rank": 1,
       "name": "Water Goddess Denaria! Bring divine punishment upon them!",
       "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 3 seconds and Magic Defense DOWN(LV 1) for 10 seconds, and before activating the Ultimate,self10 Magic Critical DamageUP(LV 1)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 3 seconds and Magic Defense DOWN(LV 1) for 10 seconds, and before activating the Ultimate,self 10s Magic Critical DamageUP(LV 1)",
       "effect": "400% + 500",
       "buffEffects": [
         {
@@ -202,7 +236,7 @@ export const skills = {
       "rank": 2,
       "name": "Water Goddess Denaria! Bring divine punishment upon them!",
       "icon": "skill001/skill0006_2",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 4 seconds and Magic Defense DOWN(LV 2) for 10 seconds, and before activating the Ultimate,self10 Magic Critical DamageUP(LV 2)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 4 seconds and Magic Defense DOWN(LV 2) for 10 seconds, and before activating the Ultimate,self 10s Magic Critical DamageUP(LV 2)",
       "effect": "470% + 700",
       "buffEffects": [
         {
@@ -229,7 +263,7 @@ export const skills = {
       "rank": 3,
       "name": "Water Goddess Denaria! Bring divine punishment upon them!",
       "icon": "skill001/skill0006_3",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 4 seconds and Magic Defense DOWN(LV 3) for 10 seconds, and before activating the Ultimate,self10 Magic Critical DamageUP(LV 3)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 4 seconds and Magic Defense DOWN(LV 3) for 10 seconds, and before activating the Ultimate,self 10s Magic Critical DamageUP(LV 3)",
       "effect": "520% + 900",
       "buffEffects": [
         {
@@ -256,7 +290,7 @@ export const skills = {
       "rank": 4,
       "name": "Water Goddess Denaria! Bring divine punishment upon them!",
       "icon": "skill001/skill0006_4",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 5 seconds and Magic Defense DOWN(LV 4) for 10 seconds, and before activating the Ultimate,self10 Magic Critical DamageUP(LV 4)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 5 seconds and Magic Defense DOWN(LV 4) for 10 seconds, and before activating the Ultimate,self 10s Magic Critical DamageUP(LV 4)",
       "effect": "560% + 1050",
       "buffEffects": [
         {
@@ -283,7 +317,7 @@ export const skills = {
       "rank": 5,
       "name": "Water Goddess Denaria! Bring divine punishment upon them!",
       "icon": "skill001/skill0006_5",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 5 seconds and Magic Defense DOWN(LV 5) for 10 seconds, and before activating the Ultimate,self10 Magic Critical DamageUP(LV 5)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 5 seconds and Magic Defense DOWN(LV 5) for 10 seconds, and before activating the Ultimate,self 10s Magic Critical DamageUP(LV 5)",
       "effect": "580% + 1200",
       "buffEffects": [
         {
@@ -312,17 +346,20 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Water Type ATK +",
       "icon": "skill001/skill1001",
+      "description": "Gain Action Speed UP (Large), Water Type ATK UP",
       "effect": "Action Speed + (+15), Water Type ATK + (+5%)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Large)"
         },
         {
           "name": "Water Type ATK +",
           "value": 5,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Water Type ATK UP"
         }
       ]
     },
@@ -330,17 +367,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Magic Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Magic Attack UP (Medium)",
       "effect": "Skill Damage + (+30%), Magic Attack + (+259)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         }
       ]
     }
@@ -662,4 +702,4 @@ export const stats = {
       "Magic Crit": 13
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

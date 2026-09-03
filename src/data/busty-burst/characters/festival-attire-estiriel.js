@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -275,17 +309,14 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Debuff Resistance +",
       "icon": "skill001/skill1004",
-      "effect": "Action Speed + (+15), Debuff Resistance + (+30%)",
+      "description": "Gain Action Speed UP (Large), Debuff Resistance UP (Small)",
+      "effect": "Action Speed + (+15)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
-          "type": "flat"
-        },
-        {
-          "name": "Debuff Resistance +",
-          "value": 30,
-          "type": "percent"
+          "type": "flat",
+          "gameText": "Action Speed UP (Large)"
         }
       ]
     },
@@ -293,17 +324,20 @@ export const skills = {
       "slot": 2,
       "name": "Max HP +, Block+",
       "icon": "skill001/skill1006",
+      "description": "Gain Max HP UP (Small), Block UP (Medium)",
       "effect": "Max HP + (+1447), Block+ (+15)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 1447,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Small)"
         },
         {
           "name": "Block+",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Medium)"
         }
       ]
     }
@@ -311,7 +345,7 @@ export const skills = {
   "name": "Festival Attire: Estiriel",
   "id": 2069,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Support",
   "tags": [
     "Heal",
@@ -625,4 +659,4 @@ export const stats = {
       "Heal Pwr": 12
     }
   ]
-};;;;;;;
+};;;;;;;;;

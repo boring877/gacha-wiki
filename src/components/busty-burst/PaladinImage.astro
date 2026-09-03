@@ -42,15 +42,15 @@ let imageModule: ImageMetadata | null = null;
 
 if (imageType === 'body') {
   // Look for body image: No_{id}_{id}_body.png
+  // No sprite fallback here — characters without body art yet show the
+  // placeholder until their art is added
   const bodyKey = Object.keys(bodyImages).find(key =>
     key.includes(`No_${characterId}_${characterId}_body.png`)
   );
   if (bodyKey) {
     imageModule = bodyImages[bodyKey].default;
   }
-}
-
-if (!imageModule) {
+} else {
   // Look for sprite image: {id}.png
   // Use includes() for cross-platform path compatibility
   const spriteKey = Object.keys(spriteImages).find(key =>
@@ -61,7 +61,12 @@ if (!imageModule) {
   }
 }
 
-// No fallback — show "Unreleased" placeholder if sprite not found
+// No art yet — monogram placeholder scaled to its container
+const initial = (alt || '?')
+  .replace(/[【\[\]「」'"]+/g, '')
+  .trim()
+  .charAt(0)
+  .toUpperCase() || '?';
 ---
 
 {imageModule ? (
@@ -78,10 +83,56 @@ if (!imageModule) {
     />
   </div>
 ) : (
-  <div class="paladin-image-fallback">
-    <div class="paladin-image-fallback-content">
-      <span class="paladin-image-fallback-id">{characterId ?? '?'}</span>
-      <span class="paladin-image-fallback-hint">Not in APK yet</span>
+  <div class={`paladin-image-wrapper ${className || ''}`}>
+    <div class="paladin-image-fallback" title={`${alt} — art not released yet`}>
+      <span class="paladin-image-fallback-initial">{initial}</span>
+      <span class="paladin-image-fallback-hint">TBA</span>
     </div>
   </div>
 )}
+
+<style>
+.paladin-image-fallback {
+  container-type: size;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5cqh;
+  width: 100%;
+  height: 100%;
+  background:
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.035) 0 6px, transparent 6px 12px),
+    var(--bb-bg-tertiary, #242b33);
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  box-sizing: border-box;
+  overflow: hidden;
+  cursor: help;
+}
+
+.paladin-image-fallback-initial {
+  font-size: 42cqh;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.22);
+  user-select: none;
+}
+
+.paladin-image-fallback-hint {
+  font-size: max(11cqh, 0.55rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: rgba(109, 184, 216, 0.75);
+  user-select: none;
+}
+
+/* Hide the TBA tag inside very small cells (table avatars) */
+@container (max-height: 72px) {
+  .paladin-image-fallback-hint {
+    display: none;
+  }
+}
+</style>

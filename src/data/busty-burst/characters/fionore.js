@@ -90,11 +90,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Slender Moon",
+      "name": "Thin moon",
       "icon": "skill001/skill0011",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-13%-35 DOWN for 6 seconds and Magic Critical Damage-13%-35 DOWN for 6 seconds",
       "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-13%-35 DOWN for 6 seconds and Magic Critical Damage-13%-35 DOWN for 6 seconds",
@@ -130,11 +164,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Ah, my armor...",
+      "name": "Ahh, my armor...",
       "icon": "skill001/skill0019",
-      "description": "Applies Taunt to self for 12 seconds and inflicts Accuracy -11 DOWN on all enemies for 12 seconds, 12 Action Speed -17%DOWN",
-      "descriptionLv1": "Applies Taunt to self for 12 seconds and inflicts Accuracy -11 DOWN on all enemies for 12 seconds, 12 Action Speed -17%DOWN",
-      "descriptionLv90": "Applies Taunt to self for 12 seconds and inflicts Accuracy -23 DOWN on all enemies for 12 seconds, 12 Action Speed -17%DOWN",
+      "description": "Applies Taunt to self for 12 seconds and inflicts Accuracy -11 DOWN on all enemies for 12 seconds, 12s Action Speed -17%DOWN",
+      "descriptionLv1": "Applies Taunt to self for 12 seconds and inflicts Accuracy -11 DOWN on all enemies for 12 seconds, 12s Action Speed -17%DOWN",
+      "descriptionLv90": "Applies Taunt to self for 12 seconds and inflicts Accuracy -23 DOWN on all enemies for 12 seconds, 12s Action Speed -17%DOWN",
       "target": "All Enemies",
       "castTime": 1.25,
       "damageScaling": null,
@@ -174,9 +208,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Tiger Roar Heaven Returning Strike",
+      "name": "Tiger Roar Reversal Strike!",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 1) for 8 seconds, Ultimate activation beforeself6 Holy Type ATK UP(LV 1)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 1) for 8 seconds. Also before activating an ultimate, grant self Holy Type ATK UP(LV 1) for 6 seconds",
       "effect": "1000% + 600",
       "buffEffects": [
         {
@@ -195,9 +229,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Tiger Roar Heaven Returning Strike",
+      "name": "Tiger Roar Reversal Strike!",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 2) for 8 seconds, Ultimate activation beforeself6 Holy Type ATK UP(LV 2)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 2) for 8 seconds. Also before activating an ultimate, grant self Holy Type ATK UP(LV 2) for 6 seconds",
       "effect": "1200% + 800",
       "buffEffects": [
         {
@@ -216,9 +250,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Tiger Roar Heaven Returning Strike",
+      "name": "Tiger Roar Reversal Strike!",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 3) for 8 seconds, Ultimate activation beforeself6 Holy Type ATK UP(LV 3)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 3) for 8 seconds. Also before activating an ultimate, grant self Holy Type ATK UP(LV 3) for 6 seconds",
       "effect": "1350% + 950",
       "buffEffects": [
         {
@@ -237,9 +271,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Tiger Roar Heaven Returning Strike",
+      "name": "Tiger Roar Reversal Strike!",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 4) for 8 seconds, Ultimate activation beforeself6 Holy Type ATK UP(LV 4)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 4) for 8 seconds. Also before activating an ultimate, grant self Holy Type ATK UP(LV 4) for 6 seconds",
       "effect": "1450% + 1050",
       "buffEffects": [
         {
@@ -258,9 +292,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Tiger Roar Heaven Returning Strike",
+      "name": "Tiger Roar Reversal Strike!",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 5) for 8 seconds, Ultimate activation beforeself6 Holy Type ATK UP(LV 5)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Holy Type Damage Taken UP(LV 5) for 8 seconds. Also before activating an ultimate, grant self Holy Type ATK UP(LV 5) for 6 seconds",
       "effect": "1500% + 1100",
       "buffEffects": [
         {
@@ -283,17 +317,20 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Physical Attack +",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP (Large), Physical Attack UP (Medium)",
       "effect": "Max HP + (+3444), Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         },
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     },
@@ -301,17 +338,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Block+",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Block UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Block+ (+15)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Block+",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Medium)"
         }
       ]
     }
@@ -319,7 +359,7 @@ export const skills = {
   "name": "Fionore",
   "id": 2123,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Tank",
   "tags": [
     "Debuff",
@@ -622,4 +662,4 @@ export const stats = {
       "HP": 875
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

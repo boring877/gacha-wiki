@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Shaomega Tram",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-40 DOWN for 6 seconds , 2s Curse for",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-40 DOWN for 6 seconds , 2s Curse for",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-220 DOWN for 6 seconds , 2s Curse for",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-40 DOWN for 6 seconds, 2s",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-40 DOWN for 6 seconds, 2s",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-220 DOWN for 6 seconds, 2s",
       "target": "Nearest Enemy",
       "castTime": 1.35,
       "damageScaling": "90% ATK",
@@ -131,9 +165,9 @@ export const skills = {
       "slot": 3,
       "name": "Cuvier Nereus",
       "icon": "skill001/skill0011",
-      "description": "Inflicts Accuracy -11 DOWN on the 3 nearest enemies for 10 seconds and Block-11 DOWN for 10 seconds , 3s Charm for",
-      "descriptionLv1": "Inflicts Accuracy -11 DOWN on the 3 nearest enemies for 10 seconds and Block-11 DOWN for 10 seconds , 3s Charm for",
-      "descriptionLv90": "Inflicts Accuracy -23 DOWN on the 3 nearest enemies for 10 seconds and Block-23 DOWN for 10 seconds , 3s Charm for",
+      "description": "Inflicts Accuracy -11 DOWN on the 3 nearest enemies for 10 seconds and Block-11 DOWN for 10 seconds, 3s",
+      "descriptionLv1": "Inflicts Accuracy -11 DOWN on the 3 nearest enemies for 10 seconds and Block-11 DOWN for 10 seconds, 3s",
+      "descriptionLv90": "Inflicts Accuracy -23 DOWN on the 3 nearest enemies for 10 seconds and Block-23 DOWN for 10 seconds, 3s",
       "target": "Nearest Enemy",
       "castTime": 1.45,
       "damageScaling": null,
@@ -176,7 +210,7 @@ export const skills = {
       "rank": 1,
       "name": "Pale Brief Utopia. Fallen Dream",
       "icon": "skill001/skill0006_1",
-      "description": "to all enemiesmagic damage and inflicts Action Speed DOWN(LV 1) for 10 seconds and Physical Attack DOWN(LV 1) for 10 seconds , 10 Magic Attack DOWN(LV 1)",
+      "description": "To all enemiesmagic damage and inflicts Action Speed DOWN(LV 1) for 10 seconds and Physical Attack DOWN(LV 1) for 10 seconds, 10s Magic Attack DOWN(LV 1)",
       "effect": "450% + 500",
       "buffEffects": [
         {
@@ -203,7 +237,7 @@ export const skills = {
       "rank": 2,
       "name": "Pale Brief Utopia. Fallen Dream",
       "icon": "skill001/skill0006_2",
-      "description": "to all enemiesmagic damage and inflicts Action Speed DOWN(LV 2) for 10 seconds and Physical Attack DOWN(LV 2) for 10 seconds , 10 Magic Attack DOWN(LV 2)",
+      "description": "To all enemiesmagic damage and inflicts Action Speed DOWN(LV 2) for 10 seconds and Physical Attack DOWN(LV 2) for 10 seconds, 10s Magic Attack DOWN(LV 2)",
       "effect": "630% + 750",
       "buffEffects": [
         {
@@ -230,7 +264,7 @@ export const skills = {
       "rank": 3,
       "name": "Pale Brief Utopia. Fallen Dream",
       "icon": "skill001/skill0006_3",
-      "description": "to all enemiesmagic damage and inflicts Action Speed DOWN(LV 3) for 10 seconds and Physical Attack DOWN(LV 3) for 10 seconds , 10 Magic Attack DOWN(LV 3)",
+      "description": "To all enemiesmagic damage and inflicts Action Speed DOWN(LV 3) for 10 seconds and Physical Attack DOWN(LV 3) for 10 seconds, 10s Magic Attack DOWN(LV 3)",
       "effect": "765% + 900",
       "buffEffects": [
         {
@@ -257,7 +291,7 @@ export const skills = {
       "rank": 4,
       "name": "Pale Brief Utopia. Fallen Dream",
       "icon": "skill001/skill0006_4",
-      "description": "to all enemiesmagic damage and inflicts Action Speed DOWN(LV 4) for 10 seconds and Physical Attack DOWN(LV 4) for 10 seconds , 10 Magic Attack DOWN(LV 4)",
+      "description": "To all enemiesmagic damage and inflicts Action Speed DOWN(LV 4) for 10 seconds and Physical Attack DOWN(LV 4) for 10 seconds, 10s Magic Attack DOWN(LV 4)",
       "effect": "855% + 1000",
       "buffEffects": [
         {
@@ -284,7 +318,7 @@ export const skills = {
       "rank": 5,
       "name": "Pale Brief Utopia. Fallen Dream",
       "icon": "skill001/skill0006_5",
-      "description": "to all enemiesmagic damage and inflicts Action Speed DOWN(LV 5) for 10 seconds and Physical Attack DOWN(LV 5) for 10 seconds , 10 Magic Attack DOWN(LV 5)",
+      "description": "To all enemiesmagic damage and inflicts Action Speed DOWN(LV 5) for 10 seconds and Physical Attack DOWN(LV 5) for 10 seconds, 10s Magic Attack DOWN(LV 5)",
       "effect": "900% + 1100",
       "buffEffects": [
         {
@@ -311,19 +345,16 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "Magic Attack +, Magic Attack +",
+      "name": "Magic Attack +",
       "icon": "skill001/skill1001",
-      "effect": "Magic Attack + (+389), Magic Attack + (0)",
+      "description": "Gain Magic Attack UP (Large), Magic Attack UP (Cannot be Cleansed)",
+      "effect": "Magic Attack + (+389)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
-        },
-        {
-          "name": "Magic Attack +",
-          "value": 0,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         }
       ]
     },
@@ -331,17 +362,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Accuracy +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Accuracy UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Accuracy + (+20)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Accuracy +",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         }
       ]
     }
@@ -663,4 +697,4 @@ export const stats = {
       "MATK": 93
     }
   ]
-};;;;;;;
+};;;;;;;;;

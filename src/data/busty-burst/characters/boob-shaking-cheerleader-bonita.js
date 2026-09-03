@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -132,9 +166,9 @@ export const skills = {
       "slot": 3,
       "name": "Let's hear you yell！",
       "icon": "skill001/skill0019",
-      "description": "all allies10 Accuracy 9 UP and Physical Critical Damage 40 UP for 10 seconds",
-      "descriptionLv1": "all allies10 Accuracy 9 UP and Physical Critical Damage 40 UP for 10 seconds",
-      "descriptionLv90": "all allies10 Accuracy 18 UP and Physical Critical Damage 40 UP for 10 seconds",
+      "description": "All allies 10s Accuracy 9 UP and Physical Critical Damage 40 UP for 10 seconds",
+      "descriptionLv1": "All allies 10s Accuracy 9 UP and Physical Critical Damage 40 UP for 10 seconds",
+      "descriptionLv90": "All allies 10s Accuracy 18 UP and Physical Critical Damage 40 UP for 10 seconds",
       "target": "All Allies",
       "castTime": 1.45,
       "damageScaling": null,
@@ -277,12 +311,14 @@ export const skills = {
       "slot": 1,
       "name": "Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Physical Critical Damage+ (+4.5%)",
+      "description": "Gain Physical Critical Damage UP (Medium)",
+      "effect": "Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         }
       ]
     },
@@ -290,17 +326,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Accuracy +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Medium), Accuracy UP (Small)",
       "effect": "Ultimate Damage + (+10%), Accuracy + (+15)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 10,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Medium)"
         },
         {
           "name": "Accuracy +",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Small)"
         }
       ]
     }
@@ -611,4 +650,4 @@ export const stats = {
       "ATK": 85
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

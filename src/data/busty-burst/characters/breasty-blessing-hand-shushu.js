@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -101,7 +135,7 @@ export const skills = {
       "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Fire Type Damage Taken 16%UP for 6 seconds and Block-18 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.35,
-      "damageScaling": "114% ATK",
+      "damageScaling": "114.99999999999999% ATK",
       "baseDamage": "+150",
       "levelGrowth": "+6",
       "lvl1": "114% + 150",
@@ -131,9 +165,9 @@ export const skills = {
       "slot": 3,
       "name": "Hehehe, what's coming out?",
       "icon": "skill001/skill0019",
-      "description": "Applies Magic Attack 18%+35 UP to self for 10 seconds and Magic Critical Damage 50 UP for 10 seconds , 4 MP Regeneration 50",
-      "descriptionLv1": "Applies Magic Attack 18%+35 UP to self for 10 seconds and Magic Critical Damage 50 UP for 10 seconds , 4 MP Regeneration 50",
-      "descriptionLv90": "Applies Magic Attack 18%+665 UP to self for 10 seconds and Magic Critical Damage 680 UP for 10 seconds , 4 MP Regeneration 50",
+      "description": "Applies Magic Attack 18%+35 UP to self for 10 seconds and Magic Critical Damage 50 UP for 10 seconds, 4s MP Regeneration 50",
+      "descriptionLv1": "Applies Magic Attack 18%+35 UP to self for 10 seconds and Magic Critical Damage 50 UP for 10 seconds, 4s MP Regeneration 50",
+      "descriptionLv90": "Applies Magic Attack 18%+665 UP to self for 10 seconds and Magic Critical Damage 680 UP for 10 seconds, 4s MP Regeneration 50",
       "target": "Self",
       "castTime": 1.45,
       "damageScaling": null,
@@ -176,7 +210,7 @@ export const skills = {
       "rank": 1,
       "name": "Unhappy Christmas Operation!!",
       "icon": "skill001/skill0012_1",
-      "description": "6 nearest enemies dealmagic damage and inflicts Stun for 2 seconds and Action Speed DOWN(LV 1) for 10 seconds , 10 Accuracy DOWN(LV 1)",
+      "description": "6 nearest enemies dealmagic damage and inflicts Stun for 2 seconds and Action Speed DOWN(LV 1) for 10 seconds, 10s Accuracy DOWN(LV 1)",
       "effect": "229% + 500",
       "buffEffects": [
         {
@@ -203,7 +237,7 @@ export const skills = {
       "rank": 2,
       "name": "Unhappy Christmas Operation!!",
       "icon": "skill001/skill0012_2",
-      "description": "6 nearest enemies dealmagic damage and inflicts Stun for 3 seconds and Action Speed DOWN(LV 2) for 10 seconds , 10 Accuracy DOWN(LV 2)",
+      "description": "6 nearest enemies dealmagic damage and inflicts Stun for 3 seconds and Action Speed DOWN(LV 2) for 10 seconds, 10s Accuracy DOWN(LV 2)",
       "effect": "270% + 650",
       "buffEffects": [
         {
@@ -230,7 +264,7 @@ export const skills = {
       "rank": 3,
       "name": "Unhappy Christmas Operation!!",
       "icon": "skill001/skill0012_3",
-      "description": "6 nearest enemies dealmagic damage and inflicts Stun for 3 seconds and Action Speed DOWN(LV 3) for 10 seconds , 10 Accuracy DOWN(LV 3)",
+      "description": "6 nearest enemies dealmagic damage and inflicts Stun for 3 seconds and Action Speed DOWN(LV 3) for 10 seconds, 10s Accuracy DOWN(LV 3)",
       "effect": "315% + 800",
       "buffEffects": [
         {
@@ -257,7 +291,7 @@ export const skills = {
       "rank": 4,
       "name": "Unhappy Christmas Operation!!",
       "icon": "skill001/skill0012_4",
-      "description": "6 nearest enemies dealmagic damage and inflicts Stun for 4 seconds and Action Speed DOWN(LV 4) for 10 seconds , 10 Accuracy DOWN(LV 4)",
+      "description": "6 nearest enemies dealmagic damage and inflicts Stun for 4 seconds and Action Speed DOWN(LV 4) for 10 seconds, 10s Accuracy DOWN(LV 4)",
       "effect": "345% + 900",
       "buffEffects": [
         {
@@ -284,7 +318,7 @@ export const skills = {
       "rank": 5,
       "name": "Unhappy Christmas Operation!!",
       "icon": "skill001/skill0012_5",
-      "description": "6 nearest enemies dealmagic damage and inflicts Stun for 4 seconds and Action Speed DOWN(LV 5) for 10 seconds , 10 Accuracy DOWN(LV 5)",
+      "description": "6 nearest enemies dealmagic damage and inflicts Stun for 4 seconds and Action Speed DOWN(LV 5) for 10 seconds, 10s Accuracy DOWN(LV 5)",
       "effect": "370% + 1000",
       "buffEffects": [
         {
@@ -313,17 +347,20 @@ export const skills = {
       "slot": 1,
       "name": "Fire Type ATK +, MP Recovery+",
       "icon": "skill001/skill1001",
+      "description": "Gain Fire Type ATK UP (Medium), MP Recovery",
       "effect": "Fire Type ATK + (+10%), MP Recovery+ (+50%)",
       "effectValues": [
         {
           "name": "Fire Type ATK +",
           "value": 10,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Fire Type ATK UP (Medium)"
         },
         {
           "name": "MP Recovery+",
           "value": 50,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         }
       ]
     },
@@ -331,17 +368,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Action Speed +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Action Speed UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     }
@@ -663,4 +703,4 @@ export const stats = {
       "MP Charge": 4
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

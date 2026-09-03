@@ -92,15 +92,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Sweet Bunny ~ Showtime",
+      "name": "Sweet Rabit~Show Time",
       "icon": "skill001/skill0019",
-      "description": "All allies receive MP Recovery 110 and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds , 20 Hit-Based Shield(30%+4 hit(s))",
-      "descriptionLv1": "All allies receive MP Recovery 110 and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds , 20 Hit-Based Shield(30%+4 hit(s))",
-      "descriptionLv90": "All allies receive MP Recovery 110 and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds , 20 Hit-Based Shield(30%+4 hit(s))",
+      "description": "All allies receive MP Recovery 110 and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds Hit-Based Shield(30%+4 hit(s)) for 20 seconds",
+      "descriptionLv1": "All allies receive MP Recovery 110 and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds Hit-Based Shield(30%+4 hit(s)) for 20 seconds",
+      "descriptionLv90": "All allies receive MP Recovery 110 and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds Hit-Based Shield(30%+4 hit(s)) for 20 seconds",
       "target": "All Allies",
       "castTime": 1.0,
       "damageScaling": null,
@@ -138,11 +172,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Sweet Bunny ~ Aggravation Art",
+      "name": "Sweet Rabit~Charming skill",
       "icon": "skill001/skill0011",
-      "description": "3 nearest enemies2s Charm for and Accuracy -13 DOWN for 12 seconds , 12 Action Speed -25%DOWN",
-      "descriptionLv1": "3 nearest enemies2s Charm for and Accuracy -13 DOWN for 12 seconds , 12 Action Speed -25%DOWN",
-      "descriptionLv90": "3 nearest enemies2s Charm for and Accuracy -26 DOWN for 12 seconds , 12 Action Speed -25%DOWN",
+      "description": "Deals charm to nearest 3 enemies for 2 seconds,Accuracy -13 DOWN for 12 seconds and Action Speed -25%DOWN for 12 seconds",
+      "descriptionLv1": "Deals charm to nearest 3 enemies for 2 seconds,Accuracy -13 DOWN for 12 seconds and Action Speed -25%DOWN for 12 seconds",
+      "descriptionLv90": "Deals charm to nearest 3 enemies for 2 seconds,Accuracy -26 DOWN for 12 seconds and Action Speed -25%DOWN for 12 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.0,
       "damageScaling": null,
@@ -184,7 +218,7 @@ export const skills = {
       "rank": 1,
       "name": "Rabit Rapid Stream",
       "icon": "skill001/skill0006_1",
-      "description": "magic damage and inflicts BlockDOWN(LV 1) for 8 seconds, all allies8 Action Speed UP(LV 1), self1[Bunny~]( per stack of[Bunny~] whenSpeed5%UP, max3), when having3[Bunny~] whenUltimate damage +100%all alliesMP Recovery200",
+      "description": "Deals magic damage to all enemies, also inflicts BlockDOWN(LV 1) for 8 seconds and grants Action Speed UP(LV 1) to all allies for 8 seconds. Moreover grants self 1 Rabbit~(each Rabbit~ makes your move speed 5% up, you can have 3 at max), when having 3 Rabbit~,increase ultimate damage 100% and revover 200 MP to all allies",
       "effect": "400% + 400",
       "buffEffects": [
         {
@@ -200,7 +234,7 @@ export const skills = {
           "duration": 8
         },
         {
-          "name": "Rabbit",
+          "name": "Rabbit~",
           "value": 0,
           "type": "flat",
           "duration": 999
@@ -211,7 +245,7 @@ export const skills = {
       "rank": 2,
       "name": "Rabit Rapid Stream",
       "icon": "skill001/skill0006_2",
-      "description": "magic damage and inflicts BlockDOWN(LV 2) for 8 seconds, all allies8 Action Speed UP(LV 2), self1[Bunny~]( per stack of[Bunny~] whenSpeed5%UP, max3), when having3[Bunny~] whenUltimate damage +100%all alliesMP Recovery200",
+      "description": "Deals magic damage to all enemies, also inflicts BlockDOWN(LV 2) for 8 seconds and grants Action Speed UP(LV 2) to all allies for 8 seconds. Moreover grants self 1 Rabbit~(each Rabbit~ makes your move speed 5% up, you can have 3 at max), when having 3 Rabbit~,increase ultimate damage 100% and revover 200 MP to all allies",
       "effect": "520% + 500",
       "buffEffects": [
         {
@@ -227,7 +261,7 @@ export const skills = {
           "duration": 8
         },
         {
-          "name": "Rabbit",
+          "name": "Rabbit~",
           "value": 0,
           "type": "flat",
           "duration": 999
@@ -238,7 +272,7 @@ export const skills = {
       "rank": 3,
       "name": "Rabit Rapid Stream",
       "icon": "skill001/skill0006_3",
-      "description": "magic damage and inflicts BlockDOWN(LV 3) for 8 seconds, all allies8 Action Speed UP(LV 3), self1[Bunny~]( per stack of[Bunny~] whenSpeed5%UP, max3), when having3[Bunny~] whenUltimate damage +100%all alliesMP Recovery200",
+      "description": "Deals magic damage to all enemies, also inflicts BlockDOWN(LV 3) for 8 seconds and grants Action Speed UP(LV 3) to all allies for 8 seconds. Moreover grants self 1 Rabbit~(each Rabbit~ makes your move speed 5% up, you can have 3 at max), when having 3 Rabbit~,increase ultimate damage 100% and revover 200 MP to all allies",
       "effect": "600% + 600",
       "buffEffects": [
         {
@@ -254,7 +288,7 @@ export const skills = {
           "duration": 8
         },
         {
-          "name": "Rabbit",
+          "name": "Rabbit~",
           "value": 0,
           "type": "flat",
           "duration": 999
@@ -265,7 +299,7 @@ export const skills = {
       "rank": 4,
       "name": "Rabit Rapid Stream",
       "icon": "skill001/skill0006_4",
-      "description": "magic damage and inflicts BlockDOWN(LV 4) for 8 seconds, all allies8 Action Speed UP(LV 4), self1[Bunny~]( per stack of[Bunny~] whenSpeed5%UP, max3), when having3[Bunny~] whenUltimate damage +100%all alliesMP Recovery200",
+      "description": "Deals magic damage to all enemies, also inflicts BlockDOWN(LV 4) for 8 seconds and grants Action Speed UP(LV 4) to all allies for 8 seconds. Moreover grants self 1 Rabbit~(each Rabbit~ makes your move speed 5% up, you can have 3 at max), when having 3 Rabbit~,increase ultimate damage 100% and revover 200 MP to all allies",
       "effect": "660% + 650",
       "buffEffects": [
         {
@@ -281,7 +315,7 @@ export const skills = {
           "duration": 8
         },
         {
-          "name": "Rabbit",
+          "name": "Rabbit~",
           "value": 0,
           "type": "flat",
           "duration": 999
@@ -292,7 +326,7 @@ export const skills = {
       "rank": 5,
       "name": "Rabit Rapid Stream",
       "icon": "skill001/skill0006_5",
-      "description": "magic damage and inflicts BlockDOWN(LV 5) for 8 seconds, all allies8 Action Speed UP(LV 5), self1[Bunny~]( per stack of[Bunny~] whenSpeed5%UP, max3), when having3[Bunny~] whenUltimate damage +100%all alliesMP Recovery200",
+      "description": "Deals magic damage to all enemies, also inflicts BlockDOWN(LV 5) for 8 seconds and grants Action Speed UP(LV 5) to all allies for 8 seconds. Moreover grants self 1 Rabbit~(each Rabbit~ makes your move speed 5% up, you can have 3 at max), when having 3 Rabbit~,increase ultimate damage 100% and revover 200 MP to all allies",
       "effect": "700% + 700",
       "buffEffects": [
         {
@@ -308,7 +342,7 @@ export const skills = {
           "duration": 8
         },
         {
-          "name": "Rabbit",
+          "name": "Rabbit~",
           "value": 0,
           "type": "flat",
           "duration": 999
@@ -321,17 +355,20 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Action Speed +",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP (Medium), Action Speed UP (Large)",
       "effect": "Max HP + (+2896), Action Speed + (+15)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         },
         {
           "name": "Action Speed +",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Large)"
         }
       ]
     },
@@ -339,17 +376,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Ultimate Damage +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Small), Ultimate Damage UP (Small)",
       "effect": "Skill Damage + (+10%), Ultimate Damage + (+5%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 10,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Small)"
         },
         {
           "name": "Ultimate Damage +",
           "value": 5,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Small)"
         }
       ]
     }
@@ -675,4 +715,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

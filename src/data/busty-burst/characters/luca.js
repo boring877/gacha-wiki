@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -268,17 +302,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Physical Attack + (+259), Physical Critical Damage+ (+9%)",
+      "description": "Gain Physical Attack UP (Medium), Physical Critical Damage UP (Large)",
+      "effect": "Physical Attack + (+259), Physical Critical Damage+ (+179%)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 9,
-          "type": "percent"
+          "value": 179,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Large)"
         }
       ]
     },
@@ -286,17 +323,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Action Speed +",
       "icon": "skill001/skill1005",
+      "description": "Gain Skill Damage UP (Medium), Action Speed UP (Medium)",
       "effect": "Skill Damage + (+20%), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Medium)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     }
@@ -607,4 +647,4 @@ export const stats = {
       "MP Charge": 4
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

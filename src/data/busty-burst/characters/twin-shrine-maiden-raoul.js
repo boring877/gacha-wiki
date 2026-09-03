@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Purify, cleanse",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the enemy with the highest MP , inflict 2s , 2 and Taunt for 2 seconds.()",
-      "descriptionLv1": "Deals magic damage to the enemy with the highest MP , inflict 2s , 2 and Taunt for 2 seconds.()",
-      "descriptionLv90": "Deals magic damage to the enemy with the highest MP , inflict 2s , 2 and Taunt for 2 seconds.()",
+      "description": "Deals magic damage to the enemy with the highest MP, applies 2s, 2s and Taunt for 2 seconds.()",
+      "descriptionLv1": "Deals magic damage to the enemy with the highest MP, applies 2s, 2s and Taunt for 2 seconds.()",
+      "descriptionLv90": "Deals magic damage to the enemy with the highest MP, applies 2s, 2s and Taunt for 2 seconds.()",
       "target": "Highest MP Enemy",
       "castTime": 1.3,
       "damageScaling": "300% ATK",
@@ -136,9 +170,9 @@ export const skills = {
       "slot": 3,
       "name": "Burubu Yurayura",
       "icon": "skill001/skill0021",
-      "description": "restore HP to all alliesHP and inflicts Healing Shield (400, restores 30%) for 20 seconds and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds",
-      "descriptionLv1": "restore HP to all alliesHP and inflicts Healing Shield (400, restores 30%) for 20 seconds and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds",
-      "descriptionLv90": "restore HP to all alliesHP and inflicts Healing Shield (400, restores 30%) for 20 seconds and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds",
+      "description": "Restore HP to all alliesHP and inflicts Healing Shield (400, restores 30%) for 20 seconds and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds",
+      "descriptionLv1": "Restore HP to all alliesHP and inflicts Healing Shield (400, restores 30%) for 20 seconds and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds",
+      "descriptionLv90": "Restore HP to all alliesHP and inflicts Healing Shield (400, restores 30%) for 20 seconds and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds",
       "target": "All Allies",
       "castTime": 1.35,
       "damageScaling": "1000% ATK",
@@ -174,7 +208,7 @@ export const skills = {
       "rank": 1,
       "name": "Evil Star Banishment Ritual",
       "icon": "skill001/skill0022_1",
-      "description": "restore HP to all alliesHP and inflicts Shield (LV 1) for 8 seconds and Action Speed UP(LV 1) for 8 seconds , 3s Curse for",
+      "description": "Restore HP to all alliesHP and inflicts Shield (LV 1) for 8 seconds and Action Speed UP(LV 1) for 8 seconds, 3s",
       "effect": "2000% + 800",
       "buffEffects": [
         {
@@ -201,7 +235,7 @@ export const skills = {
       "rank": 2,
       "name": "Evil Star Banishment Ritual",
       "icon": "skill001/skill0022_2",
-      "description": "restore HP to all alliesHP and inflicts Shield (LV 2) for 8 seconds and Action Speed UP(LV 2) for 8 seconds , 4s Curse for",
+      "description": "Restore HP to all alliesHP and inflicts Shield (LV 2) for 8 seconds and Action Speed UP(LV 2) for 8 seconds, 4s",
       "effect": "2300% + 1100",
       "buffEffects": [
         {
@@ -228,7 +262,7 @@ export const skills = {
       "rank": 3,
       "name": "Evil Star Banishment Ritual",
       "icon": "skill001/skill0022_3",
-      "description": "restore HP to all alliesHP and inflicts Shield (LV 3) for 8 seconds and Action Speed UP(LV 3) for 8 seconds , 4s Curse for",
+      "description": "Restore HP to all alliesHP and inflicts Shield (LV 3) for 8 seconds and Action Speed UP(LV 3) for 8 seconds, 4s",
       "effect": "2500% + 1350",
       "buffEffects": [
         {
@@ -255,7 +289,7 @@ export const skills = {
       "rank": 4,
       "name": "Evil Star Banishment Ritual",
       "icon": "skill001/skill0022_4",
-      "description": "restore HP to all alliesHP and inflicts Shield (LV 4) for 8 seconds and Action Speed UP(LV 4) for 8 seconds , 5s Curse for",
+      "description": "Restore HP to all alliesHP and inflicts Shield (LV 4) for 8 seconds and Action Speed UP(LV 4) for 8 seconds, 5s",
       "effect": "2700% + 1550",
       "buffEffects": [
         {
@@ -282,7 +316,7 @@ export const skills = {
       "rank": 5,
       "name": "Evil Star Banishment Ritual",
       "icon": "skill001/skill0022_5",
-      "description": "restore HP to all alliesHP and inflicts Shield (LV 5) for 8 seconds and Action Speed UP(LV 5) for 8 seconds , 5s Curse for",
+      "description": "Restore HP to all alliesHP and inflicts Shield (LV 5) for 8 seconds and Action Speed UP(LV 5) for 8 seconds, 5s",
       "effect": "2800% + 1700",
       "buffEffects": [
         {
@@ -311,17 +345,14 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Debuff Resistance+",
       "icon": "skill001/skill1003",
-      "effect": "Max HP + (+3444), Debuff Resistance+ (+30%)",
+      "description": "Gain Max HP UP (Large), Debuff Resistance UP (Small)",
+      "effect": "Max HP + (+3444)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
-        },
-        {
-          "name": "Debuff Resistance+",
-          "value": 30,
-          "type": "percent"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         }
       ]
     },
@@ -329,22 +360,26 @@ export const skills = {
       "slot": 2,
       "name": "Damage UP, Physical Defense, Magic Defense",
       "icon": "skill001/skill1005",
+      "description": "Gain Damage UP, Physical Defense +DOWN, Magic Defense+DOWN",
       "effect": "Damage UP (+20%), Physical Defense (+-200), Magic Defense (+-200)",
       "effectValues": [
         {
           "name": "Damage UP",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Damage UP"
         },
         {
           "name": "Physical Defense",
           "value": -200,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Defense +DOWN"
         },
         {
           "name": "Magic Defense",
           "value": -200,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Defense+DOWN"
         }
       ]
     }
@@ -666,4 +701,4 @@ export const stats = {
       "HP": 399
     }
   ]
-};;;;;;;
+};;;;;;;;;

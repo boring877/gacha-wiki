@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -267,17 +301,20 @@ export const skills = {
       "slot": 1,
       "name": "Charm Resistance LvMax, Magic Attack +",
       "icon": "skill001/skill1003",
+      "description": "Gain Charm Resistance UP, Magic Attack UP (Medium)",
       "effect": "Charm Resistance LvMax (+1%), Magic Attack + (+259)",
       "effectValues": [
         {
           "name": "Charm Resistance LvMax",
           "value": 1,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Charm Resistance UP"
         },
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         }
       ]
     },
@@ -285,17 +322,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Accuracy +",
       "icon": "skill001/skill1005",
+      "description": "Gain Skill Damage UP (Large), Accuracy UP (Medium)",
       "effect": "Skill Damage + (+30%), Accuracy + (+20)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Accuracy +",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         }
       ]
     }
@@ -617,4 +657,4 @@ export const stats = {
       "MATK": 50
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

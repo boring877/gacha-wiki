@@ -90,11 +90,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Beautiful Hula Hoop",
+      "name": "Beautiful hula hoop",
       "icon": "skill001/skill0002",
       "description": "Deals physical damage to the nearest enemy and inflicts Accuracy -11 DOWN for 5 seconds",
       "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Accuracy -11 DOWN for 5 seconds",
@@ -122,7 +156,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Let's train our bodies!",
+      "name": "Let's work out!",
       "icon": "skill001/skill0019",
       "description": "Applies Block 9 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 20 seconds",
       "descriptionLv1": "Applies Block 9 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 20 seconds",
@@ -239,12 +273,14 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP (Medium)",
       "effect": "Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     },
@@ -252,17 +288,20 @@ export const skills = {
       "slot": 2,
       "name": "Block+, Accuracy +",
       "icon": "skill001/skill1006",
+      "description": "Gain Block UP (Small), Accuracy UP (Small)",
       "effect": "Block+ (+10), Accuracy + (+15)",
       "effectValues": [
         {
           "name": "Block+",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Small)"
         },
         {
           "name": "Accuracy +",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Small)"
         }
       ]
     }
@@ -573,4 +612,4 @@ export const stats = {
       "ATK": 61
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

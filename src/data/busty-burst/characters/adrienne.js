@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -131,9 +165,9 @@ export const skills = {
       "slot": 3,
       "name": "Pheasant",
       "icon": "skill001/skill0011",
-      "description": "all enemies12 Magic Defense-18%-30 DOWN and Accuracy -9 DOWN for 12 seconds , 50%% chance to Sleep for 2s",
-      "descriptionLv1": "all enemies12 Magic Defense-18%-30 DOWN and Accuracy -9 DOWN for 12 seconds , 50%% chance to Sleep for 2s",
-      "descriptionLv90": "all enemies12 Magic Defense-18%-210 DOWN and Accuracy -18 DOWN for 12 seconds , 50%% chance to Sleep for 2s",
+      "description": "All enemies 12s Magic Defense-18%-30 DOWN and Accuracy -9 DOWN for 12 seconds, 50%% chance to 2s",
+      "descriptionLv1": "All enemies 12s Magic Defense-18%-30 DOWN and Accuracy -9 DOWN for 12 seconds, 50%% chance to 2s",
+      "descriptionLv90": "All enemies 12s Magic Defense-18%-210 DOWN and Accuracy -18 DOWN for 12 seconds, 50%% chance to 2s",
       "target": "All Enemies",
       "castTime": 1.6,
       "damageScaling": null,
@@ -176,7 +210,7 @@ export const skills = {
       "rank": 1,
       "name": "My special place to belong",
       "icon": "skill001/skill0020_1",
-      "description": "Applies Hit-Based Magic Damage (LV 1) to all allies for 20 seconds and Accuracy UP(LV 1) for 10 seconds , 10 BlockUP(LV 1)",
+      "description": "Applies Hit-Based Magic Damage (LV 1) to all allies for 20 seconds and Accuracy UP(LV 1) for 10 seconds, 10s BlockUP(LV 1)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -203,7 +237,7 @@ export const skills = {
       "rank": 2,
       "name": "My special place to belong",
       "icon": "skill001/skill0020_2",
-      "description": "Applies Hit-Based Magic Damage (LV 2) to all allies for 20 seconds and Accuracy UP(LV 2) for 10 seconds , 10 BlockUP(LV 2)",
+      "description": "Applies Hit-Based Magic Damage (LV 2) to all allies for 20 seconds and Accuracy UP(LV 2) for 10 seconds, 10s BlockUP(LV 2)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -230,7 +264,7 @@ export const skills = {
       "rank": 3,
       "name": "My special place to belong",
       "icon": "skill001/skill0020_3",
-      "description": "Applies Hit-Based Magic Damage (LV 3) to all allies for 20 seconds and Accuracy UP(LV 3) for 10 seconds , 10 BlockUP(LV 3)",
+      "description": "Applies Hit-Based Magic Damage (LV 3) to all allies for 20 seconds and Accuracy UP(LV 3) for 10 seconds, 10s BlockUP(LV 3)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -257,7 +291,7 @@ export const skills = {
       "rank": 4,
       "name": "My special place to belong",
       "icon": "skill001/skill0020_4",
-      "description": "Applies Hit-Based Magic Damage (LV 4) to all allies for 20 seconds and Accuracy UP(LV 4) for 10 seconds , 10 BlockUP(LV 4)",
+      "description": "Applies Hit-Based Magic Damage (LV 4) to all allies for 20 seconds and Accuracy UP(LV 4) for 10 seconds, 10s BlockUP(LV 4)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -284,7 +318,7 @@ export const skills = {
       "rank": 5,
       "name": "My special place to belong",
       "icon": "skill001/skill0020_5",
-      "description": "Applies Hit-Based Magic Damage (LV 5) to all allies for 20 seconds and Accuracy UP(LV 5) for 10 seconds , 10 BlockUP(LV 5)",
+      "description": "Applies Hit-Based Magic Damage (LV 5) to all allies for 20 seconds and Accuracy UP(LV 5) for 10 seconds, 10s BlockUP(LV 5)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -313,17 +347,20 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, MP Recovery",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP (Large), MP Recovery",
       "effect": "Max HP + (+3444), MP Recovery (+50%)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         },
         {
           "name": "MP Recovery",
           "value": 50,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         }
       ]
     },
@@ -331,19 +368,9 @@ export const skills = {
       "slot": 2,
       "name": "Magic Attack +, Max HP +",
       "icon": "skill001/skill1005",
-      "effect": "Magic Attack + (0), Max HP + (0)",
-      "effectValues": [
-        {
-          "name": "Magic Attack +",
-          "value": 0,
-          "type": "flat"
-        },
-        {
-          "name": "Max HP +",
-          "value": 0,
-          "type": "flat"
-        }
-      ]
+      "description": "Gain Magic Attack UP (Cannot be Cleansed), Max HP UP (Cannot be Cleansed)",
+      "effect": "HP()",
+      "effectValues": []
     }
   ],
   "name": "Adrienne",
@@ -661,4 +688,4 @@ export const stats = {
       "HP": 376
     }
   ]
-};;;;;;;
+};;;;;;;;;

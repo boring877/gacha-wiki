@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -230,12 +264,14 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Medium)",
       "effect": "Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     },
@@ -243,17 +279,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Skill Damage + (+20%), Physical Critical Damage+ (+3%)",
+      "description": "Gain Skill Damage UP (Medium), Physical Critical Damage UP (Small)",
+      "effect": "Skill Damage + (+20%), Physical Critical Damage+ (+59%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Medium)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 3,
-          "type": "percent"
+          "value": 59,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Small)"
         }
       ]
     }
@@ -261,7 +300,7 @@ export const skills = {
   "name": "Festive China Dress: Diana",
   "id": 2165,
   "rarity": "SR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Attacker",
   "tags": [
     "Debuff"
@@ -562,4 +601,4 @@ export const stats = {
       "Phys Crit": 19
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

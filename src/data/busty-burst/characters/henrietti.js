@@ -91,11 +91,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Goddess, please help everyone!",
+      "name": "Please help us, holy godness!",
       "icon": "skill001/skill0019",
       "description": "Applies Physical Healing Shield (300, restores 20%) to all allies for 15 seconds and Physical Healing Shield (300, restores 20%) for 15 seconds",
       "descriptionLv1": "Applies Physical Healing Shield (300, restores 20%) to all allies for 15 seconds and Physical Healing Shield (300, restores 20%) for 15 seconds",
@@ -131,11 +165,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "I can't do this!",
+      "name": "Such thing...I can't do it!",
       "icon": "skill001/skill0021",
-      "description": "nearest ally3restore HP and inflicts HP Regeneration 5%+150 for 5 seconds",
-      "descriptionLv1": "nearest ally3restore HP and inflicts HP Regeneration 5%+150 for 5 seconds",
-      "descriptionLv90": "nearest ally3restore HP and inflicts HP Regeneration 5%+150 for 5 seconds",
+      "description": "Restore HP by to nearest 3 allies and inflicts HP Regeneration 5%+150 for 5 seconds",
+      "descriptionLv1": "Restore HP by to nearest 3 allies and inflicts HP Regeneration 5%+150 for 5 seconds",
+      "descriptionLv90": "Restore HP by to nearest 3 allies and inflicts HP Regeneration 5%+150 for 5 seconds",
       "target": "Nearest Ally",
       "castTime": 1.22,
       "damageScaling": "800% ATK",
@@ -161,9 +195,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Galc Special - Explosive Potion Shell!",
+      "name": "Galka's Special - Explosive Alchemical Bomb",
       "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to all enemies and inflicts Stun for 1 seconds , 4s Blind for",
+      "description": "Deals physical damage to all enemies, inflicts Stun for 1 seconds and Blind for 4 seconds",
       "effect": "300% + 300",
       "buffEffects": [
         {
@@ -182,9 +216,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Galc Special - Explosive Potion Shell!",
+      "name": "Galka's Special - Explosive Alchemical Bomb",
       "icon": "skill001/skill0012_2",
-      "description": "Deals physical damage to all enemies and inflicts Stun for 1.5 seconds , 4.5s Blind for",
+      "description": "Deals physical damage to all enemies, inflicts Stun for 1.5 seconds and Blind for 4.5 seconds",
       "effect": "360% + 450",
       "buffEffects": [
         {
@@ -203,9 +237,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Galc Special - Explosive Potion Shell!",
+      "name": "Galka's Special - Explosive Alchemical Bomb",
       "icon": "skill001/skill0012_3",
-      "description": "Deals physical damage to all enemies and inflicts Stun for 1.5 seconds , 5s Blind for",
+      "description": "Deals physical damage to all enemies, inflicts Stun for 1.5 seconds and Blind for 5 seconds",
       "effect": "409% + 550",
       "buffEffects": [
         {
@@ -224,9 +258,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Galc Special - Explosive Potion Shell!",
+      "name": "Galka's Special - Explosive Alchemical Bomb",
       "icon": "skill001/skill0012_4",
-      "description": "Deals physical damage to all enemies and inflicts Stun for 2 seconds , 5.5s Blind for",
+      "description": "Deals physical damage to all enemies, inflicts Stun for 2 seconds and Blind for 5.5 seconds",
       "effect": "440% + 650",
       "buffEffects": [
         {
@@ -245,9 +279,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Galc Special - Explosive Potion Shell!",
+      "name": "Galka's Special - Explosive Alchemical Bomb",
       "icon": "skill001/skill0012_5",
-      "description": "Deals physical damage to all enemies and inflicts Stun for 2 seconds , 6s Blind for",
+      "description": "Deals physical damage to all enemies, inflicts Stun for 2 seconds and Blind for 6 seconds",
       "effect": "470% + 700",
       "buffEffects": [
         {
@@ -270,12 +304,14 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP (Medium)",
       "effect": "Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     },
@@ -283,17 +319,14 @@ export const skills = {
       "slot": 2,
       "name": "Action Speed +, Debuff Resistance+",
       "icon": "skill001/skill1003",
-      "effect": "Action Speed + (+10), Debuff Resistance+ (+30%)",
+      "description": "Gain Action Speed UP (Medium), Debuff Resistance UP (Small)",
+      "effect": "Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
-        },
-        {
-          "name": "Debuff Resistance+",
-          "value": 30,
-          "type": "percent"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     }
@@ -606,4 +639,4 @@ export const stats = {
       "ATK": 57
     }
   ]
-};;;;;;;
+};;;;;;;;;

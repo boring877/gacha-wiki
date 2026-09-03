@@ -91,11 +91,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Receive your punishment",
+      "name": "Receive the punishment of the gods ",
       "icon": "skill001/skill0005",
       "description": "Deals magic damage to the enemy with the lowest HP, guaranteed to hit and guaranteed to crit",
       "descriptionLv1": "Deals magic damage to the enemy with the lowest HP, guaranteed to hit and guaranteed to crit",
@@ -131,7 +165,7 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Radiance of Power",
+      "name": "Radiance of the Gods",
       "icon": "skill001/skill0006_1",
       "description": "Deals magic damage to the enemy with the lowest HP and inflicts Magic Defense DOWN(LV 1) for 10 seconds and inflicts Silence for 6 seconds",
       "effect": "810% + 783",
@@ -152,7 +186,7 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Radiance of Power",
+      "name": "Radiance of the Gods",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the enemy with the lowest HP and inflicts Magic Defense DOWN(LV 2) for 10 seconds and inflicts Silence for 6 seconds",
       "effect": "972% + 920",
@@ -173,7 +207,7 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Radiance of Power",
+      "name": "Radiance of the Gods",
       "icon": "skill001/skill0006_3",
       "description": "Deals magic damage to the enemy with the lowest HP and inflicts Magic Defense DOWN(LV 3) for 10 seconds and inflicts Silence for 6 seconds",
       "effect": "1090% + 1022",
@@ -194,7 +228,7 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Radiance of Power",
+      "name": "Radiance of the Gods",
       "icon": "skill001/skill0006_4",
       "description": "Deals magic damage to the enemy with the lowest HP and inflicts Magic Defense DOWN(LV 4) for 10 seconds and inflicts Silence for 6 seconds",
       "effect": "1175% + 1115",
@@ -215,7 +249,7 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Radiance of Power",
+      "name": "Radiance of the Gods",
       "icon": "skill001/skill0006_5",
       "description": "Deals magic damage to the enemy with the lowest HP and inflicts Magic Defense DOWN(LV 5) for 10 seconds and inflicts Silence for 6 seconds",
       "effect": "1255% + 1209",
@@ -240,12 +274,14 @@ export const skills = {
       "slot": 1,
       "name": "MP Recovery+",
       "icon": "skill001/skill1001",
+      "description": "Gain MP Recovery UP (Small)",
       "effect": "MP Recovery+ (+21%)",
       "effectValues": [
         {
           "name": "MP Recovery+",
           "value": 21,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery UP (Small)"
         }
       ]
     },
@@ -253,17 +289,20 @@ export const skills = {
       "slot": 2,
       "name": "Magic Attack +, Magic Defense+",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Medium), Magic Defense UP (Small)",
       "effect": "Magic Attack + (+259), Magic Defense+ (+70)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         },
         {
           "name": "Magic Defense+",
           "value": 70,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Defense UP (Small)"
         }
       ]
     }
@@ -271,7 +310,7 @@ export const skills = {
   "name": "Ishtovia",
   "id": 2036,
   "rarity": "SR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Attacker",
   "tags": [
     "Heal",
@@ -587,4 +626,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

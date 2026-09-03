@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Crimson Tide",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed -20%DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds , [] damage +50%, inflict6 Wind Type damage taken by damage20%UP",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Action Speed -20%DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds , [] damage +50%, inflict6 Wind Type damage taken by damage20%UP",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Action Speed -20%DOWN for 6 seconds and Accuracy -23 DOWN for 6 seconds , [] damage +50%, inflict6 Wind Type damage taken by damage20%UP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed -20%DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds, damage +50%, applies 6s Wind Type damage taken by damage 20%UP",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Action Speed -20%DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds, damage +50%, applies 6s Wind Type damage taken by damage 20%UP",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Action Speed -20%DOWN for 6 seconds and Accuracy -23 DOWN for 6 seconds, damage +50%, applies 6s Wind Type damage taken by damage 20%UP",
       "target": "Nearest Enemy",
       "castTime": 0.8,
       "damageScaling": "380% ATK",
@@ -131,9 +165,9 @@ export const skills = {
       "slot": 3,
       "name": "Hope that is born and vanishes every night",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed 20%UP to self for 12 seconds and Physical Attack 18%+35 UP for 12 seconds , 20000 damageUP(max100000 (max stacking: ), [], Physical AttackUP Lv+50, damageUPall allies",
-      "descriptionLv1": "Applies Action Speed 20%UP to self for 12 seconds and Physical Attack 18%+35 UP for 12 seconds , 20000 damageUP(max100000 (max stacking: ), [], Physical AttackUP Lv+50, damageUPall allies",
-      "descriptionLv90": "Applies Action Speed 20%UP to self for 12 seconds and Physical Attack 18%+665 UP for 12 seconds , 20000 damageUP(max100000 (max stacking: ), [], Physical AttackUP Lv+50, damageUPall allies",
+      "description": "Applies Action Speed 20%UP to self for 12 seconds and Physical Attack 18%+35 UP for 12 seconds, 20000 damageUP(max 100000stackable),, Physical AttackUP effect +50%, damageUPall allies",
+      "descriptionLv1": "Applies Action Speed 20%UP to self for 12 seconds and Physical Attack 18%+35 UP for 12 seconds, 20000 damageUP(max 100000stackable),, Physical AttackUP effect +50%, damageUPall allies",
+      "descriptionLv90": "Applies Action Speed 20%UP to self for 12 seconds and Physical Attack 18%+665 UP for 12 seconds, 20000 damageUP(max 100000stackable),, Physical AttackUP effect +50%, damageUPall allies",
       "target": "Self",
       "castTime": 0.9,
       "damageScaling": null,
@@ -175,7 +209,7 @@ export const skills = {
       "rank": 1,
       "name": "Even sealed in ice, you shall melt in the flames of love",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies , inflict 2s (LV 1) and Physical Defense DOWN(LV 1) for 10 seconds , self10 Action Speed UP(LV 1), [], damage +50%, SpeedUPall allies",
+      "description": "Deals physical damage to the 3 nearest enemies, applies 2s(LV 1) and Physical Defense DOWN(LV 1) for 10 seconds, self 10s Action Speed UP(LV 1),, damage +50%, action speedUPall allies",
       "effect": "450% + 450",
       "buffEffects": [
         {
@@ -202,7 +236,7 @@ export const skills = {
       "rank": 2,
       "name": "Even sealed in ice, you shall melt in the flames of love",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the 3 nearest enemies , inflict 3s (LV 2) and Physical Defense DOWN(LV 2) for 10 seconds , self10 Action Speed UP(LV 2), [], damage +50%, SpeedUPall allies",
+      "description": "Deals physical damage to the 3 nearest enemies, applies 3s(LV 2) and Physical Defense DOWN(LV 2) for 10 seconds, self 10s Action Speed UP(LV 2),, damage +50%, action speedUPall allies",
       "effect": "530% + 550",
       "buffEffects": [
         {
@@ -229,7 +263,7 @@ export const skills = {
       "rank": 3,
       "name": "Even sealed in ice, you shall melt in the flames of love",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the 3 nearest enemies , inflict 3s (LV 3) and Physical Defense DOWN(LV 3) for 10 seconds , self10 Action Speed UP(LV 3), [], damage +50%, SpeedUPall allies",
+      "description": "Deals physical damage to the 3 nearest enemies, applies 3s(LV 3) and Physical Defense DOWN(LV 3) for 10 seconds, self 10s Action Speed UP(LV 3),, damage +50%, action speedUPall allies",
       "effect": "585% + 650",
       "buffEffects": [
         {
@@ -256,7 +290,7 @@ export const skills = {
       "rank": 4,
       "name": "Even sealed in ice, you shall melt in the flames of love",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the 3 nearest enemies , inflict 4s (LV 4) and Physical Defense DOWN(LV 4) for 10 seconds , self10 Action Speed UP(LV 4), [], damage +50%, SpeedUPall allies",
+      "description": "Deals physical damage to the 3 nearest enemies, applies 4s(LV 4) and Physical Defense DOWN(LV 4) for 10 seconds, self 10s Action Speed UP(LV 4),, damage +50%, action speedUPall allies",
       "effect": "630% + 725",
       "buffEffects": [
         {
@@ -283,7 +317,7 @@ export const skills = {
       "rank": 5,
       "name": "Even sealed in ice, you shall melt in the flames of love",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the 3 nearest enemies , inflict 4s (LV 5) and Physical Defense DOWN(LV 5) for 10 seconds , self10 Action Speed UP(LV 5), [], damage +50%, SpeedUPall allies",
+      "description": "Deals physical damage to the 3 nearest enemies, applies 4s(LV 5) and Physical Defense DOWN(LV 5) for 10 seconds, self 10s Action Speed UP(LV 5),, damage +50%, action speedUPall allies",
       "effect": "660% + 800",
       "buffEffects": [
         {
@@ -312,17 +346,20 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Wind Type ATK +",
       "icon": "skill001/skill1001",
+      "description": "Gain Action Speed UP (Large), Wind Type ATK UP (Cannot be Cleansed)",
       "effect": "Action Speed + (+15), Wind Type ATK + (+1%)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Large)"
         },
         {
           "name": "Wind Type ATK +",
           "value": 1,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Wind Type ATK UP (Cannot be Cleansed)"
         }
       ]
     },
@@ -330,17 +367,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+4.5%)",
+      "description": "Gain Ultimate Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         }
       ]
     }
@@ -651,4 +691,4 @@ export const stats = {
       "MP Charge": 4
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

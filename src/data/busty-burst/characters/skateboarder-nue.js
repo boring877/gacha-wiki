@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -132,9 +166,9 @@ export const skills = {
       "slot": 3,
       "name": "You can't even do this?",
       "icon": "skill001/skill0019",
-      "description": "Applies Taunt to self for 12 seconds, all enemies12 Physical Attack -9%-20 DOWN, 12 Magic Attack -9%-20 DOWN",
-      "descriptionLv1": "Applies Taunt to self for 12 seconds, all enemies12 Physical Attack -9%-20 DOWN, 12 Magic Attack -9%-20 DOWN",
-      "descriptionLv90": "Applies Taunt to self for 12 seconds, all enemies12 Physical Attack -9%-2000 DOWN, 12 Magic Attack -9%-20 DOWN",
+      "description": "Applies Taunt to self for 12 seconds, all enemies 12s Physical Attack -9%-20 DOWN, 12s Magic Attack -9%-20 DOWN",
+      "descriptionLv1": "Applies Taunt to self for 12 seconds, all enemies 12s Physical Attack -9%-20 DOWN, 12s Magic Attack -9%-20 DOWN",
+      "descriptionLv90": "Applies Taunt to self for 12 seconds, all enemies 12s Physical Attack -9%-2000 DOWN, 12s Magic Attack -9%-20 DOWN",
       "target": "All Enemies",
       "castTime": 1.0,
       "damageScaling": null,
@@ -177,7 +211,7 @@ export const skills = {
       "rank": 1,
       "name": "BigAir1080 Moondrop Nue Special",
       "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds , 3 , self10 Hit-Based Shield(LV 1)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds, 3s, self 10s Hit-Based Shield(LV 1)",
       "effect": "1200% + 1000",
       "buffEffects": [
         {
@@ -204,7 +238,7 @@ export const skills = {
       "rank": 2,
       "name": "BigAir1080 Moondrop Nue Special",
       "icon": "skill001/skill0012_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds , 4 , self10 Hit-Based Shield(LV 2)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds, 4s, self 10s Hit-Based Shield(LV 2)",
       "effect": "1440% + 1200",
       "buffEffects": [
         {
@@ -231,7 +265,7 @@ export const skills = {
       "rank": 3,
       "name": "BigAir1080 Moondrop Nue Special",
       "icon": "skill001/skill0012_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds , 4 , self10 Hit-Based Shield(LV 3)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds, 4s, self 10s Hit-Based Shield(LV 3)",
       "effect": "1620% + 1380",
       "buffEffects": [
         {
@@ -258,7 +292,7 @@ export const skills = {
       "rank": 4,
       "name": "BigAir1080 Moondrop Nue Special",
       "icon": "skill001/skill0012_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds , 5 , self10 Hit-Based Shield(LV 4)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds, 5s, self 10s Hit-Based Shield(LV 4)",
       "effect": "1739% + 1500",
       "buffEffects": [
         {
@@ -285,7 +319,7 @@ export const skills = {
       "rank": 5,
       "name": "BigAir1080 Moondrop Nue Special",
       "icon": "skill001/skill0012_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds , 5 , self10 Hit-Based Shield(LV 5)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds, 5s, self 10s Hit-Based Shield(LV 5)",
       "effect": "1800% + 1600",
       "buffEffects": [
         {
@@ -312,19 +346,16 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "MP Regeneration, MP Regeneration",
+      "name": "Debuff Resistance+, MP Regeneration",
       "icon": "skill001/skill1001",
-      "effect": "MP Regeneration (+200%), MP Regeneration (+200)",
+      "description": "Gain Debuff Resistance UP (Small), MP Regeneration",
+      "effect": "MP Regeneration (+200%)",
       "effectValues": [
         {
           "name": "MP Regeneration",
           "value": 200,
-          "type": "percent"
-        },
-        {
-          "name": "MP Regeneration",
-          "value": 200,
-          "type": "flat"
+          "type": "percent",
+          "gameText": "MP Regeneration"
         }
       ]
     },
@@ -332,17 +363,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Max HP +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Max HP UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     }
@@ -655,4 +689,4 @@ export const stats = {
       "HP": 465
     }
   ]
-};;;;;;;
+};;;;;;;;;

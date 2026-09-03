@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -132,9 +166,9 @@ export const skills = {
       "slot": 3,
       "name": "Look, a present.",
       "icon": "skill001/skill0019",
-      "description": "all allies10 Physical Critical Damage 30 UP and Magic Critical Damage 30 UP for 10 seconds",
-      "descriptionLv1": "all allies10 Physical Critical Damage 30 UP and Magic Critical Damage 30 UP for 10 seconds",
-      "descriptionLv90": "all allies10 Physical Critical Damage 300 UP and Magic Critical Damage 30 UP for 10 seconds",
+      "description": "All allies 10s Physical Critical Damage 30 UP and Magic Critical Damage 30 UP for 10 seconds",
+      "descriptionLv1": "All allies 10s Physical Critical Damage 30 UP and Magic Critical Damage 30 UP for 10 seconds",
+      "descriptionLv90": "All allies 10s Physical Critical Damage 300 UP and Magic Critical Damage 30 UP for 10 seconds",
       "target": "All Allies",
       "castTime": 1.45,
       "damageScaling": null,
@@ -170,7 +204,7 @@ export const skills = {
       "rank": 1,
       "name": "Wind, bring good fortune!!",
       "icon": "skill001/skill0020_1",
-      "description": "all enemies3s Blind for orRestores HP by to all allies/",
+      "description": "All enemies 3s Blind orRestores HP by to all allies/",
       "effect": "2000% + 800",
       "buffEffects": [
         {
@@ -185,7 +219,7 @@ export const skills = {
       "rank": 2,
       "name": "Wind, bring good fortune!!",
       "icon": "skill001/skill0020_2",
-      "description": "all enemies4s Blind for orRestores HP by to all allies/",
+      "description": "All enemies 4s Blind orRestores HP by to all allies/",
       "effect": "2300% + 1000",
       "buffEffects": [
         {
@@ -200,7 +234,7 @@ export const skills = {
       "rank": 3,
       "name": "Wind, bring good fortune!!",
       "icon": "skill001/skill0020_3",
-      "description": "all enemies4s Blind for orRestores HP by to all allies/",
+      "description": "All enemies 4s Blind orRestores HP by to all allies/",
       "effect": "2500% + 1150",
       "buffEffects": [
         {
@@ -215,7 +249,7 @@ export const skills = {
       "rank": 4,
       "name": "Wind, bring good fortune!!",
       "icon": "skill001/skill0020_4",
-      "description": "all enemies5s Blind for orRestores HP by to all allies/",
+      "description": "All enemies 5s Blind orRestores HP by to all allies/",
       "effect": "2700% + 1300",
       "buffEffects": [
         {
@@ -230,7 +264,7 @@ export const skills = {
       "rank": 5,
       "name": "Wind, bring good fortune!!",
       "icon": "skill001/skill0020_5",
-      "description": "all enemies5s Blind for orRestores HP by to all allies/",
+      "description": "All enemies 5s Blind orRestores HP by to all allies/",
       "effect": "2800% + 1500",
       "buffEffects": [
         {
@@ -247,12 +281,14 @@ export const skills = {
       "slot": 1,
       "name": "MP Recovery+",
       "icon": "skill001/skill1003",
+      "description": "Gain MP Recovery",
       "effect": "MP Recovery+ (+50%)",
       "effectValues": [
         {
           "name": "MP Recovery+",
           "value": 50,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         }
       ]
     },
@@ -260,17 +296,20 @@ export const skills = {
       "slot": 2,
       "name": "Max HP +, Accuracy +",
       "icon": "skill001/skill1007",
+      "description": "Gain Max HP UP (Small), Accuracy UP (Small)",
       "effect": "Max HP + (+1447), Accuracy + (+10)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 1447,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Small)"
         },
         {
           "name": "Accuracy +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Small)"
         }
       ]
     }
@@ -583,4 +622,4 @@ export const stats = {
       "HP": 417
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

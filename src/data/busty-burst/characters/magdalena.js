@@ -91,11 +91,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Cross Flash",
+      "name": "Cross shining",
       "icon": "skill001/skill0008",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -11%-25 DOWN for 7 seconds and Magic Attack -11%-25 DOWN for 7 seconds",
       "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -11%-25 DOWN for 7 seconds and Magic Attack -11%-25 DOWN for 7 seconds",
@@ -114,32 +148,28 @@ export const skills = {
       "buffEffects": [
         {
           "name": "Physical Attack - Lv4",
-          "value": -11,
-          "type": "percent",
+          "value": -25,
+          "type": "flat",
           "duration": 7,
-          "levelGrowth": 0.0,
-          "flatValue": -25,
-          "flatGrowth": -2.0
+          "levelGrowth": -2.0
         },
         {
           "name": "Magic Attack - Lv4",
-          "value": -11,
-          "type": "percent",
+          "value": -25,
+          "type": "flat",
           "duration": 7,
-          "levelGrowth": 0.0,
-          "flatValue": -25,
-          "flatGrowth": -2.0
+          "levelGrowth": -2.0
         }
       ],
       "duration": 7
     },
     {
       "slot": 3,
-      "name": "Holy Baptism",
+      "name": "Holy cleansing",
       "icon": "skill001/skill0019",
-      "description": "Applies Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) to all allies for 15 seconds and Block 9 UP for 8 seconds , 8 Magic Attack 15%+30 UP",
-      "descriptionLv1": "Applies Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) to all allies for 15 seconds and Block 9 UP for 8 seconds , 8 Magic Attack 15%+30 UP",
-      "descriptionLv90": "Applies Hit-Based Healing Shield (480%+40, restores 40%, 4 hit(s)) to all allies for 15 seconds and Block 18 UP for 8 seconds , 8 Magic Attack 15%+480 UP",
+      "description": "Applies Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) to all allies for 15 seconds,Block 9 UP for 8 seconds and Magic Attack 15%+30 UP for 8 seconds",
+      "descriptionLv1": "Applies Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) to all allies for 15 seconds,Block 9 UP for 8 seconds and Magic Attack 15%+30 UP for 8 seconds",
+      "descriptionLv90": "Applies Hit-Based Healing Shield (480%+40, restores 40%, 4 hit(s)) to all allies for 15 seconds,Block 18 UP for 8 seconds and Magic Attack 15%+30 UP for 8 seconds",
       "target": "All Allies",
       "castTime": 1.28,
       "damageScaling": null,
@@ -158,7 +188,7 @@ export const skills = {
           "value": 30,
           "type": "percent",
           "duration": 15,
-          "levelGrowth": 5.0
+          "levelGrowth": 40.0
         },
         {
           "name": "Block+ Lv3",
@@ -169,12 +199,10 @@ export const skills = {
         },
         {
           "name": "Magic Attack + Lv3",
-          "value": 15,
-          "type": "percent",
+          "value": 30,
+          "type": "flat",
           "duration": 8,
-          "levelGrowth": 0.0,
-          "flatValue": 30,
-          "flatGrowth": 5.0
+          "levelGrowth": 5.0
         }
       ],
       "duration": 15
@@ -183,9 +211,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Sacred Tree. Hang, curse, and bring salvation",
+      "name": "Holy Tree, Hang, Curse, and Bring Salvation",
       "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 3 seconds and Magic Defense DOWN(LV 1) for 10 seconds , self10 HP RegenerationUP(LV 1)",
+      "description": "Deals magic damage to the 3 nearest enemiesand, inflicts Dispel for 3 seconds and Magic Defense DOWN(LV 1) for 10 seconds. Gain HP RegenerationUP(LV 1) for 10 seconds",
       "effect": "350% + 500",
       "buffEffects": [
         {
@@ -210,9 +238,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Sacred Tree. Hang, curse, and bring salvation",
+      "name": "Holy Tree, Hang, Curse, and Bring Salvation",
       "icon": "skill001/skill0012_2",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 4 seconds and Magic Defense DOWN(LV 2) for 10 seconds , self10 HP RegenerationUP(LV 2)",
+      "description": "Deals magic damage to the 3 nearest enemiesand, inflicts Dispel for 4 seconds and Magic Defense DOWN(LV 2) for 10 seconds. Gain HP RegenerationUP(LV 2) for 10 seconds",
       "effect": "420% + 600",
       "buffEffects": [
         {
@@ -237,9 +265,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Sacred Tree. Hang, curse, and bring salvation",
+      "name": "Holy Tree, Hang, Curse, and Bring Salvation",
       "icon": "skill001/skill0012_3",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 4 seconds and Magic Defense DOWN(LV 3) for 10 seconds , self10 HP RegenerationUP(LV 3)",
+      "description": "Deals magic damage to the 3 nearest enemiesand, inflicts Dispel for 4 seconds and Magic Defense DOWN(LV 3) for 10 seconds. Gain HP RegenerationUP(LV 3) for 10 seconds",
       "effect": "480% + 700",
       "buffEffects": [
         {
@@ -264,9 +292,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Sacred Tree. Hang, curse, and bring salvation",
+      "name": "Holy Tree, Hang, Curse, and Bring Salvation",
       "icon": "skill001/skill0012_4",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 5 seconds and Magic Defense DOWN(LV 4) for 10 seconds , self10 HP RegenerationUP(LV 4)",
+      "description": "Deals magic damage to the 3 nearest enemiesand, inflicts Dispel for 5 seconds and Magic Defense DOWN(LV 4) for 10 seconds. Gain HP RegenerationUP(LV 4) for 10 seconds",
       "effect": "520% + 800",
       "buffEffects": [
         {
@@ -291,9 +319,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Sacred Tree. Hang, curse, and bring salvation",
+      "name": "Holy Tree, Hang, Curse, and Bring Salvation",
       "icon": "skill001/skill0012_5",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 5 seconds and Magic Defense DOWN(LV 5) for 10 seconds , self10 HP RegenerationUP(LV 5)",
+      "description": "Deals magic damage to the 3 nearest enemiesand, inflicts Dispel for 5 seconds and Magic Defense DOWN(LV 5) for 10 seconds. Gain HP RegenerationUP(LV 5) for 10 seconds",
       "effect": "540% + 900",
       "buffEffects": [
         {
@@ -322,17 +350,20 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Healing Received +",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP (Large), Healing Received UP (Small)",
       "effect": "Max HP + (+3444), Healing Received + (+20%)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         },
         {
           "name": "Healing Received +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Healing Received UP (Small)"
         }
       ]
     },
@@ -340,17 +371,20 @@ export const skills = {
       "slot": 2,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1006",
+      "description": "Gain Physical Defense UP (Medium), Magic Defense UP (Medium)",
       "effect": "Physical Defense + (+141), Magic Defense+ (+141)",
       "effectValues": [
         {
           "name": "Physical Defense +",
           "value": 141,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Defense UP (Medium)"
         },
         {
           "name": "Magic Defense+",
           "value": 141,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Defense UP (Medium)"
         }
       ]
     }
@@ -674,4 +708,4 @@ export const stats = {
       "HP": 539
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

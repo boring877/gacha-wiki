@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Swift Arrow",
+      "name": "Quick shoot",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Physical Defense -21%-40 DOWN for 6 seconds , [Erosion]5 when damage +50%",
-      "descriptionLv1": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Physical Defense -21%-40 DOWN for 6 seconds , [Erosion]5 when damage +50%",
-      "descriptionLv90": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Physical Defense -21%-220 DOWN for 6 seconds , [Erosion]5 when damage +50%",
+      "description": "Deals physical damage to the nearest enemy. Also inflicts 1 Erosion(each Erosion decrease 4 Block, max 5 Erosion) and Physical Defense -21%-40 DOWN for 6 seconds. When Erosion reach to 5, the damage increase 50",
+      "descriptionLv1": "Deals physical damage to the nearest enemy. Also inflicts 1 Erosion(each Erosion decrease 4 Block, max 5 Erosion) and Physical Defense -21%-40 DOWN for 6 seconds. When Erosion reach to 5, the damage increase 50",
+      "descriptionLv90": "Deals physical damage to the nearest enemy. Also inflicts 1 Erosion(each Erosion decrease 4 Block, max 5 Erosion) and Physical Defense -21%-220 DOWN for 6 seconds. When Erosion reach to 5, the damage increase 50",
       "target": "Nearest Enemy",
       "castTime": 1.3,
       "damageScaling": "300% ATK",
@@ -129,7 +163,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Firing Preparation",
+      "name": "Prepare shooting",
       "icon": "skill001/skill0019",
       "description": "Applies Physical Attack 20%+40 UP to self for 12 seconds and Accuracy 13 UP for 12 seconds",
       "descriptionLv1": "Applies Physical Attack 20%+40 UP to self for 12 seconds and Accuracy 13 UP for 12 seconds",
@@ -167,9 +201,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Soul Strike",
+      "name": "Soul Suction Shoot",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Action Speed DOWN(LV 1) for 12 seconds dealdamage 6%restoreHP, [Erosion]5 whenUltimate damage +30%, inflict12 Mind Type damage taken by damage(LV 1)",
+      "description": "Deals physical damage to the nearest enemy. Also inflicts 1 Erosion(each Erosion decrease 4 Block, max 5 Erosion) and Action Speed DOWN(LV 1) for 12 seconds. Absorbs 6% of the damage dealt to restore own HP. When Erosion reach to 5, the ultimate damage +30% and inflicts Magic property damage taken increase(LV 1) for 12 seconds",
       "effect": "1000% + 800",
       "buffEffects": [
         {
@@ -188,9 +222,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Soul Strike",
+      "name": "Soul Suction Shoot",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Action Speed DOWN(LV 2) for 12 seconds dealdamage 7%restoreHP, [Erosion]5 whenUltimate damage +30%, inflict12 Mind Type damage taken by damage(LV 2)",
+      "description": "Deals physical damage to the nearest enemy. Also inflicts 1 Erosion(each Erosion decrease 4 Block, max 5 Erosion) and Action Speed DOWN(LV 2) for 12 seconds. Absorbs 7% of the damage dealt to restore own HP. When Erosion reach to 5, the ultimate damage +30% and inflicts Magic property damage taken increase(LV 1) for 12 seconds",
       "effect": "1200% + 1000",
       "buffEffects": [
         {
@@ -209,9 +243,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Soul Strike",
+      "name": "Soul Suction Shoot",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Action Speed DOWN(LV 3) for 12 seconds dealdamage 8%restoreHP, [Erosion]5 whenUltimate damage +30%, inflict12 Mind Type damage taken by damage(LV 3)",
+      "description": "Deals physical damage to the nearest enemy. Also inflicts 1 Erosion(each Erosion decrease 4 Block, max 5 Erosion) and Action Speed DOWN(LV 3) for 12 seconds. Absorbs 8% of the damage dealt to restore own HP. When Erosion reach to 5, the ultimate damage +30% and inflicts Magic property damage taken increase(LV 1) for 12 seconds",
       "effect": "1350% + 1200",
       "buffEffects": [
         {
@@ -230,9 +264,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Soul Strike",
+      "name": "Soul Suction Shoot",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Action Speed DOWN(LV 4) for 12 seconds dealdamage 9%restoreHP, [Erosion]5 whenUltimate damage +30%, inflict12 Mind Type damage taken by damage(LV 4)",
+      "description": "Deals physical damage to the nearest enemy. Also inflicts 1 Erosion(each Erosion decrease 4 Block, max 5 Erosion) and Action Speed DOWN(LV 4) for 12 seconds. Absorbs 9% of the damage dealt to restore own HP. When Erosion reach to 5, the ultimate damage +30% and inflicts Magic property damage taken increase(LV 1) for 12 seconds",
       "effect": "1450% + 1300",
       "buffEffects": [
         {
@@ -251,9 +285,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Soul Strike",
+      "name": "Soul Suction Shoot",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy, inflict1[Erosion]([Erosion]1Block 4 Down, max5) and Action Speed DOWN(LV 5) for 12 seconds dealdamage 10%restoreHP, [Erosion]5 whenUltimate damage +30%, inflict12 Mind Type damage taken by damage(LV 5)",
+      "description": "Deals physical damage to the nearest enemy. Also inflicts 1 Erosion(each Erosion decrease 4 Block, max 5 Erosion) and Action Speed DOWN(LV 5) for 12 seconds. Absorbs 10% of the damage dealt to restore own HP. When Erosion reach to 5, the ultimate damage +30% and inflicts Magic property damage taken increase(LV 1) for 12 seconds",
       "effect": "1550% + 1400",
       "buffEffects": [
         {
@@ -276,17 +310,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Action Speed +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Large), Action Speed UP (Medium)",
       "effect": "Physical Attack + (+389), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Large)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     },
@@ -294,17 +331,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Physical Attack UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     }
@@ -600,4 +640,4 @@ export const stats = {
       "ATK": 74
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

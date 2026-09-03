@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -162,7 +196,7 @@ export const skills = {
       "rank": 1,
       "name": "My Radiant Flower Shining in the Night Sky",
       "icon": "skill001/skill0020_1",
-      "description": "Applies Accuracy UP(LV 1) to all allies for 10 seconds and Physical Critical DamageUP(LV 1) for 10 seconds , 10 Magic Critical DamageUP(LV 1)",
+      "description": "Applies Accuracy UP(LV 1) to all allies for 10 seconds and Physical Critical DamageUP(LV 1) for 10 seconds, 10s Magic Critical DamageUP(LV 1)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -189,7 +223,7 @@ export const skills = {
       "rank": 2,
       "name": "My Radiant Flower Shining in the Night Sky",
       "icon": "skill001/skill0020_2",
-      "description": "Applies Accuracy UP(LV 2) to all allies for 10 seconds and Physical Critical DamageUP(LV 2) for 10 seconds , 10 Magic Critical DamageUP(LV 2)",
+      "description": "Applies Accuracy UP(LV 2) to all allies for 10 seconds and Physical Critical DamageUP(LV 2) for 10 seconds, 10s Magic Critical DamageUP(LV 2)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -216,7 +250,7 @@ export const skills = {
       "rank": 3,
       "name": "My Radiant Flower Shining in the Night Sky",
       "icon": "skill001/skill0020_3",
-      "description": "Applies Accuracy UP(LV 3) to all allies for 10 seconds and Physical Critical DamageUP(LV 3) for 10 seconds , 10 Magic Critical DamageUP(LV 3)",
+      "description": "Applies Accuracy UP(LV 3) to all allies for 10 seconds and Physical Critical DamageUP(LV 3) for 10 seconds, 10s Magic Critical DamageUP(LV 3)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -243,7 +277,7 @@ export const skills = {
       "rank": 4,
       "name": "My Radiant Flower Shining in the Night Sky",
       "icon": "skill001/skill0020_4",
-      "description": "Applies Accuracy UP(LV 4) to all allies for 10 seconds and Physical Critical DamageUP(LV 4) for 10 seconds , 10 Magic Critical DamageUP(LV 4)",
+      "description": "Applies Accuracy UP(LV 4) to all allies for 10 seconds and Physical Critical DamageUP(LV 4) for 10 seconds, 10s Magic Critical DamageUP(LV 4)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -270,7 +304,7 @@ export const skills = {
       "rank": 5,
       "name": "My Radiant Flower Shining in the Night Sky",
       "icon": "skill001/skill0020_5",
-      "description": "Applies Accuracy UP(LV 5) to all allies for 10 seconds and Physical Critical DamageUP(LV 5) for 10 seconds , 10 Magic Critical DamageUP(LV 5)",
+      "description": "Applies Accuracy UP(LV 5) to all allies for 10 seconds and Physical Critical DamageUP(LV 5) for 10 seconds, 10s Magic Critical DamageUP(LV 5)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -299,12 +333,14 @@ export const skills = {
       "slot": 1,
       "name": "MP Recovery",
       "icon": "skill001/skill1003",
+      "description": "Gain MP Recovery",
       "effect": "MP Recovery (+50%)",
       "effectValues": [
         {
           "name": "MP Recovery",
           "value": 50,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         }
       ]
     },
@@ -312,17 +348,14 @@ export const skills = {
       "slot": 2,
       "name": "Action Speed +, Max HP +",
       "icon": "skill001/skill1005",
-      "effect": "Action Speed + (+10), Max HP + (0)",
+      "description": "Gain Action Speed UP (Medium), Max HP UP (Cannot be Cleansed)",
+      "effect": "Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
-        },
-        {
-          "name": "Max HP +",
-          "value": 0,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     }
@@ -633,4 +666,4 @@ export const stats = {
       "HP": 417
     }
   ]
-};;;;;;;
+};;;;;;;;;

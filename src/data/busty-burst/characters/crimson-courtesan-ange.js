@@ -91,15 +91,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Don't you want to play with me?",
       "icon": "skill001/skill0019",
-      "description": "Applies Fire Type ATK 20%UP to self for 10 seconds and Magic Attack 20%+40 UP for 10 seconds , 4 MP Regeneration 50",
-      "descriptionLv1": "Applies Fire Type ATK 20%UP to self for 10 seconds and Magic Attack 20%+40 UP for 10 seconds , 4 MP Regeneration 50",
-      "descriptionLv90": "Applies Fire Type ATK 20%UP to self for 10 seconds and Magic Attack 20%+850 UP for 10 seconds , 4 MP Regeneration 50",
+      "description": "Applies Fire Type ATK 20%UP to self for 10 seconds and Magic Attack 20%+40 UP for 10 seconds, 4s MP Regeneration 50",
+      "descriptionLv1": "Applies Fire Type ATK 20%UP to self for 10 seconds and Magic Attack 20%+40 UP for 10 seconds, 4s MP Regeneration 50",
+      "descriptionLv90": "Applies Fire Type ATK 20%UP to self for 10 seconds and Magic Attack 20%+850 UP for 10 seconds, 4s MP Regeneration 50",
       "target": "Self",
       "castTime": 1.2,
       "damageScaling": null,
@@ -139,9 +173,9 @@ export const skills = {
       "slot": 3,
       "name": "It'd be bad if it hurts...?",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies, inflict 3s and Fire Type Damage Taken 16%UP for 6 seconds",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies, inflict 3s and Fire Type Damage Taken 16%UP for 6 seconds",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies, inflict 3s and Fire Type Damage Taken 16%UP for 6 seconds",
+      "description": "Deals magic damage to the 3 nearest enemies, applies 3s Blind and Fire Type Damage Taken 16%UP for 6 seconds",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies, applies 3s Blind and Fire Type Damage Taken 16%UP for 6 seconds",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies, applies 3s Blind and Fire Type Damage Taken 16%UP for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.2,
       "damageScaling": "120% ATK",
@@ -175,7 +209,7 @@ export const skills = {
       "rank": 1,
       "name": "Flame of Desirous Remnant",
       "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 3 seconds and Magic Defense DOWN(LV 1) for 10 seconds , 10 Accuracy DOWN(LV 1)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 3 seconds and Magic Defense DOWN(LV 1) for 10 seconds, 10s Accuracy DOWN(LV 1)",
       "effect": "400% + 400",
       "buffEffects": [
         {
@@ -202,7 +236,7 @@ export const skills = {
       "rank": 2,
       "name": "Flame of Desirous Remnant",
       "icon": "skill001/skill0012_2",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 3.5 seconds and Magic Defense DOWN(LV 2) for 10 seconds , 10 Accuracy DOWN(LV 2)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 3.5 seconds and Magic Defense DOWN(LV 2) for 10 seconds, 10s Accuracy DOWN(LV 2)",
       "effect": "470% + 550",
       "buffEffects": [
         {
@@ -229,7 +263,7 @@ export const skills = {
       "rank": 3,
       "name": "Flame of Desirous Remnant",
       "icon": "skill001/skill0012_3",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 3.5 seconds and Magic Defense DOWN(LV 3) for 10 seconds , 10 Accuracy DOWN(LV 3)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 3.5 seconds and Magic Defense DOWN(LV 3) for 10 seconds, 10s Accuracy DOWN(LV 3)",
       "effect": "520% + 700",
       "buffEffects": [
         {
@@ -256,7 +290,7 @@ export const skills = {
       "rank": 4,
       "name": "Flame of Desirous Remnant",
       "icon": "skill001/skill0012_4",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 4 seconds and Magic Defense DOWN(LV 4) for 10 seconds , 10 Accuracy DOWN(LV 4)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 4 seconds and Magic Defense DOWN(LV 4) for 10 seconds, 10s Accuracy DOWN(LV 4)",
       "effect": "560% + 800",
       "buffEffects": [
         {
@@ -283,7 +317,7 @@ export const skills = {
       "rank": 5,
       "name": "Flame of Desirous Remnant",
       "icon": "skill001/skill0012_5",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 4 seconds and Magic Defense DOWN(LV 5) for 10 seconds , 10 Accuracy DOWN(LV 5)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 4 seconds and Magic Defense DOWN(LV 5) for 10 seconds, 10s Accuracy DOWN(LV 5)",
       "effect": "580% + 900",
       "buffEffects": [
         {
@@ -312,17 +346,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Critical Damage+, Action Speed +",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Critical Damage UP (Large), Action Speed UP (Medium)",
       "effect": "Magic Critical Damage+ (+176), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Magic Critical Damage+",
           "value": 176,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Large)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     },
@@ -330,17 +367,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Magic Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Magic Attack UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Magic Attack + (+259)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         }
       ]
     }
@@ -664,4 +704,4 @@ export const stats = {
       "MATK": 74
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

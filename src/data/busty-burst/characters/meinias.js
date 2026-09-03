@@ -88,6 +88,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -245,17 +279,20 @@ export const skills = {
       "slot": 1,
       "name": "Accuracy +, Action Speed +",
       "icon": "skill001/skill1004",
+      "description": "Gain Accuracy UP (Large), Action Speed UP (Medium)",
       "effect": "Accuracy + (+25), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Accuracy +",
           "value": 25,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Large)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     },
@@ -263,17 +300,20 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Ultimate Damage +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Medium), Ultimate Damage UP (Large)",
       "effect": "Physical Attack + (+259), Ultimate Damage + (+15%)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         },
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         }
       ]
     }
@@ -582,4 +622,4 @@ export const stats = {
       "MP Charge": 4
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

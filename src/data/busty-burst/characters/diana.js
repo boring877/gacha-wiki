@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Rathbrink Style - Flourishing Sun",
+      "name": "Rasblink Sword Art: Circle Sun",
       "icon": "skill001/skill0002",
-      "description": "Deals 390% ATK +200 physical damage to the nearest enemy",
-      "descriptionLv1": "Deals 390% ATK +200 physical damage to the nearest enemy",
-      "descriptionLv90": "Deals 390% ATK +2870 physical damage to the nearest enemy",
+      "description": "Deals physical damage to the nearest enemy",
+      "descriptionLv1": "Deals physical damage to the nearest enemy",
+      "descriptionLv90": "Deals physical damage to the nearest enemy",
       "target": "Nearest Enemy",
       "castTime": 0.81,
       "damageScaling": "390% ATK",
@@ -111,11 +145,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Sword Aura Release",
+      "name": "Sword aura release",
       "icon": "skill001/skill0013",
-      "description": "Applies Physical Attack +20% and +40 UP to self for 12 seconds and Accuracy +11 UP for 12 seconds",
-      "descriptionLv1": "Applies Physical Attack +20% and +40 UP to self for 12 seconds and Accuracy +11 UP for 12 seconds",
-      "descriptionLv90": "Applies Physical Attack +20% and +850 UP to self for 12 seconds and Accuracy +23 UP for 12 seconds",
+      "description": "Applies Physical Attack 20%+40 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
+      "descriptionLv1": "Applies Physical Attack 20%+40 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
+      "descriptionLv90": "Applies Physical Attack 20%+850 UP to self for 12 seconds and Accuracy 23 UP for 12 seconds",
       "target": "Self",
       "castTime": 0.81,
       "damageScaling": null,
@@ -149,9 +183,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Rathbrink Style Ultimate - Flying Swallow Form 2",
+      "name": "Rasblink Sword Art Ult: Flying Swallow II",
       "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy, inflicts 5s Silence and Physical Defense DOWN(LV 1) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, inflict Silence for 5 seconds and Physical Defense DOWN(LV 1) for 10 seconds",
       "effect": "1300% + 700",
       "buffEffects": [
         {
@@ -170,9 +204,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Rathbrink Style Ultimate - Flying Swallow Form 2",
+      "name": "Rasblink Sword Art Ult: Flying Swallow II",
       "icon": "skill001/skill0012_2",
-      "description": "Deals physical damage to the nearest enemy, inflicts 6s Silence and Physical Defense DOWN(LV 2) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, inflict Silence for 6 seconds and Physical Defense DOWN(LV 2) for 10 seconds",
       "effect": "1560% + 900",
       "buffEffects": [
         {
@@ -191,9 +225,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Rathbrink Style Ultimate - Flying Swallow Form 2",
+      "name": "Rasblink Sword Art Ult: Flying Swallow II",
       "icon": "skill001/skill0012_3",
-      "description": "Deals physical damage to the nearest enemy, inflicts 6s Silence and Physical Defense DOWN(LV 3) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, inflict Silence for 6 seconds and Physical Defense DOWN(LV 3) for 10 seconds",
       "effect": "1760% + 1050",
       "buffEffects": [
         {
@@ -212,9 +246,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Rathbrink Style Ultimate - Flying Swallow Form 2",
+      "name": "Rasblink Sword Art Ult: Flying Swallow II",
       "icon": "skill001/skill0012_4",
-      "description": "Deals physical damage to the nearest enemy, inflicts 7s Silence and Physical Defense DOWN(LV 4) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, inflict Silence for 7 seconds and Physical Defense DOWN(LV 4) for 10 seconds",
       "effect": "1900% + 1100",
       "buffEffects": [
         {
@@ -233,9 +267,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Rathbrink Style Ultimate - Flying Swallow Form 2",
+      "name": "Rasblink Sword Art Ult: Flying Swallow II",
       "icon": "skill001/skill0012_5",
-      "description": "Deals physical damage to the nearest enemy, inflicts 7s Silence and Physical Defense DOWN(LV 5) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, inflict Silence for 7 seconds and Physical Defense DOWN(LV 5) for 10 seconds",
       "effect": "2039% + 1200",
       "buffEffects": [
         {
@@ -258,17 +292,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Accuracy +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Large), Accuracy UP (Medium)",
       "effect": "Physical Attack + (+389), Accuracy + (+20)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Large)"
         },
         {
           "name": "Accuracy +",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         }
       ]
     },
@@ -276,17 +313,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+4.5%)",
+      "description": "Gain Skill Damage UP (Large), Physical Critical Damage UP (Large)",
+      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Large)"
         }
       ]
     }
@@ -294,7 +334,7 @@ export const skills = {
   "name": "Diana",
   "id": 2114,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Attacker",
   "tags": [
     "Debuff",
@@ -326,7 +366,7 @@ export const stats = {
   "characterId": 2114,
   "name": "Diana",
   "rarity": "SSR",
-  "element": "Light",
+  "element": "聖",
   "weapon": "",
   "role": "Attacker",
   "tags": [
@@ -597,4 +637,4 @@ export const stats = {
       "ATK": 55
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

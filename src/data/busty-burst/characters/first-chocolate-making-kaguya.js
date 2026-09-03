@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Chocolate... want some...?",
       "icon": "skill001/skill0021",
-      "description": "restore HP to all alliesHP and inflicts Hit-Based Shield(25%+3 hit(s)) for 15 seconds and Healing Shield (300) for 15 seconds , 15 Block 11 UP",
-      "descriptionLv1": "restore HP to all alliesHP and inflicts Hit-Based Shield(25%+3 hit(s)) for 15 seconds and Healing Shield (300) for 15 seconds , 15 Block 11 UP",
-      "descriptionLv90": "restore HP to all alliesHP and inflicts Hit-Based Shield(25%+3 hit(s)) for 15 seconds and Healing Shield (300) for 15 seconds , 15 Block 23 UP",
+      "description": "Restore HP to all alliesHP and inflicts Hit-Based Shield(25%+3 hit(s)) for 15 seconds and Healing Shield (300) for 15 seconds, 15s Block 11 UP",
+      "descriptionLv1": "Restore HP to all alliesHP and inflicts Hit-Based Shield(25%+3 hit(s)) for 15 seconds and Healing Shield (300) for 15 seconds, 15s Block 11 UP",
+      "descriptionLv90": "Restore HP to all alliesHP and inflicts Hit-Based Shield(25%+3 hit(s)) for 15 seconds and Healing Shield (300) for 15 seconds, 15s Block 23 UP",
       "target": "All Allies",
       "castTime": 1.5,
       "damageScaling": "2300% ATK",
@@ -138,9 +172,9 @@ export const skills = {
       "slot": 3,
       "name": "Wonder if it's done...?",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack 18%+35 UP to all allies for 15 seconds and Magic Attack 18%+35 UP for 15 seconds , 15 Accuracy 9 UP",
-      "descriptionLv1": "Applies Physical Attack 18%+35 UP to all allies for 15 seconds and Magic Attack 18%+35 UP for 15 seconds , 15 Accuracy 9 UP",
-      "descriptionLv90": "Applies Physical Attack 18%+665 UP to all allies for 15 seconds and Magic Attack 18%+665 UP for 15 seconds , 15 Accuracy 18 UP",
+      "description": "Applies Physical Attack 18%+35 UP to all allies for 15 seconds and Magic Attack 18%+35 UP for 15 seconds, 15s Accuracy 9 UP",
+      "descriptionLv1": "Applies Physical Attack 18%+35 UP to all allies for 15 seconds and Magic Attack 18%+35 UP for 15 seconds, 15s Accuracy 9 UP",
+      "descriptionLv90": "Applies Physical Attack 18%+665 UP to all allies for 15 seconds and Magic Attack 18%+665 UP for 15 seconds, 15s Accuracy 18 UP",
       "target": "All Allies",
       "castTime": 1.5,
       "damageScaling": null,
@@ -184,7 +218,7 @@ export const skills = {
       "rank": 1,
       "name": "I hope you like it ",
       "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy, inflict 4s , 4s Curse for",
+      "description": "Deals physical damage to the nearest enemy, applies 4s Blind, 4s",
       "effect": "1000% + 800",
       "buffEffects": [
         {
@@ -205,7 +239,7 @@ export const skills = {
       "rank": 2,
       "name": "I hope you like it ",
       "icon": "skill001/skill0012_2",
-      "description": "Deals physical damage to the nearest enemy, inflict 5s , 5s Curse for",
+      "description": "Deals physical damage to the nearest enemy, applies 5s Blind, 5s",
       "effect": "1200% + 1000",
       "buffEffects": [
         {
@@ -226,7 +260,7 @@ export const skills = {
       "rank": 3,
       "name": "I hope you like it ",
       "icon": "skill001/skill0012_3",
-      "description": "Deals physical damage to the nearest enemy, inflict 5s , 5s Curse for",
+      "description": "Deals physical damage to the nearest enemy, applies 5s Blind, 5s",
       "effect": "1250% + 1200",
       "buffEffects": [
         {
@@ -247,7 +281,7 @@ export const skills = {
       "rank": 4,
       "name": "I hope you like it ",
       "icon": "skill001/skill0012_4",
-      "description": "Deals physical damage to the nearest enemy, inflict6s Blind for, 6s Curse for",
+      "description": "Deals physical damage to the nearest enemy, applies 6s Blind, 6s",
       "effect": "1350% + 1350",
       "buffEffects": [
         {
@@ -268,7 +302,7 @@ export const skills = {
       "rank": 5,
       "name": "I hope you like it ",
       "icon": "skill001/skill0012_5",
-      "description": "Deals physical damage to the nearest enemy, inflict6s Blind for, 6s Curse for",
+      "description": "Deals physical damage to the nearest enemy, applies 6s Blind, 6s",
       "effect": "1450% + 1500",
       "buffEffects": [
         {
@@ -291,17 +325,20 @@ export const skills = {
       "slot": 1,
       "name": "MP Recovery, Shield",
       "icon": "skill001/skill1007",
+      "description": "Gain MP Recovery, Damage Reduction (Cannot be Cleansed)",
       "effect": "MP Recovery (+30%), Shield (+9999%)",
       "effectValues": [
         {
           "name": "MP Recovery",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         },
         {
           "name": "Shield",
           "value": 9999,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Damage Reduction (Cannot be Cleansed)"
         }
       ]
     },
@@ -309,22 +346,14 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Attack +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "effect": "Ultimate Damage + (+15%), Physical Attack + (0), Magic Attack + (0)",
+      "description": "Gain Ultimate Damage UP (Large), Physical Attack UP (Cannot be Cleansed), Magic Attack UP (Cannot be Cleansed)",
+      "effect": "Ultimate Damage + (+15%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
-        },
-        {
-          "name": "Physical Attack +",
-          "value": 0,
-          "type": "flat"
-        },
-        {
-          "name": "Magic Attack +",
-          "value": 0,
-          "type": "flat"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         }
       ]
     }
@@ -635,4 +664,4 @@ export const stats = {
       "MP Charge": 4
     }
   ]
-};;;;;;;
+};;;;;;;;;

@@ -89,15 +89,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "To the G, to the O",
       "icon": "skill001/skill0014",
-      "description": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Mag ATK ally 1 15 Magic Attack 25%+50 UP, 15 Magic Critical Damage 80 UP[Cheer Up] Lv when, inflict15 Hit-Based magic damageUP(30%, 5)",
-      "descriptionLv1": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Mag ATK ally 1 15 Magic Attack 25%+50 UP, 15 Magic Critical Damage 80 UP[Cheer Up] Lv when, inflict15 Hit-Based magic damageUP(30%, 5)",
-      "descriptionLv90": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Mag ATK ally 1 15 Magic Attack 25%+950 UP, 15 Magic Critical Damage 980 UP[Cheer Up] Lv when, inflict15 Hit-Based magic damageUP(30%, 5)",
+      "description": "When without Cheer Up(10%UP movement speed), gain Cheer Upfor 20 seconds. Also apply Magic Attack 25%+50 UP for 15 seconds and Magic Critical Damage 80 UP for 15 seconds to the ally with highest magical damage. During Cheer Up, additionally apply magic damage up on-cast(30%, 5 times) for 15 seconds",
+      "descriptionLv1": "When without Cheer Up(10%UP movement speed), gain Cheer Upfor 20 seconds. Also apply Magic Attack 25%+50 UP for 15 seconds and Magic Critical Damage 80 UP for 15 seconds to the ally with highest magical damage. During Cheer Up, additionally apply magic damage up on-cast(30%, 5 times) for 15 seconds",
+      "descriptionLv90": "When without Cheer Up(10%UP movement speed), gain Cheer Upfor 20 seconds. Also apply Magic Attack 25%+950 UP for 15 seconds and Magic Critical Damage 980 UP for 15 seconds to the ally with highest magical damage. During Cheer Up, additionally apply magic damage up on-cast(30%, 5 times) for 15 seconds",
       "target": "Highest Mag ATK Ally",
       "castTime": 1.25,
       "damageScaling": null,
@@ -136,11 +170,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "My finest performance!",
+      "name": "My most wonderful show！",
       "icon": "skill001/skill0019",
-      "description": "highest Mag ATK ally 1inflict15 Hit-Based Shield(30%+9 hit(s)) and Block 13 UP for 15 seconds",
-      "descriptionLv1": "highest Mag ATK ally 1inflict15 Hit-Based Shield(30%+9 hit(s)) and Block 13 UP for 15 seconds",
-      "descriptionLv90": "highest Mag ATK ally 1inflict15 Hit-Based Shield(30%+9 hit(s)) and Block 26 UP for 15 seconds",
+      "description": "Apply Hit-Based Shield(30%+9 hit(s)) for 15 seconds and Block 13 UP for 15 seconds to the ally with highest magical damage",
+      "descriptionLv1": "Apply Hit-Based Shield(30%+9 hit(s)) for 15 seconds and Block 13 UP for 15 seconds to the ally with highest magical damage",
+      "descriptionLv90": "Apply Hit-Based Shield(30%+9 hit(s)) for 15 seconds and Block 26 UP for 15 seconds to the ally with highest magical damage",
       "target": "Highest Mag ATK Ally",
       "castTime": 1.25,
       "damageScaling": null,
@@ -282,17 +316,14 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Debuff Resistance+",
       "icon": "skill001/skill1003",
-      "effect": "Max HP + (+3444), Debuff Resistance+ (+30%)",
+      "description": "Gain Max HP UP (Large), Debuff Resistance UP (Small)",
+      "effect": "Max HP + (+3444)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
-        },
-        {
-          "name": "Debuff Resistance+",
-          "value": 30,
-          "type": "percent"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         }
       ]
     },
@@ -300,17 +331,20 @@ export const skills = {
       "slot": 2,
       "name": "MP Recovery+, Magic Attack +",
       "icon": "skill001/skill1007",
+      "description": "Gain MP Recovery, Magic Attack UP (Large)",
       "effect": "MP Recovery+ (+100%), Magic Attack + (+389)",
       "effectValues": [
         {
           "name": "MP Recovery+",
           "value": 100,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         },
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         }
       ]
     }
@@ -630,4 +664,4 @@ export const stats = {
       "HP": 436
     }
   ]
-};;;;;;;
+};;;;;;;;;

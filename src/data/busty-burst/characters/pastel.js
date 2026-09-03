@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -277,30 +311,35 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Physical Attack +",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP (Large), Physical Attack UP (Medium)",
       "effect": "Max HP + (+3444), Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         },
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     },
     {
       "slot": 2,
-      "name": "Block+",
+      "name": "Debuff Resistance +, Block+",
       "icon": "skill001/skill1006",
+      "description": "Gain Debuff Resistance UP (Tiny), Block UP (Small)",
       "effect": "Block+ (+10)",
       "effectValues": [
         {
           "name": "Block+",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Small)"
         }
       ]
     }
@@ -615,4 +654,4 @@ export const stats = {
       "Block": 12
     }
   ]
-};;;;;;;
+};;;;;;;;;

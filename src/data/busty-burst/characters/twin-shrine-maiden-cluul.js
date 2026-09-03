@@ -92,6 +92,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -162,7 +196,7 @@ export const skills = {
       "rank": 1,
       "name": "Ten Thousand Demon Annihilation Greatsword",
       "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the nearest enemy, guaranteed hit, and before activating the Ultimate,4 and Magic Defense DOWN(LV 1) for 10 seconds",
+      "description": "Deals magic damage to the nearest enemy, guaranteed hit, and before activating the Ultimate,4s and Magic Defense DOWN(LV 1) for 10 seconds",
       "effect": "1200% + 1200",
       "buffEffects": [
         {
@@ -183,7 +217,7 @@ export const skills = {
       "rank": 2,
       "name": "Ten Thousand Demon Annihilation Greatsword",
       "icon": "skill001/skill0006_2",
-      "description": "Deals magic damage to the nearest enemy, guaranteed hit, and before activating the Ultimate,5 and Magic Defense DOWN(LV 2) for 10 seconds",
+      "description": "Deals magic damage to the nearest enemy, guaranteed hit, and before activating the Ultimate,5s and Magic Defense DOWN(LV 2) for 10 seconds",
       "effect": "1440% + 1400",
       "buffEffects": [
         {
@@ -204,7 +238,7 @@ export const skills = {
       "rank": 3,
       "name": "Ten Thousand Demon Annihilation Greatsword",
       "icon": "skill001/skill0006_3",
-      "description": "Deals magic damage to the nearest enemy, guaranteed hit, and before activating the Ultimate,5 and Magic Defense DOWN(LV 3) for 10 seconds",
+      "description": "Deals magic damage to the nearest enemy, guaranteed hit, and before activating the Ultimate,5s and Magic Defense DOWN(LV 3) for 10 seconds",
       "effect": "1620% + 1600",
       "buffEffects": [
         {
@@ -225,7 +259,7 @@ export const skills = {
       "rank": 4,
       "name": "Ten Thousand Demon Annihilation Greatsword",
       "icon": "skill001/skill0006_4",
-      "description": "Deals magic damage to the nearest enemy, guaranteed hit, and before activating the Ultimate,6 and Magic Defense DOWN(LV 4) for 10 seconds",
+      "description": "Deals magic damage to the nearest enemy, guaranteed hit, and before activating the Ultimate,6s and Magic Defense DOWN(LV 4) for 10 seconds",
       "effect": "1739% + 1800",
       "buffEffects": [
         {
@@ -246,7 +280,7 @@ export const skills = {
       "rank": 5,
       "name": "Ten Thousand Demon Annihilation Greatsword",
       "icon": "skill001/skill0006_5",
-      "description": "Deals magic damage to the nearest enemy, guaranteed hit, and before activating the Ultimate,6 and Magic Defense DOWN(LV 5) for 10 seconds",
+      "description": "Deals magic damage to the nearest enemy, guaranteed hit, and before activating the Ultimate,6s and Magic Defense DOWN(LV 5) for 10 seconds",
       "effect": "1800% + 2000",
       "buffEffects": [
         {
@@ -269,17 +303,14 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Normal Attack Magic Defense DOWN",
       "icon": "skill001/skill1001",
-      "effect": "Action Speed + (+15), Normal Attack Magic Defense DOWN (0)",
+      "description": "Gain Action Speed UP (Large), Normal Attacks reduce enemy Magic Defense DOWN",
+      "effect": "Action Speed + (+15)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
-          "type": "flat"
-        },
-        {
-          "name": "Normal Attack Magic Defense DOWN",
-          "value": 0,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Large)"
         }
       ]
     },
@@ -287,17 +318,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Magic Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Magic Attack UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Magic Attack + (+259)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         }
       ]
     }
@@ -623,4 +657,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;
+};;;;;;;;;

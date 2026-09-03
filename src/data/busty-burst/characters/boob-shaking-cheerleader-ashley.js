@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "St and up yell！",
       "icon": "skill001/skill0019",
-      "description": "all allies10 Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) and Block 11 UP for 10 seconds , 3%damage taken(max15% (max stacking: )",
-      "descriptionLv1": "all allies10 Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) and Block 11 UP for 10 seconds , 3%damage taken(max15% (max stacking: )",
-      "descriptionLv90": "all allies10 Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) and Block 23 UP for 10 seconds , 3%damage taken(max15% (max stacking: )",
+      "description": "All allies 10s Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) and Block 11 UP for 10 seconds, 3%damage taken(max 15%stackable)",
+      "descriptionLv1": "All allies 10s Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) and Block 11 UP for 10 seconds, 3%damage taken(max 15%stackable)",
+      "descriptionLv90": "All allies 10s Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) and Block 23 UP for 10 seconds, 3%damage taken(max 15%stackable)",
       "target": "All Allies",
       "castTime": 0.85,
       "damageScaling": null,
@@ -139,9 +173,9 @@ export const skills = {
       "slot": 3,
       "name": "Go for it！",
       "icon": "skill001/skill0019",
-      "description": "all allies10 Action Speed 17%UP and Accuracy 11 UP for 10 seconds , 10000damageUP(max50000 (max stacking: )",
-      "descriptionLv1": "all allies10 Action Speed 17%UP and Accuracy 11 UP for 10 seconds , 10000damageUP(max50000 (max stacking: )",
-      "descriptionLv90": "all allies10 Action Speed 17%UP and Accuracy 23 UP for 10 seconds , 10000damageUP(max50000 (max stacking: )",
+      "description": "All allies 10s Action Speed 17%UP and Accuracy 11 UP for 10 seconds, 10000damageUP(max 50000stackable)",
+      "descriptionLv1": "All allies 10s Action Speed 17%UP and Accuracy 11 UP for 10 seconds, 10000damageUP(max 50000stackable)",
+      "descriptionLv90": "All allies 10s Action Speed 17%UP and Accuracy 23 UP for 10 seconds, 10000damageUP(max 50000stackable)",
       "target": "All Allies",
       "castTime": 0.85,
       "damageScaling": null,
@@ -183,7 +217,7 @@ export const skills = {
       "rank": 1,
       "name": "Ardent．The．Victory",
       "icon": "skill001/skill0019",
-      "description": "all allies10 Physical Critical DamageUP(LV 1) and Magic Critical DamageUP(LV 1) for 10 seconds , 10 Damage UP(LV 1)",
+      "description": "All allies 10s Physical Critical DamageUP(LV 1) and Magic Critical DamageUP(LV 1) for 10 seconds, 10s Damage UP(LV 1)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -210,7 +244,7 @@ export const skills = {
       "rank": 2,
       "name": "Ardent．The．Victory",
       "icon": "skill001/skill0019",
-      "description": "all allies10 Physical Critical DamageUP(LV 2) and Magic Critical DamageUP(LV 2) for 10 seconds , 10 Damage UP(LV 2)",
+      "description": "All allies 10s Physical Critical DamageUP(LV 2) and Magic Critical DamageUP(LV 2) for 10 seconds, 10s Damage UP(LV 2)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -237,7 +271,7 @@ export const skills = {
       "rank": 3,
       "name": "Ardent．The．Victory",
       "icon": "skill001/skill0019",
-      "description": "all allies10 Physical Critical DamageUP(LV 3) and Magic Critical DamageUP(LV 3) for 10 seconds , 10 Damage UP(LV 3)",
+      "description": "All allies 10s Physical Critical DamageUP(LV 3) and Magic Critical DamageUP(LV 3) for 10 seconds, 10s Damage UP(LV 3)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -264,7 +298,7 @@ export const skills = {
       "rank": 4,
       "name": "Ardent．The．Victory",
       "icon": "skill001/skill0019",
-      "description": "all allies10 Physical Critical DamageUP(LV 4) and Magic Critical DamageUP(LV 4) for 10 seconds , 10 Damage UP(LV 4)",
+      "description": "All allies 10s Physical Critical DamageUP(LV 4) and Magic Critical DamageUP(LV 4) for 10 seconds, 10s Damage UP(LV 4)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -291,7 +325,7 @@ export const skills = {
       "rank": 5,
       "name": "Ardent．The．Victory",
       "icon": "skill001/skill0019",
-      "description": "all allies10 Physical Critical DamageUP(LV 5) and Magic Critical DamageUP(LV 5) for 10 seconds , 10 Damage UP(LV 5)",
+      "description": "All allies 10s Physical Critical DamageUP(LV 5) and Magic Critical DamageUP(LV 5) for 10 seconds, 10s Damage UP(LV 5)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -318,19 +352,16 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "MP Recovery, MP Recovery",
+      "name": "Debuff Resistance+, MP Recovery",
       "icon": "skill001/skill1003",
-      "effect": "MP Recovery (+30%), MP Recovery (+30)",
+      "description": "Gain Debuff Resistance UP (Small), MP Recovery",
+      "effect": "MP Recovery (+30%)",
       "effectValues": [
         {
           "name": "MP Recovery",
           "value": 30,
-          "type": "percent"
-        },
-        {
-          "name": "MP Recovery",
-          "value": 30,
-          "type": "flat"
+          "type": "percent",
+          "gameText": "MP Recovery"
         }
       ]
     },
@@ -338,19 +369,9 @@ export const skills = {
       "slot": 2,
       "name": "Max HP +, Action Speed +",
       "icon": "skill001/skill1001",
-      "effect": "Max HP + (0), Action Speed + (0%)",
-      "effectValues": [
-        {
-          "name": "Max HP +",
-          "value": 0,
-          "type": "flat"
-        },
-        {
-          "name": "Action Speed +",
-          "value": 0,
-          "type": "percent"
-        }
-      ]
+      "description": "Gain Max HP UP (Cannot be Cleansed), Action Speed UP (Cannot be Cleansed)",
+      "effect": "HP",
+      "effectValues": []
     }
   ],
   "name": "Boob-Shaking Cheerleader: Ashley",
@@ -659,4 +680,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;
+};;;;;;;;;

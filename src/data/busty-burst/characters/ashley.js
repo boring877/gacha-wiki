@@ -90,11 +90,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Butterfly Cut",
+      "name": "Butterfly cut",
       "icon": "skill001/skill0002",
       "description": "Deals physical damage to the nearest enemy",
       "descriptionLv1": "Deals physical damage to the nearest enemy",
@@ -111,7 +145,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Please don't use violence",
+      "name": "Please don't use violent.",
       "icon": "skill001/skill0011",
       "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds",
       "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds",
@@ -249,12 +283,14 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Large)",
       "effect": "Physical Attack + (+389)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Large)"
         }
       ]
     },
@@ -262,17 +298,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Hit-Based Physical Damage + Lv2",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Medium), Hit-Based Physical Damage UP (+, hit (s))",
       "effect": "Skill Damage + (+20%), Hit-Based Physical Damage + Lv2 (+2)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Medium)"
         },
         {
           "name": "Hit-Based Physical Damage + Lv2",
           "value": 2,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Hit-Based Physical Damage UP (+, hit (s))"
         }
       ]
     }
@@ -583,4 +622,4 @@ export const stats = {
       "ATK": 62
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

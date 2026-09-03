@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -101,7 +135,7 @@ export const skills = {
       "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -18%-210 DOWN for 5 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.95,
-      "damageScaling": "110% ATK",
+      "damageScaling": "110.00000000000001% ATK",
       "baseDamage": "+80",
       "levelGrowth": "+6",
       "lvl1": "110% + 80",
@@ -124,9 +158,9 @@ export const skills = {
       "slot": 3,
       "name": "Instant incapacitation. That's the best.",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds , 2",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds , 2",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds , 2",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds, 2s",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds, 2s",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds, 2s",
       "target": "Nearest Enemy",
       "castTime": 0.95,
       "damageScaling": "250% ATK",
@@ -202,12 +236,14 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Medium)",
       "effect": "Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     },
@@ -215,17 +251,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Accuracy +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Medium), Accuracy UP (Small)",
       "effect": "Skill Damage + (+20%), Accuracy + (+10)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Medium)"
         },
         {
           "name": "Accuracy +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Small)"
         }
       ]
     }
@@ -536,4 +575,4 @@ export const stats = {
       "ATK": 53
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

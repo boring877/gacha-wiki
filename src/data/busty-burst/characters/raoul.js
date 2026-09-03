@@ -89,15 +89,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Happiness Shatter",
+      "name": "Happiness Crush",
       "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-40 DOWN for 6 seconds, self[Happiness]1([Happiness]1Mind Type ATK4%UP, max4), [Happiness]4,self6 Mind Type ATK15%UP",
-      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-40 DOWN for 6 seconds, self[Happiness]1([Happiness]1Mind Type ATK4%UP, max4), [Happiness]4,self6 Mind Type ATK15%UP",
-      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-220 DOWN for 6 seconds, self[Happiness]1([Happiness]1Mind Type ATK4%UP, max4), [Happiness]4,self6 Mind Type ATK15%UP",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-40 DOWN for 6 seconds and grants self one Happiness(Each Happinessincrease THINK property attack 4%UPmaxmum 4). Having 4Happinessgrants self THINK property attack 15%UP for 6 seconds",
+      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-40 DOWN for 6 seconds and grants self one Happiness(Each Happinessincrease THINK property attack 4%UPmaxmum 4). Having 4Happinessgrants self THINK property attack 15%UP for 6 seconds",
+      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-220 DOWN for 6 seconds and grants self one Happiness(Each Happinessincrease THINK property attack 4%UPmaxmum 4). Having 4Happinessgrants self THINK property attack 15%UP for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.4,
       "damageScaling": "330% ATK",
@@ -128,7 +162,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Happiness Shine",
+      "name": "Happiness Shining",
       "icon": "skill001/skill0014",
       "description": "Applies Magic Attack 18%+35 UP to self for 12 seconds and Accuracy 13 UP for 12 seconds",
       "descriptionLv1": "Applies Magic Attack 18%+35 UP to self for 12 seconds and Accuracy 13 UP for 12 seconds",
@@ -166,7 +200,7 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Happy Comet☆",
+      "name": "Happiness Comet☆",
       "icon": "skill001/skill0006_1",
       "description": "Deals magic damage to the nearest enemyApplies Action Speed UP(LV 1) to self for 10 seconds",
       "effect": "1100% + 800",
@@ -181,7 +215,7 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Happy Comet☆",
+      "name": "Happiness Comet☆",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the nearest enemyApplies Action Speed UP(LV 2) to self for 10 seconds",
       "effect": "1320% + 1000",
@@ -196,7 +230,7 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Happy Comet☆",
+      "name": "Happiness Comet☆",
       "icon": "skill001/skill0006_3",
       "description": "Deals magic damage to the nearest enemyApplies Action Speed UP(LV 3) to self for 10 seconds",
       "effect": "1470% + 1150",
@@ -211,7 +245,7 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Happy Comet☆",
+      "name": "Happiness Comet☆",
       "icon": "skill001/skill0006_4",
       "description": "Deals magic damage to the nearest enemyApplies Action Speed UP(LV 4) to self for 10 seconds",
       "effect": "1590% + 1300",
@@ -226,7 +260,7 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Happy Comet☆",
+      "name": "Happiness Comet☆",
       "icon": "skill001/skill0006_5",
       "description": "Deals magic damage to the nearest enemyApplies Action Speed UP(LV 5) to self for 10 seconds",
       "effect": "1700% + 1400",
@@ -245,17 +279,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Action Speed +",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Large), Action Speed UP (Medium)",
       "effect": "Magic Attack + (+389), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     },
@@ -263,17 +300,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Magic Critical Damage+",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Magic Critical Damage UP (Medium)",
       "effect": "Skill Damage + (+30%), Magic Critical Damage+ (+90)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Magic Critical Damage+",
           "value": 90,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Medium)"
         }
       ]
     }
@@ -593,4 +633,4 @@ export const stats = {
       "Magic Crit": 27
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

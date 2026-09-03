@@ -2,9 +2,83 @@
 // Auto-generated from game data
 
 export const info = {
-  'slug': 'eskelda',
-  'name': 'Eskelda',
+  "slug": "eskelda",
+  "name": "Eskelda",
+  "displayName": "Eskelda",
+  "baseName": "Eskelda",
+  "title": null,
+  "rarity": "R",
+  "element": "Water",
+  "role": "Tank",
+  "attackType": "Physical",
+  "position": {
+    "roman": "I",
+    "number": 1
+  },
+  "actionSpeed": "Very Slow",
+  "range": 240,
+  "weaponType": "Throw",
+  "skillTypes": [
+    "Debuff"
+  ],
+  "image": "Eskelda",
+  "introduction": "Front RowPhysicalTank",
+  "profile": {
+    "height": "165cm",
+    "bust": "98cm (I Cup)",
+    "waist": "59cm",
+    "hips": "94cm"
+  },
+  "credits": {
+    "illustration": {
+      "japanese": "深泥正",
+      "romanized": ""
+    },
+    "voice": {
+      "japanese": "杉原茉莉",
+      "romanized": ""
+    }
+  },
+  "obtain": {
+    "type": "unknown",
+    "source": ""
+  },
+  "characterId": 2028
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -179,12 +253,14 @@ export const skills = {
       "slot": 1,
       "name": "Magic Defense+",
       "icon": "skill001/skill1002",
+      "description": "Gain Magic Defense UP (Small)",
       "effect": "Magic Defense+ (+70)",
       "effectValues": [
         {
           "name": "Magic Defense+",
           "value": 70,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Defense UP (Small)"
         }
       ]
     },
@@ -192,12 +268,14 @@ export const skills = {
       "slot": 2,
       "name": "Paralysis Resistance LvMax",
       "icon": "skill001/skill1002",
+      "description": "Gain Paralysis Resistance UP",
       "effect": "Paralysis Resistance LvMax (+1%)",
       "effectValues": [
         {
           "name": "Paralysis Resistance LvMax",
           "value": 1,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Paralysis Resistance UP"
         }
       ]
     }
@@ -231,4 +309,280 @@ export const skills = {
   "slug": "eskelda"
 };
 
-export const stats = { 'id': 'eskelda' };
+export const stats = {
+  "id": "eskelda",
+  "characterId": 2028,
+  "name": "Eskelda",
+  "rarity": "R",
+  "element": "水",
+  "weapon": "",
+  "role": "Tank",
+  "tags": [
+    "Debuff"
+  ],
+  "baseStats": {
+    "hp": {
+      "base": 1966,
+      "lv90": 9831
+    },
+    "atk": {
+      "base": 208,
+      "lv90": 1040
+    },
+    "matk": {
+      "base": 124,
+      "lv90": 623
+    },
+    "def": {
+      "base": 199,
+      "lv90": 398
+    },
+    "mdef": {
+      "base": 79,
+      "lv90": 158
+    },
+    "accuracy": {
+      "base": 60,
+      "lv90": 99
+    },
+    "block": {
+      "base": 60,
+      "lv90": 180
+    },
+    "physCrit": {
+      "base": 278,
+      "lv90": 445
+    },
+    "magicCrit": {
+      "base": 167,
+      "lv90": 267
+    },
+    "hpRegen": {
+      "base": 98,
+      "lv90": 343
+    },
+    "mpRegen": {
+      "base": 50,
+      "lv90": 200
+    },
+    "healPwr": {
+      "base": 65,
+      "lv90": 162
+    },
+    "mpCharge": {
+      "base": 70,
+      "lv90": 70
+    },
+    "hpDrain": {
+      "base": 0,
+      "lv90": 0
+    },
+    "mpCostDown": {
+      "base": 0,
+      "lv90": 0
+    }
+  },
+  "limitBreak": {
+    "lb1": {
+      "HP": 648,
+      "MATK": 62,
+      "Block": 12,
+      "MP Charge": 6
+    },
+    "lb2": {
+      "HP": 745,
+      "MATK": 72,
+      "Accuracy": 13,
+      "Block": 14
+    },
+    "lb3": {
+      "HP": 874,
+      "MATK": 84,
+      "Block": 16,
+      "MP Charge": 9
+    },
+    "lb4": {
+      "HP": 972,
+      "MATK": 94,
+      "Accuracy": 17,
+      "Block": 18
+    },
+    "lb5": {
+      "HP": 1503,
+      "ATK": 121,
+      "DEF": 61,
+      "MDEF": 13,
+      "Heal Pwr": 13
+    },
+    "total": {
+      "HP": 4742,
+      "MATK": 312,
+      "Block": 60,
+      "MP Charge": 15,
+      "Accuracy": 30,
+      "ATK": 121,
+      "DEF": 61,
+      "MDEF": 13,
+      "Heal Pwr": 13
+    }
+  },
+  "gpAbility": {
+    "gp1": {
+      "HP": 150
+    },
+    "gp2": {
+      "HP": 150,
+      "Block": 1
+    },
+    "gp3": {
+      "HP": 350,
+      "Block": 1
+    },
+    "gp4": {
+      "HP": 350,
+      "Block": 3
+    },
+    "gp5": {
+      "HP": 550,
+      "Block": 3
+    },
+    "gp6": {
+      "HP": 550,
+      "Block": 5
+    },
+    "gp7": {
+      "HP": 750,
+      "Block": 5
+    },
+    "gp8": {
+      "HP": 750,
+      "Block": 7
+    },
+    "gp9": {
+      "HP": 950,
+      "Block": 7
+    },
+    "gp10": {
+      "HP": 950,
+      "Block": 9
+    },
+    "total": {
+      "HP": 950,
+      "Block": 9
+    }
+  },
+  "abilityGrade": {
+    "g1": {
+      "HP": 227,
+      "ATK": 22,
+      "Phys Crit": 6,
+      "Accuracy": 9
+    },
+    "g2": {
+      "HP": 273,
+      "ATK": 26,
+      "Phys Crit": 7,
+      "Block": 13
+    },
+    "g3": {
+      "HP": 318,
+      "ATK": 31,
+      "Phys Crit": 8,
+      "Accuracy": 12
+    },
+    "g4": {
+      "HP": 364,
+      "ATK": 35,
+      "Phys Crit": 9,
+      "Block": 17
+    },
+    "g5": {
+      "HP": 409,
+      "ATK": 39,
+      "Phys Crit": 11,
+      "MP Charge": 6
+    },
+    "g6": {
+      "HP": 455,
+      "ATK": 44,
+      "Phys Crit": 12,
+      "Accuracy": 18
+    },
+    "g7": {
+      "HP": 500,
+      "ATK": 48,
+      "Phys Crit": 13,
+      "Block": 23
+    },
+    "g8": {
+      "HP": 545,
+      "ATK": 53,
+      "Phys Crit": 14,
+      "Accuracy": 21
+    },
+    "g9": {
+      "HP": 591,
+      "ATK": 57,
+      "Phys Crit": 15,
+      "Block": 27
+    },
+    "g10": {
+      "HP": 636,
+      "ATK": 61,
+      "Phys Crit": 16,
+      "MP Charge": 9
+    },
+    "total": {
+      "HP": 636,
+      "ATK": 61,
+      "Phys Crit": 16,
+      "MP Charge": 9
+    }
+  },
+  "passiveAbilities": [
+    {
+      "grade": 1,
+      "MP Regen": 4
+    },
+    {
+      "grade": 2,
+      "MP Charge": 2
+    },
+    {
+      "grade": 3,
+      "MP Regen": 6
+    },
+    {
+      "grade": 4,
+      "MP Charge": 2
+    },
+    {
+      "grade": 5,
+      "MP Regen": 8
+    },
+    {
+      "grade": 6,
+      "MP Charge": 3
+    },
+    {
+      "grade": 7,
+      "MP Regen": 9
+    },
+    {
+      "grade": 8,
+      "MP Charge": 4
+    },
+    {
+      "grade": 9,
+      "MP Regen": 11
+    },
+    {
+      "grade": 10,
+      "MP Charge": 4
+    },
+    {
+      "grade": 11,
+      "MP Regen": 12
+    }
+  ]
+};;;

@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -269,17 +303,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Max HP +",
       "icon": "skill001/skill1003",
+      "description": "Gain Physical Attack UP (Medium), Max HP UP (Large)",
       "effect": "Physical Attack + (+159), Max HP + (+3444)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 159,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         },
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         }
       ]
     },
@@ -287,17 +324,20 @@ export const skills = {
       "slot": 2,
       "name": "Physical Defense +, Block+",
       "icon": "skill001/skill1006",
+      "description": "Gain Physical Defense UP (Medium), Block UP (Large)",
       "effect": "Physical Defense + (+141), Block+ (+20)",
       "effectValues": [
         {
           "name": "Physical Defense +",
           "value": 141,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Defense UP (Medium)"
         },
         {
           "name": "Block+",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Large)"
         }
       ]
     },
@@ -305,17 +345,20 @@ export const skills = {
       "slot": 3,
       "name": "Passive EX",
       "icon": "skill001/skill1006",
+      "description": "Gain Ultimate Damage UP (Large), Damage UP, Debuff Resistance UP",
       "effect": "Ultimate Damage + (+15%), Damage UP (+9999%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Damage UP",
           "value": 9999,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Damage UP"
         }
       ]
     }
@@ -628,4 +671,4 @@ export const stats = {
       "HP": 539
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -228,17 +262,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1002",
+      "description": "Gain Physical Defense UP (Small), Magic Defense UP (Small)",
       "effect": "Physical Defense + (+70), Magic Defense+ (+70)",
       "effectValues": [
         {
           "name": "Physical Defense +",
           "value": 70,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Defense UP (Small)"
         },
         {
           "name": "Magic Defense+",
           "value": 70,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Defense UP (Small)"
         }
       ]
     },
@@ -246,17 +283,20 @@ export const skills = {
       "slot": 2,
       "name": "Max HP +, Magic Attack +",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP (Small), Magic Attack UP (Medium)",
       "effect": "Max HP + (+1447), Magic Attack + (+259)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 1447,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Small)"
         },
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         }
       ]
     }
@@ -576,4 +616,4 @@ export const stats = {
       "MP Charge": 6
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

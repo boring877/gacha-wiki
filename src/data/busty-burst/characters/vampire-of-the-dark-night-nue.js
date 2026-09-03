@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Jaw Gate - Bloodstained Fang",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-500 after acting) for 15 seconds , activation beforeself6 Physical Attack 15%+30 UP, restore 6% of damage dealt as own HP5%HP",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-500 after acting) for 15 seconds , activation beforeself6 Physical Attack 15%+30 UP, restore 6% of damage dealt as own HP5%HP",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-5000 after acting) for 15 seconds , activation beforeself6 Physical Attack 15%+480 UP, restore 6% of damage dealt as own HP5%HP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-500 after acting) for 15 seconds, activation beforeself 6s Physical Attack 15%+30 UP, restore 6% of damage dealt as own HP 5%HP",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-500 after acting) for 15 seconds, activation beforeself 6s Physical Attack 15%+30 UP, restore 6% of damage dealt as own HP 5%HP",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-5000 after acting) for 15 seconds, activation beforeself 6s Physical Attack 15%+480 UP, restore 6% of damage dealt as own HP 5%HP",
       "target": "Nearest Enemy",
       "castTime": 0.8,
       "damageScaling": "400% ATK",
@@ -132,9 +166,9 @@ export const skills = {
       "slot": 3,
       "name": "Demon Eye Release",
       "icon": "skill001/skill0011",
-      "description": "1 enemies5s Confusion for, 5s Curse for, 10 Physical Defense -23%-50 DOWN",
-      "descriptionLv1": "1 enemies5s Confusion for, 5s Curse for, 10 Physical Defense -23%-50 DOWN",
-      "descriptionLv90": "1 enemies5s Confusion for, 5s Curse for, 10 Physical Defense -23%-320 DOWN",
+      "description": "1 enemies 5s, 5s, 10s Physical Defense -23%-50 DOWN",
+      "descriptionLv1": "1 enemies 5s, 5s, 10s Physical Defense -23%-50 DOWN",
+      "descriptionLv90": "1 enemies 5s, 5s, 10s Physical Defense -23%-320 DOWN",
       "target": "Nearest Enemy",
       "castTime": 0.95,
       "damageScaling": null,
@@ -283,17 +317,14 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Physical Attack +",
       "icon": "skill001/skill1001",
-      "effect": "Action Speed + (+15), Physical Attack + (0)",
+      "description": "Gain Action Speed UP (Large), Physical Attack UP (Cannot be Cleansed)",
+      "effect": "Action Speed + (+15)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
-          "type": "flat"
-        },
-        {
-          "name": "Physical Attack +",
-          "value": 0,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Large)"
         }
       ]
     },
@@ -301,17 +332,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+4.5%)",
+      "description": "Gain Skill Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         }
       ]
     }
@@ -622,4 +656,4 @@ export const stats = {
       "Phys Crit": 40
     }
   ]
-};;;;;;;
+};;;;;;;;;

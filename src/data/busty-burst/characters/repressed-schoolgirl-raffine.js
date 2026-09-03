@@ -92,6 +92,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -126,9 +160,9 @@ export const skills = {
       "slot": 3,
       "name": "Delusion Rampage Storm",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 2.5 seconds , 4s Blind for",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Dispel for 2.5 seconds , 4s Blind for",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Dispel for 2.5 seconds , 4s Blind for",
+      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 2.5 seconds, 4s Blind",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Dispel for 2.5 seconds, 4s Blind",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Dispel for 2.5 seconds, 4s Blind",
       "target": "Nearest Enemy",
       "castTime": 1.0,
       "damageScaling": "310% ATK",
@@ -269,17 +303,20 @@ export const skills = {
       "slot": 1,
       "name": "Accuracy +, Physical Critical Damage+",
       "icon": "skill001/skill1003",
+      "description": "Gain Accuracy UP (Large), Physical Critical Damage UP",
       "effect": "Accuracy + (+25), Physical Critical Damage+ (+100)",
       "effectValues": [
         {
           "name": "Accuracy +",
           "value": 25,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Large)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 5,
-          "type": "percent"
+          "value": 100,
+          "type": "flat",
+          "gameText": "Physical Critical Damage UP"
         }
       ]
     },
@@ -287,17 +324,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+4.5%)",
+      "description": "Gain Skill Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         }
       ]
     }
@@ -612,4 +652,4 @@ export const stats = {
       "ATK": 82
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

@@ -90,11 +90,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Nal",
+      "name": "Narr",
       "icon": "skill001/skill0011",
       "description": "Deals magic damage to the nearest enemy and inflicts Burn(HP --200 per second) for 12 seconds and Action Speed -14%DOWN for 7 seconds",
       "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Burn(HP --200 per second) for 12 seconds and Action Speed -14%DOWN for 7 seconds",
@@ -129,7 +163,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Krislid",
+      "name": "Jarid",
       "icon": "skill001/skill0011",
       "description": "Deals magic damage to the nearest enemy and inflicts Freeze(Unable to act;HP --700 per second) for 2 seconds and Block-11 DOWN for 10 seconds",
       "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Freeze(Unable to act;HP --700 per second) for 2 seconds and Block-11 DOWN for 10 seconds",
@@ -167,9 +201,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Maradalmatar",
+      "name": "Muardal Matar!",
       "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 1) for 10 seconds, Ultimate activation beforeself12 Magic Attack UP(LV 1)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 1) for 10 seconds. Also before activating an ultimate, grant self Magic Attack UP(LV 1) for 12 seconds",
       "effect": "370% + 350",
       "buffEffects": [
         {
@@ -188,9 +222,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Maradalmatar",
+      "name": "Muardal Matar!",
       "icon": "skill001/skill0006_2",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 2) for 10 seconds, Ultimate activation beforeself12 Magic Attack UP(LV 2)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 2) for 10 seconds. Also before activating an ultimate, grant self Magic Attack UP(LV 2) for 12 seconds",
       "effect": "440% + 450",
       "buffEffects": [
         {
@@ -209,9 +243,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Maradalmatar",
+      "name": "Muardal Matar!",
       "icon": "skill001/skill0006_3",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 3) for 10 seconds, Ultimate activation beforeself12 Magic Attack UP(LV 3)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 3) for 10 seconds. Also before activating an ultimate, grant self Magic Attack UP(LV 3) for 12 seconds",
       "effect": "490% + 550",
       "buffEffects": [
         {
@@ -230,9 +264,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Maradalmatar",
+      "name": "Muardal Matar!",
       "icon": "skill001/skill0006_4",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 4) for 10 seconds, Ultimate activation beforeself12 Magic Attack UP(LV 4)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 4) for 10 seconds. Also before activating an ultimate, grant self Magic Attack UP(LV 4) for 12 seconds",
       "effect": "530% + 650",
       "buffEffects": [
         {
@@ -251,9 +285,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Maradalmatar",
+      "name": "Muardal Matar!",
       "icon": "skill001/skill0006_5",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 5) for 10 seconds, Ultimate activation beforeself12 Magic Attack UP(LV 5)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense DOWN(LV 5) for 10 seconds. Also before activating an ultimate, grant self Magic Attack UP(LV 5) for 12 seconds",
       "effect": "550% + 700",
       "buffEffects": [
         {
@@ -276,17 +310,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Accuracy +",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Large), Accuracy UP (Medium)",
       "effect": "Magic Attack + (+389), Accuracy + (+20)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         },
         {
           "name": "Accuracy +",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         }
       ]
     },
@@ -294,17 +331,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Skill Enhancement Regol Cost DOWNWater",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Regol cost for enhancing Water Type Paladin skills -%",
       "effect": "Skill Damage + (+30%), Skill Enhancement Regol Cost DOWNWater (+5%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Skill Enhancement Regol Cost DOWNWater",
           "value": 5,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Regol cost for enhancing Water Type Paladin skills -%"
         }
       ]
     }
@@ -626,4 +666,4 @@ export const stats = {
       "MATK": 68
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

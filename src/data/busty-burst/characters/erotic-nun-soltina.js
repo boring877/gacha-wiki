@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Clematis",
       "icon": "skill001/skill0002",
-      "description": "6 nearest enemies dealphysical damage and inflicts Accuracy -9 DOWN for 6 seconds, [Binding]4(treated as, [Binding]1 afterHP-300, Block-0 5, max20), 20[Binding] when damage +50%, inflict 3s [], damage +50%, [Binding]+1",
-      "descriptionLv1": "6 nearest enemies dealphysical damage and inflicts Accuracy -9 DOWN for 6 seconds, [Binding]4(treated as, [Binding]1 afterHP-300, Block-0 5, max20), 20[Binding] when damage +50%, inflict 3s [], damage +50%, [Binding]+1",
-      "descriptionLv90": "6 nearest enemies dealphysical damage and inflicts Accuracy -18 DOWN for 6 seconds, [Binding]4(treated as, [Binding]1 afterHP-300, Block-0 5, max20), 20[Binding] when damage +50%, inflict 3s [], damage +50%, [Binding]+1",
+      "description": "6 nearest enemies dealphysical damage and inflicts Accuracy -9 DOWN for 6 seconds, [Binding]4 stacks(treated as, [Binding]1 stacks afterHP-300, Block-0 5, max 20 stacks), 20 stacks[Binding] when, damage +50%, applies 3s, damage +50%, [Binding]+1 stacks",
+      "descriptionLv1": "6 nearest enemies dealphysical damage and inflicts Accuracy -9 DOWN for 6 seconds, [Binding]4 stacks(treated as, [Binding]1 stacks afterHP-300, Block-0 5, max 20 stacks), 20 stacks[Binding] when, damage +50%, applies 3s, damage +50%, [Binding]+1 stacks",
+      "descriptionLv90": "6 nearest enemies dealphysical damage and inflicts Accuracy -18 DOWN for 6 seconds, [Binding]4 stacks(treated as, [Binding]1 stacks afterHP-300, Block-0 5, max 20 stacks), 20 stacks[Binding] when, damage +50%, applies 3s, damage +50%, [Binding]+1 stacks",
       "target": "Nearest Enemy",
       "castTime": 0.8,
       "damageScaling": "70% ATK",
@@ -138,9 +172,9 @@ export const skills = {
       "slot": 3,
       "name": "My beloved you...",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed 17%UP to self for 10 seconds and Physical Attack 20%+40 UP for 10 seconds , 10 Debuff Resistance 30%UP, [], SpeedUPselfall allies",
-      "descriptionLv1": "Applies Action Speed 17%UP to self for 10 seconds and Physical Attack 20%+40 UP for 10 seconds , 10 Debuff Resistance 30%UP, [], SpeedUPselfall allies",
-      "descriptionLv90": "Applies Action Speed 17%UP to self for 10 seconds and Physical Attack 20%+850 UP for 10 seconds , 10 Debuff Resistance 30%UP, [], SpeedUPselfall allies",
+      "description": "Applies Action Speed 17%UP to self for 10 seconds and Physical Attack 20%+40 UP for 10 seconds, 10s Debuff Resistance 30%UP,, action speedUPselfall allies",
+      "descriptionLv1": "Applies Action Speed 17%UP to self for 10 seconds and Physical Attack 20%+40 UP for 10 seconds, 10s Debuff Resistance 30%UP,, action speedUPselfall allies",
+      "descriptionLv90": "Applies Action Speed 17%UP to self for 10 seconds and Physical Attack 20%+850 UP for 10 seconds, 10s Debuff Resistance 30%UP,, action speedUPselfall allies",
       "target": "Self",
       "castTime": 0.95,
       "damageScaling": null,
@@ -182,7 +216,7 @@ export const skills = {
       "rank": 1,
       "name": "Mashari Shoo Shoo",
       "icon": "skill001/skill0003_1",
-      "description": "6 nearest enemies dealphysical damage and inflicts Physical Defense DOWN(LV 1) for 10 seconds, [Binding]4(treated as, [Binding]1 afterHP-300, Block-0 5, max20), 20[Binding] when damage +30%, inflict 5s (LV 1), (1 afterHP-6000, (cannot be removed))[], damage +50%, [Binding]+1",
+      "description": "6 nearest enemies dealphysical damage and inflicts Physical Defense DOWN(LV 1) for 10 seconds, [Binding]4 stacks(treated as, [Binding]1 stacks afterHP-300, Block-0 5, max 20 stacks), 20 stacks[Binding] when, damage +30%, applies 5s(LV 1), (1 stacks afterHP-6000, (cannot be removed)), damage +50%, [Binding]+1 stacks",
       "effect": "280% + 400",
       "buffEffects": [
         {
@@ -209,7 +243,7 @@ export const skills = {
       "rank": 2,
       "name": "Mashari Shoo Shoo",
       "icon": "skill001/skill0003_2",
-      "description": "6 nearest enemies dealphysical damage and inflicts Physical Defense DOWN(LV 2) for 10 seconds, [Binding]4(treated as, [Binding]1 afterHP-300, Block-0 5, max20), 20[Binding] when damage +30%, inflict 5s (LV 2), (1 afterHP-6000, (cannot be removed))[], damage +50%, [Binding]+1",
+      "description": "6 nearest enemies dealphysical damage and inflicts Physical Defense DOWN(LV 2) for 10 seconds, [Binding]4 stacks(treated as, [Binding]1 stacks afterHP-300, Block-0 5, max 20 stacks), 20 stacks[Binding] when, damage +30%, applies 5s(LV 2), (1 stacks afterHP-6000, (cannot be removed)), damage +50%, [Binding]+1 stacks",
       "effect": "330% + 500",
       "buffEffects": [
         {
@@ -236,7 +270,7 @@ export const skills = {
       "rank": 3,
       "name": "Mashari Shoo Shoo",
       "icon": "skill001/skill0003_3",
-      "description": "6 nearest enemies dealphysical damage and inflicts Physical Defense DOWN(LV 3) for 10 seconds, [Binding]4(treated as, [Binding]1 afterHP-300, Block-0 5, max20), 20[Binding] when damage +30%, inflict 5s (LV 3), (1 afterHP-6000, (cannot be removed))[], damage +50%, [Binding]+1",
+      "description": "6 nearest enemies dealphysical damage and inflicts Physical Defense DOWN(LV 3) for 10 seconds, [Binding]4 stacks(treated as, [Binding]1 stacks afterHP-300, Block-0 5, max 20 stacks), 20 stacks[Binding] when, damage +30%, applies 5s(LV 3), (1 stacks afterHP-6000, (cannot be removed)), damage +50%, [Binding]+1 stacks",
       "effect": "380% + 600",
       "buffEffects": [
         {
@@ -263,7 +297,7 @@ export const skills = {
       "rank": 4,
       "name": "Mashari Shoo Shoo",
       "icon": "skill001/skill0003_4",
-      "description": "6 nearest enemies dealphysical damage and inflicts Physical Defense DOWN(LV 4) for 10 seconds, [Binding]4(treated as, [Binding]1 afterHP-300, Block-0 5, max20), 20[Binding] when damage +30%, inflict 5s (LV 4), (1 afterHP-6000, (cannot be removed))[], damage +50%, [Binding]+1",
+      "description": "6 nearest enemies dealphysical damage and inflicts Physical Defense DOWN(LV 4) for 10 seconds, [Binding]4 stacks(treated as, [Binding]1 stacks afterHP-300, Block-0 5, max 20 stacks), 20 stacks[Binding] when, damage +30%, applies 5s(LV 4), (1 stacks afterHP-6000, (cannot be removed)), damage +50%, [Binding]+1 stacks",
       "effect": "420% + 700",
       "buffEffects": [
         {
@@ -290,7 +324,7 @@ export const skills = {
       "rank": 5,
       "name": "Mashari Shoo Shoo",
       "icon": "skill001/skill0003_5",
-      "description": "6 nearest enemies dealphysical damage and inflicts Physical Defense DOWN(LV 5) for 10 seconds, [Binding]4(treated as, [Binding]1 afterHP-300, Block-0 5, max20), 20[Binding] when damage +30%, inflict 5s (LV 5), (1 afterHP-6000, (cannot be removed))[], damage +50%, [Binding]+1",
+      "description": "6 nearest enemies dealphysical damage and inflicts Physical Defense DOWN(LV 5) for 10 seconds, [Binding]4 stacks(treated as, [Binding]1 stacks afterHP-300, Block-0 5, max 20 stacks), 20 stacks[Binding] when, damage +30%, applies 5s(LV 5), (1 stacks afterHP-6000, (cannot be removed)), damage +50%, [Binding]+1 stacks",
       "effect": "450% + 800",
       "buffEffects": [
         {
@@ -319,17 +353,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, MP Recovery",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Large), MP Recovery",
       "effect": "Physical Attack + (+389), MP Recovery (+30%)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Large)"
         },
         {
           "name": "MP Recovery",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         }
       ]
     },
@@ -337,17 +374,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Physical Attack UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     }
@@ -658,4 +698,4 @@ export const stats = {
       "MP Charge": 4
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

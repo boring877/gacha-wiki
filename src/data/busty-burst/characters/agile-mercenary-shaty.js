@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -162,7 +196,7 @@ export const skills = {
       "rank": 1,
       "name": "Invisible of Death",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the farthest enemy, inflict 4s and Magic Type Damage Taken UP(LV 1) for 8 seconds",
+      "description": "Deals physical damage to the farthest enemy, applies 4s Blind and Magic Type Damage Taken UP(LV 1) for 8 seconds",
       "effect": "1000% + 800",
       "buffEffects": [
         {
@@ -183,7 +217,7 @@ export const skills = {
       "rank": 2,
       "name": "Invisible of Death",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the farthest enemy, inflict 5s and Magic Type Damage Taken UP(LV 2) for 8 seconds",
+      "description": "Deals physical damage to the farthest enemy, applies 5s Blind and Magic Type Damage Taken UP(LV 2) for 8 seconds",
       "effect": "1200% + 1000",
       "buffEffects": [
         {
@@ -204,7 +238,7 @@ export const skills = {
       "rank": 3,
       "name": "Invisible of Death",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the farthest enemy, inflict 5s and Magic Type Damage Taken UP(LV 3) for 8 seconds",
+      "description": "Deals physical damage to the farthest enemy, applies 5s Blind and Magic Type Damage Taken UP(LV 3) for 8 seconds",
       "effect": "1250% + 1150",
       "buffEffects": [
         {
@@ -225,7 +259,7 @@ export const skills = {
       "rank": 4,
       "name": "Invisible of Death",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the farthest enemy, inflict6s Blind for and Magic Type Damage Taken UP(LV 4) for 8 seconds",
+      "description": "Deals physical damage to the farthest enemy, applies 6s Blind and Magic Type Damage Taken UP(LV 4) for 8 seconds",
       "effect": "1350% + 1300",
       "buffEffects": [
         {
@@ -246,7 +280,7 @@ export const skills = {
       "rank": 5,
       "name": "Invisible of Death",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the farthest enemy, inflict6s Blind for and Magic Type Damage Taken UP(LV 5) for 8 seconds",
+      "description": "Deals physical damage to the farthest enemy, applies 6s Blind and Magic Type Damage Taken UP(LV 5) for 8 seconds",
       "effect": "1450% + 1400",
       "buffEffects": [
         {
@@ -269,17 +303,20 @@ export const skills = {
       "slot": 1,
       "name": "Taunt Resistance LvMax, Magic Type ATK +",
       "icon": "skill001/skill1001",
+      "description": "Gain Taunt Resistance UP, Magic Type ATK UP",
       "effect": "Taunt Resistance LvMax (+1%), Magic Type ATK + (+3%)",
       "effectValues": [
         {
           "name": "Taunt Resistance LvMax",
           "value": 1,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Taunt Resistance UP"
         },
         {
           "name": "Magic Type ATK +",
           "value": 3,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Magic Type ATK UP"
         }
       ]
     },
@@ -287,17 +324,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Medium)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     }
@@ -608,4 +648,4 @@ export const stats = {
       "ATK": 103
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

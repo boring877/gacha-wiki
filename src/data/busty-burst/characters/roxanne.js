@@ -2,9 +2,85 @@
 // Auto-generated from game data
 
 export const info = {
-  'slug': 'roxanne',
-  'name': 'Roxanne',
+  "slug": "roxanne",
+  "name": "Roxanne",
+  "displayName": "Roxanne",
+  "baseName": "Roxanne",
+  "title": null,
+  "rarity": "R",
+  "element": "Mind",
+  "role": "Support",
+  "attackType": "Physical",
+  "position": {
+    "roman": "II",
+    "number": 2
+  },
+  "actionSpeed": "Normal",
+  "range": 400,
+  "weaponType": "Strike",
+  "skillTypes": [
+    "Heal",
+    "Buff",
+    "Disrupt"
+  ],
+  "image": "Roxanne",
+  "introduction": "Middle RowPhysicalSupport",
+  "profile": {
+    "height": "163cm",
+    "bust": "105cm (K Cup)",
+    "waist": "66cm",
+    "hips": "88cm"
+  },
+  "credits": {
+    "illustration": {
+      "japanese": "Q-Gaku",
+      "romanized": ""
+    },
+    "voice": {
+      "japanese": "和葉",
+      "romanized": ""
+    }
+  },
+  "obtain": {
+    "type": "unknown",
+    "source": ""
+  },
+  "characterId": 2003
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -178,12 +254,14 @@ export const skills = {
       "slot": 1,
       "name": "Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Physical Critical Damage+ (+3%)",
+      "description": "Gain Physical Critical Damage UP (Small)",
+      "effect": "Physical Critical Damage+ (+59%)",
       "effectValues": [
         {
           "name": "Physical Critical Damage+",
-          "value": 3,
-          "type": "percent"
+          "value": 59,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Small)"
         }
       ]
     },
@@ -191,12 +269,14 @@ export const skills = {
       "slot": 2,
       "name": "Healing Amount +",
       "icon": "skill001/skill1004",
+      "description": "Gain Healing Amount UP (Small)",
       "effect": "Healing Amount + (+10%)",
       "effectValues": [
         {
           "name": "Healing Amount +",
           "value": 10,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Healing Amount UP (Small)"
         }
       ]
     }
@@ -232,4 +312,281 @@ export const skills = {
   "slug": "roxanne"
 };
 
-export const stats = { 'id': 'roxanne' };
+export const stats = {
+  "id": "roxanne",
+  "characterId": 2003,
+  "name": "Roxanne",
+  "rarity": "R",
+  "element": "想",
+  "weapon": "",
+  "role": "Support",
+  "tags": [
+    "Heal",
+    "Buff",
+    "Disrupt"
+  ],
+  "baseStats": {
+    "hp": {
+      "base": 2578,
+      "lv90": 12892
+    },
+    "atk": {
+      "base": 203,
+      "lv90": 1017
+    },
+    "matk": {
+      "base": 122,
+      "lv90": 610
+    },
+    "def": {
+      "base": 56,
+      "lv90": 112
+    },
+    "mdef": {
+      "base": 22,
+      "lv90": 44
+    },
+    "accuracy": {
+      "base": 60,
+      "lv90": 99
+    },
+    "block": {
+      "base": 45,
+      "lv90": 135
+    },
+    "physCrit": {
+      "base": 278,
+      "lv90": 445
+    },
+    "magicCrit": {
+      "base": 167,
+      "lv90": 267
+    },
+    "hpRegen": {
+      "base": 128,
+      "lv90": 450
+    },
+    "mpRegen": {
+      "base": 50,
+      "lv90": 200
+    },
+    "healPwr": {
+      "base": 100,
+      "lv90": 250
+    },
+    "mpCharge": {
+      "base": 73,
+      "lv90": 73
+    },
+    "hpDrain": {
+      "base": 0,
+      "lv90": 0
+    },
+    "mpCostDown": {
+      "base": 0,
+      "lv90": 0
+    }
+  },
+  "limitBreak": {
+    "lb1": {
+      "HP": 774,
+      "ATK": 61,
+      "Block": 14,
+      "MP Charge": 7
+    },
+    "lb2": {
+      "HP": 890,
+      "ATK": 70,
+      "Accuracy": 13,
+      "Block": 16
+    },
+    "lb3": {
+      "HP": 1044,
+      "ATK": 82,
+      "Block": 18,
+      "MP Charge": 9
+    },
+    "lb4": {
+      "HP": 1160,
+      "ATK": 92,
+      "Accuracy": 17,
+      "Block": 20
+    },
+    "lb5": {
+      "HP": 1882,
+      "ATK": 164,
+      "DEF": 17,
+      "MDEF": 4,
+      "Heal Pwr": 21
+    },
+    "total": {
+      "HP": 5750,
+      "ATK": 469,
+      "Block": 68,
+      "MP Charge": 16,
+      "Accuracy": 30,
+      "DEF": 17,
+      "MDEF": 4,
+      "Heal Pwr": 21
+    }
+  },
+  "gpAbility": {
+    "gp1": {
+      "HP": 150
+    },
+    "gp2": {
+      "HP": 150,
+      "Heal Pwr": 5
+    },
+    "gp3": {
+      "HP": 350,
+      "Heal Pwr": 5
+    },
+    "gp4": {
+      "HP": 350,
+      "Heal Pwr": 15
+    },
+    "gp5": {
+      "HP": 550,
+      "Heal Pwr": 15
+    },
+    "gp6": {
+      "HP": 550,
+      "Heal Pwr": 25
+    },
+    "gp7": {
+      "HP": 750,
+      "Heal Pwr": 25
+    },
+    "gp8": {
+      "HP": 750,
+      "Heal Pwr": 35
+    },
+    "gp9": {
+      "HP": 950,
+      "Heal Pwr": 35
+    },
+    "gp10": {
+      "HP": 950,
+      "Heal Pwr": 45
+    },
+    "total": {
+      "HP": 950,
+      "Heal Pwr": 45
+    }
+  },
+  "abilityGrade": {
+    "g1": {
+      "HP": 271,
+      "ATK": 21,
+      "Phys Crit": 6,
+      "Accuracy": 9
+    },
+    "g2": {
+      "HP": 326,
+      "ATK": 26,
+      "Phys Crit": 7,
+      "Block": 14
+    },
+    "g3": {
+      "HP": 380,
+      "ATK": 30,
+      "Phys Crit": 8,
+      "Accuracy": 12
+    },
+    "g4": {
+      "HP": 434,
+      "ATK": 34,
+      "Phys Crit": 9,
+      "Block": 19
+    },
+    "g5": {
+      "HP": 489,
+      "ATK": 39,
+      "Phys Crit": 11,
+      "MP Charge": 6
+    },
+    "g6": {
+      "HP": 543,
+      "ATK": 43,
+      "Phys Crit": 12,
+      "Accuracy": 18
+    },
+    "g7": {
+      "HP": 597,
+      "ATK": 47,
+      "Phys Crit": 13,
+      "Block": 26
+    },
+    "g8": {
+      "HP": 651,
+      "ATK": 51,
+      "Phys Crit": 14,
+      "Accuracy": 21
+    },
+    "g9": {
+      "HP": 706,
+      "ATK": 56,
+      "Phys Crit": 15,
+      "Block": 31
+    },
+    "g10": {
+      "HP": 760,
+      "ATK": 60,
+      "Phys Crit": 16,
+      "MP Charge": 10
+    },
+    "total": {
+      "HP": 760,
+      "ATK": 60,
+      "Phys Crit": 16,
+      "MP Charge": 10
+    }
+  },
+  "passiveAbilities": [
+    {
+      "grade": 1,
+      "Heal Pwr": 4
+    },
+    {
+      "grade": 2,
+      "Block": 4
+    },
+    {
+      "grade": 3,
+      "Heal Pwr": 6
+    },
+    {
+      "grade": 4,
+      "Block": 5
+    },
+    {
+      "grade": 5,
+      "Heal Pwr": 8
+    },
+    {
+      "grade": 6,
+      "Block": 7
+    },
+    {
+      "grade": 7,
+      "Heal Pwr": 9
+    },
+    {
+      "grade": 8,
+      "Block": 8
+    },
+    {
+      "grade": 9,
+      "Heal Pwr": 11
+    },
+    {
+      "grade": 10,
+      "Block": 9
+    },
+    {
+      "grade": 11,
+      "Heal Pwr": 13
+    }
+  ]
+};;;

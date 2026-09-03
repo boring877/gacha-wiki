@@ -90,11 +90,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Hehehe... this is my greatest masterpiece",
+      "name": "Hehe...This is the best masterpiece",
       "icon": "skill001/skill0011",
       "description": "Deals physical damage to the farthest enemy and inflicts Action Speed -20%DOWN for 12 seconds and Accuracy -11 DOWN for 12 seconds",
       "descriptionLv1": "Deals physical damage to the farthest enemy and inflicts Action Speed -20%DOWN for 12 seconds and Accuracy -11 DOWN for 12 seconds",
@@ -129,11 +163,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "I wonder if it'll work... hehehe",
+      "name": "Does it work...hehe",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the farthest enemy and inflicts Dispel for 1 seconds and Deadly Poison(HP --600 per second, stackable) for 6 seconds",
-      "descriptionLv1": "Deals physical damage to the farthest enemy and inflicts Dispel for 1 seconds and Deadly Poison(HP --600 per second, stackable) for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the farthest enemy and inflicts Dispel for 1 seconds and Deadly Poison(HP --6000 per second, stackable) for 6 seconds",
+      "description": "Deals physical damage to the farthest enemyand inflicts Dispel for 1 seconds and Deadly Poison(HP --600 per second, stackable) for 6 seconds",
+      "descriptionLv1": "Deals physical damage to the farthest enemyand inflicts Dispel for 1 seconds and Deadly Poison(HP --600 per second, stackable) for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the farthest enemyand inflicts Dispel for 1 seconds and Deadly Poison(HP --6000 per second, stackable) for 6 seconds",
       "target": "Farthest Enemy",
       "castTime": 1.22,
       "damageScaling": "260% ATK",
@@ -166,9 +200,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Hehehe... my greatest masterpiece ever!",
+      "name": "Hehe… My Greatest Masterpiece so far!",
       "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the farthest enemy, inflict 4s and Deadly Poison(LV 1) for 8 seconds",
+      "description": "Deals physical damage to the farthest enemyinflicts Paralyze for 4 seconds and Deadly Poison(LV 1) for 8 seconds",
       "effect": "900% + 1000",
       "buffEffects": [
         {
@@ -187,9 +221,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Hehehe... my greatest masterpiece ever!",
+      "name": "Hehe… My Greatest Masterpiece so far!",
       "icon": "skill001/skill0012_2",
-      "description": "Deals physical damage to the farthest enemy, inflict 5s and Deadly Poison(LV 2) for 8 seconds",
+      "description": "Deals physical damage to the farthest enemyinflicts Paralyze for 5 seconds and Deadly Poison(LV 2) for 8 seconds",
       "effect": "1080% + 1150",
       "buffEffects": [
         {
@@ -208,9 +242,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Hehehe... my greatest masterpiece ever!",
+      "name": "Hehe… My Greatest Masterpiece so far!",
       "icon": "skill001/skill0012_3",
-      "description": "Deals physical damage to the farthest enemy, inflict 5s and Deadly Poison(LV 3) for 8 seconds",
+      "description": "Deals physical damage to the farthest enemyinflicts Paralyze for 5 seconds and Deadly Poison(LV 3) for 8 seconds",
       "effect": "1210% + 1300",
       "buffEffects": [
         {
@@ -229,9 +263,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Hehehe... my greatest masterpiece ever!",
+      "name": "Hehe… My Greatest Masterpiece so far!",
       "icon": "skill001/skill0012_4",
-      "description": "Deals physical damage to the farthest enemy, inflict6s Paralysis for and Deadly Poison(LV 4) for 8 seconds",
+      "description": "Deals physical damage to the farthest enemyinflicts Paralyze for 6 seconds and Deadly Poison(LV 4) for 8 seconds",
       "effect": "1300% + 1400",
       "buffEffects": [
         {
@@ -250,9 +284,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Hehehe... my greatest masterpiece ever!",
+      "name": "Hehe… My Greatest Masterpiece so far!",
       "icon": "skill001/skill0012_5",
-      "description": "Deals physical damage to the farthest enemy, inflict6s Paralysis for and Deadly Poison(LV 5) for 8 seconds",
+      "description": "Deals physical damage to the farthest enemyinflicts Paralyze for 6 seconds and Deadly Poison(LV 5) for 8 seconds",
       "effect": "1350% + 1500",
       "buffEffects": [
         {
@@ -275,17 +309,20 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Action Speed UP (Medium), Physical Attack UP (Large)",
       "effect": "Action Speed + (+10), Physical Attack + (+389)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         },
         {
           "name": "Physical Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Large)"
         }
       ]
     },
@@ -293,17 +330,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Max HP +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Max HP UP (Medium)",
       "effect": "Skill Damage + (+30%), Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     }
@@ -614,4 +654,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

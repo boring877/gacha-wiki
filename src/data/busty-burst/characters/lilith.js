@@ -90,11 +90,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Agony Torment",
+      "name": "Torture and Suffering",
       "icon": "skill001/skill0011",
       "description": "Deals physical damage to the nearest enemy and inflicts Deadly Poison(HP --500 per second, stackable) for 4 seconds and Accuracy -13 DOWN for 6 seconds",
       "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Deadly Poison(HP --500 per second, stackable) for 4 seconds and Accuracy -13 DOWN for 6 seconds",
@@ -130,11 +164,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Blow away...",
+      "name": "Blow you away……",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Defense -21%-40 DOWN for 12 seconds , 12 Block-11 DOWN",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Defense -21%-40 DOWN for 12 seconds , 12 Block-11 DOWN",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Defense -21%-220 DOWN for 12 seconds , 12 Block-23 DOWN",
+      "description": "Deals physical damage to the nearest enemy, inflicts Stun for 2 seconds, Physical Defense -21%-40 DOWN for 12 seconds and Block-11 DOWN for 12 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy, inflicts Stun for 2 seconds, Physical Defense -21%-40 DOWN for 12 seconds and Block-11 DOWN for 12 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy, inflicts Stun for 2 seconds, Physical Defense -21%-220 DOWN for 12 seconds and Block-23 DOWN for 12 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.22,
       "damageScaling": "330% ATK",
@@ -175,9 +209,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Soul Shatter - Beast's Lament",
+      "name": "Deranged Grudge of the Wicked Beast",
       "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy, inflict 3s , 5s Curse for, self10 Physical Critical DamageUP(LV 1)",
+      "description": "Deals physical damage to the nearest enemy, inflicts Silence for 3 seconds and Curse for 5 seconds. Also grants self Physical Critical DamageUP(LV 1) for 10 seconds",
       "effect": "1100% + 1000",
       "buffEffects": [
         {
@@ -202,9 +236,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Soul Shatter - Beast's Lament",
+      "name": "Deranged Grudge of the Wicked Beast",
       "icon": "skill001/skill0012_2",
-      "description": "Deals physical damage to the nearest enemy, inflict 4s , 6s Curse for, self10 Physical Critical DamageUP(LV 2)",
+      "description": "Deals physical damage to the nearest enemy, inflicts Silence for 4 seconds and Curse for 6 seconds. Also grants self Physical Critical DamageUP(LV 2) for 10 seconds",
       "effect": "1320% + 1300",
       "buffEffects": [
         {
@@ -229,9 +263,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Soul Shatter - Beast's Lament",
+      "name": "Deranged Grudge of the Wicked Beast",
       "icon": "skill001/skill0012_3",
-      "description": "Deals physical damage to the nearest enemy, inflict 4s , 6s Curse for, self10 Physical Critical DamageUP(LV 3)",
+      "description": "Deals physical damage to the nearest enemy, inflicts Silence for 4 seconds and Curse for 6 seconds. Also grants self Physical Critical DamageUP(LV 3) for 10 seconds",
       "effect": "1500% + 1500",
       "buffEffects": [
         {
@@ -256,9 +290,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Soul Shatter - Beast's Lament",
+      "name": "Deranged Grudge of the Wicked Beast",
       "icon": "skill001/skill0012_4",
-      "description": "Deals physical damage to the nearest enemy, inflict 5s , 7s Curse for, self10 Physical Critical DamageUP(LV 4)",
+      "description": "Deals physical damage to the nearest enemy, inflicts Silence for 5 seconds and Curse for 7 seconds. Also grants self Physical Critical DamageUP(LV 4) for 10 seconds",
       "effect": "1610% + 1600",
       "buffEffects": [
         {
@@ -283,9 +317,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Soul Shatter - Beast's Lament",
+      "name": "Deranged Grudge of the Wicked Beast",
       "icon": "skill001/skill0012_5",
-      "description": "Deals physical damage to the nearest enemy, inflict 5s , 7s Curse for, self10 Physical Critical DamageUP(LV 5)",
+      "description": "Deals physical damage to the nearest enemy, inflicts Silence for 5 seconds and Curse for 7 seconds. Also grants self Physical Critical DamageUP(LV 5) for 10 seconds",
       "effect": "1680% + 1700",
       "buffEffects": [
         {
@@ -314,17 +348,20 @@ export const skills = {
       "slot": 1,
       "name": "Skill Damage +, Max HP +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Medium), Max HP UP (Medium)",
       "effect": "Skill Damage + (+20%), Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Medium)"
         },
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     },
@@ -332,17 +369,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Action Speed +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Medium), Action Speed UP (Large)",
       "effect": "Skill Damage + (+20%), Action Speed + (+15)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Medium)"
         },
         {
           "name": "Action Speed +",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Large)"
         }
       ]
     }
@@ -653,4 +693,4 @@ export const stats = {
       "ATK": 77
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

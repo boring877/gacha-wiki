@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -267,17 +301,20 @@ export const skills = {
       "slot": 1,
       "name": "Freeze Resistance LvMax, Paralysis Resistance LvMax",
       "icon": "skill001/skill1003",
+      "description": "Gain Freeze Resistance UP, Paralysis Resistance UP",
       "effect": "Freeze Resistance LvMax (+1%), Paralysis Resistance LvMax (+1%)",
       "effectValues": [
         {
           "name": "Freeze Resistance LvMax",
           "value": 1,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Freeze Resistance UP"
         },
         {
           "name": "Paralysis Resistance LvMax",
           "value": 1,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Paralysis Resistance UP"
         }
       ]
     },
@@ -285,17 +322,20 @@ export const skills = {
       "slot": 2,
       "name": "Magic Attack +, Skill Damage +",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Large), Skill Damage UP (Large)",
       "effect": "Magic Attack + (+389), Skill Damage + (+30%)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         },
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         }
       ]
     }
@@ -617,4 +657,4 @@ export const stats = {
       "Magic Crit": 12
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

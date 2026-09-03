@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -162,7 +196,7 @@ export const skills = {
       "rank": 1,
       "name": "A world shining with love",
       "icon": "skill001/skill0020_1",
-      "description": "to all enemiesphysical damage and inflicts Water Type Damage Taken UP(LV 1) for 5 seconds , all allies10 Accuracy UP(LV 1), 10 Damage UP(LV 1)",
+      "description": "To all enemiesphysical damage and inflicts Water Type Damage Taken UP(LV 1) for 5 seconds, all allies 10s Accuracy UP(LV 1), 10s Damage UP(LV 1)",
       "effect": "500% + 800",
       "buffEffects": [
         {
@@ -189,7 +223,7 @@ export const skills = {
       "rank": 2,
       "name": "A world shining with love",
       "icon": "skill001/skill0020_2",
-      "description": "to all enemiesphysical damage and inflicts Water Type Damage Taken UP(LV 2) for 5 seconds , all allies10 Accuracy UP(LV 2), 10 Damage UP(LV 2)",
+      "description": "To all enemiesphysical damage and inflicts Water Type Damage Taken UP(LV 2) for 5 seconds, all allies 10s Accuracy UP(LV 2), 10s Damage UP(LV 2)",
       "effect": "700% + 1100",
       "buffEffects": [
         {
@@ -216,7 +250,7 @@ export const skills = {
       "rank": 3,
       "name": "A world shining with love",
       "icon": "skill001/skill0020_3",
-      "description": "to all enemiesphysical damage and inflicts Water Type Damage Taken UP(LV 3) for 5 seconds , all allies10 Accuracy UP(LV 3), 10 Damage UP(LV 3)",
+      "description": "To all enemiesphysical damage and inflicts Water Type Damage Taken UP(LV 3) for 5 seconds, all allies 10s Accuracy UP(LV 3), 10s Damage UP(LV 3)",
       "effect": "850% + 1350",
       "buffEffects": [
         {
@@ -243,7 +277,7 @@ export const skills = {
       "rank": 4,
       "name": "A world shining with love",
       "icon": "skill001/skill0020_4",
-      "description": "to all enemiesphysical damage and inflicts Water Type Damage Taken UP(LV 4) for 5 seconds , all allies10 Accuracy UP(LV 4), 10 Damage UP(LV 4)",
+      "description": "To all enemiesphysical damage and inflicts Water Type Damage Taken UP(LV 4) for 5 seconds, all allies 10s Accuracy UP(LV 4), 10s Damage UP(LV 4)",
       "effect": "950% + 1600",
       "buffEffects": [
         {
@@ -270,7 +304,7 @@ export const skills = {
       "rank": 5,
       "name": "A world shining with love",
       "icon": "skill001/skill0020_5",
-      "description": "to all enemiesphysical damage and inflicts Water Type Damage Taken UP(LV 5) for 5 seconds , all allies10 Accuracy UP(LV 5), 10 Damage UP(LV 5)",
+      "description": "To all enemiesphysical damage and inflicts Water Type Damage Taken UP(LV 5) for 5 seconds, all allies 10s Accuracy UP(LV 5), 10s Damage UP(LV 5)",
       "effect": "1000% + 1800",
       "buffEffects": [
         {
@@ -297,19 +331,16 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "Damage UP, Damage UP",
+      "name": "Action Speed +, Damage UP",
       "icon": "skill001/skill1005",
-      "effect": "Damage UP (+9999%), Damage UP",
+      "description": "Gain Action Speed UP (Cannot be Cleansed), Damage UP (Cannot be Cleansed)",
+      "effect": "Damage UP (+9999%)",
       "effectValues": [
         {
           "name": "Damage UP",
           "value": 9999,
-          "type": "percent"
-        },
-        {
-          "name": "Damage UP",
-          "value": 0,
-          "type": "unknown"
+          "type": "percent",
+          "gameText": "Damage UP (Cannot be Cleansed)"
         }
       ]
     },
@@ -317,17 +348,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+4.5%)",
+      "description": "Gain Skill Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         }
       ]
     }
@@ -638,4 +672,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;
+};;;;;;;;;

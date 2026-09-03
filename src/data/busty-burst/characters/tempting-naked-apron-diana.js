@@ -92,15 +92,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Cooking is Love",
+      "name": "Cooking is love",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed 20%UP to self for 12 seconds, MP Recovery 200, all allies20 Hit-Based Magic Damage UP(40%+450, 3 hit(s))",
-      "descriptionLv1": "Applies Action Speed 20%UP to self for 12 seconds, MP Recovery 200, all allies20 Hit-Based Magic Damage UP(40%+450, 3 hit(s))",
-      "descriptionLv90": "Applies Action Speed 20%UP to self for 12 seconds, MP Recovery 200, all allies20 Hit-Based Magic Damage UP(40%+450, 40503 hit(s))",
+      "description": "Applies Action Speed 20%UP and MP Recovery 200 to self for 12 seconds, and also applies Hit-Based Magic Damage UP(40%+450, 3 hit(s)) to all allies for 20 seconds",
+      "descriptionLv1": "Applies Action Speed 20%UP and MP Recovery 200 to self for 12 seconds, and also applies Hit-Based Magic Damage UP(40%+450, 3 hit(s)) to all allies for 20 seconds",
+      "descriptionLv90": "Applies Action Speed 20%UP and MP Recovery 200 to self for 12 seconds, and also applies Hit-Based Magic Damage UP(40%+450, 40503 hit(s)) to all allies for 20 seconds",
       "target": "Self",
       "castTime": 1.25,
       "damageScaling": null,
@@ -137,11 +171,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Dinner first? A bath? Or... do you want me?",
+      "name": "Dinner,shower or me？",
       "icon": "skill001/skill0011",
-      "description": "2 enemies5s Charm for and Action Speed -20%DOWN for 12 seconds , 12 Block-9 DOWN",
-      "descriptionLv1": "2 enemies5s Charm for and Action Speed -20%DOWN for 12 seconds , 12 Block-9 DOWN",
-      "descriptionLv90": "2 enemies5s Charm for and Action Speed -20%DOWN for 12 seconds , 12 Block-18 DOWN",
+      "description": "Inflicts Charm for 5 seconds, Action Speed -20%DOWN for 12 seconds and Block-9 DOWN for 12 seconds to the nearest 2 enemies",
+      "descriptionLv1": "Inflicts Charm for 5 seconds, Action Speed -20%DOWN for 12 seconds and Block-9 DOWN for 12 seconds to the nearest 2 enemies",
+      "descriptionLv90": "Inflicts Charm for 5 seconds, Action Speed -20%DOWN for 12 seconds and Block-18 DOWN for 12 seconds to the nearest 2 enemies",
       "target": "Nearest Enemy",
       "castTime": 1.25,
       "damageScaling": null,
@@ -181,9 +215,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Lovely Piercing Shot",
+      "name": "Lovely Heart Shot!",
       "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the nearest enemy, Ultimate activation beforeApplies Magic Attack UP(LV 1) to self for 8 seconds, , Ultimate activation beforeapply to self8 Holy Type ATK UP(LV 1)",
+      "description": "Deals magic damage to the nearest enemy, and applies Magic Attack UP(LV 1) to self for 8 seconds before casting ultimate. If the enemy is inflicted by Charm, applies Holy Type ATK UP(LV 1) to self for 8 seconds",
       "effect": "1000% + 1200",
       "buffEffects": [
         {
@@ -202,9 +236,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Lovely Piercing Shot",
+      "name": "Lovely Heart Shot!",
       "icon": "skill001/skill0006_2",
-      "description": "Deals magic damage to the nearest enemy, Ultimate activation beforeApplies Magic Attack UP(LV 2) to self for 8 seconds, , Ultimate activation beforeapply to self8 Holy Type ATK UP(LV 2)",
+      "description": "Deals magic damage to the nearest enemy, and applies Magic Attack UP(LV 2) to self for 8 seconds before casting ultimate. If the enemy is inflicted by Charm, applies Holy Type ATK UP(LV 2) to self for 8 seconds",
       "effect": "1200% + 1400",
       "buffEffects": [
         {
@@ -223,9 +257,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Lovely Piercing Shot",
+      "name": "Lovely Heart Shot!",
       "icon": "skill001/skill0006_3",
-      "description": "Deals magic damage to the nearest enemy, Ultimate activation beforeApplies Magic Attack UP(LV 3) to self for 8 seconds, , Ultimate activation beforeapply to self8 Holy Type ATK UP(LV 3)",
+      "description": "Deals magic damage to the nearest enemy, and applies Magic Attack UP(LV 3) to self for 8 seconds before casting ultimate. If the enemy is inflicted by Charm, applies Holy Type ATK UP(LV 3) to self for 8 seconds",
       "effect": "1350% + 1550",
       "buffEffects": [
         {
@@ -244,9 +278,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Lovely Piercing Shot",
+      "name": "Lovely Heart Shot!",
       "icon": "skill001/skill0006_4",
-      "description": "Deals magic damage to the nearest enemy, Ultimate activation beforeApplies Magic Attack UP(LV 4) to self for 8 seconds, , Ultimate activation beforeapply to self8 Holy Type ATK UP(LV 4)",
+      "description": "Deals magic damage to the nearest enemy, and applies Magic Attack UP(LV 4) to self for 8 seconds before casting ultimate. If the enemy is inflicted by Charm, applies Holy Type ATK UP(LV 4) to self for 8 seconds",
       "effect": "1450% + 1700",
       "buffEffects": [
         {
@@ -265,9 +299,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Lovely Piercing Shot",
+      "name": "Lovely Heart Shot!",
       "icon": "skill001/skill0006_5",
-      "description": "Deals magic damage to the nearest enemy, Ultimate activation beforeApplies Magic Attack UP(LV 5) to self for 8 seconds, , Ultimate activation beforeapply to self8 Holy Type ATK UP(LV 5)",
+      "description": "Deals magic damage to the nearest enemy, and applies Magic Attack UP(LV 5) to self for 8 seconds before casting ultimate. If the enemy is inflicted by Charm, applies Holy Type ATK UP(LV 5) to self for 8 seconds",
       "effect": "1500% + 1800",
       "buffEffects": [
         {
@@ -290,17 +324,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, MP Recovery",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Medium), MP Recovery",
       "effect": "Magic Attack + (+259), MP Recovery (+100%)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         },
         {
           "name": "MP Recovery",
           "value": 100,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         }
       ]
     },
@@ -308,17 +345,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Action Speed +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Action Speed UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     }
@@ -326,7 +366,7 @@ export const skills = {
   "name": "Tempting Naked Apron: Diana",
   "id": 2134,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Attacker",
   "tags": [
     "Buff",
@@ -644,4 +684,4 @@ export const stats = {
       "Magic Crit": 5
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -221,12 +255,14 @@ export const skills = {
       "slot": 1,
       "name": "Paralysis Resistance LvMax",
       "icon": "skill001/skill1003",
+      "description": "Gain Paralysis Resistance UP",
       "effect": "Paralysis Resistance LvMax (+1%)",
       "effectValues": [
         {
           "name": "Paralysis Resistance LvMax",
           "value": 1,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Paralysis Resistance UP"
         }
       ]
     },
@@ -234,17 +270,20 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Max HP +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Medium), Max HP UP (Small)",
       "effect": "Physical Attack + (+259), Max HP + (+1447)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         },
         {
           "name": "Max HP +",
           "value": 1447,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Small)"
         }
       ]
     }
@@ -557,4 +596,4 @@ export const stats = {
       "Heal Pwr": 14
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

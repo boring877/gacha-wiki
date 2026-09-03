@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -102,7 +136,7 @@ export const skills = {
       "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Burn(HP --2000 per second) for 10 seconds and Block-23 DOWN for 5 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.38,
-      "damageScaling": "110% ATK",
+      "damageScaling": "110.00000000000001% ATK",
       "baseDamage": "+50",
       "levelGrowth": "+6",
       "lvl1": "110% + 50",
@@ -259,17 +293,20 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Magic Critical Damage+",
       "icon": "skill001/skill1001",
+      "description": "Gain Action Speed UP (Medium), Magic Critical Damage UP (Large)",
       "effect": "Action Speed + (+10), Magic Critical Damage+ (+176)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         },
         {
           "name": "Magic Critical Damage+",
           "value": 176,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Large)"
         }
       ]
     },
@@ -277,17 +314,20 @@ export const skills = {
       "slot": 2,
       "name": "Max HP +, Block+",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP (Medium), Block UP (Medium)",
       "effect": "Max HP + (+2896), Block+ (+15)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         },
         {
           "name": "Block+",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Medium)"
         }
       ]
     }
@@ -295,7 +335,7 @@ export const skills = {
   "name": "Magical Princess:  Luceria",
   "id": 2041,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Attacker",
   "tags": [
     "Heal",
@@ -611,4 +651,4 @@ export const stats = {
       "HP": 391
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

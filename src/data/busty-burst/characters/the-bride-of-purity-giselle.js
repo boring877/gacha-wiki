@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -276,17 +310,14 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Normal ATK Inflicts Burn",
       "icon": "skill001/skill1001",
-      "effect": "Magic Attack + (+389), Normal ATK Inflicts Burn (0)",
+      "description": "Gain Magic Attack UP (Large), 70% chance to inflict Burn for 10 seconds on Normal ATK",
+      "effect": "Magic Attack + (+389)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
-        },
-        {
-          "name": "Normal ATK Inflicts Burn",
-          "value": 0,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         }
       ]
     },
@@ -294,17 +325,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Magic Critical Damage+",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Magic Critical Damage UP (Medium)",
       "effect": "Skill Damage + (+30%), Magic Critical Damage+ (+90)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Magic Critical Damage+",
           "value": 90,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Medium)"
         }
       ]
     }
@@ -626,4 +660,4 @@ export const stats = {
       "MATK": 68
     }
   ]
-};;;;;;;
+};;;;;;;;;

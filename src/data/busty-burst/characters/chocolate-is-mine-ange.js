@@ -91,15 +91,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Bitter Grossular",
       "icon": "skill001/skill0010",
-      "description": "Deals magic damage to the nearest enemy and inflicts Burn(HP --150 per second) for 15 seconds and Block-11 DOWN for 6 seconds , 6 Magic Defense-21%-40 DOWN",
-      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Burn(HP --150 per second) for 15 seconds and Block-11 DOWN for 6 seconds , 6 Magic Defense-21%-40 DOWN",
-      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Burn(HP --1500 per second) for 15 seconds and Block-23 DOWN for 6 seconds , 6 Magic Defense-21%-220 DOWN",
+      "description": "Deals magic damage to the nearest enemy and inflicts Burn(HP --150 per second) for 15 seconds and Block-11 DOWN for 6 seconds, 6s Magic Defense-21%-40 DOWN",
+      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Burn(HP --150 per second) for 15 seconds and Block-11 DOWN for 6 seconds, 6s Magic Defense-21%-40 DOWN",
+      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Burn(HP --1500 per second) for 15 seconds and Block-23 DOWN for 6 seconds, 6s Magic Defense-21%-220 DOWN",
       "target": "Nearest Enemy",
       "castTime": 1.25,
       "damageScaling": "370% ATK",
@@ -178,7 +212,7 @@ export const skills = {
       "rank": 1,
       "name": "I offer the supreme light. Ignite myself, unto eternity",
       "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 1) for 15 seconds, 3s Stun for, 10 Magic Defense DOWN(LV 1)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 1) for 15 seconds, 3s, 10s Magic Defense DOWN(LV 1)",
       "effect": "390% + 400",
       "buffEffects": [
         {
@@ -205,7 +239,7 @@ export const skills = {
       "rank": 2,
       "name": "I offer the supreme light. Ignite myself, unto eternity",
       "icon": "skill001/skill0006_2",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 2) for 15 seconds, 4s Stun for, 10 Magic Defense DOWN(LV 2)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 2) for 15 seconds, 4s, 10s Magic Defense DOWN(LV 2)",
       "effect": "459% + 600",
       "buffEffects": [
         {
@@ -232,7 +266,7 @@ export const skills = {
       "rank": 3,
       "name": "I offer the supreme light. Ignite myself, unto eternity",
       "icon": "skill001/skill0006_3",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 3) for 15 seconds, 4s Stun for, 10 Magic Defense DOWN(LV 3)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 3) for 15 seconds, 4s, 10s Magic Defense DOWN(LV 3)",
       "effect": "509% + 750",
       "buffEffects": [
         {
@@ -259,7 +293,7 @@ export const skills = {
       "rank": 4,
       "name": "I offer the supreme light. Ignite myself, unto eternity",
       "icon": "skill001/skill0006_4",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 4) for 15 seconds, 5s Stun for, 10 Magic Defense DOWN(LV 4)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 4) for 15 seconds, 5s, 10s Magic Defense DOWN(LV 4)",
       "effect": "550% + 900",
       "buffEffects": [
         {
@@ -286,7 +320,7 @@ export const skills = {
       "rank": 5,
       "name": "I offer the supreme light. Ignite myself, unto eternity",
       "icon": "skill001/skill0006_5",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 5) for 15 seconds, 5s Stun for, 10 Magic Defense DOWN(LV 5)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 5) for 15 seconds, 5s, 10s Magic Defense DOWN(LV 5)",
       "effect": "570% + 1000",
       "buffEffects": [
         {
@@ -315,17 +349,14 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "effect": "Action Speed + (+15), Magic Attack + (0)",
+      "description": "Gain Action Speed UP (Large), Magic Attack UP (Cannot be Cleansed)",
+      "effect": "Action Speed + (+15)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
-          "type": "flat"
-        },
-        {
-          "name": "Magic Attack +",
-          "value": 0,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Large)"
         }
       ]
     },
@@ -333,17 +364,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Magic Critical Damage+",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Magic Critical Damage UP (Medium)",
       "effect": "Skill Damage + (+30%), Magic Critical Damage+ (+90)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Magic Critical Damage+",
           "value": 90,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Medium)"
         }
       ]
     }
@@ -667,4 +701,4 @@ export const stats = {
       "Magic Crit": 20
     }
   ]
-};;;;;;;
+};;;;;;;;;

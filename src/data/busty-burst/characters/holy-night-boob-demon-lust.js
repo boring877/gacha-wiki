@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Radiating charm. Magic that captivates all who see it, known to all",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-18%-30 DOWN for 6 seconds and Accuracy -9 DOWN for 6 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +50%, inflict6 Speed20%DOWN",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-18%-30 DOWN for 6 seconds and Accuracy -9 DOWN for 6 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +50%, inflict6 Speed20%DOWN",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-18%-210 DOWN for 6 seconds and Accuracy -18 DOWN for 6 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +50%, inflict6 Speed20%DOWN",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-18%-30 DOWN for 6 seconds and Accuracy -9 DOWN for 6 seconds, 1 stacks[Frost]([Frost]1 stacksaction speed 2%DOWN, max 5 stacks), [Frost]at 5 stacks: damage +50%, applies 6saction speed 20%DOWN",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-18%-30 DOWN for 6 seconds and Accuracy -9 DOWN for 6 seconds, 1 stacks[Frost]([Frost]1 stacksaction speed 2%DOWN, max 5 stacks), [Frost]at 5 stacks: damage +50%, applies 6saction speed 20%DOWN",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-18%-210 DOWN for 6 seconds and Accuracy -18 DOWN for 6 seconds, 1 stacks[Frost]([Frost]1 stacksaction speed 2%DOWN, max 5 stacks), [Frost]at 5 stacks: damage +50%, applies 6saction speed 20%DOWN",
       "target": "Nearest Enemy",
       "castTime": 1.0,
       "damageScaling": "130% ATK",
@@ -144,7 +178,7 @@ export const skills = {
       "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Stun for 1.5 seconds and Block-23 DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.2,
-      "damageScaling": "110% ATK",
+      "damageScaling": "110.00000000000001% ATK",
       "baseDamage": "+150",
       "levelGrowth": "+6",
       "lvl1": "110% + 150",
@@ -176,7 +210,7 @@ export const skills = {
       "rank": 1,
       "name": "Snow. Pure White Fairy, the cage the pure cannot escape",
       "icon": "skill001/skill0006_1",
-      "description": "to all enemiesmagic damage and inflicts Water Type Damage Taken UP(LV 1) for 5 seconds and BlockDOWN(LV 1) for 10 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +80%, 2s Silence for",
+      "description": "To all enemiesmagic damage and inflicts Water Type Damage Taken UP(LV 1) for 5 seconds and BlockDOWN(LV 1) for 10 seconds, 1 stacks[Frost]([Frost]1 stacksaction speed 2%DOWN, max 5 stacks), [Frost]at 5 stacks: damage +80%, 2s",
       "effect": "500% + 500",
       "buffEffects": [
         {
@@ -203,7 +237,7 @@ export const skills = {
       "rank": 2,
       "name": "Snow. Pure White Fairy, the cage the pure cannot escape",
       "icon": "skill001/skill0006_2",
-      "description": "to all enemiesmagic damage and inflicts Water Type Damage Taken UP(LV 2) for 5 seconds and BlockDOWN(LV 2) for 10 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +80%, 3s Silence for",
+      "description": "To all enemiesmagic damage and inflicts Water Type Damage Taken UP(LV 2) for 5 seconds and BlockDOWN(LV 2) for 10 seconds, 1 stacks[Frost]([Frost]1 stacksaction speed 2%DOWN, max 5 stacks), [Frost]at 5 stacks: damage +80%, 3s",
       "effect": "700% + 750",
       "buffEffects": [
         {
@@ -230,7 +264,7 @@ export const skills = {
       "rank": 3,
       "name": "Snow. Pure White Fairy, the cage the pure cannot escape",
       "icon": "skill001/skill0006_3",
-      "description": "to all enemiesmagic damage and inflicts Water Type Damage Taken UP(LV 3) for 5 seconds and BlockDOWN(LV 3) for 10 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +80%, 3s Silence for",
+      "description": "To all enemiesmagic damage and inflicts Water Type Damage Taken UP(LV 3) for 5 seconds and BlockDOWN(LV 3) for 10 seconds, 1 stacks[Frost]([Frost]1 stacksaction speed 2%DOWN, max 5 stacks), [Frost]at 5 stacks: damage +80%, 3s",
       "effect": "850% + 900",
       "buffEffects": [
         {
@@ -257,7 +291,7 @@ export const skills = {
       "rank": 4,
       "name": "Snow. Pure White Fairy, the cage the pure cannot escape",
       "icon": "skill001/skill0006_4",
-      "description": "to all enemiesmagic damage and inflicts Water Type Damage Taken UP(LV 4) for 5 seconds and BlockDOWN(LV 4) for 10 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +80%, 4s Silence for",
+      "description": "To all enemiesmagic damage and inflicts Water Type Damage Taken UP(LV 4) for 5 seconds and BlockDOWN(LV 4) for 10 seconds, 1 stacks[Frost]([Frost]1 stacksaction speed 2%DOWN, max 5 stacks), [Frost]at 5 stacks: damage +80%, 4s",
       "effect": "950% + 1000",
       "buffEffects": [
         {
@@ -284,7 +318,7 @@ export const skills = {
       "rank": 5,
       "name": "Snow. Pure White Fairy, the cage the pure cannot escape",
       "icon": "skill001/skill0006_5",
-      "description": "to all enemiesmagic damage and inflicts Water Type Damage Taken UP(LV 5) for 5 seconds and BlockDOWN(LV 5) for 10 seconds , 1[Frost]([Frost]1Speed2%DOWN, max5), [Frost]5 when damage +80%, 4s Silence for",
+      "description": "To all enemiesmagic damage and inflicts Water Type Damage Taken UP(LV 5) for 5 seconds and BlockDOWN(LV 5) for 10 seconds, 1 stacks[Frost]([Frost]1 stacksaction speed 2%DOWN, max 5 stacks), [Frost]at 5 stacks: damage +80%, 4s",
       "effect": "1000% + 1100",
       "buffEffects": [
         {
@@ -313,17 +347,20 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Water Type ATK +",
       "icon": "skill001/skill1001",
+      "description": "Gain Action Speed UP (Medium), Water Type ATK UP",
       "effect": "Action Speed + (+10), Water Type ATK + (+5%)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         },
         {
           "name": "Water Type ATK +",
           "value": 5,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Water Type ATK UP"
         }
       ]
     },
@@ -331,17 +368,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Accuracy +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Accuracy UP (Medium)",
       "effect": "Skill Damage + (+30%), Accuracy + (+20)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Accuracy +",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         }
       ]
     }
@@ -663,4 +703,4 @@ export const stats = {
       "Magic Crit": 13
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

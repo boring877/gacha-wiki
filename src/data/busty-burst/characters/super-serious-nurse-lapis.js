@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "It's time for your shot♪",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-800 after acting, cannot be removed) for 15 seconds, 3s Paralysis for",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-800 after acting, cannot be removed) for 15 seconds, 3s Paralysis for",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-8000 after acting, cannot be removed) for 15 seconds, 3s Paralysis for",
+      "description": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-800 after acting, cannot be removed) for 15 seconds, 3s",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-800 after acting, cannot be removed) for 15 seconds, 3s",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Bleed (HP −-8000 after acting, cannot be removed) for 15 seconds, 3s",
       "target": "Nearest Enemy",
       "castTime": 0.8,
       "damageScaling": "380% ATK",
@@ -131,9 +165,9 @@ export const skills = {
       "slot": 3,
       "name": "Emergency transport!",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds , 5",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds , 5",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds , 5",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds, 5s",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds, 5s",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds, 5s",
       "target": "Nearest Enemy",
       "castTime": 0.9,
       "damageScaling": "320% ATK",
@@ -167,7 +201,7 @@ export const skills = {
       "rank": 1,
       "name": "Florence Recuperation",
       "icon": "skill001/skill0022_1",
-      "description": "restore HP to all alliesHP and inflicts Hit-Based Damage UP(LV 1) for 10 seconds and BlockUP(LV 1) for 10 seconds , 20 Hit-Based Healing Shield (LV 1)",
+      "description": "Restore HP to all alliesHP and inflicts Hit-Based Damage UP(LV 1) for 10 seconds and BlockUP(LV 1) for 10 seconds, 20s Hit-Based Healing Shield (LV 1)",
       "effect": "2500% + 1000",
       "buffEffects": [
         {
@@ -194,7 +228,7 @@ export const skills = {
       "rank": 2,
       "name": "Florence Recuperation",
       "icon": "skill001/skill0022_2",
-      "description": "restore HP to all alliesHP and inflicts Hit-Based Damage UP(LV 2) for 10 seconds and BlockUP(LV 2) for 10 seconds , 20 Hit-Based Healing Shield (LV 2)",
+      "description": "Restore HP to all alliesHP and inflicts Hit-Based Damage UP(LV 2) for 10 seconds and BlockUP(LV 2) for 10 seconds, 20s Hit-Based Healing Shield (LV 2)",
       "effect": "2875% + 1300",
       "buffEffects": [
         {
@@ -221,7 +255,7 @@ export const skills = {
       "rank": 3,
       "name": "Florence Recuperation",
       "icon": "skill001/skill0022_3",
-      "description": "restore HP to all alliesHP and inflicts Hit-Based Damage UP(LV 3) for 10 seconds and BlockUP(LV 3) for 10 seconds , 20 Hit-Based Healing Shield (LV 3)",
+      "description": "Restore HP to all alliesHP and inflicts Hit-Based Damage UP(LV 3) for 10 seconds and BlockUP(LV 3) for 10 seconds, 20s Hit-Based Healing Shield (LV 3)",
       "effect": "3125% + 1500",
       "buffEffects": [
         {
@@ -248,7 +282,7 @@ export const skills = {
       "rank": 4,
       "name": "Florence Recuperation",
       "icon": "skill001/skill0022_4",
-      "description": "restore HP to all alliesHP and inflicts Hit-Based Damage UP(LV 4) for 10 seconds and BlockUP(LV 4) for 10 seconds , 20 Hit-Based Healing Shield (LV 4)",
+      "description": "Restore HP to all alliesHP and inflicts Hit-Based Damage UP(LV 4) for 10 seconds and BlockUP(LV 4) for 10 seconds, 20s Hit-Based Healing Shield (LV 4)",
       "effect": "3375% + 1650",
       "buffEffects": [
         {
@@ -275,7 +309,7 @@ export const skills = {
       "rank": 5,
       "name": "Florence Recuperation",
       "icon": "skill001/skill0022_5",
-      "description": "restore HP to all alliesHP and inflicts Hit-Based Damage UP(LV 5) for 10 seconds and BlockUP(LV 5) for 10 seconds , 20 Hit-Based Healing Shield (LV 5)",
+      "description": "Restore HP to all alliesHP and inflicts Hit-Based Damage UP(LV 5) for 10 seconds and BlockUP(LV 5) for 10 seconds, 20s Hit-Based Healing Shield (LV 5)",
       "effect": "3500% + 1800",
       "buffEffects": [
         {
@@ -304,17 +338,20 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Damage UP",
       "icon": "skill001/skill1003",
+      "description": "Gain Action Speed UP (Large), Damage UP",
       "effect": "Action Speed + (+15), Damage UP (+9999%)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Large)"
         },
         {
           "name": "Damage UP",
           "value": 9999,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Damage UP"
         }
       ]
     },
@@ -322,17 +359,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Medium)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     }
@@ -643,4 +683,4 @@ export const stats = {
       "ATK": 72
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -269,12 +303,14 @@ export const skills = {
       "slot": 1,
       "name": "Freeze Resistance LvMax",
       "icon": "skill001/skill1003",
+      "description": "Gain Freeze Resistance UP",
       "effect": "Freeze Resistance LvMax (+1%)",
       "effectValues": [
         {
           "name": "Freeze Resistance LvMax",
           "value": 1,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Freeze Resistance UP"
         }
       ]
     },
@@ -282,17 +318,20 @@ export const skills = {
       "slot": 2,
       "name": "Magic Critical Damage+, Block+",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Critical Damage UP (Medium), Block UP (Medium)",
       "effect": "Magic Critical Damage+ (+118), Block+ (+15)",
       "effectValues": [
         {
           "name": "Magic Critical Damage+",
           "value": 118,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Medium)"
         },
         {
           "name": "Block+",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Medium)"
         }
       ]
     }
@@ -614,4 +653,4 @@ export const stats = {
       "Magic Crit": 4
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -276,17 +310,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Magic Defense+",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Medium), Magic Defense UP (Medium)",
       "effect": "Magic Attack + (+259), Magic Defense+ (+141)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         },
         {
           "name": "Magic Defense+",
           "value": 141,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Defense UP (Medium)"
         }
       ]
     },
@@ -294,17 +331,20 @@ export const skills = {
       "slot": 2,
       "name": "Magic Defense+, Max HP +",
       "icon": "skill001/skill1007",
+      "description": "Gain Magic Defense UP (Medium), Max HP UP (Small)",
       "effect": "Magic Defense+ (+141), Max HP + (+1447)",
       "effectValues": [
         {
           "name": "Magic Defense+",
           "value": 141,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Defense UP (Medium)"
         },
         {
           "name": "Max HP +",
           "value": 1447,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Small)"
         }
       ]
     }
@@ -312,7 +352,7 @@ export const skills = {
   "name": "Pious Cleric: Ishtovia",
   "id": 2045,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Support",
   "tags": [
     "Heal",
@@ -630,4 +670,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -274,17 +308,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +, Max HP +",
       "icon": "skill001/skill1002",
+      "description": "Gain Physical Defense UP (Medium), Max HP UP (Large)",
       "effect": "Physical Defense + (+141), Max HP + (+3444)",
       "effectValues": [
         {
           "name": "Physical Defense +",
           "value": 141,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Defense UP (Medium)"
         },
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         }
       ]
     },
@@ -292,17 +329,20 @@ export const skills = {
       "slot": 2,
       "name": "Physical Defense +, Healing Received +",
       "icon": "skill001/skill1002",
+      "description": "Gain Physical Defense UP (Large), Healing Received UP (Medium)",
       "effect": "Physical Defense + (+211), Healing Received + (+30%)",
       "effectValues": [
         {
           "name": "Physical Defense +",
           "value": 211,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Defense UP (Large)"
         },
         {
           "name": "Healing Received +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Healing Received UP (Medium)"
         }
       ]
     }
@@ -615,4 +655,4 @@ export const stats = {
       "DEF": 45
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

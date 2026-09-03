@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -132,9 +166,9 @@ export const skills = {
       "slot": 3,
       "name": "Everything becomes my power!",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Physical Attack 18%+35 UP for 10 seconds , all allies20 Hit-Based Physical Damage UP(45%+500, 3 hit(s))",
-      "descriptionLv1": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Physical Attack 18%+35 UP for 10 seconds , all allies20 Hit-Based Physical Damage UP(45%+500, 3 hit(s))",
-      "descriptionLv90": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Physical Attack 18%+665 UP for 10 seconds , all allies20 Hit-Based Physical Damage UP(45%+500, 45003 hit(s))",
+      "description": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Physical Attack 18%+35 UP for 10 seconds, all allies 20s Hit-Based Physical Damage UP(45%+500, 3 hit(s))",
+      "descriptionLv1": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Physical Attack 18%+35 UP for 10 seconds, all allies 20s Hit-Based Physical Damage UP(45%+500, 3 hit(s))",
+      "descriptionLv90": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Physical Attack 18%+665 UP for 10 seconds, all allies 20s Hit-Based Physical Damage UP(45%+500, 45003 hit(s))",
       "target": "Self",
       "castTime": 0.9,
       "damageScaling": null,
@@ -178,7 +212,7 @@ export const skills = {
       "rank": 1,
       "name": "Lion Tail Gale",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 4 seconds and Wind Type Damage Taken UP(LV 1) for 8 seconds , 10 Physical Defense DOWN(LV 1)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 4 seconds and Wind Type Damage Taken UP(LV 1) for 8 seconds, 10s Physical Defense DOWN(LV 1)",
       "effect": "1200% + 1200",
       "buffEffects": [
         {
@@ -205,7 +239,7 @@ export const skills = {
       "rank": 2,
       "name": "Lion Tail Gale",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 5 seconds and Wind Type Damage Taken UP(LV 2) for 8 seconds , 10 Physical Defense DOWN(LV 2)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 5 seconds and Wind Type Damage Taken UP(LV 2) for 8 seconds, 10s Physical Defense DOWN(LV 2)",
       "effect": "1440% + 1400",
       "buffEffects": [
         {
@@ -232,7 +266,7 @@ export const skills = {
       "rank": 3,
       "name": "Lion Tail Gale",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 5 seconds and Wind Type Damage Taken UP(LV 3) for 8 seconds , 10 Physical Defense DOWN(LV 3)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 5 seconds and Wind Type Damage Taken UP(LV 3) for 8 seconds, 10s Physical Defense DOWN(LV 3)",
       "effect": "1620% + 1550",
       "buffEffects": [
         {
@@ -259,7 +293,7 @@ export const skills = {
       "rank": 4,
       "name": "Lion Tail Gale",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 6 seconds and Wind Type Damage Taken UP(LV 4) for 8 seconds , 10 Physical Defense DOWN(LV 4)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 6 seconds and Wind Type Damage Taken UP(LV 4) for 8 seconds, 10s Physical Defense DOWN(LV 4)",
       "effect": "1739% + 1700",
       "buffEffects": [
         {
@@ -286,7 +320,7 @@ export const skills = {
       "rank": 5,
       "name": "Lion Tail Gale",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 6 seconds and Wind Type Damage Taken UP(LV 5) for 8 seconds , 10 Physical Defense DOWN(LV 5)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 6 seconds and Wind Type Damage Taken UP(LV 5) for 8 seconds, 10s Physical Defense DOWN(LV 5)",
       "effect": "1800% + 1800",
       "buffEffects": [
         {
@@ -315,17 +349,20 @@ export const skills = {
       "slot": 1,
       "name": "Skill Damage +, Wind Type ATK +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Medium), Wind Type ATK UP (Cannot be Cleansed)",
       "effect": "Skill Damage + (+20%), Wind Type ATK + (+3%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Medium)"
         },
         {
           "name": "Wind Type ATK +",
           "value": 3,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Wind Type ATK UP (Cannot be Cleansed)"
         }
       ]
     },
@@ -333,17 +370,14 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Debuff Resistance+",
       "icon": "skill001/skill1001",
-      "effect": "Ultimate Damage + (+10%), Debuff Resistance+ (0%)",
+      "description": "Gain Ultimate Damage UP (Medium), Debuff Resistance{0:P1}UP (Cannot be Cleansed)",
+      "effect": "Ultimate Damage + (+10%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 10,
-          "type": "percent"
-        },
-        {
-          "name": "Debuff Resistance+",
-          "value": 0,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Medium)"
         }
       ]
     }
@@ -656,4 +690,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;
+};;;;;;;;;

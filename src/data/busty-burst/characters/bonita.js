@@ -92,15 +92,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Lucky Roulette!",
+      "name": "Luck Roulette！",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy50%% chance to10 Accuracy -9 DOWN, 50%% chance to10 Block-9 DOWN, 50%% chance to10 Physical Critical Damage-11%-30 DOWN",
-      "descriptionLv1": "Deals physical damage to the nearest enemy50%% chance to10 Accuracy -9 DOWN, 50%% chance to10 Block-9 DOWN, 50%% chance to10 Physical Critical Damage-11%-30 DOWN",
-      "descriptionLv90": "Deals physical damage to the nearest enemy50%% chance to10 Accuracy -18 DOWN, 50%% chance to10 Block-18 DOWN, 50%% chance to10 Physical Critical Damage-11%-30 DOWN",
+      "description": "Deals physical damage to the nearest enemy. 50% chance Accuracy -9 DOWN for 10 seconds, 50% chance Block-9 DOWN for 10 seconds and 50% chance Physical Critical Damage-11%-30 DOWN for 10 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy. 50% chance Accuracy -9 DOWN for 10 seconds, 50% chance Block-9 DOWN for 10 seconds and 50% chance Physical Critical Damage-11%-30 DOWN for 10 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy. 50% chance Accuracy -18 DOWN for 10 seconds, 50% chance Block-18 DOWN for 10 seconds and 50% chance Physical Critical Damage-11%-30 DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.5,
       "damageScaling": "170% ATK",
@@ -140,7 +174,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "My luck is here~~~!",
+      "name": "I am in luck～～～！",
       "icon": "skill001/skill0019",
       "description": "Applies Physical Defense 25%+170 UP to all allies for 15 seconds and HP Regeneration 6%+200 for 10 seconds",
       "descriptionLv1": "Applies Physical Defense 25%+170 UP to all allies for 15 seconds and HP Regeneration 6%+200 for 10 seconds",
@@ -180,7 +214,7 @@ export const skills = {
       "rank": 1,
       "name": "Ace In The Hole !",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy 1:10 Accuracy UP(LV 1) 2: 3: 4: 5: 6",
+      "description": "Deals physical damage to the nearest enemy One:Accuracy UP(LV 1) for 10 seconds Two: Three: Four: Five: Six",
       "effect": "390% + 300",
       "buffEffects": [
         {
@@ -195,7 +229,7 @@ export const skills = {
       "rank": 2,
       "name": "Ace In The Hole !",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy 1:10 Accuracy UP(LV 2) 2: 3: 4: 5: 6",
+      "description": "Deals physical damage to the nearest enemy One:Accuracy UP(LV 2) for 10 seconds Two: Three: Four: Five: Six",
       "effect": "459% + 400",
       "buffEffects": [
         {
@@ -210,7 +244,7 @@ export const skills = {
       "rank": 3,
       "name": "Ace In The Hole !",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy 1:10 Accuracy UP(LV 3) 2: 3: 4: 5: 6",
+      "description": "Deals physical damage to the nearest enemy One:Accuracy UP(LV 3) for 10 seconds Two: Three: Four: Five: Six",
       "effect": "509% + 450",
       "buffEffects": [
         {
@@ -225,7 +259,7 @@ export const skills = {
       "rank": 4,
       "name": "Ace In The Hole !",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy 1:10 Accuracy UP(LV 4) 2: 3: 4: 5: 6",
+      "description": "Deals physical damage to the nearest enemy One:Accuracy UP(LV 4) for 10 seconds Two: Three: Four: Five: Six",
       "effect": "550% + 500",
       "buffEffects": [
         {
@@ -240,7 +274,7 @@ export const skills = {
       "rank": 5,
       "name": "Ace In The Hole !",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy 1:10 Accuracy UP(LV 5) 2: 3: 4: 5: 6",
+      "description": "Deals physical damage to the nearest enemy One:Accuracy UP(LV 5) for 10 seconds Two: Three: Four: Five: Six",
       "effect": "570% + 550",
       "buffEffects": [
         {
@@ -255,19 +289,16 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "Max HP +, Max HP +",
+      "name": "Debuff Resistance+, Max HP +",
       "icon": "skill001/skill1002",
-      "effect": "Max HP + (+2896), Max HP + (0)",
+      "description": "Gain Debuff Resistance UP (Small), Max HP UP (Medium)",
+      "effect": "Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
-        },
-        {
-          "name": "Max HP +",
-          "value": 0,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     },
@@ -275,17 +306,20 @@ export const skills = {
       "slot": 2,
       "name": "MP Recovery, Physical Defense +",
       "icon": "skill001/skill1007",
+      "description": "Gain MP Recovery, Physical Defense UP (Large)",
       "effect": "MP Recovery (+100%), Physical Defense + (+211)",
       "effectValues": [
         {
           "name": "MP Recovery",
           "value": 100,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         },
         {
           "name": "Physical Defense +",
           "value": 211,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Defense UP (Large)"
         }
       ]
     }
@@ -600,4 +634,4 @@ export const stats = {
       "HP": 625
     }
   ]
-};;;;;;;
+};;;;;;;;;

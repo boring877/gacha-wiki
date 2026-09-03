@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -246,12 +280,14 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +",
       "icon": "skill001/skill1002",
+      "description": "Gain Max HP UP (Medium)",
       "effect": "Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     },
@@ -259,17 +295,20 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Physical Attack + (+259), Physical Critical Damage+ (+4.5%)",
+      "description": "Gain Physical Attack UP (Medium), Physical Critical Damage UP (Medium)",
+      "effect": "Physical Attack + (+259), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         }
       ]
     }
@@ -580,4 +619,4 @@ export const stats = {
       "Block": 15
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Let’s go STARS!",
       "icon": "skill001/skill0021",
-      "description": "lowest HP allyrestore HP and inflicts Action Speed 14%UP for 10 seconds",
-      "descriptionLv1": "lowest HP allyrestore HP and inflicts Action Speed 14%UP for 10 seconds",
-      "descriptionLv90": "lowest HP allyrestore HP and inflicts Action Speed 14%UP for 10 seconds",
+      "description": "Restores HP for and applies Action Speed 14%UP for 10 seconds to the ally with lowest HP",
+      "descriptionLv1": "Restores HP for and applies Action Speed 14%UP for 10 seconds to the ally with lowest HP",
+      "descriptionLv90": "Restores HP for and applies Action Speed 14%UP for 10 seconds to the ally with lowest HP",
       "target": "Lowest HP Ally",
       "castTime": 1.3,
       "damageScaling": "2500% ATK",
@@ -121,11 +155,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Everyone, do your best~!",
+      "name": "Everyone, keep it up～！",
       "icon": "skill001/skill0021",
-      "description": "restore HP to frontmost allyHP and inflicts Healing Shield (300) for 20 seconds",
-      "descriptionLv1": "restore HP to frontmost allyHP and inflicts Healing Shield (300) for 20 seconds",
-      "descriptionLv90": "restore HP to frontmost allyHP and inflicts Healing Shield (300) for 20 seconds",
+      "description": "Restores HP for and applies Healing Shield (300) for 20 seconds to the head of the formation",
+      "descriptionLv1": "Restores HP for and applies Healing Shield (300) for 20 seconds to the head of the formation",
+      "descriptionLv90": "Restores HP for and applies Healing Shield (300) for 20 seconds to the head of the formation",
       "target": "Frontmost Ally",
       "castTime": 1.3,
       "damageScaling": "3000% ATK",
@@ -259,12 +293,14 @@ export const skills = {
       "slot": 1,
       "name": "Healing Amount +",
       "icon": "skill001/skill1004",
+      "description": "Gain Healing Amount UP (Medium)",
       "effect": "Healing Amount + (+15%)",
       "effectValues": [
         {
           "name": "Healing Amount +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Healing Amount UP (Medium)"
         }
       ]
     },
@@ -272,17 +308,20 @@ export const skills = {
       "slot": 2,
       "name": "Healing Received +, Block+",
       "icon": "skill001/skill1008",
+      "description": "Gain Healing Received UP (Small), Block UP (Small)",
       "effect": "Healing Received + (+20%), Block+ (+5)",
       "effectValues": [
         {
           "name": "Healing Received +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Healing Received UP (Small)"
         },
         {
           "name": "Block+",
           "value": 5,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Small)"
         }
       ]
     }
@@ -593,4 +632,4 @@ export const stats = {
       "Heal Pwr": 12
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

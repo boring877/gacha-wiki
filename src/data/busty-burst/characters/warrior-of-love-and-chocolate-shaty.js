@@ -319,7 +319,7 @@ export const skills = {
 export const stats = {
   "id": "warrior-of-love-and-chocolate-shaty",
   "characterId": 2111,
-  "name": "【Warrior of Love and Chocolate】Shaty",
+  "name": "【Champion of Love and Chocolate】Shaty",
   "rarity": "SR",
   "element": "想",
   "weapon": "",
@@ -591,4 +591,4 @@ export const stats = {
       "Accuracy": 7
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

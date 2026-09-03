@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -270,17 +304,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1002",
+      "description": "Gain Physical Defense UP (Small), Magic Defense UP (Small)",
       "effect": "Physical Defense + (+70), Magic Defense+ (+70)",
       "effectValues": [
         {
           "name": "Physical Defense +",
           "value": 70,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Defense UP (Small)"
         },
         {
           "name": "Magic Defense+",
           "value": 70,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Defense UP (Small)"
         }
       ]
     },
@@ -288,17 +325,20 @@ export const skills = {
       "slot": 2,
       "name": "Max HP +, Block+",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP (Small), Block UP (Medium)",
       "effect": "Max HP + (+1447), Block+ (+15)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 1447,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Small)"
         },
         {
           "name": "Block+",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Medium)"
         }
       ]
     }
@@ -306,7 +346,7 @@ export const skills = {
   "name": "Athena",
   "id": 2030,
   "rarity": "SR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Tank",
   "tags": [
     "Heal",
@@ -611,4 +651,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

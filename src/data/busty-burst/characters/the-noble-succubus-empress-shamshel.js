@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -101,7 +135,7 @@ export const skills = {
       "descriptionLv90": "Deals magic damage to the 3 nearest enemies",
       "target": "Nearest Enemy",
       "castTime": 1.08,
-      "damageScaling": "110% ATK",
+      "damageScaling": "110.00000000000001% ATK",
       "baseDamage": "+50",
       "levelGrowth": "+10",
       "lvl1": "110% + 50",
@@ -227,17 +261,20 @@ export const skills = {
       "slot": 1,
       "name": "Charm Resistance LvMax, Confusion Resistance LvMax",
       "icon": "skill001/skill1003",
+      "description": "Gain Charm Resistance UP, Confusion Resistance UP",
       "effect": "Charm Resistance LvMax (+1%), Confusion Resistance LvMax (+1%)",
       "effectValues": [
         {
           "name": "Charm Resistance LvMax",
           "value": 1,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Charm Resistance UP"
         },
         {
           "name": "Confusion Resistance LvMax",
           "value": 1,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Confusion Resistance UP"
         }
       ]
     },
@@ -245,17 +282,20 @@ export const skills = {
       "slot": 2,
       "name": "Magic Attack +, Skill Damage +",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Large), Skill Damage UP (Large)",
       "effect": "Magic Attack + (+389), Skill Damage + (+30%)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         },
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         }
       ]
     }
@@ -577,4 +617,4 @@ export const stats = {
       "MATK": 68
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

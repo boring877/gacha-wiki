@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -277,17 +311,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Action Speed +",
       "icon": "skill001/skill1006",
+      "description": "Gain Magic Attack UP (Medium), Action Speed UP (Medium)",
       "effect": "Magic Attack + (+259), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     },
@@ -295,17 +332,20 @@ export const skills = {
       "slot": 2,
       "name": "Healing Received +, Block+",
       "icon": "skill001/skill1003",
+      "description": "Gain Healing Received UP (Small), Block UP (Small)",
       "effect": "Healing Received + (+20%), Block+ (+10)",
       "effectValues": [
         {
           "name": "Healing Received +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Healing Received UP (Small)"
         },
         {
           "name": "Block+",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Small)"
         }
       ]
     }
@@ -629,4 +669,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

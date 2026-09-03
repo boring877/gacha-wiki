@@ -89,18 +89,52 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "There's a chance!",
+      "name": "An Opening, I See!",
       "icon": "skill001/skill0007",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 5 seconds",
       "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 5 seconds",
       "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-210 DOWN for 5 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.38,
-      "damageScaling": "220% ATK",
+      "damageScaling": "220.00000000000003% ATK",
       "baseDamage": "+110",
       "levelGrowth": "+20",
       "lvl1": "220% + 110",
@@ -121,7 +155,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Defense is absolute!",
+      "name": "Defense Is Absolute!",
       "icon": "skill001/skill0019",
       "description": "Applies Healing Shield (270, restores 20%) to self for 12 seconds and Taunt for 12 seconds",
       "descriptionLv1": "Applies Healing Shield (270, restores 20%) to self for 12 seconds and Taunt for 12 seconds",
@@ -158,7 +192,7 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "A full-power strike!",
+      "name": "This Is My All-Out Strike!",
       "icon": "skill001/skill0003_1",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 1) for 10 seconds",
       "effect": "950% + 800",
@@ -173,7 +207,7 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "A full-power strike!",
+      "name": "This Is My All-Out Strike!",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 2) for 10 seconds",
       "effect": "1160% + 950",
@@ -188,7 +222,7 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "A full-power strike!",
+      "name": "This Is My All-Out Strike!",
       "icon": "skill001/skill0003_3",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 3) for 10 seconds",
       "effect": "1300% + 1050",
@@ -203,7 +237,7 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "A full-power strike!",
+      "name": "This Is My All-Out Strike!",
       "icon": "skill001/skill0003_4",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 4) for 10 seconds",
       "effect": "1400% + 1150",
@@ -218,7 +252,7 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "A full-power strike!",
+      "name": "This Is My All-Out Strike!",
       "icon": "skill001/skill0003_5",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 5) for 10 seconds",
       "effect": "1450% + 1200",
@@ -237,12 +271,14 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP (Medium)",
       "effect": "Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     },
@@ -250,17 +286,20 @@ export const skills = {
       "slot": 2,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1003",
+      "description": "Gain Physical Defense UP (Medium), Magic Defense UP (Medium)",
       "effect": "Physical Defense + (+141), Magic Defense+ (+141)",
       "effectValues": [
         {
           "name": "Physical Defense +",
           "value": 141,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Defense UP (Medium)"
         },
         {
           "name": "Magic Defense+",
           "value": 141,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Defense UP (Medium)"
         }
       ]
     }
@@ -268,7 +307,7 @@ export const skills = {
   "name": "Gracie",
   "id": 2086,
   "rarity": "SR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Tank",
   "tags": [
     "Debuff",
@@ -571,4 +610,4 @@ export const stats = {
       "HP": 405
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

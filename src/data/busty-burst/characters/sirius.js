@@ -89,15 +89,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Thunder Rush",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, when team has when 3+ allies are presentdamage+25",
-      "descriptionLv1": "Deals physical damage to the nearest enemy, when team has when 3+ allies are presentdamage+25",
-      "descriptionLv90": "Deals physical damage to the nearest enemy, when team has when 3+ allies are presentdamage+25",
+      "description": "Deals physical damage to the nearest enemy, when team has when 3+ allies are presentdamage+25%",
+      "descriptionLv1": "Deals physical damage to the nearest enemy, when team has when 3+ allies are presentdamage+25%",
+      "descriptionLv90": "Deals physical damage to the nearest enemy, when team has when 3+ allies are presentdamage+25%",
       "target": "Nearest Enemy",
       "castTime": 1.37,
       "damageScaling": "300% ATK",
@@ -122,9 +156,9 @@ export const skills = {
       "slot": 3,
       "name": "Man-Sword Resonance",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds , when team has when 3+ allies are present10 Holy Type ATK 15%UP",
-      "descriptionLv1": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds , when team has when 3+ allies are present10 Holy Type ATK 15%UP",
-      "descriptionLv90": "Applies Physical Attack 18%+665 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds , when team has when 3+ allies are present10 Holy Type ATK 15%UP",
+      "description": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds, when team has when 3+ allies are present 10s Holy Type ATK 15%UP",
+      "descriptionLv1": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds, when team has when 3+ allies are present 10s Holy Type ATK 15%UP",
+      "descriptionLv90": "Applies Physical Attack 18%+665 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds, when team has when 3+ allies are present 10s Holy Type ATK 15%UP",
       "target": "Self",
       "castTime": 1.37,
       "damageScaling": null,
@@ -167,7 +201,7 @@ export const skills = {
       "rank": 1,
       "name": "Heroic Storm",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 5 nearest enemies and inflicts BlockDOWN(LV 1) for 10 seconds, when team has when 3+ allies are present10 Physical Defense DOWN(LV 1)",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts BlockDOWN(LV 1) for 10 seconds, when team has when 3+ allies are present 10s Physical Defense DOWN(LV 1)",
       "effect": "240% + 300",
       "buffEffects": [
         {
@@ -188,7 +222,7 @@ export const skills = {
       "rank": 2,
       "name": "Heroic Storm",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the 5 nearest enemies and inflicts BlockDOWN(LV 2) for 10 seconds, when team has when 3+ allies are present10 Physical Defense DOWN(LV 2)",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts BlockDOWN(LV 2) for 10 seconds, when team has when 3+ allies are present 10s Physical Defense DOWN(LV 2)",
       "effect": "290% + 350",
       "buffEffects": [
         {
@@ -209,7 +243,7 @@ export const skills = {
       "rank": 3,
       "name": "Heroic Storm",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the 5 nearest enemies and inflicts BlockDOWN(LV 3) for 10 seconds, when team has when 3+ allies are present10 Physical Defense DOWN(LV 3)",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts BlockDOWN(LV 3) for 10 seconds, when team has when 3+ allies are present 10s Physical Defense DOWN(LV 3)",
       "effect": "320% + 390",
       "buffEffects": [
         {
@@ -230,7 +264,7 @@ export const skills = {
       "rank": 4,
       "name": "Heroic Storm",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the 5 nearest enemies and inflicts BlockDOWN(LV 4) for 10 seconds, when team has when 3+ allies are present10 Physical Defense DOWN(LV 4)",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts BlockDOWN(LV 4) for 10 seconds, when team has when 3+ allies are present 10s Physical Defense DOWN(LV 4)",
       "effect": "350% + 420",
       "buffEffects": [
         {
@@ -251,7 +285,7 @@ export const skills = {
       "rank": 5,
       "name": "Heroic Storm",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the 5 nearest enemies and inflicts BlockDOWN(LV 5) for 10 seconds, when team has when 3+ allies are present10 Physical Defense DOWN(LV 5)",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts BlockDOWN(LV 5) for 10 seconds, when team has when 3+ allies are present 10s Physical Defense DOWN(LV 5)",
       "effect": "370% + 450",
       "buffEffects": [
         {
@@ -274,17 +308,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Critical Damage+, Action Speed +",
       "icon": "skill001/skill1001",
-      "effect": "Physical Critical Damage+ (+8.8%), Action Speed + (+10)",
+      "description": "Gain Physical Critical Damage UP (Large), Action Speed UP (Medium)",
+      "effect": "Physical Critical Damage+ (+176%), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Physical Critical Damage+",
-          "value": 8.8,
-          "type": "percent"
+          "value": 176,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Large)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     },
@@ -292,17 +329,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Medium)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     }
@@ -310,7 +350,7 @@ export const skills = {
   "name": "Sirius",
   "id": 2139,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Attacker",
   "tags": [
     "Debuff"
@@ -611,4 +651,4 @@ export const stats = {
       "ATK": 74
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

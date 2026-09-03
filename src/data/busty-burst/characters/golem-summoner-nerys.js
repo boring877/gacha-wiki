@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -100,7 +134,7 @@ export const skills = {
       "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -20%DOWN for 8 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.58,
-      "damageScaling": "110% ATK",
+      "damageScaling": "110.00000000000001% ATK",
       "baseDamage": "+40",
       "levelGrowth": "+8",
       "lvl1": "110% + 40",
@@ -267,17 +301,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Defense+, Max HP +",
       "icon": "skill001/skill1002",
+      "description": "Gain Magic Defense UP (Medium), Max HP UP (Large)",
       "effect": "Magic Defense+ (+141), Max HP + (+3444)",
       "effectValues": [
         {
           "name": "Magic Defense+",
           "value": 141,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Defense UP (Medium)"
         },
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         }
       ]
     },
@@ -285,17 +322,20 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Physical Attack + (+159), Physical Critical Damage+ (+4.5%)",
+      "description": "Gain Physical Attack UP (Medium), Physical Critical Damage UP (Medium)",
+      "effect": "Physical Attack + (+159), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 159,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         }
       ]
     }
@@ -606,4 +646,4 @@ export const stats = {
       "Phys Crit": 27
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

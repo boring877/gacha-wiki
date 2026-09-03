@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -130,7 +164,7 @@ export const skills = {
       "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Block-23 DOWN for 10 seconds and Action Speed -11%DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.1,
-      "damageScaling": "110% ATK",
+      "damageScaling": "110.00000000000001% ATK",
       "baseDamage": "+150",
       "levelGrowth": "+6",
       "lvl1": "110% + 150",
@@ -162,7 +196,7 @@ export const skills = {
       "rank": 1,
       "name": "Spiral - Snake - Cutter",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 1) for 10 seconds and Accuracy DOWN(LV 1) for 10 seconds , 4s Paralysis for",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 1) for 10 seconds and Accuracy DOWN(LV 1) for 10 seconds, 4s",
       "effect": "390% + 350",
       "buffEffects": [
         {
@@ -189,7 +223,7 @@ export const skills = {
       "rank": 2,
       "name": "Spiral - Snake - Cutter",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 2) for 10 seconds and Accuracy DOWN(LV 2) for 10 seconds , 5s Paralysis for",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 2) for 10 seconds and Accuracy DOWN(LV 2) for 10 seconds, 5s",
       "effect": "459% + 550",
       "buffEffects": [
         {
@@ -216,7 +250,7 @@ export const skills = {
       "rank": 3,
       "name": "Spiral - Snake - Cutter",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 3) for 10 seconds and Accuracy DOWN(LV 3) for 10 seconds , 5s Paralysis for",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 3) for 10 seconds and Accuracy DOWN(LV 3) for 10 seconds, 5s",
       "effect": "509% + 700",
       "buffEffects": [
         {
@@ -243,7 +277,7 @@ export const skills = {
       "rank": 4,
       "name": "Spiral - Snake - Cutter",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 4) for 10 seconds and Accuracy DOWN(LV 4) for 10 seconds , 6s Paralysis for",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 4) for 10 seconds and Accuracy DOWN(LV 4) for 10 seconds, 6s",
       "effect": "550% + 850",
       "buffEffects": [
         {
@@ -270,7 +304,7 @@ export const skills = {
       "rank": 5,
       "name": "Spiral - Snake - Cutter",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 5) for 10 seconds and Accuracy DOWN(LV 5) for 10 seconds , 6s Paralysis for",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 5) for 10 seconds and Accuracy DOWN(LV 5) for 10 seconds, 6s",
       "effect": "570% + 950",
       "buffEffects": [
         {
@@ -299,17 +333,14 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Physical Attack +",
       "icon": "skill001/skill1003",
-      "effect": "Action Speed + (+15), Physical Attack + (0)",
+      "description": "Gain Action Speed UP (Large), Physical Attack UP (Cannot be Cleansed)",
+      "effect": "Action Speed + (+15)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
-          "type": "flat"
-        },
-        {
-          "name": "Physical Attack +",
-          "value": 0,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Large)"
         }
       ]
     },
@@ -317,17 +348,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Medium)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     }
@@ -640,4 +674,4 @@ export const stats = {
       "ATK": 66
     }
   ]
-};;;;;;;
+};;;;;;;;;

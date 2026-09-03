@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -256,17 +290,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Accuracy +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Large), Accuracy UP (Medium)",
       "effect": "Physical Attack + (+389), Accuracy + (+20)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Large)"
         },
         {
           "name": "Accuracy +",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         }
       ]
     },
@@ -274,17 +311,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Accuracy +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Accuracy UP (Medium)",
       "effect": "Skill Damage + (+30%), Accuracy + (+20)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Accuracy +",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         }
       ]
     }
@@ -593,4 +633,4 @@ export const stats = {
       "Phys Crit": 19
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

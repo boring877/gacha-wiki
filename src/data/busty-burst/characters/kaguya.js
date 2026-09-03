@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -275,17 +309,20 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Magic Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Action Speed UP (Medium), Magic Attack UP (Medium)",
       "effect": "Action Speed + (+10), Magic Attack + (+259)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         },
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         }
       ]
     },
@@ -293,17 +330,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Magic Critical Damage+",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Magic Critical Damage UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Magic Critical Damage+ (+90)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Magic Critical Damage+",
           "value": 90,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Medium)"
         }
       ]
     }
@@ -625,4 +665,4 @@ export const stats = {
       "MP Charge": 5
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

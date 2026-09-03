@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Cleaning Machine",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -18%-30 DOWN for 6 seconds, 1.5",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -18%-30 DOWN for 6 seconds, 1.5",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -18%-210 DOWN for 6 seconds, 1.5",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -18%-30 DOWN for 6 seconds, 1.5s",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -18%-30 DOWN for 6 seconds, 1.5s",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -18%-210 DOWN for 6 seconds, 1.5s",
       "target": "Nearest Enemy",
       "castTime": 0.8,
       "damageScaling": "105% ATK",
@@ -131,9 +165,9 @@ export const skills = {
       "slot": 3,
       "name": "Freisetzung,Bumerang",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Block-13 DOWN for 10 seconds, 2s Stun for",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Block-13 DOWN for 10 seconds, 2s Stun for",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Block-26 DOWN for 10 seconds, 2s Stun for",
+      "description": "Deals physical damage to the nearest enemy and inflicts Block-13 DOWN for 10 seconds, 2s",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Block-13 DOWN for 10 seconds, 2s",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Block-26 DOWN for 10 seconds, 2s",
       "target": "Nearest Enemy",
       "castTime": 0.8,
       "damageScaling": "340% ATK",
@@ -168,7 +202,7 @@ export const skills = {
       "rank": 1,
       "name": "I, the sweeping that devours all",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 1) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 1)",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 1) for 10 seconds, before Ultimate activation applies to self 10s Physical Attack UP(LV 1)",
       "effect": "240% + 200",
       "buffEffects": [
         {
@@ -189,7 +223,7 @@ export const skills = {
       "rank": 2,
       "name": "I, the sweeping that devours all",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 2) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 2)",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 2) for 10 seconds, before Ultimate activation applies to self 10s Physical Attack UP(LV 2)",
       "effect": "290% + 250",
       "buffEffects": [
         {
@@ -210,7 +244,7 @@ export const skills = {
       "rank": 3,
       "name": "I, the sweeping that devours all",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 3) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 3)",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 3) for 10 seconds, before Ultimate activation applies to self 10s Physical Attack UP(LV 3)",
       "effect": "325% + 300",
       "buffEffects": [
         {
@@ -231,7 +265,7 @@ export const skills = {
       "rank": 4,
       "name": "I, the sweeping that devours all",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 4) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 4)",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 4) for 10 seconds, before Ultimate activation applies to self 10s Physical Attack UP(LV 4)",
       "effect": "350% + 350",
       "buffEffects": [
         {
@@ -252,7 +286,7 @@ export const skills = {
       "rank": 5,
       "name": "I, the sweeping that devours all",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 5) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 5)",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 5) for 10 seconds, before Ultimate activation applies to self 10s Physical Attack UP(LV 5)",
       "effect": "365% + 400",
       "buffEffects": [
         {
@@ -275,17 +309,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Critical Damage+, Holy Type ATK +",
       "icon": "skill001/skill1001",
-      "effect": "Physical Critical Damage+ (+4.5%), Holy Type ATK + (+5%)",
+      "description": "Gain Physical Critical Damage UP (Medium), Holy Type ATK UP",
+      "effect": "Physical Critical Damage+ (+90%), Holy Type ATK + (+5%)",
       "effectValues": [
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         },
         {
           "name": "Holy Type ATK +",
           "value": 5,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Holy Type ATK UP"
         }
       ]
     },
@@ -293,17 +330,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Skill Enhancement Regol Cost DOWNHoly",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Regol cost for enhancing Holy Type Paladin skills -%",
       "effect": "Skill Damage + (+30%), Skill Enhancement Regol Cost DOWNHoly (+5%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Skill Enhancement Regol Cost DOWNHoly",
           "value": 5,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Regol cost for enhancing Holy Type Paladin skills -%"
         }
       ]
     }
@@ -311,7 +351,7 @@ export const skills = {
   "name": "Maid Erotic Enchanter: Ilugio",
   "id": 2161,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Attacker",
   "tags": [
     "Debuff",
@@ -612,4 +652,4 @@ export const stats = {
       "ATK": 63
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

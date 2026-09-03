@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Petal Blooming Spin",
+      "name": "Blossom-Scattering Splash",
       "icon": "skill001/skill0007",
-      "description": "HP 1 to enemiesphysical damage and inflicts Block-13 DOWN for 10 seconds and Accuracy -11 DOWN for 10 seconds",
-      "descriptionLv1": "HP 1 to enemiesphysical damage and inflicts Block-13 DOWN for 10 seconds and Accuracy -11 DOWN for 10 seconds",
-      "descriptionLv90": "HP 1 to enemiesphysical damage and inflicts Block-26 DOWN for 10 seconds and Accuracy -23 DOWN for 10 seconds",
+      "description": "Deals physical damage to the enemy with the highest HP and inflicts Block-13 DOWN for 10 seconds and Accuracy -11 DOWN for 10 seconds",
+      "descriptionLv1": "Deals physical damage to the enemy with the highest HP and inflicts Block-13 DOWN for 10 seconds and Accuracy -11 DOWN for 10 seconds",
+      "descriptionLv90": "Deals physical damage to the enemy with the highest HP and inflicts Block-26 DOWN for 10 seconds and Accuracy -23 DOWN for 10 seconds",
       "target": "Highest HP Enemy",
       "castTime": 1.38,
       "damageScaling": "300% ATK",
@@ -130,7 +164,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Tropical Almena",
+      "name": "Tropical Tight Alemana",
       "icon": "skill001/skill0018",
       "description": "Applies Magic Attack 18%+35 UP to all allies for 10 seconds and Block 9 UP for 10 seconds",
       "descriptionLv1": "Applies Magic Attack 18%+35 UP to all allies for 10 seconds and Block 9 UP for 10 seconds",
@@ -168,7 +202,7 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Charming Dance",
+      "name": "Alluring Amalgamation",
       "icon": "skill001/skill0020_1",
       "description": "Applies Magic Critical DamageUP(LV 1) to all allies for 12 seconds and Accuracy UP(LV 1) for 12 seconds",
       "effect": "300% + 0",
@@ -189,7 +223,7 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Charming Dance",
+      "name": "Alluring Amalgamation",
       "icon": "skill001/skill0020_2",
       "description": "Applies Magic Critical DamageUP(LV 2) to all allies for 12 seconds and Accuracy UP(LV 2) for 12 seconds",
       "effect": "300% + 0",
@@ -210,7 +244,7 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Charming Dance",
+      "name": "Alluring Amalgamation",
       "icon": "skill001/skill0020_3",
       "description": "Applies Magic Critical DamageUP(LV 3) to all allies for 12 seconds and Accuracy UP(LV 3) for 12 seconds",
       "effect": "300% + 0",
@@ -231,7 +265,7 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Charming Dance",
+      "name": "Alluring Amalgamation",
       "icon": "skill001/skill0020_4",
       "description": "Applies Magic Critical DamageUP(LV 4) to all allies for 12 seconds and Accuracy UP(LV 4) for 12 seconds",
       "effect": "300% + 0",
@@ -252,7 +286,7 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Charming Dance",
+      "name": "Alluring Amalgamation",
       "icon": "skill001/skill0020_5",
       "description": "Applies Magic Critical DamageUP(LV 5) to all allies for 12 seconds and Accuracy UP(LV 5) for 12 seconds",
       "effect": "300% + 0",
@@ -277,17 +311,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Magic Critical Damage+",
       "icon": "skill001/skill1003",
+      "description": "Gain Magic Attack UP (Small), Magic Critical Damage UP (Medium)",
       "effect": "Magic Attack + (+130), Magic Critical Damage+ (+90)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 130,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Small)"
         },
         {
           "name": "Magic Critical Damage+",
           "value": 90,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Medium)"
         }
       ]
     },
@@ -295,17 +332,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Block+",
       "icon": "skill001/skill1005",
+      "description": "Gain Ultimate Damage UP (Small), Block UP (Small)",
       "effect": "Ultimate Damage + (+5%), Block+ (+10)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 5,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Small)"
         },
         {
           "name": "Block+",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Small)"
         }
       ]
     }
@@ -313,7 +353,7 @@ export const skills = {
   "name": "Top Dancer: Messeria",
   "id": 2089,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Support",
   "tags": [
     "Buff",
@@ -616,4 +656,4 @@ export const stats = {
       "HP": 625
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

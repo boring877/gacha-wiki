@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "I'll come give you a kiss!",
+      "name": "I am gonna kiss you！",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the 3 nearest enemies activation whenApplies HP Absorb 19%+UP to self for 5 seconds and absorbs 3% of the damage dealt to restore own HP",
-      "descriptionLv1": "Deals physical damage to the 3 nearest enemies activation whenApplies HP Absorb 19%+UP to self for 5 seconds and absorbs 3% of the damage dealt to restore own HP",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies activation whenApplies HP Absorb 19%+UP to self for 5 seconds and absorbs 3% of the damage dealt to restore own HP",
+      "description": "Deals physical damage to the 3 nearest enemies, and when the skill activates, applies HP Absorb 19%+UP to self for 5 seconds and absorbs 3% of the damage dealt to restore own HP",
+      "descriptionLv1": "Deals physical damage to the 3 nearest enemies, and when the skill activates, applies HP Absorb 19%+UP to self for 5 seconds and absorbs 3% of the damage dealt to restore own HP",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies, and when the skill activates, applies HP Absorb 19%+UP to self for 5 seconds and absorbs 3% of the damage dealt to restore own HP",
       "target": "Nearest Enemy",
       "castTime": 1.08,
       "damageScaling": "130% ATK",
@@ -122,7 +156,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Pet me, pet me",
+      "name": "Pat，Pat",
       "icon": "skill001/skill0013",
       "description": "Applies Accuracy 11 UP to self for 10 seconds and Physical Attack 20%+40 UP for 10 seconds",
       "descriptionLv1": "Applies Accuracy 11 UP to self for 10 seconds and Physical Attack 20%+40 UP for 10 seconds",
@@ -160,9 +194,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Love-struck vampire maid racing through the night",
+      "name": "The Lovestruck Vampire Maid, Racing Through the Night",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the enemy with the lowest HP and inflicts Cleanse for 3 seconds and Action Speed DOWN(LV 4) for 10 seconds and absorbs 6% of the damage dealt to restore own HP",
+      "description": "Deals physical damage to the enemy with the lowest HP, and inflicts Dispel for 3 seconds(Dispel effect: removes all buffs and prevents gaining buffs during the duration), and Action Speed DOWN(LV 4) for 10 seconds, and absorbs 6% of the damage dealt to restore own HP",
       "effect": "1150% + 1000",
       "buffEffects": [
         {
@@ -181,9 +215,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Love-struck vampire maid racing through the night",
+      "name": "The Lovestruck Vampire Maid, Racing Through the Night",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the enemy with the lowest HP and inflicts Cleanse for 4 seconds and Action Speed DOWN(LV 5) for 10 seconds and absorbs 6% of the damage dealt to restore own HP",
+      "description": "Deals physical damage to the enemy with the lowest HP, and inflicts Dispel for 4 seconds(Dispel effect: removes all buffs and prevents gaining buffs during the duration), and Action Speed DOWN(LV 5) for 10 seconds, and absorbs 6% of the damage dealt to restore own HP",
       "effect": "1380% + 1200",
       "buffEffects": [
         {
@@ -202,9 +236,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Love-struck vampire maid racing through the night",
+      "name": "The Lovestruck Vampire Maid, Racing Through the Night",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the enemy with the lowest HP and inflicts Cleanse for 4 seconds and Action Speed DOWN(LV 5) for 10 seconds and absorbs 6% of the damage dealt to restore own HP",
+      "description": "Deals physical damage to the enemy with the lowest HP, and inflicts Dispel for 4 seconds(Dispel effect: removes all buffs and prevents gaining buffs during the duration), and Action Speed DOWN(LV 5) for 10 seconds, and absorbs 6% of the damage dealt to restore own HP",
       "effect": "1540% + 1300",
       "buffEffects": [
         {
@@ -223,9 +257,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Love-struck vampire maid racing through the night",
+      "name": "The Lovestruck Vampire Maid, Racing Through the Night",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the enemy with the lowest HP and inflicts Cleanse for 5 seconds and Action Speed DOWN(LV 5) for 10 seconds and absorbs 6% of the damage dealt to restore own HP",
+      "description": "Deals physical damage to the enemy with the lowest HP, and inflicts Dispel for 5 seconds(Dispel effect: removes all buffs and prevents gaining buffs during the duration), and Action Speed DOWN(LV 5) for 10 seconds, and absorbs 6% of the damage dealt to restore own HP",
       "effect": "1650% + 1350",
       "buffEffects": [
         {
@@ -244,9 +278,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Love-struck vampire maid racing through the night",
+      "name": "The Lovestruck Vampire Maid, Racing Through the Night",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the enemy with the lowest HP and inflicts Cleanse for 5 seconds and Action Speed DOWN(LV 5) for 10 seconds and absorbs 6% of the damage dealt to restore own HP",
+      "description": "Deals physical damage to the enemy with the lowest HP, and inflicts Dispel for 5 seconds(Dispel effect: removes all buffs and prevents gaining buffs during the duration), and Action Speed DOWN(LV 5) for 10 seconds, and absorbs 6% of the damage dealt to restore own HP",
       "effect": "1700% + 1400",
       "buffEffects": [
         {
@@ -269,17 +303,20 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Physical Attack +",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP (Large), Physical Attack UP (Medium)",
       "effect": "Max HP + (+3444), Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         },
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     },
@@ -287,17 +324,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Accuracy +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Accuracy UP (Medium)",
       "effect": "Skill Damage + (+30%), Accuracy + (+20)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Accuracy +",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         }
       ]
     }
@@ -335,9 +375,9 @@ export const skills = {
 export const stats = {
   "id": "seductive-vampire-soltina",
   "characterId": 2082,
-  "name": "[Seductive Vampire] Soltina",
+  "name": "【Seductive Vampire】Soltina",
   "rarity": "SSR",
-  "element": "Dark",
+  "element": "魔",
   "weapon": "",
   "role": "Attacker",
   "tags": [
@@ -608,4 +648,4 @@ export const stats = {
       "HP": 332
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

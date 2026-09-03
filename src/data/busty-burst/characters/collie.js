@@ -89,15 +89,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Hold still. I'll make a clean cut.",
+      "name": "Don't move or I won't cut it well.",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit",
-      "descriptionLv1": "Deals physical damage to the nearest enemy, guaranteed hit",
-      "descriptionLv90": "Deals physical damage to the nearest enemy, guaranteed hit",
+      "description": "Deals physical damage to the nearest enemyguaranteed to hit",
+      "descriptionLv1": "Deals physical damage to the nearest enemyguaranteed to hit",
+      "descriptionLv90": "Deals physical damage to the nearest enemyguaranteed to hit",
       "target": "Nearest Enemy",
       "castTime": 1.3,
       "damageScaling": "210% ATK",
@@ -110,11 +144,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "I'll peel it clean.~",
+      "name": "I'm gonna skin it nice and clean～",
       "icon": "skill001/skill0013",
-      "description": "Applies Physical Critical Damage 30 UP to self for 12 seconds, [Sharpness]([Sharpness]1Physical Attack10%UP, max2), [Sharpness]2 whenapply to self20 Hit-Based physical damageUP(20%, 6)",
-      "descriptionLv1": "Applies Physical Critical Damage 30 UP to self for 12 seconds, [Sharpness]([Sharpness]1Physical Attack10%UP, max2), [Sharpness]2 whenapply to self20 Hit-Based physical damageUP(20%, 6)",
-      "descriptionLv90": "Applies Physical Critical Damage 30 UP to self for 12 seconds, [Sharpness]([Sharpness]1Physical Attack10%UP, max2), [Sharpness]2 whenapply to self20 Hit-Based physical damageUP(20%, 6)",
+      "description": "Applies Physical Critical Damage 30 UP to self for 12 seconds. Also applies Sharpness to self(each Sharpness increase physical damage 10%max 2). When Sharpness reach to 2, applies physical damage up on-hit(20%, 6 times) for 20 seconds",
+      "descriptionLv1": "Applies Physical Critical Damage 30 UP to self for 12 seconds. Also applies Sharpness to self(each Sharpness increase physical damage 10%max 2). When Sharpness reach to 2, applies physical damage up on-hit(20%, 6 times) for 20 seconds",
+      "descriptionLv90": "Applies Physical Critical Damage 30 UP to self for 12 seconds. Also applies Sharpness to self(each Sharpness increase physical damage 10%max 2). When Sharpness reach to 2, applies physical damage up on-hit(20%, 6 times) for 20 seconds",
       "target": "Self",
       "castTime": 1.3,
       "damageScaling": null,
@@ -147,41 +181,41 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "I know how to deal with you now!",
+      "name": "I Know How to Deal with You！",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit",
+      "description": "Deals physical damage to the nearest enemyguaranteed to hit",
       "effect": "900% + 400",
       "buffEffects": []
     },
     {
       "rank": 2,
-      "name": "I know how to deal with you now!",
+      "name": "I Know How to Deal with You！",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit",
+      "description": "Deals physical damage to the nearest enemyguaranteed to hit",
       "effect": "1080% + 600",
       "buffEffects": []
     },
     {
       "rank": 3,
-      "name": "I know how to deal with you now!",
+      "name": "I Know How to Deal with You！",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit",
+      "description": "Deals physical damage to the nearest enemyguaranteed to hit",
       "effect": "1120% + 750",
       "buffEffects": []
     },
     {
       "rank": 4,
-      "name": "I know how to deal with you now!",
+      "name": "I Know How to Deal with You！",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit",
+      "description": "Deals physical damage to the nearest enemyguaranteed to hit",
       "effect": "1210% + 900",
       "buffEffects": []
     },
     {
       "rank": 5,
-      "name": "I know how to deal with you now!",
+      "name": "I Know How to Deal with You！",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit",
+      "description": "Deals physical damage to the nearest enemyguaranteed to hit",
       "effect": "1300% + 1000",
       "buffEffects": []
     }
@@ -191,12 +225,14 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +",
       "icon": "skill001/skill1001",
+      "description": "Gain Action Speed UP (Medium)",
       "effect": "Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     },
@@ -204,17 +240,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Medium), Physical Attack UP (Small)",
       "effect": "Skill Damage + (+20%), Physical Attack + (+130)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Medium)"
         },
         {
           "name": "Physical Attack +",
           "value": 130,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Small)"
         }
       ]
     }
@@ -508,4 +547,4 @@ export const stats = {
       "ATK": 53
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

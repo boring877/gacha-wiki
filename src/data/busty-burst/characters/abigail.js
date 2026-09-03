@@ -92,15 +92,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Ether 125mg",
+      "name": "Diethyl ether 125mg",
       "icon": "skill001/skill0011",
-      "description": "MP dealphysical damageand inflicts Dispel for 2 seconds , 6s Paralysis for, 8 Accuracy -15 DOWN",
-      "descriptionLv1": "MP dealphysical damageand inflicts Dispel for 2 seconds , 6s Paralysis for, 8 Accuracy -15 DOWN",
-      "descriptionLv90": "MP dealphysical damageand inflicts Dispel for 2 seconds , 6s Paralysis for, 8 Accuracy -33 DOWN",
+      "description": "Deals physical damage to the enemy with most MP. Also inflicts Dispel for 2 seconds, Paralyze for 6 seconds and Accuracy -15 DOWN for 8 seconds",
+      "descriptionLv1": "Deals physical damage to the enemy with most MP. Also inflicts Dispel for 2 seconds, Paralyze for 6 seconds and Accuracy -15 DOWN for 8 seconds",
+      "descriptionLv90": "Deals physical damage to the enemy with most MP. Also inflicts Dispel for 2 seconds, Paralyze for 6 seconds and Accuracy -33 DOWN for 8 seconds",
       "target": "Highest MP Enemy",
       "castTime": 0.5,
       "damageScaling": "300% ATK",
@@ -140,9 +174,9 @@ export const skills = {
       "slot": 3,
       "name": "Adrenaline 1mg",
       "icon": "skill001/skill0021",
-      "description": "restore HP to frontmost allyHP and inflicts HP Regeneration 5%+150 for 8 seconds and Debuff Resistance 50%UP for 8 seconds , 8 25%Damage Reduction",
-      "descriptionLv1": "restore HP to frontmost allyHP and inflicts HP Regeneration 5%+150 for 8 seconds and Debuff Resistance 50%UP for 8 seconds , 8 25%Damage Reduction",
-      "descriptionLv90": "restore HP to frontmost allyHP and inflicts HP Regeneration 5%+150 for 8 seconds and Debuff Resistance 50%UP for 8 seconds , 8 25%Damage Reduction",
+      "description": "Restores HP by to the head of the formation. Also applies HP Regeneration 5%+150 for 8 seconds, Debuff Resistance 50%UP for 8 seconds and 25%Damage Reduction for 8 seconds",
+      "descriptionLv1": "Restores HP by to the head of the formation. Also applies HP Regeneration 5%+150 for 8 seconds, Debuff Resistance 50%UP for 8 seconds and 25%Damage Reduction for 8 seconds",
+      "descriptionLv90": "Restores HP by to the head of the formation. Also applies HP Regeneration 5%+150 for 8 seconds, Debuff Resistance 50%UP for 8 seconds and 25%Damage Reduction for 8 seconds",
       "target": "Frontmost Ally",
       "castTime": 1.58,
       "damageScaling": "3500% ATK",
@@ -182,9 +216,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Lethal Drug",
+      "name": "Geftich Medicament",
       "icon": "skill001/skill0012_1",
-      "description": "MP dealphysical damage, inflict 5s , 5s Blind for",
+      "description": "Deals physical damage to the enemy with most MP. Also inflicts silence for 5 seconds and blind for 5 seconds",
       "effect": "800% + 400",
       "buffEffects": [
         {
@@ -203,9 +237,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Lethal Drug",
+      "name": "Geftich Medicament",
       "icon": "skill001/skill0012_2",
-      "description": "MP dealphysical damage, inflict 5s , 6s Blind for",
+      "description": "Deals physical damage to the enemy with most MP. Also inflicts silence for 5 seconds and blind for 6 seconds",
       "effect": "960% + 500",
       "buffEffects": [
         {
@@ -224,9 +258,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Lethal Drug",
+      "name": "Geftich Medicament",
       "icon": "skill001/skill0012_3",
-      "description": "MP dealphysical damage, inflict6s Silence for, 6s Blind for",
+      "description": "Deals physical damage to the enemy with most MP. Also inflicts silence for 6 seconds and blind for 6 seconds",
       "effect": "1080% + 600",
       "buffEffects": [
         {
@@ -245,9 +279,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Lethal Drug",
+      "name": "Geftich Medicament",
       "icon": "skill001/skill0012_4",
-      "description": "MP dealphysical damage, inflict6s Silence for, 7s Blind for",
+      "description": "Deals physical damage to the enemy with most MP. Also inflicts silence for 6 seconds and blind for 7 seconds",
       "effect": "1170% + 650",
       "buffEffects": [
         {
@@ -266,9 +300,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Lethal Drug",
+      "name": "Geftich Medicament",
       "icon": "skill001/skill0012_5",
-      "description": "MP dealphysical damage, inflict7s Silence for, 7s Blind for",
+      "description": "Deals physical damage to the enemy with most MP. Also inflicts silence for 7 seconds and blind for 7 seconds",
       "effect": "1250% + 700",
       "buffEffects": [
         {
@@ -291,17 +325,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Taunt Resistance LvMax",
       "icon": "skill001/skill1003",
+      "description": "Gain Physical Attack UP (Medium), Taunt Resistance UP",
       "effect": "Physical Attack + (+259), Taunt Resistance LvMax (+1%)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         },
         {
           "name": "Taunt Resistance LvMax",
           "value": 1,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Taunt Resistance UP"
         }
       ]
     },
@@ -309,17 +346,20 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Magic Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Extra Large), Magic Attack UP (Extra Large)",
       "effect": "Physical Attack + (+584), Magic Attack + (+584)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 584,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Extra Large)"
         },
         {
           "name": "Magic Attack +",
           "value": 584,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Extra Large)"
         }
       ]
     }
@@ -634,4 +674,4 @@ export const stats = {
       "ATK": 75
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

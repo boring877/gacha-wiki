@@ -88,6 +88,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -99,7 +133,7 @@ export const skills = {
       "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed -20%DOWN for 8 seconds",
       "target": "Lowest HP Enemy",
       "castTime": 0.88,
-      "damageScaling": "110% ATK",
+      "damageScaling": "110.00000000000001% ATK",
       "baseDamage": "+50",
       "levelGrowth": "+8",
       "lvl1": "110% + 50",
@@ -217,17 +251,20 @@ export const skills = {
       "slot": 1,
       "name": "MP Recovery+, Physical Attack +",
       "icon": "skill001/skill1004",
+      "description": "Gain MP Recovery (Super Large), Physical Attack UP (Super Large)",
       "effect": "MP Recovery+ (+42%), Physical Attack + (+420)",
       "effectValues": [
         {
           "name": "MP Recovery+",
           "value": 42,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery (Super Large)"
         },
         {
           "name": "Physical Attack +",
           "value": 420,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Super Large)"
         }
       ]
     },
@@ -235,17 +272,20 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Physical Attack + (+259), Physical Critical Damage+ (+8.8%)",
+      "description": "Gain Physical Attack UP (Medium), Physical Critical Damage UP (Large)",
+      "effect": "Physical Attack + (+259), Physical Critical Damage+ (+176%)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 8.8,
-          "type": "percent"
+          "value": 176,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Large)"
         }
       ]
     }
@@ -554,4 +594,4 @@ export const stats = {
       "MP Charge": 3
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

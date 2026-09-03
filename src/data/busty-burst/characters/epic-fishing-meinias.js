@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -117,7 +151,7 @@ export const skills = {
       "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and inflicts Dispel for 2 seconds (Dispel effect: removes all buffs and prevents gaining buffs during the duration)",
       "target": "Nearest Enemy",
       "castTime": 1.58,
-      "damageScaling": "229% ATK",
+      "damageScaling": "229.99999999999997% ATK",
       "baseDamage": "+150",
       "levelGrowth": "+15",
       "lvl1": "229% + 150",
@@ -225,12 +259,14 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP (Medium)",
       "effect": "Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     },
@@ -238,17 +274,20 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Accuracy +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Medium), Accuracy UP (Medium)",
       "effect": "Physical Attack + (+259), Accuracy + (+20)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         },
         {
           "name": "Accuracy +",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         }
       ]
     }
@@ -559,4 +598,4 @@ export const stats = {
       "HP": 491
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

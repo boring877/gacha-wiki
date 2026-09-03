@@ -92,15 +92,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Delicious Magic♪",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed 20%UP to self for 12 seconds, MP Recovery 200, all alliesinflict8 Magic Attack 18%+35 UP",
-      "descriptionLv1": "Applies Action Speed 20%UP to self for 12 seconds, MP Recovery 200, all alliesinflict8 Magic Attack 18%+35 UP",
-      "descriptionLv90": "Applies Action Speed 20%UP to self for 12 seconds, MP Recovery 200, all alliesinflict8 Magic Attack 18%+665 UP",
+      "description": "Applies Action Speed 20%UP to self for 12 seconds, MP Recovery 200, all alliesinflict 8s Magic Attack 18%+35 UP",
+      "descriptionLv1": "Applies Action Speed 20%UP to self for 12 seconds, MP Recovery 200, all alliesinflict 8s Magic Attack 18%+35 UP",
+      "descriptionLv90": "Applies Action Speed 20%UP to self for 12 seconds, MP Recovery 200, all alliesinflict 8s Magic Attack 18%+665 UP",
       "target": "Self",
       "castTime": 1.1,
       "damageScaling": null,
@@ -139,9 +173,9 @@ export const skills = {
       "slot": 3,
       "name": "How is it...? Does it suit me...?",
       "icon": "skill001/skill0011",
-      "description": "2 enemies8s Blind for and Physical Attack -15%-40 DOWN for 10 seconds , 10 Magic Attack -15%-40 DOWN",
-      "descriptionLv1": "2 enemies8s Blind for and Physical Attack -15%-40 DOWN for 10 seconds , 10 Magic Attack -15%-40 DOWN",
-      "descriptionLv90": "2 enemies8s Blind for and Physical Attack -15%-4000 DOWN for 10 seconds , 10 Magic Attack -15%-40 DOWN",
+      "description": "2 enemies 8s Blind and Physical Attack -15%-40 DOWN for 10 seconds, 10s Magic Attack -15%-40 DOWN",
+      "descriptionLv1": "2 enemies 8s Blind and Physical Attack -15%-40 DOWN for 10 seconds, 10s Magic Attack -15%-40 DOWN",
+      "descriptionLv90": "2 enemies 8s Blind and Physical Attack -15%-4000 DOWN for 10 seconds, 10s Magic Attack -15%-40 DOWN",
       "target": "Farthest Enemy",
       "castTime": 1.1,
       "damageScaling": null,
@@ -184,7 +218,7 @@ export const skills = {
       "rank": 1,
       "name": "Cute Heart Shot!",
       "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the farthest enemy, Ultimate activation beforeApplies Magic Attack UP(LV 1) to self for 8 seconds, enemy has,Ultimate activation beforeapply to self8 Mind Type ATK UP(LV 1)",
+      "description": "Deals magic damage to the farthest enemy, before Ultimate activationApplies Magic Attack UP(LV 1) to self for 8 seconds, enemy hasBlind status, before Ultimate activation applies to self 8s Mind Type ATK UP(LV 1)",
       "effect": "1000% + 1200",
       "buffEffects": [
         {
@@ -205,7 +239,7 @@ export const skills = {
       "rank": 2,
       "name": "Cute Heart Shot!",
       "icon": "skill001/skill0006_2",
-      "description": "Deals magic damage to the farthest enemy, Ultimate activation beforeApplies Magic Attack UP(LV 2) to self for 8 seconds, enemy has,Ultimate activation beforeapply to self8 Mind Type ATK UP(LV 2)",
+      "description": "Deals magic damage to the farthest enemy, before Ultimate activationApplies Magic Attack UP(LV 2) to self for 8 seconds, enemy hasBlind status, before Ultimate activation applies to self 8s Mind Type ATK UP(LV 2)",
       "effect": "1200% + 1400",
       "buffEffects": [
         {
@@ -226,7 +260,7 @@ export const skills = {
       "rank": 3,
       "name": "Cute Heart Shot!",
       "icon": "skill001/skill0006_3",
-      "description": "Deals magic damage to the farthest enemy, Ultimate activation beforeApplies Magic Attack UP(LV 3) to self for 8 seconds, enemy has,Ultimate activation beforeapply to self8 Mind Type ATK UP(LV 3)",
+      "description": "Deals magic damage to the farthest enemy, before Ultimate activationApplies Magic Attack UP(LV 3) to self for 8 seconds, enemy hasBlind status, before Ultimate activation applies to self 8s Mind Type ATK UP(LV 3)",
       "effect": "1350% + 1550",
       "buffEffects": [
         {
@@ -247,7 +281,7 @@ export const skills = {
       "rank": 4,
       "name": "Cute Heart Shot!",
       "icon": "skill001/skill0006_4",
-      "description": "Deals magic damage to the farthest enemy, Ultimate activation beforeApplies Magic Attack UP(LV 4) to self for 8 seconds, enemy has,Ultimate activation beforeapply to self8 Mind Type ATK UP(LV 4)",
+      "description": "Deals magic damage to the farthest enemy, before Ultimate activationApplies Magic Attack UP(LV 4) to self for 8 seconds, enemy hasBlind status, before Ultimate activation applies to self 8s Mind Type ATK UP(LV 4)",
       "effect": "1450% + 1700",
       "buffEffects": [
         {
@@ -268,7 +302,7 @@ export const skills = {
       "rank": 5,
       "name": "Cute Heart Shot!",
       "icon": "skill001/skill0006_5",
-      "description": "Deals magic damage to the farthest enemy, Ultimate activation beforeApplies Magic Attack UP(LV 5) to self for 8 seconds, enemy has,Ultimate activation beforeapply to self8 Mind Type ATK UP(LV 5)",
+      "description": "Deals magic damage to the farthest enemy, before Ultimate activationApplies Magic Attack UP(LV 5) to self for 8 seconds, enemy hasBlind status, before Ultimate activation applies to self 8s Mind Type ATK UP(LV 5)",
       "effect": "1500% + 1800",
       "buffEffects": [
         {
@@ -291,17 +325,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, MP Recovery",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Medium), MP Recovery",
       "effect": "Magic Attack + (+259), MP Recovery (+100%)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         },
         {
           "name": "MP Recovery",
           "value": 100,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         }
       ]
     },
@@ -309,17 +346,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Shield",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Damage Reduction",
       "effect": "Ultimate Damage + (+15%), Shield (+25%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Shield",
           "value": 25,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Damage Reduction"
         }
       ]
     }
@@ -645,4 +685,4 @@ export const stats = {
       "MATK": 74
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

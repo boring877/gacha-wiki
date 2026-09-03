@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -275,17 +309,20 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Block+",
       "icon": "skill001/skill1003",
+      "description": "Gain Action Speed UP (Medium), Block UP (Medium)",
       "effect": "Action Speed + (+10), Block+ (+20)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         },
         {
           "name": "Block+",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Medium)"
         }
       ]
     },
@@ -293,17 +330,20 @@ export const skills = {
       "slot": 2,
       "name": "Max HP +, Physical Defense +",
       "icon": "skill001/skill1007",
+      "description": "Gain Max HP UP (Tiny), Physical Defense UP (Small)",
       "effect": "Max HP + (+955), Physical Defense + (+70)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 955,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Tiny)"
         },
         {
           "name": "Physical Defense +",
           "value": 70,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Defense UP (Small)"
         }
       ]
     }
@@ -612,4 +652,4 @@ export const stats = {
       "MP Regen": 13
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

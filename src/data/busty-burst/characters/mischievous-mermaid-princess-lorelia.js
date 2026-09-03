@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -135,7 +169,7 @@ export const skills = {
       "descriptionLv90": "Deals physical damage to the 3 nearest enemies",
       "target": "Nearest Enemy",
       "castTime": 1.38,
-      "damageScaling": "110% ATK",
+      "damageScaling": "110.00000000000001% ATK",
       "baseDamage": "+70",
       "levelGrowth": "+10",
       "lvl1": "110% + 70",
@@ -256,17 +290,14 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Debuff Resistance +",
       "icon": "skill001/skill1003",
-      "effect": "Max HP + (+2896), Debuff Resistance + (+30%)",
+      "description": "Gain Max HP UP (Medium), Debuff Resistance UP (Small)",
+      "effect": "Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
-        },
-        {
-          "name": "Debuff Resistance +",
-          "value": 30,
-          "type": "percent"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     },
@@ -274,17 +305,20 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Accuracy +",
       "icon": "skill001/skill1005",
+      "description": "Gain Physical Attack UP (Large), Accuracy UP (Medium)",
       "effect": "Physical Attack + (+389), Accuracy + (+20)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Large)"
         },
         {
           "name": "Accuracy +",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         }
       ]
     }
@@ -595,4 +629,4 @@ export const stats = {
       "Phys Crit": 19
     }
   ]
-};;;;;;;
+};;;;;;;;;

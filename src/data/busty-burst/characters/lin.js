@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Swift Wind Assault",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds, [Swift Wind] Lv when activation beforeapply to self6 Wind Type ATK30%UP",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds, [Swift Wind] Lv when activation beforeapply to self6 Wind Type ATK30%UP",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-220 DOWN for 6 seconds, [Swift Wind] Lv when activation beforeapply to self6 Wind Type ATK30%UP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds while [Swift Wind] is active activation before applies to self 6s Wind Type ATK 30%UP",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds while [Swift Wind] is active activation before applies to self 6s Wind Type ATK 30%UP",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-220 DOWN for 6 seconds while [Swift Wind] is active activation before applies to self 6s Wind Type ATK 30%UP",
       "target": "Nearest Enemy",
       "castTime": 1.2,
       "damageScaling": "300% ATK",
@@ -124,9 +158,9 @@ export const skills = {
       "slot": 3,
       "name": "Wind Wrap",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed 14%UP to all allies for 10 seconds and Accuracy 9 UP for 10 seconds , when team hasWind Type when 3+ allies are presentWind Type allies10 Wind Type ATK 15%UP",
-      "descriptionLv1": "Applies Action Speed 14%UP to all allies for 10 seconds and Accuracy 9 UP for 10 seconds , when team hasWind Type when 3+ allies are presentWind Type allies10 Wind Type ATK 15%UP",
-      "descriptionLv90": "Applies Action Speed 14%UP to all allies for 10 seconds and Accuracy 18 UP for 10 seconds , when team hasWind Type when 3+ allies are presentWind Type allies10 Wind Type ATK 15%UP",
+      "description": "Applies Action Speed 14%UP to all allies for 10 seconds and Accuracy 9 UP for 10 seconds, when team hasWind Type when 3+ allies are presentWind Type allies 10s Wind Type ATK 15%UP",
+      "descriptionLv1": "Applies Action Speed 14%UP to all allies for 10 seconds and Accuracy 9 UP for 10 seconds, when team hasWind Type when 3+ allies are presentWind Type allies 10s Wind Type ATK 15%UP",
+      "descriptionLv90": "Applies Action Speed 14%UP to all allies for 10 seconds and Accuracy 18 UP for 10 seconds, when team hasWind Type when 3+ allies are presentWind Type allies 10s Wind Type ATK 15%UP",
       "target": "All Allies",
       "castTime": 1.4,
       "damageScaling": null,
@@ -168,7 +202,7 @@ export const skills = {
       "rank": 1,
       "name": "Crouching Dragon Flying Spiral",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 1) for 10 seconds, apply to self10 [Swift Wind](Speed10%UP)",
+      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 1) for 10 seconds, applies to self 10s [Swift Wind] status (action speed 10%UP)",
       "effect": "1000% + 800",
       "buffEffects": [
         {
@@ -189,7 +223,7 @@ export const skills = {
       "rank": 2,
       "name": "Crouching Dragon Flying Spiral",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 2) for 10 seconds, apply to self11 [Swift Wind](Speed10%UP)",
+      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 2) for 10 seconds, applies to self 11s [Swift Wind] status (action speed 10%UP)",
       "effect": "1200% + 950",
       "buffEffects": [
         {
@@ -210,7 +244,7 @@ export const skills = {
       "rank": 3,
       "name": "Crouching Dragon Flying Spiral",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 3) for 10 seconds, apply to self12 [Swift Wind](Speed10%UP)",
+      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 3) for 10 seconds, applies to self 12s [Swift Wind] status (action speed 10%UP)",
       "effect": "1350% + 1100",
       "buffEffects": [
         {
@@ -231,7 +265,7 @@ export const skills = {
       "rank": 4,
       "name": "Crouching Dragon Flying Spiral",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 4) for 10 seconds, apply to self13 [Swift Wind](Speed10%UP)",
+      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 4) for 10 seconds, applies to self 13s [Swift Wind] status (action speed 10%UP)",
       "effect": "1450% + 1200",
       "buffEffects": [
         {
@@ -252,7 +286,7 @@ export const skills = {
       "rank": 5,
       "name": "Crouching Dragon Flying Spiral",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 5) for 10 seconds, apply to self14 [Swift Wind](Speed10%UP)",
+      "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 5) for 10 seconds, applies to self 14s [Swift Wind] status (action speed 10%UP)",
       "effect": "1500% + 1300",
       "buffEffects": [
         {
@@ -275,17 +309,20 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Damage UP(Cannot be Cleansed)",
       "icon": "skill001/skill1001",
+      "description": "Gain Action Speed UP (Large), Damage UP (Cannot be Cleansed)",
       "effect": "Action Speed + (+15), Damage UP(Cannot be Cleansed) (+10%)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Large)"
         },
         {
           "name": "Damage UP(Cannot be Cleansed)",
           "value": 10,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Damage UP (Cannot be Cleansed)"
         }
       ]
     },
@@ -293,17 +330,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Medium)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     }
@@ -612,4 +652,4 @@ export const stats = {
       "ATK": 74
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

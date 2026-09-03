@@ -89,11 +89,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Guruguru meow!",
+      "name": "Goru Goru~meow！",
       "icon": "skill001/skill0007",
       "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -11%-25 DOWN for 6 seconds and Magic Attack -11%-25 DOWN for 6 seconds",
       "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -11%-25 DOWN for 6 seconds and Magic Attack -11%-25 DOWN for 6 seconds",
@@ -129,11 +163,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Speed boost meow!",
+      "name": "Speed up~meow！",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed 20%UP to self for 12 seconds and Block 13 UP for 12 seconds , 12 Debuff Resistance 50%UP",
-      "descriptionLv1": "Applies Action Speed 20%UP to self for 12 seconds and Block 13 UP for 12 seconds , 12 Debuff Resistance 50%UP",
-      "descriptionLv90": "Applies Action Speed 20%UP to self for 12 seconds and Block 26 UP for 12 seconds , 12 Debuff Resistance 50%UP",
+      "description": "Applies Action Speed 20%UP to self for 12 seconds, Block 13 UP for 12 seconds and Debuff Resistance 50%UP for 12 seconds",
+      "descriptionLv1": "Applies Action Speed 20%UP to self for 12 seconds, Block 13 UP for 12 seconds and Debuff Resistance 50%UP for 12 seconds",
+      "descriptionLv90": "Applies Action Speed 20%UP to self for 12 seconds, Block 26 UP for 12 seconds and Debuff Resistance 50%UP for 12 seconds",
       "target": "Self",
       "castTime": 0.95,
       "damageScaling": null,
@@ -173,9 +207,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Lilirala Limit Burst!",
+      "name": "Lilirara Max Tension!",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 1) for 10 seconds and Accuracy DOWN(LV 1) for 10 seconds , damageselfrestore HP6%",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 1) for 10 seconds and Accuracy DOWN(LV 1) for 10 seconds. Also absorb 6% of dealt damage into self HP",
       "effect": "450% + 400",
       "buffEffects": [
         {
@@ -194,9 +228,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Lilirala Limit Burst!",
+      "name": "Lilirara Max Tension!",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 2) for 10 seconds and Accuracy DOWN(LV 2) for 10 seconds , damageselfrestore HP6%",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 2) for 10 seconds and Accuracy DOWN(LV 2) for 10 seconds. Also absorb 6% of dealt damage into self HP",
       "effect": "540% + 550",
       "buffEffects": [
         {
@@ -215,9 +249,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Lilirala Limit Burst!",
+      "name": "Lilirara Max Tension!",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 3) for 10 seconds and Accuracy DOWN(LV 3) for 10 seconds , damageselfrestore HP6%",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 3) for 10 seconds and Accuracy DOWN(LV 3) for 10 seconds. Also absorb 6% of dealt damage into self HP",
       "effect": "610% + 650",
       "buffEffects": [
         {
@@ -236,9 +270,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Lilirala Limit Burst!",
+      "name": "Lilirara Max Tension!",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 4) for 10 seconds and Accuracy DOWN(LV 4) for 10 seconds , damageselfrestore HP6%",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 4) for 10 seconds and Accuracy DOWN(LV 4) for 10 seconds. Also absorb 6% of dealt damage into self HP",
       "effect": "660% + 750",
       "buffEffects": [
         {
@@ -257,9 +291,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Lilirala Limit Burst!",
+      "name": "Lilirara Max Tension!",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 5) for 10 seconds and Accuracy DOWN(LV 5) for 10 seconds , damageselfrestore HP6%",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 5) for 10 seconds and Accuracy DOWN(LV 5) for 10 seconds. Also absorb 6% of dealt damage into self HP",
       "effect": "700% + 800",
       "buffEffects": [
         {
@@ -282,17 +316,20 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Max HP UP (Large), Physical Attack UP (Medium)",
       "effect": "Max HP + (+3444), Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         },
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     },
@@ -300,17 +337,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Max HP +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Max HP UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     }
@@ -619,4 +659,4 @@ export const stats = {
       "HP": 824
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -237,12 +271,14 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Medium)",
       "effect": "Magic Attack + (+259)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         }
       ]
     },
@@ -250,17 +286,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Max HP +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Medium), Max HP UP (Medium)",
       "effect": "Skill Damage + (+20%), Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Medium)"
         },
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     }
@@ -582,4 +621,4 @@ export const stats = {
       "MATK": 71
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

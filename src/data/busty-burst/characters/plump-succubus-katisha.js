@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -131,9 +165,9 @@ export const skills = {
       "slot": 3,
       "name": "Mm, mmhmm~ mm...!",
       "icon": "skill001/skill0011",
-      "description": "to 3 nearest enemies2s Charm for and Physical Defense -18%-30 DOWN for 10 seconds , 10 Action Speed -11%DOWN",
-      "descriptionLv1": "to 3 nearest enemies2s Charm for and Physical Defense -18%-30 DOWN for 10 seconds , 10 Action Speed -11%DOWN",
-      "descriptionLv90": "to 3 nearest enemies2s Charm for and Physical Defense -18%-210 DOWN for 10 seconds , 10 Action Speed -11%DOWN",
+      "description": "To 3 nearest enemies 2s and Physical Defense -18%-30 DOWN for 10 seconds, 10s Action Speed -11%DOWN",
+      "descriptionLv1": "To 3 nearest enemies 2s and Physical Defense -18%-30 DOWN for 10 seconds, 10s Action Speed -11%DOWN",
+      "descriptionLv90": "To 3 nearest enemies 2s and Physical Defense -18%-210 DOWN for 10 seconds, 10s Action Speed -11%DOWN",
       "target": "Nearest Enemy",
       "castTime": 1.45,
       "damageScaling": null,
@@ -175,7 +209,7 @@ export const skills = {
       "rank": 1,
       "name": "Ah wah wah, I'm falling!?",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds , Ultimate activation beforeself10 Physical Attack UP(LV 1)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds, before Ultimate activationself 10s Physical Attack UP(LV 1)",
       "effect": "1100% + 1000",
       "buffEffects": [
         {
@@ -196,7 +230,7 @@ export const skills = {
       "rank": 2,
       "name": "Ah wah wah, I'm falling!?",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds , Ultimate activation beforeself10 Physical Attack UP(LV 2)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds, before Ultimate activationself 10s Physical Attack UP(LV 2)",
       "effect": "1320% + 1200",
       "buffEffects": [
         {
@@ -217,7 +251,7 @@ export const skills = {
       "rank": 3,
       "name": "Ah wah wah, I'm falling!?",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds , Ultimate activation beforeself10 Physical Attack UP(LV 3)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds, before Ultimate activationself 10s Physical Attack UP(LV 3)",
       "effect": "1470% + 1350",
       "buffEffects": [
         {
@@ -238,7 +272,7 @@ export const skills = {
       "rank": 4,
       "name": "Ah wah wah, I'm falling!?",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds , Ultimate activation beforeself10 Physical Attack UP(LV 4)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds, before Ultimate activationself 10s Physical Attack UP(LV 4)",
       "effect": "1590% + 1500",
       "buffEffects": [
         {
@@ -259,7 +293,7 @@ export const skills = {
       "rank": 5,
       "name": "Ah wah wah, I'm falling!?",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds , Ultimate activation beforeself10 Physical Attack UP(LV 5)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds, before Ultimate activationself 10s Physical Attack UP(LV 5)",
       "effect": "1700% + 1600",
       "buffEffects": [
         {
@@ -282,17 +316,20 @@ export const skills = {
       "slot": 1,
       "name": "Accuracy +, MP Recovery",
       "icon": "skill001/skill1001",
+      "description": "Gain Accuracy UP (Medium), MP Recovery",
       "effect": "Accuracy + (+20), MP Recovery (+200%)",
       "effectValues": [
         {
           "name": "Accuracy +",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         },
         {
           "name": "MP Recovery",
           "value": 200,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         }
       ]
     },
@@ -300,17 +337,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+4.5%)",
+      "description": "Gain Ultimate Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         }
       ]
     }
@@ -621,4 +661,4 @@ export const stats = {
       "ATK": 77
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

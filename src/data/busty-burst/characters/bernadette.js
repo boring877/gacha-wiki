@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -132,9 +166,9 @@ export const skills = {
       "slot": 3,
       "name": "Don't you want to hear my song?",
       "icon": "skill001/skill0011",
-      "description": "all enemies12 Physical Defense -18%-30 DOWN and Accuracy -9 DOWN for 12 seconds , 50%% chance to2s Stun for",
-      "descriptionLv1": "all enemies12 Physical Defense -18%-30 DOWN and Accuracy -9 DOWN for 12 seconds , 50%% chance to2s Stun for",
-      "descriptionLv90": "all enemies12 Physical Defense -18%-210 DOWN and Accuracy -18 DOWN for 12 seconds , 50%% chance to2s Stun for",
+      "description": "All enemies 12s Physical Defense -18%-30 DOWN and Accuracy -9 DOWN for 12 seconds, 50%% chance to 2s",
+      "descriptionLv1": "All enemies 12s Physical Defense -18%-30 DOWN and Accuracy -9 DOWN for 12 seconds, 50%% chance to 2s",
+      "descriptionLv90": "All enemies 12s Physical Defense -18%-210 DOWN and Accuracy -18 DOWN for 12 seconds, 50%% chance to 2s",
       "target": "All Enemies",
       "castTime": 1.7,
       "damageScaling": null,
@@ -177,7 +211,7 @@ export const skills = {
       "rank": 1,
       "name": "The world that revolves around me",
       "icon": "skill001/skill0020_1",
-      "description": "Applies Hit-Based Physical Damage (LV 1) to all allies for 20 seconds and Accuracy UP(LV 1) for 10 seconds , all enemies10 BlockDOWN(LV 1)",
+      "description": "Applies Hit-Based Physical Damage (LV 1) to all allies for 20 seconds and Accuracy UP(LV 1) for 10 seconds, all enemies 10s BlockDOWN(LV 1)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -204,7 +238,7 @@ export const skills = {
       "rank": 2,
       "name": "The world that revolves around me",
       "icon": "skill001/skill0020_2",
-      "description": "Applies Hit-Based Physical Damage (LV 2) to all allies for 20 seconds and Accuracy UP(LV 2) for 10 seconds , all enemies10 BlockDOWN(LV 2)",
+      "description": "Applies Hit-Based Physical Damage (LV 2) to all allies for 20 seconds and Accuracy UP(LV 2) for 10 seconds, all enemies 10s BlockDOWN(LV 2)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -231,7 +265,7 @@ export const skills = {
       "rank": 3,
       "name": "The world that revolves around me",
       "icon": "skill001/skill0020_3",
-      "description": "Applies Hit-Based Physical Damage (LV 3) to all allies for 20 seconds and Accuracy UP(LV 3) for 10 seconds , all enemies10 BlockDOWN(LV 3)",
+      "description": "Applies Hit-Based Physical Damage (LV 3) to all allies for 20 seconds and Accuracy UP(LV 3) for 10 seconds, all enemies 10s BlockDOWN(LV 3)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -258,7 +292,7 @@ export const skills = {
       "rank": 4,
       "name": "The world that revolves around me",
       "icon": "skill001/skill0020_4",
-      "description": "Applies Hit-Based Physical Damage (LV 4) to all allies for 20 seconds and Accuracy UP(LV 4) for 10 seconds , all enemies10 BlockDOWN(LV 4)",
+      "description": "Applies Hit-Based Physical Damage (LV 4) to all allies for 20 seconds and Accuracy UP(LV 4) for 10 seconds, all enemies 10s BlockDOWN(LV 4)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -285,7 +319,7 @@ export const skills = {
       "rank": 5,
       "name": "The world that revolves around me",
       "icon": "skill001/skill0020_5",
-      "description": "Applies Hit-Based Physical Damage (LV 5) to all allies for 20 seconds and Accuracy UP(LV 5) for 10 seconds , all enemies10 BlockDOWN(LV 5)",
+      "description": "Applies Hit-Based Physical Damage (LV 5) to all allies for 20 seconds and Accuracy UP(LV 5) for 10 seconds, all enemies 10s BlockDOWN(LV 5)",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -314,17 +348,20 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, MP Recovery",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP (Large), MP Recovery",
       "effect": "Max HP + (+3444), MP Recovery (+50%)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         },
         {
           "name": "MP Recovery",
           "value": 50,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         }
       ]
     },
@@ -332,19 +369,9 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Max HP +",
       "icon": "skill001/skill1005",
-      "effect": "Physical Attack + (0), Max HP + (0)",
-      "effectValues": [
-        {
-          "name": "Physical Attack +",
-          "value": 0,
-          "type": "flat"
-        },
-        {
-          "name": "Max HP +",
-          "value": 0,
-          "type": "flat"
-        }
-      ]
+      "description": "Gain Physical Attack UP (Cannot be Cleansed), Max HP UP (Cannot be Cleansed)",
+      "effect": "HP()",
+      "effectValues": []
     }
   ],
   "name": "Bernadette",
@@ -653,4 +680,4 @@ export const stats = {
       "HP": 457
     }
   ]
-};;;;;;;
+};;;;;;;;;

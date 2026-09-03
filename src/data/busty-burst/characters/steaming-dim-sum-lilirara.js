@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -278,17 +312,14 @@ export const skills = {
       "slot": 1,
       "name": "Healing Received +, Skill Enhancement",
       "icon": "skill001/skill1008",
-      "effect": "Healing Received + (+10%), Skill Enhancement (0)",
+      "description": "Gain Healing Received UP (Tiny), Specific Skill Enhancement",
+      "effect": "Healing Received + (+10%)",
       "effectValues": [
         {
           "name": "Healing Received +",
           "value": 10,
-          "type": "percent"
-        },
-        {
-          "name": "Skill Enhancement",
-          "value": 0,
-          "type": "flat"
+          "type": "percent",
+          "gameText": "Healing Received UP (Tiny)"
         }
       ]
     },
@@ -296,17 +327,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+4.5%)",
+      "description": "Gain Skill Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         }
       ]
     }
@@ -617,4 +651,4 @@ export const stats = {
       "ATK": 68
     }
   ]
-};;;;;;;
+};;;;;;;;;

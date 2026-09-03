@@ -89,11 +89,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Troublesome!",
+      "name": "Annoying",
       "icon": "skill001/skill0011",
       "description": "Deals physical damage to the nearest enemy and inflicts Stun for 1.5 seconds",
       "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 1.5 seconds",
@@ -120,11 +154,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Super troublesome!",
+      "name": "Extremely Annoying",
       "icon": "skill001/skill0019",
-      "description": "all enemies10 Accuracy -7 DOWNapply to self10",
-      "descriptionLv1": "all enemies10 Accuracy -7 DOWNapply to self10",
-      "descriptionLv90": "all enemies10 Accuracy -14 DOWNapply to self10",
+      "description": "Inflicts Accuracy -7 DOWN to all enemies for 10 seconds and applies Taunt to self for 10 seconds",
+      "descriptionLv1": "Inflicts Accuracy -7 DOWN to all enemies for 10 seconds and applies Taunt to self for 10 seconds",
+      "descriptionLv90": "Inflicts Accuracy -14 DOWN to all enemies for 10 seconds and applies Taunt to self for 10 seconds",
       "target": "All Enemies",
       "castTime": 1.38,
       "damageScaling": null,
@@ -157,7 +191,7 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Don't come back~!",
+      "name": "Come back no more!",
       "icon": "skill001/skill0003_1",
       "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 1) for 15 seconds",
       "effect": "1050% + 900",
@@ -172,7 +206,7 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Don't come back~!",
+      "name": "Come back no more!",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 2) for 15 seconds",
       "effect": "1260% + 1050",
@@ -187,7 +221,7 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Don't come back~!",
+      "name": "Come back no more!",
       "icon": "skill001/skill0003_3",
       "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 3) for 15 seconds",
       "effect": "1420% + 1150",
@@ -202,7 +236,7 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Don't come back~!",
+      "name": "Come back no more!",
       "icon": "skill001/skill0003_4",
       "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 4) for 15 seconds",
       "effect": "1530% + 1250",
@@ -217,7 +251,7 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Don't come back~!",
+      "name": "Come back no more!",
       "icon": "skill001/skill0003_5",
       "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 5) for 15 seconds",
       "effect": "1620% + 1300",
@@ -236,12 +270,14 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP (Medium)",
       "effect": "Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     },
@@ -249,17 +285,20 @@ export const skills = {
       "slot": 2,
       "name": "Healing Received +, Block+",
       "icon": "skill001/skill1003",
+      "description": "Gain Healing Received UP (Medium), Block UP (Medium)",
       "effect": "Healing Received + (+40%), Block+ (+15)",
       "effectValues": [
         {
           "name": "Healing Received +",
           "value": 40,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Healing Received UP (Medium)"
         },
         {
           "name": "Block+",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Medium)"
         }
       ]
     }
@@ -570,4 +609,4 @@ export const stats = {
       "DEF": 26
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

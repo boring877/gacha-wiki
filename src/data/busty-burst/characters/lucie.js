@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -269,17 +303,14 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Debuff Resistance +",
       "icon": "skill001/skill1003",
-      "effect": "Max HP + (+2896), Debuff Resistance + (+30%)",
+      "description": "Gain Max HP UP (Medium), Debuff Resistance UP (Small)",
+      "effect": "Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
-        },
-        {
-          "name": "Debuff Resistance +",
-          "value": 30,
-          "type": "percent"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     },
@@ -287,17 +318,20 @@ export const skills = {
       "slot": 2,
       "name": "Action Speed +, Ultimate Damage +",
       "icon": "skill001/skill1001",
+      "description": "Gain Action Speed UP (Medium), Ultimate Damage UP (Large)",
       "effect": "Action Speed + (+10), Ultimate Damage + (+15%)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         },
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         }
       ]
     }
@@ -610,4 +644,4 @@ export const stats = {
       "HP": 646
     }
   ]
-};;;;;;;
+};;;;;;;;;

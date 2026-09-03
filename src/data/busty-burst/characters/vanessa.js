@@ -89,11 +89,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Be quiet",
+      "name": "Be quiet!",
       "icon": "skill001/skill0002",
       "description": "Deals physical damage to the nearest enemy",
       "descriptionLv1": "Deals physical damage to the nearest enemy",
@@ -110,7 +144,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Don't run...",
+      "name": "Do not escape……",
       "icon": "skill001/skill0017",
       "description": "Applies Accuracy 11 UP to self for 11 seconds and Physical Critical Damage 40 UP for 11 seconds",
       "descriptionLv1": "Applies Accuracy 11 UP to self for 11 seconds and Physical Critical Damage 40 UP for 11 seconds",
@@ -148,7 +182,7 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Are you going to behave now?",
+      "name": "This Should Calm You Down…",
       "icon": "skill001/skill0003_1",
       "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 1) for 12 seconds",
       "effect": "1500% + 600",
@@ -163,7 +197,7 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Are you going to behave now?",
+      "name": "This Should Calm You Down…",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 2) for 12 seconds",
       "effect": "1710% + 800",
@@ -178,7 +212,7 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Are you going to behave now?",
+      "name": "This Should Calm You Down…",
       "icon": "skill001/skill0003_3",
       "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 3) for 12 seconds",
       "effect": "1850% + 950",
@@ -193,7 +227,7 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Are you going to behave now?",
+      "name": "This Should Calm You Down…",
       "icon": "skill001/skill0003_4",
       "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 4) for 12 seconds",
       "effect": "2000% + 1100",
@@ -208,7 +242,7 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Are you going to behave now?",
+      "name": "This Should Calm You Down…",
       "icon": "skill001/skill0003_5",
       "description": "Deals physical damage to the nearest enemy and inflicts BlockDOWN(LV 5) for 12 seconds",
       "effect": "2100% + 1200",
@@ -227,12 +261,14 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Medium)",
       "effect": "Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     },
@@ -240,17 +276,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Accuracy +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Medium), Accuracy UP (Small)",
       "effect": "Skill Damage + (+20%), Accuracy + (+15)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Medium)"
         },
         {
           "name": "Accuracy +",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Small)"
         }
       ]
     }
@@ -559,4 +598,4 @@ export const stats = {
       "ATK": 40
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -169,7 +203,7 @@ export const skills = {
       "rank": 1,
       "name": "Meow Jewel, Devoted Heart!!",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy, inflict 5s , and before activating the Ultimate,apply to self10 Physical Attack UP(LV 1)",
+      "description": "Deals physical damage to the nearest enemy, applies 5s Blind, and before activating the Ultimate, applies to self 10s Physical Attack UP(LV 1)",
       "effect": "1200% + 900",
       "buffEffects": [
         {
@@ -190,7 +224,7 @@ export const skills = {
       "rank": 2,
       "name": "Meow Jewel, Devoted Heart!!",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy, inflict6s Blind for, and before activating the Ultimate,apply to self10 Physical Attack UP(LV 2)",
+      "description": "Deals physical damage to the nearest enemy, applies 6s Blind, and before activating the Ultimate, applies to self 10s Physical Attack UP(LV 2)",
       "effect": "1440% + 1050",
       "buffEffects": [
         {
@@ -211,7 +245,7 @@ export const skills = {
       "rank": 3,
       "name": "Meow Jewel, Devoted Heart!!",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy, inflict6s Blind for, and before activating the Ultimate,apply to self10 Physical Attack UP(LV 3)",
+      "description": "Deals physical damage to the nearest enemy, applies 6s Blind, and before activating the Ultimate, applies to self 10s Physical Attack UP(LV 3)",
       "effect": "1620% + 1200",
       "buffEffects": [
         {
@@ -232,7 +266,7 @@ export const skills = {
       "rank": 4,
       "name": "Meow Jewel, Devoted Heart!!",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy, inflict7s Blind for, and before activating the Ultimate,apply to self10 Physical Attack UP(LV 4)",
+      "description": "Deals physical damage to the nearest enemy, applies 7s Blind, and before activating the Ultimate, applies to self 10s Physical Attack UP(LV 4)",
       "effect": "1739% + 1300",
       "buffEffects": [
         {
@@ -253,7 +287,7 @@ export const skills = {
       "rank": 5,
       "name": "Meow Jewel, Devoted Heart!!",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy, inflict7s Blind for, and before activating the Ultimate,apply to self10 Physical Attack UP(LV 5)",
+      "description": "Deals physical damage to the nearest enemy, applies 7s Blind, and before activating the Ultimate, applies to self 10s Physical Attack UP(LV 5)",
       "effect": "1800% + 1400",
       "buffEffects": [
         {
@@ -276,17 +310,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Mind Type ATK +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Large), Mind Type ATK UP",
       "effect": "Physical Attack + (+389), Mind Type ATK + (+5%)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Large)"
         },
         {
           "name": "Mind Type ATK +",
           "value": 5,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Mind Type ATK UP"
         }
       ]
     },
@@ -294,17 +331,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+4.5%)",
+      "description": "Gain Skill Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         }
       ]
     }
@@ -617,4 +657,4 @@ export const stats = {
       "Phys Crit": 29
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

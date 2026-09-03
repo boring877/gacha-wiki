@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -236,12 +270,14 @@ export const skills = {
       "slot": 1,
       "name": "Petrify Resistance LvMax",
       "icon": "skill001/skill1003",
+      "description": "Gain Petrify Resistance UP",
       "effect": "Petrify Resistance LvMax (+1%)",
       "effectValues": [
         {
           "name": "Petrify Resistance LvMax",
           "value": 1,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Petrify Resistance UP"
         }
       ]
     },
@@ -249,17 +285,20 @@ export const skills = {
       "slot": 2,
       "name": "Magic Critical Damage+, Magic Defense+",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Critical Damage UP (Medium), Magic Defense UP (Medium)",
       "effect": "Magic Critical Damage+ (+118), Magic Defense+ (+141)",
       "effectValues": [
         {
           "name": "Magic Critical Damage+",
           "value": 118,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Medium)"
         },
         {
           "name": "Magic Defense+",
           "value": 141,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Defense UP (Medium)"
         }
       ]
     }
@@ -579,4 +618,4 @@ export const stats = {
       "HP": 374
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

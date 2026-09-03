@@ -338,13 +338,13 @@
 
 .bb-char-table th {
   background: var(--bb-bg-secondary);
-  padding: 0.75rem;
+  padding: 0.65rem 0.5rem;
   text-align: left;
   color: var(--bb-primary-light);
   font-weight: 600;
   text-transform: uppercase;
   font-size: 0.75rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
   border-bottom: 2px solid var(--bb-border);
   cursor: pointer;
   user-select: none;
@@ -358,9 +358,10 @@
 }
 
 .bb-char-table td {
-  padding: 0.75rem;
+  padding: 0.65rem 0.5rem;
   border-bottom: 1px solid var(--bb-border);
   color: var(--bb-text-primary);
+  font-variant-numeric: tabular-nums;
 }
 
 .bb-char-table tbody tr {

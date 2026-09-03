@@ -88,6 +88,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -256,17 +290,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Action Speed +",
       "icon": "skill001/skill1005",
+      "description": "Gain Magic Attack UP (Medium), Action Speed UP (Medium)",
       "effect": "Magic Attack + (+259), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     },
@@ -274,17 +311,20 @@ export const skills = {
       "slot": 2,
       "name": "Block+, Skill Damage +",
       "icon": "skill001/skill1006",
+      "description": "Gain Block UP (Medium), Skill Damage UP (Large)",
       "effect": "Block+ (+15), Skill Damage + (+30%)",
       "effectValues": [
         {
           "name": "Block+",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Medium)"
         },
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         }
       ]
     }
@@ -292,7 +332,7 @@ export const skills = {
   "name": "Stenlina",
   "id": 2061,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Attacker",
   "tags": [
     "Debuff"
@@ -604,4 +644,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -269,17 +303,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Accuracy +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Large), Accuracy UP (Medium)",
       "effect": "Physical Attack + (+389), Accuracy + (+20)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Large)"
         },
         {
           "name": "Accuracy +",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         }
       ]
     },
@@ -287,17 +324,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+4.5%)",
+      "description": "Gain Ultimate Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         }
       ]
     }
@@ -608,4 +648,4 @@ export const stats = {
       "ATK": 74
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

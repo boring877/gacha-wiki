@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -102,7 +136,7 @@ export const skills = {
       "castTime": 1.08,
       "damageScaling": "140% ATK",
       "baseDamage": "+80",
-      "levelGrowth": "+6",
+      "levelGrowth": "+8",
       "lvl1": "140% + 80",
       "lvl90": "140% + -98",
       "effects": [
@@ -275,17 +309,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Magic Critical Damage+",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Medium), Magic Critical Damage UP (Medium)",
       "effect": "Magic Attack + (+259), Magic Critical Damage+ (+90)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         },
         {
           "name": "Magic Critical Damage+",
           "value": 90,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Medium)"
         }
       ]
     },
@@ -293,17 +330,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Max HP +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Max HP UP (Medium)",
       "effect": "Skill Damage + (+30%), Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     }
@@ -311,7 +351,7 @@ export const skills = {
   "name": "Seductive High-Cut Swimsuit: Nerys",
   "id": 2077,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Attacker",
   "tags": [
     "Debuff",
@@ -625,4 +665,4 @@ export const stats = {
       "MATK": 55
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

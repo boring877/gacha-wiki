@@ -329,7 +329,7 @@ export const skills = {
 export const stats = {
   "id": "want-some-beer-stenrina",
   "characterId": 2091,
-  "name": "【Want some beer?】Stenrina",
+  "name": "【How About a Beer?】Stenrina",
   "rarity": "SR",
   "element": "想",
   "weapon": "",
@@ -602,4 +602,4 @@ export const stats = {
       "MP Regen": 13
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -245,17 +279,20 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Block+",
       "icon": "skill001/skill1003",
+      "description": "Gain Action Speed UP (Medium), Block UP (Medium)",
       "effect": "Action Speed + (+10), Block+ (+15)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         },
         {
           "name": "Block+",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Medium)"
         }
       ]
     },
@@ -263,17 +300,20 @@ export const skills = {
       "slot": 2,
       "name": "Mind Type ATK +, Magic Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Mind Type ATK UP (Medium), Magic Attack UP (Large)",
       "effect": "Mind Type ATK + (+10%), Magic Attack + (+389)",
       "effectValues": [
         {
           "name": "Mind Type ATK +",
           "value": 10,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Mind Type ATK UP (Medium)"
         },
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         }
       ]
     },
@@ -281,22 +321,26 @@ export const skills = {
       "slot": 3,
       "name": "Passive EX",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Damage UP",
       "effect": "Ultimate Damage + (+15%), Charge (+9999%), Charge (+9999%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Charge",
           "value": 9999,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Damage UP"
         },
         {
           "name": "Charge",
           "value": 9999,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Damage UP"
         }
       ]
     }
@@ -618,4 +662,4 @@ export const stats = {
       "MATK": 78
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

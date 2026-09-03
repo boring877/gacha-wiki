@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -132,9 +166,9 @@ export const skills = {
       "slot": 3,
       "name": "Ubi, defeat it...",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds , 5s Curse for",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds , 5s Curse for",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds , 5s Curse for",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds, 5s",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds, 5s",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds, 5s",
       "target": "Nearest Enemy",
       "castTime": 0.91,
       "damageScaling": "330% ATK",
@@ -275,17 +309,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Wind Type ATK +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Large), Wind Type ATK UP",
       "effect": "Physical Attack + (+389), Wind Type ATK + (+3%)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Large)"
         },
         {
           "name": "Wind Type ATK +",
           "value": 3,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Wind Type ATK UP"
         }
       ]
     },
@@ -293,17 +330,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Medium)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     }
@@ -614,4 +654,4 @@ export const stats = {
       "Phys Crit": 29
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Heal Wounds",
       "icon": "skill001/skill0021",
-      "description": "restore HP to all alliesHP and inflicts Block 11 UP for 10 seconds and Action Speed 14%UP for 10 seconds , DEBUFF",
-      "descriptionLv1": "restore HP to all alliesHP and inflicts Block 11 UP for 10 seconds and Action Speed 14%UP for 10 seconds , DEBUFF",
-      "descriptionLv90": "restore HP to all alliesHP and inflicts Block 23 UP for 10 seconds and Action Speed 14%UP for 10 seconds , DEBUFF",
+      "description": "Restore HP to all alliesHP and inflicts Block 11 UP for 10 seconds and Action Speed 14%UP for 10 seconds, DEBUFF",
+      "descriptionLv1": "Restore HP to all alliesHP and inflicts Block 11 UP for 10 seconds and Action Speed 14%UP for 10 seconds, DEBUFF",
+      "descriptionLv90": "Restore HP to all alliesHP and inflicts Block 23 UP for 10 seconds and Action Speed 14%UP for 10 seconds, DEBUFF",
       "target": "All Allies",
       "castTime": 1.3,
       "damageScaling": "1500% ATK",
@@ -138,9 +172,9 @@ export const skills = {
       "slot": 3,
       "name": "Radiance",
       "icon": "skill001/skill0019",
-      "description": "Applies Accuracy 9 UP to all allies for 10 seconds and Physical Critical Damage 50 UP for 10 seconds , 10 Magic Critical Damage 50 UP",
-      "descriptionLv1": "Applies Accuracy 9 UP to all allies for 10 seconds and Physical Critical Damage 50 UP for 10 seconds , 10 Magic Critical Damage 50 UP",
-      "descriptionLv90": "Applies Accuracy 18 UP to all allies for 10 seconds and Physical Critical Damage 680 UP for 10 seconds , 10 Magic Critical Damage 50 UP",
+      "description": "Applies Accuracy 9 UP to all allies for 10 seconds and Physical Critical Damage 50 UP for 10 seconds, 10s Magic Critical Damage 50 UP",
+      "descriptionLv1": "Applies Accuracy 9 UP to all allies for 10 seconds and Physical Critical Damage 50 UP for 10 seconds, 10s Magic Critical Damage 50 UP",
+      "descriptionLv90": "Applies Accuracy 18 UP to all allies for 10 seconds and Physical Critical Damage 680 UP for 10 seconds, 10s Magic Critical Damage 50 UP",
       "target": "All Allies",
       "castTime": 1.35,
       "damageScaling": null,
@@ -184,7 +218,7 @@ export const skills = {
       "rank": 1,
       "name": "Holy Breeze",
       "icon": "skill001/skill0020_1",
-      "description": "restore HP to all alliesHP and inflicts Physical Defense UP(LV 1) for 8 seconds and Magic DefenseUP(LV 1) for 8 seconds , 8 Debuff ResistanceUP(LV 1)",
+      "description": "Restore HP to all alliesHP and inflicts Physical Defense UP(LV 1) for 8 seconds and Magic DefenseUP(LV 1) for 8 seconds, 8s Debuff ResistanceUP(LV 1)",
       "effect": "2500% + 1000",
       "buffEffects": [
         {
@@ -211,7 +245,7 @@ export const skills = {
       "rank": 2,
       "name": "Holy Breeze",
       "icon": "skill001/skill0020_2",
-      "description": "restore HP to all alliesHP and inflicts Physical Defense UP(LV 2) for 8 seconds and Magic DefenseUP(LV 2) for 8 seconds , 8 Debuff ResistanceUP(LV 2)",
+      "description": "Restore HP to all alliesHP and inflicts Physical Defense UP(LV 2) for 8 seconds and Magic DefenseUP(LV 2) for 8 seconds, 8s Debuff ResistanceUP(LV 2)",
       "effect": "2800% + 1300",
       "buffEffects": [
         {
@@ -238,7 +272,7 @@ export const skills = {
       "rank": 3,
       "name": "Holy Breeze",
       "icon": "skill001/skill0020_3",
-      "description": "restore HP to all alliesHP and inflicts Physical Defense UP(LV 3) for 8 seconds and Magic DefenseUP(LV 3) for 8 seconds , 8 Debuff ResistanceUP(LV 3)",
+      "description": "Restore HP to all alliesHP and inflicts Physical Defense UP(LV 3) for 8 seconds and Magic DefenseUP(LV 3) for 8 seconds, 8s Debuff ResistanceUP(LV 3)",
       "effect": "3100% + 1550",
       "buffEffects": [
         {
@@ -265,7 +299,7 @@ export const skills = {
       "rank": 4,
       "name": "Holy Breeze",
       "icon": "skill001/skill0020_4",
-      "description": "restore HP to all alliesHP and inflicts Physical Defense UP(LV 4) for 8 seconds and Magic DefenseUP(LV 4) for 8 seconds , 8 Debuff ResistanceUP(LV 4)",
+      "description": "Restore HP to all alliesHP and inflicts Physical Defense UP(LV 4) for 8 seconds and Magic DefenseUP(LV 4) for 8 seconds, 8s Debuff ResistanceUP(LV 4)",
       "effect": "3300% + 1800",
       "buffEffects": [
         {
@@ -292,7 +326,7 @@ export const skills = {
       "rank": 5,
       "name": "Holy Breeze",
       "icon": "skill001/skill0020_5",
-      "description": "restore HP to all alliesHP and inflicts Physical Defense UP(LV 5) for 8 seconds and Magic DefenseUP(LV 5) for 8 seconds , 8 Debuff ResistanceUP(LV 5)",
+      "description": "Restore HP to all alliesHP and inflicts Physical Defense UP(LV 5) for 8 seconds and Magic DefenseUP(LV 5) for 8 seconds, 8s Debuff ResistanceUP(LV 5)",
       "effect": "3500% + 2000",
       "buffEffects": [
         {
@@ -321,22 +355,26 @@ export const skills = {
       "slot": 1,
       "name": "Accuracy +, Physical Damage UP, Magic Damage UP",
       "icon": "skill001/skill1005",
+      "description": "Gain Accuracy UP (Small), Physical Damage UP (Cannot be Cleansed), Magic Damage UP (Cannot be Cleansed)",
       "effect": "Accuracy + (+10), Physical Damage UP (+9999), Magic Damage UP (+9999)",
       "effectValues": [
         {
           "name": "Accuracy +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Small)"
         },
         {
           "name": "Physical Damage UP",
           "value": 9999,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Damage UP (Cannot be Cleansed)"
         },
         {
           "name": "Magic Damage UP",
           "value": 9999,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Damage UP (Cannot be Cleansed)"
         }
       ]
     },
@@ -344,17 +382,20 @@ export const skills = {
       "slot": 2,
       "name": "Action Speed +, Damage UP",
       "icon": "skill001/skill1005",
+      "description": "Gain Action Speed UP, Damage UP",
       "effect": "Action Speed + (+15), Damage UP (+15%)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP"
         },
         {
           "name": "Damage UP",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Damage UP"
         }
       ]
     }
@@ -362,7 +403,7 @@ export const skills = {
   "name": "Noir",
   "id": 2193,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Support",
   "tags": [
     "Debuff",
@@ -676,4 +717,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

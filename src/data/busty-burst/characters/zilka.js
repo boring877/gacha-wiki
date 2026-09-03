@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Rathbrink Style - Flourishing Moon",
+      "name": "Rasblink Sword Art: Circle Moon",
       "icon": "skill001/skill0002",
-      "description": "Deals 405% ATK +300 physical damage to the nearest enemy",
-      "descriptionLv1": "Deals 405% ATK +300 physical damage to the nearest enemy",
-      "descriptionLv90": "Deals 405% ATK +2970 physical damage to the nearest enemy",
+      "description": "Deals physical damage to the nearest enemy",
+      "descriptionLv1": "Deals physical damage to the nearest enemy",
+      "descriptionLv90": "Deals physical damage to the nearest enemy",
       "target": "Nearest Enemy",
       "castTime": 0.66,
       "damageScaling": "405% ATK",
@@ -111,11 +145,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Sword Aura Release",
+      "name": "Sword aura release",
       "icon": "skill001/skill0013",
-      "description": "Applies Physical Attack +20% and +40 UP to self for 12 seconds and Accuracy +11 UP for 12 seconds",
-      "descriptionLv1": "Applies Physical Attack +20% and +40 UP to self for 12 seconds and Accuracy +11 UP for 12 seconds",
-      "descriptionLv90": "Applies Physical Attack +20% and +850 UP to self for 12 seconds and Accuracy +23 UP for 12 seconds",
+      "description": "Applies Physical Attack 20%+40 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
+      "descriptionLv1": "Applies Physical Attack 20%+40 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
+      "descriptionLv90": "Applies Physical Attack 20%+850 UP to self for 12 seconds and Accuracy 23 UP for 12 seconds",
       "target": "Self",
       "castTime": 0.66,
       "damageScaling": null,
@@ -149,9 +183,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Rathbrink Style Ultimate - Eagle Storm Cross Flash",
+      "name": "Rasblink Sword Art Ult: Chaotic Hawk Cross Slash",
       "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 3 seconds and BlockDOWN(LV 1) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, inflicts Dispel for 3 seconds and BlockDOWN(LV 1) for 10 seconds",
       "effect": "1400% + 500",
       "buffEffects": [
         {
@@ -170,9 +204,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Rathbrink Style Ultimate - Eagle Storm Cross Flash",
+      "name": "Rasblink Sword Art Ult: Chaotic Hawk Cross Slash",
       "icon": "skill001/skill0012_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 4 seconds and BlockDOWN(LV 2) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, inflicts Dispel for 4 seconds and BlockDOWN(LV 2) for 10 seconds",
       "effect": "1680% + 650",
       "buffEffects": [
         {
@@ -191,9 +225,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Rathbrink Style Ultimate - Eagle Storm Cross Flash",
+      "name": "Rasblink Sword Art Ult: Chaotic Hawk Cross Slash",
       "icon": "skill001/skill0012_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 4 seconds and BlockDOWN(LV 3) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, inflicts Dispel for 4 seconds and BlockDOWN(LV 3) for 10 seconds",
       "effect": "1889% + 800",
       "buffEffects": [
         {
@@ -212,9 +246,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Rathbrink Style Ultimate - Eagle Storm Cross Flash",
+      "name": "Rasblink Sword Art Ult: Chaotic Hawk Cross Slash",
       "icon": "skill001/skill0012_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 5 seconds and BlockDOWN(LV 4) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, inflicts Dispel for 5 seconds and BlockDOWN(LV 4) for 10 seconds",
       "effect": "2030% + 900",
       "buffEffects": [
         {
@@ -233,9 +267,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Rathbrink Style Ultimate - Eagle Storm Cross Flash",
+      "name": "Rasblink Sword Art Ult: Chaotic Hawk Cross Slash",
       "icon": "skill001/skill0012_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 5 seconds and BlockDOWN(LV 5) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, inflicts Dispel for 5 seconds and BlockDOWN(LV 5) for 10 seconds",
       "effect": "2170% + 1000",
       "buffEffects": [
         {
@@ -258,17 +292,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Critical Damage+, Accuracy +",
       "icon": "skill001/skill1001",
-      "effect": "Physical Critical Damage+ (+8.8%), Accuracy + (+20)",
+      "description": "Gain Physical Critical Damage UP (Large), Accuracy UP (Medium)",
+      "effect": "Physical Critical Damage+ (+176%), Accuracy + (+20)",
       "effectValues": [
         {
           "name": "Physical Critical Damage+",
-          "value": 8.8,
-          "type": "percent"
+          "value": 176,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Large)"
         },
         {
           "name": "Accuracy +",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         }
       ]
     },
@@ -276,17 +313,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Large)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Large)"
         }
       ]
     }
@@ -326,7 +366,7 @@ export const stats = {
   "characterId": 2115,
   "name": "Zilka",
   "rarity": "SSR",
-  "element": "Water",
+  "element": "水",
   "weapon": "",
   "role": "Attacker",
   "tags": [
@@ -597,4 +637,4 @@ export const stats = {
       "ATK": 47
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

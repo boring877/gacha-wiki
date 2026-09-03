@@ -90,11 +90,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Don't bother resisting!",
+      "name": "Don't resist, it's useless！",
       "icon": "skill001/skill0002",
       "description": "Deals physical damage to the 3 nearest enemies",
       "descriptionLv1": "Deals physical damage to the 3 nearest enemies",
@@ -111,7 +145,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "I'm not naive",
+      "name": "I am not naive",
       "icon": "skill001/skill0011",
       "description": "Inflicts Block-9 DOWN on the 3 nearest enemies for 7 seconds and Accuracy -9 DOWN for 7 seconds",
       "descriptionLv1": "Inflicts Block-9 DOWN on the 3 nearest enemies for 7 seconds and Accuracy -9 DOWN for 7 seconds",
@@ -149,9 +183,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Virne Sacred Binding - Chain Shackles",
+      "name": "Vern Holy Capture Art: Immobilize Chain",
       "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 1) for 10 seconds, 3s Silence for",
+      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 1) for 10 secondsSilence for 3 seconds",
       "effect": "1019% + 800",
       "buffEffects": [
         {
@@ -170,9 +204,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Virne Sacred Binding - Chain Shackles",
+      "name": "Vern Holy Capture Art: Immobilize Chain",
       "icon": "skill001/skill0012_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 2) for 10 seconds, 4s Silence for",
+      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 2) for 10 secondsSilence for 4 seconds",
       "effect": "1230% + 950",
       "buffEffects": [
         {
@@ -191,9 +225,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Virne Sacred Binding - Chain Shackles",
+      "name": "Vern Holy Capture Art: Immobilize Chain",
       "icon": "skill001/skill0012_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 3) for 10 seconds, 4s Silence for",
+      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 3) for 10 secondsSilence for 4 seconds",
       "effect": "1380% + 1100",
       "buffEffects": [
         {
@@ -212,9 +246,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Virne Sacred Binding - Chain Shackles",
+      "name": "Vern Holy Capture Art: Immobilize Chain",
       "icon": "skill001/skill0012_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 4) for 10 seconds, 5s Silence for",
+      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 4) for 10 secondsSilence for 5 seconds",
       "effect": "1470% + 1200",
       "buffEffects": [
         {
@@ -233,9 +267,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Virne Sacred Binding - Chain Shackles",
+      "name": "Vern Holy Capture Art: Immobilize Chain",
       "icon": "skill001/skill0012_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 5) for 10 seconds, 5s Silence for",
+      "description": "Deals physical damage to the nearest enemy and inflicts Action Speed DOWN(LV 5) for 10 secondsSilence for 5 seconds",
       "effect": "1530% + 1300",
       "buffEffects": [
         {
@@ -258,12 +292,14 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +",
       "icon": "skill001/skill1003",
+      "description": "Gain Action Speed UP (Medium)",
       "effect": "Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     },
@@ -271,17 +307,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Medium), Physical Attack UP (Small)",
       "effect": "Skill Damage + (+20%), Physical Attack + (+130)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Medium)"
         },
         {
           "name": "Physical Attack +",
           "value": 130,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Small)"
         }
       ]
     }
@@ -289,7 +328,7 @@ export const skills = {
   "name": "Katisha",
   "id": 2107,
   "rarity": "SR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Attacker",
   "tags": [
     "Debuff",
@@ -592,4 +631,4 @@ export const stats = {
       "Phys Crit": 26
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

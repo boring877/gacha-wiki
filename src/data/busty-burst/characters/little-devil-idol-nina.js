@@ -91,15 +91,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "SweetSweetSmile",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Defense 20%+140 UP to all allies for 10 seconds and Magic Defense 20%+140 UP for 10 seconds , 10 Healing Shield (300)",
-      "descriptionLv1": "Applies Physical Defense 20%+140 UP to all allies for 10 seconds and Magic Defense 20%+140 UP for 10 seconds , 10 Healing Shield (300)",
-      "descriptionLv90": "Applies Physical Defense 20%+320 UP to all allies for 10 seconds and Magic Defense 20%+320 UP for 10 seconds , 10 Healing Shield (300)",
+      "description": "Applies Physical Defense 20%+140 UP to all allies for 10 seconds and Magic Defense 20%+140 UP for 10 seconds, 10s Healing Shield (300)",
+      "descriptionLv1": "Applies Physical Defense 20%+140 UP to all allies for 10 seconds and Magic Defense 20%+140 UP for 10 seconds, 10s Healing Shield (300)",
+      "descriptionLv90": "Applies Physical Defense 20%+320 UP to all allies for 10 seconds and Magic Defense 20%+320 UP for 10 seconds, 10s Healing Shield (300)",
       "target": "All Allies",
       "castTime": 1.25,
       "damageScaling": null,
@@ -140,9 +174,9 @@ export const skills = {
       "slot": 3,
       "name": "Advance Notice",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed 14%UP to all allies for 8 seconds and Physical Attack 12%+25 UP for 8 seconds , 8 Magic Attack 12%+25 UP",
-      "descriptionLv1": "Applies Action Speed 14%UP to all allies for 8 seconds and Physical Attack 12%+25 UP for 8 seconds , 8 Magic Attack 12%+25 UP",
-      "descriptionLv90": "Applies Action Speed 14%UP to all allies for 8 seconds and Physical Attack 12%+295 UP for 8 seconds , 8 Magic Attack 12%+295 UP",
+      "description": "Applies Action Speed 14%UP to all allies for 8 seconds and Physical Attack 12%+25 UP for 8 seconds, 8s Magic Attack 12%+25 UP",
+      "descriptionLv1": "Applies Action Speed 14%UP to all allies for 8 seconds and Physical Attack 12%+25 UP for 8 seconds, 8s Magic Attack 12%+25 UP",
+      "descriptionLv90": "Applies Action Speed 14%UP to all allies for 8 seconds and Physical Attack 12%+295 UP for 8 seconds, 8s Magic Attack 12%+295 UP",
       "target": "All Allies",
       "castTime": 1.25,
       "damageScaling": null,
@@ -185,7 +219,7 @@ export const skills = {
       "rank": 1,
       "name": "Kiss in the Galaxy",
       "icon": "skill001/skill0020_1",
-      "description": "to all enemiesmagic damage, inflict 3s , all allies5 MP Regeneration UP(LV 1), 10 Damage UP(LV 1)",
+      "description": "To all enemiesmagic damage, applies 3s Blind, all allies 5s MP Regeneration UP(LV 1), 10s Damage UP(LV 1)",
       "effect": "400% + 500",
       "buffEffects": [
         {
@@ -212,7 +246,7 @@ export const skills = {
       "rank": 2,
       "name": "Kiss in the Galaxy",
       "icon": "skill001/skill0020_2",
-      "description": "to all enemiesmagic damage, inflict 4s , all allies5 MP Regeneration UP(LV 2), 10 Damage UP(LV 2)",
+      "description": "To all enemiesmagic damage, applies 4s Blind, all allies 5s MP Regeneration UP(LV 2), 10s Damage UP(LV 2)",
       "effect": "520% + 600",
       "buffEffects": [
         {
@@ -239,7 +273,7 @@ export const skills = {
       "rank": 3,
       "name": "Kiss in the Galaxy",
       "icon": "skill001/skill0020_3",
-      "description": "to all enemiesmagic damage, inflict 4s , all allies5 MP Regeneration UP(LV 3), 10 Damage UP(LV 3)",
+      "description": "To all enemiesmagic damage, applies 4s Blind, all allies 5s MP Regeneration UP(LV 3), 10s Damage UP(LV 3)",
       "effect": "600% + 700",
       "buffEffects": [
         {
@@ -266,7 +300,7 @@ export const skills = {
       "rank": 4,
       "name": "Kiss in the Galaxy",
       "icon": "skill001/skill0020_4",
-      "description": "to all enemiesmagic damage, inflict 5s , all allies5 MP Regeneration UP(LV 4), 10 Damage UP(LV 4)",
+      "description": "To all enemiesmagic damage, applies 5s Blind, all allies 5s MP Regeneration UP(LV 4), 10s Damage UP(LV 4)",
       "effect": "660% + 750",
       "buffEffects": [
         {
@@ -293,7 +327,7 @@ export const skills = {
       "rank": 5,
       "name": "Kiss in the Galaxy",
       "icon": "skill001/skill0020_5",
-      "description": "to all enemiesmagic damage, inflict 5s , all allies5 MP Regeneration UP(LV 5), 10 Damage UP(LV 5)",
+      "description": "To all enemiesmagic damage, applies 5s Blind, all allies 5s MP Regeneration UP(LV 5), 10s Damage UP(LV 5)",
       "effect": "700% + 800",
       "buffEffects": [
         {
@@ -322,17 +356,20 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Action Speed +",
       "icon": "skill001/skill1005",
+      "description": "Gain Max HP UP (Large), Action Speed UP (Medium)",
       "effect": "Max HP + (+3444), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     },
@@ -340,22 +377,20 @@ export const skills = {
       "slot": 2,
       "name": "MP Regeneration, Physical Critical Damage+, Magic Critical Damage+",
       "icon": "skill001/skill1005",
-      "effect": "MP Regeneration (+200%), Physical Critical Damage+ (+20), Magic Critical Damage+ (0)",
+      "description": "Gain MP Regeneration, Physical Critical Damage UP, Magic Critical Damage UP",
+      "effect": "MP Regeneration (+200%), Physical Critical Damage+ (+20)",
       "effectValues": [
         {
           "name": "MP Regeneration",
           "value": 200,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Regeneration"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 1,
-          "type": "percent"
-        },
-        {
-          "name": "Magic Critical Damage+",
-          "value": 0,
-          "type": "flat"
+          "value": 20,
+          "type": "flat",
+          "gameText": "Physical Critical Damage UP"
         }
       ]
     }
@@ -679,4 +714,4 @@ export const stats = {
       "HP": 370
     }
   ]
-};;;;;;;
+};;;;;;;;;

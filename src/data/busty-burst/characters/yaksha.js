@@ -89,11 +89,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Fly Buzz",
+      "name": "Fly buzzing",
       "icon": "skill001/skill0002",
       "description": "Deals physical damage to the nearest enemy and inflicts Hit-Based Shield(200) for 10 seconds",
       "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Hit-Based Shield(200) for 10 seconds",
@@ -120,11 +154,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Oni Heart Drain",
+      "name": "Ghost mind absorb",
       "icon": "skill001/skill0019",
-      "description": "apply to self20 HP --5% per second (Cannot be Cleansed) and inflicts Physical Attack 25%+50 UP for 20 seconds and Action Speed 20%UP for 20 seconds",
-      "descriptionLv1": "apply to self20 HP --5% per second (Cannot be Cleansed) and inflicts Physical Attack 25%+50 UP for 20 seconds and Action Speed 20%UP for 20 seconds",
-      "descriptionLv90": "apply to self20 HP --5% per second (Cannot be Cleansed) and inflicts Physical Attack 25%+950 UP for 20 seconds and Action Speed 20%UP for 20 seconds",
+      "description": "Applies HP --5% per second (Cannot be Cleansed) to self for 20 seconds, inflicts Physical Attack 25%+50 UP for 20 seconds and Action Speed 20%UP for 20 seconds",
+      "descriptionLv1": "Applies HP --5% per second (Cannot be Cleansed) to self for 20 seconds, inflicts Physical Attack 25%+50 UP for 20 seconds and Action Speed 20%UP for 20 seconds",
+      "descriptionLv90": "Applies HP --5% per second (Cannot be Cleansed) to self for 20 seconds, inflicts Physical Attack 25%+950 UP for 20 seconds and Action Speed 20%UP for 20 seconds",
       "target": "Self",
       "castTime": 1.45,
       "damageScaling": null,
@@ -164,9 +198,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Night after Night Falling Cherry Blossoms",
+      "name": "Evening Scattered Cherry Blossoms",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical DefenseDOWN(LV 1) for 10 seconds and BlockDOWN(LV 1) for 10 seconds , deal 6%damagerestore own HPHP",
+      "description": "Deals physical damage to the nearest enemy, inflicts Physical DefenseDOWN(LV 1) for 10 seconds and BlockDOWN(LV 1) for 10 seconds. Also absorb 6% dealt damage to HP",
       "effect": "900% + 800",
       "buffEffects": [
         {
@@ -185,9 +219,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Night after Night Falling Cherry Blossoms",
+      "name": "Evening Scattered Cherry Blossoms",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical DefenseDOWN(LV 2) for 10 seconds and BlockDOWN(LV 2) for 10 seconds , deal 6%damagerestore own HPHP",
+      "description": "Deals physical damage to the nearest enemy, inflicts Physical DefenseDOWN(LV 2) for 10 seconds and BlockDOWN(LV 2) for 10 seconds. Also absorb 6% dealt damage to HP",
       "effect": "1080% + 1000",
       "buffEffects": [
         {
@@ -206,9 +240,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Night after Night Falling Cherry Blossoms",
+      "name": "Evening Scattered Cherry Blossoms",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical DefenseDOWN(LV 3) for 10 seconds and BlockDOWN(LV 3) for 10 seconds , deal 6%damagerestore own HPHP",
+      "description": "Deals physical damage to the nearest enemy, inflicts Physical DefenseDOWN(LV 3) for 10 seconds and BlockDOWN(LV 3) for 10 seconds. Also absorb 6% dealt damage to HP",
       "effect": "1215% + 1150",
       "buffEffects": [
         {
@@ -227,9 +261,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Night after Night Falling Cherry Blossoms",
+      "name": "Evening Scattered Cherry Blossoms",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical DefenseDOWN(LV 4) for 10 seconds and BlockDOWN(LV 4) for 10 seconds , deal 6%damagerestore own HPHP",
+      "description": "Deals physical damage to the nearest enemy, inflicts Physical DefenseDOWN(LV 4) for 10 seconds and BlockDOWN(LV 4) for 10 seconds. Also absorb 6% dealt damage to HP",
       "effect": "1310% + 1300",
       "buffEffects": [
         {
@@ -248,9 +282,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Night after Night Falling Cherry Blossoms",
+      "name": "Evening Scattered Cherry Blossoms",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical DefenseDOWN(LV 5) for 10 seconds and BlockDOWN(LV 5) for 10 seconds , deal 6%damagerestore own HPHP",
+      "description": "Deals physical damage to the nearest enemy, inflicts Physical DefenseDOWN(LV 5) for 10 seconds and BlockDOWN(LV 5) for 10 seconds. Also absorb 6% dealt damage to HP",
       "effect": "1400% + 1400",
       "buffEffects": [
         {
@@ -273,17 +307,20 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Hit-Based Shield",
       "icon": "skill001/skill1001",
+      "description": "Gain Action Speed UP (Large), Hit-Based Shield (、hit (s))",
       "effect": "Action Speed + (+15), Hit-Based Shield (+30%)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Large)"
         },
         {
           "name": "Hit-Based Shield",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Hit-Based Shield (、hit (s))"
         }
       ]
     },
@@ -291,17 +328,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+4.5%)",
+      "description": "Gain Skill Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         }
       ]
     }
@@ -610,4 +650,4 @@ export const stats = {
       "HP": 352
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

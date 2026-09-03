@@ -91,18 +91,52 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Spin around!",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Block-11 DOWN for 6 seconds , 1.5s Stun for",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Block-11 DOWN for 6 seconds , 1.5s Stun for",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Block-23 DOWN for 6 seconds , 1.5s Stun for",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Block-11 DOWN for 6 seconds, 1.5s",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Block-11 DOWN for 6 seconds, 1.5s",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Block-23 DOWN for 6 seconds, 1.5s",
       "target": "Nearest Enemy",
       "castTime": 1.3,
-      "damageScaling": "110% ATK",
+      "damageScaling": "110.00000000000001% ATK",
       "baseDamage": "+200",
       "levelGrowth": "+6",
       "lvl1": "110% + 200",
@@ -132,9 +166,9 @@ export const skills = {
       "slot": 3,
       "name": "Rocket Jump!",
       "icon": "skill001/skill0019",
-      "description": "Gain MP Recovery 100 and Magic Attack 18%+35 UP for 10 seconds , 10 Action Speed 20%UP",
-      "descriptionLv1": "Gain MP Recovery 100 and Magic Attack 18%+35 UP for 10 seconds , 10 Action Speed 20%UP",
-      "descriptionLv90": "Gain MP Recovery 100 and Magic Attack 18%+665 UP for 10 seconds , 10 Action Speed 20%UP",
+      "description": "Gain MP Recovery 100 and Magic Attack 18%+35 UP for 10 seconds, 10s Action Speed 20%UP",
+      "descriptionLv1": "Gain MP Recovery 100 and Magic Attack 18%+35 UP for 10 seconds, 10s Action Speed 20%UP",
+      "descriptionLv90": "Gain MP Recovery 100 and Magic Attack 18%+665 UP for 10 seconds, 10s Action Speed 20%UP",
       "target": "Self",
       "castTime": 1.35,
       "damageScaling": null,
@@ -283,17 +317,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, MP Recovery+",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Large), MP Recovery",
       "effect": "Magic Attack + (+389), MP Recovery+ (+200%)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         },
         {
           "name": "MP Recovery+",
           "value": 200,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         }
       ]
     },
@@ -301,17 +338,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Action Speed +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Action Speed UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     }
@@ -635,4 +675,4 @@ export const stats = {
       "MP Charge": 4
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

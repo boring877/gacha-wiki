@@ -89,22 +89,56 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Slash!",
+      "name": "Slash！",
       "icon": "skill001/skill0009",
-      "description": "Deals 270% ATK +150 physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 12 seconds",
-      "descriptionLv1": "Deals 270% ATK +150 physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 12 seconds",
-      "descriptionLv90": "Deals 270% ATK +1722 physical damage to the nearest enemy and inflicts Physical Defense -18%-210 DOWN for 12 seconds",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 12 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 12 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-210 DOWN for 12 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.2,
       "damageScaling": "270% ATK",
       "baseDamage": "+150",
       "levelGrowth": "+20",
       "lvl1": "270% + 150",
-      "lvl90": "270% + 1722",
+      "lvl90": "270% + -28",
       "effects": [
         "Physical Defense - Lv3"
       ],
@@ -121,14 +155,14 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Pierce through!",
+      "name": "Penetrate！",
       "icon": "skill001/skill0002",
-      "description": "Deals 220% ATK +70 physical damage to the nearest enemy, guaranteed hit",
-      "descriptionLv1": "Deals 220% ATK +70 physical damage to the nearest enemy, guaranteed hit",
-      "descriptionLv90": "Deals 220% ATK +2295 physical damage to the nearest enemy, guaranteed hit",
+      "description": "Deals physical damage to the nearest enemyguaranteed to hit",
+      "descriptionLv1": "Deals physical damage to the nearest enemyguaranteed to hit",
+      "descriptionLv90": "Deals physical damage to the nearest enemyguaranteed to hit",
       "target": "Nearest Enemy",
       "castTime": 1.2,
-      "damageScaling": "220% ATK",
+      "damageScaling": "220.00000000000003% ATK",
       "baseDamage": "+70",
       "levelGrowth": "+25",
       "lvl1": "220% + 70",
@@ -140,41 +174,41 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Sky Fall",
+      "name": "Skyfall Strike",
       "icon": "skill001/skill0003_1",
-      "description": "Deals 1000% +600 physical damage to the nearest enemy",
+      "description": "Deals physical damage to the nearest enemy",
       "effect": "1000% + 600",
       "buffEffects": []
     },
     {
       "rank": 2,
-      "name": "Sky Fall",
+      "name": "Skyfall Strike",
       "icon": "skill001/skill0003_2",
-      "description": "Deals 1200% +800 physical damage to the nearest enemy",
+      "description": "Deals physical damage to the nearest enemy",
       "effect": "1200% + 800",
       "buffEffects": []
     },
     {
       "rank": 3,
-      "name": "Sky Fall",
+      "name": "Skyfall Strike",
       "icon": "skill001/skill0003_3",
-      "description": "Deals 1350% +950 physical damage to the nearest enemy",
+      "description": "Deals physical damage to the nearest enemy",
       "effect": "1350% + 950",
       "buffEffects": []
     },
     {
       "rank": 4,
-      "name": "Sky Fall",
+      "name": "Skyfall Strike",
       "icon": "skill001/skill0003_4",
-      "description": "Deals 1450% +1100 physical damage to the nearest enemy",
+      "description": "Deals physical damage to the nearest enemy",
       "effect": "1450% + 1100",
       "buffEffects": []
     },
     {
       "rank": 5,
-      "name": "Sky Fall",
+      "name": "Skyfall Strike",
       "icon": "skill001/skill0003_5",
-      "description": "Deals 1550% +1200 physical damage to the nearest enemy",
+      "description": "Deals physical damage to the nearest enemy",
       "effect": "1550% + 1200",
       "buffEffects": []
     }
@@ -184,12 +218,14 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +",
       "icon": "skill001/skill1001",
+      "description": "Gain Action Speed UP (Medium)",
       "effect": "Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     },
@@ -197,17 +233,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Medium), Physical Attack UP (Small)",
       "effect": "Skill Damage + (+20%), Physical Attack + (+130)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Medium)"
         },
         {
           "name": "Physical Attack +",
           "value": 130,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Small)"
         }
       ]
     }
@@ -246,7 +285,7 @@ export const stats = {
   "characterId": 2116,
   "name": "Sarka",
   "rarity": "SR",
-  "element": "Water",
+  "element": "水",
   "weapon": "",
   "role": "Attacker",
   "tags": [
@@ -516,4 +555,4 @@ export const stats = {
       "ATK": 67
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

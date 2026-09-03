@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Bern Sacred Sword Art - Courage Slash Vestment ver ",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -23%-50 DOWN for 6 seconds, 3s Silence for",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -23%-50 DOWN for 6 seconds, 3s Silence for",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -23%-320 DOWN for 6 seconds, 3s Silence for",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -23%-50 DOWN for 6 seconds, 3s",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -23%-50 DOWN for 6 seconds, 3s",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -23%-320 DOWN for 6 seconds, 3s",
       "target": "Nearest Enemy",
       "castTime": 1.45,
       "damageScaling": "350% ATK",
@@ -131,9 +165,9 @@ export const skills = {
       "slot": 3,
       "name": "So hot...",
       "icon": "skill001/skill0011",
-      "description": "Applies Physical Critical Damage 50 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds , 1 enemies4s Charm for",
-      "descriptionLv1": "Applies Physical Critical Damage 50 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds , 1 enemies4s Charm for",
-      "descriptionLv90": "Applies Physical Critical Damage 50 UP to self for 12 seconds and Accuracy 23 UP for 12 seconds , 1 enemies4s Charm for",
+      "description": "Applies Physical Critical Damage 50 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds, 1 enemies 4s",
+      "descriptionLv1": "Applies Physical Critical Damage 50 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds, 1 enemies 4s",
+      "descriptionLv90": "Applies Physical Critical Damage 50 UP to self for 12 seconds and Accuracy 23 UP for 12 seconds, 1 enemies 4s",
       "target": "Nearest Enemy",
       "castTime": 1.45,
       "damageScaling": null,
@@ -283,17 +317,20 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, MP Recovery",
       "icon": "skill001/skill1001",
+      "description": "Gain Action Speed UP (Medium), MP Recovery",
       "effect": "Action Speed + (+10), MP Recovery (+200%)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         },
         {
           "name": "MP Recovery",
           "value": 200,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         }
       ]
     },
@@ -301,17 +338,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+4.5%)",
+      "description": "Gain Ultimate Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         }
       ]
     }
@@ -319,7 +359,7 @@ export const skills = {
   "name": "Swordsman of the Sky Festival: Raguen",
   "id": 2158,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Attacker",
   "tags": [
     "Debuff",
@@ -620,4 +660,4 @@ export const stats = {
       "ATK": 86
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

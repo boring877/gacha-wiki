@@ -89,15 +89,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Swift as the Wind",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemyguaranteed hit",
-      "descriptionLv1": "Deals physical damage to the nearest enemyguaranteed hit",
-      "descriptionLv90": "Deals physical damage to the nearest enemyguaranteed hit",
+      "description": "Deals physical damage to the nearest enemyguaranteed to hit",
+      "descriptionLv1": "Deals physical damage to the nearest enemyguaranteed to hit",
+      "descriptionLv90": "Deals physical damage to the nearest enemyguaranteed to hit",
       "target": "Nearest Enemy",
       "castTime": 0.98,
       "damageScaling": "320% ATK",
@@ -150,7 +184,7 @@ export const skills = {
       "rank": 1,
       "name": "Blade Dance: Plum Blossom Banquet",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemyguaranteed hit and applies Fire Type ATK UP(LV 1) to self for 8 seconds",
+      "description": "Deals physical damage to the nearest enemyguaranteed to hit and applies Fire Type ATK UP(LV 1) to self for 8 seconds",
       "effect": "1100% + 1200",
       "buffEffects": [
         {
@@ -165,7 +199,7 @@ export const skills = {
       "rank": 2,
       "name": "Blade Dance: Plum Blossom Banquet",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemyguaranteed hit and applies Fire Type ATK UP(LV 2) to self for 8 seconds",
+      "description": "Deals physical damage to the nearest enemyguaranteed to hit and applies Fire Type ATK UP(LV 2) to self for 8 seconds",
       "effect": "1320% + 1400",
       "buffEffects": [
         {
@@ -180,7 +214,7 @@ export const skills = {
       "rank": 3,
       "name": "Blade Dance: Plum Blossom Banquet",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemyguaranteed hit and applies Fire Type ATK UP(LV 3) to self for 8 seconds",
+      "description": "Deals physical damage to the nearest enemyguaranteed to hit and applies Fire Type ATK UP(LV 3) to self for 8 seconds",
       "effect": "1490% + 1550",
       "buffEffects": [
         {
@@ -195,7 +229,7 @@ export const skills = {
       "rank": 4,
       "name": "Blade Dance: Plum Blossom Banquet",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemyguaranteed hit and applies Fire Type ATK UP(LV 4) to self for 8 seconds",
+      "description": "Deals physical damage to the nearest enemyguaranteed to hit and applies Fire Type ATK UP(LV 4) to self for 8 seconds",
       "effect": "1600% + 1650",
       "buffEffects": [
         {
@@ -210,7 +244,7 @@ export const skills = {
       "rank": 5,
       "name": "Blade Dance: Plum Blossom Banquet",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemyguaranteed hit and applies Fire Type ATK UP(LV 5) to self for 8 seconds",
+      "description": "Deals physical damage to the nearest enemyguaranteed to hit and applies Fire Type ATK UP(LV 5) to self for 8 seconds",
       "effect": "1660% + 1700",
       "buffEffects": [
         {
@@ -227,17 +261,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Physical Attack + (+259), Physical Critical Damage+ (+8.8%)",
+      "description": "Gain Physical Attack UP (Medium), Physical Critical Damage UP (Large)",
+      "effect": "Physical Attack + (+259), Physical Critical Damage+ (+176%)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 8.8,
-          "type": "percent"
+          "value": 176,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Large)"
         }
       ]
     },
@@ -245,17 +282,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Medium)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     }
@@ -566,4 +606,4 @@ export const stats = {
       "ATK": 50
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

@@ -92,6 +92,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -132,9 +166,9 @@ export const skills = {
       "slot": 3,
       "name": "Hey, blessing of Uranus!",
       "icon": "skill001/skill0011",
-      "description": "Inflicts Accuracy -13 DOWN on the 3 nearest enemies for 10 seconds , 3s Charm for or",
-      "descriptionLv1": "Inflicts Accuracy -13 DOWN on the 3 nearest enemies for 10 seconds , 3s Charm for or",
-      "descriptionLv90": "Inflicts Accuracy -26 DOWN on the 3 nearest enemies for 10 seconds , 3s Charm for or",
+      "description": "Inflicts Accuracy -13 DOWN on the 3 nearest enemies for 10 seconds, 3s or",
+      "descriptionLv1": "Inflicts Accuracy -13 DOWN on the 3 nearest enemies for 10 seconds, 3s or",
+      "descriptionLv90": "Inflicts Accuracy -26 DOWN on the 3 nearest enemies for 10 seconds, 3s or",
       "target": "Nearest Enemy",
       "castTime": 1.3,
       "damageScaling": null,
@@ -169,7 +203,7 @@ export const skills = {
       "rank": 1,
       "name": "Everyone, drink up!",
       "icon": "skill001/skill0011",
-      "description": "all enemies2s Blind for and Action Speed DOWN(LV 1) for 10 seconds , Restores HP by to all allies or",
+      "description": "All enemies 2s Blind and Action Speed DOWN(LV 1) for 10 seconds, Restores HP by to all allies or",
       "effect": "1500% + 600",
       "buffEffects": [
         {
@@ -190,7 +224,7 @@ export const skills = {
       "rank": 2,
       "name": "Everyone, drink up!",
       "icon": "skill001/skill0011",
-      "description": "all enemies3s Blind for and Action Speed DOWN(LV 2) for 10 seconds , Restores HP by to all allies or",
+      "description": "All enemies 3s Blind and Action Speed DOWN(LV 2) for 10 seconds, Restores HP by to all allies or",
       "effect": "1800% + 850",
       "buffEffects": [
         {
@@ -211,7 +245,7 @@ export const skills = {
       "rank": 3,
       "name": "Everyone, drink up!",
       "icon": "skill001/skill0011",
-      "description": "all enemies3s Blind for and Action Speed DOWN(LV 3) for 10 seconds , Restores HP by to all allies or",
+      "description": "All enemies 3s Blind and Action Speed DOWN(LV 3) for 10 seconds, Restores HP by to all allies or",
       "effect": "2000% + 1050",
       "buffEffects": [
         {
@@ -232,7 +266,7 @@ export const skills = {
       "rank": 4,
       "name": "Everyone, drink up!",
       "icon": "skill001/skill0011",
-      "description": "all enemies4s Blind for and Action Speed DOWN(LV 4) for 10 seconds , Restores HP by to all allies or",
+      "description": "All enemies 4s Blind and Action Speed DOWN(LV 4) for 10 seconds, Restores HP by to all allies or",
       "effect": "2200% + 1200",
       "buffEffects": [
         {
@@ -253,7 +287,7 @@ export const skills = {
       "rank": 5,
       "name": "Everyone, drink up!",
       "icon": "skill001/skill0011",
-      "description": "all enemies4s Blind for and Action Speed DOWN(LV 5) for 10 seconds , Restores HP by to all allies or",
+      "description": "All enemies 4s Blind and Action Speed DOWN(LV 5) for 10 seconds, Restores HP by to all allies or",
       "effect": "2300% + 1300",
       "buffEffects": [
         {
@@ -276,35 +310,22 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1006",
-      "effect": "Physical Defense + (0), Magic Defense+ (0)",
-      "effectValues": [
-        {
-          "name": "Physical Defense +",
-          "value": 0,
-          "type": "flat"
-        },
-        {
-          "name": "Magic Defense+",
-          "value": 0,
-          "type": "flat"
-        }
-      ]
+      "description": "Gain Physical Defense UP (Cannot be Cleansed), Magic Defense UP (Cannot be Cleansed)",
+      "effect": "()",
+      "effectValues": []
     },
     {
       "slot": 2,
-      "name": "Max HP +, 宴會",
+      "name": "Max HP +, Banquet",
       "icon": "skill001/skill1003",
-      "effect": "Max HP + (+3444), 宴會 (0%)",
+      "description": "Gain Max HP UP (Large), Debuff Resistance{0:P1}UP",
+      "effect": "Max HP + (+3444)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
-        },
-        {
-          "name": "宴會",
-          "value": 0,
-          "type": "percent"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         }
       ]
     }
@@ -619,4 +640,4 @@ export const stats = {
       "MP Charge": 4
     }
   ]
-};;;;;;;
+};;;;;;;;;

@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -161,7 +195,7 @@ export const skills = {
       "rank": 1,
       "name": "Jackpot・Overcall",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeinflict10 Physical Defense DOWN(LV 1)",
+      "description": "Deals physical damage to the nearest enemy. Also inflicts Physical Defense DOWN(LV 1) to the enemy for 10 seconds before casting ultimate",
       "effect": "860% + 500",
       "buffEffects": [
         {
@@ -176,7 +210,7 @@ export const skills = {
       "rank": 2,
       "name": "Jackpot・Overcall",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeinflict10 Physical Defense DOWN(LV 2)",
+      "description": "Deals physical damage to the nearest enemy. Also inflicts Physical Defense DOWN(LV 2) to the enemy for 10 seconds before casting ultimate",
       "effect": "980% + 600",
       "buffEffects": [
         {
@@ -191,7 +225,7 @@ export const skills = {
       "rank": 3,
       "name": "Jackpot・Overcall",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeinflict10 Physical Defense DOWN(LV 3)",
+      "description": "Deals physical damage to the nearest enemy. Also inflicts Physical Defense DOWN(LV 3) to the enemy for 10 seconds before casting ultimate",
       "effect": "1070% + 700",
       "buffEffects": [
         {
@@ -206,7 +240,7 @@ export const skills = {
       "rank": 4,
       "name": "Jackpot・Overcall",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeinflict10 Physical Defense DOWN(LV 4)",
+      "description": "Deals physical damage to the nearest enemy. Also inflicts Physical Defense DOWN(LV 4) to the enemy for 10 seconds before casting ultimate",
       "effect": "1150% + 800",
       "buffEffects": [
         {
@@ -221,7 +255,7 @@ export const skills = {
       "rank": 5,
       "name": "Jackpot・Overcall",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy, Ultimate activation beforeinflict10 Physical Defense DOWN(LV 5)",
+      "description": "Deals physical damage to the nearest enemy. Also inflicts Physical Defense DOWN(LV 5) to the enemy for 10 seconds before casting ultimate",
       "effect": "1200% + 900",
       "buffEffects": [
         {
@@ -238,17 +272,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Block+",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Large), Block UP (Medium)",
       "effect": "Physical Attack + (+389), Block+ (+10)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Large)"
         },
         {
           "name": "Block+",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Medium)"
         }
       ]
     },
@@ -256,17 +293,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Physical Attack UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     }
@@ -577,4 +617,4 @@ export const stats = {
       "Phys Crit": 27
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

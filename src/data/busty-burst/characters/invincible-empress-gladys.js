@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Great Serpent Slash",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds, apply to selfRecovers HP by 10%+300",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds, apply to selfRecovers HP by 10%+300",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-220 DOWN for 6 seconds, apply to selfRecovers HP by 10%+300",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds, applies to self Recovers HP by 10%+300",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds, applies to self Recovers HP by 10%+300",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-220 DOWN for 6 seconds, applies to self Recovers HP by 10%+300",
       "target": "Nearest Enemy",
       "castTime": 0.9,
       "damageScaling": "350% ATK",
@@ -132,9 +166,9 @@ export const skills = {
       "slot": 3,
       "name": "You think you can beat me?",
       "icon": "skill001/skill0019",
-      "description": "Applies Taunt to self for 12 seconds and Physical Attack 20%+40 UP for 12 seconds , 12 Debuff Resistance 50%UP",
-      "descriptionLv1": "Applies Taunt to self for 12 seconds and Physical Attack 20%+40 UP for 12 seconds , 12 Debuff Resistance 50%UP",
-      "descriptionLv90": "Applies Taunt to self for 12 seconds and Physical Attack 20%+850 UP for 12 seconds , 12 Debuff Resistance 50%UP",
+      "description": "Applies Taunt to self for 12 seconds and Physical Attack 20%+40 UP for 12 seconds, 12s Debuff Resistance 50%UP",
+      "descriptionLv1": "Applies Taunt to self for 12 seconds and Physical Attack 20%+40 UP for 12 seconds, 12s Debuff Resistance 50%UP",
+      "descriptionLv90": "Applies Taunt to self for 12 seconds and Physical Attack 20%+850 UP for 12 seconds, 12s Debuff Resistance 50%UP",
       "target": "Self",
       "castTime": 1.1,
       "damageScaling": null,
@@ -283,17 +317,20 @@ export const skills = {
       "slot": 1,
       "name": "Ultimate Damage +, Shield",
       "icon": "skill001/skill1002",
+      "description": "Gain Ultimate Damage UP (Medium), Damage Reduction (3 times, cannot be cleansed)",
       "effect": "Ultimate Damage + (+10%), Shield (+50%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 10,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Medium)"
         },
         {
           "name": "Shield",
           "value": 50,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Damage Reduction (3 times, cannot be cleansed)"
         }
       ]
     },
@@ -301,17 +338,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Action Speed +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Medium), Action Speed UP (Medium)",
       "effect": "Skill Damage + (+20%), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Medium)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     }
@@ -622,4 +662,4 @@ export const stats = {
       "HP": 1036
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

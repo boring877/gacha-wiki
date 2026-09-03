@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -258,17 +292,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1006",
+      "description": "Gain Physical Defense UP (Medium), Magic Defense UP (Medium)",
       "effect": "Physical Defense + (+141), Magic Defense+ (+141)",
       "effectValues": [
         {
           "name": "Physical Defense +",
           "value": 141,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Defense UP (Medium)"
         },
         {
           "name": "Magic Defense+",
           "value": 141,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Defense UP (Medium)"
         }
       ]
     },
@@ -276,17 +313,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Action Speed +",
       "icon": "skill001/skill1005",
+      "description": "Gain Skill Damage UP (Small), Action Speed UP (Medium)",
       "effect": "Skill Damage + (+10%), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 10,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Small)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     },
@@ -294,12 +334,14 @@ export const skills = {
       "slot": 3,
       "name": "Passive EX",
       "icon": "skill001/skill1005",
+      "description": "Gain Ultimate Damage UP (Small), Max HP UP (Cannot be Cleansed), Block UP",
       "effect": "Ultimate Damage + (+5%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 5,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Small)"
         }
       ]
     }
@@ -307,7 +349,7 @@ export const skills = {
   "name": "Frey",
   "id": 2051,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Support",
   "tags": [
     "Heal",
@@ -612,4 +654,4 @@ export const stats = {
       "HP": 589
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

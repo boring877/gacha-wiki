@@ -91,7 +91,6 @@
   color: var(--bb-text-muted);
 }
 
-
 .bb-skills-search-input:focus,
 .bb-skills-filter-select:focus {
   outline: none;
@@ -113,7 +112,6 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
-
 
 /* ============================================
    RESULTS COUNT
@@ -177,7 +175,6 @@
   transition: border-color 0.2s ease;
 }
 
-
 .bb-skills-card.hidden {
   display: none;
 }
@@ -196,7 +193,6 @@
   cursor: pointer;
   user-select: none;
 }
-
 
 .bb-skills-portrait {
   position: relative;
@@ -322,20 +318,40 @@
    SKILL ROTATION
    ============================================ */
 
+/* Global skill level control */
+.bb-skill-level-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+}
+
+.bb-skill-level-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--bbc-accent, #6db8d8);
+}
+
 .bb-rotation-block {
   display: flex;
-  gap: 2rem;
-  padding: 0.75rem 1rem;
-  background: var(--bb-bg-secondary);
-  border: 1px solid var(--bb-border);
-  border-radius: 6px;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
   margin-bottom: 0.75rem;
 }
 
 .bb-rotation-row {
   display: flex;
   flex-direction: column;
-  gap: 0.125rem;
+  gap: 0.2rem;
 }
 
 .bb-rotation-key {
@@ -354,28 +370,54 @@
 }
 
 /* ============================================
-   SKILL BLOCKS
+   SKILL BLOCKS (game-style cards)
    ============================================ */
 
 .bb-skill-block {
-  padding: 0.75rem 0;
-  border-top: 1px solid var(--bb-border);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
 }
 
-.bb-skill-block:first-child {
-  border-top: none;
-  padding-top: 0;
+.bb-skill-block + .bb-skill-block {
+  margin-top: 0.75rem;
 }
 
 /* Skill header */
 .bb-skill-header {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
 }
 
 .bb-skill-header .skill-icon-wrapper {
   flex-shrink: 0;
+}
+
+/* Type chip (Basic / Skill N / Ultimate) */
+.bb-skill-chip {
+  margin-left: auto;
+  align-self: flex-start;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.65);
+  white-space: nowrap;
+}
+
+.bb-skill-chip.ult {
+  background: rgba(74, 131, 153, 0.16);
+  border-color: rgba(74, 131, 153, 0.45);
+  color: var(--bbc-accent-strong, #8fd0ea);
 }
 
 .bb-skill-info {
@@ -425,59 +467,42 @@
 }
 
 /* Skill description */
-.bb-skill-desc {
-  font-size: 0.825rem;
+.bb-skill-desc,
+.bb-ult-desc {
+  font-size: 0.875rem;
   color: var(--bb-text-secondary);
-  line-height: 1.6;
-  margin-top: 0.5rem;
-  padding: 0.5rem 0.75rem;
-  background: var(--bb-bg-secondary);
-  border-radius: 6px;
+  line-height: 1.7;
+  padding: 0.7rem 0.9rem;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
 }
 
 /* Level calculator */
 .bb-skill-calc {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  margin-top: 0.5rem;
-  padding: 0.25rem 0.5rem;
-  background: var(--bb-bg-secondary);
-  border: 1px solid var(--bb-border);
-  border-radius: 4px;
-  font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  font-size: 0.8rem;
+}
+
+.bb-calc-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.5rem;
 }
 
 .bb-calc-lbl {
   font-size: 0.7rem;
-  color: var(--bb-text-muted);
+  color: var(--bbc-accent, #6db8d8);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-}
-
-.bb-skill-calc .bb-skill-level-input {
-  width: 42px;
-  padding: 0.15rem 0.25rem;
-  background: var(--bb-bg-card);
-  border: 1px solid var(--bb-border);
-  border-radius: 4px;
-  color: var(--bb-text-primary);
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-align: center;
-  -moz-appearance: textfield;
-}
-
-.bb-skill-calc .bb-skill-level-input::-webkit-outer-spin-button,
-.bb-skill-calc .bb-skill-level-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.bb-skill-calc .bb-skill-level-input:focus {
-  outline: none;
-  border-color: var(--bb-primary-light);
 }
 
 .bb-calc-eq {
@@ -492,45 +517,63 @@
 }
 
 .bb-calc-value {
-  color: var(--bb-text-primary);
+  color: var(--bbc-accent-strong, #8fd0ea);
   font-weight: 700;
   font-family: var(--font-mono);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
 }
 
-.bb-buff-calc-value {
-  color: #60a5fa;
+/* Per-buff value rows */
+.bb-calc-values {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 }
 
-/* Ultimate block */
+.bb-buff-calc-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bb-buff-calc-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.bb-buff-calc-name {
+  font-size: 0.75rem;
+  color: var(--bb-text-tertiary);
+}
+
+.bb-buff-calc-val {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--bb-text-primary);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+
+/* Ultimate block — teal-tinted card */
 .bb-ult-block {
-  border-top: 1px solid var(--bb-border);
-  padding-top: 0.75rem;
-}
-
-/* Ultimate description */
-.bb-ult-desc {
-  font-size: 0.825rem;
-  color: var(--bb-text-secondary);
-  line-height: 1.6;
-  margin-top: 0.5rem;
-  padding: 0.5rem 0.75rem;
-  background: var(--bb-bg-secondary);
-  border-radius: 6px;
+  background: rgba(74, 131, 153, 0.07);
+  border-color: rgba(74, 131, 153, 0.32);
 }
 
 /* Ultimate rank tabs */
 .bb-ult-rank-tabs {
   display: flex;
   gap: 0.25rem;
-  margin-top: 0.5rem;
 }
 
 .bb-ult-tab {
-  background: var(--bb-bg-tertiary);
-  border: 1px solid var(--bb-border);
-  border-radius: 4px;
-  padding: 0.25rem 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 0.25rem 0.8rem;
   color: var(--bb-text-secondary);
   font-size: 0.75rem;
   font-weight: 600;
@@ -538,19 +581,17 @@
   transition: all 0.15s ease;
 }
 
-
 .bb-ult-tab.active {
-  background: rgba(245, 158, 11, 0.15);
-  border-color: rgba(245, 158, 11, 0.5);
-  color: #fbbf24;
+  background: rgba(74, 131, 153, 0.18);
+  border-color: rgba(74, 131, 153, 0.55);
+  color: var(--bbc-accent-strong, #8fd0ea);
 }
 
 /* Ultimate selected rank display */
 .bb-ult-selected {
-  margin-top: 0.5rem;
-  background: var(--bb-bg-secondary);
-  border: 1px solid var(--bb-border);
-  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
   overflow: hidden;
 }
 
@@ -560,8 +601,8 @@
   font-family: var(--font-mono);
   color: var(--bb-text-primary);
   padding: 0.625rem 0.875rem;
-  background: var(--bb-bg-tertiary);
-  border-bottom: 1px solid var(--bb-border);
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   letter-spacing: 0.02em;
 }
 
@@ -574,12 +615,12 @@
 
 .bb-ult-buff-tag {
   display: inline-block;
-  padding: 0.125rem 0.5rem;
-  border-radius: 4px;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
   font-size: 0.75rem;
   font-weight: 500;
-  background: var(--bb-bg-tertiary);
-  border: 1px solid var(--bb-border);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--bb-text-secondary);
   white-space: nowrap;
 }
@@ -652,12 +693,12 @@
 
 .bb-skill-buff-tag {
   display: inline-block;
-  padding: 0.125rem 0.5rem;
-  border-radius: 4px;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
   font-size: 0.75rem;
   font-weight: 500;
-  background: var(--bb-bg-secondary);
-  border: 1px solid var(--bb-border);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--bb-text-secondary);
 }
 
@@ -671,10 +712,6 @@
   margin-top: 0.25rem;
 }
 
-.bb-passive-block {
-  border-top: 1px solid var(--bb-border);
-}
-
 .bb-passive-effects {
   display: flex;
   flex-wrap: wrap;
@@ -686,11 +723,11 @@
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  padding: 0.125rem 0.5rem;
-  border-radius: 4px;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
   font-size: 0.775rem;
-  background: var(--bb-bg-secondary);
-  border: 1px solid var(--bb-border);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--bb-text-secondary);
 }
 
@@ -807,7 +844,7 @@
   }
 
   .bb-rotation-block {
-    gap: 1.25rem;
+    gap: 0.6rem;
     padding: 0.5rem 0.75rem;
   }
 
@@ -930,4 +967,64 @@
   .bb-passive-badge {
     font-size: 0.625rem;
   }
+}
+
+/* ===== Passive abilities section (game-style cards, 2026-09-02) ===== */
+.bb-passives-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 1rem 0 0.6rem;
+  opacity: 0.85;
+}
+.bb-passives-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0.75rem;
+}
+.bb-passive-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.bb-passive-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.bb-passive-head img { border-radius: 8px; }
+.bb-passive-titles { min-width: 0; }
+.bb-passive-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bbc-accent, #6db8d8);
+}
+.bb-passive-card .bb-skill-name { font-size: 0.95rem; }
+.bb-passive-description {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  opacity: 0.75;
+}
+.bb-passive-effects {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.bb-passive-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+}
+.bb-passive-gametext {
+  color: var(--bbc-accent-strong, #8fd0ea);
+  font-weight: 600;
 }

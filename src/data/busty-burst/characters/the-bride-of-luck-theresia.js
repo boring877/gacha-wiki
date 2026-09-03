@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -276,17 +310,20 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Action Speed +",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP (Large), Action Speed UP (Medium)",
       "effect": "Max HP + (+3444), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     },
@@ -294,17 +331,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Magic Attack +",
       "icon": "skill001/skill1005",
+      "description": "Gain Skill Damage UP (Small), Magic Attack UP (Medium)",
       "effect": "Skill Damage + (+10%), Magic Attack + (+259)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 10,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Small)"
         },
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         }
       ]
     }
@@ -312,7 +352,7 @@ export const skills = {
   "name": "The Bride of Luck: Theresia",
   "id": 2140,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Support",
   "tags": [
     "Heal",
@@ -626,4 +666,4 @@ export const stats = {
       "Block": 11
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

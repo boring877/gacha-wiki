@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -130,9 +164,9 @@ export const skills = {
       "slot": 3,
       "name": "Future Sight",
       "icon": "skill001/skill0019",
-      "description": "all allies6 Physical Critical Damage 40 UP and Magic Critical Damage 40 UP for 6 seconds",
-      "descriptionLv1": "all allies6 Physical Critical Damage 40 UP and Magic Critical Damage 40 UP for 6 seconds",
-      "descriptionLv90": "all allies6 Physical Critical Damage 490 UP and Magic Critical Damage 40 UP for 6 seconds",
+      "description": "All allies 6s Physical Critical Damage 40 UP and Magic Critical Damage 40 UP for 6 seconds",
+      "descriptionLv1": "All allies 6s Physical Critical Damage 40 UP and Magic Critical Damage 40 UP for 6 seconds",
+      "descriptionLv90": "All allies 6s Physical Critical Damage 490 UP and Magic Critical Damage 40 UP for 6 seconds",
       "target": "All Allies",
       "castTime": 1.08,
       "damageScaling": null,
@@ -168,7 +202,7 @@ export const skills = {
       "rank": 1,
       "name": "La Roue de Fortune",
       "icon": "skill001/skill0020_1",
-      "description": "all allies8 Action Speed UP(LV 1) and Hit-Based Shield(LV 1) for 4 seconds",
+      "description": "All allies 8s Action Speed UP(LV 1) and Hit-Based Shield(LV 1) for 4 seconds",
       "effect": "0% + 0",
       "buffEffects": [
         {
@@ -189,7 +223,7 @@ export const skills = {
       "rank": 2,
       "name": "La Roue de Fortune",
       "icon": "skill001/skill0020_2",
-      "description": "all allies8 Action Speed UP(LV 2) and Hit-Based Shield(LV 2) for 4 seconds",
+      "description": "All allies 8s Action Speed UP(LV 2) and Hit-Based Shield(LV 2) for 4 seconds",
       "effect": "0% + 0",
       "buffEffects": [
         {
@@ -210,7 +244,7 @@ export const skills = {
       "rank": 3,
       "name": "La Roue de Fortune",
       "icon": "skill001/skill0020_3",
-      "description": "all allies8 Action Speed UP(LV 3) and Hit-Based Shield(LV 3) for 5 seconds",
+      "description": "All allies 8s Action Speed UP(LV 3) and Hit-Based Shield(LV 3) for 5 seconds",
       "effect": "0% + 0",
       "buffEffects": [
         {
@@ -231,7 +265,7 @@ export const skills = {
       "rank": 4,
       "name": "La Roue de Fortune",
       "icon": "skill001/skill0020_4",
-      "description": "all allies8 Action Speed UP(LV 4) and Hit-Based Shield(LV 4) for 5 seconds",
+      "description": "All allies 8s Action Speed UP(LV 4) and Hit-Based Shield(LV 4) for 5 seconds",
       "effect": "0% + 0",
       "buffEffects": [
         {
@@ -252,7 +286,7 @@ export const skills = {
       "rank": 5,
       "name": "La Roue de Fortune",
       "icon": "skill001/skill0020_5",
-      "description": "all allies8 Action Speed UP(LV 5) and Hit-Based Shield(LV 5) for 6 seconds",
+      "description": "All allies 8s Action Speed UP(LV 5) and Hit-Based Shield(LV 5) for 6 seconds",
       "effect": "0% + 0",
       "buffEffects": [
         {
@@ -275,17 +309,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Critical Damage+, Magic Critical Damage+",
       "icon": "skill001/skill1006",
-      "effect": "Physical Critical Damage+ (+4.5%), Magic Critical Damage+ (+90)",
+      "description": "Gain Physical Critical Damage UP (Medium), Magic Critical Damage UP (Medium)",
+      "effect": "Physical Critical Damage+ (+90%), Magic Critical Damage+ (+90)",
       "effectValues": [
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         },
         {
           "name": "Magic Critical Damage+",
           "value": 90,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Medium)"
         }
       ]
     },
@@ -293,17 +330,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Action Speed +",
       "icon": "skill001/skill1005",
+      "description": "Gain Skill Damage UP (Medium), Action Speed UP (Small)",
       "effect": "Skill Damage + (+20%), Action Speed + (+5)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Medium)"
         },
         {
           "name": "Action Speed +",
           "value": 5,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Small)"
         }
       ]
     }
@@ -614,4 +654,4 @@ export const stats = {
       "MP Charge": 3
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

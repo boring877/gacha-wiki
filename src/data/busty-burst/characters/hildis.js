@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -276,17 +310,20 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Physical Attack +",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP (Large), Physical Attack UP (Medium)",
       "effect": "Max HP + (+3444), Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         },
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     },
@@ -294,17 +331,20 @@ export const skills = {
       "slot": 2,
       "name": "Physical Critical Damage+, Physical Attack +",
       "icon": "skill001/skill1005",
-      "effect": "Physical Critical Damage+ (+4.5%), Physical Attack + (+130)",
+      "description": "Gain Physical Critical Damage UP (Medium), Physical Attack UP (Small)",
+      "effect": "Physical Critical Damage+ (+90%), Physical Attack + (+130)",
       "effectValues": [
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         },
         {
           "name": "Physical Attack +",
           "value": 130,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Small)"
         }
       ]
     }
@@ -617,4 +657,4 @@ export const stats = {
       "ATK": 43
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

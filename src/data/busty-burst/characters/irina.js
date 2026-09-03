@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -232,12 +266,14 @@ export const skills = {
       "slot": 1,
       "name": "Healing Amount +",
       "icon": "skill001/skill1004",
+      "description": "Gain Healing Amount UP (Small)",
       "effect": "Healing Amount + (+15%)",
       "effectValues": [
         {
           "name": "Healing Amount +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Healing Amount UP (Small)"
         }
       ]
     },
@@ -245,17 +281,20 @@ export const skills = {
       "slot": 2,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1006",
+      "description": "Gain Physical Defense UP (Small), Magic Defense UP (Small)",
       "effect": "Physical Defense + (+70), Magic Defense+ (+70)",
       "effectValues": [
         {
           "name": "Physical Defense +",
           "value": 70,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Defense UP (Small)"
         },
         {
           "name": "Magic Defense+",
           "value": 70,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Defense UP (Small)"
         }
       ]
     }
@@ -263,7 +302,7 @@ export const skills = {
   "name": "Irina",
   "id": 2014,
   "rarity": "SR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Support",
   "tags": [
     "Debuff",
@@ -579,4 +618,4 @@ export const stats = {
       "MATK": 62
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

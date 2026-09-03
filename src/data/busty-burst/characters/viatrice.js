@@ -90,11 +90,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Want to try a grown-up fire game?",
+      "name": "Wanna try some hot games for adult only",
       "icon": "skill001/skill0011",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(HP --200 per second) for 15 seconds and Block-11 DOWN for 8 seconds",
       "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Burn(HP --200 per second) for 15 seconds and Block-11 DOWN for 8 seconds",
@@ -130,7 +164,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Swoosh~ Boom boom~",
+      "name": "pew~don~lon~lon",
       "icon": "skill001/skill0019",
       "description": "Applies Hit-Based Shield(100%1 hit(s)) to self for 25 seconds and Magic Attack 20%+40 UP for 12 seconds",
       "descriptionLv1": "Applies Hit-Based Shield(100%1 hit(s)) to self for 25 seconds and Magic Attack 20%+40 UP for 12 seconds",
@@ -167,7 +201,7 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "It doesn't count unless it burns",
+      "name": "It's not just burning",
       "icon": "skill001/skill0012_1",
       "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 1) for 15 seconds and Fire Type Damage Taken UP(LV 1) for 8 seconds",
       "effect": "900% + 900",
@@ -188,7 +222,7 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "It doesn't count unless it burns",
+      "name": "It's not just burning",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 2) for 15 seconds and Fire Type Damage Taken UP(LV 2) for 8 seconds",
       "effect": "1080% + 1100",
@@ -209,7 +243,7 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "It doesn't count unless it burns",
+      "name": "It's not just burning",
       "icon": "skill001/skill0012_3",
       "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 3) for 15 seconds and Fire Type Damage Taken UP(LV 3) for 8 seconds",
       "effect": "1210% + 1250",
@@ -230,7 +264,7 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "It doesn't count unless it burns",
+      "name": "It's not just burning",
       "icon": "skill001/skill0012_4",
       "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 4) for 15 seconds and Fire Type Damage Taken UP(LV 4) for 8 seconds",
       "effect": "1300% + 1350",
@@ -251,7 +285,7 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "It doesn't count unless it burns",
+      "name": "It's not just burning",
       "icon": "skill001/skill0012_5",
       "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 5) for 15 seconds and Fire Type Damage Taken UP(LV 5) for 8 seconds",
       "effect": "1350% + 1400",
@@ -276,17 +310,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Block+",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Large), Block UP (Medium)",
       "effect": "Magic Attack + (+389), Block+ (+15)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         },
         {
           "name": "Block+",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Medium)"
         }
       ]
     },
@@ -294,17 +331,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Max HP +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Max HP UP (Medium)",
       "effect": "Skill Damage + (+30%), Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     }
@@ -626,4 +666,4 @@ export const stats = {
       "MATK": 78
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

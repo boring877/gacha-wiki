@@ -93,15 +93,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "I'm getting mad",
       "icon": "skill001/skill0011",
-      "description": "3 enemies3 and Fear(MP --100 per second) for 3 seconds , 10 Accuracy -13 DOWN",
-      "descriptionLv1": "3 enemies3 and Fear(MP --100 per second) for 3 seconds , 10 Accuracy -13 DOWN",
-      "descriptionLv90": "3 enemies3 and Fear(MP --100 per second) for 3 seconds , 10 Accuracy -26 DOWN",
+      "description": "3 enemies 3s and Fear(MP --100 per second) for 3 seconds, 10s Accuracy -13 DOWN",
+      "descriptionLv1": "3 enemies 3s and Fear(MP --100 per second) for 3 seconds, 10s Accuracy -13 DOWN",
+      "descriptionLv90": "3 enemies 3s and Fear(MP --100 per second) for 3 seconds, 10s Accuracy -26 DOWN",
       "target": "Back Enemy",
       "castTime": 1.3,
       "damageScaling": null,
@@ -141,9 +175,9 @@ export const skills = {
       "slot": 3,
       "name": "Please use this",
       "icon": "skill001/skill0021",
-      "description": "Restores HP by to all allies and inflicts Hit-Based Shield (30%+2 hit(s)) for 10 seconds and Shield (1000) for 10 seconds , 10 Block 13 UP",
-      "descriptionLv1": "Restores HP by to all allies and inflicts Hit-Based Shield (30%+2 hit(s)) for 10 seconds and Shield (1000) for 10 seconds , 10 Block 13 UP",
-      "descriptionLv90": "Restores HP by to all allies and inflicts Hit-Based Shield (30%+2 hit(s)) for 10 seconds and Shield (1000) for 10 seconds , 10 Block 26 UP",
+      "description": "Restores HP by to all allies and inflicts Hit-Based Shield (30%+2 hit(s)) for 10 seconds and Shield (1000) for 10 seconds, 10s Block 13 UP",
+      "descriptionLv1": "Restores HP by to all allies and inflicts Hit-Based Shield (30%+2 hit(s)) for 10 seconds and Shield (1000) for 10 seconds, 10s Block 13 UP",
+      "descriptionLv90": "Restores HP by to all allies and inflicts Hit-Based Shield (30%+2 hit(s)) for 10 seconds and Shield (1000) for 10 seconds, 10s Block 26 UP",
       "target": "All Allies",
       "castTime": 0.2,
       "damageScaling": "1500% ATK",
@@ -185,7 +219,7 @@ export const skills = {
       "rank": 1,
       "name": "I absolutely won't get married!",
       "icon": "skill001/skill0012_1",
-      "description": "3 to enemiesmagic damage and inflicts Freeze(LV 1) for 2 seconds and Physical Attack DOWN(LV 1) for 10 seconds , 10 Magic Attack DOWN(LV 1)",
+      "description": "3 to enemiesmagic damage and inflicts Freeze(LV 1) for 2 seconds and Physical Attack DOWN(LV 1) for 10 seconds, 10s Magic Attack DOWN(LV 1)",
       "effect": "350% + 500",
       "buffEffects": [
         {
@@ -212,7 +246,7 @@ export const skills = {
       "rank": 2,
       "name": "I absolutely won't get married!",
       "icon": "skill001/skill0012_2",
-      "description": "3 to enemiesmagic damage and inflicts Freeze(LV 2) for 2.5 seconds and Physical Attack DOWN(LV 2) for 10 seconds , 10 Magic Attack DOWN(LV 2)",
+      "description": "3 to enemiesmagic damage and inflicts Freeze(LV 2) for 2.5 seconds and Physical Attack DOWN(LV 2) for 10 seconds, 10s Magic Attack DOWN(LV 2)",
       "effect": "420% + 650",
       "buffEffects": [
         {
@@ -239,7 +273,7 @@ export const skills = {
       "rank": 3,
       "name": "I absolutely won't get married!",
       "icon": "skill001/skill0012_3",
-      "description": "3 to enemiesmagic damage and inflicts Freeze(LV 3) for 2.5 seconds and Physical Attack DOWN(LV 3) for 10 seconds , 10 Magic Attack DOWN(LV 3)",
+      "description": "3 to enemiesmagic damage and inflicts Freeze(LV 3) for 2.5 seconds and Physical Attack DOWN(LV 3) for 10 seconds, 10s Magic Attack DOWN(LV 3)",
       "effect": "455% + 800",
       "buffEffects": [
         {
@@ -266,7 +300,7 @@ export const skills = {
       "rank": 4,
       "name": "I absolutely won't get married!",
       "icon": "skill001/skill0012_4",
-      "description": "3 to enemiesmagic damage and inflicts Freeze(LV 4) for 3 seconds and Physical Attack DOWN(LV 4) for 10 seconds , 10 Magic Attack DOWN(LV 4)",
+      "description": "3 to enemiesmagic damage and inflicts Freeze(LV 4) for 3 seconds and Physical Attack DOWN(LV 4) for 10 seconds, 10s Magic Attack DOWN(LV 4)",
       "effect": "490% + 900",
       "buffEffects": [
         {
@@ -293,7 +327,7 @@ export const skills = {
       "rank": 5,
       "name": "I absolutely won't get married!",
       "icon": "skill001/skill0012_5",
-      "description": "3 to enemiesmagic damage and inflicts Freeze(LV 5) for 3 seconds and Physical Attack DOWN(LV 5) for 10 seconds , 10 Magic Attack DOWN(LV 5)",
+      "description": "3 to enemiesmagic damage and inflicts Freeze(LV 5) for 3 seconds and Physical Attack DOWN(LV 5) for 10 seconds, 10s Magic Attack DOWN(LV 5)",
       "effect": "509% + 1000",
       "buffEffects": [
         {
@@ -320,19 +354,16 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "MP Recovery, MP Recovery",
+      "name": "Debuff Resistance+, MP Recovery",
       "icon": "skill001/skill1003",
-      "effect": "MP Recovery (+100%), MP Recovery (+100)",
+      "description": "Gain Debuff Resistance UP (Small), MP Recovery",
+      "effect": "MP Recovery (+100%)",
       "effectValues": [
         {
           "name": "MP Recovery",
           "value": 100,
-          "type": "percent"
-        },
-        {
-          "name": "MP Recovery",
-          "value": 100,
-          "type": "flat"
+          "type": "percent",
+          "gameText": "MP Recovery"
         }
       ]
     },
@@ -340,17 +371,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Action Speed +",
       "icon": "skill001/skill1007",
+      "description": "Gain Ultimate Damage UP (Small), Action Speed UP (Medium)",
       "effect": "Ultimate Damage + (+5%), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 5,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Small)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     }
@@ -678,4 +712,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;
+};;;;;;;;;

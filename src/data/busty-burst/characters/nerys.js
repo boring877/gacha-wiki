@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -220,12 +254,14 @@ export const skills = {
       "slot": 1,
       "name": "MP Recovery+",
       "icon": "skill001/skill1003",
+      "description": "Gain MP Recovery (Small)",
       "effect": "MP Recovery+ (+21%)",
       "effectValues": [
         {
           "name": "MP Recovery+",
           "value": 21,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery (Small)"
         }
       ]
     },
@@ -233,12 +269,14 @@ export const skills = {
       "slot": 2,
       "name": "Magic Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Medium)",
       "effect": "Magic Attack + (+259)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         }
       ]
     }
@@ -560,4 +598,4 @@ export const stats = {
       "HP": 493
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

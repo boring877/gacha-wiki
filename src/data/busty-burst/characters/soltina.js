@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -274,17 +308,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Physical Defense +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Medium), Physical Defense UP (Large)",
       "effect": "Physical Attack + (+159), Physical Defense + (+211)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 159,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         },
         {
           "name": "Physical Defense +",
           "value": 211,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Defense UP (Large)"
         }
       ]
     },
@@ -292,17 +329,20 @@ export const skills = {
       "slot": 2,
       "name": "Physical Critical Damage+, Block+",
       "icon": "skill001/skill1001",
-      "effect": "Physical Critical Damage+ (+8.8%), Block+ (+15)",
+      "description": "Gain Physical Critical Damage UP (Large), Block UP (Medium)",
+      "effect": "Physical Critical Damage+ (+176%), Block+ (+15)",
       "effectValues": [
         {
           "name": "Physical Critical Damage+",
-          "value": 8.8,
-          "type": "percent"
+          "value": 176,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Large)"
         },
         {
           "name": "Block+",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Medium)"
         }
       ]
     }
@@ -613,4 +653,4 @@ export const stats = {
       "ATK": 64
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -100,7 +134,7 @@ export const skills = {
       "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -9%-2000 DOWN for 7 seconds and Magic Attack -9%-20 DOWN for 7 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.58,
-      "damageScaling": "110% ATK",
+      "damageScaling": "110.00000000000001% ATK",
       "baseDamage": "+60",
       "levelGrowth": "+6",
       "lvl1": "110% + 60",
@@ -160,7 +194,7 @@ export const skills = {
       "rank": 1,
       "name": "Phantom Nail",
       "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 6 seconds , 6s Curse for state",
+      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 6 seconds, 6s state",
       "effect": "900% + 850",
       "buffEffects": [
         {
@@ -181,7 +215,7 @@ export const skills = {
       "rank": 2,
       "name": "Phantom Nail",
       "icon": "skill001/skill0012_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 6 seconds , 6s Curse for state",
+      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 6 seconds, 6s state",
       "effect": "1080% + 920",
       "buffEffects": [
         {
@@ -202,7 +236,7 @@ export const skills = {
       "rank": 3,
       "name": "Phantom Nail",
       "icon": "skill001/skill0012_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 7 seconds , 7s Curse for state",
+      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 7 seconds, 7s state",
       "effect": "1170% + 1010",
       "buffEffects": [
         {
@@ -223,7 +257,7 @@ export const skills = {
       "rank": 4,
       "name": "Phantom Nail",
       "icon": "skill001/skill0012_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 7 seconds , 7s Curse for state",
+      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 7 seconds, 7s state",
       "effect": "1260% + 1150",
       "buffEffects": [
         {
@@ -244,7 +278,7 @@ export const skills = {
       "rank": 5,
       "name": "Phantom Nail",
       "icon": "skill001/skill0012_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 8 seconds , 8s Curse for state",
+      "description": "Deals physical damage to the nearest enemy and inflicts Paralysis for 8 seconds, 8s state",
       "effect": "1350% + 1300",
       "buffEffects": [
         {
@@ -267,17 +301,20 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Block+",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP (Large), Block UP (Medium)",
       "effect": "Max HP + (+3444), Block+ (+15)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         },
         {
           "name": "Block+",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Medium)"
         }
       ]
     },
@@ -285,17 +322,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Action Speed +",
       "icon": "skill001/skill1003",
+      "description": "Gain Skill Damage UP (Medium), Action Speed UP (Medium)",
       "effect": "Skill Damage + (+20%), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Medium)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     }
@@ -606,4 +646,4 @@ export const stats = {
       "HP": 944
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

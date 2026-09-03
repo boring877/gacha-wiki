@@ -89,15 +89,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Evil Spirit's Comfort",
       "icon": "skill001/skill0019",
-      "description": "Applies 15%+Damage Reduction to all allies for 8 seconds and Reflect Shield(250%+500) for 8 seconds , 8 Action Speed 20%UP",
-      "descriptionLv1": "Applies 15%+Damage Reduction to all allies for 8 seconds and Reflect Shield(250%+500) for 8 seconds , 8 Action Speed 20%UP",
-      "descriptionLv90": "Applies 15%+Damage Reduction to all allies for 8 seconds and Reflect Shield(250%+500) for 8 seconds , 8 Action Speed 20%UP",
+      "description": "Applies 15%+Damage Reduction to all allies for 8 seconds and Reflect Shield(250%+500) for 8 seconds, 8s Action Speed 20%UP",
+      "descriptionLv1": "Applies 15%+Damage Reduction to all allies for 8 seconds and Reflect Shield(250%+500) for 8 seconds, 8s Action Speed 20%UP",
+      "descriptionLv90": "Applies 15%+Damage Reduction to all allies for 8 seconds and Reflect Shield(250%+500) for 8 seconds, 8s Action Speed 20%UP",
       "target": "All Allies",
       "castTime": 1.2,
       "damageScaling": null,
@@ -137,9 +171,9 @@ export const skills = {
       "slot": 3,
       "name": "Oni Fire Flame",
       "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-40 DOWN for 6 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5), [Ghost Fire]5 when damage +50%, inflict 2s",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-40 DOWN for 6 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5), [Ghost Fire]5 when damage +50%, inflict 2s",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-220 DOWN for 6 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5), [Ghost Fire]5 when damage +50%, inflict 2s",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-40 DOWN for 6 seconds, 1 stacks[Ghost Fire](treated as, [Ghost Fire]1 stacksHP-800, Fire Type damage taken by damage+2%, max 5 stacks), [Ghost Fire]at 5 stacks: damage +50%, applies 2s",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-40 DOWN for 6 seconds, 1 stacks[Ghost Fire](treated as, [Ghost Fire]1 stacksHP-800, Fire Type damage taken by damage+2%, max 5 stacks), [Ghost Fire]at 5 stacks: damage +50%, applies 2s",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-220 DOWN for 6 seconds, 1 stacks[Ghost Fire](treated as, [Ghost Fire]1 stacksHP-800, Fire Type damage taken by damage+2%, max 5 stacks), [Ghost Fire]at 5 stacks: damage +50%, applies 2s",
       "target": "Nearest Enemy",
       "castTime": 1.3,
       "damageScaling": "120% ATK",
@@ -181,7 +215,7 @@ export const skills = {
       "rank": 1,
       "name": "Night Star - Golden God's Seven Kill Calamity",
       "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 1) for 8 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5), [Ghost Fire]5 when damage +30%, 4s Curse for, self10 SpeedUP(LV 1)",
+      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 1) for 8 seconds, 1 stacks[Ghost Fire](treated as, [Ghost Fire]1 stacksHP-800, Fire Type damage taken by damage+2%, max 5 stacks), [Ghost Fire]at 5 stacks: damage +30%, 4s, self 10saction speedUP(LV 1)",
       "effect": "1100% + 800",
       "buffEffects": [
         {
@@ -208,7 +242,7 @@ export const skills = {
       "rank": 2,
       "name": "Night Star - Golden God's Seven Kill Calamity",
       "icon": "skill001/skill0006_2",
-      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 2) for 8 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5, ), [Ghost Fire]5 when damage +30%, 5s Curse for, self10 SpeedUP(LV 2)",
+      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 2) for 8 seconds, 1 stacks[Ghost Fire](treated as, [Ghost Fire]1 stacksHP-800, Fire Type damage taken by damage+2%, max 5 stacks, ), [Ghost Fire]at 5 stacks: damage +30%, 5s, self 10saction speedUP(LV 2)",
       "effect": "1320% + 950",
       "buffEffects": [
         {
@@ -235,7 +269,7 @@ export const skills = {
       "rank": 3,
       "name": "Night Star - Golden God's Seven Kill Calamity",
       "icon": "skill001/skill0006_3",
-      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 3) for 8 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5), [Ghost Fire]5 when damage +30%, 5s Curse for, self10 SpeedUP(LV 3)",
+      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 3) for 8 seconds, 1 stacks[Ghost Fire](treated as, [Ghost Fire]1 stacksHP-800, Fire Type damage taken by damage+2%, max 5 stacks), [Ghost Fire]at 5 stacks: damage +30%, 5s, self 10saction speedUP(LV 3)",
       "effect": "1470% + 1100",
       "buffEffects": [
         {
@@ -262,7 +296,7 @@ export const skills = {
       "rank": 4,
       "name": "Night Star - Golden God's Seven Kill Calamity",
       "icon": "skill001/skill0006_4",
-      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 4) for 8 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5), [Ghost Fire]5 when damage +30%, 6s Curse for, self10 SpeedUP(LV 4)",
+      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 4) for 8 seconds, 1 stacks[Ghost Fire](treated as, [Ghost Fire]1 stacksHP-800, Fire Type damage taken by damage+2%, max 5 stacks), [Ghost Fire]at 5 stacks: damage +30%, 6s, self 10saction speedUP(LV 4)",
       "effect": "1590% + 1200",
       "buffEffects": [
         {
@@ -289,7 +323,7 @@ export const skills = {
       "rank": 5,
       "name": "Night Star - Golden God's Seven Kill Calamity",
       "icon": "skill001/skill0006_5",
-      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 5) for 8 seconds, 1[Ghost Fire](treated as, [Ghost Fire]1HP-800, Fire Type damage taken by damage+2%, max5), [Ghost Fire]5 when damage +30%, 6s Curse for, self10 SpeedUP(LV 5)",
+      "description": "Deals magic damage to the nearest enemy and inflicts Fire Type Damage Taken UP(LV 5) for 8 seconds, 1 stacks[Ghost Fire](treated as, [Ghost Fire]1 stacksHP-800, Fire Type damage taken by damage+2%, max 5 stacks), [Ghost Fire]at 5 stacks: damage +30%, 6s, self 10saction speedUP(LV 5)",
       "effect": "1700% + 1300",
       "buffEffects": [
         {
@@ -318,17 +352,14 @@ export const skills = {
       "slot": 1,
       "name": "Skill Damage +, Magic Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Skill Damage + (+10%), Magic Critical Damage+ (0)",
+      "description": "Gain Skill Damage UP (Small), Magic Critical Damage UP",
+      "effect": "Skill Damage + (+10%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 10,
-          "type": "percent"
-        },
-        {
-          "name": "Magic Critical Damage+",
-          "value": 0,
-          "type": "flat"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Small)"
         }
       ]
     },
@@ -336,17 +367,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, MP Recovery",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), MP Recovery",
       "effect": "Ultimate Damage + (+15%), MP Recovery (+100%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "MP Recovery",
           "value": 100,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         }
       ]
     }
@@ -666,4 +700,4 @@ export const stats = {
       "Magic Crit": 15
     }
   ]
-};;;;;;;
+};;;;;;;;;

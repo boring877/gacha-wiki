@@ -345,7 +345,7 @@ export const skills = {
 export const stats = {
   "id": "purehearted-pâtissière-frey",
   "characterId": 2109,
-  "name": "【Purehearted Pâtissière】Frey",
+  "name": "【Innocent Confectioner】Frey ",
   "rarity": "SSR",
   "element": "火",
   "weapon": "",
@@ -619,4 +619,4 @@ export const stats = {
       "MP Charge": 3
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

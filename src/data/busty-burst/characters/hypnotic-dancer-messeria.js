@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -277,17 +311,20 @@ export const skills = {
       "slot": 1,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Small), Physical Attack UP (Small)",
       "effect": "Skill Damage + (+10%), Physical Attack + (+130)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 10,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Small)"
         },
         {
           "name": "Physical Attack +",
           "value": 130,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Small)"
         }
       ]
     },
@@ -295,17 +332,20 @@ export const skills = {
       "slot": 2,
       "name": "Block+, Action Speed +",
       "icon": "skill001/skill1007",
+      "description": "Gain Block UP (Small), Action Speed UP (Medium)",
       "effect": "Block+ (+10), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Block+",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Small)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     }
@@ -618,4 +658,4 @@ export const stats = {
       "MP Charge": 4
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

@@ -90,11 +90,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Fragrance drifting in the air!",
+      "name": "I’ll Blow You Away with My Allure!",
       "icon": "skill001/skill0002",
       "description": "Deals physical damage to the nearest enemy and applies Hit-Based Physical Damage UP(50%+550, 4 hit(s)) to self for 15 seconds",
       "descriptionLv1": "Deals physical damage to the nearest enemy and applies Hit-Based Physical Damage UP(50%+550, 4 hit(s)) to self for 15 seconds",
@@ -122,7 +156,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Ah, bound and swinging!",
+      "name": "Rope Whirl, Swing Swing!",
       "icon": "skill001/skill0011",
       "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Block-13 DOWN for 10 seconds",
       "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Block-13 DOWN for 10 seconds",
@@ -159,9 +193,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Swift Storm Cowgirl Style",
+      "name": "Wind-Dash Cowgirl Style",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemyguaranteed hit and inflicts Physical Defense DOWN(LV 1) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemyguaranteed to hit and inflicts Physical Defense DOWN(LV 1) for 10 seconds",
       "effect": "1120% + 500",
       "buffEffects": [
         {
@@ -174,9 +208,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Swift Storm Cowgirl Style",
+      "name": "Wind-Dash Cowgirl Style",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemyguaranteed hit and inflicts Physical Defense DOWN(LV 2) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemyguaranteed to hit and inflicts Physical Defense DOWN(LV 2) for 10 seconds",
       "effect": "1350% + 600",
       "buffEffects": [
         {
@@ -189,9 +223,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Swift Storm Cowgirl Style",
+      "name": "Wind-Dash Cowgirl Style",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemyguaranteed hit and inflicts Physical Defense DOWN(LV 3) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemyguaranteed to hit and inflicts Physical Defense DOWN(LV 3) for 10 seconds",
       "effect": "1500% + 700",
       "buffEffects": [
         {
@@ -204,9 +238,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Swift Storm Cowgirl Style",
+      "name": "Wind-Dash Cowgirl Style",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemyguaranteed hit and inflicts Physical Defense DOWN(LV 4) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemyguaranteed to hit and inflicts Physical Defense DOWN(LV 4) for 10 seconds",
       "effect": "1600% + 800",
       "buffEffects": [
         {
@@ -219,9 +253,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Swift Storm Cowgirl Style",
+      "name": "Wind-Dash Cowgirl Style",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemyguaranteed hit and inflicts Physical Defense DOWN(LV 5) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemyguaranteed to hit and inflicts Physical Defense DOWN(LV 5) for 10 seconds",
       "effect": "1650% + 900",
       "buffEffects": [
         {
@@ -238,17 +272,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Accuracy +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Large), Accuracy UP (Medium)",
       "effect": "Physical Attack + (+389), Accuracy + (+20)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Large)"
         },
         {
           "name": "Accuracy +",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         }
       ]
     },
@@ -256,17 +293,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Skill Enhancement Regol Cost DOWNFire",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Regol cost for enhancing Fire Type Paladin skills -%",
       "effect": "Skill Damage + (+30%), Skill Enhancement Regol Cost DOWNFire (+5%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Skill Enhancement Regol Cost DOWNFire",
           "value": 5,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Regol cost for enhancing Fire Type Paladin skills -%"
         }
       ]
     }
@@ -577,4 +617,4 @@ export const stats = {
       "Block": 13
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

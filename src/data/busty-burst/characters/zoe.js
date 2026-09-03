@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -101,7 +135,7 @@ export const skills = {
       "descriptionLv90": "Deals magic damage to the 2 nearest enemies and inflicts Physical Attack -9%-2000 DOWN for 10 seconds and Magic Attack -9%-20 DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.78,
-      "damageScaling": "114% ATK",
+      "damageScaling": "114.99999999999999% ATK",
       "baseDamage": "+80",
       "levelGrowth": "+7",
       "lvl1": "114% + 80",
@@ -276,17 +310,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1002",
+      "description": "Gain Physical Defense UP (Small), Magic Defense UP (Small)",
       "effect": "Physical Defense + (+70), Magic Defense+ (+70)",
       "effectValues": [
         {
           "name": "Physical Defense +",
           "value": 70,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Defense UP (Small)"
         },
         {
           "name": "Magic Defense+",
           "value": 70,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Defense UP (Small)"
         }
       ]
     },
@@ -294,17 +331,20 @@ export const skills = {
       "slot": 2,
       "name": "Magic Attack +, Block+",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Medium), Block UP (Medium)",
       "effect": "Magic Attack + (+259), Block+ (+15)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         },
         {
           "name": "Block+",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Medium)"
         }
       ]
     }
@@ -626,4 +666,4 @@ export const stats = {
       "HP Regen": 51
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

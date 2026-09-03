@@ -88,6 +88,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -275,17 +309,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Magic Attack +",
       "icon": "skill001/skill1005",
+      "description": "Gain Physical Attack UP (Medium), Magic Attack UP (Medium)",
       "effect": "Physical Attack + (+300), Magic Attack + (+300)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 300,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         },
         {
           "name": "Magic Attack +",
           "value": 300,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         }
       ]
     },
@@ -293,17 +330,20 @@ export const skills = {
       "slot": 2,
       "name": "Physical Critical Damage+, Magic Critical Damage+",
       "icon": "skill001/skill1005",
-      "effect": "Physical Critical Damage+ (+6%), Magic Critical Damage+ (+120)",
+      "description": "Gain Physical Critical Damage UP (Medium), Magic Critical Damage UP (Medium)",
+      "effect": "Physical Critical Damage+ (+120%), Magic Critical Damage+ (+120)",
       "effectValues": [
         {
           "name": "Physical Critical Damage+",
-          "value": 6,
-          "type": "percent"
+          "value": 120,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         },
         {
           "name": "Magic Critical Damage+",
           "value": 120,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Medium)"
         }
       ]
     }
@@ -311,7 +351,7 @@ export const skills = {
   "name": "Venus",
   "id": 2033,
   "rarity": "SR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Support",
   "tags": [
     "Buff"
@@ -624,4 +664,4 @@ export const stats = {
       "MP Cost Down": 1
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

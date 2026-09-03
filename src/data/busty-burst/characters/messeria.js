@@ -92,6 +92,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -105,7 +139,7 @@ export const skills = {
       "castTime": 1.08,
       "damageScaling": "280% ATK",
       "baseDamage": "+110",
-      "levelGrowth": "+20",
+      "levelGrowth": "+6",
       "lvl1": "280% + 110",
       "lvl90": null,
       "effects": [
@@ -132,7 +166,7 @@ export const skills = {
       "castTime": 1.08,
       "damageScaling": "1350% ATK",
       "baseDamage": "+301",
-      "levelGrowth": "+35",
+      "levelGrowth": "+5",
       "lvl1": "1350% + 301",
       "lvl90": "1350% + 746",
       "effects": [
@@ -232,12 +266,14 @@ export const skills = {
       "slot": 1,
       "name": "Block+",
       "icon": "skill001/skill1002",
+      "description": "Gain Block UP (Medium)",
       "effect": "Block+ (+15)",
       "effectValues": [
         {
           "name": "Block+",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Medium)"
         }
       ]
     },
@@ -245,12 +281,14 @@ export const skills = {
       "slot": 2,
       "name": "Block+",
       "icon": "skill001/skill1006",
+      "description": "Gain Block UP (Tiny)",
       "effect": "Block+ (+8)",
       "effectValues": [
         {
           "name": "Block+",
           "value": 8,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Tiny)"
         }
       ]
     }
@@ -565,4 +603,4 @@ export const stats = {
       "Block": 13
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

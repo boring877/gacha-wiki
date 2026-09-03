@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -210,17 +244,20 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Action Speed UP (Medium), Physical Attack UP (Small)",
       "effect": "Action Speed + (+10), Physical Attack + (+130)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         },
         {
           "name": "Physical Attack +",
           "value": 130,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Small)"
         }
       ]
     },
@@ -228,12 +265,14 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Medium)",
       "effect": "Ultimate Damage + (+10%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 10,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Medium)"
         }
       ]
     }
@@ -544,4 +583,4 @@ export const stats = {
       "ATK": 65
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

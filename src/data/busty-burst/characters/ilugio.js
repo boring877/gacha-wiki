@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -133,9 +167,9 @@ export const skills = {
       "slot": 3,
       "name": "Freisetzung,Sanctum",
       "icon": "skill001/skill0019",
-      "description": "Applies Healing Shield (400) to all allies for 15 seconds and Block 9 UP for 15 seconds , 15 Fire Type Damage Taken -30%DOWN",
-      "descriptionLv1": "Applies Healing Shield (400) to all allies for 15 seconds and Block 9 UP for 15 seconds , 15 Fire Type Damage Taken -30%DOWN",
-      "descriptionLv90": "Applies Healing Shield (400) to all allies for 15 seconds and Block 18 UP for 15 seconds , 15 Fire Type Damage Taken -30%DOWN",
+      "description": "Applies Healing Shield (400) to all allies for 15 seconds and Block 9 UP for 15 seconds, 15s Fire Type Damage Taken -30%DOWN",
+      "descriptionLv1": "Applies Healing Shield (400) to all allies for 15 seconds and Block 9 UP for 15 seconds, 15s Fire Type Damage Taken -30%DOWN",
+      "descriptionLv90": "Applies Healing Shield (400) to all allies for 15 seconds and Block 18 UP for 15 seconds, 15s Fire Type Damage Taken -30%DOWN",
       "target": "All Allies",
       "castTime": 1.19,
       "damageScaling": null,
@@ -177,7 +211,7 @@ export const skills = {
       "rank": 1,
       "name": "Song of triumph, resound through the heavens. Until it devours all the land",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 1) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 1)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 1) for 10 seconds, before Ultimate activation applies to self 10s Physical Attack UP(LV 1)",
       "effect": "1200% + 1000",
       "buffEffects": [
         {
@@ -198,7 +232,7 @@ export const skills = {
       "rank": 2,
       "name": "Song of triumph, resound through the heavens. Until it devours all the land",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 2) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 2)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 2) for 10 seconds, before Ultimate activation applies to self 10s Physical Attack UP(LV 2)",
       "effect": "1440% + 1200",
       "buffEffects": [
         {
@@ -219,7 +253,7 @@ export const skills = {
       "rank": 3,
       "name": "Song of triumph, resound through the heavens. Until it devours all the land",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 3) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 3)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 3) for 10 seconds, before Ultimate activation applies to self 10s Physical Attack UP(LV 3)",
       "effect": "1620% + 1400",
       "buffEffects": [
         {
@@ -240,7 +274,7 @@ export const skills = {
       "rank": 4,
       "name": "Song of triumph, resound through the heavens. Until it devours all the land",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 4) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 4)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 4) for 10 seconds, before Ultimate activation applies to self 10s Physical Attack UP(LV 4)",
       "effect": "1739% + 1650",
       "buffEffects": [
         {
@@ -261,7 +295,7 @@ export const skills = {
       "rank": 5,
       "name": "Song of triumph, resound through the heavens. Until it devours all the land",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 5) for 10 seconds, Ultimate activation beforeapply to self10 Physical Attack UP(LV 5)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 5) for 10 seconds, before Ultimate activation applies to self 10s Physical Attack UP(LV 5)",
       "effect": "1800% + 1800",
       "buffEffects": [
         {
@@ -284,17 +318,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Water Type ATK +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Large), Water Type ATK UP",
       "effect": "Physical Attack + (+389), Water Type ATK + (+1%)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Large)"
         },
         {
           "name": "Water Type ATK +",
           "value": 1,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Water Type ATK UP"
         }
       ]
     },
@@ -302,17 +339,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Medium)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     }
@@ -625,4 +665,4 @@ export const stats = {
       "Phys Crit": 38
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

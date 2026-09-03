@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Thorns. All who touch shall suffer devastating pain",
+      "name": "Thorns — A Pain That Destroys All Who Touch It",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the enemy with the highest MP , inflict 3s , 3s Curse for, 10 Magic Defense-25%-60 DOWN",
-      "descriptionLv1": "Deals magic damage to the enemy with the highest MP , inflict 3s , 3s Curse for, 10 Magic Defense-25%-60 DOWN",
-      "descriptionLv90": "Deals magic damage to the enemy with the highest MP , inflict 3s , 3s Curse for, 10 Magic Defense-25%-420 DOWN",
+      "description": "Deals magic damage to the enemy with the highest MPinflicts Silence for 3 secondsCurse for 3 secondsand Magic Defense-25%-60 DOWN for 10 seconds",
+      "descriptionLv1": "Deals magic damage to the enemy with the highest MPinflicts Silence for 3 secondsCurse for 3 secondsand Magic Defense-25%-60 DOWN for 10 seconds",
+      "descriptionLv90": "Deals magic damage to the enemy with the highest MPinflicts Silence for 3 secondsCurse for 3 secondsand Magic Defense-25%-420 DOWN for 10 seconds",
       "target": "Highest MP Enemy",
       "castTime": 1.22,
       "damageScaling": "330% ATK",
@@ -136,11 +170,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Mist. The one who never returns, lured into the abyss",
+      "name": "Mist — Those Who Defy It Are Drawn into the Abyss",
       "icon": "skill001/skill0011",
-      "description": "8 Action Speed -14%DOWNapply to self8 Block-9 DOWN",
-      "descriptionLv1": "8 Action Speed -14%DOWNapply to self8 Block-9 DOWN",
-      "descriptionLv90": "8 Action Speed -14%DOWNapply to self8 Block-18 DOWN",
+      "description": "Inflicts Action Speed -14%DOWN to all enemies for 8 secondsapplies Block-9 DOWN to self for 8 seconds",
+      "descriptionLv1": "Inflicts Action Speed -14%DOWN to all enemies for 8 secondsapplies Block-9 DOWN to self for 8 seconds",
+      "descriptionLv90": "Inflicts Action Speed -14%DOWN to all enemies for 8 secondsapplies Block-18 DOWN to self for 8 seconds",
       "target": "All Enemies",
       "castTime": 1.22,
       "damageScaling": null,
@@ -173,9 +207,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Night. Glorious radiance that devours all and nurtures all",
+      "name": "Night – All-Encompassing Glorious Light",
       "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the enemy with the highest MP and inflicts Confusion for 2 seconds and Fear Lv 1 for 4 seconds",
+      "description": "Deals magic damage to the enemy with the highest MPinflicts Confusion for 2 seconds and Fear(LV 1) for 4 seconds",
       "effect": "1100% + 1000",
       "buffEffects": [
         {
@@ -194,9 +228,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Night. Glorious radiance that devours all and nurtures all",
+      "name": "Night – All-Encompassing Glorious Light",
       "icon": "skill001/skill0012_2",
-      "description": "Deals magic damage to the enemy with the highest MP and inflicts Confusion for 3 seconds and Fear Lv 2 for 4 seconds",
+      "description": "Deals magic damage to the enemy with the highest MPinflicts Confusion for 3 seconds and Fear(LV 2) for 4 seconds",
       "effect": "1320% + 1300",
       "buffEffects": [
         {
@@ -215,9 +249,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Night. Glorious radiance that devours all and nurtures all",
+      "name": "Night – All-Encompassing Glorious Light",
       "icon": "skill001/skill0012_3",
-      "description": "Deals magic damage to the enemy with the highest MP and inflicts Confusion for 3 seconds and Fear Lv 3 for 4 seconds",
+      "description": "Deals magic damage to the enemy with the highest MPinflicts Confusion for 3 seconds and Fear(LV 3) for 4 seconds",
       "effect": "1500% + 1500",
       "buffEffects": [
         {
@@ -236,9 +270,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Night. Glorious radiance that devours all and nurtures all",
+      "name": "Night – All-Encompassing Glorious Light",
       "icon": "skill001/skill0012_4",
-      "description": "Deals magic damage to the enemy with the highest MP and inflicts Confusion for 4 seconds and Fear Lv 4 for 4 seconds",
+      "description": "Deals magic damage to the enemy with the highest MPinflicts Confusion for 4 seconds and Fear(LV 4) for 4 seconds",
       "effect": "1610% + 1600",
       "buffEffects": [
         {
@@ -257,9 +291,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Night. Glorious radiance that devours all and nurtures all",
+      "name": "Night – All-Encompassing Glorious Light",
       "icon": "skill001/skill0012_5",
-      "description": "Deals magic damage to the enemy with the highest MP and inflicts Confusion for 4 seconds and Fear Lv 5 for 4 seconds",
+      "description": "Deals magic damage to the enemy with the highest MPinflicts Confusion for 4 seconds and Fear(LV 5) for 4 seconds",
       "effect": "1680% + 1700",
       "buffEffects": [
         {
@@ -282,17 +316,14 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Debuff Resistance +",
       "icon": "skill001/skill1001",
-      "effect": "Max HP + (+3444), Debuff Resistance + (+30%)",
+      "description": "Gain Max HP UP (Large), Debuff Resistance UP (Small)",
+      "effect": "Max HP + (+3444)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
-        },
-        {
-          "name": "Debuff Resistance +",
-          "value": 30,
-          "type": "percent"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         }
       ]
     },
@@ -300,17 +331,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Magic Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Magic Attack UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Magic Attack + (+259)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         }
       ]
     }
@@ -632,4 +666,4 @@ export const stats = {
       "MP Charge": 3
     }
   ]
-};;;;;;;
+};;;;;;;;;

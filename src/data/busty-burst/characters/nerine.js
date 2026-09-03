@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -102,7 +136,7 @@ export const skills = {
       "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-14%-110 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.15,
-      "damageScaling": "110% ATK",
+      "damageScaling": "110.00000000000001% ATK",
       "baseDamage": "+110",
       "levelGrowth": "+6",
       "lvl1": "110% + 110",
@@ -125,9 +159,9 @@ export const skills = {
       "slot": 3,
       "name": "Paralysis Wave",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies, inflict 3s",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies, inflict 3s",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies, inflict 3s",
+      "description": "Deals magic damage to the 3 nearest enemies, applies 3s",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies, applies 3s",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies, applies 3s",
       "target": "Nearest Enemy",
       "castTime": 1.2,
       "damageScaling": "90% ATK",
@@ -231,30 +265,28 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +",
       "icon": "skill001/skill1001",
-      "effect": "Magic Attack + (0%)",
-      "effectValues": [
-        {
-          "name": "Magic Attack +",
-          "value": 0,
-          "type": "percent"
-        }
-      ]
+      "description": "Gain Magic Attack UP (Cannot be Cleansed)",
+      "effect": "()",
+      "effectValues": []
     },
     {
       "slot": 2,
       "name": "Ultimate Damage +, Magic Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Medium), Magic Attack UP (Small)",
       "effect": "Ultimate Damage + (+10%), Magic Attack + (+130)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 10,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Medium)"
         },
         {
           "name": "Magic Attack +",
           "value": 130,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Small)"
         }
       ]
     }
@@ -262,7 +294,7 @@ export const skills = {
   "name": "Nerine",
   "id": 2195,
   "rarity": "SR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Attacker",
   "tags": [
     "Debuff",
@@ -578,4 +610,4 @@ export const stats = {
       "MATK": 85
     }
   ]
-};;;;;;;
+};;;;;;;;;

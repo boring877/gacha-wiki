@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -132,9 +166,9 @@ export const skills = {
       "slot": 3,
       "name": "My body is so hot... is this the power of the sweater?",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Debuff Resistance 30%UP for 10 seconds , 4 MP Regeneration 50",
-      "descriptionLv1": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Debuff Resistance 30%UP for 10 seconds , 4 MP Regeneration 50",
-      "descriptionLv90": "Applies Physical Attack 18%+665 UP to self for 10 seconds and Debuff Resistance 30%UP for 10 seconds , 4 MP Regeneration 50",
+      "description": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Debuff Resistance 30%UP for 10 seconds, 4s MP Regeneration 50",
+      "descriptionLv1": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Debuff Resistance 30%UP for 10 seconds, 4s MP Regeneration 50",
+      "descriptionLv90": "Applies Physical Attack 18%+665 UP to self for 10 seconds and Debuff Resistance 30%UP for 10 seconds, 4s MP Regeneration 50",
       "target": "Self",
       "castTime": 0.55,
       "damageScaling": null,
@@ -176,7 +210,7 @@ export const skills = {
       "rank": 1,
       "name": "D-Don't look at me~~~~!!",
       "icon": "skill001/skill0003_1",
-      "description": "6 nearest enemies dealphysical damage and inflicts Action Speed DOWN(LV 1) for 10 seconds and BlockDOWN(LV 1) for 10 seconds , self10 Action Speed UP(LV 1)",
+      "description": "6 nearest enemies dealphysical damage and inflicts Action Speed DOWN(LV 1) for 10 seconds and BlockDOWN(LV 1) for 10 seconds, self 10s Action Speed UP(LV 1)",
       "effect": "250% + 250",
       "buffEffects": [
         {
@@ -203,7 +237,7 @@ export const skills = {
       "rank": 2,
       "name": "D-Don't look at me~~~~!!",
       "icon": "skill001/skill0003_2",
-      "description": "6 nearest enemies dealphysical damage and inflicts Action Speed DOWN(LV 2) for 10 seconds and BlockDOWN(LV 2) for 10 seconds , self10 Action Speed UP(LV 2)",
+      "description": "6 nearest enemies dealphysical damage and inflicts Action Speed DOWN(LV 2) for 10 seconds and BlockDOWN(LV 2) for 10 seconds, self 10s Action Speed UP(LV 2)",
       "effect": "295% + 450",
       "buffEffects": [
         {
@@ -230,7 +264,7 @@ export const skills = {
       "rank": 3,
       "name": "D-Don't look at me~~~~!!",
       "icon": "skill001/skill0003_3",
-      "description": "6 nearest enemies dealphysical damage and inflicts Action Speed DOWN(LV 3) for 10 seconds and BlockDOWN(LV 3) for 10 seconds , self10 Action Speed UP(LV 3)",
+      "description": "6 nearest enemies dealphysical damage and inflicts Action Speed DOWN(LV 3) for 10 seconds and BlockDOWN(LV 3) for 10 seconds, self 10s Action Speed UP(LV 3)",
       "effect": "340% + 600",
       "buffEffects": [
         {
@@ -257,7 +291,7 @@ export const skills = {
       "rank": 4,
       "name": "D-Don't look at me~~~~!!",
       "icon": "skill001/skill0003_4",
-      "description": "6 nearest enemies dealphysical damage and inflicts Action Speed DOWN(LV 4) for 10 seconds and BlockDOWN(LV 4) for 10 seconds , self10 Action Speed UP(LV 4)",
+      "description": "6 nearest enemies dealphysical damage and inflicts Action Speed DOWN(LV 4) for 10 seconds and BlockDOWN(LV 4) for 10 seconds, self 10s Action Speed UP(LV 4)",
       "effect": "375% + 700",
       "buffEffects": [
         {
@@ -284,7 +318,7 @@ export const skills = {
       "rank": 5,
       "name": "D-Don't look at me~~~~!!",
       "icon": "skill001/skill0003_5",
-      "description": "6 nearest enemies dealphysical damage and inflicts Action Speed DOWN(LV 5) for 10 seconds and BlockDOWN(LV 5) for 10 seconds , self10 Action Speed UP(LV 5)",
+      "description": "6 nearest enemies dealphysical damage and inflicts Action Speed DOWN(LV 5) for 10 seconds and BlockDOWN(LV 5) for 10 seconds, self 10s Action Speed UP(LV 5)",
       "effect": "400% + 900",
       "buffEffects": [
         {
@@ -313,17 +347,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Mind Type ATK +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Large), Mind Type ATK UP",
       "effect": "Physical Attack + (+389), Mind Type ATK + (+3%)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Large)"
         },
         {
           "name": "Mind Type ATK +",
           "value": 3,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Mind Type ATK UP"
         }
       ]
     },
@@ -331,17 +368,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Skill Enhancement Regol Cost DOWNMind",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Regol cost for enhancing Mind type Paladin skills -%",
       "effect": "Ultimate Damage + (+15%), Skill Enhancement Regol Cost DOWNMind (+5%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Skill Enhancement Regol Cost DOWNMind",
           "value": 5,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Regol cost for enhancing Mind type Paladin skills -%"
         }
       ]
     }
@@ -652,4 +692,4 @@ export const stats = {
       "MP Charge": 3
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

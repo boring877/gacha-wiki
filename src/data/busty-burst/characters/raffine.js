@@ -91,15 +91,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Merciful Rain",
       "icon": "skill001/skill0021",
-      "description": "restore HP to all alliesHP and inflicts Block 13 UP for 15 seconds and Debuff Resistance 30%UP for 15 seconds , DEBUFF",
-      "descriptionLv1": "restore HP to all alliesHP and inflicts Block 13 UP for 15 seconds and Debuff Resistance 30%UP for 15 seconds , DEBUFF",
-      "descriptionLv90": "restore HP to all alliesHP and inflicts Block 26 UP for 15 seconds and Debuff Resistance 30%UP for 15 seconds , DEBUFF",
+      "description": "Restore HP to all alliesHP and inflicts Block 13 UP for 15 seconds and Debuff Resistance 30%UP for 15 seconds, DEBUFF",
+      "descriptionLv1": "Restore HP to all alliesHP and inflicts Block 13 UP for 15 seconds and Debuff Resistance 30%UP for 15 seconds, DEBUFF",
+      "descriptionLv90": "Restore HP to all alliesHP and inflicts Block 26 UP for 15 seconds and Debuff Resistance 30%UP for 15 seconds, DEBUFF",
       "target": "All Allies",
       "castTime": 1.4,
       "damageScaling": "2500% ATK",
@@ -176,7 +210,7 @@ export const skills = {
       "rank": 1,
       "name": "Offer holy salvation to the sinful",
       "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the nearest enemy, inflict 4s , 4",
+      "description": "Deals magic damage to the nearest enemy, applies 4s, 4s",
       "effect": "900% + 800",
       "buffEffects": []
     },
@@ -184,7 +218,7 @@ export const skills = {
       "rank": 2,
       "name": "Offer holy salvation to the sinful",
       "icon": "skill001/skill0006_2",
-      "description": "Deals magic damage to the nearest enemy, inflict 5s , 5",
+      "description": "Deals magic damage to the nearest enemy, applies 5s, 5s",
       "effect": "1080% + 1000",
       "buffEffects": []
     },
@@ -192,7 +226,7 @@ export const skills = {
       "rank": 3,
       "name": "Offer holy salvation to the sinful",
       "icon": "skill001/skill0006_3",
-      "description": "Deals magic damage to the nearest enemy, inflict 5s , 5",
+      "description": "Deals magic damage to the nearest enemy, applies 5s, 5s",
       "effect": "1120% + 1200",
       "buffEffects": []
     },
@@ -200,7 +234,7 @@ export const skills = {
       "rank": 4,
       "name": "Offer holy salvation to the sinful",
       "icon": "skill001/skill0006_4",
-      "description": "Deals magic damage to the nearest enemy, inflict6s Silence for, 6",
+      "description": "Deals magic damage to the nearest enemy, applies 6s, 6s",
       "effect": "1210% + 1350",
       "buffEffects": []
     },
@@ -208,7 +242,7 @@ export const skills = {
       "rank": 5,
       "name": "Offer holy salvation to the sinful",
       "icon": "skill001/skill0006_5",
-      "description": "Deals magic damage to the nearest enemy, inflict6s Silence for, 6",
+      "description": "Deals magic damage to the nearest enemy, applies 6s, 6s",
       "effect": "1300% + 1500",
       "buffEffects": []
     }
@@ -218,17 +252,20 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, MP Recovery",
       "icon": "skill001/skill1007",
+      "description": "Gain Max HP UP (Small), MP Recovery",
       "effect": "Max HP + (+1447), MP Recovery (+100%)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 1447,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Small)"
         },
         {
           "name": "MP Recovery",
           "value": 100,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         }
       ]
     },
@@ -236,17 +273,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Damage UP",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Damage UP",
       "effect": "Ultimate Damage + (+15%), Damage UP (+10%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Damage UP",
           "value": 10,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Damage UP"
         }
       ]
     }
@@ -254,7 +294,7 @@ export const skills = {
   "name": "Raffine",
   "id": 2147,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Support",
   "tags": [
     "Heal",
@@ -570,4 +610,4 @@ export const stats = {
       "Heal Pwr": 15
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

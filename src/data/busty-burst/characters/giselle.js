@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -105,18 +139,11 @@ export const skills = {
       "baseDamage": "+80",
       "levelGrowth": "+8",
       "lvl1": "100% + 80",
-      "lvl90": "100% + 792",
+      "lvl90": "100% + -98",
       "effects": [
         "Physical Defense - Lv4"
       ],
       "buffEffects": [
-        {
-          "name": "Physical Defense -% Lv4",
-          "value": -21,
-          "type": "percent",
-          "duration": 8,
-          "levelGrowth": 0
-        },
         {
           "name": "Physical Defense - Lv4",
           "value": -40,
@@ -131,9 +158,9 @@ export const skills = {
       "slot": 3,
       "name": "Knight’s Pride",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage UP to self for 10 seconds and inflicts Accuracy DOWN on all enemies for 10 seconds",
+      "description": "Applies Physical Critical Damage 50 UP to self for 10 seconds and inflicts Accuracy -9 DOWN on all enemies for 10 seconds",
       "descriptionLv1": "Applies Physical Critical Damage 50 UP to self for 10 seconds and inflicts Accuracy -9 DOWN on all enemies for 10 seconds",
-      "descriptionLv90": "Applies Physical Critical Damage 680 UP to self for 10 seconds and inflicts Accuracy -18 DOWN on all enemies for 10 seconds",
+      "descriptionLv90": "Applies Physical Critical Damage 50 UP to self for 10 seconds and inflicts Accuracy -18 DOWN on all enemies for 10 seconds",
       "target": "Self",
       "castTime": 1.1,
       "damageScaling": null,
@@ -149,7 +176,7 @@ export const skills = {
         {
           "name": "Physical Critical Damage+ Lv4",
           "value": 50,
-          "type": "flat",
+          "type": "percent",
           "duration": 10,
           "levelGrowth": 7.0
         },
@@ -169,7 +196,7 @@ export const skills = {
       "rank": 1,
       "name": "Hurricane Charge",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Block -10 DOWN for 8 seconds and applies Physical Attack 15% UP to self for 8 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts BlockDOWN(LV 1) for 8 seconds and applies Physical Attack UP(LV 1) to self for 8 seconds",
       "effect": "280% + 300",
       "buffEffects": [
         {
@@ -190,7 +217,7 @@ export const skills = {
       "rank": 2,
       "name": "Hurricane Charge",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Block -15 DOWN for 8 seconds and applies Physical Attack 20% UP to self for 8 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts BlockDOWN(LV 2) for 8 seconds and applies Physical Attack UP(LV 2) to self for 8 seconds",
       "effect": "320% + 400",
       "buffEffects": [
         {
@@ -211,7 +238,7 @@ export const skills = {
       "rank": 3,
       "name": "Hurricane Charge",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Block -19 DOWN for 8 seconds and applies Physical Attack 24% UP to self for 8 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts BlockDOWN(LV 3) for 8 seconds and applies Physical Attack UP(LV 3) to self for 8 seconds",
       "effect": "350% + 450",
       "buffEffects": [
         {
@@ -232,7 +259,7 @@ export const skills = {
       "rank": 4,
       "name": "Hurricane Charge",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Block -22 DOWN for 8 seconds and applies Physical Attack 27% UP to self for 8 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts BlockDOWN(LV 4) for 8 seconds and applies Physical Attack UP(LV 4) to self for 8 seconds",
       "effect": "380% + 500",
       "buffEffects": [
         {
@@ -253,7 +280,7 @@ export const skills = {
       "rank": 5,
       "name": "Hurricane Charge",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Block -25 DOWN for 8 seconds and applies Physical Attack 30% UP to self for 8 seconds",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts BlockDOWN(LV 5) for 8 seconds and applies Physical Attack UP(LV 5) to self for 8 seconds",
       "effect": "400% + 550",
       "buffEffects": [
         {
@@ -276,17 +303,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Max HP +",
       "icon": "skill001/skill1001",
+      "description": "Gain Physical Attack UP (Large), Max HP UP (Medium)",
       "effect": "Physical Attack + (+389), Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Large)"
         },
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     },
@@ -294,17 +324,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Accuracy +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Accuracy UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Accuracy + (+20)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Accuracy +",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         }
       ]
     }
@@ -312,7 +345,7 @@ export const skills = {
   "name": "Giselle",
   "id": 2088,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Attacker",
   "tags": [
     "Buff",
@@ -615,4 +648,4 @@ export const stats = {
       "HP": 273
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

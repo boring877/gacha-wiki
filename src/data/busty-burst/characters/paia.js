@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -239,12 +273,14 @@ export const skills = {
       "slot": 1,
       "name": "Block+",
       "icon": "skill001/skill1002",
+      "description": "Gain Block UP (Medium)",
       "effect": "Block+ (+15)",
       "effectValues": [
         {
           "name": "Block+",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Medium)"
         }
       ]
     },
@@ -252,17 +288,20 @@ export const skills = {
       "slot": 2,
       "name": "Poison Resistance LvMax, Magic Defense+",
       "icon": "skill001/skill1002",
+      "description": "Gain Poison Resistance UP, Magic Defense UP (Small)",
       "effect": "Poison Resistance LvMax (+1%), Magic Defense+ (+70)",
       "effectValues": [
         {
           "name": "Poison Resistance LvMax",
           "value": 1,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Poison Resistance UP"
         },
         {
           "name": "Magic Defense+",
           "value": 70,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Defense UP (Small)"
         }
       ]
     }
@@ -575,4 +614,4 @@ export const stats = {
       "DEF": 9
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

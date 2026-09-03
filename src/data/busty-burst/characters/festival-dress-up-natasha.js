@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -236,12 +270,14 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +",
       "icon": "skill001/skill1002",
+      "description": "Gain Physical Defense UP (Medium)",
       "effect": "Physical Defense + (+141)",
       "effectValues": [
         {
           "name": "Physical Defense +",
           "value": 141,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Defense UP (Medium)"
         }
       ]
     },
@@ -249,17 +285,20 @@ export const skills = {
       "slot": 2,
       "name": "Max HP +, Healing Received +",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP (Medium), Healing Received UP (Small)",
       "effect": "Max HP + (+2896), Healing Received + (+20%)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         },
         {
           "name": "Healing Received +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Healing Received UP (Small)"
         }
       ]
     }
@@ -267,7 +306,7 @@ export const skills = {
   "name": "Festival Dress-Up: Natasha",
   "id": 2070,
   "rarity": "SR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Tank",
   "tags": [
     "Debuff",
@@ -570,4 +609,4 @@ export const stats = {
       "ATK": 35
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

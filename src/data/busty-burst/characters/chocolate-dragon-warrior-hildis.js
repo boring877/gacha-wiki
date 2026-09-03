@@ -364,7 +364,7 @@ export const skills = {
 export const stats = {
   "id": "chocolate-dragon-warrior-hildis",
   "characterId": 2110,
-  "name": "【Chocolate Dragon Warrior】Hildis",
+  "name": "【Chocolate Dragon Knight】Hildis",
   "rarity": "SSR",
   "element": "水",
   "weapon": "",
@@ -648,4 +648,4 @@ export const stats = {
       "MATK": 51
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

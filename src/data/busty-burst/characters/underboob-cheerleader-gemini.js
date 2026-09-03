@@ -89,15 +89,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Get on your feet Yell",
       "icon": "skill001/skill0013",
-      "description": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Phys ATK ally 1 15 Physical Attack 25%+50 UP, 15 Physical Critical Damage 80 UP[Cheer Up] Lv when, inflict15 Hit-Based physical damageUP(30%, 5)",
-      "descriptionLv1": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Phys ATK ally 1 15 Physical Attack 25%+50 UP, 15 Physical Critical Damage 80 UP[Cheer Up] Lv when, inflict15 Hit-Based physical damageUP(30%, 5)",
-      "descriptionLv90": "without[Cheer Up(Speed10%UP)],, self inflict20 [Cheer Up], highest Phys ATK ally 1 15 Physical Attack 25%+950 UP, 15 Physical Critical Damage 80 UP[Cheer Up] Lv when, inflict15 Hit-Based physical damageUP(30%, 5)",
+      "description": "When without Cheer Up(10%UP movement speed), gain Cheer Upfor 20 seconds. Also apply Physical Attack 25%+50 UP for 15 seconds and Physical Critical Damage 80 UP for 15 seconds to the ally with highest physical damage. During Cheer Up, additionally apply physical damage up on-cast(30%, 5 times)",
+      "descriptionLv1": "When without Cheer Up(10%UP movement speed), gain Cheer Upfor 20 seconds. Also apply Physical Attack 25%+50 UP for 15 seconds and Physical Critical Damage 80 UP for 15 seconds to the ally with highest physical damage. During Cheer Up, additionally apply physical damage up on-cast(30%, 5 times)",
+      "descriptionLv90": "When without Cheer Up(10%UP movement speed), gain Cheer Upfor 20 seconds. Also apply Physical Attack 25%+950 UP for 15 seconds and Physical Critical Damage 80 UP for 15 seconds to the ally with highest physical damage. During Cheer Up, additionally apply physical damage up on-cast(30%, 5 times)",
       "target": "Highest Phys ATK Ally",
       "castTime": 1.3,
       "damageScaling": null,
@@ -136,11 +170,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "A gorgeous opening!",
+      "name": "A splendid opening！",
       "icon": "skill001/skill0019",
-      "description": "highest Phys ATK ally 1inflict15 Physical Defense 30%+190 UP and Magic Defense 30%+190 UP for 15 seconds",
-      "descriptionLv1": "highest Phys ATK ally 1inflict15 Physical Defense 30%+190 UP and Magic Defense 30%+190 UP for 15 seconds",
-      "descriptionLv90": "highest Phys ATK ally 1inflict15 Physical Defense 30%+460 UP and Magic Defense 30%+460 UP for 15 seconds",
+      "description": "Apply Physical Defense 30%+190 UP for 15 seconds and Magic Defense 30%+190 UP for 15 seconds to the ally with highest physical damage",
+      "descriptionLv1": "Apply Physical Defense 30%+190 UP for 15 seconds and Magic Defense 30%+190 UP for 15 seconds to the ally with highest physical damage",
+      "descriptionLv90": "Apply Physical Defense 30%+460 UP for 15 seconds and Magic Defense 30%+460 UP for 15 seconds to the ally with highest physical damage",
       "target": "Highest Phys ATK Ally",
       "castTime": 1.3,
       "damageScaling": null,
@@ -283,17 +317,14 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Debuff Resistance+",
       "icon": "skill001/skill1003",
-      "effect": "Max HP + (+3444), Debuff Resistance+ (+30%)",
+      "description": "Gain Max HP UP (Large), Debuff Resistance UP (Small)",
+      "effect": "Max HP + (+3444)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
-        },
-        {
-          "name": "Debuff Resistance+",
-          "value": 30,
-          "type": "percent"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         }
       ]
     },
@@ -301,17 +332,20 @@ export const skills = {
       "slot": 2,
       "name": "MP Recovery+, Physical Attack +",
       "icon": "skill001/skill1007",
+      "description": "Gain MP Recovery, Physical Attack UP (Large)",
       "effect": "MP Recovery+ (+100%), Physical Attack + (+389)",
       "effectValues": [
         {
           "name": "MP Recovery+",
           "value": 100,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         },
         {
           "name": "Physical Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Large)"
         }
       ]
     }
@@ -620,4 +654,4 @@ export const stats = {
       "HP": 589
     }
   ]
-};;;;;;;
+};;;;;;;;;

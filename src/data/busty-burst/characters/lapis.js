@@ -90,6 +90,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -167,7 +201,7 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Arabian Night Sky",
+      "name": "Al Lazward",
       "icon": "skill001/skill0006_1",
       "description": "Deals magic damage to the nearest enemy and inflicts Water Type Defense DOWN(LV 1) for 10 seconds and Fire Type Defense DOWN(LV 1) for 10 seconds",
       "effect": "1100% + 800",
@@ -188,7 +222,7 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Arabian Night Sky",
+      "name": "Al Lazward",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the nearest enemy and inflicts Water Type Defense DOWN(LV 2) for 10 seconds and Fire Type Defense DOWN(LV 2) for 10 seconds",
       "effect": "1320% + 1000",
@@ -209,7 +243,7 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Arabian Night Sky",
+      "name": "Al Lazward",
       "icon": "skill001/skill0006_3",
       "description": "Deals magic damage to the nearest enemy and inflicts Water Type Defense DOWN(LV 3) for 10 seconds and Fire Type Defense DOWN(LV 3) for 10 seconds",
       "effect": "1500% + 1150",
@@ -230,7 +264,7 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Arabian Night Sky",
+      "name": "Al Lazward",
       "icon": "skill001/skill0006_4",
       "description": "Deals magic damage to the nearest enemy and inflicts Water Type Defense DOWN(LV 4) for 10 seconds and Fire Type Defense DOWN(LV 4) for 10 seconds",
       "effect": "1610% + 1250",
@@ -251,7 +285,7 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Arabian Night Sky",
+      "name": "Al Lazward",
       "icon": "skill001/skill0006_5",
       "description": "Deals magic damage to the nearest enemy and inflicts Water Type Defense DOWN(LV 5) for 10 seconds and Fire Type Defense DOWN(LV 5) for 10 seconds",
       "effect": "1670% + 1300",
@@ -276,17 +310,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Accuracy +",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Large), Accuracy UP (Medium)",
       "effect": "Magic Attack + (+389), Accuracy + (+20)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         },
         {
           "name": "Accuracy +",
           "value": 20,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         }
       ]
     },
@@ -294,17 +331,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Magic Critical Damage+",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Magic Critical Damage UP (Medium)",
       "effect": "Skill Damage + (+30%), Magic Critical Damage+ (+90)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Magic Critical Damage+",
           "value": 90,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Medium)"
         }
       ]
     }
@@ -628,4 +668,4 @@ export const stats = {
       "MATK": 60
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

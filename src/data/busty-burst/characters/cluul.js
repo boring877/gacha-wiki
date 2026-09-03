@@ -89,11 +89,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Sweet Engraving",
+      "name": "Lovely Stamp",
       "icon": "skill001/skill0011",
       "description": "Deals magic damage to the nearest enemy and inflicts Stun for 1.5 seconds",
       "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Stun for 1.5 seconds",
@@ -120,7 +154,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Sweet Shine",
+      "name": "Lovely Shining",
       "icon": "skill001/skill0018",
       "description": "Applies Magic Critical Damage 50 UP to self for 12 seconds and Accuracy 13 UP for 12 seconds",
       "descriptionLv1": "Applies Magic Critical Damage 50 UP to self for 12 seconds and Accuracy 13 UP for 12 seconds",
@@ -158,9 +192,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Sweet Meteor☆",
+      "name": "Lovely Meteor☆",
       "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 1) for 8 seconds, self1[Lovely]( per stack of[Lovely] whenMind Type ATK5%UP, max3), when having3[Lovely] whenself10 Mind Type ATK15%UP",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 1) for 8 seconds and grants self one lovely(Each lovelyincrease THINK property attack 5%UPmaxmum 3). Having 3lovelygrants self THINK property attack 15%UP for 6 seconds",
       "effect": "900% + 600",
       "buffEffects": [
         {
@@ -179,9 +213,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Sweet Meteor☆",
+      "name": "Lovely Meteor☆",
       "icon": "skill001/skill0006_2",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 2) for 8 seconds, self1[Lovely]( per stack of[Lovely] whenMind Type ATK5%UP, max3), when having3[Lovely] whenself10 Mind Type ATK15%UP",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 2) for 8 seconds and grants self one lovely(Each lovelyincrease THINK property attack 5%UPmaxmum 3). Having 3lovelygrants self THINK property attack 15%UP for 6 seconds",
       "effect": "1080% + 800",
       "buffEffects": [
         {
@@ -200,9 +234,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Sweet Meteor☆",
+      "name": "Lovely Meteor☆",
       "icon": "skill001/skill0006_3",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 3) for 8 seconds, self1[Lovely]( per stack of[Lovely] whenMind Type ATK5%UP, max3), when having3[Lovely] whenself10 Mind Type ATK15%UP",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 3) for 8 seconds and grants self one lovely(Each lovelyincrease THINK property attack 5%UPmaxmum 3). Having 3lovelygrants self THINK property attack 15%UP for 6 seconds",
       "effect": "1215% + 1000",
       "buffEffects": [
         {
@@ -221,9 +255,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Sweet Meteor☆",
+      "name": "Lovely Meteor☆",
       "icon": "skill001/skill0006_4",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 4) for 8 seconds, self1[Lovely]( per stack of[Lovely] whenMind Type ATK5%UP, max3), when having3[Lovely] whenself10 Mind Type ATK15%UP",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 4) for 8 seconds and grants self one lovely(Each lovelyincrease THINK property attack 5%UPmaxmum 3). Having 3lovelygrants self THINK property attack 15%UP for 6 seconds",
       "effect": "1310% + 1150",
       "buffEffects": [
         {
@@ -242,9 +276,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Sweet Meteor☆",
+      "name": "Lovely Meteor☆",
       "icon": "skill001/skill0006_5",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 5) for 8 seconds, self1[Lovely]( per stack of[Lovely] whenMind Type ATK5%UP, max3), when having3[Lovely] whenself10 Mind Type ATK15%UP",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 5) for 8 seconds and grants self one lovely(Each lovelyincrease THINK property attack 5%UPmaxmum 3). Having 3lovelygrants self THINK property attack 15%UP for 6 seconds",
       "effect": "1400% + 1250",
       "buffEffects": [
         {
@@ -267,17 +301,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Critical Damage+, Action Speed +",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Critical Damage UP (Large), Action Speed UP (Medium)",
       "effect": "Magic Critical Damage+ (+176), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Magic Critical Damage+",
           "value": 176,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Large)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     },
@@ -285,17 +322,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Magic Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Magic Attack UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Magic Attack + (+259)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Magic Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Medium)"
         }
       ]
     }
@@ -615,4 +655,4 @@ export const stats = {
       "MATK": 82
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

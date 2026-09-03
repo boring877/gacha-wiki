@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -102,7 +136,7 @@ export const skills = {
       "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense -21%-220 DOWN for 6 seconds and Accuracy -23 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.1,
-      "damageScaling": "110% ATK",
+      "damageScaling": "110.00000000000001% ATK",
       "baseDamage": "+150",
       "levelGrowth": "+6",
       "lvl1": "110% + 150",
@@ -133,9 +167,9 @@ export const skills = {
       "slot": 3,
       "name": "Hurdle Kick",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Critical Damage-13%-35 DOWN for 8 seconds , 8 Magic Critical Damage-13%-35 DOWN",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Critical Damage-13%-35 DOWN for 8 seconds , 8 Magic Critical Damage-13%-35 DOWN",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Critical Damage-13%-215 DOWN for 8 seconds , 8 Magic Critical Damage-13%-35 DOWN",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Critical Damage-13%-35 DOWN for 8 seconds, 8s Magic Critical Damage-13%-35 DOWN",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Critical Damage-13%-35 DOWN for 8 seconds, 8s Magic Critical Damage-13%-35 DOWN",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Critical Damage-13%-215 DOWN for 8 seconds, 8s Magic Critical Damage-13%-35 DOWN",
       "target": "Nearest Enemy",
       "castTime": 1.15,
       "damageScaling": "350% ATK",
@@ -178,7 +212,7 @@ export const skills = {
       "rank": 1,
       "name": "All in．layout drop",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 1) for 10 seconds , all allies10 Mind Type ATK UP(LV 1), 10 Accuracy UP(LV 1)",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 1) for 10 seconds, all allies 10s Mind Type ATK UP(LV 1), 10s Accuracy UP(LV 1)",
       "effect": "400% + 500",
       "buffEffects": [
         {
@@ -205,7 +239,7 @@ export const skills = {
       "rank": 2,
       "name": "All in．layout drop",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 2) for 10 seconds , all allies10 Mind Type ATK UP(LV 2), 10 Accuracy UP(LV 2)",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 2) for 10 seconds, all allies 10s Mind Type ATK UP(LV 2), 10s Accuracy UP(LV 2)",
       "effect": "470% + 700",
       "buffEffects": [
         {
@@ -232,7 +266,7 @@ export const skills = {
       "rank": 3,
       "name": "All in．layout drop",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 3) for 10 seconds , all allies10 Mind Type ATK UP(LV 3), 10 Accuracy UP(LV 3)",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 3) for 10 seconds, all allies 10s Mind Type ATK UP(LV 3), 10s Accuracy UP(LV 3)",
       "effect": "520% + 900",
       "buffEffects": [
         {
@@ -259,7 +293,7 @@ export const skills = {
       "rank": 4,
       "name": "All in．layout drop",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 4) for 10 seconds , all allies10 Mind Type ATK UP(LV 4), 10 Accuracy UP(LV 4)",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 4) for 10 seconds, all allies 10s Mind Type ATK UP(LV 4), 10s Accuracy UP(LV 4)",
       "effect": "560% + 1050",
       "buffEffects": [
         {
@@ -286,7 +320,7 @@ export const skills = {
       "rank": 5,
       "name": "All in．layout drop",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 5) for 10 seconds , all allies10 Mind Type ATK UP(LV 5), 10 Accuracy UP(LV 5)",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 5) for 10 seconds, all allies 10s Mind Type ATK UP(LV 5), 10s Accuracy UP(LV 5)",
       "effect": "580% + 1200",
       "buffEffects": [
         {
@@ -315,17 +349,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Critical Damage+, Action Speed +",
       "icon": "skill001/skill1001",
-      "effect": "Physical Critical Damage+ (+8.8%), Action Speed + (+10)",
+      "description": "Gain Physical Critical Damage UP (Large), Action Speed UP",
+      "effect": "Physical Critical Damage+ (+176%), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Physical Critical Damage+",
-          "value": 8.8,
-          "type": "percent"
+          "value": 176,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Large)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP"
         }
       ]
     },
@@ -333,17 +370,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Medium)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     }
@@ -656,4 +696,4 @@ export const stats = {
       "Phys Crit": 20
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

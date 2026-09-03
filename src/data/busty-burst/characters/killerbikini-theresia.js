@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -276,17 +310,14 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Debuff Resistance +",
       "icon": "skill001/skill1003",
-      "effect": "Max HP + (+2896), Debuff Resistance + (+30%)",
+      "description": "Gain Max HP UP (Medium), Debuff Resistance UP (Small)",
+      "effect": "Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
-        },
-        {
-          "name": "Debuff Resistance +",
-          "value": 30,
-          "type": "percent"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     },
@@ -294,17 +325,20 @@ export const skills = {
       "slot": 2,
       "name": "Magic Attack +, Accuracy +",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Large), Accuracy UP (Medium)",
       "effect": "Magic Attack + (+389), Accuracy + (+15)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         },
         {
           "name": "Accuracy +",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Medium)"
         }
       ]
     }
@@ -628,4 +662,4 @@ export const stats = {
       "HP": 589
     }
   ]
-};;;;;;;
+};;;;;;;;;

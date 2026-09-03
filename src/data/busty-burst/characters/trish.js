@@ -91,11 +91,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Tracy Special - Power Drink",
+      "name": "Trish’s Special - Power Drink!!",
       "icon": "skill001/skill0019",
       "description": "Applies Hit-Based Damage UP(35%+400, 3 hit(s)) to all allies for 10 seconds and Accuracy 11 UP for 10 seconds",
       "descriptionLv1": "Applies Hit-Based Damage UP(35%+400, 3 hit(s)) to all allies for 10 seconds and Accuracy 11 UP for 10 seconds",
@@ -131,11 +165,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Tracy Special - Stamina Drink",
+      "name": "Trish’s Special - Stamina Drink!!",
       "icon": "skill001/skill0021",
-      "description": "Applies HP Regeneration 6%+200 to all allies for 10 seconds and Healing Shield (300) for 15 seconds , DEBUFF",
-      "descriptionLv1": "Applies HP Regeneration 6%+200 to all allies for 10 seconds and Healing Shield (300) for 15 seconds , DEBUFF",
-      "descriptionLv90": "Applies HP Regeneration 6%+200 to all allies for 10 seconds and Healing Shield (300) for 15 seconds , DEBUFF",
+      "description": "Applies HP Regeneration 6%+200 to all allies for 10 seconds and Healing Shield (300) for 15 seconds and remove debuffs",
+      "descriptionLv1": "Applies HP Regeneration 6%+200 to all allies for 10 seconds and Healing Shield (300) for 15 seconds and remove debuffs",
+      "descriptionLv90": "Applies HP Regeneration 6%+200 to all allies for 10 seconds and Healing Shield (300) for 15 seconds and remove debuffs",
       "target": "All Allies",
       "castTime": 1.22,
       "damageScaling": null,
@@ -174,9 +208,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Tracy Special - Ultra Drink!!",
+      "name": "Trish’s Special - Ultra Drink!!",
       "icon": "skill001/skill0022_1",
-      "description": "Applies HP RegenerationUP(LV 1) to all allies for 5 seconds and Physical Attack UP(LV 1) for 10 seconds , 10 Magic Attack UP(LV 1)",
+      "description": "Applies HP RegenerationUP(LV 1) to all allies for 5 seconds, Physical Attack UP(LV 1) for 10 seconds and Magic Attack UP(LV 1) for 10 seconds",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -201,9 +235,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Tracy Special - Ultra Drink!!",
+      "name": "Trish’s Special - Ultra Drink!!",
       "icon": "skill001/skill0022_2",
-      "description": "Applies HP RegenerationUP(LV 2) to all allies for 5 seconds and Physical Attack UP(LV 2) for 10 seconds , 10 Magic Attack UP(LV 2)",
+      "description": "Applies HP RegenerationUP(LV 2) to all allies for 5 seconds, Physical Attack UP(LV 2) for 10 seconds and Magic Attack UP(LV 2) for 10 seconds",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -228,9 +262,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Tracy Special - Ultra Drink!!",
+      "name": "Trish’s Special - Ultra Drink!!",
       "icon": "skill001/skill0022_3",
-      "description": "Applies HP RegenerationUP(LV 3) to all allies for 5 seconds and Physical Attack UP(LV 3) for 10 seconds , 10 Magic Attack UP(LV 3)",
+      "description": "Applies HP RegenerationUP(LV 3) to all allies for 5 seconds, Physical Attack UP(LV 3) for 10 seconds and Magic Attack UP(LV 3) for 10 seconds",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -255,9 +289,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Tracy Special - Ultra Drink!!",
+      "name": "Trish’s Special - Ultra Drink!!",
       "icon": "skill001/skill0022_4",
-      "description": "Applies HP RegenerationUP(LV 4) to all allies for 5 seconds and Physical Attack UP(LV 4) for 10 seconds , 10 Magic Attack UP(LV 4)",
+      "description": "Applies HP RegenerationUP(LV 4) to all allies for 5 seconds, Physical Attack UP(LV 4) for 10 seconds and Magic Attack UP(LV 4) for 10 seconds",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -282,9 +316,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Tracy Special - Ultra Drink!!",
+      "name": "Trish’s Special - Ultra Drink!!",
       "icon": "skill001/skill0022_5",
-      "description": "Applies HP RegenerationUP(LV 5) to all allies for 5 seconds and Physical Attack UP(LV 5) for 10 seconds , 10 Magic Attack UP(LV 5)",
+      "description": "Applies HP RegenerationUP(LV 5) to all allies for 5 seconds, Physical Attack UP(LV 5) for 10 seconds and Magic Attack UP(LV 5) for 10 seconds",
       "effect": "300% + 0",
       "buffEffects": [
         {
@@ -313,17 +347,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1002",
+      "description": "Gain Physical Defense UP (Large), Magic Defense UP (Large)",
       "effect": "Physical Defense + (+211), Magic Defense+ (+211)",
       "effectValues": [
         {
           "name": "Physical Defense +",
           "value": 211,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Defense UP (Large)"
         },
         {
           "name": "Magic Defense+",
           "value": 211,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Defense UP (Large)"
         }
       ]
     },
@@ -331,17 +368,20 @@ export const skills = {
       "slot": 2,
       "name": "Healing Received +, Max HP +",
       "icon": "skill001/skill1008",
+      "description": "Gain Healing Received UP (Small), Max HP UP (Medium)",
       "effect": "Healing Received + (+20%), Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Healing Received +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Healing Received UP (Small)"
         },
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     }
@@ -654,4 +694,4 @@ export const stats = {
       "HP": 762
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

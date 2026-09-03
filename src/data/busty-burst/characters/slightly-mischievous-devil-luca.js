@@ -90,11 +90,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "I'll just prick a little, okay?",
+      "name": "May I stab you gently？",
       "icon": "skill001/skill0002",
       "description": "Deals physical damage to the farthest enemy",
       "descriptionLv1": "Deals physical damage to the farthest enemy",
@@ -111,11 +145,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Smack!",
+      "name": "Slap！",
       "icon": "skill001/skill0011",
-      "description": "to 3 nearest enemies1s Charm for state and Physical Critical Damage-11%-30 DOWN for 10 seconds",
-      "descriptionLv1": "to 3 nearest enemies1s Charm for state and Physical Critical Damage-11%-30 DOWN for 10 seconds",
-      "descriptionLv90": "to 3 nearest enemies1s Charm for state and Physical Critical Damage-11%-30 DOWN for 10 seconds",
+      "description": "Inflicts Charm to nearest 3 enemies for 1 seconds and Physical Critical Damage-11%-30 DOWN for 10 seconds",
+      "descriptionLv1": "Inflicts Charm to nearest 3 enemies for 1 seconds and Physical Critical Damage-11%-30 DOWN for 10 seconds",
+      "descriptionLv90": "Inflicts Charm to nearest 3 enemies for 1 seconds and Physical Critical Damage-11%-30 DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.38,
       "damageScaling": null,
@@ -148,9 +182,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "It'll suddenly get ugly!",
+      "name": "Here Comes the Stab!",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Cleanse for 2 seconds and for seconds and absorbs 6% of the damage dealt to restore own HP",
+      "description": "Deals physical damage to the nearest enemy, and inflicts Dispel for 2 seconds(Dispel effect: removes all buffs and prevents gaining buffs during the duration) and for seconds and absorbs 6% of the damage dealt to restore own HP",
       "effect": "1100% + 900",
       "buffEffects": [
         {
@@ -163,9 +197,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "It'll suddenly get ugly!",
+      "name": "Here Comes the Stab!",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Cleanse for 2.5 seconds and for seconds and absorbs 6% of the damage dealt to restore own HP",
+      "description": "Deals physical damage to the nearest enemy, and inflicts Dispel for 2.5 seconds(Dispel effect: removes all buffs and prevents gaining buffs during the duration) and for seconds and absorbs 6% of the damage dealt to restore own HP",
       "effect": "1320% + 1000",
       "buffEffects": [
         {
@@ -178,9 +212,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "It'll suddenly get ugly!",
+      "name": "Here Comes the Stab!",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts Cleanse for 2.5 seconds and for seconds and absorbs 6% of the damage dealt to restore own HP",
+      "description": "Deals physical damage to the nearest enemy, and inflicts Dispel for 2.5 seconds(Dispel effect: removes all buffs and prevents gaining buffs during the duration) and for seconds and absorbs 6% of the damage dealt to restore own HP",
       "effect": "1490% + 1100",
       "buffEffects": [
         {
@@ -193,9 +227,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "It'll suddenly get ugly!",
+      "name": "Here Comes the Stab!",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts Cleanse for 3 seconds and for seconds and absorbs 6% of the damage dealt to restore own HP",
+      "description": "Deals physical damage to the nearest enemy, and inflicts Dispel for 3 seconds(Dispel effect: removes all buffs and prevents gaining buffs during the duration) and for seconds and absorbs 6% of the damage dealt to restore own HP",
       "effect": "1600% + 1200",
       "buffEffects": [
         {
@@ -208,9 +242,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "It'll suddenly get ugly!",
+      "name": "Here Comes the Stab!",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts Cleanse for 3 seconds and for seconds and absorbs 6% of the damage dealt to restore own HP",
+      "description": "Deals physical damage to the nearest enemy, and inflicts Dispel for 3 seconds(Dispel effect: removes all buffs and prevents gaining buffs during the duration) and for seconds and absorbs 6% of the damage dealt to restore own HP",
       "effect": "1650% + 1250",
       "buffEffects": [
         {
@@ -227,12 +261,14 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +",
       "icon": "skill001/skill1003",
+      "description": "Gain Physical Attack UP (Medium)",
       "effect": "Physical Attack + (+259)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 259,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Medium)"
         }
       ]
     },
@@ -240,17 +276,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Max HP +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Medium), Max HP UP (Medium)",
       "effect": "Skill Damage + (+20%), Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Medium)"
         },
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     }
@@ -288,9 +327,9 @@ export const skills = {
 export const stats = {
   "id": "slightly-mischievous-devil-luca",
   "characterId": 2083,
-  "name": "[Slightly Mischievous Devil] Luca",
+  "name": "【Slightly Mischievous Devil】Luca",
   "rarity": "SR",
-  "element": "Fire",
+  "element": "火",
   "weapon": "",
   "role": "Attacker",
   "tags": [
@@ -561,4 +600,4 @@ export const stats = {
       "HP": 378
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

@@ -91,6 +91,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -132,9 +166,9 @@ export const skills = {
       "slot": 3,
       "name": "Full power release!",
       "icon": "skill001/skill0019",
-      "description": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Water Type ATK 20%UP for 10 seconds , 4 MP Regeneration 50",
-      "descriptionLv1": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Water Type ATK 20%UP for 10 seconds , 4 MP Regeneration 50",
-      "descriptionLv90": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Water Type ATK 20%UP for 10 seconds , 4 MP Regeneration 50",
+      "description": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Water Type ATK 20%UP for 10 seconds, 4s MP Regeneration 50",
+      "descriptionLv1": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Water Type ATK 20%UP for 10 seconds, 4s MP Regeneration 50",
+      "descriptionLv90": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Water Type ATK 20%UP for 10 seconds, 4s MP Regeneration 50",
       "target": "Self",
       "castTime": 1.0,
       "damageScaling": null,
@@ -176,7 +210,7 @@ export const skills = {
       "rank": 1,
       "name": "Fierce Star Heaven Pierce",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy, inflict 4s and Physical Defense DOWN(LV 1) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, applies 4s Blind and Physical Defense DOWN(LV 1) for 10 seconds",
       "effect": "1200% + 1100",
       "buffEffects": [
         {
@@ -197,7 +231,7 @@ export const skills = {
       "rank": 2,
       "name": "Fierce Star Heaven Pierce",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy, inflict 5s and Physical Defense DOWN(LV 2) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, applies 5s Blind and Physical Defense DOWN(LV 2) for 10 seconds",
       "effect": "1440% + 1300",
       "buffEffects": [
         {
@@ -218,7 +252,7 @@ export const skills = {
       "rank": 3,
       "name": "Fierce Star Heaven Pierce",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy, inflict 5s and Physical Defense DOWN(LV 3) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, applies 5s Blind and Physical Defense DOWN(LV 3) for 10 seconds",
       "effect": "1620% + 1450",
       "buffEffects": [
         {
@@ -239,7 +273,7 @@ export const skills = {
       "rank": 4,
       "name": "Fierce Star Heaven Pierce",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy, inflict6s Blind for and Physical Defense DOWN(LV 4) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, applies 6s Blind and Physical Defense DOWN(LV 4) for 10 seconds",
       "effect": "1739% + 1600",
       "buffEffects": [
         {
@@ -260,7 +294,7 @@ export const skills = {
       "rank": 5,
       "name": "Fierce Star Heaven Pierce",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy, inflict6s Blind for and Physical Defense DOWN(LV 5) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, applies 6s Blind and Physical Defense DOWN(LV 5) for 10 seconds",
       "effect": "1800% + 1700",
       "buffEffects": [
         {
@@ -283,17 +317,20 @@ export const skills = {
       "slot": 1,
       "name": "Physical Critical Damage+, MP Recovery",
       "icon": "skill001/skill1001",
-      "effect": "Physical Critical Damage+ (+8.8%), MP Recovery (+30%)",
+      "description": "Gain Physical Critical Damage UP (Large), MP Recovery",
+      "effect": "Physical Critical Damage+ (+176%), MP Recovery (+30%)",
       "effectValues": [
         {
           "name": "Physical Critical Damage+",
-          "value": 8.8,
-          "type": "percent"
+          "value": 176,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Large)"
         },
         {
           "name": "MP Recovery",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         }
       ]
     },
@@ -301,17 +338,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+4.5%)",
+      "description": "Gain Ultimate Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         }
       ]
     }
@@ -624,4 +664,4 @@ export const stats = {
       "MP Charge": 4
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

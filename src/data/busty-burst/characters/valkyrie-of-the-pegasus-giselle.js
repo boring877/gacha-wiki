@@ -93,6 +93,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -134,9 +168,9 @@ export const skills = {
       "slot": 3,
       "name": "Heruwal",
       "icon": "skill001/skill0019",
-      "description": "Restores HP by to all allies and inflicts Action Speed 14%UP for 10 seconds , Debuff",
-      "descriptionLv1": "Restores HP by to all allies and inflicts Action Speed 14%UP for 10 seconds , Debuff",
-      "descriptionLv90": "Restores HP by to all allies and inflicts Action Speed 14%UP for 10 seconds , Debuff",
+      "description": "Restores HP by to all allies and inflicts Action Speed 14%UP for 10 seconds, Debuff",
+      "descriptionLv1": "Restores HP by to all allies and inflicts Action Speed 14%UP for 10 seconds, Debuff",
+      "descriptionLv90": "Restores HP by to all allies and inflicts Action Speed 14%UP for 10 seconds, Debuff",
       "target": "All Allies",
       "castTime": 1.3,
       "damageScaling": "1500% ATK",
@@ -170,7 +204,7 @@ export const skills = {
       "rank": 1,
       "name": "Gerolondur Gelvig",
       "icon": "skill001/skill0003_1",
-      "description": "to all enemiesphysical damage, inflict 3s , ,selfMP Recovery 40",
+      "description": "To all enemiesphysical damage, applies 3s Blind, when, selfMP Recovery 40",
       "effect": "550% + 900",
       "buffEffects": [
         {
@@ -191,7 +225,7 @@ export const skills = {
       "rank": 2,
       "name": "Gerolondur Gelvig",
       "icon": "skill001/skill0003_2",
-      "description": "to all enemiesphysical damage, inflict 4s , ,selfMP Recovery 50",
+      "description": "To all enemiesphysical damage, applies 4s Blind, when, selfMP Recovery 50",
       "effect": "777% + 1250",
       "buffEffects": [
         {
@@ -212,7 +246,7 @@ export const skills = {
       "rank": 3,
       "name": "Gerolondur Gelvig",
       "icon": "skill001/skill0003_3",
-      "description": "to all enemiesphysical damage, inflict 4s , ,selfMP Recovery 60",
+      "description": "To all enemiesphysical damage, applies 4s Blind, when, selfMP Recovery 60",
       "effect": "935% + 1550",
       "buffEffects": [
         {
@@ -233,7 +267,7 @@ export const skills = {
       "rank": 4,
       "name": "Gerolondur Gelvig",
       "icon": "skill001/skill0003_4",
-      "description": "to all enemiesphysical damage, inflict 5s , ,selfMP Recovery 70",
+      "description": "To all enemiesphysical damage, applies 5s Blind, when, selfMP Recovery 70",
       "effect": "1050% + 1800",
       "buffEffects": [
         {
@@ -254,7 +288,7 @@ export const skills = {
       "rank": 5,
       "name": "Gerolondur Gelvig",
       "icon": "skill001/skill0003_5",
-      "description": "to all enemiesphysical damage, inflict 5s , ,selfMP Recovery 80",
+      "description": "To all enemiesphysical damage, applies 5s Blind, when, selfMP Recovery 80",
       "effect": "1100% + 2000",
       "buffEffects": [
         {
@@ -275,19 +309,16 @@ export const skills = {
   "passives": [
     {
       "slot": 1,
-      "name": "MP Recovery, MP Recovery",
+      "name": "Debuff Resistance+, MP Recovery",
       "icon": "skill001/skill1003",
-      "effect": "MP Recovery (+100%), MP Recovery (+100)",
+      "description": "Gain Debuff Resistance UP (Small), MP Recovery",
+      "effect": "MP Recovery (+100%)",
       "effectValues": [
         {
           "name": "MP Recovery",
           "value": 100,
-          "type": "percent"
-        },
-        {
-          "name": "MP Recovery",
-          "value": 100,
-          "type": "flat"
+          "type": "percent",
+          "gameText": "MP Recovery"
         }
       ]
     },
@@ -295,17 +326,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Action Speed +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Action Speed UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     }
@@ -313,7 +347,7 @@ export const skills = {
   "name": "Valkyrie of the Pegasus: Giselle",
   "id": 2212,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Attacker",
   "tags": [
     "Heal",
@@ -622,4 +656,4 @@ export const stats = {
       "Phys Crit": 20
     }
   ]
-};;;;;;;
+};;;;;;;;;

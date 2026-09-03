@@ -90,11 +90,45 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Ubi, please...",
+      "name": "Whoopee，please……",
       "icon": "skill001/skill0011",
       "description": "Deals magic damage to the nearest enemyApplies Hit-Based Magic Damage UP(75%+700, 3 hit(s)) to self for 10 seconds",
       "descriptionLv1": "Deals magic damage to the nearest enemyApplies Hit-Based Magic Damage UP(75%+700, 3 hit(s)) to self for 10 seconds",
@@ -122,11 +156,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Ubi, haa...",
+      "name": "Whoopee，haaaaa……",
       "icon": "skill001/skill0011",
-      "description": "15s Curse for and Block-11 DOWN for 10 seconds , 10 Accuracy -11 DOWN",
-      "descriptionLv1": "15s Curse for and Block-11 DOWN for 10 seconds , 10 Accuracy -11 DOWN",
-      "descriptionLv90": "15s Curse for and Block-23 DOWN for 10 seconds , 10 Accuracy -23 DOWN",
+      "description": "Inflicts Curse to the nearest enemy for 5 seconds, Block-11 DOWN for 10 seconds and Accuracy -11 DOWN for 10 seconds",
+      "descriptionLv1": "Inflicts Curse to the nearest enemy for 5 seconds, Block-11 DOWN for 10 seconds and Accuracy -11 DOWN for 10 seconds",
+      "descriptionLv90": "Inflicts Curse to the nearest enemy for 5 seconds, Block-23 DOWN for 10 seconds and Accuracy -23 DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.0,
       "damageScaling": null,
@@ -167,7 +201,7 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "My Beloved World Protector",
+      "name": "Guardian of My Beloved World",
       "icon": "skill001/skill0006_1",
       "description": "Deals magic damage to the nearest enemy and inflicts Mind Type Damage Taken UP(LV 1) for 8 seconds and applies Mind Type ATK UP(LV 1) to self for 8 seconds",
       "effect": "1100% + 700",
@@ -188,7 +222,7 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "My Beloved World Protector",
+      "name": "Guardian of My Beloved World",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the nearest enemy and inflicts Mind Type Damage Taken UP(LV 2) for 8 seconds and applies Mind Type ATK UP(LV 2) to self for 8 seconds",
       "effect": "1320% + 850",
@@ -209,7 +243,7 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "My Beloved World Protector",
+      "name": "Guardian of My Beloved World",
       "icon": "skill001/skill0006_3",
       "description": "Deals magic damage to the nearest enemy and inflicts Mind Type Damage Taken UP(LV 3) for 8 seconds and applies Mind Type ATK UP(LV 3) to self for 8 seconds",
       "effect": "1500% + 1000",
@@ -230,7 +264,7 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "My Beloved World Protector",
+      "name": "Guardian of My Beloved World",
       "icon": "skill001/skill0006_4",
       "description": "Deals magic damage to the nearest enemy and inflicts Mind Type Damage Taken UP(LV 4) for 8 seconds and applies Mind Type ATK UP(LV 4) to self for 8 seconds",
       "effect": "1610% + 1100",
@@ -251,7 +285,7 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "My Beloved World Protector",
+      "name": "Guardian of My Beloved World",
       "icon": "skill001/skill0006_5",
       "description": "Deals magic damage to the nearest enemy and inflicts Mind Type Damage Taken UP(LV 5) for 8 seconds and applies Mind Type ATK UP(LV 5) to self for 8 seconds",
       "effect": "1670% + 1200",
@@ -276,17 +310,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Action Speed +",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Large), Action Speed UP (Medium)",
       "effect": "Magic Attack + (+389), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     },
@@ -294,17 +331,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Max HP +",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Max HP UP (Medium)",
       "effect": "Skill Damage + (+30%), Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     }
@@ -626,4 +666,4 @@ export const stats = {
       "MATK": 60
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

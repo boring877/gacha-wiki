@@ -92,15 +92,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Touching is forbidden~!!",
       "icon": "skill001/skill0011",
-      "description": "3 nearest enemies3s Charm for and Block-13 DOWN for 10 seconds , [Spirit]1([Spirit]1MP Regen5, max10)",
-      "descriptionLv1": "3 nearest enemies3s Charm for and Block-13 DOWN for 10 seconds , [Spirit]1([Spirit]1MP Regen5, max10)",
-      "descriptionLv90": "3 nearest enemies3s Charm for and Block-26 DOWN for 10 seconds , [Spirit]1([Spirit]1MP Regen5, max10)",
+      "description": "3 nearest enemies 3s and Block-13 DOWN for 10 seconds, [Spirit]1 stacks([Spirit]1 stacksMP Regen 5, max 10 stacks)",
+      "descriptionLv1": "3 nearest enemies 3s and Block-13 DOWN for 10 seconds, [Spirit]1 stacks([Spirit]1 stacksMP Regen 5, max 10 stacks)",
+      "descriptionLv90": "3 nearest enemies 3s and Block-26 DOWN for 10 seconds, [Spirit]1 stacks([Spirit]1 stacksMP Regen 5, max 10 stacks)",
       "target": "Nearest Enemy",
       "castTime": 1.1,
       "damageScaling": null,
@@ -140,9 +174,9 @@ export const skills = {
       "slot": 3,
       "name": "Let's relax for a bit!",
       "icon": "skill001/skill0019",
-      "description": "all allies10 Damage 15%+2000 UP and 10%+Damage Reduction for 10 seconds , 10 Accuracy 11 UP",
-      "descriptionLv1": "all allies10 Damage 15%+2000 UP and 10%+Damage Reduction for 10 seconds , 10 Accuracy 11 UP",
-      "descriptionLv90": "all allies10 Damage 15%+2000 UP and 10%+Damage Reduction for 10 seconds , 10 Accuracy 23 UP",
+      "description": "All allies 10s Damage 15%+2000 UP and 10%+Damage Reduction for 10 seconds, 10s Accuracy 11 UP",
+      "descriptionLv1": "All allies 10s Damage 15%+2000 UP and 10%+Damage Reduction for 10 seconds, 10s Accuracy 11 UP",
+      "descriptionLv90": "All allies 10s Damage 15%+2000 UP and 10%+Damage Reduction for 10 seconds, 10s Accuracy 23 UP",
       "target": "All Allies",
       "castTime": 1.2,
       "damageScaling": null,
@@ -185,7 +219,7 @@ export const skills = {
       "rank": 1,
       "name": "Die Die Dance!",
       "icon": "skill001/skill0012_1",
-      "description": "magic damage and inflicts Action Speed DOWN(LV 1) for 10 seconds and Accuracy DOWN(LV 1) for 10 seconds , [Spirit]1([Spirit]1MP Regen5, max10), [Spirit]10 when[Spirit]all allies4 MP Regen150",
+      "description": "Magic damage and inflicts Action Speed DOWN(LV 1) for 10 seconds and Accuracy DOWN(LV 1) for 10 seconds, [Spirit]1 stacks([Spirit]1 stacksMP Regen 5, max 10 stacks), [Spirit]at 10 stacks: [Spirit]all allies 4s MP Regen 150",
       "effect": "400% + 400",
       "buffEffects": [
         {
@@ -212,7 +246,7 @@ export const skills = {
       "rank": 2,
       "name": "Die Die Dance!",
       "icon": "skill001/skill0012_2",
-      "description": "magic damage and inflicts Action Speed DOWN(LV 2) for 10 seconds and Accuracy DOWN(LV 2) for 10 seconds , [Spirit]1([Spirit]1MP Regen5, max10), [Spirit]10 when[Spirit]all allies4 MP Regen165",
+      "description": "Magic damage and inflicts Action Speed DOWN(LV 2) for 10 seconds and Accuracy DOWN(LV 2) for 10 seconds, [Spirit]1 stacks([Spirit]1 stacksMP Regen 5, max 10 stacks), [Spirit]at 10 stacks: [Spirit]all allies 4s MP Regen 165",
       "effect": "520% + 500",
       "buffEffects": [
         {
@@ -239,7 +273,7 @@ export const skills = {
       "rank": 3,
       "name": "Die Die Dance!",
       "icon": "skill001/skill0012_3",
-      "description": "magic damage and inflicts Action Speed DOWN(LV 3) for 10 seconds and Accuracy DOWN(LV 3) for 10 seconds , [Spirit]1([Spirit]1MP Regen5, max10), [Spirit]10 when[Spirit]all allies4 MP Regen180",
+      "description": "Magic damage and inflicts Action Speed DOWN(LV 3) for 10 seconds and Accuracy DOWN(LV 3) for 10 seconds, [Spirit]1 stacks([Spirit]1 stacksMP Regen 5, max 10 stacks), [Spirit]at 10 stacks: [Spirit]all allies 4s MP Regen 180",
       "effect": "600% + 600",
       "buffEffects": [
         {
@@ -266,7 +300,7 @@ export const skills = {
       "rank": 4,
       "name": "Die Die Dance!",
       "icon": "skill001/skill0012_4",
-      "description": "magic damage and inflicts Action Speed DOWN(LV 4) for 10 seconds and Accuracy DOWN(LV 4) for 10 seconds , [Spirit]1([Spirit]1MP Regen5, max10), [Spirit]10 when[Spirit]all allies4 MP Regen190",
+      "description": "Magic damage and inflicts Action Speed DOWN(LV 4) for 10 seconds and Accuracy DOWN(LV 4) for 10 seconds, [Spirit]1 stacks([Spirit]1 stacksMP Regen 5, max 10 stacks), [Spirit]at 10 stacks: [Spirit]all allies 4s MP Regen 190",
       "effect": "660% + 650",
       "buffEffects": [
         {
@@ -293,7 +327,7 @@ export const skills = {
       "rank": 5,
       "name": "Die Die Dance!",
       "icon": "skill001/skill0012_5",
-      "description": "magic damage and inflicts Action Speed DOWN(LV 5) for 10 seconds and Accuracy DOWN(LV 5) for 10 seconds , [Spirit]1([Spirit]1MP Regen5, max10), [Spirit]10 when[Spirit]all allies4 MP Regen200",
+      "description": "Magic damage and inflicts Action Speed DOWN(LV 5) for 10 seconds and Accuracy DOWN(LV 5) for 10 seconds, [Spirit]1 stacks([Spirit]1 stacksMP Regen 5, max 10 stacks), [Spirit]at 10 stacks: [Spirit]all allies 4s MP Regen 200",
       "effect": "700% + 700",
       "buffEffects": [
         {
@@ -322,17 +356,20 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, MP Recovery",
       "icon": "skill001/skill1005",
+      "description": "Gain Action Speed UP (Large), MP Recovery",
       "effect": "Action Speed + (+15), MP Recovery (+30%)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Large)"
         },
         {
           "name": "MP Recovery",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "MP Recovery"
         }
       ]
     },
@@ -340,17 +377,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Spirit Energy",
       "icon": "skill001/skill1005",
+      "description": "Gain Ultimate Damage UP (Small), MP Regeneration (Cannot be Cleansed)",
       "effect": "Ultimate Damage + (+5%), Spirit Energy (+5)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 5,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Small)"
         },
         {
           "name": "Spirit Energy",
           "value": 5,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "MP Regeneration (Cannot be Cleansed)"
         }
       ]
     }
@@ -676,4 +716,4 @@ export const stats = {
       "MP Charge": 4
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

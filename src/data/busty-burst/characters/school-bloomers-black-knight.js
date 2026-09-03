@@ -90,15 +90,49 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Twin Demon Fist",
       "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 5 seconds and Block-11 DOWN for 5 seconds , enemy has, deal damage +30%",
-      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 5 seconds and Block-11 DOWN for 5 seconds , enemy has, deal damage +30%",
-      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-320 DOWN for 5 seconds and Block-23 DOWN for 5 seconds , enemy has, deal damage +30%",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 5 seconds and Block-11 DOWN for 5 seconds, enemy has status, deal damage +30%",
+      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 5 seconds and Block-11 DOWN for 5 seconds, enemy has status, deal damage +30%",
+      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-320 DOWN for 5 seconds and Block-23 DOWN for 5 seconds, enemy has status, deal damage +30%",
       "target": "Nearest Enemy",
       "castTime": 0.75,
       "damageScaling": "350% ATK",
@@ -132,12 +166,12 @@ export const skills = {
       "slot": 3,
       "name": "Nightmare Fist",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies, inflict 5s , 8s Blind for",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies, inflict 5s , 8s Blind for",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies, inflict 5s , 8s Blind for",
+      "description": "Deals magic damage to the 3 nearest enemies, applies 5s, 8s Blind",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies, applies 5s, 8s Blind",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies, applies 5s, 8s Blind",
       "target": "Nearest Enemy",
       "castTime": 0.75,
-      "damageScaling": "110% ATK",
+      "damageScaling": "110.00000000000001% ATK",
       "baseDamage": "+150",
       "levelGrowth": "+6",
       "lvl1": "110% + 150",
@@ -168,7 +202,7 @@ export const skills = {
       "rank": 1,
       "name": "Heavenly Descent God's Broadcast",
       "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the nearest enemy, inflict 5s (LV 1)and applies Fear(MP --50 per secondBlock 0) to self for 5 seconds",
+      "description": "Deals magic damage to the nearest enemy, applies 5s(LV 1)and applies Fear(MP --50 per secondBlock 0) to self for 5 seconds",
       "effect": "1200% + 1000",
       "buffEffects": [
         {
@@ -189,7 +223,7 @@ export const skills = {
       "rank": 2,
       "name": "Heavenly Descent God's Broadcast",
       "icon": "skill001/skill0012_2",
-      "description": "Deals magic damage to the nearest enemy, inflict 5s (LV 2)and applies Fear(MP --70 per secondBlock 0) to self for 5 seconds",
+      "description": "Deals magic damage to the nearest enemy, applies 5s(LV 2)and applies Fear(MP --70 per secondBlock 0) to self for 5 seconds",
       "effect": "1440% + 1250",
       "buffEffects": [
         {
@@ -210,7 +244,7 @@ export const skills = {
       "rank": 3,
       "name": "Heavenly Descent God's Broadcast",
       "icon": "skill001/skill0012_3",
-      "description": "Deals magic damage to the nearest enemy, inflict 5s (LV 3)and applies Fear(MP --80 per secondBlock 0) to self for 5 seconds",
+      "description": "Deals magic damage to the nearest enemy, applies 5s(LV 3)and applies Fear(MP --80 per secondBlock 0) to self for 5 seconds",
       "effect": "1620% + 1500",
       "buffEffects": [
         {
@@ -231,7 +265,7 @@ export const skills = {
       "rank": 4,
       "name": "Heavenly Descent God's Broadcast",
       "icon": "skill001/skill0012_4",
-      "description": "Deals magic damage to the nearest enemy, inflict 5s (LV 4)and applies Fear(MP --90 per secondBlock 0) to self for 5 seconds",
+      "description": "Deals magic damage to the nearest enemy, applies 5s(LV 4)and applies Fear(MP --90 per secondBlock 0) to self for 5 seconds",
       "effect": "1739% + 1700",
       "buffEffects": [
         {
@@ -252,7 +286,7 @@ export const skills = {
       "rank": 5,
       "name": "Heavenly Descent God's Broadcast",
       "icon": "skill001/skill0012_5",
-      "description": "Deals magic damage to the nearest enemy, inflict 5s (LV 5)and applies Fear(MP --100 per secondBlock 0) to self for 5 seconds",
+      "description": "Deals magic damage to the nearest enemy, applies 5s(LV 5)and applies Fear(MP --100 per secondBlock 0) to self for 5 seconds",
       "effect": "1800% + 1900",
       "buffEffects": [
         {
@@ -275,17 +309,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Magic Type ATK +",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Large), Magic Type ATK UP",
       "effect": "Magic Attack + (+389), Magic Type ATK + (+5%)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         },
         {
           "name": "Magic Type ATK +",
           "value": 5,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Magic Type ATK UP"
         }
       ]
     },
@@ -293,17 +330,20 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Skill Enhancement Regol Cost DOWNMagic",
       "icon": "skill001/skill1001",
+      "description": "Gain Skill Damage UP (Large), Regol cost for enhancing Magic Type Paladin skills -%",
       "effect": "Skill Damage + (+30%), Skill Enhancement Regol Cost DOWNMagic (+5%)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 30,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Large)"
         },
         {
           "name": "Skill Enhancement Regol Cost DOWNMagic",
           "value": 5,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Regol cost for enhancing Magic Type Paladin skills -%"
         }
       ]
     }
@@ -625,4 +665,4 @@ export const stats = {
       "MATK": 50
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

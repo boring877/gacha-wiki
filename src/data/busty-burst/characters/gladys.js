@@ -89,6 +89,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -128,7 +162,7 @@ export const skills = {
       "descriptionLv90": "Deals physical damage to the enemy with the lowest HP and inflicts Physical Defense -21%-220 DOWN for 10 seconds",
       "target": "Lowest HP Enemy",
       "castTime": 1.08,
-      "damageScaling": "220% ATK",
+      "damageScaling": "220.00000000000003% ATK",
       "baseDamage": "+83",
       "levelGrowth": "+20",
       "lvl1": "220% + 83",
@@ -195,12 +229,14 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP (Medium)",
       "effect": "Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP (Medium)"
         }
       ]
     },
@@ -208,17 +244,20 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Physical Attack + (+389), Physical Critical Damage+ (+8.8%)",
+      "description": "Gain Physical Attack UP (Large), Physical Critical Damage UP (Large)",
+      "effect": "Physical Attack + (+389), Physical Critical Damage+ (+176%)",
       "effectValues": [
         {
           "name": "Physical Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Attack UP (Large)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 8.8,
-          "type": "percent"
+          "value": 176,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Large)"
         }
       ]
     }
@@ -527,4 +566,4 @@ export const stats = {
       "ATK": 70
     }
   ]
-};;;;;;;;
+};;;;;;;;;;

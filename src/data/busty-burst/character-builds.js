@@ -111,7 +111,7 @@ const getSubstatPriority = roleType => {
 };
 
 export const characterBuilds = {
-  'festive-attire-estiriel': {
+  'festival-attire-estiriel': {
     slug: 'festive-attire-estiriel',
     character: {
       name: 'Festive Attire Estiriel',
@@ -661,7 +661,7 @@ export const characterBuilds = {
     })(),
   },
 
-  'dark-knight': {
+  'the-dark-knight': {
     slug: 'dark-knight',
     character: {
       name: 'The Dark Knight',
@@ -952,7 +952,7 @@ export const characterBuilds = {
     })(),
   },
 
-  'killer-bikini-theresia': {
+  'killerbikini-theresia': {
     slug: 'killer-bikini-theresia',
     character: {
       name: 'Killer Bikini Theresia',
@@ -1215,7 +1215,7 @@ export const characterBuilds = {
     })(),
   },
 
-  'chocolate-frey': {
+  'innocent-confectioner-frey': {
     slug: 'chocolate-frey',
     character: {
       name: 'Chocolate Frey',
@@ -1258,7 +1258,7 @@ export const characterBuilds = {
     })(),
   },
 
-  'chocolate-hildis': {
+  'chocolate-dragon-knight-hildis': {
     slug: 'chocolate-hildis',
     character: {
       name: 'Chocolate Hildis',
@@ -1299,7 +1299,7 @@ export const characterBuilds = {
     })(),
   },
 
-  'chocolate-shaty': {
+  'champion-of-love-and-chocolate-shaty': {
     slug: 'chocolate-shaty',
     character: {
       name: 'Chocolate Shaty',
@@ -1760,7 +1760,7 @@ export const characterBuilds = {
     })(),
   },
 
-  'magical-princess-luceria': {
+  'magical-princess--luceria': {
     slug: 'magical-princess-luceria',
     character: {
       name: 'Magical Princess Luceria',

@@ -92,6 +92,40 @@ export const info = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const skills = {
   "skills": [
     {
@@ -138,7 +172,7 @@ export const skills = {
       "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -11%-205 DOWN for 7 seconds and Magic Attack -11%-205 DOWN for 7 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.58,
-      "damageScaling": "110% ATK",
+      "damageScaling": "110.00000000000001% ATK",
       "baseDamage": "+120",
       "levelGrowth": "+6",
       "lvl1": "110% + 120",
@@ -278,17 +312,20 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Max HP +",
       "icon": "skill001/skill1003",
+      "description": "Gain Action Speed UP (Medium), Max HP UP (Large)",
       "effect": "Action Speed + (+10), Max HP + (+3444)",
       "effectValues": [
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         },
         {
           "name": "Max HP +",
           "value": 3444,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Large)"
         }
       ]
     },
@@ -296,17 +333,20 @@ export const skills = {
       "slot": 2,
       "name": "Block+, Max HP +",
       "icon": "skill001/skill1007",
+      "description": "Gain Block UP (Medium), Max HP UP (Medium)",
       "effect": "Block+ (+15), Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Block+",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Block UP (Medium)"
         },
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     }
@@ -621,4 +661,4 @@ export const stats = {
       "HP": 625
     }
   ]
-};;;;;;;;
+};;;;;;;;;;
