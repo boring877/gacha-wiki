@@ -5,6 +5,76 @@
  */
 
 export const bannerTimelineData = [
+  // #38 - Bridal Festival / Bride of Luck Theresia & Bride of Purity Giselle (Sep 1 - Sep 8) - CURRENT
+  {
+    id: 'bridal-festival-2026',
+    title: '"Blessing of the Brides" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: '[The Bride of Luck] Theresia',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+      {
+        name: '[The Bride of Purity] Giselle',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+    ],
+    startDate: '2026-09-01T04:00:00Z',
+    endDate: '2026-09-08T04:00:00Z',
+    description:
+      '"Blessing of the Brides" Event Summon! Rate up for [The Bride of Luck] Theresia and [The Bride of Purity] Giselle. Every summer solstice the town holds the Bridal Festival, where three brides scatter flower petals to bring blessings of happiness — but the Lord of Zoakis is determined to ruin it.',
+    note: 'Bridal Festival event. [The Bride of Seduction] Ophelio (characterId 2142) is NOT on the banner — she is obtained from the event itself (SR event reward). Dates assumed from the current EN rotation (Sep 1-8) — confirm in-game.',
+    status: 'current',
+    image: 'banner-bridal-festival',
+  },
+  // #37 - "No more bet" / Gil & Bonita (Aug 25 - Sep 1) - ENDED
+  {
+    id: 'no-more-bet-2026',
+    title: '"No more bet" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: 'Gil',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Bonita',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+    ],
+    startDate: '2026-08-25T04:00:00Z',
+    endDate: '2026-09-01T04:00:00Z',
+    description:
+      '"No more bet" Event Summon! Rate up for Gil and Bonita in casino attire. The two dealers invite you to the table — no more bets!',
+    note: 'Casino-themed event summon featuring Gil (SSR Attacker) and Bonita (SSR Support). End time from game data; start derived from the standard 7-day EN rotation.',
+    status: 'ended',
+    image: 'banner-no-more-bet',
+  },
+  // #36 - Main Story Chapter 12 / Sirius (Aug 25 - Sep 1) - ENDED
+  {
+    id: 'main-story-12-2026',
+    title: '"Main Story Chapter 12 Open" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: 'Sirius',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+    ],
+    startDate: '2026-08-25T04:00:00Z',
+    endDate: '2026-09-01T04:00:00Z',
+    description:
+      '"Main Story Chapter 12 Open" Event Summon! New Paladin Rate Up! Sirius arrives with the opening of Main Story Chapter 12.',
+    note: 'Sirius (SSR Attacker, characterId 2139) released alongside Main Story Chapter 12. End time from game data; start derived from the standard 7-day EN rotation.',
+    status: 'ended',
+    image: 'banner-main-story-12',
+  },
   // #36 - FANZINE 2nd / Tempting Naked Apron Diana (Aug 11 - Aug 18) - CURRENT
   {
     id: 'fanzine-2nd-2026',
@@ -837,6 +907,21 @@ export const bannerTimelineData = [
  */
 export const seasonalCharactersData = [
   {
+    id: 'battle-pass-season-4',
+    name: 'Battle Pass Season 4',
+    startDate: '2026-09-01T04:00:00Z',
+    endDate: '2026-12-01T03:00:00Z',
+    characters: [
+      {
+        name: '[School Buruma] Black Knight',
+        rarity: 'SSR',
+        type: 'Attack',
+        image: 'banner-battle-pass-season-4',
+      },
+    ],
+    status: 'current',
+  },
+  {
     id: 'battle-season',
     name: 'Battle Season',
     startDate: '2026-02-24T03:00:00Z',
@@ -866,21 +951,6 @@ export const seasonalCharactersData = [
     ],
     status: 'ended',
   },
-  {
-    id: 'magdalena-2026-04',
-    name: 'Magdalena Banner',
-    startDate: '2026-04-28T00:00:00Z',
-    endDate: '2026-05-05T00:00:00Z',
-    characters: [
-      {
-        name: 'Magdalena',
-        rarity: 'SSR',
-        type: 'Tank',
-        image: 'magdalena-2108',
-      },
-    ],
-    status: 'current',
-  },
 ];
 
 /**
@@ -905,6 +975,45 @@ bannerTimelineData.forEach(banner => {
 // Also apply to seasonal characters
 seasonalCharactersData.forEach(season => {
   season.status = computeStatus(season);
+});
+
+/**
+ * Guild Battle pickup summons, tracked separately from the main timeline.
+ */
+export const guildBattleData = [
+  {
+    id: 'guild-battle-wind-2026-09',
+    title: 'Guild Battle・WIND Pick Up Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: 'Artia',
+        rarity: 'SSR',
+        type: 'Tank',
+      },
+      {
+        name: 'Hildis',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Nora',
+        rarity: 'SSR',
+        type: 'Tank',
+      },
+    ],
+    startDate: '2026-08-25T04:00:00Z',
+    endDate: '2026-09-01T04:00:00Z',
+    description:
+      'Guild Battle・WIND support summon! Rate up for Wind-attribute paladins Artia, Hildis and Nora for the WIND Guild Battle.',
+    note: 'Attribute pickup summon running alongside the WIND Guild Battle. End time from game data; start derived from the standard 7-day EN rotation.',
+    status: 'ended',
+    image: 'banner-guild-battle-wind',
+  },
+];
+
+guildBattleData.forEach(banner => {
+  banner.status = computeStatus(banner);
 });
 
 /**

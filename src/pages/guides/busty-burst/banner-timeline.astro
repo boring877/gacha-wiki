@@ -5,6 +5,7 @@ import RarityImage from '../../../components/busty-burst/RarityImage.astro';
 import {
   bannerTimelineData,
   seasonalCharactersData,
+  guildBattleData,
 } from '../../../data/busty-burst/banner-timeline.js';
 
 // SEO metadata
@@ -90,6 +91,13 @@ const getStatusLabel = (status: string) => {
         role="tab"
         aria-selected="false"
         aria-controls="seasonal">Seasonal Characters</button
+      >
+      <button
+        class="tab-btn"
+        data-tab="guild"
+        role="tab"
+        aria-selected="false"
+        aria-controls="guild">Guild Battle</button
       >
     </div>
 
@@ -211,6 +219,71 @@ const getStatusLabel = (status: string) => {
                     </div>
                   </div>
                 ))}
+              </div>
+            </section>
+          </article>
+        ))
+      }
+    </div>
+    <!-- Guild Battle Tab Content -->
+    <div id="guild" class="tab-content" role="tabpanel" aria-labelledby="guild-tab">
+      {
+        guildBattleData.map(banner => (
+          <article class="banner-section">
+            <header class="banner-header">
+              <h2>{banner.title}</h2>
+              <span class={`banner-type-badge banner-type-badge--${banner.bannerType}`}>
+                {getBannerTypeLabel(banner.bannerType)}
+              </span>
+              <span class={`status-badge status-badge--${banner.status}`}>
+                {getStatusLabel(banner.status)}
+              </span>
+            </header>
+
+            <section class="banner-content">
+              <div class="banner-info">
+                <div class="summon-banner-card">
+                  <BBBannerImage
+                    bannerId={banner.image}
+                    alt={banner.title}
+                    width={400}
+                    height={225}
+                  />
+                  <div class="featured-details">
+                    <h3>Featured Paladins</h3>
+                    <div class="summon-paladin-list">
+                      {banner.featuredPaladins.map(paladin => (
+                        <div class="summon-paladin-item">
+                          <span class="summon-paladin-name">{paladin.name}</span>
+                          <div class="summon-paladin-badges">
+                            <RarityImage rarity={paladin.rarity} width={36} height={18} />
+                            <span
+                              class="bb-badge"
+                              data-role={paladin.type === 'Attack' ? 'Attacker' : paladin.type}
+                            >
+                              {paladin.type}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div class="banner-details">
+                      <p>
+                        <strong>Period:</strong> {formatDate(banner.startDate)} -{' '}
+                        {formatDate(banner.endDate)} (UTC)
+                      </p>
+                      <p>
+                        <strong>Details:</strong> {banner.description}
+                      </p>
+                      {banner.note && (
+                        <p>
+                          <strong>Note:</strong> {banner.note}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
               </div>
             </section>
           </article>
