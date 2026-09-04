@@ -55,16 +55,14 @@
   min-height: 520px;
 }
 
-/* Body art is square on R2 — cover-fill the tall frame (like the old
-   astro:assets pipeline did) and zoom toward the head */
+/* Body art is pre-cropped on R2 to the portrait aspect around the
+   character (alpha bounding box + headroom) — just fill the frame */
 .bb-char-portrait-wrapper .paladin-image-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center;
   display: block;
-  transform: scale(1.8);
-  transform-origin: top center;
 }
 
 .bb-char-portrait-wrapper::after {
@@ -1051,10 +1049,6 @@
   .bb-char-portrait-wrapper {
     height: 320px;
     min-height: unset;
-  }
-
-  .bb-char-portrait-wrapper .paladin-image-wrapper img {
-    transform: scale(1.15);
   }
 
   .bb-char-name {

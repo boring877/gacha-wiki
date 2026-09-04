@@ -27,7 +27,9 @@ if (imageType === 'body') {
   // No sprite fallback for the body slot — characters without body art show
   // the placeholder until their art is uploaded to the bucket
   if (characterId && BODY_IDS.has(characterId)) {
-    url = `${R2}/character/full_body/No_${characterId}_${characterId}_body.webp`;
+    // v=crop1: portraits were re-cropped around the subject (2026-09-03) —
+    // bump to force caches to drop the old full-canvas versions
+    url = `${R2}/character/full_body/No_${characterId}_${characterId}_body.webp?v=crop1`;
   }
 } else if (characterId && SPRITE_IDS.has(characterId)) {
   url = `${R2}/character/sprites/${characterId}.webp`;
