@@ -3,8 +3,8 @@
 
 export const info = {
   "slug": "getting-out-of-the-pool-artia",
-  "name": "Getting Out of the Pool: Artia",
-  "displayName": "Getting Out of the Pool: Artia",
+  "name": "Fresh Out of the Pool: Artia",
+  "displayName": "Fresh Out of the Pool: Artia",
   "baseName": "Artia",
   "title": "Fresh Out of the Pool",
   "rarity": "SSR",
@@ -308,7 +308,7 @@ export const skills = {
       ]
     }
   ],
-  "name": "Getting Out of the Pool: Artia",
+  "name": "Fresh Out of the Pool: Artia",
   "id": 2130,
   "rarity": "SSR",
   "element": "Water",

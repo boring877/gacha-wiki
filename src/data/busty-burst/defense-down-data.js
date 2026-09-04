@@ -4,8 +4,12 @@
 // Only includes characters that exist in character-info.js
 
 import { BUSTY_BURST_SKILLS_DATA, getAllCharacterSlugs } from './characters/index.js';
+import { SPRITE_IDS } from './image-manifest.js';
 
 const validCharacterSlugs = new Set(getAllCharacterSlugs());
+
+// Only characters with released art (unrevealed units stay off the lists)
+const hasArt = (id) => SPRITE_IDS.has(id);
 
 // Buff level -> percent mapping from buff_1.xml (effect_val1)
 // Both Physical Defense - and Magic Defense- share the same scaling
@@ -78,7 +82,7 @@ function extractAllDefenseDownSkills() {
   const results = [];
 
   for (const char of BUSTY_BURST_SKILLS_DATA) {
-    if (!validCharacterSlugs.has(char.slug)) continue;
+    if (!validCharacterSlugs.has(char.slug) || !hasArt(char.id)) continue;
 
     const charBase = {
       characterId: char.id,
@@ -153,9 +157,11 @@ function extractAllDefenseDownSkills() {
 
           const defType = physDown ? 'physical' : 'magic';
 
-          // Ultimate percent comes directly from buff.value (effect_val1 in buff_1.xml)
-          const percent = Math.abs(buff.value || 0);
-          const flat = buff.type === 'flat' ? Math.abs(buff.value || 0) : 0;
+          // Ultimate def-downs come in two flavors: percent-type (value IS the
+          // percent) and flat-type (value is defense points). Display matches type.
+          const isFlat = buff.type === 'flat';
+          const percent = isFlat ? 0 : Math.abs(buff.value || 0);
+          const flat = isFlat ? Math.abs(buff.value || 0) : 0;
           const duration = buff.duration || null;
           const desc = maxUlt.description || '';
 

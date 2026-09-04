@@ -4,8 +4,12 @@
 // Only includes characters that exist in character-info.js
 
 import { BUSTY_BURST_SKILLS_DATA, getAllCharacterSlugs } from './characters/index.js';
+import { SPRITE_IDS } from './image-manifest.js';
 
 const validCharacterSlugs = new Set(getAllCharacterSlugs());
+
+// Only characters with released art (unrevealed units stay off the lists)
+const hasArt = (id) => SPRITE_IDS.has(id);
 
 const ELEMENT_TYPES = ['Fire', 'Water', 'Wind', 'Light', 'Dark', 'Mind'];
 
@@ -59,7 +63,7 @@ function extractElementDefenseDownSkills() {
   const results = [];
 
   for (const char of BUSTY_BURST_SKILLS_DATA) {
-    if (!validCharacterSlugs.has(char.slug)) continue;
+    if (!validCharacterSlugs.has(char.slug) || !hasArt(char.id)) continue;
 
     const charBase = {
       characterId: char.id,

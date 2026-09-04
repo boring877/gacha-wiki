@@ -3,8 +3,8 @@
 
 export const info = {
   "slug": "purehearted-pâtissière-frey",
-  "name": "Purehearted Pâtissière: Frey",
-  "displayName": "Purehearted Pâtissière: Frey",
+  "name": "Innocent Confectioner: Frey",
+  "displayName": "Innocent Confectioner: Frey",
   "baseName": "Frey",
   "title": "Purehearted Pâtissière",
   "rarity": "SSR",
@@ -311,7 +311,7 @@ export const skills = {
       ]
     }
   ],
-  "name": "Purehearted Pâtissière: Frey",
+  "name": "Innocent Confectioner: Frey",
   "id": 2109,
   "rarity": "SSR",
   "element": "Fire",

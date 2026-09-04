@@ -3,8 +3,8 @@
 
 export const info = {
   "slug": "chocolate-dragon-warrior-hildis",
-  "name": "Chocolate Dragon Warrior: Hildis",
-  "displayName": "Chocolate Dragon Warrior: Hildis",
+  "name": "Chocolate Dragon Knight: Hildis",
+  "displayName": "Chocolate Dragon Knight: Hildis",
   "baseName": "Hildis",
   "title": "Chocolate Dragon Warrior",
   "rarity": "SSR",
@@ -331,7 +331,7 @@ export const skills = {
       ]
     }
   ],
-  "name": "Chocolate Dragon Warrior: Hildis",
+  "name": "Chocolate Dragon Knight: Hildis",
   "id": 2110,
   "rarity": "SSR",
   "element": "Water",

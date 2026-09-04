@@ -42,7 +42,6 @@ import { info as captain_of_the_vern_holy_knights_order_frigis_info, skills as c
 import { info as celebria_info, skills as celebria_skills, stats as celebria_stats } from "./celebria.js";
 import { info as celestia_info, skills as celestia_skills, stats as celestia_stats } from "./celestia.js";
 import { info as champion_of_love_and_chocolate_shaty_info, skills as champion_of_love_and_chocolate_shaty_skills, stats as champion_of_love_and_chocolate_shaty_stats } from "./champion-of-love-and-chocolate-shaty.js";
-import { info as chocolate_dragon_knight_hildis_info, skills as chocolate_dragon_knight_hildis_skills, stats as chocolate_dragon_knight_hildis_stats } from "./chocolate-dragon-knight-hildis.js";
 import { info as chocolate_dragon_warrior_hildis_info, skills as chocolate_dragon_warrior_hildis_skills, stats as chocolate_dragon_warrior_hildis_stats } from "./chocolate-dragon-warrior-hildis.js";
 import { info as chocolate_is_mine_ange_info, skills as chocolate_is_mine_ange_skills, stats as chocolate_is_mine_ange_stats } from "./chocolate-is-mine-ange.js";
 import { info as cluul_info, skills as cluul_skills, stats as cluul_stats } from "./cluul.js";
@@ -57,7 +56,6 @@ import { info as drowatt_info, skills as drowatt_skills, stats as drowatt_stats 
 import { info as elaine_info, skills as elaine_skills, stats as elaine_stats } from "./elaine.js";
 import { info as elegant_bunny_girl_bernadette_info, skills as elegant_bunny_girl_bernadette_skills, stats as elegant_bunny_girl_bernadette_stats } from "./elegant-bunny-girl-bernadette.js";
 import { info as elegant_portrait_aysis_info, skills as elegant_portrait_aysis_skills, stats as elegant_portrait_aysis_stats } from "./elegant-portrait-aysis.js";
-import { info as elegant_portrait_shamshel_info, skills as elegant_portrait_shamshel_skills, stats as elegant_portrait_shamshel_stats } from "./elegant-portrait-shamshel.js";
 import { info as elrons_sturdy_shield_natasha_info, skills as elrons_sturdy_shield_natasha_skills, stats as elrons_sturdy_shield_natasha_stats } from "./elrons-sturdy-shield-natasha.js";
 import { info as elythia_info, skills as elythia_skills, stats as elythia_stats } from "./elythia.js";
 import { info as emelaria_info, skills as emelaria_skills, stats as emelaria_stats } from "./emelaria.js";
@@ -76,7 +74,6 @@ import { info as festive_china_dress_diana_info, skills as festive_china_dress_d
 import { info as fionore_info, skills as fionore_skills, stats as fionore_stats } from "./fionore.js";
 import { info as fireworks_master_of_the_sky_festival_viatrice_info, skills as fireworks_master_of_the_sky_festival_viatrice_skills, stats as fireworks_master_of_the_sky_festival_viatrice_stats } from "./fireworks-master-of-the-sky-festival-viatrice.js";
 import { info as first_chocolate_making_kaguya_info, skills as first_chocolate_making_kaguya_skills, stats as first_chocolate_making_kaguya_stats } from "./first-chocolate-making-kaguya.js";
-import { info as fresh_out_of_the_pool_artia_info, skills as fresh_out_of_the_pool_artia_skills, stats as fresh_out_of_the_pool_artia_stats } from "./fresh-out-of-the-pool-artia.js";
 import { info as frey_info, skills as frey_skills, stats as frey_stats } from "./frey.js";
 import { info as fruit_basket_bianca_info, skills as fruit_basket_bianca_skills, stats as fruit_basket_bianca_stats } from "./fruit-basket-bianca.js";
 import { info as geldin_info, skills as geldin_skills, stats as geldin_stats } from "./geldin.js";
@@ -86,7 +83,6 @@ import { info as gil_info, skills as gil_skills, stats as gil_stats } from "./gi
 import { info as giselle_info, skills as giselle_skills, stats as giselle_stats } from "./giselle.js";
 import { info as gladys_info, skills as gladys_skills, stats as gladys_stats } from "./gladys.js";
 import { info as gluttonous_warrior_raoul_and_kurul_info, skills as gluttonous_warrior_raoul_and_kurul_skills, stats as gluttonous_warrior_raoul_and_kurul_stats } from "./gluttonous-warrior-raoul-and-kurul.js";
-import { info as goddess_of_wisdom_and_courage_athena_info, skills as goddess_of_wisdom_and_courage_athena_skills, stats as goddess_of_wisdom_and_courage_athena_stats } from "./goddess-of-wisdom-and-courage-athena.js";
 import { info as golem_summoner_nerys_info, skills as golem_summoner_nerys_skills, stats as golem_summoner_nerys_stats } from "./golem-summoner-nerys.js";
 import { info as gorgeous_noble_summer_gracie_info, skills as gorgeous_noble_summer_gracie_skills, stats as gorgeous_noble_summer_gracie_stats } from "./gorgeous-noble-summer-gracie.js";
 import { info as gothic_loli_breast_fiend_juju_info, skills as gothic_loli_breast_fiend_juju_skills, stats as gothic_loli_breast_fiend_juju_stats } from "./gothic-loli-breast-fiend-juju.js";
@@ -150,7 +146,6 @@ import { info as natasha_info, skills as natasha_skills, stats as natasha_stats 
 import { info as nephilia_info, skills as nephilia_skills, stats as nephilia_stats } from "./nephilia.js";
 import { info as nerine_info, skills as nerine_skills, stats as nerine_stats } from "./nerine.js";
 import { info as nerys_info, skills as nerys_skills, stats as nerys_stats } from "./nerys.js";
-import { info as new_years_calligraphy_pastel_info, skills as new_years_calligraphy_pastel_skills, stats as new_years_calligraphy_pastel_stats } from "./new-years-calligraphy-pastel.js";
 import { info as new_years_feast_box_lynette_info, skills as new_years_feast_box_lynette_skills, stats as new_years_feast_box_lynette_stats } from "./new-years-feast-box-lynette.js";
 import { info as new_years_first_sketch_pastel_info, skills as new_years_first_sketch_pastel_skills, stats as new_years_first_sketch_pastel_stats } from "./new-years-first-sketch-pastel.js";
 import { info as nina_info, skills as nina_skills, stats as nina_stats } from "./nina.js";
@@ -287,7 +282,6 @@ export const BUSTY_BURST_CHARACTER_INFO = {
   "celebria": celebria_info,
   "celestia": celestia_info,
   "champion-of-love-and-chocolate-shaty": champion_of_love_and_chocolate_shaty_info,
-  "chocolate-dragon-knight-hildis": chocolate_dragon_knight_hildis_info,
   "chocolate-dragon-warrior-hildis": chocolate_dragon_warrior_hildis_info,
   "chocolate-is-mine-ange": chocolate_is_mine_ange_info,
   "cluul": cluul_info,
@@ -302,7 +296,6 @@ export const BUSTY_BURST_CHARACTER_INFO = {
   "elaine": elaine_info,
   "elegant-bunny-girl-bernadette": elegant_bunny_girl_bernadette_info,
   "elegant-portrait-aysis": elegant_portrait_aysis_info,
-  "elegant-portrait-shamshel": elegant_portrait_shamshel_info,
   "elrons-sturdy-shield-natasha": elrons_sturdy_shield_natasha_info,
   "elythia": elythia_info,
   "emelaria": emelaria_info,
@@ -321,7 +314,6 @@ export const BUSTY_BURST_CHARACTER_INFO = {
   "fionore": fionore_info,
   "fireworks-master-of-the-sky-festival-viatrice": fireworks_master_of_the_sky_festival_viatrice_info,
   "first-chocolate-making-kaguya": first_chocolate_making_kaguya_info,
-  "fresh-out-of-the-pool-artia": fresh_out_of_the_pool_artia_info,
   "frey": frey_info,
   "fruit-basket-bianca": fruit_basket_bianca_info,
   "geldin": geldin_info,
@@ -331,7 +323,6 @@ export const BUSTY_BURST_CHARACTER_INFO = {
   "giselle": giselle_info,
   "gladys": gladys_info,
   "gluttonous-warrior-raoul-and-kurul": gluttonous_warrior_raoul_and_kurul_info,
-  "goddess-of-wisdom-and-courage-athena": goddess_of_wisdom_and_courage_athena_info,
   "golem-summoner-nerys": golem_summoner_nerys_info,
   "gorgeous-noble-summer-gracie": gorgeous_noble_summer_gracie_info,
   "gothic-loli-breast-fiend-juju": gothic_loli_breast_fiend_juju_info,
@@ -395,7 +386,6 @@ export const BUSTY_BURST_CHARACTER_INFO = {
   "nephilia": nephilia_info,
   "nerine": nerine_info,
   "nerys": nerys_info,
-  "new-years-calligraphy-pastel": new_years_calligraphy_pastel_info,
   "new-years-feast-box-lynette": new_years_feast_box_lynette_info,
   "new-years-first-sketch-pastel": new_years_first_sketch_pastel_info,
   "nina": nina_info,
@@ -533,7 +523,6 @@ export const BUSTY_BURST_CHARACTER_STATS = {
   "celebria": celebria_stats,
   "celestia": celestia_stats,
   "champion-of-love-and-chocolate-shaty": champion_of_love_and_chocolate_shaty_stats,
-  "chocolate-dragon-knight-hildis": chocolate_dragon_knight_hildis_stats,
   "chocolate-dragon-warrior-hildis": chocolate_dragon_warrior_hildis_stats,
   "chocolate-is-mine-ange": chocolate_is_mine_ange_stats,
   "cluul": cluul_stats,
@@ -548,7 +537,6 @@ export const BUSTY_BURST_CHARACTER_STATS = {
   "elaine": elaine_stats,
   "elegant-bunny-girl-bernadette": elegant_bunny_girl_bernadette_stats,
   "elegant-portrait-aysis": elegant_portrait_aysis_stats,
-  "elegant-portrait-shamshel": elegant_portrait_shamshel_stats,
   "elrons-sturdy-shield-natasha": elrons_sturdy_shield_natasha_stats,
   "elythia": elythia_stats,
   "emelaria": emelaria_stats,
@@ -567,7 +555,6 @@ export const BUSTY_BURST_CHARACTER_STATS = {
   "fionore": fionore_stats,
   "fireworks-master-of-the-sky-festival-viatrice": fireworks_master_of_the_sky_festival_viatrice_stats,
   "first-chocolate-making-kaguya": first_chocolate_making_kaguya_stats,
-  "fresh-out-of-the-pool-artia": fresh_out_of_the_pool_artia_stats,
   "frey": frey_stats,
   "fruit-basket-bianca": fruit_basket_bianca_stats,
   "geldin": geldin_stats,
@@ -577,7 +564,6 @@ export const BUSTY_BURST_CHARACTER_STATS = {
   "giselle": giselle_stats,
   "gladys": gladys_stats,
   "gluttonous-warrior-raoul-and-kurul": gluttonous_warrior_raoul_and_kurul_stats,
-  "goddess-of-wisdom-and-courage-athena": goddess_of_wisdom_and_courage_athena_stats,
   "golem-summoner-nerys": golem_summoner_nerys_stats,
   "gorgeous-noble-summer-gracie": gorgeous_noble_summer_gracie_stats,
   "gothic-loli-breast-fiend-juju": gothic_loli_breast_fiend_juju_stats,
@@ -641,7 +627,6 @@ export const BUSTY_BURST_CHARACTER_STATS = {
   "nephilia": nephilia_stats,
   "nerine": nerine_stats,
   "nerys": nerys_stats,
-  "new-years-calligraphy-pastel": new_years_calligraphy_pastel_stats,
   "new-years-feast-box-lynette": new_years_feast_box_lynette_stats,
   "new-years-first-sketch-pastel": new_years_first_sketch_pastel_stats,
   "nina": nina_stats,
@@ -779,7 +764,6 @@ export const BUSTY_BURST_SKILLS_DATA = [
   celebria_skills,
   celestia_skills,
   champion_of_love_and_chocolate_shaty_skills,
-  chocolate_dragon_knight_hildis_skills,
   chocolate_dragon_warrior_hildis_skills,
   chocolate_is_mine_ange_skills,
   cluul_skills,
@@ -794,7 +778,6 @@ export const BUSTY_BURST_SKILLS_DATA = [
   elaine_skills,
   elegant_bunny_girl_bernadette_skills,
   elegant_portrait_aysis_skills,
-  elegant_portrait_shamshel_skills,
   elrons_sturdy_shield_natasha_skills,
   elythia_skills,
   emelaria_skills,
@@ -813,7 +796,6 @@ export const BUSTY_BURST_SKILLS_DATA = [
   fionore_skills,
   fireworks_master_of_the_sky_festival_viatrice_skills,
   first_chocolate_making_kaguya_skills,
-  fresh_out_of_the_pool_artia_skills,
   frey_skills,
   fruit_basket_bianca_skills,
   geldin_skills,
@@ -823,7 +805,6 @@ export const BUSTY_BURST_SKILLS_DATA = [
   giselle_skills,
   gladys_skills,
   gluttonous_warrior_raoul_and_kurul_skills,
-  goddess_of_wisdom_and_courage_athena_skills,
   golem_summoner_nerys_skills,
   gorgeous_noble_summer_gracie_skills,
   gothic_loli_breast_fiend_juju_skills,
@@ -887,7 +868,6 @@ export const BUSTY_BURST_SKILLS_DATA = [
   nephilia_skills,
   nerine_skills,
   nerys_skills,
-  new_years_calligraphy_pastel_skills,
   new_years_feast_box_lynette_skills,
   new_years_first_sketch_pastel_skills,
   nina_skills,
@@ -1025,7 +1005,6 @@ export const BUSTY_BURST_SKILLS_MAP = {
   "celebria": celebria_skills,
   "celestia": celestia_skills,
   "champion-of-love-and-chocolate-shaty": champion_of_love_and_chocolate_shaty_skills,
-  "chocolate-dragon-knight-hildis": chocolate_dragon_knight_hildis_skills,
   "chocolate-dragon-warrior-hildis": chocolate_dragon_warrior_hildis_skills,
   "chocolate-is-mine-ange": chocolate_is_mine_ange_skills,
   "cluul": cluul_skills,
@@ -1040,7 +1019,6 @@ export const BUSTY_BURST_SKILLS_MAP = {
   "elaine": elaine_skills,
   "elegant-bunny-girl-bernadette": elegant_bunny_girl_bernadette_skills,
   "elegant-portrait-aysis": elegant_portrait_aysis_skills,
-  "elegant-portrait-shamshel": elegant_portrait_shamshel_skills,
   "elrons-sturdy-shield-natasha": elrons_sturdy_shield_natasha_skills,
   "elythia": elythia_skills,
   "emelaria": emelaria_skills,
@@ -1059,7 +1037,6 @@ export const BUSTY_BURST_SKILLS_MAP = {
   "fionore": fionore_skills,
   "fireworks-master-of-the-sky-festival-viatrice": fireworks_master_of_the_sky_festival_viatrice_skills,
   "first-chocolate-making-kaguya": first_chocolate_making_kaguya_skills,
-  "fresh-out-of-the-pool-artia": fresh_out_of_the_pool_artia_skills,
   "frey": frey_skills,
   "fruit-basket-bianca": fruit_basket_bianca_skills,
   "geldin": geldin_skills,
@@ -1069,7 +1046,6 @@ export const BUSTY_BURST_SKILLS_MAP = {
   "giselle": giselle_skills,
   "gladys": gladys_skills,
   "gluttonous-warrior-raoul-and-kurul": gluttonous_warrior_raoul_and_kurul_skills,
-  "goddess-of-wisdom-and-courage-athena": goddess_of_wisdom_and_courage_athena_skills,
   "golem-summoner-nerys": golem_summoner_nerys_skills,
   "gorgeous-noble-summer-gracie": gorgeous_noble_summer_gracie_skills,
   "gothic-loli-breast-fiend-juju": gothic_loli_breast_fiend_juju_skills,
@@ -1133,7 +1109,6 @@ export const BUSTY_BURST_SKILLS_MAP = {
   "nephilia": nephilia_skills,
   "nerine": nerine_skills,
   "nerys": nerys_skills,
-  "new-years-calligraphy-pastel": new_years_calligraphy_pastel_skills,
   "new-years-feast-box-lynette": new_years_feast_box_lynette_skills,
   "new-years-first-sketch-pastel": new_years_first_sketch_pastel_skills,
   "nina": nina_skills,

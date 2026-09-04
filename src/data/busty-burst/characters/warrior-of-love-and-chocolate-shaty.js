@@ -3,8 +3,8 @@
 
 export const info = {
   "slug": "warrior-of-love-and-chocolate-shaty",
-  "name": "Warrior of Love and Chocolate: Shaty",
-  "displayName": "Warrior of Love and Chocolate: Shaty",
+  "name": "Champion of Love and Chocolate: Shaty",
+  "displayName": "Champion of Love and Chocolate: Shaty",
   "baseName": "Shaty",
   "title": "Warrior of Love and Chocolate",
   "rarity": "SR",
@@ -287,7 +287,7 @@ export const skills = {
       ]
     }
   ],
-  "name": "Warrior of Love and Chocolate: Shaty",
+  "name": "Champion of Love and Chocolate: Shaty",
   "id": 2111,
   "rarity": "SR",
   "element": "Mind",
