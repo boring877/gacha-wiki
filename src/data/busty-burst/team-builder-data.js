@@ -153,6 +153,13 @@ const TEAM_BUILDER_SLUG_MAP = {
   'magdalena': 'magdalena',
 };
 
+// Auto-extend with every registered character (key = slug). Characters
+// without a manual SKILL_CATEGORIES entry get categories derived from
+// their skill data in buildTeamBuilderCharacters().
+for (const slug of Object.keys(BUSTY_BURST_SKILLS_MAP)) {
+  if (!(slug in TEAM_BUILDER_SLUG_MAP)) TEAM_BUILDER_SLUG_MAP[slug] = slug;
+}
+
 // Buff category definitions (colors handled by CSS)
 export const BUFF_CATEGORIES = {
   A: { name: 'Single Target Ultimate', cssClass: 'buff-cat-a' },
@@ -1878,16 +1885,50 @@ const SKILL_CATEGORIES = {
   },
 };
 
+// Derive buff/debuff categories from skill data for characters that have
+// no manual SKILL_CATEGORIES entry (newer additions).
+// Buffs: A single-target ult / B multi-target ult / C single-target skill / D multi-target skill.
+// Debuffs: A any ult / B single-target skill / C multi-target skill.
+function autoSkillCategories(charSkills) {
+  if (!charSkills) return {};
+  const cats = {};
+  const classify = (key, skill, isUlt) => {
+    if (!skill) return;
+    const effects = (skill.buffEffects || [])
+      .filter(b => b.value !== 0 && b.value !== null)
+      .map(b => `${b.name} ${b.value > 0 ? '+' : ''}${b.value}${b.type === 'percent' ? '%' : ''}`);
+    if (effects.length === 0) return;
+    const target = String(skill.target || '').toLowerCase();
+    const multi = /all|全/.test(target);
+    const isDebuff = (skill.buffEffects || []).some(b => b.value < 0 || /down|-/i.test(b.name));
+    let category;
+    if (isDebuff) category = isUlt ? 'A' : multi ? 'C' : 'B';
+    else category = isUlt ? (multi ? 'B' : 'A') : multi ? 'D' : 'C';
+    cats[key] = { category, effects };
+  };
+  const s2 = charSkills.skills?.find(sk => sk.slot === 2);
+  const s3 = charSkills.skills?.find(sk => sk.slot === 3);
+  classify('skill2', s2, false);
+  classify('skill3', s3, false);
+  classify('ultimate', charSkills.ultimate?.[0], true);
+  return cats;
+}
+
 function buildTeamBuilderCharacters() {
   const characters = {};
+  const seenSlugs = new Set();
 
   for (const [charId, slug] of Object.entries(TEAM_BUILDER_SLUG_MAP)) {
+    // legacy snake_case keys and auto-added slug keys can point at the same
+    // character — first entry wins (legacy first, so manual categories apply)
+    if (seenSlugs.has(slug)) continue;
+    seenSlugs.add(slug);
     const charInfo = BUSTY_BURST_CHARACTER_INFO[slug];
     const charSkills = BUSTY_BURST_SKILLS_MAP[slug];
 
     if (!charInfo || !charInfo.name || !charInfo.rarity || !charInfo.element || !charInfo.role) continue;
 
-    const skillCategories = SKILL_CATEGORIES[charId] || {};
+    const skillCategories = SKILL_CATEGORIES[charId] || autoSkillCategories(charSkills);
     const buffs = [];
     const debuffs = [];
 

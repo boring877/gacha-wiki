@@ -13,7 +13,12 @@ function isElementDefenseDownBuff(buff, element) {
   if (!buff || !buff.name) return false;
   const name = buff.name.toLowerCase();
   const el = element.toLowerCase();
-  return name.includes('type defense') && name.includes(el) && name.includes('-');
+  // old naming: "Fire Type Defense-"; current EN data: "Fire Type Damage Taken+"
+  // (enemy takes more damage of that element = element defense down)
+  return (
+    (name.includes('type defense') && name.includes('-')) ||
+    (name.includes('type damage taken') && name.includes('+'))
+  ) && name.includes(el);
 }
 
 function isUltimateBuff(buff) {
