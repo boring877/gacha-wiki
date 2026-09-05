@@ -1,0 +1,132 @@
+---
+// Silver and Blood contributing/contact page (linked from redeem-codes quick actions)
+import SABLandingLayout from '../../../layouts/silver-and-blood/LandingLayout.astro';
+
+const title = 'Contributing - Silver and Blood - GachaWiki';
+const description = 'Get in touch to help improve Silver and Blood guides';
+---
+
+<SABLandingLayout title={title} description={description} gameTitle="Contributing">
+  <section class="zn-section">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="section-description">
+      Want to help improve Silver and Blood guides? Have suggestions, corrections, or new content?
+      Send me a message through any of these platforms!
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>YouTube</h3>
+        <p>Comment on my videos or send a message directly through my channel</p>
+        <a href="https://www.youtube.com/@GachaJunkie888" class="contact-button" target="_blank">
+          Visit YouTube Channel
+        </a>
+      </div>
+
+      <div class="contact-card">
+        <h3>GitHub</h3>
+        <p>Create an issue or contribute directly to the project repository</p>
+        <a href="https://github.com/boring877/gacha-wiki" class="contact-button" target="_blank">
+          Visit GitHub Repository
+        </a>
+      </div>
+
+      <div class="contact-card">
+        <h3>Discord</h3>
+        <p>Join our community server for real-time discussions and support</p>
+        <a href="https://discord.com/invite/JKCNtkSGNE" class="contact-button" target="_blank">
+          Join Discord Server
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="zn-section">
+    <h2 class="section-title">How to Contribute</h2>
+    <div class="section-description">Multiple ways to help improve the Silver and Blood wiki</div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Report Issues</h3>
+        <p>Found incorrect information, broken links, or missing content? Let us know!</p>
+        <ul class="card-list">
+          <li>Character data corrections</li>
+          <li>Update information</li>
+          <li>Missing content suggestions</li>
+        </ul>
+      </div>
+
+      <div class="contact-card">
+        <h3>Submit Content</h3>
+        <p>Share your knowledge and help expand our guides</p>
+        <ul class="card-list">
+          <li>Character builds and strategies</li>
+          <li>Event guides and tips</li>
+          <li>Dungeon and boss information</li>
+        </ul>
+      </div>
+
+      <div class="contact-card">
+        <h3>Technical Contributions</h3>
+        <p>Help improve the website functionality and performance</p>
+        <ul class="card-list">
+          <li>Bug fixes and improvements</li>
+          <li>New features</li>
+          <li>Performance optimizations</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</SABLandingLayout>
+
+<style>
+  .zn-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  .section-title {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .section-description {
+    color: var(--text-secondary, #999);
+    line-height: 1.6;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .contact-card {
+    background: var(--bg-primary, rgba(255, 255, 255, 0.03));
+    border: 1px solid var(--neutral-200, rgba(255, 255, 255, 0.1));
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px;
+  }
+  .contact-button {
+    background: var(--sab-accent, #8b0000);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: auto;
+  }
+  .contact-button:hover {
+    filter: brightness(1.15);
+  }
+  .card-list {
+    text-align: left;
+    color: var(--text-secondary, #999);
+    line-height: 1.6;
+  }
+</style>

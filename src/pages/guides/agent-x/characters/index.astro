@@ -80,8 +80,14 @@ const elements = ['Fire', 'Wood', 'Water', 'Light', 'Dark'];
   function updateDisplay() {
     if (!search || !grid) return;
     const query = search.value.toLowerCase();
-    const activeRole = document.querySelector('.ax-filter-btn.active')?.getAttribute('data-role') || 'all';
-    const activeElem = document.querySelector('.ax-filter-btn.active')?.getAttribute('data-elem') || 'all';
+    // Role and element pills stay active independently; read one of each.
+    let activeRole = 'all';
+    let activeElem = 'all';
+    filterBtns.forEach(btn => {
+      if (!btn.classList.contains('active')) return;
+      if (btn.dataset.role !== 'all') activeRole = btn.dataset.role;
+      if (btn.dataset.elem !== 'all') activeElem = btn.dataset.elem;
+    });
     const cards = grid?.querySelectorAll('.ax-char-card') as NodeListOf<HTMLElement>;
     let visible = 0;
 
@@ -105,8 +111,21 @@ const elements = ['Fire', 'Wood', 'Water', 'Light', 'Dark'];
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      const isReset = btn.dataset.role === 'all' && btn.dataset.elem === 'all';
+      if (isReset) {
+        // "All" resets both groups
+        filterBtns.forEach(b => b.classList.toggle('active', b === btn));
+      } else if (btn.dataset.role !== 'all') {
+        // Role pill: clear other role pills + "All", keep any element pill
+        filterBtns.forEach(b => {
+          if (b.dataset.elem === 'all') b.classList.toggle('active', b === btn);
+        });
+      } else {
+        // Element pill: clear other element pills + "All", keep any role pill
+        filterBtns.forEach(b => {
+          if (b.dataset.role === 'all') b.classList.toggle('active', b === btn);
+        });
+      }
       updateDisplay();
     });
   });

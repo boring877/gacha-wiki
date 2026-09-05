@@ -179,7 +179,7 @@ const gameTitle = "Tier List";
                       >
                         <div class="bb-character-image-wrapper">
                           <PaladinImage
-                            characterId={character.characterId || 2001}
+                            characterId={character.characterId ?? 0}
                             alt={character.name}
                             width={180}
                             height={180}
@@ -269,7 +269,7 @@ const gameTitle = "Tier List";
                       >
                         <div class="bb-character-image-wrapper">
                           <PaladinImage
-                            characterId={character.characterId || 2001}
+                            characterId={character.characterId ?? 0}
                             alt={character.name}
                             width={180}
                             height={180}

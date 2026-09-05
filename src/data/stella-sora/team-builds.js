@@ -242,7 +242,7 @@ If you have any problems, message me in Discord!`,
 
 // Get all team builds
 export const getAllTeamBuilds = () => {
-  return TEAM_BUILDS.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+  return [...TEAM_BUILDS].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
 };
 
 // Get team build by slug

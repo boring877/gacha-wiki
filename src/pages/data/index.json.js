@@ -36,9 +36,9 @@ export async function GET() {
         },
         webPages: {
           home: '/guides/zone-nova/',
-          characterDatabase: '/guides/zone-nova/character-database/',
-          memoryDatabase: '/guides/zone-nova/memory-database/',
-          tierLists: '/guides/zone-nova/tier-lists/',
+          characterDatabase: '/guides/zone-nova/characters/',
+          memoryDatabase: '/guides/zone-nova/memories/',
+          tierLists: '/guides/zone-nova/tier-list/',
           rifts: '/guides/zone-nova/rifts/',
           redeemCodes: '/guides/zone-nova/redeem-codes/',
         },
@@ -54,8 +54,8 @@ export async function GET() {
         },
         webPages: {
           home: '/guides/silver-and-blood/',
-          characterDatabase: '/guides/silver-and-blood/character-database/',
-          tierLists: '/guides/silver-and-blood/tier-lists/',
+          characterDatabase: '/guides/silver-and-blood/characters/',
+          tierLists: '/guides/silver-and-blood/tier-list/',
           redeemCodes: '/guides/silver-and-blood/redeem-codes/',
         },
       },
@@ -71,9 +71,9 @@ export async function GET() {
         },
         webPages: {
           home: '/guides/horizon-walker/',
-          characterDatabase: '/guides/horizon-walker/character-database/',
-          mercenaryDatabase: '/guides/horizon-walker/mercenary-database/',
-          tierLists: '/guides/horizon-walker/tier-lists/',
+          characterDatabase: '/guides/horizon-walker/characters/',
+          mercenaryDatabase: '/guides/horizon-walker/mercenaries/',
+          tierLists: '/guides/horizon-walker/tier-list/',
         },
       },
       {
@@ -91,9 +91,9 @@ export async function GET() {
         },
         webPages: {
           home: '/guides/stella-sora/',
-          characterDatabase: '/guides/stella-sora/character-database/',
-          discDatabase: '/guides/stella-sora/disc-database/',
-          tierLists: '/guides/stella-sora/tier-lists/',
+          characterDatabase: '/guides/stella-sora/characters/',
+          discDatabase: '/guides/stella-sora/discs/',
+          tierLists: '/guides/stella-sora/tier-list/',
           events: '/guides/stella-sora/events/',
         },
       },
@@ -111,7 +111,7 @@ export async function GET() {
         },
         webPages: {
           home: '/guides/busty-burst/',
-          tierLists: '/guides/busty-burst/tier-lists/',
+          tierLists: '/guides/busty-burst/tier-list/',
           redeemCodes: '/guides/busty-burst/redeem-codes/',
           blog: '/guides/busty-burst/blog/',
         },

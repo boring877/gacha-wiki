@@ -73,7 +73,7 @@ export async function GET() {
       setBonus: disc.setBonus,
       recommendedFor: disc.recommendedFor,
       image: disc.image,
-      detailUrl: `/guides/stella-sora/disc/${disc.slug}`,
+      detailUrl: `/guides/stella-sora/discs/${disc.slug}`,
     })),
   };
 

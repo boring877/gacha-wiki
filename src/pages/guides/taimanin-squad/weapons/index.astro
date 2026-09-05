@@ -7,7 +7,7 @@ import TSWeaponImage from '../../../../components/taimanin-squad/TSWeaponImage.a
 import TSCharacterImage from '../../../../components/taimanin-squad/TSCharacterImage.astro';
 import { TAIMANIN_SQUAD_WEAPONS } from '../../../../data/taimanin-squad/weapons.js';
 
-const allWeapons = TAIMANIN_SQUAD_WEAPONS.sort((a, b) => a.id - b.id);
+const allWeapons = [...TAIMANIN_SQUAD_WEAPONS].sort((a, b) => a.id - b.id);
 
 const totalCount = allWeapons.length;
 const star3Count = allWeapons.filter(w => w.rarity_stars === 3).length;

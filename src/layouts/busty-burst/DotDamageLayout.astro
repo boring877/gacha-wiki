@@ -1,29 +1,33 @@
 ---
+// Layout for the Burn & DoT Damage Database page
 import BBBaseHead from '../../components/busty-burst/BBBaseHead.astro';
 import GameSEO from '../../components/GameSEO.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import Analytics from '../../components/Analytics.astro';
-import DecorativeLines from '../../components/DecorativeLines.astro';
 import Breadcrumb from '../../components/busty-burst/Breadcrumb.astro';
 
+// Import CSS files (shares the defense-down stylesheet so the DoT database
+// matches the design of the other Busty Burst database pages)
 import '../../styles/games/busty-burst/busty-burst-colors.css';
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/busty-burst/busty-burst-layout.css';
-import '../../styles/games/busty-burst/busty-burst-landing.css';
+import '../../styles/games/busty-burst/busty-burst-defense-down.css';
+import '../../styles/games/busty-burst/busty-burst-badges.css';
 
 export interface Props {
   title: string;
   description?: string;
   gameTitle?: string;
-  heroImage?: any;
+  showTitle?: boolean;
 }
 
-const { title, description, gameTitle, heroImage } = Astro.props;
+const { title, description, gameTitle, showTitle = true } = Astro.props;
 ---
 
 <html lang="en">
@@ -33,17 +37,16 @@ const { title, description, gameTitle, heroImage } = Astro.props;
       gameKey="busty-burst"
       title={title}
       description={description}
-      customImage="/images/games/Busty_Burst/BG/bg_02.webp"
+      customImage="/images/games/Busty_Burst/BG/gameLogo.webp"
     />
     <slot name="head" />
-    <Analytics />
   </head>
   <body class="bb-body">
     <CustomScrollbar />
-    <div class="bg-layer bb-bg-primary"></div>
-    <div class="bg-layer bb-bg-accent-1"></div>
-    <div class="bg-layer bb-bg-accent-2"></div>
-    <div class="bg-layer bb-bg-accent-3"></div>
+    <!-- Background layers for visual depth -->
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
 
     <div class="bb-content">
       <Header />
@@ -51,37 +54,21 @@ const { title, description, gameTitle, heroImage } = Astro.props;
       <MobileMenu />
 
       <div class="bb-container">
-        <main class="bb-main" id="main-content">
+        <main class="bb-main">
+          <!-- Title Section -->
           {
-            heroImage && gameTitle && (
-              <section class="hero-section">
-                <div class="hero-image-wrapper">
-                  <img
-                    src={heroImage}
-                    alt={gameTitle}
-                    class="hero-image"
-                    width={1200}
-                    height={400}
-                    loading="eager"
-                    decoding="async"
-                  />
-                  <div class="hero-overlay" />
-                </div>
-                <h1 class="hero-title">{gameTitle}</h1>
+            showTitle && gameTitle && (
+              <section class="bb-title-only-section">
+                <h1 class="bb-title-only-heading">{gameTitle}</h1>
                 <DecorativeLines />
               </section>
             )
           }
 
-          {!heroImage && gameTitle && (
-            <section class="bb-title-only-section">
-              <h1 class="bb-title-only-heading">{gameTitle}</h1>
-              <DecorativeLines />
-            </section>
-          )}
-
+          <!-- Breadcrumb Navigation -->
           <Breadcrumb autoGenerate={true} gameKey="busty-burst" showBackButton={true} />
 
+          <!-- Content Area -->
           <div class="content-area">
             <slot />
           </div>
@@ -90,5 +77,7 @@ const { title, description, gameTitle, heroImage } = Astro.props;
 
       <Footer />
     </div>
+
+    <Analytics />
   </body>
 </html>

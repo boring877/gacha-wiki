@@ -32,7 +32,7 @@ export const DISCS_DATA = [
 
 // Utility functions for disc data management
 export const getAllDiscs = () => {
-  return DISCS_DATA.sort((a, b) => a.id - b.id);
+  return [...DISCS_DATA].sort((a, b) => a.id - b.id);
 };
 
 export const getDiscBySlug = slug => {

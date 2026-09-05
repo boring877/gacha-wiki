@@ -178,6 +178,10 @@ export const DEBUFF_CATEGORIES = {
 // Direct mapping from character-skills.js IDs to numeric characterIds
 // Based on character-stats-full.js data
 const CHARACTER_ID_MAP = {
+  // Base Lynette's slim character-info entry carries no characterId —
+  // her real game id (characters/lynette.js) is 2087
+  lynette: 2087,
+
   // SSR Characters
   'festive_attire_estiriel': 2069,
   'elegant_shamshel': 2040,
@@ -1896,7 +1900,10 @@ function autoSkillCategories(charSkills) {
     if (!skill) return;
     const effects = (skill.buffEffects || [])
       .filter(b => b.value !== 0 && b.value !== null)
-      .map(b => `${b.name} ${b.value > 0 ? '+' : ''}${b.value}${b.type === 'percent' ? '%' : ''}`);
+      .map(b => ({
+        stat: b.name,
+        value: `${b.value > 0 ? '+' : ''}${b.value}${b.type === 'percent' ? '%' : ''}`,
+      }));
     if (effects.length === 0) return;
     const target = String(skill.target || '').toLowerCase();
     const multi = /all|全/.test(target);
@@ -1904,7 +1911,9 @@ function autoSkillCategories(charSkills) {
     let category;
     if (isDebuff) category = isUlt ? 'A' : multi ? 'C' : 'B';
     else category = isUlt ? (multi ? 'B' : 'A') : multi ? 'D' : 'C';
-    cats[key] = { category, effects };
+    // type feeds the buff-vs-debuff split in buildTeamBuilderCharacters —
+    // manual SKILL_CATEGORIES entries always carry it, auto entries must too
+    cats[key] = { type: isDebuff ? 'debuff' : 'buff', category, effects };
   };
   const s2 = charSkills.skills?.find(sk => sk.slot === 2);
   const s3 = charSkills.skills?.find(sk => sk.slot === 3);

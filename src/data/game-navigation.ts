@@ -298,6 +298,7 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
           { name: 'Physical DEF Down', href: '/guides/busty-burst/physical-defense-down/' },
           { name: 'Magic DEF Down', href: '/guides/busty-burst/magic-defense-down/' },
           { name: 'Element DEF Down', href: '/guides/busty-burst/element-defense-down/' },
+          { name: 'Burn & DoT Damage', href: '/guides/busty-burst/dot-damage/' },
           { name: 'Team Builder', href: '/guides/busty-burst/team-builder/' },
           { name: 'Skill Formulas', href: '/guides/busty-burst/skill-formulas/' },
         ],

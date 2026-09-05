@@ -29,7 +29,7 @@ export async function GET() {
       : null,
 
     // Page link
-    detailUrl: `/guides/busty-burst/builds/${slug}`,
+    detailUrl: `/guides/busty-burst/build/${slug}`,
   }));
 
   const response = {

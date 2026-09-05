@@ -144,12 +144,16 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
           <option value="Light">Light</option>
           <option value="Dark">Dark</option>
           <option value="Mind">Mind</option>
+          <option value="Holy">Holy</option>
         </select>
         <select id="role-filter" class="bb-tb-filter-select">
           <option value="">All Roles</option>
           <option value="Attacker">Attacker</option>
+          <option value="DPS">DPS</option>
           <option value="Support">Support</option>
+          <option value="Summoner">Summoner</option>
           <option value="Tank">Tank</option>
+          <option value="Healer">Healer</option>
         </select>
         <select id="rarity-filter" class="bb-tb-filter-select">
           <option value="">All Rarities</option>
@@ -172,7 +176,7 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
               data-rarity={char.rarity}
             >
               <div class="bb-tb-char-img">
-                <PaladinImage characterId={char.characterId || 2001} alt={char.name} width={80} height={80} quality={95} />
+                <PaladinImage characterId={char.characterId ?? 0} alt={char.name} width={80} height={80} quality={95} />
               </div>
               <div class="bb-tb-char-info">
                 <span class="bb-tb-char-name">{char.name}</span>
@@ -434,7 +438,9 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
         const key = `${char.id}:${skill.skillType}`;
         const conflicts = conflictLookup[key];
         const isConflict = !!conflicts;
-        const effects = (skill.effects || []).map(e => `${e.stat}: ${e.value}`).join(', ');
+        const effects = (skill.effects || [])
+          .map(e => (typeof e === 'string' ? e : `${e.stat}: ${e.value}`))
+          .join(', ');
         const catClass = `${skill.skillGroup}-${skill.category}`;
 
         let conflictInfo = '';
@@ -484,6 +490,10 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
     });
   }
 
+  // Effects are {stat, value} objects; tolerate legacy plain-string entries by
+  // using the string itself as the stat identity (no more "on undefined" keys)
+  const effectStat = e => (typeof e === 'string' ? e : e.stat);
+
   function detectBuffConflicts(chars) {
     // Group all buffs by category AND stat type
     // For single-target categories (A, C): also group by target since they only conflict if hitting same target
@@ -510,13 +520,13 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
                 // because each character's self-buff only affects themselves (different units)
                 // Include charId in key for self buffs to prevent false conflicts
                 if (normalizedTarget === 'self') {
-                  key = `${buff.category}:${effect.stat}:self:${char.id}`;
+                  key = `${buff.category}:${effectStat(effect)}:self:${char.id}`;
                 } else {
-                  key = `${buff.category}:${effect.stat}:${normalizedTarget}`;
+                  key = `${buff.category}:${effectStat(effect)}:${normalizedTarget}`;
                 }
               } else {
                 // Multi-target buffs (B, D) conflict if same category + same stat
-                key = `${buff.category}:${effect.stat}`;
+                key = `${buff.category}:${effectStat(effect)}`;
               }
 
               if (!buffsByKey[key]) {
@@ -526,8 +536,8 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
                 charId: char.id,
                 charName: char.name,
                 category: buff.category,
-                statName: effect.stat,
-                statValue: effect.value,
+                statName: effectStat(effect),
+                statValue: typeof effect === 'string' ? null : effect.value,
                 skillType: buff.skillType,
                 skillName: buff.skillName,
                 description: buff.description,
@@ -583,10 +593,10 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
               if (singleTargetCategories.includes(debuff.category)) {
                 // Single-target debuffs only conflict if hitting same target
                 const normalizedTarget = (debuff.target || 'unknown').toLowerCase().trim();
-                key = `${debuff.category}:${effect.stat}:${normalizedTarget}`;
+                key = `${debuff.category}:${effectStat(effect)}:${normalizedTarget}`;
               } else {
                 // Multi-target debuffs (A, C) conflict if same category + same stat
-                key = `${debuff.category}:${effect.stat}`;
+                key = `${debuff.category}:${effectStat(effect)}`;
               }
 
               if (!debuffsByKey[key]) {
@@ -596,8 +606,8 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
                 charId: char.id,
                 charName: char.name,
                 category: debuff.category,
-                statName: effect.stat,
-                statValue: effect.value,
+                statName: effectStat(effect),
+                statValue: typeof effect === 'string' ? null : effect.value,
                 skillType: debuff.skillType,
                 skillName: debuff.skillName,
                 description: debuff.description,
@@ -732,7 +742,32 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
   }
 
   function showToast(message) {
-    // Simple alert for now - could be enhanced with a toast notification
+    let toast = document.getElementById('bb-tb-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'bb-tb-toast';
+      toast.style.cssText = [
+        'position: fixed',
+        'bottom: 24px',
+        'left: 50%',
+        'transform: translateX(-50%)',
+        'background: rgba(30, 30, 35, 0.95)',
+        'color: #fff',
+        'padding: 10px 20px',
+        'border-radius: 8px',
+        'z-index: 1000',
+        'opacity: 0',
+        'transition: opacity 0.2s',
+        'pointer-events: none',
+      ].join(';');
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.style.opacity = '1';
+    clearTimeout(showToast._timer);
+    showToast._timer = setTimeout(() => {
+      toast.style.opacity = '0';
+    }, 1800);
   }
 
   // Initialize on DOM ready

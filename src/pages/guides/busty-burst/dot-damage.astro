@@ -1,0 +1,298 @@
+---
+// Busty Burst Burn & DoT Damage Database
+// Lists every released unit with damage-over-time effects (Burn, Poison,
+// Bleed, Freeze, Fear/MP drain), one tab per type. Uses the shared
+// defense-down stylesheet so the design matches the other database pages.
+import DotDamageLayout from '../../../layouts/busty-burst/DotDamageLayout.astro';
+import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
+import ElementImage from '../../../components/busty-burst/ElementImage.astro';
+import RarityImage from '../../../components/busty-burst/RarityImage.astro';
+import SkillIcon from '../../../components/busty-burst/SkillIcon.astro';
+import {
+  DOT_TYPES,
+  DOT_ENTRIES,
+  getDotEntries,
+  getDotTypeCounts,
+} from '../../../data/busty-burst/dot-damage-data.js';
+
+const counts = getDotTypeCounts();
+const totalEntries = DOT_ENTRIES.length;
+
+const rarities = [...new Set(DOT_ENTRIES.map(e => e.rarity).filter(Boolean))].sort();
+const elements = [...new Set(DOT_ENTRIES.map(e => e.element).filter(Boolean))].sort();
+
+const clockSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/></svg>`;
+
+const title = 'Burn & DoT Damage Database - Busty Burst Fantasy';
+const description = `Complete database of all damage-over-time units in Busty Burst Fantasy: ${counts.burn} Burn, ${counts.poison} Poison, ${counts.bleed} Bleed, ${counts.freeze} Freeze and ${counts.fear} Fear/MP-drain characters with tick values at max level, durations and targets.`;
+const gameTitle = 'Burn & DoT Damage Database';
+---
+
+<DotDamageLayout title={title} description={description} gameTitle={gameTitle}>
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json" slot="head">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Busty Burst Fantasy Burn & DoT Damage Characters",
+      "description": "All released characters with damage-over-time skills (Burn, Poison, Bleed, Freeze, Fear)",
+      "numberOfItems": {totalEntries},
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Burn",
+          "description": "HP loss per second, often paired with Fire damage taken up"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Poison",
+          "description": "HP loss per second; Deadly Poison variants stack"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Bleed",
+          "description": "HP loss every time the victim acts; mostly uncleanseable"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Freeze",
+          "description": "Freeze CC that drains HP per second"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Fear (MP Drain)",
+          "description": "Drains MP per second"
+        }
+      ]
+    }
+  </script>
+
+  <div class="bb-defdown-page">
+    <!-- Intro -->
+    <div class="bb-defdown-info-box">
+      <h3 class="bb-defdown-info-title">Damage Over Time</h3>
+      <div class="bb-defdown-info-content">
+        <p class="bb-defdown-info-text">
+          Every released unit that applies <strong>damage over time</strong>: Burn, Poison
+          (including stacking Deadly Poison), Bleed, Freeze (CC plus HP drain) and Fear (MP
+          drain). Skill values are shown at <strong>Skill Lv90</strong>, Ultimate values at
+          <strong>LV5</strong>.
+        </p>
+        <p class="bb-defdown-info-text">
+          DoTs of different types stack with each other, and Skill + Ultimate DoTs stack even
+          when they share a type. See the
+          <a href="/guides/busty-burst/buff-debuff-guide/">Buff &amp; Debuff Guide</a> for the
+          category rules.
+        </p>
+      </div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="bb-defdown-tabs">
+      {
+        Object.entries(DOT_TYPES).map(([key, t]) => (
+          <button type="button" class="bb-defdown-tab" data-tab={key}>
+            {t.label} ({counts[key]})
+          </button>
+        ))
+      }
+    </div>
+
+    <!-- Shared filters (apply to the active tab) -->
+    <div class="bb-defdown-controls">
+      <div class="bb-defdown-filter-row">
+        <input
+          type="text"
+          id="dot-search"
+          class="bb-defdown-search-input"
+          placeholder="Search by character or skill name..."
+        />
+        <select id="dot-rarity-filter" class="bb-defdown-filter-select">
+          <option value="">All Rarities</option>
+          {rarities.map(r => <option value={r.toLowerCase()}>{r}</option>)}
+        </select>
+        <select id="dot-element-filter" class="bb-defdown-filter-select">
+          <option value="">All Elements</option>
+          {elements.map(el => <option value={el.toLowerCase()}>{el}</option>)}
+        </select>
+        <button type="button" id="dot-clear" class="bb-defdown-clear-btn">Clear All</button>
+      </div>
+    </div>
+
+    {
+      Object.entries(DOT_TYPES).map(([key, t]) => {
+        const entries = getDotEntries(key);
+        return (
+          <div class="bb-defdown-tab-content" id={`${key}-content`}>
+            <div class="bb-defdown-info-box">
+              <h3 class="bb-defdown-info-title">{t.label}</h3>
+              <div class="bb-defdown-info-content">
+                <p class="bb-defdown-info-text">{t.mechanic}</p>
+              </div>
+            </div>
+
+            <div class="bb-defdown-grid">
+              {entries.map(entry => {
+                const lvBadge =
+                  entry.sourceType === 'ultimate' ? 'LV5' : entry.sourceType === 'skill' ? 'Lv90' : 'Passive';
+                const slotLabel =
+                  entry.sourceType === 'ultimate' ? 'Ultimate' : entry.skillSlot;
+                return (
+                  <div
+                    class={`bb-defdown-card${entry.sourceType === 'ultimate' ? ' bb-defdown-card-ultimate' : ''}`}
+                    data-name={`${entry.characterName} ${entry.skillName}`.toLowerCase()}
+                    data-rarity={entry.rarity?.toLowerCase()}
+                    data-element={entry.element?.toLowerCase()}
+                  >
+                    <a
+                      class="bb-defdown-card-link"
+                      href={`/guides/busty-burst/characters/${entry.characterSlug}/`}
+                      aria-label={`View ${entry.characterName}`}
+                    />
+                    <div class="bb-defdown-card-header">
+                      <div class="bb-defdown-card-avatar">
+                        <PaladinImage characterId={entry.characterId} alt={entry.characterName} width={60} height={60} />
+                      </div>
+                      <div class="bb-defdown-card-info">
+                        <h3 class="bb-defdown-card-name">{entry.characterName}</h3>
+                        <div class="bb-defdown-card-meta">
+                          {entry.rarity && (
+                            <span class="bb-defdown-meta-item">
+                              <RarityImage rarity={entry.rarity} width={80} height={40} class="bb-defdown-rarity-img" />
+                            </span>
+                          )}
+                          {entry.element && (
+                            <span class="bb-defdown-meta-item">
+                              <ElementImage element={entry.element} width={14} height={14} />
+                              {entry.element}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="bb-defdown-card-body">
+                      <div class="bb-defdown-skill-row">
+                        <div class="bb-defdown-skill-icon">
+                          <SkillIcon skillId={entry.skillIcon} alt={entry.skillName} width={36} height={36} />
+                        </div>
+                        <div class="bb-defdown-skill-info">
+                          <div class="bb-defdown-skill-name">{entry.skillName}</div>
+                          <div class="bb-defdown-skill-slot">{slotLabel}</div>
+                        </div>
+                      </div>
+                      <div class="bb-defdown-values">
+                        <span class="bb-defdown-lv-badge">{lvBadge}</span>
+                        <div class="bb-defdown-value-main">
+                          {entry.tickLv90 != null && (
+                            <span class="bb-defdown-value-percent">
+                              -{entry.tickLv90.toLocaleString()} {entry.tickUnit}
+                            </span>
+                          )}
+                          {entry.sourceType === 'skill' &&
+                            entry.tickLv1 != null &&
+                            entry.tickLv1 !== entry.tickLv90 && (
+                              <span class="bb-defdown-value-flat">Lv1: -{entry.tickLv1.toLocaleString()}</span>
+                            )}
+                        </div>
+                        {entry.duration != null && (
+                          <div class="bb-defdown-value-duration">
+                            <Fragment set:html={clockSvg} />
+                            {entry.duration}s
+                          </div>
+                        )}
+                      </div>
+                      <div class="bb-defdown-target">
+                        Target: <span>{entry.target}</span>
+                        <span class={`bb-defdown-target-badge ${entry.targetType}`}>
+                          {entry.targetType === 'single' ? 'Single' : 'Multi'}
+                        </span>
+                        {entry.stackable && <span class="bb-defdown-target-badge">Stackable</span>}
+                      </div>
+                      {entry.description && <div class="bb-defdown-description">{entry.description}</div>}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })
+    }
+
+    <!-- No results -->
+    <div class="bb-defdown-no-results" id="dot-no-results">
+      <h3>No characters found</h3>
+      <p>No DoT units match your filters.</p>
+    </div>
+  </div>
+</DotDamageLayout>
+
+<script>
+  function initDotPage() {
+    const tabs = document.querySelectorAll<HTMLButtonElement>('.bb-defdown-tab');
+    const contents = document.querySelectorAll<HTMLElement>('.bb-defdown-tab-content');
+    const searchInput = document.getElementById('dot-search') as HTMLInputElement;
+    const rarityFilter = document.getElementById('dot-rarity-filter') as HTMLSelectElement;
+    const elementFilter = document.getElementById('dot-element-filter') as HTMLSelectElement;
+    const clearBtn = document.getElementById('dot-clear');
+    const noResults = document.getElementById('dot-no-results');
+
+    function filterCards() {
+      const search = searchInput?.value.toLowerCase() || '';
+      const rarity = rarityFilter?.value.toLowerCase() || '';
+      const element = elementFilter?.value.toLowerCase() || '';
+
+      let visible = 0;
+      contents.forEach(panel => {
+        if (!panel.classList.contains('active')) return;
+        panel.querySelectorAll<HTMLElement>('.bb-defdown-card').forEach(card => {
+          const ok =
+            (!search || card.dataset.name?.includes(search)) &&
+            (!rarity || card.dataset.rarity === rarity) &&
+            (!element || card.dataset.element === element);
+          card.classList.toggle('hidden', !ok);
+          if (ok) visible++;
+        });
+      });
+
+      noResults?.classList.toggle('visible', visible === 0);
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabId = tab.getAttribute('data-tab');
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(`${tabId}-content`)?.classList.add('active');
+        filterCards();
+      });
+    });
+
+    searchInput?.addEventListener('input', filterCards);
+    rarityFilter?.addEventListener('change', filterCards);
+    elementFilter?.addEventListener('change', filterCards);
+    clearBtn?.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      if (rarityFilter) rarityFilter.value = '';
+      if (elementFilter) elementFilter.value = '';
+      filterCards();
+    });
+
+    // First tab active on load
+    tabs[0]?.classList.add('active');
+    contents[0]?.classList.add('active');
+    filterCards();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDotPage);
+  } else {
+    initDotPage();
+  }
+</script>
