@@ -1,28 +1,101 @@
-/* Busty Burst Defense Down Database Styles */
+/* Busty Burst Defense Down pages — flat card design (2026-09-05 redesign).
+   Teal accent system, no nested boxes: one card per skill, values as the
+   visual anchor, meta as muted inline text. */
 
-/* Tab Styles */
+.bb-defdown-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ===== Summary: one slim inline row, no boxes ===== */
+.bb-defdown-summary {
+  display: flex;
+  align-items: baseline;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+  padding: 0.25rem 0;
+}
+
+.bb-defdown-stat-card {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.bb-defdown-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--bbc-accent-strong, #8fd0ea);
+  font-variant-numeric: tabular-nums;
+}
+
+.bb-defdown-stat-label {
+  font-size: 0.72rem;
+  color: var(--bb-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ===== Info box: one quiet card ===== */
+.bb-defdown-info-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+}
+
+.bb-defdown-info-title {
+  margin: 0 0 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--bbc-accent, #6db8d8);
+}
+
+.bb-defdown-info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.bb-defdown-info-text {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--bb-text-secondary);
+}
+
+.bb-defdown-info-text a {
+  color: var(--bbc-accent-strong, #8fd0ea);
+}
+
+/* ===== Tabs: quiet pills ===== */
 .bb-defdown-tabs {
   display: flex;
-  gap: 0.25rem;
-  margin-bottom: 1.5rem;
+  gap: 0.4rem;
 }
 
 .bb-defdown-tab {
-  padding: 0.6rem 1.25rem;
-  background: transparent;
-  border: none;
-  border-radius: 6px;
-  color: #808080;
+  padding: 0.4rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 999px;
+  color: var(--bb-text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
   cursor: pointer;
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
 
-
 .bb-defdown-tab.active {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  color: var(--bbc-accent-strong, #8fd0ea);
+  border-color: rgba(74, 131, 153, 0.45);
+  background: rgba(74, 131, 153, 0.12);
 }
 
 .bb-defdown-tab-content {
@@ -33,234 +106,171 @@
   display: block;
 }
 
-/* Ultimate Card */
-.bb-defdown-card-ultimate {
-  border-left: 3px solid rgba(255, 255, 255, 0.15);
-}
-
-/* Page Container */
-.bb-defdown-page {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-/* Summary Stats */
-.bb-defdown-summary {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.bb-defdown-stat-card {
-  background: var(--bb-bg-secondary, #1e1e2e);
-  border-radius: 12px;
-  padding: 1rem;
-  text-align: center;
-  border: 1px solid var(--bb-border-light, #333);
-}
-
-.bb-defdown-stat-value {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--bb-accent, #a855f7);
-}
-
-.bb-defdown-stat-label {
-  font-size: 0.85rem;
-  color: var(--bb-text-secondary, #888);
-  margin-top: 0.25rem;
-}
-
-/* Filter Controls */
+/* ===== Filters ===== */
 .bb-defdown-controls {
-  background: var(--bb-bg-secondary, #1e1e2e);
-  border-radius: 12px;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .bb-defdown-filter-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.5rem;
   align-items: center;
+}
+
+.bb-defdown-search-input,
+.bb-defdown-filter-select {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.45rem 0.7rem;
+  color: var(--bb-text-primary);
+  font-size: 0.8rem;
 }
 
 .bb-defdown-search-input {
   flex: 1;
-  min-width: 200px;
-  padding: 0.6rem 1rem;
-  background: var(--bb-bg-primary, #16161e);
-  border: 1px solid var(--bb-border-light, #333);
-  border-radius: 8px;
-  color: var(--bb-text-primary, #fff);
-  font-size: 0.95rem;
+  min-width: 180px;
 }
 
-.bb-defdown-filter-select {
-  padding: 0.6rem 1rem;
-  background: var(--bb-bg-primary, #16161e);
-  border: 1px solid var(--bb-border-light, #333);
-  border-radius: 8px;
-  color: var(--bb-text-primary, #fff);
-  font-size: 0.9rem;
-  min-width: 130px;
+.bb-defdown-search-input::placeholder {
+  color: var(--bb-text-muted);
+}
+
+.bb-defdown-search-input:focus,
+.bb-defdown-filter-select:focus {
+  outline: none;
+  border-color: rgba(74, 131, 153, 0.5);
 }
 
 .bb-defdown-clear-btn {
-  padding: 0.6rem 1.25rem;
-  background: rgba(239, 68, 68, 0.2);
-  border: 1px solid rgba(239, 68, 68, 0.4);
+  padding: 0.45rem 0.9rem;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 8px;
-  color: #ef4444;
-  font-weight: 600;
+  color: var(--bb-text-tertiary);
+  font-size: 0.78rem;
   cursor: pointer;
-  transition: all 0.2s;
 }
 
-
-/* Results Count */
 .bb-defdown-results-count {
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-  color: var(--bb-text-secondary, #888);
+  font-size: 0.78rem;
+  color: var(--bb-text-tertiary);
+  margin: 0.15rem 0 0;
 }
 
 .bb-defdown-results-count span {
-  font-weight: 700;
-  color: var(--bb-accent, #a855f7);
+  color: var(--bb-text-primary);
+  font-weight: 600;
 }
 
-/* Tier Section Headers */
+.bb-defdown-no-results {
+  display: none;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: var(--bb-text-tertiary);
+}
+
+.bb-defdown-no-results.visible {
+  display: block;
+}
+
+/* ===== Tier sections: slim header, thin divider ===== */
 .bb-defdown-tier-section {
-  margin-bottom: 2rem;
+  margin-top: 0.5rem;
 }
 
 .bb-defdown-tier-header {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  padding: 0.75rem 1rem;
-  background: var(--bb-bg-secondary, #1e1e2e);
-  border-radius: 10px;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--bb-border);
 }
 
 .bb-defdown-tier-badge {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 800;
-  min-width: 50px;
-  text-align: center;
+  line-height: 1;
+  color: var(--bbc-accent-strong, #8fd0ea);
 }
 
 .bb-defdown-tier-info {
   flex: 1;
+  min-width: 0;
 }
 
 .bb-defdown-tier-title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--bb-text-primary, #fff);
   margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--bb-text-primary);
 }
 
 .bb-defdown-tier-desc {
-  font-size: 0.85rem;
-  color: var(--bb-text-secondary, #888);
-  margin: 0;
+  margin: 0.1rem 0 0;
+  font-size: 0.75rem;
+  color: var(--bb-text-tertiary);
 }
 
 .bb-defdown-tier-count {
-  font-size: 0.9rem;
-  color: var(--bb-text-tertiary, #666);
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
+  font-size: 0.75rem;
+  color: var(--bb-text-tertiary);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
-/* Tier Colors */
-.bb-defdown-tier-section[data-tier="S"] {
-  --tier-color: #f59e0b;
-}
+/* per-tier accent on the letter */
+.bb-defdown-tier-section[data-tier='S'] .bb-defdown-tier-badge { color: #8fd0ea; }
+.bb-defdown-tier-section[data-tier='A'] .bb-defdown-tier-badge { color: #7fc3a8; }
+.bb-defdown-tier-section[data-tier='B'] .bb-defdown-tier-badge { color: #d8c07a; }
+.bb-defdown-tier-section[data-tier='C'] .bb-defdown-tier-badge { color: var(--bb-text-tertiary); }
+.bb-defdown-tier-section[data-tier='ULT'] .bb-defdown-tier-badge { color: #c9a8e0; }
 
-.bb-defdown-tier-section[data-tier="S"] .bb-defdown-tier-badge {
-  color: #f59e0b;
-}
-
-.bb-defdown-tier-section[data-tier="A"] {
-  --tier-color: #a855f7;
-}
-
-.bb-defdown-tier-section[data-tier="A"] .bb-defdown-tier-badge {
-  color: #a855f7;
-}
-
-.bb-defdown-tier-section[data-tier="B"] {
-  --tier-color: #3b82f6;
-}
-
-.bb-defdown-tier-section[data-tier="B"] .bb-defdown-tier-badge {
-  color: #3b82f6;
-}
-
-.bb-defdown-tier-section[data-tier="C"] {
-  --tier-color: #6b7280;
-}
-
-.bb-defdown-tier-section[data-tier="C"] .bb-defdown-tier-badge {
-  color: #6b7280;
-}
-
-.bb-defdown-tier-section[data-tier="ULT"] {
-  --tier-color: #ec4899;
-}
-
-.bb-defdown-tier-section[data-tier="ULT"] .bb-defdown-tier-badge {
-  color: #ec4899;
-}
-
-/* Skills Grid */
+/* ===== Cards: one flat unit ===== */
 .bb-defdown-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.85rem;
 }
 
-/* Skill Card */
 .bb-defdown-card {
-  background: var(--bb-bg-secondary, #1e1e2e);
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--bb-border-light, #333);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  padding: 0.85rem;
 }
 
 .bb-defdown-card.hidden {
   display: none;
 }
 
-/* Card Header */
+/* — header: portrait + name + inline rarity/element — */
 .bb-defdown-card-header {
   display: flex;
-  gap: 0.75rem;
-  padding: 0.75rem;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.05));
-  border-bottom: 1px solid var(--bb-border-light, #333);
+  align-items: center;
+  gap: 0.65rem;
 }
 
 .bb-defdown-card-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 10px;
-  overflow: hidden;
+  width: 52px;
+  height: 52px;
   flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bb-bg-tertiary);
 }
 
 .bb-defdown-card-avatar img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .bb-defdown-card-info {
@@ -269,76 +279,51 @@
 }
 
 .bb-defdown-card-name {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--bb-text-primary, #fff);
-  margin: 0 0 0.25rem 0;
-  white-space: nowrap;
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+  line-height: 1.25;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .bb-defdown-card-meta {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  flex-wrap: wrap;
+  margin-top: 0.15rem;
 }
 
 .bb-defdown-meta-item {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.2rem;
-  font-size: 0.75rem;
-  color: var(--bb-text-secondary, #aaa);
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  color: var(--bb-text-tertiary);
 }
 
-.bb-defdown-meta-item img {
-  width: 16px;
-  height: 16px;
-  object-fit: contain;
+.bb-defdown-rarity-img {
+  height: 14px;
+  width: auto;
 }
 
-/* Rarity image container - needs to be larger */
-.bb-defdown-meta-item.bb-defdown-rarity {
-  display: flex;
-  align-items: center;
-}
-
-.bb-defdown-meta-item.bb-defdown-rarity img,
-img.bb-defdown-rarity-img {
-  width: 80px !important;
-  height: 40px !important;
-  max-width: none !important;
-  max-height: none !important;
-  object-fit: contain;
-}
-
-/* Card Body */
+/* — body: skill row, values, meta, description — */
 .bb-defdown-card-body {
-  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
 }
 
-/* Skill Info */
 .bb-defdown-skill-row {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  gap: 0.55rem;
 }
 
 .bb-defdown-skill-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 6px;
-  overflow: hidden;
   flex-shrink: 0;
-}
-
-.bb-defdown-skill-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .bb-defdown-skill-info {
@@ -347,50 +332,36 @@ img.bb-defdown-rarity-img {
 }
 
 .bb-defdown-skill-name {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: var(--bb-text-primary, #fff);
-  white-space: nowrap;
+  color: var(--bb-text-primary);
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .bb-defdown-skill-slot {
-  font-size: 0.7rem;
-  color: var(--bb-text-tertiary, #666);
+  font-size: 0.68rem;
+  color: var(--bb-text-muted);
   text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-top: 0.05rem;
 }
 
-/* Defense Down Values */
+/* values = the hero line */
 .bb-defdown-values {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  background: rgba(239, 68, 68, 0.1);
-  border-radius: 8px;
-  margin-bottom: 0.75rem;
-  border: 1px solid rgba(239, 68, 68, 0.2);
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-wrap: wrap;
 }
 
-/* Lv90 Badge */
 .bb-defdown-lv-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.2rem 0.5rem;
-  background: linear-gradient(135deg, #f59e0b, #d97706);
-  border-radius: 4px;
-  font-size: 0.7rem;
+  font-size: 0.62rem;
   font-weight: 700;
-  color: #fff;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  flex-shrink: 0;
-}
-
-.bb-defdown-badge {
-  background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+  color: var(--bb-text-muted);
 }
 
 .bb-defdown-value-main {
@@ -400,461 +371,94 @@ img.bb-defdown-rarity-img {
 }
 
 .bb-defdown-value-percent {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #ef4444;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--bbc-accent-strong, #8fd0ea);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
 }
 
 .bb-defdown-value-flat {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fca5a5;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--bb-text-secondary);
+  font-variant-numeric: tabular-nums;
 }
 
 .bb-defdown-value-duration {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  margin-left: auto;
-  padding: 0.35rem 0.75rem;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--bb-text-primary, #fff);
-}
-
-.bb-defdown-value-duration svg {
-  width: 16px;
-  height: 16px;
-  opacity: 0.7;
-}
-
-/* Skill Target */
-.bb-defdown-target {
-  font-size: 0.8rem;
-  color: var(--bb-text-tertiary, #666);
-  margin-bottom: 0.5rem;
-}
-
-.bb-defdown-target span {
-  color: var(--bb-text-secondary, #aaa);
-}
-
-/* Target Type Badge */
-.bb-defdown-target-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.15rem 0.4rem;
-  border-radius: 4px;
-  font-size: 0.65rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-  margin-left: 0.5rem;
-}
-
-.bb-defdown-target-badge.single {
-  background: rgba(34, 197, 94, 0.15);
-  color: #86efac;
-  border: 1px solid rgba(34, 197, 94, 0.3);
-}
-
-.bb-defdown-target-badge.multi {
-  background: rgba(59, 130, 246, 0.15);
-  color: #93c5fd;
-  border: 1px solid rgba(59, 130, 246, 0.3);
-}
-
-/* Skill Description */
-.bb-defdown-description {
-  font-size: 0.75rem;
-  color: var(--bb-text-tertiary, #888);
-  line-height: 1.4;
-  margin-top: 0.5rem;
-  padding-top: 0.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* Skill Description */
-.bb-defdown-description {
-  font-size: 0.8rem;
-  color: var(--bb-text-secondary, #aaa);
-  line-height: 1.5;
-}
-
-/* Extra Effects */
-.bb-defdown-extras {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-
-.bb-defdown-extra-tag {
-  font-size: 0.7rem;
-  padding: 0.15rem 0.4rem;
-  border-radius: 4px;
-  background: rgba(168, 85, 247, 0.15);
-  color: #d8b4fe;
-  border: 1px solid rgba(168, 85, 247, 0.3);
-}
-
-.bb-defdown-extra-tag[data-type="Burn"] {
-  background: rgba(239, 68, 68, 0.15);
-  color: #fca5a5;
-  border-color: rgba(239, 68, 68, 0.3);
-}
-
-.bb-defdown-extra-tag[data-type="Lifesteal"] {
-  background: rgba(34, 197, 94, 0.15);
-  color: #86efac;
-  border-color: rgba(34, 197, 94, 0.3);
-}
-
-.bb-defdown-extra-tag[data-type="Dual Defense Down"] {
-  background: rgba(59, 130, 246, 0.15);
-  color: #93c5fd;
-  border-color: rgba(59, 130, 246, 0.3);
-}
-
-.bb-defdown-extra-tag[data-type="Accuracy Down"] {
-  background: rgba(249, 115, 22, 0.15);
-  color: #fdba74;
-  border-color: rgba(249, 115, 22, 0.3);
-}
-
-/* Ultimate Level Badge */
-.bb-defdown-ult-level {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  padding: 0.2rem 0.5rem;
-  background: rgba(236, 72, 153, 0.2);
-  border-radius: 4px;
   font-size: 0.75rem;
+  color: var(--bb-text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+.bb-defdown-value-duration svg {
+  width: 12px;
+  height: 12px;
+  opacity: 0.6;
+}
+
+/* one muted meta line instead of a target box */
+.bb-defdown-target {
+  font-size: 0.75rem;
+  color: var(--bb-text-tertiary);
+}
+
+.bb-defdown-target span {
+  color: var(--bb-text-secondary);
+}
+
+.bb-defdown-target-badge {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.05rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
   font-weight: 600;
-  color: #f472b6;
+  letter-spacing: 0.04em;
+  color: var(--bb-text-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
 }
 
-/* No Results */
-.bb-defdown-no-results {
-  display: none;
-  text-align: center;
-  padding: 3rem;
-  background: var(--bb-bg-secondary, #1e1e2e);
-  border-radius: 12px;
-  margin-top: 1rem;
+.bb-defdown-target-badge.multi {
+  color: #d8c07a;
+  border-color: rgba(216, 192, 122, 0.3);
 }
 
-.bb-defdown-no-results.visible {
-  display: block;
+.bb-defdown-description {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--bb-text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.bb-defdown-no-results h3 {
-  color: var(--bb-text-primary, #fff);
-  margin: 0 0 0.5rem 0;
+/* ===== Ultimate cards (same unit, subtle accent) ===== */
+.bb-defdown-card-ultimate {
+  background: rgba(201, 168, 224, 0.05);
+  border-color: rgba(201, 168, 224, 0.18);
 }
 
-.bb-defdown-no-results p {
-  color: var(--bb-text-tertiary, #888);
-  margin: 0;
-}
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .bb-defdown-summary {
+    gap: 1rem;
+  }
 
-/* Info Box */
-.bb-defdown-info-box {
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 12px;
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 1.5rem;
-}
+  .bb-defdown-stat-value {
+    font-size: 1.2rem;
+  }
 
-.bb-defdown-info-title {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #d1d5db;
-  margin: 0 0 0.75rem 0;
-}
-
-.bb-defdown-info-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.bb-defdown-info-text {
-  font-size: 0.875rem;
-  color: #9ca3af;
-  margin: 0;
-  line-height: 1.6;
-}
-
-.bb-defdown-info-text a {
-  color: #60a5fa;
-  text-decoration: none;
-}
-
-
-/* Responsive - Tablet */
-@media (max-width: 900px) {
   .bb-defdown-grid {
     grid-template-columns: 1fr;
   }
 
-  .bb-defdown-summary {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Element Tabs (for element-defense-down page) */
-.bb-element-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.bb-element-tab {
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  color: #888;
-  cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-
-.bb-element-tab.active {
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.bb-element-tab[data-element]:not([data-element="all"]).active {
-  background: color-mix(in srgb, var(--element-color) 20%, transparent);
-  border-color: color-mix(in srgb, var(--element-color) 50%, transparent);
-  color: var(--element-color);
-}
-
-/* Element Badge */
-.bb-element-badge {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 0.75rem;
-  background: color-mix(in srgb, var(--element-color) 15%, transparent);
-  border: 1px solid color-mix(in srgb, var(--element-color) 30%, transparent);
-  border-radius: 6px;
-  margin-bottom: 0.75rem;
-}
-
-.bb-element-badge-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.bb-element-badge-text {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--element-color);
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-}
-
-/* Attack UP Card Styles (Green theme for buffs) */
-.bb-card-attack .bb-defdown-values {
-  background: rgba(34, 197, 94, 0.1);
-  border-color: rgba(34, 197, 94, 0.2);
-}
-
-.bb-attack-percent {
-  color: #22c55e !important;
-}
-
-.bb-attack-flat {
-  color: #86efac !important;
-}
-
-.bb-attack-badge {
-  background: linear-gradient(135deg, #22c55e, #16a34a) !important;
-}
-
-.bb-defdown-value-slot {
-  font-size: 0.85rem;
-  color: var(--bb-text-secondary, #888);
-}
-
-/* Magic Attack UP specific (Purple theme) */
-.bb-card-magic .bb-defdown-values {
-  background: rgba(168, 85, 247, 0.1);
-  border-color: rgba(168, 85, 247, 0.2);
-}
-
-.bb-magic-percent {
-  color: #a855f7 !important;
-}
-
-.bb-magic-flat {
-  color: #d8b4fe !important;
-}
-
-.bb-magic-badge {
-  background: linear-gradient(135deg, #a855f7, #9333ea) !important;
-}
-
-/* Target Type Badge for Attack UP (Self vs Team) */
-.bb-defdown-target-badge.self {
-  background: rgba(251, 191, 36, 0.15);
-  color: #fcd34d;
-  border: 1px solid rgba(251, 191, 36, 0.3);
-}
-
-.bb-defdown-target-badge.team {
-  background: rgba(34, 197, 94, 0.15);
-  color: #86efac;
-  border: 1px solid rgba(34, 197, 94, 0.3);
-}
-
-/* D Tier styling */
-.bb-defdown-tier-section[data-tier="D"] {
-  --tier-color: #4b5563;
-}
-
-.bb-defdown-tier-section[data-tier="D"] .bb-defdown-tier-badge {
-  color: #4b5563;
-}
-
-/* Individual tier badge colors */
-.bb-tier-s {
-  color: #f59e0b !important;
-}
-
-.bb-tier-a {
-  color: #a855f7 !important;
-}
-
-.bb-tier-b {
-  color: #3b82f6 !important;
-}
-
-.bb-tier-c {
-  color: #6b7280 !important;
-}
-
-.bb-tier-d {
-  color: #4b5563 !important;
-}
-
-/* Responsive - Mobile */
-@media (max-width: 768px) {
-  .bb-defdown-page {
-    padding: 0.5rem;
-  }
-
-  .bb-element-tabs {
-    gap: 0.35rem;
-  }
-
-  .bb-element-tab {
-    padding: 0.4rem 0.75rem;
-    font-size: 0.75rem;
-  }
-
-  .bb-defdown-controls {
-    padding: 0.75rem;
-  }
-
-  .bb-defdown-filter-row {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .bb-defdown-search-input,
-  .bb-defdown-filter-select,
-  .bb-defdown-clear-btn {
-    width: 100%;
-    min-width: unset;
-    font-size: 16px;
-  }
-
-  .bb-defdown-summary {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
-  }
-
-  .bb-defdown-stat-card {
-    padding: 0.75rem;
-  }
-
-  .bb-defdown-stat-value {
-    font-size: 1.5rem;
-  }
-
-  .bb-defdown-tier-header {
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
   .bb-defdown-tier-badge {
-    font-size: 1.25rem;
-    min-width: 40px;
-  }
-
-  .bb-defdown-card-header {
-    padding: 0.6rem;
-  }
-
-  .bb-defdown-card-avatar {
-    width: 50px;
-    height: 50px;
-  }
-
-  .bb-defdown-card-name {
-    font-size: 0.9rem;
-  }
-
-  .bb-defdown-card-body {
-    padding: 0.6rem;
-  }
-
-  .bb-defdown-value-percent {
-    font-size: 1.1rem;
-  }
-
-  .bb-defdown-values {
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .bb-defdown-lv-badge {
-    font-size: 0.65rem;
-    padding: 0.15rem 0.4rem;
-  }
-
-  .bb-defdown-value-duration {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.8rem;
-  }
-
-  /* Rarity image smaller on mobile */
-  .bb-defdown-meta-item.bb-defdown-rarity img,
-  img.bb-defdown-rarity-img {
-    width: 60px !important;
-    height: 30px !important;
-  }
-
-  .bb-defdown-info-box {
-    padding: 0.75rem;
-  }
-
-  .bb-defdown-info-title {
-    font-size: 0.85rem;
-  }
-
-  .bb-defdown-info-text {
-    font-size: 0.8rem;
+    font-size: 1.3rem;
   }
 }
