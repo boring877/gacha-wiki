@@ -1,0 +1,177 @@
+---
+// Zone Nova background music (game landing-page theme) with a header toggle.
+// Persists across ZN page navigations: preference in localStorage, playback
+// position in sessionStorage, and an autoplay-block fallback that resumes on
+// the first user interaction.
+interface Props {
+  variant?: 'desktop' | 'mobile';
+}
+const { variant = 'desktop' } = Astro.props;
+const MUSIC_SRC =
+  'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/audio/landing-music.mp3';
+---
+
+<div class={`zn-music ${variant === 'mobile' ? 'zn-music-mobile' : ''}`}>
+  <button
+    type="button"
+    id="zn-music-toggle"
+    class="zn-music-btn"
+    aria-label="Toggle Zone Nova background music"
+    aria-pressed="false"
+    title="Background music"
+  >
+    <svg class="zn-music-icon zn-music-on-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+      <path
+        d="M9 18V6l10-2v12"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      ></path>
+      <circle cx="6.5" cy="18" r="2.5" fill="currentColor"></circle>
+      <circle cx="16.5" cy="16" r="2.5" fill="currentColor"></circle>
+    </svg>
+    <svg class="zn-music-icon zn-music-off-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+      <path
+        d="M9 18V6l10-2v12"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      ></path>
+      <circle cx="6.5" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="2"></circle>
+      <line x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+    </svg>
+    <span class="zn-music-label">Music</span>
+  </button>
+  <audio id="zn-music-audio" src={MUSIC_SRC} loop preload="none"></audio>
+</div>
+
+<style>
+  .zn-music {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .zn-music-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.75rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+    color: #b3b3b3;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .zn-music-btn .zn-music-on-icon {
+    display: none;
+  }
+
+  .zn-music-btn.playing {
+    color: #ffb74a;
+    border-color: rgba(255, 183, 77, 0.4);
+  }
+
+  .zn-music-btn.playing .zn-music-on-icon {
+    display: block;
+  }
+
+  .zn-music-btn.playing .zn-music-off-icon {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .zn-music-label {
+      display: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    // Desktop + mobile header instances both render; init once, bind all.
+    if (window.__znMusicInit) return;
+    window.__znMusicInit = true;
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var audio = document.getElementById('zn-music-audio');
+      var btns = document.querySelectorAll('.zn-music-btn');
+      if (!audio || !btns.length) return;
+
+      var PREF = 'zn-music-on';
+      var POS = 'zn-music-pos';
+
+      function setPlaying(on) {
+        btns.forEach(function (b) {
+          b.classList.toggle('playing', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+      }
+
+      function tryPlay() {
+        audio.play().then(
+          function () {
+            setPlaying(true);
+            localStorage.setItem(PREF, '1');
+          },
+          function () {
+            // Autoplay blocked - resume on the first user interaction
+            setPlaying(false);
+            var resume = function () {
+              audio.play().then(
+                function () {
+                  setPlaying(true);
+                },
+                function () {}
+              );
+              document.removeEventListener('pointerdown', resume);
+              document.removeEventListener('keydown', resume);
+            };
+            document.addEventListener('pointerdown', resume);
+            document.addEventListener('keydown', resume);
+          }
+        );
+      }
+
+      // Restore position from the previous page for near-seamless playback
+      var pos = parseFloat(sessionStorage.getItem(POS) || '0');
+      if (isFinite(pos) && pos > 0) {
+        try {
+          audio.currentTime = pos;
+        } catch (e) {}
+      }
+
+      if (localStorage.getItem(PREF) === '1') {
+        tryPlay();
+      }
+
+      audio.addEventListener('playing', function () {
+        setPlaying(true);
+      });
+      audio.addEventListener('pause', function () {
+        setPlaying(false);
+      });
+
+      setInterval(function () {
+        if (!audio.paused) sessionStorage.setItem(POS, String(audio.currentTime));
+      }, 1000);
+      window.addEventListener('beforeunload', function () {
+        if (!audio.paused) sessionStorage.setItem(POS, String(audio.currentTime));
+      });
+
+      btns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          if (audio.paused) {
+            tryPlay();
+          } else {
+            audio.pause();
+            localStorage.removeItem(PREF);
+            sessionStorage.removeItem(POS);
+            setPlaying(false);
+          }
+        });
+      });
+    });
+  })();
+</script>

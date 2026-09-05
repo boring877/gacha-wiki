@@ -2,6 +2,7 @@
 import { getGameData, isValidGameKey, type GameKey } from '../data/game-navigation';
 import { getGameById } from '../data/games';
 import { Image } from 'astro:assets';
+import ZNMusicPlayer from './zone-nova/ZNMusicPlayer.astro';
 
 interface Props {
   currentPath?: string;
@@ -84,6 +85,8 @@ const isActive = (href: string) => {
           <h2 class="game-title">{game.name}</h2>
         </a>
       </div>
+
+      {validatedGameKey === 'zone-nova' && <ZNMusicPlayer />}
 
       <!-- Desktop Section Navigation -->
       <div class="section-nav">
