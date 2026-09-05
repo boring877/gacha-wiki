@@ -14,6 +14,12 @@ export const summonFaqData = {
         'Character Summons: SSR 0.6% base (1.6% effective), SR 6% total. Memory Summons: SSR 0.8% base (1.87% effective), SR 9.1% total. Memory summons have higher rates but focus on memories instead of characters.',
     },
     {
+      id: 'self-select-banner',
+      question: 'What is the Self-Select summon?',
+      answer:
+        'The Self-Select summon lets you choose a target Legendary (SSR) character before pulling. It uses Energy Cubes, is limited to 50 pulls total, and guarantees your selected character within 50 pulls - when a Legendary hits, it is 100% your pick (equal odds if you select multiple). Base SSR rate is 0.6%, Epic 6% (3% character + 3% memory), with the usual 10-pull Epic pity. The standard Character summon also carries a self-selected SSR guarantee every 90 pulls.',
+    },
+    {
       id: 3,
       question: 'How does the pity system work for each summon type?',
       answer:
@@ -23,7 +29,7 @@ export const summonFaqData = {
       id: 4,
       question: "What's the difference between Character and Memory rate-ups?",
       answer:
-        'Character rate-ups have 50% chance for featured SSR/SR characters. Memory rate-ups have 75% chance for featured SSR/SR memories. Memory banners have higher rate-up percentages.',
+        'Character rate-ups: 50% chance for the featured SSR/SR character (next one guaranteed if you miss). Memory rate-ups: the featured SSR memory is a 100% rate-up - every SSR memory you pull IS the featured one - while SR rate-ups are 75% (next one guaranteed if you miss).',
     },
     {
       id: 5,
@@ -49,9 +55,9 @@ export const summonFaqData = {
     },
     {
       id: 9,
-      question: 'How do I get the rainbow cube and regular cube?',
+      question: 'How do I get Mirage Cubes and Energy Cubes?',
       answer:
-        'You can exchange Gems for Cubes. They both cost the same (160 gems) for each cube. You can also get them from events.',
+        'Mirage Cubes (limited banners) and Energy Cubes (standard banners) are exchanged with Luminite Crystals at the same cost (160 crystals per cube). You can also get both from events, maintenance compensation, and the Battle Pass.',
     },
     {
       id: 10,
@@ -132,7 +138,7 @@ export const summonFaqData = {
       memoryRewards: {
         title: 'Memory Rewards',
         srMemory: '8x Rare Dust',
-        rareMemory: '20x Magic Cube Dust',
+        rareMemory: '20x Cube Dust',
       },
     },
   },
@@ -166,9 +172,8 @@ export const summonFaqData = {
     rateUpSystem: {
       ssrMemoryRateUp: {
         title: 'SSR Memory Rate-Up',
-        chance: '75% chance to get featured SSR memory',
-        guarantee:
-          'If non-featured SSR memory obtained, next SSR memory is guaranteed to be featured',
+        chance: '100% chance - every SSR memory pulled is the featured one',
+        guarantee: 'No off-banner SSR memories on limited memory banners',
       },
       srMemoryRateUp: {
         title: 'SR Memory Rate-Up',
@@ -182,7 +187,7 @@ export const summonFaqData = {
         title: 'Memory Rewards',
         ssrMemory: '40x Rare Dust',
         srMemory: '8x Rare Dust',
-        rareMemory: '20x Magic Cube Dust',
+        rareMemory: '20x Cube Dust',
       },
       duplicateCharacterRewards: {
         title: 'Duplicate Character Rewards',
@@ -197,7 +202,7 @@ export const summonFaqData = {
       icon: '💎',
       title: 'Cube Management',
       description:
-        'Save enough Premium Cubes for guaranteed pulls: 90 for SSR characters, 80 for SSR memories.',
+        'Save enough Mirage Cubes for guaranteed pulls: 90 for a limited SSR character, 80 for a limited SSR memory.',
     },
     {
       icon: '🎯',

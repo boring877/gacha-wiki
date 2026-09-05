@@ -11,12 +11,19 @@ import {
   highlightSkillText,
   defaultZNHighlightPatterns,
 } from '../../utils/zone-nova/skill-highlighting.js';
+import { BUFF_EXPLANATIONS } from '../../data/zone-nova/memories.js';
 
 interface Props {
   characterData: any;
 }
 
 const { characterData } = Astro.props;
+
+// Buff/debuff tokens in the memory card's effect text that the text never defines
+const memoryEffectText = (characterData.memoryCard?.effects ?? []).join('\n');
+const memoryBuffNotes = Object.entries(BUFF_EXPLANATIONS)
+  .filter(([token]) => memoryEffectText.includes(`[${token}]`))
+  .map(([token, text]) => ({ token, text }));
 const factionData = getFactionData(characterData.faction);
 const ITEM_ICON_R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/items/';
 const MONEY_ICON = `${ITEM_ICON_R2}General_Money.png`;
@@ -876,6 +883,16 @@ function getTagCategory(tag: string): string {
               <p class="memory-effect-text">• {effect}</p>
             </div>
           ))
+        )}
+        {memoryBuffNotes.length > 0 && (
+          <div class="mem-buff-reference">
+            <span class="mem-buff-title">Buff Reference</span>
+            {memoryBuffNotes.map(n => (
+              <p class="mem-buff-note">
+                <strong>[{n.token}]:</strong> {n.text}
+              </p>
+            ))}
+          </div>
         )}
       </div>
     </div>

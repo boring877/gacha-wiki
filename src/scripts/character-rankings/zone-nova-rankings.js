@@ -1,9 +1,10 @@
 /**
- * Zone Nova Character Rankings - Optimized Implementation
- * Handles instant filtering/sorting with pre-rendered server-side views
+ * Zone Nova Character Rankings
+ * Client-side filtering + sorting over the server-rendered character grid,
+ * plus the dynamic per-character rankings panel.
  */
 
-class ZoneNovaRankingsManagerOptimized {
+class ZoneNovaRankingsManager {
   constructor(data) {
     // Data
     this.characters = data.characters;
@@ -12,9 +13,9 @@ class ZoneNovaRankingsManagerOptimized {
     this.statNames = data.statNames;
     this.totalCharacters = data.totalCharacters;
 
-    // State
-    this.currentView = 'view-all';
-    this.selectedCharacter = null;
+    this.charById = new Map(this.characters.map(c => [c.id, c]));
+    // Last sort direction per column: 'hp' -> 'desc' (persisted in localStorage)
+    this.sortDirections = {};
 
     // Cached DOM elements
     this.elements = {};
@@ -31,12 +32,8 @@ class ZoneNovaRankingsManagerOptimized {
     }
   }
 
-  /**
-   * Cache all DOM elements to avoid repeated queries
-   */
   cacheElements() {
-    // Character cards (from current visible view)
-    this.updateCharacterCards();
+    this.elements.grid = document.getElementById('character-grid');
 
     // Filters
     this.elements.roleFilter = document.getElementById('role-filter');
@@ -55,6 +52,7 @@ class ZoneNovaRankingsManagerOptimized {
     this.elements.characterClass = document.getElementById('character-class');
     this.elements.characterAnalysis = document.getElementById('character-analysis');
     this.elements.critCard = document.getElementById('crit-rate-card');
+    this.elements.critDmgCard = document.getElementById('crit-dmg-card');
 
     // Analysis elements
     this.elements.overallRank = document.getElementById('overall-rank');
@@ -64,82 +62,25 @@ class ZoneNovaRankingsManagerOptimized {
     this.elements.top10Stats = document.getElementById('top10-stats');
   }
 
-  /**
-   * Update character cards reference when switching views
-   */
-  updateCharacterCards() {
-    const activeView = document.querySelector('.character-view:not(.hidden)');
-    this.elements.characterCards = activeView
-      ? activeView.querySelectorAll('.character-select-card')
-      : [];
-
-    // Re-attach character card listeners for the new view
-    this.attachCharacterCardListeners();
-  }
-
-  /**
-   * Attach event listeners to character cards in the current view
-   */
-  attachCharacterCardListeners() {
-    // Remove existing listeners by cloning and replacing
-    this.elements.characterCards.forEach(card => {
-      const newCard = card.cloneNode(true);
-      card.parentNode.replaceChild(newCard, card);
-    });
-
-    // Get fresh reference to the new cards
-    const activeView = document.querySelector('.character-view:not(.hidden)');
-    const freshCards = activeView ? activeView.querySelectorAll('.character-select-card') : [];
-
-    // Add click listeners to fresh cards
-    freshCards.forEach(card => {
-      card.addEventListener('click', e => {
-        e.preventDefault();
-        e.stopPropagation();
-        try {
-          this.handleCharacterSelection(card);
-        } catch (error) {
-          console.error('Error handling character selection:', error);
-        }
-      });
-
-      // Add keyboard support
-      card.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          e.stopPropagation();
-          try {
-            this.handleCharacterSelection(card);
-          } catch (error) {
-            console.error('Error handling keyboard selection:', error);
-          }
-        }
-      });
-    });
-
-    // Update the cached reference
-    this.elements.characterCards = freshCards;
+  getAllCards() {
+    return this.elements.grid ? this.elements.grid.querySelectorAll('.character-select-card') : [];
   }
 
   setupEventListeners() {
     // Filter event listeners
-    const filterElements = [
+    [
       this.elements.roleFilter,
       this.elements.classFilter,
       this.elements.rarityFilter,
       this.elements.elementFilter,
-    ];
-
-    filterElements.forEach(filter => {
-      if (filter) {
-        filter.addEventListener('change', () => {
-          try {
-            this.handleFilterChange();
-          } catch (error) {
-            console.error('Error handling filter change:', error);
-          }
-        });
-      }
+    ].forEach(filter => {
+      filter?.addEventListener('change', () => {
+        try {
+          this.applyFilters();
+        } catch (error) {
+          console.error('Error handling filter change:', error);
+        }
+      });
     });
 
     // Sort button listeners
@@ -154,22 +95,19 @@ class ZoneNovaRankingsManagerOptimized {
     });
 
     // Reset button
-    if (this.elements.resetBtn) {
-      this.elements.resetBtn.addEventListener('click', () => {
-        try {
-          this.resetFilters();
-        } catch (error) {
-          console.error('Error resetting filters:', error);
-        }
-      });
-    }
+    this.elements.resetBtn?.addEventListener('click', () => {
+      try {
+        this.resetFilters();
+      } catch (error) {
+        console.error('Error resetting filters:', error);
+      }
+    });
 
-    // Character card listeners (delegated to handle dynamic content)
+    // Character card selection (delegated — cards are static markup)
     document.addEventListener('click', e => {
       try {
-        if (e.target.closest('.character-select-card')) {
-          this.handleCharacterSelection(e.target.closest('.character-select-card'));
-        }
+        const card = e.target.closest('.character-select-card');
+        if (card) this.handleCharacterSelection(card);
       } catch (error) {
         console.error('Error handling character selection:', error);
       }
@@ -189,162 +127,131 @@ class ZoneNovaRankingsManagerOptimized {
   }
 
   /**
-   * Handle filter changes - INSTANT switching between pre-rendered views
+   * Hide cards that don't match the four filter selects, then re-apply the
+   * active sort (if any) to the remaining visible cards.
    */
-  handleFilterChange() {
-    const filters = {
-      role: this.elements.roleFilter?.value.toLowerCase() || '',
-      class: this.elements.classFilter?.value.toLowerCase() || '',
-      rarity: this.elements.rarityFilter?.value.toLowerCase() || '',
-      element: this.elements.elementFilter?.value.toLowerCase() || '',
-    };
+  applyFilters() {
+    const role = this.elements.roleFilter?.value || '';
+    const charClass = this.elements.classFilter?.value || '';
+    const rarity = this.elements.rarityFilter?.value || '';
+    const element = this.elements.elementFilter?.value || '';
 
-    // Determine which view to show based on active filters
-    const targetViewId = this.getTargetViewId(filters);
+    this.getAllCards().forEach(card => {
+      const char = this.charById.get(parseInt(card.dataset.characterId || '0', 10));
+      if (!char) {
+        card.style.display = 'none';
+        return;
+      }
+      const matches =
+        (!role || char.role === role) &&
+        (!charClass || char.class === charClass) &&
+        (!rarity || char.rarity === rarity) &&
+        (!element || char.element === element);
+      card.style.display = matches ? '' : 'none';
+    });
 
-    if (targetViewId && targetViewId !== this.currentView) {
-      this.switchView(targetViewId);
-    }
+    if (this.activeSort) this.applySort(this.activeSort, this.sortDirections[this.activeSort]);
   }
 
   /**
-   * Determine target view ID based on current filters
-   */
-  getTargetViewId(filters) {
-    // Priority: role > class > rarity > element
-    if (filters.role) return `view-${filters.role}`;
-    if (filters.class) return `view-${filters.class}`;
-    if (filters.rarity) return `view-${filters.rarity}`;
-    if (filters.element) return `view-${filters.element}`;
-
-    return 'view-all'; // Default view
-  }
-
-  /**
-   * Switch between pre-rendered views - INSTANT!
-   */
-  switchView(viewId) {
-    // Hide current view
-    const currentViewElement = document.getElementById(this.currentView);
-    if (currentViewElement) {
-      currentViewElement.classList.add('hidden');
-    }
-
-    // Show new view
-    const targetViewElement = document.getElementById(viewId);
-    if (targetViewElement) {
-      targetViewElement.classList.remove('hidden');
-    }
-
-    // Update current view reference
-    this.currentView = viewId;
-
-    // Update character cards reference for the new view
-    this.updateCharacterCards();
-
-    // Clear sort button states
-    this.elements.sortButtons.forEach(btn => btn.classList.remove('active'));
-  }
-
-  /**
-   * Handle sort clicks - INSTANT switching to pre-sorted views
+   * Sort click: first click sorts descending (best first), subsequent clicks
+   * toggle direction. Sorting only touches currently visible cards.
    */
   handleSortClick(button) {
     const column = button.dataset.sort;
     if (!column) return;
 
-    // Determine sort direction (toggle on each click)
-    const currentSortState = this.getSortState(column);
-    const newDirection = currentSortState === 'desc' ? 'asc' : 'desc';
+    const direction =
+      this.activeSort === column && this.sortDirections[column] === 'desc' ? 'asc' : 'desc';
 
-    const viewId = `sort-${column}-${newDirection}`;
-
-    if (document.getElementById(viewId)) {
-      // Hide current view
-      const currentViewElement = document.getElementById(this.currentView);
-      if (currentViewElement) {
-        currentViewElement.classList.add('hidden');
-      }
-
-      // Show sorted view
-      const targetViewElement = document.getElementById(viewId);
-      if (targetViewElement) {
-        targetViewElement.classList.remove('hidden');
-      }
-
-      // Update current view
-      this.currentView = viewId;
-
-      // Update character cards reference
-      this.updateCharacterCards();
-
-      // Update button states
-      this.elements.sortButtons.forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-
-      // Store sort state
-      this.setSortState(column, newDirection);
-    }
-  }
-
-  /**
-   * Get current sort state for a column
-   */
-  getSortState(column) {
-    return localStorage.getItem(`zn-rankings-sort-${column}`) || 'desc';
-  }
-
-  /**
-   * Store sort state for a column
-   */
-  setSortState(column, direction) {
+    this.activeSort = column;
+    this.sortDirections[column] = direction;
     localStorage.setItem(`zn-rankings-sort-${column}`, direction);
+
+    this.applySort(column, direction);
+
+    this.elements.sortButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+  }
+
+  applySort(column, direction) {
+    const grid = this.elements.grid;
+    if (!grid) return;
+
+    const visible = [...grid.querySelectorAll('.character-select-card')].filter(
+      card => card.style.display !== 'none'
+    );
+
+    const statOf = card => {
+      const char = this.charById.get(parseInt(card.dataset.characterId || '0', 10));
+      const c = char || {};
+      const v =
+        column === 'critRate' ? (c.maxCritRate ?? 0) :
+        column === 'critDmg' ? (c.maxCritDmg ?? 0) :
+        (c.maxStats?.[column] ?? c.stats?.[column]);
+      return this.parseStatValue(v);
+    };
+    const overallOf = card => {
+      const char = this.charById.get(parseInt(card.dataset.characterId || '0', 10));
+      return char ? this.overallAnalysis[char.id]?.overallRank ?? Infinity : Infinity;
+    };
+
+    // Non-stat sorts (or missing stat data) fall back to overall rank order
+    const hasStat = visible.some(card => statOf(card) > 0);
+    const cmp =
+      column === 'overall' || !hasStat
+        ? (a, b) => overallOf(a) - overallOf(b)
+        : (a, b) => statOf(a) - statOf(b);
+
+    visible.sort(direction === 'desc' ? (a, b) => cmp(b, a) : cmp);
+    visible.forEach(card => grid.appendChild(card));
   }
 
   /**
-   * Reset all filters - return to default view
+   * Reset filters: clear selects, show every card, restore default
+   * overall-rank ordering, clear sort state.
    */
   resetFilters() {
-    // Clear filter values
-    [
-      this.elements.roleFilter,
-      this.elements.classFilter,
-      this.elements.rarityFilter,
-      this.elements.elementFilter,
-    ].forEach(filter => {
-      if (filter) filter.value = '';
-    });
+    [this.elements.roleFilter, this.elements.classFilter, this.elements.rarityFilter, this.elements.elementFilter].forEach(
+      filter => {
+        if (filter) filter.value = '';
+      }
+    );
 
-    // Clear sort states
+    this.activeSort = null;
+    this.sortDirections = {};
     this.elements.sortButtons.forEach(btn => btn.classList.remove('active'));
+    ['hp', 'attack', 'defense', 'critRate'].forEach(col =>
+      localStorage.removeItem(`zn-rankings-sort-${col}`)
+    );
 
-    // Return to default view
-    this.switchView('view-all');
+    this.getAllCards().forEach(card => {
+      card.style.display = '';
+    });
+    this.applySort('overall', 'asc');
   }
 
   /**
-   * Handle character selection - DYNAMIC FEATURE PRESERVED
+   * Handle character selection — opens the rankings panel
    */
   handleCharacterSelection(card) {
-    const characterId = parseInt(card.dataset.characterId || '0');
+    const characterId = parseInt(card.dataset.characterId || '0', 10);
     if (!characterId) return;
 
-    // Update selection state
-    this.elements.characterCards.forEach(c => c.classList.remove('selected'));
+    this.getAllCards().forEach(c => c.classList.remove('selected'));
     card.classList.add('selected');
 
-    const character = this.characters.find(c => c.id === characterId);
+    const character = this.charById.get(characterId);
     if (!character) return;
 
-    this.selectedCharacter = character;
     this.updateCharacterDisplay(character);
     this.updateRankingsDisplay(characterId);
     this.updateCharacterAnalysis(characterId);
 
     // Show rankings display and scroll
-    this.elements.rankingsDisplay.classList.add('active');
+    this.elements.rankingsDisplay?.classList.add('active');
     setTimeout(() => {
-      this.elements.rankingsDisplay.scrollIntoView({
+      this.elements.rankingsDisplay?.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
       });
@@ -352,7 +259,7 @@ class ZoneNovaRankingsManagerOptimized {
   }
 
   /**
-   * Update character display - DYNAMIC FEATURE PRESERVED
+   * Update character display
    */
   updateCharacterDisplay(character) {
     if (this.elements.characterImage) {
@@ -370,26 +277,32 @@ class ZoneNovaRankingsManagerOptimized {
   }
 
   /**
-   * Update rankings display - DYNAMIC FEATURE PRESERVED
+   * Update rankings display
    */
   updateRankingsDisplay(characterId) {
     Object.keys(this.statNames).forEach(statKey => {
       const rank = this.rankings[statKey][characterId];
-      const statValue = this.characters.find(c => c.id === characterId)?.stats[statKey];
+      const c = this.charById.get(characterId) || {};
+      const statValue =
+        statKey === 'critRate' ? (c.maxCritRate ?? 0) :
+        statKey === 'critDmg' ? (c.maxCritDmg ?? 0) :
+        (c.maxStats?.[statKey] ?? c.stats?.[statKey]);
 
-      // Special handling for crit rate
-      if (statKey === 'critRate') {
+      // Special handling for crit stats (cards ship with inline display:none)
+      if (statKey === 'critRate' || statKey === 'critDmg') {
+        const card = statKey === 'critRate' ? this.elements.critCard : this.elements.critDmgCard;
+        const threshold = statKey === 'critRate' ? 0 : 50; // 50% crit dmg is the universal base
         const critVal = this.parseStatValue(statValue);
 
-        if (critVal > 0) {
-          this.elements.critCard?.classList.remove('hidden');
+        if (critVal > threshold) {
+          if (card) card.style.display = '';
           const statValueDisplay = document.querySelector(`.stat-${statKey}`);
           if (statValueDisplay) {
             statValueDisplay.textContent =
               typeof statValue === 'string' ? statValue : `${statValue}%`;
           }
         } else {
-          this.elements.critCard?.classList.add('hidden');
+          if (card) card.style.display = 'none';
         }
         return;
       }
@@ -413,7 +326,7 @@ class ZoneNovaRankingsManagerOptimized {
   }
 
   /**
-   * Update character analysis - DYNAMIC FEATURE PRESERVED
+   * Update character analysis
    */
   updateCharacterAnalysis(characterId) {
     const analysis = this.overallAnalysis[characterId];
@@ -438,13 +351,14 @@ class ZoneNovaRankingsManagerOptimized {
     // Update counts and badges
     this.updateStatBadges(top3Stats, top10Stats);
 
+    // Ships with inline display:none — toggle the style, not a class
     if (this.elements.characterAnalysis) {
-      this.elements.characterAnalysis.classList.remove('hidden');
+      this.elements.characterAnalysis.style.display = '';
     }
   }
 
   /**
-   * Update stat badges - DYNAMIC FEATURE PRESERVED
+   * Update stat badges
    */
   updateStatBadges(top3Stats, top10Stats) {
     // Top 3 stats
@@ -495,7 +409,7 @@ class ZoneNovaRankingsManagerOptimized {
   }
 
   /**
-   * Apply rank styling - DYNAMIC FEATURE PRESERVED
+   * Apply rank styling
    */
   applyRankStyling(element, rank) {
     // Remove existing rank classes
@@ -512,7 +426,7 @@ class ZoneNovaRankingsManagerOptimized {
   }
 
   /**
-   * Helper function to parse stat values - DYNAMIC FEATURE PRESERVED
+   * Helper function to parse stat values ("5,040" / "12%" / 50)
    */
   parseStatValue(value) {
     return typeof value === 'string' ? parseFloat(value.replace(/[,%]/g, '')) || 0 : value || 0;
@@ -554,8 +468,7 @@ export function initializeZoneNovaRankings() {
       throw new Error('Invalid totalCharacters value');
     }
 
-    // Initialize optimized rankings manager
-    const rankingsManager = new ZoneNovaRankingsManagerOptimized(data);
+    const rankingsManager = new ZoneNovaRankingsManager(data);
 
     // Store reference globally for debugging
     window.rankingsManager = rankingsManager;
@@ -563,7 +476,7 @@ export function initializeZoneNovaRankings() {
     console.error('❌ Error initializing rankings:', error);
 
     // Show user-friendly error message
-    const errorContainer = document.querySelector('.character-views-container');
+    const errorContainer = document.getElementById('character-grid');
     if (errorContainer) {
       errorContainer.innerHTML = `
         <div class="rankings-error-container">
@@ -578,8 +491,8 @@ export function initializeZoneNovaRankings() {
   }
 }
 
-// Export the class for potential external use / debugging
-window.ZoneNovaRankingsManagerOptimized = ZoneNovaRankingsManagerOptimized;
-
-// Export for potential external use
-window.ZoneNovaRankingsManagerOptimized = ZoneNovaRankingsManagerOptimized;
+// Export the class for potential external use / debugging (browser only —
+// this module is also evaluated server-side during the Astro build)
+if (typeof window !== 'undefined') {
+  window.ZoneNovaRankingsManager = ZoneNovaRankingsManager;
+}

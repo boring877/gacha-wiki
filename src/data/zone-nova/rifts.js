@@ -20,6 +20,21 @@ import { riftSurge18Data } from './rifts/rift-surge-18.js';
 import { riftSurge19Data } from './rifts/rift-surge-19.js';
 import { riftSurge21Data } from './rifts/rift-surge-21.js';
 import { riftSurge22Data } from './rifts/rift-surge-22.js';
+import { riftSurge36Data } from './rifts/rift-surge-36.js';
+import { riftSurge35Data } from './rifts/rift-surge-35.js';
+import { riftSurge34Data } from './rifts/rift-surge-34.js';
+import { riftSurge33Data } from './rifts/rift-surge-33.js';
+import { riftSurge32Data } from './rifts/rift-surge-32.js';
+import { riftSurge31Data } from './rifts/rift-surge-31.js';
+import { riftSurge30Data } from './rifts/rift-surge-30.js';
+import { riftSurge29Data } from './rifts/rift-surge-29.js';
+import { riftSurge28Data } from './rifts/rift-surge-28.js';
+import { riftSurge27Data } from './rifts/rift-surge-27.js';
+import { riftSurge26Data } from './rifts/rift-surge-26.js';
+import { riftSurge25Data } from './rifts/rift-surge-25.js';
+import { riftSurge24Data } from './rifts/rift-surge-24.js';
+import { riftSurge23Data } from './rifts/rift-surge-23.js';
+import { riftSurge20Data } from './rifts/rift-surge-20.js';
 
 // Rift status constants
 export const RIFT_STATUS = {
@@ -31,8 +46,23 @@ export const RIFT_STATUS = {
 
 // Main rifts data array - imported from individual files
 export const zoneNovaRifts = [
+  riftSurge36Data,
+  riftSurge35Data,
+  riftSurge34Data,
+  riftSurge33Data,
+  riftSurge32Data,
+  riftSurge31Data,
+  riftSurge30Data,
+  riftSurge29Data,
+  riftSurge28Data,
+  riftSurge27Data,
+  riftSurge26Data,
+  riftSurge25Data,
+  riftSurge24Data,
+  riftSurge23Data,
   riftSurge22Data,
   riftSurge21Data,
+  riftSurge20Data,
   riftSurge19Data,
   riftSurge18Data,
   riftSurge17Data,

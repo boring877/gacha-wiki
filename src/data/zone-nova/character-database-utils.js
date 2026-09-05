@@ -175,8 +175,10 @@ export function initializeCharacterDatabase() {
             valA = a.querySelector(`[data-sort-key="${currentSortKey}"]`)?.textContent || '';
             valB = b.querySelector(`[data-sort-key="${currentSortKey}"]`)?.textContent || '';
           }
-          valA = isNaN(Number(valA)) ? valA : Number(valA);
-          valB = isNaN(Number(valB)) ? valB : Number(valB);
+          const numA = Number(String(valA).replace(/[^\d.-]/g, ''));
+          const numB = Number(String(valB).replace(/[^\d.-]/g, ''));
+          if (!isNaN(numA)) valA = numA;
+          if (!isNaN(numB)) valB = numB;
           if (valA < valB) return currentSortDirection === 'asc' ? -1 : 1;
           if (valA > valB) return currentSortDirection === 'asc' ? 1 : -1;
           return 0;

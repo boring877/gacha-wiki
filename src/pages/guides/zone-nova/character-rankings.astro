@@ -24,7 +24,7 @@ import ZNCharacterImage from '../../../components/zone-nova/ZNCharacterImage.ast
       <p class="intro-text">
         See how each character ranks in key combat stats among all {totalCharacters} characters
       </p>
-      <p class="level-note">All stats shown at Level 80 (current max level)</p>
+      <p class="level-note">All stats shown at max build: Level 80 with the full talent tree (same values as the Character Database)</p>
     </div>
 
     <!-- Character Selector -->
@@ -131,41 +131,33 @@ import ZNCharacterImage from '../../../components/zone-nova/ZNCharacterImage.ast
                     </span>
                   )}
                 </div>
-                <div class="character-stats" aria-label="Character statistics">
+                <div class="character-stats" aria-label="Character max statistics">
                   <div class="stat-item">
                     <span class="stat-label">HP</span>
                     <span class="stat-value">
-                      {typeof char.stats.hp === 'string'
-                        ? char.stats.hp
-                        : char.stats.hp?.toLocaleString() || 'N/A'}
+                      {(char.maxStats?.hp ?? char.stats.hp)?.toLocaleString() || 'N/A'}
                     </span>
                   </div>
                   <div class="stat-item">
                     <span class="stat-label">ATK</span>
                     <span class="stat-value">
-                      {typeof char.stats.attack === 'string'
-                        ? char.stats.attack
-                        : char.stats.attack?.toLocaleString() || 'N/A'}
+                      {(char.maxStats?.attack ?? char.stats.attack)?.toLocaleString() || 'N/A'}
                     </span>
                   </div>
                   <div class="stat-item">
                     <span class="stat-label">DEF</span>
                     <span class="stat-value">
-                      {typeof char.stats.defense === 'string'
-                        ? char.stats.defense
-                        : char.stats.defense?.toLocaleString() || 'N/A'}
+                      {(char.maxStats?.defense ?? char.stats.defense)?.toLocaleString() || 'N/A'}
                     </span>
                   </div>
-                  {char.stats.critRate !== undefined ? (
-                    <div class="stat-item crit-rate">
-                      <span class="stat-label">CRIT</span>
-                      <span class="stat-value">
-                        {typeof char.stats.critRate === 'string'
-                          ? char.stats.critRate
-                          : `${char.stats.critRate}%`}
-                      </span>
-                    </div>
-                  ) : null}
+                  <div class="stat-item crit-rate">
+                    <span class="stat-label">CRIT RATE</span>
+                    <span class="stat-value">{char.maxCritRate ?? 0}%</span>
+                  </div>
+                  <div class="stat-item crit-rate">
+                    <span class="stat-label">CRIT DMG</span>
+                    <span class="stat-value">{char.maxCritDmg ?? 50}%</span>
+                  </div>
                 </div>
               </div>
             </article>
@@ -188,7 +180,7 @@ import ZNCharacterImage from '../../../components/zone-nova/ZNCharacterImage.ast
         <div id="rankings-grid" class="rankings-grid">
           {
             Object.keys(statNames)
-              .filter(statKey => statKey !== 'critRate')
+              .filter(statKey => statKey !== 'critRate' && statKey !== 'critDmg')
               .map(statKey => (
                 <div class="ranking-card">
                   <h4 class="ranking-card-title">{statNames[statKey]}</h4>
@@ -204,6 +196,13 @@ import ZNCharacterImage from '../../../components/zone-nova/ZNCharacterImage.ast
             <h4 class="ranking-card-title">CRIT RATE</h4>
             <div class="crit-message">Has Crit Rate</div>
             <div class="stat-value stat-critRate"></div>
+          </div>
+
+          <!-- Crit DMG card - conditionally shown -->
+          <div id="crit-dmg-card" class="ranking-card crit-rate-card" style="display: none;">
+            <h4 class="ranking-card-title">CRIT DMG</h4>
+            <div class="crit-message">Has Crit DMG bonus</div>
+            <div class="stat-value stat-critDmg"></div>
           </div>
         </div>
       </div>
@@ -235,11 +234,6 @@ import ZNCharacterImage from '../../../components/zone-nova/ZNCharacterImage.ast
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Back to Database Link -->
-    <div class="back-button-container">
-      <a href="/guides/zone-nova/characters/" class="back-button"> ← Back to Character Database </a>
     </div>
   </section>
 

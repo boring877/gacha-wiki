@@ -3,10 +3,10 @@
 
 /* Content Sections */
 .content-section {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.95));
-  padding: 3rem;
-  border-radius: 24px;
-  margin-bottom: 3rem;
+  background: var(--zn-bg-secondary, #2a2a2a);
+  padding: 2rem;
+  border-radius: 14px;
+  margin-bottom: 2rem;
   border: 1px solid rgba(255, 183, 77, 0.1);
   position: relative;
 }
@@ -16,9 +16,11 @@
   font-family: var(--font-display);
   font-size: var(--text-3xl);
   font-weight: var(--font-bold);
-  color: var(--zn-text-primary);
-  margin: 0 0 2rem 0;
-  text-align: center;
+  color: var(--zn-primary-amber, #ffb74a);
+  margin: 0 0 1.25rem 0;
+  text-align: left;
+  border-bottom: 2px solid var(--zn-primary-amber, #ffb74a);
+  padding-bottom: 0.5rem;
 }
 
 /* Rift Cards Grid */
@@ -30,7 +32,7 @@
 }
 
 .rift-event-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.9));
+  background: var(--zn-bg-tertiary, #3a3a3a);
   padding: 1.5rem;
   border-radius: 12px;
   position: relative;
@@ -131,7 +133,7 @@
 }
 
 .view-details-btn {
-  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
+  background: var(--amber-glow);
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -152,88 +154,155 @@
 }
 
 .status-active {
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.1));
+  background: rgba(34, 197, 94, 0.12);
   color: #22c55e;
   border: 1px solid rgba(34, 197, 94, 0.2);
 }
 
 .status-upcoming {
-  background: linear-gradient(135deg, rgba(255, 183, 77, 0.15), rgba(255, 183, 77, 0.1));
+  background: rgba(255, 183, 77, 0.12);
   color: var(--amber-glow);
   border: 1px solid rgba(255, 183, 77, 0.2);
 }
 
 .status-ended {
-  background: linear-gradient(135deg, rgba(156, 163, 175, 0.15), rgba(156, 163, 175, 0.1));
+  background: rgba(156, 163, 175, 0.12);
   color: #9ca3af;
   border: 1px solid rgba(156, 163, 175, 0.2);
 }
 
-/* Individual Rift Page Styles */
+/* Individual Rift Page Styles (detail pages - scoped under .rift-overview) */
 .rift-overview {
-  background: linear-gradient(135deg, rgba(0, 172, 193, 0.05), rgba(255, 183, 77, 0.03));
-  padding: 2rem;
-  border-radius: 16px;
-  margin-bottom: 2rem;
-  border: 1px solid rgba(0, 172, 193, 0.1);
+  background: var(--zn-bg-tertiary, #3a3a3a);
+  border: 1px solid var(--zn-border, #404040);
+  border-radius: 12px;
+  padding: 1.75rem;
 }
 
-.rift-title {
-  font-family: var(--font-display);
-  font-size: var(--text-3xl);
-  font-weight: var(--font-bold);
+.rift-overview .rift-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.rift-overview .rift-title {
+  font-size: 1.65rem;
+  font-weight: 600;
   color: var(--zn-text-primary);
   margin: 0;
+  line-height: 1.2;
 }
 
-.rift-meta {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+.rift-overview .rift-timer {
+  background: transparent;
+  border: 1px solid rgba(255, 183, 77, 0.35);
+  color: var(--amber-glow);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
-.meta-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+.rift-overview .rift-timer.timer-ended {
+  color: var(--zn-text-muted);
+  border-color: var(--zn-border);
 }
 
-.meta-label {
-  font-weight: var(--font-semibold);
-  color: var(--zn-text-primary);
-}
-
-.meta-value {
+.rift-overview .rift-description {
+  display: block;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: initial;
+  overflow: visible;
   color: var(--zn-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin: 0 0 1.25rem;
+}
+
+.rift-overview .rift-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.rift-overview .meta-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.rift-overview .meta-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--zn-text-muted);
+  flex: 0 0 7.25rem;
+}
+
+.rift-overview .meta-value {
+  color: var(--zn-text-primary);
+  font-size: 0.92rem;
+  text-align: left;
+  min-width: 0;
+}
+
+/* Status renders as colored text so it lines up with the other list values */
+.rift-overview .status-badge {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  background: none;
+  border: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.rift-overview .status-badge.status-active {
+  color: #22c55e;
+}
+
+.rift-overview .status-badge.status-upcoming,
+.rift-overview .status-badge.status-scheduled {
+  color: var(--amber-glow);
+}
+
+.rift-overview .status-badge.status-ended {
+  color: var(--zn-text-muted);
 }
 
 /* Law Effects */
 .law-effect-card {
-  background: var(--zn-bg-primary);
-  border: 1px solid var(--zn-border);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 1rem;
+  background: var(--zn-bg-tertiary, #3a3a3a);
+  border: 1px solid var(--zn-border, #404040);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
   display: flex;
   gap: 1rem;
+  align-items: flex-start;
 }
 
 .effect-number {
-  background: linear-gradient(135deg, var(--amber-glow), var(--teal-crystal));
-  color: white;
-  width: 2rem;
-  height: 2rem;
+  background: var(--amber-glow);
+  color: #1a1a1a;
+  width: 1.75rem;
+  height: 1.75rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: var(--font-bold);
-  font-size: var(--text-sm);
+  font-weight: 700;
+  font-size: 0.85rem;
   flex-shrink: 0;
+  margin-top: 0.1rem;
 }
 
 .effect-content {
@@ -242,7 +311,8 @@
 
 .effect-content p {
   margin: 0;
-  line-height: var(--leading-relaxed);
+  line-height: 1.65;
+  font-size: 0.95rem;
   color: var(--zn-text-primary);
 }
 
@@ -305,11 +375,6 @@
   .rift-title {
     font-size: var(--text-2xl);
     text-align: center;
-  }
-
-  .rift-meta {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
   }
 
   .law-effect-card {

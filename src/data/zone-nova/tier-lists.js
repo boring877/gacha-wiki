@@ -40,27 +40,27 @@ export const TIER_DEFINITIONS = {
 
 export const TIER_ORDER = Object.keys(TIER_DEFINITIONS);
 export const ROLE_ORDER = ['Healer', 'Supporter', 'Disruptor', 'Tank', 'DPS'];
+// Game class order (Tank=1 … Healer=7, matches character_data_info enum)
 export const CLASS_ORDER = [
-  'Healer',
-  'Supporter',
-  'Disruptor',
-  'Disruptor',
   'Tank',
   'Warrior',
   'Attacker',
-  'Attacker',
   'Destroyer',
+  'Supporter',
+  'Disruptor',
+  'Healer',
 ];
 
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'PvE Rankings by Class & Role',
-  lastUpdated: '2026-05-29',
+  lastUpdated: '2026-09-04',
   description:
     'Class-based PvE rankings with role highlights for story, events, and general progression.',
   tiers: {
-    UR: [{ name: 'Sharin' }],
+    UR: [{ name: 'Bors' }, { name: 'Medusa' }],
     SSS: [
+      { name: 'Sharin' },
       { name: 'Gluttony - Beelzebub' },
       { name: 'Freya' },
       { name: 'Hela' },
@@ -77,6 +77,9 @@ export const PVE_TIER_LIST = {
       { name: 'Thor' },
       { name: 'Wrath-Samael' },
       { name: 'Frigga' },
+      { name: 'Veronica' },
+      { name: 'Set' },
+      { name: 'Nephthys' },
     ],
     SS: [
       { name: 'Guinevere' },
@@ -96,6 +99,8 @@ export const PVE_TIER_LIST = {
       { name: 'Ibaraki-doji' },
       { name: 'Hiyori' },
       { name: 'Erika' },
+      { name: 'Poseidon' },
+      { name: 'Bedivere' },
     ],
     S: [
       { name: 'Zashiki-warashi' },
@@ -110,6 +115,7 @@ export const PVE_TIER_LIST = {
       { name: 'Lavinia' },
       { name: 'Mordred' },
       { name: 'Afrodite' },
+      { name: 'Shu' },
     ],
     A: [
       { name: 'Tefnut' },
@@ -131,11 +137,11 @@ export const PVE_TIER_LIST = {
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
   name: 'Arena PvP Rankings by Class & Role',
-  lastUpdated: '2026-05-29',
+  lastUpdated: '2026-09-04',
   description: 'Class-based Arena PvP rankings with role highlights for competitive play.',
   tiers: {
-    UR: [{ name: 'Sharin' }, { name: 'Pride-Lucifer' }],
-    SSS: [{ name: 'Gluttony - Beelzebub' }, { name: 'Keller' }, { name: 'Lily' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }, { name: 'Wrath-Samael' }, { name: 'Gaia' }, { name: 'Jill' }, { name: 'Jorogumo' }, { name: 'Thor' }, { name: 'Apep' }, { name: 'Artemis' }, { name: 'Freya' }, { name: 'Hiyori' }],
+    UR: [{ name: 'Pride-Lucifer' }, { name: 'Bors' }, { name: 'Medusa' }],
+    SSS: [{ name: 'Sharin' }, { name: 'Gluttony - Beelzebub' }, { name: 'Keller' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }, { name: 'Wrath-Samael' }, { name: 'Gaia' }, { name: 'Jill' }, { name: 'Jorogumo' }, { name: 'Thor' }, { name: 'Apep' }, { name: 'Artemis' }, { name: 'Freya' }, { name: 'Hiyori' }, { name: 'Veronica' }, { name: 'Set' }],
     SS: [
       { name: 'Guinevere' },
       { name: 'Frigga' },
@@ -152,6 +158,11 @@ export const PVP_TIER_LIST = {
       { name: 'Hela' },
       { name: 'Sigurd' },
       { name: 'Erika' },
+      { name: 'Lily' },
+      { name: 'Poseidon' },
+      { name: 'Nephthys' },
+      { name: 'Bedivere' },
+      { name: 'Ibaraki-doji' },
     ],
     S: [
       { name: 'Arthur' },
@@ -184,7 +195,7 @@ export const PVP_TIER_LIST = {
 // New Player Tier List (F2P Friendly)
 export const NEW_PLAYER_TIER_LIST = {
   name: 'New Player / F2P Tier List',
-  lastUpdated: '2026-05-29',
+  lastUpdated: '2026-09-04',
   description:
     'You can get any character from this list from day 1. This tier list focuses on accessibility for new players. The main problem early on is finding good damage dealers.',
   tiers: {
@@ -205,8 +216,10 @@ export const NEW_PLAYER_TIER_LIST = {
       { name: 'Zashiki-warashi' },
       { name: 'Horus' },
       { name: 'Hera' },
+      { name: 'Bors' },
+      { name: 'Medusa' },
     ],
-    S: [{ name: 'Snow Girl' }, { name: 'Merlin' }, { name: 'Arthur' }, { name: 'Greed Mammon' }],
+    S: [{ name: 'Snow Girl' }, { name: 'Merlin' }, { name: 'Arthur' }, { name: 'Greed Mammon' }, { name: 'Veronica' }, { name: 'Poseidon' }, { name: 'Set' }, { name: 'Nephthys' }, { name: 'Bedivere' }],
     A: [
       { name: 'Tefnut' },
       { name: 'Bastet' },
@@ -348,6 +361,32 @@ export function getCharactersByTier(tierLevel, listType = 'pve') {
 
 // Tier list changelog
 export const TIER_LIST_CHANGELOG = [
+  {
+    date: '2026-09-04',
+    changes: [
+      'New character wave added: Bors, Medusa, Veronica, Poseidon, Set, Nephthys, Bedivere',
+      'Sharin moved to SSS in PvE and PvP',
+      'Lily moved to SS in PvP',
+      'Bors added: UR in PvE and PvP, SS for New Players',
+      'Fire Supporter with massive team offense: ULT grants all allies +171% ATK and +73% damage for 10s',
+      'Berserk Blood stacks team-wide crit damage, healing, and energy regeneration from battle start',
+      'Medusa added: UR in PvE and PvP, SS for New Players',
+      'Wind Healer with a battle-start team shield and [Resurrection Coffin] revive (150% HP + Tenacity)',
+      'ULT amps healing received by 73% and triggers emergency heals when allies drop below 50% HP',
+      'Veronica added: SSS in PvE and PvP, S for New Players',
+      'Holy Tank with team-wide stacking shields, damage reduction, and crit resistance; team skill converts her DEF into team survivability',
+      'Poseidon added: SS in PvE and PvP, S for New Players',
+      'Ice Tank with Tide stance swapping: Low Tide vortex (follow-up DMG + enemy DEF/CRIT shred) vs High Tide Sea Wall (team block + damage reduction)',
+      'Set added: SSS in PvE and PvP, S for New Players',
+      'Fire Attacker with a 3-stage ultimate (up to 694% ATK single-target) fueled by Infernal Fire stacks and [Pursue] follow-ups',
+      'Nephthys added: SSS in PvE, SS in PvP, S for New Players',
+      'Fire Destroyer with AOE anti-heal debuffs (Hellfire Sin), 36.7% bonus damage vs shielded enemies, and a channeled ULT that shreds DEF',
+      'Bedivere added: SS in PvE and PvP, S for New Players',
+      'Ice Disruptor: auto shreds 64.8% DEF; ULT applies [Frontline Edict]/[Enhanced Frontline Edict] (up to -45% DEF, -30% energy gain)',
+      'CLASS_ORDER fixed to the 7 in-game classes (rename had left duplicate entries)',
+      'Shu added to S in PvE and Ibaraki-doji added to SS in PvP (accidental omissions)',
+    ],
+  },
   {
     date: '2026-04-28',
     changes: [

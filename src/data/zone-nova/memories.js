@@ -1912,3 +1912,13 @@ export function getMemoriesByClass(className) {
 export function getMemoryClass(memory) {
   return memory?.class || null;
 }
+
+// Explanations for buff/debuff tokens the card text references but never defines.
+// Verified against live buff data (buff_data_info / passive_data_info per-mille
+// stat types: 6=HP% 8=ATK% 9=DEF% 14=CritRate 15=CritDmg 16=CritResist
+// 17=BlockRate 18=BlockDMGR 29=ULT DMG 32=DMG taken 60=HealingReceived).
+// Tokens whose effect IS stated in the card text itself don't belong here.
+export const BUFF_EXPLANATIONS = {
+  'Geo Boundary':
+    'Each stack reduces damage taken by 5% (buff data: -5% DMG taken per stack). A new stack is granted every 3 seconds, up to 15 stacks — up to 75% damage reduction at full stacks.',
+};

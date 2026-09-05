@@ -18,15 +18,22 @@ function parseStatValue(value) {
  * Calculate rankings for key stats with proper tie handling
  * @returns {Object} Rankings object with stat rankings for each character
  */
+// Max-build stat value: full talent tree at Lv.80 (matches the DB's Max columns)
+function statValue(char, statKey) {
+  if (statKey === 'critRate') return char.maxCritRate ?? char.stats?.critRate ?? 0;
+  if (statKey === 'critDmg') return char.maxCritDmg ?? char.stats?.critDmg ?? 0;
+  return char.maxStats?.[statKey] ?? char.stats?.[statKey] ?? 0;
+}
+
 function calculateRankings() {
-  const stats = ['hp', 'attack', 'defense', 'critRate'];
+  const stats = ['hp', 'attack', 'defense', 'critRate', 'critDmg'];
   const rankings = {};
 
   stats.forEach(statKey => {
     // Sort characters by stat value (highest first), filtering out undefined values
     const sorted = [...ZONE_NOVA_CHARACTERS]
-      .filter(char => char.stats[statKey] !== undefined)
-      .sort((a, b) => parseStatValue(b.stats[statKey]) - parseStatValue(a.stats[statKey]));
+      .filter(char => statValue(char, statKey) !== undefined)
+      .sort((a, b) => parseStatValue(statValue(b, statKey)) - parseStatValue(statValue(a, statKey)));
 
     rankings[statKey] = {};
 
@@ -34,8 +41,8 @@ function calculateRankings() {
     let currentRank = 1;
     sorted.forEach((char, index) => {
       if (index > 0) {
-        const prevValue = parseStatValue(sorted[index - 1].stats[statKey]);
-        const currValue = parseStatValue(char.stats[statKey]);
+        const prevValue = parseStatValue(statValue(sorted[index - 1], statKey));
+        const currValue = parseStatValue(statValue(char, statKey));
 
         // If current value is different from previous, update rank to index + 1
         if (currValue !== prevValue) {
@@ -122,8 +129,10 @@ const statNames = {
   hp: 'HP',
   attack: 'ATK',
   defense: 'DEF',
-  critRate: 'CRIT',
+  critRate: 'CRIT RATE',
+  critDmg: 'CRIT DMG',
 };
+export { statValue };
 
 // ============================================
 // PRE-COMPUTED DATA FOR INSTANT FILTERING

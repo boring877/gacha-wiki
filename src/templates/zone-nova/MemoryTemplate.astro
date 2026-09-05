@@ -7,6 +7,7 @@ import ZNMemoryImage from '../../components/zone-nova/ZNMemoryImage.astro';
 import ZNClassImage from '../../components/zone-nova/ZNClassImage.astro';
 
 import { getCharacterClass } from '../../data/zone-nova/characters.js';
+import { BUFF_EXPLANATIONS } from '../../data/zone-nova/memories.js';
 
 export interface Props {
   memoryData: any;
@@ -14,6 +15,15 @@ export interface Props {
 }
 
 const { memoryData, memorySEO } = Astro.props;
+
+// Buff/debuff tokens referenced by this card's effect text that the text itself
+// never defines — explained from the map (verified against live buff data).
+const effectTextAll = (
+  memoryData.awakenEffects ?? [memoryData.effects.join('\n')]
+).join('\n');
+const buffNotes = Object.entries(BUFF_EXPLANATIONS)
+  .filter(([token]) => effectTextAll.includes(`[${token}]`))
+  .map(([token, text]) => ({ token, text }));
 
 // Extract image filename from the path for ZNMemoryImage component
 const getImageFilename = (imagePath: string): string => {
@@ -270,6 +280,16 @@ function getCharacterUrl(characterName: string): string {
           ))}
         </div>
       )}
+      {buffNotes.length > 0 && (
+        <div class="buff-reference">
+          <h3 class="buff-reference-title">Buff Reference</h3>
+          {buffNotes.map(n => (
+            <p class="buff-note">
+              <strong>[{n.token}]:</strong> {n.text}
+            </p>
+          ))}
+        </div>
+      )}
     </section>
 
     <script>
@@ -368,6 +388,9 @@ function getCharacterUrl(characterName: string): string {
     }
 
     /* Card story */
+    .memory-story {
+      margin-top: 2rem;
+    }
     .story-container {
       background: var(--zn-bg-secondary);
       border: 1px solid var(--zn-border-primary);
@@ -574,6 +597,38 @@ function getCharacterUrl(characterName: string): string {
       color: var(--zn-text-muted);
       line-height: 1.6;
       margin: -1rem 0 2rem;
+    }
+
+    .buff-reference {
+      background: rgba(0, 172, 193, 0.06);
+      border: 1px solid rgba(0, 172, 193, 0.25);
+      border-radius: 8px;
+      padding: 0.9rem 1.1rem;
+      margin-top: 1.25rem;
+    }
+
+    .buff-reference-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--zn-primary-amber);
+      margin: 0 0 0.5rem;
+    }
+
+    .buff-note {
+      font-size: 0.9rem;
+      color: var(--zn-text-secondary);
+      line-height: 1.65;
+      margin: 0 0 0.4rem;
+    }
+
+    .buff-note:last-child {
+      margin-bottom: 0;
+    }
+
+    .buff-note strong {
+      color: var(--zn-text-primary);
     }
 
     .effects-container {

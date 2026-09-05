@@ -1,103 +1,153 @@
 // Zone Nova Rune Sets Data
-// Centralized rune data to avoid hardcoding in builds
+// Regenerated 2026-09-04 from live master data (equipment_info + equipment_passive_info
+// set ids 101-114). Names/bonuses are the game's own localization (color tags stripped).
+// The 4 element-damage sets (Kryos/Anemos/Hepha/Skota) are the newest wave.
 
-export const RUNE_SETS = {
+const SETS = {
   Alpha: {
     name: 'Alpha',
-    chineseName: '阿尔法符',
-    image: 'Alpha.jpg',
-    twoPiece: 'Attack Power +8%',
-    fourPiece: 'Basic Attack Damage +30%',
-  },
-  'Shattered-Foundation': {
-    name: 'Shattered Foundation',
-    chineseName: '碎基',
-    image: 'Shattered-Foundation.jpg',
-    twoPiece: 'Defense +12%',
-    fourPiece: 'Shield Effectiveness +20%',
+    tag: 'Attack',
+    chineseName: '阿爾法',
+    image: 'Alpha.webp',
+    twoPiece: 'Attack increases by 8%',
+    fourPiece: 'Normal Attack damage increases by 30%',
   },
   Beth: {
     name: 'Beth',
-    chineseName: '贝丝',
-    image: 'Beth.jpg',
-    twoPiece: 'Critical Hit Rate +6%',
-    fourPiece: 'When HP >80%: Critical Hit Damage +24%',
+    tag: 'Crit',
+    chineseName: '貝絲',
+    image: 'Beth.webp',
+    twoPiece: 'Critical Rate increases by 6%',
+    fourPiece: 'When HP is above 80%, Critical Damage increases by 24%',
   },
-  Zahn: {
-    name: 'Zahn',
-    chineseName: '札恩',
-    image: 'Zahn.jpg',
-    twoPiece: 'HP +8%',
-    fourPiece: 'After Ultimate: Take 5% less damage (10s)',
+  Gimel: {
+    name: 'Gimel',
+    tag: 'DOT',
+    chineseName: '吉梅爾',
+    image: 'Gimel.webp',
+    twoPiece: 'Damage Over Time increased by 20%',
+    fourPiece:
+      'After dealing Damage Over Time, own Attack Power increases by 2%, stacking up to 10 times, lasting 5 seconds',
   },
   Daleth: {
     name: 'Daleth',
-    chineseName: '达莱特',
-    image: 'Daleth.jpg',
-    twoPiece: 'Healing Effectiveness +10%',
-    fourPiece: 'Battle Start: Gain 1 Energy immediately',
+    tag: 'Healing',
+    chineseName: '達萊特',
+    image: 'Daleth.webp',
+    twoPiece: 'Healing effect increases by 10%',
+    fourPiece: 'At battle start, instantly gain 1 energy',
   },
   Epsilon: {
     name: 'Epsilon',
+    tag: 'Attack',
     chineseName: '埃普西隆',
-    image: 'Epsilon.jpg',
-    twoPiece: 'Attack Power +8%',
+    image: 'Epsilon.webp',
+    twoPiece: 'Attack increases by 8%',
     fourPiece:
-      'After activating ultimate skill, entire team damage increased by 10%, lasts 10 seconds',
-    note: 'Same passive effect cannot stack',
+      'After casting an ULT, team damage increases by 10% for 10 seconds (identical passive effects do not stack)',
   },
-  Hert: {
-    name: 'Hert Extra Attack Damage',
-    chineseName: '赫特追击伤害',
-    image: 'Hert-Pursuit-Damage.jpg',
-    twoPiece: 'Extra Attack damage increased by 20%',
-    fourPiece:
-      'After dealing Extra Attack damage, critical hit rate increases by 15%, lasts 10 seconds',
-    note: 'This can only be obtained in guild raids',
+  Poki: {
+    name: 'Poki',
+    tag: 'Def',
+    chineseName: '魄基',
+    image: 'Poki.webp',
+    twoPiece: 'Defense increases by 12%',
+    fourPiece: 'Shield effect increases by 20%',
   },
-  'Gimel-Continuous-Damage': {
-    name: 'Gimel Continuous Damage',
-    chineseName: '吉梅尔持续伤害',
-    image: 'Gimel-Continuous-Damage.jpg',
-    twoPiece: 'Continuous damage increased by 20%',
-    fourPiece:
-      'After dealing continuous damage, own attack power increases by 2%, can stack up to 10 layers, lasts 5 seconds',
-    note: 'This can only be obtained in guild raids',
+  Zane: {
+    name: 'Zane',
+    tag: 'HP',
+    chineseName: '札恩',
+    image: 'Zane.webp',
+    twoPiece: 'HP increases by 8%',
+    fourPiece: 'After casting an ULT, self damage taken decreases by 5% for 10 seconds',
   },
-  Giants: {
-    name: 'Giants [Vulnerability]',
-    chineseName: '巨人 [脆弱]',
-    image: 'Giants.jpg',
-    twoPiece: 'Attack power increased by 8%',
+  Het: {
+    name: 'Het',
+    tag: 'Pursue',
+    chineseName: '赫特',
+    image: 'Het.webp',
+    twoPiece: 'Pursue Damage increased by 20%',
+    fourPiece: 'After dealing Pursue Damage, Critical Rate increases by 15%, lasting 10 seconds',
+  },
+  Iota: {
+    name: 'Iota',
+    tag: 'Vulnerability',
+    chineseName: '約塔',
+    image: 'Iota.webp',
+    twoPiece: 'Attack Power increased by 8%',
     fourPiece:
-      'When equipped character is "Debuff" class, casting ultimate skill damage causes targets to take 10% increased damage for 5 seconds',
+      'When the wearer is a Disruptor, dealing damage with an Ultimate Skill increases the target’s damage taken by 10% for 5 seconds (does not stack)',
     classRestriction: 'Disruptor',
-    note: 'Same passive effects cannot stack. This can only be obtained in guild raids',
   },
-  Tide: {
-    name: 'Tide [Energy]',
-    chineseName: '潮汐 [能量]',
-    image: 'Tide.jpg',
+  Kappa: {
+    name: 'Kappa',
+    tag: 'Energy',
+    chineseName: '卡帕',
+    image: 'Kappa.webp',
     twoPiece: 'Defense increased by 12%',
     fourPiece:
-      "Within 10 seconds after combat starts, your team's energy gain efficiency is increased by 30%",
-    note: 'This effect cannot stack. Daleth 4-piece set effects in the team will be disabled. This can only be obtained in guild raids',
+      'Within 10 seconds of battle start, the team’s Energy gain efficiency increases by 30% (does not stack; other 4-piece Daleth set effects in the team are disabled)',
   },
-  HP: {
-    name: 'HP',
-    chineseName: '生命',
-    image: 'HP.jpg',
-    twoPiece: 'HP increased by 10%',
-    fourPiece: 'HP increased by an additional 15%',
+  Kryos: {
+    name: 'Kryos',
+    tag: 'Frost Damage',
+    chineseName: '克里奧斯',
+    image: 'Kryos.webp',
+    isNew: true,
+    twoPiece: 'Frost damage increased by 10%',
+    fourPiece:
+      'For every 10% reduction in Normal Attack cooldown, Frost damage is increased by 4% and Critical Damage is increased by 3.6%, up to a maximum of 5 stacks',
   },
-  DEF: {
-    name: 'Defense',
-    chineseName: '防御',
-    image: 'DEF.jpg',
-    twoPiece: 'Defense increased by 10%',
-    fourPiece: 'Defense increased by an additional 15%',
+  Anemos: {
+    name: 'Anemos',
+    tag: 'Storm Damage',
+    chineseName: '阿涅莫斯',
+    image: 'Anemos.webp',
+    isNew: true,
+    twoPiece: 'Storm damage increased by 10%',
+    fourPiece:
+      'After dealing Storm attribute skill damage, the user’s Storm damage is increased by 4% and the target’s Defense is reduced by 6% for 5 seconds, stacking up to 5 times',
+  },
+  Hepha: {
+    name: 'Hepha',
+    tag: 'Blaze Damage',
+    chineseName: '赫法',
+    image: 'Hepha.webp',
+    isNew: true,
+    twoPiece: 'Blaze damage increased by 10%',
+    fourPiece:
+      'When dealing Blaze attribute Ultimate Skill damage, Critical Rate is increased by 12% and Attack Power is increased by 16%',
+  },
+  Skota: {
+    name: 'Skota',
+    tag: 'Chaos Damage',
+    chineseName: '斯科塔',
+    image: 'Skota.webp',
+    isNew: true,
+    twoPiece: 'Chaos damage increased by 10%',
+    fourPiece:
+      'Attack Power increased by 12%. Chaos resistance penetration increased by 12% during the release of the Ultimate Skill (triggers at most once every 5 seconds)',
   },
 };
+
+// Legacy fan-name keys kept so old references still resolve
+const ALIASES = {
+  'Shattered-Foundation': 'Poki',
+  Zahn: 'Zane',
+  Hert: 'Het',
+  'Hert-Pursuit-Damage': 'Het',
+  'Gimel-Continuous-Damage': 'Gimel',
+  Giants: 'Iota',
+  Tide: 'Kappa',
+};
+
+export const RUNE_SETS = { ...SETS };
+for (const [alias, key] of Object.entries(ALIASES)) {
+  RUNE_SETS[alias] = RUNE_SETS[key];
+}
+
+export const RUNE_SET_LIST = Object.values(SETS);
 
 // Main stats by rune position (fixed for all characters)
 export const MAIN_STATS_BY_POSITION = {

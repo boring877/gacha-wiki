@@ -52,7 +52,7 @@
   background: var(--zn-bg-secondary);
   border-radius: 12px;
   padding: 1.5rem;
-  border: 1px solid var(--zn-border);
+  border: none;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,7 +85,7 @@
 }
 
 .character-class-info {
-  color: var(--teal-crystal);
+  color: var(--zn-text-primary);
   margin: 0.5rem 0 0 0;
   font-size: 1rem;
   text-align: center;
@@ -1092,6 +1092,40 @@
 
 .mem-awaken-variants .mem-awaken-variant.active {
   display: block;
+}
+
+/* Buff reference note (tokens the card text doesn't define) */
+.mem-buff-reference {
+  background: rgba(0, 172, 193, 0.06);
+  border: 1px solid rgba(0, 172, 193, 0.25);
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  margin-top: 0.6rem;
+}
+
+.mem-buff-title {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--zn-primary-amber);
+  margin-bottom: 0.35rem;
+}
+
+.mem-buff-note {
+  color: var(--zn-text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin: 0 0 0.3rem;
+}
+
+.mem-buff-note:last-child {
+  margin-bottom: 0;
+}
+
+.mem-buff-note strong {
+  color: var(--zn-text-primary);
 }
 
 .equipment-limitation {

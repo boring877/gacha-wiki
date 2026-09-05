@@ -2,10 +2,10 @@
 
 .content-section {
   background: var(--zn-bg-secondary);
-  padding: 3rem;
-  border-radius: 20px;
-  margin-bottom: 3rem;
-  border: 1px solid var(--amber-glow);
+  padding: 2rem;
+  border-radius: 14px;
+  margin-bottom: 2rem;
+  border: none;
 }
 
 .section-title {
@@ -69,7 +69,7 @@
 
 .search-input:focus {
   outline: none;
-  border-color: var(--teal-crystal);
+  border-color: var(--amber-glow);
 }
 
 /* Search Suggestions */
@@ -103,8 +103,8 @@
 
 .search-btn {
   padding: 0.75rem 1.5rem;
-  background: var(--teal-crystal);
-  color: var(--zn-text-primary);
+  background: var(--amber-glow);
+  color: #1a1a1a;
   border: none;
   border-radius: 8px;
   font-family: var(--font-primary);
@@ -151,7 +151,7 @@
   -webkit-appearance: none; /* Remove iOS styling */
   -webkit-border-radius: 8px; /* Force border radius on iOS */
   appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300acc1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffb74a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
   background-size: 1rem;
@@ -159,7 +159,7 @@
 
 .filter-select:focus {
   outline: none;
-  border-color: var(--teal-crystal);
+  border-color: var(--amber-glow);
 }
 
 /* Results Info */
@@ -190,7 +190,7 @@
   text-align: center;
   padding: 3rem 2rem;
   background: var(--zn-bg-primary);
-  border: 1px solid var(--zn-border);
+  border: none;
   border-radius: 12px;
   color: var(--zn-text-secondary);
 }
@@ -257,7 +257,7 @@
 
 .patch-card {
   background: var(--zn-bg-primary);
-  border: 1px solid var(--zn-border);
+  border: none;
   border-radius: 12px;
   padding: 0;
   text-decoration: none;
@@ -267,13 +267,9 @@
   display: block;
 }
 
-.patch-card.announcement {
-  border-left: 4px solid var(--amber-glow);
-}
 
-.patch-card.maintenance {
-  border-left: 4px solid var(--teal-crystal);
-}
+
+
 
 /* Card Header */
 .patch-card-header {
@@ -311,23 +307,23 @@
 
 /* Tag Colors */
 .update-tag.maintenance {
-  background: linear-gradient(135deg, var(--teal-crystal), #00bcd4);
-  color: var(--zn-text-primary);
+  background: rgba(79, 195, 247, 0.15);
+  color: #4fc3f7;
 }
 
 .update-tag.event {
-  background: linear-gradient(135deg, #ff6b6b, #ff8e53);
-  color: var(--zn-text-primary);
+  background: rgba(255, 107, 107, 0.15);
+  color: #ff8e8e;
 }
 
 .update-tag.recruitment {
-  background: linear-gradient(135deg, var(--amber-glow), #ffa726);
-  color: var(--zn-text-primary);
+  background: rgba(255, 183, 77, 0.15);
+  color: var(--amber-glow);
 }
 
 .update-tag.announcement {
-  background: linear-gradient(135deg, #9c27b0, #ba68c8);
-  color: var(--zn-text-primary);
+  background: rgba(186, 104, 200, 0.15);
+  color: #ce93d8;
 }
 
 .patch-card h2 {
