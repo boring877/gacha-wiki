@@ -248,7 +248,6 @@ export const medusaData = {
       "The wearer's attack power is increased by 26.5%, and the defense and health of allied units are increased by 28%. Upon entering the battlefield, the wearer is granted the [Geo Boundary] buff every 3 seconds, which is reduced by 3% when taking damage, up to a maximum of 15 stacks.",
       "The wearer's attack power is increased by 30%, and the defense and health of allied units are increased by 32%. Upon entering the battlefield, all allies are granted the [Geo Boundary] buff every 3 seconds, which is reduced by 4% when taking damage, up to a maximum of 15 stacks.",
       "The wearer's attack power is increased by 33.5%, and the defense and health of allied units are increased by 40%. Upon entering the battlefield, the wearer is granted the [Geo Boundary] buff every 3 seconds, which is reduced by 5% when taking damage, up to a maximum of 15 stacks.",
-    ]] buff every 3 seconds, which is reduced by 5% when taking damage, up to a maximum of 15 stacks.",
     ],
     restriction: "Only effective for Healer",
   },

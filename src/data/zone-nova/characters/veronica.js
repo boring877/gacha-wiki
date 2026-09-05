@@ -248,7 +248,6 @@ export const veronicaData = {
       "Our HP increases by 16%, and self defense increases by 52%. After each skill use, all allies gain [Radiant Protection], reducing damage taken by 4% and increasing critical hit resistance by 3%, stacking up to 5 times, lasting 10 seconds.",
       "Our HP increases by 20%, and self defense increases by 56%. After each skill use, all allies gain [Radiant Protection], reducing damage taken by 5% and increasing critical hit resistance by 4%, stacking up to 5 times, lasting 10 seconds.",
       "Our HP increases by 25%, and self defense increases by 70%. After each skill use, all allies gain [Radiant Protection], reducing damage taken by 6% and increasing critical hit resistance by 5%, stacking up to 5 times, lasting 10 seconds.",
-    ]], reducing damage taken by 6% and increasing critical hit resistance by 5%, stacking up to 5 times, lasting 10 seconds.",
     ],
     restriction: "Only effective for Tank",
   },

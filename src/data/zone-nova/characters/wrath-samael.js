@@ -260,7 +260,6 @@ export const wrathSamaelData = {
       "Defense increased by 56%. After a successful parry, damage taken is reduced by 8% for 5 seconds. The wearer gains a [Stigmata] (maximum 400 stacks) for 3 seconds. For every 40 stacks of [Stigmata], the wearer's all resistances increase by 3%.",
       "Defense increased by 60%. After a successful parry, damage taken is reduced by 9% for 5 seconds. The wearer gains a [Stigmata] (maximum 400 stacks) for 3 seconds. For every 40 stacks of [Stigmata], the wearer's all resistances increase by 4%.",
       "Defense increased by 64%. After a successful parry, damage taken is reduced by 10% for 5 seconds. The wearer gains a [Stigmata] (maximum 400 stacks) for 3 seconds. For every 40 stacks of [Stigmata], the wearer's all resistances increase by 5%.",
-    ]] (maximum 400 stacks) for 3 seconds. For every 40 stacks of [Stigmata], the wearer's all resistances increase by 5%.",
     ],
     restriction: "Only effective for Tank",
   },

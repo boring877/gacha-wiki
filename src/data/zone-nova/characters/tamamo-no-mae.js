@@ -259,8 +259,6 @@ export const tamamoNoMaeData = {
       "Base Stats Boost: ATK +32%.\nPassive: After allies' Ultimate deals DMG, increases self Energy Recovery Rate by 160% (4s) and gains 1 stack of [Brilliance] (5s, max 50 stacks).\nEvery 5 stacks of [Brilliance] increases all allies' DMG by 7%.",
       "Base Stats Boost: ATK +36%.\nPassive: After allies' Ultimate deals DMG, increases self Energy Recovery Rate by 180% (4s) and gains 1 stack of [Brilliance] (5s, max 50 stacks).\nEvery 5 stacks of [Brilliance] increases all allies' DMG by 8%.",
       "Base Stats Boost: ATK +40%.\nPassive: After allies' Ultimate deals DMG, increases self Energy Recovery Rate by 200% (4s) and gains 1 stack of [Brilliance] (5s, max 50 stacks).\nEvery 5 stacks of [Brilliance] increases all allies' DMG by 9%.",
-    ]] (5s, max 50 stacks).",
-      "Every 5 stacks of [Brilliance] increases all allies' DMG by 9%.",
     ],
     restriction: "Only effective for Supporter",
   },

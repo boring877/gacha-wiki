@@ -259,7 +259,6 @@ export const cleopatraData = {
       "Attack increases by 32%, after a skill hits a target, applies one stack of [Corrosion], [Corrosion]: Deals 12% <color=#9754d5>Chaos</color> Damage every 2 seconds, stacks up to 5 times, lasts 10 seconds",
       "Attack increases by 36%, after a skill hits a target, applies one stack of [Corrosion], [Corrosion]: Deals 13.5% <color=#9754d5>Chaos</color> Damage every 2 seconds, stacks up to 5 times, lasts 10 seconds",
       "Attack increases by 40%, after a skill hits a target, applies one stack of [Corrosion], [Corrosion]: Deals 15% <color=#9754d5>Chaos</color> Damage every 2 seconds, stacks up to 5 times, lasts 10 seconds",
-    ]], [Corrosion]: Deals 15% <color=#9754d5>Chaos</color> Damage every 2 seconds, stacks up to 5 times, lasts 10 seconds",
     ],
     restriction: "Only effective for Destroyer",
   },

@@ -816,7 +816,7 @@ function getTagCategory(tag: string): string {
     <!-- Memory Stats (Right) -->
     <div class="memory-card-stats-container">
       <div class="memory-card-stats-box">
-        <h3 class="memory-card-stats-title">Memory Card Stats</h3>
+        <h3 class="memory-card-stats-title">Memory Card Stats (Lv.80 Max)</h3>
 
         <div class="character-stats-grid">
           <div class="stat-item">
@@ -841,13 +841,42 @@ function getTagCategory(tag: string): string {
 
         <!-- Memory Effects -->
         <h4 class="memory-effects-title">Memory Effects</h4>
-        {
+        {characterData.memoryCard.effects.length === 5 ? (
+          <div class="mem-awaken">
+            <div class="mem-awaken-picker">
+              <span class="mem-awaken-label">Awakening</span>
+              <div class="mem-awaken-pills" role="group" aria-label="Memory awakening level selector">
+                {characterData.memoryCard.effects.map((_, i) => (
+                  <button
+                    type="button"
+                    class={`mem-awaken-pill${i === 4 ? ' active' : ''}`}
+                    data-awaken={i + 1}
+                  >
+                    {i + 1}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div class="mem-awaken-variants">
+              {characterData.memoryCard.effects.map((levelText, i) => (
+                <div
+                  class={`memory-effect-item mem-awaken-variant${i === 4 ? ' active' : ''}`}
+                  data-awaken={i + 1}
+                >
+                  {levelText.split('\n').filter(Boolean).map(par => (
+                    <p class="memory-effect-text">{par}</p>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
           characterData.memoryCard.effects.map(effect => (
             <div class="memory-effect-item">
               <p class="memory-effect-text">• {effect}</p>
             </div>
           ))
-        }
+        )}
       </div>
     </div>
   </div>
@@ -887,6 +916,19 @@ function getTagCategory(tag: string): string {
     </div>
   </div>
 </section>
+
+  <!-- Memory awakening picker -->
+  <script>
+    const memPills = document.querySelectorAll('.mem-awaken-picker .mem-awaken-pill');
+    const memVariants = document.querySelectorAll('.mem-awaken-variants .mem-awaken-variant');
+    memPills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        memPills.forEach((p) => p.classList.toggle('active', p === pill));
+        const lv = pill.getAttribute('data-awaken');
+        memVariants.forEach((v) => v.classList.toggle('active', v.getAttribute('data-awaken') === lv));
+      });
+    });
+  </script>
 
 <!-- Minimal JavaScript for progressive enhancement -->
 <script>

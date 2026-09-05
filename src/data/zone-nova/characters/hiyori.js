@@ -261,8 +261,6 @@ export const hiyoriData = {
       "The wearer's CRIT Rate increases by 16%.\nWhen the wearer attacks an enemy target with a Shield, they gain the [Descale] state for 8s.\nWhile in the [Descale] state, CRIT DMG increases by 16%, and when using an Ultimate on an enemy target without a Shield, Ultimate DMG increases by an additional 48%.",
       "The wearer's CRIT Rate increases by 18%.\nWhen the wearer attacks an enemy target with a Shield, they gain the [Descale] state for 8s.\nWhile in the [Descale] state, CRIT DMG increases by 18%, and when using an Ultimate on an enemy target without a Shield, Ultimate DMG increases by an additional 54%.",
       "The wearer's CRIT Rate increases by 20%.\nWhen the wearer attacks an enemy target with a Shield, they gain the [Descale] state for 8s.\nWhile in the [Descale] state, CRIT DMG increases by 20%, and when using an Ultimate on an enemy target without a Shield, Ultimate DMG increases by an additional 60%.",
-    ]] state for 8s.",
-      "While in the [Descale] state, CRIT DMG increases by 20%, and when using an Ultimate on an enemy target without a Shield, Ultimate DMG increases by an additional 60%.",
     ],
     restriction: "Only effective for Destroyer",
   },
