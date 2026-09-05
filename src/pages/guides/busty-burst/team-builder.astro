@@ -21,7 +21,7 @@ const description =
   'Build your Busty Burst team and detect buff/debuff conflicts. Optimize your team composition with category conflict detection for up to 6 characters.';
 const gameTitle = 'Team Builder';
 
-const rarityImageMap = JSON.stringify({ R: rarityR.src, SR: raritySR.src, SSR: raritySSR.src });
+const rarityImageMap = JSON.stringify({ R: rarityR, SR: raritySR, SSR: raritySSR });
 
 // Serialize character data for client-side use
 const characterDataJSON = JSON.stringify(TEAM_BUILDER_CHARACTERS);
@@ -474,7 +474,7 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
     // Highlight team slots with conflicts
     document.querySelectorAll('.bb-tb-slot').forEach(s => s.classList.remove('has-conflict'));
     const conflictedCharIds = new Set();
-    allConflicts.forEach(c => c.conflictingItems.forEach(i => conflicitedCharIds.add(i.charId)));
+    allConflicts.forEach(c => c.conflictingItems.forEach(i => conflictedCharIds.add(i.charId)));
     conflictedCharIds.forEach(charId => {
       const slotIdx = team.indexOf(charId);
       if (slotIdx !== -1) {
@@ -645,9 +645,15 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
 
     passivesList.innerHTML = activeChars
       .map(
-        char => `
+        char => {
+          const imgSlot = document.querySelector(`.bb-tb-char-card[data-id="${char.id}"] .bb-tb-char-img img`);
+          const imgSrc = imgSlot?.src || '';
+          return `
       <div class="bb-tb-passive-char">
-        <div class="bb-tb-passive-char-name">${char.name}</div>
+        <div class="bb-tb-passive-char-header">
+          <img src="${imgSrc}" alt="${char.name}" loading="lazy" />
+          <div class="bb-tb-passive-char-name">${char.name}</div>
+        </div>
         <div class="bb-tb-passive-list">
           ${
             char.passives
@@ -663,7 +669,8 @@ const debuffCategoriesJSON = JSON.stringify(DEBUFF_CATEGORIES);
           }
         </div>
       </div>
-    `
+    `;
+        }
       )
       .join('');
   }
