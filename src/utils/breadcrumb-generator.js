@@ -20,6 +20,7 @@ const GAME_CONFIG = {
       'rift-teams': 'Rift Teams',
       updates: 'Updates',
       memories: 'Memoria',
+      items: 'Item Database',
     },
   },
   'silver-and-blood': {
@@ -120,6 +121,34 @@ const GAME_CONFIG = {
       'tier-list': 'Tier List',
       gacha: 'Recruitment Rates',
       stats: 'Stats & Formulas',
+    },
+  },
+  'star-savior': {
+    name: 'Star Savior',
+    basePath: '/guides/star-savior/',
+    patterns: {
+      characters: 'Characters',
+      arcana: 'Arcana',
+      banners: 'Banners',
+      blog: 'Blog',
+      buffs: 'Buffs & Debuffs',
+      builds: 'Builds',
+      gear: 'Gear',
+      journey: 'Journey',
+      'journey-items': 'Journey Items',
+      'redeem-codes': 'Redeem Codes',
+    },
+  },
+  'last-origin-global': {
+    name: 'Last Origin Global',
+    basePath: '/guides/last-origin-global/',
+    patterns: {},
+  },
+  'make-drama': {
+    name: 'Make Drama',
+    basePath: '/guides/make-drama/',
+    patterns: {
+      characters: 'Characters',
     },
   },
 };
