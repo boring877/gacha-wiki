@@ -177,24 +177,27 @@
   display: block;
 }
 
-/* ===== Tier sections: slim header, thin divider ===== */
+/* ===== Tier sections: letter + label on one rhythm, thin divider ===== */
 .bb-defdown-tier-section {
   margin-top: 0.5rem;
 }
 
 .bb-defdown-tier-header {
   display: flex;
-  align-items: baseline;
-  gap: 0.75rem;
+  align-items: center;
+  gap: 0.8rem;
   padding-bottom: 0.55rem;
   border-bottom: 1px solid var(--bb-border);
 }
 
 .bb-defdown-tier-badge {
-  font-size: 1.6rem;
+  font-size: 1.35rem;
   font-weight: 800;
   line-height: 1;
   color: var(--bbc-accent-strong, #8fd0ea);
+  min-width: 1.6rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
 }
 
 .bb-defdown-tier-info {
@@ -204,14 +207,15 @@
 
 .bb-defdown-tier-title {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--bb-text-primary);
+  line-height: 1.3;
 }
 
 .bb-defdown-tier-desc {
-  margin: 0.1rem 0 0;
-  font-size: 0.75rem;
+  margin: 0.12rem 0 0;
+  font-size: 0.73rem;
   color: var(--bb-text-tertiary);
 }
 
