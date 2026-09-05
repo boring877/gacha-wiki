@@ -220,14 +220,14 @@ export const lustAsmodeusBuild = {
   },
   teamSkill: {
     name: 'Combo',
-    activationCondition: 'When the team includes 2 [Bicta Tower] characters or 2 [Wind] characters',
+    activationCondition: 'When the team includes 2 [Bikta] characters or 2 [Wind] characters',
     effects: [
       'Attack power increased by 20%',
       'At the start of battle, every 15% critical hit rate increases critical hit damage by 8%, up to a maximum of 6 times',
     ],
   },
   teamSynergy: {
-    goodWith: ['Bicta Tower teammates', 'Wind teams', 'Crit buffers', 'Single-target boss teams'],
+    goodWith: ['Bikta teammates', 'Wind teams', 'Crit buffers', 'Single-target boss teams'],
     note:
       'Asmodeus gains the most value in teams that help her stay on target, stack crit stats, and convert her Armor Shatter uptime into faster kills. She is strongest when a team can support repeated burst windows instead of long uncontrolled fights.',
   },

@@ -948,3 +948,59 @@ strong {
     transition: none !important;
   }
 }
+
+
+/* Awaken level picker (memory card effects) */
+.awaken-picker {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--zn-bg-secondary, #1a2230);
+  border: 1px solid var(--zn-border, #2a3548);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.awaken-picker .awaken-label {
+  color: var(--zn-text-muted, #8b98ab);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.awaken-pills {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.awaken-pill {
+  min-width: 2rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--zn-border, #2a3548);
+  background: var(--zn-bg-primary, #10161f);
+  color: var(--zn-text-primary, #e7ecf3);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.awaken-pill:hover {
+  border-color: var(--zn-accent, #4fc3f7);
+}
+
+.awaken-pill.active {
+  background: var(--zn-accent, #4fc3f7);
+  border-color: var(--zn-accent, #4fc3f7);
+  color: #08131c;
+}
+
+.awaken-variants .awaken-variant {
+  display: none;
+}
+
+.awaken-variants .awaken-variant.active {
+  display: block;
+}

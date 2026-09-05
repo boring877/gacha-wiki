@@ -225,7 +225,7 @@ export const prideLuciferBuild = {
   },
   teamSkill: {
     name: 'Combination Skill',
-    activationCondition: 'When the team contains [Bicta Tower] characters or [Chaos] characters',
+    activationCondition: 'When the team contains [Bikta] characters or [Chaos] characters',
     effects: [
       'Defense increased by 10%',
       'HP increased by 10%',

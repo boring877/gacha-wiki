@@ -2,19 +2,16 @@
 // Zone Nova class icon component
 // Maps Zone Nova class names to the current public class icon assets.
 
+const CLASSES_R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes';
+
 const classImageMap = {
-  Attacker: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Warrior.png',
-  Warrior: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Warrior.png',
-  Destroyer: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Destroyer.png',
-  Guardian: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Tank.png',
-  Tank: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Tank.png',
-  Buffer: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Supporter.png',
-  Supporter: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Supporter.png',
-  Healer: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Healer.png',
-  Debuffer: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Disruptor.png',
-  Disruptor: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Disruptor.png',
-  Mage: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Destroyer.png',
-  Rogue: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Attacker.png',
+  Attacker: `${CLASSES_R2}/Attacker.png`,
+  Warrior: `${CLASSES_R2}/Warrior.png`,
+  Destroyer: `${CLASSES_R2}/Destroyer.png`,
+  Tank: `${CLASSES_R2}/Tank.png`,
+  Supporter: `${CLASSES_R2}/Supporter.png`,
+  Healer: `${CLASSES_R2}/Healer.png`,
+  Disruptor: `${CLASSES_R2}/Disruptor.png`,
 };
 
 interface Props {
@@ -47,15 +44,19 @@ const sizePresets = {
 // Use size preset if provided, otherwise use explicit dimensions
 const dimensions = size ? sizePresets[size] : { width: width || 48, height: height || 48 };
 
-const imageSrc = classImageMap[className] || classImageMap.Warrior;
+// Unknown class names (e.g. "Universal"/"DPS" memory cards) have no icon —
+// render nothing rather than a misleading fallback icon.
+const imageSrc = classImageMap[className];
 ---
 
-<img
-  src={imageSrc}
-  alt={alt}
-  width={dimensions.width}
-  height={dimensions.height}
-  class={classNameProp}
-  loading={loading}
-  decoding="async"
-/>
+{imageSrc && (
+  <img
+    src={imageSrc}
+    alt={alt}
+    width={dimensions.width}
+    height={dimensions.height}
+    class={classNameProp}
+    loading={loading}
+    decoding="async"
+  />
+)}

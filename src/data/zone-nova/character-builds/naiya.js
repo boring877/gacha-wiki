@@ -1,10 +1,10 @@
 // Naiya Build - Zone Nova Character Build
-// SSR Ice character - ATK Scaling Hyper-Carry Buffer
+// SSR Ice character - ATK Scaling Hyper-Carry Supporter
 
 export const naiyaBuild = {
   name: 'Naiya',
-  role: 'Buffer',
-  buildType: 'ATK Scaling Buffer',
+  role: 'Supporter',
+  buildType: 'ATK Scaling Supporter',
   description:
     'Naiya is a buffer who focuses on buffing the highest ATK character on the team. Her buffs scale with her ATK power - the higher her ATK, the stronger the ATK she provides. She offers ATK increase, Crit Damage buffs, energy recovery when Enemy die, and massive total damage boosts. Her Dupe 4 awakening is strong. You need to keep in mind that if she have the highest atk power she going to buff her self, so you need to manage that !!',
   skillPriority: [

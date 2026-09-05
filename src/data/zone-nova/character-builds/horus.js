@@ -1,10 +1,10 @@
 // Horus Build - Zone Nova Character Build
-// SSR Holy character - Attack Scaling DOT Debuffer
+// SSR Holy character - Attack Scaling DOT Disruptor
 
 export const horusBuild = {
   name: 'Horus',
-  role: 'Debuffer',
-  buildType: 'Holy DOT Debuffer',
+  role: 'Disruptor',
+  buildType: 'Holy DOT Disruptor',
   description:
     'Horus is a debuffer and DOT damage character. She scales with attack power. Her Ultimate can interrupt skill casting. She mainly focuses on ATK and Penetration.',
   skillPriority: [
@@ -72,7 +72,7 @@ export const horusBuild = {
     {
       name: 'Deceptive Ultimate Temptation',
       effect:
-        'SR memory card designed for Debuffer class that provides attack boost and increased damage against enemies with negative status',
+        'SR memory card designed for Disruptor class that provides attack boost and increased damage against enemies with negative status',
       characterSpecific: false,
       memoryImage: 'Deceptive-Ultimate-Temptation.jpg',
       memoryStats: { hp: '5,000', attack: '500', defense: '500' },
@@ -217,7 +217,7 @@ export const horusBuild = {
   },
   teamSkill: {
     name: 'Combination Skill',
-    activationCondition: 'When the team contains 2 [Chemic] characters or 2 [Holy] characters',
+    activationCondition: 'When the team contains 2 [Kemich] characters or 2 [Holy] characters',
     effects: [
       'Self attack power increases by 10%',
       'At battle start, every 500 attack power adds 3% penetration, maximum 6 times (18% max)',

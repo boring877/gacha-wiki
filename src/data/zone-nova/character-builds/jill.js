@@ -234,12 +234,12 @@ export const jillBuild = {
   },
   teamSynergy: {
     goodWith: [
-      'Sharin, both Monochrome Nation so team skill activates. Sharin buffs ATK which means Jill heals more.',
-      'Wrath-Samael, Monochrome Nation tank who taunts. Enemies hit him a lot which triggers her passive marks faster.',
-      'Pride-Lucifer, Monochrome Nation warrior. Loves having Tenacity and lifesteal from Bloodthirsty Sanction.',
+      'Sharin, both Monochrome Realm so team skill activates. Sharin buffs ATK which means Jill heals more.',
+      'Wrath-Samael, Monochrome Realm tank who taunts. Enemies hit him a lot which triggers her passive marks faster.',
+      'Pride-Lucifer, Monochrome Realm warrior. Loves having Tenacity and lifesteal from Bloodthirsty Sanction.',
       'Any DPS works fine with her honestly. She keeps everyone alive regardless of team comp.',
       'Gaia, double healer with Gaia revive + Jill Tenacity makes teams basically unkillable.',
     ],
-    note: "Her Tenacity is really good against bosses that do big burst damage. You want Monochrome Nation or Holy teammates for the team skill, Monochrome is better since Sharin buffs ATK. Her ult costs 6 energy which is steep, so Daleth 4-piece for the starting energy helps a lot. She could be a good answer to Pride-Lucifer in PvP too, 4 marks gives Chaos RES +20% and Tenacity every second, so her damage just doesn't stick.",
+    note: "Her Tenacity is really good against bosses that do big burst damage. You want Monochrome Realm or Holy teammates for the team skill, Monochrome is better since Sharin buffs ATK. Her ult costs 6 energy which is steep, so Daleth 4-piece for the starting energy helps a lot. She could be a good answer to Pride-Lucifer in PvP too, 4 marks gives Chaos RES +20% and Tenacity every second, so her damage just doesn't stick.",
   },
 };

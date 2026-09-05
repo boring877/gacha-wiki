@@ -4,7 +4,7 @@ export const november25MaintenanceData = {
   type: 'maintenance',
 
   tldr: [
-    'Major maintenance on November 25, 2025 (14:00, ~2 hours) brings Goddess of Night: Nightmare\'s Trial Part 2, Morgan Le Fay (Supporter, Holy) recruitment, "Absolutely Perfect Hips" memory, Freya rerun, "Servant\'s Wish" memory rerun, Rift Wave XVI, event packs, Rune Stone Dungeon double drops, and 300 Luminite compensation for players who log in before December 2, 2025.',
+    'Major maintenance on November 25, 2025 (14:00, ~2 hours) brings Deity of Night: Nightmare\'s Trial Part 2, Morgan Le Fay (Supporter, Holy) recruitment, "Absolutely Perfect Hips" memory, Freya rerun, "Servant\'s Wish" memory rerun, Rift Wave XVI, event packs, Rune Stone Dungeon double drops, and 300 Luminite compensation for players who log in before December 2, 2025.',
   ],
 
   officialUpdate: {
@@ -17,7 +17,7 @@ export const november25MaintenanceData = {
       '- Maintenance Time: 2025/11/25 14:00 (Estimated 2 hours)',
       '- Maintenance Content: System optimization, event updates, and new content launch. During maintenance, Captains will be unable to log into the game—please prepare in advance.',
       '',
-      "Event 1: Goddess of Night: Nightmare's Trial (Part 2) — Limited Event",
+      "Event 1: Deity of Night: Nightmare's Trial (Part 2) — Limited Event",
       '',
       '- Opening Time: 2025/11/25 14:15 ~ 2025/12/09 03:59',
       '- Captains can enter after completing Main Story Chapter 6 via the event entrance on the main interface.',
@@ -97,5 +97,5 @@ export const november25MaintenanceData = {
 export const november25MaintenanceSEO = {
   title: 'November 25 Maintenance Update - Zone Nova - GachaWiki',
   description:
-    "November 25, 2025 maintenance brings Goddess of Night: Nightmare's Trial Part 2, Morgan Le Fay recruitment, Freya rerun, Rift Wave XVI, event packs, double drops, and 300 Luminite compensation for Zone Nova players.",
+    "November 25, 2025 maintenance brings Deity of Night: Nightmare's Trial Part 2, Morgan Le Fay recruitment, Freya rerun, Rift Wave XVI, event packs, double drops, and 300 Luminite compensation for Zone Nova players.",
 };

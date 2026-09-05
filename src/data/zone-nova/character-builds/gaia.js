@@ -215,8 +215,8 @@ export const gaiaBuild = {
     ],
   },
   teamSkill: {
-    name: 'Maternal Guardian',
-    activationCondition: 'Odius faction + Holy element requirement',
+    name: 'Maternal Tank',
+    activationCondition: 'Otis faction + Holy element requirement',
     effects: [
       'Gaia gains +10% Max HP',
       'At battle start: For every 5,000 Max HP Gaia has, her healing output increases by 5% (up to 6 stacks, max +30%)',

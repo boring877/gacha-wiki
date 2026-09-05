@@ -225,7 +225,7 @@ export const jorogumoBuild = {
   },
   teamSkill: {
     name: 'Combination Skill',
-    activationCondition: '2 [Pingjing City (平京城)] or 2 [Chaos] characters',
+    activationCondition: '2 [Heikyo Castle (平京城)] or 2 [Chaos] characters',
     effects: [
       'At the start of combat, healing is increased by 5% for every 500 attack power, up to 6 times (max +30%)',
       'Self-generated energy gain efficiency is increased by 10%',

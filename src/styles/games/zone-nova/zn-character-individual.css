@@ -217,6 +217,246 @@
   font-size: 0.95rem;
 }
 
+/* Max (full talent tree) stat shown under the base value */
+.stat-value.stat-max {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--zn-accent, #4fc3f7);
+  margin-top: 0.15rem;
+}
+
+.stat-max-note {
+  color: var(--zn-text-muted);
+  font-size: 0.78rem;
+  text-align: center;
+  margin: -0.9rem 0 1rem 0;
+}
+
+/* === Talent Tree (data-driven redesign) === */
+
+.talent-totals-box {
+  background: var(--zn-bg-secondary);
+  border: 1px solid var(--zn-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.talent-totals-title {
+  color: var(--zn-text-primary);
+  margin: 0 0 0.75rem 0;
+  font-size: 1.05rem;
+}
+
+.talent-totals-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.talent-total-badge {
+  display: inline-block;
+  background: var(--zn-bg-primary);
+  border: 1px solid var(--zn-accent, #4fc3f7);
+  color: var(--zn-accent, #4fc3f7);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.talent-totals-note {
+  color: var(--zn-text-muted);
+  font-size: 0.82rem;
+  margin: 0;
+}
+
+.talent-e-nodes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.talent-e-nodes .node-tier {
+  display: flex;
+  align-items: center;
+  background: var(--zn-bg-primary);
+  border: 1px solid var(--zn-border);
+  border-radius: 10px;
+  padding: 0.85rem;
+}
+
+.talent-e-nodes .node-tier-title {
+  font-size: 0.98rem;
+}
+
+.node-tier-materials {
+  color: var(--zn-text-muted);
+  font-size: 0.78rem;
+  margin-top: 0.25rem;
+}
+
+.talent-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.talent-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--zn-bg-secondary);
+  border: 1px solid var(--zn-border);
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 0.92rem;
+}
+
+.talent-table th {
+  background: var(--zn-bg-primary);
+  color: var(--zn-text-muted);
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--zn-border);
+}
+
+.talent-table td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--zn-border);
+  color: var(--zn-text-primary);
+}
+
+.talent-table tr:last-child td {
+  border-bottom: none;
+}
+
+.talent-node-id {
+  font-weight: 700;
+  color: var(--zn-accent, #4fc3f7);
+  white-space: nowrap;
+}
+
+.talent-node-stat {
+  font-weight: 600;
+}
+
+.talent-node-mats {
+  color: var(--zn-text-muted);
+  font-size: 0.85rem;
+}
+
+/* material / currency chips with icons inside talent tables */
+.talent-mat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+  margin-right: 0.6rem;
+}
+
+.talent-mat img {
+  width: 18px;
+  height: 18px;
+  image-rendering: auto;
+  vertical-align: middle;
+  flex: none;
+}
+
+.talent-node-cost {
+  white-space: nowrap;
+}
+
+.talent-node-cost img,
+.th-cost img {
+  width: 16px;
+  height: 16px;
+  vertical-align: -3px;
+  margin-right: 0.25rem;
+}
+
+.th-cost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+
+/* === Skill level picker (Lv.1-14) === */
+
+.skill-level-picker {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  background: var(--zn-bg-secondary);
+  border: 1px solid var(--zn-border);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.skill-level-picker .picker-label {
+  color: var(--zn-text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.picker-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.lv-pill {
+  min-width: 2.1rem;
+  padding: 0.3rem 0.45rem;
+  border-radius: 8px;
+  border: 1px solid var(--zn-border);
+  background: var(--zn-bg-primary);
+  color: var(--zn-text-primary);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  position: relative;
+}
+
+.lv-pill:hover {
+  border-color: var(--zn-accent, #4fc3f7);
+}
+
+.lv-pill.active {
+  background: var(--zn-accent, #4fc3f7);
+  border-color: var(--zn-accent, #4fc3f7);
+  color: #08131c;
+}
+
+.pill-mark {
+  font-size: 0.55rem;
+  font-weight: 700;
+  margin-left: 1px;
+  color: var(--zn-accent, #4fc3f7);
+}
+
+.lv-pill.active .pill-mark {
+  color: #08131c;
+}
+
+/* per-level description variants: only the active level is shown */
+.skill-levels .skill-lv {
+  display: none;
+}
+
+.skill-levels .skill-lv.active {
+  display: block;
+}
+
 /* Character Class */
 
 .character-class-section {
@@ -1335,4 +1575,11 @@
   margin: 0;
   font-style: italic;
   line-height: 1.4;
+}
+
+/* DB page max-stats note */
+.db-max-stats-note {
+  color: var(--zn-text-muted);
+  font-size: 0.82rem;
+  margin: 0 0 0.6rem 0;
 }

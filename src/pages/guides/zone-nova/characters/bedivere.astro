@@ -1,0 +1,16 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import { bedivereData, bedivereSEO } from '../../../../data/zone-nova/characters/bedivere.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={bedivereSEO.title}
+  description={bedivereSEO.description}
+  gameTitle={bedivereData.name}
+  character={bedivereData}
+>
+  <CharacterPageTemplate characterData={bedivereData} />
+</CharacterIndividualLayout>

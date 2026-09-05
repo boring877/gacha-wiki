@@ -1,10 +1,10 @@
 // Morgan Le Fay Build - Zone Nova Character Build
-// SSR Holy character - Holy Buffer Support
+// SSR Holy character - Holy Supporter Support
 
 export const morganLeFayBuild = {
   name: 'Morgan Le Fay',
-  role: 'Buffer',
-  buildType: 'Holy Buffer',
+  role: 'Supporter',
+  buildType: 'Holy Supporter',
   description:
     'This buffer really unique, she can provide both offensive and defensive buffs through her Holy Sword abilities. She can boost team ATK, DEF, and damage reduction while providing consistent energy generation. Some characters scale with DEF and HP when dealing DMG so she has potential to be a very strong buffer.',
   skillPriority: [
@@ -15,7 +15,7 @@ export const morganLeFayBuild = {
       reason:
         'Core buffing ability - drops two Holy Swords that provide massive ATK/DEF buffs and damage reduction',
       description:
-        "Energy Cost: 3\nDrops a [Destruction Holy Sword] at the position of the ally with the highest ATK, dealing 240% ATK as Holy DMG to all enemies within a 5m radius, and increases all allies within range's ATK by 60% and DMG dealt by 48% for 10s.\n\nDrops a [Guardian Holy Sword] at the position of the ally with the highest DEF, dealing 240% ATK as Holy DMG to all enemies within a 5m radius, and increases all allies within range's DEF by 60% and reduces DMG taken by 19% for 10s.",
+        "Energy Cost: 3\nDrops a [Destruction Holy Sword] at the position of the ally with the highest ATK, dealing 240% ATK as Holy DMG to all enemies within a 5m radius, and increases all allies within range's ATK by 60% and DMG dealt by 48% for 10s.\n\nDrops a [Tank Holy Sword] at the position of the ally with the highest DEF, dealing 240% ATK as Holy DMG to all enemies within a 5m radius, and increases all allies within range's DEF by 60% and reduces DMG taken by 19% for 10s.",
     },
     {
       skill: 'Auto Skill',
@@ -58,7 +58,7 @@ export const morganLeFayBuild = {
     {
       name: 'Morning Sunlight',
       effect:
-        'SR memory card that provides attack and team skill damage increase for Buffer class.',
+        'SR memory card that provides attack and team skill damage increase for Supporter class.',
       characterSpecific: false,
       memoryImage: 'Morning-Sunlight .jpg',
       memoryStats: { hp: '5,000', attack: '500', defense: '500' },

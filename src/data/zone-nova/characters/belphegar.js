@@ -8,49 +8,212 @@ export const belphegarData = {
   image: 'belphegar.png',
   rarity: 'SR', // SSR, SR, R
   element: 'Chaos', // Fire, Ice, Wind, Holy, Chaos
-  class: 'Debuffer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
-  role: 'Debuffer', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
-  faction: 'Bicta Tower', // Savir, etc.
+  class: 'Disruptor', // Tank, Warrior, Attacker, Destroyer, Supporter, Disruptor, Healer - Determines memory compatibility
+  role: 'Disruptor', // Tank, DPS, Supporter, Disruptor, Healer - Functional description
+  faction: 'Bikta', // Savir, etc.
 
   // Base Stats (Level 80)
   stats: {
-    hp: '7,970', // e.g., '10,520'
-    attack: '837', // e.g., '794'
-    defense: '560', // e.g., '1,232'
+    hp: "5,000",
+    attack: "500",
+    defense: "500",
+    energyRecovery: '0.25/s',
+    critRate: '0%',
+    critDmg: '50%',
+    maxCritRate: '0%',
+    maxCritDmg: '50%',
+  },
+  maxStats: {
+    hp: '7,970',
+    attack: '837',
+    defense: '560',
+  },
+  talentTree: {
+    totals: ["ATK +67.4%", "HP +59.4%", "DEF +12%"],
+    enhancementNodes: [
+      {
+        name: "Enhancement I",
+        rank: 2,
+        bonus: "ATK +10%, HP +10%",
+        materials: [{"name": "Scarab Stone", "amount": 1, "icon": "Icon_Talent_Rankup_Rare_4.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}],
+        gold: 4000,
+      },
+      {
+        name: "Enhancement II",
+        rank: 4,
+        bonus: "ATK +15%, HP +15%",
+        materials: [{"name": "Scarab Stone", "amount": 2, "icon": "Icon_Talent_Rankup_Rare_4.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}, {"name": "The Original Aether", "amount": 1, "icon": "Icon_Talent_Rankup_Special.png"}],
+        gold: 16000,
+      },
+      {
+        name: "Enhancement III",
+        rank: 6,
+        bonus: "ATK +20%, HP +20%",
+        materials: [{"name": "Scarab Stone", "amount": 8, "icon": "Icon_Talent_Rankup_Rare_4.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}, {"name": "The Original Aether", "amount": 1, "icon": "Icon_Talent_Rankup_Special.png"}],
+        gold: 128000,
+      },
+    ],
+    statNodes: [
+      {
+        node: "N1",
+        stat: "HP +3.2%",
+        unlock: "After E1",
+        materials: [{"name": "Scarab Stone", "amount": 1, "icon": "Icon_Talent_Rankup_Rare_4.png"}],
+        gold: 4000,
+      },
+      {
+        node: "N2",
+        stat: "ATK +3.2%",
+        unlock: "Start",
+        materials: [],
+        gold: 2000,
+      },
+      {
+        node: "N3",
+        stat: "ATK +3.2%",
+        unlock: "After N1",
+        materials: [{"name": "Scarab Stone", "amount": 1, "icon": "Icon_Talent_Rankup_Rare_4.png"}],
+        gold: 8000,
+      },
+      {
+        node: "N4",
+        stat: "DEF +4.8%",
+        unlock: "After N1",
+        materials: [{"name": "Scarab Stone", "amount": 1, "icon": "Icon_Talent_Rankup_Rare_4.png"}],
+        gold: 8000,
+      },
+      {
+        node: "N5",
+        stat: "ATK +4.8%",
+        unlock: "After N2",
+        materials: [{"name": "Scarab Stone", "amount": 2, "icon": "Icon_Talent_Rankup_Rare_4.png"}],
+        gold: 16000,
+      },
+      {
+        node: "N6",
+        stat: "DEF +7.2%",
+        unlock: "After N2",
+        materials: [{"name": "Scarab Stone", "amount": 8, "icon": "Icon_Talent_Rankup_Rare_4.png"}],
+        gold: 128000,
+      },
+      {
+        node: "N7",
+        stat: "HP +4.8%",
+        unlock: "After E2",
+        materials: [{"name": "Scarab Stone", "amount": 4, "icon": "Icon_Talent_Rankup_Rare_4.png"}],
+        gold: 36000,
+      },
+      {
+        node: "N8",
+        stat: "ATK +4.8%",
+        unlock: "After E2",
+        materials: [{"name": "Scarab Stone", "amount": 4, "icon": "Icon_Talent_Rankup_Rare_4.png"}],
+        gold: 36000,
+      },
+      {
+        node: "N9",
+        stat: "ATK +6.4%",
+        unlock: "Lv 80",
+        materials: [{"name": "Scarab Stone", "amount": 8, "icon": "Icon_Talent_Rankup_Rare_4.png"}],
+        gold: 128000,
+      },
+      {
+        node: "N10",
+        stat: "HP +6.4%",
+        unlock: "Lv 75",
+        materials: [{"name": "Scarab Stone", "amount": 8, "icon": "Icon_Talent_Rankup_Rare_4.png"}],
+        gold: 128000,
+      },
+    ],
+    levels: [
+      {
+        level: 2,
+        gold: 2000,
+        materials: [],
+      },
+      {
+        level: 3,
+        gold: 4000,
+        materials: [{"name": "Chaos Aether", "amount": 2, "icon": "Icon_Talent_Rankup_Dark_1.png"}],
+      },
+      {
+        level: 4,
+        gold: 8000,
+        materials: [{"name": "Chaos Aetherstone", "amount": 2, "icon": "Icon_Talent_Rankup_Dark_2.png"}],
+      },
+      {
+        level: 5,
+        gold: 16000,
+        materials: [{"name": "Chaos Aetherstone", "amount": 4, "icon": "Icon_Talent_Rankup_Dark_2.png"}],
+      },
+      {
+        level: 6,
+        gold: 24000,
+        materials: [{"name": "Chaos Aetherstone", "amount": 6, "icon": "Icon_Talent_Rankup_Dark_2.png"}],
+      },
+      {
+        level: 7,
+        gold: 36000,
+        materials: [{"name": "Chaos Aether Lany.", "amount": 2, "icon": "Icon_Talent_Rankup_Dark_3.png"}],
+      },
+      {
+        level: 8,
+        gold: 64000,
+        materials: [{"name": "Chaos Aether Lany.", "amount": 4, "icon": "Icon_Talent_Rankup_Dark_3.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}],
+      },
+      {
+        level: 9,
+        gold: 128000,
+        materials: [{"name": "Chaos Aether Lany.", "amount": 6, "icon": "Icon_Talent_Rankup_Dark_3.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}, {"name": "The Original Aether", "amount": 1, "icon": "Icon_Talent_Rankup_Special.png"}],
+      },
+      {
+        level: 10,
+        gold: 240000,
+        materials: [{"name": "Chaos Aether Lany.", "amount": 11, "icon": "Icon_Talent_Rankup_Dark_3.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}, {"name": "The Original Aether", "amount": 1, "icon": "Icon_Talent_Rankup_Special.png"}],
+      },
+    ],
   },
 
   // Skills
   skills: {
-    normal: {
-      name: 'Fatigue Bombardment',
-      description: 'Deals chaos damage equal to 120% of Attack to designated enemy unit.',
+    normal:     {
+      name: "Fatigue Bombardment",
+      cooldown: "2.0s",
+      description: "Deals 120% Attack as chaos damage to the targeted enemy unit",
+      template: "Deals {0} Attack as chaos damage to the targeted enemy unit",
+      levelValues: [["55%"], ["60%"], ["65%"], ["70%"], ["75%"], ["80%"], ["85%"], ["90%"], ["95%"], ["100%"], ["105%"], ["110%"], ["115%"], ["120%"]],
     },
-    auto: {
-      name: 'Power of the Blanket',
-      cooldown: '5.0s', // e.g., '5.0s'
-      description:
-        'Attack the enemy target with the highest attack power, dealing 120% attack power chaos damage and reducing their critical rate and critical damage by 24%, lasting 10 seconds.',
+    auto:     {
+      name: "Power of the Blanket",
+      cooldown: "5.0s",
+      description: "Attacks the enemy with the highest Attack, dealing 120% Attack as chaos damage And reducing their Critical Rate and Critical Damage by 24% for 10 seconds",
+      template: "Attacks the enemy with the highest Attack, dealing {0} Attack as chaos damage And reducing their Critical Rate and Critical Damage by {1} for 10 seconds",
+      levelValues: [["55%", "11%"], ["60%", "12%"], ["65%", "13%"], ["70%", "14%"], ["75%", "15%"], ["80%", "16%"], ["85%", "17%"], ["90%", "18%"], ["95%", "19%"], ["100%", "20%"], ["105%", "21%"], ["110%", "22%"], ["115%", "23%"], ["120%", "24%"]],
     },
-    ultimate: {
-      name: 'Drowsy Sleep',
-      energyCost: '5', // e.g., '5'
-      description:
-        ' Deal 120% attack power chaos damage to all targets and increase targets auto skill cooldown time by 58%, lasting 10 seconds',
+    ultimate:     {
+      name: "Seven Sins: Sloth",
+      energyCost: "3",
+      cooldown: "1.0s",
+      description: "Deals 120% Attack as chaos damage to all targets And increases their skill cooldown time by 58% for 10 seconds",
+      template: "Deals {0} Attack as chaos damage to all targets And increases their skill cooldown time by {1} for 10 seconds",
+      levelValues: [["55%", "32%"], ["60%", "34%"], ["65%", "36%"], ["70%", "38%"], ["75%", "40%"], ["80%", "42%"], ["85%", "44%"], ["90%", "46%"], ["95%", "48%"], ["100%", "50%"], ["105%", "52%"], ["110%", "54%"], ["115%", "56%"], ["120%", "58%"]],
     },
-    passive: {
-      name: 'Sleepy Aura',
-      description:
-        "When dealing damage with skills or ultimate skills, additionally applies [Wrath], reducing target's attack speed by 58%, lasting 10 seconds.",
+    passive:     {
+      name: "Have a Good Nap~",
+      description: "When dealing damage with a skill or ULT, additionally applies [Sloth], reducing the target's Attack Speed by 58% for 10 seconds",
+      template: "When dealing damage with a skill or ULT, additionally applies [Sloth], reducing the target's Attack Speed by {0} for 10 seconds",
+      levelValues: [["32%"], ["34%"], ["36%"], ["38%"], ["40%"], ["42%"], ["44%"], ["46%"], ["48%"], ["50%"], ["52%"], ["54%"], ["56%"], ["58%"]],
     },
   },
 
   // Team Skill
   teamSkill: {
-    name: 'Combination Skill', // Usually 'Combination Skill'
-    description: 'Own damage dealt increases by 20%.',
+    name: "Combo Skill",
+    description: "Self damage dealt increases by 20%",
     requirements: {
-      faction: 'Bicta Tower', // Same as character faction
-      element: 'Chaos', // Same as character element
+      faction: "Bikta",
+      element: "Chaos",
+      alternativeConditions: "Team contains 2 Bikta characters or 2 Chaos characters",
     },
   },
 
@@ -58,30 +221,47 @@ export const belphegarData = {
   awakenings: [
     {
       level: 1,
-      effect:
-        'When using auto skills to attack targets that have negative effects on them, skill damage increases by 30%',
+      effect: "When a skill attacks a target with negative effects, skill multiplier increases by 30%",
     },
-    { level: 2, effect: 'Basic attacks additionally deal 20% attack power chaos damage.' },
-    { level: 3, effect: '[Skill] and [Normal Attack] level and level cap +4.' },
-    { level: 4, effect: 'Attack power increases by 20%.' },
-    { level: 5, effect: '[Ultimate] and [Passive] level and level cap +4.' },
+    {
+      level: 2,
+      effect: "Normal attacks deal additional <color=#9754d5>Chaos</color> damage equal to 20% of Attack",
+    },
+    {
+      level: 3,
+      effect: "[Skill] and [Normal Attack] level and level cap +4",
+    },
+    {
+      level: 4,
+      effect: "Attack increases by 20%",
+    },
+    {
+      level: 5,
+      effect: "[ULT] and [Passive] level and level cap +4",
+    },
     {
       level: 6,
-      effect:
-        'Ultimate skill can additionally reduce the targets ultimate skill damage by 20%, lasting 5 seconds.',
+      effect: "ULT additionally reduces the target's ULT damage by 20% for 5 seconds",
     },
   ],
 
   // Memory Card
   memoryCard: {
-    name: 'Sleepy Guardian',
-    image: 'SleepyGuardian.png',
+    name: "The Reason for Slumber",
+    image: "SleepyTank.png",
     stats: {
-      hp: '5,200', // e.g., '8,600'
-      attack: '420', // e.g., '480'
-      defense: '380', // e.g., '690'
+      hp: "5,000",
+      attack: "500",
+      defense: "500",
     },
-    effects: [' Ultimate skill can reduce targets energy regen by 18%'],
+    effects: [  // awakening levels 1-5
+      "ULT reduces the target's Energy Gain Efficiency by 10%",
+      "ULT reduces the target's Energy Gain Efficiency by 12%",
+      "ULT reduces the target's Energy Gain Efficiency by 14%",
+      "ULT reduces the target's Energy Gain Efficiency by 16%",
+      "ULT reduces the target's Energy Gain Efficiency by 18%",
+    ],
+    restriction: "Only effective for Disruptor",
   },
 
   // Character Tags - Reusable across multiple characters

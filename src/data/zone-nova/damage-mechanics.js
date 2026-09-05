@@ -139,7 +139,7 @@ export const characterMechanics = {
   gaia: {
     meta: {
       name: '【Matriarch】Gaia',
-      faction: 'Odius',
+      faction: 'Otis',
       role: 'Healer',
       description: 'Complex HP manipulation and support mechanics',
     },
@@ -218,8 +218,8 @@ export const characterMechanics = {
 
     // Team Skill
     teamSkill: {
-      name: 'Maternal Guardian',
-      requirements: ['2 Odius characters', '2 Holy characters'],
+      name: 'Maternal Tank',
+      requirements: ['2 Otis characters', '2 Holy characters'],
       gaiaMaxHPBonus: 10, // +10% Max HP for Gaia
       healingOutputScaling: {
         per5000HP: 5, // +5% healing output per 5,000 Max HP

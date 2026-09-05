@@ -1,5 +1,5 @@
 // Wrath-Samael Build - Zone Nova Character Build
-// SSR Chaos Guardian - Defense Scaling Tank with Neutralize mechanics
+// SSR Chaos Tank - Defense Scaling Tank with Neutralize mechanics
 
 export const wrathSamaelBuild = {
   name: 'Wrath-Samael',
@@ -25,7 +25,7 @@ export const wrathSamaelBuild = {
         'Energy Cost: 5 | Cooldown: 7.0s\nAfter a short delay:\n• Allies: Neutralize Rate +68.6%, "Neutralize DMG Reduction" multiplier +43.8%, Damage Taken -17.8%.\n• Enemies: Crit Rate reduced by 60.6%. All enemies enter [Frenzy].\n\n[Frenzy]: Reduces normal attack and skill cooldown by 31.3% for 5 seconds.',
     },
     {
-      skill: 'Passive: Guardian of Paradox',
+      skill: 'Passive: Tank of Paradox',
       priority: 3,
       level: 'Level 10',
       reason: 'Core tanking ability - generates shields on ally Neutralize and provides opening burst protection',
@@ -57,7 +57,7 @@ export const wrathSamaelBuild = {
     {
       name: 'Her Trainer',
       effect:
-        "Penny's memory card - excellent for any Guardian tank with defense scaling, damage reduction, and shield enhancement",
+        "Penny's memory card - excellent for any Tank tank with defense scaling, damage reduction, and shield enhancement",
       characterSpecific: false,
       memoryImage: 'pennycard.jpg',
       memoryStats: { hp: '8,600', attack: '480', defense: '690' },
@@ -215,7 +215,7 @@ export const wrathSamaelBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: ['PVP teams', 'Chaos team compositions', 'Bicta Tower faction members'],
+    goodWith: ['PVP teams', 'Chaos team compositions', 'Bikta faction members'],
     note: 'She is mainly a PVP unit - not recommended for PVE due to high ultimate cost. Team skill provides 15% Defense and Neutralize DMG Reduction based on Defense.',
   },
 };

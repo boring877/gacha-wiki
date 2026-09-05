@@ -9,7 +9,7 @@ export const sigurdRecruitmentData = {
 
   // TL;DR Summary
   tldr: [
-    'New SSR character Sigurd (Rogue, Fire) available through Limited Character Gacha from December 16 - December 30, 2025. Fire attribute rogue with powerful ultimate skill damage. Exclusive remembrance "I am your Christmas present" available through Limited Remembrance Gacha.',
+    'New SSR character Sigurd (Attacker, Fire) available through Limited Character Gacha from December 16 - December 30, 2025. Fire attribute rogue with powerful ultimate skill damage. Exclusive remembrance "I am your Christmas present" available through Limited Remembrance Gacha.',
   ],
 
   // Official Update
@@ -44,7 +44,7 @@ export const sigurdRecruitmentData = {
 export const sigurdRecruitmentSEO = {
   title: `${sigurdRecruitmentData.title} - Zone Nova - GachaWiki`,
   description:
-    'New SSR character Sigurd (Rogue, Fire) available through Limited Character Gacha. Fire attribute rogue with powerful ultimate skill damage from Asar Manor.',
+    'New SSR character Sigurd (Attacker, Fire) available through Limited Character Gacha. Fire attribute rogue with powerful ultimate skill damage from Asar Manor.',
 };
 
 // Export default for easy importing

@@ -1,10 +1,10 @@
 // Lily Build - Zone Nova Character Build
-// SSR Ice character - Defense Scaling Guardian Tank
+// SSR Ice character - Defense Scaling Tank Tank
 
 export const lilyBuild = {
   name: 'Lily',
   role: 'Tank',
-  buildType: 'Ice Guardian Tank',
+  buildType: 'Ice Tank Tank',
   description:
     'Lily is a defense-scaling tank that is good mostly in PvP. She uses damage mitigation and shields to become super tanky. She is one of the best tanky units in the game. Her unique [Battle Intention] system allows her to cast an enhanced ultimate that nullifies all incoming damage for 10 seconds.',
   skillPriority: [
@@ -63,7 +63,7 @@ export const lilyBuild = {
     {
       name: 'Lancelot-HerTrainer',
       effect:
-        "SR memory card that provides Guardian class exclusive effects, defense increase, and team damage reduction - excellent choice if Lily's exclusive memory is unavailable",
+        "SR memory card that provides Tank class exclusive effects, defense increase, and team damage reduction - excellent choice if Lily's exclusive memory is unavailable",
       characterSpecific: false,
       memoryImage: 'Lancelotcard.jpg',
       memoryStats: { hp: '5,500', attack: '400', defense: '575' },
@@ -226,7 +226,7 @@ export const lilyBuild = {
   },
   teamSkill: {
     name: 'Combination Skill',
-    activationCondition: 'If the party has 2 Sapphire faction members or 2 Ice characters',
+    activationCondition: 'If the party has 2 Safir faction members or 2 Ice characters',
     effects: [
       'Own Defense increased by 15%',
       'At the start of battle, every 500 Defense reduces team-wide damage taken by 1.5%, maximum 6 stacks (9% team damage reduction)',

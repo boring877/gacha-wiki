@@ -29,14 +29,14 @@
   --zn-badge-chaos: #b266ff; /* Chaos element badge - purple background */
 
   /* Class Badge Colors */
-  --zn-badge-guardian: #8e24aa; /* Guardian class - purple */
+  --zn-badge-guardian: #8e24aa; /* Tank class - purple */
   --zn-badge-warrior: #d32f2f; /* Warrior class - red */
   --zn-badge-attacker: #d32f2f; /* Attacker class - uses warrior styling */
-  --zn-badge-rogue: #388e3c; /* Rogue class - green */
-  --zn-badge-mage: #1976d2; /* Mage class - blue */
+  --zn-badge-rogue: #388e3c; /* Attacker class - green */
+  --zn-badge-mage: #1976d2; /* Destroyer class - blue */
   --zn-badge-healer: #00796b; /* Healer class - teal */
-  --zn-badge-buffer: #f57c00; /* Buffer class - orange */
-  --zn-badge-debuffer: #5d4037; /* Debuffer class - brown */
+  --zn-badge-buffer: #f57c00; /* Supporter class - orange */
+  --zn-badge-debuffer: #5d4037; /* Disruptor class - brown */
   --zn-badge-disruptor: #5d4037; /* Disruptor class - uses debuffer styling */
   --zn-badge-unknown: #757575; /* Unknown class - gray */
 
@@ -69,14 +69,14 @@
   --zn-badge-support: #9c27b0; /* Support role */
 
   /* Faction Badge Colors */
-  --zn-badge-sapphire: #2196f3; /* Sapphire faction */
-  --zn-badge-chemic: #ff9800; /* Chemic faction */
+  --zn-badge-safir: #2196f3; /* Safir faction */
+  --zn-badge-kemich: #ff9800; /* Kemich faction */
   --zn-badge-avalon: #4caf50; /* Avalon faction */
-  --zn-badge-odius: #9c27b0; /* Odius faction */
+  --zn-badge-otis: #9c27b0; /* Otis faction */
   --zn-badge-asa: #f44336; /* ASA faction */
-  --zn-badge-pingjing-city: #00bcd4; /* Pingjing City faction */
-  --zn-badge-monochrome-nation: #607d8b; /* Monochrome Nation faction */
-  --zn-badge-bicta-tower: #673ab7; /* Bicta Tower faction */
+  --zn-badge-heikyo-castle: #00bcd4; /* Heikyo Castle faction */
+  --zn-badge-monochrome-realm: #607d8b; /* Monochrome Realm faction */
+  --zn-badge-bikta: #673ab7; /* Bikta faction */
 
   /* Skill Badge Colors */
   --zn-badge-normal-attack: #ff9800; /* Normal attack */
@@ -675,18 +675,18 @@
 }
 
 /* Faction Badge Colors */
-.faction-badge.unaffiliated {
+.faction-badge.neutral {
   background: var(--zn-badge-gray);
   color: var(--zn-badge-white);
 }
 
-.faction-badge.sapphire {
-  background: var(--zn-badge-sapphire);
+.faction-badge.safir {
+  background: var(--zn-badge-safir);
   color: var(--zn-badge-white);
 }
 
-.faction-badge.chemic {
-  background: var(--zn-badge-chemic);
+.faction-badge.kemich {
+  background: var(--zn-badge-kemich);
   color: var(--zn-badge-black);
 }
 
@@ -695,8 +695,8 @@
   color: var(--zn-badge-white);
 }
 
-.faction-badge.odius {
-  background: var(--zn-badge-odius);
+.faction-badge.otis {
+  background: var(--zn-badge-otis);
   color: var(--zn-badge-white);
 }
 
@@ -706,18 +706,18 @@
   color: var(--zn-badge-white);
 }
 
-.faction-badge.pingjing-city {
-  background: var(--zn-badge-pingjing-city);
+.faction-badge.heikyo-castle {
+  background: var(--zn-badge-heikyo-castle);
   color: var(--zn-badge-white);
 }
 
-.faction-badge.monochrome-nation {
-  background: var(--zn-badge-monochrome-nation);
+.faction-badge.monochrome-realm {
+  background: var(--zn-badge-monochrome-realm);
   color: var(--zn-badge-white);
 }
 
-.faction-badge.bicta-tower {
-  background: var(--zn-badge-bicta-tower);
+.faction-badge.bikta {
+  background: var(--zn-badge-bikta);
   color: var(--zn-badge-white);
 }
 
@@ -890,3 +890,38 @@
 }
 
 /* Special Badge States */
+
+/* renamed class selector aliases (game class names) */
+.class-name.tank { color: var(--zn-badge-guardian); }
+.class-name.supporter { color: var(--zn-badge-buffer); }
+.tag-class.tank { color: var(--zn-badge-guardian); }
+.tag-class.supporter { color: var(--zn-badge-buffer); }
+.class-badge.tank { background: var(--zn-badge-guardian); color: var(--zn-badge-white); }
+.class-badge.supporter { background: var(--zn-badge-buffer); color: var(--zn-badge-black); }
+.faction-badge.safir { background: var(--zn-badge-safir); }
+.faction-badge.kemich { background: var(--zn-badge-kemich); }
+.faction-badge.otis { background: var(--zn-badge-otis); }
+.faction-badge.heikyo-castle { background: var(--zn-badge-heikyo-castle); }
+.faction-badge.monochrome-realm { background: var(--zn-badge-monochrome-realm); }
+.faction-badge.bikta { background: var(--zn-badge-bikta); }
+
+/* renamed class/role selector coverage (game names) */
+.role-badge.supporter {
+  background: var(--zn-badge-blue);
+  color: var(--zn-badge-white);
+}
+.role-badge.disruptor {
+  background: var(--zn-badge-support);
+  color: var(--zn-badge-white);
+}
+.class-badge.destroyer {
+  background: var(--zn-badge-mage);
+  color: var(--zn-badge-white);
+}
+.class-name.destroyer {
+  color: var(--zn-badge-indigo);
+}
+.tag-class.destroyer {
+  background: var(--zn-badge-mage);
+  color: var(--zn-badge-white);
+}

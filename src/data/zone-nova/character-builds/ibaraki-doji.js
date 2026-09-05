@@ -1,10 +1,10 @@
 // Ibaraki-doji Build - Zone Nova Character Build
-// SSR Fire character - Ultimate Damage Amplification Debuffer
+// SSR Fire character - Ultimate Damage Amplification Disruptor
 
 export const ibarakiDojiBuild = {
   name: 'Ibaraki-doji',
-  role: 'Debuffer',
-  buildType: 'Debuffer, Increase Ultimate Damage Taken',
+  role: 'Disruptor',
+  buildType: 'Disruptor, Increase Ultimate Damage Taken',
   description:
     'Ibaraki-doji is a Fire debuffer that increases damage taken from ultimate skills. She requires significant investment (full dupes and memory card) to reach her full potential. At max investment, she can nearly triple the damage enemies take from teammate ultimates (+198.5%).',
   skillPriority: [
@@ -63,11 +63,11 @@ export const ibarakiDojiBuild = {
   ],
   alternativeMemoryCards: [
     {
-      name: 'Sleepy Guardian',
+      name: 'Sleepy Tank',
       effect:
         'SR memory card that reduces target energy regen, synergizing with her energy drain from Arrow of the Curse',
       characterSpecific: false,
-      memoryImage: 'SleepyGuardian.png',
+      memoryImage: 'SleepyTank.png',
       memoryStats: { hp: '5,200', attack: '420', defense: '380' },
       description: 'Ultimate skill can reduce targets energy regen by 18%.',
       note: 'Stacks with her Skill energy drain (-35.8%) for strong energy denial.',
@@ -222,7 +222,7 @@ export const ibarakiDojiBuild = {
   teamSkill: {
     name: 'Combo Skill',
     activationCondition:
-      'When the team contains 2 [Pingjing City] characters or 2 [Fire] characters',
+      'When the team contains 2 [Heikyo Castle] characters or 2 [Fire] characters',
     effects: [
       'After battle starts, reduces total damage dealt by all enemy units by 2.5%',
       'For every 1000 Attack Power, the effect increases by 100%, up to a maximum of 300%',

@@ -1,0 +1,85 @@
+---
+// Zone Nova item database — generated from the decrypted master data (stack_item_info)
+import ItemsLayout from '../../../layouts/zone-nova/ItemsLayout.astro';
+import { items, itemTypes } from '../../../data/zone-nova/items.js';
+---
+
+<ItemsLayout
+  title="Zone Nova Item Database - All Items, Materials & Currencies | GachaWiki"
+  description={`Complete Zone Nova item database with ${items.length} items: EXP materials, rank-up items, talent books, awakening materials, currencies and more. Search and filter by type.`}
+  gameTitle="Item Database"
+>
+  <section class="zn-items-page">
+    <p class="zn-items-intro">
+      All {items.length} obtainable items in Zone Nova — training materials, rank-up and awakening
+      items, rune crafting materials, currencies, and unlock items. Data extracted directly from the
+      game files.
+    </p>
+
+    <div class="zn-items-filter-bar">
+      <input
+        type="search"
+        id="zn-item-search"
+        placeholder="Search items..."
+        aria-label="Search items"
+      />
+      <select id="zn-item-type" aria-label="Filter by type">
+        <option value="">All types</option>
+        {itemTypes.map((t) => <option value={t.name}>{t.name} ({t.count})</option>)}
+      </select>
+      <span class="zn-items-filter-count" id="zn-item-count"></span>
+    </div>
+
+    <div class="zn-items-grid" id="zn-items-grid"></div>
+  </section>
+
+  <script>
+    import { items } from '../../../data/zone-nova/items.js';
+
+    const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/items/';
+    const grid = document.getElementById('zn-items-grid');
+    const searchEl = document.getElementById('zn-item-search') as HTMLInputElement;
+    const typeEl = document.getElementById('zn-item-type') as HTMLSelectElement;
+    const countEl = document.getElementById('zn-item-count');
+
+    function esc(s: string): string {
+      const d = document.createElement('div');
+      d.textContent = s;
+      return d.innerHTML;
+    }
+
+    function render() {
+      const q = searchEl.value.trim().toLowerCase();
+      const t = typeEl.value;
+      const list = items.filter(
+        (it) =>
+          (!t || it.type === t) &&
+          (!q || it.name.toLowerCase().includes(q) || it.description.toLowerCase().includes(q))
+      );
+      countEl!.textContent = `${list.length} / ${items.length} items`;
+      if (!list.length) {
+        grid!.innerHTML = '<div class="zn-items-empty">No items match your filters.</div>';
+        return;
+      }
+      grid!.innerHTML = list
+        .map(
+          (it) => `
+          <div class="zn-item-card">
+            <img class="zn-item-icon" src="${R2}${encodeURIComponent(it.icon)}" alt="${esc(it.name)}" loading="lazy" width="56" height="56" onerror="this.style.visibility='hidden'">
+            <div class="zn-item-info">
+              <div class="zn-item-name">${esc(it.name)}</div>
+              <div class="zn-item-meta">
+                <span class="zn-item-badge">${esc(it.type)}</span>
+              </div>
+              ${it.description ? `<div class="zn-item-desc">${esc(it.description)}</div>` : ''}
+            </div>
+          </div>`
+        )
+        .join('');
+    }
+
+    searchEl.addEventListener('input', render);
+    typeEl.addEventListener('change', render);
+    render();
+  </script>
+</ItemsLayout>

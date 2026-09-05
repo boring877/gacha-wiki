@@ -139,20 +139,20 @@ function computeFilteredGroups() {
       all: ZONE_NOVA_CHARACTERS,
       tank: ZONE_NOVA_CHARACTERS.filter(c => c.role === 'Tank'),
       dps: ZONE_NOVA_CHARACTERS.filter(c => c.role === 'DPS'),
-      buffer: ZONE_NOVA_CHARACTERS.filter(c => c.role === 'Buffer'),
-      debuffer: ZONE_NOVA_CHARACTERS.filter(c => c.role === 'Debuffer'),
+      buffer: ZONE_NOVA_CHARACTERS.filter(c => c.role === 'Supporter'),
+      debuffer: ZONE_NOVA_CHARACTERS.filter(c => c.role === 'Disruptor'),
       healer: ZONE_NOVA_CHARACTERS.filter(c => c.role === 'Healer'),
     },
 
     // By Class
     byClass: {
       all: ZONE_NOVA_CHARACTERS,
-      guardian: ZONE_NOVA_CHARACTERS.filter(c => c.class === 'Guardian'),
+      guardian: ZONE_NOVA_CHARACTERS.filter(c => c.class === 'Tank'),
       warrior: ZONE_NOVA_CHARACTERS.filter(c => c.class === 'Warrior'),
-      rogue: ZONE_NOVA_CHARACTERS.filter(c => c.class === 'Rogue'),
-      mage: ZONE_NOVA_CHARACTERS.filter(c => c.class === 'Mage'),
-      buffer: ZONE_NOVA_CHARACTERS.filter(c => c.class === 'Buffer'),
-      debuffer: ZONE_NOVA_CHARACTERS.filter(c => c.class === 'Debuffer'),
+      rogue: ZONE_NOVA_CHARACTERS.filter(c => c.class === 'Attacker'),
+      mage: ZONE_NOVA_CHARACTERS.filter(c => c.class === 'Destroyer'),
+      buffer: ZONE_NOVA_CHARACTERS.filter(c => c.class === 'Supporter'),
+      debuffer: ZONE_NOVA_CHARACTERS.filter(c => c.class === 'Disruptor'),
       healer: ZONE_NOVA_CHARACTERS.filter(c => c.class === 'Healer'),
     },
 

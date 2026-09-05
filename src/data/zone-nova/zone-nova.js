@@ -68,6 +68,7 @@ export const zoneNovaConfig = {
         { id: 'runes', title: 'Runes', url: '/guides/zone-nova/runes/' },
         { id: 'crafting', title: 'Crafting', url: '/guides/zone-nova/crafting/' },
         { id: 'crafting-items', title: 'Crafting Items', url: '/guides/zone-nova/crafting-items/' },
+        { id: 'items', title: 'Item Database', url: '/guides/zone-nova/items/' },
       ],
     },
     {
@@ -240,6 +241,15 @@ export const zoneNovaConfig = {
       url: '/guides/zone-nova/crafting-items/',
       category: 'guides',
       size: 'small',
+    },
+    {
+      id: 'items',
+      title: 'Item Database',
+
+           description: 'All 274 in-game items: materials, currencies, rank-up and unlock items with icons.',
+      url: '/guides/zone-nova/items/',
+      category: 'guides',
+      size: 'medium',
     },
     {
       id: 'damage-mechanics',

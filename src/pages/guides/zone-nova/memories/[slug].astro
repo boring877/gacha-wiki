@@ -13,7 +13,14 @@ export async function getStaticPaths() {
 
 const { memory } = Astro.props;
 
-// Convert memory database format to template format
+// Convert memory database format to template format.
+// effects[] = awakening levels 1-5 (one multi-line string each); the template
+// shows the level picker when all 5 levels exist.
+const hasAllLevels = Array.isArray(memory.effects) && memory.effects.length === 5;
+const effects = hasAllLevels
+  ? String(memory.effects[4] || '').split('\n').filter(Boolean)
+  : Array.isArray(memory.effects) ? memory.effects : [memory.effects];
+
 const memoryData = {
   slug: memory.slug,
   name: memory.name,
@@ -26,13 +33,22 @@ const memoryData = {
     attack: memory.stats.attack,
     defense: memory.stats.defense,
   },
-  effects: memory.effects,
+  lv1Stats: memory.lv1Stats
+    ? {
+        hp: memory.lv1Stats.hp,
+        attack: memory.lv1Stats.attack,
+        defense: memory.lv1Stats.defense,
+      }
+    : null,
+  effects,
+  awakenEffects: hasAllLevels ? memory.effects : null,
+  story: memory.story || null,
 };
 
 // SEO data for the memory page
 const memorySEO = {
   title: `${memory.name} - Zone Nova Memory Card | GachaWiki`,
-  description: `Complete guide for ${memory.name} memory card in Zone Nova. View stats, effects, and compatibility information.`,
+  description: `Complete guide for ${memory.name} memory card in Zone Nova. View stats, effects at every awakening level, and compatibility information.`,
 };
 ---
 

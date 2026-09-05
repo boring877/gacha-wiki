@@ -9,8 +9,8 @@ export const december16AnnouncementData = {
 
   // TL;DR Summary
   tldr: [
-    'Sigurd (Rogue, Fire) limited character gacha available December 16 - December 30, 2025.',
-    '"I Am Your Christmas Present" limited remembrance gacha for Rogue class.',
+    'Sigurd (Attacker, Fire) limited character gacha available December 16 - December 30, 2025.',
+    '"I Am Your Christmas Present" limited remembrance gacha for Attacker class.',
     'Battle Pass cumulative recharge and gacha missions running until January 6, 2026.',
     'Christmas Login Event with up to 20 Mirage Cubes and 10 Cute Christmas Stockings.',
   ],

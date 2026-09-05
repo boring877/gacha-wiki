@@ -1,15 +1,15 @@
-// Limited Recruitment Character [Guardian, Holy] Thor Announcement - Zone Nova
+// Limited Recruitment Character [Tank, Holy] Thor Announcement - Zone Nova
 // Recruitment Event Data Structure
 
 export const thorRecruitmentData = {
   // Basic Information
-  title: 'Limited Recruitment Character [Guardian, Holy] Thor',
+  title: 'Limited Recruitment Character [Tank, Holy] Thor',
   date: 'August 5, 2025',
   type: 'recruitment',
 
   // TL;DR Summary
   tldr: [
-    'New Legendary character Thor (Guardian, Holy) available through Limited Recruitment from August 5 - August 19, 2025. Holy-attribute Guardian who converts attacks into lightning, transforms into Thunder Sovereign for massive damage, plus exclusive memory "Night Raid Suspect".',
+    'New Legendary character Thor (Tank, Holy) available through Limited Recruitment from August 5 - August 19, 2025. Holy-attribute Tank who converts attacks into lightning, transforms into Thunder Sovereign for massive damage, plus exclusive memory "Night Raid Suspect".',
   ],
 
   // Official Update
@@ -19,9 +19,9 @@ export const thorRecruitmentData = {
       'Thank you for your continued support of 《ZONE NOVA》! Below is the next 【Limited-Time Recruitment】character selection:',
       '',
       '⚡ Limited-Time Recruitment Character',
-      'Character: Legendary Character Thor (Guardian, Holy)',
+      'Character: Legendary Character Thor (Tank, Holy)',
       'Attribute: Holy',
-      'Role: Guardian',
+      'Role: Tank',
       'Combat Style: Establishes connections with teammates, converting attacks into flickering lightning',
       'Ultimate Form: Transforms into destructive Thunder Sovereign, dealing continuous heavy damage while protecting the team',
       'Special Ability: Lightning accumulation system that triggers powerful area attacks',
@@ -57,7 +57,7 @@ export const thorRecruitmentData = {
 // SEO data for Thor Recruitment announcement
 export const thorRecruitmentSEO = {
   title: `${thorRecruitmentData.title} - Zone Nova - GachaWiki`,
-  description: `New Legendary character Thor (Guardian, Holy) available through Limited Recruitment. Holy-attribute Guardian with lightning transformation abilities and team protection mechanics.`,
+  description: `New Legendary character Thor (Tank, Holy) available through Limited Recruitment. Holy-attribute Tank with lightning transformation abilities and team protection mechanics.`,
 };
 
 // Export default for easy importing

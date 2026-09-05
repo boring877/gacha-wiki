@@ -1,12 +1,12 @@
 // Thor Build - Zone Nova Character Build
-// SSR Holy character - Defense Scaling Guardian Tank
+// SSR Holy character - Defense Scaling Tank Tank
 
 export const thorBuild = {
   name: 'Thor',
   role: 'Tank',
-  buildType: 'Holy Guardian Tank',
+  buildType: 'Holy Tank Tank',
   description:
-    'Thor is a defense-scaling Guardian tank who provides team protection through shields and damage reduction. Her very efficient 2-energy ultimate enables frequent enhanced casting with AOE damage, interrupts, and debuffs. She also applies DOT with [Divine Judgment].',
+    'Thor is a defense-scaling Tank tank who provides team protection through shields and damage reduction. Her very efficient 2-energy ultimate enables frequent enhanced casting with AOE damage, interrupts, and debuffs. She also applies DOT with [Divine Judgment].',
   skillPriority: [
     {
       skill: 'Passive: Lightning Extreme Orbit',
@@ -61,7 +61,7 @@ export const thorBuild = {
     {
       name: 'Lancelot-HerTrainer',
       effect:
-        "SR memory card that provides Guardian class exclusive effects, defense increase, and team damage reduction - excellent for Thor's tank capabilities",
+        "SR memory card that provides Tank class exclusive effects, defense increase, and team damage reduction - excellent for Thor's tank capabilities",
       characterSpecific: false,
       memoryImage: 'Lancelotcard.jpg',
       memoryStats: { hp: '5,500', attack: '400', defense: '575' },
@@ -226,7 +226,7 @@ export const thorBuild = {
   },
   teamSkill: {
     name: 'Team Synergy',
-    activationCondition: 'When the team contains 2 [A.S.A] characters or 2 [Holy] characters',
+    activationCondition: 'When the team contains 2 [Asa] characters or 2 [Holy] characters',
     effects: [
       'Own Defense increased by 15%',
       'At the start of battle, every 500 Defense reduces team damage taken by 1.5%, maximum 6 stacks',

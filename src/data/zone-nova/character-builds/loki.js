@@ -1,9 +1,9 @@
 // Loki Build - Zone Nova Character Build
-// SSR Chaos Debuffer - Vulnerability Stacker / Team Amplifier with [Seal] and [Weakness] debuffs
+// SSR Chaos Disruptor - Vulnerability Stacker / Team Amplifier with [Seal] and [Weakness] debuffs
 
 export const lokiBuild = {
   name: 'Loki',
-  role: 'Debuffer',
+  role: 'Disruptor',
   buildType: 'Vulnerability Stacker / Team Amplifier',
   description:
     "Loki is a debuffer that deals decent damage but has a high ultimate energy cost (5). She requires Awakening 1 to be useful, as her base passive only triggers on auto skills. Her main value is her vulnerability debuff which increases total damage taken by enemies, but at base (1 layer, 36%) it's barely noticeable. She needs Awakening 6 to stack 2 layers (72%) to become truly effective. Her auto skill applies [Seal] to prevent enemy ultimates, and her ultimate applies [Weakness] to reduce enemy damage by 36%. Sadly, this unit is poorly designed and requires heavy investment to function well.",
@@ -73,7 +73,7 @@ export const lokiBuild = {
         mainRune4Piece:
           '4-piece: When equipped character is "Debuff" class, casting ultimate skill damage causes targets to take 10% increased damage for 5 seconds',
         secondaryRuneEffect: '2-piece: Attack Power +8%',
-        note: 'Best set for Loki. Giants 4-piece is exclusive to Debuffer class and adds another 10% vulnerability on ultimate. Only obtainable from Guild Raids.',
+        note: 'Best set for Loki. Giants 4-piece is exclusive to Disruptor class and adds another 10% vulnerability on ultimate. Only obtainable from Guild Raids.',
       },
     ],
     alternativeSets: [
@@ -198,7 +198,7 @@ export const lokiBuild = {
   },
   teamSkill: {
     name: 'Combination Skill',
-    activationCondition: 'Team contains 2 [A.S.A] faction or 2 [Chaos] attribute characters',
+    activationCondition: 'Team contains 2 [Asa] faction or 2 [Chaos] attribute characters',
     effects: [
       'Self attack power +10%',
       'Battle Start: Every 500 attack power increases self chaos damage by 5%, max 6 stacks (up to 30% chaos damage)',

@@ -1,0 +1,67 @@
+---
+// Layout for the Zone Nova item database page
+import ZNBaseHead from '../../components/zone-nova/ZNBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
+import Breadcrumb from '../../components/zone-nova/Breadcrumb.astro';
+
+import '../../styles/games/zone-nova/zn-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/zone-nova/zn-layout.css';
+import '../../styles/games/zone-nova/zn-items.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+}
+
+const { title, description, gameTitle } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <ZNBaseHead title={title} description={description || ''} />
+    <GameSEO gameKey="zone-nova" title={title} description={description} />
+    <slot name="head" />
+  </head>
+  <body class="zone-nova-body">
+    <CustomScrollbar />
+
+    <div class="bg-layer bg-primary"></div>
+    <div class="bg-layer bg-accent-1"></div>
+    <div class="bg-layer bg-accent-2"></div>
+    <div class="bg-layer bg-accent-3"></div>
+
+    <div class="zone-nova-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="zone-nova" />
+      <MobileMenu />
+
+      <div class="zone-nova-container">
+        <main class="zone-nova-main">
+          <section class="title-only-section">
+            <h1 class="title-only-heading">{gameTitle || 'Item Database'}</h1>
+            <DecorativeLines />
+          </section>
+
+          <Breadcrumb autoGenerate={true} gameKey="zone-nova" showBackButton={true} />
+
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <Footer />
+    <Analytics />
+  </body>
+</html>

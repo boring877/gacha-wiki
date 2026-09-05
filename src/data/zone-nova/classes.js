@@ -1,75 +1,49 @@
-// Zone Nova Character Classes and Roles Data
-// Centralized information about the class system
+// Zone Nova Character Classes Data
+// Centralized information about the class system (names match the game's
+// localization: TANK / WARRIOR / ATTACKER / DESTROYER / SUPPORTER / DISRUPTOR / HEALER)
 
 export const CHARACTER_CLASSES = {
-  Guardian: {
-    name: 'Guardian',
+  Tank: {
+    name: 'Tank',
     role: 'Tank',
-    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Guardian.jpg',
-    memoryCompatibility: 'This unit only can equip Guardian memories',
+    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Tank.png',
+    memoryCompatibility: 'This unit only can equip Tank memories',
   },
-
   Warrior: {
     name: 'Warrior',
     role: 'DPS',
-    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Warrior.jpg',
+    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Warrior.png',
     memoryCompatibility: 'This unit only can equip Warrior memories',
   },
-
   Attacker: {
     name: 'Attacker',
     role: 'DPS',
-    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Warrior.jpg',
+    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Attacker.png',
     memoryCompatibility: 'This unit only can equip Attacker memories',
   },
-
-  Rogue: {
-    name: 'Rogue',
-    role: 'DPS',
-    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Rogue.jpg',
-    memoryCompatibility: 'This unit only can equip Rogue memories',
-  },
-
-  Mage: {
-    name: 'Mage',
-    role: 'DPS',
-    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Mage.jpg',
-    memoryCompatibility: 'This unit only can equip Mage memories',
-  },
-
-  Buffer: {
-    name: 'Buffer',
-    role: 'Buffer',
-    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Buffer.jpg',
-    memoryCompatibility: 'This unit only can equip Buffer memories',
-  },
-
-  Debuffer: {
-    name: 'Debuffer',
-    role: 'Debuffer',
-    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Debuffer.jpg',
-    memoryCompatibility: 'This unit only can equip Debuffer memories',
-  },
-
-  Disruptor: {
-    name: 'Disruptor',
-    role: 'Debuffer',
-    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Debuffer.jpg',
-    memoryCompatibility: 'This unit only can equip Disruptor memories',
-  },
-
-  Healer: {
-    name: 'Healer',
-    role: 'Healer',
-    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Healer.jpg',
-    memoryCompatibility: 'This unit only can equip Healer memories',
-  },
-
   Destroyer: {
     name: 'Destroyer',
     role: 'DPS',
-    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Destroyer.jpg',
+    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Destroyer.png',
     memoryCompatibility: 'This unit only can equip Destroyer memories',
+  },
+  Supporter: {
+    name: 'Supporter',
+    role: 'Supporter',
+    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Supporter.png',
+    memoryCompatibility: 'This unit only can equip Supporter memories',
+  },
+  Disruptor: {
+    name: 'Disruptor',
+    role: 'Disruptor',
+    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Disruptor.png',
+    memoryCompatibility: 'This unit only can equip Disruptor memories',
+  },
+  Healer: {
+    name: 'Healer',
+    role: 'Healer',
+    icon: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/classes/Healer.png',
+    memoryCompatibility: 'This unit only can equip Healer memories',
   },
 };
 
@@ -78,30 +52,26 @@ export const CHARACTER_ROLES = {
     name: 'Tank',
     description: 'Absorbs damage and protects allies',
     primaryFunction: 'Defense and protection',
-    typicalClasses: ['Guardian'],
+    typicalClasses: ['Tank'],
   },
-
   DPS: {
     name: 'DPS',
     description: 'Deals damage to eliminate enemies',
     primaryFunction: 'Damage output',
-    typicalClasses: ['Warrior', 'Attacker', 'Rogue', 'Mage', 'Destroyer'],
+    typicalClasses: ['Warrior', 'Attacker', 'Destroyer'],
   },
-
-  Buffer: {
-    name: 'Buffer',
+  Supporter: {
+    name: 'Supporter',
     description: 'Enhances allies with beneficial effects',
     primaryFunction: 'Team enhancement',
-    typicalClasses: ['Buffer'],
+    typicalClasses: ['Supporter'],
   },
-
-  Debuffer: {
-    name: 'Debuffer',
+  Disruptor: {
+    name: 'Disruptor',
     description: 'Weakens enemies with negative effects',
     primaryFunction: 'Enemy disruption',
-    typicalClasses: ['Debuffer', 'Disruptor'],
+    typicalClasses: ['Disruptor'],
   },
-
   Healer: {
     name: 'Healer',
     description: 'Restores HP and cleanses negative effects',
@@ -126,16 +96,13 @@ export function getClassesByRole(roleName) {
 
 // Memory compatibility information
 export const MEMORY_COMPATIBILITY = {
-  Guardian: 'This unit only can equip Guardian memories',
+  Tank: 'This unit only can equip Tank memories',
   Warrior: 'This unit only can equip Warrior memories',
   Attacker: 'This unit only can equip Attacker memories',
-  Rogue: 'This unit only can equip Rogue memories',
-  Mage: 'This unit only can equip Mage memories',
-  Buffer: 'This unit only can equip Buffer memories',
-  Debuffer: 'This unit only can equip Debuffer memories',
+  Destroyer: 'This unit only can equip Destroyer memories',
+  Supporter: 'This unit only can equip Supporter memories',
   Disruptor: 'This unit only can equip Disruptor memories',
   Healer: 'This unit only can equip Healer memories',
-  Destroyer: 'This unit only can equip Destroyer memories',
 };
 
 // Export all class names as array for easy iteration

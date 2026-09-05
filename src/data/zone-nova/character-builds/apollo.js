@@ -1,10 +1,10 @@
 // Apollo Build - Zone Nova Character Build
-// SSR Fire character - Energy Support Buffer
+// SSR Fire character - Energy Support Supporter
 
 export const apolloBuild = {
   name: 'Apollo',
-  role: 'Buffer',
-  buildType: 'Extra Attacks Buffer',
+  role: 'Supporter',
+  buildType: 'Extra Attacks Supporter',
   description:
     'Apollo is a buffer that works with units that perform Extra Attacks, such as Yuis and Leviathan. She really turns them into monsters and is a core buffer for this kind of team!',
   skillPriority: [

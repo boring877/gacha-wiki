@@ -189,7 +189,7 @@ export const ninaBuild = {
   },
   teamSkill: {
     name: 'Combination Skill',
-    activationCondition: 'When the team contains 2 [Sapphire] characters or 2 [Ice] characters',
+    activationCondition: 'When the team contains 2 [Safir] characters or 2 [Ice] characters',
     effects: [
       'Own attack power increased by 10%',
       'At the start of battle, every 500 attack power increases own critical damage by 7.5%, stacking up to 6 times (maximum 45% crit damage bonus)',

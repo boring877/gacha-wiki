@@ -1,9 +1,9 @@
 // Gluttony - Beelzebub Build - Zone Nova Character Build
-// SSR Ice character - Energy Control Debuffer / Team Support
+// SSR Ice character - Energy Control Disruptor / Team Support
 
 export const gluttonyBeelzebubBuild = {
   name: 'Gluttony - Beelzebub',
-  role: 'Debuffer',
+  role: 'Disruptor',
   buildType: 'Ice Energy Control Support',
   description:
     "Gluttony - Beelzebub is an Ice debuffer focused on energy control and tempo. Her kit drains enemy energy, accelerates allied energy, and applies a wide teamwide swing through [Gluttony] and [Return], making her strongest when she can cycle ultimates quickly and survive long enough to keep disrupting the enemy team's flow.",
@@ -59,11 +59,11 @@ export const gluttonyBeelzebubBuild = {
   ],
   alternativeMemoryCards: [
     {
-      name: 'Sleepy Guardian',
+      name: 'Sleepy Tank',
       effect:
         'SR memory card that adds more energy denial, fitting Beelzebub teams that want to slow enemy ultimates as much as possible.',
       characterSpecific: false,
-      memoryImage: 'SleepyGuardian.png',
+      memoryImage: 'SleepyTank.png',
       memoryStats: { hp: '5,200', attack: '420', defense: '380' },
       description: 'Ultimate skill can reduce targets energy regen by 18%.',
       note:
@@ -216,7 +216,7 @@ export const gluttonyBeelzebubBuild = {
   },
   teamSkill: {
     name: 'Combo',
-    activationCondition: 'When the team contains 2 [Bicta Tower] characters or 2 [Ice] characters',
+    activationCondition: 'When the team contains 2 [Bikta] characters or 2 [Ice] characters',
     effects: [
       'At the start of battle, reduces the total damage dealt by all enemy units by 3%',
       'For every 800 Attack Power, this effect increases by 100%, up to a maximum of 500%',
@@ -224,7 +224,7 @@ export const gluttonyBeelzebubBuild = {
   },
   teamSynergy: {
     goodWith: [
-      'Bicta Tower teammates',
+      'Bikta teammates',
       'Ice attribute teams',
       'Ultimate-reliant carries',
       'Energy control / tempo teams',

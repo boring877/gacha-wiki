@@ -57,7 +57,7 @@ export const pennyBuild = {
     {
       name: 'Lancelot-HerTrainer',
       effect:
-        "SR memory card that provides Guardian class exclusive effects, defense increase, and team damage reduction - excellent for Penny's tank capabilities",
+        "SR memory card that provides Tank class exclusive effects, defense increase, and team damage reduction - excellent for Penny's tank capabilities",
       characterSpecific: false,
       memoryImage: 'Lancelotcard.jpg',
       memoryStats: { hp: '5,500', attack: '400', defense: '575' },

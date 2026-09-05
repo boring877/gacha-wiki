@@ -4,7 +4,6 @@ import { Image } from 'astro:assets';
 import {
   ZNCharacterImage,
   ZNClassImage,
-  ZNNodeTreeImage,
   ZNMemoryImage,
 } from '../../components/zone-nova/index.astro';
 import {
@@ -19,6 +18,8 @@ interface Props {
 
 const { characterData } = Astro.props;
 const factionData = getFactionData(characterData.faction);
+const ITEM_ICON_R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/items/';
+const MONEY_ICON = `${ITEM_ICON_R2}General_Money.png`;
 
 // Apply skill highlighting for better readability
 const highlightedSkills = highlightAllSkills(characterData.skills, defaultZNHighlightPatterns);
@@ -39,6 +40,25 @@ const highlightedAwakenings = characterData.awakenings
       effect: highlightSkillText(awakening.effect, defaultZNHighlightPatterns),
     }))
   : characterData.awakenings;
+
+// Per-level skill description variants for the level picker (Lv.1-14)
+const DEFAULT_SKILL_LV = 14;
+function levelDescriptions(skill) {
+  if (!skill?.template || !skill?.levelValues) return null;
+  return skill.levelValues.map((vals) =>
+    highlightSkillText(
+      skill.template.replace(/\{(\d+)\}/g, (m, i) => (i < vals.length ? vals[i] : m)),
+      defaultZNHighlightPatterns
+    )
+  );
+}
+const skillLevelVariants = {
+  normal: levelDescriptions(characterData.skills.normal),
+  auto: levelDescriptions(characterData.skills.auto),
+  ultimate: levelDescriptions(characterData.skills.ultimate),
+  passive: levelDescriptions(characterData.skills.passive),
+};
+const hasSkillPicker = Object.values(skillLevelVariants).some(Boolean);
 
 // Helper function to render skill with conditional state descriptions
 function renderSkillWithState(skill, highlightedSkill) {
@@ -234,8 +254,8 @@ function getTagCategory(tag: string): string {
     <!-- Complete Stats Box (Right) -->
     <div class="character-stats-container">
       <div class="character-stats-box">
-        <!-- Base Stats -->
-        <h3 class="character-stats-title">Base Stats</h3>
+        <!-- Base + Max Stats -->
+        <h3 class="character-stats-title">Character Stats</h3>
 
         <!-- Core Combat Stats -->
         <h4 class="character-stats-subtitle">Core Combat Stats</h4>
@@ -245,20 +265,32 @@ function getTagCategory(tag: string): string {
             <div class="stat-value">
               {characterData.stats.hp}
             </div>
+            {characterData.maxStats && (
+              <div class="stat-value stat-max">Max: {characterData.maxStats.hp}</div>
+            )}
           </div>
           <div class="stat-item">
             <div class="stat-label">Attack</div>
             <div class="stat-value">
               {characterData.stats.attack}
             </div>
+            {characterData.maxStats && (
+              <div class="stat-value stat-max">Max: {characterData.maxStats.attack}</div>
+            )}
           </div>
           <div class="stat-item">
             <div class="stat-label">Defense</div>
             <div class="stat-value">
               {characterData.stats.defense}
             </div>
+            {characterData.maxStats && (
+              <div class="stat-value stat-max">Max: {characterData.maxStats.defense}</div>
+            )}
           </div>
         </div>
+        {characterData.maxStats && (
+          <p class="stat-max-note">Max values are base stats with the full talent tree unlocked.</p>
+        )}
 
         <!-- Additional Stats -->
         <h4 class="character-stats-subtitle">Additional Stats</h4>
@@ -272,12 +304,18 @@ function getTagCategory(tag: string): string {
             <div class="stat-value small">
               {characterData.stats?.critRate ? `${characterData.stats.critRate}` : '0%'}
             </div>
+            {characterData.stats?.maxCritRate != null && characterData.stats.maxCritRate !== '0%' && (
+              <div class="stat-value small stat-max">Max: {characterData.stats.maxCritRate}</div>
+            )}
           </div>
           <div class="stat-item">
             <div class="stat-label small">Crit Damage</div>
             <div class="stat-value small">
-              {characterData.stats?.critDamage ? `${characterData.stats.critDamage}` : '50%'}
+              {characterData.stats?.critDmg ? `${characterData.stats.critDmg}` : '50%'}
             </div>
+            {characterData.stats?.maxCritDmg != null && characterData.stats.maxCritDmg !== '50%' && (
+              <div class="stat-value small stat-max">Max: {characterData.stats.maxCritDmg}</div>
+            )}
           </div>
         </div>
 
@@ -328,6 +366,28 @@ function getTagCategory(tag: string): string {
   <h2 class="section-title">Skills</h2>
 
   {
+    hasSkillPicker && (
+      <div class="skill-level-picker">
+        <span class="picker-label">Skill Level</span>
+        <div class="picker-pills" role="group" aria-label="Skill level selector">
+          {Array.from({ length: 14 }, (_, i) => i + 1).map((n) => (
+            <button
+              type="button"
+              class={`lv-pill${n === DEFAULT_SKILL_LV ? ' active' : ''}`}
+              data-lv={n}
+              title={n >= 13 ? 'Requires Dupe 5 awakening' : n >= 11 ? 'Requires Dupe 3 awakening' : ''}
+            >
+              {n}
+              {n === 11 && <sup class="pill-mark">D3</sup>}
+              {n === 13 && <sup class="pill-mark">D5</sup>}
+            </button>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  {
     (() => {
       const normalSkillData = renderSkillWithState(characterData.skills.normal, highlightedSkills.normal);
       return (
@@ -338,9 +398,19 @@ function getTagCategory(tag: string): string {
             </h3>
             <span class="skill-badge normal-attack"> Normal Attack </span>
           </div>
-          {normalSkillData.hasDescription && (
+          {normalSkillData.hasDescription && (skillLevelVariants.normal ? (
+            <div class="skill-levels">
+              {skillLevelVariants.normal.map((html, i) => (
+                <div
+                  class={`skill-description skill-lv${i + 1 === DEFAULT_SKILL_LV ? ' active' : ''}`}
+                  data-lv={i + 1}
+                  set:html={html}
+                />
+              ))}
+            </div>
+          ) : (
             <p class="skill-description" set:html={normalSkillData.description} />
-          )}
+          ))}
           {normalSkillData.hasState && normalSkillData.stateDescription && (
             <div class="skill-state-section">
               <h4 class="skill-state-title">{normalSkillData.stateName}</h4>
@@ -368,9 +438,19 @@ function getTagCategory(tag: string): string {
               </span>
             </div>
           </div>
-          {autoSkillData.hasDescription && (
+          {autoSkillData.hasDescription && (skillLevelVariants.auto ? (
+            <div class="skill-levels">
+              {skillLevelVariants.auto.map((html, i) => (
+                <div
+                  class={`skill-description skill-lv${i + 1 === DEFAULT_SKILL_LV ? ' active' : ''}`}
+                  data-lv={i + 1}
+                  set:html={html}
+                />
+              ))}
+            </div>
+          ) : (
             <p class="skill-description" set:html={autoSkillData.description} />
-          )}
+          ))}
           {autoSkillData.hasState && autoSkillData.stateDescription && (
             <div class="skill-state-section">
               <h4 class="skill-state-title">{autoSkillData.stateName}</h4>
@@ -401,9 +481,19 @@ function getTagCategory(tag: string): string {
               </span>
             </div>
           </div>
-          {ultimateSkillData.hasDescription && (
+          {ultimateSkillData.hasDescription && (skillLevelVariants.ultimate ? (
+            <div class="skill-levels">
+              {skillLevelVariants.ultimate.map((html, i) => (
+                <div
+                  class={`skill-description skill-lv${i + 1 === DEFAULT_SKILL_LV ? ' active' : ''}`}
+                  data-lv={i + 1}
+                  set:html={html}
+                />
+              ))}
+            </div>
+          ) : (
             <p class="skill-description" set:html={ultimateSkillData.description} />
-          )}
+          ))}
           {ultimateSkillData.hasState && ultimateSkillData.stateDescription && (
             <div class="skill-state-section">
               <h4 class="skill-state-title">{ultimateSkillData.stateName}</h4>
@@ -436,9 +526,19 @@ function getTagCategory(tag: string): string {
             </h3>
             <span class="skill-badge passive"> Passive </span>
           </div>
-          {passiveSkillData.hasDescription && (
+          {passiveSkillData.hasDescription && (skillLevelVariants.passive ? (
+            <div class="skill-levels">
+              {skillLevelVariants.passive.map((html, i) => (
+                <div
+                  class={`skill-description skill-lv${i + 1 === DEFAULT_SKILL_LV ? ' active' : ''}`}
+                  data-lv={i + 1}
+                  set:html={html}
+                />
+              ))}
+            </div>
+          ) : (
             <p class="skill-description" set:html={passiveSkillData.description} />
-          )}
+          ))}
           {passiveSkillData.hasState && passiveSkillData.stateDescription && (
             <div class="skill-state-section">
               <h4 class="skill-state-title">{passiveSkillData.stateName}</h4>
@@ -468,6 +568,18 @@ function getTagCategory(tag: string): string {
       >
     </div>
   </div>
+
+  <script>
+    const pills = document.querySelectorAll('.skill-level-picker .lv-pill');
+    const variants = document.querySelectorAll('.skill-levels .skill-lv');
+    pills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        pills.forEach((p) => p.classList.toggle('active', p === pill));
+        const lv = pill.getAttribute('data-lv');
+        variants.forEach((v) => v.classList.toggle('active', v.getAttribute('data-lv') === lv));
+      });
+    });
+  </script>
 </section>
 
 <!-- Damage Analysis Section (if available) -->
@@ -512,149 +624,153 @@ function getTagCategory(tag: string): string {
   </section>
 )}
 
-<!-- Node Tree Section -->
+<!-- Talent Tree Section -->
 <section class="content-section">
-  <h2 class="section-title">Node Tree</h2>
+  <h2 class="section-title">Talent Tree</h2>
 
-  <!-- Node Tree Description -->
-  <div class="node-tree-description">
-    <div class="description-content">
-      <div class="description-image">
-        <ZNNodeTreeImage imageName="FullTree" alt="Complete Node Tree" width={120} height={120} />
-      </div>
-      <div class="description-text">
-        <p class="node-tree-intro">
-          This is the <strong>Node Tree</strong> - there are 3 main components:
-        </p>
-        <ul class="node-components">
-          <li>
-            <strong class="highlight-amber">Skills</strong> - Level up to 10 and unlock the last 4 levels
-            on Dupe 3 and 5
-          </li>
-          <li>
-            <strong class="highlight-teal">3 Main Segments</strong> - Give the most boosts (45% HP and
-            ATK total), providing massive stat increases that are very important
-          </li>
-          <li>
-            <strong class="highlight-purple">Stat Nodes</strong> - 10 specialized nodes depending on
-            the character's main kit
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- 1. Skill Level Up -->
-  <h3 class="node-section-title">1. Skill Level Up</h3>
-  <p class="node-section-subtitle">
-    4 types of skills that can be leveled up, Team skill don't need level up :
-  </p>
-
-  <div class="skill-levelup-section">
-    <div class="skill-image">
-      <ZNNodeTreeImage imageName="skills" alt="Skill Node Tree" width={100} height={100} />
-    </div>
-    <div class="skill-content">
-      <div class="skill-types-box">
-        <h4 class="skill-types-title">Skill Types:</h4>
-        <div class="skill-grid">
-          <div class="skill-type-item">
-            <div class="skill-type-name">Normal Attack</div>
+  {
+    characterData.talentTree ? (
+      <>
+        <!-- Full tree totals -->
+        <div class="talent-totals-box">
+          <h3 class="talent-totals-title">
+            Complete Tree Grants ({characterData.name}):
+          </h3>
+          <div class="talent-totals-grid">
+            {characterData.talentTree.totals.map((t) => (
+              <span class="talent-total-badge">{t}</span>
+            ))}
           </div>
-          <div class="skill-type-item auto-skill">
-            <div class="skill-type-name">Auto Skill</div>
-          </div>
-          <div class="skill-type-item">
-            <div class="skill-type-name">Ultimate</div>
-          </div>
-          <div class="skill-type-item passive">
-            <div class="skill-type-name">Passive</div>
-          </div>
-          <div class="skill-type-item team-skill">
-            <div class="skill-type-name">Team Skill</div>
-          </div>
+          <p class="talent-totals-note">
+            Max stats shown above are calculated with every node unlocked. The E-nodes and the 10 stat
+            nodes below are this character's actual tree — materials come from the elemental dungeon
+            and weekly shops.
+          </p>
         </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- 2. ATK & HP Increase -->
-  <h3 class="node-section-title">2. ATK & HP Increase</h3>
-  <p class="node-section-subtitle">3 tiers of stat increases - prioritize these first!</p>
+        <!-- 1. Skill Enhancement Nodes -->
+        <h3 class="node-section-title">1. Enhancement Nodes (E1 - E3)</h3>
+        <p class="node-section-subtitle">
+          The biggest boosts in the tree - unlock them first. Bonuses vary per character:
+        </p>
+        <div class="talent-e-nodes">
+          {characterData.talentTree.enhancementNodes.map((e) => (
+            <div class={`node-tier tier-${e.rank <= 2 ? 1 : e.rank <= 4 ? 2 : 3}`}>
+              <div class="node-tier-content">
+                <div class="node-tier-title">{e.bonus}</div>
+                <div class="node-tier-requirement">Rank {e.rank} Required</div>
+                {e.materials?.length > 0 && (
+                  <div class="node-tier-materials">
+                    {e.materials.map((m) => (
+                      <span class="talent-mat">
+                        {m.icon && <img src={`${ITEM_ICON_R2}${m.icon}`} alt={m.name} width={18} height={18} loading="lazy" />}
+                        {m.name} ×{m.amount}
+                      </span>
+                    ))}
+                    <span class="talent-mat">
+                      <img src={MONEY_ICON} alt="Aether Points" width={18} height={18} loading="lazy" />
+                      {e.gold.toLocaleString()}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
 
-  <div class="atk-hp-nodes">
-    <div class="node-tier tier-1">
-      <ZNNodeTreeImage imageName="1" alt="10% ATK & HP Node" width={45} height={45} />
-      <div class="node-tier-content">
-        <div class="node-tier-title">10% ATK & HP</div>
-        <div class="node-tier-requirement">Rank 2 Required</div>
-      </div>
-    </div>
-    <div class="node-tier tier-2">
-      <ZNNodeTreeImage imageName="2" alt="15% ATK & HP Node" width={45} height={45} />
-      <div class="node-tier-content">
-        <div class="node-tier-title">15% ATK & HP</div>
-        <div class="node-tier-requirement">Rank 4 Required</div>
-      </div>
-    </div>
-    <div class="node-tier tier-3">
-      <ZNNodeTreeImage imageName="3" alt="20% ATK & HP Node" width={45} height={45} />
-      <div class="node-tier-content">
-        <div class="node-tier-title">20% ATK & HP</div>
-        <div class="node-tier-requirement">Rank 6 Required</div>
-      </div>
-    </div>
-  </div>
+        <!-- 2. Stat Nodes -->
+        <h3 class="node-section-title">2. Stat Nodes (N1 - N10)</h3>
+        <p class="node-section-subtitle">
+          10 nodes tailored to this character's kit. The last two are level-gated capstones.
+        </p>
+        <div class="talent-table-wrap">
+          <table class="talent-table">
+            <thead>
+              <tr>
+                <th>Node</th><th>Stat Bonus</th><th>Unlock</th><th>Materials</th>
+                <th><span class="th-cost"><img src={MONEY_ICON} alt="Aether Points" width={16} height={16} loading="lazy" /> Aether Points</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              {characterData.talentTree.statNodes.map((s) => (
+                <tr>
+                  <td class="talent-node-id">{s.node}</td>
+                  <td class="talent-node-stat">{s.stat}</td>
+                  <td>{s.unlock}</td>
+                  <td class="talent-node-mats">
+                    {s.materials?.length
+                      ? s.materials.map((m) => (
+                          <span class="talent-mat">
+                            {m.icon && <img src={`${ITEM_ICON_R2}${m.icon}`} alt={m.name} width={18} height={18} loading="lazy" />}
+                            {m.name} ×{m.amount}
+                          </span>
+                        ))
+                      : '—'}
+                  </td>
+                  <td class="talent-node-cost">
+                    <img src={MONEY_ICON} alt="Aether Points" width={16} height={16} loading="lazy" />
+                    {s.gold.toLocaleString()}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-  <div class="node-info-box teal">
-    <p class="node-info-text">
-      💡 Materials can be farmed in dungeons and weekly dungeons. These provide the most stats
-      increase!
-    </p>
-  </div>
+        <!-- 3. Branch Levels -->
+        <h3 class="node-section-title">3. Skill Branch Levels</h3>
+        <p class="node-section-subtitle">
+          Each of the 4 branches (Normal Attack, Auto Skill, Ultimate, Passive) levels up to{' '}
+          <strong>14</strong> — the cap starts at 10, and Awakenings at Dupe 3 and Dupe 5 each raise it
+          by +2. Costs below are per level and identical for all four branches (levels 2-10 from game
+          data).
+        </p>
+        <div class="talent-table-wrap">
+          <table class="talent-table">
+            <thead>
+              <tr>
+                <th>Branch Level</th>
+                <th><span class="th-cost"><img src={MONEY_ICON} alt="Aether Points" width={16} height={16} loading="lazy" /> Aether Points</span></th>
+                <th>Materials</th>
+              </tr>
+            </thead>
+            <tbody>
+              {characterData.talentTree.levels.map((l) => (
+                <tr>
+                  <td class="talent-node-id">{l.level}</td>
+                  <td class="talent-node-cost">
+                    <img src={MONEY_ICON} alt="Aether Points" width={16} height={16} loading="lazy" />
+                    {l.gold.toLocaleString()}
+                  </td>
+                  <td class="talent-node-mats">
+                    {l.materials?.length
+                      ? l.materials.map((m) => (
+                          <span class="talent-mat">
+                            {m.icon && <img src={`${ITEM_ICON_R2}${m.icon}`} alt={m.name} width={18} height={18} loading="lazy" />}
+                            {m.name} ×{m.amount}
+                          </span>
+                        ))
+                      : '—'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-  <!-- 3. Stat Increase Nodes -->
-  <h3 class="node-section-title">3. Stat Increase Nodes</h3>
-  <p class="node-section-subtitle">
-    Each character has 10 unique stat nodes. Activate 8 by level 70!
-  </p>
-
-  <div class="stat-nodes-info">
-    <h4 class="stat-nodes-title">Available Stat Types:</h4>
-    <div class="stat-grid">
-      <div class="stat-grid-item">
-        <span class="stat-grid-text">ATK Increase</span>
-      </div>
-      <div class="stat-grid-item">
-        <span class="stat-grid-text">DEF Increase</span>
-      </div>
-      <div class="stat-grid-item">
-        <span class="stat-grid-text">HP Increase</span>
-      </div>
-      <div class="stat-grid-item">
-        <span class="stat-grid-text">Healing Inc</span>
-      </div>
-      <div class="stat-grid-item">
-        <span class="stat-grid-text">Penetration</span>
-      </div>
-      <div class="stat-grid-item">
-        <span class="stat-grid-text">Element Inc</span>
-      </div>
-      <div class="stat-grid-item">
-        <span class="stat-grid-text">Crit Rate</span>
-      </div>
-      <div class="stat-grid-item">
-        <span class="stat-grid-text">Crit Damage</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="node-info-box amber">
-    <p class="node-info-text">
-      📋 <strong>Note:</strong> Some nodes require Level 80, others unlock earlier. Activation requirements
-      are fairly simple.
-    </p>
-  </div>
+        <div class="node-info-box amber">
+          <p class="node-info-text">
+            📋 <strong>Note:</strong> Skill values on this page are shown at the max awakened level
+            (Lv.14 — requires the Dupe 3 and Dupe 5 awakening cap raises). Levels 11-14 continue the
+            Lv.1→Lv.10 growth line; two skills with hand-tuned curves use the game's own Lv.14 data.
+            Team skills need no level up.
+          </p>
+        </div>
+      </>
+    ) : (
+      <p class="node-section-subtitle">Talent tree data not yet extracted for this character.</p>
+    )
+  }
 </section>
 
 <!-- Awakening Effects -->

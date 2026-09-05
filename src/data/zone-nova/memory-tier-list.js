@@ -41,7 +41,7 @@ export const MEMORY_CLASS_ORDER = [
   'Buffer',
   'Debuffer',
   'Disruptor',
-  'Healer',
+  'HEALER REMEM.',
   'Destroyer',
 ];
 
@@ -76,45 +76,45 @@ export const MEMORY_TIER_LIST = {
     'Memory card rankings by class. Each character can only equip memories matching their class.',
   tiers: {
     Warrior: {
-      SSS: [{ name: 'Afternoon Tantrums' }, { name: 'Wrong Time of Appearance' }, { name: 'King of Lust' }],
-      SS: [{ name: 'Pride or Tsundere?' }, { name: 'Halloween Candy' }],
+      SSS: [{ name: 'Afternoon tantrums' }, { name: 'Wrong time of appearance' }, { name: 'King of Lust' }],
+      SS: [{ name: 'Pride or Tsundere?' }, { name: 'Halloween candy' }],
       S: [
         { name: 'Secret Garden' },
       ],
       A: [
-        { name: 'The World Seems to Have Stopped' },
-        { name: 'Behind the Regret' },
+        { name: 'The World Seems to Stand Still' },
+        { name: 'Behind the Laziness' },
       ],
       Situational: [],
     },
     Mage: {
       SSS: [],
-      SS: [{ name: "Slave's Original Wish (奴仆的原愿)" }, { name: 'Night of Bloody Storm' }, { name: 'Unreserved Love' }],
+      SS: [{ name: "Slave's Original Wish (奴仆的原愿)" }, { name: 'Night of Blood and Storm' }, { name: 'Unreserved love' }],
       S: [{ name: "The maid's bath" },
-        { name: 'Method of Revenge' },
+        { name: 'The Way of Revenge' },
       ],
       A: [
         { name: 'Annoying Classroom' },
-        { name: 'During Military Academy Training' },
-        { name: "Self-Release (自我放纵)" },
+        { name: 'During Military Training' },
+        { name: "Self-Indulgence" },
       ],
       Situational: [],
     },
     Rogue: {
-      SSS: [{ name: 'Shared Bath Time' }, { name: 'Strange Gaze Full of Desire' }, { name: 'Frozen Heart' }],
-      SS: [{ name: 'I am your Christmas present.' }, { name: 'Lonely Dark Deep Night' }, { name: 'Hera Memory' }],
+      SSS: [{ name: 'Shared Bath Time' }, { name: 'Weird eyes full of desire' }, { name: 'Frozen Heart' }],
+      SS: [{ name: 'Christmas present' }, { name: 'Lonely Dark Midnight' }, { name: 'Black-Faced Fool' }],
       S: [
-        { name: 'Heroes, Never Stop' },
-        { name: "Perverted Little Nurse (变态小护士)" },
+        { name: 'Hero Never Resting' },
+        { name: "Perverted Little Nurse" },
       ],
       A: [
-        { name: 'Secret Room Reality' },
+        { name: 'Secret Room Livestream' },
       ],
       Situational: [],
     },
     Guardian: {
       SSS: [],
-      SS: [{ name: 'Suffocating Grace' }, { name: 'Night Assault Suspect' }, { name: 'Simple Birdcage' }, { name: 'Lancelot-HerTrainer' }, { name: 'In the Cafe, Sneaking a Bite' }],
+      SS: [{ name: 'Suffocating Grace ' }, { name: 'Suspect in the Night' }, { name: 'Simple Birdcage' }, { name: 'Lancelot-HerTrainer' }, { name: 'Eating secretly in a cafe' }],
       S: [
         { name: 'Her Trainer' },
       ],
@@ -129,10 +129,10 @@ export const MEMORY_TIER_LIST = {
       Situational: [],
     },
     Buffer: {
-      SSS: [{ name: 'Absolutely Perfect Arms' }, { name: 'Hot Spring & Her' }, { name: 'Bath Time' }],
-      SS: [{ name: 'Embarrassing Pattern' }, { name: 'The Loneliest Moment' }],
+      SSS: [{ name: 'Absolutely perfect buttocks' }, { name: 'Hot Spring & Her ' }, { name: 'Bath Time' }],
+      SS: [{ name: 'Awkward Appearance' }, { name: 'The Loneliest Moment' }],
       S: [
-        { name: 'Frost Dominion' },
+        { name: 'And Also Chocolate' },
       ],
       A: [
         { name: 'Sleep Treasure' },
@@ -141,14 +141,14 @@ export const MEMORY_TIER_LIST = {
     },
     Debuffer: {
       SSS: [],
-      SS: [{ name: 'Nutrition Studies' }, { name: 'Lamplight Study' }, { name: 'Discipline Director' }],
+      SS: [{ name: 'Nutrition Studies' }, { name: 'Reading by Lamplight' }, { name: 'Discipline Director' }],
       S: [
-        { name: 'Battlefield Flower' },
-        { name: 'Busy Officer (忙里偷闲)' },
+        { name: 'Flower of the Battlefield' },
+        { name: 'A Break Amidst the Hustle' },
         { name: 'Sleepy Guardian' },
-        { name: 'True Order (真正的秩序)' },
-        { name: 'Deceptive Ultimate Temptation' },
-        { name: 'Cute Little Thing' },
+        { name: 'True Order' },
+        { name: 'Ultimate Temptation of Deception' },
+        { name: 'Cute Little Things' },
       ],
       A: [],
       Situational: [],
@@ -161,12 +161,12 @@ export const MEMORY_TIER_LIST = {
       Situational: [],
     },
     Healer: {
-      SSS: [{ name: 'The Beauty of Heijing Castle' }],
-      SS: [{ name: 'A Smile That Topples Cities' }, { name: 'Reorganizing Revolution' }, { name: 'Gentle Morning Command' }],
+      SSS: [{ name: 'The Beauty of Heikyo Castle' }],
+      SS: [{ name: 'A Smile to Topple Cities' }, { name: 'Late-Night Work' }, { name: 'Gentle Morning Command' }],
       S: [
         { name: 'Beautiful Moon' },
-        { name: 'The Most Real Her' },
-        { name: 'Solitary Realm (一人之境)' },
+        { name: 'Her Truest Self' },
+        { name: 'Realm of Solitude' },
       ],
       A: [],
       Situational: [],

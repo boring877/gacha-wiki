@@ -2,30 +2,30 @@
 // Contains faction information and character assignments
 
 export const ZONE_NOVA_FACTIONS = {
-  Unaffiliated: {
-    name: 'Unaffiliated',
-    chineseName: '无所属',
+  Neutral: {
+    name: 'Neutral',
+    chineseName: '無所屬',
     characters: [],
     color: '#757575',
     description: 'Characters not affiliated with any major faction',
   },
-  Sapphire: {
-    name: 'Sapphire',
-    chineseName: '萨纳尔',
-    characters: ['Shanna', 'Penny', 'Chiya', 'Kela', 'Lavinia', 'Lily', 'Lyra', 'Naiya', 'Nina', 'Erika'],
+  Safir: {
+    name: 'Safir',
+    chineseName: '薩緋爾',
+    characters: ['Shanna', 'Penny', 'Chiya', 'Kela', 'Lavinia', 'Lily', 'Lyra', 'Naiya', 'Nina', 'Erika', 'Veronica', ],
     color: '#2196f3',
-    description: 'The Sapphire faction',
+    description: 'The Safir faction',
   },
-  Chemic: {
-    name: 'Chemic',
-    chineseName: '凯米奇',
-    characters: ['Anubis', 'Shu', 'Bastet', 'Tefnut', 'Horus', 'Cleopatra', 'Apep'],
+  Kemich: {
+    name: 'Kemich',
+    chineseName: '凱米奇',
+    characters: ['Anubis', 'Shu', 'Bastet', 'Tefnut', 'Horus', 'Cleopatra', 'Apep', 'Set', 'Nephthys', ],
     color: '#ff9800',
-    description: 'The Chemic faction with Egyptian mythology influences',
+    description: 'The Kemich faction with Egyptian mythology influences',
   },
   Avalon: {
     name: 'Avalon',
-    chineseName: '亚瓦隆',
+    chineseName: '亞瓦隆',
     characters: [
       'Arthur',
       'Guinevere',
@@ -33,42 +33,41 @@ export const ZONE_NOVA_FACTIONS = {
       'Lancelot',
       'Merlin',
       'Mordred',
-      'Morgan Le Fay',
-    ],
+      'Morgan Le Fay', 'Bedivere', 'Bors', ],
     color: '#4caf50',
     description: 'The Avalon faction with Arthurian legend influences',
   },
-  Odius: {
-    name: 'Odius',
-    chineseName: '奥帝斯',
-    characters: ['Gaia', 'Yuis', 'Hera', 'Apollo', 'Artemis', 'Athena', 'Afrodite'],
+  Otis: {
+    name: 'Otis',
+    chineseName: '奧帝斯',
+    characters: ['Gaia', 'Yuis', 'Hera', 'Apollo', 'Artemis', 'Athena', 'Afrodite', 'Poseidon', 'Medusa', ],
     color: '#9c27b0',
-    description: 'The Odius faction with Greek mythology influences',
+    description: 'The Otis faction with Greek mythology influences',
   },
-  'A.S.A': {
-    name: 'A.S.A',
-    chineseName: '亚萨',
+  'Asa': {
+    name: 'Asa',
+    chineseName: '亞薩',
     characters: ['Frigga', 'Freya', 'Hela', 'Loki', 'Odin', 'Sigurd', 'Thor'],
     color: '#f44336',
-    description: 'The A.S.A faction with Norse mythology influences',
+    description: 'The Asa faction with Norse mythology influences',
   },
-  'Pingjing City': {
-    name: 'Pingjing City',
+  'Heikyo Castle': {
+    name: 'Heikyo Castle',
     chineseName: '平京城',
     characters: ['Ibaraki-doji', 'Zashiki-warashi', 'Snow Girl', 'Jorogumo', 'Shuten-doji', 'Tamamo-no-Mae'],
     color: '#00bcd4',
-    description: 'The Pingjing City faction with Japanese influences',
+    description: 'The Heikyo Castle faction with Japanese influences',
   },
-  'Monochrome Nation': {
-    name: 'Monochrome Nation',
+  'Monochrome Realm': {
+    name: 'Monochrome Realm',
     chineseName: '黑白国度',
     characters: ['Rose', 'Nini', 'Hiyori', 'Sharin', 'Jill', 'Keller'],
     color: '#607d8b',
-    description: 'The Monochrome Nation faction',
+    description: 'The Monochrome Realm faction',
   },
-  'Bicta Tower': {
-    name: 'Bicta Tower',
-    chineseName: '毕刻客',
+  'Bikta': {
+    name: 'Bikta',
+    chineseName: '畢刻塔',
     characters: [
       'Leviathan',
       'Greed Mammon',
@@ -79,7 +78,7 @@ export const ZONE_NOVA_FACTIONS = {
       'Wrath-Samael',
     ],
     color: '#673ab7',
-    description: 'The Bicta Tower faction with demonic influences',
+    description: 'The Bikta faction with demonic influences',
   },
 };
 
@@ -90,7 +89,7 @@ export function getFactionByCharacter(characterName) {
       return factionKey;
     }
   }
-  return 'Unaffiliated';
+  return 'Neutral';
 }
 
 // Helper function to get all faction names

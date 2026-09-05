@@ -223,7 +223,7 @@ export const odinBuild = {
   },
   teamSkill: {
     name: 'Combination Skill',
-    activationCondition: 'If the party has 2 A.S.A or 2 Fire characters',
+    activationCondition: 'If the party has 2 Asa or 2 Fire characters',
     effects: ['ATK +10%', 'At battle start, every 500 ATK grants +3% Penetration (max 6 times)'],
   },
   teamSynergy: {

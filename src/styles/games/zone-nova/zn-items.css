@@ -1,0 +1,128 @@
+/* Zone Nova item database page styles */
+
+.zn-items-page {
+  width: 100%;
+}
+
+.zn-items-intro {
+  color: var(--zn-text-secondary, #b8c4d0);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 1.25rem 0;
+}
+
+.zn-items-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+}
+
+.zn-items-filter-bar input,
+.zn-items-filter-bar select {
+  background: rgba(0, 0, 0, 0.35);
+  color: #eef2f7;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.zn-items-filter-bar input:focus,
+.zn-items-filter-bar select:focus {
+  outline: none;
+}
+
+.zn-items-filter-bar input {
+  flex: 1 1 220px;
+  min-width: 180px;
+}
+
+.zn-items-filter-count {
+  color: var(--zn-text-secondary, #b8c4d0);
+  font-size: 0.85rem;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.zn-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.9rem;
+}
+
+.zn-item-card {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+}
+
+.zn-item-card img.zn-item-icon {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.zn-item-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.zn-item-name {
+  font-weight: 600;
+  color: #f2f6fa;
+  font-size: 0.95rem;
+  line-height: 1.25;
+}
+
+.zn-item-meta {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.zn-item-badge {
+  font-size: 0.7rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cfd9e4;
+  background: rgba(255, 255, 255, 0.05);
+  white-space: nowrap;
+}
+
+.zn-item-badge.rarity-SSR { color: #ffd76e; border-color: rgba(255, 215, 110, 0.45); }
+.zn-item-badge.rarity-SR  { color: #c9a6ff; border-color: rgba(201, 166, 255, 0.4); }
+.zn-item-badge.rarity-R   { color: #8fc7ff; border-color: rgba(143, 199, 255, 0.4); }
+
+.zn-item-desc {
+  font-size: 0.78rem;
+  color: var(--zn-text-secondary, #9fb0c0);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.zn-items-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--zn-text-secondary, #9fb0c0);
+  padding: 2.5rem 0;
+}

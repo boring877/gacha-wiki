@@ -1,5 +1,5 @@
 // Guinevere Build - Zone Nova Character Build
-// SSR Fire character - Defense Scaling Guardian Tank
+// SSR Fire character - Defense Scaling Tank Tank
 
 export const guinevereBuild = {
   name: 'Guinevere',
@@ -62,13 +62,13 @@ export const guinevereBuild = {
     {
       name: 'Sister Penny Trying on New Clothes',
       effect:
-        "SR Guardian-class memory card that provides substantial HP increase and post-ultimate damage reduction - perfect synergy for Guinevere's tanking role and frequent ultimate usage",
+        "SR Tank-class memory card that provides substantial HP increase and post-ultimate damage reduction - perfect synergy for Guinevere's tanking role and frequent ultimate usage",
       characterSpecific: false,
       memoryImage: 'Sister-Penny-Trying-on-New Clothes',
       memoryStats: { hp: '5,500', attack: '400', defense: '575' },
       slug: 'sister-penny-trying-on-new-clothes',
       description:
-        'HP increased by 24%. After using ultimate skill, equipped character receives 10% less damage for 5 seconds. (Guardian class only)',
+        'HP increased by 24%. After using ultimate skill, equipped character receives 10% less damage for 5 seconds. (Tank class only)',
     },
     {
       name: 'Lancelot-HerTrainer',

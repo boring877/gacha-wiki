@@ -3,13 +3,13 @@
 
 export const ibarakiDojiRecruitmentData = {
   // Basic Information
-  title: 'Limited Recruitment Character [Debuffer, Fire] Ibaraki-doji',
+  title: 'Limited Recruitment Character [Disruptor, Fire] Ibaraki-doji',
   date: 'December 9, 2025',
   type: 'recruitment',
 
   // TL;DR Summary
   tldr: [
-    'New SSR character Ibaraki-doji (Debuffer, Fire) available through Limited Recruitment from December 9 - December 23, 2025. Fire-attribute ranged archer whose ultimate skill inflicts [Curse] on enemies with various negative effects, enabling teammates to deal more damage. Exclusive memories available through Limited Remembrance Recruitment.',
+    'New SSR character Ibaraki-doji (Disruptor, Fire) available through Limited Recruitment from December 9 - December 23, 2025. Fire-attribute ranged archer whose ultimate skill inflicts [Curse] on enemies with various negative effects, enabling teammates to deal more damage. Exclusive memories available through Limited Remembrance Recruitment.',
   ],
 
   // Official Update
@@ -20,9 +20,9 @@ export const ibarakiDojiRecruitmentData = {
       'The following are the details of the next [Limited-Time Recruitment] character:',
       '',
       'Limited-Time Recruitment Character',
-      'Character: SSR Character Ibaraki-doji (Debuffer - Fire)',
+      'Character: SSR Character Ibaraki-doji (Disruptor - Fire)',
       'Attribute: Fire',
-      'Role: Debuffer',
+      'Role: Disruptor',
       'Combat Style: Ranged archer with curse-based debuff mechanics',
       'Ultimate Ability: Inflicts [Curse] on hit enemies, giving them various negative effects',
       'Special Ability: Enables teammates to better deal damage through enemy debuffs',

@@ -1,10 +1,10 @@
 // Sharin Build - Zone Nova Character Build
-// UR Fire character - Ultimate Support Buffer
+// UR Fire character - Ultimate Support Supporter
 
 export const sharinBuild = {
   name: 'Sharin',
-  role: 'Buffer',
-  buildType: 'Qi Stacking Team Buffer',
+  role: 'Supporter',
+  buildType: 'Qi Stacking Team Supporter',
   description:
     "Sharin's passive is what makes her broken. Qi stacks give your whole team +11.5% damage, healing, and shielding per stack (max 10) -- that's 115% to everything at max. But the real insane part is the energy recovery: +3.3% per stack = 33% extra energy recovery at max. That alone makes your whole team ult way faster. It all stacks passively every 5 seconds, no conditions needed. Her ult buffs your highest ATK unit with +170% ATK and +85% crit damage, and your highest DEF unit with +146% DEF and +84% HP. A1 makes the ult hit TWO targets per category and the first ult is free. She basically makes your entire team better just by existing.",
   skillPriority: [
@@ -22,7 +22,7 @@ export const sharinBuild = {
       level: 'Level 10',
       reason: 'Massive ATK/DEF/Crit DMG/HP buffs to two top allies',
       description:
-        'Energy Cost: 3\nThe ally with the highest attack power gains [Extreme Battle Spirit], increasing attack power by 170.1% and critical hit damage by 85.1%, lasting 10 seconds.\n\nThe ally with the highest defense power gains [Guardian Heart], increasing defense by 145.8% and maximum health by 84.4%, lasting 10 seconds.',
+        'Energy Cost: 3\nThe ally with the highest attack power gains [Extreme Battle Spirit], increasing attack power by 170.1% and critical hit damage by 85.1%, lasting 10 seconds.\n\nThe ally with the highest defense power gains [Tank Heart], increasing defense by 145.8% and maximum health by 84.4%, lasting 10 seconds.',
     },
     {
       skill: 'Auto Skill',
@@ -176,7 +176,7 @@ export const sharinBuild = {
   teamSynergy: {
     goodWith: [
       'High ATK DPS characters (gets [Extreme Battle Spirit])',
-      'High DEF Tanks (gets [Guardian Heart])',
+      'High DEF Tanks (gets [Tank Heart])',
       'Energy-hungry ultimates (Qi energy recovery)',
     ],
     note: 'Sharin works in virtually any team composition. Her ultimate automatically targets the best ATK and DEF allies, and Qi provides universal team buffs. She excels with both burst DPS teams and tanky sustain teams.',
@@ -186,7 +186,7 @@ export const sharinBuild = {
       {
         level: 1,
         effect:
-          '[Extreme Battle Spirit] and [Guardian Heart] now target two friendly units instead of one. The first ultimate skill used after entering the battlefield no longer consumes energy.',
+          '[Extreme Battle Spirit] and [Tank Heart] now target two friendly units instead of one. The first ultimate skill used after entering the battlefield no longer consumes energy.',
         importance: 1,
         importanceLabel: 'Must Have',
       },

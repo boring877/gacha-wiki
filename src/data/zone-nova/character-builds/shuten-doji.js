@@ -6,7 +6,7 @@ export const shutenDojiBuild = {
   role: 'DPS',
   buildType: 'Wind DOT DPS',
   description:
-    'Shuten-doji is a Wind Mage DPS focused on damage over time [Wind Evil and Evil Bone] . Her passive provides massive damage increase (+62.9%) against Wind Evil/Bone enemies while also reducing damage taken (-48.6%).',
+    'Shuten-doji is a Wind Destroyer DPS focused on damage over time [Wind Evil and Evil Bone] . Her passive provides massive damage increase (+62.9%) against Wind Evil/Bone enemies while also reducing damage taken (-48.6%).',
   skillPriority: [
     {
       skill: 'Passive: Those who obey me live',
@@ -196,7 +196,7 @@ export const shutenDojiBuild = {
   teamSkill: {
     name: 'Combination Skill',
     activationCondition:
-      'When the team contains 2 [Pingjing City] characters or 2 [Wind] characters',
+      'When the team contains 2 [Heikyo Castle] characters or 2 [Wind] characters',
     effects: [
       'Attack power increased by 15%',
       'At the start of battle, every 500 attack power increases damage over time by 7%, up to a maximum of 10 times (70% max)',

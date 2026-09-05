@@ -9,7 +9,7 @@ export const december9MaintenanceData = {
 
   // TL;DR Summary
   tldr: [
-    'Major maintenance on December 9, 2025 (14:00, ~2 hours) brings "The Fake Villain\'s Daughter: Red-Clad Saint Snow (Part 1)" event, Ibaraki-doji (Debuffer, Fire) recruitment, "Perfect Makeup?" memory, Lavinia rerun (Dec 16), "Are the Glasses the Real Thing?" memory rerun, Rift Wave XVII, Annihilation Battle [Queen] Guinevere, Battle Pass update, limited packs, login rewards, and dungeon double drops. 300 Luminite Crystal compensation.',
+    'Major maintenance on December 9, 2025 (14:00, ~2 hours) brings "The Fake Villain\'s Daughter: Red-Clad Saint Snow (Part 1)" event, Ibaraki-doji (Disruptor, Fire) recruitment, "Perfect Makeup?" memory, Lavinia rerun (Dec 16), "Are the Glasses the Real Thing?" memory rerun, Rift Wave XVII, Annihilation Battle [Queen] Guinevere, Battle Pass update, limited packs, login rewards, and dungeon double drops. 300 Luminite Crystal compensation.',
   ],
 
   // Official Update
@@ -29,14 +29,14 @@ export const december9MaintenanceData = {
       '',
       '2. Limited-Time Character Recruitment Open: Ibaraki-doji',
       'Opening Time: 2025/12/09 14:15 ~ 2025/12/23 03:59',
-      'Class: Debuffer',
+      'Class: Disruptor',
       'Attribute: Fire',
       'Introduction: File Number 4027: [Peerless Dancer] Ibaraki-doji - Formerly known as the [Demon of Rashomon], she was a demon from Mount Oe under the command of Shuten-doji in old records. Now, she is a retainer of [Lord] Tamamo-no-Mae, a member of the [Heikyo Castle] guards, and the most beautiful [Number One Demon Dancer] of the [Hyakki Yagyo] dance troupe.',
       'She and Shuten-doji were childhood sweethearts, harboring secret feelings for each other, yet she was a complete "tragic lover" - preferring to remain in unrequited love forever rather than confess her feelings.',
       '',
       '3. Limited-Time Recall Event: Perfect Makeup?',
       'Open Time: 2025/12/09 14:15 ~ 2025/12/23 03:59',
-      'Suitable Class: Debuffer',
+      'Suitable Class: Disruptor',
       'Description: [Ibaraki-doji looks at you, seemingly seeking your opinion. She examines her makeup in the mirror; the makeup of a peerless dancer is inherently flawless, without a single imperfection. You look left and right, captivated by her exquisite features. She glances at you out of the corner of her eye, a slight smile playing on her lips.] Although she always sees herself as the third party in tragic love stories, at this moment, in your eyes, she is the sole heroine.',
       '"Who told you to move so violently just now... Hey, did my makeup get ruined?" Even after the passion subsides, she still values her appearance. The peerless dancer of Heijo must always be perfect.',
       '',

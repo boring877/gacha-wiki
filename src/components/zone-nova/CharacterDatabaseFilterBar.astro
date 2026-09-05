@@ -16,10 +16,6 @@ import { CHARACTER_METADATA } from '../../data/zone-nova/characters.js';
       <option value="">Rarity</option>
       {CHARACTER_METADATA.rarities.map(rarity => <option value={rarity}>{rarity}</option>)}
     </select>
-    <select class="filter-select" id="role-filter">
-      <option value="">Role</option>
-      {CHARACTER_METADATA.roles.map(role => <option value={role}>{role}</option>)}
-    </select>
     <select class="filter-select" id="class-filter">
       <option value="">Class</option>
       {CHARACTER_METADATA.classes.map(charClass => <option value={charClass}>{charClass}</option>)}
@@ -30,10 +26,11 @@ import { CHARACTER_METADATA } from '../../data/zone-nova/characters.js';
     </select>
   </div>
   <div class="sort-controls">
-    <button class="sort-btn" data-sort="hp">HP</button>
-    <button class="sort-btn" data-sort="attack">ATK</button>
-    <button class="sort-btn" data-sort="defense">DEF</button>
-    <button class="sort-btn" data-sort="critRate">Crit%</button>
+    <button class="sort-btn" data-sort="hp">Max HP</button>
+    <button class="sort-btn" data-sort="attack">Max ATK</button>
+    <button class="sort-btn" data-sort="defense">Max DEF</button>
+    <button class="sort-btn" data-sort="critRate">Max Crit Rate</button>
+    <button class="sort-btn" data-sort="critDmg">Max Crit DMG</button>
     <button class="reset-btn" id="reset-table">Reset</button>
   </div>
 </div>

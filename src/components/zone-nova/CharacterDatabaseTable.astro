@@ -5,6 +5,10 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
 
 <!-- Desktop table view -->
 <div class="character-table-container">
+  <p class="db-max-stats-note">
+    Stat columns show <strong>max values</strong> (base stats with the full talent tree unlocked). Base
+    values are on each character's page.
+  </p>
   <table class="character-table">
     <thead>
       <tr>
@@ -13,14 +17,14 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
         <th>Name</th>
         <th>Rarity</th>
         <th>Element</th>
-        <th>Role</th>
         <th>Icon</th>
         <th>Class</th>
         <th>Faction</th>
-        <th>HP</th>
-        <th>Attack</th>
-        <th>Defense</th>
-        <th>Crit%</th>
+        <th>Max HP</th>
+        <th>Max Attack</th>
+        <th>Max Defense</th>
+        <th>Max Crit Rate</th>
+        <th>Max Crit DMG</th>
       </tr>
     </thead>
     <tbody id="character-table-body">
@@ -57,11 +61,6 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
                 {char.element}
               </span>
             </td>
-            <td>
-              <span class={`role-badge ${char.role.toLowerCase()}`} data-sort-key="role">
-                {char.role}
-              </span>
-            </td>
             <td style="text-align: center; vertical-align: middle;">
               <ZNClassImage
                 className={char.class}
@@ -84,10 +83,11 @@ import { ZONE_NOVA_CHARACTERS } from '../../data/zone-nova/characters.js';
                 {char.faction}
               </span>
             </td>
-            <td data-sort-key="hp">{char.stats.hp}</td>
-            <td data-sort-key="attack">{char.stats.attack}</td>
-            <td data-sort-key="defense">{char.stats.defense}</td>
-            <td data-sort-key="critRate">{char.stats.critRate}</td>
+            <td data-sort-key="hp">{(char.maxStats?.hp ?? char.stats.hp).toLocaleString()}</td>
+            <td data-sort-key="attack">{(char.maxStats?.attack ?? char.stats.attack).toLocaleString()}</td>
+            <td data-sort-key="defense">{(char.maxStats?.defense ?? char.stats.defense).toLocaleString()}</td>
+            <td data-sort-key="critRate">{char.maxCritRate}%</td>
+            <td data-sort-key="critDmg">{char.maxCritDmg}%</td>
           </tr>
         ))
       }

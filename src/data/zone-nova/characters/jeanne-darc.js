@@ -8,66 +8,212 @@ export const jeanneDArcData = {
   image: 'JoanofArc.png', // Use explicit PNG filename
   rarity: 'SSR', // SSR, SR, R
   element: 'Wind', // Fire, Ice, Wind, Holy, Chaos
-  class: 'Healer', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
-  role: 'Healer', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  class: 'Healer', // Tank, Warrior, Attacker, Destroyer, Supporter, Disruptor, Healer - Determines memory compatibility
+  role: 'Healer', // Tank, DPS, Supporter, Disruptor, Healer - Functional description
   faction: 'Avalon', // Avalon (亚瓦隆)
 
   // Base Stats (Level 80)
   stats: {
-    hp: '9,180', // HP: 9180
-    attack: '1,004', // Attack: 1004
-    defense: '729', // Defense: 729
+    hp: "6,000",
+    attack: "600",
+    defense: "600",
     energyRecovery: '0.25/s',
     critRate: '0%',
-    critDamage: '50%',
+    critDmg: '50%',
+    maxCritRate: '0%',
+    maxCritDmg: '50%',
+  },
+  maxStats: {
+    hp: '9,180',
+    attack: '1,004',
+    defense: '729',
+  },
+  talentTree: {
+    totals: ["ATK +67.4%", "HP +53%", "DEF +21.6%"],
+    enhancementNodes: [
+      {
+        name: "Enhancement I",
+        rank: 2,
+        bonus: "ATK +10%, HP +10%",
+        materials: [{"name": "Scarab Stone", "amount": 1, "icon": "Icon_Talent_Rankup_Rare_4.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}],
+        gold: 5000,
+      },
+      {
+        name: "Enhancement II",
+        rank: 4,
+        bonus: "ATK +15%, HP +15%",
+        materials: [{"name": "Scarab Stone", "amount": 3, "icon": "Icon_Talent_Rankup_Rare_4.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}, {"name": "The Original Aether", "amount": 1, "icon": "Icon_Talent_Rankup_Special.png"}],
+        gold: 20000,
+      },
+      {
+        name: "Enhancement III",
+        rank: 6,
+        bonus: "ATK +20%, HP +20%",
+        materials: [{"name": "Scarab Stone", "amount": 10, "icon": "Icon_Talent_Rankup_Rare_4.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}, {"name": "The Original Aether", "amount": 1, "icon": "Icon_Talent_Rankup_Special.png"}],
+        gold: 160000,
+      },
+    ],
+    statNodes: [
+      {
+        node: "N1",
+        stat: "DEF +4.8%",
+        unlock: "After E1",
+        materials: [{"name": "Scarab Stone", "amount": 1, "icon": "Icon_Talent_Rankup_Rare_4.png"}],
+        gold: 5000,
+      },
+      {
+        node: "N2",
+        stat: "ATK +3.2%",
+        unlock: "Start",
+        materials: [],
+        gold: 2500,
+      },
+      {
+        node: "N3",
+        stat: "ATK +3.2%",
+        unlock: "After N1",
+        materials: [{"name": "Scarab Stone", "amount": 1, "icon": "Icon_Talent_Rankup_Rare_4.png"}],
+        gold: 10000,
+      },
+      {
+        node: "N4",
+        stat: "HP +3.2%",
+        unlock: "After N1",
+        materials: [{"name": "Scarab Stone", "amount": 1, "icon": "Icon_Talent_Rankup_Rare_4.png"}],
+        gold: 10000,
+      },
+      {
+        node: "N5",
+        stat: "ATK +4.8%",
+        unlock: "After N2",
+        materials: [{"name": "Scarab Stone", "amount": 3, "icon": "Icon_Talent_Rankup_Rare_4.png"}],
+        gold: 20000,
+      },
+      {
+        node: "N6",
+        stat: "HP +4.8%",
+        unlock: "After N2",
+        materials: [{"name": "Scarab Stone", "amount": 10, "icon": "Icon_Talent_Rankup_Rare_4.png"}],
+        gold: 160000,
+      },
+      {
+        node: "N7",
+        stat: "DEF +7.2%",
+        unlock: "After E2",
+        materials: [{"name": "Scarab Stone", "amount": 5, "icon": "Icon_Talent_Rankup_Rare_4.png"}],
+        gold: 45000,
+      },
+      {
+        node: "N8",
+        stat: "ATK +4.8%",
+        unlock: "After E2",
+        materials: [{"name": "Scarab Stone", "amount": 5, "icon": "Icon_Talent_Rankup_Rare_4.png"}],
+        gold: 45000,
+      },
+      {
+        node: "N9",
+        stat: "ATK +6.4%",
+        unlock: "Lv 80",
+        materials: [{"name": "Scarab Stone", "amount": 10, "icon": "Icon_Talent_Rankup_Rare_4.png"}],
+        gold: 160000,
+      },
+      {
+        node: "N10",
+        stat: "DEF +9.6%",
+        unlock: "Lv 75",
+        materials: [{"name": "Scarab Stone", "amount": 10, "icon": "Icon_Talent_Rankup_Rare_4.png"}],
+        gold: 160000,
+      },
+    ],
+    levels: [
+      {
+        level: 2,
+        gold: 2500,
+        materials: [],
+      },
+      {
+        level: 3,
+        gold: 5000,
+        materials: [{"name": "Storm Aether", "amount": 3, "icon": "Icon_Talent_Rankup_Wind_1.png"}],
+      },
+      {
+        level: 4,
+        gold: 10000,
+        materials: [{"name": "Storm Aetherstone", "amount": 3, "icon": "Icon_Talent_Rankup_Wind_2.png"}],
+      },
+      {
+        level: 5,
+        gold: 20000,
+        materials: [{"name": "Storm Aetherstone", "amount": 5, "icon": "Icon_Talent_Rankup_Wind_2.png"}],
+      },
+      {
+        level: 6,
+        gold: 30000,
+        materials: [{"name": "Storm Aetherstone", "amount": 7, "icon": "Icon_Talent_Rankup_Wind_2.png"}],
+      },
+      {
+        level: 7,
+        gold: 45000,
+        materials: [{"name": "Storm Aether Lany.", "amount": 3, "icon": "Icon_Talent_Rankup_Wind_3.png"}],
+      },
+      {
+        level: 8,
+        gold: 80000,
+        materials: [{"name": "Storm Aether Lany.", "amount": 5, "icon": "Icon_Talent_Rankup_Wind_3.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}],
+      },
+      {
+        level: 9,
+        gold: 160000,
+        materials: [{"name": "Storm Aether Lany.", "amount": 8, "icon": "Icon_Talent_Rankup_Wind_3.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}, {"name": "The Original Aether", "amount": 1, "icon": "Icon_Talent_Rankup_Special.png"}],
+      },
+      {
+        level: 10,
+        gold: 300000,
+        materials: [{"name": "Storm Aether Lany.", "amount": 14, "icon": "Icon_Talent_Rankup_Wind_3.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}, {"name": "The Original Aether", "amount": 1, "icon": "Icon_Talent_Rankup_Special.png"}],
+      },
+    ],
   },
 
   // Skills
   skills: {
-    normal: {
-      name: 'Sacred Banner Thrust',
-      chineseName: '圣旗突刺',
-      level: '10+4',
-      cooldown: '2.0s',
-      description: 'Deals 120% attack power wind damage to designated enemy unit',
+    normal:     {
+      name: "Holy Banner Thrust",
+      cooldown: "2.0s",
+      description: "Deals 120% Attack as wind damage to the targeted enemy unit",
+      template: "Deals {0} Attack as wind damage to the targeted enemy unit",
+      levelValues: [["55%"], ["60%"], ["65%"], ["70%"], ["75%"], ["80%"], ["85%"], ["90%"], ["95%"], ["100%"], ["105%"], ["110%"], ["115%"], ["120%"]],
     },
-    auto: {
-      name: 'Holy Light Banner',
-      chineseName: '圣光旗帜',
-      level: '10+4',
-      cooldown: '8.0s',
-      description:
-        'After short cast, recovers the friendly unit with lowest current HP ratio, self attack power 80.5%+445 HP, continuously heals 3 times',
+    auto:     {
+      name: "Banner of Holy Light",
+      cooldown: "8.0s",
+      description: "After a brief cast, heals the allied unit with the lowest HP percentage, restoring 81.2% Attack + 185 HP, 3 times consecutively",
+      template: "After a brief cast, heals the allied unit with the lowest HP percentage, restoring {0} Attack + {1} HP, 3 times consecutively",
+      levelValues: [["61%", "185"], ["62.6%", "185"], ["64.1%", "185"], ["65.7%", "185"], ["67.2%", "185"], ["68.8%", "185"], ["70.3%", "185"], ["71.9%", "185"], ["73.4%", "185"], ["75%", "370"], ["76.6%", "185"], ["78.1%", "185"], ["79.7%", "185"], ["81.2%", "185"]],
     },
-    ultimate: {
-      name: 'Sacred Heavenly ',
-      chineseName: '圣天神后',
-      level: '10+4',
-      cooldown: '1.0s',
-      energyCost: '8',
-      description:
-        'Restore health to all friendly characters equal to self attack power 90.8% + 668, and add 3 layers of [Sacred Healing] to self, [Sacred Healing] can stack up to maximum 4 layers',
+    ultimate:     {
+      name: "Divine Heavenly Revelation",
+      energyCost: "8",
+      cooldown: "1.0s",
+      description: "Restores 91.7% Attack + 278 HP to all allied units And adds 3 stacks of [holy Healing] to self, up to 4 stacks",
+      template: "Restores {0} Attack + {1} HP to all allied units And adds 3 stacks of [holy Healing] to self, up to 4 stacks",
+      levelValues: [["70%", "278"], ["71.7%", "278"], ["73.3%", "278"], ["75%", "278"], ["76.7%", "278"], ["78.3%", "278"], ["80%", "278"], ["81.7%", "278"], ["83.3%", "278"], ["85%", "555"], ["86.7%", "278"], ["88.3%", "278"], ["90%", "278"], ["91.7%", "278"]],
     },
-    passive: {
-      name: 'Sacred Blood Healing',
-      chineseName: '圣血治疗',
-      level: '10+4',
-      description:
-        'When friendly characters are attacked, consume 1 layer [Sacred Healing] and restore health to that character equal to self attack power 91.2% + 445, each character has 1 second cooldown time When friendly units enter near-death state, after 5 seconds revive them and restore health equal to self attack power 285.8% + 2709, can revive at most once per battle',
+    passive:     {
+      name: "Holy Blood Healing",
+      description: "When an allied unit is attacked, consumes 1 stack of [holy Healing] to restore 119.8% Attack + 185 HP to that unit, with a 1-second cooldown per unit\nWhen an allied unit enters a dying state, revives them after 5 seconds, restoring 286.7% Attack + 1110 HP, once per battle",
+      template: "When an allied unit is attacked, consumes 1 stack of [holy Healing] to restore {0} Attack + {1} HP to that unit, with a 1-second cooldown per unit\nWhen an allied unit enters a dying state, revives them after 5 seconds, restoring {2} Attack + {3} HP, once per battle",
+      levelValues: [["88%", "185", "135%", "1110"], ["90.4%", "185", "146.7%", "1110"], ["92.9%", "185", "158.3%", "1110"], ["95.3%", "185", "170%", "1110"], ["97.8%", "185", "181.7%", "1110"], ["100.2%", "185", "193.3%", "1110"], ["102.7%", "185", "205%", "1110"], ["105.1%", "185", "216.7%", "1110"], ["107.6%", "185", "228.3%", "1110"], ["110%", "370", "240%", "2220"], ["112.4%", "185", "251.7%", "1110"], ["114.9%", "185", "263.3%", "1110"], ["117.3%", "185", "275%", "1110"], ["119.8%", "185", "286.7%", "1110"]],
     },
   },
 
   // Team Skill
   teamSkill: {
-    name: 'Combination Skill',
-    chineseName: '组合技',
-    level: '1',
-    description:
-      'Self attack power +10%. Every 500 attack power increases self healing by 5%, max 6 times.',
+    name: "Combo Skill",
+    description: "Self Attack increases by 10%\nAt battle start, every 500 Attack increases self Healing by 5%, up to 6 times",
     requirements: {
-      faction: 'Avalon',
-      element: 'Wind',
-      condition: '2 [Avalon] colored or 2 [Wind] colored characters',
+      faction: "Avalon",
+      element: "Wind",
+      alternativeConditions: "Team contains 2 Avalon characters or 2 Wind characters",
     },
   },
 
@@ -75,33 +221,47 @@ export const jeanneDArcData = {
   awakenings: [
     {
       level: 1,
-      effect: 'After casting ultimate skill, additionally add 1 layer of [Sacred Healing]',
+      effect: "After casting an ULT, gain one stack of [Holy Healing]",
     },
     {
       level: 2,
-      effect:
-        'After consuming [Sacred Healing] to heal target, that target takes 10% reduced damage for 5 seconds, repeated triggers can extend the duration',
+      effect: "After consuming [Holy Healing] to heal a target, the target's damage taken decreases by 10% for 5 seconds, extending duration on repeat triggers",
     },
-    { level: 3, effect: '[Skills] and [Normal Attack] level cap +4' },
-    { level: 4, effect: 'Healing amount increased by 37.5%' },
-    { level: 5, effect: '[Required Skills] and [Passive] level cap +4' },
-    { level: 6, effect: 'Revival count increased by 1' },
+    {
+      level: 3,
+      effect: "[Skill] and [Normal Attack] level and level cap +4",
+    },
+    {
+      level: 4,
+      effect: "Healing increases by 37.5%",
+    },
+    {
+      level: 5,
+      effect: "[ULT] and [Passive] level and level cap +4",
+    },
+    {
+      level: 6,
+      effect: "Revival count increases by one",
+    },
   ],
 
   // Memory Card
   memoryCard: {
-    name: 'The Most Real Her',
-    chineseName: '最真实的她',
-    image: 'JoanofArccard', // Use format: characternamecard
-    level: '80/80',
+    name: "Her Truest Self",
+    image: "JoanofArccard",
     stats: {
-      hp: '6,000',
-      attack: '600',
-      defense: '600',
+      hp: "6,000",
+      attack: "600",
+      defense: "600",
     },
-    effects: [
-      'Healing amount increases by 50% When casting skills or ultimate skills for 1/2/3 seconds, healing amount additionally increases by 25/50/75%',
+    effects: [  // awakening levels 1-5
+      "Healing increases by 30%, when casting a skill or ULT for 1/2/3 seconds, Healing increases by an additional 15/30/45%",
+      "Healing increases by 35%, when casting a skill or ULT for 1/2/3 seconds, Healing increases by an additional 17.5/35/52.5%",
+      "Healing increases by 40%, when casting a skill or ULT for 1/2/3 seconds, Healing increases by an additional 20/40/60%",
+      "Healing increases by 45%, when casting a skill or ULT for 1/2/3 seconds, Healing increases by an additional 22.5/45/67.5%",
+      "Healing increases by 50%, when casting a skill or ULT for 1/2/3 seconds, Healing increases by an additional 25/50/75%",
     ],
+    restriction: "Only effective for Healer",
   },
 
   // Character Tags - Reusable across multiple characters

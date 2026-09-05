@@ -1,5 +1,5 @@
 // Sigurd Build - Zone Nova Character Build
-// SSR Fire Rogue - Crit-based Enhanced Ultimate DPS
+// SSR Fire Attacker - Crit-based Enhanced Ultimate DPS
 
 export const sigurdBuild = {
   name: 'Sigurd',
@@ -214,7 +214,7 @@ export const sigurdBuild = {
   },
   teamSkill: {
     name: 'Combination Skill',
-    activationCondition: 'If the party has 2 A.S.A or 2 Fire characters',
+    activationCondition: 'If the party has 2 Asa or 2 Fire characters',
     effects: [
       'Self Critical Rate increases by 7.5%',
       'At battle start, every 15% Critical Rate increases self Critical Damage by 7.5%, up to 6 times',

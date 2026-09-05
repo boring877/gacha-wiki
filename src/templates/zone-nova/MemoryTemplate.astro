@@ -23,6 +23,34 @@ const getImageFilename = (imagePath: string): string => {
 
 const memoryImageFilename = getImageFilename(memoryData.image);
 
+// Group a long single-line story into readable paragraphs (~3 sentences each)
+function storyParagraphs(story: string): string[] {
+  if (!story) return [];
+  if (story.includes('\n')) return story.split('\n').filter(Boolean);
+  const sentences = story.match(/[^.!?]+[.!?]+(\s|$)/g) || [story];
+  const out: string[] = [];
+  for (let i = 0; i < sentences.length; i += 3) {
+    out.push(sentences.slice(i, i + 3).join('').trim());
+  }
+  return out;
+}
+const storyParas = storyParagraphs(memoryData.story || '');
+
+// Escape helper + bold the leading [Token]: of effect lines
+function esc(t: string): string {
+  return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function effectLineHtml(line: string): string {
+  const m = line.match(/^(\[[^\]]+\]:)\s*(.*)$/);
+  if (m) {
+    return `<strong class="effect-token">${esc(m[1])}</strong> ${esc(m[2])}`;
+  }
+  return esc(line);
+}
+function isSubheader(line: string): boolean {
+  return /^\[[^\]]+\]:\s*$/.test(line);
+}
+
 // Helper function to get memory class type from memory restrictions
 function getMemoryClass(memoryData: any): string {
   // First check if memory has explicit class field
@@ -35,7 +63,7 @@ function getMemoryClass(memoryData: any): string {
     const effectsText = memoryData.effects.join(' ').toLowerCase();
     
     if (effectsText.includes('only effective for guardians') || effectsText.includes('guardian class restriction')) {
-      return 'Guardian';
+      return 'Tank';
     }
     if (effectsText.includes('only effective for healers') || effectsText.includes('healer class restriction')) {
       return 'Healer';
@@ -44,16 +72,16 @@ function getMemoryClass(memoryData: any): string {
       return 'Warrior';
     }
     if (effectsText.includes('only effective for rogues') || effectsText.includes('rogue class restriction')) {
-      return 'Rogue';
+      return 'Attacker';
     }
     if (effectsText.includes('only effective for mages') || effectsText.includes('mage class restriction')) {
-      return 'Mage';
+      return 'Destroyer';
     }
     if (effectsText.includes('only effective for buffers') || effectsText.includes('buffer class restriction')) {
-      return 'Buffer';
+      return 'Supporter';
     }
     if (effectsText.includes('only effective for debuffers') || effectsText.includes('debuffer class restriction')) {
-      return 'Debuffer';
+      return 'Disruptor';
     }
     if (effectsText.includes('only effective for dps') || effectsText.includes('dps class restriction')) {
       return 'DPS';
@@ -79,6 +107,26 @@ function getCharacterUrl(characterName: string): string {
     'Greed Mammon': 'greed-mammon',
     'Snow Girl': 'snow-girl',
     'Zashiki-warashi': 'zashiki-warashi',
+    // game-EN names whose wiki pages live under the launch-era slug
+    Aphrodite: 'afrodite',
+    Pennie: 'penny',
+    Naya: 'naiya',
+    Lyla: 'lyra',
+    Cynia: 'chiya',
+    Clara: 'kela',
+    Saya: 'shanna',
+    Zeus: 'yuis',
+    Behemoth: 'leviathan',
+    Belphegor: 'belphegar',
+    Mammon: 'greed-mammon',
+    'Morgan Le Fey': 'morgan-le-fay',
+    'Joan of Arc': 'jeanne-darc',
+    'Yuki-onna': 'snow-girl',
+    'Shuten-dōji': 'shuten-doji',
+    'Lust - Asmodeus': 'lust-asmodeus',
+    'Pride - Lucifer': 'pride-lucifer',
+    'Wrath - Samael': 'wrath-samael',
+    'Gluttony - Beelzebub': 'gluttony-beelzebub',
   };
 
   if (specialCases[characterName]) {
@@ -158,35 +206,95 @@ function getCharacterUrl(characterName: string): string {
 
     <!-- Memory Stats -->
     <section class="memory-stats">
-      <h2 class="section-title">Base Stats</h2>
+      <h2 class="section-title">Card Stats</h2>
       <div class="stats-grid">
         <div class="stat-card hp">
           <div class="stat-value">{memoryData.stats.hp.toLocaleString()}</div>
           <div class="stat-label">HP</div>
+          <div class="stat-range">Lv.1: {(memoryData.lv1Stats?.hp ?? memoryData.stats.hp).toLocaleString()}</div>
         </div>
         <div class="stat-card attack">
           <div class="stat-value">{memoryData.stats.attack.toLocaleString()}</div>
           <div class="stat-label">Attack</div>
+          <div class="stat-range">Lv.1: {(memoryData.lv1Stats?.attack ?? memoryData.stats.attack).toLocaleString()}</div>
         </div>
         <div class="stat-card defense">
           <div class="stat-value">{memoryData.stats.defense.toLocaleString()}</div>
           <div class="stat-label">Defense</div>
+          <div class="stat-range">Lv.1: {(memoryData.lv1Stats?.defense ?? memoryData.stats.defense).toLocaleString()}</div>
         </div>
       </div>
+      <p class="stats-note">
+        Big number = Lv.80 (fully leveled) value. Card stats grow with level — a fresh card starts at
+        Lv.1 (shown underneath) at roughly 4.5% of max, and each limit break raises the level cap by
+        10 (Lv.20 → 30 → … → 80).
+      </p>
     </section>
 
     <!-- Memory Effects -->
     <section class="memory-effects">
       <h2 class="section-title">Card Effects</h2>
-      <div class="effects-container">
-        {memoryData.effects.map((effect, index) => (
-          <div class="effect-item" key={index}>
-            <div class="effect-number">{index + 1}</div>
-            <div class="effect-text">{effect}</div>
+      {memoryData.awakenEffects ? (
+        <div class="awaken-picker">
+          <span class="awaken-label">Awakening Level</span>
+          <div class="awaken-pills" role="group" aria-label="Awakening level selector">
+            {memoryData.awakenEffects.map((_, i) => (
+              <button type="button" class={`awaken-pill${i === 4 ? ' active' : ''}`} data-awaken={i + 1}>
+                {i + 1}
+              </button>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      ) : null}
+      {memoryData.awakenEffects ? (
+        <div class="awaken-variants">
+          {memoryData.awakenEffects.map((levelText, i) => (
+            <div class={`effects-container awaken-variant${i === 4 ? ' active' : ''}`} data-awaken={i + 1}>
+              {levelText.split('\n').filter(Boolean).map((paragraph, index) => (
+                isSubheader(paragraph) ? (
+                  <p class="effect-subheader" key={index}>{paragraph}</p>
+                ) : (
+                  <p class="effect-paragraph" key={index} set:html={effectLineHtml(paragraph)} />
+                )
+              ))}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="effects-container">
+          {memoryData.effects.map((effect, index) => (
+            <div class="effect-item" key={index}>
+              <div class="effect-number">{index + 1}</div>
+              <div class="effect-text">{effect}</div>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
+
+    <script>
+      const pills = document.querySelectorAll('.awaken-picker .awaken-pill');
+      const variants = document.querySelectorAll('.awaken-variants .awaken-variant');
+      pills.forEach((pill) => {
+        pill.addEventListener('click', () => {
+          pills.forEach((p) => p.classList.toggle('active', p === pill));
+          const lv = pill.getAttribute('data-awaken');
+          variants.forEach((v) => v.classList.toggle('active', v.getAttribute('data-awaken') === lv));
+        });
+      });
+    </script>
+
+    <!-- Card Story -->
+    {memoryData.story && (
+      <section class="memory-story">
+        <h2 class="section-title">Card Story</h2>
+        <div class="story-container">
+          {storyParas.map(par => (
+            <p class="story-paragraph">{par}</p>
+          ))}
+        </div>
+      </section>
+    )}
 
     <!-- Character Synergy -->
     {memoryData.character && (
@@ -210,8 +318,93 @@ function getCharacterUrl(characterName: string): string {
   </div>
 
   <style>
-    .memory-page {
-      max-width: 1000px;
+    /* Awaken level picker */
+    .awaken-picker {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .awaken-picker .awaken-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.7;
+    }
+    .awaken-pills {
+      display: flex;
+      gap: 0.35rem;
+    }
+    .awaken-pill {
+      min-width: 2rem;
+      padding: 0.3rem 0.5rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: transparent;
+      color: inherit;
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+    .awaken-pill:hover {
+      border-color: #4fc3f7;
+    }
+    .awaken-pill.active {
+      background: #4fc3f7;
+      border-color: #4fc3f7;
+      color: #08131c;
+    }
+    .awaken-variants .awaken-variant {
+      display: none;
+    }
+    .awaken-variants .awaken-variant.active {
+      display: block;
+    }
+
+    /* Card story */
+    .story-container {
+      background: var(--zn-bg-secondary);
+      border: 1px solid var(--zn-border-primary);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .story-paragraph {
+      line-height: 1.7;
+      margin-bottom: 0.9rem;
+    }
+    .story-paragraph:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Effect text (single flowing block) */
+    .effect-paragraph {
+      line-height: 1.7;
+      margin: 0 0 0.9rem;
+    }
+    .effect-paragraph:last-child {
+      margin-bottom: 0;
+    }
+    .effect-subheader {
+      font-weight: 700;
+      color: #4fc3f7;
+      margin: 0.9rem 0 0.45rem;
+    }
+    .effect-subheader:first-child {
+      margin-top: 0;
+    }
+    .effect-token {
+      font-weight: 700;
+      color: #4fc3f7;
+    }
+
+    .memory-page {   max-width: 1000px;
       margin: 0 auto;
       padding: 1.5rem;
     }
@@ -366,6 +559,21 @@ function getCharacterUrl(characterName: string): string {
       color: var(--zn-text-muted);
       text-transform: uppercase;
       letter-spacing: 0.5px;
+    }
+
+    .stat-range {
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px dashed var(--zn-border-primary);
+      font-size: 0.8rem;
+      color: var(--zn-text-muted);
+    }
+
+    .stats-note {
+      font-size: 0.85rem;
+      color: var(--zn-text-muted);
+      line-height: 1.6;
+      margin: -1rem 0 2rem;
     }
 
     .effects-container {

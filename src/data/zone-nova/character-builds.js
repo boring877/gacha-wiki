@@ -39,7 +39,7 @@ export const CHARACTER_BUILDS = {
   // Hela Build - SSR Chaos DPS
   hela: helaBuild,
 
-  // Naiya Build - SSR Ice Buffer
+  // Naiya Build - SSR Ice Supporter
   naiya: naiyaBuild,
 
   // Apep Build - SSR Wind Tank
@@ -48,19 +48,19 @@ export const CHARACTER_BUILDS = {
   // Penny Build - SSR Wind Tank
   penny: pennyBuild,
 
-  // Apollo Build - SSR Fire Buffer
+  // Apollo Build - SSR Fire Supporter
   apollo: apolloBuild,
 
-  // Morgan Le Fay Build - SSR Holy Buffer
+  // Morgan Le Fay Build - SSR Holy Supporter
   'morgan-le-fay': morganLeFayBuild,
 
-  // Thor Build - SSR Holy Guardian Tank
+  // Thor Build - SSR Holy Tank Tank
   thor: thorBuild,
 
   // Gaia Build - SSR Holy HP Scaling Healer
   gaia: gaiaBuild,
 
-  // Horus Build - SSR Holy DOT Debuffer
+  // Horus Build - SSR Holy DOT Disruptor
   horus: horusBuild,
 
   // Odin Build - SSR Fire DOT Controller
@@ -72,22 +72,22 @@ export const CHARACTER_BUILDS = {
   // Artemis Build - SSR Wind Berserker DPS
   artemis: artemisBuild,
 
-  // Frigga Build - SSR Chaos DOT Debuffer
+  // Frigga Build - SSR Chaos DOT Disruptor
   frigga: friggaChaosBuild,
 
   // Freya Build - SSR Ice Normal Attack Speed Carry
   freya: freyaBuild,
 
-  // Athena Build - SSR Wind Normal Attack Speed Buffer
+  // Athena Build - SSR Wind Normal Attack Speed Supporter
   athena: athenaBuild,
 
   // Afrodite Build - SSR Holy Crit Scaling Warrior DPS
   afrodite: afroditeBuild,
 
-  // Gluttony - Beelzebub Build - SSR Ice Energy Control Debuffer
+  // Gluttony - Beelzebub Build - SSR Ice Energy Control Disruptor
   'gluttony-beelzebub': gluttonyBeelzebubBuild,
 
-  // Ibaraki-doji Build - SSR Fire Ultimate Damage Amplification Debuffer
+  // Ibaraki-doji Build - SSR Fire Ultimate Damage Amplification Disruptor
   'ibaraki-doji': ibarakiDojiBuild,
 
   // Lust - Asmodeus Build - SSR Wind Crit Attacker
@@ -102,7 +102,7 @@ export const CHARACTER_BUILDS = {
   // Jorogumo Build - SSR Chaos AOE Healer
   jorogumo: jorogumoBuild,
 
-  // Lily Build - SSR Ice Guardian Tank
+  // Lily Build - SSR Ice Tank Tank
   lily: lilyBuild,
 
   // Shuten-doji Build - SSR Wind DOT DPS
@@ -114,22 +114,22 @@ export const CHARACTER_BUILDS = {
   // Chiya Build - SSR Ice Crit Enhanced Ultimate DPS
   chiya: chiyaBuild,
 
-  // Loki Build - SSR Chaos Debuffer
+  // Loki Build - SSR Chaos Disruptor
   loki: lokiBuild,
 
-  // Tamamo-no-Mae Build - SSR Fire Ultimate Support Buffer
+  // Tamamo-no-Mae Build - SSR Fire Ultimate Support Supporter
   'tamamo-no-mae': tamamoNoMaeBuild,
 
   // Pride-Lucifer Build - SSR Chaos Defense Scaling Tank
   'pride-lucifer': prideLuciferBuild,
 
-  // Wrath-Samael Build - SSR Chaos Guardian Tank with Neutralize
+  // Wrath-Samael Build - SSR Chaos Tank Tank with Neutralize
   'wrath-samael': wrathSamaelBuild,
 
-  // Hiyori Build - SSR Chaos Mage Shield Destroy DPS
+  // Hiyori Build - SSR Chaos Destroyer Shield Destroy DPS
   hiyori: hiyoriBuild,
 
-  // Sharin Build - UR Fire Ultimate Team Buffer
+  // Sharin Build - UR Fire Ultimate Team Supporter
   sharin: sharinBuild,
 
   // Jill Build - SSR Holy ATK Scaling Tenacity Healer
@@ -159,20 +159,20 @@ function getDefaultBuildType(role, characterClass) {
   const buildTypes = {
     DPS: {
       Warrior: 'Frontline Fighter',
-      Mage: 'Magic Damage Dealer',
-      Rogue: 'Critical Striker',
+      Destroyer: 'Magic Damage Dealer',
+      Attacker: 'Critical Striker',
     },
     Tank: {
-      Guardian: 'Defensive Guardian',
+      Tank: 'Defensive Tank',
     },
     Healer: {
       Healer: 'Support Healer',
     },
-    Buffer: {
-      Buffer: 'Team Support',
+    Supporter: {
+      Supporter: 'Team Support',
     },
-    Debuffer: {
-      Debuffer: 'Control Specialist',
+    Disruptor: {
+      Disruptor: 'Control Specialist',
     },
   };
 
@@ -184,8 +184,8 @@ function getDefaultDescription(role, characterClass) {
     DPS: 'Focus on maximizing damage output through appropriate stat building and skill prioritization.',
     Tank: 'Prioritize defense and HP to protect allies and control the battlefield.',
     Healer: 'Maximize healing output and support capabilities to keep the team alive.',
-    Buffer: 'Enhance team performance through strategic buff application and support.',
-    Debuffer: 'Control enemies through debuffs and crowd management techniques.',
+    Supporter: 'Enhance team performance through strategic buff application and support.',
+    Disruptor: 'Control enemies through debuffs and crowd management techniques.',
   };
 
   return descriptions[role] || "A balanced build optimized for the character's abilities and role.";

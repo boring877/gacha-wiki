@@ -197,14 +197,14 @@ export const artemisBuild = {
   teamSkill: {
     name: 'Combination Skill',
     activationCondition:
-      'Team contains 2 [Wind] attribute characters and 2 [Odius] faction characters',
+      'Team contains 2 [Wind] attribute characters and 2 [Otis] faction characters',
     effects: [
       'Self max HP increased by 10%',
       'At battle start: For every 4,000 max HP, increase self attack power by 5% (maximum 6 times, up to 30% attack power boost)',
     ],
   },
   teamSynergy: {
-    goodWith: ['PVP unit', 'Works with Buffers likes "Morgan, Naiya and Zashiki-warashi"'],
+    goodWith: ['PVP unit', 'Works with Supporters likes "Morgan, Naiya and Zashiki-warashi"'],
     note: 'You need to have the energy gain to be high in order to use her ultimate before they kill you !.',
   },
 };

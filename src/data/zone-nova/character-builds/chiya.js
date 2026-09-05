@@ -1,5 +1,5 @@
 // Chiya Build - Zone Nova Character Build
-// SSR Ice Rogue DPS - Crit-focused Enhanced Ultimate Nuker with [Focus] state mechanic
+// SSR Ice Attacker DPS - Crit-focused Enhanced Ultimate Nuker with [Focus] state mechanic
 
 export const chiyaBuild = {
   name: 'Chiya',
@@ -185,7 +185,7 @@ export const chiyaBuild = {
   },
   teamSkill: {
     name: 'Combination Skill',
-    activationCondition: 'Team contains 2 [Sapphire] faction or 2 [Ice] attribute characters',
+    activationCondition: 'Team contains 2 [Safir] faction or 2 [Ice] attribute characters',
     effects: [
       'Self attack power +10%',
       'Battle Start: Every 500 attack power increases self critical damage by 7.5%, max 6 stacks (up to 45% critical damage)',

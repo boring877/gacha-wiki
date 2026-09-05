@@ -1,0 +1,16 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import { nephthysData, nephthysSEO } from '../../../../data/zone-nova/characters/nephthys.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={nephthysSEO.title}
+  description={nephthysSEO.description}
+  gameTitle={nephthysData.name}
+  character={nephthysData}
+>
+  <CharacterPageTemplate characterData={nephthysData} />
+</CharacterIndividualLayout>

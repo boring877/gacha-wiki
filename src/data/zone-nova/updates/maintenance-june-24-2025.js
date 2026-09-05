@@ -9,7 +9,7 @@ export const june24MaintenanceData = {
 
   // TL;DR Summary
   tldr: [
-    'Major maintenance on June 24, 2025 (14:00, 2 hours) bringing "Harmonious Generation Price: Divine Punishment Song Part One" event, Athena Limited Recruitment (Wind Buffer), Sadistic Appearance memory, Travel Pass system, Spacetime Rift V, Battle: Empress Cinnamon, double drop events, and 300 Photon Stone compensation.',
+    'Major maintenance on June 24, 2025 (14:00, 2 hours) bringing "Harmonious Generation Price: Divine Punishment Song Part One" event, Athena Limited Recruitment (Wind Supporter), Sadistic Appearance memory, Travel Pass system, Spacetime Rift V, Battle: Empress Cinnamon, double drop events, and 300 Photon Stone compensation.',
   ],
 
   // Official Update
@@ -35,7 +35,7 @@ export const june24MaintenanceData = {
       '2. Launch [Limited Character Recruitment] - Athena',
       '',
       'Launch time: 2025/06/24 after server launch ~ 2025/07/08 03:59:59',
-      'Class: Buffer',
+      'Class: Supporter',
       'Attribute: Wind',
       "Introduction: One of [The Matriarch's] dependents, Captain of the Otis Federation Special Forces, codename [Law Executor]. She is a perfect killing machine - regardless of who the target is, even if it's a former companion, she will complete the mission accurately and coldly. No one inside or outside the Federation doesn't fear this silver-haired executioner. However, this warrior who strikes fear into people's hearts is a complete living disaster. Her home always looks like it's been bombed - clothes, weapons, expired food piled into ruins, to the point where even she can't find a place to stand.",
       '',
@@ -44,7 +44,7 @@ export const june24MaintenanceData = {
       '3. Launch [Limited Memory Recruitment] - Sadistic Appearance',
       '',
       'Launch time: 2025/06/24 after server launch ~ 2025/07/08 03:59:59',
-      'Suitable class: Buffer',
+      'Suitable class: Supporter',
       'Introduction: As one of the most secretive battle of the Otis Federation, Athena is always cold-faced when executing secret missions, even her fellow dare not easily approach. But in reality, she longs to communicate with people in her heart, just that she has always maintained a cold demeanor that makes her seem like she\'s rejecting people thousands of miles away, making people afraid to get close. Helplessly, she can only turn to online shopping for Apollo\'s help - but never expected that this sun  number one "socialite" would actually help her put on a body-hugging sexy outfit...',
       '',
       '4. Limited Event Login Rewards',

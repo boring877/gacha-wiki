@@ -1,10 +1,10 @@
 // Tamamo-no-Mae Build - Zone Nova Character Build
-// SSR Fire character - Ultimate Support Buffer
+// SSR Fire character - Ultimate Support Supporter
 
 export const tamamoNoMaeBuild = {
   name: 'Tamamo-no-Mae',
-  role: 'Buffer',
-  buildType: 'Ultimate Support Buffer',
+  role: 'Supporter',
+  buildType: 'Ultimate Support Supporter',
   description:
     'Tamamo-no-Mae is a buffer focused on Ultimate damage, Ignoring Fire Resistance/DEF penetration, and Energy recovery. Her Fox Flame provides damage reduction and Ultimate DMG buffs when consumed. All of her buff increase the total amount, not using DEF or ATK which really massive.',
   skillPriority: [

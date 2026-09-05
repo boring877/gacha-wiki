@@ -9,7 +9,7 @@ export const may27MaintenanceData = {
 
   // TL;DR Summary
   tldr: [
-    'May 27th maintenance (14:00-16:00 UTC+8) brings Thunder King Route event, Empress Guinevere (Guardian/Flame) limited recruitment, Boss Battle Empress Charlotte Petra, Space-Time Rift events, and Battle Pass. 300 Light Ethstone compensation for all eligible players.',
+    'May 27th maintenance (14:00-16:00 UTC+8) brings Thunder King Route event, Empress Guinevere (Tank/Flame) limited recruitment, Boss Battle Empress Charlotte Petra, Space-Time Rift events, and Battle Pass. 300 Light Ethstone compensation for all eligible players.',
   ],
 
   // Official Update
@@ -39,13 +39,13 @@ export const may27MaintenanceData = {
       '',
       'Detail Information:',
       '⏰ Summon Period: May 27 - June 10, 2025',
-      '🛡️ Class: Guardian',
+      '🛡️ Class: Tank',
       '🔥 Element: Flame',
       '🏰 Lore: Seven domain ruler, Avalon Round Table Knights commander',
       '',
       '💭 Limited Memory: Simple Reminiscence',
       '📅 Duration: May 27 - June 10, 2025',
-      'Best For: Guardian class characters',
+      'Best For: Tank class characters',
       "Lore Connection: Tied to Guinevere's story and inner fears",
       '',
       '⚔️ Boss Battle: Empress Charlotte Petra',
@@ -93,7 +93,7 @@ export const may27MaintenanceData = {
 // SEO data for May 27th Maintenance
 export const may27MaintenanceSEO = {
   title: `${may27MaintenanceData.title} - Zone Nova - GachaWiki`,
-  description: `May 27th maintenance brings Thunder King Route event, Empress Guinevere (Guardian/Flame) recruitment, Boss Battle Empress Charlotte Petra, Space-Time Rift events, and 300 Light Ethstone compensation.`,
+  description: `May 27th maintenance brings Thunder King Route event, Empress Guinevere (Tank/Flame) recruitment, Boss Battle Empress Charlotte Petra, Space-Time Rift events, and 300 Light Ethstone compensation.`,
 };
 
 // Export default for easy importing

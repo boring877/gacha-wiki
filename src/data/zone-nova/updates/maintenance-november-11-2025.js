@@ -4,7 +4,7 @@ export const november11MaintenanceData = {
   type: 'maintenance',
 
   tldr: [
-    'Major maintenance on November 11, 2025 (14:00, ~2 hours) brings "Night Goddess: Evil Dream Test (Part 1)" event, Apep limited recruitment (Striker, Wind), "Error in Current Appearance" limited memory, Ferli Enchanting rerun, Space-Time Crack XV, Empress Olympatra battle, limited gift packs, double drops, and Pass update. Radiance Stone x300 compensation.',
+    'Major maintenance on November 11, 2025 (14:00, ~2 hours) brings "Night Deity: Evil Dream Test (Part 1)" event, Apep limited recruitment (Striker, Wind), "Error in Current Appearance" limited memory, Ferli Enchanting rerun, Space-Time Crack XV, Empress Olympatra battle, limited gift packs, double drops, and Pass update. Radiance Stone x300 compensation.',
   ],
 
   officialUpdate: {
@@ -19,7 +19,7 @@ export const november11MaintenanceData = {
       '',
       '**Activity Information**',
       '',
-      '1. **Launch「Night Goddess: Evil Dream Test (Part 1)」Limited Event**',
+      '1. **Launch「Night Deity: Evil Dream Test (Part 1)」Limited Event**',
       '- **Event Time**: 2025/11/11 14:15 ~ 2025/11/25 03:59',
       '- After Captains complete the first 6 chapters of the main story, the event entrance will be available in the main interface.',
       '- In the event story cards, clearing a certain number of "Event Coins" will allow you to redeem Radiance Stones, Enhancement Materials, Memory Quality Materials, and a large number of rewards at the event shop.',
@@ -92,5 +92,5 @@ export const november11MaintenanceData = {
 export const november11MaintenanceSEO = {
   title: 'November 11 Maintenance Update - Zone Nova - GachaWiki',
   description:
-    'November 11, 2025 maintenance brings Night Goddess: Evil Dream Test event, Apep limited recruitment, Ferli Enchanting rerun, Space-Time Crack XV, Empress Olympatra battle, and 300 Radiance Stone compensation.',
+    'November 11, 2025 maintenance brings Night Deity: Evil Dream Test event, Apep limited recruitment, Ferli Enchanting rerun, Space-Time Crack XV, Empress Olympatra battle, and 300 Radiance Stone compensation.',
 };

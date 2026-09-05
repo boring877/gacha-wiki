@@ -113,6 +113,7 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
           { name: 'Runes', href: '/guides/zone-nova/runes/' },
           { name: 'Crafting', href: '/guides/zone-nova/crafting/' },
           { name: 'Crafting Items', href: '/guides/zone-nova/crafting-items/' },
+          { name: 'Item Database', href: '/guides/zone-nova/items/' },
         ],
       },
       {

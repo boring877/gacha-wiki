@@ -9,7 +9,6 @@ export function initializeCharacterDatabase() {
     const searchInput = document.getElementById('character-search');
     const elementFilter = document.getElementById('element-filter');
     const rarityFilter = document.getElementById('rarity-filter');
-    const roleFilter = document.getElementById('role-filter');
     const classFilter = document.getElementById('class-filter');
     const factionFilter = document.getElementById('faction-filter');
     const sortButtons = document.querySelectorAll('.sort-btn');
@@ -18,21 +17,21 @@ export function initializeCharacterDatabase() {
     // --- State ---
     let currentSortKey = 'name';
     let currentSortDirection = 'asc';
-    const originalRows = Array.from(tableBody.children);
-    const originalCards = Array.from(mobileCardsContainer.children);
 
     if (
       !tableBody ||
       !mobileCardsContainer ||
       !elementFilter ||
       !rarityFilter ||
-      !roleFilter ||
       !classFilter ||
       !factionFilter ||
       !resetButton
     ) {
       return;
     }
+
+    const originalRows = Array.from(tableBody.children);
+    const originalCards = Array.from(mobileCardsContainer.children);
 
     // --- Helpers ---
     function renumberRows() {
@@ -62,6 +61,7 @@ export function initializeCharacterDatabase() {
         attack: '.mobile-card-stats div:nth-child(2)',
         defense: '.mobile-card-stats div:nth-child(3)',
         critRate: '.mobile-card-stats-secondary div:nth-child(1)',
+        critDmg: '.mobile-card-stats-secondary div:nth-child(2)',
       };
 
       if (sortKey === 'name') {
@@ -81,7 +81,6 @@ export function initializeCharacterDatabase() {
       const search = (searchInput?.value || '').trim().toLowerCase();
       const element = elementFilter.value.trim();
       const rarity = rarityFilter.value.trim();
-      const role = roleFilter.value.trim();
       const charClass = classFilter.value.trim();
       const faction = factionFilter.value.trim();
 
@@ -89,7 +88,6 @@ export function initializeCharacterDatabase() {
       const filterState = {
         element: element || null,
         rarity: rarity || null,
-        role: role || null,
         charClass: charClass || null,
         faction: faction || null,
       };
@@ -136,8 +134,7 @@ export function initializeCharacterDatabase() {
 
         const elementText = row.querySelector('.element-badge')?.textContent?.trim() || '';
         const rarityText = row.querySelector('.rarity-badge')?.textContent?.trim() || '';
-        const roleText = row.querySelector('.role-badge')?.textContent?.trim() || '';
-        const classText = row.querySelector('.class-badge')?.textContent?.trim() || '';
+          const classText = row.querySelector('.class-badge')?.textContent?.trim() || '';
         const factionText = row.querySelector('.faction-badge')?.textContent?.trim() || '';
 
         // Debug logging for class and faction filters
@@ -151,7 +148,6 @@ export function initializeCharacterDatabase() {
           (!search || nameText.includes(search)) &&
           (!element || elementText === element) &&
           (!rarity || rarityText === rarity) &&
-          (!role || roleText === role) &&
           (!charClass || classText === charClass) &&
           (!faction || factionText === faction);
 
@@ -219,7 +215,7 @@ export function initializeCharacterDatabase() {
         currentSortKey = sortKey;
         // For numeric columns (stats), default to descending (highest first)
         // For text columns, default to ascending (A-Z)
-        const numericColumns = ['hp', 'attack', 'defense', 'critRate', 'critDmg', 'energyRecovery'];
+        const numericColumns = ['hp', 'attack', 'defense', 'critRate', 'critDmg'];
         currentSortDirection = numericColumns.includes(sortKey) ? 'desc' : 'asc';
       }
 
@@ -246,8 +242,11 @@ export function initializeCharacterDatabase() {
         }
 
         // For numeric sorting, convert to numbers
-        valA = isNaN(Number(valA)) ? valA : Number(valA);
-        valB = isNaN(Number(valB)) ? valB : Number(valB);
+        // strip formatting (commas, %) so "10,524"/"12%" sort numerically
+        const numA = Number(String(valA).replace(/[^\d.-]/g, ''));
+        const numB = Number(String(valB).replace(/[^\d.-]/g, ''));
+        if (!isNaN(numA)) valA = numA;
+        if (!isNaN(numB)) valB = numB;
         if (valA < valB) return currentSortDirection === 'asc' ? -1 : 1;
         if (valA > valB) return currentSortDirection === 'asc' ? 1 : -1;
         return 0;
@@ -291,8 +290,11 @@ export function initializeCharacterDatabase() {
             : valB.localeCompare(valA);
         }
 
-        valA = isNaN(Number(valA)) ? valA : Number(valA);
-        valB = isNaN(Number(valB)) ? valB : Number(valB);
+        // strip formatting (commas, %) so "10,524"/"12%" sort numerically
+        const numA = Number(String(valA).replace(/[^\d.-]/g, ''));
+        const numB = Number(String(valB).replace(/[^\d.-]/g, ''));
+        if (!isNaN(numA)) valA = numA;
+        if (!isNaN(numB)) valB = numB;
         if (valA < valB) return currentSortDirection === 'asc' ? -1 : 1;
         if (valA > valB) return currentSortDirection === 'asc' ? 1 : -1;
         return 0;
@@ -305,7 +307,6 @@ export function initializeCharacterDatabase() {
     if (searchInput) searchInput.addEventListener('input', filterRows);
     elementFilter.addEventListener('change', filterRows);
     rarityFilter.addEventListener('change', filterRows);
-    roleFilter.addEventListener('change', filterRows);
     classFilter.addEventListener('change', filterRows);
     factionFilter.addEventListener('change', filterRows);
 
@@ -319,7 +320,6 @@ export function initializeCharacterDatabase() {
       if (searchInput) searchInput.value = '';
       elementFilter.value = '';
       rarityFilter.value = '';
-      roleFilter.value = '';
       classFilter.value = '';
       factionFilter.value = '';
       sortButtons.forEach(btn => btn.classList.remove('active', 'desc', 'asc'));

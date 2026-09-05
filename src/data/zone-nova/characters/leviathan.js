@@ -7,48 +7,212 @@ export const leviathanData = {
   image: 'Leviathan.png',
   rarity: 'SR',
   element: 'Wind',
-  class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
-  role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
-  faction: 'Bicta Tower',
+  class: 'Attacker', // Tank, Warrior, Attacker, Destroyer, Supporter, Disruptor, Healer - Determines memory compatibility
+  role: 'DPS', // Tank, DPS, Supporter, Disruptor, Healer - Functional description
+  faction: 'Bikta',
 
   // Base Stats (Level 80)
   stats: {
+    hp: "4,200",
+    attack: "650",
+    defense: "395",
+    energyRecovery: '0.25/s',
+    critRate: '0%',
+    critDmg: '50%',
+    maxCritRate: '0%',
+    maxCritDmg: '50%',
+  },
+  maxStats: {
     hp: '6,694',
     attack: '1,088',
     defense: '442',
   },
+  talentTree: {
+    totals: ["ATK +67.4%", "HP +59.4%", "DEF +12%"],
+    enhancementNodes: [
+      {
+        name: "Enhancement I",
+        rank: 2,
+        bonus: "ATK +10%, HP +10%",
+        materials: [{"name": "High-Precision Chip", "amount": 1, "icon": "Icon_Talent_Rankup_Rare_2.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}],
+        gold: 4000,
+      },
+      {
+        name: "Enhancement II",
+        rank: 4,
+        bonus: "ATK +15%, HP +15%",
+        materials: [{"name": "High-Precision Chip", "amount": 2, "icon": "Icon_Talent_Rankup_Rare_2.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}, {"name": "The Original Aether", "amount": 1, "icon": "Icon_Talent_Rankup_Special.png"}],
+        gold: 16000,
+      },
+      {
+        name: "Enhancement III",
+        rank: 6,
+        bonus: "ATK +20%, HP +20%",
+        materials: [{"name": "High-Precision Chip", "amount": 8, "icon": "Icon_Talent_Rankup_Rare_2.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}, {"name": "The Original Aether", "amount": 1, "icon": "Icon_Talent_Rankup_Special.png"}],
+        gold: 128000,
+      },
+    ],
+    statNodes: [
+      {
+        node: "N1",
+        stat: "HP +3.2%",
+        unlock: "After E1",
+        materials: [{"name": "High-Precision Chip", "amount": 1, "icon": "Icon_Talent_Rankup_Rare_2.png"}],
+        gold: 4000,
+      },
+      {
+        node: "N2",
+        stat: "ATK +3.2%",
+        unlock: "Start",
+        materials: [],
+        gold: 2000,
+      },
+      {
+        node: "N3",
+        stat: "ATK +3.2%",
+        unlock: "After N1",
+        materials: [{"name": "High-Precision Chip", "amount": 1, "icon": "Icon_Talent_Rankup_Rare_2.png"}],
+        gold: 8000,
+      },
+      {
+        node: "N4",
+        stat: "DEF +4.8%",
+        unlock: "After N1",
+        materials: [{"name": "High-Precision Chip", "amount": 1, "icon": "Icon_Talent_Rankup_Rare_2.png"}],
+        gold: 8000,
+      },
+      {
+        node: "N5",
+        stat: "ATK +4.8%",
+        unlock: "After N2",
+        materials: [{"name": "High-Precision Chip", "amount": 2, "icon": "Icon_Talent_Rankup_Rare_2.png"}],
+        gold: 16000,
+      },
+      {
+        node: "N6",
+        stat: "DEF +7.2%",
+        unlock: "After N2",
+        materials: [{"name": "High-Precision Chip", "amount": 8, "icon": "Icon_Talent_Rankup_Rare_2.png"}],
+        gold: 128000,
+      },
+      {
+        node: "N7",
+        stat: "HP +4.8%",
+        unlock: "After E2",
+        materials: [{"name": "High-Precision Chip", "amount": 4, "icon": "Icon_Talent_Rankup_Rare_2.png"}],
+        gold: 36000,
+      },
+      {
+        node: "N8",
+        stat: "ATK +4.8%",
+        unlock: "After E2",
+        materials: [{"name": "High-Precision Chip", "amount": 4, "icon": "Icon_Talent_Rankup_Rare_2.png"}],
+        gold: 36000,
+      },
+      {
+        node: "N9",
+        stat: "ATK +6.4%",
+        unlock: "Lv 80",
+        materials: [{"name": "High-Precision Chip", "amount": 8, "icon": "Icon_Talent_Rankup_Rare_2.png"}],
+        gold: 128000,
+      },
+      {
+        node: "N10",
+        stat: "HP +6.4%",
+        unlock: "Lv 75",
+        materials: [{"name": "High-Precision Chip", "amount": 8, "icon": "Icon_Talent_Rankup_Rare_2.png"}],
+        gold: 128000,
+      },
+    ],
+    levels: [
+      {
+        level: 2,
+        gold: 2000,
+        materials: [],
+      },
+      {
+        level: 3,
+        gold: 4000,
+        materials: [{"name": "Storm Aether", "amount": 2, "icon": "Icon_Talent_Rankup_Wind_1.png"}],
+      },
+      {
+        level: 4,
+        gold: 8000,
+        materials: [{"name": "Storm Aetherstone", "amount": 2, "icon": "Icon_Talent_Rankup_Wind_2.png"}],
+      },
+      {
+        level: 5,
+        gold: 16000,
+        materials: [{"name": "Storm Aetherstone", "amount": 4, "icon": "Icon_Talent_Rankup_Wind_2.png"}],
+      },
+      {
+        level: 6,
+        gold: 24000,
+        materials: [{"name": "Storm Aetherstone", "amount": 6, "icon": "Icon_Talent_Rankup_Wind_2.png"}],
+      },
+      {
+        level: 7,
+        gold: 36000,
+        materials: [{"name": "Storm Aether Lany.", "amount": 2, "icon": "Icon_Talent_Rankup_Wind_3.png"}],
+      },
+      {
+        level: 8,
+        gold: 64000,
+        materials: [{"name": "Storm Aether Lany.", "amount": 4, "icon": "Icon_Talent_Rankup_Wind_3.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}],
+      },
+      {
+        level: 9,
+        gold: 128000,
+        materials: [{"name": "Storm Aether Lany.", "amount": 6, "icon": "Icon_Talent_Rankup_Wind_3.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}, {"name": "The Original Aether", "amount": 1, "icon": "Icon_Talent_Rankup_Special.png"}],
+      },
+      {
+        level: 10,
+        gold: 240000,
+        materials: [{"name": "Storm Aether Lany.", "amount": 11, "icon": "Icon_Talent_Rankup_Wind_3.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}, {"name": "The Original Aether", "amount": 1, "icon": "Icon_Talent_Rankup_Special.png"}],
+      },
+    ],
+  },
 
   // Skills
   skills: {
-    normal: {
-      name: "Leviathan's Kiss (利维坦之吻)",
-      description: 'Deals 120 % ATK Wind damage to the targeted enemy.',
+    normal:     {
+      name: "Kiss of Leviathan",
+      cooldown: "2.0s",
+      description: "Deals 120% Attack as wind damage to the targeted enemy unit",
+      template: "Deals {0} Attack as wind damage to the targeted enemy unit",
+      levelValues: [["55%"], ["60%"], ["65%"], ["70%"], ["75%"], ["80%"], ["85%"], ["90%"], ["95%"], ["100%"], ["105%"], ["110%"], ["115%"], ["120%"]],
     },
-    auto: {
-      name: 'Abyss Roar (深渊之咆哮)',
-      cooldown: '5.0s',
-      description: 'Deals 120 % ATK Wind damage to the targeted enemy and gains 2 Marks.',
+    auto:     {
+      name: "Roar of the Abyss",
+      cooldown: "5.0s",
+      description: "Deals 120% Attack as wind damage to the targeted enemy unit And gains 2 stacks of [Mark]",
+      template: "Deals {0} Attack as wind damage to the targeted enemy unit And gains 2 stacks of [Mark]",
+      levelValues: [["55%"], ["60%"], ["65%"], ["70%"], ["75%"], ["80%"], ["85%"], ["90%"], ["95%"], ["100%"], ["105%"], ["110%"], ["115%"], ["120%"]],
     },
-    ultimate: {
-      name: 'Seven Deadly Sins: Jiāolú (七大罪：娇炉)',
-      energyCost: '5',
-      description:
-        'Deals 600 % ATK Wind damage to the targeted enemy, then immediately performs 1 extra attack that does NOT consume a Mark.',
+    ultimate:     {
+      name: "Seven Sins: Envy",
+      energyCost: "5",
+      cooldown: "1.0s",
+      description: "Deals 600% Attack as wind damage to the targeted enemy unit And instantly triggers 1 Pursue attack without consuming [Mark]",
+      template: "Deals {0} Attack as wind damage to the targeted enemy unit And instantly triggers 1 Pursue attack without consuming [Mark]",
+      levelValues: [["275%"], ["300%"], ["325%"], ["350%"], ["375%"], ["400%"], ["425%"], ["450%"], ["475%"], ["500%"], ["525%"], ["550%"], ["575%"], ["600%"]],
     },
-    passive: {
-      name: 'Grudge Deep Chain (怨恨深链)',
-      description:
-        'When our allied units use auto skills and hit enemies, consume 1 Mark to perform an extra attack dealing 180 % ATK Wind damage.',
+    passive:     {
+      name: "Chains of Resentment",
+      description: "When an allied unit's skill hits an enemy, consumes 1 stack of [Mark] And triggers a Pursue attack, dealing 143.9% Attack as wind damage",
+      template: "When an allied unit's skill hits an enemy, consumes 1 stack of [Mark] And triggers a Pursue attack, dealing {0} Attack as wind damage",
+      levelValues: [["82.5%"], ["87.2%"], ["91.9%"], ["96.7%"], ["101.4%"], ["106.1%"], ["110.8%"], ["115.6%"], ["120.3%"], ["125%"], ["129.7%"], ["134.4%"], ["139.2%"], ["143.9%"]],
     },
   },
 
   // Team Skill
   teamSkill: {
-    name: 'Combination Skill',
-    description: 'Self damage increased by 20%.',
+    name: "Combo Skill",
+    description: "Self damage dealt increases by 20%",
     requirements: {
-      faction: 'Bicta Tower',
-      element: 'Wind',
+      faction: "Bikta",
+      element: "Wind",
+      alternativeConditions: "Team contains 2 Bikta characters or 2 Wind characters",
     },
   },
 
@@ -56,35 +220,47 @@ export const leviathanData = {
   awakenings: [
     {
       level: 1,
-      effect: 'When self activates [auto Skill], can also trigger passive effects',
+      effect: "Self-casting [Skill] also triggers passive effects",
     },
     {
       level: 2,
-      effect: 'Extra attacks gain +20 % Crit Rate.',
+      effect: "[Pursue] critical rate increases by 20%",
     },
-    { level: 3, effect: '[Skills] and [Normal Attack] level and level cap +4' },
+    {
+      level: 3,
+      effect: "[Skill] and [Normal Attack] level and level cap +4",
+    },
     {
       level: 4,
-      effect: 'Extra attacks deal +20 % damage.',
+      effect: "[Pursue] damage increases by 20%",
     },
-    { level: 5, effect: '[Ultimate] and [Passive] level and level cap +4' },
+    {
+      level: 5,
+      effect: "[ULT] and [Passive] level and level cap +4",
+    },
     {
       level: 6,
-      effect:
-        'When using ultimate skill, the number of follow-up attacks triggered changes from 1 time to 2 times.',
+      effect: "When casting an ULT, Pursue attacks increase from 1 to 2 times",
     },
   ],
 
   // Memory Card
   memoryCard: {
-    name: 'Perverted Little Nurse (变态小护士)',
-    image: 'Leviathancard', // Memory card image identifier
+    name: "Perverted Little Nurse",
+    image: "Leviathancard",
     stats: {
-      hp: '4,200',
-      attack: '650',
-      defense: '395',
+      hp: "4,200",
+      attack: "650",
+      defense: "395",
     },
-    effects: ['After landing an extra attack, gain +36 % Crit Rate for 10 s.'],
+    effects: [  // awakening levels 1-5
+      "After dealing Pursue Damage, Critical Rate increases by 18% for 10 seconds",
+      "After dealing Pursue Damage, Critical Rate increases by 22.5% for 10 seconds",
+      "After dealing Pursue Damage, Critical Rate increases by 27% for 10 seconds",
+      "After dealing Pursue Damage, Critical Rate increases by 31.5% for 10 seconds",
+      "After dealing Pursue Damage, Critical Rate increases by 36% for 10 seconds",
+    ],
+    restriction: "Only effective for Attacker",
   },
 
   // Character Tags - Reusable across multiple characters

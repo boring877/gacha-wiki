@@ -1,0 +1,16 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import { borsData, borsSEO } from '../../../../data/zone-nova/characters/bors.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={borsSEO.title}
+  description={borsSEO.description}
+  gameTitle={borsData.name}
+  character={borsData}
+>
+  <CharacterPageTemplate characterData={borsData} />
+</CharacterIndividualLayout>

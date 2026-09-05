@@ -52,7 +52,7 @@ export const updateHighlightPatterns = {
 
   // Game mechanics and attributes
   mechanics:
-    /\b(?:Healer|Guardian|Destroyer|Rogue|Buffer|DPS|Support|Tank|Interference\s+Master|Furnace\s+Attribute|Holy|Fire|Ice|Wind|Chaos|Divine\s+Saint?|close-combat\s+support|long-range\s+attacks?|ranged\s+archer|large-scale\s+killing\s+damage|DoT-based\s+damage|consecutive\s+ultimate\s+skills?|high\s+mobility|enhanced\s+bullets?|attack\s+speed\s+boost|exclusive\s+(?:memory|memories|SSR\s+memories)|awakening\s+level|energy\s+recovery|\[Curse\]|Curse)\b/gi,
+    /\b(?:Healer|Tank|Destroyer|Attacker|Supporter|DPS|Support|Tank|Interference\s+Master|Furnace\s+Attribute|Holy|Fire|Ice|Wind|Chaos|Divine\s+Saint?|close-combat\s+support|long-range\s+attacks?|ranged\s+archer|large-scale\s+killing\s+damage|DoT-based\s+damage|consecutive\s+ultimate\s+skills?|high\s+mobility|enhanced\s+bullets?|attack\s+speed\s+boost|exclusive\s+(?:memory|memories|SSR\s+memories)|awakening\s+level|energy\s+recovery|\[Curse\]|Curse)\b/gi,
 
   // Special announcement terms
   announcements:

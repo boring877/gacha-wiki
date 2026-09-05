@@ -1,5 +1,5 @@
 // Hera Build - Zone Nova Character Build
-// SSR Chaos Rogue DPS - DOT (Damage Over Time) specialist with [Void] debuff mechanic
+// SSR Chaos Attacker DPS - DOT (Damage Over Time) specialist with [Void] debuff mechanic
 
 export const heraBuild = {
   name: 'Hera',
@@ -237,7 +237,7 @@ export const heraBuild = {
   },
   teamSkill: {
     name: 'Combination Skill',
-    activationCondition: 'Team contains 2 [Odius] faction or 2 [Chaos] attribute characters',
+    activationCondition: 'Team contains 2 [Otis] faction or 2 [Chaos] attribute characters',
     effects: [
       'Self attack power +10%',
       'Battle Start: Every 500 attack power increases self penetration by 3%, max 6 stacks (up to 18% penetration)',
@@ -247,7 +247,7 @@ export const heraBuild = {
     goodWith: [
       'Freye (best pick - Chaos DOT synergy)',
       'Hela (Chaos DPS)',
-      'Morgan Le Fay (Buffer)',
+      'Morgan Le Fay (Supporter)',
       'Jorogumo (Healer)',
       'Thor or Guinevere (Tank)',
     ],

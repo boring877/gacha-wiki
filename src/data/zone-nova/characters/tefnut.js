@@ -8,48 +8,212 @@ export const tefnutData = {
   image: 'Tefnut.png',
   rarity: 'SR', // SSR, SR, R
   element: 'Holy', // Fire, Ice, Wind, Holy, Chaos
-  class: 'Rogue', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
-  role: 'DPS', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
-  faction: 'Chemic', // Savir, etc.
+  class: 'Attacker', // Tank, Warrior, Attacker, Destroyer, Supporter, Disruptor, Healer - Determines memory compatibility
+  role: 'DPS', // Tank, DPS, Supporter, Disruptor, Healer - Functional description
+  faction: 'Kemich', // Savir, etc.
 
   // Base Stats (Level 80)
   stats: {
-    hp: '6,694', // e.g., '10,520'
-    attack: '1,088', // e.g., '794'
-    defense: '442', // e.g., '1,232'
+    hp: "4,200",
+    attack: "650",
+    defense: "395",
+    energyRecovery: '0.25/s',
+    critRate: '0%',
+    critDmg: '50%',
+    maxCritRate: '0%',
+    maxCritDmg: '50%',
+  },
+  maxStats: {
+    hp: '6,694',
+    attack: '1,088',
+    defense: '442',
+  },
+  talentTree: {
+    totals: ["ATK +67.4%", "HP +59.4%", "DEF +12%"],
+    enhancementNodes: [
+      {
+        name: "Enhancement I",
+        rank: 2,
+        bonus: "ATK +10%, HP +10%",
+        materials: [{"name": "Canopic Jar", "amount": 1, "icon": "Icon_Talent_Rankup_Rare_3.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}],
+        gold: 4000,
+      },
+      {
+        name: "Enhancement II",
+        rank: 4,
+        bonus: "ATK +15%, HP +15%",
+        materials: [{"name": "Canopic Jar", "amount": 2, "icon": "Icon_Talent_Rankup_Rare_3.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}, {"name": "The Original Aether", "amount": 1, "icon": "Icon_Talent_Rankup_Special.png"}],
+        gold: 16000,
+      },
+      {
+        name: "Enhancement III",
+        rank: 6,
+        bonus: "ATK +20%, HP +20%",
+        materials: [{"name": "Canopic Jar", "amount": 8, "icon": "Icon_Talent_Rankup_Rare_3.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}, {"name": "The Original Aether", "amount": 1, "icon": "Icon_Talent_Rankup_Special.png"}],
+        gold: 128000,
+      },
+    ],
+    statNodes: [
+      {
+        node: "N1",
+        stat: "HP +3.2%",
+        unlock: "After E1",
+        materials: [{"name": "Canopic Jar", "amount": 1, "icon": "Icon_Talent_Rankup_Rare_3.png"}],
+        gold: 4000,
+      },
+      {
+        node: "N2",
+        stat: "ATK +3.2%",
+        unlock: "Start",
+        materials: [],
+        gold: 2000,
+      },
+      {
+        node: "N3",
+        stat: "ATK +3.2%",
+        unlock: "After N1",
+        materials: [{"name": "Canopic Jar", "amount": 1, "icon": "Icon_Talent_Rankup_Rare_3.png"}],
+        gold: 8000,
+      },
+      {
+        node: "N4",
+        stat: "DEF +4.8%",
+        unlock: "After N1",
+        materials: [{"name": "Canopic Jar", "amount": 1, "icon": "Icon_Talent_Rankup_Rare_3.png"}],
+        gold: 8000,
+      },
+      {
+        node: "N5",
+        stat: "ATK +4.8%",
+        unlock: "After N2",
+        materials: [{"name": "Canopic Jar", "amount": 2, "icon": "Icon_Talent_Rankup_Rare_3.png"}],
+        gold: 16000,
+      },
+      {
+        node: "N6",
+        stat: "DEF +7.2%",
+        unlock: "After N2",
+        materials: [{"name": "Canopic Jar", "amount": 8, "icon": "Icon_Talent_Rankup_Rare_3.png"}],
+        gold: 128000,
+      },
+      {
+        node: "N7",
+        stat: "HP +4.8%",
+        unlock: "After E2",
+        materials: [{"name": "Canopic Jar", "amount": 4, "icon": "Icon_Talent_Rankup_Rare_3.png"}],
+        gold: 36000,
+      },
+      {
+        node: "N8",
+        stat: "ATK +4.8%",
+        unlock: "After E2",
+        materials: [{"name": "Canopic Jar", "amount": 4, "icon": "Icon_Talent_Rankup_Rare_3.png"}],
+        gold: 36000,
+      },
+      {
+        node: "N9",
+        stat: "ATK +6.4%",
+        unlock: "Lv 80",
+        materials: [{"name": "Canopic Jar", "amount": 8, "icon": "Icon_Talent_Rankup_Rare_3.png"}],
+        gold: 128000,
+      },
+      {
+        node: "N10",
+        stat: "HP +6.4%",
+        unlock: "Lv 75",
+        materials: [{"name": "Canopic Jar", "amount": 8, "icon": "Icon_Talent_Rankup_Rare_3.png"}],
+        gold: 128000,
+      },
+    ],
+    levels: [
+      {
+        level: 2,
+        gold: 2000,
+        materials: [],
+      },
+      {
+        level: 3,
+        gold: 4000,
+        materials: [{"name": "Holy Aether", "amount": 2, "icon": "Icon_Talent_Rankup_Light_1.png"}],
+      },
+      {
+        level: 4,
+        gold: 8000,
+        materials: [{"name": "Holy Aetherstone", "amount": 2, "icon": "Icon_Talent_Rankup_Light_2.png"}],
+      },
+      {
+        level: 5,
+        gold: 16000,
+        materials: [{"name": "Holy Aetherstone", "amount": 4, "icon": "Icon_Talent_Rankup_Light_2.png"}],
+      },
+      {
+        level: 6,
+        gold: 24000,
+        materials: [{"name": "Holy Aetherstone", "amount": 6, "icon": "Icon_Talent_Rankup_Light_2.png"}],
+      },
+      {
+        level: 7,
+        gold: 36000,
+        materials: [{"name": "Holy Aether Lany.", "amount": 2, "icon": "Icon_Talent_Rankup_Light_3.png"}],
+      },
+      {
+        level: 8,
+        gold: 64000,
+        materials: [{"name": "Holy Aether Lany.", "amount": 4, "icon": "Icon_Talent_Rankup_Light_3.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}],
+      },
+      {
+        level: 9,
+        gold: 128000,
+        materials: [{"name": "Holy Aether Lany.", "amount": 6, "icon": "Icon_Talent_Rankup_Light_3.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}, {"name": "The Original Aether", "amount": 1, "icon": "Icon_Talent_Rankup_Special.png"}],
+      },
+      {
+        level: 10,
+        gold: 240000,
+        materials: [{"name": "Holy Aether Lany.", "amount": 11, "icon": "Icon_Talent_Rankup_Light_3.png"}, {"name": "Empress Mask", "amount": 1, "icon": "Icon_Talent_Rankup_Epic_2.png"}, {"name": "The Original Aether", "amount": 1, "icon": "Icon_Talent_Rankup_Special.png"}],
+      },
+    ],
   },
 
   // Skills
   skills: {
-    normal: {
-      name: 'Claw Strike',
-      description: 'Deals 120% of Attack as holy damage to designated enemy unit',
+    normal:     {
+      name: "Rending Claw",
+      cooldown: "2.0s",
+      description: "Deals 120% Attack as holy damage to the targeted enemy unit",
+      template: "Deals {0} Attack as holy damage to the targeted enemy unit",
+      levelValues: [["55%"], ["60%"], ["65%"], ["70%"], ["75%"], ["80%"], ["85%"], ["90%"], ["95%"], ["100%"], ["105%"], ["110%"], ["115%"], ["120%"]],
     },
-    auto: {
-      name: 'Ruthless Hunt',
-      cooldown: '5.0s', // e.g., '5.0s'
-      description: 'Deals holy damage equal to 240% of Attack to designated enemy unit.',
+    auto:     {
+      name: "Merciless Hunt",
+      cooldown: "5.0s",
+      description: "Deals 240% Attack as holy damage to the targeted enemy unit",
+      template: "Deals {0} Attack as holy damage to the targeted enemy unit",
+      levelValues: [["110%"], ["120%"], ["130%"], ["140%"], ["150%"], ["160%"], ["170%"], ["180%"], ["190%"], ["200%"], ["210%"], ["220%"], ["230%"], ["240%"]],
     },
-    ultimate: {
-      name: 'Bloodthirsty Killing',
-      energyCost: '8', // e.g., '5'
-      description:
-        'Jump towards designated enemy unit and deal 960% attack power holy damage When attacking targets with [Sacred Hatred] at maximum stacks, additionally apply [Light Erosion] [Light Erosion]: Deals damage every 3 seconds, each layer deals 180% attack power holy damage, maximum 1 layer',
+    ultimate:     {
+      name: "Bloodthirsty Slaughter",
+      energyCost: "8",
+      cooldown: "1.0s",
+      description: "Jumps to the targeted enemy unit And deals 960% Attack as holy damage\nWhen the target has max stacks of [holy Corrosion], additionally applies [Light Scourge]\n[Light Scourge]: Deals 180% Attack as holy damage every 3 seconds, up to 1 stack",
+      template: "Jumps to the targeted enemy unit And deals {0} Attack as holy damage\nWhen the target has max stacks of [holy Corrosion], additionally applies [Light Scourge]\n[Light Scourge]: Deals {1} Attack as holy damage every 3 seconds, up to 1 stack",
+      levelValues: [["440%", "82.5%"], ["480%", "90%"], ["520%", "97.5%"], ["560%", "105%"], ["600%", "112.5%"], ["640%", "120%"], ["680%", "127.5%"], ["720%", "135%"], ["760%", "142.5%"], ["800%", "150%"], ["840%", "157.5%"], ["880%", "165%"], ["920%", "172.5%"], ["960%", "180%"]],
     },
-    passive: {
-      name: 'Bloodthirst',
-      description:
-        'Auto Skills can apply [Sacred Hatred][Sacred Hatred]: Deals damage every 2 seconds, each layer deals 24% attack power holy damage, maximum 5 layers',
+    passive:     {
+      name: "Beast's Bloodlust",
+      description: "Skill can apply [holy Corrosion]\n[holy Corrosion]: Deals 24% Attack as holy damage every 2 seconds, up to 5 stacks",
+      template: "Skill can apply [holy Corrosion]\n[holy Corrosion]: Deals {0} Attack as holy damage every 2 seconds, up to 5 stacks",
+      levelValues: [["11%"], ["12%"], ["13%"], ["14%"], ["15%"], ["16%"], ["17%"], ["18%"], ["19%"], ["20%"], ["21%"], ["22%"], ["23%"], ["24%"]],
     },
   },
 
   // Team Skill
   teamSkill: {
-    name: 'Combo Skill', // Usually 'Combination Skill'
-    description: 'Self damage dealt increases by 20%',
+    name: "Combo Skill",
+    description: "Self damage dealt increases by 20%",
     requirements: {
-      faction: 'Chemic', // Same as character faction
-      element: 'Holy', // Same as character element
+      faction: "Kemich",
+      element: "Holy",
+      alternativeConditions: "Team contains 2 Kemich characters or 2 Holy characters",
     },
   },
 
@@ -57,30 +221,47 @@ export const tefnutData = {
   awakenings: [
     {
       level: 1,
-      effect:
-        'When attacking targets that have [Continuous damage], penetration rate increases by 10%',
+      effect: "When attacking targets with [Damage Over Time], penetration increases by 10%",
     },
-    { level: 2, effect: 'When self HP is 100%, attack power increases by 20%' },
-    { level: 3, effect: '[Skills] and [Normal Attack] level and level cap +4' },
-    { level: 4, effect: '[Continuous Damage] damage increased by 25%' },
-    { level: 5, effect: '[Ultimate] and [Passive] level and level cap +4' },
+    {
+      level: 2,
+      effect: "When self HP is 100%, Attack increases by 20%",
+    },
+    {
+      level: 3,
+      effect: "[Skill] and [Normal Attack] level and level cap +4",
+    },
+    {
+      level: 4,
+      effect: "[Damage Over Time] damage increases by 25%",
+    },
+    {
+      level: 5,
+      effect: "[ULT] and [Passive] level and level cap +4",
+    },
     {
       level: 6,
-      effect:
-        '[Ultimate skill] additionally makes the target take 20% increased [Continuous damage] damage, lasts 15 seconds',
+      effect: "[ULT] additionally increases the target's received [Damage Over Time] damage by 20% for 15 seconds",
     },
   ],
 
   // Memory Card
   memoryCard: {
-    name: 'Secret Room Reality',
-    image: 'Tefnutcard', // Use format: characternamecard (e.g., 'Tefnutcard')
+    name: "Secret Room Livestream",
+    image: "Tefnutcard",
     stats: {
-      hp: '4,200', // e.g., '8,600'
-      attack: '650', // e.g., '480'
-      defense: '395', // e.g., '690'
+      hp: "4,200",
+      attack: "650",
+      defense: "395",
     },
-    effects: ['Continuous Damage Penetration Rate +36%'],
+    effects: [  // awakening levels 1-5
+      "Damage Over Time Penetration increases by 18%",
+      "Damage Over Time Penetration increases by 22.5%",
+      "Damage Over Time Penetration increases by 27%",
+      "Damage Over Time Penetration increases by 31.5%",
+      "Damage Over Time Penetration increases by 36%",
+    ],
+    restriction: "Only effective for Attacker",
   },
 
   // Character Tags - Reusable across multiple characters

@@ -18,7 +18,7 @@ export const freyaBuild = {
         'Energy Cost: 3\nEnters [Golden Desire] State for 8 seconds: Normal attacks additionally hit targets within 5m range for 60% original attack damage, base attack speed increases by 50%, attack speed boost increases by 60%. Can use [Ice Star]: Deals 480% attack power as ice damage (counts as normal attack damage).',
     },
     {
-      skill: 'Passive: Goddess War Dance',
+      skill: 'Passive: Deity War Dance',
       priority: 2,
       level: 'Level 10',
       reason:
@@ -206,7 +206,7 @@ export const freyaBuild = {
   },
   teamSkill: {
     name: 'Combination Skill',
-    activationCondition: 'When the team contains 2 [A.S.A] characters or 2 [Ice] characters',
+    activationCondition: 'When the team contains 2 [Asa] characters or 2 [Ice] characters',
     effects: [
       'Critical Rate increases by 7.5%',
       'At combat start: For every 15% Critical Rate, gain 7.5% Critical Damage (maximum 6 stacks, up to 45% bonus)',

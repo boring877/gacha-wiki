@@ -1,12 +1,12 @@
 // Hiyori Build - Zone Nova Character Build
-// SSR Chaos Mage DPS - Shield Destroy Nuker
+// SSR Chaos Destroyer DPS - Shield Destroy Nuker
 
 export const hiyoriBuild = {
   name: 'Hiyori',
   role: 'DPS',
   buildType: 'Shield Destroy Chaos Nuker',
   description:
-    'Hiyori is a ranged Chaos Mage built to counter Pride-Lucifer in PvP. She has the highest base ATK (1,683) and Crit Rate (57%) in the entire game. Her ult strips ALL shields off the target then slams them for 1060% ATK Chaos DMG with +114% Crit Rate on top -- basically deletes Pride-Lucifer\'s whole shield gimmick on the spot. Passive gives 26.5% extra damage to anyone with a shield, and when you break one it pops a 679.8% ATK AOE explosion. Mostly a PvP unit since shield-heavy comps are everywhere in arena, especially Lucifer teams. Needs at least A1 (ignore 74% DEF on ult) to really do her job against Lucifer.',
+    'Hiyori is a ranged Chaos Destroyer built to counter Pride-Lucifer in PvP. She has the highest base ATK (1,683) and Crit Rate (57%) in the entire game. Her ult strips ALL shields off the target then slams them for 1060% ATK Chaos DMG with +114% Crit Rate on top -- basically deletes Pride-Lucifer\'s whole shield gimmick on the spot. Passive gives 26.5% extra damage to anyone with a shield, and when you break one it pops a 679.8% ATK AOE explosion. Mostly a PvP unit since shield-heavy comps are everywhere in arena, especially Lucifer teams. Needs at least A1 (ignore 74% DEF on ult) to really do her job against Lucifer.',
   skillPriority: [
     {
       skill: 'Ultimate: Operation: Dustless',

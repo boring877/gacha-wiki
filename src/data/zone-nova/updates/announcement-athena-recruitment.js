@@ -9,7 +9,7 @@ export const athenaRecruitmentData = {
 
   // TL;DR Summary
   tldr: [
-    'New legendary character Athena (Buffer, Wind) available through Limited Recruitment from June 24 - July 8, 2025. Wind attribute Buffer with enhanced bullets, attack speed boost for teammates, and exclusive memory "Sadistic Appearance". Features Captain of Otis Federation Special Forces, codename Law Executor.',
+    'New legendary character Athena (Supporter, Wind) available through Limited Recruitment from June 24 - July 8, 2025. Wind attribute Supporter with enhanced bullets, attack speed boost for teammates, and exclusive memory "Sadistic Appearance". Features Captain of Otis Federation Special Forces, codename Law Executor.',
   ],
 
   // Official Update
@@ -21,9 +21,9 @@ export const athenaRecruitmentData = {
       '',
       'Limited Recruitment Character',
       '',
-      'Character: Legendary Character Athena (Buffer, Wind)',
+      'Character: Legendary Character Athena (Supporter, Wind)',
       '',
-      "Athena is a Wind attribute Buffer character. All damage she deals is considered normal attacks, while simultaneously enhancing other teammates' attack speed and skill cooldown. Finally, she can also use enhanced bullets to deal massive damage to enemies while further strengthening other teammates.",
+      "Athena is a Wind attribute Supporter character. All damage she deals is considered normal attacks, while simultaneously enhancing other teammates' attack speed and skill cooldown. Finally, she can also use enhanced bullets to deal massive damage to enemies while further strengthening other teammates.",
       '',
       "Character Introduction: One of (The Matriarch's) dependents, Captain of the Otis Federation Special Forces, codename [Law Executor]. She is a perfect killing machine - regardless of who the target is, even if it's a former companion, she will complete the mission accurately and coldly. No one inside or outside the Federation doesn't fear this silver-haired executioner. However, this warrior who strikes fear into people's hearts is a complete living disaster. Her home always looks like it's been bombed - clothes, weapons, expired food piled into ruins, to the point where even she can't find a place to stand.",
       '',
@@ -46,7 +46,7 @@ export const athenaRecruitmentData = {
 // SEO data for Athena Limited Recruitment
 export const athenaRecruitmentSEO = {
   title: `${athenaRecruitmentData.title} - Zone Nova - GachaWiki`,
-  description: `Athena Limited Recruitment featuring legendary Wind Buffer character, Captain of Otis Federation Special Forces. Available June 24 - July 8, 2025 with exclusive memory "Sadistic Appearance".`,
+  description: `Athena Limited Recruitment featuring legendary Wind Supporter character, Captain of Otis Federation Special Forces. Available June 24 - July 8, 2025 with exclusive memory "Sadistic Appearance".`,
 };
 
 // Export default for easy importing

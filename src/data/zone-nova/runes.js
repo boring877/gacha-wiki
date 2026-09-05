@@ -71,7 +71,7 @@ export const RUNE_SETS = {
     twoPiece: 'Attack power increased by 8%',
     fourPiece:
       'When equipped character is "Debuff" class, casting ultimate skill damage causes targets to take 10% increased damage for 5 seconds',
-    classRestriction: 'Debuffer',
+    classRestriction: 'Disruptor',
     note: 'Same passive effects cannot stack. This can only be obtained in guild raids',
   },
   Tide: {

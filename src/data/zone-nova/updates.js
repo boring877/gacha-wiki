@@ -6,7 +6,7 @@ export const zoneNovaUpdates = [
     date: 'December 16, 2025',
     type: 'announcement',
     summary:
-      'Major update on December 16, 2025 brings Sigurd (Rogue, Fire) limited character gacha, "I Am Your Christmas Present" limited remembrance gacha, Battle Pass cumulative recharge and gacha missions, and Christmas Login Event with up to 20 Mirage Cubes.',
+      'Major update on December 16, 2025 brings Sigurd (Attacker, Fire) limited character gacha, "I Am Your Christmas Present" limited remembrance gacha, Battle Pass cumulative recharge and gacha missions, and Christmas Login Event with up to 20 Mirage Cubes.',
     url: '/guides/zone-nova/updates/announcement-december-16-2025/',
   },
   {
@@ -15,7 +15,7 @@ export const zoneNovaUpdates = [
     date: 'December 16, 2025',
     type: 'recruitment',
     summary:
-      "New SSR character Sigurd (Rogue, Fire) available through Limited Character Gacha from December 16 - December 30, 2025. One of Hela's servants, bathed in dragon blood with near-immortal defensive abilities. Frigga's adopted daughter from Asar Manor.",
+      "New SSR character Sigurd (Attacker, Fire) available through Limited Character Gacha from December 16 - December 30, 2025. One of Hela's servants, bathed in dragon blood with near-immortal defensive abilities. Frigga's adopted daughter from Asar Manor.",
     url: '/guides/zone-nova/updates/announcement-sigurd-recruitment/',
   },
   {
@@ -24,7 +24,7 @@ export const zoneNovaUpdates = [
     date: 'December 9, 2025',
     type: 'maintenance',
     summary:
-      'Major maintenance on December 9, 2025 (14:00, ~2 hours) brings "The Fake Villain\'s Daughter: Red-Clad Saint Snow (Part 1)" event, Ibaraki-doji (Debuffer, Fire) recruitment, "Perfect Makeup?" memory, Lavinia rerun, Rift Wave XVII, Annihilation Battle [Queen] Guinevere, Battle Pass update, and 300 Luminite Crystal compensation.',
+      'Major maintenance on December 9, 2025 (14:00, ~2 hours) brings "The Fake Villain\'s Daughter: Red-Clad Saint Snow (Part 1)" event, Ibaraki-doji (Disruptor, Fire) recruitment, "Perfect Makeup?" memory, Lavinia rerun, Rift Wave XVII, Annihilation Battle [Queen] Guinevere, Battle Pass update, and 300 Luminite Crystal compensation.',
     url: '/guides/zone-nova/updates/maintenance-december-9-2025/',
   },
   {
@@ -33,7 +33,7 @@ export const zoneNovaUpdates = [
     date: 'December 9, 2025',
     type: 'recruitment',
     summary:
-      'New SSR character Ibaraki-doji (Debuffer, Fire) available through Limited Recruitment from December 9 - December 23, 2025. Fire-attribute ranged archer whose ultimate skill inflicts [Curse] on enemies, enabling teammates to deal more damage.',
+      'New SSR character Ibaraki-doji (Disruptor, Fire) available through Limited Recruitment from December 9 - December 23, 2025. Fire-attribute ranged archer whose ultimate skill inflicts [Curse] on enemies, enabling teammates to deal more damage.',
     url: '/guides/zone-nova/updates/announcement-ibaraki-doji-recruitment/',
   },
   {
@@ -42,7 +42,7 @@ export const zoneNovaUpdates = [
     date: 'November 25, 2025',
     type: 'maintenance',
     summary:
-      'Major maintenance on November 25, 2025 (14:00, ~2 hours) brings Goddess of Night: Nightmare\'s Trial Part 2, Morgan Le Fay (Supporter, Holy) recruitment, "Absolutely Perfect Hips" memory, Freya rerun, "Servant\'s Wish" memory rerun, Rift Wave XVI, event packs, Rune Stone Dungeon double drops, and 300 Luminite compensation.',
+      'Major maintenance on November 25, 2025 (14:00, ~2 hours) brings Deity of Night: Nightmare\'s Trial Part 2, Morgan Le Fay (Supporter, Holy) recruitment, "Absolutely Perfect Hips" memory, Freya rerun, "Servant\'s Wish" memory rerun, Rift Wave XVI, event packs, Rune Stone Dungeon double drops, and 300 Luminite compensation.',
     url: '/guides/zone-nova/updates/maintenance-november-25-2025/',
   },
   {
@@ -69,7 +69,7 @@ export const zoneNovaUpdates = [
     date: 'November 7, 2025',
     type: 'maintenance',
     summary:
-      'Major maintenance on November 11, 2025 (14:00, ~2 hours) brings "Night Goddess: Evil Dream Test (Part 1)" event, Apep limited recruitment (Striker, Wind), "Error in Current Appearance" limited memory, Ferli Enchanting rerun, Space-Time Crack XV, Empress Olympatra battle, limited gift packs, double drops, and Pass update. Radiance Stone x300 compensation.',
+      'Major maintenance on November 11, 2025 (14:00, ~2 hours) brings "Night Deity: Evil Dream Test (Part 1)" event, Apep limited recruitment (Striker, Wind), "Error in Current Appearance" limited memory, Ferli Enchanting rerun, Space-Time Crack XV, Empress Olympatra battle, limited gift packs, double drops, and Pass update. Radiance Stone x300 compensation.',
     url: '/guides/zone-nova/updates/maintenance-november-11-2025/',
   },
   {
@@ -123,7 +123,7 @@ export const zoneNovaUpdates = [
     date: 'September 30, 2025',
     type: 'recruitment',
     summary:
-      'New Legendary character [Nether Lord] Hella (Wandering Messenger, Blended Pool) available through Limited Character Recruitment from September 30 - October 14, 2025. Supreme ruler of Death God Realm with dual forms and powerful output capabilities. Exclusive Limited Pursuit Memory equipment also available.',
+      'New Legendary character [Nether Lord] Hella (Wandering Messenger, Blended Pool) available through Limited Character Recruitment from September 30 - October 14, 2025. Supreme ruler of Death Deity Realm with dual forms and powerful output capabilities. Exclusive Limited Pursuit Memory equipment also available.',
     url: '/guides/zone-nova/updates/announcement-nether-lord-hella-recruitment/',
   },
   {
@@ -236,11 +236,11 @@ export const zoneNovaUpdates = [
   },
   {
     id: 'thor-recruitment',
-    title: 'Limited Recruitment Character [Guardian, Holy] Thor',
+    title: 'Limited Recruitment Character [Tank, Holy] Thor',
     date: 'August 5, 2025',
     type: 'recruitment',
     summary:
-      'New Legendary character Thor (Guardian, Holy) - guardian of the Aesir Clan with lightning transformation abilities. Converts attacks into flickering lightning and transforms into Thunder Sovereign. Available through Limited Recruitment from August 5 - August 19, 2025, with exclusive memory "Night Raid Suspect".',
+      'New Legendary character Thor (Tank, Holy) - guardian of the Aesir Clan with lightning transformation abilities. Converts attacks into flickering lightning and transforms into Thunder Sovereign. Available through Limited Recruitment from August 5 - August 19, 2025, with exclusive memory "Night Raid Suspect".',
     url: '/guides/zone-nova/updates/announcement-thor-recruitment/',
   },
   {
@@ -330,7 +330,7 @@ export const zoneNovaUpdates = [
     date: 'June 24, 2025',
     type: 'recruitment',
     summary:
-      'New SSR character Athena (Buffer, Wind) available through Limited Recruitment from June 24 - July 8, 2025. Wind attribute Buffer with enhanced bullets, attack speed boost for teammates, and exclusive memory "Sadistic Appearance".',
+      'New SSR character Athena (Supporter, Wind) available through Limited Recruitment from June 24 - July 8, 2025. Wind attribute Supporter with enhanced bullets, attack speed boost for teammates, and exclusive memory "Sadistic Appearance".',
     url: '/guides/zone-nova/updates/announcement-athena-recruitment/',
   },
   {
@@ -393,7 +393,7 @@ export const zoneNovaUpdates = [
     date: 'May 27, 2025',
     type: 'maintenance',
     summary:
-      'Thunder King Route event, Empress Guinevere (Guardian/Flame) recruitment, Boss Battle Empress Charlotte Petra, Space-Time Rift events, Battle Pass, and 300 Light Ethstone compensation.',
+      'Thunder King Route event, Empress Guinevere (Tank/Flame) recruitment, Boss Battle Empress Charlotte Petra, Space-Time Rift events, Battle Pass, and 300 Light Ethstone compensation.',
     url: '/guides/zone-nova/updates/maintenance-may-27-2025/',
   },
 ];

@@ -1,0 +1,16 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import { veronicaData, veronicaSEO } from '../../../../data/zone-nova/characters/veronica.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={veronicaSEO.title}
+  description={veronicaSEO.description}
+  gameTitle={veronicaData.name}
+  character={veronicaData}
+>
+  <CharacterPageTemplate characterData={veronicaData} />
+</CharacterIndividualLayout>

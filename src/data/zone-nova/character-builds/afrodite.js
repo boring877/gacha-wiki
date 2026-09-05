@@ -87,7 +87,7 @@ export const afroditeBuild = {
       effect: 'SR memory card with balanced attack and defense boost for sustain builds.',
       priority: 'Alternative',
       characterSpecific: false,
-      memoryImage: 'Swimsuit-Goddess-Who-Makes-Hearts-Flutter',
+      memoryImage: 'Swimsuit-Deity-Who-Makes-Hearts-Flutter',
       memoryStats: { hp: '5,000', attack: '500', defense: '500' },
       description: 'Attack increased by 20%. Defense increased by 20%.',
     },
@@ -209,7 +209,7 @@ export const afroditeBuild = {
   },
   teamSkill: {
     name: 'Combination Skill',
-    activationCondition: 'If party has 2 Odius faction members or 2 Holy characters',
+    activationCondition: 'If party has 2 Otis faction members or 2 Holy characters',
     effects: [
       'Battle start: Self attack power increased by 10%',
       'For every 500 attack power, increase self holy damage by 5% (maximum 6 times). Maximum scaling: 30% holy damage boost at 3,000+ attack power.',

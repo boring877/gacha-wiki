@@ -38,18 +38,18 @@ import ZNCharacterImage from '../../../components/zone-nova/ZNCharacterImage.ast
             <option value="">Role</option>
             <option value="Tank">Tank</option>
             <option value="DPS">DPS</option>
-            <option value="Buffer">Buffer</option>
-            <option value="Debuffer">Debuffer</option>
+            <option value="Supporter">Supporter</option>
+            <option value="Disruptor">Disruptor</option>
             <option value="Healer">Healer</option>
           </select>
           <select class="filter-select" id="class-filter">
             <option value="">Class</option>
-            <option value="Guardian">Guardian</option>
+            <option value="Tank">Tank</option>
             <option value="Warrior">Warrior</option>
-            <option value="Rogue">Rogue</option>
-            <option value="Mage">Mage</option>
-            <option value="Buffer">Buffer</option>
-            <option value="Debuffer">Debuffer</option>
+            <option value="Attacker">Attacker</option>
+            <option value="Destroyer">Destroyer</option>
+            <option value="Supporter">Supporter</option>
+            <option value="Disruptor">Disruptor</option>
             <option value="Healer">Healer</option>
           </select>
           <select class="filter-select" id="rarity-filter">
@@ -79,7 +79,7 @@ import ZNCharacterImage from '../../../components/zone-nova/ZNCharacterImage.ast
       <!-- Character Grid -->
       <div class="character-grid" id="character-grid">
         {
-          ZONE_NOVA_CHARACTERS.sort(
+          [...ZONE_NOVA_CHARACTERS].sort(
             (a, b) => overallAnalysis[a.id].overallRank - overallAnalysis[b.id].overallRank
           ).map(char => (
             <article

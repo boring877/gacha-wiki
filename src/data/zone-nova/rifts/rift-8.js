@@ -7,10 +7,10 @@ export const rift8Data = {
   endDate: '2025-09-01T20:00:00',
   eventPeriod: 'August 5 - September 1, 2025',
   shortDescription:
-    'Guardian-focused rift featuring energy recovery amplification, shield damage bonuses, and continuous damage mastery mechanics.',
+    'Tank-focused rift featuring energy recovery amplification, shield damage bonuses, and continuous damage mastery mechanics.',
   fullDescription:
-    'The eighth wave introduces tactical advantages for Guardian-led teams. Enhanced energy recovery from Guardian ultimates creates sustained combat capabilities, while shield-based damage amplification and continuous damage mastery reward defensive positioning and status effect management.',
-  focus: 'Guardian Synergy & Shield Combat',
+    'The eighth wave introduces tactical advantages for Tank-led teams. Enhanced energy recovery from Tank ultimates creates sustained combat capabilities, while shield-based damage amplification and continuous damage mastery reward defensive positioning and status effect management.',
+  focus: 'Tank Synergy & Shield Combat',
   lawEffects: [
     "When our party's guardian uses their ultimate ability, our entire party's energy recovery speed increases by 10%, maximum 5 stacks, lasting 10 seconds.",
     'When our party characters have shields, damage dealt increases by 30%.',

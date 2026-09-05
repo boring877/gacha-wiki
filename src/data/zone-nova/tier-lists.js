@@ -39,17 +39,17 @@ export const TIER_DEFINITIONS = {
 };
 
 export const TIER_ORDER = Object.keys(TIER_DEFINITIONS);
-export const ROLE_ORDER = ['Healer', 'Buffer', 'Debuffer', 'Tank', 'DPS'];
+export const ROLE_ORDER = ['Healer', 'Supporter', 'Disruptor', 'Tank', 'DPS'];
 export const CLASS_ORDER = [
   'Healer',
-  'Buffer',
-  'Debuffer',
+  'Supporter',
   'Disruptor',
-  'Guardian',
+  'Disruptor',
+  'Tank',
   'Warrior',
   'Attacker',
-  'Rogue',
-  'Mage',
+  'Attacker',
+  'Destroyer',
 ];
 
 // Overall PvE Tier List - General content performance
@@ -352,7 +352,7 @@ export const TIER_LIST_CHANGELOG = [
     date: '2026-04-28',
     changes: [
       'Jill added: SS in PvE, PvP, and New Player tier lists',
-      'New Holy Healer from Monochrome Nation with Tenacity and team-wide healing',
+      'New Holy Healer from Monochrome Realm with Tenacity and team-wide healing',
       'Ultimate grants all allies Tenacity for 6s and heals based on ATK',
       'A6 enhances first 3 Ultimates with additional Tenacity stacks',
     ],
@@ -361,7 +361,7 @@ export const TIER_LIST_CHANGELOG = [
     date: '2026-04-15',
     changes: [
       'Sharin added: UR in PvE, PvP, and New Player tier lists',
-      'New Fire Buffer from Monochrome Nation with Qi stacking mechanic',
+      'New Fire Supporter from Monochrome Realm with Qi stacking mechanic',
       'Ultimate provides massive ATK/DEF/Crit DMG buffs to top ATK and top DEF allies',
       'A1 doubles ultimate targets and first ULT is free, A6 grants permanent [Hold the Line]',
       'Passive grants team-wide stacking buffs: +11.5% healing/shield/damage and +3.3% energy recovery per Qi stack (max 10)',
@@ -371,7 +371,7 @@ export const TIER_LIST_CHANGELOG = [
     date: '2026-04-02',
     changes: [
       'Hiyori added: SS in PvE, SSS in PvP',
-      'New Chaos Mage DPS and premier Pride-Lucifer counter with highest base ATK (1,683) and Crit Rate (57%)',
+      'New Chaos Destroyer DPS and premier Pride-Lucifer counter with highest base ATK (1,683) and Crit Rate (57%)',
       'Ultimate destroys all target shields and deals 1060% ATK Chaos DMG with 114% bonus Crit Rate',
       'Passive provides 26.5% bonus DMG to shielded enemies with area explosion on shield break',
       'A1 ignores 74% DEF, A4 grants 50% ATK, A6 enhances Shield Burst and ignores 40% Chaos Resistance',
@@ -393,7 +393,7 @@ export const TIER_LIST_CHANGELOG = [
     date: '2026-02-19',
     changes: [
       'Wrath-Samael added: SS in PvE, SSS in PvP, SS in Rift',
-      'New Chaos Guardian Tank with Neutralize mechanics and Wrath stack system',
+      'New Chaos Tank Tank with Neutralize mechanics and Wrath stack system',
       'Mainly a PVP unit - excels at controlling enemy aggression with taunt mechanic',
       'Team skill provides 15% Defense and Neutralize DMG Reduction based on Defense',
       'High ultimate cost limits PVE effectiveness but dominates PVP meta',
@@ -413,7 +413,7 @@ export const TIER_LIST_CHANGELOG = [
     date: '2026-01-20',
     changes: [
       'Tamamo-no-Mae added: SSS in PvE, PvP, Rift, and Guild Raid',
-      'New Fire Buffer with Fox Flame stacking mechanic and massive Ultimate DMG buffs',
+      'New Fire Supporter with Fox Flame stacking mechanic and massive Ultimate DMG buffs',
       'A1 grants 9 Fox Flame stacks at battle start for instant burst potential',
       'A6 provides DEF boost and extra Ten Ghost Marks on ally Ultimates',
       'Odin promoted to SSS in PvE and PvP (already SSS in Rift and Guild Raid)',
@@ -423,7 +423,7 @@ export const TIER_LIST_CHANGELOG = [
     date: '2026-01-07',
     changes: [
       'Shuten-doji added: SS in PvE, S in PvP, S in Rift, S in Guild Raid',
-      'New Wind Mage DPS with Wind Evil DoT stacking mechanic',
+      'New Wind Destroyer DPS with Wind Evil DoT stacking mechanic',
       'Strong damage amplification passive (+62.9% damage to debuffed enemies)',
       'A6 grants 25% elemental resistance penetration',
     ],
@@ -440,7 +440,7 @@ export const TIER_LIST_CHANGELOG = [
     date: '2025-12-16',
     changes: [
       'Sigurd added: SS in PvE, SS in PvP, SSS in Rift, SS in Guild Raid',
-      'New Fire Rogue DPS with Dragon Blood mechanic and Enhanced Ultimate',
+      'New Fire Attacker DPS with Dragon Blood mechanic and Enhanced Ultimate',
       'Excels in Rift content with high crit scaling and burst damage',
     ],
   },

@@ -1,10 +1,10 @@
 // Athena Build - Zone Nova Character Build
-// SSR Wind character - Normal Attack Speed Buffer
+// SSR Wind character - Normal Attack Speed Supporter
 
 export const athenaBuild = {
   name: 'Athena',
-  role: 'Buffer',
-  buildType: 'Normal Attack Speed Buffer',
+  role: 'Supporter',
+  buildType: 'Normal Attack Speed Supporter',
   description:
     'Athena is a buffer focused on attack speed, cooldown reduction. All her damage is considered normal attack damage, and she provides Attack Power, attack speed, CDR, and crit rate bonuses to all allies and generates team energy while maintaining good damage output.',
   skillPriority: [
@@ -211,7 +211,7 @@ export const athenaBuild = {
       {
         level: 4,
         effect:
-          'While [Aegis] active: all allies take 10% reduced damage, Warriors/Rogues gain additional 10% damage reduction (total 20%)',
+          'While [Aegis] active: all allies take 10% reduced damage, Warriors/Attackers gain additional 10% damage reduction (total 20%)',
         importance: 3,
         importanceLabel: 'Mid',
       },
@@ -231,7 +231,7 @@ export const athenaBuild = {
   },
   teamSkill: {
     name: 'Combination Skill',
-    activationCondition: 'Team contains Wind attribute characters and Odius faction characters',
+    activationCondition: 'Team contains Wind attribute characters and Otis faction characters',
     effects: [
       'Battle start: All team Damage increases by 10%',
       'For every 500 attack power, all team Damage additionally +5% (max 6 stacks, total +40% Damage)',

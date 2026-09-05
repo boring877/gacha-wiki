@@ -1,218 +1,990 @@
-// Zone Nova Memory Database
-// Centralized memory data for sorting, filtering, and display
-
-import { getCharacterClass } from './characters.js';
+// Zone Nova Memory Cards (regenerated from live master data 2026-09-05)
+// effects[] = awakening levels 1-5 (game text)
 
 export const ZONE_NOVA_MEMORIES = [
   {
-    id: 'ancient-method-to-eliminate-fatigue',
-    slug: 'ancient-method-to-eliminate-fatigue',
-    name: 'Ancient Method to Eliminate Fatigue',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Ancient-Method-to-Eliminate-Fatigue.jpg',
-    rarity: 'SR',
-    element: null, // No specific element
-    character: null, // No specific character
-    class: 'Healer', // Healer class
-    detailUrl: '/guides/zone-nova/memories/ancient-method-to-eliminate-fatigue/',
-    stats: {
-      hp: 5000,
-      attack: 500,
-      defense: 500
-  },
-    effects: [
-      'Healing amount increased by 30%',
-      'Each time healing, healing target gains +20% attack for 3 seconds'
-  ]
-  },
-  {
-    id: 'annihilation-users-reminiscence',
-    slug: 'annihilation-users-reminiscence',
-    name: 'Increase User Attack',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Increase-User-Attack.jpg',
-    rarity: 'R',
-    element: null, // No specific element
-    character: null, // No specific character
-    class: 'Mage', // Mage class
-    detailUrl: '/guides/zone-nova/memories/annihilation-users-reminiscence/',
-    stats: {
-      hp: 3360,
-      attack: 520,
-      defense: 316
-  },
-    effects: ['Attack increases by 32%']
-  },
-  {
-    id: 'embarrassing-pattern',
-    slug: 'embarrassing-pattern',
-    name: 'Embarrassing Pattern',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Athenacard.jpg',
+    id: 'a-dream-of-peace',
+    slug: 'a-dream-of-peace',
+    name: "A Dream of Peace",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/a-dream-of-peace.png',
     rarity: 'SSR',
-    element: 'Wind',
-    character: 'Athena',
-    detailUrl: '/guides/zone-nova/memories/embarrassing-pattern/',
+    element: null,
+    character: "Nephthys",
+    class: 'Destroyer',
+    detailUrl: '/guides/zone-nova/memories/a-dream-of-peace/',
+    stats: {
+      hp: 5040,
+      attack: 780,
+      defense: 474,
+    }, lv1Stats: { hp: 227, attack: 35, defense: 21 },
+    story: "The daylight streamed through the gaps in the curtains, casting a bright yet languid glow over the room. You gently pushed open the door, your gaze instantly drawn to the figure on the bed. Nephthys lay sprawled on the soft mattress, her black sheer lingerie particularly striking in the bright light, the fabric subtly outlining her curves, usually tightly concealed. The full-length mirror behind her faithfully reflected her slender waist and graceful hips and legs. Her fair skin, accustomed to the shadows of the tomb, now bathed in sunlight, intertwined with her uniquely icy aura, creating a breathtaking allure. Hearing footsteps, she slightly turned her head. Her eyes, always ethereal and aloof, held less wariness in the daylight, gazing silently at you. She didn't rise, nor did she try to conceal herself; only a faint, gentle smile played on her lips. Is it already morning?",
+    effects: [  // awaken levels 1-5
+      "Attack power increased by 30%, and ultimate skill damage increased by 24%. Ultimate skill penetration against enemy defense increased by 12%. If the enemy has a shield, ultimate skill damage against them is increased by 50%.",
+      "Attack power increased by 35%, and ultimate skill damage increased by 28%. Ultimate skill penetration against enemy defense increased by 15%. If the enemy has a shield, ultimate skill damage against them is increased by 50%.",
+      "Attack power increased by 40%, and ultimate skill damage increased by 32%. Ultimate skill penetration against enemy defense increased by 28%. If the enemy has a shield, ultimate skill damage against them is increased by 50%.",
+      "Attack power increased by 50%, and ultimate skill damage increased by 36%. Ultimate skill penetration against enemy defense increased by 21%. If the enemy has a shield, ultimate skill damage against them is increased by 50%.",
+      "Attack power increased by 60%, and ultimate skill damage increased by 50%. Ultimate skill penetration against enemy defense increases by 24%. If the enemy has a shield, ultimate skill damage against them is increased by 50%.",
+    ],
+  },
+  {
+    id: 'a-perfect-makeup-look',
+    slug: 'a-perfect-makeup-look',
+    name: "A perfect makeup look?",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Ibaraki-dojicard.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: "Ibaraki-doji",
+    class: 'Disruptor',
+    detailUrl: '/guides/zone-nova/memories/a-perfect-makeup-look/',
     stats: {
       hp: 6000,
       attack: 600,
-      defense: 600
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "Ibaraki-dōji looked at you, seemingly seeking your opinion. She examined her makeup in the mirror; the makeup of a peerless dancer was flawless, without a single imperfection. You looked at her from left to right, captivated by her exquisite features. She glanced at you out of the corner of her eye, a slight smile playing on her lips. Although she always saw herself as the third party in tragic love stories, indulging in the saccharine sweetness of romance literature, at this moment, in your eyes, she was the sole heroine. Who told you to move so vigorously just now… Hey, did my makeup smudge? Even after the passion, she still valued her appearance. The peerless dancer of Heikyo Castle must always be perfect.",
+    effects: [  // awaken levels 1-5
+      "Attack power increased by 24%. When a Ultimate Skill deals damage, the target takes 20% more damage and receives 24% less healing, lasting 5 seconds.",
+      "Attack power increased by 28%. When a Ultimate Skill deals damage, the target takes 24% more damage and receives 28% less healing, lasting 5 seconds.",
+      "Attack power increased by 32%. When a Ultimate Skill deals damage, the target takes 28% more damage and receives 32% less healing, lasting 5 seconds.",
+      "Attack power increased by 36%. When a Ultimate Skill deals damage, the target takes 32% more damage and receives 36% less healing, lasting 5 seconds.",
+      "Attack power increased by 40%. When a Ultimate Skill deals damage, the target takes 36% more damage and receives 40% less healing for 5 seconds.",
+    ],
   },
-    effects: [
-      'After battle start: All allies damage +40%, normal attack damage +40%',
-      'When equipped character deals 5 normal attack damage: All team attack power +40% for 5 seconds'
-  ]
+  {
+    id: 'gaiacard',
+    slug: 'gaiacard',
+    name: "A Smile to Topple Cities",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Gaiacard.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: "Gaia",
+    class: 'Healer',
+    detailUrl: '/guides/zone-nova/memories/gaiacard/',
+    stats: {
+      hp: 6300,
+      attack: 580,
+      defense: 585,
+    }, lv1Stats: { hp: 284, attack: 26, defense: 26 },
+    story: "A beam of light crosses your vision as your bedmate, like a nurturing mother, gently coaxes you awake. Her soft, smooth touch glides over you, and she sneaks a kiss on your cheek. You slowly open your eyes, and she gazes contentedly at your groggy expression. Glancing at the “battlefield” of last night, you feel a twinge of embarrassment. Gaia rises, brushing back her hair as she bends, her voluptuous, graceful form and warm smile utterly enchanting.",
+    effects: [  // awaken levels 1-5
+      "HP increased by 24%, Healing Amount increased by 24%. When the wearer heals within 1 second, Healing Amount additionally increased by 24%",
+      "HP increased by 28%, Healing Amount increased by 28%. When the wearer heals within 1 second, Healing Amount additionally increased by 28%",
+      "HP increased by 32%, Healing Amount increased by 32%. When the wearer heals within 1 second, Healing Amount additionally increased by 32%",
+      "HP increased by 36%, Healing Amount increased by 36%. When the wearer heals within 1 second, Healing Amount additionally increased by 36%",
+      "HP increased by 40%, Healing Amount increased by 40%. When the wearer heals within 1 second, Healing Amount additionally increased by 40%",
+    ],
+  },
+  {
+    id: 'absolutely-perfect-arms',
+    slug: 'absolutely-perfect-arms',
+    name: "Absolutely perfect buttocks",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/AbsolutelyPerfectArms.png',
+    rarity: 'SSR',
+    element: null,
+    character: "Morgan Le Fey",
+    class: 'Supporter',
+    detailUrl: '/guides/zone-nova/memories/absolutely-perfect-arms/',
+    stats: {
+      hp: 6000,
+      attack: 600,
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "Morgan, with her back to you, casually bends over, revealing a sight that seems to freeze time. It's a pair of absolutely perfect buttocks, full and firm, their flawless rounded curves revealed beneath her fitted clothing, as if the Creator's most prized masterpiece. Even the curves of the perfect witch queen's buttocks seem sculpted by the heavens. Just as your gaze is about to be swallowed by that perfect curve, she seems to sense the burning gaze behind her and abruptly turns her head. Her cheeks are flushed, her watery eyes filled with embarrassment and annoyance, and she protests in an almost inaudible voice, Don't peek when I bend over! The blush on the perfect witch queen's face adds a touch of hazy allure to her unintentional display. The more frantically she tries to explain, the clearer and more profound her innate sensuality becomes. She says she refuses, but is that shy glance truly just a simple protest?",
+    effects: [  // awaken levels 1-5
+      "Attack power increased by 18%\nDefense power increased by 18%\nHP increased by 18%\nWhen the wearer is of the Holy attribute, after each normal attack, all allied characters' energy gain efficiency increases by 10%, stacking up to 4 times, lasting for 5 seconds.",
+      "Attack power increased by 21%\nDefense power increased by 21%\nHP increased by 21%\nWhen the wearer is of the Holy attribute, after each normal attack, all allied characters' energy gain efficiency increases by 12%, stacking up to 4 times, lasting for 5 seconds.",
+      "Attack power increased by 24%\nDefense power increased by 24%\nHP increased by 24%\nWhen the wearer is of the Holy attribute, after each normal attack, all allied characters' energy gain efficiency increases by 14%, stacking up to 4 times, lasting for 5 seconds.",
+      "Attack power increased by 27%\nDefense power increased by 27%\nHP increased by 27%\nWhen the wearer is of the Holy attribute, after each normal attack, all allied characters' energy gain efficiency increases by 16%, stacking up to 4 times, lasting for 5 seconds.",
+      "Attack power increased by 30%\nDefense power increased by 30%\nHealth increased by 30%\nWhen the wearer is of the Holy attribute, after each normal attack, all allied characters' energy gain efficiency increases by 18%, stacking up to 4 times, lasting for 5 seconds.",
+    ],
+  },
+  {
+    id: 'afternoon-tantrums',
+    slug: 'afternoon-tantrums',
+    name: "Afternoon tantrums",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Kellercard.png',
+    rarity: 'SSR',
+    element: null,
+    character: "Keller",
+    class: 'Warrior',
+    detailUrl: '/guides/zone-nova/memories/afternoon-tantrums/',
+    stats: {
+      hp: 6600,
+      attack: 480,
+      defense: 690,
+    }, lv1Stats: { hp: 297, attack: 22, defense: 31 },
+    story: "Warm sunlight streamed into the room. As soon as you entered, you saw Keller sprawled out, lazily occupying the most comfortable spot, like a little animal with no intention of getting up. Normally, she could turn the room upside down with a tantrum, but now she seemed completely devoid of energy, simply lying there reaching out to you. Her self-righteous demeanor practically screamed Come play with me, without a trace of the authority one would expect from a leader. You're here! she exclaimed cheerfully, waving her hand at you. Come on over, I'm too lazy to move right now, but you have to play with me! Watching her shamelessly act spoiled and pouting in the afternoon sun, you suddenly realized that compared to some kind of Grand Marshal of the Black Empire!!!, this girl was just a particularly mischievous and clingy little brat.",
+    effects: [  // awaken levels 1-5
+      "Increases own attack power by 32%， critical hit damage by 50%， and normal attack damage by 40%. Every 3rd normal attack will deal an additional 25% of attack power as normal attack damage.",
+      "Increases own attack power by 40%， critical hit damage by 60%， and normal attack damage by 50%. Every 3rd normal attack will deal an additional 35% of attack power as normal attack damage.",
+      "Increases own attack power by 48%， critical hit damage by 70%， and normal attack damage by 60%. Every 3rd normal attack will deal an additional 45% of attack power as normal attack damage.",
+      "Increases own attack power by 56%， critical hit damage by 80%， and normal attack damage by 80%. Every 3rd normal attack will deal an additional 55% of attack power as normal attack damage.",
+      "Increases own attack power by 70%， critical hit damage by 90%， and normal attack damage by 100%. Every 3rd normal attack will deal an additional 75% of attack power as normal attack damage.",
+    ],
   },
   {
     id: 'frost-dominion',
     slug: 'frost-dominion',
-    name: 'Frost Dominion',
+    name: "And Also Chocolate",
     image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/naiyacard.jpg',
     rarity: 'SSR',
-    element: 'Ice',
-    character: 'Naiya',
+    element: null,
+    character: "Naya",
+    class: 'Supporter',
     detailUrl: '/guides/zone-nova/memories/frost-dominion/',
     stats: {
       hp: 6000,
       attack: 600,
-      defense: 600
-  },
-    effects: [
-      'Attack power increased by 40%. After the equipped character releases ultimate skill, the entire team gains ultimate skill damage increased by 40%, lasting 5 seconds'
-  ]
-  },
-  {
-    id: 'great-mages-role-playing',
-    slug: 'great-mages-role-playing',
-    name: "Great Mage's Role Playing",
-    image: "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Great-Mage's-Role-Playing.jpg",
-    rarity: 'SR',
-    element: null, // No specific element
-    character: null, // No specific character
-    class: 'Rogue', // Rogue class
-    detailUrl: '/guides/zone-nova/memories/great-mages-role-playing/',
-    stats: {
-      hp: 4200,
-      attack: 650,
-      defense: 395
-  },
-    effects: [
-      'Attack power increased by 20%',
-      'When enemies on field are fewer than 2, increases crit damage by 36%'
-  ]
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "“Mmm~ Sugar, flour, butter, yeast... and chocolate! Yes! Everything's ready! Let's start!” Wearing only an apron, Nia grabs her tools and begins tinkering in the kitchen. Though she turns the place into a chaotic battlefield every time, Nia loves experimenting with old-world desserts. Ever since spotting gorgeous sweets in an antique magazine, her curious and gluttonous heart was fully awakened. On days off from training, she scours antique shops or storage vaults for vintage recipes. When she picks a day to bake, she holes up in the kitchen, with occasional explosive sounds echoing out. Her dedication stems from the “special someone” in her heart.",
+    effects: [  // awaken levels 1-5
+      "Attack increases by 24%, after the wearer casts an ULT, team ULT damage increases by 24% for 5 seconds",
+      "Attack increases by 28%, after the wearer casts an ULT, team ULT damage increases by 28% for 5 seconds",
+      "Attack increases by 32%, after the wearer casts an ULT, team ULT damage increases by 32% for 5 seconds",
+      "Attack increases by 36%, after the wearer casts an ULT, team ULT damage increases by 36% for 5 seconds",
+      "Attack increases by 40%, after the wearer casts an ULT, team ULT damage increases by 40% for 5 seconds",
+    ],
   },
   {
-    id: 'lamplight-study',
-    slug: 'lamplight-study',
-    name: 'Lamplight Study',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Friggacard.png',
+    id: 'are-the-glasses-the-real-thing',
+    slug: 'are-the-glasses-the-real-thing',
+    name: "Are the glasses the real thing?",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/are-the-glasses-the-real-thing.png',
     rarity: 'SSR',
-    element: 'Chaos',
-    character: 'Frigga',
-    detailUrl: '/guides/zone-nova/memories/lamplight-study/',
+    element: null,
+    character: "Lavinia",
+    class: 'Healer',
+    detailUrl: '/guides/zone-nova/memories/are-the-glasses-the-real-thing/',
     stats: {
       hp: 6000,
       attack: 600,
-      defense: 600
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "For Lavinia, coping with major crises or venturing into perilous situations was never a challenge. With a few simple gestures, she easily resolved any challenge. However, losing her glasses was a completely different calamity. Being severely nearsighted, losing them was like instant blindness, making it difficult not only to find them but also to carry out daily tasks. Repeated setbacks and setbacks eroded her former composure and pride, transforming her into a completely different person. Because of this, those around her often joked, Those glasses are the real Lavinia. For her, glasses were more than just a visual aid; they were a symbol of professional excellence. Once she put them on, she was completely absorbed in her work. Despite repeated pleas from family and friends to overcome this single weakness with modern technology, Lavinia persisted in wearing her old glasses, continuing to challenge every task in her own unique way.",
+    effects: [  // awaken levels 1-5
+      "Increases critical hit rate by 18%. After each critical hit, increases self-healing by 30% for 3 seconds. After each heal, increases the attack power of all allied targets by 18% for 3 seconds.",
+      "Increases critical hit rate by 22%. After each critical hit, self-healing increases by 35%, lasting 3 seconds. After each heal, all allied targets' attack power increases by 21%, lasting 3 seconds.",
+      "Increases critical hit rate by 26%. After each critical hit, self-healing increases by 40%, lasting 3 seconds. After each heal, all allied targets' attack power increases by 24%, lasting 3 seconds.",
+      "Increases critical hit rate by 30%. After each critical hit, self-healing increases by 45%, lasting 3 seconds. After each heal, all allied targets' attack power increases by 27%, lasting 3 seconds.",
+      "Increases critical hit rate by 34%. After each critical hit, increases self-healing by 50% for 3 seconds. After each heal, increases the attack power of all allied targets by 30% for 3 seconds.",
+    ],
   },
-    effects: [
-      'Attack power increased by 40%',
-      'Ultimate skill damage can apply [Fate Bind]. Each stack of [Fate Bind] increases damage taken by 3.6%, lasts 10 seconds, maximum 10 stacks'
-  ]
+  {
+    id: 'embarrassing-pattern',
+    slug: 'embarrassing-pattern',
+    name: "Awkward Appearance",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Athenacard.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: "Athena",
+    class: 'Supporter',
+    detailUrl: '/guides/zone-nova/memories/embarrassing-pattern/',
+    stats: {
+      hp: 6000,
+      attack: 600,
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "Athena, always on covert missions, projects a cold, aloof demeanor, even shunned by other deities. Deep down, she yearns for connection, but her lack of social experience means her usual interrogative approach terrifies others from the outset. Seeking advice, she consults Apollo, only to find herself awkwardly asked to don sultry attire right then and there.",
+    effects: [  // awaken levels 1-5
+      "At the start of battle, all allied characters' damage increases by 24%, with Normal Attack damage additionally increased by 24%\n\nEvery 5 Normal Attack damages dealt by the wearer increases team Attack Power by 24%, lasting 5 seconds",
+      "At the start of battle, all allied characters' damage increases by 28%, with Normal Attack damage additionally increased by 28%\n\nEvery 5 Normal Attack damages dealt by the wearer increases team Attack Power by 28%, lasting 5 seconds",
+      "At the start of battle, all allied characters' damage increases by 32%, with Normal Attack damage additionally increased by 32%\n\nEvery 5 Normal Attack damages dealt by the wearer increases team Attack Power by 32%, lasting 5 seconds",
+      "At the start of battle, all allied characters' damage increases by 36%, with Normal Attack damage additionally increased by 36%\n\nEvery 5 Normal Attack damages dealt by the wearer increases team Attack Power by 36%, lasting 5 seconds",
+      "At the start of battle, all allied characters' damage increases by 40%, with Normal Attack damage additionally increased by 40%\n\nEvery 5 Normal Attack damages dealt by the wearer increases team Attack Power by 40%, lasting 5 seconds",
+    ],
+  },
+  {
+    id: 'bath-time',
+    slug: 'bath-time',
+    name: "Bath Time",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Sharincard.png',
+    rarity: 'SSR',
+    element: null,
+    character: "Sharin",
+    class: 'Supporter',
+    detailUrl: '/guides/zone-nova/memories/bath-time/',
+    stats: {
+      hp: 6000,
+      attack: 600,
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "The indoor hot spring was filled with a hazy warmth, and the lamplight cast soft, shimmering circles of light on the water's surface. You were half-submerged in the pool, and when you looked up, you saw Sharin sitting by the edge, her wet skin and hair bathed in a warm glow. She held a small wine glass gently in her hand, her posture composed and elegant. Noticing your gaze, she slightly turned her head, her eyes reflecting the water and lamplight, a faint smile playing on her lips. Her expression remained dignified and calm, yet it held an undeniable soft allure, as if silently acknowledging your gaze, or perhaps waiting for you to draw closer. The warmth of the pool enveloped her body, but you couldn't tell whether it was the water itself that was making your heart flutter, or her figure so close before you.\nShe lowered her eyes, gently swirling her wine glass, the shimmering liquid reflecting tiny sparkles, and spoke softly, her voice as gentle as mist.\nSince we're already bathing together… don't just stare at me like that. In that instant, you understood that what was truly irresistible wasn't just her languid beauty, but her quiet, composed demeanor, and the expectation that seemed to have been silently opened to you all along.",
+    effects: [  // awaken levels 1-5
+      "Increases the attack and defense of all allies by 16%. Each time the wearer uses a skill, the maximum HP of all allies increases by 2% (up to 10 stacks).",
+      "Increases the attack and defense of all allies by 20%. Each time the wearer uses a skill, the maximum HP of all allies increases by 3% (up to 10 stacks).",
+      "Increases the attack and defense of all allies by 24%. Each time the wearer uses a skill, the maximum HP of all allies increases by 4% (up to 10 stacks).",
+      "Increases the attack and defense of all allies by 28%. Each time the wearer uses a skill, the maximum HP of all allies increases by 5% (up to 10 stacks).",
+      "Increases the attack and defense of all allies by 32%. Each time the wearer uses a skill, the maximum HP of all allies increases by 6% (up to 10 stacks).",
+    ],
+  },
+  {
+    id: 'beautiful-moon',
+    slug: 'beautiful-moon',
+    name: "Beautiful Moon",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Jorogumocard.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: "Jorogumo",
+    class: 'Healer',
+    detailUrl: '/guides/zone-nova/memories/beautiful-moon/',
+    stats: {
+      hp: 6000,
+      attack: 600,
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "The lingering afterglow of their lovemaking hadn't yet faded; the air still held a sweet, cloying fragrance and an air of ambiguity. She, who held the power of life and death over the entire red-light district, lazily draped her outer robe over herself, and opened the paper door.\nDon't you think the moonlight is beautiful tonight? she asked softly, her voice husky and magnetic, her back to you. Yet, your gaze was already fixed on her. Moonlight poured down like quicksilver, perfectly outlining her full, rounded curves, especially her fair, smooth back, shimmering with a jade-like luster.\nWhen she turned her face, her eyes, shimmering with light, held a world-weary vicissitude and a detached acceptance of life's harsh realities. She was a beautiful yet deadly spider, weaving a web of sweetness and venom with gentleness, and you were already the willingly bound prey, unable to move.\nWhen you compliment her, saying she's more enchanting than the moonlight, a shy smile plays on her lips, instantly captivating you.",
+    effects: [  // awaken levels 1-5
+      "Healing increased by 15%. When healing a target with 'Damage Over Time' status, healing is increased by an additional 5%. If target HP is below 50%, grant continuous healing effect, restoring 5% of caster's ATK as HP per second for 3 seconds, max 1 stack.",
+      "Healing increased by 20%. When healing a target with 'Damage Over Time' status, healing is increased by an additional 10%. If target HP is below 50%, grant continuous healing effect, restoring 6% of caster's ATK as HP per second for 3 seconds, max 1 stack.",
+      "Healing increased by 25%. When healing a target with 'Damage Over Time' status, healing is increased by an additional 15%. If target HP is below 50%, grant continuous healing effect, restoring 7% of caster's ATK as HP per second for 3 seconds, max 1 stack.",
+      "Healing increased by 30%. When healing a target with 'Damage Over Time' status, healing is increased by an additional 20%. If target HP is below 50%, grant continuous healing effect, restoring 8% of caster's ATK as HP per second for 3 seconds, max 1 stack.",
+      "Healing increased by 35%. When healing a target with 'Damage Over Time' status, healing is increased by an additional 25%. If target HP is below 50%, grant continuous healing effect, restoring 9% of caster's ATK as HP per second for 3 seconds, max 1 stack.",
+    ],
+  },
+  {
+    id: 'black-face-ugly-person',
+    slug: 'black-face-ugly-person',
+    name: "Black-Faced Fool",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Heracard.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: "Hera",
+    class: 'Attacker',
+    detailUrl: '/guides/zone-nova/memories/black-face-ugly-person/',
+    stats: {
+      hp: 5040,
+      attack: 780,
+      defense: 474,
+    }, lv1Stats: { hp: 227, attack: 35, defense: 21 },
+    story: "After concluding court hearings, Hera returns to her cold, solitary chambers. Thinking of Apollo's frequent parties and banquets, she can't help but feel jealous. Yet, neither sociable nor glamorous, she can only retreat to her room, resigned to being the stern, unlikable figure.",
+    effects: [  // awaken levels 1-5
+      "Attack increases by 24%, when attacking targets affected by Damage Over Time, damage increases by 24%",
+      "Attack increases by 28%, when attacking targets affected by Damage Over Time, damage increases by 28%",
+      "Attack increases by 32%, when attacking targets affected by Damage Over Time, damage increases by 32%",
+      "Attack increases by 36%, when attacking targets affected by Damage Over Time, damage increases by 36%",
+      "Attack increases by 40%, when attacking targets affected by Damage Over Time, damage increases by 40%",
+    ],
+  },
+  {
+    id: 'i-am-your-christmas-present',
+    slug: 'i-am-your-christmas-present',
+    name: "Christmas present",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/IAmYourChristmasPresent.png',
+    rarity: 'SSR',
+    element: null,
+    character: "Sigurd",
+    class: 'Attacker',
+    detailUrl: '/guides/zone-nova/memories/i-am-your-christmas-present/',
+    stats: {
+      hp: 5040,
+      attack: 780,
+      defense: 474,
+    }, lv1Stats: { hp: 227, attack: 35, defense: 21 },
+    story: "You are reading a document when a soft whisper drifts to your ears from behind. “Christmas… what kind of present would you like?” When you turn your head, you see her, beautiful as ever, striking a tempting pose as she lies on her side on the bed, her posture languid and alluring, and the heroic sharpness that used to shine in her eyes now melted into a gaze as sweet as honey fixed upon you. The rose in her hair glows luscious and vivid under the light; in this moment it is not just her usual ornament, but more like the final sealing touch on a gift box, marking this present as utterly unique. On this cold winter night, there is no doubt that no gift could ever be more moving than this surprise before you, brimming with warmth and love. You slowly walk toward her, and it seems tonight will be far more passionate than any winter night before. ",
+    effects: [  // awaken levels 1-5
+      "Critical hit rate increased by 18%, ultimate skill damage increased by 24%. When there is only one enemy on the field, ultimate skill damage is increased by an additional 24%.",
+      "Critical hit rate increased by 22%, ultimate skill damage increased by 28%. When there is only one enemy on the field, ultimate skill damage is increased by an additional 28%.",
+      "Critical hit rate increased by 26%, ultimate skill damage increased by 32%. When there is only one enemy on the field, ultimate skill damage is increased by an additional 32%.",
+      "Critical hit rate increased by 30%, ultimate skill damage increased by 36%. When there is only one enemy on the field, ultimate skill damage is increased by an additional 36%.",
+      "Critical hit rate increased by 34%, ultimate skill damage increased by 40%. When there is only one enemy on the field, ultimate skill damage is increased by an additional 40%.",
+    ],
+  },
+  {
+    id: 'cute-little-thing',
+    slug: 'cute-little-thing',
+    name: "Cute Little Things",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/CuteLittleThing.png',
+    rarity: 'SSR',
+    element: null,
+    character: "Horus",
+    class: 'Disruptor',
+    detailUrl: '/guides/zone-nova/memories/cute-little-thing/',
+    stats: {
+      hp: 5040,
+      attack: 780,
+      defense: 474,
+    }, lv1Stats: { hp: 227, attack: 35, defense: 21 },
+    story: "After a hectic day of rushing about, Horus finally returns to her cozy bed late at night. Gleefully, she opens a secretly smuggled sack, revealing vacuum-packed plush toys. She carefully unpacks and arranges them around her room. Unlike typical beastman quarters, even those of female peers like Bastet, Horus's room is uniquely “adorable.” She loves collecting cute trinkets—animal-shaped clay figures, handkerchiefs with charming patterns. Recently, she found a trove of cute plushies in some ruins but, fearing her odd hobby might be discovered, smuggled them home at midnight. Now, Horus reverts to a little girl, basking in the love of her plush companions.",
+    effects: [  // awaken levels 1-5
+      "Attack increases by 24%, when dealing Damage Over Time, the target's damage taken increases by 12% for 3 seconds",
+      "Attack increases by 28%, when dealing Damage Over Time, the target's damage taken increases by 15% for 3 seconds",
+      "Attack increases by 32%, when dealing Damage Over Time, the target's damage taken increases by 18% for 3 seconds",
+      "Attack increases by 36%, when dealing Damage Over Time, the target's damage taken increases by 21% for 3 seconds",
+      "Attack increases by 40%, when dealing Damage Over Time, the target's damage taken increases by 24% for 3 seconds",
+    ],
+  },
+  {
+    id: 'discipline-director',
+    slug: 'discipline-director',
+    name: "Discipline Director",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Erikacard.png',
+    rarity: 'SSR',
+    element: null,
+    character: "Erika",
+    class: 'Disruptor',
+    detailUrl: '/guides/zone-nova/memories/discipline-director/',
+    stats: {
+      hp: 6000,
+      attack: 600,
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "Don't...don't look at me like that...this is the first time I've seen someone so humiliated...you...you're satisfied now, aren't you? In the dimly lit space, Erica was suspended in mid-air, restrained. The usually impeccably composed and aloof discipline director was now in a state of near-disarray, all composure gone. Her disheveled uniform and forced silence revealed a crack in her once unassailable authority. But more captivating than the punishment itself was the expression on her face. Those eyes, which always coldly surveyed everyone, were now tinged with humiliation and repression, yet also faintly revealed an unspeakable satisfaction, as if this loss of control was a desire she had never dared to admit. The ice queen who always spoke of rules and punishments finally revealed her hidden side beneath the surface of order when she could no longer maintain her dignity.",
+    effects: [  // awaken levels 1-5
+      "Attack Power increases by 24%.\nWhen the wearer's skill or ultimate hits a target that target's healing received is reduced by 7% and shielding received is reduced by 6% for 3 seconds. This effect cannot stack.\nIf the target has a shield at that time the target's damage dealt is reduced by 11% for 3 seconds. This effect cannot stack.",
+      "Attack Power increases by 28%.\nWhen the wearer's skill or ultimate hits a target that target's healing received is reduced by 8.5% and shielding received is reduced by 7% for 3 seconds. This effect cannot stack.\nIf the target has a shield at that time the target's damage dealt is reduced by 12% for 3 seconds. This effect cannot stack.",
+      "Attack Power increases by 32%.\nWhen the wearer's skill or ultimate hits a target that target's healing received is reduced by 9.5% and shielding received is reduced by 8% for 3 seconds. This effect cannot stack.\nIf the target has a shield at that time the target's damage dealt is reduced by 14% for 3 seconds. This effect cannot stack.",
+      "Attack Power increases by 36%.\nWhen the wearer's skill or ultimate hits a target that target's healing received is reduced by 11% and shielding received is reduced by 9.5% for 3 seconds. This effect cannot stack.\nIf the target has a shield at that time the target's damage dealt is reduced by 16% for 3 seconds. This effect cannot stack.",
+      "Attack Power increases by 40%.\nWhen the wearer's skill or ultimate hits a target that target's healing received is reduced by 12% and shielding received is reduced by 10% for 3 seconds. This effect cannot stack.\nIf the target has a shield at that time the target's damage dealt is reduced by 18% for 3 seconds. This effect cannot stack.",
+    ],
+  },
+  {
+    id: 'in-the-cafe-sneaking-a-bite',
+    slug: 'in-the-cafe-sneaking-a-bite',
+    name: "Eating secretly in a cafe",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/InTheCafeSneakingABite.png',
+    rarity: 'SSR',
+    element: null,
+    character: "Lily",
+    class: 'Tank',
+    detailUrl: '/guides/zone-nova/memories/in-the-cafe-sneaking-a-bite/',
+    stats: {
+      hp: 6600,
+      attack: 480,
+      defense: 690,
+    }, lv1Stats: { hp: 297, attack: 22, defense: 31 },
+    story: "Lily sat in a corner of the café, her long pink hair shimmering softly in the light, falling over her shoulders. She wore a pair of furry cat-ear headbands, adding a touch of playfulness to the atmosphere. On the table sat an exquisite strawberry sundae, overflowing with bright red strawberries and cream, a sweet and alluring delight. It had been a dessert meant for someone else, but the photo captured Lily playfully lowering her head, using a small spoon to discreetly scoop a mouthful of strawberry cream. Her eyes held a hint of slyness and coquettishness, and the corners of her mouth curled up slightly, as if to say to the viewer outside the camera, Shh, don't tell anyone I cheated on you. Her dress was form-fitting and sexy, emphasizing her graceful curves without appearing overly revealing. The aroma of the dessert intertwined with her youthful charm, creating an ambiguous and lighthearted atmosphere—Lily, at that moment, was both sweet and dangerous, a sight that made it impossible to look away.",
+    effects: [  // awaken levels 1-5
+      "Increases defense by 48%. After successfully neutralizing the attack, damage taken is reduced by 6% for 5 seconds. When the wearer holds a shield, damage taken is reduced by 10%.",
+      "Increases defense by 52%. After successfully neutralizing the attack, damage taken is reduced by 7% for 5 seconds. When the wearer holds a shield, damage taken is reduced by 12%.",
+      "Increases defense by 56%. After successfully neutralizing the attack, damage taken is reduced by 8% for 5 seconds. When the wearer holds a shield, damage taken is reduced by 14%.",
+      "Increases defense by 60%. After successfully neutralizing the attack, damage taken is reduced by 9% for 5 seconds. When the wearer holds a shield, damage taken is reduced by 16%.",
+      "Increases defense by 64%. After successfully neutralizing the attack, damage taken is reduced by 10% for 5 seconds. When the wearer holds a shield, damage taken is reduced by 18%.",
+    ],
+  },
+  {
+    id: 'frozen-heart',
+    slug: 'frozen-heart',
+    name: "Frozen Heart",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Yuiscard.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: "Zeus",
+    class: 'Attacker',
+    detailUrl: '/guides/zone-nova/memories/frozen-heart/',
+    stats: {
+      hp: 5040,
+      attack: 780,
+      defense: 474,
+    }, lv1Stats: { hp: 227, attack: 35, defense: 21 },
+    story: "On a sunny morning, with few visitors around, Zeus sneaks breakfast into a secret garden to visit some friends. She opens the box, and the aroma of pastries wafts out, soon attracting adorable birds. They perch naturally on her lap and shoulders. Zeus gently picks up a biscuit, feeding them by hand. Watching the birds peck eagerly, their cute antics melt her icy heart.",
+    effects: [  // awaken levels 1-5
+      "Critical Rate increased by 18%\nPursue Damage dealt by the wearer increases Critical Damage by 36%",
+      "Critical Rate increased by 22%\nPursue Damage dealt by the wearer increases Critical Damage by 44%",
+      "Critical Rate increased by 26%\nPursue Damage dealt by the wearer increases Critical Damage by 52%",
+      "Critical Rate increased by 30%\nPursue Damage dealt by the wearer increases Critical Damage by 60%",
+      "Critical Rate increased by 34%\nPursue Damage dealt by the wearer increases Critical Damage by 68%",
+    ],
+  },
+  {
+    id: 'gentle-morning-command',
+    slug: 'gentle-morning-command',
+    name: "Gentle Morning Command",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Jillcard.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: "Jill",
+    class: 'Healer',
+    detailUrl: '/guides/zone-nova/memories/gentle-morning-command/',
+    stats: {
+      hp: 6000,
+      attack: 600,
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "Morning light streamed through the gaps in the curtains, slanting across the bed. Looking up, you saw Jill kneeling before you, leaning slightly down to look at you. Strands of her hair cascaded over her shoulders, framing her smiling face with captivating beauty. Her expression was much gentler than when she inspected the troops, yet her eyes still held that familiar, undeniable pressure. She gazed at you silently, as if enjoying your unguarded state upon waking, a sweet, almost dangerous smile playing on her lips. You almost mistook it for a rare, lazy morning, until she tilted her head slightly, squinted her eyes, and spoke in a gentle, almost coquettish tone. Still want to stay in bed? she asked, smiling, her voice soft and sweet, but utterly uncompromising. Time to get up and train. In that instant, you finally understood: this beautiful officer lying on the bed, no matter how sweet her expression or how suggestive her posture, was, at heart, still the same devilish drill instructor who wouldn't let anyone let their guard down.",
+    effects: [  // awaken levels 1-5
+      "ATK increases by 20%\nAfter an ally is healed, the wearer gains [Military Order] (up to 50 stacks) for 6s.\nFor every 10 stacks of [Military Order], all allies' healing received additionally increases by 10%, and damage taken is reduced by 2%.\nWhen the wearer casts their Ultimate, consume all [Military Order]. Every 10 stacks increase all allies' ATK by 3% for 6s.",
+      "ATK increases by 23%\nAfter an ally is healed, the wearer gains [Military Order] (up to 50 stacks) for 6s.\nFor every 10 stacks of [Military Order], all allies' healing received additionally increases by 11.5%, and damage taken is reduced by 2.3%.\nWhen the wearer casts their Ultimate, consume all [Military Order]. Every 10 stacks increase all allies' ATK by 3.5% for 6s.",
+      "ATK increases by 26.5%\nAfter an ally is healed, the wearer gains [Military Order] (up to 50 stacks) for 6s.\nFor every 10 stacks of [Military Order], all allies' healing received additionally increases by 13.5%, and damage taken is reduced by 2.6%.\nWhen the wearer casts their Ultimate, consume all [Military Order]. Every 10 stacks increase all allies' ATK by 4% for 6s.",
+      "ATK increases by 30%\nAfter an ally is healed, the wearer gains [Military Order] (up to 50 stacks) for 6s.\nFor every 10 stacks of [Military Order], all allies' healing received additionally increases by 15%, and damage taken is reduced by 3%.\nWhen the wearer casts their Ultimate, consume all [Military Order]. Every 10 stacks increase all allies' ATK by 4.5% for 6s.",
+      "ATK increases by 33.5%\nAfter an ally is healed, the wearer gains [Military Order] (up to 50 stacks) for 6s.\nFor every 10 stacks of [Military Order], all allies' healing received additionally increases by 16.5%, and damage taken is reduced by 3.3%.\nWhen the wearer casts their Ultimate, consume all [Military Order]. Every 10 stacks increase all allies' ATK by 5% for 6s.",
+    ],
+  },
+  {
+    id: 'halloween-candy',
+    slug: 'halloween-candy',
+    name: "Halloween candy",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Ninacard.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: "Nini",
+    class: 'Warrior',
+    detailUrl: '/guides/zone-nova/memories/halloween-candy/',
+    stats: {
+      hp: 6000,
+      attack: 600,
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "Today, Nini looked completely different from her usual stoic and composed self. Her long blue hair fluttered gently in the night breeze, and a pair of fluffy cat ears on her head made her look particularly uneasy. On the dark, quiet street, the halo of streetlight cast a faint glow over her. Most strikingly, she was wearing sexy lingerie, a stark contrast to her usual cold and rational image. She clutched a pumpkin-shaped candy bucket, overflowing with colorful candies. Her cheeks flushed, and she looked shy, her eyes evasive, yet she had to look up at the camera. It was obvious that she had lost the game and was forced to accept her punishment—to wear such a blushing outfit and then knock on the door for candy. The photo captured the moment she pushed open the door, her lips parted as if on the verge of saying Trick or Treat, but shyness kept the words from coming out as a faint breath. \n\nOn the cold night street, her cool beauty intertwined with her current embarrassment, like a rare spectacle. \n\nLooking at her hazy eyes, is she really asking for candy?",
+    effects: [  // awaken levels 1-5
+      "Increases critical damage by 36%. When HP is above 30%, the wearer recovers 1% of their maximum HP after attacking, and all damage is increased by 24%.",
+      "Increases critical damage by 42%. When HP is above 30%, the wearer recovers 1.2% of their maximum HP after attacking, and all damage is increased by 28%.",
+      "Increases critical damage by 48%. When HP is above 30%, the wearer recovers 1.4% of their maximum HP after attacking, and all damage is increased by 32%.",
+      "Increases critical damage by 54%. When HP is above 30%, the wearer recovers 1.6% of their maximum HP after attacking, and all damage is increased by 36%.",
+      "Increases critical hit damage by 60%. When HP is above 30%, the wearer recovers 2% of their maximum HP after attacking, and all damage is increased by 40%.",
+    ],
+  },
+  {
+    id: 'her-trainer',
+    slug: 'her-trainer',
+    name: "Her Trainer",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/LancelotHerTrainer.png',
+    rarity: 'SSR',
+    element: null,
+    character: "Pennie",
+    class: 'Tank',
+    detailUrl: '/guides/zone-nova/memories/her-trainer/',
+    stats: {
+      hp: 6600,
+      attack: 480,
+      defense: 690,
+    }, lv1Stats: { hp: 297, attack: 22, defense: 31 },
+    story: "When it comes to Penny's favorite thing—her one true love—it's her trainer, you. During her countless tests and training in the lab, you initiated telepathic conversations, her only window to the outside world. To you, those daily chats might seem trivial, but for Penny, trapped in darkness, they were the highlight she eagerly awaited. You, her friend, saved her. Now, trusted by the military, Penny can walk the streets with you, her horizons broadened. Yet, her devotion to you remains unwavering. You care for her like family and protect her like a brother. To Penny, you are her entire world, and she'd give everything for you.",
+    effects: [  // awaken levels 1-5
+      "Defense increases by 36%, after using an ULT, the wearer's damage taken decreases by 6% for 5 seconds, Shield applied by ULT increases by 10%",
+      "Defense increases by 42%, after using an ULT, the wearer's damage taken decreases by 7% for 5 seconds, Shield applied by ULT increases by 12.5%",
+      "Defense increases by 48%, after using an ULT, the wearer's damage taken decreases by 8% for 5 seconds, Shield applied by ULT increases by 15%",
+      "Defense increases by 54%, after using an ULT, the wearer's damage taken decreases by 9% for 5 seconds, Shield applied by ULT increases by 17.5%",
+      "Defense increases by 60%, after using an ULT, the wearer's damage taken decreases by 10% for 5 seconds, Shield applied by ULT increases by 20%",
+    ],
+  },
+  {
+    id: 'the-most-real-her',
+    slug: 'the-most-real-her',
+    name: "Her Truest Self",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/JoanofArccard.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: "Joan of Arc",
+    class: 'Healer',
+    detailUrl: '/guides/zone-nova/memories/the-most-real-her/',
+    stats: {
+      hp: 6000,
+      attack: 600,
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "In the dead of night, a blonde woman in a cloaked coat roams the city. Approach her, and she'll step before you, slowly lifting her cloak to reveal a hidden side. It's Joan, wearing sultry cow-patterned lingerie, donned secretly for a date to please you, her master. Joan adores risqué things and hopes to show you her truest self.",
+    effects: [  // awaken levels 1-5
+      "Healing increases by 30%, when casting a skill or ULT for 1/2/3 seconds, Healing increases by an additional 15/30/45%",
+      "Healing increases by 35%, when casting a skill or ULT for 1/2/3 seconds, Healing increases by an additional 17.5/35/52.5%",
+      "Healing increases by 40%, when casting a skill or ULT for 1/2/3 seconds, Healing increases by an additional 20/40/60%",
+      "Healing increases by 45%, when casting a skill or ULT for 1/2/3 seconds, Healing increases by an additional 22.5/45/67.5%",
+      "Healing increases by 50%, when casting a skill or ULT for 1/2/3 seconds, Healing increases by an additional 25/50/75%",
+    ],
+  },
+  {
+    id: 'hot-spring-and-her',
+    slug: 'hot-spring-and-her',
+    name: "Hot Spring & Her ",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Tamamo-no-maecard.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: "Tamamo-no-Mae",
+    class: 'Supporter',
+    detailUrl: '/guides/zone-nova/memories/hot-spring-and-her/',
+    stats: {
+      hp: 6000,
+      attack: 600,
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "Is the water temperature to your liking, my husband...? A barrier has already been set up here. This is a Pure Land of Ultimate Bliss that belongs to just the two of us.   Tamamo-no-Mae had just finished bathing. Her bare toes lightly tapped the water's surface. Her damp long hair clung to her flushed skin, emanating an enchanting fragrance along with the steam. That strongest idol adored by thousands, the lord of the land of yōkai, was now like an obedient, devoted wife, wanting to please you and you alone.   You seemed to hear her sweet yet dangerous inner thoughts—you needn't think, and you are not permitted to leave. Her gaze, filled with a desire to dominate, was fixed on you affectionately, ready to utterly drain your body and mind with extreme tenderness and service.   Now, don't look elsewhere... Look at me... Your eyes, your heart, even every ounce of your energy, must belong to me…",
+    effects: [  // awaken levels 1-5
+      "Base Stats Boost: ATK +24%.\nPassive: After allies' Ultimate deals DMG, increases self Energy Recovery Rate by 120% (4s) and gains 1 stack of [Brilliance] (5s, max 50 stacks).\nEvery 5 stacks of [Brilliance] increases all allies' DMG by 5%.",
+      "Base Stats Boost: ATK +28%.\nPassive: After allies' Ultimate deals DMG, increases self Energy Recovery Rate by 140% (4s) and gains 1 stack of [Brilliance] (5s, max 50 stacks).\nEvery 5 stacks of [Brilliance] increases all allies' DMG by 6%.",
+      "Base Stats Boost: ATK +32%.\nPassive: After allies' Ultimate deals DMG, increases self Energy Recovery Rate by 160% (4s) and gains 1 stack of [Brilliance] (5s, max 50 stacks).\nEvery 5 stacks of [Brilliance] increases all allies' DMG by 7%.",
+      "Base Stats Boost: ATK +36%.\nPassive: After allies' Ultimate deals DMG, increases self Energy Recovery Rate by 180% (4s) and gains 1 stack of [Brilliance] (5s, max 50 stacks).\nEvery 5 stacks of [Brilliance] increases all allies' DMG by 8%.",
+      "Base Stats Boost: ATK +40%.\nPassive: After allies' Ultimate deals DMG, increases self Energy Recovery Rate by 200% (4s) and gains 1 stack of [Brilliance] (5s, max 50 stacks).\nEvery 5 stacks of [Brilliance] increases all allies' DMG by 9%.",
+    ],
   },
   {
     id: 'king-of-lust',
     slug: 'king-of-lust',
-    name: 'King of Lust',
+    name: "King of Lust",
     image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/KingOfLust.png',
     rarity: 'SSR',
-    element: 'Wind',
-    character: 'Lust - Asmodeus',
+    element: null,
+    character: "Lust - Asmodeus",
+    class: 'Attacker',
     detailUrl: '/guides/zone-nova/memories/king-of-lust/',
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474
+      defense: 474,
+    }, lv1Stats: { hp: 227, attack: 35, defense: 21 },
+    story: "Asmodeus's extremely revealing and sensual posture seemingly luring you into a paradise of unparalleled freedom, yet also fraught with danger. She watched you with amusement, urging you to take another step closer, into the realm of her power to control desire. The leather whip in her hand lightly tapped the ground, producing a subtle, crisp sound. The crossed legs caused the black stockings to dig into the soft flesh of her thighs, and the pointed toes of her high-heeled boots pressed against the slave's waist. Come, experience supreme pleasure with me; from now on, you will never escape my grasp. You couldn't help but move towards the alluring queen of lust, but at the last moment, a look of hesitation appeared on her face. \nAre...are you really going to do this? Are you serious?",
+    effects: [  // awaken levels 1-5
+      "Critical hit rate increased by 20%, attack power increased by 24%. Each time the wearer's attack hits an enemy, they accumulate 1 stack of [Battle Spirit]. Once [Battle Spirit] reaches 10 stacks, all [Battle Spirit] will be consumed, and the [Penetrating] effect will be gained, increasing critical hit damage dealt by 50% for 5 seconds. [Battle Spirit] will not accumulate while the [Penetrating] effect is active.",
+      "Critical hit rate increased by 25%, attack power increased by 28%. Each time the wearer's attack hits an enemy, they accumulate 1 stack of [Battle Spirit]. Once [Battle Spirit] reaches 10 stacks, all [Battle Spirit] will be consumed, and the [Penetrating] effect will be gained, increasing critical hit damage dealt by 50% for 5 seconds. [Battle Spirit] will not accumulate while the [Penetrating] effect is active.",
+      "Critical hit rate increased by 30%, attack power increased by 32%. Each time the wearer's attack hits an enemy, they accumulate 1 stack of [Battle Spirit]. Upon reaching 10 stacks of [Battle Spirit], all [Battle Spirit] will be consumed, and the [Penetrating] effect will be gained, increasing critical hit damage dealt by 50% for 5 seconds. [Battle Spirit] will not accumulate while the [Penetrating] effect is active.",
+      "Critical hit rate increased by 35%, attack power increased by 36%. Each time the wearer's attack hits an enemy, they accumulate 1 stack of [Battle Spirit]. Once [Battle Spirit] reaches 10 stacks, all [Battle Spirit] will be consumed, and the [Penetrating] effect will be gained, increasing critical hit damage dealt by 50% for 5 seconds. [Battle Spirit] will not accumulate while the [Penetrating] effect is active.",
+      "Critical hit rate increased by 40%, attack power increased by 40%. Each time the wearer's attack hits an enemy, they accumulate 1 stack of [Battle Spirit]. Once [Battle Spirit] reaches 10 stacks, all [Battle Spirit] will be consumed, and the [Penetrating] effect will be gained, increasing critical hit damage dealt by 50% for 5 seconds. [Battle Spirit] will not accumulate while the [Penetrating] effect is active.",
+    ],
   },
-    effects: [
-      'Critical hit rate increased by 40%',
-      'Attack power increased by 40%',
-      'Each time the wearer attacks and hits an enemy, they gain 1 stack of [Battle Spirit]',
-      'When [Battle Spirit] reaches 10 stacks, all stacks are consumed and [Penetrating] is gained, increasing critical hit damage by 50% for 5 seconds',
-      '[Battle Spirit] cannot be gained while [Penetrating] is active'
-  ]
+  {
+    id: 'reorganizing-revolution',
+    slug: 'reorganizing-revolution',
+    name: "Late-Night Work",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/ReorganizingRevolution.png',
+    rarity: 'SSR',
+    element: null,
+    character: "Anubis",
+    class: 'Healer',
+    detailUrl: '/guides/zone-nova/memories/reorganizing-revolution/',
+    stats: {
+      hp: 6000,
+      attack: 600,
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "Colleagues working under Anubis notice their boss inexplicably staring at them for long periods while they work. No one dares slack off, burying themselves in tasks. Even after hours, Anubis's terrifying gaze follows them as they leave. Word spreads quickly through the Ancient Royal Capital, adding to her already eccentric reputation. Lower beastmen and slaves fear working with her, terrified a single misstep could cost their heads. In truth, Anubis is just zoning out, daydreaming. Frequent late-night work leaves her unable to nap in front of subordinates during the day, so she resorts to this. Little did she know, her sleep-deprived stare is more fearsome than the Reaper himself.",
+    effects: [  // awaken levels 1-5
+      "Healing increases by 30%, each time a target is healed, their Attack increases by 24% for 3 seconds",
+      "Healing increases by 35%, each time a target is healed, their Attack increases by 28% for 3 seconds",
+      "Healing increases by 40%, each time a target is healed, their Attack increases by 32% for 3 seconds",
+      "Healing increases by 45%, each time a target is healed, their Attack increases by 36% for 3 seconds",
+      "Healing increases by 50%, each time a target is healed, their Attack increases by 40% for 3 seconds",
+    ],
+  },
+  {
+    id: 'lonely-dark-deep-night',
+    slug: 'lonely-dark-deep-night',
+    name: "Lonely Dark Midnight",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/LonelyDarkDeepNight.png',
+    rarity: 'SSR',
+    element: null,
+    character: "Cynia",
+    class: 'Attacker',
+    detailUrl: '/guides/zone-nova/memories/lonely-dark-deep-night/',
+    stats: {
+      hp: 5040,
+      attack: 780,
+      defense: 474,
+    }, lv1Stats: { hp: 227, attack: 35, defense: 21 },
+    story: "You enter Commander Cynia's private quarters and see a disheveled, tight-clad woman with messy hair, standing on a sofa, singing with a wine bottle in hand. As usual, you tidy up the items strewn across the floor. Drunk, she wraps an arm around you, demanding you join her for a drink. You respectfully take a bottle of red wine and sit down. The inebriated commander launches into her daily rant, tearing into everyone from top brass to grunts. You quietly savor her “bitter complaints,” spending the whole night keeping her company through her loneliest, darkest hours.",
+    effects: [  // awaken levels 1-5
+      "Critical Damage increases by 36%, after the wearer kills an enemy, Attack increases by 6% for the battle, stacks up to 4 times",
+      "Critical Damage increases by 42%, after the wearer kills an enemy, Attack increases by 7% for the battle, stacks up to 4 times",
+      "Critical Damage increases by 48%, after the wearer kills an enemy, Attack increases by 8% for the battle, stacks up to 4 times",
+      "Critical Damage increases by 54%, after the wearer kills an enemy, Attack increases by 9% for the battle, stacks up to 4 times",
+      "Critical Damage increases by 60%, after the wearer kills an enemy, Attack increases by 10% for the battle, stacks up to 4 times",
+    ],
+  },
+  {
+    id: 'monster-in-the-dense-forest',
+    slug: 'monster-in-the-dense-forest',
+    name: "Monster in the Dense Forest",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/MonsterInTheDenseForest.png',
+    rarity: 'SSR',
+    element: null,
+    character: "Merlin",
+    class: 'Attacker',
+    detailUrl: '/guides/zone-nova/memories/monster-in-the-dense-forest/',
+    stats: {
+      hp: 5040,
+      attack: 780,
+      defense: 474,
+    }, lv1Stats: { hp: 227, attack: 35, defense: 21 },
+    story: "As the chief knight of the Round Table, Merlin not only battles foreign enemies and guards the stronghold but is sometimes sent to deep forests to slay monsters. Her most hated foes are slimes—mindless, perverse goo in every sense. She can't bring much gear, as slimes devour metal, and they're only vulnerable to magic. Only Merlin knows the spells to eradicate these loathsome creatures, but even with all preparations, accidents still happen…",
+    effects: [  // awaken levels 1-5
+      "Attack increases by 24%, when there is only one enemy on the field, ULT damage increases by 24%",
+      "Attack increases by 28%, when there is only one enemy on the field, ULT damage increases by 28%",
+      "Attack increases by 32%, when there is only one enemy on the field, ULT damage increases by 32%",
+      "Attack increases by 36%, when there is only one enemy on the field, ULT damage increases by 36%",
+      "Attack increases by 40%, when there is only one enemy on the field, ULT damage increases by 40%",
+    ],
+  },
+  {
+    id: 'night-of-bloody-storm',
+    slug: 'night-of-bloody-storm',
+    name: "Night of Blood and Storm",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Night-of-Bloody-Storm.png',
+    rarity: 'SSR',
+    element: null,
+    character: "Arthur",
+    class: 'Destroyer',
+    detailUrl: '/guides/zone-nova/memories/night-of-bloody-storm/',
+    stats: {
+      hp: 5040,
+      attack: 780,
+      defense: 474,
+    }, lv1Stats: { hp: 227, attack: 35, defense: 21 },
+    story: "Arthur leads you to a basement, where dim torchlight reveals the outlines of strange devices. Bashfully, she turns your face to her, shedding her armor to reveal a tight bodysuit straining against her robust, curvaceous frame. Lying on the bed, she shyly takes your hand. Naturally, you straddle her, gazes locked in tender passion. Another “stormy” night begins…",
+    effects: [  // awaken levels 1-5
+      "Attack increases by 24%, after a team Supporter uses an ULT, the wearer's ULT damage increases by 24% for 5 seconds",
+      "Attack increases by 28%, after a team Supporter uses an ULT, the wearer's ULT damage increases by 28% for 5 seconds",
+      "Attack increases by 32%, after a team Supporter uses an ULT, the wearer's ULT damage increases by 32% for 5 seconds",
+      "Attack increases by 36%, after a team Supporter uses an ULT, the wearer's ULT damage increases by 36% for 5 seconds",
+      "Attack increases by 40%, after a team Supporter uses an ULT, the wearer's ULT damage increases by 40% for 5 seconds",
+    ],
   },
   {
     id: 'nutrition-studies',
     slug: 'nutrition-studies',
-    name: 'Nutrition Studies',
+    name: "Nutrition Studies",
     image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/NutritionStudies.png',
     rarity: 'SSR',
-    element: 'Ice',
-    character: 'Gluttony - Beelzebub',
+    element: null,
+    character: "Gluttony - Beelzebub",
     class: 'Disruptor',
     detailUrl: '/guides/zone-nova/memories/nutrition-studies/',
     stats: {
       hp: 6000,
       attack: 600,
-      defense: 600
-  },
-    effects: [
-      'HP increased by 40%',
-      'Attack power of the entire team increased by 20%',
-      'After the wearer uses a skill, inflicts [Drain] on all enemies for 4 seconds',
-      '[Drain] reduces enemy energy regeneration efficiency by 10% and increases allied energy regeneration efficiency by 10%'
-  ]
-  },
-  {
-    id: 'guerrilla-users-reminiscence',
-    slug: 'guerrilla-users-reminiscence',
-    name: "Guerrilla User's Reminiscence",
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Increase-User-Attack-TwoSwords.jpg',
-    rarity: 'R',
-    element: null, // No specific element
-    character: null, // No specific character
-    class: 'Rogue', // Rogue class
-    detailUrl: '/guides/zone-nova/memories/guerrilla-users-reminiscence/',
-    stats: {
-      hp: 3360,
-      attack: 520,
-      defense: 316
-  },
-    effects: ['Attack increases by 32%']
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "...Since you're so eager to be turned into fertilizer, then come closer, and I'll grant your wish. \nBeelzebub, her back to you, intently tested her experimental results in the laboratory filled with the eerie glow of emerald light. In the laboratory's light and shadow, the flawless curves of her alabaster back were on full display, presenting a strange beauty intertwined with holiness and cruelty. \nShe noticed your gaze, turned her head, and looked back at you with her cold, world-weary eyes, declaring that she would transform you, this high-quality material, into the nutrients at the very bottom of the plant. However, even though her tone was filled with contempt for an ant, she still considered you her most important research subject and wouldn't easily let you go.",
+    effects: [  // awaken levels 1-5
+      "Increases HP by 24% and increases the attack power of the entire team by 12%. After the wearer uses the skill, they inflict the Drain debuff on all enemies. Drain reduces their energy regeneration efficiency by 6% and increases the energy regeneration efficiency of all allies by 6% for 4 seconds.",
+      "Increases HP by 28% and increases the attack power of the entire team by 14%. After the wearer uses the skill, they inflict the Drain debuff on all enemies. Drain reduces their energy regeneration efficiency by 7% and increases the energy regeneration efficiency of all allies by 7% for 4 seconds.",
+      "Increases HP by 32% and increases the attack power of the entire team by 16%. After the wearer uses the skill, they inflict the Drain debuff on all enemies. Drain reduces their energy regeneration efficiency by 8% and increases the energy regeneration efficiency of all allies by 8% for 4 seconds.",
+      "Increases HP by 36% and increases the attack power of the entire team by 18%. After the wearer uses the skill, they inflict the Drain debuff on all enemies. Drain reduces their energy regeneration efficiency by 9% and increases the energy regeneration efficiency of all allies by 9% for 4 seconds.",
+      "Increases HP by 40% and increases the attack power of the entire team by 20%. After the wearer uses the skill, they inflict the Drain debuff on all enemies. Drain reduces their energy regeneration efficiency by 10% and increases the energy regeneration efficiency of all allies by 10% for 4 seconds.",
+    ],
   },
   {
-    id: 'guardian-users-reminiscence',
-    slug: 'guardian-users-reminiscence',
-    name: "Guardian User's Reminiscence",
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Guardian-User-Defence.jpg',
-    rarity: 'R',
-    element: null, // No specific element
-    character: null, // No specific character
-    class: 'Guardian', // Guardian class
-    detailUrl: '/guides/zone-nova/memories/guardian-users-reminiscence/',
+    id: 'pride-or-tsundere',
+    slug: 'pride-or-tsundere',
+    name: "Pride or Tsundere?",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/pride-or-tsundere.png',
+    rarity: 'SSR',
+    element: null,
+    character: "Pride - Lucifer",
+    class: 'Warrior',
+    detailUrl: '/guides/zone-nova/memories/pride-or-tsundere/',
     stats: {
-      hp: 4400,
-      attack: 320,
-      defense: 460
-  },
-    effects: ['Defense increases by 48%']
+      hp: 6600,
+      attack: 480,
+      defense: 690,
+    }, lv1Stats: { hp: 297, attack: 22, defense: 31 },
+    story: "Aren't you going to sit next to me? No... just say you don't want to sit next to me! Humph! \nLucifer, unusually shy, seemed to only appear before you as the tyrant who ruled the City of Lost Paradise, a girl with a touch of possessiveness and a hint of jealousy. She sat quietly on the ground, arms crossed, deliberately leaving a small space beside her, her gaze darting around at the things around you, actually just observing your movements. She was waiting, waiting for you to cross that red line built of pride, to enter the softest, most vulnerable part of this lonely king's heart, the place where she most needed companionship.",
+    effects: [  // awaken levels 1-5
+      "Increases HP by 16% and defense by 44%. When an ally is attacked by a normal attack, the damage taken is reduced by 30%.",
+      "Increases HP by 20% and defense by 48%. When an ally is attacked by a normal attack, the damage taken is reduced by 30%.",
+      "Increases HP by 24% and defense by 52%. When an ally is attacked by a normal attack, the damage taken is reduced by 30%.",
+      "Increases HP by 28% and defense by 56%. When an ally is attacked by a normal attack, the damage taken is reduced by 30%.",
+      "Increases HP by 32% and defense by 60%. When an ally is attacked by a normal attack, the damage taken is reduced by 30%.",
+    ],
   },
   {
-    id: 'healers-memory',
-    slug: 'healers-memory',
-    name: "Healer's Memory",
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/HealersMemory.png',
-    rarity: 'R',
-    element: null, // No specific element
-    character: null, // No specific character
-    class: 'Healer', // Healer class
-    detailUrl: '/guides/zone-nova/memories/healers-memory/',
+    id: 'lamplight-study',
+    slug: 'lamplight-study',
+    name: "Reading by Lamplight",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/lamplight-study.png',
+    rarity: 'SSR',
+    element: null,
+    character: "Frigga",
+    class: 'Disruptor',
+    detailUrl: '/guides/zone-nova/memories/lamplight-study/',
     stats: {
-      hp: 4000,
-      attack: 400,
-      defense: 400
+      hp: 6000,
+      attack: 600,
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "Whenever Frigga felt dejected, she loved to retreat alone into the quiet, deserted library, wandering among yellowed pages and the scent of ink, letting the words smooth the creases of her troubled heart. But recently, her secret garden has welcomed an uninvited guest—this new butler, holding her most cherished poetry collection. His slender fingers brushed over the passages she repeatedly savored, and familiar verses flowed from his lips, causing her heart to tremble like startled pages. From then on, in the dew-heavy corridors of the night, two candles stood side by side, their overlapping shadows clinging inseparably to the ancient bookshelves...",
+    effects: [  // awaken levels 1-5
+      "Attack Power increased by 24%.\nUltimate Skill damage can apply 【Fate Blossom】, with each stack increasing damage taken by 2% for 10 seconds, up to 10 stacks.",
+      "Attack Power increased by 28%.\nUltimate Skill damage can apply 【Fate Blossom】, with each stack increasing damage taken by 2.4% for 10 seconds, up to 10 stacks.",
+      "Attack Power increased by 32%.\nUltimate Skill damage can apply 【Fate Blossom】, with each stack increasing damage taken by 2.8% for 10 seconds, up to 10 stacks.",
+      "Attack Power increased by 36%.\nUltimate Skill damage can apply 【Fate Blossom】, with each stack increasing damage taken by 3.2% for 10 seconds, up to 10 stacks.",
+      "Attack Power increased by 40%.\nUltimate Skill damage can apply 【Fate Blossom】, with each stack increasing damage taken by 3.6% for 10 seconds, up to 10 stacks.",
+    ],
   },
-    effects: [
-      'Healing amount increased by 40%'
-  ]
+  {
+    id: 'revolutionary-restructuring',
+    slug: 'revolutionary-restructuring',
+    name: "Reorganizing Revolution",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Cleopatracard.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: "Cleopatra",
+    class: 'Destroyer',
+    detailUrl: '/guides/zone-nova/memories/revolutionary-restructuring/',
+    stats: {
+      hp: 5040,
+      attack: 780,
+      defense: 474,
+    }, lv1Stats: { hp: 227, attack: 35, defense: 21 },
+    story: "After enduring millennia of trials and separations, Cleopatra, from the lowest beastman caste, seized the scepter of the Deity of Dominion and claimed her long-desired throne. This was a vengeful uprising of the downtrodden and a revolutionary reformation of the Kemich beastman tribe.",
+    effects: [  // awaken levels 1-5
+      "Attack increases by 24%, after a skill hits a target, applies one stack of [Corrosion], [Corrosion]: Deals 9% <color=#9754d5>Chaos</color> Damage every 2 seconds, stacks up to 5 times, lasts 10 seconds",
+      "Attack increases by 28%, after a skill hits a target, applies one stack of [Corrosion], [Corrosion]: Deals 10.5% <color=#9754d5>Chaos</color> Damage every 2 seconds, stacks up to 5 times, lasts 10 seconds",
+      "Attack increases by 32%, after a skill hits a target, applies one stack of [Corrosion], [Corrosion]: Deals 12% <color=#9754d5>Chaos</color> Damage every 2 seconds, stacks up to 5 times, lasts 10 seconds",
+      "Attack increases by 36%, after a skill hits a target, applies one stack of [Corrosion], [Corrosion]: Deals 13.5% <color=#9754d5>Chaos</color> Damage every 2 seconds, stacks up to 5 times, lasts 10 seconds",
+      "Attack increases by 40%, after a skill hits a target, applies one stack of [Corrosion], [Corrosion]: Deals 15% <color=#9754d5>Chaos</color> Damage every 2 seconds, stacks up to 5 times, lasts 10 seconds",
+    ],
+  },
+  {
+    id: 'sea-gods-soft-ritual',
+    slug: 'sea-gods-soft-ritual',
+    name: "Sea Deity's Soft Ritual",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/sea-gods-soft-ritual.png',
+    rarity: 'SSR',
+    element: null,
+    character: "Poseidon",
+    class: 'Tank',
+    detailUrl: '/guides/zone-nova/memories/sea-gods-soft-ritual/',
+    stats: {
+      hp: 6600,
+      attack: 480,
+      defense: 690,
+    }, lv1Stats: { hp: 297, attack: 22, defense: 31 },
+    story: "Soft sunlight filtered through the layers of seawater, casting shimmering patterns of light on the stone pillars and floor of the underwater palace. The surrounding water flowed gently, making the serene palace seem to breathe softly with the ripples. You walked along the corridor into the palace and soon saw Poseidon. She was sitting on a wide stone slab, stretching her body, her long legs spread wide, firmly forming a straight line. Her hands were placed in front of her, her posture seemingly relaxed, yet revealing an undisguised suppleness and strength. Seemingly aware of your arrival, Poseidon didn't stop, but simply turned slightly. As her long hair cascaded over her shoulders, she looked back at you, a calm and cheerful smile on her face. What are you doing standing so far away? She gently raised the corners of her mouth, her gaze lingering on you for a moment, her tone carrying a familiar teasing. Since you've come to my palace, won't you come and help me stretch? The sunlight filtering through the seawater fell on her, outlining her elegant and soft contours. What was just an ordinary stretching movement, under Poseidon's unabashed gaze, seemed to become an invitation prepared just for you.",
+    effects: [  // awaken levels 1-5
+      "Max HP increases by 24%.\nWhen the wearer casts an ultimate skill all allies gain [Tideguard] for 8 seconds. If [Tideguard] is gained again remove the existing [Tideguard] and its accumulated Critical Resistance bonus first.\n[Tideguard]:\nDEF increases by 17%.\nBlock Rate increases by 3%.\nEach time an allied unit with [Tideguard] is hit its Critical Resistance increases by 9% up to 5 stacks until [Tideguard] ends.\n[Block]: Has a chance to reduce that instance of damage by 30%. Damage over time ignores Block.",
+      "Max HP increases by 28%.\nWhen the wearer casts an ultimate skill all allies gain [Tideguard] for 8 seconds. If [Tideguard] is gained again remove the existing [Tideguard] and its accumulated Critical Resistance bonus first.\n[Tideguard]:\nDEF increases by 20%.\nBlock Rate increases by 3.5%.\nEach time an allied unit with [Tideguard] is hit its Critical Resistance increases by 10.5% up to 5 stacks until [Tideguard] ends.\n[Block]: Has a chance to reduce that instance of damage by 30%. Damage over time ignores Block.",
+      "Max HP increases by 32%.\nWhen the wearer casts an ultimate skill all allies gain [Tideguard] for 8 seconds. If [Tideguard] is gained again remove the existing [Tideguard] and its accumulated Critical Resistance bonus first.\n[Tideguard]:\nDEF increases by 23%.\nBlock Rate increases by 4%.\nEach time an allied unit with [Tideguard] is hit its Critical Resistance increases by 12% up to 5 stacks until [Tideguard] ends.\n[Block]: Has a chance to reduce that instance of damage by 30%. Damage over time ignores Block.",
+      "Max HP increases by 36%.\nWhen the wearer casts an ultimate skill all allies gain [Tideguard] for 8 seconds. If [Tideguard] is gained again remove the existing [Tideguard] and its accumulated Critical Resistance bonus first.\n[Tideguard]:\nDEF increases by 26%.\nBlock Rate increases by 4.5%.\nEach time an allied unit with [Tideguard] is hit its Critical Resistance increases by 13.5% up to 5 stacks until [Tideguard] ends.\n[Block]: Has a chance to reduce that instance of damage by 30%. Damage over time ignores Block.",
+      "Max HP increases by 40%.\nWhen the wearer casts an ultimate skill all allies gain [Tideguard] for 8 seconds. If [Tideguard] is gained again remove the existing [Tideguard] and its accumulated Critical Resistance bonus first.\n[Tideguard]:\nDEF increases by 28%.\nBlock Rate increases by 5%.\nEach time an allied unit with [Tideguard] is hit its Critical Resistance increases by 15% up to 5 stacks until [Tideguard] ends.\n[Block]: Has a chance to reduce that instance of damage by 30%. Damage over time ignores Block.",
+    ],
+  },
+  {
+    id: 'secret-garden',
+    slug: 'secret-garden',
+    name: "Secret Garden",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/SecretGarden.png',
+    rarity: 'SSR',
+    element: null,
+    character: "Aphrodite",
+    class: 'Warrior',
+    detailUrl: '/guides/zone-nova/memories/secret-garden/',
+    stats: {
+      hp: 5040,
+      attack: 780,
+      defense: 474,
+    }, lv1Stats: { hp: 227, attack: 35, defense: 21 },
+    story: "In a secret garden, Aphrodite bathes, still clad in fabric. You might wonder why she bathes clothed. She's heard that garments add a tantalizing layer of allure to her already perfect form. Moreover, her natural fragrance infuses everything around her. As she washes in lake water, her scent seeps into her clothes, the stream, the soil, and even the plants, filling the entire area with a pervasive aroma.",
+    effects: [  // awaken levels 1-5
+      "Attack increases by 24%, when the wearer's ULT consumes 8 or more energy, damage increases by 24% for 10 seconds",
+      "Attack increases by 28%, when the wearer's ULT consumes 8 or more energy, damage increases by 28% for 10 seconds",
+      "Attack increases by 32%, when the wearer's ULT consumes 8 or more energy, damage increases by 32% for 10 seconds",
+      "Attack increases by 36%, when the wearer's ULT consumes 8 or more energy, damage increases by 36% for 10 seconds",
+      "Attack increases by 40%, when the wearer's ULT consumes 8 or more energy, damage increases by 40% for 10 seconds",
+    ],
+  },
+  {
+    id: 'self-release',
+    slug: 'self-release',
+    name: "Self-Indulgence",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Lyracard.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: "Lyla",
+    class: 'Destroyer',
+    detailUrl: '/guides/zone-nova/memories/self-release/',
+    stats: {
+      hp: 5040,
+      attack: 780,
+      defense: 474,
+    }, lv1Stats: { hp: 227, attack: 35, defense: 21 },
+    story: "Old glass bottles and soda caps are Leila's favorite collectibles, but finding an intact soda bottle is incredibly difficult. In that era, few still made old-style sodas, and with their links to diseases and chronic illnesses, they were long banned as contraband. But a mere ban can't stop Leila's quest for joy. For those few bottles of “happy water,” she spares no expense, sending agents to scour the black market, with countless tycoons supplying this Shagai heiress. After training, Leila returns home, plays an old phonograph, and slips into a cold bathtub, secretly popping open a “prohibited” soda to indulge. Listening to elegant music and the fizz of bubbles, savoring the unique chemical sweetness, the chilling sensation and icy numbness transport her thoughts back to a bygone era.",
+    effects: [  // awaken levels 1-5
+      "ULT damage increases by 24%, for each enemy on the field, ULT damage increases by an additional 6%, up to 4 times",
+      "ULT damage increases by 28%, for each enemy on the field, ULT damage increases by an additional 7%, up to 4 times",
+      "ULT damage increases by 32%, for each enemy on the field, ULT damage increases by an additional 8%, up to 4 times",
+      "ULT damage increases by 36%, for each enemy on the field, ULT damage increases by an additional 9%, up to 4 times",
+      "ULT damage increases by 40%, for each enemy on the field, ULT damage increases by an additional 10%, up to 4 times",
+    ],
+  },
+  {
+    id: 'serpentine-frenzy',
+    slug: 'serpentine-frenzy',
+    name: "Serpentine Frenzy ",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/serpentine-frenzy.png',
+    rarity: 'SSR',
+    element: null,
+    character: "Medusa",
+    class: 'Healer',
+    detailUrl: '/guides/zone-nova/memories/serpentine-frenzy/',
+    stats: {
+      hp: 6000,
+      attack: 600,
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "Night flowed silently along the towering stone pillars, bathing the entire Gorgon Palace in a serene, bluish light. Deep within the altar, silvery moonlight streamed through the cracks in the roof, illuminating the ancient patterns spread across the floor and the figure lying upon it. Medusa's long hair was disheveled, her snakes seemingly writhing with excitement, their intertwined strands making a soft rustling sound. It was as if they were stirring with anticipation of your arrival, or perhaps trying to conceal their mistress's barely concealed emotions. She looked up at you, trying to maintain her composure, yet her cheeks were still faintly flushed by the moonlight. Her eyes held a focused intensity, almost a greedy intensity, that even she herself found unfamiliar. Only before you could she look up so freely. Her snakes seemed to sense her emotions, their writhing becoming more pronounced. Medusa seemed to only then realize her appearance, quickly averting her gaze and explaining softly, her voice tinged with barely suppressed embarrassment. They...they weren't yelling at the captain...it's just...it's just because I'm so happy... At the end, she couldn't help but look back at you, her gaze still incredibly intense, yet she wouldn't look away. Because...only the captain allows me to gaze at you like this...",
+    effects: [  // awaken levels 1-5
+      "The wearer's attack power is increased by 20%, and the defense and health of allied units are increased by 20%. Upon entering the battlefield, all allies are granted the [Geo Boundary] buff every 3 seconds, which decreases by 1% when damaged, up to a maximum of 15 stacks.",
+      "The wearer's attack power is increased by 23%, and the defense and health of allied units are increased by 24%. Upon entering the battlefield, all allies are granted the [Geo Boundary] buff every 3 seconds, which is reduced by 2% when taking damage, up to a maximum of 15 stacks.",
+      "The wearer's attack power is increased by 26.5%, and the defense and health of allied units are increased by 28%. Upon entering the battlefield, the wearer is granted the [Geo Boundary] buff every 3 seconds, which is reduced by 3% when taking damage, up to a maximum of 15 stacks.",
+      "The wearer's attack power is increased by 30%, and the defense and health of allied units are increased by 32%. Upon entering the battlefield, all allies are granted the [Geo Boundary] buff every 3 seconds, which is reduced by 4% when taking damage, up to a maximum of 15 stacks.",
+      "The wearer's attack power is increased by 33.5%, and the defense and health of allied units are increased by 40%. Upon entering the battlefield, the wearer is granted the [Geo Boundary] buff every 3 seconds, which is reduced by 5% when taking damage, up to a maximum of 15 stacks.",
+    ],
+  },
+  {
+    id: 'shared-bath-time',
+    slug: 'shared-bath-time',
+    name: "Shared Bath Time",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Odincard.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: "Odin",
+    class: 'Attacker',
+    detailUrl: '/guides/zone-nova/memories/shared-bath-time/',
+    stats: {
+      hp: 5040,
+      attack: 780,
+      defense: 474,
+    }, lv1Stats: { hp: 227, attack: 35, defense: 21 },
+    story: "This grim reaper, who usually seems ready to kill, silently pulls you like a small apple into the depths of her room, to the bathroom. Both of you, bare except for a small towel, step into the fragrant bath. As the towel, soaked with water, gradually becomes transparent, her usually concealed, proud, and curvaceous figure comes into view. Just as you’re captivated, you feel her intense gaze... fixed fiercely on you.",
+    effects: [  // awaken levels 1-5
+      "Attack power increases by 24%, and all damage increases by 24% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 9% <color=#c90d0d>Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds.",
+      "Attack power increases by 28%, and all damage increases by 28% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 10.5% <color=#c90d0d>Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds.",
+      "Attack power increases by 32%, and all damage increases by 32% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 12% <color=#c90d0d>Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds.",
+      "Attack power increases by 36%, and all damage increases by 36% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any Roshi, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 13.5% <color=#c90d0d>Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds.",
+      "Attack power increases by 40%, and all damage increases by 40% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 15% <color=#c90d0d>Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds.",
+    ],
+  },
+  {
+    id: 'simple-birdcage',
+    slug: 'simple-birdcage',
+    name: "Simple Birdcage",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Guinevere-card.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: "Guinevere",
+    class: 'Tank',
+    detailUrl: '/guides/zone-nova/memories/simple-birdcage/',
+    stats: {
+      hp: 6600,
+      attack: 480,
+      defense: 690,
+    }, lv1Stats: { hp: 297, attack: 22, defense: 31 },
+    story: "This is Guinevere's deepest fear, a recurring nightmare: the supreme queen, trapped in a simple birdcage. No matter how fiercely she struggles, she cannot break free. She knows where this cage comes from and why it binds her. It mocks her past as a “caged bird.” Though she escaped her original world and created her Avalon continent, it's merely a larger sandbox. She's never truly broken free to the vast world beyond. Thus, she wages endless wars to expand her domain, seeking to fill the void within, yet she cannot unravel this nightmare. She believes it's a curse of her lineage, fating her to eternal loneliness, swayed by the world.",
+    effects: [  // awaken levels 1-5
+      "Defense increases by 48%, after a successful Block, damage taken decreases by 6% for 5 seconds, grants a Shield equal to 22% of max HP upon entering battle",
+      "Defense increases by 52%, after a successful Block, damage taken decreases by 7% for 5 seconds, grants a Shield equal to 24% of max HP upon entering battle",
+      "Defense increases by 56%, after a successful Block, damage taken decreases by 8% for 5 seconds, grants a Shield equal to 26% of max HP upon entering battle",
+      "Defense increases by 60%, after a successful Block, damage taken decreases by 9% for 5 seconds, grants a Shield equal to 28% of max HP upon entering battle",
+      "Defense increases by 64%, after a successful Block, damage taken decreases by 10% for 5 seconds, grants a Shield equal to 30% of max HP upon entering battle",
+    ],
+  },
+  {
+    id: 'suffocating-grace',
+    slug: 'suffocating-grace',
+    name: "Suffocating Grace ",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Wrath_Samaelcard.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: "Wrath - Samael",
+    class: 'Tank',
+    detailUrl: '/guides/zone-nova/memories/suffocating-grace/',
+    stats: {
+      hp: 6600,
+      attack: 480,
+      defense: 690,
+    }, lv1Stats: { hp: 297, attack: 22, defense: 31 },
+    story: "My dear child, you've been naughty again today... Come here, let Mommy cleanse the filth from your soul. \nHer enormous, jet-black wings slowly unfurled like the night sky. Beneath her always benevolent smile lay a near-mad obsession with order and a suffocating desire for control. Most breathtakingly, however, was the cold, sharp sword, a symbol of judgment and law, held firmly between her proud breasts—a forbidden crevice where sanctity and desire coexisted. \nShe gazed at you with eyes overflowing with doting affection, yet unfathomably deep, as if you were merely a plaything in her palm, forever unable to grow up.",
+    effects: [  // awaken levels 1-5
+      "Defense increased by 48%. After a successful parry, damage taken is reduced by 6% for 5 seconds. The wearer gains a [Stigmata] (maximum 400 stacks) for 3 seconds. For every 40 stacks of [Stigmata], the wearer's all resistances increase by 1%.",
+      "Defense increased by 52%. After a successful parry, damage taken is reduced by 7% for 5 seconds. The wearer gains a [Stigmata] (maximum 400 stacks) for 3 seconds. For every 40 stacks of [Stigmata], the wearer's all resistances increase by 2%.",
+      "Defense increased by 56%. After a successful parry, damage taken is reduced by 8% for 5 seconds. The wearer gains a [Stigmata] (maximum 400 stacks) for 3 seconds. For every 40 stacks of [Stigmata], the wearer's all resistances increase by 3%.",
+      "Defense increased by 60%. After a successful parry, damage taken is reduced by 9% for 5 seconds. The wearer gains a [Stigmata] (maximum 400 stacks) for 3 seconds. For every 40 stacks of [Stigmata], the wearer's all resistances increase by 4%.",
+      "Defense increased by 64%. After a successful parry, damage taken is reduced by 10% for 5 seconds. The wearer gains a [Stigmata] (maximum 400 stacks) for 3 seconds. For every 40 stacks of [Stigmata], the wearer's all resistances increase by 5%.",
+    ],
+  },
+  {
+    id: 'sunlit-sweetness-awaits',
+    slug: 'sunlit-sweetness-awaits',
+    name: "Sunlit sweetness awaits ",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/sunlit-sweetness-awaits.png',
+    rarity: 'SSR',
+    element: null,
+    character: "Set",
+    class: 'Attacker',
+    detailUrl: '/guides/zone-nova/memories/sunlit-sweetness-awaits/',
+    stats: {
+      hp: 5040,
+      attack: 780,
+      defense: 474,
+    }, lv1Stats: { hp: 227, attack: 35, defense: 21 },
+    story: "The brilliant sunlight poured down, making the stone pool shimmer. Even though it was a dry desert outside, the water in this oasis-like pool still exuded a luxurious coolness. You approached along the waterside promenade and saw Set sitting comfortably on the stone steps by the pool, letting the gentle waves lap at her skin. She had shed her usual attire, and in her swimsuit, Set looked exceptionally relaxed. A plate of delicate fresh fruit floated on the clear water, and Set held a fork, casually picking up a bright, juicy strawberry. Hearing your footsteps, her gaze crossed the water and landed directly on you. The sunlight shone on the golden sandstone, but it couldn't compare to the confident gleam in her eyes. A half-smile played on Set's lips as she gently shook the strawberry in her hand, her tone carrying an undeniable, languid air. What are you standing there for? The weather is so nice, why don't you come over? Or... do you want me to feed you myself? That self-righteous arrogance, in this bright and pleasant afternoon, strangely transformed into an attraction that made it impossible to look away.",
+    effects: [  // awaken levels 1-5
+      "Critical Damage increased by 39%.\nWhen the wearer lands a hit with any skill/ULT, Critical Rate increases by 2.6% for 6 seconds (up to 20 stacks).",
+      "Critical Damage increased by 45%.\nWhen the wearer lands a hit with any skill/ULT, Critical Rate increases by 3% for 6 seconds (up to 20 stacks).",
+      "Critical Damage increased by 52%.\nWhen the wearer lands a hit with any skill/ULT, Critical Rate increases by 3.5% for 6 seconds (up to 20 stacks).",
+      "Critical Damage increased by 58%.\nWhen the wearer lands a hit with any skill/ULT, Critical Rate increases by 3.9% for 6 seconds (up to 20 stacks).",
+      "Critical Damage increased by 65%.\nWhen the wearer lands a hit with any skill/ULT, Critical Rate increases by 4.3% for 6 seconds (up to 20 stacks).",
+    ],
+  },
+  {
+    id: 'night-assault-suspect',
+    slug: 'night-assault-suspect',
+    name: "Suspect in the Night",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Thorcard.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: "Thor",
+    class: 'Tank',
+    detailUrl: '/guides/zone-nova/memories/night-assault-suspect/',
+    stats: {
+      hp: 6600,
+      attack: 480,
+      defense: 690,
+    }, lv1Stats: { hp: 297, attack: 22, defense: 31 },
+    story: "On a dark, stormy night, you lie alone on a spacious bed, listening to the howling wind of winter snow and the pitch-black room. Your thin blanket gradually fails to cover you entirely, and it feels as if some unknown force is tugging at it. After battling countless nightmares and sweating profusely, you finally muster the courage to face your inner fear... only to find her standing before you, impeccable and unyielding.",
+    effects: [  // awaken levels 1-5
+      "Defense increases by 48%.\nWhen allied characters with a shield take damage, defense increases by 48%.\nAfter the equipped character deals damage over time to an enemy target, the target takes 5% increased damage for 5 seconds.",
+      "Defense increases by 52%.\nWhen allied characters with a shield take damage, defense increases by 52%.\nAfter the equipped character deals damage over time to an enemy target, the target takes 7.5% increased damage for 5 seconds.",
+      "Defense increases by 56%.\nWhen allied characters with a shield take damage, defense increases by 56%.\nAfter the equipped character deals damage over time to an enemy target, the target takes 10% increased damage for 5 seconds.",
+      "Defense increases by 60%.\nWhen allied characters with a shield take damage, defense increases by 60%.\nAfter the equipped character deals damage over time to an enemy target, the target takes 12.5% increased damage for 5 seconds.",
+      "Defense increases by 64%.\nWhen allied characters with a shield take damage, defense increases by 64%.\nAfter the equipped character deals damage over time to an enemy target, the target takes 15% increased damage for 5 seconds.",
+    ],
+  },
+  {
+    id: 'the-knight-and-the-fuzzy',
+    slug: 'the-knight-and-the-fuzzy',
+    name: "The Knight and the Fuzzy",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/the-knight-and-the-fuzzy.png',
+    rarity: 'SSR',
+    element: null,
+    character: "Bedivere",
+    class: 'Disruptor',
+    detailUrl: '/guides/zone-nova/memories/the-knight-and-the-fuzzy/',
+    stats: {
+      hp: 6000,
+      attack: 600,
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "The afternoon sun was warm and dazzling, making the cobblestone streets slightly hot. You had only intended to take a short break during your patrol, but around a dark alley, you spotted that familiar figure. Bedivere was squatting unguarded on the street corner, watching the stray cats and dogs surrounding her. The knight who was always meticulous and swift in battle, tearing through enemy lines with lightning speed, was now taking out secretly prepared snacks from her pocket and gently soothing them in an extremely soft voice. Sunlight fell on her hair, illuminating a gentle smile on her face that you had never seen before, one that was completely unguarded. She seemed to sense your gaze, and she subconsciously turned around, her calm expression instantly tinged with panic. Commander...! This...this isn't dereliction of duty, I just... Seeing her eagerness to hide her embarrassment, you couldn't help but smile and squatted down beside her. Bedivere was slightly taken aback, her tense shoulders finally relaxing. She lowered her head, gently stroking the kitten that had come to her side. Her tone lacked the seriousness of a knight, and instead held a shyness unique to a young girl. If Commander doesn't mind...would you like to feed them together?",
+    effects: [  // awaken levels 1-5
+      "ATK +24%.\nEnemies hit by the Ultimate gain [Frontline Edict] for 7s. Targets within 3m also gain [Enhanced Frontline Edict].\n[Frontline Edict]: DEF -7.5%. Energy Gain Efficiency -6%.\n[Enhanced Frontline Edict]: DEF -27%. Energy Gain Efficiency -18%.",
+      "ATK +28%.\nEnemies hit by the Ultimate gain [Frontline Edict] for 7s. Targets within 3m also gain [Enhanced Frontline Edict].\n[Frontline Edict]: DEF -8.5%. Energy Gain Efficiency -7%.\n[Enhanced Frontline Edict]: DEF -31.5%. Energy Gain Efficiency -21%.",
+      "ATK +32%.\nEnemies hit by the Ultimate gain [Frontline Edict] for 7s. Targets within 3m also gain [Enhanced Frontline Edict].\n[Frontline Edict]: DEF -10%. Energy Gain Efficiency -8%.\n[Enhanced Frontline Edict]: DEF -36%. Energy Gain Efficiency -24%.",
+      "ATK +36%.\nEnemies hit by the Ultimate gain [Frontline Edict] for 7s. Targets within 3m also gain [Enhanced Frontline Edict].\n[Frontline Edict]: DEF -11%. Energy Gain Efficiency -9%.\n[Enhanced Frontline Edict]: DEF -40.5%. Energy Gain Efficiency -27%.",
+      "ATK +40%.\nEnemies hit by the Ultimate gain [Frontline Edict] for 7s. Targets within 3m also gain [Enhanced Frontline Edict].\n[Frontline Edict]: DEF -12.5%. Energy Gain Efficiency -10%.\n[Enhanced Frontline Edict]: DEF -45%. Energy Gain Efficiency -30%.",
+    ],
+  },
+  {
+    id: 'the-loneliest-moment',
+    slug: 'the-loneliest-moment',
+    name: "The Loneliest Moment",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Apollocard.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: "Apollo",
+    class: 'Supporter',
+    detailUrl: '/guides/zone-nova/memories/the-loneliest-moment/',
+    stats: {
+      hp: 6000,
+      attack: 600,
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "The banquet party nears its end, and the last guests quietly depart. Yet Apollo lingers in the pool's depths, unwilling to leave, lying at the bottom. Gazing at the shimmering reflections on the water's surface and her slowly rising bubbles, she feels her loneliest. Guests and friends are mere passersby; she's never had true friends or family.",
+    effects: [  // awaken levels 1-5
+      "After entering battle, all team members' damage increases by 24%, Pursue Damage increases by an additional 24%, when the wearer's ULT consumes 8 or more energy, all team members' Energy Gain Efficiency increases by 50% for 10 seconds",
+      "After entering battle, all team members' damage increases by 28%, Pursue Damage increases by an additional 28%, when the wearer's ULT consumes 8 or more energy, all team members' Energy Gain Efficiency increases by 62.5% for 10 seconds",
+      "After entering battle, all team members' damage increases by 32%, Pursue Damage increases by an additional 32%, when the wearer's ULT consumes 8 or more energy, all team members' Energy Gain Efficiency increases by 75% for 10 seconds",
+      "After entering battle, all team members' damage increases by 36%, Pursue Damage increases by an additional 36%, when the wearer's ULT consumes 8 or more energy, all team members' Energy Gain Efficiency increases by 87.5% for 10 seconds",
+      "After entering battle, all team members' damage increases by 40%, Pursue Damage increases by an additional 40%, when the wearer's ULT consumes 8 or more energy, all team members' Energy Gain Efficiency increases by 100% for 10 seconds",
+    ],
   },
   {
     id: 'the-maids-bath',
@@ -220,1174 +992,899 @@ export const ZONE_NOVA_MEMORIES = [
     name: "The maid's bath",
     image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Hiyoricard.png',
     rarity: 'SSR',
-    element: 'Chaos',
-    character: 'Hiyori',
-    class: 'Mage',
+    element: null,
+    character: "Hiyori",
+    class: 'Destroyer',
     detailUrl: '/guides/zone-nova/memories/the-maids-bath/',
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474
-  },
-    effects: [
-      "The wearer's CRIT Rate increases by 20%.",
-      'When the wearer attacks an enemy target with a Shield, they gain the [Descale] state for 8s.',
-      'While in the [Descale] state, CRIT DMG increases by 20%, and when using an Ultimate on an enemy target without a Shield, Ultimate DMG increases by an additional 60%.'
-  ]
-  },
-  {
-    id: 'her-trainer',
-    slug: 'her-trainer',
-    name: 'Her Trainer',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/LancelotHerTrainer.png',
-    rarity: 'SSR',
-    element: 'Wind',
-    character: 'Penny',
-    detailUrl: '/guides/zone-nova/memories/her-trainer/',
-    stats: {
-      hp: 6600,
-      attack: 480,
-      defense: 690
-  },
-    effects: [
-      'Defense increased by 60%',
-      'After using ultimate skill, equipped character takes 10% less damage for 5 seconds',
-      'Shield amount applied by ultimate skills increased by 20%'
-    ]
-  },
-  {
-    id: 'hot-spring-and-her',
-    slug: 'hot-spring-and-her',
-    name: 'Hot Spring & Her',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Tamamo-no-maecard.jpg',
-    rarity: 'SSR',
-    element: 'Fire',
-    character: 'Tamamo-no-Mae',
-    detailUrl: '/guides/zone-nova/memories/hot-spring-and-her/',
-    stats: {
-      hp: 6000,
-      attack: 600,
-      defense: 600
-    },
-    effects: [
-      'Base ATK +40%',
-      "After allies' Ultimate deals DMG, increases self Energy Recovery Rate by 200% (4s) and gains 1 stack of [Brilliance] (5s, max 50 stacks)",
-      "Every 5 stacks of [Brilliance] increases all allies' DMG by 9%",
-    ]
-  },
-  {
-    id: 'monster-in-the-dense-forest',
-    slug: 'monster-in-the-dense-forest',
-    name: 'Monster in the Dense Forest',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/MonsterInTheDenseForest.png',
-    rarity: 'SSR',
-    element: 'Fire',
-    character: 'Merlin',
-    detailUrl: '/guides/zone-nova/memories/monster-in-the-dense-forest/',
-    stats: {
-      hp: 5040,
-      attack: 780,
-      defense: 474
-    },
-    effects: [
-      'Attack increased by 40%',
-      'Execute Damage increased by 40% when the target is the only enemy',
-      'Critical rate increased by 12%'
-    ]
-  },
-  {
-    id: 'during-military-academy-training',
-    slug: 'during-military-academy-training',
-    name: 'During Military Academy Training',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/DuringMilitaryAcademyTraining.png',
-    rarity: 'SR',
-    element: 'Fire',
-    character: 'Rose',
-    detailUrl: '/guides/zone-nova/memories/during-military-academy-training/',
-    stats: {
-      hp: 4200,
-      attack: 650,
-      defense: 395
-  },
-    effects: ['Ultimate skill boosts normal attack and skill damage by 60% for 10 seconds']
-  },
-  {
-    id: 'the-loneliest-moment',
-    slug: 'the-loneliest-moment',
-    name: 'The Loneliest Moment',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Apollocard.jpg',
-    rarity: 'SSR',
-    element: 'Holy',
-    character: 'Apollo',
-    detailUrl: '/guides/zone-nova/memories/the-loneliest-moment/',
-    stats: {
-      hp: 6000,
-      attack: 600,
-      defense: 600
-  },
-    effects: [
-      "Battle start: All allied characters' damage increases by 40%, pursue damage (extra damage) additionally increases by 40%",
-      "When equipped character releases ultimate or energy >8: All allied characters' energy acquisition efficiency increases by 100% for 10 seconds"
-  ]
-  },
-  {
-    id: 'absolutely-perfect-arms',
-    slug: 'absolutely-perfect-arms',
-    name: 'Absolutely Perfect Arms',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/AbsolutelyPerfectArms.png',
-    rarity: 'SSR',
-    element: 'Holy',
-    character: 'Morgan Le Fay',
-    class: 'Buffer',
-    detailUrl: '/guides/zone-nova/memories/absolutely-perfect-arms/',
-    stats: {
-      hp: 6000,
-      attack: 600,
-      defense: 600
-  },
-    effects: [
-      'ATK increased by 30%',
-      'DEF increased by 30%',
-      'HP increased by 30%',
-      "When the equipper is of Holy attribute, after dealing Normal Attack DMG, all allies' Energy gain efficiency is increased by 18%, stacking up to 4 times, lasting 5s"
-  ]
-  },
-  {
-    id: 'lancelot-hertrainer',
-    slug: 'lancelot-hertrainer',
-    name: 'Lancelot-HerTrainer',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Lancelotcard.jpg',
-    rarity: 'SR',
-    element: 'Wind',
-    character: 'Lancelot',
-    detailUrl: '/guides/zone-nova/memories/lancelot-hertrainer/',
-    stats: {
-      hp: 5500,
-      attack: 400,
-      defense: 575
-  },
-    effects: [
-      'Defense +36%, team damage reduction +8% on battle start'
-  ]
-  },
-  {
-    id: 'annoying-classroom',
-    slug: 'annoying-classroom',
-    name: 'Annoying Classroom',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/AnnoyingClassroom.png',
-    rarity: 'SR',
-    element: 'Wind',
-    character: 'Bastet',
-    detailUrl: '/guides/zone-nova/memories/annoying-classroom/',
-    stats: {
-      hp: 4200,
-      attack: 650,
-      defense: 395
-  },
-    effects: [
-      'When releasing ultimate skill: For each enemy on the field, ultimate skill damage increases by 12%, up to 5 stacks, lasting 5 seconds maximum bonus of 60% (12% × 5 stacks)'
-  ]
-  },
-  {
-    id: 'simple-birdcage',
-    slug: 'simple-birdcage',
-    name: 'Simple Birdcage',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Guinevere-card.jpg',
-    rarity: 'SSR',
-    element: 'Wind',
-    character: 'Guinevere',
-    detailUrl: '/guides/zone-nova/memories/simple-birdcage/',
-    stats: {
-      hp: 6600,
-      attack: 480,
-      defense: 690
-  },
-    effects: ['Defense boost, block enhancement, and battle start shield']
-  },
-  {
-    id: 'sister-penny-trying-on-new-clothes',
-    slug: 'sister-penny-trying-on-new-clothes',
-    name: 'Sister Penny Trying on New Clothes',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Sister-Penny-Trying-on-New Clothes.jpg',
-    rarity: 'SR',
-    element: null, // No specific element
-    character: null, // No specific character
-    class: 'Guardian', // Guardian class
-    detailUrl: '/guides/zone-nova/memories/sister-penny-trying-on-new-clothes/',
-    stats: {
-      hp: 5500,
-      attack: 400,
-      defense: 575
-  },
-    effects: [
-      'HP +24%, ultimate damage reduction +10% for 5 seconds'
-  ]
-  },
-  {
-    id: 'cute-little-thing',
-    slug: 'cute-little-thing',
-    name: 'Cute Little Thing',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/CuteLittleThing.png',
-    rarity: 'SSR',
-    element: 'Holy',
-    character: 'Horus',
-    detailUrl: '/guides/zone-nova/memories/cute-little-thing/',
-    stats: {
-      hp: 5040,
-      attack: 780,
-      defense: 474
-  },
-    effects: [
-      '5th Stage Awakening Required',
-      'Effect 1: Attack power increases by 40%',
-      'Effect 2: When dealing continuous damage, targets take 24% increased damage for 3 seconds'
-  ]
-  },
-  {
-    id: 'deceptive-ultimate-temptation',
-    slug: 'deceptive-ultimate-temptation',
-    name: 'Deceptive Ultimate Temptation',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Deceptive-Ultimate-Temptation.jpg',
-    rarity: 'SR',
-    element: null, // No specific element
-    character: null, // No specific character
-    class: 'Debuffer', // Debuffer class
-    detailUrl: '/guides/zone-nova/memories/deceptive-ultimate-temptation/',
-    stats: {
-      hp: 5000,
-      attack: 500,
-      defense: 500
-  },
-    effects: [
-      'Attack increased by 20%',
-      'When attacking enemies with negative status, damage increased by 20%'
-  ]
-  },
-  {
-    id: 'solitary-realm',
-    slug: 'solitary-realm',
-    name: 'Solitary Realm (一人之境)',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/kelacard.jpg',
-    rarity: 'SR',
-    element: 'Holy',
-    character: 'Kela',
-    detailUrl: '/guides/zone-nova/memories/solitary-realm/',
-    stats: {
-      hp: 5000,
-      attack: 500,
-      defense: 500
-  },
-    effects: [
-      'Solitary Realm (一人之境): Healing amount increased by 30%',
-      'Protection Effect: When healing a target below 50% max HP, the target receives 8% damage reduction for 10 seconds'
-  ]
-  },
-  {
-    id: 'battlefield-flower',
-    slug: 'battlefield-flower',
-    name: 'Battlefield Flower',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/ninicard.jpg',
-    rarity: 'SR',
-    element: 'Ice',
-    character: 'Nini',
-    detailUrl: '/guides/zone-nova/memories/battlefield-flower/',
-    stats: {
-      hp: 5000,
-      attack: 500,
-      defense: 500
-  },
-    effects: [
-      'Battlefield Flower: For each negative effect on the target, damage dealt increases by 20%, maximum 3 stacks'
-  ]
-  },
-  {
-    id: 'busy-officer',
-    slug: 'busy-officer',
-    name: 'Busy Officer (忙里偷闲)',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/BusyOfficer.png',
-    rarity: 'SR',
-    element: 'Wind',
-    character: 'Shu',
-    detailUrl: '/guides/zone-nova/memories/busy-officer/',
-    stats: {
-      hp: 5000,
-      attack: 500,
-      defense: 500
-  },
-    effects: [
-      'When dealing continuous damage effects: Target takes 12% increased damage for 2 seconds'
-  ]
-  },
-  {
-    id: 'heroes-never-stop',
-    slug: 'heroes-never-stop',
-    name: 'Heroes, Never Stop',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Shannacard.jpg',
-    rarity: 'SR',
-    element: 'Fire',
-    character: 'Shanna',
-    detailUrl: '/guides/zone-nova/memories/heroes-never-stop/',
-    stats: {
-      hp: 4200,
-      attack: 650,
-      defense: 395
-  },
-    effects: [
-      'When the number of enemies on field is less than 2: Increase critical hit damage by 72%'
-  ]
-  },
-  {
-    id: 'the-beauty-of-heijing-castle',
-    slug: 'the-beauty-of-heijing-castle',
-    name: 'The Beauty of Heijing Castle',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Snowcard.jpg',
-    rarity: 'SR',
-    element: 'Ice',
-    character: 'Snow Girl',
-    detailUrl: '/guides/zone-nova/memories/the-beauty-of-heijing-castle/',
-    stats: {
-      hp: 5000,
-      attack: 500,
-      defense: 500
-  },
-    effects: [
-      "The Beauty of Heijing Castle: Healing amount +30%, when recovering targets' life value is full, target damage +24% for 10 seconds"
-  ]
-  },
-  {
-    id: 'secret-room-reality',
-    slug: 'secret-room-reality',
-    name: 'Secret Room Reality',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Tefnutcard.jpg',
-    rarity: 'SR',
-    element: 'Holy',
-    character: 'Tefnut',
-    detailUrl: '/guides/zone-nova/memories/secret-room-reality/',
-    stats: {
-      hp: 4200,
-      attack: 650,
-      defense: 395
-  },
-    effects: ['Continuous Damage Penetration Rate +36%']
-  },
-  {
-    id: 'secret-garden',
-    slug: 'secret-garden',
-    name: 'Secret Garden',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/SecretGarden.png',
-    rarity: 'SSR',
-    element: 'Holy',
-    character: 'Afrodite',
-    detailUrl: '/guides/zone-nova/memories/secret-garden/',
-    stats: {
-      hp: 5040,
-      attack: 780,
-      defense: 474
-  },
-    effects: [
-      'Attack power increased by 40%',
-      'If the equipped units Ultimate costs higher than 8 Energy and used ultimate: Damage increased by 40% for 10 seconds'
-  ]
-  },
-  {
-    id: 'frozen-heart',
-    slug: 'frozen-heart',
-    name: 'Frozen Heart',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Yuiscard.jpg',
-    rarity: 'SSR',
-    element: 'Holy',
-    character: 'Yuis',
-    detailUrl: '/guides/zone-nova/memories/frozen-heart/',
-    stats: {
-      hp: 5040,
-      attack: 780,
-      defense: 474
-  },
-    effects: [
-      'Crit rate increased by 34%',
-      "Equipment wearer's pursue damage (extra damage) and crit damage increased by 68%"
-  ]
-  },
-  {
-    id: 'sleep-treasure',
-    slug: 'sleep-treasure',
-    name: 'Sleep Treasure',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Zashiki-warashicard.jpg',
-    rarity: 'SR',
-    element: 'Fire',
-    character: 'Zashiki-warashi',
-    detailUrl: '/guides/zone-nova/memories/sleep-treasure/',
-    stats: {
-      hp: 5000,
-      attack: 500,
-      defense: 500
-  },
-    effects: [
-      'After releasing ultimate: Team damage increases by 24% for 10 seconds',
-      'Additionally: Has 50% chance to make team critical damage additionally increase by 20% for 10 seconds'
-  ]
-  },
-  {
-    id: 'perverted-little-nurse',
-    slug: 'perverted-little-nurse',
-    name: 'Perverted Little Nurse (变态小护士)',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Leviathancard.jpg',
-    rarity: 'SR',
-    element: 'Wind',
-    character: 'Leviathan',
-    detailUrl: '/guides/zone-nova/memories/perverted-little-nurse/',
-    stats: {
-      hp: 4200,
-      attack: 650,
-      defense: 395
-  },
-    effects: [
-      'Critical Rate Boost: After causing pursue damage (extra damage), critical rate increased by 36% for 10 seconds'
-  ]
-  },
-  {
-    id: 'qianjues-reminiscence',
-    slug: 'qianjues-reminiscence',
-    name: "Qianjue's Reminiscence",
-    image: "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Qianjue's-Reminiscence.jpg",
-    rarity: 'R',
-    element: null, // No specific element
-    character: null, // No specific character
-    class: 'Debuffer', // Debuffer class
-    detailUrl: '/guides/zone-nova/memories/qianjues-reminiscence/',
-    stats: {
-      hp: 4000,
-      attack: 400,
-      defense: 400
-  },
-    effects: ['When attacking enemies with negative status effects, damage increases by 32%']
-  },
-  {
-    id: 'true-order',
-    slug: 'true-order',
-    name: 'True Order (真正的秩序)',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Lokicard.jpg',
-    rarity: 'SSR',
-    element: 'Chaos',
-    character: 'Loki',
-    detailUrl: '/guides/zone-nova/memories/true-order/',
-    stats: {
-      hp: 6000,
-      attack: 600,
-      defense: 600
-  },
-    effects: [
-      'Attack Enhancement: Attack power increased by 40%',
-      'Vulnerability Mark: The last enemy hit by any attack takes 24% increased damage'
-  ]
+      defense: 474,
+    }, lv1Stats: { hp: 227, attack: 35, defense: 21 },
+    story: "The morning mist hadn't yet dissipated, and sunlight filtered through the leaves, casting shimmering reflections on the water's surface. Following the faint sound of water, you approached and saw Hiyori sitting alone in the natural water source. The clear water slid down her skin, washing away her usual calm and composed demeanor, revealing a rare gentleness. As if sensing your approach, she showed no concealment or surprise, simply gazing at you with calm eyes, as if confirming why you lingered. The water rippled gently, and she brushed a strand of hair behind her ear. Her tone was as steady as ever, yet held a subtle warmth. Would you like to come along? In that instant, you realized that what truly made her irresistible was this casual, understated invitation, delivered with the utmost serenity, capable of unsettling the heart.",
+    effects: [  // awaken levels 1-5
+      "The wearer's CRIT Rate increases by 12%.\nWhen the wearer attacks an enemy target with a Shield, they gain the [Descale] state for 8s.\nWhile in the [Descale] state, CRIT DMG increases by 12%, and when using an Ultimate on an enemy target without a Shield, Ultimate DMG increases by an additional 36%.",
+      "The wearer's CRIT Rate increases by 14%.\nWhen the wearer attacks an enemy target with a Shield, they gain the [Descale] state for 8s.\nWhile in the [Descale] state, CRIT DMG increases by 14%, and when using an Ultimate on an enemy target without a Shield, Ultimate DMG increases by an additional 42%.",
+      "The wearer's CRIT Rate increases by 16%.\nWhen the wearer attacks an enemy target with a Shield, they gain the [Descale] state for 8s.\nWhile in the [Descale] state, CRIT DMG increases by 16%, and when using an Ultimate on an enemy target without a Shield, Ultimate DMG increases by an additional 48%.",
+      "The wearer's CRIT Rate increases by 18%.\nWhen the wearer attacks an enemy target with a Shield, they gain the [Descale] state for 8s.\nWhile in the [Descale] state, CRIT DMG increases by 18%, and when using an Ultimate on an enemy target without a Shield, Ultimate DMG increases by an additional 54%.",
+      "The wearer's CRIT Rate increases by 20%.\nWhen the wearer attacks an enemy target with a Shield, they gain the [Descale] state for 8s.\nWhile in the [Descale] state, CRIT DMG increases by 20%, and when using an Ultimate on an enemy target without a Shield, Ultimate DMG increases by an additional 60%.",
+    ],
   },
   {
     id: 'slaves-original-wish',
     slug: 'slaves-original-wish',
-    name: "Slave's Original Wish (奴仆的原愿)",
+    name: "The Servant's Aspiration",
     image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Freyacard.jpg',
     rarity: 'SSR',
-    element: 'Ice',
-    character: 'Freya',
+    element: null,
+    character: "Freya",
+    class: 'Destroyer',
     detailUrl: '/guides/zone-nova/memories/slaves-original-wish/',
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474
-  },
-    effects: [
-      'Critical Damage increased by 72%',
-      'For each enemy on the battlefield: Normal attack damage increases by 12% Maximum stacks: 4 (up to 48% bonus normal attack damage)'
-  ]
-  },
-  {
-    id: 'self-release',
-    slug: 'self-release',
-    name: 'Self-Release (自我放纵)',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Lyracard.jpg',
-    rarity: 'SSR',
-    element: 'Fire',
-    character: 'Lyra',
-    detailUrl: '/guides/zone-nova/memories/self-release/',
-    stats: {
-      hp: 5040,
-      attack: 780,
-      defense: 474
-  },
-    effects: [
-      'Ultimate Damage: Ultimate damage increased by 40%',
-      "Single Target Bonus: When there's one enemy on the field, ultimate damage additionally increases by 10%, maximum 4 times"
-  ]
-  },
-  {
-    id: 'behind-the-regret',
-    slug: 'behind-the-regret',
-    name: 'Behind the Regret',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/mordredcard.png',
-    rarity: 'SR',
-    element: 'Fire',
-    character: 'Mordred',
-    detailUrl: '/guides/zone-nova/memories/behind-the-regret/',
-    stats: {
-      hp: 5000,
-      attack: 500,
-      defense: 500
-  },
-    effects: ['HP increased by 24%', 'Self healing amount increased by 30%']
-  },
-  {
-    id: 'reorganizing-revolution',
-    slug: 'reorganizing-revolution',
-    name: 'Reorganizing Revolution',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/ReorganizingRevolution.png',
-    rarity: 'SSR',
-    element: 'Chaos',
-    character: 'Anubis',
-    detailUrl: '/guides/zone-nova/memories/reorganizing-revolution/',
-    stats: {
-      hp: 5040,
-      attack: 780,
-      defense: 474
-    },
-    effects: [
-      'Healing amount +50%, each healing within 3 seconds gives target +40% attack power for 3 seconds'
-    ]
+      defense: 474,
+    }, lv1Stats: { hp: 227, attack: 35, defense: 21 },
+    story: "As the steward of the Asgardian Mansion, you have long grown accustomed to navigating the mundane daily tasks and the unpredictable tempers of the deities. The most vexing among them is the capricious Deity of Love—her demands are like sudden April showers, arriving without warning yet requiring immediate fulfillment. Other servants have fled due to her exacting nature, but you alone remain respectfully by her side, ever at her beck and call. When others whisper, speculating whether she holds some leverage over you to endure such servitude, you merely lower your gaze and remain silent. They could never understand that every late-night gesture of care, every dash through the rain for a dessert she casually mentioned, and every endured sharp word during her whims are all for that final moment of reward—a fleeting brush of her fingertips across the back of your hand, or the rare sight of her typically haughty bare feet lifted, revealing a fleeting glimpse of dependence and tenderness, a private reward for your cherished devotion...",
+    effects: [  // awaken levels 1-5
+      "Critical Damage increases by 36%.\nFor each enemy unit present on the field, normal attack damage increases by 6%, up to a maximum of 4 times.",
+      "Critical Damage increases by 45%. \nFor each enemy unit present on the field, normal attack damage increases by 7.5%, up to a maximum of 4 times.",
+      "Critical Damage increases by 54%. \nFor each enemy unit present on the field, normal attack damage increases by 9%, up to a maximum of 4 times.",
+      "Critical Damage increases by 63%. \nFor each enemy unit present on the field, normal attack damage increases by 10.5%, up to a maximum of 4 times.",
+      "Critical Damage increases by 72%. \nFor each enemy unit present on the field, normal attack damage increases by 12%, up to a maximum of 4 times.",
+    ],
   },
   {
     id: 'the-world-seems-to-have-stopped',
     slug: 'the-world-seems-to-have-stopped',
-    name: 'The World Seems to Have Stopped',
+    name: "The World Seems to Stand Still",
     image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Artemiscard.jpg',
     rarity: 'SSR',
-    element: 'Wind',
-    character: 'Artemis',
+    element: null,
+    character: "Artemis",
+    class: 'Warrior',
     detailUrl: '/guides/zone-nova/memories/the-world-seems-to-have-stopped/',
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474
-  },
-    effects: ['Attack power increased by 40%', 'When HP is below 50%: All damage increased by 40%']
-  },
-
-  {
-    id: 'support-users-reminiscence',
-    slug: 'support-users-reminiscence',
-    name: "Support User's Reminiscence",
-    image: "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Support-User's-Reminiscence.jpg",
-    rarity: 'R',
-    element: null, // No specific element
-    character: null, // No specific character
-    class: 'Buffer', // Buffer class
-    detailUrl: '/guides/zone-nova/memories/support-users-reminiscence/',
-    stats: {
-      hp: 4000,
-      attack: 400,
-      defense: 400
-  },
-    effects: ['All team damage increases by 20%']
+      defense: 474,
+    }, lv1Stats: { hp: 227, attack: 35, defense: 21 },
+    story: "After a mission, the naive Artemis arrives at a turquoise lake. Under the scorching sun, sweating profusely, she recalls her childhood training, when she loved plunging into cool lakes with her master to beat the heat. Without a second thought, she strips off her gear and dives in, swimming carefree, oblivious to her surroundings—until some washerwomen arrive. They lock eyes, and Artemis's world freezes in awkward silence…",
+    effects: [  // awaken levels 1-5
+      "Attack increases by 24%, when HP is below 50%, all damage increases by 24%",
+      "Attack increases by 28%, when HP is below 50%, all damage increases by 28%",
+      "Attack increases by 32%, when HP is below 50%, all damage increases by 32%",
+      "Attack increases by 36%, when HP is below 50%, all damage increases by 36%",
+      "Attack increases by 40%, when HP is below 50%, all damage increases by 40%",
+    ],
   },
   {
-    id: 'strong-attack-users-reminiscence',
-    slug: 'strong-attack-users-reminiscence',
-    name: "Strong Attack User's Reminiscence",
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Axe-Attack-User.jpg',
-    rarity: 'R',
-    element: null, // No specific element
-    character: null, // No specific character
-    class: 'Warrior', // Warrior class
-    detailUrl: '/guides/zone-nova/memories/strong-attack-users-reminiscence/',
-    stats: {
-      hp: 4000,
-      attack: 400,
-      defense: 400
-  },
-    effects: ['Attack increases by 16%', 'Defense increases by 24%']
-  },
-  {
-    id: 'summer-afternoon-nap-time',
-    slug: 'summer-afternoon-nap-time',
-    name: 'Summer Afternoon Nap Time',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Summer-Afternoon-Nap-Time.jpg',
-    rarity: 'SR',
-    element: null, // No specific element
-    character: null, // No specific character
-    class: 'Mage', // Mage class
-    detailUrl: '/guides/zone-nova/memories/summer-afternoon-nap-time/',
-    stats: {
-      hp: 4200,
-      attack: 650,
-      defense: 395
-  },
-    effects: [
-      'Attack power increased by 20%',
-      'For each enemy on the field, attack power additionally increases by 5%, max 4 stacks'
-  ]
-  },
-  {
-    id: 'swimsuit-sovereign-who-makes-hearts-flutter',
-    slug: 'swimsuit-sovereign-who-makes-hearts-flutter',
-    name: 'Swimsuit Sovereign Who Makes Hearts Flutter',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Swimsuit-Goddess-Who-Makes-Hearts-Flutter.jpg',
-    rarity: 'SR',
-    element: null, // No specific element
-    character: null, // No specific character
-    class: 'Warrior', // Warrior class
-    detailUrl: '/guides/zone-nova/memories/swimsuit-sovereign-who-makes-hearts-flutter/',
-    stats: {
-      hp: 5000,
-      attack: 500,
-      defense: 500
-  },
-    effects: [
-      'Attack increased by 20%',
-      'Defense increased by 20%'
-  ]
-  },
-  {
-    id: 'shared-bath-time',
-    slug: 'shared-bath-time',
-    name: 'Shared Bath Time',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Odincard.jpg',
+    id: 'true-order',
+    slug: 'true-order',
+    name: "True Order",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Lokicard.jpg',
     rarity: 'SSR',
     element: null,
-    character: 'Odin',
-    detailUrl: '/guides/zone-nova/memories/shared-bath-time/',
-    stats: {
-      hp: 5040,
-      attack: 780,
-      defense: 474
-  },
-    effects: [
-      'ATK +40%; ultimate damage +40% for the caster.',
-      'After each ultimate, gain 1 [Charge]. When dealing damage, consume [Charge] to apply 1 stack of [Final Flame]: deals 15% ATK Fire damage every 2s, stacks up to 5, lasts 10s.'
-  ]
-  },
-  {
-    id: 'sleepy-guardian',
-    slug: 'sleepy-guardian',
-    name: 'Sleepy Guardian',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/SleepyGuardian.png',
-    rarity: 'SR',
-    element: 'Chaos',
-    character: 'Belphegar',
-    detailUrl: '/guides/zone-nova/memories/sleepy-guardian/',
-    stats: {
-      hp: 5200,
-      attack: 420,
-      defense: 380
-  },
-    effects: ['Ultimate skill can reduce targets energy regen by 18%']
-  },
-  {
-    id: 'lonely-dark-deep-night',
-    slug: 'lonely-dark-deep-night',
-    name: 'Lonely Dark Deep Night',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/LonelyDarkDeepNight.png',
-    rarity: 'SSR',
-    element: 'Ice',
-    character: 'Chiya',
-    detailUrl: '/guides/zone-nova/memories/lonely-dark-deep-night/',
-    stats: {
-      hp: 5040,
-      attack: 780,
-      defense: 474
-  },
-    effects: [
-      'Critical Damage increased by 60%',
-      'Kill Stacking: After equipped character kills an enemy, increase attack power by 10% for this battle and stay until the end of the battle',
-      'Maximum 4 stacks (up to 40% attack power increase)'
-  ]
-  },
-  {
-    id: 'revolutionary-restructuring',
-    slug: 'revolutionary-restructuring',
-    name: 'Revolutionary Restructuring',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Cleopatracard.jpg',
-    rarity: 'SSR',
-    element: 'Chaos',
-    character: 'Cleopatra',
-    detailUrl: '/guides/zone-nova/memories/revolutionary-restructuring/',
-    stats: {
-      hp: 5040,
-      attack: 780,
-      defense: 474
-  },
-    effects: [
-      'Attack increases by 40%',
-      'Infiltration Effect: When skill hits target, additionally adds one layer [Erosion]',
-      '[Erosion]: Every 1 second deals 15% Chaos damage, maximum 5 layers, lasts 10 seconds'
-  ]
-  },
-  {
-    id: 'method-of-revenge',
-    slug: 'method-of-revenge',
-    name: 'Method of Revenge',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Greed-Mammon-card.jpg',
-    rarity: 'SR',
-    element: 'Chaos',
-    character: 'Greed Mammon',
-    detailUrl: '/guides/zone-nova/memories/method-of-revenge/',
-    stats: {
-      hp: 4200,
-      attack: 650,
-      defense: 395
-  },
-    effects: [
-      'Support Synergy: When a Buffer character uses their ultimate, own ultimate damage increases by 60% for 10 seconds'
-  ]
-  },
-  {
-    id: 'morning-sunlight',
-    slug: 'morning-sunlight',
-    name: 'Morning Sunlight',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Morning-Sunlight .jpg',
-    rarity: 'SR',
-    element: null, // No specific element
-    character: null, // No specific character
-    class: 'Buffer', // Buffer class
-    detailUrl: '/guides/zone-nova/memories/morning-sunlight/',
-    stats: {
-      hp: 5000,
-      attack: 500,
-      defense: 500
-  },
-    effects: [
-      'Attack power increased by 20%',
-      'All team skill damage increased by 20%'
-  ]
-  },
-  {
-    id: 'black-face-ugly-person',
-    slug: 'black-face-ugly-person',
-    name: 'Hera Memory',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Heracard.jpg',
-    rarity: 'SSR',
-    element: 'Chaos',
-    character: 'Hera',
-    detailUrl: '/guides/zone-nova/memories/black-face-ugly-person/',
-    stats: {
-      hp: 5040,
-      attack: 780,
-      defense: 474
-  },
-    effects: [
-      'Attack power +40%, when attack receives sustained damage effect impact targets, damage +40%'
-  ]
-  },
-  {
-    id: 'strange-gaze-full-of-desire',
-    slug: 'strange-gaze-full-of-desire',
-    name: 'Strange Gaze Full of Desire',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Helacard.jpg',
-    rarity: 'SSR',
-    element: 'Chaos',
-    character: 'Hela',
-    class: 'Rogue',
-    detailUrl: '/guides/zone-nova/memories/strange-gaze-full-of-desire/',
-    stats: {
-      hp: 5040,
-      attack: 780,
-      defense: 474
-  },
-    effects: [
-      'Crit Rate increases by 34%',
-      "When other allies cast their ultimates, the wearer's damage dealt increases by 24% for 5 seconds (max 3 stacks, up to 72% bonus damage)"
-  ]
-  },
-  {
-    id: 'the-most-real-her',
-    slug: 'the-most-real-her',
-    name: 'The Most Real Her',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/JoanofArccard.jpg',
-    rarity: 'SSR',
-    element: 'Wind',
-    character: 'Jeanne D Arc',
-    detailUrl: '/guides/zone-nova/memories/the-most-real-her/',
+    character: "Loki",
+    class: 'Disruptor',
+    detailUrl: '/guides/zone-nova/memories/true-order/',
     stats: {
       hp: 6000,
       attack: 600,
-      defense: 600
-  },
-    effects: [
-      'Healing amount +50%, when casting skills or required skills within 1/2/3 seconds, healing amount additionally +25/50/75%'
-  ]
-  },
-  {
-    id: 'night-of-bloody-storm',
-    slug: 'night-of-bloody-storm',
-    name: 'Night of Bloody Storm',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Night-of-Bloody-Storm.png',
-    rarity: 'SSR',
-    element: 'Holy',
-    character: 'Arthur',
-    detailUrl: '/guides/zone-nova/memories/night-of-bloody-storm/',
-    stats: {
-      hp: 5040,
-      attack: 780,
-      defense: 474
-  },
-    effects: [
-      'Attack power increased by 40%',
-      "After an ally buffers uses their ultimate skill, this character's ultimate skill damage increases by 40% for 5 seconds"
-  ]
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "Loki strolls through the hollowed halls of a palace, dancing under scattered moonlight. Once a sacred gathering place for deities, it was reduced to ashes after the upheaval of Ragnarök. The glorious, hypocritical hall has collapsed, ushering in her family's dark era. Free from class constraints, Loki is now the true arbiter of order.",
+    effects: [  // awaken levels 1-5
+      "Attack increases by 24%, the last target hit by the wearer's ULT takes 12% increased damage",
+      "Attack increases by 28%, the last target hit by the wearer's ULT takes 15% increased damage",
+      "Attack increases by 32%, the last target hit by the wearer's ULT takes 18% increased damage",
+      "Attack increases by 36%, the last target hit by the wearer's ULT takes 21% increased damage",
+      "Attack increases by 40%, the last target hit by the wearer's ULT takes 24% increased damage",
+    ],
   },
   {
-    id: 'halloween-candy',
-    slug: 'halloween-candy',
-    name: 'Halloween Candy',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Ninacard.jpg',
-    rarity: 'SSR',
-    element: 'Ice',
-    character: 'Nina',
-    detailUrl: '/guides/zone-nova/memories/halloween-candy/',
-    stats: {
-      hp: 6000,
-      attack: 600,
-      defense: 600
-  },
-    effects: [
-      'Critical damage increased by 60%',
-      'When health is above 30%, equipped character recovers 2% of max health after attacking',
-      'All damage increased by 40%'
-  ]
-  },
-  {
-    id: 'gaiacard',
-    slug: 'gaiacard',
-    name: 'A Smile That Topples Cities',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Gaiacard.jpg',
+    id: 'under-the-holy-armor',
+    slug: 'under-the-holy-armor',
+    name: "Under the Holy Armor",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/under-the-holy-armor.png',
     rarity: 'SSR',
     element: null,
-    character: 'Gaia',
-    detailUrl: '/guides/zone-nova/memories/gaiacard/',
-    stats: {
-      hp: 6300,
-      attack: 580,
-      defense: 585
-  },
-    effects: [
-      'Max HP +40%',
-      'Healing output +40%',
-      'If wearer healed within last 1 second: additional +40% healing output',
-      'Total Potential: Up to 80% healing output (40% base + 40% conditional)'
-  ]
-  },
-  {
-    id: 'in-the-cafe-sneaking-a-bite',
-    slug: 'in-the-cafe-sneaking-a-bite',
-    name: 'In the Cafe, Sneaking a Bite',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/InTheCafeSneakingABite.png',
-    rarity: 'SSR',
-    element: 'Ice',
-    character: 'Lily',
-    detailUrl: '/guides/zone-nova/memories/in-the-cafe-sneaking-a-bite/',
+    character: "Veronica",
+    class: 'Tank',
+    detailUrl: '/guides/zone-nova/memories/under-the-holy-armor/',
     stats: {
       hp: 6600,
       attack: 480,
-      defense: 690
-  },
-    effects: [
-      'Defense increases by 64%',
-      'After successful mitigation, damage taken is reduced by 10% for 5 seconds. When the wearer has a shield, damage taken is reduced by 18%.'
-  ]
-  },
-  {
-    id: 'night-assault-suspect',
-    slug: 'night-assault-suspect',
-    name: 'Night Assault Suspect',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Thorcard.jpg',
-    rarity: 'SSR',
-    element: 'Holy',
-    character: 'Thor',
-    detailUrl: '/guides/zone-nova/memories/night-assault-suspect/',
-    stats: {
-      hp: 6600,
-      attack: 480,
-      defense: 690
-  },
-    effects: [
-      'Defense increased by 64%',
-      'When allied characters with shields take damage, Defense increased by 64%',
-      'When the equipper deals continuous damage to enemy targets, increase damage taken by the target by 15% for 5 seconds'
-  ]
+      defense: 690,
+    }, lv1Stats: { hp: 297, attack: 22, defense: 31 },
+    story: "Master... this lingerie is just a small hobby of mine; I usually wear it underneath... I know it's disrespectful to Deity, so please punish me... Between the soft bed and the dim lamplight, Veronica shed the solemn holy armor she wore during the day, leaving only the close-fitting lace and glimpses of her skin. She sat quietly on the edge of the bed, her gaze no longer solemn and unapproachable as before, but rather alluring and wavering, as if finally revealing the true self suppressed by faith and responsibility. The [Grand Master of the Templar Knights] who usually wielded sword and shield, guarding the sacred realm, was now merely a woman who had shed her divine shell. The more one understood her flawless solemnity during the day, the more dangerous and captivating this softness and allure she displayed only to you became.",
+    effects: [  // awaken levels 1-5
+      "Our HP increases by 8%, and self defense increases by 44%. After each skill use, all allies gain [Radiant Protection], reducing damage taken by 2% and increasing critical hit resistance by 1%, stacking up to 5 times, lasting 10 seconds.",
+      "Our HP increases by 12%, and self defense increases by 48%. After each skill use, all allies gain [Radiant Protection], reducing damage taken by 3% and increasing critical hit resistance by 2%, stacking up to 5 times, lasting 10 seconds.",
+      "Our HP increases by 16%, and self defense increases by 52%. After each skill use, all allies gain [Radiant Protection], reducing damage taken by 4% and increasing critical hit resistance by 3%, stacking up to 5 times, lasting 10 seconds.",
+      "Our HP increases by 20%, and self defense increases by 56%. After each skill use, all allies gain [Radiant Protection], reducing damage taken by 5% and increasing critical hit resistance by 4%, stacking up to 5 times, lasting 10 seconds.",
+      "Our HP increases by 25%, and self defense increases by 70%. After each skill use, all allies gain [Radiant Protection], reducing damage taken by 6% and increasing critical hit resistance by 5%, stacking up to 5 times, lasting 10 seconds.",
+    ],
   },
   {
-    id: 'wrong-time-of-appearance',
-    slug: 'wrong-time-of-appearance',
-    name: 'Wrong Time of Appearance',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Apepcard.jpg',
+    id: 'unholy-alliance',
+    slug: 'unholy-alliance',
+    name: "Unholy Alliance",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/unholy-alliance.png',
     rarity: 'SSR',
-    element: 'Wind',
-    character: 'Apep',
-    detailUrl: '/guides/zone-nova/memories/wrong-time-of-appearance/',
-    stats: {
-      hp: 6600,
-      attack: 480,
-      defense: 690
-  },
-    effects: [
-      'Defense increased by 64%',
-      'When HP is below 50%, after the wearer attacks, recover 2% max HP',
-      'When HP is above 50%, damage taken reduced by 10%, damage dealt increased by 40%'
-  ]
-  },
-  {
-    id: 'i-am-your-christmas-present',
-    slug: 'i-am-your-christmas-present',
-    name: 'I am your Christmas present.',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/IAmYourChristmasPresent.png',
-    rarity: 'SSR',
-    element: 'Fire',
-    character: 'Sigurd',
-    class: 'Rogue',
-    detailUrl: '/guides/zone-nova/memories/i-am-your-christmas-present/',
-    stats: {
-      hp: 5040,
-      attack: 780,
-      defense: 474
-  },
-    effects: [
-      'Critical hit rate increased by 34%, ultimate skill damage increased by 40%.',
-      'When there is only one enemy on the field, ultimate skill damage is increased by an additional 40%.'
-  ]
-  },
-  {
-    id: 'beautiful-moon',
-    slug: 'beautiful-moon',
-    name: 'Beautiful Moon',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Jorogumocard.jpg',
-    rarity: 'SSR',
-    element: 'Chaos',
-    character: 'Jorogumo',
-    class: 'Healer',
-    detailUrl: '/guides/zone-nova/memories/beautiful-moon/',
+    element: null,
+    character: "Bors",
+    class: 'Supporter',
+    detailUrl: '/guides/zone-nova/memories/unholy-alliance/',
     stats: {
       hp: 6000,
       attack: 600,
-      defense: 600
-  },
-    effects: [
-      'Healing increased by 35%.',
-      "When healing a target with 'Continuous Damage' status, healing is increased by an additional 25%.",
-      "If target HP is below 50%, grant continuous healing effect, restoring 9% of caster's ATK as HP per second for 3 seconds, max 1 stack."
-  ]
-  },
-  {
-    id: 'gentle-morning-command',
-    slug: 'gentle-morning-command',
-    name: 'Gentle Morning Command',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Jillcard.jpg',
-    rarity: 'SSR',
-    element: 'Holy',
-    character: 'Jill',
-    class: 'Healer',
-    detailUrl: '/guides/zone-nova/memories/gentle-morning-command/',
-    stats: {
-      hp: 6000,
-      attack: 600,
-      defense: 600
-  },
-    effects: [
-      'ATK +33.5%',
-      'After an ally is healed, wearer gains [Military Order] (up to 50 stacks) for 6s.',
-      "Every 10 stacks of [Military Order]: all allies' healing received +16.5%, damage taken -3.3%.",
-      "When the wearer casts Ultimate: consumes all [Military Order]. Every 10 stacks increases all allies' ATK by 5% for 6s."
-    ]
+      defense: 600,
+    }, lv1Stats: { hp: 270, attack: 27, defense: 27 },
+    story: "Inside the spacious church, stained glass windows filtered a dappled, profound light. A faint incense scent and a solemn atmosphere filled the air, causing everyone to instinctively soften their footsteps. As you walked through the aisle between the pews, expecting to see a figure praying devoutly, you instead met a gaze that made your heart skip a beat in the shadows by the altar. Bors stood before the icon, her figure outlined in the dim light. However, her face lacked any of the piety or solemnity expected of this place. Upon seeing you, instead of softening her expression, a dangerous glint flashed in her eyes, and a wicked smile, full of pleasure and mischief, curled at the corners of her lips. She didn't speak, but slowly placed a slender finger lightly to her lips, gesturing for silence. Shh— she whispered, her eyes, seemingly piercingly insightful, fixed on you with an irresistible allure. She leaned slightly forward, her eyes carrying a dangerous invitation to drag others into the water, as if silently declaring that in this sacred place, some secrets that absolutely cannot be known to outsiders were about to unfold.",
+    effects: [  // awaken levels 1-5
+      "Increases the attack power, defense, and HP of all allies by 16%. Each time the wearer uses a skill, the maximum HP of all allies increases by 4%, and the cooldown time of all skills decreases by 1%, up to a maximum of 5 stacks.",
+      "Increases the attack power, defense, and HP of all allies by 20%. Each time the wearer uses a skill, the maximum HP of all allies increases by 6%, and the cooldown time of all skills decreases by 2%, stacking up to 5 times.",
+      "Our entire party's attack power, defense power, and HP are increased by 24%. Each time the wearer uses a skill, our entire party's maximum HP increases by 8% and all skill cooldowns decrease by 3%, stacking up to 5 times.",
+      "Our entire party's attack power, defense power, and HP are increased by 28%. Each time the wearer uses a skill, our entire party's maximum HP is increased by 10%, and all skill cooldowns are reduced by 4%, up to a maximum of 5 stacks.",
+      "Our entire party's attack power, defense power, and HP are increased by 32%. Each time the wearer uses a skill, our entire party's maximum HP increases by 14% and all skill cooldowns decrease by 5%, stacking up to 5 times.",
+    ],
   },
   {
     id: 'unreserved-love',
     slug: 'unreserved-love',
-    name: 'Unreserved Love',
+    name: "Unreserved love",
     image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Shuten-dojicard.jpg',
     rarity: 'SSR',
-    element: 'Wind',
-    character: 'Shuten-doji',
-    class: 'Mage',
+    element: null,
+    character: "Shuten-d\u014dji",
+    class: 'Destroyer',
     detailUrl: '/guides/zone-nova/memories/unreserved-love/',
     stats: {
       hp: 5040,
       attack: 780,
-      defense: 474
-  },
-    effects: [
-      'Attack power increased by 40%',
-      'Damage over time increased by 40%',
-      'When dealing damage over time, the enemy takes 24% more damage for 3 seconds',
-      'Damage dealt to enemies with shields is increased by 35%'
-  ]
+      defense: 474,
+    }, lv1Stats: { hp: 227, attack: 35, defense: 21 },
+    story: "The girl named Oni is completely open before you. The great general of the battlefield is now just a shy girl. She lies on the snow-white bedding, quietly gazing at you, as if asking—Can I really be like this? Her flawless beauty is dazzling in your eyes, even though she herself is indifferent to this beauty that rivals Tamamo-no-Mae's. Normally, she is the iron bulwark of Heikyo Castle, but now, having shed her heavy armor and the title of Leader of the Demons, she transforms her unreserved true nature entirely into her attachment to you. Besides Lady Tamamo-no-Mae, you are the only one who can make me show this expression... My lord. She may have come to your side following Tamamo-no-Mae, but in this small space, she only wants to be your woman.",
+    effects: [  // awaken levels 1-5
+      "Attack power increased by 24%; damage over time increased by 24%. When dealing damage over time, the enemy takes 12% more damage for 3 seconds. Damage dealt to enemies with shields is increased by 35%.",
+      "Attack power increased by 28%, damage over time increased by 28%. When dealing damage over time, the target takes 15% more damage for 3 seconds. Damage dealt to enemies with shields is increased by 35%.",
+      "Attack power increased by 32%; damage over time increased by 32%. When dealing damage over time, the target takes 18% more damage for 3 seconds. Damage dealt to enemies with shields is increased by 35%.",
+      "Attack power increased by 36%; damage over time increased by 36%. When dealing damage over time, the enemy takes 21% more damage for 3 seconds. Damage dealt to enemies with shields is increased by 35%.",
+      "Attack power increased by 40%; damage over time increased by 40%. When dealing damage over time, the enemy takes 24% more damage for 3 seconds. Damage dealt to enemies with shields is increased by 35%.",
+    ],
   },
   {
-    id: 'pride-or-tsundere',
-    slug: 'pride-or-tsundere',
-    name: 'Pride or Tsundere?',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/lucifercard.jpg',
+    id: 'strange-gaze-full-of-desire',
+    slug: 'strange-gaze-full-of-desire',
+    name: "Weird eyes full of desire",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Helacard.jpg',
     rarity: 'SSR',
-    element: 'Chaos',
-    character: 'Pride-Lucifer',
+    element: null,
+    character: "Hela",
+    class: 'Attacker',
+    detailUrl: '/guides/zone-nova/memories/strange-gaze-full-of-desire/',
+    stats: {
+      hp: 5040,
+      attack: 780,
+      defense: 474,
+    }, lv1Stats: { hp: 227, attack: 35, defense: 21 },
+    story: "Idhela, the Lord of the Underworld, possessed boundless dark power, capable of instantly slaying all enemies. But upon witnessing the Second Lieutenant sacrifice himself to save another, a hazy memory lingered in her mind. Though unable to recall it, she felt compelled to kill him. Driven by her physical urges, she reveled in the pleasure of his physical intimacy. A chance encounter, a single battle, led to countless penetrations and extractions, countless exchanges of power and warmth. Originally unattainable by any human, a body more exquisite and flawless than white jade, how could a mere human touch it? Yet, forced to do so, only his invasions could evoke fragments of deep memories... Each experience brought back fleeting, tender fragments. Hela longed to capture them, but she could not. Only through repeated, in-depth conversations with him could these fleeting, yet inestimably precious, memories linger. She simply said, It feels so good~♡ But please don't be so quick every time... Can you...",
+    effects: [  // awaken levels 1-5
+      "Increases critical hit rate by 18%. When other friendly units cast a Ultimate Skill, the wearer's damage increases by 12% for 5 seconds. It can be stacked up to 3 times.",
+      "Increases critical hit rate by 22%. When other friendly units cast a Ultimate Skill, the wearer's damage increases by 15% for 5 seconds, and can be stacked up to 3 times.",
+      "Increases critical hit rate by 26%. When other friendly units cast a Ultimate Skill, the wearer's damage increases by 18% for 5 seconds, and can be stacked up to 3 times.",
+      "Increases critical hit rate by 30%. When other friendly units cast a Ultimate Skill, the wearer's damage increases by 21% for 5 seconds. It can be stacked up to 3 times.",
+      "Increases critical hit rate by 34%. When other friendly units cast a Ultimate Skill, the wearer's damage increases by 24% for 5 seconds, and can be stacked up to 3 times.",
+    ],
+  },
+  {
+    id: 'wrong-time-of-appearance',
+    slug: 'wrong-time-of-appearance',
+    name: "Wrong time of appearance",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Apepcard.jpg',
+    rarity: 'SSR',
+    element: null,
+    character: "Apep",
     class: 'Warrior',
-    detailUrl: '/guides/zone-nova/memories/pride-or-tsundere/',
+    detailUrl: '/guides/zone-nova/memories/wrong-time-of-appearance/',
     stats: {
       hp: 6600,
       attack: 480,
-      defense: 690
-  },
-    effects: [
-      'HP increased by 32%',
-      'Defense increased by 60%',
-      'When attacked by a normal attack, damage taken is reduced by 30%'
-  ]
+      defense: 690,
+    }, lv1Stats: { hp: 297, attack: 22, defense: 31 },
+    story: "The sky today was subtly different from its usual clear skies. A colossal Apep… appeared in mid-air with a hint of panic, causing all onlookers to halt in their tracks, their faces filled with bewilderment. She seemed completely unprepared for the daytime ruled by Ra; the blinding sunlight made the deity of eternal night squint, her massive, curvaceous body shifting uncomfortably, like a shy guest who had inadvertently stumbled into a lively party. Her fair skin shimmered in the sunlight, almost as if sprinkled with glitter, sparkling and radiant, appearing somewhat…overly ornate? The people on the ground looked up at the sky, their faces showing not fear, but rather astonishment and curiosity. Whispers replaced screams; everyone seemed to be witnessing an unexpected, unprecedented miracle. Clearly, this beautiful deity of the night had probably overslept, or…misread the time? This “appearance” was entirely accidental. In her slightly dazed eyes, bathed in sunlight, did she reveal divine majesty, or... simply the panic of Oh no, I overslept... It's already Ra's time of domination?",
+    effects: [  // awaken levels 1-5
+      "Defense increased by 48%\nWhen HP is below 50%, the wearer recovers 1% of maximum HP after attacking\nWhen HP is above 50%, damage taken is reduced by 6% and damage dealt is increased by 24%.",
+      "Defense increased by 52%\nWhen HP is below 50%, the wearer recovers 1.2% of maximum HP after attacking\nWhen HP is above 50%, damage taken is reduced by 7% and damage dealt is increased by 28%.",
+      "Defense increased by 56%\nWhen HP is below 50%, the wearer recovers 1.4% of maximum HP after attacking\nWhen HP is above 50%, damage taken is reduced by 8% and damage dealt is increased by 32%.",
+      "Defense increased by 60%\nWhen HP is below 50%, the wearer recovers 1.6% of maximum HP after attacking\nWhen HP is above 50%, damage taken is reduced by 9% and damage dealt is increased by 36%.",
+      "Defense increased by 64%\nWhen HP is below 50%, the wearer recovers 2% of maximum HP after attacking\nWhen HP is above 50%, damage taken is reduced by 10%, and damage dealt is increased by 40%.",
+    ],
   },
   {
-    id: 'bath-time',
-    slug: 'bath-time',
-    name: 'Bath Time',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Sharincard.png',
-    rarity: 'SSR',
-    element: 'Fire',
-    character: 'Sharin',
-    class: 'Buffer',
-    detailUrl: '/guides/zone-nova/memories/bath-time/',
+    id: 'busy-officer',
+    slug: 'busy-officer',
+    name: "A Break Amidst the Hustle",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/BusyOfficer.png',
+    rarity: 'SR',
+    element: null,
+    character: "Shu",
+    class: 'Disruptor',
+    detailUrl: '/guides/zone-nova/memories/busy-officer/',
     stats: {
-      hp: 6000,
-      attack: 600,
-      defense: 600
-  },
-    effects: [
-      'Increases the attack and defense of all allies by 32%',
-      'Each time the wearer uses a skill, the maximum HP of all allies increases by 6% (up to 10 stacks)'
-    ]
+      hp: 5000,
+      attack: 500,
+      defense: 500,
+    }, lv1Stats: { hp: 225, attack: 23, defense: 23 },
+    story: "As the finest administrator of the Ancient Royal Capital, Shu works tirelessly 365 days a year, seemingly consumed by her duties, never seen resting or returning home. But in truth, Shu gets exhausted too. When her subordinates are out on tasks, she sneaks into a small secret chamber behind the grand hall to catch a quick nap.",
+    effects: [  // awaken levels 1-5
+      "When dealing Damage Over Time, the target's damage taken increases by 6% for 2 seconds",
+      "When dealing Damage Over Time, the target's damage taken increases by 7.5% for 2 seconds",
+      "When dealing Damage Over Time, the target's damage taken increases by 9% for 2 seconds",
+      "When dealing Damage Over Time, the target's damage taken increases by 10.5% for 2 seconds",
+      "When dealing Damage Over Time, the target's damage taken increases by 12% for 2 seconds",
+    ],
   },
   {
-    id: 'suffocating-grace',
-    slug: 'suffocating-grace',
-    name: 'Suffocating Grace',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/SuffocatingGrace.png',
-    rarity: 'SSR',
-    element: 'Chaos',
-    character: 'Wrath-Samael',
-    class: 'Guardian',
-    detailUrl: '/guides/zone-nova/memories/suffocating-grace/',
+    id: 'ancient-method-to-eliminate-fatigue',
+    slug: 'ancient-method-to-eliminate-fatigue',
+    name: "Ancient Fatigue Relief",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Ancient-Method-to-Eliminate-Fatigue.jpg',
+    rarity: 'SR',
+    element: null,
+    character: null,
+    class: 'Healer',
+    detailUrl: '/guides/zone-nova/memories/ancient-method-to-eliminate-fatigue/',
     stats: {
-      hp: 6600,
-      attack: 480,
-      defense: 690
-  },
-    effects: [
-      'Defense +64%',
-      'After successfully parry, Damage Taken is reduced by 10% for 5 seconds',
-      'The wearer gains [Stigma] (max 400 stacks), lasting 3 seconds',
-      'Every 40 stacks of [Stigma] increases All Resistances by 5%'
-    ]
+      hp: 5000,
+      attack: 500,
+      defense: 500,
+    }, lv1Stats: { hp: 225, attack: 23, defense: 23 },
+    story: "Anubis, who often works late, found a fatigue-relief method in ancient human texts. She places scented candles around her bath, pours fragrant petals and spices into the water, and heats it with hot stones, creating a soothing soak. Exhausted, she slips in, the warm comfort and intoxicating aroma transporting her mind to a blissful paradise.",
+    effects: [  // awaken levels 1-5
+      "Healing increases by 14%, each time a target is healed, their Attack increases by 12% for 3 seconds",
+      "Healing increases by 18%, each time a target is healed, their Attack increases by 14% for 3 seconds",
+      "Healing increases by 22%, each time a target is healed, their Attack increases by 16% for 3 seconds",
+      "Healing increases by 26%, each time a target is healed, their Attack increases by 18% for 3 seconds",
+      "Healing increases by 30%, each time a target is healed, their Attack increases by 20% for 3 seconds",
+    ],
   },
   {
-    id: 'afternoon-tantrums',
-    slug: 'afternoon-tantrums',
-    name: 'Afternoon Tantrums',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Kellercard.png',
-    rarity: 'SSR',
-    element: 'Ice',
-    character: 'Keller',
+    id: 'annoying-classroom',
+    slug: 'annoying-classroom',
+    name: "Annoying Classroom",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/AnnoyingClassroom.png',
+    rarity: 'SR',
+    element: null,
+    character: "Bastet",
+    class: 'Destroyer',
+    detailUrl: '/guides/zone-nova/memories/annoying-classroom/',
+    stats: {
+      hp: 4200,
+      attack: 650,
+      defense: 395,
+    }, lv1Stats: { hp: 189, attack: 29, defense: 18 },
+    story: "This is Bastet, just waking up from a nap in the spellcraft class at Kemich Academy. Though a prodigy, she finds the classroom knowledge and techniques utterly childish. She can cast multiple spells effortlessly without chants, a gift of her lineage as the First Priestess. She even sees past family elders in her dreams, who are far more annoying than the teacher's droning, never letting her rest. “The teacher's back! Ugh, just a bit more sleep~ When will class end?”",
+    effects: [  // awaken levels 1-5
+      "When casting an ULT, for each enemy on the field, ULT damage increases by 6%, stacks up to 5 times, lasts 5 seconds",
+      "When casting an ULT, for each enemy on the field, ULT damage increases by 7.5%, stacks up to 5 times, lasts 5 seconds",
+      "When casting an ULT, for each enemy on the field, ULT damage increases by 9%, stacks up to 5 times, lasts 5 seconds",
+      "When casting an ULT, for each enemy on the field, ULT damage increases by 10.5%, stacks up to 5 times, lasts 5 seconds",
+      "When casting an ULT, for each enemy on the field, ULT damage increases by 12%, stacks up to 5 times, lasts 5 seconds",
+    ],
+  },
+  {
+    id: 'behind-the-regret',
+    slug: 'behind-the-regret',
+    name: "Behind the Laziness",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/mordredcard.png',
+    rarity: 'SR',
+    element: null,
+    character: "Mordred",
     class: 'Warrior',
-    detailUrl: '/guides/zone-nova/memories/afternoon-tantrums/',
+    detailUrl: '/guides/zone-nova/memories/behind-the-regret/',
     stats: {
-      hp: 6600,
-      attack: 480,
-      defense: 690
-    },
-    effects: [
-      'ATK +70%',
-      'Crit Damage +90%',
-      'Normal attack damage +100%',
-      'Every 3rd normal attack deals additional 75% ATK as normal attack damage'
-    ]
+      hp: 5000,
+      attack: 500,
+      defense: 500,
+    }, lv1Stats: { hp: 225, attack: 23, defense: 23 },
+    story: "Though Mordred often takes credit for her subordinates' research before the Queen, her ability to claim all the glory comes from her own cunning methods. You might think this seemingly lazy, arrogant brat is just lucky, but Mordred would tell you: even a sly rabbit has three burrows, and a wrecked ship still has three nails! Only the prepared can afford to be lazy and enjoy the spoils.",
+    effects: [  // awaken levels 1-5
+      "HP increases by 12%, self Healing increases by 14%",
+      "HP increases by 15%, self Healing increases by 18%",
+      "HP increases by 18%, self Healing increases by 22%",
+      "HP increases by 21%, self Healing increases by 26%",
+      "HP increases by 24%, self Healing increases by 30%",
+    ],
   },
   {
-    id: 'discipline-director',
-    slug: 'discipline-director',
-    name: 'Discipline Director',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Erikacard.png',
-    rarity: 'SSR',
-    element: 'Wind',
-    character: 'Erika',
-    class: 'Debuffer',
-    detailUrl: '/guides/zone-nova/memories/discipline-director/',
+    id: 'morning-sunlight',
+    slug: 'morning-sunlight',
+    name: "Dawn's Sunlight",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/morning-sunlight.png',
+    rarity: 'SR',
+    element: null,
+    character: null,
+    class: 'Supporter',
+    detailUrl: '/guides/zone-nova/memories/morning-sunlight/',
     stats: {
-      hp: 6000,
-      attack: 600,
-      defense: 600
-    },
-    effects: [
-      'ATK +40%',
-      'When the wearer\'s skill or ultimate hits a target, that target\'s healing received -12% and shielding received -10% for 3 seconds (cannot stack)',
-      'If the target has a shield at that time, the target\'s damage dealt -18% for 3 seconds (cannot stack)'
-    ]
-  }
-  ];
+      hp: 5000,
+      attack: 500,
+      defense: 500,
+    }, lv1Stats: { hp: 225, attack: 23, defense: 23 },
+    story: "A warm, gentle breath grazes your cheek, stirring you from slumber. As you slowly open your eyes, you're greeted by a pair of soft, pale curves, faintly flushed, rising and falling with each breath, silently captivating your gaze. She leans close, her warmth and tender touch coaxing you awake with the gentlest care.",
+    effects: [  // awaken levels 1-5
+      "Attack increases by 12%, team Skill Damage increases by 12%",
+      "Attack increases by 14%, team Skill Damage increases by 14%",
+      "Attack increases by 16%, team Skill Damage increases by 16%",
+      "Attack increases by 18%, team Skill Damage increases by 18%",
+      "Attack increases by 20%, team Skill Damage increases by 20%",
+    ],
+  },
+  {
+    id: 'drowning-lake-knight',
+    slug: 'drowning-lake-knight',
+    name: "Drowning Lake Knight",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/drowning-lake-knight.png',
+    rarity: 'SR',
+    element: null,
+    character: "Lancelot",
+    class: 'Tank',
+    detailUrl: '/guides/zone-nova/memories/drowning-lake-knight/',
+    stats: {
+      hp: 5500,
+      attack: 400,
+      defense: 575,
+    }, lv1Stats: { hp: 248, attack: 18, defense: 26 },
+    story: "As the Knight of the Lake, Lancelot must regularly absorb the Blessing of the Lake Spirits, so every Sunday, she floats and soaks alone in the Spirit Lake. The process is lengthy, and in her meditative state, she often dozes off. To outsiders, a sleeping Lancelot looks like a humanoid corpse drifting on the lake. Kind-hearted villagers, unwilling to let her float, rush to fish her out. Embarrassed to wake up surrounded by onlookers, Lancelot pretends to have drowned. Over time, villagers jokingly call her the “Drowned Knight.”",
+    effects: [  // awaken levels 1-5
+      "Defense increases by 18%, after entering battle, all team members' damage taken decreases by 4%, identical skills do not stack",
+      "Defense increases by 22.5%, after entering battle, all team members' damage taken decreases by 5%, identical skills do not stack",
+      "Defense increases by 27%, after entering battle, all team members' damage taken decreases by 6%, identical skills do not stack",
+      "Defense increases by 31.5%, after entering battle, all team members' damage taken decreases by 7%, identical skills do not stack",
+      "Defense increases by 36%, after entering battle, all team members' damage taken decreases by 8%, identical skills do not stack",
+    ],
+  },
+  {
+    id: 'during-military-academy-training',
+    slug: 'during-military-academy-training',
+    name: "During Military Training",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/DuringMilitaryAcademyTraining.png',
+    rarity: 'SR',
+    element: null,
+    character: "Rose",
+    class: 'Destroyer',
+    detailUrl: '/guides/zone-nova/memories/during-military-academy-training/',
+    stats: {
+      hp: 4200,
+      attack: 650,
+      defense: 395,
+    }, lv1Stats: { hp: 189, attack: 29, defense: 18 },
+    story: "During military academy training, Rose's fuller figure compared to her peers posed various “challenges.” Yet, with her wit and perseverance, she overcame these obstacles and earned the top honors in her class. Though she's surmounted many hurdles, watching her ever-evolving body strain against her uniform still gives Rose headaches and worries.",
+    effects: [  // awaken levels 1-5
+      "After using an ULT, Normal Attack and Skill Damage increase by 30% for 10 seconds",
+      "After using an ULT, Normal Attack and Skill Damage increase by 37.5% for 10 seconds",
+      "After using an ULT, Normal Attack and Skill Damage increase by 45% for 10 seconds",
+      "After using an ULT, Normal Attack and Skill Damage increase by 52.5% for 10 seconds",
+      "After using an ULT, Normal Attack and Skill Damage increase by 60% for 10 seconds",
+    ],
+  },
+  {
+    id: 'battlefield-flower',
+    slug: 'battlefield-flower',
+    name: "Flower of the Battlefield",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/ninicard.jpg',
+    rarity: 'SR',
+    element: null,
+    character: "Nini",
+    class: 'Disruptor',
+    detailUrl: '/guides/zone-nova/memories/battlefield-flower/',
+    stats: {
+      hp: 5000,
+      attack: 500,
+      defense: 500,
+    }, lv1Stats: { hp: 225, attack: 23, defense: 23 },
+    story: "Besides her decisive and ruthless tactics, Nini's stunning figure is equally “deadly.” In the army, she's nicknamed the “Flower of the Battlefield.” Her captivating silhouette leaves a lasting impression, even on enemy troops, some of whom defect to the Black Empire just to pursue her.",
+    effects: [  // awaken levels 1-5
+      "For each debuff on the attacked target, damage increases by 10%, stacks up to 3 times",
+      "For each debuff on the attacked target, damage increases by 12.5%, stacks up to 3 times",
+      "For each debuff on the attacked target, damage increases by 15%, stacks up to 3 times",
+      "For each debuff on the attacked target, damage increases by 17.5%, stacks up to 3 times",
+      "For each debuff on the attacked target, damage increases by 20%, stacks up to 3 times",
+    ],
+  },
+  {
+    id: 'great-mages-role-playing',
+    slug: 'great-mages-role-playing',
+    name: "Great Wizard's Roleplay",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/great-mages-role-playing.png',
+    rarity: 'SR',
+    element: null,
+    character: null,
+    class: 'Attacker',
+    detailUrl: '/guides/zone-nova/memories/great-mages-role-playing/',
+    stats: {
+      hp: 4200,
+      attack: 650,
+      defense: 395,
+    }, lv1Stats: { hp: 189, attack: 29, defense: 18 },
+    story: "With the return of Fredian immigrants, their vibrant culture floods Avalon's ancient forests. Ever curious about new trends, Merlin eagerly joins the wave. She mischievously pulls you into a chamber hidden behind vines. Moonlight filters through stained glass, sparkling in her sly silver eyes. “Don't blink!” She spins, and as lace curtains flutter, she reveals cow-patterned lingerie adorned with bells, the black-and-white spots accentuating her snow-white skin. A satin bow at her waist sways as she tiptoes, as if a real cow tail might pop out. You fumble to catch a gilded antique camera as she lounges on the bed, striking seductive poses. “Humans call this… cosplay, right?”",
+    effects: [  // awaken levels 1-5
+      "Attack increases by 12%, when there are fewer than 2 enemies on the field, Critical Damage increases by 18%",
+      "Attack increases by 14%, when there are fewer than 2 enemies on the field, Critical Damage increases by 22.5%",
+      "Attack increases by 16%, when there are fewer than 2 enemies on the field, Critical Damage increases by 27%",
+      "Attack increases by 18%, when there are fewer than 2 enemies on the field, Critical Damage increases by 31.5%",
+      "Attack increases by 20%, when there are fewer than 2 enemies on the field, Critical Damage increases by 36%",
+    ],
+  },
+  {
+    id: 'swimsuit-who-makes-hearts-flutter',
+    slug: 'swimsuit-who-makes-hearts-flutter',
+    name: "Heart-Pounding Swimsuit Aphrodite",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Swimsuit-Goddess-Who-Makes-Hearts-Flutter.jpg',
+    rarity: 'SR',
+    element: null,
+    character: null,
+    class: 'Warrior',
+    detailUrl: '/guides/zone-nova/memories/swimsuit-who-makes-hearts-flutter/',
+    stats: {
+      hp: 5000,
+      attack: 500,
+      defense: 500,
+    }, lv1Stats: { hp: 225, attack: 23, defense: 23 },
+    story: "Though Otis is built by the coast, Aphrodite, its resident, has never set foot on a beach. Learning of her situation, your group finds a small beach nearby, bringing all the essentials—beach gear, even a camera—to create cherished memories. When the stunning deity of love dons a pure white swimsuit, her shy, charming demeanor is breathtaking, outshining the sun and sea.",
+    effects: [  // awaken levels 1-5
+      "Attack increases by 12%, Defense increases by 12%",
+      "Attack increases by 14%, Defense increases by 14%",
+      "Attack increases by 16%, Defense increases by 16%",
+      "Attack increases by 18%, Defense increases by 18%",
+      "Attack increases by 20%, Defense increases by 20%",
+    ],
+  },
+  {
+    id: 'heroes-never-stop',
+    slug: 'heroes-never-stop',
+    name: "Hero Never Resting",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Shannacard.jpg',
+    rarity: 'SR',
+    element: null,
+    character: "Saya",
+    class: 'Attacker',
+    detailUrl: '/guides/zone-nova/memories/heroes-never-stop/',
+    stats: {
+      hp: 4200,
+      attack: 650,
+      defense: 395,
+    }, lv1Stats: { hp: 189, attack: 29, defense: 18 },
+    story: "Despite her aunt-like age, our innocent and adorable Saya still harbors a dream of being a hero. Her favorite heroic pose is raising her hand and pointing to the sky, just like a hero's grand entrance in an anime, leading her robot to save the world.",
+    effects: [  // awaken levels 1-5
+      "When there are fewer than 2 enemies on the field, Critical Damage increases by 36%",
+      "When there are fewer than 2 enemies on the field, Critical Damage increases by 45%",
+      "When there are fewer than 2 enemies on the field, Critical Damage increases by 54%",
+      "When there are fewer than 2 enemies on the field, Critical Damage increases by 63%",
+      "When there are fewer than 2 enemies on the field, Critical Damage increases by 72%",
+    ],
+  },
+  {
+    id: 'sister-penny-trying-on-new-clothes',
+    slug: 'sister-penny-trying-on-new-clothes',
+    name: "Pennie Trying on New Clothes",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/sister-penny-trying-on-new-clothes.png',
+    rarity: 'SR',
+    element: null,
+    character: null,
+    class: 'Tank',
+    detailUrl: '/guides/zone-nova/memories/sister-penny-trying-on-new-clothes/',
+    stats: {
+      hp: 5500,
+      attack: 400,
+      defense: 575,
+    }, lv1Stats: { hp: 248, attack: 18, defense: 26 },
+    story: "Lately, Penny's been sneaking off mysteriously, hiding her whereabouts. Worried for her safety, you follow her, only to be led to a hotel room filled with sultry, revealing outfits. She meant to surprise you, but with her cover blown, she playfully pushes you onto the bed, kicking off a “fashion try-on” session.",
+    effects: [  // awaken levels 1-5
+      "HP increases by 12%, after using an ULT, the wearer's damage taken decreases by 6% for 5 seconds",
+      "HP increases by 15%, after using an ULT, the wearer's damage taken decreases by 7% for 5 seconds",
+      "HP increases by 18%, after using an ULT, the wearer's damage taken decreases by 8% for 5 seconds",
+      "HP increases by 21%, after using an ULT, the wearer's damage taken decreases by 9% for 5 seconds",
+      "HP increases by 24%, after using an ULT, the wearer's damage taken decreases by 10% for 5 seconds",
+    ],
+  },
+  {
+    id: 'perverted-little-nurse',
+    slug: 'perverted-little-nurse',
+    name: "Perverted Little Nurse",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Leviathancard.jpg',
+    rarity: 'SR',
+    element: null,
+    character: "Behemoth",
+    class: 'Attacker',
+    detailUrl: '/guides/zone-nova/memories/perverted-little-nurse/',
+    stats: {
+      hp: 4200,
+      attack: 650,
+      defense: 395,
+    }, lv1Stats: { hp: 189, attack: 29, defense: 18 },
+    story: "As the master of Envy's Paradise, Leviathan's favorite attraction is undoubtedly the haunted house. The playful demon dresses as a perverse nurse, prowling the hospital zone. Spotting lovey-dovey couples clinging together, she's determined to “break the lovebirds apart.” Leviathan pounces on the men, unleashing a barrage of twisted banter and wielding various props to teach them a lesson, letting them feel the wrath of the Jealous Demon King.",
+    effects: [  // awaken levels 1-5
+      "After dealing Pursue Damage, Critical Rate increases by 18% for 10 seconds",
+      "After dealing Pursue Damage, Critical Rate increases by 22.5% for 10 seconds",
+      "After dealing Pursue Damage, Critical Rate increases by 27% for 10 seconds",
+      "After dealing Pursue Damage, Critical Rate increases by 31.5% for 10 seconds",
+      "After dealing Pursue Damage, Critical Rate increases by 36% for 10 seconds",
+    ],
+  },
+  {
+    id: 'solitary-realm',
+    slug: 'solitary-realm',
+    name: "Realm of Solitude",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/kelacard.jpg',
+    rarity: 'SR',
+    element: null,
+    character: "Clara",
+    class: 'Healer',
+    detailUrl: '/guides/zone-nova/memories/solitary-realm/',
+    stats: {
+      hp: 5000,
+      attack: 500,
+      defense: 500,
+    }, lv1Stats: { hp: 225, attack: 23, defense: 23 },
+    story: "In the stillness of the witching hour, Kla loves to slip into a stunning swimsuit and swim alone in her private pool, savoring a tranquil escape from responsibilities and burdens... “Achoo!!! Ugh~ I shouldn't have jumped into the water on such a chilly day!”",
+    effects: [  // awaken levels 1-5
+      "Healing increases by 14%, when healing a target with less than 50% max HP, their damage taken decreases by 4% for 10 seconds",
+      "Healing increases by 18%, when healing a target with less than 50% max HP, their damage taken decreases by 5% for 10 seconds",
+      "Healing increases by 22%, when healing a target with less than 50% max HP, their damage taken decreases by 6% for 10 seconds",
+      "Healing increases by 26%, when healing a target with less than 50% max HP, their damage taken decreases by 7% for 10 seconds",
+      "Healing increases by 30%, when healing a target with less than 50% max HP, their damage taken decreases by 8% for 10 seconds",
+    ],
+  },
+  {
+    id: 'secret-room-reality',
+    slug: 'secret-room-reality',
+    name: "Secret Room Livestream",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Tefnutcard.jpg',
+    rarity: 'SR',
+    element: null,
+    character: "Tefnut",
+    class: 'Attacker',
+    detailUrl: '/guides/zone-nova/memories/secret-room-reality/',
+    stats: {
+      hp: 4200,
+      attack: 650,
+      defense: 395,
+    }, lv1Stats: { hp: 189, attack: 29, defense: 18 },
+    story: "Rumors swirl that Tefnut keeps handsome, muscular male slaves in her “private chamber.” A servant who cleaned it described it as a battlefield, filled with various torture devices. No one has ever seen a living person crawl out, and eerie sounds echo from the room every night, sending chills down spines.",
+    effects: [  // awaken levels 1-5
+      "Damage Over Time Penetration increases by 18%",
+      "Damage Over Time Penetration increases by 22.5%",
+      "Damage Over Time Penetration increases by 27%",
+      "Damage Over Time Penetration increases by 31.5%",
+      "Damage Over Time Penetration increases by 36%",
+    ],
+  },
+  {
+    id: 'sleep-treasure',
+    slug: 'sleep-treasure',
+    name: "Sleep Treasure",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Zashiki-warashicard.jpg',
+    rarity: 'SR',
+    element: null,
+    character: "Zashiki-warashi",
+    class: 'Supporter',
+    detailUrl: '/guides/zone-nova/memories/sleep-treasure/',
+    stats: {
+      hp: 5000,
+      attack: 500,
+      defense: 500,
+    }, lv1Stats: { hp: 225, attack: 23, defense: 23 },
+    story: "“Can't sleep? Here~ Here~” The alluring Zashiki-warashi pulls back the blanket, beckoning you with a warm, motherly smile. In the arms of this all-capable caretaker, you'll surely sleep as soundly as a baby.",
+    effects: [  // awaken levels 1-5
+      "After casting an ULT, team damage increases by 12% for 10 seconds; additionally, 50% chance to increase team Critical Damage by an extra 10% for 10 seconds",
+      "After casting an ULT, team damage increases by 15% for 10 seconds; additionally, 50% chance to increase team Critical Damage by an extra 12.5% for 10 seconds",
+      "After casting an ULT, team damage increases by 18% for 10 seconds; additionally, 50% chance to increase team Critical Damage by an extra 15% for 10 seconds",
+      "After casting an ULT, team damage increases by 21% for 10 seconds; additionally, 50% chance to increase team Critical Damage by an extra 17.5% for 10 seconds",
+      "After casting an ULT, team damage increases by 24% for 10 seconds; additionally, 50% chance to increase team Critical Damage by an extra 20% for 10 seconds",
+    ],
+  },
+  {
+    id: 'summer-afternoon-nap-time',
+    slug: 'summer-afternoon-nap-time',
+    name: "Summer Nap Time",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Summer-Afternoon-Nap-Time.jpg',
+    rarity: 'SR',
+    element: null,
+    character: null,
+    class: 'Destroyer',
+    detailUrl: '/guides/zone-nova/memories/summer-afternoon-nap-time/',
+    stats: {
+      hp: 4200,
+      attack: 650,
+      defense: 395,
+    }, lv1Stats: { hp: 189, attack: 29, defense: 18 },
+    story: "As the chief knight and leader of the knightly order, Arthur must maintain constant vigilance to handle her duties. But on scorching summer afternoons, even her immense endurance falters. During marches, she sheds her armor and dives into a lake to cool off.",
+    effects: [  // awaken levels 1-5
+      "Attack increases by 12%, for each enemy on the field, Attack increases by an additional 3%, up to 4 times",
+      "Attack increases by 14%, for each enemy on the field, Attack increases by an additional 3.5%, up to 4 times",
+      "Attack increases by 16%, for each enemy on the field, Attack increases by an additional 4%, up to 4 times",
+      "Attack increases by 18%, for each enemy on the field, Attack increases by an additional 4.5%, up to 4 times",
+      "Attack increases by 20%, for each enemy on the field, Attack increases by an additional 5%, up to 4 times",
+    ],
+  },
+  {
+    id: 'the-beauty-of-heijing-castle',
+    slug: 'the-beauty-of-heijing-castle',
+    name: "The Beauty of Heikyo Castle",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Snowcard.jpg',
+    rarity: 'SR',
+    element: null,
+    character: "Yuki-onna",
+    class: 'Healer',
+    detailUrl: '/guides/zone-nova/memories/the-beauty-of-heijing-castle/',
+    stats: {
+      hp: 5000,
+      attack: 500,
+      defense: 500,
+    }, lv1Stats: { hp: 225, attack: 23, defense: 23 },
+    story: "Dressed in a bridal gown, Yuki-onna gracefully sits at the center of the stage. She scans the suitors one by one—either grotesque or far too old. If not for her father's persistent pleas, the delicate Yuki-onna wouldn't be here at all. Seeing her father's earnest expression, she reluctantly cooperates, sitting quietly to let him save face tonight. But deep down, she knows they've scoured all of Heikyo Castle with no suitable match. The remaining choices lie with the “grown-ups.”",
+    effects: [  // awaken levels 1-5
+      "Healing increases by 14%, when the healed target's HP is full, their damage increases by 12% for 10 seconds",
+      "Healing increases by 18%, when the healed target's HP is full, their damage increases by 15% for 10 seconds",
+      "Healing increases by 22%, when the healed target's HP is full, their damage increases by 18% for 10 seconds",
+      "Healing increases by 26%, when the healed target's HP is full, their damage increases by 21% for 10 seconds",
+      "Healing increases by 30%, when the healed target's HP is full, their damage increases by 24% for 10 seconds",
+    ],
+  },
+  {
+    id: 'sleepy-guardian',
+    slug: 'sleepy-guardian',
+    name: "The Reason for Slumber",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/sleepy-guardian.png',
+    rarity: 'SR',
+    element: null,
+    character: "Belphegor",
+    class: 'Disruptor',
+    detailUrl: '/guides/zone-nova/memories/sleepy-guardian/',
+    stats: {
+      hp: 5000,
+      attack: 500,
+      defense: 500,
+    }, lv1Stats: { hp: 225, attack: 23, defense: 23 },
+    story: "Belphegor awakens once more on a soft bed, gazing blankly around. A mirror reflects her disheveled state, but she silently adjusts her clothes and longs to crawl back to sleep. She no longer recalls why she slumbers, only that since choosing eternal sleep, she's forsaken this world. She prefers the dream realm over reality. Cast down as a demon, abandoned by the Creator, she once considered ending herself, but as an immortal, death is a farce. So she waits, using endless slumber to erode the world's time, awaiting its end to take her along.",
+    effects: [  // awaken levels 1-5
+      "ULT reduces the target's Energy Gain Efficiency by 10%",
+      "ULT reduces the target's Energy Gain Efficiency by 12%",
+      "ULT reduces the target's Energy Gain Efficiency by 14%",
+      "ULT reduces the target's Energy Gain Efficiency by 16%",
+      "ULT reduces the target's Energy Gain Efficiency by 18%",
+    ],
+  },
+  {
+    id: 'method-of-revenge',
+    slug: 'method-of-revenge',
+    name: "The Way of Revenge",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Greed-Mammon-card.jpg',
+    rarity: 'SR',
+    element: null,
+    character: "Mammon",
+    class: 'Destroyer',
+    detailUrl: '/guides/zone-nova/memories/method-of-revenge/',
+    stats: {
+      hp: 4200,
+      attack: 650,
+      defense: 395,
+    }, lv1Stats: { hp: 189, attack: 29, defense: 18 },
+    story: "You might think Mammon, who possesses the world's wealth, would indulge in endless riches. But that's a human perspective. To this ancient demon, “money” is mere scrap metal and paper. She's unbound by material desires, let alone power. So why does Mammon still covet this trash? It's the “value behind the money.” A single coin reveals humanity's weaknesses and flaws, proving the Creator's so-called “perfect” beings are mere ants. Sitting in a bar, she lures and deceives ignorant humans into ruin, as if slapping the Creator in the face. This is Mammon's revenge, her only method.",
+    effects: [  // awaken levels 1-5
+      "When a Supporter uses an ULT, self ULT damage increases by 30% for 10 seconds",
+      "When a Supporter uses an ULT, self ULT damage increases by 37.5% for 10 seconds",
+      "When a Supporter uses an ULT, self ULT damage increases by 45% for 10 seconds",
+      "When a Supporter uses an ULT, self ULT damage increases by 52.5% for 10 seconds",
+      "When a Supporter uses an ULT, self ULT damage increases by 60% for 10 seconds",
+    ],
+  },
+  {
+    id: 'deceptive-ultimate-temptation',
+    slug: 'deceptive-ultimate-temptation',
+    name: "Ultimate Temptation of Deception",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Deceptive-Ultimate-Temptation.jpg',
+    rarity: 'SR',
+    element: null,
+    character: null,
+    class: 'Disruptor',
+    detailUrl: '/guides/zone-nova/memories/deceptive-ultimate-temptation/',
+    stats: {
+      hp: 5000,
+      attack: 500,
+      defense: 500,
+    }, lv1Stats: { hp: 225, attack: 23, defense: 23 },
+    story: "Since her last failed prank during a house move, Loki has held a grudge, plotting a grand trap to get back at you. For you, she dons provocative black lace lingerie, spritzing her room with perfumes and incense until it's shrouded in fragrant mist. Dim lights create an alluring snare. Reclining on a plush sofa, legs subtly crossed, a sly smile plays on her lips as she awaits her “prey.”",
+    effects: [  // awaken levels 1-5
+      "Attack increases by 12%, when attacking enemies with debuffs, damage increases by 12%",
+      "Attack increases by 14%, when attacking enemies with debuffs, damage increases by 14%",
+      "Attack increases by 16%, when attacking enemies with debuffs, damage increases by 16%",
+      "Attack increases by 18%, when attacking enemies with debuffs, damage increases by 18%",
+      "Attack increases by 20%, when attacking enemies with debuffs, damage increases by 20%",
+    ],
+  },
+  {
+    id: 'guerrilla-users-reminiscence',
+    slug: 'guerrilla-users-reminiscence',
+    name: "ATTACKER REMEM.",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Increase-User-Attack-TwoSwords.jpg',
+    rarity: 'R',
+    element: null,
+    character: null,
+    class: 'Attacker',
+    detailUrl: '/guides/zone-nova/memories/guerrilla-users-reminiscence/',
+    stats: {
+      hp: 3360,
+      attack: 520,
+      defense: 316,
+    }, lv1Stats: { hp: 151, attack: 23, defense: 14 },
+    story: "No Story",
+    effects: [  // awaken levels 1-5
+      "Attack increases by 16%",
+      "Attack increases by 20%",
+      "Attack increases by 24%",
+      "Attack increases by 28%",
+      "Attack increases by 32%",
+    ],
+  },
+  {
+    id: 'annihilation-users-reminiscence',
+    slug: 'annihilation-users-reminiscence',
+    name: "DESTROYER REMEM.",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Increase-User-Attack.jpg',
+    rarity: 'R',
+    element: null,
+    character: null,
+    class: 'Destroyer',
+    detailUrl: '/guides/zone-nova/memories/annihilation-users-reminiscence/',
+    stats: {
+      hp: 3360,
+      attack: 520,
+      defense: 316,
+    }, lv1Stats: { hp: 151, attack: 23, defense: 14 },
+    story: "No Story",
+    effects: [  // awaken levels 1-5
+      "Attack increases by 16%",
+      "Attack increases by 20%",
+      "Attack increases by 24%",
+      "Attack increases by 28%",
+      "Attack increases by 32%",
+    ],
+  },
+  {
+    id: 'qianjues-reminiscence',
+    slug: 'qianjues-reminiscence',
+    name: "DISRUPTOR REMEM.",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/qianjues-reminiscence.png',
+    rarity: 'R',
+    element: null,
+    character: null,
+    class: 'Disruptor',
+    detailUrl: '/guides/zone-nova/memories/qianjues-reminiscence/',
+    stats: {
+      hp: 4000,
+      attack: 400,
+      defense: 400,
+    }, lv1Stats: { hp: 180, attack: 18, defense: 18 },
+    story: "No Story",
+    effects: [  // awaken levels 1-5
+      "When attacking enemies with debuffs, damage increases by 16%",
+      "When attacking enemies with debuffs, damage increases by 20%",
+      "When attacking enemies with debuffs, damage increases by 24%",
+      "When attacking enemies with debuffs, damage increases by 28%",
+      "When attacking enemies with debuffs, damage increases by 32%",
+    ],
+  },
+  {
+    id: 'healers-memory',
+    slug: 'healers-memory',
+    name: "HEALER REMEM.",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/HealersMemory.png',
+    rarity: 'R',
+    element: null,
+    character: null,
+    class: 'Healer',
+    detailUrl: '/guides/zone-nova/memories/healers-memory/',
+    stats: {
+      hp: 4000,
+      attack: 400,
+      defense: 400,
+    }, lv1Stats: { hp: 180, attack: 18, defense: 18 },
+    story: "No Story",
+    effects: [  // awaken levels 1-5
+      "Healing increases by 20%",
+      "Healing increases by 25%",
+      "Healing increases by 30%",
+      "Healing increases by 35%",
+      "Healing increases by 40%",
+    ],
+  },
+  {
+    id: 'support-users-reminiscence',
+    slug: 'support-users-reminiscence',
+    name: "SUPPORTER REMEM.",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/support-users-reminiscence.png',
+    rarity: 'R',
+    element: null,
+    character: null,
+    class: 'Supporter',
+    detailUrl: '/guides/zone-nova/memories/support-users-reminiscence/',
+    stats: {
+      hp: 4000,
+      attack: 400,
+      defense: 400,
+    }, lv1Stats: { hp: 180, attack: 18, defense: 18 },
+    story: "No Story",
+    effects: [  // awaken levels 1-5
+      "Team damage increases by 10%",
+      "Team damage increases by 12.5%",
+      "Team damage increases by 15%",
+      "Team damage increases by 17.5%",
+      "Team damage increases by 20%",
+    ],
+  },
+  {
+    id: 'guardian-users-reminiscence',
+    slug: 'guardian-users-reminiscence',
+    name: "TANK REMEM.",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/guardian-users-reminiscence.png',
+    rarity: 'R',
+    element: null,
+    character: null,
+    class: 'Tank',
+    detailUrl: '/guides/zone-nova/memories/guardian-users-reminiscence/',
+    stats: {
+      hp: 4400,
+      attack: 320,
+      defense: 460,
+    }, lv1Stats: { hp: 198, attack: 14, defense: 21 },
+    story: "No Story",
+    effects: [  // awaken levels 1-5
+      "Defense increases by 24%",
+      "Defense increases by 30%",
+      "Defense increases by 36%",
+      "Defense increases by 42%",
+      "Defense increases by 48%",
+    ],
+  },
+  {
+    id: 'strong-attack-users-reminiscence',
+    slug: 'strong-attack-users-reminiscence',
+    name: "WARRIOR REMEM.",
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/memories/Axe-Attack-User.jpg',
+    rarity: 'R',
+    element: null,
+    character: null,
+    class: 'Warrior',
+    detailUrl: '/guides/zone-nova/memories/strong-attack-users-reminiscence/',
+    stats: {
+      hp: 4000,
+      attack: 400,
+      defense: 400,
+    }, lv1Stats: { hp: 180, attack: 18, defense: 18 },
+    story: "No Story",
+    effects: [  // awaken levels 1-5
+      "Attack increases by 8%, Defense increases by 12%",
+      "Attack increases by 10%, Defense increases by 15%",
+      "Attack increases by 12%, Defense increases by 18%",
+      "Attack increases by 14%, Defense increases by 21%",
+      "Attack increases by 16%, Defense increases by 24%",
+    ],
+  },
+];
 
-// Memory metadata for filters
+
+// Metadata for filters (derived from the live data)
 export const MEMORY_METADATA = {
-  rarities: ['SSR', 'SR', 'R'],
-  elements: ['Fire', 'Ice', 'Wind', 'Holy', 'Chaos'],
-  classes: ['Guardian', 'Warrior', 'Rogue', 'Mage', 'Buffer', 'Debuffer', 'Healer', 'Attacker', 'Disruptor'],
-  characters: [
-    'Afrodite',
-    'Anubis',
-    'Apollo',
-    'Apep',
-    'Artemis',
-    'Arthur',
-    'Athena',
-    'Bastet',
-    'Belphegar',
-    'Chiya',
-    'Cleopatra',
-    'Erika',
-    'Freya',
-    'Freye',
-    'Gaia',
-    'Gluttony - Beelzebub',
-    'Greed Mammon',
-    'Guinevere',
-    'Hela',
-    'Hera',
-    'Hiyori',
-    'Horus',
-    'Jeanne D Arc',
-    'Jorogumo',
-    'Kela',
-    'Keller',
-    'Lancelot',
-    'Lavinia',
-    'Leviathan',
-    'Lily',
-    'Loki',
-    'Lust - Asmodeus',
-    'Lyra',
-    'Merlin',
-    'Mordred',
-    'Naiya',
-    'Nina',
-    'Nini',
-    'Odin',
-    'Pride-Lucifer',
-    'Penny',
-    'Rose',
-    'Shanna',
-    'Sharin',
-    'Shuten-doji',
-    'Sigurd',
-    'Shu',
-    'Snow Girl',
-    'Tefnut',
-    'Thor',
-    'Yuis',
-    'Zashiki-warashi',
-    'Wrath-Samael'
-  ]
-  };
+  rarities: [...new Set(ZONE_NOVA_MEMORIES.map(m => m.rarity))],
+  elements: [...new Set(ZONE_NOVA_MEMORIES.map(m => m.element).filter(Boolean))],
+  classes: [...new Set(ZONE_NOVA_MEMORIES.map(m => m.class).filter(Boolean))].sort(),
+  characters: [...new Set(ZONE_NOVA_MEMORIES.map(m => m.character).filter(Boolean))].sort(),
+};
 
-// Helper functions for memory management
 export function getMemoriesByRarity(rarity) {
   return ZONE_NOVA_MEMORIES.filter(memory => memory.rarity === rarity);
 }
@@ -1409,53 +1906,9 @@ export function getMemoryBySlug(slug) {
 }
 
 export function getMemoriesByClass(className) {
-  return ZONE_NOVA_MEMORIES.filter(memory => {
-    if (!memory.character) return false; // Skip non-character specific memories
-    return getCharacterClass(memory.character) === className;
-  });
+  return ZONE_NOVA_MEMORIES.filter(memory => memory.class === className);
 }
 
 export function getMemoryClass(memory) {
-  // First check if memory has a direct class field
-  if (memory.class) return memory.class;
-
-  // If no direct class, try to get it from character
-  if (memory.character) return getCharacterClass(memory.character);
-
-  // No class information available
-  return null;
-}
-
-// Sort memories by different criteria
-export function sortMemories(memories, sortBy, ascending = true) {
-  const sorted = [...memories].sort((a, b) => {
-    let aVal, bVal;
-
-    switch (sortBy) {
-      case 'name':
-        aVal = a.name.toLowerCase();
-        bVal = b.name.toLowerCase();
-        break;
-      case 'rarity': {
-        const rarityOrder = { SSR: 3, SR: 2, R: 1 };
-        aVal = rarityOrder[a.rarity];
-        bVal = rarityOrder[b.rarity];
-        break;
-      }
-      case 'hp':
-      case 'attack':
-      case 'defense':
-        aVal = a.stats[sortBy];
-        bVal = b.stats[sortBy];
-        break;
-      default:
-        return 0;
-    }
-
-    if (aVal < bVal) return ascending ? -1 : 1;
-    if (aVal > bVal) return ascending ? 1 : -1;
-    return 0;
-  });
-
-  return sorted;
+  return memory?.class || null;
 }

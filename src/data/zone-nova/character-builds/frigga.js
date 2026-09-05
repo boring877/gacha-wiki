@@ -1,10 +1,10 @@
 // Frigga Build - Zone Nova Character Build
-// SSR Chaos character - Chaos Debuffer with DOT and Damage Amplification
+// SSR Chaos character - Chaos Disruptor with DOT and Damage Amplification
 
 export const friggaChaosBuild = {
   name: 'Frigga',
-  role: 'Debuffer',
-  buildType: 'Chaos Debuffer',
+  role: 'Disruptor',
+  buildType: 'Chaos Disruptor',
   description:
     'Frigga is Chaos debuffer that can reduce enemy resistance, and increase damage taken. She also can reduce enemy energy gain and defense. ',
   skillPriority: [
@@ -59,11 +59,11 @@ export const friggaChaosBuild = {
   ],
   alternativeMemoryCards: [
     {
-      name: 'Sleepy Guardian',
+      name: 'Sleepy Tank',
       effect:
         "This memory is good for PVP to help reduce the target's energy recovery, preventing enemies from using their ultimate skills frequently.",
       characterSpecific: false,
-      memoryImage: 'SleepyGuardian.png',
+      memoryImage: 'SleepyTank.png',
       memoryStats: { hp: '5,200', attack: '420', defense: '380' },
       description: 'Ultimate skill can reduce targets energy regen by 18%.',
       note: 'Excellent PVP memory to control enemy ultimate skill timing.',
@@ -75,7 +75,7 @@ export const friggaChaosBuild = {
     stats: ['ATK%', 'Penetration'],
     additionalStats: ['ATK', 'HP', 'DEF'],
     buildNote:
-      'Her AOE damage is not bad but not strong enough, Some people go tank with her and little of ATK. She is a Debuffer mainly deal DOT damage and  increase damage taken and lower resistance.',
+      'Her AOE damage is not bad but not strong enough, Some people go tank with her and little of ATK. She is a Disruptor mainly deal DOT damage and  increase damage taken and lower resistance.',
     recommendedSets: [
       {
         name: 'Giants 4-piece + Gimel 2-piece',
@@ -210,7 +210,7 @@ export const friggaChaosBuild = {
   },
   teamSkill: {
     name: 'Divine Protection',
-    activationCondition: 'Team contains 2 [A.S.A] characters or 2 [Chaos] characters',
+    activationCondition: 'Team contains 2 [Asa] characters or 2 [Chaos] characters',
     effects: [
       'After combat starts, reduces total damage dealt by all enemy units by 2.5%',
       'For every 1000 attack power Frigga has, this effect increases by 100% (doubles), maximum increase of 300%',

@@ -9,8 +9,8 @@ export const characterTemplate = {
   image: '[CHARACTER_IMAGE]', // Use format: charactername (e.g., 'penny')
   rarity: '[RARITY]', // SSR, SR, R
   element: '[ELEMENT]', // Fire, Ice, Wind, Holy, Chaos
-  class: '[CLASS]', // Guardian, Warrior, Rogue, Mage, Buffer, Debuffer, Healer - Determines memory compatibility
-  role: '[ROLE]', // Tank, DPS, Buffer, Debuffer, Healer - Functional description
+  class: '[CLASS]', // Tank, Warrior, Attacker, Destroyer, Supporter, Disruptor, Healer - Determines memory compatibility
+  role: '[ROLE]', // Tank, DPS, Supporter, Disruptor, Healer - Functional description
   faction: '[FACTION]', // Savir, etc.
 
   // Base Stats (Level 80)

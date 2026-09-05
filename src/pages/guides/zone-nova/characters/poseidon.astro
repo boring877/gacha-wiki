@@ -1,0 +1,16 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import { poseidonData, poseidonSEO } from '../../../../data/zone-nova/characters/poseidon.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={poseidonSEO.title}
+  description={poseidonSEO.description}
+  gameTitle={poseidonData.name}
+  character={poseidonData}
+>
+  <CharacterPageTemplate characterData={poseidonData} />
+</CharacterIndividualLayout>
