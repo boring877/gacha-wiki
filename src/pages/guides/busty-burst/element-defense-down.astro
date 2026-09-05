@@ -8,10 +8,11 @@ import PaladinImage from '../../../components/busty-burst/PaladinImage.astro';
 import ElementImage from '../../../components/busty-burst/ElementImage.astro';
 import RarityImage from '../../../components/busty-burst/RarityImage.astro';
 import SkillIcon from '../../../components/busty-burst/SkillIcon.astro';
-import { getElementDefenseDownSkills, groupByElementType, getElementDefenseDownStats } from '../../../data/busty-burst/element-defense-down-data.js';
+import { getElementDefenseDownSkills, groupByElementType, getElementDefenseDownStats, ELEMENT_ATK_UP_SKILLS } from '../../../data/busty-burst/element-defense-down-data.js';
 
 // Get all element defense down skills
 const allSkills = getElementDefenseDownSkills();
+const atkUpSkills = ELEMENT_ATK_UP_SKILLS;
 const groupedByElement = groupByElementType(allSkills);
 const stats = getElementDefenseDownStats();
 
@@ -43,41 +44,38 @@ const gameTitle = 'Element Defense Down Database';
 
 <DefenseDownLayout title={title} description={description} gameTitle={gameTitle}>
   <div class="bb-defdown-page">
-    <!-- Summary Stats -->
-    <div class="bb-defdown-summary">
-      <div class="bb-defdown-stat-card">
-        <div class="bb-defdown-stat-value">{stats.uniqueChars}</div>
-        <div class="bb-defdown-stat-label">Characters</div>
-      </div>
-      <div class="bb-defdown-stat-card">
-        <div class="bb-defdown-stat-value">{stats.totalSkills}</div>
-        <div class="bb-defdown-stat-label">Skills</div>
-      </div>
-      <div class="bb-defdown-stat-card">
-        <div class="bb-defdown-stat-value">{stats.totalUltimates}</div>
-        <div class="bb-defdown-stat-label">Ultimates</div>
-      </div>
-      <div class="bb-defdown-stat-card">
-        <div class="bb-defdown-stat-value">{activeElements.length}</div>
-        <div class="bb-defdown-stat-label">Element Types</div>
+<!-- Info Box -->
+    <div class="bb-defdown-info-box">
+      <h3 class="bb-defdown-info-title">Element Defense Down</h3>
+      <div class="bb-defdown-info-content">
+        <p class="bb-defdown-info-text">
+          Element Type Defense Down reduces enemy defense against a specific element (Fire, Water, Wind, etc.) —
+          it increases damage dealt by attacks of that element, unlike Physical/Magic Defense Down.
+        </p>
+        <p class="bb-defdown-info-text">
+          Best use: pair these characters with DPS of the matching element for maximum damage boost.
+          These are rare skills; stacking follows the same category rules as other debuffs —
+          see the <a href="/guides/busty-burst/buff-debuff-guide/">Buff &amp; Debuff Guide</a>.
+        </p>
       </div>
     </div>
 
-    <!-- Info Box -->
+    <!-- View Tabs: Damage Taken UP vs Type ATK UP -->
+    <div class="bb-defdown-tabs">
+      <button type="button" class="bb-defdown-tab active" data-view="taken">Damage Taken UP ({allSkills.length})</button>
+      <button type="button" class="bb-defdown-tab" data-view="atk">Type ATK UP ({atkUpSkills.length})</button>
+    </div>
+
+    <!-- Damage Taken UP info -->
+    <div class="bb-view-content active" id="view-taken">
     <div class="bb-defdown-info-box">
-      <h3 class="bb-defdown-info-title">What is Element Defense Down?</h3>
-      <p class="bb-defdown-info-text">
-        <strong>Element Type Defense Down</strong> reduces enemy defense against a specific element (Fire, Water, Wind, etc.).
-        This is different from Physical/Magic Defense Down - it specifically increases damage dealt by attacks of that element type.
-      </p>
-      <p class="bb-defdown-info-text" style="margin-top: 0.75rem;">
-        <strong>Best Use:</strong> Pair these characters with DPS of the matching element for maximum damage boost.
-        For example, use a Fire Type Defense Down character with Fire DPS characters.
-      </p>
-      <p class="bb-defdown-info-text" style="margin-top: 0.75rem;">
-        <strong>Note:</strong> These are rare skills - only a few characters have them. They follow the same category rules as other debuffs.
-        See <a href="/guides/busty-burst/buff-debuff-guide/" style="color: #60a5fa;">Buff & Debuff Guide</a> for stacking rules.
-      </p>
+      <h3 class="bb-defdown-info-title">Element Damage Taken UP (enemy shred)</h3>
+      <div class="bb-defdown-info-content">
+        <p class="bb-defdown-info-text">
+          These skills make enemies take more damage of a specific element — the element equivalent of defense down.
+          Pair with DPS of the matching element for maximum damage.
+        </p>
+      </div>
     </div>
 
     <!-- Element Filter Tabs -->
@@ -88,7 +86,6 @@ const gameTitle = 'Element Defense Down Database';
           type="button"
           class="bb-element-tab"
           data-element={el.toLowerCase()}
-          style={`--element-color: ${getElementColor(el)}`}
         >
           {el} ({groupedByElement[el]?.length || 0})
         </button>
@@ -119,11 +116,6 @@ const gameTitle = 'Element Defense Down Database';
       </div>
     </div>
 
-    <!-- Results Count -->
-    <div class="bb-defdown-results-count" id="results-count">
-      Showing <span>{allSkills.length}</span> skills
-    </div>
-
     <!-- Skills Grid -->
     <div class="bb-defdown-grid" id="skills-grid">
       {allSkills.map(skill => (
@@ -135,6 +127,7 @@ const gameTitle = 'Element Defense Down Database';
           data-source={skill.sourceType}
           data-rarity={skill.rarity?.toLowerCase()}
         >
+          <a class="bb-defdown-card-link" href={`/guides/busty-burst/characters/${skill.characterSlug}/`} aria-label={`View ${skill.characterName}`}></a>
           <div class="bb-defdown-card-header">
             <div class="bb-defdown-card-avatar">
               <PaladinImage characterId={skill.characterId} alt={skill.characterName} width={60} height={60} />
@@ -158,7 +151,7 @@ const gameTitle = 'Element Defense Down Database';
           </div>
           <div class="bb-defdown-card-body">
             <!-- Element Type Badge -->
-            <div class="bb-element-badge" style={`--element-color: ${getElementColor(skill.elementType)}`}>
+            <div class="bb-element-badge">
               <span class="bb-element-badge-icon">
                 <ElementImage element={skill.elementType} width={20} height={20} />
               </span>
@@ -176,12 +169,12 @@ const gameTitle = 'Element Defense Down Database';
                 </div>
               </div>
             </div>
-            <div class="bb-defdown-values" style={`border-color: ${getElementColor(skill.elementType)}40; background: ${getElementColor(skill.elementType)}15;`}>
-              <span class="bb-defdown-lv-badge" style={skill.sourceType === 'ultimate' ? 'background: linear-gradient(135deg, #ec4899, #db2777);' : ''}>
-                {skill.sourceType === 'ultimate' ? 'LV5' : 'Lv90'}
-              </span>
+            <div class="bb-defdown-values">
+              <span class="bb-defdown-lv-badge">
+                  {skill.sourceType === 'ultimate' ? 'LV5' : 'Lv90'}
+                </span>
               <div class="bb-defdown-value-main">
-                <span class="bb-defdown-value-percent" style={`color: ${getElementColor(skill.elementType)}`}>-{skill.percent}%</span>
+                <span class="bb-defdown-value-percent">-{skill.percent}%</span>
               </div>
               <div class="bb-defdown-value-duration">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -209,6 +202,117 @@ const gameTitle = 'Element Defense Down Database';
       <h3>No skills found</h3>
       <p>Try adjusting your search or filter criteria.</p>
     </div>
+    </div>
+
+    <!-- ===== Type ATK UP view ===== -->
+    <div class="bb-view-content" id="view-atk">
+    <div class="bb-defdown-info-box">
+      <h3 class="bb-defdown-info-title">Element Type ATK UP (team amplification)</h3>
+      <div class="bb-defdown-info-content">
+        <p class="bb-defdown-info-text">
+          These skills raise your team's attack of a specific element — self and ally buffs that amplify
+          matching-element damage. Combine with Damage Taken UP for the strongest elemental comps.
+        </p>
+      </div>
+    </div>
+
+    <div class="bb-defdown-controls">
+      <div class="bb-defdown-filter-row">
+        <input
+          type="text"
+          id="atk-search"
+          class="bb-defdown-search-input"
+          placeholder="Search by character or skill name..."
+        />
+        <select id="atk-rarity-filter" class="bb-defdown-filter-select">
+          <option value="">All Rarities</option>
+          <option value="ssr">SSR</option>
+          <option value="sr">SR</option>
+          <option value="r">R</option>
+        </select>
+        <button type="button" id="atk-clear" class="bb-defdown-clear-btn">Clear All</button>
+      </div>
+    </div>
+
+    <div class="bb-defdown-grid" id="atk-grid">
+      {atkUpSkills.map(skill => (
+        <div
+          class="bb-defdown-card"
+          data-name={skill.characterName.toLowerCase()}
+          data-skill={skill.skillName.toLowerCase()}
+          data-element-type={skill.elementType.toLowerCase()}
+          data-source={skill.sourceType}
+          data-rarity={skill.rarity?.toLowerCase()}
+        >
+          <a class="bb-defdown-card-link" href={`/guides/busty-burst/characters/${skill.characterSlug}/`} aria-label={`View ${skill.characterName}`}></a>
+          <div class="bb-defdown-card-header">
+            <div class="bb-defdown-card-avatar">
+              <PaladinImage characterId={skill.characterId} alt={skill.characterName} width={60} height={60} />
+            </div>
+            <div class="bb-defdown-card-info">
+              <h3 class="bb-defdown-card-name">{skill.characterName}</h3>
+              <div class="bb-defdown-card-meta">
+                {skill.rarity && (
+                  <span class="bb-defdown-meta-item">
+                    <RarityImage rarity={skill.rarity} width={80} height={40} class="bb-defdown-rarity-img" />
+                  </span>
+                )}
+                {skill.element && (
+                  <span class="bb-defdown-meta-item">
+                    <ElementImage element={skill.element} width={16} height={16} />
+                    {skill.element}
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+          <div class="bb-defdown-card-body">
+            <div class="bb-element-badge">
+              <span class="bb-element-badge-icon">
+                <ElementImage element={skill.elementType} width={20} height={20} />
+              </span>
+              <span class="bb-element-badge-text">{skill.elementType} Type ATK UP</span>
+            </div>
+
+            <div class="bb-defdown-skill-row">
+              <div class="bb-defdown-skill-icon">
+                <SkillIcon skillId={skill.skillIcon} alt={skill.skillName} width={36} height={36} />
+              </div>
+              <div class="bb-defdown-skill-info">
+                <div class="bb-defdown-skill-name">{skill.skillName}</div>
+                <div class="bb-defdown-skill-slot">
+                  {skill.sourceType === 'ultimate' ? 'Ultimate LV5' : `Skill {skill.skillSlot}`}
+                </div>
+              </div>
+            </div>
+            <div class="bb-defdown-values">
+              <span class="bb-defdown-lv-badge">
+                {skill.sourceType === 'ultimate' ? 'LV5' : 'Lv90'}
+              </span>
+              <div class="bb-defdown-value-main">
+                <span class="bb-defdown-value-percent">+{skill.percent}%</span>
+                <span class={`bb-atk-scope bb-atk-scope--${skill.scope}`}>
+                  {skill.scope === 'self' ? 'Self' : 'Allies'}
+                </span>
+              </div>
+              <div class="bb-defdown-value-duration">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
+                </svg>
+                {skill.duration}s
+              </div>
+            </div>
+            {skill.description && <div class="bb-defdown-description">{skill.description}</div>}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="bb-defdown-no-results" id="atk-no-results">
+      <h3>No skills found</h3>
+      <p>Try adjusting your search or filter criteria.</p>
+    </div>
+    </div>
   </div>
 </DefenseDownLayout>
 
@@ -219,7 +323,6 @@ const gameTitle = 'Element Defense Down Database';
     const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
     const clearBtn = document.getElementById('clear-filters');
     const noResults = document.getElementById('no-results');
-    const resultsCount = document.getElementById('results-count');
     const elementTabs = document.querySelectorAll('.bb-element-tab');
     const cards = document.querySelectorAll('#skills-grid .bb-defdown-card');
 
@@ -251,11 +354,6 @@ const gameTitle = 'Element Defense Down Database';
         noResults.classList.toggle('visible', visibleCount === 0);
       }
 
-      // Update results count
-      if (resultsCount) {
-        const span = resultsCount.querySelector('span');
-        if (span) span.textContent = visibleCount.toString();
-      }
     }
 
     function clearFilters() {
@@ -283,6 +381,45 @@ const gameTitle = 'Element Defense Down Database';
     rarityFilter?.addEventListener('change', filterCards);
     clearBtn?.addEventListener('click', clearFilters);
   }
+
+  // ===== View tabs (Damage Taken UP / Type ATK UP) =====
+  const viewTabs = document.querySelectorAll('.bb-defdown-tab[data-view]');
+  const viewContents = document.querySelectorAll('.bb-view-content');
+  viewTabs.forEach(vt => {
+    vt.addEventListener('click', () => {
+      viewTabs.forEach(v => v.classList.remove('active'));
+      viewContents.forEach(c => c.classList.remove('active'));
+      vt.classList.add('active');
+      document.getElementById(`view-${vt.getAttribute('data-view')}`)?.classList.add('active');
+    });
+  });
+
+  // ===== ATK UP view filters =====
+  const atkSearch2 = document.getElementById('atk-search') as HTMLInputElement;
+  const atkRarity2 = document.getElementById('atk-rarity-filter') as HTMLSelectElement;
+  const atkCards2 = document.querySelectorAll('#atk-grid .bb-defdown-card');
+  const atkNoResults2 = document.getElementById('atk-no-results');
+
+  function filterAtk() {
+    const q = atkSearch2?.value.toLowerCase() || '';
+    const rarity = atkRarity2?.value.toLowerCase() || '';
+    let visible = 0;
+    atkCards2.forEach(card => {
+      const el = card as HTMLElement;
+      const ok = (!q || el.dataset.name?.includes(q) || el.dataset.skill?.includes(q)) &&
+        (!rarity || el.dataset.rarity === rarity);
+      el.classList.toggle('hidden', !ok);
+      if (ok) visible++;
+    });
+    atkNoResults2?.classList.toggle('visible', visible === 0);
+  }
+  atkSearch2?.addEventListener('input', filterAtk);
+  atkRarity2?.addEventListener('change', filterAtk);
+  document.getElementById('atk-clear')?.addEventListener('click', () => {
+    if (atkSearch2) atkSearch2.value = '';
+    if (atkRarity2) atkRarity2.value = '';
+    filterAtk();
+  });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initPage);

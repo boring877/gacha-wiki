@@ -1,6 +1,7 @@
-/* Busty Burst Defense Down pages — flat card design (2026-09-05 redesign).
+/* Busty Burst Defense Down pages — flat card design (2026-09-05).
    Teal accent system, no nested boxes: one card per skill, values as the
-   visual anchor, meta as muted inline text. */
+   visual anchor, meta as muted inline text. Shared by the physical, magic
+   and element pages. */
 
 .bb-defdown-page {
   display: flex;
@@ -8,39 +9,7 @@
   gap: 1.25rem;
 }
 
-/* ===== Summary: one slim inline row, no boxes ===== */
-.bb-defdown-summary {
-  display: flex;
-  align-items: baseline;
-  gap: 1.75rem;
-  flex-wrap: wrap;
-  padding: 0.25rem 0;
-}
-
-.bb-defdown-stat-card {
-  display: flex;
-  align-items: baseline;
-  gap: 0.45rem;
-  background: none;
-  border: none;
-  padding: 0;
-}
-
-.bb-defdown-stat-value {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--bbc-accent-strong, #8fd0ea);
-  font-variant-numeric: tabular-nums;
-}
-
-.bb-defdown-stat-label {
-  font-size: 0.72rem;
-  color: var(--bb-text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-/* ===== Info box: one quiet card ===== */
+/* ===== Info box ===== */
 .bb-defdown-info-box {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -74,19 +43,30 @@
   color: var(--bbc-accent-strong, #8fd0ea);
 }
 
-/* ===== Tabs: quiet pills ===== */
+.bb-defdown-info-text strong {
+  font-size: inherit;
+  letter-spacing: normal;
+  font-weight: 600;
+  color: var(--bb-text-primary);
+}
+
+/* ===== Tabs: underline bar anchoring the content panel ===== */
 .bb-defdown-tabs {
   display: flex;
-  gap: 0.4rem;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--bb-border);
+  margin-top: 0.75rem;
 }
 
 .bb-defdown-tab {
-  padding: 0.4rem 1rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 999px;
-  color: var(--bb-text-secondary);
-  font-size: 0.82rem;
+  padding: 0.7rem 1.35rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  border-radius: 0;
+  color: var(--bb-text-tertiary);
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   transition: color 0.15s ease, border-color 0.15s ease;
@@ -94,8 +74,8 @@
 
 .bb-defdown-tab.active {
   color: var(--bbc-accent-strong, #8fd0ea);
-  border-color: rgba(74, 131, 153, 0.45);
-  background: rgba(74, 131, 153, 0.12);
+  border-bottom-color: var(--bbc-accent-strong, #8fd0ea);
+  background: none;
 }
 
 .bb-defdown-tab-content {
@@ -111,6 +91,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-top: 1rem;
 }
 
 .bb-defdown-filter-row {
@@ -145,6 +126,11 @@
   border-color: rgba(74, 131, 153, 0.5);
 }
 
+.bb-defdown-filter-select option {
+  background: var(--bb-bg-card, #1e242a);
+  color: var(--bb-text-primary, #f5f5f5);
+}
+
 .bb-defdown-clear-btn {
   padding: 0.45rem 0.9rem;
   background: none;
@@ -153,17 +139,6 @@
   color: var(--bb-text-tertiary);
   font-size: 0.78rem;
   cursor: pointer;
-}
-
-.bb-defdown-results-count {
-  font-size: 0.78rem;
-  color: var(--bb-text-tertiary);
-  margin: 0.15rem 0 0;
-}
-
-.bb-defdown-results-count span {
-  color: var(--bb-text-primary);
-  font-weight: 600;
 }
 
 .bb-defdown-no-results {
@@ -177,71 +152,16 @@
   display: block;
 }
 
-/* ===== Tier sections: letter + label on one rhythm, thin divider ===== */
-.bb-defdown-tier-section {
-  margin-top: 0.5rem;
-}
-
-.bb-defdown-tier-header {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  padding-bottom: 0.55rem;
-  border-bottom: 1px solid var(--bb-border);
-}
-
-.bb-defdown-tier-badge {
-  font-size: 1.35rem;
-  font-weight: 800;
-  line-height: 1;
-  color: var(--bbc-accent-strong, #8fd0ea);
-  min-width: 1.6rem;
-  text-align: center;
-  font-variant-numeric: tabular-nums;
-}
-
-.bb-defdown-tier-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.bb-defdown-tier-title {
-  margin: 0;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--bb-text-primary);
-  line-height: 1.3;
-}
-
-.bb-defdown-tier-desc {
-  margin: 0.12rem 0 0;
-  font-size: 0.73rem;
-  color: var(--bb-text-tertiary);
-}
-
-.bb-defdown-tier-count {
-  font-size: 0.75rem;
-  color: var(--bb-text-tertiary);
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
-
-/* per-tier accent on the letter */
-.bb-defdown-tier-section[data-tier='S'] .bb-defdown-tier-badge { color: #8fd0ea; }
-.bb-defdown-tier-section[data-tier='A'] .bb-defdown-tier-badge { color: #7fc3a8; }
-.bb-defdown-tier-section[data-tier='B'] .bb-defdown-tier-badge { color: #d8c07a; }
-.bb-defdown-tier-section[data-tier='C'] .bb-defdown-tier-badge { color: var(--bb-text-tertiary); }
-.bb-defdown-tier-section[data-tier='ULT'] .bb-defdown-tier-badge { color: #c9a8e0; }
-
 /* ===== Cards: one flat unit ===== */
 .bb-defdown-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-  gap: 0.75rem;
-  margin-top: 0.85rem;
+  gap: 0.85rem;
+  margin-top: 1.1rem;
 }
 
 .bb-defdown-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
@@ -253,6 +173,14 @@
 
 .bb-defdown-card.hidden {
   display: none;
+}
+
+/* stretched link: whole card is clickable through to the character page */
+.bb-defdown-card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
 }
 
 /* — header: portrait + name + inline rarity/element — */
@@ -336,7 +264,7 @@
 }
 
 .bb-defdown-skill-name {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--bb-text-primary);
   overflow: hidden;
@@ -356,8 +284,9 @@
 .bb-defdown-values {
   display: flex;
   align-items: baseline;
-  gap: 0.6rem;
+  gap: 0.55rem;
   flex-wrap: wrap;
+  padding-top: 0.1rem;
 }
 
 .bb-defdown-lv-badge {
@@ -375,18 +304,19 @@
 }
 
 .bb-defdown-value-percent {
-  font-size: 1.25rem;
-  font-weight: 800;
+  font-size: 1.05rem;
+  font-weight: 700;
   color: var(--bbc-accent-strong, #8fd0ea);
   font-variant-numeric: tabular-nums;
-  line-height: 1;
+  line-height: 1.2;
 }
 
 .bb-defdown-value-flat {
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--bb-text-secondary);
   font-variant-numeric: tabular-nums;
+  line-height: 1.2;
 }
 
 .bb-defdown-value-duration {
@@ -404,9 +334,9 @@
   opacity: 0.6;
 }
 
-/* one muted meta line instead of a target box */
+/* one muted meta line */
 .bb-defdown-target {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: var(--bb-text-tertiary);
 }
 
@@ -433,36 +363,95 @@
 }
 
 .bb-defdown-description {
-  font-size: 0.75rem;
-  line-height: 1.5;
-  color: var(--bb-text-muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--bb-text-secondary);
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-/* ===== Ultimate cards (same unit, subtle accent) ===== */
+/* ===== Ultimate cards: subtle accent ===== */
 .bb-defdown-card-ultimate {
   background: rgba(201, 168, 224, 0.05);
   border-color: rgba(201, 168, 224, 0.18);
 }
 
+/* ===== Element page: element-type tabs ===== */
+.bb-element-tabs {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--bb-border);
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.bb-element-tab {
+  padding: 0.6rem 1.1rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  border-radius: 0;
+  color: var(--bb-text-tertiary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.bb-element-tab.active {
+  color: var(--bbc-accent-strong, #8fd0ea);
+  border-bottom-color: var(--bbc-accent-strong, #8fd0ea);
+}
+
+.bb-element-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--bb-text-tertiary);
+}
+
+/* ===== Element page: view panes ===== */
+.bb-view-content {
+  display: none;
+}
+
+.bb-view-content.active {
+  display: block;
+}
+
+/* ===== ATK UP scope badge ===== */
+.bb-atk-scope {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.bb-atk-scope--self {
+  color: var(--bb-text-secondary);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.bb-atk-scope--ally {
+  color: #7fc3a8;
+  background: rgba(127, 195, 168, 0.1);
+  border: 1px solid rgba(127, 195, 168, 0.3);
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .bb-defdown-summary {
-    gap: 1rem;
-  }
-
-  .bb-defdown-stat-value {
-    font-size: 1.2rem;
-  }
-
   .bb-defdown-grid {
     grid-template-columns: 1fr;
-  }
-
-  .bb-defdown-tier-badge {
-    font-size: 1.3rem;
   }
 }

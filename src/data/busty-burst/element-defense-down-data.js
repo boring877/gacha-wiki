@@ -11,7 +11,9 @@ const validCharacterSlugs = new Set(getAllCharacterSlugs());
 // Only characters with released art (unrevealed units stay off the lists)
 const hasArt = (id) => SPRITE_IDS.has(id);
 
-const ELEMENT_TYPES = ['Fire', 'Water', 'Wind', 'Light', 'Dark', 'Mind'];
+// game-data names -> display names (data says Holy/Magic; wiki shows Light/Dark)
+const ELEMENT_TYPES = ['Fire', 'Water', 'Wind', 'Holy', 'Magic', 'Mind'];
+const ELEMENT_DISPLAY = { Fire: 'Fire', Water: 'Water', Wind: 'Wind', Holy: 'Light', Magic: 'Dark', Mind: 'Mind' };
 
 function isElementDefenseDownBuff(buff, element) {
   if (!buff || !buff.name) return false;
@@ -95,7 +97,7 @@ function extractElementDefenseDownSkills() {
               skillIcon: skill.icon,
               target: skill.target || 'Unknown',
               description: desc,
-              elementType: elType,
+              elementType: ELEMENT_DISPLAY[elType] || elType,
               sourceType: 'skill',
               percent,
               duration,
@@ -131,7 +133,7 @@ function extractElementDefenseDownSkills() {
               skillIcon: maxUlt.icon,
               target: 'Varies',
               description: desc,
-              elementType: elType,
+              elementType: ELEMENT_DISPLAY[elType] || elType,
               sourceType: 'ultimate',
               percent,
               duration,
@@ -149,6 +151,109 @@ function extractElementDefenseDownSkills() {
 }
 
 export const ELEMENT_DEFENSE_DOWN_SKILLS = extractElementDefenseDownSkills();
+
+// ===== Element Type ATK UP (self/ally element attack amplification) =====
+function isElementAtkUpBuff(buff, element) {
+  if (!buff || !buff.name) return false;
+  const name = buff.name.toLowerCase();
+  const el = element.toLowerCase();
+  // "Fire Type ATK +" family (also appears combined: "Physical Attack +, Mind Type ATK +")
+  return name.includes('type atk') && name.includes('+') && name.includes(el);
+}
+
+
+// Self vs ally classification: descriptions say "to self" / "grant self" /
+// "for all allies" (game XML buff_target confirms: 自身 vs 我方全體)
+function getAtkScope(desc, target) {
+  const d = (desc || '') + ' ' + (target || '');
+  if (/all allies|all ally/i.test(d)) return 'ally';
+  if (/to self|grant self|self for|^self$/i.test(d)) return 'self';
+  return 'self'; // game data defaults these buffs to 自身 (self)
+}
+
+function extractElementAtkUpSkills() {
+  const results = [];
+
+  for (const char of BUSTY_BURST_SKILLS_DATA) {
+    if (!validCharacterSlugs.has(char.slug) || !hasArt(char.id)) continue;
+
+    const charBase = {
+      characterId: char.id,
+      characterName: char.name,
+      characterSlug: char.slug,
+      rarity: char.rarity,
+      element: char.element,
+      role: char.role,
+    };
+
+    if (char.skills) {
+      for (const skill of char.skills) {
+        for (const buff of skill.buffEffects || []) {
+          for (const elType of ELEMENT_TYPES) {
+            if (!isElementAtkUpBuff(buff, elType)) continue;
+
+            const percent = buff.type === 'percent' ? Math.abs(buff.value || 0) : 0;
+            if (percent <= 0) continue;
+
+            results.push({
+              ...charBase,
+              skillName: skill.name,
+              skillSlot: skill.slot,
+              skillIcon: skill.icon,
+              target: skill.target || 'Unknown',
+              description: skill.descriptionLv90 || skill.description || '',
+              elementType: ELEMENT_DISPLAY[elType] || elType,
+              sourceType: 'skill',
+              percent,
+              duration: buff.duration || null,
+              buffName: buff.name,
+              targetType: getTargetType(skill.descriptionLv90 || skill.description || ''),
+              scope: getAtkScope(skill.descriptionLv90 || skill.description || '', skill.target),
+            });
+          }
+        }
+      }
+    }
+
+    if (char.ultimate) {
+      const maxUlt = char.ultimate.find(u => u.rank === 5) || char.ultimate[char.ultimate.length - 1];
+      if (maxUlt) {
+        for (const buff of maxUlt.buffEffects || []) {
+          if (!isUltimateBuff(buff)) continue;
+
+          for (const elType of ELEMENT_TYPES) {
+            if (!isElementAtkUpBuff(buff, elType)) continue;
+
+            const percent = buff.type === 'percent' ? Math.abs(buff.value || 0) : 0;
+            if (percent <= 0) continue;
+
+            results.push({
+              ...charBase,
+              skillName: maxUlt.name,
+              skillSlot: 'Ultimate',
+              skillIcon: maxUlt.icon,
+              target: 'Varies',
+              description: maxUlt.description || '',
+              elementType: ELEMENT_DISPLAY[elType] || elType,
+              sourceType: 'ultimate',
+              percent,
+              duration: buff.duration || null,
+              buffName: buff.name,
+              level: maxUlt.rank,
+              targetType: 'single',
+              scope: getAtkScope(maxUlt.description || '', 'Varies'),
+            });
+          }
+        }
+      }
+    }
+  }
+
+  // best first
+  return results.sort((a, b) => b.percent - a.percent);
+}
+
+export const ELEMENT_ATK_UP_SKILLS = extractElementAtkUpSkills();
 
 export function getElementDefenseDownSkills() {
   return ELEMENT_DEFENSE_DOWN_SKILLS;
