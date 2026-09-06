@@ -152,6 +152,47 @@ export const apolloBuild = {
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
     },
   },
+  awakenings: {
+    priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+    keyMilestones: [
+      {
+        level: 1,
+        effect: "After allies deal [Pursue] damage, gain one stack of [Scorching Light], triggering up to once per second per character",
+        importance: 2,
+        importanceLabel: "Good",
+      },
+      {
+        level: 2,
+        effect: "In [Corona] state, damage taken decreases by 50%",
+        importance: 1,
+        importanceLabel: "Very Good",
+      },
+      {
+        level: 3,
+        effect: "[Skill] and [Normal Attack] level and level cap +4",
+        importance: 3,
+        importanceLabel: "Mid",
+      },
+      {
+        level: 4,
+        effect: "In [Corona] state, all allies gain 10% elemental resistance penetration",
+        importance: 2,
+        importanceLabel: "Good",
+      },
+      {
+        level: 5,
+        effect: "[ULT] and [Passive] level and level cap +4",
+        importance: 3,
+        importanceLabel: "Mid",
+      },
+      {
+        level: 6,
+        effect: "In [Corona] state, Apollo's [Pursue] gains an additional 50% critical damage",
+        importance: 2,
+        importanceLabel: "Good",
+      },
+    ],
+  },
   teamSynergy: {
     goodWith: ['Yuis', 'Leviathan', 'Any character with Extra Attacks'],
     note: 'Her problem the ultimate cost so much, other wise she is really good.',

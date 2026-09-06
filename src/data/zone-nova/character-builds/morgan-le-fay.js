@@ -190,6 +190,47 @@ export const morganLeFayBuild = {
       description: 'Final stat should match your primary build focus for maximum stat transfer',
     },
   },
+  awakenings: {
+    priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+    keyMilestones: [
+      {
+        level: 1,
+        effect: "The passive effect [Upon entering combat, immediately gain 3 energy points and reduce energy gain efficiency by 30% for 10 seconds] has been changed to Upon entering combat, immediately gain 5 energy points.",
+        importance: 2,
+        importanceLabel: "Good",
+      },
+      {
+        level: 2,
+        effect: "Upon entering battle, all our units immediately receive the [Blessing].",
+        importance: 1,
+        importanceLabel: "Very Good",
+      },
+      {
+        level: 3,
+        effect: "[Normal Attack], [Skill], [ULT] and [Passive] level and level cap +2",
+        importance: 3,
+        importanceLabel: "Mid",
+      },
+      {
+        level: 4,
+        effect: "All allied units gain the passive effect of conversion ability.",
+        importance: 2,
+        importanceLabel: "Good",
+      },
+      {
+        level: 5,
+        effect: "[Normal Attack], [Skill], [ULT] and [Passive] level and level cap +2",
+        importance: 3,
+        importanceLabel: "Mid",
+      },
+      {
+        level: 6,
+        effect: "[Destruction Holy Sword] Grants all allied units within range an additional 10% all-resistance penetration.\n[Tank Holy Sword] Grants all allied units within range an additional 10% all-resistance.",
+        importance: 2,
+        importanceLabel: "Good",
+      },
+    ],
+  },
   teamSynergy: {
     goodWith: ['High HP Characters', 'High ATK DPS characters', 'High DEF Tanks'],
     note: 'This unit works everywhere tbh, she fit in every team and quite good',

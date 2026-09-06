@@ -183,6 +183,47 @@ export const pennyBuild = {
       description: 'Focus on core percentage stat increases only',
     },
   },
+  awakenings: {
+    priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+    keyMilestones: [
+      {
+        level: 1,
+        effect: "After taking damage, gain one stack of [Fortitude]",
+        importance: 2,
+        importanceLabel: "Good",
+      },
+      {
+        level: 2,
+        effect: "When [Fortitude] reaches 30 stacks, all allies instantly gain an ULT's shield and damage reduction effect And triggers once per battle",
+        importance: 1,
+        importanceLabel: "Very Good",
+      },
+      {
+        level: 3,
+        effect: "[Skill] and [Normal Attack] level and level cap +4",
+        importance: 3,
+        importanceLabel: "Mid",
+      },
+      {
+        level: 4,
+        effect: "Defense increases by 45%",
+        importance: 2,
+        importanceLabel: "Good",
+      },
+      {
+        level: 5,
+        effect: "[ULT] and [Passive] level and level cap +4",
+        importance: 3,
+        importanceLabel: "Mid",
+      },
+      {
+        level: 6,
+        effect: "All resistances increase by 15% And Storm resistance increases by an additional 15%",
+        importance: 2,
+        importanceLabel: "Good",
+      },
+    ],
+  },
   teamSynergy: {
     goodWith: [
       'She works well with wind Team',

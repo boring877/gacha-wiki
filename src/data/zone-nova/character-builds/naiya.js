@@ -161,6 +161,47 @@ export const naiyaBuild = {
       description: 'Attack % for maximum buff scaling and damage output',
     },
   },
+  awakenings: {
+    priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+    keyMilestones: [
+      {
+        level: 1,
+        effect: "After casting an ULT, all allies gain an additional 20% Attack for 20 seconds",
+        importance: 2,
+        importanceLabel: "Good",
+      },
+      {
+        level: 2,
+        effect: "When a character with [Battle Intent] kills an enemy, restore 1 energy to the team, triggering up to once per second",
+        importance: 1,
+        importanceLabel: "Very Good",
+      },
+      {
+        level: 3,
+        effect: "[Skill] and [Normal Attack] level and level cap +4",
+        importance: 3,
+        importanceLabel: "Mid",
+      },
+      {
+        level: 4,
+        effect: "Characters with [Battle Intent] deal additional Frost</color> damage equal to 500% of Nia's Attack, triggering up to once every 10 seconds",
+        importance: 2,
+        importanceLabel: "Good",
+      },
+      {
+        level: 5,
+        effect: "[ULT] and [Passive] level and level cap +4",
+        importance: 3,
+        importanceLabel: "Mid",
+      },
+      {
+        level: 6,
+        effect: "ULT duration extends to 20 seconds And damage multiplier increases by 100%",
+        importance: 2,
+        importanceLabel: "Good",
+      },
+    ],
+  },
   teamSynergy: {
     goodWith: ['Chiya', 'Nina', 'Shanna', 'Freya', 'Hela', 'she also alright with anyone tbh'],
     note: 'Naiya need to be 2nd highest ATK character in the team, so she can give the carry the buff. If she is the highest she would give her self the buff, its quite hard to manage that but its possible.',

@@ -33,6 +33,37 @@ import { wrathSamaelBuild } from './character-builds/wrath-samael.js';
 import { hiyoriBuild } from './character-builds/hiyori.js';
 import { sharinBuild } from './character-builds/sharin.js';
 import { jillBuild } from './character-builds/jill.js';
+import { anubisBuild } from './character-builds/anubis.js';
+import { arthurBuild } from './character-builds/arthur.js';
+import { bastetBuild } from './character-builds/bastet.js';
+import { bedivereBuild } from './character-builds/bedivere.js';
+import { belphegarBuild } from './character-builds/belphegar.js';
+import { borsBuild } from './character-builds/bors.js';
+import { cleopatraBuild } from './character-builds/cleopatra.js';
+import { erikaBuild } from './character-builds/erika.js';
+import { greedMammonBuild } from './character-builds/greed-mammon.js';
+import { jeanneDarcBuild } from './character-builds/jeanne-darc.js';
+import { kelaBuild } from './character-builds/kela.js';
+import { kellerBuild } from './character-builds/keller.js';
+import { lancelotBuild } from './character-builds/lancelot.js';
+import { leviathanBuild } from './character-builds/leviathan.js';
+import { laviniaBuild } from './character-builds/lavinia.js';
+import { lyraBuild } from './character-builds/lyra.js';
+import { medusaBuild } from './character-builds/medusa.js';
+import { merlinBuild } from './character-builds/merlin.js';
+import { mordredBuild } from './character-builds/mordred.js';
+import { nephthysBuild } from './character-builds/nephthys.js';
+import { niniBuild } from './character-builds/nini.js';
+import { poseidonBuild } from './character-builds/poseidon.js';
+import { roseBuild } from './character-builds/rose.js';
+import { setBuild } from './character-builds/set.js';
+import { shannaBuild } from './character-builds/shanna.js';
+import { shuBuild } from './character-builds/shu.js';
+import { snowGirlBuild } from './character-builds/snow-girl.js';
+import { tefnutBuild } from './character-builds/tefnut.js';
+import { veronicaBuild } from './character-builds/veronica.js';
+import { yuisBuild } from './character-builds/yuis.js';
+import { zashikiWarashiBuild } from './character-builds/zashiki-warashi.js';
 
 // Character builds data structure - imports from individual character build files
 export const CHARACTER_BUILDS = {
@@ -134,6 +165,100 @@ export const CHARACTER_BUILDS = {
 
   // Jill Build - SSR Holy ATK Scaling Tenacity Healer
   jill: jillBuild,
+
+
+  // Anubis Build - SSR Chaos Healer
+  'anubis': anubisBuild,
+
+  // Arthur Build - SSR Holy Destroyer
+  'arthur': arthurBuild,
+
+  // Bastet Build - SR Wind Destroyer
+  'bastet': bastetBuild,
+
+  // Bedivere Build - SSR Ice Disruptor
+  'bedivere': bedivereBuild,
+
+  // Belphegar Build - SR Chaos Disruptor
+  'belphegar': belphegarBuild,
+
+  // Bors Build - SSR Fire Supporter
+  'bors': borsBuild,
+
+  // Cleopatra Build - SSR Chaos Destroyer
+  'cleopatra': cleopatraBuild,
+
+  // Erika Build - SSR Wind Disruptor
+  'erika': erikaBuild,
+
+  // Greed Mammon Build - SR Chaos Destroyer
+  'greed-mammon': greedMammonBuild,
+
+  // Jeanne D Arc Build - SSR Wind Healer
+  'jeanne-darc': jeanneDarcBuild,
+
+  // Kela Build - SR Holy Healer
+  'kela': kelaBuild,
+
+  // Keller Build - SSR Ice Warrior
+  'keller': kellerBuild,
+
+  // Lancelot Build - SR Holy Tank
+  'lancelot': lancelotBuild,
+
+  // Leviathan Build - SR Wind Attacker
+  'leviathan': leviathanBuild,
+
+  // Lavinia Build - SSR Fire Healer
+  'lavinia': laviniaBuild,
+
+  // Lyra Build - SSR Fire Destroyer
+  'lyra': lyraBuild,
+
+  // Medusa Build - SSR Wind Healer
+  'medusa': medusaBuild,
+
+  // Merlin Build - SSR Fire Attacker
+  'merlin': merlinBuild,
+
+  // Mordred Build - SR Fire Warrior
+  'mordred': mordredBuild,
+
+  // Nephthys Build - SSR Fire Destroyer
+  'nephthys': nephthysBuild,
+
+  // Nini Build - SR Ice Disruptor
+  'nini': niniBuild,
+
+  // Poseidon Build - SSR Ice Tank
+  'poseidon': poseidonBuild,
+
+  // Rose Build - SR Ice Destroyer
+  'rose': roseBuild,
+
+  // Set Build - SSR Fire Attacker
+  'set': setBuild,
+
+  // Shanna Build - SR Fire Attacker
+  'shanna': shannaBuild,
+
+  // Shu Build - SR Wind Disruptor
+  'shu': shuBuild,
+
+  // Snow Girl Build - SR Ice Healer
+  'snow-girl': snowGirlBuild,
+
+  // Tefnut Build - SR Holy Attacker
+  'tefnut': tefnutBuild,
+
+  // Veronica Build - SSR Holy Tank
+  'veronica': veronicaBuild,
+
+  // Yuis Build - SSR Holy Attacker
+  'yuis': yuisBuild,
+
+  // Zashiki-warashi Build - SR Fire Supporter
+  'zashiki-warashi': zashikiWarashiBuild,
 };
 
 // Generate builds for available characters only

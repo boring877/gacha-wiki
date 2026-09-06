@@ -161,6 +161,47 @@ export const apepBuild = {
       description: 'Focus on core percentage stat increases only',
     },
   },
+  awakenings: {
+    priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+    keyMilestones: [
+      {
+        level: 1,
+        effect: "Each time you deal normal attack damage, your defense increases by 5% for 10 seconds, stacking up to a maximum of 30%.",
+        importance: 2,
+        importanceLabel: "Good",
+      },
+      {
+        level: 2,
+        effect: "Using enhanced Ultimate Skills also has a healing effect, with the healing amount being equal to that of the Ultimate Skill itself.",
+        importance: 1,
+        importanceLabel: "Very Good",
+      },
+      {
+        level: 3,
+        effect: "[Normal Attack], [Skill], [ULT] and [Passive] level and level cap +2",
+        importance: 3,
+        importanceLabel: "Mid",
+      },
+      {
+        level: 4,
+        effect: "Defense increased by 45%",
+        importance: 2,
+        importanceLabel: "Good",
+      },
+      {
+        level: 5,
+        effect: "[Normal Attack], [Skill], [ULT] and [Passive] level and level cap +2",
+        importance: 3,
+        importanceLabel: "Mid",
+      },
+      {
+        level: 6,
+        effect: "All resistances increased by 10%, storm resistance increased by an additional 10%\nAll damage dealt penetrates 10% of storm resistance",
+        importance: 2,
+        importanceLabel: "Good",
+      },
+    ],
+  },
   teamSynergy: {
     goodWith: ['Nina', 'Hela', 'Shu'],
     note: 'This unit has no clear synergy with other characters, but this is the best I could think of right now! She is more PVP focused than PVE.',
