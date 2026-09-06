@@ -1,11 +1,17 @@
 ---
 import ZNRunesImage from './ZNRunesImage.astro';
+// Canonical set data — resolves legacy icon names (Zahn, Giants, Tide, ...) and
+// plain names to the current game names (Zane, Iota, Kappa, ...) and live set text.
+import { RUNE_SETS } from '../../data/zone-nova/runes.js';
 
 interface Props {
   runeSet: any;
 }
 
 const { runeSet } = Astro.props;
+
+const lookupSet = (key: string) =>
+  RUNE_SETS[key] || RUNE_SETS[key?.replace(/\.(webp|jpg|png)$/i, '')] || null;
 
 // Function to determine the rune configuration type and extract rune data
 function getRuneConfiguration(runeSet) {
@@ -41,24 +47,32 @@ function getRuneConfiguration(runeSet) {
     return {
       type: '3-set',
       runes: runes,
-      name: runeSet.englishName || runeSet.name,
+      name:
+        runes.map(r => lookupSet(r.name)?.name || r.name.replace('-', ' ')).join(' 2-piece + ') +
+          ' 2-piece' ||
+        runeSet.englishName ||
+        runeSet.name,
     };
   }
 
   // Check if this is a standard 4-piece + 2-piece configuration
   else if (runeSet.mainRune && runeSet.secondaryRune) {
-    const mainRune4Piece = runeSet.mainRune4Piece || '';
-    const mainRune2Piece = runeSet.mainRune2Piece || '';
-    const secondaryRuneEffect = runeSet.secondaryRuneEffect || '';
+    const mainSet = lookupSet(runeSet.mainRune);
+    const secondarySet = lookupSet(runeSet.secondaryRune);
+    const canonicalName =
+      mainSet && secondarySet ? `${mainSet.name} 4-piece + ${secondarySet.name} 2-piece` : null;
 
     return {
       type: '4+2',
       mainRune: runeSet.mainRune,
+      mainRuneName: mainSet?.name || runeSet.mainRune,
       secondaryRune: runeSet.secondaryRune,
-      mainRune4Piece: mainRune4Piece,
-      mainRune2Piece: mainRune2Piece,
-      secondaryRuneEffect: secondaryRuneEffect,
-      name: runeSet.englishName || runeSet.name,
+      secondaryRuneName: secondarySet?.name || runeSet.secondaryRune,
+      mainRune4Piece: (mainSet && `4-piece: ${mainSet.fourPiece}`) || runeSet.mainRune4Piece || '',
+      mainRune2Piece: (mainSet && `2-piece: ${mainSet.twoPiece}`) || runeSet.mainRune2Piece || '',
+      secondaryRuneEffect:
+        (secondarySet && `2-piece: ${secondarySet.twoPiece}`) || runeSet.secondaryRuneEffect || '',
+      name: canonicalName || runeSet.englishName || runeSet.name,
     };
   }
 
@@ -111,8 +125,8 @@ const config = getRuneConfiguration(runeSet);
         <div style="margin-top: 0.75rem; text-align: left;">
           {config.runes.map(rune => (
             <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
-              <strong style="color: var(--zn-primary);">{rune.name.replace('-', ' ')}:</strong>{' '}
-              {rune.effect.replace(/^2-piece:\s*/, '')}
+              <strong style="color: var(--zn-primary);">{lookupSet(rune.name)?.name || rune.name.replace('-', ' ')}:</strong>{' '}
+              {lookupSet(rune.name)?.twoPiece || rune.effect.replace(/^2-piece:\s*/, '')}
             </div>
           ))}
           {runeSet.description && (
@@ -163,20 +177,20 @@ const config = getRuneConfiguration(runeSet);
         <div style="margin-top: 0.75rem; text-align: left;">
           {config.mainRune2Piece && (
             <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
-              <strong style="color: var(--zn-primary);">2-piece ({config.mainRune}):</strong>{' '}
-              {config.mainRune2Piece}
+              <strong style="color: var(--zn-primary);">2-piece ({config.mainRuneName}):</strong>{' '}
+              {config.mainRune2Piece.replace(/^2-piece:\s*/, '')}
             </div>
           )}
           {config.mainRune4Piece && (
             <div style="font-size: 0.9rem; color: var(--zn-text-secondary); margin-bottom: 0.5rem;">
-              <strong style="color: var(--zn-primary);">4-piece ({config.mainRune}):</strong>{' '}
-              {config.mainRune4Piece}
+              <strong style="color: var(--zn-primary);">4-piece ({config.mainRuneName}):</strong>{' '}
+              {config.mainRune4Piece.replace(/^4-piece:\s*/, '')}
             </div>
           )}
           {config.secondaryRuneEffect && (
             <div style="font-size: 0.9rem; color: var(--zn-text-secondary);">
-              <strong style="color: var(--zn-primary);">2-piece ({config.secondaryRune}):</strong>{' '}
-              {config.secondaryRuneEffect}
+              <strong style="color: var(--zn-primary);">2-piece ({config.secondaryRuneName}):</strong>{' '}
+              {config.secondaryRuneEffect.replace(/^2-piece:\s*/, '')}
             </div>
           )}
           {runeSet.description && (

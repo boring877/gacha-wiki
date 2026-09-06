@@ -198,6 +198,11 @@ const memoryCardUrls = {
   'Gentle Morning Command': '/guides/zone-nova/memories/gentle-morning-command/',
 };
 
+// Fallback: resolve any card name not in the hand map above from the memory database
+import { ZONE_NOVA_MEMORIES } from '../../../../data/zone-nova/memories.js';
+const memoriesByName = new Map(ZONE_NOVA_MEMORIES.map(card => [card.name.trim(), card.detailUrl]));
+const getMemoryCardUrl = (name: string) => memoryCardUrls[name] || memoriesByName.get((name || '').trim()) || null;
+
 // Helper function to get badge class names
 function getElementBadgeClass(element) {
   return `element-badge ${element?.toLowerCase() || 'unknown'}`;
@@ -413,9 +418,9 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
                       {memoryDetails.stats.attack} / DEF {memoryDetails.stats.defense}
                     </div>
                   )}
-                  {memoryCardUrls[card.name] && (
+                  {getMemoryCardUrl(card.name) && (
                     <div class="memory-card-link-container">
-                      <a href={memoryCardUrls[card.name]} class="memory-card-link">
+                      <a href={getMemoryCardUrl(card.name)} class="memory-card-link">
                         View Details →
                       </a>
                     </div>
@@ -505,9 +510,9 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
                     </div>
                   )}
                   {/* Only show "View Details" for memory cards with dedicated pages */}
-                  {memoryCardUrls[card.name] && (
+                  {getMemoryCardUrl(card.name) && (
                     <div class="memory-card-link-container">
-                      <a href={memoryCardUrls[card.name]} class="memory-card-link">
+                      <a href={getMemoryCardUrl(card.name)} class="memory-card-link">
                         View Details →
                       </a>
                     </div>
