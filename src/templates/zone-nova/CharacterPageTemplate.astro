@@ -12,12 +12,17 @@ import {
   defaultZNHighlightPatterns,
 } from '../../utils/zone-nova/skill-highlighting.js';
 import { BUFF_EXPLANATIONS } from '../../data/zone-nova/memories.js';
+import CharacterNavigation from '../../components/zone-nova/CharacterNavigation.astro';
 
 interface Props {
   characterData: any;
 }
 
 const { characterData } = Astro.props;
+
+// URL slug of this character page (e.g. /guides/zone-nova/characters/erika/ → erika)
+// — used by the mobile side-tap navigation. Matches the index's slug/detailUrl.
+const currentSlug = Astro.url.pathname.replace(/\/+$/, '').split('/').pop() ?? '';
 
 // Buff/debuff tokens in the memory card's effect text that the text never defines
 const memoryEffectText = (characterData.memoryCard?.effects ?? []).join('\n');
@@ -174,6 +179,7 @@ function getTagCategory(tag: string): string {
 
 <!-- Mobile navigation instruction at top of main content -->
 <div class="swipeable-indicator">Touch the sides to move between characters</div>
+<CharacterNavigation currentCharacterSlug={currentSlug} />
 
 <!-- Character Header & Overview -->
 <section class="content-section character-overview-section">
@@ -703,8 +709,8 @@ function getTagCategory(tag: string): string {
                 <tr>
                   <td class="talent-node-id">{s.node}</td>
                   <td class="talent-node-stat">{s.stat}</td>
-                  <td>{s.unlock}</td>
-                  <td class="talent-node-mats">
+                  <td data-label="Unlock">{s.unlock}</td>
+                  <td class="talent-node-mats" data-label="Materials">
                     {s.materials?.length
                       ? s.materials.map((m) => (
                           <span class="talent-mat">
@@ -749,7 +755,7 @@ function getTagCategory(tag: string): string {
                     <img src={MONEY_ICON} alt="Aether Points" width={16} height={16} loading="lazy" />
                     {l.gold.toLocaleString()}
                   </td>
-                  <td class="talent-node-mats">
+                  <td class="talent-node-mats" data-label="Materials">
                     {l.materials?.length
                       ? l.materials.map((m) => (
                           <span class="talent-mat">
@@ -763,15 +769,6 @@ function getTagCategory(tag: string): string {
               ))}
             </tbody>
           </table>
-        </div>
-
-        <div class="node-info-box amber">
-          <p class="node-info-text">
-            📋 <strong>Note:</strong> Skill values on this page are shown at the max awakened level
-            (Lv.14 — requires the Dupe 3 and Dupe 5 awakening cap raises). Levels 11-14 continue the
-            Lv.1→Lv.10 growth line; two skills with hand-tuned curves use the game's own Lv.14 data.
-            Team skills need no level up.
-          </p>
         </div>
       </>
     ) : (

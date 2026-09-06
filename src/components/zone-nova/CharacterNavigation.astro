@@ -58,61 +58,40 @@ if (currentIndex !== -1) {
     }
   });
 
-  const leftZone = document.getElementById('mobile-swipe-left');
-  const rightZone = document.getElementById('mobile-swipe-right');
-  let touchStartTime = 0,
-    touchMoved = false;
-
-  function handleTouchStart() {
-    touchStartTime = Date.now();
-    touchMoved = false;
-  }
-  function handleTouchMove() {
-    touchMoved = true;
-  }
-
-  if (leftZone) {
-    leftZone.addEventListener('touchstart', handleTouchStart);
-    leftZone.addEventListener('touchmove', handleTouchMove);
-    leftZone.addEventListener('touchend', () => {
-      const touchDuration = Date.now() - touchStartTime;
-      if (!touchMoved && touchDuration < 400 && touchDuration > 50) window.location.href = prevUrl;
-    });
-  }
-
-  if (rightZone) {
-    rightZone.addEventListener('touchstart', handleTouchStart);
-    rightZone.addEventListener('touchmove', handleTouchMove);
-    rightZone.addEventListener('touchend', () => {
-      const touchDuration = Date.now() - touchStartTime;
-      if (!touchMoved && touchDuration < 400 && touchDuration > 50) window.location.href = nextUrl;
-    });
-  }
+  // Side-tap navigation: a short, non-scrolling tap within EDGE_PX of either
+  // screen edge goes to the previous/next character. Handled at document level
+  // instead of fixed overlay divs — overlays with z-index would block the
+  // wallet button, music toggle and sub-nav that sit near the right edge.
+  // A tap that lands on an interactive element never navigates.
+  const EDGE_PX = 48;
+  // NOTE: this script is inline (define:vars) — plain JS only, no TS syntax.
+  let tapStart = null;
+  document.addEventListener(
+    'touchstart',
+    e => {
+      const t = e.changedTouches[0];
+      tapStart = { x: t.clientX, y: t.clientY, time: Date.now() };
+    },
+    { passive: true }
+  );
+  document.addEventListener(
+    'touchend',
+    e => {
+      if (!tapStart) return;
+      const t = e.changedTouches[0];
+      const dur = Date.now() - tapStart.time;
+      const moved = Math.hypot(t.clientX - tapStart.x, t.clientY - tapStart.y);
+      const start = tapStart;
+      tapStart = null;
+      if (dur < 50 || dur > 400 || moved > 10) return;
+      const el = document.elementFromPoint(t.clientX, t.clientY);
+      if (el && el.closest('a, button, input, select, textarea, label, summary')) return;
+      if (start.x <= EDGE_PX) {
+        window.location.href = prevUrl;
+      } else if (start.x >= window.innerWidth - EDGE_PX) {
+        window.location.href = nextUrl;
+      }
+    },
+    { passive: true }
+  );
 </script>
-
-<div id="mobile-swipe-left" class="mobile-swipe-zone"></div>
-<div id="mobile-swipe-right" class="mobile-swipe-zone"></div>
-
-<style>
-  .mobile-swipe-zone {
-    position: fixed;
-    top: 0;
-    width: 80px;
-    height: 100vh;
-    z-index: 1000;
-    cursor: pointer;
-    user-select: none;
-    touch-action: manipulation;
-  }
-  #mobile-swipe-left {
-    left: 0;
-  }
-  #mobile-swipe-right {
-    right: 0;
-  }
-  @media (min-width: 768px) {
-    .mobile-swipe-zone {
-      display: none;
-    }
-  }
-</style>

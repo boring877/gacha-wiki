@@ -358,6 +358,94 @@
   margin-right: 0.6rem;
 }
 
+/* Phones/small tablets: the 5-column talent tables don't fit the screen —
+   each row becomes a flat card. Header line: node + stat + cost; unlock and
+   materials wrap below with labels. Real tables stay intact from 641px up. */
+@media (max-width: 640px) {
+  .talent-table-wrap {
+    overflow-x: visible;
+    margin-bottom: 1rem;
+  }
+
+  .talent-table {
+    display: block;
+    background: transparent;
+    border: none;
+    font-size: 0.9rem;
+  }
+
+  .talent-table thead {
+    display: none;
+  }
+
+  .talent-table tbody {
+    display: block;
+  }
+
+  .talent-table tbody tr {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    row-gap: 0.45rem;
+    background: var(--zn-bg-secondary);
+    border: 1px solid var(--zn-border);
+    border-radius: 10px;
+    padding: 0.7rem 0.8rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .talent-table tbody tr:last-child {
+    margin-bottom: 0;
+  }
+
+  .talent-table td {
+    border-bottom: none;
+    padding: 0;
+  }
+
+  /* card header line: node chip | stat | cost (right-aligned) */
+  .talent-node-id {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .talent-node-stat {
+    grid-column: 2;
+    grid-row: 1;
+    padding-left: 0.5rem;
+  }
+
+  .talent-node-cost {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    white-space: nowrap;
+  }
+
+  /* remaining cells (unlock, materials) span the full card below */
+  .talent-table tbody
+    td:not(.talent-node-id):not(.talent-node-stat):not(.talent-node-cost) {
+    grid-column: 1 / -1;
+  }
+
+  .talent-table tbody td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    color: var(--zn-text-muted);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.15rem;
+  }
+
+  .talent-node-mats .talent-mat {
+    margin-right: 0.5rem;
+  }
+}
+
 .talent-mat img {
   width: 18px;
   height: 18px;
@@ -1314,11 +1402,6 @@
     padding: 1rem;
   }
 
-  .node-tier img {
-    width: 50px;
-    height: 50px;
-  }
-
   .stat-nodes-info {
     padding: 1rem;
   }
@@ -1330,6 +1413,7 @@
   .memory-card-flex {
     flex-direction: column;
     gap: 1.5rem;
+    align-items: center;
   }
 
   .memory-card-image-container {
@@ -1339,6 +1423,7 @@
 
   .memory-card-stats-container {
     min-width: unset;
+    align-self: stretch;
   }
 
   .equipment-limitation-layout {
