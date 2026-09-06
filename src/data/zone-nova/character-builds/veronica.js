@@ -5,26 +5,26 @@ export const veronicaBuild = {
     name: "Veronica",
     role: "Tank",
     buildType: "DEF-Scaling Shield Tank",
-    description: "Veronica is a SSS defense-scaling shield tank: her auto shields ALL allies for 158.3% of HER defense, her ULT grants [Divine Body] (−58.9% damage taken, +61.1% healing/shield gain, plus a shield every second equal to 183.3% of her DEF), and her passive stacks +14.7% DEF per skill use (up to 8). Every point of DEF is multiplied across the entire team — build her purely defensive.",
+    description: "Veronica is a SSS defense-scaling shield tank: her auto shields ALL allies for 158.3% of HER defense, her ULT grants [Divine Body] (−58.9% damage taken, +61.1% healing/shield gain, plus a shield every second equal to 183.3% of her DEF), and her passive stacks +14.7% DEF per skill use (up to 8). Every point of DEF is multiplied across the entire team: build her purely defensive.",
     skillPriority: [
       {
         skill: "Ultimate: Divine Body",
         priority: 1,
-        level: "Level 10",
-        reason: "[Divine Body]: −58.9% damage taken team-wide and per-second shields — the strongest team mitigation ULT",
-        description: "Energy Cost: 2\nCooldown: 4.0ss\nAll allies gain [Divine Body], reducing damage taken by 58.9%, increasing healing received and shield gain by 61.1%, lasting 8 seconds. During this effect, they gain a shield every second equal to Veronica's defense 183.3%."
+        level: "Level 14",
+        reason: "[Divine Body]: −58.9% damage taken team-wide and per-second shields: the strongest team mitigation ULT",
+        description: "Energy Cost: 2\nCooldown: 4.0s\nAll allies gain [Divine Body], reducing damage taken by 58.9%, increasing healing received and shield gain by 61.1%, lasting 8 seconds. During this effect, they gain a shield every second equal to Veronica's defense 183.3%."
       },
       {
         skill: "Auto Skill: Shield of Light",
         priority: 2,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Team-wide shields scaling directly off her DEF, plus healing/crit-resist/DEF buffs",
-        description: "Cooldown: 5.0ss\nAll allies gain a shield equal to Veronica 158.3% defense, and are also granted the [Shield of Light] buff, increasing healing received by 5%, critical hit resistance by 5%, and defense by 10%. Maximum 5 stacks, lasts 10 seconds."
+        description: "Cooldown: 5.0s\nAll allies gain a shield equal to Veronica 158.3% defense, and are also granted the [Shield of Light] buff, increasing healing received by 5%, critical hit resistance by 5%, and defense by 10%. Maximum 5 stacks, lasts 10 seconds."
       },
       {
         skill: "Passive: bright",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "[Light] stacks up to +117.6% DEF across the fight, and shielded allies gain even more DEF",
         description: "Each skill use grants 1 stack of [Light], increasing the user's defense by 14.7%, up to a maximum of 8 stacks, lasting until the end of the battle. If any allied unit has a shield when attacked, that unit's defense against that attack is increased by 50%."
       },
@@ -32,16 +32,16 @@ export const veronicaBuild = {
         skill: "Normal Attack: Holy Shield",
         priority: 4,
         level: "Level 7",
-        reason: "Damage filler — level last",
-        description: "Cooldown: 2.0ss\nDeals holy damage equal to 120% of the user's own defense to the designated enemy unit."
+        reason: "Damage filler: level last",
+        description: "Cooldown: 2.0s\nDeals holy damage equal to 120% of the user's own defense to the designated enemy unit."
       }
     ],
     recommendedMemoryCards: [
       {
         name: "Under the Holy Armor",
-        effect: "Exclusive card — +25% team HP and +70% self DEF, and every skill grants allies [Radiant Protection] damage reduction. Her BiS by a mile.",
+        effect: "Exclusive card: +25% team HP and +70% self DEF, and every skill grants allies [Radiant Protection] damage reduction. Her BiS by a mile.",
         priority: "Must Have",
-        note: "Exclusive card — +25% team HP and +70% self DEF, and every skill grants allies [Radiant Protection] damage reduction. Her BiS by a mile.",
+        note: "Exclusive card: +25% team HP and +70% self DEF, and every skill grants allies [Radiant Protection] damage reduction. Her BiS by a mile.",
         characterSpecific: true,
         memoryImage: "under-the-holy-armor.png",
         memoryStats: {
@@ -50,32 +50,57 @@ export const veronicaBuild = {
           defense: "690"
         },
         description: "Our HP increases by 25%, and self defense increases by 70%. After each skill use, all allies gain [Radiant Protection], reducing damage taken by 6% and increasing critical hit resistance by 5%, stacking up to 5 times, lasting 10 seconds."
+      },
+      {
+        name: "Sea Deity's Soft Ritual",
+        effect: "SSS-tier Tank memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "sea-gods-soft-ritual.png",
+        memoryStats: {
+          hp: "6,600",
+          attack: "480",
+          defense: "690"
+        },
+        description: "Max HP increases by 40%.\nWhen the wearer casts an ultimate skill all allies gain [Tideguard] for 8 seconds. If [Tideguard] is gained again remove the existing [Tideguard] and its accumulated Critical Resistance bonus first.\n[Tideguard]:\nDEF increases by 28%.\nBlock Rate increases by 5%.\nEach time an allied unit with [Tideguard] is hit its Critical Resistance increases by 15% up to 5 stacks until [Tideguard] ends.\n[Block]: Has a chance to reduce that instance of damage by 30%. Damage over time ignores Block.",
+        priority: "Highly Recommended"
       }
     ],
     alternativeMemoryCards: [
       {
-        name: "Drowning Lake Knight",
-        effect: "+36% DEF and −8% damage taken for the whole team on battle start — tank bread and butter.",
+        name: "Eating secretly in a cafe",
+        effect: "SS-tier Tank memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "drowning-lake-knight.png",
+        memoryImage: "InTheCafeSneakingABite.png",
         memoryStats: {
-          hp: "5,500",
-          attack: "400",
-          defense: "575"
+          hp: "6,600",
+          attack: "480",
+          defense: "690"
         },
-        description: "Defense increases by 36%, after entering battle, all team members' damage taken decreases by 8%, identical skills do not stack"
+        description: "Increases defense by 64%. After successfully neutralizing the attack, damage taken is reduced by 10% for 5 seconds. When the wearer holds a shield, damage taken is reduced by 18%."
       },
       {
-        name: "Pennie Trying on New Clothes",
-        effect: "+24% HP and −10% damage taken for 5 seconds after each ULT.",
+        name: "Her Trainer",
+        effect: "SS-tier Tank memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "sister-penny-trying-on-new-clothes.png",
+        memoryImage: "LancelotHerTrainer.png",
         memoryStats: {
-          hp: "5,500",
-          attack: "400",
-          defense: "575"
+          hp: "6,600",
+          attack: "480",
+          defense: "690"
         },
-        description: "HP increases by 24%, after using an ULT, the wearer's damage taken decreases by 10% for 5 seconds"
+        description: "Defense increases by 60%, after using an ULT, the wearer's damage taken decreases by 10% for 5 seconds, Shield applied by ULT increases by 20%"
+      },
+      {
+        name: "Simple Birdcage",
+        effect: "SS-tier Tank memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Guinevere-card.jpg",
+        memoryStats: {
+          hp: "6,600",
+          attack: "480",
+          defense: "690"
+        },
+        description: "Defense increases by 64%, after a successful Block, damage taken decreases by 10% for 5 seconds, grants a Shield equal to 30% of max HP upon entering battle"
       }
     ],
     runes: {
@@ -90,7 +115,7 @@ export const veronicaBuild = {
         "HP",
         "Healing Effectiveness%"
       ],
-      buildNote: "Poki 4-piece (+20% shield effect) multiplies shields that already scale off her DEF — pure defense is pure team value.",
+      buildNote: "Poki 4-piece (+20% shield effect) multiplies shields that already scale off her DEF: pure defense is pure team value.",
       recommendedSets: [
         {
           name: "Poki 4-piece + Zane 2-piece",
@@ -116,25 +141,25 @@ export const veronicaBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "Defense (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -148,7 +173,7 @@ export const veronicaBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "HP (%) / Defense (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -162,7 +187,7 @@ export const veronicaBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "Defense (%)",
         availableStats: [
           "Attack (%)",
@@ -172,7 +197,7 @@ export const veronicaBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -220,7 +245,10 @@ export const veronicaBuild = {
       goodWith: [
         "Nephthys",
         "Keller",
-        "Medusa"
+        "Medusa",
+        "Gaia",
+        "Jill",
+        "Freya"
       ],
       note: "Her [Divine Body] window lets any carry facetank boss rotations."
     }

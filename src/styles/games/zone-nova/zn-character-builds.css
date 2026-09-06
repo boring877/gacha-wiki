@@ -284,7 +284,8 @@
 /* Memory cards section */
 .memory-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  /* max 2 cards per row - 3+ columns squeezes the card art and text */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
   gap: 1.5rem;
   margin-bottom: 1rem;
 }
@@ -373,6 +374,12 @@
 .memory-card-badge.recommended {
   background-color: var(--zn-info);
   color: #ffffff;
+}
+
+.memory-card-badge.must-have {
+  background-color: #e91e63;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .memory-card-effect {

@@ -1,25 +1,36 @@
 ---
 // Zone Nova Rune image component — images served from Cloudflare R2
+// All sets use the current square game icons (<Name>.webp, same art as the runes page).
+// Legacy fan-era icon keys (Shattered-Foundation, Zahn, Giants, Tide, ...) resolve to
+// the same canonical files so old build data keeps working.
 const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/runes';
 
-const runeImageMap = {
-  'Alpha.jpg': `${R2}/Alpha.jpg`,
-  'Beth.jpg': `${R2}/Beth.jpg`,
-  'Daleth.jpg': `${R2}/Daleth.jpg`,
-  'Epsilon.jpg': `${R2}/Epsilon.jpg`,
-  'Giants.jpg': `${R2}/Giants.jpg`,
-  'Gimel-Continuous-Damage.jpg': `${R2}/Gimel-Continuous-Damage.jpg`,
-  'Hert-Pursuit-Damage.jpg': `${R2}/Hert-Pursuit-Damage.jpg`,
-  'Shattered-Foundation.jpg': `${R2}/Shattered-Foundation.jpg`,
-  'Tide.jpg': `${R2}/Tide.jpg`,
-  'Zahn.jpg': `${R2}/Zahn.jpg`,
-  // Element sets added 2026-09 (uploaded as webp)
-  'Kryos.webp': `${R2}/Kryos.webp`,
-  'Anemos.webp': `${R2}/Anemos.webp`,
-  'Hepha.webp': `${R2}/Hepha.webp`,
-  'Skota.webp': `${R2}/Skota.webp`,
-  'element.jpg': `${R2}/element.jpg`,
+const setAliases: Record<string, string[]> = {
+  Alpha: ['Alpha'],
+  Beth: ['Beth'],
+  Gimel: ['Gimel', 'Gimel-Continuous-Damage'],
+  Daleth: ['Daleth'],
+  Epsilon: ['Epsilon'],
+  Poki: ['Poki', 'Shattered-Foundation'],
+  Zane: ['Zane', 'Zahn'],
+  Het: ['Het', 'Hert', 'Hert-Pursuit-Damage'],
+  Iota: ['Iota', 'Giants'],
+  Kappa: ['Kappa', 'Tide'],
+  Kryos: ['Kryos'],
+  Anemos: ['Anemos'],
+  Hepha: ['Hepha'],
+  Skota: ['Skota'],
 };
+
+const runeImageMap: Record<string, string> = {};
+for (const [canonical, aliases] of Object.entries(setAliases)) {
+  for (const alias of aliases) {
+    runeImageMap[alias] = `${R2}/${canonical}.webp`;
+    runeImageMap[`${alias}.jpg`] = `${R2}/${canonical}.webp`;
+    runeImageMap[`${alias}.webp`] = `${R2}/${canonical}.webp`;
+  }
+}
+runeImageMap['element.jpg'] = `${R2}/element.jpg`;
 
 const {
   imageName,
@@ -30,16 +41,16 @@ const {
   loading = 'lazy',
 } = Astro.props;
 
-let imageKey = imageName || 'Alpha.jpg';
+let imageKey = imageName || 'Alpha';
 if (imageKey && imageKey.includes('/')) {
   const parts = imageKey.split('/');
-  imageKey = parts[parts.length - 1] || 'Alpha.jpg';
+  imageKey = parts[parts.length - 1] || 'Alpha';
 }
 if (imageKey && !imageKey.includes('.')) {
   imageKey = `${imageKey}.jpg`;
 }
 
-const imageSrc = runeImageMap[imageKey] || `${R2}/Alpha.jpg`;
+const imageSrc = runeImageMap[imageKey] || `${R2}/Alpha.webp`;
 ---
 
 <img

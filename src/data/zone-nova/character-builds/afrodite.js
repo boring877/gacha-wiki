@@ -11,7 +11,7 @@ export const afroditeBuild = {
     {
       skill: 'Passive: Beautiful Kill',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Core damage mechanic - provides massive Crit Rate when above 50% HP and extra Defense when below 50% HP. This is her main source of damage amplification and survivability.',
       description:
@@ -20,7 +20,7 @@ export const afroditeBuild = {
     {
       skill: 'Ultimate: Love and Beauty Waltz',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Main damage skill - Enhanced Ultimate deals devastating damage and counts as basic attack for effects. Essential for maximizing burst damage output.',
       description:
@@ -29,7 +29,7 @@ export const afroditeBuild = {
     {
       skill: 'Auto Skill: Charm Impact',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Multi-hit damage skill that provides attack speed buff and counts toward Enhanced Ultimate counter. Good for proccing effects and faster ultimate charge.',
       description:
@@ -47,7 +47,7 @@ export const afroditeBuild = {
   ],
   recommendedMemoryCards: [
     {
-      name: 'Halloween Candy',
+      name: 'Halloween candy',
       effect:
         "Nina's memory card. Best choice for Afrodite with crit damage boost and sustain that synergizes perfectly with her crit-scaling passive.",
       priority: 'Highly Recommended',
@@ -70,7 +70,7 @@ export const afroditeBuild = {
         "Attack power increased by 40%. If equipped unit's Ultimate costs higher than 8 Energy and used ultimate: Damage increased by 40% for 10 seconds.",
     },
     {
-      name: 'The World Seems to Have Stopped',
+      name: 'The World Seems to Stand Still',
       effect:
         "Artemis's memory card. Provides attack power and conditional damage increase - good for Afrodite's burst playstyle.",
       priority: 'Recommended',
@@ -79,17 +79,24 @@ export const afroditeBuild = {
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
       description:
         'Attack power increased by 40%. When HP is below 50%: All damage increased by 40%.',
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'Swimsuit Sovereign Who Makes Hearts Flutter',
-      effect: 'SR memory card with balanced attack and defense boost for sustain builds.',
-      priority: 'Alternative',
+      name: 'Afternoon tantrums',
+      effect: 'SSS-tier Warrior memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'Swimsuit-Deity-Who-Makes-Hearts-Flutter',
-      memoryStats: { hp: '5,000', attack: '500', defense: '500' },
-      description: 'Attack increased by 20%. Defense increased by 20%.',
+      memoryImage: 'Kellercard.png',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Increases own attack power by 70%， critical hit damage by 90%， and normal attack damage by 100%. Every 3rd normal attack will deal an additional 75% of attack power as normal attack damage.',
+    },
+    {
+      name: 'Wrong time of appearance',
+      effect: 'SSS-tier Warrior memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Apepcard.jpg',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Defense increased by 64%\nWhen HP is below 50%, the wearer recovers 2% of maximum HP after attacking\nWhen HP is above 50%, damage taken is reduced by 10%, and damage dealt is increased by 40%.',
     },
   ],
   runes: {
@@ -113,25 +120,25 @@ export const afroditeBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Critical Damage (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -145,7 +152,7 @@ export const afroditeBuild = {
       description: 'I would stack Crit damage as much you can. it only what matter tbh',
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Holy Attribute Damage (%)',
       availableStats: [
         'Wind Attribute Damage (%)',
@@ -160,7 +167,7 @@ export const afroditeBuild = {
       description: ' ',
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
       description: '',
@@ -216,7 +223,14 @@ export const afroditeBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: ['She needs a good buffer like Morgan or Naiya.'],
+    goodWith: [
+      'Gaia',
+      'Jill',
+      'Bors',
+      'Morgan Le Fay',
+      'Medusa',
+      'Thor',
+    ],
     note: 'Her problem is that she needs a team around her, and she needs a high amount of energy points to use her ultimate. Otherwise her damage is really good!',
   },
 };

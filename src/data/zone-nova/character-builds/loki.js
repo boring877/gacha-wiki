@@ -11,7 +11,7 @@ export const lokiBuild = {
     {
       skill: 'Passive: Art of Deception',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Core mechanic - her only valuable skill. Auto skills apply 36% vulnerability (1 layer base). With A1, all attacks trigger it. With A6, stacks to 2 layers (72%).',
       description:
@@ -20,7 +20,7 @@ export const lokiBuild = {
     {
       skill: 'Ultimate: Woeful Wrath',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Applies 36% [Weakness] debuff for 10 seconds. With A1, also triggers passive vulnerability stacks. Targets highest ATK enemy. High energy cost (5).',
       description:
@@ -29,7 +29,7 @@ export const lokiBuild = {
     {
       skill: "Auto Skill: Jormungandr's Poison",
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'AoE damage with [Seal] preventing enemy ultimates for 5 seconds. Also triggers passive vulnerability debuff on all enemies.',
       description:
@@ -46,7 +46,7 @@ export const lokiBuild = {
   ],
   recommendedMemoryCards: [
     {
-      name: 'True Order (真正的秩序)',
+      name: 'True Order',
       effect:
         "Loki's signature memory is perfect for her debuffer role. The 40% ATK boost increases her damage contribution, and the 24% vulnerability mark on the last target hit by ultimate stacks with her passive debuffs for team damage amplification.",
       priority: 'Highly Recommended',
@@ -55,9 +55,34 @@ export const lokiBuild = {
       memoryStats: { hp: '6,000', attack: '600', defense: '600' },
       description:
         'Attack increases by 40%, the last target hit by the wearer\'s ULT takes 24% increased damage',
+    }
+  ],
+  alternativeMemoryCards: [
+    {
+      name: 'The Knight and the Fuzzy',
+      effect: 'SSS-tier Disruptor memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'the-knight-and-the-fuzzy.png',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'ATK +40%.\nEnemies hit by the Ultimate gain [Frontline Edict] for 7s. Targets within 3m also gain [Enhanced Frontline Edict].\n[Frontline Edict]: DEF -12.5%. Energy Gain Efficiency -10%.\n[Enhanced Frontline Edict]: DEF -45%. Energy Gain Efficiency -30%.',
+    },
+    {
+      name: 'A perfect makeup look?',
+      effect: 'SS-tier Disruptor memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Ibaraki-dojicard.jpg',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Attack power increased by 40%. When a Ultimate Skill deals damage, the target takes 36% more damage and receives 40% less healing for 5 seconds.',
+    },
+    {
+      name: 'Discipline Director',
+      effect: 'SS-tier Disruptor memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Erikacard.png',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Attack Power increases by 40%.\nWhen the wearer\'s skill or ultimate hits a target that target\'s healing received is reduced by 12% and shielding received is reduced by 10% for 3 seconds. This effect cannot stack.\nIf the target has a shield at that time the target\'s damage dealt is reduced by 18% for 3 seconds. This effect cannot stack.',
     },
   ],
-  alternativeMemoryCards: [],
   runes: {
     primary: 'Attack %',
     secondary: 'ATK',
@@ -100,25 +125,25 @@ export const lokiBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -133,7 +158,7 @@ export const lokiBuild = {
         'Attack % recommended to maximize damage contribution. Crit Rate % is also viable if you want more crit consistency.',
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Chaos Attribute Damage (%)',
       availableStats: [
         'Chaos Attribute Damage (%)',
@@ -149,7 +174,7 @@ export const lokiBuild = {
         "Chaos Attribute Damage % is essential as all of Loki's damage is Chaos element",
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
       description: 'Attack % for maximum damage scaling',
@@ -205,7 +230,14 @@ export const lokiBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: ['Hera', 'Cleopatra', 'Freye', 'Any Chaos DPS'],
+    goodWith: [
+      'Hera',
+      'Cleopatra',
+      'Freya',
+      'Frigga',
+      'Hela',
+      'Keller',
+    ],
     note: "This unit needs a rework or some sort of buff to be usable. She can one-shot some PVP characters but is still not very useful overall. Sadly, this unit is quite bad and we do not recommend investing in her.",
   },
 };

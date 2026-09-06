@@ -1,0 +1,146 @@
+---
+import ZoneNovaLayout from '../../../../layouts/zone-nova/LandingLayout.astro';
+import {
+  BRAVERY_SEASONS,
+  BRAVERY_STAGES,
+  getBraverySeasonStatus,
+  FACTIONS,
+} from '../../../../data/zone-nova/trials.js';
+import { ZONE_NOVA_CHARACTERS } from '../../../../data/zone-nova/characters.js';
+import { PVE_TIER_LIST } from '../../../../data/zone-nova/tier-lists.js';
+import '../../../../styles/games/zone-nova/zn-trials.css';
+
+export async function getStaticPaths() {
+  return BRAVERY_SEASONS.map(season => ({
+    params: { id: String(season.id) },
+    props: { season },
+  }));
+}
+
+const { season } = Astro.props;
+const status = getBraverySeasonStatus(season);
+
+// Rule-based picks: characters from the allowed factions, ordered by PvE tier
+const allowed = new Set(season.factionsRaw.map(id => FACTIONS[id as keyof typeof FACTIONS]));
+const byName = Object.fromEntries(ZONE_NOVA_CHARACTERS.map(c => [c.name, c]));
+
+// flatten PvE tier order (UR first) then keep faction-legal chars
+const tierOrder = ['UR', 'SSS', 'SS', 'S', 'A', 'Situational'];
+const ranked: { name: string; tier: string; cls: string; element: string; faction: string }[] = [];
+for (const tier of tierOrder) {
+  for (const entry of PVE_TIER_LIST.tiers[tier] || []) {
+    const c = byName[entry.name];
+    if (c && allowed.has(c.faction) && !ranked.some(r => r.name === c.name)) {
+      ranked.push({ name: c.name, tier, cls: c.class, element: c.element, faction: c.faction });
+    }
+  }
+}
+const picks = ranked.slice(0, 12);
+
+const fmt = (d: string) =>
+  new Date(d + 'T00:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+const charUrl = (name: string) => {
+  const c = byName[name];
+  return c?.slug ? `/guides/zone-nova/characters/${c.slug}/` : '/guides/zone-nova/characters/';
+};
+---
+
+<ZoneNovaLayout
+  title={`Trial of Bravery (${season.start}) - Zone Nova - GachaWiki`}
+  description={`Trial of Bravery (${fmt(season.start)} - ${fmt(season.end)}): allowed factions ${season.factions}, battle rule and team suggestions for Zone Nova`}
+  gameTitle="Trial of Bravery"
+>
+  <section class="zn-trials-section">
+    <a href="/guides/zone-nova/trial-of-bravery/" class="back-link">&larr; All Trials</a>
+    <h2 class="section-title">Trial of Bravery</h2>
+
+    <div class="current-season">
+      <div class="season-head">
+        <h3>{fmt(season.start)} - {fmt(season.end)}</h3>
+        <div class="rift-timer bravery-timer" id="bravery-timer">
+          {status !== 'ended' ? 'Loading...' : 'Trial Ended'}
+        </div>
+      </div>
+
+      <div class="season-factions">
+        <span class="meta-label">Allowed factions</span>
+        <p class="faction-line">{season.factions}</p>
+      </div>
+
+      {
+        season.rule && (
+          <div class="season-rule">
+            <span class="meta-label">Battle rule</span>
+            <p>{season.rule}</p>
+          </div>
+        )
+      }
+
+    </div>
+  </section>
+
+  <section class="zn-trials-section">
+    <h2 class="section-title">Recommended Characters</h2>
+    <p class="section-description">
+      Characters from the allowed factions, strongest first.
+    </p>
+    <div class="picks-grid">
+      {
+        picks.map(p => (
+          <a href={charUrl(p.name)} class="pick-card">
+            <img src={(byName[p.name] as any).image} alt={p.name} class="pick-img" width={64} height={64} loading="lazy" />
+            <span class="pick-name">{p.name}</span>
+            <span class="pick-meta">{p.element} {p.cls}</span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="zn-trials-section">
+    <h2 class="section-title">Stages</h2>
+    <div class="stages">
+      <table class="stages-table">
+        <thead>
+          <tr><th>Stage</th><th>Time limit</th></tr>
+        </thead>
+        <tbody>
+          {BRAVERY_STAGES.map((s, i) => (
+            <tr class={i % 2 === 0 ? 'row-alt' : ''}>
+              <td class="stat-cell">{s.stage}</td>
+              <td>180 seconds</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <script define:vars={{ season }}>
+    document.addEventListener('DOMContentLoaded', function () {
+      const el = document.getElementById('bravery-timer');
+      if (!el) return;
+      const start = new Date(season.start + 'T14:15:00+08:00').getTime();
+      const end = new Date(season.end + 'T03:59:00+08:00').getTime();
+
+      function tick() {
+        const now = Date.now();
+        if (now < start) {
+          const d = Math.floor((start - now) / 86400000);
+          const h = Math.floor(((start - now) % 86400000) / 3600000);
+          el.textContent = `Starts in ${d}d ${h}h`;
+        } else if (now < end) {
+          const d = Math.floor((end - now) / 86400000);
+          const h = Math.floor(((end - now) % 86400000) / 3600000);
+          el.textContent = `${d}d ${h}h remaining`;
+        } else {
+          el.textContent = 'Trial Ended';
+          el.classList.add('timer-ended');
+        }
+      }
+      tick();
+      setInterval(tick, 60000);
+    });
+  </script>
+</ZoneNovaLayout>

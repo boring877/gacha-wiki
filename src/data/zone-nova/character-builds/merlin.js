@@ -5,26 +5,26 @@ export const merlinBuild = {
     name: "Merlin",
     role: "DPS",
     buildType: "Enhanced-ULT Burst Attacker",
-    description: "Merlin is a one-target nuke machine: his auto deals 780% and applies [Mark] (+20% ULT damage on marked targets), his ULT hits 1080% — 1200% enhanced after a Supporter ULT — and his passive adds a free 120% fire hit on every ULT crit. He is the classic \"hold his ULT for the Supporter window\" attacker, and with crit built he chains bonus hits endlessly.",
+    description: "Merlin is a one-target nuke machine: her auto deals 780% and applies [Mark] (+20% ULT damage on marked targets), her ULT hits 1080%: 1200% enhanced after a Supporter ULT: and her passive adds a free 120% fire hit on every ULT crit. She is the classic \"hold her ULT for the Supporter window\" attacker, and with crit built she chains bonus hits endlessly.",
     skillPriority: [
       {
         skill: "Auto Skill: Magic Swordsmanship: Molten Core Burst",
         priority: 1,
-        level: "Level 10",
-        reason: "780% single hit plus [Mark] — marked targets take +20% more from his ULT",
-        description: "Cooldown: 5.0ss\nDeals 780% Attack as fire damage to the targeted enemy unit And applies [Mark]\nWhen Merlin uses an ULT to attack a target with [Mark], damage increases by 20%"
+        level: "Level 14",
+        reason: "780% single hit plus [Mark]: marked targets take +20% more from her ULT",
+        description: "Cooldown: 5.0s\nDeals 780% Attack as fire damage to the targeted enemy unit And applies [Mark]\nWhen Merlin uses an ULT to attack a target with [Mark], damage increases by 20%"
       },
       {
         skill: "Ultimate: Magic Swordsmanship: King's Blade",
         priority: 2,
-        level: "Level 10",
-        reason: "1080% (1200% Enhanced after a Supporter ULT) — one of the highest single-target multipliers",
-        description: "Energy Cost: 6\nCooldown: 1.0ss\nDeals 1080% Attack as fire damage to the targeted enemy unit\nAfter a [Supporter] uses an ULT, can use 1 [Enhanced ULT] within 5 seconds\n[Enhanced ULT]: Deals 1200% Attack as fire damage to the targeted enemy unit, with a 30% multiplier increase when only one enemy is present"
+        level: "Level 14",
+        reason: "1080% (1200% Enhanced after a Supporter ULT): one of the highest single-target multipliers",
+        description: "Energy Cost: 6\nCooldown: 1.0s\nDeals 1080% Attack as fire damage to the targeted enemy unit\nAfter a [Supporter] uses an ULT, can use 1 [Enhanced ULT] within 5 seconds\n[Enhanced ULT]: Deals 1200% Attack as fire damage to the targeted enemy unit, with a 30% multiplier increase when only one enemy is present"
       },
       {
         skill: "Passive: Rune Oscillation",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Every ULT crit fires a bonus 120% hit",
         description: "When an ULT crits, deals an additional 120% Attack as fire damage"
       },
@@ -32,16 +32,16 @@ export const merlinBuild = {
         skill: "Normal Attack: Blazing Slash",
         priority: 4,
         level: "Level 7",
-        reason: "Lowest value per level — raise last",
-        description: "Cooldown: 2.0ss\nDeals 120% Attack as fire damage to the targeted enemy unit"
+        reason: "Lowest value per level: raise last",
+        description: "Cooldown: 2.0s\nDeals 120% Attack as fire damage to the targeted enemy unit"
       }
     ],
     recommendedMemoryCards: [
       {
         name: "Monster in the Dense Forest",
-        effect: "Exclusive card — +40% ATK and +40% ULT damage against lone targets. Boss-room multiplier on his already-huge ULT.",
+        effect: "Exclusive card: +40% ATK and +40% ULT damage against lone targets. Boss-room multiplier on her already-huge ULT.",
         priority: "Must Have",
-        note: "Exclusive card — +40% ATK and +40% ULT damage against lone targets. Boss-room multiplier on his already-huge ULT.",
+        note: "Exclusive card: +40% ATK and +40% ULT damage against lone targets. Boss-room multiplier on her already-huge ULT.",
         characterSpecific: true,
         memoryImage: "MonsterInTheDenseForest.png",
         memoryStats: {
@@ -50,32 +50,70 @@ export const merlinBuild = {
           defense: "474"
         },
         description: "Attack increases by 40%, when there is only one enemy on the field, ULT damage increases by 40%"
+      },
+      {
+        name: "Frozen Heart",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Yuiscard.jpg",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Critical Rate increased by 34%\nPursue Damage dealt by the wearer increases Critical Damage by 68%",
+        priority: "Highly Recommended"
+      },
+      {
+        name: "King of Lust",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "KingOfLust.png",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Critical hit rate increased by 40%, attack power increased by 40%. Each time the wearer's attack hits an enemy, they accumulate 1 stack of [Battle Spirit]. Once [Battle Spirit] reaches 10 stacks, all [Battle Spirit] will be consumed, and the [Penetrating] effect will be gained, increasing critical hit damage dealt by 50% for 5 seconds. [Battle Spirit] will not accumulate while the [Penetrating] effect is active.",
+        priority: "Highly Recommended"
       }
     ],
     alternativeMemoryCards: [
       {
-        name: "The Way of Revenge",
-        effect: "When a Supporter uses an ULT, your ULT damage +60% for 10s — a direct multiplier for Enhanced-ULT kits.",
+        name: "Shared Bath Time",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Greed-Mammon-card.jpg",
+        memoryImage: "Odincard.jpg",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "When a Supporter uses an ULT, self ULT damage increases by 60% for 10 seconds"
+        description: "Attack power increases by 40%, and all damage increases by 40% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 15% Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds."
       },
       {
-        name: "Hero Never Resting",
-        effect: "+72% Crit DMG when fewer than 2 enemies remain — huge boss-phase nuking.",
+        name: "Weird eyes full of desire",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Shannacard.jpg",
+        memoryImage: "Helacard.jpg",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "When there are fewer than 2 enemies on the field, Critical Damage increases by 72%"
+        description: "Increases critical hit rate by 34%. When other friendly units cast a Ultimate Skill, the wearer's damage increases by 24% for 5 seconds, and can be stacked up to 3 times."
+      },
+      {
+        name: "Black-Faced Fool",
+        effect: "SS-tier Attacker memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Heracard.jpg",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Attack increases by 40%, when attacking targets affected by Damage Over Time, damage increases by 40%"
       }
     ],
     runes: {
@@ -90,7 +128,7 @@ export const merlinBuild = {
         "Penetration",
         "ATK"
       ],
-      buildNote: "Multipliers are large, so % damage and crit scale harder than flat ATK — element damage on position 5, crit on position 4.",
+      buildNote: "Multipliers are large, so % damage and crit scale harder than flat ATK: element damage on position 5, crit on position 4.",
       recommendedSets: [
         {
           name: "Hepha 4-piece + Beth 2-piece",
@@ -116,25 +154,25 @@ export const merlinBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "Attack (%) / Critical Rate (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -148,7 +186,7 @@ export const merlinBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "Fire Attribute Damage (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -162,7 +200,7 @@ export const merlinBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "Attack (%)",
         availableStats: [
           "Attack (%)",
@@ -172,7 +210,7 @@ export const merlinBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -220,8 +258,11 @@ export const merlinBuild = {
       goodWith: [
         "Sharin",
         "Bors",
-        "Tamamo-no-Mae"
+        "Tamamo-no-Mae",
+        "Nephthys",
+        "Morgan Le Fay",
+        "Medusa"
       ],
-      note: "A Supporter ULT unlocks his 1200% Enhanced ULT — always cycle them together."
+      note: "A Supporter ULT unlocks her 1200% Enhanced ULT: always cycle them together."
     }
   };

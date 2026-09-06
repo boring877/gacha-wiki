@@ -39,6 +39,8 @@ class ZoneNovaClockTimer {
     this.rift1Time = document.getElementById('rift1Time');
     this.rift2Name = document.getElementById('rift2Name');
     this.rift2Time = document.getElementById('rift2Time');
+    this.braveryName = document.getElementById('braveryName');
+    this.braveryTime = document.getElementById('braveryTime');
     this.weeklyTime = document.getElementById('weeklyTime');
     this.monthlyTime = document.getElementById('monthlyTime');
     this.maintenanceStartTime = document.getElementById('maintenanceStartTime');
@@ -155,11 +157,37 @@ class ZoneNovaClockTimer {
   updateAllTimerCards() {
     this.updateLaunchTimer();
     this.updateRiftTimers();
+    this.updateBraveryTimer();
     this.updateWeeklyTimer();
     this.updateMonthlyTimer();
     this.updateMaintenanceTimer();
     this.updateGuildWarTimer();
     this.updateSpecialEventTimers();
+  }
+  updateBraveryTimer() {
+    if (!this.braveryName || !this.braveryTime) return;
+    const b = window.zoneNovaBravery;
+    if (!b) {
+      this.braveryName.textContent = 'No Trial of Bravery data';
+      this.braveryTime.textContent = '--:--:--';
+      return;
+    }
+    const now = Date.now();
+    const start = new Date(b.start).getTime();
+    const end = new Date(b.end).getTime();
+    if (now < start) {
+      this.braveryName.textContent = b.name + ' (starts soon)';
+      const diff = start - now;
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      this.braveryTime.textContent = `${d}d ${h}h`;
+    } else if (now < end) {
+      this.braveryName.textContent = b.name;
+      this.formatRiftTime(end - now, this.braveryTime);
+    } else {
+      this.braveryName.textContent = 'Trial of Bravery ended';
+      this.braveryTime.textContent = '--:--:--';
+    }
   }
 
   /**

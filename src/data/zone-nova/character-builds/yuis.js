@@ -5,43 +5,43 @@ export const yuisBuild = {
     name: "Yuis",
     role: "DPS",
     buildType: "Celestial-Pivot Sword Rain",
-    description: "Yuis (Zeus) is a SSS flying-sword attacker: ally ULTs and Pursues each grant 2 [Celestial Pivot] stacks, and at 16 stacks he can unleash an [Enhanced ULT] — a continuous sword rain on the locked target. His auto already fires 4 swords for 720%, and post-Enhanced-ULT his crit keeps climbing. He rewards busy teams that ult and Pursue often; run him with Leviathan and watch the stacks pour in.",
+    description: "Yuis (Zeus) is a SSS flying-sword attacker: ally ULTs and Pursues each grant 2 [Celestial Pivot] stacks, and at 16 stacks she can unleash an [Enhanced ULT]: a continuous sword rain on the locked target. Her auto already fires 4 swords for 720%, and post-Enhanced-ULT her crit keeps climbing. She rewards busy teams that ult and Pursue often; run her with Leviathan and watch the stacks pour in.",
     skillPriority: [
       {
         skill: "Passive",
         priority: 1,
-        level: "Level 10",
-        reason: "Ally ULTs and Pursues grant [Celestial Pivot] — 16 stacks unlocks the Enhanced ULT sword rain",
+        level: "Level 14",
+        reason: "Ally ULTs and Pursues grant [Celestial Pivot]: 16 stacks unlocks the Enhanced ULT sword rain",
         description: "When an ally uses an ULT, Zeus gains 2 stacks of [Celestial Pivot]\nWhen an ally triggers [Pursue], Zeus gains 2 stacks of [Celestial Pivot]\nAt 16 stacks of [Celestial Pivot], can cast [Enhanced ULT]\nAfter casting [Enhanced ULT], Critical Rate increases by 11% and Critical Damage by 22% for 20 seconds"
       },
       {
         skill: "Ultimate: Absolute Retribution",
         priority: 2,
-        level: "Level 10",
+        level: "Level 14",
         reason: "720% from one giant sword, and the Enhanced version rains swords continuously",
-        description: "Energy Cost: 4\nCooldown: 1.0ss\nInstantly charges 2 stacks of [Celestial Pivot] And launches 1 large flying sword, dealing 720% Attack as holy damage to the current target\n[Enhanced ULT]: Consumes all [Celestial Pivot], continuously rains flying swords on the locked target, dealing 1440% Attack as holy damage, considered [Pursue] damage\nRepeatedly using [Enhanced ULT] on the target refreshes the duration"
+        description: "Energy Cost: 4\nCooldown: 1.0s\nInstantly charges 2 stacks of [Celestial Pivot] And launches 1 large flying sword, dealing 720% Attack as holy damage to the current target\n[Enhanced ULT]: Consumes all [Celestial Pivot], continuously rains flying swords on the locked target, dealing 1440% Attack as holy damage, considered [Pursue] damage\nRepeatedly using [Enhanced ULT] on the target refreshes the duration"
       },
       {
         skill: "Auto Skill: Divine Thunder Punishment",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "720% across 4 flying swords plus 2 free stacks",
-        description: "Cooldown: 5.0ss\nInstantly charges 2 stacks of [Celestial Pivot] And launches 4 flying swords, dealing 720% Attack as holy damage to the current target"
+        description: "Cooldown: 5.0s\nInstantly charges 2 stacks of [Celestial Pivot] And launches 4 flying swords, dealing 720% Attack as holy damage to the current target"
       },
       {
         skill: "Normal Attack: Thunder Lash",
         priority: 4,
         level: "Level 7",
-        reason: "Lowest value per level — raise last",
-        description: "Cooldown: 2.0ss\nDeals 120% Attack as holy damage to the targeted enemy unit"
+        reason: "Lowest value per level: raise last",
+        description: "Cooldown: 2.0s\nDeals 120% Attack as holy damage to the targeted enemy unit"
       }
     ],
     recommendedMemoryCards: [
       {
         name: "Frozen Heart",
-        effect: "Exclusive card — +34% Crit Rate and Pursue Damage raises his Crit DMG by 68%. Stacks beautifully with his stack-hungry rotation.",
+        effect: "Exclusive card: +34% Crit Rate and Pursue Damage raises her Crit DMG by 68%. Stacks beautifully with her stack-hungry rotation.",
         priority: "Must Have",
-        note: "Exclusive card — +34% Crit Rate and Pursue Damage raises his Crit DMG by 68%. Stacks beautifully with his stack-hungry rotation.",
+        note: "Exclusive card: +34% Crit Rate and Pursue Damage raises her Crit DMG by 68%. Stacks beautifully with her stack-hungry rotation.",
         characterSpecific: true,
         memoryImage: "Yuiscard.jpg",
         memoryStats: {
@@ -50,32 +50,70 @@ export const yuisBuild = {
           defense: "474"
         },
         description: "Critical Rate increased by 34%\nPursue Damage dealt by the wearer increases Critical Damage by 68%"
+      },
+      {
+        name: "King of Lust",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "KingOfLust.png",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Critical hit rate increased by 40%, attack power increased by 40%. Each time the wearer's attack hits an enemy, they accumulate 1 stack of [Battle Spirit]. Once [Battle Spirit] reaches 10 stacks, all [Battle Spirit] will be consumed, and the [Penetrating] effect will be gained, increasing critical hit damage dealt by 50% for 5 seconds. [Battle Spirit] will not accumulate while the [Penetrating] effect is active.",
+        priority: "Highly Recommended"
+      },
+      {
+        name: "Shared Bath Time",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Odincard.jpg",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Attack power increases by 40%, and all damage increases by 40% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 15% Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds.",
+        priority: "Highly Recommended"
       }
     ],
     alternativeMemoryCards: [
       {
-        name: "Perverted Little Nurse",
-        effect: "+36% Crit Rate for 10s after dealing Pursue Damage — made for Pursue-triggered kits.",
+        name: "Weird eyes full of desire",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Leviathancard.jpg",
+        memoryImage: "Helacard.jpg",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "After dealing Pursue Damage, Critical Rate increases by 36% for 10 seconds"
+        description: "Increases critical hit rate by 34%. When other friendly units cast a Ultimate Skill, the wearer's damage increases by 24% for 5 seconds, and can be stacked up to 3 times."
       },
       {
-        name: "Hero Never Resting",
-        effect: "+72% Crit DMG when fewer than 2 enemies remain — huge boss-phase nuking.",
+        name: "Black-Faced Fool",
+        effect: "SS-tier Attacker memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Shannacard.jpg",
+        memoryImage: "Heracard.jpg",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "When there are fewer than 2 enemies on the field, Critical Damage increases by 72%"
+        description: "Attack increases by 40%, when attacking targets affected by Damage Over Time, damage increases by 40%"
+      },
+      {
+        name: "Christmas present",
+        effect: "SS-tier Attacker memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "IAmYourChristmasPresent.png",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Critical hit rate increased by 34%, ultimate skill damage increased by 40%. When there is only one enemy on the field, ultimate skill damage is increased by an additional 40%."
       }
     ],
     runes: {
@@ -90,7 +128,7 @@ export const yuisBuild = {
         "Penetration",
         "ATK"
       ],
-      buildNote: "Alpha 4-piece (+30% normal attack damage) feeds his sword spam; Het 4-piece is the alternative if you lean on his Pursue-triggered stacks.",
+      buildNote: "Alpha 4-piece (+30% normal attack damage) feeds her sword spam; Het 4-piece is the alternative if you lean on her Pursue-triggered stacks.",
       recommendedSets: [
         {
           name: "Alpha 4-piece + Beth 2-piece",
@@ -116,25 +154,25 @@ export const yuisBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "Attack (%) / Critical Rate (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -148,7 +186,7 @@ export const yuisBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "Holy Attribute Damage (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -162,7 +200,7 @@ export const yuisBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "Attack (%)",
         availableStats: [
           "Attack (%)",
@@ -172,7 +210,7 @@ export const yuisBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -220,8 +258,11 @@ export const yuisBuild = {
       goodWith: [
         "Leviathan",
         "Bors",
-        "Freya"
+        "Freya",
+        "Gaia",
+        "Jill",
+        "Morgan Le Fay"
       ],
-      note: "Leviathan's constant Pursues are free [Celestial Pivot] stacks for him."
+      note: "Leviathan's constant Pursues are free [Celestial Pivot] stacks for her."
     }
   };

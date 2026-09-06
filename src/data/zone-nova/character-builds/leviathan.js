@@ -5,43 +5,43 @@ export const leviathanBuild = {
     name: "Leviathan",
     role: "DPS",
     buildType: "Pursue-Trigger Crit Attacker",
-    description: "Leviathan is a Pursue engine: whenever ANY ally's skill hits an enemy, his passive consumes a [Mark] to fire a 143.9% Pursue attack, and his ULT deals 600% AND triggers a free Pursue. His auto banks 2 Marks per cast. In a busy team he attacks constantly without ever taking a turn — pair him with fast skill-cycling allies and Zeus, who gains stacks from every Pursue.",
+    description: "Leviathan is a Pursue engine: whenever ANY ally's skill hits an enemy, her passive consumes a [Mark] to fire a 143.9% Pursue attack, and her ULT deals 600% AND triggers a free Pursue. Her auto banks 2 Marks per cast. In a busy team she attacks constantly without ever taking a turn: pair her with fast skill-cycling allies and Zeus, who gains stacks from every Pursue.",
     skillPriority: [
       {
         skill: "Passive: Chains of Resentment",
         priority: 1,
-        level: "Level 10",
-        reason: "Ally skill hits → free 143.9% Pursue attacks. The busier the team, the more he attacks",
+        level: "Level 14",
+        reason: "Ally skill hits → free 143.9% Pursue attacks. The busier the team, the more she attacks",
         description: "When an allied unit's skill hits an enemy, consumes 1 stack of [Mark] And triggers a Pursue attack, dealing 143.9% Attack as wind damage"
       },
       {
         skill: "Ultimate: Seven Sins: Envy",
         priority: 2,
-        level: "Level 10",
+        level: "Level 14",
         reason: "600% single-target nuke plus a free Pursue that does not consume a [Mark]",
-        description: "Energy Cost: 5\nCooldown: 1.0ss\nDeals 600% Attack as wind damage to the targeted enemy unit And instantly triggers 1 Pursue attack without consuming [Mark]"
+        description: "Energy Cost: 5\nCooldown: 1.0s\nDeals 600% Attack as wind damage to the targeted enemy unit And instantly triggers 1 Pursue attack without consuming [Mark]"
       },
       {
         skill: "Auto Skill: Roar of the Abyss",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Banks 2 [Mark] stacks per cast to fuel the passive",
-        description: "Cooldown: 5.0ss\nDeals 120% Attack as wind damage to the targeted enemy unit And gains 2 stacks of [Mark]"
+        description: "Cooldown: 5.0s\nDeals 120% Attack as wind damage to the targeted enemy unit And gains 2 stacks of [Mark]"
       },
       {
         skill: "Normal Attack: Kiss of Leviathan",
         priority: 4,
         level: "Level 7",
-        reason: "Lowest value per level — raise last",
-        description: "Cooldown: 2.0ss\nDeals 120% Attack as wind damage to the targeted enemy unit"
+        reason: "Lowest value per level: raise last",
+        description: "Cooldown: 2.0s\nDeals 120% Attack as wind damage to the targeted enemy unit"
       }
     ],
     recommendedMemoryCards: [
       {
         name: "Perverted Little Nurse",
-        effect: "Themed SR card — +36% Crit Rate for 10s after every Pursue. He pursues constantly, so this is near-permanent.",
+        effect: "Themed SR card: +36% Crit Rate for 10s after every Pursue. She pursues constantly, so this is near-permanent.",
         priority: "Highly Recommended",
-        note: "Themed SR card — +36% Crit Rate for 10s after every Pursue. He pursues constantly, so this is near-permanent.",
+        note: "Themed SR card: +36% Crit Rate for 10s after every Pursue. She pursues constantly, so this is near-permanent.",
         characterSpecific: true,
         memoryImage: "Leviathancard.jpg",
         memoryStats: {
@@ -50,32 +50,70 @@ export const leviathanBuild = {
           defense: "395"
         },
         description: "After dealing Pursue Damage, Critical Rate increases by 36% for 10 seconds"
+      },
+      {
+        name: "Frozen Heart",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Yuiscard.jpg",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Critical Rate increased by 34%\nPursue Damage dealt by the wearer increases Critical Damage by 68%",
+        priority: "Highly Recommended"
+      },
+      {
+        name: "King of Lust",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "KingOfLust.png",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Critical hit rate increased by 40%, attack power increased by 40%. Each time the wearer's attack hits an enemy, they accumulate 1 stack of [Battle Spirit]. Once [Battle Spirit] reaches 10 stacks, all [Battle Spirit] will be consumed, and the [Penetrating] effect will be gained, increasing critical hit damage dealt by 50% for 5 seconds. [Battle Spirit] will not accumulate while the [Penetrating] effect is active.",
+        priority: "Highly Recommended"
       }
     ],
     alternativeMemoryCards: [
       {
-        name: "Perverted Little Nurse",
-        effect: "+36% Crit Rate for 10s after dealing Pursue Damage — made for Pursue-triggered kits.",
+        name: "Shared Bath Time",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Leviathancard.jpg",
+        memoryImage: "Odincard.jpg",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "After dealing Pursue Damage, Critical Rate increases by 36% for 10 seconds"
+        description: "Attack power increases by 40%, and all damage increases by 40% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 15% Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds."
       },
       {
-        name: "Hero Never Resting",
-        effect: "+72% Crit DMG when fewer than 2 enemies remain — huge boss-phase nuking.",
+        name: "Weird eyes full of desire",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Shannacard.jpg",
+        memoryImage: "Helacard.jpg",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "When there are fewer than 2 enemies on the field, Critical Damage increases by 72%"
+        description: "Increases critical hit rate by 34%. When other friendly units cast a Ultimate Skill, the wearer's damage increases by 24% for 5 seconds, and can be stacked up to 3 times."
+      },
+      {
+        name: "Black-Faced Fool",
+        effect: "SS-tier Attacker memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Heracard.jpg",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Attack increases by 40%, when attacking targets affected by Damage Over Time, damage increases by 40%"
       }
     ],
     runes: {
@@ -90,7 +128,7 @@ export const leviathanBuild = {
         "Penetration",
         "ATK"
       ],
-      buildNote: "Het 4-piece (Pursue Damage +20%, and Pursuing grants +15% Crit Rate) is literally his kit; Anemos is the raw damage alternative.",
+      buildNote: "Het 4-piece (Pursue Damage +20%, and Pursuing grants +15% Crit Rate) is literally her kit; Anemos is the raw damage alternative.",
       recommendedSets: [
         {
           name: "Het 4-piece + Beth 2-piece",
@@ -116,25 +154,25 @@ export const leviathanBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "Attack (%) / Critical Rate (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -148,7 +186,7 @@ export const leviathanBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "Wind Attribute Damage (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -162,7 +200,7 @@ export const leviathanBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "Attack (%)",
         availableStats: [
           "Attack (%)",
@@ -172,7 +210,7 @@ export const leviathanBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -220,8 +258,11 @@ export const leviathanBuild = {
       goodWith: [
         "Yuis",
         "Freya",
-        "Athena"
+        "Athena",
+        "Medusa",
+        "Lust - Asmodeus",
+        "Bors"
       ],
-      note: "Zeus gains 2 [Celestial Pivot] stacks per Pursue — Leviathan is one of his best batteries."
+      note: "Zeus gains 2 [Celestial Pivot] stacks per Pursue: Leviathan is one of her best batteries."
     }
   };

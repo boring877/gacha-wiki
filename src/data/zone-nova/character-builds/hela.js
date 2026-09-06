@@ -11,7 +11,7 @@ export const helaBuild = {
     {
       skill: 'Auto Skill: Death Silence Prelude',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Primary damage source with high scaling and mode switching utility',
       description:
         'Cooldown: 5.0s\n[Termination] Mode: Deals 360% attack power Chaos damage to designated enemy unit\n[Death Silence] Mode: Moves 5 meters toward the enemy unit with the highest ATK and deals 360% attack power Chaos damage to them',
@@ -19,7 +19,7 @@ export const helaBuild = {
     {
       skill: 'Ultimate: Domination Authority - Chaotic Death',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Massive 2160% ATK damage that can one-shot bosses, core to her nuker role',
       description:
         'Cooldown: 1.0s | Energy Cost: 1\nEnters [Termination] mode at start of battle. Ultimate can switch between [Termination] or [Death Silence] modes.\n\n[Passive Mechanic]: When allies cast ultimates, gains layers of [Domination Authority: Chaotic Death] equal to energy consumed (max 5 per cast). At 10 layers, can consume all to cast [Enhanced Ultimate].\n\n[Enhanced Ultimate]:\n[Termination] Mode: 2160% ATK Chaos damage to target\n[Death Silence] Mode: Moves to highest ATK enemy and deals total 2160% ATK Chaos damage',
@@ -27,7 +27,7 @@ export const helaBuild = {
     {
       skill: 'Passive: Termination Echo',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Essential for crit damage scaling and resistance penetration',
       description:
         "[Termination] Mode: All damage penetrates 24% of target's resistance\n[Death Silence] Mode: All damage reduces target's total damage output by 36%\n\n[Battle Start Bonus]: With 1+ other Chaos character, Hela's Crit Damage increases by 60%",
@@ -43,7 +43,7 @@ export const helaBuild = {
   ],
   recommendedMemoryCards: [
     {
-      name: 'Heroes, Never Stop',
+      name: 'Hero Never Resting',
       effect:
         "SR memory card that provides Crit Damage increase, excellent for boosting Hela's already high damage output. Works best with 2 or fewer enemies.",
       priority: 'Highly Recommended',
@@ -52,20 +52,32 @@ export const helaBuild = {
       memoryStats: { hp: '4,200', attack: '650', defense: '395' },
       description:
         'When the number of enemies on field is less than 2: Increase critical hit damage by 72%',
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'Strange Gaze Full of Desire',
-      effect:
-        "Hela's exclusive memory card. Crit Rate +34%, and when allies cast ultimates, damage dealt increases by 24% for 5 seconds (max 3 stacks, up to 72% bonus damage).",
-      characterSpecific: true,
-      memoryImage: 'Helacard.jpg',
+      name: 'Frozen Heart',
+      effect: 'SSS-tier Attacker memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Yuiscard.jpg',
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
-      description:
-        'Crit Rate +34%, and when allies cast ultimates, damage dealt increases by 24% for 5 seconds (max 3 stacks, up to 72% bonus damage)',
-      spendingNote:
-        "If you're a heavy spender, this memory is better, but due to cost and benefit, Heroes Never Stop is better for most players.",
+      description: 'Critical Rate increased by 34%\nPursue Damage dealt by the wearer increases Critical Damage by 68%',
+    },
+    {
+      name: 'King of Lust',
+      effect: 'SSS-tier Attacker memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'KingOfLust.png',
+      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+      description: 'Critical hit rate increased by 40%, attack power increased by 40%. Each time the wearer\'s attack hits an enemy, they accumulate 1 stack of [Battle Spirit]. Once [Battle Spirit] reaches 10 stacks, all [Battle Spirit] will be consumed, and the [Penetrating] effect will be gained, increasing critical hit damage dealt by 50% for 5 seconds. [Battle Spirit] will not accumulate while the [Penetrating] effect is active.',
+    },
+    {
+      name: 'Shared Bath Time',
+      effect: 'SSS-tier Attacker memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Odincard.jpg',
+      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+      description: 'Attack power increases by 40%, and all damage increases by 40% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 15% <color=#c90d0d>Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds.',
     },
   ],
   runes: {
@@ -116,25 +128,25 @@ export const helaBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Critical Damage (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -148,7 +160,7 @@ export const helaBuild = {
       description: 'Choose Crit Damage % for maximum damage output',
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Chaos Attribute Damage (%)',
       availableStats: [
         'Chaos Attribute Damage (%)',
@@ -163,7 +175,7 @@ export const helaBuild = {
         'Chaos Attribute Damage % recommended for Chaos characters, or choose other elements for different team compositions',
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
       description: 'Attack % for maximum damage scaling',
@@ -220,7 +232,14 @@ export const helaBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: ['Other Chaos characters', 'ASA characters'],
+    goodWith: [
+      'Frigga',
+      'Pride-Lucifer',
+      'Bors',
+      'Morgan Le Fay',
+      'Medusa',
+      'Thor',
+    ],
     note: 'Hela benefits greatly from another Chaos character in the team due to her passive bonus of +60% Crit Damage when there is at least 1 other Chaos attribute character. Team skill requires 2 Chaos + ASA characters for 10% ATK and up to 30% Chaos damage bonus.',
   },
 };

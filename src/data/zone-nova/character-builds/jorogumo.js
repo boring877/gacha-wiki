@@ -12,7 +12,7 @@ export const jorogumoBuild = {
     {
       skill: 'Ultimate: Umbrella Blossom',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Core healing ability that creates a healing zone and builds Umbrella Blossom stacks on allies. These stacks are essential for triggering the passive emergency healing.',
       description:
@@ -21,7 +21,7 @@ export const jorogumoBuild = {
     {
       skill: 'Passive: Umbrella Heal',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Emergency healing that triggers automatically when allies drop below 30% HP. Consumes Umbrella stacks to provide rapid burst healing, with enhanced healing on the first two activations.',
       description:
@@ -30,7 +30,7 @@ export const jorogumoBuild = {
     {
       skill: 'Auto Skill: Blooming Sweet Rain',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Targeted healing for the lowest HP ally with continuous regeneration and resistance buff. Great for keeping tanks or focused targets alive.',
       description:
@@ -59,7 +59,7 @@ export const jorogumoBuild = {
         "Healing increased by 35%. When healing a target with 'Continuous Damage' status, healing is increased by an additional 25%. If target HP is below 50%, grant continuous healing effect, restoring 9% of caster's ATK as HP per second for 3 seconds, max 1 stack.",
     },
     {
-      name: 'The Beauty of Heijing Castle',
+      name: 'The Beauty of Heikyo Castle',
       effect:
         "Snow Girl's SR memory card that provides healing amplification and damage buffs to fully healed allies. Good synergy with Jorogumo's sustained healing.",
       priority: 'Recommended',
@@ -69,30 +69,24 @@ export const jorogumoBuild = {
       slug: 'the-beauty-of-heijing-castle',
       description:
         "Healing amount +30%; when recovering targets' life value is full, target damage +24% for 10 seconds.",
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'The Most Real Her',
-      effect:
-        "Jeanne D'Arc's SSR memory card that provides massive healing amplification with stacking bonuses for rapid skill usage.",
+      name: 'Serpentine Frenzy',
+      effect: 'SSS-tier Healer memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'JoanofArccard',
+      memoryImage: 'serpentine-frenzy.png',
       memoryStats: { hp: '6,000', attack: '600', defense: '600' },
-      slug: 'the-most-real-her',
-      description:
-        'Healing amount +50%, when casting skills or required skills within 1/2/3 seconds, healing amount additionally +25/50/75%.',
+      description: 'The wearer\'s attack power is increased by 33.5%, and the defense and health of allied units are increased by 40%. Upon entering the battlefield, the wearer is granted the [Geo Boundary] buff every 3 seconds, which is reduced by 5% when taking damage, up to a maximum of 15 stacks.',
     },
     {
-      name: 'Midnight Work',
-      effect:
-        "Anubis's SSR memory card that provides excellent healing boost with attack power buff to healed targets. Good for buffing DPS allies.",
+      name: 'A Smile to Topple Cities',
+      effect: 'SS-tier Healer memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'Anubiscard',
-      memoryStats: { hp: '6,000', attack: '800', defense: '600' },
-      slug: 'midnight-work',
-      description:
-        'Healing amount +50%, each healing within 3 seconds gives target +40% attack power for 3 seconds.',
+      memoryImage: 'Gaiacard.jpg',
+      memoryStats: { hp: '6,300', attack: '580', defense: '585' },
+      description: 'HP increased by 40%, Healing Amount increased by 40%. When the wearer heals within 1 second, Healing Amount additionally increased by 40%',
     },
   ],
   runes: {
@@ -127,25 +121,25 @@ export const jorogumoBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Healing Effectiveness (%) / Attack (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -160,7 +154,7 @@ export const jorogumoBuild = {
         "Healing Effectiveness% is ideal for maximizing all healing output. Attack% is also excellent since Jorogumo's healing scales with ATK.",
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: [
         'Wind Attribute Damage (%)',
@@ -174,7 +168,7 @@ export const jorogumoBuild = {
       ],
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
       description:
@@ -234,7 +228,11 @@ export const jorogumoBuild = {
   teamSynergy: {
     goodWith: [
       'Hela - they work well together because Hela has a passive that increases crit damage when paired with Chaos characters',
-      'She is the 2nd best healer after Gaia, so any team with her is fine',
+      'Frigga',
+      'Freya',
+      'Keller',
+      'Lust - Asmodeus',
+      'Thor',
     ],
     note: 'Jorogumo needs quite a bit of investment to be SSS tier. She is a good healer, but if you have her at awakening 6 then she really shines! Going full HP on her at awakening 6 might be better than ATK for the shield scaling.',
   },

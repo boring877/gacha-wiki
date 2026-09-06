@@ -11,6 +11,7 @@ import Analytics from '../../components/Analytics.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import Breadcrumb from '../../components/zone-nova/Breadcrumb.astro';
 import { getRiftsWithDynamicStatus } from '../../data/zone-nova/rifts.js';
+import { BRAVERY_SEASONS, getActiveBraverySeason } from '../../data/zone-nova/trials.js';
 
 // Import CSS files
 import '../../styles/games/zone-nova/zn-colors.css';
@@ -33,6 +34,14 @@ const timers = game.timers[game.currentRegion];
 
 // Get active rifts dynamically
 const activeRifts = getRiftsWithDynamicStatus().filter(rift => rift.status === 'active');
+
+// Trial of Bravery: active season, or the next upcoming one for a starts-in countdown
+const activeBravery = getActiveBraverySeason();
+const nowStr = new Date().toISOString().slice(0, 10);
+const nextBravery = activeBravery || BRAVERY_SEASONS.find(s => s.start > nowStr) || null;
+const braveryTimer = nextBravery
+  ? { name: 'Trial of Bravery', start: nextBravery.start + 'T14:15:00+08:00', end: nextBravery.end + 'T03:59:00+08:00', href: '/guides/zone-nova/trial-of-bravery/' + nextBravery.id + '/' }
+  : null;
 ---
 
 <!doctype html>
@@ -259,6 +268,11 @@ const activeRifts = getRiftsWithDynamicStatus().filter(rift => rift.status === '
                             <div class="rift-name" id="rift2Name">Loading...</div>
                             <div class="rift-time" id="rift2Time">--:--:--</div>
                           </div>
+                          <!-- Trial of Bravery -->
+                          <div class="rift-item">
+                            <div class="rift-name" id="braveryName">Loading...</div>
+                            <div class="rift-time" id="braveryTime">--:--:--</div>
+                          </div>
                         </div>
                       </div>
 
@@ -346,10 +360,11 @@ const activeRifts = getRiftsWithDynamicStatus().filter(rift => rift.status === '
 
     <!-- Zone Nova Clock Timer Script with Dynamic Rifts and Guild War -->
     <script
-      define:vars={{ activeRifts, maintenance: timers.maintenance, guildWar: timers.guildWar }}
+      define:vars={{ activeRifts, maintenance: timers.maintenance, guildWar: timers.guildWar, braveryTimer }}
     >
       // Pass rifts data to global scope for the clock script
       window.zoneNovaActiveRifts = activeRifts;
+      window.zoneNovaBravery = braveryTimer;
       // Pass maintenance data to global scope for the clock script
       window.zoneNovaMaintenance = maintenance;
       // Pass guild war data to global scope for the clock script

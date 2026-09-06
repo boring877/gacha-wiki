@@ -11,7 +11,7 @@ export const heraBuild = {
     {
       skill: 'Ultimate: Despair Strangulation',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Main burst damage source, Enhanced version at 20+ DOT layers deals massive 1920% ATK damage',
       description:
@@ -20,7 +20,7 @@ export const heraBuild = {
     {
       skill: 'Auto Skill: Judgment Execution',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         '8 flying swords count as 8 sword attacks towards [Void] application - extremely efficient for DOT stacking',
       description:
@@ -29,7 +29,7 @@ export const heraBuild = {
     {
       skill: 'Passive: Strong Pressure',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Core DOT application mechanic - essential for her entire kit',
       description:
         'Every 4 sword attacks (Basic Attack also count as 1 sword attack, Auto Skill counts as 8 sword attacks), next attack adds [Void] effect. [Void]: Deals 36% attack power chaos damage per second per layer, max 10 layers, lasts 10 seconds',
@@ -45,7 +45,7 @@ export const heraBuild = {
   ],
   recommendedMemoryCards: [
     {
-      name: 'Hera Memory',
+      name: 'Black-Faced Fool',
       effect:
         "Hera's signature memory card that perfectly synergizes with her DOT playstyle. Attack power +40% amplifies all damage, while the +40% damage against DOT targets maximizes her sustained damage output.",
       priority: 'Highly Recommended',
@@ -56,7 +56,7 @@ export const heraBuild = {
         'Attack power +40%, when attacking targets affected by continuous damage effects, damage increases by 40%',
     },
     {
-      name: 'Heroes, Never Stop',
+      name: 'Hero Never Resting',
       effect:
         'High crit damage boost for single-target scenarios. Effective in boss fights where enemy count is low.',
       priority: 'Recommended',
@@ -65,28 +65,32 @@ export const heraBuild = {
       memoryStats: { hp: '4,200', attack: '650', defense: '395' },
       description:
         'When the number of enemies on field is less than 2: Increase critical hit damage by 72%',
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'I am your Christmas present.',
-      effect:
-        "Sigurd's exclusive memory card. Provides crit rate and massive ultimate damage boost, great for Hera's Enhanced Ultimate burst.",
+      name: 'Frozen Heart',
+      effect: 'SSS-tier Attacker memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'IAmYourChristmasPresent.png',
+      memoryImage: 'Yuiscard.jpg',
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
-      description:
-        'Critical hit rate increased by 34%, ultimate skill damage increased by 40%. When there is only one enemy on the field, ultimate skill damage is increased by an additional 40%.',
+      description: 'Critical Rate increased by 34%\nPursue Damage dealt by the wearer increases Critical Damage by 68%',
     },
     {
-      name: 'Strange Gaze Full of Desire',
-      effect:
-        "Hela's exclusive memory card. Crit Rate +34% and stacking damage boost when allies cast ultimates, excellent for team-based play.",
+      name: 'King of Lust',
+      effect: 'SSS-tier Attacker memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'Helacard.jpg',
+      memoryImage: 'KingOfLust.png',
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
-      description:
-        "Crit Rate +34%, and when allies cast ultimates, damage dealt increases by 24% for 5 seconds (max 3 stacks, up to 72% bonus damage).",
+      description: 'Critical hit rate increased by 40%, attack power increased by 40%. Each time the wearer\'s attack hits an enemy, they accumulate 1 stack of [Battle Spirit]. Once [Battle Spirit] reaches 10 stacks, all [Battle Spirit] will be consumed, and the [Penetrating] effect will be gained, increasing critical hit damage dealt by 50% for 5 seconds. [Battle Spirit] will not accumulate while the [Penetrating] effect is active.',
+    },
+    {
+      name: 'Shared Bath Time',
+      effect: 'SSS-tier Attacker memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Odincard.jpg',
+      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+      description: 'Attack power increases by 40%, and all damage increases by 40% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 15% <color=#c90d0d>Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds.',
     },
   ],
   runes: {
@@ -141,25 +145,25 @@ export const heraBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Critical Rate (%) / Critical Damage (%) / Attack (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -174,7 +178,7 @@ export const heraBuild = {
         'Attack % for DOT build. Crit Rate % if you are lacking crit rate, otherwise get Crit Damage %.',
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Chaos Attribute Damage (%)',
       availableStats: [
         'Chaos Attribute Damage (%)',
@@ -189,7 +193,7 @@ export const heraBuild = {
       description: 'Chaos Attribute Damage % is essential for Hera as all her damage is Chaos',
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
       description: 'Attack % for maximum damage scaling on both direct hits and DOT',
@@ -245,11 +249,12 @@ export const heraBuild = {
   },
   teamSynergy: {
     goodWith: [
-      'Freye (best pick - Chaos DOT synergy)',
-      'Hela (Chaos DPS)',
-      'Morgan Le Fay (Supporter)',
-      'Jorogumo (Healer)',
-      'Thor or Guinevere (Tank)',
+      'Freya - best pick for Chaos DoT synergy',
+      'Hela - Chaos DPS',
+      'Morgan Le Fay - Supporter',
+      'Jorogumo - Healer',
+      'Thor or Guinevere - Tank',
+      'Frigga',
     ],
     note: "Hera is quite hard to use since she needs specific team compositions. The main problem is finding good DOT damage dealers to help stack layers. Freye is the best pick to pair with her for Chaos and DOT synergy. Recommended team: Hera + Freye + Jorogumo (healer) + Thor or Guinevere (tank). Morgan Le Fay works well as a buffer if needed.",
   },

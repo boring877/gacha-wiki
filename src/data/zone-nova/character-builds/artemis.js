@@ -6,12 +6,12 @@ export const artemisBuild = {
   role: 'DPS',
   buildType: 'PVP Wind DPS',
   description:
-    'Artemis is a PVP unit, she is really weak at PVE to the point she is useless. her use case is PVP one shoting Targets with her ultimate.',
+    'Artemis is a PVP unit, she is really weak at PVE to the point she is useless. Her use case is PVP one-shotting targets with her ultimate.',
   skillPriority: [
     {
       skill: 'Ultimate: Silver Moon Judgment',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'High damage ultimate that enables low-HP passive activation - primary PVP burst tool',
       description:
@@ -20,7 +20,7 @@ export const artemisBuild = {
     {
       skill: 'Auto Skill: Moon Ancient Boxing',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Primary damage source and self-sustain - provides consistent AOE damage and healing',
       description:
         'Cooldown: 5.0s\nAutomatically deals 240% attack power as wind damage to designated enemy and nearby enemies. Each hit restores 10% max HP.',
@@ -28,7 +28,7 @@ export const artemisBuild = {
     {
       skill: 'Passive: Moon Shadow Hunt',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Core damage amplification mechanic - essential for her berserker playstyle',
       description:
         'When HP is below 50%: All attacks deal additional 60% attack power as wind damage.',
@@ -43,7 +43,7 @@ export const artemisBuild = {
   ],
   recommendedMemoryCards: [
     {
-      name: 'Halloween Candy',
+      name: 'Halloween candy',
       effect:
         "Nina's signature memory card that provides excellent critical damage and sustain. Perfect for Artemis's PVP burst playstyle with critical damage amplification.",
       priority: 'Highly Recommended',
@@ -52,18 +52,24 @@ export const artemisBuild = {
       memoryStats: { hp: '6,000', attack: '600', defense: '600' },
       description:
         'Critical damage increased by 60%, When health is above 30%: Recover 2% max health after attacking, All damage increased by 40%',
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'The World Seems to Have Stopped',
-      effect:
-        "Artemis's exclusive memory card with perfect synergy for her berserker playstyle. Provides attack boost and massive damage amplification when below 50% HP.",
-      characterSpecific: true,
-      memoryImage: 'Artemiscard.jpg',
-      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
-      description:
-        'Attack power increased by 40%, When HP is below 50%: All damage increased by 40%',
+      name: 'Afternoon tantrums',
+      effect: 'SSS-tier Warrior memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Kellercard.png',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Increases own attack power by 70%， critical hit damage by 90%， and normal attack damage by 100%. Every 3rd normal attack will deal an additional 75% of attack power as normal attack damage.',
+    },
+    {
+      name: 'Wrong time of appearance',
+      effect: 'SSS-tier Warrior memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Apepcard.jpg',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Defense increased by 64%\nWhen HP is below 50%, the wearer recovers 2% of maximum HP after attacking\nWhen HP is above 50%, damage taken is reduced by 10%, and damage dealt is increased by 40%.',
     },
   ],
   runes: {
@@ -102,25 +108,25 @@ export const artemisBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options. Important for HP management calculations.',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Critical Rate (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -135,7 +141,7 @@ export const artemisBuild = {
         'you can go Critical Rate or Critical Damage both are good, the RNG sometimes is annoying in PVP so adding more critical rate is better. also remember you do not need alot of damage to kill their carry or their healers !',
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Wind Attribute Damage (%)',
       availableStats: [
         'Wind Attribute Damage (%)',
@@ -149,7 +155,7 @@ export const artemisBuild = {
       ],
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
     },
@@ -204,7 +210,13 @@ export const artemisBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: ['PVP unit', 'Works with Supporters likes "Morgan, Naiya and Zashiki-warashi"'],
+    goodWith: [
+      'Medusa',
+      'Lust - Asmodeus',
+      'Bors',
+      'Morgan Le Fay',
+      'Thor',
+    ],
     note: 'You need to have the energy gain to be high in order to use her ultimate before they kill you !.',
   },
 };

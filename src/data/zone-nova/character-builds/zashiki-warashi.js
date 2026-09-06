@@ -5,26 +5,26 @@ export const zashikiWarashiBuild = {
     name: "Zashiki-warashi",
     role: "Supporter",
     buildType: "ATK-Buff Team Supporter",
-    description: "Zashiki-warashi is the budget buffer: her auto grants ALL allies +36% ATK for 15 seconds, her ULT grants +36% damage dealt team-wide, and her passive hands the highest-ATK ally a +60% ATK [Blessing] after every skill. For an SR she covers nearly every offensive buff slot — an excellent stand-in until Sharin or Tamamo.",
+    description: "Zashiki-warashi is the budget buffer: her auto grants all allies up to +36% ATK for 15 seconds (the value is capped by her own initial ATK, so her ATK stat matters), her ULT adds +36% team-wide damage for 15 seconds, and her passive hands the highest-ATK ally a +60% ATK [Blessing] after every skill she casts. For an SR she covers nearly every offensive buff slot, making her an excellent stand-in until you land Bors, Sharin, or Tamamo-no-Mae. Values shown at max skill level.",
     skillPriority: [
       {
         skill: "Ultimate: Share Blessings, Share Burdens!",
         priority: 1,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Buff magnitude scales with level",
-        description: "Energy Cost: 3\nCooldown: 1.0ss\nAll allied units' damage dealt increases by 36% for 15 seconds"
+        description: "Energy Cost: 3\nCooldown: 1.0s\nAll allied units' damage dealt increases by 36% for 15 seconds"
       },
       {
         skill: "Auto Skill: Abundant Harvest",
         priority: 2,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Uptime on the core team buffs",
-        description: "Cooldown: 5.0ss\nAll allied units gain 36% Attack, up to 36% of Zashiki Warashi's initial Attack, 1 stack max, for 15 seconds"
+        description: "Cooldown: 5.0s\nAll allied units gain 36% Attack, up to 36% of Zashiki Warashi's initial Attack, 1 stack max, for 15 seconds"
       },
       {
         skill: "Passive: Child's Blessing",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Stacking team-wide engine",
         description: "After casting a skill, the allied unit with the highest Attack gains 1 stack of [Blessing], increasing Attack by 60% for 15 seconds"
       },
@@ -33,16 +33,56 @@ export const zashikiWarashiBuild = {
         priority: 4,
         level: "Level 7",
         reason: "Level last",
-        description: "Cooldown: 2.0ss\nDeals 120% Attack as fire damage to the targeted enemy unit"
+        description: "Cooldown: 2.0s\nDeals 120% Attack as fire damage to the targeted enemy unit"
       }
     ],
     recommendedMemoryCards: [
       {
+        name: "Unholy Alliance",
+        effect: "UR tier team card: +32% ATK/DEF/HP for the whole party just for equipping it, and every skill the wearer casts stacks +14% team max HP and -5% team skill cooldowns (up to 5).",
+        characterSpecific: false,
+        memoryImage: "unholy-alliance.png",
+        memoryStats: {
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
+        },
+        description: "Our entire party's attack power, defense power, and HP are increased by 32%. Each time the wearer uses a skill, our entire party's maximum HP increases by 14% and all skill cooldowns decrease by 5%, stacking up to 5 times.",
+        priority: "Highly Recommended"
+      },
+      {
+        name: "Bath Time",
+        effect: "SSR team card: +32% ATK and DEF for all allies on equip, and every skill the wearer casts stacks +6% team max HP (up to 10 stacks, +60% total).",
+        characterSpecific: false,
+        memoryImage: "Sharincard.png",
+        memoryStats: {
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
+        },
+        description: "Increases the attack and defense of all allies by 32%. Each time the wearer uses a skill, the maximum HP of all allies increases by 6% (up to 10 stacks).",
+        priority: "Highly Recommended"
+      },
+      {
+        name: "Hot Spring & Her",
+        effect: "SSS-tier Supporter memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Tamamo-no-maecard.jpg",
+        memoryStats: {
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
+        },
+        description: "Base Stats Boost: ATK +40%.\nPassive: After allies' Ultimate deals DMG, increases self Energy Recovery Rate by 200% (4s) and gains 1 stack of [Brilliance] (5s, max 50 stacks).\nEvery 5 stacks of [Brilliance] increases all allies' DMG by 9%.",
+        priority: "Highly Recommended"
+      }
+    ],
+    alternativeMemoryCards: [
+      {
         name: "Sleep Treasure",
-        effect: "Exclusive card — after her ULT, +24% team damage for 10s with a 50% chance of +20% team Crit DMG. On a buffer whose whole job is ulting.",
-        priority: "Highly Recommended",
-        note: "Exclusive card — after her ULT, +24% team damage for 10s with a 50% chance of +20% team Crit DMG. On a buffer whose whole job is ulting.",
-        characterSpecific: true,
+        effect: "Cheap SR option: Zashiki-warashi's themed card.",
+        note: "Budget pick. Fine early, but the recommended cards above scale far better.",
+        characterSpecific: false,
         memoryImage: "Zashiki-warashicard.jpg",
         memoryStats: {
           hp: "5,000",
@@ -50,24 +90,22 @@ export const zashikiWarashiBuild = {
           defense: "500"
         },
         description: "After casting an ULT, team damage increases by 24% for 10 seconds; additionally, 50% chance to increase team Critical Damage by an extra 20% for 10 seconds"
-      }
-    ],
-    alternativeMemoryCards: [
+      },
       {
-        name: "Dawn's Sunlight",
-        effect: "+20% ATK and +20% team Skill Damage — a simple, solid SR stat stick for supporters.",
+        name: "Awkward Appearance",
+        effect: "SS-tier Supporter memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "morning-sunlight.png",
+        memoryImage: "Athenacard.jpg",
         memoryStats: {
-          hp: "5,000",
-          attack: "500",
-          defense: "500"
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
         },
-        description: "Attack increases by 20%, team Skill Damage increases by 20%"
+        description: "At the start of battle, all allied characters' damage increases by 40%, with Normal Attack damage additionally increased by 40%\n\nEvery 5 Normal Attack damages dealt by the wearer increases team Attack Power by 40%, lasting 5 seconds"
       },
       {
         name: "The Loneliest Moment",
-        effect: "SSR team amp: +40% damage (and +40% Pursue) from battle start, and 100% team Energy Gain after an 8+ energy ULT.",
+        effect: "SS-tier Supporter memory in the memory tier list.",
         characterSpecific: false,
         memoryImage: "Apollocard.jpg",
         memoryStats: {
@@ -76,6 +114,18 @@ export const zashikiWarashiBuild = {
           defense: "600"
         },
         description: "After entering battle, all team members' damage increases by 40%, Pursue Damage increases by an additional 40%, when the wearer's ULT consumes 8 or more energy, all team members' Energy Gain Efficiency increases by 100% for 10 seconds"
+      },
+      {
+        name: "And Also Chocolate",
+        effect: "S-tier Supporter memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "naiyacard.jpg",
+        memoryStats: {
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
+        },
+        description: "Attack increases by 40%, after the wearer casts an ULT, team ULT damage increases by 40% for 5 seconds"
       }
     ],
     runes: {
@@ -89,7 +139,7 @@ export const zashikiWarashiBuild = {
         "HP",
         "DEF"
       ],
-      buildNote: "Her buffs are flat percentages — survival stats (HP/DEF) keep her alive to keep the team buffed.",
+      buildNote: "Her buffs are flat percentages: survival stats (HP/DEF) keep her alive to keep the team buffed.",
       recommendedSets: [
         {
           name: "Kappa 4-piece + Epsilon 2-piece",
@@ -115,25 +165,25 @@ export const zashikiWarashiBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "Attack (%) / HP (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -147,7 +197,7 @@ export const zashikiWarashiBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "HP (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -161,7 +211,7 @@ export const zashikiWarashiBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "HP (%)",
         availableStats: [
           "Attack (%)",
@@ -171,7 +221,7 @@ export const zashikiWarashiBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -219,8 +269,11 @@ export const zashikiWarashiBuild = {
       goodWith: [
         "Shanna",
         "Mordred",
-        "Tefnut"
+        "Tefnut",
+        "Bors",
+        "Nephthys",
+        "Freya"
       ],
-      note: undefined
+      note: "Her buffs are universal and land hardest on the team's biggest hitters: pair her with the strongest carries available."
     }
   };

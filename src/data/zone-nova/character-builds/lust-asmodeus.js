@@ -11,7 +11,7 @@ export const lustAsmodeusBuild = {
     {
       skill: 'Ultimate: Wind Devour',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Main burst button. It carries her highest immediate single-target damage and starts the [Desire] loop that speeds up the rest of her rotation.',
       description:
@@ -20,7 +20,7 @@ export const lustAsmodeusBuild = {
     {
       skill: 'Auto Skill: Wind attack',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Reliable multi-hit damage source that also stacks [Armor Shatter], giving her the defense break she needs to keep scaling into longer single-target fights.',
       description:
@@ -29,7 +29,7 @@ export const lustAsmodeusBuild = {
     {
       skill: 'Passive: Wind Desire',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'This passive adds a strong defensive payoff once her [Desire] engine is fully online, making it a solid upgrade after her main damage skills.',
       description: 'When the [Desire] stack is 2, damage taken is reduced by 50%.',
@@ -55,28 +55,32 @@ export const lustAsmodeusBuild = {
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
       description:
         'Critical hit rate increased by 40%. Attack power increased by 40%. Each time the wearer attacks and hits an enemy, they gain 1 stack of [Battle Spirit]. When [Battle Spirit] reaches 10 stacks, all stacks are consumed and [Penetrating] is gained, increasing critical hit damage by 50% for 5 seconds. [Battle Spirit] cannot be gained while [Penetrating] is active.',
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'I am your Christmas present.',
-      effect:
-        'Strong alternative for bossing. The extra crit rate and ultimate damage both line up well with Asmodeus when you want bigger burst windows.',
+      name: 'Frozen Heart',
+      effect: 'SSS-tier Attacker memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'IAmYourChristmasPresent.png',
+      memoryImage: 'Yuiscard.jpg',
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
-      description:
-        'Critical hit rate increased by 34%, ultimate skill damage increased by 40%. When there is only one enemy on the field, ultimate skill damage is increased by an additional 40%.',
+      description: 'Critical Rate increased by 34%\nPursue Damage dealt by the wearer increases Critical Damage by 68%',
     },
     {
-      name: 'Heroes, Never Stop',
-      effect:
-        'Lower-cost crit damage option that works especially well in single-target fights where enemy count stays low.',
+      name: 'Shared Bath Time',
+      effect: 'SSS-tier Attacker memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'Shannacard.jpg',
-      memoryStats: { hp: '4,200', attack: '650', defense: '395' },
-      description:
-        'When the number of enemies on field is less than 2: Increase critical hit damage by 72%.',
+      memoryImage: 'Odincard.jpg',
+      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+      description: 'Attack power increases by 40%, and all damage increases by 40% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 15% <color=#c90d0d>Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds.',
+    },
+    {
+      name: 'Weird eyes full of desire',
+      effect: 'SSS-tier Attacker memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Helacard.jpg',
+      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+      description: 'Increases critical hit rate by 34%. When other friendly units cast a Ultimate Skill, the wearer\'s damage increases by 24% for 5 seconds, and can be stacked up to 3 times.',
     },
   ],
   runes: {
@@ -227,7 +231,13 @@ export const lustAsmodeusBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: ['Bikta teammates', 'Wind teams', 'Crit buffers', 'Single-target boss teams'],
+    goodWith: [
+      'Medusa',
+      'Apep',
+      'Bors',
+      'Morgan Le Fay',
+      'Thor',
+    ],
     note:
       'Asmodeus gains the most value in teams that help her stay on target, stack crit stats, and convert her Armor Shatter uptime into faster kills. She is strongest when a team can support repeated burst windows instead of long uncontrolled fights.',
   },

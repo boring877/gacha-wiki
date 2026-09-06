@@ -5,26 +5,26 @@ export const niniBuild = {
     name: "Nini",
     role: "Disruptor",
     buildType: "Vulnerability Debuffer",
-    description: "Nini is an SR amplifier: her ULT applies [ice Erosion] (+38% damage taken, 10s) to a front AoE, her auto stacks [Weakness] (−17.4% enemy damage dealt at 3 stacks), and her passive gives her +38% damage against any debuffed target. She makes the whole team hit harder and rewards herself for it — a solid budget Disruptor for debuff-heavy comps.",
+    description: "Nini is an SR amplifier: her ULT applies [ice Erosion] (+38% damage taken, 10s) to a front AoE, her auto stacks [Weakness] (−17.4% enemy damage dealt at 3 stacks), and her passive gives her +38% damage against any debuffed target. She makes the whole team hit harder and rewards herself for it: a solid budget Disruptor for debuff-heavy comps.",
     skillPriority: [
       {
         skill: "Ultimate: Glory of the Black Empire",
         priority: 1,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Biggest debuff/damage swing in the kit",
-        description: "Energy Cost: 3\nCooldown: 1.0ss\nDeals 84% Attack as ice damage to enemies in front And applies [ice Erosion], increasing damage taken by 38% for 10 seconds"
+        description: "Energy Cost: 3\nCooldown: 1.0s\nDeals 84% Attack as ice damage to enemies in front And applies [ice Erosion], increasing damage taken by 38% for 10 seconds"
       },
       {
         skill: "Auto Skill: Steel Charge",
         priority: 2,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Core debuff uptime on cooldown",
-        description: "Cooldown: 5.0ss\nDeals 60% Attack as ice damage to enemies in front And applies 1 stack of [Weakness], reducing their damage dealt by 5.8% per stack, up to 3 stacks, for 10 seconds"
+        description: "Cooldown: 5.0s\nDeals 60% Attack as ice damage to enemies in front And applies 1 stack of [Weakness], reducing their damage dealt by 5.8% per stack, up to 3 stacks, for 10 seconds"
       },
       {
         skill: "Passive: Battle Zealot",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Constant passive pressure between skills",
         description: "When attacking an enemy unit with a negative status, damage increases by 38%"
       },
@@ -33,30 +33,16 @@ export const niniBuild = {
         priority: 4,
         level: "Level 7",
         reason: "Level last",
-        description: "Cooldown: 2.0ss\nDeals 120% Attack as ice damage to the targeted enemy unit"
+        description: "Cooldown: 2.0s\nDeals 120% Attack as ice damage to the targeted enemy unit"
       }
     ],
     recommendedMemoryCards: [
       {
         name: "Flower of the Battlefield",
-        effect: "Themed SR card — +20% damage per debuff on the target (up to 3). She stacks debuffs herself, so it self-synergizes.",
+        effect: "Themed SR card: +20% damage per debuff on the target (up to 3). She stacks debuffs herself, so it self-synergizes.",
         priority: "Highly Recommended",
-        note: "Themed SR card — +20% damage per debuff on the target (up to 3). She stacks debuffs herself, so it self-synergizes.",
+        note: "Themed SR card: +20% damage per debuff on the target (up to 3). She stacks debuffs herself, so it self-synergizes.",
         characterSpecific: true,
-        memoryImage: "ninicard.jpg",
-        memoryStats: {
-          hp: "5,000",
-          attack: "500",
-          defense: "500"
-        },
-        description: "For each debuff on the attacked target, damage increases by 20%, stacks up to 3 times"
-      }
-    ],
-    alternativeMemoryCards: [
-      {
-        name: "Flower of the Battlefield",
-        effect: "+20% damage per debuff on the target (up to 3 stacks) — rewards full debuff stacking.",
-        characterSpecific: false,
         memoryImage: "ninicard.jpg",
         memoryStats: {
           hp: "5,000",
@@ -66,16 +52,55 @@ export const niniBuild = {
         description: "For each debuff on the attacked target, damage increases by 20%, stacks up to 3 times"
       },
       {
-        name: "The Reason for Slumber",
-        effect: "ULTs reduce the target's Energy Gain Efficiency by 18% — extra control on top of debuffs.",
+        name: "The Knight and the Fuzzy",
+        effect: "SSS-tier Disruptor memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "sleepy-guardian.png",
+        memoryImage: "the-knight-and-the-fuzzy.png",
         memoryStats: {
-          hp: "5,000",
-          attack: "500",
-          defense: "500"
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
         },
-        description: "ULT reduces the target's Energy Gain Efficiency by 18%"
+        description: "ATK +40%.\nEnemies hit by the Ultimate gain [Frontline Edict] for 7s. Targets within 3m also gain [Enhanced Frontline Edict].\n[Frontline Edict]: DEF -12.5%. Energy Gain Efficiency -10%.\n[Enhanced Frontline Edict]: DEF -45%. Energy Gain Efficiency -30%.",
+        priority: "Highly Recommended"
+      }
+    ],
+    alternativeMemoryCards: [
+      {
+        name: "A perfect makeup look?",
+        effect: "SS-tier Disruptor memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Ibaraki-dojicard.jpg",
+        memoryStats: {
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
+        },
+        description: "Attack power increased by 40%. When a Ultimate Skill deals damage, the target takes 36% more damage and receives 40% less healing for 5 seconds."
+      },
+      {
+        name: "Discipline Director",
+        effect: "SS-tier Disruptor memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Erikacard.png",
+        memoryStats: {
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
+        },
+        description: "Attack Power increases by 40%.\nWhen the wearer's skill or ultimate hits a target that target's healing received is reduced by 12% and shielding received is reduced by 10% for 3 seconds. This effect cannot stack.\nIf the target has a shield at that time the target's damage dealt is reduced by 18% for 3 seconds. This effect cannot stack."
+      },
+      {
+        name: "Nutrition Studies",
+        effect: "SS-tier Disruptor memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "NutritionStudies.png",
+        memoryStats: {
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
+        },
+        description: "Increases HP by 40% and increases the attack power of the entire team by 20%. After the wearer uses the skill, they inflict the Drain debuff on all enemies. Drain reduces their energy regeneration efficiency by 10% and increases the energy regeneration efficiency of all allies by 10% for 4 seconds."
       }
     ],
     runes: {
@@ -90,7 +115,7 @@ export const niniBuild = {
         "Penetration",
         "ATK"
       ],
-      buildNote: "Debuffs land regardless, but ATK keeps the damage relevant — balance offensive stats with debuff uptime.",
+      buildNote: "Debuffs land regardless, but ATK keeps the damage relevant: balance offensive stats with debuff uptime.",
       recommendedSets: [
         {
           name: "Iota 4-piece + Epsilon 2-piece",
@@ -116,25 +141,25 @@ export const niniBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "Attack (%) / Critical Rate (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -148,7 +173,7 @@ export const niniBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "Ice Attribute Damage (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -162,7 +187,7 @@ export const niniBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "Attack (%)",
         availableStats: [
           "Attack (%)",
@@ -172,7 +197,7 @@ export const niniBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -220,8 +245,11 @@ export const niniBuild = {
       goodWith: [
         "Belphegar",
         "Shu",
-        "Keller"
+        "Keller",
+        "Freya",
+        "Gluttony - Beelzebub",
+        "Lust - Asmodeus"
       ],
-      note: undefined
+      note: "Her debuffs amplify everything the carries do: the more damage the rest of the team outputs, the more her control matters."
     }
   };

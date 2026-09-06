@@ -12,7 +12,7 @@ export const gaiaBuild = {
     {
       skill: 'Passive: Primordial Regression',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         "Core mechanic providing Motherly Love buff with 60% HP increase and unique revive through Life Extension - essential for team survivability and Gaia's primary support function",
       description:
@@ -21,7 +21,7 @@ export const gaiaBuild = {
     {
       skill: 'Ultimate: Dominion: Primordial Order',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Provides massive 60% max HP boost for entire team plus Emergency Treatment burst healing - primary team-wide enhancement and burst healing tool',
       description:
@@ -30,7 +30,7 @@ export const gaiaBuild = {
     {
       skill: 'Auto Skill: Gene Collapse',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Deploys healing devices that provide sustained AOE healing - main source of continuous healing and works synergistically with ultimate for device replenishment',
       description:
@@ -47,7 +47,7 @@ export const gaiaBuild = {
   ],
   recommendedMemoryCards: [
     {
-      name: 'The Beauty of Heijing Castle',
+      name: 'The Beauty of Heikyo Castle',
       effect:
         "Snow Girl's SR memory card that provides substantial healing amplification and damage buffs to fully healed allies. Excellent for healers with sustained recovery effects.",
       priority: 'Highly Recommended',
@@ -57,30 +57,24 @@ export const gaiaBuild = {
       slug: 'the-beauty-of-heijing-castle',
       description:
         "Healing amount +30%; when recovering targets' life value is full, target damage +24% for 10 seconds.",
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'A Smile That Topples Cities',
-      effect:
-        "Gaia's exclusive SSR memory card that provides maximum HP scaling and healing amplification with a conditional bonus. ",
-      characterSpecific: true,
-      memoryImage: 'Gaiacard',
-      memoryStats: { hp: '6,300', attack: '580', defense: '585' },
-      slug: 'a-smile-that-topples-cities',
-      description:
-        'Max HP +40%; Healing output +40%; If wearer healed within last 1 second, additional +40% healing output.',
+      name: 'Serpentine Frenzy',
+      effect: 'SSS-tier Healer memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'serpentine-frenzy.png',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'The wearer\'s attack power is increased by 33.5%, and the defense and health of allied units are increased by 40%. Upon entering the battlefield, the wearer is granted the [Geo Boundary] buff every 3 seconds, which is reduced by 5% when taking damage, up to a maximum of 15 stacks.',
     },
     {
-      name: 'Solitary Realm',
-      effect:
-        "Kela's SR memory card that boosts healing output and provides damage reduction to low-health allies. Excellent for emergency healing scenarios and survivability.",
+      name: 'Are the glasses the real thing?',
+      effect: 'SS-tier Healer memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'kelacard',
-      memoryStats: { hp: '5,000', attack: '500', defense: '500' },
-      slug: 'solitary-realm',
-      description:
-        'Healing amount increased by 30%; Protection Effect: When healing a target below 50% max HP, the target receives 8% damage reduction for 10 seconds.',
+      memoryImage: 'are-the-glasses-the-real-thing.png',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Increases critical hit rate by 34%. After each critical hit, increases self-healing by 50% for 3 seconds. After each heal, increases the attack power of all allied targets by 30% for 3 seconds.',
     },
   ],
   runes: {
@@ -115,25 +109,25 @@ export const gaiaBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Healing Effectiveness (%) / HP (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -148,7 +142,7 @@ export const gaiaBuild = {
         'Healing Effectiveness% is ideal for maximizing all healing output. HP% is also excellent for increasing the scaling of all abilities. prioritize Healing Effectiveness% if you have enough HP from other sources.',
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'HP (%)',
       availableStats: [
         'Wind Attribute Damage (%)',
@@ -164,7 +158,7 @@ export const gaiaBuild = {
         "HP% is the best choice for position 5 as it directly scales all of Gaia's healing abilities, Motherly Love HP boosts, and Emergency Treatment healing. This provides the most benefit for her support role.",
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'HP (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
       description:
@@ -223,7 +217,14 @@ export const gaiaBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: ['Any team - she is good at everything. She is the best healer right now!'],
+    goodWith: [
+      'Jill',
+      'Morgan Le Fay',
+      'Freya',
+      'Keller',
+      'Lust - Asmodeus',
+      'Thor',
+    ],
     note: 'Gaia is a really strong healer. If you put her in any team she is going to make sure they will not die. However, her max HP increase does not scale with other characters that use HP as damage like Mordred.',
   },
 };

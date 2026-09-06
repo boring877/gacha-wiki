@@ -11,7 +11,7 @@ export const morganLeFayBuild = {
     {
       skill: 'Ultimate',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Core buffing ability - drops two Holy Swords that provide massive ATK/DEF buffs and damage reduction',
       description:
@@ -20,7 +20,7 @@ export const morganLeFayBuild = {
     {
       skill: 'Auto Skill',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Consistent team buffing with damage increase and damage reduction',
       description:
         "Cooldown: 5.0s\nGrants all allies [Blessing]. While [Blessing] is active, the character's DMG dealt is increased by 36% and DMG taken is reduced by 12%. [Blessing] disappears after taking 5 instances of DMG or after 10s.",
@@ -28,7 +28,7 @@ export const morganLeFayBuild = {
     {
       skill: 'Passive',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Battle start energy gain, stat sharing, and energy generation on skill use',
       description:
         "Upon entering battle, immediately gains 3 Energy and Energy gain efficiency is reduced by 30% for 10s.\n\nUpon entering battle, 29% of Morgan Le Fay's ATK/DEF/HP is converted and transferred to the ally with the highest ATK/DEF/HP respectively.\n\nEach time Morgan Le Fay uses a skill, immediately gain 1 Energy.",
@@ -43,7 +43,7 @@ export const morganLeFayBuild = {
   ],
   recommendedMemoryCards: [
     {
-      name: 'Absolutely Perfect Arms',
+      name: 'Absolutely perfect buttocks',
       effect:
         "Morgan Le Fay's exclusive memory card. Provides massive stat increases and energy gain efficiency for Holy teams.",
       priority: 'Exclusive - Highly Recommended',
@@ -53,27 +53,49 @@ export const morganLeFayBuild = {
       description:
         "ATK increased by 30%, DEF increased by 30%, HP increased by 30%. When the equipper is of Holy attribute, after dealing Normal Attack DMG, all allies' Energy gain efficiency is increased by 18%, stacking up to 4 times, lasting 5s",
     },
+    {
+      name: 'Unholy Alliance',
+      effect: 'UR tier team card: +32% ATK/DEF/HP for the whole party just for equipping it, and every skill the wearer casts stacks +14% team max HP and -5% team skill cooldowns (up to 5). Strong on literally anyone.',
+      priority: 'Highly Recommended',
+      characterSpecific: false,
+      memoryImage: 'unholy-alliance.png',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Our entire party\'s attack power, defense power, and HP are increased by 32%. Each time the wearer uses a skill, our entire party\'s maximum HP increases by 14% and all skill cooldowns decrease by 5%, stacking up to 5 times.',
+    },
+    {
+      name: 'Bath Time',
+      effect: 'SSR team card: +32% ATK and DEF for all allies on equip, and every skill the wearer casts stacks +6% team max HP (up to 10 stacks, +60% total).',
+      priority: 'Highly Recommended',
+      characterSpecific: false,
+      memoryImage: 'Sharincard.png',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Increases the attack and defense of all allies by 32%. Each time the wearer uses a skill, the maximum HP of all allies increases by 6% (up to 10 stacks).',
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'Morning Sunlight',
-      effect:
-        'SR memory card that provides attack and team skill damage increase for Supporter class.',
+      name: 'Hot Spring & Her',
+      effect: 'SSS-tier Supporter memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'Morning-Sunlight .jpg',
-      memoryStats: { hp: '5,000', attack: '500', defense: '500' },
-      description:
-        'Attack power increased by 20%, All team skill damage increased by 20%',
+      memoryImage: 'Tamamo-no-maecard.jpg',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Base Stats Boost: ATK +40%.\nPassive: After allies\' Ultimate deals DMG, increases self Energy Recovery Rate by 200% (4s) and gains 1 stack of [Brilliance] (5s, max 50 stacks).\nEvery 5 stacks of [Brilliance] increases all allies\' DMG by 9%.',
     },
     {
-      name: 'Sleep Treasure',
-      effect:
-        'SR memory card that provides team damage increase and additional crit damage chance.',
+      name: 'Awkward Appearance',
+      effect: 'SS-tier Supporter memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'Zashiki-warashicard.jpg',
-      memoryStats: { hp: '5,000', attack: '500', defense: '500' },
-      description:
-        'After releasing ultimate: Team damage increases by 24% for 10 seconds. Additionally: Has 50% chance to make team critical damage additionally increase by 20% for 10 seconds',
+      memoryImage: 'Athenacard.jpg',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'At the start of battle, all allied characters\' damage increases by 40%, with Normal Attack damage additionally increased by 40%\n\nEvery 5 Normal Attack damages dealt by the wearer increases team Attack Power by 40%, lasting 5 seconds',
+    },
+    {
+      name: 'The Loneliest Moment',
+      effect: 'SS-tier Supporter memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Apollocard.jpg',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'After entering battle, all team members\' damage increases by 40%, Pursue Damage increases by an additional 40%, when the wearer\'s ULT consumes 8 or more energy, all team members\' Energy Gain Efficiency increases by 100% for 10 seconds',
     },
   ],
   runes: {
@@ -135,25 +157,25 @@ export const morganLeFayBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats (3 Build Options)',
+      name: 'Position 4: Variable Main Stats (3 Build Options)',
       recommendedStat: 'HP (%) / ATK (%) / DEF (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -168,7 +190,7 @@ export const morganLeFayBuild = {
         'Choose based on build target: HP% for HP scaling allies, ATK% for ATK scaling allies, DEF% for DEF scaling allies',
     },
     5: {
-      name: 'Position 5 — Variable Main Stats (3 Build Options)',
+      name: 'Position 5: Variable Main Stats (3 Build Options)',
       recommendedStat: 'HP (%) / ATK (%) / DEF (%)',
       availableStats: [
         'Fire Attribute Damage (%)',
@@ -184,14 +206,14 @@ export const morganLeFayBuild = {
         'Choose based on build target: Holy Attribute Damage % for general DPS, or main stat (HP%/ATK%/DEF%) based on team composition',
     },
     6: {
-      name: 'Position 6 — Variable Main Stats (3 Build Options)',
+      name: 'Position 6: Variable Main Stats (3 Build Options)',
       recommendedStat: 'HP (%) / ATK (%) / DEF (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
       description: 'Final stat should match your primary build focus for maximum stat transfer',
     },
   },
   awakenings: {
-    priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+    priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
     keyMilestones: [
       {
         level: 1,
@@ -232,7 +254,14 @@ export const morganLeFayBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: ['High HP Characters', 'High ATK DPS characters', 'High DEF Tanks'],
+    goodWith: [
+      'Gaia',
+      'Jill',
+      'Freya',
+      'Keller',
+      'Lust - Asmodeus',
+      'Nephthys',
+    ],
     note: 'This unit works everywhere tbh, she fit in every team and quite good',
   },
 };

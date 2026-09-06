@@ -11,7 +11,7 @@ export const tamamoNoMaeBuild = {
     {
       skill: 'Ultimate',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Core buffing ability - consumes Fox Flame for massive Ultimate DMG buffs and DEF penetration',
       description:
         "Energy Cost: 4\nAfter a short delay, recover 3 Energy. Increases all allies' Ultimate DMG by 29.3% and ignores 40.5% Fire Resistance for 5s. Consumes all [Fox Flame]. Each consumed stack further increases Ultimate DMG bonus by 5.6% and Ignore Resistance by 5.6%, and extends duration by 1s. Each consumed stack deals 58.6% ATK as Fire DMG to a random enemy and applies [Jade Fox Mark] for 5s. If 9 stacks consumed, deploys [Hyakki Kitan] for 10s - allies recover 1 Energy after using Ultimate.",
@@ -19,7 +19,7 @@ export const tamamoNoMaeBuild = {
     {
       skill: 'Auto Skill',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Primary Fox Flame generation and energy sustain',
       description:
         'Cooldown: 5.0s\nDeals 141.5% ATK as Fire DMG to a target enemy and gains 1 stack of [Fox Flame] (max 9 stacks). Restores 1 Energy for every 2 Skills used. [Fox Flame]: Each stack increases self Energy Recovery Rate by 3% and reduces damage taken by all allies by 3.8%.',
@@ -27,7 +27,7 @@ export const tamamoNoMaeBuild = {
     {
       skill: 'Passive',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Fox Flame generation from ally Ultimates and Ten Ghost Marks during Hyakki Kitan',
       description:
         'When other allies use Ultimate, gain 1 stack of [Fox Flame] (max 9 stacks). Each stack of [Fox Flame] increases self Energy Recovery Rate by 3% and reduces damage taken by all allies by 3.8%. During [Hyakki Kitan], apply 2 stacks of [Ten Ghost Marks] to enemies hit by Ultimate. [Ten Ghost Marks]: At 10 stacks, consume 10 stacks to deal 214.4% ATK Blaze DMG in a fan-shaped area behind the target and apply [Jade Fox Mark] (5s). All [Ten Ghost Marks] vanish when [Hyakki Kitan] ends. [Jade Fox Mark]: When allies\' Ultimate hits the holder, DEF Penetration +103.8%. Consumed after triggering.',
@@ -53,17 +53,49 @@ export const tamamoNoMaeBuild = {
       description:
         "Base Stats Boost: ATK +40%. After allies' Ultimate deals DMG, increases self Energy Recovery Rate by 200% (4s) and gains 1 stack of [Brilliance] (5s, max 50 stacks). Every 5 stacks of [Brilliance] increases all allies' DMG by 9%.",
     },
+    {
+      name: 'Unholy Alliance',
+      effect: 'UR tier team card: +32% ATK/DEF/HP for the whole party just for equipping it, and every skill the wearer casts stacks +14% team max HP and -5% team skill cooldowns (up to 5). Strong on literally anyone.',
+      priority: 'Highly Recommended',
+      characterSpecific: false,
+      memoryImage: 'unholy-alliance.png',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Our entire party\'s attack power, defense power, and HP are increased by 32%. Each time the wearer uses a skill, our entire party\'s maximum HP increases by 14% and all skill cooldowns decrease by 5%, stacking up to 5 times.',
+    },
+    {
+      name: 'Bath Time',
+      effect: 'SSR team card: +32% ATK and DEF for all allies on equip, and every skill the wearer casts stacks +6% team max HP (up to 10 stacks, +60% total).',
+      priority: 'Highly Recommended',
+      characterSpecific: false,
+      memoryImage: 'Sharincard.png',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Increases the attack and defense of all allies by 32%. Each time the wearer uses a skill, the maximum HP of all allies increases by 6% (up to 10 stacks).',
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'Sleep Treasure',
-      effect:
-        'SR memory card that provides team damage increase (24%) and additional crit damage chance, good for general support.',
+      name: 'Awkward Appearance',
+      effect: 'SS-tier Supporter memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'Zashiki-warashicard.jpg',
-      memoryStats: { hp: '5,000', attack: '500', defense: '500' },
-      description:
-        'After releasing ultimate: Team damage increases by 24% for 10 seconds. Additionally: Has 50% chance to make team critical damage additionally increase by 20% for 10 seconds',
+      memoryImage: 'Athenacard.jpg',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'At the start of battle, all allied characters\' damage increases by 40%, with Normal Attack damage additionally increased by 40%\n\nEvery 5 Normal Attack damages dealt by the wearer increases team Attack Power by 40%, lasting 5 seconds',
+    },
+    {
+      name: 'The Loneliest Moment',
+      effect: 'SS-tier Supporter memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Apollocard.jpg',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'After entering battle, all team members\' damage increases by 40%, Pursue Damage increases by an additional 40%, when the wearer\'s ULT consumes 8 or more energy, all team members\' Energy Gain Efficiency increases by 100% for 10 seconds',
+    },
+    {
+      name: 'And Also Chocolate',
+      effect: 'S-tier Supporter memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'naiyacard.jpg',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Attack increases by 40%, after the wearer casts an ULT, team ULT damage increases by 40% for 5 seconds',
     },
   ],
   runes: {
@@ -98,25 +130,25 @@ export const tamamoNoMaeBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Attack (%) / HP (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -129,7 +161,7 @@ export const tamamoNoMaeBuild = {
       ],
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Attack (%) / HP (%)',
       availableStats: [
         'Fire Attribute Damage (%)',
@@ -143,14 +175,19 @@ export const tamamoNoMaeBuild = {
       ],
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Attack (%) / HP (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
     },
   },
   teamSynergy: {
     goodWith: [
-      'Odin','Sigurd',
+      'Odin',
+      'Sigurd',
+      'Bors',
+      'Nephthys',
+      'Freya',
+      'Keller',
     ],
     note: 'Tamamo, going to make Odin really broken due to low cost of Ultimate and DOT damage !!.',
   },

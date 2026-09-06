@@ -5,43 +5,43 @@ export const cleopatraBuild = {
     name: "Cleopatra",
     role: "DPS",
     buildType: "DoT-Stacking Chaos Nuker",
-    description: "Cleopatra converts DoT stacks into raw damage: her ULT deals 480% to all targets PLUS 48% per DoT stack on each (up to 20 extra hits — that is up to 1,440% per target), and her passive fires free 120% hits and applies [Foul Harvest] whenever an ally ULTs. Stack her own [Foul Harvest] DoT first, then let the ULT detonate everything.",
+    description: "Cleopatra converts DoT stacks into raw damage: her ULT deals 480% to all targets PLUS 48% per DoT stack on each (up to 20 extra hits: that is up to 1,440% per target), and her passive fires free 120% hits and applies [Foul Harvest] whenever an ally ULTs. Stack her own [Foul Harvest] DoT first, then let the ULT detonate everything.",
     skillPriority: [
       {
         skill: "Ultimate: Dominion Authority: Supreme Rule",
         priority: 1,
-        level: "Level 10",
-        reason: "Highest damage multiplier and the core of the rotation — level first",
-        description: "Energy Cost: 8\nCooldown: 1.0ss\nAfter a 4-second cast, deals 480% Attack as chaos damage to all targets\nFor each stack of damage over time on the target, deals an additional 48% Attack as chaos damage, up to 20 times\nULT damage is considered damage over time"
+        level: "Level 14",
+        reason: "Highest damage multiplier and the core of the rotation: level first",
+        description: "Energy Cost: 8\nCooldown: 1.0s\nAfter a 4-second cast, deals 480% Attack as chaos damage to all targets\nFor each stack of damage over time on the target, deals an additional 48% Attack as chaos damage, up to 20 times\nULT damage is considered damage over time"
       },
       {
         skill: "Passive: Foul Whispers",
         priority: 2,
-        level: "Level 10",
-        reason: "The kit engine — stacks and marks amplify everything else",
+        level: "Level 14",
+        reason: "The kit engine: stacks and marks amplify everything else",
         description: "Each skill cast gains 2 stacks of [Foul Whispers], up to 5 stacks\nWhen an ally's ULT deals damage, consumes [Foul Whispers] to deal 120% Attack as chaos damage to the target And applies 1 stack of [Foul Harvest]\nArea attacks can trigger multiple marks simultaneously\n[Foul Harvest]: Deals 19.2% Attack as chaos damage every 3 seconds, up to 10 stacks"
       },
       {
         skill: "Auto Skill: Hymn of the Sinister",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Reliable cooldown damage between ultimates",
-        description: "Cooldown: 5.0ss\nDeals 168% Attack as chaos damage to the target and enemies within a 4-meter radius And applies 1 stack of [Foul Harvest]"
+        description: "Cooldown: 5.0s\nDeals 168% Attack as chaos damage to the target and enemies within a 4-meter radius And applies 1 stack of [Foul Harvest]"
       },
       {
         skill: "Normal Attack: Mad Shadow Corruption",
         priority: 4,
         level: "Level 7",
-        reason: "Lowest value per level — raise last",
-        description: "Cooldown: 2.0ss\nDeals 120% Attack as chaos damage to the targeted enemy unit"
+        reason: "Lowest value per level: raise last",
+        description: "Cooldown: 2.0s\nDeals 120% Attack as chaos damage to the targeted enemy unit"
       }
     ],
     recommendedMemoryCards: [
       {
         name: "Reorganizing Revolution",
-        effect: "Exclusive card — +40% ATK and every skill hit applies a [Corrosion] Chaos DoT, pre-stacking her ULT multiplier.",
+        effect: "Exclusive card: +40% ATK and every skill hit applies a [Corrosion] Chaos DoT, pre-stacking her ULT multiplier.",
         priority: "Must Have",
-        note: "Exclusive card — +40% ATK and every skill hit applies a [Corrosion] Chaos DoT, pre-stacking her ULT multiplier.",
+        note: "Exclusive card: +40% ATK and every skill hit applies a [Corrosion] Chaos DoT, pre-stacking her ULT multiplier.",
         characterSpecific: true,
         memoryImage: "Cleopatracard.jpg",
         memoryStats: {
@@ -50,32 +50,57 @@ export const cleopatraBuild = {
           defense: "474"
         },
         description: "Attack increases by 40%, after a skill hits a target, applies one stack of [Corrosion], [Corrosion]: Deals 15% Chaos</color> Damage every 2 seconds, stacks up to 5 times, lasts 10 seconds"
+      },
+      {
+        name: "A Dream of Peace",
+        effect: "SSS-tier Destroyer memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "a-dream-of-peace.png",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Attack power increased by 60%, and ultimate skill damage increased by 50%. Ultimate skill penetration against enemy defense increases by 24%. If the enemy has a shield, ultimate skill damage against them is increased by 50%.",
+        priority: "Highly Recommended"
       }
     ],
     alternativeMemoryCards: [
       {
-        name: "A Break Amidst the Hustle",
-        effect: "Dealing DoT increases the target's damage taken by 12% — amplifies the whole DoT team.",
+        name: "Night of Blood and Storm",
+        effect: "SS-tier Destroyer memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "BusyOfficer.png",
+        memoryImage: "Night-of-Bloody-Storm.png",
         memoryStats: {
-          hp: "5,000",
-          attack: "500",
-          defense: "500"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "When dealing Damage Over Time, the target's damage taken increases by 12% for 2 seconds"
+        description: "Attack increases by 40%, after a team Supporter uses an ULT, the wearer's ULT damage increases by 40% for 5 seconds"
       },
       {
-        name: "Secret Room Livestream",
-        effect: "+36% DoT Penetration — multiplies every DoT tick.",
+        name: "The Servant's Aspiration",
+        effect: "SS-tier Destroyer memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Tefnutcard.jpg",
+        memoryImage: "Freyacard.jpg",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "Damage Over Time Penetration increases by 36%"
+        description: "Critical Damage increases by 72%. \nFor each enemy unit present on the field, normal attack damage increases by 12%, up to a maximum of 4 times."
+      },
+      {
+        name: "Unreserved love",
+        effect: "SS-tier Destroyer memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Shuten-dojicard.jpg",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Attack power increased by 40%; damage over time increased by 40%. When dealing damage over time, the enemy takes 24% more damage for 3 seconds. Damage dealt to enemies with shields is increased by 35%."
       }
     ],
     runes: {
@@ -90,7 +115,7 @@ export const cleopatraBuild = {
         "Penetration",
         "ATK"
       ],
-      buildNote: "Multipliers are large, so % damage and crit scale harder than flat ATK — element damage on position 5, crit on position 4.",
+      buildNote: "Multipliers are large, so % damage and crit scale harder than flat ATK: element damage on position 5, crit on position 4.",
       recommendedSets: [
         {
           name: "Gimel 4-piece + Beth 2-piece",
@@ -116,25 +141,25 @@ export const cleopatraBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "Attack (%) / Critical Rate (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -148,7 +173,7 @@ export const cleopatraBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "Chaos Attribute Damage (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -162,7 +187,7 @@ export const cleopatraBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "Attack (%)",
         availableStats: [
           "Attack (%)",
@@ -172,7 +197,7 @@ export const cleopatraBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -220,7 +245,10 @@ export const cleopatraBuild = {
       goodWith: [
         "Anubis",
         "Odin",
-        "Hera"
+        "Hera",
+        "Frigga",
+        "Hela",
+        "Bors"
       ],
       note: "DoT teams pre-stack her ULT bonus; Anubis heals off the same 20-stack threshold."
     }

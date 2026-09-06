@@ -5,35 +5,35 @@ export const mordredBuild = {
     name: "Mordred",
     role: "DPS",
     buildType: "HP-Scaling Sustain Warrior",
-    description: "Mordred is a self-sustaining bruiser who scales off max HP: his ULT heals him for 36% max HP while dealing 144% max HP damage, his auto deals 36% max HP, and his passive lifesteals 5.8% max HP per normal attack (plus +60% healing received under half HP). He is hard to kill, hits surprisingly hard, and never needs a healer's attention.",
+    description: "Mordred is a self-sustaining bruiser who scales off max HP: her ULT heals her for 36% max HP while dealing 144% max HP damage, her auto deals 36% max HP, and her passive lifesteals 5.8% max HP per normal attack (plus +60% healing received under half HP). She is hard to kill, hits surprisingly hard, and never needs a healer's attention.",
     skillPriority: [
       {
         skill: "Ultimate: Wrath of Destruction",
         priority: 1,
-        level: "Level 10",
-        reason: "Highest damage multiplier and the core of the rotation — level first",
-        description: "Energy Cost: 5\nCooldown: 1.0ss\nRestores 36% of self max HP And deals fire damage to the target equal to 144% of self max HP"
+        level: "Level 14",
+        reason: "Highest damage multiplier and the core of the rotation: level first",
+        description: "Energy Cost: 5\nCooldown: 1.0s\nRestores 36% of self max HP And deals fire damage to the target equal to 144% of self max HP"
       },
       {
         skill: "Passive: Deep-Seated Vendetta",
         priority: 2,
-        level: "Level 10",
-        reason: "The kit engine — stacks and marks amplify everything else",
+        level: "Level 14",
+        reason: "The kit engine: stacks and marks amplify everything else",
         description: "Each Normal Attack restores 5.8% max HP\nWhen HP is below 50%, all healing received increases by 60%"
       },
       {
         skill: "Auto Skill: Vengeance Blade",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Reliable cooldown damage between ultimates",
-        description: "Cooldown: 5.0ss\nDeals fire damage to the targeted enemy unit equal to 36% of self max HP"
+        description: "Cooldown: 5.0s\nDeals fire damage to the targeted enemy unit equal to 36% of self max HP"
       },
       {
         skill: "Normal Attack: Blade of the Trickster",
         priority: 4,
         level: "Level 7",
-        reason: "Lowest value per level — raise last",
-        description: "Cooldown: 2.0ss\nDeals 120% Attack as fire damage to the targeted enemy unit"
+        reason: "Lowest value per level: raise last",
+        description: "Cooldown: 2.0s\nDeals 120% Attack as fire damage to the targeted enemy unit"
       }
     ],
     recommendedMemoryCards: [
@@ -50,32 +50,70 @@ export const mordredBuild = {
           defense: "500"
         },
         description: "HP increases by 24%, self Healing increases by 30%"
+      },
+      {
+        name: "Afternoon tantrums",
+        effect: "SSS-tier Warrior memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Kellercard.png",
+        memoryStats: {
+          hp: "6,600",
+          attack: "480",
+          defense: "690"
+        },
+        description: "Increases own attack power by 70%,  critical hit damage by 90%,  and normal attack damage by 100%. Every 3rd normal attack will deal an additional 75% of attack power as normal attack damage.",
+        priority: "Highly Recommended"
+      },
+      {
+        name: "Wrong time of appearance",
+        effect: "SSS-tier Warrior memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Apepcard.jpg",
+        memoryStats: {
+          hp: "6,600",
+          attack: "480",
+          defense: "690"
+        },
+        description: "Defense increased by 64%\nWhen HP is below 50%, the wearer recovers 2% of maximum HP after attacking\nWhen HP is above 50%, damage taken is reduced by 10%, and damage dealt is increased by 40%.",
+        priority: "Highly Recommended"
       }
     ],
     alternativeMemoryCards: [
       {
-        name: "Behind the Laziness",
-        effect: "+24% HP and +30% self Healing — cheap sustain for HP-scaling warriors.",
+        name: "Halloween candy",
+        effect: "SS-tier Warrior memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "mordredcard.png",
+        memoryImage: "Ninacard.jpg",
         memoryStats: {
-          hp: "5,000",
-          attack: "500",
-          defense: "500"
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
         },
-        description: "HP increases by 24%, self Healing increases by 30%"
+        description: "Increases critical hit damage by 60%. When HP is above 30%, the wearer recovers 2% of their maximum HP after attacking, and all damage is increased by 40%."
       },
       {
-        name: "Drowning Lake Knight",
-        effect: "+36% DEF and −8% damage taken for the whole team on battle start — tank bread and butter.",
+        name: "Pride or Tsundere?",
+        effect: "SS-tier Warrior memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "drowning-lake-knight.png",
+        memoryImage: "pride-or-tsundere.png",
         memoryStats: {
-          hp: "5,500",
-          attack: "400",
-          defense: "575"
+          hp: "6,600",
+          attack: "480",
+          defense: "690"
         },
-        description: "Defense increases by 36%, after entering battle, all team members' damage taken decreases by 8%, identical skills do not stack"
+        description: "Increases HP by 32% and defense by 60%. When an ally is attacked by a normal attack, the damage taken is reduced by 30%."
+      },
+      {
+        name: "Secret Garden",
+        effect: "S-tier Warrior memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "SecretGarden.png",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Attack increases by 40%, when the wearer's ULT consumes 8 or more energy, damage increases by 40% for 10 seconds"
       }
     ],
     runes: {
@@ -89,7 +127,7 @@ export const mordredBuild = {
         "Crit DMG%",
         "HP"
       ],
-      buildNote: "Balance ATK with HP — he needs to stay in the fight, and % damage beats flat ATK at these multipliers.",
+      buildNote: "Balance ATK with HP: she needs to stay in the fight, and % damage beats flat ATK at these multipliers.",
       recommendedSets: [
         {
           name: "Zane 4-piece + Alpha 2-piece",
@@ -115,25 +153,25 @@ export const mordredBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "HP (%) / Attack (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -147,7 +185,7 @@ export const mordredBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "Fire Attribute Damage (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -161,7 +199,7 @@ export const mordredBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "HP (%)",
         availableStats: [
           "Attack (%)",
@@ -171,7 +209,7 @@ export const mordredBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -219,8 +257,11 @@ export const mordredBuild = {
       goodWith: [
         "Kela",
         "Jeanne D Arc",
-        "Lancelot"
+        "Lancelot",
+        "Bors",
+        "Nephthys",
+        "Morgan Le Fay"
       ],
-      note: undefined
+      note: "Wants team buffs and protection: a top Supporter multiplies her damage, the Healer keeps her standing, and the Tank holds the enemy off her."
     }
   };

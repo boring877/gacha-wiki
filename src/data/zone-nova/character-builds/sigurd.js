@@ -11,7 +11,7 @@ export const sigurdBuild = {
     {
       skill: 'Passive: Flame Shadow Pursuit',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Core damage amplification - triggers additional Fire damage on every crit, essential for maximizing DPS output with her crit-focused kit',
       description:
@@ -20,7 +20,7 @@ export const sigurdBuild = {
     {
       skill: 'Ultimate: Burning Dragon Blade',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Primary burst damage source - Enhanced Ultimate at 2+ Dragon Blood stacks deals massive 1200% ATK Fire damage, her main damage window',
       description:
@@ -29,7 +29,7 @@ export const sigurdBuild = {
     {
       skill: 'Auto Skill: Flame Blade Thrust',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Dragon Blood stack generator - essential for building stacks to enable Enhanced Ultimate, also provides solid sustained damage',
       description:
@@ -45,7 +45,7 @@ export const sigurdBuild = {
   ],
   recommendedMemoryCards: [
     {
-      name: 'I am your Christmas present.',
+      name: 'Christmas present',
       effect:
         "Sigurd's exclusive memory card. Provides massive crit rate and ultimate damage boost, perfectly synergizing with her Enhanced Ultimate burst playstyle. The solo attacker bonus makes her excel as a main DPS.",
       priority: 'Highly Recommended',
@@ -57,7 +57,7 @@ export const sigurdBuild = {
         'Critical hit rate increased by 34%, ultimate skill damage increased by 40%. When there is only one enemy on the field, ultimate skill damage is increased by an additional 40%.',
     },
     {
-      name: 'Heroes, Never Stop',
+      name: 'Hero Never Resting',
       effect:
         "SR memory card that provides massive Crit Damage boost when facing few enemies - excellent for boss fights and synergizes with Sigurd's crit-focused kit.",
       priority: 'Recommended',
@@ -68,19 +68,32 @@ export const sigurdBuild = {
       description:
         'When the number of enemies on field is less than 2: Increase critical hit damage by 72%.',
       note: 'Due to cost and benefit, this memory is better for most players since it has lower cost and the benefits are comparable. However, if you can get 5 dupes of "I am your Christmas present" that would be the better choice.',
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'Lonely Dark Deep Night',
-      effect:
-        "Chiya's exclusive SSR memory card - provides massive crit damage and stacking attack power on kills. Great for clearing content.",
+      name: 'Frozen Heart',
+      effect: 'SSS-tier Attacker memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'LonelyDarkDeepNight.png',
+      memoryImage: 'Yuiscard.jpg',
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
-      slug: 'lonely-dark-deep-night',
-      description:
-        'Critical Damage increased by 60%. After equipped character kills an enemy, increase attack power by 10% for this battle (max 4 stacks, up to 40% attack power increase).',
+      description: 'Critical Rate increased by 34%\nPursue Damage dealt by the wearer increases Critical Damage by 68%',
+    },
+    {
+      name: 'King of Lust',
+      effect: 'SSS-tier Attacker memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'KingOfLust.png',
+      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+      description: 'Critical hit rate increased by 40%, attack power increased by 40%. Each time the wearer\'s attack hits an enemy, they accumulate 1 stack of [Battle Spirit]. Once [Battle Spirit] reaches 10 stacks, all [Battle Spirit] will be consumed, and the [Penetrating] effect will be gained, increasing critical hit damage dealt by 50% for 5 seconds. [Battle Spirit] will not accumulate while the [Penetrating] effect is active.',
+    },
+    {
+      name: 'Shared Bath Time',
+      effect: 'SSS-tier Attacker memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Odincard.jpg',
+      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+      description: 'Attack power increases by 40%, and all damage increases by 40% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 15% <color=#c90d0d>Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds.',
     },
   ],
   runes: {
@@ -115,25 +128,25 @@ export const sigurdBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Critical Rate (%) / Attack (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -148,7 +161,7 @@ export const sigurdBuild = {
         'Crit Rate is preferred to maximize passive procs. Switch to ATK% if you have sufficient crit from substats and memory cards.',
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Fire Attribute Damage (%)',
       availableStats: [
         'Wind Attribute Damage (%)',
@@ -164,7 +177,7 @@ export const sigurdBuild = {
         "Fire Damage is optimal as all of Sigurd's damage is Fire element. This directly boosts all damage including her passive procs.",
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
       description: 'Attack % for maximum damage output as a DPS character.',
@@ -226,7 +239,8 @@ export const sigurdBuild = {
       'Zashiki-warashi',
       'Apollo',
       'Ibaraki-doji',
-      'She needs buffers that increase crit rate and crit damage',
+      'Bors',
+      'Nephthys',
     ],
     note: 'She would be SSS tier if she had 2000%+ ultimate damage. Compared to other ultimate DPS characters, her multiplier is way lower.',
   },

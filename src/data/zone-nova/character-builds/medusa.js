@@ -5,43 +5,43 @@ export const medusaBuild = {
     name: "Medusa",
     role: "Healer",
     buildType: "Revive-Shield Sustain Healer",
-    description: "Medusa is a UR healer built around the [Resurrection Coffin]: at battle start every ally gains +24.4% max HP, a 30%-HP shield, and a revive charge (they resurrect at 150% HP when they would die). Her ULT enters [Stone Princess] form — team-wide per-second healing, shields, and enhanced normal attacks — while her auto sustains 43.9% ATK + 350 HP per second for 8s and stacks team DEF. She makes teams unkillable in burst content.",
+    description: "Medusa is a UR healer built around the [Resurrection Coffin]: at battle start every ally gains +24.4% max HP, a 30%-HP shield, and a revive charge (they resurrect at 150% HP when they would die). Her ULT enters [Stone Princess] form: team-wide per-second healing, shields, and enhanced normal attacks: while her auto sustains 43.9% ATK + 350 HP per second for 8s and stacks team DEF. She makes teams unkillable in burst content.",
     skillPriority: [
       {
         skill: "Passive: Resurrect, my love.",
         priority: 1,
-        level: "Level 10",
-        reason: "Battle-start team shields, +24.4% max HP and the [Resurrection Coffin] revive — the single strongest defensive passive in the game",
+        level: "Level 14",
+        reason: "Battle-start team shields, +24.4% max HP and the [Resurrection Coffin] revive: the single strongest defensive passive in the game",
         description: "At the start of battle, all allies gain a maximum HP of 24.4% and a shield equal to 30% of their own HP, and are granted 1 stack of the [Resurrection Coffin] effect. [Resurrection Coffin]: When near death, the character is resurrected with 150% of their maximum HP and gains [Tenacity] for 5 seconds. [Resurrection Coffin] takes effect once per battle. [Tenacity]: HP cannot fall below 1 point."
       },
       {
         skill: "Ultimate: Medusa's Kiss",
         priority: 2,
-        level: "Level 10",
+        level: "Level 14",
         reason: "[Stone Princess] form: team heal + shield every second for 5s and enhanced normals",
-        description: "Energy Cost: 3\nCooldown: 5.0ss\nMedusa enters [Stone Princess] form for 5 seconds. Her normal attacks are enhanced, and all allies recover 5% of their own HP per second for 5 seconds, gaining a shield equal to 30% of their own HP. Simultaneously, all allies gain [Medusa's Kiss], up to 1 stack. [Medusa's Kiss]: While active, healing received is increased by 73.3%. When attacked, if HP is below 50%, immediately recovers Medusa's attack power 733.3% + 1800 HP. Triggering this effect consumes [Medusa's Kiss]."
+        description: "Energy Cost: 3\nCooldown: 5.0s\nMedusa enters [Stone Princess] form for 5 seconds. Her normal attacks are enhanced, and all allies recover 5% of their own HP per second for 5 seconds, gaining a shield equal to 30% of their own HP. Simultaneously, all allies gain [Medusa's Kiss], up to 1 stack. [Medusa's Kiss]: While active, healing received is increased by 73.3%. When attacked, if HP is below 50%, immediately recovers Medusa's attack power 733.3% + 1800 HP. Triggering this effect consumes [Medusa's Kiss]."
       },
       {
         skill: "Auto Skill: Azure Mirror",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "8 seconds of 43.9% ATK + 350 HP/s team healing plus stacking [Rock Scale] DEF",
-        description: "Cooldown: 11.0ss\nUnleash [Azure Mirror] for 8 seconds. Each second, all allies recover 43.9% + 350 of Medusa's attack power as HP. Each time this skill is used, all allies gain 1 stack of [Rock Scale], up to a maximum of 5 stacks. [Rock Scale]: Increases defense by 15% and reduces damage taken by 10%."
+        description: "Cooldown: 11.0s\nUnleash [Azure Mirror] for 8 seconds. Each second, all allies recover 43.9% + 350 of Medusa's attack power as HP. Each time this skill is used, all allies gain 1 stack of [Rock Scale], up to a maximum of 5 stacks. [Rock Scale]: Increases defense by 15% and reduces damage taken by 10%."
       },
       {
         skill: "Normal Attack: Precision shooting",
         priority: 4,
         level: "Level 7",
         reason: "Level last",
-        description: "Cooldown: 2.0ss\nDeals 120% attack power wind damage to the designated enemy unit. When Medusa enters the [Stone Princess] form, her normal attacks will deal 73.3% ​​attack power wind damage to the enemy unit, and also inflict [Serpent's Gaze], increasing the cooldown of all skills by 3.5% for 10 seconds, up to 10 stacks."
+        description: "Cooldown: 2.0s\nDeals 120% attack power wind damage to the designated enemy unit. When Medusa enters the [Stone Princess] form, her normal attacks will deal 73.3% ​​attack power wind damage to the enemy unit, and also inflict [Serpent's Gaze], increasing the cooldown of all skills by 3.5% for 10 seconds, up to 10 stacks."
       }
     ],
     recommendedMemoryCards: [
       {
         name: "Serpentine Frenzy",
-        effect: "Exclusive card — +33.5% ATK and +40% DEF/HP for ALL allies on equip, scaling further on battle start. Team-wide stat bloat.",
+        effect: "Exclusive card: +33.5% ATK and +40% DEF/HP for ALL allies on equip, scaling further on battle start. Team-wide stat bloat.",
         priority: "Must Have",
-        note: "Exclusive card — +33.5% ATK and +40% DEF/HP for ALL allies on equip, scaling further on battle start. Team-wide stat bloat.",
+        note: "Exclusive card: +33.5% ATK and +40% DEF/HP for ALL allies on equip, scaling further on battle start. Team-wide stat bloat.",
         characterSpecific: true,
         memoryImage: "serpentine-frenzy.png",
         memoryStats: {
@@ -50,24 +50,10 @@ export const medusaBuild = {
           defense: "600"
         },
         description: "The wearer's attack power is increased by 33.5%, and the defense and health of allied units are increased by 40%. Upon entering the battlefield, the wearer is granted the [Geo Boundary] buff every 3 seconds, which is reduced by 5% when taking damage, up to a maximum of 15 stacks."
-      }
-    ],
-    alternativeMemoryCards: [
-      {
-        name: "Drowning Lake Knight",
-        effect: "+36% DEF and −8% damage taken for the whole team on battle start — tank bread and butter.",
-        characterSpecific: false,
-        memoryImage: "drowning-lake-knight.png",
-        memoryStats: {
-          hp: "5,500",
-          attack: "400",
-          defense: "575"
-        },
-        description: "Defense increases by 36%, after entering battle, all team members' damage taken decreases by 8%, identical skills do not stack"
       },
       {
         name: "The Beauty of Heikyo Castle",
-        effect: "+30% Healing; overhealed targets gain +24% damage — turns overheal into team damage.",
+        effect: "SSS-tier Healer memory in the memory tier list.",
         characterSpecific: false,
         memoryImage: "Snowcard.jpg",
         memoryStats: {
@@ -75,7 +61,46 @@ export const medusaBuild = {
           attack: "500",
           defense: "500"
         },
-        description: "Healing increases by 30%, when the healed target's HP is full, their damage increases by 24% for 10 seconds"
+        description: "Healing increases by 30%, when the healed target's HP is full, their damage increases by 24% for 10 seconds",
+        priority: "Highly Recommended"
+      }
+    ],
+    alternativeMemoryCards: [
+      {
+        name: "A Smile to Topple Cities",
+        effect: "SS-tier Healer memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Gaiacard.jpg",
+        memoryStats: {
+          hp: "6,300",
+          attack: "580",
+          defense: "585"
+        },
+        description: "HP increased by 40%, Healing Amount increased by 40%. When the wearer heals within 1 second, Healing Amount additionally increased by 40%"
+      },
+      {
+        name: "Are the glasses the real thing?",
+        effect: "SS-tier Healer memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "are-the-glasses-the-real-thing.png",
+        memoryStats: {
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
+        },
+        description: "Increases critical hit rate by 34%. After each critical hit, increases self-healing by 50% for 3 seconds. After each heal, increases the attack power of all allied targets by 30% for 3 seconds."
+      },
+      {
+        name: "Gentle Morning Command",
+        effect: "SS-tier Healer memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Jillcard.jpg",
+        memoryStats: {
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
+        },
+        description: "ATK increases by 33.5%\nAfter an ally is healed, the wearer gains [Military Order] (up to 50 stacks) for 6s.\nFor every 10 stacks of [Military Order], all allies' healing received additionally increases by 16.5%, and damage taken is reduced by 3.3%.\nWhen the wearer casts their Ultimate, consume all [Military Order]. Every 10 stacks increase all allies' ATK by 5% for 6s."
       }
     ],
     runes: {
@@ -115,25 +140,25 @@ export const medusaBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "HP (%) / Healing Effectiveness (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -147,7 +172,7 @@ export const medusaBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "HP (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -161,7 +186,7 @@ export const medusaBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "HP (%)",
         availableStats: [
           "Attack (%)",
@@ -171,7 +196,7 @@ export const medusaBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -219,7 +244,10 @@ export const medusaBuild = {
       goodWith: [
         "Keller",
         "Bors",
-        "Nephthys"
+        "Nephthys",
+        "Lust - Asmodeus",
+        "Apep",
+        "Freya"
       ],
       note: "Her revive + shields let a transformed Keller or 5-stack Nephthys play with zero defensive attention."
     }

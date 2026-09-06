@@ -5,26 +5,26 @@ export const bedivereBuild = {
     name: "Bedivere",
     role: "Disruptor",
     buildType: "DEF-Shred Ice Disruptor",
-    description: "Bedivere deletes enemy defenses: his auto hits a fan for 235.6% ATK and shreds 64.8% DEF for 6 seconds, and his ULT slams a 7m rectangle for 647.8% ATK while cutting the target's total damage dealt. His passive punishes attackers with [Ice Lock] stacks that slow their cooldowns and, at 30 stacks, drain 2 energy. He amplifies your whole team's damage just by showing up.",
+    description: "Bedivere deletes enemy defenses: her auto hits a fan for 235.6% ATK and shreds 64.8% DEF for 6 seconds, and her ULT slams a 7m rectangle for 647.8% ATK while cutting the target's total damage dealt. Her passive punishes attackers with [Ice Lock] stacks that slow their cooldowns and, at 30 stacks, drain 2 energy. She amplifies your whole team's damage just by showing up.",
     skillPriority: [
       {
         skill: "Auto Skill: Frost Edge Breaker",
         priority: 1,
-        level: "Level 10",
-        reason: "235.6% fan hit with a −64.8% DEF shred on a 6s cooldown — his core debuff and damage in one",
-        description: "Cooldown: 6.0ss\nDeals ice DMG equal to 235.6% ATK to all enemy units in a fan-shaped area toward the target enemy unit and reduces DEF by 64.8% for 6s."
+        level: "Level 14",
+        reason: "235.6% fan hit with a −64.8% DEF shred on a 6s cooldown: her core debuff and damage in one",
+        description: "Cooldown: 6.0s\nDeals ice DMG equal to 235.6% ATK to all enemy units in a fan-shaped area toward the target enemy unit and reduces DEF by 64.8% for 6s."
       },
       {
         skill: "Ultimate: Winter Domain",
         priority: 2,
-        level: "Level 10",
+        level: "Level 14",
         reason: "647.8% AOE plus a −123.7% total damage dealt cut and the [Winter Domain] zone",
-        description: "Energy Cost: 3\nCooldown: 3.0ss\nAfter a brief action it deals ice DMG equal to 647.8% ATK to all enemy units in a 7m rectangle toward the highest-ATK enemy and reduces Total DMG dealt by 123.7% for 5s.\nCreates [Winter Domain] with a radius of 2.5m around self for 5s.\n[Winter Domain]: Every 0.5s deals ice DMG equal to 64.8% ATK to all enemy units in the area and inflicts [Snow Prison]. Max 3 stacks. Lasts 5s.\n[Snow Prison]: DEF -59.9%. CRIT Rate -27%. CRIT DMG -42.2%."
+        description: "Energy Cost: 3\nCooldown: 3.0s\nAfter a brief action it deals ice DMG equal to 647.8% ATK to all enemy units in a 7m rectangle toward the highest-ATK enemy and reduces Total DMG dealt by 123.7% for 5s.\nCreates [Winter Domain] with a radius of 2.5m around self for 5s.\n[Winter Domain]: Every 0.5s deals ice DMG equal to 64.8% ATK to all enemy units in the area and inflicts [Snow Prison]. Max 3 stacks. Lasts 5s.\n[Snow Prison]: DEF -59.9%. CRIT Rate -27%. CRIT DMG -42.2%."
       },
       {
         skill: "Passive: Return the Blow",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "[Ice Lock] slows attacker cooldowns and drains 2 energy at 30 stacks",
         description: "When our side is hit, the attacker gains 1 stacks of [ice Lock].\nEach stack of [ice Lock] increases the attacker's Basic Attack and Skill cooldown by 5.4%.\nWhen [ice Lock] accumulates to 30 stacks, reduce the enemy’s Energy by 2 points and remove all [ice Lock] stacks from them.\nAdditionally, each time the [ice Lock] stack count increases, there is a 4% chance to trigger the following effect:\nReduce the enemy’s Energy by 1 points and remove all [ice Lock] from them."
       },
@@ -33,15 +33,15 @@ export const bedivereBuild = {
         priority: 4,
         level: "Level 7",
         reason: "Level last",
-        description: "Cooldown: 2.0ss\nDeals ice DMG equal to 120% ATK to the target enemy unit"
+        description: "Cooldown: 2.0s\nDeals ice DMG equal to 120% ATK to the target enemy unit"
       }
     ],
     recommendedMemoryCards: [
       {
         name: "The Knight and the Fuzzy",
-        effect: "Exclusive card — +40% ATK and his ULT applies [Frontline Edict] DEF shred in an area, stacking even more armor deletion.",
+        effect: "Exclusive card: +40% ATK and her ULT applies [Frontline Edict] DEF shred in an area, stacking even more armor deletion.",
         priority: "Must Have",
-        note: "Exclusive card — +40% ATK and his ULT applies [Frontline Edict] DEF shred in an area, stacking even more armor deletion.",
+        note: "Exclusive card: +40% ATK and her ULT applies [Frontline Edict] DEF shred in an area, stacking even more armor deletion.",
         characterSpecific: true,
         memoryImage: "the-knight-and-the-fuzzy.png",
         memoryStats: {
@@ -54,28 +54,40 @@ export const bedivereBuild = {
     ],
     alternativeMemoryCards: [
       {
-        name: "Flower of the Battlefield",
-        effect: "+20% damage per debuff on the target (up to 3 stacks) — rewards full debuff stacking.",
+        name: "A perfect makeup look?",
+        effect: "SS-tier Disruptor memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "ninicard.jpg",
+        memoryImage: "Ibaraki-dojicard.jpg",
         memoryStats: {
-          hp: "5,000",
-          attack: "500",
-          defense: "500"
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
         },
-        description: "For each debuff on the attacked target, damage increases by 20%, stacks up to 3 times"
+        description: "Attack power increased by 40%. When a Ultimate Skill deals damage, the target takes 36% more damage and receives 40% less healing for 5 seconds."
       },
       {
-        name: "The Reason for Slumber",
-        effect: "ULTs reduce the target's Energy Gain Efficiency by 18% — extra control on top of debuffs.",
+        name: "Discipline Director",
+        effect: "SS-tier Disruptor memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "sleepy-guardian.png",
+        memoryImage: "Erikacard.png",
         memoryStats: {
-          hp: "5,000",
-          attack: "500",
-          defense: "500"
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
         },
-        description: "ULT reduces the target's Energy Gain Efficiency by 18%"
+        description: "Attack Power increases by 40%.\nWhen the wearer's skill or ultimate hits a target that target's healing received is reduced by 12% and shielding received is reduced by 10% for 3 seconds. This effect cannot stack.\nIf the target has a shield at that time the target's damage dealt is reduced by 18% for 3 seconds. This effect cannot stack."
+      },
+      {
+        name: "Nutrition Studies",
+        effect: "SS-tier Disruptor memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "NutritionStudies.png",
+        memoryStats: {
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
+        },
+        description: "Increases HP by 40% and increases the attack power of the entire team by 20%. After the wearer uses the skill, they inflict the Drain debuff on all enemies. Drain reduces their energy regeneration efficiency by 10% and increases the energy regeneration efficiency of all allies by 10% for 4 seconds."
       }
     ],
     runes: {
@@ -90,7 +102,7 @@ export const bedivereBuild = {
         "Penetration",
         "ATK"
       ],
-      buildNote: "Debuffs land regardless, but ATK keeps the damage relevant — balance offensive stats with debuff uptime.",
+      buildNote: "Debuffs land regardless, but ATK keeps the damage relevant: balance offensive stats with debuff uptime.",
       recommendedSets: [
         {
           name: "Iota 4-piece + Beth 2-piece",
@@ -116,25 +128,25 @@ export const bedivereBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "Attack (%) / Critical Rate (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -148,7 +160,7 @@ export const bedivereBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "Ice Attribute Damage (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -162,7 +174,7 @@ export const bedivereBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "Attack (%)",
         availableStats: [
           "Attack (%)",
@@ -172,7 +184,7 @@ export const bedivereBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -220,8 +232,11 @@ export const bedivereBuild = {
       goodWith: [
         "Nephthys",
         "Keller",
-        "Bors"
+        "Bors",
+        "Freya",
+        "Gluttony - Beelzebub",
+        "Lust - Asmodeus"
       ],
-      note: "His DEF shred multiplies physical damage dealers like Nephthys and Keller."
+      note: "Her DEF shred multiplies physical damage dealers like Nephthys and Keller."
     }
   };

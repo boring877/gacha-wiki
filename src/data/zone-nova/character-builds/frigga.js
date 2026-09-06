@@ -11,7 +11,7 @@ export const friggaChaosBuild = {
     {
       skill: 'Ultimate: Dark Fate',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Massive damage amplification - 60% increased damage taken with enhanced ultimate, core to her debuff role',
       description:
@@ -20,7 +20,7 @@ export const friggaChaosBuild = {
     {
       skill: 'Passive: Meteor Storm',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Core DOT mechanic - Divine Meteor stacks provide consistent damage and enhance ultimate capabilities',
       description:
@@ -29,7 +29,7 @@ export const friggaChaosBuild = {
     {
       skill: 'Auto Skill: Attribute Break',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Critical resistance reduction - 15% resistance debuff that enables higher damage output for entire team',
       description:
@@ -46,7 +46,7 @@ export const friggaChaosBuild = {
   ],
   recommendedMemoryCards: [
     {
-      name: 'Lamplight Study',
+      name: 'Reading by Lamplight',
       effect:
         "Frigga's exclusive memory card that provides attack boost and unique Fate Bind mechanic, perfectly synergizing with her damage amplification role.",
       priority: 'Highly Recommended',
@@ -55,18 +55,32 @@ export const friggaChaosBuild = {
       memoryStats: { hp: '6,000', attack: '600', defense: '600' },
       description:
         'Attack power increased by 40%, Ultimate skill damage can apply 【Fate Bind】. Each stack increases damage taken by 3.6% (max 10 stacks = 36% total)',
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'Sleepy Tank',
-      effect:
-        "This memory is good for PVP to help reduce the target's energy recovery, preventing enemies from using their ultimate skills frequently.",
+      name: 'The Knight and the Fuzzy',
+      effect: 'SSS-tier Disruptor memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'SleepyTank.png',
-      memoryStats: { hp: '5,200', attack: '420', defense: '380' },
-      description: 'Ultimate skill can reduce targets energy regen by 18%.',
-      note: 'Excellent PVP memory to control enemy ultimate skill timing.',
+      memoryImage: 'the-knight-and-the-fuzzy.png',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'ATK +40%.\nEnemies hit by the Ultimate gain [Frontline Edict] for 7s. Targets within 3m also gain [Enhanced Frontline Edict].\n[Frontline Edict]: DEF -12.5%. Energy Gain Efficiency -10%.\n[Enhanced Frontline Edict]: DEF -45%. Energy Gain Efficiency -30%.',
+    },
+    {
+      name: 'A perfect makeup look?',
+      effect: 'SS-tier Disruptor memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Ibaraki-dojicard.jpg',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Attack power increased by 40%. When a Ultimate Skill deals damage, the target takes 36% more damage and receives 40% less healing for 5 seconds.',
+    },
+    {
+      name: 'Discipline Director',
+      effect: 'SS-tier Disruptor memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Erikacard.png',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Attack Power increases by 40%.\nWhen the wearer\'s skill or ultimate hits a target that target\'s healing received is reduced by 12% and shielding received is reduced by 10% for 3 seconds. This effect cannot stack.\nIf the target has a shield at that time the target\'s damage dealt is reduced by 18% for 3 seconds. This effect cannot stack.',
     },
   ],
   runes: {
@@ -113,25 +127,25 @@ export const friggaChaosBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -145,7 +159,7 @@ export const friggaChaosBuild = {
       description: 'Attack Penetration for DOT damage if you want !. ',
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Chaos Attribute Damage (%)',
       availableStats: [
         'Wind Attribute Damage (%)',
@@ -159,7 +173,7 @@ export const friggaChaosBuild = {
       ],
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
       description:
@@ -218,7 +232,14 @@ export const friggaChaosBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: ['DOT characters', 'High damage DPS characters', 'Chaos characters'],
+    goodWith: [
+      'Hela',
+      'Pride-Lucifer',
+      'Freya',
+      'Keller',
+      'Lust - Asmodeus',
+      'Bors',
+    ],
     note: 'She is strong in PVE, she can help clear things up and increase damage taken. Also she is strong in PVP to stop the enemy from using their ultimate skill. However she is not busted!',
   },
 };

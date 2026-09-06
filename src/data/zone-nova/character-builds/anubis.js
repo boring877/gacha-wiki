@@ -5,43 +5,43 @@ export const anubisBuild = {
     name: "Anubis",
     role: "Healer",
     buildType: "DoT-Scaling Chaos Healer",
-    description: "A healer who wants the enemy to burn. Every skill applies [Underworld Burn] stacks, and once a target reaches 20 DoT stacks his passive heals the ENTIRE team and unlocks an [Enhanced ULT] that heals everyone plus a 10% damage-taken reduction. He scales off ATK, so he does real chip damage while healing. Pair him with DoT stackers (Odin, Hera, Cleopatra, Tefnut) so targets cross the 20-stack threshold fast and his passive fires constantly.",
+    description: "A healer who wants the enemy to burn. Every skill applies [Underworld Burn] stacks, and once a target reaches 20 DoT stacks her passive heals the ENTIRE team and unlocks an [Enhanced ULT] that heals everyone plus a 10% damage-taken reduction. She scales off ATK, so she does real chip damage while healing. Pair her with DoT stackers (Odin, Hera, Cleopatra, Tefnut) so targets cross the 20-stack threshold fast and her passive fires constantly.",
     skillPriority: [
       {
         skill: "Ultimate: Fated Reversal",
         priority: 1,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Team-wide healing that scales hardest with level, and the Enhanced version adds a 10% damage-taken reduction",
-        description: "Energy Cost: 4\nCooldown: 1.0ss\nRestores 113.7% Attack + 278 HP to the allied unit with the lowest HP percentage\n[Enhanced ULT]: Restores 113.7% Attack + 278 HP to all allied units And reduces their damage taken by 10% for 10 seconds"
+        description: "Energy Cost: 4\nCooldown: 1.0s\nRestores 113.7% Attack + 278 HP to the allied unit with the lowest HP percentage\n[Enhanced ULT]: Restores 113.7% Attack + 278 HP to all allied units And reduces their damage taken by 10% for 10 seconds"
       },
       {
         skill: "Passive: Soul Siphon",
         priority: 2,
-        level: "Level 10",
-        reason: "The engine — 20+ DoT stacks on a target triggers a full-team heal AND an Enhanced ULT charge",
+        level: "Level 14",
+        reason: "The engine: 20+ DoT stacks on a target triggers a full-team heal AND an Enhanced ULT charge",
         description: "When a skill attacks a target with 20 or more stacks of damage over time, heals all allied units, restoring 97.8% Attack + 185 HP And enables one [Enhanced ULT] within 8 seconds"
       },
       {
         skill: "Auto Skill: Rain of Divine Punishment",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Applies [Underworld Burn] stacks that feed the passive threshold",
-        description: "Cooldown: 8.0ss\nSummons a meteor to attack the targeted enemy unit, dealing 96% Attack as chaos damage to it and enemies within a 2-meter radius And applying 1 stack of [Underworld Burn]\n[Underworld Burn]: Deals 5.9% chaos damage every 3 seconds, up to 10 stacks"
+        description: "Cooldown: 8.0s\nSummons a meteor to attack the targeted enemy unit, dealing 96% Attack as chaos damage to it and enemies within a 2-meter radius And applying 1 stack of [Underworld Burn]\n[Underworld Burn]: Deals 5.9% chaos damage every 3 seconds, up to 10 stacks"
       },
       {
         skill: "Normal Attack: Touch of the Underworld",
         priority: 4,
         level: "Level 7",
         reason: "Level last",
-        description: "Cooldown: 2.0ss\nDeals 120% Attack as chaos damage to the targeted enemy unit"
+        description: "Cooldown: 2.0s\nDeals 120% Attack as chaos damage to the targeted enemy unit"
       }
     ],
     recommendedMemoryCards: [
       {
         name: "Late-Night Work",
-        effect: "Exclusive card — +50% healing and every heal grants the target +40% ATK for 3s, turning his healing rotation into team damage.",
+        effect: "Exclusive card: +50% healing and every heal grants the target +40% ATK for 3s, turning her healing rotation into team damage.",
         priority: "Must Have",
-        note: "Exclusive card — +50% healing and every heal grants the target +40% ATK for 3s, turning his healing rotation into team damage.",
+        note: "Exclusive card: +50% healing and every heal grants the target +40% ATK for 3s, turning her healing rotation into team damage.",
         characterSpecific: true,
         memoryImage: "ReorganizingRevolution.png",
         memoryStats: {
@@ -50,12 +50,23 @@ export const anubisBuild = {
           defense: "600"
         },
         description: "Healing increases by 50%, each time a target is healed, their Attack increases by 40% for 3 seconds"
-      }
-    ],
-    alternativeMemoryCards: [
+      },
+      {
+        name: "Serpentine Frenzy",
+        effect: "SSS-tier Healer memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "serpentine-frenzy.png",
+        memoryStats: {
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
+        },
+        description: "The wearer's attack power is increased by 33.5%, and the defense and health of allied units are increased by 40%. Upon entering the battlefield, the wearer is granted the [Geo Boundary] buff every 3 seconds, which is reduced by 5% when taking damage, up to a maximum of 15 stacks.",
+        priority: "Highly Recommended"
+      },
       {
         name: "The Beauty of Heikyo Castle",
-        effect: "+30% Healing; overhealed targets gain +24% damage — turns overheal into team damage.",
+        effect: "SSS-tier Healer memory in the memory tier list.",
         characterSpecific: false,
         memoryImage: "Snowcard.jpg",
         memoryStats: {
@@ -63,31 +74,46 @@ export const anubisBuild = {
           attack: "500",
           defense: "500"
         },
-        description: "Healing increases by 30%, when the healed target's HP is full, their damage increases by 24% for 10 seconds"
+        description: "Healing increases by 30%, when the healed target's HP is full, their damage increases by 24% for 10 seconds",
+        priority: "Highly Recommended"
+      }
+    ],
+    alternativeMemoryCards: [
+      {
+        name: "A Smile to Topple Cities",
+        effect: "SS-tier Healer memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Gaiacard.jpg",
+        memoryStats: {
+          hp: "6,300",
+          attack: "580",
+          defense: "585"
+        },
+        description: "HP increased by 40%, Healing Amount increased by 40%. When the wearer heals within 1 second, Healing Amount additionally increased by 40%"
       },
       {
-        name: "A Break Amidst the Hustle",
-        effect: "Dealing DoT increases the target's damage taken by 12% — amplifies the whole DoT team.",
+        name: "Are the glasses the real thing?",
+        effect: "SS-tier Healer memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "BusyOfficer.png",
+        memoryImage: "are-the-glasses-the-real-thing.png",
         memoryStats: {
-          hp: "5,000",
-          attack: "500",
-          defense: "500"
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
         },
-        description: "When dealing Damage Over Time, the target's damage taken increases by 12% for 2 seconds"
+        description: "Increases critical hit rate by 34%. After each critical hit, increases self-healing by 50% for 3 seconds. After each heal, increases the attack power of all allied targets by 30% for 3 seconds."
       },
       {
-        name: "Ancient Fatigue Relief",
-        effect: "+30% Healing; every heal grants the target +20% ATK for 3s — offensive healer support.",
+        name: "Gentle Morning Command",
+        effect: "SS-tier Healer memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Ancient-Method-to-Eliminate-Fatigue.jpg",
+        memoryImage: "Jillcard.jpg",
         memoryStats: {
-          hp: "5,000",
-          attack: "500",
-          defense: "500"
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
         },
-        description: "Healing increases by 30%, each time a target is healed, their Attack increases by 20% for 3 seconds"
+        description: "ATK increases by 33.5%\nAfter an ally is healed, the wearer gains [Military Order] (up to 50 stacks) for 6s.\nFor every 10 stacks of [Military Order], all allies' healing received additionally increases by 16.5%, and damage taken is reduced by 3.3%.\nWhen the wearer casts their Ultimate, consume all [Military Order]. Every 10 stacks increase all allies' ATK by 5% for 6s."
       }
     ],
     runes: {
@@ -101,7 +127,7 @@ export const anubisBuild = {
         "HP",
         "DEF"
       ],
-      buildNote: "Healing scales off his ATK, so Daleth 4-piece (healing +10%, battle-start energy) with HP keeps him alive; the Alpha alternative leans into his damage side.",
+      buildNote: "Healing scales off her ATK, so Daleth 4-piece (healing +10%, battle-start energy) with HP keeps her alive; the Alpha alternative leans into her damage side.",
       recommendedSets: [
         {
           name: "Daleth 4-piece + Zane 2-piece",
@@ -127,25 +153,25 @@ export const anubisBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "Healing Effectiveness (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -159,7 +185,7 @@ export const anubisBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "HP (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -173,7 +199,7 @@ export const anubisBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "HP (%)",
         availableStats: [
           "Attack (%)",
@@ -183,7 +209,7 @@ export const anubisBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -232,8 +258,10 @@ export const anubisBuild = {
         "Odin",
         "Hera",
         "Cleopatra",
-        "Bors"
+        "Bors",
+        "Frigga",
+        "Hela"
       ],
-      note: "DoT teams keep his 20-stack passive triggering; Bors keeps the whole comp alive longer."
+      note: "DoT teams keep her 20-stack passive triggering; Bors keeps the whole comp alive longer."
     }
   };

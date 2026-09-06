@@ -1,0 +1,109 @@
+---
+import ZoneNovaLayout from '../../../layouts/zone-nova/LandingLayout.astro';
+import {
+  PERMANENT_TRIALS,
+  BRAVERY_SEASONS,
+  getActiveBraverySeason,
+  getBraverySeasonStatus,
+} from '../../../data/zone-nova/trials.js';
+import '../../../styles/games/zone-nova/zn-trials.css';
+
+const active = getActiveBraverySeason();
+const fmt = d =>
+  new Date(d + 'T00:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+// newest first - ended trials are history; each entry is a separate edition, not a rotation
+const seasonsDesc = [...BRAVERY_SEASONS].reverse();
+---
+
+<ZoneNovaLayout
+  title="Trial of Bravery - Zone Nova Trials Guide - GachaWiki"
+  description="Every Trial of Bravery edition with dates, faction restrictions, and battle rules, plus the permanent Trials for Zone Nova"
+  gameTitle="Trial of Bravery"
+>
+  <section class="zn-trials-section">
+    <h2 class="section-title">Trial of Bravery</h2>
+    <p class="section-description">
+      A 14-day trial with 10 stages. Each trial is a new edition - only characters from 4 of the 8
+      factions may enter, and each has its own battle rule. Every stage has a 180-second time limit.
+    </p>
+
+    {
+      active ? (
+        <div class="current-season">
+          <div class="season-head">
+            <h3>Current Trial</h3>
+            <span class="season-dates">
+              {fmt(active.start)} 14:15 - {fmt(active.end)} 03:59 (UTC+8)
+            </span>
+          </div>
+          <div class="season-factions">
+            <span class="meta-label">Allowed factions:</span>
+            <p class="faction-line">{active.factions}</p>
+          </div>
+          {active.rule && (
+            <div class="season-rule">
+              <span class="meta-label">Battle rule:</span>
+              <p>{active.rule}</p>
+            </div>
+          )}
+          <a href={`/guides/zone-nova/trial-of-bravery/${active.id}/`} class="details-link">
+            View trial details &amp; team suggestions &rarr;
+          </a>
+        </div>
+      ) : (
+        <div class="current-season">
+          <p>No active season found in the current game data - check in-game for the latest rotation.</p>
+        </div>
+      )
+    }
+  </section>
+
+  <section class="zn-trials-section">
+    <h2 class="section-title">All Trials</h2>
+    <p class="section-description">
+      Every Trial of Bravery from the game data, newest first. Each is a separate edition with its
+      own dates, factions, and battle rule - ended trials stay here for reference. Click one for
+      details and team suggestions.
+    </p>
+    <div class="seasons-wrap">
+      <table class="seasons-table">
+        <thead>
+          <tr><th>Status</th><th>Window</th><th>Factions</th><th>Battle rule</th></tr>
+        </thead>
+        <tbody>
+          {seasonsDesc.map(s => {
+            const st = getBraverySeasonStatus(s);
+            return (
+              <tr class={st === 'active' ? 'row-active' : st === 'ended' ? 'row-ended' : 'row-upcoming'}>
+                <td class={`status-text st-${st} nowrap`}>{st === 'active' ? 'ACTIVE' : st === 'ended' ? 'ENDED' : 'UPCOMING'}</td>
+                <td class="stat-cell nowrap">
+                  <a href={`/guides/zone-nova/trial-of-bravery/${s.id}/`}>{s.start} &rarr; {s.end}</a>
+                </td>
+                <td class="nowrap">{s.factions}</td>
+                <td>{s.rule ? s.rule.slice(0, 90) + (s.rule.length > 90 ? '…' : '') : '-'}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="zn-trials-section">
+    <h2 class="section-title">Permanent Trials</h2>
+    <p class="section-description">
+      Always-open tower trials with 114 stages each. Four of them restrict entry to two factions
+      each; the Trial of Freedom has no restriction.
+    </p>
+    <div class="perm-grid">
+      {PERMANENT_TRIALS.map(t => (
+        <article class="perm-card">
+          <h3>{t.name}</h3>
+          <p class="perm-limit">{t.factionLimitLabel}</p>
+          <p class="perm-stages">{t.stages} stages</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</ZoneNovaLayout>

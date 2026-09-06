@@ -5,43 +5,43 @@ export const shannaBuild = {
     name: "Shanna",
     role: "DPS",
     buildType: "Crit-Stacking Fire Duelist",
-    description: "Shanna (Saya) is an SR crit duelist: her passive stacks [Focus] (+3.7% Crit Rate, up to 10 stacks = +37%) just from hitting the same target with normal attacks, her ULT dashes in for 480%, and her auto hits 240%. Against bosses her free crit stacking makes her punch far above her rarity — keep her locked on one target.",
+    description: "Shanna (Saya) is an SR crit duelist: her passive stacks [Focus] (+3.7% Crit Rate, up to 10 stacks = +37%) just from hitting the same target with normal attacks, her ULT dashes in for 480%, and her auto hits 240%. Against bosses her free crit stacking makes her punch far above her rarity: keep her locked on one target.",
     skillPriority: [
       {
         skill: "Passive: Heroes Never Retreat!",
         priority: 1,
-        level: "Level 10",
+        level: "Level 14",
         reason: "+37% Crit Rate for free just from normal-attacking the same target",
         description: "When a Normal Attack hits the same target, adds 1 stack of [Focus], each stack increasing Critical Rate by 3.7%, up to 10 stacks"
       },
       {
         skill: "Ultimate: Invincible Blade",
         priority: 2,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Dash + 480% single-target burst",
-        description: "Energy Cost: 3\nCooldown: 1.0ss\nDashes to the targeted enemy unit And deals 480% Attack as fire damage"
+        description: "Energy Cost: 3\nCooldown: 1.0s\nDashes to the targeted enemy unit And deals 480% Attack as fire damage"
       },
       {
         skill: "Auto Skill: Great! Greater! Greatest! Sword!",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "240% filler on a 5s cooldown",
-        description: "Cooldown: 5.0ss\nDeals 240% Attack as fire damage to the targeted enemy unit"
+        description: "Cooldown: 5.0s\nDeals 240% Attack as fire damage to the targeted enemy unit"
       },
       {
         skill: "Normal Attack: Light Art Strike",
         priority: 4,
         level: "Level 7",
-        reason: "Lowest value per level — raise last",
-        description: "Cooldown: 2.0ss\nDeals 120% Attack as fire damage to the targeted enemy unit"
+        reason: "Lowest value per level: raise last",
+        description: "Cooldown: 2.0s\nDeals 120% Attack as fire damage to the targeted enemy unit"
       }
     ],
     recommendedMemoryCards: [
       {
         name: "Hero Never Resting",
-        effect: "Themed SR card — +72% Crit DMG when fewer than 2 enemies remain. Her free crit rate makes this brutal in boss rooms.",
+        effect: "Themed SR card: +72% Crit DMG when fewer than 2 enemies remain. Her free crit rate makes this brutal in boss rooms.",
         priority: "Highly Recommended",
-        note: "Themed SR card — +72% Crit DMG when fewer than 2 enemies remain. Her free crit rate makes this brutal in boss rooms.",
+        note: "Themed SR card: +72% Crit DMG when fewer than 2 enemies remain. Her free crit rate makes this brutal in boss rooms.",
         characterSpecific: true,
         memoryImage: "Shannacard.jpg",
         memoryStats: {
@@ -50,32 +50,70 @@ export const shannaBuild = {
           defense: "395"
         },
         description: "When there are fewer than 2 enemies on the field, Critical Damage increases by 72%"
+      },
+      {
+        name: "Frozen Heart",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Yuiscard.jpg",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Critical Rate increased by 34%\nPursue Damage dealt by the wearer increases Critical Damage by 68%",
+        priority: "Highly Recommended"
+      },
+      {
+        name: "King of Lust",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "KingOfLust.png",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Critical hit rate increased by 40%, attack power increased by 40%. Each time the wearer's attack hits an enemy, they accumulate 1 stack of [Battle Spirit]. Once [Battle Spirit] reaches 10 stacks, all [Battle Spirit] will be consumed, and the [Penetrating] effect will be gained, increasing critical hit damage dealt by 50% for 5 seconds. [Battle Spirit] will not accumulate while the [Penetrating] effect is active.",
+        priority: "Highly Recommended"
       }
     ],
     alternativeMemoryCards: [
       {
-        name: "Hero Never Resting",
-        effect: "+72% Crit DMG when fewer than 2 enemies remain — huge boss-phase nuking.",
+        name: "Shared Bath Time",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Shannacard.jpg",
+        memoryImage: "Odincard.jpg",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "When there are fewer than 2 enemies on the field, Critical Damage increases by 72%"
+        description: "Attack power increases by 40%, and all damage increases by 40% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 15% Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds."
       },
       {
-        name: "Great Wizard's Roleplay",
-        effect: "+20% ATK and +36% Crit DMG against lone targets — boss-room stat stick.",
+        name: "Weird eyes full of desire",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "great-mages-role-playing.png",
+        memoryImage: "Helacard.jpg",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "Attack increases by 20%, when there are fewer than 2 enemies on the field, Critical Damage increases by 36%"
+        description: "Increases critical hit rate by 34%. When other friendly units cast a Ultimate Skill, the wearer's damage increases by 24% for 5 seconds, and can be stacked up to 3 times."
+      },
+      {
+        name: "Black-Faced Fool",
+        effect: "SS-tier Attacker memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Heracard.jpg",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Attack increases by 40%, when attacking targets affected by Damage Over Time, damage increases by 40%"
       }
     ],
     runes: {
@@ -90,7 +128,7 @@ export const shannaBuild = {
         "Penetration",
         "ATK"
       ],
-      buildNote: "Multipliers are large, so % damage and crit scale harder than flat ATK — element damage on position 5, crit on position 4.",
+      buildNote: "Multipliers are large, so % damage and crit scale harder than flat ATK: element damage on position 5, crit on position 4.",
       recommendedSets: [
         {
           name: "Hepha 4-piece + Beth 2-piece",
@@ -116,25 +154,25 @@ export const shannaBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "Attack (%) / Critical Rate (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -148,7 +186,7 @@ export const shannaBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "Fire Attribute Damage (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -162,7 +200,7 @@ export const shannaBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "Attack (%)",
         availableStats: [
           "Attack (%)",
@@ -172,7 +210,7 @@ export const shannaBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -220,8 +258,11 @@ export const shannaBuild = {
       goodWith: [
         "Zashiki-warashi",
         "Kela",
-        "Mordred"
+        "Mordred",
+        "Bors",
+        "Nephthys",
+        "Morgan Le Fay"
       ],
-      note: undefined
+      note: "Wants team buffs and protection: a top Supporter multiplies her damage, the Healer keeps her standing, and the Tank holds the enemy off her."
     }
   };

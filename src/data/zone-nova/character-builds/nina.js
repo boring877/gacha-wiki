@@ -11,7 +11,7 @@ export const ninaBuild = {
     {
       skill: 'Auto Skill: Blaze Burst',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Main AOE damage skill that doubles to 960% in Frost Ash state - primary damage source',
       description:
@@ -20,7 +20,7 @@ export const ninaBuild = {
     {
       skill: 'Ultimate: Frost Ash Liberation',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Enables Frost Ash state with +50% attack speed, +60% crit rate, and doubled skill damage multipliers',
       description:
@@ -29,7 +29,7 @@ export const ninaBuild = {
     {
       skill: 'Passive: Indestructible Frost Mark',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Survivability and damage scaling - 50% damage reduction in Frost Ash plus attack speed stacking',
       description:
@@ -38,7 +38,7 @@ export const ninaBuild = {
     {
       skill: 'Normal Attack: Frost Blood Thorn',
       priority: 4,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Basic attack that doubles to 240% in Frost Ash state with self-healing trade-off',
       description:
         'Cooldown: 2.0s\nDeals ice damage equal to 120% of Attack to target enemy unit, recovering 12% of max health.\n[Frost Ash] State: Each hit removes 5% of max health. Deals ice damage equal to 240% of Attack to target enemy unit.',
@@ -46,7 +46,7 @@ export const ninaBuild = {
   ],
   recommendedMemoryCards: [
     {
-      name: 'Halloween Candy',
+      name: 'Halloween candy',
       effect:
         "Nina's exclusive memory card. Provides massive critical damage increase with self-healing synergy that complements her Frost Ash HP drain mechanic.",
       priority: 'Highly Recommended',
@@ -56,9 +56,34 @@ export const ninaBuild = {
       slug: 'halloween-candy',
       description:
         'Critical damage increased by 60%. When health is above 30%, equipped character recovers 2% of max health after attacking. All damage increased by 40%.',
+    }
+  ],
+  alternativeMemoryCards: [
+    {
+      name: 'Afternoon tantrums',
+      effect: 'SSS-tier Warrior memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Kellercard.png',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Increases own attack power by 70%， critical hit damage by 90%， and normal attack damage by 100%. Every 3rd normal attack will deal an additional 75% of attack power as normal attack damage.',
+    },
+    {
+      name: 'Wrong time of appearance',
+      effect: 'SSS-tier Warrior memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Apepcard.jpg',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Defense increased by 64%\nWhen HP is below 50%, the wearer recovers 2% of maximum HP after attacking\nWhen HP is above 50%, damage taken is reduced by 10%, and damage dealt is increased by 40%.',
+    },
+    {
+      name: 'Pride or Tsundere?',
+      effect: 'SS-tier Warrior memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'pride-or-tsundere.png',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Increases HP by 32% and defense by 60%. When an ally is attacked by a normal attack, the damage taken is reduced by 30%.',
     },
   ],
-  alternativeMemoryCards: [],
   memoryNote:
     'There is no good alternative memory for Nina. The Warrior class is lacking good memories, so you need to get her exclusive Halloween Candy memory.',
   runes: {
@@ -93,25 +118,25 @@ export const ninaBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Critical Damage (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -124,7 +149,7 @@ export const ninaBuild = {
       ],
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Ice Attribute Damage (%) / Attack (%)',
       availableStats: [
         'Wind Attribute Damage (%)',
@@ -140,7 +165,7 @@ export const ninaBuild = {
         'If you need more ATK so Naiya can buff Nina, going Attack % is not bad. But Ice Damage provides more damage since it has no diminishing returns.',
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
     },
@@ -200,6 +225,9 @@ export const ninaBuild = {
       'Naiya - Ice buffer that provides team damage amplification',
       'Gaia - Healer to sustain HP during Frost Ash state HP drain',
       'Thor - Thor provides shield to sustain Nina.',
+      'Freya',
+      'Gluttony - Beelzebub',
+      'Bors',
     ],
     note: 'Nina can work with any team, only if Gaia is there. Gaia will help Nina keep doing damage. Thor is the 2nd option if you do not have Gaia, but no one comes close to Gaia!',
   },

@@ -5,26 +5,26 @@ export const lyraBuild = {
     name: "Lyra",
     role: "DPS",
     buildType: "Mark-Detonation Fire Duelist",
-    description: "Lyra is a fire mark-detonator: her auto slams 480% and applies [fire Mark], and her ULT deals 360% — then consumes the Mark to fire a SECOND 360% line through the target and everything behind it. Her passive grants up to +76% ATK on a full field. Simple, brutal single-target rotation with a built-in AoE pierce on marked targets.",
+    description: "Lyra is a fire mark-detonator: her auto slams 480% and applies [fire Mark], and her ULT deals 360%: then consumes the Mark to fire a SECOND 360% line through the target and everything behind it. Her passive grants up to +76% ATK on a full field. Simple, brutal single-target rotation with a built-in AoE pierce on marked targets.",
     skillPriority: [
       {
         skill: "Auto Skill: Dual-Wield: Final Blade Barrage",
         priority: 1,
-        level: "Level 10",
-        reason: "480% single hit PLUS applies [fire Mark] — half of her ULT combo",
-        description: "Cooldown: 8.0ss\nDeals 480% Attack as fire damage to the targeted enemy unit And applies [fire Mark] for 10 seconds"
+        level: "Level 14",
+        reason: "480% single hit PLUS applies [fire Mark]: half of her ULT combo",
+        description: "Cooldown: 8.0s\nDeals 480% Attack as fire damage to the targeted enemy unit And applies [fire Mark] for 10 seconds"
       },
       {
         skill: "Ultimate: Dual-Wield: Final Blade Phantom Slash",
         priority: 2,
-        level: "Level 10",
+        level: "Level 14",
         reason: "360%, and consuming [fire Mark] adds a second 360% piercing line (720% total)",
-        description: "Energy Cost: 5\nCooldown: 1.0ss\nDeals 360% fire damage to the targeted enemy unit\nIf the target has [fire Mark], consumes [fire Mark] And deals 360% fire damage to the target and enemies behind it"
+        description: "Energy Cost: 5\nCooldown: 1.0s\nDeals 360% fire damage to the targeted enemy unit\nIf the target has [fire Mark], consumes [fire Mark] And deals 360% fire damage to the target and enemies behind it"
       },
       {
         skill: "Passive: Black Armor Propulsion",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "+19% ATK per enemy on the field, up to 4 stacks",
         description: "For each enemy unit on the field, increases 19% Attack, up to 4 times"
       },
@@ -32,16 +32,16 @@ export const lyraBuild = {
         skill: "Normal Attack: Final Blade Combo",
         priority: 4,
         level: "Level 7",
-        reason: "Lowest value per level — raise last",
-        description: "Cooldown: 2.0ss\nDeals 120% Attack as fire damage to the targeted enemy unit"
+        reason: "Lowest value per level: raise last",
+        description: "Cooldown: 2.0s\nDeals 120% Attack as fire damage to the targeted enemy unit"
       }
     ],
     recommendedMemoryCards: [
       {
         name: "Self-Indulgence",
-        effect: "Exclusive card — +40% ULT damage plus +10% more per enemy on field. Straight multiplier on her 720% combo.",
+        effect: "Exclusive card: +40% ULT damage plus +10% more per enemy on field. Straight multiplier on her 720% combo.",
         priority: "Must Have",
-        note: "Exclusive card — +40% ULT damage plus +10% more per enemy on field. Straight multiplier on her 720% combo.",
+        note: "Exclusive card: +40% ULT damage plus +10% more per enemy on field. Straight multiplier on her 720% combo.",
         characterSpecific: true,
         memoryImage: "Lyracard.jpg",
         memoryStats: {
@@ -50,32 +50,57 @@ export const lyraBuild = {
           defense: "474"
         },
         description: "ULT damage increases by 40%, for each enemy on the field, ULT damage increases by an additional 10%, up to 4 times"
+      },
+      {
+        name: "A Dream of Peace",
+        effect: "SSS-tier Destroyer memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "a-dream-of-peace.png",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Attack power increased by 60%, and ultimate skill damage increased by 50%. Ultimate skill penetration against enemy defense increases by 24%. If the enemy has a shield, ultimate skill damage against them is increased by 50%.",
+        priority: "Highly Recommended"
       }
     ],
     alternativeMemoryCards: [
       {
-        name: "Hero Never Resting",
-        effect: "+72% Crit DMG when fewer than 2 enemies remain — huge boss-phase nuking.",
+        name: "Night of Blood and Storm",
+        effect: "SS-tier Destroyer memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Shannacard.jpg",
+        memoryImage: "Night-of-Bloody-Storm.png",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "When there are fewer than 2 enemies on the field, Critical Damage increases by 72%"
+        description: "Attack increases by 40%, after a team Supporter uses an ULT, the wearer's ULT damage increases by 40% for 5 seconds"
       },
       {
-        name: "Summer Nap Time",
-        effect: "+20% ATK plus 5% more per enemy (up to +40% total) — AoE farming stat stick.",
+        name: "The Servant's Aspiration",
+        effect: "SS-tier Destroyer memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Summer-Afternoon-Nap-Time.jpg",
+        memoryImage: "Freyacard.jpg",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "Attack increases by 20%, for each enemy on the field, Attack increases by an additional 5%, up to 4 times"
+        description: "Critical Damage increases by 72%. \nFor each enemy unit present on the field, normal attack damage increases by 12%, up to a maximum of 4 times."
+      },
+      {
+        name: "Unreserved love",
+        effect: "SS-tier Destroyer memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Shuten-dojicard.jpg",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Attack power increased by 40%; damage over time increased by 40%. When dealing damage over time, the enemy takes 24% more damage for 3 seconds. Damage dealt to enemies with shields is increased by 35%."
       }
     ],
     runes: {
@@ -90,7 +115,7 @@ export const lyraBuild = {
         "Penetration",
         "ATK"
       ],
-      buildNote: "Multipliers are large, so % damage and crit scale harder than flat ATK — element damage on position 5, crit on position 4.",
+      buildNote: "Multipliers are large, so % damage and crit scale harder than flat ATK: element damage on position 5, crit on position 4.",
       recommendedSets: [
         {
           name: "Hepha 4-piece + Beth 2-piece",
@@ -116,25 +141,25 @@ export const lyraBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "Attack (%) / Critical Rate (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -148,7 +173,7 @@ export const lyraBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "Fire Attribute Damage (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -162,7 +187,7 @@ export const lyraBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "Attack (%)",
         availableStats: [
           "Attack (%)",
@@ -172,7 +197,7 @@ export const lyraBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -220,8 +245,11 @@ export const lyraBuild = {
       goodWith: [
         "Sharin",
         "Bors",
-        "Veronica"
+        "Veronica",
+        "Nephthys",
+        "Morgan Le Fay",
+        "Medusa"
       ],
-      note: undefined
+      note: "Wants team buffs and protection: a top Supporter multiplies her damage, the Healer keeps her standing, and the Tank holds the enemy off her."
     }
   };

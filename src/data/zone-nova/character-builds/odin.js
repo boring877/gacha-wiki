@@ -11,7 +11,7 @@ export const odinBuild = {
     {
       skill: "Passive: Raven's Insight",
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Core mechanic enabling DoT conversion, stat conversion, and [Divine Flame] application - essential for maximizing DOT output and damage scaling',
       description:
@@ -20,7 +20,7 @@ export const odinBuild = {
     {
       skill: 'Ultimate: Judgment Strike',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Three-segment chain ultimate with massive damage scaling based on DOT stacks - primary burst damage and DOT application tool with unique chaining mechanic',
       description:
@@ -56,40 +56,32 @@ export const odinBuild = {
       slug: 'shared-bath-time',
       description:
         'ATK +40%; ultimate damage +40% for the caster. After each ultimate, gain 1 [Charge]. When dealing damage, consume [Charge] to apply 1 stack of [Final Flame]: deals 15% ATK Fire damage every 2s, stacks up to 5, lasts 10s.',
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'Strange Gaze Full of Desire',
-      effect:
-        "SSR memory card that provides substantial crit rate and damage bonuses from ally ultimates - excellent choice for boosting Odin's overall damage output in team compositions.",
+      name: 'Frozen Heart',
+      effect: 'SSS-tier Attacker memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Yuiscard.jpg',
+      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+      description: 'Critical Rate increased by 34%\nPursue Damage dealt by the wearer increases Critical Damage by 68%',
+    },
+    {
+      name: 'King of Lust',
+      effect: 'SSS-tier Attacker memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'KingOfLust.png',
+      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+      description: 'Critical hit rate increased by 40%, attack power increased by 40%. Each time the wearer\'s attack hits an enemy, they accumulate 1 stack of [Battle Spirit]. Once [Battle Spirit] reaches 10 stacks, all [Battle Spirit] will be consumed, and the [Penetrating] effect will be gained, increasing critical hit damage dealt by 50% for 5 seconds. [Battle Spirit] will not accumulate while the [Penetrating] effect is active.',
+    },
+    {
+      name: 'Weird eyes full of desire',
+      effect: 'SSS-tier Attacker memory in the memory tier list.',
       characterSpecific: false,
       memoryImage: 'Helacard.jpg',
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
-      slug: 'strange-gaze-full-of-desire',
-      description:
-        "Crit Rate increases by 34%. When other allies cast their ultimates, the wearer's damage dealt increases by 24% for 5 seconds (max 3 stacks, up to 72% bonus damage).",
-    },
-    {
-      name: 'Hera Memory',
-      effect:
-        "SSR memory card designed to enhance damage output against targets with sustained damage - synergizes perfectly with Odin's DOT-focused kit.",
-      characterSpecific: false,
-      memoryImage: 'Heracard.jpg',
-      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
-      slug: 'black-face-ugly-person',
-      description:
-        'Attack power +40%, when attack receives sustained damage effect impact targets, damage +40%.',
-    },
-    {
-      name: 'Secret Room Reality',
-      effect:
-        "SR memory card that significantly enhances DOT penetration - perfect for Odin's [Divine Flame] mechanics and fire damage output.",
-      characterSpecific: false,
-      memoryImage: 'Tefnutcard.jpg',
-      memoryStats: { hp: '4,200', attack: '650', defense: '395' },
-      slug: 'secret-room-reality',
-      description: 'Continuous Damage Penetration Rate +36%.',
+      description: 'Increases critical hit rate by 34%. When other friendly units cast a Ultimate Skill, the wearer\'s damage increases by 24% for 5 seconds, and can be stacked up to 3 times.',
     },
   ],
   runes: {
@@ -126,25 +118,25 @@ export const odinBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Attack (%) / Critical Rate (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -159,7 +151,7 @@ export const odinBuild = {
         'Both of crit rate and atk are good, but for me I like crit rate because I believe that fire damage increase means total damage unlike atk which has diminishing returns.',
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Fire Attribute Damage (%)',
       availableStats: [
         'Wind Attribute Damage (%)',
@@ -173,7 +165,7 @@ export const odinBuild = {
       ],
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
     },
@@ -227,7 +219,14 @@ export const odinBuild = {
     effects: ['ATK +10%', 'At battle start, every 500 ATK grants +3% Penetration (max 6 times)'],
   },
   teamSynergy: {
-    goodWith: ['Shu', 'Thor', 'Horus', 'Anubis', 'Cleopatra', 'Tefnut'],
+    goodWith: [
+      'Shu',
+      'Thor',
+      'Horus',
+      'Anubis',
+      'Cleopatra',
+      'Tefnut',
+    ],
     note: 'Odin needs 1 more teammate that deals DOT damage for her to have full 20 or 30 stacks of Divine Flame. The damage difference is quite significant.',
   },
 };

@@ -6,12 +6,12 @@ export const sharinBuild = {
   role: 'Supporter',
   buildType: 'Qi Stacking Team Supporter',
   description:
-    "Sharin's passive is what makes her broken. Qi stacks give your whole team +11.5% damage, healing, and shielding per stack (max 10) -- that's 115% to everything at max. But the real insane part is the energy recovery: +3.3% per stack = 33% extra energy recovery at max. That alone makes your whole team ult way faster. It all stacks passively every 5 seconds, no conditions needed. Her ult buffs your highest ATK unit with +170% ATK and +85% crit damage, and your highest DEF unit with +146% DEF and +84% HP. A1 makes the ult hit TWO targets per category and the first ult is free. She basically makes your entire team better just by existing.",
+    "Sharin's passive is what makes her broken. Qi stacks give your whole team +11.5% damage, healing, and shielding per stack (max 10): that's 115% to everything at max. But the real insane part is the energy recovery: +3.3% per stack = 33% extra energy recovery at max. That alone makes your whole team ult way faster. It all stacks passively every 5 seconds, no conditions needed. Her ult buffs your highest ATK unit with +170% ATK and +85% crit damage, and your highest DEF unit with +146% DEF and +84% HP. A1 makes the ult hit TWO targets per category and the first ult is free. She basically makes your entire team better just by existing.",
   skillPriority: [
     {
       skill: 'Passive',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Best skill - team-wide stacking multiplicative buffs to healing, shielding, damage, and energy recovery that scale throughout the fight',
       description:
         'At the start of battle, all allies gain 1 stack of [Qi] every 5 seconds. Each stack of [Qi] provides: Healing received +11.5%, Shield received +11.5%, Damage dealt +11.5%, Energy recovery efficiency +3.3%. Maximum 10 stacks.',
@@ -19,7 +19,7 @@ export const sharinBuild = {
     {
       skill: 'Ultimate',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Massive ATK/DEF/Crit DMG/HP buffs to two top allies',
       description:
         'Energy Cost: 3\nThe ally with the highest attack power gains [Extreme Battle Spirit], increasing attack power by 170.1% and critical hit damage by 85.1%, lasting 10 seconds.\n\nThe ally with the highest defense power gains [Tank Heart], increasing defense by 145.8% and maximum health by 84.4%, lasting 10 seconds.',
@@ -27,7 +27,7 @@ export const sharinBuild = {
     {
       skill: 'Auto Skill',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Consistent ATK/DEF buffing with stacking mechanic',
       description:
         'Cooldown: 7.0s\nThe allied unit with the highest attack power gains [Invigorate], increasing attack power by 60.1% for 10 seconds, up to 4 stacks. The allied unit with the highest defense power gains [Fortify], increasing defense by 48.6% for 10 seconds, up to 4 stacks.',
@@ -46,44 +46,47 @@ export const sharinBuild = {
       effect:
         "Sharin's exclusive memory card. Provides 32% ATK/DEF boost to all allies and stacking HP increase on skill use.",
       priority: 'Must Have',
-      note: '32% ATK/DEF to ALL allies on equip -- no conditions. Then every skill she casts bumps team HP by 6%, capping at 60% extra HP after 10 skills. Takes a while to fully stack but the 32% ATK/DEF alone is already huge.',
+      note: '32% ATK/DEF to ALL allies on equip: no conditions. Then every skill she casts bumps team HP by 6%, capping at 60% extra HP after 10 skills. Takes a while to fully stack but the 32% ATK/DEF alone is already huge.',
       characterSpecific: true,
       memoryImage: 'Sharincard',
       memoryStats: { hp: '6,000', attack: '600', defense: '600' },
       description:
         'Increases the attack and defense of all allies by 32%. Each time the wearer uses a skill, the maximum HP of all allies increases by 6% (up to 10 stacks).',
     },
+    {
+      name: 'Unholy Alliance',
+      effect: 'UR tier team card: +32% ATK/DEF/HP for the whole party just for equipping it, and every skill the wearer casts stacks +14% team max HP and -5% team skill cooldowns (up to 5). Strong on literally anyone.',
+      priority: 'Highly Recommended',
+      characterSpecific: false,
+      memoryImage: 'unholy-alliance.png',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Our entire party\'s attack power, defense power, and HP are increased by 32%. Each time the wearer uses a skill, our entire party\'s maximum HP increases by 14% and all skill cooldowns decrease by 5%, stacking up to 5 times.',
+    }
   ],
   alternativeMemoryCards: [
     {
       name: 'Hot Spring & Her',
-      effect:
-        "SSS tier buffer memory from Tamamo-no-Mae. 40% ATK and team damage scaling with Brilliance stacks. Pairs well with Sharin's energy recovery.",
+      effect: 'SSS-tier Supporter memory in the memory tier list.',
       characterSpecific: false,
       memoryImage: 'Tamamo-no-maecard.jpg',
       memoryStats: { hp: '6,000', attack: '600', defense: '600' },
-      description:
-        "Base ATK +40%. After allies' Ultimate deals DMG, increases self Energy Recovery Rate by 200% (4s) and gains 1 stack of [Brilliance] (5s, max 50 stacks). Every 5 stacks of [Brilliance] increases all allies' DMG by 9%.",
+      description: 'Base Stats Boost: ATK +40%.\nPassive: After allies\' Ultimate deals DMG, increases self Energy Recovery Rate by 200% (4s) and gains 1 stack of [Brilliance] (5s, max 50 stacks).\nEvery 5 stacks of [Brilliance] increases all allies\' DMG by 9%.',
     },
     {
-      name: 'The Loneliest Moment',
-      effect:
-        "SS tier buffer memory - 40% team damage boost plus 100% energy gain efficiency on ult/energy >8. Pairs well with Sharin's energy recovery from Qi stacks.",
-      characterSpecific: false,
-      memoryImage: 'Apollocard.jpg',
-      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
-      description:
-        "Battle start: All allied characters' damage increases by 40%, pursue damage additionally increases by 40%. When equipped character releases ultimate or energy >8: All allied characters' energy acquisition efficiency increases by 100% for 10 seconds",
-    },
-    {
-      name: 'Embarrassing Pattern',
-      effect:
-        'SS tier buffer memory - 40% team damage + 40% normal attack damage from battle start, plus 40% team ATK on 5 normal attacks.',
+      name: 'Awkward Appearance',
+      effect: 'SS-tier Supporter memory in the memory tier list.',
       characterSpecific: false,
       memoryImage: 'Athenacard.jpg',
       memoryStats: { hp: '6,000', attack: '600', defense: '600' },
-      description:
-        'After battle start: All allies damage +40%, normal attack damage +40%. When equipped character deals 5 normal attack damage: All team attack power +40% for 5 seconds',
+      description: 'At the start of battle, all allied characters\' damage increases by 40%, with Normal Attack damage additionally increased by 40%\n\nEvery 5 Normal Attack damages dealt by the wearer increases team Attack Power by 40%, lasting 5 seconds',
+    },
+    {
+      name: 'The Loneliest Moment',
+      effect: 'SS-tier Supporter memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Apollocard.jpg',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'After entering battle, all team members\' damage increases by 40%, Pursue Damage increases by an additional 40%, when the wearer\'s ULT consumes 8 or more energy, all team members\' Energy Gain Efficiency increases by 100% for 10 seconds',
     },
   ],
   runes: {
@@ -92,7 +95,7 @@ export const sharinBuild = {
     stats: ['HP%', 'DEF%'],
     additionalStats: ['HP', 'DEF'],
     buildNote:
-      "Her buffs are all flat percentages, not based on her own stats. Yes, the Combination Skill gives 5% ATK/DEF per 500 ATK -- but she doesn't deal damage and if she dies, her Qi stacks stop. A dead Sharin buffs nothing. Go full tank stats (HP% + DEF%) to keep her alive so she keeps pumping Qi stacks and ult buffs every rotation.",
+      "Her buffs are all flat percentages, not based on her own stats. Yes, the Combination Skill gives 5% ATK/DEF per 500 ATK: but she doesn't deal damage and if she dies, her Qi stacks stop. A dead Sharin buffs nothing. Go full tank stats (HP% + DEF%) to keep her alive so she keeps pumping Qi stacks and ult buffs every rotation.",
     recommendedSets: [
       {
         name: 'Tide 4-piece + Zahn 2-piece',
@@ -175,9 +178,12 @@ export const sharinBuild = {
   },
   teamSynergy: {
     goodWith: [
-      'High ATK DPS characters (gets [Extreme Battle Spirit])',
-      'High DEF Tanks (gets [Tank Heart])',
-      'Energy-hungry ultimates (Qi energy recovery)',
+      'Bors',
+      'Nephthys',
+      'Freya',
+      'Keller',
+      'Lust - Asmodeus',
+      'Nina',
     ],
     note: 'Sharin works in virtually any team composition. Her ultimate automatically targets the best ATK and DEF allies, and Qi provides universal team buffs. She excels with both burst DPS teams and tanky sustain teams.',
   },

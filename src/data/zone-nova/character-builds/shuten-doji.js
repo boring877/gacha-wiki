@@ -11,7 +11,7 @@ export const shutenDojiBuild = {
     {
       skill: 'Passive: Those who obey me live',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Massive damage amplification (+62.9% damage dealt) and survivability (+48.6% damage reduction) against targets with Wind Evil or Evil Bone. Always active when your DOTs are applied.',
       description:
@@ -20,7 +20,7 @@ export const shutenDojiBuild = {
     {
       skill: 'Ultimate: Scattered Flower Gun',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Core damage skill that applies [Evil Bone] when target has full [Wind Evil] stacks. Evil Bone deals massive 221.5% ATK wind damage per second for 5 seconds.',
       description:
@@ -29,7 +29,7 @@ export const shutenDojiBuild = {
     {
       skill: 'Auto Skill: Piercing Gun',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Primary [Wind Evil] stack application with AOE damage. Essential for building up to 4 stacks to enable [Evil Bone] from Ultimate.',
       description:
@@ -47,7 +47,7 @@ export const shutenDojiBuild = {
   ],
   recommendedMemoryCards: [
     {
-      name: 'Unreserved Love',
+      name: 'Unreserved love',
       effect:
         "Shuten-doji's exclusive memory card. Provides 40% ATK, 40% DOT damage increase, 24% damage taken debuff on DOT, and 35% bonus damage to shielded enemies.",
       priority: 'Highly Recommended',
@@ -59,20 +59,32 @@ export const shutenDojiBuild = {
         'Attack power increased by 40%. Damage over time increased by 40%. When dealing damage over time, the enemy takes 24% more damage for 3 seconds. Damage dealt to enemies with shields is increased by 35%.',
       spendingNote:
         'Best one for maximizing her DOT potential. The 40% DOT damage boost and 24% damage taken debuff works well with her kit.',
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'Revolutionary Restructuring',
-      effect:
-        "Cleopatra's memory card. Provides 40% ATK and adds [Erosion] DOT effect when skills hit - stacks up to 5 layers of chaos damage over time.",
+      name: 'A Dream of Peace',
+      effect: 'SSS-tier Destroyer memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'Cleopatracard',
+      memoryImage: 'a-dream-of-peace.png',
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
-      slug: 'revolutionary-restructuring',
-      description:
-        'Attack increases by 40%. Infiltration Effect: When skill hits target, additionally adds one layer [Erosion]. [Erosion]: Every 1 second deals 15% Chaos damage, maximum 5 layers, lasts 10 seconds.',
-      note: 'More DOT DAMAGE ?.',
+      description: 'Attack power increased by 60%, and ultimate skill damage increased by 50%. Ultimate skill penetration against enemy defense increases by 24%. If the enemy has a shield, ultimate skill damage against them is increased by 50%.',
+    },
+    {
+      name: 'Night of Blood and Storm',
+      effect: 'SS-tier Destroyer memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Night-of-Bloody-Storm.png',
+      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+      description: 'Attack increases by 40%, after a team Supporter uses an ULT, the wearer\'s ULT damage increases by 40% for 5 seconds',
+    },
+    {
+      name: 'The Servant\'s Aspiration',
+      effect: 'SS-tier Destroyer memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Freyacard.jpg',
+      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+      description: 'Critical Damage increases by 72%. \nFor each enemy unit present on the field, normal attack damage increases by 12%, up to a maximum of 4 times.',
     },
   ],
   runes: {
@@ -203,7 +215,12 @@ export const shutenDojiBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: [ "Horus", "Shu", "Morgan", "Guinevere", "Hera", "Odin"
+    goodWith: [
+      'Medusa',
+      'Lust - Asmodeus',
+      'Bors',
+      'Morgan Le Fay',
+      'Thor',
     ],
     note: "Shuten seems a bit weak compared to Odin, Odin is a better version of her. She needs a full DOT team to work around increasing the DOT. So far we do not have a buffer or debuffer that synergizes well with DOT characters.",
   },

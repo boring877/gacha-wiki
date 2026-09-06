@@ -10,21 +10,21 @@ export const nephthysBuild = {
       {
         skill: "Auto Skill: Blazing Explosion",
         priority: 1,
-        level: "Level 10",
-        reason: "488.9% to ALL enemies plus [Hellfire Sin] stacks — damage and her amplifier in one button",
-        description: "Cooldown: 5.0ss\nDeals 488.9% attack power as fire damage to all enemies and inflicts the [Hellfire Sin] debuff, reducing healing received by 5.5% and critical hit resistance by 5.5%, up to 5 stacks, lasting 10 seconds. Simultaneously grants self the [Fiery Avatar] debuff, increasing balze damage and ultimate skill damage by 4%, up to 5 stacks."
+        level: "Level 14",
+        reason: "488.9% to ALL enemies plus [Hellfire Sin] stacks: damage and her amplifier in one button",
+        description: "Cooldown: 5.0s\nDeals 488.9% attack power as fire damage to all enemies and inflicts the [Hellfire Sin] debuff, reducing healing received by 5.5% and critical hit resistance by 5.5%, up to 5 stacks, lasting 10 seconds. Simultaneously grants self the [Fiery Avatar] debuff, increasing balze damage and ultimate skill damage by 4%, up to 5 stacks."
       },
       {
         skill: "Ultimate: Blazing Rain",
         priority: 2,
-        level: "Level 10",
+        level: "Level 14",
         reason: "12 meteor hits over 6s, each applying −1.25% DEF [Molten Armor]",
-        description: "Energy Cost: 3\nCooldown: 3.0ss\nSummons a shower of meteors, dealing 90.6% attack power as fire damage to all enemies every 0.5 seconds. The channel lasts 6 seconds (can be interrupted during channeling). Each attack inflicts [Molten Armor], reducing the target's defense by 1.25%, stacking up to 20 times. If Nephthys successfully completes the entire cast without interruption, she will deal an additional 271.7% attack power as balze damage to all enemies at the end."
+        description: "Energy Cost: 3\nCooldown: 3.0s\nSummons a shower of meteors, dealing 90.6% attack power as fire damage to all enemies every 0.5 seconds. The channel lasts 6 seconds (can be interrupted during channeling). Each attack inflicts [Molten Armor], reducing the target's defense by 1.25%, stacking up to 20 times. If Nephthys successfully completes the entire cast without interruption, she will deal an additional 271.7% attack power as balze damage to all enemies at the end."
       },
       {
         skill: "Passive: No self, no heaven",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "+36.7% damage vs shielded targets, +75.6% at 5 [Hellfire Sin] stacks",
         description: "All damage dealt to enemy units with a Shield is increased by 36.7%. When dealing damage: If the opponent has 5 stacks of [Infernal Sin], the damage you deal to them is increased by 75.6%. If you have 5 stacks of [Blazing Incarnation], you take less damage 48.9% and gain a shield equal to your attack power 24.4% when you take damage. The shield has a 4-second cooldown."
       },
@@ -32,16 +32,16 @@ export const nephthysBuild = {
         skill: "Normal Attack: Pillar of Blazing Flame",
         priority: 4,
         level: "Level 7",
-        reason: "Lowest value per level — raise last",
-        description: "Cooldown: 2.0ss\nDeals 93.3% attack damage as fire damage to all enemy units."
+        reason: "Lowest value per level: raise last",
+        description: "Cooldown: 2.0s\nDeals 93.3% attack damage as fire damage to all enemy units."
       }
     ],
     recommendedMemoryCards: [
       {
         name: "A Dream of Peace",
-        effect: "Exclusive card — +60% ATK, +50% ULT damage and +24% ULT defense penetration. Every line multiplies her meteor channel.",
+        effect: "Exclusive card: +60% ATK, +50% ULT damage and +24% ULT defense penetration. Every line multiplies her meteor channel.",
         priority: "Must Have",
-        note: "Exclusive card — +60% ATK, +50% ULT damage and +24% ULT defense penetration. Every line multiplies her meteor channel.",
+        note: "Exclusive card: +60% ATK, +50% ULT damage and +24% ULT defense penetration. Every line multiplies her meteor channel.",
         characterSpecific: true,
         memoryImage: "a-dream-of-peace.png",
         memoryStats: {
@@ -54,28 +54,40 @@ export const nephthysBuild = {
     ],
     alternativeMemoryCards: [
       {
-        name: "Hero Never Resting",
-        effect: "+72% Crit DMG when fewer than 2 enemies remain — huge boss-phase nuking.",
+        name: "Night of Blood and Storm",
+        effect: "SS-tier Destroyer memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Shannacard.jpg",
+        memoryImage: "Night-of-Bloody-Storm.png",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "When there are fewer than 2 enemies on the field, Critical Damage increases by 72%"
+        description: "Attack increases by 40%, after a team Supporter uses an ULT, the wearer's ULT damage increases by 40% for 5 seconds"
       },
       {
-        name: "Summer Nap Time",
-        effect: "+20% ATK plus 5% more per enemy (up to +40% total) — AoE farming stat stick.",
+        name: "The Servant's Aspiration",
+        effect: "SS-tier Destroyer memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Summer-Afternoon-Nap-Time.jpg",
+        memoryImage: "Freyacard.jpg",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "Attack increases by 20%, for each enemy on the field, Attack increases by an additional 5%, up to 4 times"
+        description: "Critical Damage increases by 72%. \nFor each enemy unit present on the field, normal attack damage increases by 12%, up to a maximum of 4 times."
+      },
+      {
+        name: "Unreserved love",
+        effect: "SS-tier Destroyer memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Shuten-dojicard.jpg",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Attack power increased by 40%; damage over time increased by 40%. When dealing damage over time, the enemy takes 24% more damage for 3 seconds. Damage dealt to enemies with shields is increased by 35%."
       }
     ],
     runes: {
@@ -90,7 +102,7 @@ export const nephthysBuild = {
         "Penetration",
         "ATK"
       ],
-      buildNote: "Multipliers are large, so % damage and crit scale harder than flat ATK — element damage on position 5, crit on position 4.",
+      buildNote: "Multipliers are large, so % damage and crit scale harder than flat ATK: element damage on position 5, crit on position 4.",
       recommendedSets: [
         {
           name: "Hepha 4-piece + Beth 2-piece",
@@ -116,25 +128,25 @@ export const nephthysBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "Attack (%) / Critical Rate (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -148,7 +160,7 @@ export const nephthysBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "Fire Attribute Damage (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -162,7 +174,7 @@ export const nephthysBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "Attack (%)",
         availableStats: [
           "Attack (%)",
@@ -172,7 +184,7 @@ export const nephthysBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -220,7 +232,10 @@ export const nephthysBuild = {
       goodWith: [
         "Bors",
         "Veronica",
-        "Medusa"
+        "Medusa",
+        "Odin",
+        "Morgan Le Fay",
+        "Thor"
       ],
       note: "Bors's ATK window on top of her 5-stack passive is her peak damage combo."
     }

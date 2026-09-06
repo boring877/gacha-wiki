@@ -5,43 +5,43 @@ export const setBuild = {
     name: "Set",
     role: "DPS",
     buildType: "Infernal-Fire Multi-Stage Attacker",
-    description: "Set is a SSS multi-stage attacker: his ULT chains up to three stages (512.8% and rising) based on [Infernal fire] stacks, his passive grants a stack per hit (up to 50) and triggers free Pursues against lone targets every 5 stacks, and his auto dashes behind the enemy line for 412.2%. Against bosses he becomes a self-feeding Pursue machine — the more he hits, the more he hits.",
+    description: "Set is a SSS multi-stage attacker: her ULT chains up to three stages (512.8% and rising) based on [Infernal fire] stacks, her passive grants a stack per hit (up to 50) and triggers free Pursues against lone targets every 5 stacks, and her auto dashes behind the enemy line for 412.2%. Against bosses she becomes a self-feeding Pursue machine: the more she hits, the more she hits.",
     skillPriority: [
       {
         skill: "Passive: Calamity's Verdict",
         priority: 1,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Every hit banks [Infernal fire] (up to 50); against lone targets every 5 stacks fires a free Pursue",
         description: "Each hit during the skill adds 1 stack of [Infernal fire] to self, up to 50 stacks.\nIf each stage of the ULT hits only 1 enemy unit(s), for every 5 stacks of [Infernal fire], a [Pursue] is triggered against that enemy unit, dealing fire damage equal to 171.2% of Attack Power."
       },
       {
         skill: "Ultimate: Crimson Sands Triple Break",
         priority: 2,
-        level: "Level 10",
-        reason: "Multi-stage greatsword chain (512.8%+ per stage) unlocked by his stack count",
-        description: "Energy Cost: 3\nCooldown: 1.0ss\nAfter casting ULT, can cast the next stage of the skill within 4 seconds based on the number of [Infernal fire] stacks.\nFirst Stage: Powerfully slashes with the greatsword, dealing fire damage equal to 512.8% of Attack Power to the nearest enemy unit, and knocks back all enemy units within 5 meters in a straight line in front of the caster (except the target) by 2 meters, dealing fire damage equal to 51.3% of Attack Power.\nSecond Stage (No consumption): Can be activated when holding 20 stacks of [Infernal fire]: Powerfully slashes with the greatsword, dealing fire damage equal to 336.1% of Attack Power to all enemy units within a sector of 3 meters in the direction of the nearest enemy unit.\nThird Stage (No consumption): Can be activated when holding 40 stacks of [Infernal fire]: Jumps to the enemy unit with the highest Attack Power and deals fire damage equal to 694.4% of Attack Power to that unit, consuming all stacks of [Infernal fire]."
+        level: "Level 14",
+        reason: "Multi-stage greatsword chain (512.8%+ per stage) unlocked by her stack count",
+        description: "Energy Cost: 3\nCooldown: 1.0s\nAfter casting ULT, can cast the next stage of the skill within 4 seconds based on the number of [Infernal fire] stacks.\nFirst Stage: Powerfully slashes with the greatsword, dealing fire damage equal to 512.8% of Attack Power to the nearest enemy unit, and knocks back all enemy units within 5 meters in a straight line in front of the caster (except the target) by 2 meters, dealing fire damage equal to 51.3% of Attack Power.\nSecond Stage (No consumption): Can be activated when holding 20 stacks of [Infernal fire]: Powerfully slashes with the greatsword, dealing fire damage equal to 336.1% of Attack Power to all enemy units within a sector of 3 meters in the direction of the nearest enemy unit.\nThird Stage (No consumption): Can be activated when holding 40 stacks of [Infernal fire]: Jumps to the enemy unit with the highest Attack Power and deals fire damage equal to 694.4% of Attack Power to that unit, consuming all stacks of [Infernal fire]."
       },
       {
         skill: "Auto Skill: Sandstorm Vortex Hunt",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Repositions behind the farthest enemy and hits for 412.2% with knockback",
-        description: "Cooldown: 3.0ss\nRotates and moves behind the farthest enemy unit,\ndealing fire damage equal to 66% of Attack Power and knocking back 1 meters to enemy units in the movement path.\nUpon completion, deals fire damage equal to 412.2% of Attack Power and knocks back 3 meters to that unit."
+        description: "Cooldown: 3.0s\nRotates and moves behind the farthest enemy unit,\ndealing fire damage equal to 66% of Attack Power and knocking back 1 meters to enemy units in the movement path.\nUpon completion, deals fire damage equal to 412.2% of Attack Power and knocks back 3 meters to that unit."
       },
       {
         skill: "Normal Attack: Sovereign's Execution Edict",
         priority: 4,
         level: "Level 7",
-        reason: "Lowest value per level — raise last",
-        description: "Cooldown: 2.0ss\nDeals fire damage equal to 120% of Attack Power to the nearest enemy unit."
+        reason: "Lowest value per level: raise last",
+        description: "Cooldown: 2.0s\nDeals fire damage equal to 120% of Attack Power to the nearest enemy unit."
       }
     ],
     recommendedMemoryCards: [
       {
         name: "Sunlit sweetness awaits",
-        effect: "Exclusive card — +65% Crit DMG and every skill/ULT hit stacks +4.3% Crit Rate (up to 20). He hits constantly, so stacks stay maxed.",
+        effect: "Exclusive card: +65% Crit DMG and every skill/ULT hit stacks +4.3% Crit Rate (up to 20). She hits constantly, so stacks stay maxed.",
         priority: "Must Have",
-        note: "Exclusive card — +65% Crit DMG and every skill/ULT hit stacks +4.3% Crit Rate (up to 20). He hits constantly, so stacks stay maxed.",
+        note: "Exclusive card: +65% Crit DMG and every skill/ULT hit stacks +4.3% Crit Rate (up to 20). She hits constantly, so stacks stay maxed.",
         characterSpecific: true,
         memoryImage: "sunlit-sweetness-awaits.png",
         memoryStats: {
@@ -50,32 +50,70 @@ export const setBuild = {
           defense: "474"
         },
         description: "Critical Damage increased by 65%.\nWhen the wearer lands a hit with any skill/ULT, Critical Rate increases by 4.3% for 6 seconds (up to 20 stacks)."
+      },
+      {
+        name: "Frozen Heart",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Yuiscard.jpg",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Critical Rate increased by 34%\nPursue Damage dealt by the wearer increases Critical Damage by 68%",
+        priority: "Highly Recommended"
+      },
+      {
+        name: "King of Lust",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "KingOfLust.png",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Critical hit rate increased by 40%, attack power increased by 40%. Each time the wearer's attack hits an enemy, they accumulate 1 stack of [Battle Spirit]. Once [Battle Spirit] reaches 10 stacks, all [Battle Spirit] will be consumed, and the [Penetrating] effect will be gained, increasing critical hit damage dealt by 50% for 5 seconds. [Battle Spirit] will not accumulate while the [Penetrating] effect is active.",
+        priority: "Highly Recommended"
       }
     ],
     alternativeMemoryCards: [
       {
-        name: "Perverted Little Nurse",
-        effect: "+36% Crit Rate for 10s after dealing Pursue Damage — made for Pursue-triggered kits.",
+        name: "Shared Bath Time",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Leviathancard.jpg",
+        memoryImage: "Odincard.jpg",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "After dealing Pursue Damage, Critical Rate increases by 36% for 10 seconds"
+        description: "Attack power increases by 40%, and all damage increases by 40% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 15% Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds."
       },
       {
-        name: "Hero Never Resting",
-        effect: "+72% Crit DMG when fewer than 2 enemies remain — huge boss-phase nuking.",
+        name: "Weird eyes full of desire",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Shannacard.jpg",
+        memoryImage: "Helacard.jpg",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "When there are fewer than 2 enemies on the field, Critical Damage increases by 72%"
+        description: "Increases critical hit rate by 34%. When other friendly units cast a Ultimate Skill, the wearer's damage increases by 24% for 5 seconds, and can be stacked up to 3 times."
+      },
+      {
+        name: "Black-Faced Fool",
+        effect: "SS-tier Attacker memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Heracard.jpg",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Attack increases by 40%, when attacking targets affected by Damage Over Time, damage increases by 40%"
       }
     ],
     runes: {
@@ -90,7 +128,7 @@ export const setBuild = {
         "Penetration",
         "ATK"
       ],
-      buildNote: "Hepha 4-piece (Blaze ULT grants +12% Crit Rate and +16% ATK) supercharges his ULT stages; Het leans into his lone-target Pursue spam.",
+      buildNote: "Hepha 4-piece (Blaze ULT grants +12% Crit Rate and +16% ATK) supercharges her ULT stages; Het leans into her lone-target Pursue spam.",
       recommendedSets: [
         {
           name: "Hepha 4-piece + Beth 2-piece",
@@ -116,25 +154,25 @@ export const setBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "Attack (%) / Critical Rate (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -148,7 +186,7 @@ export const setBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "Fire Attribute Damage (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -162,7 +200,7 @@ export const setBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "Attack (%)",
         availableStats: [
           "Attack (%)",
@@ -172,7 +210,7 @@ export const setBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -220,8 +258,11 @@ export const setBuild = {
       goodWith: [
         "Bors",
         "Medusa",
-        "Leviathan"
+        "Leviathan",
+        "Nephthys",
+        "Morgan Le Fay",
+        "Thor"
       ],
-      note: undefined
+      note: "Wants team buffs and protection: a top Supporter multiplies her damage, the Healer keeps her standing, and the Tank holds the enemy off her."
     }
   };

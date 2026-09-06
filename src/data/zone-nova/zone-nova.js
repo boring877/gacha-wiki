@@ -53,6 +53,7 @@ export const zoneNovaConfig = {
         { id: 'damage-mechanics', title: 'Damage Hub', url: '/guides/zone-nova/damage-mechanics/' },
         { id: 'rifts', title: 'Rifts', url: '/guides/zone-nova/rifts/' },
         { id: 'rift-teams', title: 'Rift Teams', url: '/guides/zone-nova/rift-teams/' },
+        { id: 'trial-of-bravery', title: 'Trial of Bravery', url: '/guides/zone-nova/trial-of-bravery/' },
         { id: 'memories', title: 'Memories', url: '/guides/zone-nova/memories/' },
         { id: 'memory-tier-list', title: 'Memory Tier List', url: '/guides/zone-nova/memory-tier-list/' },
         { id: 'team-synergy', title: 'Team Synergy', url: '/guides/zone-nova/team-synergy/' },

@@ -11,7 +11,7 @@ export const pennyBuild = {
     {
       skill: "Passive: Aethyss's Call for Help",
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Core defense stacking ability - makes Penny one of the highest defensive units',
       description:
         'After taking damage, gain 1 stack of [Fortitude], increasing own defense by 4.8%, max 30 stacks',
@@ -19,7 +19,7 @@ export const pennyBuild = {
     {
       skill: 'Auto Skill: Divine Shield Wind',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Main damage dealer and self-protection ability',
       description:
         'Auto-trigger: 5.0s\nDeals Wind damage equal to 120% of own defense to target enemy, and reduces damage taken by self for 10 seconds by 24%',
@@ -27,7 +27,7 @@ export const pennyBuild = {
     {
       skill: 'Ultimate: Shield of Aethyss',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Powerful team shielding and damage reduction buff',
       description:
         'Energy Cost: 5\nAll allied characters gain a shield equal to 60% of your defense(Penny), and take 24% less damage for 10 seconds',
@@ -51,18 +51,32 @@ export const pennyBuild = {
       memoryStats: { hp: '8,600', attack: '480', defense: '690' },
       description:
         'Defense increased by 60%, After using ultimate skill, equipped character takes 10% less damage for 5 seconds, Shield amount applied by ultimate skills increased by 20%',
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'Lancelot-HerTrainer',
-      effect:
-        "SR memory card that provides Tank class exclusive effects, defense increase, and team damage reduction - excellent for Penny's tank capabilities",
+      name: 'Sea Deity\'s Soft Ritual',
+      effect: 'SSS-tier Tank memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'Lancelotcard.jpg',
-      memoryStats: { hp: '5,500', attack: '400', defense: '575' },
-      description:
-        'Defense increased by 36%, Team Buff: After entering battle, all allied characters take 8% less damage, Note: Same skill effects cannot stack',
+      memoryImage: 'sea-gods-soft-ritual.png',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Max HP increases by 40%.\nWhen the wearer casts an ultimate skill all allies gain [Tideguard] for 8 seconds. If [Tideguard] is gained again remove the existing [Tideguard] and its accumulated Critical Resistance bonus first.\n[Tideguard]:\nDEF increases by 28%.\nBlock Rate increases by 5%.\nEach time an allied unit with [Tideguard] is hit its Critical Resistance increases by 15% up to 5 stacks until [Tideguard] ends.\n[Block]: Has a chance to reduce that instance of damage by 30%. Damage over time ignores Block.',
+    },
+    {
+      name: 'Under the Holy Armor',
+      effect: 'SSS-tier Tank memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'under-the-holy-armor.png',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Our HP increases by 25%, and self defense increases by 70%. After each skill use, all allies gain [Radiant Protection], reducing damage taken by 6% and increasing critical hit resistance by 5%, stacking up to 5 times, lasting 10 seconds.',
+    },
+    {
+      name: 'Eating secretly in a cafe',
+      effect: 'SS-tier Tank memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'InTheCafeSneakingABite.png',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Increases defense by 64%. After successfully neutralizing the attack, damage taken is reduced by 10% for 5 seconds. When the wearer holds a shield, damage taken is reduced by 18%.',
     },
   ],
   runes: {
@@ -130,25 +144,25 @@ export const pennyBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Defense (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -162,7 +176,7 @@ export const pennyBuild = {
       description: 'Defense % for maximum tankiness and shield scaling',
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Defense (%)',
       availableStats: [
         'Wind Attribute Damage (%)',
@@ -177,14 +191,14 @@ export const pennyBuild = {
       description: 'Defense % for maximum survivability and shield strength',
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Defense (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
       description: 'Focus on core percentage stat increases only',
     },
   },
   awakenings: {
-    priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+    priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
     keyMilestones: [
       {
         level: 1,
@@ -226,8 +240,10 @@ export const pennyBuild = {
   },
   teamSynergy: {
     goodWith: [
-      'She works well with wind Team',
-      'Any AOE maps that need team shields and dmg reduction',
+      'Medusa',
+      'Lust - Asmodeus',
+      'Freya',
+      'Keller',
     ],
     note: 'The problem with Penny is that the defensive has diminishing returns which makes stacking Def not really useful. Going little HP does not improve your tankiness much, only option to become tanky is going with damage reduction since it decreases total damage taken.',
   },

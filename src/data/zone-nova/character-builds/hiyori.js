@@ -6,7 +6,7 @@ export const hiyoriBuild = {
   role: 'DPS',
   buildType: 'Shield Destroy Chaos Nuker',
   description:
-    'Hiyori is a ranged Chaos Destroyer built to counter Pride-Lucifer in PvP. She has the highest base ATK (1,683) and Crit Rate (57%) in the entire game. Her ult strips ALL shields off the target then slams them for 1060% ATK Chaos DMG with +114% Crit Rate on top -- basically deletes Pride-Lucifer\'s whole shield gimmick on the spot. Passive gives 26.5% extra damage to anyone with a shield, and when you break one it pops a 679.8% ATK AOE explosion. Mostly a PvP unit since shield-heavy comps are everywhere in arena, especially Lucifer teams. Needs at least A1 (ignore 74% DEF on ult) to really do her job against Lucifer.',
+    'Hiyori is a ranged Chaos Destroyer built to counter Pride-Lucifer in PvP. She has the highest base ATK (1,683) and Crit Rate (57%) in the entire game. Her ult strips ALL shields off the target then slams them for 1060% ATK Chaos DMG with +114% Crit Rate on top: basically deletes Pride-Lucifer\'s whole shield gimmick on the spot. Passive gives 26.5% extra damage to anyone with a shield, and when you break one it pops a 679.8% ATK AOE explosion. Mostly a PvP unit since shield-heavy comps are everywhere in arena, especially Lucifer teams. Needs at least A1 (ignore 74% DEF on ult) to really do her job against Lucifer.',
   skillPriority: [
     {
       skill: 'Ultimate: Operation: Dustless',
@@ -55,28 +55,32 @@ export const hiyoriBuild = {
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
       description:
         "CRIT Rate +20%, [Descale] state on attacking shielded enemies (8s), CRIT DMG +20% and Ultimate DMG +60% (on non-shielded targets) during [Descale]",
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: "Slave's Original Wish",
-      effect:
-        "CRIT Damage +72%, Normal attack damage increases per enemy on field (max 48% at 4 enemies). Good general DPS option for Hiyori's frequent normal attacks.",
+      name: 'A Dream of Peace',
+      effect: 'SSS-tier Destroyer memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'Freyacard.jpg',
+      memoryImage: 'a-dream-of-peace.png',
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
-      description:
-        'Critical Damage increased by 72%, Normal attack damage increases by 12% per enemy (max 4 stacks)',
+      description: 'Attack power increased by 60%, and ultimate skill damage increased by 50%. Ultimate skill penetration against enemy defense increases by 24%. If the enemy has a shield, ultimate skill damage against them is increased by 50%.',
     },
     {
-      name: 'Night of Bloody Storm',
-      effect:
-        "ATK +40%, Ultimate DMG +40% after ally buffer uses ultimate. Strong option if paired with buffer supports for amplified ultimate damage.",
+      name: 'Night of Blood and Storm',
+      effect: 'SS-tier Destroyer memory in the memory tier list.',
       characterSpecific: false,
       memoryImage: 'Night-of-Bloody-Storm.png',
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
-      description:
-        'Attack +40%, Ultimate DMG +40% after ally buffer uses ultimate (5s)',
+      description: 'Attack increases by 40%, after a team Supporter uses an ULT, the wearer\'s ULT damage increases by 40% for 5 seconds',
+    },
+    {
+      name: 'The Servant\'s Aspiration',
+      effect: 'SS-tier Destroyer memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Freyacard.jpg',
+      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+      description: 'Critical Damage increases by 72%. \nFor each enemy unit present on the field, normal attack damage increases by 12%, up to a maximum of 4 times.',
     },
   ],
   runes: {
@@ -111,25 +115,25 @@ export const hiyoriBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Critical Damage (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -143,7 +147,7 @@ export const hiyoriBuild = {
       description: 'Crit Damage % for maximum burst potential with ultimate',
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Chaos Attribute Damage (%)',
       availableStats: [
         'Chaos Attribute Damage (%)',
@@ -157,7 +161,7 @@ export const hiyoriBuild = {
       description: 'Chaos Attribute Damage % for Chaos element scaling',
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
       description: 'Attack % for maximum damage scaling on her 1060% ATK ultimate',
@@ -216,10 +220,11 @@ export const hiyoriBuild = {
     goodWith: [
       'Gaia',
       'Pride-Lucifer',
-      'Other Chaos characters',
       'Morgan Le Fay',
       'Gluttony - Beelzebub',
+      'Frigga',
+      'Hela',
     ],
-    note: 'Hiyori is squishy so she needs to either survive long enough to ult or get her ult out super fast. Gaia is the best partner -- her passive gives the lowest DEF ally (Hiyori) 60% bonus HP and a revive on lethal damage, which means Hiyori gets a second chance to pop her ult. Running Lucifer on the same team gives her extra shield protection and activates the Chaos team skill. For energy, Morgan Le Fay or Gluttony-Beelzebub help charge her ult faster so she can blow up before dying. The idea is: protect Hiyori -> charge ult fast -> blow up the enemy shields -> win.',
+    note: 'Hiyori is squishy so she needs to either survive long enough to ult or get her ult out super fast. Gaia is the best partner: her passive gives the lowest DEF ally (Hiyori) 60% bonus HP and a revive on lethal damage, which means Hiyori gets a second chance to pop her ult. Running Lucifer on the same team gives her extra shield protection and activates the Chaos team skill. For energy, Morgan Le Fay or Gluttony-Beelzebub help charge her ult faster so she can blow up before dying. The idea is: protect Hiyori -> charge ult fast -> blow up the enemy shields -> win.',
   },
 };

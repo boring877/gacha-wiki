@@ -11,14 +11,14 @@ export const apepBuild = {
     {
       skill: 'Passive',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Enhances defense scaling and survivability - max level for F2P efficiency',
       description: 'Scales DEF to ATK and provides self-shield generation',
     },
     {
       skill: 'Auto Skill',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Core tank ability - provides defense scaling and shield generation',
       description: 'Generates shields based on DEF and provides team protection',
     },
@@ -39,22 +39,37 @@ export const apepBuild = {
   ],
   recommendedMemoryCards: [
     {
-      name: 'Wrong Appearance Timing',
+      name: 'Wrong time of appearance',
       effect:
         "Apep's exclusive memory card. Defense increased by 64%, HP recovery when above 50% HP, and damage reduction/damage increase buffs.",
       priority: 'Highly Recommended',
       characterSpecific: true,
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'Behind the Regret',
-      effect:
-        "SR memory card that provides HP increase and healing boost, enhancing Apep's survivability and sustain",
+      name: 'Afternoon tantrums',
+      effect: 'SSS-tier Warrior memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'mordredcard',
-      memoryStats: { hp: '5,000', attack: '500', defense: '500' },
-      description: 'HP increased by 24%, Self healing amount increased by 30%',
+      memoryImage: 'Kellercard.png',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Increases own attack power by 70%， critical hit damage by 90%， and normal attack damage by 100%. Every 3rd normal attack will deal an additional 75% of attack power as normal attack damage.',
+    },
+    {
+      name: 'Halloween candy',
+      effect: 'SS-tier Warrior memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Ninacard.jpg',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Increases critical hit damage by 60%. When HP is above 30%, the wearer recovers 2% of their maximum HP after attacking, and all damage is increased by 40%.',
+    },
+    {
+      name: 'Pride or Tsundere?',
+      effect: 'SS-tier Warrior memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'pride-or-tsundere.png',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Increases HP by 32% and defense by 60%. When an ally is attacked by a normal attack, the damage taken is reduced by 30%.',
     },
   ],
   runes: {
@@ -107,25 +122,25 @@ export const apepBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Defense (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -140,7 +155,7 @@ export const apepBuild = {
         'Most diverse options including utility stats and exclusive Attack Penetration (%)',
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Defense (%)',
       availableStats: [
         'Wind Attribute Damage (%)',
@@ -155,14 +170,14 @@ export const apepBuild = {
       description: 'Core stats plus elemental damage increases - all percentages',
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Defense (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
       description: 'Focus on core percentage stat increases only',
     },
   },
   awakenings: {
-    priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+    priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
     keyMilestones: [
       {
         level: 1,
@@ -203,7 +218,14 @@ export const apepBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: ['Nina', 'Hela', 'Shu'],
+    goodWith: [
+      'Nina',
+      'Hela',
+      'Shu',
+      'Medusa',
+      'Lust - Asmodeus',
+      'Bors',
+    ],
     note: 'This unit has no clear synergy with other characters, but this is the best I could think of right now! She is more PVP focused than PVE.',
   },
 };

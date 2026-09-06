@@ -11,7 +11,7 @@ export const horusBuild = {
     {
       skill: 'Passive: Solar Divine Judgment',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Core mechanic enabling [Seal] consumption for powerful AOE explosions and additional [Piercing] stack application - essential for maximizing DOT output',
       description:
@@ -20,7 +20,7 @@ export const horusBuild = {
     {
       skill: 'Auto Skill: Arrow of Atum',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Primary [Piercing] stack application with AOE damage - main source of DOT maintenance and burst potential through [Seal] consumption',
       description:
@@ -29,7 +29,7 @@ export const horusBuild = {
     {
       skill: 'Ultimate: Eye of Wadjet',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'High burst damage with [Seal] application and valuable interrupt utility - essential for PVE boss encounters and enabling passive explosions',
       description:
@@ -46,7 +46,7 @@ export const horusBuild = {
   ],
   recommendedMemoryCards: [
     {
-      name: 'Cute Little Thing',
+      name: 'Cute Little Things',
       effect:
         "Horus's exclusive memory card. Provides massive attack increase and DOT damage amplification, perfectly synergizing with [Piercing] mechanics and attack scaling.",
       priority: 'Highly Recommended',
@@ -56,37 +56,32 @@ export const horusBuild = {
       slug: 'cute-little-thing',
       description:
         'Attack power increases by 40%. When you have (DOT) continuous damage, Target take 24% increased damage, lasts 3 seconds',
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'Battlefield Flower',
-      effect:
-        'SR memory card that increases damage by 20% for each negative effect on the target (max 3 stacks)',
+      name: 'The Knight and the Fuzzy',
+      effect: 'SSS-tier Disruptor memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'ninicard.jpg',
-      memoryStats: { hp: '5,000', attack: '500', defense: '500' },
-      description:
-        'For each negative effect on the target, damage dealt increases by 20%, maximum 3 stacks.',
-    },
-    {
-      name: 'Deceptive Ultimate Temptation',
-      effect:
-        'SR memory card designed for Disruptor class that provides attack boost and increased damage against enemies with negative status',
-      characterSpecific: false,
-      memoryImage: 'Deceptive-Ultimate-Temptation.jpg',
-      memoryStats: { hp: '5,000', attack: '500', defense: '500' },
-      description:
-        'Attack increased by 20%. When attacking enemies with negative status, damage increased by 20%.',
-    },
-    {
-      name: 'True Order (真正的秩序)',
-      effect:
-        'SSR memory card that provides massive 32% damage increase when attacking enemies with negative status effects',
-      characterSpecific: false,
-      memoryImage: 'Lokicard.jpg',
+      memoryImage: 'the-knight-and-the-fuzzy.png',
       memoryStats: { hp: '6,000', attack: '600', defense: '600' },
-      description: 'When attacking enemies with negative status effects, damage increases by 32%.',
+      description: 'ATK +40%.\nEnemies hit by the Ultimate gain [Frontline Edict] for 7s. Targets within 3m also gain [Enhanced Frontline Edict].\n[Frontline Edict]: DEF -12.5%. Energy Gain Efficiency -10%.\n[Enhanced Frontline Edict]: DEF -45%. Energy Gain Efficiency -30%.',
+    },
+    {
+      name: 'A perfect makeup look?',
+      effect: 'SS-tier Disruptor memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Ibaraki-dojicard.jpg',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Attack power increased by 40%. When a Ultimate Skill deals damage, the target takes 36% more damage and receives 40% less healing for 5 seconds.',
+    },
+    {
+      name: 'Discipline Director',
+      effect: 'SS-tier Disruptor memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Erikacard.png',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Attack Power increases by 40%.\nWhen the wearer\'s skill or ultimate hits a target that target\'s healing received is reduced by 12% and shielding received is reduced by 10% for 3 seconds. This effect cannot stack.\nIf the target has a shield at that time the target\'s damage dealt is reduced by 18% for 3 seconds. This effect cannot stack.',
     },
   ],
   runes: {
@@ -123,25 +118,25 @@ export const horusBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -154,7 +149,7 @@ export const horusBuild = {
       ],
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Holy Attribute Damage (%)',
       availableStats: [
         'Wind Attribute Damage (%)',
@@ -168,7 +163,7 @@ export const horusBuild = {
       ],
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
     },
@@ -224,7 +219,14 @@ export const horusBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: ['Odin', 'DOT characters'],
+    goodWith: [
+      'Odin',
+      'Gaia',
+      'Jill',
+      'Freya',
+      'Keller',
+      'Lust - Asmodeus',
+    ],
     note: "The main problem with Horus is she doesn't provide any strong debuff. Her main thing is DOT damage and it's not enough. The good thing about her is that her base ATK is really high!",
   },
 };

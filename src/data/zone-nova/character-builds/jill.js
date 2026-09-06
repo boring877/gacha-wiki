@@ -12,7 +12,7 @@ export const jillBuild = {
     {
       skill: "Passive: Commander's Gaze",
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         "This is her entire identity. Allies get marked when hit, and at 4+ marks she triggers Tenacity every second. That's team-wide immortality during heavy damage phases. Max this first.",
       description:
@@ -21,7 +21,7 @@ export const jillBuild = {
     {
       skill: 'Ultimate: All-Out Assault',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         "Gives the whole team lifesteal + 16.8% ATK buff, and slaps 20 Surrounded stacks on the enemy. When your team eats through all 20 stacks everyone gets a fat burst heal. Costs 6 energy which is a lot, but worth it.",
       description:
@@ -30,7 +30,7 @@ export const jillBuild = {
     {
       skill: 'Auto Skill: Bliss Brand',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         "Puts a buff on everyone that heals them when they get hit, up to 10 times. With A2 it lasts 5 seconds instead of 3. Pairs really well with fast-attacking DPS since they get hit and healed constantly.",
       description:
@@ -59,7 +59,7 @@ export const jillBuild = {
         "ATK +33.5%. After an ally is healed, wearer gains [Military Order] (up to 50 stacks) for 6s. Every 10 stacks: all allies' healing received +16.5%, damage taken -3.3%. When the wearer casts Ultimate: consumes all [Military Order]. Every 10 stacks increases all allies' ATK by 5% for 6s.",
     },
     {
-      name: 'The Beauty of Heijing Castle',
+      name: 'The Beauty of Heikyo Castle',
       effect:
         "Snow Girl's SR card. Good budget option if you don't have Jill's memory. The +30% healing and +24% damage buff on full HP allies is solid.",
       priority: 'Recommended',
@@ -69,30 +69,24 @@ export const jillBuild = {
       slug: 'the-beauty-of-heijing-castle',
       description:
         "Healing amount +30%; when recovering targets' life value is full, target damage +24% for 10 seconds.",
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'The Most Real Her',
-      effect:
-        "Jeanne D'Arc's SSR card. +50% healing baseline is already strong, and the stacking bonus for casting skills quickly can push it to +125% total. Good if you're spamming skills.",
+      name: 'Serpentine Frenzy',
+      effect: 'SSS-tier Healer memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'JoanofArccard',
+      memoryImage: 'serpentine-frenzy.png',
       memoryStats: { hp: '6,000', attack: '600', defense: '600' },
-      slug: 'the-most-real-her',
-      description:
-        'Healing amount +50%, when casting skills or required skills within 1/2/3 seconds, healing amount additionally +25/50/75%.',
+      description: 'The wearer\'s attack power is increased by 33.5%, and the defense and health of allied units are increased by 40%. Upon entering the battlefield, the wearer is granted the [Geo Boundary] buff every 3 seconds, which is reduced by 5% when taking damage, up to a maximum of 15 stacks.',
     },
     {
-      name: 'Midnight Work',
-      effect:
-        "Anubis's SSR card. +50% healing and gives +40% ATK to whoever gets healed. Since Jill heals so often, your DPS basically gets a permanent ATK buff.",
+      name: 'A Smile to Topple Cities',
+      effect: 'SS-tier Healer memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'Anubiscard',
-      memoryStats: { hp: '6,000', attack: '800', defense: '600' },
-      slug: 'midnight-work',
-      description:
-        'Healing amount +50%, each healing within 3 seconds gives target +40% attack power for 3 seconds.',
+      memoryImage: 'Gaiacard.jpg',
+      memoryStats: { hp: '6,300', attack: '580', defense: '585' },
+      description: 'HP increased by 40%, Healing Amount increased by 40%. When the wearer heals within 1 second, Healing Amount additionally increased by 40%',
     },
   ],
   runes: {
@@ -127,25 +121,25 @@ export const jillBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Healing Effectiveness (%) / Attack (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -160,7 +154,7 @@ export const jillBuild = {
         "Healing Effectiveness% or ATK%, both work great. Go Healing Effectiveness% if you already have plenty of ATK from substats.",
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: [
         'Wind Attribute Damage (%)',
@@ -176,7 +170,7 @@ export const jillBuild = {
         "ATK% for more healing. Don't bother with Holy DMG%, her damage doesn't matter. HP% if she's dying too fast.",
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
       description:
@@ -234,11 +228,12 @@ export const jillBuild = {
   },
   teamSynergy: {
     goodWith: [
-      'Sharin, both Monochrome Realm so team skill activates. Sharin buffs ATK which means Jill heals more.',
-      'Wrath-Samael, Monochrome Realm tank who taunts. Enemies hit him a lot which triggers her passive marks faster.',
-      'Pride-Lucifer, Monochrome Realm warrior. Loves having Tenacity and lifesteal from Bloodthirsty Sanction.',
-      'Any DPS works fine with her honestly. She keeps everyone alive regardless of team comp.',
-      'Gaia, double healer with Gaia revive + Jill Tenacity makes teams basically unkillable.',
+      'Sharin - both Monochrome Realm so team skill activates. Sharin buffs ATK which means Jill heals more.',
+      'Wrath-Samael - Monochrome Realm tank who taunts. Enemies hit her a lot which triggers her passive marks faster.',
+      'Pride-Lucifer - Monochrome Realm warrior. Loves having Tenacity and lifesteal from Bloodthirsty Sanction.',
+      'Gaia - double healer with Gaia revive + Jill Tenacity makes teams basically unkillable.',
+      'Morgan Le Fay',
+      'Freya',
     ],
     note: "Her Tenacity is really good against bosses that do big burst damage. You want Monochrome Realm or Holy teammates for the team skill, Monochrome is better since Sharin buffs ATK. Her ult costs 6 energy which is steep, so Daleth 4-piece for the starting energy helps a lot. She could be a good answer to Pride-Lucifer in PvP too, 4 marks gives Chaos RES +20% and Tenacity every second, so her damage just doesn't stick.",
   },

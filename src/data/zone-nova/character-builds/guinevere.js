@@ -11,7 +11,7 @@ export const guinevereBuild = {
     {
       skill: 'Passive: Evil Star Explosion',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Core tank mechanics enabling defense scaling damage, Domination Authority stacking, and life recovery - essential for tanking and damage output',
       description:
@@ -20,7 +20,7 @@ export const guinevereBuild = {
     {
       skill: 'Auto Skill: Supreme Power',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Essential block rate boost that enables passive defense stacking and Domination Authority generation - core to her tanking and damage cycle',
       description:
@@ -29,7 +29,7 @@ export const guinevereBuild = {
     {
       skill: 'Ultimate: Devastating Heavenly Fire',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Enhanced ultimate provides extra damage and team-wide damage reduction - key for both offense and utility when Domination Authority is stacked',
       description:
@@ -56,30 +56,32 @@ export const guinevereBuild = {
       slug: 'simple-birdcage',
       description:
         'Defense increased by 64%. After successful block, damage taken decreases by 10%, lasting 5 seconds. Immediately gains 30% maximum HP shield after battle starts.',
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'Sister Penny Trying on New Clothes',
-      effect:
-        "SR Tank-class memory card that provides substantial HP increase and post-ultimate damage reduction - perfect synergy for Guinevere's tanking role and frequent ultimate usage",
+      name: 'Sea Deity\'s Soft Ritual',
+      effect: 'SSS-tier Tank memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'Sister-Penny-Trying-on-New Clothes',
-      memoryStats: { hp: '5,500', attack: '400', defense: '575' },
-      slug: 'sister-penny-trying-on-new-clothes',
-      description:
-        'HP increased by 24%. After using ultimate skill, equipped character receives 10% less damage for 5 seconds. (Tank class only)',
+      memoryImage: 'sea-gods-soft-ritual.png',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Max HP increases by 40%.\nWhen the wearer casts an ultimate skill all allies gain [Tideguard] for 8 seconds. If [Tideguard] is gained again remove the existing [Tideguard] and its accumulated Critical Resistance bonus first.\n[Tideguard]:\nDEF increases by 28%.\nBlock Rate increases by 5%.\nEach time an allied unit with [Tideguard] is hit its Critical Resistance increases by 15% up to 5 stacks until [Tideguard] ends.\n[Block]: Has a chance to reduce that instance of damage by 30%. Damage over time ignores Block.',
     },
     {
-      name: 'Lancelot-HerTrainer',
-      effect:
-        "SR memory card that provides defense increase and team-wide damage reduction - excellent defensive utility that enhances both Guinevere's personal tanking and team support capabilities",
+      name: 'Under the Holy Armor',
+      effect: 'SSS-tier Tank memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'Lancelotcard',
-      memoryStats: { hp: '5,500', attack: '400', defense: '575' },
-      slug: 'lancelot-hertrainer',
-      description:
-        'Defense increased by 36%. After entering battle, all our characters take 8% less damage, same skill effects cannot stack.',
+      memoryImage: 'under-the-holy-armor.png',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Our HP increases by 25%, and self defense increases by 70%. After each skill use, all allies gain [Radiant Protection], reducing damage taken by 6% and increasing critical hit resistance by 5%, stacking up to 5 times, lasting 10 seconds.',
+    },
+    {
+      name: 'Eating secretly in a cafe',
+      effect: 'SS-tier Tank memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'InTheCafeSneakingABite.png',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Increases defense by 64%. After successfully neutralizing the attack, damage taken is reduced by 10% for 5 seconds. When the wearer holds a shield, damage taken is reduced by 18%.',
     },
   ],
   runes: {
@@ -132,25 +134,25 @@ export const guinevereBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Defense (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -163,7 +165,7 @@ export const guinevereBuild = {
       ],
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Defense (%)',
       availableStats: [
         'Wind Attribute Damage (%)',
@@ -177,7 +179,7 @@ export const guinevereBuild = {
       ],
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Defense (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
     },
@@ -234,7 +236,14 @@ export const guinevereBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: ['Fire characters', 'Extra Damage Type characters', 'She is good anywhere'],
+    goodWith: [
+      'Bors',
+      'Nephthys',
+      'Freya',
+      'Keller',
+      'Lust - Asmodeus',
+      'Medusa',
+    ],
     note: "She needs a lot of HP in the sub stats to be broken. If you just stack DEF only, you won't get the most out of her!",
   },
 };

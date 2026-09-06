@@ -9,6 +9,10 @@ import { ZONE_NOVA_MEMORIES } from './memories.js';
 //     remember to update "lastUpdated" to today's date (YYYY-MM-DD)
 
 export const MEMORY_TIER_DEFINITIONS = {
+  UR: {
+    label: 'UR',
+    description: 'Beyond best-in-class. Defines the meta for the slot entirely.',
+  },
   SSS: {
     label: 'SSS',
     description: 'Best-in-class memory card. Defines the character entirely.',
@@ -46,7 +50,7 @@ export const MEMORY_CLASS_ORDER = [
 
 export const MEMORY_TIER_LIST = {
   name: 'Memory Card Rankings by Class',
-  lastUpdated: '2026-09-04',
+  lastUpdated: '2026-09-06',
   description:
     'Memory card rankings by class. Each character can only equip memories matching their class.',
   tiers: {
@@ -106,11 +110,11 @@ export const MEMORY_TIER_LIST = {
       Situational: [],
     },
     Supporter: {
+      UR: [{ name: "Unholy Alliance" }],
       SSS: [
         { name: "Absolutely perfect buttocks" },
         { name: "Bath Time" },
         { name: "Hot Spring & Her " },
-        { name: "Unholy Alliance" },
       ],
       SS: [{ name: "Awkward Appearance" }, { name: "The Loneliest Moment" }],
       S: [{ name: "And Also Chocolate" }, { name: "Dawn's Sunlight" }],

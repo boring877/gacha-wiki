@@ -10,30 +10,30 @@ export const bastetBuild = {
       {
         skill: "Passive: Feline Frenzy",
         priority: 1,
-        level: "Level 10",
-        reason: "Every 5th Normal Attack becomes a 120% AOE — her real clearing tool",
+        level: "Level 14",
+        reason: "Every 5th Normal Attack becomes a 120% AOE: her real clearing tool",
         description: "Every 5 Normal Attacks, the next Normal Attack deals 120% Attack as wind damage to the targeted enemy unit and enemies within a 4-meter radius"
       },
       {
         skill: "Ultimate: Kitty Barrage!",
         priority: 2,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Cheap (EC 5) 120% AOE burst on a 4-meter radius",
-        description: "Energy Cost: 5\nCooldown: 1.0ss\nDeals 120% Attack as wind damage to the targeted enemy unit and enemies within a 4-meter radius"
+        description: "Energy Cost: 5\nCooldown: 1.0s\nDeals 120% Attack as wind damage to the targeted enemy unit and enemies within a 4-meter radius"
       },
       {
         skill: "Auto Skill: Kitty! Bomb!",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "72% AOE filler on a 5s cooldown",
-        description: "Cooldown: 5.0ss\nDeals 72% Attack as wind damage to the targeted enemy unit and enemies within a 4-meter radius"
+        description: "Cooldown: 5.0s\nDeals 72% Attack as wind damage to the targeted enemy unit and enemies within a 4-meter radius"
       },
       {
         skill: "Normal Attack: Shadow Cat Arrow",
         priority: 4,
-        level: "Level 10",
-        reason: "Lowest value per level — raise last",
-        description: "Cooldown: 2.0ss\nDeals 120% Attack as wind damage to the targeted enemy unit"
+        level: "Level 14",
+        reason: "Lowest value per level: raise last",
+        description: "Cooldown: 2.0s\nDeals 120% Attack as wind damage to the targeted enemy unit"
       }
     ],
     recommendedMemoryCards: [
@@ -50,44 +50,57 @@ export const bastetBuild = {
           defense: "395"
         },
         description: "When casting an ULT, for each enemy on the field, ULT damage increases by 12%, stacks up to 5 times, lasts 5 seconds"
+      },
+      {
+        name: "A Dream of Peace",
+        effect: "SSS-tier Destroyer memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "a-dream-of-peace.png",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Attack power increased by 60%, and ultimate skill damage increased by 50%. Ultimate skill penetration against enemy defense increases by 24%. If the enemy has a shield, ultimate skill damage against them is increased by 50%.",
+        priority: "Highly Recommended"
       }
     ],
     alternativeMemoryCards: [
       {
-        name: "During Military Training",
-        effect: "After your ULT, Normal Attack and Skill Damage +60% for 10s — normal-attack carry fuel.",
+        name: "Night of Blood and Storm",
+        effect: "SS-tier Destroyer memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "DuringMilitaryAcademyTraining.png",
+        memoryImage: "Night-of-Bloody-Storm.png",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "After using an ULT, Normal Attack and Skill Damage increase by 60% for 10 seconds"
+        description: "Attack increases by 40%, after a team Supporter uses an ULT, the wearer's ULT damage increases by 40% for 5 seconds"
       },
       {
-        name: "Awkward Appearance",
-        effect: "SSR: +40% team damage and +40% team normal attack damage from battle start, plus +40% team ATK on every 5th normal attack.",
+        name: "The Servant's Aspiration",
+        effect: "SS-tier Destroyer memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Athenacard.jpg",
+        memoryImage: "Freyacard.jpg",
         memoryStats: {
-          hp: "6,000",
-          attack: "600",
-          defense: "600"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "At the start of battle, all allied characters' damage increases by 40%, with Normal Attack damage additionally increased by 40%\n\nEvery 5 Normal Attack damages dealt by the wearer increases team Attack Power by 40%, lasting 5 seconds"
+        description: "Critical Damage increases by 72%. \nFor each enemy unit present on the field, normal attack damage increases by 12%, up to a maximum of 4 times."
       },
       {
-        name: "Hero Never Resting",
-        effect: "+72% Crit DMG when fewer than 2 enemies remain — huge boss-phase nuking.",
+        name: "Unreserved love",
+        effect: "SS-tier Destroyer memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Shannacard.jpg",
+        memoryImage: "Shuten-dojicard.jpg",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "When there are fewer than 2 enemies on the field, Critical Damage increases by 72%"
+        description: "Attack power increased by 40%; damage over time increased by 40%. When dealing damage over time, the enemy takes 24% more damage for 3 seconds. Damage dealt to enemies with shields is increased by 35%."
       }
     ],
     runes: {
@@ -102,7 +115,7 @@ export const bastetBuild = {
         "Penetration",
         "ATK"
       ],
-      buildNote: "Multipliers are large, so % damage and crit scale harder than flat ATK — element damage on position 5, crit on position 4.",
+      buildNote: "Multipliers are large, so % damage and crit scale harder than flat ATK: element damage on position 5, crit on position 4.",
       recommendedSets: [
         {
           name: "Anemos 4-piece + Beth 2-piece",
@@ -128,25 +141,25 @@ export const bastetBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "Attack (%) / Critical Rate (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -160,7 +173,7 @@ export const bastetBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "Wind Attribute Damage (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -174,7 +187,7 @@ export const bastetBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "Attack (%)",
         availableStats: [
           "Attack (%)",
@@ -184,7 +197,7 @@ export const bastetBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -232,7 +245,10 @@ export const bastetBuild = {
       goodWith: [
         "Freya",
         "Athena",
-        "Bors"
+        "Bors",
+        "Medusa",
+        "Lust - Asmodeus",
+        "Morgan Le Fay"
       ],
       note: "Normal-attack teams (Freya/Athena buffs) maximize her passive AOE procs."
     }

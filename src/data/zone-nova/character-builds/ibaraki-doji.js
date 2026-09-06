@@ -47,7 +47,7 @@ export const ibarakiDojiBuild = {
   ],
   recommendedMemoryCards: [
     {
-      name: 'A Perfect Makeup Look?',
+      name: 'A perfect makeup look?',
       effect:
         "Ibaraki-doji's exclusive memory card. Provides 40% attack increase and an additional 36% damage taken debuff on ultimate hit, plus anti-healing.",
       priority: 'Highly Recommended',
@@ -59,18 +59,32 @@ export const ibarakiDojiBuild = {
         'Attack power increased by 40%. When a Ultimate Skill deals damage, the target takes 36% more damage and receives 40% less healing for 5 seconds',
       spendingNote:
         'Essential for maximizing her debuff potential. The 36% damage taken debuff stacks with her other debuffs.',
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'Sleepy Tank',
-      effect:
-        'SR memory card that reduces target energy regen, synergizing with her energy drain from Arrow of the Curse',
+      name: 'The Knight and the Fuzzy',
+      effect: 'SSS-tier Disruptor memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'SleepyTank.png',
-      memoryStats: { hp: '5,200', attack: '420', defense: '380' },
-      description: 'Ultimate skill can reduce targets energy regen by 18%.',
-      note: 'Stacks with her Skill energy drain (-35.8%) for strong energy denial.',
+      memoryImage: 'the-knight-and-the-fuzzy.png',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'ATK +40%.\nEnemies hit by the Ultimate gain [Frontline Edict] for 7s. Targets within 3m also gain [Enhanced Frontline Edict].\n[Frontline Edict]: DEF -12.5%. Energy Gain Efficiency -10%.\n[Enhanced Frontline Edict]: DEF -45%. Energy Gain Efficiency -30%.',
+    },
+    {
+      name: 'Discipline Director',
+      effect: 'SS-tier Disruptor memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Erikacard.png',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Attack Power increases by 40%.\nWhen the wearer\'s skill or ultimate hits a target that target\'s healing received is reduced by 12% and shielding received is reduced by 10% for 3 seconds. This effect cannot stack.\nIf the target has a shield at that time the target\'s damage dealt is reduced by 18% for 3 seconds. This effect cannot stack.',
+    },
+    {
+      name: 'Nutrition Studies',
+      effect: 'SS-tier Disruptor memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'NutritionStudies.png',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Increases HP by 40% and increases the attack power of the entire team by 20%. After the wearer uses the skill, they inflict the Drain debuff on all enemies. Drain reduces their energy regeneration efficiency by 10% and increases the energy regeneration efficiency of all allies by 10% for 4 seconds.',
     },
   ],
   runes: {
@@ -126,25 +140,25 @@ export const ibarakiDojiBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'HP (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -157,7 +171,7 @@ export const ibarakiDojiBuild = {
       ],
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'HP (%)',
       availableStats: [
         'Wind Attribute Damage (%)',
@@ -171,7 +185,7 @@ export const ibarakiDojiBuild = {
       ],
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'HP (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
     },
@@ -236,8 +250,6 @@ export const ibarakiDojiBuild = {
       'Leviathan',
       'Mordred',
       'Shanna',
-      'Yuis',
-      'Any character with high ultimate damage',
     ],
     note: 'Ibaraki-doji works best with characters that deal high ultimate damage. Her +198.5% ultimate damage taken debuff (at full investment) makes her very strong for PVE Single Target. Pair her with strong ultimate DPS characters to maximize her debuff value.',
   },

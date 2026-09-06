@@ -5,43 +5,43 @@ export const arthurBuild = {
     name: "Arthur",
     role: "DPS",
     buildType: "Supporter-Synergy Holy Crit DPS",
-    description: "Arthur is an [Enhanced ULT] attacker: whenever a Supporter casts their ULT, he gets a 5-second window to fire an Enhanced ULT (720% + a 36% ATK self-buff). His auto stacks Crit DMG per target hit and his passive stacks ATK/DEF after every ULT. His damage ceiling literally depends on having a Supporter in the team — run him with one and he never stops casting.",
+    description: "Arthur is an [Enhanced ULT] attacker: whenever a Supporter casts their ULT, she gets a 5-second window to fire an Enhanced ULT (720% + a 36% ATK self-buff). Her auto stacks Crit DMG per target hit and her passive stacks ATK/DEF after every ULT. Her damage ceiling literally depends on having a Supporter in the team: run her with one and she never stops casting.",
     skillPriority: [
       {
         skill: "Ultimate: Imperial Sanctum",
         priority: 1,
-        level: "Level 10",
-        reason: "Highest damage multiplier and the core of the rotation — level first",
-        description: "Energy Cost: 6\nCooldown: 1.0ss\nDeals 600% Attack as holy damage to enemies in front\nAfter a [Supporter] uses an ULT, can use 1 [Enhanced ULT] within 5 seconds\n[Enhanced ULT]: Increases Attack by 36% for 10 seconds And deals 720% Attack as holy damage to enemies in front"
+        level: "Level 14",
+        reason: "Highest damage multiplier and the core of the rotation: level first",
+        description: "Energy Cost: 6\nCooldown: 1.0s\nDeals 600% Attack as holy damage to enemies in front\nAfter a [Supporter] uses an ULT, can use 1 [Enhanced ULT] within 5 seconds\n[Enhanced ULT]: Increases Attack by 36% for 10 seconds And deals 720% Attack as holy damage to enemies in front"
       },
       {
         skill: "Auto Skill: King's Blade",
         priority: 2,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Reliable cooldown damage between ultimates",
-        description: "Cooldown: 5.0ss\nDeals 240% Attack as holy damage to enemies in front\nFor each target hit, Critical Damage increases by 12%, up to 4 stacks, for 5 seconds"
+        description: "Cooldown: 5.0s\nDeals 240% Attack as holy damage to enemies in front\nFor each target hit, Critical Damage increases by 12%, up to 4 stacks, for 5 seconds"
       },
       {
         skill: "Passive: Royal Aura",
         priority: 3,
-        level: "Level 10",
-        reason: "The kit engine — stacks and marks amplify everything else",
+        level: "Level 14",
+        reason: "The kit engine: stacks and marks amplify everything else",
         description: "After each ULT cast, increases Attack by 12% and Defense by 6.6%, up to 3 stacks, for 10 seconds"
       },
       {
         skill: "Normal Attack: Sworn Victory Sword",
         priority: 4,
         level: "Level 7",
-        reason: "Lowest value per level — raise last",
-        description: "Cooldown: 2.0ss\nDeals 120% Attack as holy damage to the targeted enemy unit"
+        reason: "Lowest value per level: raise last",
+        description: "Cooldown: 2.0s\nDeals 120% Attack as holy damage to the targeted enemy unit"
       }
     ],
     recommendedMemoryCards: [
       {
         name: "Night of Blood and Storm",
-        effect: "Exclusive card — +40% ATK, and after a team Supporter ULTs his ULT damage +40% for 5s. Directly multiplies his Enhanced ULT windows.",
+        effect: "Exclusive card: +40% ATK, and after a team Supporter ULTs her ULT damage +40% for 5s. Directly multiplies her Enhanced ULT windows.",
         priority: "Must Have",
-        note: "Exclusive card — +40% ATK, and after a team Supporter ULTs his ULT damage +40% for 5s. Directly multiplies his Enhanced ULT windows.",
+        note: "Exclusive card: +40% ATK, and after a team Supporter ULTs her ULT damage +40% for 5s. Directly multiplies her Enhanced ULT windows.",
         characterSpecific: true,
         memoryImage: "Night-of-Bloody-Storm.png",
         memoryStats: {
@@ -50,44 +50,57 @@ export const arthurBuild = {
           defense: "474"
         },
         description: "Attack increases by 40%, after a team Supporter uses an ULT, the wearer's ULT damage increases by 40% for 5 seconds"
+      },
+      {
+        name: "A Dream of Peace",
+        effect: "SSS-tier Destroyer memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "a-dream-of-peace.png",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Attack power increased by 60%, and ultimate skill damage increased by 50%. Ultimate skill penetration against enemy defense increases by 24%. If the enemy has a shield, ultimate skill damage against them is increased by 50%.",
+        priority: "Highly Recommended"
       }
     ],
     alternativeMemoryCards: [
       {
-        name: "The Way of Revenge",
-        effect: "When a Supporter uses an ULT, your ULT damage +60% for 10s — a direct multiplier for Enhanced-ULT kits.",
+        name: "The Servant's Aspiration",
+        effect: "SS-tier Destroyer memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Greed-Mammon-card.jpg",
+        memoryImage: "Freyacard.jpg",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "When a Supporter uses an ULT, self ULT damage increases by 60% for 10 seconds"
+        description: "Critical Damage increases by 72%. \nFor each enemy unit present on the field, normal attack damage increases by 12%, up to a maximum of 4 times."
       },
       {
-        name: "Hero Never Resting",
-        effect: "+72% Crit DMG when fewer than 2 enemies remain — huge boss-phase nuking.",
+        name: "Unreserved love",
+        effect: "SS-tier Destroyer memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Shannacard.jpg",
+        memoryImage: "Shuten-dojicard.jpg",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "When there are fewer than 2 enemies on the field, Critical Damage increases by 72%"
+        description: "Attack power increased by 40%; damage over time increased by 40%. When dealing damage over time, the enemy takes 24% more damage for 3 seconds. Damage dealt to enemies with shields is increased by 35%."
       },
       {
-        name: "Awkward Appearance",
-        effect: "SSR: +40% team damage and +40% team normal attack damage from battle start, plus +40% team ATK on every 5th normal attack.",
+        name: "Reorganizing Revolution",
+        effect: "S-tier Destroyer memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Athenacard.jpg",
+        memoryImage: "Cleopatracard.jpg",
         memoryStats: {
-          hp: "6,000",
-          attack: "600",
-          defense: "600"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "At the start of battle, all allied characters' damage increases by 40%, with Normal Attack damage additionally increased by 40%\n\nEvery 5 Normal Attack damages dealt by the wearer increases team Attack Power by 40%, lasting 5 seconds"
+        description: "Attack increases by 40%, after a skill hits a target, applies one stack of [Corrosion], [Corrosion]: Deals 15% Chaos</color> Damage every 2 seconds, stacks up to 5 times, lasts 10 seconds"
       }
     ],
     runes: {
@@ -102,7 +115,7 @@ export const arthurBuild = {
         "Penetration",
         "ATK"
       ],
-      buildNote: "Multipliers are large, so % damage and crit scale harder than flat ATK — element damage on position 5, crit on position 4.",
+      buildNote: "Multipliers are large, so % damage and crit scale harder than flat ATK: element damage on position 5, crit on position 4.",
       recommendedSets: [
         {
           name: "Alpha 4-piece + Beth 2-piece",
@@ -128,25 +141,25 @@ export const arthurBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "Attack (%) / Critical Rate (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -160,7 +173,7 @@ export const arthurBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "Holy Attribute Damage (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -174,7 +187,7 @@ export const arthurBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "Attack (%)",
         availableStats: [
           "Attack (%)",
@@ -184,7 +197,7 @@ export const arthurBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -233,8 +246,10 @@ export const arthurBuild = {
         "Sharin",
         "Tamamo-no-Mae",
         "Bors",
-        "Naiya"
+        "Naiya",
+        "Gaia",
+        "Jill"
       ],
-      note: "Any Supporter ULT unlocks his Enhanced ULT — more Supporter ULTs means more 720% nukes."
+      note: "Any Supporter ULT unlocks her Enhanced ULT: more Supporter ULTs means more 720% nukes."
     }
   };

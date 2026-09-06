@@ -5,43 +5,43 @@ export const tefnutBuild = {
     name: "Tefnut",
     role: "DPS",
     buildType: "Holy DoT Attacker",
-    description: "Tefnut is an SR DoT duelist: her passive applies [holy Corrosion] (24% ATK every 2s, up to 5 stacks) with skills, and at max stacks her ULT adds [Light Scourge] (180% every 3s) on top of its 960% burst. Stack the DoTs, then let the ULT land on a fully-corroded target — one of the best sustained single-target SR kits.",
+    description: "Tefnut is an SR DoT duelist: her passive applies [holy Corrosion] (24% ATK every 2s, up to 5 stacks) with skills, and at max stacks her ULT adds [Light Scourge] (180% every 3s) on top of its 960% burst. Stack the DoTs, then let the ULT land on a fully-corroded target: one of the best sustained single-target SR kits.",
     skillPriority: [
       {
         skill: "Passive: Beast's Bloodlust",
         priority: 1,
-        level: "Level 10",
-        reason: "[holy Corrosion] stacks up to 5 — the sustained damage engine",
+        level: "Level 14",
+        reason: "[holy Corrosion] stacks up to 5: the sustained damage engine",
         description: "Skill can apply [holy Corrosion]\n[holy Corrosion]: Deals 24% Attack as holy damage every 2 seconds, up to 5 stacks"
       },
       {
         skill: "Ultimate: Bloodthirsty Slaughter",
         priority: 2,
-        level: "Level 10",
+        level: "Level 14",
         reason: "960% burst, and at max [holy Corrosion] it applies [Light Scourge] (180% every 3s)",
-        description: "Energy Cost: 8\nCooldown: 1.0ss\nJumps to the targeted enemy unit And deals 960% Attack as holy damage\nWhen the target has max stacks of [holy Corrosion], additionally applies [Light Scourge]\n[Light Scourge]: Deals 180% Attack as holy damage every 3 seconds, up to 1 stack"
+        description: "Energy Cost: 8\nCooldown: 1.0s\nJumps to the targeted enemy unit And deals 960% Attack as holy damage\nWhen the target has max stacks of [holy Corrosion], additionally applies [Light Scourge]\n[Light Scourge]: Deals 180% Attack as holy damage every 3 seconds, up to 1 stack"
       },
       {
         skill: "Auto Skill: Merciless Hunt",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "240% hit that applies the DoT stacks",
-        description: "Cooldown: 5.0ss\nDeals 240% Attack as holy damage to the targeted enemy unit"
+        description: "Cooldown: 5.0s\nDeals 240% Attack as holy damage to the targeted enemy unit"
       },
       {
         skill: "Normal Attack: Rending Claw",
         priority: 4,
         level: "Level 7",
-        reason: "Lowest value per level — raise last",
-        description: "Cooldown: 2.0ss\nDeals 120% Attack as holy damage to the targeted enemy unit"
+        reason: "Lowest value per level: raise last",
+        description: "Cooldown: 2.0s\nDeals 120% Attack as holy damage to the targeted enemy unit"
       }
     ],
     recommendedMemoryCards: [
       {
         name: "Secret Room Livestream",
-        effect: "Themed SR card — +36% DoT Penetration. Every tick of her Corrosion ignores more resistance.",
+        effect: "Themed SR card: +36% DoT Penetration. Every tick of her Corrosion ignores more resistance.",
         priority: "Highly Recommended",
-        note: "Themed SR card — +36% DoT Penetration. Every tick of her Corrosion ignores more resistance.",
+        note: "Themed SR card: +36% DoT Penetration. Every tick of her Corrosion ignores more resistance.",
         characterSpecific: true,
         memoryImage: "Tefnutcard.jpg",
         memoryStats: {
@@ -50,32 +50,70 @@ export const tefnutBuild = {
           defense: "395"
         },
         description: "Damage Over Time Penetration increases by 36%"
+      },
+      {
+        name: "Frozen Heart",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Yuiscard.jpg",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Critical Rate increased by 34%\nPursue Damage dealt by the wearer increases Critical Damage by 68%",
+        priority: "Highly Recommended"
+      },
+      {
+        name: "King of Lust",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "KingOfLust.png",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Critical hit rate increased by 40%, attack power increased by 40%. Each time the wearer's attack hits an enemy, they accumulate 1 stack of [Battle Spirit]. Once [Battle Spirit] reaches 10 stacks, all [Battle Spirit] will be consumed, and the [Penetrating] effect will be gained, increasing critical hit damage dealt by 50% for 5 seconds. [Battle Spirit] will not accumulate while the [Penetrating] effect is active.",
+        priority: "Highly Recommended"
       }
     ],
     alternativeMemoryCards: [
       {
-        name: "Secret Room Livestream",
-        effect: "+36% DoT Penetration — multiplies every DoT tick.",
+        name: "Shared Bath Time",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Tefnutcard.jpg",
+        memoryImage: "Odincard.jpg",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "Damage Over Time Penetration increases by 36%"
+        description: "Attack power increases by 40%, and all damage increases by 40% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 15% Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds."
       },
       {
-        name: "A Break Amidst the Hustle",
-        effect: "Dealing DoT increases the target's damage taken by 12% — amplifies the whole DoT team.",
+        name: "Weird eyes full of desire",
+        effect: "SSS-tier Attacker memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "BusyOfficer.png",
+        memoryImage: "Helacard.jpg",
         memoryStats: {
-          hp: "5,000",
-          attack: "500",
-          defense: "500"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "When dealing Damage Over Time, the target's damage taken increases by 12% for 2 seconds"
+        description: "Increases critical hit rate by 34%. When other friendly units cast a Ultimate Skill, the wearer's damage increases by 24% for 5 seconds, and can be stacked up to 3 times."
+      },
+      {
+        name: "Black-Faced Fool",
+        effect: "SS-tier Attacker memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Heracard.jpg",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Attack increases by 40%, when attacking targets affected by Damage Over Time, damage increases by 40%"
       }
     ],
     runes: {
@@ -90,7 +128,7 @@ export const tefnutBuild = {
         "Penetration",
         "ATK"
       ],
-      buildNote: "Multipliers are large, so % damage and crit scale harder than flat ATK — element damage on position 5, crit on position 4.",
+      buildNote: "Multipliers are large, so % damage and crit scale harder than flat ATK: element damage on position 5, crit on position 4.",
       recommendedSets: [
         {
           name: "Gimel 4-piece + Alpha 2-piece",
@@ -116,25 +154,25 @@ export const tefnutBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "Attack (%) / Critical Rate (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -148,7 +186,7 @@ export const tefnutBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "Holy Attribute Damage (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -162,7 +200,7 @@ export const tefnutBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "Attack (%)",
         availableStats: [
           "Attack (%)",
@@ -172,7 +210,7 @@ export const tefnutBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -220,8 +258,11 @@ export const tefnutBuild = {
       goodWith: [
         "Anubis",
         "Hera",
-        "Snow Girl"
+        "Snow Girl",
+        "Gaia",
+        "Jill",
+        "Bors"
       ],
-      note: undefined
+      note: "Wants team buffs and protection: a top Supporter multiplies her damage, the Healer keeps her standing, and the Tank holds the enemy off her."
     }
   };

@@ -1,0 +1,271 @@
+/* Zone Nova Trials - dark flat theme (no gradients/hover/shadows) */
+
+.zn-trials-section {
+  background: var(--zn-bg-secondary, #2a2a2a);
+  padding: 2rem;
+  border-radius: 14px;
+  margin-bottom: 2rem;
+  border: none;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--zn-primary-amber, #ffb74a);
+  margin: 0 0 0.75rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--zn-primary-amber, #ffb74a);
+}
+
+.section-description {
+  color: var(--zn-text-muted, #666);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.current-season {
+  background: var(--zn-bg-tertiary, #3a3a3a);
+  border: 1px solid var(--zn-border, #404040);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.season-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.season-head h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--zn-text-primary, #fff);
+}
+
+.season-dates {
+  color: var(--amber-glow, #ffb74a);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.meta-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--zn-text-muted, #666);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.season-factions {
+  margin-bottom: 1rem;
+}
+
+.season-rule {
+  margin-bottom: 1.25rem;
+}
+
+.season-rule p {
+  margin: 0;
+  color: var(--zn-text-secondary, #b3b3b3);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.stages h4 {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  color: var(--zn-text-primary, #fff);
+}
+
+.stages-table,
+.seasons-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.stages-table th,
+.seasons-table th {
+  background: rgba(245, 185, 66, 0.14);
+  color: var(--zn-text-primary, #fff);
+  text-align: left;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--zn-border, #404040);
+}
+
+.stages-table td,
+.seasons-table td {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--zn-border, #404040);
+  color: var(--zn-text-secondary, #b3b3b3);
+  vertical-align: top;
+  line-height: 1.55;
+}
+
+.stat-cell {
+  font-weight: 600;
+  color: var(--zn-text-primary, #fff) !important;
+}
+
+.row-alt td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.row-active td {
+  background: rgba(34, 197, 94, 0.07);
+  border-color: rgba(34, 197, 94, 0.35);
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.seasons-wrap {
+  overflow-x: auto;
+}
+
+.perm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.perm-card {
+  background: var(--zn-bg-tertiary, #3a3a3a);
+  border: 1px solid var(--zn-border, #404040);
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+}
+
+.perm-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  color: var(--zn-text-primary, #fff);
+}
+
+.perm-limit {
+  margin: 0 0 0.25rem;
+  color: var(--amber-glow, #ffb74a);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.perm-stages {
+  margin: 0;
+  color: var(--zn-text-muted, #666);
+  font-size: 0.82rem;
+}
+
+@media (max-width: 640px) {
+  .zn-trials-section {
+    padding: 1.25rem;
+  }
+  .seasons-table .nowrap {
+    white-space: normal;
+  }
+}
+
+/* Season status + links + detail page additions */
+.status-text {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.st-active { color: #22c55e; }
+.st-ended { color: #666; }
+.st-upcoming { color: var(--amber-glow, #ffb74a); }
+
+.row-ended td { opacity: 0.55; }
+
+.seasons-table a {
+  color: var(--zn-text-primary, #fff);
+  text-decoration: none;
+  border-bottom: 1px solid var(--amber-glow, #ffb74a);
+}
+
+.details-link {
+  display: inline-block;
+  margin-top: 0.25rem;
+  color: var(--amber-glow, #ffb74a);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--amber-glow, #ffb74a);
+  padding-bottom: 1px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  color: var(--zn-text-muted, #666);
+  text-decoration: none;
+  font-size: 0.82rem;
+}
+
+.bravery-timer {
+  background: transparent;
+  border: 1px solid rgba(255, 183, 77, 0.35);
+  color: var(--amber-glow, #ffb74a);
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.bravery-timer.timer-ended {
+  color: var(--zn-text-muted, #666);
+  border-color: var(--zn-border, #404040);
+}
+
+.picks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+  gap: 0.75rem;
+}
+
+.pick-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--zn-bg-tertiary, #3a3a3a);
+  border: 1px solid var(--zn-border, #404040);
+  border-radius: 10px;
+  padding: 0.75rem 0.5rem;
+  text-decoration: none;
+  text-align: center;
+}
+
+.pick-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.pick-name {
+  color: var(--zn-text-primary, #fff);
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.pick-meta {
+  color: var(--zn-text-muted, #666);
+  font-size: 0.72rem;
+}
+
+.season-factions .faction-line {
+  margin: 0;
+  color: var(--zn-text-primary, #fff);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
+}

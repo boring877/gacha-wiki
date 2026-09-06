@@ -11,7 +11,7 @@ export const prideLuciferBuild = {
     {
       skill: 'Ultimate: The End of Pain',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Powerful team shielding, damage reduction buff, and enhanced ultimate with massive AOE damage',
       description:
         'Energy Cost: 3\nAll allied characters gain [Armour of Pride]: Grants a shield equal to Lucifer\'s defense 388.6% and reduces damage taken by 48.6% for 10 seconds. Enhanced Ultimate (Cost: 2): Grants all allied characters a shield equal to 510.1% of their defense and reduces damage taken by 58.6% for 5 seconds. Unleashes a dimensional slash at the target location, dealing chaos damage equal to the user\'s defense 832.9% to all enemy units.',
@@ -19,7 +19,7 @@ export const prideLuciferBuild = {
     {
       skill: 'Passive: No need to say more',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Core defense stacking ability - gains Pride stacks on skill use, increasing defense by 11.5% per stack, max 8 stacks',
       description:
         'Each time Lucifer uses a skill, she gains 1 stack of [Pride], increasing her defense by 11.5%, up to a maximum of 8 stacks, lasting until the end of battle.',
@@ -27,7 +27,7 @@ export const prideLuciferBuild = {
     {
       skill: 'Auto Skill: Perfect Suppression',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Main damage dealer, shield generator, and Pride stack builder',
       description:
         'Cooldown: 5.0s\nDeals chaos damage equal to 632.9% of the target\'s defense, gains 1 stack of [Pride], and gains a shield equal to 97.2% of the target\'s defense.',
@@ -42,7 +42,7 @@ export const prideLuciferBuild = {
   ],
   recommendedMemoryCards: [
     {
-      name: 'Wrong Appearance Timing',
+      name: 'Wrong time of appearance',
       effect:
         "The best memory for Pride-Lucifer. Massive Defense increase, HP recovery when below 50%, and damage boost when above 50% - outperforms her exclusive card.",
       priority: 'Highly Recommended',
@@ -64,9 +64,26 @@ export const prideLuciferBuild = {
       slug: 'pride-or-tsundere',
       description:
         'HP increased by 32%, Defense increased by 60%, When attacked by a normal attack, damage taken is reduced by 30%',
+    }
+  ],
+  alternativeMemoryCards: [
+    {
+      name: 'Afternoon tantrums',
+      effect: 'SSS-tier Warrior memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Kellercard.png',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Increases own attack power by 70%， critical hit damage by 90%， and normal attack damage by 100%. Every 3rd normal attack will deal an additional 75% of attack power as normal attack damage.',
+    },
+    {
+      name: 'Halloween candy',
+      effect: 'SS-tier Warrior memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Ninacard.jpg',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Increases critical hit damage by 60%. When HP is above 30%, the wearer recovers 2% of their maximum HP after attacking, and all damage is increased by 40%.',
     },
   ],
-  alternativeMemoryCards: [],
   runes: {
     primary: 'Defense%',
     secondary: 'HP%',
@@ -127,25 +144,25 @@ export const prideLuciferBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Defense (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -159,7 +176,7 @@ export const prideLuciferBuild = {
       description: 'Defense % for maximum shield scaling and damage output',
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Defense (%)',
       availableStats: [
         'Wind Attribute Damage (%)',
@@ -174,7 +191,7 @@ export const prideLuciferBuild = {
       description: 'Chaos % for more damage, or Defense % for more tankiness - both work well',
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Defense (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
       description: 'Defense % for maximum survivability and shield strength',
@@ -234,7 +251,12 @@ export const prideLuciferBuild = {
   },
   teamSynergy: {
     goodWith: [
-      'She is strong single unit can pair with mostly everyone but need to have atleast 1 chaos unit',
+      'Frigga',
+      'Hela',
+      'Bors',
+      'Morgan Le Fay',
+      'Medusa',
+      'Thor',
     ],
     note: 'She there to counter the PVP Meta tbh',
   },

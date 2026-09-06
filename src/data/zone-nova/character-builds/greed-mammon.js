@@ -5,35 +5,35 @@ export const greedMammonBuild = {
     name: "Greed Mammon",
     role: "DPS",
     buildType: "Supporter-Synergy AOE Nuker",
-    description: "Greed Mammon is a budget Enhanced-ULT nuker: after a Supporter ULTs he can fire an Enhanced ULT (240% AOE), and his passive adds +29% damage after every Enhanced ULT cast. Simple loop, real AOE output for an SR — his damage is entirely gated on running a Supporter, so never field him without one.",
+    description: "Greed Mammon is a budget Enhanced-ULT nuker: after a Supporter ULTs she can fire an Enhanced ULT (240% AOE), and her passive adds +29% damage after every Enhanced ULT cast. Simple loop, real AOE output for an SR: her damage is entirely gated on running a Supporter, so never field her without one.",
     skillPriority: [
       {
         skill: "Ultimate: Seven Sins: Greed",
         priority: 1,
-        level: "Level 10",
-        reason: "Highest damage multiplier and the core of the rotation — level first",
-        description: "Energy Cost: 5\nCooldown: 1.0ss\nDeals 180% Attack as chaos damage to the targeted enemy unit\nAfter a [Supporter] uses an ULT, can use 1 [Enhanced ULT] within 5 seconds\n[Enhanced ULT]: Deals 240% Attack as chaos damage to enemies within a 4-meter radius"
+        level: "Level 14",
+        reason: "Highest damage multiplier and the core of the rotation: level first",
+        description: "Energy Cost: 5\nCooldown: 1.0s\nDeals 180% Attack as chaos damage to the targeted enemy unit\nAfter a [Supporter] uses an ULT, can use 1 [Enhanced ULT] within 5 seconds\n[Enhanced ULT]: Deals 240% Attack as chaos damage to enemies within a 4-meter radius"
       },
       {
         skill: "Auto Skill: Golden Curse",
         priority: 2,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Reliable cooldown damage between ultimates",
-        description: "Cooldown: 5.0ss\nDeals 96% Attack as chaos damage to enemies within a 3-meter radius"
+        description: "Cooldown: 5.0s\nDeals 96% Attack as chaos damage to enemies within a 3-meter radius"
       },
       {
         skill: "Passive: Greed Tax",
         priority: 3,
-        level: "Level 10",
-        reason: "The kit engine — stacks and marks amplify everything else",
+        level: "Level 14",
+        reason: "The kit engine: stacks and marks amplify everything else",
         description: "After casting an [Enhanced ULT], damage increases by 29%"
       },
       {
         skill: "Normal Attack: The More You Fight, The Richer You Get!",
         priority: 4,
         level: "Level 7",
-        reason: "Lowest value per level — raise last",
-        description: "Cooldown: 2.0ss\nDeals 120% Attack as chaos damage to the targeted enemy unit"
+        reason: "Lowest value per level: raise last",
+        description: "Cooldown: 2.0s\nDeals 120% Attack as chaos damage to the targeted enemy unit"
       }
     ],
     recommendedMemoryCards: [
@@ -50,32 +50,57 @@ export const greedMammonBuild = {
           defense: "395"
         },
         description: "When a Supporter uses an ULT, self ULT damage increases by 60% for 10 seconds"
+      },
+      {
+        name: "A Dream of Peace",
+        effect: "SSS-tier Destroyer memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "a-dream-of-peace.png",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Attack power increased by 60%, and ultimate skill damage increased by 50%. Ultimate skill penetration against enemy defense increases by 24%. If the enemy has a shield, ultimate skill damage against them is increased by 50%.",
+        priority: "Highly Recommended"
       }
     ],
     alternativeMemoryCards: [
       {
-        name: "The Way of Revenge",
-        effect: "When a Supporter uses an ULT, your ULT damage +60% for 10s — a direct multiplier for Enhanced-ULT kits.",
+        name: "Night of Blood and Storm",
+        effect: "SS-tier Destroyer memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Greed-Mammon-card.jpg",
+        memoryImage: "Night-of-Bloody-Storm.png",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "When a Supporter uses an ULT, self ULT damage increases by 60% for 10 seconds"
+        description: "Attack increases by 40%, after a team Supporter uses an ULT, the wearer's ULT damage increases by 40% for 5 seconds"
       },
       {
-        name: "Summer Nap Time",
-        effect: "+20% ATK plus 5% more per enemy (up to +40% total) — AoE farming stat stick.",
+        name: "The Servant's Aspiration",
+        effect: "SS-tier Destroyer memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Summer-Afternoon-Nap-Time.jpg",
+        memoryImage: "Freyacard.jpg",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
         },
-        description: "Attack increases by 20%, for each enemy on the field, Attack increases by an additional 5%, up to 4 times"
+        description: "Critical Damage increases by 72%. \nFor each enemy unit present on the field, normal attack damage increases by 12%, up to a maximum of 4 times."
+      },
+      {
+        name: "Unreserved love",
+        effect: "SS-tier Destroyer memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Shuten-dojicard.jpg",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Attack power increased by 40%; damage over time increased by 40%. When dealing damage over time, the enemy takes 24% more damage for 3 seconds. Damage dealt to enemies with shields is increased by 35%."
       }
     ],
     runes: {
@@ -90,7 +115,7 @@ export const greedMammonBuild = {
         "Penetration",
         "ATK"
       ],
-      buildNote: "Multipliers are large, so % damage and crit scale harder than flat ATK — element damage on position 5, crit on position 4.",
+      buildNote: "Multipliers are large, so % damage and crit scale harder than flat ATK: element damage on position 5, crit on position 4.",
       recommendedSets: [
         {
           name: "Skota 4-piece + Beth 2-piece",
@@ -116,25 +141,25 @@ export const greedMammonBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "Attack (%) / Critical Rate (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -148,7 +173,7 @@ export const greedMammonBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "Chaos Attribute Damage (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -162,7 +187,7 @@ export const greedMammonBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "Attack (%)",
         availableStats: [
           "Attack (%)",
@@ -172,7 +197,7 @@ export const greedMammonBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -220,8 +245,11 @@ export const greedMammonBuild = {
       goodWith: [
         "Sharin",
         "Zashiki-warashi",
-        "Bors"
+        "Bors",
+        "Frigga",
+        "Hela",
+        "Morgan Le Fay"
       ],
-      note: "Any Supporter ULT unlocks his Enhanced ULT — the cheaper the Supporter's ULT, the more he nukes."
+      note: "Any Supporter ULT unlocks her Enhanced ULT: the cheaper the Supporter's ULT, the more she nukes."
     }
   };

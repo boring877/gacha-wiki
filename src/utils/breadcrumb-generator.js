@@ -202,11 +202,13 @@ export function generateBreadcrumbs(pathname, options = {}) {
         const sectionKey = remainingSegments[0];
         const sectionName = config.patterns[sectionKey] || formatSegmentName(sectionKey);
 
-        // If this is the last segment, make it current page (no href)
+        // If this is the last segment, make it current — unless an explicit
+        // page name was provided, in which case keep the section link and let
+        // the provided name become the current leaf below.
         if (remainingSegments.length === 1) {
           breadcrumbs.push({
             name: sectionName,
-            // No href for current page
+            ...(currentPageName ? { href } : {}),
           });
         } else {
           breadcrumbs.push({
@@ -252,10 +254,27 @@ export function generateBreadcrumbs(pathname, options = {}) {
 
   // Add current page name if provided (without href for current page)
   if (currentPageName) {
-    breadcrumbs.push({
-      name: currentPageName,
-      // No href for current page
+    // If a generated crumb already carries this label (e.g. the path segment
+    // 'character-builds' maps to 'Character Builds'), promote THAT crumb to
+    // current instead of appending a duplicate. Normalized comparison, same
+    // convention as the fallback branch below.
+    const norm = (s) =>
+      typeof s === 'string'
+        ? s.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]/g, '')
+        : '';
+    const normalizedCurrent = norm(currentPageName);
+    const existing = breadcrumbs.find(crumb => {
+      const crumbName = norm(crumb.name);
+      return crumbName === normalizedCurrent || crumbName.startsWith(normalizedCurrent);
     });
+    if (existing) {
+      delete existing.href;
+    } else {
+      breadcrumbs.push({
+        name: currentPageName,
+        // No href for current page
+      });
+    }
   } else {
     // If no current page name provided, try to extract from the last segment
     const segments = pathname.split('/').filter(segment => segment.length > 0);

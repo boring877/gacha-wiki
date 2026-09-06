@@ -11,7 +11,7 @@ export const lilyBuild = {
     {
       skill: 'Passive: Hundred-Battle Ice Bone',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Core tank mechanic - provides defense buffs after mitigation, [Battle Intention] stack generation for enhanced ultimate, and automatic shields at 70%/40%/10% HP with 100% mitigation for 10 seconds',
       description:
@@ -20,7 +20,7 @@ export const lilyBuild = {
     {
       skill: 'Auto Skill: Frost Flow Defense Stance',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Main mitigation skill - provides 58% damage mitigation for 5 seconds on a short 5s cooldown, enabling frequent defense buffs and [Battle Intention] stack generation through passive',
       description:
@@ -29,7 +29,7 @@ export const lilyBuild = {
     {
       skill: 'Ultimate: Breaking Formation · Final Scene',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Enhanced ultimate provides complete damage immunity for 10 seconds and massive damage - the cornerstone of her tank identity. Normal ultimate is also efficient for damage',
       description:
@@ -47,7 +47,7 @@ export const lilyBuild = {
   ],
   recommendedMemoryCards: [
     {
-      name: 'In the Cafe, Sneaking a Bite',
+      name: 'Eating secretly in a cafe',
       effect:
         "Lily's exclusive memory card. Provides massive defense increase and additional damage reduction after mitigation and while shielded - perfect synergy with Lily's kit",
       priority: 'Highly Recommended',
@@ -57,18 +57,32 @@ export const lilyBuild = {
       slug: 'in-the-cafe-sneaking-a-bite',
       description:
         'Defense increases by 64%. After successful mitigation, damage taken is reduced by 10% for 5 seconds. When the wearer has a shield, damage taken is reduced by 18%.',
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'Lancelot-HerTrainer',
-      effect:
-        "SR memory card that provides Tank class exclusive effects, defense increase, and team damage reduction - excellent choice if Lily's exclusive memory is unavailable",
+      name: 'Sea Deity\'s Soft Ritual',
+      effect: 'SSS-tier Tank memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'Lancelotcard.jpg',
-      memoryStats: { hp: '5,500', attack: '400', defense: '575' },
-      description:
-        'Defense increased by 36%, Team Buff: After entering battle, all allied characters take 8% less damage, Note: Same skill effects cannot stack',
+      memoryImage: 'sea-gods-soft-ritual.png',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Max HP increases by 40%.\nWhen the wearer casts an ultimate skill all allies gain [Tideguard] for 8 seconds. If [Tideguard] is gained again remove the existing [Tideguard] and its accumulated Critical Resistance bonus first.\n[Tideguard]:\nDEF increases by 28%.\nBlock Rate increases by 5%.\nEach time an allied unit with [Tideguard] is hit its Critical Resistance increases by 15% up to 5 stacks until [Tideguard] ends.\n[Block]: Has a chance to reduce that instance of damage by 30%. Damage over time ignores Block.',
+    },
+    {
+      name: 'Under the Holy Armor',
+      effect: 'SSS-tier Tank memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'under-the-holy-armor.png',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Our HP increases by 25%, and self defense increases by 70%. After each skill use, all allies gain [Radiant Protection], reducing damage taken by 6% and increasing critical hit resistance by 5%, stacking up to 5 times, lasting 10 seconds.',
+    },
+    {
+      name: 'Her Trainer',
+      effect: 'SS-tier Tank memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'LancelotHerTrainer.png',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Defense increases by 60%, after using an ULT, the wearer\'s damage taken decreases by 10% for 5 seconds, Shield applied by ULT increases by 20%',
     },
   ],
   runes: {
@@ -127,25 +141,25 @@ export const lilyBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Defense (%) / HP (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -160,7 +174,7 @@ export const lilyBuild = {
         'Defense % or HP % both are fine. The problem with defense is it has diminishing returns, so getting 1 HP % and 2 DEF % is not a bad mix IMO.',
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Defense (%) / HP (%)',
       availableStats: [
         'Wind Attribute Damage (%)',
@@ -175,7 +189,7 @@ export const lilyBuild = {
       description: 'Read note 4; same thought process.',
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Defense (%) / HP (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
       description: 'Read note 4; same thought process.',
@@ -233,7 +247,13 @@ export const lilyBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: ['Any team', 'PvP teams'],
+    goodWith: [
+      'Freya',
+      'Gluttony - Beelzebub',
+      'Keller',
+      'Lust - Asmodeus',
+      'Medusa',
+    ],
     note: 'Lily is a PvP unit, she is alright in PvE but I would use her in PvP with Awakening 2, as that will help the team to survive.',
   },
 };

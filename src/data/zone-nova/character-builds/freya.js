@@ -11,7 +11,7 @@ export const freyaBuild = {
     {
       skill: "Ultimate: Golden Wind's Bind",
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Core DPS mechanic - enters [Golden Desire] state for 8 seconds with massive attack speed boost and AOE normal attacks',
       description:
@@ -20,7 +20,7 @@ export const freyaBuild = {
     {
       skill: 'Passive: Deity War Dance',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Essential multi-hit combo and ice enhancement mechanics - core to her damage scaling',
       description:
@@ -29,7 +29,7 @@ export const freyaBuild = {
     {
       skill: "Auto Skill: Golden Wind's Wild Poetry",
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Main AOE normal attack damage that builds combo stacks',
       description:
         'Cooldown: 5.0s\nDeals 120% attack power as ice damage to designated enemy and other targets within 3m range around the target. This damage counts as normal attack damage.',
@@ -37,14 +37,14 @@ export const freyaBuild = {
     {
       skill: 'Normal Attack: Golden Wind Assault',
       priority: 4,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Basic damage filler that scales with attack power and builds combo stacks',
       description: 'Deals 72% attack power as ice damage to designated enemy.',
     },
   ],
   recommendedMemoryCards: [
     {
-      name: "Slave's Original Wish",
+      name: "The Servant's Aspiration",
       effect:
         "Freya's exclusive memory card. Provides massive critical damage increase and normal attack damage scaling that synergizes perfectly with her Golden Desire state.",
       priority: 'Highly Recommended',
@@ -54,19 +54,32 @@ export const freyaBuild = {
       slug: 'slaves-original-wish',
       description:
         'Critical Damage increased by 72%. For each enemy on the battlefield: Normal attack damage increases by 12% (Maximum 4 stacks, up to 48% bonus damage)',
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'During Military Academy Training',
-      effect:
-        "SR memory card that provides post-ultimate damage amplification, good for Freya's burst damage during Golden Desire state",
+      name: 'A Dream of Peace',
+      effect: 'SSS-tier Destroyer memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'DuringMilitaryAcademyTraining.png',
-      memoryStats: { hp: '4,200', attack: '650', defense: '395' },
-      description:
-        'After using ultimate skill, normal attack and skill damage increased by 60% for 10 seconds',
-      slug: 'during-military-academy-training',
+      memoryImage: 'a-dream-of-peace.png',
+      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+      description: 'Attack power increased by 60%, and ultimate skill damage increased by 50%. Ultimate skill penetration against enemy defense increases by 24%. If the enemy has a shield, ultimate skill damage against them is increased by 50%.',
+    },
+    {
+      name: 'Night of Blood and Storm',
+      effect: 'SS-tier Destroyer memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Night-of-Bloody-Storm.png',
+      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+      description: 'Attack increases by 40%, after a team Supporter uses an ULT, the wearer\'s ULT damage increases by 40% for 5 seconds',
+    },
+    {
+      name: 'Unreserved love',
+      effect: 'SS-tier Destroyer memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Shuten-dojicard.jpg',
+      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+      description: 'Attack power increased by 40%; damage over time increased by 40%. When dealing damage over time, the enemy takes 24% more damage for 3 seconds. Damage dealt to enemies with shields is increased by 35%.',
     },
   ],
   runes: {
@@ -110,25 +123,25 @@ export const freyaBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Critical Damage (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -141,7 +154,7 @@ export const freyaBuild = {
       ],
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Ice Attribute Damage (%)',
       availableStats: [
         'Wind Attribute Damage (%)',
@@ -155,7 +168,7 @@ export const freyaBuild = {
       ],
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
     },
@@ -214,8 +227,12 @@ export const freyaBuild = {
   },
   teamSynergy: {
     goodWith: [
-      'Apollo, Athena, Zashiki-warashi, Morgan Le Fay, or any buffer that increases critical rate',
-      'She needs some protection so Gaia can be really good with Thor',
+      'Apollo - Athena, Zashiki-warashi, Morgan Le Fay, or any buffer that increases critical rate',
+      'Gluttony - Beelzebub',
+      'Keller',
+      'Bors',
+      'Morgan Le Fay',
+      'Medusa',
     ],
     note: 'This unit deals an insane amount of damage. It is quite recommended to have a buffer that increases critical rate.',
   },

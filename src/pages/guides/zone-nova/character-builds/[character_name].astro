@@ -387,7 +387,7 @@ const pageDescription = `Complete build guide for ${finalCharacter.name} in Zone
                     {card.priority && (
                       <div>
                         <span
-                          class={`memory-card-badge ${card.priority === 'Highly Recommended' ? 'highly-recommended' : card.priority.toLowerCase()}`}
+                          class={`memory-card-badge ${card.priority.toLowerCase().replace(/\s+/g, '-')}`}
                         >
                           {card.priority}
                         </span>

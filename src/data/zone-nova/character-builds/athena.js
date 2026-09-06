@@ -11,7 +11,7 @@ export const athenaBuild = {
     {
       skill: "Ultimate: Athena's Aegis",
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Core mechanic - grants Aegis stacks for enhanced bullets and enables full auto mode with team buffing potential',
       description:
@@ -20,7 +20,7 @@ export const athenaBuild = {
     {
       skill: 'Auto Skill: Military Command',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Consistent damage output and contributes to normal attack damage count for team buffs',
       description:
@@ -29,7 +29,7 @@ export const athenaBuild = {
     {
       skill: 'Passive: Divine Combat Mastery',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Essential team support - provides attack speed, CDR, and energy generation through normal attack mechanics',
       description:
@@ -38,7 +38,7 @@ export const athenaBuild = {
     {
       skill: 'Normal Attack: Shadowless Snipe',
       priority: 4,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Basic damage that contributes to normal attack count and triggers team buffing mechanics',
       description:
@@ -47,7 +47,7 @@ export const athenaBuild = {
   ],
   recommendedMemoryCards: [
     {
-      name: 'Embarrassing Pattern',
+      name: 'Awkward Appearance',
       effect:
         "Athena's exclusive memory card. Perfect synergy with her normal attack-focused mechanics. Provides +40% team damage and +40% normal attack damage at battle start, plus additional +40% attack power after 5 normal attack damage triggers.",
       priority: 'Highly Recommended',
@@ -57,29 +57,49 @@ export const athenaBuild = {
       description:
         'After battle start: All allies damage +40%, normal attack damage +40%. When equipped character deals 5 normal attack damage: All team attack power +40% for 5 seconds',
     },
+    {
+      name: 'Unholy Alliance',
+      effect: 'UR tier team card: +32% ATK/DEF/HP for the whole party just for equipping it, and every skill the wearer casts stacks +14% team max HP and -5% team skill cooldowns (up to 5). Strong on literally anyone.',
+      priority: 'Highly Recommended',
+      characterSpecific: false,
+      memoryImage: 'unholy-alliance.png',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Our entire party\'s attack power, defense power, and HP are increased by 32%. Each time the wearer uses a skill, our entire party\'s maximum HP increases by 14% and all skill cooldowns decrease by 5%, stacking up to 5 times.',
+    },
+    {
+      name: 'Bath Time',
+      effect: 'SSR team card: +32% ATK and DEF for all allies on equip, and every skill the wearer casts stacks +6% team max HP (up to 10 stacks, +60% total).',
+      priority: 'Highly Recommended',
+      characterSpecific: false,
+      memoryImage: 'Sharincard.png',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Increases the attack and defense of all allies by 32%. Each time the wearer uses a skill, the maximum HP of all allies increases by 6% (up to 10 stacks).',
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'Frost Dominion',
-      effect:
-        "Naiya's exclusive SSR memory card. Provides +40% Attack Power and after using ultimate, entire team gains +40% ultimate damage for 30 seconds. Excellent for teams that rely on ultimate damage and benefits Athena's support role.",
+      name: 'Hot Spring & Her',
+      effect: 'SSS-tier Supporter memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'naiyacard',
+      memoryImage: 'Tamamo-no-maecard.jpg',
       memoryStats: { hp: '6,000', attack: '600', defense: '600' },
-      description:
-        'Attack power increased by 40%. After the equipped character releases ultimate skill, the entire team gains ultimate skill damage increased by 40%, lasting 5 seconds',
-      spendingNote:
-        "It's the free SSR memory card we get. It's not good but better than any option for now.",
+      description: 'Base Stats Boost: ATK +40%.\nPassive: After allies\' Ultimate deals DMG, increases self Energy Recovery Rate by 200% (4s) and gains 1 stack of [Brilliance] (5s, max 50 stacks).\nEvery 5 stacks of [Brilliance] increases all allies\' DMG by 9%.',
     },
     {
-      name: 'Sleep Treasure',
-      effect:
-        "SR memory card that provides team damage increase (24%) and additional crit damage chance (50% chance for +20% crit damage), excellent for boosting Athena's team-oriented buffing role.",
+      name: 'The Loneliest Moment',
+      effect: 'SS-tier Supporter memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'Zashiki-warashicard.jpg',
-      memoryStats: { hp: '5,000', attack: '500', defense: '500' },
-      description:
-        'After releasing ultimate: Team damage increases by 24% for 10 seconds. Additionally: Has 50% chance to make team critical damage additionally increase by 20% for 10 seconds',
+      memoryImage: 'Apollocard.jpg',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'After entering battle, all team members\' damage increases by 40%, Pursue Damage increases by an additional 40%, when the wearer\'s ULT consumes 8 or more energy, all team members\' Energy Gain Efficiency increases by 100% for 10 seconds',
+    },
+    {
+      name: 'And Also Chocolate',
+      effect: 'S-tier Supporter memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'naiyacard.jpg',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Attack increases by 40%, after the wearer casts an ULT, team ULT damage increases by 40% for 5 seconds',
     },
   ],
   runes: {
@@ -132,25 +152,25 @@ export const athenaBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Critical Damage (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -164,7 +184,7 @@ export const athenaBuild = {
       description: 'Crit Damage % for enhanced bullet damage, or Attack % for overall scaling',
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Wind Attribute Damage (%)',
       availableStats: [
         'Chaos Attribute Damage (%)',
@@ -180,7 +200,7 @@ export const athenaBuild = {
         'Wind Attribute Damage % recommended for Wind characters, or Attack % for overall scaling',
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Attack (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
       description: 'Attack % for enhanced bullet damage scaling.',
@@ -238,7 +258,14 @@ export const athenaBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: ['Freya', '2nd buffer to buff athena is not bad too', 'High CD characters'],
+    goodWith: [
+      'Freya',
+      'Medusa',
+      'Lust - Asmodeus',
+      'Keller',
+      'Nephthys',
+      'Nina',
+    ],
     note: "She's a really strong DPS character, she can be the main DPS. The problem is it takes time before she can show her damage and needs a little bit of investment in runes.",
   },
 };

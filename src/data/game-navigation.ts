@@ -101,6 +101,7 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
           { name: 'Damage Hub', href: '/guides/zone-nova/damage-mechanics/' },
           { name: 'Rifts', href: '/guides/zone-nova/rifts/' },
           { name: 'Rift Teams', href: '/guides/zone-nova/rift-teams/' },
+          { name: 'Trial of Bravery', href: '/guides/zone-nova/trial-of-bravery/' },
           { name: 'Memories', href: '/guides/zone-nova/memories/' },
           { name: 'Memory Tier List', href: '/guides/zone-nova/memory-tier-list/' },
           { name: 'Team Synergy', href: '/guides/zone-nova/team-synergy/' },

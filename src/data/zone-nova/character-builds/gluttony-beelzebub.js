@@ -11,7 +11,7 @@ export const gluttonyBeelzebubBuild = {
     {
       skill: 'Ultimate: Frozen Feedback',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Core support button. Applies her largest enemy debuff while giving the whole team a matching offensive and defensive buff.',
       description:
@@ -20,7 +20,7 @@ export const gluttonyBeelzebubBuild = {
     {
       skill: 'Passive: Taotie taxation',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Immediate tempo swing at battle start. It is one of the main reasons to bring Beelzebub in the first place.',
       description:
@@ -29,7 +29,7 @@ export const gluttonyBeelzebubBuild = {
     {
       skill: 'Auto Skill: Cold Deprivation',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason:
         'Reliable single-target pressure that continues the energy-denial plan between ultimates.',
       description:
@@ -55,19 +55,32 @@ export const gluttonyBeelzebubBuild = {
       memoryStats: { hp: '6,000', attack: '600', defense: '600' },
       description:
         'HP increased by 40%. Attack power of the entire team increased by 20%. After the wearer uses a skill, inflicts [Drain] on all enemies for 4 seconds. [Drain] reduces enemy energy regeneration efficiency by 10% and increases allied energy regeneration efficiency by 10%.',
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'Sleepy Tank',
-      effect:
-        'SR memory card that adds more energy denial, fitting Beelzebub teams that want to slow enemy ultimates as much as possible.',
+      name: 'The Knight and the Fuzzy',
+      effect: 'SSS-tier Disruptor memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'SleepyTank.png',
-      memoryStats: { hp: '5,200', attack: '420', defense: '380' },
-      description: 'Ultimate skill can reduce targets energy regen by 18%.',
-      note:
-        'A lower-investment option if you want to lean harder into energy control rather than raw stat value.',
+      memoryImage: 'the-knight-and-the-fuzzy.png',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'ATK +40%.\nEnemies hit by the Ultimate gain [Frontline Edict] for 7s. Targets within 3m also gain [Enhanced Frontline Edict].\n[Frontline Edict]: DEF -12.5%. Energy Gain Efficiency -10%.\n[Enhanced Frontline Edict]: DEF -45%. Energy Gain Efficiency -30%.',
+    },
+    {
+      name: 'A perfect makeup look?',
+      effect: 'SS-tier Disruptor memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Ibaraki-dojicard.jpg',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Attack power increased by 40%. When a Ultimate Skill deals damage, the target takes 36% more damage and receives 40% less healing for 5 seconds.',
+    },
+    {
+      name: 'Discipline Director',
+      effect: 'SS-tier Disruptor memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'Erikacard.png',
+      memoryStats: { hp: '6,000', attack: '600', defense: '600' },
+      description: 'Attack Power increases by 40%.\nWhen the wearer\'s skill or ultimate hits a target that target\'s healing received is reduced by 12% and shielding received is reduced by 10% for 3 seconds. This effect cannot stack.\nIf the target has a shield at that time the target\'s damage dealt is reduced by 18% for 3 seconds. This effect cannot stack.',
     },
   ],
   runes: {
@@ -224,10 +237,10 @@ export const gluttonyBeelzebubBuild = {
   },
   teamSynergy: {
     goodWith: [
-      'Bikta teammates',
-      'Ice attribute teams',
-      'Ultimate-reliant carries',
-      'Energy control / tempo teams',
+      'Freya',
+      'Keller',
+      'Lust - Asmodeus',
+      'Bors',
     ],
     note:
       "Beelzebub works best in teams that care about winning the energy race. She gains value whenever her team can convert the extra energy from [Gluttony Authority], [Return], and Nutrition Studies into faster ultimates while the enemy team is delayed.",

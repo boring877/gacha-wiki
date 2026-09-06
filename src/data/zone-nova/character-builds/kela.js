@@ -5,26 +5,26 @@ export const kelaBuild = {
     name: "Kela",
     role: "Healer",
     buildType: "Budget Emergency Healer",
-    description: "Kela is a straightforward SR spot-healer: her auto and ULT both dump big heals into the lowest-HP ally, and her passive adds +24% healing when that ally is under 50% HP. No revive, no team utility — just cheap, efficient single-target triage that keeps a tank or carry alive through heavy focus.",
+    description: "Kela is a straightforward SR spot-healer: her auto and ULT both dump big heals into the lowest-HP ally, and her passive adds +24% healing when that ally is under 50% HP. No revive, no team utility: just cheap, efficient single-target triage that keeps a tank or carry alive through heavy focus.",
     skillPriority: [
       {
         skill: "Ultimate: Elder Sister's Care",
         priority: 1,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Healing numbers scale hardest here",
-        description: "Energy Cost: 3\nCooldown: 1.0ss\nHeals the allied unit with the lowest HP percentage, restoring 128% Attack + 279 HP"
+        description: "Energy Cost: 3\nCooldown: 1.0s\nHeals the allied unit with the lowest HP percentage, restoring 128% Attack + 279 HP"
       },
       {
         skill: "Auto Skill: Emergency Healing",
         priority: 2,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Consistent healing between ultimates",
-        description: "Cooldown: 5.0ss\nHeals the allied unit with the lowest HP percentage, restoring 69% Attack + 140 HP"
+        description: "Cooldown: 5.0s\nHeals the allied unit with the lowest HP percentage, restoring 69% Attack + 140 HP"
       },
       {
         skill: "Passive: Jack-of-All-Trades Power",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Sustain and emergency-healing engine",
         description: "When healing an allied unit below 50% HP, healing increases by 24%"
       },
@@ -33,7 +33,7 @@ export const kelaBuild = {
         priority: 4,
         level: "Level 7",
         reason: "Level last",
-        description: "Cooldown: 2.0ss\nDeals 120% Attack as holy damage to the targeted enemy unit"
+        description: "Cooldown: 2.0s\nDeals 120% Attack as holy damage to the targeted enemy unit"
       }
     ],
     recommendedMemoryCards: [
@@ -50,24 +50,23 @@ export const kelaBuild = {
           defense: "500"
         },
         description: "Healing increases by 30%, when healing a target with less than 50% max HP, their damage taken decreases by 8% for 10 seconds"
-      }
-    ],
-    alternativeMemoryCards: [
+      },
       {
-        name: "Realm of Solitude",
-        effect: "+30% Healing; healing targets under 50% HP also reduces their damage taken by 8%.",
+        name: "Serpentine Frenzy",
+        effect: "SSS-tier Healer memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "kelacard.jpg",
+        memoryImage: "serpentine-frenzy.png",
         memoryStats: {
-          hp: "5,000",
-          attack: "500",
-          defense: "500"
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
         },
-        description: "Healing increases by 30%, when healing a target with less than 50% max HP, their damage taken decreases by 8% for 10 seconds"
+        description: "The wearer's attack power is increased by 33.5%, and the defense and health of allied units are increased by 40%. Upon entering the battlefield, the wearer is granted the [Geo Boundary] buff every 3 seconds, which is reduced by 5% when taking damage, up to a maximum of 15 stacks.",
+        priority: "Highly Recommended"
       },
       {
         name: "The Beauty of Heikyo Castle",
-        effect: "+30% Healing; overhealed targets gain +24% damage — turns overheal into team damage.",
+        effect: "SSS-tier Healer memory in the memory tier list.",
         characterSpecific: false,
         memoryImage: "Snowcard.jpg",
         memoryStats: {
@@ -75,7 +74,46 @@ export const kelaBuild = {
           attack: "500",
           defense: "500"
         },
-        description: "Healing increases by 30%, when the healed target's HP is full, their damage increases by 24% for 10 seconds"
+        description: "Healing increases by 30%, when the healed target's HP is full, their damage increases by 24% for 10 seconds",
+        priority: "Highly Recommended"
+      }
+    ],
+    alternativeMemoryCards: [
+      {
+        name: "A Smile to Topple Cities",
+        effect: "SS-tier Healer memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Gaiacard.jpg",
+        memoryStats: {
+          hp: "6,300",
+          attack: "580",
+          defense: "585"
+        },
+        description: "HP increased by 40%, Healing Amount increased by 40%. When the wearer heals within 1 second, Healing Amount additionally increased by 40%"
+      },
+      {
+        name: "Are the glasses the real thing?",
+        effect: "SS-tier Healer memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "are-the-glasses-the-real-thing.png",
+        memoryStats: {
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
+        },
+        description: "Increases critical hit rate by 34%. After each critical hit, increases self-healing by 50% for 3 seconds. After each heal, increases the attack power of all allied targets by 30% for 3 seconds."
+      },
+      {
+        name: "Gentle Morning Command",
+        effect: "SS-tier Healer memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Jillcard.jpg",
+        memoryStats: {
+          hp: "6,000",
+          attack: "600",
+          defense: "600"
+        },
+        description: "ATK increases by 33.5%\nAfter an ally is healed, the wearer gains [Military Order] (up to 50 stacks) for 6s.\nFor every 10 stacks of [Military Order], all allies' healing received additionally increases by 16.5%, and damage taken is reduced by 3.3%.\nWhen the wearer casts their Ultimate, consume all [Military Order]. Every 10 stacks increase all allies' ATK by 5% for 6s."
       }
     ],
     runes: {
@@ -89,7 +127,7 @@ export const kelaBuild = {
         "HP",
         "DEF"
       ],
-      buildNote: "Healing scales off ATK for most healers, but survivability keeps the healing flowing — balance Healing Effectiveness with HP.",
+      buildNote: "Healing scales off ATK for most healers, but survivability keeps the healing flowing: balance Healing Effectiveness with HP.",
       recommendedSets: [
         {
           name: "Daleth 4-piece + Zane 2-piece",
@@ -115,25 +153,25 @@ export const kelaBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "Healing Effectiveness (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -147,7 +185,7 @@ export const kelaBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "HP (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -161,7 +199,7 @@ export const kelaBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "HP (%)",
         availableStats: [
           "Attack (%)",
@@ -171,7 +209,7 @@ export const kelaBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -219,8 +257,11 @@ export const kelaBuild = {
       goodWith: [
         "Mordred",
         "Lancelot",
-        "Shanna"
+        "Shanna",
+        "Gaia",
+        "Jill",
+        "Freya"
       ],
-      note: undefined
+      note: "Keeps the carries alive through their burst windows: strongest alongside the top damage dealers in the game."
     }
   };

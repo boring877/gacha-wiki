@@ -5,26 +5,26 @@ export const lancelotBuild = {
     name: "Lancelot",
     role: "Tank",
     buildType: "HP-Scaling Shield Tank",
-    description: "Lancelot is an SR tank who scales everything off max HP: his normal attack deals 12% max HP damage, his auto shields him for 6.1% max HP (stacking to 30%), and his ULT cuts ALL allies' damage taken by 24% for 15 seconds while diving the enemy backline. His passive regens 4.8% max HP per second when he drops below half. Cheap, durable, and the ULT is a genuine team-wide damage cut.",
+    description: "Lancelot is an SR tank who scales everything off max HP: her normal attack deals 12% max HP damage, her auto shields her for 6.1% max HP (stacking to 30%), and her ULT cuts ALL allies' damage taken by 24% for 15 seconds while diving the enemy backline. Her passive regens 4.8% max HP per second when she drops below half. Cheap, durable, and the ULT is a genuine team-wide damage cut.",
     skillPriority: [
       {
         skill: "Ultimate: Blooming Knight's Flower",
         priority: 1,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Team protection values scale directly with level",
-        description: "Energy Cost: 3\nCooldown: 3.0ss\nInstantly moves to the targeted enemy unit\nAll allied units' damage taken decreases by 24% for 15 seconds"
+        description: "Energy Cost: 3\nCooldown: 3.0s\nInstantly moves to the targeted enemy unit\nAll allied units' damage taken decreases by 24% for 15 seconds"
       },
       {
         skill: "Auto Skill: Holy Shield of the Lake",
         priority: 2,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Frequent shield/protection uptime on a short cooldown",
-        description: "Cooldown: 4.0ss\nGrants self a [Shield] equal to 6.1% max HP\n[Shield] can stack up to 30% of max HP"
+        description: "Cooldown: 4.0s\nGrants self a [Shield] equal to 6.1% max HP\n[Shield] can stack up to 30% of max HP"
       },
       {
         skill: "Passive: Blessing of the Lake Spirit",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Stacking defense/mitigation engine",
         description: "When HP falls below 50% after taking damage, restores 4.8% max HP every 3 seconds for 15 seconds\nTriggers once per battle"
       },
@@ -32,8 +32,8 @@ export const lancelotBuild = {
         skill: "Normal Attack: Sword of the Lake",
         priority: 4,
         level: "Level 7",
-        reason: "Damage filler — level last",
-        description: "Cooldown: 2.0ss\nDeals holy damage to the targeted enemy unit equal to 12% of self max HP"
+        reason: "Damage filler: level last",
+        description: "Cooldown: 2.0s\nDeals holy damage to the targeted enemy unit equal to 12% of self max HP"
       }
     ],
     recommendedMemoryCards: [
@@ -50,32 +50,70 @@ export const lancelotBuild = {
           defense: "575"
         },
         description: "Defense increases by 36%, after entering battle, all team members' damage taken decreases by 8%, identical skills do not stack"
+      },
+      {
+        name: "Sea Deity's Soft Ritual",
+        effect: "SSS-tier Tank memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "sea-gods-soft-ritual.png",
+        memoryStats: {
+          hp: "6,600",
+          attack: "480",
+          defense: "690"
+        },
+        description: "Max HP increases by 40%.\nWhen the wearer casts an ultimate skill all allies gain [Tideguard] for 8 seconds. If [Tideguard] is gained again remove the existing [Tideguard] and its accumulated Critical Resistance bonus first.\n[Tideguard]:\nDEF increases by 28%.\nBlock Rate increases by 5%.\nEach time an allied unit with [Tideguard] is hit its Critical Resistance increases by 15% up to 5 stacks until [Tideguard] ends.\n[Block]: Has a chance to reduce that instance of damage by 30%. Damage over time ignores Block.",
+        priority: "Highly Recommended"
+      },
+      {
+        name: "Under the Holy Armor",
+        effect: "SSS-tier Tank memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "under-the-holy-armor.png",
+        memoryStats: {
+          hp: "6,600",
+          attack: "480",
+          defense: "690"
+        },
+        description: "Our HP increases by 25%, and self defense increases by 70%. After each skill use, all allies gain [Radiant Protection], reducing damage taken by 6% and increasing critical hit resistance by 5%, stacking up to 5 times, lasting 10 seconds.",
+        priority: "Highly Recommended"
       }
     ],
     alternativeMemoryCards: [
       {
-        name: "Drowning Lake Knight",
-        effect: "+36% DEF and −8% damage taken for the whole team on battle start — tank bread and butter.",
+        name: "Eating secretly in a cafe",
+        effect: "SS-tier Tank memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "drowning-lake-knight.png",
+        memoryImage: "InTheCafeSneakingABite.png",
         memoryStats: {
-          hp: "5,500",
-          attack: "400",
-          defense: "575"
+          hp: "6,600",
+          attack: "480",
+          defense: "690"
         },
-        description: "Defense increases by 36%, after entering battle, all team members' damage taken decreases by 8%, identical skills do not stack"
+        description: "Increases defense by 64%. After successfully neutralizing the attack, damage taken is reduced by 10% for 5 seconds. When the wearer holds a shield, damage taken is reduced by 18%."
       },
       {
-        name: "Pennie Trying on New Clothes",
-        effect: "+24% HP and −10% damage taken for 5 seconds after each ULT.",
+        name: "Her Trainer",
+        effect: "SS-tier Tank memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "sister-penny-trying-on-new-clothes.png",
+        memoryImage: "LancelotHerTrainer.png",
         memoryStats: {
-          hp: "5,500",
-          attack: "400",
-          defense: "575"
+          hp: "6,600",
+          attack: "480",
+          defense: "690"
         },
-        description: "HP increases by 24%, after using an ULT, the wearer's damage taken decreases by 10% for 5 seconds"
+        description: "Defense increases by 60%, after using an ULT, the wearer's damage taken decreases by 10% for 5 seconds, Shield applied by ULT increases by 20%"
+      },
+      {
+        name: "Simple Birdcage",
+        effect: "SS-tier Tank memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Guinevere-card.jpg",
+        memoryStats: {
+          hp: "6,600",
+          attack: "480",
+          defense: "690"
+        },
+        description: "Defense increases by 64%, after a successful Block, damage taken decreases by 10% for 5 seconds, grants a Shield equal to 30% of max HP upon entering battle"
       }
     ],
     runes: {
@@ -90,7 +128,7 @@ export const lancelotBuild = {
         "HP",
         "Healing Effectiveness%"
       ],
-      buildNote: "Shields and mitigation scale with DEF/HP — a dead tank protects nothing. Pure defensive main stats.",
+      buildNote: "Shields and mitigation scale with DEF/HP: a dead tank protects nothing. Pure defensive main stats.",
       recommendedSets: [
         {
           name: "Zane 4-piece + Poki 2-piece",
@@ -116,25 +154,25 @@ export const lancelotBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "HP (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -148,7 +186,7 @@ export const lancelotBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "HP (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -162,7 +200,7 @@ export const lancelotBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "HP (%)",
         availableStats: [
           "Attack (%)",
@@ -172,7 +210,7 @@ export const lancelotBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
@@ -220,8 +258,11 @@ export const lancelotBuild = {
       goodWith: [
         "Tefnut",
         "Kela",
-        "Shu"
+        "Shu",
+        "Gaia",
+        "Jill",
+        "Freya"
       ],
-      note: undefined
+      note: "Soaks the damage so the carries can attack freely: pair her with the strongest damage dealers you own."
     }
   };

@@ -5,43 +5,43 @@ export const kellerBuild = {
     name: "Keller",
     role: "DPS",
     buildType: "Normal-Attack Ice Giant Carry",
-    description: "Keller is a SSS normal-attack carry who transforms: his ULT deals 1711.1% AOE and puts him into [Ice Giant] (+172.2% ATK, +73.3% max HP, +344.4% DEF, +58.9% all resist), his auto stacks normal-attack damage and cooldown reduction, and every normal hit applies [icefang] (−shield gain, −healing) and [Shatter] (−9.8% DEF, up to 10). In Ice Giant form his normals ARE the damage — and they disable enemy sustain while shredding armor.",
+    description: "Keller is a SSS normal-attack carry who transforms: her ULT deals 1711.1% AOE and puts her into [Ice Giant] (+172.2% ATK, +73.3% max HP, +344.4% DEF, +58.9% all resist), her auto stacks normal-attack damage and cooldown reduction, and every normal hit applies [icefang] (−shield gain, −healing) and [Shatter] (−9.8% DEF, up to 10). In Ice Giant form her normals ARE the damage: and they disable enemy sustain while shredding armor.",
     skillPriority: [
       {
         skill: "Auto Skill: Glacier Dance",
         priority: 1,
-        level: "Level 10",
-        reason: "[Dance of the Glacier] stacks +29.4% normal attack damage and −12.2% normal cooldown, up to 5 layers — the engine of the build",
-        description: "Cooldown: 5.0ss\nGrants the user the [Dance of the Glacier] buff. While possessing [Dance of the Glacier]， normal attack damage is increased by 29.4%， and normal attack cooldown is reduced by 12.2%. [Dance of the Glacier] can stack up to 5 times and lasts for 8 seconds. When [Dance of the Glacier] reaches 5 stacks and deals normal attack damage to an enemy， it will additionally deal ice damage equal to 12.2% of the user's attack power. This additional damage is treated as normal attack damage."
+        level: "Level 14",
+        reason: "[Dance of the Glacier] stacks +29.4% normal attack damage and −12.2% normal cooldown, up to 5 layers: the engine of the build",
+        description: "Cooldown: 5.0s\nGrants the user the [Dance of the Glacier] buff. While possessing [Dance of the Glacier],  normal attack damage is increased by 29.4%,  and normal attack cooldown is reduced by 12.2%. [Dance of the Glacier] can stack up to 5 times and lasts for 8 seconds. When [Dance of the Glacier] reaches 5 stacks and deals normal attack damage to an enemy,  it will additionally deal ice damage equal to 12.2% of the user's attack power. This additional damage is treated as normal attack damage."
       },
       {
         skill: "Ultimate: Ice Age",
         priority: 2,
-        level: "Level 10",
-        reason: "1711.1% AOE nuke PLUS the [Ice Giant] transformation that defines his carry phase",
-        description: "Energy Cost: 4\nCooldown: 5.0ss\nDeals ice damage equal to 1711.1% attack power to all enemies and increase their skill cooldown by 40% for 8 seconds. Enters the [Ice Giant] state， increasing MaxHP by 73.3%， attack power by 172.2%， defense by 344.4%， and resistance to all attributes by 58.9% for 8 seconds. When performing a normal attack while in the [Ice Giant] ultimate skill state， an additional ice damage equal to 51.7% attack power will be dealt as normal attack damage."
+        level: "Level 14",
+        reason: "1711.1% AOE nuke PLUS the [Ice Giant] transformation that defines her carry phase",
+        description: "Energy Cost: 4\nCooldown: 5.0s\nDeals ice damage equal to 1711.1% attack power to all enemies and increase their skill cooldown by 40% for 8 seconds. Enters the [Ice Giant] state,  increasing MaxHP by 73.3%,  attack power by 172.2%,  defense by 344.4%,  and resistance to all attributes by 58.9% for 8 seconds. When performing a normal attack while in the [Ice Giant] ultimate skill state,  an additional ice damage equal to 51.7% attack power will be dealt as normal attack damage."
       },
       {
         skill: "Passive: Cold Moon Flowing Light",
         priority: 3,
-        level: "Level 10",
+        level: "Level 14",
         reason: "Every normal hit shreds DEF (−9.8%, 10 stacks) and cuts enemy shield gain/healing",
-        description: "Each time a normal attack hits an enemy， apply [icefang]， reducing the enemy's shield gain 7.3% and healing received 4.9%， up to 15 stacks. Each time a normal attack hits an enemy， apply [Shatter]， reducing their defense 9.8% for 10 seconds， up to 10 stacks."
+        description: "Each time a normal attack hits an enemy,  apply [icefang],  reducing the enemy's shield gain 7.3% and healing received 4.9%,  up to 15 stacks. Each time a normal attack hits an enemy,  apply [Shatter],  reducing their defense 9.8% for 10 seconds,  up to 10 stacks."
       },
       {
         skill: "Normal Attack: Ice Mang",
         priority: 4,
-        level: "Level 10",
-        reason: "Lowest value per level — raise last",
-        description: "Cooldown: 2.0ss\nDeals ice damage equal to 90.6% attack power to all enemy units."
+        level: "Level 14",
+        reason: "Lowest value per level: raise last",
+        description: "Cooldown: 2.0s\nDeals ice damage equal to 90.6% attack power to all enemy units."
       }
     ],
     recommendedMemoryCards: [
       {
         name: "Afternoon tantrums",
-        effect: "Exclusive card — +70% ATK, +90% Crit DMG and +100% normal attack damage, with an extra 75% hit every 3rd normal. His BiS by a mile.",
+        effect: "Exclusive card: +70% ATK, +90% Crit DMG and +100% normal attack damage, with an extra 75% hit every 3rd normal. Her BiS by a mile.",
         priority: "Must Have",
-        note: "Exclusive card — +70% ATK, +90% Crit DMG and +100% normal attack damage, with an extra 75% hit every 3rd normal. His BiS by a mile.",
+        note: "Exclusive card: +70% ATK, +90% Crit DMG and +100% normal attack damage, with an extra 75% hit every 3rd normal. Her BiS by a mile.",
         characterSpecific: true,
         memoryImage: "Kellercard.png",
         memoryStats: {
@@ -49,45 +49,58 @@ export const kellerBuild = {
           attack: "480",
           defense: "690"
         },
-        description: "Increases own attack power by 70%， critical hit damage by 90%， and normal attack damage by 100%. Every 3rd normal attack will deal an additional 75% of attack power as normal attack damage."
+        description: "Increases own attack power by 70%,  critical hit damage by 90%,  and normal attack damage by 100%. Every 3rd normal attack will deal an additional 75% of attack power as normal attack damage."
+      },
+      {
+        name: "Wrong time of appearance",
+        effect: "SSS-tier Warrior memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "Apepcard.jpg",
+        memoryStats: {
+          hp: "6,600",
+          attack: "480",
+          defense: "690"
+        },
+        description: "Defense increased by 64%\nWhen HP is below 50%, the wearer recovers 2% of maximum HP after attacking\nWhen HP is above 50%, damage taken is reduced by 10%, and damage dealt is increased by 40%.",
+        priority: "Highly Recommended"
       }
     ],
     alternativeMemoryCards: [
       {
-        name: "During Military Training",
-        effect: "After your ULT, Normal Attack and Skill Damage +60% for 10s — normal-attack carry fuel.",
+        name: "Halloween candy",
+        effect: "SS-tier Warrior memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "DuringMilitaryAcademyTraining.png",
-        memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
-        },
-        description: "After using an ULT, Normal Attack and Skill Damage increase by 60% for 10 seconds"
-      },
-      {
-        name: "Awkward Appearance",
-        effect: "SSR: +40% team damage and +40% team normal attack damage from battle start, plus +40% team ATK on every 5th normal attack.",
-        characterSpecific: false,
-        memoryImage: "Athenacard.jpg",
+        memoryImage: "Ninacard.jpg",
         memoryStats: {
           hp: "6,000",
           attack: "600",
           defense: "600"
         },
-        description: "At the start of battle, all allied characters' damage increases by 40%, with Normal Attack damage additionally increased by 40%\n\nEvery 5 Normal Attack damages dealt by the wearer increases team Attack Power by 40%, lasting 5 seconds"
+        description: "Increases critical hit damage by 60%. When HP is above 30%, the wearer recovers 2% of their maximum HP after attacking, and all damage is increased by 40%."
       },
       {
-        name: "Hero Never Resting",
-        effect: "+72% Crit DMG when fewer than 2 enemies remain — huge boss-phase nuking.",
+        name: "Pride or Tsundere?",
+        effect: "SS-tier Warrior memory in the memory tier list.",
         characterSpecific: false,
-        memoryImage: "Shannacard.jpg",
+        memoryImage: "pride-or-tsundere.png",
         memoryStats: {
-          hp: "4,200",
-          attack: "650",
-          defense: "395"
+          hp: "6,600",
+          attack: "480",
+          defense: "690"
         },
-        description: "When there are fewer than 2 enemies on the field, Critical Damage increases by 72%"
+        description: "Increases HP by 32% and defense by 60%. When an ally is attacked by a normal attack, the damage taken is reduced by 30%."
+      },
+      {
+        name: "Secret Garden",
+        effect: "S-tier Warrior memory in the memory tier list.",
+        characterSpecific: false,
+        memoryImage: "SecretGarden.png",
+        memoryStats: {
+          hp: "5,040",
+          attack: "780",
+          defense: "474"
+        },
+        description: "Attack increases by 40%, when the wearer's ULT consumes 8 or more energy, damage increases by 40% for 10 seconds"
       }
     ],
     runes: {
@@ -101,7 +114,7 @@ export const kellerBuild = {
         "Crit DMG%",
         "HP"
       ],
-      buildNote: "Kryos 4-piece is made for him: it converts his normal-attack cooldown reduction (which he stacks constantly) directly into Frost damage and Crit DMG. Alpha 4-piece is the simpler fallback.",
+      buildNote: "Kryos 4-piece is made for her: it converts her normal-attack cooldown reduction (which she stacks constantly) directly into Frost damage and Crit DMG. Alpha 4-piece is the simpler fallback.",
       recommendedSets: [
         {
           name: "Kryos 4-piece + Beth 2-piece",
@@ -127,25 +140,25 @@ export const kellerBuild = {
     },
     mainStatsByPosition: {
       "1": {
-        name: "Position 1 — Fixed Main Stat",
+        name: "Position 1: Fixed Main Stat",
         stat: "HP (Flat Value)",
         description: "Always HP - no other options",
         isFixed: true
       },
       "2": {
-        name: "Position 2 — Fixed Main Stat",
+        name: "Position 2: Fixed Main Stat",
         stat: "Attack (Flat Value)",
         description: "Always Attack - no other options",
         isFixed: true
       },
       "3": {
-        name: "Position 3 — Fixed Main Stat",
+        name: "Position 3: Fixed Main Stat",
         stat: "Defense (Flat Value)",
         description: "Always Defense - no other options",
         isFixed: true
       },
       "4": {
-        name: "Position 4 — Variable Main Stats",
+        name: "Position 4: Variable Main Stats",
         recommendedStat: "Attack (%) / HP (%)",
         availableStats: [
           "Healing Effectiveness (%)",
@@ -159,7 +172,7 @@ export const kellerBuild = {
         description: "Pick the recommended stat pair that matches the rune build below."
       },
       "5": {
-        name: "Position 5 — Variable Main Stats",
+        name: "Position 5: Variable Main Stats",
         recommendedStat: "Ice Attribute Damage (%)",
         availableStats: [
           "Wind Attribute Damage (%)",
@@ -173,7 +186,7 @@ export const kellerBuild = {
         ]
       },
       "6": {
-        name: "Position 6 — Variable Main Stats",
+        name: "Position 6: Variable Main Stats",
         recommendedStat: "Attack (%)",
         availableStats: [
           "Attack (%)",
@@ -183,17 +196,17 @@ export const kellerBuild = {
       }
     },
     awakenings: {
-      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated — take A6 last for the team-wide bonus.",
+      priority: "A2 is the biggest early jump, then A4. A3/A5 raise skill level caps (+2 each) and are dupe-gated: take A6 last for the team-wide bonus.",
       keyMilestones: [
         {
           level: 1,
-          effect: "Critical hit rate increased by 15%， first ultimate skill used upon entering the arena does not consume energy.Gains 1 stack of [Ice Power] after using a skill， increasing normal attack damage by 12.5%， up to a maximum of 5 stacks.",
+          effect: "Critical hit rate increased by 15%,  first ultimate skill used upon entering the arena does not consume energy.Gains 1 stack of [Ice Power] after using a skill,  increasing normal attack damage by 12.5%,  up to a maximum of 5 stacks.",
           importance: 2,
           importanceLabel: "Good"
         },
         {
           level: 2,
-          effect: "Upon entering the arena， you immediately gain 3 stacks of [Dance of the Glacier]， increasing critical hit damage by 30%. When [Dance of the Glacier] reaches 5 stacks， your basic attack damage is increased by 50%.",
+          effect: "Upon entering the arena,  you immediately gain 3 stacks of [Dance of the Glacier],  increasing critical hit damage by 30%. When [Dance of the Glacier] reaches 5 stacks,  your basic attack damage is increased by 50%.",
           importance: 1,
           importanceLabel: "Very Good"
         },
@@ -205,7 +218,7 @@ export const kellerBuild = {
         },
         {
           level: 4,
-          effect: "Increases frost</color> damage by 50%. When health drops to 35% or below， instantly restores 75% of maximum health. Can trigger once per battle.",
+          effect: "Increases frost</color> damage by 50%. When health drops to 35% or below,  instantly restores 75% of maximum health. Can trigger once per battle.",
           importance: 2,
           importanceLabel: "Good"
         },
@@ -225,13 +238,16 @@ export const kellerBuild = {
     },
     teamSkill: {
       name: "Combo Skill",
-      description: "Increases own attack power by 20% and critical hit rate by 10%. At the start of battle， every 500 attack power increases the entire team's critical hit damage by 7.5%， up to 8 times. At the start of battle， every 15% critical hit rate increases own critical hit damage by 12%， up to 5 times."
+      description: "Increases own attack power by 20% and critical hit rate by 10%. At the start of battle,  every 500 attack power increases the entire team's critical hit damage by 7.5%,  up to 8 times. At the start of battle,  every 15% critical hit rate increases own critical hit damage by 12%,  up to 5 times."
     },
     teamSynergy: {
       goodWith: [
         "Bors",
         "Medusa",
-        "Veronica"
+        "Veronica",
+        "Freya",
+        "Gluttony - Beelzebub",
+        "Morgan Le Fay"
       ],
       note: "Bors's +171% ATK window during Ice Giant form is the strongest combo in the game."
     }

@@ -11,7 +11,7 @@ export const wrathSamaelBuild = {
     {
       skill: 'Auto Skill: Trial of Original Sin',
       priority: 1,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Best skill - Team Neutralize buff and [Sin] Unleashed mechanic for defense stacking and damage',
       description:
         'Cooldown: 5.0s\nAllies gain +57.3% Neutralize Rate for 5 seconds.\n[Neutralize] has a chance to reduce damage taken by 30% (Critical Damage ignores this effect).\n\n[Sin] Unleashed: When [Wrath] stacks reach 20, consumes 20 stacks of [Wrath] to activate:\n• Pulls in the 1 enemy with the highest ATK.\n• Deals Chaos DMG equal to 294.3% of DEF in a 3-radius fan area in front, causing minor Knockback.\n• Self DEF +13.2% for 7s (max 10 stacks).',
@@ -19,7 +19,7 @@ export const wrathSamaelBuild = {
     {
       skill: 'Ultimate: Divine Punishment: Absolute Territory',
       priority: 2,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Powerful team buff providing Neutralize Rate, damage reduction, and enemy Crit Rate debuff',
       description:
         'Energy Cost: 5 | Cooldown: 7.0s\nAfter a short delay:\n• Allies: Neutralize Rate +68.6%, "Neutralize DMG Reduction" multiplier +43.8%, Damage Taken -17.8%.\n• Enemies: Crit Rate reduced by 60.6%. All enemies enter [Frenzy].\n\n[Frenzy]: Reduces normal attack and skill cooldown by 31.3% for 5 seconds.',
@@ -27,7 +27,7 @@ export const wrathSamaelBuild = {
     {
       skill: 'Passive: Tank of Paradox',
       priority: 3,
-      level: 'Level 10',
+      level: 'Level 14',
       reason: 'Core tanking ability - generates shields on ally Neutralize and provides opening burst protection',
       description:
         "Opening Burst: At the start of battle, self Neutralize Rate +36% and Neutralize DMG Reduction +38.2% for 7 seconds.\n\nNeutralize Feedback: When a teammate successfully Neutralizes, gain a Shield equal to 50.4% of Samael's Defense. Samael gains 1 stack of Wrath.\n\nLimit Break: When Wrath reaches 200 stacks, Samael cannot use Ultimate. [Sin] Unleashed consumes 10 times the Wrath (triggering effect 10 times) and self DMG Reduction +22.4%.",
@@ -51,28 +51,32 @@ export const wrathSamaelBuild = {
       memoryStats: { hp: '6,800', attack: '480', defense: '890' },
       description:
         'Defense +64%, After successful parry: Damage Taken -10% for 5 seconds, [Stigma] stacks (max 400), Every 40 Stigma: All Resistances +5%',
-    },
+    }
   ],
   alternativeMemoryCards: [
     {
-      name: 'Her Trainer',
-      effect:
-        "Penny's memory card - excellent for any Tank tank with defense scaling, damage reduction, and shield enhancement",
+      name: 'Sea Deity\'s Soft Ritual',
+      effect: 'SSS-tier Tank memory in the memory tier list.',
       characterSpecific: false,
-      memoryImage: 'pennycard.jpg',
-      memoryStats: { hp: '8,600', attack: '480', defense: '690' },
-      description:
-        'Defense increased by 60%, After using ultimate skill: take 10% less damage for 5 seconds, Shield amount from ultimates +20%',
+      memoryImage: 'sea-gods-soft-ritual.png',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Max HP increases by 40%.\nWhen the wearer casts an ultimate skill all allies gain [Tideguard] for 8 seconds. If [Tideguard] is gained again remove the existing [Tideguard] and its accumulated Critical Resistance bonus first.\n[Tideguard]:\nDEF increases by 28%.\nBlock Rate increases by 5%.\nEach time an allied unit with [Tideguard] is hit its Critical Resistance increases by 15% up to 5 stacks until [Tideguard] ends.\n[Block]: Has a chance to reduce that instance of damage by 30%. Damage over time ignores Block.',
     },
     {
-      name: 'In the Cafe, Sneaking a Bite',
-      effect:
-        "Lily's memory card - strong defense scaling with mitigation bonuses, great for pure tank builds",
+      name: 'Under the Holy Armor',
+      effect: 'SSS-tier Tank memory in the memory tier list.',
+      characterSpecific: false,
+      memoryImage: 'under-the-holy-armor.png',
+      memoryStats: { hp: '6,600', attack: '480', defense: '690' },
+      description: 'Our HP increases by 25%, and self defense increases by 70%. After each skill use, all allies gain [Radiant Protection], reducing damage taken by 6% and increasing critical hit resistance by 5%, stacking up to 5 times, lasting 10 seconds.',
+    },
+    {
+      name: 'Eating secretly in a cafe',
+      effect: 'SS-tier Tank memory in the memory tier list.',
       characterSpecific: false,
       memoryImage: 'InTheCafeSneakingABite.png',
       memoryStats: { hp: '6,600', attack: '480', defense: '690' },
-      description:
-        'Defense +64%, After successful mitigation: Damage Taken -10% for 5 seconds, When has shield: Damage Taken -18%',
+      description: 'Increases defense by 64%. After successfully neutralizing the attack, damage taken is reduced by 10% for 5 seconds. When the wearer holds a shield, damage taken is reduced by 18%.',
     },
   ],
   runes: {
@@ -121,25 +125,25 @@ export const wrathSamaelBuild = {
   },
   mainStatsByPosition: {
     1: {
-      name: 'Position 1 — Fixed Main Stat',
+      name: 'Position 1: Fixed Main Stat',
       stat: 'HP (Flat Value)',
       description: 'Always HP - no other options',
       isFixed: true,
     },
     2: {
-      name: 'Position 2 — Fixed Main Stat',
+      name: 'Position 2: Fixed Main Stat',
       stat: 'Attack (Flat Value)',
       description: 'Always Attack - no other options',
       isFixed: true,
     },
     3: {
-      name: 'Position 3 — Fixed Main Stat',
+      name: 'Position 3: Fixed Main Stat',
       stat: 'Defense (Flat Value)',
       description: 'Always Defense - no other options',
       isFixed: true,
     },
     4: {
-      name: 'Position 4 — Variable Main Stats',
+      name: 'Position 4: Variable Main Stats',
       recommendedStat: 'Defense (%)',
       availableStats: [
         'Healing Effectiveness (%)',
@@ -153,7 +157,7 @@ export const wrathSamaelBuild = {
       description: 'Defense % for maximum tankiness, shield scaling, and damage output',
     },
     5: {
-      name: 'Position 5 — Variable Main Stats',
+      name: 'Position 5: Variable Main Stats',
       recommendedStat: 'Defense (%)',
       availableStats: [
         'Wind Attribute Damage (%)',
@@ -168,7 +172,7 @@ export const wrathSamaelBuild = {
       description: 'Defense % for maximum survivability and skill scaling',
     },
     6: {
-      name: 'Position 6 — Variable Main Stats',
+      name: 'Position 6: Variable Main Stats',
       recommendedStat: 'Defense (%)',
       availableStats: ['Attack (%)', 'HP (%)', 'Defense (%)'],
       description: 'Focus on core percentage stat increases for tank builds',
@@ -215,7 +219,14 @@ export const wrathSamaelBuild = {
     ],
   },
   teamSynergy: {
-    goodWith: ['PVP teams', 'Chaos team compositions', 'Bikta faction members'],
+    goodWith: [
+      'Frigga',
+      'Hela',
+      'Freya',
+      'Keller',
+      'Lust - Asmodeus',
+      'Medusa',
+    ],
     note: 'She is mainly a PVP unit - not recommended for PVE due to high ultimate cost. Team skill provides 15% Defense and Neutralize DMG Reduction based on Defense.',
   },
 };

@@ -26,7 +26,7 @@ stale = {
 }
 
 # 3. Resolve entries -> {slug: tier}; on duplicate keep the higher tier
-RANK = {'SSS': 0, 'SS': 1, 'S': 2, 'A': 3, 'Situational': 4}
+RANK = {'UR': 0, 'SSS': 1, 'SS': 2, 'S': 3, 'A': 4, 'Situational': 5}
 placed = {}
 unresolved = []
 for e in entries:
@@ -42,7 +42,7 @@ for e in entries:
 # 4. New placements for previously missing cards (by trimmed name)
 new_placements = {
     # SSR — new character wave + previously unlisted
-    'Unholy Alliance': 'SSS',
+    'Unholy Alliance': 'UR',
     'A Dream of Peace': 'SSS',
     'The Knight and the Fuzzy': 'SSS',
     "Sea Deity's Soft Ritual": 'SS',
@@ -118,6 +118,10 @@ import { ZONE_NOVA_MEMORIES } from './memories.js';
 //     remember to update "lastUpdated" to today's date (YYYY-MM-DD)
 
 export const MEMORY_TIER_DEFINITIONS = {
+  UR: {
+    label: 'UR',
+    description: 'Beyond best-in-class. Defines the meta for the slot entirely.',
+  },
   SSS: {
     label: 'SSS',
     description: 'Best-in-class memory card. Defines the character entirely.',
@@ -155,7 +159,7 @@ export const MEMORY_CLASS_ORDER = [
 
 export const MEMORY_TIER_LIST = {
   name: 'Memory Card Rankings by Class',
-  lastUpdated: '2026-09-04',
+  lastUpdated: '2026-09-06',
   description:
     'Memory card rankings by class. Each character can only equip memories matching their class.',
   tiers: {
