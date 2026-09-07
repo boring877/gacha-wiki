@@ -1,6 +1,42 @@
 /* Horizon Walker Landing Page Styles */
 
+/* Ambient background video — starts at the hero image container, fades out by mid-page (majo/agent-x pattern).
+   Anchored to .hero-section (nearest positioned ancestor) so top:0 = top of the hero image. */
+.hero-section {
+  position: relative;
+}
+
+.hw-bg-video-wrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 70vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hw-bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.45;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 22%, transparent 82%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 22%, transparent 82%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hw-bg-video-wrap {
+    display: none;
+  }
+}
+
+/* keep content above the ambient video (hero art stays under it, like majo/agent-x) */
 .content-section {
+  position: relative;
+  z-index: 1;
   padding: 2.5rem;
   margin-bottom: 2rem;
   background: rgba(35, 35, 35, 0.95);

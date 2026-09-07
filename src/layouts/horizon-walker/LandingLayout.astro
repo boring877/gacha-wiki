@@ -22,9 +22,10 @@ export interface Props {
   description?: string;
   gameTitle?: string;
   heroImage?: any;
+  ambientVideo?: string;
 }
 
-const { title, description, gameTitle, heroImage } = Astro.props;
+const { title, description, gameTitle, heroImage, ambientVideo } = Astro.props;
 ---
 
 <html lang="en">
@@ -50,6 +51,15 @@ const { title, description, gameTitle, heroImage } = Astro.props;
           {
             heroImage && gameTitle && (
               <section class="hero-section">
+                {
+                  ambientVideo && (
+                    <div class="hw-bg-video-wrap" aria-hidden="true">
+                      <video class="hw-bg-video" autoplay muted loop playsinline preload="auto">
+                        <source src={ambientVideo} type="video/mp4" />
+                      </video>
+                    </div>
+                  )
+                }
                 <div class="hero-image-wrapper">
                   <div class="hero-image-container">
                     <Image
