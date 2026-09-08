@@ -1305,6 +1305,16 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
           {getMightSkillList().map((might: any) => (
             <div class="demiskill-might-card">
               <div class="demiskill-might-header">
+                {might.icon && (
+                  <img
+                    class="demiskill-might-icon"
+                    src={r2Url('horizon-walker', `skills/${might.icon.includes('.') ? might.icon : might.icon + '.png'}`)}
+                    alt={might.name}
+                    width={40}
+                    height={40}
+                    loading="lazy"
+                  />
+                )}
                 <h4 class="demiskill-might-name">{might.name}</h4>
               </div>
               <div class="demiskill-might-tiers">
