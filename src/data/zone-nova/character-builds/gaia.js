@@ -39,7 +39,7 @@ export const gaiaBuild = {
     {
       skill: 'Normal Attack: Gene Split',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason:
         'Basic attack that scales with max HP - provides minimal damage contribution while maintaining consistent pressure',
       description: "Deals Holy Damage to a target enemy, equal to 12% of the caster's max HP.",

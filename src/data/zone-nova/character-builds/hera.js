@@ -37,7 +37,7 @@ export const heraBuild = {
     {
       skill: "Normal Attack: Queen's Torture",
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason: 'Basic damage filler, counts towards [Void] sword attack counter',
       description:
         'Cooldown: 2.0s\nDeals 120% attack power chaos damage to designated enemy unit',

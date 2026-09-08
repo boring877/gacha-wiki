@@ -37,7 +37,7 @@ export const naiyaBuild = {
     {
       skill: 'Normal Attack: Frost Strike',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason: 'Basic damage filler, benefits from ATK scaling',
       description: 'Deals 120% attack power as ice damage to enemy unit',
     },
@@ -46,7 +46,7 @@ export const naiyaBuild = {
     {
       name: 'And Also Chocolate',
       effect:
-        "Naiya's exclusive memory card. +40% Attack Power and after she uses ultimate, entire team gains +40% ultimate damage for 30 seconds. Perfectly complements her buffer role.",
+        "Naiya's exclusive memory card. +40% Attack Power and after she uses ultimate, entire team gains +40% ultimate damage for 5 seconds. Perfectly complements her buffer role.",
       priority: 'Highly Recommended',
       characterSpecific: true,
       memoryImage: 'naiyacard.jpg',

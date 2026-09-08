@@ -31,7 +31,7 @@ export const leviathanBuild = {
       {
         skill: "Normal Attack: Kiss of Leviathan",
         priority: 4,
-        level: "Level 7",
+        level: "Level 14",
         reason: "Lowest value per level: raise last",
         description: "Cooldown: 2.0s\nDeals 120% Attack as wind damage to the targeted enemy unit"
       }

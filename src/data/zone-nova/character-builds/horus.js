@@ -38,7 +38,7 @@ export const horusBuild = {
     {
       skill: 'Normal Attack: Holy Radiance Arrow',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason:
         'Basic filler damage that contributes to overall DPS and provides consistent damage output',
       description: 'Deals holy damage equal to 120% of Attack to enemy',

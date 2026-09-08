@@ -38,7 +38,7 @@ export const shutenDojiBuild = {
     {
       skill: 'Normal Attack: Storm Cannon',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason:
         'Basic filler damage with AOE. Lower priority but helps maintain DPS between skill cooldowns.',
       description:

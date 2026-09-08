@@ -154,10 +154,20 @@
 .bb-tier-ss,
 .bb-tier-s,
 .bb-tier-a,
-.bb-tier-b {
+.bb-tier-b,
+.bb-tier-nyr {
   background: var(--bb-bg-secondary);
   color: var(--bb-text-primary);
   border: 1px solid var(--bb-border);
+}
+
+/* Not-yet-rated units — smaller, muted, dashed label so it reads as
+   pending rather than a rating below B */
+.bb-tier-nyr {
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  color: var(--bb-text-tertiary);
+  border-style: dashed;
 }
 
 .bb-element-tier-section .bb-tier-label {

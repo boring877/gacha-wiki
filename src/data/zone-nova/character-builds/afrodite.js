@@ -38,7 +38,7 @@ export const afroditeBuild = {
     {
       skill: 'Normal Attack: Love Fist',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason:
         'Basic damage filler for maintaining Enhanced Ultimate counter and applying passive Crit Rate. Not as important as her other skills.',
       description:

@@ -31,7 +31,7 @@ export const lancelotBuild = {
       {
         skill: "Normal Attack: Sword of the Lake",
         priority: 4,
-        level: "Level 7",
+        level: "Level 14",
         reason: "Damage filler: level last",
         description: "Cooldown: 2.0s\nDeals holy damage to the targeted enemy unit equal to 12% of self max HP"
       }

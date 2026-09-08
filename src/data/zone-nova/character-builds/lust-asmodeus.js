@@ -37,7 +37,7 @@ export const lustAsmodeusBuild = {
     {
       skill: 'Normal Attack: Wind cutter',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason:
         'Basic filler damage between her stronger cooldowns. It benefits from the same crit-focused stat line but has the lowest overall impact.',
       description:

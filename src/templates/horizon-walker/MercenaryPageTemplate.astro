@@ -1,5 +1,7 @@
 ---
 import { MercenaryImage, HWRarityIcon, CrystalIcon } from '../../components/horizon-walker/index.astro';
+import { r2Url } from '../../data/r2-config.js';
+import { SKILL_LEVELS } from '../../data/horizon-walker/skill-levels.js';
 import CharacterFullBodyImage from '../../components/horizon-walker/CharacterFullBodyImage.astro';
 
 interface Trait {
@@ -50,6 +52,45 @@ const mercenaryImageKeyMap: Record<string, string> = {
 
 const mercenaryImageKey = mercenaryImageKeyMap[mercenaryData.name] || `${mercenaryData.name.replace(/ /g, '_')}.jpg`;
 const mercenaryImageBaseName = mercenaryImageKey.replace('.jpg', '');
+
+const skillLevelData: Record<string, any> = {};
+if ((mercenaryData as any).skills) {
+  (mercenaryData as any).skills.forEach((skill: any, idx: number) => {
+    const gk = skill.gameKey;
+    if (gk && (SKILL_LEVELS as any)[gk]) {
+      const levels = (SKILL_LEVELS as any)[gk];
+      const maxLvl = Math.max(...Object.keys(levels).map(Number));
+      skillLevelData[String(idx)] = { gameKey: gk, maxLevel: maxLvl, levels };
+    } else if (/\{\s*[0-9.][0-9.,\s]*\}/.test(String(skill.description ?? ''))) {
+      const m = String(skill.description).match(/\{\s*([0-9.][0-9.,\s]*?)\s*\}/);
+      const arrLen = m ? m[1].split(',').length : 10;
+      skillLevelData[String(idx)] = { gameKey: gk, maxLevel: arrLen, levels: null };
+    }
+  });
+}
+const skillLevelJson = JSON.stringify(skillLevelData);
+
+function maxLevelValue(key: string): string | null {
+  const ld = skillLevelData[key];
+  if (!ld || !ld.levels) return null;
+  const levelInfo = ld.levels[String(ld.maxLevel)];
+  if (!levelInfo) return null;
+  return String(Math.round(parseFloat(levelInfo.min) * 100));
+}
+
+function renderSkillDesc(desc: unknown, key: string): string {
+  let d = String(desc ?? '');
+  d = d.replace(/\{\s*([0-9.][0-9.,\s]*?)\s*\}/g, (_m, list: string) => {
+    const clean = list.replace(/\s+/g, '');
+    const vals = clean.split(',');
+    return `<span class="skill-arr" data-skill-target="${key}" data-vals="${clean}">${vals[vals.length - 1]}</span>`;
+  });
+  const val = maxLevelValue(key);
+  if (val !== null && d.includes('N%')) {
+    d = d.split('N%').join(`<span class="skill-n" data-skill-target="${key}">${val}%</span>`);
+  }
+  return d;
+}
 ---
 
 <!-- Mercenary Header & Overview -->
@@ -91,8 +132,29 @@ const mercenaryImageBaseName = mercenaryImageKey.replace('.jpg', '');
       <div class="character-stats-box">
         <div class="character-stats-header">
           <h3 class="character-stats-title">Base Stats</h3>
-          <p class="character-stats-explanation">Stats shown at max level</p>
+          <p class="character-stats-explanation" data-stats-caption>Level 60, full EX (EX 6)</p>
         </div>
+        {(mercenaryData as any).rarityStages && (
+          <div class="rarity-stage-selector" data-stages={JSON.stringify((mercenaryData as any).rarityStages)}>
+            {['EX', 'EX 1', 'EX 2', 'EX 3', 'EX 4', 'EX 5', 'EX 6'].map((stage, i) => (
+              <button
+                type="button"
+                class={`rarity-stage-chip${stage === 'EX 6' ? ' active' : ''}`}
+                data-stage={stage}
+                title={`Stats at ${stage}`}
+                aria-label={`Stats at ${stage}`}
+              >
+                <img
+                  src={r2Url('horizon-walker', `tier-icons/UI_Tier_Icon_${String(5 + i).padStart(2, '0')}.png`)}
+                  alt={stage}
+                  width={40}
+                  height={20}
+                  loading="lazy"
+                />
+              </button>
+            ))}
+          </div>
+        )}
 
         <div class="character-stats-subtitle">Core Stats</div>
         <div class="core-stats-explanation">
@@ -104,23 +166,23 @@ const mercenaryImageBaseName = mercenaryImageKey.replace('.jpg', '');
         </div>
         <div class="stats-core-row">
           <div class="stats-core-item">
-            <div class="stats-core-value">{formatStat(mercenaryData.stats.strength)}</div>
+            <div class="stats-core-value" data-stat-field="strength">{formatStat(mercenaryData.stats.strength)}</div>
             <div class="stats-core-label">STR</div>
           </div>
           <div class="stats-core-item">
-            <div class="stats-core-value">{formatStat(mercenaryData.stats.technic)}</div>
+            <div class="stats-core-value" data-stat-field="technic">{formatStat(mercenaryData.stats.technic)}</div>
             <div class="stats-core-label">TEC</div>
           </div>
           <div class="stats-core-item">
-            <div class="stats-core-value">{formatStat(mercenaryData.stats.intelligence)}</div>
+            <div class="stats-core-value" data-stat-field="intelligence">{formatStat(mercenaryData.stats.intelligence)}</div>
             <div class="stats-core-label">INT</div>
           </div>
           <div class="stats-core-item">
-            <div class="stats-core-value">{formatStat(mercenaryData.stats.vitality)}</div>
+            <div class="stats-core-value" data-stat-field="vitality">{formatStat(mercenaryData.stats.vitality)}</div>
             <div class="stats-core-label">VIT</div>
           </div>
           <div class="stats-core-item">
-            <div class="stats-core-value">{formatStat(mercenaryData.stats.agility)}</div>
+            <div class="stats-core-value" data-stat-field="agility">{formatStat(mercenaryData.stats.agility)}</div>
             <div class="stats-core-label">AGI</div>
           </div>
         </div>
@@ -129,31 +191,31 @@ const mercenaryImageBaseName = mercenaryImageKey.replace('.jpg', '');
         <div class="stats-table">
           <div class="stats-row">
             <span class="stats-row-label">Max HP</span>
-            <span class="stats-row-value">{formatStat(mercenaryData.stats.maxHp)}</span>
+            <span class="stats-row-value" data-stat-field="maxHp">{formatStat(mercenaryData.stats.maxHp)}</span>
           </div>
           <div class="stats-row">
             <span class="stats-row-label">Melee ATK</span>
-            <span class="stats-row-value">{formatStat(mercenaryData.stats.meleeAtk)}</span>
+            <span class="stats-row-value" data-stat-field="meleeAtk">{formatStat(mercenaryData.stats.meleeAtk)}</span>
           </div>
           <div class="stats-row">
             <span class="stats-row-label">Ranged ATK</span>
-            <span class="stats-row-value">{formatStat(mercenaryData.stats.rangedAtk)}</span>
+            <span class="stats-row-value" data-stat-field="rangedAtk">{formatStat(mercenaryData.stats.rangedAtk)}</span>
           </div>
           <div class="stats-row">
             <span class="stats-row-label">Magic ATK</span>
-            <span class="stats-row-value">{formatStat(mercenaryData.stats.magicAtk)}</span>
+            <span class="stats-row-value" data-stat-field="magicAtk">{formatStat(mercenaryData.stats.magicAtk)}</span>
           </div>
           <div class="stats-row">
             <span class="stats-row-label">Speed</span>
-            <span class="stats-row-value">{formatStat(mercenaryData.stats.spd)}</span>
+            <span class="stats-row-value" data-stat-field="spd">{formatStat(mercenaryData.stats.spd)}</span>
           </div>
-          <div class="stats-row" title="Base AP is 100. The value shown is the total, so Starting AP of 145 means +45 bonus AP at round 1.">
+          <div class="stats-row" title="Starting AP = the unit's own base starting AP + AP Recovery.nd 1.">
             <span class="stats-row-label">Starting AP<sup class="stats-note">*</sup></span>
-            <span class="stats-row-value">{formatStat(mercenaryData.stats.startingAp)}</span>
+            <span class="stats-row-value" data-stat-field="startingAp">{formatStat(mercenaryData.stats.startingAp)}</span>
           </div>
           <div class="stats-row">
             <span class="stats-row-label">AP Recovery</span>
-            <span class="stats-row-value">{formatStat(mercenaryData.stats.apRecovery)}</span>
+            <span class="stats-row-value" data-stat-field="apRecovery">{formatStat(mercenaryData.stats.apRecovery)}</span>
           </div>
           <div class="stats-row">
             <span class="stats-row-label">Accuracy</span>
@@ -161,7 +223,7 @@ const mercenaryImageBaseName = mercenaryImageKey.replace('.jpg', '');
           </div>
           <div class="stats-row">
             <span class="stats-row-label">Evade</span>
-            <span class="stats-row-value">{formatStat(mercenaryData.stats.evade)}</span>
+            <span class="stats-row-value" data-stat-field="evade">{formatStat(mercenaryData.stats.evade)}</span>
           </div>
           <div class="stats-row">
             <span class="stats-row-label">Crit Rate</span>
@@ -176,7 +238,7 @@ const mercenaryImageBaseName = mercenaryImageKey.replace('.jpg', '');
             <span class="stats-row-value">{formatStat(mercenaryData.stats.blockRate)}</span>
           </div>
         </div>
-        <p class="stats-footnote">* Starting AP includes a base of 100. A value of 145 means +45 bonus AP at round 1 (only the amount above 100 is the increase).</p>
+        <p class="stats-footnote">* Starting AP is the total AP at the start of battle: each unit's own base starting AP plus their AP Recovery (shown above). The AP Recovery portion grows with AGI as you raise EX stages.</p>
 
         <div class="character-stats-subtitle">Attributes</div>
         <div class="stats-attr-table">
@@ -227,6 +289,31 @@ const mercenaryImageBaseName = mercenaryImageKey.replace('.jpg', '');
           </div>
         </div>
 
+        <script is:inline>
+          (function() {
+            document.querySelectorAll('.rarity-stage-selector').forEach(function(sel) {
+              var stages;
+              try { stages = JSON.parse(sel.getAttribute('data-stages') || '{}'); } catch (e) { return; }
+              var box = sel.closest('.character-stats-box');
+              if (!box) return;
+              sel.querySelectorAll('.rarity-stage-chip').forEach(function(chip) {
+                chip.addEventListener('click', function() {
+                  sel.querySelectorAll('.rarity-stage-chip').forEach(function(c) { c.classList.remove('active'); });
+                  chip.classList.add('active');
+                  var stage = chip.getAttribute('data-stage');
+                  var st = stages[stage];
+                  if (!st) return;
+                  box.querySelectorAll('[data-stat-field]').forEach(function(el) {
+                    var f = el.getAttribute('data-stat-field');
+                    if (st[f] !== undefined) el.textContent = st[f];
+                  });
+                  var cap = box.querySelector('[data-stats-caption]');
+                  if (cap) cap.textContent = 'Level 60, ' + stage + (stage === 'EX 6' ? ' (full)' : '');
+                });
+              });
+            });
+          })();
+        </script>
       </div>
     </div>
   </div>
@@ -239,7 +326,7 @@ const mercenaryImageBaseName = mercenaryImageKey.replace('.jpg', '');
 
   {
     mercenaryData.skills &&
-      mercenaryData.skills.map(skill => (
+      mercenaryData.skills.map((skill, skillIdx) => (
         <div class={`skill-card ${skill.type === 'Passive' ? 'passive-skill' : ''}`}>
           <div class="skill-header">
             <h3 class="skill-title">{skill.name}</h3>
@@ -249,6 +336,9 @@ const mercenaryImageBaseName = mercenaryImageKey.replace('.jpg', '');
               ) : (
                 <span class="skill-type-label skill-label">Skill</span>
               )}
+              {skillLevelData[String(skillIdx)] && (
+                <input type="number" class="skill-level-input" data-skill={String(skillIdx)} min="1" max={skillLevelData[String(skillIdx)].maxLevel} value={skillLevelData[String(skillIdx)].maxLevel} />
+              )}
               {skill.type !== 'Passive' && skill.apCost != null && skill.apCost > 0 && (
                 <span class="skill-cost">AP {skill.apCost}</span>
               )}
@@ -257,16 +347,59 @@ const mercenaryImageBaseName = mercenaryImageKey.replace('.jpg', '');
               )}
             </div>
           </div>
-          <p class="skill-description">{skill.description}</p>
+          <p class="skill-description" set:html={renderSkillDesc(skill.description, String(skillIdx))} />
           {skill.damage && (
             <div class="skill-damage">
               <span class="damage-label">Damage:</span>{' '}
-              <span class="damage-value">{skill.damage}</span>
+              <span class="damage-value" data-skill-key={String(skillIdx)}>{skill.damage}</span>
             </div>
           )}
         </div>
       ))
   }
+<script define:vars={{ skillLevelJson }}>
+  (function() {
+    var data = JSON.parse(skillLevelJson || '{}');
+    var section = document.currentScript.closest('.skills-section');
+    if (!section || !Object.keys(data).length) return;
+
+    function update(input) {
+      var key = input.getAttribute('data-skill');
+      var level = parseInt(input.value) || 1;
+      var maxLevel = parseInt(input.getAttribute('max')) || 10;
+      if (level < 1) level = 1;
+      if (level > maxLevel) level = maxLevel;
+      input.value = level;
+      var skillData = data[key];
+      if (!skillData) return;
+      var levelInfo = skillData.levels ? skillData.levels[String(level)] : null;
+      var card = input.closest('.skill-card');
+      if (!card) return;
+
+      if (levelInfo) {
+        var val = Math.round(parseFloat(levelInfo.min) * 100);
+        card.querySelectorAll('.skill-n[data-skill-target="' + key + '"]').forEach(function(el) {
+          el.textContent = val + '%';
+        });
+        var dmgEl = card.querySelector('[data-skill-key="' + key + '"]');
+        if (dmgEl) {
+          dmgEl.textContent = (dmgEl.textContent || '').replace(/\d+%/, val + '%');
+        }
+      }
+
+      card.querySelectorAll('.skill-arr[data-skill-target="' + key + '"]').forEach(function(el) {
+        var vals = (el.getAttribute('data-vals') || '').split(',');
+        if (!vals.length) return;
+        el.textContent = vals[Math.min(level, vals.length) - 1];
+      });
+    }
+
+    section.querySelectorAll('.skill-level-input').forEach(function(input) {
+      input.addEventListener('input', function() { update(this); });
+      input.addEventListener('change', function() { update(this); });
+    });
+  })();
+</script>
 </section>
 
 <!-- Unique Traits Section -->

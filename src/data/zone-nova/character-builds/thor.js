@@ -29,7 +29,7 @@ export const thorBuild = {
     {
       skill: 'Ultimate: Divine Punishment Hammer',
       priority: 3,
-      level: 'Level 8',
+      level: 'Level 14',
       reason:
         'Very efficient 2-cost ultimate with excellent damage and team protection - cast frequently',
       description:
@@ -38,7 +38,7 @@ export const thorBuild = {
     {
       skill: 'Normal Attack: Justice Crush',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason: 'Basic damage filler that scales with defense and provides interrupt',
       description: 'Deal Holy damage equal to 120% of own Defense to designated enemy unit.',
     },

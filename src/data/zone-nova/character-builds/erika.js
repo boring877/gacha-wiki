@@ -31,7 +31,7 @@ export const erikaBuild = {
       {
         skill: "Normal Attack: On Record",
         priority: 4,
-        level: "Level 7",
+        level: "Level 14",
         reason: "Level last",
         description: "Cooldown: 2.0s\nDeals 120% attack power as wind damage to the designated enemy unit."
       }

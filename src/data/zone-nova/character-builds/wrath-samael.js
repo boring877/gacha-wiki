@@ -35,7 +35,7 @@ export const wrathSamaelBuild = {
     {
       skill: 'Normal Attack: Wrath Strike',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason: 'Basic defense-scaling damage filler',
       description: 'Cooldown: 2.0s\nDeals damage equal to 120% of Defense as Chaos damage.',
     },

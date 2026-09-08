@@ -36,7 +36,7 @@ export const artemisBuild = {
     {
       skill: 'Normal Attack: Moon Rising Fist',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason: 'Basic damage filler that benefits greatly from low-HP damage amplification',
       description: 'Deals 120% attack power as wind damage to designated enemy unit.',
     },

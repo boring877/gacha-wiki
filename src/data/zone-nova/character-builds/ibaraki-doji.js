@@ -11,7 +11,7 @@ export const ibarakiDojiBuild = {
     {
       skill: 'Ultimate: Fire Phoenix Curse',
       priority: 1,
-      level: 'Level 10+4',
+      level: 'Level 14',
       reason:
         'Core debuff application - applies +87.9% ultimate damage taken debuff and can interrupt enemy skills. This is her strongest single debuff and should be maxed first.',
       description:
@@ -20,7 +20,7 @@ export const ibarakiDojiBuild = {
     {
       skill: 'Auto Skill: Arrow of the Curse',
       priority: 2,
-      level: 'Level 10+4',
+      level: 'Level 14',
       reason:
         'Secondary debuff with +38.6% all damage taken and energy drain effect. AOE application makes it valuable for multi-target fights.',
       description:
@@ -29,7 +29,7 @@ export const ibarakiDojiBuild = {
     {
       skill: 'Passive: Deboning',
       priority: 3,
-      level: 'Level 10+4',
+      level: 'Level 14',
       reason:
         'Stacking ultimate damage amplification (+36% at max 10 stacks). Requires consistent attacking to maintain stacks but provides significant damage boost.',
       description:
@@ -38,7 +38,7 @@ export const ibarakiDojiBuild = {
     {
       skill: 'Normal Attack: Flame Arrow',
       priority: 4,
-      level: 'Level 7-10',
+      level: 'Level 14',
       reason:
         'Basic filler damage and helps maintain passive stacks. Lower priority but still contributes to overall kit.',
       description:

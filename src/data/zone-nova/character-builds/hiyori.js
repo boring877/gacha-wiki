@@ -38,7 +38,7 @@ export const hiyoriBuild = {
     {
       skill: 'Normal Attack: Attack',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason: 'Basic filler attack, low priority for leveling',
       description:
         'Cooldown: 2.0s\nDeals Chaos DMG equal to 120% of ATK to an enemy.',

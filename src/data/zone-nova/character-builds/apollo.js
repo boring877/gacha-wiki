@@ -35,7 +35,7 @@ export const apolloBuild = {
     {
       skill: 'Normal Attack',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason: 'Basic damage filler',
       description: 'Deals fire damage equal to 120% of Attack to designated enemy.',
     },

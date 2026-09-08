@@ -35,7 +35,7 @@ export const pennyBuild = {
     {
       skill: 'Normal Attack: Shield Impact',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason: 'Basic damage filler that scales with defense',
       description: 'Deals Wind damage equal to 120% of own defense to target enemy',
     },

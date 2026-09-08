@@ -38,7 +38,7 @@ export const lilyBuild = {
     {
       skill: 'Normal Attack: Frost Armor Thorn',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason:
         'Basic damage filler that scales with defense - useful for chip damage and maintaining offensive pressure',
       description:

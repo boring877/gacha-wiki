@@ -31,7 +31,7 @@ export const merlinBuild = {
       {
         skill: "Normal Attack: Blazing Slash",
         priority: 4,
-        level: "Level 7",
+        level: "Level 14",
         reason: "Lowest value per level: raise last",
         description: "Cooldown: 2.0s\nDeals 120% Attack as fire damage to the targeted enemy unit"
       }

@@ -38,7 +38,7 @@ export const sigurdBuild = {
     {
       skill: 'Normal Attack: Flame Slash',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason: 'Basic filler damage between skill rotations, lower priority than core abilities',
       description: 'Deals 120% attack damage as Fire damage to the designated enemy unit.',
     },

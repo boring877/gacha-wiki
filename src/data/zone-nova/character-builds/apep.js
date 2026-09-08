@@ -25,14 +25,14 @@ export const apepBuild = {
     {
       skill: 'Ultimate',
       priority: 3,
-      level: 'Level 8',
+      level: 'Level 14',
       reason: 'Very efficient 2-cost ultimate for damage and defense',
       description: '2-cost ability that deals wind damage and provides shields',
     },
     {
       skill: 'Normal Attack',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason: 'Sub-DPS damage that scales with defense and provides self-healing',
       description: 'Basic attack that scales with DEF and provides healing',
     },
@@ -41,7 +41,7 @@ export const apepBuild = {
     {
       name: 'Wrong time of appearance',
       effect:
-        "Apep's exclusive memory card. Defense increased by 64%, HP recovery when above 50% HP, and damage reduction/damage increase buffs.",
+        "Apep's exclusive memory card. Defense increased by 64%. Below 50% HP she recovers 2% max HP after attacking, above 50% HP she takes 10% less damage and deals 40% more damage.",
       priority: 'Highly Recommended',
       characterSpecific: true,
     }

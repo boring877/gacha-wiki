@@ -36,7 +36,7 @@ export const morganLeFayBuild = {
     {
       skill: 'Normal Attack',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason: 'Basic damage filler that can trigger memory card effects',
       description: 'Cooldown: 2.0s\nDeals 120% ATK as Holy DMG to the target enemy.',
     },

@@ -261,10 +261,12 @@ export function validateStats(stats) {
   // Core stats validation
   const coreStats = ['strength', 'technic', 'intelligence', 'vitality', 'agility'];
   coreStats.forEach(stat => {
-    if (stats[stat] !== undefined) {
+    // empty string = stat not available yet (skip); cap raised from 30 to 99 because
+    // max rarity raises push primaries past 30 (game data: Garud INT 39)
+    if (stats[stat] !== undefined && stats[stat] !== '') {
       const value = parseInt(stats[stat]);
-      if (isNaN(value) || value < 0 || value > 30) {
-        errors.push(`Invalid ${stat} value: ${stats[stat]}. Must be between 0 and 30`);
+      if (isNaN(value) || value < 0 || value > 99) {
+        errors.push(`Invalid ${stat} value: ${stats[stat]}. Must be between 0 and 99`);
       }
     }
   });
@@ -279,7 +281,7 @@ export function validateStats(stats) {
   ];
 
   combatStats.forEach(({ key, allowNegative }) => {
-    if (stats[key] !== undefined) {
+    if (stats[key] !== undefined && stats[key] !== '') {
       const value = parseInt(stats[key]);
       const minValue = allowNegative ? -999 : 0;
       if (isNaN(value) || value < minValue || value > 9999) {

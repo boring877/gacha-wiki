@@ -31,7 +31,7 @@ export const nephthysBuild = {
       {
         skill: "Normal Attack: Pillar of Blazing Flame",
         priority: 4,
-        level: "Level 7",
+        level: "Level 14",
         reason: "Lowest value per level: raise last",
         description: "Cooldown: 2.0s\nDeals 93.3% attack damage as fire damage to all enemy units."
       }

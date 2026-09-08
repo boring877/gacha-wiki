@@ -38,7 +38,7 @@ export const chiyaBuild = {
     {
       skill: 'Normal Attack: Heavy Hammer Strike',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason: 'Basic damage filler when skills are on cooldown',
       description:
         'Deals ice damage equal to 120% of Attack to designated enemy unit',

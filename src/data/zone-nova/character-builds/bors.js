@@ -31,7 +31,7 @@ export const borsBuild = {
       {
         skill: "Normal Attack: Frenzied Strike",
         priority: 4,
-        level: "Level 7",
+        level: "Level 14",
         reason: "Level last",
         description: "Cooldown: 2.0s\nDeals 120% attack damage as fiery damage to the designated enemy unit."
       }
@@ -39,9 +39,9 @@ export const borsBuild = {
     recommendedMemoryCards: [
       {
         name: "Unholy Alliance",
-        effect: "Exclusive card: +32% ATK/DEF/HP for the whole party on equip, and every skill she casts adds +6% team max HP (up to 60%). Pure team stat bloat. BiS on BOTH builds since it buffs the team, not her stats.",
+        effect: "Exclusive card: +32% ATK/DEF/HP for the whole party on equip, and every skill she casts adds +14% team max HP (up to 5 stacks) and reduces all skill cooldowns by 5%. Pure team stat bloat. BiS on BOTH builds since it buffs the team, not her stats.",
         priority: "Must Have",
-        note: "Exclusive card: +32% ATK/DEF/HP for the whole party on equip, and every skill she casts adds +6% team max HP (up to 60%). Pure team stat bloat. BiS on BOTH builds since it buffs the team, not her stats.",
+        note: "Exclusive card: +32% ATK/DEF/HP for the whole party on equip, and every skill she casts adds +14% team max HP (up to 5 stacks) and reduces all skill cooldowns by 5%. Pure team stat bloat. BiS on BOTH builds since it buffs the team, not her stats.",
         characterSpecific: true,
         memoryImage: "unholy-alliance.png",
         memoryStats: {

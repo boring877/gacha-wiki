@@ -31,7 +31,7 @@ export const setBuild = {
       {
         skill: "Normal Attack: Sovereign's Execution Edict",
         priority: 4,
-        level: "Level 7",
+        level: "Level 14",
         reason: "Lowest value per level: raise last",
         description: "Cooldown: 2.0s\nDeals fire damage equal to 120% of Attack Power to the nearest enemy unit."
       }

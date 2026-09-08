@@ -35,7 +35,7 @@ export const prideLuciferBuild = {
     {
       skill: 'Normal Attack: Dawn Slash',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason: 'Basic filler damage that scales with defense',
       description: 'Cooldown: 1.5s\nDeals chaos damage equal to 120% of the user\'s own defense to the designated enemy unit.',
     },

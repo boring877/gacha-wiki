@@ -29,7 +29,7 @@ export const odinBuild = {
     {
       skill: 'Auto Skill: Falling Flame',
       priority: 3,
-      level: 'Level 7',
+      level: 'Level 14',
       reason:
         'Multi-hit damage with [Divine Flame] stack application - main source of sustained damage and stack maintenance with good cooldown efficiency',
       description:
@@ -38,7 +38,7 @@ export const odinBuild = {
     {
       skill: 'Normal Attack: Soul Reap',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason:
         'Basic filler damage that contributes to overall DPS and maintains consistent damage output',
       description: 'Deals 120% ATK as Fire damage to a single target.',

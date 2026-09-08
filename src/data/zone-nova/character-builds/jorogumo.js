@@ -39,7 +39,7 @@ export const jorogumoBuild = {
     {
       skill: 'Normal Attack: Eclipse Silk',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason:
         'Basic Chaos damage attack. Lower priority as Jorogumo focuses on healing rather than damage output.',
       description: 'Cooldown: 2.0s\nDeals 120% ATK Chaos Damage to a target enemy.',

@@ -38,7 +38,7 @@ export const guinevereBuild = {
     {
       skill: 'Normal Attack: Inferno',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason:
         'Basic filler damage that scales with Defense - provides consistent damage output and contributes to overall DPS',
       description: 'Deals fire damage equal to 120% of Defense to enemy unit',

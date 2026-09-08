@@ -38,7 +38,7 @@ export const gluttonyBeelzebubBuild = {
     {
       skill: 'Normal Attack: Cold Devour',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason: 'Basic filler damage with lower overall impact than the rest of her control kit.',
       description:
         'Cooldown: 2.0s\nDeals Ice damage equal to 120% attack power to the designated enemy unit.',

@@ -31,7 +31,7 @@ export const poseidonBuild = {
       {
         skill: "Normal Attack: Tidal Shot",
         priority: 4,
-        level: "Level 7",
+        level: "Level 14",
         reason: "Damage filler: level last",
         description: "Cooldown: 2.0s\nDeal ice damage equal to 12% of max HP to the designated enemy unit."
       }

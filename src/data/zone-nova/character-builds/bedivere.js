@@ -31,7 +31,7 @@ export const bedivereBuild = {
       {
         skill: "Normal Attack: Edge Testing",
         priority: 4,
-        level: "Level 7",
+        level: "Level 14",
         reason: "Level last",
         description: "Cooldown: 2.0s\nDeals ice DMG equal to 120% ATK to the target enemy unit"
       }

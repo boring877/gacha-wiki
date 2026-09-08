@@ -9,16 +9,8 @@ export const helaBuild = {
     'Hela is a single-target nuker who deals massive damage through her ultimate scaling and critical damage. She can one-shot bosses with her 2160% ATK ultimate and has a unique mode-switching mechanic between [Termination] and [Death Silence] modes.',
   skillPriority: [
     {
-      skill: 'Auto Skill: Death Silence Prelude',
-      priority: 1,
-      level: 'Level 14',
-      reason: 'Primary damage source with high scaling and mode switching utility',
-      description:
-        'Cooldown: 5.0s\n[Termination] Mode: Deals 360% attack power Chaos damage to designated enemy unit\n[Death Silence] Mode: Moves 5 meters toward the enemy unit with the highest ATK and deals 360% attack power Chaos damage to them',
-    },
-    {
       skill: 'Ultimate: Domination Authority - Chaotic Death',
-      priority: 2,
+      priority: 1,
       level: 'Level 14',
       reason: 'Massive 2160% ATK damage that can one-shot bosses, core to her nuker role',
       description:
@@ -26,16 +18,24 @@ export const helaBuild = {
     },
     {
       skill: 'Passive: Termination Echo',
-      priority: 3,
+      priority: 2,
       level: 'Level 14',
       reason: 'Essential for crit damage scaling and resistance penetration',
       description:
         "[Termination] Mode: All damage penetrates 24% of target's resistance\n[Death Silence] Mode: All damage reduces target's total damage output by 36%\n\n[Battle Start Bonus]: With 1+ other Chaos character, Hela's Crit Damage increases by 60%",
     },
     {
+      skill: 'Auto Skill: Death Silence Prelude',
+      priority: 3,
+      level: 'Level 14',
+      reason: 'Primary damage source with high scaling and mode switching utility',
+      description:
+        'Cooldown: 5.0s\n[Termination] Mode: Deals 360% attack power Chaos damage to designated enemy unit\n[Death Silence] Mode: Moves 5 meters toward the enemy unit with the highest ATK and deals 360% attack power Chaos damage to them',
+    },
+    {
       skill: 'Normal Attack: Nether Touch',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason: 'Basic damage filler, scales well with crit builds',
       description:
         'Cooldown: 2.0s\n[Termination] Mode: Deals 120% attack power Chaos damage to designated enemy unit\n[Death Silence] Mode: Moves in front of enemy with highest ATK and deals 120% attack power Chaos damage to them',
@@ -43,25 +43,38 @@ export const helaBuild = {
   ],
   recommendedMemoryCards: [
     {
+      name: 'Weird eyes full of desire',
+      effect:
+        "Hela's own memory card. 34% Crit Rate plus 24% damage for 5 seconds every time an ally casts their ultimate, stacking up to 3 times for 72% total damage. Allies casting ults is also what builds her [Domination Authority] layers, so the card and her kit feed each other. The recommended pick once awakened.",
+      priority: 'Highly Recommended',
+      characterSpecific: true,
+      memoryImage: 'Helacard',
+      memoryStats: { hp: '5,040', attack: '780', defense: '474' },
+      description:
+        "Increases critical hit rate by 34%. When other friendly units cast a Ultimate Skill, the wearer's damage increases by 24% for 5 seconds. It can be stacked up to 3 times.",
+    },
+    {
       name: 'Hero Never Resting',
       effect:
-        "SR memory card that provides Crit Damage increase, excellent for boosting Hela's already high damage output. Works best with 2 or fewer enemies.",
-      priority: 'Highly Recommended',
+        'Budget boss-fight option. Fully awakening Hela\'s SSR card is expensive, and this cheap SR grants a massive 72% Crit Damage whenever fewer than 2 enemies are on the field, which is exactly the single-boss scenario. Until her own card is maxed, this punches far above its cost.',
+      priority: 'Budget Option',
       characterSpecific: false,
       memoryImage: 'Shannacard.jpg',
       memoryStats: { hp: '4,200', attack: '650', defense: '395' },
       description:
-        'When the number of enemies on field is less than 2: Increase critical hit damage by 72%',
+        'When there are fewer than 2 enemies on the field, Critical Damage increases by 72%',
     }
   ],
   alternativeMemoryCards: [
     {
-      name: 'Frozen Heart',
-      effect: 'SSS-tier Attacker memory in the memory tier list.',
+      name: 'Sunlit sweetness awaits',
+      effect:
+        "Set's card and SS-tier Attacker memory in the memory tier list. At Awaken 5 it gives 65% Crit Damage plus up to 86% Crit Rate from its on-hit stacks, and Hela lands hits constantly with her auto and ultimate, so the stacks stay up. Fits her crit build directly.",
       characterSpecific: false,
-      memoryImage: 'Yuiscard.jpg',
+      memoryImage: 'sunlit-sweetness-awaits.png',
       memoryStats: { hp: '5,040', attack: '780', defense: '474' },
-      description: 'Critical Rate increased by 34%\nPursue Damage dealt by the wearer increases Critical Damage by 68%',
+      description:
+        'Critical Damage increased by 65%.\nWhen the wearer lands a hit with any skill/ULT, Critical Rate increases by 4.3% for 6 seconds (up to 20 stacks).',
     },
     {
       name: 'King of Lust',
@@ -85,7 +98,21 @@ export const helaBuild = {
     secondary: 'Critical Rate',
     stats: ['Crit DMG%', 'Crit Rate%'],
     additionalStats: ['ATK%', 'ATK', 'Penetration'],
+    buildNote:
+      'Skota 4-piece is her best set, but the element rune sets cannot be crafted yet, so it is a goal for later. The damage difference is small in practice anyway: we switched to the crit rate set for more damage and it barely changed. Just use whatever pieces have the best substats and run the set they complete.',
     recommendedSets: [
+      {
+        name: 'Skota 4-piece + Beth 2-piece',
+        englishName: 'Skota 4-piece + Beth 2-piece',
+        mainRune: 'Skota',
+        secondaryRune: 'Beth',
+        mainRune2Piece: '2-piece: Critical Rate increases by 6%',
+        mainRune4Piece:
+          '4-piece: Attack Power increased by 12%. Chaos resistance penetration increased by 12% during the release of the Ultimate Skill (triggers at most once every 5 seconds)',
+        secondaryRuneEffect: '2-piece: Critical Rate increases by 6%',
+        description:
+          'Her best set: all of her damage is Chaos attribute and her nuke is an ultimate, so the attack boost and ultimate Chaos penetration line up perfectly with her kit. The element sets cannot be crafted yet though, so this is the goal for later, not something to farm right now.',
+      },
       {
         name: 'Beth 4-piece + Alpha 2-piece',
         englishName: 'Beth 4-piece + Alpha 2-piece',
@@ -240,6 +267,6 @@ export const helaBuild = {
       'Medusa',
       'Thor',
     ],
-    note: 'Hela benefits greatly from another Chaos character in the team due to her passive bonus of +60% Crit Damage when there is at least 1 other Chaos attribute character. Team skill requires 2 Chaos + ASA characters for 10% ATK and up to 30% Chaos damage bonus.',
+    note: 'She is really good single target! Her 2160% ATK enhanced ultimate can one-shot bosses and priority targets. Hela also benefits greatly from another Chaos character in the team due to her passive bonus of +60% Crit Damage when there is at least 1 other Chaos attribute character. Team skill requires 2 Chaos + ASA characters for 10% ATK and up to 30% Chaos damage bonus.',
   },
 };

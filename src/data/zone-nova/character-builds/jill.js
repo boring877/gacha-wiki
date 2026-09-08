@@ -39,7 +39,7 @@ export const jillBuild = {
     {
       skill: 'Normal Attack: Morning Drill',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason:
         "Just a basic attack. She's a healer, not a damage dealer. Don't waste resources maxing this.",
       description: 'Cooldown: 2.0s\nDeals Holy DMG equal to 120% ATK to the target enemy.',

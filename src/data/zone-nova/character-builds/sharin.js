@@ -35,7 +35,7 @@ export const sharinBuild = {
     {
       skill: 'Normal Attack',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason: 'Basic damage filler',
       description: 'Cooldown: 2.0s\nFires a Fire beam at the enemy, dealing Fire damage equal to 120% attack power to the designated enemy unit.',
     },

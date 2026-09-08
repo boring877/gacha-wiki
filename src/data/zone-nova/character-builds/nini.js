@@ -31,7 +31,7 @@ export const niniBuild = {
       {
         skill: "Normal Attack: Suppressive Fire",
         priority: 4,
-        level: "Level 7",
+        level: "Level 14",
         reason: "Level last",
         description: "Cooldown: 2.0s\nDeals 120% Attack as ice damage to the targeted enemy unit"
       }

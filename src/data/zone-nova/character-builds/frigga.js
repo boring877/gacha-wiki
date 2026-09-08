@@ -38,7 +38,7 @@ export const friggaChaosBuild = {
     {
       skill: 'Normal Attack: Chaos Strike',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason: 'Primary Divine Meteor stack applicator and basic damage source',
       description:
         'Deals 120% attack power chaos damage to designated enemy. Main source for applying Divine Meteor stacks consistently.',

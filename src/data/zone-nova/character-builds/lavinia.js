@@ -31,7 +31,7 @@ export const laviniaBuild = {
       {
         skill: "Normal Attack: Flame Kiss",
         priority: 4,
-        level: "Level 7",
+        level: "Level 14",
         reason: "Level last",
         description: "Cooldown: 2.0s\nDeal 120% attack fire damage to the designated enemy unit"
       }

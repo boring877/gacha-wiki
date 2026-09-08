@@ -35,7 +35,7 @@ export const tamamoNoMaeBuild = {
     {
       skill: 'Normal Attack',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason: 'Basic damage filler',
       description: 'Deals 120% ATK as Fire DMG to a target enemy.',
     },

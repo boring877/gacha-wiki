@@ -38,7 +38,7 @@ export const lokiBuild = {
     {
       skill: 'Normal Attack: Netherworld Fire',
       priority: 4,
-      level: 'Level 7',
+      level: 'Level 14',
       reason:
         'Basic filler damage. Requires A1 to trigger passive vulnerability stacks (base passive is auto skills only).',
       description: 'Deals chaos damage equal to 120% of Attack to designated enemy',

@@ -31,7 +31,7 @@ export const medusaBuild = {
       {
         skill: "Normal Attack: Precision shooting",
         priority: 4,
-        level: "Level 7",
+        level: "Level 14",
         reason: "Level last",
         description: "Cooldown: 2.0s\nDeals 120% attack power wind damage to the designated enemy unit. When Medusa enters the [Stone Princess] form, her normal attacks will deal 73.3% ​​attack power wind damage to the enemy unit, and also inflict [Serpent's Gaze], increasing the cooldown of all skills by 3.5% for 10 seconds, up to 10 stacks."
       }
