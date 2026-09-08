@@ -1,0 +1,23 @@
+---
+// Dynamic page for a single Horizon Walker patch note.
+import PatchNoteTemplate from '../../../../templates/horizon-walker/PatchNoteTemplate.astro';
+import { patchNotes } from '../../../../data/horizon-walker/patch-notes.js';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  return patchNotes.map((n) => ({
+    params: { slug: n.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const noteModules = import.meta.glob('../../../../data/horizon-walker/patch-notes/*.js');
+const loader = noteModules[`../../../../data/horizon-walker/patch-notes/${slug}.js`];
+if (!loader) {
+  return Astro.redirect('/guides/horizon-walker/updates/');
+}
+const { note } = await loader();
+---
+
+<PatchNoteTemplate note={note} />

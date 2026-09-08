@@ -1,0 +1,309 @@
+---
+// Template for a single Horizon Walker official patch note page.
+// Renders the note blocks in the original official structure:
+// ◈ sections, ● subsections, ◆ items, ▶/① sub items, detail bullets, tables, images.
+import GuideLayout from '../../layouts/horizon-walker/GuideLayout.astro';
+import { r2Url } from '../../data/r2-config.js';
+
+interface Props {
+  note: {
+    slug: string;
+    feedId: number;
+    title: string;
+    date: string;
+    sourceUrl: string;
+    highlights: string[];
+    blocks: any[];
+  };
+}
+
+const { note } = Astro.props;
+
+const posted = new Date(note.date + 'T12:00:00Z').toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+
+const firstImage = note.blocks.find((b: any) => b.k === 'img');
+---
+
+<GuideLayout
+  title={`${note.title} | Horizon Walker Wiki`}
+  description={`${note.title} posted ${posted}. Official English patch note for Horizon Walker with new Vanguards, events, balance changes, and fixes.`}
+  pageTitle={note.title}
+  subtitle={`Official English patch note posted by the Horizon Walker team on ${posted}.`}
+>
+  <div class="pn-page">
+    <div class="pn-meta-card">
+      <div class="pn-meta-row">
+        <span class="pn-meta-label">Posted</span>
+        <span class="pn-meta-value">{posted}</span>
+      </div>
+      <div class="pn-meta-row">
+        <span class="pn-meta-label">Source</span>
+        <a class="pn-meta-link" href={note.sourceUrl} target="_blank" rel="noopener">
+          Naver Lounge official post
+        </a>
+      </div>
+      <div class="pn-meta-row">
+        <span class="pn-meta-label">Language</span>
+        <span class="pn-meta-value">Official English translation</span>
+      </div>
+    </div>
+
+    <p class="pn-schedule-note">
+      Patch notes follow the Korean service schedule, which runs a few weeks ahead of the global
+      release. Exact skill values appear as N placeholders in the official text.
+    </p>
+
+    {
+      firstImage && (
+        <div class="pn-banner">
+          <img
+            src={r2Url('horizon-walker', `patch-notes/${firstImage.src}`)}
+            alt={`${note.title} header`}
+            width={firstImage.w || 960}
+            height={firstImage.h || 200}
+            loading="eager"
+          />
+        </div>
+      )
+    }
+
+    <article class="pn-body">
+      {
+        note.blocks.map((b: any) => {
+          if (b.k === 't') {
+            return <p class={`pn-text pn-${b.kind}`} set:html={b.html} />;
+          }
+          if (b.k === 'img') {
+            return (
+              <div class="pn-img">
+                <img
+                  src={r2Url('horizon-walker', `patch-notes/${b.src}`)}
+                  alt=""
+                  width={b.w || 960}
+                  height={b.h || 540}
+                  loading="lazy"
+                />
+              </div>
+            );
+          }
+          if (b.k === 'table') {
+            return (
+              <div class="pn-table-wrap">
+                <table class="pn-table">
+                  {b.rows.map((row: string[], ri: number) => (
+                    <tr>
+                      {row.map((cell: string) =>
+                        ri === 0 ? (
+                          <th set:html={cell} />
+                        ) : (
+                          <td set:html={cell} />
+                        )
+                      )}
+                    </tr>
+                  ))}
+                </table>
+              </div>
+            );
+          }
+          if (b.k === 'hr') {
+            return <hr class="pn-hr" />;
+          }
+          if (b.k === 'link') {
+            return (
+              <p class="pn-text">
+                <a href={b.href} target="_blank" rel="noopener">
+                  {b.text}
+                </a>
+              </p>
+            );
+          }
+          return null;
+        })
+      }
+    </article>
+
+    <div class="pn-footer-nav">
+      <a class="pn-back" href="/guides/horizon-walker/updates/">All Patch Notes</a>
+      <a class="pn-back" href={note.sourceUrl} target="_blank" rel="noopener">
+        View on Naver Lounge
+      </a>
+    </div>
+  </div>
+</GuideLayout>
+
+<style>
+  .pn-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .pn-meta-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(232, 165, 71, 0.18);
+    border-radius: 10px;
+    padding: 0.85rem 1.2rem;
+  }
+  .pn-meta-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .pn-meta-label {
+    color: #999;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .pn-meta-value {
+    color: #ddd;
+    font-size: 0.92rem;
+  }
+  .pn-meta-link {
+    color: #e8a547;
+    font-size: 0.92rem;
+    text-decoration: none;
+  }
+  .pn-meta-link:hover {
+    text-decoration: underline;
+  }
+  .pn-schedule-note {
+    color: #9a9a9a;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0 0.2rem;
+  }
+  .pn-banner img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    display: block;
+  }
+  .pn-body {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    padding: 1.5rem 1.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .pn-text {
+    color: #ccc;
+    font-size: 0.93rem;
+    line-height: 1.65;
+    margin: 0;
+    overflow-wrap: break-word;
+  }
+  .pn-text strong {
+    color: #e8d9bf;
+  }
+  .pn-sec {
+    color: #e8a547;
+    font-size: 1.18rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid rgba(232, 165, 71, 0.25);
+  }
+  .pn-sub {
+    color: #e8c887;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-top: 0.7rem;
+  }
+  .pn-item {
+    color: #e2b26a;
+    font-size: 0.98rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+  }
+  .pn-sub2 {
+    color: #ddd0b3;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: 0.35rem;
+  }
+  .pn-detail {
+    color: #bbb;
+    padding-left: 0.9rem;
+  }
+  .pn-img {
+    margin: 0.45rem 0;
+  }
+  .pn-img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: block;
+  }
+  .pn-table-wrap {
+    overflow-x: auto;
+    margin: 0.5rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+  }
+  .pn-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+    color: #ccc;
+    min-width: 480px;
+  }
+  .pn-table th {
+    text-align: left;
+    background: rgba(232, 165, 71, 0.12);
+    color: #e8c887;
+    font-weight: 700;
+    padding: 0.6rem 0.8rem;
+    white-space: nowrap;
+  }
+  .pn-table td {
+    padding: 0.6rem 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  .pn-hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0.8rem 0;
+  }
+  .pn-footer-nav {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+  .pn-back {
+    display: inline-block;
+    background: rgba(232, 165, 71, 0.12);
+    border: 1px solid rgba(232, 165, 71, 0.3);
+    color: #e8c887;
+    border-radius: 8px;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s ease;
+  }
+  .pn-back:hover {
+    background: rgba(232, 165, 71, 0.22);
+  }
+  @media (max-width: 640px) {
+    .pn-body {
+      padding: 1.05rem 1rem;
+    }
+  }
+</style>

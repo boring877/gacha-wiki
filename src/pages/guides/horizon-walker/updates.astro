@@ -1,0 +1,216 @@
+---
+// Horizon Walker patch notes index: every official English patch note from the Naver Lounge.
+import GuideLayout from '../../../layouts/horizon-walker/GuideLayout.astro';
+import { patchNotes } from '../../../data/horizon-walker/patch-notes.js';
+
+export const prerender = true;
+
+const title = 'Patch Notes and Updates | Horizon Walker Wiki';
+const description =
+  'All official English Horizon Walker patch notes from the Naver Lounge, from the November 2024 global launch to the latest maintenance. New Vanguards, weapons, events, balance changes, and fixes.';
+
+const fmt = (iso: string) =>
+  new Date(iso + 'T12:00:00Z').toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+
+const groupByMonth = (notes: typeof patchNotes) => {
+  const groups: { month: string; notes: typeof patchNotes }[] = [];
+  for (const n of notes) {
+    const month = n.date.slice(0, 7);
+    const label = new Date(n.date + 'T12:00:00Z').toLocaleDateString('en-US', {
+      month: 'long',
+      year: 'numeric',
+      timeZone: 'UTC',
+    });
+    const last = groups[groups.length - 1];
+    if (last && last.month === month) last.notes.push(n);
+    else groups.push({ month, notes: [n] });
+  }
+  return groups;
+};
+
+const groups = groupByMonth(patchNotes);
+const newest = patchNotes[0];
+const oldest = patchNotes[patchNotes.length - 1];
+---
+
+<GuideLayout title={title} description={description} pageTitle="Patch Notes" subtitle={`Every official English patch note, ${fmt(oldest.date)} to ${fmt(newest.date)}.`}>
+  <div class="pn-index">
+    <div class="pn-index-intro">
+      <p>
+        The Horizon Walker team publishes an English patch note on the official Naver Lounge for
+        every maintenance. This archive mirrors all of them in full, with the original structure,
+        tables, and images. The Korean service schedule runs a few weeks ahead of the global
+        release, and exact skill values are redacted as N in the official text.
+      </p>
+    </div>
+
+    <div class="pn-index-controls">
+      <input
+        type="text"
+        id="pn-search"
+        class="pn-search"
+        placeholder="Search patch notes (e.g. Korabi, Demi, event...)"
+        autocomplete="off"
+      />
+      <span class="pn-count" id="pn-count">{patchNotes.length} patch notes</span>
+    </div>
+
+    {
+      groups.map((g) => (
+        <section class="pn-month" data-month={g.month}>
+          <h2 class="pn-month-title">{new Date(g.month + '-15T12:00:00Z').toLocaleDateString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' })}</h2>
+          <div class="pn-cards">
+            {g.notes.map((n) => (
+              <a class="pn-card" href={`/guides/horizon-walker/updates/${n.slug}/`} data-search={`${n.title} ${n.highlights.join(' ')}`.toLowerCase()}>
+                <div class="pn-card-date">{fmt(n.date)}</div>
+                <h3 class="pn-card-title">{n.title}</h3>
+                {n.highlights.length > 0 && (
+                  <div class="pn-card-tags">
+                    {n.highlights.map((h) => (
+                      <span class="pn-card-tag">{h}</span>
+                    ))}
+                  </div>
+                )}
+              </a>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+
+  <script is:inline>
+    const input = document.getElementById('pn-search');
+    const cards = document.querySelectorAll('.pn-card');
+    const months = document.querySelectorAll('.pn-month');
+    const count = document.getElementById('pn-count');
+    const total = cards.length;
+    input.addEventListener('input', () => {
+      const q = input.value.trim().toLowerCase();
+      let visible = 0;
+      cards.forEach((c) => {
+        const show = !q || c.dataset.search.includes(q);
+        c.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      months.forEach((m) => {
+        const any = [...m.querySelectorAll('.pn-card')].some((c) => c.style.display !== 'none');
+        m.style.display = any ? '' : 'none';
+      });
+      count.textContent = q ? `${visible} of ${total} patch notes` : `${total} patch notes`;
+    });
+  </script>
+
+  <style>
+    .pn-index {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .pn-index-intro {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(232, 165, 71, 0.18);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+    }
+    .pn-index-intro p {
+      color: #ccc;
+      font-size: 0.93rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .pn-index-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+    .pn-search {
+      flex: 1;
+      min-width: 220px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      color: #ddd;
+      font-size: 0.92rem;
+      padding: 0.6rem 0.9rem;
+      outline: none;
+    }
+    .pn-search:focus {
+      border-color: rgba(232, 165, 71, 0.5);
+    }
+    .pn-count {
+      color: #999;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+    .pn-month {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .pn-month-title {
+      color: #e8a547;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0.4rem 0 0;
+      border-bottom: 1px solid rgba(232, 165, 71, 0.2);
+      padding-bottom: 0.4rem;
+    }
+    .pn-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 0.9rem;
+    }
+    .pn-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 10px;
+      padding: 0.95rem 1.05rem;
+      text-decoration: none;
+      transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+    }
+    .pn-card:hover {
+      border-color: rgba(232, 165, 71, 0.45);
+      background: rgba(232, 165, 71, 0.07);
+      transform: translateY(-2px);
+    }
+    .pn-card-date {
+      color: #999;
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+    }
+    .pn-card-title {
+      color: #e8d9bf;
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.4;
+    }
+    .pn-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .pn-card-tag {
+      color: #b9a77f;
+      background: rgba(232, 165, 71, 0.1);
+      border: 1px solid rgba(232, 165, 71, 0.22);
+      border-radius: 999px;
+      padding: 0.12rem 0.55rem;
+      font-size: 0.72rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+  </style>
+</GuideLayout>

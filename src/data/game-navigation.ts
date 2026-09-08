@@ -166,6 +166,10 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
           { name: 'Redeem Codes', href: '/guides/horizon-walker/redeem-codes/' },
         ],
       },
+      {
+        title: 'Community',
+        links: [{ name: 'Patch Notes', href: '/guides/horizon-walker/updates/' }],
+      },
     ],
   },
   'rebellion-gilgamesh': {
