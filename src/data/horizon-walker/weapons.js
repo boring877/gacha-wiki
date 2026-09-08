@@ -49,6 +49,15 @@ import { maximiliaData } from './characters/maximilia.js';
 import { eugeniaData } from './characters/eugenia.js';
 import { emiliaData } from './characters/emilia.js';
 import { palekarData } from './characters/palekar.js';
+import { miraData } from './characters/mira.js';
+import { miranaData } from './characters/mirana.js';
+import { ahramData } from './characters/ahram.js';
+import { kotohaData } from './characters/kotoha.js';
+import { nonohaData } from './characters/nonoha.js';
+import { garudData } from './characters/garud.js';
+import { dorotheaData } from './characters/dorothea.js';
+import { marikaData } from './characters/marika.js';
+import { juzaData } from './characters/juza.js';
 
 // Helper function to extract weapon skills from character data
 function extractWeaponSkills(characterData) {
@@ -123,6 +132,15 @@ const CHARACTER_DATA = {
   eugenia: eugeniaData,
   emilia: emiliaData,
   palekar: palekarData,
+  mira: miraData,
+  mirana: miranaData,
+  ahram: ahramData,
+  kotoha: kotohaData,
+  nonoha: nonohaData,
+  garud: garudData,
+  dorothea: dorotheaData,
+  marika: marikaData,
+  juza: juzaData,
 };
 
 // Dynamically build weapon skills from character data
@@ -136,6 +154,21 @@ Object.entries(CHARACTER_DATA).forEach(([slug, characterData]) => {
 
 // Dynamically build weapons array from character data
 const HORIZON_WALKER_WEAPONS = [];
+
+// Numeric weapon-ATK values for sorting, from levelStats Lv60 (new data) or legacy stat keys
+function weaponAtkValues(weapon) {
+  const out = { melee: 0, magic: 0, ranged: 0 };
+  const ls = weapon.levelStats || {};
+  const pick = (needle, legacy) => {
+    const key = Object.keys(ls).find(k => k.includes(needle));
+    if (key) return Number(ls[key][1]) || 0;
+    return parseFloat(weapon.stats?.[legacy]) || 0;
+  };
+  out.melee = pick('Melee ATK (weapon)', 'weaponMeleeAtk');
+  out.magic = pick('Magic ATK (weapon)', 'weaponMagicAtk');
+  out.ranged = pick('Ranged ATK (weapon)', 'weaponRangedAtk');
+  return out;
+}
 
 // Build weapons array from character data
 Object.entries(CHARACTER_DATA).forEach(([slug, characterData]) => {
@@ -152,6 +185,8 @@ Object.entries(CHARACTER_DATA).forEach(([slug, characterData]) => {
   // Extract just the filename from the image path
   const imageFilename = weapon.image.split('/').pop();
 
+  const atk = weaponAtkValues(weapon);
+
   const weaponEntry = {
     id: weaponKey,
     name: weapon.name,
@@ -164,40 +199,92 @@ Object.entries(CHARACTER_DATA).forEach(([slug, characterData]) => {
       rarity: characterData.rarity,
     },
     stats: weapon.stats,
+    maxLevel: weapon.maxLevel || 60,
+    flavor: weapon.flavor || null,
+    levelStats: weapon.levelStats || null,
+    exLevels: weapon.exLevels || null,
     detailUrl: `/guides/horizon-walker/weapons/${slug.replace('-weapon', '')}/`,
     uniqueSkill: WEAPON_SKILLS[weaponKey]?.unique || null,
     signatureSkill: WEAPON_SKILLS[weaponKey]?.signature || null,
     // Pre-calculated lowercase values for faster client-side filtering
     searchName: weapon.name.toLowerCase(),
     searchCharacter: characterData.name.toLowerCase(),
+    sortMelee: atk.melee,
+    sortMagic: atk.magic,
+    sortRanged: atk.ranged,
   };
 
   HORIZON_WALKER_WEAPONS.push(weaponEntry);
 });
 
+// Legacy stat key -> display name matching the EX weapon convention
+const NON_EX_LABELS = {
+  weaponMeleeAtk: 'Melee ATK (rating)',
+  weaponRangedAtk: 'Ranged ATK (rating)',
+  weaponMagicAtk: 'Magic ATK (rating)',
+  meleeAtkPercent: 'Melee ATK (%)',
+  rangedAtkPercent: 'Ranged ATK (%)',
+  magicAtkPercent: 'Magic ATK (%)',
+  critDmgPercent: 'Crit DMG (%)',
+  critRatePercent: 'Crit Rate (%)',
+  apRecovery: 'AP Recovery (%)',
+  hpPercent: 'Max HP (%)',
+  hpFlat: 'Max HP',
+  def: 'Defense',
+  slashBoost: 'Slash Boost (%)',
+  pierceBoost: 'Pierce Boost (%)',
+  crushBoost: 'Crush Boost (%)',
+  heatBoost: 'Heat Boost (%)',
+  coldBoost: 'Cold Boost (%)',
+  electricBoost: 'Electric Boost (%)',
+};
+
 // Merge non-EX weapons (SS, S, A, B) from extracted game data
 NON_EX_WEAPONS.forEach(weapon => {
+  // Lv 1 -> Lv 60 growth from stats + statGrowth, same shape as EX weapons
+  const levelStats = {};
+  const maxLevel = weapon.maxLevel || 60;
+  Object.entries(weapon.stats || {}).forEach(([key, base]) => {
+    const name = NON_EX_LABELS[key] || key.replace(/([A-Z])/g, ' $1').trim();
+    const growth = Number(weapon.statGrowth?.[key]) || 0;
+    const lv1 = Number(base);
+    levelStats[name] = [lv1, +(lv1 + growth * (maxLevel - 1)).toFixed(2)];
+  });
   HORIZON_WALKER_WEAPONS.push({
     id: `non-ex-${weapon.id}`,
     name: weapon.name,
     description: weapon.description || '',
     type: weapon.type,
     rarity: weapon.rarity,
-    maxLevel: weapon.maxLevel || 60,
+    maxLevel,
     image: weapon.image,
     character: null,
     stats: weapon.stats,
-    statGrowth: weapon.statGrowth || {},
     specialEffect: weapon.specialEffect || null,
+    levelStats: Object.keys(levelStats).length ? levelStats : null,
     detailUrl: `/guides/horizon-walker/weapons/non-ex-${weapon.id}/`,
     uniqueSkill: null,
     signatureSkill: null,
     searchName: weapon.name.toLowerCase(),
     searchCharacter: '',
+    sortMelee: parseFloat(weapon.stats?.weaponMeleeAtk) || 0,
+    sortMagic: parseFloat(weapon.stats?.weaponMagicAtk) || 0,
+    sortRanged: parseFloat(weapon.stats?.weaponRangedAtk) || 0,
   });
 });
 
-export { HORIZON_WALKER_WEAPONS, WEAPON_SKILLS };
+// DB display order: rarity tiers first (EX, SS, S, A, B), then alphabetically
+// (EX by owning character name, non-EX by weapon name)
+const RARITY_ORDER = { EX: 0, SS: 1, S: 2, A: 3, B: 4 };
+HORIZON_WALKER_WEAPONS.sort((a, b) => {
+  const r = (RARITY_ORDER[a.rarity] ?? 9) - (RARITY_ORDER[b.rarity] ?? 9);
+  if (r !== 0) return r;
+  const an = (a.character?.name || a.name).toLowerCase();
+  const bn = (b.character?.name || b.name).toLowerCase();
+  return an.localeCompare(bn);
+});
+
+export { HORIZON_WALKER_WEAPONS };
 
 // Weapon type categories (extracted dynamically from data)
 export const WEAPON_TYPES = [...new Set(HORIZON_WALKER_WEAPONS.map(w => w.type))].sort();

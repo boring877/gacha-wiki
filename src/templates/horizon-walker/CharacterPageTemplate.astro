@@ -11,6 +11,8 @@ import { getCharacterById } from '../../data/horizon-walker/character-gifts.js';
 import { GIFT_BOXES } from '../../data/horizon-walker/gifts.js';
 import { getTagCategory } from '../../data/horizon-walker/characters.js';
 import { SKILL_LEVELS } from '../../data/horizon-walker/skill-levels.js';
+import { r2Url } from '../../data/r2-config.js';
+import { getSkinsByHeroId } from '../../data/horizon-walker/char-skins.js';
 import { getDemiskillData, getMightSkillList, TIER_PROBABILITIES } from '../../data/horizon-walker/demiskills.js';
 
 // Import image components from central location
@@ -437,10 +439,40 @@ if (characterData.skills) {
       const levels = SKILL_LEVELS[gk];
       const maxLvl = Math.max(...Object.keys(levels).map(Number));
       skillLevelData[key] = { gameKey: gk, maxLevel: maxLvl, levels };
+    } else if (/\{\s*[0-9.][0-9.,\s]*\}/.test(String(s.description ?? ''))) {
+      // no coefficient table, but the description embeds a per-level value array like {30,32,...,48}
+      const m = String(s.description).match(/\{\s*([0-9.][0-9.,\s]*?)\s*\}/);
+      const arrLen = m ? m[1].split(',').length : 10;
+      skillLevelData[key] = { gameKey: gk, maxLevel: arrLen, levels: null };
     }
   }
 }
 const skillLevelJson = JSON.stringify(skillLevelData);
+
+function maxLevelValue(key: string): string | null {
+  const ld = skillLevelData[key];
+  if (!ld || !ld.levels) return null;
+  const levelInfo = ld.levels[String(ld.maxLevel)];
+  if (!levelInfo) return null;
+  return String(Math.round(parseFloat(levelInfo.min) * 100));
+}
+
+// Replace the game's N% placeholders with the max-level value, wrapped in a span
+// so the level input can update them live (all N% in one description share one coefficient).
+function renderSkillDesc(desc: unknown, key: string): string {
+  let d = String(desc ?? '');
+  // per-level value arrays {v1,...,vN}: show the max-level (last) value, keep the list for live updates
+  d = d.replace(/\{\s*([-0-9.][-0-9.,%\s]*?)\s*\}/g, (_m, list: string) => {
+    const clean = list.replace(/\s+/g, '');
+    const vals = clean.split(',');
+    return `<span class="skill-arr" data-skill-target="${key}" data-vals="${clean}">${vals[vals.length - 1]}</span>`;
+  });
+  const val = maxLevelValue(key);
+  if (val !== null && d.includes('N%')) {
+    d = d.split('N%').join(`<span class="skill-n" data-skill-target="${key}">${val}%</span>`);
+  }
+  return d;
+}
 
 function getDamageSuffix(damage: any): string {
   if (!damage) return '';
@@ -470,6 +502,7 @@ const characterId = characterData.name
   .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
 
 const giftData = getCharacterById(characterId);
+const heroSkins = (characterData as any).heroId ? getSkinsByHeroId((characterData as any).heroId) : [];
 
 // Helper function to find ALL gift boxes that contain a specific gift
 function findAllGiftBoxes(giftId: string, giftName?: string) {
@@ -527,6 +560,33 @@ const queensTiaraGift = {
 function calculateGiftsNeeded(gift: { totalPoints: number }) {
   const targetPoints = 2000;
   return Math.ceil(targetPoints / gift.totalPoints);
+}
+
+// Split a long story into readable paragraphs: group sentences, ~3 per paragraph
+
+// Flatten per-level value arrays in non-skill descriptions (demiskills etc.):
+// show the max-level (last) value instead of the raw {a,b,c} list.
+function flattenLevelArrays(text) {
+  return String(text ?? '').replace(/\{\s*([-0-9.][-0-9.,%\s]*?)\s*\}/g, (_m, list) => {
+    const vals = list.replace(/\s+/g, '').split(',');
+    return vals[vals.length - 1];
+  });
+}
+
+function splitStoryParagraphs(story: string | undefined): string[] {
+  if (!story) return [];
+  const sentences = story.match(/[^.!?]+[.!?]+(?:["')]?)?/g) || [story];
+  const paragraphs: string[] = [];
+  let current: string[] = [];
+  for (const sentence of sentences) {
+    current.push(sentence.trim());
+    if (current.join(' ').length >= 260) {
+      paragraphs.push(current.join(' '));
+      current = [];
+    }
+  }
+  if (current.length) paragraphs.push(current.join(' '));
+  return paragraphs;
 }
 
 // Helper function to create character description from story
@@ -717,12 +777,33 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
     </div>
 
     <!-- Complete Stats Box (Right) -->
-    <div class="character-stats-container">
+    {characterData.stats && (<div class="character-stats-container">
       <div class="character-stats-box">
         <div class="character-stats-header">
           <h3 class="character-stats-title">Base Stats</h3>
-          <p class="character-stats-explanation">Level 60, full EX</p>
+          <p class="character-stats-explanation" data-stats-caption>Level 60, full EX (EX 6)</p>
         </div>
+        {(characterData as any).rarityStages && (
+          <div class="rarity-stage-selector" data-stages={JSON.stringify((characterData as any).rarityStages)}>
+            {['EX', 'EX 1', 'EX 2', 'EX 3', 'EX 4', 'EX 5', 'EX 6'].map((stage, i) => (
+              <button
+                type="button"
+                class={`rarity-stage-chip${stage === 'EX 6' ? ' active' : ''}`}
+                data-stage={stage}
+                title={`Stats at ${stage}`}
+                aria-label={`Stats at ${stage}`}
+              >
+                <img
+                  src={r2Url('horizon-walker', `tier-icons/UI_Tier_Icon_${String(5 + i).padStart(2, '0')}.png`)}
+                  alt={stage}
+                  width={40}
+                  height={20}
+                  loading="lazy"
+                />
+              </button>
+            ))}
+          </div>
+        )}
 
         <div class="character-stats-subtitle">Core Stats</div>
         <div class="core-stats-explanation">
@@ -734,23 +815,23 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
         </div>
         <div class="stats-core-row">
           <div class="stats-core-item">
-            <div class="stats-core-value">{characterData.stats.strength}</div>
+            <div class="stats-core-value" data-stat-field="strength">{characterData.stats.strength}</div>
             <div class="stats-core-label">STR</div>
           </div>
           <div class="stats-core-item">
-            <div class="stats-core-value">{characterData.stats.technic}</div>
+            <div class="stats-core-value" data-stat-field="technic">{characterData.stats.technic}</div>
             <div class="stats-core-label">TEC</div>
           </div>
           <div class="stats-core-item">
-            <div class="stats-core-value">{characterData.stats.intelligence}</div>
+            <div class="stats-core-value" data-stat-field="intelligence">{characterData.stats.intelligence}</div>
             <div class="stats-core-label">INT</div>
           </div>
           <div class="stats-core-item">
-            <div class="stats-core-value">{characterData.stats.vitality}</div>
+            <div class="stats-core-value" data-stat-field="vitality">{characterData.stats.vitality}</div>
             <div class="stats-core-label">VIT</div>
           </div>
           <div class="stats-core-item">
-            <div class="stats-core-value">{characterData.stats.agility}</div>
+            <div class="stats-core-value" data-stat-field="agility">{characterData.stats.agility}</div>
             <div class="stats-core-label">AGI</div>
           </div>
         </div>
@@ -759,31 +840,31 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
         <div class="stats-table">
           <div class="stats-row">
             <span class="stats-row-label">Max HP</span>
-            <span class="stats-row-value">{characterData.stats.maxHp}</span>
+            <span class="stats-row-value" data-stat-field="maxHp">{characterData.stats.maxHp}</span>
           </div>
           <div class="stats-row">
             <span class="stats-row-label">Melee ATK</span>
-            <span class="stats-row-value">{characterData.stats.meleeAtk}</span>
+            <span class="stats-row-value" data-stat-field="meleeAtk">{characterData.stats.meleeAtk}</span>
           </div>
           <div class="stats-row">
             <span class="stats-row-label">Ranged ATK</span>
-            <span class="stats-row-value">{characterData.stats.rangedAtk}</span>
+            <span class="stats-row-value" data-stat-field="rangedAtk">{characterData.stats.rangedAtk}</span>
           </div>
           <div class="stats-row">
             <span class="stats-row-label">Magic ATK</span>
-            <span class="stats-row-value">{characterData.stats.magicAtk}</span>
+            <span class="stats-row-value" data-stat-field="magicAtk">{characterData.stats.magicAtk}</span>
           </div>
           <div class="stats-row">
             <span class="stats-row-label">Speed</span>
             <span class="stats-row-value">{characterData.stats.spd}</span>
           </div>
-          <div class="stats-row" title="Base AP is 100. The value shown is the total, so Starting AP of 145 means +45 bonus AP at round 1.">
+          <div class="stats-row" title="Starting AP = the character's base starting AP + AP Recovery.">
             <span class="stats-row-label">Starting AP<sup class="stats-note">*</sup></span>
-            <span class="stats-row-value">{characterData.stats.startingAp}</span>
+            <span class="stats-row-value" data-stat-field="startingAp">{characterData.stats.startingAp}</span>
           </div>
           <div class="stats-row">
             <span class="stats-row-label">AP Recovery</span>
-            <span class="stats-row-value">{characterData.stats.apRecovery}</span>
+            <span class="stats-row-value" data-stat-field="apRecovery">{characterData.stats.apRecovery}</span>
           </div>
           <div class="stats-row">
             <span class="stats-row-label">Accuracy</span>
@@ -791,7 +872,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
           </div>
           <div class="stats-row">
             <span class="stats-row-label">Evade</span>
-            <span class="stats-row-value">{characterData.stats.evade}</span>
+            <span class="stats-row-value" data-stat-field="evade">{characterData.stats.evade}</span>
           </div>
           <div class="stats-row">
             <span class="stats-row-label">Crit Rate</span>
@@ -806,7 +887,32 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
             <span class="stats-row-value">{characterData.stats.blockRate}</span>
           </div>
         </div>
-        <p class="stats-footnote">* Starting AP includes a base of 100. A value of 145 means +45 bonus AP at round 1 (only the amount above 100 is the increase).</p>
+        <p class="stats-footnote">* Starting AP is the total AP at the start of battle: each character's own base starting AP plus their AP Recovery (shown above). The AP Recovery portion grows with AGI as you raise EX stages.</p>
+        <script is:inline>
+          (function() {
+            document.querySelectorAll('.rarity-stage-selector').forEach(function(sel) {
+              var stages;
+              try { stages = JSON.parse(sel.getAttribute('data-stages') || '{}'); } catch (e) { return; }
+              var box = sel.closest('.character-stats-box');
+              if (!box) return;
+              sel.querySelectorAll('.rarity-stage-chip').forEach(function(chip) {
+                chip.addEventListener('click', function() {
+                  sel.querySelectorAll('.rarity-stage-chip').forEach(function(c) { c.classList.remove('active'); });
+                  chip.classList.add('active');
+                  var stage = chip.getAttribute('data-stage');
+                  var st = stages[stage];
+                  if (!st) return;
+                  box.querySelectorAll('[data-stat-field]').forEach(function(el) {
+                    var f = el.getAttribute('data-stat-field');
+                    if (st[f] !== undefined) el.textContent = st[f];
+                  });
+                  var cap = box.querySelector('[data-stats-caption]');
+                  if (cap) cap.textContent = 'Level 60, ' + stage + (stage === 'EX 6' ? ' (full)' : '');
+                });
+              });
+            });
+          })();
+        </script>
 
         <div class="character-stats-subtitle">Attributes</div>
         <div class="stats-attr-table">
@@ -858,7 +964,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
         </div>
       </div>
     </div>
-  </div>
+)}  </div>
 </section>
 
 <!-- Character Story Section -->
@@ -867,7 +973,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
     <section class="content-section character-story-section">
       <h2 class="section-title">Character Story</h2>
       <div class="character-story-content">
-        <p class="character-story-text">{characterData.story}</p>
+        {splitStoryParagraphs(characterData.story).map((para) => <p class="character-story-text">{para}</p>)}
       </div>
     </section>
   )
@@ -910,7 +1016,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                     )}
                   </div>
                 </div>
-                <p class="skill-description" set:html={safeRenderHtml(triggerSkill.description).content} />
+                <p class="skill-description" set:html={safeRenderHtml(renderSkillDesc(triggerSkill.description, triggerKey)).content} />
                 {triggerSkill.damage && (
                   <div class="skill-damage">
                     <span class="damage-label">Damage:</span>{' '}
@@ -954,7 +1060,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                           )}
                         </div>
                       </div>
-                      <p class="skill-description" set:html={safeRenderHtml(pair.baseSkill.description).content} />
+                      <p class="skill-description" set:html={safeRenderHtml(renderSkillDesc(pair.baseSkill.description, pair.baseKey)).content} />
                       {pair.baseSkill.damage && (
                         <div class="skill-damage">
                           <span class="damage-label">Damage:</span>{' '}
@@ -992,7 +1098,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                           )}
                         </div>
                       </div>
-                      <p class="skill-description" set:html={safeRenderHtml(pair.replacementSkill.description).content} />
+                      <p class="skill-description" set:html={safeRenderHtml(renderSkillDesc(pair.replacementSkill.description, pair.replacementKey)).content} />
                       {pair.replacementSkill.damage && (
                         <div class="skill-damage">
                           <span class="damage-label">Damage:</span>{' '}
@@ -1034,7 +1140,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                   )}
                 </div>
               </div>
-              <p class="skill-description" set:html={safeRenderHtml(skill.description).content} />
+              <p class="skill-description" set:html={safeRenderHtml(renderSkillDesc(skill.description, key)).content} />
               {skill.damage && (
                 <div class="skill-damage">
                   <span class="damage-label">Damage:</span>{' '}
@@ -1065,17 +1171,29 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 
         var skillData = data[key];
         if (!skillData) return;
-        var levelInfo = skillData.levels[String(level)];
-        if (!levelInfo) return;
+        var levelInfo = skillData.levels ? skillData.levels[String(level)] : null;
 
         var card = input.closest('.skill-card') || input.closest('[class*=skill]');
         if (!card) return;
-        var dmgEl = card.querySelector('[data-skill-key="' + key + '"]');
-        if (!dmgEl) return;
 
-        var val = Math.round(parseFloat(levelInfo.min) * 100);
-        var suffix = dmgEl.getAttribute('data-damage-suffix') || '';
-        dmgEl.textContent = val + '%' + suffix;
+        if (levelInfo) {
+          var val = Math.round(parseFloat(levelInfo.min) * 100);
+          card.querySelectorAll('.skill-n[data-skill-target="' + key + '"]').forEach(function(el) {
+            el.textContent = val + '%';
+          });
+          var dmgEl = card.querySelector('[data-skill-key="' + key + '"]');
+          if (dmgEl) {
+            var suffix = dmgEl.getAttribute('data-damage-suffix') || '';
+            dmgEl.textContent = val + '%' + suffix;
+          }
+        }
+
+        // per-level value arrays inside the description: pick the value for this level
+        card.querySelectorAll('.skill-arr[data-skill-target="' + key + '"]').forEach(function(el) {
+          var vals = (el.getAttribute('data-vals') || '').split(',');
+          if (!vals.length) return;
+          el.textContent = vals[Math.min(level, vals.length) - 1];
+        });
       }
 
       section.querySelectorAll('.skill-level-input').forEach(function(input) {
@@ -1157,13 +1275,13 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
         </div>
         <div class="demiskill-authority-body">
           {demiskillData.authoritySkill.description.split('\n\n').map((paragraph: string) => (
-            <p set:html={paragraph} />
+            <p set:html={flattenLevelArrays(paragraph)} />
           ))}
           {demiskillData.authoritySkill.enhancedDescription && (
             <div class="demiskill-enhanced">
               <h4 class="demiskill-enhanced-title">Enhanced Passive</h4>
               {demiskillData.authoritySkill.enhancedDescription.split('\n\n').map((paragraph: string) => (
-                <p set:html={paragraph} />
+                <p set:html={flattenLevelArrays(paragraph)} />
               ))}
             </div>
           )}
@@ -1190,7 +1308,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                 {might.tiers.map((t: any) => (
                   <div class={`demiskill-tier-row demiskill-tier-${t.tier}`}>
                     <span class="demiskill-tier-label">T{t.tier}</span>
-                    <span class="demiskill-tier-desc">{t.description}</span>
+                    <span class="demiskill-tier-desc" set:html={flattenLevelArrays(t.description)} />
                   </div>
                 ))}
               </div>
@@ -1226,10 +1344,10 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
   characterData.weapon && (
     <section class="content-section weapon-section">
       <h2 class="section-title">Weapon: {characterData.weapon.name}</h2>
-      <p class="character-stats-explanation">Stats and skills shown at Level 60 and full EX</p>
+      <p class="character-stats-explanation">{(characterData.weapon as any).levelStats ? 'Base stats grow with weapon level (Lv 1 to Lv 60). EX raises (EX 1 to EX 5) only improve the unique skill.' : 'Stats and skills shown at Level 60 and full EX'}</p>
 
       <div class="weapon-flex">
-        {/* Weapon Image & Stats (Left) */}
+        {/* Left: weapon art + basic stats */}
         <div class="weapon-image-container">
           <div class="weapon-image-box">
             <div class="weapon-image-wrapper">
@@ -1243,63 +1361,151 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                 loading="lazy"
               />
             </div>
+            <div class="weapon-meta-row">
+              <span class="hw-badge" data-type="WeaponType">{characterData.weapon.type}</span>
+              <HWRarityIcon rarity={characterData.weapon.rarity} width={48} height={24} />
+            </div>
           </div>
 
-          <div class="weapon-info-card">
-            <h3 class="weapon-info-title">Weapon Info</h3>
-
-            <div class="weapon-info-grid">
-              <div class="weapon-info-item">
-                <div class="weapon-info-label">Type</div>
-                <span class="hw-badge" data-type="WeaponType">
-                  {characterData.weapon.type}
-                </span>
-              </div>
-              <div class="weapon-info-item">
-                <div class="weapon-info-label">Rarity</div>
-                <HWRarityIcon rarity={characterData.weapon.rarity} width={48} height={24} />
-              </div>
-            </div>
-
-            <h4 class="weapon-stats-title">Weapon Stats</h4>
-            <div class="weapon-stats-grid">
-              {characterData.weapon.stats &&
-                Object.entries(characterData.weapon.stats).map(([key, value]) => (
-                  <div class="stat-item">
-                    <div class="stat-label">
-                      {key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
+          {(characterData.weapon as any).levelStats ? (
+            <div class="weapon-basic-card">
+              <h3 class="weapon-basic-title">Basic Stats (Lv 1 {'→'} Lv 60)</h3>
+              <div class="stats-table">
+                {Object.entries((characterData.weapon as any).levelStats).map(([stat, vals]: [string, any]) => {
+                  const isPct = stat.includes('(%)');
+                  const fmt = (v: number) => (isPct ? `+${v}%` : `${v}`);
+                  return (
+                    <div class="stats-row">
+                      <span class="stats-row-label">{stat.replace(' (weapon)', ' (rating)')}</span>
+                      <span class="stats-row-value">{fmt(vals[0])} {'→'} {fmt(vals[1])}</span>
                     </div>
-                    <div class="stat-value">{value}</div>
-                  </div>
-                ))}
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          ) : null}
         </div>
 
-        {/* Weapon Skills (Right) */}
+        {/* Right: unique skill (EX tabs) + signature skill */}
         <div class="weapon-skills-container">
-          <div class="weapon-skills-box">
-            <h3 class="weapon-skills-title">Weapon Skills</h3>
-
-            {highlightedWeaponSkills &&
-              Object.entries(highlightedWeaponSkills).map(([key, skill]: [string, any]) => (
-                <div class={`weapon-skill-card ${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`}>
-                  <div class="weapon-skill-header">
-                    <h4 class="weapon-skill-title">{skill.name}</h4>
-                    <span class="hw-badge" data-type={skill.type || 'Unique'}>
-                      {skill.type || 'Unique'}
-                    </span>
+          {highlightedWeaponSkills &&
+            Object.entries(highlightedWeaponSkills).map(([key, skill]: [string, any]) => {
+              const isSignature = String(skill.type || '').includes('Signature');
+              const shortName = isSignature ? String(skill.name || '').replace(/^[^:]+Signature:\s*/, '') : skill.name;
+              return (
+                <div class={`weapon-skill-card2${isSignature ? ' weapon-skill-card2-sig' : ''}`}>
+                  <div class="weapon-skill-head">
+                    <h3 class="weapon-skill-head-title">{isSignature ? `Signature Skill: ${shortName}` : `Unique Skill: ${skill.name}`}</h3>
+                    <span class="hw-badge" data-type={skill.type || 'Unique'}>{skill.type || 'Unique'}</span>
                   </div>
-                  <p class="weapon-skill-description" set:html={safeRenderHtml(skill.description).content} />
+
+                  {!isSignature && (characterData.weapon as any).exLevels && (
+                    <div class="weapon-ex-row">
+                      <span class="weapon-ex-label">Skill values at raise:</span>
+                      <div class="weapon-level-selector weapon-ex-tabs">
+                        {[1, 2, 3, 4, 5].map((lv) => (
+                          <button
+                            type="button"
+                            class={`weapon-level-chip${lv === 5 ? ' active' : ''}`}
+                            data-weapon-level={lv}
+                            title={`EX ${lv}`}
+                            aria-label={`EX ${lv}`}
+                          >
+                            <img src={r2Url('horizon-walker', `tier-icons/UI_Tier_Icon_${String(5 + lv).padStart(2, '0')}.png`)} alt={`EX ${lv}`} width={40} height={38} loading="lazy" />
+                          </button>
+                        ))}
+                      </div>
+                      <span class="weapon-ex-view" data-ex-view>EX 5</span>
+                    </div>
+                  )}
+
+                  <div class="weapon-skill-panel">
+                    <p class="weapon-skill-description" data-desc-levels={!isSignature && (characterData.weapon as any).exLevels?.descByLevel ? JSON.stringify((characterData.weapon as any).exLevels.descByLevel) : undefined} set:html={safeRenderHtml(String(skill.description ?? "").replace(/\{\s*([-0-9.][-0-9.,%\s]*?)\s*\}/g, (_w, list) => { const vals = list.replace(/\s+/g, '').split(','); return `<span class="weapon-arr" data-vals="${list.replace(/\s+/g, '')}">${vals[vals.length - 1]}</span>`; })).content} />
+                  </div>
+
+                  {isSignature && (
+                    <p class="weapon-skill-reqnote">
+                      Requires {characterData.name}: only takes effect while {characterData.name} has this weapon equipped. Fixed: no weapon level or EX scaling.
+                    </p>
+                  )}
                   {skill.note && (
                     <div class="weapon-skill-note">
                       <strong>Note:</strong> {skill.note}
                     </div>
                   )}
                 </div>
-              ))}
-          </div>
+              );
+            })}
         </div>
+      </div>
+
+        <script is:inline>
+          (function() {
+            document.querySelectorAll('.weapon-level-selector').forEach(function(sel) {
+              var wrap = sel.closest('.weapon-section');
+              if (!wrap) return;
+              sel.querySelectorAll('.weapon-level-chip').forEach(function(chip) {
+                chip.addEventListener('click', function() {
+                  sel.querySelectorAll('.weapon-level-chip').forEach(function(c) { c.classList.remove('active'); });
+                  chip.classList.add('active');
+                  var lv = parseInt(chip.getAttribute('data-weapon-level')) || 5;
+                  wrap.querySelectorAll('.weapon-arr').forEach(function(el) {
+                    var vals = (el.getAttribute('data-vals') || '').split(',');
+                    if (vals.length) el.textContent = vals[Math.min(lv, vals.length) - 1];
+                  });
+                  wrap.querySelectorAll('[data-effect-values]').forEach(function(el) {
+                    var vals = (el.getAttribute('data-effect-values') || '').split('/');
+                    if (vals.length) el.textContent = vals[Math.min(lv, vals.length) - 1].trim();
+                  });
+                  wrap.querySelectorAll('[data-desc-levels]').forEach(function(el) {
+                    try {
+                      var descs = JSON.parse(el.getAttribute('data-desc-levels'));
+                      if (descs && descs.length) el.textContent = descs[Math.min(lv, descs.length) - 1];
+                    } catch (e) {}
+                  });
+                  var view = wrap.querySelector('[data-ex-view]');
+                  if (view) view.textContent = 'EX ' + lv;
+                });
+              });
+            });
+          })();
+        </script>
+    </section>
+  )
+}
+
+<!-- Character Skins Section -->
+{
+  heroSkins.length > 1 && (
+    <section class="content-section character-skins-section">
+      <h2 class="section-title">Skins</h2>
+      <div class="skins-grid">
+        {heroSkins.map((skin) => (
+          <div class={`skin-card${skin.isDefault ? ' skin-default' : ''}`}>
+            <div class="skin-icon-wrap">
+              <img
+                src={r2Url('horizon-walker', `heroes/${skin.fullIcon || skin.icon}`)}
+                alt={`${characterData.name} ${skin.name} skin`}
+                width={150}
+                height={220}
+                loading="lazy"
+                data-skin-icon={skin.icon}
+                onerror={`if(this.dataset.step!=='i'){this.dataset.step='i';this.src='${r2Url('horizon-walker', `heroes/${skin.icon}`)}';}else if(this.dataset.step!=='d'){this.dataset.step='d';this.src='${r2Url('horizon-walker', `heroes/${heroSkins[0].icon}`)}';}else{this.onerror=null;}`}
+              />
+              <span class="skin-number">{skin.number}</span>
+              <img
+                class="skin-face-icon"
+                src={r2Url('horizon-walker', `heroes/${skin.icon}`)}
+                alt={`${characterData.name} ${skin.name} portrait icon`}
+                width={56}
+                height={56}
+                loading="lazy"
+                onerror={`this.onerror=null;this.style.display='none';`}
+              />
+            </div>
+            <p class="skin-name">{skin.name}</p>
+          </div>
+        ))}
       </div>
     </section>
   )

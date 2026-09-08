@@ -99,9 +99,9 @@ export const prerender = true;
                 data-type={weapon.type}
                 data-name={weapon.searchName}
                 data-character={weapon.searchCharacter || ''}
-                data-melee-atk={weapon.stats.weaponMeleeAtk || 0}
-                data-magic-atk={weapon.stats.weaponMagicAtk || 0}
-                data-ranged-atk={weapon.stats.weaponRangedAtk || 0}
+                data-melee-atk={weapon.sortMelee || 0}
+                data-magic-atk={weapon.sortMagic || 0}
+                data-ranged-atk={weapon.sortRanged || 0}
               >
                 <div class="weapon-image-container">
                   <WeaponImage

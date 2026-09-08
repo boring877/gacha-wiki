@@ -214,7 +214,8 @@
   .profile-item {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
+    gap: 0.75rem;
     padding: 0.3rem 0;
     border-bottom: 1px solid var(--hw-white-10);
   }
@@ -224,6 +225,119 @@
     font-size: var(--text-sm);
     color: var(--hw-text-muted);
     font-weight: var(--font-semibold);
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .rarity-stage-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 0.5rem 0 0.25rem;
+  }
+
+  .rarity-stage-chip {
+    background: transparent;
+    border: 1px solid var(--hw-border-muted);
+    border-radius: var(--hw-radius-md);
+    padding: 2px 6px;
+    cursor: pointer;
+    opacity: 0.55;
+    line-height: 0;
+    transition: opacity 0.15s ease, border-color 0.15s ease;
+  }
+
+  .rarity-stage-chip:hover {
+    opacity: 0.9;
+  }
+
+  .rarity-stage-chip.active {
+    opacity: 1;
+    border-color: var(--hw-primary-warm);
+    box-shadow: 0 0 0 1px var(--hw-primary-warm) inset;
+  }
+
+  .character-skins-section .skins-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: var(--hw-spacing-lg);
+  }
+
+  .skin-card {
+    background: var(--hw-gradient-black-30-10);
+    border: 1px solid var(--hw-border-muted);
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.35);
+  }
+
+  .skin-icon-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4.2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.55) 100%);
+    border-radius: var(--hw-radius-md);
+    border: 1px solid var(--hw-border-muted);
+    overflow: hidden;
+    box-shadow: inset 0 -40px 60px -30px rgba(0, 0, 0, 0.7);
+  }
+
+  .skin-icon-wrap > img:first-child {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5));
+  }
+
+  .skin-face-icon {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: var(--hw-radius-md);
+    border: 1px solid var(--hw-border-muted);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  }
+
+  .skin-number {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: var(--hw-black-overlay-20);
+    border: 1px solid var(--hw-border-muted);
+    border-radius: var(--hw-radius-md);
+    font-family: var(--font-primary);
+    font-size: 0.65rem;
+    font-weight: var(--font-semibold);
+    padding: 1px 5px;
+    color: var(--hw-primary-warm);
+  }
+
+  .skin-name {
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    color: var(--hw-text-light);
+    margin: 0;
+  }
+
+  .skin-default .skin-name {
+    color: var(--hw-text-muted);
+  }
+
+  .skill-n {
+    color: var(--hw-primary-warm);
+    font-weight: var(--font-semibold);
   }
 
   .profile-value {
@@ -231,6 +345,9 @@
     font-size: var(--text-sm);
     color: var(--hw-primary-warm);
     font-weight: var(--font-medium);
+    text-align: right;
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   /* Character Stats Container */
@@ -473,9 +590,14 @@
   .character-story-text {
     font-family: var(--font-primary);
     font-size: var(--text-base);
-    line-height: 1.7;
+    line-height: 1.85;
     color: var(--hw-text-light);
-    margin: 0;
+    margin: 0 0 1.1rem 0;
+    max-width: 72ch;
+  }
+
+  .character-story-text:last-child {
+    margin-bottom: 0;
   }
 
   /* ═══════════════════════════════════════════════════════════════════════ */
@@ -1768,7 +1890,7 @@
     border-radius: var(--hw-radius-md);
     width: 64px;
     height: 64px;
-    object-fit: cover;
+    object-fit: contain;
     border: 1px solid var(--hw-border-muted);
   }
 
@@ -1963,4 +2085,140 @@
       gap: 0.2rem;
     }
   }
+.weapon-level-chip {
+    background: var(--hw-bg-darker, rgba(255, 255, 255, 0.05));
+    border: 1px solid var(--hw-border-muted);
+    border-radius: var(--hw-radius-md);
+    cursor: pointer;
+    padding: 0.25rem 0.4rem;
+    line-height: 0;
+    opacity: 0.6;
+  }
+
+  .weapon-level-chip img {
+    display: block;
+    width: 38px;
+    height: 36px;
+    object-fit: contain;
+  }
+
+  .weapon-level-chip.active {
+    opacity: 1;
+    border-color: var(--hw-primary-warm);
+  }
+
+  /* Weapon section redesign: stats card + skill cards with EX tabs */
+  .weapon-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .weapon-basic-card {
+    background: var(--hw-bg-dark, rgba(20, 20, 26, 0.9));
+    border: 1px solid var(--hw-border-accent, rgba(232, 165, 71, 0.35));
+    border-radius: var(--hw-radius-md, 10px);
+    padding: 1rem 1.1rem;
+    margin-top: var(--hw-spacing-md, 1rem);
+  }
+
+  .weapon-basic-title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg, 1.125rem);
+    color: var(--hw-primary-warm, #e8a547);
+    font-weight: var(--font-semibold);
+    margin: 0 0 0.6rem 0;
+  }
+
+  .weapon-skill-card2 {
+    background: var(--hw-bg-dark, rgba(20, 20, 26, 0.9));
+    border: 1px solid var(--hw-border-accent, rgba(232, 165, 71, 0.35));
+    border-radius: var(--hw-radius-md, 10px);
+    padding: 1.1rem 1.25rem;
+    margin-bottom: var(--hw-spacing-md, 1rem);
+  }
+
+  .weapon-skill-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.7rem;
+    flex-wrap: wrap;
+  }
+
+  .weapon-skill-head-title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg, 1.125rem);
+    color: var(--hw-primary-warm, #e8a547);
+    font-weight: var(--font-semibold);
+    margin: 0;
+  }
+
+  .weapon-ex-row {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+  }
+
+  .weapon-ex-label {
+    font-size: var(--text-sm, 0.875rem);
+    color: var(--hw-text-muted, #ccc);
+  }
+
+  .weapon-ex-tabs {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .weapon-ex-view {
+    font-size: var(--text-sm, 0.875rem);
+    font-weight: var(--font-semibold);
+    color: var(--hw-primary-warm, #e8a547);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .weapon-skill-panel {
+    background: var(--hw-bg-darker, rgba(255, 255, 255, 0.05));
+    border: 1px solid var(--hw-border-muted, rgba(255, 255, 255, 0.12));
+    border-radius: var(--hw-radius-md, 10px);
+    padding: 0.85rem 1rem;
+  }
+
+  .weapon-skill-reqnote {
+    margin: 0.6rem 0 0 0;
+    font-size: var(--text-sm, 0.875rem);
+    color: var(--hw-text-muted, #ccc);
+    line-height: var(--leading-normal);
+  }
+
+  /* Weapon basic stats: label on top, Lv 1 -> Lv 60 value below (no cramped wrapping) */
+  .weapon-section .weapon-basic-card .stats-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.1rem;
+  }
+
+  .weapon-section .weapon-basic-card .stats-row-label {
+    white-space: normal;
+  }
+
+  .weapon-section .weapon-basic-card .stats-row-value {
+    margin-left: 0;
+    font-size: var(--text-base);
+  }
+
+  /* breathing room between the weapon explanation note and the content cards */
+  .weapon-section .character-stats-explanation {
+    margin: 0.35rem 0 1.1rem 0;
+    line-height: 1.5;
+  }
+
 } /* End @scope (.horizon-walker-main) */

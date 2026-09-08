@@ -1,6 +1,7 @@
 ---
 import WeaponDetailLayout from '../../../../layouts/horizon-walker/WeaponDetailLayout.astro';
 import { WeaponImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
+import { r2Url } from '../../../../data/r2-config.js';
 
 // Import weapon data
 import { HORIZON_WALKER_WEAPONS } from '../../../../data/horizon-walker/weapons.js';
@@ -16,21 +17,51 @@ export function getStaticPaths() {
 
 const { weapon } = Astro.props;
 
-// Find previous and next weapons for navigation
-const currentIndex = HORIZON_WALKER_WEAPONS.findIndex(w => w.id === weapon.id);
-const prevWeapon = currentIndex > 0 ? HORIZON_WALKER_WEAPONS[currentIndex - 1] : null;
-const nextWeapon =
-  currentIndex < HORIZON_WALKER_WEAPONS.length - 1
-    ? HORIZON_WALKER_WEAPONS[currentIndex + 1]
-    : null;
+const isExWeapon = weapon.character !== null;
+const levelStats = weapon.levelStats || null;
+const exEffects = (weapon.exLevels?.effects || []).filter(e => e.valuesByLevel);
+const EX_STAGES = [1, 2, 3, 4, 5];
+
+// Substitute {v1,v2,...} per-level arrays in the unique skill text at EX stage i.
+// Arrays may carry % or negatives inside ({18%,21%,...}), so the value class is wider
+// than the numeric-only default used elsewhere.
+const substituteAt = (desc: string, stage: number) =>
+  String(desc ?? '').replace(/\{\s*([-0-9.][-0-9.,%\s]*?)\s*\}/g, (_m: string, list: string) => {
+    const vals = list.replace(/\s+/g, '').split(',');
+    return vals[Math.min(stage, vals.length) - 1] ?? list;
+  });
+
+// Unique skill text per EX stage: explicit per-level texts when the game ships them,
+// otherwise the single template with arrays substituted at each stage.
+let exSkillTexts: string[] = [];
+const descByLevel: string[] | null = weapon.exLevels?.descByLevel || null;
+if (descByLevel) {
+  exSkillTexts = descByLevel;
+} else if (weapon.uniqueSkill?.description) {
+  exSkillTexts = EX_STAGES.map(i => substituteAt(weapon.uniqueSkill.description, i));
+  if (new Set(exSkillTexts).size === 1) exSkillTexts = []; // passive does not scale with EX
+}
+const hasExVariation = exSkillTexts.length > 1;
+
+// Non-EX special effects also scale: {v1..v5} arrays over skill Lv 1-5
+let nonExSkillTexts: string[] = [];
+if (!isExWeapon && weapon.specialEffect?.description) {
+  nonExSkillTexts = EX_STAGES.map(i => substituteAt(weapon.specialEffect.description, i));
+  if (new Set(nonExSkillTexts).size === 1) nonExSkillTexts = [];
+}
+const hasNonExVariation = nonExSkillTexts.length > 1;
+
+// Display name without the "<Hero> Signature: " prefix (the owner is obvious on their weapon page)
+const signatureShortName = weapon.signatureSkill?.name
+  ? weapon.signatureSkill.name.replace(/^[^:]+Signature:\s*/, '')
+  : '';
 
 // SEO metadata
-const isExWeapon = weapon.character !== null;
 const title = isExWeapon
   ? `${weapon.name} - ${weapon.character.name}'s Weapon | Horizon Walker Wiki`
   : `${weapon.name} - ${weapon.rarity} ${weapon.type} Weapon | Horizon Walker Wiki`;
 const description = isExWeapon
-  ? `Complete guide for ${weapon.name}, the exclusive ${weapon.rarity} weapon for ${weapon.character.name} in Horizon Walker. View stats, unique skills, and weapon details.`
+  ? `Complete guide for ${weapon.name}, the exclusive ${weapon.rarity} weapon for ${weapon.character.name} in Horizon Walker. Lv 1-60 stats, unique skill at every EX raise, and signature skill.`
   : weapon.description
     ? `${weapon.description}`
     : `${weapon.name} - ${weapon.rarity} rarity ${weapon.type} weapon in Horizon Walker. View base stats, growth, and details.`;
@@ -57,7 +88,9 @@ export const prerender = true;
           <p class="weapon-detail-type">
             {weapon.type} • <HWRarityIcon rarity={weapon.rarity} width={44} height={22} />
             {weapon.maxLevel && weapon.maxLevel > 1 && (
-              <span class="weapon-detail-maxlevel">Max Level {weapon.maxLevel}</span>
+              <span class="weapon-detail-maxlevel">
+                {isExWeapon ? 'Weapon Lv 1 - 60 · EX 1 - 5 Raises' : 'Weapon Lv 1 - 60'}
+              </span>
             )}
           </p>
 
@@ -78,132 +111,293 @@ export const prerender = true;
             </div>
           )}
 
-          {weapon.description && (
-            <p class="weapon-detail-description">{weapon.description}</p>
+          {(weapon.flavor || weapon.description) && (
+            <p class="weapon-detail-description">{weapon.flavor || weapon.description}</p>
           )}
         </div>
       </div>
     </section>
 
-    <!-- Content Grid -->
-    <div class="weapon-content-grid">
-      <!-- Stats Section -->
-      <section class="weapon-stats-card">
-        <h2 class="weapon-stats-title">Weapon Stats</h2>
+    {
+      isExWeapon ? (
+        <!-- ONE container for all weapon data -->
+        <section class="weapon-master-card">
+          <div class="weapon-master-grid">
+            <div class="weapon-block">
+              <h2 class="weapon-stats-title">Basic Stats (Lv 1 {'→'} Lv 60)</h2>
 
-        {
-          weapon.stats && Object.keys(weapon.stats).length > 0 ? (
-            <div class="weapon-stats-list">
-              {Object.entries(weapon.stats).map(([statKey, baseVal]) => {
-                const STAT_LABELS = {
-                  weaponMeleeAtk: 'Melee Attack',
-                  weaponRangedAtk: 'Ranged Attack',
-                  weaponMagicAtk: 'Magic Attack',
-                  meleeAtkPercent: 'Melee ATK %',
-                  rangedAtkPercent: 'Ranged ATK %',
-                  magicAtkPercent: 'Magic ATK %',
-                  critDmgPercent: 'Critical DMG %',
-                  critRatePercent: 'Critical Rate %',
-                  apRecovery: 'AP Recovery %',
-                  hpPercent: 'HP %',
-                  hpFlat: 'HP',
-                  def: 'Defense',
-                  slashBoost: 'Slash Boost',
-                  heatBoost: 'Heat Boost',
-                  coldBoost: 'Cold Boost',
-                };
-                const label = STAT_LABELS[statKey] || statKey;
-                const growth = weapon.statGrowth?.[statKey];
-                const maxLevel = weapon.maxLevel || 60;
-                const maxVal = growth ? +(baseVal + growth * (maxLevel - 1)).toFixed(2) : null;
-                return (
-                  <div class="weapon-stat-row">
-                    <span class="weapon-stat-name">{label}</span>
-                    <span class="weapon-stat-value">
-                      {baseVal}{maxVal !== null && maxVal > baseVal ? ` → ${maxVal}` : ''}
-                    </span>
+              {levelStats ? (
+                <div class="weapon-ex-table-wrap">
+                  <table class="weapon-ex-table">
+                    <thead>
+                      <tr>
+                        <th class="weapon-ex-head-stat">Stat</th>
+                        <th class="weapon-ex-head-lv">Lv 1</th>
+                        <th class="weapon-ex-head-lv">Lv 60</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {Object.entries(levelStats).map(([statKey, vals]: [string, any]) => (
+                        <tr>
+                          <td class="weapon-ex-stat-name">{statKey.replace(' (weapon)', ' (rating)')}</td>
+                          <td class="weapon-ex-val weapon-ex-val-pct">{statKey.includes('(%)') ? `+${vals[0]}%` : vals[0]}</td>
+                          <td class="weapon-ex-val">{statKey.includes('(%)') ? `+${vals[1]}%` : vals[1]}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <p class="weapon-ex-note">
+                    Base stats grow with weapon level (Lv 1 to 60, values at Lv 60 are the max).
+                    ATK rating uses the game's 10-point scale; (%) rows are bonuses applied to the
+                    wielder's stats. EX raises do not change these stats.
+                  </p>
+                </div>
+              ) : (
+                <p style="color: var(--hw-text-muted); font-style: italic;">
+                  This weapon grants no base stat bonuses; its value is the unique passive skill.
+                </p>
+              )}
+            </div>
+
+            <div class="weapon-block">
+              <div class="weapon-exskills-header">
+                <h2 class="weapon-stats-title">Unique Skill: {weapon.uniqueSkill?.name}</h2>
+                <span class="hw-badge" data-type="Unique">Unique</span>
+              </div>
+
+              {hasExVariation ? (
+                <div class="weapon-ex-tabs-wrap">
+                  <div class="weapon-ex-tabs" role="tablist">
+                    {exSkillTexts.map((_: string, i: number) => (
+                      <button
+                        type="button"
+                        role="tab"
+                        class={`weapon-ex-tab${i === exSkillTexts.length - 1 ? ' active' : ''}`}
+                        data-ex-stage={i + 1}
+                        aria-label={`EX ${i + 1}`}
+                      >
+                        <img
+                          src={r2Url('horizon-walker', `tier-icons/UI_Tier_Icon_${String(6 + i).padStart(2, '0')}.png`)}
+                          alt={`EX ${i + 1}`}
+                          width={40}
+                          height={38}
+                          loading="lazy"
+                        />
+                      </button>
+                    ))}
                   </div>
-                );
-              })}
+                  <div class="weapon-exskill-panels">
+                    {exSkillTexts.map((text: string, i: number) => (
+                      <div class={`weapon-exskill-panel${i === exSkillTexts.length - 1 ? ' active' : ''}`} data-ex-stage={i + 1}>
+                        <img
+                          class="weapon-exskill-stage-icon"
+                          src={r2Url('horizon-walker', `tier-icons/UI_Tier_Icon_${String(6 + i).padStart(2, '0')}.png`)}
+                          alt={`EX ${i + 1}`}
+                          width={48}
+                          height={46}
+                          loading="lazy"
+                        />
+                        <p class="weapon-exskill-text">{text}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : weapon.uniqueSkill?.description ? (
+                <div class="weapon-exskill-panels">
+                  <div class="weapon-exskill-panel active">
+                    <p class="weapon-exskill-text">{substituteAt(weapon.uniqueSkill.description, 5)}</p>
+                  </div>
+                  <p class="weapon-ex-note">This passive does not scale with EX raises.</p>
+                </div>
+              ) : (
+                <p style="color: var(--hw-text-muted); font-style: italic;">
+                  Skill details pending release.
+                </p>
+              )}
             </div>
-          ) : (
-            <p style="color: var(--hw-text-muted); font-style: italic;">
-              No stat data available yet
-            </p>
-          )
-        }
-      </section>
-
-      <!-- Skills / Special Effect Section -->
-      <section class="weapon-skills-card">
-        <div class="weapon-skills-header">
-          <h2 class="weapon-skills-title">{weapon.specialEffect ? 'Special Effect' : 'Weapon Skills'}</h2>
-        </div>
-
-        {weapon.specialEffect && (
-          <div class="weapon-skill-block">
-            <div class="weapon-skill-header">
-              <h3 class="weapon-skill-name">{weapon.specialEffect.name}</h3>
-              <span class="weapon-skill-type weapon-skill-unique">Special</span>
-            </div>
-            {weapon.specialEffect.description && (
-              <p class="weapon-skill-description">{weapon.specialEffect.description}</p>
-            )}
           </div>
-        )}
 
-        {
-          weapon.uniqueSkill && (
-            <div class="weapon-skill-block">
-              <div class="weapon-skill-header">
-                <h3 class="weapon-skill-name">{weapon.uniqueSkill.name}</h3>
-                <span class="weapon-skill-type weapon-skill-unique">Unique</span>
-              </div>
-              <p class="weapon-skill-description">{weapon.uniqueSkill.description}</p>
-            </div>
-          )
-        }
-        {
-          weapon.signatureSkill && (
-            <div class="weapon-skill-block">
-              <div class="weapon-skill-header">
-                <h3 class="weapon-skill-name">{weapon.signatureSkill.name}</h3>
-                <span class="weapon-skill-type weapon-skill-signature">Signature</span>
-              </div>
-              <p class="weapon-skill-description">{weapon.signatureSkill.description}</p>
-            </div>
-          )
-        }
+          <div class="weapon-master-divider"></div>
 
-        {
-          !weapon.specialEffect && !weapon.uniqueSkill && !weapon.signatureSkill && (
-            <p style="color: var(--hw-text-muted); font-style: italic;">
-              No special effect
-            </p>
-          )
-        }
-      </section>
-    </div>
+          {exEffects.length > 0 && (
+          <div class="weapon-master-grid">
+            <div class="weapon-block">
+              <div class="weapon-effects-block" style="margin-top: 0;">
+                    <h3 class="weapon-effects-subtitle">Skill Effect Values per EX Raise</h3>
+                    {exEffects.map(effect => {
+                      const vals = String(effect.valuesByLevel).split('/').map(v => v.trim());
+                      const raw = String(effect.name);
+                      const label = (raw.includes('{v}')
+                        ? raw.replace(/\{\s*v\s*\}/g, '').replace(/[\s+%]+$/, '')
+                        : raw
+                      ).replace(/\s{2,}/g, ' ').trim();
+                      return (
+                        <div class="weapon-effect-row">
+                          <span class="weapon-effect-name">{label}</span>
+                          <span class="weapon-effect-vals">
+                            {EX_STAGES.map((lv, i) => (
+                              <span class="weapon-effect-val">
+                                <span class="weapon-effect-lv">EX {lv}</span>
+                                {vals[i] ?? vals[vals.length - 1] ?? '-'}
+                              </span>
+                            ))}
+                          </span>
+                        </div>
+                      );
+                    })}
+              </div>
+            </div>
+          </div>
+          )}
+
+            <div class="weapon-block">
+              <div class="weapon-exskills-header">
+                <h2 class="weapon-stats-title">Signature Skill{signatureShortName ? `: ${signatureShortName}` : ''}</h2>
+                {weapon.signatureSkill && <span class="hw-badge" data-type="Signature">Signature</span>}
+              </div>
+
+              {
+                weapon.signatureSkill && (
+                  <div class="weapon-exskill-panels">
+                    <div class="weapon-exskill-panel active">
+                      <p class="weapon-exskill-text">{substituteAt(weapon.signatureSkill.description, 5)}</p>
+                    </div>
+                  </div>
+                )
+              }
+
+              {
+                weapon.signatureSkill && (
+                  <p class="weapon-skill-levelnote">
+                    Requires {weapon.character.name}: this signature skill only takes effect while {weapon.character.name} has this weapon equipped. It does not change with weapon level or EX raises.
+                  </p>
+                )
+              }
+
+              {
+                !weapon.signatureSkill && (
+                  <p style="color: var(--hw-text-muted); font-style: italic;">
+                    No signature skill
+                  </p>
+                )
+              }
+            </div>
+          </div>
+        </section>
+      ) : (
+        <!-- Non-EX weapons: same single-container design -->
+        <section class="weapon-master-card">
+          <div class="weapon-master-grid">
+            <div class="weapon-block">
+              <h2 class="weapon-stats-title">Basic Stats (Lv 1 {'→'} Lv 60)</h2>
+
+              {levelStats ? (
+                <div class="weapon-ex-table-wrap">
+                  <table class="weapon-ex-table">
+                    <thead>
+                      <tr>
+                        <th class="weapon-ex-head-stat">Stat</th>
+                        <th class="weapon-ex-head-lv">Lv 1</th>
+                        <th class="weapon-ex-head-lv">Lv 60</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {Object.entries(levelStats).map(([statKey, vals]: [string, any]) => (
+                        <tr>
+                          <td class="weapon-ex-stat-name">{statKey}</td>
+                          <td class="weapon-ex-val weapon-ex-val-pct">{statKey.includes('(%)') ? `+${vals[0]}%` : vals[0]}</td>
+                          <td class="weapon-ex-val">{statKey.includes('(%)') ? `+${vals[1]}%` : vals[1]}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <p class="weapon-ex-note">
+                    Base stats grow with weapon level (Lv 1 to 60, values at Lv 60 are the max).
+                    ATK rating uses the game's 10-point scale; (%) rows are bonuses applied to the
+                    wielder's stats.
+                  </p>
+                </div>
+              ) : (
+                <p style="color: var(--hw-text-muted); font-style: italic;">
+                  No stat data available yet
+                </p>
+              )}
+            </div>
+          </div>
+
+          {weapon.specialEffect && (
+            <>
+              <div class="weapon-master-divider"></div>
+              <div class="weapon-master-grid">
+                <div class="weapon-block">
+                  <div class="weapon-exskills-header">
+                    <h2 class="weapon-stats-title">Special Effect{weapon.specialEffect.name ? `: ${weapon.specialEffect.name.replace(/^Unique:\s*/, '')}` : ''}</h2>
+                    <span class="hw-badge" data-type="Unique">Special</span>
+                  </div>
+
+                  {hasNonExVariation ? (
+                    <div class="weapon-ex-tabs-wrap">
+                      <div class="weapon-ex-tabs" role="tablist">
+                        {nonExSkillTexts.map((_: string, i: number) => (
+                          <button
+                            type="button"
+                            role="tab"
+                            class={`weapon-ex-tab weapon-ex-tab-text${i === nonExSkillTexts.length - 1 ? ' active' : ''}`}
+                            data-ex-stage={i + 1}
+                          >
+                            Lv {i + 1}
+                          </button>
+                        ))}
+                      </div>
+                      <div class="weapon-exskill-panels">
+                        {nonExSkillTexts.map((text: string, i: number) => (
+                          <div class={`weapon-exskill-panel${i === nonExSkillTexts.length - 1 ? ' active' : ''}`} data-ex-stage={i + 1}>
+                            <span class="weapon-exskill-stage-label">Skill Lv {i + 1}</span>
+                            <p class="weapon-exskill-text">{text}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <div class="weapon-exskill-panels">
+                      <div class="weapon-exskill-panel active">
+                        <p class="weapon-exskill-text">{substituteAt(weapon.specialEffect.description, 5)}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  <p class="weapon-skill-levelnote">
+                    {hasNonExVariation
+                      ? 'The special effect improves as the weapon is upgraded (skill Lv 1 to 5); base stats grow with weapon level separately.'
+                      : 'Special effects are fixed: they do not change with weapon level.'}
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
+        </section>
+      )
+    }
   </div>
 
-  <!-- Navigation -->
-  <nav class="weapon-nav">
-    {
-      prevWeapon && (
-        <a href={`/guides/horizon-walker/weapons/${prevWeapon.id}/`} class="weapon-nav-btn">
-          ← {prevWeapon.name}
-        </a>
-      )
-    }
+  <!-- EX tab switching for the unique skill panels -->
+  <script is:inline>
+    (function() {
+      document.querySelectorAll('.weapon-ex-tabs').forEach(function(tabs) {
+        var scope = tabs.closest('.weapon-ex-tabs-wrap');
+        if (!scope) return;
+        tabs.querySelectorAll('.weapon-ex-tab').forEach(function(tab) {
+          tab.addEventListener('click', function() {
+            var stage = tab.getAttribute('data-ex-stage');
+            tabs.querySelectorAll('.weapon-ex-tab').forEach(function(t) { t.classList.remove('active'); });
+            tab.classList.add('active');
+            scope.querySelectorAll('.weapon-exskill-panel').forEach(function(p) {
+              p.classList.toggle('active', p.getAttribute('data-ex-stage') === stage);
+            });
+          });
+        });
+      });
+    })();
+  </script>
 
-    <a href="/guides/horizon-walker/weapons/" class="weapon-nav-all"> All Weapons </a>
-
-    {
-      nextWeapon && (
-        <a href={`/guides/horizon-walker/weapons/${nextWeapon.id}/`} class="weapon-nav-btn">
-          {nextWeapon.name} →
-        </a>
-      )
-    }
-  </nav>
 </WeaponDetailLayout>
