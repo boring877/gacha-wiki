@@ -2264,4 +2264,34 @@
     color: var(--hw-text-muted, #ccc);
   }
 
+
+  /* Character story CG gallery */
+  .story-gallery-section .story-cg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--hw-spacing-md, 1rem);
+  }
+
+  .story-cg-card {
+    display: block;
+    background: var(--hw-bg-dark, rgba(20, 20, 26, 0.9));
+    border: 1px solid var(--hw-border-muted);
+    border-radius: var(--hw-radius-md, 10px);
+    overflow: hidden;
+    text-decoration: none;
+  }
+
+  .story-cg-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .story-cg-caption {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    font-size: var(--text-sm, 0.875rem);
+    color: var(--hw-text-muted, #ccc);
+  }
+
 } /* End @scope (.horizon-walker-main) */

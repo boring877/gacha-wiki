@@ -13,6 +13,7 @@ import { getTagCategory } from '../../data/horizon-walker/characters.js';
 import { SKILL_LEVELS } from '../../data/horizon-walker/skill-levels.js';
 import { r2Url } from '../../data/r2-config.js';
 import { getSkinsByHeroId } from '../../data/horizon-walker/char-skins.js';
+import { getStoryCgByHeroId } from '../../data/horizon-walker/story-cg.js';
 import { getDemiskillData, getMightSkillList, TIER_PROBABILITIES } from '../../data/horizon-walker/demiskills.js';
 
 // Import image components from central location
@@ -503,6 +504,7 @@ const characterId = characterData.name
 
 const giftData = getCharacterById(characterId);
 const heroSkins = (characterData as any).heroId ? getSkinsByHeroId((characterData as any).heroId) : [];
+const storyCg = (characterData as any).heroId ? getStoryCgByHeroId((characterData as any).heroId) : null;
 
 // Helper function to find ALL gift boxes that contain a specific gift
 function findAllGiftBoxes(giftId: string, giftName?: string) {
@@ -1470,6 +1472,28 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
             });
           })();
         </script>
+    </section>
+  )
+}
+
+<!-- Character Story CG Section -->
+{
+  storyCg && storyCg.length > 0 && (
+    <section class="content-section story-gallery-section">
+      <h2 class="section-title">Story Gallery</h2>
+      <p class="character-stats-explanation">Illustrations from {characterData.name}'s story episodes.</p>
+      <div class="story-cg-grid">
+        {storyCg.map((cg: any) => (
+          <a class="story-cg-card" href={r2Url('horizon-walker', cg.file)} target="_blank" rel="noopener">
+            <img
+              src={r2Url('horizon-walker', cg.file)}
+              alt={`${characterData.name} story illustration: ${cg.caption}`}
+              loading="lazy"
+            />
+            <span class="story-cg-caption">{cg.caption}</span>
+          </a>
+        ))}
+      </div>
     </section>
   )
 }
