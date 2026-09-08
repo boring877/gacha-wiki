@@ -139,7 +139,7 @@ interface Props {
 }
 
 const { characterData } = Astro.props;
-const demiskillData = getDemiskillData(characterData.name);
+const demiskillData = getDemiskillData((characterData as any).heroId ?? characterData.name);
 
 // Character data validation
 function validateCharacterSafely() {
@@ -1267,7 +1267,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 
       <div class="demiskill-info-banner">
         <span class="hw-badge" data-type="EX">EX Required</span>
-        <p>Upon Demi-Ascension, this character can replace the leader as party Executor, granting the squad Oblivia immunity. Deployment costs 12 Divine Power.</p>
+        <p>Upon Demi-Ascension, this character can replace the leader as party Executor, granting the squad Oblivia immunity. Deployment costs {demiskillData.deploymentCost} Divine Power.</p>
       </div>
 
       <div class="demiskill-authority-card">
@@ -1275,18 +1275,19 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
           <h3 class="demiskill-authority-title">{demiskillData.authoritySkill.name}</h3>
           <span class="hw-badge" data-type="Trait">Authority Skill</span>
         </div>
+        <div class="demiskill-authority-tierbar">
+          <span class="demiskill-tierbar-label">Ascension stage values:</span>
+          <div class="demiskill-tier-chips">
+            {[1, 2, 3, 4, 5, 6, 7].map((lv) => (
+              <button type="button" class={`demiskill-tier-chip${lv === 7 ? ' active' : ''}`} data-demi-tier={lv} aria-label={`Stage ${lv}`}>{lv}</button>
+            ))}
+          </div>
+          <span class="demiskill-tier-view" data-demi-view>Stage 7</span>
+        </div>
         <div class="demiskill-authority-body">
           {demiskillData.authoritySkill.description.split('\n\n').map((paragraph: string) => (
-            <p set:html={flattenLevelArrays(paragraph)} />
+            <p class="demiskill-authority-text" set:html={safeRenderHtml(String(paragraph).replace(/\{\s*([-0-9.][-0-9.,%\s]*?)\s*\}/g, (_w, list) => { const vals = list.replace(/\s+/g, '').split(','); return `<span class="demi-arr" data-vals="${list.replace(/\s+/g, '')}">${vals[vals.length - 1]}</span>`; })).content} />
           ))}
-          {demiskillData.authoritySkill.enhancedDescription && (
-            <div class="demiskill-enhanced">
-              <h4 class="demiskill-enhanced-title">Enhanced Passive</h4>
-              {demiskillData.authoritySkill.enhancedDescription.split('\n\n').map((paragraph: string) => (
-                <p set:html={flattenLevelArrays(paragraph)} />
-              ))}
-            </div>
-          )}
         </div>
       </div>
 
@@ -1318,6 +1319,28 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
           ))}
         </div>
       </div>
+
+      <script is:inline>
+        (function() {
+          document.querySelectorAll('.demiskill-tier-chips').forEach(function(chips) {
+            var wrap = chips.closest('.demiskill-section');
+            if (!wrap) return;
+            chips.querySelectorAll('.demiskill-tier-chip').forEach(function(chip) {
+              chip.addEventListener('click', function() {
+                chips.querySelectorAll('.demiskill-tier-chip').forEach(function(c) { c.classList.remove('active'); });
+                chip.classList.add('active');
+                var lv = parseInt(chip.getAttribute('data-demi-tier')) || 7;
+                wrap.querySelectorAll('.demi-arr').forEach(function(el) {
+                  var vals = (el.getAttribute('data-vals') || '').split(',');
+                  if (vals.length) el.textContent = vals[Math.min(lv, vals.length) - 1];
+                });
+                var view = wrap.querySelector('[data-demi-view]');
+                if (view) view.textContent = 'Stage ' + lv;
+              });
+            });
+          });
+        })();
+      </script>
     </section>
   )
 }

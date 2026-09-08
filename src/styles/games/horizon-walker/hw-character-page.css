@@ -2294,4 +2294,56 @@
     color: var(--hw-text-muted, #ccc);
   }
 
+
+  /* Demi-Ascension authority stage chips */
+  .demiskill-authority-tierbar {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+  }
+
+  .demiskill-tierbar-label {
+    font-size: var(--text-sm, 0.875rem);
+    color: var(--hw-text-muted, #ccc);
+  }
+
+  .demiskill-tier-chips {
+    display: flex;
+    gap: 0.35rem;
+  }
+
+  .demiskill-tier-chip {
+    background: var(--hw-bg-darker, rgba(255, 255, 255, 0.05));
+    border: 1px solid var(--hw-border-muted);
+    border-radius: var(--hw-radius-md, 10px);
+    color: var(--hw-text-light, #eee);
+    font-family: var(--font-primary);
+    font-size: var(--text-sm, 0.875rem);
+    font-weight: var(--font-semibold);
+    padding: 0.25rem 0.65rem;
+    cursor: pointer;
+    opacity: 0.6;
+  }
+
+  .demiskill-tier-chip.active {
+    opacity: 1;
+    border-color: var(--hw-primary-warm);
+    color: var(--hw-primary-warm);
+  }
+
+  .demiskill-tier-view {
+    font-size: var(--text-sm, 0.875rem);
+    font-weight: var(--font-semibold);
+    color: var(--hw-primary-warm);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .demiskill-authority-text .demi-arr {
+    color: var(--hw-primary-warm);
+    font-weight: var(--font-semibold);
+  }
+
 } /* End @scope (.horizon-walker-main) */
