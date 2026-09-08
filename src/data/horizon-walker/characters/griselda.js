@@ -31,21 +31,21 @@ const rawGriseldaData = {
   stats: {
     // Basic Stats
     strength: '6',
-    technic: '7',
-    intelligence: '27',
+    technic: '13',
+    intelligence: '17',
     vitality: '9',
-    agility: '24',
+    agility: '18',
 
     // Key Stats
     meleeAtk: '76',
-    rangedAtk: '89',
-    magicAtk: '464',
+    rangedAtk: '166',
+    magicAtk: '304',
     maxHp: '576',
     spd: '83',
-    startingAp: '134',
-    apRecovery: '142',
+    startingAp: '119',
+    apRecovery: '127',
     accuracy: '102',
-    evade: '320',
+    evade: '243',
     critRate: '10',
     critDmg: '150',
 
@@ -77,28 +77,41 @@ const rawGriseldaData = {
 
   // Weapon Information
   weapon: {
-    name: 'The Eye of Cosmos',
-    type: 'EX Arcane Orb',
+    name: "The Eye of Cosmos",
+    flavor: "The Eye of Cosmos represents infinite potential contained within a small arcane orb. When the user grasps the sphere and invokes its miracle, the boundaries of past and future blur, and countless fragments of outcomes emerge through the cracks of reality. The twinkling little stars within the orb are glimpses of destinies yet to change, and this brilliant artifact allows the user to solidify one of them through their choice. Whether it becomes a blessing or a catastrophe is known only to the one who holds the orb.",
+    type: "Arcane Orb",
     rarity: 'EX',
-    image: 'Griselda_WP.jpg',
+    image: "Weapon_FullIMG_ThousandMileVision",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMagicAtk: '91.0',
-      maxHpBonus: '+35.0%',
+      "Magic ATK (weapon)": "91",
+      "Max HP (%)": "+35%",
     },
     uniqueSkills: {
-      theRiverOfStars: {
-        name: 'The River of Stars',
+      unique: {
+        name: "The River of Stars",
         type: 'Unique',
-        description:
-          "During battle, Magic ATK increases by 80% and Crush Boost increases by 40%. Each ally's combat skill damage increases by 32% during the first turn after the start of the round, and when an ally other than self uses a skill, recovers HP equal to 24% of own Magic ATK. Using a skill targeting an ally grants the [Purification] effect.",
+        description: "During battle, Magic ATK increases by {40%, 50%, 60%, 70%, 80%} and Crush Boost increases by {20%, 25%, 30%, 35%, 40%}. Each ally's combat skill damage increases by {16%, 20%, 24%, 28%, 32%} during the first turn after the start of the round, and when an ally other than self uses a skill, recovers HP equal to {12%, 15%, 18%, 21%, 24%} of own Magic ATK. Using a skill targeting an ally grants the [Purification] effect.",
       },
-      theRendezvous: {
-        name: 'The Rendezvous',
+      signature: {
+        name: "Griselda Signature: The Rendezvous",
         type: 'Signature',
-        description:
-          'Once per Round, when using the "Quantum Singularity" Skill, grants the [Arcane Purge] effect to allies excluding Arcane Elementals.',
-        note: 'This signature skill only activates when Griselda equips this weapon.',
+        description: "Once per Round, when using the 'Quantum Singularity' Skill, grants the [Arcane Purge] effect to allies excluding Arcane Elementals.",
+        note: "This signature skill only activates when Griselda equips this weapon.",
       },
+    },
+    levelStats: {
+      "Magic ATK (weapon)": [14.3, 91.0],
+      "Max HP (%)": [5.5, 35.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "During battle, Magic ATK increases", valuesByLevel: "40% / 50% / 60% / 70% / 80%" },
+        { name: "And Crush Boost increases", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+        { name: "Each ally's combat skill damage increases", valuesByLevel: "16% / 20% / 24% / 28% / 32%" },
+        { name: "... the first turn after the start of the round, and when an ally other than self uses a skill, recovers HP equal", valuesByLevel: "12% / 15% / 18% / 21% / 24%" },
+      ],
     },
   },
 
@@ -133,7 +146,7 @@ const rawGriseldaData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the Chosen Human.',
+      description: 'Interested in the Chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
@@ -214,6 +227,108 @@ const rawGriseldaData = {
         "If an ally with the [Arcane Purge] effect attacks and at least one target is struck with a Weak Point hit, their Melee and Ranged ATK increase by 190% of the Queen of Arcane Elemental's Magic ATK for the rest of that turn. At the end of that turn, the [Arcane Purge] effect is removed.",
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 6,
+      technic: 9,
+      intelligence: 17,
+      vitality: 9,
+      agility: 16,
+      maxHp: 576,
+      meleeAtk: 76,
+      rangedAtk: 115,
+      magicAtk: 304,
+      evade: 217,
+      apRecovery: 122,
+      startingAp: 114
+    },
+    'EX 1': {
+      strength: 6,
+      technic: 10,
+      intelligence: 17,
+      vitality: 9,
+      agility: 16,
+      maxHp: 576,
+      meleeAtk: 76,
+      rangedAtk: 128,
+      magicAtk: 304,
+      evade: 217,
+      apRecovery: 122,
+      startingAp: 114
+    },
+    'EX 2': {
+      strength: 6,
+      technic: 11,
+      intelligence: 17,
+      vitality: 9,
+      agility: 16,
+      maxHp: 576,
+      meleeAtk: 76,
+      rangedAtk: 140,
+      magicAtk: 304,
+      evade: 217,
+      apRecovery: 122,
+      startingAp: 114
+    },
+    'EX 3': {
+      strength: 6,
+      technic: 11,
+      intelligence: 17,
+      vitality: 9,
+      agility: 17,
+      maxHp: 576,
+      meleeAtk: 76,
+      rangedAtk: 140,
+      magicAtk: 304,
+      evade: 230,
+      apRecovery: 125,
+      startingAp: 117
+    },
+    'EX 4': {
+      strength: 6,
+      technic: 12,
+      intelligence: 17,
+      vitality: 9,
+      agility: 17,
+      maxHp: 576,
+      meleeAtk: 76,
+      rangedAtk: 153,
+      magicAtk: 304,
+      evade: 230,
+      apRecovery: 125,
+      startingAp: 117
+    },
+    'EX 5': {
+      strength: 6,
+      technic: 12,
+      intelligence: 17,
+      vitality: 9,
+      agility: 18,
+      maxHp: 576,
+      meleeAtk: 76,
+      rangedAtk: 153,
+      magicAtk: 304,
+      evade: 243,
+      apRecovery: 127,
+      startingAp: 119
+    },
+    'EX 6': {
+      strength: 6,
+      technic: 13,
+      intelligence: 17,
+      vitality: 9,
+      agility: 18,
+      maxHp: 576,
+      meleeAtk: 76,
+      rangedAtk: 166,
+      magicAtk: 304,
+      evade: 243,
+      apRecovery: 127,
+      startingAp: 119
+    },
+  },
+  heroId: 8,
+
 };
 
 // Validate and sanitize the character data

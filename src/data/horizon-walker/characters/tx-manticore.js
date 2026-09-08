@@ -72,7 +72,7 @@ const rawTxManticoreData = {
     electricDef: '0',
     immaterialDef: '-50',
     poisonDef: '0',
-    blockRate: '200',
+    blockRate: '0',
   },
 
   // Character Description
@@ -194,29 +194,136 @@ const rawTxManticoreData = {
 
   // Weapon
   weapon: {
-    name: 'EX Ancient Core - The Aegaeon Core',
-    type: 'Ancient Core',
+    name: "The Aegaeon Core",
+    flavor: "An advanced core designed during the golden age, notorious for its exquisite craftsmanship that is difficult to replicate even with modern technology. Its exceptional performance draws out the capabilities of the autonomous weapon it is mounted on, enhancing its defense functions and expanding its ability to respond further. This performance is particularly specialized for demolisher tank models, and when mounted on higher-tier models, it even suppresses the attack capabilities of enemy targets.",
+    type: "Ancient Core",
     rarity: 'EX',
-    image: 'TX_Manticore.jpg',
+    image: "Weapon_FullIMG_AigaionCore",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponRangedAtk: '91.0',
-      critDmgBonus: '+70.0%',
+      "Ranged ATK (weapon)": "91",
+      "Crit DMG (%)": "+70%",
     },
     uniqueSkills: {
-      overwhelmingBody: {
-        name: 'Overwhelming Body',
+      unique: {
+        name: "Overwhelming Body",
         type: 'Unique',
-        description:
-          "During battle, All DEF increases by 400. When self counterattacks, Ranged ATK increases by 60% for 1R. Applies the [Fatigue Issue] effect to enemies hit by self's attack, lasting 2R. [Fatigue Issue]: ACC decreases by 7%, and All ATK decreases by 20%.",
+        description: "During battle, All DEF increases by 200/250/300/350/400. When self counterattacks, Ranged ATK increases by 40%/45%/50%/55%/60% for 1R. Applies the [Fatigue Issue] effect to enemies hit by self's attack, lasting 2R. - [Fatigue Issue]: ACC decreases by 5%/5.5%/6%/6.5%/7%, and All ATK decreases by 12%/14%/16%/18%/20%.",
       },
-      oppressor: {
-        name: 'TX - Manticore Signature: Oppressor',
+      signature: {
+        name: "TX - Manticore Signature: Oppressor",
         type: 'Signature',
-        description:
-          "The [Fatigue Issue] effect's ACC and ATK reduction applies at 3x the usual value, and using the 'Delayed Bombardment' skill increases Aggro Adjustment by 30 for 1R.",
+        description: "The [Fatigue Issue] effect's ACC and ATK reduction applies at 3x/color> the usual value, and using the 'Delayed Bombardment' skill increases Aggro Adjustment by 30 for 1R.",
       },
     },
+    levelStats: {
+      "Ranged ATK (weapon)": [14.3, 91.0],
+      "Crit DMG (%)": [11.0, 70.0],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 10,
+      technic: 14,
+      intelligence: 9,
+      vitality: 20,
+      agility: 9,
+      maxHp: 1280,
+      meleeAtk: 128,
+      rangedAtk: 179,
+      magicAtk: 115,
+      evade: 115,
+      apRecovery: 105,
+      startingAp: 110
+    },
+    'EX 1': {
+      strength: 10,
+      technic: 16,
+      intelligence: 9,
+      vitality: 20,
+      agility: 9,
+      maxHp: 1280,
+      meleeAtk: 128,
+      rangedAtk: 204,
+      magicAtk: 115,
+      evade: 115,
+      apRecovery: 105,
+      startingAp: 110
+    },
+    'EX 2': {
+      strength: 10,
+      technic: 16,
+      intelligence: 9,
+      vitality: 22,
+      agility: 9,
+      maxHp: 1408,
+      meleeAtk: 128,
+      rangedAtk: 204,
+      magicAtk: 115,
+      evade: 115,
+      apRecovery: 105,
+      startingAp: 110
+    },
+    'EX 3': {
+      strength: 10,
+      technic: 17,
+      intelligence: 9,
+      vitality: 22,
+      agility: 9,
+      maxHp: 1408,
+      meleeAtk: 128,
+      rangedAtk: 217,
+      magicAtk: 115,
+      evade: 115,
+      apRecovery: 105,
+      startingAp: 110
+    },
+    'EX 4': {
+      strength: 10,
+      technic: 17,
+      intelligence: 9,
+      vitality: 22,
+      agility: 12,
+      maxHp: 1408,
+      meleeAtk: 128,
+      rangedAtk: 217,
+      magicAtk: 115,
+      evade: 153,
+      apRecovery: 113,
+      startingAp: 118
+    },
+    'EX 5': {
+      strength: 10,
+      technic: 17,
+      intelligence: 9,
+      vitality: 25,
+      agility: 12,
+      maxHp: 1600,
+      meleeAtk: 128,
+      rangedAtk: 217,
+      magicAtk: 115,
+      evade: 153,
+      apRecovery: 113,
+      startingAp: 118
+    },
+    'EX 6': {
+      strength: 10,
+      technic: 18,
+      intelligence: 9,
+      vitality: 25,
+      agility: 12,
+      maxHp: 1600,
+      meleeAtk: 128,
+      rangedAtk: 230,
+      magicAtk: 115,
+      evade: 153,
+      apRecovery: 113,
+      startingAp: 118
+    },
+  },
+  heroId: 52,
+
 };
 
 // Validate and sanitize the character data

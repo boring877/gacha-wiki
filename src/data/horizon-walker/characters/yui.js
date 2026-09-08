@@ -43,11 +43,11 @@ const rawYuiData = {
     magicAtk: '122',
     maxHp: '1024',
     spd: '88',
-    startingAp: '126',
-    apRecovery: '113',
+    startingAp: '127',
+    apRecovery: '114',
     accuracy: '105',
     evade: '140',
-    critRate: '10',
+    critRate: '8',
     critDmg: '150',
 
     // Attribute Boost
@@ -107,7 +107,7 @@ const rawYuiData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Special trait with no listed characteristics.',
+      description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
     },
   },
 
@@ -177,29 +177,142 @@ const rawYuiData = {
 
   // Weapon
   weapon: {
-    name: 'EX Dual Pistols - Phantom Stiletto',
-    type: 'Dual Pistols',
+    name: "Phantom Stiletto",
+    flavor: "Years of honed telekinetic focus have imprinted the will of its Esper wielder deep into this once-ordinary pistol. Now bound to its user's soul, Phantom Stiletto strikes with the precision of an awl - each bullet driven unerringly toward its mark. It not only channels the will to survive and overcome, but resonates with the minds of allies, amplifying its power through shared resolve. As the ultimate tool of mission execution, it leaves enemies with only one certainty: there is no escape.",
+    type: "Dual Pistols",
     rarity: 'EX',
-    image: 'Yui_WP.jpg',
+    image: "Weapon_FullIMG_DualPistol_ForYui",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponRangedAtk: '77.0',
-      critRateBonus: '+49.0%',
+      "Ranged ATK (weapon)": "77",
+      "Crit Rate (%)": "+49%",
     },
     uniqueSkills: {
-      lockOnFromBeyond: {
-        name: 'Lock-on from Beyond',
+      unique: {
+        name: "Lock-on from Beyond",
         type: 'Unique',
-        description:
-          'Increases Pierce Boost by 40% during combat. On attack, gain the [Keen Lock-on] effect applied only to that attack. [Keen Lock-on]: Increases your Crit DMG and Ranged ATK by 10% for each ally on the field (excluding yourself), up to a maximum of 8 allies.',
+        description: "Increases Pierce Boost by {20,25,30,35,40}% during combat. On attack, gain the [Keen Lock-on] effect, applied only to that attack. [Keen Lock-on]: Increases your Crit DMG and Ranged ATK by {6,7,8,9,10}% for each ally on the field (excluding yourself), up to a maximum of 8 allies.",
       },
-      soulResonance: {
-        name: 'Yui Signature: Soul Resonance',
+      signature: {
+        name: "Yui Signature: Soul Resonance",
         type: 'Signature',
-        description:
-          'During battle, increases Basic ATK DMG of both the user and their summons by 16%. The Weak Point Hit chance triggered by the Anarchic Barrage skill is doubled. When Anarchic Barrage targets 2 or fewer enemies: Against 2 enemies: temporarily increases Combat Skill DMG by 18% and restores 12 AP. Against 1 enemy: temporarily increases Combat Skill DMG by 36% and restores 24 AP.',
+        description: "During battle, increases Basic ATK DMG of both the user and their summons by 16%. The Weak Point Hit chance triggered by the Anarchic Barrage skill is doubled. When Anarchic Barrage targets 2 or fewer enemies: Against 2 enemies: temporarily increases Combat Skill DMG by 18% and restores 12 AP. Against 1 enemy: temporarily increases Combat Skill DMG by 36% and restores 24 AP.",
       },
     },
+    levelStats: {
+      "Ranged ATK (weapon)": [12.1, 77.0],
+      "Crit Rate (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Increases Pierce Boost", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+        { name: "[Keen Lock-on]: Increases your Crit DMG and Ranged ATK", valuesByLevel: "6% / 7% / 8% / 9% / 10%" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 7,
+      technic: 13,
+      intelligence: 9,
+      vitality: 11,
+      agility: 7,
+      maxHp: 896,
+      meleeAtk: 89,
+      rangedAtk: 166,
+      magicAtk: 122,
+      evade: 128,
+      apRecovery: 111,
+      startingAp: 124
+    },
+    'EX 1': {
+      strength: 7,
+      technic: 14,
+      intelligence: 9,
+      vitality: 11,
+      agility: 7,
+      maxHp: 896,
+      meleeAtk: 89,
+      rangedAtk: 179,
+      magicAtk: 122,
+      evade: 128,
+      apRecovery: 111,
+      startingAp: 124
+    },
+    'EX 2': {
+      strength: 7,
+      technic: 14,
+      intelligence: 9,
+      vitality: 12,
+      agility: 7,
+      maxHp: 960,
+      meleeAtk: 89,
+      rangedAtk: 179,
+      magicAtk: 122,
+      evade: 128,
+      apRecovery: 111,
+      startingAp: 124
+    },
+    'EX 3': {
+      strength: 7,
+      technic: 15,
+      intelligence: 9,
+      vitality: 12,
+      agility: 7,
+      maxHp: 960,
+      meleeAtk: 89,
+      rangedAtk: 192,
+      magicAtk: 122,
+      evade: 128,
+      apRecovery: 111,
+      startingAp: 124
+    },
+    'EX 4': {
+      strength: 7,
+      technic: 15,
+      intelligence: 9,
+      vitality: 12,
+      agility: 8,
+      maxHp: 960,
+      meleeAtk: 89,
+      rangedAtk: 192,
+      magicAtk: 122,
+      evade: 140,
+      apRecovery: 114,
+      startingAp: 127
+    },
+    'EX 5': {
+      strength: 7,
+      technic: 15,
+      intelligence: 9,
+      vitality: 13,
+      agility: 8,
+      maxHp: 1024,
+      meleeAtk: 89,
+      rangedAtk: 192,
+      magicAtk: 122,
+      evade: 140,
+      apRecovery: 114,
+      startingAp: 127
+    },
+    'EX 6': {
+      strength: 7,
+      technic: 16,
+      intelligence: 9,
+      vitality: 13,
+      agility: 8,
+      maxHp: 1024,
+      meleeAtk: 89,
+      rangedAtk: 204,
+      magicAtk: 122,
+      evade: 140,
+      apRecovery: 114,
+      startingAp: 127
+    },
+  },
+  heroId: 53,
+
 };
 
 // Validate and sanitize the character data

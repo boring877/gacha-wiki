@@ -1,0 +1,20 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  claraData,
+  claraSEO,
+  claraHighlighting,
+} from '../../../../data/horizon-walker/characters/clara.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={claraSEO.title}
+  description={claraSEO.description}
+  gameTitle={claraData.name}
+  character={claraData}
+>
+  <CharacterPageTemplate characterData={{ ...claraData, highlightPatterns: claraHighlighting }} />
+</CharacterIndividualLayout>

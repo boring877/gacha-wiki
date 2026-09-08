@@ -46,7 +46,7 @@ const rawRhasadinaData = {
     apRecovery: '105',
     accuracy: '102',
     evade: '153',
-    critRate: '10',
+    critRate: '13',
     critDmg: '150',
 
     // Attribute Boost
@@ -107,7 +107,7 @@ const rawRhasadinaData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Special trait with no listed characteristics.',
+      description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
     },
   },
 
@@ -165,6 +165,108 @@ const rawRhasadinaData = {
 
   // Weapon - Not yet released in game
   weapon: null,
+  rarityStages: {
+    'EX': {
+      strength: 7,
+      technic: 8,
+      intelligence: 8,
+      vitality: 10,
+      agility: 9,
+      maxHp: 576,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 102,
+      evade: 138,
+      apRecovery: 102,
+      startingAp: 111
+    },
+    'EX 1': {
+      strength: 7,
+      technic: 8,
+      intelligence: 9,
+      vitality: 10,
+      agility: 9,
+      maxHp: 576,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 115,
+      evade: 138,
+      apRecovery: 102,
+      startingAp: 111
+    },
+    'EX 2': {
+      strength: 7,
+      technic: 8,
+      intelligence: 9,
+      vitality: 11,
+      agility: 9,
+      maxHp: 640,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 115,
+      evade: 138,
+      apRecovery: 102,
+      startingAp: 111
+    },
+    'EX 3': {
+      strength: 7,
+      technic: 8,
+      intelligence: 10,
+      vitality: 11,
+      agility: 9,
+      maxHp: 640,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 128,
+      evade: 138,
+      apRecovery: 102,
+      startingAp: 111
+    },
+    'EX 4': {
+      strength: 7,
+      technic: 8,
+      intelligence: 10,
+      vitality: 11,
+      agility: 10,
+      maxHp: 640,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 128,
+      evade: 153,
+      apRecovery: 105,
+      startingAp: 114
+    },
+    'EX 5': {
+      strength: 7,
+      technic: 8,
+      intelligence: 10,
+      vitality: 12,
+      agility: 10,
+      maxHp: 704,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 128,
+      evade: 153,
+      apRecovery: 105,
+      startingAp: 114
+    },
+    'EX 6': {
+      strength: 7,
+      technic: 8,
+      intelligence: 11,
+      vitality: 12,
+      agility: 10,
+      maxHp: 704,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 140,
+      evade: 153,
+      apRecovery: 105,
+      startingAp: 114
+    },
+  },
+  heroId: 42,
+
 };
 
 // Validate and sanitize the character data

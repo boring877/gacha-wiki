@@ -110,7 +110,7 @@ const rawMahariData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the chosen Human.',
+      description: 'Interested in the chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
@@ -186,29 +186,144 @@ const rawMahariData = {
 
   // Weapon
   weapon: {
-    name: 'EX One-handed Sword & Shield - The Arms of Laphnesis',
-    image: 'Mahari_WP.jpg',
+    name: "The Arms of Laphnesis",
+    flavor: "This beam-based combat equipment, commonly used by Lamora's soldiers, is said to have exceptional defensive and offensive capabilities. The Laphnesis model, with its dramatically improved performance, was restricted from mass production for a long time, as it was considered too advanced to be issued to regular soldiers. This weapon is said to enhance the wearer's 'will to victory,' sharpening the combat power of the frontlines and even improving the combat efficiency of allied soldiers depending on the user.",
+    type: "One-handed Sword & Shield",
     rarity: 'EX',
-    type: 'One-handed Sword & Shield',
+    image: "Weapon_FullIMG_SwordOfLaphnesis_SS",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: '77.0',
-      critDmgBonus: '+98.0%',
+      "Melee ATK (weapon)": "77",
+      "Crit DMG (%)": "+98%",
     },
     uniqueSkills: {
-      hammerAndAnvil: {
-        name: 'Hammer and Anvil',
+      unique: {
+        name: "Hammer and Anvil",
         type: 'Unique',
-        description:
-          "During battle, Melee ATK increases by 24%, and all DEF increases by 360. At the end of own turn, if the character has a shield effect, all allies are granted the [Origin of Resolve] effect for 1R. [Origin of Resolve]: CRIT DMG increases by 14%, and additionally increases by 32% of the caster's base CRIT DMG.",
+        description: "During battle, Melee ATK increases by {12,15,18,21,24}%, and all DEF increases by {180,225,270,315,360}. At the end of own turn, if the character has a shield effect, all allies are granted the [Origin of Resolve] effect for 1R. [Origin of Resolve]: CRIT DMG increases by {6,8,10,12,14}%, and additionally, increases by {16,20,24,28,32}% of the caster's base CRIT DMG.",
       },
-      maharSignature: {
-        name: 'Mahari Signature: Rank Formation',
+      signature: {
+        name: "Mahari Signature: Rank Formation",
         type: 'Signature',
-        description:
-          "Once per round, at the end of an ally's turn (excluding the caster), they gain 45 AP.",
+        description: "Once per round, at the end of an ally's turn (excluding the caster), they gain 45 AP.",
       },
     },
+    levelStats: {
+      "Melee ATK (weapon)": [12.1, 77.0],
+      "Crit DMG (%)": [15.4, 98.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "During battle, Melee ATK increases", valuesByLevel: "12% / 15% / 18% / 21% / 24%" },
+        { name: "%, and all DEF increases", valuesByLevel: "180 / 225 / 270 / 315 / 360" },
+        { name: "[Origin of Resolve]: CRIT DMG increases", valuesByLevel: "6% / 8% / 10% / 12% / 14%" },
+        { name: "%, and additionally, increases", valuesByLevel: "16% / 20% / 24% / 28% / 32%" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 8,
+      technic: 6,
+      intelligence: 7,
+      vitality: 15,
+      agility: 9,
+      maxHp: 815,
+      meleeAtk: 102,
+      rangedAtk: 76,
+      magicAtk: 89,
+      evade: 115,
+      apRecovery: 119,
+      startingAp: 125
+    },
+    'EX 1': {
+      strength: 8,
+      technic: 6,
+      intelligence: 7,
+      vitality: 16,
+      agility: 9,
+      maxHp: 878,
+      meleeAtk: 102,
+      rangedAtk: 76,
+      magicAtk: 89,
+      evade: 115,
+      apRecovery: 119,
+      startingAp: 125
+    },
+    'EX 2': {
+      strength: 8,
+      technic: 6,
+      intelligence: 7,
+      vitality: 17,
+      agility: 9,
+      maxHp: 940,
+      meleeAtk: 102,
+      rangedAtk: 76,
+      magicAtk: 89,
+      evade: 115,
+      apRecovery: 119,
+      startingAp: 125
+    },
+    'EX 3': {
+      strength: 8,
+      technic: 6,
+      intelligence: 7,
+      vitality: 18,
+      agility: 9,
+      maxHp: 1003,
+      meleeAtk: 102,
+      rangedAtk: 76,
+      magicAtk: 89,
+      evade: 115,
+      apRecovery: 119,
+      startingAp: 125
+    },
+    'EX 4': {
+      strength: 9,
+      technic: 6,
+      intelligence: 7,
+      vitality: 18,
+      agility: 9,
+      maxHp: 1003,
+      meleeAtk: 115,
+      rangedAtk: 76,
+      magicAtk: 89,
+      evade: 115,
+      apRecovery: 119,
+      startingAp: 125
+    },
+    'EX 5': {
+      strength: 9,
+      technic: 6,
+      intelligence: 7,
+      vitality: 18,
+      agility: 10,
+      maxHp: 1003,
+      meleeAtk: 115,
+      rangedAtk: 76,
+      magicAtk: 89,
+      evade: 128,
+      apRecovery: 121,
+      startingAp: 127
+    },
+    'EX 6': {
+      strength: 9,
+      technic: 6,
+      intelligence: 7,
+      vitality: 19,
+      agility: 10,
+      maxHp: 1066,
+      meleeAtk: 115,
+      rangedAtk: 76,
+      magicAtk: 89,
+      evade: 128,
+      apRecovery: 121,
+      startingAp: 127
+    },
+  },
+  heroId: 32,
+
 };
 
 // Validate and sanitize the character data

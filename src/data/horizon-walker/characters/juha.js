@@ -111,7 +111,7 @@ const rawJuhaData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the chosen Human.',
+      description: 'Interested in the chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
@@ -189,29 +189,143 @@ const rawJuhaData = {
 
   // Weapon
   weapon: {
-    name: 'EX Rifle - The Wings of Glory',
-    image: 'Juha_WP.jpg',
+    name: "The Wings of Glory",
+    flavor: "This execution tool in the form of a rifle is blessed by the Gun Spirit and has the ability to amplify psychic powers, aiding the Saint of Bullets in delivering fair and swift judgment. Those waiting for the Saint's judgment exist across the universe in countless numbers, and the tribunal burns with the passion of those who seek justice. When the rightful verdict of the Saint is delivered at the end of a long silence, the intense gunshot that echoes carries the power of the Gun Spirit, becoming a sacred resonance that elevates both the will of the Saint of Bullet and those who wield firearms in execution.",
+    type: "Rifle",
     rarity: 'EX',
-    type: 'Rifle',
+    image: "Weapon_FullIMG_SignsOfTheHolySpirit",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponRangedAtk: '91.0',
-      rangedAtkBonus: '+35.0%',
+      "Ranged ATK (weapon)": "91",
+      "Ranged ATK (%)": "+35%",
     },
     uniqueSkills: {
-      mayTheHonorBeInTheBullet: {
-        name: 'May the Honor Be in the Bullet',
+      unique: {
+        name: "May the Honor Be in the Bullet",
         type: 'Unique',
-        description:
-          'Increases personal AP Recovery by 40%, and raises Pierce boost for all allies by 24%. When allies other than the user utilize any skill aside from Standby, they gain the [Glory] effect, stacking up to a maximum of 30 times. At the start of each round, all [Glory] effects are consumed, distributing AP to each ally (other than the user) equal to 4% of the user\'s base AP Recovery for each stack. All effects granted to allies by "Unique: May the Honor Be in the Bullet" will not stack if they share the same name.',
+        description: "Increases personal AP Recovery by {20,25,30,35,40}%, and raises Pierce boost for all allies by {12,15,18,21,24}%. When allies other than the user utilize any skill aside from Standby, they gain the [Glory] effect, stacking up to a maximum of 30 times. At the start of each round, all [Glory] effects are consumed, distributing AP to each ally (other than the user) equal to {2,2.5,3,3.5,4}% of the user's base AP Recovery for each stack. All effects granted to allies by \"Unique: May the Honor Be in the Bullet\" will not stack if they share the same name.",
       },
-      juhaSignature: {
-        name: 'Juha Signature: The One Who Judges',
+      signature: {
+        name: "Juha Signature: The One Who Judges",
         type: 'Signature',
-        description:
-          'On Basic Attack, there is a 50% chance to reduce the cooldown of the skills [Combat Roll], [Mental Corrosion], and [The Executioner] by 1 round.',
+        description: "On Basic Attack, there is a 50% chance to reduce the cooldown of the skills [Combat Roll], [Mental Corrosion], and [The Executioner] by 1 round.",
       },
     },
+    levelStats: {
+      "Ranged ATK (weapon)": [14.3, 91.0],
+      "Ranged ATK (%)": [5.5, 35.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Increases personal AP Recovery", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+        { name: "%, and raises Pierce boost for all allies", valuesByLevel: "12% / 15% / 18% / 21% / 24%" },
+        { name: "...tart of each round, all [Glory] effects are consumed, distributing AP to each ally (other than the user) equal", valuesByLevel: "2% / 2.5% / 3% / 3.5% / 4%" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 7,
+      technic: 14,
+      intelligence: 9,
+      vitality: 8,
+      agility: 11,
+      maxHp: 512,
+      meleeAtk: 89,
+      rangedAtk: 179,
+      magicAtk: 115,
+      evade: 147,
+      apRecovery: 109,
+      startingAp: 118
+    },
+    'EX 1': {
+      strength: 7,
+      technic: 15,
+      intelligence: 9,
+      vitality: 8,
+      agility: 11,
+      maxHp: 512,
+      meleeAtk: 89,
+      rangedAtk: 192,
+      magicAtk: 115,
+      evade: 147,
+      apRecovery: 109,
+      startingAp: 118
+    },
+    'EX 2': {
+      strength: 7,
+      technic: 16,
+      intelligence: 9,
+      vitality: 8,
+      agility: 11,
+      maxHp: 512,
+      meleeAtk: 89,
+      rangedAtk: 204,
+      magicAtk: 115,
+      evade: 147,
+      apRecovery: 109,
+      startingAp: 118
+    },
+    'EX 3': {
+      strength: 7,
+      technic: 16,
+      intelligence: 9,
+      vitality: 8,
+      agility: 12,
+      maxHp: 512,
+      meleeAtk: 89,
+      rangedAtk: 204,
+      magicAtk: 115,
+      evade: 161,
+      apRecovery: 112,
+      startingAp: 121
+    },
+    'EX 4': {
+      strength: 7,
+      technic: 17,
+      intelligence: 9,
+      vitality: 8,
+      agility: 12,
+      maxHp: 512,
+      meleeAtk: 89,
+      rangedAtk: 217,
+      magicAtk: 115,
+      evade: 161,
+      apRecovery: 112,
+      startingAp: 121
+    },
+    'EX 5': {
+      strength: 7,
+      technic: 17,
+      intelligence: 9,
+      vitality: 8,
+      agility: 13,
+      maxHp: 512,
+      meleeAtk: 89,
+      rangedAtk: 217,
+      magicAtk: 115,
+      evade: 174,
+      apRecovery: 114,
+      startingAp: 123
+    },
+    'EX 6': {
+      strength: 7,
+      technic: 18,
+      intelligence: 9,
+      vitality: 8,
+      agility: 13,
+      maxHp: 512,
+      meleeAtk: 89,
+      rangedAtk: 230,
+      magicAtk: 115,
+      evade: 174,
+      apRecovery: 114,
+      startingAp: 123
+    },
+  },
+  heroId: 33,
+
 };
 
 // Validate and sanitize the character data

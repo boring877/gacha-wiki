@@ -114,33 +114,45 @@ const rawKaulData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Bound by a deep and genuine bond that transcends all emotions.',
+      description: 'Bound by a deep and genuine bond that transcends all emotions. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
   // Weapon Information
   weapon: {
-    name: 'EX Massively Vibrating Pole',
-    type: 'One-handed Sword & Shield',
+    name: "Massively Vibrating Pole",
+    flavor: "No one truly knows which great Kesak warrior first wielded this monstrosity, but even now, its terrifying presence is undeniable. Once a \"toy\" of the ancients, this oversized, vibrating relic has become a coveted weapon among modern Kesak descendants - not for its elegance, but for its sheer, unrelenting impact. Equipped with intense vibration functions and a shaft that refuses to bend, the weapon bears a single sharpened edge - painstakingly carved after years of grinding and friction. Naturally, it fits the brutal taste of any true Kesak: big, heavy, loud, and built to smash. Enemies struck by the trembling might of the MVP often don't have time to feel disgust - only pain. And through that pain, they come to understand the fearsome legacy of ancient Kesak science...firsthand.",
+    type: "One-handed Sword & Shield",
     rarity: 'EX',
-    image: 'Kaul_WP.jpg',
+    image: "Weapon_FullIMG_SwordAndShield_ForKaul_SS",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: '77.0',
-      meleeAtkBonus: '+49.0%',
+      "Melee ATK (weapon)": "77",
+      "Melee ATK (%)": "+49%",
     },
     uniqueSkills: {
-      resonanceOfBlood: {
-        name: 'Resonance of Blood',
+      unique: {
+        name: "Resonance of Blood",
         type: 'Unique',
-        description:
-          'During battle, increases Melee ATK by 36% and all DEF by 180. When using a skill other than Standby, increases SPD by 32% for 2 rounds. Can stack up to 3 times.',
+        description: "During battle, increases Melee ATK by {20,24,28,32,36}% and all DEF by {100,120,140,160,180}. When using a skill other than Standby, increases SPD by {24,26,28,30,32}% for 2 rounds. Can stack up to 3 times.",
       },
-      surgingDesire: {
-        name: 'Kaul Signature: Surging Desire',
+      signature: {
+        name: "Kaul Signature: Surging Desire",
         type: 'Signature',
-        description:
-          "Increases Basic ATK DMG by 20% during battle. Reduces the AP cost of [Masochistic Frenzy] by 45. When activating [Slaughter the Weak] with HP at 99% or below, gains one instance of [Extra Action]. This effect cannot trigger during an Extra Action. When using [Reckless Leap], reduces DMG taken by 50% until the start of the user's next turn.",
+        description: "Increases Basic ATK DMG by 20% during battle. Reduces the AP cost of [Masochistic Frenzy] by 45. When activating [Slaughter the Weak] with HP at 99% or below, gains one instance of [Extra Action]. This effect cannot trigger during an Extra Action. When using [Reckless Leap], reduces DMG taken by 50% until the start of the user's next turn.",
       },
+    },
+    levelStats: {
+      "Melee ATK (weapon)": [12.1, 77.0],
+      "Melee ATK (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "During battle, increases Melee ATK", valuesByLevel: "20% / 24% / 28% / 32% / 36%" },
+        { name: "% and all DEF", valuesByLevel: "100 / 120 / 140 / 160 / 180" },
+        { name: "When using a skill other than Standby, increases SPD", valuesByLevel: "24% / 26% / 28% / 30% / 32%" },
+      ],
     },
   },
 
@@ -247,6 +259,108 @@ const rawKaulData = {
       triggersReplacements: ['gapStab', 'masochisticFrenzy'],
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 8,
+      technic: 6,
+      intelligence: 7,
+      vitality: 15,
+      agility: 9,
+      maxHp: 1408,
+      meleeAtk: 113,
+      rangedAtk: 85,
+      magicAtk: 39,
+      evade: 115,
+      apRecovery: 102,
+      startingAp: 128
+    },
+    'EX 1': {
+      strength: 8,
+      technic: 6,
+      intelligence: 7,
+      vitality: 16,
+      agility: 9,
+      maxHp: 1472,
+      meleeAtk: 113,
+      rangedAtk: 85,
+      magicAtk: 39,
+      evade: 115,
+      apRecovery: 102,
+      startingAp: 128
+    },
+    'EX 2': {
+      strength: 8,
+      technic: 6,
+      intelligence: 7,
+      vitality: 17,
+      agility: 9,
+      maxHp: 1536,
+      meleeAtk: 113,
+      rangedAtk: 85,
+      magicAtk: 39,
+      evade: 115,
+      apRecovery: 102,
+      startingAp: 128
+    },
+    'EX 3': {
+      strength: 8,
+      technic: 6,
+      intelligence: 7,
+      vitality: 18,
+      agility: 9,
+      maxHp: 1600,
+      meleeAtk: 113,
+      rangedAtk: 85,
+      magicAtk: 39,
+      evade: 115,
+      apRecovery: 102,
+      startingAp: 128
+    },
+    'EX 4': {
+      strength: 9,
+      technic: 6,
+      intelligence: 7,
+      vitality: 18,
+      agility: 9,
+      maxHp: 1600,
+      meleeAtk: 127,
+      rangedAtk: 85,
+      magicAtk: 39,
+      evade: 115,
+      apRecovery: 102,
+      startingAp: 128
+    },
+    'EX 5': {
+      strength: 9,
+      technic: 6,
+      intelligence: 7,
+      vitality: 18,
+      agility: 10,
+      maxHp: 1600,
+      meleeAtk: 127,
+      rangedAtk: 85,
+      magicAtk: 39,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 131
+    },
+    'EX 6': {
+      strength: 9,
+      technic: 6,
+      intelligence: 7,
+      vitality: 19,
+      agility: 10,
+      maxHp: 1664,
+      meleeAtk: 127,
+      rangedAtk: 85,
+      magicAtk: 39,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 131
+    },
+  },
+  heroId: 58,
+
 };
 
 // Validate and sanitize the character data

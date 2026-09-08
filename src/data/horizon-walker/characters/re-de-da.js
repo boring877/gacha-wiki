@@ -32,22 +32,22 @@ const rawReDeDaData = {
   // Character Stats (Level 60)
   stats: {
     // Basic Stats
-    strength: '6',
-    technic: '8',
-    intelligence: '13',
-    vitality: '8',
-    agility: '11',
+    strength: '10',
+    technic: '6',
+    intelligence: '9',
+    vitality: '14',
+    agility: '13',
 
     // Key Stats
-    meleeAtk: '76',
-    rangedAtk: '102',
-    magicAtk: '173',
-    maxHp: '481',
+    meleeAtk: '128',
+    rangedAtk: '76',
+    magicAtk: '119',
+    maxHp: '842',
     spd: '61',
-    startingAp: '114',
-    apRecovery: '107',
+    startingAp: '119',
+    apRecovery: '112',
     accuracy: '102',
-    evade: '140',
+    evade: '166',
     critRate: '10',
     critDmg: '170',
 
@@ -107,7 +107,7 @@ const rawReDeDaData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the chosen Human.',
+      description: 'Interested in the chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
@@ -163,6 +163,108 @@ const rawReDeDaData = {
       note: 'Self-stun after use',
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 7,
+      technic: 6,
+      intelligence: 9,
+      vitality: 10,
+      agility: 11,
+      maxHp: 601,
+      meleeAtk: 89,
+      rangedAtk: 76,
+      magicAtk: 119,
+      evade: 140,
+      apRecovery: 107,
+      startingAp: 114
+    },
+    'EX 1': {
+      strength: 8,
+      technic: 6,
+      intelligence: 9,
+      vitality: 10,
+      agility: 11,
+      maxHp: 601,
+      meleeAtk: 102,
+      rangedAtk: 76,
+      magicAtk: 119,
+      evade: 140,
+      apRecovery: 107,
+      startingAp: 114
+    },
+    'EX 2': {
+      strength: 8,
+      technic: 6,
+      intelligence: 9,
+      vitality: 12,
+      agility: 11,
+      maxHp: 721,
+      meleeAtk: 102,
+      rangedAtk: 76,
+      magicAtk: 119,
+      evade: 140,
+      apRecovery: 107,
+      startingAp: 114
+    },
+    'EX 3': {
+      strength: 9,
+      technic: 6,
+      intelligence: 9,
+      vitality: 12,
+      agility: 11,
+      maxHp: 721,
+      meleeAtk: 115,
+      rangedAtk: 76,
+      magicAtk: 119,
+      evade: 140,
+      apRecovery: 107,
+      startingAp: 114
+    },
+    'EX 4': {
+      strength: 9,
+      technic: 6,
+      intelligence: 9,
+      vitality: 12,
+      agility: 13,
+      maxHp: 721,
+      meleeAtk: 115,
+      rangedAtk: 76,
+      magicAtk: 119,
+      evade: 166,
+      apRecovery: 112,
+      startingAp: 119
+    },
+    'EX 5': {
+      strength: 9,
+      technic: 6,
+      intelligence: 9,
+      vitality: 14,
+      agility: 13,
+      maxHp: 842,
+      meleeAtk: 115,
+      rangedAtk: 76,
+      magicAtk: 119,
+      evade: 166,
+      apRecovery: 112,
+      startingAp: 119
+    },
+    'EX 6': {
+      strength: 10,
+      technic: 6,
+      intelligence: 9,
+      vitality: 14,
+      agility: 13,
+      maxHp: 842,
+      meleeAtk: 128,
+      rangedAtk: 76,
+      magicAtk: 119,
+      evade: 166,
+      apRecovery: 112,
+      startingAp: 119
+    },
+  },
+  heroId: 31,
+
 };
 
 // Validate and sanitize the character data

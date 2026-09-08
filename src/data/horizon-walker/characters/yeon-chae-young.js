@@ -29,22 +29,22 @@ const rawYeonChaeYoungData = {
   // Character Stats (Level 60)
   stats: {
     // Basic Stats
-    strength: '7',
-    technic: '16',
-    intelligence: '9',
-    vitality: '13',
-    agility: '8',
+    strength: '11',
+    technic: '12',
+    intelligence: '13',
+    vitality: '11',
+    agility: '6',
 
     // Key Stats
-    meleeAtk: '89',
-    rangedAtk: '204',
-    magicAtk: '115',
-    maxHp: '790',
+    meleeAtk: '140',
+    rangedAtk: '153',
+    magicAtk: '166',
+    maxHp: '668',
     spd: '88',
-    startingAp: '123',
-    apRecovery: '110',
+    startingAp: '117',
+    apRecovery: '104',
     accuracy: '105',
-    evade: '102',
+    evade: '76',
     critRate: '10',
     critDmg: '150',
 
@@ -106,33 +106,45 @@ const rawYeonChaeYoungData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the Chosen Human.',
+      description: 'Interested in the Chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
   // Weapon Information
   weapon: {
-    name: 'EX Dual Pistols - DMP-9 Prototype',
-    type: 'EX Dual Pistols',
+    name: "DMP-9 Prototype",
+    flavor: "The DMP-9 Prototype, hailed as both a masterpiece and an enigma of the Rift Federation, perfectly embodies the simplicity and elegance sought in their weapon design - yet its origins and overwhelming firepower remain a mystery. Even the Federation's own engineers could not explain how the DMP-9 achieved performance far beyond conventional limits - despite being the very ones who built it. Fearing they might ruin their own creation, they never dared to dismantle and analyze it. Abandoned as a mass-production project, this legendary weapon remained true to its name: a prototype. Still, on the battlefield, its sheer destructive power leaves no room for doubt.",
+    type: "Dual Pistols",
     rarity: 'EX',
-    image: 'Yeon_Chae-Young_WP.jpg',
+    image: "Weapon_FullIMG_DualPistol_ForYeonYeonChaeyoung",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponRangedAtk: '91.0',
-      rangedAtkBonus: '+35.0%',
+      "Ranged ATK (weapon)": "91",
+      "Ranged ATK (%)": "+35%",
     },
     uniqueSkills: {
-      eliteAgentsDignity: {
+      unique: {
         name: "An Elite Agent's Dignity",
         type: 'Unique',
-        description:
-          'During combat Crit DMG +44% and SPD +36%. When allies other than yourself take their turn and land a Weak Point Attack, gain [Briefing] (stacks up to 2 times). At the start of your turn, if [Briefing] is at max stacks, gain [Keen Insight]. [Keen Insight]: Increases Pierce Boost by 56%.',
+        description: "During combat, Crit DMG +{20,26,32,38,44}% and SPD +{20,24,28,32,36}%. When allies other than yourself take their turn and land a Weak Point Attack, gain [Briefing] (stacks up to 2 times). At the start of your turn, if [Briefing] is at max stacks, gain [Keen Insight]. [Keen Insight]: Increases Pierce Boost by {24,32,40,48,56}%.",
       },
-      commenceOperation: {
-        name: 'Yeon Chae-young Signature: Commence Operation',
+      signature: {
+        name: "Yeon Chae-young Signature: Commence Operation",
         type: 'Signature',
-        description:
-          'Increases Ranged ATK +10% during combat. When Crit Rate exceeds 100%, half of the excess value is temporarily converted into Crit DMG. At the start of your turn, if you have [Keen Insight], gain [Extra Action] once, and the AP cost of "Assassination" and "Mass Execution" is reduced by 18 for that turn. During combat, "Conceal" is enhanced. Conceal: During combat, Crit DMG +10%. At the start of combat and after landing a Weak Point Attack, enter Stealth until the end of your turn.',
+        description: "Increases Ranged ATK +10% during combat. When Crit Rate exceeds 100%, half of the excess value is temporarily converted into Crit DMG. At the start of your turn, if you have [Keen Insight], gain [Extra Action] once, and the AP cost of \"Assassination\" and \"Mass Execution\" is reduced by 18 for that turn. During combat, \"Conceal\" is enhanced. [#sepline]Conceal During combat, Crit DMG +10%. At the start of combat and after landing a Weak Point Attack, enter Stealth until the end of your turn.",
       },
+    },
+    levelStats: {
+      "Ranged ATK (weapon)": [14.3, 91.0],
+      "Ranged ATK (%)": [5.5, 35.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "During combat, Crit DMG +", valuesByLevel: "20% / 26% / 32% / 38% / 44%" },
+        { name: "% and SPD +", valuesByLevel: "20% / 24% / 28% / 32% / 36%" },
+        { name: "[Keen Insight]: Increases Pierce Boost", valuesByLevel: "24% / 32% / 40% / 48% / 56%" },
+      ],
     },
   },
 
@@ -206,6 +218,108 @@ const rawYeonChaeYoungData = {
         "Identifies the enemy's weak point and guides allies. Increases ACC of all allies by 57%.",
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 9,
+      technic: 12,
+      intelligence: 11,
+      vitality: 9,
+      agility: 6,
+      maxHp: 547,
+      meleeAtk: 115,
+      rangedAtk: 153,
+      magicAtk: 140,
+      evade: 76,
+      apRecovery: 104,
+      startingAp: 117
+    },
+    'EX 1': {
+      strength: 9,
+      technic: 12,
+      intelligence: 11,
+      vitality: 10,
+      agility: 6,
+      maxHp: 608,
+      meleeAtk: 115,
+      rangedAtk: 153,
+      magicAtk: 140,
+      evade: 76,
+      apRecovery: 104,
+      startingAp: 117
+    },
+    'EX 2': {
+      strength: 9,
+      technic: 12,
+      intelligence: 12,
+      vitality: 10,
+      agility: 6,
+      maxHp: 608,
+      meleeAtk: 115,
+      rangedAtk: 153,
+      magicAtk: 153,
+      evade: 76,
+      apRecovery: 104,
+      startingAp: 117
+    },
+    'EX 3': {
+      strength: 10,
+      technic: 12,
+      intelligence: 12,
+      vitality: 10,
+      agility: 6,
+      maxHp: 608,
+      meleeAtk: 128,
+      rangedAtk: 153,
+      magicAtk: 153,
+      evade: 76,
+      apRecovery: 104,
+      startingAp: 117
+    },
+    'EX 4': {
+      strength: 10,
+      technic: 12,
+      intelligence: 13,
+      vitality: 10,
+      agility: 6,
+      maxHp: 608,
+      meleeAtk: 128,
+      rangedAtk: 153,
+      magicAtk: 166,
+      evade: 76,
+      apRecovery: 104,
+      startingAp: 117
+    },
+    'EX 5': {
+      strength: 11,
+      technic: 12,
+      intelligence: 13,
+      vitality: 10,
+      agility: 6,
+      maxHp: 608,
+      meleeAtk: 140,
+      rangedAtk: 153,
+      magicAtk: 166,
+      evade: 76,
+      apRecovery: 104,
+      startingAp: 117
+    },
+    'EX 6': {
+      strength: 11,
+      technic: 12,
+      intelligence: 13,
+      vitality: 11,
+      agility: 6,
+      maxHp: 668,
+      meleeAtk: 140,
+      rangedAtk: 153,
+      magicAtk: 166,
+      evade: 76,
+      apRecovery: 104,
+      startingAp: 117
+    },
+  },
+  heroId: 7,
+
 };
 
 // Validate and sanitize the character data

@@ -27,22 +27,22 @@ const rawKalinaData = {
   // Character Stats (Level 60)
   stats: {
     // Basic Stats
-    strength: '14',
+    strength: '10',
     technic: '8',
-    intelligence: '5',
-    vitality: '10',
-    agility: '17',
+    intelligence: '11',
+    vitality: '12',
+    agility: '15',
 
     // Key Stats
-    meleeAtk: '179',
+    meleeAtk: '128',
     rangedAtk: '102',
-    magicAtk: '64',
-    maxHp: '640',
-    spd: '157',
-    startingAp: '124',
-    apRecovery: '127',
+    magicAtk: '140',
+    maxHp: '768',
+    spd: '143',
+    startingAp: '119',
+    apRecovery: '122',
     accuracy: '102',
-    evade: '228',
+    evade: '201',
     critRate: '10',
     critDmg: '150',
 
@@ -74,28 +74,40 @@ const rawKalinaData = {
 
   // Weapon Information
   weapon: {
-    name: 'Tyrant Edge',
-    type: 'EX Twin Swords',
+    name: "Tyrant Edge",
+    flavor: "A modernized version of a weapon used by a legendary figure from the Bluemarsh Swamp Patrol. It features customizations for each distinguished swamp patrol officer. The handle, made from a special resonant metal, effectively transmits air vibrations to the wearer, allowing them to anticipate attacks in advance. The magically forged blade accumulates kinetic energy over a short period to enhance damage.",
+    type: "Twin Swords",
     rarity: 'EX',
-    image: 'Kalina_WP.jpg',
+    image: "Weapon_FullIMG_TyrantEdge",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: '91.0',
-      critRateBonus: '+35.0%',
+      "Melee ATK (weapon)": "91",
+      "Crit Rate (%)": "+35%",
     },
     uniqueSkills: {
-      edgeRunner: {
-        name: 'The Edge Runner',
+      unique: {
+        name: "The Edge Runner",
         type: 'Unique',
-        description:
-          'On successful attack, lifesteals 24% of the damage dealt. When an enemy attacks self, turns to face the attacker, and on evasion, Slash Boost increases by 24%, stacking up to 3 times. On attack, increases CRIT DMG based on the straight-line distance moved during the turn. Increases up to 180% at a maximum of 6m.',
+        description: "Increases Slash Boost by {12,15,18,21,24}% of the user's Base Evasion during battle. This effect can stack up to a maximum of {30,37.5,45,52.5,60}%. When targeted by an enemy attack, the user turns to face the attacker. If an attack hits, restores HP equal to {4,6,8,10,12}% of the damage dealt.",
       },
-      persistence: {
-        name: 'Persistence',
-        type: 'Kalina Signature',
-        description:
-          'When you evade, you counterattack with the "Blades of Tyranny" skill and it has a separate 2R cooldown. If the "Survival Expert" skill effect is triggered, you recover 30% of the Max HP.',
-        note: 'This signature skill only activates when Kalina equips this weapon.',
+      signature: {
+        name: "Kalina Signature: Persistence",
+        type: 'Signature',
+        description: "At the start of battle, gains 30 AP and increases Melee ATK by 20%. Hunter on the Vine now increases Melee ATK and Crit DMG based on movement distance and AP spent. The increase in Crit DMG matches the percentage of Melee ATK gained through this skill. (1 AP is treated as 0.1m of linear distance.) Once per round, using Blades of Tyranny restores 55 AP and resets its cooldown.",
+        note: "This signature skill only activates when Kalina equips this weapon.",
       },
+    },
+    levelStats: {
+      "Melee ATK (weapon)": [14.3, 91.0],
+      "Crit Rate (%)": [5.5, 35.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Increases Slash Boost", valuesByLevel: "12% / 15% / 18% / 21% / 24%" },
+        { name: "This effect can stack up to a maximum", valuesByLevel: "30% / 37.5% / 45% / 52.5% / 60%" },
+        { name: "If an attack hits, restores HP equal", valuesByLevel: "4% / 6% / 8% / 10% / 12%" },
+      ],
     },
   },
 
@@ -131,7 +143,7 @@ const rawKalinaData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the Chosen Human.',
+      description: 'Interested in the Chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
@@ -204,6 +216,108 @@ const rawKalinaData = {
       description: 'Once per battle, survives with 1 HP and immediately gains 150 AP.',
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 10,
+      technic: 8,
+      intelligence: 7,
+      vitality: 10,
+      agility: 14,
+      maxHp: 640,
+      meleeAtk: 128,
+      rangedAtk: 102,
+      magicAtk: 89,
+      evade: 188,
+      apRecovery: 119,
+      startingAp: 116
+    },
+    'EX 1': {
+      strength: 10,
+      technic: 8,
+      intelligence: 8,
+      vitality: 10,
+      agility: 14,
+      maxHp: 640,
+      meleeAtk: 128,
+      rangedAtk: 102,
+      magicAtk: 102,
+      evade: 188,
+      apRecovery: 119,
+      startingAp: 116
+    },
+    'EX 2': {
+      strength: 10,
+      technic: 8,
+      intelligence: 9,
+      vitality: 10,
+      agility: 14,
+      maxHp: 640,
+      meleeAtk: 128,
+      rangedAtk: 102,
+      magicAtk: 115,
+      evade: 188,
+      apRecovery: 119,
+      startingAp: 116
+    },
+    'EX 3': {
+      strength: 10,
+      technic: 8,
+      intelligence: 9,
+      vitality: 10,
+      agility: 15,
+      maxHp: 640,
+      meleeAtk: 128,
+      rangedAtk: 102,
+      magicAtk: 115,
+      evade: 201,
+      apRecovery: 122,
+      startingAp: 119
+    },
+    'EX 4': {
+      strength: 10,
+      technic: 8,
+      intelligence: 9,
+      vitality: 11,
+      agility: 15,
+      maxHp: 704,
+      meleeAtk: 128,
+      rangedAtk: 102,
+      magicAtk: 115,
+      evade: 201,
+      apRecovery: 122,
+      startingAp: 119
+    },
+    'EX 5': {
+      strength: 10,
+      technic: 8,
+      intelligence: 10,
+      vitality: 12,
+      agility: 15,
+      maxHp: 768,
+      meleeAtk: 128,
+      rangedAtk: 102,
+      magicAtk: 128,
+      evade: 201,
+      apRecovery: 122,
+      startingAp: 119
+    },
+    'EX 6': {
+      strength: 10,
+      technic: 8,
+      intelligence: 11,
+      vitality: 12,
+      agility: 15,
+      maxHp: 768,
+      meleeAtk: 128,
+      rangedAtk: 102,
+      magicAtk: 140,
+      evade: 201,
+      apRecovery: 122,
+      startingAp: 119
+    },
+  },
+  heroId: 4,
+
 };
 
 // Validate and sanitize the character data

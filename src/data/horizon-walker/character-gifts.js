@@ -1892,7 +1892,7 @@ export const CHARACTER_GIFT_PREFERENCES = [
     rarity: 'EX',
     image: 'Eugenia.jpg',
     level5Bonus: {
-      type: 'Melee ATK',
+      type: 'Max HP',
       value: '10%',
     },
     favorites: [
@@ -1996,6 +1996,203 @@ export const CHARACTER_GIFT_PREFERENCES = [
       },
     ],
   },
+  {
+    id: 'mira',
+    name: 'Mira',
+    rarity: 'EX',
+    image: 'Mira.jpg',
+    level5Bonus: {
+      type: 'Max HP',
+      value: '10%',
+    },
+    favorites: [
+      {
+        id: 'queens-tiara',
+        name: "Queen's Tiara",
+        rarity: 'EX',
+        image: '../../assets/images/games/horizon-walker/Gifts/Queen_tiara.jpg',
+        basePoints: 100,
+        bonusPoints: 20,
+        totalPoints: 120,
+      },
+    ],
+    likes: [
+      {
+        id: 'finest-black-tea',
+        name: 'Finest Black Tea',
+        rarity: 'S',
+        image: '../../assets/images/games/horizon-walker/Gifts/Finest_Black_Tea.jpg',
+        basePoints: 30,
+        bonusPoints: 10,
+        totalPoints: 40,
+      },
+      {
+        id: 'a-single-rose',
+        name: 'A Single Rose',
+        rarity: 'B',
+        image: '../../assets/images/games/horizon-walker/Gifts/A_Single_Rose.jpg',
+        basePoints: 10,
+        bonusPoints: 10,
+        totalPoints: 20,
+      },
+    ],
+  },
+  {
+    id: 'mirana',
+    name: 'Mirana',
+    rarity: 'EX',
+    image: 'Mirana.jpg',
+    level5Bonus: {
+      type: 'Magic ATK',
+      value: '10%',
+    },
+    favorites: [
+      {
+        id: 'snow-globe',
+        name: 'Snow Globe',
+        rarity: 'A',
+        image: '../../assets/images/games/horizon-walker/Gifts/Snow_Globe.jpg',
+        basePoints: 20,
+        bonusPoints: 20,
+        totalPoints: 40,
+      },
+      {
+        id: 'human-hair',
+        name: "Human God's Hair",
+        rarity: 'SS',
+        image: '../../assets/images/games/horizon-walker/Gifts/Human_Hair.jpg',
+        basePoints: 50,
+        bonusPoints: 20,
+        totalPoints: 70,
+      },
+    ],
+    likes: [
+      {
+        id: 'glazed-fruit-stick',
+        name: 'Glazed Fruit Stick',
+        rarity: 'B',
+        image: '../../assets/images/games/horizon-walker/Gifts/Glazed_Fruit_Stick.jpg',
+        basePoints: 10,
+        bonusPoints: 10,
+        totalPoints: 20,
+      },
+      {
+        id: 'forbidden-romance',
+        name: 'Forbidden Romance [A Secret Affair Barred by Class]',
+        rarity: 'B',
+        image: '../../assets/images/games/horizon-walker/Gifts/Forbidden_Romance.jpg',
+        basePoints: 10,
+        bonusPoints: 10,
+        totalPoints: 20,
+      },
+    ],
+  },
+  {
+    id: 'ahram',
+    name: 'Ahram',
+    rarity: 'EX',
+    image: 'Ahram.jpg',
+    level5Bonus: {
+      type: 'Ranged ATK',
+      value: '10%',
+    },
+    favorites: [
+      {
+        id: 'orca-documentary',
+        name: 'Orca Documentary',
+        rarity: 'B',
+        image: '../../assets/images/games/horizon-walker/Gifts/Orca_Documentary.jpg',
+        basePoints: 10,
+        bonusPoints: 20,
+        totalPoints: 30,
+      },
+    ],
+    likes: [
+      {
+        id: 'gun-maintenance-kit',
+        name: 'Gun Maintenance Kit',
+        rarity: 'B',
+        image: '../../assets/images/games/horizon-walker/Gifts/Gun_Maintenance_Kit.jpg',
+        basePoints: 10,
+        bonusPoints: 10,
+        totalPoints: 20,
+      },
+    ],
+  },
+  {
+    id: 'juza',
+    name: 'Juza',
+    rarity: 'EX',
+    image: 'Juza.jpg',
+    level5Bonus: {
+      type: 'Max HP',
+      value: '10%',
+    },
+    favorites: [
+      {
+        id: 'gloomy-chromi-keyring',
+        name: 'Gloomy Chromi Keyring',
+        rarity: 'B',
+        image: '../../assets/images/games/horizon-walker/Gifts/Gloomy_Chromi_Keyring.jpg',
+        basePoints: 10,
+        bonusPoints: 20,
+        totalPoints: 30,
+      },
+    ],
+    likes: [
+      {
+        id: '300kg-dumbbell',
+        name: '300kg Dumbbell',
+        rarity: 'A',
+        image: '../../assets/images/games/horizon-walker/Gifts/300_KG_Dumbbell_A.jpg',
+        basePoints: 20,
+        bonusPoints: 10,
+        totalPoints: 30,
+      },
+    ],
+  },
+  {
+    id: 'kotoha',
+    name: 'Kotoha',
+    rarity: 'EX',
+    image: 'Kotoha.jpg',
+    level5Bonus: {
+      type: 'Magic ATK',
+      value: '10%',
+    },
+    favorites: [
+      {
+        id: 'human-hair',
+        name: "Human God's Hair",
+        rarity: 'SS',
+        image: '../../assets/images/games/horizon-walker/Gifts/Human_Hair.jpg',
+        basePoints: 50,
+        bonusPoints: 20,
+        totalPoints: 70,
+      },
+    ],
+    likes: [
+      {
+        id: 'glazed-fruit-stick',
+        name: 'Glazed Fruit Stick',
+        rarity: 'B',
+        image: '../../assets/images/games/horizon-walker/Gifts/Glazed_Fruit_Stick.jpg',
+        basePoints: 10,
+        bonusPoints: 10,
+        totalPoints: 20,
+      },
+      {
+        id: 'soju',
+        name: 'Soju',
+        rarity: 'B',
+        image: '../../assets/images/games/horizon-walker/Gifts/Soju.jpg',
+        basePoints: 10,
+        bonusPoints: 10,
+        totalPoints: 20,
+      },
+    ],
+  },
+
 ];
 export const getCharacterById = characterId => {
   return CHARACTER_GIFT_PREFERENCES.find(char => char.id === characterId);

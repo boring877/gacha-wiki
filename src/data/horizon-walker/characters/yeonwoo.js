@@ -47,7 +47,7 @@ const rawYeonwooData = {
     apRecovery: '104',
     accuracy: '102',
     evade: '102',
-    critRate: '10',
+    critRate: '9',
     critDmg: '165',
 
     // Attribute Boost
@@ -108,7 +108,7 @@ const rawYeonwooData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Special trait with no listed characteristics.',
+      description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
     },
   },
 
@@ -253,29 +253,143 @@ const rawYeonwooData = {
 
   // Weapon
   weapon: {
-    name: 'EX Mana Shard - Endless Burger',
-    type: 'Mana Shard',
+    name: "Endless Burger",
+    flavor: "Food that never diminishes, no matter how much you eat - it might sound like the ultimate solution to humanity's hunger and famine. Unfortunately, the reality of this object falls far short of that ideal. While shaped and textured like the perfect burger, this so-called \"mana orb\" is essentially a mass of concentrated mana wrapped around a small black shard at its core. Its primary function is to elevate the caster's focus through its exceptional taste, yet ironically, it also causes steady weight gain, rendering it useless for dieting. However, as a high-grade mana orb that directly enhances vitality, its performance ranks among the best. For those who can resist its tempting aroma - or who have simply given up on maintaining their figure - it can serve as an excellent weapon.",
+    type: "Mana Shard",
     rarity: 'EX',
-    image: 'Yeonwoo_WP.jpg',
+    image: "Weapon_FullIMG_ShardOfSpell_ForYeonwoo",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMagicAtk: '77.0',
-      critRateBonus: '+49.0%',
+      "Magic ATK (weapon)": "77",
+      "Crit Rate (%)": "+49%",
     },
     uniqueSkills: {
-      munchMunchAgain: {
-        name: 'Munch Munch Again',
+      unique: {
+        name: "Munch Munch Again",
         type: 'Unique',
-        description:
-          'Increases Critical Rate by 24% and Critical DMG by 32% during battle. When receiving an HP Recovery effect, gains the [Gained Weight] effect for 1 round. [Gained Weight]: Increases Crush Boost by 80%.',
+        description: "Increases Critical Rate by {12,15,18,21,24}% and Critical DMG by {16,20,24,28,32}% during battle. When receiving an HP Recovery effect, gains the [Gained Weight] effect for 1 round. [Gained Weight]: Increases Crush Boost by {40,50,60,70,80}%.",
       },
-      everythingsTastyAndHappy: {
+      signature: {
         name: "Yeonwoo Signature: Everything's Tasty And Happy",
         type: 'Signature',
-        description:
-          "If Munch O'Clock grants only 1 stack of [Gluttony], gain 1 additional stack. When gaining AP at the end of any turn via the Rapid-Fire Food Fight effect, gain an additional 50% of that AP.",
+        description: "If Munch O'Clock! grants only 1 stack of [Gluttony], gain 1 additional stack. When gaining AP at the end of any turn via the Rapid-Fire Food Fight effect, gain an additional 50% of that AP.",
       },
     },
+    levelStats: {
+      "Magic ATK (weapon)": [12.1, 77.0],
+      "Crit Rate (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Increases Critical Rate", valuesByLevel: "12% / 15% / 18% / 21% / 24%" },
+        { name: "% and Critical DMG", valuesByLevel: "16% / 20% / 24% / 28% / 32%" },
+        { name: "[Gained Weight]: Increases Crush Boost", valuesByLevel: "40% / 50% / 60% / 70% / 80%" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 4,
+      technic: 9,
+      intelligence: 9,
+      vitality: 13,
+      agility: 5,
+      maxHp: 1186,
+      meleeAtk: 51,
+      rangedAtk: 115,
+      magicAtk: 64,
+      evade: 64,
+      apRecovery: 96,
+      startingAp: 154
+    },
+    'EX 1': {
+      strength: 4,
+      technic: 9,
+      intelligence: 9,
+      vitality: 14,
+      agility: 5,
+      maxHp: 1252,
+      meleeAtk: 51,
+      rangedAtk: 115,
+      magicAtk: 64,
+      evade: 64,
+      apRecovery: 96,
+      startingAp: 154
+    },
+    'EX 2': {
+      strength: 4,
+      technic: 9,
+      intelligence: 9,
+      vitality: 14,
+      agility: 7,
+      maxHp: 1252,
+      meleeAtk: 51,
+      rangedAtk: 115,
+      magicAtk: 64,
+      evade: 89,
+      apRecovery: 101,
+      startingAp: 159
+    },
+    'EX 3': {
+      strength: 4,
+      technic: 9,
+      intelligence: 9,
+      vitality: 16,
+      agility: 7,
+      maxHp: 1384,
+      meleeAtk: 51,
+      rangedAtk: 115,
+      magicAtk: 64,
+      evade: 89,
+      apRecovery: 101,
+      startingAp: 159
+    },
+    'EX 4': {
+      strength: 4,
+      technic: 9,
+      intelligence: 9,
+      vitality: 17,
+      agility: 7,
+      maxHp: 1450,
+      meleeAtk: 51,
+      rangedAtk: 115,
+      magicAtk: 64,
+      evade: 89,
+      apRecovery: 101,
+      startingAp: 159
+    },
+    'EX 5': {
+      strength: 4,
+      technic: 9,
+      intelligence: 9,
+      vitality: 18,
+      agility: 7,
+      maxHp: 1516,
+      meleeAtk: 51,
+      rangedAtk: 115,
+      magicAtk: 64,
+      evade: 89,
+      apRecovery: 101,
+      startingAp: 159
+    },
+    'EX 6': {
+      strength: 4,
+      technic: 9,
+      intelligence: 9,
+      vitality: 19,
+      agility: 8,
+      maxHp: 1582,
+      meleeAtk: 51,
+      rangedAtk: 115,
+      magicAtk: 64,
+      evade: 102,
+      apRecovery: 104,
+      startingAp: 162
+    },
+  },
+  heroId: 54,
+
 };
 
 // Validate and sanitize the character data

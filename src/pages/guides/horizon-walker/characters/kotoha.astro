@@ -1,0 +1,20 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  kotohaData,
+  kotohaSEO,
+  kotohaHighlighting,
+} from '../../../../data/horizon-walker/characters/kotoha.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={kotohaSEO.title}
+  description={kotohaSEO.description}
+  gameTitle={kotohaData.name}
+  character={kotohaData}
+>
+  <CharacterPageTemplate characterData={{ ...kotohaData, highlightPatterns: kotohaHighlighting }} />
+</CharacterIndividualLayout>

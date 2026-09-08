@@ -45,7 +45,7 @@ const rawGulamData = {
     magicAtk: '89',
     maxHp: '774',
     spd: '117',
-    startingAp: '137',
+    startingAp: '123',
     apRecovery: '119',
     accuracy: '102',
     evade: '250',
@@ -109,7 +109,7 @@ const rawGulamData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the chosen Human.',
+      description: 'Interested in the chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
@@ -182,6 +182,108 @@ const rawGulamData = {
 
   // Weapon - Not available yet
   weapon: null,
+  rarityStages: {
+    'EX': {
+      strength: 7,
+      technic: 7,
+      intelligence: 7,
+      vitality: 9,
+      agility: 11,
+      maxHp: 633,
+      meleeAtk: 89,
+      rangedAtk: 89,
+      magicAtk: 89,
+      evade: 197,
+      apRecovery: 111,
+      startingAp: 115
+    },
+    'EX 1': {
+      strength: 7,
+      technic: 7,
+      intelligence: 7,
+      vitality: 9,
+      agility: 12,
+      maxHp: 633,
+      meleeAtk: 89,
+      rangedAtk: 89,
+      magicAtk: 89,
+      evade: 215,
+      apRecovery: 114,
+      startingAp: 118
+    },
+    'EX 2': {
+      strength: 7,
+      technic: 7,
+      intelligence: 7,
+      vitality: 10,
+      agility: 12,
+      maxHp: 704,
+      meleeAtk: 89,
+      rangedAtk: 89,
+      magicAtk: 89,
+      evade: 215,
+      apRecovery: 114,
+      startingAp: 118
+    },
+    'EX 3': {
+      strength: 7,
+      technic: 7,
+      intelligence: 7,
+      vitality: 10,
+      agility: 13,
+      maxHp: 704,
+      meleeAtk: 89,
+      rangedAtk: 89,
+      magicAtk: 89,
+      evade: 232,
+      apRecovery: 117,
+      startingAp: 121
+    },
+    'EX 4': {
+      strength: 8,
+      technic: 7,
+      intelligence: 7,
+      vitality: 10,
+      agility: 13,
+      maxHp: 704,
+      meleeAtk: 102,
+      rangedAtk: 89,
+      magicAtk: 89,
+      evade: 232,
+      apRecovery: 117,
+      startingAp: 121
+    },
+    'EX 5': {
+      strength: 8,
+      technic: 7,
+      intelligence: 7,
+      vitality: 11,
+      agility: 13,
+      maxHp: 774,
+      meleeAtk: 102,
+      rangedAtk: 89,
+      magicAtk: 89,
+      evade: 232,
+      apRecovery: 117,
+      startingAp: 121
+    },
+    'EX 6': {
+      strength: 8,
+      technic: 7,
+      intelligence: 7,
+      vitality: 11,
+      agility: 14,
+      maxHp: 774,
+      meleeAtk: 102,
+      rangedAtk: 89,
+      magicAtk: 89,
+      evade: 250,
+      apRecovery: 119,
+      startingAp: 123
+    },
+  },
+  heroId: 34,
+
 };
 
 // Validate and sanitize the character data

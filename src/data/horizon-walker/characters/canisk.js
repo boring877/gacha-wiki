@@ -29,17 +29,17 @@ const rawCaniskData = {
   // Character Stats (Level 60)
   stats: {
     // Basic Stats
-    strength: '17',
-    technic: '7',
+    strength: '11',
+    technic: '13',
     intelligence: '6',
-    vitality: '16',
+    vitality: '14',
     agility: '9',
 
     // Key Stats
-    meleeAtk: '298',
-    rangedAtk: '122',
+    meleeAtk: '192',
+    rangedAtk: '227',
     magicAtk: '76',
-    maxHp: '972',
+    maxHp: '851',
     spd: '92',
     startingAp: '128',
     apRecovery: '102',
@@ -67,7 +67,7 @@ const rawCaniskData = {
     electricDef: '0',
     immaterialDef: '0',
     poisonDef: '0',
-    blockRate: '50',
+    blockRate: '0',
   },
 
   // Character Description
@@ -165,6 +165,108 @@ const rawCaniskData = {
         "Strikes downward with a greatsword to deliver a powerful blow. Deals Slash DMG equal to 190% of Melee ATK. This skill's Slash Boost increases proportionally to missing HP, up to 200% for the turn it's used. If this skill defeats an enemy, restores 76% of Max HP as HP Recovery.",
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 11,
+      technic: 9,
+      intelligence: 6,
+      vitality: 13,
+      agility: 8,
+      maxHp: 790,
+      meleeAtk: 192,
+      rangedAtk: 157,
+      magicAtk: 76,
+      evade: 102,
+      apRecovery: 100,
+      startingAp: 126
+    },
+    'EX 1': {
+      strength: 11,
+      technic: 10,
+      intelligence: 6,
+      vitality: 13,
+      agility: 8,
+      maxHp: 790,
+      meleeAtk: 192,
+      rangedAtk: 175,
+      magicAtk: 76,
+      evade: 102,
+      apRecovery: 100,
+      startingAp: 126
+    },
+    'EX 2': {
+      strength: 11,
+      technic: 10,
+      intelligence: 6,
+      vitality: 13,
+      agility: 9,
+      maxHp: 790,
+      meleeAtk: 192,
+      rangedAtk: 175,
+      magicAtk: 76,
+      evade: 115,
+      apRecovery: 102,
+      startingAp: 128
+    },
+    'EX 3': {
+      strength: 11,
+      technic: 11,
+      intelligence: 6,
+      vitality: 13,
+      agility: 9,
+      maxHp: 790,
+      meleeAtk: 192,
+      rangedAtk: 192,
+      magicAtk: 76,
+      evade: 115,
+      apRecovery: 102,
+      startingAp: 128
+    },
+    'EX 4': {
+      strength: 11,
+      technic: 11,
+      intelligence: 6,
+      vitality: 14,
+      agility: 9,
+      maxHp: 851,
+      meleeAtk: 192,
+      rangedAtk: 192,
+      magicAtk: 76,
+      evade: 115,
+      apRecovery: 102,
+      startingAp: 128
+    },
+    'EX 5': {
+      strength: 11,
+      technic: 12,
+      intelligence: 6,
+      vitality: 14,
+      agility: 9,
+      maxHp: 851,
+      meleeAtk: 192,
+      rangedAtk: 210,
+      magicAtk: 76,
+      evade: 115,
+      apRecovery: 102,
+      startingAp: 128
+    },
+    'EX 6': {
+      strength: 11,
+      technic: 13,
+      intelligence: 6,
+      vitality: 14,
+      agility: 9,
+      maxHp: 851,
+      meleeAtk: 192,
+      rangedAtk: 227,
+      magicAtk: 76,
+      evade: 115,
+      apRecovery: 102,
+      startingAp: 128
+    },
+  },
+  heroId: 6,
+
 };
 
 // Validate and sanitize the character data

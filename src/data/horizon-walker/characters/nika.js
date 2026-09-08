@@ -107,7 +107,7 @@ const rawNikaData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Special trait with no listed characteristics.',
+      description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
     },
   },
 
@@ -184,29 +184,142 @@ const rawNikaData = {
 
   // Weapon
   weapon: {
-    name: 'EX Twin Swords - The Ninth Bite',
-    type: 'Twin Swords',
+    name: "The Ninth Bite",
+    flavor: "This weapon is crafted from the venomous fang extracted from the ninth head of a creature considered one of the most horrific disasters in Cathria's history. Despite having lost its life, the venom remains lethally brutal. It has been processed using special techniques and equipped with various protective measures for weapon use. The fish-like form is a result of this unique crafting method.",
+    type: "Twin Swords",
     rarity: 'EX',
-    image: 'Nika_WP.jpg',
+    image: "Weapon_FullIMG_TheFishIsPoisonous",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: '77.0',
-      accuracyBonus: '+98.0%',
+      "Melee ATK (weapon)": "77",
+      "Accuracy (%)": "+98%",
     },
     uniqueSkills: {
-      deathSentence: {
-        name: 'Death Sentence',
+      unique: {
+        name: "Death Sentence",
         type: 'Unique',
-        description:
-          'Increases Poison Boost by 80%. On successful attack, deals additional Poison DMG equal to 120% of ACC.',
+        description: "Increases Poison Boost by {40,50,60,70,80}%. On successful attack, deals additional Poison DMG equal to {60,75,90,105,120}% of ACC",
       },
-      venomousFragrance: {
-        name: 'Nika Signature: Venomous Fragrance',
-        type: 'Character Signature',
-        description:
-          'At the start of any turn and when casting own skill, intoxicates enemies within 5m range. If a target under the [Necrotoxin] effect ends their turn, deals additional Poison DMG equal to 20% of the accumulated [Necrotoxin].',
+      signature: {
+        name: "Nika Signature: Venomous Fragrance",
+        type: 'Signature',
+        description: "At the start of a random turn or when the user activates a skill, all enemies within 5m are afflicted with Poison Scent. If a target under Poison Scent possesses the [Necrotoxin] effect at the end of the turn, they take Additional Poison DMG equal to 20% of their accumulated [Necrotoxin].",
       },
     },
+    levelStats: {
+      "Melee ATK (weapon)": [12.1, 77.0],
+      "Accuracy (%)": [15.4, 98.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Increases Poison Boost", valuesByLevel: "40% / 50% / 60% / 70% / 80%" },
+        { name: "On successful attack, deals additional Poison DMG equal", valuesByLevel: "60% / 75% / 90% / 105% / 120%" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 12,
+      technic: 10,
+      intelligence: 6,
+      vitality: 8,
+      agility: 16,
+      maxHp: 512,
+      meleeAtk: 153,
+      rangedAtk: 128,
+      magicAtk: 76,
+      evade: 230,
+      apRecovery: 125,
+      startingAp: 133
+    },
+    'EX 1': {
+      strength: 12,
+      technic: 10,
+      intelligence: 6,
+      vitality: 8,
+      agility: 17,
+      maxHp: 512,
+      meleeAtk: 153,
+      rangedAtk: 128,
+      magicAtk: 76,
+      evade: 243,
+      apRecovery: 127,
+      startingAp: 135
+    },
+    'EX 2': {
+      strength: 13,
+      technic: 10,
+      intelligence: 6,
+      vitality: 8,
+      agility: 17,
+      maxHp: 512,
+      meleeAtk: 166,
+      rangedAtk: 128,
+      magicAtk: 76,
+      evade: 243,
+      apRecovery: 127,
+      startingAp: 135
+    },
+    'EX 3': {
+      strength: 13,
+      technic: 10,
+      intelligence: 6,
+      vitality: 9,
+      agility: 17,
+      maxHp: 576,
+      meleeAtk: 166,
+      rangedAtk: 128,
+      magicAtk: 76,
+      evade: 243,
+      apRecovery: 127,
+      startingAp: 135
+    },
+    'EX 4': {
+      strength: 13,
+      technic: 10,
+      intelligence: 6,
+      vitality: 9,
+      agility: 18,
+      maxHp: 576,
+      meleeAtk: 166,
+      rangedAtk: 128,
+      magicAtk: 76,
+      evade: 256,
+      apRecovery: 130,
+      startingAp: 138
+    },
+    'EX 5': {
+      strength: 14,
+      technic: 10,
+      intelligence: 6,
+      vitality: 9,
+      agility: 18,
+      maxHp: 576,
+      meleeAtk: 179,
+      rangedAtk: 128,
+      magicAtk: 76,
+      evade: 256,
+      apRecovery: 130,
+      startingAp: 138
+    },
+    'EX 6': {
+      strength: 14,
+      technic: 10,
+      intelligence: 6,
+      vitality: 9,
+      agility: 19,
+      maxHp: 576,
+      meleeAtk: 179,
+      rangedAtk: 128,
+      magicAtk: 76,
+      evade: 268,
+      apRecovery: 132,
+      startingAp: 140
+    },
+  },
+  heroId: 39,
+
 };
 
 // Validate and sanitize the character data

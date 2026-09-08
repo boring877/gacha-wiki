@@ -36,20 +36,20 @@ const rawEfreetiData = {
     // Basic Stats
     strength: '6',
     technic: '7',
-    intelligence: '20',
+    intelligence: '27',
     vitality: '9',
-    agility: '19',
+    agility: '24',
 
     // Key Stats
     meleeAtk: '76',
     rangedAtk: '89',
-    magicAtk: '256',
+    magicAtk: '368',
     maxHp: '518',
     spd: '131',
-    startingAp: '106',
-    apRecovery: '127',
+    startingAp: '119',
+    apRecovery: '140',
     accuracy: '102',
-    evade: '243',
+    evade: '307',
     critRate: '10',
     critDmg: '150',
 
@@ -111,7 +111,7 @@ const rawEfreetiData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the chosen Human.',
+      description: 'Interested in the chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
@@ -199,29 +199,143 @@ const rawEfreetiData = {
 
   // Weapon
   weapon: {
-    name: 'EX Arcane Orb - Vulkanus',
-    image: 'Efreeti_WP.jpg',
+    name: "Vulkanus",
+    flavor: "Forged in ancient flame and steeped in molten heat, Vulcanus burns with a ceaseless, smoldering glow. It carries secrets once lost to time - secrets tempered in forgotten forges - and has now been reborn in new fire, bearing the scars of a renewed legend.",
+    type: "Arcane Orb",
     rarity: 'EX',
-    type: 'Arcane Orb',
+    image: "Weapon_FullIMG_ArcaneBall_ForEfreeti",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMagicAtk: '77.0',
-      maxHpBonus: '+49.0%',
+      "Magic ATK (weapon)": "77",
+      "Max HP (%)": "+49%",
     },
     uniqueSkills: {
-      endlessHeat: {
-        name: 'Endless Heat',
+      unique: {
+        name: "Endless Heat",
         type: 'Unique',
-        description:
-          "Increases Crit Rate by 4% of base Max HP during combat. After a successful support attack, grants all allies the [Thermal Saturation] effect at the start of the next turn. [Thermal Saturation]: Increases Elemental Boost by 12% and Additional DMG Boost by 32%. The effect expires at the end of the holder's turn.",
+        description: "Increases Crit Rate by {2,2.5,3,3.5,4}% of base Max HP during combat. After a successful support attack, grants all allies the [Thermal Saturation] effect at the start of the next turn. [Thermal Saturation]: Increases Elemental Boost by {8,9,10,11,12}% and Additional DMG Boost by {16,20,24,28,32}%. The effect expires at the end of the holder's turn.",
       },
-      efreotiSignature: {
-        name: 'Efreeti Signature: The Unextinguishable Flame',
+      signature: {
+        name: "Efreeti Signature: The Unextinguishable Flame",
         type: 'Signature',
-        description:
-          "Increases Crit Rate by 30% during combat. Basic ATK grants allies with [Emberbound] a 8% increase in Crit Rate and Additional DMG Boost for 1R. When an ally with [Emberbound] attacks, the caster also performs a support attack with Ember Vortex, even if the ally doesn't have the [Arcane Purge] effect.",
+        description: "Increases Crit Rate by 30% during combat. Basic ATK grants allies with [Emberbound] a 8% increase in Crit Rate and Additional DMG Boost for 1R. When an ally with [Emberbound] attacks, the caster also performs a support attack with Ember Vortex, even if the ally doesn't have the [Arcane Purge] effect.",
       },
     },
+    levelStats: {
+      "Magic ATK (weapon)": [12.1, 77.0],
+      "Max HP (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Increases Crit Rate", valuesByLevel: "2% / 2.5% / 3% / 3.5% / 4%" },
+        { name: "[Thermal Saturation]: Increases Elemental Boost", valuesByLevel: "8% / 9% / 10% / 11% / 12%" },
+        { name: "% and Additional DMG Boost", valuesByLevel: "16% / 20% / 24% / 28% / 32%" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 6,
+      technic: 7,
+      intelligence: 20,
+      vitality: 9,
+      agility: 19,
+      maxHp: 518,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 256,
+      evade: 243,
+      apRecovery: 127,
+      startingAp: 106
+    },
+    'EX 1': {
+      strength: 6,
+      technic: 7,
+      intelligence: 22,
+      vitality: 9,
+      agility: 19,
+      maxHp: 518,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 288,
+      evade: 243,
+      apRecovery: 127,
+      startingAp: 106
+    },
+    'EX 2': {
+      strength: 6,
+      technic: 7,
+      intelligence: 23,
+      vitality: 9,
+      agility: 19,
+      maxHp: 518,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 304,
+      evade: 243,
+      apRecovery: 127,
+      startingAp: 106
+    },
+    'EX 3': {
+      strength: 6,
+      technic: 7,
+      intelligence: 25,
+      vitality: 9,
+      agility: 19,
+      maxHp: 518,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 336,
+      evade: 243,
+      apRecovery: 127,
+      startingAp: 106
+    },
+    'EX 4': {
+      strength: 6,
+      technic: 7,
+      intelligence: 25,
+      vitality: 9,
+      agility: 21,
+      maxHp: 518,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 336,
+      evade: 268,
+      apRecovery: 132,
+      startingAp: 111
+    },
+    'EX 5': {
+      strength: 6,
+      technic: 7,
+      intelligence: 25,
+      vitality: 9,
+      agility: 24,
+      maxHp: 518,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 336,
+      evade: 307,
+      apRecovery: 140,
+      startingAp: 119
+    },
+    'EX 6': {
+      strength: 6,
+      technic: 7,
+      intelligence: 27,
+      vitality: 9,
+      agility: 24,
+      maxHp: 518,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 368,
+      evade: 307,
+      apRecovery: 140,
+      startingAp: 119
+    },
+  },
+  heroId: 27,
+
 };
 
 // Validate and sanitize the character data

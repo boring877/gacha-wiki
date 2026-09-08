@@ -107,7 +107,7 @@ const rawMarhimData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Special trait with no listed characteristics.',
+      description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
     },
   },
 
@@ -180,29 +180,142 @@ const rawMarhimData = {
 
   // Weapon
   weapon: {
-    name: 'EX Twin Swords - The Crimson Executioner',
-    type: 'Twin Swords',
+    name: "The Crimson Executioner",
+    flavor: "The Crimson Executioner is a highly renowned assassination tool. The pairing of assassination and fame is not without reason; this weapon has a track record that leans more towards wholesale slaughter than stealthy kills. Crafted in accordance with the ignorant creed of a certain Catsidhe that states no witnesses should remain, this assassination tool carries an excessive amount of blood, exuding an unmistakable stench of gore.",
+    type: "Twin Swords",
     rarity: 'EX',
-    image: 'Marhim_WP.jpg',
+    image: "Weapon_FullIMG_TheBloodyExecutioner",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: '77.0',
-      critRateBonus: '+49.0%',
+      "Melee ATK (weapon)": "77",
+      "Crit Rate (%)": "+49%",
     },
     uniqueSkills: {
-      theCrimsonExecutioner: {
-        name: 'The Crimson Executioner',
+      unique: {
+        name: "The Crimson Executioner",
         type: 'Unique',
-        description:
-          'Increases Pierce Boost by 40% during battle. On attack, temporarily increases melee ATK proportionally based on the distance moved in a straight line this turn, up to 2m, increasing by 80%.',
+        description: "Increases Pierce Boost by {20,25,30,35,40}% during battle. On attack, temporarily increases Melee ATK proportionally based on the distance moved in a straight line this turn, up to 2m, increasing by {40,50,60,70,80}%.",
       },
-      theBloodbath: {
-        name: 'Marhim Signature: The Bloodbath',
-        type: 'Character Signature',
-        description:
-          "Using the 'Bloodsoaked Execution' skill during battle reduces its cooldown by 2 rounds.",
+      signature: {
+        name: "Marhim Signature: The Bloodbath",
+        type: 'Signature',
+        description: "Using the 'Bloodsoaked Execution' skill during battle reduces its cooldown by 2 rounds.",
       },
     },
+    levelStats: {
+      "Melee ATK (weapon)": [12.1, 77.0],
+      "Crit Rate (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Increases Pierce Boost", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+        { name: "...reases Melee ATK proportionally based on the distance moved in a straight line this turn, up to 2m, increasing", valuesByLevel: "40% / 50% / 60% / 70% / 80%" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 12,
+      technic: 10,
+      intelligence: 6,
+      vitality: 8,
+      agility: 16,
+      maxHp: 512,
+      meleeAtk: 153,
+      rangedAtk: 128,
+      magicAtk: 76,
+      evade: 253,
+      apRecovery: 125,
+      startingAp: 132
+    },
+    'EX 1': {
+      strength: 12,
+      technic: 10,
+      intelligence: 6,
+      vitality: 8,
+      agility: 17,
+      maxHp: 512,
+      meleeAtk: 153,
+      rangedAtk: 128,
+      magicAtk: 76,
+      evade: 267,
+      apRecovery: 127,
+      startingAp: 134
+    },
+    'EX 2': {
+      strength: 13,
+      technic: 10,
+      intelligence: 6,
+      vitality: 8,
+      agility: 17,
+      maxHp: 512,
+      meleeAtk: 166,
+      rangedAtk: 128,
+      magicAtk: 76,
+      evade: 267,
+      apRecovery: 127,
+      startingAp: 134
+    },
+    'EX 3': {
+      strength: 13,
+      technic: 10,
+      intelligence: 6,
+      vitality: 9,
+      agility: 17,
+      maxHp: 576,
+      meleeAtk: 166,
+      rangedAtk: 128,
+      magicAtk: 76,
+      evade: 267,
+      apRecovery: 127,
+      startingAp: 134
+    },
+    'EX 4': {
+      strength: 13,
+      technic: 10,
+      intelligence: 6,
+      vitality: 9,
+      agility: 18,
+      maxHp: 576,
+      meleeAtk: 166,
+      rangedAtk: 128,
+      magicAtk: 76,
+      evade: 281,
+      apRecovery: 130,
+      startingAp: 137
+    },
+    'EX 5': {
+      strength: 14,
+      technic: 10,
+      intelligence: 6,
+      vitality: 9,
+      agility: 18,
+      maxHp: 576,
+      meleeAtk: 179,
+      rangedAtk: 128,
+      magicAtk: 76,
+      evade: 281,
+      apRecovery: 130,
+      startingAp: 137
+    },
+    'EX 6': {
+      strength: 14,
+      technic: 10,
+      intelligence: 6,
+      vitality: 9,
+      agility: 19,
+      maxHp: 576,
+      meleeAtk: 179,
+      rangedAtk: 128,
+      magicAtk: 76,
+      evade: 295,
+      apRecovery: 132,
+      startingAp: 139
+    },
+  },
+  heroId: 38,
+
 };
 
 // Validate and sanitize the character data

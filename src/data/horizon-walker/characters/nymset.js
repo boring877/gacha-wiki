@@ -44,7 +44,7 @@ const rawNymsetData = {
     rangedAtk: '89',
     magicAtk: '166',
     maxHp: '832',
-    spd: '123',
+    spd: '103',
     startingAp: '117',
     apRecovery: '105',
     accuracy: '102',
@@ -109,7 +109,7 @@ const rawNymsetData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Special trait with no listed characteristics.',
+      description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
     },
   },
 
@@ -182,30 +182,145 @@ const rawNymsetData = {
 
   // Weapon
   weapon: {
-    name: 'EX Club & Shield - The Silver Bough',
-    type: 'Club & Shield',
+    name: "The Silver Bough",
+    flavor: "This artifact embodies the crossroads of the Goddess of the Split Twigs. It originated from a small symbol created by a blacksmith deeply devoted to the Split Twigs sect, intended as an offering to the goddess. The blacksmith engraved various decorations on the surface of the symbol to express the goddess's infinite and anomalous attributes, resulting in the symbol taking the form of a mace with several blades attached. It is said that this blessed artifact played a crucial role during the Rift crisis in Noctis, wielded by the bravest priests to combat the foreign entities.",
+    type: "Club & Shield",
     rarity: 'EX',
-    image: 'Nymset_WP.jpg',
+    image: "Weapon_FullIMG_SilverTree_Branch_Mace_MS",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: '70.0',
-      weaponMagicAtk: '70.0',
-      maxHpBonus: '+49.0%',
+      "Melee ATK (weapon)": "70",
+      "Magic ATK (weapon)": "70",
+      "Max HP (%)": "+49%",
     },
     uniqueSkills: {
-      mighty: {
-        name: 'Mighty',
+      unique: {
+        name: "Mighty",
         type: 'Unique',
-        description:
-          'During battle, increases SPD by 32% and Aggro Adjustment by 40. If an enemy within 5m attacks you, temporarily decreases their All ATK by 58%.',
+        description: "During battle, increases SPD by {16,20,24,28,32}% and Aggro Adjustment by {20,25,30,35,40}. If an enemy within 5m attacks you, temporarily decreases their All ATK by {30,37,44,51,58}%.",
       },
-      seraph: {
-        name: 'Nymset Signature: Seraph',
-        type: 'Character Signature',
-        description:
-          "During battle, increases the attack radius of the 'Divine Tongue' skill by 1m and reduces its cooldown by 1 Round.",
+      signature: {
+        name: "Nymset Signature: Seraph",
+        type: 'Signature',
+        description: "During battle, increases the attack radius of the 'Divine Tongue' skill by 1m and reduces its cooldown by 1 Round.",
       },
     },
+    levelStats: {
+      "Melee ATK (weapon)": [11.0, 70.0],
+      "Magic ATK (weapon)": [11.0, 70.0],
+      "Max HP (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "During battle, increases SPD", valuesByLevel: "16% / 20% / 24% / 28% / 32%" },
+        { name: "% and Aggro Adjustment", valuesByLevel: "20 / 25 / 30 / 35 / 40" },
+        { name: "If an enemy within 5m attacks you, temporarily decreases their All ATK", valuesByLevel: "30% / 37% / 44% / 51% / 58%" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 10,
+      technic: 6,
+      intelligence: 10,
+      vitality: 11,
+      agility: 10,
+      maxHp: 704,
+      meleeAtk: 140,
+      rangedAtk: 89,
+      magicAtk: 140,
+      evade: 134,
+      apRecovery: 105,
+      startingAp: 117
+    },
+    'EX 1': {
+      strength: 10,
+      technic: 6,
+      intelligence: 10,
+      vitality: 12,
+      agility: 10,
+      maxHp: 768,
+      meleeAtk: 140,
+      rangedAtk: 89,
+      magicAtk: 140,
+      evade: 134,
+      apRecovery: 105,
+      startingAp: 117
+    },
+    'EX 2': {
+      strength: 10,
+      technic: 6,
+      intelligence: 11,
+      vitality: 12,
+      agility: 10,
+      maxHp: 768,
+      meleeAtk: 140,
+      rangedAtk: 89,
+      magicAtk: 153,
+      evade: 134,
+      apRecovery: 105,
+      startingAp: 117
+    },
+    'EX 3': {
+      strength: 11,
+      technic: 6,
+      intelligence: 11,
+      vitality: 12,
+      agility: 10,
+      maxHp: 768,
+      meleeAtk: 153,
+      rangedAtk: 89,
+      magicAtk: 153,
+      evade: 134,
+      apRecovery: 105,
+      startingAp: 117
+    },
+    'EX 4': {
+      strength: 11,
+      technic: 6,
+      intelligence: 12,
+      vitality: 12,
+      agility: 10,
+      maxHp: 768,
+      meleeAtk: 153,
+      rangedAtk: 89,
+      magicAtk: 166,
+      evade: 134,
+      apRecovery: 105,
+      startingAp: 117
+    },
+    'EX 5': {
+      strength: 12,
+      technic: 6,
+      intelligence: 12,
+      vitality: 12,
+      agility: 10,
+      maxHp: 768,
+      meleeAtk: 166,
+      rangedAtk: 89,
+      magicAtk: 166,
+      evade: 134,
+      apRecovery: 105,
+      startingAp: 117
+    },
+    'EX 6': {
+      strength: 12,
+      technic: 6,
+      intelligence: 12,
+      vitality: 13,
+      agility: 10,
+      maxHp: 832,
+      meleeAtk: 166,
+      rangedAtk: 89,
+      magicAtk: 166,
+      evade: 134,
+      apRecovery: 105,
+      startingAp: 117
+    },
+  },
+  heroId: 46,
+
 };
 
 // Validate and sanitize the character data

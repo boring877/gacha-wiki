@@ -1,0 +1,20 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  ahramData,
+  ahramSEO,
+  ahramHighlighting,
+} from '../../../../data/horizon-walker/characters/ahram.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={ahramSEO.title}
+  description={ahramSEO.description}
+  gameTitle={ahramData.name}
+  character={ahramData}
+>
+  <CharacterPageTemplate characterData={{ ...ahramData, highlightPatterns: ahramHighlighting }} />
+</CharacterIndividualLayout>

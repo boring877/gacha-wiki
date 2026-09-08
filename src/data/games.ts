@@ -6,7 +6,7 @@ import RGIcon from '../assets/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg
 import StellaSoraIcon from '../assets/images/games/stella-sora/gameimg/Icon.jpg';
 import TaimaninSquadIcon from '../assets/images/games/taimanin-squad/gameimg/icon.jpg';
 import LastOriginGlobalIcon from '../assets/images/games/last-origin-global/gameimg/icon.jpg';
-import GameIcon from '../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
+import { r2Url } from './r2-config.js';
 
 export interface Game {
   id: string; // kebab-case key, e.g. 'zone-nova' — the single key everywhere
@@ -63,7 +63,7 @@ export const GAMES: Game[] = [
     slug: 'horizon-walker',
     description:
       'Post-apocalyptic RPG: Transcend mortality as a Chosen Human and battle Forsaken Entities through dimensional rifts',
-    image: GameIcon,
+    image: r2Url('horizon-walker', 'gameimg/gameicon.jpg'),
     url: '/guides/horizon-walker/',
     status: 'active',
     themeColor: '#e8a547',

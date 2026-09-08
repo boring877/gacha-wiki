@@ -41,7 +41,7 @@ const rawInesData = {
     rangedAtk: '161',
     magicAtk: '140',
     maxHp: '1088',
-    spd: '96',
+    spd: '92',
     startingAp: '120',
     apRecovery: '115',
     accuracy: '97',
@@ -106,7 +106,7 @@ const rawInesData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Special trait with no listed characteristics.',
+      description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
     },
   },
 
@@ -172,28 +172,142 @@ const rawInesData = {
 
   // Weapon
   weapon: {
-    name: 'EX Two-handed Sword - The Severer of Fate',
-    type: 'Two-handed Sword',
+    name: "The Severer of Fate",
+    flavor: "This renowned sword is crafted by the Duke of Magnal during the coronation ceremony, passed down through generations. While most share a similar shape, each sword is optimized with a unique magical circuit tailored to the respective duke. It is said that the souls of countless foes it has cut down reside within the blade, drawing adversaries toward their fated demise.",
+    type: "Two-handed sword",
     rarity: 'EX',
-    image: 'Ines_WP.jpg',
+    image: "Weapon_FullIMG_TheDestinyOfTheSword",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: '91.0',
-      critDmgBonus: '+70.0%',
+      "Melee ATK (weapon)": "91",
+      "Crit DMG (%)": "+70%",
     },
     uniqueSkills: {
-      destiny: {
-        name: 'Destiny',
+      unique: {
+        name: "Destiny",
         type: 'Unique',
-        description:
-          'CRIT rate is increased by 40%. Applies [Fate] effect to enemies successfully hit for 1R. [Fate]: When attacking an enemy with this effect, reduces their Slash DEF by 1200 until the end of the turn.',
+        description: "CRIT rate is increased by {20,25,30,35,40}%. Applies [Fate] effect to enemies successfully hit for 1R. [Fate]: When attacking an enemy with this effect, reduces their Slash DEF by {600,750,900,1050,1200} until the end of the turn.",
       },
-      theWinterDuchess: {
-        name: 'Ines Signature: The Winter Duchess',
+      signature: {
+        name: "Ines Signature: The Winter Duchess",
         type: 'Signature',
         description: "Reduces AP consumption for the 'World Cleaver' skill by 50% during combat.",
       },
     },
+    levelStats: {
+      "Melee ATK (weapon)": [14.3, 91.0],
+      "Crit DMG (%)": [11.0, 70.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "CRIT rate is increased", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+        { name: "[Fate]: When attacking an enemy with this effect, reduces their Slash DEF", valuesByLevel: "600 / 750 / 900 / 1050 / 1200" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 13,
+      technic: 11,
+      intelligence: 10,
+      vitality: 14,
+      agility: 13,
+      maxHp: 896,
+      meleeAtk: 188,
+      rangedAtk: 161,
+      magicAtk: 140,
+      evade: 199,
+      apRecovery: 112,
+      startingAp: 117
+    },
+    'EX 1': {
+      strength: 15,
+      technic: 11,
+      intelligence: 10,
+      vitality: 14,
+      agility: 13,
+      maxHp: 896,
+      meleeAtk: 215,
+      rangedAtk: 161,
+      magicAtk: 140,
+      evade: 199,
+      apRecovery: 112,
+      startingAp: 117
+    },
+    'EX 2': {
+      strength: 15,
+      technic: 11,
+      intelligence: 10,
+      vitality: 15,
+      agility: 13,
+      maxHp: 960,
+      meleeAtk: 215,
+      rangedAtk: 161,
+      magicAtk: 140,
+      evade: 199,
+      apRecovery: 112,
+      startingAp: 117
+    },
+    'EX 3': {
+      strength: 16,
+      technic: 11,
+      intelligence: 10,
+      vitality: 15,
+      agility: 13,
+      maxHp: 960,
+      meleeAtk: 228,
+      rangedAtk: 161,
+      magicAtk: 140,
+      evade: 199,
+      apRecovery: 112,
+      startingAp: 117
+    },
+    'EX 4': {
+      strength: 16,
+      technic: 11,
+      intelligence: 10,
+      vitality: 15,
+      agility: 14,
+      maxHp: 960,
+      meleeAtk: 228,
+      rangedAtk: 161,
+      magicAtk: 140,
+      evade: 215,
+      apRecovery: 115,
+      startingAp: 120
+    },
+    'EX 5': {
+      strength: 16,
+      technic: 11,
+      intelligence: 10,
+      vitality: 17,
+      agility: 14,
+      maxHp: 1088,
+      meleeAtk: 228,
+      rangedAtk: 161,
+      magicAtk: 140,
+      evade: 215,
+      apRecovery: 115,
+      startingAp: 120
+    },
+    'EX 6': {
+      strength: 18,
+      technic: 11,
+      intelligence: 10,
+      vitality: 17,
+      agility: 14,
+      maxHp: 1088,
+      meleeAtk: 255,
+      rangedAtk: 161,
+      magicAtk: 140,
+      evade: 215,
+      apRecovery: 115,
+      startingAp: 120
+    },
+  },
+  heroId: 37,
+
 };
 
 // Validate and sanitize the character data

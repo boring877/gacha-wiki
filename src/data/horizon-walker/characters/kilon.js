@@ -30,17 +30,17 @@ const rawKilonData = {
   // Character Stats (Level 60)
   stats: {
     // Basic Stats
-    strength: '17',
-    technic: '7',
+    strength: '11',
+    technic: '13',
     intelligence: '6',
-    vitality: '16',
+    vitality: '14',
     agility: '9',
 
     // Key Stats
-    meleeAtk: '226',
-    rangedAtk: '93',
+    meleeAtk: '146',
+    rangedAtk: '173',
     magicAtk: '76',
-    maxHp: '1024',
+    maxHp: '896',
     spd: '92',
     startingAp: '132',
     apRecovery: '106',
@@ -68,7 +68,7 @@ const rawKilonData = {
     electricDef: '0',
     immaterialDef: '0',
     poisonDef: '0',
-    blockRate: '50',
+    blockRate: '0',
   },
 
   // Character Description
@@ -77,28 +77,41 @@ const rawKilonData = {
 
   // Weapon Information
   weapon: {
-    name: 'Aronbite',
-    type: 'EX Two-handed Sword',
+    name: "Aronbite",
+    flavor: "A legendary blade of the Grrik, Aronbite is renowned for never breaking and never dulling. It stands as a symbol of their unyielding conviction, granted only to the most honorable of packlords. According to ancient legends lost to time, the sword was forged when a great Grrik knight burned his own soul to temper it. Said to grant eternal victory to its wielder, Aronbite's masters have lived up to its promise - earning lasting fame through unmatched strength and noble spirit.",
+    type: "Two-handed sword",
     rarity: 'EX',
-    image: 'Kilon_WP.jpg',
+    image: "Weapon_FullIMG_TwoHandSword_ForKilon",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: '91.0',
-      meleeAtkBonus: '+35.0%',
+      "Melee ATK (weapon)": "91",
+      "Melee ATK (%)": "+35%",
     },
     uniqueSkills: {
-      unbreakableWrath: {
-        name: 'Unbreakable Wrath',
+      unique: {
+        name: "Unbreakable Wrath",
         type: 'Unique',
-        description:
-          'Increases Melee ATK by 72% during combat. When hit or healed, gain a stack that increases Max HP by 12% and Aggro Adjustment by 12. Stacks up to 9 times. On Basic ATK, gain 1 stack of [Composure]. [Composure]: Stacks up to 6 times. At max stacks, at the start of your turn, gain 55 AP and the [Fortitude] effect, then Composure resets. [Fortitude]: Consumes 50% of your HP and increases Melee ATK by 160% of the HP consumed. Lasts until the end of the turn. If you Standby, recover HP equal to the amount consumed.',
+        description: "Increases Melee ATK by {12,27,42,57,72}% during combat. When hit or healed, gain a stack that increases Max HP by {8,9,10,11,12}% and Aggro Adjustment by {8,9,10,11,12}. Stacks up to 9 times. On Basic ATK, gain 1 stack of [Composure]. [Composure]: Stacks up to 6 times. At max stacks, at the start of your turn, gain 55 AP and the [Fortitude] effect, then Composure resets. [Fortitude]: Consumes 50% of your HP and increases Melee ATK by {100,115,130,145,160}% of the HP consumed. Lasts until the end of the turn. If you Standby, recover HP equal to the amount consumed.",
       },
-      wastelandsEnforcer: {
-        name: "Wastelands' Enforcer",
-        type: 'Kilon Signature',
-        description:
-          'Increases Lifesteal by 4% during combat. While holding the [Fortitude] effect, using the "Thousand Arms Stance" skill also restores HP equal to the amount consumed. On Basic ATK, has a 29% chance to reduce the cooldown of "Split the Crown" by 1 round. Using the "Taunting Roar" skill grants 3 stacks of [Unyielding Bulwark] and triggers a follow-up attack with "Thousand Arms Stance". [Unyielding Bulwark]: Increases All DEF by 120. Stacks up to 3 times. Loses 1 stack at the start of each round.',
-        note: 'This signature skill only activates when Kilon equips this weapon.',
+      signature: {
+        name: "Kilon Signature: Wastelands' Enforcer",
+        type: 'Signature',
+        description: "Increases Lifesteal by 4% during combat. While holding the [Fortitude] effect, using the 'Thousand Arms Stance' skill also restores HP equal to the amount consumed. On Basic ATK, has a 29% chance to reduce the cooldown of 'Split the Crown' by 1 round. Using the 'Taunting Roar' skill grants 3 stacks of [Unyielding Bulwark] and triggers a follow-up attack with 'Thousand Arms Stance'. [Unyielding Bulwark]: Increases All DEF by 120. Stacks up to 3 times. Loses 1 stack at the start of each round.",
+        note: "This signature skill only activates when Kilon equips this weapon.",
       },
+    },
+    levelStats: {
+      "Melee ATK (weapon)": [14.3, 91.0],
+      "Melee ATK (%)": [5.5, 35.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Increases Melee ATK", valuesByLevel: "12% / 27% / 42% / 57% / 72%" },
+        { name: "When hit or healed, gain a stack that increases Max HP", valuesByLevel: "8% / 9% / 10% / 11% / 12%" },
+        { name: "% and Aggro Adjustment", valuesByLevel: "8 / 9 / 10 / 11 / 12" },
+        { name: "[Fortitude]: Consumes 50% of your HP and increases Melee ATK", valuesByLevel: "100% / 115% / 130% / 145% / 160%" },
+      ],
     },
   },
 
@@ -194,6 +207,108 @@ const rawKilonData = {
         "Strikes downward with a greatsword to deliver a powerful blow. Deals Slash DMG equal to 190% of Melee ATK. This skill's Slash Boost increases proportionally to missing HP up to 200% for the turn it's used. If this skill defeats an enemy, restores 76% of Max HP as HP Recovery.",
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 11,
+      technic: 9,
+      intelligence: 6,
+      vitality: 13,
+      agility: 8,
+      maxHp: 832,
+      meleeAtk: 146,
+      rangedAtk: 119,
+      magicAtk: 76,
+      evade: 102,
+      apRecovery: 104,
+      startingAp: 130
+    },
+    'EX 1': {
+      strength: 11,
+      technic: 10,
+      intelligence: 6,
+      vitality: 13,
+      agility: 8,
+      maxHp: 832,
+      meleeAtk: 146,
+      rangedAtk: 133,
+      magicAtk: 76,
+      evade: 102,
+      apRecovery: 104,
+      startingAp: 130
+    },
+    'EX 2': {
+      strength: 11,
+      technic: 10,
+      intelligence: 6,
+      vitality: 13,
+      agility: 9,
+      maxHp: 832,
+      meleeAtk: 146,
+      rangedAtk: 133,
+      magicAtk: 76,
+      evade: 115,
+      apRecovery: 106,
+      startingAp: 132
+    },
+    'EX 3': {
+      strength: 11,
+      technic: 11,
+      intelligence: 6,
+      vitality: 13,
+      agility: 9,
+      maxHp: 832,
+      meleeAtk: 146,
+      rangedAtk: 146,
+      magicAtk: 76,
+      evade: 115,
+      apRecovery: 106,
+      startingAp: 132
+    },
+    'EX 4': {
+      strength: 11,
+      technic: 11,
+      intelligence: 6,
+      vitality: 14,
+      agility: 9,
+      maxHp: 896,
+      meleeAtk: 146,
+      rangedAtk: 146,
+      magicAtk: 76,
+      evade: 115,
+      apRecovery: 106,
+      startingAp: 132
+    },
+    'EX 5': {
+      strength: 11,
+      technic: 12,
+      intelligence: 6,
+      vitality: 14,
+      agility: 9,
+      maxHp: 896,
+      meleeAtk: 146,
+      rangedAtk: 159,
+      magicAtk: 76,
+      evade: 115,
+      apRecovery: 106,
+      startingAp: 132
+    },
+    'EX 6': {
+      strength: 11,
+      technic: 13,
+      intelligence: 6,
+      vitality: 14,
+      agility: 9,
+      maxHp: 896,
+      meleeAtk: 146,
+      rangedAtk: 173,
+      magicAtk: 76,
+      evade: 115,
+      apRecovery: 106,
+      startingAp: 132
+    },
+  },
+  heroId: 9,
+
 };
 
 // Validate and sanitize the character data

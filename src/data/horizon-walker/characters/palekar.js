@@ -43,7 +43,7 @@ const rawPalekarData = {
     rangedAtk: '89',
     magicAtk: '279',
     maxHp: '640',
-    spd: '99',
+    spd: '90',
     startingAp: '122',
     apRecovery: '107',
     accuracy: '102',
@@ -79,29 +79,41 @@ const rawPalekarData = {
 
   // Weapon Information
   weapon: {
-    name: 'Thread of Ages',
-    type: 'EX Twin Swords',
+    name: "Thread of Ages",
+    flavor: "A chakram bound from shards of shattered Thunderstone and fibers of the Father Tree, woven together into a single knot of history. Within it dwells an unfathomable divine power. It is said that from ages long past to the present day, the entire history of the Swamp Elves is recorded within this weapon.",
+    type: "Twin Swords",
     rarity: 'EX',
-    image: 'Palekar_WP.jpg',
+    image: "Weapon_FullIMG_DualSword_ForPalekar",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: '91.0',
-      weaponMagicAtk: '91.0',
-      evadeBonus: '+70.0%',
+      "Melee ATK (weapon)": "91",
+      "Magic ATK (weapon)": "91",
+      "Evade (%)": "+70%",
     },
     uniqueSkills: {
-      legacyOfWar: {
-        name: 'Legacy of War',
+      unique: {
+        name: "Legacy of War",
         type: 'Unique',
-        description:
-          "Increases the user's Magic ATK by 40% during battle. When attacking an enemy, increases Immaterial Boost by 80% until the end of the turn.",
+        description: "Increases the user's Magic ATK by {20,25,30,35,40}% during battle. When attacking an enemy, increases Immaterial Boost by {40,50,60,70,80}% until the end of the turn.",
       },
-      sheWhoCleavesThroughCrisis: {
-        name: 'Palekar Signature: She Who Cleaves Through Crisis',
+      signature: {
+        name: "Palekar: She Who Cleaves Through Crisis",
         type: 'Signature',
-        description:
-          "Increases the user's Magic ATK by 20% during battle and grants 30 AP. Reduces the AP cost of Verse of Ordeal by 15 during battle. Enemies afflicted with [Unstable] have their All ATK reduced by 30%. Additionally, for every 1 point of the user's Base Evasion: Slash, Poison, and Immaterial DEF are reduced by 1 (up to a maximum of 200).",
-        note: 'This signature skill only activates when Palekar equips this weapon.',
+        description: "During battle, increases Magic ATK by 20% and gains 30 AP. During battle, reduces the AP cost of [Verse of Ordeal] by 15. Targets affected by [Unstable] have All ATK reduced by 30%, and their Slash, Poison, and Immaterial DEF are additionally reduced by 1 for every 1 base Evasion the caster has, up to a maximum reduction of 200.",
+        note: "This signature skill only activates when Palekar equips this weapon.",
       },
+    },
+    levelStats: {
+      "Melee ATK (weapon)": [14.3, 91.0],
+      "Magic ATK (weapon)": [14.3, 91.0],
+      "Evade (%)": [11.0, 70.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Increases the user's Magic ATK", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+        { name: "When attacking an enemy, increases Immaterial Boost", valuesByLevel: "40% / 50% / 60% / 70% / 80%" },
+      ],
     },
   },
 
@@ -206,6 +218,108 @@ const rawPalekarData = {
         'When an ally attacks an enemy afflicted with [Unstable] using a skill that consumes 60 or more AP, this unit performs a Support ATK with Trajectory of Severance. The ally who triggered the Support ATK gains 37 AP at the end of their turn. This effect activates once per character per round.',
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 6,
+      technic: 7,
+      intelligence: 17,
+      vitality: 8,
+      agility: 9,
+      maxHp: 512,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 226,
+      evade: 115,
+      apRecovery: 102,
+      startingAp: 117
+    },
+    'EX 1': {
+      strength: 6,
+      technic: 7,
+      intelligence: 18,
+      vitality: 8,
+      agility: 9,
+      maxHp: 512,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 239,
+      evade: 115,
+      apRecovery: 102,
+      startingAp: 117
+    },
+    'EX 2': {
+      strength: 6,
+      technic: 7,
+      intelligence: 18,
+      vitality: 9,
+      agility: 9,
+      maxHp: 576,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 239,
+      evade: 115,
+      apRecovery: 102,
+      startingAp: 117
+    },
+    'EX 3': {
+      strength: 6,
+      technic: 7,
+      intelligence: 19,
+      vitality: 9,
+      agility: 9,
+      maxHp: 576,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 252,
+      evade: 115,
+      apRecovery: 102,
+      startingAp: 117
+    },
+    'EX 4': {
+      strength: 6,
+      technic: 7,
+      intelligence: 19,
+      vitality: 10,
+      agility: 9,
+      maxHp: 640,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 252,
+      evade: 115,
+      apRecovery: 102,
+      startingAp: 117
+    },
+    'EX 5': {
+      strength: 6,
+      technic: 7,
+      intelligence: 21,
+      vitality: 10,
+      agility: 9,
+      maxHp: 640,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 279,
+      evade: 115,
+      apRecovery: 102,
+      startingAp: 117
+    },
+    'EX 6': {
+      strength: 6,
+      technic: 7,
+      intelligence: 21,
+      vitality: 10,
+      agility: 11,
+      maxHp: 640,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 279,
+      evade: 140,
+      apRecovery: 107,
+      startingAp: 122
+    },
+  },
+  heroId: 60,
+
 };
 
 // Validate and sanitize the character data

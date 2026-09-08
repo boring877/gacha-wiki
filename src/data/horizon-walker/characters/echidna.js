@@ -196,29 +196,142 @@ const rawEchidnaData = {
 
   // Weapon
   weapon: {
-    name: 'Scales of Blight (Arcane Orb)',
-    image: 'Echidna_WP.jpg',
+    name: "Scales of Blight",
+    flavor: "Forged on the threshold between life and death, this arcane relic was born from the cosmos's will to preserve balance. It transmutes mortal wishes into venomous power - a terrifying force capable of unraveling all. Yet in the right hands, this cursed instrument may bear another name: salvation.",
+    type: "Arcane Orb",
     rarity: 'EX',
-    type: 'Arcane Orb',
+    image: "Weapon_FullIMG_ArcaneBall_ForEchidna",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMagicAtk: '77.0',
-      accuracy: '+98.0%',
+      "Magic ATK (weapon)": "77",
+      "Accuracy (%)": "+98%",
     },
     uniqueSkills: {
-      echoOfAstrea: {
-        name: 'Echo of Astrea',
+      unique: {
+        name: "Echo of Astrea",
         type: 'Unique',
-        description:
-          "During battle, your Accuracy increases by 40%. When using a skill, gain +56% to both Poison Boost and Additional DMG Boost until the end of the turn.",
+        description: "During battle, your Accuracy increases by {20,25,30,35,40}%. When using a skill, gain +{24,32,40,48,56}% to both Poison Boost and Additional DMG Boost until the end of the turn.",
       },
-      echidnaSignature: {
-        name: 'Echidna Signature: Talon of the Forgotten Sting',
+      signature: {
+        name: "Echidna Signature: Talon of the Forgotten Sting",
         type: 'Signature',
-        description:
-          'During battle, increases own Accuracy and Poison Boost by 20%. At the end of a turn in which skill (other than Standby) is used, enemies affected by Lingering Miasma take Additional Poison DMG equal to 85% of their total accumulated poison stacks.',
+        description: "During battle, increases own Accuracy and Poison Boost by 20%. At the end of a turn in which a skill (other than Standby) is used, enemies affected by Lingering Miasma take Additional Poison DMG equal to 85% of their total accumulated poison.",
       },
     },
+    levelStats: {
+      "Magic ATK (weapon)": [12.1, 77.0],
+      "Accuracy (%)": [15.4, 98.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "During battle, your Accuracy increases", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+        { name: "When using a skill, gain +", valuesByLevel: "24% / 32% / 40% / 48% / 56%" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 6,
+      technic: 7,
+      intelligence: 20,
+      vitality: 9,
+      agility: 19,
+      maxHp: 591,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 206,
+      evade: 281,
+      apRecovery: 135,
+      startingAp: 130
+    },
+    'EX 1': {
+      strength: 6,
+      technic: 7,
+      intelligence: 22,
+      vitality: 9,
+      agility: 19,
+      maxHp: 591,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 238,
+      evade: 281,
+      apRecovery: 135,
+      startingAp: 130
+    },
+    'EX 2': {
+      strength: 6,
+      technic: 7,
+      intelligence: 23,
+      vitality: 9,
+      agility: 19,
+      maxHp: 591,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 253,
+      evade: 281,
+      apRecovery: 135,
+      startingAp: 130
+    },
+    'EX 3': {
+      strength: 6,
+      technic: 7,
+      intelligence: 25,
+      vitality: 9,
+      agility: 19,
+      maxHp: 591,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 285,
+      evade: 281,
+      apRecovery: 135,
+      startingAp: 130
+    },
+    'EX 4': {
+      strength: 6,
+      technic: 7,
+      intelligence: 25,
+      vitality: 9,
+      agility: 21,
+      maxHp: 591,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 285,
+      evade: 307,
+      apRecovery: 140,
+      startingAp: 135
+    },
+    'EX 5': {
+      strength: 6,
+      technic: 7,
+      intelligence: 25,
+      vitality: 9,
+      agility: 24,
+      maxHp: 591,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 285,
+      evade: 345,
+      apRecovery: 147,
+      startingAp: 142
+    },
+    'EX 6': {
+      strength: 6,
+      technic: 7,
+      intelligence: 27,
+      vitality: 9,
+      agility: 24,
+      maxHp: 591,
+      meleeAtk: 76,
+      rangedAtk: 89,
+      magicAtk: 317,
+      evade: 345,
+      apRecovery: 147,
+      startingAp: 142
+    },
+  },
+  heroId: 61,
+
 };
 
 // Validate and sanitize the character data

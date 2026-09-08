@@ -101,7 +101,7 @@ const rawDeliaData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Special trait with no listed characteristics.',
+      description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
     },
   },
 
@@ -170,6 +170,108 @@ const rawDeliaData = {
 
   // Weapon - Not yet released in game
   weapon: null,
+  rarityStages: {
+    'EX': {
+      strength: 5,
+      technic: 7,
+      intelligence: 23,
+      vitality: 11,
+      agility: 11,
+      maxHp: 704,
+      meleeAtk: 76,
+      rangedAtk: 102,
+      magicAtk: 239,
+      evade: 140,
+      apRecovery: 107,
+      startingAp: 112
+    },
+    'EX 1': {
+      strength: 5,
+      technic: 7,
+      intelligence: 25,
+      vitality: 11,
+      agility: 11,
+      maxHp: 704,
+      meleeAtk: 76,
+      rangedAtk: 102,
+      magicAtk: 266,
+      evade: 140,
+      apRecovery: 107,
+      startingAp: 112
+    },
+    'EX 2': {
+      strength: 5,
+      technic: 7,
+      intelligence: 26,
+      vitality: 11,
+      agility: 11,
+      maxHp: 704,
+      meleeAtk: 76,
+      rangedAtk: 102,
+      magicAtk: 279,
+      evade: 140,
+      apRecovery: 107,
+      startingAp: 112
+    },
+    'EX 3': {
+      strength: 5,
+      technic: 7,
+      intelligence: 26,
+      vitality: 11,
+      agility: 13,
+      maxHp: 704,
+      meleeAtk: 76,
+      rangedAtk: 102,
+      magicAtk: 279,
+      evade: 166,
+      apRecovery: 112,
+      startingAp: 117
+    },
+    'EX 4': {
+      strength: 5,
+      technic: 7,
+      intelligence: 26,
+      vitality: 13,
+      agility: 13,
+      maxHp: 832,
+      meleeAtk: 76,
+      rangedAtk: 102,
+      magicAtk: 279,
+      evade: 166,
+      apRecovery: 112,
+      startingAp: 117
+    },
+    'EX 5': {
+      strength: 5,
+      technic: 7,
+      intelligence: 28,
+      vitality: 13,
+      agility: 13,
+      maxHp: 832,
+      meleeAtk: 76,
+      rangedAtk: 102,
+      magicAtk: 306,
+      evade: 166,
+      apRecovery: 112,
+      startingAp: 117
+    },
+    'EX 6': {
+      strength: 5,
+      technic: 7,
+      intelligence: 30,
+      vitality: 13,
+      agility: 13,
+      maxHp: 832,
+      meleeAtk: 76,
+      rangedAtk: 102,
+      magicAtk: 332,
+      evade: 166,
+      apRecovery: 112,
+      startingAp: 117
+    },
+  },
+  heroId: 36,
+
 };
 
 // Validate and sanitize the character data

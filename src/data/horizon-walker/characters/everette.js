@@ -65,7 +65,7 @@ const rawEveretteData = {
     electricDef: '50',
     immaterialDef: '50',
     poisonDef: '0',
-    blockRate: '10',
+    blockRate: '0',
   },
 
   // Character Description
@@ -75,26 +75,38 @@ const rawEveretteData = {
   // Weapon Information
   weapon: {
     name: "The Queen's Platinum Staff",
-    type: 'EX Staff',
+    flavor: "This staff is said to have been used by the Eternal Queen in the past. Her pure and overwhelming magical power has infused it over time, making it unusable by anyone else. However, when the queen wields it herself, she is able to fully harness its immense magical energy.",
+    type: "Staff",
     rarity: 'EX',
-    image: 'Everette_WP.jpg',
+    image: "Weapon_FullIMG_StaffOfTheEnd",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMagicAtk: '77.0',
-      startingApBonus: '+49.0',
+      "Magic ATK (weapon)": "77",
+      "Starting AP": "+49",
     },
     uniqueSkills: {
-      epilogue: {
-        name: 'Epilogue',
+      unique: {
+        name: "Epilogue",
         type: 'Unique',
-        description:
-          'Once per round, at the start of your turn, your magic ATK increases by 0.8% for each unit of AP you hold above 100. (For example, holding 300 AP results in a magic ATK increase of 160%)',
+        description: "Once per round, at the start of your turn, your magic ATK increases by {0.4,0.5,0.6,0.7,0.8}% for each unit of AP you hold above 100. (For example, holding 300 AP results in a magic ATK increase of {80,100,120,140,160}%)",
       },
-      eternalQueen: {
-        name: 'The Eternal Queen',
+      signature: {
+        name: "Everette Signature: The Eternal Queen",
         type: 'Signature',
-        description: 'AP Recovery increases by 12%.',
-        note: 'This signature skill only activates when Everette equips this weapon.',
+        description: "AP Recovery increases by 12%. Additionally, when Everette hits 3 / 4 / 5 or more enemies in a single attack, special effects are granted to her. [Beautiful Queen]: Everette's Crit Rate increases by 100% for 2R. [Elegant Queen]: Everette's Immaterial Boost increases by 300% for 2R. [Eternal Queen]: Everette's Crit DMG increases by 300% for 2R.",
+        note: "This signature skill only activates when Everette equips this weapon.",
       },
+    },
+    levelStats: {
+      "Magic ATK (weapon)": [12.1, 77.0],
+      "Starting AP": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Once per round, at the start of your turn, your magic ATK increases", valuesByLevel: "0.4% / 0.5% / 0.6% / 0.7% / 0.8%" },
+        { name: "(For example, holding 300 AP results in a magic ATK increase", valuesByLevel: "80% / 100% / 120% / 140% / 160%" },
+      ],
     },
   },
 
@@ -130,7 +142,7 @@ const rawEveretteData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the chosen Human.',
+      description: 'Interested in the chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
@@ -241,6 +253,108 @@ const rawEveretteData = {
         'Calls forth even more starlight to attack enemies. Deals Immaterial DMG equal to 722% of magic ATK to all enemies within a 7m radius.',
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 5,
+      technic: 7,
+      intelligence: 23,
+      vitality: 11,
+      agility: 11,
+      maxHp: 704,
+      meleeAtk: 64,
+      rangedAtk: 89,
+      magicAtk: 384,
+      evade: 145,
+      apRecovery: 107,
+      startingAp: 112
+    },
+    'EX 1': {
+      strength: 5,
+      technic: 7,
+      intelligence: 25,
+      vitality: 11,
+      agility: 11,
+      maxHp: 704,
+      meleeAtk: 64,
+      rangedAtk: 89,
+      magicAtk: 416,
+      evade: 145,
+      apRecovery: 107,
+      startingAp: 112
+    },
+    'EX 2': {
+      strength: 5,
+      technic: 7,
+      intelligence: 26,
+      vitality: 11,
+      agility: 11,
+      maxHp: 704,
+      meleeAtk: 64,
+      rangedAtk: 89,
+      magicAtk: 432,
+      evade: 145,
+      apRecovery: 107,
+      startingAp: 112
+    },
+    'EX 3': {
+      strength: 5,
+      technic: 7,
+      intelligence: 26,
+      vitality: 11,
+      agility: 13,
+      maxHp: 704,
+      meleeAtk: 64,
+      rangedAtk: 89,
+      magicAtk: 432,
+      evade: 171,
+      apRecovery: 112,
+      startingAp: 117
+    },
+    'EX 4': {
+      strength: 5,
+      technic: 7,
+      intelligence: 26,
+      vitality: 13,
+      agility: 13,
+      maxHp: 832,
+      meleeAtk: 64,
+      rangedAtk: 89,
+      magicAtk: 432,
+      evade: 171,
+      apRecovery: 112,
+      startingAp: 117
+    },
+    'EX 5': {
+      strength: 5,
+      technic: 7,
+      intelligence: 28,
+      vitality: 13,
+      agility: 13,
+      maxHp: 832,
+      meleeAtk: 64,
+      rangedAtk: 89,
+      magicAtk: 464,
+      evade: 171,
+      apRecovery: 112,
+      startingAp: 117
+    },
+    'EX 6': {
+      strength: 5,
+      technic: 7,
+      intelligence: 30,
+      vitality: 13,
+      agility: 13,
+      maxHp: 832,
+      meleeAtk: 64,
+      rangedAtk: 89,
+      magicAtk: 496,
+      evade: 171,
+      apRecovery: 112,
+      startingAp: 117
+    },
+  },
+  heroId: 3,
+
 };
 
 // Validate and sanitize the character data

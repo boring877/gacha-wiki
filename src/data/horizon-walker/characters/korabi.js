@@ -82,28 +82,39 @@ const rawKorabiData = {
 
   // Weapon Information
   weapon: {
-    name: 'Red Pudding',
-    type: 'EX Staff',
+    name: "Red Pudding",
+    flavor: "The ancient Kesak once used this medical device to preserve life, but their unworthy descendants focused less on saving lives and more on war. Originally designed as a premier blood-synthesis and transfusion instrument for the critically wounded, its true purpose is all but forgotten in the modern age. Few Kesak now remember it as anything other than a weapon. Yet in the hands of one attuned to the flow of life, this staff may reveal its true power once more.",
+    type: "Staff",
     rarity: 'EX',
-    image: 'Korabi_WP.jpg',
+    image: "Weapon_FullIMG_Staff_ForKorabi",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMagicAtk: '84.0',
-      slashBoost: '42.0',
+      "Magic ATK (weapon)": "84",
+      "Slash Boost (%)": "+42%",
     },
     uniqueSkills: {
-      painborneBoom: {
-        name: 'Painborne Bloom',
+      unique: {
+        name: "Painborne Bloom",
         type: 'Unique',
-        description:
-          'Magic ATK increases by 40% during battle. Enemies hit by your attacks are afflicted with [Pulse of the Rift] for 2 rounds. [Pulse of the Rift]: SPD increases by 32% and Physical DEF decreases by 480.',
+        description: "Magic ATK increases by {20,25,30,35,40}% during battle. Enemies hit by your attacks are afflicted with [Pulse of the Rift] for 2 rounds. [Pulse of the Rift]: SPD increases by 32% and Physical DEF decreases by {240,300,360,420,480}.",
       },
-      bloomingBloodlust: {
-        name: 'Blooming Bloodlust',
+      signature: {
+        name: "Korabi Signature: Blooming Bloodlust",
         type: 'Signature',
-        description:
-          "During combat, Additional Response triggered by the skill Timid, Yet Explosive! always activates at 100% chance. The [Burning Desire] effect granted by the skill Blood Pact increases the target ally's Slash Boost and Crush Boost by 50% of your Base Slash Boost, and increases their Melee ATK and Ranged ATK by 15% of your Base Magic ATK. Slash Boost and Crush Boost gained this way cannot exceed 30%. When using the skill Whirlwind of Bloodlust, removes Weak Points from all allies for 2 rounds.",
-        note: 'This signature skill only activates when Korabi equips this weapon.',
+        description: "During combat, Additional Response triggered by the skill Timid, Yet Explosive! always activates at 100% chance. The [Burning Desire] effect granted by the skill Blood Pact increases the target ally's Slash Boost and Crush Boost by 50% of your Base Slash Boost, and increases their Melee ATK and Ranged ATK by 15% of your Base Magic ATK. Slash Boost and Crush Boost gained this way cannot exceed 30%. When using the skill Whirlwind of Bloodlust, removes Weak Points from all allies for 2 rounds.",
+        note: "This signature skill only activates when Korabi equips this weapon.",
       },
+    },
+    levelStats: {
+      "Magic ATK (weapon)": [13.2, 84.0],
+      "Slash Boost (%)": [6.6, 42.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Magic ATK increases", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+        { name: "[Pulse of the Rift]: SPD increases by 32% and Physical DEF decreases", valuesByLevel: "240 / 300 / 360 / 420 / 480" },
+      ],
     },
   },
 
@@ -138,7 +149,7 @@ const rawKorabiData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the Chosen Human.',
+      description: 'Interested in the Chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
@@ -223,6 +234,108 @@ const rawKorabiData = {
         'When an ally is hit or attacks an enemy, gain 1 stack of [Bloodlust]. This skill can be used while holding 5 or more stacks. Unleashes a Whirlwind of Bloodlust to strike enemies. Deals Slash DMG equal to 114% of Magic ATK to enemies within a 3m radius around the targeted location and slightly pulls them toward the center. This skill cannot trigger a Weak Point attack, but temporarily increases Accuracy by 300%. [Bloodlust]: Base effect of using the skill Whirlwind of Bloodlust. Stacks up to 5 times.',
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 7,
+      technic: 8,
+      intelligence: 13,
+      vitality: 10,
+      agility: 10,
+      maxHp: 790,
+      meleeAtk: 89,
+      rangedAtk: 102,
+      magicAtk: 128,
+      evade: 128,
+      apRecovery: 110,
+      startingAp: 126
+    },
+    'EX 1': {
+      strength: 7,
+      technic: 8,
+      intelligence: 15,
+      vitality: 10,
+      agility: 10,
+      maxHp: 790,
+      meleeAtk: 89,
+      rangedAtk: 102,
+      magicAtk: 153,
+      evade: 128,
+      apRecovery: 110,
+      startingAp: 126
+    },
+    'EX 2': {
+      strength: 7,
+      technic: 8,
+      intelligence: 15,
+      vitality: 11,
+      agility: 10,
+      maxHp: 851,
+      meleeAtk: 89,
+      rangedAtk: 102,
+      magicAtk: 153,
+      evade: 128,
+      apRecovery: 110,
+      startingAp: 126
+    },
+    'EX 3': {
+      strength: 7,
+      technic: 8,
+      intelligence: 16,
+      vitality: 11,
+      agility: 10,
+      maxHp: 851,
+      meleeAtk: 89,
+      rangedAtk: 102,
+      magicAtk: 166,
+      evade: 128,
+      apRecovery: 110,
+      startingAp: 126
+    },
+    'EX 4': {
+      strength: 7,
+      technic: 8,
+      intelligence: 16,
+      vitality: 11,
+      agility: 11,
+      maxHp: 851,
+      meleeAtk: 89,
+      rangedAtk: 102,
+      magicAtk: 166,
+      evade: 140,
+      apRecovery: 112,
+      startingAp: 128
+    },
+    'EX 5': {
+      strength: 7,
+      technic: 8,
+      intelligence: 16,
+      vitality: 12,
+      agility: 11,
+      maxHp: 912,
+      meleeAtk: 89,
+      rangedAtk: 102,
+      magicAtk: 166,
+      evade: 140,
+      apRecovery: 112,
+      startingAp: 128
+    },
+    'EX 6': {
+      strength: 7,
+      technic: 8,
+      intelligence: 18,
+      vitality: 12,
+      agility: 11,
+      maxHp: 912,
+      meleeAtk: 89,
+      rangedAtk: 102,
+      magicAtk: 192,
+      evade: 140,
+      apRecovery: 112,
+      startingAp: 128
+    },
+  },
+  heroId: 56,
+
 };
 
 // Validate and sanitize the character data

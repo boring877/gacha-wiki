@@ -30,22 +30,22 @@ const rawBergaData = {
   // Character Stats (Level 60)
   stats: {
     // Basic Stats
-    strength: '20',
+    strength: '18',
     technic: '8',
     intelligence: '6',
     vitality: '14',
-    agility: '9',
+    agility: '11',
 
     // Key Stats
-    meleeAtk: '268',
+    meleeAtk: '241',
     rangedAtk: '107',
     magicAtk: '76',
     maxHp: '768',
     spd: '85',
-    startingAp: '101',
-    apRecovery: '102',
+    startingAp: '106',
+    apRecovery: '107',
     accuracy: '102',
-    evade: '112',
+    evade: '137',
     critRate: '10',
     critDmg: '150',
 
@@ -68,7 +68,7 @@ const rawBergaData = {
     electricDef: '0',
     immaterialDef: '0',
     poisonDef: '0',
-    blockRate: '30',
+    blockRate: '0',
   },
 
   // Character Description
@@ -107,7 +107,7 @@ const rawBergaData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Special trait with no listed characteristics.',
+      description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
     },
   },
 
@@ -184,29 +184,143 @@ const rawBergaData = {
 
   // Weapon
   weapon: {
-    name: 'EX Torturas - Crimson Veil Torturas',
-    type: 'Torturas',
+    name: "Crimson Veil Torturas",
+    flavor: "The only legacy left by a reclusive elder of the Torta tribe. Forged on a moonless night deep within the snowy mountains, this twin-bladed weapon was crafted from coarse meteoric steel. Etched into its edges are crimson markings known as \"the Howling Crystal\" - a phenomenon believed, according to Rift Nation analysis, to be the result of oxidized iron awakened by magic after countless battles fought in the snow. Though its exact origins remain unknown, ancient Tortarian myths speak of crimson, wild blades just like this - wielded by warriors who carved legends into the battlefield.",
+    type: "Torturas",
     rarity: 'EX',
-    image: 'Berga_WP.jpg',
+    image: "Weapon_FullIMG_Torturas_ForBerga",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: '77.0',
-      maxHpBonus: '+49.0%',
+      "Melee ATK (weapon)": "77",
+      "Max HP (%)": "+49%",
     },
     uniqueSkills: {
-      crimsonBeastStrike: {
-        name: 'Crimson Beast Strike',
+      unique: {
+        name: "Crimson Beast Strike",
         type: 'Unique',
-        description:
-          'Increases Slash Boost by 3.2% of Max HP during combat. When hit by a Weak Point Attack, All DEF increases by 2000 for the rest of the turn. After using a Charge, Leap, Teleportation, or Self-Mobility skill, gain 3 stacks of [Wild Rush] for 2 rounds. At the start of your turn, if you have [Wild Rush], Slash Boost increases by 40% for that turn. [Wild Rush]: Can stack up to 5 times. Loses 1 stack at the end of your turn after attacking.',
+        description: "Increases Slash Boost by {1.6,2.0,2.4,2.8,3.2}% of Max HP during combat. When hit by a Weak Point Attack, All DEF increases by {1000,1250,1500,1750,2000} for the rest of the turn. After using a Charge, Leap, Teleportation, or Self-Mobility skill, gain 3 stacks of [Wild Rush] for 2 rounds. At the start of your turn, if you have [Wild Rush], Slash Boost increases by {20,25,30,35,40}% for that turn. - [Wild Rush]: Can stack up to 5 times. Loses 1 stack at the end of your turn after attacking.",
       },
-      mirrorOfTheWild: {
-        name: 'Berga Signature: Mirror of the Wild',
+      signature: {
+        name: "Berga Signature: Mirror of the Wild",
         type: 'Signature',
-        description:
-          'At the start of battle, gain 2 stacks of [The Fire Within]. At the start of your first turn, gain 45 AP and increase SPD by 40% for that turn. When gaining the [Bloodrush] effect, CRIT Chance increases by an additional 33% for 2 rounds and grants immunity to [Taunt], [Fear], [Sleep], [Madness], [Stun], and [Focus Disruption].',
+        description: "At the start of battle, gain 2 stacks of [The Fire Within]. At the start of your first turn, gain 45 AP and increase SPD by 40% for that turn. When gaining the [Bloodrush] effect, CRIT Chance increases by an additional 33% for 2 rounds and grants immunity to [Taunt], [Fear], [Sleep], [Madness], [Stun], and [Focus Disruption].",
       },
     },
+    levelStats: {
+      "Melee ATK (weapon)": [12.1, 77.0],
+      "Max HP (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Increases Slash Boost", valuesByLevel: "1.6% / 2% / 2.4% / 2.8% / 3.2%" },
+        { name: "When hit by a Weak Point Attack, All DEF increases", valuesByLevel: "1000 / 1250 / 1500 / 1750 / 2000" },
+        { name: "At the start of your turn, if you have [Wild Rush], Slash Boost increases", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 13,
+      technic: 8,
+      intelligence: 6,
+      vitality: 12,
+      agility: 10,
+      maxHp: 665,
+      meleeAtk: 174,
+      rangedAtk: 107,
+      magicAtk: 76,
+      evade: 125,
+      apRecovery: 105,
+      startingAp: 104
+    },
+    'EX 1': {
+      strength: 15,
+      technic: 8,
+      intelligence: 6,
+      vitality: 12,
+      agility: 10,
+      maxHp: 665,
+      meleeAtk: 201,
+      rangedAtk: 107,
+      magicAtk: 76,
+      evade: 125,
+      apRecovery: 105,
+      startingAp: 104
+    },
+    'EX 2': {
+      strength: 15,
+      technic: 8,
+      intelligence: 6,
+      vitality: 13,
+      agility: 10,
+      maxHp: 716,
+      meleeAtk: 201,
+      rangedAtk: 107,
+      magicAtk: 76,
+      evade: 125,
+      apRecovery: 105,
+      startingAp: 104
+    },
+    'EX 3': {
+      strength: 16,
+      technic: 8,
+      intelligence: 6,
+      vitality: 13,
+      agility: 10,
+      maxHp: 716,
+      meleeAtk: 215,
+      rangedAtk: 107,
+      magicAtk: 76,
+      evade: 125,
+      apRecovery: 105,
+      startingAp: 104
+    },
+    'EX 4': {
+      strength: 16,
+      technic: 8,
+      intelligence: 6,
+      vitality: 13,
+      agility: 11,
+      maxHp: 716,
+      meleeAtk: 215,
+      rangedAtk: 107,
+      magicAtk: 76,
+      evade: 137,
+      apRecovery: 107,
+      startingAp: 106
+    },
+    'EX 5': {
+      strength: 16,
+      technic: 8,
+      intelligence: 6,
+      vitality: 14,
+      agility: 11,
+      maxHp: 768,
+      meleeAtk: 215,
+      rangedAtk: 107,
+      magicAtk: 76,
+      evade: 137,
+      apRecovery: 107,
+      startingAp: 106
+    },
+    'EX 6': {
+      strength: 18,
+      technic: 8,
+      intelligence: 6,
+      vitality: 14,
+      agility: 11,
+      maxHp: 768,
+      meleeAtk: 241,
+      rangedAtk: 107,
+      magicAtk: 76,
+      evade: 137,
+      apRecovery: 107,
+      startingAp: 106
+    },
+  },
+  heroId: 44,
+
 };
 
 // Validate and sanitize the character data

@@ -110,33 +110,44 @@ const rawKimGaYoungData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the chosen Human.',
+      description: 'Interested in the chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
   // Weapon Information
   weapon: {
-    name: 'EX Rifle - SS4 Refitted Model',
-    type: 'EX Rifle',
+    name: "SS4 – Refitted Model",
+    flavor: "Originally developed as a prototype rifle for top-tier Discover agents, this model has since been further modified by Kim Ga-young herself. In true Ga-young fashion - ever thorough and meticulous - she equipped the rifle with a variety of attachments. ensuring it could adapt to any environment or enemy encounter. As a result, the weapon ended up larger than expected… but thanks to her foresight, it now delivers peak performance no matter the situation.",
+    type: "Rifle",
     rarity: 'EX',
-    image: 'kim_Ga_young_WP.jpg',
+    image: "Weapon_FullIMG_Rifle_ForKimGaYeong",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponRangedAtk: '77.0',
-      rangedAtkBonus: '+49.0%',
+      "Ranged ATK (weapon)": "77",
+      "Ranged ATK (%)": "+49%",
     },
     uniqueSkills: {
-      calibrationOfSteelAndShot: {
-        name: 'Calibration of Steel and Shot',
+      unique: {
+        name: "Calibration of Steel and Shot",
         type: 'Unique',
-        description:
-          "During battle, increases Ranged ATK by 40%. When it is not this unit's turn, increases Ranged ATK by 80%.",
+        description: "During battle, increases Ranged ATK by {20,25,30,35,40}%. When it is not this unit's turn, increases Ranged ATK by {40,50,60,70,80}%.",
       },
-      upgrade: {
-        name: 'Kim Ga-young Signature: Upgrade!!!',
+      signature: {
+        name: "Kim Ga-young Signature: Upgrade!!!",
         type: 'Signature',
-        description:
-          "During combat, Increases Ranged ATK by 20% and enhances the Drone Vision skill.\n\n[Drone Vision]: Uses a drone to scout the surroundings. Increases this unit's attack range by 3m during battle and increases all allies' Support ATK DMG by 15%. At the start of each round and at the start of this unit's turn, detects hidden enemies and has a 60% chance each time to apply [Drone Vision].\n\n[Drone Vision Effect]: When hit, reduces All DEF and Evasion by 100 until the end of that turn.\n\nWhen an ally attacks a target with [Drone Vision], this unit performs a Support ATK. Upon successfully hitting an enemy with [Drone Vision], deals Fixed DMG equal to 55% of this unit's Ranged ATK and enters Stealth for 3 rounds at the end of that turn. If the attack hits a Weak Point, the Fixed DMG is doubled. This Fixed DMG is affected by Support ATK DMG Boost bonuses.\n\nIf the user possesses the following General Traits, additional stats are gained:\n- Efficient: Gain 15 AP at the start of battle\n- Competent: Increases Ranged ATK by 10%\n- Methodical: Increases Support ATK DMG by 5%",
+        description: "During combat, Increases Ranged ATK by 20% and enhances the Drone Vision skill. [#sepline] Drone Vision Uses a drone to scout the surroundings. Increases this unit's attack range by 3 m during battle and increases all allies' Support ATK DMG by 15%. At the start of each round and at the start of this unit's turn, detects hidden enemies and has a 60% chance each time to apply [Drone Vision] effect. [Drone Vision] effect: When hit, reduces All DEF and Evasion by 100 until the end of that turn. When an ally attacks a target with [Drone Vision], this unit performs a Support ATK. Upon successfully hitting an enemy with [Drone Vision], deals Fixed DMG equal to 55% of this unit's Ranged ATK and enters Stealth for 3 rounds at the end of that turn. If the attack hits a Weak Point, the Fixed DMG is doubled. This Fixed DMG is affected by Support ATK DMG Boost bonuses. If the user possesses the following General Traits, additional stats are gained: Efficient: Gain 15 AP at the start of battle Competent: Increases Ranged ATK by 10% Methodical: Increases Support ATK DMG by 5%",
       },
+    },
+    levelStats: {
+      "Ranged ATK (weapon)": [12.1, 77.0],
+      "Ranged ATK (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "During battle, increases Ranged ATK", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+        { name: "When it is not this unit's turn, increases Ranged ATK", valuesByLevel: "40% / 50% / 60% / 70% / 80%" },
+      ],
     },
   },
 
@@ -196,6 +207,108 @@ const rawKimGaYoungData = {
       note: 'Limited to 2 uses per battle',
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 7,
+      technic: 15,
+      intelligence: 9,
+      vitality: 8,
+      agility: 9,
+      maxHp: 384,
+      meleeAtk: 76,
+      rangedAtk: 179,
+      magicAtk: 102,
+      evade: 89,
+      apRecovery: 106,
+      startingAp: 119
+    },
+    'EX 1': {
+      strength: 7,
+      technic: 16,
+      intelligence: 9,
+      vitality: 8,
+      agility: 9,
+      maxHp: 384,
+      meleeAtk: 76,
+      rangedAtk: 192,
+      magicAtk: 102,
+      evade: 89,
+      apRecovery: 106,
+      startingAp: 119
+    },
+    'EX 2': {
+      strength: 7,
+      technic: 16,
+      intelligence: 9,
+      vitality: 8,
+      agility: 10,
+      maxHp: 384,
+      meleeAtk: 76,
+      rangedAtk: 192,
+      magicAtk: 102,
+      evade: 102,
+      apRecovery: 109,
+      startingAp: 122
+    },
+    'EX 3': {
+      strength: 7,
+      technic: 17,
+      intelligence: 9,
+      vitality: 8,
+      agility: 10,
+      maxHp: 384,
+      meleeAtk: 76,
+      rangedAtk: 204,
+      magicAtk: 102,
+      evade: 102,
+      apRecovery: 109,
+      startingAp: 122
+    },
+    'EX 4': {
+      strength: 7,
+      technic: 17,
+      intelligence: 9,
+      vitality: 9,
+      agility: 10,
+      maxHp: 448,
+      meleeAtk: 76,
+      rangedAtk: 204,
+      magicAtk: 102,
+      evade: 102,
+      apRecovery: 109,
+      startingAp: 122
+    },
+    'EX 5': {
+      strength: 7,
+      technic: 18,
+      intelligence: 9,
+      vitality: 9,
+      agility: 10,
+      maxHp: 448,
+      meleeAtk: 76,
+      rangedAtk: 217,
+      magicAtk: 102,
+      evade: 102,
+      apRecovery: 109,
+      startingAp: 122
+    },
+    'EX 6': {
+      strength: 7,
+      technic: 19,
+      intelligence: 9,
+      vitality: 9,
+      agility: 10,
+      maxHp: 448,
+      meleeAtk: 76,
+      rangedAtk: 230,
+      magicAtk: 102,
+      evade: 102,
+      apRecovery: 109,
+      startingAp: 122
+    },
+  },
+  heroId: 30,
+
 };
 
 // Validate and sanitize the character data

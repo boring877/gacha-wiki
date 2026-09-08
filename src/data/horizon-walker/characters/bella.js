@@ -32,23 +32,23 @@ const rawBellaData = {
   // Character Stats (Level 60)
   stats: {
     // Basic Stats
-    strength: '12',
-    technic: '6',
-    intelligence: '12',
-    vitality: '13',
-    agility: '10',
+    strength: '10',
+    technic: '7',
+    intelligence: '9',
+    vitality: '14',
+    agility: '13',
 
     // Key Stats
-    meleeAtk: '166',
-    rangedAtk: '89',
-    magicAtk: '166',
-    maxHp: '807',
+    meleeAtk: '140',
+    rangedAtk: '102',
+    magicAtk: '128',
+    maxHp: '869',
     spd: '87',
-    startingAp: '121',
-    apRecovery: '105',
+    startingAp: '128',
+    apRecovery: '112',
     accuracy: '102',
-    evade: '128',
-    critRate: '10',
+    evade: '166',
+    critRate: '15',
     critDmg: '150',
 
     // Attribute Boost
@@ -109,34 +109,48 @@ const rawBellaData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the Chosen Human.',
+      description: 'Interested in the Chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
   // Weapon Information
   weapon: {
-    name: 'EX Club & Shield - Sacrament of Mercy',
-    type: 'EX Club & Shield',
+    name: "Sacrament of Mercy",
+    flavor: "A divine relic blessed by the Goddess of Split Twigs. Once part of a sacred altar carved with the goddess's image, this club was reforged into a weapon during a time of crisis for the Church. Some viewed the act as blasphemy - until the goddess herself gave her blessing through a holy revelation. (Records speak of a vision: \"The goddess smiled as her own likeness crushed the skull of evil.\") Though the shield's design evokes advanced technology, its power is entirely divine. Passed down through generations of High Priests, it has become a symbol of unwavering faith and protection. The relic's true potential is said to awaken only in the hands of the Priestess of Incarnation",
+    type: "Club & Shield",
     rarity: 'EX',
-    image: 'Bella_WP.jpg',
+    image: "Weapon_FullIMG_MaceAndShield_ForBella_MS",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: '84.0',
-      weaponMagicAtk: '84.0',
-      magicAtkBonus: '+35.0%',
+      "Melee ATK (weapon)": "84",
+      "Magic ATK (weapon)": "84",
+      "Magic ATK (%)": "+35%",
     },
     uniqueSkills: {
-      prayerForGrace: {
-        name: 'Prayer for Grace',
+      unique: {
+        name: "Prayer for Grace",
         type: 'Unique',
-        description:
-          'During combat increases Magic ATK by 40%, All DEF by 220, and reduces Aggro Adjustment by 24. At the start of battle, grants all allies the [Merciful Touch] effect. [Merciful Touch]: Increases Max HP by 55%. Does not restore current HP. This effect does not stack.',
+        description: "During combat, increases Magic ATK by {20,25,30,35,40}%, All DEF by {60,100,140,180,220}, and reduces Aggro Adjustment by {16,18,20,22,24}. At the start of battle, grants all allies the [Merciful Touch] effect. - [Merciful Touch]: Increases Max HP by {45,47.5,50,52.5,55}%. Does not restore current HP. This effect does not stack.",
       },
-      devotionOfTheDivine: {
-        name: 'Bella Signature: Devotion of the Divine',
+      signature: {
+        name: "Bella Signature: Devotion of the Goddess",
         type: 'Signature',
-        description:
-          "During combat, increases SPD by 43% and Crush Boost by 86%. At the start of each round, gain 3 stacks of [Devoted Servant]. Gain 1 stack of [Guidance of the Divine] when using an active healing skill. [Devoted Servant]: When an ally takes damage and their HP falls below 68.7%, consumes 1 stack to follow up with 'Grace of Healing' on the in-range ally with the lowest HP%. [Guidance of the Divine]: Increases Melee ATK by 100% of base Magic ATK, and boosts Crit Rate by 25% and Crit DMG by 50%. Stacks up to 5 times. All stacks are removed upon a successful Basic ATK.",
+        description: "During combat, increases SPD by 43% and Crush Boost by 86%. At the start of each round, gain 3 stacks of [Devoted Servant]. Gain 1 stack of [Guidance of the Goddess] when using an active healing skill. - [Devoted Servant]: When an ally takes damage and their HP falls below 68.7%, consumes 1 stack to follow up with 'Grace of Healing' on the in-range ally with the lowest HP%. - [Guidance of the Goddess]: Increases Melee ATK by 100% of base Magic ATK, and boosts Crit Rate by 25% and Crit DMG by 50%. Stacks up to 5 times. All stacks are removed upon a successful Basic ATK.",
       },
+    },
+    levelStats: {
+      "Melee ATK (weapon)": [13.2, 84.0],
+      "Magic ATK (weapon)": [13.2, 84.0],
+      "Magic ATK (%)": [5.5, 35.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "During combat, increases Magic ATK", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+        { name: "%, All DEF", valuesByLevel: "60 / 100 / 140 / 180 / 220" },
+        { name: "And reduces Aggro Adjustment", valuesByLevel: "16 / 18 / 20 / 22 / 24" },
+        { name: "- [Merciful Touch]: Increases Max HP", valuesByLevel: "45% / 47.5% / 50% / 52.5% / 55%" },
+      ],
     },
   },
 
@@ -191,6 +205,108 @@ const rawBellaData = {
         "Opens the path of the branches to invoke the divine's miracle. Restores consciousness to one incapacitated ally and recovers HP by 380% of magic ATK. The target resumes battle with AP set to 95.",
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 9,
+      technic: 7,
+      intelligence: 9,
+      vitality: 12,
+      agility: 10,
+      maxHp: 744,
+      meleeAtk: 128,
+      rangedAtk: 102,
+      magicAtk: 128,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 121
+    },
+    'EX 1': {
+      strength: 9,
+      technic: 7,
+      intelligence: 9,
+      vitality: 12,
+      agility: 11,
+      maxHp: 744,
+      meleeAtk: 128,
+      rangedAtk: 102,
+      magicAtk: 128,
+      evade: 140,
+      apRecovery: 107,
+      startingAp: 123
+    },
+    'EX 2': {
+      strength: 9,
+      technic: 7,
+      intelligence: 9,
+      vitality: 13,
+      agility: 11,
+      maxHp: 807,
+      meleeAtk: 128,
+      rangedAtk: 102,
+      magicAtk: 128,
+      evade: 140,
+      apRecovery: 107,
+      startingAp: 123
+    },
+    'EX 3': {
+      strength: 9,
+      technic: 7,
+      intelligence: 9,
+      vitality: 13,
+      agility: 12,
+      maxHp: 807,
+      meleeAtk: 128,
+      rangedAtk: 102,
+      magicAtk: 128,
+      evade: 153,
+      apRecovery: 110,
+      startingAp: 126
+    },
+    'EX 4': {
+      strength: 10,
+      technic: 7,
+      intelligence: 9,
+      vitality: 13,
+      agility: 12,
+      maxHp: 807,
+      meleeAtk: 140,
+      rangedAtk: 102,
+      magicAtk: 128,
+      evade: 153,
+      apRecovery: 110,
+      startingAp: 126
+    },
+    'EX 5': {
+      strength: 10,
+      technic: 7,
+      intelligence: 9,
+      vitality: 14,
+      agility: 12,
+      maxHp: 869,
+      meleeAtk: 140,
+      rangedAtk: 102,
+      magicAtk: 128,
+      evade: 153,
+      apRecovery: 110,
+      startingAp: 126
+    },
+    'EX 6': {
+      strength: 10,
+      technic: 7,
+      intelligence: 9,
+      vitality: 14,
+      agility: 13,
+      maxHp: 869,
+      meleeAtk: 140,
+      rangedAtk: 102,
+      magicAtk: 128,
+      evade: 166,
+      apRecovery: 112,
+      startingAp: 128
+    },
+  },
+  heroId: 17,
+
 };
 
 // Validate and sanitize the character data

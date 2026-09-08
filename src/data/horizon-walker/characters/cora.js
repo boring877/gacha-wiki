@@ -106,7 +106,7 @@ const rawCoraData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Special trait with no listed characteristics.',
+      description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
     },
   },
 
@@ -183,29 +183,142 @@ const rawCoraData = {
 
   // Weapon Information
   weapon: {
-    name: 'Staff Orbina',
-    type: 'Staff',
+    name: "Orbina",
+    flavor: "This staff is said to choose the mage most suited to wield it. A legacy of the colossal architects of the Noctis Nebula, it was once used to weave designs drawn from the power of earth and stars. Orbina served both as a tool for calculation and as a medium that resonated with the primal cores of the earth and heavens, shaping space and time itself. Some claim it was the very instrument that raised the Empire's greatest wonders, while others dismiss it as no more than a calculating assistant. What remains certain is that Orbina's power is not freely given. Only those few gifted enough to command the flow of earth and spacetime may unlock its strength - to all others, it is nothing more than a staff of unfamiliar weight and power.",
+    type: "Staff",
     rarity: 'EX',
-    image: 'Cora_WP.jpg',
+    image: "Weapon_FullIMG_Staff_ForCora",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMagicAtk: '91.0',
-      magicAtkBonus: '+35.0%',
+      "Magic ATK (weapon)": "91",
+      "Magic ATK (%)": "+35%",
     },
     uniqueSkills: {
-      blessingOfEarth: {
-        name: 'Blessing of Earth',
+      unique: {
+        name: "Blessing of Earth",
         type: 'Unique',
-        description:
-          'During combat, Magic ATK increases by 40%. When using a skill other than Standby on your turn, gain the [Blessing of the Architect] effect for 2R. [Blessing of the Architect]: Increases Heat Boost by 45%. Stacks up to 3 times.',
+        description: "During combat, Magic ATK increases by {20,25,30,35,40}%. When using a skill other than Standby on your turn, gain the [Blessing of the Architect] effect for 2R. - [Blessing of the Architect]: Increases Heat Boost by {25,30,35,40,45}%. Stacks up to 3 times.",
       },
-      harmonyOfTheArchitect: {
-        name: 'Harmony of the Architect',
+      signature: {
+        name: "Cora Signature: Blessing of the Architect",
         type: 'Signature',
-        description:
-          'At the start of combat, for 3 uses only, the AP cost of "Summon Lava" becomes 0 and its cooldown is reduced by 1R. At the start of combat, gain a shield equal to 100% of base Magic ATK for 1R. The shield is removed at the end of the turn if damaged. During combat, Magic ATK and Heat Boost increase by 30%. The attack radius of "Summon Lava" and the radius of the [Lava] zone each increase by 1m. During combat, the AP cost of "Volcanic Eruption" decreases by 30, and the damage of "Forbidden Land" increases by 100%. If HP is at 100%, the AP cost of "Summon Energy" decreases by 40%.',
+        description: "At the start of combat, for 3 uses only, the AP cost of \"Summon Lava\" becomes 0 and its cooldown is reduced by 1R. At the start of combat, gain a shield equal to 100% of base Magic ATK for 1R. The shield is removed at the end of the turn if damaged. During combat, Magic ATK and Heat Boost increase by 30%. The attack radius of \"Summon Lava\" and the radius of the [Lava] zone each increase by 1m. During combat, the AP cost of \"Volcanic Eruption\" decreases by 30, and the damage of \"Forbidden Land\" increases by 100%. If HP is at 100%, the AP cost of \"Summon Energy\" decreases by 40%.",
       },
     },
+    levelStats: {
+      "Magic ATK (weapon)": [14.3, 91.0],
+      "Magic ATK (%)": [5.5, 35.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "During combat, Magic ATK increases", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+        { name: "- [Blessing of the Architect]: Increases Heat Boost", valuesByLevel: "25% / 30% / 35% / 40% / 45%" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 5,
+      technic: 7,
+      intelligence: 23,
+      vitality: 11,
+      agility: 11,
+      maxHp: 704,
+      meleeAtk: 76,
+      rangedAtk: 102,
+      magicAtk: 322,
+      evade: 140,
+      apRecovery: 107,
+      startingAp: 112
+    },
+    'EX 1': {
+      strength: 5,
+      technic: 7,
+      intelligence: 25,
+      vitality: 11,
+      agility: 11,
+      maxHp: 704,
+      meleeAtk: 76,
+      rangedAtk: 102,
+      magicAtk: 349,
+      evade: 140,
+      apRecovery: 107,
+      startingAp: 112
+    },
+    'EX 2': {
+      strength: 5,
+      technic: 7,
+      intelligence: 26,
+      vitality: 11,
+      agility: 11,
+      maxHp: 704,
+      meleeAtk: 76,
+      rangedAtk: 102,
+      magicAtk: 362,
+      evade: 140,
+      apRecovery: 107,
+      startingAp: 112
+    },
+    'EX 3': {
+      strength: 5,
+      technic: 7,
+      intelligence: 26,
+      vitality: 11,
+      agility: 13,
+      maxHp: 704,
+      meleeAtk: 76,
+      rangedAtk: 102,
+      magicAtk: 362,
+      evade: 166,
+      apRecovery: 112,
+      startingAp: 117
+    },
+    'EX 4': {
+      strength: 5,
+      technic: 7,
+      intelligence: 26,
+      vitality: 13,
+      agility: 13,
+      maxHp: 832,
+      meleeAtk: 76,
+      rangedAtk: 102,
+      magicAtk: 362,
+      evade: 166,
+      apRecovery: 112,
+      startingAp: 117
+    },
+    'EX 5': {
+      strength: 5,
+      technic: 7,
+      intelligence: 28,
+      vitality: 13,
+      agility: 13,
+      maxHp: 832,
+      meleeAtk: 76,
+      rangedAtk: 102,
+      magicAtk: 389,
+      evade: 166,
+      apRecovery: 112,
+      startingAp: 117
+    },
+    'EX 6': {
+      strength: 5,
+      technic: 7,
+      intelligence: 30,
+      vitality: 13,
+      agility: 13,
+      maxHp: 832,
+      meleeAtk: 76,
+      rangedAtk: 102,
+      magicAtk: 416,
+      evade: 166,
+      apRecovery: 112,
+      startingAp: 117
+    },
+  },
+  heroId: 45,
+
 };
 
 // Validate and sanitize the character data

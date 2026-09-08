@@ -108,7 +108,7 @@ const rawKalmaData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Special trait with no listed characteristics.',
+      description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
     },
   },
 
@@ -223,29 +223,143 @@ const rawKalmaData = {
 
   // Weapon
   weapon: {
-    name: "EX Arcane Orb - Storm's Eye",
-    type: 'Arcane Orb',
+    name: "Storm's Eye",
+    flavor: "No one knows when this relic first became a chilling source of dread among the Kesak's greats, but one fact is certain - every soul who coveted its might met with ruin. With each of its previous owners vanishing without a trace, the Storm's Eye came to be feared and yet irresistibly desired, a perilous treasure whispered about among Kesak legends. Then, one day, the Storm's Eye disappeared beyond all reach - yet many Kesak still wander in search of this weapon, whose light was as fearsome as it was beautiful.",
+    type: "Arcane Orb",
     rarity: 'EX',
-    image: 'Kalma_WP.jpg',
+    image: "Weapon_FullIMG_ArcaneBall_ForKalma",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMagicAtk: '105.0',
-      critDmgBonus: '+42.0%',
+      "Magic ATK (weapon)": "105",
+      "Crit DMG (%)": "+42%",
     },
     uniqueSkills: {
-      cruiseSystem: {
-        name: 'Cruise System',
+      unique: {
+        name: "Cruise System",
         type: 'Unique',
-        description:
-          'During combat, Magic ATK increases by 40%. When using a skill other than Standby, gain [Overvoltage] for 1 Round. [Overvoltage]: Increases Electric Boost by 24%. If the skill used was a charge, leap, teleportation, or self-mobility skill refreshes the effect to increase Electric Boost by 64% instead.',
+        description: "During combat, Magic ATK increases by {20,25,30,35,40}%. When using a skill other than Standby, gain [Overvoltage] for 1 Round. [Overvoltage]: Increases Electric Boost by {12,15,18,21,24}%. If the skill used was a charge, leap, teleportation, or self-mobility skill, refreshes the effect to increase Electric Boost by {32,40,48,56,64}% instead.",
       },
-      clearYourMindAndShoot: {
-        name: 'Kalma Signature: Clear Your Mind and Shoot',
+      signature: {
+        name: "Kalma Signature: Clear Your Mind and Shoot",
         type: 'Signature',
-        description:
-          'During combat, Increases Crit Rate by 6.8%, and "Raging Thunderstorm" becomes a area-targeted attack, its attack radius increases by 1m, and its damage increases by 15%. When "Lightning Cascade" hits, temporarily reduces the target\'s Electric DEF by 240.',
+        description: "During combat, Increases Crit Rate by 6.8%, and \"Raging Thunderstorm\" becomes a area-targeted attack, its attack radius increases by 1m, and its damage increases by 15%. When \"Lightning Cascade\" hits, temporarily reduces the target's Electric DEF by 240.",
       },
     },
+    levelStats: {
+      "Magic ATK (weapon)": [16.5, 105.0],
+      "Crit DMG (%)": [6.6, 42.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "During combat, Magic ATK increases", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+        { name: "[Overvoltage]: Increases Electric Boost", valuesByLevel: "12% / 15% / 18% / 21% / 24%" },
+        { name: "...sed was a charge, leap, teleportation, or self-mobility skill, refreshes the effect to increase Electric Boost", valuesByLevel: "32% / 40% / 48% / 56% / 64%" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 4,
+      technic: 5,
+      intelligence: 10,
+      vitality: 8,
+      agility: 13,
+      maxHp: 787,
+      meleeAtk: 51,
+      rangedAtk: 64,
+      magicAtk: 211,
+      evade: 166,
+      apRecovery: 117,
+      startingAp: 120
+    },
+    'EX 1': {
+      strength: 4,
+      technic: 5,
+      intelligence: 11,
+      vitality: 8,
+      agility: 13,
+      maxHp: 787,
+      meleeAtk: 51,
+      rangedAtk: 64,
+      magicAtk: 246,
+      evade: 166,
+      apRecovery: 117,
+      startingAp: 120
+    },
+    'EX 2': {
+      strength: 4,
+      technic: 5,
+      intelligence: 11,
+      vitality: 8,
+      agility: 15,
+      maxHp: 787,
+      meleeAtk: 51,
+      rangedAtk: 64,
+      magicAtk: 246,
+      evade: 192,
+      apRecovery: 122,
+      startingAp: 125
+    },
+    'EX 3': {
+      strength: 4,
+      technic: 5,
+      intelligence: 11,
+      vitality: 9,
+      agility: 15,
+      maxHp: 839,
+      meleeAtk: 51,
+      rangedAtk: 64,
+      magicAtk: 246,
+      evade: 192,
+      apRecovery: 122,
+      startingAp: 125
+    },
+    'EX 4': {
+      strength: 4,
+      technic: 5,
+      intelligence: 12,
+      vitality: 9,
+      agility: 15,
+      maxHp: 839,
+      meleeAtk: 51,
+      rangedAtk: 64,
+      magicAtk: 281,
+      evade: 192,
+      apRecovery: 122,
+      startingAp: 125
+    },
+    'EX 5': {
+      strength: 4,
+      technic: 5,
+      intelligence: 12,
+      vitality: 10,
+      agility: 16,
+      maxHp: 892,
+      meleeAtk: 51,
+      rangedAtk: 64,
+      magicAtk: 281,
+      evade: 204,
+      apRecovery: 124,
+      startingAp: 127
+    },
+    'EX 6': {
+      strength: 4,
+      technic: 5,
+      intelligence: 13,
+      vitality: 10,
+      agility: 17,
+      maxHp: 892,
+      meleeAtk: 51,
+      rangedAtk: 64,
+      magicAtk: 316,
+      evade: 217,
+      apRecovery: 127,
+      startingAp: 130
+    },
+  },
+  heroId: 55,
+
 };
 
 // Validate and sanitize the character data

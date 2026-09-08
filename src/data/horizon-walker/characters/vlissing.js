@@ -50,7 +50,7 @@ const rawVlissingData = {
     apRecovery: '112',
     accuracy: '102',
     evade: '171',
-    critRate: '10',
+    critRate: '8',
     critDmg: '150',
 
     // Attribute Boost
@@ -72,7 +72,7 @@ const rawVlissingData = {
     electricDef: '0',
     immaterialDef: '0',
     poisonDef: '0',
-    blockRate: '10',
+    blockRate: '0',
   },
 
   // Character Description
@@ -110,7 +110,7 @@ const rawVlissingData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Special trait with no listed characteristics.',
+      description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
     },
   },
 
@@ -168,29 +168,143 @@ const rawVlissingData = {
 
   // Weapon
   weapon: {
-    name: 'EX Staff - Atra-hasis',
-    type: 'Staff',
+    name: "Atra-hasis",
+    flavor: "This relic is mentioned in the founding myth of Tranel and is a symbol that can only be touched by the greatest Flow Guardian of the principality. Unlike other trivial symbols, the Atra-hasis actually resonates with the power of flowmancers. In the hands of a suitable master, this staff can compel even the most turbulent currents to become calm and tranquil. Conversely, it can also unleash chaos in calm waters.",
+    type: "Staff",
     rarity: 'EX',
-    image: 'Vlissing_WP.jpg',
+    image: "Weapon_FullIMG_AtraHasis",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMagicAtk: '91.0',
-      magicAtkBonus: '+35.0%',
+      "Magic ATK (weapon)": "91",
+      "Magic ATK (%)": "+35%",
     },
     uniqueSkills: {
-      theGreatFlood: {
-        name: 'The Great Flood',
+      unique: {
+        name: "The Great Flood",
         type: 'Unique',
-        description:
-          'Reduces AP cost of Basic ATK by 32%. When targeting an ally with a skill, increases their All DEF by 320 for 1 Round. When targeting an enemy with a skill, reduces their All DEF by 720 for 2 Rounds.',
+        description: "Reduces AP cost of Basic ATK by {16,20,24,28,32}%. When targeting an ally with a skill, increases their All DEF by {160,200,240,280,320} for 1 Round. When targeting an enemy with a skill, reduces their All DEF by {360,450,540,630,720} for 2 Rounds.",
       },
-      sacredFlow: {
-        name: 'Vlissing Signature: Sacred Flow',
+      signature: {
+        name: "Vlissing Signature: Sacred Flow",
         type: 'Signature',
-        description:
-          'During combat, Max HP +8% and Additional DMG Boost +36%. Changes "Sharp Wave" to a Directional attack. On hit, enemies have a chance equal to your current Additional DMG Boost to gain 1 stack of [Tangled Flow]. When hitting an enemy that already has [Tangled Flow] with an Active skill, deals additional Slash DMG equal to 120% of Magic ATK. At the start of each Round, allies with [Clean Flow] gain +18% All ATK for 1 Round.',
+        description: "During combat, Max HP +8% and Additional DMG Boost +36%. Changes \"Sharp Wave\" to a Directional attack. On hit, enemies have a chance equal to your current Additional DMG Boost to gain 1 stack of [Tangled Flow]. When hitting an enemy that already has [Tangled Flow] with an Active skill, deals additional Slash DMG equal to 120% of Magic ATK. At the start of each Round, allies with [Clean Flow] gain +18% All ATK for 1 Round.",
       },
     },
+    levelStats: {
+      "Magic ATK (weapon)": [14.3, 91.0],
+      "Magic ATK (%)": [5.5, 35.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Reduces AP cost of Basic ATK", valuesByLevel: "16% / 20% / 24% / 28% / 32%" },
+        { name: "When targeting an ally with a skill, increases their All DEF", valuesByLevel: "160 / 200 / 240 / 280 / 320" },
+        { name: "When targeting an enemy with a skill, reduces their All DEF", valuesByLevel: "360 / 450 / 540 / 630 / 720" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 7,
+      technic: 8,
+      intelligence: 13,
+      vitality: 10,
+      agility: 10,
+      maxHp: 768,
+      meleeAtk: 102,
+      rangedAtk: 115,
+      magicAtk: 217,
+      evade: 158,
+      apRecovery: 110,
+      startingAp: 127
+    },
+    'EX 1': {
+      strength: 7,
+      technic: 8,
+      intelligence: 15,
+      vitality: 10,
+      agility: 10,
+      maxHp: 768,
+      meleeAtk: 102,
+      rangedAtk: 115,
+      magicAtk: 244,
+      evade: 158,
+      apRecovery: 110,
+      startingAp: 127
+    },
+    'EX 2': {
+      strength: 7,
+      technic: 8,
+      intelligence: 15,
+      vitality: 11,
+      agility: 10,
+      maxHp: 832,
+      meleeAtk: 102,
+      rangedAtk: 115,
+      magicAtk: 244,
+      evade: 158,
+      apRecovery: 110,
+      startingAp: 127
+    },
+    'EX 3': {
+      strength: 7,
+      technic: 8,
+      intelligence: 16,
+      vitality: 11,
+      agility: 10,
+      maxHp: 832,
+      meleeAtk: 102,
+      rangedAtk: 115,
+      magicAtk: 257,
+      evade: 158,
+      apRecovery: 110,
+      startingAp: 127
+    },
+    'EX 4': {
+      strength: 7,
+      technic: 8,
+      intelligence: 16,
+      vitality: 11,
+      agility: 11,
+      maxHp: 832,
+      meleeAtk: 102,
+      rangedAtk: 115,
+      magicAtk: 257,
+      evade: 171,
+      apRecovery: 112,
+      startingAp: 129
+    },
+    'EX 5': {
+      strength: 7,
+      technic: 8,
+      intelligence: 16,
+      vitality: 12,
+      agility: 11,
+      maxHp: 896,
+      meleeAtk: 102,
+      rangedAtk: 115,
+      magicAtk: 257,
+      evade: 171,
+      apRecovery: 112,
+      startingAp: 129
+    },
+    'EX 6': {
+      strength: 7,
+      technic: 8,
+      intelligence: 18,
+      vitality: 12,
+      agility: 11,
+      maxHp: 896,
+      meleeAtk: 102,
+      rangedAtk: 115,
+      magicAtk: 284,
+      evade: 171,
+      apRecovery: 112,
+      startingAp: 129
+    },
+  },
+  heroId: 47,
+
 };
 
 // Validate and sanitize the character data

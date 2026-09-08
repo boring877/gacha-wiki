@@ -1,0 +1,20 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  juzaData,
+  juzaSEO,
+  juzaHighlighting,
+} from '../../../../data/horizon-walker/characters/juza.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={juzaSEO.title}
+  description={juzaSEO.description}
+  gameTitle={juzaData.name}
+  character={juzaData}
+>
+  <CharacterPageTemplate characterData={{ ...juzaData, highlightPatterns: juzaHighlighting }} />
+</CharacterIndividualLayout>

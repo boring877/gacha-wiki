@@ -36,20 +36,20 @@ const rawValetaData = {
     // Basic Stats
     strength: '11',
     technic: '7',
-    intelligence: '11',
-    vitality: '12',
-    agility: '14',
+    intelligence: '7',
+    vitality: '14',
+    agility: '16',
 
     // Key Stats
     meleeAtk: '192',
     rangedAtk: '140',
-    magicAtk: '204',
-    maxHp: '798',
+    magicAtk: '153',
+    maxHp: '931',
     spd: '93',
-    startingAp: '123',
-    apRecovery: '120',
+    startingAp: '128',
+    apRecovery: '125',
     accuracy: '113',
-    evade: '204',
+    evade: '230',
     critRate: '10',
     critDmg: '150',
 
@@ -72,7 +72,7 @@ const rawValetaData = {
     electricDef: '0',
     immaterialDef: '0',
     poisonDef: '0',
-    blockRate: '-30',
+    blockRate: '0',
   },
 
   // Character Description
@@ -110,7 +110,7 @@ const rawValetaData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Special trait with no listed characteristics.',
+      description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
     },
   },
 
@@ -194,30 +194,146 @@ const rawValetaData = {
 
   // Weapon
   weapon: {
-    name: 'EX One-handed sword - The Bloody Acacia',
-    type: 'One-handed sword',
+    name: "The Bloody Acacia",
+    flavor: "A rapier adorned with thorny embellishments, this weapon was created to commemorate the shameful incident when a certain demon nearly infiltrated the \"Sisterhood of Hirinna.\" The patterns on the blade represent the teachings of the Hirinna Order, while the thorny vines symbolize the demon's intrusion, and the blood at the tip signifies the punishment for such transgressions. It is said that due to the fused body of the demon within the vines, the shape of the sword changes when held by a rightful bearer. Should the wielder desire a discipline accompanied by blood, the Bloody Acacia will gladly respond to that will.",
+    type: "One-handed sword",
     rarity: 'EX',
-    image: 'Valeta_WP.jpg',
+    image: "Weapon_FullIMG_Red_Acacia",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: '84.0',
-      weaponMagicAtk: '84.0',
-      apRecoveryBonus: '+14.0%',
+      "Melee ATK (weapon)": "84",
+      "Magic ATK (weapon)": "84",
+      "AP Recovery (%)": "+14%",
     },
     uniqueSkills: {
-      bloodOnTheEdge: {
-        name: 'Blood on the Edge',
+      unique: {
+        name: "Blood on the Edge",
         type: 'Unique',
-        description:
-          'During battle, increases Immaterial Boost by 48%. On a successful attack, has a 100% chance to deal Additional Immaterial DMG equal to 200% of magic ATK. If you defeat an enemy, restores HP of all allies by 160% of magic ATK at the end of the turn.',
+        description: "During battle, increases Immaterial Boost by {24,30,36,42,48}%. On a successful attack, has a {80,85,90,95,100}% chance to deal Additional Immaterial DMG equal to {100,125,150,175,200}% of magic ATK. If you defeat an enemy, restores HP of all allies by {80,100,120,140,160}% of magic ATK at the end of the turn.",
       },
-      thornwhipOfCondemnation: {
-        name: 'Voleta Signature: Thornwhip of Condemnation',
-        type: 'Voleta Signature',
-        description:
-          'During battle, the AP cost of basic attack skills decreases by 5. Gains 3 stacks of [Judgment] at the start of the battle.',
+      signature: {
+        name: "Valeta Signature: Thornwhip of Condemnation",
+        type: 'Signature',
+        description: "During battle, the AP cost of basic attack skills decreases by 5. Gains 3 stacks of [Judgment] at the start of the battle.",
       },
     },
+    levelStats: {
+      "Melee ATK (weapon)": [13.2, 84.0],
+      "Magic ATK (weapon)": [13.2, 84.0],
+      "AP Recovery (%)": [2.2, 14.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "During battle, increases Immaterial Boost", valuesByLevel: "24% / 30% / 36% / 42% / 48%" },
+        { name: "On a successful attack, has a", valuesByLevel: "80% / 85% / 90% / 95% / 100%" },
+        { name: "% chance to deal Additional Immaterial DMG equal", valuesByLevel: "100% / 125% / 150% / 175% / 200%" },
+        { name: "If you defeat an enemy, restores HP of all allies", valuesByLevel: "80% / 100% / 120% / 140% / 160%" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 8,
+      technic: 7,
+      intelligence: 7,
+      vitality: 13,
+      agility: 14,
+      maxHp: 865,
+      meleeAtk: 153,
+      rangedAtk: 140,
+      magicAtk: 153,
+      evade: 204,
+      apRecovery: 120,
+      startingAp: 123
+    },
+    'EX 1': {
+      strength: 9,
+      technic: 7,
+      intelligence: 7,
+      vitality: 13,
+      agility: 14,
+      maxHp: 865,
+      meleeAtk: 166,
+      rangedAtk: 140,
+      magicAtk: 153,
+      evade: 204,
+      apRecovery: 120,
+      startingAp: 123
+    },
+    'EX 2': {
+      strength: 9,
+      technic: 7,
+      intelligence: 7,
+      vitality: 13,
+      agility: 15,
+      maxHp: 865,
+      meleeAtk: 166,
+      rangedAtk: 140,
+      magicAtk: 153,
+      evade: 217,
+      apRecovery: 122,
+      startingAp: 125
+    },
+    'EX 3': {
+      strength: 10,
+      technic: 7,
+      intelligence: 7,
+      vitality: 13,
+      agility: 15,
+      maxHp: 865,
+      meleeAtk: 179,
+      rangedAtk: 140,
+      magicAtk: 153,
+      evade: 217,
+      apRecovery: 122,
+      startingAp: 125
+    },
+    'EX 4': {
+      strength: 10,
+      technic: 7,
+      intelligence: 7,
+      vitality: 13,
+      agility: 16,
+      maxHp: 865,
+      meleeAtk: 179,
+      rangedAtk: 140,
+      magicAtk: 153,
+      evade: 230,
+      apRecovery: 125,
+      startingAp: 128
+    },
+    'EX 5': {
+      strength: 10,
+      technic: 7,
+      intelligence: 7,
+      vitality: 14,
+      agility: 16,
+      maxHp: 931,
+      meleeAtk: 179,
+      rangedAtk: 140,
+      magicAtk: 153,
+      evade: 230,
+      apRecovery: 125,
+      startingAp: 128
+    },
+    'EX 6': {
+      strength: 11,
+      technic: 7,
+      intelligence: 7,
+      vitality: 14,
+      agility: 16,
+      maxHp: 931,
+      meleeAtk: 192,
+      rangedAtk: 140,
+      magicAtk: 153,
+      evade: 230,
+      apRecovery: 125,
+      startingAp: 128
+    },
+  },
+  heroId: 48,
+
 };
 
 // Validate and sanitize the character data

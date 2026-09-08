@@ -107,7 +107,7 @@ const rawFammeneData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Special trait with no listed characteristics.',
+      description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
     },
   },
 
@@ -165,29 +165,143 @@ const rawFammeneData = {
 
   // Weapon
   weapon: {
-    name: 'EX Arcane Orb - The Anguished Rose',
-    type: 'Arcane Orb',
+    name: "The Anguished Rose",
+    flavor: "This arcane orb, commonly found in Tranel, takes the form of a Tranel rose. According to an old tale, there was a special relic known as the Wind Petal Compass, which was recommended for Aeromancers who struggled to read the flow of mana. Shaped like a flower bud, this compass possessed the unique ability to respond to the user's mana, guiding them toward their intended direction. One day, this compass, referred to as the \"The Anguished Rose\", came into the hands of a Aeromancer who had lost her way. It is said that it gently led her through her chaotic thoughts. \"It was so beautiful.\" \"It looked so lonely.\" Only whispers of these sentiments remain, as she is believed to have vanished gracefully in the direction indicated by the \"The Anguished Rose\".",
+    type: "Arcane Orb",
     rarity: 'EX',
-    image: 'Fammene_WP.jpg',
+    image: "Weapon_FullIMG_RoseOfSorrow",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMagicAtk: '77.0',
-      magicAtkBonus: '+49.0%',
+      "Magic ATK (weapon)": "77",
+      "Magic ATK (%)": "+49%",
     },
     uniqueSkills: {
-      sadEnding: {
-        name: 'Sad Ending',
+      unique: {
+        name: "Sad Ending",
         type: 'Unique',
-        description:
-          "When using a skill (excluding standby) during the turn, restores all allies' HP by 32% of the caster's Magic ATK. Also grants all allies (excluding the caster) the [Sad Ending] effect for 1 round. [Sad Ending]: Increases Melee ATK by 20% based on the caster's Magic ATK. Increases Ranged ATK by 40% based on the caster's Magic ATK.",
+        description: "When using a skill (excluding standby) during the turn, restores all allies' HP by {16,20,24,28,32}% of the caster's Magic ATK. Also grants all allies (excluding the caster) the [Sad Ending] effect for 1 round. - [Sad Ending]: º Increases Melee ATK by {10,12.5,15,17.5,20}% based on the caster's Magic ATK. º Increases Ranged ATK by {20,25,30,35,40}% based on the caster's Magic ATK.",
       },
-      windOfTragedy: {
-        name: 'Fammene Signature: Wind of Tragedy',
+      signature: {
+        name: "Fammene Signature: Wind of Tragedy",
         type: 'Signature',
-        description:
-          "Increases AP Recovery by 8%. Gains the [Whirling Wind] effect at the start of battle. (Same as the [Whirling Wind] effect caused by the level 1 'Wind's Gathering' skill.)",
+        description: "Increases AP Recovery by 8%. Gains the [Whirling Wind] effect at the start of battle. (Same as the [Whirling Wind] effect caused by the level 1 'Wind's Gathering' skill.)",
       },
     },
+    levelStats: {
+      "Magic ATK (weapon)": [12.1, 77.0],
+      "Magic ATK (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "When using a skill (excluding standby) during the turn, restores all allies' HP", valuesByLevel: "16% / 20% / 24% / 28% / 32%" },
+        { name: "- [Sad Ending]: º Increases Melee ATK", valuesByLevel: "10% / 12.5% / 15% / 17.5% / 20%" },
+        { name: "º Increases Ranged ATK", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 4,
+      technic: 5,
+      intelligence: 11,
+      vitality: 10,
+      agility: 14,
+      maxHp: 620,
+      meleeAtk: 64,
+      rangedAtk: 76,
+      magicAtk: 201,
+      evade: 179,
+      apRecovery: 115,
+      startingAp: 116
+    },
+    'EX 1': {
+      strength: 4,
+      technic: 5,
+      intelligence: 12,
+      vitality: 10,
+      agility: 14,
+      maxHp: 620,
+      meleeAtk: 64,
+      rangedAtk: 76,
+      magicAtk: 215,
+      evade: 179,
+      apRecovery: 115,
+      startingAp: 116
+    },
+    'EX 2': {
+      strength: 4,
+      technic: 5,
+      intelligence: 13,
+      vitality: 10,
+      agility: 14,
+      maxHp: 620,
+      meleeAtk: 64,
+      rangedAtk: 76,
+      magicAtk: 228,
+      evade: 179,
+      apRecovery: 115,
+      startingAp: 116
+    },
+    'EX 3': {
+      strength: 4,
+      technic: 5,
+      intelligence: 13,
+      vitality: 10,
+      agility: 15,
+      maxHp: 620,
+      meleeAtk: 64,
+      rangedAtk: 76,
+      magicAtk: 228,
+      evade: 192,
+      apRecovery: 117,
+      startingAp: 118
+    },
+    'EX 4': {
+      strength: 4,
+      technic: 5,
+      intelligence: 13,
+      vitality: 11,
+      agility: 15,
+      maxHp: 682,
+      meleeAtk: 64,
+      rangedAtk: 76,
+      magicAtk: 228,
+      evade: 192,
+      apRecovery: 117,
+      startingAp: 118
+    },
+    'EX 5': {
+      strength: 4,
+      technic: 5,
+      intelligence: 14,
+      vitality: 11,
+      agility: 15,
+      maxHp: 682,
+      meleeAtk: 64,
+      rangedAtk: 76,
+      magicAtk: 241,
+      evade: 192,
+      apRecovery: 117,
+      startingAp: 118
+    },
+    'EX 6': {
+      strength: 4,
+      technic: 5,
+      intelligence: 15,
+      vitality: 11,
+      agility: 15,
+      maxHp: 682,
+      meleeAtk: 64,
+      rangedAtk: 76,
+      magicAtk: 255,
+      evade: 192,
+      apRecovery: 117,
+      startingAp: 118
+    },
+  },
+  heroId: 35,
+
 };
 
 // Validate and sanitize the character data

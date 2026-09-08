@@ -71,28 +71,39 @@ const rawMinEunSolData = {
 
   // Weapon Information
   weapon: {
-    name: 'The Black Idol',
-    type: 'Mana Shard',
+    name: "The Black Idol",
+    flavor: "This bundle is made from someone's body hair. While it appears ordinary on the surface, it is imbued with powerful divine energy. The thick, sturdy hair symbolizes the owner's health and vitality, and it is said to have the ability to significantly amplify the user's mana in response to their faith and fervor. Originally, this relic was collected by a fairy from the Bureau of Rift Management for the purpose of sale, but it ultimately found its way into the hands of someone who sought and desired it most fervently.",
+    type: "Mana Shard",
     rarity: 'EX',
-    image: 'Min_Eun_sol_WP.jpg',
+    image: "Weapon_FullIMG_BlackIdol",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMagicAtk: '77.0',
-      maxHpBonus: '+49.0%',
+      "Magic ATK (weapon)": "77",
+      "Max HP (%)": "+49%",
     },
     uniqueSkills: {
-      darkGuardianship: {
-        name: 'Dark Guardianship',
+      unique: {
+        name: "Dark Guardianship",
         type: 'Unique',
-        description:
-          'During battle, increases magic ATK by 24% of max HP. Recovers 24% of HP each time an enemy on the battlefield is defeated.',
+        description: "During battle, increases magic ATK by {12,15,18,21,24}% of max HP. Recovers {12,15,18,21,24}% of HP each time an enemy on the battlefield is defeated.",
       },
-      blackPulse: {
-        name: 'Black Pulse',
-        type: 'Min Eun-sol Signature',
-        description:
-          "At the start of any turn, if you have the [King's Favor] effect, all allies except yourself gain +1000 to all DEF for the duration of the turn.",
-        note: 'This signature skill only activates when Min Eun-sol equips this weapon.',
+      signature: {
+        name: "Min Eun-sol Signature: Black Pulse",
+        type: 'Signature',
+        description: "At the start of any turn, if you have the [King's Favor] effect, all allies except yourself gain +1000 to all DEF for the duration of the turn.",
+        note: "This signature skill only activates when Min Eun-sol equips this weapon.",
       },
+    },
+    levelStats: {
+      "Magic ATK (weapon)": [12.1, 77.0],
+      "Max HP (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "During battle, increases magic ATK", valuesByLevel: "12% / 15% / 18% / 21% / 24%" },
+        { name: "Recovers", valuesByLevel: "12% / 15% / 18% / 21% / 24%" },
+      ],
     },
   },
 
@@ -128,7 +139,7 @@ const rawMinEunSolData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the Chosen Human.',
+      description: 'Interested in the Chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
@@ -202,6 +213,108 @@ const rawMinEunSolData = {
         "This skill can only target an enemy with the [Touched the King's Offering] effect originating from yourself that exists on the battlefield. This attack does not trigger a critical hit and must hit as a Weakness Attack if the target has a weakness.",
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 5,
+      technic: 6,
+      intelligence: 16,
+      vitality: 14,
+      agility: 6,
+      maxHp: 896,
+      meleeAtk: 64,
+      rangedAtk: 76,
+      magicAtk: 204,
+      evade: 76,
+      apRecovery: 98,
+      startingAp: 112
+    },
+    'EX 1': {
+      strength: 5,
+      technic: 6,
+      intelligence: 18,
+      vitality: 14,
+      agility: 6,
+      maxHp: 896,
+      meleeAtk: 64,
+      rangedAtk: 76,
+      magicAtk: 230,
+      evade: 76,
+      apRecovery: 98,
+      startingAp: 112
+    },
+    'EX 2': {
+      strength: 5,
+      technic: 6,
+      intelligence: 19,
+      vitality: 14,
+      agility: 6,
+      maxHp: 896,
+      meleeAtk: 64,
+      rangedAtk: 76,
+      magicAtk: 243,
+      evade: 76,
+      apRecovery: 98,
+      startingAp: 112
+    },
+    'EX 3': {
+      strength: 5,
+      technic: 6,
+      intelligence: 19,
+      vitality: 14,
+      agility: 7,
+      maxHp: 896,
+      meleeAtk: 64,
+      rangedAtk: 76,
+      magicAtk: 243,
+      evade: 89,
+      apRecovery: 101,
+      startingAp: 115
+    },
+    'EX 4': {
+      strength: 5,
+      technic: 6,
+      intelligence: 19,
+      vitality: 15,
+      agility: 7,
+      maxHp: 960,
+      meleeAtk: 64,
+      rangedAtk: 76,
+      magicAtk: 243,
+      evade: 89,
+      apRecovery: 101,
+      startingAp: 115
+    },
+    'EX 5': {
+      strength: 5,
+      technic: 6,
+      intelligence: 21,
+      vitality: 15,
+      agility: 7,
+      maxHp: 960,
+      meleeAtk: 64,
+      rangedAtk: 76,
+      magicAtk: 268,
+      evade: 89,
+      apRecovery: 101,
+      startingAp: 115
+    },
+    'EX 6': {
+      strength: 5,
+      technic: 6,
+      intelligence: 23,
+      vitality: 15,
+      agility: 7,
+      maxHp: 960,
+      meleeAtk: 64,
+      rangedAtk: 76,
+      magicAtk: 294,
+      evade: 89,
+      apRecovery: 101,
+      startingAp: 115
+    },
+  },
+  heroId: 2,
+
 };
 
 // Validate and sanitize the character data

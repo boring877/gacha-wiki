@@ -19,18 +19,18 @@ const samarikaData = {
   // Character Stats (Level 60)
   stats: {
     // Basic Stats
-    strength: '14',
-    technic: '8',
+    strength: '11',
+    technic: '11',
     intelligence: '5',
     vitality: '10',
     agility: '17',
 
     // Key Stats
-    meleeAtk: '192',
-    rangedAtk: '115',
+    meleeAtk: '153',
+    rangedAtk: '153',
     magicAtk: '64',
     maxHp: '576',
-    spd: '157',
+    spd: '143',
     startingAp: '120',
     apRecovery: '122',
     accuracy: '102',
@@ -150,35 +150,148 @@ const samarikaData = {
     },
     trait4: {
       name: 'Interested',
-      description: 'Interested in the chosen Human.',
+      description: 'Interested in the chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
   // Character Weapon
   weapon: {
-    name: 'EX Twin Swords - Nocturnal Watcher',
-    image: 'Samarika_WP.jpg',
+    name: "Nocturnal Watcher",
+    flavor: "Lurking in the shadows, the Nocturnal Watcher strikes fear into the hearts of Neo Seoul's villains. Infused with venomous intent, this weapon shows no mercy to those who threaten innocent lives. To the criminals of the slums, it is a blade of silent death - unseen, unrelenting. On dark nights, those with evil in their hearts would be wise to wonder… has the Nocturnal Watcher already drawn near?",
+    type: "Twin Swords",
     rarity: 'EX',
-    type: 'Twin Swords',
+    image: "Weapon_FullIMG_DualSword_ForSamarika",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: '91',
-      meleeAtkBonus: '35',
+      "Melee ATK (weapon)": "91",
+      "Melee ATK (%)": "+35%",
     },
     uniqueSkills: {
-      skill1: {
-        name: 'Silent Wings',
+      unique: {
+        name: "Silent Wings",
         type: 'Unique',
-        description:
-          'During combat, Crit Rate increases by 40%. While it is your turn, enemies afflicted with [Slow] are visible. If you attack and at least one enemy has the [Slow] effect, your Slash Boost and Poison Boost each increase by 80% until the end of the turn.',
+        description: "During combat, Crit Rate increases by {20,25,30,35,40}%. While it is your turn, enemies afflicted with [Slow] are visible. If you attack and at least one enemy has the [Slow] effect, your Slash Boost and Poison Boost each increase by {40,50,60,70,80}% until the end of the turn.",
       },
-      skill2: {
-        name: 'Samarika Signature: Owl Huntress',
+      signature: {
+        name: "Samarika Signature: Owl Huntress",
         type: 'Signature',
-        description:
-          'During combat, Poison Boost increases by 85% of base Slash Boost, and Slash Boost increases by 85% of base Poison Boost. When successfully attacking an enemy with the [Slow] effect during your turn, deals Additional Poison DMG equal to 9% of base Melee ATK × the amount of AP spent on skills that turn. This Additional Poison DMG can crit. After using Fang of the Swamp, its cooldown is reduced by 2R. On a successful hit, restores 30 AP.',
+        description: "At the start of battle, gains 30 AP and increases Slash Boost and Poison Boost by 12% of base Evasion. This bonus can reach up to 30%. When successfully hitting an enemy afflicted with [Slow] during your turn, deal additional Poison DMG equal to 9% of base Melee ATK × the total AP spent on skills that turn. This Additional DMG can Crit. The additional Slash DMG dealt by Fang of the Swamp can also Crit. After using this skill, its cooldown is reduced by 2 rounds and you recover 55 AP. Cooldown reduction and AP recovery effect can trigger once every 2 rounds.",
       },
     },
+    levelStats: {
+      "Melee ATK (weapon)": [14.3, 91.0],
+      "Melee ATK (%)": [5.5, 35.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "During combat, Crit Rate increases", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+        { name: "If you attack and at least one enemy has the [Slow] effect, your Slash Boost and Poison Boost each increase", valuesByLevel: "40% / 50% / 60% / 70% / 80%" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 11,
+      technic: 9,
+      intelligence: 5,
+      vitality: 9,
+      agility: 14,
+      maxHp: 512,
+      meleeAtk: 153,
+      rangedAtk: 128,
+      magicAtk: 64,
+      evade: 179,
+      apRecovery: 115,
+      startingAp: 113
+    },
+    'EX 1': {
+      strength: 11,
+      technic: 9,
+      intelligence: 5,
+      vitality: 9,
+      agility: 15,
+      maxHp: 512,
+      meleeAtk: 153,
+      rangedAtk: 128,
+      magicAtk: 64,
+      evade: 192,
+      apRecovery: 117,
+      startingAp: 115
+    },
+    'EX 2': {
+      strength: 11,
+      technic: 9,
+      intelligence: 5,
+      vitality: 9,
+      agility: 16,
+      maxHp: 512,
+      meleeAtk: 153,
+      rangedAtk: 128,
+      magicAtk: 64,
+      evade: 204,
+      apRecovery: 120,
+      startingAp: 118
+    },
+    'EX 3': {
+      strength: 11,
+      technic: 10,
+      intelligence: 5,
+      vitality: 9,
+      agility: 16,
+      maxHp: 512,
+      meleeAtk: 153,
+      rangedAtk: 140,
+      magicAtk: 64,
+      evade: 204,
+      apRecovery: 120,
+      startingAp: 118
+    },
+    'EX 4': {
+      strength: 11,
+      technic: 10,
+      intelligence: 5,
+      vitality: 9,
+      agility: 17,
+      maxHp: 512,
+      meleeAtk: 153,
+      rangedAtk: 140,
+      magicAtk: 64,
+      evade: 217,
+      apRecovery: 122,
+      startingAp: 120
+    },
+    'EX 5': {
+      strength: 11,
+      technic: 10,
+      intelligence: 5,
+      vitality: 10,
+      agility: 17,
+      maxHp: 576,
+      meleeAtk: 153,
+      rangedAtk: 140,
+      magicAtk: 64,
+      evade: 217,
+      apRecovery: 122,
+      startingAp: 120
+    },
+    'EX 6': {
+      strength: 11,
+      technic: 11,
+      intelligence: 5,
+      vitality: 10,
+      agility: 17,
+      maxHp: 576,
+      meleeAtk: 153,
+      rangedAtk: 153,
+      magicAtk: 64,
+      evade: 217,
+      apRecovery: 122,
+      startingAp: 120
+    },
+  },
+  heroId: 21,
+
 };
 
 export const samarika = samarikaData;

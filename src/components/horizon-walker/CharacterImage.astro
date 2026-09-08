@@ -1,150 +1,94 @@
 ---
-import { Image } from 'astro:assets';
 
 // Import hero icon images from heroes folder (UI_Icon_Hero_*_N01.png format)
-import ArahaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Araha_N01.png';
-import BellaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Bella_N01.png';
-import BergaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Berga_N01.png';
-import CaniskImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Canisk_N01.png';
-import CoraImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Cora_N01.png';
-import DeliaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Delia_N01.png';
-import EfreetiImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Efreeti_N01.png';
-import EmiliaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Emilia_N01.png';
-import ErnesteImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Erneste_N01.png';
-import EveretteImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Everette_N01.png';
-import FammeneImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Fammene_N01.png';
-import GoliathImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Goliath_N01.png';
-import GriseldaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Griselda_N01.png';
-import GulamImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Gulam_N01.png';
-import GulsniImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Gulsni_N01.png';
-import HeadlessKnightImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_CutThroatKnight_N01.png';
-import InesImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Ines_N01.png';
-import JuhaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Juha_N01.png';
-import KalinaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Kalina_N01.png';
-import KalmaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Kalma_N01.png';
-import KaulImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Kaul_N01.png';
-import KilonImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Kilon_N01.png';
-import KimGaYoungImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_KimGayeong_N01.png';
-import KorabiImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Korabi_N01.png';
-import LeahImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Leah_N01.png';
-import LisandriaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Lisandria_N01.png';
-import LuiseImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Luise_N01.png';
-import MahariImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Mahari_N01.png';
-import MarhimImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Marhim_N01.png';
-import MatrothoImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Matrotho_N01.png';
-import MinEunSolImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_MinEunsol_N01.png';
-import NariImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Nari_N01.png';
-import NikaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Nika_N01.png';
-import NonohaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Nonoha_N01.png';
-import NymsetImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Nymset_N01.png';
-import OliviaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Olivia_N01.png';
-import OslaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Osla_N01.png';
-import PantheriImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Pantheri_N01.png';
-import PlatinaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Platina_N01.png';
-import RhasadinaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Rhasadina_N01.png';
-import SamarikaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Samarika_N01.png';
-import SoJooHeeImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_SoJoohee_N01.png';
-import TxManticoreImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_TX_Manticore_N01.png';
-import ValetaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Valeta_N01.png';
-import VlissingImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Vlissing_N01.png';
-import YeonChaeYoungImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_YeonChaeyoung_N01.png';
-import YeonwooImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Yeonwoo_N01.png';
-import YuiImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_MatsumotoYui_N01.png';
-import YvonnaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Yvonna_N01.png';
-import PalekarImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Palekar_N01.png';
-import EchidnaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Echidna_S01_NonAdult.png';
-import EugeniaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Monster_Enemy_Eugenia_N01.png';
-import MaximiliaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Maximilia_N01.png';
-import MarikaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Marika_N01.png';
 
 // Mercenary characters with different hero names
-import KoboldMercenaryImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_KoboldApprenticeWarrior_N01.png';
-import PuppyShooterImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_PuppyShooter_N01.png';
-import PuppyStepperImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_PuppyStepper_N01.png';
-import SplitTwigsPriestImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_PriestOfTheBranchMercenary_N01.png';
-import SwampElfVigilanteImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_SwampRangerMercenary_N01.png';
-import GrrikMercenaryImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_GreekMercenary_N01.png';
-import WizardLegionnaireImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_LaMorranFemaleLegionnaire_N01.png';
-import WarMercenaryImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_VisomancerMercenary_N01.png';
 
 // Re De Da = Hongpamang in hero names
-import ReDeDaImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Hongpamang_N01.png';
 
 // Torta Warrior = ApprenticeDoppelsoldnerMercenary in hero names
-import TortaWarriorImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_ApprenticeDoppelsoldnerMercenary_N01.png';
 
 // Imperial Shieldbearer = HuscarlMercenary in hero names
-import ImperialShieldbearerImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_HuscarlMercenary_N01.png';
 
 // Centralized character image mapping
 const characterImageMap = {
-  'Araha.jpg': ArahaImg,
-  'Bella.jpg': BellaImg,
-  'Berga.jpg': BergaImg,
-  'Canisk.jpg': CaniskImg,
-  'Cora.jpg': CoraImg,
-  'Delia.jpg': DeliaImg,
-  'Efreeti.jpg': EfreetiImg,
-  'Emilia.jpg': EmiliaImg,
-  'Erneste.jpg': ErnesteImg,
-  'Everette.jpg': EveretteImg,
-  'Fammene.jpg': FammeneImg,
-  'Goliath.jpg': GoliathImg,
-  'Griselda.jpg': GriseldaImg,
-  'Gulam.jpg': GulamImg,
-  'Gulsni.jpg': GulsniImg,
-  'Headless_Knight.jpg': HeadlessKnightImg,
-  'Ines.jpg': InesImg,
-  'Juha.jpg': JuhaImg,
-  'Kalina.jpg': KalinaImg,
-  'Kalma.jpg': KalmaImg,
-  'Kaul.jpg': KaulImg,
-  'Kilon.jpg': KilonImg,
-  'kim_Ga_young.jpg': KimGaYoungImg,
-  'Kim Ga-young.jpg': KimGaYoungImg,
-  'Korabi.jpg': KorabiImg,
-  'Leah.jpg': LeahImg,
-  'Lisandria.jpg': LisandriaImg,
-  'Luise.jpg': LuiseImg,
-  'Mahari.jpg': MahariImg,
-  'Marhim.jpg': MarhimImg,
-  'Matrotho.jpg': MatrothoImg,
-  'Min_Eun_sol.jpg': MinEunSolImg,
-  'Nari.jpg': NariImg,
-  'Nika.jpg': NikaImg,
-  'Nonoha.jpg': NonohaImg,
-  'Nymset.jpg': NymsetImg,
-  'Olivia.jpg': OliviaImg,
-  'Osla.jpg': OslaImg,
-  'Pantheri.jpg': PantheriImg,
-  'Platina.jpg': PlatinaImg,
-  'Re_De_Da.jpg': ReDeDaImg,
-  'Rhasadina.jpg': RhasadinaImg,
-  'Samarika.jpg': SamarikaImg,
-  'So_Joo_hee.jpg': SoJooHeeImg,
-  'TX_Manticore.jpg': TxManticoreImg,
-  'Valeta.jpg': ValetaImg,
-  'Vlissing.jpg': VlissingImg,
-  'Yeon_Chae-Young.jpg': YeonChaeYoungImg,
-  'Yeonwoo.jpg': YeonwooImg,
-  'Yui.jpg': YuiImg,
-  'Yvonna.jpg': YvonnaImg,
-  'Palekar.jpg': PalekarImg,
-  'Echidna.jpg': EchidnaImg,
-  'Eugenia.jpg': EugeniaImg,
-  'Maximilia.jpg': MaximiliaImg,
-  'Marika.jpg': MarikaImg,
+  'Araha.jpg': 'heroes/UI_Icon_Hero_Araha_N01.png',
+  'Bella.jpg': 'heroes/UI_Icon_Hero_Bella_N01.png',
+  'Berga.jpg': 'heroes/UI_Icon_Hero_Berga_N01.png',
+  'Canisk.jpg': 'heroes/UI_Icon_Hero_Canisk_N01.png',
+  'Cora.jpg': 'heroes/UI_Icon_Hero_Cora_N01.png',
+  'Delia.jpg': 'heroes/UI_Icon_Hero_Delia_N01.png',
+  'Efreeti.jpg': 'heroes/UI_Icon_Hero_Efreeti_N01.png',
+  'Emilia.jpg': 'heroes/UI_Icon_Hero_Emilia_N01.png',
+  'Erneste.jpg': 'heroes/UI_Icon_Hero_Erneste_N01.png',
+  'Everette.jpg': 'heroes/UI_Icon_Hero_Everette_N01.png',
+  'Fammene.jpg': 'heroes/UI_Icon_Hero_Fammene_N01.png',
+  'Goliath.jpg': 'heroes/UI_Icon_Hero_Goliath_N01.png',
+  'Griselda.jpg': 'heroes/UI_Icon_Hero_Griselda_N01.png',
+  'Gulam.jpg': 'heroes/UI_Icon_Hero_Gulam_N01.png',
+  'Gulsni.jpg': 'heroes/UI_Icon_Hero_Gulsni_N01.png',
+  'Headless_Knight.jpg': 'heroes/UI_Icon_Hero_CutThroatKnight_N01.png',
+  'Ines.jpg': 'heroes/UI_Icon_Hero_Ines_N01.png',
+  'Juha.jpg': 'heroes/UI_Icon_Hero_Juha_N01.png',
+  'Kalina.jpg': 'heroes/UI_Icon_Hero_Kalina_N01.png',
+  'Kalma.jpg': 'heroes/UI_Icon_Hero_Kalma_N01.png',
+  'Kaul.jpg': 'heroes/UI_Icon_Hero_Kaul_N01.png',
+  'Kilon.jpg': 'heroes/UI_Icon_Hero_Kilon_N01.png',
+  'kim_Ga_young.jpg': 'heroes/UI_Icon_Hero_KimGayeong_N01.png',
+  'Kim Ga-young.jpg': 'heroes/UI_Icon_Hero_KimGayeong_N01.png',
+  'Korabi.jpg': 'heroes/UI_Icon_Hero_Korabi_N01.png',
+  'Leah.jpg': 'heroes/UI_Icon_Hero_Leah_N01.png',
+  'Lisandria.jpg': 'heroes/UI_Icon_Hero_Lisandria_N01.png',
+  'Luise.jpg': 'heroes/UI_Icon_Hero_Luise_N01.png',
+  'Mahari.jpg': 'heroes/UI_Icon_Hero_Mahari_N01.png',
+  'Marhim.jpg': 'heroes/UI_Icon_Hero_Marhim_N01.png',
+  'Matrotho.jpg': 'heroes/UI_Icon_Hero_Matrotho_N01.png',
+  'Min_Eun_sol.jpg': 'heroes/UI_Icon_Hero_MinEunsol_N01.png',
+  'Nari.jpg': 'heroes/UI_Icon_Hero_Nari_N01.png',
+  'Nika.jpg': 'heroes/UI_Icon_Hero_Nika_N01.png',
+  'Nonoha.jpg': 'heroes/UI_Icon_Hero_Nonoha_N01.png',
+  'Nymset.jpg': 'heroes/UI_Icon_Hero_Nymset_N01.png',
+  'Olivia.jpg': 'heroes/UI_Icon_Hero_Olivia_N01.png',
+  'Osla.jpg': 'heroes/UI_Icon_Hero_Osla_N01.png',
+  'Pantheri.jpg': 'heroes/UI_Icon_Hero_Pantheri_N01.png',
+  'Platina.jpg': 'heroes/UI_Icon_Hero_Platina_N01.png',
+  'Re_De_Da.jpg': 'heroes/UI_Icon_Hero_Hongpamang_N01.png',
+  'Rhasadina.jpg': 'heroes/UI_Icon_Hero_Rhasadina_N01.png',
+  'Samarika.jpg': 'heroes/UI_Icon_Hero_Samarika_N01.png',
+  'So_Joo_hee.jpg': 'heroes/UI_Icon_Hero_SoJoohee_N01.png',
+  'TX_Manticore.jpg': 'heroes/UI_Icon_Hero_TX_Manticore_N01.png',
+  'Valeta.jpg': 'heroes/UI_Icon_Hero_Valeta_N01.png',
+  'Vlissing.jpg': 'heroes/UI_Icon_Hero_Vlissing_N01.png',
+  'Yeon_Chae-Young.jpg': 'heroes/UI_Icon_Hero_YeonChaeyoung_N01.png',
+  'Yeonwoo.jpg': 'heroes/UI_Icon_Hero_Yeonwoo_N01.png',
+  'Yui.jpg': 'heroes/UI_Icon_Hero_MatsumotoYui_N01.png',
+  'Yvonna.jpg': 'heroes/UI_Icon_Hero_Yvonna_N01.png',
+  'Palekar.jpg': 'heroes/UI_Icon_Hero_Palekar_N01.png',
+  'Echidna.jpg': 'heroes/UI_Icon_Hero_Echidna_S01_NonAdult.png',
+  'Eugenia.jpg': 'heroes/UI_Icon_Monster_Enemy_Eugenia_N01.png',
+  'Maximilia.jpg': 'heroes/UI_Icon_Hero_Maximilia_N01.png',
+  'Marika.jpg': 'heroes/UI_Icon_Hero_Marika_N01.png',
+  'Mira.jpg': 'heroes/UI_Icon_Hero_Mira_N01.png',
+  'Mirana.jpg': 'heroes/UI_Icon_Hero_Mirana_N01.png',
+  'Ahram.jpg': 'heroes/UI_Icon_Hero_Ahram_N01.png',
+  'Juza.jpg': 'heroes/UI_Icon_Hero_Juza_N01.png',
+  'Kotoha.jpg': 'heroes/UI_Icon_Hero_ShiraishiKotoha_N01.png',
+  'Garud.jpg': 'heroes/UI_Icon_Hero_Garud_N01.png',
+  'Mu_Ying_ying.jpg': 'heroes/UI_Icon_Hero_MuYingying_N01.png',
+  'Dorothea.jpg': 'heroes/UI_Icon_Hero_Dorothea_N01.png',
+  'Clara.jpg': 'heroes/UI_Icon_Hero_Clara_N01.png',
+  'Charlotte.jpg': 'heroes/UI_Icon_Hero_Charlotte_N01.png',
   // Mercenary characters
-  'Koblod_Mercenary.jpg': KoboldMercenaryImg,
-  'Puppy_Shooter.jpg': PuppyShooterImg,
-  'Puppy_Stepper.jpg': PuppyStepperImg,
-  'Split_Twigs_Priest.jpg': SplitTwigsPriestImg,
-  'Swamp_Elf_Vigilante_member.jpg': SwampElfVigilanteImg,
-  'Grrik_Mercenary.jpg': GrrikMercenaryImg,
-  'Wizard_Legionnaire.jpg': WizardLegionnaireImg,
-  'War_Mercenary.jpg': WarMercenaryImg,
-  'Imperial_Shieldbearer_Mercenary.jpg': ImperialShieldbearerImg,
-  'Torta_warrior.jpg': TortaWarriorImg,
+  'Koblod_Mercenary.jpg': 'heroes/UI_Icon_Hero_KoboldApprenticeWarrior_N01.png',
+  'Puppy_Shooter.jpg': 'heroes/UI_Icon_Hero_PuppyShooter_N01.png',
+  'Puppy_Stepper.jpg': 'heroes/UI_Icon_Hero_PuppyStepper_N01.png',
+  'Split_Twigs_Priest.jpg': 'heroes/UI_Icon_Hero_PriestOfTheBranchMercenary_N01.png',
+  'Swamp_Elf_Vigilante_member.jpg': 'heroes/UI_Icon_Hero_SwampRangerMercenary_N01.png',
+  'Grrik_Mercenary.jpg': 'heroes/UI_Icon_Hero_GreekMercenary_N01.png',
+  'Wizard_Legionnaire.jpg': 'heroes/UI_Icon_Hero_LaMorranFemaleLegionnaire_N01.png',
+  'War_Mercenary.jpg': 'heroes/UI_Icon_Hero_VisomancerMercenary_N01.png',
+  'Imperial_Shieldbearer_Mercenary.jpg': 'heroes/UI_Icon_Hero_HuscarlMercenary_N01.png',
+  'Torta_warrior.jpg': 'heroes/UI_Icon_Hero_ApprenticeDoppelsoldnerMercenary_N01.png',
 };
 
 export interface Props {
@@ -176,15 +120,15 @@ if (!imageKey.includes('.')) {
   imageKey = `${imageKey}.jpg`;
 }
 const imageSrc = characterImageMap[imageKey];
+import { r2Url } from '../../data/r2-config.js';
 ---
 
-<Image
-  src={imageSrc}
+<img
+  src={r2Url('horizon-walker', imageSrc)}
+  onerror={`this.onerror=null;this.src='data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"><rect width="100%" height="100%" fill="#2a2a2a"/><text x="50%" y="50%" fill="#8a8a8a" font-size="10" text-anchor="middle" dominant-baseline="middle">No Image</text></svg>')`}
   alt={alt}
   width={width}
   height={height}
   class={className}
   loading={loading}
-  format={format}
-  quality={quality}
 />

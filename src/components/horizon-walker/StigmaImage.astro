@@ -1,82 +1,52 @@
 ---
-import { Image } from 'astro:assets';
 
 // EX Stigma Images
-import JesterEXImg from '../../assets/images/games/horizon-walker/Stigma/JesterEX.jpg';
-import Reckoning_of_SinEXImg from '../../assets/images/games/horizon-walker/Stigma/Reckoning_of_SinEX.jpg';
-import JupiterEXImg from '../../assets/images/games/horizon-walker/Stigma/JupiterEX.jpg';
-import HarmonyEXImg from '../../assets/images/games/horizon-walker/Stigma/HarmonyEX.jpg';
-import Phantom_BanquetEXImg from '../../assets/images/games/horizon-walker/Stigma/Phantom_BanquetEX.jpg';
-import The_Brilliant_Touch_of_EarthEXImg from '../../assets/images/games/horizon-walker/Stigma/The_Brilliant_Touch_of_EarthEX.jpg';
-import The_Eternal_BattleEXImg from '../../assets/images/games/horizon-walker/Stigma/The_Eternal_BattleEX.jpg';
-import The_Knight_of_the_Seven_PetalsEXImg from '../../assets/images/games/horizon-walker/Stigma/The_Knight_of_the_Seven_PetalsEX.jpg';
-import The_Four_HorsemenEXImg from '../../assets/images/games/horizon-walker/Stigma/The_Four_HorsemenEX.jpg';
-import The_Wind_that_Wanders_the_WorldEXImg from '../../assets/images/games/horizon-walker/Stigma/The_Wind_that_Wanders_the_WorldEX.jpg';
-import The_Thousand_Mile_WeaveEXImg from '../../assets/images/games/horizon-walker/Stigma/The_Thousand_Mile_WeaveEX.jpg';
-import Dawns_GraceEXImg from '../../assets/images/games/horizon-walker/Stigma/Dawns_GraceEX.jpg';
 
 // SS Stigma Images
-import JesterSSImg from '../../assets/images/games/horizon-walker/Stigma/JesterSS.jpg';
-import Reckoning_of_SinSSImg from '../../assets/images/games/horizon-walker/Stigma/Reckoning_of_SinSS.jpg';
-import JupiterSSImg from '../../assets/images/games/horizon-walker/Stigma/JupiterSS.jpg';
-import HarmonySSImg from '../../assets/images/games/horizon-walker/Stigma/HarmonySS.jpg';
-import The_Ship_of_TheseusSSImg from '../../assets/images/games/horizon-walker/Stigma/The_Ship_of_TheseusSS.jpg';
-import The_Noble_s_TacticsSSImg from "../../assets/images/games/horizon-walker/Stigma/The_Noble's_TacticsSS.jpg";
-import The_BlackSmith_BlessingSSImg from '../../assets/images/games/horizon-walker/Stigma/The_BlackSmith_BlessingSS.jpg';
-import The_Record_of_OrphanSSImg from '../../assets/images/games/horizon-walker/Stigma/The_Record_of_OrphanSS.jpg';
-import The_Irreversible_Box_of_SecretsSSImg from '../../assets/images/games/horizon-walker/Stigma/The_Irreversible_Box_of_SecretsSS.jpg';
-import Thorned_HeartSSImg from '../../assets/images/games/horizon-walker/Stigma/Thorned_HeartSS.jpg';
 
 // S Stigma Images
-import JesterSImg from '../../assets/images/games/horizon-walker/Stigma/JesterS.jpg';
-import BeastSImg from '../../assets/images/games/horizon-walker/Stigma/BeastS.jpg';
-import TitanSImg from '../../assets/images/games/horizon-walker/Stigma/TitanS.jpg';
 
 // A Stigma Images
-import MageAImg from '../../assets/images/games/horizon-walker/Stigma/MageA.jpg';
-import MarksmanAImg from '../../assets/images/games/horizon-walker/Stigma/MarksmanA.jpg';
-import FighterAImg from '../../assets/images/games/horizon-walker/Stigma/FighterA.jpg';
 
 // Default fallback image
-import defaultStigmaImg from '../../assets/images/games/horizon-walker/Stigma/JesterEX.jpg';
 
 // Centralized stigma image mapping
 const stigmaImageMap = {
   // EX Stigmas
-  'JesterEX.jpg': JesterEXImg,
-  'Reckoning_of_SinEX.jpg': Reckoning_of_SinEXImg,
-  'JupiterEX.jpg': JupiterEXImg,
-  'HarmonyEX.jpg': HarmonyEXImg,
-  'Phantom_BanquetEX.jpg': Phantom_BanquetEXImg,
-  'The_Brilliant_Touch_of_EarthEX.jpg': The_Brilliant_Touch_of_EarthEXImg,
-  'The_Eternal_BattleEX.jpg': The_Eternal_BattleEXImg,
-  'The_Knight_of_the_Seven_PetalsEX.jpg': The_Knight_of_the_Seven_PetalsEXImg,
-  'The_Four_HorsemenEX.jpg': The_Four_HorsemenEXImg,
-  'The_Wind_that_Wanders_the_WorldEX.jpg': The_Wind_that_Wanders_the_WorldEXImg,
-  'The_Thousand_Mile_WeaveEX.jpg': The_Thousand_Mile_WeaveEXImg,
-  'Dawns_GraceEX.jpg': Dawns_GraceEXImg,
+  'JesterEX.jpg': 'Stigma/JesterEX.jpg',
+  'Reckoning_of_SinEX.jpg': 'Stigma/Reckoning_of_SinEX.jpg',
+  'JupiterEX.jpg': 'Stigma/JupiterEX.jpg',
+  'HarmonyEX.jpg': 'Stigma/HarmonyEX.jpg',
+  'Phantom_BanquetEX.jpg': 'Stigma/Phantom_BanquetEX.jpg',
+  'The_Brilliant_Touch_of_EarthEX.jpg': 'Stigma/The_Brilliant_Touch_of_EarthEX.jpg',
+  'The_Eternal_BattleEX.jpg': 'Stigma/The_Eternal_BattleEX.jpg',
+  'The_Knight_of_the_Seven_PetalsEX.jpg': 'Stigma/The_Knight_of_the_Seven_PetalsEX.jpg',
+  'The_Four_HorsemenEX.jpg': 'Stigma/The_Four_HorsemenEX.jpg',
+  'The_Wind_that_Wanders_the_WorldEX.jpg': 'Stigma/The_Wind_that_Wanders_the_WorldEX.jpg',
+  'The_Thousand_Mile_WeaveEX.jpg': 'Stigma/The_Thousand_Mile_WeaveEX.jpg',
+  'Dawns_GraceEX.jpg': 'Stigma/Dawns_GraceEX.jpg',
 
   // SS Stigmas
-  'JesterSS.jpg': JesterSSImg,
-  'Reckoning_of_SinSS.jpg': Reckoning_of_SinSSImg,
-  'JupiterSS.jpg': JupiterSSImg,
-  'HarmonySS.jpg': HarmonySSImg,
-  'The_Ship_of_TheseusSS.jpg': The_Ship_of_TheseusSSImg,
-  "The_Noble's_TacticsSS.jpg": The_Noble_s_TacticsSSImg,
-  'The_BlackSmith_BlessingSS.jpg': The_BlackSmith_BlessingSSImg,
-  'The_Record_of_OrphanSS.jpg': The_Record_of_OrphanSSImg,
-  'The_Irreversible_Box_of_SecretsSS.jpg': The_Irreversible_Box_of_SecretsSSImg,
-  'Thorned_HeartSS.jpg': Thorned_HeartSSImg,
+  'JesterSS.jpg': 'Stigma/JesterSS.jpg',
+  'Reckoning_of_SinSS.jpg': 'Stigma/Reckoning_of_SinSS.jpg',
+  'JupiterSS.jpg': 'Stigma/JupiterSS.jpg',
+  'HarmonySS.jpg': 'Stigma/HarmonySS.jpg',
+  'The_Ship_of_TheseusSS.jpg': 'Stigma/The_Ship_of_TheseusSS.jpg',
+  "The_Noble's_TacticsSS.jpg": "Stigma/The_Noble's_TacticsSS.jpg",
+  'The_BlackSmith_BlessingSS.jpg': 'Stigma/The_BlackSmith_BlessingSS.jpg',
+  'The_Record_of_OrphanSS.jpg': 'Stigma/The_Record_of_OrphanSS.jpg',
+  'The_Irreversible_Box_of_SecretsSS.jpg': 'Stigma/The_Irreversible_Box_of_SecretsSS.jpg',
+  'Thorned_HeartSS.jpg': 'Stigma/Thorned_HeartSS.jpg',
 
   // S Stigmas
-  'JesterS.jpg': JesterSImg,
-  'BeastS.jpg': BeastSImg,
-  'TitanS.jpg': TitanSImg,
+  'JesterS.jpg': 'Stigma/JesterS.jpg',
+  'BeastS.jpg': 'Stigma/BeastS.jpg',
+  'TitanS.jpg': 'Stigma/TitanS.jpg',
 
   // A Stigmas
-  'MageA.jpg': MageAImg,
-  'MarksmanA.jpg': MarksmanAImg,
-  'FighterA.jpg': FighterAImg,
+  'MageA.jpg': 'Stigma/MageA.jpg',
+  'MarksmanA.jpg': 'Stigma/MarksmanA.jpg',
+  'FighterA.jpg': 'Stigma/FighterA.jpg',
 };
 
 export interface Props {
@@ -180,18 +150,17 @@ if (!finalImageSrc) {
     finalImageSrc = stigmaImageMap[partialMatchKey];
   } else {
     // Use the default image as a last resort
-    finalImageSrc = defaultStigmaImg;
+    finalImageSrc = 'Stigma/JesterEX.jpg';
   }
 }
+import { r2Url } from '../../data/r2-config.js';
 ---
 
-<Image
-  src={finalImageSrc}
+<img
+  src={r2Url('horizon-walker', finalImageSrc)}
   alt={alt}
   width={width}
   height={height}
   class={className}
   loading={loading}
-  format={format}
-  quality={quality}
 />

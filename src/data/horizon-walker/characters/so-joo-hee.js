@@ -32,22 +32,22 @@ const rawSoJooHeeData = {
   // Character Stats (Level 60)
   stats: {
     // Basic Stats
-    strength: '7',
-    technic: '16',
-    intelligence: '9',
-    vitality: '13',
-    agility: '8',
+    strength: '11',
+    technic: '12',
+    intelligence: '13',
+    vitality: '11',
+    agility: '6',
 
     // Key Stats
-    meleeAtk: '76',
-    rangedAtk: '192',
-    magicAtk: '102',
-    maxHp: '576',
+    meleeAtk: '128',
+    rangedAtk: '140',
+    magicAtk: '153',
+    maxHp: '448',
     spd: '88',
-    startingAp: '114',
-    apRecovery: '101',
+    startingAp: '109',
+    apRecovery: '96',
     accuracy: '97',
-    evade: '85',
+    evade: '60',
     critRate: '10',
     critDmg: '150',
 
@@ -109,7 +109,7 @@ const rawSoJooHeeData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the chosen Human.',
+      description: 'Interested in the chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
@@ -185,29 +185,143 @@ const rawSoJooHeeData = {
 
   // Weapon
   weapon: {
-    name: 'EX Dual Pistols - Fleure de Vanite 92',
-    image: 'So_Joo_hee_WP.jpg',
+    name: "Fleure de Vanite 92",
+    flavor: "Within its lavish exterior lies an unidentified curse, embodied in the dual firearm known as 'Fleure de Vanite'. This special weapon features a base made of precious metals and a slide engraved with intricate symbols that seal the curse. These symbols are part of the Bureau of Rift Management's attempts to interpret magic through the lens of science, with various devices added in the laboratory to contain the curse. As a result, the original form of the firearm has become unrecognizable, yet its cursed properties remain exceptional. Originally intended to depart from the evidence storage and pass through the Bureau's laboratory to be displayed in a museum, it is said that the exquisite design captivated the attention of a section chief from the Intelligence Division, leading to the weapon being taken into his possession.",
+    type: "Dual Pistols",
     rarity: 'EX',
-    type: 'Dual Pistols',
+    image: "Weapon_FullIMG_Fleur_De_Vanite92",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponRangedAtk: '77.0',
-      spdBonus: '+49.0%',
+      "Ranged ATK (weapon)": "77",
+      "Movement (%)": "+49%",
     },
     uniqueSkills: {
-      traceOfWeakness: {
-        name: 'Trace of Weakness',
+      unique: {
+        name: "Trace of Vanity",
         type: 'Unique',
-        description:
-          'On Weakness Attack, grants one stack of [Mark of Weakness] that lasts for 2 Rounds. Additionally, on successful attack, grants the target an additional stack of [Mark of Weakness] and increases ally ACC by 40%. [Mark of Weakness]: Reduces all DEF of the target by 320 and further reduces Pierce DEF by an additional 280. Can stack up to 2 times.',
+        description: "On Weakness Attack, grants one stack of [Mark of Vanity] that lasts for 2 Rounds. Additionally, on successful attack, grants the target an additional stack of [Mark of Vanity] and increases ally ACC by {20,25,30,35,40}%. [Mark of Vanity]: Reduces all DEF of the target by {160,200,240,280,320} and further reduces Pierce DEF by an additional {140,175,210,245,280}. Can stack up to 2 times.",
       },
-      magnifique: {
-        name: 'Character Signature: Magnifique',
+      signature: {
+        name: "So Joo-hee Signature: Magnifique",
         type: 'Signature',
-        description:
-          "[Mark of Weakness] effect's DEF reduction is applied at 2 times the usual value. At the start of the next turn after ending your own turn, if there is an ally within a 3m range who is not in a Stealth or Banish state, gain the [Conceal: Stealth] effect.",
+        description: "[Mark of Vanity] effect's DEF reduction is applied at 2 times the usual value. At the start of the next turn after ending your own turn, if there is an ally within a 3m range who is not in a Stealth or Banish state, gain the [Conceal: Stealth] effect.",
       },
     },
+    levelStats: {
+      "Ranged ATK (weapon)": [12.1, 77.0],
+      "Movement (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "...onally, on successful attack, grants the target an additional stack of [Mark of Vanity] and increases ally ACC", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+        { name: "[Mark of Vanity]: Reduces all DEF of the target", valuesByLevel: "160 / 200 / 240 / 280 / 320" },
+        { name: "And further reduces Pierce DEF by an additional", valuesByLevel: "140 / 175 / 210 / 245 / 280" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 9,
+      technic: 12,
+      intelligence: 11,
+      vitality: 9,
+      agility: 6,
+      maxHp: 320,
+      meleeAtk: 102,
+      rangedAtk: 140,
+      magicAtk: 128,
+      evade: 60,
+      apRecovery: 96,
+      startingAp: 109
+    },
+    'EX 1': {
+      strength: 9,
+      technic: 12,
+      intelligence: 11,
+      vitality: 10,
+      agility: 6,
+      maxHp: 384,
+      meleeAtk: 102,
+      rangedAtk: 140,
+      magicAtk: 128,
+      evade: 60,
+      apRecovery: 96,
+      startingAp: 109
+    },
+    'EX 2': {
+      strength: 9,
+      technic: 12,
+      intelligence: 12,
+      vitality: 10,
+      agility: 6,
+      maxHp: 384,
+      meleeAtk: 102,
+      rangedAtk: 140,
+      magicAtk: 140,
+      evade: 60,
+      apRecovery: 96,
+      startingAp: 109
+    },
+    'EX 3': {
+      strength: 10,
+      technic: 12,
+      intelligence: 12,
+      vitality: 10,
+      agility: 6,
+      maxHp: 384,
+      meleeAtk: 115,
+      rangedAtk: 140,
+      magicAtk: 140,
+      evade: 60,
+      apRecovery: 96,
+      startingAp: 109
+    },
+    'EX 4': {
+      strength: 10,
+      technic: 12,
+      intelligence: 13,
+      vitality: 10,
+      agility: 6,
+      maxHp: 384,
+      meleeAtk: 115,
+      rangedAtk: 140,
+      magicAtk: 153,
+      evade: 60,
+      apRecovery: 96,
+      startingAp: 109
+    },
+    'EX 5': {
+      strength: 11,
+      technic: 12,
+      intelligence: 13,
+      vitality: 10,
+      agility: 6,
+      maxHp: 384,
+      meleeAtk: 128,
+      rangedAtk: 140,
+      magicAtk: 153,
+      evade: 60,
+      apRecovery: 96,
+      startingAp: 109
+    },
+    'EX 6': {
+      strength: 11,
+      technic: 12,
+      intelligence: 13,
+      vitality: 11,
+      agility: 6,
+      maxHp: 448,
+      meleeAtk: 128,
+      rangedAtk: 140,
+      magicAtk: 153,
+      evade: 60,
+      apRecovery: 96,
+      startingAp: 109
+    },
+  },
+  heroId: 29,
+
 };
 
 // Validate and sanitize the character data

@@ -50,7 +50,7 @@ const rawYvonnaData = {
     apRecovery: '109',
     accuracy: '102',
     evade: '140',
-    critRate: '10',
+    critRate: '8',
     critDmg: '150',
 
     // Attribute Boost
@@ -111,7 +111,7 @@ const rawYvonnaData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Special trait with no listed characteristics.',
+      description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
     },
   },
 
@@ -203,29 +203,142 @@ const rawYvonnaData = {
 
   // Weapon
   weapon: {
-    image: 'Yvonna_WP.jpg',
-    name: 'EX Staff - Skadia',
-    type: 'Staff',
+    name: "Skadia",
+    flavor: "Skadia is a staff modeled after the pure and beautiful forms of ice crystals, once a legendary weapon that shone in the hands of great frost sorcerers. Each blade tip is imbued with a cool and powerful magic, said to possess the miraculous ability to freeze whatever the wielder's gaze touches. However, despite the overwhelming power demonstrated by the frost sorcerers on the battlefield, it is said that Skadia faded into the shadows of history, never achieving the glory of victory solely due to its association with frost magic.",
+    type: "Staff",
     rarity: 'EX',
+    image: "Weapon_FullIMG_Skathia",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMagicAtk: '77.0',
-      coldBoost: '49.0',
+      "Magic ATK (weapon)": "77",
+      "Cold Boost (%)": "+49%",
     },
     uniqueSkills: {
-      frozenTears: {
-        name: 'Frozen Tears',
+      unique: {
+        name: "Frozen Tears",
         type: 'Unique',
-        description:
-          'Increases Cold Boost by 40%. Each time an ally attacks during battle, increases own magic ATK by 32% for 1 round. Can stack up to 5 times.',
+        description: "Increases Cold Boost by {20,25,30,35,40}%. Each time an ally attacks during battle, increases own magic ATK by {16,20,24,28,32}% for 1 round. Can stack up to 5 times.",
       },
-      frozenSmile: {
-        name: 'Yvonna Signature: Frozen Smile',
+      signature: {
+        name: "Yvonna Signature: Frozen Smile",
         type: 'Signature',
-        description:
-          'When successfully attacking with an action other than a response, gains an additional [Chill] effect at the end of the turn.',
+        description: "When successfully attacking with an action other than a response, gains an additional [Chill] effect at the end of the turn.",
       },
     },
+    levelStats: {
+      "Magic ATK (weapon)": [12.1, 77.0],
+      "Cold Boost (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Increases Cold Boost", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+        { name: "Each time an ally attacks during battle, increases own magic ATK", valuesByLevel: "16% / 20% / 24% / 28% / 32%" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 7,
+      technic: 8,
+      intelligence: 13,
+      vitality: 10,
+      agility: 10,
+      maxHp: 640,
+      meleeAtk: 102,
+      rangedAtk: 115,
+      magicAtk: 189,
+      evade: 128,
+      apRecovery: 107,
+      startingAp: 138
+    },
+    'EX 1': {
+      strength: 7,
+      technic: 8,
+      intelligence: 15,
+      vitality: 10,
+      agility: 10,
+      maxHp: 640,
+      meleeAtk: 102,
+      rangedAtk: 115,
+      magicAtk: 217,
+      evade: 128,
+      apRecovery: 107,
+      startingAp: 138
+    },
+    'EX 2': {
+      strength: 7,
+      technic: 8,
+      intelligence: 15,
+      vitality: 11,
+      agility: 10,
+      maxHp: 704,
+      meleeAtk: 102,
+      rangedAtk: 115,
+      magicAtk: 217,
+      evade: 128,
+      apRecovery: 107,
+      startingAp: 138
+    },
+    'EX 3': {
+      strength: 7,
+      technic: 8,
+      intelligence: 16,
+      vitality: 11,
+      agility: 10,
+      maxHp: 704,
+      meleeAtk: 102,
+      rangedAtk: 115,
+      magicAtk: 230,
+      evade: 128,
+      apRecovery: 107,
+      startingAp: 138
+    },
+    'EX 4': {
+      strength: 7,
+      technic: 8,
+      intelligence: 16,
+      vitality: 11,
+      agility: 11,
+      maxHp: 704,
+      meleeAtk: 102,
+      rangedAtk: 115,
+      magicAtk: 230,
+      evade: 140,
+      apRecovery: 109,
+      startingAp: 140
+    },
+    'EX 5': {
+      strength: 7,
+      technic: 8,
+      intelligence: 16,
+      vitality: 12,
+      agility: 11,
+      maxHp: 768,
+      meleeAtk: 102,
+      rangedAtk: 115,
+      magicAtk: 230,
+      evade: 140,
+      apRecovery: 109,
+      startingAp: 140
+    },
+    'EX 6': {
+      strength: 7,
+      technic: 8,
+      intelligence: 18,
+      vitality: 12,
+      agility: 11,
+      maxHp: 768,
+      meleeAtk: 102,
+      rangedAtk: 115,
+      magicAtk: 257,
+      evade: 140,
+      apRecovery: 109,
+      startingAp: 140
+    },
+  },
+  heroId: 49,
+
 };
 
 // Validate and sanitize the character data

@@ -35,22 +35,22 @@ const rawPlatinaData = {
   // Character Stats (Level 60)
   stats: {
     // Basic Stats
-    strength: '14',
+    strength: '10',
     technic: '9',
-    intelligence: '9',
-    vitality: '28',
-    agility: '13',
+    intelligence: '19',
+    vitality: '20',
+    agility: '19',
 
     // Key Stats
-    meleeAtk: '195',
+    meleeAtk: '143',
     rangedAtk: '130',
-    magicAtk: '130',
-    maxHp: '1893',
+    magicAtk: '261',
+    maxHp: '1370',
     spd: '92',
-    startingAp: '128',
-    apRecovery: '112',
+    startingAp: '143',
+    apRecovery: '127',
     accuracy: '102',
-    evade: '166',
+    evade: '243',
     critRate: '10',
     critDmg: '150',
 
@@ -82,27 +82,39 @@ const rawPlatinaData = {
 
   // Weapon Information
   weapon: {
-    name: 'The First Heart',
-    type: 'EX Ancient Core',
+    name: "The First Heart",
+    flavor: "This magicore was handcrafted by the first Human God and gifted to his Vanguard. An embodiment of noble and pure protective intent, this magicore grants an unwavering will and corresponding mana to the resonating Guardian.",
+    type: "Ancient Core",
     rarity: 'EX',
-    image: 'Platina_WP.jpg',
+    image: "Weapon_FullIMG_FirstHeart",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: '77.0',
-      maxHpBonus: '+49.0%',
+      "Melee ATK (weapon)": "77",
+      "Max HP (%)": "+49%",
     },
     uniqueSkills: {
-      symbolOfImmortality: {
-        name: 'Symbol of Immortality',
+      unique: {
+        name: "Symbol of Immortality",
         type: 'Unique',
-        description:
-          'Each time attacked by an enemy, increases AP Recovery by 24%, and increases Slash DEF, Crush DEF, and Pierce DEF by 480 until the start of the next round. Can stack up to 5 times.',
+        description: "Each time attacked by an enemy, increases AP Recovery by {12,15,18,21,24}%, and increases Slash DEF, Crush DEF, and Pierce DEF by {240,300,360,420,480} until the start of the next round. Can stack up to 5 times.",
       },
-      thePlatinumKnight: {
-        name: 'The Platinum Knight',
-        type: 'Platina Signature',
-        description: 'Upon starting the battle, gains the [Gravity Focus] effect.',
-        note: 'This signature skill only activates when Platina equips this weapon.',
+      signature: {
+        name: "Platina Signature: The Platinum Knight",
+        type: 'Signature',
+        description: "Upon starting the battle, gains the [Gravity Focus] effect.",
+        note: "This signature skill only activates when Platina equips this weapon.",
       },
+    },
+    levelStats: {
+      "Melee ATK (weapon)": [12.1, 77.0],
+      "Max HP (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Each time attacked by an enemy, increases AP Recovery", valuesByLevel: "12% / 15% / 18% / 21% / 24%" },
+        { name: "%, and increases Slash DEF, Crush DEF, and Pierce DEF", valuesByLevel: "240 / 300 / 360 / 420 / 480" },
+      ],
     },
   },
 
@@ -197,6 +209,108 @@ const rawPlatinaData = {
         'If not in the [Shield Deployment] state, gain the [Platinum Heart] effect at the start of the turn. When attacked while in [Shield Deployment], gain the [Platinum Aura] effect. [Platinum Heart]: Increases melee attack power by 57% until the end of the turn. [Platinum Aura]: Reduces AP consumption for the Song of the Shield skill by 28.5%. Stacks up to 8 times. This effect is removed when [Shield Deployment] state ends.',
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 10,
+      technic: 9,
+      intelligence: 12,
+      vitality: 20,
+      agility: 14,
+      maxHp: 1370,
+      meleeAtk: 143,
+      rangedAtk: 130,
+      magicAtk: 169,
+      evade: 179,
+      apRecovery: 115,
+      startingAp: 131
+    },
+    'EX 1': {
+      strength: 10,
+      technic: 9,
+      intelligence: 14,
+      vitality: 20,
+      agility: 14,
+      maxHp: 1370,
+      meleeAtk: 143,
+      rangedAtk: 130,
+      magicAtk: 195,
+      evade: 179,
+      apRecovery: 115,
+      startingAp: 131
+    },
+    'EX 2': {
+      strength: 10,
+      technic: 9,
+      intelligence: 15,
+      vitality: 20,
+      agility: 14,
+      maxHp: 1370,
+      meleeAtk: 143,
+      rangedAtk: 130,
+      magicAtk: 208,
+      evade: 179,
+      apRecovery: 115,
+      startingAp: 131
+    },
+    'EX 3': {
+      strength: 10,
+      technic: 9,
+      intelligence: 17,
+      vitality: 20,
+      agility: 14,
+      maxHp: 1370,
+      meleeAtk: 143,
+      rangedAtk: 130,
+      magicAtk: 235,
+      evade: 179,
+      apRecovery: 115,
+      startingAp: 131
+    },
+    'EX 4': {
+      strength: 10,
+      technic: 9,
+      intelligence: 17,
+      vitality: 20,
+      agility: 16,
+      maxHp: 1370,
+      meleeAtk: 143,
+      rangedAtk: 130,
+      magicAtk: 235,
+      evade: 204,
+      apRecovery: 120,
+      startingAp: 136
+    },
+    'EX 5': {
+      strength: 10,
+      technic: 9,
+      intelligence: 17,
+      vitality: 20,
+      agility: 19,
+      maxHp: 1370,
+      meleeAtk: 143,
+      rangedAtk: 130,
+      magicAtk: 235,
+      evade: 243,
+      apRecovery: 127,
+      startingAp: 143
+    },
+    'EX 6': {
+      strength: 10,
+      technic: 9,
+      intelligence: 19,
+      vitality: 20,
+      agility: 19,
+      maxHp: 1370,
+      meleeAtk: 143,
+      rangedAtk: 130,
+      magicAtk: 261,
+      evade: 243,
+      apRecovery: 127,
+      startingAp: 143
+    },
+  },
+  heroId: 11,
+
 };
 
 // Validate and sanitize the character data

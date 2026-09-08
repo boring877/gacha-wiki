@@ -33,17 +33,17 @@ const rawLuiseData = {
   // Character Stats (Level 60)
   stats: {
     // Basic Stats
-    strength: '5',
+    strength: '7',
     technic: '10',
-    intelligence: '19',
-    vitality: '13',
+    intelligence: '13',
+    vitality: '15',
     agility: '11',
 
     // Key Stats
-    meleeAtk: '76',
+    meleeAtk: '102',
     rangedAtk: '140',
-    magicAtk: '306',
-    maxHp: '832',
+    magicAtk: '226',
+    maxHp: '960',
     spd: '61',
     startingAp: '120',
     apRecovery: '107',
@@ -110,33 +110,45 @@ const rawLuiseData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the Chosen Human.',
+      description: 'Interested in the Chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
   // Weapon Information
   weapon: {
-    name: 'EX Staff - Sol',
-    type: 'EX Staff',
+    name: "Sol",
+    flavor: "Infused with the raw power of the sun's most intense flames, the sacred staff Sol has been passed down through generations of the imperial family. Its tip houses a Sunstone, granting its wielder the ability to command fire at will. With every swing, Sol's flames consume its enemies in a relentless blaze - one said to burn until the day the sun itself fades.",
+    type: "Staff",
     rarity: 'EX',
-    image: 'Luise_WP.jpg',
+    image: "Weapon_FullIMG_Staff_ForLuise",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMagicAtk: '91.0',
-      heatBoost: '35.0',
+      "Magic ATK (weapon)": "91",
+      "Heat Boost (%)": "+35%",
     },
     uniqueSkills: {
-      inferno: {
-        name: 'Inferno',
+      unique: {
+        name: "Inferno",
         type: 'Unique',
-        description:
-          "Increases Critical Rate by 40% during combat. For every 1 point below 100 base Movement Speed, increases Critical Damage by 6%. At the start of any random turn, gains [Sunlit Ember]. [Sunlit Ember]: Increases Heat Boost by 32%, stacking up to 5 times. Expires at the end of the user's turn if any skill other than Standby is used.",
+        description: "Increases Critical Rate by {30,32.5,35,37.5,40}% during combat. For every 1 point below 100 base Movement Speed, increases Critical Damage by {1,2.25,3.5,4.75,6}%. At the start of any random turn, gains [Sunlit Ember]. -[Sunlit Ember]: Increases Heat Boost by {24,26,28,30,32}%, stacking up to 5 times. Expires at the end of the user's turn if any skill other than Standby is used.",
       },
-      flare: {
-        name: 'Luise Signature: Flare',
+      signature: {
+        name: "Luise Signature: Flare",
         type: 'Signature',
-        description:
-          "Reduces AP cost for Flame Arrow (-15), Fireball (-30), and Ascending Flame (-75). If attacking with any skill except 'Blaze of Ascension', its cooldown is reduced by 1 round. Additional damage from 'Fireflake Explosion' can land Critical Hits. If any skill other than Standby is used, [Fireflake Explosion] is triggered at the end of the turn.",
+        description: "During battle, AP cost of 'Flame Arrow', 'Fireball', and 'Blaze of Ascension' is reduced by 15, 30, and 75, respectively. When an attack succeeds using a skill other than 'Blaze of Ascension', the Cooldown of 'Blaze of Ascension' is reduced by 1 round. Additional damage from 'Fireflake Explosion' can critically strike, and after using a skill other than Standby during your turn, [Fireflake Explosion] activates, doubling its damage.",
       },
+    },
+    levelStats: {
+      "Magic ATK (weapon)": [14.3, 91.0],
+      "Heat Boost (%)": [5.5, 35.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Increases Critical Rate", valuesByLevel: "30% / 32.5% / 35% / 37.5% / 40%" },
+        { name: "For every 1 point below 100 base Movement Speed, increases Critical Damage", valuesByLevel: "1% / 2.25% / 3.5% / 4.75% / 6%" },
+        { name: "-[Sunlit Ember]: Increases Heat Boost", valuesByLevel: "24% / 26% / 28% / 30% / 32%" },
+      ],
     },
   },
 
@@ -210,6 +222,108 @@ const rawLuiseData = {
         'Commands surging flames to burn enemies in front. Deals Unblockable Heat DMG equal to 380% of magic ATK to all enemies within a 3m circular radius. During the attack, ACC temporarily increases by 300%, but weakness attacks are not possible.',
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 6,
+      technic: 10,
+      intelligence: 13,
+      vitality: 11,
+      agility: 10,
+      maxHp: 704,
+      meleeAtk: 89,
+      rangedAtk: 140,
+      magicAtk: 226,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 118
+    },
+    'EX 1': {
+      strength: 6,
+      technic: 10,
+      intelligence: 13,
+      vitality: 12,
+      agility: 10,
+      maxHp: 768,
+      meleeAtk: 89,
+      rangedAtk: 140,
+      magicAtk: 226,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 118
+    },
+    'EX 2': {
+      strength: 6,
+      technic: 10,
+      intelligence: 13,
+      vitality: 13,
+      agility: 10,
+      maxHp: 832,
+      meleeAtk: 89,
+      rangedAtk: 140,
+      magicAtk: 226,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 118
+    },
+    'EX 3': {
+      strength: 6,
+      technic: 10,
+      intelligence: 13,
+      vitality: 14,
+      agility: 10,
+      maxHp: 896,
+      meleeAtk: 89,
+      rangedAtk: 140,
+      magicAtk: 226,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 118
+    },
+    'EX 4': {
+      strength: 7,
+      technic: 10,
+      intelligence: 13,
+      vitality: 14,
+      agility: 10,
+      maxHp: 896,
+      meleeAtk: 102,
+      rangedAtk: 140,
+      magicAtk: 226,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 118
+    },
+    'EX 5': {
+      strength: 7,
+      technic: 10,
+      intelligence: 13,
+      vitality: 14,
+      agility: 11,
+      maxHp: 896,
+      meleeAtk: 102,
+      rangedAtk: 140,
+      magicAtk: 226,
+      evade: 140,
+      apRecovery: 107,
+      startingAp: 120
+    },
+    'EX 6': {
+      strength: 7,
+      technic: 10,
+      intelligence: 13,
+      vitality: 15,
+      agility: 11,
+      maxHp: 960,
+      meleeAtk: 102,
+      rangedAtk: 140,
+      magicAtk: 226,
+      evade: 140,
+      apRecovery: 107,
+      startingAp: 120
+    },
+  },
+  heroId: 19,
+
 };
 
 // Validate and sanitize the character data

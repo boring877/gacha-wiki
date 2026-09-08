@@ -33,22 +33,22 @@ const rawPantheriData = {
   // Character Stats (Level 60)
   stats: {
     // Basic Stats
-    strength: '12',
-    technic: '7',
-    intelligence: '6',
+    strength: '10',
+    technic: '9',
+    intelligence: '10',
     vitality: '9',
-    agility: '21',
+    agility: '17',
 
     // Key Stats
-    meleeAtk: '169',
-    rangedAtk: '104',
-    magicAtk: '91',
+    meleeAtk: '143',
+    rangedAtk: '130',
+    magicAtk: '143',
     maxHp: '587',
     spd: '117',
-    startingAp: '133',
-    apRecovery: '132',
+    startingAp: '123',
+    apRecovery: '122',
     accuracy: '102',
-    evade: '268',
+    evade: '217',
     critRate: '10',
     critDmg: '150',
 
@@ -110,33 +110,46 @@ const rawPantheriData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the Chosen Human.',
+      description: 'Interested in the Chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
   // Weapon Information
   weapon: {
-    name: 'EX One-handed sword - Tideblossom',
-    type: 'EX One-handed Sword',
+    name: "Tideblossom",
+    flavor: "A rapier of legendary craftsmanship, passed down from Althea - the famed swordswoman and mentor of Pantheri. Despite countless victories in chaotic skirmishes, its mirror-like blade remains impossibly sharp, gleaming as if untouched by battle. Unbeknownst to most, the blade is imbued with the blessing of the sea's guardian, growing keener with each clash. Its flowing, elegant form captures the rhythm of the waves itself, allowing a true wielder to unleash techniques that are both graceful and lethal.",
+    type: "One-handed sword",
     rarity: 'EX',
-    image: 'Pantheri_WP.jpg',
+    image: "Weapon_FullIMG_OneHandSword_ForPantheri",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: '77.0',
-      evadeBonus: '+98.0%',
+      "Melee ATK (weapon)": "77",
+      "Evade (%)": "+98%",
     },
     uniqueSkills: {
-      flowingArc: {
-        name: 'Flowing Arc',
+      unique: {
+        name: "Flowing Arc",
         type: 'Unique',
-        description:
-          "Increases movement speed during combat by 40%, and Aggro Adjustment by 18. When an ally successfully dodges, the wielder gains 1 stack of [Sword Wave], up to 6 stacks. At the start of each round, grants either [Deep Trench] or [High Crest] to all allies except the wielder for 1 round. All [Sword Wave] stacks are consumed. Effects granted by 'Unique: Flowing Arc' do not stack with effects of the same name. [Sword Wave]: Affects the strength of [Deep Trench] and [High Crest] based on the number of stacks consumed. [Deep Trench]: Increases CRIT Chance by 2% + 2% per [Sword Wave] stack consumed. Only applies if the unit's CRIT Chance is below 75%. [High Crest]: Increases CRIT DMG by 4% + 3% per [Sword Wave] stack consumed. Only applies if the unit's CRIT Chance is 75% or higher.",
+        description: "Increases movement speed during combat by {30,32.5,35,37.5,40}%, and Aggro Adjustment by {10,12,14,16,18}. When an ally successfully dodges, the wielder gains 1 stack of [Sword Wave], up to 6 stacks. At the start of each round, grants either [Deep Trench] or [High Crest] to all allies except the wielder for 1 round. All [Sword Wave] stacks are consumed. Effects granted by 'Unique: Flowing Arc' do not stack with effects of the same name. - [Sword Wave]: Affects the strength of [Deep Trench] and [High Crest] based on the number of stacks consumed. - [Deep Trench]: Increases CRIT Chance by 2% + {1,1.25,1.5,1.75,2}% per [Sword Wave] stack consumed. Only applies if the unit's CRIT Chance is below 75%. - [High Crest]: Increases CRIT DMG by 4% + {1.5,1.875,2.25,2.625,3}% per [Sword Wave] stack consumed. Only applies if the unit's CRIT Chance is 75% or higher.",
       },
-      tidalFlowerDance: {
-        name: 'Pantheri Signature: Tidal Flower Dance',
+      signature: {
+        name: "Pantheri Signature: Tidal Flower Dance",
         type: 'Signature',
-        description:
-          "Gain 1 stack of [Sword Wave] on each attack. When using a combat skill, restore HP equal to 8% of your Evasion stat for 1 round upon dodging. When using 'That One Strike', temporarily sets CRIT Chance to 100% and increases CRIT DMG by 30% of Evasion. If it hits a weak point, the cooldown is reduced by 1 round.",
+        description: "Gain 1 stack of [Sword Wave] on each attack. When using a combat skill, restore HP equal to 8% of your Evasion stat for 1 round upon dodging. When using 'That One Strike', temporarily sets CRIT Chance to 100% and increases CRIT DMG by 39% of Evasion. If it hits a weak point, the cooldown is reduced by 1 round.",
       },
+    },
+    levelStats: {
+      "Melee ATK (weapon)": [12.1, 77.0],
+      "Evade (%)": [15.4, 98.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Increases movement speed during combat", valuesByLevel: "30% / 32.5% / 35% / 37.5% / 40%" },
+        { name: "%, and Aggro Adjustment", valuesByLevel: "10 / 12 / 14 / 16 / 18" },
+        { name: "- [Deep Trench]: Increases CRIT Chance by 2% +", valuesByLevel: "1% / 1.25% / 1.5% / 1.75% / 2%" },
+        { name: "- [High Crest]: Increases CRIT DMG by 4% +", valuesByLevel: "1.5% / 1.88% / 2.25% / 2.62% / 3%" },
+      ],
     },
   },
 
@@ -206,6 +219,108 @@ const rawPantheriData = {
         'Delivers an unavoidable strike based on the mastery of the sword. Deals Pierce DMG equal to 475% of melee ATK to the enemy.',
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 10,
+      technic: 8,
+      intelligence: 7,
+      vitality: 8,
+      agility: 16,
+      maxHp: 522,
+      meleeAtk: 143,
+      rangedAtk: 117,
+      magicAtk: 104,
+      evade: 204,
+      apRecovery: 120,
+      startingAp: 121
+    },
+    'EX 1': {
+      strength: 10,
+      technic: 8,
+      intelligence: 8,
+      vitality: 8,
+      agility: 16,
+      maxHp: 522,
+      meleeAtk: 143,
+      rangedAtk: 117,
+      magicAtk: 117,
+      evade: 204,
+      apRecovery: 120,
+      startingAp: 121
+    },
+    'EX 2': {
+      strength: 10,
+      technic: 8,
+      intelligence: 9,
+      vitality: 8,
+      agility: 16,
+      maxHp: 522,
+      meleeAtk: 143,
+      rangedAtk: 117,
+      magicAtk: 130,
+      evade: 204,
+      apRecovery: 120,
+      startingAp: 121
+    },
+    'EX 3': {
+      strength: 10,
+      technic: 8,
+      intelligence: 9,
+      vitality: 8,
+      agility: 17,
+      maxHp: 522,
+      meleeAtk: 143,
+      rangedAtk: 117,
+      magicAtk: 130,
+      evade: 217,
+      apRecovery: 122,
+      startingAp: 123
+    },
+    'EX 4': {
+      strength: 10,
+      technic: 8,
+      intelligence: 9,
+      vitality: 9,
+      agility: 17,
+      maxHp: 587,
+      meleeAtk: 143,
+      rangedAtk: 117,
+      magicAtk: 130,
+      evade: 217,
+      apRecovery: 122,
+      startingAp: 123
+    },
+    'EX 5': {
+      strength: 10,
+      technic: 9,
+      intelligence: 9,
+      vitality: 9,
+      agility: 17,
+      maxHp: 587,
+      meleeAtk: 143,
+      rangedAtk: 130,
+      magicAtk: 130,
+      evade: 217,
+      apRecovery: 122,
+      startingAp: 123
+    },
+    'EX 6': {
+      strength: 10,
+      technic: 9,
+      intelligence: 10,
+      vitality: 9,
+      agility: 17,
+      maxHp: 587,
+      meleeAtk: 143,
+      rangedAtk: 130,
+      magicAtk: 143,
+      evade: 217,
+      apRecovery: 122,
+      startingAp: 123
+    },
+  },
+  heroId: 16,
+
 };
 
 // Validate and sanitize the character data

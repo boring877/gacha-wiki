@@ -24,22 +24,22 @@ const nariData = {
   // Character Stats (Level 60)
   stats: {
     // Basic Stats
-    strength: '7',
-    technic: '18',
+    strength: '11',
+    technic: '12',
     intelligence: '9',
-    vitality: '8',
-    agility: '13',
+    vitality: '12',
+    agility: '11',
 
     // Key Stats
-    meleeAtk: '89',
-    rangedAtk: '230',
+    meleeAtk: '140',
+    rangedAtk: '153',
     magicAtk: '115',
-    maxHp: '576',
+    maxHp: '832',
     spd: '84',
-    startingAp: '126',
-    apRecovery: '127',
+    startingAp: '121',
+    apRecovery: '122',
     accuracy: '107',
-    evade: '230',
+    evade: '204',
     critRate: '10',
     critDmg: '158',
 
@@ -168,35 +168,148 @@ const nariData = {
     },
     trait4: {
       name: 'Interested',
-      description: 'Interested in the chosen Human.',
+      description: 'Interested in the chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
   // Character Weapon
   weapon: {
-    name: 'EX Rifle - Zamiel',
-    image: 'Nari_WP.jpg',
+    name: "Zamiel",
+    flavor: "Zamiel amplifies its weapon's firepower using magical energy, imbued with the blessing of the Orkean Saints. This blessing grants significant boosts to an Orkean Marksman's abilities, making them far deadlier in battle. Zamiel's destructive power is so immense that its shots are often mistaken for magic.",
+    type: "Rifle",
     rarity: 'EX',
-    type: 'Rifle',
+    image: "Weapon_FullIMG_Rifle_ForNari",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponRangedAtk: '77',
-      rangedAtkBonus: '49',
+      "Ranged ATK (weapon)": "77",
+      "Ranged ATK (%)": "+49%",
     },
     uniqueSkills: {
-      skill1: {
-        name: 'Star Shooter',
+      unique: {
+        name: "Star Shooter",
         type: 'Unique',
-        description:
-          'During battle, Pierce Boost increases by 40%. At the start of your turn, Critical Rate increases by 40%. This effect is removed at the end of the turn or upon moving.',
+        description: "During battle, Pierce Boost increases by {20,25,30,35,40}%. At the start of your turn, Critical Rate increases by {20,25,30,35,40}%. This effect is removed at the end of the turn or upon moving.",
       },
-      skill2: {
-        name: 'Nari Exclusive: Aether Bullet Sharpshooter',
+      signature: {
+        name: "Nari Exclusive: Aether Bullet Sharpshooter",
         type: 'Signature',
-        description:
-          "During combat, the AP consumption of the 'Precision Shooting Stance' skill is reduced by 40. When using this skill, the 'Piercing Aether Bullet' skill changes to a directional attack with an increased attack width of 1 meter. After using the 'Combat Roll' skill from the basic stance, the user can follow up with 'Precision Shooting Stance' for additional responses.",
+        description: "During combat, the AP consumption of the 'Precision Shooting Stance' skill is reduced by 40. When using this skill, the 'Piercing Aether Bullet' skill changes to a directional attack with an increased attack width of 1 meter. After using the 'Combat Roll' skill from the basic stance, the user can follow up with 'Precision Shooting Stance' for additional responses.",
       },
     },
+    levelStats: {
+      "Ranged ATK (weapon)": [12.1, 77.0],
+      "Ranged ATK (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "During battle, Pierce Boost increases", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+        { name: "At the start of your turn, Critical Rate increases", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 9,
+      technic: 12,
+      intelligence: 9,
+      vitality: 9,
+      agility: 10,
+      maxHp: 640,
+      meleeAtk: 115,
+      rangedAtk: 153,
+      magicAtk: 115,
+      evade: 192,
+      apRecovery: 119,
+      startingAp: 118
+    },
+    'EX 1': {
+      strength: 9,
+      technic: 12,
+      intelligence: 9,
+      vitality: 10,
+      agility: 10,
+      maxHp: 704,
+      meleeAtk: 115,
+      rangedAtk: 153,
+      magicAtk: 115,
+      evade: 192,
+      apRecovery: 119,
+      startingAp: 118
+    },
+    'EX 2': {
+      strength: 9,
+      technic: 12,
+      intelligence: 9,
+      vitality: 11,
+      agility: 10,
+      maxHp: 768,
+      meleeAtk: 115,
+      rangedAtk: 153,
+      magicAtk: 115,
+      evade: 192,
+      apRecovery: 119,
+      startingAp: 118
+    },
+    'EX 3': {
+      strength: 9,
+      technic: 12,
+      intelligence: 9,
+      vitality: 11,
+      agility: 11,
+      maxHp: 768,
+      meleeAtk: 115,
+      rangedAtk: 153,
+      magicAtk: 115,
+      evade: 204,
+      apRecovery: 122,
+      startingAp: 121
+    },
+    'EX 4': {
+      strength: 10,
+      technic: 12,
+      intelligence: 9,
+      vitality: 11,
+      agility: 11,
+      maxHp: 768,
+      meleeAtk: 128,
+      rangedAtk: 153,
+      magicAtk: 115,
+      evade: 204,
+      apRecovery: 122,
+      startingAp: 121
+    },
+    'EX 5': {
+      strength: 11,
+      technic: 12,
+      intelligence: 9,
+      vitality: 11,
+      agility: 11,
+      maxHp: 768,
+      meleeAtk: 140,
+      rangedAtk: 153,
+      magicAtk: 115,
+      evade: 204,
+      apRecovery: 122,
+      startingAp: 121
+    },
+    'EX 6': {
+      strength: 11,
+      technic: 12,
+      intelligence: 9,
+      vitality: 12,
+      agility: 11,
+      maxHp: 832,
+      meleeAtk: 140,
+      rangedAtk: 153,
+      magicAtk: 115,
+      evade: 204,
+      apRecovery: 122,
+      startingAp: 121
+    },
+  },
+  heroId: 25,
+
 };
 
 export const nari = nariData;

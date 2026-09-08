@@ -74,7 +74,7 @@ const rawLeahData = {
     electricDef: '0',
     immaterialDef: '0',
     poisonDef: '0',
-    blockRate: '10',
+    blockRate: '0',
   },
 
   // Character Description
@@ -140,7 +140,7 @@ const rawLeahData = {
     interested: {
       name: 'Interested',
       rarity: 'Unique',
-      description: 'Special trait with no listed characteristics.',
+      description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
     },
   },
 
@@ -249,34 +249,39 @@ const rawLeahData = {
 
   // EX Weapon Information
   weapon: {
-    name: 'EX Mana Shard - Blessed Cat Bell',
-    type: 'Mana Shard',
+    name: "Blessed Cat Bell",
+    flavor: "Across the cosmos, countless races loved cats so fiercely that their devotion gave rise to a god of cats - indolent, wise, and impossibly adorable. This divine being proclaimed that love must not only be received, but shared. From that vow were born the Bells of the Cat God, rare treasures scattered among the stars. They are said to appear only before those who hold a true and earnest love for cats, each bell taking on its own playful form. Should your heart remain pure in its affection, the blessing of the Cat God may one day ring for you as well.",
+    type: "Mana Shard",
     rarity: 'EX',
-    image: 'Leah_WP.jpg',
+    image: "Weapon_FullIMG_ShardOfSpell_ForLeah",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMagicAtk: '63.0',
-      evade: '+126.0%',
+      "Magic ATK (weapon)": "63",
+      "Evade (%)": "+126%",
     },
     uniqueSkills: {
-      linkToSpiritRealm: {
-        name: 'Link to the Spirit Realm',
+      unique: {
+        name: "Link to the Spirit Realm",
         type: 'Unique',
-        description:
-          "Increases AP Recovery by 40% during combat. During the user's turn, reduces all enemies' Immaterial DEF by 320. If the user's Base Evasion is 440 or higher, increases all enemies' DMG Taken by 24% during the user's turn.",
+        description: "Increases AP Recovery by {20,25,30,35,40}% during combat. During the user's turn, reduces all enemies' Immaterial DEF by {160,200,240,280,320}. If the user's Base Evasion is 440 or higher, increases all enemies' DMG Taken by {12,15,18,21,24}% during the user's turn.",
       },
-      leahSignature: {
-        name: 'Leah Signature: Wish You All the Best',
+      signature: {
+        name: "Leah Signature: Wish You All the Best",
         type: 'Signature',
-        description:
-          "Increases Crit Rate by 18% and Immaterial Boost by 22% during combat. Reduces the AP cost of 'Spiritclaw Rite' by 100%. The Pierce Boost granted by [Swiftpaw's Blessing] also increases the target's Slash Boost and Crush Boost by 85% of that value. The Poison Boost granted by [Proudclaw's Blessing] also increases the target's Fire, Cold, Electric, and Immaterial Boost by 85% of that value. When attacking with 'Soulflame Fury' grants allies with 70% HP or less a [Shadow Veil] shield for 2R.",
+        description: "Increases Crit Rate by 18% and Immaterial Boost by 22% during combat. Reduces the AP cost of \"Spiritclaw Rite\" by 100%. The Pierce Boost granted by [Swiftpaw's Blessing] also increases the target's Slash Boost and Crush Boost by 85% of that value. The Poison Boost granted by [Proudclaw's Blessing] also increases the target's Fire, Cold, Electric, and Immaterial Boost by 85% of that value. When attacking with \"Soulflame Fury\" grants allies with 70% HP or less a [Shadow Veil] shield for 2R. [Shadow Veil]: Grants a shield equal to 12% of the user's Base Evasion and increases Evasion by 15%.",
       },
     },
-    effects: {
-      shadowVeil: {
-        name: 'Shadow Veil',
-        description:
-          "Grants a shield equal to 12% of the user's Base Evasion and increases Evasion by 15%.",
-      },
+    levelStats: {
+      "Magic ATK (weapon)": [9.9, 63.0],
+      "Evade (%)": [19.8, 126.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Increases AP Recovery", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+        { name: "During the user's turn, reduces all enemies' Immaterial DEF", valuesByLevel: "160 / 200 / 240 / 280 / 320" },
+        { name: "If the user's Base Evasion is 440 or higher, increases all enemies' DMG Taken", valuesByLevel: "12% / 15% / 18% / 21% / 24%" },
+      ],
     },
   },
   // Character-level effects for the Effect Descriptions section
@@ -315,6 +320,108 @@ const rawLeahData = {
         "Grants a shield equal to 12% of the user's Base Evasion and increases Evasion by 15%.",
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 4,
+      technic: 5,
+      intelligence: 15,
+      vitality: 10,
+      agility: 11,
+      maxHp: 640,
+      meleeAtk: 51,
+      rangedAtk: 64,
+      magicAtk: 201,
+      evade: 179,
+      apRecovery: 112,
+      startingAp: 130
+    },
+    'EX 1': {
+      strength: 4,
+      technic: 5,
+      intelligence: 16,
+      vitality: 10,
+      agility: 11,
+      maxHp: 640,
+      meleeAtk: 51,
+      rangedAtk: 64,
+      magicAtk: 215,
+      evade: 179,
+      apRecovery: 112,
+      startingAp: 130
+    },
+    'EX 2': {
+      strength: 4,
+      technic: 5,
+      intelligence: 16,
+      vitality: 11,
+      agility: 11,
+      maxHp: 704,
+      meleeAtk: 51,
+      rangedAtk: 64,
+      magicAtk: 215,
+      evade: 179,
+      apRecovery: 112,
+      startingAp: 130
+    },
+    'EX 3': {
+      strength: 4,
+      technic: 5,
+      intelligence: 17,
+      vitality: 11,
+      agility: 11,
+      maxHp: 704,
+      meleeAtk: 51,
+      rangedAtk: 64,
+      magicAtk: 228,
+      evade: 179,
+      apRecovery: 112,
+      startingAp: 130
+    },
+    'EX 4': {
+      strength: 4,
+      technic: 5,
+      intelligence: 17,
+      vitality: 12,
+      agility: 11,
+      maxHp: 768,
+      meleeAtk: 51,
+      rangedAtk: 64,
+      magicAtk: 228,
+      evade: 179,
+      apRecovery: 112,
+      startingAp: 130
+    },
+    'EX 5': {
+      strength: 4,
+      technic: 5,
+      intelligence: 19,
+      vitality: 12,
+      agility: 11,
+      maxHp: 768,
+      meleeAtk: 51,
+      rangedAtk: 64,
+      magicAtk: 255,
+      evade: 179,
+      apRecovery: 112,
+      startingAp: 130
+    },
+    'EX 6': {
+      strength: 4,
+      technic: 5,
+      intelligence: 19,
+      vitality: 12,
+      agility: 13,
+      maxHp: 768,
+      meleeAtk: 51,
+      rangedAtk: 64,
+      magicAtk: 255,
+      evade: 207,
+      apRecovery: 117,
+      startingAp: 135
+    },
+  },
+  heroId: 57,
+
 };
 
 // Sanitize and validate the character data

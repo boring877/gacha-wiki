@@ -43,7 +43,7 @@ const rawEmiliaData = {
 
     // Key Stats
     meleeAtk: '64',
-    rangedAtk: '-12',
+    rangedAtk: '-13',
     magicAtk: '223',
     maxHp: '448',
     spd: '84',
@@ -51,7 +51,7 @@ const rawEmiliaData = {
     apRecovery: '105',
     accuracy: '102',
     evade: '128',
-    critRate: '10',
+    critRate: '8',
     critDmg: '150',
 
     // Attribute Boost
@@ -82,28 +82,42 @@ const rawEmiliaData = {
 
   // Weapon Information
   weapon: {
-    name: 'EX Dual Pistols - Phantom Stiletto',
-    type: 'EX Dual Pistols',
+    name: "Seryel: Medical Hammer",
+    flavor: "Originally developed as an advanced field device to monitor vital signs and measure sacred energy responses, this tool was meant to serve strictly medical purposes. However, thanks to the overzealous craftsmanship of early BRM engineers, its internal frame ended up excessively reinforced - meticulously weighted and perfectly balanced. The result? A small medical device that, even before serving as a scanner, functions as a brutally effective blunt weapon and makeshift shield. Though unusable for clinical purposes by all but a select few, its built-in combat-assist functions alone make it a formidable asset on the battlefield.",
+    type: "Club & Shield",
     rarity: 'EX',
-    image: 'Emilia_WP',
+    image: "Weapon_FullIMG_MaceAndShield_ForEmilia_MS",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponRangedAtk: '77.0',
-      critRate: '+49.0%',
+      "Melee ATK (weapon)": "70",
+      "Magic ATK (weapon)": "70",
+      "Max HP (%)": "+49%",
     },
     uniqueSkills: {
-      lockOnFromBeyond: {
-        name: 'Lock-on from Beyond',
+      unique: {
+        name: "Clinical Insight",
         type: 'Unique',
-        description:
-          'Increases Pierce Boost by 40% during combat. On attack, gain the [Keen Lock-on] effect applied only to that attack. [Keen Lock-on]: Increases your Crit DMG and Ranged ATK by 10% for each ally on the field (excluding yourself), up to a maximum of 8 allies.',
+        description: "Reduces Aggro Adjustment by {16,18,20,22,24} during battle and increases AP recovery by {16,20,24,28,32}%. When using a Support skill with Crit Rate ≥ 48%, increases own Crit Rate by {32,40,48,56,64}% until the end of the turn.",
       },
-      emiliaSignature: {
-        name: 'Precision Prescription Protocol',
+      signature: {
+        name: "Emilia Signature: Precision Treatment Protocol",
         type: 'Signature',
-        description:
-          "During battle, [Divine Prescription Protocol] is replaced with [Prescription Selection] of the same level. Using it grants 1 [Re-Action] where you can choose one of the same-level IV Solution/Potion/Pill Prescription skills. [Prescription Selection] is treated as a Wait skill. After using any non-Wait skill on your turn, if your Crit Rate exceeds 100%, all allies' (excluding yourself) Attribute Boost increases by 0.4% per 1% exceeded, refreshing each activation. This effect ends at the end of each ally's turn. At 140% Crit Rate, the Attribute Boost increase reaches its maximum of 16%, affected by clinic waiting number. For 1R after battle starts, the AP cost of [Top Priority Miracle Prescription] is reduced by 21.",
-        note: 'This signature skill only activates when Emilia equips this weapon.',
+        description: "During battle, the Sacred Prescription Protocol skill is replaced with a same-level Prescription Selection skill. When used, it grants 1-time [Extra Action] and allows the user to choose one of the same-level IV/Potion/Pill Prescription skills to activate. The replaced Prescription Selection is treated as a Standby skill. When using any skill except Standby during own turn, if Crit Rate exceeds 100%, increases Elemental Boost for all allies except self based on the excess amount (0.4% per 1% Crit Rate over 100%). This effect refreshes each time it triggers and expires at the end of each ally's turn. If Emilia's Crit Rate reaches 140%, this effect reaches its cap of +16% Elemental Boost. This bonus is affected by the allies' triage queue number. At the start of battle, for one round, the AP cost of Miraculous Injection is reduced by 21.",
+        note: "This signature skill only activates when Emilia equips this weapon.",
       },
+    },
+    levelStats: {
+      "Melee ATK (weapon)": [11.0, 70.0],
+      "Magic ATK (weapon)": [11.0, 70.0],
+      "Max HP (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Reduces Aggro Adjustment", valuesByLevel: "16 / 18 / 20 / 22 / 24" },
+        { name: "During battle and increases AP recovery", valuesByLevel: "16% / 20% / 24% / 28% / 32%" },
+        { name: "When using a Support skill with Crit Rate ≥ 48%, increases own Crit Rate", valuesByLevel: "32% / 40% / 48% / 56% / 64%" },
+      ],
     },
   },
 
@@ -139,7 +153,7 @@ const rawEmiliaData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Unique. Characteristics: (No characteristics listed)',
+      description: 'Unique. Characteristics: (No characteristics listed). Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
@@ -212,6 +226,108 @@ const rawEmiliaData = {
         "When using the Miraculous Injection skill, the targeted ally also gains the [Sacred Overdose] effect for 2 rounds, based on the user's Crit Rate as the activation chance. The ally consumes a portion of their current HP, and their Combat Skill DMG is slightly reduced, but their Basic ATK DMG increases. Effect: Sacred Overdose - Consumes 25% of current HP when activated. Reduces Combat Skill DMG by 8%, but increases Basic ATK DMG by 16%.",
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 10,
+      technic: 6,
+      intelligence: 10,
+      vitality: 11,
+      agility: 10,
+      maxHp: 320,
+      meleeAtk: 38,
+      rangedAtk: -13,
+      magicAtk: 195,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 111
+    },
+    'EX 1': {
+      strength: 10,
+      technic: 6,
+      intelligence: 10,
+      vitality: 12,
+      agility: 10,
+      maxHp: 384,
+      meleeAtk: 38,
+      rangedAtk: -13,
+      magicAtk: 195,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 111
+    },
+    'EX 2': {
+      strength: 10,
+      technic: 6,
+      intelligence: 11,
+      vitality: 12,
+      agility: 10,
+      maxHp: 384,
+      meleeAtk: 38,
+      rangedAtk: -13,
+      magicAtk: 209,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 111
+    },
+    'EX 3': {
+      strength: 11,
+      technic: 6,
+      intelligence: 11,
+      vitality: 12,
+      agility: 10,
+      maxHp: 384,
+      meleeAtk: 51,
+      rangedAtk: -13,
+      magicAtk: 209,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 111
+    },
+    'EX 4': {
+      strength: 11,
+      technic: 6,
+      intelligence: 12,
+      vitality: 12,
+      agility: 10,
+      maxHp: 384,
+      meleeAtk: 51,
+      rangedAtk: -13,
+      magicAtk: 223,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 111
+    },
+    'EX 5': {
+      strength: 12,
+      technic: 6,
+      intelligence: 12,
+      vitality: 12,
+      agility: 10,
+      maxHp: 384,
+      meleeAtk: 64,
+      rangedAtk: -13,
+      magicAtk: 223,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 111
+    },
+    'EX 6': {
+      strength: 12,
+      technic: 6,
+      intelligence: 12,
+      vitality: 13,
+      agility: 10,
+      maxHp: 448,
+      meleeAtk: 64,
+      rangedAtk: -13,
+      magicAtk: 223,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 111
+    },
+  },
+  heroId: 59,
+
 };
 
 // SEO Metadata

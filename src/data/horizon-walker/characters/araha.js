@@ -107,33 +107,47 @@ const rawArahaData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the Chosen Human.',
+      description: 'Interested in the Chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
   // Weapon Information
   weapon: {
-    name: 'EX Rifle - JK220 Artemis',
-    type: 'EX Rifle',
+    name: "JK220 Artemis",
+    flavor: "The JK220 Artemis Face Modeling is a masterpiece of cutting-edge technology and precision engineering, custom-made for the top sniper of the Bureau of Rift Management. This weapon boasts exceptional lethality and features the latest military software, \"Artemis,\" applied to its barrel, enabling the user to evade enemy detection more effectively. It is said that the name JK220 was chosen to honor the best sniper of the Bureau of Rift Management.",
+    type: "Rifle",
     rarity: 'EX',
-    image: 'Araha_WP.jpg',
+    image: "Weapon_FullIMG_JK220_Artemis",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponRangedAtk: '91.0',
-      critDmgBonus: '+70.0%',
+      "Ranged ATK (weapon)": "91",
+      "Crit DMG (%)": "+70%",
     },
     uniqueSkills: {
-      phantomMenace: {
-        name: 'The Phantom Menace',
+      unique: {
+        name: "The Phantom Menace",
         type: 'Unique',
-        description:
-          'During battle, Ranged ATK increases by 30%, and Counterattack DMG and Support Counterattack DMG increase by 32% respectively. At the start of own turn, gains a shield equal to 10% of Max HP. When an ally, excluding self, is attacked, the [Support Ready] effect is granted. Enemies hit by a Support Counterattack will have the [Intimidated] effect applied in a 3m radius around the target for 1 turn. [Intimidated]: All ATK decreases by 25%. [Support Ready]: Ranged ATK increases by 5%, and the effect ends at the end of own turn. Can stack up to 5 times.',
+        description: "During battle, Ranged ATK increases by {18%,21%,24%,27%,30%}, and Counterattack DMG and Support Counterattack DMG increase by {16%,20%,24%,28%,32%} respectively. At the start of own turn, gains a shield equal to {6%,7%,8%,9%,10%} of Max HP. When an ally, excluding self, is attacked, the [Support Ready] effect is granted. Enemies hit by a Support Counterattack will have the [Intimidated] effect applied in a 3m radius around the target for 1 turn. [Intimidated]: All ATK decreases by {15%,17.5%,20%,22.5%,25%}. [Support Ready]: Ranged ATK increases by {3%,3.5%,4%,4.5%,5%}, and the effect ends at the end of own turn. Can stack up to 5 times.",
       },
-      ghost: {
-        name: 'Araha Signature: Ghost',
+      signature: {
+        name: "Araha Signature: Ghost",
         type: 'Signature',
-        description:
-          "The existing [Camouflage: Stealth] effect now allows support counterattacks even while in stealth. Upon defeating an enemy or successfully performing a support counterattack while in stealth, this skill will reactivate and grant the [Camouflage: Stealth] effect again for 3R. When using the 'Wire Maneuver Shot' skill, gain the [ARTEMIS: Scan Battlefield] effect for 2R. The active skill 'Rapid Covert Maneuver' becomes available for used during battle. [ARTEMIS: Scan Battlefield]: Enables support counterattacks. [Camouflage: Stealth]: Enters stealth, preventing enemy skills from targeting. The first attack made while in stealth has a 100% critical hit rate and increases critical damage by 30%. Rapid Covert Maneuver: The AI ARTEMIS stably controls the mobility drone without causing overload. Leaps to a designated location. Upon using this skill, gain the [ARTEMIS: Scan Battlefield] effect for 2R and reacquire the [Camouflage: Stealth] effect for 3R.",
+        description: "The existing [Camouflage: Stealth] effect now allows support counterattacks even while in stealth. Upon defeating an enemy or successfully performing a support counterattack while in stealth, this skill will reactivate and grant the [Camouflage: Stealth] effect again for 3R. When using the 'Wire Maneuver Shot' skill, gain the [ARTEMIS: Scan Battlefield] effect for 2R. The active skill 'Rapid Covert Maneuver' becomes available for use during battle. [ARTEMIS: Scan Battlefield]: Enables support counterattacks. [Camouflage: Stealth]: Enters stealth, preventing enemy skills from targeting. The first attack made while in stealth has a 100% critical hit rate and increases critical damage by 30%. [#sepline]Rapid Covert Maneuver The AI ARTEMIS stably controls the mobility drone without causing overload. Leaps to a designated location. Upon using this skill, gain the [ARTEMIS: Scan Battlefield] effect for 2R, and reacquire the [Camouflage: Stealth] effect for 3R.",
       },
+    },
+    levelStats: {
+      "Ranged ATK (weapon)": [14.3, 91.0],
+      "Crit DMG (%)": [11.0, 70.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "During battle, Ranged ATK increases", valuesByLevel: "18% / 21% / 24% / 27% / 30%" },
+        { name: "And Counterattack DMG and Support Counterattack DMG increase", valuesByLevel: "16% / 20% / 24% / 28% / 32%" },
+        { name: "At the start of own turn, gains a shield equal", valuesByLevel: "6% / 7% / 8% / 9% / 10%" },
+        { name: "[Intimidated]: All ATK decreases", valuesByLevel: "15% / 17.5% / 20% / 22.5% / 25%" },
+        { name: "[Support Ready]: Ranged ATK increases", valuesByLevel: "3% / 3.5% / 4% / 4.5% / 5%" },
+      ],
     },
   },
 
@@ -192,6 +206,108 @@ const rawArahaData = {
         "Quickly fires at the enemy and uses all drones' ultra-lightweight wires to leap 12m away in a straight line from the enemy. Deals Pierce Dmg equal to 285% of your Ranged ATK to enemies hit by the attack. Gain the [Camouflage: Stealth] effect for 3R after landing. This skill can only be used 2 times during battle. [Camouflage: Stealth]: Becomes hidden and cannot be targeted by enemy skills. For one attack, CRIT rate increases by 100%, and CRIT DMG increases by 30%.",
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 7,
+      technic: 15,
+      intelligence: 9,
+      vitality: 8,
+      agility: 9,
+      maxHp: 512,
+      meleeAtk: 89,
+      rangedAtk: 192,
+      magicAtk: 115,
+      evade: 128,
+      apRecovery: 109,
+      startingAp: 143
+    },
+    'EX 1': {
+      strength: 7,
+      technic: 16,
+      intelligence: 9,
+      vitality: 8,
+      agility: 9,
+      maxHp: 512,
+      meleeAtk: 89,
+      rangedAtk: 204,
+      magicAtk: 115,
+      evade: 128,
+      apRecovery: 109,
+      startingAp: 143
+    },
+    'EX 2': {
+      strength: 7,
+      technic: 16,
+      intelligence: 9,
+      vitality: 8,
+      agility: 10,
+      maxHp: 512,
+      meleeAtk: 89,
+      rangedAtk: 204,
+      magicAtk: 115,
+      evade: 140,
+      apRecovery: 111,
+      startingAp: 145
+    },
+    'EX 3': {
+      strength: 7,
+      technic: 17,
+      intelligence: 9,
+      vitality: 8,
+      agility: 10,
+      maxHp: 512,
+      meleeAtk: 89,
+      rangedAtk: 217,
+      magicAtk: 115,
+      evade: 140,
+      apRecovery: 111,
+      startingAp: 145
+    },
+    'EX 4': {
+      strength: 7,
+      technic: 17,
+      intelligence: 9,
+      vitality: 9,
+      agility: 10,
+      maxHp: 576,
+      meleeAtk: 89,
+      rangedAtk: 217,
+      magicAtk: 115,
+      evade: 140,
+      apRecovery: 111,
+      startingAp: 145
+    },
+    'EX 5': {
+      strength: 7,
+      technic: 18,
+      intelligence: 9,
+      vitality: 9,
+      agility: 10,
+      maxHp: 576,
+      meleeAtk: 89,
+      rangedAtk: 230,
+      magicAtk: 115,
+      evade: 140,
+      apRecovery: 111,
+      startingAp: 145
+    },
+    'EX 6': {
+      strength: 7,
+      technic: 19,
+      intelligence: 9,
+      vitality: 9,
+      agility: 10,
+      maxHp: 576,
+      meleeAtk: 89,
+      rangedAtk: 243,
+      magicAtk: 115,
+      evade: 140,
+      apRecovery: 111,
+      startingAp: 145
+    },
+  },
+  heroId: 13,
+
 };
 
 // Validate and sanitize the character data

@@ -41,7 +41,7 @@ const rawMatrothoData = {
     rangedAtk: '89',
     magicAtk: '76',
     maxHp: '576',
-    spd: '128',
+    spd: '117',
     startingAp: '141',
     apRecovery: '148',
     accuracy: '102',
@@ -106,7 +106,7 @@ const rawMatrothoData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Special trait with no listed characteristics.',
+      description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
     },
   },
 
@@ -179,28 +179,142 @@ const rawMatrothoData = {
 
   // Weapon
   weapon: {
-    name: 'EX One-handed sword - The Lamoran Wind',
-    type: 'One-handed Sword',
+    name: "The Lamoran Wind",
+    flavor: "The swordsmanship of Lamora is unique. Thoroughly analyzed and perfectly calculated with cutting-edge technology, their techniques pierce and carve through the enemy's most vulnerable points with precision. Among them, those who have reached the pinnacle of mastery no longer need to concern themselves with the durability of their blades. The Lamoran Wind is a weapon for those - purely sharp, so sharp that the blade itself becomes invisible. That is all that is needed.",
+    type: "One-handed sword",
     rarity: 'EX',
-    image: 'Matrotho_WP.jpg',
+    image: "Weapon_FullIMG_TheWindOfLamora",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: '77.0',
-      critDmgBonus: '+98.0%',
+      "Melee ATK (weapon)": "77",
+      "Crit DMG (%)": "+98%",
     },
     uniqueSkills: {
-      gleamblade: {
-        name: 'Gleamblade',
+      unique: {
+        name: "Gleamblade",
         type: 'Unique',
-        description:
-          'At the start of each round, increases CRIT rate by 0.8% for each amount of AP Recovery exceeding 100. If current HP is 100% at the start of the round, CRIT rate increases by an additional 16%.',
+        description: "At the start of each round, increases CRIT rate by {0.4,0.5,0.6,0.7,0.8}% for each amount of AP Recovery exceeding 100. If current HP is 100% at the start of the round, CRIT rate increases by an additional {8,10,12,14,16}%.",
       },
-      theWindblade: {
-        name: 'Matrotho Signature: The Windblade',
+      signature: {
+        name: "Matrotho Signature: The Windblade",
         type: 'Signature',
-        description: 'Once per round, performs a support attack on successful attack.',
+        description: "Once per round, performs a support attack on successful attack.",
       },
     },
+    levelStats: {
+      "Melee ATK (weapon)": [12.1, 77.0],
+      "Crit DMG (%)": [15.4, 98.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "At the start of each round, increases CRIT rate", valuesByLevel: "0.4% / 0.5% / 0.6% / 0.7% / 0.8%" },
+        { name: "If current HP is 100% at the start of the round, CRIT rate increases by an additional", valuesByLevel: "8% / 10% / 12% / 14% / 16%" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 11,
+      technic: 7,
+      intelligence: 6,
+      vitality: 7,
+      agility: 18,
+      maxHp: 448,
+      meleeAtk: 140,
+      rangedAtk: 89,
+      magicAtk: 76,
+      evade: 241,
+      apRecovery: 140,
+      startingAp: 133
+    },
+    'EX 1': {
+      strength: 11,
+      technic: 7,
+      intelligence: 6,
+      vitality: 8,
+      agility: 18,
+      maxHp: 512,
+      meleeAtk: 140,
+      rangedAtk: 89,
+      magicAtk: 76,
+      evade: 241,
+      apRecovery: 140,
+      startingAp: 133
+    },
+    'EX 2': {
+      strength: 11,
+      technic: 7,
+      intelligence: 6,
+      vitality: 8,
+      agility: 19,
+      maxHp: 512,
+      meleeAtk: 140,
+      rangedAtk: 89,
+      magicAtk: 76,
+      evade: 255,
+      apRecovery: 143,
+      startingAp: 136
+    },
+    'EX 3': {
+      strength: 12,
+      technic: 7,
+      intelligence: 6,
+      vitality: 8,
+      agility: 19,
+      maxHp: 512,
+      meleeAtk: 153,
+      rangedAtk: 89,
+      magicAtk: 76,
+      evade: 255,
+      apRecovery: 143,
+      startingAp: 136
+    },
+    'EX 4': {
+      strength: 12,
+      technic: 7,
+      intelligence: 6,
+      vitality: 8,
+      agility: 20,
+      maxHp: 512,
+      meleeAtk: 153,
+      rangedAtk: 89,
+      magicAtk: 76,
+      evade: 268,
+      apRecovery: 145,
+      startingAp: 138
+    },
+    'EX 5': {
+      strength: 12,
+      technic: 7,
+      intelligence: 6,
+      vitality: 8,
+      agility: 21,
+      maxHp: 512,
+      meleeAtk: 153,
+      rangedAtk: 89,
+      magicAtk: 76,
+      evade: 282,
+      apRecovery: 148,
+      startingAp: 141
+    },
+    'EX 6': {
+      strength: 12,
+      technic: 7,
+      intelligence: 6,
+      vitality: 9,
+      agility: 21,
+      maxHp: 576,
+      meleeAtk: 153,
+      rangedAtk: 89,
+      magicAtk: 76,
+      evade: 282,
+      apRecovery: 148,
+      startingAp: 141
+    },
+  },
+  heroId: 41,
+
 };
 
 // Validate and sanitize the character data

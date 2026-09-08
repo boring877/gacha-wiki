@@ -75,28 +75,40 @@ const rawOliviaData = {
 
   // Weapon Information
   weapon: {
-    name: 'Star Splicer',
-    type: 'EX Two-handed Sword',
+    name: "Star Splicer",
+    flavor: "The legendary blade that cleaves the sky, Star Splicer, is said to live up to its name - capable of slicing through the very stars themselves. Its edge knows no equal, slicing through anything in a single stroke and making its wielder an undeniable force on the battlefield. A single swing leaves no trace, and some say even time and space are torn asunder in its wake. Yet, for all its might, only a Sword Saint of Magnal can truly awaken the blade's full potential.",
+    type: "Two-handed sword",
     rarity: 'EX',
-    image: 'Olivia_WP.jpg',
+    image: "Weapon_FullIMG_TwoHandSword_ForOlivia",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: '105.0',
-      apRecoveryBonus: '+7.0%',
+      "Melee ATK (weapon)": "105",
+      "AP Recovery (%)": "+7%",
     },
     uniqueSkills: {
-      phenomenon: {
-        name: 'Phenomenon',
+      unique: {
+        name: "Phenomenon",
         type: 'Unique',
-        description:
-          'Reduces CRIT Damage dealt by 40%, but increases Melee ATK by 40% while in combat. At the start of your turn, gain 1 stack of [Blade Resonance]. (This effect does not trigger if you used Standby in your previous turn.) Upon reaching 3 stacks of [Blade Resonance], gain [Grand Echo] for 2 turns. [Blade Resonance]: Increases Basic ATK DMG and Combat Skill DMG by 12%, stacking up to 3 times. [Grand Echo]: Increases Slash Boost by 20%. (All [Blade Resonance] stacks reset when [Grand Echo] ends.)',
+        description: "Reduces CRIT Damage dealt by 40%, but increases Melee ATK by {20,25,30,35,40}% while in combat. At the start of your turn, gain 1 stack of [Blade Resonance].(This effect does not trigger if you used Standby in your previous turn.) Upon reaching 3 stacks of [Blade Resonance], gain [Grand Echo] for 2 turns. - [Blade Resonance]: Increases Basic ATK DMG and Combat Skill DMG by {8,9,10,11,12}%, stacking up to 3 times. - [Grand Echo]: Increases Slash Boost by {12,14,16,18,20}%. (All [Blade Resonance] stacks reset when [Grand Echo] ends.)",
       },
-      novaStrike: {
-        name: 'Nova Strike',
+      signature: {
+        name: "Olivia Signature: Nova Strike",
         type: 'Signature',
-        description:
-          'After using "Thousandfold Execution", gain 1 stack of [Transcendence]. Upon reaching 2 stacks of [Transcendence], perform an additional counterattack with "Nova Strike" instead of "Thousandfold Execution". (All [Transcendence] stacks are reset afterward.) Nova Strike: Swings the blade in a wide arc, slashing all nearby enemies. Deals 150% Slash DMG based on "Thousandfold Execution" to enemies within an 8m radius and sets AP to 159.',
-        note: 'This signature skill only activates when Olivia equips this weapon.',
+        description: "After using 'Thousandfold Execution', gain 1 stack of [Transcendence]. Upon reaching 2 stacks of [Transcendence], perform an additional counterattack with 'Nova Strike' instead of 'Thousandfold Exection'. (All [Transcendence] stacks are reset afterward.) [#sepline] Nova Strike Swings the blade in a wide arc, slashing all nearby enemies. Deals 150% Slash DMG based on 'Thousandfold Execution' to enemies within an 8m radius and sets AP to 159.",
+        note: "This signature skill only activates when Olivia equips this weapon.",
       },
+    },
+    levelStats: {
+      "Melee ATK (weapon)": [16.5, 105.0],
+      "AP Recovery (%)": [1.1, 7.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "Reduces CRIT Damage dealt by 40%, but increases Melee ATK", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+        { name: "- [Blade Resonance]: Increases Basic ATK DMG and Combat Skill DMG", valuesByLevel: "8% / 9% / 10% / 11% / 12%" },
+        { name: "- [Grand Echo]: Increases Slash Boost", valuesByLevel: "12% / 14% / 16% / 18% / 20%" },
+      ],
     },
   },
 
@@ -132,7 +144,7 @@ const rawOliviaData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the Chosen Human.',
+      description: 'Interested in the Chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
@@ -206,6 +218,108 @@ const rawOliviaData = {
         'Consumes 1 stack of [Ascendant] to activate. Performs a powerful upward slash against the nearest enemy. Deals 190% Slash DMG in a 90°, 8m cone and sets AP to 159.',
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 13,
+      technic: 11,
+      intelligence: 10,
+      vitality: 14,
+      agility: 13,
+      maxHp: 1044,
+      meleeAtk: 244,
+      rangedAtk: 217,
+      magicAtk: 143,
+      evade: 192,
+      apRecovery: 117,
+      startingAp: 120
+    },
+    'EX 1': {
+      strength: 15,
+      technic: 11,
+      intelligence: 10,
+      vitality: 14,
+      agility: 13,
+      maxHp: 1044,
+      meleeAtk: 271,
+      rangedAtk: 217,
+      magicAtk: 143,
+      evade: 192,
+      apRecovery: 117,
+      startingAp: 120
+    },
+    'EX 2': {
+      strength: 15,
+      technic: 11,
+      intelligence: 10,
+      vitality: 15,
+      agility: 13,
+      maxHp: 1109,
+      meleeAtk: 271,
+      rangedAtk: 217,
+      magicAtk: 143,
+      evade: 192,
+      apRecovery: 117,
+      startingAp: 120
+    },
+    'EX 3': {
+      strength: 16,
+      technic: 11,
+      intelligence: 10,
+      vitality: 15,
+      agility: 13,
+      maxHp: 1109,
+      meleeAtk: 284,
+      rangedAtk: 217,
+      magicAtk: 143,
+      evade: 192,
+      apRecovery: 117,
+      startingAp: 120
+    },
+    'EX 4': {
+      strength: 16,
+      technic: 11,
+      intelligence: 10,
+      vitality: 15,
+      agility: 14,
+      maxHp: 1109,
+      meleeAtk: 284,
+      rangedAtk: 217,
+      magicAtk: 143,
+      evade: 204,
+      apRecovery: 120,
+      startingAp: 123
+    },
+    'EX 5': {
+      strength: 16,
+      technic: 11,
+      intelligence: 10,
+      vitality: 17,
+      agility: 14,
+      maxHp: 1240,
+      meleeAtk: 284,
+      rangedAtk: 217,
+      magicAtk: 143,
+      evade: 204,
+      apRecovery: 120,
+      startingAp: 123
+    },
+    'EX 6': {
+      strength: 18,
+      technic: 11,
+      intelligence: 10,
+      vitality: 17,
+      agility: 14,
+      maxHp: 1240,
+      meleeAtk: 312,
+      rangedAtk: 217,
+      magicAtk: 143,
+      evade: 204,
+      apRecovery: 120,
+      startingAp: 123
+    },
+  },
+  heroId: 5,
+
 };
 
 // Validate and sanitize the character data

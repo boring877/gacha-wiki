@@ -1,0 +1,20 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  mu_ying_yingData,
+  mu_ying_yingSEO,
+  mu_ying_yingHighlighting,
+} from '../../../../data/horizon-walker/characters/mu-ying-ying.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={mu_ying_yingSEO.title}
+  description={mu_ying_yingSEO.description}
+  gameTitle={mu_ying_yingData.name}
+  character={mu_ying_yingData}
+>
+  <CharacterPageTemplate characterData={{ ...mu_ying_yingData, highlightPatterns: mu_ying_yingHighlighting }} />
+</CharacterIndividualLayout>

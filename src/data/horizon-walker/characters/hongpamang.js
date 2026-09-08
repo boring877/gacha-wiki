@@ -90,7 +90,7 @@ const rawHongpamangData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the Human God.',
+      description: 'Interested in the Human God. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 

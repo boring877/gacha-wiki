@@ -72,7 +72,7 @@ const rawHeadlessKnightData = {
     electricDef: '0',
     immaterialDef: '0',
     poisonDef: '0',
-    blockRate: '170',
+    blockRate: '0',
   },
 
   // Character Description
@@ -112,7 +112,7 @@ const rawHeadlessKnightData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Special trait with no listed characteristics.',
+      description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
     },
   },
 
@@ -212,30 +212,144 @@ const rawHeadlessKnightData = {
 
   // Weapon
   weapon: {
-    name: 'EX Arcane Orb - The Cranium of the Defeated',
-    type: 'Arcane Orb',
+    name: "The Cranium of the Defeated",
+    flavor: "This part resembles the head of a knight, with a sinister blue flame flickering inside. Designed to match the imposing form of gauntlets and massive armor, it ultimately functions as an arcane orb. Each component is cast using a method that combines the magical energy of the Bureau of Rift Management's scientific technology, resulting in a very stable hardness. In addition to the mana contained within, it has the ability to capture spiteful spirits, embedding them within the wearer. However, it is expected that very few will possess the capability to fully harness its true power.",
+    type: "Arcane Orb",
     rarity: 'EX',
-    image: 'Headless_Knight_WP.jpg',
+    image: "Weapon_FullIMG_CutThroatKnight_Head",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: '70.0',
-      weaponMagicAtk: '70.0',
-      meleeAtkBonus: '+49.0%',
+      "Melee ATK (weapon)": "70",
+      "Magic ATK (weapon)": "70",
+      "Melee ATK (%)": "+49%",
     },
     uniqueSkills: {
-      theEye: {
-        name: 'The Eye',
+      unique: {
+        name: "The Eve",
         type: 'Unique',
-        description:
-          "On successful attack, reduces the enemy's AP by 8. When attacking two or more enemies, increases Slash Boost by 40% until the end of the turn.",
+        description: "On successful attack, reduces the enemy's AP by {4,5,6,7,8}. When attacking two or more enemies, increases Slash Boost by {20,25,30,35,40}% until the end of the turn.",
       },
-      madGeneral: {
-        name: 'Headless Knight Signature: The Mad General',
+      signature: {
+        name: "Headless Knight Signature: The Mad General",
         type: 'Signature',
-        description:
-          'On successful attack, increases CRIT rate by 2% and CRIT DMG by 4%. Can stack up to 20 times.',
+        description: "On successful attack, increases CRIT rate by 2% and CRIT DMG by 4%. Can stack up to 20 times.",
       },
     },
+    levelStats: {
+      "Melee ATK (weapon)": [11.0, 70.0],
+      "Magic ATK (weapon)": [11.0, 70.0],
+      "Melee ATK (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "On successful attack, reduces the enemy's AP", valuesByLevel: "4 / 5 / 6 / 7 / 8" },
+        { name: "When attacking two or more enemies, increases Slash Boost", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+      ],
+    },
   },
+  rarityStages: {
+    'EX': {
+      strength: 15,
+      technic: 11,
+      intelligence: 9,
+      vitality: 17,
+      agility: 7,
+      maxHp: 1088,
+      meleeAtk: 199,
+      rangedAtk: 146,
+      magicAtk: 115,
+      evade: 89,
+      apRecovery: 97,
+      startingAp: 110
+    },
+    'EX 1': {
+      strength: 17,
+      technic: 11,
+      intelligence: 9,
+      vitality: 17,
+      agility: 7,
+      maxHp: 1088,
+      meleeAtk: 226,
+      rangedAtk: 146,
+      magicAtk: 115,
+      evade: 89,
+      apRecovery: 97,
+      startingAp: 110
+    },
+    'EX 2': {
+      strength: 17,
+      technic: 11,
+      intelligence: 9,
+      vitality: 18,
+      agility: 7,
+      maxHp: 1152,
+      meleeAtk: 226,
+      rangedAtk: 146,
+      magicAtk: 115,
+      evade: 89,
+      apRecovery: 97,
+      startingAp: 110
+    },
+    'EX 3': {
+      strength: 18,
+      technic: 11,
+      intelligence: 9,
+      vitality: 18,
+      agility: 7,
+      maxHp: 1152,
+      meleeAtk: 239,
+      rangedAtk: 146,
+      magicAtk: 115,
+      evade: 89,
+      apRecovery: 97,
+      startingAp: 110
+    },
+    'EX 4': {
+      strength: 18,
+      technic: 11,
+      intelligence: 9,
+      vitality: 18,
+      agility: 8,
+      maxHp: 1152,
+      meleeAtk: 239,
+      rangedAtk: 146,
+      magicAtk: 115,
+      evade: 102,
+      apRecovery: 100,
+      startingAp: 113
+    },
+    'EX 5': {
+      strength: 18,
+      technic: 11,
+      intelligence: 9,
+      vitality: 20,
+      agility: 8,
+      maxHp: 1280,
+      meleeAtk: 239,
+      rangedAtk: 146,
+      magicAtk: 115,
+      evade: 102,
+      apRecovery: 100,
+      startingAp: 113
+    },
+    'EX 6': {
+      strength: 20,
+      technic: 11,
+      intelligence: 9,
+      vitality: 20,
+      agility: 8,
+      maxHp: 1280,
+      meleeAtk: 266,
+      rangedAtk: 146,
+      magicAtk: 115,
+      evade: 102,
+      apRecovery: 100,
+      startingAp: 113
+    },
+  },
+  heroId: 51,
+
 };
 
 // Validate and sanitize the character data

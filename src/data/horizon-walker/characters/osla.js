@@ -68,7 +68,7 @@ const rawOslaData = {
     electricDef: '0',
     immaterialDef: '0',
     poisonDef: '0',
-    blockRate: '30',
+    blockRate: '0',
   },
 
   // Character Description
@@ -78,28 +78,41 @@ const rawOslaData = {
   // Weapon Information
   weapon: {
     name: "The Grand Ancestor's Spirit",
-    type: 'EX Torturas',
+    flavor: "The Torturas of ancient form possesses a unique shape distinct from the common Torturas. This weapon is imbued with the power of the ancients, allowing only the chosen Champion of Torta to wield it. Its power goes beyond mere physical strength, as it is connected to the souls of the ancestors, granting the champion even greater might. The chosen champion can sense the memories of the ancient warriors, drawing upon their wisdom and courage to fight against their foes.",
+    type: "Torturas",
     rarity: 'EX',
-    image: 'Osla_WP.jpg',
+    image: "Weapon_FullIMG_TheGrandAncestorsSpirit",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: '70.0',
-      weaponMagicAtk: '70.0',
-      maxHpBonus: '+49.0%',
+      "Melee ATK (weapon)": "70",
+      "Magic ATK (weapon)": "70",
+      "Max HP (%)": "+49%",
     },
     uniqueSkills: {
-      verdictOfTheHistory: {
-        name: 'Verdict of the History',
+      unique: {
+        name: "Verdict of the History",
         type: 'Unique',
-        description:
-          "During battle, movement speed increases by 32% and Aggro Adjustment increases by 40. For any enemy that initiates an attack on the unit, all support counterattacks, counterattacks, or additional attacks directed at that enemy during the same turn are treated as Weak Point Attacks (provided the skill used is eligible for Weak Point Attacks). When attacked, allied units—except the unit under attack—receive the [Primordial Spirit's Descent] effect. This effect can stack up to 5 times. [Primordial Spirit's Descent]: On a successful attack, inflict additional Slash DMG and remove 1 stack from the effect. Additional DMG equals 320% of the Melee ATK power of the effect provider, with damage increased proportionally to CRIT rate (damage doubles at 100% CRIT rate). This effect activates only via a single weapon during battle; if the weapon-bearer becomes incapacitated, the effect ceases.",
+        description: "During battle, movement speed increases by {16,20,24,28,32}% and Aggro Adjustment increases by {20,25,30,35,40}. For any enemy that initiates an attack on the unit, all support counterattacks, counterattacks, or additional attacks directed at that enemy during the same turn are treated as Weak Point Attacks (provided the skill used is eligible for Weak Point Attacks). When attacked, allied units - except the unit under attack - receive the [Primordial Spirit's Descent] effect. This effect can stack up to 5 times. -[Primordial Spirit's Descent]: On a successful attack, inflict additional Slash DMG and remove 1 stack from the effect. Additional DMG equals {160%,200%,240%,280%,320%} of the Melee ATK power of the effect provider, with damage increased proportionally to CRIT rate (damage doubles at 100% CRIT rate). This effect activates only via a single weapon during battle; if the weapon-bearer becomes incapacitated, the effect ceases.",
       },
-      ancientSpiritsCore: {
-        name: "Ancient Spirit's Core",
-        type: 'Osla Signature',
-        description:
-          'During battle, the probability of applying the [Taunt] effect from the "Afflict Pain" skill increases by an additional 43%. In addition, if the current HP of the unit falls below 30% upon receiving an attack, restore 10% of maximum HP. The additional Slash Damage from [Primordial Spirit\'s Descent] is applied at double strength.',
-        note: 'This signature skill only activates when Osla equips this weapon.',
+      signature: {
+        name: "Osla Signature: Ancient Spirit's Core",
+        type: 'Signature',
+        description: "During battle, the probability of applying the [Taunt] effect from the 'Afflict Pain' skill increases by an additional 43%. In addition, if the current HP of the unit falls below 30% upon receiving an attack, restore 10% of maximum HP. The additional Slash Damage from [Primordial Spirit's Descent] is applied at double strength.",
+        note: "This signature skill only activates when Osla equips this weapon.",
       },
+    },
+    levelStats: {
+      "Melee ATK (weapon)": [11.0, 70.0],
+      "Magic ATK (weapon)": [11.0, 70.0],
+      "Max HP (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "During battle, movement speed increases", valuesByLevel: "16% / 20% / 24% / 28% / 32%" },
+        { name: "% and Aggro Adjustment increases", valuesByLevel: "20 / 25 / 30 / 35 / 40" },
+        { name: "Additional DMG equals", valuesByLevel: "160% / 200% / 240% / 280% / 320%" },
+      ],
     },
   },
 
@@ -135,7 +148,7 @@ const rawOslaData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the Chosen Human.',
+      description: 'Interested in the Chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
@@ -209,6 +222,108 @@ const rawOslaData = {
         'When attacked by an enemy, reflects the damage received back to the attacker, dealing Fixed DMG equal to 57% of the damage taken. This reflected damage increases as own current HP ratio decreases, up to 4 times at 40% HP.',
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 14,
+      technic: 8,
+      intelligence: 6,
+      vitality: 12,
+      agility: 9,
+      maxHp: 832,
+      meleeAtk: 188,
+      rangedAtk: 107,
+      magicAtk: 79,
+      evade: 112,
+      apRecovery: 102,
+      startingAp: 118
+    },
+    'EX 1': {
+      strength: 16,
+      technic: 8,
+      intelligence: 6,
+      vitality: 12,
+      agility: 9,
+      maxHp: 832,
+      meleeAtk: 215,
+      rangedAtk: 107,
+      magicAtk: 79,
+      evade: 112,
+      apRecovery: 102,
+      startingAp: 118
+    },
+    'EX 2': {
+      strength: 17,
+      technic: 8,
+      intelligence: 6,
+      vitality: 12,
+      agility: 9,
+      maxHp: 832,
+      meleeAtk: 228,
+      rangedAtk: 107,
+      magicAtk: 79,
+      evade: 112,
+      apRecovery: 102,
+      startingAp: 118
+    },
+    'EX 3': {
+      strength: 17,
+      technic: 8,
+      intelligence: 6,
+      vitality: 13,
+      agility: 9,
+      maxHp: 896,
+      meleeAtk: 228,
+      rangedAtk: 107,
+      magicAtk: 79,
+      evade: 112,
+      apRecovery: 102,
+      startingAp: 118
+    },
+    'EX 4': {
+      strength: 18,
+      technic: 8,
+      intelligence: 6,
+      vitality: 13,
+      agility: 9,
+      maxHp: 896,
+      meleeAtk: 241,
+      rangedAtk: 107,
+      magicAtk: 79,
+      evade: 112,
+      apRecovery: 102,
+      startingAp: 118
+    },
+    'EX 5': {
+      strength: 18,
+      technic: 8,
+      intelligence: 6,
+      vitality: 14,
+      agility: 9,
+      maxHp: 960,
+      meleeAtk: 241,
+      rangedAtk: 107,
+      magicAtk: 79,
+      evade: 112,
+      apRecovery: 102,
+      startingAp: 118
+    },
+    'EX 6': {
+      strength: 20,
+      technic: 8,
+      intelligence: 6,
+      vitality: 14,
+      agility: 9,
+      maxHp: 960,
+      meleeAtk: 268,
+      rangedAtk: 107,
+      magicAtk: 79,
+      evade: 112,
+      apRecovery: 102,
+      startingAp: 118
+    },
+  },
+  heroId: 10,
+
 };
 
 // Validate and sanitize the character data

@@ -1,0 +1,20 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/horizon-walker/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import {
+  dorotheaData,
+  dorotheaSEO,
+  dorotheaHighlighting,
+} from '../../../../data/horizon-walker/characters/dorothea.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={dorotheaSEO.title}
+  description={dorotheaSEO.description}
+  gameTitle={dorotheaData.name}
+  character={dorotheaData}
+>
+  <CharacterPageTemplate characterData={{ ...dorotheaData, highlightPatterns: dorotheaHighlighting }} />
+</CharacterIndividualLayout>

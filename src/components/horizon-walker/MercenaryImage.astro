@@ -1,41 +1,28 @@
 ---
-import { Image } from 'astro:assets';
 
 // Import mercenary hero icon images (UI_Icon_Hero_*_N01.png format)
-import GrrikMercenaryImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_GreekMercenary_N01.png';
-import GoliathImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_Goliath_N01.png';
-import KoblodMercenaryImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_KoboldApprenticeWarrior_N01.png';
-import PuppyShooterImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_PuppyShooter_N01.png';
-import PuppyStepperImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_PuppyStepper_N01.png';
-import SplitTwigsPriestImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_PriestOfTheBranchMercenary_N01.png';
-import SwampElfVigilanteMemberImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_SwampRangerMercenary_N01.png';
-import WarMercenaryImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_VisomancerMercenary_N01.png';
-import WizardLegionnaireImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_LaMorranFemaleLegionnaire_N01.png';
-import CutThroatKnightImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_CutThroatKnight_N01.png';
 
 // Torta Warrior = ApprenticeDoppelsoldnerMercenary
-import TortaWarriorImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_ApprenticeDoppelsoldnerMercenary_N01.png';
 
 // Imperial Shieldbearer = HuscarlMercenary in hero names
-import ImperialShieldbearerMercenaryImg from '../../assets/images/games/horizon-walker/heroes/UI_Icon_Hero_HuscarlMercenary_N01.png';
 
 // Default fallback image
-const defaultMercenaryImg = WarMercenaryImg;
+const defaultMercenaryImg = 'heroes/UI_Icon_Hero_VisomancerMercenary_N01.png';
 
 // Centralized mercenary image mapping
 const mercenaryImageMap = {
-  'Grrik_Mercenary.jpg': GrrikMercenaryImg,
-  'Goliath.jpg': GoliathImg,
-  'Imperial_Shieldbearer_Mercenary.jpg': ImperialShieldbearerMercenaryImg,
-  'Koblod_Mercenary.jpg': KoblodMercenaryImg,
-  'Puppy_Shooter.jpg': PuppyShooterImg,
-  'Puppy_Stepper.jpg': PuppyStepperImg,
-  'Split_Twigs_Priest.jpg': SplitTwigsPriestImg,
-  'Swamp_Elf_Vigilante_member.jpg': SwampElfVigilanteMemberImg,
-  'Torta_warrior.jpg': TortaWarriorImg,
-  'War_Mercenary.jpg': WarMercenaryImg,
-  'Wizard_Legionnaire.jpg': WizardLegionnaireImg,
-  'Headless_Knight.jpg': CutThroatKnightImg,
+  'Grrik_Mercenary.jpg': 'heroes/UI_Icon_Hero_GreekMercenary_N01.png',
+  'Goliath.jpg': 'heroes/UI_Icon_Hero_Goliath_N01.png',
+  'Imperial_Shieldbearer_Mercenary.jpg': 'heroes/UI_Icon_Hero_HuscarlMercenary_N01.png',
+  'Koblod_Mercenary.jpg': 'heroes/UI_Icon_Hero_KoboldApprenticeWarrior_N01.png',
+  'Puppy_Shooter.jpg': 'heroes/UI_Icon_Hero_PuppyShooter_N01.png',
+  'Puppy_Stepper.jpg': 'heroes/UI_Icon_Hero_PuppyStepper_N01.png',
+  'Split_Twigs_Priest.jpg': 'heroes/UI_Icon_Hero_PriestOfTheBranchMercenary_N01.png',
+  'Swamp_Elf_Vigilante_member.jpg': 'heroes/UI_Icon_Hero_SwampRangerMercenary_N01.png',
+  'Torta_warrior.jpg': 'heroes/UI_Icon_Hero_ApprenticeDoppelsoldnerMercenary_N01.png',
+  'War_Mercenary.jpg': 'heroes/UI_Icon_Hero_VisomancerMercenary_N01.png',
+  'Wizard_Legionnaire.jpg': 'heroes/UI_Icon_Hero_LaMorranFemaleLegionnaire_N01.png',
+  'Headless_Knight.jpg': 'heroes/UI_Icon_Hero_CutThroatKnight_N01.png',
 };
 
 export interface Props {
@@ -116,15 +103,14 @@ if (!finalImageSrc) {
     finalImageSrc = defaultMercenaryImg;
   }
 }
+import { r2Url } from '../../data/r2-config.js';
 ---
 
-<Image
-  src={finalImageSrc}
+<img
+  src={r2Url('horizon-walker', finalImageSrc)}
   alt={alt}
   width={width}
   height={height}
   class={className}
   loading={loading}
-  format={format}
-  quality={quality}
 />

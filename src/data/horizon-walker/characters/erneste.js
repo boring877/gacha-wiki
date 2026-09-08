@@ -38,19 +38,19 @@ const rawErnesteData = {
     strength: '14',
     technic: '10',
     intelligence: '9',
-    vitality: '13',
-    agility: '12',
+    vitality: '11',
+    agility: '14',
 
     // Key Stats
     meleeAtk: '192',
     rangedAtk: '140',
     magicAtk: '128',
-    maxHp: '832',
+    maxHp: '704',
     spd: '92',
-    startingAp: '135',
-    apRecovery: '113',
+    startingAp: '140',
+    apRecovery: '118',
     accuracy: '102',
-    evade: '161',
+    evade: '188',
     critRate: '10',
     critDmg: '150',
 
@@ -78,33 +78,38 @@ const rawErnesteData = {
 
   // Weapon Information
   weapon: {
-    name: 'Dawnbringer',
-    type: 'EX Two-handed sword',
-    image: '/images/games/horizon-walker/weapons/Erneste_WP.jpg',
+    name: "Dawnbringer",
+    flavor: "The stillness at the heart of battle mirrors the darkness before dawn - a moment when all hold their breath, blades drawn, yet none dare take the first step. This sword is that first cry that shatters the silence, the first ray of light that cleaves through a frozen frontline. Its wielder has always stood at the forefront, proving one truth: dawn is not a gift to be received - it is something to be forged with your own hands.",
+    type: "Two-handed sword",
     rarity: 'EX',
+    image: "Weapon_FullIMG_TwoHandSword_ForErneste",
+    imageOnR2: true,
+    maxLevel: 60,
     stats: {
-      weaponMeleeAtk: 91.0,
-      meleeAtkPercent: 35.0,
+      "Melee ATK (weapon)": "91",
+      "Melee ATK (%)": "+35%",
     },
     uniqueSkills: {
-      frontlineCharisma: {
-        name: 'Frontline Charisma',
+      unique: {
+        name: "Frontline Charisma",
         type: 'Unique',
-        description:
-          "During battle, increases Block Chance by 24%. After using a Support, Charge, Leap, Teleportation, or Self-Mobility skill, at the end of the turn, increases all allies' SPD by 63% for 2 Rounds. Stacks up to 3 times.",
+        description: "During battle, increases Block Chance by {12,15,18,21,24}%. After using a Support, Charge, Leap, Teleportation, or Self-Mobility skill, at the end of the turn, increases all allies' SPD by {36%,42.75%,49.5%,56.25%,63%} for 2 Rounds. Stacks up to 3 times.",
       },
-      ourProtector: {
-        name: 'Our Protector',
+      signature: {
+        name: "Erneste Signature: Our Protector",
         type: 'Signature',
-        description:
-          "Increases the caster's SPD by 70% during battle and boosts all allies' Basic ATK DMG (excluding the caster) by 10%. Extends the duration of [Declaration of Victory] to 3 rounds, additionally increasing the target ally's Melee ATK by 36% of the caster's base Melee ATK. Also increases each ally's Ranged ATK and Magic ATK by 55% of the total Melee ATK gained from [Declaration of Victory]. Unlocks the skill [Frontline Disruptor] for use.",
+        description: "Increases the caster's SPD by 70% during battle and boosts all allies' Basic ATK DMG (excluding the caster) by 10%. Extends the duration of [Declaration of Victory] to 3 rounds, additionally increasing the target ally's Melee ATK by 36% of the caster's base Melee ATK. Also increases each ally's Ranged ATK and Magic ATK by 55% of the total Melee ATK gained from [Declaration of Victory]. Unlocks the skill [Frontline Disruptor] for use. [#sepline]Frontline Disruptor Leaps forward in a sweeping motion, striking nearby enemies. Gains the [Courageous Charge] effect for 2 rounds and deals Slash DMG equal to 120% of Melee ATK to enemies within a 2.5m radius at the target location. Knocks targets back and inflicts [Faultline]. - [Courageous Charge]: Increases Elemental DEF by 60. Inflicts Fixed DMG equal to 340% of Melee ATK to countered enemies. - [Faultline]: Increases DMG taken by 8%. Ends at the start of the caster's turn.",
       },
-      frontlineDisruptor: {
-        name: 'Frontline Disruptor',
-        type: 'Skill',
-        description:
-          "Leaps forward in a sweeping motion, striking nearby enemies. Gains the [Courageous Charge] effect for 2 rounds and deals Slash DMG equal to 120% of Melee ATK to enemies within a 2.5m radius at the target location. Knocks targets back and inflicts [Faultline]. [Courageous Charge]: Increases Elemental DEF by 60. Inflicts Fixed DMG equal to 340% of Melee ATK to countered enemies. [Faultline]: Increases DMG taken by 8%. Ends at the start of the caster's turn.",
-      },
+    },
+    levelStats: {
+      "Melee ATK (weapon)": [14.3, 91.0],
+      "Melee ATK (%)": [5.5, 35.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "During battle, increases Block Chance", valuesByLevel: "12% / 15% / 18% / 21% / 24%" },
+        { name: "...upport, Charge, Leap, Teleportation, or Self-Mobility skill, at the end of the turn, increases all allies' SPD", valuesByLevel: "36% / 42.75% / 49.5% / 56.25% / 63%" },
+      ],
     },
   },
 
@@ -144,7 +149,7 @@ const rawErnesteData = {
     },
     interested: {
       name: 'Interested',
-      description: 'Interested in the Chosen Human.',
+      description: 'Interested in the Chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
     },
   },
 
@@ -213,6 +218,108 @@ const rawErnesteData = {
         "Raises the sword high and declares victory, boosting the morale of allies. Grants the [Declaration of Victory] effect to self and allies within a 5m radius for 2R. [Declaration of Victory]: Increases each target's melee ATK by 76% of the caster's melee ATK, and increases SPD by 95.",
     },
   },
+  rarityStages: {
+    'EX': {
+      strength: 11,
+      technic: 10,
+      intelligence: 9,
+      vitality: 10,
+      agility: 12,
+      maxHp: 640,
+      meleeAtk: 153,
+      rangedAtk: 140,
+      magicAtk: 128,
+      evade: 161,
+      apRecovery: 113,
+      startingAp: 135
+    },
+    'EX 1': {
+      strength: 12,
+      technic: 10,
+      intelligence: 9,
+      vitality: 10,
+      agility: 12,
+      maxHp: 640,
+      meleeAtk: 166,
+      rangedAtk: 140,
+      magicAtk: 128,
+      evade: 161,
+      apRecovery: 113,
+      startingAp: 135
+    },
+    'EX 2': {
+      strength: 12,
+      technic: 10,
+      intelligence: 9,
+      vitality: 10,
+      agility: 13,
+      maxHp: 640,
+      meleeAtk: 166,
+      rangedAtk: 140,
+      magicAtk: 128,
+      evade: 174,
+      apRecovery: 116,
+      startingAp: 138
+    },
+    'EX 3': {
+      strength: 13,
+      technic: 10,
+      intelligence: 9,
+      vitality: 10,
+      agility: 13,
+      maxHp: 640,
+      meleeAtk: 179,
+      rangedAtk: 140,
+      magicAtk: 128,
+      evade: 174,
+      apRecovery: 116,
+      startingAp: 138
+    },
+    'EX 4': {
+      strength: 13,
+      technic: 10,
+      intelligence: 9,
+      vitality: 10,
+      agility: 14,
+      maxHp: 640,
+      meleeAtk: 179,
+      rangedAtk: 140,
+      magicAtk: 128,
+      evade: 188,
+      apRecovery: 118,
+      startingAp: 140
+    },
+    'EX 5': {
+      strength: 13,
+      technic: 10,
+      intelligence: 9,
+      vitality: 11,
+      agility: 14,
+      maxHp: 704,
+      meleeAtk: 179,
+      rangedAtk: 140,
+      magicAtk: 128,
+      evade: 188,
+      apRecovery: 118,
+      startingAp: 140
+    },
+    'EX 6': {
+      strength: 14,
+      technic: 10,
+      intelligence: 9,
+      vitality: 11,
+      agility: 14,
+      maxHp: 704,
+      meleeAtk: 192,
+      rangedAtk: 140,
+      magicAtk: 128,
+      evade: 188,
+      apRecovery: 118,
+      startingAp: 140
+    },
+  },
+  heroId: 12,
+
 };
 
 // Validate and sanitize the character data

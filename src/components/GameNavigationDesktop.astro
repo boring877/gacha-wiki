@@ -3,6 +3,7 @@ import { getGameData, isValidGameKey, type GameKey } from '../data/game-navigati
 import { getGameById } from '../data/games';
 import { Image } from 'astro:assets';
 import ZNMusicPlayer from './zone-nova/ZNMusicPlayer.astro';
+import BBMusicPlayer from './busty-burst/BBMusicPlayer.astro';
 import HWMusicPlayer from './horizon-walker/HWMusicPlayer.astro';
 
 interface Props {
@@ -88,6 +89,7 @@ const isActive = (href: string) => {
       </div>
 
       {validatedGameKey === 'zone-nova' && <ZNMusicPlayer />}
+      {validatedGameKey === 'busty-burst' && <BBMusicPlayer />}
       {validatedGameKey === 'horizon-walker' && <HWMusicPlayer />}
 
       <!-- Desktop Section Navigation -->

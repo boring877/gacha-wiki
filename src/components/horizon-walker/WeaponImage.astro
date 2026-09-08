@@ -1,303 +1,220 @@
 ---
-import { Image } from 'astro:assets';
 
 // Import weapon images from ALL_Weapons folder (Weapon_FullIMG format)
 
 // Character-specific weapons (Weapon_FullIMG_*_For* format)
-import Bella_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_MaceAndShield_ForBella_MS.png';
-import Berga_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Torturas_ForBerga.png';
-import Cora_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Staff_ForCora.png';
-import Efreeti_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_ArcaneBall_ForEfreeti.png';
-import Echidna_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_ArcaneBall_ForEchidna.png';
-import Emilia_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_MaceAndShield_ForEmilia_MS.png';
-import Erneste_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_TwoHandSword_ForErneste.png';
-import Kalma_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_ArcaneBall_ForKalma.png';
-import Kaul_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_SwordAndShield_ForKaul_SS.png';
-import Kilon_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_TwoHandSword_ForKilon.png';
-import Korabi_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Staff_ForKorabi.png';
-import Leah_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_ShardOfSpell_ForLeah.png';
-import Lisandria_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_OneHandSword_ForLisandria.png';
-import Luise_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Staff_ForLuise.png';
-import Nari_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Rifle_ForNari.png';
-import Olivia_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_TwoHandSword_ForOlivia.png';
-import Pantheri_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_OneHandSword_ForPantheri.png';
-import Samarika_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_DualSword_ForSamarika.png';
-import Yeonwoo_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_ShardOfSpell_ForYeonwoo.png';
-import kim_Ga_young_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Rifle_ForKimGaYeong.png';
 
 // Special character weapons
-import Headless_Knight_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_CutThroatKnight_Head.png';
 
 // Generic weapon images for characters without specific For* files
-import Araha_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_JK220_Artemis.png';
-import Kalina_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_TyrantEdge.png';
-import Fammene_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_RoseOfSorrow.png';
-import Griselda_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_ThousandMileVision.png';
-import Ines_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_TheDestinyOfTheSword.png';
-import Juha_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_SignsOfTheHolySpirit.png';
-import Nymset_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_SilverTree_Branch_Mace_MS.png';
-import Everette_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_StaffOfTheEnd.png';
-import Mahari_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_SwordOfLaphnesis_SS.png';
-import Marhim_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_TheBloodyExecutioner.png';
-import Matrotho_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_TheWindOfLamora.png';
-import Min_Eun_sol_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_BlackIdol.png';
-import Nika_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_RhinoDoubleSword.png';
-import Osla_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_TheGrandAncestorsSpirit.png';
-import Platina_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_FirstHeart.PNG';
-import So_Joo_hee_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Fleur_De_Vanite92.png';
-import TX_Manticore_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_AigaionCore.png';
-import Valeta_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Red_Acacia.png';
-import Vlissing_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_AtraHasis.png';
-import Yeon_Chae_Young_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_DualPistol_ForYeonYeonChaeyoung.png';
-import Yui_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_DualPistol_ForYui.png';
-import Yvonna_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_BloodFlowsLikeRiver.png';
-import Palekar_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_DualSword_ForPalekar.png';
-import Eugenia_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_ArcaneBall_ForEugenia.png';
-import Maximilia_WPImg from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_SwordAndShield_ForMaximilia.png';
 
-import AdvancedComputingDevice_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_AdvancedComputingDevice.png';
-import BasicCalculationHelperAddPlus1_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_BasicCalculationHelperAddPlus1.png';
-import BattleBlade_of_Ancient_Warrior_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_BattleBlade_of_Ancient_Warrior.png';
-import BattleDoubleSword_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_BattleDoubleSword.png';
-import BlackApple_BattleBlade_HA7_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_BlackApple_BattleBlade_HA7.png';
-import BlackApple_Harpe_HA7_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_BlackApple_Harpe_HA7.png';
-import BlackApple_Mace_HA7_MS_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_BlackApple_Mace_HA7_MS.png';
-import BlackApple_Rifle_HA7_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_BlackApple_Rifle_HA7.png';
-import BlackApple_Staff_HA7_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_BlackApple_Staff_HA7.png';
-import Blessed_Blunt_Of_Radiance_MS_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Blessed_Blunt_Of_Radiance_MS.png';
-import BlizzardModule_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_BlizzardModule.png';
-import Blunt_Of_Religious_MS_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Blunt_Of_Religious_MS.png';
-import ClairvoyancerStaff_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_ClairvoyancerStaff.png';
-import Claymore_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Claymore.png';
-import Claymore_Broken_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Claymore_Broken.png';
-import Clock26_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Clock26.png';
-import CorpseMountainBloodSea_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_CorpseMountainBloodSea.png';
-import Crowbar_MS_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Crowbar_MS.png';
-import Dagger_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Dagger.png';
-import Dagger_LifeFinish_magic_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Dagger_LifeFinish_magic.png';
-import DiscoverMagicStaff_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_DiscoverMagicStaff.png';
-import DiscoverProtectCorePrototype_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_DiscoverProtectCorePrototype.png';
-import DiscoverTD5Pistol_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_DiscoverTD5Pistol.png';
-import DiscoverTD5Pistol_LightDestroyer_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_DiscoverTD5Pistol_LightDestroyer.png';
-import Discover_Custom_AR_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Discover_Custom_AR.png';
-import Discover_Force_Field_Sword_SS_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Discover_Force_Field_Sword_SS.png';
-import Discover_TD7_EF_Rifle_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Discover_TD7-EF_Rifle.png';
-import Discover_Titanium_Dual_Sword_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Discover_Titanium_Dual_Sword.png';
-import Discover_Titanium_SA_Combat_Sword_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Discover_Titanium_SA_Combat_Sword.png';
-import Discover_Titanium_TwoHandedSword_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Discover_Titanium_TwoHandedSword.png';
-import EtherSixPistols_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_EtherSixPistols.png';
-import ExcavationCannon_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_ExcavationCannon.png';
-import FD57_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_FD57.png';
-import FaintFragmentOfMagicalPower_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_FaintFragmentOfMagicalPower.png';
-import FragmentOfMagic_DevilsDoor_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_FragmentOfMagic_DevilsDoor.png';
-import FragmentOfOverflowingMagic_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_FragmentOfOverflowingMagic.png';
-import Harpe_ColorfulPatterns_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Harpe_ColorfulPatterns.png';
-import Highlord_Mithril_Sword_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Highlord_Mithril_Sword.png';
-import HolyWarOrcaRifle_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_HolyWarOrcaRifle.png';
-import HugeFrontTeeth_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_HugeFrontTeeth.png';
-import IceShotel_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_IceShotel.png';
-import ImperialCombatStaff_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_ImperialCombatStaff.png';
-import Iron_Staff_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Iron_Staff.png';
-import JuniperStaff_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_JuniperStaff.png';
-import KnightSword_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_KnightSword.png';
-import KnightSword_SS_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_KnightSword_SS.png';
-import Lactan_MagicPowerExpandablePowerCore_Discharged_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Lactan MagicPowerExpandablePowerCore_Discharged.png';
-import LactanPowerCore_Discharged_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_LactanPowerCore_Discharged.png';
-import Lamora_Plate_Blade_Sword_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Lamora_Plate_Blade_Sword.png';
-import Lamora_Plate_Blade_Sword_Broken_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Lamora_Plate_Blade_Sword_Broken.png';
-import Lamora_Plate_Blade_Sword_Broken_SS_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Lamora_Plate_Blade_Sword_Broken_SS.png';
-import Lamora_Plate_Blade_Sword_SS_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Lamora_Plate_Blade_Sword_SS.png';
-import LifeTransmutingMagicPowerCore_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_LifeTransmutingMagicPowerCore.png';
-import LustrousMagicalGemFragment_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_LustrousMagicalGemFragment.png';
-import Mace_MS_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Mace_MS.png';
-import MagicEngineeringHeatSword_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_MagicEngineeringHeatSword.png';
-import Magic_Fragment_Blunt_MS_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Magic_Fragment_Blunt_MS.png';
-import MercenaryTwoHandedSword_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_MercenaryTwoHandedSword.png';
-import Mithrill_Staff_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Mithrill_Staff.png';
-import Mithrill_Sword_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Mithrill_Sword.png';
-import ObsidianWarSword_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_ObsidianWarSword.png';
-import OrcaRifle_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_OrcaRifle.png';
-import OrcaRifle_BulletStatue_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_OrcaRifle_BulletStatue.png';
-import ParallelComputingResonanceDevice_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_ParallelComputingResonanceDevice.png';
-import PartOfTheDevil_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_PartOfTheDevil.png';
-import PerretaM92_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_PerretaM92.png';
-import PowerReactor_Yellow_Mart_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_PowerReactor_Yellow Mart.png';
-import PowerSupportUnit_PP7_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_PowerSupportUnit_PP7.png';
-import PureMagicStaff_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_PureMagicStaff.png';
-import RampagingComputingDevice_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_RampagingComputingDevice.png';
-import RapierOfPrayer_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_RapierOfPrayer.png';
-import ShardsOfTheBrokenOne_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_ShardsOfTheBrokenOne.png';
-import SoldierHarpe_Broken_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_SoldierHarpe_Broken.png';
-import SoldierSword_Broken_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_SoldierSword_Broken.png';
-import Soldier_Sword_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Soldier_Sword.png';
-import Soldier_Sword_DB_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Soldier_Sword_DB.png';
-import Soldier_Sword_SS_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Soldier_Sword_SS.png';
-import Spirit_Computing_Core_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Spirit_Computing_Core.png';
-import Spirit_Text_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Spirit_Text.png';
-import StaffOfTranel_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_StaffOfTranel.png';
-import Staff_DemonScythe_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Staff_DemonScythe.png';
-import StaffofElf_Broken_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_StaffofElf_Broken.png';
-import Sword_Of_Greek_Warrior_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Sword_Of_Greek_Warrior.png';
-import TraceOfMagic_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_TraceOfMagic.png';
-import WarriorDoubleSword_Broken_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_WarriorDoubleSword_Broken.png';
-import White_Sword_Passion_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_White_Sword_Passion.png';
-import WindGods_WingOrnament_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_WindGods_WingOrnament.png';
-import WolfFang_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_WolfFang.png';
-import Damascus_Flacata_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Damascus_Flacata.png';
-import Discover_TD7_Rifle_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_Discover_TD7_Rifle.png';
-import WarriorDoubleSword_Img from '../../assets/images/games/horizon-walker/ALL_Weapons/Weapon_FullIMG_WarriorDoubleSword.png';
 
 // Centralized weapon image mapping
 const weaponImageMap = {
-  'Araha_WP.jpg': Araha_WPImg,
-  'Bella_WP.jpg': Bella_WPImg,
-  'Berga_WP.jpg': Berga_WPImg,
-  'Cora_WP.jpg': Cora_WPImg,
-  'Efreeti_WP.jpg': Efreeti_WPImg,
-  'Echidna_WP.jpg': Echidna_WPImg,
-  'Erneste_WP.jpg': Erneste_WPImg,
-  'Emilia_WP.jpg': Emilia_WPImg,
-  'Everette_WP.jpg': Everette_WPImg,
-  'Fammene_WP.jpg': Fammene_WPImg,
-  'Griselda_WP.jpg': Griselda_WPImg,
-  'Headless_Knight_WP.jpg': Headless_Knight_WPImg,
-  'Ines_WP.jpg': Ines_WPImg,
-  'Juha_WP.jpg': Juha_WPImg,
-  'Kalina_WP.jpg': Kalina_WPImg,
-  'Kalma_WP.jpg': Kalma_WPImg,
-  'Kaul_WP.jpg': Kaul_WPImg,
-  'Kilon_WP.jpg': Kilon_WPImg,
-  'Korabi_WP.jpg': Korabi_WPImg,
-  'Leah_WP.jpg': Leah_WPImg,
-  'Lisandria_WP.jpg': Lisandria_WPImg,
-  'Luise_WP.jpg': Luise_WPImg,
-  'Mahari_WP.jpg': Mahari_WPImg,
-  'Marhim_WP.jpg': Marhim_WPImg,
-  'Matrotho_WP.jpg': Matrotho_WPImg,
-  'Min_Eun_sol_WP.jpg': Min_Eun_sol_WPImg,
-  'Nari_WP.jpg': Nari_WPImg,
-  'Nika_WP.jpg': Nika_WPImg,
-  'Nymset_WP.jpg': Nymset_WPImg,
-  'Olivia_WP.jpg': Olivia_WPImg,
-  'Osla_WP.jpg': Osla_WPImg,
-  'Pantheri_WP.jpg': Pantheri_WPImg,
-  'Platina_WP.jpg': Platina_WPImg,
-  'Samarika_WP.jpg': Samarika_WPImg,
-  'So_Joo_hee_WP.jpg': So_Joo_hee_WPImg,
-  'TX_Manticore.jpg': TX_Manticore_WPImg,
-  'Valeta_WP.jpg': Valeta_WPImg,
-  'Vlissing_WP.jpg': Vlissing_WPImg,
-  'Yeon_Chae-Young_WP.jpg': Yeon_Chae_Young_WPImg,
-  'Yeonwoo_WP.jpg': Yeonwoo_WPImg,
-  'Yui_WP.jpg': Yui_WPImg,
-  'Yvonna_WP.jpg': Yvonna_WPImg,
-  'kim_Ga_young_WP.jpg': kim_Ga_young_WPImg,
-  'Palekar_WP.jpg': Palekar_WPImg,
-  'Eugenia_WP.jpg': Eugenia_WPImg,
-  'Maximilia_WP.jpg': Maximilia_WPImg,
-  'Weapon_FullIMG_AdvancedComputingDevice.png': AdvancedComputingDevice_Img,
-  'Weapon_FullIMG_BasicCalculationHelperAddPlus1.png': BasicCalculationHelperAddPlus1_Img,
-  'Weapon_FullIMG_BattleBlade_of_Ancient_Warrior.png': BattleBlade_of_Ancient_Warrior_Img,
-  'Weapon_FullIMG_BattleDoubleSword.png': BattleDoubleSword_Img,
-  'Weapon_FullIMG_BlackApple_BattleBlade_HA7.png': BlackApple_BattleBlade_HA7_Img,
-  'Weapon_FullIMG_BlackApple_Harpe_HA7.png': BlackApple_Harpe_HA7_Img,
-  'Weapon_FullIMG_BlackApple_Mace_HA7_MS.png': BlackApple_Mace_HA7_MS_Img,
-  'Weapon_FullIMG_BlackApple_Rifle_HA7.png': BlackApple_Rifle_HA7_Img,
-  'Weapon_FullIMG_BlackApple_Staff_HA7.png': BlackApple_Staff_HA7_Img,
-  'Weapon_FullIMG_Blessed_Blunt_Of_Radiance_MS.png': Blessed_Blunt_Of_Radiance_MS_Img,
-  'Weapon_FullIMG_BlizzardModule.png': BlizzardModule_Img,
-  'Weapon_FullIMG_BloodFlowsLikeRiver.png': Yvonna_WPImg,
-  'Weapon_FullIMG_Blunt_Of_Religious_MS.png': Blunt_Of_Religious_MS_Img,
-  'Weapon_FullIMG_ClairvoyancerStaff.png': ClairvoyancerStaff_Img,
-  'Weapon_FullIMG_Claymore.png': Claymore_Img,
-  'Weapon_FullIMG_Claymore_Broken.png': Claymore_Broken_Img,
-  'Weapon_FullIMG_Clock26.png': Clock26_Img,
-  'Weapon_FullIMG_CorpseMountainBloodSea.png': CorpseMountainBloodSea_Img,
-  'Weapon_FullIMG_CrimsonHarpe.png': Mahari_WPImg,
-  'Weapon_FullIMG_Crowbar_MS.png': Crowbar_MS_Img,
-  'Weapon_FullIMG_Dagger.png': Dagger_Img,
-  'Weapon_FullIMG_Dagger_LifeFinish.png': Valeta_WPImg,
-  'Weapon_FullIMG_Dagger_LifeFinish_magic.png': Dagger_LifeFinish_magic_Img,
-  'Weapon_FullIMG_Damascus_Flacata.png': Damascus_Flacata_Img,
-  'Weapon_FullIMG_DiscoverAR.png': Min_Eun_sol_WPImg,
-  'Weapon_FullIMG_DiscoverComputingDevice.png': TX_Manticore_WPImg,
-  'Weapon_FullIMG_DiscoverMagicStaff.png': DiscoverMagicStaff_Img,
-  'Weapon_FullIMG_DiscoverProtectCorePrototype.png': DiscoverProtectCorePrototype_Img,
-  'Weapon_FullIMG_DiscoverTD5Pistol.png': DiscoverTD5Pistol_Img,
-  'Weapon_FullIMG_DiscoverTD5Pistol_LightDestroyer.png': DiscoverTD5Pistol_LightDestroyer_Img,
-  'Weapon_FullIMG_Discover_Custom_AR.png': Discover_Custom_AR_Img,
-  'Weapon_FullIMG_Discover_Force_Field_Sword_SS.png': Discover_Force_Field_Sword_SS_Img,
-  'Weapon_FullIMG_Discover_TD7-EF_Rifle.png': Discover_TD7_EF_Rifle_Img,
-  'Weapon_FullIMG_Discover_TD7_Rifle.png': Discover_TD7_Rifle_Img,
-  'Weapon_FullIMG_Discover_Titanium_Dual_Sword.png': Discover_Titanium_Dual_Sword_Img,
-  'Weapon_FullIMG_Discover_Titanium_SA_Combat_Sword.png': Discover_Titanium_SA_Combat_Sword_Img,
-  'Weapon_FullIMG_Discover_Titanium_TwoHandedSword.png': Discover_Titanium_TwoHandedSword_Img,
-  'Weapon_FullIMG_EtherSixPistols.png': EtherSixPistols_Img,
-  'Weapon_FullIMG_ExcavationCannon.png': ExcavationCannon_Img,
-  'Weapon_FullIMG_EyeOfTheWind.png': Nymset_WPImg,
-  'Weapon_FullIMG_FD57.png': FD57_Img,
-  'Weapon_FullIMG_FaintFragmentOfMagicalPower.png': FaintFragmentOfMagicalPower_Img,
-  'Weapon_FullIMG_FragmentOfMagic_DevilsDoor.png': FragmentOfMagic_DevilsDoor_Img,
-  'Weapon_FullIMG_FragmentOfOverflowingMagic.png': FragmentOfOverflowingMagic_Img,
-  'Weapon_FullIMG_ThousandMileVision.png': Griselda_WPImg,
-  'Weapon_FullIMG_SignsOfTheHolySpirit.png': Juha_WPImg,
-  'Weapon_FullIMG_TheDestinyOfTheSword.png': Ines_WPImg,
-  'Weapon_FullIMG_Harpe_ColorfulPatterns.png': Harpe_ColorfulPatterns_Img,
-  'Weapon_FullIMG_Highlord_Mithril_Sword.png': Highlord_Mithril_Sword_Img,
-  'Weapon_FullIMG_HolyWarOrcaRifle.png': HolyWarOrcaRifle_Img,
-  'Weapon_FullIMG_HugeFrontTeeth.png': HugeFrontTeeth_Img,
-  'Weapon_FullIMG_IceShotel.png': IceShotel_Img,
-  'Weapon_FullIMG_ImperialCombatStaff.png': ImperialCombatStaff_Img,
-  'Weapon_FullIMG_Iron_Staff.png': Iron_Staff_Img,
-  'Weapon_FullIMG_JuniperStaff.png': JuniperStaff_Img,
-  'Weapon_FullIMG_KnightSword.png': KnightSword_Img,
-  'Weapon_FullIMG_KnightSword_SS.png': KnightSword_SS_Img,
-  'Weapon_FullIMG_Lactan MagicPowerExpandablePowerCore_Discharged.png': Lactan_MagicPowerExpandablePowerCore_Discharged_Img,
-  'Weapon_FullIMG_LactanPowerCore_Discharged.png': LactanPowerCore_Discharged_Img,
-  'Weapon_FullIMG_Lamora_Plate_Blade_Sword.png': Lamora_Plate_Blade_Sword_Img,
-  'Weapon_FullIMG_Lamora_Plate_Blade_Sword_Broken.png': Lamora_Plate_Blade_Sword_Broken_Img,
-  'Weapon_FullIMG_Lamora_Plate_Blade_Sword_Broken_SS.png': Lamora_Plate_Blade_Sword_Broken_SS_Img,
-  'Weapon_FullIMG_Lamora_Plate_Blade_Sword_SS.png': Lamora_Plate_Blade_Sword_SS_Img,
-  'Weapon_FullIMG_LifeTransmutingMagicPowerCore.png': LifeTransmutingMagicPowerCore_Img,
-  'Weapon_FullIMG_LustrousMagicalGemFragment.png': LustrousMagicalGemFragment_Img,
-  'Weapon_FullIMG_Mace_MS.png': Mace_MS_Img,
-  'Weapon_FullIMG_MagicEngineeringHeatSword.png': MagicEngineeringHeatSword_Img,
-  'Weapon_FullIMG_Magic_Fragment_Blunt_MS.png': Magic_Fragment_Blunt_MS_Img,
-  'Weapon_FullIMG_MercenaryTwoHandedSword.png': MercenaryTwoHandedSword_Img,
-  'Weapon_FullIMG_Mithrill_Staff.png': Mithrill_Staff_Img,
-  'Weapon_FullIMG_Mithrill_Sword.png': Mithrill_Sword_Img,
-  'Weapon_FullIMG_ObsidianWarSword.png': ObsidianWarSword_Img,
-  'Weapon_FullIMG_OrcaRifle.png': OrcaRifle_Img,
-  'Weapon_FullIMG_OrcaRifle_BulletStatue.png': OrcaRifle_BulletStatue_Img,
-  'Weapon_FullIMG_ParallelComputingResonanceDevice.png': ParallelComputingResonanceDevice_Img,
-  'Weapon_FullIMG_PartOfTheDevil.png': PartOfTheDevil_Img,
-  'Weapon_FullIMG_PerretaM92.png': PerretaM92_Img,
-  'Weapon_FullIMG_PowerReactor_Yellow Mart.png': PowerReactor_Yellow_Mart_Img,
-  'Weapon_FullIMG_PowerSupportUnit_PP7.png': PowerSupportUnit_PP7_Img,
-  'Weapon_FullIMG_PureMagicStaff.png': PureMagicStaff_Img,
-  'Weapon_FullIMG_RampagingComputingDevice.png': RampagingComputingDevice_Img,
-  'Weapon_FullIMG_RapierOfBattle.png': Everette_WPImg,
-  'Weapon_FullIMG_RapierOfPrayer.png': RapierOfPrayer_Img,
-  'Weapon_FullIMG_RhinoDoubleSword.png': Nika_WPImg,
-  'Weapon_FullIMG_ShardsOfTheBrokenOne.png': ShardsOfTheBrokenOne_Img,
-  'Weapon_FullIMG_SoldierHarpe_Broken.png': SoldierHarpe_Broken_Img,
-  'Weapon_FullIMG_SoldierSword_Broken.png': SoldierSword_Broken_Img,
-  'Weapon_FullIMG_Soldier_Sword.png': Soldier_Sword_Img,
-  'Weapon_FullIMG_Soldier_Sword_DB.png': Soldier_Sword_DB_Img,
-  'Weapon_FullIMG_Soldier_Sword_SS.png': Soldier_Sword_SS_Img,
-  'Weapon_FullIMG_Spirit_Computing_Core.png': Spirit_Computing_Core_Img,
-  'Weapon_FullIMG_Spirit_Text.png': Spirit_Text_Img,
-  'Weapon_FullIMG_StaffOfTranel.png': StaffOfTranel_Img,
-  'Weapon_FullIMG_Staff_DemonScythe.png': Staff_DemonScythe_Img,
-  'Weapon_FullIMG_StaffofElf_Broken.png': StaffofElf_Broken_Img,
-  'Weapon_FullIMG_StaffofWisdom.png': Platina_WPImg,
-  'Weapon_FullIMG_Sword_Of_Greek_Warrior.png': Sword_Of_Greek_Warrior_Img,
-  'Weapon_FullIMG_TraceOfMagic.png': TraceOfMagic_Img,
-  'Weapon_FullIMG_WarriorDoubleSword.png': WarriorDoubleSword_Img,
-  'Weapon_FullIMG_WarriorDoubleSword_Broken.png': WarriorDoubleSword_Broken_Img,
-  'Weapon_FullIMG_White_Sword_Passion.png': White_Sword_Passion_Img,
-  'Weapon_FullIMG_WindGods_WingOrnament.png': WindGods_WingOrnament_Img,
-  'Weapon_FullIMG_WolfFang.png': WolfFang_Img,
+  'Araha_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_JK220_Artemis.png',
+  'Weapon_FullIMG_DualPistol_ForAhram': 'ALL_Weapons/Weapon_FullIMG_DualPistol_ForAhram.png',
+  'Weapon_FullIMG_TwoHandedMaul_ForJuza': 'ALL_Weapons/Weapon_FullIMG_TwoHandedMaul_ForJuza.png',
+  'Weapon_FullIMG_GoldenSphere.png': 'ALL_Weapons/Weapon_FullIMG_GoldenSphere.png',
+  'Weapon_FullIMG_Great_Sword.png': 'ALL_Weapons/Weapon_FullIMG_Great_Sword.png',
+  'Weapon_FullIMG_JK220_Artemis': 'ALL_Weapons/Weapon_FullIMG_JK220_Artemis.png',
+  'Weapon_FullIMG_MaceAndShield_ForBella_MS': 'ALL_Weapons/Weapon_FullIMG_MaceAndShield_ForBella_MS.png',
+  'Weapon_FullIMG_Torturas_ForBerga': 'ALL_Weapons/Weapon_FullIMG_Torturas_ForBerga.png',
+  'Weapon_FullIMG_Staff_ForCora': 'ALL_Weapons/Weapon_FullIMG_Staff_ForCora.png',
+  'Weapon_FullIMG_ArcaneBall_ForEchidna': 'ALL_Weapons/Weapon_FullIMG_ArcaneBall_ForEchidna.png',
+  'Weapon_FullIMG_ArcaneBall_ForEfreeti': 'ALL_Weapons/Weapon_FullIMG_ArcaneBall_ForEfreeti.png',
+  'Weapon_FullIMG_MaceAndShield_ForEmilia_MS': 'ALL_Weapons/Weapon_FullIMG_MaceAndShield_ForEmilia_MS.png',
+  'Weapon_FullIMG_TwoHandSword_ForErneste': 'ALL_Weapons/Weapon_FullIMG_TwoHandSword_ForErneste.png',
+  'Weapon_FullIMG_ArcaneBall_ForEugenia': 'ALL_Weapons/Weapon_FullIMG_ArcaneBall_ForEugenia.png',
+  'Weapon_FullIMG_StaffOfTheEnd': 'ALL_Weapons/Weapon_FullIMG_StaffOfTheEnd.png',
+  'Weapon_FullIMG_RoseOfSorrow': 'ALL_Weapons/Weapon_FullIMG_RoseOfSorrow.png',
+  'Weapon_FullIMG_ThousandMileVision': 'ALL_Weapons/Weapon_FullIMG_ThousandMileVision.png',
+  'Weapon_FullIMG_CutThroatKnight_Head': 'ALL_Weapons/Weapon_FullIMG_CutThroatKnight_Head.png',
+  'Weapon_FullIMG_TheDestinyOfTheSword': 'ALL_Weapons/Weapon_FullIMG_TheDestinyOfTheSword.png',
+  'Weapon_FullIMG_SignsOfTheHolySpirit': 'ALL_Weapons/Weapon_FullIMG_SignsOfTheHolySpirit.png',
+  'Weapon_FullIMG_TyrantEdge': 'ALL_Weapons/Weapon_FullIMG_TyrantEdge.png',
+  'Weapon_FullIMG_ArcaneBall_ForKalma': 'ALL_Weapons/Weapon_FullIMG_ArcaneBall_ForKalma.png',
+  'Weapon_FullIMG_SwordAndShield_ForKaul_SS': 'ALL_Weapons/Weapon_FullIMG_SwordAndShield_ForKaul_SS.png',
+  'Weapon_FullIMG_TwoHandSword_ForKilon': 'ALL_Weapons/Weapon_FullIMG_TwoHandSword_ForKilon.png',
+  'Weapon_FullIMG_Rifle_ForKimGaYeong': 'ALL_Weapons/Weapon_FullIMG_Rifle_ForKimGaYeong.png',
+  'Weapon_FullIMG_Staff_ForKorabi': 'ALL_Weapons/Weapon_FullIMG_Staff_ForKorabi.png',
+  'Weapon_FullIMG_ShardOfSpell_ForLeah': 'ALL_Weapons/Weapon_FullIMG_ShardOfSpell_ForLeah.png',
+  'Weapon_FullIMG_OneHandSword_ForLisandria': 'ALL_Weapons/Weapon_FullIMG_OneHandSword_ForLisandria.png',
+  'Weapon_FullIMG_Staff_ForLuise': 'ALL_Weapons/Weapon_FullIMG_Staff_ForLuise.png',
+  'Weapon_FullIMG_SwordOfLaphnesis_SS': 'ALL_Weapons/Weapon_FullIMG_SwordOfLaphnesis_SS.png',
+  'Weapon_FullIMG_TheBloodyExecutioner': 'ALL_Weapons/Weapon_FullIMG_TheBloodyExecutioner.png',
+  'Weapon_FullIMG_TwoHandSword_ForMarika': 'ALL_Weapons/Weapon_FullIMG_TwoHandSword_ForMarika.png',
+  'Weapon_FullIMG_TheWindOfLamora': 'ALL_Weapons/Weapon_FullIMG_TheWindOfLamora.png',
+  'Weapon_FullIMG_GoldenSwordOfTheEmpire_SS': 'ALL_Weapons/Weapon_FullIMG_SwordAndShield_ForMaximilia.png',
+  'Weapon_FullIMG_BlackIdol': 'ALL_Weapons/Weapon_FullIMG_BlackIdol.png',
+  'Weapon_FullIMG_Rifle_ForNari': 'ALL_Weapons/Weapon_FullIMG_Rifle_ForNari.png',
+  'Weapon_FullIMG_TheFishIsPoisonous': 'ALL_Weapons/Weapon_FullIMG_RhinoDoubleSword.png',
+  'Weapon_FullIMG_SilverTree_Branch_Mace_MS': 'ALL_Weapons/Weapon_FullIMG_SilverTree_Branch_Mace_MS.png',
+  'Weapon_FullIMG_TwoHandSword_ForOlivia': 'ALL_Weapons/Weapon_FullIMG_TwoHandSword_ForOlivia.png',
+  'Weapon_FullIMG_TheGrandAncestorsSpirit': 'ALL_Weapons/Weapon_FullIMG_TheGrandAncestorsSpirit.png',
+  'Weapon_FullIMG_DualSword_ForPalekar': 'ALL_Weapons/Weapon_FullIMG_DualSword_ForPalekar.png',
+  'Weapon_FullIMG_OneHandSword_ForPantheri': 'ALL_Weapons/Weapon_FullIMG_OneHandSword_ForPantheri.png',
+  'Weapon_FullIMG_FirstHeart': 'ALL_Weapons/Weapon_FullIMG_FirstHeart.PNG',
+  'Weapon_FullIMG_DualSword_ForSamarika': 'ALL_Weapons/Weapon_FullIMG_DualSword_ForSamarika.png',
+  'Weapon_FullIMG_Fleur_De_Vanite92': 'ALL_Weapons/Weapon_FullIMG_Fleur_De_Vanite92.png',
+  'Weapon_FullIMG_AigaionCore': 'ALL_Weapons/Weapon_FullIMG_AigaionCore.png',
+  'Weapon_FullIMG_Red_Acacia': 'ALL_Weapons/Weapon_FullIMG_Red_Acacia.png',
+  'Weapon_FullIMG_AtraHasis': 'ALL_Weapons/Weapon_FullIMG_AtraHasis.png',
+  'Weapon_FullIMG_DualPistol_ForYeonYeonChaeyoung': 'ALL_Weapons/Weapon_FullIMG_DualPistol_ForYeonYeonChaeyoung.png',
+  'Weapon_FullIMG_ShardOfSpell_ForYeonwoo': 'ALL_Weapons/Weapon_FullIMG_ShardOfSpell_ForYeonwoo.png',
+  'Weapon_FullIMG_DualPistol_ForYui': 'ALL_Weapons/Weapon_FullIMG_DualPistol_ForYui.png',
+  'Weapon_FullIMG_Skathia': 'ALL_Weapons/Weapon_FullIMG_BloodFlowsLikeRiver.png',
+  'Weapon_FullIMG_ShardOfSpell_ForShiraishiKotoha': 'ALL_Weapons/Weapon_FullIMG_ShardOfSpell_ForShiraishiKotoha.png',
+  'Weapon_FullIMG_Torturas_ForMira': 'ALL_Weapons/Weapon_FullIMG_Torturas_ForMira.png',
+  'Weapon_FullIMG_Torturas_ForMirana': 'ALL_Weapons/Weapon_FullIMG_Torturas_ForMirana.png',
+  'Bella_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_MaceAndShield_ForBella_MS.png',
+  'Berga_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_Torturas_ForBerga.png',
+  'Cora_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_Staff_ForCora.png',
+  'Efreeti_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_ArcaneBall_ForEfreeti.png',
+  'Weapon_FullIMG_ArcaneBall_ForNonoha': 'ALL_Weapons/Weapon_FullIMG_ArcaneBall_ForNonoha.png',
+  'Echidna_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_ArcaneBall_ForEchidna.png',
+  'Erneste_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_TwoHandSword_ForErneste.png',
+  'Emilia_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_MaceAndShield_ForEmilia_MS.png',
+  'Everette_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_StaffOfTheEnd.png',
+  'Fammene_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_RoseOfSorrow.png',
+  'Griselda_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_ThousandMileVision.png',
+  'Headless_Knight_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_CutThroatKnight_Head.png',
+  'Ines_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_TheDestinyOfTheSword.png',
+  'Juha_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_SignsOfTheHolySpirit.png',
+  'Kalina_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_TyrantEdge.png',
+  'Kalma_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_ArcaneBall_ForKalma.png',
+  'Kaul_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_SwordAndShield_ForKaul_SS.png',
+  'Kilon_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_TwoHandSword_ForKilon.png',
+  'Korabi_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_Staff_ForKorabi.png',
+  'Leah_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_ShardOfSpell_ForLeah.png',
+  'Lisandria_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_OneHandSword_ForLisandria.png',
+  'Luise_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_Staff_ForLuise.png',
+  'Mahari_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_SwordOfLaphnesis_SS.png',
+  'Marhim_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_TheBloodyExecutioner.png',
+  'Matrotho_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_TheWindOfLamora.png',
+  'Min_Eun_sol_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_BlackIdol.png',
+  'Nari_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_Rifle_ForNari.png',
+  'Nika_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_RhinoDoubleSword.png',
+  'Nymset_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_SilverTree_Branch_Mace_MS.png',
+  'Olivia_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_TwoHandSword_ForOlivia.png',
+  'Osla_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_TheGrandAncestorsSpirit.png',
+  'Pantheri_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_OneHandSword_ForPantheri.png',
+  'Platina_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_FirstHeart.PNG',
+  'Samarika_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_DualSword_ForSamarika.png',
+  'So_Joo_hee_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_Fleur_De_Vanite92.png',
+  'TX_Manticore.jpg': 'ALL_Weapons/Weapon_FullIMG_AigaionCore.png',
+  'Valeta_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_Red_Acacia.png',
+  'Vlissing_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_AtraHasis.png',
+  'Yeon_Chae-Young_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_DualPistol_ForYeonYeonChaeyoung.png',
+  'Yeonwoo_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_ShardOfSpell_ForYeonwoo.png',
+  'Yui_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_DualPistol_ForYui.png',
+  'Yvonna_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_BloodFlowsLikeRiver.png',
+  'kim_Ga_young_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_Rifle_ForKimGaYeong.png',
+  'Palekar_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_DualSword_ForPalekar.png',
+  'Eugenia_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_ArcaneBall_ForEugenia.png',
+  'Maximilia_WP.jpg': 'ALL_Weapons/Weapon_FullIMG_SwordAndShield_ForMaximilia.png',
+  'Weapon_FullIMG_AdvancedComputingDevice.png': 'ALL_Weapons/Weapon_FullIMG_AdvancedComputingDevice.png',
+  'Weapon_FullIMG_BasicCalculationHelperAddPlus1.png': 'ALL_Weapons/Weapon_FullIMG_BasicCalculationHelperAddPlus1.png',
+  'Weapon_FullIMG_BattleBlade_of_Ancient_Warrior.png': 'ALL_Weapons/Weapon_FullIMG_BattleBlade_of_Ancient_Warrior.png',
+  'Weapon_FullIMG_BattleDoubleSword.png': 'ALL_Weapons/Weapon_FullIMG_BattleDoubleSword.png',
+  'Weapon_FullIMG_BlackApple_BattleBlade_HA7.png': 'ALL_Weapons/Weapon_FullIMG_BlackApple_BattleBlade_HA7.png',
+  'Weapon_FullIMG_BlackApple_Harpe_HA7.png': 'ALL_Weapons/Weapon_FullIMG_BlackApple_Harpe_HA7.png',
+  'Weapon_FullIMG_BlackApple_Mace_HA7_MS.png': 'ALL_Weapons/Weapon_FullIMG_BlackApple_Mace_HA7_MS.png',
+  'Weapon_FullIMG_BlackApple_Rifle_HA7.png': 'ALL_Weapons/Weapon_FullIMG_BlackApple_Rifle_HA7.png',
+  'Weapon_FullIMG_BlackApple_Staff_HA7.png': 'ALL_Weapons/Weapon_FullIMG_BlackApple_Staff_HA7.png',
+  'Weapon_FullIMG_Blessed_Blunt_Of_Radiance_MS.png': 'ALL_Weapons/Weapon_FullIMG_Blessed_Blunt_Of_Radiance_MS.png',
+  'Weapon_FullIMG_BlizzardModule.png': 'ALL_Weapons/Weapon_FullIMG_BlizzardModule.png',
+  'Weapon_FullIMG_BloodFlowsLikeRiver.png': 'ALL_Weapons/Weapon_FullIMG_BloodFlowsLikeRiver.png',
+  'Weapon_FullIMG_Blunt_Of_Religious_MS.png': 'ALL_Weapons/Weapon_FullIMG_Blunt_Of_Religious_MS.png',
+  'Weapon_FullIMG_ClairvoyancerStaff.png': 'ALL_Weapons/Weapon_FullIMG_ClairvoyancerStaff.png',
+  'Weapon_FullIMG_Claymore.png': 'ALL_Weapons/Weapon_FullIMG_Claymore.png',
+  'Weapon_FullIMG_Claymore_Broken.png': 'ALL_Weapons/Weapon_FullIMG_Claymore_Broken.png',
+  'Weapon_FullIMG_Clock26.png': 'ALL_Weapons/Weapon_FullIMG_Clock26.png',
+  'Weapon_FullIMG_CorpseMountainBloodSea.png': 'ALL_Weapons/Weapon_FullIMG_CorpseMountainBloodSea.png',
+  'Weapon_FullIMG_CrimsonHarpe.png': 'ALL_Weapons/Weapon_FullIMG_SwordOfLaphnesis_SS.png',
+  'Weapon_FullIMG_Crowbar_MS.png': 'ALL_Weapons/Weapon_FullIMG_Crowbar_MS.png',
+  'Weapon_FullIMG_Dagger.png': 'ALL_Weapons/Weapon_FullIMG_Dagger.png',
+  'Weapon_FullIMG_Dagger_LifeFinish.png': 'ALL_Weapons/Weapon_FullIMG_Red_Acacia.png',
+  'Weapon_FullIMG_Dagger_LifeFinish_magic.png': 'ALL_Weapons/Weapon_FullIMG_Dagger_LifeFinish_magic.png',
+  'Weapon_FullIMG_Damascus_Flacata.png': 'ALL_Weapons/Weapon_FullIMG_Damascus_Flacata.png',
+  'Weapon_FullIMG_DiscoverAR.png': 'ALL_Weapons/Weapon_FullIMG_BlackIdol.png',
+  'Weapon_FullIMG_DiscoverComputingDevice.png': 'ALL_Weapons/Weapon_FullIMG_AigaionCore.png',
+  'Weapon_FullIMG_DiscoverMagicStaff.png': 'ALL_Weapons/Weapon_FullIMG_DiscoverMagicStaff.png',
+  'Weapon_FullIMG_DiscoverProtectCorePrototype.png': 'ALL_Weapons/Weapon_FullIMG_DiscoverProtectCorePrototype.png',
+  'Weapon_FullIMG_DiscoverTD5Pistol.png': 'ALL_Weapons/Weapon_FullIMG_DiscoverTD5Pistol.png',
+  'Weapon_FullIMG_DiscoverTD5Pistol_LightDestroyer.png': 'ALL_Weapons/Weapon_FullIMG_DiscoverTD5Pistol_LightDestroyer.png',
+  'Weapon_FullIMG_Discover_Custom_AR.png': 'ALL_Weapons/Weapon_FullIMG_Discover_Custom_AR.png',
+  'Weapon_FullIMG_Discover_Force_Field_Sword_SS.png': 'ALL_Weapons/Weapon_FullIMG_Discover_Force_Field_Sword_SS.png',
+  'Weapon_FullIMG_Discover_TD7-EF_Rifle.png': 'ALL_Weapons/Weapon_FullIMG_Discover_TD7-EF_Rifle.png',
+  'Weapon_FullIMG_Discover_TD7_Rifle.png': 'ALL_Weapons/Weapon_FullIMG_Discover_TD7_Rifle.png',
+  'Weapon_FullIMG_Discover_Titanium_Dual_Sword.png': 'ALL_Weapons/Weapon_FullIMG_Discover_Titanium_Dual_Sword.png',
+  'Weapon_FullIMG_Discover_Titanium_SA_Combat_Sword.png': 'ALL_Weapons/Weapon_FullIMG_Discover_Titanium_SA_Combat_Sword.png',
+  'Weapon_FullIMG_Discover_Titanium_TwoHandedSword.png': 'ALL_Weapons/Weapon_FullIMG_Discover_Titanium_TwoHandedSword.png',
+  'Weapon_FullIMG_EtherSixPistols.png': 'ALL_Weapons/Weapon_FullIMG_EtherSixPistols.png',
+  'Weapon_FullIMG_ExcavationCannon.png': 'ALL_Weapons/Weapon_FullIMG_ExcavationCannon.png',
+  'Weapon_FullIMG_EyeOfTheWind.png': 'ALL_Weapons/Weapon_FullIMG_SilverTree_Branch_Mace_MS.png',
+  'Weapon_FullIMG_FD57.png': 'ALL_Weapons/Weapon_FullIMG_FD57.png',
+  'Weapon_FullIMG_FaintFragmentOfMagicalPower.png': 'ALL_Weapons/Weapon_FullIMG_FaintFragmentOfMagicalPower.png',
+  'Weapon_FullIMG_FragmentOfMagic_DevilsDoor.png': 'ALL_Weapons/Weapon_FullIMG_FragmentOfMagic_DevilsDoor.png',
+  'Weapon_FullIMG_FragmentOfOverflowingMagic.png': 'ALL_Weapons/Weapon_FullIMG_FragmentOfOverflowingMagic.png',
+  'Weapon_FullIMG_ThousandMileVision.png': 'ALL_Weapons/Weapon_FullIMG_ThousandMileVision.png',
+  'Weapon_FullIMG_SignsOfTheHolySpirit.png': 'ALL_Weapons/Weapon_FullIMG_SignsOfTheHolySpirit.png',
+  'Weapon_FullIMG_TheDestinyOfTheSword.png': 'ALL_Weapons/Weapon_FullIMG_TheDestinyOfTheSword.png',
+  'Weapon_FullIMG_Harpe_ColorfulPatterns.png': 'ALL_Weapons/Weapon_FullIMG_Harpe_ColorfulPatterns.png',
+  'Weapon_FullIMG_Highlord_Mithril_Sword.png': 'ALL_Weapons/Weapon_FullIMG_Highlord_Mithril_Sword.png',
+  'Weapon_FullIMG_HolyWarOrcaRifle.png': 'ALL_Weapons/Weapon_FullIMG_HolyWarOrcaRifle.png',
+  'Weapon_FullIMG_HugeFrontTeeth.png': 'ALL_Weapons/Weapon_FullIMG_HugeFrontTeeth.png',
+  'Weapon_FullIMG_IceShotel.png': 'ALL_Weapons/Weapon_FullIMG_IceShotel.png',
+  'Weapon_FullIMG_ImperialCombatStaff.png': 'ALL_Weapons/Weapon_FullIMG_ImperialCombatStaff.png',
+  'Weapon_FullIMG_Iron_Staff.png': 'ALL_Weapons/Weapon_FullIMG_Iron_Staff.png',
+  'Weapon_FullIMG_JuniperStaff.png': 'ALL_Weapons/Weapon_FullIMG_JuniperStaff.png',
+  'Weapon_FullIMG_KnightSword.png': 'ALL_Weapons/Weapon_FullIMG_KnightSword.png',
+  'Weapon_FullIMG_KnightSword_SS.png': 'ALL_Weapons/Weapon_FullIMG_KnightSword_SS.png',
+  'Weapon_FullIMG_Lactan MagicPowerExpandablePowerCore_Discharged.png': 'ALL_Weapons/Weapon_FullIMG_Lactan MagicPowerExpandablePowerCore_Discharged.png',
+  'Weapon_FullIMG_LactanPowerCore_Discharged.png': 'ALL_Weapons/Weapon_FullIMG_LactanPowerCore_Discharged.png',
+  'Weapon_FullIMG_Lamora_Plate_Blade_Sword.png': 'ALL_Weapons/Weapon_FullIMG_Lamora_Plate_Blade_Sword.png',
+  'Weapon_FullIMG_Lamora_Plate_Blade_Sword_Broken.png': 'ALL_Weapons/Weapon_FullIMG_Lamora_Plate_Blade_Sword_Broken.png',
+  'Weapon_FullIMG_Lamora_Plate_Blade_Sword_Broken_SS.png': 'ALL_Weapons/Weapon_FullIMG_Lamora_Plate_Blade_Sword_Broken_SS.png',
+  'Weapon_FullIMG_Lamora_Plate_Blade_Sword_SS.png': 'ALL_Weapons/Weapon_FullIMG_Lamora_Plate_Blade_Sword_SS.png',
+  'Weapon_FullIMG_LifeTransmutingMagicPowerCore.png': 'ALL_Weapons/Weapon_FullIMG_LifeTransmutingMagicPowerCore.png',
+  'Weapon_FullIMG_LustrousMagicalGemFragment.png': 'ALL_Weapons/Weapon_FullIMG_LustrousMagicalGemFragment.png',
+  'Weapon_FullIMG_Mace_MS.png': 'ALL_Weapons/Weapon_FullIMG_Mace_MS.png',
+  'Weapon_FullIMG_MagicEngineeringHeatSword.png': 'ALL_Weapons/Weapon_FullIMG_MagicEngineeringHeatSword.png',
+  'Weapon_FullIMG_Magic_Fragment_Blunt_MS.png': 'ALL_Weapons/Weapon_FullIMG_Magic_Fragment_Blunt_MS.png',
+  'Weapon_FullIMG_MercenaryTwoHandedSword.png': 'ALL_Weapons/Weapon_FullIMG_MercenaryTwoHandedSword.png',
+  'Weapon_FullIMG_Mithrill_Staff.png': 'ALL_Weapons/Weapon_FullIMG_Mithrill_Staff.png',
+  'Weapon_FullIMG_Mithrill_Sword.png': 'ALL_Weapons/Weapon_FullIMG_Mithrill_Sword.png',
+  'Weapon_FullIMG_ObsidianWarSword.png': 'ALL_Weapons/Weapon_FullIMG_ObsidianWarSword.png',
+  'Weapon_FullIMG_OrcaRifle.png': 'ALL_Weapons/Weapon_FullIMG_OrcaRifle.png',
+  'Weapon_FullIMG_OrcaRifle_BulletStatue.png': 'ALL_Weapons/Weapon_FullIMG_OrcaRifle_BulletStatue.png',
+  'Weapon_FullIMG_ParallelComputingResonanceDevice.png': 'ALL_Weapons/Weapon_FullIMG_ParallelComputingResonanceDevice.png',
+  'Weapon_FullIMG_PartOfTheDevil.png': 'ALL_Weapons/Weapon_FullIMG_PartOfTheDevil.png',
+  'Weapon_FullIMG_PerretaM92.png': 'ALL_Weapons/Weapon_FullIMG_PerretaM92.png',
+  'Weapon_FullIMG_PowerReactor_Yellow Mart.png': 'ALL_Weapons/Weapon_FullIMG_PowerReactor_Yellow Mart.png',
+  'Weapon_FullIMG_PowerSupportUnit_PP7.png': 'ALL_Weapons/Weapon_FullIMG_PowerSupportUnit_PP7.png',
+  'Weapon_FullIMG_PureMagicStaff.png': 'ALL_Weapons/Weapon_FullIMG_PureMagicStaff.png',
+  'Weapon_FullIMG_RampagingComputingDevice.png': 'ALL_Weapons/Weapon_FullIMG_RampagingComputingDevice.png',
+  'Weapon_FullIMG_RapierOfBattle.png': 'ALL_Weapons/Weapon_FullIMG_StaffOfTheEnd.png',
+  'Weapon_FullIMG_RapierOfPrayer.png': 'ALL_Weapons/Weapon_FullIMG_RapierOfPrayer.png',
+  'Weapon_FullIMG_RhinoDoubleSword.png': 'ALL_Weapons/Weapon_FullIMG_RhinoDoubleSword.png',
+  'Weapon_FullIMG_ShardsOfTheBrokenOne.png': 'ALL_Weapons/Weapon_FullIMG_ShardsOfTheBrokenOne.png',
+  'Weapon_FullIMG_SoldierHarpe_Broken.png': 'ALL_Weapons/Weapon_FullIMG_SoldierHarpe_Broken.png',
+  'Weapon_FullIMG_SoldierSword_Broken.png': 'ALL_Weapons/Weapon_FullIMG_SoldierSword_Broken.png',
+  'Weapon_FullIMG_Soldier_Sword.png': 'ALL_Weapons/Weapon_FullIMG_Soldier_Sword.png',
+  'Weapon_FullIMG_Soldier_Sword_DB.png': 'ALL_Weapons/Weapon_FullIMG_Soldier_Sword_DB.png',
+  'Weapon_FullIMG_Soldier_Sword_SS.png': 'ALL_Weapons/Weapon_FullIMG_Soldier_Sword_SS.png',
+  'Weapon_FullIMG_Spirit_Computing_Core.png': 'ALL_Weapons/Weapon_FullIMG_Spirit_Computing_Core.png',
+  'Weapon_FullIMG_Spirit_Text.png': 'ALL_Weapons/Weapon_FullIMG_Spirit_Text.png',
+  'Weapon_FullIMG_StaffOfTranel.png': 'ALL_Weapons/Weapon_FullIMG_StaffOfTranel.png',
+  'Weapon_FullIMG_Staff_DemonScythe.png': 'ALL_Weapons/Weapon_FullIMG_Staff_DemonScythe.png',
+  'Weapon_FullIMG_StaffofElf_Broken.png': 'ALL_Weapons/Weapon_FullIMG_StaffofElf_Broken.png',
+  'Weapon_FullIMG_StaffofWisdom.png': 'ALL_Weapons/Weapon_FullIMG_FirstHeart.PNG',
+  'Weapon_FullIMG_Sword_Of_Greek_Warrior.png': 'ALL_Weapons/Weapon_FullIMG_Sword_Of_Greek_Warrior.png',
+  'Weapon_FullIMG_TraceOfMagic.png': 'ALL_Weapons/Weapon_FullIMG_TraceOfMagic.png',
+  'Weapon_FullIMG_WarriorDoubleSword.png': 'ALL_Weapons/Weapon_FullIMG_WarriorDoubleSword.png',
+  'Weapon_FullIMG_WarriorDoubleSword_Broken.png': 'ALL_Weapons/Weapon_FullIMG_WarriorDoubleSword_Broken.png',
+  'Weapon_FullIMG_White_Sword_Passion.png': 'ALL_Weapons/Weapon_FullIMG_White_Sword_Passion.png',
+  'Weapon_FullIMG_WindGods_WingOrnament.png': 'ALL_Weapons/Weapon_FullIMG_WindGods_WingOrnament.png',
+  'Weapon_FullIMG_WolfFang.png': 'ALL_Weapons/Weapon_FullIMG_WolfFang.png',
 };
 
 export interface Props {
@@ -337,16 +254,15 @@ if (!imageKey.includes('.')) {
 }
 
 // Get the imported image object from the map, fallback to Araha weapon if not found
-const imageSrc = weaponImageMap[imageKey] || weaponImageMap['Araha_WP.jpg'];
+const imageSrc = weaponImageMap[imageKey] || weaponImageMap[imageKey.replace(/\.jpg$/, '')] || weaponImageMap['Araha_WP.jpg'];
+import { r2Url } from '../../data/r2-config.js';
 ---
 
-<Image
-  src={imageSrc}
+<img
+  src={r2Url('horizon-walker', imageSrc)}
   alt={alt}
   width={width}
   height={height}
   class={className}
   loading={loading}
-  format={format}
-  quality={quality}
 />
