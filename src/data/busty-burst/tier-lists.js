@@ -52,14 +52,14 @@ export const BUSTY_BURST_TIER_LISTS = {
           'lucie',
           'viatrice',
           'rui',
-          'sr_slightly_mischievous_devil_luca',
+          'slightly-mischievous-devil-luca',
           'sr_farneria',
           'underboob_cheerleader_vanessa',
           'sr_gracie',
           'ishtovia',
           'seductive_vampire_soltina',
           'noble_succubus_empress_shamshel',
-          'warrior_of_love_and_chocolate_shaty',
+          'chocolate-shaty',
           'chocolate-frey',
           'fruit_basket_bianca',
           'lycorys',
@@ -111,6 +111,44 @@ export const BUSTY_BURST_TIER_LISTS = {
           'magdalena',
         ],
       },
+      {
+        tier: 'NYR',
+        definition: {
+          label: 'NYR',
+          description: 'Not yet rated — recently added units',
+          color: '#7f8c8d',
+        },
+        characters: [
+          // roster units with full art that were missing from the list
+          // (NY Feast Box Lynette 2101 is already rated as Overflowing Jubako Lynette)
+          'sr_lynette',
+          'vanessa',
+          'american-police-lapis',
+          'sweet-bunny-artia',
+          'raoul',
+          'cluul',
+          'beautia',
+          'fionore',
+          'yaksha',
+          'nina',
+          'abigail',
+          'underboob-cheerleader-gemini',
+          'underboob-cheerleader-henrietti',
+          'getting-out-of-the-pool-artia',
+          'eva',
+          'ines',
+          'collie',
+          'tempting-naked-apron-diana',
+          'gil',
+          'bonita',
+          'ashley',
+          'school-bloomers-black-knight',
+          'sirius',
+          'the-bride-of-luck-theresia',
+          'the-bride-of-purity-giselle',
+          'the-bride-of-seduction-ophelio',
+        ],
+      },
     ],
   },
   sr: {
@@ -144,7 +182,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           description: 'Strong SR characters',
           color: '#48dbfb',
         },
-        characters: ['nue', 'sr_slightly_mischievous_devil_luca'],
+        characters: ['nue', 'slightly-mischievous-devil-luca'],
       },
       {
         tier: 'A',
@@ -189,6 +227,22 @@ export const BUSTY_BURST_TIER_LISTS = {
           'sr_henrietti',
         ],
       },
+      {
+        tier: 'NYR',
+        definition: {
+          label: 'NYR',
+          description: 'Not yet rated — recently added SR units',
+          color: '#7f8c8d',
+        },
+        characters: [
+          'vanessa',
+          'beautia',
+          'underboob-cheerleader-henrietti',
+          'collie',
+          'ashley',
+          'the-bride-of-seduction-ophelio',
+        ],
+      },
     ],
   },
 };
@@ -230,7 +284,7 @@ export const ELEMENT_ORDER = ['Fire', 'Water', 'Wind', 'Light', 'Dark', 'Mind'];
 
 const ELEMENT_MERGE = { Holy: 'Light' };
 
-export const TIER_ORDER = ['SSS', 'SS', 'S', 'A', 'B'];
+export const TIER_ORDER = ['SSS', 'SS', 'S', 'A', 'B', 'NYR'];
 
 export function getElementTierList(listName = 'beginner') {
   const tierList = BUSTY_BURST_TIER_LISTS[listName];
