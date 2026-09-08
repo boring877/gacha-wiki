@@ -225,9 +225,9 @@ export const stigmas = {
     },
     {
       name: 'Lifebound',
-      twoSet: 'Max HP increases by N% during battle',
+      twoSet: 'Max HP +10% during battle',
       fourSet:
-        'When hit or healed, gain +N% to All ATK and +N% to both Crush and Slash Boost. Stacks up to 5 times.',
+        'When hit or healed, gain +5% to All ATK and +10% to both Crush and Slash Boost. Stacks up to 5 times.',
       pieces: {
         top: {
           name: 'Essence of Life',
