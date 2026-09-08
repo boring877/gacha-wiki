@@ -56,25 +56,32 @@ let mixedStigmaPieces: any = null;
 
 if (isMixedStigma) {
   // Handle mixed 2-set stigma builds
-  // Check which character this is and load appropriate stigmas
-  if (character.slug === 'echidna') {
-    // Echidna: The Eternal Battle + The Wind that Wanders the World
-    const eternalBattle = stigmas.EX?.find(stigma => stigma.name === 'The Eternal Battle');
-    const windWanders = stigmas.EX?.find(stigma => stigma.name === 'The Wind that Wanders the World');
-
-    if (eternalBattle && windWanders) {
-      mixedStigmaPieces = {
-        stigma1Name: 'The Eternal Battle',
-        stigma2Name: 'The Wind that Wanders the World',
-        top: eternalBattle.pieces.top, // The Eternal Battle
-        bottom: windWanders.pieces.bottom, // The Wind that Wanders the World
-        left: eternalBattle.pieces.left, // The Eternal Battle
-        right: windWanders.pieces.right, // The Wind that Wanders the World
-        twoSetBonus1: eternalBattle.twoSet, // Magic ATK +10% during battle
-        twoSetBonus2: windWanders.twoSet, // SPD +10% during battle
-      };
+  // Prefer an explicit per-slot layout from the build config (mixedSetLayout);
+  // fall back to the per-character defaults below for older configs.
+    const layout = buildConfig.mixedSetLayout;
+  if (layout && layout.top && layout.bottom && layout.left && layout.right) {
+    const setNames = [...new Set([layout.top, layout.bottom, layout.left, layout.right])];
+    if (setNames.length === 2) {
+      const st1 = stigmas.EX?.find((stigma) => stigma.name === setNames[0]);
+      const st2 = stigmas.EX?.find((stigma) => stigma.name === setNames[1]);
+      if (st1 && st2) {
+        const pieceFor = (slot: string) =>
+          (layout[slot] === setNames[0] ? st1 : st2).pieces[slot];
+        mixedStigmaPieces = {
+          stigma1Name: setNames[0],
+          stigma2Name: setNames[1],
+          top: pieceFor('top'),
+          bottom: pieceFor('bottom'),
+          left: pieceFor('left'),
+          right: pieceFor('right'),
+          twoSetBonus1: st1.twoSet,
+          twoSetBonus2: st2.twoSet,
+        };
+      }
     }
-  } else {
+  }
+  // Check which character this is and load appropriate stigmas
+  if (!mixedStigmaPieces && character.slug !== 'echidna') {
     // Default to Olivia's build: Reckoning of Sin + The Thousand Mile Weave
     const reckoningOfSin = stigmas.EX?.find(stigma => stigma.name === 'Reckoning of Sin');
     const thousandMileWeave = stigmas.EX?.find(stigma => stigma.name === 'The Thousand Mile Weave');
@@ -89,6 +96,23 @@ if (isMixedStigma) {
         right: thousandMileWeave.pieces.right, // The Thousand Mile Weave
         twoSetBonus1: reckoningOfSin.twoSet, // AP Recovery +4% during battle
         twoSetBonus2: thousandMileWeave.twoSet, // Melee ATK +10% during battle
+      };
+    }
+  } else if (!mixedStigmaPieces && character.slug === 'echidna') {
+    // Echidna: The Eternal Battle + The Wind that Wanders the World
+    const eternalBattle = stigmas.EX?.find(stigma => stigma.name === 'The Eternal Battle');
+    const windWanders = stigmas.EX?.find(stigma => stigma.name === 'The Wind that Wanders the World');
+
+    if (eternalBattle && windWanders) {
+      mixedStigmaPieces = {
+        stigma1Name: 'The Eternal Battle',
+        stigma2Name: 'The Wind that Wanders the World',
+        top: eternalBattle.pieces.top, // The Eternal Battle
+        bottom: windWanders.pieces.bottom, // The Wind that Wanders the World
+        left: eternalBattle.pieces.left, // The Eternal Battle
+        right: windWanders.pieces.right, // The Wind that Wanders the World
+        twoSetBonus1: eternalBattle.twoSet, // Magic ATK +10% during battle
+        twoSetBonus2: windWanders.twoSet, // SPD +10% during battle
       };
     }
   }

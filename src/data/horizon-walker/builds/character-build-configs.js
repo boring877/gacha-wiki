@@ -3,6 +3,7 @@
 
 import {
   juhaBuildConfig,
+  juzaBuildConfig,
   vlissingBuildConfig,
   oliviaBuildConfig,
   emiliaBuildConfig,
@@ -14,6 +15,7 @@ import {
 
 export const characterBuildConfigs = {
   juha: juhaBuildConfig,
+  juza: juzaBuildConfig,
   vlissing: vlissingBuildConfig,
   olivia: oliviaBuildConfig,
   emilia: emiliaBuildConfig,

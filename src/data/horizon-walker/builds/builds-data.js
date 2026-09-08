@@ -16,6 +16,13 @@ const characterBuilds = [
     available: true,
   },
   {
+    id: 8,
+    buildSlug: 'juza',
+    displayName: 'Juza',
+    rarity: 'EX',
+    available: true,
+  },
+  {
     id: 2,
     buildSlug: 'vlissing',
     displayName: 'Vlissing',

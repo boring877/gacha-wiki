@@ -224,6 +224,30 @@ export const stigmas = {
       },
     },
     {
+      name: 'Lifebound',
+      twoSet: 'Max HP increases by N% during battle',
+      fourSet:
+        'When hit or healed, gain +N% to All ATK and +N% to both Crush and Slash Boost. Stacks up to 5 times.',
+      pieces: {
+        top: {
+          name: 'Essence of Life',
+          stat: 'Max HP',
+        },
+        bottom: {
+          name: 'Flow of Life',
+          stat: 'Crit DMG',
+        },
+        left: {
+          name: 'Wellspring of Life',
+          stat: 'Slash Boost / Crush Boost',
+        },
+        right: {
+          name: 'Oath of Life',
+          stat: 'Max HP',
+        },
+      },
+    },
+    {
       name: 'The Wind that Wanders the World',
       twoSet: 'SPD +10% during battle',
       fourSet: 'AP Recovery +20% during battle. This effect applies only while HP is at 100%.',
