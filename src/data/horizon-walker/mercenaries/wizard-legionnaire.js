@@ -14,17 +14,17 @@ export const wizardLegionnaireMercenary = {
   // Basic Stats (at max level)
   stats: {
     // Basic Stats
-    strength: 5,
+    strength: 7,
     technic: 10,
-    intelligence: 19,
-    vitality: 13,
+    intelligence: 13,
+    vitality: 15,
     agility: 11,
 
     // Key Combat Stats
-    meleeAtk: 76,
+    meleeAtk: 102,
     rangedAtk: 140,
-    magicAtk: 256,
-    maxHp: 832,
+    magicAtk: 179,
+    maxHp: 960,
     spd: 61,
     startingAp: 120,
     apRecovery: 107,
@@ -63,8 +63,9 @@ export const wizardLegionnaireMercenary = {
       cooldown: '0R',
       damage: 'Magic ATK 114%',
       description:
-        'Shoots an arrow of fire to burn the enemy. Deals Heat DMG equal to 114% of magic ATK.',
+      'Shoots an arrow of fire to burn the enemy. Deals Heat DMG equal to N% of magic ATK.',
       tags: ['Magic', 'Heat', 'Single Target', 'Fire Arrow'],
+      gameKey: 'FireBolt',
     },
     {
       name: 'Ember',
@@ -73,8 +74,9 @@ export const wizardLegionnaireMercenary = {
       apCost: 0,
       cooldown: '0R',
       description:
-        'On a successful attack, applies the [Ember] effect to the enemy for 3 rounds. [Ember]: Reduces Heat DEF by 380.',
+      'On a successful attack, applies the <b>[Ember]</b> effect to the enemy for 3 rounds. - <b>[Ember]</b>: Reduces Heat DEF by {200, 220, 240, 260, 280, 300, 320, 340, 360, 380}.',
       tags: ['Passive', 'Heat Debuff', 'On-Hit', 'Heat DEF Reduction', 'Duration'],
+      gameKey: 'FireFlakes',
     },
     {
       name: 'Fireball',
@@ -84,8 +86,9 @@ export const wizardLegionnaireMercenary = {
       cooldown: '1R',
       damage: 'Magic ATK 143%',
       description:
-        'Launches a blazing orb of fire and causes it to explode, burning enemies. Deals Unblockable Heat DMG equal to 143% of magic ATK to all enemies within a 2m circular radius. During this attack, ACC temporarily increases by 300%.',
+      'Launches a blazing orb of fire and causes it to explode, burning enemies. Deals Unblockable Heat DMG equal to N% of magic ATK to all enemies within a 2m circular radius. During this attack, ACC temporarily increases by 300%.',
       tags: ['Magic', 'Heat', 'AoE', 'Unblockable', 'Accuracy Boost', 'Circle AoE'],
+      gameKey: 'FireBall',
     },
     {
       name: 'Fireflake Explosion',
@@ -95,8 +98,9 @@ export const wizardLegionnaireMercenary = {
       cooldown: '0R',
       damage: 'Magic ATK 38%',
       description:
-        'Ignites dying embers to burn enemies. At the start of the round, detonates all [Ember] effects on the battlefield, dealing additional Heat DMG equal to 38% of magic ATK.',
+      'Ignites dying embers to burn enemies. At the start of the round, detonates all <b>[Ember]</b> effects on the battlefield, dealing additional Heat DMG equal to {20, 22, 24, 26, 28, 30, 32, 34, 36, 38}% of magic ATK.',
       tags: ['Passive', 'Heat', 'Ember Synergy', 'Start of Round', 'Battlefield AoE'],
+      gameKey: 'FireFlakesExplosion',
     },
     {
       name: 'Blaze of Ascension',
@@ -106,7 +110,7 @@ export const wizardLegionnaireMercenary = {
       cooldown: '3R',
       damage: 'Magic ATK 380%',
       description:
-        'Commands surging flames to burn enemies in front. Deals Unblockable Heat DMG equal to 380% of magic ATK to all enemies within a 3m circular radius. During the attack, ACC temporarily increases by 300%, but weakness attacks are not possible.',
+      'Commands surging flames to burn enemies in front. Deals Unblockable Heat DMG equal to N% of magic ATK to all enemies within a 3m circular radius. During the attack, ACC temporarily increases by 300%, but weakness attacks are not possible.',
       tags: [
         'Magic',
         'Heat',
@@ -116,6 +120,7 @@ export const wizardLegionnaireMercenary = {
         'Accuracy Boost',
         'No Weakness',
       ],
+      gameKey: 'SoaringFire',
     },
   ],
 
@@ -199,5 +204,106 @@ export const wizardLegionnaireMercenary = {
       'horizon walker b rank mercenary',
       'fire magic mercenary',
     ],
+  },
+  heroId: 505,
+  rarityStages: {
+    'EX': {
+      strength: 6,
+      technic: 10,
+      intelligence: 13,
+      vitality: 11,
+      agility: 10,
+      maxHp: 704,
+      meleeAtk: 89,
+      rangedAtk: 140,
+      magicAtk: 179,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 118
+    },
+    'EX 1': {
+      strength: 6,
+      technic: 10,
+      intelligence: 13,
+      vitality: 12,
+      agility: 10,
+      maxHp: 768,
+      meleeAtk: 89,
+      rangedAtk: 140,
+      magicAtk: 179,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 118
+    },
+    'EX 2': {
+      strength: 6,
+      technic: 10,
+      intelligence: 13,
+      vitality: 13,
+      agility: 10,
+      maxHp: 832,
+      meleeAtk: 89,
+      rangedAtk: 140,
+      magicAtk: 179,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 118
+    },
+    'EX 3': {
+      strength: 6,
+      technic: 10,
+      intelligence: 13,
+      vitality: 14,
+      agility: 10,
+      maxHp: 896,
+      meleeAtk: 89,
+      rangedAtk: 140,
+      magicAtk: 179,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 118
+    },
+    'EX 4': {
+      strength: 7,
+      technic: 10,
+      intelligence: 13,
+      vitality: 14,
+      agility: 10,
+      maxHp: 896,
+      meleeAtk: 102,
+      rangedAtk: 140,
+      magicAtk: 179,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 118
+    },
+    'EX 5': {
+      strength: 7,
+      technic: 10,
+      intelligence: 13,
+      vitality: 14,
+      agility: 11,
+      maxHp: 896,
+      meleeAtk: 102,
+      rangedAtk: 140,
+      magicAtk: 179,
+      evade: 140,
+      apRecovery: 107,
+      startingAp: 120
+    },
+    'EX 6': {
+      strength: 7,
+      technic: 10,
+      intelligence: 13,
+      vitality: 15,
+      agility: 11,
+      maxHp: 960,
+      meleeAtk: 102,
+      rangedAtk: 140,
+      magicAtk: 179,
+      evade: 140,
+      apRecovery: 107,
+      startingAp: 120
+    },
   },
 };

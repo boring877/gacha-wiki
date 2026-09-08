@@ -14,22 +14,22 @@ export const swampElfVigilanteMercenary = {
   // Basic Stats (at max level)
   stats: {
     // Basic Stats
-    strength: 14,
+    strength: 10,
     technic: 8,
-    intelligence: 5,
-    vitality: 10,
-    agility: 17,
+    intelligence: 11,
+    vitality: 12,
+    agility: 15,
 
     // Key Combat Stats
-    meleeAtk: 179,
+    meleeAtk: 128,
     rangedAtk: 102,
-    magicAtk: 64,
-    maxHp: 640,
-    spd: 157,
-    startingAp: 119,
-    apRecovery: 122,
+    magicAtk: 140,
+    maxHp: 768,
+    spd: 143,
+    startingAp: 114,
+    apRecovery: 117,
     accuracy: 102,
-    evade: 217,
+    evade: 192,
     critRate: 10,
     critDmg: 150,
 
@@ -64,9 +64,10 @@ export const swampElfVigilanteMercenary = {
       cooldown: '0R',
       damage: 'Melee ATK 114%',
       description:
-        '[BASE SKILL] The swamp elf extends their long arms and swiftly swings the harpe. Deals Slash DMG equal to 114% of melee ATK.',
+      'The swamp elf extends their long arms and swiftly swings the harpe. Deals Slash DMG equal to N% of Melee ATK.',
       tags: ['Melee', 'Slash', 'Base Skill', 'Harpe'],
       skillClass: 'base-skill',
+      gameKey: 'HarpeSlash',
     },
     {
       name: 'Hunter on the Vine',
@@ -75,9 +76,10 @@ export const swampElfVigilanteMercenary = {
       apCost: 0,
       cooldown: '0R',
       description:
-        '[BASE SKILL] Increases Mobility by 10. After attacking, Evasion increases by 570% until the end of the turn. Additionally, during a basic attack, Melee ATK increases proportionally to the straight distance moved. Up to 10m movement grants a maximum of 114% increase.',
+      'Increases SPD by {20,23,26,29,32,35,38,41,44,47}. Additionally, when attacking, temporarily increases Melee ATK based on the straight-line distance moved. At 10 m, Melee ATK increases by up to {60,66,72,78,84,90,96,102,108,114}%.',
       tags: ['Passive', 'Mobility', 'Evasion', 'Movement Bonus', 'Base Skill'],
       skillClass: 'base-skill',
+      gameKey: 'RangerOnTheVine',
     },
 
     // === SWAMP TYRANT CLASS (Aggressive Assault) ===
@@ -89,9 +91,10 @@ export const swampElfVigilanteMercenary = {
       cooldown: '2R',
       damage: 'Melee ATK 190%',
       description:
-        '[SWAMP TYRANT CLASS] Leaps high and dives quickly to ambush enemies. Jumps to the designated location and deals Slash DMG equal to 190% of melee ATK to all enemies within a 1.3m circular radius. Ignores counterattacks from the target.',
+      'Leaps high and dives quickly to ambush enemies. Jumps to the designated location and deals Slash DMG equal to N% of Melee ATK to all enemies within a 1.3m circular radius. Ignores counterattacks from the target.',
       tags: ['Melee', 'Slash', 'AoE', 'Leap', 'No Counter', 'Tyrant Class'],
       skillClass: 'class-skill',
+      gameKey: 'DescentRaid',
     },
     {
       name: 'Blades of Tyranny',
@@ -101,9 +104,10 @@ export const swampElfVigilanteMercenary = {
       cooldown: '2R',
       damage: 'Melee ATK 380%',
       description:
-        '[SWAMP TYRANT CLASS] The harpe slashes around with lightning-like speed. Deals Slash DMG equal to 380% of melee ATK to all enemies within a 2.5m circular radius.',
+      'Slashes the area in a blinding flash of speed with twin harpes. Deals N% Slash DMG to all enemies within a 2.5m radius. Upon use, temporarily increases Crit Rate by {12.8,13.6,14.4,15.2,16,16.8,17.6,18.4,19.2,20}% of the user\'s Base Evasion. This bonus can reach up to a maximum of {32,34,36,38,40,42,44,46,48,50}%.',
       tags: ['Melee', 'Slash', 'AoE', 'High Damage', 'Lightning Speed', 'Tyrant Class'],
       skillClass: 'class-skill',
+      gameKey: 'BladeOfTyranny',
     },
     {
       name: 'Survival Expert',
@@ -112,9 +116,10 @@ export const swampElfVigilanteMercenary = {
       apCost: 0,
       cooldown: '0R',
       description:
-        '[SWAMP TYRANT CLASS] Once per battle, survives with 1 HP and immediately gains 150 AP.',
+      'Once per battle, survives a fatal blow with 1 HP and immediately gains {105,110,115,120,125,130,135,140,145,150} AP. Then restores {12,14,16,18,20,22,24,26,28,30}% of own HP.',
       tags: ['Passive', 'Survival', 'AP Gain', 'Once Per Battle', 'Tyrant Class'],
       skillClass: 'class-skill',
+      gameKey: 'SurvivalExpert',
     },
 
     // === SWAMP PREDATOR CLASS (Tactical Debuffer) ===
@@ -138,9 +143,10 @@ export const swampElfVigilanteMercenary = {
       cooldown: '3R',
       damage: 'Melee ATK 257% + 190%',
       description:
-        '[SWAMP PREDATOR CLASS] Leaps low towards the enemy, delivering a deadly strike while passing by with two Harpe blades. Deals Slash DMG equal to 257% of melee ATK while leaping over the enemy. If the target has the [Slow] effect, deals additional Slash DMG equal to 190% of melee ATK.',
+      'Leaps low toward the enemy, slashing past them with a deadly dual strike from both Harpes. Deals Slash DMG equal to N% of Melee ATK as the user vaults over the target.If the target is afflicted with <b>[Slow]</b>, deals additional Slash DMG equal to {100,110,120,130,140,150,160,170,180,190}% of the user\'s combined Melee ATK and Base Evasion.',
       tags: ['Melee', 'Slash', 'Conditional', 'Leap', 'Combo', 'Predator Class'],
       skillClass: 'class-skill',
+      gameKey: 'TheFangsOfABog',
     },
   ],
 
@@ -231,5 +237,106 @@ export const swampElfVigilanteMercenary = {
       'horizon walker b rank mercenary',
       'dual class mercenary',
     ],
+  },
+  heroId: 501,
+  rarityStages: {
+    'EX': {
+      strength: 10,
+      technic: 8,
+      intelligence: 7,
+      vitality: 10,
+      agility: 14,
+      maxHp: 640,
+      meleeAtk: 128,
+      rangedAtk: 102,
+      magicAtk: 89,
+      evade: 179,
+      apRecovery: 115,
+      startingAp: 112
+    },
+    'EX 1': {
+      strength: 10,
+      technic: 8,
+      intelligence: 8,
+      vitality: 10,
+      agility: 14,
+      maxHp: 640,
+      meleeAtk: 128,
+      rangedAtk: 102,
+      magicAtk: 102,
+      evade: 179,
+      apRecovery: 115,
+      startingAp: 112
+    },
+    'EX 2': {
+      strength: 10,
+      technic: 8,
+      intelligence: 9,
+      vitality: 10,
+      agility: 14,
+      maxHp: 640,
+      meleeAtk: 128,
+      rangedAtk: 102,
+      magicAtk: 115,
+      evade: 179,
+      apRecovery: 115,
+      startingAp: 112
+    },
+    'EX 3': {
+      strength: 10,
+      technic: 8,
+      intelligence: 9,
+      vitality: 10,
+      agility: 15,
+      maxHp: 640,
+      meleeAtk: 128,
+      rangedAtk: 102,
+      magicAtk: 115,
+      evade: 192,
+      apRecovery: 117,
+      startingAp: 114
+    },
+    'EX 4': {
+      strength: 10,
+      technic: 8,
+      intelligence: 9,
+      vitality: 11,
+      agility: 15,
+      maxHp: 704,
+      meleeAtk: 128,
+      rangedAtk: 102,
+      magicAtk: 115,
+      evade: 192,
+      apRecovery: 117,
+      startingAp: 114
+    },
+    'EX 5': {
+      strength: 10,
+      technic: 8,
+      intelligence: 10,
+      vitality: 12,
+      agility: 15,
+      maxHp: 768,
+      meleeAtk: 128,
+      rangedAtk: 102,
+      magicAtk: 128,
+      evade: 192,
+      apRecovery: 117,
+      startingAp: 114
+    },
+    'EX 6': {
+      strength: 10,
+      technic: 8,
+      intelligence: 11,
+      vitality: 12,
+      agility: 15,
+      maxHp: 768,
+      meleeAtk: 128,
+      rangedAtk: 102,
+      magicAtk: 140,
+      evade: 192,
+      apRecovery: 117,
+      startingAp: 114
+    },
   },
 };

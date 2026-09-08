@@ -50,7 +50,7 @@ export const puppyShooterMercenary = {
     immaterialDef: 0,
     poisonBoost: 0,
     poisonDef: 0,
-    blockRate: 150,
+    blockRate: 0,
   },
 
   // Skills
@@ -63,8 +63,9 @@ export const puppyShooterMercenary = {
       cooldown: '0R',
       damage: 'Ranged ATK 114%',
       description:
-        'Attacks the enemy by firing the equipped firearm. Deals Pierce DMG equal to 114% of Ranged ATK.',
+      'Attacks the enemy by firing the equipped firearm. Deals Pierce DMG equal to N% of Ranged ATK.',
       tags: ['Ranged', 'Pierce', 'Basic Attack'],
+      gameKey: 'MechanicalShooting',
     },
     {
       name: 'Response Fire Mode',
@@ -73,8 +74,9 @@ export const puppyShooterMercenary = {
       apCost: 90,
       cooldown: '0R',
       description:
-        "Enters [Response Fire mode], using computational power for precise aiming to support ally attacks. While in this state, counterattacking, support counterattacking, evading, and blocking are not possible. Until the user's next turn, provides a support attack with the 'Response Fire' skill whenever an ally attacks an enemy within a 7m range.\n\n[Response Fire]: Assists an ally by shooting the enemy. Deals Pierce DMG equal to 114% of Ranged ATK.",
+      'Enters <b>[Response Fire mode]</b>, using computational power for precise aiming to support ally attacks. While in this state, counterattacking, support counterattacking, evading, and blocking are not possible. Until the user\'s next turn, provides a support attack with the \'Response Fire\' skill whenever an ally attacks an enemy within a 7m range. <b>[#sepline]</b>**Response Fire</color>** Assists an ally by shooting the enemy. Deals Pierce DMG</color> equal to {60,66,72,78,84,90,96,102,108,114}% of Ranged ATK.',
       tags: ['Support', 'Mode Change', 'Team Support', 'Pierce'],
+      gameKey: 'ReactiveShootingMode',
     },
     {
       name: 'Shooting Learning System',
@@ -83,8 +85,9 @@ export const puppyShooterMercenary = {
       apCost: 0,
       cooldown: '0R',
       description:
-        'Each time an attack skill is successfully used, increases ACC by 19% and CRIT rate by 5.7%. This effect lasts until the end of battle and can stack up to 10 times.',
+      'Each time an attack skill is successfully used, increases ACC by {10,11,12,13,14,15,16,17,18,19}% and CRIT rate by {3,3.3,3.6,3.9,4.2,4.5,4.8,5.1,5.4,5.7}%. This effect lasts until the end of battle and can stack up to 10 times.',
       tags: ['Self-Buff', 'Accuracy', 'Critical', 'Stacking'],
+      gameKey: 'ShootingLearningSystem',
     },
     {
       name: 'Rampage Rush',
@@ -94,8 +97,9 @@ export const puppyShooterMercenary = {
       cooldown: '4R',
       damage: 'Ranged ATK 162%',
       description:
-        'Assumes a caterpillar form and charges forward, firing bullets wildly. Charges 12m, dealing Pierce DMG equal to 162% of Ranged ATK to all enemies within a 4m radius along the path. Weakness attacks cannot be performed with this skill.',
+      'Assumes a caterpillar form and charges forward, firing bullets wildly. Charges 12m, dealing Pierce DMG equal to N% of Ranged ATK to all enemies within a 4m radius along the path. Weakness attacks cannot be performed with this skill.',
       tags: ['Charge', 'Pierce', 'AoE', 'Movement'],
+      gameKey: 'RampageRush',
     },
     {
       name: 'Titanium Body',
@@ -103,8 +107,10 @@ export const puppyShooterMercenary = {
       level: '10/10',
       apCost: 0,
       cooldown: '0R',
-      description: 'Increases Slash DEF by 950.',
+      description:
+      'Increases Slash DEF by {500,550,600,650,700,750,800,850,900,950}.',
       tags: ['Defense', 'Slash Resistance'],
+      gameKey: 'TitaniumFuselage',
     },
   ],
 
@@ -188,5 +194,106 @@ export const puppyShooterMercenary = {
       'horizon walker b rank mercenary',
       'response fire support',
     ],
+  },
+  heroId: 15,
+  rarityStages: {
+    'EX': {
+      strength: 9,
+      technic: 9,
+      intelligence: 8,
+      vitality: 9,
+      agility: 13,
+      maxHp: 576,
+      meleeAtk: 115,
+      rangedAtk: 115,
+      magicAtk: 102,
+      evade: 166,
+      apRecovery: 112,
+      startingAp: 117
+    },
+    'EX 1': {
+      strength: 9,
+      technic: 9,
+      intelligence: 8,
+      vitality: 9,
+      agility: 14,
+      maxHp: 576,
+      meleeAtk: 115,
+      rangedAtk: 115,
+      magicAtk: 102,
+      evade: 179,
+      apRecovery: 115,
+      startingAp: 120
+    },
+    'EX 2': {
+      strength: 9,
+      technic: 9,
+      intelligence: 8,
+      vitality: 9,
+      agility: 15,
+      maxHp: 576,
+      meleeAtk: 115,
+      rangedAtk: 115,
+      magicAtk: 102,
+      evade: 192,
+      apRecovery: 117,
+      startingAp: 122
+    },
+    'EX 3': {
+      strength: 9,
+      technic: 10,
+      intelligence: 8,
+      vitality: 9,
+      agility: 15,
+      maxHp: 576,
+      meleeAtk: 115,
+      rangedAtk: 128,
+      magicAtk: 102,
+      evade: 192,
+      apRecovery: 117,
+      startingAp: 122
+    },
+    'EX 4': {
+      strength: 9,
+      technic: 10,
+      intelligence: 8,
+      vitality: 9,
+      agility: 16,
+      maxHp: 576,
+      meleeAtk: 115,
+      rangedAtk: 128,
+      magicAtk: 102,
+      evade: 204,
+      apRecovery: 120,
+      startingAp: 125
+    },
+    'EX 5': {
+      strength: 9,
+      technic: 10,
+      intelligence: 8,
+      vitality: 10,
+      agility: 16,
+      maxHp: 640,
+      meleeAtk: 115,
+      rangedAtk: 128,
+      magicAtk: 102,
+      evade: 204,
+      apRecovery: 120,
+      startingAp: 125
+    },
+    'EX 6': {
+      strength: 9,
+      technic: 11,
+      intelligence: 8,
+      vitality: 10,
+      agility: 16,
+      maxHp: 640,
+      meleeAtk: 115,
+      rangedAtk: 140,
+      magicAtk: 102,
+      evade: 204,
+      apRecovery: 120,
+      startingAp: 125
+    },
   },
 };

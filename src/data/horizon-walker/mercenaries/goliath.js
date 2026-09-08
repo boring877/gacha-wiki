@@ -50,7 +50,7 @@ export const goliathMercenary = {
     immaterialDef: 0,
     poisonBoost: 0,
     poisonDef: 0,
-    blockRate: 150,
+    blockRate: 0,
   },
 
   // Skills
@@ -63,8 +63,9 @@ export const goliathMercenary = {
       cooldown: '0R',
       damage: 'Ranged ATK 114%',
       description:
-        'Fire at the enemy with a large-caliber hand cannon. Deals Pierce DMG equal to 114% of Ranged ATK.',
+      'Fire at the enemy with a large-caliber hand cannon. Deals Pierce DMG equal to N% of Ranged ATK.',
       tags: ['Ranged', 'Pierce', 'Heavy Weapon', 'Cannon'],
+      gameKey: 'HandCannon',
     },
     {
       name: 'Interception Optimize',
@@ -73,8 +74,9 @@ export const goliathMercenary = {
       apCost: 0,
       cooldown: '0R',
       description:
-        'If the user Standby during this turn, ACC increases by 50% and Ranged ATK increases by 28.5% for 1 Round.',
+      'If the user Standby during this turn, ACC increases by 50% and Ranged ATK increases by {15,16.5,18,19.5,21,22.5,24,25.5,27,28.5}% for 1 Round.',
       tags: ['Passive', 'Conditional', 'Accuracy', 'Ranged ATK Boost'],
+      gameKey: 'InterceptOptimization',
     },
     {
       name: 'Rocket Launch',
@@ -84,8 +86,9 @@ export const goliathMercenary = {
       cooldown: '0R',
       damage: 'Ranged ATK 76% + Heat 76%',
       description:
-        'Launches a self-guided rocket towards the sky. Deals Crush DMG equal to 76% of Ranged ATK and deals additional Heat DMG equal to 76% of Ranged ATK. This attack benefits from a 100% ACC adjustment.',
+      'Launches a self-guided rocket towards the sky. Deals Crush DMG equal to N% of Ranged ATK and deals additional Heat DMG equal to {40,44,48,52,56,60,64,68,72,76}% of Ranged ATK. This attack benefits from a 100% ACC adjustment.',
       tags: ['Ranged', 'Crush', 'Heat', 'Rocket', 'Perfect Accuracy'],
+      gameKey: 'RocketLaunch',
     },
     {
       name: 'Close-range Reaction',
@@ -95,8 +98,9 @@ export const goliathMercenary = {
       cooldown: '0R',
       damage: 'Ranged ATK 190% + Melee ATK 57%',
       description:
-        'Forcefully pushes the target away and fires a shot. Deals Pierce DMG equal to 190% of Ranged ATK and additional Crush DMG equal to 57% of melee ATK, while knocking the target back by 5m.',
+      'Forcefully pushes the target away and fires a shot. Deals Pierce DMG equal to N% of Ranged ATK and additional Crush DMG equal to {30,33,36,39,42,45,48,51,54,57}% of Melee ATK, while knocking the target back by 5m.',
       tags: ['Ranged', 'Pierce', 'Crush', 'Knockback', 'Multi-Hit'],
+      gameKey: 'CloseRangeRespond',
     },
     {
       name: 'Triple Rocket Barrage',
@@ -105,8 +109,9 @@ export const goliathMercenary = {
       apCost: 150,
       cooldown: '1R',
       description:
-        "Entering Rocket Barrage mode. Immediately gain AP 200 and acquire 3 stacks of [Rocket Barrage model].\n\n[Rocket Barrage model]: Unable to move; only 'Rocket Barrage' and 'Standby' skills can be used. The mode ends after using 'Wait' or 3 times of 'Rocket Barrage', changing AP to 0.\n\n[Rocket Barrage]: Fire a rocket upward to bombard the ground. This attack does not consume AP to activate but consumes one stack of [Rocket Barrage model] after use. Deals Crush DMG equal to 76% of Ranged ATK and additional Heat DMG equal to 76% of Ranged ATK. Temporarily increases ACC by 100% during this attack.",
+      'Entering Rocket Barrage mode. Immediately gain AP</color> 200 and acquire 3 stacks of <b>[Rocket Barrage mode]</b>. <b>[Rocket Barrage mode]</b>: Unable to move; only \'Rocket Barrage\' and \'Standby\' skills can be used. The mode ends after using \'Wait\' or 3 times of \'Rocket Barrage,\' changing AP</color> to 0. <b>[#sepline]</b><b>Rocket Barrage</color></b> Fire a rocket upward to bombard the ground. This attack does not consume AP</color> to activate but consumes one stack of <b>[Rocket Barrage mode]</b> after use. Deals Crush DMG</color> equal to {40,44,48,52,56,60,64,68,72,76}% of Ranged ATK, and additional Heat DMG</color> equal to {40,44,48,52,56,60,64,68,72,76}% of Ranged ATK. Temporarily increases ACC by 100% during this attack.',
       tags: ['Mode Change', 'Artillery', 'Crush', 'Heat', 'Multi-Shot'],
+      gameKey: 'TripleRocketBombardment',
     },
     {
       name: 'Shooting Learning System',
@@ -115,8 +120,9 @@ export const goliathMercenary = {
       apCost: 0,
       cooldown: '0R',
       description:
-        'Each time an attack skill is successfully used, increases ACC by 10% and CRIT rate by 5.7%. This effect lasts until the end of battle and can stack up to 10 times.',
+      'Each time an attack skill is successfully used, increases ACC by {10,11,12,13,14,15,16,17,18,19}% and CRIT rate by {3,3.3,3.6,3.9,4.2,4.5,4.8,5.1,5.4,5.7}%. This effect lasts until the end of battle and can stack up to 10 times.',
       tags: ['Passive', 'Stacking', 'Accuracy', 'Critical', 'Self-Improvement'],
+      gameKey: 'ShootingLearningSystem',
     },
   ],
 
@@ -200,5 +206,106 @@ export const goliathMercenary = {
       'horizon walker b rank mercenary',
       'rocket mercenary',
     ],
+  },
+  heroId: 50,
+  rarityStages: {
+    'EX': {
+      strength: 11,
+      technic: 17,
+      intelligence: 10,
+      vitality: 16,
+      agility: 7,
+      maxHp: 1024,
+      meleeAtk: 140,
+      rangedAtk: 217,
+      magicAtk: 128,
+      evade: 89,
+      apRecovery: 97,
+      startingAp: 128
+    },
+    'EX 1': {
+      strength: 11,
+      technic: 17,
+      intelligence: 10,
+      vitality: 16,
+      agility: 10,
+      maxHp: 1024,
+      meleeAtk: 140,
+      rangedAtk: 217,
+      magicAtk: 128,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 136
+    },
+    'EX 2': {
+      strength: 12,
+      technic: 17,
+      intelligence: 10,
+      vitality: 16,
+      agility: 10,
+      maxHp: 1024,
+      meleeAtk: 153,
+      rangedAtk: 217,
+      magicAtk: 128,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 136
+    },
+    'EX 3': {
+      strength: 12,
+      technic: 18,
+      intelligence: 10,
+      vitality: 16,
+      agility: 10,
+      maxHp: 1024,
+      meleeAtk: 153,
+      rangedAtk: 230,
+      magicAtk: 128,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 136
+    },
+    'EX 4': {
+      strength: 12,
+      technic: 20,
+      intelligence: 10,
+      vitality: 16,
+      agility: 10,
+      maxHp: 1024,
+      meleeAtk: 153,
+      rangedAtk: 256,
+      magicAtk: 128,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 136
+    },
+    'EX 5': {
+      strength: 12,
+      technic: 20,
+      intelligence: 10,
+      vitality: 18,
+      agility: 10,
+      maxHp: 1152,
+      meleeAtk: 153,
+      rangedAtk: 256,
+      magicAtk: 128,
+      evade: 128,
+      apRecovery: 105,
+      startingAp: 136
+    },
+    'EX 6': {
+      strength: 12,
+      technic: 20,
+      intelligence: 10,
+      vitality: 18,
+      agility: 13,
+      maxHp: 1152,
+      meleeAtk: 153,
+      rangedAtk: 256,
+      magicAtk: 128,
+      evade: 166,
+      apRecovery: 112,
+      startingAp: 143
+    },
   },
 };

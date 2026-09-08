@@ -63,8 +63,9 @@ export const tortaWarriorMercenary = {
       cooldown: '0R',
       damage: 'Melee ATK 190%',
       description:
-        'Swings a deadly Torturus to deal Slash DMG equal to 190% of melee ATK to the enemy.',
+      'Swings a deadly Torturas to deal Slash DMG equal to N% of Melee ATK to the enemy.',
       tags: ['Melee', 'Slash', 'High Damage', 'Torturus'],
+      gameKey: 'CuttingLeather',
     },
     {
       name: 'Predatory Range',
@@ -74,8 +75,9 @@ export const tortaWarriorMercenary = {
       cooldown: '0R',
       damage: 'Melee ATK 114%',
       description:
-        'Throws a chained Torturus to pull the enemy closer. Deals Slash DMG equal to 114% of melee ATK and removes Counterattack. If the target is a large enemy, instead of pulling them closer, moves self to the front of the enemy.',
+      'Throws a chained Torturas to pull the enemy closer. Deals Slash DMG equal to N% of Melee ATK and removes Counterattack. If the target is a large enemy, instead of pulling them closer, moves self to the front of the enemy.',
       tags: ['Melee', 'Slash', 'Chain Weapon', 'Pull', 'Counter Removal', 'Positioning'],
+      gameKey: 'PredatoryDistance',
     },
     {
       name: 'Afflict Pain',
@@ -84,8 +86,9 @@ export const tortaWarriorMercenary = {
       apCost: 0,
       cooldown: '0R',
       description:
-        'Each time an attack is successfully made, has a 57% chance to Taunt the target.',
+      'Each time an attack is successfully made, has a {30,33,36,39,42,45,48,51,54,57}% chance to Taunt the target.',
       tags: ['Passive', 'Taunt', 'Crowd Control', 'On-Hit'],
+      gameKey: 'Threatening',
     },
     {
       name: 'Cry of the Ancients',
@@ -95,8 +98,9 @@ export const tortaWarriorMercenary = {
       cooldown: '2R',
       damage: 'Magic ATK 57%',
       description:
-        'With a shout filled with intense determination, demoralizes enemies and boosts own resolve. Deals Immaterial DMG equal to 57% of magic ATK. Hit enemies lose 10 AP while self gains the [Primal Regeneration] effect for 2R and Aggro Adjustment increases.\n\n[Primal Regeneration]: Whenever damaged, recovers HP by 57% of magic ATK. This recovery amount increases as the current HP ratio decreases, up to 4 times at 40% HP ratio.',
+      'With a shout filled with intense determination, demoralizes enemies and boosts own resolve. Deals Immaterial DMG equal to N% of magic ATK. Hit enemies lose 10 AP, while self gains the <b>[Primal Regeneration]</b> effect for 2R and <u>Aggro Adjustment</u> increases. - <b>[Primal Regeneration]</b>: Whenever damaged, recovers HP by {30,33,36,39,42,45,48,51,54,57}% of magic ATK. This recovery amount increases as the current HP ratio decreases, up to 4 times at 40% HP ratio.',
       tags: ['Magic', 'Immaterial', 'AP Drain', 'Self-Heal', 'Scaling Heal', 'Aggro'],
+      gameKey: 'CryOfTheAncientTimes',
     },
     {
       name: 'Endless Malice',
@@ -105,8 +109,9 @@ export const tortaWarriorMercenary = {
       apCost: 0,
       cooldown: '0R',
       description:
-        'When attacked by an enemy, reflects the damage received back to the attacker, dealing Fixed DMG equal to 57% of the damage taken. This reflected damage increases as own current HP ratio decreases, up to 4 times at 40% HP.',
+      'When attacked by an enemy, reflects the damage received back to the attacker, dealing Fixed DMG equal to {30,33,36,39,42,45,48,51,54,57}% of the damage taken. This reflected damage increases as own current HP ratio decreases, up to 4 times at 40% HP.',
       tags: ['Passive', 'Damage Reflection', 'Fixed Damage', 'Scaling', 'Retaliation'],
+      gameKey: 'EndlessKillingAura',
     },
   ],
 
@@ -189,5 +194,106 @@ export const tortaWarriorMercenary = {
       'horizon walker b rank mercenary',
       'chain weapon mercenary',
     ],
+  },
+  heroId: 503,
+  rarityStages: {
+    'EX': {
+      strength: 14,
+      technic: 8,
+      intelligence: 6,
+      vitality: 12,
+      agility: 9,
+      maxHp: 832,
+      meleeAtk: 179,
+      rangedAtk: 102,
+      magicAtk: 76,
+      evade: 112,
+      apRecovery: 102,
+      startingAp: 118
+    },
+    'EX 1': {
+      strength: 16,
+      technic: 8,
+      intelligence: 6,
+      vitality: 12,
+      agility: 9,
+      maxHp: 832,
+      meleeAtk: 204,
+      rangedAtk: 102,
+      magicAtk: 76,
+      evade: 112,
+      apRecovery: 102,
+      startingAp: 118
+    },
+    'EX 2': {
+      strength: 17,
+      technic: 8,
+      intelligence: 6,
+      vitality: 12,
+      agility: 9,
+      maxHp: 832,
+      meleeAtk: 217,
+      rangedAtk: 102,
+      magicAtk: 76,
+      evade: 112,
+      apRecovery: 102,
+      startingAp: 118
+    },
+    'EX 3': {
+      strength: 17,
+      technic: 8,
+      intelligence: 6,
+      vitality: 13,
+      agility: 9,
+      maxHp: 896,
+      meleeAtk: 217,
+      rangedAtk: 102,
+      magicAtk: 76,
+      evade: 112,
+      apRecovery: 102,
+      startingAp: 118
+    },
+    'EX 4': {
+      strength: 18,
+      technic: 8,
+      intelligence: 6,
+      vitality: 13,
+      agility: 9,
+      maxHp: 896,
+      meleeAtk: 230,
+      rangedAtk: 102,
+      magicAtk: 76,
+      evade: 112,
+      apRecovery: 102,
+      startingAp: 118
+    },
+    'EX 5': {
+      strength: 18,
+      technic: 8,
+      intelligence: 6,
+      vitality: 14,
+      agility: 9,
+      maxHp: 960,
+      meleeAtk: 230,
+      rangedAtk: 102,
+      magicAtk: 76,
+      evade: 112,
+      apRecovery: 102,
+      startingAp: 118
+    },
+    'EX 6': {
+      strength: 20,
+      technic: 8,
+      intelligence: 6,
+      vitality: 14,
+      agility: 9,
+      maxHp: 960,
+      meleeAtk: 256,
+      rangedAtk: 102,
+      magicAtk: 76,
+      evade: 112,
+      apRecovery: 102,
+      startingAp: 118
+    },
   },
 };
