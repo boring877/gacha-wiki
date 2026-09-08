@@ -326,7 +326,7 @@ export const CHAR_SKINS = {
   ],
   68: [
     { id: 213, number: 'N01', name: "Default", icon: 'UI_Icon_Hero_Juza_N01.png', fullIcon: 'UI_Icon_Hero_Full_Juza_N01.png', isDefault: true },
-    { id: 217, number: 'S01', name: "Doll", icon: 'UI_Icon_Hero_Juza_S01.png', fullIcon: 'UI_Icon_Hero_Full_Juza_S01.png', isDefault: false },
+    { id: 217, number: 'S01', name: "Doll", icon: 'UI_Icon_Hero_Juza_S01.png', fullIcon: 'UI_Icon_Hero_Full_Juza_S01.png', isDefault: false, promo: 'skin-promos/Juza_S01.webp', promoCaption: 'Official announcement art from the game X account' },
   ],
   69: [
     { id: 212, number: 'N01', name: "Default", icon: 'UI_Icon_Hero_ShiraishiKotoha_N01.png', fullIcon: 'UI_Icon_Hero_Full_ShiraishiKotoha_N01.png', isDefault: true },

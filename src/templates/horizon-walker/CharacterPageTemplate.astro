@@ -1480,6 +1480,23 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
     <section class="content-section character-skins-section">
       <h2 class="section-title">Skins</h2>
       <div class="skins-grid">
+        {heroSkins.filter((skin: any) => skin.promo).map((skin: any) => (
+          <div class="skin-promo-card">
+            <a href={r2Url('horizon-walker', skin.promo)} target="_blank" rel="noopener" class="skin-promo-link">
+              <img
+                src={r2Url('horizon-walker', skin.promo)}
+                alt={`${characterData.name} ${skin.name} skin announcement art`}
+                class="skin-promo-image"
+                loading="lazy"
+              />
+            </a>
+            <div class="skin-promo-caption">
+              <span class="skin-number">{skin.number}</span>
+              <span class="skin-promo-name">{skin.name}</span>
+              {skin.promoCaption && <span class="skin-promo-note">{skin.promoCaption}</span>}
+            </div>
+          </div>
+        ))}
         {heroSkins.map((skin) => (
           <div class={`skin-card${skin.isDefault ? ' skin-default' : ''}`}>
             <div class="skin-icon-wrap">
