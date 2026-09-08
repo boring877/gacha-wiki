@@ -121,24 +121,26 @@ export const horizonWalkerConfig = {
     {
       id: 'game-mechanics',
       title: 'Game Mechanics',
-      description: 'AP system, traits, and stigma sub stats',
+      description: 'AP system, traits, Demi-Ascension, and stigma sub stats',
       size: 'medium',
       guides: [
         { id: 'ap-guide', title: 'AP Guide', url: '/guides/horizon-walker/ap-guide/' },
         { id: 'traits', title: 'Traits', url: '/guides/horizon-walker/traits/' },
+        { id: 'demi', title: 'Demi-Ascension', url: '/guides/horizon-walker/demi/' },
         { id: 'stigma-sub-stats', title: 'Stigma Sub Stats', url: '/guides/horizon-walker/stigma-sub-stats/' },
       ],
     },
     {
       id: 'resources',
       title: 'Resources',
-      description: 'Gifts, clock, and redeem codes',
+      description: 'Gifts, clock, redeem codes, and patch notes',
       size: 'medium',
       guides: [
         { id: 'gifts', title: 'Gifts', url: '/guides/horizon-walker/gifts/' },
         { id: 'character-gifts', title: 'Character Gifts', url: '/guides/horizon-walker/character-gifts/' },
         { id: 'clock', title: 'Clock', url: '/clock/horizon-walker/' },
         { id: 'redeem-codes', title: 'Redeem Codes', url: '/guides/horizon-walker/redeem-codes/' },
+        { id: 'patch-notes', title: 'Patch Notes', url: '/guides/horizon-walker/updates/' },
       ],
     },
   ],
