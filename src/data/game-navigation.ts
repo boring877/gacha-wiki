@@ -153,6 +153,7 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
         links: [
           { name: 'AP Guide', href: '/guides/horizon-walker/ap-guide/' },
           { name: 'Traits', href: '/guides/horizon-walker/traits/' },
+          { name: 'Demi-Ascension', href: '/guides/horizon-walker/demi/' },
           { name: 'Stigma Sub Stats', href: '/guides/horizon-walker/stigma-sub-stats/' },
         ],
       },

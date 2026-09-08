@@ -297,6 +297,8 @@ export const DEMI_CHARACTERS = {
   "7": {
     "name": "Yeon Chae-young",
     "heroId": 7,
+    "slug": "yeon-chae-young",
+    "faceIcon": "UI_Icon_Hero_YeonChaeyoung_N01.png",
     "deploymentCost": 12,
     "authoritySkill": {
       "name": "Trail of Providence",
@@ -308,6 +310,8 @@ export const DEMI_CHARACTERS = {
   "11": {
     "name": "Platina",
     "heroId": 11,
+    "slug": "platina",
+    "faceIcon": "UI_Icon_Hero_Platina_N01.png",
     "deploymentCost": 17,
     "authoritySkill": {
       "name": "Iron Causality",
@@ -319,6 +323,8 @@ export const DEMI_CHARACTERS = {
   "16": {
     "name": "Pantheri",
     "heroId": 16,
+    "slug": "pantheri",
+    "faceIcon": "UI_Icon_Hero_Pantheri_N01.png",
     "deploymentCost": 20,
     "authoritySkill": {
       "name": "Sacred Duel",
@@ -330,6 +336,8 @@ export const DEMI_CHARACTERS = {
   "19": {
     "name": "Luise",
     "heroId": 19,
+    "slug": "luise",
+    "faceIcon": "UI_Icon_Hero_Luise_N01.png",
     "deploymentCost": 10,
     "authoritySkill": {
       "name": "Hellfire of Longing",
@@ -341,6 +349,8 @@ export const DEMI_CHARACTERS = {
   "37": {
     "name": "Ines",
     "heroId": 37,
+    "slug": "ines",
+    "faceIcon": "UI_Icon_Hero_Ines_N01.png",
     "deploymentCost": 22,
     "authoritySkill": {
       "name": "Blade of Genesis",
@@ -352,6 +362,8 @@ export const DEMI_CHARACTERS = {
   "38": {
     "name": "Marhim",
     "heroId": 38,
+    "slug": "marhim",
+    "faceIcon": "UI_Icon_Hero_Marhim_N01.png",
     "deploymentCost": 23,
     "authoritySkill": {
       "name": "Slaughtering Fangs",
@@ -363,6 +375,8 @@ export const DEMI_CHARACTERS = {
   "41": {
     "name": "Matrotho",
     "heroId": 41,
+    "slug": "matrotho",
+    "faceIcon": "UI_Icon_Hero_Matrotho_N01.png",
     "deploymentCost": 21,
     "authoritySkill": {
       "name": "Blooming Wind",
@@ -374,6 +388,8 @@ export const DEMI_CHARACTERS = {
   "25": {
     "name": "Nari",
     "heroId": 25,
+    "slug": "nari",
+    "faceIcon": "UI_Icon_Hero_Nari_N01.png",
     "deploymentCost": 18,
     "authoritySkill": {
       "name": "Judgment Aether Bullet",
@@ -385,6 +401,8 @@ export const DEMI_CHARACTERS = {
   "46": {
     "name": "Nymset",
     "heroId": 46,
+    "slug": "nymset",
+    "faceIcon": "UI_Icon_Hero_Nymset_N01.png",
     "deploymentCost": 17,
     "authoritySkill": {
       "name": "Immutable Radiance",
@@ -396,6 +414,8 @@ export const DEMI_CHARACTERS = {
   "21": {
     "name": "Samarika",
     "heroId": 21,
+    "slug": "samarika",
+    "faceIcon": "UI_Icon_Hero_Samarika_N01.png",
     "deploymentCost": 17,
     "authoritySkill": {
       "name": "Shadow of All Creation",
@@ -407,6 +427,8 @@ export const DEMI_CHARACTERS = {
   "63": {
     "name": "Maximilia",
     "heroId": 63,
+    "slug": "maximilia",
+    "faceIcon": "UI_Icon_Hero_Maximilia_N01.png",
     "deploymentCost": 20,
     "authoritySkill": {
       "name": "Spearhead's Gleam",
@@ -418,6 +440,8 @@ export const DEMI_CHARACTERS = {
   "56": {
     "name": "Korabi",
     "heroId": 56,
+    "slug": "korabi",
+    "faceIcon": "UI_Icon_Hero_Korabi_N01.png",
     "deploymentCost": 7,
     "authoritySkill": {
       "name": "Warlord",

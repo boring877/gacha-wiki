@@ -1,0 +1,356 @@
+---
+// Horizon Walker Demi-Ascension database: all demigods, Authority skills, and the Might pool
+import GuideLayout from '../../../layouts/horizon-walker/GuideLayout.astro';
+import { r2Url } from '../../../data/r2-config.js';
+import { DEMI_CHARACTERS, getMightSkillList, TIER_PROBABILITIES } from '../../../data/horizon-walker/demiskills.js';
+
+const title = 'Demi-Ascension Database - All Authorities and Might Skills | Horizon Walker Wiki';
+const description =
+  'Complete Demi-Ascension reference for Horizon Walker: all 12 demigods with their Authority skills at every stage, deployment costs, the 10 random Might skills with tier values, and tier probabilities.';
+
+const demigods = Object.values(DEMI_CHARACTERS);
+
+const substitute = (desc: string, stage: number) =>
+  String(desc ?? '').replace(/\{\s*([-0-9.][-0-9.,%\s]*?)\s*\}/g, (_m: string, list: string) => {
+    const vals = list.replace(/\s+/g, '').split(',');
+    return `<span class="demi-arr" data-vals="${list.replace(/\s+/g, '')}">${vals[Math.min(stage, vals.length) - 1] ?? list}</span>`;
+  });
+
+export const prerender = true;
+---
+
+<GuideLayout
+  title={title}
+  description={description}
+  pageTitle="Demi-Ascension Database"
+  subtitle="Every demigod Authority skill, stage value, deployment cost, and the shared Might skill pool."
+>
+  <div class="demi-db">
+    <section class="demi-db-intro">
+      <div class="demi-db-intro-card">
+        <h3>What is Demi-Ascension?</h3>
+        <p>
+          EX characters can undergo Demi-Ascension. A Demi-Ascended character can replace the leader
+          as the party Executor, granting the squad Oblivia immunity. Deploying them costs Divine
+          Power, and each brings a unique <strong>Authority skill</strong> that grows through 7
+          ascension stages.
+        </p>
+      </div>
+      <div class="demi-db-intro-card">
+        <h3>Might Skills</h3>
+        <p>
+          Upon Demi-Ascension the character also gains one of 10 <strong>Might skills</strong> at a
+          random tier from 1 to 5, higher tiers being rarer:
+        </p>
+        <div class="demi-db-probs">
+          {TIER_PROBABILITIES.map((tp: any) => (
+            <span class={`demi-db-prob demi-db-prob-${tp.tier}`}>T{tp.tier}: {tp.probability}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <h2 class="demi-db-heading">Demigods ({demigods.length})</h2>
+    <div class="demi-db-grid">
+      {demigods.map((d: any) => (
+        <article class="demi-db-card">
+          <div class="demi-db-card-head">
+            {d.faceIcon && (
+              <img class="demi-db-face" src={r2Url('horizon-walker', `heroes/${d.faceIcon}`)} alt={d.name} width={64} height={64} loading="lazy" />
+            )}
+            <div class="demi-db-id">
+              <h3 class="demi-db-name">{d.name}</h3>
+              <div class="demi-db-meta">
+                <span class="demi-db-cost" title="Deployment cost">DP {d.deploymentCost}</span>
+                {d.slug && <a class="demi-db-link" href={`/guides/horizon-walker/characters/${d.slug}/`}>View character</a>}
+              </div>
+            </div>
+          </div>
+
+          <div class="demi-db-authority">
+            <div class="demi-db-auth-head">
+              <h4 class="demi-db-auth-name">{d.authoritySkill.name}</h4>
+              <span class="demi-db-badge">Authority</span>
+            </div>
+            <div class="demi-db-tierbar">
+              <div class="demi-db-chips">
+                {[1, 2, 3, 4, 5, 6, 7].map((lv) => (
+                  <button type="button" class={`demi-db-chip${lv === 7 ? ' active' : ''}`} data-demi-tier={lv} aria-label={`Stage ${lv}`}>{lv}</button>
+                ))}
+              </div>
+              <span class="demi-db-view" data-demi-view>Stage 7</span>
+            </div>
+            <div class="demi-db-auth-body">
+              {d.authoritySkill.description.split('\n\n').map((paragraph: string) => (
+                <p set:html={substitute(paragraph, 7)} />
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <h2 class="demi-db-heading">Might Skill Pool (10)</h2>
+    <p class="demi-db-note">
+      One of these is granted at random on Demi-Ascension. Values shown per tier; tier is rolled
+      with the probabilities above.
+    </p>
+    <div class="demi-db-might-grid">
+      {getMightSkillList().map((might: any) => (
+        <article class="demi-db-might-card">
+          <div class="demi-db-might-head">
+            {might.icon && (
+              <img class="demi-db-might-icon" src={r2Url('horizon-walker', `skills/${might.icon.includes('.') ? might.icon : might.icon + '.png'}`)} alt={might.name} width={40} height={40} loading="lazy" />
+            )}
+            <h3 class="demi-db-might-name">{might.name}</h3>
+          </div>
+          <div class="demi-db-might-tiers">
+            {might.tiers.map((t: any) => (
+              <div class={`demi-db-tier-row demi-db-tier-${t.tier}`}>
+                <span class="demi-db-tier-label">T{t.tier}</span>
+                <span class="demi-db-tier-desc">{t.description}</span>
+              </div>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</GuideLayout>
+
+<style>
+  .demi-db {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .demi-db-intro {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  .demi-db-intro-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+  }
+  .demi-db-intro-card h3 {
+    color: #e8a547;
+    margin: 0 0 0.5rem;
+    font-size: 1.05rem;
+  }
+  .demi-db-intro-card p {
+    color: #ccc;
+    font-size: 0.925rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .demi-db-probs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.6rem;
+  }
+  .demi-db-prob {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 6px;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.8rem;
+    color: #eee;
+  }
+  .demi-db-prob-4, .demi-db-prob-5 { color: #e8a547; border-color: rgba(232, 165, 71, 0.5); }
+  .demi-db-heading {
+    color: #e8a547;
+    font-size: 1.35rem;
+    margin: 1rem 0 0;
+  }
+  .demi-db-note { color: #999; font-size: 0.9rem; margin: 0.35rem 0 0; }
+  .demi-db-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 1rem;
+  }
+  .demi-db-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .demi-db-card-head {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .demi-db-face {
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    object-fit: cover;
+  }
+  .demi-db-name {
+    color: #fff;
+    margin: 0;
+    font-size: 1.1rem;
+  }
+  .demi-db-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-top: 0.25rem;
+    flex-wrap: wrap;
+  }
+  .demi-db-cost {
+    background: rgba(232, 165, 71, 0.14);
+    border: 1px solid rgba(232, 165, 71, 0.4);
+    color: #e8a547;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+  }
+  .demi-db-link {
+    color: #9ecbff;
+    font-size: 0.82rem;
+    text-decoration: none;
+  }
+  .demi-db-link:hover { text-decoration: underline; }
+  .demi-db-authority {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+    padding: 0.85rem 0.95rem;
+  }
+  .demi-db-auth-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+  .demi-db-auth-name {
+    color: #e8a547;
+    margin: 0;
+    font-size: 1rem;
+  }
+  .demi-db-badge {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border: 1px solid rgba(232, 165, 71, 0.4);
+    color: #e8a547;
+    border-radius: 6px;
+    padding: 0.12rem 0.45rem;
+    white-space: nowrap;
+  }
+  .demi-db-tierbar {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .demi-db-chips { display: flex; gap: 0.3rem; }
+  .demi-db-chip {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 6px;
+    color: #eee;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.18rem 0.55rem;
+    cursor: pointer;
+    opacity: 0.55;
+  }
+  .demi-db-chip.active {
+    opacity: 1;
+    border-color: #e8a547;
+    color: #e8a547;
+  }
+  .demi-db-view {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #e8a547;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .demi-db-auth-body p {
+    color: #ddd;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0 0 0.5rem;
+  }
+  .demi-db-auth-body p:last-child { margin-bottom: 0; }
+  :global(.demi-db .demi-arr) {
+    color: #e8a547;
+    font-weight: 600;
+  }
+  .demi-db-might-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1rem;
+  }
+  .demi-db-might-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+  }
+  .demi-db-might-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+  .demi-db-might-icon {
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  .demi-db-might-name {
+    color: #fff;
+    margin: 0;
+    font-size: 1rem;
+  }
+  .demi-db-tier-row {
+    display: flex;
+    gap: 0.6rem;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 0.86rem;
+    line-height: 1.5;
+  }
+  .demi-db-tier-row:last-child { border-bottom: none; }
+  .demi-db-tier-label {
+    color: #e8a547;
+    font-weight: 600;
+    min-width: 1.6rem;
+  }
+  .demi-db-tier-desc { color: #ccc; }
+  @media (max-width: 640px) {
+    .demi-db-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    document.querySelectorAll('.demi-db-chips').forEach(function(chips) {
+      var card = chips.closest('.demi-db-card');
+      if (!card) return;
+      chips.querySelectorAll('.demi-db-chip').forEach(function(chip) {
+        chip.addEventListener('click', function() {
+          chips.querySelectorAll('.demi-db-chip').forEach(function(c) { c.classList.remove('active'); });
+          chip.classList.add('active');
+          var lv = parseInt(chip.getAttribute('data-demi-tier')) || 7;
+          card.querySelectorAll('.demi-arr').forEach(function(el) {
+            var vals = (el.getAttribute('data-vals') || '').split(',');
+            if (vals.length) el.textContent = vals[Math.min(lv, vals.length) - 1];
+          });
+          var view = card.querySelector('[data-demi-view]');
+          if (view) view.textContent = 'Stage ' + lv;
+        });
+      });
+    });
+  })();
+</script>
