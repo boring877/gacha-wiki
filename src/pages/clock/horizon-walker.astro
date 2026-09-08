@@ -1,7 +1,7 @@
 ---
+import { r2Url } from '../../data/r2-config.js';
 import HorizonWalkerClockLayout from '../../layouts/clock/HorizonWalker.astro';
 import { horizonWalkerConfig } from '../../data/clock/horizon-walker.js';
-import GameIcon from '../../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
 
 // Page metadata
 const title = 'Horizon Walker Clock - Server Reset Timer | GachaWiki';
@@ -12,7 +12,7 @@ const description =
 const games = [
   {
     ...horizonWalkerConfig,
-    image: GameIcon,
+    image: r2Url('horizon-walker', 'gameimg/gameicon.jpg'),
   },
 ];
 ---

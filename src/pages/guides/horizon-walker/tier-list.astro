@@ -1,22 +1,18 @@
 ---
+import { r2Url } from '../../../data/r2-config.js';
 import TierListLayout from '../../../layouts/horizon-walker/TierListLayout.astro';
 import { HORIZON_WALKER_TIER_LISTS, TIER_DEFINITIONS, TIER_CHARACTER_NOTES } from '../../../data/horizon-walker/tier-lists.js';
 import { HORIZON_WALKER_CHARACTERS } from '../../../data/horizon-walker/characters.js';
 import { HORIZON_WALKER_MERCENARIES } from '../../../data/horizon-walker/mercenaries.js';
 import { CharacterImage, MercenaryImage, HWRarityIcon } from '../../../components/horizon-walker/index.astro';
 import { Image } from 'astro:assets';
-import tierIcon01 from '../../../assets/images/games/horizon-walker/tier-icons/UI_Tier_Icon_01.png';
-import tierIcon02 from '../../../assets/images/games/horizon-walker/tier-icons/UI_Tier_Icon_02.png';
-import tierIcon03 from '../../../assets/images/games/horizon-walker/tier-icons/UI_Tier_Icon_03.png';
-import tierIcon04 from '../../../assets/images/games/horizon-walker/tier-icons/UI_Tier_Icon_04.png';
-import tierIcon05 from '../../../assets/images/games/horizon-walker/tier-icons/UI_Tier_Icon_05.png';
 
 const rarityIconMap = {
-  B: tierIcon01.src,
-  A: tierIcon02.src,
-  S: tierIcon03.src,
-  SS: tierIcon04.src,
-  EX: tierIcon05.src,
+  B: r2Url('horizon-walker', 'tier-icons/UI_Tier_Icon_01.png'),
+  A: r2Url('horizon-walker', 'tier-icons/UI_Tier_Icon_02.png'),
+  S: r2Url('horizon-walker', 'tier-icons/UI_Tier_Icon_03.png'),
+  SS: r2Url('horizon-walker', 'tier-icons/UI_Tier_Icon_04.png'),
+  EX: r2Url('horizon-walker', 'tier-icons/UI_Tier_Icon_05.png'),
 };
 
 // Combine all units (characters + mercenaries) for maker mode

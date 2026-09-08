@@ -1,9 +1,9 @@
 ---
+import { r2Url } from '../../data/r2-config.js';
 // Clock Landing Page - Hub for all game clocks
 import ClockLandingLayout from '../../layouts/clock/Landing.astro';
 import { getActiveLandingGames } from '../../data/clock/landing.js';
 import { Image } from 'astro:assets';
-import gameIcon from '../../assets/images/games/horizon-walker/gameimg/gameicon.jpg';
 import stellaSoraIcon from '../../assets/images/games/stella-sora/gameimg/Icon.jpg';
 import { R2 as BB_R2 } from '../../components/busty-burst/bb-r2';
 const bustyBurstIcon = BB_R2 + '/BG/Icon.webp';
@@ -18,7 +18,7 @@ games = games.map(game => {
   if (game.id === 'horizon-walker') {
     return {
       ...game,
-      image: gameIcon,
+      image: r2Url('horizon-walker', 'gameimg/gameicon.jpg'),
     };
   }
   if (game.id === 'stella-sora') {
