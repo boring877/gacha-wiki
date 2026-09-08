@@ -164,6 +164,25 @@
     font-weight: var(--font-semibold);
   }
 
+  /* Build priority badges (Main pick vs Alternative) */
+  .hw-badge[data-type='Main'] {
+    background: var(--hw-primary-warm);
+    color: #ffffff;
+    font-weight: var(--font-semibold);
+    min-height: 24px;
+    padding: 0.25rem 0.7rem;
+    font-size: var(--text-xs);
+  }
+
+  .hw-badge[data-type='Alt'] {
+    background: #3a3a3a;
+    color: #cccccc;
+    font-weight: var(--font-semibold);
+    min-height: 24px;
+    padding: 0.25rem 0.7rem;
+    font-size: var(--text-xs);
+  }
+
   /* Cost badge in mobile header - smaller, complementary to rarity badge */
   .header-badges .cost-badge {
     font-size: var(--text-sm);

@@ -234,6 +234,14 @@ export const hwTraits = {
       effects: ['Crit Rate: -5%', 'Crit DMG: +15%'],
     },
     {
+      name: 'Dogmatic',
+      effects: ['Crit DMG: +8%'],
+    },
+    {
+      name: 'Precarious',
+      effects: ['Crit DMG: +6%'],
+    },
+    {
       name: 'Doom',
       effects: ['Crit DMG: +12%', 'Max HP: -3%'],
     },

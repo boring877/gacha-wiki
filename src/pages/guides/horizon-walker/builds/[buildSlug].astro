@@ -579,19 +579,47 @@ if (isMixedStigma) {
 
           <div class="recommended-substats">
             <h5>Recommended Sub Stats</h5>
-            <div class="substats-list">
-              {buildConfig.recommendedSubstats.map((substat, index) => (
-                <div
-                  class={`substat-item ${index < 3 ? 'priority-best' : index === 3 ? 'priority-alternative' : 'priority-optional'}`}
-                >
-                  <div class="substat-info">
-                    <div class="substat-name">{substat.stat}</div>
-                    <div class="substat-priority">{substat.priority}</div>
-                  </div>
-                  <div class="substat-scale">{substat.scale}</div>
+            {
+              buildConfig.substatBuilds ? (
+                <div class="substat-builds">
+                  {buildConfig.substatBuilds.map(build => (
+                    <div class="substat-build-card">
+                      <div class="substat-build-name">{build.name}</div>
+                      {build.note && <div class="substat-build-note">{build.note}</div>}
+                      <div class="substats-list">
+                        {build.stats.map(stat => (
+                          <div class="substat-item">
+                            <div class="substat-info">
+                              <div class="substat-name">{stat.stat}</div>
+                              <span
+                                class="hw-badge"
+                                data-type={stat.priority === 'Highest' ? 'Main' : 'Alt'}
+                              >
+                                {stat.priority}
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              ) : (
+                <div class="substats-list">
+                  {buildConfig.recommendedSubstats.map((substat, index) => (
+                    <div
+                      class={`substat-item ${index < 3 ? 'priority-best' : index === 3 ? 'priority-alternative' : 'priority-optional'}`}
+                    >
+                      <div class="substat-info">
+                        <div class="substat-name">{substat.stat}</div>
+                        <div class="substat-priority">{substat.priority}</div>
+                      </div>
+                      <div class="substat-scale">{substat.scale}</div>
+                    </div>
+                  ))}
+                </div>
+              )
+            }
             <div class="substats-note">
               <strong>Priority:</strong> {buildConfig.substatsPriority}
             </div>
@@ -670,13 +698,18 @@ if (isMixedStigma) {
         <section class="character-build-section">
           <h3 class="character-build-section-title">Recommended Traits</h3>
           <div class="recommended-traits">
-            <h5>Best Traits for {buildConfig.traitsType} (Max 5 Traits)</h5>
+            <h5>Best Traits for {buildConfig.traitsType} (Max {buildConfig.traitsMax || 5} Traits)</h5>
             <div class="traits-list">
               {buildConfig.recommendedTraits.map((trait, index) => (
-                <div class={`trait-item ${index < 5 ? 'priority-best' : 'priority-alternative'}`}>
+                <div class={`trait-item ${trait.priority === 'Best' ? 'priority-best' : 'priority-alternative'}`}>
                   <div class="trait-info">
                     <div class="trait-name">{trait.name}</div>
-                    <div class="trait-priority">{trait.priority}</div>
+                    <span
+                      class="hw-badge"
+                      data-type={trait.priority === 'Best' ? 'Main' : 'Alt'}
+                    >
+                      {trait.priority === 'Best' ? 'Main' : 'Alt'}
+                    </span>
                   </div>
                   <div class="trait-effects">
                     {trait.effects.map(effect => (

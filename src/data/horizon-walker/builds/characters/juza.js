@@ -13,41 +13,46 @@ export const juzaBuildConfig = {
     {
       title: 'Pair Her With Eugenia',
       description:
-        'This build only works with Eugenia on the team. Eugenia buff is what pushes Juza to full Crit Rate, and without full Crit Rate the whole crit damage plan falls apart. With her buff up, the crit damage build gives you so much more damage and every hit pays off.',
-    },
-    {
-      title: 'No Eugenia, No Crit Build',
-      description:
-        'If you cannot pair Juza with Eugenia, do not run this build at all. You will be sitting on a huge Crit DMG stat that almost never crits. In that case go full Max HP instead and play her as a durable bruiser that leans on her HP-scaling skills.',
-    },
-    {
-      title: 'Stigma Layout',
-      description:
-        'Lifebound on the left and top stigma: the Twig (left) takes Crush Boost as its base stat and the Sword (top) takes Max HP. The Four Horsemen on the bottom and right: the Red Horseman of War (bottom) gives Crit DMG and the Blue Horseman of Death (right) gives Max HP. The two 2-set bonuses together give Max HP from Lifebound and Crit DMG +20% from The Four Horsemen, which is exactly what this build wants.',
-    },
-    {
-      title: 'Substats',
-      description:
-        'Crit DMG is the first priority on every stigma piece. Whatever rolls are left go into Max HP so she keeps enough bulk for Head-On Clash and the Lifebound set value.',
-    },
-    {
-      title: 'Traits',
-      description:
-        'Lock Crit DMG first, then Crush DMG, then one Max HP trait. That order keeps the damage scaling up while still grabbing a bit of survivability at the end.',
+        'Eugenia buff is what pushes Juza to full Crit Rate, and that is what makes the Crit DMG build hit so hard. Without Eugenia the crit build does not work, run the HP build instead.',
     },
   ],
-  recommendedSubstats: [
-    { stat: 'Crit DMG', scale: '6% - 10%', priority: 'Best' },
-    { stat: 'Crit DMG', scale: '6% - 10%', priority: 'Best' },
-    { stat: 'Max HP', scale: '4% - 6%', priority: 'Good' },
-    { stat: 'Max HP', scale: '4% - 6%', priority: 'Good' },
+  substatBuilds: [
+    {
+      name: 'Crit DMG Build (with Eugenia)',
+      note: 'The main build. Crit DMG is by far the highest value substat since Eugenia covers crit rate.',
+      stats: [
+        { stat: 'Crit DMG', priority: 'Highest' },
+        { stat: 'Max HP', priority: '2nd' },
+        { stat: 'AP Recovery', priority: '3rd' },
+      ],
+    },
+    {
+      name: 'HP Build (no Eugenia)',
+      note: 'The fallback when you cannot pair her with Eugenia. Stack HP and support with AP.',
+      stats: [
+        { stat: 'Max HP', priority: 'Highest' },
+        { stat: 'AP Recovery', priority: '2nd' },
+      ],
+    },
   ],
-  substatsPriority: 'Crit DMG first, then Max HP',
+  substatsPriority:
+    'Crit DMG build: Crit DMG, then Max HP, then AP Recovery. HP build: Max HP, then AP Recovery.',
   traitsType: 'Crit DMG + Crush DMG + Max HP',
+  traitsMax: 6,
   recommendedTraits: [
     {
-      name: 'Doom',
-      effects: ['Crit DMG: +12%', 'Max HP: -3%'],
+      name: 'Desperate',
+      effects: ['Crit Rate: -5%', 'Crit DMG: +15%'],
+      priority: 'Best',
+    },
+    {
+      name: 'Dogmatic',
+      effects: ['Crit DMG: +8%'],
+      priority: 'Best',
+    },
+    {
+      name: 'Precarious',
+      effects: ['Crit DMG: +6%'],
       priority: 'Best',
     },
     {
@@ -66,10 +71,21 @@ export const juzaBuildConfig = {
       priority: 'Best',
     },
     {
+      name: 'Doom',
+      effects: ['Crit DMG: +12%', 'Max HP: -3%'],
+      priority: 'Alternative',
+    },
+    {
+      name: 'Masterful',
+      effects: ['Slash Boost: +4%', 'Pierce Boost: +4%', 'Crush Boost: +4%'],
+      priority: 'Alternative',
+    },
+    {
       name: 'Resilient',
       effects: ['Max HP: +3%'],
       priority: 'Alternative',
     },
   ],
-  traitRecommendation: 'Doom first, then Heavy or Sieging, then one Max HP trait such as Sturdy',
+  traitRecommendation:
+    '6 main traits: Desperate, Dogmatic, and Precarious for Crit DMG, Heavy and Sieging for Crush DMG, Sturdy for Max HP. The Crit Rate loss on Desperate is fine with Eugenia. Doom is an alternative if you do not mind losing 3% Max HP for 12% Crit DMG.',
 };
