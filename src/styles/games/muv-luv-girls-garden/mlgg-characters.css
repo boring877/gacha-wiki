@@ -1,0 +1,307 @@
+/* Muv-Luv Girls Garden pilot database + character detail styles (dark flat). */
+
+/* ---- Database filter bar ---- */
+.mlgg-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  background: var(--mlgg-bg-card);
+  border: 1px solid var(--mlgg-border);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.mlgg-search {
+  flex: 1;
+  min-width: 180px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--mlgg-border-strong);
+  border-radius: 8px;
+  color: var(--mlgg-text-primary);
+  padding: 0.6rem 0.85rem;
+  font-size: 0.9rem;
+}
+
+.mlgg-search::placeholder {
+  color: var(--mlgg-text-muted);
+}
+
+.mlgg-select {
+  background: var(--mlgg-bg-tertiary);
+  border: 1px solid var(--mlgg-border-strong);
+  border-radius: 8px;
+  color: var(--mlgg-text-primary);
+  padding: 0.6rem 0.7rem;
+  font-size: 0.88rem;
+}
+
+.mlgg-reset {
+  padding: 0.55rem 1rem;
+  font-size: 0.88rem;
+}
+
+.mlgg-count {
+  color: var(--mlgg-text-tertiary);
+  font-size: 0.88rem;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* ---- Pilot grid ---- */
+.mlgg-char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.9rem;
+}
+
+.mlgg-char-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  background: var(--mlgg-bg-card);
+  border: 1px solid var(--mlgg-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.mlgg-char-icon {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  background: var(--mlgg-bg-tertiary);
+}
+
+.mlgg-char-body {
+  padding: 0.75rem 0.85rem 0.9rem;
+}
+
+.mlgg-char-name {
+  font-weight: 700;
+  color: var(--mlgg-text-primary);
+  font-size: 0.98rem;
+}
+
+.mlgg-char-romaji {
+  color: var(--mlgg-text-tertiary);
+  font-size: 0.8rem;
+  margin: 0.15rem 0 0.6rem;
+}
+
+.mlgg-char-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.45rem;
+}
+
+.mlgg-char-meta:last-child {
+  margin-bottom: 0;
+}
+
+.mlgg-char-cardcount {
+  color: var(--mlgg-text-tertiary);
+  font-size: 0.78rem;
+}
+
+.mlgg-no-results {
+  color: var(--mlgg-text-tertiary);
+  text-align: center;
+  padding: 2.5rem 0;
+}
+
+/* ---- Detail page ---- */
+.mlgg-detail-header {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.mlgg-detail-art {
+  width: 380px;
+  max-width: 45%;
+  border-radius: 10px;
+  border: 1px solid var(--mlgg-border);
+  background: var(--mlgg-bg-tertiary);
+  object-fit: cover;
+}
+
+.mlgg-detail-icon-fallback {
+  width: 220px;
+  max-width: 45%;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  border: 1px solid var(--mlgg-border);
+  background: var(--mlgg-bg-tertiary);
+  object-fit: cover;
+}
+
+.mlgg-detail-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.mlgg-detail-name {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--mlgg-text-primary);
+  line-height: 1.2;
+}
+
+.mlgg-detail-romaji {
+  color: var(--mlgg-accent-light);
+  font-size: 1.05rem;
+  margin: 0.2rem 0 0.1rem;
+}
+
+.mlgg-detail-kana {
+  color: var(--mlgg-text-tertiary);
+  font-size: 0.88rem;
+  margin-bottom: 0.8rem;
+}
+
+.mlgg-detail-badges {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.1rem;
+}
+
+.mlgg-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 0.6rem;
+}
+
+.mlgg-profile-item {
+  background: var(--mlgg-bg-card);
+  border: 1px solid var(--mlgg-border);
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+}
+
+.mlgg-profile-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mlgg-text-tertiary);
+  margin-bottom: 0.2rem;
+}
+
+.mlgg-profile-value {
+  color: var(--mlgg-text-primary);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.mlgg-lore {
+  padding: 1.2rem 1.4rem;
+}
+
+.mlgg-lore-en {
+  color: var(--mlgg-text-secondary);
+  line-height: 1.75;
+  font-size: 0.96rem;
+  margin-bottom: 1rem;
+}
+
+.mlgg-lore-jp {
+  color: var(--mlgg-text-tertiary);
+  line-height: 1.85;
+  font-size: 0.9rem;
+}
+
+.mlgg-lore-jp-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mlgg-text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.mlgg-cards-table-wrap {
+  padding: 0.4rem 0.6rem;
+  overflow-x: auto;
+}
+
+.mlgg-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: var(--mlgg-bg-tertiary);
+  display: block;
+}
+
+.mlgg-card-positions {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.mlgg-card-flavor {
+  font-size: 0.82rem;
+  color: var(--mlgg-text-tertiary);
+  max-width: 460px;
+  white-space: normal;
+  line-height: 1.6;
+}
+
+.mlgg-related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.7rem;
+}
+
+.mlgg-related-card {
+  text-decoration: none;
+  background: var(--mlgg-bg-card);
+  border: 1px solid var(--mlgg-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.mlgg-related-icon {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  background: var(--mlgg-bg-tertiary);
+}
+
+.mlgg-related-name {
+  color: var(--mlgg-text-primary);
+  font-size: 0.8rem;
+  padding: 0.45rem 0.55rem;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .mlgg-detail-header {
+    flex-direction: column;
+  }
+
+  .mlgg-detail-art,
+  .mlgg-detail-icon-fallback {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .mlgg-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mlgg-search,
+  .mlgg-select {
+    width: 100%;
+  }
+
+  .mlgg-count {
+    margin-left: 0;
+    text-align: center;
+  }
+}

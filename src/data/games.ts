@@ -158,6 +158,18 @@ export const GAMES: Game[] = [
     sections: ['Characters', 'Classes', 'Stats', 'Skills'],
   },
   {
+    id: 'muv-luv-girls-garden',
+    name: 'Muv-Luv Girls Garden',
+    slug: 'muv-luv-girls-garden',
+    description:
+      'Idle RPG • DMM GAMES • Muv-Luv Series • 51 Pilots • Banner History • JP Live, EN TBA',
+    image: r2Url('muv-luv-girls-garden', 'gameimg/icon.webp'),
+    url: '/guides/muv-luv-girls-garden/',
+    status: 'active',
+    themeColor: '#FA3C8C',
+    sections: ['Characters', 'Banners', 'Teams', 'Card Styles'],
+  },
+  {
     id: 'agent-x',
     name: 'Agent X',
     slug: 'agent-x',

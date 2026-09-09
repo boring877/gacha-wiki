@@ -24,6 +24,7 @@ const starSavior = g('star-savior');
 const rebellionGilgamesh = g('rebellion-gilgamesh');
 const majo = g('majo');
 const agentX = g('agent-x');
+const muvLuvGirlsGarden = g('muv-luv-girls-garden');
 
 // Type definitions for better code quality and IntelliSense
 export interface SocialLinks {
@@ -991,6 +992,67 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
     description: `Agent X wiki - R18 spy-agency gacha RPG on EROLABS. Command P.R.I.S.M.'s covert squad against The Fallen. Full agent database with rarity, element, role, stats, skills, gacha rates, and lore.`,
     genres: ['Spy RPG', 'Gacha', 'R18'] as const,
     platform: 'Mobile, PC',
+    playMode: 'SinglePlayer',
+  },
+  [muvLuvGirlsGarden.id]: {
+    gameName: muvLuvGirlsGarden.name,
+    keywords: [
+      muvLuvGirlsGarden.name,
+      'muv-luv girls garden',
+      'muvluv girls garden',
+      'girls garden',
+      'mabugaru',
+      'mabu garu',
+      'マブガル',
+      'マブラヴ ガールズガーデン',
+      'マブラヴガールズガーデン',
+      'muv-luv girls garden wiki',
+      'muv-luv girls garden guide',
+      'muv-luv girls garden characters',
+      'muv-luv girls garden database',
+      'マブガル 攻略',
+      'マブガル wiki',
+      'マブガル キャラ',
+      'マブラヴ ガールズガーデン 攻略',
+      // Banner keywords
+      'muv-luv girls garden banner',
+      'muv-luv girls garden banner list',
+      'muv-luv girls garden banner history',
+      'muv-luv girls garden gacha schedule',
+      'マブガル ガチャ',
+      'マブガル スケジュール',
+      // Info keywords
+      'muv-luv girls garden teams',
+      'muv-luv girls garden wiki characters',
+      'muv-luv girls garden release date',
+      'muv-luv girls garden dmm',
+      'マブガル チーム',
+      'マブガル リリース',
+      // Character names (high-intent)
+      'meiya muv-luv girls garden',
+      'sumika muv-luv girls garden',
+      'yui takamura',
+      'meru momozono',
+      // Game-type keywords
+      'idle rpg',
+      'dmm games',
+      'dmm gacha',
+      'muv-luv mobile game',
+      'muv-luv spinoff',
+      'anime idle game',
+      // Generic
+      'gacha game',
+      'character database',
+      'gacha strategy',
+      'mobile rpg',
+    ] as const,
+    themeColor: muvLuvGirlsGarden.themeColor,
+    description: `Muv-Luv Girls Garden (マブラヴ ガールズガーデン) wiki - Idle RPG on DMM GAMES set at Zaltoom academy city. Pilot database with cards, rarity, teams, types, roles, and profiles. Japan live, English release TBA.`,
+    genres: ['Idle RPG', 'Gacha', 'School'] as const,
+    platform: 'Mobile, PC',
+    alternateName: ['マブラヴ ガールズガーデン', 'マブガル'],
+    inLanguage: 'ja',
+    availableLanguage: ['ja'],
     playMode: 'SinglePlayer',
   },
 } as const;

@@ -1,0 +1,152 @@
+---
+// Muv-Luv Girls Garden pilot database: all pilots with card-style counts and filters.
+import MLGGLayout from '../../../../layouts/muv-luv-girls-garden/LandingLayout.astro';
+import MLGGImage from '../../../../components/muv-luv-girls-garden/MLGGImage.astro';
+import {
+  girlsGardenCharacters,
+  SCHOOLS,
+  TEAMS,
+} from '../../../../data/muv-luv-girls-garden/characters.js';
+import '../../../../styles/games/muv-luv-girls-garden/mlgg-common.css';
+import '../../../../styles/games/muv-luv-girls-garden/mlgg-characters.css';
+
+const characters = girlsGardenCharacters;
+
+// Distinct filter values in stable orders.
+const schools = [...new Set(characters.map(c => c.school).filter(Boolean))];
+const teams = [...new Set(characters.map(c => c.team).filter(Boolean))];
+
+// Grid icon: the pilot's newest card style.
+function newestIcon(ch) {
+  return ch.cards[ch.cards.length - 1].icon;
+}
+function newestCardRarities(ch) {
+  return [...new Set(ch.cards.map(c => c.rarity))];
+}
+---
+
+<MLGGLayout
+  title="Pilot Database - Muv-Luv Girls Garden"
+  description={`Complete character database for Muv-Luv Girls Garden (マブラヴ ガールズガーデン). All ${characters.length} pilots and ${characters.reduce((n, c) => n + c.cards.length, 0)} card styles with rarity, attribute, type, role, team and profile.`}
+  gameTitle="Pilot Database"
+>
+  <section class="mlgg-section">
+    <div class="mlgg-filter-bar">
+      <input
+        type="text"
+        class="mlgg-search"
+        placeholder="Search name or romaji..."
+        id="mlgg-search"
+        aria-label="Search pilots"
+      />
+      <select id="mlgg-school" class="mlgg-select" aria-label="Filter by school">
+        <option value="all">All Schools</option>
+        {schools.map(s => <option value={s}>{SCHOOLS[s] || s}</option>)}
+      </select>
+      <select id="mlgg-team" class="mlgg-select" aria-label="Filter by team">
+        <option value="all">All Teams</option>
+        {teams.map(t => <option value={t}>{TEAMS[t] || t}</option>)}
+      </select>
+      <select id="mlgg-sort" class="mlgg-select" aria-label="Sort">
+        <option value="name-asc">Name A to Z</option>
+        <option value="cards-desc">Most Cards</option>
+      </select>
+      <button type="button" class="mlgg-btn mlgg-btn-secondary mlgg-reset" id="mlgg-reset">Reset</button>
+      <span class="mlgg-count" id="mlgg-count">{characters.length} pilots</span>
+    </div>
+
+    <div class="mlgg-char-grid" id="mlgg-char-grid">
+      {characters.map(ch => (
+        <a
+          href={`/guides/muv-luv-girls-garden/characters/${ch.slug}/`}
+          class="mlgg-char-card"
+          data-school={ch.school}
+          data-team={ch.team}
+          data-name={(ch.name || '').toLowerCase()}
+          data-romaji={(ch.romaji || '').toLowerCase()}
+          data-kana={(ch.kana || '').toLowerCase()}
+          data-cards={ch.cards.length}
+        >
+          <MLGGImage
+            path={newestIcon(ch)}
+            alt={`${ch.name} card style`}
+            class="mlgg-char-icon"
+            width={150}
+            height={150}
+          />
+          <div class="mlgg-char-body">
+            <p class="mlgg-char-name">{ch.name}</p>
+            <p class="mlgg-char-romaji">{ch.romaji}</p>
+            <div class="mlgg-char-meta">
+              <span class="mlgg-badge">{SCHOOLS[ch.school] || ch.school}</span>
+              <span class="mlgg-badge">{TEAMS[ch.team] || ch.team}</span>
+            </div>
+            <div class="mlgg-char-meta">
+              {newestCardRarities(ch).map(r => (
+                <span class={`mlgg-badge mlgg-badge-rarity-${r}`}>{r}</span>
+              ))}
+              <span class="mlgg-char-cardcount">{ch.cards.length} cards</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+    <p class="mlgg-no-results" id="mlgg-no-results" hidden>No pilots match these filters.</p>
+  </section>
+</MLGGLayout>
+
+<script>
+  const search = document.getElementById('mlgg-search') as HTMLInputElement;
+  const schoolSel = document.getElementById('mlgg-school') as HTMLSelectElement;
+  const teamSel = document.getElementById('mlgg-team') as HTMLSelectElement;
+  const sortSel = document.getElementById('mlgg-sort') as HTMLSelectElement;
+  const resetBtn = document.getElementById('mlgg-reset');
+  const grid = document.getElementById('mlgg-char-grid');
+  const countEl = document.getElementById('mlgg-count');
+  const noResults = document.getElementById('mlgg-no-results');
+
+  function updateDisplay() {
+    if (!grid) return;
+    const query = (search?.value || '').toLowerCase();
+    const cards = grid.querySelectorAll('.mlgg-char-card') as NodeListOf<HTMLElement>;
+    const items: HTMLElement[] = Array.from(cards);
+
+    items.forEach(card => {
+      const name = card.dataset.name || '';
+      const romaji = card.dataset.romaji || '';
+      const kana = card.dataset.kana || '';
+      const matchesSearch =
+        !query || name.includes(query) || romaji.includes(query) || kana.includes(query);
+      const matchesSchool = !schoolSel || schoolSel.value === 'all' || card.dataset.school === schoolSel.value;
+      const matchesTeam = !teamSel || teamSel.value === 'all' || card.dataset.team === teamSel.value;
+      const show = matchesSearch && matchesSchool && matchesTeam;
+      card.style.display = show ? '' : 'none';
+    });
+
+    if (sortSel && sortSel.value === 'cards-desc') {
+      items
+        .sort((a, b) => Number(b.dataset.cards || 0) - Number(a.dataset.cards || 0))
+        .forEach(card => grid.appendChild(card));
+    } else if (sortSel && sortSel.value === 'name-asc') {
+      items
+        .sort((a, b) => (a.dataset.romaji || '').localeCompare(b.dataset.romaji || ''))
+        .forEach(card => grid.appendChild(card));
+    }
+
+    const visible = items.filter(c => c.style.display !== 'none').length;
+    if (countEl) countEl.textContent = `${visible} pilot${visible !== 1 ? 's' : ''}`;
+    if (noResults) noResults.hidden = visible !== 0;
+  }
+
+  search?.addEventListener('input', updateDisplay);
+  schoolSel?.addEventListener('change', updateDisplay);
+  teamSel?.addEventListener('change', updateDisplay);
+  sortSel?.addEventListener('change', updateDisplay);
+  resetBtn?.addEventListener('click', () => {
+    if (search) search.value = '';
+    if (schoolSel) schoolSel.value = 'all';
+    if (teamSel) teamSel.value = 'all';
+    if (sortSel) sortSel.value = 'name-asc';
+    updateDisplay();
+  });
+</script>

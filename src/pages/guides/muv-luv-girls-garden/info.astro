@@ -1,0 +1,139 @@
+---
+// Muv-Luv Girls Garden game info page: facts, setting, and the full team table.
+import MLGGLayout from '../../../layouts/muv-luv-girls-garden/LandingLayout.astro';
+import { girlsGardenCharacters, SCHOOLS, TEAMS } from '../../../data/muv-luv-girls-garden/characters.js';
+import '../../../styles/games/muv-luv-girls-garden/mlgg-common.css';
+import '../../../styles/games/muv-luv-girls-garden/mlgg-info.css';
+
+const pilots = girlsGardenCharacters.length;
+const cards = girlsGardenCharacters.reduce((n, c) => n + c.cards.length, 0);
+
+// Team summary: members + schools + links to each pilot page.
+const teamMap = new Map();
+for (const ch of girlsGardenCharacters) {
+  if (!teamMap.has(ch.team)) teamMap.set(ch.team, { members: [] });
+  teamMap.get(ch.team).members.push(ch);
+}
+const teams = [...teamMap.entries()]
+  .map(([jp, info]) => {
+    const schools = [...new Set(
+      info.members.map(m => (m.school && m.school !== '-' ? SCHOOLS[m.school] || m.school : null)).filter(Boolean)
+    )];
+    return { jp, en: TEAMS[jp] || jp, schools, members: info.members };
+  })
+  .sort((a, b) => b.members.length - a.members.length || a.en.localeCompare(b.en));
+---
+
+<MLGGLayout
+  title="Game Info - Muv-Luv Girls Garden"
+  description="Muv-Luv Girls Garden (マブラヴ ガールズガーデン) game info: developer, platforms, release dates, the world of Zaltoom and the Maze, and every team with its school and pilots."
+  gameTitle="Game Info"
+>
+  <section class="mlgg-section">
+    <h2 class="mlgg-section-title">Game Facts</h2>
+    <div class="mlgg-facts-grid">
+      <div class="mlgg-card mlgg-fact">
+        <p class="mlgg-fact-label">Developer</p>
+        <p class="mlgg-fact-value">EXNOA × KMS</p>
+        <p class="mlgg-fact-sub">Offered by DMM GAMES</p>
+      </div>
+      <div class="mlgg-card mlgg-fact">
+        <p class="mlgg-fact-label">Genre</p>
+        <p class="mlgg-fact-value">Full-auto idle RPG</p>
+        <p class="mlgg-fact-sub">放置系RPG</p>
+      </div>
+      <div class="mlgg-card mlgg-fact">
+        <p class="mlgg-fact-label">Platforms</p>
+        <p class="mlgg-fact-value">PC, Android, iOS</p>
+        <p class="mlgg-fact-sub">PC browser / DMM GAMES PLAYER, DMM GAMES STORE</p>
+      </div>
+      <div class="mlgg-card mlgg-fact">
+        <p class="mlgg-fact-label">JP Launch</p>
+        <p class="mlgg-fact-value">September 3, 2025</p>
+        <p class="mlgg-fact-sub">Free to play, with in-app purchases</p>
+      </div>
+      <div class="mlgg-card mlgg-fact">
+        <p class="mlgg-fact-label">Age Rating</p>
+        <p class="mlgg-fact-value">General + R18 builds</p>
+        <p class="mlgg-fact-sub">DMM distributes both versions</p>
+      </div>
+      <div class="mlgg-card mlgg-fact">
+        <p class="mlgg-fact-label">Theme Song</p>
+        <p class="mlgg-fact-value">Fukutsu no Fanfare</p>
+        <p class="mlgg-fact-sub">不屈のファンファーレ, sung by Koki Nakae</p>
+      </div>
+      <div class="mlgg-card mlgg-fact">
+        <p class="mlgg-fact-label">Roster</p>
+        <p class="mlgg-fact-value">{pilots} pilots, {cards} cards</p>
+        <p class="mlgg-fact-sub">Across {teams.length} teams</p>
+      </div>
+      <div class="mlgg-card mlgg-fact">
+        <p class="mlgg-fact-label">Staff</p>
+        <p class="mlgg-fact-value">World: Tashiro Hayato</p>
+        <p class="mlgg-fact-sub">Chara draft: Hasama, design: Siino / Pro-p, mecha: Wataru Inada</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mlgg-section">
+    <h2 class="mlgg-section-title">Setting</h2>
+    <p class="mlgg-section-sub">Zaltoom, the academy city of prodigies</p>
+    <div class="mlgg-card mlgg-setting">
+      <p>
+        Zaltoom is an academy city that gathers gifted students of scholarship, art, and
+        sport from all over the world. Beneath it spreads the Maze, a colossal,
+        shape-shifting underground space that is also the only source of Tatsumiya ore, a
+        resource of extraordinary value.
+      </p>
+      <p>
+        To mine the ore and answer the unknown threats inside, humanity built the Maze
+        Guarder (MG), a giant humanoid machine with the mobility to handle the Maze's
+        terrain. The girls who pilot them belong to the Pilot Program at the city's
+        schools, each flying the colors of their own team.
+      </p>
+      <p>
+        The story begins when you, a commander who has lost their memory, takes charge of
+        these girls. Deeper in the Maze, riders of Tactical Surface Fighters who call
+        themselves Eishi appear: guests from the world of the main Muv-Luv series.
+      </p>
+    </div>
+  </section>
+
+  <section class="mlgg-section">
+    <h2 class="mlgg-section-title">Teams</h2>
+    <p class="mlgg-section-sub">
+      {teams.length} squads across the schools of Zaltoom. Pilots link to their database
+      page.
+    </p>
+    <div class="mlgg-card mlgg-table-wrap">
+      <table class="mlgg-table">
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Japanese</th>
+            <th>School</th>
+            <th>Pilots</th>
+          </tr>
+        </thead>
+        <tbody>
+          {teams.map(t => (
+            <tr>
+              <td>{t.en}</td>
+              <td>{t.jp}</td>
+              <td>{t.schools.join(', ')}</td>
+              <td>
+                <div class="mlgg-team-members">
+                  {t.members.map(m => (
+                    <a href={`/guides/muv-luv-girls-garden/characters/${m.slug}/`} class="mlgg-team-member">
+                      {m.name}
+                    </a>
+                  ))}
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</MLGGLayout>

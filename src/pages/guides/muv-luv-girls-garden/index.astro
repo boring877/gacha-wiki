@@ -1,0 +1,132 @@
+---
+// Muv-Luv Girls Garden game overview landing page (standard wiki landing: hero
+// banner, story, download row, resources — mirrors agent-x/majo structure).
+import MLGGLayout from '../../../layouts/muv-luv-girls-garden/LandingLayout.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
+import DiscordPromo from '../../../components/DiscordPromo.astro';
+import {
+  girlsGardenCharacters,
+  TEAMS,
+} from '../../../data/muv-luv-girls-garden/characters.js';
+import { bannerTimeline } from '../../../data/muv-luv-girls-garden/banners.js';
+import '../../../styles/games/muv-luv-girls-garden/mlgg-common.css';
+import '../../../styles/games/muv-luv-girls-garden/mlgg-landing.css';
+
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/muv-luv-girls-garden';
+const R2_HERO = `${R2}/gameimg/hero.webp`;
+const pilots = girlsGardenCharacters.length;
+const cards = girlsGardenCharacters.reduce((n, c) => n + c.cards.length, 0);
+const teamCount = new Set(girlsGardenCharacters.map(c => c.team)).size;
+const lastUpdate = bannerTimeline[0]?.date;
+---
+
+<MLGGLayout
+  title="Home"
+  description="Muv-Luv Girls Garden (マブラヴ ガールズガーデン) wiki: pilot database with all card styles, banner history, teams, types and roles. Idle RPG in the Muv-Luv universe on DMM GAMES, Japan live, English release TBA."
+  gameTitle="Muv-Luv Girls Garden"
+  heroImage={R2_HERO}
+>
+  <section class="mlgg-content-section">
+    <div class="mlgg-story">
+      <p>
+        Memory is the one thing you have lost. In the academy city of <strong>Zaltoom</strong>,
+        where the gifted of scholarship, art, and sport gather, an amnesiac commander takes
+        charge of the girls of the Pilot Program. Together they dive into the <strong>Maze</strong>,
+        the strange underground space that hides the extraordinarily valuable Tatsumiya ore,
+        aboard giant humanoid machines: the <strong>Maze Guarders (MG)</strong>.
+      </p>
+      <p>
+        <strong>Muv-Luv Girls Garden</strong> (マブラヴ ガールズガーデン, マブガル) is a
+        full-auto idle RPG by EXNOA and KMS, offered on DMM GAMES. It launched in Japan on
+        September 3, 2025 (PC browser and DMM GAMES PLAYER, Android via the DMM GAMES STORE
+        since August 27, 2026), with a current roster of {pilots} pilots across
+        {teamCount} teams and {cards} collectible card styles, including crossover guests
+        from the main Muv-Luv series.
+      </p>
+      <div class="mlgg-note">
+        The game is currently Japan-only. This wiki is built from the Japanese release
+        (official site profiles plus the Japanese community wiki), using official romaji
+        names. An English version has not been announced; names and terms will be updated
+        if and when an English localization ships.
+      </div>
+    </div>
+
+    <div class="mlgg-download-row">
+      <a
+        class="mlgg-download-btn"
+        href="https://muvluv-girls-garden.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Official Site &amp; Play on DMM GAMES
+        <span class="mlgg-download-arrow">→</span>
+      </a>
+    </div>
+
+    <DiscordPromo accent="#FA3C8C" />
+
+    {lastUpdate && (
+      <p class="mlgg-last-updated">
+        Last Updated: <FormattedDate date={new Date(lastUpdate)} />
+      </p>
+    )}
+  </section>
+
+  <section class="mlgg-resources-section">
+    <h2 class="mlgg-resources-title">Guides &amp; Resources</h2>
+
+    <div class="mlgg-resources-grid">
+      <div class="mlgg-resource-category">
+        <div class="mlgg-category-header">
+          <h3>Characters</h3>
+          <p class="mlgg-category-description">
+            All {pilots} pilots and {cards} card styles with rarity, attribute, type, role
+            and profiles.
+          </p>
+        </div>
+        <div class="mlgg-buttons-grid">
+          <a href="/guides/muv-luv-girls-garden/characters/" class="mlgg-resource-button">Pilot Database</a>
+        </div>
+      </div>
+
+      <div class="mlgg-resource-category">
+        <div class="mlgg-category-header">
+          <h3>Banners</h3>
+          <p class="mlgg-category-description">
+            Full banner and card release history with banner art, featured pilots and new
+            memories.
+          </p>
+        </div>
+        <div class="mlgg-buttons-grid">
+          <a href="/guides/muv-luv-girls-garden/banners/" class="mlgg-resource-button">Banner History</a>
+        </div>
+      </div>
+
+      <div class="mlgg-resource-category">
+        <div class="mlgg-category-header">
+          <h3>Game</h3>
+          <p class="mlgg-category-description">
+            Game facts, the world of Zaltoom, and every team with its school and pilots.
+          </p>
+        </div>
+        <div class="mlgg-buttons-grid">
+          <a href="/guides/muv-luv-girls-garden/info/" class="mlgg-resource-button">Game Info</a>
+        </div>
+      </div>
+
+      <div class="mlgg-resource-category">
+        <div class="mlgg-category-header">
+          <h3>Official Links</h3>
+          <p class="mlgg-category-description">
+            The game's official site, X account, and the Japanese community wiki.
+          </p>
+        </div>
+        <div class="mlgg-buttons-grid">
+          <a href="https://muvluv-girls-garden.com/" target="_blank" rel="noopener noreferrer" class="mlgg-resource-button">Official Site</a>
+          <a href="https://x.com/Muvluv_GG" target="_blank" rel="noopener noreferrer" class="mlgg-resource-button">Official X</a>
+          <a href="https://muvluv-girls-garden.wikiru.jp/" target="_blank" rel="noopener noreferrer" class="mlgg-resource-button">wikiru.jp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</MLGGLayout>

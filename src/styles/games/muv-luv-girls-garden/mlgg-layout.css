@@ -1,0 +1,99 @@
+/* Muv-Luv Girls Garden layout styles (dark flat theme). */
+
+.mlgg-body {
+  background: var(--mlgg-bg-primary);
+  color: var(--mlgg-text-primary);
+  font-family: var(--font-primary);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+.mlgg-bg-primary {
+  background: var(--mlgg-bg-primary);
+}
+
+.mlgg-content {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+}
+
+.mlgg-container {
+  position: relative;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.mlgg-main {
+  min-width: 0;
+}
+
+.mlgg-title-only-section {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.mlgg-title-only-heading {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--mlgg-text-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+/* Hero banner section (agent-x / majo style landing). */
+.mlgg-hero-section {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.mlgg-hero-image-container {
+  width: 100%;
+  max-width: 64rem;
+  height: auto;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: 0 auto 1.25rem;
+  position: relative;
+  border: 1px solid var(--mlgg-border-strong);
+}
+
+.mlgg-hero-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.mlgg-hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 25%;
+  background: linear-gradient(to top, rgba(18, 20, 28, 0.55) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.content-area {
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .mlgg-container {
+    padding: 1rem;
+  }
+
+  .mlgg-title-only-heading {
+    font-size: 1.7rem;
+  }
+}

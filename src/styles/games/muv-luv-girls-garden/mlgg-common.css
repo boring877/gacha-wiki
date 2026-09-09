@@ -1,0 +1,251 @@
+/* Muv-Luv Girls Garden shared components: sections, cards, badges, tables.
+   Flat dark style: rgba cards, 10px radius, no shadows, no hover effects. */
+
+.mlgg-section {
+  margin-bottom: 2.5rem;
+}
+
+.mlgg-section-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--mlgg-text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.mlgg-section-sub {
+  color: var(--mlgg-text-tertiary);
+  font-size: 0.92rem;
+  margin-bottom: 1.2rem;
+}
+
+.mlgg-card {
+  background: var(--mlgg-bg-card);
+  border: 1px solid var(--mlgg-border);
+  border-radius: 10px;
+}
+
+.mlgg-note {
+  background: var(--mlgg-accent-tint);
+  border: 1px solid var(--mlgg-border);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  color: var(--mlgg-text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ---- Unified badge system (full/solid chips) ----
+   Solid colored chips with white (or near-black on amber) text, matching the
+   filled badge convention used across the wiki (agent-x style). Variants only
+   set --badge-bg and --badge-fg. */
+.mlgg-badge {
+  --badge-bg: #3a4252;
+  --badge-fg: #d9dde8;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  padding: 0.17rem 0.62rem;
+  border-radius: 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: 0.015em;
+  white-space: nowrap;
+  color: var(--badge-fg);
+  background: var(--badge-bg);
+  border: none;
+}
+
+/* Rarity */
+.mlgg-badge-rarity-SSR {
+  --badge-bg: #e8a52f;
+  --badge-fg: #26180a;
+}
+
+.mlgg-badge-rarity-SR {
+  --badge-bg: #8d6ff0;
+  --badge-fg: #ffffff;
+}
+
+.mlgg-badge-rarity-R {
+  --badge-bg: #4a9be8;
+  --badge-fg: #ffffff;
+}
+
+.mlgg-badge-rarity-UR {
+  --badge-bg: #f04f9b;
+  --badge-fg: #ffffff;
+}
+
+/* Attributes */
+.mlgg-badge-attr-Cute {
+  --badge-bg: #e0568f;
+  --badge-fg: #ffffff;
+}
+
+.mlgg-badge-attr-Shy {
+  --badge-bg: #4d86cf;
+  --badge-fg: #ffffff;
+}
+
+.mlgg-badge-attr-Aggressive {
+  --badge-bg: #dd5a3a;
+  --badge-fg: #ffffff;
+}
+
+.mlgg-badge-attr-Smart {
+  --badge-bg: #2e9ec9;
+  --badge-fg: #ffffff;
+}
+
+.mlgg-badge-attr-Clever {
+  --badge-bg: #9059da;
+  --badge-fg: #ffffff;
+}
+
+.mlgg-badge-attr-Comical {
+  --badge-bg: #d9a716;
+  --badge-fg: #241c04;
+}
+
+/* Types */
+.mlgg-badge-type-EN {
+  --badge-bg: #7457d6;
+  --badge-fg: #ffffff;
+}
+
+.mlgg-badge-type-Physical {
+  --badge-bg: #d9703c;
+  --badge-fg: #ffffff;
+}
+
+.mlgg-badge-type-Agility {
+  --badge-bg: #269c6d;
+  --badge-fg: #ffffff;
+}
+
+/* Roles */
+.mlgg-badge-role-Tank {
+  --badge-bg: #47799e;
+  --badge-fg: #ffffff;
+}
+
+.mlgg-badge-role-Support {
+  --badge-bg: #2b8f78;
+  --badge-fg: #ffffff;
+}
+
+.mlgg-badge-role-Control {
+  --badge-bg: #8a4fc0;
+  --badge-fg: #ffffff;
+}
+
+.mlgg-badge-role-Physical-Attacker {
+  --badge-bg: #d1543c;
+  --badge-fg: #ffffff;
+}
+
+.mlgg-badge-role-EN-Attacker {
+  --badge-bg: #6a4fd1;
+  --badge-fg: #ffffff;
+}
+
+/* Positions */
+.mlgg-badge-position-front {
+  --badge-bg: #d17f3f;
+  --badge-fg: #ffffff;
+}
+
+.mlgg-badge-position-back {
+  --badge-bg: #4d86cf;
+  --badge-fg: #ffffff;
+}
+
+/* Acquisition */
+.mlgg-badge-acq {
+  --badge-bg: #2f7fd6;
+  --badge-fg: #ffffff;
+}
+
+/* Banner entry types */
+.mlgg-banner-type-launch {
+  --badge-bg: #fa3c8c;
+  --badge-fg: #ffffff;
+}
+
+.mlgg-banner-type-gacha {
+  --badge-bg: #2f7fd6;
+  --badge-fg: #ffffff;
+}
+
+.mlgg-banner-type-limited {
+  --badge-bg: #cf8a24;
+  --badge-fg: #26180a;
+}
+
+.mlgg-banner-type-pre-registration {
+  --badge-bg: #8d6ff0;
+  --badge-fg: #ffffff;
+}
+
+.mlgg-banner-type-login-bonus {
+  --badge-bg: #269c6d;
+  --badge-fg: #ffffff;
+}
+
+.mlgg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.mlgg-table th {
+  text-align: left;
+  color: var(--mlgg-text-tertiary);
+  font-weight: 600;
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--mlgg-border-strong);
+  white-space: nowrap;
+}
+
+.mlgg-table td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--mlgg-border);
+  color: var(--mlgg-text-secondary);
+  vertical-align: top;
+}
+
+.mlgg-table td:first-child {
+  color: var(--mlgg-text-primary);
+}
+
+.mlgg-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--mlgg-accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.2rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.mlgg-btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--mlgg-text-primary);
+  border: 1px solid var(--mlgg-border-strong);
+}
+
+@media (max-width: 640px) {
+  .mlgg-table {
+    font-size: 0.82rem;
+  }
+
+  .mlgg-table th,
+  .mlgg-table td {
+    padding: 0.45rem 0.5rem;
+  }
+}

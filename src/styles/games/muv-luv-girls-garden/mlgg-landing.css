@@ -1,0 +1,117 @@
+/* Muv-Luv Girls Garden landing page styles (mirrors agent-x/majo landing structure). */
+
+.mlgg-content-section {
+  margin-bottom: 2.5rem;
+}
+
+.mlgg-story p {
+  color: var(--mlgg-text-secondary);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  font-size: 0.98rem;
+}
+
+.mlgg-story strong {
+  color: var(--mlgg-text-primary);
+}
+
+.mlgg-download-row {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin: 1.5rem 0;
+}
+
+.mlgg-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--mlgg-accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.85rem 1.4rem;
+  font-weight: 700;
+  font-size: 0.98rem;
+  text-decoration: none;
+}
+
+.mlgg-download-arrow {
+  font-size: 1.05rem;
+}
+
+.mlgg-last-updated {
+  color: var(--mlgg-text-tertiary);
+  font-size: 0.85rem;
+  margin-top: 1rem;
+}
+
+.mlgg-resources-section {
+  margin-bottom: 2.5rem;
+}
+
+.mlgg-resources-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--mlgg-text-primary);
+  margin-bottom: 1.2rem;
+}
+
+.mlgg-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.9rem;
+}
+
+.mlgg-resource-category {
+  background: var(--mlgg-bg-card);
+  border: 1px solid var(--mlgg-border);
+  border-radius: 10px;
+  padding: 1.2rem 1.3rem;
+}
+
+.mlgg-category-header h3 {
+  font-size: 1.05rem;
+  color: var(--mlgg-text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.mlgg-category-description {
+  color: var(--mlgg-text-tertiary);
+  font-size: 0.88rem;
+  margin-bottom: 0.9rem;
+  line-height: 1.5;
+}
+
+.mlgg-buttons-grid {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.mlgg-resource-button {
+  background: rgba(250, 60, 140, 0.14);
+  border: 1px solid rgba(250, 60, 140, 0.35);
+  color: var(--mlgg-accent-light);
+  border-radius: 8px;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.mlgg-table-wrap {
+  padding: 0.4rem 0.6rem;
+  overflow-x: auto;
+}
+
+@media (max-width: 640px) {
+  .mlgg-download-row {
+    flex-direction: column;
+  }
+
+  .mlgg-download-btn {
+    justify-content: center;
+  }
+}

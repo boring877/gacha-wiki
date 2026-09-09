@@ -11,7 +11,8 @@ export type GameKey =
   | 'make-drama'
   | 'desire-immortal-realm'
   | 'majo'
-  | 'agent-x';
+  | 'agent-x'
+  | 'muv-luv-girls-garden';
 
 export interface NavigationLink {
   name: string;
@@ -492,6 +493,28 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
         title: 'Mechanics',
         links: [
           { name: 'Stats & Formulas', href: '/guides/agent-x/stats/' },
+        ],
+      },
+    ],
+  },
+  'muv-luv-girls-garden': {
+    sections: [
+      {
+        title: 'Game',
+        links: [
+          { name: 'Game Info', href: '/guides/muv-luv-girls-garden/info/' },
+        ],
+      },
+      {
+        title: 'Characters',
+        links: [
+          { name: 'Database', href: '/guides/muv-luv-girls-garden/characters/' },
+        ],
+      },
+      {
+        title: 'Banners',
+        links: [
+          { name: 'Banner History', href: '/guides/muv-luv-girls-garden/banners/' },
         ],
       },
     ],

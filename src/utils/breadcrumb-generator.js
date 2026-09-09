@@ -151,6 +151,15 @@ const GAME_CONFIG = {
       characters: 'Characters',
     },
   },
+  'muv-luv-girls-garden': {
+    name: 'Muv-Luv Girls Garden',
+    basePath: '/guides/muv-luv-girls-garden/',
+    patterns: {
+      info: 'Game Info',
+      characters: 'Characters',
+      banners: 'Banner History',
+    },
+  },
 };
 
 /**

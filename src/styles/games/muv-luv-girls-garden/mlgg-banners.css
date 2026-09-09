@@ -1,0 +1,179 @@
+/* Muv-Luv Girls Garden banner history timeline (dark flat). */
+
+.mlgg-banners-intro {
+  color: var(--mlgg-text-secondary);
+  line-height: 1.75;
+  font-size: 0.98rem;
+  margin-bottom: 1rem;
+}
+
+.mlgg-banner-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.mlgg-banner-entry {
+  padding: 1.2rem 1.4rem;
+}
+
+.mlgg-banner-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.mlgg-banner-datebox {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.mlgg-banner-date {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--mlgg-text-primary);
+}
+
+.mlgg-banner-types {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.mlgg-banner-event {
+  text-align: right;
+}
+
+.mlgg-banner-event-name {
+  color: var(--mlgg-accent-light);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.mlgg-banner-event-period {
+  color: var(--mlgg-text-tertiary);
+  font-size: 0.82rem;
+  margin-top: 0.15rem;
+}
+
+.mlgg-banner-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.mlgg-banner-card {
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--mlgg-border);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+}
+
+.mlgg-banner-art-link {
+  flex-shrink: 0;
+  width: 300px;
+  max-width: 45%;
+  display: block;
+}
+
+.mlgg-banner-art {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  background: var(--mlgg-bg-tertiary);
+  border: 1px solid var(--mlgg-border);
+  object-fit: cover;
+}
+
+.mlgg-banner-art-fallback {
+  width: 100%;
+  aspect-ratio: 654 / 260;
+  border-radius: 8px;
+  display: block;
+  background: var(--mlgg-bg-tertiary);
+  border: 1px solid var(--mlgg-border);
+  object-fit: contain;
+}
+
+.mlgg-banner-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.mlgg-banner-card-title {
+  color: var(--mlgg-text-primary);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.mlgg-banner-card-name {
+  display: block;
+  color: var(--mlgg-accent-light);
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin: 0.25rem 0 0.6rem;
+  text-decoration: none;
+}
+
+.mlgg-banner-card-romaji {
+  color: var(--mlgg-text-tertiary);
+  font-weight: 400;
+  font-size: 0.82rem;
+}
+
+.mlgg-banner-card-badges {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.mlgg-badge-acq {
+  color: var(--mlgg-blue);
+  border-color: rgba(0, 150, 255, 0.4);
+}
+
+.mlgg-banner-memories {
+  margin-top: 0.9rem;
+}
+
+.mlgg-banner-memories-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mlgg-text-tertiary);
+  margin-bottom: 0.45rem;
+}
+
+.mlgg-banner-memories-list {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+/* Banner entry type badges use the unified system in mlgg-common.css
+   (.mlgg-banner-type-* sets --badge-fg/-bg/-border). */
+
+@media (max-width: 700px) {
+  .mlgg-banner-card {
+    flex-direction: column;
+  }
+
+  .mlgg-banner-art-link {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .mlgg-banner-event {
+    text-align: left;
+  }
+}

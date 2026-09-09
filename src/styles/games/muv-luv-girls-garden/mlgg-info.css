@@ -1,0 +1,70 @@
+/* Muv-Luv Girls Garden game info page (facts grid, setting, team table). */
+
+.mlgg-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 0.9rem;
+}
+
+.mlgg-fact {
+  padding: 1rem 1.1rem;
+}
+
+.mlgg-fact-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mlgg-text-tertiary);
+  margin-bottom: 0.35rem;
+}
+
+.mlgg-fact-value {
+  font-weight: 700;
+  color: var(--mlgg-text-primary);
+  font-size: 1rem;
+}
+
+.mlgg-fact-sub {
+  font-size: 0.8rem;
+  color: var(--mlgg-text-tertiary);
+  margin-top: 0.25rem;
+}
+
+.mlgg-setting {
+  padding: 1.3rem 1.5rem;
+}
+
+.mlgg-setting p {
+  color: var(--mlgg-text-secondary);
+  line-height: 1.75;
+  margin-bottom: 0.9rem;
+  font-size: 0.95rem;
+}
+
+.mlgg-setting p:last-child {
+  margin-bottom: 0;
+}
+
+.mlgg-table-wrap {
+  padding: 0.4rem 0.6rem;
+  overflow-x: auto;
+}
+
+.mlgg-team-members {
+  display: flex;
+  gap: 0.35rem 0.6rem;
+  flex-wrap: wrap;
+}
+
+.mlgg-team-member {
+  color: var(--mlgg-accent-light);
+  text-decoration: none;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .mlgg-team-member {
+    font-size: 0.8rem;
+  }
+}

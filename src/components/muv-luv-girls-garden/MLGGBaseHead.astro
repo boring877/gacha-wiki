@@ -1,0 +1,63 @@
+---
+// Base <head> metadata for Muv-Luv Girls Garden pages.
+import { SITE_TITLE } from '../../consts';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = SITE_TITLE,
+  description = 'Muv-Luv Girls Garden Wiki - Character Database, Cards, Teams & Pilot Profiles',
+} = Astro.props;
+
+const metaTitle =
+  title === SITE_TITLE ? SITE_TITLE : `${title} | Muv-Luv Girls Garden Wiki`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.json" />
+
+<title>{metaTitle}</title>
+<meta name="title" content={metaTitle} />
+<meta name="description" content={description} />
+<meta name="generator" content={Astro.generator} />
+
+<meta name="application-category" content="game" />
+<meta name="application-subcategory" content="rpg" />
+
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+
+<link rel="preload" href="/fonts/dm-sans-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/space-grotesk-600.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/dm-sans-600.woff2" as="font" type="font/woff2" crossorigin />
+
+<meta name="game:title" content="Muv-Luv Girls Garden マブラヴ ガールズガーデン" />
+<meta name="game:genre" content="Idle RPG, Gacha, School" />
+<meta name="game:platform" content="PC, Android, iOS" />
+<meta name="game:distribution" content="DMM GAMES" />
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'VideoGame',
+    name: 'Muv-Luv Girls Garden',
+    alternateName: ['マブラヴ ガールズガーデン', 'マブガル'],
+    description:
+      'Idle RPG set at the academy city Zaltoom in the Muv-Luv universe. Pilots dive into the underground Maze in giant Maze Guarder mechs. Japan-only release on DMM GAMES.',
+    genre: ['Idle RPG', 'Gacha', 'School'],
+    applicationCategory: 'Game',
+    operatingSystem: 'PC, Android, iOS',
+    playMode: 'SinglePlayer',
+    url: canonicalURL,
+  })}
+/>

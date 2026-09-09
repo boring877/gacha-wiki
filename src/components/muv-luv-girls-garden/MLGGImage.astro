@@ -1,0 +1,37 @@
+---
+// Resolves an R2 image path for Muv-Luv Girls Garden (images live on the
+// gachawiki-images R2 bucket, not in the repo, per the 20k-file limit policy).
+// path is relative to the game root, e.g. 'characters/meru-momozono.webp'
+// or 'cards/meru-momozono-1.webp'. Renders a plain <img> (no astro:assets).
+import { R2_BASE } from '../../data/r2-config.js';
+
+export interface Props {
+  path: string;
+  alt?: string;
+  class?: string;
+  loading?: 'eager' | 'lazy';
+  width?: number;
+  height?: number;
+}
+
+const {
+  path,
+  alt = 'Muv-Luv Girls Garden image',
+  class: className = '',
+  loading = 'lazy',
+  width,
+  height,
+} = Astro.props;
+
+const src = `${R2_BASE}/muv-luv-girls-garden/${path.replace(/^\//, '')}`;
+---
+
+<img
+  src={src}
+  alt={alt}
+  class={className}
+  loading={loading}
+  decoding="async"
+  width={width}
+  height={height}
+/>

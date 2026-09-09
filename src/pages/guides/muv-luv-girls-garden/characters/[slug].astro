@@ -1,0 +1,199 @@
+---
+// Per-character detail page for Muv-Luv Girls Garden: profile, lore, card styles.
+import MLGGLayout from '../../../../layouts/muv-luv-girls-garden/LandingLayout.astro';
+import MLGGImage from '../../../../components/muv-luv-girls-garden/MLGGImage.astro';
+import {
+  girlsGardenCharacters,
+  ATTRIBUTES,
+  TYPES,
+  ROLES,
+  SCHOOLS,
+  TEAMS,
+  ACQUISITIONS,
+} from '../../../../data/muv-luv-girls-garden/characters.js';
+import '../../../../styles/games/muv-luv-girls-garden/mlgg-common.css';
+import '../../../../styles/games/muv-luv-girls-garden/mlgg-characters.css';
+
+export function getStaticPaths() {
+  return girlsGardenCharacters.map(character => ({
+    params: { slug: character.slug },
+    props: { character },
+  }));
+}
+
+const { character: ch } = Astro.props;
+const positionLabel: Record<string, string> = {
+  front: 'Front',
+  back: 'Back',
+};
+
+// Teammates for the related section.
+const teammates = girlsGardenCharacters.filter(c => c.team === ch.team && c.slug !== ch.slug);
+
+const artPath = ch.art || ch.cards[ch.cards.length - 1].icon;
+const usingIconArt = !ch.art;
+
+function roleClass(roleJp) {
+  const en = ROLES[roleJp] || roleJp;
+  return `mlgg-badge mlgg-badge-role-${en.replace(/\s+/g, '-')}`;
+}
+function positionParts(position) {
+  return position.split('-').filter(p => positionLabel[p]);
+}
+---
+
+<MLGGLayout
+  title={`${ch.name} ${ch.romaji} - Muv-Luv Girls Garden Pilot`}
+  description={`${ch.romaji} (${ch.name}) pilot guide for Muv-Luv Girls Garden. ${SCHOOLS[ch.school] || ch.school}, ${TEAMS[ch.team] || ch.team}. ${ch.cards.length} card styles with rarity, attribute, type and role.`}
+  crumbName={ch.romaji}
+>
+  <section class="mlgg-section">
+    <div class="mlgg-detail-header">
+      <MLGGImage
+        path={artPath}
+        alt={`${ch.name} Muv-Luv Girls Garden`}
+        class={usingIconArt ? 'mlgg-detail-icon-fallback' : 'mlgg-detail-art'}
+        loading="eager"
+      />
+      <div class="mlgg-detail-info">
+        <h1 class="mlgg-detail-name">{ch.name}</h1>
+        <p class="mlgg-detail-romaji">{ch.romaji}</p>
+        <p class="mlgg-detail-kana">{ch.kana}</p>
+        <div class="mlgg-detail-badges">
+          <span class="mlgg-badge">{SCHOOLS[ch.school] || ch.school}</span>
+          <span class="mlgg-badge">{TEAMS[ch.team] || ch.team}</span>
+          <span class="mlgg-badge">{ch.cards.length} card styles</span>
+        </div>
+        <div class="mlgg-profile-grid">
+          <div class="mlgg-profile-item">
+            <p class="mlgg-profile-label">Birthday</p>
+            <p class="mlgg-profile-value">{ch.birthday}</p>
+          </div>
+          <div class="mlgg-profile-item">
+            <p class="mlgg-profile-label">Height</p>
+            <p class="mlgg-profile-value">{ch.height}</p>
+          </div>
+          {ch.origin && (
+            <div class="mlgg-profile-item">
+              <p class="mlgg-profile-label">Origin</p>
+              <p class="mlgg-profile-value">{ch.origin}</p>
+            </div>
+          )}
+          {ch.hobby && (
+            <div class="mlgg-profile-item">
+              <p class="mlgg-profile-label">Hobby</p>
+              <p class="mlgg-profile-value">{ch.hobby}</p>
+            </div>
+          )}
+          {ch.likes && (
+            <div class="mlgg-profile-item">
+              <p class="mlgg-profile-label">Likes</p>
+              <p class="mlgg-profile-value">{ch.likes}</p>
+            </div>
+          )}
+          {ch.cv && (
+            <div class="mlgg-profile-item">
+              <p class="mlgg-profile-label">CV</p>
+              <p class="mlgg-profile-value">{ch.cv}</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {ch.loreEn && (
+    <section class="mlgg-section">
+      <h2 class="mlgg-section-title">Profile</h2>
+      <div class="mlgg-card mlgg-lore">
+        <p class="mlgg-lore-en">{ch.loreEn}</p>
+        {ch.lore && (
+          <div>
+            <p class="mlgg-lore-jp-label">Official profile (Japanese)</p>
+            <p class="mlgg-lore-jp">{ch.lore}</p>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  <section class="mlgg-section">
+    <h2 class="mlgg-section-title">Card Styles</h2>
+    <p class="mlgg-section-sub">
+      Every implemented style of {ch.romaji}, oldest to newest. Card titles are the
+      Japanese originals.
+    </p>
+    <div class="mlgg-card mlgg-cards-table-wrap">
+      <table class="mlgg-table">
+        <thead>
+          <tr>
+            <th>Icon</th>
+            <th>Title</th>
+            <th>Rarity</th>
+            <th>Attribute</th>
+            <th>Type</th>
+            <th>Role</th>
+            <th>Position</th>
+            <th>Released</th>
+            <th>Acquisition</th>
+          </tr>
+        </thead>
+        <tbody>
+          {ch.cards.map(card => (
+            <tr>
+              <td>
+                <MLGGImage
+                  path={card.icon}
+                  alt={`${ch.name} ${card.title}`}
+                  class="mlgg-card-icon"
+                  width={52}
+                  height={52}
+                />
+              </td>
+              <td>
+                {card.title}
+                {card.flavor && <p class="mlgg-card-flavor">{card.flavor}</p>}
+              </td>
+              <td><span class={`mlgg-badge mlgg-badge-rarity-${card.rarity}`}>{card.rarity}</span></td>
+              <td><span class={`mlgg-badge mlgg-badge-attr-${ATTRIBUTES[card.attribute] || ''}`}>{ATTRIBUTES[card.attribute] || card.attribute}</span></td>
+              <td><span class={`mlgg-badge mlgg-badge-type-${TYPES[card.type] || ''}`}>{TYPES[card.type] || card.type}</span></td>
+              <td><span class={roleClass(card.role)}>{ROLES[card.role] || card.role}</span></td>
+              <td>
+                <div class="mlgg-card-positions">
+                  {positionParts(card.position).map(p => (
+                    <span class={`mlgg-badge mlgg-badge-position-${p}`}>{positionLabel[p]}</span>
+                  ))}
+                </div>
+              </td>
+              <td>{card.released}</td>
+              <td><span class="mlgg-badge mlgg-badge-acq">{ACQUISITIONS[card.acquisition] || card.acquisition}</span></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  {teammates.length > 0 && (
+    <section class="mlgg-section">
+      <h2 class="mlgg-section-title">{TEAMS[ch.team] || ch.team} Teammates</h2>
+      <div class="mlgg-related-grid">
+        {teammates.map(t => (
+          <a
+            href={`/guides/muv-luv-girls-garden/characters/${t.slug}/`}
+            class="mlgg-related-card"
+          >
+            <MLGGImage
+              path={t.cards[t.cards.length - 1].icon}
+              alt={`${t.name} card style`}
+              class="mlgg-related-icon"
+              width={150}
+              height={150}
+            />
+            <p class="mlgg-related-name">{t.name}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+</MLGGLayout>

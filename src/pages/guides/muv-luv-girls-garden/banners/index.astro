@@ -1,0 +1,129 @@
+---
+// Muv-Luv Girls Garden banner and release history: every card wave and memory
+// release since launch, with banner art, featured pilots and event windows.
+import MLGGLayout from '../../../../layouts/muv-luv-girls-garden/LandingLayout.astro';
+import MLGGImage from '../../../../components/muv-luv-girls-garden/MLGGImage.astro';
+import {
+  bannerTimeline,
+  BANNER_TYPE_LABELS,
+} from '../../../../data/muv-luv-girls-garden/banners.js';
+import {
+  ATTRIBUTES,
+  TYPES,
+  ROLES,
+} from '../../../../data/muv-luv-girls-garden/characters.js';
+import '../../../../styles/games/muv-luv-girls-garden/mlgg-common.css';
+import '../../../../styles/games/muv-luv-girls-garden/mlgg-banners.css';
+
+const entries = bannerTimeline;
+const totalCards = entries.reduce((n, e) => n + e.cards.length, 0);
+const totalMems = entries.reduce((n, e) => n + e.memories.length, 0);
+
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+function dateLabel(iso) {
+  const [y, m, d] = iso.split('-').map(Number);
+  return `${MONTHS[m - 1]} ${d}, ${y}`;
+}
+function typeClass(t) {
+  return `mlgg-banner-type-${t}`;
+}
+---
+
+<MLGGLayout
+  title="Banner History - Muv-Luv Girls Garden"
+  description={`Full banner and release history for Muv-Luv Girls Garden (マブラヴ ガールズガーデン): every gacha wave since the September 2025 launch with banner art, featured card styles, new memories and event periods.`}
+  gameTitle="Banner History"
+>
+  <section class="mlgg-section">
+    <p class="mlgg-banners-intro">
+      Every release wave since the Japanese launch on September 3, 2025: new card styles
+      with their banner art, the memories added alongside them, and the event running at
+      the time. Dates and periods follow the Japanese version ({totalCards} card styles
+      and {totalMems} memories across {entries.length} entries).
+    </p>
+    <div class="mlgg-note">
+      Banner art is the wide card illustration from each style's Japanese wiki page. Card
+      titles and memory names are the Japanese originals; two cards added on September 8,
+      2026 have no banner art uploaded yet and show their card icon instead.
+    </div>
+  </section>
+
+  <section class="mlgg-section">
+    <div class="mlgg-banner-list">
+      {entries.map(entry => (
+        <article class="mlgg-card mlgg-banner-entry" id={entry.id}>
+          <header class="mlgg-banner-head">
+            <div class="mlgg-banner-datebox">
+              <span class="mlgg-banner-date">{dateLabel(entry.date)}</span>
+              <div class="mlgg-banner-types">
+                {entry.types.map(t => (
+                  <span class={`mlgg-badge ${typeClass(t)}`}>{BANNER_TYPE_LABELS[t] || t}</span>
+                ))}
+              </div>
+            </div>
+            {entry.event && (
+              <div class="mlgg-banner-event">
+                <p class="mlgg-banner-event-name">{entry.event.name}</p>
+                <p class="mlgg-banner-event-period">{entry.event.period}</p>
+              </div>
+            )}
+          </header>
+
+          {entry.cards.length > 0 && (
+            <div class="mlgg-banner-cards">
+              {entry.cards.map(card => (
+                <div class="mlgg-banner-card">
+                  <a
+                    href={`/guides/muv-luv-girls-garden/characters/${card.slug}/`}
+                    class="mlgg-banner-art-link"
+                  >
+                    <MLGGImage
+                      path={card.art || card.icon}
+                      alt={`${card.name} ${card.title} banner`}
+                      class={card.art ? 'mlgg-banner-art' : 'mlgg-banner-art-fallback'}
+                      width={654}
+                      height={260}
+                    />
+                  </a>
+                  <div class="mlgg-banner-card-info">
+                    <p class="mlgg-banner-card-title">【{card.title}】</p>
+                    <a
+                      href={`/guides/muv-luv-girls-garden/characters/${card.slug}/`}
+                      class="mlgg-banner-card-name"
+                    >
+                      {card.name} <span class="mlgg-banner-card-romaji">{card.romaji}</span>
+                    </a>
+                    <div class="mlgg-banner-card-badges">
+                      <span class={`mlgg-badge mlgg-badge-rarity-${card.rarity}`}>{card.rarity}</span>
+                      <span class={`mlgg-badge mlgg-badge-attr-${ATTRIBUTES[card.attribute] || ''}`}>
+                        {ATTRIBUTES[card.attribute] || card.attribute}
+                      </span>
+                      <span class={`mlgg-badge mlgg-badge-type-${TYPES[card.type] || ''}`}>
+                        {TYPES[card.type] || card.type}
+                      </span>
+                      <span class="mlgg-badge">{ROLES[card.role] || card.role}</span>
+                      <span class="mlgg-badge mlgg-badge-acq">{card.acquisition}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {entry.memories.length > 0 && (
+            <div class="mlgg-banner-memories">
+              <p class="mlgg-banner-memories-label">New Memories</p>
+              <div class="mlgg-banner-memories-list">
+                {entry.memories.map(mem => (
+                  <span class={`mlgg-badge mlgg-badge-rarity-${mem.rarity}`}>
+                    {mem.rarity} {mem.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+</MLGGLayout>

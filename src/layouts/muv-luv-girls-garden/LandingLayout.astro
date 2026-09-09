@@ -1,0 +1,95 @@
+---
+// Landing layout for Muv-Luv Girls Garden (mirrors desire-immortal-realm's LandingLayout).
+import MLGGBaseHead from '../../components/muv-luv-girls-garden/MLGGBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Analytics from '../../components/Analytics.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import MLGGBreadcrumb from '../../components/muv-luv-girls-garden/Breadcrumb.astro';
+import { Image } from 'astro:assets';
+
+import '../../styles/games/muv-luv-girls-garden/mlgg-colors.css';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/muv-luv-girls-garden/mlgg-layout.css';
+import '../../styles/games/muv-luv-girls-garden/mlgg-common.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  heroImage?: any;
+  crumbName?: string;
+}
+
+const { title, description, gameTitle, heroImage, crumbName } = Astro.props;
+const seoTitle = title;
+const seoDescription =
+  description ||
+  'Complete guide for Muv-Luv Girls Garden (マブラヴ ガールズガーデン). Pilot database, card styles, teams, types and roles for the Muv-Luv idle RPG on DMM GAMES.';
+---
+
+<html lang="en">
+  <head>
+    <MLGGBaseHead title={seoTitle} description={seoDescription} />
+    <GameSEO gameKey="muv-luv-girls-garden" title={seoTitle} description={seoDescription} />
+    <Analytics />
+  </head>
+  <body class="mlgg-body">
+    <CustomScrollbar />
+    <div class="bg-layer mlgg-bg-primary"></div>
+
+    <div class="mlgg-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="muv-luv-girls-garden" />
+      <MobileMenu />
+
+      <div class="mlgg-container">
+        <main class="mlgg-main" id="main-content">
+          {heroImage && gameTitle && (
+            <section class="mlgg-hero-section">
+              <div class="mlgg-hero-image-container">
+                <Image
+                  src={heroImage}
+                  alt={gameTitle}
+                  class="mlgg-hero-image"
+                  width={1800}
+                  height={640}
+                  loading="eager"
+                  decoding="async"
+                />
+                <div class="mlgg-hero-overlay" />
+              </div>
+              <h1 class="mlgg-title-only-heading">{gameTitle}</h1>
+              <DecorativeLines />
+            </section>
+          )}
+
+          {!heroImage && gameTitle && (
+            <section class="mlgg-title-only-section">
+              <h1 class="mlgg-title-only-heading">{gameTitle}</h1>
+              <DecorativeLines />
+            </section>
+          )}
+
+          <MLGGBreadcrumb
+            autoGenerate={true}
+            gameKey="muv-luv-girls-garden"
+            showBackButton={true}
+            currentPageName={crumbName}
+          />
+
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>
