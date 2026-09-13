@@ -1,39 +1,34 @@
-// Stella Sora Team Builds API Endpoint
-// Generates /data/stella-sora/team-builds.json
+// Stella Sora System Presets API Endpoint
+// Generates /data/stella-sora/team-builds.json (URL kept for backwards compatibility)
 
-import { TEAM_BUILDS } from '../../../data/stella-sora/team-builds.js';
+import { SYSTEM_PRESETS } from '../../../data/stella-sora/system-presets.js';
 
 export const prerender = true;
 
 export async function GET() {
   const response = {
     game: 'Stella Sora',
-    type: 'team-builds',
-    description: 'Team compositions with character builds and potential recommendations',
-    count: TEAM_BUILDS.length,
+    type: 'system-presets',
+    description:
+      "The game's built-in System Presets: recommended Main + 2 Support teams per Trekker, decoded from the SystemPreset table",
+    count: SYSTEM_PRESETS.length,
     lastUpdated: new Date().toISOString().split('T')[0],
-    builds: TEAM_BUILDS.map(build => ({
-      id: build.id,
-      slug: build.slug,
-      name: build.name,
-      description: build.description,
-      tags: build.tags,
-      content: build.content,
-      mainDps: build.mainDps,
-      support: build.support,
-      flex: build.flex,
-      characters: build.characters?.map(char => ({
-        id: char.id,
-        name: char.name,
-        slug: char.slug,
-        rarity: char.rarity,
-        element: char.element,
-        role: char.role,
+    presets: SYSTEM_PRESETS.map(char => ({
+      slug: char.slug,
+      name: char.name,
+      element: char.element,
+      grade: char.grade,
+      presets: char.presets.map(preset => ({
+        label: preset.label,
+        skin: preset.skin,
+        skinType: preset.skinType,
+        members: preset.members.map(member => ({
+          slug: member.slug,
+          name: member.name,
+          element: member.element,
+          role: member.role,
+        })),
       })),
-      buildNotes: build.buildNotes,
-      characterBuilds: build.characterBuilds,
-      createdAt: build.createdAt,
-      updatedAt: build.updatedAt,
     })),
   };
 

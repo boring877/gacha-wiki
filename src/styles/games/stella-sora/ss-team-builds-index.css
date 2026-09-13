@@ -1,317 +1,198 @@
-/* Stella Sora Team Builds Index Page Styling */
-/* Styles specifically for the team builds index/list page */
+/* Stella Sora Team Builds (System Presets) page styles */
 
-/* Team Build Index Page Styles */
-.team-builds-index {
-  padding: var(--ss-spacing-lg);
-  background: var(--ss-bg-gradient-primary);
-  min-height: 100vh;
-  position: relative;
-}
-
-.team-builds-index::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(125, 211, 252, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(110, 231, 183, 0.1) 0%, transparent 50%);
-  pointer-events: none;
-}
-
-.team-builds-hero {
-  text-align: center;
-  margin-bottom: var(--ss-spacing-xl);
-  position: relative;
-  z-index: 1;
-}
-
-.team-builds-title {
-  font-size: 3rem;
-  font-weight: var(--ss-font-bold);
-  margin-bottom: var(--ss-spacing-md);
-  color: var(--ss-primary);
-}
-
-.team-builds-subtitle {
-  font-size: 1.25rem;
-  color: var(--ss-text-secondary);
-  margin-bottom: var(--ss-spacing-lg);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.team-builds-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: var(--ss-spacing-lg);
-  position: relative;
-  z-index: 1;
-}
-
-/* Team Build Card Styles */
-.team-build-card-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  height: 100%;
-}
-
-.team-build-card {
-  background: var(--ss-gradient-card);
+.team-builds-page {
+  background: var(--ss-bg-secondary);
   border: 1px solid var(--ss-border);
   border-radius: var(--ss-radius-lg);
-  padding: 0;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  min-height: 380px;
-  will-change: transform;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-/* Card Header */
-.card-header {
-  padding: var(--ss-spacing-md) var(--ss-spacing-lg);
-  background: var(--ss-bg-primary);
-  border-bottom: 1px solid var(--ss-border);
-}
-
-.card-title {
-  font-size: 1.1rem;
-  font-weight: var(--ss-font-bold);
-  color: var(--ss-text-primary);
-  margin: 0 0 var(--ss-spacing-xs) 0;
-  line-height: 1.3;
-}
-
-.card-description {
-  font-size: 0.85rem;
+.tbuilds-intro {
+  margin: 0 0 1.25rem 0;
+  font-size: 0.9rem;
   color: var(--ss-text-secondary);
-  margin: 0;
-  line-height: 1.4;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
-/* Character Showcase - Index Page Layout */
-.character-showcase {
+.tbuilds-intro strong {
+  color: var(--ss-text-primary);
+}
+
+/* Controls */
+.tbuilds-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.tbuilds-search {
+  flex: 1;
+  min-width: 220px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--ss-text-primary);
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-sm);
+}
+
+.tbuilds-select {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--ss-text-primary);
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-sm);
+}
+
+/* Cards grid */
+.tbuilds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1rem;
+}
+
+.tbuild-card {
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: var(--ss-spacing-md);
-  padding: var(--ss-spacing-lg);
+  gap: 0.9rem;
 }
 
-.character-item {
+/* Card head: portrait + identity */
+.tbuild-card-head {
   display: flex;
-  align-items: center;
-  gap: var(--ss-spacing-md);
-  padding: var(--ss-spacing-md);
-  background: var(--ss-bg-secondary);
-  border-radius: var(--ss-radius-md);
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+
+.tbuild-main-portrait {
+  width: 84px;
+  height: auto;
+  border-radius: var(--ss-radius-sm);
   border: 1px solid var(--ss-border);
-  transition: none;
-}
-
-.character-item.main-character {
-  background: rgba(239, 68, 68, 0.05);
-}
-
-.character-avatar {
+  background: rgba(0, 0, 0, 0.25);
   flex-shrink: 0;
 }
 
-.character-image-wrapper {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid var(--ss-border);
-}
-
-.character-image-wrapper.main-character-image {
-  width: 100px;
-  height: 100px;
-}
-
-.character-image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.character-details {
-  flex: 1;
-  min-width: 0;
-}
-
-.character-name {
-  font-size: 1rem;
-  font-weight: var(--ss-font-bold);
-  color: var(--ss-text-primary);
-  margin: 0 0 var(--ss-spacing-xs) 0;
-  line-height: 1.3;
-}
-
-.character-name.main-character-name {
-  color: var(--ss-text-primary);
-  font-size: 1.1rem;
-}
-
-.character-badges {
+.tbuild-card-title {
   display: flex;
-  gap: var(--ss-spacing-xs);
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
 }
 
-.character-badges .element-badge,
-.character-badges .rarity-badge {
-  font-size: 0.625rem;
-  padding: 2px 6px;
-  border-radius: var(--ss-radius-sm);
-  font-weight: var(--ss-font-semibold);
-  text-transform: uppercase;
-  white-space: nowrap;
+.tbuild-name {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
-/* Empty State */
-.team-builds-empty {
-  text-align: center;
-  padding: var(--ss-spacing-xl);
+.tbuild-name a {
+  color: var(--ss-text-primary);
+  text-decoration: none;
+}
+
+.tbuild-grade {
+  font-size: 0.75rem;
+  font-weight: 600;
   color: var(--ss-text-secondary);
 }
 
-/* Responsive Design */
+/* Preset blocks */
+.tbuild-preset {
+  border-top: 1px solid var(--ss-border);
+  padding-top: 0.75rem;
+}
+
+.tbuild-preset-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ss-text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.tbuild-preset-skin {
+  margin-left: 0.4rem;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  border-radius: 4px;
+  background: var(--ss-white-opacity-05);
+  border: 1px solid var(--ss-border);
+  color: var(--ss-text-primary);
+}
+
+.tbuild-members {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tbuild-member {
+  flex: 1;
+  min-width: 88px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0.4rem;
+  background: var(--ss-white-opacity-05);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-sm);
+  text-decoration: none;
+}
+
+.tbuild-member.is-main {
+  border-color: var(--ss-primary-dark);
+}
+
+.tbuild-member img {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.tbuild-member-name {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  text-align: center;
+}
+
+.tbuild-member-role {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ss-text-secondary);
+}
+
+.tbuild-member-role.role-main {
+  color: var(--ss-primary);
+}
+
+.tbuilds-empty {
+  margin: 1rem 0 0 0;
+  text-align: center;
+  color: var(--ss-text-secondary);
+}
+
 @media (max-width: 768px) {
-  .team-builds-index {
-    padding: var(--ss-spacing-md);
+  .team-builds-page {
+    padding: 1rem;
   }
 
-  .team-builds-grid {
+  .tbuilds-grid {
     grid-template-columns: 1fr;
-    gap: var(--ss-spacing-md);
   }
-
-  .team-build-card {
-    min-height: auto;
-  }
-
-  .card-header {
-    padding: var(--ss-spacing-sm) var(--ss-spacing-md);
-  }
-
-  .card-title {
-    font-size: 1rem;
-  }
-
-  .card-description {
-    font-size: 0.8rem;
-  }
-
-  .character-showcase {
-    gap: var(--ss-spacing-sm);
-    padding: var(--ss-spacing-md);
-  }
-
-  .character-item {
-    gap: var(--ss-spacing-sm);
-    padding: var(--ss-spacing-sm);
-  }
-
-  .character-image-wrapper {
-    width: 48px;
-    height: 48px;
-  }
-
-  .character-image-wrapper.main-character-image {
-    width: 56px;
-    height: 56px;
-  }
-
-  .character-name {
-    font-size: 0.9rem;
-  }
-
-  .character-name.main-character-name {
-    font-size: 1rem;
-  }
-
-  .character-badges .element-badge,
-  .character-badges .rarity-badge {
-    font-size: 0.5625rem;
-    padding: 1px 4px;
-  }
-}
-
-/* Small Mobile Devices */
-@media (max-width: 480px) {
-  .team-builds-index {
-    padding: var(--ss-spacing-sm);
-  }
-
-  .team-builds-grid {
-    gap: var(--ss-spacing-sm);
-  }
-
-  .character-showcase {
-    padding: var(--ss-spacing-sm);
-    gap: var(--ss-spacing-xs);
-  }
-
-  .character-item {
-    padding: var(--ss-spacing-xs);
-    gap: var(--ss-spacing-xs);
-  }
-
-  .character-image-wrapper {
-    width: 44px;
-    height: 44px;
-  }
-
-  .character-image-wrapper.main-character-image {
-    width: 52px;
-    height: 52px;
-  }
-
-  .character-name {
-    font-size: 0.85rem;
-  }
-
-  .character-name.main-character-name {
-    font-size: 0.95rem;
-  }
-
-  .character-badges .element-badge,
-  .character-badges .rarity-badge {
-    font-size: 0.5rem;
-    padding: 1px 3px;
-  }
-
-  /* Touch-friendly tap targets */
-  .team-build-card-link {
-    min-height: 44px; /* iOS touch target minimum */
-  }
-
-  .character-item {
-    min-height: 48px; /* Better touch target */
-  }
-}
-
-/* Performance optimizations */
-.team-builds-grid {
-  contain: layout style;
-}
-
-.character-image-wrapper {
-  contain: layout paint;
-}
-
-.character-item {
-  contain: layout style;
 }

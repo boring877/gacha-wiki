@@ -1155,7 +1155,7 @@ function getTotalDupes(rarity: string): number {
                   {/* Stat Bonuses Summary */}
                   {statSummary.length > 0 && (
                     <div class="talent-stat-summary">
-                      <h4>Total Stat Bonuses (Lv. 1-10)</h4>
+                      <h4>Total Stat Bonuses</h4>
                       <div class="stat-summary-grid">
                         {statSummary.map(stat => (
                           <div class="stat-summary-item">
@@ -2458,10 +2458,11 @@ function getTotalDupes(rarity: string): number {
       // Set name
       detailName.textContent = potential.name;
 
-      // Potentials upgrade in-game up to Lv 9 (core and normal alike)
-      maxLevel = 9;
+      // Cores (stype 42) have a single fixed effect in-game — no level scaling.
+      // Normal potentials upgrade Lv 1-9.
+      const isCore = potential.stype === 42;
+      maxLevel = isCore ? 1 : 9;
 
-      // Show level selector for every potential
       if (maxLevel > 1) {
         levelSelector.style.display = 'flex';
         levelInput.max = maxLevel.toString();
