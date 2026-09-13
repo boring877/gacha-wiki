@@ -91,7 +91,7 @@
 /* Warning Card - SS Style */
 .redeem-codes-warning {
   background: var(--ss-bg-secondary);
-  border: 1px solid var(--ss-warning);
+  border: 1px solid var(--ss-border);
   border-radius: 12px;
   padding: 1.5rem;
   margin: 2rem auto;
@@ -99,7 +99,7 @@
 }
 
 .redeem-codes-warning h3 {
-  color: var(--ss-warning);
+  color: var(--ss-text-primary);
   margin-bottom: 0.5rem;
   font-size: 1.1rem;
   font-weight: 600;
@@ -212,14 +212,14 @@
 
 .code-status.working {
   background: rgba(16, 185, 129, 0.2);
-  color: #10b981;
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--ss-text-primary);
+  border: 1px solid var(--ss-border);
 }
 
 .code-status.unknown {
   background: rgba(245, 158, 11, 0.2);
-  color: var(--ss-warning);
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: var(--ss-text-primary);
+  border: 1px solid var(--ss-border);
 }
 
 .code-date {
@@ -263,7 +263,7 @@
 
 .copy-button.copy-success {
   background: #10b981;
-  border-color: #10b981;
+  border-color: var(--ss-text-primary);
   color: white;
 }
 
@@ -338,7 +338,7 @@
 /* Expired Codes */
 .redeem-code-card.expired {
   opacity: 0.7;
-  border-color: var(--ss-error);
+  border-color: var(--ss-border);
   background: var(--ss-bg-secondary);
 }
 
@@ -408,7 +408,7 @@
 .community-button.contribute {
   background: var(--ss-primary);
   color: var(--ss-text-primary);
-  border-color: var(--ss-primary);
+  border-color: var(--ss-border);
 }
 
 
@@ -421,7 +421,7 @@
 
 /* Copy Success State */
 .code-copied {
-  border-color: #10b981 !important;
+  border-color: var(--ss-text-primary) !important;
 }
 
 /* Responsive Design */

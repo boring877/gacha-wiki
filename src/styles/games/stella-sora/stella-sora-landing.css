@@ -5,7 +5,7 @@
   margin-bottom: 2rem;
   background: rgba(35, 35, 35, 0.95);
   border-radius: 16px;
-  border: 1px solid rgba(125, 211, 252, 0.2);
+  border: 1px solid var(--ss-border);
 }
 
 .section-title {
@@ -21,7 +21,7 @@
   margin-bottom: 2rem;
   background: rgba(35, 35, 35, 0.95);
   border-radius: 16px;
-  border: 1px solid rgba(125, 211, 252, 0.2);
+  border: 1px solid var(--ss-border);
 }
 
 .ss-resources-title {
@@ -55,7 +55,7 @@
   background: #1e1e1e;
   padding: 2rem;
   border-radius: 16px;
-  border: 1px solid #3a3a3a;
+  border: 1px solid var(--ss-border);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -114,7 +114,7 @@
   padding: 1rem;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid #3a3a3a;
+  border: 1px solid var(--ss-border);
   font-size: 0.9rem;
   font-weight: 500;
   text-align: center;
@@ -166,7 +166,7 @@
   font-size: var(--text-lg);
   font-family: var(--font-display);
   font-weight: var(--font-semibold);
-  color: var(--ss-accent-light);
+  color: var(--ss-primary);
   margin-bottom: 1rem;
 }
 
@@ -206,7 +206,7 @@
   font-weight: var(--ss-font-bold);
   margin: 1.5rem 0 0.75rem 0;
   text-align: left;
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   border-left: 3px solid var(--ss-border);
   padding-left: 0.75rem;
 }
@@ -247,7 +247,7 @@
   font-weight: var(--ss-font-bold);
   margin: 2rem 0;
   line-height: var(--leading-normal);
-  color: #7dd3fc;
+  color: var(--ss-primary);
 }
 
 .hero-version-link {
@@ -264,7 +264,7 @@
   font-weight: var(--ss-font-semibold);
   margin: 0.5rem 0 1rem 0;
   line-height: var(--leading-normal);
-  color: #7dd3fc;
+  color: var(--ss-primary);
   text-align: center;
   letter-spacing: 0.05em;
 }
@@ -280,7 +280,7 @@
   font-weight: var(--ss-font-bold);
   margin: 2.5rem 0;
   line-height: var(--leading-normal);
-  color: #7dd3fc;
+  color: var(--ss-primary);
 }
 
 .features-grid {
@@ -301,7 +301,7 @@
   font-size: var(--text-xl);
   font-family: var(--font-display);
   font-weight: var(--font-semibold);
-  color: var(--ss-accent-light);
+  color: var(--ss-primary);
   margin-bottom: 0.8rem;
 }
 
@@ -317,12 +317,12 @@
   padding: 3rem 2rem;
   background: rgba(102, 126, 234, 0.1);
   border-radius: 10px;
-  border: 1px solid rgba(102, 126, 234, 0.3);
+  border: 1px solid var(--ss-border);
 }
 
 .coming-soon-notice p {
   font-size: var(--text-lg);
-  color: var(--ss-accent-light);
+  color: var(--ss-primary);
   margin-bottom: 1rem;
   line-height: 1.6;
 }

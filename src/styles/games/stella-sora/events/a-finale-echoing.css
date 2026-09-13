@@ -91,7 +91,7 @@
   font-size: 1.75rem;
   font-weight: var(--font-bold);
   margin-bottom: 1.5rem;
-  color: #7dd3fc;
+  color: var(--ss-primary);
   position: relative;
   padding-left: 1rem;
 }
@@ -132,22 +132,22 @@
 
 /* A Finale Echoing-specific tier colors using SS color system */
 .tier-section[data-tier='1'] {
-  border-color: var(--ss-accent);
+  border-color: var(--ss-border);
   background: linear-gradient(180deg, rgba(231, 76, 60, 0.05), transparent);
 }
 
 .tier-section[data-tier='2'] {
-  border-color: #f39c12;
+  border-color: var(--ss-border);
   background: linear-gradient(180deg, rgba(243, 156, 18, 0.05), transparent);
 }
 
 .tier-section[data-tier='3'] {
-  border-color: #3498db;
+  border-color: var(--ss-border);
   background: linear-gradient(180deg, rgba(52, 152, 219, 0.05), transparent);
 }
 
 .tier-section[data-tier='4'] {
-  border-color: #95a5a6;
+  border-color: var(--ss-border);
   background: linear-gradient(180deg, rgba(149, 165, 166, 0.05), transparent);
 }
 
@@ -489,7 +489,7 @@
 }
 
 .stock-amount {
-  color: var(--ss-warning);
+  color: var(--ss-text-primary);
   font-weight: 600;
 }
 
@@ -539,7 +539,7 @@
 }
 
 .notice-text strong {
-  color: #e74c3c;
+  color: var(--ss-text-primary);
   font-weight: 700;
 }
 

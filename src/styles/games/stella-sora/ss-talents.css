@@ -44,11 +44,11 @@
 }
 
 .shard-requirement-card.rarity-4 {
-  border-color: rgba(167, 139, 250, 0.3);
+  border-color: var(--ss-border);
 }
 
 .shard-requirement-card.rarity-5 {
-  border-color: rgba(251, 191, 36, 0.3);
+  border-color: var(--ss-border);
 }
 
 .shard-card-header {
@@ -100,7 +100,7 @@
 .dupe-info {
   font-size: 0.75rem;
   font-weight: var(--ss-font-medium);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   margin-left: 4px;
 }
 
@@ -118,7 +118,7 @@
 }
 
 .total-row .shard-value {
-  color: var(--ss-accent);
+  color: var(--ss-primary);
 }
 
 /* Filter Section */
@@ -188,7 +188,7 @@
 .filter-group select:focus,
 .filter-group input[type="text"]:focus {
   outline: none;
-  border-color: var(--ss-accent);
+  border-color: var(--ss-border);
 }
 
 /* Character Section */
@@ -202,7 +202,7 @@
   gap: var(--ss-spacing-md);
   margin-bottom: var(--ss-spacing-lg);
   padding-bottom: var(--ss-spacing-sm);
-  border-bottom: 2px solid var(--ss-accent);
+  border-bottom: 1px solid var(--ss-border);
 }
 
 .character-icon-container {
@@ -295,7 +295,7 @@
 .talent-card-number {
   font-size: 0.625rem;
   font-weight: var(--ss-font-semibold);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 2px;
@@ -322,7 +322,7 @@
 .talent-effect-label {
   font-size: 0.75rem;
   font-weight: var(--ss-font-semibold);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: var(--ss-spacing-xs);
@@ -340,7 +340,7 @@
 }
 
 .talent-effect-description .talent-skill-ref {
-  color: #60a5fa;
+  color: var(--ss-primary);
   font-weight: var(--ss-font-medium);
   text-decoration: underline;
   text-decoration-style: dotted;
@@ -396,19 +396,19 @@
 
 /* Stat type colors */
 .talent-bonus-item[data-stat="atk"] .talent-bonus-value {
-  color: #f87171;
+  color: var(--ss-text-primary);
 }
 
 .talent-bonus-item[data-stat="hp"] .talent-bonus-value {
-  color: #4ade80;
+  color: var(--ss-text-primary);
 }
 
 .talent-bonus-item[data-stat="def"] .talent-bonus-value {
-  color: #60a5fa;
+  color: var(--ss-primary);
 }
 
 .talent-bonus-item[data-stat="crit"] .talent-bonus-value {
-  color: #fbbf24;
+  color: var(--ss-text-primary);
 }
 
 /* Talent Shard Requirements */
@@ -468,7 +468,7 @@
 .shard-req-dupe {
   font-size: 0.625rem;
   font-weight: var(--ss-font-medium);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   margin-left: 2px;
 }
 
@@ -511,7 +511,7 @@
 .summary-stat-value {
   font-size: 1.5rem;
   font-weight: var(--ss-font-bold);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
 }
 
 .summary-stat-label {
@@ -736,32 +736,32 @@
 
 .element-ignis {
   background: rgba(251, 146, 60, 0.2);
-  color: #fb923c;
+  color: var(--ss-text-primary);
 }
 
 .element-aqua {
   background: rgba(96, 165, 250, 0.2);
-  color: #60a5fa;
+  color: var(--ss-primary);
 }
 
 .element-terra {
   background: rgba(167, 139, 250, 0.2);
-  color: #a78bfa;
+  color: var(--ss-text-primary);
 }
 
 .element-ventus {
   background: rgba(52, 211, 153, 0.2);
-  color: #34d399;
+  color: var(--ss-text-primary);
 }
 
 .element-lux {
   background: rgba(251, 191, 36, 0.2);
-  color: #fbbf24;
+  color: var(--ss-text-primary);
 }
 
 .element-umbra {
   background: rgba(156, 163, 175, 0.2);
-  color: #9ca3af;
+  color: var(--ss-text-primary);
 }
 
 /* Element badge with icon */
@@ -774,7 +774,7 @@
 /* Position badge */
 .position-badge {
   background: rgba(139, 92, 246, 0.2);
-  color: #8b5cf6;
+  color: var(--ss-text-primary);
 }
 
 /* Rarity badge */

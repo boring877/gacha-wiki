@@ -41,7 +41,7 @@
 .summary-stat-value {
   font-size: 1.5rem;
   font-weight: var(--ss-font-bold);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
 }
 
 .summary-stat-label {
@@ -106,7 +106,7 @@
 .filter-group input[type="text"]:focus,
 .filter-group input[type="search"]:focus {
   outline: none;
-  border-color: var(--ss-accent);
+  border-color: var(--ss-border);
 }
 
 .filter-group select:focus-visible,
@@ -313,19 +313,19 @@
 /* Core Card - Pink */
 .potential-card-mini.core {
   background: transparent;
-  border: 1px solid rgba(255, 143, 179, 0.5);
+  border: 1px solid var(--ss-border);
 }
 
 /* Normal Card - Purple (rarity 1) */
 .potential-card-mini.normal.rarity-1 {
   background: transparent;
-  border: 1px solid rgba(167, 139, 250, 0.5);
+  border: 1px solid var(--ss-border);
 }
 
 /* Normal Card - Orange/Gold (rarity 2) */
 .potential-card-mini.normal.rarity-2 {
   background: transparent;
-  border: 1px solid rgba(251, 191, 36, 0.5);
+  border: 1px solid var(--ss-border);
 }
 
 /* Card Level Badge */
@@ -421,27 +421,27 @@
 }
 
 .detail-description .color-cyan {
-  color: #0abec5;
+  color: var(--ss-primary);
 }
 
 .detail-description .color-orange {
-  color: #ec6d21;
+  color: var(--ss-text-primary);
 }
 
 .detail-description .color-yellow {
-  color: #fbbf24;
+  color: var(--ss-text-primary);
 }
 
 .detail-description .color-green {
-  color: #34d399;
+  color: var(--ss-text-primary);
 }
 
 .detail-description .color-purple {
-  color: #a78bfa;
+  color: var(--ss-text-primary);
 }
 
 .detail-description .color-blue {
-  color: #60a5fa;
+  color: var(--ss-primary);
 }
 
 /* Level Selector */
@@ -507,7 +507,7 @@
 
 .level-input:focus {
   outline: none;
-  border-color: var(--ss-accent);
+  border-color: var(--ss-border);
 }
 
 .level-max {
@@ -524,27 +524,27 @@
 
 .element-ignis {
   background: rgba(251, 146, 60, 0.2);
-  color: #fb923c;
+  color: var(--ss-text-primary);
 }
 
 .element-aqua {
   background: rgba(96, 165, 250, 0.2);
-  color: #60a5fa;
+  color: var(--ss-primary);
 }
 
 .element-terra {
   background: rgba(167, 139, 250, 0.2);
-  color: #a78bfa;
+  color: var(--ss-text-primary);
 }
 
 .element-ventus {
   background: rgba(52, 211, 153, 0.2);
-  color: #34d399;
+  color: var(--ss-text-primary);
 }
 
 .element-lux {
   background: rgba(251, 191, 36, 0.2);
-  color: #fbbf24;
+  color: var(--ss-text-primary);
 }
 
 .element-umbra {

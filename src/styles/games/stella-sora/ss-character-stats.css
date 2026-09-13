@@ -39,7 +39,7 @@
 .summary-stat-value {
   font-size: 1.5rem;
   font-weight: var(--ss-font-bold);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
 }
 
 .summary-stat-label {
@@ -54,7 +54,7 @@
   margin-top: var(--ss-spacing-md);
   padding: var(--ss-spacing-md);
   background: rgba(251, 191, 36, 0.1);
-  border: 1px solid rgba(251, 191, 36, 0.3);
+  border: 1px solid var(--ss-border);
   border-radius: var(--ss-radius-md);
   font-size: 0.875rem;
   line-height: 1.5;
@@ -146,7 +146,7 @@
 .filter-group input:focus,
 .filter-group select:focus {
   outline: none;
-  border-color: var(--ss-accent);
+  border-color: var(--ss-border);
 }
 
 .apply-all-btn,
@@ -164,7 +164,7 @@
 
 .apply-all-btn {
   background: var(--ss-accent);
-  border-color: var(--ss-accent);
+  border-color: var(--ss-border);
   color: white;
 }
 
@@ -256,7 +256,7 @@
 
 .character-level-input .level-input:focus {
   outline: none;
-  border-color: var(--ss-accent);
+  border-color: var(--ss-border);
 }
 
 /* Stats Section */
@@ -270,7 +270,7 @@
 .character-stats-label {
   font-size: 0.75rem;
   font-weight: var(--ss-font-semibold);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: var(--ss-spacing-sm);
@@ -302,11 +302,11 @@
 }
 
 .character-stat-value.hp {
-  color: #4ade80;
+  color: var(--ss-text-primary);
 }
 
 .character-stat-value.atk {
-  color: #f87171;
+  color: var(--ss-text-primary);
 }
 
 /* Breakthrough Section */
@@ -357,17 +357,17 @@
 }
 
 .breakthrough-stat.hp {
-  color: #4ade80;
+  color: var(--ss-text-primary);
 }
 
 .breakthrough-stat.atk {
-  color: #f87171;
+  color: var(--ss-text-primary);
 }
 
 /* Max Stats Section */
 .character-max-stats-section {
   background: rgba(251, 191, 36, 0.1);
-  border: 1px solid rgba(251, 191, 36, 0.3);
+  border: 1px solid var(--ss-border);
   border-radius: var(--ss-radius-md);
   padding: var(--ss-spacing-md);
 }
@@ -375,7 +375,7 @@
 .character-max-stats-label {
   font-size: 0.75rem;
   font-weight: var(--ss-font-semibold);
-  color: #fbbf24;
+  color: var(--ss-text-primary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: var(--ss-spacing-sm);

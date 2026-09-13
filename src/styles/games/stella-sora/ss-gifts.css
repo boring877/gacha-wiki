@@ -55,7 +55,7 @@
 }
 
 .points-loved {
-  color: #4ade80 !important;
+  color: var(--ss-text-primary) !important;
   font-weight: var(--ss-font-semibold);
 }
 
@@ -64,7 +64,7 @@
 }
 
 .points-hated {
-  color: #f87171 !important;
+  color: var(--ss-text-primary) !important;
   font-weight: var(--ss-font-semibold);
 }
 
@@ -200,7 +200,7 @@
 
 .recipe-arrow {
   font-size: 1.5rem;
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   font-weight: var(--ss-font-bold);
   padding: 0 var(--ss-spacing-sm);
 }
@@ -214,18 +214,18 @@
 }
 
 .recipe-result[data-rarity="3"] {
-  color: #60a5fa;
-  border: 1px solid #60a5fa40;
+  color: var(--ss-primary);
+  border: 1px solid var(--ss-border);
 }
 
 .recipe-result[data-rarity="4"] {
-  color: #a78bfa;
-  border: 1px solid #a78bfa40;
+  color: var(--ss-text-primary);
+  border: 1px solid var(--ss-border);
 }
 
 .recipe-result[data-rarity="5"] {
-  color: #fbbf24;
-  border: 1px solid #fbbf2440;
+  color: var(--ss-text-primary);
+  border: 1px solid var(--ss-border);
 }
 
 .crafting-note {
@@ -236,7 +236,7 @@
 }
 
 .crafting-note-warning {
-  color: #fbbf24;
+  color: var(--ss-text-primary);
   margin-top: var(--ss-spacing-sm);
 }
 
@@ -251,7 +251,7 @@
   gap: var(--ss-spacing-md);
   margin-bottom: var(--ss-spacing-lg);
   padding-bottom: var(--ss-spacing-sm);
-  border-bottom: 2px solid var(--ss-accent);
+  border-bottom: 1px solid var(--ss-border);
 }
 
 .gift-category-header h2 {
@@ -263,7 +263,7 @@
 
 .gift-category-count {
   background: var(--ss-accent-20);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   padding: 4px 12px;
   border-radius: var(--ss-radius-full);
   font-size: 0.875rem;
@@ -359,15 +359,15 @@
 }
 
 .gift-rarity-text[data-rarity="3"] {
-  color: #60a5fa;
+  color: var(--ss-primary);
 }
 
 .gift-rarity-text[data-rarity="4"] {
-  color: #a78bfa;
+  color: var(--ss-text-primary);
 }
 
 .gift-rarity-text[data-rarity="5"] {
-  color: #fbbf24;
+  color: var(--ss-text-primary);
 }
 
 /* Gift Points Section */
@@ -415,11 +415,11 @@
 }
 
 .gift-point-item.loved .gift-point-label {
-  color: #4ade80;
+  color: var(--ss-text-primary);
 }
 
 .gift-point-item.loved .gift-point-value {
-  color: #4ade80;
+  color: var(--ss-text-primary);
 }
 
 .gift-point-item.neutral .gift-point-label {
@@ -431,11 +431,11 @@
 }
 
 .gift-point-item.hated .gift-point-label {
-  color: #f87171;
+  color: var(--ss-text-primary);
 }
 
 .gift-point-item.hated .gift-point-value {
-  color: #f87171;
+  color: var(--ss-text-primary);
 }
 
 /* Bonus/Penalty indicators */
@@ -446,11 +446,11 @@
 }
 
 .gift-point-item.loved .gift-point-bonus {
-  color: #4ade80;
+  color: var(--ss-text-primary);
 }
 
 .gift-point-item.hated .gift-point-bonus {
-  color: #f87171;
+  color: var(--ss-text-primary);
 }
 
 /* Responsive Design */

@@ -155,7 +155,7 @@
 }
 
 .skin-default {
-  border-color: var(--ss-primary-border);
+  border-color: var(--ss-border);
 }
 
 .skin-image-wrap {
@@ -353,7 +353,7 @@
   font-weight: 600;
   text-align: left;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--ss-primary-subtle);
+  border-bottom: 1px solid var(--ss-border);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   position: relative;
@@ -415,7 +415,7 @@
 
 .stats-selectors-row .level-input:focus {
   outline: none;
-  border-color: var(--ss-primary);
+  border-color: var(--ss-border);
   box-shadow: 0 0 0 2px rgba(0, 171, 186, 0.2);
 }
 
@@ -443,7 +443,7 @@
 
 .stats-selectors-row .level-select:focus {
   outline: none;
-  border-color: var(--ss-primary);
+  border-color: var(--ss-border);
   box-shadow: 0 0 0 2px rgba(0, 171, 186, 0.2);
 }
 
@@ -460,7 +460,7 @@
 }
 
 .ascension-bonus .bonus-value {
-  color: var(--ss-success, #4ade80);
+  color: var(--ss-text-primary);
   font-weight: 500;
 }
 
@@ -520,7 +520,7 @@
 .stat-item-value {
   font-weight: 600;
   color: var(--ss-text-primary);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-family: var(--font-primary), -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   font-size: 0.9rem;
   text-align: right;
   flex-shrink: 0;
@@ -607,7 +607,7 @@
   letter-spacing: var(--tracking-tight);
   position: relative;
   padding-bottom: 0.75rem;
-  border-bottom: 2px solid var(--ss-primary);
+  border-bottom: 1px solid var(--ss-border);
   font-family: var(--font-display);
   line-height: var(--leading-tight);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -667,7 +667,7 @@
 .skill-level-selector .level-select:focus,
 .skill-level-selector .level-input:focus {
   outline: none;
-  border-color: var(--ss-primary);
+  border-color: var(--ss-border);
   box-shadow: 0 0 0 2px rgba(157, 78, 221, 0.2);
 }
 
@@ -1104,7 +1104,7 @@
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-normal);
   padding-bottom: 0.75rem;
-  border-bottom: 2px solid var(--ss-primary);
+  border-bottom: 1px solid var(--ss-border);
 }
 
 /* Status Effects Section - Improved Organization */
@@ -1166,7 +1166,7 @@
   letter-spacing: var(--tracking-tight);
   position: relative;
   padding-bottom: 0.75rem;
-  border-bottom: 2px solid var(--ss-primary);
+  border-bottom: 1px solid var(--ss-border);
   font-family: var(--font-display);
   line-height: var(--leading-tight);
 }
@@ -1250,7 +1250,7 @@
 }
 
 .shard-total-value {
-  color: #ff9f43;
+  color: var(--ss-text-primary);
   font-size: 1.2rem;
   font-weight: 700;
 }
@@ -1331,7 +1331,7 @@
 }
 
 .talent-shard .shard-cost {
-  color: #ff9f43;
+  color: var(--ss-text-primary);
   font-size: 1.1rem;
   font-weight: 700;
 }
@@ -1352,7 +1352,7 @@
 
 .talent-main-effect h4 {
   font-size: 0.9rem;
-  color: #00d4ff;
+  color: var(--ss-primary);
   margin: 0 0 0.5rem 0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1367,7 +1367,7 @@
 }
 
 .talent-effect-text strong {
-  color: #ff9f43;
+  color: var(--ss-text-primary);
   font-weight: 700;
   font-size: 1rem;
 }
@@ -1381,7 +1381,7 @@
 
 .talent-stat-summary h4 {
   font-size: 0.9rem;
-  color: #00d4ff;
+  color: var(--ss-primary);
   margin: 0 0 0.75rem 0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1416,13 +1416,13 @@
 }
 
 .stat-summary-item .flat-value {
-  color: #00d4ff;
+  color: var(--ss-primary);
   font-weight: 700;
   font-size: 0.95rem;
 }
 
 .stat-summary-item .percent-value {
-  color: #ff9f43;
+  color: var(--ss-text-primary);
   font-weight: 700;
   font-size: 0.95rem;
 }
@@ -1479,7 +1479,7 @@
 }
 
 .stat-bonus-item .bonus-level {
-  color: #00d4ff;
+  color: var(--ss-primary);
   font-size: 0.8rem;
   min-width: 40px;
   font-weight: 700;
@@ -1492,7 +1492,7 @@
 }
 
 .stat-bonus-item .bonus-value {
-  color: #ff9f43;
+  color: var(--ss-text-primary);
   font-weight: 700;
   font-size: 0.9rem;
 }
@@ -1514,7 +1514,7 @@
   letter-spacing: var(--tracking-tight);
   position: relative;
   padding-bottom: 0.75rem;
-  border-bottom: 2px solid var(--ss-primary);
+  border-bottom: 1px solid var(--ss-border);
   font-family: var(--font-display);
   line-height: var(--leading-tight);
 }
@@ -1642,7 +1642,7 @@
 
 .summary-section.overall {
   background: var(--ss-bg-tertiary);
-  border-color: var(--ss-primary);
+  border-color: var(--ss-border);
 }
 
 .potentials-build-header h3 {
@@ -1681,7 +1681,7 @@
 
 .potential-build.build-separator {
   padding-top: 2rem;
-  border-top: 2px solid var(--ss-primary);
+  border-top: 1px solid var(--ss-border);
   position: relative;
 }
 
@@ -1760,8 +1760,8 @@
 
 .potential-level {
   background: var(--ss-level-purple);
-  color: var(--ss-level-color);
-  border: 1px solid var(--ss-level-border);
+  color: var(--ss-primary);
+  border: 1px solid var(--ss-border);
   font-family: var(--font-primary);
   font-size: var(--text-sm);
   font-weight: var(--font-semibold);
@@ -1804,7 +1804,7 @@
   letter-spacing: var(--tracking-tight);
   position: relative;
   padding-bottom: 0.75rem;
-  border-bottom: 2px solid var(--ss-primary);
+  border-bottom: 1px solid var(--ss-border);
 }
 
 /* Disc Hero Section with Large Image */
@@ -1894,7 +1894,7 @@
   color: var(--ss-primary);
   font-weight: var(--font-semibold);
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--ss-primary);
+  border-bottom: 1px solid var(--ss-border);
 }
 
 /* Stats Grid */
@@ -1998,7 +1998,7 @@
 
 /* Skill value highlighting (orange color values from game) */
 .skill-value {
-  color: #fb8037;
+  color: var(--ss-text-primary);
   font-weight: 600;
 }
 
@@ -2212,7 +2212,7 @@
   height: 100px;
   border-radius: 8px;
   overflow: hidden;
-  border: 2px solid var(--ss-primary);
+  border: 1px solid var(--ss-border);
   box-shadow: var(--ss-shadow-sm);
 }
 
@@ -3227,7 +3227,7 @@
   color: var(--ss-primary);
   font-weight: var(--font-semibold);
   padding-bottom: 0.75rem;
-  border-bottom: 2px solid var(--ss-primary);
+  border-bottom: 1px solid var(--ss-border);
 }
 
 /* Potentials Tabs */
@@ -3350,19 +3350,19 @@
 /* Core Card - Pink */
 .character-potentials-section .potential-card-mini.core {
   background: transparent;
-  border: 1px solid rgba(255, 143, 179, 0.5);
+  border: 1px solid var(--ss-border);
 }
 
 /* Normal Card - Purple (rarity 1) */
 .character-potentials-section .potential-card-mini.normal.rarity-1 {
   background: transparent;
-  border: 1px solid rgba(167, 139, 250, 0.5);
+  border: 1px solid var(--ss-border);
 }
 
 /* Normal Card - Orange/Gold (rarity 2) */
 .character-potentials-section .potential-card-mini.normal.rarity-2 {
   background: transparent;
-  border: 1px solid rgba(251, 191, 36, 0.5);
+  border: 1px solid var(--ss-border);
 }
 
 /* Card Level Badge */
@@ -3447,27 +3447,27 @@
 }
 
 .character-potentials-section .detail-description .color-cyan {
-  color: #0abec5;
+  color: var(--ss-primary);
 }
 
 .character-potentials-section .detail-description .color-orange {
-  color: #ec6d21;
+  color: var(--ss-text-primary);
 }
 
 .character-potentials-section .detail-description .color-yellow {
-  color: #fbbf24;
+  color: var(--ss-text-primary);
 }
 
 .character-potentials-section .detail-description .color-green {
-  color: #34d399;
+  color: var(--ss-text-primary);
 }
 
 .character-potentials-section .detail-description .color-purple {
-  color: #a78bfa;
+  color: var(--ss-text-primary);
 }
 
 .character-potentials-section .detail-description .color-blue {
-  color: #60a5fa;
+  color: var(--ss-primary);
 }
 
 /* Level Selector */
@@ -3522,7 +3522,7 @@
 
 .character-potentials-section .level-input:focus {
   outline: none;
-  border-color: var(--ss-accent, #00d4ff);
+  border-color: var(--ss-border);
 }
 
 .character-potentials-section .level-max {
@@ -3752,7 +3752,7 @@
   color: var(--ss-text-primary, #ffffff);
   margin-bottom: 1.25rem;
   padding-bottom: 0.75rem;
-  border-bottom: 3px solid var(--ss-primary, #9d4edd);
+  border-bottom: 1px solid var(--ss-border);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -3778,13 +3778,13 @@
 }
 
 .gifts-category-title.loves {
-  color: var(--ss-success, #2ecc71);
-  border-color: var(--ss-success, #2ecc71);
+  color: var(--ss-text-primary);
+  border-color: var(--ss-border);
 }
 
 .gifts-category-title.hates {
-  color: var(--ss-error, #e74c3c);
-  border-color: var(--ss-error, #e74c3c);
+  color: var(--ss-text-primary);
+  border-color: var(--ss-border);
 }
 
 .gifts-grid {
@@ -3838,18 +3838,18 @@
 }
 
 .gift-rarity.rarity-3 {
-  color: #3b82f6;
-  border: 1px solid #3b82f6;
+  color: var(--ss-text-primary);
+  border: 1px solid var(--ss-border);
 }
 
 .gift-rarity.rarity-4 {
-  color: #a855f7;
-  border: 1px solid #a855f7;
+  color: var(--ss-text-primary);
+  border: 1px solid var(--ss-border);
 }
 
 .gift-rarity.rarity-5 {
-  color: #f59e0b;
-  border: 1px solid #f59e0b;
+  color: var(--ss-text-primary);
+  border: 1px solid var(--ss-border);
 }
 
 .gift-points {
@@ -3858,11 +3858,11 @@
 }
 
 .gift-points.loved {
-  color: var(--ss-success, #2ecc71);
+  color: var(--ss-text-primary);
 }
 
 .gift-points.hated {
-  color: var(--ss-error, #e74c3c);
+  color: var(--ss-text-primary);
 }
 
 .gift-needed {
@@ -3980,12 +3980,12 @@
 }
 
 .point-table td.loved {
-  color: var(--ss-success, #2ecc71);
+  color: var(--ss-text-primary);
   font-weight: 600;
 }
 
 .point-table td.hated {
-  color: var(--ss-error, #e74c3c);
+  color: var(--ss-text-primary);
 }
 
 /* Gift Recommendation Section */
@@ -3993,7 +3993,7 @@
   margin-bottom: 1.5rem;
   padding: 1rem;
   background: linear-gradient(135deg, rgba(157, 78, 221, 0.1), rgba(157, 78, 221, 0.05));
-  border: 1px solid var(--ss-primary, #9d4edd);
+  border: 1px solid var(--ss-border);
   border-radius: 8px;
 }
 

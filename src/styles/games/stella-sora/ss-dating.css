@@ -98,7 +98,7 @@
 
 .dating-search-input:focus {
   outline: none;
-  border-color: var(--ss-primary);
+  border-color: var(--ss-border);
 }
 
 .dating-search-input::placeholder {
@@ -118,7 +118,7 @@
 
 .dating-filter-select:focus {
   outline: none;
-  border-color: var(--ss-primary);
+  border-color: var(--ss-border);
 }
 
 .dating-clear-btn {
@@ -186,7 +186,7 @@
   height: 60px;
   border-radius: var(--ss-radius-md);
   overflow: hidden;
-  border: 2px solid var(--ss-primary);
+  border: 1px solid var(--ss-border);
   flex-shrink: 0;
 }
 
@@ -281,16 +281,16 @@
 
 .dating-event-clue {
   background: rgba(110, 231, 183, 0.1);
-  border: 1px solid rgba(110, 231, 183, 0.2);
+  border: 1px solid var(--ss-border);
   border-radius: var(--ss-radius-sm);
   padding: var(--ss-spacing-xs) var(--ss-spacing-sm);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   font-size: 0.75rem;
 }
 
 .dating-event-choice {
   background: rgba(125, 211, 252, 0.1);
-  border: 1px solid rgba(125, 211, 252, 0.2);
+  border: 1px solid var(--ss-border);
   border-radius: var(--ss-radius-sm);
   padding: var(--ss-spacing-xs) var(--ss-spacing-sm);
   color: var(--ss-primary-light);
@@ -321,7 +321,7 @@
 
 .dating-location-tab.active {
   background: var(--ss-primary);
-  border-color: var(--ss-primary);
+  border-color: var(--ss-border);
   color: var(--ss-bg-primary);
   font-weight: var(--ss-font-medium);
 }

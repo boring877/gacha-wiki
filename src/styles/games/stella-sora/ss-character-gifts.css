@@ -31,12 +31,12 @@
 }
 
 .text-loved {
-  color: #4ade80;
+  color: var(--ss-text-primary);
   font-weight: var(--ss-font-semibold);
 }
 
 .text-hated {
-  color: #f87171;
+  color: var(--ss-text-primary);
   font-weight: var(--ss-font-semibold);
 }
 
@@ -72,7 +72,7 @@
 }
 
 .legend-item.loved .legend-label {
-  color: #4ade80;
+  color: var(--ss-text-primary);
 }
 
 .legend-item.neutral .legend-label {
@@ -80,7 +80,7 @@
 }
 
 .legend-item.hated .legend-label {
-  color: #f87171;
+  color: var(--ss-text-primary);
 }
 
 .legend-text {
@@ -99,7 +99,7 @@
 }
 
 .daily-limit-note .highlight {
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   font-weight: var(--ss-font-bold);
 }
 
@@ -165,7 +165,7 @@
 }
 
 .affinity-table .points-col {
-  color: var(--ss-accent);
+  color: var(--ss-primary);
 }
 
 .affinity-table .total-col {
@@ -191,7 +191,7 @@
 
 .cost-efficiency-note {
   background: #fbbf2415;
-  border: 1px solid #fbbf2440;
+  border: 1px solid var(--ss-border);
   border-radius: var(--ss-radius-md);
   padding: var(--ss-spacing-sm) var(--ss-spacing-md);
   margin-bottom: var(--ss-spacing-md);
@@ -201,7 +201,7 @@
 }
 
 .cost-efficiency-note strong {
-  color: #fbbf24;
+  color: var(--ss-text-primary);
 }
 
 .stats-rewards-grid {
@@ -218,7 +218,7 @@
 }
 
 .stats-card.totals {
-  border-color: var(--ss-accent);
+  border-color: var(--ss-border);
 }
 
 .stats-card-header {
@@ -238,7 +238,7 @@
 }
 
 .stats-card.totals .stats-title {
-  color: var(--ss-accent);
+  color: var(--ss-primary);
 }
 
 .stats-card-body {
@@ -271,15 +271,15 @@
 .stat-value {
   font-size: 0.875rem;
   font-weight: var(--ss-font-bold);
-  color: #4ade80;
+  color: var(--ss-text-primary);
 }
 
 .stat-value.total {
-  color: var(--ss-accent);
+  color: var(--ss-primary);
 }
 
 .stat-value.atk-bonus {
-  color: #fbbf24;
+  color: var(--ss-text-primary);
 }
 
 /* Gift Calculator Section */
@@ -292,12 +292,12 @@
 }
 
 .gift-calculator-section.lv30 {
-  border-color: #fbbf24;
+  border-color: var(--ss-text-primary);
   background: linear-gradient(135deg, var(--ss-bg-primary) 0%, #fbbf2408 100%);
 }
 
 .gift-calculator-section.lv30 h2 {
-  color: #fbbf24;
+  color: var(--ss-text-primary);
 }
 
 /* Lv.30 Stats Summary */
@@ -305,7 +305,7 @@
   margin-top: var(--ss-spacing-md);
   padding: var(--ss-spacing-sm) var(--ss-spacing-md);
   background: #fbbf2415;
-  border: 1px solid #fbbf2440;
+  border: 1px solid var(--ss-border);
   border-radius: var(--ss-radius-md);
   text-align: center;
 }
@@ -330,11 +330,11 @@
 .lv30-stat {
   font-size: 1rem;
   font-weight: var(--ss-font-bold);
-  color: #4ade80;
+  color: var(--ss-text-primary);
 }
 
 .lv30-stat.atk-bonus {
-  color: #fbbf24;
+  color: var(--ss-text-primary);
 }
 
 .gift-calculator-section h2 {
@@ -371,15 +371,15 @@
 }
 
 .calc-rarity.rarity-3 {
-  color: #60a5fa;
+  color: var(--ss-primary);
 }
 
 .calc-rarity.rarity-4 {
-  color: #a78bfa;
+  color: var(--ss-text-primary);
 }
 
 .calc-rarity.rarity-5 {
-  color: #fbbf24;
+  color: var(--ss-text-primary);
 }
 
 .calc-body {
@@ -418,7 +418,7 @@
 }
 
 .calc-row.loved .calc-label {
-  color: #4ade80;
+  color: var(--ss-text-primary);
 }
 
 .calc-row.neutral .calc-label {
@@ -426,7 +426,7 @@
 }
 
 .calc-row.hated .calc-label {
-  color: #f87171;
+  color: var(--ss-text-primary);
 }
 
 .calc-value {
@@ -439,7 +439,7 @@
 .calc-days {
   font-size: 0.75rem;
   font-weight: var(--ss-font-bold);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   text-align: right;
   min-width: 60px;
 }
@@ -487,7 +487,7 @@
 .filter-select:focus,
 .filter-input:focus {
   outline: none;
-  border-color: var(--ss-accent);
+  border-color: var(--ss-border);
 }
 
 /* Characters Grid */
@@ -607,7 +607,7 @@
 }
 
 .gift-pref-section.loved .pref-label {
-  color: #4ade80;
+  color: var(--ss-text-primary);
 }
 
 .gift-pref-section.neutral .pref-label {
@@ -615,11 +615,11 @@
 }
 
 .gift-pref-section.hated .pref-label {
-  color: #f87171;
+  color: var(--ss-text-primary);
 }
 
 .gift-pref-section.no-hates .pref-label {
-  color: #60a5fa;
+  color: var(--ss-primary);
 }
 
 .pref-label {
@@ -708,7 +708,7 @@
 }
 
 .gift-points.loved {
-  color: #4ade80;
+  color: var(--ss-text-primary);
 }
 
 .gift-points.neutral {
@@ -716,7 +716,7 @@
 }
 
 .gift-points.hated {
-  color: #f87171;
+  color: var(--ss-text-primary);
 }
 
 /* No Hates Section */
@@ -736,7 +736,7 @@
   padding: var(--ss-spacing-sm) var(--ss-spacing-md);
   background: var(--ss-bg-tertiary);
   border-top: 1px solid var(--ss-border);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: var(--ss-font-medium);
@@ -792,15 +792,15 @@
 }
 
 .points-ref-table .loved-col {
-  color: #4ade80;
+  color: var(--ss-text-primary);
 }
 
 .points-ref-table .hated-col {
-  color: #f87171;
+  color: var(--ss-text-primary);
 }
 
 .points-ref-table .points-loved {
-  color: #4ade80 !important;
+  color: var(--ss-text-primary) !important;
   font-weight: var(--ss-font-semibold);
 }
 
@@ -809,7 +809,7 @@
 }
 
 .points-ref-table .points-hated {
-  color: #f87171 !important;
+  color: var(--ss-text-primary) !important;
   font-weight: var(--ss-font-semibold);
 }
 

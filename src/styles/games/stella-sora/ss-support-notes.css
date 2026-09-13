@@ -39,7 +39,7 @@
 .summary-stat-value {
   font-size: 1.5rem;
   font-weight: var(--ss-font-bold);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
 }
 
 .summary-stat-label {
@@ -55,7 +55,7 @@
   margin-top: var(--ss-spacing-md);
   padding: var(--ss-spacing-md);
   background: rgba(100, 149, 237, 0.1);
-  border: 1px solid rgba(100, 149, 237, 0.3);
+  border: 1px solid var(--ss-border);
   border-radius: var(--ss-radius-md);
   font-size: 0.875rem;
   line-height: 1.5;
@@ -160,7 +160,7 @@
 
 
 .material-checkbox:has(input:checked) {
-  border-color: var(--ss-accent);
+  border-color: var(--ss-border);
   background: rgba(100, 149, 237, 0.2);
   color: var(--ss-text-primary);
 }
@@ -190,7 +190,7 @@
 .filter-group select:focus,
 .filter-group input[type="text"]:focus {
   outline: none;
-  border-color: var(--ss-accent);
+  border-color: var(--ss-border);
 }
 
 /* Clear Filters Button */
@@ -225,15 +225,15 @@
 
 /* Rarity border colors */
 .support-notes-card.rarity-3 {
-  border-color: rgba(96, 165, 250, 0.3);
+  border-color: var(--ss-border);
 }
 
 .support-notes-card.rarity-4 {
-  border-color: rgba(167, 139, 250, 0.3);
+  border-color: var(--ss-border);
 }
 
 .support-notes-card.rarity-5 {
-  border-color: rgba(251, 191, 36, 0.3);
+  border-color: var(--ss-border);
 }
 
 /* Card Header */
@@ -364,7 +364,7 @@
 
 .level-material-qty {
   font-weight: var(--ss-font-semibold);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
 }
 
 /* No Results */

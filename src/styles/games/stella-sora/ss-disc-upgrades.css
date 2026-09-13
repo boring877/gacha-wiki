@@ -39,7 +39,7 @@
 .summary-stat-value {
   font-size: 1.5rem;
   font-weight: var(--ss-font-bold);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
 }
 
 .summary-stat-label {
@@ -155,15 +155,15 @@
 
 /* Rarity border colors */
 .disc-upgrade-card.rarity-3 {
-  border-color: rgba(96, 165, 250, 0.3);
+  border-color: var(--ss-border);
 }
 
 .disc-upgrade-card.rarity-4 {
-  border-color: rgba(167, 139, 250, 0.3);
+  border-color: var(--ss-border);
 }
 
 .disc-upgrade-card.rarity-5 {
-  border-color: rgba(251, 191, 36, 0.3);
+  border-color: var(--ss-border);
 }
 
 /* Card Header */
@@ -251,7 +251,7 @@
 .disc-totals-label {
   font-size: 0.75rem;
   font-weight: var(--ss-font-semibold);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: var(--ss-spacing-sm);
@@ -289,7 +289,7 @@
   align-items: center;
   gap: var(--ss-spacing-xs);
   background: rgba(251, 191, 36, 0.1);
-  border: 1px solid rgba(251, 191, 36, 0.3);
+  border: 1px solid var(--ss-border);
   border-radius: var(--ss-radius-sm);
   padding: var(--ss-spacing-xs) var(--ss-spacing-sm);
 }
@@ -302,7 +302,7 @@
 .disc-total-dorra span {
   font-size: 0.875rem;
   font-weight: var(--ss-font-semibold);
-  color: #fbbf24;
+  color: var(--ss-text-primary);
 }
 
 /* Upgrade Levels Section */
@@ -337,7 +337,7 @@
 .upgrade-level-num {
   font-size: 0.75rem;
   font-weight: var(--ss-font-bold);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   min-width: 24px;
 }
 
@@ -371,7 +371,7 @@
   align-items: center;
   gap: 4px;
   font-size: 0.75rem;
-  color: #fbbf24;
+  color: var(--ss-text-primary);
   margin-left: auto;
 }
 

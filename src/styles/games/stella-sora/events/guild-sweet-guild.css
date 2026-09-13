@@ -91,7 +91,7 @@
   font-size: 1.75rem;
   font-weight: var(--font-bold);
   margin-bottom: 1.5rem;
-  color: #7dd3fc;
+  color: var(--ss-primary);
   position: relative;
   padding-left: 1rem;
 }
@@ -126,22 +126,22 @@
 }
 
 .tier-section[data-tier='1'] {
-  border-color: #ff6b6b;
+  border-color: var(--ss-border);
   background: linear-gradient(180deg, rgba(255, 107, 107, 0.05), transparent);
 }
 
 .tier-section[data-tier='2'] {
-  border-color: #4ecdc4;
+  border-color: var(--ss-border);
   background: linear-gradient(180deg, rgba(78, 205, 196, 0.05), transparent);
 }
 
 .tier-section[data-tier='3'] {
-  border-color: #45b7d1;
+  border-color: var(--ss-border);
   background: linear-gradient(180deg, rgba(69, 183, 209, 0.05), transparent);
 }
 
 .tier-section[data-tier='4'] {
-  border-color: #96ceb4;
+  border-color: var(--ss-border);
   background: linear-gradient(180deg, rgba(150, 206, 180, 0.05), transparent);
 }
 
@@ -182,7 +182,7 @@
 .cost-total {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--ss-accent);
+  color: var(--ss-primary);
 }
 
 .tier-items-count {
@@ -208,7 +208,7 @@
 }
 
 .total-cost-row .stat-label {
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   font-weight: 600;
 }
 
@@ -452,7 +452,7 @@
 }
 
 .stock-amount {
-  color: var(--ss-warning);
+  color: var(--ss-text-primary);
   font-weight: 600;
 }
 
@@ -521,7 +521,7 @@
 
 .calc-card .actual-to-farm-main {
   font-size: 2rem;
-  color: var(--ss-warning);
+  color: var(--ss-text-primary);
   font-weight: 700;
 }
 
@@ -556,7 +556,7 @@
 }
 
 .run-stats span:first-child {
-  color: var(--ss-accent);
+  color: var(--ss-primary);
 }
 
 .run-stats span:nth-child(2) {
@@ -616,11 +616,11 @@
 }
 
 .run-stat .runs-needed {
-  color: var(--ss-warning);
+  color: var(--ss-text-primary);
 }
 
 .run-stat .stamina-needed {
-  color: var(--ss-accent);
+  color: var(--ss-primary);
 }
 
 .run-stat .days-needed {
@@ -640,7 +640,7 @@
   color: var(--ss-text-primary);
   margin: 0 0 1rem 0;
   padding-left: 0.5rem;
-  border-left: 3px solid var(--ss-success);
+  border-left: 1px solid var(--ss-border);
 }
 
 .stamina-sources {
@@ -698,7 +698,7 @@
 }
 
 .stamina-note strong {
-  color: var(--ss-accent);
+  color: var(--ss-primary);
 }
 
 /* ==========================================

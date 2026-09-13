@@ -74,7 +74,7 @@
 .hero-rarity-step.gold-step,
 .hero-rarity-step.rainbow-step {
   background: rgba(125, 211, 252, 0.15);
-  border: 2px solid var(--ss-primary);
+  border: 1px solid var(--ss-border);
 }
 
 .hero-rarity-info h4 {
@@ -164,7 +164,7 @@
 
 .level-overview-card {
   background: var(--ss-gradient-card);
-  border: 1px solid var(--ss-primary);
+  border: 1px solid var(--ss-border);
   border-radius: 12px;
   padding: 1.5rem;
   display: flex;
@@ -217,7 +217,7 @@
   margin-bottom: 1rem;
   font-family: var(--font-primary);
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--ss-primary);
+  border-bottom: 1px solid var(--ss-border);
 }
 
 .stats-cards-grid {
@@ -292,13 +292,13 @@
 }
 
 .level-item .available {
-  color: var(--ss-success);
+  color: var(--ss-text-primary);
   font-weight: 700;
   font-size: 1rem;
 }
 
 .level-item .unavailable {
-  color: var(--ss-error);
+  color: var(--ss-text-primary);
   font-weight: 700;
   font-size: 1rem;
 }
@@ -330,7 +330,7 @@
 }
 
 .rarity-value .unavailable {
-  color: var(--ss-error);
+  color: var(--ss-text-primary);
   font-weight: 700;
 }
 
@@ -385,7 +385,7 @@
   font-weight: 600;
   text-align: center;
   padding: 1rem 0.75rem;
-  border-bottom: 2px solid var(--ss-primary);
+  border-bottom: 1px solid var(--ss-border);
   font-family: var(--font-primary);
   position: sticky;
   top: 0;
@@ -401,7 +401,7 @@
 .level-header {
   min-width: 80px;
   font-weight: 600;
-  color: var(--ss-info);
+  color: var(--ss-primary);
 }
 
 .level-header-content {
@@ -419,22 +419,22 @@
 }
 
 .green-rarity {
-  color: var(--ss-rare);
+  color: var(--ss-text-primary);
   background: rgba(125, 211, 252, 0.1);
 }
 
 .blue-rarity {
-  color: var(--ss-epic);
+  color: var(--ss-text-primary);
   background: rgba(110, 231, 183, 0.1);
 }
 
 .gold-rarity {
-  color: var(--ss-legendary);
+  color: var(--ss-text-primary);
   background: rgba(251, 191, 36, 0.1);
 }
 
 .rainbow-rarity {
-  color: var(--ss-five-star);
+  color: var(--ss-text-primary);
   background: rgba(239, 68, 68, 0.1);
   font-weight: 700;
 }
@@ -446,7 +446,7 @@
   font-weight: 700;
   text-align: left;
   padding: 1rem;
-  border-bottom: 2px solid var(--ss-primary);
+  border-bottom: 1px solid var(--ss-border);
   font-family: var(--font-primary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -479,15 +479,15 @@
 }
 
 .level-cell .available {
-  color: var(--ss-success);
+  color: var(--ss-text-primary);
 }
 
 .level-cell .unavailable {
-  color: var(--ss-error);
+  color: var(--ss-text-primary);
 }
 
 .rarity-cell .unavailable {
-  color: var(--ss-error);
+  color: var(--ss-text-primary);
   font-style: italic;
 }
 
@@ -497,19 +497,19 @@
 }
 
 .green-cell {
-  color: var(--ss-rare);
+  color: var(--ss-text-primary);
 }
 
 .blue-cell {
-  color: var(--ss-epic);
+  color: var(--ss-text-primary);
 }
 
 .gold-cell {
-  color: var(--ss-legendary);
+  color: var(--ss-text-primary);
 }
 
 .rainbow-cell {
-  color: var(--ss-five-star);
+  color: var(--ss-text-primary);
   font-weight: 700;
 }
 
@@ -520,7 +520,7 @@
 
 .rainbow-container {
   background: var(--ss-gradient-card);
-  border: 2px solid var(--ss-primary);
+  border: 1px solid var(--ss-border);
   border-radius: 12px;
   padding: 1.5rem;
   margin-top: 1.5rem;
@@ -542,7 +542,7 @@
   padding: 0.75rem 0;
   position: relative;
   padding-left: 1.5rem;
-  border-bottom: 1px solid var(--ss-primary);
+  border-bottom: 1px solid var(--ss-border);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -660,7 +660,7 @@
 .gold-step,
 .rainbow-step {
   background: rgba(125, 211, 252, 0.15);
-  border: 2px solid var(--ss-primary);
+  border: 1px solid var(--ss-border);
 }
 
 .rarity-info h3 {
@@ -1143,11 +1143,11 @@
 /* High contrast mode */
 @media (prefers-contrast: high) {
   .emblem-stats-table th {
-    border-bottom: 3px solid var(--ss-primary);
+    border-bottom: 1px solid var(--ss-border);
   }
 
   .category-header td {
-    border-bottom: 3px solid var(--ss-primary);
+    border-bottom: 1px solid var(--ss-border);
   }
 
   .rarity-step {

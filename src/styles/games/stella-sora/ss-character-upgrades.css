@@ -62,11 +62,11 @@
 }
 
 .legend-item.level-up .legend-label {
-  color: #60a5fa;
+  color: var(--ss-primary);
 }
 
 .legend-item.skill .legend-label {
-  color: #a78bfa;
+  color: var(--ss-text-primary);
 }
 
 .legend-text {
@@ -113,7 +113,7 @@
 .filter-select:focus,
 .filter-input:focus {
   outline: none;
-  border-color: var(--ss-accent);
+  border-color: var(--ss-border);
 }
 
 /* Characters Grid */
@@ -244,11 +244,11 @@
 }
 
 .section-title.level-up {
-  color: #60a5fa;
+  color: var(--ss-primary);
 }
 
 .section-title.skill {
-  color: #a78bfa;
+  color: var(--ss-text-primary);
 }
 
 .toggle-icon {
@@ -285,7 +285,7 @@
 .level-number {
   font-size: 0.75rem;
   font-weight: var(--ss-font-bold);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   background: var(--ss-bg-tertiary);
   padding: 2px 8px;
   border-radius: var(--ss-radius-sm);
@@ -296,7 +296,7 @@
   align-items: center;
   gap: 4px;
   font-size: 0.75rem;
-  color: #fbbf24;
+  color: var(--ss-text-primary);
   font-weight: var(--ss-font-medium);
 }
 
@@ -422,7 +422,7 @@
 .total-material-quantity {
   font-size: 1rem;
   font-weight: var(--ss-font-bold);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
 }
 
 /* Materials Database Section */
@@ -506,7 +506,7 @@
   text-align: center;
   padding: var(--ss-spacing-sm) var(--ss-spacing-md);
   background: var(--ss-bg-tertiary);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: var(--ss-font-medium);

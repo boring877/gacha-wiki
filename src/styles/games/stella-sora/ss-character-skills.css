@@ -40,7 +40,7 @@
 .summary-stat-value {
   font-size: 1.5rem;
   font-weight: var(--ss-font-bold);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
 }
 
 .summary-stat-label {
@@ -104,7 +104,7 @@
 .filter-group input[type="text"]:focus,
 .filter-group input[type="search"]:focus {
   outline: none;
-  border-color: var(--ss-accent);
+  border-color: var(--ss-border);
 }
 
 /* Results Count */
@@ -179,27 +179,27 @@
 
 .element-ignis {
   background: rgba(251, 146, 60, 0.2);
-  color: #fb923c;
+  color: var(--ss-text-primary);
 }
 
 .element-aqua {
   background: rgba(96, 165, 250, 0.2);
-  color: #60a5fa;
+  color: var(--ss-primary);
 }
 
 .element-terra {
   background: rgba(167, 139, 250, 0.2);
-  color: #a78bfa;
+  color: var(--ss-text-primary);
 }
 
 .element-ventus {
   background: rgba(52, 211, 153, 0.2);
-  color: #34d399;
+  color: var(--ss-text-primary);
 }
 
 .element-lux {
   background: rgba(251, 191, 36, 0.2);
-  color: #fbbf24;
+  color: var(--ss-text-primary);
 }
 
 .element-umbra {
@@ -237,25 +237,25 @@
 
 /* Skill type border colors */
 .skill-card-mini.attack {
-  border-color: rgba(239, 68, 68, 0.5);
+  border-color: var(--ss-border);
 }
 
 .skill-card-mini.main-skill {
-  border-color: rgba(78, 205, 196, 0.5);
+  border-color: var(--ss-border);
 }
 
 .skill-card-mini.support-skill {
-  border-color: rgba(245, 158, 11, 0.5);
+  border-color: var(--ss-border);
 }
 
 .skill-card-mini.ultimate {
-  border-color: rgba(168, 85, 247, 0.5);
+  border-color: var(--ss-border);
 }
 
 /* Active state */
 .skill-card-mini.active {
   background: rgba(255, 255, 255, 0.05);
-  border-color: var(--ss-accent);
+  border-color: var(--ss-border);
 }
 
 /* Card Icon */
@@ -296,22 +296,22 @@
 
 .skill-card-type.attack {
   background: rgba(239, 68, 68, 0.2);
-  color: #ef4444;
+  color: var(--ss-text-primary);
 }
 
 .skill-card-type.main-skill {
   background: rgba(78, 205, 196, 0.2);
-  color: #4ecdc4;
+  color: var(--ss-text-primary);
 }
 
 .skill-card-type.support-skill {
   background: rgba(245, 158, 11, 0.2);
-  color: #f59e0b;
+  color: var(--ss-text-primary);
 }
 
 .skill-card-type.ultimate {
   background: rgba(168, 85, 247, 0.2);
-  color: #a855f7;
+  color: var(--ss-text-primary);
 }
 
 /* Skill Detail Panel */
@@ -390,22 +390,22 @@
 
 .meta-badge.attack {
   background: rgba(239, 68, 68, 0.2);
-  color: #ef4444;
+  color: var(--ss-text-primary);
 }
 
 .meta-badge.main-skill {
   background: rgba(78, 205, 196, 0.2);
-  color: #4ecdc4;
+  color: var(--ss-text-primary);
 }
 
 .meta-badge.support-skill {
   background: rgba(245, 158, 11, 0.2);
-  color: #f59e0b;
+  color: var(--ss-text-primary);
 }
 
 .meta-badge.ultimate {
   background: rgba(168, 85, 247, 0.2);
-  color: #a855f7;
+  color: var(--ss-text-primary);
 }
 
 .meta-item {
@@ -425,7 +425,7 @@
 }
 
 .detail-description .color-highlight {
-  color: #0abec5;
+  color: var(--ss-primary);
   font-weight: var(--ss-font-semibold);
 }
 
@@ -487,7 +487,7 @@
 
 .level-input:focus {
   outline: none;
-  border-color: var(--ss-accent);
+  border-color: var(--ss-border);
 }
 
 .level-max {

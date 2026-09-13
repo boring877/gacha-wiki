@@ -12,7 +12,7 @@
 /* Important Note Section */
 .important-note-section {
   background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 152, 0, 0.1));
-  border: 2px solid rgba(255, 193, 7, 0.3);
+  border: 1px solid var(--ss-border);
   border-radius: var(--ss-radius-lg);
   padding: var(--ss-spacing-md);
   margin-bottom: calc(var(--ss-spacing-xl) * 1.2);
@@ -39,7 +39,7 @@
 .note-title {
   font-size: 1.125rem;
   font-weight: var(--ss-font-bold);
-  color: #ffc107;
+  color: var(--ss-text-primary);
   margin: 0 0 var(--ss-spacing-sm) 0;
   display: flex;
   align-items: center;
@@ -120,7 +120,7 @@
   padding: 2px 8px;
   border-radius: var(--ss-radius-sm);
   background: var(--ss-accent-20);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
 }
 
 /* Responsive Design */

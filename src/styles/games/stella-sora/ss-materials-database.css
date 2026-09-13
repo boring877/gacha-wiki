@@ -91,19 +91,19 @@
 }
 
 .category-title.level-up {
-  color: #60a5fa;
+  color: var(--ss-primary);
 }
 
 .category-title.boss {
-  color: #f472b6;
+  color: var(--ss-text-primary);
 }
 
 .category-title.essence {
-  color: #4ade80;
+  color: var(--ss-text-primary);
 }
 
 .category-title.skill {
-  color: #a78bfa;
+  color: var(--ss-text-primary);
 }
 
 .category-desc {
@@ -181,7 +181,7 @@
 }
 
 .rarity-stars {
-  color: #fbbf24;
+  color: var(--ss-text-primary);
 }
 
 /* Material Details (for expanded view) */
@@ -213,48 +213,48 @@
 /* Element-specific tag colors */
 .material-tag.element-ventus {
   background: rgba(74, 222, 128, 0.15);
-  color: #4ade80;
+  color: var(--ss-text-primary);
 }
 
 .material-tag.element-ignis {
   background: rgba(251, 146, 60, 0.15);
-  color: #fb923c;
+  color: var(--ss-text-primary);
 }
 
 .material-tag.element-umbra {
   background: rgba(168, 85, 247, 0.15);
-  color: #a855f7;
+  color: var(--ss-text-primary);
 }
 
 .material-tag.element-lux {
   background: rgba(250, 204, 21, 0.15);
-  color: #facc15;
+  color: var(--ss-text-primary);
 }
 
 .material-tag.element-aqua {
   background: rgba(56, 189, 248, 0.15);
-  color: #38bdf8;
+  color: var(--ss-primary);
 }
 
 .material-tag.element-terra {
   background: rgba(180, 83, 9, 0.15);
-  color: #d97706;
+  color: var(--ss-text-primary);
 }
 
 /* Position-specific tag colors */
 .material-tag.position-support {
   background: rgba(250, 204, 21, 0.15);
-  color: #facc15;
+  color: var(--ss-text-primary);
 }
 
 .material-tag.position-vanguard {
   background: rgba(251, 146, 60, 0.15);
-  color: #fb923c;
+  color: var(--ss-text-primary);
 }
 
 .material-tag.position-versatile {
   background: rgba(168, 85, 247, 0.15);
-  color: #a855f7;
+  color: var(--ss-text-primary);
 }
 
 /* Sub-category grouping */
@@ -369,7 +369,7 @@
 .filter-select:focus,
 .filter-input:focus {
   outline: none;
-  border-color: var(--ss-accent);
+  border-color: var(--ss-border);
 }
 
 /* Usage Info Section */

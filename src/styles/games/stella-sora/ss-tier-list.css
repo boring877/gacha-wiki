@@ -206,7 +206,7 @@
 
 .mode-btn.active {
   background: var(--ss-primary, #6366f1);
-  border-color: var(--ss-primary, #6366f1);
+  border-color: var(--ss-border);
   color: white;
 }
 
@@ -261,7 +261,7 @@
 }
 
 .pool-character-card.selected {
-  border-color: var(--ss-primary, #6366f1);
+  border-color: var(--ss-border);
   transform: scale(1.05);
 }
 
@@ -297,12 +297,12 @@
 }
 
 #maker-tier-list .tier-characters.drag-over {
-  border-color: var(--ss-primary, #6366f1);
+  border-color: var(--ss-border);
   background: rgba(99, 102, 241, 0.1);
 }
 
 #maker-tier-list .tier-characters.awaiting-placement {
-  border-color: var(--ss-accent, #8b5cf6);
+  border-color: var(--ss-border);
   background: rgba(139, 92, 246, 0.05);
 }
 

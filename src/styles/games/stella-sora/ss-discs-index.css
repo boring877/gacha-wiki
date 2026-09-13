@@ -91,8 +91,8 @@
 
 .disc-tag {
   background: var(--ss-accent-20);
-  color: var(--ss-accent);
-  border: 1px solid var(--ss-accent);
+  color: var(--ss-primary);
+  border: 1px solid var(--ss-border);
   padding: 2px 8px;
   border-radius: var(--ss-radius-sm);
   font-size: 0.625rem;
@@ -293,7 +293,7 @@
 .summary-stat-value {
   font-size: 1.5rem;
   font-weight: var(--ss-font-bold);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
 }
 
 .summary-stat-label {
@@ -354,7 +354,7 @@
 .filter-group input:focus,
 .filter-group select:focus {
   outline: none;
-  border-color: var(--ss-accent);
+  border-color: var(--ss-border);
 }
 
 .filter-actions {
@@ -401,7 +401,7 @@
 
 .sort-btn.active {
   background: var(--ss-accent);
-  border-color: var(--ss-accent);
+  border-color: var(--ss-border);
   color: var(--ss-bg-primary);
   font-weight: var(--ss-font-semibold);
 }
@@ -489,7 +489,7 @@
 /* Stats */
 .stat-value {
   font-weight: var(--ss-font-bold);
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   font-size: 0.95rem;
 }
 
@@ -586,10 +586,10 @@
   display: inline-block;
   padding: 2px 6px;
   background: var(--ss-accent-20);
-  border: 1px solid var(--ss-accent);
+  border: 1px solid var(--ss-border);
   border-radius: var(--ss-radius-sm);
   font-size: 0.625rem;
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   text-transform: uppercase;
 }
 
@@ -654,7 +654,7 @@
 }
 
 .disc-card-mobile .disc-card-stats .stat-atk {
-  color: var(--ss-accent);
+  color: var(--ss-primary);
   font-weight: var(--ss-font-semibold);
 }
 
