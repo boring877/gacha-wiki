@@ -5,9 +5,10 @@
 import GiftLayout from '../../../layouts/stella-sora/GiftLayout.astro';
 import SSGiftImage from '../../../components/stella-sora/SSGiftImage.astro';
 import SSRarityImage from '../../../components/stella-sora/SSRarityImage.astro';
-import { Image } from 'astro:assets';
 import { gifts, getGiftCategories, pointValues, craftingMaterial } from '../../../data/stella-sora/gifts.js';
-import artifactWishingEgg from '../../../assets/images/games/stella-sora/items/artifact-wishing-egg.png';
+import { r2Url } from '../../../data/r2-config.js';
+
+const artifactWishingEgg = r2Url('stella-sora', 'items/artifact-wishing-egg.png');
 
 const categories = getGiftCategories();
 
@@ -96,7 +97,7 @@ const structuredData = {
             height={64}
             class="crafting-rarity-bg"
           />
-          <Image
+          <img
             src={artifactWishingEgg}
             alt={craftingMaterial.name}
             width={48}
@@ -122,12 +123,14 @@ const structuredData = {
                 height={40}
                 class="recipe-rarity-bg"
               />
-              <Image
+              <img
                 src={artifactWishingEgg}
                 alt={craftingMaterial.name}
                 width={32}
                 height={32}
                 class="recipe-icon"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -147,6 +150,8 @@ const structuredData = {
                 width={32}
                 height={32}
                 class="recipe-icon"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -168,6 +173,8 @@ const structuredData = {
                 width={32}
                 height={32}
                 class="recipe-icon"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -187,6 +194,8 @@ const structuredData = {
                 width={32}
                 height={32}
                 class="recipe-icon"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>

@@ -1,41 +1,30 @@
 ---
 // Stella Sora Skill Icon Component
-import { Image } from 'astro:assets';
+// Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
-// Import skill type icons
-import normalIcon from '../../assets/images/games/stella-sora/skills/normal.png';
-import skillIcon from '../../assets/images/games/stella-sora/skills/skill.png';
-import supportIcon from '../../assets/images/games/stella-sora/skills/support.png';
-import ultimateIcon from '../../assets/images/games/stella-sora/skills/ultimate.png';
-
-// Import element plates for colored backgrounds
-import ignisPlate from '../../assets/images/games/stella-sora/skills/ignis_plate.png';
-import aquaPlate from '../../assets/images/games/stella-sora/skills/aqua_plate.png';
-import ventusPlate from '../../assets/images/games/stella-sora/skills/ventus_plate.png';
-import terraPlate from '../../assets/images/games/stella-sora/skills/terra_plate.png';
-import luxPlate from '../../assets/images/games/stella-sora/skills/lux_plate.png';
-import umbraPlate from '../../assets/images/games/stella-sora/skills/umbra_plate.png';
-
-const skillTypeMap: Record<string, ImageMetadata> = {
-  'normal': normalIcon,
-  'skill': skillIcon,
-  'support': supportIcon,
-  'ultimate': ultimateIcon,
+// Skill type icon paths
+const skillTypeMap: Record<string, string> = {
+  normal: 'skills/normal.png',
+  skill: 'skills/skill.png',
+  support: 'skills/support.png',
+  ultimate: 'skills/ultimate.png',
 };
 
-const elementPlateMap: Record<string, ImageMetadata> = {
-  'Ignis': ignisPlate,
-  'ignis': ignisPlate,
-  'Aqua': aquaPlate,
-  'aqua': aquaPlate,
-  'Ventus': ventusPlate,
-  'ventus': ventusPlate,
-  'Terra': terraPlate,
-  'terra': terraPlate,
-  'Lux': luxPlate,
-  'lux': luxPlate,
-  'Umbra': umbraPlate,
-  'umbra': umbraPlate,
+// Element plate paths for colored backgrounds
+const elementPlateMap: Record<string, string> = {
+  Ignis: 'skills/ignis_plate.png',
+  ignis: 'skills/ignis_plate.png',
+  Aqua: 'skills/aqua_plate.png',
+  aqua: 'skills/aqua_plate.png',
+  Ventus: 'skills/ventus_plate.png',
+  ventus: 'skills/ventus_plate.png',
+  Terra: 'skills/terra_plate.png',
+  terra: 'skills/terra_plate.png',
+  Lux: 'skills/lux_plate.png',
+  lux: 'skills/lux_plate.png',
+  Umbra: 'skills/umbra_plate.png',
+  umbra: 'skills/umbra_plate.png',
 };
 
 export interface Props {
@@ -49,32 +38,30 @@ export interface Props {
 
 const { skillType, element, alt, class: className = '', width = 40, height = 40 } = Astro.props;
 
-const skillIconSrc = skillTypeMap[skillType] || skillTypeMap['skill'];
-const plateSrc = element ? elementPlateMap[element] : null;
+const skillIconPath = skillTypeMap[skillType] || skillTypeMap['skill'];
+const platePath = element ? elementPlateMap[element] : null;
 ---
 
 <div class={`skill-icon-wrapper ${className}`}>
-  {plateSrc && (
-    <Image
-      src={plateSrc}
+  {platePath && (
+    <img
+      src={`${R2}/${platePath}`}
       alt=""
       width={width}
       height={height}
       class="skill-plate"
       loading="lazy"
-      format="webp"
-      quality={95}
+      decoding="async"
     />
   )}
-  <Image
-    src={skillIconSrc}
+  <img
+    src={`${R2}/${skillIconPath}`}
     alt={alt || `${skillType} skill`}
     width={width - 8}
     height={height - 8}
     class="skill-icon"
     loading="lazy"
-    format="webp"
-    quality={95}
+    decoding="async"
   />
 </div>
 

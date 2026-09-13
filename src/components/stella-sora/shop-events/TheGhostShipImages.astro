@@ -4,115 +4,86 @@
  * Handles image imports and mapping for The Ghost Ship Haunts the Deep event
  */
 
-import { Image } from 'astro:assets';
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
+
 
 // Import all images for The Ghost Ship Haunts the Deep event
-import squidRiceCracker from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Squid_rice_cracker.png';
-import summerSanctuary from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Summer_sanctuary.png';
-import summerSanctuaryMelody from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Summer_sanctuary_melodypng.png';
-import daringAdventure from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Daring_Adventure!_The_Ghost_Ship_Haunts_the_Deep.png';
-import radiantFeatherCrown from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_radiant_feather_crown.png';
-import starEmblemPolisher from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Star_emblem_polisher.png';
-import ceruleanTicket from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_cerulean_ticket.png';
-import sproutTicket from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_sprout_ticket.png';
-import exquisiteBlower from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_exquisite_blower.png';
-import chillingWindSpinner from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_chilling_wind_spinner.png';
-import moonlitCompanion from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_moonlit_companion.png';
-import countsGift from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_count_s_gift.png';
-import countsCellaring from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_count_s_cellaring.png';
-import demonBeeGameCartridge from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_demon_bee_game_cartridge.png';
-import duloosEssence from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_duloos_essence.png';
-import monolithStairsPass from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_monolith_stairs_pass.png';
-import trekkersHandwrittenEncyclopedia from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_trekkers_handwritten_encyclopedia.png';
-import starlitColoredGlass from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_starlit_colored_glass.png';
-import barrageGameCartridge from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_barrage_game_cartridge.png';
-import duloosSoulRemnant from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_duloos_soul_remnant.png';
-import dorra from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_dorra.png';
-import bottledVigorSoda from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Bottled_vigor_soda.png';
-import cannedVigorSoda from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Canned_vigor_soda.png';
-import noviceDiscPromotionBox from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Novice_disc_promotion_box.png';
-import noviceTrekkerPromotionBox from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Novice_trekker_promotion_box.png';
-import premiumDiscPromotionBox from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Premium_disc_promotion_box.png';
-import premiumTrekkerPromotionBox from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Premium_trekker_promotion_box.png';
-import premiumCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Premium_cartridge_box.png';
-import beginnerCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_Beginner_cartridge_box.png';
-import bg1event from '../../../assets/images/games/stella-sora/EventShop/The_ghost_ship_haunts_the_deep/3_bg1event.jpg';
 
 // Clean, unified image mapping for The Ghost Ship Haunts the Deep - supports both original filenames and semantic camelCase keys
 const imageMap = {
   // Original filenames from data (with extensions)
-  '3_Squid_rice_cracker.png': squidRiceCracker,
-  '3_Summer_sanctuary.png': summerSanctuary,
-  '3_Summer_sanctuary_melodypng.png': summerSanctuaryMelody,
-  '3_Daring_Adventure!_The_Ghost_Ship_Haunts_the_Deep.png': daringAdventure,
-  '3_radiant_feather_crown.png': radiantFeatherCrown,
-  '3_Star_emblem_polisher.png': starEmblemPolisher,
-  '3_cerulean_ticket.png': ceruleanTicket,
-  '3_sprout_ticket.png': sproutTicket,
-  '3_exquisite_blower.png': exquisiteBlower,
-  '3_chilling_wind_spinner.png': chillingWindSpinner,
-  '3_moonlit_companion.png': moonlitCompanion,
-  '3_count_s_gift.png': countsGift,
-  '3_count_s_cellaring.png': countsCellaring,
-  '3_demon_bee_game_cartridge.png': demonBeeGameCartridge,
-  '3_duloos_essence.png': duloosEssence,
-  '3_monolith_stairs_pass.png': monolithStairsPass,
-  '3_trekkers_handwritten_encyclopedia.png': trekkersHandwrittenEncyclopedia,
-  '3_starlit_colored_glass.png': starlitColoredGlass,
-  '3_barrage_game_cartridge.png': barrageGameCartridge,
-  '3_duloos_soul_remnant.png': duloosSoulRemnant,
-  '3_dorra.png': dorra,
-  '3_Bottled_vigor_soda.png': bottledVigorSoda,
-  '3_Canned_vigor_soda.png': cannedVigorSoda,
-  '3_Novice_disc_promotion_box.png': noviceDiscPromotionBox,
-  '3_Novice_trekker_promotion_box.png': noviceTrekkerPromotionBox,
-  '3_Premium_disc_promotion_box.png': premiumDiscPromotionBox,
-  '3_Premium_trekker_promotion_box.png': premiumTrekkerPromotionBox,
-  '3_Premium_cartridge_box.png': premiumCartridgeBox,
-  '3_Beginner_cartridge_box.png': beginnerCartridgeBox,
-  '3_bg1event.jpg': bg1event,
+  '3_Squid_rice_cracker.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_Squid_rice_cracker.png',
+  '3_Summer_sanctuary.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_Summer_sanctuary.png',
+  '3_Summer_sanctuary_melodypng.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_Summer_sanctuary_melodypng.png',
+  '3_Daring_Adventure!_The_Ghost_Ship_Haunts_the_Deep.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_Daring_Adventure!_The_Ghost_Ship_Haunts_the_Deep.png',
+  '3_radiant_feather_crown.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_radiant_feather_crown.png',
+  '3_Star_emblem_polisher.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_Star_emblem_polisher.png',
+  '3_cerulean_ticket.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_cerulean_ticket.png',
+  '3_sprout_ticket.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_sprout_ticket.png',
+  '3_exquisite_blower.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_exquisite_blower.png',
+  '3_chilling_wind_spinner.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_chilling_wind_spinner.png',
+  '3_moonlit_companion.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_moonlit_companion.png',
+  '3_count_s_gift.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_count_s_gift.png',
+  '3_count_s_cellaring.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_count_s_cellaring.png',
+  '3_demon_bee_game_cartridge.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_demon_bee_game_cartridge.png',
+  '3_duloos_essence.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_duloos_essence.png',
+  '3_monolith_stairs_pass.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_monolith_stairs_pass.png',
+  '3_trekkers_handwritten_encyclopedia.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_trekkers_handwritten_encyclopedia.png',
+  '3_starlit_colored_glass.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_starlit_colored_glass.png',
+  '3_barrage_game_cartridge.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_barrage_game_cartridge.png',
+  '3_duloos_soul_remnant.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_duloos_soul_remnant.png',
+  '3_dorra.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_dorra.png',
+  '3_Bottled_vigor_soda.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_Bottled_vigor_soda.png',
+  '3_Canned_vigor_soda.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_Canned_vigor_soda.png',
+  '3_Novice_disc_promotion_box.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_Novice_disc_promotion_box.png',
+  '3_Novice_trekker_promotion_box.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_Novice_trekker_promotion_box.png',
+  '3_Premium_disc_promotion_box.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_Premium_disc_promotion_box.png',
+  '3_Premium_trekker_promotion_box.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_Premium_trekker_promotion_box.png',
+  '3_Premium_cartridge_box.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_Premium_cartridge_box.png',
+  '3_Beginner_cartridge_box.png': 'EventShop/The_ghost_ship_haunts_the_deep/3_Beginner_cartridge_box.png',
+  '3_bg1event.jpg': 'EventShop/The_ghost_ship_haunts_the_deep/3_bg1event.jpg',
 
   // Semantic name variations for easier usage
-  'Squid Rice Cracker': squidRiceCracker,
-  'Summer Sanctuary': summerSanctuary,
-  'Summer Sanctuary Melody': summerSanctuaryMelody,
-  'Daring Adventure': daringAdventure,
-  'Radiant Feather Crown': radiantFeatherCrown,
-  'Star Emblem Polisher': starEmblemPolisher,
-  'Cerulean Ticket': ceruleanTicket,
-  'Sprout Ticket': sproutTicket,
-  'Exquisite Blower': exquisiteBlower,
-  'Chilling Wind Spinner': chillingWindSpinner,
-  'Moonlit Companion': moonlitCompanion,
-  "Count's Gift": countsGift,
-  "Count's Cellaring": countsCellaring,
-  'Demon Bee Game Cartridge': demonBeeGameCartridge,
-  "Duloo's Essence": duloosEssence,
-  'Monolith Stairs Pass': monolithStairsPass,
-  "Trekker's Handwritten Encyclopedia": trekkersHandwrittenEncyclopedia,
-  'Starlit Colored Glass': starlitColoredGlass,
-  'Barrage Game Cartridge': barrageGameCartridge,
-  "Duloo's Soul Remnant": duloosSoulRemnant,
-  Dorra: dorra,
-  'Bottled Vigor Soda': bottledVigorSoda,
-  'Bottled Vigor soda': bottledVigorSoda,
-  'Canned Vigor Soda': cannedVigorSoda,
-  'Canned Bigor Soda': cannedVigorSoda,
-  'Novice Disc Promotion Box': noviceDiscPromotionBox,
-  'Novice Discs Promotion Box': noviceDiscPromotionBox,
-  'Novice disc promotion box': noviceDiscPromotionBox,
-  'Novice Trekker Promotion Box': noviceTrekkerPromotionBox,
-  'Novice Trekker promotion box': noviceTrekkerPromotionBox,
-  'Premium Disc Promotion Box': premiumDiscPromotionBox,
-  'Premium Disc promotion box': premiumDiscPromotionBox,
-  'Premium Trekker Promotion Box': premiumTrekkerPromotionBox,
-  'Premium Trekker promotion box': premiumTrekkerPromotionBox,
-  'Premium Cartridge Box': premiumCartridgeBox,
-  'Premium Cartridge box': premiumCartridgeBox,
-  'Premium cartridge box': premiumCartridgeBox,
-  'Beginner Cartridge Box': beginnerCartridgeBox,
-  'Beginner Cartridge box': beginnerCartridgeBox,
-  Background: bg1event,
+  'Squid Rice Cracker': 'EventShop/The_ghost_ship_haunts_the_deep/3_Squid_rice_cracker.png',
+  'Summer Sanctuary': 'EventShop/The_ghost_ship_haunts_the_deep/3_Summer_sanctuary.png',
+  'Summer Sanctuary Melody': 'EventShop/The_ghost_ship_haunts_the_deep/3_Summer_sanctuary_melodypng.png',
+  'Daring Adventure': 'EventShop/The_ghost_ship_haunts_the_deep/3_Daring_Adventure!_The_Ghost_Ship_Haunts_the_Deep.png',
+  'Radiant Feather Crown': 'EventShop/The_ghost_ship_haunts_the_deep/3_radiant_feather_crown.png',
+  'Star Emblem Polisher': 'EventShop/The_ghost_ship_haunts_the_deep/3_Star_emblem_polisher.png',
+  'Cerulean Ticket': 'EventShop/The_ghost_ship_haunts_the_deep/3_cerulean_ticket.png',
+  'Sprout Ticket': 'EventShop/The_ghost_ship_haunts_the_deep/3_sprout_ticket.png',
+  'Exquisite Blower': 'EventShop/The_ghost_ship_haunts_the_deep/3_exquisite_blower.png',
+  'Chilling Wind Spinner': 'EventShop/The_ghost_ship_haunts_the_deep/3_chilling_wind_spinner.png',
+  'Moonlit Companion': 'EventShop/The_ghost_ship_haunts_the_deep/3_moonlit_companion.png',
+  "Count's Gift": 'EventShop/The_ghost_ship_haunts_the_deep/3_count_s_gift.png',
+  "Count's Cellaring": 'EventShop/The_ghost_ship_haunts_the_deep/3_count_s_cellaring.png',
+  'Demon Bee Game Cartridge': 'EventShop/The_ghost_ship_haunts_the_deep/3_demon_bee_game_cartridge.png',
+  "Duloo's Essence": 'EventShop/The_ghost_ship_haunts_the_deep/3_duloos_essence.png',
+  'Monolith Stairs Pass': 'EventShop/The_ghost_ship_haunts_the_deep/3_monolith_stairs_pass.png',
+  "Trekker's Handwritten Encyclopedia": 'EventShop/The_ghost_ship_haunts_the_deep/3_trekkers_handwritten_encyclopedia.png',
+  'Starlit Colored Glass': 'EventShop/The_ghost_ship_haunts_the_deep/3_starlit_colored_glass.png',
+  'Barrage Game Cartridge': 'EventShop/The_ghost_ship_haunts_the_deep/3_barrage_game_cartridge.png',
+  "Duloo's Soul Remnant": 'EventShop/The_ghost_ship_haunts_the_deep/3_duloos_soul_remnant.png',
+  Dorra: 'EventShop/The_ghost_ship_haunts_the_deep/3_dorra.png',
+  'Bottled Vigor Soda': 'EventShop/The_ghost_ship_haunts_the_deep/3_Bottled_vigor_soda.png',
+  'Bottled Vigor soda': 'EventShop/The_ghost_ship_haunts_the_deep/3_Bottled_vigor_soda.png',
+  'Canned Vigor Soda': 'EventShop/The_ghost_ship_haunts_the_deep/3_Canned_vigor_soda.png',
+  'Canned Bigor Soda': 'EventShop/The_ghost_ship_haunts_the_deep/3_Canned_vigor_soda.png',
+  'Novice Disc Promotion Box': 'EventShop/The_ghost_ship_haunts_the_deep/3_Novice_disc_promotion_box.png',
+  'Novice Discs Promotion Box': 'EventShop/The_ghost_ship_haunts_the_deep/3_Novice_disc_promotion_box.png',
+  'Novice disc promotion box': 'EventShop/The_ghost_ship_haunts_the_deep/3_Novice_disc_promotion_box.png',
+  'Novice Trekker Promotion Box': 'EventShop/The_ghost_ship_haunts_the_deep/3_Novice_trekker_promotion_box.png',
+  'Novice Trekker promotion box': 'EventShop/The_ghost_ship_haunts_the_deep/3_Novice_trekker_promotion_box.png',
+  'Premium Disc Promotion Box': 'EventShop/The_ghost_ship_haunts_the_deep/3_Premium_disc_promotion_box.png',
+  'Premium Disc promotion box': 'EventShop/The_ghost_ship_haunts_the_deep/3_Premium_disc_promotion_box.png',
+  'Premium Trekker Promotion Box': 'EventShop/The_ghost_ship_haunts_the_deep/3_Premium_trekker_promotion_box.png',
+  'Premium Trekker promotion box': 'EventShop/The_ghost_ship_haunts_the_deep/3_Premium_trekker_promotion_box.png',
+  'Premium Cartridge Box': 'EventShop/The_ghost_ship_haunts_the_deep/3_Premium_cartridge_box.png',
+  'Premium Cartridge box': 'EventShop/The_ghost_ship_haunts_the_deep/3_Premium_cartridge_box.png',
+  'Premium cartridge box': 'EventShop/The_ghost_ship_haunts_the_deep/3_Premium_cartridge_box.png',
+  'Beginner Cartridge Box': 'EventShop/The_ghost_ship_haunts_the_deep/3_Beginner_cartridge_box.png',
+  'Beginner Cartridge box': 'EventShop/The_ghost_ship_haunts_the_deep/3_Beginner_cartridge_box.png',
+  Background: 'EventShop/The_ghost_ship_haunts_the_deep/3_bg1event.jpg',
 };
 
 // Props interface
@@ -154,17 +125,15 @@ const imageModule =
   imageMap[convertedFilenamePng] ||
   imageMap[filename + '.jpg'] ||
   imageMap[filename + '.png'] ||
-  squidRiceCracker;
+  'EventShop/The_ghost_ship_haunts_the_deep/3_Squid_rice_cracker.png';
 ---
 
 <!-- Use Astro's Image component for optimization -->
-<Image
-  src={imageModule}
+<img
+  src={`${R2}/${imageModule}`}
   alt={alt || imageName.replace(/_/g, ' ').replace('.jpg', '').replace('.png', '')}
   width={width}
   height={height}
   class={finalClassName}
   loading={loading}
-  format={format}
-  quality={quality}
 />

@@ -1,9 +1,7 @@
 ---
 // Stella Sora Talent Image Component
-import { Image } from 'astro:assets';
-
-// Import talent image
-import talentIcon from '../../assets/images/games/stella-sora/Talent/talent.png';
+// Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
 export interface Props {
   alt?: string;
@@ -15,15 +13,14 @@ export interface Props {
 const { alt = 'Talent', class: className = '', width = 48, height = 48 } = Astro.props;
 ---
 
-<Image
-  src={talentIcon}
+<img
+  src={`${R2}/Talent/talent.png`}
   alt={alt}
   width={width}
   height={height}
   class={`${className} talent-img`}
   loading="lazy"
-  format="webp"
-  quality={95}
+  decoding="async"
 />
 
 <style>

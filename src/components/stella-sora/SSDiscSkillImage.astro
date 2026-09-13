@@ -1,8 +1,28 @@
 ---
 // Stella Sora Disc Skill Image Component
 // Displays disc skill icons from the disc-skills folder with optional background
+// Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
-import { Image } from 'astro:assets';
+// Files present in disc-skills/ on R2 (frozen listing; extend when new art uploads)
+const FILES = new Set([
+  'DiscSkill_1', 'DiscSkill_10', 'DiscSkill_11', 'DiscSkill_12', 'DiscSkill_13', 'DiscSkill_14',
+  'DiscSkill_214001', 'DiscSkill_214002', 'DiscSkill_214005', 'DiscSkill_214006', 'DiscSkill_214007',
+  'DiscSkill_214009', 'DiscSkill_214010', 'DiscSkill_214011', 'DiscSkill_214012', 'DiscSkill_214013',
+  'DiscSkill_214014', 'DiscSkill_214015', 'DiscSkill_214017', 'DiscSkill_214018', 'DiscSkill_214019',
+  'DiscSkill_214020', 'DiscSkill_214021', 'DiscSkill_214022', 'DiscSkill_214023', 'DiscSkill_214024',
+  'DiscSkill_214026', 'DiscSkill_214027', 'DiscSkill_214028', 'DiscSkill_214030', 'DiscSkill_214031',
+  'DiscSkill_214032', 'DiscSkill_214033', 'DiscSkill_214036', 'DiscSkill_214037', 'DiscSkill_214038',
+  'DiscSkill_214039', 'DiscSkill_214040', 'DiscSkill_214041', 'DiscSkill_3', 'DiscSkill_4',
+  'DiscSkill_6', 'DiscSkill_7', 'DiscSkill_8', 'DiscSkill_9',
+  'crisp-morning-plate', 'crisp-morning-skill',
+  'db_DiscSkill_1', 'db_DiscSkill_2', 'db_DiscSkill_3', 'db_DiscSkill_4', 'db_DiscSkill_5',
+  'db_DiscSkill_6',
+  'indigo-sunset-plate', 'indigo-sunset-skill',
+  'lonely-dunes-plate', 'lonely-dunes-skill',
+  'pink-dream-plate', 'pink-dream-skill',
+  'sunny-breeze-plate', 'sunny-breeze-skill',
+]);
 
 export interface Props {
   iconName: string;
@@ -23,44 +43,30 @@ const {
   height = 48,
   loading = 'lazy',
   class: className,
-  quality = 95,
 } = Astro.props;
-
-// Import all disc skill images from src/assets
-type ImageModule = { default: any } | undefined;
-const imageModules: Record<string, ImageModule> = import.meta.glob(
-  '/src/assets/images/games/stella-sora/disc-skills/*.{jpg,jpeg,png,webp}',
-  { eager: true }
-);
 
 // Build the icon image path
 let iconKey = iconName;
 if (!iconKey.includes('.')) {
   iconKey = `${iconKey}.png`;
 }
-const iconPath = `/src/assets/images/games/stella-sora/disc-skills/${iconKey}`;
-const iconModule = imageModules[iconPath];
+const iconExists = FILES.has(iconKey.replace(/\.(jpg|jpeg|png|webp)$/i, ''));
+const iconSrc = iconExists ? `${R2}/disc-skills/${iconKey}` : '';
 
-let iconSrc: any;
 let imageAlt = alt || iconName;
-if (iconModule?.default) {
-  iconSrc = iconModule.default;
-} else {
-  iconSrc = '';
+if (!iconExists) {
   imageAlt = `Image not found: ${alt || iconName}`;
 }
 
 // Build the background image path if provided
-let bgSrc: any = null;
+let bgSrc: string | null = null;
 if (iconBackground) {
   let bgKey = iconBackground;
   if (!bgKey.includes('.')) {
     bgKey = `${bgKey}.png`;
   }
-  const bgPath = `/src/assets/images/games/stella-sora/disc-skills/${bgKey}`;
-  const bgModule = imageModules[bgPath];
-  if (bgModule?.default) {
-    bgSrc = bgModule.default;
+  if (FILES.has(bgKey.replace(/\.(jpg|jpeg|png|webp)$/i, ''))) {
+    bgSrc = `${R2}/disc-skills/${bgKey}`;
   }
 }
 
@@ -70,26 +76,24 @@ const hasBackground = bgSrc !== null;
 {
   hasBackground ? (
     <div class={`disc-skill-with-bg ${className || ''}`} style={`width: ${width}px; height: ${height}px;`}>
-      <Image
+      <img
         src={bgSrc}
         alt=""
         width={width * 2}
         height={height * 2}
         loading={loading}
         class="disc-skill-bg"
-        quality={quality}
-        format="webp"
+        decoding="async"
       />
       {iconSrc ? (
-        <Image
+        <img
           src={iconSrc}
           alt={imageAlt}
           width={width * 2}
           height={height * 2}
           loading={loading}
           class="disc-skill-icon"
-          quality={quality}
-          format="webp"
+          decoding="async"
         />
       ) : (
         <div class="disc-skill-icon-placeholder">
@@ -98,7 +102,7 @@ const hasBackground = bgSrc !== null;
       )}
     </div>
   ) : iconSrc ? (
-    <Image
+    <img
       src={iconSrc}
       alt={imageAlt}
       width={width * 2}
@@ -106,8 +110,7 @@ const hasBackground = bgSrc !== null;
       loading={loading}
       class={`disc-skill-image ${className || ''}`}
       style={`width: ${width}px; height: ${height}px;`}
-      quality={quality}
-      format="webp"
+      decoding="async"
     />
   ) : (
     <div

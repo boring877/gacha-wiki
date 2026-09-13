@@ -1,24 +1,12 @@
-// Auto-extracted character data for gacha-wiki
+// Wraith Character Data - Stella Sora
+// Generated from live game tables (Sep 8 2026 patch, v1.15.0)
+
 export const Wraith = {
   "id": 143,
   "name": "Wraith",
   "icon": "/stella/assets/Wraith.png",
   "portrait": "/stella/assets/Wraith_portrait.png",
   "background": "/stella/assets/Wraith_background.png",
-  "variants": {
-    "base": "/stella/assets/Wraith_base.png",
-    "q": "/stella/assets/Wraith_q.png",
-    "gd": "/stella/assets/Wraith_gd.png",
-    "goods": "/stella/assets/Wraith_goods.png",
-    "qs": "/stella/assets/Wraith_qs.png",
-    "xl": "/stella/assets/Wraith_xl.png",
-    "gc": "/stella/assets/Wraith_gc.png",
-    "sk": "/stella/assets/Wraith_portrait.png",
-    "xxl": "/stella/assets/Wraith.png",
-    "qm": "/stella/assets/Wraith_qm.png",
-    "l": "/stella/assets/Wraith_l.png",
-    "s": "/stella/assets/Wraith_s.png"
-  },
   "description": "Hailing from the frozen land of Norstheim, she is an elite warrior of the Sentinel of Dawn. A master of all weapons, she pays extra attention to cases involving Nocturn Eterna.",
   "voiceActor": {
     "cn": "Wang Meixin",
@@ -41,83 +29,106 @@ export const Wraith = {
       "name": "A Rare Find",
       "icon": "DatingSPCG_143301",
       "clue": "Visit the Market to unlock",
-      "secondChoice": "\"It's the legendary Godly Hand! The nippers that leave absolutely no stress marks on plastic models!\"\n\nYou have no idea what that means, but she's clearly struck gold.\n\nSeeing her this excited—a rare sight indeed—makes the whole trip worth it."
+      "secondChoice": "After winding through a maze of alleys, you finally reach the shop.\n\nIt's a trove of oddities. Just as you're about to dive into the clutter, a rare, sharp gasp comes from behind you.\n\n\"No way... It's real!\"\n\nWraith is holding up a seemingly ordinary pair of nippers, but the blades catch the light with a blinding, razor-sharp glint."
     },
     {
       "name": "\"Hot\" Springs?",
       "icon": "DatingSPCG_143302",
       "clue": "Visit the Cave to unlock",
-      "secondChoice": "\"IT'S FREEZING—!!!\"\n\nYour fingers go numb the second they touch the water. Then it hits you: Wraith loves the cold. That's why she built a private bath here instead of going to the hot springs.\n\n\"So? Pretty nice, right?\"\n\n\"Brr-b-b... Yeah! It's ... g-great!\"\n\nFighting the bone-deep chill, you splash around to fake some enthusiasm."
+      "secondChoice": "You thought you hit a dead end at a stone wall, but Wraith flips a hidden switch, and the rock grinds open.\n\nBefore you can react, a natural bathhouse is revealed.\n\n\"I put a lot of work into fixing this place up.\"\n\n\"But seeing that look on your face? Totally worth it.\"\n\n\"Hop in. Don't worry, the water's pristine.\"\n\nShe disappears behind a screen to wash up. Not wanting to be rude, you decide to give this outdoor bath a try. However..."
     }
   ],
   "giftPreferences": {
-    "loves": [],
-    "hates": []
+    "loves": [
+      "Blazing Wind Spinner",
+      "Blazing Wings",
+      "Chilling Wind Spinner",
+      "Fiery Honeypot",
+      "Fragrant Ice Delight",
+      "Love Candle",
+      "Summer Chill Crushed Ice",
+      "Sweet IceFurry",
+      "Whisper Wind Spinner"
+    ],
+    "hates": [
+      "Card Photo Capturer",
+      "Reflective Photo Capturer",
+      "Ultra-Precision Photo Capturer"
+    ]
   },
   "normalAttack": {
     "name": "Swish and Fire",
     "icon": "Icon/Skill/14301_Normal",
-    "description": "Wields the bayonet to attack targets of different distances in different ways.\u000bSlashes nearby targets with combo strikes:\u000bStrike 1: <color=#ec6d21>&Param1&</color> of ATK as Ventus DMG.\u000bStrike 2: <color=#ec6d21>&Param2&</color> of ATK as Ventus DMG.\u000bStrike 3: <color=#ec6d21>&Param3& x3</color> of ATK as Ventus DMG.\u000bStrike 4: <color=#ec6d21>&Param4& x4</color> of ATK as Ventus DMG.\u000bStrike 5: <color=#ec6d21>&Param5& x3</color> of ATK as Ventus DMG.\u000bStrike 6: <color=#ec6d21>&Param6&</color> of ATK as Ventus DMG.\u000bShoots distant targets:\u000bStrike 1: <color=#ec6d21>&Param7& x2</color> of ATK as Ventus DMG.\u000bStrike 2: <color=#ec6d21>&Param7& x3</color> of ATK as Ventus DMG.\u000bStrike 3: Fires lasers, dealing <color=#ec6d21>&Param8&</color> of ATK as Ventus DMG.",
+    "description": "Wields the bayonet to attack targets of different distances in different ways.\u000bSlashes nearby targets with combo strikes:\u000bStrike 1: <color=#ec6d21>&Param1&</color> of ATK as Ventus Auto ATK DMG.\u000bStrike 2: <color=#ec6d21>&Param2&</color> of ATK as Ventus Auto ATK DMG.\u000bStrike 3: <color=#ec6d21>&Param3& x3</color> of ATK as Ventus Auto ATK DMG.\u000bStrike 4: <color=#ec6d21>&Param4& x4</color> of ATK as Ventus Auto ATK DMG.\u000bStrike 5: <color=#ec6d21>&Param5& x3</color> of ATK as Ventus Auto ATK DMG.\u000bStrike 6: <color=#ec6d21>&Param6&</color> of ATK as Ventus Auto ATK DMG.\u000bShoots distant targets:\u000bStrike 1: <color=#ec6d21>&Param7& x2</color> of ATK as Ventus Auto ATK DMG.\u000bStrike 2: <color=#ec6d21>&Param7& x3</color> of ATK as Ventus Auto ATK DMG.\u000bStrike 3: Fires lasers, dealing <color=#ec6d21>&Param8&</color> of ATK as Ventus Auto ATK DMG.",
     "shortDescription": "Wields the bayonet to attack targets of different distances in different ways.",
     "params": [
-      "26.1%/30%/33.9%/45.6%/49.2%/52.9%/60.2%/63.3%/66.4%/72.7%/77.9%/83.1%/88.3%",
+      "26%/30%/33%/45%/49%/52%/60%/63%/66%/72%/77%/83%/88%",
       "30%/35%/40%/53%/57%/62%/70%/74%/77%/85%/91%/97%/103%",
-      "22.6%/26%/29.4%/39.5%/42.7%/45.8%/52.2%/54.9%/57.6%/63%/67.5%/72%/76.5%",
-      "21.7%/25%/28.2%/38%/41%/44.1%/50.2%/52.8%/55.4%/60.6%/64.9%/69.2%/73.6%",
-      "22.6%/26%/29.4%/39.5%/42.7%/45.8%/52.2%/54.9%/57.6%/63%/67.5%/72%/76.5%",
+      "22%/26%/29%/39%/42%/45%/52%/54%/57%/63%/67%/72%/76%",
+      "21%/25%/28%/38%/41%/44%/50%/52%/55%/60%/64%/69%/73%",
+      "22%/26%/29%/39%/42%/45%/52%/54%/57%/63%/67%/72%/76%",
       "99%/113%/128%/173%/186%/200%/228%/240%/252%/275%/295%/315%/334%",
       "54%/62%/70%/94%/102%/109%/124%/131%/137%/150%/161%/172%/183%",
-      "22.1%/25.5%/28.8%/38.7%/41.8%/44.9%/51.1%/53.8%/56.5%/61.8%/66.2%/70.6%/75.1%"
+      "22%/25%/28%/38%/41%/44%/51%/53%/56%/61%/66%/70%/75%"
     ],
     "hints": {}
   },
   "skill": {
     "name": "Whirling Onslaught",
     "icon": "Icon/Skill/14301_Skill_Main",
-    "description": "Spins rapidly to slash,  deal <color=#ec6d21>&Param1& x4</color> of ATK as AoE Ventus Skill DMG. Also fires bullets in all directions, dealing <color=#ec6d21>&Param2& x4</color> of ATK as Ventus Skill DMG.\u000bWhirling Onslaught (Main Skill) can be used 3 times initially. Hold to cast continuously.\u000bWhirling Onslaught (Main Skill) can trigger ##Ventus Mark#1017# and generate a Cyclone, dealing &Param3& x3 of ATK as AoE Ventus Mark DMG.",
-    "shortDescription": "Spins rapidly to slash, dealing AoE DMG and fires bullets in all directions. The Main Skill can trigger ##Ventus Mark#1017#.",
+    "description": "Spins rapidly to slash, deal <color=#ec6d21>&Param1& x4</color> of ATK as AoE Ventus Skill DMG. Also fires bullets in all directions, dealing <color=#ec6d21>&Param2& x4</color> of ATK as Ventus Skill DMG.\u000bWhirling Onslaught (Main Skill) can be used 3 times initially. Hold to cast continuously.\u000bWhirling Onslaught (Main Skill) can trigger ##Ventus Mark#1017# and generate a Cyclone, dealing &Param3& x3 of ATK as AoE Ventus Mark DMG.",
+    "shortDescription": "Spins rapidly to slash, dealing AoE DMG and firing bullets in all directions. The Main Skill can trigger ##Ventus Mark#1017# and generate a Cyclone.",
     "params": [
       "49%/57%/64%/86%/93%/100%/114%/120%/126%/137%/147%/157%/167%",
       "69%/80%/90%/121%/131%/141%/160%/168%/177%/193%/207%/221%/235%",
-      "8.5%/11%/13.5%/16.1%/18.6%/21.1%/23.7%/26.2%/28.7%"
+      "8%/11%/13%/16%/18%/21%/23%/26%/28%"
     ],
     "hints": {
       "1017": {
         "id": 1017,
         "name": "Ventus Mark",
-        "description": "",
-        "params": []
+        "description": "The generic name for all Ventus Marks.\u000bWhen triggered by specific Ventus Trekkers' attacks, the status is removed, and a special effect is activated."
       }
     },
-    "cooldown": "30s"
+    "cooldown": "3s"
   },
   "supportSkill": {
-    "name": "Wraith Sprint",
-    "icon": "",
-    "description": "Wraith Sprint",
-    "shortDescription": "Wraith Sprint",
-    "params": [],
-    "hints": {}
+    "name": "Rolling Bungee",
+    "icon": "Icon/Skill/14301_Skill_Support",
+    "description": "Rolls, slashes, and shoots.\u000bPhase 1: Slashes, deals <color=#ec6d21>&Param1& x3</color> of ATK as Ventus Skill DMG.\u000bPhase 2: Fires laser beams, dealing <color=#ec6d21>&Param2&</color> of ATK as AoE Ventus Skill DMG.\u000bRolling Bungee (Support Skill) can trigger ##Venus Mark#1017# and generate a Cyclone, dealing &Param3& x3 of ATK as AoE Ventus Mark DMG.",
+    "shortDescription": "Rolls, slashes, and shoots, dealing multiple instances of DMG. The Support Skill can trigger ##Ventus Mark#1017# and generate a Cyclone.",
+    "params": [
+      "130%/149%/169%/227%/246%/264%/300%/316%/331%/363%/388%/414%/440%",
+      "152%/174%/197%/265%/287%/308%/350%/368%/387%/423%/453%/484%/514%",
+      "8%/11%/13%/16%/18%/21%/23%/26%/28%"
+    ],
+    "hints": {
+      "1017": {
+        "id": 1017,
+        "name": "Ventus Mark",
+        "description": "The generic name for all Ventus Marks.\u000bWhen triggered by specific Ventus Trekkers' attacks, the status is removed, and a special effect is activated."
+      }
+    },
+    "cooldown": "12s"
   },
   "ultimate": {
     "name": "Thousand Shade Dance",
     "icon": "Icon/Skill/14301_Ultra",
     "description": "Deploys a field, zips across it 27 times, each time dealing <color=#ec6d21>&Param1&</color> of ATK as Ventus Ultimate DMG in a small area, then detonates the field, dealing <color=#ec6d21>&Param2&</color> of ATK as Ventus Ultimate DMG in a large area.\u000bThousand Shade Dance (Ultimate) can trigger ##Venus Mark#1017# and generate a Cyclone, dealing &Param3& x3 of ATK as AoE Ventus Mark DMG.",
-    "shortDescription": "Deploys a field, zips across it to attack the target, then detonates the field, dealing DMG in a large area. The Ultimate can trigger ##Ventus Mark#1017#.",
+    "shortDescription": "Deploys a field, zips across it to attack the target, then detonates the field, dealing DMG in a large area. The Ultimate can trigger ##Ventus Mark#1017# and generate a Cyclone.",
     "params": [
       "31%/35%/40%/54%/58%/62%/71%/75%/78%/86%/92%/98%/104%",
       "633%/728%/823%/1107%/1196%/1284%/1462%/1538%/1613%/1765%/1892%/2018%/2145%",
-      "8.5%/11%/13.5%/16.1%/18.6%/21.1%/23.7%/26.2%/28.7%"
+      "8%/11%/13%/16%/18%/21%/23%/26%/28%"
     ],
     "hints": {
       "1017": {
         "id": 1017,
-        "name": "Venus Mark",
-        "description": "",
-        "params": []
+        "name": "Ventus Mark",
+        "description": "The generic name for all Ventus Marks.\u000bWhen triggered by specific Ventus Trekkers' attacks, the status is removed, and a special effect is activated."
       }
     },
-    "cooldown": "300s",
+    "cooldown": "30s",
     "energy": 275
   },
   "talents": [
@@ -464,7 +475,7 @@ export const Wraith = {
           "name": "Glorious Return to Norstheim",
           "description": "Increases Wraith's Ventus DMG dealt to elite or higher-tier targets by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "UNKNOWN"
+            "0.2%"
           ]
         },
         {
@@ -938,219 +949,6 @@ export const Wraith = {
       "atk": 7484
     }
   ],
-  "skillUpgrades": [
-    {
-      "items": [
-        {
-          "id": 32001,
-          "name": "Tapping Game Cartridge",
-          "quantity": 6
-        },
-        {
-          "id": 32000,
-          "name": "Chess Piece of Skill",
-          "quantity": 2
-        }
-      ],
-      "currency": {
-        "dorra": 13300
-      }
-    },
-    {
-      "items": [
-        {
-          "id": 32001,
-          "name": "Tapping Game Cartridge",
-          "quantity": 12
-        },
-        {
-          "id": 32000,
-          "name": "Chess Piece of Skill",
-          "quantity": 6
-        }
-      ],
-      "currency": {
-        "dorra": 17600
-      }
-    },
-    {
-      "items": [
-        {
-          "id": 32001,
-          "name": "Tapping Game Cartridge",
-          "quantity": 24
-        },
-        {
-          "id": 32002,
-          "name": "Rhythm Game Cartridge",
-          "quantity": 3
-        },
-        {
-          "id": 32000,
-          "name": "Chess Piece of Skill",
-          "quantity": 10
-        }
-      ],
-      "currency": {
-        "dorra": 49800
-      }
-    },
-    {
-      "items": [
-        {
-          "id": 32001,
-          "name": "Tapping Game Cartridge",
-          "quantity": 38
-        },
-        {
-          "id": 32002,
-          "name": "Rhythm Game Cartridge",
-          "quantity": 8
-        },
-        {
-          "id": 32000,
-          "name": "Chess Piece of Skill",
-          "quantity": 24
-        }
-      ],
-      "currency": {
-        "dorra": 100000
-      }
-    },
-    {
-      "items": [
-        {
-          "id": 32001,
-          "name": "Tapping Game Cartridge",
-          "quantity": 70
-        },
-        {
-          "id": 32002,
-          "name": "Rhythm Game Cartridge",
-          "quantity": 14
-        },
-        {
-          "id": 32003,
-          "name": "Magic Sound Game Cartridge",
-          "quantity": 6
-        },
-        {
-          "id": 32000,
-          "name": "Chess Piece of Skill",
-          "quantity": 55
-        }
-      ],
-      "currency": {
-        "dorra": 400000
-      }
-    },
-    {
-      "items": [
-        {
-          "id": 20043,
-          "name": "Wrath Beauty",
-          "quantity": 1
-        },
-        {
-          "id": 32002,
-          "name": "Rhythm Game Cartridge",
-          "quantity": 50
-        },
-        {
-          "id": 32003,
-          "name": "Magic Sound Game Cartridge",
-          "quantity": 18
-        },
-        {
-          "id": 32000,
-          "name": "Chess Piece of Skill",
-          "quantity": 232
-        }
-      ],
-      "currency": {
-        "dorra": 900000
-      }
-    },
-    {
-      "items": [
-        {
-          "id": 20043,
-          "name": "Wrath Beauty",
-          "quantity": 2
-        },
-        {
-          "id": 32002,
-          "name": "Rhythm Game Cartridge",
-          "quantity": 90
-        },
-        {
-          "id": 32003,
-          "name": "Magic Sound Game Cartridge",
-          "quantity": 34
-        },
-        {
-          "id": 32000,
-          "name": "Chess Piece of Skill",
-          "quantity": 323
-        }
-      ],
-      "currency": {
-        "dorra": 1600000
-      }
-    },
-    {
-      "items": [
-        {
-          "id": 20043,
-          "name": "Wrath Beauty",
-          "quantity": 3
-        },
-        {
-          "id": 32002,
-          "name": "Rhythm Game Cartridge",
-          "quantity": 140
-        },
-        {
-          "id": 32003,
-          "name": "Magic Sound Game Cartridge",
-          "quantity": 50
-        },
-        {
-          "id": 32000,
-          "name": "Chess Piece of Skill",
-          "quantity": 478
-        }
-      ],
-      "currency": {
-        "dorra": 2300000
-      }
-    },
-    {
-      "items": [
-        {
-          "id": 20043,
-          "name": "Wrath Beauty",
-          "quantity": 6
-        },
-        {
-          "id": 32002,
-          "name": "Rhythm Game Cartridge",
-          "quantity": 200
-        },
-        {
-          "id": 32003,
-          "name": "Magic Sound Game Cartridge",
-          "quantity": 70
-        },
-        {
-          "id": 32000,
-          "name": "Chess Piece of Skill",
-          "quantity": 927
-        }
-      ],
-      "currency": {
-        "dorra": 3400000
-      }
-    }
-  ]
+  "upgrades": [],
+  "skillUpgrades": []
 };

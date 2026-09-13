@@ -1,0 +1,194 @@
+---
+// Stella Sora Story Gallery Page
+// Main story / event story / tales CGs and world location art, served from R2
+import StoryGalleryLayout from '../../../layouts/stella-sora/StoryGalleryLayout.astro';
+import { STORY_GALLERY } from '../../../data/stella-sora/story-gallery.js';
+
+const R2_BASE = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
+
+const TABS = [
+  { id: 'main', label: 'Main Story' },
+  { id: 'event', label: 'Event Stories' },
+  { id: 'tales', label: 'Tales' },
+  { id: 'bg', label: 'World' },
+];
+
+// group main story by chapter for subheadings
+const chapters: { key: string; label: string; items: any[] }[] = [];
+for (const it of STORY_GALLERY.main) {
+  const label = it.chapter === 'be' ? 'Beginnings' : `Chapter ${parseInt(it.chapter, 10)}`;
+  let grp = chapters.find(c => c.key === it.chapter);
+  if (!grp) {
+    grp = { key: it.chapter, label, items: [] };
+    chapters.push(grp);
+  }
+  grp.items.push(it);
+}
+
+// group event stories by event id
+const eventGroups: { key: string; label: string; items: any[] }[] = [];
+for (const it of STORY_GALLERY.event) {
+  const label = `Event Story ${parseInt(it.chapter, 10)}`;
+  let grp = eventGroups.find(c => c.key === it.chapter);
+  if (!grp) {
+    grp = { key: it.chapter, label, items: [] };
+    eventGroups.push(grp);
+  }
+  grp.items.push(it);
+}
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ImageGallery',
+  name: 'Stella Sora Story Gallery',
+  description:
+    'Story illustrations and world artwork from Stella Sora: main story CGs, event stories, tales, and location backgrounds.',
+  url: new URL(Astro.url.pathname, Astro.site).href,
+  numberOfItems: STORY_GALLERY.main.length + STORY_GALLERY.event.length + STORY_GALLERY.tales.length + STORY_GALLERY.bg.length,
+};
+---
+
+<StoryGalleryLayout
+  title="Stella Sora Story Gallery - Main Story CGs, Event Stories & World Art"
+  description="Browse every Stella Sora story illustration: main story chapters, event story CGs, tales, and world location artwork in full resolution."
+  gameTitle="Story Gallery"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+  <section class="story-gallery-content">
+    <p class="story-gallery-intro">
+      Story illustrations and world artwork extracted from the game. Click any image to view it in
+      full resolution.
+    </p>
+
+    <div class="story-tabs" role="tablist">
+      {
+        TABS.map(tab => (
+          <button
+            class="story-tab"
+            role="tab"
+            id={`tab-${tab.id}`}
+            data-tab={tab.id}
+            aria-selected={tab.id === 'main' ? 'true' : 'false'}
+          >
+            {tab.label}
+            <span class="story-tab-count">
+              {STORY_GALLERY[tab.id as keyof typeof STORY_GALLERY].length}
+            </span>
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="story-tab-panel" id="panel-main" role="tabpanel" data-panel="main">
+      {
+        chapters.map(ch => (
+          <div class="story-chapter-group">
+            <h2 class="story-chapter-title">{ch.label}</h2>
+            <div class="story-grid">
+              {ch.items.map((item: any) => (
+                <a class="story-card" href={`${R2_BASE}/${item.file}`} target="_blank" rel="noopener">
+                  <img
+                    src={`${R2_BASE}/${item.file}`}
+                    alt={`Stella Sora ${ch.label} - ${item.caption}`}
+                    width={400}
+                    height={283}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="story-caption">{item.caption}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="story-tab-panel" id="panel-event" role="tabpanel" data-panel="event" hidden>
+      {
+        eventGroups.map(grp => (
+          <div class="story-chapter-group">
+            <h2 class="story-chapter-title">{grp.label}</h2>
+            <div class="story-grid">
+              {grp.items.map((item: any) => (
+                <a class="story-card" href={`${R2_BASE}/${item.file}`} target="_blank" rel="noopener">
+                  <img
+                    src={`${R2_BASE}/${item.file}`}
+                    alt={`Stella Sora ${grp.label} - ${item.caption}`}
+                    width={400}
+                    height={283}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="story-caption">{item.caption}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="story-tab-panel" id="panel-tales" role="tabpanel" data-panel="tales" hidden>
+      <div class="story-grid">
+        {
+          STORY_GALLERY.tales.map((item: any) => (
+            <a class="story-card" href={`${R2_BASE}/${item.file}`} target="_blank" rel="noopener">
+              <img
+                src={`${R2_BASE}/${item.file}`}
+                alt={`Stella Sora Tales - ${item.caption}`}
+                width={400}
+                height={283}
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="story-caption">{item.caption}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="story-tab-panel" id="panel-bg" role="tabpanel" data-panel="bg" hidden>
+      <div class="story-grid">
+        {
+          STORY_GALLERY.bg.map((item: any) => (
+            <a class="story-card" href={`${R2_BASE}/${item.file}`} target="_blank" rel="noopener">
+              <img
+                src={`${R2_BASE}/${item.file}`}
+                alt={`Stella Sora world art - ${item.caption}`}
+                width={400}
+                height={283}
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="story-caption">{item.caption}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</StoryGalleryLayout>
+
+<script>
+  // Tab switching for the story gallery
+  function initStoryTabs() {
+    const tabs = document.querySelectorAll<HTMLButtonElement>('.story-tab');
+    const panels = document.querySelectorAll<HTMLElement>('.story-tab-panel');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.setAttribute('aria-selected', t === tab ? 'true' : 'false'));
+        panels.forEach(p => {
+          p.hidden = p.dataset.panel !== tab.dataset.tab;
+        });
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initStoryTabs);
+  } else {
+    initStoryTabs();
+  }
+</script>

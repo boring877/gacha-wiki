@@ -1,20 +1,14 @@
 ---
 // Stella Sora Code Tutorial Image Component
-// Import all code tutorial images once and use mapping
-import { Image } from 'astro:assets';
-
-// Import all Stella Sora code tutorial images once
-import code1Image from '../../assets/images/games/stella-sora/code/1.jpg';
-import code2Image from '../../assets/images/games/stella-sora/code/2.jpg';
-import code3Image from '../../assets/images/games/stella-sora/code/3.jpg';
-import code4Image from '../../assets/images/games/stella-sora/code/4.jpg';
+// Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
 // Centralized code image mapping
-const codeImageMap = {
-  '1.jpg': code1Image,
-  '2.jpg': code2Image,
-  '3.jpg': code3Image,
-  '4.jpg': code4Image,
+const codeImageMap: Record<string, string> = {
+  '1.jpg': 'code/1.jpg',
+  '2.jpg': 'code/2.jpg',
+  '3.jpg': 'code/3.jpg',
+  '4.jpg': 'code/4.jpg',
 };
 
 const {
@@ -22,13 +16,11 @@ const {
   alt,
   class: className = '',
   loading = 'lazy',
-  format = 'webp',
-  quality = 95,
   width = 400,
   height = 300,
 } = Astro.props;
 
-// Get the imported image object from the map
+// Get the image path from the map
 let imageKey = imageName;
 
 // Add extension if missing
@@ -36,19 +28,18 @@ if (!imageKey.includes('.')) {
   imageKey = `${imageKey}.jpg`;
 }
 
-const imageSrc = codeImageMap[imageKey] || codeImageMap['1.jpg'];
+const imageSrc = `${R2}/${codeImageMap[imageKey] || codeImageMap['1.jpg']}`;
 ---
 
 <div class={`code-tutorial-image ${className}`}>
-  <Image
+  <img
     src={imageSrc}
     alt={alt}
     width={width}
     height={height}
     class="code-img-fill"
     loading={loading}
-    format={format}
-    quality={quality}
+    decoding="async"
   />
 </div>
 

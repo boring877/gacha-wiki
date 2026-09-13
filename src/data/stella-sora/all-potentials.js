@@ -4708,349 +4708,583 @@ export const allPotentials = {
     buildOrder: {
       main: {
         build1: {
-          description: 'A build that maximizes Shadow Clone damage and Umbra synergy.',
+          title: 'Firenze: Main Build 1',
+          description: 'A build that enhances combat mobility and skill activation frequency.',
           potentials: [
             'Step Kicking',
             'Nimble Step',
+            'High Risk',
+            'Dark Pirouette',
+            'Flash Break'
+          ]
+        },
+        build2: {
+          title: 'Firenze: Main Build 2',
+          description: 'A summoner build that enhances clone capabilities and attack synergy.',
+          potentials: [
             'Phantom Waltz',
             'Shadow Step',
-            'Instant Liquidation',
-          ],
-        },
+            'Gloomy Veil',
+            'Extended Shift',
+            'Accurate Coincidence'
+          ]
+        }
       },
       support: {
         build1: {
-          description: 'A support build that controls the battlefield with Shadow Clones and crowd control.',
+          title: 'Firenze: Support Build 1',
+          description: 'A build that amplifies skill activation effects and boosts sustained DPS at the target\'s location.',
           potentials: [
             'Shadow Nail',
-            'Twin Shadow',
+            'Shadow Flicker',
             'Drinking Party',
             'Typical Case',
-            'Step Sync',
-          ],
+            'Joyous Whip'
+          ]
         },
-      },
+        build2: {
+          title: 'Firenze: Support Build 2',
+          description: 'A build that empowers clones summoned via skills, increasing their numbers and duration.',
+          potentials: [
+            'Twin Shadow',
+            'Shadownight Descendant',
+            'Step Sync',
+            'Dark Resurgence',
+            'Flexible Operation'
+          ]
+        }
+      }
     },
     potentials: {
       mainCore: [
         {
           name: 'Step Kicking',
           icon: '11001_Potential_01',
-          description: 'When casting Elegant Parade (Main Skill), Firenze deals an additional &Param1& x3 of ATK as AoE Umbra Skill DMG.',
+          description: 'When casting Elegant Parade (Main Skill), Firenze deals an additional <color=#0abec5>&Param1& x3</color> of ATK as AoE Umbra Skill DMG.',
           shortDescription: 'The Main Skill deals additional damage.',
-          params: ['55%/63%/71%/95%/103%/111%/126%/133%/139%/152%/163%/174%/185%'],
+          params: [
+            '55%/63%/71%/95%/103%/111%/126%/133%/139%/152%/163%/174%/185%'
+          ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: {},
+          hints: {}
         },
         {
           name: 'Nimble Step',
           icon: '11001_Potential_02',
-          description: 'After Firenze\'s Elegant Parade (Main Skill) deals DMG 6 times, it creates a domain for &Param1&s, dealing &Param2& of ATK as AoE Umbra Skill DMG every 0.5s and increases Firenze\'s Skill DMG by &Param3&. The domain\'s DMG can trigger ##Umbra Mark#1019#.',
-          shortDescription: 'When Firenze\'s Main Skill deals DMG for a certain number of times, she creates a domain that deals continuous AoE DMG and boosts her Skill DMG.',
-          params: ['7', '67%/77%/87%/118%/127%/137%/155%/164%/172%/188%/201%/215%/228%', 'Skill DMG', '5%'],
+          description: 'After Firenze\'s Elegant Parade (Main Skill) deals DMG <color=#0abec5>6</color> times, it creates a domain for &Param1&s, dealing <color=#0abec5>&Param2&</color> of ATK as AoE Umbra Skill DMG every 0.5s and increases Firenze\'s &Param3& by <color=#0abec5>&Param4&</color>. The domain\'s DMG can trigger ##Umbra Mark#1019#.',
+          shortDescription: 'When Firenze\'s Main Skill deals DMG for a certain number of times, she creates a domain that deals continuous AoE DMG and boosts her &Param3&.',
+          params: [
+            '7',
+            '67%/77%/87%/118%/127%/137%/155%/164%/172%/188%/201%/215%/228%',
+            'Skill DMG',
+            '5%'
+          ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: { 1019: { id: 1019, name: 'Umbra Mark', description: 'The generic name for all Umbra Marks.' } },
+          hints: {
+            1019: {
+              id: 1019,
+              name: 'Umbra Mark',
+              description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
         },
         {
           name: 'Phantom Waltz',
           icon: '11001_Potential_03',
-          description: 'Firenze generates 1 ##Shadow Clone#4002# every 5s. When casting Elegant Parade (Main Skill), increases the number of ##Shadow Clones#4002# summoned by &Param1&.',
-          shortDescription: 'Firenze automatically summons Shadow Clones. When casting the Main Skill, increases the number of Shadow Clones summoned.',
-          params: ['1'],
+          description: 'Firenze generates <color=#0abec5>1</color> ##Shadow Clone#4002# every <color=#0abec5>5</color>s.\nWhen casting Elegant Parade (Main Skill), increases the number of ##Shadow Clones#4002# summoned by <color=#0abec5>&Param1&</color>.',
+          shortDescription: 'Firenze automatically summons ##Shadow Clones#4002#. When casting the Main Skill, increases the number of ##Shadow Clones#4002# summoned.',
+          params: [
+            '1'
+          ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: { 4002: { id: 4002, name: 'Shadow Clone', description: 'Shadow Clone is Character\'s minion.' } },
+          hints: {
+            4002: {
+              id: 4002,
+              name: 'Shadow Clone'
+            }
+          }
         },
         {
           name: 'Shadow Step',
           icon: '11001_Potential_04',
-          description: 'Upon vanishing, Firenze\'s ##Shadow Clones#4002# will explode, dealing &Param1& of ATK as AoE Umbra Minion DMG. The max limit of ##Shadow Clones#4002# increases by &Param2& for every other Umbra Trekker in the squad.',
-          shortDescription: 'Upon vanishing, Firenze\'s Shadow Clones will explode, dealing AoE DMG. The max limit of Shadow Clones increases for every other Umbra Trekker in the squad.',
-          params: ['117%/135%/152%/205%/221%/238%/271%/285%/299%/327%/350%/374%/397%', '1'],
+          description: 'Upon vanishing, Firenze\'s ##Shadow Clones#4002# will explode, dealing <color=#0abec5>&Param1&</color> of ATK as AoE Umbra Minion DMG.\nThe max limit of ##Shadow Clones#4002# increases by <color=#0abec5>&Param2&</color> for every other Umbra Trekker in the squad.',
+          shortDescription: 'Upon vanishing, Firenze\'s ##Shadow Clones#4002# will explode, dealing AoE DMG. The max limit of ##Shadow Clones#4002# increases for every other Umbra Trekker in the squad.',
+          params: [
+            '117%/135%/152%/205%/221%/238%/271%/285%/299%/327%/350%/374%/397%',
+            '1'
+          ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: { 4002: { id: 4002, name: 'Shadow Clone', description: 'Shadow Clone is Character\'s minion.' } },
-        },
+          hints: {
+            4002: {
+              id: 4002,
+              name: 'Shadow Clone'
+            }
+          }
+        }
       ],
       mainNormal: [
         {
           name: 'High Risk',
-          icon: '11001_Potential_01',
-          description: 'When Firenze deals Skill DMG, there is a &Param2& chance to deal an additional &Param1& of ATK as Umbra Skill DMG. The chance is increased to &Param3& if the target is inflicted with ##Umbra Burn#2028#. This effect can only be triggered &Param4& times every second.',
+          icon: 'Common_Potential_Fire_1',
+          description: 'When Firenze deals Skill DMG, there is a &Param2& chance to deal an additional <color=#ec6d21>&Param1&</color> of ATK as Umbra Skill DMG. The chance is increased to &Param3& if the target is inflicted with ##Umbra Burn#2028#. This effect can only be triggered &Param4& times every second.',
           shortDescription: 'When Firenze deals Skill DMG, there is a chance to deal additional DMG.',
-          params: ['64%/103%/141%/180%/218%/256%/295%/333%/372%', '40%', '80%', '2'],
+          params: [
+            '64%/103%/141%/180%/218%/256%/295%/333%/372%',
+            '400000',
+            '800000',
+            '2'
+          ],
           rarity: 1,
           stype: 41,
           corner: 1,
-          hints: { 2028: { id: 2028, name: 'Dark Burn', description: 'After some Umbra Trekkers trigger the Umbra Mark, deal damage and trigger Dark Burn.' } },
-        },
-        {
-          name: 'Dark Pirouette',
-          icon: '11001_Potential_01',
-          description: 'When Firenze triggers an ##Umbra Mark#1019#, increases &Param1& by &Param2& for &Param3&s.',
-          shortDescription: 'When Firenze triggers an Umbra Mark, increases &Param1&.',
-          params: ['ATK', '15%/24%/33%/42%/51%/60%/69%/78%/87%', '3'],
-          rarity: 2,
-          stype: 41,
-          corner: 2,
-          hints: { 1019: { id: 1019, name: 'Umbra Mark', description: 'The generic name for all Umbra Marks.' } },
-        },
-        {
-          name: 'Flash Break',
-          icon: '11001_Potential_02',
-          description: 'When Firenze deals DMG with an Auto Attack, increases her &Param1& by &Param2& for &Param3&s, stacking up to &Param4& times. The effect ends if Elegant Parade (Main Skill) is cast.',
-          shortDescription: 'When Firenze deals DMG with an Auto Attack, increases her &Param1&. The effect ends if the Main Skill is cast.',
-          params: ['Skill DMG', '4%/6%/9%/11%/13%/15%/18%/20%/22%', '5', '3'],
-          rarity: 2,
-          stype: 41,
-          corner: 3,
-          hints: {},
-        },
-        {
-          name: 'Extended Shift',
-          icon: '11001_Potential_03',
-          description: '##Shadow Clone#4002# lasts &Param1&s longer on the battlefield. Also increases &Param2& by &Param3&.',
-          shortDescription: 'Shadow Clone lasts longer on the battlefield. Also increases &Param2&.',
-          params: ['1/1/1/2/2/3/3/3/4', 'Minion DMG', '19%/31%/43%/54%/66%/77%/89%/101%/112%'],
-          rarity: 1,
-          stype: 41,
-          corner: 2,
-          hints: { 4002: { id: 4002, name: 'Shadow Clone', description: 'Shadow Clone is Character\'s minion.' } },
-        },
-        {
-          name: 'Accurate Coincidence',
-          icon: '11001_Potential_03',
-          description: 'After Firenze casts Elegant Parade (Main Skill), her next Auto Attack directly casts the last strike. Also increases ##Shadow Clone#4002#\'s &Param1& by &Param2&.',
-          shortDescription: 'After Firenze casts the Main Skill, her next Auto Attack starts with the 4th strike. Also increases Shadow Clone\'s &Param1&.',
-          params: ['Minion DMG', '13%/20%/28%/35%/43%/50%/58%/65%/73%'],
-          rarity: 2,
-          stype: 41,
-          corner: 3,
-          hints: { 4002: { id: 4002, name: 'Shadow Clone', description: 'Shadow Clone is Character\'s minion.' } },
-        },
-        {
-          name: 'Hunting Command',
-          icon: '11001_Potential_04',
-          description: 'For each Umbra Trekker in the squad, increases Firenze\'s &Param1& by &Param2&.',
-          shortDescription: 'Each Umbra Trekker in the squad increases Firenze\'s &Param1&.',
-          params: ['Umbra DMG', '7%/11%/15%/19%/23%/27%/31%/35%/39%/43%'],
-          rarity: 1,
-          stype: 41,
-          corner: 1,
-          hints: {},
-        },
-        {
-          name: 'Announcement Time',
-          icon: '11001_Potential_04',
-          description: 'Firenze can dodge one more time. When dodging, increases Firenze\'s &Param3& by &Param1& for &Param2&s.',
-          shortDescription: 'Firenze can dodge one more time. Increases her &Param3& when dodging.',
-          params: ['4%/6%/9%/11%/13%/15%/18%/20%/22%', '6', 'ATK'],
-          rarity: 2,
-          stype: 41,
-          corner: 3,
-          hints: {},
+          hints: {
+            2028: {
+              id: 2028,
+              name: 'Dark Burn',
+              description: 'After some Umbra Trekkers trigger the Umbra Mark, deal damage and trigger Dark Burn, dealing DOT.'
+            }
+          }
         },
         {
           name: 'Gloomy Veil',
-          icon: '11001_Potential_03',
-          description: 'Increases ##Shadow Clone#4002#\'s max limit by &Param1& and &Param2& by &Param3&.',
-          shortDescription: 'Increases Shadow Clone\'s max limit and &Param2&.',
-          params: ['1', 'Umbra DMG', '14%/22%/31%/39%/47%/55%/64%/72%/80%'],
+          icon: 'Common_Potential_Dark_1',
+          description: 'Increases ##Shadow Clone#4002#\'s max limit by &Param1& and &Param2& by <color=#ec6d21>&Param3&</color>.',
+          shortDescription: 'Increases ##Shadow Clone#4002#\'s max limit and &Param2&.',
+          params: [
+            '1',
+            'Dee',
+            '14%/22%/31%/39%/47%/55%/64%/72%/80%'
+          ],
           rarity: 2,
           stype: 41,
           corner: 1,
-          hints: { 4002: { id: 4002, name: 'Shadow Clone', description: 'Shadow Clone is Character\'s minion.' } },
+          hints: {
+            4002: {
+              id: 4002,
+              name: 'Shadow Clone'
+            }
+          }
         },
         {
-          name: 'Clone Trick',
-          icon: '11001_Potential_04',
-          description: 'Firenze can dodge through barriers. Increases ##Shadow Clone#4002#\'s &Param1& by &Param2&.',
-          shortDescription: 'Firenze can dodge through barriers. Increases Shadow Clone\'s DMG.',
-          params: ['Minion DMG', '8%/13%/17%/22%/27%/31%/36%/41%/46%/46%'],
+          name: 'Hunting Command',
+          icon: 'Common_Potential_Fire_1',
+          description: 'For each Umbra Trekker in the squad, increases Firenze\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Each Umbra Trekker in the squad increases Firenze\'s &Param1&.',
+          params: [
+            'Dee',
+            '7%/11%/15%/19%/23%/27%/31%/35%/39%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Dark Pirouette',
+          icon: 'Common_Potential_Fire_1',
+          description: 'When Firenze triggers an ##Umbra Mark#1019#, increases &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+          shortDescription: 'When Firenze triggers an ##Umbra Mark#1019#, increases &Param1&.',
+          params: [
+            'ATK',
+            '15%/24%/33%/42%/51%/60%/69%/78%/87%',
+            '3'
+          ],
           rarity: 2,
           stype: 41,
           corner: 2,
-          hints: { 4002: { id: 4002, name: 'Shadow Clone', description: 'Shadow Clone is Character\'s minion.' } },
+          hints: {
+            1019: {
+              id: 1019,
+              name: 'Umbra Mark',
+              description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
         },
+        {
+          name: 'Extended Shift',
+          icon: 'Common_Potential_Dark_1',
+          description: '##Shadow Clone#4002# lasts <color=#ec6d21>&Param1&</color>s longer on the battlefield. Also increases &Param2& by <color=#ec6d21>&Param3&</color>.',
+          shortDescription: '##Shadow Clone#4002# lasts longer on the battlefield. Also increases &Param2&.',
+          params: [
+            '',
+            'Summondmg',
+            '19%/31%/43%/54%/66%/77%/89%/101%/112%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 2,
+          hints: {
+            4002: {
+              id: 4002,
+              name: 'Shadow Clone'
+            }
+          }
+        },
+        {
+          name: 'Clone Trick',
+          icon: 'Common_Potential_Fire_1',
+          description: 'Firenze can dodge through barriers.\nIncreases ##Shadow Clone#4002#\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Firenze can dodge through barriers. Increases ##Shadow Clone#4002#\'s DMG.',
+          params: [
+            'Summondmg',
+            '8%/13%/17%/22%/27%/31%/36%/41%/46%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {
+            4002: {
+              id: 4002,
+              name: 'Shadow Clone'
+            }
+          }
+        },
+        {
+          name: 'Flash Break',
+          icon: 'Common_Potential_Fire_1',
+          description: 'When Firenze deals DMG with an Auto Attack, increases her &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to <color=#ec6d21>&Param4&</color> times. The effect ends if Elegant Parade (Main Skill) is cast.',
+          shortDescription: 'When Firenze deals DMG with an Auto Attack, increases her &Param1&. The effect ends if the Main Skill is cast.',
+          params: [
+            'Skill DMG',
+            '4%/6%/9%/11%/13%/15%/18%/20%/22%',
+            '5',
+            '3'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Accurate Coincidence',
+          icon: 'Common_Potential_Fire_1',
+          description: 'After Firenze casts Elegant Parade (Main Skill), her next Auto Attack directly casts the last strike.\nAlso increases ##Shadow Clone#4002#\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'After Firenze casts the Main Skill, her next Auto Attack starts with the 4th strike. Also increases ##Shadow Clone#4002#\'s &Param1&.',
+          params: [
+            'Summondmg',
+            '13%/20%/28%/35%/43%/50%/58%/65%/73%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {
+            4002: {
+              id: 4002,
+              name: 'Shadow Clone'
+            }
+          }
+        },
+        {
+          name: 'Announcement Time',
+          icon: 'Common_Potential_Fire_1',
+          description: 'Firenze can dodge one more time.\nWhen dodging, increases Firenze\'s &Param3& by <color=#ec6d21>&Param1&</color> for &Param2&s.',
+          shortDescription: 'Firenze can dodge one more time. Increases her &Param3& when dodging.',
+          params: [
+            '4%/6%/9%/11%/13%/15%/18%/20%/22%',
+            '6',
+            'ATK'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        }
       ],
       supportCore: [
         {
           name: 'Shadow Nail',
           icon: '11001_Potential_21',
-          description: 'The cane stays in the ground for 6s, dealing &Param1& of ATK as AoE Umbra Skill DMG per second.',
+          description: 'The cane stays in the ground for 6s, dealing <color=#0abec5>&Param1&</color> of ATK as AoE Umbra Skill DMG per second.',
           shortDescription: 'The cane stays in the ground for a period of time, dealing DMG over time.',
-          params: ['35%/40%/45%/61%/65%/70%/80%/84%/88%/96%/103%/110%/117%'],
+          params: [
+            '35%/40%/45%/61%/65%/70%/80%/84%/88%/96%/103%/110%/117%'
+          ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: {},
+          hints: {}
         },
         {
           name: 'Shadow Flicker',
           icon: '11001_Potential_22',
-          description: 'When the cane disappears, triggers an explosion, dealing &Param1& of ATK as AoE Umbra Skill DMG.',
+          description: 'When the cane disappears, triggers an explosion, dealing <color=#0abec5>&Param1&</color> of ATK as AoE Umbra Skill DMG.',
           shortDescription: 'When the cane disappears, triggers an explosion, dealing AoE DMG.',
-          params: ['108%/124%/141%/189%/204%/220%/250%/263%/276%/302%/323%/345%/367%'],
+          params: [
+            '108%/124%/141%/189%/204%/220%/250%/263%/276%/302%/323%/345%/367%'
+          ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: {},
+          hints: {}
         },
         {
           name: 'Twin Shadow',
           icon: '11001_Potential_23',
-          description: 'Reign of Night (Support Skill) summons 2 more ##Shadow Clones#4002#, with the max limit increased by &Param1&.',
-          shortDescription: 'Increases the max limit and the number summoned of Shadow Clones by Support Skills.',
-          params: ['2'],
+          description: 'Reign of Night (Support Skill) summons <color=#0abec5>2</color> more ##Shadow Clones#4002#, with the max limit increased by <color=#0abec5>&Param1&</color>.',
+          shortDescription: 'Increases the max limit and the number summoned of ##Shadow Clones#4002# by Support Skills.',
+          params: [
+            '2'
+          ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: { 4002: { id: 4002, name: 'Shadow Clone', description: 'Shadow Clone is Character\'s minion.' } },
+          hints: {
+            4002: {
+              id: 4002,
+              name: 'Shadow Clone'
+            }
+          }
         },
         {
           name: 'Shadownight Descendant',
           icon: '11001_Potential_24',
-          description: 'The ##Shadow Clones#4002# summoned by Reign of Night (Support Skill) will last 5s longer on the battlefield.',
-          shortDescription: 'The Shadow Clones summoned by the Support Skill will last longer on the battlefield.',
+          description: 'The ##Shadow Clones#4002# summoned by Reign of Night (Support Skill) will last <color=#0abec5>5</color>s longer on the battlefield.',
+          shortDescription: 'The ##Shadow Clones#4002# summoned by the Support Skill will last longer on the battlefield.',
           params: [],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: { 4002: { id: 4002, name: 'Shadow Clone', description: 'Shadow Clone is Character\'s minion.' } },
-        },
+          hints: {
+            4002: {
+              id: 4002,
+              name: 'Shadow Clone'
+            }
+          }
+        }
       ],
       supportNormal: [
         {
           name: 'Drinking Party',
-          icon: '11001_Potential_21',
-          description: 'When cane DMG triggers an ##Umbra Mark#1019#, reduces Reign of Night (Support Skill)\'s Cooldown by &Param3&s. This effect can only be triggered &Param4& times per cast. Also increases DMG dealt by the cane by &Param1&.',
-          shortDescription: 'When cane DMG triggers an Umbra Mark, reduces Support Skill Cooldown. Also increases the cane\'s DMG.',
-          params: ['10%/16%/22%/29%/35%/41%/47%/53%/59%', 'Skill DMG', '1', '4'],
+          icon: 'Common_Potential_Dark_1',
+          description: 'When cane DMG triggers an ##Umbra Mark#1019#, reduces Reign of Night (Support Skill)\'s Cooldown by &Param3&s. This effect can only be triggered &Param4& times per cast.\nAlso increases DMG dealt by the cane by <color=#ec6d21>&Param1&</color>.',
+          shortDescription: 'When cane DMG triggers an ##Umbra Mark#1019#, reduces Support Skill Cooldown. Also increases the cane\'s DMG.',
+          params: [
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+            '',
+            '1',
+            '4'
+          ],
           rarity: 1,
           stype: 41,
           corner: 1,
-          hints: { 1019: { id: 1019, name: 'Umbra Mark', description: 'The generic name for all Umbra Marks.' } },
-        },
-        {
-          name: 'Typical Case',
-          icon: '11001_Potential_21',
-          description: 'Increases the cane\'s Umbra DMG to targets inflicted with ##Dark Burn#2028# by &Param1&.',
-          shortDescription: 'Increases the cane\'s Umbra DMG to targets inflicted with Dark Burn.',
-          params: ['10%/16%/22%/29%/35%/41%/47%/53%/59%', 'Umbra DMG'],
-          rarity: 2,
-          stype: 41,
-          corner: 2,
-          hints: { 2028: { id: 2028, name: 'Dark Burn', description: 'After some Umbra Trekkers trigger the Umbra Mark, deal damage and trigger Dark Burn.' } },
+          hints: {
+            1019: {
+              id: 1019,
+              name: 'Umbra Mark',
+              description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
         },
         {
           name: 'Step Sync',
-          icon: '11001_Potential_23',
-          description: 'Increases ##Shadow Clone#4002#\'s &Param3& by &Param2&. Reduces the intervals between their sprint attacks by &Param1%.',
-          shortDescription: 'Increases Shadow Clone\'s &Param3&. Reduces the intervals between their sprint attacks.',
-          params: ['10/10/20/20/20/30/30/30/40', '5%/9%/12%/15%/18%/21%/25%/28%/31%', 'Minion DMG'],
+          icon: 'Common_Potential_Dark_1',
+          description: 'Increases ##Shadow Clone#4002#\'s &Param3& by <color=#ec6d21>&Param2&</color>. Reduces the intervals between their sprint attacks by <color=#ec6d21>&Param1&%</color>.',
+          shortDescription: 'Increases ##Shadow Clone#4002#\'s &Param3&. Reduces the intervals between their sprint attacks.',
+          params: [
+            '',
+            '5%/9%/12%/15%/18%/21%/25%/28%/31%',
+            'Summondmg'
+          ],
           rarity: 1,
           stype: 41,
           corner: 1,
-          hints: { 4002: { id: 4002, name: 'Shadow Clone', description: 'Shadow Clone is Character\'s minion.' } },
-        },
-        {
-          name: 'Flexible Operation',
-          icon: '11001_Potential_23',
-          description: 'When a ##Shadow Clone#4002# deals damage, increases all present ##Shadow Clones#\' &Param3& on the battlefield by &Param1&, up to &Param4& stacks.',
-          shortDescription: 'When a Shadow Clone deals DMG, increases all Shadow Clones\' &Param3& on the battlefield.',
-          params: ['2.9%/4.6%/6.3%/8%/9.7%/11.4%/13.1%/14.8%/16.5%', '6', 'Minion DMG', '6'],
-          rarity: 2,
-          stype: 41,
-          corner: 3,
-          hints: { 4002: { id: 4002, name: 'Shadow Clone', description: 'Shadow Clone is Character\'s minion.' } },
+          hints: {
+            4002: {
+              id: 4002,
+              name: 'Shadow Clone'
+            }
+          }
         },
         {
           name: 'Shadow Waltz',
-          icon: '11001_Potential_24',
-          description: 'Increases ##Shadow Clone#4002#\'s &Param2& by &Param1&.',
-          shortDescription: 'Increases Shadow Clone\'s &Param2&.',
-          params: ['18%/28%/39%/49%/60%/70%/81%/91%/102%/102%', 'Minion DMG'],
+          icon: 'Common_Potential_Dark_1',
+          description: 'Increases ##Shadow Clone#4002#\'s &Param2& by <color=#ec6d21>&Param1&</color>.',
+          shortDescription: 'Increases ##Shadow Clone#4002#\'s DMG.',
+          params: [
+            '18%/28%/39%/49%/60%/70%/81%/91%/102%',
+            'Summondmg'
+          ],
           rarity: 2,
           stype: 41,
           corner: 1,
-          hints: { 4002: { id: 4002, name: 'Shadow Clone', description: 'Shadow Clone is Character\'s minion.' } },
+          hints: {
+            4002: {
+              id: 4002,
+              name: 'Shadow Clone'
+            }
+          }
         },
         {
-          name: 'Prime Stance',
-          icon: '11001_Potential_24',
-          description: 'Increases Firenze\'s &Param2& by &Param1&.',
-          shortDescription: 'Increases Firenze\'s &Param2&.',
-          params: ['16%/26%/36%/46%/56%/65%/75%/85%/95%/95%', 'ATK'],
+          name: 'Typical Case',
+          icon: 'Common_Potential_Fire_1',
+          description: 'Increases the cane\'s Umbra DMG to targets inflicted with ##Dark Burn#2028# by <color=#ec6d21>&Param1&</color>.',
+          shortDescription: 'Increases the cane\'s Umbra DMG to targets inflicted with ##Dark Burn#2028#.',
+          params: [
+            '0.22%/0.22%/0.22%/0.22%/0.22%/0.22%/0.22%/0.22%/0.22%'
+          ],
           rarity: 2,
           stype: 41,
           corner: 2,
-          hints: {},
+          hints: {
+            2028: {
+              id: 2028,
+              name: 'Dark Burn',
+              description: 'After some Umbra Trekkers trigger the Umbra Mark, deal damage and trigger Dark Burn, dealing DOT.'
+            }
+          }
         },
         {
           name: 'Dark Resurgence',
-          icon: '11001_Potential_23',
-          description: 'Upon vanishing, ##Shadow Clones#4002# will explode, dealing &Param1& of ATK as AoE Umbra Minion DMG.',
-          shortDescription: 'Upon vanishing, Firenze\'s Shadow Clones will explode, dealing AoE DMG.',
-          params: ['35%/55%/76%/97%/118%/138%/159%/180%/201%'],
+          icon: 'Common_Potential_Dark_1',
+          description: 'Upon vanishing, ##Shadow Clones#4002# will explode, dealing <color=#ec6d21>&Param1&</color> of ATK as AoE Umbra Minion DMG.',
+          shortDescription: 'Upon vanishing, Firenze\'s ##Shadow Clones#4002# will explode, dealing AoE DMG.',
+          params: [
+            '35%/55%/76%/97%/118%/138%/159%/180%/201%'
+          ],
           rarity: 2,
           stype: 41,
           corner: 2,
-          hints: { 4002: { id: 4002, name: 'Shadow Clone', description: 'Shadow Clone is Character\'s minion.' } },
+          hints: {
+            4002: {
+              id: 4002,
+              name: 'Shadow Clone'
+            }
+          }
+        },
+        {
+          name: 'Prime Stance',
+          icon: 'Common_Potential_Fire_1',
+          description: 'Increases Firenze\'s &Param2& by <color=#ec6d21>&Param1&</color>.',
+          shortDescription: 'Increases Firenze\'s &Param2&.',
+          params: [
+            '16%/26%/36%/46%/56%/65%/75%/85%/95%',
+            'ATK'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Joyous Whip',
+          icon: 'Common_Potential_Fire_1',
+          description: 'When the cane deals DMG, increases Firenze\'s &Param3& by <color=#ec6d21>&Param1&</color> for &Param2&s, up to &Param4& stacks.',
+          shortDescription: 'When the cane deals DMG, increases Firenze\'s &Param3&.',
+          params: [
+            '3%/4%/6%/8%/9%/11%/12%/14%/16%',
+            '10',
+            'ATK',
+            '3'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Flexible Operation',
+          icon: 'Common_Potential_Dark_1',
+          description: 'When a ##Shadow Clone#4002# deals damage, increases all present ##Shadow Clones#4002#\' &Param3& by <color=#ec6d21>&Param1&</color>, up to &Param4& stacks.',
+          shortDescription: 'When a ##Shadow Clone#4002# deals DMG, increases all ##Shadow Clones#4002#\' &Param3& on the battlefield.',
+          params: [
+            '2.9%/4.6%/6.3%/8%/9.7%/11.4%/13.1%/14.8%/16.5%',
+            '6',
+            'Summondmg',
+            '6'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {
+            4002: {
+              id: 4002,
+              name: 'Shadow Clone'
+            }
+          }
         },
         {
           name: 'Special Care',
-          icon: '11001_Potential_03',
-          description: 'Increases all Umbra Trekkers\' &Param2& by &Param1&.',
+          icon: 'Common_Potential_Dark_1',
+          description: 'Increases all Umbra Trekkers\' &Param2& by <color=#ec6d21>&Param1&</color>.',
           shortDescription: 'Increases all Umbra Trekkers\' &Param2&.',
-          params: ['11%/17%/23%/29%/36%/42%/48%/55%/62%/61%', 'Umbra DMG'],
+          params: [
+            '11%/17%/23%/29%/36%/42%/48%/55%/61%',
+            'Dee'
+          ],
           rarity: 1,
           stype: 41,
           corner: 3,
-          hints: {},
-        },
+          hints: {}
+        }
       ],
       common: [
         {
           name: 'Instant Liquidation',
           icon: '11001_Potential_41',
-          description: 'Firenze absorbs all ##Shadow Clones#4002# when casting Personal Tuition (Ultimate). Each ##Shadow Clone#4002# absorbed increases Ultimate DMG by &Param1&, up to &Param2& stacks.',
-          shortDescription: 'When Firenze casts her Ultimate, each Shadow Clone on the battlefield increases her Ultimate DMG.',
-          params: ['35%/55%/76%/97%/117%/138%/159%/179%/200%', '5', 'Ultimate DMG'],
+          description: 'Firenze absorbs all ##Shadow Clones#4002# when casting Personal Tuition (Ultimate). Each ##Shadow Clone#4002# absorbed increases Ultimate DMG by <color=#ec6d21>&Param1&</color>, up to &Param2& stacks.',
+          shortDescription: 'When Firenze casts her Ultimate, each ##Shadow Clone#4002# on the battlefield increases her Ultimate DMG.',
+          params: [
+            '35%/55%/76%/97%/117%/138%/159%/179%/200%',
+            '5',
+            'Ultimate DMG'
+          ],
           rarity: 2,
           stype: 41,
-          corner: 1,
-          hints: { 4002: { id: 4002, name: 'Shadow Clone', description: 'Shadow Clone is Character\'s minion.' } },
+          corner: null,
+          hints: {
+            4002: {
+              id: 4002,
+              name: 'Shadow Clone'
+            }
+          }
         },
         {
           name: 'Instant Peak',
-          icon: '11001_Potential_41',
-          description: 'When Firenze deals DMG, increases &Param1& by &Param2& for &Param3&s.',
+          icon: 'Common_Potential_Fire_1',
+          description: 'When Firenze deals DMG, increases &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
           shortDescription: 'When Firenze deals DMG, increases &Param1&.',
-          params: ['Ultimate Crit Rate', '5%/7%/8%/10%/11%/13%/15%/16%/20%', '5'],
+          params: [
+            'Ultracritrate',
+            '5%/7%/8%/10%/11%/13%/15%/16%/20%',
+            '5'
+          ],
           rarity: 2,
           stype: 41,
-          corner: 2,
-          hints: {},
+          corner: null,
+          hints: {}
         },
         {
           name: 'Place Your Bets',
-          icon: '11001_Potential_41',
-          description: 'When Firenze triggers an ##Umbra Mark#1019#, increases &Param1& by &Param2& for &Param3&s, up to &Param4& stacks. The effect ends if Personal Tuition (Ultimate) is cast.',
-          shortDescription: 'When Firenze triggers an Umbra Mark, increases &Param1&.',
-          params: ['Ultimate DMG', '17%/28%/38%/49%/59%/69%/80%/90%/101%', '20', '10'],
+          icon: 'Common_Potential_Fire_1',
+          description: 'When Firenze triggers an ##Umbra Mark#1019#, increases &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks. The effect ends if Personal Tuition (Ultimate) is cast.',
+          shortDescription: 'When Firenze triggers an ##Umbra Mark#1019#, increases &Param1&.',
+          params: [
+            'Ultimate DMG',
+            '17%/28%/38%/49%/59%/69%/80%/90%/101%',
+            '20',
+            '10'
+          ],
           rarity: 2,
           stype: 41,
-          corner: 3,
-          hints: { 1019: { id: 1019, name: 'Umbra Mark', description: 'The generic name for all Umbra Marks.' } },
-        },
-      ],
-    },
+          corner: null,
+          hints: {
+            1019: {
+              id: 1019,
+              name: 'Umbra Mark',
+              description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        }
+      ]
+    }
   },
   freesia: {
     id: 125,
@@ -14765,288 +14999,267 @@ export const allPotentials = {
     buildOrder: {
       main: {
         build1: {
-          description:
-            'A build that enhances the toy army for cooperation, ideal for fighting a single enemy.',
+          title: 'Snowish Laru: Main Build 1',
+          description: 'A build that enhances the toy army for cooperation, ideal for fighting a single enemy.',
           potentials: [
             'Solemn Look',
             'Here Comes the Queen',
-            'Starchain Blade',
             'Burning Whip',
-            'Fiery Rainbow',
-          ],
+            'Starchain Blade',
+            'Fiery Rainbow'
+          ]
         },
         build2: {
-          description:
-            'A build that enhances her own skills to perform multiple AoE attacks, ideal for fighting multiple targets.',
+          title: 'Snowish Laru: Main Build 2',
+          description: 'A build that enhances her own skills to perform multiple AoE attacks, ideal for fighting multiple targets.',
           potentials: [
             'Whipping Gale',
             'Crossing Welts',
-            'Wild Whip Waltz',
             'All-Out Whiplash',
-            'Non-Stop Victory',
-          ],
-        },
+            'Wild Whip Waltz',
+            'Non-Stop Victory'
+          ]
+        }
       },
       support: {
         build1: {
+          title: 'Snowish Laru: Support Build 1',
           description: 'A Support build that enhances the cannon and deals massive damage.',
           potentials: [
             'Fire Downpour',
             'Special Ammo',
             'Two-Gun Salute',
             'Uplifting Shot',
-            'First Taste of Sweetness',
-          ],
+            'First Taste of Sweetness'
+          ]
         },
         build2: {
+          title: 'Snowish Laru: Support Build 2',
           description: 'A Support build that enhances the toy and deals continuous damage.',
           potentials: [
             'Promotion Time',
             'Investiture Ceremony',
-            "Heart's Edict",
-            "Heart's Benediction",
-            "Heart's Trumpet",
-          ],
-        },
-      },
-      mainGeneric: {
-        potentials: [
-          'Cannon Ensemble',
-          'Jazz of Rage',
-          'Elegant Moves',
-          'Silver Bullet',
-          'Untouched King',
-          'Toy Army',
-        ],
-      },
-      supportGeneric: {
-        potentials: [
-          'Fairy Tale Rule',
-          'Celebration Resumed',
-          'Ammo Rain',
-          'Silver Bullet',
-          'Untouched King',
-          'Toy Army',
-        ],
-      },
+            'Heart\'s Benediction',
+            'Heart\'s Edict',
+            'Heart\'s Trumpet'
+          ]
+        }
+      }
     },
     potentials: {
       mainCore: [
         {
           name: 'Solemn Look',
           icon: '15801_Potential_01',
-          description:
-            "Empowers the toys following Snowish Laru.\u000bColonel Walnut's Synergy Skill deals <color=#0abec5>&Param1&</color> of ATK as AoE Ignis Minion DMG.\u000bGeneral Curly's Synergy Skill deals <color=#0abec5>&Param2& x6</color> of ATK as AoE Ignis Minion DMG.\u000bClockwork Queen's shots deal an additional <color=#0abec5>&Param4&</color> of ATK as AoE Ignis Minion DMG.",
-          shortDescription:
-            "Enhances the Synergy Skills of Colonel Walnut and General Curly.\u000bEnhances Clockwork Queen's shots.",
+          description: 'Empowers the toys following Snowish Laru.\n##Colonel Walnut#4020#\'s Synergy Skill deals <color=#0abec5>&Param1&</color> of ATK as AoE Ignis Minion DMG.\n##General Curly#4021#\'s Synergy Skill deals <color=#0abec5>&Param2& of ATK x6</color> as AoE Ignis Minion DMG.\n##Clockwork Queen#4022#\'s shots deal an additional <color=#0abec5>&Param4&</color> of ATK as AoE Ignis Minion DMG.',
+          shortDescription: 'Enhances the Synergy Skills of ##Colonel Walnut#4020# and ##General Curly#4021#.\nEnhances ##Clockwork Queen#4022#\'s shots.',
           params: [
             '246%/283%/320%/430%/465%/499%/568%/598%/627%/686%/736%/785%/834%',
             '100%/115%/130%/175%/189%/203%/231%/243%/255%/278%/298%/318%/338%',
             '85%/97%/110%/148%/160%/172%/195%/205%/216%/236%/253%/270%/287%',
-            '90%/103%/117%/157%/170%/182%/208%/218%/229%/251%/269%/287%/305%',
+            '90%/103%/117%/157%/170%/182%/208%/218%/229%/251%/269%/287%/305%'
           ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: {},
+          hints: {
+            4020: {
+              id: 4020,
+              name: 'Colonel Walnut',
+              description: 'Colonel Walnut, summoned by Snowish Laru as the Main Trekker, inherits 100% of Snowish Laru\'s ATK and is immune to DMG permanently.'
+            },
+            4021: {
+              id: 4021,
+              name: 'General Curly',
+              description: 'General Curly, summoned by Snowish Laru as the Main Trekker, inherits 100% of Snowish Laru\'s ATK and is immune to DMG permanently.'
+            },
+            4022: {
+              id: 4022,
+              name: 'Clockwork Queen',
+              description: 'Clockwork Queen inherits 100% of Snowish Laru\'s ATK for 12s, during which it is immune to DMG. Only 1 can exist at the same time.'
+            }
+          }
         },
         {
           name: 'Here Comes the Queen',
           icon: '15801_Potential_02',
-          description:
-            "Casting &Param1& or &Param2& (Main Skill) summons Clockwork Queen for <color=#0abec5>&Param3&</color>s and grants Colonel Walnut or General Curly <color=#0abec5>2</color> stacks of Morale.\u000bClockwork Queen attacks the target, dealing <color=#0abec5>&Param4&</color> of ATK as Ignis Minion DMG.\u000bEach of Clockwork Queen's attacks can trigger the Synergy Skills of Colonel Walnut and General Curly.\u000bClockwork Queen can be summoned once every &Param5&s.",
-          shortDescription:
-            'Casting &Param1& or &Param2& (Main Skill) summons Clockwork Queen and boosts Morale for Colonel Walnut and General Curly.',
+          description: 'Casting &Param1& or &Param2& (Main Skill) summons ##Clockwork Queen#4022# and grants ##Colonel Walnut#4020# or ##General Curly#4021# <color=#0abec5>2</color> stacks of Morale.\n##Clockwork Queen#4022# attacks the target, dealing <color=#0abec5>&Param4&</color> of ATK as Ignis Minion DMG.\nEach of ##Clockwork Queen#4022#\'s attacks can trigger the Synergy Skills of ##Colonel Walnut#4020# and ##General Curly#4021#.\n##Clockwork Queen#4022# can be summoned once every &Param5&s.',
+          shortDescription: 'Casting &Param1& or &Param2& (Main Skill) summons ##Clockwork Queen#4022# and boosts Morale for ##Colonel Walnut#4020# and ##General Curly#4021#.',
           params: [
             'Whip Assault',
             'Candy Barrage',
             '12',
             '85%/97%/110%/148%/160%/172%/195%/205%/216%/236%/253%/270%/287%',
-            '18',
+            '18'
           ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: {},
+          hints: {
+            4022: {
+              id: 4022,
+              name: 'Clockwork Queen',
+              description: 'Clockwork Queen inherits 100% of Snowish Laru\'s ATK for 12s, during which it is immune to DMG. Only 1 can exist at the same time.'
+            },
+            4020: {
+              id: 4020,
+              name: 'Colonel Walnut',
+              description: 'Colonel Walnut, summoned by Snowish Laru as the Main Trekker, inherits 100% of Snowish Laru\'s ATK and is immune to DMG permanently.'
+            },
+            4021: {
+              id: 4021,
+              name: 'General Curly',
+              description: 'General Curly, summoned by Snowish Laru as the Main Trekker, inherits 100% of Snowish Laru\'s ATK and is immune to DMG permanently.'
+            }
+          }
         },
         {
           name: 'Whipping Gale',
           icon: '15801_Potential_03',
-          description:
-            '&Param1& (Main Skill) becomes a multi-hit attack, dealing <color=#0abec5>&Param2& x5</color> of ATK as AoE Ignis Skill DMG.',
+          description: '&Param1& (Main Skill) becomes a multi-hit attack, dealing <color=#0abec5>&Param2& x5</color> of ATK as AoE Ignis Skill DMG.',
           shortDescription: '&Param1& (Main Skill) becomes a multi-hit attack.',
           params: [
             'Whip Assault',
-            '92%/106%/120%/161%/174%/187%/212%/224%/235%/257%/275%/293%/312%',
+            '92%/106%/120%/161%/174%/187%/212%/224%/235%/257%/275%/293%/312%'
           ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: {},
+          hints: {}
         },
         {
           name: 'Crossing Welts',
           icon: '15801_Potential_04',
-          description:
-            'When Colonel Walnut and General Curly deal DMG, they inflict a Gift Box mark, lasting <color=#0abec5>&Param2&</color>s.\u000b&Param3& and &Param4& (Main Skill) deals <color=#0abec5>&Param1&</color> of ATK as AoE Ignis Skill DMG against marked targets.',
-          shortDescription:
-            "When Colonel Walnut and General Curly deal DMG, they inflict the Gift Box mark.\u000bSnowish Laru's skills deal additional AoE DMG against marked targets.",
+          description: 'When Colonel Walnut and General Curly deal DMG, they inflict a Gift Box mark, lasting <color=#0abec5>&Param2&</color>s.\n&Param3& and &Param4& (Main Skill) deals <color=#0abec5>&Param1&</color> of ATK as AoE Ignis Skill DMG against marked targets.',
+          shortDescription: 'When Colonel Walnut and General Curly deal DMG, they inflict the Gift Box mark.\nSnowish Laru\'s skills deal additional AoE DMG against marked targets.',
           params: [
             '197%/227%/257%/345%/373%/401%/456%/479%/503%/551%/590%/629%/669%',
             '10',
             'Whip Assault',
-            'Candy Barrage',
+            'Candy Barrage'
           ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: {},
-        },
+          hints: {}
+        }
       ],
       mainNormal: [
         {
           name: 'Burning Whip',
-          icon: '15801_Potential_01',
-          description:
-            'When Colonel Walnut and General Curly deal damage to targets with ##Ignis Mark#1016#, they have a &Param1& chance to gain 1 stack of Morale and increase their &Param2& by <color=#ec6d21>&Param3&</color> for &Param4&s.',
-          shortDescription:
-            'When Colonel Walnut and General Curly deal DMG to targets with ##Ignis Mark#1016#, they have a chance to gain Morale and increase their &Param2&.',
-          params: ['30%', 'Minion DMG', '14%/23%/31%/40%/48%/57%/65%/74%/82%', '8', '1'],
+          icon: 'Common_Potential_Fire_1',
+          description: 'When ##Colonel Walnut#4020# and ##General Curly#4021# deal DMG to targets with ##Ignis Mark#1016#, they have a &Param1& chance to gain 1 stack of Morale and increase their &Param2& by <color=#ec6d21>&Param3&</color> for &Param4&s.',
+          shortDescription: 'When ##Colonel Walnut#4020# and ##General Curly#4021# deal DMG to targets with ##Ignis Mark#1016#, they have a chance to gain Morale and increase their &Param2&.',
+          params: [
+            '300000',
+            'Summondmg',
+            '14%/23%/31%/40%/48%/57%/65%/74%/82%',
+            '8',
+            '1'
+          ],
           rarity: 2,
           stype: 41,
           corner: 1,
           hints: {
+            4020: {
+              id: 4020,
+              name: 'Colonel Walnut',
+              description: 'Colonel Walnut, summoned by Snowish Laru as the Main Trekker, inherits 100% of Snowish Laru\'s ATK and is immune to DMG permanently.'
+            },
+            4021: {
+              id: 4021,
+              name: 'General Curly',
+              description: 'General Curly, summoned by Snowish Laru as the Main Trekker, inherits 100% of Snowish Laru\'s ATK and is immune to DMG permanently.'
+            },
             1016: {
               id: 1016,
               name: 'Ignis Mark',
-              description:
-                "The generic name for all Ignis Marks.\u000bWhen triggered by specific Ignis Trekkers' attacks, the status is removed, and a special effect is activated.",
-              params: [],
-            },
-          },
-        },
-        {
-          name: 'Starchain Blade',
-          icon: '15801_Potential_06',
-          description:
-            'General Curly deals <color=#ec6d21>&Param1&</color> of ATK as AoE Ignis Minion DMG to nearby targets every second.',
-          shortDescription: 'General Curly deals DMG to nearby targets every second.',
-          params: ['90%/145%/199%/253%/307%/361%/416%/470%/524%'],
-          rarity: 1,
-          stype: 41,
-          corner: 2,
-          hints: {},
-        },
-        {
-          name: 'Fiery Rainbow',
-          icon: '15801_Potential_02',
-          description:
-            "Each toy present increases the &Param1& of all Snowish Laru's minions by <color=#ec6d21>&Param2&</color>, up to &Param3& stacks.",
-          shortDescription:
-            "Each toy present increases the &Param1& of all Snowish Laru's minions.",
-          params: ['Ignis DMG', '13%/21%/28%/36%/44%/51%/59%/67%/74%', '3'],
-          rarity: 2,
-          stype: 41,
-          corner: 3,
-          hints: {},
+              description: 'The generic name for all Ignis Marks.\nWhen triggered by specific Ignis Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
         },
         {
           name: 'All-Out Whiplash',
-          icon: '15801_Potential_03',
-          description:
-            "When &Param1& or &Param2& (Main Skill) lands a Crit Hit, increases Snowish Laru's &Param3& by <color=#ec6d21>&Param4&</color> for &Param5&s, up to &Param6& stacks.",
-          shortDescription:
-            "When &Param1& or &Param2& (Main Skill) lands a Crit Hit, increases Snowish Laru's &Param3&.",
+          icon: 'Common_Potential_Earth_1',
+          description: 'When &Param1& or &Param2& (Main Skill) lands a Crit Hit, increases Snowish Laru\'s &Param3& by <color=#ec6d21>&Param4&</color> for &Param5&s, up to &Param6& stacks.',
+          shortDescription: 'When &Param1& or &Param2& (Main Skill) lands a Crit Hit, increases Snowish Laru\'s &Param3&.',
           params: [
             'Whip Assault',
             'Candy Barrage',
             'ATK',
             '1.9%/3%/4.1%/5.2%/6.3%/7.4%/8.5%/9.6%/10.7%',
             '3',
-            '9',
+            '9'
           ],
           rarity: 2,
           stype: 41,
           corner: 1,
-          hints: {},
-        },
-        {
-          name: 'Wild Whip Waltz',
-          icon: '15801_Potential_03',
-          description:
-            'Increases the Attack Range of &Param1& (Main Skill) by 20%.\u000bIncreases the &Param3& of &Param1& and &Param2& by <color=#ec6d21>&Param4&</color>.',
-          shortDescription:
-            'Increases the Attack Range of &Param1& (Main Skill).\u000bIncreases the &Param3& of &Param1& and &Param2&.',
-          params: [
-            'Whip Assault',
-            'Candy Barrage',
-            'Ignis DMG',
-            '33%/52%/72%/91%/111%/130%/150%/169%/189%',
-          ],
-          rarity: 1,
-          stype: 41,
-          corner: 2,
-          hints: {},
+          hints: {}
         },
         {
           name: 'Cannon Ensemble',
           icon: '15801_Potential_11',
-          description:
-            'Every &Param3&s, Snowish Laru summons a Sled Turret to attack the target when she deals DMG. The Sled Turret deals <color=#ec6d21>&Param2&</color> of ATK as Ignis Minion DMG and explodes to deal <color=#ec6d21>&Param4&</color> of ATK as AoE Ignis Minion DMG.\u000bWhen the Sled Turret lands a Crit Hit, increases the &Param5& of Snowish Laru and all toys on the battlefield by <color=#ec6d21>&Param6&</color> for &Param7&s.',
-          shortDescription:
-            'When Snowish Laru deals DMG, she summons a Sled Turret to attack the target.\u000bWhen the Sled Turret lands a Crit Hit, increases the &Param5& of Snowish Laru and all toys on the battlefield.',
+          description: 'Every &Param3&s, Snowish Laru summons a Sled Turret to attack the target when she deals DMG. The Sled Turret deals <color=#ec6d21>&Param2&</color> of ATK as Ignis Minion DMG and explodes to deal <color=#ec6d21>&Param4&</color> of ATK as AoE Ignis Minion DMG.\nWhen the Sled Turret lands a Crit Hit, increases the &Param5& of Snowish Laru and all toys on the battlefield by <color=#ec6d21>&Param6&</color> for &Param7&s.',
+          shortDescription: 'When Snowish Laru deals DMG, she summons a Sled Turret to attack the target.\nWhen the Sled Turret lands a Crit Hit, increases the &Param5& of Snowish Laru and all toys on the battlefield.',
           params: [
-            '100%',
+            '1e+06',
             '129%/206%/283%/361%/438%/515%/592%/670%/747%',
             '8',
             '91%/146%/201%/255%/310%/365%/420%/474%/529%',
-            'Ignis DMG',
+            'Fee',
             '13%/20%/28%/35%/43%/50%/58%/65%/73%',
-            '8',
+            '8'
           ],
           rarity: 1,
           stype: 41,
           corner: 1,
-          hints: {},
+          hints: {}
         },
         {
-          name: 'Elegant Moves',
-          icon: 'Common_Potential_21',
-          description:
-            'Snowish Laru can dodge one more time. Also, increases her &Param2& by <color=#ec6d21>&Param3&</color>.\u000bPeriodically, Snowish Laru becomes immune to direct DMG taken once. This effect can only be triggered once every <color=#ec6d21>&Param1&</color>s.',
-          shortDescription:
-            'Snowish Laru can dodge one more time. Also, increases her &Param2&.\u000bPeriodically, Snowish Laru becomes immune to direct DMG taken once.',
-          params: ['30', 'DEF', '39/52/65/78/91/105/118/131/144'],
-          rarity: 2,
+          name: 'Starchain Blade',
+          icon: '15801_Potential_06',
+          description: '##General Curly#4021# deals <color=#ec6d21>&Param1&</color> of ATK as AoE Ignis Minion DMG to nearby targets every second.',
+          shortDescription: '##General Curly#4021# deals DMG to nearby targets every second.',
+          params: [
+            '90%/145%/199%/253%/307%/361%/416%/470%/524%'
+          ],
+          rarity: 1,
           stype: 41,
-          corner: 3,
-          hints: {},
+          corner: 2,
+          hints: {
+            4021: {
+              id: 4021,
+              name: 'General Curly',
+              description: 'General Curly, summoned by Snowish Laru as the Main Trekker, inherits 100% of Snowish Laru\'s ATK and is immune to DMG permanently.'
+            }
+          }
         },
         {
-          name: 'Non-Stop Victory',
-          icon: '15801_Potential_04',
-          description:
-            "When Snowish Laru's Auto Attack lands a Crit Hit, increases her &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks.",
-          shortDescription:
-            "When Snowish Laru's Auto Attack lands a Crit Hit, increases her &Param1&.",
-          params: ['ATK', '4%/6%/8%/11%/13%/15%/18%/20%/22%', '8', '4'],
-          rarity: 2,
+          name: 'Wild Whip Waltz',
+          icon: 'Common_Potential_20',
+          description: 'Increases the Attack Range of &Param1& (Main Skill) by 20%.\nIncreases the &Param3& of &Param1& and &Param2& by <color=#ec6d21>&Param4&</color>.',
+          shortDescription: 'Increases the Attack Range of &Param1& (Main Skill).\nIncreases the &Param3& of &Param1& and &Param2&.',
+          params: [
+            'Whip Assault',
+            'Candy Barrage',
+            '',
+            '0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%'
+          ],
+          rarity: 1,
           stype: 41,
-          corner: 3,
-          hints: {},
+          corner: 2,
+          hints: {}
         },
         {
           name: 'Jazz of Rage',
           icon: 'Common_Potential_Fire_1',
-          description:
-            "While transformed into Dame Laru, Snowish Laru's shots and &Param1& can trigger ##Ignis Mark#1016#.\u000bIncreases Snowish Laru's &Param3& by <color=#ec6d21>&Param4&</color>.",
-          shortDescription:
-            "While transformed into Dame Laru, Snowish Laru's shots and &Param1& can trigger ##Ignis Mark#1016#.\u000bIncreases Snowish Laru's &Param3&.",
+          description: 'While transformed into Dame Laru, Snowish Laru\'s shots and &Param1& can trigger ##Ignis Mark#1016# and inflict Conflagration, dealing &Param2& of ATK as Ignis Mark DMG.\nIncreases Snowish Laru\'s &Param3& by <color=#ec6d21>&Param4&</color>.',
+          shortDescription: 'While transformed into Dame Laru, Snowish Laru\'s shots and &Param1& can trigger ##Ignis Mark#1016# and inflict Conflagration.\nIncreases Snowish Laru\'s &Param3&.',
           params: [
             'Candy Barrage',
             '40%/52%/64%/76%/88%/100%/112%/124%/136%',
             'ATK',
-            '20%/32%/44%/56%/68%/80%/92%/104%/116%',
+            '20%/32%/44%/56%/68%/80%/92%/104%/116%'
           ],
           rarity: 2,
           stype: 41,
@@ -15055,245 +15268,256 @@ export const allPotentials = {
             1016: {
               id: 1016,
               name: 'Ignis Mark',
-              description:
-                "The generic name for all Ignis Marks.\u000bWhen triggered by specific Ignis Trekkers' attacks, the status is removed, and a special effect is activated.",
-              params: [],
-            },
-          },
+              description: 'The generic name for all Ignis Marks.\nWhen triggered by specific Ignis Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
         },
-      ],
-      common: [
         {
-          name: 'Silver Bullet',
-          icon: '15801_Potential_41',
-          description:
-            'While transformed into Dame Laru, casting &Param1& increases her &Param2& by <color=#ec6d21>&Param3&</color> for &Param4&s.',
-          shortDescription:
-            'While transformed into Dame Laru, casting &Param1& increases her &Param2&.',
+          name: 'Fiery Rainbow',
+          icon: 'Common_Potential_Water_1',
+          description: 'Each toy present increases the &Param1& of all Snowish Laru\'s minions by <color=#ec6d21>&Param2&</color>, up to &Param3& stacks.',
+          shortDescription: 'Each toy present increases the &Param1& of all Snowish Laru\'s minions.',
           params: [
-            'Candy Barrage',
-            'Ultimate DMG',
-            '61%/98%/134%/171%/207%/244%/256%/268%/281%',
-            '10',
+            '',
+            '0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%',
+            '3'
           ],
-          rarity: 2,
-          stype: 41,
-          corner: 1,
-          hints: {},
-        },
-        {
-          name: 'Untouched King',
-          icon: '15801_Potential_41',
-          description:
-            'While transformed into Dame Laru, increases her &Param2& by <color=#ec6d21>&Param3&</color> for &Param4&s each time &Param1& deals DMG, up to &Param5& stacks.\u000bThis effect is removed if &Param1& is cast.',
-          shortDescription:
-            'While transformed into Dame Laru, increases her &Param2& each time &Param1& deals DMG.',
-          params: [
-            'Candy Barrage',
-            'Ultimate DMG',
-            '10%/13%/17%/20%/23%/27%/29%/31%/33%',
-            '10',
-            '10',
-          ],
-          rarity: 2,
-          stype: 41,
-          corner: 2,
-          hints: {},
-        },
-        {
-          name: 'Toy Army',
-          icon: '15801_Potential_41',
-          description:
-            'While transformed into Dame Laru, increases the &Param1& of Ignis Trekkers in the squad by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks.\u000bThis effect is removed when the transformation expires.',
-          shortDescription:
-            'While transformed into Dame Laru, increases the &Param1& of Ignis Trekkers in the squad over time.',
-          params: ['ATK', '9%/14%/19%/24%/30%/35%/36%/38%/40%', '-1', '10'],
           rarity: 2,
           stype: 41,
           corner: 3,
-          hints: {},
+          hints: {}
         },
+        {
+          name: 'Non-Stop Victory',
+          icon: 'Common_Potential_Earth_1',
+          description: 'When Snowish Laru\'s Auto Attack lands a Crit Hit, increases her &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks.',
+          shortDescription: 'When Snowish Laru\'s Auto Attack lands a Crit Hit, increases her &Param1&.',
+          params: [
+            'ATK',
+            '4%/6%/8%/11%/13%/15%/18%/20%/22%',
+            '8',
+            '4'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Elegant Moves',
+          icon: 'Common_Potential_8',
+          description: 'Snowish Laru can dodge one more time. Also, increases her &Param2& by <color=#ec6d21>&Param3&</color>.\nPeriodically, Snowish Laru becomes immune to direct DMG taken once. This effect can only be triggered once every <color=#ec6d21>&Param1&</color>s.',
+          shortDescription: 'Snowish Laru can dodge one more time. Also, increases her &Param2&.\nPeriodically, Snowish Laru becomes immune to direct DMG taken once.',
+          params: [
+            '30',
+            'DEF',
+            '39/52/65/78/91/105/118/131/144'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        }
       ],
       supportCore: [
         {
           name: 'Fire Downpour',
           icon: '15801_Potential_21',
-          description:
-            'After a Gift Box Shell explodes, it deals <color=#0abec5>&Param1&</color> of ATK as Ignis Skill DMG to targets within range every 0.3s for 2s.',
-          shortDescription:
-            'After a Gift Box Shell explodes, it deals DMG to targets within range over time.',
-          params: ['37%/42%/48%/64%/69%/75%/85%/89%/94%/103%/106%/110%/114%'],
+          description: 'After a Gift Box Shell explodes, it deals <color=#0abec5>&Param1&</color> of ATK as Ignis Skill DMG to targets within range every 0.3s for 2s.',
+          shortDescription: 'After a Gift Box Shell explodes, it deals DMG to targets within range over time.',
+          params: [
+            '37%/42%/48%/64%/69%/75%/85%/89%/94%/103%/106%/110%/114%'
+          ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: {},
+          hints: {}
         },
         {
           name: 'Special Ammo',
           icon: '15801_Potential_22',
-          description:
-            "Increases the Attack Range of Gift Box Shells by <color=#0abec5>50%</color> and Skill DMG by <color=#0abec5>&Param5&</color>.\u000bIf the squad is Ignis-Trekker only, when Gift Box Shells deal DMG to the target, increases the target's Skill DMG Taken by <color=#0abec5>&Param2&</color> for <color=#0abec5>&Param3&</color>s, up to <color=#0abec5>&Param4&</color> stacks.",
-          shortDescription:
-            'Increases the Skill DMG and Attack Range of Gift Box Shells.\u000bIf the squad is Ignis-Trekker only, when Gift Box Shells deal DMG to the target, increases the Skill DMG Taken of the target.',
-          params: ['Skill DMG Taken', '1.3%', '7', '20', '13%'],
+          description: 'Increases the Attack Range of Gift Box Shells by <color=#0abec5>50%</color> and Skill DMG by <color=#0abec5>&Param5&</color>.\nIf the squad is Ignis-Trekker only, when Gift Box Shells deal DMG to the target, increases the target\'s Skill DMG Taken by <color=#0abec5>&Param2&</color> for <color=#0abec5>&Param3&</color>s, up to <color=#0abec5>&Param4&</color> stacks.',
+          shortDescription: 'Increases the Skill DMG and Attack Range of Gift Box Shells.\nIf the squad is Ignis-Trekker only, when Gift Box Shells deal DMG to the target, increases the Skill DMG Taken of the target.',
+          params: [
+            'Rcdskilldmg',
+            '1.3%',
+            '7',
+            '20',
+            '0.57%'
+          ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: {},
+          hints: {}
         },
         {
           name: 'Promotion Time',
           icon: '15801_Potential_23',
-          description:
-            "When 4 Colonel Walnuts are on the battlefield, combines them into 1 General Curly, dealing <color=#0abec5>&Param1&</color> of ATK as Ignis Minion DMG to the target.\u000bGeneral Curly fights for <color=#0abec5>10</color>s, and only 1 can exist.\u000bIf the squad is Ignis-Trekker only, increases General Curly's &Param3& by <color=#0abec5>&Param4&</color> every second, up to <color=#0abec5>&Param5&</color> stacks.",
-          shortDescription:
-            "Combines Colonel Walnuts into General Curly.\u000bIf the squad is Ignis-Trekker only, increases General Curly's &Param3& over time.",
+          description: 'When 4 ##Colonel Walnuts#4023# are on the battlefield, combines them into 1 ##General Curly#4024#.\n##General Curly#4024# swings dual blades, dealing <color=#0abec5>&Param1&</color> of ATK as AoE Minion DMG.\nIf the squad is Ignis-Trekker only, increases ##General Curly#4024#\'s &Param3& by <color=#0abec5>&Param4&</color> every second, stacking up to <color=#0abec5>&Param5&</color> times.',
+          shortDescription: 'Combines ##Colonel Walnuts#4023# into ##General Curly#4024#.\nIf the squad is Ignis-Trekker only, increases ##General Curly#4024#\'s &Param3& over time.',
           params: [
             '53%/61%/69%/92%/100%/107%/122%/128%/135%/147%/153%/158%/163%',
             '11.5',
-            'Minion DMG',
+            'Summondmg',
             '4.5%',
             '15',
-            '15',
+            '15'
           ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: {},
+          hints: {
+            4023: {
+              id: 4023,
+              name: 'Colonel Walnut',
+              description: 'Colonel Walnut, summoned by Snowish Laru as the Support Trekker, inherits 100% of Snowish Laru\'s ATK for 10s, during which it is immune to DMG. Up to 4 can exist at the same time.'
+            },
+            4024: {
+              id: 4024,
+              name: 'General Curly',
+              description: 'General Curly, combined by Colonel Walnuts, inherits 100% of Snowish Laru\'s ATK for 10s, during which it is immune to DMG. Only 1 can exist at the same time.'
+            }
+          }
         },
         {
           name: 'Investiture Ceremony',
           icon: '15801_Potential_24',
-          description:
-            'Colonel Walnut and General Curly learn skills, which they automatically cast after a <color=#0abec5>4</color>s cooldown.\u000bColonel Walnut smashes the ground, dealing <color=#0abec5>&Param1&</color> of ATK as AoE Ignis Minion DMG.\u000bGeneral Curly swings dual blades, dealing <color=#0abec5>&Param2& x6</color> of ATK as AoE Ignis Minion DMG and increasing its &Param5& by <color=#0abec5>&Param3&</color> for <color=#0abec5>&Param4&</color>s.',
-          shortDescription:
-            "Colonel Walnut and General Curly learn skills, which they automatically cast to attack targets.\u000bGeneral Curly's skill also increases its &Param5&.",
+          description: '##Colonel Walnut#4023# and ##General Curly#4024# learn skills, which they automatically cast after a <color=#0abec5>4</color>s cooldown.\n##Colonel Walnut#4023# smashes the ground, dealing <color=#0abec5>&Param1&</color> of ATK as AoE Ignis Minion DMG.\n##General Curly#4024# swings dual blades, dealing <color=#0abec5>&Param2& x6</color> of ATK as AoE Ignis Minion DMG and increasing its &Param5& by <color=#0abec5>&Param3&</color> for <color=#0abec5>&Param4&</color>s.',
+          shortDescription: '##Colonel Walnut#4023# and ##General Curly#4024# learn skills, which they automatically cast to attack targets.\nGeneral Curly\'s skill also increases its &Param5&.',
           params: [
-            '19.6%/22.6%/25.5%/34.3%/37.1%/39.8%/45.3%/47.7%/50.1%/54.8%/56.7%/58.7%/60.7%',
+            '19%/22%/25%/34%/37%/39%/45%/47%/50%/54%/56%/58%/60%',
             '43%/49%/55%/75%/81%/87%/98%/104%/109%/119%/123%/127%/132%',
             '50%',
             '6',
-            'Minion Crit Rate',
+            'Summoncritrate'
           ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: {},
-        },
+          hints: {
+            4023: {
+              id: 4023,
+              name: 'Colonel Walnut',
+              description: 'Colonel Walnut, summoned by Snowish Laru as the Support Trekker, inherits 100% of Snowish Laru\'s ATK for 10s, during which it is immune to DMG. Up to 4 can exist at the same time.'
+            },
+            4024: {
+              id: 4024,
+              name: 'General Curly',
+              description: 'General Curly, combined by Colonel Walnuts, inherits 100% of Snowish Laru\'s ATK for 10s, during which it is immune to DMG. Only 1 can exist at the same time.'
+            }
+          }
+        }
       ],
       supportNormal: [
         {
           name: 'Two-Gun Salute',
           icon: '15801_Potential_25',
-          description:
-            'Increases the &Param2& of &Param1& (Support Skill) by <color=#ec6d21>&Param3&</color>. Fires 2 additional Gift Box Shells.',
-          shortDescription:
-            'Increases the &Param2& and number of shots of &Param1& (Support Skill).',
+          description: 'Increases the &Param2& of &Param1& (Support Skill) by <color=#ec6d21>&Param3&</color>. Fires 2 additional Gift Box Shells.',
+          shortDescription: 'Increases the &Param2& and number of shots of &Param1& (Support Skill).',
           params: [
             'Courtesy Before Aggression',
-            'Skill DMG',
-            '29%/47%/65%/82%/100%/117%/135%/153%/170%',
+            '',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%'
           ],
           rarity: 1,
           stype: 41,
           corner: 1,
-          hints: {},
+          hints: {}
         },
         {
-          name: 'Uplifting Shot',
-          icon: '15801_Potential_22',
-          description:
-            'When a Gift Box Shell deals DMG, increases the &Param1& of Snowish Laru by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks.',
-          shortDescription:
-            'When a Gift Box Shell deals DMG, increases the &Param1& of Snowish Laru.',
-          params: ['ATK', '9%/15%/21%/26%/32%/37%/40%/43%/46%', '5', '6', 'Minion DMG', '1.7%'],
-          rarity: 2,
-          stype: 41,
-          corner: 2,
-          hints: {},
-        },
-        {
-          name: 'First Taste of Sweetness',
-          icon: '15801_Potential_22',
-          description:
-            'Increases the &Param2& dealt by Gift Box Shells to targets with ##Ignis Mark#1016# by <color=#ec6d21>&Param1&</color>.',
-          shortDescription:
-            'Increases the &Param2& dealt by Gift Box Shells to targets with ##Ignis Mark#1016#.',
-          params: ['6%/9%/11%/13%/15%/17%/19%/21%/23%', 'Ignis DMG'],
-          rarity: 2,
-          stype: 41,
-          corner: 3,
-          hints: {
-            1016: {
-              id: 1016,
-              name: 'Ignis Mark',
-              description:
-                "The generic name for all Ignis Marks.\u000bWhen triggered by specific Ignis Trekkers' attacks, the status is removed, and a special effect is activated.",
-              params: [],
-            },
-          },
-        },
-        {
-          name: "Heart's Benediction",
+          name: 'Heart\'s Benediction',
           icon: '15801_Potential_28',
-          description:
-            'Colonel Walnut deals <color=#0abec5>&Param1&</color> of ATK as AoE Ignis Minion DMG to nearby targets every second.\u000bGeneral Curly deals <color=#0abec5>&Param2&</color> of ATK as AoE Ignis Minion DMG every 0.5s.',
-          shortDescription:
-            'Colonel Walnut and General Curly deal Minion DMG to nearby targets over time.',
+          description: '##Colonel Walnut#4023# deals <color=#ec6d21>&Param1&</color> of ATK as AoE Ignis Minion DMG to nearby targets every second.\n##General Curly#4024# deals <color=#ec6d21>&Param2&</color> of ATK as AoE Ignis Minion DMG every 0.5s.',
+          shortDescription: '##Colonel Walnut#4023# and ##General Curly#4024# deal Minion DMG to nearby targets over time.',
           params: [
-            '2.1%/3.3%/4.5%/5.8%/7%/8.3%/9.5%/10.7%/12%',
-            '10.6%/17%/23.4%/29.7%/36.1%/42.5%/48.8%/55.2%/61.6%',
+            '2%/3%/4%/5%/7%/8%/9%/10%/12%',
+            '10%/17%/23%/29%/36%/42%/48%/55%/61%'
           ],
           rarity: 2,
           stype: 41,
           corner: 1,
-          hints: {},
-        },
-        {
-          name: "Heart's Trumpet",
-          icon: '15801_Potential_23',
-          description:
-            'Increases the &Param1& of Colonel Walnut and General Curly by &Param2&.\u000bEach time they deal DMG, increases their &Param3& by <color=#ec6d21>&Param4&</color> for &Param5&s, up to &Param6& stacks.\u000bEach time they land a Crit Hit, increases the &Param7& of Ignis Trekkers in the squad by <color=#ec6d21>&Param8&</color> for &Param9&s, up to &Param10& stacks.',
-          shortDescription:
-            'Increases the &Param1& of Colonel Walnut and General Curly. Each time they deal DMG, increases their &Param3&; each time they land a Crit Hit, increases the &Param7& of Ignis Trekkers in the squad.',
-          params: [
-            'ATK SPD',
-            '35%',
-            'Minion DMG',
-            '6%/9.6%/13.2%/16.8%/20.4%/24%/27.6%/31.2%/34.8%',
-            '10',
-            '10',
-            'ATK',
-            '1%/1.6%/2.2%/2.8%/3.4%/4%/4.3%/4.6%/4.9%',
-            '10',
-            '10',
-          ],
-          rarity: 2,
-          stype: 41,
-          corner: 3,
-          hints: {},
+          hints: {
+            4023: {
+              id: 4023,
+              name: 'Colonel Walnut',
+              description: 'Colonel Walnut, summoned by Snowish Laru as the Support Trekker, inherits 100% of Snowish Laru\'s ATK for 10s, during which it is immune to DMG. Up to 4 can exist at the same time.'
+            },
+            4024: {
+              id: 4024,
+              name: 'General Curly',
+              description: 'General Curly, combined by Colonel Walnuts, inherits 100% of Snowish Laru\'s ATK for 10s, during which it is immune to DMG. Only 1 can exist at the same time.'
+            }
+          }
         },
         {
           name: 'Celebration Resumed',
-          icon: 'Common_Potential_11',
-          description:
-            "Each time Snowish Laru enters combat, increases the main Ignis Trekker's &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.",
-          shortDescription:
-            "Each time Snowish Laru enters combat, increases the main Ignis Trekker's &Param1&.",
-          params: ['ATK', '45%/72%/99%/126%/152%/179%/193%/206%/220%', '10'],
+          icon: 'Common_Potential_Fire_1',
+          description: 'Each time Snowish Laru enters combat, increases the main Ignis Trekker\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+          shortDescription: 'Each time Snowish Laru enters combat, increases the main Ignis Trekker\'s &Param1&.',
+          params: [
+            'ATK',
+            '45%/72%/99%/126%/152%/179%/193%/206%/220%',
+            '10'
+          ],
           rarity: 2,
           stype: 41,
           corner: 1,
-          hints: {},
+          hints: {}
+        },
+        {
+          name: 'Uplifting Shot',
+          icon: 'Common_Potential_8',
+          description: 'When a Gift Box Shell deals DMG, increases the &Param1& of Snowish Laru by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks.',
+          shortDescription: 'When a Gift Box Shell deals DMG, increases the &Param1& of Snowish Laru.',
+          params: [
+            'ATK',
+            '9%/15%/21%/26%/32%/37%/40%/43%/46%',
+            '5',
+            '6',
+            'Summondmg',
+            '1.7%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Heart\'s Edict',
+          icon: 'Common_Potential_13',
+          description: 'Increases the combat duration of ##Colonel Walnut#4023# and ##General Curly#4024# by 50% and their &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Increases the combat duration and &Param1& of ##Colonel Walnut#4023# and ##General Curly#4024#.',
+          params: [
+            'Crit DMG',
+            '32%/52%/71%/90%/109%/129%/148%/167%/187%',
+            '1'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 2,
+          hints: {
+            4023: {
+              id: 4023,
+              name: 'Colonel Walnut',
+              description: 'Colonel Walnut, summoned by Snowish Laru as the Support Trekker, inherits 100% of Snowish Laru\'s ATK for 10s, during which it is immune to DMG. Up to 4 can exist at the same time.'
+            },
+            4024: {
+              id: 4024,
+              name: 'General Curly',
+              description: 'General Curly, combined by Colonel Walnuts, inherits 100% of Snowish Laru\'s ATK for 10s, during which it is immune to DMG. Only 1 can exist at the same time.'
+            }
+          }
         },
         {
           name: 'Ammo Rain',
           icon: 'Common_Potential_Fire_1',
-          description:
-            'While Snowish Laru transforms into Dame Laru, increases her &Param1& by <color=#ec6d21>&Param2&</color>. Her shots and &Param3& can inflict ##Ignis Mark: Sacred Flame#2013#.',
-          shortDescription:
-            'While Snowish Laru transforms into Dame Laru, increases her &Param1&. Her shots and skill can inflict ##Ignis Mark: Sacred Flame#2013#.',
-          params: ['ATK', '67%/107%/147%/187%/227%/267%/277%/287%/297%', 'Candy Barrage'],
+          description: 'While Snowish Laru transforms into Dame Laru, increases her &Param1& by <color=#ec6d21>&Param2&</color>. Her shots and &Param3& can inflict ##Ignis Mark: Sacred Flame#2013#.',
+          shortDescription: 'While Snowish Laru transforms into Dame Laru, increases her &Param1&. Her shots and skill can inflict ##Ignis Mark: Sacred Flame#2013#.',
+          params: [
+            'ATK',
+            '67%/107%/147%/187%/227%/267%/277%/287%/297%',
+            'Candy Barrage'
+          ],
           rarity: 2,
           stype: 41,
           corner: 2,
@@ -15301,397 +15525,4969 @@ export const allPotentials = {
             2013: {
               id: 2013,
               name: 'Ignis Mark: Sacred Flame',
-              description:
-                'A special status applied to the target by some Ignis Trekkers, lasting for 10s.\u000bCan be triggered by the attacks of specific Ignis Trekkers. When triggered, deals large AoE DMG.',
-              params: ['10'],
-            },
-          },
+              description: 'Some Ignis characters apply a special status to the target for 10 sec.\nWhen triggered by specific Ignis characters\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
         },
         {
-          name: "Heart's Edict",
-          icon: '15801_Potential_23',
-          description:
-            'Increases the combat duration of Colonel Walnut and General Curly by 50% and their &Param1& by <color=#ec6d21>&Param2&</color>.',
-          shortDescription:
-            'Increases the combat duration and &Param1& of Colonel Walnut and General Curly.',
-          params: ['Crit DMG', '32%/52%/71%/90%/109%/129%/148%/167%/187%', '1'],
-          rarity: 1,
+          name: 'First Taste of Sweetness',
+          icon: 'Common_Potential_Fire_1',
+          description: 'Increases the &Param2& dealt by Gift Box Shells to targets with ##Ignis Mark#1016# by <color=#ec6d21>&Param1&</color>.',
+          shortDescription: 'Increases the &Param2& dealt by Gift Box Shells to targets with ##Ignis Mark#1016#.',
+          params: [
+            '0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%',
+            ''
+          ],
+          rarity: 2,
           stype: 41,
-          corner: 2,
-          hints: {},
+          corner: 3,
+          hints: {
+            1016: {
+              id: 1016,
+              name: 'Ignis Mark',
+              description: 'The generic name for all Ignis Marks.\nWhen triggered by specific Ignis Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Heart\'s Trumpet',
+          icon: 'Common_Potential_Fire_1',
+          description: 'Increases the &Param1& of ##Colonel Walnut#4023# and ##General Curly#4024# by &Param2&.\nEach time they deal DMG, increases their &Param3& by <color=#ec6d21>&Param4&</color> for &Param5&s, stacking up to &Param6& times.\nEach time they land a Crit Hit, increases the &Param7& of Ignis Trekkers in the squad by <color=#ec6d21>&Param8&</color> for &Param9&s, stacking up to &Param10& times.',
+          shortDescription: 'Increases the &Param1& of ##Colonel Walnut#4023# and ##General Curly#4024#. Each time they deal DMG, increases their &Param3&; each time they land a Crit Hit, increases the &Param7& of Ignis Trekkers in the squad.',
+          params: [
+            'Atkspd_P',
+            '35%',
+            'Summondmg',
+            '6%/9.6%/13.2%/16.8%/20.4%/24%/27.6%/31.2%/34.8%',
+            '10',
+            '10',
+            'ATK',
+            '',
+            '',
+            ''
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {
+            4023: {
+              id: 4023,
+              name: 'Colonel Walnut',
+              description: 'Colonel Walnut, summoned by Snowish Laru as the Support Trekker, inherits 100% of Snowish Laru\'s ATK for 10s, during which it is immune to DMG. Up to 4 can exist at the same time.'
+            },
+            4024: {
+              id: 4024,
+              name: 'General Curly',
+              description: 'General Curly, combined by Colonel Walnuts, inherits 100% of Snowish Laru\'s ATK for 10s, during which it is immune to DMG. Only 1 can exist at the same time.'
+            }
+          }
         },
         {
           name: 'Fairy Tale Rule',
-          icon: 'Common_Potential_15',
-          description:
-            "When the squad contains only Ignis characters, Gift Box Shell increases the target's &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s upon dealing DMG to the target.",
-          shortDescription:
-            "When the squad contains only Ignis Trekkers, Gift Box Shell increases the target's &Param1& upon dealing DMG to the target.",
-          params: ['Ignis DMG Taken', '15%/24%/33%/42%/51%/60%/63%/66%/69%', '12'],
+          icon: 'Common_Potential_Fire_1',
+          description: 'When the squad contains only Ignis characters, Gift Box Shell increases the target\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s upon dealing DMG to the target.',
+          shortDescription: 'When the squad contains only Ignis Trekkers, Gift Box Shell increases the target\'s &Param1& upon dealing DMG to the target.',
+          params: [
+            'Feercd',
+            '15%/24%/33%/42%/51%/60%/63%/66%/69%',
+            '12'
+          ],
           rarity: 1,
           stype: 41,
           corner: 3,
-          hints: {},
-        },
+          hints: {}
+        }
       ],
-    },
+      common: [
+        {
+          name: 'Silver Bullet',
+          icon: '15801_Potential_41',
+          description: 'While transformed into Dame Laru, casting &Param1& increases her &Param2& by <color=#ec6d21>&Param3&</color> for &Param4&s.',
+          shortDescription: 'While transformed into Dame Laru, casting &Param1& increases her &Param2&.',
+          params: [
+            'Candy Barrage',
+            'Ultimate DMG',
+            '61%/98%/134%/171%/207%/244%/256%/268%/281%',
+            '10'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Untouched King',
+          icon: 'Common_Potential_8',
+          description: 'While transformed into Dame Laru, increases her &Param2& by <color=#ec6d21>&Param3&</color> for &Param4&s each time &Param1& deals DMG, up to &Param5& stacks.\nThis effect is removed if &Param1& is cast.',
+          shortDescription: 'While transformed into Dame Laru, increases her &Param2& each time &Param1& deals DMG.',
+          params: [
+            'Candy Barrage',
+            'Ultimate DMG',
+            '10%/13%/17%/20%/23%/27%/29%/31%/33%',
+            '10',
+            '10'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Toy Army',
+          icon: 'Common_Potential_Fire_1',
+          description: 'While transformed into Dame Laru, increases the &Param1& of Ignis Trekkers in the squad by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks.\nThis effect is removed when the transformation expires.',
+          shortDescription: 'While transformed into Dame Laru, increases the &Param1& of Ignis Trekkers in the squad over time.',
+          params: [
+            'ATK',
+            '9%/14%/19%/24%/30%/35%/36%/38%/40%',
+            '-1',
+            '10'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        }
+      ]
+    }
   },
-  'springseek-coronis': {
+  springseekCoronis: {
     id: 159,
     name: 'Springseek Coronis',
     element: 'Terra',
     buildOrder: {
       main: {
         build1: {
-          description: 'A build that maximizes Auspice damage and Terra Mark synergy for high AoE damage output.',
+          title: 'Coronis: Main Build 1',
+          description: 'A build that enhances Auspice to deal rapid damage to single targets.',
           potentials: [
             'Radiance of Auspice',
             'Reflection of Auspice',
-            'Needle Shower',
             'Catalyst',
             'Exquisite Cut',
-          ],
+            'Jade Chime'
+          ]
         },
+        build2: {
+          title: 'Coronis: Main Build 2',
+          description: 'A build that deals AoE skill damage and triggers combos with Auto Attacks.',
+          potentials: [
+            'Needle Shower',
+            'Echo of Earth',
+            'Expanse: Everlasting Peace',
+            'Inner Stagnation',
+            'Fortune\'s Flow'
+          ]
+        }
       },
       support: {
         build1: {
-          description: 'A support build that controls the battlefield with Rose Vials and Terra debuffs.',
+          title: 'Coronis: Support Build 1',
+          description: 'A Support build that instantly detonates Rose Vials, dealing massive damage.',
           potentials: [
             'Essence Extraction',
             'Vernal Breath',
             'Perfect Touch',
             'Symptom Sight',
-            'Dream Shock',
-          ],
+            'Reciprocity'
+          ]
         },
-      },
+        build2: {
+          title: 'Coronis: Support Build 2',
+          description: 'A Support build that generates extra Wither Vials to enhance sustained damage.',
+          potentials: [
+            'Return to Earth',
+            'Lasting Aftertaste',
+            'Faded Splendor',
+            'Aromatic Room',
+            'Waning Year'
+          ]
+        }
+      }
     },
     potentials: {
       mainCore: [
         {
           name: 'Radiance of Auspice',
           icon: '15901_Potential_01',
-          description: 'Reduces Auspice Beam\'s Attack Interval by &Param1&. Each additional Auspice shortens the Attack Interval by &Param1&.',
-          shortDescription: 'Reduces Auspice Beam\'s Attack Interval. Each additional Auspice further reduces the interval.',
-          params: ['25%'],
+          description: 'Reduces Auspice Beam\'s Attack Interval by <color=#0abec5>25%</color>. Each additional Auspice shortens the Attack Interval by <color=#0abec5>25%</color>.',
+          shortDescription: 'Reduces Auspice Beam\'s Attack Interval. Each additional Auspice shortens the Attack Interval.',
+          params: [],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: {},
+          hints: {}
         },
         {
           name: 'Reflection of Auspice',
           icon: '15901_Potential_02',
-          description: 'Increases the &Param1& of Springseek Coronis by &Param2&. Casting Jade of Vitality (Main Skill) generates one additional Auspice. Auspice Beams link all Auspice units, dealing &Param3& of Springseek Coronis\'s ATK as Terra Skill DMG every 0.6s, and can trigger ##Terra Mark#1020#.',
-          shortDescription: 'Increases &Param1&. Casting Main Skill generates additional Auspice. Beams link all Auspice units, dealing DMG over time, and can trigger Terra Mark.',
-          params: ['Terra DMG', '12%', '100%/115%/130%/145%/160%/175%/190%/205%/220%/235%/250%/265%/280%'],
+          description: 'Increases the &Param1& of Springseek Coronis by <color=#0abec5>&Param2&</color>. Casting Jade of Vitality (Main Skill) generates one additional Auspice. Auspice Beams link all Auspice units, dealing <color=#0abec5>&Param3&</color> of Springseek Coronis\'s ATK as Terra Skill DMG every 0.6s, and can trigger ##Terra Mark#1020#.',
+          shortDescription: 'Increases the &Param1& of Springseek Coronis. Casting Main Skill generates additional Auspice. Beams link all Auspice units, dealing DMG over time, and can trigger ##Terra Mark#1020#.',
+          params: [
+            'Skill DMG',
+            '6%',
+            '14%/17%/19%/25%/27%/30%/34%/35%/37%/41%/44%/47%/50%'
+          ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: { 1020: { id: 1020, name: 'Terra Mark', description: 'A special status applied to the target by some Terra Trekkers. Can be triggered by specific attacks to deal additional Terra damage.' } },
+          hints: {
+            1020: {
+              id: 1020,
+              name: 'Terra Mark',
+              description: 'The generic name for all Terra Marks.\nWhen triggered by specific Terra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
         },
         {
           name: 'Needle Shower',
           icon: '15901_Potential_03',
-          description: 'Increases Ammo Capacity by &Param1&. When in Crystallized State, increases Fire Rate by &Param2& and fires crystalline bullets, dealing an additional &Param3& of Springseek Coronis\'s ATK as Terra Auto ATK DMG on hit. Can trigger ##Terra Mark#1020#.',
-          shortDescription: 'Increases Ammo Capacity. When in Crystallized State, increases Fire Rate and fires crystalline bullets that deal additional DMG on hit. Can trigger Terra Mark.',
-          params: ['100%', '30%', '40%/46%/52%/58%/64%/70%/76%/82%/88%'],
+          description: 'Increases Ammo Capacity by <color=#0abec5>100%</color>. When in Crystallized State, increases Fire Rate by <color=#0abec5>30%</color> and fires crystalline bullets, dealing an additional <color=#0abec5>&Param1&</color> of Springseek Coronis\'s ATK as Terra Auto Attack DMG on hit. Can trigger ##Terra Mark#1020#.',
+          shortDescription: 'Increases Ammo Capacity. When in Crystallized State, increases Fire Rate and fires crystalline bullets that deal additional DMG on hit. Can trigger ##Terra Mark#1020#.',
+          params: [
+            '7%/9%/10%/13%/14%/15%/18%/18%/19%/21%/23%/24%/26%'
+          ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: { 1020: { id: 1020, name: 'Terra Mark', description: 'A special status applied to the target by some Terra Trekkers. Can be triggered by specific attacks to deal additional Terra damage.' } },
+          hints: {
+            1020: {
+              id: 1020,
+              name: 'Terra Mark',
+              description: 'The generic name for all Terra Marks.\nWhen triggered by specific Terra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
         },
         {
           name: 'Echo of Earth',
           icon: '15901_Potential_04',
-          description: 'When in Crystallized State, a Rose Pulse is generated every 1.5s: Hitting a target creates Crystalline Ground at the target\'s location, and deals &Param1& of Springseek Coronis\'s ATK as Terra Auto ATK DMG after 2.5s. Can trigger ##Terra Mark#1020#. When Crystalline Ground receives Springseek Coronis\'s Auto ATK DMG, it detonates early and deals &Param3& increased DMG.',
-          shortDescription: 'When in Crystallized State, continuously generates Rose Pulses: Hitting a target creates Crystalline Ground to deal delayed DMG. Can trigger Terra Mark. Auto ATK DMG detonates Crystalline Ground early for increased DMG.',
-          params: ['150%/172%/195%/217%/240%/262%/285%/307%/330%', '150%', '50%'],
+          description: 'When in Crystallized State, a Rose Pulse is generated every 1.5s: Hitting a target creates Crystalline Ground at the target\'s location, and deals <color=#0abec5>&Param1&</color> of Springseek Coronis\'s ATK as Terra Auto Attack DMG after 2.5s. Can trigger ##Terra Mark#1020#. When Crystallized Ground receives Springseek Coronis\'s Auto Attack DMG, it detonates early and deals <color=#0abec5>&Param3&</color> increased DMG.',
+          shortDescription: 'When in Crystallized State, continuously generates Rose Pulses: Hitting a target creates Crystalline Ground at the target\'s location to deal delayed DMG. Can trigger ##Terra Mark#1020#. When Crystallized Ground receives Springseek Coronis\'s Auto Attack DMG, it detonates early and deals increased DMG.',
+          params: [
+            '32%/37%/41%/56%/60%/65%/74%/77%/81%/89%/95%/102%/108%',
+            '',
+            '0.56%'
+          ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: { 1020: { id: 1020, name: 'Terra Mark', description: 'A special status applied to the target by some Terra Trekkers. Can be triggered by specific attacks to deal additional Terra damage.' } },
-        },
+          hints: {
+            1020: {
+              id: 1020,
+              name: 'Terra Mark',
+              description: 'The generic name for all Terra Marks.\nWhen triggered by specific Terra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        }
       ],
       mainNormal: [
         {
           name: 'Catalyst',
-          icon: '15901_Potential_05',
-          description: 'Increases Auspice\'s &Param1& by &Param2&. Increases DMG additionally based on the number of Auspice on the battlefield, up to &Param3&.',
+          icon: 'Common_Potential_Water_1',
+          description: 'Increases Auspice\'s &Param1& by <color=#ec6d21>&Param2&</color>. Increases DMG additionally based on the number of Auspice on the battlefield, up to <color=#ec6d21>&Param3&</color>.',
           shortDescription: 'Increases Auspice\'s &Param1&. Increases DMG additionally based on the number of Auspice on the battlefield.',
-          params: ['Terra DMG', '8%/13%/17%/22%/26%/31%/35%/40%/44%', '20%/26%/32%/38%/44%/50%/56%/62%/68%'],
-          rarity: 1,
+          params: [
+            '',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%'
+          ],
+          rarity: 2,
           stype: 41,
           corner: 1,
-          hints: {},
-        },
-        {
-          name: 'Exquisite Cut',
-          icon: '15901_Potential_06',
-          description: 'When Springseek Coronis deals Auto ATK DMG, increases Auspice\'s &Param1& by &Param2& for &Param3&s, stacking up to &Param4& times.',
-          shortDescription: 'When Springseek Coronis deals Auto ATK DMG, increases Auspice\'s &Param1&.',
-          params: ['Terra DMG', '4%/6%/8%/10%/12%/14%/16%/18%/20%', '3', '3'],
-          rarity: 2,
-          stype: 41,
-          corner: 2,
-          hints: {},
-        },
-        {
-          name: 'Jade Chime',
-          icon: '15901_Potential_07',
-          description: 'Increases the &Param1& of Springseek Coronis by &Param2&. When Evergreen Needles (Auto Attack) bullets pass near or through Auspice beams, the duration of all active Auspice is extended by 0.5s (up to &Param3&s per Skill cast).',
-          shortDescription: 'Increases &Param1&. When Auto Attack bullets pass near or through Auspice beams, extends Auspice duration.',
-          params: ['Terra DMG', '8%/13%/17%/22%/26%/31%/35%/40%/44%', '3'],
-          rarity: 2,
-          stype: 41,
-          corner: 3,
-          hints: {},
+          hints: {}
         },
         {
           name: 'Expanse: Everlasting Peace',
-          icon: '15901_Potential_08',
-          description: 'Increases Springseek Coronis\'s &Param1& by &Param2&. Increases &Param3& additionally by &Param4& against distant targets.',
+          icon: 'Common_Potential_10',
+          description: 'Increases Springseek Coronis\'s &Param1& by <color=#ec6d21>&Param2&</color>. Increases &Param3& additionally by <color=#ec6d21>&Param4&</color> against distant targets.',
           shortDescription: 'Increases Springseek Coronis\'s &Param1&. Increases &Param3& additionally against distant targets.',
-          params: ['Terra DMG', '8%/13%/17%/22%/26%/31%/35%/40%/44%', 'Terra DMG', '8%/13%/17%/22%/26%/31%/35%/40%/44%'],
+          params: [
+            'Normal DMG',
+            '5%/7%/10%/13%/15%/18%/21%/23%/26%',
+            '',
+            '0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%'
+          ],
           rarity: 2,
           stype: 41,
           corner: 1,
-          hints: {},
-        },
-        {
-          name: 'Inner Stagnation',
-          icon: '15901_Potential_09',
-          description: 'When Springseek Coronis deals Auto ATK DMG, increases the target\'s &Param1& by &Param2& for &Param3&s, stacking up to &Param4& times.',
-          shortDescription: 'When Springseek Coronis deals Auto ATK DMG, increases the target\'s &Param1&.',
-          params: ['Terra DMG Taken', '1.5%/2.4%/3.3%/4.2%/5.1%/6%/6.9%/7.8%/8.7%', '4', '3'],
-          rarity: 2,
-          stype: 41,
-          corner: 2,
-          hints: {},
-        },
-        {
-          name: 'Fortune\'s Flow',
-          icon: '15901_Potential_10',
-          description: 'Increases Springseek Coronis\'s &Param1& by &Param2&. When in Crystallized State, triggering ##Terra Mark#1020# extends the state\'s duration by 0.6s (up to 3s total per Skill cast).',
-          shortDescription: 'Increases Springseek Coronis\'s &Param1&. When in Crystallized State, triggering Terra Mark extends the state\'s duration.',
-          params: ['Terra DMG', '8%/13%/17%/22%/26%/31%/35%/40%/44%'],
-          rarity: 2,
-          stype: 41,
-          corner: 3,
-          hints: { 1020: { id: 1020, name: 'Terra Mark', description: 'A special status applied to the target by some Terra Trekkers. Can be triggered by specific attacks to deal additional Terra damage.' } },
+          hints: {}
         },
         {
           name: 'Iridescent Robe',
-          icon: '15901_Potential_11',
-          description: 'Springseek: Burst of Blaze (Ultimate) can trigger ##Terra Mark#1020#. When Springseek Coronis triggers the Mark, increases &Param1& by &Param2& for &Param3&s, stacking up to &Param4& times.',
-          shortDescription: 'Ultimate can trigger Terra Mark. Increases &Param1& on trigger.',
-          params: ['Terra DMG', '12%/20%/28%/36%/44%/52%/60%/68%/76%', '10', '4'],
-          rarity: 1,
+          icon: 'Common_Potential_Fire_1',
+          description: 'Springseek: Burst of Blaze (Ultimate) can trigger ##Terra Mark#1020#. When Springseek Coronis triggers the Mark, increases &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'Ultimate can trigger ##Terra Mark#1020#. Increases &Param1& on trigger.',
+          params: [
+            'ATK',
+            '1.7%/2.7%/3.7%/4.7%/5.7%/6.7%/7.7%/8.7%/9.7%',
+            '5',
+            '6'
+          ],
+          rarity: 2,
           stype: 41,
           corner: 1,
-          hints: { 1020: { id: 1020, name: 'Terra Mark', description: 'A special status applied to the target by some Terra Trekkers. Can be triggered by specific attacks to deal additional Terra damage.' } },
+          hints: {
+            1020: {
+              id: 1020,
+              name: 'Terra Mark',
+              description: 'The generic name for all Terra Marks.\nWhen triggered by specific Terra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
         },
         {
-          name: 'Omen Breaker',
-          icon: '15901_Potential_12',
-          description: 'Springseek Coronis can dodge one more time. After dodging, increases &Param1& by &Param2& for 6s.',
-          shortDescription: 'Springseek Coronis can dodge one more time. After dodging, increases &Param1&.',
-          params: ['Terra DMG', '16%/26%/36%/46%/56%/65%/75%/85%/95%'],
+          name: 'Exquisite Cut',
+          icon: 'Common_Potential_Water_1',
+          description: 'When Springseek Coronis deals Auto Attack DMG, increases Auspice\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'When Springseek Coronis deals Auto Attack DMG, increases Auspice\'s &Param1&.',
+          params: [
+            '',
+            '0.19%/0.19%/0.19%/0.19%/0.19%/0.19%/0.19%/0.19%/0.19%',
+            '5',
+            '6'
+          ],
           rarity: 2,
           stype: 41,
           corner: 2,
-          hints: {},
+          hints: {}
+        },
+        {
+          name: 'Inner Stagnation',
+          icon: 'Common_Potential_10',
+          description: 'When Springseek Coronis deals Auto Attack DMG, increases the target\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'When Springseek Coronis deals Auto Attack DMG, increases the target\'s &Param1&.',
+          params: [
+            'Seercd',
+            '1.3%/2.1%/2.9%/3.7%/4.5%/5.3%/6.1%/6.9%/7.7%',
+            '5',
+            '6'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Omen Breaker',
+          icon: 'Common_Potential_13',
+          description: 'Springseek Coronis can dodge one more time. After dodging, increases &Param1& by <color=#ec6d21>&Param2&</color> for 6s.',
+          shortDescription: 'Springseek Coronis can dodge one more time. After dodging, increases &Param1&.',
+          params: [
+            'See',
+            '8%/13%/17%/22%/27%/31%/36%/41%/45%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Jade Chime',
+          icon: 'Common_Potential_Water_1',
+          description: 'Increases the &Param1& of Springseek Coronis by <color=#ec6d21>&Param2&</color>. When Evergreen Needles (Auto Attack) bullets pass near or through Auspice beams, the duration of all active Auspice is extended by 0.5s (up to <color=#ec6d21>&Param3&</color>s per Skill cast).',
+          shortDescription: 'Increases the &Param1& of Springseek Coronis. When Auto Attack bullets pass near or through Auspice beams, the duration of all active Auspice is extended.',
+          params: [
+            'Skill DMG',
+            '9.3%/15%/21%/26%/32%/37%/43%/49%/54%',
+            ''
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Fortune\'s Flow',
+          icon: 'Common_Potential_Earth_1',
+          description: 'Increases Springseek Coronis\'s &Param1& by <color=#ec6d21>&Param2&</color>. When in Crystallized State, triggering ##Terra Mark#1020# extends the state\'s duration by 0.6s (up to 3s total per Skill cast).',
+          shortDescription: 'Increases Springseek Coronis\'s &Param1&. When in Crystallized State, triggering ##Terra Mark#1020# extends the state\'s duration.',
+          params: [
+            'Normal DMG',
+            '19%/30%/41%/52%/64%/75%/86%/97%/108%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {
+            1020: {
+              id: 1020,
+              name: 'Terra Mark',
+              description: 'The generic name for all Terra Marks.\nWhen triggered by specific Terra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
         },
         {
           name: 'Shifting Brilliance',
-          icon: '15901_Potential_13',
-          description: 'Increases Springseek Coronis\'s &Param1& by &Param2&. When Evergreen Needles (Auto Attack) bullets pass near or through Auspice beams, they gain Penetration and increased &Param3& by &Param4&.',
+          icon: 'Common_Potential_Water_1',
+          description: 'Increases Springseek Coronis\'s &Param1& by <color=#ec6d21>&Param2&</color>. When Evergreen Needles (Auto Attack) bullets pass near or through Auspice beams, they gain Penetration and increased &Param3& by <color=#ec6d21>&Param4&</color>.',
           shortDescription: 'Increases Springseek Coronis\'s &Param1&. When Auto Attack bullets pass near or through Auspice beams, they gain Penetration and increased &Param3&.',
-          params: ['Terra DMG', '8%/13%/17%/22%/26%/31%/35%/40%/44%', 'Terra DMG', '6%/9%/12%/15%/18%/21%/25%/28%/31%'],
-          rarity: 2,
+          params: [
+            'See',
+            '5%/8%/11%/14%/17%/20%/23%/26%/29%',
+            '',
+            '0.19%/0.19%/0.19%/0.19%/0.19%/0.19%/0.19%/0.19%/0.19%'
+          ],
+          rarity: 1,
           stype: 41,
           corner: 3,
-          hints: {},
-        },
+          hints: {}
+        }
       ],
       supportCore: [
         {
           name: 'Essence Extraction',
           icon: '15901_Potential_21',
-          description: 'Within 3.5s after casting Instant Blossom (Support Skill), increases Rose Vials\' &Param2& by &Param3&. When a Rose Vial expires, it deals an additional &Param1& of Springseek Coronis\'s ATK as AoE Terra Skill DMG.',
-          shortDescription: 'For a short duration after casting Support Skill, increases Rose Vials\' &Param2&. When a Rose Vial expires, it deals additional AoE DMG.',
-          params: ['40%/50%/60%/70%/80%/90%/100%/110%/120%/130%/140%/150%/160%', 'Terra DMG', '20%'],
+          description: 'Within 3.5s after casting Instant Blossom (Support Skill), increases Rose Vials\' &Param2& by <color=#0abec5>&Param3&</color>.\nWhen a Rose Vial expires, it deals an additional <color=#0abec5>&Param1&</color> of Springseek Coronis\'s ATK as AoE Terra Skill DMG.',
+          shortDescription: 'For a short duration after casting Instant Blossom (Support Skill), increases Rose Vials\' &Param2&.\nWhen a Rose Vial expires, it deals additional DMG.',
+          params: [
+            '256%/295%/333%/449%/485%/521%/592%/623%/654%/715%/767%/818%/869%',
+            '',
+            '0.57%'
+          ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: {},
+          hints: {}
         },
         {
           name: 'Vernal Breath',
           icon: '15901_Potential_22',
-          description: 'For each Terra Trekker on the squad, increases the &Param1& of Rose Vial by &Param2&. Rose Vial will undergo a Rapid Bloom, instantly triggering all remaining DMG from its duration.',
-          shortDescription: 'For each Terra Trekker on the squad, increases Rose Vial\'s &Param1&. Rose Vial undergoes Rapid Bloom, instantly triggering all remaining DMG.',
-          params: ['Terra DMG', '12%/15%/18%/21%/24%/27%/30%/33%/36%/39%/42%/45%/48%'],
+          description: 'For each Terra Trekker on the squad, increases the &Param1& of Rose Vial by <color=#0abec5>&Param2&</color>.\nRose Vial will undergo a Rapid Bloom, instantly triggering all remaining DMG from its duration.',
+          shortDescription: 'For each Terra Trekker on the squad, increases the &Param1& of Rose Vial.\nRose Vial will undergo a Rapid Bloom, instantly triggering all remaining DMG from its duration.',
+          params: [
+            '',
+            '0.57%'
+          ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: {},
+          hints: {}
         },
         {
           name: 'Return to Earth',
           icon: '15901_Potential_23',
-          description: 'For each Terra Trekker on the squad, increases the &Param1& of Wither Vial by &Param2&. Instant Blossom (Support Skill) now throws 3 Wither Vials and 4 Rose Vials. The Wither Vial converts adjacent Rose Vials into Wither Vials as well.',
-          shortDescription: 'For each Terra Trekker on the squad, increases Wither Vial\'s &Param1&. Changes the number of Rose Vials and Wither Vials thrown. The Wither Vial converts adjacent Rose Vials.',
-          params: ['Terra DMG', '12%/15%/18%/21%/24%/27%/30%/33%/36%/39%/42%/45%/48%'],
+          description: 'For each Terra Trekker on the squad, increases the &Param1& of Wither Vial by <color=#0abec5>&Param2&</color>.\nInstant Blossom (Support Skill) now throws 3 Wither Vials and 4 Rose Vials. The Wither Vial converts adjacent Rose Vials into Wither Vials as well.',
+          shortDescription: 'For each Terra Trekker on the squad, increases the &Param1& of Wither Vial.\nChanges the number of Rose Vials and Wither Vials thrown by the Support Skill. The Wither Vial converts adjacent Rose Vials into Wither Vials as well.',
+          params: [
+            '',
+            '0.57%'
+          ],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: {},
+          hints: {}
         },
         {
           name: 'Lasting Aftertaste',
           icon: '15901_Potential_24',
-          description: 'Extends the duration of all Vials by &Param1&.',
+          description: 'Extends the duration of all Vials by <color=#0abec5>50%</color>.',
           shortDescription: 'Extends the duration of all Vials.',
-          params: ['50%'],
+          params: [],
           rarity: 1,
           stype: 42,
           corner: null,
-          hints: {},
-        },
+          hints: {}
+        }
       ],
       supportNormal: [
         {
           name: 'Perfect Touch',
-          icon: '15901_Potential_25',
-          description: 'For each Rose Vial on the field, increases the &Param1& dealt by Rose Vials by &Param2&.',
+          icon: 'Common_Potential_13',
+          description: 'For each Rose Vial on the field, increases the &Param1& dealt by Rose Vials by <color=#ec6d21>&Param2&</color>.',
           shortDescription: 'For each Rose Vial on the field, increases Rose Vials\' &Param1&.',
-          params: ['Terra DMG', '2.9%/4.6%/6.3%/8%/9.7%/11.4%/13.1%/14.8%/16.5%'],
-          rarity: 1,
+          params: [
+            '',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%'
+          ],
+          rarity: 2,
           stype: 41,
           corner: 1,
-          hints: {},
-        },
-        {
-          name: 'Symptom Sight',
-          icon: '15901_Potential_26',
-          description: 'When Rose Vial inflicts ##Terra Mark: Earth Vein#2029#, increases the &Param1& of the target by &Param2& for &Param3&s.',
-          shortDescription: 'When Rose Vial inflicts Terra Mark: Earth Vein, increases the &Param1& of the target.',
-          params: ['Terra DMG Taken', '4%/6%/9%/11%/13%/15%/18%/20%/22%', '5'],
-          rarity: 2,
-          stype: 41,
-          corner: 2,
-          hints: { 2029: { id: 2029, name: 'Terra Mark: Earth Vein', description: 'A Terra Mark applied by some Terra Trekkers that increases Terra damage taken.' } },
-        },
-        {
-          name: 'Reciprocity',
-          icon: '15901_Potential_27',
-          description: 'For 10s after Rose Vial inflicts ##Terra Mark: Earth Vein#2029# on the target, triggering ##Terra Mark#1020# on the target deals an additional &Param1& of Springseek Coronis\'s ATK as Terra Skill DMG.',
-          shortDescription: 'For a short duration after Rose Vial inflicts Terra Mark: Earth Vein, triggering Terra Mark deals additional DMG.',
-          params: ['40%/65%/90%/115%/140%/165%/190%/215%/240%'],
-          rarity: 2,
-          stype: 41,
-          corner: 3,
-          hints: { 1020: { id: 1020, name: 'Terra Mark', description: 'A special status applied to the target by some Terra Trekkers. Can be triggered by specific attacks to deal additional Terra damage.' }, 2029: { id: 2029, name: 'Terra Mark: Earth Vein', description: 'A Terra Mark applied by some Terra Trekkers that increases Terra damage taken.' } },
+          hints: {}
         },
         {
           name: 'Faded Splendor',
-          icon: '15901_Potential_28',
-          description: 'For each Wither Vial on the field, increases Wither Vials\' &Param1& by &Param2&.',
+          icon: 'Common_Potential_13',
+          description: 'For each Wither Vial on the field, increases Wither Vials\' &Param1& by <color=#ec6d21>&Param2&</color>.',
           shortDescription: 'For each Wither Vial on the field, increases Wither Vials\' &Param1&.',
-          params: ['Terra DMG', '2.9%/4.6%/6.3%/8%/9.7%/11.4%/13.1%/14.8%/16.5%'],
+          params: [
+            '',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%'
+          ],
           rarity: 2,
           stype: 41,
           corner: 1,
-          hints: {},
-        },
-        {
-          name: 'Aromatic Room',
-          icon: '15901_Potential_29',
-          description: 'When a Rose Vial or Wither Vial is on the field, increases all Terra Trekkers\' &Param1& by &Param2&.',
-          shortDescription: 'When a Rose Vial or Wither Vial is on the field, increases all Terra Trekkers\' &Param1&.',
-          params: ['Terra DMG', '8%/13%/17%/22%/26%/31%/35%/40%/44%'],
-          rarity: 2,
-          stype: 41,
-          corner: 2,
-          hints: {},
+          hints: {}
         },
         {
           name: 'Herbal Tempering',
-          icon: '15901_Potential_31',
-          description: 'Increases the &Param1& of Springseek Coronis by &Param2&.',
+          icon: 'Common_Potential_13',
+          description: 'Increases the &Param1& of Springseek Coronis by <color=#ec6d21>&Param2&</color>.',
           shortDescription: 'Increases the &Param1& of Springseek Coronis.',
-          params: ['Terra DMG', '16%/26%/36%/46%/56%/65%/75%/85%/95%'],
-          rarity: 1,
+          params: [
+            'ATK',
+            '20%/32%/44%/56%/68%/80%/92%/104%/116%'
+          ],
+          rarity: 2,
           stype: 41,
           corner: 1,
-          hints: {},
+          hints: {}
         },
         {
-          name: 'Flying Fire',
-          icon: '15901_Potential_32',
-          description: 'Springseek: Burst of Blaze (Ultimate) can inflict ##Terra Mark: Earth Vein#2029#. Increases Springseek Coronis\'s &Param1& by &Param2&.',
-          shortDescription: 'Ultimate can inflict Terra Mark: Earth Vein. Increases Springseek Coronis\'s &Param1&.',
-          params: ['Terra DMG', '8%/13%/17%/22%/26%/31%/35%/40%/44%'],
+          name: 'Symptom Sight',
+          icon: 'Common_Potential_Earth_1',
+          description: 'When Rose Vial inflicts ##Terra Mark: Earth Vein#2029#, increases the &Param1& of the target by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+          shortDescription: 'When Rose Vial inflicts ##Terra Mark: Earth Vein#2029#, increases the &Param1& of the target.',
+          params: [
+            'Seercd',
+            '10%/16%/22%/28%/34%/40%/46%/52%/58%',
+            '10'
+          ],
           rarity: 2,
           stype: 41,
           corner: 2,
-          hints: { 2029: { id: 2029, name: 'Terra Mark: Earth Vein', description: 'A Terra Mark applied by some Terra Trekkers that increases Terra damage taken.' } },
+          hints: {
+            2029: {
+              id: 2029,
+              name: 'Terra Mark: Earth Vein',
+              description: 'A special status applied to the target by some Terra Trekkers, lasting for 10s.\nCan be triggered by the attacks of specific Terra Trekkers. When triggered, removes the status and activates special effects.'
+            }
+          }
+        },
+        {
+          name: 'Aromatic Room',
+          icon: 'Common_Potential_Earth_1',
+          description: 'When a Rose Vial or Wither Vial is on the field, increases all Terra Trekkers\' &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'When a Rose Vial or Wither Vial is on the field, increases all Terra Trekkers\' &Param1&.',
+          params: [
+            '',
+            '0.01%/0.01%/0.01%/0.01%/0.01%/0.01%/0.01%/0.01%/0.01%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Flying Fire',
+          icon: 'Common_Potential_Fire_1',
+          description: 'Springseek: Burst of Blaze (Ultimate) can inflict ##Terra Mark: Earth Vein#2029#. Increases Springseek Coronis\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Ultimate can inflict ##Terra Mark: Earth Vein#2029#. Increases Springseek Coronis\'s &Param1&.',
+          params: [
+            'ATK',
+            '18%/29%/40%/50%/61%/72%/83%/94%/104%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {
+            2029: {
+              id: 2029,
+              name: 'Terra Mark: Earth Vein',
+              description: 'A special status applied to the target by some Terra Trekkers, lasting for 10s.\nCan be triggered by the attacks of specific Terra Trekkers. When triggered, removes the status and activates special effects.'
+            }
+          }
+        },
+        {
+          name: 'Reciprocity',
+          icon: 'Common_Potential_Earth_1',
+          description: 'For 10s after Rose Vial inflicts ##Terra Mark: Earth Vein#2029# on the target, triggering ##Terra Mark#1020# on the target deals an additional <color=#ec6d21>&Param1&</color> of Springseek Coronis\'s ATK as Terra Skill DMG.',
+          shortDescription: 'For a short duration after Rose Vial inflicts ##Terra Mark: Earth Vein#2029# on the target, triggering ##Terra Mark#1020# on the target deals additional DMG.',
+          params: [
+            '109%/174%/239%/304%/369%/434%/499%/565%/630%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {
+            2029: {
+              id: 2029,
+              name: 'Terra Mark: Earth Vein',
+              description: 'A special status applied to the target by some Terra Trekkers, lasting for 10s.\nCan be triggered by the attacks of specific Terra Trekkers. When triggered, removes the status and activates special effects.'
+            },
+            1020: {
+              id: 1020,
+              name: 'Terra Mark',
+              description: 'The generic name for all Terra Marks.\nWhen triggered by specific Terra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Waning Year',
+          icon: 'Common_Potential_Earth_1',
+          description: 'When Wither Vial applies Wither stack to a target that has not yet reached the max stack limit, it deals <color=#ec6d21>&Param3&</color> of Springseek Coronis\'s ATK as Terra Skill DMG. For every current stack of Wither on the target, the &Param1& upon applying a new stack is increased by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'When Wither Vial applies Wither stack to a target that has not yet reached the max stack limit, it deals DMG. For every current stack of Wither on the target, the &Param1& upon applying a new stack is increased.',
+          params: [
+            '',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+            '18%/29%/40%/51%/63%/74%/85%/96%/107%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {}
         },
         {
           name: 'Terra Chorus',
-          icon: '15901_Potential_33',
-          description: 'If all squadmates are Terra Trekkers, when Springseek Coronis deals Skill DMG, each Rose Vial on the field increases the Terra Mark DMG taken by the target by &Param1& for &Param2&s.',
+          icon: 'Common_Potential_Earth_1',
+          description: 'If all squadmates are Terra Trekkers, when Springseek Coronis deals Skill DMG, each Rose Vial on the field increases the Terra Mark DMG taken by the target by <color=#ec6d21>&Param1&</color> for &Param2&s.',
           shortDescription: 'When all squadmates are Terra Trekkers, each Rose Vial on the field increases the Terra Mark DMG taken by the target when Springseek Coronis deals Skill DMG.',
-          params: ['1.5%/2.4%/3.3%/4.2%/5.1%/6%/6.9%/7.8%/8.7%', '6'],
-          rarity: 2,
+          params: [
+            '9.4%/15%/20.6%/26.2%/31.8%/37.4%/43%/48.6%/54.2%',
+            '3'
+          ],
+          rarity: 1,
           stype: 41,
           corner: 3,
-          hints: {},
-        },
+          hints: {}
+        }
       ],
       common: [
         {
           name: 'Dream Shock',
           icon: '15901_Potential_41',
-          description: 'Increases the DMG of Springseek: Burst of Blaze (Ultimate) against elite or higher-tier targets by &Param2&. Additionally inflicts ##Charm#4502# on normal targets: It lasts 2s, and deals &Param3& of Springseek Coronis\'s ATK as Terra Ultimate DMG when the effect ends.',
-          shortDescription: 'Increases Ultimate DMG against elite or higher-tier targets. Additionally inflicts Charm on normal targets, dealing DMG when the effect ends.',
-          params: ['10%', '16%/26%/36%/46%/56%/65%/75%/85%/95%', '200%/275%/350%/425%/500%/575%/650%/725%/800%'],
+          description: 'Increases the &Param1& of Springseek: Burst of Blaze (Ultimate) against elite or higher-tier targets by <color=#ec6d21>&Param2&</color>. Additionally inflicts ##Charm#4502# on normal targets: Lasts 2s, and deals <color=#ec6d21>&Param3&</color> of Springseek Coronis\'s ATK as Terra Ultimate DMG when the effect ends.',
+          shortDescription: 'Increases Ultimate\'s &Param1& against elite or higher-tier targets. Additionally inflicts ##Charm#4502# on normal targets, dealing DMG when the effect ends.',
+          params: [
+            '',
+            '0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%',
+            '162%/259%/356%/453%/550%/647%/744%/841%/938%'
+          ],
           rarity: 2,
           stype: 41,
-          corner: 1,
-          hints: { 4502: { id: 4502, name: 'Charm', description: 'The target is charmed and cannot move or act.' } },
+          corner: null,
+          hints: {
+            4502: {
+              id: 4502,
+              name: 'Allure',
+              description: 'The target remains too close to the caster. Cannot attack.'
+            }
+          }
         },
         {
           name: 'Lingering Grace',
-          icon: '15901_Potential_42',
-          description: 'Increases the DMG of Springseek: Burst of Blaze (Ultimate) by &Param2&. While the Ultimate is on cooldown or its Energy is not full, increases the &Param3& of Terra Vanguards and Versatile Trekkers by &Param4&.',
-          shortDescription: 'Increases Ultimate DMG. While the Ultimate is on cooldown or Energy is not full, increases the &Param3& of Terra Vanguards and Versatile Trekkers.',
-          params: ['10%', '12%/20%/28%/36%/44%/52%/60%/68%/76%', 'Terra DMG', '8%/13%/17%/22%/26%/31%/35%/40%/44%'],
+          icon: 'Common_Potential_Earth_1',
+          description: 'Increases Springseek Coronis\'s &Param1& by <color=#ec6d21>&Param2&</color>. While the Ultimate is on cooldown or its Energy is not full, increases the &Param3& of Terra Vanguards and Versatile Trekkers by <color=#ec6d21>&Param4&</color>.',
+          shortDescription: 'Increases Springseek Coronis\'s &Param1&. While the Ultimate is on cooldown or its Energy is not full, increases the &Param3& of Terra Vanguards and Versatile Trekkers in the squad.',
+          params: [
+            'Ultimate DMG',
+            '14%/23%/32%/40%/49%/57%/66%/75%/83%',
+            '',
+            '0.01%/0.01%/0.01%/0.01%/0.01%/0.01%/0.01%/0.01%/0.01%'
+          ],
           rarity: 2,
           stype: 41,
-          corner: 2,
-          hints: {},
+          corner: null,
+          hints: {}
         },
         {
           name: 'United Flame',
-          icon: '15901_Potential_43',
-          description: 'When Springseek: Burst of Blaze (Ultimate) deals DMG, increases Springseek Coronis\'s &Param1& by &Param2& for &Param4&s, stacking up to &Param3& times.',
+          icon: 'Common_Potential_Fire_1',
+          description: 'When Springseek: Burst of Blaze (Ultimate) deals DMG, increases Springseek Coronis\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param4&s, stacking up to &Param3& times.',
           shortDescription: 'When the Ultimate deals DMG, increases Springseek Coronis\'s &Param1&.',
-          params: ['Terra DMG', '4%/6%/9%/11%/13%/15%/18%/20%/22%', '10', '8'],
+          params: [
+            '',
+            '0.01%/0.01%/0.01%/0.01%/0.01%/0.01%/0.01%/0.01%/0.01%',
+            '6',
+            '20'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        }
+      ]
+    }
+  },
+  chaton: {
+    id: 114,
+    name: 'Chaton',
+    element: 'Ignis',
+    buildOrder: {
+      main: {
+        build1: {
+          title: 'Chaton: Main Build 1',
+          description: 'A build that throw Bouncing Bombs to attack multiple targets.',
+          potentials: [
+            'Area Explosion',
+            'Overwhelming Throw',
+            'Chain Bounce',
+            'Efficient Use',
+            'Deadly Verdict'
+          ]
+        },
+        build2: {
+          title: 'Chaton: Main Build 2',
+          description: 'A build that marks targets with a laser to deal continuous DMG to them.',
+          potentials: [
+            'Meowth\'s Curse',
+            'Reincarnation of Darkness',
+            'Mark of Darkness',
+            'Lucky Bullet',
+            'Hunting Mark'
+          ]
+        }
+      },
+      support: {
+        build1: {
+          title: 'Chaton: Support Build 1',
+          description: 'A build that deals massive DMG over time to a single target.',
+          potentials: [
+            'Ambush Operation',
+            'Strike While the Iron is Hot',
+            'Evil Eye Gaze',
+            'Excess Amplification',
+            'Relentless Suppression'
+          ]
+        },
+        build2: {
+          title: 'Chaton: Support Build 2',
+          description: 'A build that deals AoE DMG to multiple targets.',
+          potentials: [
+            'Combat Frenzy',
+            'Core Blast',
+            'One Stone Two Birds',
+            'Burnt Rifling',
+            'Minor Fling'
+          ]
+        }
+      }
+    },
+    potentials: {
+      mainCore: [
+        {
+          name: 'Area Explosion',
+          icon: '11401_Potential_01',
+          description: 'Each time a Bouncing Bomb lands, it deals an additional <color=#0abec5>&Param1&</color> of ATK as AoE Ignis Skill DMG.\nIncreases the &Param2& dealt by the Bouncing Bomb by <color=#0abec5>&Param3&</color>.',
+          shortDescription: 'Each time a Bouncing Bomb lands, it deals additional AoE DMG.\nIncreases the &Param2& dealt by the Bouncing Bomb.',
+          params: [
+            '7%/8%/9%/13%/14%/15%/17%/18%/18%/20%/22%/23%/25%',
+            '',
+            '0.57%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Overwhelming Throw',
+          icon: '11401_Potential_02',
+          description: 'When holding &Param1& (Main Skill), Chaton throws <color=#0abec5>2</color> additional Bouncing Bombs.\nIncreases the &Param2& dealt by the Bouncing Bomb by <color=#0abec5>&Param3&</color>.',
+          shortDescription: 'When holding the Main Skill button, Chaton throws more Bouncing Bombs.\nIncreases the &Param2& dealt by the Bouncing Bomb.',
+          params: [
+            'Sniper Operation',
+            '',
+            '0.57%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Meowth\'s Curse',
+          icon: '11401_Potential_03',
+          description: 'Reduces Dark Mark\'s Attack Interval by <color=#0abec5>50%</color>.\nIncreases Chaton\'s &Param1& to targets inflicted with Dark Mark by <color=#0abec5>&Param2&</color>.',
+          shortDescription: 'Reduces Dark Mark\'s Attack Interval.\nIncreases Chaton\'s &Param1& to targets inflicted with Dark Mark.',
+          params: [
+            '',
+            '0.57%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Reincarnation of Darkness',
+          icon: '11401_Potential_04',
+          description: 'Increases the &Param2& dealt by ##Dark Ray#4036# by <color=#0abec5>&Param3&</color>.\nEnhances Dark Mark when the laser hits a target inflicted with Dark Mark, increasing the DMG Multiplier dealt by Dark Mark by <color=#0abec5>&Param4&</color>, stacking up to 3 times.',
+          shortDescription: 'Increases the &Param2& dealt by ##Dark Ray#4036#.\nIncreases Dark Mark\'s DMG when the laser hits a target inflicted with Dark Mark.',
+          params: [
+            'Sniper Operation',
+            '',
+            '0.57%',
+            '850000'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            4036: {
+              id: 4036,
+              name: 'Dark Ray'
+            }
+          }
+        }
+      ],
+      mainNormal: [
+        {
+          name: 'Chain Bounce',
+          icon: '11401_Potential_05',
+          description: 'The Bouncing Bomb bounces 1 more time.\nIncreases the &Param1& when a Bouncing Bomb deals DMG by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Increases a Bouncing Bomb\'s bounce count.\nIncreases the &Param1& when a Bouncing Bomb deals DMG.',
+          params: [
+            '',
+            '0.01%/0.01%/0.01%/0.01%/0.01%/0.01%/0.01%/0.01%/0.01%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Mark of Darkness',
+          icon: 'Common_Potential_Fire_1',
+          description: 'Increases the &Param1& dealt by ##Dark Ray#4036# by <color=#ec6d21>&Param2&</color>.\nChaton\'s Auto Attack deals an additional <color=#ec6d21>&Param3&</color> of ATK as Ignis Skill DMG to targets inflicted with Dark Mark. This effect can be triggered once per second.',
+          shortDescription: 'Increases the &Param1& dealt by ##Dark Ray#4036#.\nChaton\'s Auto Attacks deal additional DMG to targets inflicted with Dark Mark.',
+          params: [
+            '',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+            '91%/146%/201%/255%/310%/365%/419%/474%/529%',
+            'Sniper Operation'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {
+            4036: {
+              id: 4036,
+              name: 'Dark Ray'
+            }
+          }
+        },
+        {
+          name: 'Mobile Combat',
+          icon: 'Common_Potential_13',
+          description: 'Chaton can dodge one more time.\nWhen Chaton casts &Param1& (Main Skill), increases her &Param2& by <color=#ec6d21>&Param3&</color> for &Param4&s.',
+          shortDescription: 'Increases Chaton\'s dodges.\nWhen Chaton casts the Main Skill, increases her &Param2&.',
+          params: [
+            'Sniper Operation',
+            'Fee',
+            '10%/14%/17%/21%/24%/28%/31%/35%/38%',
+            '6'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Efficient Use',
+          icon: '11401_Potential_06',
+          description: 'When a Bouncing Bomb runs out of bounces, it returns to Chaton and grants her Spark.\nWhen holding &Param1& (Main Skill), Chaton consumes Spark to increase her &Param2& by <color=#ec6d21>&Param3&</color> for &Param4&s and throws an Explosive Bomb at the target, dealing <color=#ec6d21>&Param5&</color> of ATK as AoE Ignis Skill DMG.\nThe Explosive Bomb cannot bounce.',
+          shortDescription: 'When a Bouncing Bomb runs out of bounces, it returns to Chaton and grants her Spark.\nWhen holding the Main Skill button, consumes Spark to increase Chaton\'s &Param2& and deals additional DMG to the target.',
+          params: [
+            'Sniper Operation',
+            'Skillcritpower',
+            '11%/18%/25%/32%/38%/45%/52%/59%/66%',
+            '5',
+            '154%/246%/338%/430%/522%/614%/706%/798%/890%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Lucky Bullet',
+          icon: '11401_Potential_09',
+          description: 'Increases the &Param1& of ##Dark Ray#4036# by <color=#ec6d21>&Param2&</color>.\nWhen the laser lands a Crit Hit, resets the Main Skill\'s Cooldown and increases the &Param3& dealt by ##Dark Ray#4036# by <color=#ec6d21>&Param4&</color> for &Param7&s. This effect can be triggered once every &Param6&s.',
+          shortDescription: 'Increases the &Param1& of ##Dark Ray#4036#.\nWhen the laser lands a Crit Hit, resets the Main Skill\'s Cooldown and increases the &Param3& dealt by ##Dark Ray#4036#.',
+          params: [
+            '',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+            '',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+            'Sniper Operation',
+            '12',
+            '12'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {
+            4036: {
+              id: 4036,
+              name: 'Dark Ray'
+            }
+          }
+        },
+        {
+          name: 'Dominant Firepower',
+          icon: 'Common_Potential_Fire_1',
+          description: 'Activates the rapid-fire mode for Chaton\'s &Param1& (Auto Attack), increasing her attack frequency. When Chaton is in the ##Evil Eye Unleashed#4035# state, this effect changes to increasing her &Param6& by &Param7&.\nWhen Chaton triggers a mark, increases her &Param2& by <color=#ec6d21>&Param3&</color> for &Param4&s, stacking up to &Param5& times.',
+          shortDescription: 'Activates the rapid-fire mode for Chaton\'s Auto Attack, increasing her attack frequency.\nWhen Chaton triggers a mark, increases her &Param2&.',
+          params: [
+            'Full-Auto Trigger',
+            'ATK',
+            '2.1%/3.4%/4.6%/5.9%/7.1%/8.4%/9.7%/10.9%/12.2%',
+            '5',
+            '5',
+            'Atkspd_P',
+            '60%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 2,
+          hints: {
+            4035: {
+              id: 4035,
+              name: 'Evil Eye Unleashed',
+              description: 'Chaton breaks the seal of Evil Eye, gaining Super Armor, increased stats, and enhanced Auto Attacks.'
+            }
+          }
+        },
+        {
+          name: 'Deadly Verdict',
+          icon: 'Common_Potential_Earth_1',
+          description: 'Increases a Bouncing Bomb\'s &Param1& by <color=#ec6d21>&Param2&</color>.\nWhen a Bouncing Bomb lands a Crit Hit, increases the &Param3& the target takes from it by <color=#ec6d21>&Param4&</color> for &Param5&s, stacking up to &Param6& times.',
+          shortDescription: 'Increases Bouncing Bomb\'s &Param1&.\nWhen a Bouncing Bomb lands a Crit Hit, increases the &Param3& the target takes from it.',
+          params: [
+            '',
+            '0.08%/0.08%/0.08%/0.08%/0.08%/0.08%/0.08%/0.08%/0.08%',
+            '',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+            '10',
+            '5'
+          ],
           rarity: 2,
           stype: 41,
           corner: 3,
-          hints: {},
+          hints: {}
         },
+        {
+          name: 'Hunting Mark',
+          icon: 'Common_Potential_Earth_1',
+          description: 'After Dark Mark lands a Crit Hit, increases the &Param1& of Dark Mark when it deals DMG by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'After Dark Mark lands a Crit Hit, increases the &Param1& of Dark Mark when it deals DMG.',
+          params: [
+            '',
+            '0.01%/0.01%/0.01%/0.01%/0.01%/0.01%/0.01%/0.01%/0.01%',
+            '4',
+            '10'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Foe Annihilation',
+          icon: 'Common_Potential_10',
+          description: 'Increases Chaton\'s &Param2& dealt to targets with HP greater than &Param1& by <color=#ec6d21>&Param3&</color>.',
+          shortDescription: 'Increases Chaton\'s &Param2& dealt to targets with higher HP.',
+          params: [
+            '20%',
+            '',
+            '0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        }
       ],
+      supportCore: [
+        {
+          name: 'Ambush Operation',
+          icon: '11401_Potential_21',
+          description: 'When each shot of &Param1& (Support Skill) hits its first target, inflicts Tier 1 Lock and deals an additional <color=#0abec5>&Param2&</color> of ATK as AoE Ignis Skill DMG.\nWhen a target is already inflicted with Tier 1 Lock, the effect upgrades to Tier 2 Lock, dealing <color=#0abec5>&Param3&</color> of ATK as AoE Ignis Skill DMG.\nWhen a target is already inflicted with Tier 2 Lock, the effect upgrades to Tier 3 Lock, dealing <color=#0abec5>&Param4&</color> of ATK as AoE Ignis Skill DMG.',
+          shortDescription: 'When each shot of the Support Skill hits its first target, deals additional DMG.',
+          params: [
+            'Blitz Assault',
+            '125%/144%/163%/220%/237%/255%/290%/305%/320%/350%/375%/401%/426%',
+            '167%/192%/217%/293%/316%/340%/387%/407%/427%/467%/501%/534%/568%',
+            '188%/216%/245%/330%/356%/382%/435%/458%/480%/526%/563%/601%/639%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Strike While the Iron is Hot',
+          icon: '11401_Potential_22',
+          description: 'Increases the &Param2& of &Param1& (Support Skill) by <color=#0abec5>&Param3&</color>.\nWhen Penetrating Bullet lands a Crit Hit, &Param1& (Support Skill) fires 1 additional shot. This effect can be triggered <color=#0abec5>2</color> times per Support Skill cast.',
+          shortDescription: 'Increases the &Param2& of the Support Skill.\nWhen Penetrating Bullet lands a Crit Hit, the Support Skill fires 1 additional shot.',
+          params: [
+            'Blitz Assault',
+            '',
+            '0.57%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Combat Frenzy',
+          icon: '11401_Potential_23',
+          description: 'Increases the &Param2& dealt by &Param1& (Support Skill) by <color=#0abec5>&Param3&</color>.\nEach time the Support Skill fires, shoots <color=#0abec5>2</color> additional Penetrating Bullets.',
+          shortDescription: 'Increases the &Param2& dealt by &Param1& (Support Skill).\nEach time the Support Skill fires, shoots more Penetrating Bullets.',
+          params: [
+            'Blitz Assault',
+            '',
+            '0.57%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Core Blast',
+          icon: '11401_Potential_24',
+          description: 'Increases the &Param2& of &Param1& (Support Skill) by <color=#0abec5>&Param3&</color>.\nWhen Penetrating Bullet deals DMG, it splits into <color=#0abec5>12</color> Small Penetrating Bullets, dealing <color=#0abec5>&Param4&</color> of ATK as Ignis Skill DMG. It splits up to &Param5& times per Tumbling Shot.',
+          shortDescription: 'Increases the &Param2& of the Support Skill.\nWhen Penetrating Bullet deals DMG, it splits into many Small Penetrating Bullets that also deal DMG.',
+          params: [
+            'Blitz Assault',
+            '',
+            '0.57%',
+            '9%/10%/11%/15%/17%/18%/20%/21%/22%/25%/26%/28%/30%',
+            '3'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        }
+      ],
+      supportNormal: [
+        {
+          name: 'Evil Eye Gaze',
+          icon: '11401_Potential_25',
+          description: 'Increases the &Param2& of &Param1& (Support Skill) by <color=#ec6d21>&Param3&</color>.\nWhen casting the Support Skill, Evil Eye locks onto the target\'s current position, dealing <color=#ec6d21>&Param4&</color> of ATK as AoE Ignis Skill DMG every 0.4s for 8s.',
+          shortDescription: 'Increases the &Param2& of the Support Skill.\nWhen casting the Support Skill, Evil Eye locks onto the target\'s current position, dealing AoE DMG over time.',
+          params: [
+            'Blitz Assault',
+            '',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+            '17%/28%/38%/49%/59%/70%/80%/91%/101%/0%/0%/0%/0%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'One Stone Two Birds',
+          icon: '11401_Potential_28',
+          description: 'Increases Chaton\'s &Param2& by <color=#ec6d21>&Param3&</color>.\nEach time &Param1& (Support Skill) fires, shoots 2 additional Meow Bombs.\nThe bombs shoot forward in a straight line 3 times, dealing <color=#ec6d21>&Param4&</color> of ATK as AoE Ignis Skill DMG each time.',
+          shortDescription: 'Increases Chaton\'s &Param2&.\nEach time the Support Skill fires, shoots additional Meow Bombs, dealing DMG.',
+          params: [
+            'Blitz Assault',
+            'Skill DMG',
+            '6%/9.6%/13.2%/16.8%/20.4%/24%/27.6%/31.2%/34.8%',
+            '18%/30%/41%/52%/63%/75%/86%/97%/109%/0%/0%/0%/0%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Energy Overflow',
+          icon: 'Common_Potential_11',
+          description: 'When Chaton\'s Energy is full, increases her &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+          shortDescription: 'When Chaton\'s Energy is full, increases her &Param1&.',
+          params: [
+            'Skill DMG',
+            '24%/38.4%/52.8%/67.2%/81.6%/96%/110.4%/124.8%/139.2%',
+            '20'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Excess Amplification',
+          icon: 'Common_Potential_10',
+          description: 'Increases the &Param1& Chaton deals to targets inflicted with Lock, increasing <color=#ec6d21>&Param2&</color> for each tier of Lock.',
+          shortDescription: 'Increases the &Param1& Chaton deals to targets inflicted with Lock.',
+          params: [
+            '',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Burnt Rifling',
+          icon: 'Common_Potential_Fire_1',
+          description: 'When &Param1& (Support Skill) lands a Crit Hit, increases the &Param2& it deals by <color=#ec6d21>&Param3&</color>, stacking up to &Param4& times.',
+          shortDescription: 'When the Support Skill lands a Crit Hit, increases the &Param2& it deals.',
+          params: [
+            'Blitz Assault',
+            '',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+            '5'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Swift Assault',
+          icon: 'Common_Potential_13',
+          description: 'While &Param1& (Support Skill) is active, increases Chaton\'s &Param2& by <color=#ec6d21>&Param3&</color>.',
+          shortDescription: 'While &Param1& (Support Skill) is active, increases Chaton\'s &Param2&.',
+          params: [
+            'Blitz Assault',
+            'Skill DMG',
+            '12%/19.2%/26.4%/33.6%/40.8%/48%/55.2%/62.4%/69.6%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Relentless Suppression',
+          icon: 'Common_Potential_10',
+          description: 'While &Param1& (Support Skill) is active, increases the &Param2& dealt by Chaton to the current target by <color=#ec6d21>&Param3&</color> per second, stacking up to &Param4& times.',
+          shortDescription: 'While the Support Skill is active, increases the &Param2& dealt by Chaton to the current target over time.',
+          params: [
+            'Blitz Assault',
+            '',
+            '0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%',
+            '10'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Minor Fling',
+          icon: '11401_Potential_30',
+          description: '&Param1& (Support Skill) instantly eliminates normal targets with HP below &Param2&.\nIncreases the &Param3& dealt to elite or boss targets with HP below &Param5& by <color=#ec6d21>&Param4&</color>.',
+          shortDescription: 'The Support Skill instantly eliminates normal targets with low HP.\nIncreases the &Param3& dealt to elite or boss targets with low HP.',
+          params: [
+            'Blitz Assault',
+            '30%',
+            '',
+            '0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%',
+            '80%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Burning Passion',
+          icon: 'Common_Potential_Fire_1',
+          description: 'Increases the &Param1& of Ignis Trekkers in the squad by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Increases the &Param1& of Ignis Trekkers in the squad.',
+          params: [
+            'ATK',
+            '10%/16%/22%/28%/34%/40%/46%/52%/58%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        }
+      ],
+      common: [
+        {
+          name: 'Curse Fall',
+          icon: '11401_Potential_41',
+          description: '&Param1& (Ultimate) and Dark Burst (while ##Evil Eye Unleashed#4035# is active) deal an additional <color=#ec6d21>&Param2&</color> of ATK as Ignis Ultimate DMG to targets inflicted with Cat Eye Mark.',
+          shortDescription: 'The Ultimate and Dark Burst deal additional DMG to targets inflicted with Cat Eye Mark.',
+          params: [
+            'Dark Evil Eye',
+            '14%/22%/30%/39%/47%/55%/64%/72%/81%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {
+            4035: {
+              id: 4035,
+              name: 'Evil Eye Unleashed',
+              description: 'Chaton breaks the seal of Evil Eye, gaining Super Armor, increased stats, and enhanced Auto Attacks.'
+            }
+          }
+        },
+        {
+          name: 'Penetrating Bullet',
+          icon: 'Common_Potential_Fire_1',
+          description: 'Increases the duration of ##Evil Eye Unleashed#4035# to &Param3&s.\nIncreases Chaton\'s &Param1& by <color=#ec6d21>&Param2&</color>.\nAllows bullets fired by Dark Burst to penetrate targets.',
+          shortDescription: 'Increases the duration of ##Evil Eye Unleashed#4035#.\nIncreases Chaton\'s &Param1&.\nAllows bullets fired by Dark Burst to penetrate targets.',
+          params: [
+            '',
+            '0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%',
+            '20'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {
+            4035: {
+              id: 4035,
+              name: 'Evil Eye Unleashed',
+              description: 'Chaton breaks the seal of Evil Eye, gaining Super Armor, increased stats, and enhanced Auto Attacks.'
+            }
+          }
+        },
+        {
+          name: 'Doom\'s Echo',
+          icon: 'Common_Potential_10',
+          description: 'Cat Eye Mark remains on the target after the Ultimate ends. Increases Chaton\'s &Param1& to targets inflicted with Cat Eye Mark by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Cat Eye Mark remains on the target after the Ultimate ends. Increases Chaton\'s &Param1& to targets inflicted with Cat Eye Mark.',
+          params: [
+            '',
+            '0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%/0.18%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        }
+      ]
+    }
+  },
+  firefly: {
+    id: 115,
+    name: 'Firefly',
+    element: 'Lux',
+    buildOrder: {
+      main: {
+        build1: {
+          title: 'Firefly: Main Build 1',
+          description: 'A DPS build that concentrates Avalanche: Floating Cannons\' energy and focuses on a single target.',
+          potentials: [
+            'Firefly Glow: Radiance',
+            'Firefly Glow: Luminary',
+            'Tide of Starmarks',
+            'Radiant Rainfall',
+            'Lone Star Gleam'
+          ]
+        },
+        build2: {
+          title: 'Firefly: Main Build 2',
+          description: 'A DPS build that spreads Avalanche: Floating Cannons\' firepower and excels at attacking multiple targets.',
+          potentials: [
+            'Firefly Glow: Convergence',
+            'Firefly Glow: Scatter Beam',
+            'Astral Album',
+            'Luminous Rhythm',
+            'Flash Resonance'
+          ]
+        }
+      },
+      support: {
+        build1: {
+          title: 'Firefly: Support Build 1',
+          description: 'A DPS build that enhances Avalanche: Flying Blade, specializing in striking a target with high-frequency attacks.',
+          potentials: [
+            'Radiance Blade: Twin Shadow',
+            'Radiance Blade: Firefly',
+            'Lightforged Blade',
+            'Stellar Crash',
+            'Blade of Falling Petals'
+          ]
+        },
+        build2: {
+          title: 'Firefly: Support Build 2',
+          description: 'A DPS build that enhances Avalanche: Giant Sword, continuously striking the target with heavy blows.',
+          potentials: [
+            'Radiance Blade: Blazing Edge',
+            'Radiance Blade: Pursuing Slash',
+            'Blade Flash',
+            'Luminous Onslaught',
+            'Radiant Ripple'
+          ]
+        }
+      }
     },
+    potentials: {
+      mainCore: [
+        {
+          name: 'Firefly Glow: Radiance',
+          icon: '11501_Potential_01',
+          description: 'Avalanche: Floating Cannons now attack the target simultaneously, dealing <color=#0abec5>&Param2& x4</color> of ATK as Lux Auto ATK DMG every 0.5s. Can trigger ##Lux Mark#1015#.\nIncreasing Firefly\'s ATK SPD reduces the interval between attacks.',
+          shortDescription: 'Avalanche: Floating Cannons attack the target simultaneously, dealing DMG. Can trigger ##Lux Mark#1015#.',
+          params: [
+            'Star Barrage',
+            '11%/13%/15%/20%/22%/24%/27%/29%/30%/33%/35%/38%/40%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            1015: {
+              id: 1015,
+              name: 'Lux Mark',
+              description: 'The generic name for all Lux Marks.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Firefly Glow: Luminary',
+          icon: '11501_Potential_02',
+          description: 'When Avalanche: Floating Cannons deal DMG to the same target, Firefly gains 1 stack of Focus. Switching target will remove 1 stack of Focus. When Focus stacks 12 times, enhances ##Artillery Form#4030#\'s Avalanche: Floating Cannons, increasing &Param3& by <color=#0abec5>&Param2&</color>.',
+          shortDescription: 'After Avalanche: Floating Cannons deal multiple instances of DMG to the same target, increases own &Param3&.',
+          params: [
+            'Star Barrage',
+            '0.56%',
+            ''
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            4030: {
+              id: 4030,
+              name: 'Artillery Form',
+              description: 'The ranged attack form Firefly enters after casting the Main Skill. Uses floating cannons to strike targets for a period of time.'
+            }
+          }
+        },
+        {
+          name: 'Firefly Glow: Convergence',
+          icon: '11501_Potential_03',
+          description: 'When dealing DMG, Avalanche: Floating Cannons generate Scorching Sunray that continuously attacks the target\'s position, dealing <color=#0abec5>&Param2&</color> of ATK as Lux Skill DMG every 0.4s for 2s. Can trigger ##Lux Mark#1015#.\nScorching Sunray can only be triggered once on each target every 10s. Up to 4 Scorching Sunray can exist at once.',
+          shortDescription: 'When dealing DMG, Avalanche: Floating Cannons generate Scorching Sunray that continuously attacks the target\'s position. Can trigger ##Lux Mark#1015#.',
+          params: [
+            'Star Barrage',
+            '85%/97%/110%/148%/160%/172%/195%/206%/216%/236%/253%/270%/287%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            1015: {
+              id: 1015,
+              name: 'Lux Mark',
+              description: 'The generic name for all Lux Marks.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Firefly Glow: Scatter Beam',
+          icon: '11501_Potential_04',
+          description: 'The beams fired by Avalanche: Floating Cannons can refract up to 4 times, dealing <color=#0abec5>&Param2&</color> of ATK as Lux Skill DMG. Can trigger ##Lux Mark#1015#.\nThe same target cannot be hit by refracted beams more than once.',
+          shortDescription: 'The beams fired by Avalanche: Floating Cannons can refract, simultaneously dealing DMG to multiple targets. Can trigger ##Lux Mark#1015#.',
+          params: [
+            'Star Barrage',
+            '5%/6%/7%/10%/11%/11%/13%/14%/14%/16%/17%/18%/19%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            1015: {
+              id: 1015,
+              name: 'Lux Mark',
+              description: 'The generic name for all Lux Marks.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        }
+      ],
+      mainNormal: [
+        {
+          name: 'Tide of Starmarks',
+          icon: 'Common_Potential_Water_1',
+          description: 'When Avalanche: Floating Cannons deal DMG to the boss or elite targets, increases the squad\'s &Param5& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'When Avalanche: Floating Cannons deal DMG to the boss or elite targets, increases the squad\'s &Param5&.',
+          params: [
+            'Star Barrage',
+            '0.19%/0.36%/0.48%/0.6%/0.72%/0.84%/0.96%/1.08%/1.2%',
+            '3',
+            '100',
+            'ATK'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Astral Album',
+          icon: '11501_Potential_08',
+          description: 'When casting &Param1& (Main Skill), Firefly shoots an energy round, dealing <color=#ec6d21>&Param2&</color> of ATK as Lux Skill DMG, then causing an explosion to deal <color=#ec6d21>&Param3&</color> of ATK as AoE Lux Skill DMG. Can trigger ##Lux Mark#1015#.',
+          shortDescription: 'When casting the Main Skill, Firefly shoots an energy round, dealing AoE DMG. Can trigger ##Lux Mark#1015#.',
+          params: [
+            'Star Barrage',
+            '113%/180%/248%/316%/384%/451%/519%/587%/654%',
+            '219%/351%/483%/614%/746%/877%/1009%/1140%/1272%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {
+            1015: {
+              id: 1015,
+              name: 'Lux Mark',
+              description: 'The generic name for all Lux Marks.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Blazing Radiance',
+          icon: 'Common_Potential_Fire_1',
+          description: 'Increases Firefly\'s &Param2& by <color=#ec6d21>&Param1&</color>.\nEvery time Firefly triggers ##Lux Mark#1015#, increases her &Param3& by <color=#ec6d21>&Param4&</color> for &Param5&s, stacking up to &Param6& times.',
+          shortDescription: 'Increases Firefly\'s &Param2&.\nEvery time Firefly triggers ##Lux Mark#1015#, increases own &Param3&.',
+          params: [
+            '13%/20%/28%/35%/43%/50%/58%/65%/73%',
+            'Markdmg',
+            'Lee',
+            '1.4%/2.2%/3%/3.8%/4.6%/5.4%/6.2%/7%/7.8%',
+            '6',
+            '10'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {
+            1015: {
+              id: 1015,
+              name: 'Lux Mark',
+              description: 'The generic name for all Lux Marks.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Radiant Rainfall',
+          icon: '11501_Potential_06',
+          description: 'While Firefly is in ##Artillery Form#4030#, Avalanche: Floating Cannons fire a volley at the target every 6s, dealing <color=#ec6d21>&Param2& x4</color> of ATK as Lux Auto Attack DMG.\nUpon hitting the target, the volley triggers an explosion, dealing <color=#ec6d21>&Param3&</color> of ATK as AoE Lux Auto Attack DMG. Can trigger ##Lux Mark#1015#.',
+          shortDescription: 'While Firefly is in ##Artillery Form#4030#, Avalanche: Floating Cannons periodically fire a volley at the target, dealing bonus DMG. Can trigger ##Lux Mark#1015#.',
+          params: [
+            'Star Barrage',
+            '34%/55%/76%/97%/117%/138%/159%/179%/200%',
+            '115%/184%/253%/322%/391%/460%/528%/597%/666%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 2,
+          hints: {
+            4030: {
+              id: 4030,
+              name: 'Artillery Form',
+              description: 'The ranged attack form Firefly enters after casting the Main Skill. Uses floating cannons to strike targets for a period of time.'
+            },
+            1015: {
+              id: 1015,
+              name: 'Lux Mark',
+              description: 'The generic name for all Lux Marks.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Luminous Rhythm',
+          icon: 'Common_Potential_13',
+          description: 'Increases &Param3& dealt by Avalanche: Floating Cannons\' next attack by <color=#ec6d21>&Param2&</color> every 4s.\nEach Avalanche: Floating Cannon has its own timer.',
+          shortDescription: 'Increases &Param3& dealt by Avalanche: Floating Cannons at set intervals.',
+          params: [
+            'Star Barrage',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+            ''
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Absolute Brilliance',
+          icon: 'Common_Potential_Light_1',
+          description: '&Param1& (Ultimate) can trigger ##Lux Mark#1015# and summon a ##Lucent#4028#, dealing &Param2& of ATK as Lux Mark DMG.\nWhen the mark is triggered, increases own &Param6& by <color=#ec6d21>&Param3&</color> for &Param4&s, stacking up to &Param5& times.',
+          shortDescription: 'The Ultimate can trigger ##Lux Mark#1015#. When the mark is triggered, increases own &Param6&.',
+          params: [
+            'Stellar Torrent',
+            '17%/22%/27%/32%/37%/42%/47%/52%/57%',
+            '6%/9%/13%/16%/20%/23%/27%/30%/34%',
+            '20',
+            '3',
+            'ATK'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {
+            1015: {
+              id: 1015,
+              name: 'Lux Mark',
+              description: 'The generic name for all Lux Marks.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            },
+            4028: {
+              id: 4028,
+              name: 'Lucent',
+              description: 'When certain Lux Trekkers trigger a Mark, they deal AoE DMG and inflict Glimmer.'
+            }
+          }
+        },
+        {
+          name: 'Lone Star Gleam',
+          icon: 'Common_Potential_Fire_1',
+          description: 'When Firefly deals DMG to a lone target, increases &Param2& dealt by <color=#ec6d21>&Param1&</color>.',
+          shortDescription: 'Increases Firefly\'s &Param2& dealt to lone targets.',
+          params: [
+            '0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%',
+            ''
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Flash Resonance',
+          icon: 'Common_Potential_Light_1',
+          description: 'Whenever Avalanche: Floating Cannons hit a target afflicted with ##Lux Mark#1015#, increases the squad\'s &Param4& by <color=#ec6d21>&Param1&</color> for &Param2&s, stacking up to &Param3& times.',
+          shortDescription: 'When Avalanche: Floating Cannons hit different targets afflicted with ##Lux Marks#1015#, increases the squad\'s &Param4&.',
+          params: [
+            '1.6%/2.6%/3.6%/4.6%/5.6%/6.6%/7.6%/8.6%/9.6%',
+            '7',
+            '5',
+            'ATK'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {
+            1015: {
+              id: 1015,
+              name: 'Lux Mark',
+              description: 'The generic name for all Lux Marks.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Phantom Blast',
+          icon: 'Common_Potential_Fire_1',
+          description: 'Firefly can dodge one more time.\nWhen Firefly dodges, she leaves behind a Shadow that deals <color=#ec6d21>&Param1&</color> of ATK as Lux Skill DMG to nearby targets and stuns them for &Param2&s. This effect can only be triggered once every &Param3&s. Can trigger ##Lux Mark#1015#.',
+          shortDescription: 'Increases the number of times Firefly can dodge.\nAfter dodging, Firefly deals Lux DMG to nearby targets and stuns them. Can trigger ##Lux Mark#1015#.',
+          params: [
+            '49%/79%/108%/138%/167%/197%/227%/256%/286%',
+            '3',
+            '7'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {
+            1015: {
+              id: 1015,
+              name: 'Lux Mark',
+              description: 'The generic name for all Lux Marks.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        }
+      ],
+      supportCore: [
+        {
+          name: 'Radiance Blade: Twin Shadow',
+          icon: '11501_Potential_21',
+          description: 'In an all-Lux squad, casting &Param1& (Support Skill) grants additional Avalanche: Flying Blades and increases ATK frequency afterwards.\nWhenever Avalanche: Flying Blade deals DMG, increases Avalanche: Flying Blade\'s &Param4& by <color=#0abec5>&Param5&</color> and increases &Param2& by <color=#0abec5>&Param3&</color> while this ##Sword Form#4031# is active, stacking up to &Param6& times.',
+          shortDescription: 'In an all-Lux squad, casting the Support Skill grants additional Avalanche: Flying Blades.\nWhenever Avalanche: Flying Blade deals DMG, increases own &Param2& and &Param4&.',
+          params: [
+            'Starflare Pursuit',
+            '',
+            '',
+            'ATK',
+            '',
+            '20'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            4031: {
+              id: 4031,
+              name: 'Sword Form',
+              description: 'The melee attack form Firefly enters after casting the Support Skill. Wields a giant sword and launches flying blades to strike targets for a period of time.'
+            }
+          }
+        },
+        {
+          name: 'Radiance Blade: Firefly',
+          icon: '11501_Potential_22',
+          description: 'Increases the &Param1& of Avalanche: Flying Blade by <color=#0abec5>&Param2&</color> when it deals DMG.\nWhenever Avalanche: Flying Blade deals DMG, it deals an additional <color=#0abec5>&Param3&</color> of ATK as AoE Lux Skill DMG and inflicts ##Lux Mark: Radiance#2016#.',
+          shortDescription: 'Increases the &Param1& of Avalanche: Flying Blade when it deals DMG.\nWhenever Avalanche: Flying Blade deals DMG, it deals additional AoE DMG and inflicts ##Lux Mark: Radiance#2016#.',
+          params: [
+            '',
+            '0.71%',
+            '41%/48%/54%/72%/78%/84%/96%/101%/106%/116%/124%/132%/140%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            2016: {
+              id: 2016,
+              name: 'Lux Mark: Radiance',
+              description: 'Some Lux Trekkers apply a special status to the target for 10 sec.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Radiance Blade: Blazing Edge',
+          icon: '11501_Potential_23',
+          description: 'In an all-Lux squad, extends the attack range of Avalanche: Giant Sword and increases its &Param2& by <color=#0abec5>&Param3&</color>.\nWhenever Avalanche: Giant Sword attacks, it triggers an additional attack, dealing <color=#0abec5>&Param1&</color> of ATK as Lux Auto ATK DMG and inflicting ##Lux Mark: Radiance#2016#.',
+          shortDescription: 'In an all-Lux squad, increases the attack range and &Param2& of Avalanche: Giant Sword.\nWhenever Avalanche: Giant Sword attacks, it triggers an additional attack, dealing DMG and inflicting ##Lux Mark: Radiance#2016#.',
+          params: [
+            '163%/188%/212%/285%/308%/331%/377%/396%/416%/455%/488%/520%/553%',
+            '',
+            '0.56%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            2016: {
+              id: 2016,
+              name: 'Lux Mark: Radiance',
+              description: 'Some Lux Trekkers apply a special status to the target for 10 sec.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Radiance Blade: Pursuing Slash',
+          icon: '11501_Potential_24',
+          description: 'After Avalanche: Giant Sword attacks 8 times, Firefly automatically casts Dominating Slash, dealing <color=#0abec5>&Param1&</color> of ATK, <color=#0abec5>&Param2& x2</color> of ATK, and <color=#0abec5>&Param3& x3</color> of ATK as Lux Auto ATK DMG and inflicting ##Lux Mark: Radiance#2016#.',
+          shortDescription: 'After Avalanche: Giant Sword attacks a certain number of times, Firefly automatically casts Dominating Slash, dealing DMG and inflicting ##Lux Mark: Radiance#2016#.',
+          params: [
+            '195%/225%/254%/342%/369%/397%/451%/475%/498%/545%/584%/623%/663%',
+            '220%/253%/286%/385%/416%/446%/508%/534%/561%/613%/657%/701%/745%',
+            '171%/197%/222%/299%/323%/347%/395%/416%/436%/477%/511%/546%/580%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            2016: {
+              id: 2016,
+              name: 'Lux Mark: Radiance',
+              description: 'Some Lux Trekkers apply a special status to the target for 10 sec.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        }
+      ],
+      supportNormal: [
+        {
+          name: 'Lightforged Blade',
+          icon: 'Common_Potential_Fire_1',
+          description: 'When the Main Trekker triggers ##Lux Mark#1015#, Firefly gains 1 stack of Glow. When ##Lucent#4028# is generated afterwards, Firefly gains 1 stack of Halo. Both effects can stack up to &Param7& times.\nWhen casting &Param1& (Support Skill), Firefly consumes all stacks of Glow and Halo. For the current ##Sword Form#4031#\'s active duration, increases Avalanche: Flying Blade\'s &Param3& by <color=#ec6d21>&Param2&</color> for each stack of Glow consumed; increases Avalanche: Flying Blade\'s &Param6& by <color=#ec6d21>&Param5&</color> for each stack of Halo consumed.',
+          shortDescription: 'After the Lux Main Trekker triggers ##Lux Mark#1015# and generates ##Lucent#4028#, increases the &Param3& and &Param6& of Avalanche: Flying Blade the next time Firefly is in ##Sword Form#4031#.',
+          params: [
+            'Starflare Pursuit',
+            '0.71%/0.71%/0.71%/0.71%/0.71%/0.71%/0.71%/0.71%/0.71%',
+            '',
+            '20',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+            '',
+            '20'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {
+            1015: {
+              id: 1015,
+              name: 'Lux Mark',
+              description: 'The generic name for all Lux Marks.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            },
+            4028: {
+              id: 4028,
+              name: 'Lucent',
+              description: 'When certain Lux Trekkers trigger a Mark, they deal AoE DMG and inflict Glimmer.'
+            },
+            4031: {
+              id: 4031,
+              name: 'Sword Form',
+              description: 'The melee attack form Firefly enters after casting the Support Skill. Wields a giant sword and launches flying blades to strike targets for a period of time.'
+            }
+          }
+        },
+        {
+          name: 'Blade Flash',
+          icon: 'Common_Potential_Fire_1',
+          description: 'While Firefly is in ##Sword Form#4031#, increases the &Param3& dealt by Avalanche: Giant Sword by <color=#ec6d21>&Param1&</color>, stacking up to &Param2& times.\nIncreases Firefly\'s Movement SPD by &Param4& when she is too far from her target or has no target.',
+          shortDescription: 'While Firefly is in ##Sword Form#4031#, increases the &Param3& dealt by Avalanche: Giant Sword over time.\nIncreases Firefly\'s Movement SPD when she is too far from her target or has no target.',
+          params: [
+            '0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%',
+            '15',
+            '',
+            '100%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {
+            4031: {
+              id: 4031,
+              name: 'Sword Form',
+              description: 'The melee attack form Firefly enters after casting the Support Skill. Wields a giant sword and launches flying blades to strike targets for a period of time.'
+            }
+          }
+        },
+        {
+          name: 'Sanctuary of Light',
+          icon: 'Common_Potential_Fire_1',
+          description: '&Param1& (Ultimate) can inflict ##Lux Mark: Radiance#2016#.\nWhen Firefly casts the Ultimate, the Lux Main Trekker gains a shield equal to <color=#ec6d21>&Param2&</color> of Firefly\'s Base Max HP for &Param3&s.',
+          shortDescription: 'Firefly\'s Ultimate can inflict ##Lux Mark: Radiance#2016#.\nWhen Firefly casts the Ultimate, the Lux Main Trekker gains a shield.',
+          params: [
+            'Stellar Torrent',
+            '14%/18%/23%/27%/32%/36%/41%/45%/50%',
+            '5'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {
+            2016: {
+              id: 2016,
+              name: 'Lux Mark: Radiance',
+              description: 'Some Lux Trekkers apply a special status to the target for 10 sec.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Stellar Crash',
+          icon: '11501_Potential_26',
+          description: 'When the Lux Main Trekker deals Skill DMG, generates 1 Avalanche: Flying Blade to strike the target, dealing <color=#ec6d21>&Param2&</color> of Firefly\'s ATK as Lux Skill DMG and inflicting ##Lux Mark: Radiance#2016#. When this Avalanche: Flying Blade deals DMG, it increases the target\'s &Param3& by <color=#ec6d21>&Param4&</color> for &Param5&s based on the number of ##Light Curtain#4029# stacks on the target, stacking up to &Param6& times.\nThis effect can only be triggered once every &Param7&s, and Firefly does not need to be on the battlefield.',
+          shortDescription: 'When the Lux Main Trekker deals Skill DMG, generates Avalanche: Flying Blade to strike the target, dealing additional DMG and inflicting ##Lux Mark: Radiance#2016#.\nWhen this Avalanche: Flying Blade deals DMG, it increases the target\'s &Param3& based on the number of ##Light Curtain#4029# stacks on the target.',
+          params: [
+            'Starflare Pursuit',
+            '19%/31%/43%/55%/67%/79%/90%/102%/114%',
+            'Leercd',
+            '0.5%/0.8%/1.1%/1.4%/1.7%/2%/2.3%/2.6%/2.9%',
+            '10',
+            '20',
+            '3'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {
+            2016: {
+              id: 2016,
+              name: 'Lux Mark: Radiance',
+              description: 'Some Lux Trekkers apply a special status to the target for 10 sec.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            },
+            4029: {
+              id: 4029,
+              name: 'Glimmer'
+            }
+          }
+        },
+        {
+          name: 'Luminous Onslaught',
+          icon: 'Common_Potential_Fire_1',
+          description: 'When the Main Trekker triggers ##Lux Mark#1015# and generates ##Thunderbolt#4027# while Firefly is on the battlefield, increases the &Param2& of targets near her by <color=#ec6d21>&Param1&</color>, and increases Firefly\'s &Param6& by <color=#ec6d21>&Param5&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'When the Main Trekker triggers ##Lux Mark#1015# and generates ##Thunderbolt#4027# while Firefly is on the battlefield, increases her own &Param6& and the &Param2& of nearby targets.',
+          params: [
+            '1%/1.6%/2.2%/2.8%/3.4%/4%/4.6%/5.2%/5.8%',
+            'Leercd',
+            '4',
+            '10',
+            '0.4%/0.6%/0.8%/1%/1.2%/1.4%/1.6%/1.8%/2%',
+            'ATK'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {
+            1015: {
+              id: 1015,
+              name: 'Lux Mark',
+              description: 'The generic name for all Lux Marks.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            },
+            4027: {
+              id: 4027,
+              name: 'Thunderbolt',
+              description: 'When certain Lux Trekkers trigger a Mark, they deal DMG in a small area.'
+            }
+          }
+        },
+        {
+          name: 'Cosmic Brilliance',
+          icon: 'Common_Potential_Fire_1',
+          description: 'When Firefly casts &Param1& (Support Skill), increases the &Param3& of Lux Trekkers in the squad by <color=#ec6d21>&Param4&</color> for &Param5&s.',
+          shortDescription: 'When Firefly casts the Support Skill, increases the &Param3& of Lux Trekkers in the squad.',
+          params: [
+            'Starflare Pursuit',
+            '0',
+            'ATK',
+            '10%/16%/22%/28%/34%/40%/46%/52%/58%',
+            '26'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Blade of Falling Petals',
+          icon: '11501_Potential_27',
+          description: 'When ##Sword Form#4031# ends, Firefly commands all ##Avalanches#4032# to strike targets around her. Each ##Avalanche#4032# deals <color=#ec6d21>&Param1& x2</color> of ATK as AoE Lux Skill DMG and inflicts ##Lux Mark: Radiance#2016#.\nIncreases Firefly\'s &Param2& by <color=#ec6d21>&Param3&</color> for &Param4&s each time this effect deals DMG, stacking up to &Param5& times.',
+          shortDescription: 'When ##Sword Form#4031# ends, Firefly commands all ##Avalanches#4032# to strike targets around her, dealing AoE DMG and inflicting ##Lux Mark: Radiance#2016#.\nIncreases Firefly\'s &Param2& each time this effect deals DMG.',
+          params: [
+            '34%/55%/76%/96%/117%/138%/158%/179%/200%',
+            'Skillcritpower',
+            '1.1%/1.8%/2.5%/3.2%/3.9%/4.6%/5.3%/6%/6.7%',
+            '15',
+            '12'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {
+            4031: {
+              id: 4031,
+              name: 'Sword Form',
+              description: 'The melee attack form Firefly enters after casting the Support Skill. Wields a giant sword and launches flying blades to strike targets for a period of time.'
+            },
+            4032: {
+              id: 4032,
+              name: 'Avalanche',
+              description: 'Firefly\'s personal combat unit, which remains in standby mode while following Firefly. When required, it transforms into various combat forms to attack Firefly\'s targets.'
+            },
+            2016: {
+              id: 2016,
+              name: 'Lux Mark: Radiance',
+              description: 'Some Lux Trekkers apply a special status to the target for 10 sec.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Radiant Ripple',
+          icon: '11501_Potential_30',
+          description: 'When Avalanche: Giant Sword deals DMG, it deals an additional <color=#ec6d21>&Param1&</color> of ATK as AoE Auto ATK DMG and inflicts ##Lux Mark: Radiance#2016#.\nThis effect can only be triggered once every &Param2&s.',
+          shortDescription: 'When Avalanche: Giant Sword deals DMG, it deals additional AoE DMG and inflicts ##Lux Mark: Radiance#2016#.',
+          params: [
+            '185%/295%/406%/517%/627%/738%/849%/960%/1070%',
+            '1'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {
+            2016: {
+              id: 2016,
+              name: 'Lux Mark: Radiance',
+              description: 'Some Lux Trekkers apply a special status to the target for 10 sec.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Domain of Purity',
+          icon: 'Common_Potential_Fire_1',
+          description: 'Increases the squad\'s &Param3& by <color=#ec6d21>&Param1&</color> in an all-Lux squad.\nWhen Firefly is on the battlefield, increases the squad\'s &Param3& by an additional <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Increases the squad\'s &Param3& in an all-Lux squad.\nWhen Firefly is on the battlefield, additionally increases the squad\'s &Param3&.',
+          params: [
+            '10%/16%/22%/28%/34%/40%/46%/52%/58%',
+            '8%/13%/18%/22%/27%/32%/37%/42%/46%',
+            'Lee'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        }
+      ],
+      common: [
+        {
+          name: 'Persistent Warmth',
+          icon: '11501_Potential_41',
+          description: 'After Firefly casts &Param1& (Ultimate), increases her &Param3& by <color=#ec6d21>&Param2&</color> for &Param4&s the next time she casts a skill.',
+          shortDescription: 'After Firefly casts the Ultimate, increases her &Param3& the next time she casts a skill.',
+          params: [
+            'Stellar Torrent',
+            '16%/26%/35%/45%/54%/64%/74%/83%/93%',
+            'Lee',
+            '30'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Ultimate Radiance',
+          icon: '11501_Potential_42',
+          description: 'Increases the &Param3& dealt by &Param1& (Ultimate) by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Increases the &Param3& dealt by Firefly\'s Ultimate.',
+          params: [
+            'Stellar Torrent',
+            '0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%',
+            ''
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Radiance of Shattered Stars',
+          icon: 'Common_Potential_Light_1',
+          description: 'Increases the &Param4& dealt by &Param1& (Ultimate) to targets with HP below &Param2& by <color=#ec6d21>&Param3&</color>.',
+          shortDescription: 'Increases the &Param4& dealt by Firefly\'s Ultimate to targets with low HP.',
+          params: [
+            'Stellar Torrent',
+            '800000',
+            '0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%',
+            ''
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        }
+      ]
+    }
+  },
+  eleanor: {
+    id: 137,
+    name: 'Eleanor',
+    element: 'Ventus',
+    buildOrder: {
+      main: {
+        build1: {
+          title: 'Eleanor: Main Build 1',
+          description: 'An Auto Attack build that restores Tactical Energy over time to cast enhanced Cross Slash at high frequency.',
+          potentials: [
+            'Tactical Protocol: Threshold',
+            'Tactical Protocol: Detonation',
+            'Double Rifts',
+            'Battle Fury',
+            'Vortex Boost'
+          ]
+        },
+        build2: {
+          title: 'Eleanor: Main Build 2',
+          description: 'A skill build that expertly controls sentries to deal DMG in a large area to hordes of enemies.',
+          potentials: [
+            'Tactical Protocol: Overload',
+            'Tactical Protocol: Synergy',
+            'Area Volley',
+            'Zone Detection',
+            'Chain Echo'
+          ]
+        }
+      },
+      support: {
+        build1: {
+          title: 'Eleanor: Support Build 1',
+          description: 'Increases the Attack Range and the number of attacks with each jump slam, making it easy to handle waves of enemies.',
+          potentials: [
+            'Chain Detonation',
+            'Seismic Spread',
+            'Field Pull',
+            'Power Boost',
+            'Shattering Blow'
+          ]
+        },
+        build2: {
+          title: 'Eleanor: Support Build 2',
+          description: 'Summons long-lasting sentries to rapidly attack designated targets, dealing concentrated DMG to enemies in a small area.',
+          potentials: [
+            'Function Sustain',
+            'Cluster Barrage',
+            'Piercing Trajectory',
+            'Suppression Analysis',
+            'Precision Calibration'
+          ]
+        }
+      }
+    },
+    potentials: {
+      mainCore: [
+        {
+          name: 'Tactical Protocol: Threshold',
+          icon: '13701_Potential_01',
+          description: 'Cross Slash can attack 1 additional time. Increases Cross Slash\'s &Param1& by <color=#0abec5>&Param2&</color>. While Vigil is active, reduces the cooldown for gaining ##Tactical Energy#4048# for Eleanor\'s Auto Attacks by 1s.',
+          shortDescription: 'Increases the number of attacks and &Param1& of Cross Slash. Reduces the cooldown for gaining ##Tactical Energy#4048#.',
+          params: [
+            '',
+            '0.2%'
+          ],
+          rarity: 2,
+          stype: 42,
+          corner: null,
+          hints: {
+            4048: {
+              id: 4048,
+              name: 'Tactical Energy',
+              description: 'Each time Eleanor deals Auto Attack DMG, she has an 80% chance to gain 2 Tactical Energy. This can only be triggered once every 2s.'
+            }
+          }
+        },
+        {
+          name: 'Tactical Protocol: Detonation',
+          icon: '13701_Potential_02',
+          description: 'Whenever Eleanor gains or spends ##Tactical Energy#4048#, fires 1 bomb that deals AoE Ventus Auto Attack DMG equal to <color=#0abec5>&Param1&</color> of ATK and can trigger ##Ventus Mark#1017#. Reduces the ##Tactical Energy#4048# consumed by Cross Slash by 4.',
+          shortDescription: 'When ##Tactical Energy#4048# is gained or consumed, fires 1 bomb. Reduces the ##Tactical Energy#4048# consumed by Cross Slash.',
+          params: [
+            '72%/83%/94%/126%/136%/146%/167%/175%/184%/201%/216%/230%/245%'
+          ],
+          rarity: 2,
+          stype: 42,
+          corner: null,
+          hints: {
+            4048: {
+              id: 4048,
+              name: 'Tactical Energy',
+              description: 'Each time Eleanor deals Auto Attack DMG, she has an 80% chance to gain 2 Tactical Energy. This can only be triggered once every 2s.'
+            },
+            1017: {
+              id: 1017,
+              name: 'Ventus Mark',
+              description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Tactical Protocol: Overload',
+          icon: '13701_Potential_03',
+          description: 'Reduces Vigil\'s Attack Interval. When casting Cross Slash, increases Eleanor\'s &Param1& by <color=#0abec5>&Param2&</color> for &Param3&s.',
+          shortDescription: 'Reduces Vigil\'s Attack Interval. When casting Cross Slash, increases Eleanor\'s &Param1&.',
+          params: [
+            'ATK',
+            '40%',
+            '15'
+          ],
+          rarity: 2,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Tactical Protocol: Synergy',
+          icon: '13701_Potential_04',
+          description: 'When Eleanor\'s Vigil deals DMG to a target 2 times, it can deal an additional <color=#0abec5>&Param1&</color> of ATK as AoE Ventus Skill DMG. When casting Sentry Deployment (Main Skill), increases Eleanor\'s &Param2& by <color=#0abec5>&Param3&</color> for &Param4&s.',
+          shortDescription: 'Vigil can deal additional AoE Ventus Skill DMG. When casting the Main Skill, increases Eleanor\'s &Param2&.',
+          params: [
+            '193%/222%/252%/339%/366%/393%/447%/470%/493%/540%/578%/617%/656%',
+            'Aee',
+            '20%',
+            '10'
+          ],
+          rarity: 2,
+          stype: 42,
+          corner: null,
+          hints: {}
+        }
+      ],
+      mainNormal: [
+        {
+          name: 'Double Rifts',
+          icon: '13701_Potential_05',
+          description: 'Cross Slash can trigger additional explosions, dealing AoE Ventus Auto Attack DMG equal to <color=#ec6d21>&Param1&</color> of ATK. Increases Cross Slash\'s &Param2& against elite or higher-tier targets by <color=#ec6d21>&Param3&</color>.',
+          shortDescription: 'Cross Slash can trigger additional explosions. Increases Cross Slash\'s &Param2&.',
+          params: [
+            '60%/96%/132%/168%/204%/240%/276%/312%/348%',
+            '',
+            '0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Area Volley',
+          icon: '13701_Potential_08',
+          description: 'Increases Vigil\'s Attack Range and its &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Increases Vigil\'s Attack Range and its &Param1&.',
+          params: [
+            '',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Annihilation Pulse',
+          icon: 'Common_Potential_Wind_1',
+          description: 'Firestorm (Ultimate) can trigger ##Ventus Mark#1017#. Increases Eleanor\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'The Ultimate can trigger ##Ventus Mark#1017#. Increases Eleanor\'s &Param1&.',
+          params: [
+            'Aee',
+            '12%/19.2%/26.4%/33.6%/40.8%/48%/50.4%/52.8%/55.2%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {
+            1017: {
+              id: 1017,
+              name: 'Ventus Mark',
+              description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Battle Fury',
+          icon: 'Common_Potential_19',
+          description: 'When casting Cross Slash, increases Eleanor\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+          shortDescription: 'When casting Cross Slash, increases Eleanor\'s &Param1&.',
+          params: [
+            'ATK',
+            '13.5%/21.6%/29.7%/37.8%/45.9%/54%/56.7%/59.4%/62.1%',
+            '6'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Zone Detection',
+          icon: 'Common_Potential_10',
+          description: 'When casting Sentry Deployment (Main Skill), each target near Eleanor increases her &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks.',
+          shortDescription: 'When casting the Main Skill, increases Eleanor\'s &Param1&.',
+          params: [
+            'ATK',
+            '4.7%/7.5%/10.3%/13.1%/15.9%/18.7%/19.6%/20.6%/21.5%',
+            '10',
+            '3'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Flicker Sequence',
+          icon: 'Common_Potential_11',
+          description: 'Decreases Dodge cooldown by 25%. Increases Eleanor\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Decreases Dodge cooldown. Increases Eleanor\'s &Param1&.',
+          params: [
+            'ATK',
+            '7.8%/12.5%/17.2%/21.8%/26.5%/31.2%/32.8%/34.3%/35.9%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Vortex Boost',
+          icon: 'Common_Potential_Wind_1',
+          description: 'The last Auto Attack strike can trigger ##Ventus Mark#1017#. During Vigil, increases Eleanor\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'The last Auto Attack strike can trigger ##Ventus Mark#1017#. During Vigil, increases Eleanor\'s &Param1&.',
+          params: [
+            'Normal DMG',
+            '15%/24%/33%/42%/51%/60%/63%/66%/69%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {
+            1017: {
+              id: 1017,
+              name: 'Ventus Mark',
+              description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Chain Echo',
+          icon: 'Common_Potential_11',
+          description: 'When Eleanor deals Auto Attack DMG, increases her &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times. This effect can only be triggered once per sec.',
+          shortDescription: 'When Auto Attack DMG is dealt, increases Eleanor\'s &Param1&.',
+          params: [
+            'Skill DMG',
+            '3%/4.8%/6.6%/8.4%/10.2%/12%/12.6%/13.2%/13.8%',
+            '3',
+            '5'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Wind Bond',
+          icon: 'Common_Potential_Wind_1',
+          description: 'When triggering ##Ventus Mark#1017#, increases the &Param1& of all Ventus Trekkers in the squad by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'When triggering ##Ventus Mark#1017#, increases the &Param1& of all Ventus Trekkers in the squad.',
+          params: [
+            'ATK',
+            '3%/4.8%/6.6%/8.4%/10.2%/12%/13.8%/15.6%/17.4%',
+            '5',
+            '3'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {
+            1017: {
+              id: 1017,
+              name: 'Ventus Mark',
+              description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        }
+      ],
+      supportCore: [
+        {
+          name: 'Chain Detonation',
+          icon: '13701_Potential_21',
+          description: 'Increases the &Param1& of jump slam explosions from Armed Assault (Support Skill) by <color=#0abec5>&Param2&</color>. Increases the number of explosions of each jump slam by 1. Resets when the Support Skill ends.',
+          shortDescription: 'Increases the Support Skill\'s &Param1& and the number of explosions.',
+          params: [
+            '',
+            '0.71%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Seismic Spread',
+          icon: '13701_Potential_22',
+          description: 'Increases the &Param3& of jump slam explosions from Armed Assault (Support Skill) by <color=#0abec5>&Param4&</color>. When there is only 1 Support Trekker in the squad, increases the Attack Range and &Param1& of each jump slam\'s explosion. After each explosion, increases &Param1& dealt by the following jump slam explosions by <color=#0abec5>&Param2&</color>, stacking up to 9 times.',
+          shortDescription: 'Increases the Support Skill\'s &Param3&, Attack Range, and &Param1&.',
+          params: [
+            '',
+            '0.85%',
+            '',
+            '0.78%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Function Sustain',
+          icon: '13701_Potential_23',
+          description: 'Increases ##Sentries\'#4050# &Param5& by <color=#0abec5>&Param6&</color>. Each time a ##Sentry#4050# is generated, extends the duration of all existing ##Sentries#4050# on the field. Each jump slam from Armed Assault (Support Skill) increases ##Sentries\'#4050# &Param1& by <color=#0abec5>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'Increases ##Sentries\'#4050# &Param5&. Each time a ##Sentry#4050# is generated, extends the duration of all existing ##Sentries#4050# on the field. The Support Skill can increase ##Sentries\'#4050# &Param1&.',
+          params: [
+            '',
+            '0.85%',
+            '3',
+            '9',
+            '',
+            '0.01%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            4050: {
+              id: 4050,
+              name: 'Sentry',
+              description: 'Eleanor\'s unique drone, which can either protect her or be deployed for targeted attacks.'
+            }
+          }
+        },
+        {
+          name: 'Cluster Barrage',
+          icon: '13701_Potential_24',
+          description: 'When ##Sentries\'#4050# bullets deal DMG to the Main Trekker\'s target 3 times, deals an additional <color=#0abec5>&Param1&</color> of ATK as AoE Ventus Auto Attack DMG. This effect can be triggered once every 0.5s. Each ##Sentry#4050# on the field increases &Param2& of all ##Sentries#4050# on the field by <color=#0abec5>&Param3&</color>.',
+          shortDescription: '##Sentries#4050# deal additional AoE Ventus Auto Attack DMG. Each ##Sentry#4050# on the field increases &Param2& of all ##Sentries#4050# on the field.',
+          params: [
+            '117%/134%/152%/204%/220%/236%/269%/282%/296%/324%/347%/370%/394%',
+            'Atkspd_P',
+            '33%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            4050: {
+              id: 4050,
+              name: 'Sentry',
+              description: 'Eleanor\'s unique drone, which can either protect her or be deployed for targeted attacks.'
+            }
+          }
+        }
+      ],
+      supportNormal: [
+        {
+          name: 'Field Pull',
+          icon: '13701_Potential_25',
+          description: 'Increases the &Param3& of jump slam explosions from Armed Assault (Support Skill) by &Param4& and their &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Increases the Support Skill\'s &Param3& and &Param1& of its jump slam explosions.',
+          params: [
+            '',
+            '0.85%/0.85%/0.85%/0.85%/0.85%/0.85%/0.85%/0.85%/0.85%',
+            '',
+            ''
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Piercing Trajectory',
+          icon: '13701_Potential_28',
+          description: 'Increases the size of bullets fired by ##Sentries#4050#, which can penetrate targets. Increases the &Param1& of ##Sentries#4050# against elite or higher-tier targets by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Increases the size of bullets fired by ##Sentries#4050#. Increases ##Sentries\'#4050# &Param1&.',
+          params: [
+            '',
+            '0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {
+            4050: {
+              id: 4050,
+              name: 'Sentry',
+              description: 'Eleanor\'s unique drone, which can either protect her or be deployed for targeted attacks.'
+            }
+          }
+        },
+        {
+          name: 'Wind Resonance',
+          icon: 'Common_Potential_Wind_1',
+          description: 'When any Trekker in the squad triggers ##Ventus Mark#1017#, increases Eleanor\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+          shortDescription: 'When triggering ##Ventus Mark#1017#, increases Eleanor\'s &Param1&.',
+          params: [
+            'ATK',
+            '20%/32%/44%/56%/68%/80%/84%/88%/92%',
+            '3'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {
+            1017: {
+              id: 1017,
+              name: 'Ventus Mark',
+              description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Power Boost',
+          icon: 'Common_Potential_Wind_1',
+          description: 'When jump slam explosions from Armed Assault (Support Skill) deal DMG, increases Eleanor\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times. Increases the Ventus Vanguard Main Trekker\'s &Param5& by <color=#ec6d21>&Param6&</color> for &Param7&s, stacking up to &Param8& times.',
+          shortDescription: 'When jump slam explosions from the Support Skill deal DMG, increases Eleanor\'s &Param1& and the Ventus Vanguard Main Trekker\'s &Param5&.',
+          params: [
+            'Skill DMG',
+            '1%/1.6%/2.2%/2.8%/3.4%/4%/4.2%/4.4%/4.6%',
+            '3',
+            '10',
+            'Skillcritpower',
+            '1.3%/2%/2.8%/3.5%/4.3%/5%/5.3%/5.5%/5.8%',
+            '3',
+            ''
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Suppression Analysis',
+          icon: 'Common_Potential_10',
+          description: 'Increases the &Param1& ##Sentries#4050# deal to the Main Trekker\'s target by <color=#ec6d21>&Param2&</color> and Eleanor\'s &Param3& by <color=#ec6d21>&Param4&</color>.',
+          shortDescription: 'Increases ##Sentries\'#4050# &Param1& and Eleanor\'s &Param3&.',
+          params: [
+            '',
+            '0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%',
+            'ATK',
+            '18%/28.8%/39.6%/50.4%/61.2%/72%/75.6%/79.2%/82.8%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {
+            4050: {
+              id: 4050,
+              name: 'Sentry',
+              description: 'Eleanor\'s unique drone, which can either protect her or be deployed for targeted attacks.'
+            }
+          }
+        },
+        {
+          name: 'Annihilation Echo',
+          icon: 'Common_Potential_Wind_1',
+          description: 'Firestorm (Ultimate) can inflict ##Ventus Mark: Breeze#2017#. When Eleanor deals DMG to a target, increases the target\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'The Ultimate can inflict ##Ventus Mark: Breeze#2017#. When Eleanor deals DMG to a target, increases the target\'s &Param1&.',
+          params: [
+            'Aeercd',
+            '5%/8%/11%/14%/17%/20%/23%/26%/29.1%',
+            '5',
+            '3'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 2,
+          hints: {
+            2017: {
+              id: 2017,
+              name: 'Ventus Mark: Breeze',
+              description: 'A special status applied to the target by some Ventus Trekkers, lasting for 10s.\nCan be triggered by the attacks of specific Ventus Trekkers. When triggered, removes the status and activates special effects.'
+            }
+          }
+        },
+        {
+          name: 'Shattering Blow',
+          icon: 'Common_Potential_13',
+          description: 'Increases the &Param1& of jump slam explosions from Armed Assault (Support Skill) by <color=#ec6d21>&Param2&</color> and &Param3& by <color=#ec6d21>&Param4&</color>.',
+          shortDescription: 'Increases the &Param1& and &Param3& of jump slam explosions from the Support Skill.',
+          params: [
+            '',
+            '0.85%/0.85%/0.85%/0.85%/0.85%/0.85%/0.85%/0.85%/0.85%',
+            '',
+            '0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Precision Calibration',
+          icon: 'Common_Potential_Wind_1',
+          description: 'Increases ##Sentries\'#4050# &Param1& by <color=#ec6d21>&Param2&</color>. When there are 3 ##Sentries#4050# on the field, increases the Ventus Vanguard Main Trekker\'s &Param3& by <color=#ec6d21>&Param4&</color> for 10s.',
+          shortDescription: 'Increases ##Sentries\'#4050# &Param1&. ##Sentries#4050# can increase the Ventus Vanguard Main Trekker\'s &Param3&.',
+          params: [
+            '',
+            '0.01%/0.01%/0.01%/0.01%/0.01%/0.01%/0.01%/0.01%/0.01%',
+            '',
+            '0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {
+            4050: {
+              id: 4050,
+              name: 'Sentry',
+              description: 'Eleanor\'s unique drone, which can either protect her or be deployed for targeted attacks.'
+            }
+          }
+        },
+        {
+          name: 'Power Amp',
+          icon: 'Common_Potential_Wind_1',
+          description: 'When Eleanor deals DMG, increases the &Param1& of all Ventus Trekkers in the squad by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'When Eleanor deals DMG, increases the &Param1& of all Ventus Trekkers in the squad.',
+          params: [
+            'Aee',
+            '1.3%/2.1%/2.9%/3.6%/4.4%/5.2%/5.5%/5.7%/6%',
+            '5',
+            '10'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        }
+      ],
+      common: [
+        {
+          name: 'Reinforcement Command',
+          icon: '13701_Potential_41',
+          description: 'When Eleanor casts Firestorm (Ultimate), increases her &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+          shortDescription: 'When casting the Ultimate, increases Eleanor\'s &Param1&.',
+          params: [
+            'Aee',
+            '16%/25.6%/35.2%/44.8%/54.4%/64%/67.2%/70.4%/73.6%',
+            '25',
+            '1'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Purge Command',
+          icon: 'Common_Potential_Wind_1',
+          description: 'Increases Eleanor\'s &Param5& by <color=#ec6d21>&Param6&</color>. When Firestorm (Ultimate) deals DMG to a target, increases the &Param1& it deals to the target by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'Increases Eleanor\'s &Param5&. When the Ultimate deals DMG to a target, increases the &Param1& it deals.',
+          params: [
+            '',
+            '0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%',
+            '2',
+            '5',
+            'Aee',
+            '10%/16%/22%/28%/34%/40%/42%/44%/46%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Focus Command',
+          icon: 'Common_Potential_Wind_1',
+          description: 'Increases Eleanor\'s &Param5& by <color=#ec6d21>&Param6&</color>. When any Ventus Trekker in the squad casts a Main Skill or Support Skill, increases Eleanor\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'Increases Eleanor\'s &Param5&. When any Ventus Trekker in the squad casts a Main Skill or Support Skill, increases Eleanor\'s &Param1&.',
+          params: [
+            'Ultimate DMG',
+            '1.6%/2.6%/3.5%/4.5%/5.4%/6.4%/6.7%/7%/7.4%',
+            '10',
+            '5',
+            'ATK',
+            '12%/19.2%/26.4%/33.6%/40.8%/48%/50.4%/52.8%/55.2%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        }
+      ]
+    }
+  },
+  sparkla: {
+    id: 140,
+    name: 'Sparkla',
+    element: 'Terra',
+    buildOrder: {
+      main: {
+        build1: {
+          title: 'Sparkla: Main Build 1',
+          description: 'A Rabbit Pie build that switches modes to unleash sustained firepower, specializing in taking down single targets.',
+          potentials: [
+            'Bunny-Ear Volley',
+            'Click-Clack Echoes',
+            'Leap Barrage',
+            'Hover-Rail Volley',
+            'Clockwork Resonance'
+          ]
+        },
+        build2: {
+          title: 'Sparkla: Main Build 2',
+          description: 'A Rabbit Pie build that switches modes and unleashes charged bursts, specializing in clearing out groups of enemies.',
+          potentials: [
+            'Fluffy Rechamber',
+            'Neo Radiance Burst',
+            'Cyclone Dial',
+            'Ticking Aftershock',
+            'Static Strike'
+          ]
+        }
+      },
+      support: {
+        build1: {
+          title: 'Sparkla: Support Build 1',
+          description: 'A Super Action Pie build focused on enhanced burst power, dealing massive damage in a short window.',
+          potentials: [
+            'Bunny Backfire',
+            'Rolling Support',
+            'Furball Fusillade',
+            'Bunny Blitz',
+            'Gauge Overdrive'
+          ]
+        },
+        build2: {
+          title: 'Sparkla: Support Build 2',
+          description: 'A Super Action Pie build focused on endurance, allowing you to coordinate with squadmates for a relentless assault on enemies.',
+          potentials: [
+            'Covering Fire',
+            'Incendiary Volley',
+            'Bunny Munitions Boost',
+            'Rabbit\'s Watch',
+            'Pressure Surge'
+          ]
+        }
+      }
+    },
+    potentials: {
+      mainCore: [
+        {
+          name: 'Bunny-Ear Volley',
+          icon: '14001_Potential_01',
+          description: 'When Sparkla is in ##Bunny Rapid Fire Mode#4034#, activates Bunny Rapid Fire to unleash a hail of fire on the target, dealing <color=#0abec5>&Param1& of ATK x7</color> as Terra Skill DMG. Can trigger ##Terra Mark#1020#.\nBunny Rapid Fire has a Cooldown of 3s.\nWhen in an All-Terra squad, increases Bunny Rapid Fire\'s &Param2& by <color=#0abec5>&Param3&</color>.',
+          shortDescription: 'When Sparkla is in ##Bunny Rapid Fire Mode#4034#, activates Bunny Rapid Fire to deal damage. Can trigger ##Terra Mark#1020#.\nWhen in an All-Terra squad, increases Bunny Rapid Fire\'s &Param2&.',
+          params: [
+            '48%/55%/62%/83%/90%/97%/110%/116%/121%/133%/142%/152%/161%',
+            '',
+            '0.57%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            4034: {
+              id: 4034,
+              name: 'Bunny Rapid Fire Mode',
+              description: 'Hold the Main Skill Button to enter a rapid attack mode that deals multiple instances of DMG over a period of time.'
+            },
+            1020: {
+              id: 1020,
+              name: 'Terra Mark',
+              description: 'The generic name for all Terra Marks.\nWhen triggered by specific Terra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Click-Clack Echoes',
+          icon: '14001_Potential_02',
+          description: 'Increases the &Param4& of ##Bunny Rapid Fire Mode#4034# by <color=#0abec5>&Param5&</color>.\nWhen Sparkla deals damage with ##Bunny Rapid Fire Mode#4034# to a target, inflicts 1 stack of Stellar Crystal. At <color=#0abec5>&Param1&</color> stacks, the target becomes Stellar Crystallized for <color=#0abec5>&Param2&</color>s.\nStellar Crystallized target will be <color=#0abec5>stunned</color> and immune to Stellar Crystal.\nWhen Sparkla deals damage with ##Bunny Rapid Fire Mode#4034# to a Stellar Crystallized target, deals an additional <color=#0abec5>&Param3&</color> of ATK as Terra Skill DMG. Can trigger ##Terra Mark#1020#.',
+          shortDescription: 'Increases the &Param4& of ##Bunny Rapid Fire Mode#4034#.\nWhen Sparkla deals damage with ##Bunny Rapid Fire Mode#4034# to a target, inflicts Stellar Crystal. At full stack, the target becomes Stellar Crystallized.\nStellar Crystallized target will be stunned and immune to Stellar Crystal.\nWhen Sparkla deals damage with ##Bunny Rapid Fire Mode#4034# to a Stellar Crystallized target, deals additional damage. Can trigger ##Terra Mark#1020#.',
+          params: [
+            '20',
+            '5',
+            '64%/73%/83%/111%/120%/129%/147%/154%/162%/177%/190%/203%/215%',
+            '',
+            '0.57%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            4034: {
+              id: 4034,
+              name: 'Bunny Rapid Fire Mode',
+              description: 'Hold the Main Skill Button to enter a rapid attack mode that deals multiple instances of DMG over a period of time.'
+            },
+            1020: {
+              id: 1020,
+              name: 'Terra Mark',
+              description: 'The generic name for all Terra Marks.\nWhen triggered by specific Terra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Fluffy Rechamber',
+          icon: '14001_Potential_03',
+          description: 'When Sparkla is in ##Bunny Jaws Mode#4033#, activates Bunny Roar. After a brief charge-up, deals <color=#0abec5>&Param1& of ATK</color> as AoE Terra Skill DMG. Can trigger ##Terra Mark#1020#.\nWhen channeling Bunny Roar, Sparkla cannot move or dodge. Sparkla can only cast Bunny Roar once while in ##Bunny Jaws Mode#4033#.\nWhen in an All-Terra squad, Sparkla gains a shield equal to <color=#0abec5>&Param2&</color> of her Base HP while Bunny Roar is active, and increases the &Param3& of Bunny Jaws Mode by <color=#0abec5>&Param4&</color>.',
+          shortDescription: 'When Sparkla is in ##Bunny Jaws Mode#4033#, activates Bunny Roar to deal damage. Can trigger ##Terra Mark#1020#.\nWhen channeling Bunny Roar, Sparkla cannot move or dodge.\nWhen in an All-Terra squad, Sparkla gains a shield while Bunny Roar is active and increases the &Param3& of Bunny Roar.',
+          params: [
+            '243%/280%/316%/425%/459%/493%/561%/591%/620%/678%/727%/775%/824%',
+            '20%',
+            '',
+            '0.57%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            4033: {
+              id: 4033,
+              name: 'Bunny Jaws Mode',
+              description: 'Select the Main Skill Button to enter a slow attack mode that deals AoE DMG for a period of time.'
+            },
+            1020: {
+              id: 1020,
+              name: 'Terra Mark',
+              description: 'The generic name for all Terra Marks.\nWhen triggered by specific Terra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Neo Radiance Burst',
+          icon: '14001_Potential_04',
+          description: 'Increases the &Param1& of ##Bunny Jaws Mode#4033# by <color=#0abec5>&Param2&</color>.\nWhen Sparkla is in ##Bunny Jaws Mode#4033#, gains <color=#0abec5>1</color> bottle of Instant Neo Solution every 2s.\nWhen in ##Bunny Jaws Mode#4033#, Sparkla can consume up to <color=#0abec5>2</color> bottles of Instant Neo Solution to fire additional shells, each solution can generate <color=#0abec5>1</color> shell.\nWhen ##Bunny Jaws Mode#4033# ends, nullifies all Instant Neo Solution.',
+          shortDescription: 'Increases the &Param1& of ##Bunny Jaws Mode#4033#.\nWhen Sparkla is in ##Bunny Jaws Mode#4033#, gains Instant Neo Solution over time. When in ##Bunny Jaws Mode#4033#, Sparkla can consume Instant Neo Solution to fire additional shells.\nWhen ##Bunny Jaws Mode#4033# ends, nullifies all Instant Neo Solution.',
+          params: [
+            '',
+            '0.57%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            4033: {
+              id: 4033,
+              name: 'Bunny Jaws Mode',
+              description: 'Select the Main Skill Button to enter a slow attack mode that deals AoE DMG for a period of time.'
+            }
+          }
+        }
+      ],
+      mainNormal: [
+        {
+          name: 'Leap Barrage',
+          icon: 'Common_Potential_Fire_1',
+          description: 'When Sparkla triggers ##Terra Mark#1020# in ##Bunny Rapid Fire Mode#4034#, increases her &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks.',
+          shortDescription: 'When Sparkla triggers ##Terra Mark#1020# in ##Bunny Rapid Fire Mode#4034#, increases her &Param1&.',
+          params: [
+            'ATK',
+            '4%/6.4%/8.8%/11.2%/13.6%/16%/18.4%/20.8%/23.2%',
+            '10',
+            '5'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {
+            1020: {
+              id: 1020,
+              name: 'Terra Mark',
+              description: 'The generic name for all Terra Marks.\nWhen triggered by specific Terra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            },
+            4034: {
+              id: 4034,
+              name: 'Bunny Rapid Fire Mode',
+              description: 'Hold the Main Skill Button to enter a rapid attack mode that deals multiple instances of DMG over a period of time.'
+            }
+          }
+        },
+        {
+          name: 'Cyclone Dial',
+          icon: '14001_Potential_08',
+          description: 'When Sparkla is in ##Bunny Jaws Mode#4033#, each shot deals <color=#ec6d21>&Param1& of ATK</color> as AoE Terra Skill DMG to enemies in front and knocks them back. Can trigger ##Terra Mark#1020#.\nWhen casting Bunny Roar, each shot deals <color=#ec6d21>&Param2& of ATK</color> as AoE Terra Skill DMG to enemies in front and knocks them back. Can trigger ##Terra Mark#1020#.',
+          shortDescription: 'When Sparkla is in ##Bunny Jaws Mode#4033#, each shot deals damage to enemies in front and knocks them back. Can trigger ##Terra Mark#1020#.',
+          params: [
+            '23%/38%/52%/66%/81%/95%/109%/124%/138%',
+            '289%/462%/636%/809%/982%/1156%/1329%/1502%/1676%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {
+            4033: {
+              id: 4033,
+              name: 'Bunny Jaws Mode',
+              description: 'Select the Main Skill Button to enter a slow attack mode that deals AoE DMG for a period of time.'
+            },
+            1020: {
+              id: 1020,
+              name: 'Terra Mark',
+              description: 'The generic name for all Terra Marks.\nWhen triggered by specific Terra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Harmonic Barrage',
+          icon: '14001_Potential_11',
+          description: 'When Sparkla casts the Main Skill to transform, increases her &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.\nWhen the transformation ends, deals <color=#ec6d21>&Param4&</color> of ATK as AoE Terra Skill DMG to up to 6 nearby targets. Can trigger ##Terra Mark#1020#.',
+          shortDescription: 'When Sparkla casts the Main Skill to transform, increases her &Param1&.\nWhen the transformation ends, deals DMG to nearby targets. Can trigger ##Terra Mark#1020#.',
+          params: [
+            'ATK',
+            '13%/21%/29%/37%/45%/53%/61%/69%/77%',
+            '12',
+            '94%/151%/208%/265%/321%/378%/435%/491%/548%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {
+            1020: {
+              id: 1020,
+              name: 'Terra Mark',
+              description: 'The generic name for all Terra Marks.\nWhen triggered by specific Terra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Hover-Rail Volley',
+          icon: '14001_Potential_06',
+          description: '##Bunny Rapid Fire Mode#4034# allows Sparkla to levitate. She can attack the target while dashing, and her &Param1& is increased by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: '##Bunny Rapid Fire Mode#4034# allows Sparkla to levitate. She can attack the target while dashing, and her &Param1& is increased.',
+          params: [
+            'Skill DMG',
+            '31%/50%/69%/87%/106%/125%/143%/162%/181%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 2,
+          hints: {
+            4034: {
+              id: 4034,
+              name: 'Bunny Rapid Fire Mode',
+              description: 'Hold the Main Skill Button to enter a rapid attack mode that deals multiple instances of DMG over a period of time.'
+            }
+          }
+        },
+        {
+          name: 'Ticking Aftershock',
+          icon: '14001_Potential_09',
+          description: 'When Sparkla is in ##Bunny Jaws Mode#4033#, gains Super Armor and increases own &Param2& by <color=#ec6d21>&Param3&</color>.\nAfter the shells fired in ##Bunny Jaws Mode#4033# explode, 5 Booby Traps are randomly deployed within the blast radius, each Booby Trap dealing <color=#ec6d21>&Param1& of ATK</color> as Terra Skill DMG. Can trigger ##Terra Mark#1020#.\nShells fired by Bunny Roar scatter 10 Booby Traps over a much larger area.',
+          shortDescription: 'When Sparkla is in ##Bunny Jaws Mode#4033#, gains Super Armor and increases own &Param2&.\nAfter the shells fired in ##Bunny Jaws Mode#4033# explode, Booby Traps are randomly deployed within the blast radius. The traps can deal damage and trigger ##Terra Mark#1020#.',
+          params: [
+            '21%/33%/46%/59%/72%/84%/97%/110%/122%',
+            '',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 2,
+          hints: {
+            4033: {
+              id: 4033,
+              name: 'Bunny Jaws Mode',
+              description: 'Select the Main Skill Button to enter a slow attack mode that deals AoE DMG for a period of time.'
+            },
+            1020: {
+              id: 1020,
+              name: 'Terra Mark',
+              description: 'The generic name for all Terra Marks.\nWhen triggered by specific Terra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Velvet Prowl',
+          icon: 'Common_Potential_13',
+          description: 'Sparkla can dodge one more time.\nAfter dodging, increases Sparkla\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.\nThis effect can only be triggered once every &Param4&s.',
+          shortDescription: 'Sparkla can dodge one more time.\nAfter dodging, increases Sparkla\'s &Param1&.',
+          params: [
+            'ATK',
+            '10%/17%/23%/29%/35%/41%/48%/54%/60%',
+            '6',
+            '10'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Clockwork Resonance',
+          icon: 'Common_Potential_13',
+          description: 'Each Sparkla\'s skill cast increases Sparkla\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks.',
+          shortDescription: 'Each Sparkla\'s skill cast increases Sparkla\'s &Param1&.',
+          params: [
+            'Skill DMG',
+            '2.6%/4.2%/5.8%/7.4%/9%/10.6%/12.2%/13.8%/15.4%',
+            '7',
+            '10'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Static Strike',
+          icon: 'Common_Potential_4',
+          description: 'When Sparkla enters ##Bunny Jaws Mode#4033#, gains a shield equal to <color=#ec6d21>&Param1&</color> of her Base HP for &Param2&s.\nWhen Sparkla remains stationary in ##Bunny Jaws Mode#4033#, increases her &Param4& by <color=#ec6d21>&Param5&</color> every &Param3&s for a total of &Param6&s, up to &Param7& stacks.',
+          shortDescription: 'When Sparkla enters ##Bunny Jaws Mode#4033#, gains a shield.\nWhen Sparkla remains stationary in ##Bunny Jaws Mode#4033#, increases her &Param4&.',
+          params: [
+            '7%/10%/12%/14%/17%/19%/22%/24%/26%',
+            '10/10/10/10/10/10/10/10/10',
+            '1',
+            'ATK',
+            '4.5%/7.2%/9.9%/12.6%/15.3%/18%/20.7%/23.4%/26.1%',
+            '5',
+            '5'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {
+            4033: {
+              id: 4033,
+              name: 'Bunny Jaws Mode',
+              description: 'Select the Main Skill Button to enter a slow attack mode that deals AoE DMG for a period of time.'
+            }
+          }
+        },
+        {
+          name: 'Prism Convergence',
+          icon: 'Common_Potential_10',
+          description: 'Increases Sparkla\'s &Param1& to distant targets by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Increases Sparkla\'s &Param1& to distant targets.',
+          params: [
+            '',
+            '0.19%/0.19%/0.19%/0.19%/0.19%/0.19%/0.19%/0.19%/0.19%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        }
+      ],
+      supportCore: [
+        {
+          name: 'Bunny Backfire',
+          icon: '14001_Potential_21',
+          description: 'When Sparkla casts &Param1& (Support Skill) in an all-Terra squad, the doll also fires a Bunny Firework, bringing the total to <color=#0abec5>3</color> per volley.\nIncreases the Support Skill\'s &Param2& by <color=#0abec5>&Param3&</color>.',
+          shortDescription: 'Increases the &Param2& of the Support Skill.\nWhen Sparkla casts the Support Skill in an all-Terra squad, increases the number of Bunny Fireworks fired per volley.',
+          params: [
+            'Homing Bunny Volley',
+            '',
+            '0.57%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Rolling Support',
+          icon: '14001_Potential_22',
+          description: 'When casting &Param1& (Support Skill), Sparkla gains Energy each time a Bunny Firework is fired.\nWhen the Support Skill ends, Sparkla consumes all Energy, with each point increasing her &Param2& by <color=#0abec5>&Param3&</color> for &Param4&s.\nShe then charges toward the target in her chair, dealing <color=#0abec5>&Param5&</color> of ATK as Terra Skill DMG and inflicting Bleeding, which deals DMG to the target once every 0.3s for 3s, dealing <color=#0abec5>&Param6&</color> of ATK as Terra Skill DMG in total.',
+          shortDescription: 'When casting the Bunny Firework, Sparkla gains Energy each time a rocket is fired.\nWhen the Support Skill ends, Sparkla consumes all Energy to increase her &Param2&.\nShe then charges toward the target in her wheelchair, dealing damage.',
+          params: [
+            'Homing Bunny Volley',
+            'Skill DMG',
+            '1.2%',
+            '5',
+            '61%/70%/79%/107%/115%/124%/141%/148%/156%/170%/182%/195%/207%',
+            '73%/84%/95%/128%/138%/149%/169%/178%/187%/204%/219%/234%/248%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Covering Fire',
+          icon: '14001_Potential_23',
+          description: 'Increases Sparkla\'s &Param4& by <color=#0abec5>&Param5&</color>.\nWhen &Param1& (Support Skill) ends, Sparkla follows the Terra Main Trekker for <color=#0abec5>&Param2&</color>s and provides fire support, dealing <color=#0abec5>&Param3&</color> of ATK as Terra Auto Attack DMG to the target.',
+          shortDescription: 'Increases Sparkla\'s &Param4&.\nWhen the Support Skill ends, Sparkla follows the Terra Main Trekker and provides fire support, dealing DMG to the target.',
+          params: [
+            'Homing Bunny Volley',
+            '8',
+            '94%/108%/122%/165%/178%/191%/217%/229%/240%/263%/282%/300%/319%',
+            '',
+            '0.56%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Incendiary Volley',
+          icon: '14001_Potential_24',
+          description: 'When Sparkla is on the battlefield, deals <color=#0abec5>&Param2&</color> of ATK as AoE Terra Auto Attack DMG to targets every 3.5s.\nFor each Terra Trekker in the squad, increases the &Param3& of this effect by <color=#0abec5>&Param4&</color>.',
+          shortDescription: 'When Sparkla is on the battlefield, deals DMG to targets every few seconds.\nFor each Terra Trekker in the squad, increases this DMG.',
+          params: [
+            '',
+            '20%/24%/27%/36%/39%/42%/48%/50%/53%/58%/62%/66%/70%',
+            '',
+            '0.56%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        }
+      ],
+      supportNormal: [
+        {
+          name: 'Furball Fusillade',
+          icon: '14001_Potential_25',
+          description: 'When Sparkla casts &Param1& (Support Skill), deals <color=#ec6d21>&Param2&</color> of ATK as AoE Terra Skill DMG to nearby targets.',
+          shortDescription: 'When Sparkla casts the Support Skill, deals DMG to nearby targets.',
+          params: [
+            'Homing Bunny Volley',
+            '36%/58%/80%/102%/124%/146%/168%/190%/212%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Bunny Munitions Boost',
+          icon: '14001_Potential_28',
+          description: 'Sparkla\'s bullets can pierce through targets, and their &Param1& is increased by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Sparkla\'s bullets can pierce through targets, and their &Param1& is increased.',
+          params: [
+            '',
+            '0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Artisan\'s Pride',
+          icon: 'Common_Potential_13',
+          description: 'Increases Sparkla\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Increases Sparkla\'s &Param1&.',
+          params: [
+            'ATK',
+            '15%/24%/33%/42%/51%/60%/69%/78%/87%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Bunny Blitz',
+          icon: 'Common_Potential_13',
+          description: 'When Sparkla casts &Param1& (Support Skill), increases her &Param2& by <color=#ec6d21>&Param3&</color> for &Param4&s.',
+          shortDescription: 'When Sparkla casts the Support Skill, increases her &Param2&.',
+          params: [
+            'Homing Bunny Volley',
+            'ATK',
+            '20%/32%/44%/56%/68%/80%/92%/104%/116%',
+            '10'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Rabbit\'s Watch',
+          icon: 'Common_Potential_19',
+          description: 'While Sparkla is on the battlefield, increases her &Param1& by <color=#ec6d21>&Param2&</color> per second, up to &Param3& stacks.\nThis effect will be removed when she leaves the battlefield.',
+          shortDescription: 'While Sparkla is on the battlefield, increases her &Param1& over time.\nThis effect will be removed when she leaves the battlefield.',
+          params: [
+            'Normal DMG',
+            '0.7%/1.1%/1.5%/1.9%/2.3%/2.8%/3.2%/3.6%/4%',
+            '15'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Prodigy\'s Oath',
+          icon: 'Common_Potential_13',
+          description: 'Increases Sparkla\'s &Param2& by &Param3&.\nWhen &Param1& (Ultimate) ends, increases Sparkla\'s &Param4& by <color=#ec6d21>&Param5&</color> for &Param6&s.',
+          shortDescription: 'Increases Sparkla\'s &Param2&.\nWhen her Ultimate ends, increases Sparkla\'s &Param4&.',
+          params: [
+            '{\'10\': {\'13\': {\'13\': 8531309110059887724, \'12\': 875637868, \'6\': [52, 48, 48]}}, \'13\': 8392569317801421940}',
+            'Skill DMG',
+            '20%',
+            'See',
+            '24%/38.4%/52.8%/67.2%/81.6%/96%/110.4%/124.8%/139.2%',
+            '15'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Gauge Overdrive',
+          icon: 'Common_Potential_Fire_1',
+          description: 'When Bunny Firework triggers a ##Terra Mark#1020#, increases Sparkla\'s &Param2& by <color=#ec6d21>&Param3&</color> for &Param4&s, up to &Param5& stacks.',
+          shortDescription: 'When the Bunny Firework triggers a ##Terra Mark#1020#, increases Sparkla\'s &Param2&.',
+          params: [
+            'Homing Bunny Volley',
+            'See',
+            '4.2%/6.7%/9.3%/11.8%/14.3%/16.9%/19.4%/22%/24.5%',
+            '7',
+            '10'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {
+            1020: {
+              id: 1020,
+              name: 'Terra Mark',
+              description: 'The generic name for all Terra Marks.\nWhen triggered by specific Terra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Pressure Surge',
+          icon: 'Common_Potential_13',
+          description: 'When &Param1& (Support Skill) ends, increases Sparkla\'s &Param2& by <color=#ec6d21>&Param3&</color> for &Param4&s.',
+          shortDescription: 'When the Support Skill ends, increases Sparkla\'s &Param2&.',
+          params: [
+            'Homing Bunny Volley',
+            'Normal DMG',
+            '16.7%/26.8%/36.8%/46.9%/56.9%/67%/77%/87.1%/97.1%',
+            '8'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Max Overclock',
+          icon: 'Common_Potential_Earth_1',
+          description: 'Increases the &Param1& of Terra Trekkers in the squad by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Increases the &Param1& of Terra Trekkers in the squad.',
+          params: [
+            'Skill DMG',
+            '7.5%/12%/16.5%/21%/25.5%/30%/34.5%/39%/43.5%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        }
+      ],
+      common: [
+        {
+          name: 'Solution Support',
+          icon: '14001_Potential_41',
+          description: 'When &Param1& (Ultimate) ends, drops 3 bottles of Potent Neo Solution on the ground. The Main Trekker can absorb them on contact, with each bottle increasing their &Param2& by <color=#ec6d21>&Param3&</color> for &Param4&s.\nWhen a Terra Trekker absorbs 3 bottles of Potent Neo Solution and deals Auto Attack DMG, Sparkla deals an additional <color=#ec6d21>&Param5&</color> of her ATK as Terra Ultimate DMG. This effect can only be triggered once every &Param6&s.',
+          shortDescription: 'When the Ultimate ends, drops bottles of Potent Neo Solution on the ground. When the Main Trekker absorbs them, increases their &Param2&.\nWhen a Terra Trekker absorbs 3 bottles of Potent Neo Solution and deals Auto Attack DMG, Sparkla deals additional DMG.',
+          params: [
+            '{\'10\': {\'13\': {\'13\': 8531309110059887724, \'12\': 875637868, \'6\': [52, 48, 48]}}, \'13\': 8392569317801421940}',
+            'ATK',
+            '7%/11%/16%/20%/24%/29%/33%/37%/42%',
+            '10',
+            '86%/137%/189%/240%/292%/343%/394%/446%/497%',
+            '0.5'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Wonderland Bound',
+          icon: '14001_Potential_42',
+          description: 'Increases the Attack Range of the Bunny Firework Cannon fired by &Param1& (Ultimate). Instantly eliminates normal targets within range, and inflicts Bleeding on elite and boss targets. Deals DMG to the target once per second for &Param2&s, dealing <color=#ec6d21>&Param3& of ATK</color> as Terra Mark Ultimate DMG in total.',
+          shortDescription: 'Increases the Attack Range of the Bunny Firework Cannon fired by the Ultimate. Instantly eliminates normal targets within range and deals damage to elite and boss targets over time.',
+          params: [
+            '{\'10\': {\'13\': {\'13\': 8531309110059887724, \'12\': 875637868, \'6\': [52, 48, 48]}}, \'13\': 8392569317801421940}',
+            '10',
+            '178%/285%/391%/498%/605%/711%/818%/925%/1031%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Leap of Finale',
+          icon: '14001_Potential_43',
+          description: 'When &Param1& (Ultimate) triggers ##Terra Mark#1020#, increases the &Param2& of this Ultimate by <color=#ec6d21>&Param3&</color>,  stacking up to &Param4& times.',
+          shortDescription: 'When the Ultimate triggers ##Terra Mark#1020#, increases the &Param2& of this Ultimate.',
+          params: [
+            '{\'10\': {\'13\': {\'13\': 8531309110059887724, \'12\': 875637868, \'6\': [52, 48, 48]}}, \'13\': 8392569317801421940}',
+            'Ultimate DMG',
+            '3%/5%/7%/9%/11%/13%/15%/17%/19%',
+            '7'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {
+            1020: {
+              id: 1020,
+              name: 'Terra Mark',
+              description: 'The generic name for all Terra Marks.\nWhen triggered by specific Terra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        }
+      ]
+    }
+  },
+  otoha: {
+    id: 145,
+    name: 'Otoha',
+    element: 'Umbra',
+    buildOrder: {
+      main: {
+        build1: {
+          title: 'Otoha: Main Build 1',
+          description: 'A build that reduces Ultimate cooldown, enabling frequent Ultimate use.',
+          potentials: [
+            'Subtle Tremor',
+            'Hymn of Gloom',
+            'Umbral Depth',
+            'Cycle of Four Seasons',
+            'Shadow Soulknell'
+          ]
+        },
+        build2: {
+          title: 'Otoha: Main Build 2',
+          description: 'A build that increases stack count and hit frequency to boost Skill DMG.',
+          potentials: [
+            'Solemn Echo',
+            'Petal-Shower Grace',
+            'Twilight Gleam',
+            'Duskfall',
+            'Fading Candle Flame'
+          ]
+        }
+      },
+      support: {
+        build1: {
+          title: 'Otoha: Support Build 1',
+          description: 'A build that combines sustained Support DMG with frequent Ultimate use.',
+          potentials: [
+            'Lonely Twin Shadows',
+            'Night-Walker',
+            'Solitary Lantern',
+            'Without A Trace',
+            'Hollow Steps'
+          ]
+        },
+        build2: {
+          title: 'Otoha: Support Build 2',
+          description: 'A Skill-focused build centered on high burst DMG and concentrated attacks.',
+          potentials: [
+            'Ripple of Shadow',
+            'Evening Rain',
+            'Rain-Woven Sorrow',
+            'Bone-Chilling Rain',
+            'Inevitable End'
+          ]
+        }
+      }
+    },
+    potentials: {
+      mainCore: [
+        {
+          name: 'Subtle Tremor',
+          icon: '14501_Potential_01',
+          description: 'When shooting with Nightbloom (Main Skill), it summons Doomfall <color=#0abec5>3</color> times, each dealing <color=#0abec5>&Param1&</color> of ATK as AoE Umbra Ultimate DMG, and triggering ##Umbra Mark#1019#.\nUpon summoning Doomfall, reduces Ultimate Cooldown by <color=#0abec5>&Param2&</color>s and gains <color=#0abec5>&Param3&</color> Energy. This effect can only be triggered once every 1s.',
+          shortDescription: 'When shooting with Nightbloom (Main Skill), summons Doomfall multiple times. Can trigger ##Umbra Mark#1019#. Upon summoning Doomfall, reduces Ultimate Cooldown and gains Energy.',
+          params: [
+            '22%/25%/28%/38%/41%/44%/50%/53%/56%/61%/65%/70%/74%',
+            '1',
+            '7'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            1019: {
+              id: 1019,
+              name: 'Umbra Mark',
+              description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Hymn of Gloom',
+          icon: '14501_Potential_02',
+          description: 'Moving with Nightbloom (Main Skill) knocks back nearby targets and gains a Shield equal to <color=#0abec5>&Param1&</color> of Base Max HP for <color=#0abec5>&Param2&</color>s. While the Shield lasts, gains <color=#0abec5>&Param3&</color> Energy every 1s and summons Doomfall, each dealing <color=#0abec5>&Param4&</color> of ATK as AoE Umbra Ultimate DMG.',
+          shortDescription: 'Moving with Nightbloom (Main Skill) knocks back nearby targets and gains a Shield. While the Shield lasts, continuously gains Energy and summons Doomfall.',
+          params: [
+            '',
+            '',
+            '7',
+            '22%/25%/28%/38%/41%/44%/50%/53%/56%/61%/65%/70%/74%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Solemn Echo',
+          icon: '14501_Potential_03',
+          description: 'Bullets fired with Nightbloom (Main Skill) can ricochet <color=#0abec5>2</color> more times.',
+          shortDescription: 'Bullets fired with Nightbloom (Main Skill) can ricochet multiple additional times.',
+          params: [],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Petal-Shower Grace',
+          icon: '14501_Potential_04',
+          description: 'The explosion of bullets fired with Nightbloom (Main Skill) generates 8 small bullets, each dealing <color=#0abec5>&Param1&</color> of ATK as AoE Umbra Skill DMG.',
+          shortDescription: 'The explosion of bullets fired with Nightbloom (Main Skill) can generate multiple small bullets.',
+          params: [
+            '12%/14%/16%/21%/23%/25%/28%/30%/31%/34%/37%/39%/42%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        }
+      ],
+      mainNormal: [
+        {
+          name: 'Umbral Depth',
+          icon: 'Common_Potential_Dark_1',
+          description: 'Upon dealing Auto Attack DMG &Param1& times, summons Doomfall to deal <color=#ec6d21>&Param2&</color> of ATK as AoE Umbra Ultimate DMG. This effect can only be triggered once every 2s.',
+          shortDescription: 'Dealing Auto Attack DMG summons Doomfall.',
+          params: [
+            '5',
+            '14%/22%/31%/40%/48%/57%/65%/74%/82%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Twilight Gleam',
+          icon: 'Common_Potential_Light_1',
+          description: 'Increases the uses of Nightbloom (Main Skill) by 1. When casting the Main Skill, increases Otoha\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'Increases the uses of Nightbloom (Main Skill). When casting the Main Skill, increases Otoha\'s &Param1&.',
+          params: [
+            'Dee',
+            '8%/12%/17%/21%/26%/30%/35%/39%/44%',
+            '5',
+            '2'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Bewitching Phantom',
+          icon: 'Common_Potential_13',
+          description: 'Otoha can dodge one more time.\nWhen dodging, increases her &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+          shortDescription: 'Increases Otoha\'s dodges. When dodging, increases her &Param1&.',
+          params: [
+            'ATK',
+            '9.3%/14.9%/20.5%/26.1%/31.7%/37.3%/42.9%/48.5%/54.1%',
+            '4'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Cycle of Four Seasons',
+          icon: 'Common_Potential_13',
+          description: 'Otoha\'s Auto Attack increases &Param1& by <color=#ec6d21>&Param2&</color> and &Param3& by <color=#ec6d21>&Param4&</color> for &Param5&s, stacking up to &Param6& times.',
+          shortDescription: 'Otoha\'s Auto Attack increases &Param1& and &Param3&.',
+          params: [
+            'Normal DMG',
+            '4.6%/6.1%/7.6%/9.1%/10.6%/12.1%/13.6%/15.1%/16.6%',
+            'Ultimate DMG',
+            '8.4%/11.2%/14%/16.8%/19.6%/22.4%/25.2%/28%/30.8%',
+            '5',
+            '10'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Duskfall',
+          icon: 'Common_Potential_Dark_1',
+          description: 'Increases &Param1& dealt by Nightbloom (Main Skill) against targets inflicted with ##Dark Shackles#2020# by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Increases &Param1& dealt by Nightbloom (Main Skill) against targets inflicted with ##Dark Shackles#2020#.',
+          params: [
+            '',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {
+            2020: {
+              id: 2020,
+              name: 'Dark Shackles'
+            }
+          }
+        },
+        {
+          name: 'Night Tide Rush',
+          icon: 'Common_Potential_Water_1',
+          description: 'Void Blossom (Ultimate) triggers ##Umbra Mark#1019#. Increases Otoha\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Void Blossom (Ultimate) triggers ##Umbra Mark#1019#. Increases Otoha\'s &Param1&.',
+          params: [
+            'ATK',
+            '12%/19%/26%/34%/41%/48%/55%/62%/70%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {
+            1019: {
+              id: 1019,
+              name: 'Umbra Mark',
+              description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Shadow Soulknell',
+          icon: 'Common_Potential_Dark_1',
+          description: 'When casting Nightbloom (Main Skill), increases Otoha\'s &Param1& by <color=#ec6d21>&Param2&</color> and &Param3& by <color=#ec6d21>&Param4&</color> for &Param5&s.',
+          shortDescription: 'When casting Nightbloom (Main Skill), increases Otoha\'s &Param1&.',
+          params: [
+            'Atkspd_P',
+            '10%/15%/20%/25%/30%/35%/36%/37%/38%',
+            'Dee',
+            '8.8%/14%/19%/25%/30%/35%/41%/46%/51%',
+            '8'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Fading Candle Flame',
+          icon: 'Common_Potential_Fire_1',
+          description: 'Immune to DMG while moving during Nightbloom (Main Skill). Increases Otoha\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Immune to DMG while moving during Nightbloom (Main Skill). Increases Otoha\'s &Param1&.',
+          params: [
+            'ATK',
+            '12%/19%/26%/34%/41%/48%/55%/62%/70%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Shadow Blossom',
+          icon: 'Common_Potential_Dark_1',
+          description: 'When Otoha triggers an ##Umbra Mark#1019#, increases her &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'When Otoha triggers an ##Umbra Mark#1019#, increases her &Param1&.',
+          params: [
+            'Dee',
+            '8%/12%/17%/21%/26%/30%/35%/39%/44%',
+            '4',
+            '2'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {
+            1019: {
+              id: 1019,
+              name: 'Umbra Mark',
+              description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        }
+      ],
+      supportCore: [
+        {
+          name: 'Lonely Twin Shadows',
+          icon: '14501_Potential_21',
+          description: 'Increases Soul Rend duration to <color=#0abec5>&Param1&</color>s.\nWhen Otoha deals Ultimate DMG, reduces Ultimate Cooldown by <color=#0abec5>&Param2&</color>s and gain <color=#0abec5>&Param3&</color> Energy. This effect can be triggered once every 1s.\nIncreases Otoha\'s &Param4& by <color=#0abec5>&Param5&</color> and &Param6& by <color=#0abec5>&Param7&</color>.',
+          shortDescription: 'Increases Soul Rend duration. When Otoha deals Ultimate DMG, reduces Ultimate Cooldown and gains Energy. Increases Otoha\'s &Param4& and &Param6&.',
+          params: [
+            '11',
+            '1.2',
+            '9',
+            'Ultimate DMG',
+            '32.2%',
+            'Ultracritrate',
+            '5%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Night-Walker',
+          icon: '14501_Potential_22',
+          description: 'When the Main Umbra Trekker deals DMG to a target with Soul Rend, Otoha summons Doomfall, dealing <color=#0abec5>&Param1&</color> of ATK as AoE Umbra Ultimate DMG and gaining <color=#0abec5>&Param2&</color> Energy. This effect can be triggered once every 1s.\nIncreases Otoha\'s &Param3& by <color=#0abec5>&Param4&</color> and &Param5& by <color=#0abec5>&Param6&</color>.',
+          shortDescription: 'When the Main Umbra Trekker deals DMG to a target with Soul Rend, Otoha summons Doomfall, dealing AoE DMG and gaining Energy. Increases Otoha\'s &Param3& and &Param5&.',
+          params: [
+            '110%/126%/143%/192%/207%/223%/253%/267%/280%/306%/328%/350%/372%',
+            '9',
+            'Ultimate DMG',
+            '14%',
+            'Ultracritrate',
+            '10%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Ripple of Shadow',
+          icon: '14501_Potential_23',
+          description: 'When Weeping Sky advances, summons <color=#0abec5>10</color> additional bombardments to deal <color=#0abec5>&Param1&</color> of ATK as AoE Umbra Skill DMG. Bombardments have a <color=#0abec5>&Param2&</color> chance to deal DMG <color=#0abec5>2</color> times. Each bombardment generated during this skill increases this chance by <color=#0abec5>&Param3&</color>.\nIncreases &Param4& dealt by Weeping Sky by <color=#0abec5>&Param5&</color>. Increases Otoha\'s &Param6& by <color=#0abec5>&Param7&</color>.',
+          shortDescription: 'When Weeping Sky advances, summons additional bombardments to deal AoE DMG. Bombardments have a chance to deal DMG multiple times. Increases &Param4& dealt by Weeping Sky. Increases Otoha\'s &Param6&.',
+          params: [
+            '29%/33%/38%/51%/55%/59%/67%/71%/74%/82%/87%/93%/99%',
+            '10000',
+            '50000',
+            '',
+            '0',
+            'Skill DMG',
+            '13%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Evening Rain',
+          icon: '14501_Potential_24',
+          description: 'In an all-Umbra squad, summons <color=#0abec5>1</color> additional wave of Weeping Sky, dealing <color=#0abec5>&Param1&</color> of ATK as AoE Umbra Skill DMG.\nIncreases &Param2& dealt by Weeping Sky to targets inflicted with ##Umbra Mark#1019# or ##Dark Shackles#2020# by <color=#0abec5>&Param3&</color>. Increases Otoha\'s &Param4& by <color=#0abec5>&Param5&</color>.',
+          shortDescription: 'In an all-Umbra squad, summons additional Weeping Sky. Increases &Param2& dealt by Weeping Sky to targets inflicted with ##Umbra Mark#1019# or ##Dark Shackles#2020#. Increases Otoha\'s &Param4&.',
+          params: [
+            '118%/135%/153%/206%/222%/239%/271%/286%/300%/328%/351%/375%/398%',
+            '',
+            '0',
+            'Skill DMG',
+            '13%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            1019: {
+              id: 1019,
+              name: 'Umbra Mark',
+              description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            },
+            2020: {
+              id: 2020,
+              name: 'Dark Shackles'
+            }
+          }
+        }
+      ],
+      supportNormal: [
+        {
+          name: 'Solitary Lantern',
+          icon: '14501_Potential_25',
+          description: 'When Otoha deals Ultimate DMG, there is a &Param1& chance to shoot 3 times, each dealing <color=#ec6d21>&Param2&</color> of ATK as AoE Umbra Ultimate DMG. This effect can only be triggered once every &Param3&s.\nIncreases Otoha\'s &Param4& by <color=#ec6d21>&Param5&</color>.',
+          shortDescription: 'When Otoha deals Ultimate DMG, there is a chance to shoot multiple times. Increases Otoha\'s &Param4&.',
+          params: [
+            '80%',
+            '61%/98%/134%/171%/207%/244%/281%/317%/354%',
+            '2',
+            'Ultracritrate',
+            '5.6%/7.5%/9.4%/11.3%/13.2%/15%/30%/30%/30%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Rain-Woven Sorrow',
+          icon: 'Common_Potential_Water_1',
+          description: 'Reduces the forward movement speed of Weeping Sky by <color=#ec6d21>&Param1&</color> and increases its &Param2& by <color=#ec6d21>&Param3&</color>.',
+          shortDescription: 'Reduces the forward movement speed of Weeping Sky and increases its &Param2&.',
+          params: [
+            '',
+            '',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Devouring Shadow',
+          icon: 'Common_Potential_Dark_1',
+          description: 'In an all-Umbra squad, increases Umbra Trekkers\' &Param1& by <color=#ec6d21>&Param2&</color> and &Param3& by <color=#ec6d21>&Param4&</color>.',
+          shortDescription: 'In an all-Umbra squad, increases Umbra Trekkers\' &Param1&.',
+          params: [
+            'Dee',
+            '5%/7%/10%/13%/15%/18%/21%/23%/26%',
+            'DEF PEN',
+            '25/40/55/70/85/100/102/104/106'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Without A Trace',
+          icon: 'Common_Potential_11',
+          description: 'When Shattered Edge (Support Skill) is on cooldown, increases Otoha\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'When Shattered Edge (Support Skill) is on cooldown, increases Otoha\'s &Param1&.',
+          params: [
+            'Ultimate DMG',
+            '38%/61%/84%/107%/130%/153%/176%/198%/221%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Bone-Chilling Rain',
+          icon: 'Common_Potential_Water_1',
+          description: 'When Weeping Sky deals DMG, increases the target\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks.',
+          shortDescription: 'When Weeping Sky deals DMG, increases the target\'s &Param1&.',
+          params: [
+            'Deercd',
+            '0.5%/0.8%/1.1%/1.4%/1.7%/2%/2.3%/2.6%/2.9%',
+            '4',
+            '20'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Murmur of Annihilation',
+          icon: 'Common_Potential_Dark_1',
+          description: 'Each Umbra Trekker in the squad increases all Umbra teammates\' &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Each Umbra Trekker in the squad increases all Umbra teammates\' &Param1&.',
+          params: [
+            'Dee',
+            '3%/5%/7%/9%/11%/13%/15%/17%/19%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Hollow Steps',
+          icon: 'Common_Potential_Dark_1',
+          description: 'When any Umbra Trekker casts a Main Skill or Support Skill, increases Otoha\'s &Param1& by <color=#ec6d21>&Param2&</color> and &Param5& by <color=#ec6d21>&Param6&</color> for &Param3&s, up to &Param4& stacks.',
+          shortDescription: 'When any Umbra Trekker casts a Main Skill or Support Skill, increases Otoha\'s &Param1& and &Param5&.',
+          params: [
+            'Ultracritrate',
+            '1.1%/1.5%/1.9%/2.3%/2.7%/3%/3.2%/3.4%/3.6%',
+            '6.5',
+            '5',
+            'Ultracritpower',
+            '2.3%/3.7%/5.1%/6.5%/7.9%/9.3%/10.7%/12.1%/13.5%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Inevitable End',
+          icon: 'Common_Potential_10',
+          description: 'Increases Weeping Sky\'s &Param1& against elite or higher-tier targets by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Increases Weeping Sky\'s &Param1& against elite or higher-tier targets.',
+          params: [
+            '',
+            '0.22%/0.22%/0.22%/0.22%/0.22%/0.22%/0.22%/0.22%/0.22%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Silent Knell',
+          icon: 'Common_Potential_Dark_1',
+          description: 'Void Blossom (Ultimate) inflicts ##Umbra Mark: Gloom#2018#. Increases Otoha\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Void Blossom (Ultimate) inflicts ##Umbra Mark: Gloom#2018#. Increases Otoha\'s &Param1&.',
+          params: [
+            'ATK',
+            '13%/21%/29%/37%/45%/53%/61%/69%/77%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {
+            2018: {
+              id: 2018,
+              name: 'Umbra Mark: Gloom',
+              description: 'A special status applied to the target by some Umbra Trekkers, lasting for 10s.\nCan be triggered by the attacks of specific Umbra Trekkers. When triggered, removes the status and activates special effects.'
+            }
+          }
+        }
+      ],
+      common: [
+        {
+          name: 'Blossom-Eroded Abyss',
+          icon: '14501_Potential_41',
+          description: 'The parasol thrown by Void Blossom (Ultimate) pulls in nearby targets. Increases Otoha\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'The parasol thrown by Void Blossom (Ultimate) pulls in nearby targets. Increases Otoha\'s &Param1&.',
+          params: [
+            'Dee',
+            '12%/19%/26%/34%/41%/48%/55%/62%/70%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Ultimate Darkness',
+          icon: '14501_Potential_42',
+          description: 'Increases the &Param1& dealt by Void Blossom (Ultimate) to targets inflicted with ##Dark Shackles#2020# by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Increases the &Param1& dealt by Void Blossom (Ultimate) to targets inflicted with ##Dark Shackles#2020#.',
+          params: [
+            '',
+            '0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {
+            2020: {
+              id: 2020,
+              name: 'Dark Shackles'
+            }
+          }
+        },
+        {
+          name: 'Moonlit Edge',
+          icon: 'Common_Potential_13',
+          description: 'Increases &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s when Otoha casts Void Blossom (Ultimate).',
+          shortDescription: 'Increases &Param1& when Otoha casts Void Blossom (Ultimate).',
+          params: [
+            'ATK',
+            '12%/19%/26%/34%/41%/48%/55%/62%/70%',
+            '30'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        }
+      ]
+    }
+  },
+  karin: {
+    id: 157,
+    name: 'Karin',
+    element: 'Umbra',
+    buildOrder: {
+      main: {
+        build1: {
+          title: 'Karin: Main Build 1',
+          description: 'A build focused on coordinated hunting with Boss Shark, boosting its DMG.',
+          potentials: [
+            'Predator\'s Vortex',
+            'Shark Ambush',
+            'Crashing Wave',
+            'Twin Predator',
+            'Hunter\'s Command'
+          ]
+        },
+        build2: {
+          title: 'Karin: Main Build 2',
+          description: 'A build that boosts the effects of Hunting Energy & Hunter\'s Mark and enhances Auto Attacks.',
+          potentials: [
+            'Scatter Shot',
+            'Hunting Dark Shackle',
+            'Dark Shackle Detonation',
+            'High-Threat Target',
+            'Hunting Suppression'
+          ]
+        }
+      },
+      support: {
+        build1: {
+          title: 'Karin: Support Build 1',
+          description: 'A build that allows Boss Shark to deal DMG in a larger area and apply special effects.',
+          potentials: [
+            'Shark\'s Phantom',
+            'Dark Bite Mark',
+            'Ocean Aftershock',
+            'Pack Pursuit',
+            'Apex Dominance'
+          ]
+        },
+        build2: {
+          title: 'Karin: Support Build 2',
+          description: 'A build that increases hit count and triggers bonus explosions.',
+          potentials: [
+            'Tidal Lash',
+            'Undercurrent Blast',
+            'Surging Rhythm',
+            'Against the Tide',
+            'Undercurrent Surge'
+          ]
+        }
+      }
+    },
+    potentials: {
+      mainCore: [
+        {
+          name: 'Predator\'s Vortex',
+          icon: '15701_Potential_01',
+          description: 'Boss Shark\'s attacks summon a vortex of fish, dealing <color=#0abec5>&Param1& x7</color> of ATK as AoE Umbra Ultimate DMG and triggering ##Umbra Mark#1019#. This effect can only be triggered once every &Param4&s. Increases Karin\'s &Param2& against targets inflicted with ##Dark Burn#2028# by <color=#0abec5>&Param3&</color>.',
+          shortDescription: 'Boss Shark\'s attacks summon a vortex of fish, dealing AoE DMG. Increases Karin\'s &Param2& against targets inflicted with ##Dark Burn#2028#.',
+          params: [
+            '39%/44%/50%/68%/73%/78%/89%/94%/99%/108%/116%/123%/131%',
+            '',
+            '0.72%',
+            '1.5'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            1019: {
+              id: 1019,
+              name: 'Umbra Mark',
+              description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            },
+            2028: {
+              id: 2028,
+              name: 'Dark Burn',
+              description: 'After some Umbra Trekkers trigger the Umbra Mark, deal damage and trigger Dark Burn, dealing DOT.'
+            }
+          }
+        },
+        {
+          name: 'Shark Ambush',
+          icon: '15701_Potential_02',
+          description: 'After casting the Main Skill, Karin summons Boss Shark to follow her for <color=#0abec5>8</color>s. During this time, Boss Shark periodically lunges at the Main Trekker\'s target, dealing <color=#0abec5>&Param1&</color> of ATK as AoE Umbra Ultimate DMG and triggering ##Umbra Mark#1019#. Increases Karin\'s &Param2& by <color=#0abec5>&Param3&</color>.',
+          shortDescription: 'After casting the Main Skill, Karin summons Boss Shark to follow her. During this time, Boss Shark periodically lunges at the Main Trekker\'s target, dealing AoE DMG.\nIncreases Karin\'s &Param2&.',
+          params: [
+            '192%/221%/249%/336%/363%/389%/443%/466%/489%/535%/574%/612%/650%',
+            'Ultracritrate',
+            '18%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            1019: {
+              id: 1019,
+              name: 'Umbra Mark',
+              description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Scatter Shot',
+          icon: '15701_Potential_03',
+          description: 'When Karin hits a target inflicted with ##Hunter\'s Mark#4046# with Auto Attacks, she can additionally fire lob shots, dealing <color=#0abec5>&Param1&</color> of ATK as AoE Umbra Auto ATK DMG. When Karin inflicts ##Hunter\'s Mark#4046# on a target, she instantly gains <color=#0abec5>3</color> buff stacks. After that, she loses <color=#0abec5>1</color> buff stack every <color=#0abec5>2</color>s. <color=#0abec5>Each</color> stack increases the number of bullets fired by Karin\'s Auto Attacks by <color=#0abec5>1</color>. When there is a target inflicted with ##Hunter\'s Mark#4046# on the field, increases Karin\'s &Param2& by <color=#0abec5>&Param3&</color> and &Param4& by <color=#0abec5>&Param5&</color>.',
+          shortDescription: 'When Karin hits a target inflicted with ##Hunter\'s Mark#4046# with Auto Attacks, she can fire lob shots. When Karin inflicts ##Hunter\'s Mark#4046# on a target, she can fire more Auto Attack bullets for a certain duration. Increases Karin\'s &Param2& and &Param4&.',
+          params: [
+            '26%/30%/33%/45%/49%/52%/59%/63%/66%/72%/77%/82%/87%',
+            'ATK',
+            '12%',
+            'Normal DMG',
+            '15%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            4046: {
+              id: 4046,
+              name: 'Hunter\'s Mark'
+            }
+          }
+        },
+        {
+          name: 'Hunting Dark Shackle',
+          icon: '15701_Potential_04',
+          description: 'Extends the duration of ##Hunter\'s Mark#4046# by <color=#0abec5>&Param1&</color>s. While Karin is linked to a target inflicted with ##Hunter\'s Mark#4046#, she deals <color=#0abec5>&Param2&</color> of ATK as AoE Umbra Auto ATK DMG to all targets along the link path and restores <color=#0abec5>10</color> ##Hunting Energy#4045# <color=#0abec5>per second</color>, which can trigger ##Umbra Mark#1019#. When Karin inflicts ##Hunter\'s Mark#4046# on a target, increases her &Param3& by <color=#0abec5>&Param4&</color> and &Param5& by <color=#0abec5>&Param6&</color> for &Param7&s.',
+          shortDescription: 'Extends the duration of ##Hunter\'s Mark#4046#. While Karin is linked to a target with ##Hunter\'s Mark#4046#, she deals DMG over time to all targets along the link path and restores ##Hunting Energy#4045#. When Karin inflicts ##Hunter\'s Mark#4046# on a target, increases her &Param3& and &Param5&.',
+          params: [
+            '3',
+            '174%/200%/226%/304%/328%/353%/401%/422%/443%/485%/520%/554%/589%',
+            'ATK',
+            '15%',
+            'Normal DMG',
+            '12%',
+            '7'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            4046: {
+              id: 4046,
+              name: 'Hunter\'s Mark'
+            },
+            4045: {
+              id: 4045,
+              name: 'Hunting Energy',
+              description: 'Karin has Hunting Energy, which is capped at 100 and regenerates 10 per second.'
+            },
+            1019: {
+              id: 1019,
+              name: 'Umbra Mark',
+              description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        }
+      ],
+      mainNormal: [
+        {
+          name: 'Crashing Wave',
+          icon: '15701_Potential_05',
+          description: 'After Karin deals Ultimate DMG 5 times, Boss Shark follows up with a tail strike, dealing <color=#ec6d21>&Param1&</color> of ATK as AoE Umbra Ultimate DMG  and triggering ##Umbra Mark#1019#. This effect can only be triggered once every &Param2&s. Increases Karin\'s &Param3& by <color=#ec6d21>&Param4&</color>.',
+          shortDescription: 'After Karin deals Ultimate DMG several times, Boss Shark follows up with a tail strike that deals AoE DMG.',
+          params: [
+            '163%/261%/359%/457%/555%/652%/750%/848%/946%/0%/0%/0%/0%',
+            '2',
+            'Ultracritrate',
+            '3.7%/6%/8.2%/10.5%/12.7%/15%/16%/17%/18%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {
+            1019: {
+              id: 1019,
+              name: 'Umbra Mark',
+              description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Dark Shackle Detonation',
+          icon: '15701_Potential_08',
+          description: 'When an enemy target loses ##Hunter\'s Mark#4046#, deals <color=#ec6d21>&Param1&</color> of Karin\'s ATK as AoE Umbra Auto ATK DMG and triggering ##Umbra Mark#1019#. Increases Karin\'s &Param2& by <color=#ec6d21>&Param3&</color> for &Param4&s.',
+          shortDescription: 'When an enemy target loses ##Hunter\'s Mark#4046#, deals AoE DMG.',
+          params: [
+            '268%/429%/590%/751%/911%/1072%/1233%/1394%/1555%/0%/0%/0%/0%',
+            'Normal DMG',
+            '11.2%/18%/24.7%/31.5%/38.2%/45%/49%/52%/55%',
+            '8'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {
+            4046: {
+              id: 4046,
+              name: 'Hunter\'s Mark'
+            },
+            1019: {
+              id: 1019,
+              name: 'Umbra Mark',
+              description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Confidence Booster',
+          icon: 'Common_Potential_Dark_1',
+          description: 'When Karin triggers an ##Umbra Mark#1019#, increases her &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'When Karin triggers an ##Umbra Mark#1019#, increases &Param1&.',
+          params: [
+            'ATK',
+            '6%/9.6%/13.2%/16.8%/20.4%/24%/27.6%/31.2%/34.8%',
+            '5',
+            '2'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {
+            1019: {
+              id: 1019,
+              name: 'Umbra Mark',
+              description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Twin Predator',
+          icon: 'Common_Potential_Dark_1',
+          description: 'When Boss Shark deals DMG, increases Karin\'s &Param1& by <color=#ec6d21>&Param2&</color> and the &Param3& of Umbra Versatile Trekkers by <color=#ec6d21>&Param4&</color> for &Param5&s.',
+          shortDescription: 'When Boss Shark deals DMG, increases Karin\'s &Param1& and the &Param3& of Umbra Versatile Trekkers.',
+          params: [
+            'Ultracritpower',
+            '7.5%/12%/16.5%/21%/25.5%/30%/34%/38%/42%',
+            'Ultracritpower',
+            '15%/24%/33%/42%/51%/60%/64%/68%/72%',
+            '5'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'High-Threat Target',
+          icon: 'Common_Potential_Fire_1',
+          description: 'In an all-Umbra squad, when Bait and Catch (Main Skill) is on cooldown, increases the &Param1& dealt by Karin\'s Auto Attacks to targets inflicted with ##Dark Burn#2028# by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'In an all-Umbra squad, when Bait and Catch (Main Skill) is on cooldown, increases the &Param1& dealt by Karin\'s Auto Attacks to targets inflicted with ##Dark Burn#2028#.',
+          params: [
+            '',
+            '0.85%/0.85%/0.85%/0.85%/0.85%/0.85%/0.85%/0.85%/0.85%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {
+            2028: {
+              id: 2028,
+              name: 'Dark Burn',
+              description: 'After some Umbra Trekkers trigger the Umbra Mark, deal damage and trigger Dark Burn, dealing DOT.'
+            }
+          }
+        },
+        {
+          name: 'Pursuit of the Shadow',
+          icon: 'Common_Potential_Dark_1',
+          description: 'Karin can dodge one more time. When dodging, increases Karin\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+          shortDescription: 'Can dodge one more time. When dodging, increases Karin\'s &Param1&.',
+          params: [
+            'ATK',
+            '10%/16%/22%/28%/34%/40%/46%/52%/58%',
+            '3'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Hunter\'s Command',
+          icon: 'Common_Potential_Fire_1',
+          description: 'In an all-Umbra squad, increases the &Param1& dealt by Boss Shark to targets inflicted with ##Dark Burn#2028# by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'In an all-Umbra squad, increases the &Param1& dealt by Boss Shark to targets inflicted with ##Dark Burn#2028#.',
+          params: [
+            '',
+            '0.85%/0.85%/0.85%/0.85%/0.85%/0.85%/0.85%/0.85%/0.85%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {
+            2028: {
+              id: 2028,
+              name: 'Dark Burn',
+              description: 'After some Umbra Trekkers trigger the Umbra Mark, deal damage and trigger Dark Burn, dealing DOT.'
+            }
+          }
+        },
+        {
+          name: 'Hunting Suppression',
+          icon: 'Common_Potential_Dark_1',
+          description: 'When Karin triggers ##Umbra Mark#1019# on a target with ##Hunter\'s Mark#4046#, increases her &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'When Karin triggers ##Umbra Mark#1019# on a target with ##Hunter\'s Mark#4046#, increases her &Param1&.',
+          params: [
+            'Normal DMG',
+            '5%/8%/11%/14%/17%/20%/22%/24%/26%',
+            '5',
+            '3'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {
+            1019: {
+              id: 1019,
+              name: 'Umbra Mark',
+              description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            },
+            4046: {
+              id: 4046,
+              name: 'Hunter\'s Mark'
+            }
+          }
+        },
+        {
+          name: 'Aura of Unity',
+          icon: 'Common_Potential_Dark_1',
+          description: 'Each Umbra Trekker in the squad increases Karin\'s &Param1& by <color=#ec6d21>&Param2&</color> and all Umbra Trekkers\' &Param3& by <color=#ec6d21>&Param4&</color>.',
+          shortDescription: 'Umbra Trekkers in the squad increase Karin\'s &Param1& and all Umbra Trekkers\' &Param3&.',
+          params: [
+            'Dee',
+            '3.2%/5.2%/7.1%/9.1%/11%/13%/14.9%/16.9%/18.8%',
+            'Dee',
+            '3.2%/5.2%/7.1%/9.1%/11%/13%/14.9%/16.9%/18.8%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        }
+      ],
+      supportCore: [
+        {
+          name: 'Shark\'s Phantom',
+          icon: '15701_Potential_21',
+          description: 'Boss Shark summoned by Raging Sea (Support Skill) can repeatedly bite the target, dealing <color=#0abec5>extra instances</color> of DMG to large targets.',
+          shortDescription: 'Boss Shark summoned by Raging Sea (Support Skill) can repeatedly bite the target, dealing <color=#0abec5>multiple instances of DMG</color>.',
+          params: [],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Dark Bite Mark',
+          icon: '15701_Potential_22',
+          description: 'Boss Shark summoned by Raging Sea (Support Skill) leaves bite marks for 1s when dealing DMG. When Boss Shark deals DMG to a target with a bite mark, it detonates the bite mark, dealing <color=#0abec5>&Param1&</color> of ATK as single-target Umbra Ultimate DMG and triggering ##Umbra Mark#1019#.',
+          shortDescription: 'Boss Shark summoned by Raging Sea (Support Skill) leaves bite marks when dealing DMG. Subsequent DMG from Boss Shark can detonate these bite marks, dealing single-target DMG.',
+          params: [
+            '151%/174%/197%/265%/286%/307%/350%/368%/386%/422%/452%/483%/513%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            1019: {
+              id: 1019,
+              name: 'Umbra Mark',
+              description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Tidal Lash',
+          icon: '15701_Potential_23',
+          description: 'When casting Raging Sea (Support Skill), Karin can swing additional chains, dealing <color=#0abec5>&Param1&</color> of ATK as AoE Umbra Skill DMG.',
+          shortDescription: 'When casting Raging Sea (Support Skill), Karin can swing additional chains to deal more DMG.',
+          params: [
+            '49%/56%/64%/86%/93%/100%/113%/119%/125%/137%/147%/156%/166%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Undercurrent Blast',
+          icon: '15701_Potential_24',
+          description: 'When Karin swings the chain to deal DMG during Raging Sea (Support Skill), triggers explosions that deal <color=#0abec5>&Param1&</color> of ATK as AoE Umbra Skill DMG and triggering ##Umbra Mark#1019#. This effect can be triggered up to <color=#0abec5>4</color> times per chain swing.',
+          shortDescription: 'When Karin swings the chain to deal DMG during Raging Sea (Support Skill), triggers explosions that deal AoE DMG.',
+          params: [
+            '106%/122%/137%/185%/200%/215%/244%/257%/269%/295%/316%/337%/358%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            1019: {
+              id: 1019,
+              name: 'Umbra Mark',
+              description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        }
+      ],
+      supportNormal: [
+        {
+          name: 'Ocean Aftershock',
+          icon: '15701_Potential_25',
+          description: 'Boss Shark summoned by Raging Sea (Support Skill) triggers bubble explosions along its charge path, with each explosion dealing <color=#ec6d21>&Param1&</color> of ATK as AoE Umbra Ultimate DMG and triggering ##Umbra Mark#1019#. Increases the &Param2& dealt by Boss Shark by <color=#ec6d21>&Param3&</color>.',
+          shortDescription: 'Boss Shark summoned by Raging Sea (Support Skill) triggers bubble explosions along its charge path, dealing AoE DMG.\nIncreases the &Param2& dealt by Boss Shark.',
+          params: [
+            '21%/34%/46%/59%/72%/84%/97%/110%/122%/0%/0%/0%/0%',
+            '',
+            '0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {
+            1019: {
+              id: 1019,
+              name: 'Umbra Mark',
+              description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Surging Rhythm',
+          icon: 'Common_Potential_8',
+          description: 'When Karin swings the chain to deal DMG during Raging Sea (Support Skill), increases the &Param1& dealt by subsequent chain hits of this skill by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'When Karin swings the chain to deal DMG during Raging Sea (Support Skill), increases the &Param1& dealt by subsequent chain hits of this skill.',
+          params: [
+            '',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+            '2',
+            '9'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Awkward Inspiration',
+          icon: 'Common_Potential_Dark_1',
+          description: 'Increases all Umbra Trekkers\' &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Increases all Umbra Trekkers\' &Param1&.',
+          params: [
+            'ATK',
+            '12%/19.2%/26.4%/33.6%/40.8%/48%/55.2%/62.4%/69.6%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Pack Pursuit',
+          icon: 'Common_Potential_8',
+          description: 'When Boss Shark from Raging Sea (Support Skill) deals DMG, increases Karin\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'When Boss Shark summoned by Raging Sea (Support Skill) deals DMG, increases Karin\'s &Param1&.',
+          params: [
+            'ATK',
+            '2.5%/4%/5.5%/7%/8.5%/10%/11.5%/13%/14.5%',
+            '5',
+            '7'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Against the Tide',
+          icon: 'Common_Potential_Water_1',
+          description: 'Increases the &Param1& dealt by chain swings during Raging Sea (Support Skill) to elite or higher-tier targets by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Increases the &Param1& dealt by chain swings during Raging Sea (Support Skill) to elite or higher-tier targets.',
+          params: [
+            '',
+            '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Competitive Spirit',
+          icon: 'Common_Potential_13',
+          description: 'When casting Raging Sea (Support Skill), increases Karin\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+          shortDescription: 'When casting Raging Sea (Support Skill), increases Karin\'s &Param1&.',
+          params: [
+            'Dee',
+            '12%/19.2%/26.4%/33.6%/40.8%/48%/55.2%/62.4%/69.6%',
+            '15'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Apex Dominance',
+          icon: 'Common_Potential_10',
+          description: 'Increases the &Param1& dealt by Boss Shark summoned by Raging Sea (Support Skill) to elite or lower-tier targets by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Increases the &Param1& dealt by Boss Shark summoned by Raging Sea (Support Skill) to elite or lower-tier targets.',
+          params: [
+            '',
+            '0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Undercurrent Surge',
+          icon: 'Common_Potential_Dark_1',
+          description: 'When any Umbra Trekker casts a Main Skill or Support Skill, increases Karin\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'When any Umbra Trekker casts a Main Skill or Support Skill, increases Karin\'s &Param1&.',
+          params: [
+            'ATK',
+            '3%/4.8%/6.6%/8.4%/10.2%/12%/13.8%/15.6%/17.4%',
+            '12',
+            '5'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Moonlit Bond',
+          icon: 'Common_Potential_Dark_1',
+          description: 'For each Umbra Trekker in the squad, increases Karin\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Umbra Trekkers in the squad increase Karin\'s &Param1&.',
+          params: [
+            'Dee',
+            '4%/6.4%/8.8%/11.2%/13.6%/16%/18.4%/20.8%/23.2%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        }
+      ],
+      common: [
+        {
+          name: 'Unyielding Spirit',
+          icon: '15701_Potential_41',
+          description: 'Increases the &Param1& dealt by Shark Assault (Ultimate) to elite or higher-tier targets by <color=#ec6d21>&Param2&</color>. Increases Karin\'s &Param3& by <color=#ec6d21>&Param4&</color>.',
+          shortDescription: 'Increases the &Param1& dealt by Shark Assault (Ultimate) to elite or higher-tier targets. Increases Karin\'s &Param3&.',
+          params: [
+            '',
+            '0.22%/0.22%/0.22%/0.22%/0.22%/0.22%/0.22%/0.22%/0.22%',
+            'ATK',
+            '5%/8%/11%/14%/17%/20%/23%/26%/29%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Deep-Sea Conflict',
+          icon: '15701_Potential_42',
+          description: 'While Shark Assault (Ultimate) is active, shoots <color=#ec6d21>&Param1&</color> bubbles every once in a while, each bubble dealing <color=#ec6d21>&Param2&</color> of ATK as AoE Umbra Ultimate DMG and triggering ##Umbra Mark#1019#. Increases Karin\'s &Param3& by <color=#ec6d21>&Param4&</color>.',
+          shortDescription: 'While Shark Assault (Ultimate) is active, continuously shoots bubbles to deal AoE DMG. Increases Karin\'s &Param3&.',
+          params: [
+            '',
+            '27%/43%/59%/75%/91%/107%/123%/139%/155%/0%/0%/0%/0%',
+            'Ultimate DMG',
+            '14.5%/23.2%/31.9%/40.6%/49.3%/58%/65%/70%/75%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {
+            1019: {
+              id: 1019,
+              name: 'Umbra Mark',
+              description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Self-Transcend',
+          icon: 'Common_Potential_13',
+          description: 'When casting Shark Assault (Ultimate), increases Karin\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s. Increases Karin\'s &Param4& by <color=#ec6d21>&Param5&</color>.',
+          shortDescription: 'When casting Shark Assault (Ultimate), increases Karin\'s &Param1&.',
+          params: [
+            'ATK',
+            '17.5%/28%/38.5%/49%/59.5%/70%/80%/90%/100%',
+            '30',
+            'Normal DMG',
+            '8.7%/14%/19.2%/24.5%/29.7%/35%/40%/45%/50%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        }
+      ]
+    }
+  },
+  suntideWillow: {
+    id: 160,
+    name: 'Suntide Willow',
+    element: 'Aqua',
+    buildOrder: {
+      main: {
+        build1: {
+          title: 'Willow: Main Build 1',
+          description: 'A build centered on enlarging the Bubble Frog to deal massive AoE damage.',
+          potentials: [
+            'Bubble Flurry',
+            'Rippling Radiance',
+            'Enduring Bubble',
+            'Dreamlike Illusion',
+            'Clustered Foam'
+          ]
+        },
+        build2: {
+          title: 'Willow: Main Build 2',
+          description: 'A build centered on rapid bounces from the Bubble Frog to unleash Echoing Soundwave.',
+          potentials: [
+            'Rhythmic Bubbles',
+            'Rainbow Rebound',
+            'Foam Echo',
+            'Touch \'n\' Bounce',
+            'Wavering Glow'
+          ]
+        }
+      },
+      support: {
+        build1: {
+          title: 'Willow: Support Build 1',
+          description: 'A build that fires piercing water jets to strike enemies while inflicting powerful debuffs on targets.',
+          potentials: [
+            'Flying Droplets',
+            'Flooding Shore',
+            'Words Unchanged',
+            'Hovering Gale',
+            'Eternal Tide'
+          ]
+        },
+        build2: {
+          title: 'Willow: Support Build 2',
+          description: 'A build rapidly unleashes piercing soundwaves while granting stats buffs to the squad.',
+          potentials: [
+            'Rhythm Surge',
+            'Thunderous Surf',
+            'Engulfing Tide',
+            'Receding Echoes',
+            'Prismatic Bubbles'
+          ]
+        }
+      }
+    },
+    potentials: {
+      mainCore: [
+        {
+          name: 'Bubble Flurry',
+          icon: '16001_Potential_01',
+          description: 'In Bubble Machine mode, targets with ##Bubble Mark#4041# periodically generate absorbable bubbles. Each bubble absorbed by Bubble Frog enlarges it by <color=#0abec5>10%</color>, while also increasing the &Param1& dealt by Bubble Frog by <color=#0abec5>&Param2&</color>. It can grow up to <color=#0abec5>100%</color> in size.',
+          shortDescription: 'In Bubble Machine mode, targets with ##Bubble Mark#4041# generate absorbable bubbles. After absorbing them, Bubble Frog grows in size, and the &Param1& it deals increases.',
+          params: [
+            '',
+            '0.57%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            4041: {
+              id: 4041,
+              name: 'Bubble Mark'
+            }
+          }
+        },
+        {
+          name: 'Rippling Radiance',
+          icon: '16001_Potential_02',
+          description: 'In Bubble Machine mode, Bubble Frog deals <color=#0abec5>&Param1&</color> of ATK as AoE Aqua Skill DMG every second to nearby targets, while increasing their &Param2& by <color=#0abec5>&Param3&</color> for &Param4&s, stacking up to &Param5& times. Can inflict ##Aqua Mark: Torrent#2008#.',
+          shortDescription: 'In Bubble Machine mode, Bubble Frog deals Aqua Skill DMG to nearby targets over time while increasing their &Param2& and inflicting ##Aqua Mark: Torrent#2008#.',
+          params: [
+            '52%/60%/68%/91%/98%/106%/120%/127%/133%/146%/157%/167%/177%',
+            'Weercd',
+            '4%',
+            '8',
+            '4'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            2008: {
+              id: 2008,
+              name: 'Aqua Mark: Torrent',
+              description: 'A special status applied by some Aqua characters to the target for 10 sec.\nWhen triggered by specific Aqua characters\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Rhythmic Bubbles',
+          icon: '16001_Potential_03',
+          description: 'In Megaphone mode, increases Bubble Frog\'s bounce frequency by <color=#0abec5>100%</color> and &Param1& by <color=#0abec5>&Param2&</color>. Each bounce grants 5 additional Decibels.',
+          shortDescription: 'In Megaphone mode, increases Bubble Frog\'s bounce frequency and &Param1&. Each bounce grants additional Decibels.',
+          params: [
+            '',
+            '0.57%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Rainbow Rebound',
+          icon: '16001_Potential_04',
+          description: 'In Megaphone mode, each bounce of Bubble Frog unleashes ##Echoing Soundwave#4047# that echo <color=#0abec5>3</color> times, dealing <color=#0abec5>&Param1&</color> of ATK as Aqua Skill DMG and increasing the target\'s DMG Taken of all Elements by <color=#0abec5>&Param3&</color> for &Param4&s, stacking up to &Param5& times.\nThis DMG can inflict ##Aqua Mark: Torrent#2008#. For every <color=#0abec5>10</color> current Decibels, increases the Attack Range of ##Echoing Soundwave#4047# by <color=#0abec5>5%</color>.',
+          shortDescription: 'In Megaphone mode, Bubble Frog unleashes ##Echoing Soundwave#4047# when bouncing, which can echo multiple times, dealing Aqua Skill DMG and increasing the target\'s DMG Taken of all Elements. This DMG can inflict ##Aqua Mark: Torrent#2008#.\nThe Attack Range of ##Echoing Soundwave#4047# increases based on the current Decibels.',
+          params: [
+            '14%/16%/18%/25%/27%/29%/33%/35%/37%/40%/43%/46%/49%',
+            'Weercd',
+            '1.8%',
+            '5',
+            '8'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            4047: {
+              id: 4047,
+              name: 'Echoing Soundwave',
+              description: 'Generated by the Main Trekker Potential, Rainbow Rebound. Deals damage.'
+            },
+            2008: {
+              id: 2008,
+              name: 'Aqua Mark: Torrent',
+              description: 'A special status applied by some Aqua characters to the target for 10 sec.\nWhen triggered by specific Aqua characters\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        }
+      ],
+      mainNormal: [
+        {
+          name: 'Enduring Bubble',
+          icon: 'Common_Potential_10',
+          description: 'When Willow and Bubble Frog deal DMG to targets with ##Bubble Mark#4041#, increases the target\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'When Willow and Bubble Frog deal DMG to targets with ##Bubble Mark#4041#, increases the target\'s &Param1&.',
+          params: [
+            'Weercd',
+            '2%/3.2%/4.4%/5.6%/6.8%/8%/9.2%/10.4%/11.6%',
+            '',
+            ''
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {
+            4041: {
+              id: 4041,
+              name: 'Bubble Mark'
+            }
+          }
+        },
+        {
+          name: 'Foam Echo',
+          icon: 'Common_Potential_Water_1',
+          description: 'When ##Echoing Soundwave#4047# deal DMG, increases own and non-Aqua Squadmates\' &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'When ##Echoing Soundwave#4047# deal DMG, increases own and non-Aqua Squadmates\' &Param1&.',
+          params: [
+            'ATK',
+            '2.3%/3.7%/5.1%/6.5%/7.9%/9.3%/10.7%/12.1%/13.5%',
+            '',
+            ''
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {
+            4047: {
+              id: 4047,
+              name: 'Echoing Soundwave',
+              description: 'Generated by the Main Trekker Potential, Rainbow Rebound. Deals damage.'
+            }
+          }
+        },
+        {
+          name: 'Singing Shores',
+          icon: 'Common_Potential_13',
+          description: 'Increases Dodge count by 1.\nAfter Willow dodges, increases &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+          shortDescription: 'Can dodge one more time. After Willow dodges, increases own &Param1&.',
+          params: [
+            'ATK',
+            '15%/24%/33%/42%/51%/60%/69%/78%/87%',
+            ''
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Dreamlike Illusion',
+          icon: 'Common_Potential_Water_1',
+          description: 'When a squadmate triggers ##Aqua Mark#1018# or inflicts ##Aqua Mark: Torrent#2008# on targets with ##Bubble Mark#4041#,  increases all Aqua Trekkers\' &Param1& in the squad by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'When a squadmate triggers ##Aqua Mark#1018# or inflicts ##Aqua Mark: Torrent#2008# on targets with ##Bubble Mark#4041#,  increases all Aqua Trekkers\' &Param1& in the squad.',
+          params: [
+            'Skill DMG',
+            '1.6%/2.6%/3.6%/4.6%/5.6%/6.6%/7.6%/8.6%/9.6%',
+            '',
+            ''
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {
+            1018: {
+              id: 1018,
+              name: 'Aqua Mark',
+              description: 'The generic name for all Aqua Marks.\nWhen triggered by specific Aqua Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            },
+            2008: {
+              id: 2008,
+              name: 'Aqua Mark: Torrent',
+              description: 'A special status applied by some Aqua characters to the target for 10 sec.\nWhen triggered by specific Aqua characters\' attacks, the status is removed, and a special effect is activated.'
+            },
+            4041: {
+              id: 4041,
+              name: 'Bubble Mark'
+            }
+          }
+        },
+        {
+          name: 'Touch \'n\' Bounce',
+          icon: 'Common_Potential_Water_1',
+          description: 'Each time Bubble Frog bounces, increases the squad\'s &Param1& by <color=#ec6d21>&Param2&</color>. Additionally, increases non-Aqua Squadmates\' &Param5& by <color=#ec6d21>&Param6&</color>. This effect lasts &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'Each time Bubble Frog bounces, increases the squad\'s &Param1&. Additionally, increases non-Aqua Squadmates\' &Param5&.',
+          params: [
+            'Skill DMG',
+            '1.2%/2%/2.7%/3.5%/4.2%/5%/5.7%/6.5%/7.2%',
+            '',
+            '',
+            'Skill DMG',
+            '1.7%/2.8%/3.8%/4.9%/5.9%/7%/8%/9.1%/10.1%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Ocean Wanderer',
+          icon: 'Common_Potential_4',
+          description: 'When Bubble Frog deals DMG, Willow gains a shield equal to <color=#ec6d21>&Param1&</color> of Base ATK for &Param2&s. This effect can only be triggered once every 10s.',
+          shortDescription: 'When Bubble Frog deals DMG, Willow gains a shield.',
+          params: [
+            '32.1%/51.5%/70.8%/90.1%/109.4%/128.7%/148.1%/167.4%/186.7%',
+            '6/6/6/6/6/6/6/6/6'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Clustered Foam',
+          icon: 'Common_Potential_Water_1',
+          description: 'In Bubble Machine mode, bubbles deal an additional <color=#ec6d21>&Param1&</color> of ATK as AoE Aqua Skill DMG. Can inflict ##Aqua Mark: Torrent#2008#.\nIncreases &Param2& dealt by all Aqua Trekkers against targets with the ##Bubble Mark#4041# by <color=#ec6d21>&Param3&</color>.',
+          shortDescription: 'In Bubble Machine mode, bubbles deal additional AoE Aqua Skill DMG. Can inflict ##Aqua Mark: Torrent#2008#.\nIncreases the &Param2& dealt by all Aqua Trekkers against targets with ##Bubble Mark#4041#.',
+          params: [
+            '17%/27%/37%/47%/58%/68%/78%/89%/99%/0%/0%/0%/0%',
+            '',
+            '0.17%/0.17%/0.17%/0.17%/0.17%/0.17%/0.17%/0.17%/0.17%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {
+            2008: {
+              id: 2008,
+              name: 'Aqua Mark: Torrent',
+              description: 'A special status applied by some Aqua characters to the target for 10 sec.\nWhen triggered by specific Aqua characters\' attacks, the status is removed, and a special effect is activated.'
+            },
+            4041: {
+              id: 4041,
+              name: 'Bubble Mark'
+            }
+          }
+        },
+        {
+          name: 'Wavering Glow',
+          icon: 'Common_Potential_Water_1',
+          description: 'Every 2 bounces, Bubble Frog deals <color=#ec6d21>&Param1&</color> of ATK as Aqua Skill DMG in a large area. Can inflict ##Aqua Mark: Torrent#2008#, while increasing targets\' &Param2& by <color=#ec6d21>&Param3&</color> for &Param4&s.',
+          shortDescription: 'After bouncing a certain number of times, Bubble Frog deals Aqua Skill DMG in a large area. Can inflict ##Aqua Mark: Torrent#2008#, while increasing targets\' &Param2&.',
+          params: [
+            '21%/35%/48%/61%/74%/87%/100%/113%/126%/0%/0%/0%/0%',
+            'Weercd',
+            '2.1%/3.5%/4.8%/6.1%/7.4%/8.7%/10%/11.4%/12.7%',
+            ''
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {
+            2008: {
+              id: 2008,
+              name: 'Aqua Mark: Torrent',
+              description: 'A special status applied by some Aqua characters to the target for 10 sec.\nWhen triggered by specific Aqua characters\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Cumulus Drift',
+          icon: 'Common_Potential_13',
+          description: 'Increases Bubble Frog duration by 3s, and while it is on the field, increases the squad\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Increases Bubble Frog duration, and while it is on the field, increases the squad\'s &Param1&.',
+          params: [
+            'ATK',
+            '10%/16%/22%/28%/34%/40%/46%/52%/58%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        }
+      ],
+      supportCore: [
+        {
+          name: 'Flying Droplets',
+          icon: '16001_Potential_21',
+          description: '##Gentle Warning#4042# gains additional stat bonuses from ##Safety Alert#4043#. For every <color=#0abec5>10</color> shots fired by Willow while under Gentle Warning, she fires a straight-line water column attack that deals <color=#0abec5>&Param1&x3</color> of ATK as Aqua Skill DMG and increases Decibels by <color=#0abec5>30</color>, inflicting ##Smiling Sanction#4040# and ##Aqua Mark: Torrent#2008#.',
+          shortDescription: '##Gentle Warning#4042# gains additional stat bonuses from ##Safety Alert#4043#. For every <color=#0abec5>10</color> shots fired by Willow while under Gentle Warning, she fires a straight-line water column attack that deals Aqua Skill DMG and increases Decibels, while applying ##Smiling Sanction#4040# and ##Aqua Mark: Torrent#2008#.',
+          params: [
+            '427%/491%/555%/746%/806%/866%/985%/1036%/1088%/1190%/1275%/1361%/1446%',
+            'Rcdmarkdmg',
+            '11.7%',
+            '12',
+            '6'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            4042: {
+              id: 4042,
+              name: 'Gentle Warning'
+            },
+            4043: {
+              id: 4043,
+              name: 'Safety Alert'
+            },
+            4040: {
+              id: 4040,
+              name: 'Smiling Sanction'
+            },
+            2008: {
+              id: 2008,
+              name: 'Aqua Mark: Torrent',
+              description: 'A special status applied by some Aqua characters to the target for 10 sec.\nWhen triggered by specific Aqua characters\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Flooding Shore',
+          icon: '16001_Potential_22',
+          description: 'When Decibels ≥<color=#0abec5>40</color>, immediately consumes <color=#0abec5>40</color> Decibels to launch a rotating water jet attack, dealing <color=#0abec5>&Param1&x3</color> of ATK as AoE Aqua Skill DMG, inflicting ##Smiling Sanction#4040# and ##Aqua Mark: Torrent#2008#.',
+          shortDescription: 'When Decibels ≥40, consumes Decibels to fire a rotating water jet, dealing AoE Aqua Skill DMG and inflicting ##Smiling Sanction#4040# and ##Aqua Mark: Torrent#2008#.',
+          params: [
+            '204%/235%/266%/358%/386%/415%/472%/497%/521%/570%/611%/652%/693%',
+            'Rcdmarkdmg',
+            '11.7%',
+            '12',
+            '6'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            4040: {
+              id: 4040,
+              name: 'Smiling Sanction'
+            },
+            2008: {
+              id: 2008,
+              name: 'Aqua Mark: Torrent',
+              description: 'A special status applied by some Aqua characters to the target for 10 sec.\nWhen triggered by specific Aqua characters\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Rhythm Surge',
+          icon: '16001_Potential_23',
+          description: 'Initial Decibel upon entering the field equals <color=#0abec5>70</color>.\nAt <color=#0abec5>100</color> Decibels, increases the squad\'s &Param1& by <color=#0abec5>&Param2&</color> for &Param3&s, while consuming Decibels over time to rapidly fire bubbles until Decibels drop to <color=#0abec5>50</color>.',
+          shortDescription: 'Increases initial Decibels upon entering the field. At full Decibels, increases the squad\'s &Param1&, while continuously consuming Decibels to rapidly fire bubbles.',
+          params: [
+            'Crit Rate',
+            '10%',
+            '14'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Thunderous Surf',
+          icon: '16001_Potential_24',
+          description: 'Increases Decibels gained per shot from <color=#0abec5>2</color> to <color=#0abec5>4</color>.\nWhile ##Safety Alert#4043# is active, bubbles turn into piercing sonic waves, increasing DMG multiplier by <color=#0abec5>&Param1&</color>, and increasing the target\'s &Param2& by <color=#0abec5>&Param3&</color> for &Param4&s, stacking up to &Param5& times.',
+          shortDescription: 'Increases Decibels gained from shots.\nWhile ##Safety Alert#4043# is active, bubbles turn into sonic waves, increasing DMG multiplier and the target\'s &Param2&.',
+          params: [
+            '0.85%',
+            'Weercd',
+            '1.1%',
+            '8',
+            '16'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            4043: {
+              id: 4043,
+              name: 'Safety Alert'
+            }
+          }
+        }
+      ],
+      supportNormal: [
+        {
+          name: 'Words Unchanged',
+          icon: 'Common_Potential_Water_1',
+          description: 'When entering with Frolic in the Sea (Support Skill), the DMG from diving into the water also inflicts 1 stack of ##Smiling Sanction#4040#. The max stack limit of ##Smiling Sanction#4040# is increased to <color=#ec6d21>&Param3&</color> stacks, and each stack additionally increases the target\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'When entering with the Support Skill, the DMG from diving into the water also inflicts 1 stack of ##Smiling Sanction#4040#. Increases the max stack limit of ##Smiling Sanction#4040#, and additionally increases the target\'s &Param1&.',
+          params: [
+            'Weercd',
+            '0.5%/0.8%/1.1%/1.4%/1.7%/2%/2.3%/2.6%/2.9%',
+            '7/8/9/10/11/12/12/12/12'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {
+            4040: {
+              id: 4040,
+              name: 'Smiling Sanction'
+            }
+          }
+        },
+        {
+          name: 'Engulfing Tide',
+          icon: 'Common_Potential_Water_1',
+          description: 'Bubble Bath expands by 5% every second, up to 30%. When the Main Trekker is inside Bubble Bath, increases her &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Bubble Bath expands over time. When the Main Trekker is inside Bubble Bath, increases her &Param1&.',
+          params: [
+            'Wee',
+            '18%/28%/39%/49%/60%/70%/81%/92%/102%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Prismatic Barrier',
+          icon: 'Common_Potential_4',
+          description: 'The Main Trekker inside Bubble Bath gains a shield equal to <color=#ec6d21>&Param1&</color> of Willow\'s Base ATK every 5s for &Param2&s.',
+          shortDescription: 'After staying in Bubble Bath for a period of time, the Main Trekker gains a shield.',
+          params: [
+            '45%/60%/75%/90%/105%/120%/135%/150%/165%',
+            '4/4/4/4/4/4/4/4/4'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Hovering Gale',
+          icon: 'Common_Potential_Wind_1',
+          description: 'When a target with ##Smiling Sanction#4040# has ##Aqua Mark#1018# triggered, this target is immediately inflicted with ##Aqua Mark: Torrent#2008# again and receives an additional <color=#ec6d21>&Param1&</color> of ATK as Aqua Mark DMG. For each stack of ##Smiling Sanction#4040# this target has, increases the &Param2& received this time by <color=#ec6d21>&Param3&</color>. This effect can only be triggered once every 1s.',
+          shortDescription: 'When a target with ##Smiling Sanction#4040# has ##Aqua Mark#1018# triggered, this target is immediately inflicted with ##Aqua Mark: Torrent#2008# again and receives additional Aqua Mark DMG. The &Param2& received this time is increased based on the stacks of ##Smiling Sanction#4040#.',
+          params: [
+            '118%/189%/261%/332%/403%/474%/545%/616%/687%',
+            '',
+            '0.64%/0.64%/0.64%/0.64%/0.64%/0.64%/0.64%/0.64%/0.64%',
+            '1.5'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 2,
+          hints: {
+            4040: {
+              id: 4040,
+              name: 'Smiling Sanction'
+            },
+            1018: {
+              id: 1018,
+              name: 'Aqua Mark',
+              description: 'The generic name for all Aqua Marks.\nWhen triggered by specific Aqua Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            },
+            2008: {
+              id: 2008,
+              name: 'Aqua Mark: Torrent',
+              description: 'A special status applied by some Aqua characters to the target for 10 sec.\nWhen triggered by specific Aqua characters\' attacks, the status is removed, and a special effect is activated.'
+            }
+          }
+        },
+        {
+          name: 'Receding Echoes',
+          icon: 'Common_Potential_11',
+          description: 'Each time Decibels are consumed, increases the squad\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param4&s, stacking up to &Param3& times.',
+          shortDescription: 'Consuming Decibels increases the squad\'s &Param1&.',
+          params: [
+            'Crit DMG',
+            '0.6%/1%/1.3%/1.7%/2%/2.4%/2.8%/3.1%/3.5%',
+            '',
+            ''
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Tender Seas',
+          icon: 'Common_Potential_19',
+          description: 'When Willow is on the battlefield, increases the squad\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'When Willow is on the battlefield, increases the squad\'s &Param1&.',
+          params: [
+            'ATK',
+            '10%/17%/23%/29%/35%/42%/48%/54%/60%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Eternal Tide',
+          icon: 'Common_Potential_Water_1',
+          description: 'While ##Gentle Warning#4042# is active, increases the squad\'s &Param1& by an additional <color=#ec6d21>&Param2&</color>; the Main Trekker generates 8 extra Decibels when dealing DMG. This effect can be triggered once every 5s.',
+          shortDescription: 'While ##Gentle Warning#4042# is active, additionally increases the squad\'s &Param1&, and the Main Trekker generates extra Decibels when dealing DMG.',
+          params: [
+            'Wee',
+            '12%/19%/26%/33%/40%/47%/54%/61%/68%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 3,
+          hints: {
+            4042: {
+              id: 4042,
+              name: 'Gentle Warning'
+            }
+          }
+        },
+        {
+          name: 'Prismatic Bubbles',
+          icon: 'Common_Potential_Fire_1',
+          description: 'For every 8 shots fired by Willow, a blue bubble is generated near targets inside Bubble Bath, dealing <color=#ec6d21>&Param1&</color> of ATK as AoE Aqua Skill DMG, while increasing the squad\'s &Param2& by <color=#ec6d21>&Param4&</color> for &Param8&s. When a blue bubble is generated, there is a 50% chance it turns into a red bubble, additionally increasing Main Trekker\'s &Param6& by <color=#ec6d21>&Param7&</color> for &Param8&s.',
+          shortDescription: 'For every certain number of shots fired by Willow, a blue bubble is generated near targets inside Bubble Bath, dealing AoE Aqua Skill DMG, while increasing the squad\'s &Param2&. When a blue bubble is generated, there is a chance it turns into a red bubble, additionally increasing Main Trekker\'s &Param6&.',
+          params: [
+            '41%/65%/89%/114%/138%/163%/187%/211%/236%',
+            'Crit Rate',
+            '',
+            '5%/8%/11%/14%/17%/20%/21%/22%/23%',
+            '',
+            'ATK',
+            '19%/30%/41%/52%/63%/74%/85%/96%/107%',
+            ''
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Balmy Surf',
+          icon: 'Common_Potential_Water_1',
+          description: 'Each Aqua Trekker in the squad increases the squad\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Each Aqua Trekker in the squad increases the squad\'s &Param1&.',
+          params: [
+            'DEF PEN',
+            '9/14/19/24/29/34/35/36/37'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        }
+      ],
+      common: [
+        {
+          name: 'Tidal Warning',
+          icon: '16001_Potential_41',
+          description: 'Increases the &Param1& dealt by Beach Warning (Ultimate) by <color=#ec6d21>&Param2&</color>.\nAfter casting the Ultimate, Willow gains 3 additional Decibels every 1.5s, up to a total of 30 Decibels.',
+          shortDescription: 'Increases &Param1&. After casting the Ultimate, generates additional Decibels for a period of time.',
+          params: [
+            'Ultimate DMG',
+            '33%/53%/73%/93%/113%/133%/153%/173%/193%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Shore Regulation',
+          icon: 'Common_Potential_13',
+          description: 'When casting Beach Warning (Ultimate), increases the squad\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+          shortDescription: 'When casting the Ultimate, increases the squad\'s &Param1&.',
+          params: [
+            'ATK',
+            '10%/17%/23%/29%/35%/42%/48%/54%/60%',
+            ''
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Marine Justice',
+          icon: 'Common_Potential_Water_1',
+          description: 'When Beach Warning deals DMG, increases the target\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+          shortDescription: 'When the Ultimate deals DMG, increases the target\'s &Param1&.',
+          params: [
+            'Weercd',
+            '2.7%/4.3%/5.9%/7.6%/9.2%/10.8%/11.6%/12.4%/13.2%',
+            '',
+            ''
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        }
+      ]
+    }
   },
 };
 
 // Helper functions
 export const getPotentialsByCharacter = charName => allPotentials[charName.toLowerCase()];
 export const getAllCharacterNames = () => Object.keys(allPotentials);
+
+
+// kebab-slug aliases
+allPotentials['chaton'] = allPotentials.chaton;
+allPotentials['firefly'] = allPotentials.firefly;
+allPotentials['eleanor'] = allPotentials.eleanor;
+allPotentials['sparkla'] = allPotentials.sparkla;
+allPotentials['otoha'] = allPotentials.otoha;
+allPotentials['karin'] = allPotentials.karin;
+allPotentials['suntide-willow'] = allPotentials.suntideWillow;
 
 // Get a specific potential by name for a character (searches all categories)
 export const getPotentialByName = (characterName, potentialName) => {
@@ -15714,6 +20510,1240 @@ export const getPotentialByName = (characterName, potentialName) => {
   ];
 
   return allCategories.find(p => p.name.toLowerCase() === potentialName.toLowerCase()) || null;
+};
+
+
+
+allPotentials['donna'] = {
+  id: 130,
+  name: 'Donna',
+  element: 'Aqua',
+  buildOrder: {
+    main: {
+      build1: {
+        title: 'Donna: Main Build 1',
+        description: 'A build that fires more and stronger arrows, significantly enhancing Auto Attacks.',
+        potentials: [
+          'Condensation Orbs',
+          'Azure Night',
+          'Tidal Echo',
+          'Piercing Arrow Rain',
+          'Rime Shatterer'
+        ]
+      },
+      build2: {
+        title: 'Donna: Main Build 2',
+        description: 'A build that synergizes with doll attacks, improving ATK and skill synergy.',
+        potentials: [
+          'Precision Marketing',
+          'Bubble Finale',
+          'Surging Tide',
+          'Cloud Piercer',
+          'Hazy Curtain'
+        ]
+      }
+    },
+    support: {
+      build1: {
+        title: 'Donna: Support Build 1',
+        description: 'A build that concentrates attacks on targets in front.',
+        potentials: [
+          'Unleashed Arrow',
+          'Arrowfall Reckoning',
+          'Arrow Pursuit',
+          'Frostbitten Arrow',
+          'Dead Shot'
+        ]
+      },
+      build2: {
+        title: 'Donna: Support Build 2',
+        description: 'A volley build that randomly attacks nearby targets.',
+        potentials: [
+          'Wave-Chasing String',
+          'Stray Arrow',
+          'Coast Crusher',
+          'Aquatic Assault',
+          'Chilling Onslaught'
+        ]
+      }
+    }
+  },
+  potentials: {
+    mainCore: [
+      {
+        name: 'Condensation Orbs',
+        icon: '13001_Potential_01',
+        description: 'When the ##Advertising Doll#4017# disappears, extends the duration of ##Agile#2015# State by <color=#0abec5>&Param2&</color>s.\nWhile ##Agile#2015# State is active, every 10 Auto Attacks generate 1 water orb, accumulating up to <color=#0abec5>7</color> orbs. When ##Agile#2015# State ends, the next Auto Attack fires all water orbs to pierce through the target, with each orb dealing <color=#0abec5>&Param1&</color> of ATK as Aqua Skill DMG.',
+        shortDescription: 'Extends the duration of Donna\'s ##Agile#2015# State.\nWhile ##Agile#2015# State is active, Auto Attacks accumulate water orbs which will all be fired to deal DMG after ##Agile#2015# State ends.',
+        params: [
+          '51%/59%/67%/90%/97%/104%/119%/125%/131%/143%/154%/164%/174%',
+          '3'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {
+          4017: {
+            id: 4017,
+            name: 'Advertising Doll',
+            description: 'Advertising Doll inherits 100% of Donna\'s Base Max HP and 100% of her ATK for 12s.'
+          },
+          2015: {
+            id: 2015,
+            name: 'Agile'
+          }
+        }
+      },
+      {
+        name: 'Azure Night',
+        icon: '13001_Potential_02',
+        description: 'While Donna is in ##Agile#2015# State, she fires <color=#0abec5>4</color> additional ice spikes with each Auto Attack, each spike dealing <color=#0abec5>&Param1&</color> of ATK as Aqua Skill DMG.',
+        shortDescription: 'While Donna is in ##Agile#2015# State, her Auto Attacks deal additional DMG.',
+        params: [
+          '4%/5%/6%/8%/8%/9%/10%/11%/11%/12%/13%/14%/15%'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {
+          2015: {
+            id: 2015,
+            name: 'Agile'
+          }
+        }
+      },
+      {
+        name: 'Precision Marketing',
+        icon: '13001_Potential_03',
+        description: 'When Donna\'s Auto Attack hits a target near the ##Advertising Doll#4017#, the doll unleashes waves, dealing <color=#0abec5>&Param1&</color> of ATK as AoE Aqua Minion DMG.',
+        shortDescription: 'When Donna\'s Auto Attack hits a target near the ##Advertising Doll#4017#, deals AoE DMG.',
+        params: [
+          '115%/132%/150%/201%/218%/234%/266%/280%/294%/321%/344%/367%/390%'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {
+          4017: {
+            id: 4017,
+            name: 'Advertising Doll',
+            description: 'Advertising Doll inherits 100% of Donna\'s Base Max HP and 100% of her ATK for 12s.'
+          }
+        }
+      },
+      {
+        name: 'Bubble Finale',
+        icon: '13001_Potential_04',
+        description: 'Increases the Max HP of the ##Advertising Doll#4017# by <color=#0abec5>&Param1&</color>.\nWhen the doll disappears, deals <color=#0abec5>&Param2&</color> of ATK as AoE Aqua Minion DMG and creates a Bubble Pool that deals <color=#0abec5>&Param5&</color> of ATK as AoE Aqua Minion DMG every 0.5s for 4s. When the ##Advertising Doll#4017# is present, each of its attacks increases own &Param6& by <color=#0abec5>&Param7&</color>, stacking up to &Param8& times.',
+        shortDescription: 'Increases the Max HP of the ##Advertising Doll#4017#.\nWhen the ##Advertising Doll#4017# disappears, deals AoE DMG over time.',
+        params: [
+          '50%',
+          '12%/14%/16%/22%/23%/25%/29%/30%/32%/35%/37%/40%/42%',
+          '',
+          '7',
+          '14%/16%/18%/24%/26%/28%/32%/34%/36%/39%/42%/45%/47%',
+          'Summondmg',
+          '3.5%',
+          ''
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {
+          4017: {
+            id: 4017,
+            name: 'Advertising Doll',
+            description: 'Advertising Doll inherits 100% of Donna\'s Base Max HP and 100% of her ATK for 12s.'
+          }
+        }
+      }
+    ],
+    mainNormal: [
+      {
+        name: 'Tidal Echo',
+        icon: 'Common_Potential_10',
+        description: 'When Donna\'s Auto Attacks deal DMG while she is in ##Agile#2015# State, increases the target\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+        shortDescription: 'When Donna\'s Auto Attacks deal DMG while she is in ##Agile#2015# State, increases the target\'s &Param1&.',
+        params: [
+          'Weercd',
+          '0.4%/0.6%/0.8%/1%/1.2%/1.4%/1.6%/1.8%/2%',
+          '4',
+          '25'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 1,
+        hints: {
+          2015: {
+            id: 2015,
+            name: 'Agile'
+          }
+        }
+      },
+      {
+        name: 'Surging Tide',
+        icon: 'Common_Potential_Water_1',
+        description: 'Increases the ##Advertising Doll#4017#\'s Attack Range by 50% and its &Param2& by <color=#ec6d21>&Param1&</color>.',
+        shortDescription: 'Increases the ##Advertising Doll#4017#\'s Attack Range and &Param2&.',
+        params: [
+          '19%/30%/41%/52%/63%/74%/85%/96%/107%',
+          'Summondmg'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 1,
+        hints: {
+          4017: {
+            id: 4017,
+            name: 'Advertising Doll',
+            description: 'Advertising Doll inherits 100% of Donna\'s Base Max HP and 100% of her ATK for 12s.'
+          }
+        }
+      },
+      {
+        name: 'Lingering Noise',
+        icon: 'Common_Potential_13',
+        description: 'After casting &Param10& (Main Skill), increases own &Param4& by <color=#ec6d21>&Param1&</color> for &Param2&s.',
+        shortDescription: 'After casting the Main Skill, increases own &Param4&.',
+        params: [
+          '12%/19%/26%/34%/41%/48%/55%/62%/70%',
+          '15',
+          '8',
+          'Wee',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 1,
+        hints: {}
+      },
+      {
+        name: 'Piercing Arrow Rain',
+        icon: 'Common_Potential_Water_1',
+        description: 'When Donna\'s Auto Attacks deal DMG to targets inflicted with ##Aqua Mark: Torrent#2008#/##Chill#1027# while she is in ##Agile#2015# State, increases her &Param4& by <color=#ec6d21>&Param1&</color> for &Param2&s, stacking up to &Param3& times.',
+        shortDescription: 'When Donna\'s Auto Attacks deal DMG to targets inflicted with ##Aqua Mark: Torrent#2008#/##Chill#1027# while she is in ##Agile#2015# State, increases her &Param4&.',
+        params: [
+          '0.3%/0.5%/0.7%/0.9%/1.1%/1.3%/1.5%/1.7%/1.9%',
+          '2',
+          '36',
+          'ATK'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {
+          2008: {
+            id: 2008,
+            name: 'Aqua Mark: Torrent',
+            description: 'A special status applied by some Aqua characters to the target for 10 sec.\nWhen triggered by specific Aqua characters\' attacks, the status is removed, and a special effect is activated.'
+          },
+          1027: {
+            id: 1027,
+            name: 'Chill'
+          },
+          2015: {
+            id: 2015,
+            name: 'Agile'
+          }
+        }
+      },
+      {
+        name: 'Cloud Piercer',
+        icon: '13001_Potential_09',
+        description: 'When Donna or the ##Advertising Doll#4017# hits a target, restores &Param1& HP of the doll and increases its &Param6& by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks.\nThis effect can only be triggered once every &Param5&s.',
+        shortDescription: 'When Donna or the ##Advertising Doll#4017# hits a target, heals the Doll and increases its &Param6&.',
+        params: [
+          '15',
+          '5.8%/9.3%/12.8%/16.3%/19.8%/23.3%/26.8%/30.3%/33.8%',
+          '12',
+          '4',
+          '2',
+          'Summondmg'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {
+          4017: {
+            id: 4017,
+            name: 'Advertising Doll',
+            description: 'Advertising Doll inherits 100% of Donna\'s Base Max HP and 100% of her ATK for 12s.'
+          }
+        }
+      },
+      {
+        name: 'Serene Sea Trance',
+        icon: 'Common_Potential_13',
+        description: 'After Donna remains stationary for 1s, increases her &Param2& by <color=#ec6d21>&Param1&</color>. Resets when she moves.',
+        shortDescription: 'When Donna remains stationary, increases her &Param2&. Resets when she moves.',
+        params: [
+          '10%/16%/22%/28%/34%/40%/46%/52%/58%',
+          'ATK'
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 2,
+        hints: {}
+      },
+      {
+        name: 'Rime Shatterer',
+        icon: '13001_Potential_07',
+        description: 'While Donna is in ##Agile#2015# State, her Auto Attacks immediately defeat normal targets with HP below &Param1&. She also deals <color=#ec6d21>&Param2&</color> more &Param3& to elite or higher-tier targets with HP below &Param1&.',
+        shortDescription: 'While Donna is in ##Agile#2015# State, her Auto Attacks immediately defeat targets with low HP. She also deals increased DMG to elites and bosses with low HP.',
+        params: [
+          '350000',
+          '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+          ''
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 3,
+        hints: {
+          2015: {
+            id: 2015,
+            name: 'Agile'
+          }
+        }
+      },
+      {
+        name: 'Hazy Curtain',
+        icon: '13001_Potential_10',
+        description: 'The ##Advertising Doll#4017# gains a shield equal to <color=#ec6d21>&Param1&</color> of its base HP for &Param2&s.\nWhen the shield disappears, the doll deals <color=#ec6d21>&Param3&</color> of ATK as AoE Aqua Minion DMG.',
+        shortDescription: 'The ##Advertising Doll#4017# gains a shield. When the shield disappears, deals AoE DMG.',
+        params: [
+          '20%/26%/33%/39%/46%/52%/59%/65%/72%',
+          '8',
+          '242%/387%/532%/677%/822%/967%/1112%/1257%/1402%'
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 3,
+        hints: {
+          4017: {
+            id: 4017,
+            name: 'Advertising Doll',
+            description: 'Advertising Doll inherits 100% of Donna\'s Base Max HP and 100% of her ATK for 12s.'
+          }
+        }
+      },
+      {
+        name: 'Tidal Mark Resonance',
+        icon: 'Common_Potential_Water_1',
+        description: '&Param10& (Ultimate) can trigger ##Aqua Mark: Torrent#1018#. Triggering this Mark increases own and the ##Advertising Doll#4017#\'s &Param2& by <color=#ec6d21>&Param1&</color> for &Param3&s.',
+        shortDescription: 'The Ultimate can trigger ##Aqua Mark#1018#. Triggering this Mark increases own and the ##Advertising Doll#4017#\'s &Param2&.',
+        params: [
+          '20%/33%/45%/57%/69%/81%/94%/106%/118%',
+          'Wee',
+          '30',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 3,
+        hints: {
+          1018: {
+            id: 1018,
+            name: 'Aqua Mark',
+            description: 'The generic name for all Aqua Marks.\nWhen triggered by specific Aqua Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          },
+          4017: {
+            id: 4017,
+            name: 'Advertising Doll',
+            description: 'Advertising Doll inherits 100% of Donna\'s Base Max HP and 100% of her ATK for 12s.'
+          }
+        }
+      }
+    ],
+    supportCore: [
+      {
+        name: 'Unleashed Arrow',
+        icon: '13001_Potential_21',
+        description: '&Param10& (Support Skill) fires <color=#0abec5>1</color> additional Snow-Piercing Arrow with each shot for each Aqua Trekkers in the squad other than Donna, dealing <color=#0abec5>&Param1&</color> of ATK as Aqua Skill DMG.',
+        shortDescription: 'The Support Skill fires additional Snow-Piercing Arrows to deal DMG based on the number of Aqua Trekkers in the squad.',
+        params: [
+          '82%/95%/107%/144%/155%/167%/190%/200%/210%/230%/246%/262%/279%',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {}
+      },
+      {
+        name: 'Arrowfall Reckoning',
+        icon: '13001_Potential_22',
+        description: 'When a Snow-Piercing Arrow deals DMG to Donna\'s target, 1 arrow tail is left on the target, up to <color=#0abec5>&Param3&</color>.\nWhen Snow-Piercing Arrow deals DMG to a target with arrow tails, it deals <color=#0abec5>&Param4&</color> of ATK as Aqua Skill DMG.\nWhen &Param10& (Support Skill) ends, pulls out all arrow tails to deal <color=#0abec5>&Param1&</color> of ATK as Aqua Skill DMG. Each arrow tail on the target increases this DMG by <color=#0abec5>&Param2&</color>.',
+        shortDescription: 'When Snow-Piercing Arrow deals DMG, the arrow tail is left on the target. When the skill ends, pulls out the arrow tail to deal DMG.',
+        params: [
+          '218%/251%/284%/382%/413%/443%/504%/530%/557%/609%/653%/696%/740%',
+          '0.85%',
+          '30',
+          '31%/36%/40%/54%/59%/63%/72%/76%/79%/87%/93%/99%/105%',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {}
+      },
+      {
+        name: 'Wave-Chasing String',
+        icon: '13001_Potential_23',
+        description: 'Increases Frost Wave\'s Attack Range by <color=#0abec5>50%</color> and Skill DMG dealt by <color=#0abec5>&Param2&</color>.\nWhen the entire squad consists of Aqua Trekkers, &Param10& (Support Skill) generates 1 Frost Wave for every <color=#0abec5>3</color> shots fired.',
+        shortDescription: 'Increases Frost Wave\'s DMG and Attack Range.\nWhen the entire squad consists of Aqua Trekkers, the Support Skill generates more Frost Waves.',
+        params: [
+          '437%/502%/567%/764%/825%/886%/1008%/1061%/1113%/1218%/1305%/1393%/1480%',
+          '0.57%',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {}
+      },
+      {
+        name: 'Stray Arrow',
+        icon: '13001_Potential_24',
+        description: 'Each time &Param10& (Support Skill) generates a Frost Wave, creates <color=#0abec5>3</color> Frost Wave Orbs that track the target. Upon hit, they deal <color=#0abec5>&Param1&</color> of ATK as AoE Aqua Skill DMG.\nFrost Wave Orbs prioritize attacking different targets, with each distinct target increasing their Skill DMG dealt by <color=#0abec5>&Param2&</color>.',
+        shortDescription: 'Each time the Support Skill generates a Frost Wave, additionally creates Frost Wave Orbs that track the target and deal AoE DMG.',
+        params: [
+          '84%/97%/109%/147%/159%/171%/195%/205%/215%/235%/252%/269%/285%',
+          '0.57%',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {}
+      }
+    ],
+    supportNormal: [
+      {
+        name: 'Arrow Pursuit',
+        icon: '13001_Potential_25',
+        description: 'Increases Snow-Piercing Arrow\'s &Param2& by <color=#ec6d21>&Param3&</color>. Upon dealing 3 instances of DMG to Donna\'s target, deals an additional <color=#ec6d21>&Param1&</color> of ATK as Aqua Skill DMG.\nThis DMG can only be triggered once every 0.2s.',
+        shortDescription: 'When Snow-Piercing Arrow deals multiple instances of DMG to Donna\'s target, deals additional DMG.',
+        params: [
+          '83%/133%/183%/233%/283%/333%/382%/432%/482%',
+          '',
+          '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%'
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 1,
+        hints: {}
+      },
+      {
+        name: 'Coast Crusher',
+        icon: 'Common_Potential_Water_1',
+        description: 'Increases Frost Wave\'s Crit Rate by &Param1& and &Param9& by <color=#ec6d21>&Param8&</color>.\nWhen Frost Wave lands a Crit Hit, increases the &Param2& of Aqua Trekkers in the squad by <color=#ec6d21>&Param3&</color> for &Param6&s, stacking up to &Param7& times.',
+        shortDescription: 'Increases Frost Wave\'s Crit Rate and DMG.\nWhen Frost Wave lands a Crit Hit, increases the &Param2& of Aqua Trekkers in the squad.',
+        params: [
+          '0.06%',
+          'ATK',
+          '4%/6%/8%/10%/12%/14%/16%/18%/20%',
+          '',
+          '',
+          '7',
+          '4',
+          '',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 1,
+        hints: {}
+      },
+      {
+        name: 'Messenger Arrow',
+        icon: 'Common_Potential_Water_1',
+        description: 'When casting &Param10& (Support Skill), delivers a letter near the main Aqua Trekker.\nWhen the main Trekker picks up the letter, increases their &Param4& by <color=#ec6d21>&Param2&</color> for &Param1&s.',
+        shortDescription: 'When casting &Param10& (Support Skill), delivers a letter near the main Aqua Trekker.\nWhen the main Trekker picks up the letter, increases their &Param4&.',
+        params: [
+          '12',
+          '12%/18%/25%/32%/39%/46%/53%/60%/67%',
+          '1',
+          'Wee',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 1,
+        hints: {}
+      },
+      {
+        name: 'Frostbitten Arrow',
+        icon: 'Common_Potential_Water_1',
+        description: 'When Snow-Piercing Arrow deals 3 instances of DMG to Donna\'s target, increases the target\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+        shortDescription: 'When Snow-Piercing Arrow deals multiple instances of DMG to Donna\'s target, increases the target\'s &Param1&.',
+        params: [
+          'Weercd',
+          '1.8%/2.9%/4%/5.1%/6.2%/7.3%/8.4%/9.5%/10.6%',
+          '6',
+          '9'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {}
+      },
+      {
+        name: 'Aquatic Assault',
+        icon: '13001_Potential_29',
+        description: 'When Frost Wave deals DMG to different targets, increases own &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+        shortDescription: 'When Frost Wave deals DMG to different targets, increases own &Param1&.',
+        params: [
+          'Wee',
+          '20%/32%/44%/56%/68%/80%/92%/104%/116%',
+          '10',
+          '3'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {}
+      },
+      {
+        name: 'Wave Resonance',
+        icon: 'Common_Potential_Water_1',
+        description: 'When &Param10& (Ultimate) deals DMG, inflicts ##Aqua Mark: Torrent#2008#.\nDuring the rain of arrows, when any Trekker triggers an ##Aqua Mark: Torrent#2008#, increases Donna\'s &Param2& by <color=#ec6d21>&Param1&</color> for &Param3&s, stacking up to &Param4& times.',
+        shortDescription: 'The Ultimate can inflict ##Aqua Mark: Torrent#2008#.\nWhile casting the Ultimate, when a Trekker triggers ##Aqua Mark: Torrent#2008#, increases Donna\'s &Param2&.',
+        params: [
+          '9%/15%/20%/26%/31%/37%/42%/48%/53%',
+          'Wee',
+          '40',
+          '3',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {
+          2008: {
+            id: 2008,
+            name: 'Aqua Mark: Torrent',
+            description: 'A special status applied by some Aqua characters to the target for 10 sec.\nWhen triggered by specific Aqua characters\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      },
+      {
+        name: 'Dead Shot',
+        icon: 'Common_Potential_10',
+        description: 'Snow-Piercing Arrow immediately defeats normal targets with HP below &Param1&.\nAlso, deals <color=#ec6d21>&Param2&</color> more &Param3& to elite or higher-tier targets with HP below &Param1&.',
+        shortDescription: 'Snow-Piercing Arrow immediately defeats targets with low HP and deals increased DMG to elites and bosses with low HP.',
+        params: [
+          '300000',
+          '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 3,
+        hints: {}
+      },
+      {
+        name: 'Chilling Onslaught',
+        icon: 'Common_Potential_Water_1',
+        description: 'Upon its first shot, &Param10& (Support Skill) creates a Frost Wave.\nIncreases the &Param1& dealt by Frost Wave by <color=#ec6d21>&Param2&</color>.',
+        shortDescription: 'Upon its first shot, the Support Skill creates a Frost Wave.\nIncreases the &Param1& dealt by Frost Wave.',
+        params: [
+          '',
+          '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 3,
+        hints: {}
+      },
+      {
+        name: 'Water Ripple',
+        icon: 'Common_Potential_Water_1',
+        description: 'Increases the &Param3& of Aqua Trekkers in the squad by <color=#ec6d21>&Param1&</color>.',
+        shortDescription: 'Increases the &Param3& of Aqua Trekkers in the squad.',
+        params: [
+          '15%/24%/33%/42%/51%/60%/69%/78%/87%',
+          '',
+          'ATK'
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 3,
+        hints: {}
+      }
+    ],
+    common: [
+      {
+        name: 'Rushing Tide',
+        icon: '13001_Potential_41',
+        description: 'Increases &Param10& (Ultimate)\'s Attack Range by 50%.\nIncreases Donna\'s &Param2& by <color=#ec6d21>&Param1&</color>.',
+        shortDescription: 'Increases the Ultimate\'s Attack Range and DMG.',
+        params: [
+          '0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: null,
+        hints: {}
+      },
+      {
+        name: 'Corrosive Torrent',
+        icon: 'Common_Potential_Water_1',
+        description: 'Increases the &Param2& of Aqua Trekkers within the Attack Range of &Param10& (Ultimate) by <color=#ec6d21>&Param1&</color>.',
+        shortDescription: 'Increases the &Param2& of Aqua Trekkers within the Attack Range of &Param10& (Ultimate).',
+        params: [
+          '20%/32%/44%/56%/68%/80%/92%/104%/116%',
+          'ATK',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: null,
+        hints: {}
+      },
+      {
+        name: 'Freezing Stasis',
+        icon: 'Common_Potential_Water_1',
+        description: 'Each time &Param10& (Ultimate) hits a target inflicted with ##Frozen#1002#/##Chill#1027#, increases rain of arrows\' duration by &Param1&s and its &Param3& dealt by <color=#ec6d21>&Param2&</color>. This effect can only be triggered &Param4& times.',
+        shortDescription: 'Each time the Ultimate hits a target inflicted with ##Frozen#1002#/##Chill#1027#, increases its duration and &Param3&.',
+        params: [
+          '1',
+          '0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%',
+          '',
+          '5',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: null,
+        hints: {
+          1002: {
+            id: 1002,
+            name: 'Freeze',
+            description: 'Frozen and incapacitated. Unable to take action.'
+          },
+          1027: {
+            id: 1027,
+            name: 'Chill'
+          }
+        }
+      }
+    ]
+  }
+};
+
+allPotentials['wraith'] = {
+  id: 143,
+  name: 'Wraith',
+  element: 'Ventus',
+  buildOrder: {
+    main: {
+      build1: {
+        title: 'Wraith: Main Build 1',
+        description: 'A melee build that generates Whirlwinds to destroy projectiles when activating a skill or Auto Attack.',
+        potentials: [
+          'Last Gasp of Gale',
+          'Twin Shadows',
+          'Zero Hour',
+          'Blade\'s Waltz',
+          'Rapid Draw'
+        ]
+      },
+      build2: {
+        title: 'Wraith: Main Build 2',
+        description: 'A build that enhances the ranged DMG of skills and Auto Attacks, significantly boosting ranged DPS.',
+        potentials: [
+          'Storm-Piercing Surge',
+          'Wind-Splitting Bullet',
+          'Overheat Shot',
+          'Scorching Gale',
+          'Tracewind Blink'
+        ]
+      }
+    },
+    support: {
+      build1: {
+        title: 'Wraith: Support Build 1',
+        description: 'A build that allows skills to generate ground fissures and Whirlwinds, boosting sustained DPS.',
+        potentials: [
+          'Underbarrel Launcher',
+          'Suppressive Wind-Splitting Round',
+          'Ominous Vibe',
+          'Hunter\'s Instinct',
+          'Frost-Proof Constitution'
+        ]
+      },
+      build2: {
+        title: 'Wraith: Support Build 2',
+        description: 'A build that enhances skill range and DMG, boosting burst DMG potential.',
+        potentials: [
+          'Rotary Saw',
+          'Enhanced Rapid-Fire Round',
+          'Warrior\'s Quality',
+          'Will of Vengeance',
+          'Dawn\'s Embrace'
+        ]
+      }
+    }
+  },
+  potentials: {
+    mainCore: [
+      {
+        name: 'Last Gasp of Gale',
+        icon: '14301_Potential_01',
+        description: 'Within &Param1&s after casting Whirling Onslaught (Main Skill), when the next Auto Attack slash deals DMG, it generates a Whirlwind that deal <color=#0abec5>&Param2&</color> of ATK as AoE Auto Attack DMG every 0.5s for 4s.\nThe Whirlwind can track and attack enemies, triggering ##Ventus Mark#1017#.',
+        shortDescription: 'For a short duration after the Main Skill is cast, combo slashes of Auto Attacks can generate a Whirlwind to deal DMG. The Whirlwind can track and attack enemies.',
+        params: [
+          '4',
+          '27%/31%/35%/47%/51%/54%/62%/65%/68%/75%/80%/86%/91%'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {
+          1017: {
+            id: 1017,
+            name: 'Ventus Mark',
+            description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      },
+      {
+        name: 'Twin Shadows',
+        icon: '14301_Potential_02',
+        description: 'When casting Whirling Onslaught (Main Skill), generates 2 Whirlwinds that deal <color=#0abec5>&Param1&</color> of ATK as AoE Auto Attack DMG every 0.5s for 4s. \nThe Whirlwind can increase its Attack Range over time and trigger ##Ventus Mark#1017#.',
+        shortDescription: 'When casting the Main Skill, generates multiple Whirlwinds to deal DMG. The Whirlwind can increase its Attack Range over time.',
+        params: [
+          '27%/31%/35%/47%/51%/54%/62%/65%/68%/75%/80%/86%/91%'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {
+          1017: {
+            id: 1017,
+            name: 'Ventus Mark',
+            description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      },
+      {
+        name: 'Storm-Piercing Surge',
+        icon: '14301_Potential_03',
+        description: 'The bullets of Whirling Onslaught (Main Skill) become lasers that track distant targets. Increases the &Param1& dealt by Wraith\'s shots to distant targets by <color=#0abec5>&Param2&</color>.',
+        shortDescription: 'The Main Skill\'s bullets become lasers that track distant targets. Increases the &Param1& dealt by Wraith\'s shots to distant targets.',
+        params: [
+          '',
+          '0.2%'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {}
+      },
+      {
+        name: 'Wind-Splitting Bullet',
+        icon: '14301_Potential_04',
+        description: 'When holding to cast Whirling Onslaught (Main Skill), each round fires <color=#0abec5>4</color> more bullets than the previous one.\nIncreases the &Param1& dealt by Wraith\'s bullets by <color=#0abec5>&Param2&</color>. Can trigger ##Ventus Mark#1017#.',
+        shortDescription: 'Increases the number of bullets fired when holding to cast the Main Skill continuously. Increases the &Param1& dealt by all Wraith\'s shots.',
+        params: [
+          '',
+          '0.2%'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {
+          1017: {
+            id: 1017,
+            name: 'Ventus Mark',
+            description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      }
+    ],
+    mainNormal: [
+      {
+        name: 'Zero Hour',
+        icon: 'Common_Potential_Wind_1',
+        description: 'Whirling Onslaught (Main Skill)\'s slashes will stir up a storm, blocking hostile projectiles.\nAlso increases Wraith\'s &Param1& to nearby targets by <color=#ec6d21>&Param2&</color>.',
+        shortDescription: 'The Main Skill\'s slashes can block enemy projectile attacks. Increases Wraith\'s DMG dealt to nearby targets.',
+        params: [
+          '',
+          '0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%'
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 1,
+        hints: {}
+      },
+      {
+        name: 'Overheat Shot',
+        icon: 'Common_Potential_13',
+        description: 'When casting Whirling Onslaught (Main Skill), increases the Main Skill\'s shot &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks.',
+        shortDescription: 'When casting Whirling Onslaught (Main Skill), increases the &Param1& of Main Skill\'s shots.',
+        params: [
+          '',
+          '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+          '1',
+          '3'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 1,
+        hints: {}
+      },
+      {
+        name: 'Unseen Predator',
+        icon: 'Common_Potential_13',
+        description: 'Wraith can dodge one more time.\nWhen dodging, increases &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+        shortDescription: 'Increases the number of Wraith\'s dodges. Increases &Param1& when dodging.',
+        params: [
+          'ATK',
+          '14%/23%/32%/40%/49%/57%/66%/75%/83%',
+          '4'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 1,
+        hints: {}
+      },
+      {
+        name: 'Blade\'s Waltz',
+        icon: 'Common_Potential_13',
+        description: 'Increases the slash &Param1& of Whirling Onslaught (Main Skill) by <color=#ec6d21>&Param2&</color>.\nIncreases Wraith\'s &Param3& by <color=#ec6d21>&Param4&</color>.',
+        shortDescription: 'Increases the &Param1& dealt by the Main Skill\'s slashes. Increases Wraith\'s &Param3&.',
+        params: [
+          '',
+          '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+          'Normal DMG',
+          '13%/21%/28%/36%/44%/51%/59%/67%/74%'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {}
+      },
+      {
+        name: 'Scorching Gale',
+        icon: 'Common_Potential_Wind_1',
+        description: 'When Wraith\'s shots deal DMG, increases &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks. This effect can only be triggered &Param5& times per second.\nThe effect ends if the Main Skill is cast.',
+        shortDescription: 'When Wraith\'s shots deal DMG, increases &Param1&.',
+        params: [
+          'Skill DMG',
+          '2.3%/3.7%/5.1%/6.5%/7.9%/9.3%/10.7%/12.1%/13.5%',
+          '5',
+          '8',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {}
+      },
+      {
+        name: 'Dauntless Poise',
+        icon: 'Common_Potential_Wind_1',
+        description: 'Each Ventus Trekker in the squad increases Wraith\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+        shortDescription: 'Each Ventus Trekker in the squad increase Wraith\'s &Param1&.',
+        params: [
+          'ATK',
+          '9%/14%/19%/24%/29%/35%/40%/45%/50%'
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 2,
+        hints: {}
+      },
+      {
+        name: 'Rapid Draw',
+        icon: 'Common_Potential_8',
+        description: 'When Whirling Onslaught (Main Skill)\'s slashes deal DMG, increases Wraith\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+        shortDescription: 'When the Main Skill\'s slashes deal DMG, increases &Param1&.',
+        params: [
+          'Normal DMG',
+          '14%/22%/31%/39%/47%/55%/64%/72%/80%',
+          '5',
+          '1'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 3,
+        hints: {}
+      },
+      {
+        name: 'Tracewind Blink',
+        icon: 'Common_Potential_Wind_1',
+        description: 'Within &Param1&s after casting Whirling Onslaught (Main Skill), enhances Wraith\'s weapon. Each additional Main Skill stack consumed extends the duration by 3s.\nWhile Wraith\'s weapon is enhanced, her Auto Attack shots fire lasers, dealing <color=#ec6d21>&Param2&</color> of ATK as Ventus Skill DMG. This effect can only be triggered once per second.',
+        shortDescription: 'For a short duration after Whirling Onslaught (Main Skill) is cast, enhances Wraith\'s weapon, during which her Auto Attack shots fire lasers to deal DMG.',
+        params: [
+          '3',
+          '77%/123%/169%/216%/262%/308%/354%/400%/446%'
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 3,
+        hints: {}
+      },
+      {
+        name: 'Tempest Stance',
+        icon: 'Common_Potential_Wind_1',
+        description: 'When Wraith triggers ##Ventus Mark#1017#, increases &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+        shortDescription: 'When Wraith triggers ##Ventus Mark#1017#, increases &Param1&.',
+        params: [
+          'Aee',
+          '6%/10%/13%/17%/20%/24%/28%/31%/35%',
+          '3',
+          '3'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 3,
+        hints: {
+          1017: {
+            id: 1017,
+            name: 'Ventus Mark',
+            description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      }
+    ],
+    supportCore: [
+      {
+        name: 'Underbarrel Launcher',
+        icon: '14301_Potential_21',
+        description: 'Rolling Bungee (Support Skill)\'s shot creates a tornado that tracks the target, dealing <color=#0abec5>&Param1&</color> of ATK as AoE Ventus Skill DMG every 0.5s for 8s. Can trigger ##Ventus Mark#1017#.',
+        shortDescription: 'The Support Skill shoots and generates a Tornado that tracks the target, dealing multiple instances of DMG.',
+        params: [
+          '18%/21%/24%/32%/35%/38%/43%/45%/47%/52%/56%/59%/63%'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {
+          1017: {
+            id: 1017,
+            name: 'Ventus Mark',
+            description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      },
+      {
+        name: 'Suppressive Wind-Splitting Round',
+        icon: '14301_Potential_22',
+        description: 'Rolling Bungee (Support Skill)\'s slashes create a rift in the ground, dealing <color=#0abec5>&Param1&</color> of ATK as AoE Ventus Skill DMG every 0.5s for a total of 8s. Can trigger ##Ventus Mark#1017#.',
+        shortDescription: 'The Support Skill slashes and cracks the ground, dealing multiple instances of DMG.',
+        params: [
+          '18%/21%/24%/32%/35%/38%/43%/45%/47%/52%/56%/59%/63%'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {
+          1017: {
+            id: 1017,
+            name: 'Ventus Mark',
+            description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      },
+      {
+        name: 'Rotary Saw',
+        icon: '14301_Potential_23',
+        description: 'Rolling Bungee (Support Skill) triggers an additional slash, dealing <color=#0abec5>&Param1&</color> of ATK as Ventus Skill DMG in a large area.',
+        shortDescription: 'The Support Skill slashes and then performs a horizontal sweep, dealing DMG in a large area.',
+        params: [
+          '300%/345%/390%/525%/567%/609%/692%/728%/764%/836%/896%/956%/1016%'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {}
+      },
+      {
+        name: 'Enhanced Rapid-Fire Round',
+        icon: '14301_Potential_24',
+        description: 'Rolling Bungee (Support Skill) fires <color=#0abec5>2</color> additional lasers.',
+        shortDescription: 'The Support Skill fires additional lasers.',
+        params: [],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {}
+      }
+    ],
+    supportNormal: [
+      {
+        name: 'Ominous Vibe',
+        icon: 'Common_Potential_Wind_1',
+        description: 'When Rolling Bungee (Support Skill) deals DMG, there is a 50% chance to fire lasers, dealing <color=#ec6d21>&Param1&</color> of Wraith\'s ATK as Ventus Skill DMG. Can trigger ##Ventus Mark#1017#.',
+        shortDescription: 'When the Support Skill deals DMG, there is a chance to fire lasers to deal DMG.',
+        params: [
+          '24%/38%/53%/67%/82%/97%/111%/126%/140%'
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 1,
+        hints: {
+          1017: {
+            id: 1017,
+            name: 'Ventus Mark',
+            description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      },
+      {
+        name: 'Warrior\'s Quality',
+        icon: 'Common_Potential_8',
+        description: 'When the slashes of Rolling Bungee (Support Skill) deal DMG, increases the &Param3& of this Support Skill\'s shots by <color=#ec6d21>&Param1&</color>, stacking up to &Param2& times.',
+        shortDescription: 'When the Support Skill\'s slashes deal DMG, increases the &Param3& of this Support Skill\'s shots.',
+        params: [
+          '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+          '9',
+          ''
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 1,
+        hints: {}
+      },
+      {
+        name: 'Expatriate',
+        icon: 'Common_Potential_Wind_1',
+        description: 'Increases Rolling Bungee (Support Skill)\'s &Param2& dealt to targets inflicted with ##Ventus Mark#1017# by <color=#ec6d21>&Param1&</color>.',
+        shortDescription: 'Increases the Support Skill\'s DMG dealt to targets inflicted with ##Ventus Mark#1017#.',
+        params: [
+          '0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 1,
+        hints: {
+          1017: {
+            id: 1017,
+            name: 'Ventus Mark',
+            description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      },
+      {
+        name: 'Hunter\'s Instinct',
+        icon: 'Common_Potential_8',
+        description: 'When Rolling Bungee (Support Skill) deals DMG, increases Wraith\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+        shortDescription: 'When the Support Skill deals DMG, increases Wraith\'s &Param1&.',
+        params: [
+          'ATK',
+          '1.2%/1.9%/2.6%/3.3%/4%/4.7%/5.4%/6.1%/6.8%',
+          '4',
+          '10'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {}
+      },
+      {
+        name: 'Will of Vengeance',
+        icon: 'Common_Potential_13',
+        description: 'Increases the &Param2& of the slashes and shots of Rolling Bungee (Support Skill) by <color=#ec6d21>&Param1&</color>.',
+        shortDescription: 'Increases the Support Skill\'s DMG.',
+        params: [
+          '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {}
+      },
+      {
+        name: 'Avenger',
+        icon: 'Common_Potential_Wind_1',
+        description: 'When a Ventus Trekker other than Wraith triggers ##Ventus Mark#1017#, there is a 50% chance to create a Whirlwind, dealing <color=#ec6d21>&Param1&</color> of Wraith\'s ATK as AoE Skill DMG every 0.5s for a total of 8s. The Whirlwind can track and attack enemies. This effect can only be triggered once every 3s.',
+        shortDescription: 'When a Ventus squadmate triggers ##Ventus Mark#1017#, there is a chance to create a Whirlwind, dealing multiple instances of DMG.',
+        params: [
+          '2%/4%/6%/7%/9%/10%/12%/14%/15%'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {
+          1017: {
+            id: 1017,
+            name: 'Ventus Mark',
+            description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      },
+      {
+        name: 'Frost-Proof Constitution',
+        icon: 'Common_Potential_Water_1',
+        description: 'Casting Rolling Bungee (Support Skill) increases Wraith\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+        shortDescription: 'When casting the Support Skill, increases Wraith\'s &Param1&.',
+        params: [
+          'Skill DMG',
+          '9%/15%/21%/26%/32%/37%/43%/49%/54%',
+          '10'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 3,
+        hints: {}
+      },
+      {
+        name: 'Dawn\'s Embrace',
+        icon: 'Common_Potential_Light_1',
+        description: 'Increases the &Param3& of Rolling Bungee (Support Skill)\'s slashes by <color=#ec6d21>&Param1&</color>. If only one target is hit, increases this bonus to <color=#ec6d21>&Param2&</color>.',
+        shortDescription: 'The fewer targets the Support Skill\'s slashes hit, the higher the DMG dealt.',
+        params: [
+          '0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%',
+          '0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 3,
+        hints: {}
+      },
+      {
+        name: 'Flame Hunter',
+        icon: 'Common_Potential_Wind_1',
+        description: 'Each Ventus Trekker in the squad increases Wraith\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+        shortDescription: 'Each Ventus Trekker in the squad increase Wraith\'s &Param1&.',
+        params: [
+          'ATK',
+          '5%/8%/11%/14%/17%/20%/23%/26%/29%',
+          '3'
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 3,
+        hints: {}
+      }
+    ],
+    common: [
+      {
+        name: 'Daybreaker',
+        icon: '14301_Potential_41',
+        description: 'Increases Thousand Shade Dance (Ultimate)\'s shuttling speed. Also increases Wraith\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+        shortDescription: 'Increases the Ultimate\'s shuttling speed. Also increases Wraith\'s &Param1&.',
+        params: [
+          'Ultimate DMG',
+          '144%/230%/316%/402%/488%/574%/660%/746%/832%'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: null,
+        hints: {}
+      },
+      {
+        name: 'Raging Battle Will',
+        icon: 'Common_Potential_Earth_1',
+        description: 'After casting Thousand Shade Dance (Ultimate), increases Wraith\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+        shortDescription: 'After casting the Ultimate, increases Wraith\'s &Param1&.',
+        params: [
+          'ATK',
+          '28%/44%/61%/77%/94%/111%/127%/144%/160%',
+          '20'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: null,
+        hints: {}
+      },
+      {
+        name: 'Tempest Siphon',
+        icon: 'Common_Potential_Earth_1',
+        description: 'When Thousand Shade Dance (Ultimate) unfolds its domain, pulls in targets. Also increases Wraith\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+        shortDescription: 'When the Ultimate unfolds its domain, pulls in targets. Also increases Wraith\'s &Param1&.',
+        params: [
+          'Ultimate DMG',
+          '115%/185%/254%/323%/392%/461%/531%/600%/669%'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: null,
+        hints: {}
+      }
+    ]
+  }
 };
 
 export default allPotentials;

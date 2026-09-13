@@ -1,71 +1,50 @@
 ---
 // Stella Sora Skill Image Component
 // Combines: element plate (background) + skill type icon + character skill icon (overlay)
-import { Image } from 'astro:assets';
-
-// Import element plate backgrounds
-import ignisPlate from '../../assets/images/games/stella-sora/skills/ignis_plate.png';
-import aquaPlate from '../../assets/images/games/stella-sora/skills/aqua_plate.png';
-import terraPlate from '../../assets/images/games/stella-sora/skills/terra_plate.png';
-import ventusPlate from '../../assets/images/games/stella-sora/skills/ventus_plate.png';
-import luxPlate from '../../assets/images/games/stella-sora/skills/lux_plate.png';
-import umbraPlate from '../../assets/images/games/stella-sora/skills/umbra_plate.png';
+// Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
 // Element plate mapping
-const elementPlateMap: Record<string, ImageMetadata> = {
-  ignis: ignisPlate,
-  aqua: aquaPlate,
-  terra: terraPlate,
-  ventus: ventusPlate,
-  lux: luxPlate,
-  umbra: umbraPlate,
+const elementPlateMap: Record<string, string> = {
+  ignis: 'skills/ignis_plate.png',
+  aqua: 'skills/aqua_plate.png',
+  terra: 'skills/terra_plate.png',
+  ventus: 'skills/ventus_plate.png',
+  lux: 'skills/lux_plate.png',
+  umbra: 'skills/umbra_plate.png',
 };
-
-// Import skill type icons (small icons showing skill type)
-import normalIcon from '../../assets/images/games/stella-sora/skills/normal.png';
-import skillIcon from '../../assets/images/games/stella-sora/skills/skill.png';
-import supportIcon from '../../assets/images/games/stella-sora/skills/support.png';
-import ultimateIcon from '../../assets/images/games/stella-sora/skills/ultimate.png';
 
 // Skill type icon mapping
-const skillTypeIconMap: Record<string, ImageMetadata> = {
-  'normal-attack': normalIcon,
-  skill: skillIcon,
-  'support-skill': supportIcon,
-  ultimate: ultimateIcon,
+const skillTypeIconMap: Record<string, string> = {
+  'normal-attack': 'skills/normal.png',
+  skill: 'skills/skill.png',
+  'support-skill': 'skills/support.png',
+  ultimate: 'skills/ultimate.png',
 };
 
-// Dynamically import all character skill images
-const characterSkillImages = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/images/games/stella-sora/characters/*/skills/*.png',
-  { eager: true }
-);
+// Character slugs that have a skills/ folder on R2 (frozen listing; extend when new art uploads)
+const SKILL_SLUGS = new Set([
+  'amber', 'ann', 'canace', 'caramel', 'chaton', 'chitose', 'chixia', 'coronis', 'cosette',
+  'donna', 'eleanor', 'firefly', 'firenze', 'flora', 'freesia', 'fuyuka', 'gerie', 'iris',
+  'jinglin', 'karin', 'kasimira', 'laru', 'minova', 'mistique', 'nanoha', 'nazuka', 'nazuna',
+  'noya', 'otoha', 'ridge', 'shia', 'shimiao', 'snowish-laru', 'sparkla', 'springseek-coronis',
+  'suntide-willow', 'teresa', 'tilia', 'wraith',
+]);
 
-// Create a nested map: characterSlug -> skillType -> ImageMetadata
-const skillImageMap: Record<string, Record<string, ImageMetadata>> = {};
-for (const [path, module] of Object.entries(characterSkillImages)) {
-  // Extract character slug and skill type from path
-  // Path format: ../../assets/images/games/stella-sora/characters/[char]/skills/[skill-type].png
-  const match = path.match(/characters\/([^/]+)\/skills\/([^/]+)\.png$/);
-  if (match) {
-    const [, charSlug, skillType] = match;
-    if (!skillImageMap[charSlug]) {
-      skillImageMap[charSlug] = {};
-    }
-    skillImageMap[charSlug][skillType] = module.default;
-  }
-}
-
-// Character element mapping (all 29 characters)
+// Character element mapping (all 39 characters)
 const characterElementMap: Record<string, string> = {
   amber: 'ignis',
   ann: 'ventus',
   canace: 'ventus',
   caramel: 'umbra',
+  chaton: 'ignis',
   chitose: 'aqua',
   chixia: 'ignis',
   coronis: 'umbra',
   cosette: 'umbra',
+  donna: 'aqua',
+  eleanor: 'ventus',
+  firefly: 'lux',
   firenze: 'umbra',
   flora: 'ignis',
   freesia: 'aqua',
@@ -73,21 +52,26 @@ const characterElementMap: Record<string, string> = {
   gerie: 'terra',
   iris: 'aqua',
   jinglin: 'lux',
+  karin: 'umbra',
   kasimira: 'ignis',
   laru: 'lux',
-  'snowish-laru': 'ignis',
   minova: 'lux',
   mistique: 'umbra',
   nanoha: 'ventus',
   nazuka: 'ventus',
   nazuna: 'terra',
   noya: 'ventus',
+  otoha: 'umbra',
   ridge: 'terra',
-  'springseek-coronis': 'terra',
   shia: 'lux',
   shimiao: 'aqua',
+  'snowish-laru': 'ignis',
+  sparkla: 'terra',
+  'springseek-coronis': 'terra',
+  'suntide-willow': 'aqua',
   teresa: 'aqua',
   tilia: 'lux',
+  wraith: 'ventus',
 };
 
 export interface Props {
@@ -104,62 +88,62 @@ const { characterName, skillType, alt, loading = 'lazy', class: className } = As
 // Special cases for characters with different folder names
 const characterSlugMap: Record<string, string> = {
   'snowish laru': 'snowish-laru',
+  snowishlaru: 'snowish-laru',
+  springseekcoronis: 'springseek-coronis',
+  suntidewillow: 'suntide-willow',
 };
 const normalizedName = characterName.toLowerCase().replace(/\s+/g, '-');
 const characterSlug = characterSlugMap[normalizedName] || normalizedName;
 
 // Get element plate for this character
 const element = characterElementMap[characterSlug] || 'ignis';
-const plateSrc = elementPlateMap[element];
+const platePath = elementPlateMap[element];
 
 // Get skill type icon
-const typeIconSrc = skillTypeIconMap[skillType];
+const typeIconPath = skillTypeIconMap[skillType];
 
 // Get character-specific skill image
-const characterSkills = skillImageMap[characterSlug];
-const skillSrc = characterSkills?.[skillType];
+const hasSkills = SKILL_SLUGS.has(characterSlug);
+const skillSrc = hasSkills ? `${R2}/characters/${characterSlug}/skills/${skillType}.png` : null;
 
 const imageAlt = skillSrc ? alt : `Image not found: ${alt}`;
 ---
 
 <div class={`skill-image-container ${className || ''}`}>
   {
-    plateSrc && skillSrc ? (
+    platePath && skillSrc ? (
       <div class="skill-image-layered">
         {/* Background: Element plate */}
-        <Image
-          src={plateSrc}
+        <img
+          src={`${R2}/${platePath}`}
           alt=""
           width={120}
           height={120}
           loading={loading}
           class="skill-bg-plate"
-          quality={90}
-          format="webp"
+          decoding="async"
         />
         {/* Middle: Skill type icon */}
-        {typeIconSrc && (
-          <Image
-            src={typeIconSrc}
+        {typeIconPath && (
+          <img
+            src={`${R2}/${typeIconPath}`}
             alt=""
             width={40}
             height={40}
             loading={loading}
             class="skill-type-icon"
-            quality={90}
-            format="webp"
+            decoding="async"
           />
         )}
         {/* Foreground: Character skill image */}
-        <Image
+        <img
           src={skillSrc}
           alt={imageAlt}
           width={80}
           height={80}
           loading={loading}
           class="skill-char-icon"
-          quality={95}
-          format="webp"
+          decoding="async"
         />
       </div>
     ) : (

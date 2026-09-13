@@ -19,6 +19,9 @@ import HighlightedText from '../../../../components/stella-sora/HighlightedText.
 import { STELLA_SORA_CHARACTERS } from '../../../../data/stella-sora/characters.js';
 import { getGiftByName } from '../../../../data/stella-sora/gifts.js';
 import { allPotentials } from '../../../../data/stella-sora/all-potentials.js';
+import { CHAR_ART } from '../../../../data/stella-sora/char-art.js';
+
+const R2_BASE = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
 export async function getStaticPaths() {
   return STELLA_SORA_CHARACTERS.map(character => {
@@ -30,6 +33,9 @@ export async function getStaticPaths() {
 }
 
 const { character } = Astro.props;
+
+// Character art manifest entry (main portrait / gallery / skins)
+const charArt = CHAR_ART[character.slug];
 
 // Safety check to ensure character data exists
 if (!character) {
@@ -260,12 +266,24 @@ function getTotalDupes(rarity: string): number {
     <!-- Character Header -->
     <section class="character-header">
       <div class="character-basic-info">
-        <div class="character-image-detail">
-          <SSCharacterImage
-            imageName={character.image}
-            alt={`${character.name} - ${character.rarity} ${character.element} ${character.role} character from Stella Sora`}
-            loading="eager"
-          />
+        <div class="character-image-detail character-image-portrait">
+          {charArt ? (
+            <img
+              src={`${R2_BASE}/${charArt.main}`}
+              alt={`${character.name} - ${character.rarity} ${character.element} ${character.role} character from Stella Sora`}
+              width={244}
+              height={468}
+              loading="eager"
+              decoding="async"
+              class="character-portrait-img"
+            />
+          ) : (
+            <SSCharacterImage
+              imageName={character.image}
+              alt={`${character.name} - ${character.rarity} ${character.element} ${character.role} character from Stella Sora`}
+              loading="eager"
+            />
+          )}
         </div>
         <div class="character-details">
           <h1>{character.name}</h1>
@@ -371,14 +389,69 @@ function getTotalDupes(rarity: string): number {
     </section>
 
     <!-- Character Portrait Section -->
-    <section class="character-portrait-section">
-      <SSCharacterStatImage
-        characterSlug={character.slug}
-        alt={`${character.name} portrait`}
-        width={400}
-        height={400}
-      />
-    </section>
+    {charArt && charArt.gallery.length > 0 && (
+      <section class="character-gallery-section">
+        <h2 class="section-title">Art Gallery</h2>
+        <p class="gallery-explanation">Official art and illustrations of {character.name}.</p>
+        <div class="gallery-grid">
+          {charArt.gallery.map((item: any) => (
+            <a class="gallery-card" href={`${R2_BASE}/${item.src}`} target="_blank" rel="noopener">
+              <img
+                src={`${R2_BASE}/${item.src}`}
+                alt={`${character.name} ${item.caption}`}
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="gallery-caption">{item.caption}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {charArt && charArt.skins.length > 1 && (
+      <section class="character-skins-section">
+        <h2 class="section-title">Skins</h2>
+        <p class="gallery-explanation">Appearance variants of {character.name}. Click a portrait to view full size.</p>
+        <div class="skins-grid">
+          {charArt.skins.map((skin: any) => (
+            <a
+              class={`skin-card${skin.type === 1 ? ' skin-default' : ''}${skin.adv ? ' skin-has-adv' : ''}`}
+              href={`${R2_BASE}/${skin.adv || `charart/${skin.unit}_SK.png`}`}
+              target="_blank"
+              rel="noopener"
+            >
+              <div class="skin-image-wrap">
+                <img
+                  src={`${R2_BASE}/${skin.adv || `charart/${skin.unit}_SK.png`}`}
+                  alt={`${character.name} ${skin.name} skin`}
+                  width={122}
+                  height={234}
+                  loading="lazy"
+                  decoding="async"
+                />
+                {skin.adv && (
+                  <img
+                    class="skin-face-icon"
+                    src={`${R2_BASE}/charart/${skin.unit}_XXL.png`}
+                    alt={`${character.name} ${skin.name} icon`}
+                    width={48}
+                    height={48}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                )}
+                {skin.type !== 3 && (
+                  <span class={`skin-type-badge skin-type-${skin.type}`}>{skin.name}</span>
+                )}
+              </div>
+              {skin.type === 3 && <p class="skin-name">{skin.name}</p>}
+              {skin.desc && <p class="skin-desc">{skin.desc}</p>}
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
 
     <!-- Character Statistics - Clean Table Layout -->
     <section class="character-stats-container">
@@ -1220,7 +1293,7 @@ function getTotalDupes(rarity: string): number {
             {/* Build 1 */}
             <div class="build-section">
               <div class="build-header">
-                <h3 class="build-title">Build 1</h3>
+                <h3 class="build-title">{buildOrder?.main?.build1?.title || 'Build 1'}</h3>
                 {buildOrder?.main?.build1?.description && (
                   <p class="build-description">{buildOrder.main.build1.description}</p>
                 )}
@@ -1296,7 +1369,7 @@ function getTotalDupes(rarity: string): number {
             {/* Build 2 */}
             <div class="build-section">
               <div class="build-header">
-                <h3 class="build-title">Build 2</h3>
+                <h3 class="build-title">{buildOrder?.main?.build2?.title || 'Build 2'}</h3>
                 {buildOrder?.main?.build2?.description && (
                   <p class="build-description">{buildOrder.main.build2.description}</p>
                 )}
@@ -1427,7 +1500,7 @@ function getTotalDupes(rarity: string): number {
             {/* Build 1 */}
             <div class="build-section">
               <div class="build-header">
-                <h3 class="build-title">Build 1</h3>
+                <h3 class="build-title">{buildOrder?.support?.build1?.title || 'Build 1'}</h3>
                 {buildOrder?.support?.build1?.description && (
                   <p class="build-description">{buildOrder.support.build1.description}</p>
                 )}
@@ -1503,7 +1576,7 @@ function getTotalDupes(rarity: string): number {
             {/* Build 2 */}
             <div class="build-section">
               <div class="build-header">
-                <h3 class="build-title">Build 2</h3>
+                <h3 class="build-title">{buildOrder?.support?.build2?.title || 'Build 2'}</h3>
                 {buildOrder?.support?.build2?.description && (
                   <p class="build-description">{buildOrder.support.build2.description}</p>
                 )}
@@ -2385,14 +2458,11 @@ function getTotalDupes(rarity: string): number {
       // Set name
       detailName.textContent = potential.name;
 
-      // Check if this is a Core potential (corner === null means Core)
-      const isCore = potential.corner === null;
+      // Potentials upgrade in-game up to Lv 9 (core and normal alike)
+      maxLevel = 9;
 
-      // Get max level - Core potentials don't have levels
-      maxLevel = isCore ? 1 : getMaxLevel(potential.params || []);
-
-      // Show/hide level selector - never show for Core potentials
-      if (!isCore && maxLevel > 1) {
+      // Show level selector for every potential
+      if (maxLevel > 1) {
         levelSelector.style.display = 'flex';
         levelInput.max = maxLevel.toString();
         levelMax.textContent = `/ ${maxLevel}`;

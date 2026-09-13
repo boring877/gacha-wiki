@@ -1,142 +1,180 @@
-// Springseek Coronis Character Data - Stella Sora
+// Chaton Character Data - Stella Sora
 // Generated from live game tables (Sep 8 2026 patch, v1.15.0)
 
-export const SpringseekCoronis = {
-  "id": 159,
-  "name": "Springseek Coronis",
-  "icon": "/stella/assets/Springseek_Coronis.png",
-  "portrait": "/stella/assets/Springseek_Coronis_portrait.png",
-  "background": "/stella/assets/Springseek_Coronis_background.png",
-  "description": "Clad in traditional Loong attire, Coronis is enjoying her vacation in Cangwu. Her carefully brewed potions are a testament to her intense \"affection.\"",
+export const Chaton = {
+  "id": 114,
+  "name": "Chaton",
+  "icon": "/stella/assets/Chaton.png",
+  "portrait": "/stella/assets/Chaton_portrait.png",
+  "background": "/stella/assets/Chaton_background.png",
+  "description": "Chaton is the sniper of White Cat Troupe. Though fond of close combat, in the end she chose a customized weapon as tall as herself, one that can only be used from a distance.",
   "voiceActor": {
-    "cn": "Zhou Yuhan",
-    "cnLocalized": "周语晗",
-    "jp": "Yuka Saito",
-    "jpLocalized": "斉藤佑圭"
+    "cn": "Raby",
+    "cnLocalized": "瑞比",
+    "jp": "Ayane Sakura",
+    "jpLocalized": "佐倉綾音"
   },
-  "birthday": "10.15",
+  "birthday": "8.5",
   "grade": 5,
-  "element": "Terra",
-  "position": "Versatile",
+  "element": "Ignis",
+  "position": "Vanguard",
   "attackType": "Ranged",
-  "style": "Collector",
-  "faction": "Freelance Trekker",
+  "style": "Creative",
+  "faction": "White Cat Troupe",
   "tags": [
-    "Versatile",
-    "Collector",
-    "Freelance Trekker"
+    "Vanguard",
+    "Creative",
+    "White Cat Troupe"
   ],
   "dateEvents": [
     {
-      "name": "In Search of Totems",
-      "icon": "DatingSPCG_159301",
-      "clue": "Visit the Cave to unlock",
-      "secondChoice": "\"Loong culture is fascinating,\" she muses. \"Even their totems defy our standard classifications.\"\n\"Is that what we're investigating?\"\nShe doesn't answer. Instead, she beckons you deeper inside.\n\"You'll see soon enough.\""
+      "name": "Gimme Sugar",
+      "icon": "DatingSPCG_114301",
+      "clue": "Visit the Dessert Shop to unlock",
+      "secondChoice": "You try to keep up, not wanting to let her wolf them down alone, but your throat protests."
     },
     {
-      "name": "A Peculiar Doll",
-      "icon": "DatingSPCG_159302",
+      "name": "Not Her Day",
+      "icon": "DatingSPCG_114302",
       "clue": "Visit the Market to unlock",
-      "secondChoice": "Startled by her voice, you turn to see she's crouched right next to you, scrutinizing the figure in her hand.\n\"Given these proportions, a human subject would be missing two ribs on either side.\""
+      "secondChoice": "First shot—miss. \"This trigger's too light.\"\nSecond shot—miss. \"This gun's off balance.\"\nThird shot—miss. \"The sights must be off.\""
     }
   ],
   "giftPreferences": {
     "loves": [
-      "Blossom Porcelain Cup",
-      "Card Photo Capturer",
-      "Cosmic Form",
-      "Gilded Ceramic Bowl",
-      "Moonlit Companion",
-      "Mystic Potion Kettle",
-      "Reflective Photo Capturer",
-      "Stellanite Enchantment",
-      "Ultra-Precision Photo Capturer"
+      "Blazing Wings",
+      "Emerging Talent",
+      "Fiery Honeypot",
+      "Fragrant Ice Delight",
+      "Love Candle",
+      "Rising Star",
+      "Shining Star",
+      "Summer Chill Crushed Ice",
+      "Sweet IceFurry"
     ],
     "hates": [
-      "Deluxe Blower",
-      "Exquisite Blower",
-      "Portable Blower"
+      "Blossom Porcelain Cup",
+      "Gilded Ceramic Bowl",
+      "Mystic Potion Kettle"
     ]
   },
   "normalAttack": {
-    "name": "Evergreen Needles",
-    "icon": "Icon/Skill/15901_Normal",
-    "description": "Fires streams of chemicals, each dealing <color=#fb8037>&Param1&</color> of ATK as Terra Auto Attack DMG. Magazine capacity: 15.",
-    "shortDescription": "Fires consecutive streams of chemicals to deal DMG.",
+    "name": "Full-Auto Trigger",
+    "icon": "Icon/Skill/11401_Normal",
+    "description": "Fires rapidly at the target. Each shot deals <color=#fb8037>&Param1&</color> of ATK as Ignis Auto Attack DMG.\u000bMagazine contains 30 ammo.\u000bWhen Chaton is in the ##Evil Eye Unleashed#4035# state, upgrades &Param3& (Auto Attack) to Dark Burst, each shot dealing <color=#fb8037>&Param2&</color> of ATK as Ignis Ultimate DMG and consuming no ammo.",
+    "shortDescription": "Fires rapidly at the target, dealing DMG.",
     "params": [
-      "11%/13%/14%/20%/21%/23%/26%/27%/29%/31%/34%/36%/38%"
+      "20%/23%/26%/36%/39%/42%/47%/50%/52%/57%/61%/66%/70%",
+      "8%/9%/11%/15%/16%/17%/19%/20%/21%/24%/25%/27%/29%",
+      "Full-Auto Trigger"
     ],
-    "hints": {}
+    "hints": {
+      "4035": {
+        "id": 4035,
+        "name": "Evil Eye Unleashed",
+        "description": "Chaton breaks the seal of Evil Eye, gaining Super Armor, increased stats, and enhanced Auto Attacks."
+      }
+    }
   },
   "skill": {
-    "name": "Jade of Vitality",
-    "icon": "Icon/Skill/15901_Skill_Main",
-    "description": "Shoots forward, dealing <color=#fb8037>&Param1&</color> of ATK as AoE Terra Skill DMG. Drops one Auspice, which fires a continuous beam, dealing <color=#fb8037>&Param2&</color> of ATK as Terra Skill DMG every 0.6s for 8s.\u000bWhen casting Jade of Vitality (Main Skill), enters Crystallized State: Movement SPD increases by 15% for 8s.\u000bThe Main Skill and Auspice can trigger ##Terra Mark#1020#, dealing &Param3& of ATK as AoE Terra Mark DMG.",
-    "shortDescription": "Deals DMG to targets in front. Drops one Auspice, which fires continuous beam that deals DMG over time.\u000bWhen casting the Main Skill, enters Crystallized State.\u000bThe Main Skill and Auspice can trigger ##Terra Mark#1020#.",
+    "name": "Sniper Operation",
+    "icon": "Icon/Skill/11401_Skill_Main",
+    "description": "Chaton uses different attack methods depending on whether the skill button is tapped or held.\u000b<color=#0abec5>Tap:</color> activates ##Dark Ray#4036#.\u000bChaton fires a laser at the target, dealing <color=#fb8037>&Param1&</color> of ATK as Ignis Skill DMG and inflicting Dark Mark for &Param6&s. Chaton deals <color=#fb8037>&Param2&</color> of ATK as Ignis Skill DMG to targets inflicted with Dark Mark every 2s.\u000b<color=#0abec5>Hold:</color> activates ##Bouncing Kitty Bomb#4037#.\u000bChaton throws 2 Bouncing Bombs at the target, each dealing <color=#fb8037>&Param3&</color> of ATK as AoE Ignis Skill DMG. Bouncing Bombs then bounce to nearby targets, up to 5 times.\u000b&Param4& (Main Skill) can trigger ##Ignis Mark#1016# and generate Conflagration: deals &Param5& of ATK as Ignis Mark DMG.",
+    "shortDescription": "Tap: Chaton fires a laser at the target, inflicting Lock Mark and dealing DMG over time.\u000bHold: Chaton throws Bouncing Bombs at the target, dealing AoE DMG.\u000bThe Main Skill can trigger ##Ignis Mark#1016# and generate Conflagration.",
     "params": [
-      "258%/297%/336%/452%/488%/524%/596%/627%/658%/720%/772%/823%/875%",
-      "17%/19%/22%/30%/32%/34%/39%/41%/43%/48%/51%/54%/58%",
-      "17%/23%/28%/33%/39%/44%/49%/55%/60%"
+      "224%/257%/291%/391%/423%/454%/516%/543%/570%/624%/668%/713%/758%",
+      "64%/74%/83%/112%/121%/130%/148%/156%/163%/179%/191%/204%/217%",
+      "62%/72%/81%/109%/118%/127%/144%/152%/159%/174%/187%/199%/212%",
+      "Sniper Operation",
+      "28%/37%/45%/54%/63%/71%/80%/88%/97%",
+      "14"
     ],
     "hints": {
-      "1020": {
-        "id": 1020,
-        "name": "Terra Mark",
-        "description": "The generic name for all Terra Marks.\u000bWhen triggered by specific Terra Trekkers' attacks, the status is removed, and a special effect is activated."
+      "4036": {
+        "id": 4036,
+        "name": "Dark Ray"
+      },
+      "4037": {
+        "id": 4037,
+        "name": "Bouncing Kitty Bomb"
+      },
+      "1016": {
+        "id": 1016,
+        "name": "Ignis Mark",
+        "description": "The generic name for all Ignis Marks.\u000bWhen triggered by specific Ignis Trekkers' attacks, the status is removed, and a special effect is activated."
       }
     },
-    "cooldown": "14s"
+    "cooldown": "6s"
   },
   "supportSkill": {
-    "name": "Instant Blossom",
-    "icon": "Icon/Skill/15901_Skill_Support",
-    "description": "Throws 6 Rose Vials and 1 Wither Vial, dealing DMG over time 1s after landing.\u000bRose Vial: Deals <color=#fb8037>&Param1&</color> of ATK as AoE Terra Skill DMG every 0.8s.\u000bWither Vial: Deals <color=#fb8037>&Param2&</color> of ATK as AoE Terra Skill DMG every 0.8s and also inflicts Wither. Wither: Lasts 5s; stacks up to 5 times; at max stacks, deals <color=#fb8037>&Param3&</color> of ATK as Terra Skill DMG and removes all stacks.\u000bEach potion lasts 6s and inflicts ##Terra Mark: Earth Vein#2029# when dealing DMG.",
-    "shortDescription": "Throws 6 Rose Vials and 1 Wither Vial.\u000bRose Vial: Deals DMG over time.\u000bWither Vial: Deals DMG over time and also inflicts Wither. Deals DMG at max stacks of Wither with all stacks removed afterward.",
+    "name": "Blitz Assault",
+    "icon": "Icon/Skill/11401_Skill_Support",
+    "description": "Rolls toward the target and fires Penetrating Bullets, penetrating the target and dealing <color=#fb8037>&Param1&</color> of ATK as Ignis Skill DMG. This action is performed 3 times in succession.\u000b&Param2& (Support Skill) can trigger ##Ignis Mark#1016# and generate Conflagration: deals &Param3& of ATK as Ignis Mark DMG.",
+    "shortDescription": "Rolls toward the target while firing, dealing DMG.\u000bThe Support Skill can trigger ##Ignis Mark#1016# and generate Conflagration.",
     "params": [
-      "24%/28%/32%/43%/46%/50%/57%/60%/63%/69%/74%/79%/84%",
-      "67%/77%/87%/117%/126%/136%/154%/162%/170%/186%/200%/213%/226%",
-      "114%/131%/148%/199%/215%/230%/262%/276%/289%/317%/339%/362%/385%"
+      "205%/236%/266%/359%/387%/416%/474%/498%/523%/572%/613%/654%/695%",
+      "Blitz Assault",
+      "28%/37%/45%/54%/63%/71%/80%/88%/97%"
     ],
     "hints": {
-      "2029": {
-        "id": 2029,
-        "name": "Terra Mark: Earth Vein",
-        "description": "A special status applied to the target by some Terra Trekkers, lasting for 10s.\u000bCan be triggered by the attacks of specific Terra Trekkers. When triggered, removes the status and activates special effects."
+      "1016": {
+        "id": 1016,
+        "name": "Ignis Mark",
+        "description": "The generic name for all Ignis Marks.\u000bWhen triggered by specific Ignis Trekkers' attacks, the status is removed, and a special effect is activated."
       }
     },
-    "cooldown": "12s"
+    "cooldown": "16s"
   },
   "ultimate": {
-    "name": "Springseek: Burst of Blaze",
-    "icon": "Icon/Skill/15901_Ultra",
-    "description": "Shoots and shatters a vial in the air, dealing <color=#ec6d21>&Param1&</color> of ATK as AoE Terra Ultimate DMG. The flying crystal shards then deal <color=#ec6d21>&Param2& x8</color> of ATK as AoE Terra Ultimate DMG.",
-    "shortDescription": "Shoots and shatters a vial in the air, dealing initial DMG with the shot and additional DMG with flying crystal shards.",
+    "name": "Dark Evil Eye",
+    "icon": "Icon/Skill/11401_Ultra",
+    "description": "Unseals Evil Eye to inflict Cat Eye Mark on all nearby targets for &Param3&s, then sweep fires, dealing <color=#fb8037>&Param1& x8</color> of ATK as AoE Ignis Ultimate DMG and detonating Cat Eye Marks to deal <color=#fb8037>&Param2&</color> of ATK as Ignis Ultimate DMG.\u000b&Param4& (Ultimate) can trigger ##Ignis Mark#1016#, generating Conflagration: deals &Param5& of ATK as Ignis Mark DMG.\u000bAfter casting the Ultimate, Chaton enters the ##Evil Eye Unleashed#4035# state for &Param6&s while gaining Super Armor, enhancing her Auto Attacks to Dark Burst, increasing her &Param7& by &Param8& and her &Param9& by &Param10&.",
+    "shortDescription": "Unseals Evil Eye to deal AoE DMG, triggering ##Ignis Mark#1016# and generating Conflagration.\u000bAfter casting the Ultimate, Chaton enters the ##Evil Eye Unleashed#4035# state, gaining enhanced Auto Attacks, Super Armor, and increased &Param7& and &Param9&.",
     "params": [
-      "497%/571%/646%/869%/939%/1009%/1148%/1207%/1267%/1386%/1485%/1585%/1684%",
-      "62%/71%/81%/109%/117%/126%/143%/151%/158%/173%/186%/198%/211%"
+      "153%/176%/199%/268%/290%/311%/354%/372%/391%/428%/458%/489%/520%",
+      "180%/207%/234%/316%/341%/366%/417%/438%/460%/503%/539%/575%/611%",
+      "15",
+      "Dark Evil Eye",
+      "28%/37%/45%/54%/63%/71%/80%/88%/97%",
+      "15",
+      "Ultimate DMG",
+      "20%",
+      "Movespeed",
+      "30%"
     ],
-    "hints": {},
+    "hints": {
+      "1016": {
+        "id": 1016,
+        "name": "Ignis Mark",
+        "description": "The generic name for all Ignis Marks.\u000bWhen triggered by specific Ignis Trekkers' attacks, the status is removed, and a special effect is activated."
+      },
+      "4035": {
+        "id": 4035,
+        "name": "Evil Eye Unleashed",
+        "description": "Chaton breaks the seal of Evil Eye, gaining Super Armor, increased stats, and enhanced Auto Attacks."
+      }
+    },
     "cooldown": "30s",
-    "energy": 275
+    "energy": 228
   },
   "talents": [
     {
-      "name": "Guiding Lanterns",
+      "name": "Dark Power Slayer",
       "talents": [
         {
-          "name": "Guiding Lanterns",
-          "description": "When Springseek Coronis deals Skill DMG, increases the target's Terra DMG Taken by <color=#0abec5>&Param1&</color> for &Param2&s, stacking up to &Param3& times.",
+          "name": "Dark Power Slayer",
+          "description": "When any Trekker applies an ##Ignis Mark#1016# to a target, increases Chaton's Crit DMG by <color=#0abec5>&Param1&</color> for &Param2&s, up to &Param3& stacks",
           "params": [
-            "4.7%",
-            "12",
-            "3"
+            "8%",
+            "5",
+            "4"
           ]
         },
         {
           "name": "ATK Enhancement",
           "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "50"
+            "60"
           ]
         },
         {
@@ -150,7 +188,7 @@ export const SpringseekCoronis = {
           "name": "HP Enhancement",
           "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "575"
+            "690"
           ]
         },
         {
@@ -161,17 +199,17 @@ export const SpringseekCoronis = {
           ]
         },
         {
-          "name": "Terra DMG Boost",
-          "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.",
+          "name": "Crit DMG Boost",
+          "description": "Increases Crit DMG by <color=#0abec5>&Param1&</color>",
           "params": [
-            "1.5%"
+            "3%"
           ]
         },
         {
           "name": "ATK Enhancement",
           "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "50"
+            "60"
           ]
         },
         {
@@ -185,7 +223,7 @@ export const SpringseekCoronis = {
           "name": "HP Enhancement",
           "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "575"
+            "690"
           ]
         },
         {
@@ -196,30 +234,30 @@ export const SpringseekCoronis = {
           ]
         },
         {
-          "name": "Terra DMG Boost",
-          "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.",
+          "name": "Crit DMG Boost",
+          "description": "Increases Crit DMG by <color=#0abec5>&Param1&</color>",
           "params": [
-            "1.5%"
+            "3%"
           ]
         }
       ]
     },
     {
-      "name": "Eternal Flame",
+      "name": "Meowth's Emissary",
       "talents": [
         {
-          "name": "Eternal Flame",
-          "description": "When any Trekker inflicts ##Terra Mark#1020# on a target, increases Springseek Coronis's Skill DMG by <color=#0abec5>&Param1&</color> for &Param2&s.",
+          "name": "Meowth's Emissary",
+          "description": "After Chaton deals Crit DMG to a target, her Skill DMG is increased by <color=#0abec5>&Param1&</color> for &Param2&s",
           "params": [
-            "0.57%",
-            "6"
+            "28%",
+            "10"
           ]
         },
         {
           "name": "ATK Enhancement",
           "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "50"
+            "60"
           ]
         },
         {
@@ -233,7 +271,7 @@ export const SpringseekCoronis = {
           "name": "HP Enhancement",
           "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "575"
+            "690"
           ]
         },
         {
@@ -244,17 +282,17 @@ export const SpringseekCoronis = {
           ]
         },
         {
-          "name": "Terra DMG Boost",
-          "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.",
+          "name": "Crit DMG Boost",
+          "description": "Increases Crit DMG by <color=#0abec5>&Param1&</color>",
           "params": [
-            "1.5%"
+            "3%"
           ]
         },
         {
           "name": "ATK Enhancement",
           "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "50"
+            "60"
           ]
         },
         {
@@ -268,7 +306,7 @@ export const SpringseekCoronis = {
           "name": "HP Enhancement",
           "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "575"
+            "690"
           ]
         },
         {
@@ -279,31 +317,30 @@ export const SpringseekCoronis = {
           ]
         },
         {
-          "name": "Terra DMG Boost",
-          "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.",
+          "name": "Crit DMG Boost",
+          "description": "Increases Crit DMG by <color=#0abec5>&Param1&</color>",
           "params": [
-            "1.5%"
+            "3%"
           ]
         }
       ]
     },
     {
-      "name": "Magical Touch",
+      "name": "Enhanced  Barrel",
       "talents": [
         {
-          "name": "Magical Touch",
-          "description": "When Springseek Coronis deals Ultimate DMG, increases the target's Terra DMG Taken by <color=#0abec5>&Param1&</color> for &Param2&s, stacking up to &Param3& times.",
+          "name": "Enhanced  Barrel",
+          "description": "When Chaton casts a skill, the skill's ATK is increased by <color=#0abec5>&Param1&</color> for &Param2&s",
           "params": [
-            "3.5%",
-            "20",
-            "6"
+            "20%",
+            "8"
           ]
         },
         {
           "name": "ATK Enhancement",
           "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "50"
+            "60"
           ]
         },
         {
@@ -317,7 +354,7 @@ export const SpringseekCoronis = {
           "name": "HP Enhancement",
           "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "575"
+            "690"
           ]
         },
         {
@@ -328,17 +365,17 @@ export const SpringseekCoronis = {
           ]
         },
         {
-          "name": "Terra DMG Boost",
-          "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.",
+          "name": "Crit DMG Boost",
+          "description": "Increases Crit DMG by <color=#0abec5>&Param1&</color>",
           "params": [
-            "1.5%"
+            "3%"
           ]
         },
         {
           "name": "ATK Enhancement",
           "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "50"
+            "60"
           ]
         },
         {
@@ -352,7 +389,7 @@ export const SpringseekCoronis = {
           "name": "HP Enhancement",
           "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "575"
+            "690"
           ]
         },
         {
@@ -363,30 +400,29 @@ export const SpringseekCoronis = {
           ]
         },
         {
-          "name": "Terra DMG Boost",
-          "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.",
+          "name": "Crit DMG Boost",
+          "description": "Increases Crit DMG by <color=#0abec5>&Param1&</color>",
           "params": [
-            "1.5%"
+            "3%"
           ]
         }
       ]
     },
     {
-      "name": "Healing Auspice",
+      "name": "Target Indicator",
       "talents": [
         {
-          "name": "Healing Auspice",
-          "description": "When Springseek Coronis casts a skill, increases Skill DMG by <color=#0abec5>&Param1&</color> for &Param2&s.",
+          "name": "Target Indicator",
+          "description": "While ##Evil Eye Unleashed#4035# is active, increases Chaton's Ultimate DMG by <color=#0abec5>&Param1&</color>",
           "params": [
-            "34%",
-            "10"
+            "0.58%"
           ]
         },
         {
           "name": "ATK Enhancement",
           "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "50"
+            "60"
           ]
         },
         {
@@ -400,7 +436,7 @@ export const SpringseekCoronis = {
           "name": "HP Enhancement",
           "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "575"
+            "690"
           ]
         },
         {
@@ -411,17 +447,17 @@ export const SpringseekCoronis = {
           ]
         },
         {
-          "name": "Terra DMG Boost",
-          "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.",
+          "name": "Crit DMG Boost",
+          "description": "Increases Crit DMG by <color=#0abec5>&Param1&</color>",
           "params": [
-            "1.5%"
+            "3%"
           ]
         },
         {
           "name": "ATK Enhancement",
           "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "50"
+            "60"
           ]
         },
         {
@@ -435,7 +471,7 @@ export const SpringseekCoronis = {
           "name": "HP Enhancement",
           "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "575"
+            "690"
           ]
         },
         {
@@ -446,29 +482,29 @@ export const SpringseekCoronis = {
           ]
         },
         {
-          "name": "Terra DMG Boost",
-          "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.",
+          "name": "Crit DMG Boost",
+          "description": "Increases Crit DMG by <color=#0abec5>&Param1&</color>",
           "params": [
-            "1.5%"
+            "3%"
           ]
         }
       ]
     },
     {
-      "name": "Fresh Start",
+      "name": "Shooting Metronome",
       "talents": [
         {
-          "name": "Fresh Start",
-          "description": "Increases Springseek Coronis's Terra DMG to elite or higher-tier targets by <color=#0abec5>&Param1&</color>.",
+          "name": "Shooting Metronome",
+          "description": "Increases Chaton's Ignis DMG dealt to elite or higher-tier targets by <color=#0abec5>&Param1&</color>",
           "params": [
-            "0.19%"
+            "0.18%"
           ]
         },
         {
           "name": "ATK Enhancement",
           "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "50"
+            "60"
           ]
         },
         {
@@ -482,7 +518,7 @@ export const SpringseekCoronis = {
           "name": "HP Enhancement",
           "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "575"
+            "690"
           ]
         },
         {
@@ -493,17 +529,17 @@ export const SpringseekCoronis = {
           ]
         },
         {
-          "name": "Terra DMG Boost",
-          "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.",
+          "name": "Crit DMG Boost",
+          "description": "Increases Crit DMG by <color=#0abec5>&Param1&</color>",
           "params": [
-            "1.5%"
+            "3%"
           ]
         },
         {
           "name": "ATK Enhancement",
           "description": "Increases Base ATK by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "50"
+            "60"
           ]
         },
         {
@@ -517,7 +553,7 @@ export const SpringseekCoronis = {
           "name": "HP Enhancement",
           "description": "Increases Base HP by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "575"
+            "690"
           ]
         },
         {
@@ -528,10 +564,10 @@ export const SpringseekCoronis = {
           ]
         },
         {
-          "name": "Terra DMG Boost",
-          "description": "Increases Terra DMG by <color=#0abec5>&Param1&</color>.",
+          "name": "Crit DMG Boost",
+          "description": "Increases Crit DMG by <color=#0abec5>&Param1&</color>",
           "params": [
-            "1.5%"
+            "3%"
           ]
         }
       ]
@@ -540,399 +576,399 @@ export const SpringseekCoronis = {
   "stats": [
     {
       "hp": 788,
-      "atk": 114
+      "atk": 115
     },
     {
       "hp": 1025,
-      "atk": 148
+      "atk": 150
     },
     {
       "hp": 1262,
-      "atk": 182
+      "atk": 184
     },
     {
       "hp": 1498,
-      "atk": 216
+      "atk": 219
     },
     {
       "hp": 1735,
-      "atk": 250
+      "atk": 254
     },
     {
       "hp": 1971,
-      "atk": 284
+      "atk": 288
     },
     {
       "hp": 2208,
-      "atk": 318
+      "atk": 323
     },
     {
       "hp": 2444,
-      "atk": 352
+      "atk": 357
     },
     {
       "hp": 2681,
-      "atk": 386
+      "atk": 392
     },
     {
       "hp": 2917,
-      "atk": 420
+      "atk": 427
     },
     {
       "hp": 3501,
-      "atk": 504
+      "atk": 512
     },
     {
       "hp": 3737,
-      "atk": 538
+      "atk": 546
     },
     {
       "hp": 3974,
-      "atk": 572
+      "atk": 581
     },
     {
       "hp": 4210,
-      "atk": 606
+      "atk": 616
     },
     {
       "hp": 4447,
-      "atk": 640
+      "atk": 650
     },
     {
       "hp": 4684,
-      "atk": 674
+      "atk": 685
     },
     {
       "hp": 4920,
-      "atk": 708
+      "atk": 719
     },
     {
       "hp": 5157,
-      "atk": 742
+      "atk": 754
     },
     {
       "hp": 5393,
-      "atk": 776
+      "atk": 789
     },
     {
       "hp": 5630,
-      "atk": 811
+      "atk": 823
     },
     {
       "hp": 5866,
-      "atk": 845
+      "atk": 858
     },
     {
       "hp": 7041,
-      "atk": 1014
+      "atk": 1029
     },
     {
       "hp": 7278,
-      "atk": 1048
+      "atk": 1064
     },
     {
       "hp": 7514,
-      "atk": 1082
+      "atk": 1099
     },
     {
       "hp": 7751,
-      "atk": 1116
+      "atk": 1133
     },
     {
       "hp": 7987,
-      "atk": 1150
+      "atk": 1168
     },
     {
       "hp": 8224,
-      "atk": 1184
+      "atk": 1202
     },
     {
       "hp": 8460,
-      "atk": 1218
+      "atk": 1237
     },
     {
       "hp": 8697,
-      "atk": 1252
+      "atk": 1272
     },
     {
       "hp": 8933,
-      "atk": 1286
+      "atk": 1306
     },
     {
       "hp": 9170,
-      "atk": 1320
+      "atk": 1341
     },
     {
       "hp": 9407,
-      "atk": 1354
+      "atk": 1375
     },
     {
       "hp": 11291,
-      "atk": 1626
+      "atk": 1651
     },
     {
       "hp": 11528,
-      "atk": 1660
+      "atk": 1685
     },
     {
       "hp": 11764,
-      "atk": 1694
+      "atk": 1720
     },
     {
       "hp": 12001,
-      "atk": 1728
+      "atk": 1755
     },
     {
       "hp": 12237,
-      "atk": 1762
+      "atk": 1789
     },
     {
       "hp": 12474,
-      "atk": 1796
+      "atk": 1824
     },
     {
       "hp": 12710,
-      "atk": 1830
+      "atk": 1858
     },
     {
       "hp": 12947,
-      "atk": 1864
+      "atk": 1893
     },
     {
       "hp": 13183,
-      "atk": 1898
+      "atk": 1927
     },
     {
       "hp": 13420,
-      "atk": 1932
+      "atk": 1962
     },
     {
       "hp": 13656,
-      "atk": 1966
+      "atk": 1997
     },
     {
       "hp": 16385,
-      "atk": 2359
+      "atk": 2396
     },
     {
       "hp": 16621,
-      "atk": 2393
+      "atk": 2430
     },
     {
       "hp": 16858,
-      "atk": 2427
+      "atk": 2465
     },
     {
       "hp": 17094,
-      "atk": 2461
+      "atk": 2499
     },
     {
       "hp": 17331,
-      "atk": 2495
+      "atk": 2534
     },
     {
       "hp": 17567,
-      "atk": 2529
+      "atk": 2568
     },
     {
       "hp": 17804,
-      "atk": 2563
+      "atk": 2603
     },
     {
       "hp": 18040,
-      "atk": 2597
+      "atk": 2638
     },
     {
       "hp": 18277,
-      "atk": 2631
+      "atk": 2672
     },
     {
       "hp": 18514,
-      "atk": 2665
+      "atk": 2707
     },
     {
       "hp": 18750,
-      "atk": 2700
+      "atk": 2741
     },
     {
       "hp": 22503,
-      "atk": 3240
+      "atk": 3290
     },
     {
       "hp": 22740,
-      "atk": 3274
+      "atk": 3325
     },
     {
       "hp": 22976,
-      "atk": 3308
+      "atk": 3359
     },
     {
       "hp": 23213,
-      "atk": 3342
+      "atk": 3394
     },
     {
       "hp": 23449,
-      "atk": 3376
+      "atk": 3428
     },
     {
       "hp": 23686,
-      "atk": 3410
+      "atk": 3463
     },
     {
       "hp": 23922,
-      "atk": 3444
+      "atk": 3498
     },
     {
       "hp": 24159,
-      "atk": 3478
+      "atk": 3532
     },
     {
       "hp": 24396,
-      "atk": 3512
+      "atk": 3567
     },
     {
       "hp": 24632,
-      "atk": 3546
+      "atk": 3601
     },
     {
       "hp": 24869,
-      "atk": 3580
+      "atk": 3636
     },
     {
       "hp": 29844,
-      "atk": 4297
+      "atk": 4363
     },
     {
       "hp": 30081,
-      "atk": 4331
+      "atk": 4398
     },
     {
       "hp": 30317,
-      "atk": 4365
-    },
-    {
-      "hp": 30554,
-      "atk": 4399
-    },
-    {
-      "hp": 30790,
       "atk": 4433
     },
     {
-      "hp": 31027,
+      "hp": 30554,
       "atk": 4467
     },
     {
+      "hp": 30790,
+      "atk": 4502
+    },
+    {
+      "hp": 31027,
+      "atk": 4536
+    },
+    {
       "hp": 31263,
-      "atk": 4501
+      "atk": 4571
     },
     {
       "hp": 31500,
-      "atk": 4535
+      "atk": 4605
     },
     {
       "hp": 31736,
-      "atk": 4569
+      "atk": 4640
     },
     {
       "hp": 31973,
-      "atk": 4603
+      "atk": 4675
     },
     {
       "hp": 32209,
-      "atk": 4637
+      "atk": 4709
     },
     {
       "hp": 38651,
-      "atk": 5565
+      "atk": 5651
     },
     {
       "hp": 38888,
-      "atk": 5599
+      "atk": 5686
     },
     {
       "hp": 39124,
-      "atk": 5633
+      "atk": 5720
     },
     {
       "hp": 39361,
-      "atk": 5667
+      "atk": 5755
     },
     {
       "hp": 39597,
-      "atk": 5701
+      "atk": 5789
     },
     {
       "hp": 39834,
-      "atk": 5735
+      "atk": 5824
     },
     {
       "hp": 40071,
-      "atk": 5769
+      "atk": 5859
     },
     {
       "hp": 40307,
-      "atk": 5803
+      "atk": 5893
     },
     {
       "hp": 40544,
-      "atk": 5837
+      "atk": 5928
     },
     {
       "hp": 40780,
-      "atk": 5871
+      "atk": 5962
     },
     {
       "hp": 41017,
-      "atk": 5905
+      "atk": 5997
     },
     {
       "hp": 49217,
-      "atk": 7086
+      "atk": 7196
     },
     {
       "hp": 49453,
-      "atk": 7120
+      "atk": 7230
     },
     {
       "hp": 49690,
-      "atk": 7154
+      "atk": 7265
     },
     {
       "hp": 49927,
-      "atk": 7188
+      "atk": 7300
     },
     {
       "hp": 50163,
-      "atk": 7222
+      "atk": 7334
     },
     {
       "hp": 50400,
-      "atk": 7256
+      "atk": 7369
     },
     {
       "hp": 50636,
-      "atk": 7290
+      "atk": 7403
     },
     {
       "hp": 50873,
-      "atk": 7324
+      "atk": 7438
     },
     {
       "hp": 51109,
-      "atk": 7358
+      "atk": 7472
     },
     {
       "hp": 51346,
-      "atk": 7392
+      "atk": 7507
     },
     {
       "hp": 51582,
-      "atk": 7426
+      "atk": 7542
     },
     {
       "hp": 51582,
-      "atk": 7426
+      "atk": 7542
     }
   ],
   "upgrades": [],

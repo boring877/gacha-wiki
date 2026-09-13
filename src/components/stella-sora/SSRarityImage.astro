@@ -1,29 +1,20 @@
 ---
 // Stella Sora Rarity Image Component
-import { Image } from 'astro:assets';
+// Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
-// Import character rarity images
-import rarity5 from '../../assets/images/games/stella-sora/rarity/rare_character_gacha_5.png';
-import rarity4 from '../../assets/images/games/stella-sora/rarity/rare_character_gacha_4.png';
-import rarity3 from '../../assets/images/games/stella-sora/rarity/rare_character_gacha_3.png';
-import rarity2 from '../../assets/images/games/stella-sora/rarity/rare_character_gacha_2.png';
-
-// Import item rarity images
-import itemRarity5 from '../../assets/images/games/stella-sora/rarity/rare_item_a_5.png';
-import itemRarity4 from '../../assets/images/games/stella-sora/rarity/rare_item_a_4.png';
-import itemRarity3 from '../../assets/images/games/stella-sora/rarity/rare_item_a_3.png';
-
-const characterRarityMap: Record<number, ImageMetadata> = {
-  5: rarity5,
-  4: rarity4,
-  3: rarity3,
-  2: rarity2,
+// Character + item rarity image paths
+const characterRarityMap: Record<number, string> = {
+  5: 'rarity/rare_character_gacha_5.png',
+  4: 'rarity/rare_character_gacha_4.png',
+  3: 'rarity/rare_character_gacha_3.png',
+  2: 'rarity/rare_character_gacha_2.png',
 };
 
-const itemRarityMap: Record<number, ImageMetadata> = {
-  5: itemRarity5,
-  4: itemRarity4,
-  3: itemRarity3,
+const itemRarityMap: Record<number, string> = {
+  5: 'rarity/rare_item_a_5.png',
+  4: 'rarity/rare_item_a_4.png',
+  3: 'rarity/rare_item_a_3.png',
 };
 
 export interface Props {
@@ -42,15 +33,14 @@ const fallback = type === 'item' ? itemRarityMap[4] : characterRarityMap[4];
 const imageSrc = rarityMap[rarity] || fallback;
 ---
 
-<Image
-  src={imageSrc}
+<img
+  src={`${R2}/${imageSrc}`}
   alt={alt || `${rarity}-Star ${type}`}
   width={width}
   height={height}
   class={`${className} rarity-img`}
   loading="lazy"
-  format="webp"
-  quality={95}
+  decoding="async"
 />
 
 <style>

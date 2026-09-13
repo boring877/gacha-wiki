@@ -1,7 +1,7 @@
 ---
 import StellaSoraClockLayout from '../../layouts/clock/StellaSora.astro';
 import { stellaSoraConfig } from '../../data/clock/stella-sora.js';
-import GameIcon from '../../assets/images/games/stella-sora/gameimg/Icon.jpg';
+import { r2Url } from '../../data/r2-config.js';
 
 // Page metadata
 const title = 'Stella Sora Clock - Server Reset Timer & Launch Countdown | GachaWiki';
@@ -12,7 +12,7 @@ const description =
 const games = [
   {
     ...stellaSoraConfig,
-    image: GameIcon,
+    image: r2Url('stella-sora', 'gameimg/Icon.jpg'),
   },
 ];
 ---

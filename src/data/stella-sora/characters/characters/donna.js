@@ -1,24 +1,12 @@
-// Auto-extracted character data for gacha-wiki
+// Donna Character Data - Stella Sora
+// Generated from live game tables (Sep 8 2026 patch, v1.15.0)
+
 export const Donna = {
   "id": 130,
   "name": "Donna",
   "icon": "/stella/assets/Donna.png",
   "portrait": "/stella/assets/Donna_portrait.png",
   "background": "/stella/assets/Donna_background.png",
-  "variants": {
-    "base": "/stella/assets/Donna_base.png",
-    "q": "/stella/assets/Donna_q.png",
-    "gd": "/stella/assets/Donna_gd.png",
-    "goods": "/stella/assets/Donna_goods.png",
-    "qs": "/stella/assets/Donna_qs.png",
-    "xl": "/stella/assets/Donna_xl.png",
-    "gc": "/stella/assets/Donna_gc.png",
-    "sk": "/stella/assets/Donna_portrait.png",
-    "xxl": "/stella/assets/Donna.png",
-    "qm": "/stella/assets/Donna_qm.png",
-    "l": "/stella/assets/Donna_l.png",
-    "s": "/stella/assets/Donna_s.png"
-  },
   "description": "Donna, brimming with energy and optimism, is the heart and leader of Post Haste. Her arrows make short work of anything standing in the mail's way.",
   "voiceActor": {
     "cn": "Su Wan",
@@ -41,88 +29,114 @@ export const Donna = {
       "name": "The Teddy Bear",
       "icon": "DatingSPCG_130301",
       "clue": "Visit the Market to unlock",
-      "secondChoice": "You were about to speak up for Donna when she drew the bow again, pulling the string taut. This time she didn't aim at the teddy bear but at the pillar beside it. The arrow struck the pillar, ricocheted, and hit the bear from the side, knocking it over.\n\nAs it fell, the back plate fixing it in place came into view.\n\nIn the end, the stall owner was taken away by the Trekker Association for operating in violation of regulations. You walked away with a plush teddy bear and Donna's triumphant grin."
+      "secondChoice": "Something strange happened. No matter how many times Donna's arrows hit the teddy bear, it remained firmly seated on the wooden board. You began to suspect something was wrong.\n\n\"Is that bear ... fixed to the board?\"\n\n\"So this is just a scam?!\"\n\nThe stall owner's eyes darted away, but he still insisted that Donna had only failed because her archery wasn't good enough."
     },
     {
       "name": "Old Letters",
       "icon": "DatingSPCG_130302",
       "clue": "Visit the Academy to unlock",
-      "secondChoice": "At the very bottom, one envelope doesn't even have a postmark. Its faded handwriting on yellowed paper looks like a love letter, nearly impossible to read.\nDonna murmurs, \"Some words... You have to say them before they fade away.\""
+      "secondChoice": "\"This one, and this one.\" She picks up two letters from the top. \"I delivered these.\"\n\nShe flips further down—the postmarks show they're years old. \"Their recipients must have graduated by now.\""
     }
   ],
   "giftPreferences": {
-    "loves": [],
-    "hates": []
+    "loves": [
+      "Blazing Wind Spinner",
+      "Chilling Wind Spinner",
+      "Deluxe Blower",
+      "Exquisite Blower",
+      "Fragrant Ice Delight",
+      "Portable Blower",
+      "Summer Chill Crushed Ice",
+      "Sweet IceFurry",
+      "Whisper Wind Spinner"
+    ],
+    "hates": [
+      "Emerging Talent",
+      "Rising Star",
+      "Shining Star"
+    ]
   },
   "normalAttack": {
     "name": "Piercing Shot",
     "icon": "Icon/Skill/13001_Normal",
-    "description": "Fires an ice arrow in a stationary stance, piercing through the target, dealing <color=#fb8037>&Param1&</color> of ATK as Aqua DMG. Moving will immediately interrupt shooting.\u000bWhen Donna is in ##Agile#2015# State, her Auto Attack deals <color=#fb8037>&Param2&</color> of ATK as Aqua DMG.",
+    "description": "Fires an ice arrow in a stationary stance, piercing through the target, dealing <color=#fb8037>&Param1&</color> of ATK as Aqua Auto Attack DMG. Moving will immediately interrupt shooting.\u000bWhen Donna is in ##Agile#2015# State, her Auto Attack deals <color=#fb8037>&Param2&</color> of ATK as Aqua Auto Attack DMG.",
     "shortDescription": "Fires an ice arrow in a stationary stance, piercing through the target and dealing DMG. Moving will immediately interrupt shooting.",
     "params": [
-      "15.6%/18%/20.3%/27.3%/29.5%/31.7%/36.1%/38%/39.9%/43.6%/46.7%/49.9%/53%",
-      "18.3%/21.1%/23.8%/32.1%/34.6%/37.2%/42.3%/44.5%/46.7%/51.1%/54.8%/58.4%/62.1%"
+      "15%/18%/20%/27%/29%/31%/36%/38%/39%/43%/46%/49%/53%",
+      "18%/21%/23%/32%/34%/37%/42%/44%/46%/51%/54%/58%/62%"
     ],
     "hints": {
       "2015": {
         "id": 2015,
-        "name": "Agile",
-        "description": "",
-        "params": []
+        "name": "Agile"
       }
     }
   },
   "skill": {
     "name": "Rain Call: Volley Chase",
     "icon": "Icon/Skill/13001_Skill_Main",
-    "description": "Summons an Advertising Doll that lasts for 12s near the target. When the Doll is on the battlefield, Donna enters ##Agile#2015# State.\u000bThe Advertising Doll deals <color=#fb8037>&Param1&</color> of ATK as AoE Aqua Minion DMG every 4s and taunting the target.\u000bThe Advertising Doll and Donna's Auto Attack in ##Agile#2015# State can trigger ##Aqua Mark#1018#, dealing <color=#fb8037>&Param4&</color> of ATK as AoE Aqua Mark DMG and inflicting ##Chill#1027#.",
-    "shortDescription": "Summons an Advertising Doll that deals DMG over time and taunts the target.\u000bWhen the doll is on the battlefield, Donna is ##Agile#2015#, with her Auto Attacks enhanced and the possibility to trigger ##Aqua Mark: Torrent#1018#.",
+    "description": "Summons a ##Advertising Doll#4017# near the target. When the Doll is on the battlefield, Donna enters ##Agile#2015# state.\u000bThe doll deals <color=#fb8037>&Param1&</color> of ATK as AoE Aqua Minion DMG every 4s and taunts the target.\u000bThe ##Advertising Doll#4017# and Donna's Auto Attack in ##Agile#2015# state can trigger ##Aqua Mark#1018#, dealing &Param4& of ATK as AoE Aqua Mark DMG and inflicting ##Chill#1027#.",
+    "shortDescription": "Summons a ##Advertising Doll#4017# that deals DMG over time and taunts the target.\u000bWhen the doll is on the battlefield, Donna enters ##Agile#2015# state, with her Auto Attacks enhanced and can trigger ##Aqua Mark: Torrent#1018# and inflict ##Chill#1027#.",
     "params": [
       "125%/143%/162%/218%/235%/253%/288%/303%/318%/348%/372%/397%/422%",
-      "18.3%/21.1%/23.8%/32.1%/34.6%/37.2%/42.3%/44.5%/46.7%/51.1%/54.8%/58.4%/62.1%",
-      "18.3%/21.1%/23.8%/32.1%/34.6%/37.2%/42.3%/44.5%/46.7%/51.1%/54.8%/58.4%/62.1%",
-      "22.5%/29.2%/35.9%/42.6%/49.4%/56.1%/62.8%/69.5%/76.2%"
+      "18%/21%/23%/32%/34%/37%/42%/44%/46%/51%/54%/58%/62%",
+      "18%/21%/23%/32%/34%/37%/42%/44%/46%/51%/54%/58%/62%",
+      "22%/29%/35%/42%/49%/56%/62%/69%/76%"
     ],
     "hints": {
+      "4017": {
+        "id": 4017,
+        "name": "Advertising Doll",
+        "description": "Advertising Doll inherits 100% of Donna's Base Max HP and 100% of her ATK for 12s."
+      },
       "2015": {
         "id": 2015,
-        "name": "Agile",
-        "description": "",
-        "params": []
+        "name": "Agile"
       },
       "1018": {
         "id": 1018,
         "name": "Aqua Mark",
-        "description": "",
-        "params": []
+        "description": "The generic name for all Aqua Marks.\u000bWhen triggered by specific Aqua Trekkers' attacks, the status is removed, and a special effect is activated."
       },
       "1027": {
         "id": 1027,
-        "name": "Chill",
-        "description": "",
-        "params": []
+        "name": "Chill"
       }
     },
-    "cooldown": "240s"
+    "cooldown": "24s"
   },
   "supportSkill": {
-    "name": "Skill.13070000.1",
-    "icon": "",
-    "description": "Dash",
-    "shortDescription": "Dash",
-    "params": [],
-    "hints": {}
+    "name": "Tide Threader",
+    "icon": "Icon/Skill/13001_Skill_Support",
+    "description": "Fires 9 Snow-Piercing Arrows, dealing <color=#fb8037>&Param1&</color> of ATK, <color=#fb8037>&Param2& x2</color> of ATK, <color=#fb8037>&Param3& x3</color> of ATK, <color=#fb8037>&Param4& x2</color> of ATK, and <color=#fb8037>&Param5&</color> of ATK as Aqua Skill DMG respectively.\u000bThe path of the final arrow generates Frost Wave, dealing <color=#fb8037>&Param6&</color> of ATK as Aqua Skill DMG.\u000bWhen Tide Threader deals DMG, inflicts ##Aqua Mark: Torrent#2008#.",
+    "shortDescription": "Keeps shooting Snow-Piercing Arrows and generates Frost Wave to deal DMG to enemies along the path.\u000bThe Support Skill can inflict ##Aqua Mark: Torrent#2008#.",
+    "params": [
+      "220%/253%/287%/386%/417%/447%/509%/536%/562%/615%/659%/703%/747%",
+      "110%/127%/143%/193%/208%/224%/255%/268%/281%/307%/330%/352%/374%",
+      "147%/169%/191%/257%/278%/298%/339%/357%/375%/410%/439%/469%/498%",
+      "165%/190%/215%/289%/312%/336%/382%/402%/422%/461%/494%/527%/560%",
+      "331%/380%/430%/579%/625%/671%/764%/803%/843%/923%/989%/1055%/1121%",
+      "437%/502%/567%/764%/825%/886%/1008%/1061%/1113%/1218%/1305%/1393%/1480%"
+    ],
+    "hints": {
+      "2008": {
+        "id": 2008,
+        "name": "Aqua Mark: Torrent",
+        "description": "A special status applied by some Aqua characters to the target for 10 sec.\u000bWhen triggered by specific Aqua characters' attacks, the status is removed, and a special effect is activated."
+      }
+    },
+    "cooldown": "14s"
   },
   "ultimate": {
     "name": "Argent Cascade",
     "icon": "Icon/Skill/13001_Ultra",
-    "description": "Fires a cluster of arrows that rains down at the target's location, dealing <color=#fb8037>&Param1&</color> of ATK as AoE Aqua DMG every 0.5s for 6s.",
+    "description": "Fires a cluster of arrows that rains down at the target's location, dealing <color=#fb8037>&Param1&</color> of ATK as AoE Aqua Ultimate DMG every 0.5s for 6s.",
     "shortDescription": "Rains arrows at the target location, dealing AoE DMG over time.",
     "params": [
       "160%/184%/207%/279%/302%/324%/369%/388%/407%/445%/477%/509%/541%"
     ],
     "hints": {},
-    "cooldown": "300s",
+    "cooldown": "30s",
     "energy": 260
   },
   "talents": [
@@ -217,7 +231,7 @@ export const Donna = {
           "name": "Memories of the Journey",
           "description": "When Donna casts a skill, increases Skill DMG by <color=#0abec5>&Param1&</color> for &Param2&s.",
           "params": [
-            "28.499999999999996%",
+            "28.5%",
             "10"
           ]
         },
@@ -300,7 +314,7 @@ export const Donna = {
           "name": "Dreams We Share",
           "description": "When Donna deals Skill DMG, increases the Aqua DMG Taken by the target by <color=#0abec5>&Param1&</color> for &Param2&s, stacking up to &Param3& times.",
           "params": [
-            "1.4000000000000001%",
+            "1.4%",
             "10",
             "10"
           ]
@@ -467,7 +481,7 @@ export const Donna = {
           "name": "Our Post Haste",
           "description": "Increases Donna's Skill DMG dealt to elite or higher-tier targets by <color=#0abec5>&Param1&</color>.",
           "params": [
-            "UNKNOWN"
+            "0.57%"
           ]
         },
         {
@@ -941,219 +955,6 @@ export const Donna = {
       "atk": 7426
     }
   ],
-  "skillUpgrades": [
-    {
-      "items": [
-        {
-          "id": 32011,
-          "name": "Shooter Game Cartridge",
-          "quantity": 6
-        },
-        {
-          "id": 32000,
-          "name": "Chess Piece of Skill",
-          "quantity": 2
-        }
-      ],
-      "currency": {
-        "dorra": 13300
-      }
-    },
-    {
-      "items": [
-        {
-          "id": 32011,
-          "name": "Shooter Game Cartridge",
-          "quantity": 12
-        },
-        {
-          "id": 32000,
-          "name": "Chess Piece of Skill",
-          "quantity": 6
-        }
-      ],
-      "currency": {
-        "dorra": 17600
-      }
-    },
-    {
-      "items": [
-        {
-          "id": 32011,
-          "name": "Shooter Game Cartridge",
-          "quantity": 24
-        },
-        {
-          "id": 32012,
-          "name": "Barrage Game Cartridge",
-          "quantity": 3
-        },
-        {
-          "id": 32000,
-          "name": "Chess Piece of Skill",
-          "quantity": 10
-        }
-      ],
-      "currency": {
-        "dorra": 49800
-      }
-    },
-    {
-      "items": [
-        {
-          "id": 32011,
-          "name": "Shooter Game Cartridge",
-          "quantity": 38
-        },
-        {
-          "id": 32012,
-          "name": "Barrage Game Cartridge",
-          "quantity": 8
-        },
-        {
-          "id": 32000,
-          "name": "Chess Piece of Skill",
-          "quantity": 24
-        }
-      ],
-      "currency": {
-        "dorra": 100000
-      }
-    },
-    {
-      "items": [
-        {
-          "id": 32011,
-          "name": "Shooter Game Cartridge",
-          "quantity": 70
-        },
-        {
-          "id": 32012,
-          "name": "Barrage Game Cartridge",
-          "quantity": 14
-        },
-        {
-          "id": 32013,
-          "name": "Demon Bee Game Cartridge",
-          "quantity": 6
-        },
-        {
-          "id": 32000,
-          "name": "Chess Piece of Skill",
-          "quantity": 55
-        }
-      ],
-      "currency": {
-        "dorra": 400000
-      }
-    },
-    {
-      "items": [
-        {
-          "id": 21063,
-          "name": "Tidal Essence",
-          "quantity": 1
-        },
-        {
-          "id": 32012,
-          "name": "Barrage Game Cartridge",
-          "quantity": 50
-        },
-        {
-          "id": 32013,
-          "name": "Demon Bee Game Cartridge",
-          "quantity": 18
-        },
-        {
-          "id": 32000,
-          "name": "Chess Piece of Skill",
-          "quantity": 232
-        }
-      ],
-      "currency": {
-        "dorra": 900000
-      }
-    },
-    {
-      "items": [
-        {
-          "id": 21063,
-          "name": "Tidal Essence",
-          "quantity": 2
-        },
-        {
-          "id": 32012,
-          "name": "Barrage Game Cartridge",
-          "quantity": 90
-        },
-        {
-          "id": 32013,
-          "name": "Demon Bee Game Cartridge",
-          "quantity": 34
-        },
-        {
-          "id": 32000,
-          "name": "Chess Piece of Skill",
-          "quantity": 323
-        }
-      ],
-      "currency": {
-        "dorra": 1600000
-      }
-    },
-    {
-      "items": [
-        {
-          "id": 21063,
-          "name": "Tidal Essence",
-          "quantity": 3
-        },
-        {
-          "id": 32012,
-          "name": "Barrage Game Cartridge",
-          "quantity": 140
-        },
-        {
-          "id": 32013,
-          "name": "Demon Bee Game Cartridge",
-          "quantity": 50
-        },
-        {
-          "id": 32000,
-          "name": "Chess Piece of Skill",
-          "quantity": 478
-        }
-      ],
-      "currency": {
-        "dorra": 2300000
-      }
-    },
-    {
-      "items": [
-        {
-          "id": 21063,
-          "name": "Tidal Essence",
-          "quantity": 6
-        },
-        {
-          "id": 32012,
-          "name": "Barrage Game Cartridge",
-          "quantity": 200
-        },
-        {
-          "id": 32013,
-          "name": "Demon Bee Game Cartridge",
-          "quantity": 70
-        },
-        {
-          "id": 32000,
-          "name": "Chess Piece of Skill",
-          "quantity": 927
-        }
-      ],
-      "currency": {
-        "dorra": 3400000
-      }
-    }
-  ]
+  "upgrades": [],
+  "skillUpgrades": []
 };

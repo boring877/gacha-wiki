@@ -1,0 +1,104 @@
+/* Stella Sora Story Gallery page styles */
+
+.story-gallery-content {
+  background: var(--ss-bg-secondary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.story-gallery-intro {
+  margin: 0 0 1.25rem 0;
+  font-size: 0.9rem;
+  color: var(--ss-text-secondary);
+}
+
+/* Tabs */
+.story-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--ss-border);
+  padding-bottom: 0.75rem;
+}
+
+.story-tab {
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ss-text-secondary);
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-sm);
+  cursor: pointer;
+}
+
+.story-tab[aria-selected='true'] {
+  color: var(--ss-primary);
+  border-color: var(--ss-primary-border);
+}
+
+.story-tab-count {
+  margin-left: 0.4rem;
+  font-size: 0.72rem;
+  color: var(--ss-text-secondary);
+}
+
+/* Chapter groups */
+.story-chapter-group {
+  margin-bottom: 1.75rem;
+}
+
+.story-chapter-title {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ss-text-primary);
+}
+
+/* Card grid */
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.story-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.story-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2540 / 1800;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.story-caption {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  color: var(--ss-text-secondary);
+  border-top: 1px solid var(--ss-border);
+}
+
+@media (max-width: 768px) {
+  .story-gallery-content {
+    padding: 1rem;
+  }
+
+  .story-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.75rem;
+  }
+}

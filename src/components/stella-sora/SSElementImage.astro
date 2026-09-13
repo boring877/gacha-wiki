@@ -1,25 +1,17 @@
 ---
 // Stella Sora Element Image Component
-import { Image } from 'astro:assets';
+// Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
-// Import all Stella Sora element images (better cut versions)
-import aquaImage from '../../assets/images/games/stella-sora/elements/aqua.png';
-import ignisImage from '../../assets/images/games/stella-sora/elements/ignis.png';
-import terraImage from '../../assets/images/games/stella-sora/elements/terra.png';
-import ventusImage from '../../assets/images/games/stella-sora/elements/ventus.png';
-import luxImage from '../../assets/images/games/stella-sora/elements/lux.png';
-import umbraImage from '../../assets/images/games/stella-sora/elements/umbra.png';
-import nonElementImage from '../../assets/images/games/stella-sora/elements/none.png';
-
-// Centralized element image mapping
-const elementImageMap = {
-  Aqua: aquaImage,
-  Ignis: ignisImage,
-  Lux: luxImage,
-  Terra: terraImage,
-  Umbra: umbraImage,
-  Ventus: ventusImage,
-  None: nonElementImage,
+// Centralized element image mapping (better cut versions)
+const elementImageMap: Record<string, string> = {
+  Aqua: 'elements/aqua.png',
+  Ignis: 'elements/ignis.png',
+  Lux: 'elements/lux.png',
+  Terra: 'elements/terra.png',
+  Umbra: 'elements/umbra.png',
+  Ventus: 'elements/ventus.png',
+  None: 'elements/none.png',
 };
 
 export interface Props {
@@ -32,17 +24,16 @@ export interface Props {
 
 const { elementName, alt, class: className = '', width = 32, height = 32 } = Astro.props;
 
-// Get the imported image object from the map
+// Get the image path from the map
 const imageSrc = elementImageMap[elementName] || elementImageMap['Aqua']; // Keep Aqua as fallback for safety
 ---
 
-<Image
-  src={imageSrc}
+<img
+  src={`${R2}/${imageSrc}`}
   alt={alt || elementName}
   width={width}
   height={height}
   class={`${className} element-img-fill`}
   loading="lazy"
-  format="webp"
-  quality={95}
+  decoding="async"
 />

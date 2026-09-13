@@ -1,66 +1,22 @@
 ---
 // Stella Sora Character Shard Image Component
-import { Image } from 'astro:assets';
+// Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
-// Import all shard images
-import amberShard from '../../assets/images/games/stella-sora/shards/amber.png';
-import annShard from '../../assets/images/games/stella-sora/shards/ann.png';
-import canaceShard from '../../assets/images/games/stella-sora/shards/canace.png';
-import caramelShard from '../../assets/images/games/stella-sora/shards/caramel.png';
-import chitoseShard from '../../assets/images/games/stella-sora/shards/chitose.png';
-import chixiaShard from '../../assets/images/games/stella-sora/shards/chixia.png';
-import coronisShard from '../../assets/images/games/stella-sora/shards/coronis.png';
-import cosetteShard from '../../assets/images/games/stella-sora/shards/cosette.png';
-import floraShard from '../../assets/images/games/stella-sora/shards/flora.png';
-import freesiaShard from '../../assets/images/games/stella-sora/shards/freesia.png';
-import fuyukaShard from '../../assets/images/games/stella-sora/shards/fuyuka.png';
-import gerieShard from '../../assets/images/games/stella-sora/shards/gerie.png';
-import irisShard from '../../assets/images/games/stella-sora/shards/iris.png';
-import jinglinShard from '../../assets/images/games/stella-sora/shards/jinglin.png';
-import kasimiraShard from '../../assets/images/games/stella-sora/shards/kasimira.png';
-import laruShard from '../../assets/images/games/stella-sora/shards/laru.png';
-import minovaShard from '../../assets/images/games/stella-sora/shards/minova.png';
-import mistiqueShard from '../../assets/images/games/stella-sora/shards/mistique.png';
-import nanohaShard from '../../assets/images/games/stella-sora/shards/nanoha.png';
-import nazukaShard from '../../assets/images/games/stella-sora/shards/nazuka.png';
-import nazunaShard from '../../assets/images/games/stella-sora/shards/nazuna.png';
-import noyaShard from '../../assets/images/games/stella-sora/shards/noya.png';
-import ridgeShard from '../../assets/images/games/stella-sora/shards/ridge.png';
-import shiaShard from '../../assets/images/games/stella-sora/shards/shia.png';
-import shimiaoShard from '../../assets/images/games/stella-sora/shards/shimiao.png';
-import teresaShard from '../../assets/images/games/stella-sora/shards/teresa.png';
-import tiliaShard from '../../assets/images/games/stella-sora/shards/tilia.png';
-import snowishLaruShard from '../../assets/images/games/stella-sora/shards/snowish-laru.png';
+// Files present in shards/ on R2 (frozen listing; extend when new art uploads)
+const FILES = new Set([
+  'amber', 'ann', 'canace', 'caramel', 'chaton', 'chitose', 'chixia', 'coronis', 'cosette',
+  'donna', 'eleanor', 'firefly', 'firenze', 'flora', 'freesia', 'fuyuka', 'gerie', 'iris',
+  'jinglin', 'karin', 'kasimira', 'laru', 'minova', 'mistique', 'nanoha', 'nazuka', 'nazuna',
+  'noya', 'otoha', 'ridge', 'shia', 'shimiao', 'snowish-laru', 'sparkla', 'springseek-coronis',
+  'suntide-willow', 'teresa', 'tilia', 'wraith',
+]);
 
-const shardImageMap: Record<string, ImageMetadata> = {
-  amber: amberShard,
-  ann: annShard,
-  canace: canaceShard,
-  caramel: caramelShard,
-  chitose: chitoseShard,
-  chixia: chixiaShard,
-  coronis: coronisShard,
-  cosette: cosetteShard,
-  flora: floraShard,
-  freesia: freesiaShard,
-  fuyuka: fuyukaShard,
-  gerie: gerieShard,
-  iris: irisShard,
-  jinglin: jinglinShard,
-  kasimira: kasimiraShard,
-  laru: laruShard,
-  minova: minovaShard,
-  mistique: mistiqueShard,
-  nanoha: nanohaShard,
-  nazuka: nazukaShard,
-  nazuna: nazunaShard,
-  noya: noyaShard,
-  ridge: ridgeShard,
-  shia: shiaShard,
-  shimiao: shimiaoShard,
-  teresa: teresaShard,
-  tilia: tiliaShard,
-  snowishlaru: snowishLaruShard,
+// Hyphenated folders are keyed by their no-hyphen display-name normalization
+const ALIASES: Record<string, string> = {
+  snowishlaru: 'snowish-laru',
+  springseekcoronis: 'springseek-coronis',
+  suntidewillow: 'suntide-willow',
 };
 
 export interface Props {
@@ -74,20 +30,20 @@ export interface Props {
 const { characterName, alt, class: className = '', width = 32, height = 32 } = Astro.props;
 
 const normalizedName = characterName.toLowerCase().replace(/\s+/g, '');
-const imageSrc = shardImageMap[normalizedName];
+const resolved = FILES.has(normalizedName) ? normalizedName : ALIASES[normalizedName];
+const imageSrc = resolved ? `${R2}/shards/${resolved}.png` : null;
 ---
 
 {
   imageSrc ? (
-    <Image
+    <img
       src={imageSrc}
       alt={alt || `${characterName} Shard`}
       width={width}
       height={height}
       class={`${className} shard-img`}
       loading="lazy"
-      format="webp"
-      quality={95}
+      decoding="async"
     />
   ) : (
     <span class={`${className} shard-placeholder`}>Shard</span>

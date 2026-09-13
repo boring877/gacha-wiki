@@ -1,22 +1,16 @@
 ---
 // Stella Sora Element Marker Image Component
-import { Image } from 'astro:assets';
+// Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
-// Import marker images
-import ignisMarker from '../../assets/images/games/stella-sora/markers/ignis_mark.png';
-import aquaMarker from '../../assets/images/games/stella-sora/markers/aqua_mark.png';
-import terraMarker from '../../assets/images/games/stella-sora/markers/terra_mark.png';
-import ventusMarker from '../../assets/images/games/stella-sora/markers/ventus_mark.png';
-import luxMarker from '../../assets/images/games/stella-sora/markers/lux_mark.png';
-import umbraMarker from '../../assets/images/games/stella-sora/markers/umbra_mark.png';
-
-const markerImageMap: Record<string, ImageMetadata> = {
-  ignis: ignisMarker,
-  aqua: aquaMarker,
-  terra: terraMarker,
-  ventus: ventusMarker,
-  lux: luxMarker,
-  umbra: umbraMarker,
+// Marker images present on R2 (frozen listing; extend when new art uploads)
+const markerImageMap: Record<string, string> = {
+  ignis: 'markers/ignis_mark.png',
+  aqua: 'markers/aqua_mark.png',
+  terra: 'markers/terra_mark.png',
+  ventus: 'markers/ventus_mark.png',
+  lux: 'markers/lux_mark.png',
+  umbra: 'markers/umbra_mark.png',
 };
 
 export interface Props {
@@ -30,19 +24,19 @@ export interface Props {
 const { element, alt, class: className = '', width = 18, height = 18 } = Astro.props;
 
 const elementKey = element.toLowerCase();
-const imageSrc = markerImageMap[elementKey];
+const markerPath = markerImageMap[elementKey];
+const imageSrc = markerPath ? `${R2}/${markerPath}` : null;
 ---
 
 {imageSrc && (
-  <Image
+  <img
     src={imageSrc}
     alt={alt || `${element} Mark`}
     width={width}
     height={height}
     class={`ss-marker-img ${className}`}
     loading="lazy"
-    format="webp"
-    quality={95}
+    decoding="async"
   />
 )}
 

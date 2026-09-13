@@ -1,48 +1,30 @@
 ---
-import { Image } from 'astro:assets';
-
-// Import character images
-import snowishLaruImg from '../../assets/images/games/stella-sora/Banner_timeline/7/Snowish_Laru.jpg';
-import freesiaImg from '../../assets/images/games/stella-sora/Banner_timeline/8/Freesia.png';
-import nazukaImg from '../../assets/images/games/stella-sora/Banner_timeline/6/1.png';
-import gerieImg from '../../assets/images/games/stella-sora/Banner_timeline/5/Gerie.jpg';
-import fuyukaImg from '../../assets/images/games/stella-sora/Banner_timeline/4/Fuyuka.jpg';
-import chitoseImg from '../../assets/images/games/stella-sora/Banner_timeline/1/Chitose.jpg';
-import shiaImg from '../../assets/images/games/stella-sora/Banner_timeline/2/Shia.jpg';
-import nanohaImg from '../../assets/images/games/stella-sora/Banner_timeline/3/Nanoha.jpg';
-
-// Import disc images
-import snowishLaruDiscImg from '../../assets/images/games/stella-sora/Banner_timeline/7/Snowish_Laru_disc.jpg';
-import freesiaDiscImg from '../../assets/images/games/stella-sora/Banner_timeline/8/Freesia_disc.png';
-import nazukaDiscImg from '../../assets/images/games/stella-sora/Banner_timeline/6/2.png';
-import gerieDiscImg from '../../assets/images/games/stella-sora/Banner_timeline/5/Gerie_disc.jpg';
-import fuyukaDiscImg from '../../assets/images/games/stella-sora/Banner_timeline/4/Fuyuka_disc.jpg';
-import chitoseDiscImg from '../../assets/images/games/stella-sora/Banner_timeline/1/Chitose_disc.jpg';
-import shiaDiscImg from '../../assets/images/games/stella-sora/Banner_timeline/2/Shia_disc.jpg';
-import nanohaDiscImg from '../../assets/images/games/stella-sora/Banner_timeline/3/Nanoha_disc.jpg';
+// Stella Sora Banner Timeline Image Component
+// Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
 // Image mapping by character name
-const characterImages: Record<string, ImageMetadata> = {
-  'Snowish Laru': snowishLaruImg,
-  Freesia: freesiaImg,
-  Nazuka: nazukaImg,
-  Gerie: gerieImg,
-  Fuyuka: fuyukaImg,
-  Chitose: chitoseImg,
-  Shia: shiaImg,
-  Nanoha: nanohaImg,
+const characterImages: Record<string, string> = {
+  'Snowish Laru': 'Banner_timeline/7/Snowish_Laru.jpg',
+  Freesia: 'Banner_timeline/8/Freesia.png',
+  Nazuka: 'Banner_timeline/6/1.png',
+  Gerie: 'Banner_timeline/5/Gerie.jpg',
+  Fuyuka: 'Banner_timeline/4/Fuyuka.jpg',
+  Chitose: 'Banner_timeline/1/Chitose.jpg',
+  Shia: 'Banner_timeline/2/Shia.jpg',
+  Nanoha: 'Banner_timeline/3/Nanoha.jpg',
 };
 
 // Disc image mapping by disc name
-const discImages: Record<string, ImageMetadata> = {
-  'Snowy Night Surprise': snowishLaruDiscImg,
-  'Sunlit Blossom': freesiaDiscImg,
-  "Deer's Song": nazukaDiscImg,
-  'The Lost Pilgrim': gerieDiscImg,
-  Fireworks: fuyukaDiscImg,
-  'Sword Against Stream': chitoseDiscImg,
-  'Ripples of Nostalgia': shiaDiscImg,
-  'Daylight Garden': nanohaDiscImg,
+const discImages: Record<string, string> = {
+  'Snowy Night Surprise': 'Banner_timeline/7/Snowish_Laru_disc.jpg',
+  'Sunlit Blossom': 'Banner_timeline/8/Freesia_disc.png',
+  "Deer's Song": 'Banner_timeline/6/2.png',
+  'The Lost Pilgrim': 'Banner_timeline/5/Gerie_disc.jpg',
+  Fireworks: 'Banner_timeline/4/Fuyuka_disc.jpg',
+  'Sword Against Stream': 'Banner_timeline/1/Chitose_disc.jpg',
+  'Ripples of Nostalgia': 'Banner_timeline/2/Shia_disc.jpg',
+  'Daylight Garden': 'Banner_timeline/3/Nanoha_disc.jpg',
 };
 
 export interface Props {
@@ -57,19 +39,20 @@ const { name, alt, type, width = 300, height = 300 } = Astro.props;
 
 // Get the appropriate image based on type
 const imageMap = type === 'character' ? characterImages : discImages;
-const imageSrc = imageMap[name];
+const imagePath = imageMap[name];
 ---
 
 {
-  imageSrc && (
+  imagePath && (
     <div class={`ss-banner-image ss-banner-image--${type}`}>
-      <Image
-        src={imageSrc}
+      <img
+        src={`${R2}/${imagePath}`}
         alt={alt}
         width={width}
         height={height}
         class="ss-banner-image__img"
         loading="lazy"
+        decoding="async"
       />
     </div>
   )

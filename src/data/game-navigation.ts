@@ -256,6 +256,7 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
         title: 'Resources',
         links: [
           { name: 'Blog', href: '/guides/stella-sora/blog/' },
+          { name: 'Story Gallery', href: '/guides/stella-sora/story-gallery/' },
           { name: 'Ascension Q&A', href: '/guides/stella-sora/ascension-qa/' },
           { name: 'Exclusive Items', href: '/guides/stella-sora/exclusive-items/' },
           { name: 'Clock', href: '/clock/stella-sora/' },

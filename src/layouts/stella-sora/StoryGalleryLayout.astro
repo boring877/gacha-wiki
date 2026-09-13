@@ -1,6 +1,6 @@
 ---
-// Stella Sora Landing Layout
-// Base layout for landing pages
+// Stella Sora Story Gallery Layout
+// Base layout for the story CG gallery page
 
 import SSBaseHead from '../../components/stella-sora/SSBaseHead.astro';
 import GameSEO from '../../components/GameSEO.astro';
@@ -12,28 +12,27 @@ import DecorativeLines from '../../components/DecorativeLines.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import Analytics from '../../components/Analytics.astro';
 import Breadcrumb from '../../components/stella-sora/SSBreadcrumb.astro';
-import { stellaSoraConfig } from '../../data/stella-sora/stella-sora.js';
 
+// Import CSS files
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/stella-sora/ss-colors.css';
 import '../../styles/games/stella-sora/ss-layout.css';
-import '../../styles/games/stella-sora/stella-sora-landing.css';
+import '../../styles/games/stella-sora/ss-badge-colours.css';
+import '../../styles/games/stella-sora/ss-story-gallery.css';
 
 export interface Props {
   title: string;
-  description?: string;
+  description: string;
   gameTitle?: string;
-  heroImage?: any;
-  breadcrumbs?: { name: string; url: string }[];
 }
 
-const { title, description, gameTitle, heroImage } = Astro.props;
+const { title, description, gameTitle } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <SSBaseHead title={title} description={description} />
+    <SSBaseHead title={title} description={description || ''} />
     <GameSEO gameKey="stella-sora" title={title} description={description} />
     <slot name="head" />
     <Analytics />
@@ -41,6 +40,7 @@ const { title, description, gameTitle, heroImage } = Astro.props;
   <body class="stella-sora-body">
     <CustomScrollbar />
 
+    <!-- Background layers for visual depth -->
     <div class="bg-layer ss-bg-primary"></div>
     <div class="bg-layer ss-bg-accent-1"></div>
     <div class="bg-layer ss-bg-accent-2"></div>
@@ -52,40 +52,24 @@ const { title, description, gameTitle, heroImage } = Astro.props;
       <MobileMenu />
 
       <div class="stella-sora-container">
-        <main class="stella-sora-main" id="main-content">
+        <main class="stella-sora-main">
           {
-            heroImage && gameTitle && (
-              <section class="hero-section">
-                <div class="hero-image-wrapper">
-                  <div class="hero-image-container">
-                    <img src={heroImage} alt={gameTitle} class="hero-image" width={1200} height={400} loading="eager" decoding="async" />
-                    <div class="hero-overlay" />
-                  </div>
-                </div>
-                <h1 class="hero-title">{gameTitle}</h1>
-                <a href={stellaSoraConfig.version.eventPageUrl} class="hero-version-link">
-                  <div class="hero-version">Version {stellaSoraConfig.version.current}</div>
-                </a>
-                <DecorativeLines />
-              </section>
-            )
-          }
-
-          {
-            !heroImage && gameTitle && (
+            gameTitle && (
               <section class="title-only-section">
                 <h1 class="title-only-heading">{gameTitle}</h1>
                 <DecorativeLines />
               </section>
             )
           }
-
-          <Breadcrumb autoGenerate={true} gameKey="stella-sora" showBackButton={true} />
-
-          <div class="content-area">
-            <slot />
-          </div>
+          <slot />
         </main>
+        <Breadcrumb
+          crumbs={[
+            { name: 'Guides', url: '/guides' },
+            { name: 'Stella Sora', url: '/guides/stella-sora/' },
+            { name: 'Story Gallery', url: '/guides/stella-sora/story-gallery/' },
+          ]}
+        />
       </div>
 
       <Footer />

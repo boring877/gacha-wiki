@@ -1,120 +1,57 @@
 ---
 // Stella Sora Event Image Component
-// Import all event images once and use mapping
-import { Image } from 'astro:assets';
+// Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
-// Import all Stella Sora event images once
-import event1Image from '../../assets/images/games/stella-sora/events/1/1.jpg';
-import event2Image from '../../assets/images/games/stella-sora/events/1/2.jpg';
-import event3Image from '../../assets/images/games/stella-sora/events/1/3.jpg';
-import event4Image from '../../assets/images/games/stella-sora/events/1/4.jpg';
-
-// Import folder 2 event images
-import event2_1Image from '../../assets/images/games/stella-sora/events/2/1.jpg';
-import event2_2Image from '../../assets/images/games/stella-sora/events/2/2.jpg';
-import event2_3Image from '../../assets/images/games/stella-sora/events/2/3.jpg';
-import event2_4Image from '../../assets/images/games/stella-sora/events/2/4.jpg';
-
-// Import folder 3 event images (A Finale Echoing)
-import event3_1Image from '../../assets/images/games/stella-sora/events/3/Opera_Ghost.jpg';
-
-// Import folder 4 event images (Version 1.2 and new ★5 Trekker: Fuyuka)
-import event4_1Image from '../../assets/images/games/stella-sora/events/4/1.jpg';
-import event4_2Image from '../../assets/images/games/stella-sora/events/4/2.jpg';
-import event4_3Image from '../../assets/images/games/stella-sora/events/4/3.jpg';
-import event4_4Image from '../../assets/images/games/stella-sora/events/4/4.jpg';
-
-// Import folder 5 event images (Guild Sweet Guild)
-import event5_1Image from '../../assets/images/games/stella-sora/events/5/1.jpg';
-import event5_2Image from '../../assets/images/games/stella-sora/events/5/2.jpg';
-import event5_3Image from '../../assets/images/games/stella-sora/events/5/3.jpg';
-import event5_4Image from '../../assets/images/games/stella-sora/events/5/4.jpg';
-
-// Import folder 6 event images (Version 1.3 - A Breezy Romance)
-import event6_1Image from '../../assets/images/games/stella-sora/events/6/1.png';
-import event6_2Image from '../../assets/images/games/stella-sora/events/6/2.png';
-import event6_3Image from '../../assets/images/games/stella-sora/events/6/3.png';
-import event6_4Image from '../../assets/images/games/stella-sora/events/6/4.jpeg';
-import event6_5Image from '../../assets/images/games/stella-sora/events/6/5.jpeg';
-import event6_6Image from '../../assets/images/games/stella-sora/events/6/6.jpeg';
-
-// Import folder 7 event images (Beyond the Dream Limited Event)
-import event7_1Image from '../../assets/images/games/stella-sora/events/7/1.jpg';
-import event7_2Image from '../../assets/images/games/stella-sora/events/7/2.jpg';
-import event7_3Image from '../../assets/images/games/stella-sora/events/7/3.jpg';
-import event7_4Image from '../../assets/images/games/stella-sora/events/7/4.jpg';
-
-// Import folder 8 event images (Version 1.4 - Radiant Messenger, Holy Night Spirit)
-import event8_1Image from '../../assets/images/games/stella-sora/events/8/1.png';
-import event8_2Image from '../../assets/images/games/stella-sora/events/8/2.png';
-import event8_3Image from '../../assets/images/games/stella-sora/events/8/3.png';
-import event8_4Image from '../../assets/images/games/stella-sora/events/8/4.png';
-import event8_5Image from '../../assets/images/games/stella-sora/events/8/5.png';
-import event8_6Image from '../../assets/images/games/stella-sora/events/8/6.png';
-import event8_7Image from '../../assets/images/games/stella-sora/events/8/7.png';
-import event8_8Image from '../../assets/images/games/stella-sora/events/8/8.png';
-import event8_9Image from '../../assets/images/games/stella-sora/events/8/9.png';
-import event8_10Image from '../../assets/images/games/stella-sora/events/8/10.png';
-import event8_11Image from '../../assets/images/games/stella-sora/events/8/11.png';
-import event8_12Image from '../../assets/images/games/stella-sora/events/8/12.png';
-import event8_13Image from '../../assets/images/games/stella-sora/events/8/13.png';
-import event8_14Image from '../../assets/images/games/stella-sora/events/8/14.png';
-import event8_15Image from '../../assets/images/games/stella-sora/events/8/15.png';
-import event8_16Image from '../../assets/images/games/stella-sora/events/8/16.png';
-import event8_17Image from '../../assets/images/games/stella-sora/events/8/17.png';
-import event8_18Image from '../../assets/images/games/stella-sora/events/8/18.png';
-import event8_19Image from '../../assets/images/games/stella-sora/events/8/19.png';
-import event8_20Image from '../../assets/images/games/stella-sora/events/8/20.png';
-
-// Centralized event image mapping
-const eventImageMap = {
-  '1/1': event1Image,
-  '1/2': event2Image,
-  '1/3': event3Image,
-  '1/4': event4Image,
-  '2/1': event2_1Image,
-  '2/2': event2_2Image,
-  '2/3': event2_3Image,
-  '2/4': event2_4Image,
-  '3/1': event3_1Image,
-  '4/1': event4_1Image,
-  '4/2': event4_2Image,
-  '4/3': event4_3Image,
-  '4/4': event4_4Image,
-  '5/1': event5_1Image,
-  '5/2': event5_2Image,
-  '5/3': event5_3Image,
-  '5/4': event5_4Image,
-  '6/1': event6_1Image,
-  '6/2': event6_2Image,
-  '6/3': event6_3Image,
-  '6/4': event6_4Image,
-  '6/5': event6_5Image,
-  '6/6': event6_6Image,
-  '7/1': event7_1Image,
-  '7/2': event7_2Image,
-  '7/3': event7_3Image,
-  '7/4': event7_4Image,
-  '8/1': event8_1Image,
-  '8/2': event8_2Image,
-  '8/3': event8_3Image,
-  '8/4': event8_4Image,
-  '8/5': event8_5Image,
-  '8/6': event8_6Image,
-  '8/7': event8_7Image,
-  '8/8': event8_8Image,
-  '8/9': event8_9Image,
-  '8/10': event8_10Image,
-  '8/11': event8_11Image,
-  '8/12': event8_12Image,
-  '8/13': event8_13Image,
-  '8/14': event8_14Image,
-  '8/15': event8_15Image,
-  '8/16': event8_16Image,
-  '8/17': event8_17Image,
-  '8/18': event8_18Image,
-  '8/19': event8_19Image,
-  '8/20': event8_20Image,
+// Centralized event image mapping (key '<folder>/<file>' -> R2 path)
+const eventImageMap: Record<string, string> = {
+  '1/1': 'events/1/1.jpg',
+  '1/2': 'events/1/2.jpg',
+  '1/3': 'events/1/3.jpg',
+  '1/4': 'events/1/4.jpg',
+  '2/1': 'events/2/1.jpg',
+  '2/2': 'events/2/2.jpg',
+  '2/3': 'events/2/3.jpg',
+  '2/4': 'events/2/4.jpg',
+  '3/1': 'events/3/Opera_Ghost.jpg',
+  '4/1': 'events/4/1.jpg',
+  '4/2': 'events/4/2.jpg',
+  '4/3': 'events/4/3.jpg',
+  '4/4': 'events/4/4.jpg',
+  '5/1': 'events/5/1.jpg',
+  '5/2': 'events/5/2.jpg',
+  '5/3': 'events/5/3.jpg',
+  '5/4': 'events/5/4.jpg',
+  '6/1': 'events/6/1.png',
+  '6/2': 'events/6/2.png',
+  '6/3': 'events/6/3.png',
+  '6/4': 'events/6/4.jpeg',
+  '6/5': 'events/6/5.jpeg',
+  '6/6': 'events/6/6.jpeg',
+  '7/1': 'events/7/1.jpg',
+  '7/2': 'events/7/2.jpg',
+  '7/3': 'events/7/3.jpg',
+  '7/4': 'events/7/4.jpg',
+  '8/1': 'events/8/1.png',
+  '8/2': 'events/8/2.png',
+  '8/3': 'events/8/3.png',
+  '8/4': 'events/8/4.png',
+  '8/5': 'events/8/5.png',
+  '8/6': 'events/8/6.png',
+  '8/7': 'events/8/7.png',
+  '8/8': 'events/8/8.png',
+  '8/9': 'events/8/9.png',
+  '8/10': 'events/8/10.png',
+  '8/11': 'events/8/11.png',
+  '8/12': 'events/8/12.png',
+  '8/13': 'events/8/13.png',
+  '8/14': 'events/8/14.png',
+  '8/15': 'events/8/15.png',
+  '8/16': 'events/8/16.png',
+  '8/17': 'events/8/17.png',
+  '8/18': 'events/8/18.png',
+  '8/19': 'events/8/19.png',
+  '8/20': 'events/8/20.png',
 };
 
 const {
@@ -122,27 +59,22 @@ const {
   alt = 'Event image',
   class: className = '',
   loading = 'lazy',
-  format = 'webp',
-  quality = 85,
   width = 1200,
   height = 2000,
-  sizes = '(max-width: 480px) 100vw, (max-width: 768px) 90vw, 1200px',
 } = Astro.props;
 
-// Get the imported image object from the map
-const imageSrc = eventImageMap[imageName] || event1Image;
+// Get the image path from the map
+const imageSrc = `${R2}/${eventImageMap[imageName] || eventImageMap['1/1']}`;
 ---
 
 <div class={`ss-event-image ${className}`}>
-  <Image
+  <img
     src={imageSrc}
     alt={alt}
     width={width}
     height={height}
     loading={loading}
-    format={format}
-    quality={quality}
-    sizes={sizes}
+    decoding="async"
     style="object-fit: contain; border-radius: 8px; max-width: 100%; height: auto;"
   />
 </div>

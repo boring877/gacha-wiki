@@ -2,11 +2,9 @@
 /**
  * SS Item Image Component
  * Simple component for displaying item images in Stella Sora exclusive items page
+ * Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
  */
-
-import { Image } from 'astro:assets';
-import summerSanctuary from '../../assets/images/games/stella-sora/Exclusive/Summer_sanctuary.jpg';
-import tipsyDaydream from '../../assets/images/games/stella-sora/Exclusive/Tipsy_Daydream.jpg';
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
 interface Props {
   src: string;
@@ -16,17 +14,17 @@ interface Props {
 
 const { src, alt, class: className = '' } = Astro.props;
 
-// Map image paths to imported image modules
-const imageMap = {
-  '/images/games/stella-sora/Exclusive/Summer_sanctuary.jpg': summerSanctuary,
-  'Summer_sanctuary.jpg': summerSanctuary,
-  '/images/games/stella-sora/Exclusive/Tipsy_Daydream.jpg': tipsyDaydream,
-  'Tipsy_Daydream.jpg': tipsyDaydream,
+// Map image paths to R2 paths
+const imageMap: Record<string, string> = {
+  '/images/games/stella-sora/Exclusive/Summer_sanctuary.jpg': 'Exclusive/Summer_sanctuary.jpg',
+  'Summer_sanctuary.jpg': 'Exclusive/Summer_sanctuary.jpg',
+  '/images/games/stella-sora/Exclusive/Tipsy_Daydream.jpg': 'Exclusive/Tipsy_Daydream.jpg',
+  'Tipsy_Daydream.jpg': 'Exclusive/Tipsy_Daydream.jpg',
 };
 
-// Get the image module based on the src
+// Get the image path based on the src
 const filename = src.split('/').pop() || 'Summer_sanctuary.jpg';
-const imageModule = imageMap[src] || imageMap[filename] || summerSanctuary;
+const imagePath = imageMap[src] || imageMap[filename] || 'Exclusive/Summer_sanctuary.jpg';
 
 // Use consistent high-quality dimensions
 const finalWidth = 800;
@@ -34,15 +32,14 @@ const finalHeight = 800;
 ---
 
 <div class={`ss-item-image-container ${className}`}>
-  <Image
-    src={imageModule}
+  <img
+    src={`${R2}/${imagePath}`}
     alt={alt}
     width={finalWidth}
     height={finalHeight}
     class="ss-item-image"
     loading="lazy"
-    format="webp"
-    quality={95}
+    decoding="async"
   />
 </div>
 

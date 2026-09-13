@@ -1,17 +1,14 @@
 ---
 // Stella Sora Attack Type Image Component
-import { Image } from 'astro:assets';
-
-// Import attack type images (using JPG format)
-import meleeImage from '../../assets/images/games/stella-sora/attacktype/melee.jpg';
-import rangedImage from '../../assets/images/games/stella-sora/attacktype/range.jpg';
+// Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
 // Centralized attack type image mapping
-const attackTypeImageMap: Record<string, ImageMetadata> = {
-  Melee: meleeImage,
-  melee: meleeImage,
-  Ranged: rangedImage,
-  ranged: rangedImage,
+const attackTypeImageMap: Record<string, string> = {
+  Melee: 'attacktype/melee.jpg',
+  melee: 'attacktype/melee.jpg',
+  Ranged: 'attacktype/range.jpg',
+  ranged: 'attacktype/range.jpg',
 };
 
 export interface Props {
@@ -24,17 +21,16 @@ export interface Props {
 
 const { attackType, alt, class: className = '', width = 32, height = 32 } = Astro.props;
 
-// Get the imported image object from the map
+// Get the image path from the map
 const imageSrc = attackTypeImageMap[attackType] || attackTypeImageMap['Melee'];
 ---
 
-<Image
-  src={imageSrc}
+<img
+  src={`${R2}/${imageSrc}`}
   alt={alt || attackType}
   width={width}
   height={height}
   class={`${className} attack-type-img`}
   loading="lazy"
-  format="webp"
-  quality={95}
+  decoding="async"
 />

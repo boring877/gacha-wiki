@@ -2,25 +2,18 @@
 /**
  * Stella Sora Shop Event Banner Image Component
  * Handles shop event banner images for the index page from BG_Shop directory
+ * Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
  */
-
-import { Image } from 'astro:assets';
-
-// Import shop event banner images from BG_Shop directory
-import aFinaleEchoingBanner from '../../assets/images/games/stella-sora/EventShop/BG_Shop/Finale_Echoing.jpg';
-import theGhostShipBanner from '../../assets/images/games/stella-sora/EventShop/BG_Shop/Ghost_Ship.jpg';
-import guildSweetGuildBanner from '../../assets/images/games/stella-sora/EventShop/BG_Shop/Guild_Sweet.jpg';
-import beyondTheDreamBanner from '../../assets/images/games/stella-sora/EventShop/BG_Shop/Beyond_the_dream.jpg';
-import radiantMessengerBanner from '../../assets/images/games/stella-sora/events/8/1.png';
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
 // Shop event banner image mapping
-const shopEventBannerMap = {
+const shopEventBannerMap: Record<string, string> = {
   // Use the actual event IDs from the data files
-  'a-finale-echoing': aFinaleEchoingBanner,
-  'the-ghost-ship-haunts-the-deep': theGhostShipBanner,
-  'guild-sweet-guild': guildSweetGuildBanner,
-  'beyond-the-dream': beyondTheDreamBanner,
-  'radiant-messenger-holy-night-spirit': radiantMessengerBanner,
+  'a-finale-echoing': 'EventShop/BG_Shop/Finale_Echoing.jpg',
+  'the-ghost-ship-haunts-the-deep': 'EventShop/BG_Shop/Ghost_Ship.jpg',
+  'guild-sweet-guild': 'EventShop/BG_Shop/Guild_Sweet.jpg',
+  'beyond-the-dream': 'EventShop/BG_Shop/Beyond_the_dream.jpg',
+  'radiant-messenger-holy-night-spirit': 'events/8/1.png',
 };
 
 const {
@@ -28,30 +21,22 @@ const {
   alt = 'Shop Event Banner Image',
   class: className = '',
   loading = 'lazy',
-  format = 'webp',
-  quality = 95,
   width = 500,
   height = 500,
-  sizes = '(max-width: 480px) 100vw, (max-width: 768px) 90vw, 800px',
 } = Astro.props;
 
-// Get the imported image object from the map
-const imageSrc = shopEventBannerMap[imageName] || guildSweetGuildBanner;
+// Get the image path from the map
+const imagePath = shopEventBannerMap[imageName] || shopEventBannerMap['guild-sweet-guild'];
 ---
 
 <div class={`ss-shop-event-banner-image ${className}`}>
-  <picture>
-    <source srcset={imageSrc.src} type="image/webp" sizes={sizes} />
-    <Image
-      src={imageSrc}
-      alt={alt}
-      width={width}
-      height={height}
-      loading={loading}
-      format={format}
-      quality={quality}
-      sizes={sizes}
-      style="object-fit: cover; border-radius: 8px; width: 100%; height: auto;"
-    />
-  </picture>
+  <img
+    src={`${R2}/${imagePath}`}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    decoding="async"
+    style="object-fit: cover; border-radius: 8px; width: 100%; height: auto;"
+  />
 </div>

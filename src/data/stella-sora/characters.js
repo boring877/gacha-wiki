@@ -53,6 +53,15 @@ import { Nazuna } from './characters/characters/nazuna.js';
 import { SnowishLaru } from './characters/characters/snowish-laru.js';
 import { Firenze } from './characters/characters/firenze.js';
 import { SpringseekCoronis } from './characters/characters/springseek-coronis.js';
+import { Chaton } from './characters/characters/chaton.js';
+import { Donna } from './characters/characters/donna.js';
+import { Wraith } from './characters/characters/wraith.js';
+import { Firefly } from './characters/characters/firefly.js';
+import { Eleanor } from './characters/characters/eleanor.js';
+import { Sparkla } from './characters/characters/sparkla.js';
+import { Otoha } from './characters/characters/otoha.js';
+import { Karin } from './characters/characters/karin.js';
+import { SuntideWillow } from './characters/characters/suntide-willow.js';
 
 // Map character data by slug for easy lookup
 const characterDataMap = {
@@ -86,6 +95,17 @@ const characterDataMap = {
   shia: Shia,
   nazuna: Nazuna,
   snowishLaru: SnowishLaru,
+  'snowish-laru': SnowishLaru,
+  'springseek-coronis': SpringseekCoronis,
+  'chaton': Chaton,
+  'donna': Donna,
+  'wraith': Wraith,
+  'firefly': Firefly,
+  'eleanor': Eleanor,
+  'sparkla': Sparkla,
+  'otoha': Otoha,
+  'karin': Karin,
+  'suntide-willow': SuntideWillow,
 };
 
 // Map 5-star characters to their signature discs

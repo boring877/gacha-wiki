@@ -1,106 +1,51 @@
 ---
 // Stella Sora Character Image Component
-// Import all character images once and use mapping like other games
-import { Image } from 'astro:assets';
+// Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
-// Import all Stella Sora character images once
-import amberImage from '../../assets/images/games/stella-sora/gameimg/characters/Amber.jpg';
-import annImage from '../../assets/images/games/stella-sora/gameimg/characters/Ann.jpg';
-import canaceImage from '../../assets/images/games/stella-sora/gameimg/characters/Canace.jpg';
-import chitoseImage from '../../assets/images/games/stella-sora/gameimg/characters/Chitose.jpg';
-import chixiaImage from '../../assets/images/games/stella-sora/gameimg/characters/Chixia.jpg';
-import floraImage from '../../assets/images/games/stella-sora/gameimg/characters/Flora.jpg';
-import freesiaImage from '../../assets/images/games/stella-sora/gameimg/characters/Freesia.jpg';
-import fuyukaImage from '../../assets/images/games/stella-sora/gameimg/characters/Fuyuka.jpg';
-import gerieImage from '../../assets/images/games/stella-sora/gameimg/characters/Gerie.jpg';
-import jinglinImage from '../../assets/images/games/stella-sora/gameimg/characters/Jinglin.jpg';
-import kasimiraImage from '../../assets/images/games/stella-sora/gameimg/characters/Kasimira.jpg';
-import minovaImage from '../../assets/images/games/stella-sora/gameimg/characters/Minova.jpg';
-import mistiqueImage from '../../assets/images/games/stella-sora/gameimg/characters/Mistique.jpg';
-import nanohaImage from '../../assets/images/games/stella-sora/gameimg/characters/Nanoha.jpg';
-import nazukaImage from '../../assets/images/games/stella-sora/gameimg/characters/Nazuka.jpg';
-import nazunaImage from '../../assets/images/games/stella-sora/gameimg/characters/Nazuna.jpg';
-import noyaImage from '../../assets/images/games/stella-sora/gameimg/characters/Noya.jpg';
-import shiaImage from '../../assets/images/games/stella-sora/gameimg/characters/Shia.jpg';
-import tiliaImage from '../../assets/images/games/stella-sora/gameimg/characters/Tilia.jpg';
-import caramelImage from '../../assets/images/games/stella-sora/gameimg/characters/Caramel.jpg';
-import coronisImage from '../../assets/images/games/stella-sora/gameimg/characters/Coronis.jpg';
-import cosetteImage from '../../assets/images/games/stella-sora/gameimg/characters/Cosette.jpg';
-import irisImage from '../../assets/images/games/stella-sora/gameimg/characters/Iris.jpg';
-import laruImage from '../../assets/images/games/stella-sora/gameimg/characters/Laru.jpg';
-import ridgeImage from '../../assets/images/games/stella-sora/gameimg/characters/Ridge.jpg';
-import shimiaoImage from '../../assets/images/games/stella-sora/gameimg/characters/Shimiao.jpg';
-import teresaImage from '../../assets/images/games/stella-sora/gameimg/characters/Teresa.jpg';
-import snowishLaruImage from '../../assets/images/games/stella-sora/gameimg/characters/Snowish_Laru.jpg';
-import firenzeImage from '../../assets/images/games/stella-sora/gameimg/characters/Firenze.jpg';
-import springseekCoronisImage from '../../assets/images/games/stella-sora/gameimg/characters/Springseek_Coronis.jpg';
+// Files present in gameimg/characters/ on R2 (frozen listing; extend when new art uploads)
+const FILES = new Set([
+  'Amber', 'Ann', 'Canace', 'Caramel', 'Chaton', 'Chitose', 'Chixia', 'Coronis', 'Cosette',
+  'Donna', 'Eleanor', 'Firefly', 'Firenze', 'Flora', 'Freesia', 'Fuyuka', 'Gerie', 'Iris',
+  'Jinglin', 'Karin', 'Kasimira', 'Laru', 'Minova', 'Mistique', 'Nanoha', 'Nazuka', 'Nazuna',
+  'Noya', 'Otoha', 'Ridge', 'Shia', 'Shimiao', 'Snowish_Laru', 'Sparkla', 'Springseek_Coronis',
+  'Suntide_Willow', 'Teresa', 'Tilia', 'Wraith',
+]);
 
-// Centralized character image mapping
-const characterImageMap = {
-  'Amber.jpg': amberImage,
-  'Ann.jpg': annImage,
-  'Canace.jpg': canaceImage,
-  'Chitose.jpg': chitoseImage,
-  'Chixia.jpg': chixiaImage,
-  'Flora.jpg': floraImage,
-  'Freesia.jpg': freesiaImage,
-  'Fuyuka.jpg': fuyukaImage,
-  'Gerie.jpg': gerieImage,
-  'Jinglin.jpg': jinglinImage,
-  'Kasimira.jpg': kasimiraImage,
-  'Minova.jpg': minovaImage,
-  'Mistique.jpg': mistiqueImage,
-  'Nanoha.jpg': nanohaImage,
-  'Nazuka.jpg': nazukaImage,
-  'Nazuna.jpg': nazunaImage,
-  'Noya.jpg': noyaImage,
-  'Shia.jpg': shiaImage,
-  'Tilia.jpg': tiliaImage,
-  'Caramel.jpg': caramelImage,
-  'Coronis.jpg': coronisImage,
-  'Cosette.jpg': cosetteImage,
-  'Iris.jpg': irisImage,
-  'Laru.jpg': laruImage,
-  'Ridge.jpg': ridgeImage,
-  'Shimiao.jpg': shimiaoImage,
-  'Teresa.jpg': teresaImage,
-  'Snowish_Laru.jpg': snowishLaruImage,
-  'Snowish Laru.jpg': snowishLaruImage,
-  'Firenze.jpg': firenzeImage,
-  'Springseek_Coronis.jpg': springseekCoronisImage,
-  'Springseek Coronis.jpg': springseekCoronisImage,
-};
+export interface Props {
+  imageName: string;
+  alt?: string;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'jpg' | 'png';
+  quality?: number;
+  width?: number;
+  height?: number;
+}
 
 const {
-  imageName, // This is now a string name, not an image object
+  imageName,
   alt,
   class: className = '',
   loading = 'lazy',
-  format = 'webp',
-  quality = 100,
   width = 1000,
   height = 1000,
 } = Astro.props;
 
-// Get the imported image object from the map
-let imageKey = imageName;
+// Normalize: strip extension, spaces to underscores (e.g. "Suntide Willow.jpg" -> "Suntide_Willow")
+let key = imageName.split('/').pop() || 'Chitose.jpg';
+key = key.replace(/\.(jpg|jpeg|png|webp)$/i, '').replace(/\s+/g, '_');
 
-// Add extension if missing
-if (!imageKey.includes('.')) {
-  imageKey = `${imageKey}.jpg`;
-}
-
-const imageSrc = characterImageMap[imageKey] || characterImageMap['Chitose.jpg'];
+const imageSrc = FILES.has(key) ? `${R2}/gameimg/characters/${key}.jpg` : `${R2}/gameimg/characters/Chitose.jpg`;
 ---
 
-<Image
+<img
   src={imageSrc}
   alt={alt}
   width={width}
   height={height}
   class={`${className} character-img-fill`}
   loading={loading}
-  format={format}
-  quality={quality}
+  decoding="async"
   sizes="(max-width: 768px) 200px, 300px"
 />

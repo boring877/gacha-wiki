@@ -1,15 +1,11 @@
 ---
 // Stella Sora Character Stat Image Component
 // For character-specific images like q.png (stats portrait with transparency)
-import { Image } from 'astro:assets';
+// Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
-// Import character stat images (q.png = stats portrait)
-import amberStatImage from '../../assets/images/games/stella-sora/characters/amber/q.png';
-
-// Centralized character stat image mapping
-const characterStatImageMap: Record<string, ImageMetadata> = {
-  amber: amberStatImage,
-};
+// Character slugs that have a q.png stats portrait on R2 (frozen listing; extend when new art uploads)
+const FILES = new Set(['amber']);
 
 export interface Props {
   characterSlug: string;
@@ -21,19 +17,19 @@ export interface Props {
 
 const { characterSlug, alt, class: className = '', width = 400, height = 400 } = Astro.props;
 
-// Get the imported image object from the map
-const imageSrc = characterStatImageMap[characterSlug.toLowerCase()];
+const imageSrc = FILES.has(characterSlug.toLowerCase())
+  ? `${R2}/characters/${characterSlug.toLowerCase()}/q.png`
+  : null;
 ---
 
 {imageSrc && (
-  <Image
+  <img
     src={imageSrc}
     alt={alt || `${characterSlug} stats portrait`}
     width={width}
     height={height}
     class={`${className} character-stat-img`}
     loading="lazy"
-    format="png"
-    quality={95}
+    decoding="async"
   />
 )}

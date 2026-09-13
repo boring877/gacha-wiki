@@ -2398,276 +2398,1098 @@ export const characterSkills = {
       energy: 190,
     },
   },
-  snowishLaru: {
+  'snowish-laru': {
     name: 'Snowish Laru',
     id: 158,
     normalAttack: {
       name: 'Snowish Warrior',
       icon: 'Icon/Skill/15801_Normal',
-      description:
-        "Wields the whip to perform multiple attacks.\u000bStrike 1: <color=#fb8037>&Param1&</color> of ATK as Ignis DMG.\u000bStrike 2: <color=#fb8037>&Param2&</color> of ATK as Ignis DMG.\u000bStrike 3: <color=#fb8037>&Param3&</color> of ATK as Ignis DMG.\u000bStrike 4: <color=#fb8037>&Param4& x5</color> of ATK as Ignis DMG.\u000bStrike 5: <color=#fb8037>&Param5& x3</color> of ATK as Ignis DMG.\u000bUses toy Colonel Walnut to attack the target. Its Auto Attack deals <color=#fb8037>&Param6&</color> of ATK as Ignis Minion DMG and grants Colonel Walnut 1 stack of Morale.\u000bWhen Colonel Walnut's Morale reaches &Param7& stacks, it evolves into General Curly. Its Auto Attack deals <color=#fb8037>&Param8& x2</color> of ATK as Ignis Minion DMG and consumes 4 stacks of Morale.\u000bWhen General Curly's Morale reaches zero, it devolves into Colonel Walnut.",
-      shortDescription:
-        "Wields the whip to perform multiple attacks.\u000bCarries toy: Colonel Walnut to attack targets.\u000bWhen Colonel Walnut's Morale is fully stacked, it evolves into toy: General Curly.",
+      description: 'Wields the whip to perform multiple attacks.\nStrike 1: <color=#fb8037>&Param1&</color> of ATK as Ignis Auto Attack DMG.\nStrike 2: <color=#fb8037>&Param2&</color> of ATK as Ignis Auto Attack DMG.\nStrike 3: <color=#fb8037>&Param3&</color> of ATK as Ignis Auto Attack DMG.\nStrike 4: <color=#fb8037>&Param4& x5</color> of ATK as Ignis Auto Attack DMG.\nStrike 5: <color=#fb8037>&Param5& x3</color> of ATK as Ignis Auto Attack DMG.\nUses toy ##Colonel Walnut#4020# to attack the target. Its Auto Attack deals <color=#fb8037>&Param6&</color> of ATK as Ignis Minion DMG and grants 1 stack of Morale.\nWhen ##Colonel Walnut#4020#\'s Morale reaches &Param7& stacks, it evolves into ##General Curly#4021#. Its Auto Attack deals <color=#fb8037>&Param8& x2</color> of ATK as Ignis Minion DMG and consumes 4 stacks of Morale.\nWhen ##General Curly#4021#\'s Morale reaches zero, it devolves into ##Colonel Walnut#4020#.',
+      shortDescription: 'Wields the whip to perform multiple attacks.\nCarries toy: ##Colonel Walnut#4020# to attack targets.\nWhen ##Colonel Walnut#4020#\'s Morale is fully stacked, it evolves into toy: ##General Curly#4021#.',
       params: [
-        '8.5%/9.8%/11%/14.9%/16%/17.2%/19.6%/20.6%/21.7%/23.7%/25.4%/27.1%/28.8%',
-        '11.6%/13.4%/15.1%/20.3%/22%/23.6%/26.9%/28.3%/29.7%/32.5%/34.8%/37.1%/39.4%',
-        '11.6%/13.4%/15.1%/20.3%/22%/23.6%/26.9%/28.3%/29.7%/32.5%/34.8%/37.1%/39.4%',
-        '3.1%/3.5%/4%/5.4%/5.8%/6.2%/7.1%/7.5%/7.8%/8.6%/9.2%/9.8%/10.4%',
-        '4.3%/5%/5.6%/7.6%/8.2%/8.8%/10%/10.5%/11%/12%/12.9%/13.8%/14.6%',
-        '41.6%/47.9%/54.1%/72.8%/78.7%/84.5%/96.1%/101.1%/106.1%/116.1%/124.4%/132.8%/141.1%',
+        '8%/9%/11%/14%/16%/17%/19%/20%/21%/23%/25%/27%/28%',
+        '11%/13%/15%/20%/22%/23%/26%/28%/29%/32%/34%/37%/39%',
+        '11%/13%/15%/20%/22%/23%/26%/28%/29%/32%/34%/37%/39%',
+        '3%/3%/4%/5%/5%/6%/7%/7%/7%/8%/9%/9%/10%',
+        '4%/5%/5%/7%/8%/8%/10%/10%/11%/12%/12%/13%/14%',
+        '41%/47%/54%/72%/78%/84%/96%/101%/106%/116%/124%/132%/141%',
         '20',
-        '155%/178%/201%/271%/292%/314%/357%/376%/394%/431%/462%/493%/524%',
+        '155%/178%/201%/271%/292%/314%/357%/376%/394%/431%/462%/493%/524%'
       ],
-      hints: {},
+      hints: {
+        4020: {
+          id: 4020,
+          name: 'Colonel Walnut',
+          description: 'Colonel Walnut, summoned by Snowish Laru as the Main Trekker, inherits 100% of Snowish Laru\'s ATK and is immune to DMG permanently.'
+        },
+        4021: {
+          id: 4021,
+          name: 'General Curly',
+          description: 'General Curly, summoned by Snowish Laru as the Main Trekker, inherits 100% of Snowish Laru\'s ATK and is immune to DMG permanently.'
+        }
+      }
     },
     skill: {
       name: 'Whip Assault',
       icon: 'Icon/Skill/15801_Skill_Main',
-      description:
-        "Whips forward to attack the target, dealing <color=#fb8037>&Param1&</color> of ATK as AoE Ignis DMG and granting 1 stack of Morale to the toys. If the toys are within the Main Skill's Attack Range, they gain 1 additional stack of Morale.\u000bWhen casting the Main Skill, toys will cast the Synergy Skill to attack the target.\u000bColonel Walnut smashes the ground, dealing <color=#fb8037>&Param3&</color> of ATK as AoE Ignis Minion DMG, and gains 1 stack of Morale.\u000bGeneral Curly swings dual blades, dealing <color=#fb8037>&Param4& x2</color> of ATK as AoE Ignis Minion DMG.\u000b&Param2& (Main Skill) can trigger ##Ignis Mark#1016#, dealing &Param5& of ATK as Ignis Mark DMG.",
-      shortDescription:
-        "Whips forward to attack the target, boosting the toys' Morale and triggering the Synergy Skill of the toys.\u000bThe Main Skill can trigger ##Ignis Mark#1016#.",
+      description: 'Whips forward to attack the target, dealing <color=#fb8037>&Param1&</color> of ATK as AoE Ignis Skill DMG and granting 1 stack of Morale to the toys. If the toys are within the Main Skill\'s Attack Range, they gain 1 additional stack of Morale.\nWhen casting the Main Skill, toys will cast the Synergy Skill to attack the target.\n##Colonel Walnut#4020# smashes the ground, dealing <color=#fb8037>&Param3&</color> of ATK as AoE Ignis Minion DMG, and gains 1 stack of Morale.\n##General Curly#4021# swings dual blades, dealing <color=#fb8037>&Param4& x2</color> of ATK as AoE Ignis Minion DMG.\n&Param2& (Main Skill) can trigger ##Ignis Mark#1016# and inflict Conflagration, dealing &Param5& of ATK as Ignis Mark DMG.',
+      shortDescription: 'Whips forward to attack the target, boosting the toys\' Morale and triggering the Synergy Skill of the toys.\nThe Main Skill can trigger ##Ignis Mark#1016# and inflict Conflagration.',
       params: [
         '85%/98%/111%/150%/162%/174%/197%/208%/218%/239%/256%/273%/290%',
         'Whip Assault',
         '115%/132%/149%/201%/217%/233%/265%/279%/293%/321%/344%/367%/390%',
         '241%/278%/314%/422%/456%/490%/558%/587%/615%/673%/722%/770%/818%',
-        '40%/52%/64%/76%/88%/100%/112%/124%/136%',
+        '40%/52%/64%/76%/88%/100%/112%/124%/136%'
       ],
       hints: {
+        4020: {
+          id: 4020,
+          name: 'Colonel Walnut',
+          description: 'Colonel Walnut, summoned by Snowish Laru as the Main Trekker, inherits 100% of Snowish Laru\'s ATK and is immune to DMG permanently.'
+        },
+        4021: {
+          id: 4021,
+          name: 'General Curly',
+          description: 'General Curly, summoned by Snowish Laru as the Main Trekker, inherits 100% of Snowish Laru\'s ATK and is immune to DMG permanently.'
+        },
         1016: {
           id: 1016,
           name: 'Ignis Mark',
-          description:
-            "The generic name for all Ignis Marks.\u000bWhen triggered by specific Ignis Trekkers' attacks, the status is removed, and a special effect is activated.",
-          params: [],
-        },
+          description: 'The generic name for all Ignis Marks.\nWhen triggered by specific Ignis Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        }
       },
-      cooldown: '8s',
+      cooldown: '8s'
     },
     supportSkill: {
       name: 'Courtesy Before Aggression',
       icon: 'Icon/Skill/15801_Skill_Support',
-      description:
-        'Snowish Laru commands the turret to fire 4 Gift Box Shells at the target. Upon hitting the target, each shell deals <color=#fb8037>&Param1&</color> of ATK as Ignis DMG and then explodes to deal <color=#fb8037>&Param2&</color> of ATK as AoE Ignis DMG.\u000bThe Gift Box Shell summons Colonel Walnut near the target for 10s upon explosion. Up to 4 can be summoned. Colonel Walnut attacks the target, dealing <color=#fb8037>&Param3&</color> of ATK as Ignis Minion DMG.\u000bGift Box Shells inflict ##Ignis Mark: Sacred Flame#2013# upon dealing DMG.',
-      shortDescription:
-        'Commands the turret to fire Gift Box Shells at the target, dealing DMG and inflicting ##Ignis Mark: Sacred Flame#2013#.\u000bThe Gift Box Shell summons Colonel Walnut upon explosion to continuously attack the target.',
+      description: 'Snowish Laru commands the turret to fire 4 Gift Box Shells at the target. Upon hitting the target, each shell deals <color=#fb8037>&Param1&</color> of ATK as Ignis Skill DMG and then explodes to deal <color=#fb8037>&Param2&</color> of ATK as AoE Ignis Skill DMG.\nThe Gift Box Shell summons ##Colonel Walnut#4023# near the target.\n##Colonel Walnut#4023# attacks the target, dealing <color=#fb8037>&Param3&</color> of ATK as Ignis Minion DMG.\nGift Box Shells inflict ##Ignis Mark: Sacred Flame#2013# upon dealing DMG.',
+      shortDescription: 'Commands the turret to fire Gift Box Shells at the target, dealing DMG and inflicting ##Ignis Mark: Sacred Flame#2013#.\nThe Gift Box Shell summons ##Colonel Walnut#4023# upon explosion to continuously attack the target.',
       params: [
         '168%/193%/218%/293%/317%/340%/387%/408%/428%/468%/485%/501%/518%',
         '119%/137%/154%/208%/225%/241%/274%/289%/303%/331%/343%/355%/367%',
-        '17.1%/19.7%/22.3%/30%/32.4%/34.8%/39.5%/41.6%/43.6%/47.8%/49.5%/51.2%/52.9%',
+        '17%/19%/22%/30%/32%/34%/39%/41%/43%/47%/49%/51%/52%'
       ],
       hints: {
+        4023: {
+          id: 4023,
+          name: 'Colonel Walnut',
+          description: 'Colonel Walnut, summoned by Snowish Laru as the Support Trekker, inherits 100% of Snowish Laru\'s ATK for 10s, during which it is immune to DMG. Up to 4 can exist at the same time.'
+        },
         2013: {
           id: 2013,
           name: 'Ignis Mark: Sacred Flame',
-          description:
-            'A special status applied to the target by some Ignis Trekkers, lasting for 10s.\u000bCan be triggered by the attacks of specific Ignis Trekkers. When triggered, deals large AoE DMG.',
-          params: ['10'],
-        },
+          description: 'Some Ignis characters apply a special status to the target for 10 sec.\nWhen triggered by specific Ignis characters\' attacks, the status is removed, and a special effect is activated.'
+        }
       },
-      cooldown: '18s',
+      cooldown: '18s'
     },
     ultimate: {
       name: 'Sweet Dream Waltz',
       icon: 'Icon/Skill/15801_Ultra',
-      description:
-        'Transforms into toy: Dame Laru, gaining a shield equal to &Param7& of Base Max HP for &Param6&s.\u000bDame Laru cannot dodge or dash. Her Auto Attacks become shots that pierce targets, dealing <color=#fb8037>&Param2&</color> of ATK as Ignis Ultimate DMG. The Main and Support skills are replaced by Candy Barrage.\u000bCandy Barrage deals <color=#fb8037>&Param3& x5</color> of ATK as AoE Ignis Ultimate DMG to targets in the front with a 4s cooldown.',
-      shortDescription:
-        'Transforms into toy: Dame Laru.\u000bAfter the transformation, her Auto Attacks become ranged shots, and her Main and Support Skills become Candy Barrage.',
+      description: 'Transforms into toy: Dame Laru, gaining a shield equal to &Param7& of Base Max HP for &Param6&s.\nDame Laru cannot dodge or dash. Her Auto Attacks become shots that pierce targets, dealing <color=#fb8037>&Param2&</color> of ATK as Ignis Ultimate DMG. The Main and Support skills are replaced by Candy Barrage.\nCandy Barrage deals <color=#fb8037>&Param3& x5</color> of ATK as AoE Ignis Ultimate DMG to targets in the front with a 4s cooldown.',
+      shortDescription: 'Transforms into toy: Dame Laru.\nAfter the transformation, her Auto Attacks become ranged shots, and her Main and Support Skills become Candy Barrage.',
       params: [
-        'HitDamage,DamageNum,158400001',
+        '',
         '45%/52%/59%/80%/86%/92%/105%/111%/116%/127%/131%/136%/141%',
         '18%/21%/23%/31%/34%/36%/41%/44%/46%/50%/52%/54%/55%',
         'Sweet Dream Waltz',
         '40%/52%/64%/76%/88%/100%/112%/124%/136%',
         '12',
-        '35%',
+        '35%'
       ],
       hints: {},
       cooldown: '40s',
-      energy: 240,
-    },
+      energy: 240
+    }
   },
-  firenze: {
+  'firenze': {
     name: 'Firenze',
     id: 110,
     normalAttack: {
-      name: 'Solo Grace',
+      name: 'Blooming Shadows',
       icon: 'Icon/Skill/11001_Normal',
-      description:
-        'Swings the staff continuously to attack.\u000bStrike 1: <color=#ec6d21>&Param1&</color> of ATK as Umbra DMG.\u000bStrike 2: <color=#ec6d21>&Param2&</color> of ATK as Umbra DMG.\u000bStrike 3: <color=#ec6d21>&Param3&x5</color> of ATK as Umbra DMG.\u000bStrike 4: <color=#ec6d21>&Param4&</color> and <color=#ec6d21>&Param5&</color> of ATK as Umbra DMG.\u000bWhen no ##Shadow Clone#4002# is present, Strike 2 summons 1 ##Shadow Clone#4002#.\u000bAt Strike 4, commands all ##Shadow Clones#4002# to dash, dealing <color=#ec6d21>&Param6&</color> of ATK as Umbra Minion DMG.',
-      shortDescription:
-        'Swings the staff continuously to attack, can summon Shadow Clones to assist.',
+      description: 'Swings the cane to strike multiple times.\nStrike 1: <color=#ec6d21>&Param1&</color> of ATK as Umbra Auto Attack DMG.\nStrike 2: <color=#ec6d21>&Param2&</color> of ATK as Umbra Auto Attack DMG.\nStrike 3: <color=#ec6d21>&Param3& x5</color> of ATK as Umbra Auto Attack DMG.\nStrike 4: <color=#ec6d21>&Param4&</color> and <color=#ec6d21>&Param5&</color> of ATK as Umbra Auto Attack DMG.\nWhen there is no ##Shadow Clone#4002# present, the 2nd hit of the Auto Attack summons 1 ##Shadow Clone#4002#.\nThe 4th hit of the Auto Attack commands all ##Shadow Clones#4002# to sprint strike, dealing <color=#ec6d21>&Param6&</color> of ATK as Umbra Minion DMG.',
+      shortDescription: 'Swings the cane to strike multiple times and summons ##Shadow Clones#4002# to attack.',
       params: [
         '32%/36%/41%/55%/60%/64%/73%/77%/80%/88%/94%/101%/107%',
-        '16.6%/19.1%/21.6%/29.1%/31.4%/33.8%/38.4%/40.4%/42.4%/46.4%/49.7%/53.1%/56.4%',
-        '7%/8.1%/9.1%/12.3%/13.2%/14.2%/16.2%/17%/17.9%/19.5%/20.9%/22.3%/23.7%',
+        '16%/19%/21%/29%/31%/33%/38%/40%/42%/46%/49%/53%/56%',
+        '7%/8%/9%/12%/13%/14%/16%/17%/17%/19%/20%/22%/23%',
         '37%/42%/48%/64%/69%/75%/85%/89%/94%/103%/110%/117%/125%',
         '39%/44%/50%/67%/73%/78%/89%/94%/98%/107%/115%/123%/131%',
-        '60%/69%/78%/105%/113%/121%/137%/144%/151%/165%/176%/187%/198%',
+        '54%/62%/70%/94%/102%/109%/124%/131%/137%/150%/161%/171%/182%'
       ],
       hints: {
         4002: {
           id: 4002,
-          name: 'Shadow Clone',
-          description:
-            'Summoned by Firenze to fight alongside her. Inherits a portion of Firenze\'s stats and can trigger marks.',
-          params: [],
-        },
-      },
+          name: 'Shadow Clone'
+        }
+      }
     },
     skill: {
-      name: 'Shadow Dance',
+      name: 'Elegant Parade',
       icon: 'Icon/Skill/11001_Skill_Main',
-      description:
-        'Delivers consecutive slashes with the sword in the staff, dealing <color=#ec6d21>&Param1&x3</color> of ATK as Umbra Skill DMG. When casting the Main Skill, summons 1 ##Shadow Clone#4002# and commands all ##Shadow Clones#4002# to launch consecutive slashes, dealing <color=#ec6d21>&Param2&x3</color> of ATK as Umbra Minion DMG.\u000bShadow Dance (Main Skill) and ##Shadow Clones#4002# can trigger ##Umbra Mark#1019#, dealing &Param3& of ATK as Umbra Mark DMG and inflicting \"Dark Burn\": deals damage every 0.5s for &Param5&s, totaling &Param4& of ATK as Umbra Mark DMG.',
-      shortDescription:
-        'Delivers consecutive sword slashes with the staff. Can summon Shadow Clones when using Main Skill.',
+      description: 'Unleashes combo slashes with the cane sword, dealing <color=#ec6d21>&Param1& x3</color> of ATK as Umbra Skill DMG. When casting the Main Skill, summons 1 ##Shadow Clone#4002# and orders all ##Shadow Clones#4002# to unleash combo slashes, dealing <color=#ec6d21>&Param2& x3</color> of ATK as Umbra Minion DMG. It can be cast 2 times initially.\nElegant Parade (Main Skill) and ##Shadow Clones#4002# can trigger ##Umbra Mark#1019#, dealing &Param3& of ATK as Umbra Mark DMG and inflicting ##Dark Burn#4005#.',
+      shortDescription: 'Unleashes combo slashes with the cane sword, dealing multiple instances of DMG. Casting the Main Skill can summon ##Shadow Clones#4002# and trigger combo slashes. The Main Skill and ##Shadow Clones#4002# can trigger ##Umbra Mark#1019#.',
       params: [
         '109%/125%/142%/191%/206%/221%/252%/265%/278%/304%/326%/348%/370%',
-        '40.5%/46.6%/52.7%/70.9%/76.6%/82.3%/93.7%/98.5%/103.4%/113.1%/121.2%/129.3%/137.4%',
+        '40%/46%/52%/70%/76%/82%/93%/98%/103%/113%/121%/129%/137%',
         '37%/48%/59%/70%/81%/92%/103%/114%/125%',
-        '4.1%/5.3%/6.6%/7.8%/9%/10.3%/11.5%/12.7%/14%',
+        '4%/5%/6%/7%/9%/10%/11%/12%/14%'
       ],
       hints: {
+        4002: {
+          id: 4002,
+          name: 'Shadow Clone'
+        },
         1019: {
           id: 1019,
           name: 'Umbra Mark',
-          description:
-            'A special status applied to the target by some Umbra Trekkers. When triggered, deals additional damage and applies Dark Burn.',
-          params: [],
+          description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
         },
-        4002: {
-          id: 4002,
-          name: 'Shadow Clone',
-          description: 'Summoned by Firenze to fight alongside her.',
-          params: [],
-        },
+        4005: {
+          id: 4005,
+          name: 'Dark Burn'
+        }
       },
-      cooldown: '60s',
+      cooldown: '6s'
     },
     supportSkill: {
-      name: 'Nightly Dominance',
+      name: 'Reign of Night',
       icon: 'Icon/Skill/11001_Skill_Support',
-      description:
-        'Slams the ground to deal <color=#ec6d21>&Param1&</color> of ATK as AoE Umbra DMG and summons multiple ##Shadow Clones#4002#. When the Main Character deals DMG, ##Shadow Clones#4002# launch attacks on the target, dealing <color=#ec6d21>&Param2&</color> of ATK as Umbra Minion DMG.\u000bNightly Dominance (Support Skill) and ##Shadow Clones#4002# can trigger ##Umbra Mark#1019#, dealing &Param3& of ATK as Umbra Mark DMG.',
-      shortDescription:
-        'Slams the ground dealing AoE damage and summons Shadow Clones that attack when Main Character deals damage.',
+      description: 'Strikes the ground with the cane, dealing <color=#ec6d21>&Param1&</color> of ATK as AoE Umbra Skill DMG, and summons 2 ##Shadow Clones#4002#.\nWhen the main Trekker deals DMG, ##Shadow Clones#4002# also strike at the target, dealing <color=#ec6d21>&Param2&</color> of ATK as Umbra Minion DMG. This effect can only be triggered once every 1.5s.\nReign of Night (Support Skill) and ##Shadow Clones#4002# can trigger ##Umbra Mark#1019#, dealing &Param3& of ATK as Umbra Mark DMG and inflicting ##Dark Burn#4005#.',
+      shortDescription: 'Pounds the ground to deal AoE DMG and summons multiple ##Shadow Clones#4002#. When the main Trekker deals DMG, ##Shadow Clones#4002# also strike at the target. The Support Skill and ##Shadow Clones#4002# can trigger ##Umbra Mark#1019#.',
       params: [
         '108%/124%/141%/189%/204%/220%/250%/263%/276%/302%/323%/345%/367%',
         '32%/37%/41%/56%/60%/65%/73%/77%/81%/89%/95%/101%/108%',
         '37%/48%/59%/70%/81%/92%/103%/114%/125%',
+        '4%/5%/6%/7%/9%/10%/11%/12%/14%'
       ],
       hints: {
+        4002: {
+          id: 4002,
+          name: 'Shadow Clone'
+        },
         1019: {
           id: 1019,
           name: 'Umbra Mark',
-          description:
-            'A special status applied to the target by some Umbra Trekkers. When triggered, deals additional damage.',
-          params: [],
+          description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
         },
-        4002: {
-          id: 4002,
-          name: 'Shadow Clone',
-          description: 'Summoned by Firenze to fight alongside her.',
-          params: [],
-        },
+        4005: {
+          id: 4005,
+          name: 'Dark Burn'
+        }
       },
-      cooldown: '120s',
+      cooldown: '12s'
     },
     ultimate: {
-      name: 'Personal Guidance',
+      name: 'Personal Tuition',
       icon: 'Icon/Skill/11001_Ultra',
-      description:
-        'Unfolds a dark formation, dealing <color=#ec6d21>&Param1&x5</color> of ATK as Umbra Ultimate DMG in a large area, followed by <color=#ec6d21>&Param2&</color> of ATK as Umbra Ultimate DMG.\u000bPersonal Guidance (Ultimate) can trigger ##Umbra Mark#1019#, dealing &Param3& of ATK as Umbra Mark DMG and inflicting \"Dark Burn\": deals damage every 0.5s for &Param5&s, totaling &Param4& of ATK as Umbra Mark DMG.',
-      shortDescription:
-        'Unfolds a dark formation dealing multiple instances of damage. Can trigger Umbra Mark.',
+      description: 'Spreads a dark magic circle, dealing <color=#ec6d21>&Param1& x5</color> and <color=#ec6d21>&Param2&</color> of ATK as Umbra Ultimate DMG.\nDarkness Descends (Ultimate) can trigger ##Umbra Mark#1019#, dealing &Param3& of ATK as Umbra Mark DMG and inflicting ##Dark Burn#4005#.',
+      shortDescription: 'Spreads a dark magic circle, dealing multiple instances of DMG. The Ultimate can trigger ##Umbra Mark#1019#.',
       params: [
         '176%/203%/229%/309%/333%/358%/408%/429%/450%/492%/528%/563%/598%',
         '396%/455%/515%/693%/748%/804%/914%/962%/1009%/1104%/1184%/1263%/1342%',
         '37%/48%/59%/70%/81%/92%/103%/114%/125%',
-        '4.1%/5.3%/6.6%/7.8%/9%/10.3%/11.5%/12.7%/14%',
+        '4%/5%/6%/7%/9%/10%/11%/12%/14%'
       ],
       hints: {
         1019: {
           id: 1019,
           name: 'Umbra Mark',
-          description:
-            'A special status applied to the target by some Umbra Trekkers. When triggered, deals additional damage and applies Dark Burn.',
-          params: [],
+          description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
         },
+        4005: {
+          id: 4005,
+          name: 'Dark Burn'
+        }
       },
       cooldown: '25s',
-      energy: 218,
-    },
+      energy: 218
+    }
   },
   'springseek-coronis': {
     name: 'Springseek Coronis',
     id: 159,
     normalAttack: {
-      name: 'Peaceful Needles',
+      name: 'Evergreen Needles',
       icon: 'Icon/Skill/15901_Normal',
-      description:
-        'Fires liquid potions continuously, dealing <color=#fb8037>&Param1&</color> of ATK as Terra DMG. Magazine capacity: 15.',
-      shortDescription: 'Fires liquid potions continuously, dealing Terra damage.',
+      description: 'Fires streams of chemicals, each dealing <color=#fb8037>&Param1&</color> of ATK as Terra Auto Attack DMG. Magazine capacity: 15.',
+      shortDescription: 'Fires consecutive streams of chemicals to deal DMG.',
       params: [
-        '11.4%/13.1%/14.8%/20%/21.6%/23.2%/26.4%/27.7%/29.1%/31.8%/34.1%/36.4%/38.7%',
+        '11%/13%/14%/20%/21%/23%/26%/27%/29%/31%/34%/36%/38%'
       ],
-      hints: {},
+      hints: {}
     },
     skill: {
-      name: 'Jade Blooms in Spring',
+      name: 'Jade of Vitality',
       icon: 'Icon/Skill/15901_Skill_Main',
-      description:
-        'Shoots forward, dealing <color=#fb8037>&Param1&</color> of ATK as AoE Terra DMG, then scatters 1 \"Omen\": continuously fires beams, dealing <color=#fb8037>&Param2&</color> of ATK as Terra DMG every 0.6s for 8s.\u000bWhen casting Main Skill, enters \"Crystalline State\": Movement SPD +15% for 8s.\u000bJade Blooms in Spring (Main Skill) and \"Omen\" can trigger ##Terra Mark#1020#, dealing &Param3& of ATK as AoE Terra Mark DMG.',
-      shortDescription:
-        'Shoots forward dealing damage, then creates an Omen that fires beams continuously. Enters Crystalline State when casting.',
+      description: 'Shoots forward, dealing <color=#fb8037>&Param1&</color> of ATK as AoE Terra Skill DMG. Drops one Auspice, which fires a continuous beam, dealing <color=#fb8037>&Param2&</color> of ATK as Terra Skill DMG every 0.6s for 8s.\nWhen casting Jade of Vitality (Main Skill), enters Crystallized State: Movement SPD increases by 15% for 8s.\nThe Main Skill and Auspice can trigger ##Terra Mark#1020#, dealing &Param3& of ATK as AoE Terra Mark DMG.',
+      shortDescription: 'Deals DMG to targets in front. Drops one Auspice, which fires continuous beam that deals DMG over time.\nWhen casting the Main Skill, enters Crystallized State.\nThe Main Skill and Auspice can trigger ##Terra Mark#1020#.',
       params: [
         '258%/297%/336%/452%/488%/524%/596%/627%/658%/720%/772%/823%/875%',
-        '17.2%/19.8%/22.4%/30.1%/32.5%/34.9%/39.8%/41.8%/43.9%/48%/51.5%/54.9%/58.3%',
-        '17.8%/23.2%/28.5%/33.8%/39.2%/44.5%/49.8%/55.1%/60.5%',
+        '17%/19%/22%/30%/32%/34%/39%/41%/43%/48%/51%/54%/58%',
+        '17%/23%/28%/33%/39%/44%/49%/55%/60%'
       ],
       hints: {
         1020: {
           id: 1020,
           name: 'Terra Mark',
-          description:
-            'A special status applied to the target by some Terra Trekkers. When triggered, deals additional Terra damage.',
-          params: [],
-        },
+          description: 'The generic name for all Terra Marks.\nWhen triggered by specific Terra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        }
       },
-      cooldown: '14s',
+      cooldown: '14s'
     },
     supportSkill: {
-      name: 'Blossoming Impact',
+      name: 'Instant Blossom',
       icon: 'Icon/Skill/15901_Skill_Support',
-      description:
-        'Throws 6 \"Rose Potions\" and 1 \"Withered Potion\". \"Rose Potion\": Deals continuous damage. \"Withered Potion\": Deals continuous damage and applies \"Wither Effect\": when fully stacked, deals damage and clears stacks.\u000bRose Potion deals <color=#fb8037>&Param1&</color> of ATK as Terra DMG every 1s to enemies within range for 6s.\u000bWithered Potion deals <color=#fb8037>&Param2&</color> of ATK as Terra DMG every 1s and applies 1 stack of \"Wither Effect\". At 5 stacks, deals <color=#fb8037>&Param3&</color> of ATK as Terra DMG and clears stacks.',
-      shortDescription:
-        'Throws multiple Rose Potions and one Withered Potion that deal continuous damage and apply Wither Effect.',
+      description: 'Throws 6 Rose Vials and 1 Wither Vial, dealing DMG over time 1s after landing.\nRose Vial: Deals <color=#fb8037>&Param1&</color> of ATK as AoE Terra Skill DMG every 0.8s.\nWither Vial: Deals <color=#fb8037>&Param2&</color> of ATK as AoE Terra Skill DMG every 0.8s and also inflicts Wither. Wither: Lasts 5s; stacks up to 5 times; at max stacks, deals <color=#fb8037>&Param3&</color> of ATK as Terra Skill DMG and removes all stacks.\nEach potion lasts 6s and inflicts ##Terra Mark: Earth Vein#2029# when dealing DMG.',
+      shortDescription: 'Throws 6 Rose Vials and 1 Wither Vial.\nRose Vial: Deals DMG over time.\nWither Vial: Deals DMG over time and also inflicts Wither. Deals DMG at max stacks of Wither with all stacks removed afterward.',
       params: [
-        '24.8%/28.5%/32.2%/43.4%/46.8%/50.3%/57.2%/60.2%/63.2%/69.1%/74.1%/79%/84%',
+        '24%/28%/32%/43%/46%/50%/57%/60%/63%/69%/74%/79%/84%',
         '67%/77%/87%/117%/126%/136%/154%/162%/170%/186%/200%/213%/226%',
-        '114%/131%/148%/199%/215%/230%/262%/276%/289%/317%/339%/362%/385%',
+        '114%/131%/148%/199%/215%/230%/262%/276%/289%/317%/339%/362%/385%'
       ],
-      hints: {},
-      cooldown: '12s',
+      hints: {
+        2029: {
+          id: 2029,
+          name: 'Terra Mark: Earth Vein',
+          description: 'A special status applied to the target by some Terra Trekkers, lasting for 10s.\nCan be triggered by the attacks of specific Terra Trekkers. When triggered, removes the status and activates special effects.'
+        }
+      },
+      cooldown: '12s'
     },
     ultimate: {
-      name: 'Welcoming Spring · Fireworks Display',
+      name: 'Springseek: Burst of Blaze',
       icon: 'Icon/Skill/15901_Ultra',
-      description:
-        'Detonates the potion bottles in the air, dealing <color=#fb8037>&Param1&</color> of ATK as AoE Terra DMG, followed by scattered crystals dealing <color=#fb8037>&Param2&x8</color> of ATK as AoE Terra DMG.',
-      shortDescription:
-        'Detonates airborne potions dealing damage, followed by scattered crystals dealing additional damage.',
+      description: 'Shoots and shatters a vial in the air, dealing <color=#ec6d21>&Param1&</color> of ATK as AoE Terra Ultimate DMG. The flying crystal shards then deal <color=#ec6d21>&Param2& x8</color> of ATK as AoE Terra Ultimate DMG.',
+      shortDescription: 'Shoots and shatters a vial in the air, dealing initial DMG with the shot and additional DMG with flying crystal shards.',
       params: [
         '497%/571%/646%/869%/939%/1009%/1148%/1207%/1267%/1386%/1485%/1585%/1684%',
-        '62%/71%/81%/109%/117%/126%/143%/151%/158%/173%/186%/198%/211%',
+        '62%/71%/81%/109%/117%/126%/143%/151%/158%/173%/186%/198%/211%'
       ],
       hints: {},
       cooldown: '30s',
-      energy: 275,
-    },
+      energy: 275
+    }
   },
+  'chaton': {
+    name: 'Chaton',
+    id: 114,
+    normalAttack: {
+      name: 'Full-Auto Trigger',
+      icon: 'Icon/Skill/11401_Normal',
+      description: 'Fires rapidly at the target. Each shot deals <color=#fb8037>&Param1&</color> of ATK as Ignis Auto Attack DMG.\nMagazine contains 30 ammo.\nWhen Chaton is in the ##Evil Eye Unleashed#4035# state, upgrades &Param3& (Auto Attack) to Dark Burst, each shot dealing <color=#fb8037>&Param2&</color> of ATK as Ignis Ultimate DMG and consuming no ammo.',
+      shortDescription: 'Fires rapidly at the target, dealing DMG.',
+      params: [
+        '20%/23%/26%/36%/39%/42%/47%/50%/52%/57%/61%/66%/70%',
+        '8%/9%/11%/15%/16%/17%/19%/20%/21%/24%/25%/27%/29%',
+        'Full-Auto Trigger'
+      ],
+      hints: {
+        4035: {
+          id: 4035,
+          name: 'Evil Eye Unleashed',
+          description: 'Chaton breaks the seal of Evil Eye, gaining Super Armor, increased stats, and enhanced Auto Attacks.'
+        }
+      }
+    },
+    skill: {
+      name: 'Sniper Operation',
+      icon: 'Icon/Skill/11401_Skill_Main',
+      description: 'Chaton uses different attack methods depending on whether the skill button is tapped or held.\n<color=#0abec5>Tap:</color> activates ##Dark Ray#4036#.\nChaton fires a laser at the target, dealing <color=#fb8037>&Param1&</color> of ATK as Ignis Skill DMG and inflicting Dark Mark for &Param6&s. Chaton deals <color=#fb8037>&Param2&</color> of ATK as Ignis Skill DMG to targets inflicted with Dark Mark every 2s.\n<color=#0abec5>Hold:</color> activates ##Bouncing Kitty Bomb#4037#.\nChaton throws 2 Bouncing Bombs at the target, each dealing <color=#fb8037>&Param3&</color> of ATK as AoE Ignis Skill DMG. Bouncing Bombs then bounce to nearby targets, up to 5 times.\n&Param4& (Main Skill) can trigger ##Ignis Mark#1016# and generate Conflagration: deals &Param5& of ATK as Ignis Mark DMG.',
+      shortDescription: 'Tap: Chaton fires a laser at the target, inflicting Lock Mark and dealing DMG over time.\nHold: Chaton throws Bouncing Bombs at the target, dealing AoE DMG.\nThe Main Skill can trigger ##Ignis Mark#1016# and generate Conflagration.',
+      params: [
+        '224%/257%/291%/391%/423%/454%/516%/543%/570%/624%/668%/713%/758%',
+        '64%/74%/83%/112%/121%/130%/148%/156%/163%/179%/191%/204%/217%',
+        '62%/72%/81%/109%/118%/127%/144%/152%/159%/174%/187%/199%/212%',
+        'Sniper Operation',
+        '28%/37%/45%/54%/63%/71%/80%/88%/97%',
+        '14'
+      ],
+      hints: {
+        4036: {
+          id: 4036,
+          name: 'Dark Ray'
+        },
+        4037: {
+          id: 4037,
+          name: 'Bouncing Kitty Bomb'
+        },
+        1016: {
+          id: 1016,
+          name: 'Ignis Mark',
+          description: 'The generic name for all Ignis Marks.\nWhen triggered by specific Ignis Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        }
+      },
+      cooldown: '6s'
+    },
+    supportSkill: {
+      name: 'Blitz Assault',
+      icon: 'Icon/Skill/11401_Skill_Support',
+      description: 'Rolls toward the target and fires Penetrating Bullets, penetrating the target and dealing <color=#fb8037>&Param1&</color> of ATK as Ignis Skill DMG. This action is performed 3 times in succession.\n&Param2& (Support Skill) can trigger ##Ignis Mark#1016# and generate Conflagration: deals &Param3& of ATK as Ignis Mark DMG.',
+      shortDescription: 'Rolls toward the target while firing, dealing DMG.\nThe Support Skill can trigger ##Ignis Mark#1016# and generate Conflagration.',
+      params: [
+        '205%/236%/266%/359%/387%/416%/474%/498%/523%/572%/613%/654%/695%',
+        'Blitz Assault',
+        '28%/37%/45%/54%/63%/71%/80%/88%/97%'
+      ],
+      hints: {
+        1016: {
+          id: 1016,
+          name: 'Ignis Mark',
+          description: 'The generic name for all Ignis Marks.\nWhen triggered by specific Ignis Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        }
+      },
+      cooldown: '16s'
+    },
+    ultimate: {
+      name: 'Dark Evil Eye',
+      icon: 'Icon/Skill/11401_Ultra',
+      description: 'Unseals Evil Eye to inflict Cat Eye Mark on all nearby targets for &Param3&s, then sweep fires, dealing <color=#fb8037>&Param1& x8</color> of ATK as AoE Ignis Ultimate DMG and detonating Cat Eye Marks to deal <color=#fb8037>&Param2&</color> of ATK as Ignis Ultimate DMG.\n&Param4& (Ultimate) can trigger ##Ignis Mark#1016#, generating Conflagration: deals &Param5& of ATK as Ignis Mark DMG.\nAfter casting the Ultimate, Chaton enters the ##Evil Eye Unleashed#4035# state for &Param6&s while gaining Super Armor, enhancing her Auto Attacks to Dark Burst, increasing her &Param7& by &Param8& and her &Param9& by &Param10&.',
+      shortDescription: 'Unseals Evil Eye to deal AoE DMG, triggering ##Ignis Mark#1016# and generating Conflagration.\nAfter casting the Ultimate, Chaton enters the ##Evil Eye Unleashed#4035# state, gaining enhanced Auto Attacks, Super Armor, and increased &Param7& and &Param9&.',
+      params: [
+        '153%/176%/199%/268%/290%/311%/354%/372%/391%/428%/458%/489%/520%',
+        '180%/207%/234%/316%/341%/366%/417%/438%/460%/503%/539%/575%/611%',
+        '15',
+        'Dark Evil Eye',
+        '28%/37%/45%/54%/63%/71%/80%/88%/97%',
+        '15',
+        'Ultimate DMG',
+        '20%',
+        'Movespeed',
+        '30%'
+      ],
+      hints: {
+        1016: {
+          id: 1016,
+          name: 'Ignis Mark',
+          description: 'The generic name for all Ignis Marks.\nWhen triggered by specific Ignis Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        },
+        4035: {
+          id: 4035,
+          name: 'Evil Eye Unleashed',
+          description: 'Chaton breaks the seal of Evil Eye, gaining Super Armor, increased stats, and enhanced Auto Attacks.'
+        }
+      },
+      cooldown: '30s',
+      energy: 228
+    }
+  },
+  'firefly': {
+    name: 'Firefly',
+    id: 115,
+    normalAttack: {
+      name: 'Meteor Arrow',
+      icon: 'Icon/Skill/11501_Normal',
+      description: 'Throws electromagnetic darts to attack the target.\nStrike 1: <color=#fb8037>&Param1&</color> of ATK as Lux Auto ATK DMG.\nStrike 2: <color=#fb8037>&Param2&</color> of ATK as Lux Auto ATK DMG.\nStrike 3: <color=#fb8037>&Param3& x4</color> of ATK as Lux Auto ATK DMG.',
+      shortDescription: 'Throws electromagnetic darts at the target, dealing DMG.',
+      params: [
+        '62%/71%/81%/108%/117%/126%/143%/151%/158%/173%/185%/198%/210%',
+        '53%/60%/68%/92%/99%/107%/121%/128%/134%/147%/157%/168%/178%',
+        '28%/32%/37%/49%/53%/57%/65%/68%/72%/79%/84%/90%/95%'
+      ],
+      hints: {}
+    },
+    skill: {
+      name: 'Star Barrage',
+      icon: 'Icon/Skill/11501_Skill_Main',
+      description: 'Firefly enters ##Artillery Form#4030# for 14s,\nduring which, transforms all 4 ##Avalanches#4032# into Avalanche: Floating Cannons, which take turns firing at the target, dealing <color=#fb8037>&Param1&</color> of ATK as Lux Skill DMG.\nAvalanche: Floating Cannons can trigger ##Lux Mark#1015# and generate ##Lucent#4028#: deals &Param2& of ATK as AoE Lux Mark DMG and inflicts 1 stack of ##Glimmer#4029#.',
+      shortDescription: 'Firefly enters ##Artillery Form#4030#, transforming ##Avalanches#4032# into Avalanche: Floating Cannons to attack the target for a period of time.\nAvalanche: Floating Cannons can trigger ##Lux Mark#1015# and generate ##Glimmer#4028#.',
+      params: [
+        '12%/14%/16%/22%/24%/26%/29%/31%/32%/35%/38%/41%/43%',
+        '17%/22%/27%/32%/37%/42%/47%/52%/57%'
+      ],
+      hints: {
+        4030: {
+          id: 4030,
+          name: 'Artillery Form',
+          description: 'The ranged attack form Firefly enters after casting the Main Skill. Uses floating cannons to strike targets for a period of time.'
+        },
+        4032: {
+          id: 4032,
+          name: 'Avalanche',
+          description: 'Firefly\'s personal combat unit, which remains in standby mode while following Firefly. When required, it transforms into various combat forms to attack Firefly\'s targets.'
+        },
+        1015: {
+          id: 1015,
+          name: 'Lux Mark',
+          description: 'The generic name for all Lux Marks.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        },
+        4028: {
+          id: 4028,
+          name: 'Lucent',
+          description: 'When certain Lux Trekkers trigger a Mark, they deal AoE DMG and inflict Glimmer.'
+        },
+        4029: {
+          id: 4029,
+          name: 'Glimmer'
+        }
+      },
+      cooldown: '20s'
+    },
+    supportSkill: {
+      name: 'Starflare Pursuit',
+      icon: 'Icon/Skill/11501_Skill_Support',
+      description: 'Firefly enters ##Sword Form#4031# for 16s\n, during which, transforms 2 ##Avalanches#4032# into Avalanche: Giant Sword and 2 ##Avalanches#4032# into Avalanche: Flying Blades.\nFirefly wields Avalanche: Giant Sword to attack the target.\nStrike 1: <color=#fb8037>&Param1&</color> of ATK as Lux Auto ATK DMG.\nStrike 2: <color=#fb8037>&Param2&</color> of ATK as Lux Auto ATK DMG.\nStrike 3: <color=#fb8037>&Param3&</color> of ATK as Lux Auto ATK DMG.\nStrike 4: <color=#fb8037>&Param4& x5</color> of ATK as Lux Auto ATK DMG.\nWhile ##Sword Form#4031# is active, automatically fires all Avalanche: Flying Blades every 3s to attack the target, dealing <color=#fb8037>&Param5&</color> of ATK as Lux Skill DMG to targets along their path.\nAvalanche: Giant Sword and Avalanche: Flying Blades inflict ##Lux Mark: Radiance#2016# when dealing DMG.',
+      shortDescription: 'Firefly enters ##Sword Form#4031#, transforming ##Avalanches#4032# into Avalanche: Giant Sword and Avalanche: Flying Blades to attack the target for a period of time.\nAvalanche: Giant Sword and Avalanche: Flying Blades can inflict ##Lux Mark: Radiance#2016#.',
+      params: [
+        '90%/104%/117%/158%/171%/183%/209%/219%/230%/252%/270%/288%/306%',
+        '90%/104%/117%/158%/171%/183%/209%/219%/230%/252%/270%/288%/306%',
+        '90%/104%/117%/158%/171%/183%/209%/219%/230%/252%/270%/288%/306%',
+        '66%/76%/86%/116%/125%/134%/153%/161%/169%/185%/198%/211%/224%',
+        '48%/55%/62%/84%/91%/97%/111%/116%/122%/134%/143%/153%/162%'
+      ],
+      hints: {
+        4031: {
+          id: 4031,
+          name: 'Sword Form',
+          description: 'The melee attack form Firefly enters after casting the Support Skill. Wields a giant sword and launches flying blades to strike targets for a period of time.'
+        },
+        4032: {
+          id: 4032,
+          name: 'Avalanche',
+          description: 'Firefly\'s personal combat unit, which remains in standby mode while following Firefly. When required, it transforms into various combat forms to attack Firefly\'s targets.'
+        },
+        2016: {
+          id: 2016,
+          name: 'Lux Mark: Radiance',
+          description: 'Some Lux Trekkers apply a special status to the target for 10 sec.\nWhen triggered by specific Lux Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        }
+      },
+      cooldown: '24s'
+    },
+    ultimate: {
+      name: 'Stellar Torrent',
+      icon: 'Icon/Skill/11501_Ultra',
+      description: 'Combines ##Avalanches#4032# into 2 gigantic cannons and fires forward 2 times. Each shot deals <color=#fb8037>&Param1& x2</color> of ATK as Lux Ultimate DMG and then transforms into a giant sword to perform a forward slash, dealing <color=#fb8037>&Param2&</color> and <color=#fb8037>&Param3&</color> of ATK as Lux Ultimate DMG.\nAll of Firefly\'s skill Cooldowns are reset when Stellar Torrent ends.',
+      shortDescription: 'Combines ##Avalanches#4032# into gigantic cannons and continuously fires at the target, then combines them into a giant sword to strike the target, dealing multiple instances of DMG.',
+      params: [
+        '272%/313%/353%/476%/514%/552%/628%/661%/693%/758%/813%/867%/922%',
+        '717%/825%/932%/1255%/1355%/1455%/1656%/1742%/1828%/2000%/2144%/2287%/2431%',
+        '586%/673%/761%/1025%/1107%/1189%/1353%/1423%/1493%/1634%/1751%/1868%/1985%'
+      ],
+      hints: {
+        4032: {
+          id: 4032,
+          name: 'Avalanche',
+          description: 'Firefly\'s personal combat unit, which remains in standby mode while following Firefly. When required, it transforms into various combat forms to attack Firefly\'s targets.'
+        }
+      },
+      cooldown: '40s',
+      energy: 300
+    }
+  },
+  'eleanor': {
+    name: 'Eleanor',
+    id: 137,
+    normalAttack: {
+      name: 'Tactical Combo',
+      icon: 'Icon/Skill/13701_Normal',
+      description: 'Quickly switches among multiple weapons to attack.\nStrike 1: <color=#ec6d21>&Param1&</color> of ATK as Ventus Auto Attack DMG.\nStrike 2: <color=#ec6d21>&Param2& x5</color> of ATK as Ventus Auto Attack DMG.\nStrike 3: <color=#ec6d21>&Param3& x5</color> of ATK as Ventus Auto Attack DMG.\nStrike 4: <color=#ec6d21>&Param4& x6</color> of ATK as Ventus Auto Attack DMG.\nStrike 5: <color=#ec6d21>&Param5& x7</color> of ATK as Ventus Auto Attack DMG.\nEleanor has ##Tactical Energy#4048#. She can automatically spend 10 ##Tactical Energy#4048# to activate Cross Slash, dealing <color=#ec6d21>&Param6&</color> of ATK as AoE Ventus Auto Attack DMG. Cross Slash can trigger ##Ventus Mark#1017# and create a Blossom, dealing &Param7& of ATK as AoE Ventus Mark DMG.',
+      shortDescription: 'Quickly switches weapons to unleash ruthless strikes, dealing multiple rapid instances of DMG. Eleanor can automatically spend ##Tactical Energy#4048# to activate Cross Slash, dealing AoE DMG.',
+      params: [
+        '31%/36%/41%/55%/59%/64%/73%/76%/80%/88%/94%/101%/107%',
+        '20%/23%/26%/35%/38%/40%/46%/48%/51%/56%/60%/64%/68%',
+        '32%/37%/41%/56%/60%/65%/74%/78%/82%/89%/96%/102%/109%',
+        '25%/28%/32%/44%/47%/51%/58%/61%/64%/70%/75%/80%/85%',
+        '11%/13%/14%/20%/21%/23%/26%/27%/29%/32%/34%/36%/38%',
+        '57%/65%/74%/100%/108%/116%/132%/139%/146%/160%/171%/182%/194%',
+        '24%/28%/32%/43%/46%/50%/57%/60%/63%'
+      ],
+      hints: {
+        4048: {
+          id: 4048,
+          name: 'Tactical Energy',
+          description: 'Each time Eleanor deals Auto Attack DMG, she has an 80% chance to gain 2 Tactical Energy. This can only be triggered once every 2s.'
+        },
+        1017: {
+          id: 1017,
+          name: 'Ventus Mark',
+          description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        }
+      }
+    },
+    skill: {
+      name: 'Sentry Deployment',
+      icon: 'Icon/Skill/13701_Skill_Main',
+      description: 'Spins rapidly to deal <color=#ec6d21>&Param1&x2</color> of ATK as AoE Ventus Skill DMG and gains the Vigil effect: multiple ##Sentries#4050# move around Eleanor for &Param2&s, dealing <color=#ec6d21>&Param3&</color> of ATK as AoE Ventus Skill DMG at intervals. Sentry Deployment (Main Skill) can trigger ##Ventus Mark#1017# and create Blossom, dealing &Param4& of ATK as AoE Ventus Mark DMG.',
+      shortDescription: 'Spins rapidly to deal AoE DMG and gains Vigil: multiple ##Sentries#4050# move around Eleanor to deal DMG over time.',
+      params: [
+        '94%/108%/122%/164%/178%/191%/217%/228%/240%/262%/281%/300%/319%',
+        '10',
+        '116%/133%/150%/202%/219%/235%/267%/281%/295%/323%/346%/369%/392%',
+        '24%/28%/32%/43%/46%/50%/57%/60%/63%'
+      ],
+      hints: {
+        4050: {
+          id: 4050,
+          name: 'Sentry',
+          description: 'Eleanor\'s unique drone, which can either protect her or be deployed for targeted attacks.'
+        },
+        1017: {
+          id: 1017,
+          name: 'Ventus Mark',
+          description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        }
+      },
+      cooldown: '10s'
+    },
+    supportSkill: {
+      name: 'Armed Assault',
+      icon: 'Icon/Skill/13701_Skill_Support',
+      description: 'Performs multiple jump slams, triggering explosions that deal <color=#ec6d21>&Param1& x9</color> of ATK as AoE Ventus Skill DMG. Every third slam generates 1 ##Sentry#4050# for 3s. Up to 3 Sentries can exist at the same time. ##Sentries#4050# can fire bullets that deal <color=#ec6d21>&Param2&</color> of Eleanor\'s ATK as Ventus Auto Attack DMG. Armed Assault (Support Skill) can inflict ##Ventus Mark: Breeze#2017#.',
+      shortDescription: 'Performs multiple jump slams, dealing AoE DMG. Slams generate ##Sentries#4050# that attack targets and deal DMG.',
+      params: [
+        '78%/90%/101%/137%/148%/159%/181%/190%/199%/218%/234%/250%/265%',
+        '47%/54%/61%/82%/89%/95%/108%/114%/120%/131%/141%/150%/159%'
+      ],
+      hints: {
+        4050: {
+          id: 4050,
+          name: 'Sentry',
+          description: 'Eleanor\'s unique drone, which can either protect her or be deployed for targeted attacks.'
+        },
+        2017: {
+          id: 2017,
+          name: 'Ventus Mark: Breeze',
+          description: 'A special status applied to the target by some Ventus Trekkers, lasting for 10s.\nCan be triggered by the attacks of specific Ventus Trekkers. When triggered, removes the status and activates special effects.'
+        }
+      },
+      cooldown: '12s'
+    },
+    ultimate: {
+      name: 'Firestorm',
+      icon: 'Icon/Skill/13701_Ultra',
+      description: 'Eleanor fires a barrage of rockets, dealing AoE Ventus Ultimate DMG equal to <color=#ec6d21>&Param1& x14</color> of ATK.',
+      shortDescription: 'Eleanor fires a barrage of rockets, dealing multiple instances of AoE DMG.',
+      params: [
+        '118%/135%/153%/206%/222%/239%/272%/286%/300%/328%/352%/375%/399%'
+      ],
+      hints: {},
+      cooldown: '35s',
+      energy: 275
+    }
+  },
+  'sparkla': {
+    name: 'Sparkla',
+    id: 140,
+    normalAttack: {
+      name: 'Neo Bunny Blast',
+      icon: 'Icon/Skill/14001_Normal',
+      description: 'Sparkla fires three volleys from her wheelchair-mounted energy guns at the target.\nStrike 1: <color=#fb8037>&Param1& of ATK</color> as Terra Auto Attack DMG.\nStrike 2: <color=#fb8037>&Param2& of ATK</color> as Terra Auto Attack DMG.\nStrike 3: <color=#fb8037>&Param3& of ATK x2</color> as Terra Auto Attack DMG.',
+      shortDescription: 'Fires energy bullets from her wheelchair-mounted guns, dealing DMG.',
+      params: [
+        '254%/292%/330%/444%/480%/515%/586%/617%/647%/708%/759%/810%/861%',
+        '254%/292%/330%/444%/480%/515%/586%/617%/647%/708%/759%/810%/861%',
+        '381%/438%/495%/666%/720%/773%/880%/925%/971%/1062%/1139%/1215%/1291%'
+      ],
+      hints: {}
+    },
+    skill: {
+      name: 'Rabbit Pie Tempo Switch',
+      icon: 'Icon/Skill/14001_Skill_Main',
+      description: 'Tap or hold to have Sparkla transform her wheelchair into one of two modes for 10s.\n<color=#0abec5>Tap</color>\nEnters ###4033#, lobbing bombs at the target and dealing <color=#fb8037>&Param1& of ATK</color> as Terra Skill DMG.\n<color=#0abec5>Hold</color>\nEnters ##Bunny Rapid Fire Mode#4034#, unleashing a rapid stream of shots at the target and dealing <color=#fb8037>&Param2& of ATK x3</color> as Terra Skill DMG.\nBoth ##Bunny Jaws Mode#4033# and ##Bunny Rapid Fire Mode#4034# can trigger ##Terra Mark#1020#, dealing &Param3& of ATK as AoE Terra Mark DMG.\nEnters cooldown when the transformation ends.',
+      shortDescription: 'Tap to enter ##Bunny Jaws Mode#4033#, firing slow, heavy shots to deal AoE DMG. \nHold to enter ##Bunny Rapid Fire Mode#4034#, firing rapid shots that deal multiple instances of damage.\nBoth modes can trigger ##Terra Mark#1020#.',
+      params: [
+        '213%/245%/277%/373%/403%/433%/493%/518%/544%/595%/638%/681%/723%',
+        '57%/66%/74%/100%/108%/116%/132%/139%/146%/159%/171%/182%/193%',
+        '37%/48%/59%/70%/81%/92%/103%/114%/125%'
+      ],
+      hints: {
+        4034: {
+          id: 4034,
+          name: 'Bunny Rapid Fire Mode',
+          description: 'Hold the Main Skill Button to enter a rapid attack mode that deals multiple instances of DMG over a period of time.'
+        },
+        4033: {
+          id: 4033,
+          name: 'Bunny Jaws Mode',
+          description: 'Select the Main Skill Button to enter a slow attack mode that deals AoE DMG for a period of time.'
+        },
+        1020: {
+          id: 1020,
+          name: 'Terra Mark',
+          description: 'The generic name for all Terra Marks.\nWhen triggered by specific Terra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        }
+      },
+      cooldown: '5s'
+    },
+    supportSkill: {
+      name: 'Homing Bunny Volley',
+      icon: 'Icon/Skill/14001_Skill_Support',
+      description: 'Sparkla\'s wheelchair-mounted mechanical arms fire Bunny Fireworks at the target location, with 2 Bunny Fireworks per volley, 13 volleys in total.\nThe Bunny Fireworks land near the target in random patterns, each dealing <color=#fb8037>&Param1& of ATK</color> as Terra Skill DMG.\nBunny Fireworks can trigger ##Terra Mark#1020#, dealing &Param2& of ATK as AoE Terra Mark DMG.',
+      shortDescription: 'Sparkla\'s wheelchair-mounted mechanical arms fire multiple Bunny Fireworks at the target location, dealing damage.\nBunny Fireworks can trigger##Terra Mark#1020#.',
+      params: [
+        '10%/11%/13%/17%/19%/20%/23%/24%/25%/28%/30%/32%/34%',
+        '37%/48%/59%/70%/81%/92%/103%/114%/125%'
+      ],
+      hints: {
+        1020: {
+          id: 1020,
+          name: 'Terra Mark',
+          description: 'The generic name for all Terra Marks.\nWhen triggered by specific Terra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        }
+      },
+      cooldown: '12s'
+    },
+    ultimate: {
+      name: 'All-Out Bunny Barrage',
+      icon: 'Icon/Skill/14001_Ultra',
+      description: 'Sparkla takes a nap in her wheelchair and orders her doll to attack nearby targets, dealing <color=#fb8037>&Param1& of ATK x10</color> as AoE Terra Ultimate DMG.\nWhen she wakes up, she fires a Bunny Firework Cannon at the target location, dealing <color=#fb8037>&Param2& of ATK</color> as AoE Terra Ultimate DMG.\nThis Ultimate can trigger ##Terra Mark#1020#, dealing &Param3& of ATK as AoE Terra Mark DMG.',
+      shortDescription: 'Sparkla takes a nap in her wheelchair and orders her doll to attack nearby targets, dealing AoE DMG.\nWhen she wakes up, she deals another wave of AoE DMG at the target\'s location.\nThis Ultimate can trigger ##Terra Mark#1020#.',
+      params: [
+        '194%/223%/252%/339%/367%/394%/448%/471%/495%/541%/580%/619%/658%',
+        '978%/1125%/1271%/1711%/1848%/1985%/2259%/2376%/2494%/2729%/2924%/3120%/3315%',
+        '37%/48%/59%/70%/81%/92%/103%/114%/125%'
+      ],
+      hints: {
+        1020: {
+          id: 1020,
+          name: 'Terra Mark',
+          description: 'The generic name for all Terra Marks.\nWhen triggered by specific Terra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        }
+      },
+      cooldown: '40s',
+      energy: 357
+    }
+  },
+  'otoha': {
+    name: 'Otoha',
+    id: 145,
+    normalAttack: {
+      name: 'Thorn Path',
+      icon: 'Icon/Skill/14501_Normal',
+      description: 'Rapidly fires multiple kunai.\nStrike 1: <color=#ec6d21>&Param1& x3</color> of ATK as Umbra Auto ATK DMG.\nStrike 2: <color=#ec6d21>&Param2& x3</color> of ATK as Umbra Auto ATK DMG.\nStrike 3: <color=#ec6d21>&Param3& x9</color> of ATK as Umbra Auto ATK DMG.',
+      shortDescription: 'Rapidly fires multiple kunai to deal DMG.',
+      params: [
+        '30%/35%/39%/53%/57%/62%/70%/74%/77%/85%/91%/97%/103%',
+        '30%/35%/39%/53%/57%/62%/70%/74%/77%/85%/91%/97%/103%',
+        '10%/11%/13%/17%/19%/20%/23%/24%/25%/28%/30%/32%/34%'
+      ],
+      hints: {}
+    },
+    skill: {
+      name: 'Nightbloom',
+      icon: 'Icon/Skill/14501_Skill_Main',
+      description: 'Moves rapidly and shoots, dealing <color=#ec6d21>&Param1&</color> of ATK as Umbra Skill DMG in a large area.\nNightbloom (Main Skill) can trigger ##Umbra Mark#1019#, dealing &Param2& of ATK as Umbra Mark DMG and inflicting ##Dark Shackles#2020#.',
+      shortDescription: 'Moves rapidly and shoots, dealing AoE DMG in a large area and triggering ##Umbra Mark#1019#.',
+      params: [
+        '117%/134%/152%/204%/221%/237%/270%/284%/298%/326%/349%/372%/395%',
+        '17%/22%/28%/33%/38%/44%/49%/54%/59%'
+      ],
+      hints: {
+        1019: {
+          id: 1019,
+          name: 'Umbra Mark',
+          description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        },
+        2020: {
+          id: 2020,
+          name: 'Dark Shackles'
+        }
+      },
+      cooldown: '4s'
+    },
+    supportSkill: {
+      name: 'Shattered Edge',
+      icon: 'Icon/Skill/14501_Skill_Support',
+      description: 'Summons a forward-moving Weeping Sky, dealing <color=#ec6d21>&Param1&</color> of ATK as AoE Umbra Skill DMG every 0.5s for 4s.\nWeeping Sky inflicts Soul Rend, dealing <color=#ec6d21>&Param2&</color> of ATK as single-target Umbra Skill DMG every 0.5s for &Param3&s (does not stack).\nInflicts ##Umbra Mark: Gloom#2018# upon dealing DMG with Weeping Sky or Soul Rend.',
+      shortDescription: 'Summons a forward-moving Weeping Sky that deals multi-hit AoE DMG. Weeping Sky can inflict Soul Rend to deal multi-hit single-target DMG. Both Weeping Sky and Soul Rend can inflict ##Umbra Mark: Gloom#2018#.',
+      params: [
+        '227%/261%/295%/398%/430%/461%/525%/552%/580%/634%/680%/725%/770%',
+        '19%/21%/24%/33%/35%/38%/43%/46%/48%/52%/56%/60%/64%',
+        ''
+      ],
+      hints: {
+        2018: {
+          id: 2018,
+          name: 'Umbra Mark: Gloom',
+          description: 'A special status applied to the target by some Umbra Trekkers, lasting for 10s.\nCan be triggered by the attacks of specific Umbra Trekkers. When triggered, removes the status and activates special effects.'
+        }
+      },
+      cooldown: '12s'
+    },
+    ultimate: {
+      name: 'Void Blossom',
+      icon: 'Icon/Skill/14501_Ultra',
+      description: 'Throws a parasol that spins, which deals <color=#ec6d21>&Param1&</color> of ATK as Umbra Ultimate DMG. Then, detonates the parasol, dealing <color=#ec6d21>&Param2&</color> of ATK, <color=#ec6d21>&Param3&</color> of ATK, and <color=#ec6d21>&Param4&</color> of ATK as Umbra Ultimate DMG in a large area.',
+      shortDescription: 'Throws and detonates a parasol, dealing multi-hit DMG in a large area.',
+      params: [
+        '1%/1%/2%/2%/3%/3%/3%/3%/4%/4%/4%/5%/5%',
+        '86%/99%/112%/150%/163%/175%/199%/209%/219%/240%/257%/274%/292%',
+        '202%/232%/263%/354%/382%/410%/467%/491%/515%/564%/604%/645%/685%',
+        '76%/87%/99%/133%/143%/154%/175%/184%/193%/212%/227%/242%/257%'
+      ],
+      hints: {},
+      cooldown: '40s',
+      energy: 358
+    }
+  },
+  'karin': {
+    name: 'Karin',
+    id: 157,
+    normalAttack: {
+      name: 'Fisher\'s Hunt',
+      icon: 'Icon/Skill/15701_Normal',
+      description: 'Fires cuttlefish shells, each dealing <color=#ec6d21>&Param1&</color> of ATK as AoE Umbra Auto Attack DMG.\nKarin has ##Hunting Energy#4045# and can automatically consume 100 ##Hunting Energy#4045# to throw a chain, inflicting ##Hunter\'s Mark#4046# on the target and forming a link. While the chain is active, increases Karin\'s &Param2& by <color=#ec6d21>&Param3&</color>.',
+      shortDescription: 'Fires cuttlefish shells to deal DMG in a large area.\nKarin can consume Hunting Energy to fire a chain that links with a target, increasing Karin\'s &Param2& while the chain is active.',
+      params: [
+        '49%/56%/64%/86%/92%/99%/113%/119%/125%/136%/146%/156%/166%',
+        'Normal DMG',
+        '5.8%/6.7%/7.6%/10.2%/11.1%/11.9%/13.5%/14.2%/15%'
+      ],
+      hints: {
+        4045: {
+          id: 4045,
+          name: 'Hunting Energy',
+          description: 'Karin has Hunting Energy, which is capped at 100 and regenerates 10 per second.'
+        },
+        4046: {
+          id: 4046,
+          name: 'Hunter\'s Mark'
+        }
+      }
+    },
+    skill: {
+      name: 'Bait and Catch',
+      icon: 'Icon/Skill/15701_Skill_Main',
+      description: 'Leaps into the air and launches a fishcake, dealing <color=#ec6d21>&Param1&</color> of ATK as AoE Umbra Auto ATK DMG, then summons Boss Shark to devour the target, dealing <color=#ec6d21>&Param2&</color> of ATK as Umbra Ultimate DMG in a large area. Bait and Catch (Main Skill) can trigger ##Umbra Mark#1019#, dealing &Param3& of ATK as Umbra Mark DMG and inflicting ##Dark Burn#4051#.',
+      shortDescription: 'Leaps into the air and launches a fishcake that explodes, then summons Boss Shark to devour the target to deal additional DMG.',
+      params: [
+        '190%/218%/246%/332%/358%/385%/438%/461%/483%/529%/567%/605%/643%',
+        '300%/345%/390%/525%/566%/608%/692%/728%/764%/836%/896%/956%/1016%',
+        '38%/49%/61%/72%/83%/95%/106%/117%/129%/0%/0%/0%/0%'
+      ],
+      hints: {
+        1019: {
+          id: 1019,
+          name: 'Umbra Mark',
+          description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        },
+        4051: {
+          id: 4051,
+          name: 'Dark Burn'
+        }
+      },
+      cooldown: '10s'
+    },
+    supportSkill: {
+      name: 'Raging Sea',
+      icon: 'Icon/Skill/15701_Skill_Support',
+      description: 'Swings the harpoon chain repeatedly, dealing <color=#ec6d21>&Param1& x4</color> of ATK as AoE Umbra Skill DMG. During the skill, summons Boss Shark multiple times to pursue and devour targets, dealing <color=#ec6d21>&Param2& x4</color> of ATK as AoE Umbra Ultimate DMG. Finally, rides Boss Shark and performs a diving slam, dealing <color=#ec6d21>&Param3&</color> of ATK as Umbra Ultimate DMG in a large area. Raging Sea (Support Skill) can trigger ##Umbra Mark#1019#, dealing &Param4& of ATK as Umbra Mark DMG and inflicting ##Dark Burn#4051#.',
+      shortDescription: 'Swings the harpoon chain repeatedly to deal multiple instances of DMG while summoning Boss Shark multiple times to pursue and devour targets.',
+      params: [
+        '49%/56%/64%/86%/93%/100%/113%/119%/125%/137%/147%/156%/166%',
+        '38%/43%/49%/66%/71%/76%/87%/91%/96%/105%/113%/120%/128%',
+        '240%/276%/313%/421%/454%/488%/555%/584%/613%/671%/719%/767%/815%',
+        '38%/49%/61%/72%/83%/95%/106%/117%/129%/0%/0%/0%/0%'
+      ],
+      hints: {
+        1019: {
+          id: 1019,
+          name: 'Umbra Mark',
+          description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        },
+        4051: {
+          id: 4051,
+          name: 'Dark Burn'
+        }
+      },
+      cooldown: '12s'
+    },
+    ultimate: {
+      name: 'Shark Assault',
+      icon: 'Icon/Skill/15701_Ultra',
+      description: 'Karin and Boss Shark clash in a ferocious fight, dealing <color=#ec6d21>&Param1& x14</color> of ATK as Umbra Ultimate DMG in a large area. Shark Assault (Ultimate) can trigger ##Umbra Mark#1019#, dealing &Param2& of ATK as Umbra Mark DMG and inflicting ##Dark Burn#4051#.',
+      shortDescription: 'Karin and Boss Shark clash in a ferocious fight, dealing multiple instances of DMG in a large area.',
+      params: [
+        '109%/125%/142%/191%/206%/221%/252%/265%/278%/304%/326%/348%/370%',
+        '38%/49%/61%/72%/83%/95%/106%/117%/129%/0%/0%/0%/0%'
+      ],
+      hints: {
+        1019: {
+          id: 1019,
+          name: 'Umbra Mark',
+          description: 'The generic name for all Umbra Marks.\nWhen triggered by specific Umbra Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        },
+        4051: {
+          id: 4051,
+          name: 'Dark Burn'
+        }
+      },
+      cooldown: '30s',
+      energy: 300
+    }
+  },
+  'suntide-willow': {
+    name: 'Suntide Willow',
+    id: 160,
+    normalAttack: {
+      name: 'Sonic Bubble',
+      icon: 'Icon/Skill/16001_Normal',
+      description: 'Tap the Main Skill button to switch between weapon modes.\n<color=#0abec5>Bubble Machine mode</color>\nStrike 1 to 3: Deals <color=#fb8037>&Param1&</color> of ATK as Aqua Auto Attack DMG multiple times.\nStrike 4: Deals <color=#fb8037>&Param2&</color> of ATK as Aqua Auto Attack DMG\nIn this mode, Auto Attacks inflict ##Bubble Mark#4041# when dealing DMG.\n<color=#0abec5>Megaphone mode</color>\nStrike 1 to 3: Deals <color=#fb8037>&Param6&</color> of ATK as Aqua Auto Attack DMG multiple times.\nStrike 4: Deals <color=#fb8037>&Param7&</color> of ATK as Aqua Auto Attack DMG.',
+      shortDescription: 'Tap the Main Skill button to switch between weapon modes: Bubble Machine and Megaphone. Both modes continuously fire bubbles to deal DMG. In Bubble Machine mode, inflicts ##Bubble Mark#4041#.',
+      params: [
+        '29%/34%/38%/51%/55%/60%/68%/71%/75%/82%/88%/94%/100%',
+        '59%/68%/76%/103%/111%/120%/136%/143%/150%/165%/177%/189%/200%',
+        '',
+        '0.17%',
+        '4',
+        '22%/25%/29%/39%/42%/45%/52%/54%/57%/63%/67%/72%/76%',
+        '60%/69%/78%/105%/113%/121%/138%/145%/152%/167%/179%/191%/203%'
+      ],
+      hints: {
+        4041: {
+          id: 4041,
+          name: 'Bubble Mark'
+        }
+      }
+    },
+    skill: {
+      name: 'Luminous Leaper',
+      icon: 'Icon/Skill/16001_Skill_Main',
+      description: 'When tapping the Main Skill button, different effects occur based on the current ##Decibels#4038#.\n<color=#0abec5>Current Decibels below 100:</color>\nSwitches back and forth between Bubble Machine and Megaphone modes.\n<color=#0abec5>Current Decibels at 100:</color>\nConsumes all Decibels at once and launches a Bubble Frog: every bounce creates an impact dealing <color=#fb8037>&Param1&</color> of ATK as AoE Aqua Skill DMG and inflicting ##Aqua Mark: Torrent#2008#, bouncing once every 3s. When Bubble Frog deals DMG, increases the squad\'s &Param2& by <color=#fb8037>&Param3&</color> for &Param4&s, stacking up to &Param5& times.',
+      shortDescription: 'When tapping the Main Skill button, different effects occur based on the current ##Decibels#4038#.\n<color=#0abec5>Current Decibels below 100:</color>\nSwitches back and forth between Bubble Machine and Megaphone modes.\n<color=#0abec5>Current Decibels at 100:</color>\nConsumes all Decibels at once and launches a Bubble Frog: every bounce creates an impact dealing AoE Aqua Skill DMG and inflicting ##Aqua Mark: Torrent#2008#. When Bubble Frog deals DMG, increases the squad\'s &Param2&.',
+      params: [
+        '122%/141%/159%/214%/231%/248%/283%/297%/312%/342%/367%/391%/416%',
+        'ATK',
+        '4.8%/5.5%/6.2%/8.4%/9%/9.7%/11%/11.6%/12.2%',
+        '6',
+        '5'
+      ],
+      hints: {
+        4038: {
+          id: 4038,
+          name: 'Decibels',
+          description: 'When Willow is the Main Trekker, she can accumulate up to 100 Decibels through Auto Attacks.\nAuto Attack Strike 1 to 3: Increases 3 Decibels.\nAuto Attack Strike 4: Increases 4 Decibels.'
+        },
+        2008: {
+          id: 2008,
+          name: 'Aqua Mark: Torrent',
+          description: 'A special status applied by some Aqua characters to the target for 10 sec.\nWhen triggered by specific Aqua characters\' attacks, the status is removed, and a special effect is activated.'
+        }
+      },
+      cooldown: '1s'
+    },
+    supportSkill: {
+      name: 'Frolic in the Sea',
+      icon: 'Icon/Skill/16001_Skill_Support',
+      description: 'Willow dives into the water, dealing <color=#fb8037>&Param1&</color> of ATK as Aqua Skill DMG in a large area and generating a 7m-radius Bubble Bath that deals <color=#fb8037>&Param2&</color> of ATK as AoE Aqua Skill DMG every 2s.\nWillow then follows the Main Trekker, slowly firing bubbles, continuously dealing <color=#fb8037>&Param3& of ATK</color> as Aqua Skill DMG for 17s. All of the above DMG can inflict ##Aqua Mark: Torrent#2008#.\nWhile Willow is on the field, she provides different statuses to the squad based on the current ##Decibels#4039#:\nGentle Warning: Decibels ≤40, increases &Param4& by <color=#fb8037>&Param5&</color>\nSafety Alert: 40< Decibels ≤100, additionally increases &Param6& by <color=#fb8037>&Param7&</color>.',
+      shortDescription: 'Willow dives into the water, dealing Aqua Skill DMG in a large area and generating a 7m-radius Bubble Bath that continuously deals AoE Aqua Skill DMG.\nWillow then follows the Main Trekker, slowly firing bubbles that continuously deal Aqua Skill DMG for 17s. All of the above DMG can inflict ##Aqua Mark: Torrent#2008#.\nWhile Willow is on the field, she provides different statuses to the squad based on the current ##Decibels#4039#:\nGentle Warning: Decibels ≤40, increases &Param4&\nSafety Alert: 40< Decibels ≤100, additionally increases &Param6&',
+      params: [
+        '144%/166%/188%/253%/273%/293%/333%/351%/368%/403%/431%/460%/489%',
+        '36%/41%/46%/62%/67%/72%/82%/87%/91%/99%/107%/114%/121%',
+        '22%/26%/29%/39%/42%/45%/51%/54%/57%/62%/66%/71%/75%',
+        'Wee',
+        '5%/7%/8%/13%/14%/15%/18%/19%/21%',
+        'ATK',
+        '10%/13%/16%/25%/28%/31%/36%/39%/41%'
+      ],
+      hints: {
+        2008: {
+          id: 2008,
+          name: 'Aqua Mark: Torrent',
+          description: 'A special status applied by some Aqua characters to the target for 10 sec.\nWhen triggered by specific Aqua characters\' attacks, the status is removed, and a special effect is activated.'
+        },
+        4039: {
+          id: 4039,
+          name: 'Decibels',
+          description: 'When Willow is the Support Trekker, each bubble fired increases 2 Decibels, up to 100.'
+        }
+      },
+      cooldown: '20s'
+    },
+    ultimate: {
+      name: 'Beach Warning',
+      icon: 'Icon/Skill/16001_Ultra',
+      description: 'Blows multiple bubbles and fiercely hits them consecutively, dealing <color=#fb8037>&Param1&x7</color> and <color=#fb8037>&Param2&</color> of ATK as AoE Aqua Ultimate DMG, inflicting ##Aqua Mark: Torrent#2008#, while increasing the squad\'s &Param3& by <color=#fb8037>&Param4&</color> for &Param5&s, stacking up to &Param6& times.',
+      shortDescription: 'Blows multiple bubbles and fiercely hits them consecutively, dealing AoE Aqua Ultimate DMG and inflicting ##Aqua Mark: Torrent#2008#, while increasing the squad\'s &Param3&.',
+      params: [
+        '172%/198%/223%/301%/325%/349%/397%/417%/438%/479%/514%/548%/582%',
+        '301%/346%/391%/526%/568%/610%/694%/730%/766%/839%/899%/959%/1019%',
+        'ATK',
+        '2.5%/3.3%/4%/6.3%/7%/7.7%/9.1%/9.7%/10.3%',
+        '20',
+        '5'
+      ],
+      hints: {
+        2008: {
+          id: 2008,
+          name: 'Aqua Mark: Torrent',
+          description: 'A special status applied by some Aqua characters to the target for 10 sec.\nWhen triggered by specific Aqua characters\' attacks, the status is removed, and a special effect is activated.'
+        }
+      },
+      cooldown: '30s',
+      energy: 285
+    }
+  },
+
+  'donna': {
+    name: 'Donna',
+    id: 130,
+    normalAttack: {
+      name: 'Piercing Shot',
+      icon: 'Icon/Skill/13001_Normal',
+      description: 'Fires an ice arrow in a stationary stance, piercing through the target, dealing <color=#fb8037>&Param1&</color> of ATK as Aqua Auto Attack DMG. Moving will immediately interrupt shooting.\nWhen Donna is in ##Agile#2015# State, her Auto Attack deals <color=#fb8037>&Param2&</color> of ATK as Aqua Auto Attack DMG.',
+      shortDescription: 'Fires an ice arrow in a stationary stance, piercing through the target and dealing DMG. Moving will immediately interrupt shooting.',
+      params: [
+        '15%/18%/20%/27%/29%/31%/36%/38%/39%/43%/46%/49%/53%',
+        '18%/21%/23%/32%/34%/37%/42%/44%/46%/51%/54%/58%/62%'
+      ],
+      hints: {
+        2015: {
+          id: 2015,
+          name: 'Agile'
+        }
+      }
+    },
+    skill: {
+      name: 'Rain Call: Volley Chase',
+      icon: 'Icon/Skill/13001_Skill_Main',
+      description: 'Summons a ##Advertising Doll#4017# near the target. When the Doll is on the battlefield, Donna enters ##Agile#2015# state.\nThe doll deals <color=#fb8037>&Param1&</color> of ATK as AoE Aqua Minion DMG every 4s and taunts the target.\nThe ##Advertising Doll#4017# and Donna\'s Auto Attack in ##Agile#2015# state can trigger ##Aqua Mark#1018#, dealing &Param4& of ATK as AoE Aqua Mark DMG and inflicting ##Chill#1027#.',
+      shortDescription: 'Summons a ##Advertising Doll#4017# that deals DMG over time and taunts the target.\nWhen the doll is on the battlefield, Donna enters ##Agile#2015# state, with her Auto Attacks enhanced and can trigger ##Aqua Mark: Torrent#1018# and inflict ##Chill#1027#.',
+      params: [
+        '125%/143%/162%/218%/235%/253%/288%/303%/318%/348%/372%/397%/422%',
+        '18%/21%/23%/32%/34%/37%/42%/44%/46%/51%/54%/58%/62%',
+        '18%/21%/23%/32%/34%/37%/42%/44%/46%/51%/54%/58%/62%',
+        '22%/29%/35%/42%/49%/56%/62%/69%/76%'
+      ],
+      hints: {
+        4017: {
+          id: 4017,
+          name: 'Advertising Doll',
+          description: 'Advertising Doll inherits 100% of Donna\'s Base Max HP and 100% of her ATK for 12s.'
+        },
+        2015: {
+          id: 2015,
+          name: 'Agile'
+        },
+        1018: {
+          id: 1018,
+          name: 'Aqua Mark',
+          description: 'The generic name for all Aqua Marks.\nWhen triggered by specific Aqua Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        },
+        1027: {
+          id: 1027,
+          name: 'Chill'
+        }
+      },
+      cooldown: '24s'
+    },
+    supportSkill: {
+      name: 'Tide Threader',
+      icon: 'Icon/Skill/13001_Skill_Support',
+      description: 'Fires 9 Snow-Piercing Arrows, dealing <color=#fb8037>&Param1&</color> of ATK, <color=#fb8037>&Param2& x2</color> of ATK, <color=#fb8037>&Param3& x3</color> of ATK, <color=#fb8037>&Param4& x2</color> of ATK, and <color=#fb8037>&Param5&</color> of ATK as Aqua Skill DMG respectively.\nThe path of the final arrow generates Frost Wave, dealing <color=#fb8037>&Param6&</color> of ATK as Aqua Skill DMG.\nWhen Tide Threader deals DMG, inflicts ##Aqua Mark: Torrent#2008#.',
+      shortDescription: 'Keeps shooting Snow-Piercing Arrows and generates Frost Wave to deal DMG to enemies along the path.\nThe Support Skill can inflict ##Aqua Mark: Torrent#2008#.',
+      params: [
+        '220%/253%/287%/386%/417%/447%/509%/536%/562%/615%/659%/703%/747%',
+        '110%/127%/143%/193%/208%/224%/255%/268%/281%/307%/330%/352%/374%',
+        '147%/169%/191%/257%/278%/298%/339%/357%/375%/410%/439%/469%/498%',
+        '165%/190%/215%/289%/312%/336%/382%/402%/422%/461%/494%/527%/560%',
+        '331%/380%/430%/579%/625%/671%/764%/803%/843%/923%/989%/1055%/1121%',
+        '437%/502%/567%/764%/825%/886%/1008%/1061%/1113%/1218%/1305%/1393%/1480%'
+      ],
+      hints: {
+        2008: {
+          id: 2008,
+          name: 'Aqua Mark: Torrent',
+          description: 'A special status applied by some Aqua characters to the target for 10 sec.\nWhen triggered by specific Aqua characters\' attacks, the status is removed, and a special effect is activated.'
+        }
+      },
+      cooldown: '14s'
+    },
+    ultimate: {
+      name: 'Argent Cascade',
+      icon: 'Icon/Skill/13001_Ultra',
+      description: 'Fires a cluster of arrows that rains down at the target\'s location, dealing <color=#fb8037>&Param1&</color> of ATK as AoE Aqua Ultimate DMG every 0.5s for 6s.',
+      shortDescription: 'Rains arrows at the target location, dealing AoE DMG over time.',
+      params: [
+        '160%/184%/207%/279%/302%/324%/369%/388%/407%/445%/477%/509%/541%'
+      ],
+      hints: {},
+      cooldown: '30s',
+      energy: 260
+    }
+  },
+  'wraith': {
+    name: 'Wraith',
+    id: 143,
+    normalAttack: {
+      name: 'Swish and Fire',
+      icon: 'Icon/Skill/14301_Normal',
+      description: 'Wields the bayonet to attack targets of different distances in different ways.\nSlashes nearby targets with combo strikes:\nStrike 1: <color=#ec6d21>&Param1&</color> of ATK as Ventus Auto ATK DMG.\nStrike 2: <color=#ec6d21>&Param2&</color> of ATK as Ventus Auto ATK DMG.\nStrike 3: <color=#ec6d21>&Param3& x3</color> of ATK as Ventus Auto ATK DMG.\nStrike 4: <color=#ec6d21>&Param4& x4</color> of ATK as Ventus Auto ATK DMG.\nStrike 5: <color=#ec6d21>&Param5& x3</color> of ATK as Ventus Auto ATK DMG.\nStrike 6: <color=#ec6d21>&Param6&</color> of ATK as Ventus Auto ATK DMG.\nShoots distant targets:\nStrike 1: <color=#ec6d21>&Param7& x2</color> of ATK as Ventus Auto ATK DMG.\nStrike 2: <color=#ec6d21>&Param7& x3</color> of ATK as Ventus Auto ATK DMG.\nStrike 3: Fires lasers, dealing <color=#ec6d21>&Param8&</color> of ATK as Ventus Auto ATK DMG.',
+      shortDescription: 'Wields the bayonet to attack targets of different distances in different ways.',
+      params: [
+        '26%/30%/33%/45%/49%/52%/60%/63%/66%/72%/77%/83%/88%',
+        '30%/35%/40%/53%/57%/62%/70%/74%/77%/85%/91%/97%/103%',
+        '22%/26%/29%/39%/42%/45%/52%/54%/57%/63%/67%/72%/76%',
+        '21%/25%/28%/38%/41%/44%/50%/52%/55%/60%/64%/69%/73%',
+        '22%/26%/29%/39%/42%/45%/52%/54%/57%/63%/67%/72%/76%',
+        '99%/113%/128%/173%/186%/200%/228%/240%/252%/275%/295%/315%/334%',
+        '54%/62%/70%/94%/102%/109%/124%/131%/137%/150%/161%/172%/183%',
+        '22%/25%/28%/38%/41%/44%/51%/53%/56%/61%/66%/70%/75%'
+      ],
+      hints: {}
+    },
+    skill: {
+      name: 'Whirling Onslaught',
+      icon: 'Icon/Skill/14301_Skill_Main',
+      description: 'Spins rapidly to slash, deal <color=#ec6d21>&Param1& x4</color> of ATK as AoE Ventus Skill DMG. Also fires bullets in all directions, dealing <color=#ec6d21>&Param2& x4</color> of ATK as Ventus Skill DMG.\nWhirling Onslaught (Main Skill) can be used 3 times initially. Hold to cast continuously.\nWhirling Onslaught (Main Skill) can trigger ##Ventus Mark#1017# and generate a Cyclone, dealing &Param3& x3 of ATK as AoE Ventus Mark DMG.',
+      shortDescription: 'Spins rapidly to slash, dealing AoE DMG and firing bullets in all directions. The Main Skill can trigger ##Ventus Mark#1017# and generate a Cyclone.',
+      params: [
+        '49%/57%/64%/86%/93%/100%/114%/120%/126%/137%/147%/157%/167%',
+        '69%/80%/90%/121%/131%/141%/160%/168%/177%/193%/207%/221%/235%',
+        '8%/11%/13%/16%/18%/21%/23%/26%/28%'
+      ],
+      hints: {
+        1017: {
+          id: 1017,
+          name: 'Ventus Mark',
+          description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        }
+      },
+      cooldown: '3s'
+    },
+    supportSkill: {
+      name: 'Rolling Bungee',
+      icon: 'Icon/Skill/14301_Skill_Support',
+      description: 'Rolls, slashes, and shoots.\nPhase 1: Slashes, deals <color=#ec6d21>&Param1& x3</color> of ATK as Ventus Skill DMG.\nPhase 2: Fires laser beams, dealing <color=#ec6d21>&Param2&</color> of ATK as AoE Ventus Skill DMG.\nRolling Bungee (Support Skill) can trigger ##Venus Mark#1017# and generate a Cyclone, dealing &Param3& x3 of ATK as AoE Ventus Mark DMG.',
+      shortDescription: 'Rolls, slashes, and shoots, dealing multiple instances of DMG. The Support Skill can trigger ##Ventus Mark#1017# and generate a Cyclone.',
+      params: [
+        '130%/149%/169%/227%/246%/264%/300%/316%/331%/363%/388%/414%/440%',
+        '152%/174%/197%/265%/287%/308%/350%/368%/387%/423%/453%/484%/514%',
+        '8%/11%/13%/16%/18%/21%/23%/26%/28%'
+      ],
+      hints: {
+        1017: {
+          id: 1017,
+          name: 'Ventus Mark',
+          description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        }
+      },
+      cooldown: '12s'
+    },
+    ultimate: {
+      name: 'Thousand Shade Dance',
+      icon: 'Icon/Skill/14301_Ultra',
+      description: 'Deploys a field, zips across it 27 times, each time dealing <color=#ec6d21>&Param1&</color> of ATK as Ventus Ultimate DMG in a small area, then detonates the field, dealing <color=#ec6d21>&Param2&</color> of ATK as Ventus Ultimate DMG in a large area.\nThousand Shade Dance (Ultimate) can trigger ##Venus Mark#1017# and generate a Cyclone, dealing &Param3& x3 of ATK as AoE Ventus Mark DMG.',
+      shortDescription: 'Deploys a field, zips across it to attack the target, then detonates the field, dealing DMG in a large area. The Ultimate can trigger ##Ventus Mark#1017# and generate a Cyclone.',
+      params: [
+        '31%/35%/40%/54%/58%/62%/71%/75%/78%/86%/92%/98%/104%',
+        '633%/728%/823%/1107%/1196%/1284%/1462%/1538%/1613%/1765%/1892%/2018%/2145%',
+        '8%/11%/13%/16%/18%/21%/23%/26%/28%'
+      ],
+      hints: {
+        1017: {
+          id: 1017,
+          name: 'Ventus Mark',
+          description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        }
+      },
+      cooldown: '30s',
+      energy: 275
+    }
+  },
+
 };

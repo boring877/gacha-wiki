@@ -4,66 +4,51 @@
  * Handles image imports and mapping for the A Finale Echoing event
  */
 
-import { Image } from 'astro:assets';
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
-// Import all images for A Finale Echoing event
-import whispersOfDecay from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Whispers_of_Decay.jpg';
-import newStarPrelude from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_New_Star_Prelude.jpg';
-import prayerBeneathLight from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Prayer_Beneath_Light.jpg';
-import summerAfternoonRain from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Summer_Afternoon_Rain.jpg';
-import thoseWithAmbition from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Those_with_Ambition.jpg';
-import voyageBlueprint from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Voyage_Blueprint.jpg';
-import sweetTimes from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Sweet_Times.jpg';
-import chessPieceOfSkill from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Chess_Piece_of_Skill.jpg';
-import provingGroundsGiftBox from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Proving_Grounds_gift_box.jpg';
-import premiumCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Premium_Cartridge_Box.jpg';
-import deluxeCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Deluxe_Cartridge_box.jpg';
-import beginnerCartridgeBox from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Beginner_Cartridge_Box.jpg';
-import sproutTicket from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Sprout_Ticket.jpg';
-import dorra from '../../../assets/images/games/stella-sora/EventShop/A_Finale_Echoing/1_Dorra.jpg';
 
 // Image mapping object for easy access
 const imageMap = {
   // Original filenames with extensions
-  '1_Whispers_of_Decay.jpg': whispersOfDecay,
-  '1_New_Star_Prelude.jpg': newStarPrelude,
-  '1_Prayer_Beneath_Light.jpg': prayerBeneathLight,
-  '1_Summer_Afternoon_Rain.jpg': summerAfternoonRain,
-  '1_Those_with_Ambition.jpg': thoseWithAmbition,
-  '1_Voyage_Blueprint.jpg': voyageBlueprint,
-  '1_Sweet_Times.jpg': sweetTimes,
-  '1_Chess_Piece_of_Skill.jpg': chessPieceOfSkill,
-  '1_Proving_Grounds_gift_box.jpg': provingGroundsGiftBox,
-  '1_Premium_Cartridge_Box.jpg': premiumCartridgeBox,
-  '1_Deluxe_Cartridge_box.jpg': deluxeCartridgeBox,
-  '1_Beginner_Cartridge_Box.jpg': beginnerCartridgeBox,
-  '1_Sprout_Ticket.jpg': sproutTicket,
-  '1_Dorra.jpg': dorra,
+  '1_Whispers_of_Decay.jpg': 'EventShop/A_Finale_Echoing/1_Whispers_of_Decay.jpg',
+  '1_New_Star_Prelude.jpg': 'EventShop/A_Finale_Echoing/1_New_Star_Prelude.jpg',
+  '1_Prayer_Beneath_Light.jpg': 'EventShop/A_Finale_Echoing/1_Prayer_Beneath_Light.jpg',
+  '1_Summer_Afternoon_Rain.jpg': 'EventShop/A_Finale_Echoing/1_Summer_Afternoon_Rain.jpg',
+  '1_Those_with_Ambition.jpg': 'EventShop/A_Finale_Echoing/1_Those_with_Ambition.jpg',
+  '1_Voyage_Blueprint.jpg': 'EventShop/A_Finale_Echoing/1_Voyage_Blueprint.jpg',
+  '1_Sweet_Times.jpg': 'EventShop/A_Finale_Echoing/1_Sweet_Times.jpg',
+  '1_Chess_Piece_of_Skill.jpg': 'EventShop/A_Finale_Echoing/1_Chess_Piece_of_Skill.jpg',
+  '1_Proving_Grounds_gift_box.jpg': 'EventShop/A_Finale_Echoing/1_Proving_Grounds_gift_box.jpg',
+  '1_Premium_Cartridge_Box.jpg': 'EventShop/A_Finale_Echoing/1_Premium_Cartridge_Box.jpg',
+  '1_Deluxe_Cartridge_box.jpg': 'EventShop/A_Finale_Echoing/1_Deluxe_Cartridge_box.jpg',
+  '1_Beginner_Cartridge_Box.jpg': 'EventShop/A_Finale_Echoing/1_Beginner_Cartridge_Box.jpg',
+  '1_Sprout_Ticket.jpg': 'EventShop/A_Finale_Echoing/1_Sprout_Ticket.jpg',
+  '1_Dorra.jpg': 'EventShop/A_Finale_Echoing/1_Dorra.jpg',
 
   // Semantic keys for easier use
-  whispersOfDecay: whispersOfDecay,
-  currency: whispersOfDecay,
-  'whispers of decay': whispersOfDecay,
-  'Whispers of Decay': whispersOfDecay,
+  whispersOfDecay: 'EventShop/A_Finale_Echoing/1_Whispers_of_Decay.jpg',
+  currency: 'EventShop/A_Finale_Echoing/1_Whispers_of_Decay.jpg',
+  'whispers of decay': 'EventShop/A_Finale_Echoing/1_Whispers_of_Decay.jpg',
+  'Whispers of Decay': 'EventShop/A_Finale_Echoing/1_Whispers_of_Decay.jpg',
 
   // Shop item names
-  'New Star Prelude': newStarPrelude,
-  'Prayer Beneath Light': prayerBeneathLight,
-  'Summer Afternoon Rain': summerAfternoonRain,
-  'Those with Ambition': thoseWithAmbition,
-  'Voyage Blueprint': voyageBlueprint,
-  'Sweet Times': sweetTimes,
-  'Chess Piece of Skill': chessPieceOfSkill,
-  'Proving Grounds Gift Box': provingGroundsGiftBox,
-  'Premium Cartridge Box': premiumCartridgeBox,
-  'Deluxe Cartridge Box': deluxeCartridgeBox,
-  'Beginner Cartridge Box': beginnerCartridgeBox,
-  'Sprout Ticket': sproutTicket,
-  Dorra: dorra,
+  'New Star Prelude': 'EventShop/A_Finale_Echoing/1_New_Star_Prelude.jpg',
+  'Prayer Beneath Light': 'EventShop/A_Finale_Echoing/1_Prayer_Beneath_Light.jpg',
+  'Summer Afternoon Rain': 'EventShop/A_Finale_Echoing/1_Summer_Afternoon_Rain.jpg',
+  'Those with Ambition': 'EventShop/A_Finale_Echoing/1_Those_with_Ambition.jpg',
+  'Voyage Blueprint': 'EventShop/A_Finale_Echoing/1_Voyage_Blueprint.jpg',
+  'Sweet Times': 'EventShop/A_Finale_Echoing/1_Sweet_Times.jpg',
+  'Chess Piece of Skill': 'EventShop/A_Finale_Echoing/1_Chess_Piece_of_Skill.jpg',
+  'Proving Grounds Gift Box': 'EventShop/A_Finale_Echoing/1_Proving_Grounds_gift_box.jpg',
+  'Premium Cartridge Box': 'EventShop/A_Finale_Echoing/1_Premium_Cartridge_Box.jpg',
+  'Deluxe Cartridge Box': 'EventShop/A_Finale_Echoing/1_Deluxe_Cartridge_box.jpg',
+  'Beginner Cartridge Box': 'EventShop/A_Finale_Echoing/1_Beginner_Cartridge_Box.jpg',
+  'Sprout Ticket': 'EventShop/A_Finale_Echoing/1_Sprout_Ticket.jpg',
+  Dorra: 'EventShop/A_Finale_Echoing/1_Dorra.jpg',
 
   // Common variations to prevent missing images
-  'x Sprout Ticket': sproutTicket,
-  'x Chess Piece of Skill': chessPieceOfSkill,
+  'x Sprout Ticket': 'EventShop/A_Finale_Echoing/1_Sprout_Ticket.jpg',
+  'x Chess Piece of Skill': 'EventShop/A_Finale_Echoing/1_Chess_Piece_of_Skill.jpg',
 };
 
 // Props interface
@@ -85,15 +70,11 @@ const {
   loading = 'lazy',
 } = Astro.props;
 
-// Handle both string names and image objects
-let imageSrc = null;
+// Resolve the image path from the mapping
+let imageSrc: string | null = null;
 
 if (typeof imageName === 'string') {
-  // If it's a string, try to get it from the mapping
   imageSrc = imageMap[imageName];
-} else if (imageName && typeof imageName === 'object') {
-  // If it's already an image object, use it directly
-  imageSrc = imageName;
 }
 
 // If image not found, use a placeholder or fallback
@@ -105,17 +86,14 @@ if (!imageSrc) {
 
 {
   imageSrc ? (
-    <Image
-      src={imageSrc}
+    <img
+      src={`${R2}/${imageSrc}`}
       alt={alt || imageName.replace(/_/g, ' ').replace('.jpg', '').replace('.png', '')}
       class={className}
       width={width}
       height={height}
       loading={loading}
       decoding="async"
-      format="webp"
-      quality={95}
-      sizes="(max-width: 480px) 100vw, (max-width: 768px) 90vw, 1200px"
     />
   ) : (
     <div class={`image-placeholder ${className}`} style={`width: ${width}px; height: ${height}px;`}>

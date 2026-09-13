@@ -1,28 +1,18 @@
 ---
 // Stella Sora Character Skill Icon Component
 // Simple component that displays just the character's skill icon (without element plate overlay)
-import { Image } from 'astro:assets';
+// Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
-// Dynamically import all character skill images
-const characterSkillImages = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/images/games/stella-sora/characters/*/skills/*.png',
-  { eager: true }
-);
-
-// Create a nested map: characterSlug -> skillType -> ImageMetadata
-const skillImageMap: Record<string, Record<string, ImageMetadata>> = {};
-for (const [path, module] of Object.entries(characterSkillImages)) {
-  // Extract character slug and skill type from path
-  // Path format: ../../assets/images/games/stella-sora/characters/[char]/skills/[skill-type].png
-  const match = path.match(/characters\/([^/]+)\/skills\/([^/]+)\.png$/);
-  if (match) {
-    const [, charSlug, skillType] = match;
-    if (!skillImageMap[charSlug]) {
-      skillImageMap[charSlug] = {};
-    }
-    skillImageMap[charSlug][skillType] = module.default;
-  }
-}
+// Character slugs that have a skills/ folder on R2 (frozen listing; extend when new art uploads).
+// Each folder holds all four icons: normal-attack / skill / support-skill / ultimate.
+const SKILL_SLUGS = new Set([
+  'amber', 'ann', 'canace', 'caramel', 'chaton', 'chitose', 'chixia', 'coronis', 'cosette',
+  'donna', 'eleanor', 'firefly', 'firenze', 'flora', 'freesia', 'fuyuka', 'gerie', 'iris',
+  'jinglin', 'karin', 'kasimira', 'laru', 'minova', 'mistique', 'nanoha', 'nazuka', 'nazuna',
+  'noya', 'otoha', 'ridge', 'shia', 'shimiao', 'snowish-laru', 'sparkla', 'springseek-coronis',
+  'suntide-willow', 'teresa', 'tilia', 'wraith',
+]);
 
 export interface Props {
   characterSlug: string;
@@ -47,30 +37,30 @@ const {
 // Slug mapping for characters with different folder names
 const slugFolderMap: Record<string, string> = {
   snowishlaru: 'snowish-laru',
+  springseekcoronis: 'springseek-coronis',
+  suntidewillow: 'suntide-willow',
 };
 
 // Get character slug (lowercase)
 const rawSlug = characterSlug.toLowerCase();
 const slug = slugFolderMap[rawSlug] || rawSlug;
 
-// Get character-specific skill image
-const characterSkills = skillImageMap[slug];
-const skillSrc = characterSkills?.[skillType];
+const hasIcons = SKILL_SLUGS.has(slug);
+const skillSrc = hasIcons ? `${R2}/characters/${slug}/skills/${skillType}.png` : null;
 
 const imageAlt = alt || `${characterSlug} ${skillType}`;
 ---
 
 {
   skillSrc ? (
-    <Image
+    <img
       src={skillSrc}
       alt={imageAlt}
       width={width}
       height={height}
       class={className}
       loading={loading}
-      format="webp"
-      quality={95}
+      decoding="async"
     />
   ) : (
     <div

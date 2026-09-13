@@ -1,54 +1,82 @@
 ---
 // Stella Sora Potential All Image Component
 // Loads potential images from potentials-all folder using icon identifiers
-import { Image } from 'astro:assets';
+// Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
-// Import potential background images for rarity display
-import bgRarity4 from '../../assets/images/games/stella-sora/potentials/bg-4.png';
-import bgRarity5 from '../../assets/images/games/stella-sora/potentials/bg-5.png';
-import bgRarity6 from '../../assets/images/games/stella-sora/potentials/bg-6.png';
-import bgRarity7 from '../../assets/images/games/stella-sora/potentials/bg-7.png';
-import bgRarity8 from '../../assets/images/games/stella-sora/potentials/bg-8.png';
-import bgRarity9 from '../../assets/images/games/stella-sora/potentials/bg-9.png';
+// Potential icon NN suffixes that exist on R2 per unit id (frozen listing; extend when new art uploads)
+const ICONS: Record<string, string[]> = {
+  '10301': ['01','02','03','04','21','22','23','24','41'],
+  '10701': ['01','02','03','04','21','22','23','24','41'],
+  '10801': ['01','02','03','04','21','22','23','24','41'],
+  '11001': ['01','02','03','04','21','22','23','24','41'],
+  '11101': ['01','02','03','04','21','22','23','24','41'],
+  '11201': ['01','02','03','04','21','22','23','24','41'],
+  '11301': ['01','02','03','04','21','22','23','24','41'],
+  '11401': ['01','02','03','04','05','06','09','21','22','23','24','25','28','30','41'],
+  '11501': ['01','02','03','04','06','08','21','22','23','24','26','27','30','41','42'],
+  '11601': ['01','02','03','04','21','22','23','24','41'],
+  '11701': ['01','02','03','04','21','22','23','24','41'],
+  '11801': ['01','02','03','04','21','22','23','24','41'],
+  '11901': ['01','02','03','04','21','22','23','24','41'],
+  '12001': ['01','02','03','04','21','22','23','24','41'],
+  '12301': ['01','02','03','04','21','22','23','24','41'],
+  '12501': ['01','02','03','04','21','22','23','24','41'],
+  '12601': ['01','02','03','04','21','22','23','24','41'],
+  '12701': ['01','02','03','04','21','22','23','24','41'],
+  '13001': ['01','02','03','04','07','09','10','21','22','23','24','25','29','41'],
+  '13201': ['01','02','03','04','21','22','23','24','41'],
+  '13301': ['01','02','03','04','21','22','23','24','41'],
+  '13401': ['01','02','03','04','21','22','23','24','41'],
+  '13501': ['01','02','03','04','21','22','23','24','41'],
+  '13701': ['01','02','03','04','05','08','21','22','23','24','25','28','41'],
+  '14001': ['01','02','03','04','06','08','09','11','21','22','23','24','25','28','41','42','43'],
+  '14101': ['01','02','03','04','21','22','23','24','42','43'],
+  '14201': ['01','02','03','04','21','22','23','24','41'],
+  '14301': ['01','02','03','04','21','22','23','24','41'],
+  '14401': ['01','02','03','04','21','22','23','24','41'],
+  '14501': ['01','02','03','04','21','22','23','24','25','41','42'],
+  '14701': ['01','02','03','04','21','22','23','24','41'],
+  '14901': ['01','02','03','04','21','22','23','24','41'],
+  '15001': ['01','02','03','04','21','22','23','24','41'],
+  '15501': ['01','02','03','04','21','22','23','24','41'],
+  '15601': ['01','02','03','04','05','06','08','21','22','23','24','41'],
+  '15701': ['01','02','03','04','05','08','21','22','23','24','25','41','42'],
+  '15801': ['01','02','03','04','06','11','21','22','23','24','25','28','41'],
+  '15901': ['01','02','03','04','21','22','23','24','41'],
+  '16001': ['01','02','03','04','21','22','23','24','41'],
+};
+
+// Does the exact icon file exist on R2? (icon format: <unit>_Potential_NN)
+function hasIcon(icon: string): boolean {
+  const m = icon.match(/^(\d+)_Potential_(\d+)$/);
+  if (!m) return false;
+  return (ICONS[m[1]] || []).includes(m[2]);
+}
 
 // Background selection based on stype and rarity:
 // stype 42 (Core) = Pink (bg-6)
 // stype 41 (Normal) + rarity 1 = Blue/Purple (bg-5)
 // stype 41 (Normal) + rarity 2 = Yellow/Orange (bg-4)
-function getBgImage(stype: number, rarity: number): ImageMetadata {
+function getBgImage(stype: number, rarity: number): string {
   if (stype === 42) {
-    return bgRarity6; // Pink for Core
+    return 'potentials/bg-6.png'; // Pink for Core
   }
   if (rarity === 1) {
-    return bgRarity5; // Blue/Purple for Normal rarity 1
+    return 'potentials/bg-5.png'; // Blue/Purple for Normal rarity 1
   }
-  return bgRarity4; // Yellow/Orange for Normal rarity 2
+  return 'potentials/bg-4.png'; // Yellow/Orange for Normal rarity 2
 }
 
 // Legacy bgMap for backwards compatibility
-const bgMap: Record<number, ImageMetadata> = {
-  1: bgRarity5,
-  2: bgRarity4,
-  3: bgRarity7,
-  4: bgRarity4,
-  5: bgRarity8,
-  6: bgRarity6,
+const bgMap: Record<number, string> = {
+  1: 'potentials/bg-5.png',
+  2: 'potentials/bg-4.png',
+  3: 'potentials/bg-7.png',
+  4: 'potentials/bg-4.png',
+  5: 'potentials/bg-8.png',
+  6: 'potentials/bg-6.png',
 };
-
-// Dynamic glob import for all potential images
-const potentialImages = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/images/games/stella-sora/potentials-all/*.png',
-  { eager: true }
-);
-
-// Build lookup map: icon name -> ImageMetadata
-const imageMap: Record<string, ImageMetadata> = {};
-for (const [path, module] of Object.entries(potentialImages)) {
-  const match = path.match(/potentials-all\/(.+)\.png$/);
-  if (match) {
-    imageMap[match[1]] = module.default;
-  }
-}
 
 export interface Props {
   icon: string;
@@ -74,31 +102,29 @@ const {
 
 // Use stype-based selection if stype is provided, otherwise fall back to legacy bgMap
 const bgSrc = stype ? getBgImage(stype, rarity) : (bgMap[rarity] || bgMap[1]);
-const imageSrc = imageMap[icon];
+const imageExists = hasIcon(icon);
 const imageAlt = alt || `Potential ${icon}`;
 ---
 
 <div class={`potential-all-image-wrapper ${className || ''}`}>
-  <Image
-    src={bgSrc}
+  <img
+    src={`${R2}/${bgSrc}`}
     alt=""
     width={width * 2}
     height={height * 2}
     class="potential-bg"
     loading={loading}
-    format="webp"
-    quality={100}
+    decoding="async"
   />
-  {imageSrc ? (
-    <Image
-      src={imageSrc}
+  {imageExists ? (
+    <img
+      src={`${R2}/potentials-all/${icon}.png`}
       alt={imageAlt}
       width={(width - 16) * 2}
       height={(height - 16) * 2}
       loading={loading}
       class="potential-icon"
-      quality={100}
-      format="webp"
+      decoding="async"
     />
   ) : (
     <div class="potential-placeholder">

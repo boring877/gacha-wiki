@@ -1,74 +1,49 @@
 ---
 // Stella Sora Gift Image Component
-import { Image } from 'astro:assets';
+// Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
-// Import all Stella Sora gift/item images with correct in-game names
-import cardPhotoCapturer from '../../assets/images/games/stella-sora/items/card-photo-capturer.png';
-import reflectivePhotoCapturer from '../../assets/images/games/stella-sora/items/reflective-photo-capturer.png';
-import ultraPrecisionPhotoCapturer from '../../assets/images/games/stella-sora/items/ultra-precision-photo-capturer.png';
-import risingStar from '../../assets/images/games/stella-sora/items/rising-star.png';
-import emergingTalent from '../../assets/images/games/stella-sora/items/emerging-talent.png';
-import cosmicForm from '../../assets/images/games/stella-sora/items/cosmic-form.png';
-import loveCandle from '../../assets/images/games/stella-sora/items/love-candle.png';
-import blazingWings from '../../assets/images/games/stella-sora/items/blazing-wings.png';
-import fieryHoneypot from '../../assets/images/games/stella-sora/items/fiery-honeypot.png';
-import whisperWindSpinner from '../../assets/images/games/stella-sora/items/whisper-wind-spinner.png';
-import blazingWindSpinner from '../../assets/images/games/stella-sora/items/blazing-wind-spinner.png';
-import chillingWindSpinner from '../../assets/images/games/stella-sora/items/chilling-wind-spinner.png';
-import portableBlower from '../../assets/images/games/stella-sora/items/portable-blower.png';
-import exquisiteBlower from '../../assets/images/games/stella-sora/items/exquisite-blower.png';
-import deluxeBlower from '../../assets/images/games/stella-sora/items/deluxe-blower.png';
-import summerChillCrushedIce from '../../assets/images/games/stella-sora/items/summer-chill-crushed-ice.png';
-import fragrantIceDelight from '../../assets/images/games/stella-sora/items/fragrant-ice-delight.png';
-import sweetIcefurry from '../../assets/images/games/stella-sora/items/sweet-icefurry.png';
-import gildedCeramicBowl from '../../assets/images/games/stella-sora/items/gilded-ceramic-bowl.png';
-import blossomPorcelainCup from '../../assets/images/games/stella-sora/items/blossom-porcelain-cup.png';
-import mysticPotionKettle from '../../assets/images/games/stella-sora/items/mystic-potion-kettle.png';
-import stellaniteEnchantment from '../../assets/images/games/stella-sora/items/stellanite-enchantment.png';
-import moonlitCompanion from '../../assets/images/games/stella-sora/items/moonlit-companion.png';
-import shiningStar from '../../assets/images/games/stella-sora/items/shining-star.png';
-
-// Centralized gift image mapping (gift name from data -> image)
-const giftImageMap: Record<string, ImageMetadata> = {
+// Centralized gift image mapping (gift name from data -> R2 path)
+const giftImageMap: Record<string, string> = {
   // Photo Capturer category
-  'Card Photo Capturer': cardPhotoCapturer,
-  'Reflective Photo Capturer': reflectivePhotoCapturer,
-  'Ultra-Precision Photo Capturer': ultraPrecisionPhotoCapturer,
+  'Card Photo Capturer': 'items/card-photo-capturer.png',
+  'Reflective Photo Capturer': 'items/reflective-photo-capturer.png',
+  'Ultra-Precision Photo Capturer': 'items/ultra-precision-photo-capturer.png',
 
   // Star category
-  'Rising Star': risingStar,
-  'Moonlit Companion': moonlitCompanion,
-  'Cosmic Form': cosmicForm,
+  'Rising Star': 'items/rising-star.png',
+  'Moonlit Companion': 'items/moonlit-companion.png',
+  'Cosmic Form': 'items/cosmic-form.png',
 
   // Candle category
-  'Love Candle': loveCandle,
-  'Blazing Wings': blazingWings,
-  'Fiery Honeypot': fieryHoneypot,
+  'Love Candle': 'items/love-candle.png',
+  'Blazing Wings': 'items/blazing-wings.png',
+  'Fiery Honeypot': 'items/fiery-honeypot.png',
 
   // Wind Spinner category
-  'Whisper Wind Spinner': whisperWindSpinner,
-  'Blazing Wind Spinner': blazingWindSpinner,
-  'Chilling Wind Spinner': chillingWindSpinner,
+  'Whisper Wind Spinner': 'items/whisper-wind-spinner.png',
+  'Blazing Wind Spinner': 'items/blazing-wind-spinner.png',
+  'Chilling Wind Spinner': 'items/chilling-wind-spinner.png',
 
   // Blower category
-  'Portable Blower': portableBlower,
-  'Exquisite Blower': exquisiteBlower,
-  'Deluxe Blower': deluxeBlower,
+  'Portable Blower': 'items/portable-blower.png',
+  'Exquisite Blower': 'items/exquisite-blower.png',
+  'Deluxe Blower': 'items/deluxe-blower.png',
 
   // Shaved Ice category
-  'Summer Chill Crushed Ice': summerChillCrushedIce,
-  'Fragrant Ice Delight': fragrantIceDelight,
-  'Sweet IceFurry': sweetIcefurry,
+  'Summer Chill Crushed Ice': 'items/summer-chill-crushed-ice.png',
+  'Fragrant Ice Delight': 'items/fragrant-ice-delight.png',
+  'Sweet IceFurry': 'items/sweet-icefurry.png',
 
   // Ceramic category
-  'Gilded Ceramic Bowl': gildedCeramicBowl,
-  'Blossom Porcelain Cup': blossomPorcelainCup,
-  'Mystic Potion Kettle': mysticPotionKettle,
+  'Gilded Ceramic Bowl': 'items/gilded-ceramic-bowl.png',
+  'Blossom Porcelain Cup': 'items/blossom-porcelain-cup.png',
+  'Mystic Potion Kettle': 'items/mystic-potion-kettle.png',
 
   // Enchantment category
-  'Stellanite Enchantment': stellaniteEnchantment,
-  'Emerging Talent': emergingTalent,
-  'Shining Star': shiningStar,
+  'Stellanite Enchantment': 'items/stellanite-enchantment.png',
+  'Emerging Talent': 'items/emerging-talent.png',
+  'Shining Star': 'items/shining-star.png',
 };
 
 export interface Props {
@@ -81,20 +56,19 @@ export interface Props {
 
 const { giftName, alt, class: className = '', width = 48, height = 48 } = Astro.props;
 
-// Get the imported image object from the map
-const imageSrc = giftImageMap[giftName];
+// Get the image path from the map
+const imagePath = giftImageMap[giftName];
 ---
 
-{imageSrc ? (
-  <Image
-    src={imageSrc}
+{imagePath ? (
+  <img
+    src={`${R2}/${imagePath}`}
     alt={alt || giftName}
     width={width}
     height={height}
     class={`${className} gift-img`}
     loading="lazy"
-    format="webp"
-    quality={95}
+    decoding="async"
   />
 ) : (
   <span class={`${className} gift-placeholder`} title={giftName}>{giftName}</span>

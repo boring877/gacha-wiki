@@ -3,7 +3,6 @@
 // this instead of re-declaring id/name/image/url/themeColor.
 
 import RGIcon from '../assets/images/games/rebellion-gilgamesh/gameimg/Icon1.jpg';
-import StellaSoraIcon from '../assets/images/games/stella-sora/gameimg/Icon.jpg';
 import TaimaninSquadIcon from '../assets/images/games/taimanin-squad/gameimg/icon.jpg';
 import LastOriginGlobalIcon from '../assets/images/games/last-origin-global/gameimg/icon.jpg';
 import { r2Url } from './r2-config.js';
@@ -74,7 +73,7 @@ export const GAMES: Game[] = [
     name: 'Stella Sora',
     slug: 'stella-sora',
     description: 'Fantasy RPG • Nova Continent Exploration • Trekker Collection • Top-Down Action',
-    image: StellaSoraIcon,
+    image: r2Url('stella-sora', 'gameimg/Icon.jpg'),
     url: '/guides/stella-sora/',
     status: 'active',
     themeColor: '#7dd3fc',

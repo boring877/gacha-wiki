@@ -1,22 +1,26 @@
 ---
 // Stella Sora Disc Base Image Component
-import { Image } from 'astro:assets';
+// Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
-// Dynamically import all disc base images
-const discImages = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets/images/games/stella-sora/discs/*/base.png',
-  { eager: true }
-);
-
-// Create a map from disc slug to image
-const discImageMap: Record<string, ImageMetadata> = {};
-for (const [path, module] of Object.entries(discImages)) {
-  // Extract disc slug from path: ../../assets/images/games/stella-sora/discs/disc-name/base.png
-  const match = path.match(/discs\/([^/]+)\/base\.png$/);
-  if (match) {
-    discImageMap[match[1]] = module.default;
-  }
-}
+// Disc slugs that have a base.png on R2 (frozen listing; extend when new art uploads)
+const BASE_SLUGS = new Set([
+  'a-gift-for-the-journey', 'a-moment-in-the-afternoon', 'auspicious-glow', 'bam-bam-girl',
+  'brave-the-wind', 'bubbles', 'cage-of-roses', 'claw-the-claw', 'colors-pierce-the-grey',
+  'crisp-morning', 'dancing-with-the-bones', 'daylight-garden', 'deer-s-song', 'delusion',
+  'dream-factory-of-truth', 'eclipse', 'elysium', 'emerald-dream', 'fireworks', 'fist-of-courage',
+  'flare-frenzy', 'fortitude', 'good-night', 'grand-feast', 'holiday-bubble', 'homeward-path',
+  'indigo-sunset', 'leaf-her-to-me', 'lemon-black-tea', 'lonely-dunes', 'love-river-s-curse',
+  'meow-rhythm', 'meowing-cat-god', 'midnight-mayhem', 'miraculous-anthem', 'mystic-brushstrokes',
+  'new-star-prelude', 'one-shot-one-down', 'one-two-three-jump', 'pink-dream', 'prayer-beneath-light',
+  'pure-white', 'rainy-tune', 'ripples-of-nostalgia', 'rolling-life', 'scorching-night-s-end',
+  'sky-flowers-poem', 'snowy-night-surprise', 'soda-shopping', 'sparkling-moment', 'starlit-hope',
+  'starry-night-ode', 'steam-syndrome', 'summer-afternoon-rain', 'summer-sanctuary',
+  'sunlit-blossom', 'sunny-breeze', 'sweet-creek', 'sweet-invitation', 'sweet-times',
+  'sword-against-stream', 'the-clash-of-blade-and-axe', 'the-knight-s-smith', 'the-lost-pilgrim',
+  'the-meow', 'the-shining', 'those-with-ambition', 'tranquil-retreat', 'twin-moon-mischief',
+  'united-by-fate', 'unknown-fragrance', 'vent-it-out', 'voyage-blueprint', 'whoopla', 'witch-s-swing',
+]);
 
 export interface Props {
   discSlug: string;
@@ -28,21 +32,19 @@ export interface Props {
 
 const { discSlug, alt, class: className = '', width = 128, height = 128 } = Astro.props;
 
-// Get the imported image object from the map
-const imageSrc = discImageMap[discSlug];
+const imageSrc = BASE_SLUGS.has(discSlug) ? `${R2}/discs/${discSlug}/base.png` : null;
 ---
 
 {
   imageSrc ? (
-    <Image
+    <img
       src={imageSrc}
       alt={alt || discSlug}
       width={width}
       height={height}
       class={className}
       loading="eager"
-      format="webp"
-      quality={100}
+      decoding="async"
     />
   ) : (
     <div class={`disc-placeholder ${className}`} style={`width: ${width}px; height: ${height}px;`}>

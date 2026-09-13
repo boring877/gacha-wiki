@@ -1,18 +1,14 @@
 ---
 // Stella Sora Emblem Image Component
 // Displays emblem images with proper sizing and fallbacks
-import { Image } from 'astro:assets';
-
-// Import all Stella Sora emblem images
-import lv70Image from '../../assets/images/games/stella-sora/emblem/lv70.jpg';
-import lv80Image from '../../assets/images/games/stella-sora/emblem/lv80.jpg';
-import lv90Image from '../../assets/images/games/stella-sora/emblem/lv90.jpg';
+// Served from the gachawiki-images R2 bucket (keeps the Pages deployment under the 20,000-file limit).
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
 // Centralized emblem image mapping
-const emblemImageMap = {
-  lv70: lv70Image,
-  lv80: lv80Image,
-  lv90: lv90Image,
+const emblemImageMap: Record<string, string> = {
+  lv70: 'emblem/lv70.jpg',
+  lv80: 'emblem/lv80.jpg',
+  lv90: 'emblem/lv90.jpg',
 };
 
 export interface Props {
@@ -45,20 +41,19 @@ const sizeConfig = {
 };
 
 const dimensions = sizeConfig[size];
-const imageSrc = getImageSrc();
+const imagePath = getImageSrc();
 const altText = alt || `${level} Emblem`;
 ---
 
 <div class={`emblem-image emblem-image-${size} ${className}`}>
-  <Image
-    src={imageSrc}
+  <img
+    src={`${R2}/${imagePath}`}
     alt={altText}
     width={dimensions.width}
     height={dimensions.height}
     class="emblem-img"
     loading="lazy"
-    format="webp"
-    quality={90}
+    decoding="async"
   />
 </div>
 
