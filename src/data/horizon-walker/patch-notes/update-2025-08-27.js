@@ -19,7 +19,7 @@ export const note = {
     {k:'t',kind:"sub",html:"<strong>● Patch Details</strong>"},
     {k:'t',kind:"p",html:"<strong></strong>"},
     {k:'t',kind:"item",html:"<strong>◆ New Weapon: DMP-9 Prototype</strong><strong></strong>"},
-    {k:'img',src:"16e338ca937f.webp",w:1678,h:1678},
+    {k:'img',src:"16e338ca937f.webp",w:2000,h:2000},
     {k:'t',kind:"detail",html:"ㆍRarity: EX"},
     {k:'t',kind:"detail",html:"ㆍType: Dual Pistols"},
     {k:'t',kind:"detail",html:"ㆍATK Type: Ranged ATK"},

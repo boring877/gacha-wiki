@@ -93,12 +93,12 @@ const rawErnesteData = {
       unique: {
         name: "Frontline Charisma",
         type: 'Unique',
-        description: "During battle, increases Block Chance by {12,15,18,21,24}%. After using a Support, Charge, Leap, Teleportation, or Self-Mobility skill, at the end of the turn, increases all allies' SPD by {36%,42.75%,49.5%,56.25%,63%} for 2 Rounds. Stacks up to 3 times.",
+        description: "Increases Block Chance by {22,32,42,52,62}% during battle. On a successful attack, increases the target's DMG Taken by {10,15,20,25,30}% for 2R. Block Chance is capped at 75%.",
       },
       signature: {
         name: "Erneste Signature: Our Protector",
         type: 'Signature',
-        description: "Increases the caster's SPD by 70% during battle and boosts all allies' Basic ATK DMG (excluding the caster) by 10%. Extends the duration of [Declaration of Victory] to 3 rounds, additionally increasing the target ally's Melee ATK by 36% of the caster's base Melee ATK. Also increases each ally's Ranged ATK and Magic ATK by 55% of the total Melee ATK gained from [Declaration of Victory]. Unlocks the skill [Frontline Disruptor] for use. [#sepline]Frontline Disruptor Leaps forward in a sweeping motion, striking nearby enemies. Gains the [Courageous Charge] effect for 2 rounds and deals Slash DMG equal to 120% of Melee ATK to enemies within a 2.5m radius at the target location. Knocks targets back and inflicts [Faultline]. - [Courageous Charge]: Increases Elemental DEF by 60. Inflicts Fixed DMG equal to 340% of Melee ATK to countered enemies. - [Faultline]: Increases DMG taken by 8%. Ends at the start of the caster's turn.",
+        description: "Increases SPD by 100% and Melee ATK by 300% during battle. Extends the duration of [Declaration of Victory] to 3R and additionally increases the affected target's Melee ATK by 200% of the caster's Melee ATK. On a successful attack, creates an aftershock in a 4m-radius circular area around the caster, pulling in enemies and dealing additional Slash DMG equal to 180% of Melee ATK. Unlocks the skill [Frontline Disruptor] for use. [#sepline]Frontline Disruptor Leaps low toward the designated location, sweeping through the surrounding area with a slash. Deals Slash DMG equal to 120% of Melee ATK to enemies within a 2.5m-radius circular area around the designated location. Knocks back enemies hit by the attack.",
       },
     },
     levelStats: {
@@ -107,8 +107,8 @@ const rawErnesteData = {
     },
     exLevels: {
       effects: [
-        { name: "During battle, increases Block Chance", valuesByLevel: "12% / 15% / 18% / 21% / 24%" },
-        { name: "...upport, Charge, Leap, Teleportation, or Self-Mobility skill, at the end of the turn, increases all allies' SPD", valuesByLevel: "36% / 42.75% / 49.5% / 56.25% / 63%" },
+        { name: "Increases Block Chance", valuesByLevel: "22% / 32% / 42% / 52% / 62%" },
+        { name: "On a successful attack, increases the target's DMG Taken", valuesByLevel: "10% / 15% / 20% / 25% / 30%" },
       ],
     },
   },
@@ -136,12 +136,12 @@ const rawErnesteData = {
     snakeTongue: {
       name: 'Snake-tongue',
       description:
-        'Activates the Level 1 passive skill [Snake-tongue]. [Snake-tongue]: Once per round, at the end of own turn, delivers an encouraging word (?) to boost morale among allies. Increases SPD of all allies except self by 10% for 1 round. Has a low chance to decrease ACC of enemies by 20%.',
+        'Activates the Level 1 passive skill [Snake-tongue]. [Snake-tongue]: Delivers some encouraging words (?) to boost the morale of the allies deployed alongside her. At the start of each Round, grants allies [Now That You Mention It...!] for 1R and enemies [Now That You Mention It...?] for 1R. [Now That You Mention It...!]: Increases Melee ATK by 10%. [Now That You Mention It...?]: Reduces Melee ATK by 10%.',
     },
     tacticalCommander: {
       name: 'Tactical Commander',
       description:
-        'Activates the Level 3 passive skill [Command]. [Command]: At the start of any turn until the end, for each ally within a 5m radius, increases melee ATK of self and nearby allies by 5%.',
+        'Activates the Level 3 passive skill [Command]. [Command]: From the start of any turn until the end of that turn, increases Melee ATK for self and nearby allies by 10% for each ally within 5m.',
     },
     marlon: {
       name: 'Marlon',

@@ -16,7 +16,7 @@ export const note = {
     {k:'t',kind:"p",html:"Maintenance Time: 09:00 ~ 12:00 (KST)"},
     {k:'t',kind:"sec",html:"◈ Patch Details"},
     {k:'t',kind:"item",html:"◆ New Weapon: Dawnbringer"},
-    {k:'img',src:"b386c7bf90b8.webp",w:1678,h:1678},
+    {k:'img',src:"b386c7bf90b8.webp",w:2048,h:2048},
     {k:'t',kind:"p",html:"Rarity: EX"},
     {k:'t',kind:"p",html:"Type: Two-handed sword"},
     {k:'t',kind:"p",html:"ATK Type: Melee ATK"},

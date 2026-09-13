@@ -86,7 +86,7 @@ export const note = {
     {k:'t',kind:"detail",html:"ㆍA new 7-Day Login Event, “The Last Fruit Emilia,” begins."},
     {k:'t',kind:"detail",html:"ㆍEvent Period: Dec 4, 2025 (Thu) after maintenance – Dec 18, 2025 (Thu) 10:00 KST"},
     {k:'t',kind:"item",html:"◆ New Pass: Emilia Pass"},
-    {k:'img',src:"21412af31bde.webp",w:1678,h:785},
+    {k:'img',src:"21412af31bde.webp",w:2560,h:1197},
     {k:'t',kind:"detail",html:"ㆍThe new Emilia Pass begins."},
     {k:'t',kind:"detail",html:"ㆍEarn a limited-time costume and Extercium."},
     {k:'t',kind:"detail",html:"ㆍPass Period: Dec 4, 2025 (Thu) after maintenance – Dec 29, 2025 (Mon) 07:00 KST"},

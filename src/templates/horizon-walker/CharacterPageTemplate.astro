@@ -9,12 +9,14 @@ import { safeHtmlRenderer, batchValidateHtml } from '../../utils/horizon-walker/
 import { validateCharacterData, validateSkillReplacements } from '../../utils/horizon-walker/character-data-validator.js';
 import { getCharacterById } from '../../data/horizon-walker/character-gifts.js';
 import { GIFT_BOXES } from '../../data/horizon-walker/gifts.js';
-import { getTagCategory } from '../../data/horizon-walker/characters.js';
+import { getTagCategory, HORIZON_WALKER_CHARACTERS } from '../../data/horizon-walker/characters.js';
 import { SKILL_LEVELS } from '../../data/horizon-walker/skill-levels.js';
 import { r2Url } from '../../data/r2-config.js';
 import { getSkinsByHeroId } from '../../data/horizon-walker/char-skins.js';
 import { getStoryCgByHeroId } from '../../data/horizon-walker/story-cg.js';
 import { getDemiskillData, getMightSkillList, TIER_PROBABILITIES } from '../../data/horizon-walker/demiskills.js';
+import { getCommunityBuild } from '../../data/horizon-walker/community-builds.js';
+import { getReworkArchive } from '../../data/horizon-walker/rework-archive.js';
 
 // Import image components from central location
 import {
@@ -25,6 +27,7 @@ import {
   CrystalIcon,
 } from '../../components/horizon-walker/index.astro';
 import CharacterFullBodyImage from '../../components/horizon-walker/CharacterFullBodyImage.astro';
+import CommunityBuildSection from '../../components/horizon-walker/CommunityBuildSection.astro';
 import SkillIcon from '../../components/horizon-walker/SkillIcon.astro';
 
 interface CharacterStats {
@@ -140,6 +143,14 @@ interface Props {
 
 const { characterData } = Astro.props;
 const demiskillData = getDemiskillData((characterData as any).heroId ?? characterData.name);
+
+// Community build (from the community builds spreadsheet, keyed by character slug)
+const normHwName = (s: unknown) => String(s ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
+const hwCharEntry = HORIZON_WALKER_CHARACTERS.find(
+  (c: any) => normHwName(c.name) === normHwName(characterData.name)
+);
+const communityBuild = hwCharEntry ? getCommunityBuild(hwCharEntry.slug) : null;
+const reworkArchive = hwCharEntry ? getReworkArchive(hwCharEntry.slug) : null;
 
 // Character data validation
 function validateCharacterSafely() {
@@ -985,6 +996,15 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 <section class="content-section skills-section" data-skill-levels={skillLevelJson}>
   <h2 class="section-title">Skills</h2>
   <p class="skills-explanation">All skills shown at maximum level</p>
+  {
+    reworkArchive && (
+      <p class="legacy-rework-pointer">
+        {characterData.name} was reworked on {reworkArchive.date}. The current version is shown
+        here; the pre-rework text is preserved in the{' '}
+        <a href="#rework-archive">Rework Archive</a> at the bottom of this page.
+      </p>
+    )
+  }
 
   {
     highlightedSkills && (() => {
@@ -1257,6 +1277,11 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
       ))}
     </section>
   )
+}
+
+<!-- Community Build Section -->
+{
+  communityBuild && <CommunityBuildSection communityBuild={communityBuild} character={characterData} />
 }
 
 <!-- Demiskill Section -->
@@ -1912,6 +1937,47 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
     )
   }
 </section>
+
+<!-- Rework Archive Section (pre-rework vs current game text) -->
+{
+  reworkArchive && (
+    <section class="content-section legacy-rework-section" id="rework-archive">
+      <h2 class="section-title">Rework Archive</h2>
+      <p class="legacy-rework-intro">
+        {reworkArchive.intro}{' '}
+        <a href={reworkArchive.patchHref}>{reworkArchive.patchLabel}</a>.
+      </p>
+      {reworkArchive.unchangedNote && (
+        <p class="legacy-rework-unchanged">{reworkArchive.unchangedNote}</p>
+      )}
+      <div class="legacy-rework-list">
+        {reworkArchive.items.map((item: any) => (
+          <div class="legacy-rework-item">
+            <h3 class="legacy-rework-item-title">{item.title}</h3>
+            <div class="legacy-compare-grid">
+              <div class="legacy-compare-card legacy-before">
+                <span class="legacy-compare-tag">Before</span>
+                <div class="legacy-compare-text">
+                  {item.before.split('\n').map((line: string) => (
+                    <p>{line}</p>
+                  ))}
+                </div>
+              </div>
+              <div class="legacy-compare-card legacy-after">
+                <span class="legacy-compare-tag">After</span>
+                <div class="legacy-compare-text">
+                  {item.after.split('\n').map((line: string) => (
+                    <p>{line}</p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
 
 <!-- Development Debug Panel (only shown in development mode) -->
 <div set:html={renderDebugPanel()} />

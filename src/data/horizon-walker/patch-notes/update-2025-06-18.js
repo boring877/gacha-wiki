@@ -98,7 +98,7 @@ export const note = {
     {k:'t',kind:"sub2",html:"③ Griselda Contract Bundle"},
     {k:'t',kind:"p",html:"• A Limited Time Bundle will be added to the shop! (Available until July 31, 10:00 AM KST)"},
     {k:'t',kind:"sub2",html:"① New Update Welcome Bundle"},
-    {k:'img',src:"1760a7e3e561.webp",w:1678,h:1678},
+    {k:'img',src:"1760a7e3e561.webp",w:8000,h:8000},
     {k:'t',kind:"detail",html:"ㆍA New Costume will be added to the shop."},
     {k:'t',kind:"sub2",html:"① Pantheri - Mischief Maid"},
     {k:'t',kind:"item",html:"<strong>◆ Event – Larina's Dopamine Ch.: Summer Warm up</strong>"},

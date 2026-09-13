@@ -40,6 +40,7 @@ export const CHAR_SKINS = {
     { id: 112, number: 'S03', name: "Bloomers", icon: 'UI_Icon_Hero_YeonChaeyoung_S03.png', fullIcon: 'UI_Icon_Hero_Full_YeonChaeyoung_S03.png', isDefault: false },
     { id: 144, number: 'S04', name: "Inverted Bunny Girl", icon: 'UI_Icon_Hero_YeonChaeyoung_S04.png', fullIcon: 'UI_Icon_Hero_Full_YeonChaeyoung_S04.png', isDefault: false },
     { id: 175, number: 'S05', name: "Barely-Maid", icon: 'UI_Icon_Hero_YeonChaeyoung_S05.png', fullIcon: 'UI_Icon_Hero_Full_YeonChaeyoung_S05.png', isDefault: false },
+    { id: 221, number: 'S06', name: "Swimsuit", icon: 'UI_Icon_Hero_YeonChaeyoung_S06.png', fullIcon: 'UI_Icon_Hero_Full_YeonChaeyoung_S06.png', isDefault: false },
     { id: 5, number: 'UW01', name: "Lingerie", icon: 'UI_Icon_Hero_YeonChaeyoung_UW01.png', fullIcon: 'UI_Icon_Hero_Full_YeonChaeyoung_UW01.png', isDefault: false },
   ],
   8: [
@@ -67,6 +68,7 @@ export const CHAR_SKINS = {
     { id: 13, number: 'N01', name: "Default", icon: 'UI_Icon_Hero_Erneste_N01.png', fullIcon: 'UI_Icon_Hero_Full_Erneste_N01.png', isDefault: true },
     { id: 60, number: 'S01', name: "Swimsuit", icon: 'UI_Icon_Hero_Erneste_S01.png', fullIcon: 'UI_Icon_Hero_Full_Erneste_S01.png', isDefault: false },
     { id: 179, number: 'S02', name: "Barely-Maid", icon: 'UI_Icon_Hero_Erneste_S02.png', fullIcon: 'UI_Icon_Hero_Full_Erneste_S02.png', isDefault: false },
+    { id: 220, number: 'S03', name: "Bikini Armor", icon: 'UI_Icon_Hero_Erneste_S03.png', fullIcon: 'UI_Icon_Hero_Full_Erneste_S03.png', isDefault: false },
   ],
   13: [
     { id: 20, number: 'N01', name: "Default", icon: 'UI_Icon_Hero_Araha_N01.png', fullIcon: 'UI_Icon_Hero_Full_Araha_N01.png', isDefault: true },

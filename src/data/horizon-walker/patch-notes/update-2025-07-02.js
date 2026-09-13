@@ -20,7 +20,7 @@ export const note = {
     {k:'t',kind:"sub",html:"<strong>● Patch Details</strong>"},
     {k:'t',kind:"p",html:"<strong></strong>"},
     {k:'t',kind:"item",html:"<strong>◆ New Weapon: Nocturnal Watcher (EX)</strong>"},
-    {k:'img',src:"a7bb948084d5.webp",w:1678,h:1678},
+    {k:'img',src:"a7bb948084d5.webp",w:2000,h:2000},
     {k:'t',kind:"p",html:"• Grade: EX"},
     {k:'t',kind:"p",html:"• Type: Twin Swords"},
     {k:'t',kind:"p",html:"• ATK Type: Melee"},

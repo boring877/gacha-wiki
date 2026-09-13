@@ -1,0 +1,227 @@
+/* ═══════════════════════════════════════════════════════════════════════ */
+/*                          COMMUNITY BUILD SECTION                        */
+/* Shared by character pages and build pages (imported by all HW layouts)  */
+/* ═══════════════════════════════════════════════════════════════════════ */
+
+@scope (.horizon-walker-main) {
+  .community-build-credit {
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    color: var(--hw-text-muted);
+    margin: 0 0 var(--hw-spacing-lg);
+  }
+
+  .community-build-credit a {
+    color: var(--hw-primary-warm);
+    font-weight: var(--font-semibold);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .community-build-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--hw-spacing-lg);
+  }
+
+  .community-build-card {
+    background: var(--hw-gradient-skill-card);
+    border: 1px solid var(--hw-border-muted);
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-lg);
+    contain: layout style paint;
+  }
+
+  .community-build-card-wide {
+    grid-column: 1 / -1;
+  }
+
+  .community-build-card-title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    color: var(--hw-text-light);
+    margin: 0 0 0.75rem;
+  }
+
+  .community-weapon-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .community-weapon-image-box {
+    flex: 0 0 auto;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--hw-border-muted);
+    border-radius: var(--hw-radius-md);
+    padding: 0.35rem;
+    display: inline-flex;
+  }
+
+  .community-weapon-image {
+    display: block;
+  }
+
+  .community-weapon-info {
+    min-width: 0;
+  }
+
+  .community-stigma-image {
+    display: block;
+    border-radius: var(--hw-radius-sm);
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .community-priority-item .skill-icon {
+    flex: 0 0 auto;
+    border-radius: var(--hw-radius-sm);
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .community-weapon-name {
+    font-weight: var(--font-bold);
+    color: var(--hw-primary-warm);
+    margin: 0 0 0.5rem;
+  }
+
+  .community-stat-line {
+    font-size: var(--text-sm);
+    color: var(--hw-text-light);
+    margin: 0 0 0.25rem;
+  }
+
+  .community-substats-list {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--hw-text-light);
+    font-size: var(--text-sm);
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .community-stigma-sets {
+    display: grid;
+    gap: var(--hw-spacing-md);
+  }
+
+  .community-stigma-set {
+    border: 1px solid var(--hw-border-muted);
+    border-radius: var(--hw-radius-md);
+    padding: var(--hw-spacing-md);
+  }
+
+  .community-stigma-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+
+  .community-set-label {
+    background: var(--hw-primary-warm);
+    color: #1a1a1a;
+    font-size: var(--text-xs);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+  }
+
+  .community-stigma-name {
+    font-weight: var(--font-bold);
+    color: var(--hw-text-light);
+  }
+
+  .community-stigma-effects {
+    display: grid;
+    gap: 0.3rem;
+  }
+
+  .community-effect-line {
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    color: var(--hw-text-light);
+    margin: 0;
+  }
+
+  .community-effect-sub {
+    color: var(--hw-text-muted);
+    padding-left: 1rem;
+  }
+
+  .community-traits-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .community-trait-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: var(--text-sm);
+    flex-wrap: wrap;
+  }
+
+  .community-trait-name {
+    font-weight: var(--font-semibold);
+    color: var(--hw-text-light);
+  }
+
+  .community-trait-effect {
+    color: var(--hw-text-muted);
+    text-align: right;
+  }
+
+  .community-skill-priority {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .community-priority-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: var(--text-sm);
+  }
+
+  .community-priority-rank {
+    flex: 0 0 auto;
+    width: 1.6rem;
+    height: 1.6rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--hw-primary-warm);
+    color: #1a1a1a;
+    border-radius: 50%;
+    font-weight: var(--font-bold);
+    font-size: var(--text-xs);
+  }
+
+  .community-priority-item[data-rank='1'] .community-priority-rank {
+    background: var(--hw-sunshine-gold);
+  }
+
+  .community-priority-name {
+    color: var(--hw-text-light);
+  }
+
+  @media (max-width: 720px) {
+    .community-build-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .community-trait-effect {
+      text-align: left;
+    }
+  }
+}

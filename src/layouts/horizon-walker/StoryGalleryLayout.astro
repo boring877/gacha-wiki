@@ -10,21 +10,20 @@ import Analytics from '../../components/Analytics.astro';
 import DecorativeLines from '../../components/DecorativeLines.astro';
 import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
 
-// Import CSS files properly
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/horizon-walker/hw-colors.css';
 import '../../styles/games/horizon-walker/hw-layout.css';
-import '../../styles/games/horizon-walker/hw-builds.css';
 import '../../styles/games/horizon-walker/hw-badges.css';
-import '../../styles/games/horizon-walker/hw-community-build.css';
+import '../../styles/games/horizon-walker/story-gallery.css';
 
 export interface Props {
   title: string;
   description?: string;
+  gameTitle?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, gameTitle } = Astro.props;
 ---
 
 <html lang="en">
@@ -48,8 +47,8 @@ const { title, description } = Astro.props;
       <div class="horizon-walker-container">
         <main class="horizon-walker-main" id="main-content">
           <!-- Title Section -->
-          <section class="title-only-section">
-            <h1 class="title-only-heading">{title}</h1>
+          <section class="hw-gallery-title-section">
+            <h1 class="hw-gallery-page-title">{gameTitle || title}</h1>
             <DecorativeLines />
           </section>
 
@@ -57,7 +56,7 @@ const { title, description } = Astro.props;
           <Breadcrumb autoGenerate={true} gameKey="horizon-walker" showBackButton={true} />
 
           <!-- Content Area -->
-          <div class="stigma-content-area">
+          <div class="hw-gallery-content-area">
             <slot />
           </div>
         </main>

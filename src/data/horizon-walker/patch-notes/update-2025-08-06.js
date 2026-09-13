@@ -17,7 +17,7 @@ export const note = {
     {k:'t',kind:"sub",html:"<strong>● Patch Details</strong>"},
     {k:'t',kind:"p",html:"<strong></strong>"},
     {k:'t',kind:"item",html:"<strong>◆ New Costume</strong>"},
-    {k:'img',src:"1f2528211b06.webp",w:1678,h:1678},
+    {k:'img',src:"1f2528211b06.webp",w:8000,h:8000},
     {k:'t',kind:"p",html:"Nymset – Zesty Cherry Vacation"},
     {k:'t',kind:"p",html:"• Nymset’s new costume, Zesty Cherry Vacation, is now available."},
     {k:'t',kind:"p",html:"• Price: 500 Extercium"},

@@ -19,7 +19,7 @@ export const note = {
     {k:'t',kind:"p",html:"<strong></strong>"},
     {k:'t',kind:"sub",html:"<strong>● Patch Details</strong>"},
     {k:'t',kind:"p",html:"<strong></strong>"},
-    {k:'img',src:"76d4197e23be.webp",w:1678,h:1678},
+    {k:'img',src:"76d4197e23be.webp",w:3000,h:3000},
     {k:'t',kind:"item",html:"<strong>◆ New Vanguard: Yui</strong>"},
     {k:'t',kind:"detail",html:"ㆍGrade : EX"},
     {k:'t',kind:"detail",html:"ㆍCost : 7"},

@@ -34,6 +34,13 @@ const buildsByRarity = {
 
 <BuildsLayout title={title} description={description}>
   <div class="hw-builds-container">
+    <div class="hw-community-builds-note">
+      <p class="hw-community-builds-text">
+        Looking for more? <a href="/guides/horizon-walker/builds/community/">Community Builds</a>{' '}
+        covers 50 units from the community builds spreadsheet by Envy, Liauw &amp; Gamekee.
+      </p>
+    </div>
+
     {/* Builds by Rarity */}
     {
       Object.entries(buildsByRarity).map(([rarity, builds]) => {
@@ -58,7 +65,7 @@ const buildsByRarity = {
                     <div class="hw-build-card-header">
                       <div class="hw-build-character-image">
                         <CharacterImage
-                          imageName={build.displayName}
+                          imageName={build.characterData?.image || build.displayName}
                           alt={`${build.displayName} character portrait`}
                           width={300}
                           height={300}

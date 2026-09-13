@@ -1,0 +1,215 @@
+<!-- Community Build section: renders the community spreadsheet build card
+     (Envy, Liauw & Gamekee) for one character. Pass the COMMUNITY_BUILDS
+     entry as `communityBuild` and the character record as `character` for
+     weapon/skill icon art; renders nothing when communityBuild is falsy. -->
+---
+import WeaponImage from './WeaponImage.astro';
+import StigmaImage from './StigmaImage.astro';
+import SkillIcon from './SkillIcon.astro';
+
+interface Props {
+  communityBuild: any;
+  character?: any;
+}
+const { communityBuild, character } = Astro.props;
+
+// community text is HTML-escaped in places; decode only for name matching
+const decodeEntities = (s: unknown) =>
+  String(s ?? '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+const norm = (s: unknown) => decodeEntities(s).toLowerCase().replace(/[^a-z0-9]/g, '');
+
+// community skill names ("Skill 2: Theater Control") -> character skill record
+const skillsByName = new Map<string, any>();
+for (const skill of Object.values(character?.skills ?? {}) as any[]) {
+  if (skill?.name) skillsByName.set(norm(skill.name), skill);
+}
+const skillForPriority = (label: string) => {
+  const bare = decodeEntities(label).replace(/^(Skill \d+|Passive(?: \d+)?|Basic Attack):\s*/i, '');
+  return skillsByName.get(norm(bare)) || null;
+};
+
+// Stigma set art. Only some sets have art on R2 (mirrors StigmaImage's map);
+// community shorthand names get alias-mapped, and the sheet's "Mix (...)"
+// entries are two-set combos with no single art.
+const STIGMA_ALIASES: Record<string, string> = {
+  thethousandmileweaver: 'The Thousand Mile Weave',
+  thebrilianttouchofearth: 'The Brilliant Touch of Earth',
+  thethornyheart: 'Thorned Heart',
+  theblacksmithgodsblessing: 'The Blacksmith Blessing',
+  theknightofsevenpetals: 'The Knight of the Seven Petals',
+  thefourhorseman: 'The Four Horsemen',
+};
+const STIGMA_ART: Record<string, string> = {
+  jestersmask: 'JesterEX.jpg',
+  reckoningofsin: 'Reckoning_of_SinEX.jpg',
+  jupiter: 'JupiterEX.jpg',
+  harmony: 'HarmonyEX.jpg',
+  phantombanquet: 'Phantom_BanquetEX.jpg',
+  theeternalbattle: 'The_Eternal_BattleEX.jpg',
+  thewindthatwanderstheworld: 'The_Wind_that_Wanders_the_WorldEX.jpg',
+  thethousandmileweave: 'The_Thousand_Mile_WeaveEX.jpg',
+  thenoblestactics: "The_Noble's_TacticsSS.jpg",
+  theshipoftheseus: 'The_Ship_of_TheseusSS.jpg',
+  thornedheart: 'Thorned_HeartSS.jpg',
+  theblacksmithblessing: 'The_BlackSmith_BlessingSS.jpg',
+  thebrillianttouchofearth: 'The_Brilliant_Touch_of_EarthEX.jpg',
+};
+const stigmaArtFor = (name: string) => {
+  const cleaned = decodeEntities(name)
+    .replace(/\([^)]*\)/g, '')
+    .replace(/\[[^\]]*\]/g, '');
+  const key = norm(cleaned);
+  if (key.startsWith('mix')) return null;
+  const canonical = STIGMA_ALIASES[key] || cleaned;
+  return STIGMA_ART[norm(canonical)] || null;
+};
+---
+
+{
+  communityBuild && (
+    <section class="content-section community-build-section">
+      <h2 class="section-title">Community Build</h2>
+      <p class="community-build-credit">
+        Recommended build from the community spreadsheet by Envy, Liauw &amp; Gamekee.{' '}
+        <a
+          href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQkHJLorAevtaAd3nEcXTZKD4L_8HfGEHmEOPKoUztaDujZxTLhR3-wBnL2UBJ9CgbxIRXsPl2a0SoT/pubhtml"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View the full sheet
+        </a>.
+      </p>
+
+      <div class="community-build-grid">
+        {/* Weapon + main stats */}
+        {(communityBuild.weaponName || communityBuild.weaponStats || communityBuild.subStats) && (
+          <div class="community-build-card">
+            <h3 class="community-build-card-title">Weapon</h3>
+            <div class="community-weapon-row">
+              {character?.weapon?.image && (
+                <div class="community-weapon-image-box">
+                  <WeaponImage
+                    imageName={character.weapon.image}
+                    alt={`${communityBuild.weaponName} weapon`}
+                    width={72}
+                    height={72}
+                    class="community-weapon-image"
+                    loading="lazy"
+                  />
+                </div>
+              )}
+              <div class="community-weapon-info">
+                {communityBuild.weaponName && (
+                  <p class="community-weapon-name">{communityBuild.weaponName}</p>
+                )}
+                {communityBuild.weaponStats && (
+                  <p class="community-stat-line">{communityBuild.weaponStats}</p>
+                )}
+                {communityBuild.subStats && (
+                  <p class="community-stat-line">{communityBuild.subStats}</p>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Substats priority */}
+        {communityBuild.substatsPriority && (
+          <div class="community-build-card">
+            <h3 class="community-build-card-title">Substats Priority</h3>
+            <ol class="community-substats-list">
+              {communityBuild.substatsPriority
+                .split('\n')
+                .map((line: string) => line.trim())
+                .filter((line: string) => line)
+                .map((line: string) => (
+                  <li>{line.replace(/^\d+\.\s*/, '')}</li>
+                ))}
+            </ol>
+          </div>
+        )}
+
+        {/* Stigma sets */}
+        {communityBuild.stigmaSets.length > 0 && (
+          <div class="community-build-card community-build-card-wide">
+            <h3 class="community-build-card-title">Stigma</h3>
+            <div class="community-stigma-sets">
+              {communityBuild.stigmaSets.map((set: any) => {
+                const art = stigmaArtFor(set.name);
+                return (
+                  <div class="community-stigma-set">
+                    <div class="community-stigma-header">
+                      {art && (
+                        <StigmaImage
+                          imageName={art}
+                          alt={`${set.name} stigma art`}
+                          width={44}
+                          height={44}
+                          class="community-stigma-image"
+                          loading="lazy"
+                        />
+                      )}
+                      <span class="community-set-label">{set.label}</span>
+                      <span class="community-stigma-name">{set.name}</span>
+                    </div>
+                    {set.effects && (
+                      <div class="community-stigma-effects">
+                        {set.effects
+                          .split('\n')
+                          .map((line: string) => line.trim())
+                          .filter((line: string) => line)
+                          .map((line: string) =>
+                            line.startsWith('- ') ? (
+                              <p class="community-effect-line community-effect-sub">
+                                {line.slice(2)}
+                              </p>
+                            ) : (
+                              <p class="community-effect-line">{line}</p>
+                            )
+                          )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Traits to get */}
+        {communityBuild.traitsToGet.length > 0 && (
+          <div class="community-build-card">
+            <h3 class="community-build-card-title">Traits to Get</h3>
+            <ul class="community-traits-list">
+              {communityBuild.traitsToGet.map((trait: any) => (
+                <li class="community-trait-item">
+                  <span class="community-trait-name">{trait.name}</span>
+                  <span class="community-trait-effect">{trait.effect}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Skill leveling priority */}
+        {communityBuild.skillPriority.length > 0 && (
+          <div class="community-build-card">
+            <h3 class="community-build-card-title">Skill Leveling Priority</h3>
+            <ol class="community-skill-priority">
+              {communityBuild.skillPriority.map((p: any) => {
+                const skill = skillForPriority(p.name);
+                return (
+                  <li class="community-priority-item" data-rank={p.priority}>
+                    <span class="community-priority-rank">{p.priority}</span>
+                    {skill?.icon && <SkillIcon iconName={skill.icon} />}
+                    <span class="community-priority-name">{p.name}</span>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        )}
+      </div>
+    </section>
+  )
+}

@@ -216,3 +216,35 @@
     will-change: auto;
   }
 } /* End @scope (.horizon-walker-main) */
+
+@scope (.horizon-walker-main) {
+
+  /* Community Builds intro note */
+  .hw-community-builds-note {
+    background: var(--hw-bg-dark);
+    border: 1px solid var(--hw-border-muted);
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-lg);
+    margin-bottom: var(--hw-spacing-xl);
+  }
+
+  .hw-community-builds-title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--hw-primary-warm);
+    margin: 0 0 0.5rem;
+  }
+
+  .hw-community-builds-text {
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    color: var(--hw-text-medium);
+    margin: 0;
+  }
+
+  .hw-community-builds-text a {
+    color: var(--hw-tertiary-sky);
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,145 @@
+/* Horizon Walker Story Gallery page styles */
+
+.hw-gallery-title-section {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+}
+
+.hw-gallery-page-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--hw-text-light);
+  margin: 0;
+}
+
+.hw-gallery-content-area {
+  padding: 0 1rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hw-gallery-content {
+  background: var(--hw-bg-dark);
+  border: 1px solid var(--hw-border-light);
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.hw-gallery-intro {
+  margin: 0 0 1.25rem 0;
+  font-size: 0.9rem;
+  color: var(--hw-text-muted);
+}
+
+/* Tabs */
+.hw-gallery-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--hw-border-light);
+  padding-bottom: 0.75rem;
+}
+
+.hw-gallery-tab {
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--hw-text-muted);
+  background: var(--hw-bg-medium);
+  border: 1px solid var(--hw-border-light);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.hw-gallery-tab[aria-selected='true'] {
+  color: var(--hw-primary-warm);
+  border-color: var(--hw-border-accent);
+  background: var(--hw-bg-light);
+}
+
+.hw-gallery-tab-count {
+  margin-left: 0.4rem;
+  font-size: 0.72rem;
+  color: var(--hw-text-very-muted);
+}
+
+/* Character / event groups */
+.hw-gallery-group {
+  margin-bottom: 1.75rem;
+}
+
+.hw-gallery-group:last-child {
+  margin-bottom: 0;
+}
+
+.hw-gallery-group-title {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--hw-text-light);
+}
+
+.hw-gallery-group-title a {
+  color: var(--hw-primary-warm);
+  text-decoration: none;
+}
+
+/* Card grid */
+.hw-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+/* Square thumbnails for the dialogue art (popup) tab */
+.hw-gallery-grid-square {
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+.hw-gallery-grid-square .hw-gallery-card img {
+  aspect-ratio: 1 / 1;
+}
+
+.hw-gallery-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--hw-bg-medium);
+  border: 1px solid var(--hw-border-light);
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.hw-gallery-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.hw-gallery-caption {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  color: var(--hw-text-muted);
+  border-top: 1px solid var(--hw-border-light);
+}
+
+@media (max-width: 768px) {
+  .hw-gallery-content {
+    padding: 1rem;
+  }
+
+  .hw-gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .hw-gallery-caption {
+    font-size: 0.72rem;
+    padding: 0.4rem 0.5rem;
+  }
+}

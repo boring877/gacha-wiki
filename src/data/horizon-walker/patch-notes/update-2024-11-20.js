@@ -71,7 +71,7 @@ export const note = {
     {k:'t',kind:"detail",html:"ㆍA new Affection story for Vanguard Juha is added."},
     {k:'t',kind:"detail",html:"ㆍ5 traits corresponding to 5 Affection levels have been added."},
     {k:'t',kind:"detail",html:"ㆍSecret Chamber event and related content are added."},
-    {k:'img',src:"cbdffeea32a2.webp",w:1678,h:932},
+    {k:'img',src:"cbdffeea32a2.webp",w:4426,h:2459},
     {k:'t',kind:"item",html:"<strong>◆ Special Search Schedule</strong>"},
     {k:'img',src:"d85a84826778.webp",w:500,h:809},
     {k:'t',kind:"detail",html:"ㆍThe special search for 'Fleure de Vanite 92,' Ever Queen,' and 'The Queen's Platinum Staff' will end."},

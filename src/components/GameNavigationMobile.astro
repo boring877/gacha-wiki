@@ -16,23 +16,16 @@ const { currentPath = '', gameKey } = Astro.props;
 const validatedGameKey = isValidGameKey(gameKey) ? gameKey : undefined;
 const game = getGameData(validatedGameKey);
 
-const isActive = (href: string) => {
-  if (
-    href.endsWith('/zone-nova/') ||
-    href.endsWith('/silver-and-blood/') ||
-    href.endsWith('/horizon-walker/') ||
-    href.endsWith('/star-savior/arcana/') ||
-    href.endsWith('/star-savior/gear/') ||
-    href.endsWith('/star-savior/banners/') ||
-    href.endsWith('/star-savior/characters/')
-  ) {
-    return currentPath === href;
-  }
-  return (
-    currentPath === href ||
-    (currentPath.startsWith(href) && currentPath !== href.replace(/\/$/, ''))
-  );
-};
+// Activate only the LONGEST matching nav href, so a deeper page like
+// /builds/community/ lights "Community Builds" instead of "Builds" too.
+const currentPathNorm = currentPath.endsWith('/') ? currentPath : currentPath + '/';
+const navHrefs = (game?.sections ?? []).flatMap((section: any) =>
+  section.links.map((link: any) => link.href)
+);
+const bestMatch = navHrefs
+  .filter((href: string) => currentPathNorm === href || currentPathNorm.startsWith(href))
+  .sort((a: string, b: string) => b.length - a.length)[0];
+const isActive = (href: string) => href === bestMatch;
 
 ---
 

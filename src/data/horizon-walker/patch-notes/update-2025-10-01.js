@@ -145,7 +145,7 @@ export const note = {
     {k:'img',src:"683828d51caf.webp",w:650,h:1705},
     {k:'t',kind:"detail",html:"- Samarika's costume 'Stillheart Maid' has been added to the Costume Shop"},
     {k:'t',kind:"item",html:"<strong>◆ New Event: The Cat Princess and the Moonlit Treasure </strong>"},
-    {k:'img',src:"bb33c69d9c1d.webp",w:1678,h:817},
+    {k:'img',src:"bb33c69d9c1d.webp",w:1914,h:932},
     {k:'t',kind:"detail",html:"ㆍA new event, [The Cat Princess and the Moonlit Treasure], begins."},
     {k:'t',kind:"detail",html:"ㆍEvent Period: Oct 2, 2025 (Thu) after maintenance – Nov 6, 2025 (Thu) before maintenance"},
     {k:'t',kind:"sub2",html:"▶ Event Stages"},

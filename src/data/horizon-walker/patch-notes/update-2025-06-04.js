@@ -20,7 +20,7 @@ export const note = {
     {k:'t',kind:"p",html:"Note: Schedule may change depending on update progress."},
     {k:'t',kind:"sub",html:"<strong>● Patch Details</strong>"},
     {k:'t',kind:"item",html:"<strong> ◆ New Weapon: Sacrament of Mercy (EX)</strong>"},
-    {k:'img',src:"9016af1d48a6.webp",w:1678,h:1678},
+    {k:'img',src:"9016af1d48a6.webp",w:2000,h:2000},
     {k:'t',kind:"p",html:"• Grade: EX"},
     {k:'t',kind:"p",html:"• Type: Club &amp; Shield"},
     {k:'t',kind:"p",html:"• ATK Type: Melee + Magic"},

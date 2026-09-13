@@ -1,0 +1,105 @@
+---
+// Community Builds index: units covered by the community builds spreadsheet
+// (credits: Envy, Liauw & Gamekee). Kept separate from the hand-curated
+// builds in ../index.astro so a character can carry more than one build.
+import BuildsLayout from '../../../../../layouts/horizon-walker/BuildsLayout.astro';
+import CharacterImage from '../../../../../components/horizon-walker/CharacterImage.astro';
+import { HWRarityIcon } from '../../../../../components/horizon-walker/index.astro';
+import { COMMUNITY_BUILDS } from '../../../../../data/horizon-walker/community-builds.js';
+import { getCharacterBySlug } from '../../../../../data/horizon-walker/characters.js';
+
+const title = 'Community Builds';
+const description = `Community-made builds for ${Object.keys(COMMUNITY_BUILDS).length} Horizon Walker units, parsed from the community builds spreadsheet by Envy, Liauw & Gamekee.`;
+
+// Merge community data with character records (cost, rarity, portrait image)
+const communityUnits = Object.entries(COMMUNITY_BUILDS)
+  .map(([slug, communityData]) => ({
+    slug,
+    communityData,
+    character: getCharacterBySlug(slug) || null,
+  }))
+  .map((unit) => ({
+    ...unit,
+    displayName: unit.character?.name || unit.communityData.name,
+    rarity: unit.character?.rarity || unit.communityData.rarity,
+    cost: unit.character?.cost || 0,
+    image: unit.character?.image || unit.communityData.name,
+  }));
+
+const rarityOrder = { EX: 5, SS: 4, S: 3, A: 2, B: 1 };
+communityUnits.sort((a, b) => {
+  const rarityDiff = (rarityOrder[b.rarity] || 0) - (rarityOrder[a.rarity] || 0);
+  if (rarityDiff !== 0) return rarityDiff;
+  return a.displayName.localeCompare(b.displayName);
+});
+
+const buildsByRarity = {
+  EX: communityUnits.filter((unit) => unit.rarity === 'EX'),
+  SS: communityUnits.filter((unit) => unit.rarity === 'SS'),
+  S: communityUnits.filter((unit) => unit.rarity === 'S'),
+  A: communityUnits.filter((unit) => unit.rarity === 'A'),
+};
+---
+
+<BuildsLayout title={title} description={description}>
+  <div class="hw-builds-container">
+    <div class="hw-community-builds-note">
+      <h2 class="hw-community-builds-title">Community Builds</h2>
+      <p class="hw-community-builds-text">
+        Builds parsed from the community builds spreadsheet by Envy, Liauw &amp; Gamekee, covering{' '}
+        {communityUnits.length} units. The hand-curated builds live in the separate{' '}
+        <a href="/guides/horizon-walker/builds/">Character Builds</a> section, and the in-depth
+        build write-ups live on each character's page.
+      </p>
+    </div>
+
+    {
+      Object.entries(buildsByRarity).map(([rarity, units]) => {
+        if (units.length === 0) return null;
+
+        return (
+          <section class="hw-builds-rarity-section">
+            <div class="hw-builds-rarity-header">
+              <HWRarityIcon rarity={rarity} width={48} height={24} />
+              <span class="hw-builds-rarity-count">({units.length} builds)</span>
+            </div>
+
+            <div class="hw-builds-grid">
+              {units.map((unit) => (
+                <a
+                  href={`/guides/horizon-walker/builds/community/${unit.slug}/`}
+                  class="hw-build-card-link"
+                  aria-label={`View ${unit.displayName} community build`}
+                >
+                  <div class="hw-build-card">
+                    <div class="hw-build-card-header">
+                      <div class="hw-build-character-image">
+                        <CharacterImage
+                          imageName={unit.image}
+                          alt={`${unit.displayName} character portrait`}
+                          width={300}
+                          height={300}
+                          class="hw-character-portrait"
+                          loading="eager"
+                        />
+                      </div>
+                      <div class="hw-build-character-info">
+                        <h3 class="hw-build-character-name">{unit.displayName}</h3>
+                        <div class="hw-build-character-meta">
+                          <span class="hw-badge" data-type="Cost">
+                            {unit.cost}
+                          </span>
+                          <HWRarityIcon rarity={unit.rarity} width={40} height={20} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        );
+      })
+    }
+  </div>
+</BuildsLayout>

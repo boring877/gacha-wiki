@@ -16,7 +16,7 @@ export const note = {
     {k:'t',kind:"p",html:"Maintenance Time: 09:00 ~ 14:00 (KST)"},
     {k:'t',kind:"sec",html:"◈ Patch Details"},
     {k:'t',kind:"item",html:"◆ New Weapon: SS4 – Refitted Model"},
-    {k:'img',src:"b9507c745f31.webp",w:1678,h:1678},
+    {k:'img',src:"b9507c745f31.webp",w:2048,h:2048},
     {k:'t',kind:"detail",html:"ㆍRarity: EX"},
     {k:'t',kind:"detail",html:"ㆍType: Rifle"},
     {k:'t',kind:"detail",html:"ㆍATK Type: Ranged ATK"},

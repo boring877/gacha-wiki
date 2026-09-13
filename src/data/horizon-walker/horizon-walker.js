@@ -133,9 +133,10 @@ export const horizonWalkerConfig = {
     {
       id: 'resources',
       title: 'Resources',
-      description: 'Gifts, clock, redeem codes, and patch notes',
+      description: 'Story gallery, gifts, clock, redeem codes, and patch notes',
       size: 'medium',
       guides: [
+        { id: 'story-gallery', title: 'Story Gallery', url: '/guides/horizon-walker/story-gallery/' },
         { id: 'gifts', title: 'Gifts', url: '/guides/horizon-walker/gifts/' },
         { id: 'character-gifts', title: 'Character Gifts', url: '/guides/horizon-walker/character-gifts/' },
         { id: 'clock', title: 'Clock', url: '/clock/horizon-walker/' },

@@ -21,7 +21,7 @@ export const note = {
     {k:'t',kind:"p",html:"<strong></strong>"},
     {k:'t',kind:"item",html:"<strong>◆ New Weapon : </strong><strong>The Grand Ancestor's Spirit</strong>"},
     {k:'t',kind:"p",html:"<strong></strong>"},
-    {k:'img',src:"3407e519d754.webp",w:1678,h:1678},
+    {k:'img',src:"3407e519d754.webp",w:2000,h:2000},
     {k:'t',kind:"detail",html:"<strong>ㆍGrade : EX</strong>"},
     {k:'t',kind:"detail",html:"<strong>ㆍType : Torturas</strong>"},
     {k:'t',kind:"detail",html:"<strong>ㆍATK Type : Melee ATK/Magic ATK</strong>"},

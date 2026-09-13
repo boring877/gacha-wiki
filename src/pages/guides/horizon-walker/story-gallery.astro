@@ -1,0 +1,221 @@
+---
+// Horizon Walker Story Gallery page: character story CGs, event story CGs,
+// main story CGs, and world background art, all served from R2.
+import StoryGalleryLayout from '../../../layouts/horizon-walker/StoryGalleryLayout.astro';
+import { STORY_CG } from '../../../data/horizon-walker/story-cg.js';
+import {
+  EVENT_STORY_GROUPS,
+  MAIN_STORY_CGS,
+  WORLD_ART,
+  POPUP_ART,
+} from '../../../data/horizon-walker/story-gallery.js';
+import { HORIZON_WALKER_CHARACTERS } from '../../../data/horizon-walker/characters.js';
+
+const R2_BASE = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/horizon-walker';
+
+// Join character CGs (keyed by hero id) with the roster for names and page links.
+const charGroups = Object.entries(STORY_CG)
+  .map(([heroId, cgs]) => {
+    const roster = HORIZON_WALKER_CHARACTERS.find(c => String(c.id) === heroId);
+    return roster ? { name: roster.name, url: roster.detailUrl, cgs } : null;
+  })
+  .filter((g): g is { name: string; url: string; cgs: { file: string; caption: string }[] } => g !== null)
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+const charCgCount = charGroups.reduce((n, g) => n + g.cgs.length, 0);
+const eventCgCount = EVENT_STORY_GROUPS.reduce((n, g) => n + g.cgs.length, 0);
+
+const TABS = [
+  { id: 'characters', label: 'Characters', count: charCgCount },
+  { id: 'events', label: 'Event Stories', count: eventCgCount },
+  { id: 'story', label: 'Main Story', count: MAIN_STORY_CGS.length },
+  { id: 'world', label: 'World', count: WORLD_ART.length },
+  { id: 'popups', label: 'Dialogue Art', count: POPUP_ART.length },
+];
+
+const totalCount = charCgCount + eventCgCount + MAIN_STORY_CGS.length + WORLD_ART.length + POPUP_ART.length;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ImageGallery',
+  name: 'Horizon Walker Story Gallery',
+  description:
+    'Story illustrations from Horizon Walker: character friendship CGs, event story CGs, main story cutscene art, and world backgrounds.',
+  url: new URL(Astro.url.pathname, Astro.site).href,
+  numberOfItems: totalCount,
+};
+---
+
+<StoryGalleryLayout
+  title="Horizon Walker Story Gallery - Character, Event & Main Story CGs"
+  description="Browse every Horizon Walker story illustration: character friendship CGs, event story CGs, main story cutscene art, and world location backgrounds in full resolution."
+  gameTitle="Story Gallery"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+  <section class="hw-gallery-content">
+    <p class="hw-gallery-intro">
+      Story illustrations extracted from the game. Click any image to view it in full resolution.
+    </p>
+
+    <div class="hw-gallery-tabs" role="tablist">
+      {
+        TABS.map(tab => (
+          <button
+            class="hw-gallery-tab"
+            role="tab"
+            id={`hw-tab-${tab.id}`}
+            data-tab={tab.id}
+            aria-selected={tab.id === 'characters' ? 'true' : 'false'}
+          >
+            {tab.label}
+            <span class="hw-gallery-tab-count">{tab.count}</span>
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="hw-gallery-panel" id="hw-panel-characters" role="tabpanel" data-panel="characters">
+      {
+        charGroups.map(grp => (
+          <div class="hw-gallery-group">
+            <h2 class="hw-gallery-group-title">
+              <a href={grp.url}>{grp.name}</a>
+            </h2>
+            <div class="hw-gallery-grid">
+              {grp.cgs.map(cg => (
+                <a
+                  class="hw-gallery-card"
+                  href={`${R2_BASE}/${cg.file}`}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <img
+                    src={`${R2_BASE}/${cg.file}`}
+                    alt={`Horizon Walker ${grp.name} story CG`}
+                    width={400}
+                    height={225}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="hw-gallery-caption">{cg.caption}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="hw-gallery-panel" id="hw-panel-events" role="tabpanel" data-panel="events" hidden>
+      {
+        EVENT_STORY_GROUPS.map(grp => (
+          <div class="hw-gallery-group">
+            <h2 class="hw-gallery-group-title">{grp.label}</h2>
+            <div class="hw-gallery-grid">
+              {grp.cgs.map(cg => (
+                <a
+                  class="hw-gallery-card"
+                  href={`${R2_BASE}/${cg.file}`}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <img
+                    src={`${R2_BASE}/${cg.file}`}
+                    alt={`Horizon Walker ${grp.label} CG`}
+                    width={400}
+                    height={225}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="hw-gallery-caption">{cg.caption}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="hw-gallery-panel" id="hw-panel-story" role="tabpanel" data-panel="story" hidden>
+      <div class="hw-gallery-grid">
+        {
+          MAIN_STORY_CGS.map(cg => (
+            <a class="hw-gallery-card" href={`${R2_BASE}/${cg.file}`} target="_blank" rel="noopener">
+              <img
+                src={`${R2_BASE}/${cg.file}`}
+                alt={`Horizon Walker main story art: ${cg.caption}`}
+                width={400}
+                height={225}
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="hw-gallery-caption">{cg.caption}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="hw-gallery-panel" id="hw-panel-world" role="tabpanel" data-panel="world" hidden>
+      <div class="hw-gallery-grid">
+        {
+          WORLD_ART.map(cg => (
+            <a class="hw-gallery-card" href={`${R2_BASE}/${cg.file}`} target="_blank" rel="noopener">
+              <img
+                src={`${R2_BASE}/${cg.file}`}
+                alt={`Horizon Walker world art: ${cg.caption}`}
+                width={400}
+                height={225}
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="hw-gallery-caption">{cg.caption}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="hw-gallery-panel" id="hw-panel-popups" role="tabpanel" data-panel="popups" hidden>
+      <div class="hw-gallery-grid hw-gallery-grid-square">
+        {
+          POPUP_ART.map(cg => (
+            <a class="hw-gallery-card" href={`${R2_BASE}/${cg.file}`} target="_blank" rel="noopener">
+              <img
+                src={`${R2_BASE}/${cg.file}`}
+                alt={`Horizon Walker dialogue art: ${cg.caption}`}
+                width={400}
+                height={400}
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="hw-gallery-caption">{cg.caption}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</StoryGalleryLayout>
+
+<script>
+  // Tab switching for the story gallery
+  function initHwGalleryTabs() {
+    const tabs = document.querySelectorAll<HTMLButtonElement>('.hw-gallery-tab');
+    const panels = document.querySelectorAll<HTMLElement>('.hw-gallery-panel');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.setAttribute('aria-selected', t === tab ? 'true' : 'false'));
+        panels.forEach(p => {
+          p.hidden = p.dataset.panel !== tab.dataset.tab;
+        });
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHwGalleryTabs);
+  } else {
+    initHwGalleryTabs();
+  }
+</script>
