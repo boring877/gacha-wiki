@@ -23425,4 +23425,1273 @@ export const allPotentials = {
   }
 };
 
+// Helper functions
+export const getPotentialsByCharacter = charName => allPotentials[charName.toLowerCase()];
+export const getAllCharacterNames = () =>
+  Object.keys(allPotentials).filter(k => {
+    // exclude camelCase alias keys whose kebab twin exists (e.g. SuntideWillow)
+    const kebab = k.replace(/([A-Z])/g, (m, c, off) => (off ? '-' : '') + c.toLowerCase());
+    return !(kebab !== k && allPotentials[kebab]);
+  });
+
+
+
+// Get a specific potential by name for a character (searches all categories)
+export const getPotentialByName = (characterName, potentialName) => {
+  // Convert character name to camelCase key (e.g., "Snowish Laru" -> "snowishLaru")
+  const charKey = characterName
+    .toLowerCase()
+    .split(' ')
+    .map((word, index) => (index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)))
+    .join('');
+
+  const charData = allPotentials[charKey];
+  if (!charData || !charData.potentials) return null;
+
+  const allCategories = [
+    ...(charData.potentials.mainCore || []),
+    ...(charData.potentials.mainNormal || []),
+    ...(charData.potentials.common || []),
+    ...(charData.potentials.supportCore || []),
+    ...(charData.potentials.supportNormal || []),
+  ];
+
+  return allCategories.find(p => p.name.toLowerCase() === potentialName.toLowerCase()) || null;
+};
+
+
+
+allPotentials['donna'] = {
+  id: 130,
+  name: 'Donna',
+  element: 'Aqua',
+  buildOrder: {
+    main: {
+      build1: {
+        title: 'Donna: Main Build 1',
+        description: 'A build that fires more and stronger arrows, significantly enhancing Auto Attacks.',
+        potentials: [
+          'Condensation Orbs',
+          'Azure Night',
+          'Tidal Echo',
+          'Piercing Arrow Rain',
+          'Rime Shatterer'
+        ]
+      },
+      build2: {
+        title: 'Donna: Main Build 2',
+        description: 'A build that synergizes with doll attacks, improving ATK and skill synergy.',
+        potentials: [
+          'Precision Marketing',
+          'Bubble Finale',
+          'Surging Tide',
+          'Cloud Piercer',
+          'Hazy Curtain'
+        ]
+      }
+    },
+    support: {
+      build1: {
+        title: 'Donna: Support Build 1',
+        description: 'A build that concentrates attacks on targets in front.',
+        potentials: [
+          'Unleashed Arrow',
+          'Arrowfall Reckoning',
+          'Arrow Pursuit',
+          'Frostbitten Arrow',
+          'Dead Shot'
+        ]
+      },
+      build2: {
+        title: 'Donna: Support Build 2',
+        description: 'A volley build that randomly attacks nearby targets.',
+        potentials: [
+          'Wave-Chasing String',
+          'Stray Arrow',
+          'Coast Crusher',
+          'Aquatic Assault',
+          'Chilling Onslaught'
+        ]
+      }
+    }
+  },
+  potentials: {
+    mainCore: [
+      {
+        name: 'Condensation Orbs',
+        icon: '13001_Potential_01',
+        description: 'When the ##Advertising Doll#4017# disappears, extends the duration of ##Agile#2015# State by <color=#0abec5>&Param2&</color>s.\nWhile ##Agile#2015# State is active, every 10 Auto Attacks generate 1 water orb, accumulating up to <color=#0abec5>7</color> orbs. When ##Agile#2015# State ends, the next Auto Attack fires all water orbs to pierce through the target, with each orb dealing <color=#0abec5>&Param1&</color> of ATK as Aqua Skill DMG.',
+        shortDescription: 'Extends the duration of Donna\'s ##Agile#2015# State.\nWhile ##Agile#2015# State is active, Auto Attacks accumulate water orbs which will all be fired to deal DMG after ##Agile#2015# State ends.',
+        params: [
+          '51%/59%/67%/90%/97%/104%/119%/125%/131%/143%/154%/164%/174%',
+          '3'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {
+          4017: {
+            id: 4017,
+            name: 'Advertising Doll',
+            description: 'Advertising Doll inherits 100% of Donna\'s Base Max HP and 100% of her ATK for 12s.'
+          },
+          2015: {
+            id: 2015,
+            name: 'Agile'
+          }
+        }
+      },
+      {
+        name: 'Azure Night',
+        icon: '13001_Potential_02',
+        description: 'While Donna is in ##Agile#2015# State, she fires <color=#0abec5>4</color> additional ice spikes with each Auto Attack, each spike dealing <color=#0abec5>&Param1&</color> of ATK as Aqua Skill DMG.',
+        shortDescription: 'While Donna is in ##Agile#2015# State, her Auto Attacks deal additional DMG.',
+        params: [
+          '4%/5%/6%/8%/8%/9%/10%/11%/11%/12%/13%/14%/15%'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {
+          2015: {
+            id: 2015,
+            name: 'Agile'
+          }
+        }
+      },
+      {
+        name: 'Precision Marketing',
+        icon: '13001_Potential_03',
+        description: 'When Donna\'s Auto Attack hits a target near the ##Advertising Doll#4017#, the doll unleashes waves, dealing <color=#0abec5>&Param1&</color> of ATK as AoE Aqua Minion DMG.',
+        shortDescription: 'When Donna\'s Auto Attack hits a target near the ##Advertising Doll#4017#, deals AoE DMG.',
+        params: [
+          '115%/132%/150%/201%/218%/234%/266%/280%/294%/321%/344%/367%/390%'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {
+          4017: {
+            id: 4017,
+            name: 'Advertising Doll',
+            description: 'Advertising Doll inherits 100% of Donna\'s Base Max HP and 100% of her ATK for 12s.'
+          }
+        }
+      },
+      {
+        name: 'Bubble Finale',
+        icon: '13001_Potential_04',
+        description: 'Increases the Max HP of the ##Advertising Doll#4017# by <color=#0abec5>&Param1&</color>.\nWhen the doll disappears, deals <color=#0abec5>&Param2&</color> of ATK as AoE Aqua Minion DMG and creates a Bubble Pool that deals <color=#0abec5>&Param5&</color> of ATK as AoE Aqua Minion DMG every 0.5s for 4s. When the ##Advertising Doll#4017# is present, each of its attacks increases own &Param6& by <color=#0abec5>&Param7&</color>, stacking up to &Param8& times.',
+        shortDescription: 'Increases the Max HP of the ##Advertising Doll#4017#.\nWhen the ##Advertising Doll#4017# disappears, deals AoE DMG over time.',
+        params: [
+          '50%',
+          '12%/14%/16%/22%/23%/25%/29%/30%/32%/35%/37%/40%/42%',
+          '',
+          '7',
+          '14%/16%/18%/24%/26%/28%/32%/34%/36%/39%/42%/45%/47%',
+          'Summondmg',
+          '3.5%',
+          ''
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {
+          4017: {
+            id: 4017,
+            name: 'Advertising Doll',
+            description: 'Advertising Doll inherits 100% of Donna\'s Base Max HP and 100% of her ATK for 12s.'
+          }
+        }
+      }
+    ],
+    mainNormal: [
+      {
+        name: 'Tidal Echo',
+        icon: 'Common_Potential_10',
+        description: 'When Donna\'s Auto Attacks deal DMG while she is in ##Agile#2015# State, increases the target\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+        shortDescription: 'When Donna\'s Auto Attacks deal DMG while she is in ##Agile#2015# State, increases the target\'s &Param1&.',
+        params: [
+          'Weercd',
+          '0.4%/0.6%/0.8%/1%/1.2%/1.4%/1.6%/1.8%/2%',
+          '4',
+          '25'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 1,
+        hints: {
+          2015: {
+            id: 2015,
+            name: 'Agile'
+          }
+        }
+      },
+      {
+        name: 'Surging Tide',
+        icon: 'Common_Potential_Water_1',
+        description: 'Increases the ##Advertising Doll#4017#\'s Attack Range by 50% and its &Param2& by <color=#ec6d21>&Param1&</color>.',
+        shortDescription: 'Increases the ##Advertising Doll#4017#\'s Attack Range and &Param2&.',
+        params: [
+          '19%/30%/41%/52%/63%/74%/85%/96%/107%',
+          'Summondmg'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 1,
+        hints: {
+          4017: {
+            id: 4017,
+            name: 'Advertising Doll',
+            description: 'Advertising Doll inherits 100% of Donna\'s Base Max HP and 100% of her ATK for 12s.'
+          }
+        }
+      },
+      {
+        name: 'Lingering Noise',
+        icon: 'Common_Potential_13',
+        description: 'After casting &Param10& (Main Skill), increases own &Param4& by <color=#ec6d21>&Param1&</color> for &Param2&s.',
+        shortDescription: 'After casting the Main Skill, increases own &Param4&.',
+        params: [
+          '12%/19%/26%/34%/41%/48%/55%/62%/70%',
+          '15',
+          '8',
+          'Wee',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 1,
+        hints: {}
+      },
+      {
+        name: 'Piercing Arrow Rain',
+        icon: 'Common_Potential_Water_1',
+        description: 'When Donna\'s Auto Attacks deal DMG to targets inflicted with ##Aqua Mark: Torrent#2008#/##Chill#1027# while she is in ##Agile#2015# State, increases her &Param4& by <color=#ec6d21>&Param1&</color> for &Param2&s, stacking up to &Param3& times.',
+        shortDescription: 'When Donna\'s Auto Attacks deal DMG to targets inflicted with ##Aqua Mark: Torrent#2008#/##Chill#1027# while she is in ##Agile#2015# State, increases her &Param4&.',
+        params: [
+          '0.3%/0.5%/0.7%/0.9%/1.1%/1.3%/1.5%/1.7%/1.9%',
+          '2',
+          '36',
+          'ATK'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {
+          2008: {
+            id: 2008,
+            name: 'Aqua Mark: Torrent',
+            description: 'A special status applied by some Aqua characters to the target for 10 sec.\nWhen triggered by specific Aqua characters\' attacks, the status is removed, and a special effect is activated.'
+          },
+          1027: {
+            id: 1027,
+            name: 'Chill'
+          },
+          2015: {
+            id: 2015,
+            name: 'Agile'
+          }
+        }
+      },
+      {
+        name: 'Cloud Piercer',
+        icon: '13001_Potential_09',
+        description: 'When Donna or the ##Advertising Doll#4017# hits a target, restores &Param1& HP of the doll and increases its &Param6& by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks.\nThis effect can only be triggered once every &Param5&s.',
+        shortDescription: 'When Donna or the ##Advertising Doll#4017# hits a target, heals the Doll and increases its &Param6&.',
+        params: [
+          '15',
+          '5.8%/9.3%/12.8%/16.3%/19.8%/23.3%/26.8%/30.3%/33.8%',
+          '12',
+          '4',
+          '2',
+          'Summondmg'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {
+          4017: {
+            id: 4017,
+            name: 'Advertising Doll',
+            description: 'Advertising Doll inherits 100% of Donna\'s Base Max HP and 100% of her ATK for 12s.'
+          }
+        }
+      },
+      {
+        name: 'Serene Sea Trance',
+        icon: 'Common_Potential_13',
+        description: 'After Donna remains stationary for 1s, increases her &Param2& by <color=#ec6d21>&Param1&</color>. Resets when she moves.',
+        shortDescription: 'When Donna remains stationary, increases her &Param2&. Resets when she moves.',
+        params: [
+          '10%/16%/22%/28%/34%/40%/46%/52%/58%',
+          'ATK'
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 2,
+        hints: {}
+      },
+      {
+        name: 'Rime Shatterer',
+        icon: '13001_Potential_07',
+        description: 'While Donna is in ##Agile#2015# State, her Auto Attacks immediately defeat normal targets with HP below &Param1&. She also deals <color=#ec6d21>&Param2&</color> more &Param3& to elite or higher-tier targets with HP below &Param1&.',
+        shortDescription: 'While Donna is in ##Agile#2015# State, her Auto Attacks immediately defeat targets with low HP. She also deals increased DMG to elites and bosses with low HP.',
+        params: [
+          '350000',
+          '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+          ''
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 3,
+        hints: {
+          2015: {
+            id: 2015,
+            name: 'Agile'
+          }
+        }
+      },
+      {
+        name: 'Hazy Curtain',
+        icon: '13001_Potential_10',
+        description: 'The ##Advertising Doll#4017# gains a shield equal to <color=#ec6d21>&Param1&</color> of its base HP for &Param2&s.\nWhen the shield disappears, the doll deals <color=#ec6d21>&Param3&</color> of ATK as AoE Aqua Minion DMG.',
+        shortDescription: 'The ##Advertising Doll#4017# gains a shield. When the shield disappears, deals AoE DMG.',
+        params: [
+          '20%/26%/33%/39%/46%/52%/59%/65%/72%',
+          '8',
+          '242%/387%/532%/677%/822%/967%/1112%/1257%/1402%'
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 3,
+        hints: {
+          4017: {
+            id: 4017,
+            name: 'Advertising Doll',
+            description: 'Advertising Doll inherits 100% of Donna\'s Base Max HP and 100% of her ATK for 12s.'
+          }
+        }
+      },
+      {
+        name: 'Tidal Mark Resonance',
+        icon: 'Common_Potential_Water_1',
+        description: '&Param10& (Ultimate) can trigger ##Aqua Mark: Torrent#1018#. Triggering this Mark increases own and the ##Advertising Doll#4017#\'s &Param2& by <color=#ec6d21>&Param1&</color> for &Param3&s.',
+        shortDescription: 'The Ultimate can trigger ##Aqua Mark#1018#. Triggering this Mark increases own and the ##Advertising Doll#4017#\'s &Param2&.',
+        params: [
+          '20%/33%/45%/57%/69%/81%/94%/106%/118%',
+          'Wee',
+          '30',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 3,
+        hints: {
+          1018: {
+            id: 1018,
+            name: 'Aqua Mark',
+            description: 'The generic name for all Aqua Marks.\nWhen triggered by specific Aqua Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          },
+          4017: {
+            id: 4017,
+            name: 'Advertising Doll',
+            description: 'Advertising Doll inherits 100% of Donna\'s Base Max HP and 100% of her ATK for 12s.'
+          }
+        }
+      }
+    ],
+    supportCore: [
+      {
+        name: 'Unleashed Arrow',
+        icon: '13001_Potential_21',
+        description: '&Param10& (Support Skill) fires <color=#0abec5>1</color> additional Snow-Piercing Arrow with each shot for each Aqua Trekkers in the squad other than Donna, dealing <color=#0abec5>&Param1&</color> of ATK as Aqua Skill DMG.',
+        shortDescription: 'The Support Skill fires additional Snow-Piercing Arrows to deal DMG based on the number of Aqua Trekkers in the squad.',
+        params: [
+          '82%/95%/107%/144%/155%/167%/190%/200%/210%/230%/246%/262%/279%',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {}
+      },
+      {
+        name: 'Arrowfall Reckoning',
+        icon: '13001_Potential_22',
+        description: 'When a Snow-Piercing Arrow deals DMG to Donna\'s target, 1 arrow tail is left on the target, up to <color=#0abec5>&Param3&</color>.\nWhen Snow-Piercing Arrow deals DMG to a target with arrow tails, it deals <color=#0abec5>&Param4&</color> of ATK as Aqua Skill DMG.\nWhen &Param10& (Support Skill) ends, pulls out all arrow tails to deal <color=#0abec5>&Param1&</color> of ATK as Aqua Skill DMG. Each arrow tail on the target increases this DMG by <color=#0abec5>&Param2&</color>.',
+        shortDescription: 'When Snow-Piercing Arrow deals DMG, the arrow tail is left on the target. When the skill ends, pulls out the arrow tail to deal DMG.',
+        params: [
+          '218%/251%/284%/382%/413%/443%/504%/530%/557%/609%/653%/696%/740%',
+          '0.85%',
+          '30',
+          '31%/36%/40%/54%/59%/63%/72%/76%/79%/87%/93%/99%/105%',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {}
+      },
+      {
+        name: 'Wave-Chasing String',
+        icon: '13001_Potential_23',
+        description: 'Increases Frost Wave\'s Attack Range by <color=#0abec5>50%</color> and Skill DMG dealt by <color=#0abec5>&Param2&</color>.\nWhen the entire squad consists of Aqua Trekkers, &Param10& (Support Skill) generates 1 Frost Wave for every <color=#0abec5>3</color> shots fired.',
+        shortDescription: 'Increases Frost Wave\'s DMG and Attack Range.\nWhen the entire squad consists of Aqua Trekkers, the Support Skill generates more Frost Waves.',
+        params: [
+          '437%/502%/567%/764%/825%/886%/1008%/1061%/1113%/1218%/1305%/1393%/1480%',
+          '0.57%',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {}
+      },
+      {
+        name: 'Stray Arrow',
+        icon: '13001_Potential_24',
+        description: 'Each time &Param10& (Support Skill) generates a Frost Wave, creates <color=#0abec5>3</color> Frost Wave Orbs that track the target. Upon hit, they deal <color=#0abec5>&Param1&</color> of ATK as AoE Aqua Skill DMG.\nFrost Wave Orbs prioritize attacking different targets, with each distinct target increasing their Skill DMG dealt by <color=#0abec5>&Param2&</color>.',
+        shortDescription: 'Each time the Support Skill generates a Frost Wave, additionally creates Frost Wave Orbs that track the target and deal AoE DMG.',
+        params: [
+          '84%/97%/109%/147%/159%/171%/195%/205%/215%/235%/252%/269%/285%',
+          '0.57%',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {}
+      }
+    ],
+    supportNormal: [
+      {
+        name: 'Arrow Pursuit',
+        icon: '13001_Potential_25',
+        description: 'Increases Snow-Piercing Arrow\'s &Param2& by <color=#ec6d21>&Param3&</color>. Upon dealing 3 instances of DMG to Donna\'s target, deals an additional <color=#ec6d21>&Param1&</color> of ATK as Aqua Skill DMG.\nThis DMG can only be triggered once every 0.2s.',
+        shortDescription: 'When Snow-Piercing Arrow deals multiple instances of DMG to Donna\'s target, deals additional DMG.',
+        params: [
+          '83%/133%/183%/233%/283%/333%/382%/432%/482%',
+          '',
+          '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%'
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 1,
+        hints: {}
+      },
+      {
+        name: 'Coast Crusher',
+        icon: 'Common_Potential_Water_1',
+        description: 'Increases Frost Wave\'s Crit Rate by &Param1& and &Param9& by <color=#ec6d21>&Param8&</color>.\nWhen Frost Wave lands a Crit Hit, increases the &Param2& of Aqua Trekkers in the squad by <color=#ec6d21>&Param3&</color> for &Param6&s, stacking up to &Param7& times.',
+        shortDescription: 'Increases Frost Wave\'s Crit Rate and DMG.\nWhen Frost Wave lands a Crit Hit, increases the &Param2& of Aqua Trekkers in the squad.',
+        params: [
+          '0.06%',
+          'ATK',
+          '4%/6%/8%/10%/12%/14%/16%/18%/20%',
+          '',
+          '',
+          '7',
+          '4',
+          '',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 1,
+        hints: {}
+      },
+      {
+        name: 'Messenger Arrow',
+        icon: 'Common_Potential_Water_1',
+        description: 'When casting &Param10& (Support Skill), delivers a letter near the main Aqua Trekker.\nWhen the main Trekker picks up the letter, increases their &Param4& by <color=#ec6d21>&Param2&</color> for &Param1&s.',
+        shortDescription: 'When casting &Param10& (Support Skill), delivers a letter near the main Aqua Trekker.\nWhen the main Trekker picks up the letter, increases their &Param4&.',
+        params: [
+          '12',
+          '12%/18%/25%/32%/39%/46%/53%/60%/67%',
+          '1',
+          'Wee',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 1,
+        hints: {}
+      },
+      {
+        name: 'Frostbitten Arrow',
+        icon: 'Common_Potential_Water_1',
+        description: 'When Snow-Piercing Arrow deals 3 instances of DMG to Donna\'s target, increases the target\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+        shortDescription: 'When Snow-Piercing Arrow deals multiple instances of DMG to Donna\'s target, increases the target\'s &Param1&.',
+        params: [
+          'Weercd',
+          '1.8%/2.9%/4%/5.1%/6.2%/7.3%/8.4%/9.5%/10.6%',
+          '6',
+          '9'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {}
+      },
+      {
+        name: 'Aquatic Assault',
+        icon: '13001_Potential_29',
+        description: 'When Frost Wave deals DMG to different targets, increases own &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+        shortDescription: 'When Frost Wave deals DMG to different targets, increases own &Param1&.',
+        params: [
+          'Wee',
+          '20%/32%/44%/56%/68%/80%/92%/104%/116%',
+          '10',
+          '3'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {}
+      },
+      {
+        name: 'Wave Resonance',
+        icon: 'Common_Potential_Water_1',
+        description: 'When &Param10& (Ultimate) deals DMG, inflicts ##Aqua Mark: Torrent#2008#.\nDuring the rain of arrows, when any Trekker triggers an ##Aqua Mark: Torrent#2008#, increases Donna\'s &Param2& by <color=#ec6d21>&Param1&</color> for &Param3&s, stacking up to &Param4& times.',
+        shortDescription: 'The Ultimate can inflict ##Aqua Mark: Torrent#2008#.\nWhile casting the Ultimate, when a Trekker triggers ##Aqua Mark: Torrent#2008#, increases Donna\'s &Param2&.',
+        params: [
+          '9%/15%/20%/26%/31%/37%/42%/48%/53%',
+          'Wee',
+          '40',
+          '3',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {
+          2008: {
+            id: 2008,
+            name: 'Aqua Mark: Torrent',
+            description: 'A special status applied by some Aqua characters to the target for 10 sec.\nWhen triggered by specific Aqua characters\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      },
+      {
+        name: 'Dead Shot',
+        icon: 'Common_Potential_10',
+        description: 'Snow-Piercing Arrow immediately defeats normal targets with HP below &Param1&.\nAlso, deals <color=#ec6d21>&Param2&</color> more &Param3& to elite or higher-tier targets with HP below &Param1&.',
+        shortDescription: 'Snow-Piercing Arrow immediately defeats targets with low HP and deals increased DMG to elites and bosses with low HP.',
+        params: [
+          '300000',
+          '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 3,
+        hints: {}
+      },
+      {
+        name: 'Chilling Onslaught',
+        icon: 'Common_Potential_Water_1',
+        description: 'Upon its first shot, &Param10& (Support Skill) creates a Frost Wave.\nIncreases the &Param1& dealt by Frost Wave by <color=#ec6d21>&Param2&</color>.',
+        shortDescription: 'Upon its first shot, the Support Skill creates a Frost Wave.\nIncreases the &Param1& dealt by Frost Wave.',
+        params: [
+          '',
+          '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 3,
+        hints: {}
+      },
+      {
+        name: 'Water Ripple',
+        icon: 'Common_Potential_Water_1',
+        description: 'Increases the &Param3& of Aqua Trekkers in the squad by <color=#ec6d21>&Param1&</color>.',
+        shortDescription: 'Increases the &Param3& of Aqua Trekkers in the squad.',
+        params: [
+          '15%/24%/33%/42%/51%/60%/69%/78%/87%',
+          '',
+          'ATK'
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 3,
+        hints: {}
+      }
+    ],
+    common: [
+      {
+        name: 'Rushing Tide',
+        icon: '13001_Potential_41',
+        description: 'Increases &Param10& (Ultimate)\'s Attack Range by 50%.\nIncreases Donna\'s &Param2& by <color=#ec6d21>&Param1&</color>.',
+        shortDescription: 'Increases the Ultimate\'s Attack Range and DMG.',
+        params: [
+          '0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: null,
+        hints: {}
+      },
+      {
+        name: 'Corrosive Torrent',
+        icon: 'Common_Potential_Water_1',
+        description: 'Increases the &Param2& of Aqua Trekkers within the Attack Range of &Param10& (Ultimate) by <color=#ec6d21>&Param1&</color>.',
+        shortDescription: 'Increases the &Param2& of Aqua Trekkers within the Attack Range of &Param10& (Ultimate).',
+        params: [
+          '20%/32%/44%/56%/68%/80%/92%/104%/116%',
+          'ATK',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: null,
+        hints: {}
+      },
+      {
+        name: 'Freezing Stasis',
+        icon: 'Common_Potential_Water_1',
+        description: 'Each time &Param10& (Ultimate) hits a target inflicted with ##Frozen#1002#/##Chill#1027#, increases rain of arrows\' duration by &Param1&s and its &Param3& dealt by <color=#ec6d21>&Param2&</color>. This effect can only be triggered &Param4& times.',
+        shortDescription: 'Each time the Ultimate hits a target inflicted with ##Frozen#1002#/##Chill#1027#, increases its duration and &Param3&.',
+        params: [
+          '1',
+          '0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%/0.58%',
+          '',
+          '5',
+          '',
+          '',
+          '',
+          '',
+          '',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: null,
+        hints: {
+          1002: {
+            id: 1002,
+            name: 'Freeze',
+            description: 'Frozen and incapacitated. Unable to take action.'
+          },
+          1027: {
+            id: 1027,
+            name: 'Chill'
+          }
+        }
+      }
+    ]
+  }
+};
+
+allPotentials['wraith'] = {
+  id: 143,
+  name: 'Wraith',
+  element: 'Ventus',
+  buildOrder: {
+    main: {
+      build1: {
+        title: 'Wraith: Main Build 1',
+        description: 'A melee build that generates Whirlwinds to destroy projectiles when activating a skill or Auto Attack.',
+        potentials: [
+          'Last Gasp of Gale',
+          'Twin Shadows',
+          'Zero Hour',
+          'Blade\'s Waltz',
+          'Rapid Draw'
+        ]
+      },
+      build2: {
+        title: 'Wraith: Main Build 2',
+        description: 'A build that enhances the ranged DMG of skills and Auto Attacks, significantly boosting ranged DPS.',
+        potentials: [
+          'Storm-Piercing Surge',
+          'Wind-Splitting Bullet',
+          'Overheat Shot',
+          'Scorching Gale',
+          'Tracewind Blink'
+        ]
+      }
+    },
+    support: {
+      build1: {
+        title: 'Wraith: Support Build 1',
+        description: 'A build that allows skills to generate ground fissures and Whirlwinds, boosting sustained DPS.',
+        potentials: [
+          'Underbarrel Launcher',
+          'Suppressive Wind-Splitting Round',
+          'Ominous Vibe',
+          'Hunter\'s Instinct',
+          'Frost-Proof Constitution'
+        ]
+      },
+      build2: {
+        title: 'Wraith: Support Build 2',
+        description: 'A build that enhances skill range and DMG, boosting burst DMG potential.',
+        potentials: [
+          'Rotary Saw',
+          'Enhanced Rapid-Fire Round',
+          'Warrior\'s Quality',
+          'Will of Vengeance',
+          'Dawn\'s Embrace'
+        ]
+      }
+    }
+  },
+  potentials: {
+    mainCore: [
+      {
+        name: 'Last Gasp of Gale',
+        icon: '14301_Potential_01',
+        description: 'Within &Param1&s after casting Whirling Onslaught (Main Skill), when the next Auto Attack slash deals DMG, it generates a Whirlwind that deal <color=#0abec5>&Param2&</color> of ATK as AoE Auto Attack DMG every 0.5s for 4s.\nThe Whirlwind can track and attack enemies, triggering ##Ventus Mark#1017#.',
+        shortDescription: 'For a short duration after the Main Skill is cast, combo slashes of Auto Attacks can generate a Whirlwind to deal DMG. The Whirlwind can track and attack enemies.',
+        params: [
+          '4',
+          '27%/31%/35%/47%/51%/54%/62%/65%/68%/75%/80%/86%/91%'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {
+          1017: {
+            id: 1017,
+            name: 'Ventus Mark',
+            description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      },
+      {
+        name: 'Twin Shadows',
+        icon: '14301_Potential_02',
+        description: 'When casting Whirling Onslaught (Main Skill), generates 2 Whirlwinds that deal <color=#0abec5>&Param1&</color> of ATK as AoE Auto Attack DMG every 0.5s for 4s. \nThe Whirlwind can increase its Attack Range over time and trigger ##Ventus Mark#1017#.',
+        shortDescription: 'When casting the Main Skill, generates multiple Whirlwinds to deal DMG. The Whirlwind can increase its Attack Range over time.',
+        params: [
+          '27%/31%/35%/47%/51%/54%/62%/65%/68%/75%/80%/86%/91%'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {
+          1017: {
+            id: 1017,
+            name: 'Ventus Mark',
+            description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      },
+      {
+        name: 'Storm-Piercing Surge',
+        icon: '14301_Potential_03',
+        description: 'The bullets of Whirling Onslaught (Main Skill) become lasers that track distant targets. Increases the &Param1& dealt by Wraith\'s shots to distant targets by <color=#0abec5>&Param2&</color>.',
+        shortDescription: 'The Main Skill\'s bullets become lasers that track distant targets. Increases the &Param1& dealt by Wraith\'s shots to distant targets.',
+        params: [
+          '',
+          '0.2%'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {}
+      },
+      {
+        name: 'Wind-Splitting Bullet',
+        icon: '14301_Potential_04',
+        description: 'When holding to cast Whirling Onslaught (Main Skill), each round fires <color=#0abec5>4</color> more bullets than the previous one.\nIncreases the &Param1& dealt by Wraith\'s bullets by <color=#0abec5>&Param2&</color>. Can trigger ##Ventus Mark#1017#.',
+        shortDescription: 'Increases the number of bullets fired when holding to cast the Main Skill continuously. Increases the &Param1& dealt by all Wraith\'s shots.',
+        params: [
+          '',
+          '0.2%'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {
+          1017: {
+            id: 1017,
+            name: 'Ventus Mark',
+            description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      }
+    ],
+    mainNormal: [
+      {
+        name: 'Zero Hour',
+        icon: 'Common_Potential_Wind_1',
+        description: 'Whirling Onslaught (Main Skill)\'s slashes will stir up a storm, blocking hostile projectiles.\nAlso increases Wraith\'s &Param1& to nearby targets by <color=#ec6d21>&Param2&</color>.',
+        shortDescription: 'The Main Skill\'s slashes can block enemy projectile attacks. Increases Wraith\'s DMG dealt to nearby targets.',
+        params: [
+          '',
+          '0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%/0.56%'
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 1,
+        hints: {}
+      },
+      {
+        name: 'Overheat Shot',
+        icon: 'Common_Potential_13',
+        description: 'When casting Whirling Onslaught (Main Skill), increases the Main Skill\'s shot &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks.',
+        shortDescription: 'When casting Whirling Onslaught (Main Skill), increases the &Param1& of Main Skill\'s shots.',
+        params: [
+          '',
+          '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+          '1',
+          '3'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 1,
+        hints: {}
+      },
+      {
+        name: 'Unseen Predator',
+        icon: 'Common_Potential_13',
+        description: 'Wraith can dodge one more time.\nWhen dodging, increases &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+        shortDescription: 'Increases the number of Wraith\'s dodges. Increases &Param1& when dodging.',
+        params: [
+          'ATK',
+          '14%/23%/32%/40%/49%/57%/66%/75%/83%',
+          '4'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 1,
+        hints: {}
+      },
+      {
+        name: 'Blade\'s Waltz',
+        icon: 'Common_Potential_13',
+        description: 'Increases the slash &Param1& of Whirling Onslaught (Main Skill) by <color=#ec6d21>&Param2&</color>.\nIncreases Wraith\'s &Param3& by <color=#ec6d21>&Param4&</color>.',
+        shortDescription: 'Increases the &Param1& dealt by the Main Skill\'s slashes. Increases Wraith\'s &Param3&.',
+        params: [
+          '',
+          '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+          'Normal DMG',
+          '13%/21%/28%/36%/44%/51%/59%/67%/74%'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {}
+      },
+      {
+        name: 'Scorching Gale',
+        icon: 'Common_Potential_Wind_1',
+        description: 'When Wraith\'s shots deal DMG, increases &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks. This effect can only be triggered &Param5& times per second.\nThe effect ends if the Main Skill is cast.',
+        shortDescription: 'When Wraith\'s shots deal DMG, increases &Param1&.',
+        params: [
+          'Skill DMG',
+          '2.3%/3.7%/5.1%/6.5%/7.9%/9.3%/10.7%/12.1%/13.5%',
+          '5',
+          '8',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {}
+      },
+      {
+        name: 'Dauntless Poise',
+        icon: 'Common_Potential_Wind_1',
+        description: 'Each Ventus Trekker in the squad increases Wraith\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+        shortDescription: 'Each Ventus Trekker in the squad increase Wraith\'s &Param1&.',
+        params: [
+          'ATK',
+          '9%/14%/19%/24%/29%/35%/40%/45%/50%'
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 2,
+        hints: {}
+      },
+      {
+        name: 'Rapid Draw',
+        icon: 'Common_Potential_8',
+        description: 'When Whirling Onslaught (Main Skill)\'s slashes deal DMG, increases Wraith\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+        shortDescription: 'When the Main Skill\'s slashes deal DMG, increases &Param1&.',
+        params: [
+          'Normal DMG',
+          '14%/22%/31%/39%/47%/55%/64%/72%/80%',
+          '5',
+          '1'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 3,
+        hints: {}
+      },
+      {
+        name: 'Tracewind Blink',
+        icon: 'Common_Potential_Wind_1',
+        description: 'Within &Param1&s after casting Whirling Onslaught (Main Skill), enhances Wraith\'s weapon. Each additional Main Skill stack consumed extends the duration by 3s.\nWhile Wraith\'s weapon is enhanced, her Auto Attack shots fire lasers, dealing <color=#ec6d21>&Param2&</color> of ATK as Ventus Skill DMG. This effect can only be triggered once per second.',
+        shortDescription: 'For a short duration after Whirling Onslaught (Main Skill) is cast, enhances Wraith\'s weapon, during which her Auto Attack shots fire lasers to deal DMG.',
+        params: [
+          '3',
+          '77%/123%/169%/216%/262%/308%/354%/400%/446%'
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 3,
+        hints: {}
+      },
+      {
+        name: 'Tempest Stance',
+        icon: 'Common_Potential_Wind_1',
+        description: 'When Wraith triggers ##Ventus Mark#1017#, increases &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+        shortDescription: 'When Wraith triggers ##Ventus Mark#1017#, increases &Param1&.',
+        params: [
+          'Aee',
+          '6%/10%/13%/17%/20%/24%/28%/31%/35%',
+          '3',
+          '3'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 3,
+        hints: {
+          1017: {
+            id: 1017,
+            name: 'Ventus Mark',
+            description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      }
+    ],
+    supportCore: [
+      {
+        name: 'Underbarrel Launcher',
+        icon: '14301_Potential_21',
+        description: 'Rolling Bungee (Support Skill)\'s shot creates a tornado that tracks the target, dealing <color=#0abec5>&Param1&</color> of ATK as AoE Ventus Skill DMG every 0.5s for 8s. Can trigger ##Ventus Mark#1017#.',
+        shortDescription: 'The Support Skill shoots and generates a Tornado that tracks the target, dealing multiple instances of DMG.',
+        params: [
+          '18%/21%/24%/32%/35%/38%/43%/45%/47%/52%/56%/59%/63%'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {
+          1017: {
+            id: 1017,
+            name: 'Ventus Mark',
+            description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      },
+      {
+        name: 'Suppressive Wind-Splitting Round',
+        icon: '14301_Potential_22',
+        description: 'Rolling Bungee (Support Skill)\'s slashes create a rift in the ground, dealing <color=#0abec5>&Param1&</color> of ATK as AoE Ventus Skill DMG every 0.5s for a total of 8s. Can trigger ##Ventus Mark#1017#.',
+        shortDescription: 'The Support Skill slashes and cracks the ground, dealing multiple instances of DMG.',
+        params: [
+          '18%/21%/24%/32%/35%/38%/43%/45%/47%/52%/56%/59%/63%'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {
+          1017: {
+            id: 1017,
+            name: 'Ventus Mark',
+            description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      },
+      {
+        name: 'Rotary Saw',
+        icon: '14301_Potential_23',
+        description: 'Rolling Bungee (Support Skill) triggers an additional slash, dealing <color=#0abec5>&Param1&</color> of ATK as Ventus Skill DMG in a large area.',
+        shortDescription: 'The Support Skill slashes and then performs a horizontal sweep, dealing DMG in a large area.',
+        params: [
+          '300%/345%/390%/525%/567%/609%/692%/728%/764%/836%/896%/956%/1016%'
+        ],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {}
+      },
+      {
+        name: 'Enhanced Rapid-Fire Round',
+        icon: '14301_Potential_24',
+        description: 'Rolling Bungee (Support Skill) fires <color=#0abec5>2</color> additional lasers.',
+        shortDescription: 'The Support Skill fires additional lasers.',
+        params: [],
+        rarity: 1,
+        stype: 42,
+        corner: null,
+        hints: {}
+      }
+    ],
+    supportNormal: [
+      {
+        name: 'Ominous Vibe',
+        icon: 'Common_Potential_Wind_1',
+        description: 'When Rolling Bungee (Support Skill) deals DMG, there is a 50% chance to fire lasers, dealing <color=#ec6d21>&Param1&</color> of Wraith\'s ATK as Ventus Skill DMG. Can trigger ##Ventus Mark#1017#.',
+        shortDescription: 'When the Support Skill deals DMG, there is a chance to fire lasers to deal DMG.',
+        params: [
+          '24%/38%/53%/67%/82%/97%/111%/126%/140%'
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 1,
+        hints: {
+          1017: {
+            id: 1017,
+            name: 'Ventus Mark',
+            description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      },
+      {
+        name: 'Warrior\'s Quality',
+        icon: 'Common_Potential_8',
+        description: 'When the slashes of Rolling Bungee (Support Skill) deal DMG, increases the &Param3& of this Support Skill\'s shots by <color=#ec6d21>&Param1&</color>, stacking up to &Param2& times.',
+        shortDescription: 'When the Support Skill\'s slashes deal DMG, increases the &Param3& of this Support Skill\'s shots.',
+        params: [
+          '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+          '9',
+          ''
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 1,
+        hints: {}
+      },
+      {
+        name: 'Expatriate',
+        icon: 'Common_Potential_Wind_1',
+        description: 'Increases Rolling Bungee (Support Skill)\'s &Param2& dealt to targets inflicted with ##Ventus Mark#1017# by <color=#ec6d21>&Param1&</color>.',
+        shortDescription: 'Increases the Support Skill\'s DMG dealt to targets inflicted with ##Ventus Mark#1017#.',
+        params: [
+          '0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 1,
+        hints: {
+          1017: {
+            id: 1017,
+            name: 'Ventus Mark',
+            description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      },
+      {
+        name: 'Hunter\'s Instinct',
+        icon: 'Common_Potential_8',
+        description: 'When Rolling Bungee (Support Skill) deals DMG, increases Wraith\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, stacking up to &Param4& times.',
+        shortDescription: 'When the Support Skill deals DMG, increases Wraith\'s &Param1&.',
+        params: [
+          'ATK',
+          '1.2%/1.9%/2.6%/3.3%/4%/4.7%/5.4%/6.1%/6.8%',
+          '4',
+          '10'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {}
+      },
+      {
+        name: 'Will of Vengeance',
+        icon: 'Common_Potential_13',
+        description: 'Increases the &Param2& of the slashes and shots of Rolling Bungee (Support Skill) by <color=#ec6d21>&Param1&</color>.',
+        shortDescription: 'Increases the Support Skill\'s DMG.',
+        params: [
+          '0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%/0.57%',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {}
+      },
+      {
+        name: 'Avenger',
+        icon: 'Common_Potential_Wind_1',
+        description: 'When a Ventus Trekker other than Wraith triggers ##Ventus Mark#1017#, there is a 50% chance to create a Whirlwind, dealing <color=#ec6d21>&Param1&</color> of Wraith\'s ATK as AoE Skill DMG every 0.5s for a total of 8s. The Whirlwind can track and attack enemies. This effect can only be triggered once every 3s.',
+        shortDescription: 'When a Ventus squadmate triggers ##Ventus Mark#1017#, there is a chance to create a Whirlwind, dealing multiple instances of DMG.',
+        params: [
+          '2%/4%/6%/7%/9%/10%/12%/14%/15%'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 2,
+        hints: {
+          1017: {
+            id: 1017,
+            name: 'Ventus Mark',
+            description: 'The generic name for all Ventus Marks.\nWhen triggered by specific Ventus Trekkers\' attacks, the status is removed, and a special effect is activated.'
+          }
+        }
+      },
+      {
+        name: 'Frost-Proof Constitution',
+        icon: 'Common_Potential_Water_1',
+        description: 'Casting Rolling Bungee (Support Skill) increases Wraith\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+        shortDescription: 'When casting the Support Skill, increases Wraith\'s &Param1&.',
+        params: [
+          'Skill DMG',
+          '9%/15%/21%/26%/32%/37%/43%/49%/54%',
+          '10'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 3,
+        hints: {}
+      },
+      {
+        name: 'Dawn\'s Embrace',
+        icon: 'Common_Potential_Light_1',
+        description: 'Increases the &Param3& of Rolling Bungee (Support Skill)\'s slashes by <color=#ec6d21>&Param1&</color>. If only one target is hit, increases this bonus to <color=#ec6d21>&Param2&</color>.',
+        shortDescription: 'The fewer targets the Support Skill\'s slashes hit, the higher the DMG dealt.',
+        params: [
+          '0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%',
+          '0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%/0.2%',
+          ''
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: 3,
+        hints: {}
+      },
+      {
+        name: 'Flame Hunter',
+        icon: 'Common_Potential_Wind_1',
+        description: 'Each Ventus Trekker in the squad increases Wraith\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+        shortDescription: 'Each Ventus Trekker in the squad increase Wraith\'s &Param1&.',
+        params: [
+          'ATK',
+          '5%/8%/11%/14%/17%/20%/23%/26%/29%',
+          '3'
+        ],
+        rarity: 1,
+        stype: 41,
+        corner: 3,
+        hints: {}
+      }
+    ],
+    common: [
+      {
+        name: 'Daybreaker',
+        icon: '14301_Potential_41',
+        description: 'Increases Thousand Shade Dance (Ultimate)\'s shuttling speed. Also increases Wraith\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+        shortDescription: 'Increases the Ultimate\'s shuttling speed. Also increases Wraith\'s &Param1&.',
+        params: [
+          'Ultimate DMG',
+          '144%/230%/316%/402%/488%/574%/660%/746%/832%'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: null,
+        hints: {}
+      },
+      {
+        name: 'Raging Battle Will',
+        icon: 'Common_Potential_Earth_1',
+        description: 'After casting Thousand Shade Dance (Ultimate), increases Wraith\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+        shortDescription: 'After casting the Ultimate, increases Wraith\'s &Param1&.',
+        params: [
+          'ATK',
+          '28%/44%/61%/77%/94%/111%/127%/144%/160%',
+          '20'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: null,
+        hints: {}
+      },
+      {
+        name: 'Tempest Siphon',
+        icon: 'Common_Potential_Earth_1',
+        description: 'When Thousand Shade Dance (Ultimate) unfolds its domain, pulls in targets. Also increases Wraith\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+        shortDescription: 'When the Ultimate unfolds its domain, pulls in targets. Also increases Wraith\'s &Param1&.',
+        params: [
+          'Ultimate DMG',
+          '115%/185%/254%/323%/392%/461%/531%/600%/669%'
+        ],
+        rarity: 2,
+        stype: 41,
+        corner: null,
+        hints: {}
+      }
+    ]
+  }
+};
+
+
 export default allPotentials;
