@@ -11,7 +11,7 @@ export const stellaSoraConfig = {
     current: '1.4',
     name: 'Radiant Messenger, Holy Night Spirit',
     releaseDate: '2025-12-22',
-    eventPageUrl: '/guides/stella-sora/events/version-1-4-radiant-messenger-holy-night-spirit/',
+    eventPageUrl: '/guides/stella-sora/updates/',
   },
 
   gameInfo: {
@@ -112,9 +112,8 @@ export const stellaSoraConfig = {
       description: 'Events, shop events, and banner history',
       size: 'medium',
       guides: [
-        { id: 'st-events', title: 'Events', url: '/guides/stella-sora/events/' },
-        { id: 'st-shop-events', title: 'Shop Events', url: '/guides/stella-sora/shop-events/' },
         { id: 'st-banner-timeline', title: 'Banner Timeline', url: '/guides/stella-sora/banner-timeline/' },
+        { id: 'st-updates', title: 'Updates', url: '/guides/stella-sora/updates/' },
       ],
     },
     {

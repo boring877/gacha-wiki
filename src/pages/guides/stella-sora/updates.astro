@@ -1,0 +1,108 @@
+---
+// Stella Sora Updates index: official patch notes, maintenance notices and news
+// from stellasora.global (events excluded: covered by Events/Shop Events pages).
+import UpdatesLayout from '../../../layouts/stella-sora/UpdatesLayout.astro';
+import { updates } from '../../../data/stella-sora/updates.js';
+
+const pageTitle = 'Stella Sora Updates & Patch Notes';
+const pageDescription =
+  'All official Stella Sora updates: version patch notes, maintenance notices, compensation announcements and official news, newest first, sourced from stellasora.global.';
+const gameTitle = 'Updates & Patch Notes';
+
+const typeCounts = updates.reduce(
+  (acc, u) => {
+    acc[u.typeLabel] = (acc[u.typeLabel] || 0) + 1;
+    return acc;
+  },
+  { All: updates.length } as Record<string, number>
+);
+---
+
+<UpdatesLayout title={pageTitle} description={pageDescription} gameTitle={gameTitle}>
+  <meta slot="head" />
+  <meta name="keywords" content="Stella Sora, updates, patch notes, maintenance, version update, notices, official news" />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDescription} />
+  <meta property="og:type" content="website" />
+
+  <main class="ss-updates-content" role="main">
+    <header>
+      <h1>Stella Sora Updates & Patch Notes</h1>
+      <p class="intro-text">
+        Every official post from stellasora.global: version patch notes, maintenance schedules,
+        compensation announcements, event announcements and news, all in one place.
+      </p>
+    </header>
+
+    <div class="ss-updates-toolbar">
+      <div class="ss-updates-filters" role="group" aria-label="Filter by type">
+        <button class={`ss-uchip${' active'}`} data-filter="all">All {typeCounts.All}</button>
+        <button class="ss-uchip" data-filter="Notices">Notices {typeCounts.Notices || 0}</button>
+        <button class="ss-uchip" data-filter="News">News {typeCounts.News || 0}</button>
+        <button class="ss-uchip" data-filter="Events">Events {typeCounts.Events || 0}</button>
+      </div>
+      <input
+        type="search"
+        class="ss-updates-search"
+        placeholder="Search updates..."
+        aria-label="Search updates"
+      />
+    </div>
+
+    <div class="ss-updates-list">
+      {
+        updates.map(u => (
+          <a
+            class="ss-update-card"
+            href={u.url}
+            data-type={u.typeLabel}
+            data-search={`${u.title} ${u.summary}`.toLowerCase()}
+          >
+            <div class="ss-update-meta">
+              <span class="ss-date">{u.dateText}</span>
+              <span
+                class={`ss-chip ss-chip--${u.type === 'notice' ? 'notices' : u.type === 'activity' ? 'events' : 'news'}`}
+              >
+                {u.typeLabel}
+              </span>
+            </div>
+            <h2 class="ss-update-title">{u.title}</h2>
+            <p class="ss-update-summary">{u.summary}</p>
+            <span class="ss-update-more">Read more</span>
+          </a>
+        ))
+      }
+    </div>
+    <p class="ss-updates-empty" hidden>No updates match your search.</p>
+  </main>
+
+  <script>
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('.ss-update-card'));
+    const empty = document.querySelector('.ss-updates-empty');
+    let filter = 'all';
+    let query = '';
+    function applyFilters() {
+      let visible = 0;
+      cards.forEach(card => {
+        const typeOk = filter === 'all' || card.dataset.type === filter;
+        const searchOk = !query || (card.dataset.search || '').includes(query);
+        const show = typeOk && searchOk;
+        card.hidden = !show;
+        if (show) visible++;
+      });
+      if (empty) empty.hidden = visible > 0;
+    }
+    document.querySelectorAll<HTMLElement>('.ss-uchip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll<HTMLElement>('.ss-uchip').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filter = btn.dataset.filter || 'all';
+        applyFilters();
+      });
+    });
+    document.querySelector('.ss-updates-search')?.addEventListener('input', ev => {
+      query = (ev.target as HTMLInputElement).value.trim().toLowerCase();
+      applyFilters();
+    });
+  </script>
+</UpdatesLayout>

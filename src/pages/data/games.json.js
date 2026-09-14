@@ -88,7 +88,7 @@ export async function GET() {
         tierLists: true,
         damageCalculator: true,
         clanHunt: true,
-        events: true,
+        updates: true,
         redeemCodes: true,
       },
       apiEndpoints: [
@@ -178,7 +178,7 @@ export async function GET() {
         '/data/stella-sora/discs.json',
         '/data/stella-sora/banners.json',
         '/data/stella-sora/tier-lists.json',
-        '/data/stella-sora/events.json',
+        '/data/stella-sora/updates.json',
         '/data/stella-sora/emblems.json',
         '/data/stella-sora/potentials.json',
       ],

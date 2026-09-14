@@ -87,14 +87,14 @@ export async function GET() {
           emblems: '/data/stella-sora/emblems.json',
           potentials: '/data/stella-sora/potentials.json',
           tierLists: '/data/stella-sora/tier-lists.json',
-          events: '/data/stella-sora/events.json',
+          updates: '/data/stella-sora/updates.json',
         },
         webPages: {
           home: '/guides/stella-sora/',
           characterDatabase: '/guides/stella-sora/characters/',
           discDatabase: '/guides/stella-sora/discs/',
           tierLists: '/guides/stella-sora/tier-list/',
-          events: '/guides/stella-sora/events/',
+          updates: '/guides/stella-sora/updates/',
         },
       },
       {
@@ -147,8 +147,8 @@ export async function GET() {
       updates:
         'Game update history with maintenance notes, character recruitment announcements, events, and TL;DR summaries (Zone Nova)',
       redeemCodes: 'Active gift codes for free in-game rewards',
-      events:
-        'Game events with shop items, quests, stages, currency info, and rewards (Stella Sora)',
+      updates:
+        'Official updates archive with patch notes, maintenance notices, and event announcements (Stella Sora)',
       equipment:
         'Accessory sets, stats, enhancement system, farming locations, and build recommendations (Busty Burst)',
       clock:

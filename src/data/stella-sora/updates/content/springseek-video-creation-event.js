@@ -1,0 +1,96 @@
+// Official Stella Sora news content (cleaned from stellasora.global/news/2545)
+export const content = `
+<p><img src="https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora/news/2545-1.webp" alt="" loading="lazy" decoding="async" /></p>
+<p><strong data-path-to-node="4" data-index-in-node="0">Dear Tyrant,</p>
+<p></strong>Ready for a journey to Cangwu?</p>
+<p>The Springseek Video Creation Event is now open! From in-depth gameplay guides to hilarious fun creations using our official assets, we want to see your talent shine. We have prepared festive gifts for your creativity, including cash prizes, new merch, and massive Stellanite Dust rewards!</p>
+<p>Please read the full event details below carefully before participating.</p>
+<p><strong>✦ Contest Schedule (UTC-7) ✦</strong><strong></p>
+<p>Submission Period: </strong>Starting from now - Feb. 23, 2026 19:00<strong></p>
+<p>Judging Start Date: </strong>Feb. 23, 2026<strong></p>
+<p>Winner Announcement: </strong>Before Feb. 27, 2026</p>
+<p><strong>✦ How To Submit ✦</strong><strong></p>
+<p></strong>1. Create your original entry based on your chosen track. Ensure your work is theme-related, strictly follows the Criteria, and was created on or after<strong> Feb. 3, 2026 (UTC-7)</strong>.</p>
+<p>2. Post your work publicly on one of the eligible platforms (<strong>Youtube/Tiktok</strong>) and include the required event hashtags (<strong>#Springseek #StellaSora</strong>).<strong></p>
+<p></strong>3. Fill out our official Submission Form with all required information (including the link to your entry and your player details) to complete your submission.</p>
+<p><strong>Submission Form</strong>: <a href="https://forms.gle/3gEmcGHRQtVWmZn56" target="_blank" rel="noopener nofollow">https://forms.gle/3gEmcGHRQtVWmZn56</a></p>
+<p><strong>✦ Event Overview ✦</strong></p>
+<p><strong>✦ </strong><strong>Content Requirements</p>
+<p>Note</strong>: Your guide video must focus on the content in the new Version. Recommended topics include:<strong></p>
+<p>1. Character & Gameplay Guides</strong></p>
+<p>· Springseek Coronis Review:</p>
+<p>Skill analysis, Emblem analysis, different builds and squad compositions, Disc/Potential choice, etc.</p>
+<p>· Event Walkthrough:</p>
+<p>Guides for new gameplay, Event Shop exchange priorities, Vigor planning, Special Daily Logins, Version perks, etc.</p>
+<p>· Rewards Update Analysis:</p>
+<p>Analysis of the rewards and commercial content over the past two versions, calculations of updated daily/monthly resource (e.g., Stellanite Dust, Vigor) to help other players manage and save, etc.</p>
+<p><strong>2. Lore & World-Building Analysis</strong></p>
+<p>· Dive-deeps of Springseek Coronis, Mistique's new Appearance, Loong characters, Ridge's Nova Times story, etc.</p>
+<p><strong>3. Fun Creations</strong></p>
+<p>· Create fun animations using the official model assets, or in your own unique art style (2D, 3D, hand-drawn, etc.).</p>
+<p><strong>✦ </strong><strong>Submission Requirements</strong><strong></p>
+<p>· Format: </strong>Video ONLY. Text or image submissions will not be accepted.</p>
+<p><strong>· Resolution:</strong> 1080P or higher recommended. Both Horizontal (16:9) and Vertical (9:16) ratios are accepted.</p>
+<p><strong>· Language:</strong> If voiceovers are included, it is recommended to use English for the voiceovers or add English subtitles.</p>
+<p><strong>· Platform:</strong> <strong>YouTube</strong> and<strong> TikTok</strong>. Please upload long videos to YouTube, and short videos to YouTube Shorts or TikTok.</p>
+<p><strong>✦ Criteria</p>
+<p></strong>1. Must meet compliance and basic quality requirements</p>
+<p>2. Must include required hashtags: <strong>#Springseek #StellaSora</strong></p>
+<p><strong>✦ Awards</p>
+<p></strong><strong>Excellence Awards</strong></p>
+<p><strong>First Place (×3)</p>
+<p></strong>$50 Gift Card</p>
+<p>Stellanite Dust ×6000</p>
+<p>Random Stella Sora Character Standee (Journey Begins) ×1</p>
+<p>Random Stella Sora Chibi Wobble Standee (Journey Begins) ×1</p>
+<p><strong>Second Place (×5)</p>
+<p></strong>$25 Gift Card</p>
+<p>Stellanite Dust ×5000</p>
+<p><strong>Third Place (×8) </strong></p>
+<p>Stellanite Dust ×3000</p>
+<p><strong>✦</strong> <strong>General Prizes ✦</strong></p>
+<p><strong>✦ Participation Prize</p>
+<p></strong>· Awarded to all participants who submit at least one compliant entry.</p>
+<p>· <strong>Limited to one prize per individual, regardless of the number of UIDs, emails, or accounts used.</p>
+<p></strong>· <strong>Reward</strong>: Stellanite Dust ×300</p>
+<p><strong>✦ Lucky Draw Prize (×8)</p>
+<p></strong>· We will randomly select<strong> 8 winners</strong> out of all participants who submit at least one compliant entry.</p>
+<p>· Participants who have already won an Excellence Award are not eligible for this prize.</p>
+<p>· <strong>Reward</strong>: Stellanite Dust ×1000</p>
+<p><strong>✦</strong> <strong>Official Assets Download</strong> <strong>✦</strong></p>
+<p>This time, we've got something special - <strong>Official MMD Models</strong> are now available for your creations! Don't forget to check the <strong data-path-to-node="6,0" data-index-in-node="124">Usage Guidelines</strong> below before you start downloading.</p>
+<p><img src="https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora/news/2545-2.webp" alt="" loading="lazy" decoding="async" /><strong></p>
+<p>✦ Usage Guidelines</p>
+<p></strong>1. Models are provided in .pmx format, compatible with mainstream software such as MMD.</p>
+<p>2. Models are provided for non-commercial fan creations and contest use only. Any form of commercial use is strictly prohibited.</p>
+<p>3. Please respect character image and refrain from nsfw content, malicious editing, or editing involving politics, religion, etc.</p>
+<p>4. Copyright of the models belongs to Yostar Games.</p>
+<p><strong>✦ How to Use</p>
+<p></strong>1. Download: <strong>Click the button below</strong> to get the complete character model pack.</p>
+<p>2. Edit: Import the .pmx files into MMD or your preferred 3D software.</p>
+<p>3. Share: Unleash your creativity and share your masterpiece with the community!</p>
+<p><a href="https://drive.google.com/uc?export=download&amp;id=15HapdZzxTbfB8PoU-mlk2v9ohQj13eFf" target="_blank" rel="noopener nofollow"><img src="https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora/news/2545-3.webp" alt="" loading="lazy" decoding="async" /></a></p>
+<p><strong>✦</strong> <strong>Creation </strong><strong>Showcase</strong> <strong>✦</strong></p>
+<p>1. All compliant works will be featured in our dedicated Discord channel: <a href="https://discord.gg/CXekgqn2wh" target="_blank" rel="noopener nofollow">springseek_video_creation_event</a> To keep things organized, we will open new threads regularly (categorized by track) and archive the day's submissions within them.</p>
+<p>2. To ensure fairness, these channels will only be used for showcasing content and will not be used for evaluation, scoring, or data collection.</p>
+<p>3. If an entry is later found to involve plagiarism, privacy violations, or if the original link is deleted during the event, the entry will be disqualified.</p>
+<p>4. After the event ends, the showcased works will remain available for an additional<strong> 7 days</strong> as a public display, after which they will be hidden and archived.</p>
+<p><strong>✦</strong> <strong>Guidelines</strong> <strong>✦</strong></p>
+<p>1. All entries must strictly adhere to the event's <strong>content themes</strong>.</p>
+<p>2. All entries must be original works created specifically for this event and must be created on or after <strong>February 3, 2026 (UTC-7)</strong>.</p>
+<p>3. All entries must <strong>not contain AI-generated content.</strong></p>
+<p>4. You may submit multiple entries for each track and participate in more than one track. Each person can win only one winning award per track, but may be eligible to win awards in both tracks.</p>
+<p>5. Reposting or re-editing the works of others, or any other behavior that violates platform rules is strictly prohibited.</p>
+<p><strong>✦</strong> <strong>Terms & Conditions</strong> <strong>✦</strong></p>
+<p>1. All works (including titles, visuals, and descriptions) must not contain political, violent, pornographic, grotesque, third-party watermarks, or any other content prohibited by your posting platform. Excessively gory, NSFW, or obvious commercial promotions are not eligible.</p>
+<p>2. If third-party materials (such as fonts) are used, the creator must ensure they have the legal rights to use them.</p>
+<p>3. Collaborative works must be uploaded by one participant from the group; please avoid repeated submissions.</p>
+<p>4. All in-game item rewards are limited to the Stella Sora EN Server. If a winner does not have the required account, the reward will be forfeited.</p>
+<p>5. Participants who have already won a Festive Excellence Award, Creative Spark Award, or Gingerbread Award are not eligible for the Lucky Draw Prize.</p>
+<p>6. Please note that the distribution of prizes may be adjusted based on the actual number of participants and the quality of submissions.</p>
+<p>7. Following the official winner announcement, all in-game rewards will be distributed during the next scheduled game maintenance. For physical merchandise and gift card rewards, we will contact the winners using our official customer service email to collect necessary details before proceeding to reward distribution. If you do not receive an email, please check your spam folder first.<strong> Note: The procurement of gift cards may take some time. We appreciate your patience.</strong></p>
+<p>8. The costs necessary for international transfers, including administrative fees and taxes, are to be borne by the organizer.</p>
+<p>9. The winning works are derivative creations by the creators and do not represent the actual plot or settings in the game.</p>
+<p>10. By submitting an entry, the creator agrees to allow Yostar the right to use the work in official Stella Sora content and its affiliates' social platform accounts (for event showcases, social media promotion, etc.). Ownership and all other rights to the work remain with the creator.</p>
+<p>11. The final interpretation of the activity belongs to Yostar Games. If players find any rule violations or have questions, please contact us at: <a href="mailto:StellaSora.cs@yo-star.com" target="_blank" rel="noopener nofollow">StellaSora.cs@yo-star.com</a></p>
+`;

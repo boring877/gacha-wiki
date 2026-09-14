@@ -171,7 +171,10 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
       },
       {
         title: 'Community',
-        links: [{ name: 'Patch Notes', href: '/guides/horizon-walker/updates/' }],
+        links: [
+          { name: 'Banner Timeline', href: '/guides/horizon-walker/banners/' },
+          { name: 'Patch Notes', href: '/guides/horizon-walker/updates/' },
+        ],
       },
     ],
   },
@@ -249,9 +252,8 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
       {
         title: 'Events',
         links: [
-          { name: 'Events', href: '/guides/stella-sora/events/' },
-          { name: 'Shop Events', href: '/guides/stella-sora/shop-events/' },
           { name: 'Banner Timeline', href: '/guides/stella-sora/banner-timeline/' },
+          { name: 'Updates', href: '/guides/stella-sora/updates/' },
         ],
       },
       {

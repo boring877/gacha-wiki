@@ -1,0 +1,80 @@
+---
+// Stella Sora single update / patch note page (official news content)
+import UpdatesLayout from '../../../../layouts/stella-sora/UpdatesLayout.astro';
+import { updates, getUpdateBySlug } from '../../../../data/stella-sora/updates.js';
+
+const contents = import.meta.glob('../../../../data/stella-sora/updates/content/*.js', {
+  eager: true,
+});
+
+export async function getStaticPaths() {
+  return updates.map(u => ({ params: { slug: u.slug }, props: { update: u } }));
+}
+
+const { update } = Astro.props;
+const moduleKey = `../../../../data/stella-sora/updates/content/${update.slug}.js`;
+const mod = contents[moduleKey] as { content?: string } | undefined;
+const content = mod?.content ?? '';
+
+const idx = updates.findIndex(u => u.slug === update.slug);
+const newer = updates[idx - 1];
+const older = updates[idx + 1];
+
+const pageTitle = `${update.title} - Stella Sora Updates`;
+const pageDescription = update.summary;
+const gameTitle = 'Updates & Patch Notes';
+---
+
+<UpdatesLayout title={pageTitle} description={pageDescription} gameTitle={gameTitle}>
+  <meta slot="head" />
+  <meta property="og:title" content={update.title} />
+  <meta property="og:description" content={pageDescription} />
+  <meta property="og:type" content="article" />
+
+  <main class="ss-updates-content" role="main">
+    <article class="ss-update-detail">
+      <header class="ss-update-detail-head">
+        <div class="ss-update-meta">
+          <span class="ss-date">{update.dateText}</span>
+          <span class={`ss-chip ss-chip--${update.type === 'notice' ? 'notices' : 'news'}`}>
+            {update.typeLabel}
+          </span>
+        </div>
+        <h1 class="ss-update-title">{update.title}</h1>
+        <p class="ss-update-source">
+          Source:
+          <a href={`https://stellasora.global/news/${update.id}`} target="_blank" rel="noopener nofollow">
+            stellasora.global/news/{update.id}
+          </a>
+        </p>
+      </header>
+
+      <div class="ss-update-body" set:html={content} />
+
+      <nav class="ss-update-nav">
+        {
+          older ? (
+            <a class="ss-update-navlink" href={older.url}>
+              <span class="ss-update-navdir">Older</span>
+              {older.title}
+            </a>
+          ) : (
+            <span />
+          )
+        }
+        {
+          newer && (
+            <a class="ss-update-navlink ss-update-navlink--right" href={newer.url}>
+              <span class="ss-update-navdir">Newer</span>
+              {newer.title}
+            </a>
+          )
+        }
+      </nav>
+
+      <p class="ss-update-back">
+        <a href="/guides/stella-sora/updates/">Back to all updates</a>
+      </p>
+    </article>
+  </main>
+</UpdatesLayout>
