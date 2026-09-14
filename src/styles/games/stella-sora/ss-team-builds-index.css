@@ -424,7 +424,15 @@
   margin: 0;
   font-size: 1rem;
   font-weight: 700;
-  color: var(--ss-text-primary);
+}
+
+.community-build-name a {
+  color: var(--ss-primary);
+  text-decoration: none;
+}
+
+.community-build-name a:hover {
+  text-decoration: underline;
 }
 
 .community-build-src {
@@ -541,4 +549,67 @@
     padding: 0.55rem 0.7rem;
     font-size: 0.85rem;
   }
+}
+
+/* Import code box (system preset detail + community build pages) */
+.preset-code {
+  display: flex;
+  align-items: stretch;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.preset-code-box {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--ss-white-opacity-05);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+}
+
+.preset-code-label {
+  flex-shrink: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ss-text-secondary);
+}
+
+.preset-code-value {
+  font-family: var(--ss-font-mono, ui-monospace, monospace);
+  font-size: 0.8rem;
+  color: var(--ss-text-primary);
+  overflow-wrap: anywhere;
+}
+
+.preset-code-copy {
+  flex-shrink: 0;
+  background: var(--ss-bg-tertiary);
+  color: var(--ss-text-primary);
+  border: 1px solid var(--ss-border);
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--ss-radius-md);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.preset-code-copy.copied {
+  background: rgba(16, 185, 129, 0.18);
+  border-color: rgba(16, 185, 129, 0.55);
+  color: #34d399;
+}
+
+.preset-code-hint {
+  margin: 0 0 0.9rem 0;
+  font-size: 0.78rem;
+  color: var(--ss-text-secondary);
 }

@@ -5,7 +5,7 @@
 import TeamBuildLayout from '../../../layouts/stella-sora/TeamBuildLayout.astro';
 import SSCharacterSmallImage from '../../../components/stella-sora/SSCharacterSmallImage.astro';
 import { SYSTEM_PRESETS } from '../../../data/stella-sora/system-presets.js';
-import { COMMUNITY_BUILDS, LANG_LABELS } from '../../../data/stella-sora/community-builds.js';
+import { COMMUNITY_BUILDS, LANG_LABELS, getCommunityBuildPath } from '../../../data/stella-sora/community-builds.js';
 import { characterInfo } from '../../../data/stella-sora/character-info.js';
 
 const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
@@ -44,17 +44,17 @@ const structuredData = {
     </p>
 
     <div class="tbuild-tabs">
-      <button class="tbuild-tab active" type="button" data-tab="presets">
-        System Presets
-        <span class="tbuild-tab-count">{SYSTEM_PRESETS.length}</span>
-      </button>
-      <button class="tbuild-tab" type="button" data-tab="community">
+      <button class="tbuild-tab active" type="button" data-tab="community">
         Community
         <span class="tbuild-tab-count">{totalCommunityBuilds}</span>
       </button>
+      <button class="tbuild-tab" type="button" data-tab="presets">
+        System Presets
+        <span class="tbuild-tab-count">{SYSTEM_PRESETS.length}</span>
+      </button>
     </div>
 
-    <div class="tbuild-panel active" data-panel="presets">
+    <div class="tbuild-panel" data-panel="presets">
       <div class="tbuilds-controls">
         <input
           type="search"
@@ -149,8 +149,7 @@ const structuredData = {
 
       <p class="tbuilds-empty" id="tbuilds-empty" hidden>No Trekkers match your search.</p>
     </div>
-
-    <div class="tbuild-panel" data-panel="community">
+    <div class="tbuild-panel active" data-panel="community">
       <p class="tbuilds-intro community-tab-intro">
         Curated from the Chinese, Japanese and Korean communities (English communities are not
         used). Potential names from CN guides are translated through the game's own
@@ -184,22 +183,18 @@ const structuredData = {
                   <span class="tbuild-grade">{char.rarity}-Star</span>
                 </div>
               </div>
-              <a
-                class="community-char-link"
-                href={`/guides/stella-sora/team-builds/${char.slug}/`}
-              >
-                System Preset →
-              </a>
             </div>
 
             {entry.meta && <p class="community-meta">{entry.meta}</p>}
 
             <div class="community-char-builds">
-              {entry.builds.map(b => (
+              {entry.builds.map((b, i) => (
                 <div class="community-build">
                   <div class="community-build-head">
                     <span class={`community-lang lang-${b.lang}`}>{LANG_LABELS[b.lang]}</span>
-                    <h3 class="community-build-name">{b.name}</h3>
+                    <h3 class="community-build-name">
+                      <a href={getCommunityBuildPath(char.slug, i)}>{b.name}</a>
+                    </h3>
                   </div>
                   <p class="community-build-src">
                     <a href={b.url} target="_blank" rel="noopener">

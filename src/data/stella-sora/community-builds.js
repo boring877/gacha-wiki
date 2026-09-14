@@ -607,9 +607,9 @@ export const COMMUNITY_BUILDS = {
         name: 'Dark: Karin shark-summon ult build',
         team: ['karin', 'cosette', 'otoha'],
         flow: 'Specialization 1, ult crit',
-        desc: 'Karin mains the dark deck with her shark-summon ult: potential priority is Hunt Signal, Tidal Burst and Twin Chase, skipping the night-fishing pick. Same support shell as the Firenze deck. AppMedia rates her SS-tier main alongside Shia and Fuyuka.',
+        desc: 'Karin mains the dark deck with her shark-summon ult: potential priority is her Boss Shark multiplier pick (called Hunt Signal in the JP guide), Crashing Wave (the tail-strike follow-up after five ult hits) and Twin Predator (ult crit DMG), skipping the night-fishing pick. Same support shell as the Firenze deck. AppMedia rates her SS-tier main alongside Shia and Fuyuka.',
         potentials: {
-          karin: ['Hunt Signal', 'Tidal Burst', 'Twin Chase'],
+          karin: ["Hunter's Command", 'Crashing Wave', 'Twin Predator'],
         },
       },
       {
@@ -912,4 +912,29 @@ export const COMMUNITY_BUILDS = {
 export function getCommunityBuilds(slug) {
   const entry = COMMUNITY_BUILDS[slug];
   return entry ? { meta: entry.meta || '', builds: entry.builds } : null;
+}
+
+function slugifyBuildName(text) {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+// Stable URL slugs for each build of a character (deterministic: kebab of the build
+// name, deduped with a counter suffix when two builds share a name).
+export function getCommunityBuildSlugs(charSlug) {
+  const entry = COMMUNITY_BUILDS[charSlug];
+  if (!entry) return [];
+  const used = new Map();
+  return entry.builds.map((b, idx) => {
+    const base = slugifyBuildName(b.name) || `build-${idx + 1}`;
+    const n = used.get(base) || 0;
+    used.set(base, n + 1);
+    return n ? `${base}-${n + 1}` : base;
+  });
+}
+
+export function getCommunityBuildPath(charSlug, index) {
+  const slugs = getCommunityBuildSlugs(charSlug);
+  return slugs[index]
+    ? `/guides/stella-sora/team-builds/${charSlug}/${slugs[index]}/`
+    : null;
 }

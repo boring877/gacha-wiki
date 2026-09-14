@@ -1,0 +1,466 @@
+---
+// Stella Sora Community Build Detail Page — one curated community build: the team,
+// each member's potential picks as cards, and the packed import code for the game.
+import TeamBuildLayout from '../../../../../layouts/stella-sora/TeamBuildLayout.astro';
+import {
+  COMMUNITY_BUILDS,
+  getCommunityBuildSlugs,
+  LANG_LABELS,
+} from '../../../../../data/stella-sora/community-builds.js';
+import { COMMUNITY_CODES } from '../../../../../data/stella-sora/community-build-codes.js';
+import { POTENTIAL_LISTS } from '../../../../../data/stella-sora/potential-lists.js';
+import { characterInfo } from '../../../../../data/stella-sora/character-info.js';
+
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const [slug, entry] of Object.entries(COMMUNITY_BUILDS)) {
+    const buildSlugs = getCommunityBuildSlugs(slug);
+    entry.builds.forEach((build, idx) => {
+      paths.push({
+        params: { slug, build: buildSlugs[idx] },
+        props: { charSlug: slug, idx },
+      });
+    });
+  }
+  return paths;
+}
+
+const { charSlug, idx } = Astro.props;
+const entry = COMMUNITY_BUILDS[charSlug];
+const build = entry.builds[idx];
+const codeRec = COMMUNITY_CODES[`${charSlug}:${idx}`];
+const char = characterInfo.find(c => c.slug === charSlug);
+
+const memberData = build.team.map((memberSlug, i) => {
+  const info = characterInfo.find(c => c.slug === memberSlug);
+  const lists = POTENTIAL_LISTS[memberSlug];
+  const encoded = codeRec?.members?.[memberSlug] || [];
+  // display in the guide's priority order (the data file's order), not id order
+  const byName = new Map(encoded.map(p => [p.name, p]));
+  const order = build.potentials?.[memberSlug] || encoded.map(p => p.name);
+  const picks = order
+    .map(name => byName.get(name))
+    .filter(Boolean)
+    .map(p => ({ ...p, icon: String(p.id) }));
+  return {
+    slug: memberSlug,
+    name: info?.name || memberSlug,
+    role: i === 0 ? 'Main' : 'Support',
+    baseUnit: `${lists.cid}01`,
+    picks,
+  };
+});
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  name: `${build.name} - ${char?.name} Community Build - Stella Sora`,
+  description: build.desc.slice(0, 200),
+  url: new URL(Astro.url.pathname, Astro.site),
+};
+---
+
+<TeamBuildLayout
+  title={`${build.name} - ${char?.name} Community Build | Stella Sora`}
+  description={`${build.name}: community build for ${char?.name} from the ${LANG_LABELS[build.lang]} community. Team, potential picks and import code.`}
+  gameTitle={`${char?.name} Community Build`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+  <section class="team-builds-page">
+    <div class="cbuild-hero">
+      <img
+        class="cbuild-hero-portrait"
+        src={`${R2}/charart/${char?.id}01_SK.png`}
+        alt={`${char?.name} portrait`}
+        width={110}
+        height={211}
+        loading="eager"
+        decoding="async"
+      />
+      <div class="cbuild-hero-info">
+        <div class="cbuild-hero-tags">
+          <span class={`community-lang lang-${build.lang}`}>{LANG_LABELS[build.lang]}</span>
+          <span class="tbuild-community-tag">Community Build</span>
+          {build.flow && <span class="community-flow">{build.flow}</span>}
+        </div>
+        <h1 class="cbuild-hero-name">{build.name}</h1>
+        <p class="cbuild-hero-meta">
+          For <a href={`/guides/stella-sora/characters/${charSlug}/`}>{char?.name}</a> ·
+          <a href={build.url} target="_blank" rel="noopener">{build.source}</a>
+          {build.date && <span> · {build.date}</span>}
+        </p>
+        <p class="cbuild-hero-desc">{build.desc}</p>
+      </div>
+    </div>
+
+    {
+      entry.meta && <p class="cbuild-meta">{entry.meta}</p>
+    }
+
+    <div class="cteam-grid">
+      {
+        memberData.map(member => (
+          <div class={`cmember${member.role === 'Main' ? ' is-main' : ''}`}>
+            <div class="cmember-head">
+              <img
+                class="cmember-img"
+                src={`${R2}/charart/${member.baseUnit}_SK.png`}
+                alt={`${member.name} portrait`}
+                width={64}
+                height={122}
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="cmember-title">
+                <span class={`preset-role${member.role === 'Main' ? ' role-main' : ' role-sup'}`}>
+                  {member.role}
+                </span>
+                <a
+                  class="cmember-name"
+                  href={`/guides/stella-sora/characters/${member.slug}/`}
+                >
+                  {member.name}
+                </a>
+              </div>
+            </div>
+            <div class="cmember-pots">
+              {member.picks.length === 0 && (
+                <p class="cmember-nopicks">
+                  {codeRec?.code
+                    ? 'No potential picks listed for this slot in the source guide.'
+                    : 'No import code for this build.'}
+                </p>
+              )}
+              {member.picks.map(pick => (
+                <div class="preset-pot-card">
+                  {!pick.level && <span class="preset-lv-badge is-core">Core</span>}
+                  {pick.level && <span class="preset-lv-badge">Lv. {pick.level}</span>}
+                  <img
+                    src={`${R2}/potential-icons/${pick.icon}.webp`}
+                    alt={pick.name}
+                    width={110}
+                    height={140}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="preset-pot-name">{pick.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    {
+      codeRec?.code ? (
+        <section class="tbuild-section">
+          <h2 class="tbuild-section-title">Import Code</h2>
+          <div class="preset-code">
+            <div class="preset-code-box">
+              <span class="preset-code-label">Import Code</span>
+              <code class="preset-code-value">{codeRec.code}</code>
+            </div>
+            <button class="preset-code-copy" type="button" data-code={codeRec.code}>
+              Copy
+            </button>
+          </div>
+          <p class="preset-code-hint">
+            Paste this into the game's potential import box to load the whole team build at once.
+            Normal potentials are encoded at Lv. 6.
+          </p>
+          {codeRec.dropped.length > 0 && (
+            <p class="cbuild-dropped">
+              Guide picks not in the code (they sit on the other potential board for that slot):
+              {' '}
+              {codeRec.dropped.join(', ')}
+            </p>
+          )}
+        </section>
+      ) : (
+        <section class="tbuild-section">
+          <h2 class="tbuild-section-title">Import Code</h2>
+          <p class="preset-code-hint">
+            No import code for this build: {codeRec?.reason || 'the source guide does not define a full team'}.
+            Follow the picks listed above instead.
+          </p>
+        </section>
+      )
+    }
+
+    <a class="tbuild-back" href="/guides/stella-sora/team-builds/">← All Team Builds</a>
+  </section>
+</TeamBuildLayout>
+
+<script>
+  // Copy the import code to the clipboard (clipboard API with execCommand fallback).
+  function initPresetCopy() {
+    document.querySelectorAll<HTMLButtonElement>('.preset-code-copy').forEach(button => {
+      button.addEventListener('click', () => {
+        const code = button.getAttribute('data-code');
+        if (!code) return;
+
+        const reset = () => {
+          button.classList.add('copied');
+          button.textContent = 'Copied!';
+          setTimeout(() => {
+            button.classList.remove('copied');
+            button.textContent = 'Copy';
+          }, 1600);
+        };
+
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(code).then(reset).catch(() => {
+            fallbackCopy(code);
+            reset();
+          });
+        } else {
+          fallbackCopy(code);
+          reset();
+        }
+      });
+    });
+  }
+
+  function fallbackCopy(code: string) {
+    const textarea = document.createElement('textarea');
+    textarea.value = code;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    textarea.style.left = '-9999px';
+    textarea.setAttribute('readonly', '');
+    document.body.appendChild(textarea);
+    textarea.select();
+    textarea.setSelectionRange(0, 99999);
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPresetCopy);
+  } else {
+    initPresetCopy();
+  }
+</script>
+
+<style>
+  .cbuild-hero {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    margin-bottom: 1.25rem;
+  }
+
+  .cbuild-hero-portrait {
+    width: 110px;
+    height: auto;
+    border-radius: var(--ss-radius-md);
+    border: 1px solid var(--ss-border);
+    background: rgba(0, 0, 0, 0.25);
+    flex-shrink: 0;
+  }
+
+  .cbuild-hero-tags {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.45rem;
+  }
+
+  .cbuild-hero-name {
+    margin: 0 0 0.45rem 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--ss-text-primary);
+  }
+
+  .cbuild-hero-meta {
+    margin: 0 0 0.6rem 0;
+    font-size: 0.85rem;
+    color: var(--ss-text-secondary);
+  }
+
+  .cbuild-hero-meta a {
+    color: var(--ss-primary);
+    text-decoration: none;
+  }
+
+  .cbuild-hero-desc {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--ss-text-primary);
+    line-height: 1.55;
+  }
+
+  .tbuild-section {
+    background: var(--ss-bg-secondary);
+    border: 1px solid var(--ss-border);
+    border-radius: var(--ss-radius-lg);
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .tbuild-section-title {
+    margin: 0 0 0.9rem 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ss-text-primary);
+  }
+
+  .cbuild-meta {
+    margin: 0 0 1rem 0;
+    font-size: 0.88rem;
+    color: var(--ss-text-secondary);
+  }
+
+  .cteam-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.9rem;
+    align-items: start;
+    margin-bottom: 1.25rem;
+  }
+
+  .cmember {
+    background: var(--ss-white-opacity-05);
+    border: 1px solid var(--ss-border);
+    border-radius: var(--ss-radius-md);
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    min-width: 0;
+  }
+
+  .cmember.is-main {
+    border-color: var(--ss-primary-dark);
+  }
+
+  .cmember-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 0;
+  }
+
+  .cmember-img {
+    width: 64px;
+    height: auto;
+    border-radius: var(--ss-radius-sm);
+    background: rgba(0, 0, 0, 0.25);
+    flex-shrink: 0;
+  }
+
+  .cmember-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+  }
+
+  .preset-role {
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .preset-role.role-main {
+    color: var(--ss-primary);
+  }
+
+  .preset-role.role-sup {
+    color: var(--ss-text-secondary);
+  }
+
+  .cmember-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ss-text-primary);
+    text-decoration: none;
+  }
+
+  .cmember-pots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .cmember-nopicks {
+    margin: 0;
+    font-size: 0.78rem;
+    color: var(--ss-text-secondary);
+  }
+
+  .preset-pot-card {
+    position: relative;
+    width: calc((100% - 0.9rem) / 3);
+    max-width: 104px;
+    min-width: 0;
+  }
+
+  .preset-pot-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+  }
+
+  .preset-lv-badge {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    z-index: 1;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.78);
+    color: #fff;
+  }
+
+  .preset-lv-badge.is-core {
+    background: rgba(14, 165, 233, 0.85);
+  }
+
+  .preset-pot-name {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.7rem;
+    color: var(--ss-text-secondary);
+    text-align: center;
+    overflow-wrap: break-word;
+  }
+
+  .cbuild-dropped {
+    margin: 0.75rem 0 0 0;
+    font-size: 0.78rem;
+    color: var(--ss-text-secondary);
+  }
+
+  .tbuild-back {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: var(--ss-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .cbuild-hero {
+      flex-direction: column;
+    }
+
+    .cbuild-hero-portrait {
+      width: 96px;
+    }
+
+    .cteam-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
