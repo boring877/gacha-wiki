@@ -1,153 +1,307 @@
 ---
-// Stella Sora Team Builds Page — the game's built-in System Presets.
-// For every Trekker: the official recommended team (Main + 2 Supports), decoded
-// from the SystemPreset table. Portraits served from the R2 bucket.
+// Stella Sora Team Builds Page — two tabs: System Presets (the game's official loadouts,
+// decoded from the SystemPreset table) and Community Builds (curated from the Chinese,
+// Japanese and Korean communities).
 import TeamBuildLayout from '../../../layouts/stella-sora/TeamBuildLayout.astro';
 import SSCharacterSmallImage from '../../../components/stella-sora/SSCharacterSmallImage.astro';
 import { SYSTEM_PRESETS } from '../../../data/stella-sora/system-presets.js';
+import { COMMUNITY_BUILDS, LANG_LABELS } from '../../../data/stella-sora/community-builds.js';
+import { characterInfo } from '../../../data/stella-sora/character-info.js';
 
 const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
+
+const charBySlug = Object.fromEntries(characterInfo.map(c => [c.slug, c]));
+const communityEntries = characterInfo
+  .filter(c => COMMUNITY_BUILDS[c.slug])
+  .map(c => ({ char: c, entry: COMMUNITY_BUILDS[c.slug] }));
+const totalCommunityBuilds = communityEntries.reduce((a, e) => a + e.entry.builds.length, 0);
 
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: 'Stella Sora System Presets - Official Recommended Teams',
+  name: 'Stella Sora Team Builds - System Presets and Community Builds',
   description:
-    'The built-in System Presets for every Stella Sora Trekker: the official recommended Main + 2 Support team compositions, extracted from the game data.',
+    'The built-in System Presets for every Stella Sora Trekker plus the best community builds curated from the Chinese, Japanese and Korean communities: teams, potential picks and import codes.',
   url: new URL(Astro.url.pathname, Astro.site),
   numberOfItems: SYSTEM_PRESETS.length,
 };
 ---
 
 <TeamBuildLayout
-  title="Stella Sora Team Builds - Official System Preset Teams for Every Trekker"
-  description="The game's built-in System Presets: recommended Main + 2 Support team compositions for all Stella Sora Trekkers, extracted directly from the game data."
+  title="Stella Sora Team Builds - System Presets and Community Builds for Every Trekker"
+  description="The game's built-in System Presets plus the best community builds from the Chinese, Japanese and Korean communities: recommended teams, exact potential picks and import codes for all Stella Sora Trekkers."
   gameTitle="Team Builds"
 >
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
   <section class="team-builds-page">
     <p class="tbuilds-intro">
-      The game ships built-in <strong>System Presets</strong>: recommended team compositions for
-      every Trekker, one per skin. Each team is Main + 2 Supports. Extracted directly from the game
-      data, shown exactly as the game defines them.
+      Two kinds of builds live here. <strong>System Presets</strong> are official loadouts built
+      into the game itself: the recommended team, the exact potentials and levels for every
+      member, and an import code you can paste in game. <strong>Community Builds</strong> are
+      curated from the Chinese, Japanese and Korean communities: the best teams and potential
+      picks players have found.
     </p>
 
-    <div class="tbuilds-controls">
-      <input
-        type="search"
-        id="tbuilds-search"
-        class="tbuilds-search"
-        placeholder="Search Trekker or team member..."
-        autocomplete="off"
-      />
-      <select id="tbuilds-element" class="tbuilds-select" aria-label="Filter by element">
-        <option value="">All Elements</option>
-        {['Aqua', 'Ignis', 'Terra', 'Ventus', 'Lux', 'Umbra'].map(el => (
-          <option value={el}>{el}</option>
-        ))}
-      </select>
+    <div class="tbuild-tabs">
+      <button class="tbuild-tab active" type="button" data-tab="presets">
+        System Presets
+        <span class="tbuild-tab-count">{SYSTEM_PRESETS.length}</span>
+      </button>
+      <button class="tbuild-tab" type="button" data-tab="community">
+        Community
+        <span class="tbuild-tab-count">{totalCommunityBuilds}</span>
+      </button>
     </div>
 
-    <div class="tbuilds-grid" id="tbuilds-grid">
+    <div class="tbuild-panel active" data-panel="presets">
+      <div class="tbuilds-controls">
+        <input
+          type="search"
+          id="tbuilds-search"
+          class="tbuilds-search"
+          placeholder="Search Trekker or team member..."
+          autocomplete="off"
+        />
+        <select id="tbuilds-element" class="tbuilds-select" aria-label="Filter by element">
+          <option value="">All Elements</option>
+          {['Aqua', 'Ignis', 'Terra', 'Ventus', 'Lux', 'Umbra'].map(el => (
+            <option value={el}>{el}</option>
+          ))}
+        </select>
+      </div>
+
+      <div class="tbuilds-grid" id="tbuilds-grid">
+        {
+          SYSTEM_PRESETS.map(char => (
+            <article
+              class="tbuild-card"
+              data-search={`${char.name} ${char.element} ${char.presets
+                .flatMap(p => p.members.map(m => m.name))
+                .join(' ')}`.toLowerCase()}
+              data-element={char.element}
+            >
+              <a
+                class="tbuild-card-link"
+                href={`/guides/stella-sora/team-builds/${char.slug}/`}
+                aria-label={`${char.name} system preset build details`}
+              />
+              <div class="tbuild-card-head">
+                <img
+                  class="tbuild-main-portrait"
+                  src={`${R2}/charart/${char.baseUnit}_SK.png`}
+                  alt={`${char.name} portrait`}
+                  width={100}
+                  height={192}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="tbuild-card-title">
+                  <span class="tbuild-system-tag">System Preset</span>
+                  <h2 class="tbuild-name">{char.name}</h2>
+                  <span class={`element-badge element-${char.element.toLowerCase()}`}>
+                    {char.element}
+                  </span>
+                  <span class="tbuild-grade">{char.grade}-Star</span>
+                </div>
+              </div>
+
+              <div class="tbuild-presets">
+                {char.presets.map((preset, i) => (
+                  <div class="tbuild-preset">
+                    <div class="tbuild-preset-label">Preset {i + 1}</div>
+                    <div class="tbuild-members">
+                      {preset.members.map(member => (
+                        <a
+                          class={`tbuild-member${member.slug === char.slug ? ' is-main' : ''}`}
+                          href={`/guides/stella-sora/characters/${member.slug}/`}
+                          title={member.name}
+                        >
+                          <SSCharacterSmallImage
+                            characterName={member.slug}
+                            alt={`${member.name} icon`}
+                            width={48}
+                            height={48}
+                          />
+                          <span class="tbuild-member-name">{member.name}</span>
+                          <span
+                            class={`tbuild-member-role${member.role === 'Main' ? ' role-main' : ''}`}
+                          >
+                            {member.role}
+                          </span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <a class="tbuild-cta" href={`/guides/stella-sora/team-builds/${char.slug}/`}>
+                Build Details
+                <span class="tbuild-cta-arrow" aria-hidden="true">
+                  →
+                </span>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+
+      <p class="tbuilds-empty" id="tbuilds-empty" hidden>No Trekkers match your search.</p>
+    </div>
+
+    <div class="tbuild-panel" data-panel="community">
+      <p class="tbuilds-intro community-tab-intro">
+        Curated from the Chinese, Japanese and Korean communities (English communities are not
+        used). Potential names from CN guides are translated through the game's own
+        localization. Always check the source for the full context and current patch.
+      </p>
+
       {
-        SYSTEM_PRESETS.map(char => (
-          <article
-            class="tbuild-card"
-            data-search={`${char.name} ${char.element} ${char.presets
-              .flatMap(p => p.members.map(m => m.name))
+        communityEntries.map(({ char, entry }) => (
+          <div
+            class="community-char"
+            data-search={`${char.name} ${char.element} ${entry.builds
+              .map(b => `${b.name} ${b.source} ${b.flow || ''}`)
               .join(' ')}`.toLowerCase()}
             data-element={char.element}
           >
-            <div class="tbuild-card-head">
-              <img
-                class="tbuild-main-portrait"
-                src={`${R2}/charart/${char.baseUnit}_SK.png`}
-                alt={`${char.name} portrait`}
-                width={100}
-                height={192}
-                loading="lazy"
-                decoding="async"
+            <div class="community-char-head">
+              <SSCharacterSmallImage
+                characterName={char.slug}
+                alt={`${char.name} icon`}
+                width={56}
+                height={56}
               />
-              <div class="tbuild-card-title">
-                <h2 class="tbuild-name">
-                  <a href={`/guides/stella-sora/characters/${char.slug}/`}>{char.name}</a>
+              <div class="community-char-id">
+                <h2 class="community-char-name">
+                  <a href={`/guides/stella-sora/team-builds/${char.slug}/`}>{char.name}</a>
                 </h2>
-                <span class={`element-badge element-${char.element.toLowerCase()}`}>
-                  {char.element}
-                </span>
-                <span class="tbuild-grade">{char.grade}-Star</span>
+                <div class="community-char-badges">
+                  <span class={`element-badge element-${char.element.toLowerCase()}`}>
+                    {char.element}
+                  </span>
+                  <span class="tbuild-grade">{char.rarity}-Star</span>
+                </div>
               </div>
+              <a
+                class="community-char-link"
+                href={`/guides/stella-sora/team-builds/${char.slug}/`}
+              >
+                System Preset →
+              </a>
             </div>
 
-            <div class="tbuild-presets">
-              {char.presets.map((preset, i) => (
-                <div class="tbuild-preset">
-                  <div class="tbuild-preset-label">
-                    Preset {i + 1}
-                    <span class="tbuild-preset-skin">
-                      {preset.skinType === 'base' ? 'Base' : 'Awakened'}
-                    </span>
+            {entry.meta && <p class="community-meta">{entry.meta}</p>}
+
+            <div class="community-char-builds">
+              {entry.builds.map(b => (
+                <div class="community-build">
+                  <div class="community-build-head">
+                    <span class={`community-lang lang-${b.lang}`}>{LANG_LABELS[b.lang]}</span>
+                    <h3 class="community-build-name">{b.name}</h3>
                   </div>
-                  <div class="tbuild-members">
-                    {preset.members.map(member => (
-                      <a
-                        class={`tbuild-member${member.slug === char.slug ? ' is-main' : ''}`}
-                        href={`/guides/stella-sora/characters/${member.slug}/`}
-                        title={member.name}
-                      >
-                        <SSCharacterSmallImage
-                          characterName={member.slug}
-                          alt={`${member.name} icon`}
-                          width={48}
-                          height={48}
-                        />
-                        <span class="tbuild-member-name">{member.name}</span>
-                        <span
-                          class={`tbuild-member-role${member.role === 'Main' ? ' role-main' : ''}`}
+                  <p class="community-build-src">
+                    <a href={b.url} target="_blank" rel="noopener">
+                      {b.source}
+                    </a>
+                    {b.date && <span class="community-date"> · {b.date}</span>}
+                  </p>
+                  {b.flow && <p class="community-flow">{b.flow}</p>}
+                  <div class="community-team">
+                    {b.team.map((slug, idx) => {
+                      const m = charBySlug[slug];
+                      return (
+                        <a
+                          class={`community-member${idx === 0 ? ' is-main' : ''}`}
+                          href={`/guides/stella-sora/characters/${slug}/`}
                         >
-                          {member.role}
-                        </span>
-                      </a>
-                    ))}
+                          <SSCharacterSmallImage
+                            characterName={slug}
+                            alt={`${m?.name || slug} icon`}
+                            width={40}
+                            height={40}
+                          />
+                          <span class="community-member-name">{m?.name || slug}</span>
+                          {idx === 0 && <span class="community-member-role">Main</span>}
+                        </a>
+                      );
+                    })}
                   </div>
+                  <p class="community-build-desc">{b.desc}</p>
+                  {b.potentials && (
+                    <div class="community-pots">
+                      {Object.entries(b.potentials).map(([mslug, picks]) => {
+                        const m = charBySlug[mslug];
+                        return (
+                          <div class="community-pot-unit">
+                            <span class="community-pot-owner">{m?.name || mslug}</span>
+                            <div class="community-pot-picks">
+                              {picks.map(pick => (
+                                <span class="community-pick-chip">{pick}</span>
+                              ))}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
-          </article>
+          </div>
         ))
       }
     </div>
-
-    <p class="tbuilds-empty" id="tbuilds-empty" hidden>No Trekkers match your search.</p>
   </section>
 </TeamBuildLayout>
 
 <script>
-  function initTeamBuildFilters() {
+  function initTeamBuildPage() {
     const search = document.getElementById('tbuilds-search') as HTMLInputElement | null;
     const element = document.getElementById('tbuilds-element') as HTMLSelectElement | null;
-    const cards = Array.from(document.querySelectorAll<HTMLElement>('.tbuild-card'));
     const empty = document.getElementById('tbuilds-empty');
+    const tabs = Array.from(document.querySelectorAll<HTMLElement>('.tbuild-tab'));
+    const panels = Array.from(document.querySelectorAll<HTMLElement>('.tbuild-panel'));
+    if (!search || !element || !tabs.length || !panels.length) return;
 
-    const apply = () => {
-      const q = (search?.value || '').toLowerCase().trim();
-      const el = element?.value || '';
+    // Tabs: panels stay fully visible without JS; the script marks the tab bar
+    // active which enables panel hiding.
+    const bar = document.querySelector('.tbuild-tabs');
+    if (bar) bar.classList.add('tbuild-tabs-on');
+
+    const activePanel = () =>
+      panels.find(p => p.classList.contains('active')) || panels[0];
+
+    const applyFilter = () => {
+      const q = (search.value || '').toLowerCase().trim();
+      const el = element.value || '';
       let visible = 0;
-      cards.forEach(card => {
-        const ok = (!q || card.dataset.search!.includes(q)) && (!el || card.dataset.element === el);
-        card.style.display = ok ? '' : 'none';
-        if (ok) visible++;
-      });
+      activePanel()
+        .querySelectorAll<HTMLElement>('[data-search]')
+        .forEach(item => {
+          const ok =
+            (!q || item.dataset.search!.includes(q)) && (!el || item.dataset.element === el);
+          item.style.display = ok ? '' : 'none';
+          if (ok) visible++;
+        });
       if (empty) empty.hidden = visible > 0;
     };
 
-    search?.addEventListener('input', apply);
-    element?.addEventListener('change', apply);
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.toggle('active', t === tab));
+        panels.forEach(p => p.classList.toggle('active', p.dataset.panel === tab.dataset.tab));
+        applyFilter();
+      });
+    });
+
+    search.addEventListener('input', applyFilter);
+    element.addEventListener('change', applyFilter);
   }
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTeamBuildFilters);
+    document.addEventListener('DOMContentLoaded', initTeamBuildPage);
   } else {
-    initTeamBuildFilters();
+    initTeamBuildPage();
   }
 </script>

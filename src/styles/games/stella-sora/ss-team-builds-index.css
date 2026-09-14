@@ -54,6 +54,7 @@
 }
 
 .tbuild-card {
+  position: relative;
   background: var(--ss-bg-tertiary);
   border: 1px solid var(--ss-border);
   border-radius: var(--ss-radius-md);
@@ -61,6 +62,21 @@
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
+}
+
+/* Whole-card click target: the stretched overlay makes every non-link part of
+   the card open the build page; member chips and the CTA sit above it. */
+.tbuild-card-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: var(--ss-radius-md);
+}
+
+.tbuild-card-link:focus-visible::after {
+  outline: 2px solid var(--ss-primary);
+  outline-offset: 2px;
 }
 
 /* Card head: portrait + identity */
@@ -86,21 +102,58 @@
   gap: 0.4rem;
 }
 
+.tbuild-system-tag {
+  padding: 0.14rem 0.5rem;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 5px;
+  background: var(--ss-primary-dark);
+  color: #fff;
+}
+
 .tbuild-name {
   margin: 0;
   font-size: 1.2rem;
   font-weight: 700;
-}
-
-.tbuild-name a {
   color: var(--ss-text-primary);
-  text-decoration: none;
 }
 
 .tbuild-grade {
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--ss-text-secondary);
+}
+
+/* Primary call to action: the main thing people click */
+.tbuild-cta {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: auto;
+  padding: 0.7rem 1rem;
+  background: var(--ss-primary-dark);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--ss-radius-sm);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tbuild-cta:hover {
+  background: var(--ss-primary-hover);
+}
+
+.tbuild-cta-arrow {
+  font-size: 1.05rem;
+  line-height: 1;
 }
 
 /* Preset blocks */
@@ -118,19 +171,6 @@
   margin-bottom: 0.5rem;
 }
 
-.tbuild-preset-skin {
-  margin-left: 0.4rem;
-  padding: 0.1rem 0.4rem;
-  font-size: 0.68rem;
-  font-weight: 600;
-  text-transform: none;
-  letter-spacing: 0;
-  border-radius: 4px;
-  background: var(--ss-white-opacity-05);
-  border: 1px solid var(--ss-border);
-  color: var(--ss-text-primary);
-}
-
 .tbuild-members {
   display: flex;
   gap: 0.5rem;
@@ -138,6 +178,8 @@
 }
 
 .tbuild-member {
+  position: relative;
+  z-index: 2;
   flex: 1;
   min-width: 88px;
   display: flex;
@@ -194,5 +236,309 @@
 
   .tbuilds-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Community builds (CN / JP / KR curated guides) */
+
+.tbuild-community-tag {
+  margin-left: 0.5rem;
+  padding: 0.12rem 0.45rem;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 4px;
+  background: var(--ss-white-opacity-05);
+  border: 1px solid var(--ss-border);
+  color: var(--ss-text-secondary);
+  vertical-align: middle;
+}
+
+/* Build tabs (detail page) */
+.tbuild-tabs {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--ss-border);
+}
+
+.tbuild-tab {
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ss-text-secondary);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.tbuild-tab.active {
+  color: var(--ss-text-primary);
+  border-bottom-color: var(--ss-primary);
+}
+
+.tbuild-tab-count {
+  margin-left: 0.35rem;
+  padding: 0.05rem 0.45rem;
+  font-size: 0.68rem;
+  border-radius: 999px;
+  background: var(--ss-white-opacity-05);
+  border: 1px solid var(--ss-border);
+  color: var(--ss-text-secondary);
+}
+
+.tbuild-tab.active .tbuild-tab-count {
+  background: var(--ss-primary-dark);
+  border-color: var(--ss-primary-dark);
+  color: #fff;
+}
+
+/* Panels only hide when JS marks the tab bar active (no-JS fallback shows all) */
+.tbuild-tabs-on ~ .tbuild-panel:not(.active) {
+  display: none;
+}
+
+.community-meta {
+  margin: 0 0 0.4rem 0;
+  font-size: 0.9rem;
+  color: var(--ss-text-primary);
+}
+
+.community-note-top {
+  margin: 0 0 1rem 0;
+  font-size: 0.78rem;
+  color: var(--ss-text-secondary);
+}
+
+/* Landing page community tab: per-character blocks */
+.community-char {
+  padding: 1rem;
+  background: var(--ss-bg-tertiary);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  margin-bottom: 1rem;
+}
+
+.community-char-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+
+.community-char-head img {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid var(--ss-border);
+}
+
+.community-char-id {
+  flex: 1;
+  min-width: 0;
+}
+
+.community-char-name {
+  margin: 0 0 0.3rem 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.community-char-name a {
+  color: var(--ss-text-primary);
+  text-decoration: none;
+}
+
+.community-char-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.community-char-link {
+  flex-shrink: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ss-primary);
+  text-decoration: none;
+}
+
+.community-char-link:hover {
+  text-decoration: underline;
+}
+
+.community-char .community-meta {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.85rem;
+}
+
+.community-char-builds {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.community-build {
+  padding: 0.9rem;
+  background: var(--ss-white-opacity-05);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  margin-bottom: 0.9rem;
+}
+
+.community-build-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.community-lang {
+  padding: 0.12rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #fff;
+}
+
+.community-lang.lang-zh {
+  background: #b91c1c;
+}
+
+.community-lang.lang-ja {
+  background: #d97706;
+}
+
+.community-lang.lang-ko {
+  background: #2563eb;
+}
+
+.community-build-name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ss-text-primary);
+}
+
+.community-build-src {
+  margin: 0 0 0.45rem 0;
+  font-size: 0.8rem;
+  color: var(--ss-text-secondary);
+}
+
+.community-build-src a {
+  color: var(--ss-primary);
+  text-decoration: none;
+}
+
+.community-flow {
+  display: inline-block;
+  margin: 0 0 0.55rem 0;
+  padding: 0.14rem 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  border-radius: 4px;
+  background: var(--ss-white-opacity-05);
+  border: 1px solid var(--ss-border);
+  color: var(--ss-text-secondary);
+}
+
+.community-team {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.55rem;
+}
+
+.community-member {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.22rem 0.6rem 0.22rem 0.25rem;
+  background: var(--ss-white-opacity-05);
+  border: 1px solid var(--ss-border);
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.community-member.is-main {
+  border-color: var(--ss-primary-dark);
+}
+
+.community-member img {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.community-member-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+}
+
+.community-member-role {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ss-primary);
+}
+
+.community-build-desc {
+  margin: 0 0 0.6rem 0;
+  font-size: 0.85rem;
+  color: var(--ss-text-primary);
+  line-height: 1.55;
+}
+
+.community-pots {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.community-pot-unit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.community-pot-owner {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ss-text-secondary);
+}
+
+.community-pot-picks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.community-pick-chip {
+  display: inline-block;
+  padding: 0.14rem 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  background: var(--ss-white-opacity-05);
+  border: 1px solid var(--ss-border);
+  color: var(--ss-text-primary);
+}
+
+@media (max-width: 768px) {
+  .tbuild-tab {
+    padding: 0.55rem 0.7rem;
+    font-size: 0.85rem;
   }
 }

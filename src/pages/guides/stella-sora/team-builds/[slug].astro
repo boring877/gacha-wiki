@@ -1,0 +1,488 @@
+---
+// Stella Sora Character Build Page — per-Trekker System Preset teams + the exact
+// potential selection (potentials + levels) decoded from the SystemPreset blobs.
+import TeamBuildLayout from '../../../../layouts/stella-sora/TeamBuildLayout.astro';
+import { SYSTEM_PRESETS } from '../../../../data/stella-sora/system-presets.js';
+import { STELLA_SORA_CHARACTERS } from '../../../../data/stella-sora/characters.js';
+
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
+
+export async function getStaticPaths() {
+  return SYSTEM_PRESETS.map(char => ({
+    params: { slug: char.slug },
+    props: { preset: char },
+  }));
+}
+
+const { preset } = Astro.props;
+const char = STELLA_SORA_CHARACTERS.find(c => c.slug === preset.slug);
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  name: `${preset.name} Team Build - Stella Sora System Preset`,
+  description: `Official recommended team and potential selection for ${preset.name} in Stella Sora.`,
+  url: new URL(Astro.url.pathname, Astro.site),
+};
+---
+
+<TeamBuildLayout
+  title={`${preset.name} Build - System Preset Teams & Potentials | Stella Sora`}
+  description={`${preset.name} recommended teams and potential selection: the game's built-in System Preset with Main + 2 Supports and the exact potentials and levels to pick.`}
+  gameTitle={`${preset.name} Build`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+  <section class="team-builds-page">
+    <!-- Character head -->
+    <div class="tbuild-hero">
+      <img
+        class="tbuild-hero-portrait"
+        src={`${R2}/charart/${preset.baseUnit}_SK.png`}
+        alt={`${preset.name} portrait`}
+        width={130}
+        height={249}
+        loading="eager"
+        decoding="async"
+      />
+      <div class="tbuild-hero-info">
+        <h1 class="tbuild-hero-name">
+          <a href={`/guides/stella-sora/characters/${preset.slug}/`}>{preset.name}</a>
+        </h1>
+        <div class="tbuild-hero-meta">
+          <span class={`element-badge element-${preset.element.toLowerCase()}`}>{preset.element}</span>
+          <span class="tbuild-grade">{preset.grade}-Star</span>
+          {char?.role && <span class="tbuild-grade">{char.role}</span>}
+        </div>
+        <p class="tbuild-hero-note">
+          The game's built-in System Presets for {preset.name}: the recommended team with every
+          member's exact potentials and levels to pick, decoded from the game data.
+        </p>
+      </div>
+    </div>
+
+    <!-- System Presets -->
+    {
+      preset.presets.map((p, i) => (
+        <section class="tbuild-section">
+          <h2 class="tbuild-section-title">System Preset {i + 1}</h2>
+
+          <div class="preset-code">
+            <div class="preset-code-box">
+              <span class="preset-code-label">Import Code</span>
+              <code class="preset-code-value">{p.code}</code>
+            </div>
+            <button class="preset-code-copy" type="button" data-code={p.code}>Copy</button>
+          </div>
+          <p class="preset-code-hint">
+            Paste this into the game's potential import box to load the whole team build at once.
+          </p>
+
+          <div class="preset-team">
+            {p.members.map(member => (
+              <div class="preset-member">
+                <div class="preset-member-head">
+                  <img
+                    class="preset-member-img"
+                    src={`${R2}/charart/${member.baseUnit}_SK.png`}
+                    alt={`${member.name} portrait`}
+                    width={64}
+                    height={122}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="preset-member-title">
+                    <span
+                      class={`preset-role${member.role === 'Main' ? ' role-main' : ' role-sup'}`}
+                    >
+                      {member.role}
+                    </span>
+                    <a
+                      class="preset-member-name"
+                      href={`/guides/stella-sora/characters/${member.slug}/`}
+                    >
+                      {member.name}
+                    </a>
+                  </div>
+                </div>
+
+                <div class="preset-member-pots">
+                  {member.selection.cores.map(core => (
+                    <div class="preset-pot-card">
+                      <img
+                        src={`${R2}/potential-icons/${core.icon}.webp`}
+                        alt={core.name}
+                        width={110}
+                        height={140}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <span class="preset-pot-name">{core.name}</span>
+                    </div>
+                  ))}
+                  {member.selection.normals.map(norm => (
+                    <div class="preset-pot-card">
+                      <span class="preset-lv-badge">Lv. {norm.level}</span>
+                      <img
+                        src={`${R2}/potential-icons/${norm.icon}.webp`}
+                        alt={norm.name}
+                        width={110}
+                        height={140}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <span class="preset-pot-name">{norm.name}</span>
+                    </div>
+                  ))}
+                  {member.selection.commons.length > 0 && (
+                    <div class="preset-pot-divider">Common</div>
+                  )}
+                  {member.selection.commons.map(com => (
+                    <div class="preset-pot-card">
+                      <span class="preset-lv-badge">Lv. {com.level}</span>
+                      <img
+                        src={`${R2}/potential-icons/${com.icon}.webp`}
+                        alt={com.name}
+                        width={110}
+                        height={140}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <span class="preset-pot-name">{com.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+
+    <!-- Disc -->
+    {
+      char?.disc && (
+        <section class="tbuild-section">
+          <h2 class="tbuild-section-title">Disc</h2>
+          <p class="tbuild-section-note">
+            {preset.name}'s signature disc:{' '}
+            <a href={`/guides/stella-sora/discs/${char.disc.slug}/`}>{char.disc.name}</a> — view the
+            full disc stats and skills on the disc page.
+          </p>
+        </section>
+      )
+    }
+
+  </section>
+</TeamBuildLayout>
+
+<style>
+  .tbuild-hero {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+  }
+
+  .tbuild-hero-portrait {
+    width: 130px;
+    height: auto;
+    border-radius: var(--ss-radius-md);
+    border: 1px solid var(--ss-border);
+    background: rgba(0, 0, 0, 0.25);
+    flex-shrink: 0;
+  }
+
+  .tbuild-hero-name {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+
+  .tbuild-hero-name a {
+    color: var(--ss-text-primary);
+    text-decoration: none;
+  }
+
+  .tbuild-hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tbuild-hero-note {
+    margin: 0.75rem 0 0 0;
+    font-size: 0.875rem;
+    color: var(--ss-text-secondary);
+  }
+
+  .tbuild-section {
+    background: var(--ss-bg-secondary);
+    border: 1px solid var(--ss-border);
+    border-radius: var(--ss-radius-lg);
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .tbuild-section-title {
+    margin: 0 0 0.9rem 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ss-text-primary);
+  }
+
+  .preset-code {
+    display: flex;
+    align-items: stretch;
+    gap: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .preset-code-box {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--ss-white-opacity-05);
+    border: 1px solid var(--ss-border);
+    border-radius: var(--ss-radius-md);
+  }
+
+  .preset-code-label {
+    flex-shrink: 0;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ss-text-secondary);
+  }
+
+  .preset-code-value {
+    font-family: var(--ss-font-mono, ui-monospace, monospace);
+    font-size: 0.8rem;
+    color: var(--ss-text-primary);
+    overflow-wrap: anywhere;
+  }
+
+  .preset-code-copy {
+    flex-shrink: 0;
+    background: var(--ss-bg-tertiary);
+    color: var(--ss-text-primary);
+    border: 1px solid var(--ss-border);
+    padding: 0.5rem 1.1rem;
+    border-radius: var(--ss-radius-md);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .preset-code-copy.copied {
+    background: rgba(16, 185, 129, 0.18);
+    border-color: rgba(16, 185, 129, 0.55);
+    color: #34d399;
+  }
+
+  .preset-code-hint {
+    margin: 0 0 0.9rem 0;
+    font-size: 0.78rem;
+    color: var(--ss-text-secondary);
+  }
+
+  .preset-team {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.9rem;
+    align-items: start;
+  }
+
+  .preset-member {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 0.75rem;
+    background: var(--ss-white-opacity-05);
+    border: 1px solid var(--ss-border);
+    border-radius: var(--ss-radius-md);
+    min-width: 0;
+  }
+
+  .preset-member-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 0;
+  }
+
+  .preset-member-img {
+    width: 64px;
+    height: auto;
+    border-radius: var(--ss-radius-sm);
+    background: rgba(0, 0, 0, 0.25);
+    flex-shrink: 0;
+  }
+
+  .preset-member-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+  }
+
+  .preset-role {
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .preset-role.role-main {
+    color: var(--ss-primary);
+  }
+
+  .preset-role.role-sup {
+    color: var(--ss-text-secondary);
+  }
+
+  .preset-member-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ss-text-primary);
+    text-decoration: none;
+  }
+
+  .preset-member-pots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .preset-pot-divider {
+    width: 100%;
+    margin-top: 0.15rem;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ss-text-secondary);
+  }
+
+  .preset-pot-card {
+    position: relative;
+    width: calc((100% - 0.9rem) / 3);
+    max-width: 104px;
+    min-width: 0;
+  }
+
+  .preset-pot-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+  }
+
+  .preset-pot-name {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.7rem;
+    color: var(--ss-text-secondary);
+    text-align: center;
+    overflow-wrap: break-word;
+  }
+
+  .preset-lv-badge {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.78);
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .team-builds-page {
+      padding: 1rem;
+    }
+
+    .tbuild-hero {
+      flex-direction: column;
+    }
+
+    .tbuild-hero-portrait {
+      width: 110px;
+    }
+
+    .preset-team {
+      grid-template-columns: 1fr;
+    }
+
+    .preset-code {
+      flex-direction: column;
+    }
+
+    .preset-code-copy {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  // Copy the preset import code to the clipboard (clipboard API with
+  // execCommand fallback, same flow as the redeem-codes page).
+  function initPresetCopy() {
+    document.querySelectorAll<HTMLButtonElement>('.preset-code-copy').forEach(button => {
+      button.addEventListener('click', () => {
+        const code = button.getAttribute('data-code');
+        if (!code) return;
+
+        const reset = () => {
+          button.classList.add('copied');
+          button.textContent = 'Copied!';
+          setTimeout(() => {
+            button.classList.remove('copied');
+            button.textContent = 'Copy';
+          }, 1600);
+        };
+
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(code).then(reset).catch(() => {
+            fallbackCopy(code);
+            reset();
+          });
+        } else {
+          fallbackCopy(code);
+          reset();
+        }
+      });
+    });
+  }
+
+  function fallbackCopy(code: string) {
+    const textarea = document.createElement('textarea');
+    textarea.value = code;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    textarea.style.left = '-9999px';
+    textarea.setAttribute('readonly', '');
+    document.body.appendChild(textarea);
+    textarea.select();
+    textarea.setSelectionRange(0, 99999);
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPresetCopy);
+  } else {
+    initPresetCopy();
+  }
+
+</script>
