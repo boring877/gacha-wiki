@@ -1,134 +1,278 @@
 ---
+// Stella Sora Banner Timeline page. Data generated from the game's Gacha tables
+// (exact end times) merged with the Miraheze run history (start times).
 import BannerTimelineLayout from '../../../layouts/stella-sora/BannerTimelineLayout.astro';
-import SSBannerImage from '../../../components/stella-sora/SSBannerImage.astro';
-import { bannerTimelineData } from '../../../data/stella-sora/banner-timeline.js';
+import { bannerRuns, getRunStatus } from '../../../data/stella-sora/banner-timeline.js';
 
-// SEO metadata
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora/Banner_timeline';
+
 const pageTitle = 'Stella Sora Banner Timeline - Limited Recruitment Events';
 const pageDescription =
-  'Chronological timeline of limited recruitment banners in Stella Sora. View current and past character and disc recruitment events organized by date from newest to oldest.';
+  'Complete banner timeline for Stella Sora: every limited, exclusive and rate-up Trekker and Runic Disc recruitment event since global launch, with exact dates in UTC-7.';
 const gameTitle = 'Banner Timeline';
 
-// Helper function to format date
+const buildNow = Date.now();
+
+// permanent banners (no end date) render in their own always-available group
+const permanentRuns = bannerRuns.filter(r => !r.end);
+const eventRuns = bannerRuns.filter(r => r.end);
+const currentRuns = eventRuns.filter(r => getRunStatus(r, buildNow) !== 'ended');
+const pastRuns = eventRuns.filter(r => getRunStatus(r, buildNow) === 'ended');
+
+// newest-first numbering for the full timeline, #N down to #1
+const numberedPast = pastRuns.map((run, i) => ({ run, num: pastRuns.length - i }));
+
+const kindLabel: Record<string, string> = {
+  limited: 'Limited',
+  exclusive: 'Exclusive',
+  rateup: 'Rate-Up',
+  standard: 'Standard',
+  beginner: 'Beginner',
+};
+
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
-  const options: Intl.DateTimeFormatOptions = { month: 'short', day: '2-digit', year: 'numeric' };
+  // pin to UTC-7 so dates render identically for every visitor
+  const options: Intl.DateTimeFormatOptions = {
+    month: 'short',
+    day: '2-digit',
+    year: 'numeric',
+    timeZone: 'Etc/GMT+7',
+  };
   return date.toLocaleDateString('en-US', options);
 };
+
+interface RunCard {
+  gachaId: number;
+  side: 'trekker' | 'disc';
+  title: string;
+  kind: string;
+  typeName: string;
+  featured?: string | null;
+  charSlug?: string | null;
+  start: string;
+  end?: string | null;
+  rerun?: boolean;
+  guaranteeQty?: number | null;
+  image?: string;
+  boosted?: string[];
+  description?: string;
+  bonusPity?: string;
+  note?: string;
+}
+
+const statusOf = (run: RunCard) => getRunStatus(run as any, buildNow);
 ---
 
 <BannerTimelineLayout title={pageTitle} description={pageDescription} gameTitle={gameTitle}>
   <meta slot="head" />
-  <meta
-    name="keywords"
-    content="Stella Sora, banner timeline, recruitment events, limited banners, character banners, disc banners"
-  />
-  <meta name="author" content="GachaWiki" />
+  <meta name="keywords" content="Stella Sora, banner timeline, recruitment events, limited banners, trekker banners, disc banners, gacha history" />
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={pageDescription} />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://gacha.wiki/guides/stella-sora/banner-timeline/" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={pageTitle} />
-  <meta name="twitter:description" content={pageDescription} />
 
   <main class="banner-timeline-content" role="main">
     <header>
       <h1>Stella Sora Banner Timeline</h1>
-      <p class="intro-text">All the banner timeline here !</p>
+      <p class="intro-text">
+        Every Trekker and Runic Disc recruitment banner since global launch. End times come from the
+        game data, start times from official announcements. All dates are UTC-7, the timezone the
+        game uses in its notices.
+      </p>
     </header>
 
-    {
-      bannerTimelineData.map((banner, index) => (
-        <article class="banner-section">
-          <header class="banner-header">
-            <h2>#{bannerTimelineData.length - index} Recruitment Events</h2>
-          </header>
+    <section class="ss-legend">
+      <span class="ss-chip ss-chip--limited">Limited</span>
+      <span class="ss-chip ss-chip--exclusive">Exclusive</span>
+      <span class="ss-chip ss-chip--rateup">Rate-Up</span>
+      <span class="ss-chip ss-chip--rerun">Rerun</span>
+      <span class="ss-legend-text">
+        Limited and Exclusive banners feature debut or event Trekkers and Discs. Rate-Up windows boost a
+        Permanent Banner Trekker or Disc. Exclusive banners never join the permanent pool.
+      </span>
+    </section>
 
-          <section class="banner-content">
-            {/* Character Banner */}
-            <section class="banner-subsection">
-              <div class="banner-info">
-                <h3>Character Banner: {banner.characterBanner.title}</h3>
-                <div class="featured-item">
-                  <SSBannerImage
-                    name={banner.characterBanner.featuredCharacter.name}
-                    alt={banner.characterBanner.featuredCharacter.name}
-                    type="character"
-                    width={300}
-                    height={300}
-                  />
-                  <div class="featured-details">
-                    <p>
-                      <strong>Featured:</strong> {banner.characterBanner.featuredCharacter.rarity}{' '}
-                      {banner.characterBanner.featuredCharacter.type}{' '}
-                      {banner.characterBanner.featuredCharacter.name}
-                    </p>
-                    <p>
-                      <strong>Period:</strong> {formatDate(banner.characterBanner.startDate)} -{' '}
-                      {formatDate(banner.characterBanner.endDate)} (UTC-7)
-                    </p>
-                  </div>
-                </div>
-                <div class="banner-details">
-                  <p>
-                    <strong>Details:</strong> {banner.characterBanner.description}
-                  </p>
-                  <p>
-                    <strong>Boosted ★4 Trekkers:</strong>{' '}
-                    {banner.characterBanner.boostedCharacters.map(c => c.name).join(' and ')}
-                  </p>
-                  {banner.characterBanner.note && (
-                    <p>
-                      <strong>Note:</strong> {banner.characterBanner.note}
-                    </p>
-                  )}
-                </div>
+    <section class="ss-section" id="live-now">
+      <h2 class="ss-section-title">Live Now</h2>
+      <div class="ss-run-grid">
+        {currentRuns.map(run => (
+          <article
+            class={`ss-run ss-run--${run.side} ss-run--${statusOf(run)}`}
+            data-ss-run
+            data-start={run.start}
+            data-end={run.end ?? ''}
+          >
+            <div class="ss-run-head">
+              <div class="ss-run-badges">
+                <span class={`ss-chip ss-chip--${run.kind}`}>{kindLabel[run.kind] ?? run.kind}</span>
+                {run.rerun && <span class="ss-chip ss-chip--rerun">Rerun</span>}
+                <span class={`ss-chip ss-chip--status ss-chip--${statusOf(run)}`} data-status-chip>
+                  {statusOf(run).toUpperCase()}
+                </span>
               </div>
-            </section>
+            </div>
+            {run.image && (
+              <img
+                class="ss-run-art"
+                src={`${R2}/${run.image}`}
+                alt={`${run.title} banner art`}
+                loading="lazy"
+                decoding="async"
+              />
+            )}
+            <div class="ss-run-body">
+              <h3 class="ss-run-title">{run.title}</h3>
+              <p class="ss-run-type">{run.typeName}</p>
+              {run.featured && (
+                <p class="ss-run-featured">
+                  <strong>Featured:</strong> ★5 {run.side === 'trekker' ? 'Trekker' : 'Runic Disc'}{' '}
+                  {run.side === 'trekker' && run.charSlug ? (
+                    <a href={`/guides/stella-sora/characters/${run.charSlug}/`}>{run.featured}</a>
+                  ) : run.side === 'disc' && run.discSlug ? (
+                    <a href={`/guides/stella-sora/discs/${run.discSlug}/`}>{run.featured}</a>
+                  ) : (
+                    run.featured
+                  )}
+                </p>
+              )}
+              <p class="ss-run-period">
+                <strong>Period:</strong> {formatDate(run.start)} - {formatDate(run.end!)} (UTC-7)
+              </p>
+              <p class="ss-run-countdown" data-countdown>Calculating...</p>
+              {run.guaranteeQty && (run.kind === 'limited' || run.kind === 'exclusive') && (
+                <p class="ss-run-guarantee">
+                  First {run.guaranteeQty} recruitments grant the featured ★5 ×1 (limited to once).
+                </p>
+              )}
+              {run.description && <p class="ss-run-desc">{run.description}</p>}
+              {run.note && <p class="ss-run-note">{run.note}</p>}
+            </div>
+          </article>
+        ))}
+        {permanentRuns.map(run => (
+          <article class={`ss-run ss-run--${run.side} ss-run--current`} data-ss-run data-start={run.start} data-end="">
+            <div class="ss-run-head">
+              <div class="ss-run-badges">
+                <span class={`ss-chip ss-chip--${run.kind}`}>{kindLabel[run.kind] ?? run.kind}</span>
+                <span class="ss-chip ss-chip--status ss-chip--current" data-status-chip>LIVE</span>
+              </div>
+            </div>
+            <div class="ss-run-body">
+              <h3 class="ss-run-title">{run.title}</h3>
+              <p class="ss-run-type">{run.typeName}</p>
+              <p class="ss-run-desc">{run.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
 
-            {/* Disc Banner */}
-            <section class="banner-subsection">
-              <div class="banner-info">
-                <h3>Disc Banner: {banner.discBanner.title}</h3>
-                <div class="featured-item">
-                  <SSBannerImage
-                    name={banner.discBanner.featuredDisc.name}
-                    alt={banner.discBanner.featuredDisc.name}
-                    type="disc"
-                    width={300}
-                    height={300}
-                  />
-                  <div class="featured-details">
-                    <p>
-                      <strong>Featured:</strong> {banner.discBanner.featuredDisc.rarity}{' '}
-                      {banner.discBanner.featuredDisc.type} {banner.discBanner.featuredDisc.name}
-                    </p>
-                    <p>
-                      <strong>Period:</strong> {formatDate(banner.discBanner.startDate)} -{' '}
-                      {formatDate(banner.discBanner.endDate)} (UTC-7)
-                    </p>
-                  </div>
-                </div>
-                <div class="banner-details">
-                  <p>
-                    <strong>Details:</strong> {banner.discBanner.description}
-                  </p>
-                  <p>
-                    <strong>Boosted ★4 Discs:</strong>{' '}
-                    {banner.discBanner.boostedDiscs.map(d => d.name).join(' and ')}
-                  </p>
-                  {banner.discBanner.note && (
-                    <p>
-                      <strong>Note:</strong> {banner.discBanner.note}
-                    </p>
-                  )}
-                </div>
+    <section class="ss-section" id="full-timeline">
+      <h2 class="ss-section-title">Full Timeline</h2>
+      <div class="ss-run-list">
+        {numberedPast.map(({ run, num }) => (
+          <article
+            class={`ss-run ss-run--${run.side} ss-run--${statusOf(run)}`}
+            data-ss-run
+            data-start={run.start}
+            data-end={run.end ?? ''}
+          >
+            <div class="ss-run-head">
+              <div class="ss-run-badges">
+                <span class="ss-run-num">#{num}</span>
+                <span class={`ss-chip ss-chip--${run.kind}`}>{kindLabel[run.kind] ?? run.kind}</span>
+                {run.rerun && <span class="ss-chip ss-chip--rerun">Rerun</span>}
+                <span class={`ss-chip ss-chip--status ss-chip--${statusOf(run)}`} data-status-chip>
+                  {statusOf(run).toUpperCase()}
+                </span>
               </div>
-            </section>
-          </section>
-        </article>
-      ))
-    }
+            </div>
+            {run.image && (
+              <img
+                class="ss-run-art"
+                src={`${R2}/${run.image}`}
+                alt={`${run.title} banner art`}
+                loading="lazy"
+                decoding="async"
+              />
+            )}
+            <div class="ss-run-body">
+              <h3 class="ss-run-title">{run.title}</h3>
+              <p class="ss-run-type">{run.typeName}</p>
+              {run.featured && (
+                <p class="ss-run-featured">
+                  <strong>Featured:</strong> ★5 {run.side === 'trekker' ? 'Trekker' : 'Runic Disc'}{' '}
+                  {run.side === 'trekker' && run.charSlug ? (
+                    <a href={`/guides/stella-sora/characters/${run.charSlug}/`}>{run.featured}</a>
+                  ) : run.side === 'disc' && run.discSlug ? (
+                    <a href={`/guides/stella-sora/discs/${run.discSlug}/`}>{run.featured}</a>
+                  ) : (
+                    run.featured
+                  )}
+                </p>
+              )}
+              <p class="ss-run-period">
+                <strong>Period:</strong> {formatDate(run.start)} - {formatDate(run.end!)} (UTC-7)
+              </p>
+              {run.guaranteeQty && (run.kind === 'limited' || run.kind === 'exclusive') && (
+                <p class="ss-run-guarantee">
+                  First {run.guaranteeQty} recruitments grant the featured ★5 ×1 (limited to once).
+                </p>
+              )}
+              {run.boosted && run.boosted.length > 0 && (
+                <p class="ss-run-boosted">
+                  <strong>Boosted ★4:</strong> {run.boosted.join(', ')}
+                </p>
+              )}
+              {run.description && <p class="ss-run-desc">{run.description}</p>}
+              {run.note && <p class="ss-run-note">{run.note}</p>}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
   </main>
+
+  <script>
+    function updateSSRuns() {
+      const now = Date.now();
+      document.querySelectorAll<HTMLElement>('[data-ss-run]').forEach(el => {
+        const start = Date.parse(el.dataset.start || '');
+        const end = Date.parse(el.dataset.end || '');
+        if (Number.isNaN(start)) return;
+        const chip = el.querySelector('[data-status-chip]');
+        const cd = el.querySelector('[data-countdown]');
+        const hasEnd = !Number.isNaN(end);
+        const ended = hasEnd && now >= end;
+        const upcoming = now < start;
+        el.classList.toggle('ss-run--ended', ended);
+        el.classList.toggle('ss-run--current', hasEnd && !ended && !upcoming);
+        el.classList.toggle('ss-run--upcoming', upcoming);
+        if (chip && hasEnd) {
+          chip.textContent = ended ? 'ENDED' : upcoming ? 'UPCOMING' : 'LIVE';
+          chip.className =
+            'ss-chip ss-chip--status ' +
+            (ended ? 'ss-chip--ended' : upcoming ? 'ss-chip--upcoming' : 'ss-chip--current');
+        }
+        if (cd) {
+          if (!hasEnd || ended) {
+            cd.textContent = 'This banner has ended.';
+          } else {
+            const target = upcoming ? start : end;
+            let s = Math.floor((target - now) / 1000);
+            const d = Math.floor(s / 86400);
+            s -= d * 86400;
+            const h = Math.floor(s / 3600);
+            s -= h * 3600;
+            const m = Math.floor(s / 60);
+            cd.textContent = upcoming
+              ? `Starts in ${d}d ${h}h ${m}m`
+              : `Ends in ${d}d ${h}h ${m}m`;
+          }
+        }
+      });
+    }
+    updateSSRuns();
+    setInterval(updateSSRuns, 60000);
+  </script>
 </BannerTimelineLayout>
