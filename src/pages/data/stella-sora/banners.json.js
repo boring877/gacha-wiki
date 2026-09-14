@@ -1,77 +1,57 @@
 // Stella Sora Banner Timeline API Endpoint
 // Generates /data/stella-sora/banners.json
+// Rewritten 2026-09-14 for the regenerated banner-timeline.js data
+// (bannerRuns + getRunStatus); the previous version imported the old
+// bannerTimelineData API which no longer exists and broke the site build.
 
 import {
-  bannerTimelineData,
-  getCurrentBanners,
-  getUpcomingBanners,
-  getEndedBanners,
+  bannerRuns,
+  getRunStatus,
 } from '../../../data/stella-sora/banner-timeline.js';
 
 export const prerender = true;
 
 export async function GET() {
-  // Process all banners
-  const allBanners = bannerTimelineData.map(banner => ({
-    id: banner.id,
-    status: banner.status,
-    image: banner.image,
-
-    // Character banner
-    characterBanner: {
-      title: banner.characterBanner.title,
-      featuredCharacter: banner.characterBanner.featuredCharacter,
-      boostedCharacters: banner.characterBanner.boostedCharacters,
-      startDate: banner.characterBanner.startDate,
-      endDate: banner.characterBanner.endDate,
-      description: banner.characterBanner.description,
-      bonusPity: banner.characterBanner.bonusPity || null,
-      note: banner.characterBanner.note,
-    },
-
-    // Disc banner
-    discBanner: {
-      title: banner.discBanner.title,
-      featuredDisc: banner.discBanner.featuredDisc,
-      boostedDiscs: banner.discBanner.boostedDiscs,
-      startDate: banner.discBanner.startDate,
-      endDate: banner.discBanner.endDate,
-      description: banner.discBanner.description,
-      note: banner.discBanner.note,
-    },
+  const runs = bannerRuns.map(r => ({
+    gachaId: r.gachaId,
+    side: r.side,
+    title: r.title,
+    kind: r.kind,
+    typeName: r.typeName,
+    featured: r.featured,
+    featuredId: r.featuredId ?? null,
+    charSlug: r.charSlug ?? null,
+    boosted: r.boosted ?? [],
+    start: r.start,
+    end: r.end ?? null,
+    rerun: !!r.rerun,
+    guaranteeQty: r.guaranteeQty ?? null,
+    image: r.image ?? null,
+    status: getRunStatus(r),
   }));
 
-  // Group by status
-  const currentBanners = allBanners.filter(b => b.status === 'current');
-  const upcomingBanners = allBanners.filter(b => b.status === 'upcoming');
-  const endedBanners = allBanners.filter(b => b.status === 'ended');
+  const by = s => runs.filter(r => r.status === s);
 
   const response = {
     game: 'Stella Sora',
     type: 'banners',
     description:
-      'Banner timeline with character and disc recruitment events, featuring 5-star characters, rate-up 4-stars, and limited-time discs',
+      'Banner timeline with trekker and disc recruitment runs, exact start and end times',
     lastUpdated: new Date().toISOString().split('T')[0],
 
     summary: {
-      totalBanners: allBanners.length,
-      currentCount: currentBanners.length,
-      upcomingCount: upcomingBanners.length,
-      endedCount: endedBanners.length,
+      totalBanners: runs.length,
+      currentCount: by('current').length,
+      upcomingCount: by('upcoming').length,
+      endedCount: by('ended').length,
     },
 
-    // Current active banners
-    current: currentBanners,
+    current: by('current'),
+    upcoming: by('upcoming'),
+    ended: by('ended'),
 
-    // Upcoming banners
-    upcoming: upcomingBanners,
-
-    // Past banners (for history)
-    ended: endedBanners,
-
-    // All banners sorted by start date
-    timeline: allBanners.sort(
-      (a, b) => new Date(b.characterBanner.startDate) - new Date(a.characterBanner.startDate)
+    timeline: [...runs].sort(
+      (a, b) => new Date(b.start) - new Date(a.start)
     ),
   };
 
