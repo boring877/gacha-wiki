@@ -5,7 +5,7 @@ import GuideLayout from '../../../layouts/horizon-walker/GuideLayout.astro';
 import { bannerRuns, focusedSearches, characterReleases } from '../../../data/horizon-walker/banner-timeline.js';
 import { HORIZON_WALKER_CHARACTERS } from '../../../data/horizon-walker/characters.js';
 import { r2Url } from '../../../data/r2-config.js';
-import { CharacterImage, WeaponImage } from '../../../components/horizon-walker/index.astro';
+import { CharacterImage, WeaponImage, HWRarityIcon } from '../../../components/horizon-walker/index.astro';
 
 export const prerender = true;
 
@@ -218,7 +218,7 @@ const searchOf = (r: (typeof bannerRuns)[number]) =>
                       <span class="bt-rel-name">{c.name}</span>
                     )}
                   </td>
-                  <td>{c.rarity ?? ''}</td>
+                  <td>{c.rarity ? <HWRarityIcon rarity={c.rarity} width={48} height={24} /> : ''}</td>
                   <td class="bt-rel-date">{fmtFull(c.date)}</td>
                   <td class="bt-rel-how">
                     {c.via === 'launch' ? (
@@ -495,17 +495,20 @@ const searchOf = (r: (typeof bannerRuns)[number]) =>
       text-transform: uppercase;
       letter-spacing: 0.03em;
     }
+    /* badges follow the hw-badges.css conventions:
+       NEW = Main pick style (warm), RERUN = Alt style (gray), ACTIVE = mint status */
     .bt-badge-new {
-      background: var(--hw-bg-solid-gold);
-      color: var(--hw-text-dark);
+      background: var(--hw-primary-warm);
+      color: var(--hw-text-white);
     }
     .bt-badge-rerun {
-      background: var(--hw-bg-light);
-      color: var(--hw-text-muted);
+      background: #3a3a3a;
+      color: #cccccc;
     }
     .bt-live {
       background: var(--hw-accent-mint-20);
       color: var(--hw-accent-mint);
+      border: 1px solid var(--hw-accent-mint-50);
     }
     .bt-src {
       color: var(--hw-primary-warm);
@@ -686,6 +689,7 @@ const searchOf = (r: (typeof bannerRuns)[number]) =>
       color: var(--hw-text-muted);
       font-size: 0.84rem;
     }
+    /* how-to-obtain chips use the character-tag palette (bg-20 / border-50 / color-90) */
     .bt-how {
       display: inline-block;
       border-radius: 5px;
@@ -694,15 +698,18 @@ const searchOf = (r: (typeof bannerRuns)[number]) =>
       font-weight: 600;
     }
     .bt-how-launch {
-      background: var(--hw-stat-bg);
-      color: var(--hw-text-muted);
+      background: var(--hw-tertiary-sky-20);
+      border: 1px solid var(--hw-tertiary-sky-50);
+      color: var(--hw-tertiary-sky-90);
     }
     .bt-how-banner {
       background: var(--hw-primary-warm-20);
+      border: 1px solid var(--hw-primary-warm-50);
       color: var(--hw-primary-warm);
     }
     .bt-how-direct {
       background: var(--hw-accent-mint-20);
+      border: 1px solid var(--hw-accent-mint-50);
       color: var(--hw-accent-mint);
     }
     .bt-noimg-sm {
