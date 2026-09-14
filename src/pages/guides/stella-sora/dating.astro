@@ -214,8 +214,8 @@ const faqStructuredData = {
                     {character.character}
                   </a>
                 </h3>
-                <span class="dating-events-count">{character.events.length} Dating Events</span>
               </div>
+              <span class="dating-events-count">{character.events.length} Dating Events</span>
             </header>
 
             <div class="dating-events-list">
@@ -230,15 +230,18 @@ const faqStructuredData = {
                     />
                   </figure>
                   <div class="dating-event-content">
-                    <h4 class="dating-event-name">{event.name}</h4>
+                    <h4 class="dating-event-name">
+                      <span class="dating-event-index">Date {eventIndex + 1}</span>
+                      <span class="dating-event-title">{event.name}</span>
+                    </h4>
                     <dl class="dating-event-details">
-                      <div class="dating-event-detail">
-                        <dt class="dating-event-label">Unlock:</dt>
-                        <dd class="dating-event-clue">{event.clue}</dd>
+                      <div class="dating-event-detail dating-detail-unlock">
+                        <dt class="dating-event-label">Unlock</dt>
+                        <dd class="dating-event-value">{event.clue}</dd>
                       </div>
-                      <div class="dating-event-detail">
-                        <dt class="dating-event-label">Choice:</dt>
-                        <dd class="dating-event-choice">"{event.secondChoice}"</dd>
+                      <div class="dating-event-detail dating-detail-choice">
+                        <dt class="dating-event-label">Choice</dt>
+                        <dd class="dating-event-value">"{event.secondChoice}"</dd>
                       </div>
                     </dl>
                   </div>

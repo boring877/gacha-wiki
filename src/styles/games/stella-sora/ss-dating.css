@@ -159,8 +159,8 @@
 }
 
 .dating-characters-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: var(--ss-spacing-lg);
 }
 
@@ -176,7 +176,7 @@
   display: flex;
   align-items: center;
   gap: var(--ss-spacing-md);
-  padding: var(--ss-spacing-md);
+  padding: var(--ss-spacing-md) var(--ss-spacing-lg);
   background: var(--ss-bg-tertiary);
   border-bottom: 1px solid var(--ss-border);
 }
@@ -198,13 +198,13 @@
 
 .dating-character-info {
   flex: 1;
+  min-width: 0;
 }
 
 .dating-character-name {
   color: var(--ss-text-primary);
   font-size: 1.25rem;
   font-weight: var(--ss-font-semibold);
-  margin-bottom: var(--ss-spacing-xs);
 }
 
 .dating-character-name a {
@@ -213,16 +213,24 @@
 }
 
 .dating-events-count {
-  color: var(--ss-text-secondary);
-  font-size: 0.875rem;
+  flex-shrink: 0;
+  background: var(--ss-primary);
+  color: var(--ss-bg-primary);
+  font-size: 0.75rem;
+  font-weight: var(--ss-font-semibold);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--ss-radius-sm);
+  white-space: nowrap;
 }
 
-/* Dating Events List */
+/* Dating Events List: the 2 events sit side by side so each
+   illustration gets half the page width instead of a narrow column */
 .dating-events-list {
-  padding: var(--ss-spacing-md);
-  display: flex;
-  flex-direction: column;
-  gap: var(--ss-spacing-md);
+  padding: var(--ss-spacing-lg);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ss-spacing-lg);
+  align-items: stretch;
 }
 
 .dating-event-item {
@@ -230,6 +238,8 @@
   border: 1px solid var(--ss-border);
   border-radius: var(--ss-radius-md);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .dating-event-image-container {
@@ -237,23 +247,47 @@
   aspect-ratio: 1 / 1;
   overflow: hidden;
   position: relative;
+  background: var(--ss-bg-tertiary);
 }
 
 .dating-event-image-container img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
 .dating-event-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ss-spacing-sm);
   padding: var(--ss-spacing-md);
+  border-top: 1px solid var(--ss-border);
 }
 
 .dating-event-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ss-spacing-sm);
   color: var(--ss-text-primary);
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: var(--ss-font-semibold);
-  margin-bottom: var(--ss-spacing-sm);
+  line-height: 1.35;
+}
+
+.dating-event-index {
+  flex-shrink: 0;
+  background: var(--ss-primary);
+  color: var(--ss-bg-primary);
+  font-size: 0.7rem;
+  font-weight: var(--ss-font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--ss-radius-sm);
+  white-space: nowrap;
 }
 
 .dating-event-details {
@@ -264,38 +298,44 @@
 
 .dating-event-detail {
   display: flex;
-  align-items: flex-start;
+  align-items: baseline;
   gap: var(--ss-spacing-sm);
+  padding: var(--ss-spacing-sm) var(--ss-spacing-md);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-sm);
   font-size: 0.875rem;
 }
 
+.dating-detail-unlock {
+  background: rgba(110, 231, 183, 0.08);
+}
+
+.dating-detail-unlock .dating-event-value {
+  color: #6ee7b7;
+}
+
+.dating-detail-choice {
+  background: rgba(125, 211, 252, 0.08);
+}
+
+.dating-detail-choice .dating-event-value {
+  color: var(--ss-primary-light);
+  font-style: italic;
+}
+
 .dating-event-label {
-  color: var(--ss-text-muted);
   flex-shrink: 0;
-  min-width: 80px;
+  min-width: 52px;
+  color: var(--ss-text-secondary);
+  font-size: 0.7rem;
+  font-weight: var(--ss-font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .dating-event-value {
+  margin: 0;
   color: var(--ss-text-secondary);
-}
-
-.dating-event-clue {
-  background: rgba(110, 231, 183, 0.1);
-  border: 1px solid var(--ss-border);
-  border-radius: var(--ss-radius-sm);
-  padding: var(--ss-spacing-xs) var(--ss-spacing-sm);
-  color: var(--ss-primary);
-  font-size: 0.75rem;
-}
-
-.dating-event-choice {
-  background: rgba(125, 211, 252, 0.1);
-  border: 1px solid var(--ss-border);
-  border-radius: var(--ss-radius-sm);
-  padding: var(--ss-spacing-xs) var(--ss-spacing-sm);
-  color: var(--ss-primary-light);
-  font-size: 0.75rem;
-  font-style: italic;
 }
 
 /* ========================================
@@ -380,17 +420,22 @@
   }
 
   .dating-characters-grid {
-    grid-template-columns: 1fr;
     gap: var(--ss-spacing-md);
   }
 
   .dating-character-header {
-    flex-direction: row;
-    text-align: left;
+    padding: var(--ss-spacing-md);
   }
 
   .dating-character-name {
     font-size: 1.1rem;
+  }
+
+  /* Narrow viewports: stack the 2 events so the art keeps its size */
+  .dating-events-list {
+    grid-template-columns: 1fr;
+    padding: var(--ss-spacing-md);
+    gap: var(--ss-spacing-md);
   }
 
   .dating-location-tabs {
@@ -412,12 +457,8 @@
     font-size: 0.8rem;
   }
 
-  .dating-event-content {
-    padding: var(--ss-spacing-sm);
-  }
-
   .dating-event-name {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 }
 
@@ -468,6 +509,10 @@
     gap: var(--ss-spacing-sm);
   }
 
+  .dating-event-content {
+    padding: var(--ss-spacing-sm);
+  }
+
   .dating-event-detail {
     flex-direction: column;
     gap: var(--ss-spacing-xs);
@@ -475,13 +520,6 @@
 
   .dating-event-label {
     min-width: auto;
-    font-size: 0.75rem;
-  }
-
-  .dating-event-clue,
-  .dating-event-choice {
-    font-size: 0.7rem;
-    padding: 0.25rem 0.5rem;
   }
 
   .dating-section-description {
