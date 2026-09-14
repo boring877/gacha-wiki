@@ -180,7 +180,7 @@ const rawLisandriaData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'On each attack, recovers HP of self and allies within a 5m radius by 95% of magic ATK.',
+        'When using a skill or attacking, restores HP to self and allies within a 5m radius based on {50,55,60,65,70,75,80,85,90,95}% of Magic ATK.',
     },
     swordOfTheUnknown: {
       gameKey: 'SwordOfUnknown',
@@ -191,7 +191,7 @@ const rawLisandriaData = {
       apCost: 45,
       cooldown: 3,
       description:
-        'Channels divine power into the sword through prayer. Grants self a shield effect equal to 380% of magic ATK for 3R and the [Sword of the Unknown] effect. [Sword of the Unknown]: Basic attacks additionally deal Immaterial DMG equal to 95% of melee ATK.',
+        'Channels divine power into the sword through prayer. Grants self a shield effect equal to {200,220,240,260,280,300,320,340,360,380}% of magic ATK for 3R and the [Sword of the Unknown] effect. [Sword of the Unknown]: Basic attacks additionally deal Immaterial DMG equal to {50,55,60,65,70,75,80,85,90,95}% of Melee ATK.',
     },
     exorcistsCrusade: {
       gameKey: 'HolyWarOfExorcism',
@@ -202,7 +202,7 @@ const rawLisandriaData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'On a successful attack, gains [Salvation] and [Judgment] effects. [Salvation]: Increases own magic ATK by 19%. Stacks up to 9 times. [Judgment]: Increases own melee ATK by 19%. Stacks up to 9 times.',
+        'On a successful attack, gains [Salvation] and [Judgment] effects. - [Salvation]: Increases own Magic ATK by {10,11,12,13,14,15,16,17,18,19}%. Stacks up to 9 times. - [Judgment]: Increases own Melee ATK by {10,11,12,13,14,15,16,17,18,19}%. Stacks up to 9 times.',
     },
     bloodJudgment: {
       gameKey: 'BloodJudgment',
@@ -213,7 +213,7 @@ const rawLisandriaData = {
       apCost: 60,
       cooldown: 2,
       description:
-        'Creates a [Blood Judgment] area on the battlefield. At the end of any turn, deals additional Immaterial DMG equal to 76% of melee ATK to all enemies within the area and loses 1 stack of [Salvation] effect. As long as the user possesses the [Salvation] effect, this continues to activate repeatedly. If the [Salvation] effect is no longer possessed, the [Blood Judgment] area dissipates.',
+        'Creates a [Blood Judgment] zone on the battlefield and earns 1 stack of [Salvation] effect. At the end of any turn, enemies within the zone take Additional Immaterial DMG equal to {200,225,250,275,300,325,350,375,400,425}% of Melee ATK, and 1 [Salvation] effect and 9% of Max HP are lost. This effect repeatedly triggers while [Salvation] is possessed. If [Salvation] is no longer possessed, the [Blood Judgment] zone disappears.',
     },
   },
   rarityStages: {

@@ -132,7 +132,7 @@ const rawCaniskData = {
       apCost: 30,
       cooldown: 0,
       description:
-        'Raises the greatsword and assumes a counterattack stance. Enters [Counterattack Posture] until the start of the next round, increasing CRIT rate by 57% and performing counterattacks regardless of the base number of counterattacks.',
+        'Raises the greatsword and assumes a counterattack stance. Enters [Counterattack Posture] until the start of the next round, increasing CRIT rate by {30,33,36,39,42,45,48,51,54,57}% and performing counterattacks regardless of the base number of counterattacks.',
     },
     tauntingRoar: {
       gameKey: 'CryOfProvoke',
@@ -147,7 +147,7 @@ const rawCaniskData = {
         value: '57%',
       },
       description:
-        'Plant your sword into the ground and unleash a roar. Deals Crush DMG equal to 57% of Magic ATK in a 5m circular AoE. Enemies hit are inflicted with [Taunt] for 2 rounds and have all ATK reduced by 38% for 2 rounds. Your Aggro Adjustment increases for the duration. This attack temporarily increases Accuracy by 300%.',
+        'Plant your sword into the ground and unleash a roar. Deals Crush DMG equal to N% of Magic ATK in a 5m circular AoE. Enemies hit are inflicted with [Taunt] for 2 rounds and have all ATK reduced by {20,22,24,26,28,30,32,34,36,38}% for 2 rounds. Your Aggro Adjustment increases for the duration. This attack temporarily increases Accuracy by 300%.',
     },
     splitTheCrown: {
       gameKey: 'CrownSplitting',
@@ -162,7 +162,7 @@ const rawCaniskData = {
         value: '190%',
       },
       description:
-        "Strikes downward with a greatsword to deliver a powerful blow. Deals Slash DMG equal to 190% of Melee ATK. This skill's Slash Boost increases proportionally to missing HP, up to 200% for the turn it's used. If this skill defeats an enemy, restores 76% of Max HP as HP Recovery.",
+        "Strikes downward with a greatsword to deliver a powerful blow. Deals Slash DMG equal to N% of Melee ATK. This skill’s Slash Boost increases proportionally to missing HP, up to 200% for the turn it's used. If this skill defeats an enemy, restores {40,44,48,52,56,60,64,68,72,76}% of Max HP as HP Recovery.",
     },
   },
   rarityStages: {

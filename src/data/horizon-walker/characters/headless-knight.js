@@ -141,7 +141,7 @@ const rawHeadlessKnightData = {
       type: 'Passive',
       apCost: 0,
       cooldown: 0,
-      description: 'Increases melee ATK by 57% and guards the front during own turn.',
+      description: 'Increases Melee ATK by {30,33,36,39,42,45,48,51,54,57}% and guards the front during own turn.',
     },
     harvest: {
       gameKey: 'Harvest',
@@ -167,7 +167,7 @@ const rawHeadlessKnightData = {
       apCost: 0,
       cooldown: 0,
       description:
-        "Deals Additional Slash DMG equal to 16.5% of the target's current HP on attack. This damage does not exceed 180% of melee ATK.",
+        "Deals Additional Slash DMG equal to {12,12.5,13,13.5,14,14.5,15,15.5,16,16.5}% of the target's current HP on attack. This damage does not exceed 180% of Melee ATK.",
     },
     decapitation: {
       gameKey: 'Execution',
@@ -193,7 +193,7 @@ const rawHeadlessKnightData = {
       apCost: 0,
       cooldown: 0,
       description:
-        "Each time an enemy is defeated, the following effects activate: Has a 100% chance to reduce the cooldown of 'Harvest' and 'Decapitate' skills by 1 Round. [Reaper]: Increases SPD by 67.5%.",
+        "Each time an enemy is defeated, the following effects activate: Has a {55,60,65,70,75,80,85,90,95,100}% chance to reduce the cooldown of 'Harvest' and 'Decapitate' skills by 1 Round. [Reaper]: Increases SPD by {45,47.5,50,52.5,55,57.5,60,62.5,65,67.5}%.",
     },
     rake: {
       name: 'Rake',

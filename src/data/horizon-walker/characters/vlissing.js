@@ -129,7 +129,7 @@ const rawVlissingData = {
         value: '114%',
       },
       description:
-        'Targets an enemy and unleashes blades of water in a 25° cone, 7m range. Deals Slash DMG equal to 114% of Magic ATK, heals allies along the path for 38% of Magic ATK, and grants them 1 stack of [Tip of the Wave] for 2 Rounds. [Tip of the Wave]: Increases Crit Rate by 4%. Stacks up to 2 times.',
+        'Targets an enemy and unleashes blades of water in a 25º, 7m cone. Deals Slash DMG equal to N% of Magic ATK, restores HP to allies along the path by {20,22,24,26,28,30,32,34,36,38}% of Magic ATK, and grants 1 stack of [Tip of the Wave] for 2 rounds.',
     },
     counterWave: {
       gameKey: 'CounterWave',
@@ -140,7 +140,7 @@ const rawVlissingData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'At the start of the round, there is a 57% chance to gain the [Counter Wave] effect for 1R. [Counter Wave]: While holding this effect, immune to [Taunt], [Fear], [Sleep], [Madness], [Stun], and [Concentration Disruption], and increases Heat DEF by 190.',
+        'At the start of each round, {30,33,36,39,42,45,48,51,54,57}% chance to gain [Counterwave] for 1 round.',
     },
     waveOfLifeCycle: {
       gameKey: 'WaveOfLifeCycle',
@@ -151,7 +151,7 @@ const rawVlissingData = {
       apCost: 30,
       cooldown: 1,
       description:
-        'Targets an ally and cleanses them with a pure flow of water. Heals allies within a 4m radius around the target for 38% of Magic ATK, and grants [Purify] and 1 stack of [Clean Flow]. [Purify]: Removes [Taunt], [Fear], [Sleep], [Madness], [Stun], and [Focus Disruption] states.',
+        'Purifies with the flow of pure waters. Restores HP to allies within a {2.2,2.4,2.6,2.8,3,3.2,3.4,3.6,3.8,4}m radius around the targeted ally equal to {20,22,24,26,28,30,32,34,36,38}% of Magic ATK, and grants [Purify] and 1 stack of [Clean Flow].',
     },
     ebbAndFlow: {
       gameKey: 'TurnWaterWay',
@@ -162,7 +162,7 @@ const rawVlissingData = {
       apCost: 0,
       cooldown: 0,
       description:
-        "Grants 1 stack of [Clean Flow] to allied targets and 1 stack of [Tangled Flow] to enemy targets. Both effects stack up to 5 times. Each effect applies the following: [Clean Flow]: At the end of a turn in which the bearer is attacked, Restores HP equal to 60% of Magic ATK + 12% of the target's Max HP, then removes 1 stack of [Clean Flow]. Healing increases up to 1.15X based on missing HP. This maximum multiplier increases by 0.12 for every INT exceeding 16. [Tangled Flow]: At the end of a turn in which the bearer is attacked by a source other than yourself, deals Additional Pierce DMG equal to 400% of Magic ATK, then removes 1 stack of [Tangled Flow]. Damage increases up to 1.15X based on missing HP. This maximum multiplier increases by 0.12 for every INT exceeding 16.",
+        "Redirects the current—granting life to allies and suffering to enemies. Grants the targeted ally 1 stack of [Clean Flow] and the targeted enemy 1 stack of [Tangled Flow]. Both effects stack up to 5 times.",
     },
   },
 

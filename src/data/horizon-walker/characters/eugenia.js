@@ -109,29 +109,29 @@ const rawEugeniaData = {
         value: '138%',
       },
       description:
-        'Deals Immaterial DMG equal to 138% of Magic ATK to all enemies within range. Coefficient scales from 73% at Lv1 to 138% at Lv10.',
+        'Deals Immaterial DMG equal to N% of Magic ATK to all enemies within range.',
     },
     efficientReconstruction: {
       gameKey: 'EfficientReconstruction',
       icon: 'UI_SkillIcon_EfficientReconstruction',
-      name: 'Efficient Reconstruction',
+      name: 'Efficient Reconfiguration',
       level: '10/10',
       type: 'Passive',
       apCost: 0,
       cooldown: 0,
       description:
-        'During battle, increases Max HP by 11-20%. For each point of Vitality above 13, increases Immaterial Boost by 16%.',
+        'During battle, increases Max HP by {11,12,13,14,15,16,17,18,19,20}%. For each point of Vitality above 13, increases Immaterial Boost by 16%.',
     },
     energyFormConversion: {
       gameKey: 'EnergyFormConversion',
       icon: 'UI_SkillIcon_EnergyFormConversion',
-      name: 'Energy Form Conversion',
+      name: 'Energy Form Shift',
       level: '10/10',
       type: 'Skill',
       apCost: 60,
       cooldown: 0,
       description:
-        'Grants [Soul Resonance] to 1 selected ally for 2R and increases their Aggro Adjustment by 50. [Soul Resonance]: Increases Melee ATK and Ranged ATK by 11-20% of the target\'s Max HP. Additionally, for every 200 Max HP of the caster, the final ATK increase is further increased by 10%, up to a maximum additional 100%. When the target successfully attacks, they deal additional Immaterial DMG equal to 100-145% of their Max HP. This damage increases by 1% for every 10 HP lost, up to a maximum of 75%. When the target with the effect is hit, the attacker also takes this Additional Immaterial DMG. Requires Energy Sword Lv3 to unlock.',
+        'Grants [Soul Resonance] to 1 selected ally for 2R and increases their Aggro Adjustment by 50. [Soul Resonance]: Increases Melee ATK and Ranged ATK by {11,12,13,14,15,16,17,18,19,20}% of the target’s Max HP. Additionally, for every 200 Max HP of the caster, the final ATK increase is further increased by 10%, up to a maximum additional 100%. When the target successfully attacks, they deal additional Immaterial DMG equal to {100,105,110,115,120,125,130,135,140,145}% of their Max HP. This damage increases by 1% for every 10 HP lost, up to a maximum of 75%. When the target with the effect is hit, the attacker also takes this Additional Immaterial DMG.',
     },
     markModulation: {
       gameKey: 'MarkModulation',
@@ -142,18 +142,18 @@ const rawEugeniaData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'Using [Soul Resonance] increases your Magic ATK by 20-38% of your Max HP. This effect can increase Magic ATK by up to 150-600. When an ally with [Soul Resonance] attacks, they apply [Trace of Light] to the target. When you attack an enemy with [Trace of Light], you deal additional Immaterial DMG equal to 85-166% of the combined value of your Magic ATK and Max HP.',
+        'Using [Soul Resonance] increases your Magic ATK by {20,22,24,26,28,30,32,34,36,38}% of your Max HP. This effect can increase Magic ATK by up to {150,200,250,300,350,400,450,500,550,600}. When an ally with the [Soul Resonance] effect attacks, they apply [Trace of Light] to the target. When you attack an enemy with [Trace of Light], you deal additional Immaterial DMG equal to {85,94,103,112,121,130,139,148,157,166}% of the combined value of your Magic ATK and Max HP.',
     },
     rampageOfTheFlow: {
       gameKey: 'RampageOfTheFlow',
       icon: 'UI_SkillIcon_RampageOfTheFlow',
-      name: 'Rampage of the Flow',
+      name: 'Flow Overdrive',
       level: '10/10',
       type: 'Skill',
       apCost: 75,
       cooldown: 0,
       description:
-        'Can only be used while an ally has [Soul Resonance]. Increases the target\'s AP by 40-76, and increases the additional Immaterial DMG triggered by [Soul Resonance] by 60-114%. This effect is removed when [Soul Resonance] ends. Requires Energy Form Conversion Lv3 to unlock.',
+        'Can only be used while an ally has [Soul Resonance]. Increases the target’s AP by {40,44,48,52,56,60,64,68,72,76}, and increases the additional Immaterial DMG triggered by [Soul Resonance] by {60,66,72,78,84,90,96,102,108,114}%. This effect is removed when [Soul Resonance] ends.',
     },
   },
 

@@ -139,7 +139,7 @@ const rawNymsetData = {
       apCost: 45,
       cooldown: 0,
       description:
-        'Prays to the Goddess of the Split Twigs with a devout heart for the healing of an ally. Recovers the HP of a designated ally by 190% of magic ATK.',
+        'Prays to the Goddess of the Split Twigs with a devout heart for the healing of an ally. Recovers the HP of a designated ally by {100,110,120,130,140,150,160,170,180,190}% of magic ATK.',
     },
     consecratedDomain: {
       gameKey: 'SanctuaryProclamation',
@@ -150,7 +150,7 @@ const rawNymsetData = {
       apCost: 30,
       cooldown: 1,
       description:
-        'Invokes the name of the Goddess of the Split Twigs to declare [Consecrated Domain]. [Consecrated Domain] lasts for 3 rounds and can maintain up to 1 at a time. If the caster is within the [Consecrated Domain], they gain the [Divine Strength] effect. [Divine Strength]: Increases own Aggro Adjustment and boosts melee and magic ATK by 24% of their base max HP.',
+        'Invokes the name of the Goddess of the Split Twigs to declare [Consecrated Domain]. [Consecrated Domain] lasts for 3 rounds and can maintain up to 1 at a time. If the caster is within the [Consecrated Domain], they gain the [Divine Strength] effect. [Divine Strength]: Increases own Aggro Adjustment and boosts melee and magic ATK by {13.2, 14.4, 15.6, 16.8, 18, 19.2, 20.4, 21.6, 22.8, 24}% of their base max HP.',
     },
     divineTongue: {
       gameKey: 'HolyWord',
@@ -176,7 +176,7 @@ const rawNymsetData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'At the start of the battle, applies the [Remorse] effect to all enemies. [Remorse]: Reduces all ATK by 19%.',
+        'At the start of the battle, applies the [Remorse] effect to all enemies. [Remorse]: Reduces all ATK by {10, 11, 12, 13, 14, 15, 16, 17, 18, 19}%.',
     },
   },
 

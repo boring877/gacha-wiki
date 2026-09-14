@@ -103,7 +103,7 @@ const rawEfreetiData = {
     youngFlameElemental: {
       name: 'Young Flame Elemental',
       description:
-        'Activates Level 1 passive skill [Warmth Within the Hearth]. [Warmth Within the Hearth]: Converts the Additional Crush DMG of the Arcane Explosion skill into Additional Heat DMG. Intelligence -4, Heat DEF 1000, Cold DEF -40',
+        'Activates Level 1 passive skill [Warmth Within the Hearth]. [Warmth Within the Hearth]: Converts the Additional Crush DMG of the Arcane Explosion skill into Additional Heat DMG.',
     },
     elementalOfMagic: {
       name: 'Elemental of Magic',
@@ -130,7 +130,7 @@ const rawEfreetiData = {
         value: '57%',
       },
       description:
-        'Releases arcane energy, causing a massive explosion. Deals Immaterial DMG equal to 57% of Magic ATK to enemies within a 3m Circular Range at the designated location, and Additional Crush DMG equal to 57% of Magic ATK. When attacking with this skill, temporarily increases ACC by 100%.',
+        'Releases arcane energy, causing a massive explosion. Deals Immaterial DMG equal to N% of Magic ATK to enemies within a 3m Circular Range at the designated location, and Additional Crush DMG equal to {30,33,36,39,42,45,48,51,54,57}% of Magic ATK. When attacking with this skill, temporarily increases ACC by 100%.',
     },
     arcanePurge: {
       gameKey: 'ArcaneBaptism',
@@ -156,7 +156,7 @@ const rawEfreetiData = {
         value: '143%/57%',
       },
       description:
-        'Unleashes surging flames that scorch and scatter nearby foes. Deals 143% of Magic ATK as unblockable Heat DMG to the target and 57% of Magic ATK as Splash Heat DMG to enemies within a 3m radius, pulling them slightly toward the center. This skill cannot trigger Weak Point effects.',
+        'Unleashes surging flames that scorch and scatter nearby foes. Deals M% of Magic ATK as unblockable Heat DMG to the target and N% of Magic ATK as Splash Heat DMG to enemies within a 3m radius, pulling them slightly toward the center. This skill cannot trigger Weak Point effects.',
     },
     blazingMandate: {
       gameKey: 'BlazingDiscipline',
@@ -193,7 +193,7 @@ const rawEfreetiData = {
       apCost: 15,
       cooldown: 0,
       description:
-        'Forge a pact to share the power of the Eternal Flame. This skill can only be used when HP is 80% or higher. Consumes 30% of base Max HP and 50% of current HP to activate. Generates a 5m radius [Ember Garden] zone that moves with the caster and restores 15 AP. Grants the [Emberbound] effect to a targeted ally. When a [Emberbound] ally successfully lands an attack, the caster restores 10% of Max HP as healing. If the ally is hit, the caster suffers 15% of their current HP as Fixed DMG.',
+        'Forge a pact to share the power of the Eternal Flame. This skill can only be used when HP is 80% or higher. Consumes 30% of base Max HP and 50% of current HP to activate. Generates a 5m radius [Ember Garden] zone that moves with the caster and restores 15 AP. Grants the [Emberbound] effect to a targeted ally. When a [Emberbound] ally successfully lands an attack, the caster restores {5.5,6,6.5,7,7.5,8,8.5,9,9.5,10}% of Max HP as healing. If the ally is hit, the caster suffers 15% of their current HP as Fixed DMG.',
     },
   },
 

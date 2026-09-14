@@ -102,7 +102,7 @@ const rawMaximiliaData = {
     stingTheGap: {
       gameKey: 'StingTheGap',
       icon: 'UI_SkillIcon_OneHandedSword_BA',
-      name: 'Sting the Gap',
+      name: 'Gap Stab',
       level: '10/10',
       type: 'Skill',
       apCost: 0,
@@ -112,12 +112,12 @@ const rawMaximiliaData = {
         value: '138%',
       },
       description:
-        'Stabs with a sword to attack. Deals Pierce DMG equal to 138% of Melee ATK. Coefficient scales from 73% at Lv1 to 138% at Lv10.',
+        'Stabs with a sword to attack. Deals Pierce DMG equal to N% of Melee ATK.',
     },
     guardianWall: {
       gameKey: 'GuardianWall',
       icon: 'UI_SkillIcon_GuardianWall',
-      name: 'Guardian Wall',
+      name: 'Guardian Barrier',
       level: '10/10',
       type: 'Skill',
       apCost: 70,
@@ -127,29 +127,29 @@ const rawMaximiliaData = {
         value: '276%',
       },
       description:
-        'Raises a massive [Guardian Barrier] to protect allies from enemies. Deals Crush DMG equal to 276% of Melee ATK to enemies within a wide rectangular area, knocks them back 3m, and summons [Guardian Barrier] in front. While [Guardian Barrier] is active, All DEF increases by 200-650, the unit cannot be pushed or pulled, and cannot perform Responses. [Guardian Barrier] disappears at the start of the caster\'s next turn. [Guardian Barrier] inherits 100% of the caster\'s Max HP and 100% of DEF. Coefficient scales from 145% at Lv1 to 276% at Lv10. Requires Sting the Gap Lv3 to unlock.',
+        'Raises a massive [Guardian Barrier] to protect allies from enemies. Deals Crush DMG equal to N% of Melee ATK to enemies within a wide rectangular area, knocks them back 3m, and summons [Guardian Barrier] in front. While [Guardian Barrier] is active, All DEF increases by {200,250,300,350,400,450,500,550,600,650}, the unit cannot be pushed or pulled, and cannot perform Responses. [Guardian Barrier] disappears at the start of the caster\'s next turn. [Guardian Barrier] inherits 100% of the caster’s Max HP and 100% of DEF.',
     },
     shatter: {
       gameKey: 'Shatter',
       icon: 'UI_SkillIcon_Shatter',
-      name: 'Shatter',
+      name: 'Sunder Strike',
       level: '10/10',
       type: 'Passive',
       apCost: 0,
       cooldown: 0,
       description:
-        'When attacking, reduces the target\'s AP by 5.5-10 with a chance equal to Crit Rate. For each point of Vitality above 16, the reduction increases by 1.',
+        'When attacking, reduces the target\'s AP by {5.5,6,6.5,7,7.5,8,8.5,9,9.5,10} with a chance equal to Crit Rate. For each point of Vitality above 16, the reduction increases by 1.',
     },
     majestyOfTheGuardian: {
       gameKey: 'MajestyOfTheGuardian',
       icon: 'UI_SkillIcon_MajestyOfTheGuardian',
-      name: 'Majesty of the Guardian',
+      name: 'Sovereign\'s Protection',
       level: '10/10',
       type: 'Passive',
       apCost: 0,
       cooldown: 0,
       description:
-        'Emits an aura with an 8m radius. Allies within the aura gain [Guard], and enemies gain [Pressure]. [Guard]: Increases All DEF by 100-190 and Crit Rate by 22-40%. [Pressure]: Decreases All DEF by 150-420 and SPD by 20-38%. Requires Guardian Wall Lv3 to unlock.',
+        'Emits an aura with a 8m radius. Allies within the aura gain [Guard], and enemies gain [Pressure]. [Guard]: Increases All DEF by {100,110,120,130,140,150,160,170,180,190} and Crit Rate by {22,24,26,28,30,32,34,36,38,40}%. [Pressure]: Decreases All DEF decreases by {150,180,210,240,270,300,330,360,390,420} and SPD by {20,22,24,26,28,30,32,34,36,38}%.',
     },
   },
 

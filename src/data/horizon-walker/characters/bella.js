@@ -94,9 +94,9 @@ const rawBellaData = {
   // Unique Traits
   uniqueTraits: {
     divinesBeloved: {
-      name: "Divine's Beloved",
+      name: "God's Beloved",
       description:
-        "Activates the Level 1 passive skill [Divine's Beloved]. [Divine's Beloved]: Each time an ally recovers HP, self has a 30% chance to gain 20 AP.",
+        "Activates the Level 1 passive skill [God's Beloved]. [God's Beloved]: Each time an ally recovers HP, self has a 30% chance to gain 20 AP.",
     },
     revivingBough: {
       name: 'Reviving Bough',
@@ -180,7 +180,7 @@ const rawBellaData = {
       apCost: 45,
       cooldown: 0,
       description:
-        'Prays to the Divine of the Split Twigs with a devout heart for the healing of an ally. Recovers the HP of a designated ally by 190% of magic ATK.',
+        'Prays to the Goddess of the Split Twigs with a devout heart for the healing of an ally. Recovers the HP of a designated ally by {100,110,120,130,140,150,160,170,180,190}% of magic ATK.',
     },
     lifeRegeneration: {
       gameKey: 'VitalityRegeneration',
@@ -191,7 +191,7 @@ const rawBellaData = {
       apCost: 60,
       cooldown: 2,
       description:
-        'Offers a solemn prayer for the mercy of the Divine of Split Twigs. Recovers the HP of allies within a 2.5m circular range by 285% of magic ATK.',
+        'Offers a solemn prayer for the mercy of the Goddess of Split Twigs. Recovers the HP of allies within a 2.5m circular range by {150,165,180,195,210,225,240,255,270,285}% of magic ATK.',
     },
     revivingBoughSkill: {
       gameKey: 'BranchResurrection',
@@ -202,7 +202,7 @@ const rawBellaData = {
       apCost: 90,
       cooldown: 0,
       description:
-        "Opens the path of the branches to invoke the divine's miracle. Restores consciousness to one incapacitated ally and recovers HP by 380% of magic ATK. The target resumes battle with AP set to 95.",
+        "Opens the path of the branches to invoke the goddess's miracle. Restores consciousness to one incapacitated ally and recovers HP by {200,220,240,260,280,300,320,340,360,380}% of magic ATK. The target resumes battle with AP set to {50,55,60,65,70,75,80,85,90,95}.",
     },
   },
   rarityStages: {

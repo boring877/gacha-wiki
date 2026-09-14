@@ -126,7 +126,7 @@ const rawMinEunSolData = {
     wholehearted: {
       name: 'Wholehearted',
       description:
-        'Activates the Level 1 passive skill [Wholehearted]. [Wholehearted]: Looks solely towards the Chosen Human with blind devotion. If deployed with the Chosen Human, decreases Evasion by 10% but increases Magic ATK by 15%.',
+        'Activates the Level 1 passive skill [Wholhearted]. [Wholhearted]: Looks solely towards the Human God with blind devotion. If deployed with the Human God, decreases Evasion by 10% but increases Magic ATK by 15%.',
     },
     mentalBulwark: {
       name: 'Mental Bulwark',
@@ -158,7 +158,7 @@ const rawMinEunSolData = {
         value: '95%',
       },
       description:
-        "Inflicts an unavoidable attack by shocking the enemy's mind. Deals Immaterial DMG equal to 95% of magic ATK and reduces the target's AP by 5. If the target has the [One Who Disturbed the King's Offering] effect, deals an additional Immaterial DMG equal to 133% of magic ATK.",
+        "Inflicts an unavoidable attack by shocking the enemy's mind. Deals Immaterial DMG equal to N% of magic ATK and reduces the target's AP by 5. If the target has the [One Who Disturbed the King's Offering] effect, deals an additional Immaterial DMG equal to {70,77,84,91,98,105,112,119,126,133}% of magic ATK.",
     },
     kingsOffering: {
       gameKey: 'KingsOffering',
@@ -169,7 +169,7 @@ const rawMinEunSolData = {
       apCost: 0,
       cooldown: 0,
       description:
-        "When attacked by an enemy, deals additional Immaterial DMG equal to 50% of magic ATK to the target and applies [One Who Disturbed the King's Offering] for 2 rounds. [One Who Disturbed the King's Offering]: Reduces AP recovery by 19% and reduces all ATK by 19%.",
+        "\"This creature is the offering of the Dark King, and none shall covet it.\" When attacked by an enemy, deals additional Immaterial DMG equal to {25, 27, 30, 32, 35, 38, 41, 44, 47, 50}% of magic ATK to the target and applies [One Who Disturbed the King's Offering] for 2 rounds. [One Who Disturbed the King's Offering]: Reduces AP recovery by {10, 11, 12, 13, 14, 15, 16, 17, 18, 19}% and reduces all ATK by {10, 11, 12, 13, 14, 15, 16, 17, 18, 19}%.",
     },
     devourWill: {
       gameKey: 'LifeWillEater',
@@ -184,7 +184,7 @@ const rawMinEunSolData = {
         value: '57%',
       },
       description:
-        "The authority of the Black King devours the enemy's will to survive. Deals unblockable magic ATK equal to 57% as Immaterial DMG to an enemy, inflicting [Devour Will] for 2R and [Taunt]. [Devour Will]: Reduces Evasion by 76% and makes Counterattack impossible.",
+        "The authority of the Dark King devours the enemy's will to survive. Deals unblockable magic ATK equal to N% as Immaterial DMG to an enemy, inflicting [Devour Will] for 2R and [Taunt]. [Devour Will]: Reduces Evasion by {40,44,48,52,56,60,64,68,72,76}% and makes Counterattack impossible.",
     },
     kingsFavor: {
       gameKey: 'KingsConcern',
@@ -195,7 +195,7 @@ const rawMinEunSolData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'Upon successful attack, gain a shield equal to magic ATK of 95% lasting for 2R.',
+        'Upon successful attack, gain a shield equal to magic ATK of {50,55,60,65,70,75,80,85,90,95}% lasting for 2R.',
     },
     kingsWrath: {
       gameKey: 'KingsAnger',

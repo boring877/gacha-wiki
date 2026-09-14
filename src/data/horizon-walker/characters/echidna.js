@@ -127,7 +127,7 @@ const rawEchidnaData = {
         value: '57%',
       },
       description:
-        'Releases arcane energy, causing a massive explosion. Deals Immaterial DMG equal to 57% of Magic ATK to enemies within a 3m Circular Range at the designated location, and Additional Crush DMG equal to 57% of Magic ATK. When attacking with this skill, temporarily increases ACC by 100%.',
+        'Releases arcane energy, causing a massive explosion. Deals Immaterial DMG equal to N% of Magic ATK to enemies within a 3m Circular Range at the designated location, and Additional Crush DMG equal to {30,33,36,39,42,45,48,51,54,57}% of Magic ATK. When attacking with this skill, temporarily increases ACC by 100%.',
     },
     arcanePurge: {
       gameKey: 'ArcaneBaptism',
@@ -138,7 +138,7 @@ const rawEchidnaData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'At the start of the round, grants the [Arcane Purge] effect to allies except Arcane Elementals. When the [Arcane Purge] effect expires, the Arcane Elemental on the battlefield gains 1 stack of [Pure Energy]. [Arcane Purge]: Becomes a valid target for other abilities of the Arcane Elemental. [Pure Energy]: Increases Magic ATK by 13%, up to 3 stacks.',
+        'At the start of the round, grants the [Arcane Purge] effect to allies except Arcane Elementals. When the [Arcane Purge] effect expires, the Arcane Elemental on the battlefield gains 1 stack of [Pure Energy].',
     },
     toxicCarrier: {
       gameKey: 'SpiritsToxicPayload',
@@ -158,13 +158,13 @@ const rawEchidnaData = {
     fleshEatingFroth: {
       gameKey: 'FleshEatingFoamActive',
       icon: 'UI_SkillIcon_FleshEatingFoam',
-      name: 'Flesh-Eating Froth',
+      name: 'Flesh-Eating Froth: Support Attack',
       level: '10/10',
       type: 'Passive',
       apCost: 0,
       cooldown: 0,
       description:
-        'When an ally with the [Arcane Purge] effect successfully attacks on their turn, triggers a Support Attack with [Flesh-Eating Froth]. At the end of the turn, the acting ally\'s [Arcane Purge] effect is removed if this Support Attack was triggered. [Flesh-Eating Froth]: Unleashes Poison DMG equal to 114% of the caster\'s Magic ATK to all enemies in a 30° cone within 7m, and applies 1 stack of [Acid Venom].',
+        'System Passive',
     },
     comfortingVenom: {
       gameKey: 'PeacefulPoison',
@@ -179,7 +179,7 @@ const rawEchidnaData = {
         value: '380%',
       },
       description:
-        'Consumes 3 stacks of [Pure Energy] to activate. Select a target afflicted with [Acid Venom] to overload their body with toxins, causing all accumulated poisons to erupt violently. Deals Poison DMG equal to 380% of Magic ATK to all enemies within 6m, and applies [Venom Reflux]. [Venom Reflux]: Accumulates an additional 285% of all poison stacks the target currently holds, plus an amount equal to 570% of the caster\'s Accuracy.',
+        'Consumes 3 stacks of [Pure Energy] to activate. Select a target afflicted with [Acid Venom] to overload their body with toxins, causing all accumulated poisons to erupt violently. Deals Poison DMG equal to N% of Magic ATK to all enemies within 6m, and applies [Venom Reflux]. If the target already has [Venom Reflux], the effect is removed and reapplied. [Venom Reflux]: Accumulates an additional {150,165,180,195,210,225,240,255,270,285}% of all poison stacks the target currently holds, plus an amount equal to {300,330,360,390,420,450,480,510,540,570}% of the caster’s Accuracy. Each poison type accumulated through Accuracy cannot exceed a maximum of {750,825,900,975,1050,1125,1200,1275,1350,1425}.',
     },
     lingeringMiasma: {
       gameKey: 'LingeringPoison',

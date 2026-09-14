@@ -162,7 +162,7 @@ const rawJuhaData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'Allies with over 50% HP who attack using a <Firearm> based skill receive the [Blessing of Firepower] effect from the Bullet Priestess. [Blessing of Firepower]: Increases AP Recovery by 28.5%, Ranged ATK by 52%, and Pierce Boost and Crush Boost by 12% until the start of the next round. When the effect ends, inflicts fixed damage equal to 5% of current HP.',
+        'Allies with over 50% HP who attack using a <Firearm> based skill receive the [Blessing of Firepower] effect from the Bullet Priestess. [Blessing of Firepower]: Increases AP Recovery by {15,16.5,18,19.5,21,22.5,24,25.5,27,28.5}%, Ranged ATK by {25,28,31,34,37,40,43,46,49,52}%, and Pierce Boost and Crush Boost by {8,8.5,9,9.5,10,10.5,11,11.5,12}% until the start of the next round. When the effect ends, inflicts fixed damage equal to 5% of current HP.',
     },
     theExecutioner: {
       gameKey: 'EnforcementShooter',
@@ -173,7 +173,7 @@ const rawJuhaData = {
       apCost: 90,
       cooldown: 2,
       description:
-        "Blesses an ally with Orke's divinity for an inevitable victory. The designated ally gains 136 AP and enters [The Executioner] state for 1 round. At the end of any turn during which the ally in [The Executioner] state attacks, they gain the [Executioner's Bullet] effect, lasting for 1 round. [The Executioner]: Increases Ranged ATK by 76% of the Saint of Bullet's base Ranged ATK. [Executioner's Bullet]: Increases All ATK by 17% of the Saint of Bullet's base Ranged ATK. Can stack up to 3 times.",
+        "Blesses an ally with Orke's divinity for an inevitable victory. If another spirit is already there, some “mischief” may occur… The designated ally gains {100,104,108,112,116,120,124,128,132,136} AP and enters [The Executioner] state for 1 round. At the end of any turn during which the ally in [The Executioner] state attacks, they gain the [Executioner's Bullet] effect, lasting for 1 round. [The Executioner]: Increases Ranged ATK by {40,44,48,52,56,60,64,68,72,76}% of the Saint of Bullet’s base Ranged ATK. [Executioner's Bullet]: Increases All ATK by {8,9,10,11,12,13,14,15,16,17}% of the Saint of Bullet’s base Ranged ATK. Can stack up to 3 times.",
     },
     brothersAndSistersOfFaith: {
       gameKey: 'FaithfulBrothersAndSisters',
@@ -183,7 +183,7 @@ const rawJuhaData = {
       type: 'Passive',
       apCost: 0,
       cooldown: 0,
-      description: 'Increases ACC of allies within a 3m radius by 76%.',
+      description: 'Increases ACC of allies within a 3m radius by {40,44,48,52,56,60,64,68,72,76}%.',
     },
   },
 

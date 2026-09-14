@@ -497,7 +497,9 @@ function formatDamage(skillKey: string, damage: any): string {
   const ld = skillLevelData[skillKey];
   if (!ld || !damage) return damage?.value || damage?.target || '';
   const maxLevel = ld.maxLevel;
-  const levelInfo = ld.levels[String(maxLevel)];
+  // brace-only entries carry levels: null (no coefficient table); fall back to
+  // the skill's listed damage value instead of throwing
+  const levelInfo = ld.levels ? ld.levels[String(maxLevel)] : null;
   if (!levelInfo) return damage?.value || '';
   const val = Math.round(parseFloat(levelInfo.min) * 100);
   const suffix = damage.type ? ` of ${damage.type}` : '';

@@ -1,331 +1,331 @@
 // Yeon Chae-Young Character Data - Horizon Walker
 // Based on the Zone Nova character data structure
 import {
-  validateCharacterData,
-  sanitizeCharacterData,
-  sanitizeHighlightPatterns,
+ validateCharacterData,
+ sanitizeCharacterData,
+ sanitizeHighlightPatterns,
 } from '../../../utils/horizon-walker/data-validation.js';
 
 const rawYeonChaeYoungData = {
-  // Basic Character Information
-  name: 'Yeon Chae-Young',
-  image: 'Yeon_Chae-Young', // Character image filename without extension
-  rarity: 'S', // EX, SS, S, A, B
-  cost: 4, // Deployment cost
-  tags: [
-    'Assassin',
-    'Ranged Damage',
-    'Pierce Damage',
-    'Stealth',
-    'Accuracy Support',
-    'Critical Damage',
-    'Weakness Hunter',
-    'Team Buffer',
-    'Elite Agent',
-    'Dual Pistols',
-    'Unblockable Attack',
-  ], // Character role tags
+ // Basic Character Information
+ name: 'Yeon Chae-Young',
+ image: 'Yeon_Chae-Young', // Character image filename without extension
+ rarity: 'S', // EX, SS, S, A, B
+ cost: 4, // Deployment cost
+ tags: [
+  'Assassin',
+  'Ranged Damage',
+  'Pierce Damage',
+  'Stealth',
+  'Accuracy Support',
+  'Critical Damage',
+  'Weakness Hunter',
+  'Team Buffer',
+  'Elite Agent',
+  'Dual Pistols',
+  'Unblockable Attack',
+ ], // Character role tags
 
-  // Character Stats (Level 60)
+ // Character Stats (Level 60)
+ stats: {
+  // Basic Stats
+  strength: '11',
+  technic: '12',
+  intelligence: '13',
+  vitality: '11',
+  agility: '6',
+
+  // Key Stats
+  meleeAtk: '140',
+  rangedAtk: '153',
+  magicAtk: '166',
+  maxHp: '668',
+  spd: '88',
+  startingAp: '117',
+  apRecovery: '104',
+  accuracy: '105',
+  evade: '76',
+  critRate: '10',
+  critDmg: '150',
+
+  // Attribute Boost
+  slashBoost: '0',
+  pierceBoost: '0',
+  crushBoost: '0',
+  heatBoost: '0',
+  coldBoost: '0',
+  electricBoost: '0',
+  immaterialBoost: '0',
+  poisonBoost: '0',
+
+  // Attribute Defense
+  slashDef: '0',
+  pierceDef: '0',
+  crushDef: '0',
+  heatDef: '0',
+  coldDef: '0',
+  electricDef: '0',
+  immaterialDef: '0',
+  poisonDef: '0',
+  blockRate: '0',
+ },
+
+ // Character Description
+ description:
+  'A fifth-grade Bureau of Rift Management field agent who specializes in stealth operations and precision shooting with dual pistols.',
+
+ // Character Profile
+ profile: {
+  age: '27',
+  racial: 'Human (Earth)',
+  homeland: 'East Asia Federation, Fukuoka',
+  height: '170cm',
+  birthday: 'March 8th',
+  bwhRatio: '103(L)-56-105',
+ },
+
+ // Character Story
+ story:
+  "During her adolescence, Yeon Chae-young lost her parents to an Abomination. That experience led her to deeply question the role of the state, which ultimately had a profound influence on her decision to apply to the Bureau of Rift Management. Passing the administrative examination for Rift management—widely considered one of the highest elite paths in the Federation—Yeon Chae-young qualified as a fifth-grade officer and chose to volunteer for field duty, becoming an active field agent. And then she met him. Within the Rift's barrier, sacrificing himself for countless people only to rise again and obliterate the Blood Maker in an instant—she met the chosen human. In that moment, she knew it was destiny.",
+
+ // Unique Traits
+ uniqueTraits: {
+  efficientTactics: {
+   name: 'Efficient Tactics',
+   description:
+    'Activates the Level 1 passive skill [Efficient Operation]. [Efficient Operation]: At the start of battle, grants all allies AP by 5.',
+  },
+  firstBlood: {
+   name: 'First Blood',
+   description:
+    'Activates the Level 3 passive skill [Bold Move]. [Bold Move]: Once per round, the first attack gains 100% CRIT rate and CRIT DMG increases by 40%.',
+  },
+  human: {
+   name: 'Human',
+   description: 'Technic 1, AP Recovery 4%',
+  },
+  interested: {
+   name: 'Interested',
+   description: 'Interested in the Chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
+  },
+ },
+
+ // Weapon Information
+ weapon: {
+  name: "DMP-9 Prototype",
+  flavor: "The DMP-9 Prototype, hailed as both a masterpiece and an enigma of the Rift Federation, perfectly embodies the simplicity and elegance sought in their weapon design - yet its origins and overwhelming firepower remain a mystery. Even the Federation's own engineers could not explain how the DMP-9 achieved performance far beyond conventional limits - despite being the very ones who built it. Fearing they might ruin their own creation, they never dared to dismantle and analyze it. Abandoned as a mass-production project, this legendary weapon remained true to its name: a prototype. Still, on the battlefield, its sheer destructive power leaves no room for doubt.",
+  type: "Dual Pistols",
+  rarity: 'EX',
+  image: "Weapon_FullIMG_DualPistol_ForYeonYeonChaeyoung",
+  imageOnR2: true,
+  maxLevel: 60,
   stats: {
-    // Basic Stats
-    strength: '11',
-    technic: '12',
-    intelligence: '13',
-    vitality: '11',
-    agility: '6',
-
-    // Key Stats
-    meleeAtk: '140',
-    rangedAtk: '153',
-    magicAtk: '166',
-    maxHp: '668',
-    spd: '88',
-    startingAp: '117',
-    apRecovery: '104',
-    accuracy: '105',
-    evade: '76',
-    critRate: '10',
-    critDmg: '150',
-
-    // Attribute Boost
-    slashBoost: '0',
-    pierceBoost: '0',
-    crushBoost: '0',
-    heatBoost: '0',
-    coldBoost: '0',
-    electricBoost: '0',
-    immaterialBoost: '0',
-    poisonBoost: '0',
-
-    // Attribute Defense
-    slashDef: '0',
-    pierceDef: '0',
-    crushDef: '0',
-    heatDef: '0',
-    coldDef: '0',
-    electricDef: '0',
-    immaterialDef: '0',
-    poisonDef: '0',
-    blockRate: '0',
+   "Ranged ATK (weapon)": "91",
+   "Ranged ATK (%)": "+35%",
   },
-
-  // Character Description
-  description:
-    'A fifth-grade Bureau of Rift Management field agent who specializes in stealth operations and precision shooting with dual pistols.',
-
-  // Character Profile
-  profile: {
-    age: '27',
-    racial: 'Human (Earth)',
-    homeland: 'East Asia Federation, Fukuoka',
-    height: '170cm',
-    birthday: 'March 8th',
-    bwhRatio: '103(L)-56-105',
+  uniqueSkills: {
+   unique: {
+    name: "An Elite Agent's Dignity",
+    type: 'Unique',
+    description: "During combat, Crit DMG +{20,26,32,38,44}% and SPD +{20,24,28,32,36}%. When allies other than yourself take their turn and land a Weak Point Attack, gain [Briefing] (stacks up to 2 times). At the start of your turn, if [Briefing] is at max stacks, gain [Keen Insight]. [Keen Insight]: Increases Pierce Boost by {24,32,40,48,56}%.",
+   },
+   signature: {
+    name: "Yeon Chae-young Signature: Commence Operation",
+    type: 'Signature',
+    description: "Increases Ranged ATK +10% during combat. When Crit Rate exceeds 100%, half of the excess value is temporarily converted into Crit DMG. At the start of your turn, if you have [Keen Insight], gain [Extra Action] once, and the AP cost of \"Assassination\" and \"Mass Execution\" is reduced by 18 for that turn. During combat, \"Conceal\" is enhanced. Conceal During combat, Crit DMG +10%. At the start of combat and after landing a Weak Point Attack, enter Stealth until the end of your turn.",
+   },
   },
-
-  // Character Story
-  story:
-    "During her adolescence, Yeon Chae-young lost her parents to an Abomination. That experience led her to deeply question the role of the state, which ultimately had a profound influence on her decision to apply to the Bureau of Rift Management. Passing the administrative examination for Rift management—widely considered one of the highest elite paths in the Federation—Yeon Chae-young qualified as a fifth-grade officer and chose to volunteer for field duty, becoming an active field agent. And then she met him. Within the Rift's barrier, sacrificing himself for countless people only to rise again and obliterate the Blood Maker in an instant—she met the chosen human. In that moment, she knew it was destiny.",
-
-  // Unique Traits
-  uniqueTraits: {
-    efficientTactics: {
-      name: 'Efficient Tactics',
-      description:
-        'Activates the Level 1 passive skill [Efficient Operation]. [Efficient Operation]: At the start of battle, grants all allies AP by 5.',
-    },
-    firstBlood: {
-      name: 'First Blood',
-      description:
-        'Activates the Level 3 passive skill [Bold Move]. [Bold Move]: Once per round, the first attack gains 100% CRIT rate and CRIT DMG increases by 40%.',
-    },
-    human: {
-      name: 'Human',
-      description: 'Technic 1, AP Recovery 4%',
-    },
-    interested: {
-      name: 'Interested',
-      description: 'Interested in the Chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
-    },
+  levelStats: {
+   "Ranged ATK (weapon)": [14.3, 91.0],
+   "Ranged ATK (%)": [5.5, 35.0],
   },
+  exLevels: {
+   effects: [
+    { name: "During combat, Crit DMG +", valuesByLevel: "20% / 26% / 32% / 38% / 44%" },
+    { name: "% and SPD +", valuesByLevel: "20% / 24% / 28% / 32% / 36%" },
+    { name: "[Keen Insight]: Increases Pierce Boost", valuesByLevel: "24% / 32% / 40% / 48% / 56%" },
+   ],
+  },
+ },
 
-  // Weapon Information
-  weapon: {
-    name: "DMP-9 Prototype",
-    flavor: "The DMP-9 Prototype, hailed as both a masterpiece and an enigma of the Rift Federation, perfectly embodies the simplicity and elegance sought in their weapon design - yet its origins and overwhelming firepower remain a mystery. Even the Federation's own engineers could not explain how the DMP-9 achieved performance far beyond conventional limits - despite being the very ones who built it. Fearing they might ruin their own creation, they never dared to dismantle and analyze it. Abandoned as a mass-production project, this legendary weapon remained true to its name: a prototype. Still, on the battlefield, its sheer destructive power leaves no room for doubt.",
-    type: "Dual Pistols",
-    rarity: 'EX',
-    image: "Weapon_FullIMG_DualPistol_ForYeonYeonChaeyoung",
-    imageOnR2: true,
-    maxLevel: 60,
-    stats: {
-      "Ranged ATK (weapon)": "91",
-      "Ranged ATK (%)": "+35%",
-    },
-    uniqueSkills: {
-      unique: {
-        name: "An Elite Agent's Dignity",
-        type: 'Unique',
-        description: "During combat, Crit DMG +{20,26,32,38,44}% and SPD +{20,24,28,32,36}%. When allies other than yourself take their turn and land a Weak Point Attack, gain [Briefing] (stacks up to 2 times). At the start of your turn, if [Briefing] is at max stacks, gain [Keen Insight]. [Keen Insight]: Increases Pierce Boost by {24,32,40,48,56}%.",
-      },
-      signature: {
-        name: "Yeon Chae-young Signature: Commence Operation",
-        type: 'Signature',
-        description: "Increases Ranged ATK +10% during combat. When Crit Rate exceeds 100%, half of the excess value is temporarily converted into Crit DMG. At the start of your turn, if you have [Keen Insight], gain [Extra Action] once, and the AP cost of \"Assassination\" and \"Mass Execution\" is reduced by 18 for that turn. During combat, \"Conceal\" is enhanced. [#sepline]Conceal During combat, Crit DMG +10%. At the start of combat and after landing a Weak Point Attack, enter Stealth until the end of your turn.",
-      },
-    },
-    levelStats: {
-      "Ranged ATK (weapon)": [14.3, 91.0],
-      "Ranged ATK (%)": [5.5, 35.0],
-    },
-    exLevels: {
-      effects: [
-        { name: "During combat, Crit DMG +", valuesByLevel: "20% / 26% / 32% / 38% / 44%" },
-        { name: "% and SPD +", valuesByLevel: "20% / 24% / 28% / 32% / 36%" },
-        { name: "[Keen Insight]: Increases Pierce Boost", valuesByLevel: "24% / 32% / 40% / 48% / 56%" },
-      ],
-    },
+ // Skills and Passive
+ skills: {
+  pistolFire: {
+   gameKey: 'AkimboShot',
+   icon: 'UI_SkillIcon_DoublePistol_BA',
+   name: 'Pistol Fire',
+   level: '10/10',
+   type: 'Skill',
+   apCost: 45,
+   cooldown: 0,
+   damage: {
+    type: 'Ranged ATK',
+    value: '114%',
+   },
+   description:
+    'Calmly shoots at the target. Deals Pierce DMG equal to 114% of Ranged ATK. The ability to wield dual pistols with ease is a skill that Discover agents must master quickly. Agents who can produce submachine gun-level firepower with their two pistols always reign as a fearsome presence on the battlefield.',
   },
-
-  // Skills and Passive
-  skills: {
-    pistolFire: {
-      gameKey: 'AkimboShot',
-      icon: 'UI_SkillIcon_DoublePistol_BA',
-      name: 'Pistol Fire',
-      level: '10/10',
-      type: 'Skill',
-      apCost: 45,
-      cooldown: 0,
-      damage: {
-        type: 'Ranged ATK',
-        value: '114%',
-      },
-      description:
-        'Calmly shoots at the target. Deals Pierce DMG equal to 114% of Ranged ATK. The ability to wield dual pistols with ease is a skill that Discover agents must master quickly. Agents who can produce submachine gun-level firepower with their two pistols always reign as a fearsome presence on the battlefield.',
-    },
-    conceal: {
-      gameKey: 'Ambush',
-      icon: 'UI_SkillIcon_Ambush',
-      name: 'Conceal',
-      level: '10/10',
-      type: 'Passive',
-      apCost: 0,
-      cooldown: 0,
-      description:
-        "When attacking an enemy's weak point, uses optical camouflage to hide. Once per round, has a 38% chance to gain [Conceal: Stealth] upon a weakness attack. The activation chance increases by 1% for every 1% of current lost HP. [Conceal: Stealth]: Becomes hidden and cannot be targeted by enemy skills. SPD decreases by 10%, and ACC increases by 50% for the first attack while hidden.",
-    },
-    assassination: {
-      gameKey: 'Assassination',
-      icon: 'UI_SkillIcon_Assassination',
-      name: 'Assassination',
-      level: '10/10',
-      type: 'Skill',
-      apCost: 60,
-      cooldown: 2,
-      damage: {
-        type: 'Ranged ATK',
-        value: '190%',
-      },
-      description:
-        'Approaches the enemy and delivers an Unblockable point-blank shot. Deals Pierce DMG equal to 190% of Ranged ATK. This attack is always considered to be from behind the enemy and ignores counterattack effects. During this attack, ACC temporarily increases by 300%.',
-    },
-    massExecution: {
-      gameKey: 'AllOutExecution',
-      icon: 'UI_SkillIcon_AllOutExecution',
-      name: 'Mass Execution',
-      level: '10/10',
-      type: 'Skill',
-      apCost: 60,
-      cooldown: 3,
-      damage: {
-        type: 'Ranged ATK',
-        value: '342%',
-      },
-      description:
-        'Performs a quick and precise rapid shot on up to 3 enemies. Executes a distributed attack in order of proximity, dealing Pierce DMG equal to 342% of Ranged ATK divided by the number of targets.',
-    },
-    unavoidableEyes: {
-      gameKey: 'InevitableSight',
-      icon: 'UI_SkillIcon_InevitableSight',
-      name: 'Unavoidable Eyes',
-      level: '10/10',
-      type: 'Passive',
-      apCost: 0,
-      cooldown: 0,
-      description:
-        "Identifies the enemy's weak point and guides allies. Increases ACC of all allies by 57%.",
-    },
+  conceal: {
+   gameKey: 'Ambush',
+   icon: 'UI_SkillIcon_Ambush',
+   name: 'Conceal',
+   level: '10/10',
+   type: 'Passive',
+   apCost: 0,
+   cooldown: 0,
+   description:
+    "When attacking an enemy's weak point, uses optical camouflage to hide. Once per Round, at the end of a turn where you performed a Weak Point Attack, there is a {20,22,24,26,28,30,32,34,36,38}% chance to gain [Conceal: Stealth]. Activation chance increases by 1% for every 1% of your missing HP. [Conceal: Stealth]: Becomes hidden and cannot be targeted by enemy skills. SPD decreases by 10%, and ACC increases by 50% for the first attack while hidden.",
   },
-  rarityStages: {
-    'EX': {
-      strength: 9,
-      technic: 12,
-      intelligence: 11,
-      vitality: 9,
-      agility: 6,
-      maxHp: 547,
-      meleeAtk: 115,
-      rangedAtk: 153,
-      magicAtk: 140,
-      evade: 76,
-      apRecovery: 104,
-      startingAp: 117
-    },
-    'EX 1': {
-      strength: 9,
-      technic: 12,
-      intelligence: 11,
-      vitality: 10,
-      agility: 6,
-      maxHp: 608,
-      meleeAtk: 115,
-      rangedAtk: 153,
-      magicAtk: 140,
-      evade: 76,
-      apRecovery: 104,
-      startingAp: 117
-    },
-    'EX 2': {
-      strength: 9,
-      technic: 12,
-      intelligence: 12,
-      vitality: 10,
-      agility: 6,
-      maxHp: 608,
-      meleeAtk: 115,
-      rangedAtk: 153,
-      magicAtk: 153,
-      evade: 76,
-      apRecovery: 104,
-      startingAp: 117
-    },
-    'EX 3': {
-      strength: 10,
-      technic: 12,
-      intelligence: 12,
-      vitality: 10,
-      agility: 6,
-      maxHp: 608,
-      meleeAtk: 128,
-      rangedAtk: 153,
-      magicAtk: 153,
-      evade: 76,
-      apRecovery: 104,
-      startingAp: 117
-    },
-    'EX 4': {
-      strength: 10,
-      technic: 12,
-      intelligence: 13,
-      vitality: 10,
-      agility: 6,
-      maxHp: 608,
-      meleeAtk: 128,
-      rangedAtk: 153,
-      magicAtk: 166,
-      evade: 76,
-      apRecovery: 104,
-      startingAp: 117
-    },
-    'EX 5': {
-      strength: 11,
-      technic: 12,
-      intelligence: 13,
-      vitality: 10,
-      agility: 6,
-      maxHp: 608,
-      meleeAtk: 140,
-      rangedAtk: 153,
-      magicAtk: 166,
-      evade: 76,
-      apRecovery: 104,
-      startingAp: 117
-    },
-    'EX 6': {
-      strength: 11,
-      technic: 12,
-      intelligence: 13,
-      vitality: 11,
-      agility: 6,
-      maxHp: 668,
-      meleeAtk: 140,
-      rangedAtk: 153,
-      magicAtk: 166,
-      evade: 76,
-      apRecovery: 104,
-      startingAp: 117
-    },
+  assassination: {
+   gameKey: 'Assassination',
+   icon: 'UI_SkillIcon_Assassination',
+   name: 'Assassination',
+   level: '10/10',
+   type: 'Skill',
+   apCost: 60,
+   cooldown: 2,
+   damage: {
+    type: 'Ranged ATK',
+    value: '190%',
+   },
+   description:
+    'Approaches the enemy and delivers an Unblockable point-blank shot. Deals Pierce DMG equal to 190% of Ranged ATK. This attack is always considered to be from behind the enemy and ignores counterattack effects. During this attack, ACC temporarily increases by 300%.',
   },
-  heroId: 7,
+  massExecution: {
+   gameKey: 'AllOutExecution',
+   icon: 'UI_SkillIcon_AllOutExecution',
+   name: 'Mass Execution',
+   level: '10/10',
+   type: 'Skill',
+   apCost: 60,
+   cooldown: 3,
+   damage: {
+    type: 'Ranged ATK',
+    value: '342%',
+   },
+   description:
+    'Performs a quick and precise rapid shot on up to 3 enemies. Executes a distributed attack in order of proximity, dealing Pierce DMG equal to 342% of Ranged ATK divided by the number of targets.',
+  },
+  unavoidableEyes: {
+   gameKey: 'InevitableSight',
+   icon: 'UI_SkillIcon_InevitableSight',
+   name: 'Unavoidable Eyes',
+   level: '10/10',
+   type: 'Passive',
+   apCost: 0,
+   cooldown: 0,
+   description:
+    "Identifies the enemy's weak point and guides allies. Increases ACC of all allies by {30, 33, 36, 39, 42, 45, 48, 51, 54, 57}%.",
+  },
+ },
+ rarityStages: {
+  'EX': {
+   strength: 9,
+   technic: 12,
+   intelligence: 11,
+   vitality: 9,
+   agility: 6,
+   maxHp: 547,
+   meleeAtk: 115,
+   rangedAtk: 153,
+   magicAtk: 140,
+   evade: 76,
+   apRecovery: 104,
+   startingAp: 117
+  },
+  'EX 1': {
+   strength: 9,
+   technic: 12,
+   intelligence: 11,
+   vitality: 10,
+   agility: 6,
+   maxHp: 608,
+   meleeAtk: 115,
+   rangedAtk: 153,
+   magicAtk: 140,
+   evade: 76,
+   apRecovery: 104,
+   startingAp: 117
+  },
+  'EX 2': {
+   strength: 9,
+   technic: 12,
+   intelligence: 12,
+   vitality: 10,
+   agility: 6,
+   maxHp: 608,
+   meleeAtk: 115,
+   rangedAtk: 153,
+   magicAtk: 153,
+   evade: 76,
+   apRecovery: 104,
+   startingAp: 117
+  },
+  'EX 3': {
+   strength: 10,
+   technic: 12,
+   intelligence: 12,
+   vitality: 10,
+   agility: 6,
+   maxHp: 608,
+   meleeAtk: 128,
+   rangedAtk: 153,
+   magicAtk: 153,
+   evade: 76,
+   apRecovery: 104,
+   startingAp: 117
+  },
+  'EX 4': {
+   strength: 10,
+   technic: 12,
+   intelligence: 13,
+   vitality: 10,
+   agility: 6,
+   maxHp: 608,
+   meleeAtk: 128,
+   rangedAtk: 153,
+   magicAtk: 166,
+   evade: 76,
+   apRecovery: 104,
+   startingAp: 117
+  },
+  'EX 5': {
+   strength: 11,
+   technic: 12,
+   intelligence: 13,
+   vitality: 10,
+   agility: 6,
+   maxHp: 608,
+   meleeAtk: 140,
+   rangedAtk: 153,
+   magicAtk: 166,
+   evade: 76,
+   apRecovery: 104,
+   startingAp: 117
+  },
+  'EX 6': {
+   strength: 11,
+   technic: 12,
+   intelligence: 13,
+   vitality: 11,
+   agility: 6,
+   maxHp: 668,
+   meleeAtk: 140,
+   rangedAtk: 153,
+   magicAtk: 166,
+   evade: 76,
+   apRecovery: 104,
+   startingAp: 117
+  },
+ },
+ heroId: 7,
 
 };
 
 // Validate and sanitize the character data
 const validation = validateCharacterData(rawYeonChaeYoungData);
 if (!validation.isValid) {
-  throw new Error(`Character data validation failed: ${validation.errors.join(', ')}`);
+ throw new Error(`Character data validation failed: ${validation.errors.join(', ')}`);
 }
 
 // Export sanitized character data
@@ -333,17 +333,17 @@ export const yeonChaeYoungData = sanitizeCharacterData(rawYeonChaeYoungData);
 
 // Highlighting terms for this character - optimized to prevent ReDoS attacks
 const rawHighlightPatterns = {
-  damage: /\b(?:\d{1,3}%\s+of\s+\w{3,15}\s+ATK|\d{1,3}%\s+as\s+\w{3,15}\s+DMG|\w{3,15}\s+DMG)\b/gi,
-  effects: /\[([^[\]]{1,150})]/g,
-  buffsDebuffs:
-    /\b(?:Efficient\s+Operation|Bold\s+Move|Conceal:\s+Stealth|First\s+Blood|Efficient\s+Tactics|optical\s+camouflage|weakness\s+attack|point-blank\s+shot|distributed\s+attack|counterattack|unblockable|stealth|hidden|Briefing|Keen\s+Insight|Extra\s+Action|enhanced|Commence\s+Operation)\b/gi,
-  percentages: /\b(\d{1,3}%)\b/g,
-  statChanges:
-    /\b(?:reduces?|increases?|decreases?|gains?|grants?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?)\b/gi,
-  keywords:
-    /\b(?:weak\s+point|behind\s+the\s+enemy|proximity|temporarily|chosen\s+human|Bureau\s+of\s+Rift\s+Management|Abomination|Blood\s+Maker|fifth-grade\s+officer|field\s+agent|dual\s+pistols|submachine\s+gun|Discover\s+agents|optical\s+camouflage|destiny|EX\s+weapon|DMP-9\s+Prototype|Elite\s+Agent|Weak\s+Point\s+Attack|max\s+stacks|exceeds\s+100%|excess\s+value|converted)\b/gi,
-  attributes:
-    /\b(?:AP|Ranged\s+ATK|Pierce|Physical|Slash|Crush|Heat|Cold|Electric|Immaterial|Poison|ACC|SPD|CRIT\s+rate|CRIT\s+DMG|HP|Technic|lost\s+HP|current\s+lost\s+HP|Pierce\s+Boost|Weapon\s+Ranged\s+ATK)\b/gi,
+ damage: /\b(?:\d{1,3}%\s+of\s+\w{3,15}\s+ATK|\d{1,3}%\s+as\s+\w{3,15}\s+DMG|\w{3,15}\s+DMG)\b/gi,
+ effects: /\[([^[\]]{1,150})]/g,
+ buffsDebuffs:
+  /\b(?:Efficient\s+Operation|Bold\s+Move|Conceal:\s+Stealth|First\s+Blood|Efficient\s+Tactics|optical\s+camouflage|weakness\s+attack|point-blank\s+shot|distributed\s+attack|counterattack|unblockable|stealth|hidden|Briefing|Keen\s+Insight|Extra\s+Action|enhanced|Commence\s+Operation)\b/gi,
+ percentages: /\b(\d{1,3}%)\b/g,
+ statChanges:
+  /\b(?:reduces?|increases?|decreases?|gains?|grants?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?)\b/gi,
+ keywords:
+  /\b(?:weak\s+point|behind\s+the\s+enemy|proximity|temporarily|chosen\s+human|Bureau\s+of\s+Rift\s+Management|Abomination|Blood\s+Maker|fifth-grade\s+officer|field\s+agent|dual\s+pistols|submachine\s+gun|Discover\s+agents|optical\s+camouflage|destiny|EX\s+weapon|DMP-9\s+Prototype|Elite\s+Agent|Weak\s+Point\s+Attack|max\s+stacks|exceeds\s+100%|excess\s+value|converted)\b/gi,
+ attributes:
+  /\b(?:AP|Ranged\s+ATK|Pierce|Physical|Slash|Crush|Heat|Cold|Electric|Immaterial|Poison|ACC|SPD|CRIT\s+rate|CRIT\s+DMG|HP|Technic|lost\s+HP|current\s+lost\s+HP|Pierce\s+Boost|Weapon\s+Ranged\s+ATK)\b/gi,
 };
 
 // Export sanitized highlighting patterns
@@ -351,27 +351,27 @@ export const yeonChaeYoungHighlighting = sanitizeHighlightPatterns(rawHighlightP
 
 // SEO metadata
 export const yeonChaeYoungSEO = {
-  title: 'Yeon Chae-Young - Horizon Walker Character Guide',
-  description:
-    'Complete guide for Yeon Chae-Young, an S rarity Assassin character in Horizon Walker. Bureau of Rift Management elite agent specializing in stealth operations and dual pistol combat.',
-  keywords: [
-    'Yeon Chae-Young',
-    'Horizon Walker',
-    'S rarity',
-    'assassin',
-    'human',
-    'ranged damage',
-    'pierce damage',
-    'stealth',
-    'dual pistols',
-    'accuracy support',
-    'bureau of rift management',
-    'field agent',
-    'EX weapon',
-    'DMP-9 Prototype',
-    'signature weapon',
-    'guide',
-    'stats',
-    'build',
-  ],
+ title: 'Yeon Chae-Young - Horizon Walker Character Guide',
+ description:
+  'Complete guide for Yeon Chae-Young, an S rarity Assassin character in Horizon Walker. Bureau of Rift Management elite agent specializing in stealth operations and dual pistol combat.',
+ keywords: [
+  'Yeon Chae-Young',
+  'Horizon Walker',
+  'S rarity',
+  'assassin',
+  'human',
+  'ranged damage',
+  'pierce damage',
+  'stealth',
+  'dual pistols',
+  'accuracy support',
+  'bureau of rift management',
+  'field agent',
+  'EX weapon',
+  'DMP-9 Prototype',
+  'signature weapon',
+  'guide',
+  'stats',
+  'build',
+ ],
 };

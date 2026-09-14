@@ -150,7 +150,7 @@ const rawGulamData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'Each time a successful evasion occurs, gains the [Underground Evasion] effect. [Underground Evasion]: Increases Evasion by 76%. Stacks up to 5 times. This effect dissipates upon gaining the [Burrow] effect.',
+        'Each time a successful evasion occurs, gains the [Underground Evasion] effect. - [Underground Evasion]: Increases Evasion by {40,44,48,52,56,60,64,68,72,76}%. Stacks up to 5 times. This effect dissipates upon gaining the [Burrow] effect.',
     },
     lostElegance: {
       gameKey: 'StyleLosing',
@@ -176,7 +176,7 @@ const rawGulamData = {
         value: '190%',
       },
       description:
-        'Approaches gracefully with fluttering rose petals and delivers a picture-perfect strike. Deals Pierce DMG equal to 190% of melee ATK. Temporarily increases melee ATK by 95% of current Evasion for this attack.',
+        'Approaches gracefully with fluttering rose petals and delivers a picture-perfect strike. Deals Pierce DMG equal to N% of Melee ATK. Temporarily increases Melee ATK by {50,55,60,65,70,75,80,85,90,95}% of current Evasion for this attack.',
     },
   },
 

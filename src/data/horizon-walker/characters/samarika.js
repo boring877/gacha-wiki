@@ -99,7 +99,7 @@ const samarikaData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'Increases Mobility by 10. After attacking, Evasion increases by 570% until the end of the turn. Additionally, during a basic attack, Melee ATK increases proportionally to the straight distance moved. Up to 10m movement grants a maximum of 114% increase.',
+        'Increases SPD by {20,23,26,29,32,35,38,41,44,47}. Additionally, when attacking, temporarily increases Melee ATK based on the straight-line distance moved. At 10 m, Melee ATK increases by up to {60,66,72,78,84,90,96,102,108,114}%.',
     },
     skill3: {
       gameKey: 'BogDownPrey',
@@ -114,7 +114,7 @@ const samarikaData = {
         value: 'Melee ATK 190%',
       },
       description:
-        'Leaps over the target while throwing a swamp trap. Deals Slash DMG equal to 190% of melee ATK and has a 100% chance to apply [Slow] effect for 2R. Weakness attacks cannot be performed with this skill. [Slow]: Reduces SPD by 40%.',
+        'Leaps over the target while throwing a swamp trap. Deals Slash DMG equal to N% of Melee ATK and has a {55,60,65,70,75,80,85,90,95,100}% chance to apply [Slow] effect for 2R. Weakness attacks cannot be performed with this skill. - [Slow]: Reduces SPD by 40%.',
     },
     skill4: {
       gameKey: 'TheFangsOfABog',
@@ -123,13 +123,13 @@ const samarikaData = {
       level: '10/10',
       type: 'Active',
       apCost: 90,
-      cooldown: 0,
+      cooldown: 2,
       damage: {
         type: 'Melee ATK',
         value: 'Melee ATK 257%',
       },
       description:
-        'Leaps low towards the enemy, delivering a deadly strike while passing by with two Harpe blades. Deals Slash DMG equal to 257% of melee ATK while leaping over the enemy. If the target has the [Slow] effect, deals additional Slash DMG equal to 190% of melee ATK.',
+        "Leaps low toward the enemy, slashing past them with a deadly dual strike from both Harpes. Deals Slash DMG equal to N% of Melee ATK as the user vaults over the target.If the target is afflicted with [Slow], deals additional Slash DMG equal to {100,110,120,130,140,150,160,170,180,190}% of the user’s combined Melee ATK and Base Evasion.",
     },
   },
 
@@ -142,7 +142,7 @@ const samarikaData = {
     trait2: {
       name: 'Swamp Hunting',
       description:
-        "Activates the Level 3 passive skill [Hunter's Intuition]. [Hunter's Intuition]: After an attack, has a 90% chance to follow up with [Throw Swamp Trap]. [Throw Swamp Trap]: Throws a swamp trap at the enemy, dealing Poison DMG equal to 36% of Melee ATK to the target and nearby enemies, and apply [Slow] effect for 2R with a probability proportional to the enemy's size. [Slow]: Reduces SPD by 40%.",
+        "Activates the Level 3 passive skill [Hunter's Intuition]. [Hunter's Intuition]: At the end of a turn in which the user attacks, there is a 90% chance to trigger the Throw Swamp Trap follow-up skill. [Throw Swamp Trap]: Throws a swamp trap at the enemy, dealing Poison DMG equal to 36% of Melee ATK and has a 65% chance to reduce the target's SPD by 40%. Each time this skill is used, the user's Crit Rate increases by 5%, stacking up to 5 times.",
     },
     trait3: {
       name: 'Swamp Elf',

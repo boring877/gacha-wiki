@@ -168,7 +168,7 @@ const rawKorabiData = {
         value: '114%',
       },
       description:
-        'Targets an enemy and unleashes blades of water in a 25°, 7m cone. Deals Slash DMG equal to 114% of Magic ATK, restores HP to allies along the path by 38% of Magic ATK, and grants 1 stack of [Tip of the Wave] for 2 rounds. [Tip of the Wave]: Crit Rate increases by 4%. Stacks up to 2 times.',
+        'Targets an enemy and unleashes blades of water in a 25º, 7m cone. Deals Slash DMG equal to N% of Magic ATK, restores HP to allies along the path by {20,22,24,26,28,30,32,34,36,38}% of Magic ATK, and grants 1 stack of [Tip of the Wave] for 2 rounds.',
     },
     counterwave: {
       gameKey: 'CounterWave',
@@ -179,7 +179,7 @@ const rawKorabiData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'At the start of each round, 57% chance to gain [Counterwave] for 1 round. [Counterwave]: Grants immunity to action-forcing effects [Taunt], [Fear], [Sleep], [Madness], [Stun], and the action-restricting effect [Focus Disruption], while Fire DEF increases by 190.',
+        'At the start of each round, {30,33,36,39,42,45,48,51,54,57}% chance to gain [Counterwave] for 1 round.',
     },
     bloodPact: {
       gameKey: 'BloodContract',
@@ -190,7 +190,7 @@ const rawKorabiData = {
       apCost: 30,
       cooldown: 2,
       description:
-        "Strengthens the pulse of blood, breathing in new vitality. Grants the targeted ally [Burning Desire] for 2R. [Burning Desire]: Aggro Adjustment decreases by 12, SPD increases by 40%, Max HP increases by 12%, and Crit DMG increases by 20% of the caster's Base Crit DMG. Crit DMG gained from this effect cannot exceed 40%. When attacking 2 or more enemies, Crit Rate temporarily increases by 72%.",
+        "Strengthens the pulse of blood, breathing in new vitality. Grants the targeted ally [Burning Desire] for 2R.",
     },
     crimsonCurse: {
       gameKey: 'BloodCurse',
@@ -201,7 +201,7 @@ const rawKorabiData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'Breathes a crimson curse that spreads with every wound. Healing Output increases by 60%. Enemies hit by your attacks are afflicted with [Blood Plague], making them more vulnerable to damage. Vulnerability further increases if your Vitality is above 13. [Blood Plague]: Damage taken increases by 7%. For every 1 Vitality above 13, Damage taken further increases by 0.5%.',
+        'Breathes a crimson curse that spreads with every wound. Healing Output increases by {33,36,39,42,45,48,51,54,57,60}%. Enemies hit by your attacks are afflicted with [Blood Plague], making them more vulnerable to damage. Vulnerability further increases if your Vitality is above 13.',
     },
     waveOfBlood: {
       gameKey: 'WaveOfBlood',
@@ -216,7 +216,7 @@ const rawKorabiData = {
         value: '228%',
       },
       description:
-        'When using the skill Blood Pact, this skill becomes active for 2 rounds. Unleashes a surging wave of blood that overturns the flow. Deals Slash DMG equal to 228% of Magic ATK to enemies within a 4m radius around the targeted location. Enemies hit are afflicted with [Blood Frenzy] for 2 rounds. This skill cannot trigger a Weak Point attack, but temporarily increases Accuracy by 300%. [Blood Frenzy]: When applied, gain 40 AP. While holding this effect, AP Recovery increases by 44%, but Melee and Ranged ATK decrease by 22%, and Magic ATK decreases by 28%.',
+        'When using the skill Blood Pact, this skill becomes active for 2 rounds. Unleashes a surging wave of blood that overturns the flow. Deals Slash DMG equal to N% of Magic ATK to enemies within a 4m radius around the targeted location. Enemies hit are afflicted with [Blood Frenzy] for 2 rounds. This skill cannot trigger a Weak Point attack, but temporarily increases Accuracy by 300%.',
     },
     whirlwindOfBloodlust: {
       gameKey: 'CycloneOfVitality',
@@ -231,7 +231,7 @@ const rawKorabiData = {
         value: '114%',
       },
       description:
-        'When an ally is hit or attacks an enemy, gain 1 stack of [Bloodlust]. This skill can be used while holding 5 or more stacks. Unleashes a Whirlwind of Bloodlust to strike enemies. Deals Slash DMG equal to 114% of Magic ATK to enemies within a 3m radius around the targeted location and slightly pulls them toward the center. This skill cannot trigger a Weak Point attack, but temporarily increases Accuracy by 300%. [Bloodlust]: Base effect of using the skill Whirlwind of Bloodlust. Stacks up to 5 times.',
+        'When an ally is hit or attacks an enemy, gain 1 stack of [Bloodlust]. This skill can be used while holding 5 or more stacks. Unleashes a Whirlwind of Bloodlust to strike enemies. Deals Slash DMG equal to N% of Magic ATK to enemies within a 3m radius around the targeted location and slightly pulls them toward the center. This skill cannot trigger a Weak Point attack, but temporarily increases Accuracy by 300%.',
     },
   },
   rarityStages: {

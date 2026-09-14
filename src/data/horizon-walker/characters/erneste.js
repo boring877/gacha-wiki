@@ -1,331 +1,331 @@
 // Erneste Character Data - Horizon Walker
 // Based on the Zone Nova character data structure
 import {
-  validateCharacterData,
-  sanitizeCharacterData,
-  sanitizeHighlightPatterns,
+ validateCharacterData,
+ sanitizeCharacterData,
+ sanitizeHighlightPatterns,
 } from '../../../utils/horizon-walker/data-validation.js';
 
 const rawErnesteData = {
-  // Basic Character Information
-  name: 'Erneste',
-  image: 'Erneste', // Character image filename without extension
-  rarity: 'S', // EX, SS, S, A, B
-  cost: 4, // Deployment cost
-  tags: [
-    'Warrior',
-    'Support',
-    'Team Buffer',
-    'Melee Damage',
-    'Slash Damage',
-    'Physical Damage',
-    'Area Damage',
-    'Block',
-    'Counterattack',
-    'Tactical Commander',
-    'Formation Breaker',
-    'Half-swording',
-    'Knockback',
-    'Morale Boost',
-    'Speed Enhancement',
-    'Attack Boost',
-    'Mercenary Commander',
-  ], // Character role tags
+ // Basic Character Information
+ name: 'Erneste',
+ image: 'Erneste', // Character image filename without extension
+ rarity: 'S', // EX, SS, S, A, B
+ cost: 4, // Deployment cost
+ tags: [
+  'Warrior',
+  'Support',
+  'Team Buffer',
+  'Melee Damage',
+  'Slash Damage',
+  'Physical Damage',
+  'Area Damage',
+  'Block',
+  'Counterattack',
+  'Tactical Commander',
+  'Formation Breaker',
+  'Half-swording',
+  'Knockback',
+  'Morale Boost',
+  'Speed Enhancement',
+  'Attack Boost',
+  'Mercenary Commander',
+ ], // Character role tags
 
-  // Character Stats (Level 60)
+ // Character Stats (Level 60)
+ stats: {
+  // Basic Stats
+  strength: '14',
+  technic: '10',
+  intelligence: '9',
+  vitality: '11',
+  agility: '14',
+
+  // Key Stats
+  meleeAtk: '192',
+  rangedAtk: '140',
+  magicAtk: '128',
+  maxHp: '704',
+  spd: '92',
+  startingAp: '140',
+  apRecovery: '118',
+  accuracy: '102',
+  evade: '188',
+  critRate: '10',
+  critDmg: '150',
+
+  // Attribute Boost
+  slashBoost: '0',
+  pierceBoost: '0',
+  crushBoost: '0',
+  heatBoost: '0',
+  coldBoost: '0',
+  electricBoost: '0',
+  immaterialBoost: '0',
+  poisonBoost: '0',
+
+  // Attribute Defense
+  slashDef: '0',
+  pierceDef: '0',
+  crushDef: '0',
+  heatDef: '0',
+  coldDef: '0',
+  electricDef: '0',
+  immaterialDef: '0',
+  poisonDef: '0',
+  blockRate: '0',
+ },
+
+ // Weapon Information
+ weapon: {
+  name: "Dawnbringer",
+  flavor: "The stillness at the heart of battle mirrors the darkness before dawn - a moment when all hold their breath, blades drawn, yet none dare take the first step. This sword is that first cry that shatters the silence, the first ray of light that cleaves through a frozen frontline. Its wielder has always stood at the forefront, proving one truth: dawn is not a gift to be received - it is something to be forged with your own hands.",
+  type: "Two-handed sword",
+  rarity: 'EX',
+  image: "Weapon_FullIMG_TwoHandSword_ForErneste",
+  imageOnR2: true,
+  maxLevel: 60,
   stats: {
-    // Basic Stats
-    strength: '14',
-    technic: '10',
-    intelligence: '9',
-    vitality: '11',
-    agility: '14',
-
-    // Key Stats
-    meleeAtk: '192',
-    rangedAtk: '140',
-    magicAtk: '128',
-    maxHp: '704',
-    spd: '92',
-    startingAp: '140',
-    apRecovery: '118',
-    accuracy: '102',
-    evade: '188',
-    critRate: '10',
-    critDmg: '150',
-
-    // Attribute Boost
-    slashBoost: '0',
-    pierceBoost: '0',
-    crushBoost: '0',
-    heatBoost: '0',
-    coldBoost: '0',
-    electricBoost: '0',
-    immaterialBoost: '0',
-    poisonBoost: '0',
-
-    // Attribute Defense
-    slashDef: '0',
-    pierceDef: '0',
-    crushDef: '0',
-    heatDef: '0',
-    coldDef: '0',
-    electricDef: '0',
-    immaterialDef: '0',
-    poisonDef: '0',
-    blockRate: '0',
+   "Melee ATK (weapon)": "91",
+   "Melee ATK (%)": "+35%",
   },
-
-  // Weapon Information
-  weapon: {
-    name: "Dawnbringer",
-    flavor: "The stillness at the heart of battle mirrors the darkness before dawn - a moment when all hold their breath, blades drawn, yet none dare take the first step. This sword is that first cry that shatters the silence, the first ray of light that cleaves through a frozen frontline. Its wielder has always stood at the forefront, proving one truth: dawn is not a gift to be received - it is something to be forged with your own hands.",
-    type: "Two-handed sword",
-    rarity: 'EX',
-    image: "Weapon_FullIMG_TwoHandSword_ForErneste",
-    imageOnR2: true,
-    maxLevel: 60,
-    stats: {
-      "Melee ATK (weapon)": "91",
-      "Melee ATK (%)": "+35%",
-    },
-    uniqueSkills: {
-      unique: {
-        name: "Frontline Charisma",
-        type: 'Unique',
-        description: "Increases Block Chance by {22,32,42,52,62}% during battle. On a successful attack, increases the target's DMG Taken by {10,15,20,25,30}% for 2R. Block Chance is capped at 75%.",
-      },
-      signature: {
-        name: "Erneste Signature: Our Protector",
-        type: 'Signature',
-        description: "Increases SPD by 100% and Melee ATK by 300% during battle. Extends the duration of [Declaration of Victory] to 3R and additionally increases the affected target's Melee ATK by 200% of the caster's Melee ATK. On a successful attack, creates an aftershock in a 4m-radius circular area around the caster, pulling in enemies and dealing additional Slash DMG equal to 180% of Melee ATK. Unlocks the skill [Frontline Disruptor] for use. [#sepline]Frontline Disruptor Leaps low toward the designated location, sweeping through the surrounding area with a slash. Deals Slash DMG equal to 120% of Melee ATK to enemies within a 2.5m-radius circular area around the designated location. Knocks back enemies hit by the attack.",
-      },
-    },
-    levelStats: {
-      "Melee ATK (weapon)": [14.3, 91.0],
-      "Melee ATK (%)": [5.5, 35.0],
-    },
-    exLevels: {
-      effects: [
-        { name: "Increases Block Chance", valuesByLevel: "22% / 32% / 42% / 52% / 62%" },
-        { name: "On a successful attack, increases the target's DMG Taken", valuesByLevel: "10% / 15% / 20% / 25% / 30%" },
-      ],
-    },
+  uniqueSkills: {
+   unique: {
+    name: "Frontline Charisma",
+    type: 'Unique',
+    description: "Increases Block Chance by {22,32,42,52,62}% during battle. On a successful attack, increases the target's DMG Taken by {10,15,20,25,30}% for 2R. Block Chance is capped at 75%.",
+   },
+   signature: {
+    name: "Erneste Signature: Our Protector",
+    type: 'Signature',
+    description: "Increases SPD by 100% and Melee ATK by 300% during battle. Extends the duration of [Declaration of Victory] to 3R and additionally increases the affected target's Melee ATK by 200% of the caster's Melee ATK. On a successful attack, creates an aftershock in a 4m-radius circular area around the caster, pulling in enemies and dealing additional Slash DMG equal to 180% of Melee ATK. Unlocks the 'Frontline Disruptor' skill. Frontline Disruptor Leaps low toward the designated location, sweeping through the surrounding area with a slash. Deals Slash DMG equal to 120% of Melee ATK to enemies within a 2.5m-radius circular area around the designated location. Knocks back enemies hit by the attack.",
+   },
   },
-
-  // Character Description
-  description:
-    "Daughter of the Imperial Mercenary Commander who took over the company at a young age, cursed with compulsive vile speech that led to abandonment by her subordinates before finding redemption through Yeon Chae-young's offer to serve the Federation.",
-
-  // Character Profile
-  profile: {
-    age: '20',
-    racial: 'Human (Noctis Nebula)',
-    homeland: 'The Empire, Lamivia',
-    height: '162cm',
-    birthday: 'November 11th',
-    bwhRatio: '73(D)-46-85',
+  levelStats: {
+   "Melee ATK (weapon)": [14.3, 91.0],
+   "Melee ATK (%)": [5.5, 35.0],
   },
-
-  // Character Story
-  story:
-    "Erneste, born the daughter of the Imperial Mercenary Commander, took over the mercenary company at a young age when her father could no longer lead. Unfortunately, during one of her missions, she was cursed by a sorcerer, compelled to utter vile words regardless of the situation. Not long after, this curse caused a breakdown in her relationship with her subordinates—the mercenaries lost trust in her as Erneste's words turned increasingly spiteful. Eventually, she was abandoned by her own men. Fortunately, thanks to the kindness of Maximilia, she managed to escape safely to Earth during the Great Escape. However, her notorious reputation made it hard for anyone to accept her. That was when Yeon Chae-young, who had heard of her talent, approached her, offering a chance to put her skills to use for the Federation. Erneste accepted the offer.",
-
-  // Unique Traits
-  uniqueTraits: {
-    snakeTongue: {
-      name: 'Snake-tongue',
-      description:
-        'Activates the Level 1 passive skill [Snake-tongue]. [Snake-tongue]: Delivers some encouraging words (?) to boost the morale of the allies deployed alongside her. At the start of each Round, grants allies [Now That You Mention It...!] for 1R and enemies [Now That You Mention It...?] for 1R. [Now That You Mention It...!]: Increases Melee ATK by 10%. [Now That You Mention It...?]: Reduces Melee ATK by 10%.',
-    },
-    tacticalCommander: {
-      name: 'Tactical Commander',
-      description:
-        'Activates the Level 3 passive skill [Command]. [Command]: From the start of any turn until the end of that turn, increases Melee ATK for self and nearby allies by 10% for each ally within 5m.',
-    },
-    marlon: {
-      name: 'Marlon',
-      description: 'Strength 1, Technic 1, Intelligence 1',
-    },
-    interested: {
-      name: 'Interested',
-      description: 'Interested in the Chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
-    },
+  exLevels: {
+   effects: [
+    { name: "Increases Block Chance", valuesByLevel: "22% / 32% / 42% / 52% / 62%" },
+    { name: "On a successful attack, increases the target's DMG Taken", valuesByLevel: "10% / 15% / 20% / 25% / 30%" },
+   ],
   },
+ },
 
-  // Skills and Passive
-  skills: {
-    poleBreak: {
-      gameKey: 'PoleBreaking',
-      icon: 'UI_SkillIcon_TwoHandSword',
-      name: 'Pole Break',
-      level: '10/10',
-      type: 'Skill',
-      apCost: 45,
-      cooldown: 0,
-      damage: {
-        type: 'Melee ATK',
-        value: '114%',
-      },
-      description:
-        'Swings the greatsword widely to attack enemies. Deals Slash DMG equal to 114% of melee ATK to enemies in a fan-shaped area.',
-    },
-    gottaProtectMyself: {
-      gameKey: 'ProtectMyself',
-      icon: 'UI_SkillIcon_ProtectMyself',
-      name: 'Gotta Protect Myself!',
-      level: '10/10',
-      type: 'Passive',
-      apCost: 0,
-      cooldown: 0,
-      description: 'Increases block chance by 38%.',
-    },
-    formationDestruction: {
-      gameKey: 'FormationBreakdown',
-      icon: 'UI_SkillIcon_FormationBreakdown',
-      name: 'Formation Destruction',
-      level: '10/10',
-      type: 'Skill',
-      apCost: 60,
-      cooldown: 2,
-      damage: {
-        type: 'Melee ATK',
-        value: '190%',
-      },
-      description:
-        'Charges towards the target with a half-swording technique, colliding forcefully, then swings the sword widely to attack surrounding enemies. Leaps low at the target, dealing Slash DMG equal to 190% of melee ATK to the target and all enemies within a 2.5m radius, and knocks them back 2.5m.',
-    },
-    crisisToOpportunity: {
-      gameKey: 'TurnCrisisIntoOpportunity',
-      icon: 'UI_SkillIcon_TurnCrisisIntoOpportunity',
-      name: 'Crisis to Opportunity!',
-      level: '10/10',
-      type: 'Passive',
-      apCost: 0,
-      cooldown: 0,
-      description:
-        'On a successful block, gains an immediate opportunity for a counterattack. During counterattack, melee ATK increases by 95%.',
-    },
-    declarationOfVictory: {
-      gameKey: 'DeclarationOfVictory',
-      icon: 'UI_SkillIcon_DeclarationOfVictory',
-      name: 'Declaration of Victory',
-      level: '10/10',
-      type: 'Skill',
-      apCost: 45,
-      cooldown: 3,
-      description:
-        "Raises the sword high and declares victory, boosting the morale of allies. Grants the [Declaration of Victory] effect to self and allies within a 5m radius for 2R. [Declaration of Victory]: Increases each target's melee ATK by 76% of the caster's melee ATK, and increases SPD by 95.",
-    },
+ // Character Description
+ description:
+  "Daughter of the Imperial Mercenary Commander who took over the company at a young age, cursed with compulsive vile speech that led to abandonment by her subordinates before finding redemption through Yeon Chae-young's offer to serve the Federation.",
+
+ // Character Profile
+ profile: {
+  age: '20',
+  racial: 'Human (Noctis Nebula)',
+  homeland: 'The Empire, Lamivia',
+  height: '162cm',
+  birthday: 'November 11th',
+  bwhRatio: '73(D)-46-85',
+ },
+
+ // Character Story
+ story:
+  "Erneste, born the daughter of the Imperial Mercenary Commander, took over the mercenary company at a young age when her father could no longer lead. Unfortunately, during one of her missions, she was cursed by a sorcerer, compelled to utter vile words regardless of the situation. Not long after, this curse caused a breakdown in her relationship with her subordinates—the mercenaries lost trust in her as Erneste's words turned increasingly spiteful. Eventually, she was abandoned by her own men. Fortunately, thanks to the kindness of Maximilia, she managed to escape safely to Earth during the Great Escape. However, her notorious reputation made it hard for anyone to accept her. That was when Yeon Chae-young, who had heard of her talent, approached her, offering a chance to put her skills to use for the Federation. Erneste accepted the offer.",
+
+ // Unique Traits
+ uniqueTraits: {
+  snakeTongue: {
+   name: 'Snake-tongue',
+   description:
+    'Activates the Level 1 passive skill [Snake-tongue]. [Snake-tongue]: Delivers some encouraging words (?) to boost the morale of the allies deployed alongside her. At the start of each Round, grants allies [Now That You Mention It...!] for 1R and enemies [Now That You Mention It...?] for 1R. [Now That You Mention It...!]: Increases Melee ATK by 10%. [Now That You Mention It...?]: Reduces Melee ATK by 10%.',
   },
-  rarityStages: {
-    'EX': {
-      strength: 11,
-      technic: 10,
-      intelligence: 9,
-      vitality: 10,
-      agility: 12,
-      maxHp: 640,
-      meleeAtk: 153,
-      rangedAtk: 140,
-      magicAtk: 128,
-      evade: 161,
-      apRecovery: 113,
-      startingAp: 135
-    },
-    'EX 1': {
-      strength: 12,
-      technic: 10,
-      intelligence: 9,
-      vitality: 10,
-      agility: 12,
-      maxHp: 640,
-      meleeAtk: 166,
-      rangedAtk: 140,
-      magicAtk: 128,
-      evade: 161,
-      apRecovery: 113,
-      startingAp: 135
-    },
-    'EX 2': {
-      strength: 12,
-      technic: 10,
-      intelligence: 9,
-      vitality: 10,
-      agility: 13,
-      maxHp: 640,
-      meleeAtk: 166,
-      rangedAtk: 140,
-      magicAtk: 128,
-      evade: 174,
-      apRecovery: 116,
-      startingAp: 138
-    },
-    'EX 3': {
-      strength: 13,
-      technic: 10,
-      intelligence: 9,
-      vitality: 10,
-      agility: 13,
-      maxHp: 640,
-      meleeAtk: 179,
-      rangedAtk: 140,
-      magicAtk: 128,
-      evade: 174,
-      apRecovery: 116,
-      startingAp: 138
-    },
-    'EX 4': {
-      strength: 13,
-      technic: 10,
-      intelligence: 9,
-      vitality: 10,
-      agility: 14,
-      maxHp: 640,
-      meleeAtk: 179,
-      rangedAtk: 140,
-      magicAtk: 128,
-      evade: 188,
-      apRecovery: 118,
-      startingAp: 140
-    },
-    'EX 5': {
-      strength: 13,
-      technic: 10,
-      intelligence: 9,
-      vitality: 11,
-      agility: 14,
-      maxHp: 704,
-      meleeAtk: 179,
-      rangedAtk: 140,
-      magicAtk: 128,
-      evade: 188,
-      apRecovery: 118,
-      startingAp: 140
-    },
-    'EX 6': {
-      strength: 14,
-      technic: 10,
-      intelligence: 9,
-      vitality: 11,
-      agility: 14,
-      maxHp: 704,
-      meleeAtk: 192,
-      rangedAtk: 140,
-      magicAtk: 128,
-      evade: 188,
-      apRecovery: 118,
-      startingAp: 140
-    },
+  tacticalCommander: {
+   name: 'Tactical Commander',
+   description:
+    'Activates the Level 3 passive skill [Command]. [Command]: From the start of any turn until the end of that turn, increases Melee ATK for self and nearby allies by 10% for each ally within 5m.',
   },
-  heroId: 12,
+  marlon: {
+   name: 'Marlon',
+   description: 'Strength 1, Technic 1, Intelligence 1',
+  },
+  interested: {
+   name: 'Interested',
+   description: 'Interested in the Chosen Human. Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving.',
+  },
+ },
+
+ // Skills and Passive
+ skills: {
+  poleBreak: {
+   gameKey: 'PoleBreaking',
+   icon: 'UI_SkillIcon_TwoHandSword',
+   name: 'Pole Break',
+   level: '10/10',
+   type: 'Skill',
+   apCost: 45,
+   cooldown: 0,
+   damage: {
+    type: 'Melee ATK',
+    value: '114%',
+   },
+   description:
+    'Swings the greatsword widely to attack enemies. Deals Slash DMG equal to 114% of melee ATK to enemies in a fan-shaped area.',
+  },
+  gottaProtectMyself: {
+   gameKey: 'ProtectMyself',
+   icon: 'UI_SkillIcon_ProtectMyself',
+   name: 'Gotta Protect Myself!',
+   level: '10/10',
+   type: 'Passive',
+   apCost: 0,
+   cooldown: 0,
+   description: 'Increases Block Chance by {20, 22, 24, 26, 28, 30, 32, 34, 36, 38}%. Block Chance is capped at 75%.',
+  },
+  formationDestruction: {
+   gameKey: 'FormationBreakdown',
+   icon: 'UI_SkillIcon_FormationBreakdown',
+   name: 'Formation Destruction',
+   level: '10/10',
+   type: 'Skill',
+   apCost: 60,
+   cooldown: 2,
+   damage: {
+    type: 'Melee ATK',
+    value: '190%',
+   },
+   description:
+    'Charges towards the target with a half-swording technique, colliding forcefully, then swings the sword widely to attack surrounding enemies. Leaps low at the target, dealing Slash DMG equal to 190% of melee ATK to the target and all enemies within a 2.5m radius, and knocks them back 2.5m.',
+  },
+  crisisToOpportunity: {
+   gameKey: 'TurnCrisisIntoOpportunity',
+   icon: 'UI_SkillIcon_TurnCrisisIntoOpportunity',
+   name: 'Crisis to Opportunity!',
+   level: '10/10',
+   type: 'Passive',
+   apCost: 0,
+   cooldown: 0,
+   description:
+    'On a successful block, gains an immediate opportunity for a counterattack. During counterattack, Melee ATK increases by {50,55,60,65,70,75,80,85,90,95}%.',
+  },
+  declarationOfVictory: {
+   gameKey: 'DeclarationOfVictory',
+   icon: 'UI_SkillIcon_DeclarationOfVictory',
+   name: 'Declaration of Victory',
+   level: '10/10',
+   type: 'Skill',
+   apCost: 45,
+   cooldown: 3,
+   description:
+    "Raises the sword high and declares victory, boosting the morale of allies. Grants the [Declaration of Victory] effect to self and allies within a 5m radius for 2R. - [Declaration of Victory]: Increases each target's Melee ATK by {40,44,48,52,56,60,64,68,72,76}% of the caster's Melee ATK, and increases SPD by {50,55,60,65,70,75,80,85,90,95}.",
+  },
+ },
+ rarityStages: {
+  'EX': {
+   strength: 11,
+   technic: 10,
+   intelligence: 9,
+   vitality: 10,
+   agility: 12,
+   maxHp: 640,
+   meleeAtk: 153,
+   rangedAtk: 140,
+   magicAtk: 128,
+   evade: 161,
+   apRecovery: 113,
+   startingAp: 135
+  },
+  'EX 1': {
+   strength: 12,
+   technic: 10,
+   intelligence: 9,
+   vitality: 10,
+   agility: 12,
+   maxHp: 640,
+   meleeAtk: 166,
+   rangedAtk: 140,
+   magicAtk: 128,
+   evade: 161,
+   apRecovery: 113,
+   startingAp: 135
+  },
+  'EX 2': {
+   strength: 12,
+   technic: 10,
+   intelligence: 9,
+   vitality: 10,
+   agility: 13,
+   maxHp: 640,
+   meleeAtk: 166,
+   rangedAtk: 140,
+   magicAtk: 128,
+   evade: 174,
+   apRecovery: 116,
+   startingAp: 138
+  },
+  'EX 3': {
+   strength: 13,
+   technic: 10,
+   intelligence: 9,
+   vitality: 10,
+   agility: 13,
+   maxHp: 640,
+   meleeAtk: 179,
+   rangedAtk: 140,
+   magicAtk: 128,
+   evade: 174,
+   apRecovery: 116,
+   startingAp: 138
+  },
+  'EX 4': {
+   strength: 13,
+   technic: 10,
+   intelligence: 9,
+   vitality: 10,
+   agility: 14,
+   maxHp: 640,
+   meleeAtk: 179,
+   rangedAtk: 140,
+   magicAtk: 128,
+   evade: 188,
+   apRecovery: 118,
+   startingAp: 140
+  },
+  'EX 5': {
+   strength: 13,
+   technic: 10,
+   intelligence: 9,
+   vitality: 11,
+   agility: 14,
+   maxHp: 704,
+   meleeAtk: 179,
+   rangedAtk: 140,
+   magicAtk: 128,
+   evade: 188,
+   apRecovery: 118,
+   startingAp: 140
+  },
+  'EX 6': {
+   strength: 14,
+   technic: 10,
+   intelligence: 9,
+   vitality: 11,
+   agility: 14,
+   maxHp: 704,
+   meleeAtk: 192,
+   rangedAtk: 140,
+   magicAtk: 128,
+   evade: 188,
+   apRecovery: 118,
+   startingAp: 140
+  },
+ },
+ heroId: 12,
 
 };
 
 // Validate and sanitize the character data
 const validation = validateCharacterData(rawErnesteData);
 if (!validation.isValid) {
-  throw new Error(`Character data validation failed: ${validation.errors.join(', ')}`);
+ throw new Error(`Character data validation failed: ${validation.errors.join(', ')}`);
 }
 
 // Export sanitized character data
@@ -333,17 +333,17 @@ export const ernesteData = sanitizeCharacterData(rawErnesteData);
 
 // Highlighting terms for this character - optimized to prevent ReDoS attacks
 const rawHighlightPatterns = {
-  damage: /\b(?:\d{1,3}%\s+of\s+\w{3,15}\s+ATK|\d{1,3}%\s+as\s+\w{3,15}\s+DMG|\w{3,15}\s+DMG)\b/gi,
-  effects: /\[([^[\]]{1,150})]/g,
-  buffsDebuffs:
-    /\b(?:Snake-tongue|Tactical\s+Commander|Command|Declaration\s+of\s+Victory|block\s+chance|counterattack|morale|half-swording|knockback|fan-shaped\s+area|encouraging\s+word|Great\s+Escape|Frontline\s+Charisma|Our\s+Protector|Frontline\s+Disruptor|Courageous\s+Charge|Faultline|Basic\s+ATK\s+DMG|Elemental\s+DEF|Fixed\s+DMG)\b/gi,
-  percentages: /\b(\d{1,3}%)(?:\s*of\s+(?:the\s+caster's\s+)?(?:melee\s+ATK|Max\s+HP))?/g,
-  statChanges:
-    /\b(?:reduces?|increases?|decreases?|gains?|grants?|boosts?|knocks?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?|\d+(?:\.\d+)?m?)\b/gi,
-  keywords:
-    /\b(?:Imperial\s+Mercenary\s+Commander|mercenary\s+company|sorcerer|cursed|vile\s+words|subordinates|notorious\s+reputation|Maximilia|Federation|Yeon\s+Chae-young|half-swording\s+technique|fan-shaped\s+area|Noctis\s+Nebula|The\s+Empire|Lamivia|Chosen\s+Human|Dawnbringer|Two-handed\s+sword|Support|Charge|Leap|Teleportation|Self-Mobility|SPD|Rounds|Melee\s+ATK|Ranged\s+ATK|Magic\s+ATK|duration|target|caster|base|Slash\s+DMG|radius|Courageous\s+Charge|Faultline)\b/gi,
-  attributes:
-    /\b(?:AP|Melee\s+ATK|Ranged\s+ATK|Magic\s+ATK|Slash|Pierce|Crush|Heat|Cold|Electric|Immaterial|Poison|Max\s+HP|HP|SPD|ACC|Evasion|block\s+chance|counterattack)\b/gi,
+ damage: /\b(?:\d{1,3}%\s+of\s+\w{3,15}\s+ATK|\d{1,3}%\s+as\s+\w{3,15}\s+DMG|\w{3,15}\s+DMG)\b/gi,
+ effects: /\[([^[\]]{1,150})]/g,
+ buffsDebuffs:
+  /\b(?:Snake-tongue|Tactical\s+Commander|Command|Declaration\s+of\s+Victory|block\s+chance|counterattack|morale|half-swording|knockback|fan-shaped\s+area|encouraging\s+word|Great\s+Escape|Frontline\s+Charisma|Our\s+Protector|Frontline\s+Disruptor|Courageous\s+Charge|Faultline|Basic\s+ATK\s+DMG|Elemental\s+DEF|Fixed\s+DMG)\b/gi,
+ percentages: /\b(\d{1,3}%)(?:\s*of\s+(?:the\s+caster's\s+)?(?:melee\s+ATK|Max\s+HP))?/g,
+ statChanges:
+  /\b(?:reduces?|increases?|decreases?|gains?|grants?|boosts?|knocks?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?|\d+(?:\.\d+)?m?)\b/gi,
+ keywords:
+  /\b(?:Imperial\s+Mercenary\s+Commander|mercenary\s+company|sorcerer|cursed|vile\s+words|subordinates|notorious\s+reputation|Maximilia|Federation|Yeon\s+Chae-young|half-swording\s+technique|fan-shaped\s+area|Noctis\s+Nebula|The\s+Empire|Lamivia|Chosen\s+Human|Dawnbringer|Two-handed\s+sword|Support|Charge|Leap|Teleportation|Self-Mobility|SPD|Rounds|Melee\s+ATK|Ranged\s+ATK|Magic\s+ATK|duration|target|caster|base|Slash\s+DMG|radius|Courageous\s+Charge|Faultline)\b/gi,
+ attributes:
+  /\b(?:AP|Melee\s+ATK|Ranged\s+ATK|Magic\s+ATK|Slash|Pierce|Crush|Heat|Cold|Electric|Immaterial|Poison|Max\s+HP|HP|SPD|ACC|Evasion|block\s+chance|counterattack)\b/gi,
 };
 
 // Export sanitized highlighting patterns
@@ -351,35 +351,35 @@ export const ernesteHighlighting = sanitizeHighlightPatterns(rawHighlightPattern
 
 // SEO metadata
 export const ernesteSEO = {
-  title: 'Erneste - Horizon Walker Character Guide',
-  description:
-    'Complete guide for Erneste, an S rarity Warrior character in Horizon Walker. Former Imperial Mercenary Commander with tactical abilities, team buffs, and formation-breaking skills.',
-  keywords: [
-    'Erneste',
-    'Horizon Walker',
-    'S rarity',
-    'warrior',
-    'support',
-    'human',
-    'noctis nebula',
-    'tactical commander',
-    'team buffer',
-    'mercenary commander',
-    'slash damage',
-    'formation destruction',
-    'half-swording',
-    'counterattack',
-    'block',
-    'guide',
-    'stats',
-    'build',
-    'Dawnbringer',
-    'EX weapon',
-    'two-handed sword',
-    'Frontline Charisma',
-    'Our Protector',
-    'Frontline Disruptor',
-    'signature weapon',
-    'unique skill',
-  ],
+ title: 'Erneste - Horizon Walker Character Guide',
+ description:
+  'Complete guide for Erneste, an S rarity Warrior character in Horizon Walker. Former Imperial Mercenary Commander with tactical abilities, team buffs, and formation-breaking skills.',
+ keywords: [
+  'Erneste',
+  'Horizon Walker',
+  'S rarity',
+  'warrior',
+  'support',
+  'human',
+  'noctis nebula',
+  'tactical commander',
+  'team buffer',
+  'mercenary commander',
+  'slash damage',
+  'formation destruction',
+  'half-swording',
+  'counterattack',
+  'block',
+  'guide',
+  'stats',
+  'build',
+  'Dawnbringer',
+  'EX weapon',
+  'two-handed sword',
+  'Frontline Charisma',
+  'Our Protector',
+  'Frontline Disruptor',
+  'signature weapon',
+  'unique skill',
+ ],
 };

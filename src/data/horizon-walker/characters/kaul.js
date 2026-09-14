@@ -186,7 +186,7 @@ const rawKaulData = {
         value: '238%',
       },
       description:
-        "Leaps high into the air and strikes down at the designated location, dealing 238% of Melee ATK as Slash DMG to enemies within a 3m radius.\n\nReduces the user's Weak Point Angle by 120° until the start of their next turn. Enemies hit have a 76% chance to be inflicted with [Taunt] for 1 round.\n\n[Effect: Taunt] Inflicts Taunt on the target.",
+        "OK DaringLeap",
     },
     timeToFeast: {
       gameKey: 'TimeToEnjoy',
@@ -197,7 +197,7 @@ const rawKaulData = {
       apCost: 0,
       cooldown: 0,
       description:
-        "After using a skill other than Standby, increases All DEF by 100% of current SPD.\n\nThis effect lasts until the start of the user's next turn.",
+        "OK TimeToEnjoy",
     },
     masochisticFrenzy: {
       gameKey: 'Masochism',
@@ -208,7 +208,7 @@ const rawKaulData = {
       apCost: 45,
       cooldown: 2,
       description:
-        'Lowers the shield and shifts into an aggressive stance.\n\nRestores HP equal to 100% of max HP and gains the [Seeker of Pleasure] effect, becoming driven solely by lust and destruction.\n\n[Effect: Seeker of Pleasure] Healing Intake and Block Rates are reduced by 100%, but Melee ATK increases by 100%.',
+        "OK Masochism",
       replacedBy: 'irresistibleUrge',
     },
     slaughterTheWeak: {
@@ -224,7 +224,7 @@ const rawKaulData = {
         value: '100%',
       },
       description:
-        "Can only be used when HP is above 1%.\n\nSwings the blade in a wide, sweeping arc to strike nearby enemies.\n\nUpon use, takes Fixed DMG equal to the user's Shield value + 20% of Max HP, but HP cannot drop below 1 during this turn.\n\nDeals Slash DMG equal to 100% of the user's Melee ATK to enemies within a 3m, 75° cone in front.",
+        "Deals Slash DMG equal to {100,190}% of the user's Melee ATK to enemies within a 3m, 75° cone in front.",
       replaces: 'gapStab',
       isReplacement: true,
     },
@@ -241,7 +241,7 @@ const rawKaulData = {
         value: '150%',
       },
       description:
-        "Counts as a Basic Skill and can only be used when HP is 60% or below.\n\nTemporarily increases Critical Rate by 100% and boosts Crit DMG by 1.75% for every 1% HP lost.\n\nDeals Slash DMG equal to 150% of the user's Melee ATK to the target and Splash Slash DMG equal to 80% of the user's Melee ATK to nearby enemies.\n\nThis attack ignores counterattacks.\n\nAfter use, removes the [Seeker of Pleasure] effect and restores HP equal to 100% of Max HP.",
+        "PLACEHOLDER",
       replaces: 'masochisticFrenzy',
       isReplacement: true,
     },
@@ -254,7 +254,7 @@ const rawKaulData = {
       apCost: 0,
       cooldown: 0,
       description:
-        "When 'Masochistic Frenzy' is used, and the [Seeker of Pleasure] effect is active, the skills 'Gap Stab' and 'Masochistic Frenzy' are replaced with 'Slaughter the Weak' and 'Irresistible Urge', respectively.\n\n[{Trigger Skill}: Masochistic Frenzy] Restoring HP becomes almost impossible and reduces Block Rate, but greatly boosts Melee ATK.",
+        "PLACEHOLDER",
       isReplacementTrigger: true,
       triggersReplacements: ['gapStab', 'masochisticFrenzy'],
     },

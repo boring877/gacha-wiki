@@ -48,7 +48,7 @@ const rawClaraData = {
   uniqueTraits: {
     baseMagicATK50: { name: 'Base Magic ATK +50%', description: 'Cannot perform Weak Point Attacks, but increases base Magic ATK by 50%.' },
     phoenix: { name: 'Phoenix', description: 'Heat DMG Boost +10%, Max HP +5%' },
-    eternity: { name: 'Eternity', description: 'Activates the Level 1 passive skill [Eternity]. When receiving fatal damage, uses transcendent power to negate the damage once, Purifies all Crowd Control effects, recovers 30% HP, and gains [Eternity] for 1 Round. [Eternity]: At the start of each turn, recovers HP equal to 5% of Max HP. While this effect is active, cannot act or perform Responses and becomes immune to Crowd Control effects. At the start of the next Round, fully recovers HP, gains 200 AP, and can act again.' },
+    eternity: { name: 'Eternity', description: 'This trait has no listed description in the current game build; its text was removed in the September 10, 2026 patch.' },
     interested: { name: 'Interested', description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.' },
   },
 

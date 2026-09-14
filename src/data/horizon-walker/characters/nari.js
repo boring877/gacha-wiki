@@ -114,7 +114,7 @@ const nariData = {
       apCost: 42,
       cooldown: 0,
       description:
-        "Assumes the optimal stance for shooting. Gains the [Precision Shooting Stance] effect, enabling the use of the 'Combat Roll' skill while the effect is active. After using the skill, it changes to 'Cancel Precision Shooting Stance'. [Precision Shooting Stance]: Increases Ranged ATK by 133%. Increases Piercing Enhancement by 8%. Increases the range of the 'Military Shooting' skill by 2.8 m. Increases AP consumption by 15. During the effect, movement is disabled, and incoming attacks cannot be evaded.",
+        "Assumes the optimal stance for marksmanship. Gain [Precision Shooting Stance], and while this effect is active, [Combat Roll] becomes available. After use, this skill changes to [Cancel Precision Shooting Stance]. [Precision Shooting Stance]: Increases Ranged ATK by {70,77,84,91,98,105,112,119,126,133}% and Pierce Boost by 8%. The range of [Military Shooting] increases based on the skill's level, and its AP Cost increases by 15. While this effect is active, your SPD is reduced to 0, and you cannot evade enemy attacks.",
     },
     skill4: {
       gameKey: 'FocusFiring',
@@ -125,7 +125,7 @@ const nariData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'Using the [Combat Roll] skill or striking an enemy with [Marked Target] grants [Shooting Focus], lasting until the end of your next turn. [Shooting Focus]: Increases Ranged ATK by 133%.',
+        'Inflicts [Marked Target] on the first enemy hit by your attack. Using the [Combat Roll] skill or striking an enemy with [Marked Target] grants [Shooting Focus], lasting until the end of your next turn. [Shooting Focus]: Increases Ranged ATK by {70,77,84,91,98,105,112,119,126,133}%.',
     },
     skill5: {
       gameKey: 'DeathBulletOfPenetration',
@@ -147,7 +147,7 @@ const nariData = {
       apCost: 0,
       cooldown: 0,
       description:
-        "During battle, Critical Damage increases by 80%. Using the 'Combat Roll' skill increases its AP cost by 10 but reduces its cooldown by 1 round immediately after use.",
+        "During battle, Critical Damage increases by {44,48,52,56,60,64,68,72,76,80}%. Using the 'Combat Roll' skill increases its AP cost by 10 but reduces its cooldown by 1 round immediately after use.",
     },
   },
 

@@ -174,7 +174,7 @@ const rawPalekarData = {
       apCost: 0,
       cooldown: 0,
       description:
-        "Increases the user's Combat Skill DMG by 16.25% of their Base Evasion stat. This effect can increase Combat Skill DMG by up to 32.5%.",
+        "Increases the user’s Combat Skill DMG by {5,6.25,7.5,8.75,10,11.25,12.5,13.75,15,16.25}% of their Base Evasion stat. This effect can increase Combat Skill DMG by up to {10,12.5,15,17.5,20,22.5,25,27.5,30,32.5}%.",
     },
     trajectoryOfSeverance: {
       gameKey: 'TrailOfFatality',
@@ -189,7 +189,7 @@ const rawPalekarData = {
         value: '285%',
       },
       description:
-        "Throws two chakrams, dealing Immaterial DMG equal to 285% of Magic ATK to all enemies in a rectangular area. When this skill is used, ACC is temporarily increased by 300%, and Magic ATK increases by 250% of the user's Base Evasion stat. Additionally, for every point of Intelligence exceeding 17, Immaterial Boost and Crit DMG increase by 8%. This skill can only be used when at least one target is afflicted with [Unstable].",
+        "Throws two chakrams, dealing Immaterial DMG equal to N% of Magic ATK to all enemies in a rectangular area. When this skill is used, ACC is temporarily increases by 300%, and Magic ATK increases by {160,170,180,190,200,210,220,230,240,250}% of the user’s Base Evasion stat. Additionally, for every point of Intelligence exceeding 17, Immaterial Boost and Crit DMG increase by 8%. This skill can only be used when at least one target is afflicted with [Unstable].",
     },
     verseOfOrdeal: {
       gameKey: 'QuotesAboutTrials',

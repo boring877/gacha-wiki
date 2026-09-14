@@ -97,7 +97,7 @@ const rawLuiseData = {
     prodigyMage: {
       name: 'Prodigy Mage',
       description:
-        "Activates the Level 1 passive skill [Prodigy Mage]. [Prodigy Mage]: Possesses a genius understanding of magic, allowing for more efficient spell usage. All skills' AP cost decreases by 3%. Intelligence 3",
+        "Activates the Level 1 passive skill [Prodigy Mage]. [Prodigy Mage]: Possesses a genius understanding of magic, allowing for more efficient spell usage. All skills' AP cost decreases by 3%.",
     },
     memorize: {
       name: 'Memorize',
@@ -204,7 +204,7 @@ const rawLuiseData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'Ignites dying embers to burn enemies. At the start of the round, detonates all [Ember] effects on the battlefield, dealing additional Heat DMG equal to 38% of magic ATK.',
+        'Ignites dying embers to burn enemies. At the start of the round, detonates all [Ember] effects on the battlefield, dealing additional Heat DMG equal to {20, 22, 24, 26, 28, 30, 32, 34, 36, 38}% of magic ATK.',
     },
     blazeOfAscension: {
       gameKey: 'SoaringFire',

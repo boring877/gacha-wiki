@@ -149,7 +149,7 @@ const rawGulsniData = {
       type: 'Passive',
       apCost: 0,
       cooldown: 0,
-      description: 'Increases Physical DEF by 285 and Block Chance by 19%.',
+      description: 'Increases Physical DEF by {150,165,180,195,210,225,240,255,270,285} and Block Chance by {10,11,12,13,14,15,16,17,18,19}%. Block Chance is capped at 75%.',
     },
     undergroundExplosion: {
       gameKey: 'BangingExplosionUnderGround',
@@ -175,7 +175,7 @@ const rawGulsniData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'If in [Burrow] state at the start of the turn, the effect applies. Increases Physical DEF by 570 and AP Recovery by 38% until the start of the next round.',
+        'If in [Burrow] state at the start of the turn, the effect applies. Increases Physical DEF by {300,330,360,390,420,450,480,510,540,570} and AP Recovery by {20,22,24,26,28,30,32,34,36,38}% until the start of the next round.',
     },
   },
   rarityStages: {

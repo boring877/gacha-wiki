@@ -138,7 +138,7 @@ const rawSoJooHeeData = {
       apCost: 0,
       cooldown: 0,
       description:
-        "When attacking an enemy's weak point, uses optical camouflage to hide. Once per Round, at the end of a turn where you performed a Weak Point Attack, there is a 38% chance to gain [Conceal: Stealth]. Activation chance increases by 1% for every 1% of your missing HP. [Conceal: Stealth]: Becomes hidden and cannot be targeted by enemy skills. SPD decreases by 10%, and ACC increases by 50% for the first attack while hidden.",
+        "When attacking an enemy's weak point, uses optical camouflage to hide. Once per Round, at the end of a turn where you performed a Weak Point Attack, there is a {20,22,24,26,28,30,32,34,36,38}% chance to gain [Conceal: Stealth]. Activation chance increases by 1% for every 1% of your missing HP. [Conceal: Stealth]: Becomes hidden and cannot be targeted by enemy skills. SPD decreases by 10%, and ACC increases by 50% for the first attack while hidden.",
     },
     assassination: {
       gameKey: 'Assassination',
@@ -179,7 +179,7 @@ const rawSoJooHeeData = {
       apCost: 0,
       cooldown: 0,
       description:
-        "Identifies the enemy's weak point and guides allies. Increases ACC of all allies by 57%.",
+        "Identifies the enemy's weak point and guides allies. Increases ACC of all allies by {30, 33, 36, 39, 42, 45, 48, 51, 54, 57}%.",
     },
   },
 

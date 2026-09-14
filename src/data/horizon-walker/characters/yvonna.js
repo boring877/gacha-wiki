@@ -120,7 +120,7 @@ const rawYvonnaData = {
     surroundingFrost: {
       gameKey: 'SharpWave',
       icon: 'UI_SkillIcon_SharpWave',
-      name: 'Surrounding Frost',
+      name: 'Sharp Wave',
       level: '10/10',
       type: 'Skill',
       apCost: 40,
@@ -130,18 +130,18 @@ const rawYvonnaData = {
         value: '95%',
       },
       description:
-        'Freezes the forward flow and attacks. Deals Cold DMG equal to 95% of magic ATK to enemies in a 25°, 7m fan-shaped area targeting a specified enemy. This attack temporarily increases ACC by 100%, but cannot perform a weakness attack.',
+        'Targets an enemy and unleashes blades of water in a 25º, 7m cone. Deals Slash DMG equal to N% of Magic ATK, restores HP to allies along the path by {20,22,24,26,28,30,32,34,36,38}% of Magic ATK, and grants 1 stack of [Tip of the Wave] for 2 rounds.',
     },
     shroudOfFrost: {
       gameKey: 'CounterWave',
       icon: 'UI_SkillIcon_CounterWave',
-      name: 'Shroud of Frost',
+      name: 'Counterwave',
       level: '10/10',
       type: 'Passive',
       apCost: 0,
       cooldown: 0,
       description:
-        'Once per round, whenever each ally is attacked, all DEF increases temporarily by 1600. If the affected ally defeats an enemy within the same round, SPD is increased by 260% until the end of the newly started turn.',
+        'At the start of each round, {30,33,36,39,42,45,48,51,54,57}% chance to gain [Counterwave] for 1 round.',
     },
     freezingGrasp: {
       gameKey: 'FreezingGrasph',
@@ -156,7 +156,7 @@ const rawYvonnaData = {
         value: '86%',
       },
       description:
-        'Perceives the vast flow and stands ever ready to intervene. Designates a target within 15m and attacks enemies within a 2m radius around it, dealing Cold DMG equal to 86% of magic ATK. Afterwards, gains the [World Where Flow Stops] effect for 2 rounds. [World Where Flow Stops]: While performing a support attack with Lingering Cold, temporarily increases Cold Boost by 30% and extends its range to 15m.',
+        'Perceives the broad current and readies to intervene. Attacks a target within {10.5,11,11.5,12,12.5,13,13.5,14,14.5,15}m. Deals Cold DMG equal to N% of Magic ATK to the target and enemies within a 2m radius. Then gains [World Where Flow Stops] for 2 rounds, enhancing support attacks.',
     },
     frostResonance: {
       gameKey: 'SensingResponseAboutFrost',
@@ -167,12 +167,12 @@ const rawYvonnaData = {
       apCost: 0,
       cooldown: 0,
       description:
-        "Grants [Frost] and [Presence of Frost] effects. [Frost]: Reduces Slash, Pierce, Crush, and Cold DEF by 285. [Presence of Frost]: Performs a support attack using the 'Gathered Frost' skill, targeting the enemy attacked by the ally this turn or another available enemy within range. The effect is consumed upon activation.",
+        "Inflicts [Frost] on enemies hit, lasting for 2 rounds. When an ally attacks an enemy afflicted with [Frost] during their turn, you gain 1 stack of [Presence of Frost]. [Presence of Frost]: Automatically triggers a [Condensed Chill] support attack against either the enemy your ally attacked this turn or a currently targetable enemy. [Lingering Cold]: Harnesses nearby cold to strike the target. Deals {55,61,66,72,77,83,88,94,99,105}% of Magic ATK as Frost DMG.",
     },
     gatheredFrost: {
       gameKey: 'GreatColdWave',
       icon: 'UI_SkillIcon_GreatColdWave',
-      name: 'Gathered Frost',
+      name: 'The Coldsnap',
       level: 'Support',
       type: 'Skill',
       apCost: 0,
@@ -182,7 +182,7 @@ const rawYvonnaData = {
         value: '105%',
       },
       description:
-        'Consumes [Presence of Frost] to activate. Harnesses nearby cold to strike enemies. Deals Cold DMG equal to 105% of Magic ATK to enemies within a 3m circular area around the support attack target (range: 7m).',
+        'When performing a support attack, gain [Chill]. Stacks up to 5 times. When holding 5 stacks of [Frostbite], all stacks are consumed to activate this skill. Summons a raging froststorm, attacking enemies. Deals Cold DMG equal to N% of Magic ATK to enemies within a 9m, 150º cone and inflicts [Slow] for 2Rs. While using this skill, Accuracy temporarily increases by 300%.',
     },
     theColdsnap: {
       gameKey: 'GreatColdWave',
@@ -197,7 +197,7 @@ const rawYvonnaData = {
         value: '380%',
       },
       description:
-        'Gains 1 stack of [Chill] with each support attack, up to 5 stacks. Upon reaching 5 stacks, all [Chill] effects are consumed to unleash a powerful frost storm. Deals Cold DMG equal to 380% of magic ATK to enemies in a 9m, 150° fan-shaped area, and inflicts the [Slow] effect for 2 rounds. Temporarily increases ACC by 300% while this skill is active.',
+        'When performing a support attack, gain [Chill]. Stacks up to 5 times. When holding 5 stacks of [Frostbite], all stacks are consumed to activate this skill. Summons a raging froststorm, attacking enemies. Deals Cold DMG equal to N% of Magic ATK to enemies within a 9m, 150º cone and inflicts [Slow] for 2Rs. While using this skill, Accuracy temporarily increases by 300%.',
     },
   },
 

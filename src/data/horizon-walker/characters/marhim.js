@@ -92,9 +92,9 @@ const rawMarhimData = {
   // Unique Traits
   uniqueTraits: {
     dirtyPairNika: {
-      name: 'Dirty Pair • Nika',
+      name: 'Dirty Pair · Nika',
       description:
-        "Activates the Level 1 passive skill [Dirty Pair • Nika]. [Dirty Pair • Nika]: When Nika attacks, supports with the 'Dirty Pair • Dagger Throw' skill. Gains [Shadow Step] effect for 1 round afterwards. Dirty Pair • Dagger Throw: Throws a dagger at an enemy within 7m, dealing Pierce DMG equal to 40% of Melee ATK.",
+        "Activates the Level 1 passive skill [Dirty Pair · Nika]. [Dirty Pair · Nika]: When Nika attacks, supports with the 'Dirty Pair · Dagger Throw' skill. Gains [Shadow Step] effect for 1 round afterwards. Dirty Pair · Dagger Throw: Throws a dagger at an enemy within 7m, dealing Pierce DMG equal to 40% of Melee ATK.",
     },
     crimsonMomentum: {
       name: 'Crimson Momentum',
@@ -137,7 +137,7 @@ const rawMarhimData = {
       apCost: 0,
       cooldown: 0,
       description:
-        "If not under the Stealth effect at the end of the turn and there are no enemies within a 5m radius, gains the [Shadow Steps] effect for 1R. At the start of own turn, if under the Stealth effect, gains the [Shining Steps from the Shadows] effect. While in Stealth, can perform a support attack using the 'Dirty Pair • Dagger Throw' skill. [Shadow Steps]: Enters Stealth, preventing the user from becoming a target of enemy skills. [Shining Steps from the Shadows]: Increases SPD by 57. This effect is removed at the end of the turn.",
+        "If not under the Stealth effect at the end of the turn and there are no enemies within a 5m radius, gains the [Shadow Steps] effect for 1R. At the start of own turn, if under the Stealth effect, gains the [Shining Steps from the Shadows] effect. While in Stealth, can perform a support attack using the 'Dirty Pair · Dagger Throw' skill. [Shadow Steps]: Enters Stealth, preventing the user from becoming a target of enemy skills. [Shining Steps from the Shadows]: Increases SPD by 57. This effect is removed at the end of the turn.",
     },
     markOfSilentBlood: {
       gameKey: 'MarkOfBloodInSecret',
@@ -148,7 +148,7 @@ const rawMarhimData = {
       apCost: 15,
       cooldown: 1,
       description:
-        "Grants the [Assassin's mark] effect to the designated target for the current round, while increasing own SPD by 95% for 1R. [Assassin's mark]: Reduces Pierce DEF by 285 and prevents counterattacks.",
+        "Grants the [Assassin's mark] effect to the designated target for the current round, while increasing own SPD by {50,55,60,65,70,75,80,85,90,95}% for 1R. - [Assassin's mark]: Reduces Pierce DEF by {150,165,180,195,210,225,240,255,270,285} and prevents counterattacks.",
     },
     bloodsoakedExecution: {
       gameKey: 'ExecutionOfBloodiness',
@@ -174,7 +174,7 @@ const rawMarhimData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'When the user defeats an enemy, gains the [Crimson Terror] effect for 2R and applies the [Crimson Oppression] effect to all enemies within a 5m radius. [Crimson Terror]: Increases melee ATK by 57%. [Crimson Oppression]: Prevents counterattacks until the end of the turn in which they are attacked.',
+        'When the user defeats an enemy, gains the [Crimson Terror] effect for 2R and applies the [Crimson Oppression] effect to all enemies within a 5m radius. - [Crimson Terror]: Increases Melee ATK by {30,33,36,39,42,45,48,51,54,57}%. - [Crimson Oppression]: Prevents counterattacks until the end of the turn in which they are attacked.',
     },
   },
 

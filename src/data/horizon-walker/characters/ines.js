@@ -1,319 +1,319 @@
 // Ines Character Data - Horizon Walker
 // Based on the Zone Nova character data structure
 import {
-  validateCharacterData,
-  sanitizeCharacterData,
-  sanitizeHighlightPatterns,
+ validateCharacterData,
+ sanitizeCharacterData,
+ sanitizeHighlightPatterns,
 } from '../../../utils/horizon-walker/data-validation.js';
 
 const rawInesData = {
-  // Basic Character Information
-  name: 'Ines',
-  image: 'Ines', // Character image filename without extension
-  rarity: 'A', // EX, SS, S, A, B
-  cost: 6, // Deployment cost
-  tags: [
-    'Warrior',
-    'Melee Damage',
-    'Slash Damage',
-    'High ATK',
-    'Critical Striker',
-    'Area Damage',
-    'Swordswoman',
-    'High Mobility',
-    'Physical Damage',
-    'Two-handed Sword',
-    'Weakness Hunter',
-    'Distance Scaling',
-  ], // Character role tags
+ // Basic Character Information
+ name: 'Ines',
+ image: 'Ines', // Character image filename without extension
+ rarity: 'A', // EX, SS, S, A, B
+ cost: 6, // Deployment cost
+ tags: [
+  'Warrior',
+  'Melee Damage',
+  'Slash Damage',
+  'High ATK',
+  'Critical Striker',
+  'Area Damage',
+  'Swordswoman',
+  'High Mobility',
+  'Physical Damage',
+  'Two-handed Sword',
+  'Weakness Hunter',
+  'Distance Scaling',
+ ], // Character role tags
 
-  // Character Stats (Level 60)
+ // Character Stats (Level 60)
+ stats: {
+  // Basic Stats
+  strength: '18',
+  technic: '11',
+  intelligence: '10',
+  vitality: '17',
+  agility: '14',
+
+  // Key Stats
+  meleeAtk: '255',
+  rangedAtk: '161',
+  magicAtk: '140',
+  maxHp: '1088',
+  spd: '92',
+  startingAp: '120',
+  apRecovery: '115',
+  accuracy: '97',
+  evade: '215',
+  critRate: '10',
+  critDmg: '150',
+
+  // Attribute Boost
+  slashBoost: '0',
+  pierceBoost: '0',
+  crushBoost: '0',
+  heatBoost: '0',
+  coldBoost: '0',
+  electricBoost: '0',
+  immaterialBoost: '0',
+  poisonBoost: '0',
+
+  // Attribute Defense
+  slashDef: '0',
+  pierceDef: '0',
+  crushDef: '0',
+  heatDef: '0',
+  coldDef: '0',
+  electricDef: '0',
+  immaterialDef: '0',
+  poisonDef: '0',
+  blockRate: '0',
+ },
+
+ // Character Description
+ description:
+  'A determined swordswoman from the Grand Duchy of Magnal who resembles the great Brave Duchess Olivia, seeking to prove herself as a worthy warrior.',
+
+ // Character Profile
+ profile: {
+  age: '25',
+  racial: 'Human (Noctis Nebula)',
+  homeland: 'Grand Duchy of Magnal, Lissi',
+  height: '173cm',
+  birthday: 'October 12th',
+  bwhRatio: '82(F)-51-93',
+ },
+
+ // Character Story
+ story:
+  'Ines grew up constantly being compared to the great Brave Duchess. Because she resembled Olivia, she was burdened with excessive expectations, which led to an obsession with not losing to anyone, just like her aunt. This pressure significantly shaped her personality. During the Rift Crisis, Ines, who had been training in swordsmanship within the Empire, fled to Earth following Maximilia and continued her training even on Earth. Wanting to become even stronger, Ines has applied to join the Vanguards.',
+
+ // Unique Traits
+ uniqueTraits: {
+  risingStar: {
+   name: 'Rising Star',
+   description: 'SPD 5%, Evade 20%',
+  },
+  oceanSteps: {
+   name: 'Ocean Steps',
+   description:
+    'Activates the Level 3 passive skill [Stride of Magnal]. [Stride of Magnal]: Upon performing a Weakness Attack, increases Melee ATK proportionally to the distance moved before the attack up to a maximum of 10m for an increase of 60% until the end of the turn.',
+  },
+  marlon: {
+   name: 'Marlon',
+   description: 'Strength 1, Technic 1, Intelligence 1',
+  },
+  interested: {
+   name: 'Interested',
+   description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
+  },
+ },
+
+ // Skills and Passive
+ skills: {
+  skyCleaver: {
+   gameKey: 'CuttingSky',
+   icon: 'UI_SkillIcon_TwoHandSword',
+   name: 'Sky Cleaver',
+   level: '10/10',
+   type: 'Skill',
+   apCost: 60,
+   cooldown: 0,
+   damage: {
+    type: 'Melee ATK',
+    value: '114%',
+   },
+   description:
+    'Delivers a powerful slash to enemies in front. Deals 114% Melee ATK as Slash DMG in a 3m × 5m rectangular area.',
+  },
+  worldCleaver: {
+   gameKey: 'DividingWorld',
+   icon: 'UI_SkillIcon_DividingWorld',
+   name: 'World Cleaver',
+   level: '10/10',
+   type: 'Skill',
+   apCost: 90,
+   cooldown: 3,
+   damage: {
+    type: 'Melee ATK',
+    value: '190%',
+   },
+   description:
+    'Unleashes a powerful slash across a wide area in front. Deals Slash DMG equal to 190% of Melee ATK to enemies within a 7m, 150° cone.',
+  },
+  naturalForm: {
+   gameKey: 'NaturalBody',
+   icon: 'UI_SkillIcon_NaturalBody',
+   name: 'Natural Form',
+   level: '10/10',
+   type: 'Passive',
+   apCost: 0,
+   cooldown: 0,
+   description:
+    "Increases CRIT rate by {10,11,12,13,14,15,16,17,18,19}% and CRIT DMG by {20,22,24,26,28,30,32,34,36,38}%. If there are enemies that were not defeated by an attack, performs a support attack with the 'Dividing the Earth' skill. If there are enemies that were not defeated by a counterattack, performs a support counterattack with the 'Dividing the Earth' skill. **Dividing the Earth** Performs a powerful upward slash. Deals Slash DMG equal to {120,132,144,156,168,180,192,204,216,228}% of Melee ATK to enemies within an 8m straight line in front.",
+  },
+  dividingTheEarth: {
+   gameKey: 'DividingWorld',
+   icon: 'UI_SkillIcon_DividingWorld',
+   name: 'World Cleaver',
+   level: 'Auto',
+   type: 'Skill',
+   apCost: 0,
+   cooldown: 0,
+   damage: {
+    type: 'Melee ATK',
+    value: '228%',
+   },
+   description:
+    'Unleashes a powerful slash across a wide area in front. Deals Slash DMG equal to N% of Melee ATK to enemies within a 7m, 150º cone.',
+  },
+ },
+
+ // Weapon
+ weapon: {
+  name: "The Severer of Fate",
+  flavor: "This renowned sword is crafted by the Duke of Magnal during the coronation ceremony, passed down through generations. While most share a similar shape, each sword is optimized with a unique magical circuit tailored to the respective duke. It is said that the souls of countless foes it has cut down reside within the blade, drawing adversaries toward their fated demise.",
+  type: "Two-handed sword",
+  rarity: 'EX',
+  image: "Weapon_FullIMG_TheDestinyOfTheSword",
+  imageOnR2: true,
+  maxLevel: 60,
   stats: {
-    // Basic Stats
-    strength: '18',
-    technic: '11',
-    intelligence: '10',
-    vitality: '17',
-    agility: '14',
-
-    // Key Stats
-    meleeAtk: '255',
-    rangedAtk: '161',
-    magicAtk: '140',
-    maxHp: '1088',
-    spd: '92',
-    startingAp: '120',
-    apRecovery: '115',
-    accuracy: '97',
-    evade: '215',
-    critRate: '10',
-    critDmg: '150',
-
-    // Attribute Boost
-    slashBoost: '0',
-    pierceBoost: '0',
-    crushBoost: '0',
-    heatBoost: '0',
-    coldBoost: '0',
-    electricBoost: '0',
-    immaterialBoost: '0',
-    poisonBoost: '0',
-
-    // Attribute Defense
-    slashDef: '0',
-    pierceDef: '0',
-    crushDef: '0',
-    heatDef: '0',
-    coldDef: '0',
-    electricDef: '0',
-    immaterialDef: '0',
-    poisonDef: '0',
-    blockRate: '0',
+   "Melee ATK (weapon)": "91",
+   "Crit DMG (%)": "+70%",
   },
-
-  // Character Description
-  description:
-    'A determined swordswoman from the Grand Duchy of Magnal who resembles the great Brave Duchess Olivia, seeking to prove herself as a worthy warrior.',
-
-  // Character Profile
-  profile: {
-    age: '25',
-    racial: 'Human (Noctis Nebula)',
-    homeland: 'Grand Duchy of Magnal, Lissi',
-    height: '173cm',
-    birthday: 'October 12th',
-    bwhRatio: '82(F)-51-93',
+  uniqueSkills: {
+   unique: {
+    name: "Destiny",
+    type: 'Unique',
+    description: "CRIT rate is increased by {20,25,30,35,40}%. Applies [Fate] effect to enemies successfully hit for 1R. [Fate]: When attacking an enemy with this effect, reduces their Slash DEF by {600,750,900,1050,1200} until the end of the turn.",
+   },
+   signature: {
+    name: "Ines Signature: The Winter Duchess",
+    type: 'Signature',
+    description: "Reduces AP consumption for the 'World Cleaver' skill by 50% during combat.",
+   },
   },
-
-  // Character Story
-  story:
-    'Ines grew up constantly being compared to the great Brave Duchess. Because she resembled Olivia, she was burdened with excessive expectations, which led to an obsession with not losing to anyone, just like her aunt. This pressure significantly shaped her personality. During the Rift Crisis, Ines, who had been training in swordsmanship within the Empire, fled to Earth following Maximilia and continued her training even on Earth. Wanting to become even stronger, Ines has applied to join the Vanguards.',
-
-  // Unique Traits
-  uniqueTraits: {
-    risingStar: {
-      name: 'Rising Star',
-      description: 'SPD 5%, Evade 20%',
-    },
-    oceanSteps: {
-      name: 'Ocean Steps',
-      description:
-        'Activates the Level 3 passive skill [Stride of Magnal]. [Stride of Magnal]: Upon performing a Weakness Attack, increases Melee ATK proportionally to the distance moved before the attack up to a maximum of 10m for an increase of 60% until the end of the turn.',
-    },
-    marlon: {
-      name: 'Marlon',
-      description: 'Strength 1, Technic 1, Intelligence 1',
-    },
-    interested: {
-      name: 'Interested',
-      description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.',
-    },
+  levelStats: {
+   "Melee ATK (weapon)": [14.3, 91.0],
+   "Crit DMG (%)": [11.0, 70.0],
   },
-
-  // Skills and Passive
-  skills: {
-    skyCleaver: {
-      gameKey: 'CuttingSky',
-      icon: 'UI_SkillIcon_TwoHandSword',
-      name: 'Sky Cleaver',
-      level: '10/10',
-      type: 'Skill',
-      apCost: 60,
-      cooldown: 0,
-      damage: {
-        type: 'Melee ATK',
-        value: '114%',
-      },
-      description:
-        'Delivers a powerful slash to enemies in front. Deals 114% Melee ATK as Slash DMG in a 3m × 5m rectangular area.',
-    },
-    worldCleaver: {
-      gameKey: 'DividingWorld',
-      icon: 'UI_SkillIcon_DividingWorld',
-      name: 'World Cleaver',
-      level: '10/10',
-      type: 'Skill',
-      apCost: 90,
-      cooldown: 3,
-      damage: {
-        type: 'Melee ATK',
-        value: '190%',
-      },
-      description:
-        'Unleashes a powerful slash across a wide area in front. Deals Slash DMG equal to 190% of Melee ATK to enemies within a 7m, 150° cone.',
-    },
-    naturalForm: {
-      gameKey: 'NaturalBody',
-      icon: 'UI_SkillIcon_NaturalBody',
-      name: 'Natural Form',
-      level: '10/10',
-      type: 'Passive',
-      apCost: 0,
-      cooldown: 0,
-      description:
-        "Increases CRIT rate by 19% and CRIT DMG by 38%. If there are enemies that were not defeated by an attack, performs a support attack with the 'Dividing the Earth' skill. If there are enemies that were not defeated by a counterattack, performs a support counterattack with the 'Dividing the Earth' skill.",
-    },
-    dividingTheEarth: {
-      gameKey: 'DividingWorld',
-      icon: 'UI_SkillIcon_DividingWorld',
-      name: 'Dividing the Earth',
-      level: 'Auto',
-      type: 'Skill',
-      apCost: 0,
-      cooldown: 0,
-      damage: {
-        type: 'Melee ATK',
-        value: '228%',
-      },
-      description:
-        'Performs a powerful upward slash. Deals Slash DMG equal to 228% of melee ATK to enemies within an 8m straight line in front.',
-    },
+  exLevels: {
+   effects: [
+    { name: "CRIT rate is increased", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+    { name: "[Fate]: When attacking an enemy with this effect, reduces their Slash DEF", valuesByLevel: "600 / 750 / 900 / 1050 / 1200" },
+   ],
   },
-
-  // Weapon
-  weapon: {
-    name: "The Severer of Fate",
-    flavor: "This renowned sword is crafted by the Duke of Magnal during the coronation ceremony, passed down through generations. While most share a similar shape, each sword is optimized with a unique magical circuit tailored to the respective duke. It is said that the souls of countless foes it has cut down reside within the blade, drawing adversaries toward their fated demise.",
-    type: "Two-handed sword",
-    rarity: 'EX',
-    image: "Weapon_FullIMG_TheDestinyOfTheSword",
-    imageOnR2: true,
-    maxLevel: 60,
-    stats: {
-      "Melee ATK (weapon)": "91",
-      "Crit DMG (%)": "+70%",
-    },
-    uniqueSkills: {
-      unique: {
-        name: "Destiny",
-        type: 'Unique',
-        description: "CRIT rate is increased by {20,25,30,35,40}%. Applies [Fate] effect to enemies successfully hit for 1R. [Fate]: When attacking an enemy with this effect, reduces their Slash DEF by {600,750,900,1050,1200} until the end of the turn.",
-      },
-      signature: {
-        name: "Ines Signature: The Winter Duchess",
-        type: 'Signature',
-        description: "Reduces AP consumption for the 'World Cleaver' skill by 50% during combat.",
-      },
-    },
-    levelStats: {
-      "Melee ATK (weapon)": [14.3, 91.0],
-      "Crit DMG (%)": [11.0, 70.0],
-    },
-    exLevels: {
-      effects: [
-        { name: "CRIT rate is increased", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
-        { name: "[Fate]: When attacking an enemy with this effect, reduces their Slash DEF", valuesByLevel: "600 / 750 / 900 / 1050 / 1200" },
-      ],
-    },
+ },
+ rarityStages: {
+  'EX': {
+   strength: 13,
+   technic: 11,
+   intelligence: 10,
+   vitality: 14,
+   agility: 13,
+   maxHp: 896,
+   meleeAtk: 188,
+   rangedAtk: 161,
+   magicAtk: 140,
+   evade: 199,
+   apRecovery: 112,
+   startingAp: 117
   },
-  rarityStages: {
-    'EX': {
-      strength: 13,
-      technic: 11,
-      intelligence: 10,
-      vitality: 14,
-      agility: 13,
-      maxHp: 896,
-      meleeAtk: 188,
-      rangedAtk: 161,
-      magicAtk: 140,
-      evade: 199,
-      apRecovery: 112,
-      startingAp: 117
-    },
-    'EX 1': {
-      strength: 15,
-      technic: 11,
-      intelligence: 10,
-      vitality: 14,
-      agility: 13,
-      maxHp: 896,
-      meleeAtk: 215,
-      rangedAtk: 161,
-      magicAtk: 140,
-      evade: 199,
-      apRecovery: 112,
-      startingAp: 117
-    },
-    'EX 2': {
-      strength: 15,
-      technic: 11,
-      intelligence: 10,
-      vitality: 15,
-      agility: 13,
-      maxHp: 960,
-      meleeAtk: 215,
-      rangedAtk: 161,
-      magicAtk: 140,
-      evade: 199,
-      apRecovery: 112,
-      startingAp: 117
-    },
-    'EX 3': {
-      strength: 16,
-      technic: 11,
-      intelligence: 10,
-      vitality: 15,
-      agility: 13,
-      maxHp: 960,
-      meleeAtk: 228,
-      rangedAtk: 161,
-      magicAtk: 140,
-      evade: 199,
-      apRecovery: 112,
-      startingAp: 117
-    },
-    'EX 4': {
-      strength: 16,
-      technic: 11,
-      intelligence: 10,
-      vitality: 15,
-      agility: 14,
-      maxHp: 960,
-      meleeAtk: 228,
-      rangedAtk: 161,
-      magicAtk: 140,
-      evade: 215,
-      apRecovery: 115,
-      startingAp: 120
-    },
-    'EX 5': {
-      strength: 16,
-      technic: 11,
-      intelligence: 10,
-      vitality: 17,
-      agility: 14,
-      maxHp: 1088,
-      meleeAtk: 228,
-      rangedAtk: 161,
-      magicAtk: 140,
-      evade: 215,
-      apRecovery: 115,
-      startingAp: 120
-    },
-    'EX 6': {
-      strength: 18,
-      technic: 11,
-      intelligence: 10,
-      vitality: 17,
-      agility: 14,
-      maxHp: 1088,
-      meleeAtk: 255,
-      rangedAtk: 161,
-      magicAtk: 140,
-      evade: 215,
-      apRecovery: 115,
-      startingAp: 120
-    },
+  'EX 1': {
+   strength: 15,
+   technic: 11,
+   intelligence: 10,
+   vitality: 14,
+   agility: 13,
+   maxHp: 896,
+   meleeAtk: 215,
+   rangedAtk: 161,
+   magicAtk: 140,
+   evade: 199,
+   apRecovery: 112,
+   startingAp: 117
   },
-  heroId: 37,
+  'EX 2': {
+   strength: 15,
+   technic: 11,
+   intelligence: 10,
+   vitality: 15,
+   agility: 13,
+   maxHp: 960,
+   meleeAtk: 215,
+   rangedAtk: 161,
+   magicAtk: 140,
+   evade: 199,
+   apRecovery: 112,
+   startingAp: 117
+  },
+  'EX 3': {
+   strength: 16,
+   technic: 11,
+   intelligence: 10,
+   vitality: 15,
+   agility: 13,
+   maxHp: 960,
+   meleeAtk: 228,
+   rangedAtk: 161,
+   magicAtk: 140,
+   evade: 199,
+   apRecovery: 112,
+   startingAp: 117
+  },
+  'EX 4': {
+   strength: 16,
+   technic: 11,
+   intelligence: 10,
+   vitality: 15,
+   agility: 14,
+   maxHp: 960,
+   meleeAtk: 228,
+   rangedAtk: 161,
+   magicAtk: 140,
+   evade: 215,
+   apRecovery: 115,
+   startingAp: 120
+  },
+  'EX 5': {
+   strength: 16,
+   technic: 11,
+   intelligence: 10,
+   vitality: 17,
+   agility: 14,
+   maxHp: 1088,
+   meleeAtk: 228,
+   rangedAtk: 161,
+   magicAtk: 140,
+   evade: 215,
+   apRecovery: 115,
+   startingAp: 120
+  },
+  'EX 6': {
+   strength: 18,
+   technic: 11,
+   intelligence: 10,
+   vitality: 17,
+   agility: 14,
+   maxHp: 1088,
+   meleeAtk: 255,
+   rangedAtk: 161,
+   magicAtk: 140,
+   evade: 215,
+   apRecovery: 115,
+   startingAp: 120
+  },
+ },
+ heroId: 37,
 
 };
 
 // Validate and sanitize the character data
 const validation = validateCharacterData(rawInesData);
 if (!validation.isValid) {
-  throw new Error(`Character data validation failed: ${validation.errors.join(', ')}`);
+ throw new Error(`Character data validation failed: ${validation.errors.join(', ')}`);
 }
 
 // Export sanitized character data
@@ -321,16 +321,16 @@ export const inesData = sanitizeCharacterData(rawInesData);
 
 // Highlighting terms for this character - optimized to prevent ReDoS attacks
 const rawHighlightPatterns = {
-  damage: /\b(?:\d{1,3}%\s+of\s+\w{3,15}\s+ATK|\d{1,3}%\s+as\s+\w{3,15}\s+DMG|\w{3,15}\s+DMG)\b/gi,
-  effects: /\[([^[\]]{1,150})]/g,
-  buffsDebuffs:
-    /\b(?:Rising\s+Star|Ocean\s+Steps|Stride\s+of\s+Magnal|Natural\s+Form|Dividing\s+the\s+Earth|Fate|Destiny|The\s+Winter\s+Duchess|Sky\s+Cleaver|World\s+Cleaver|Weakness\s+Attack|support\s+attack|support\s+counterattack)\b/gi,
-  percentages: /\b(\d{1,3}%)\b/g,
-  statChanges: /\b(?:reduces?|increases?|decreases?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?)\b/gi,
-  keywords:
-    /\b(?:Brave\s+Duchess|Grand\s+Duchy\s+of\s+Magnal|Olivia|Maximilia|Rift\s+Crisis|Vanguards|swordsmanship|Empire|Earth|expectations|obsession|training|rectangular\s+area|cone|straight\s+line|distance\s+moved|proportionally)\b/gi,
-  attributes:
-    /\b(?:AP|Melee\s+ATK|Ranged\s+ATK|Magic\s+ATK|Slash|Pierce|Crush|Physical|Heat|Cold|Electric|Immaterial|Poison|SPD|CRIT\s+rate|CRIT\s+DMG|Accuracy|Evade|HP|Max\s+HP|AP\s+Recovery|Intelligence|Strength|Technic|Vitality|Agility|Slash\s+DEF)\b/gi,
+ damage: /\b(?:\d{1,3}%\s+of\s+\w{3,15}\s+ATK|\d{1,3}%\s+as\s+\w{3,15}\s+DMG|\w{3,15}\s+DMG)\b/gi,
+ effects: /\[([^[\]]{1,150})]/g,
+ buffsDebuffs:
+  /\b(?:Rising\s+Star|Ocean\s+Steps|Stride\s+of\s+Magnal|Natural\s+Form|Dividing\s+the\s+Earth|Fate|Destiny|The\s+Winter\s+Duchess|Sky\s+Cleaver|World\s+Cleaver|Weakness\s+Attack|support\s+attack|support\s+counterattack)\b/gi,
+ percentages: /\b(\d{1,3}%)\b/g,
+ statChanges: /\b(?:reduces?|increases?|decreases?)\s+(?:\w{1,15}\s+){0,5}by\s+(\d{1,3}%?)\b/gi,
+ keywords:
+  /\b(?:Brave\s+Duchess|Grand\s+Duchy\s+of\s+Magnal|Olivia|Maximilia|Rift\s+Crisis|Vanguards|swordsmanship|Empire|Earth|expectations|obsession|training|rectangular\s+area|cone|straight\s+line|distance\s+moved|proportionally)\b/gi,
+ attributes:
+  /\b(?:AP|Melee\s+ATK|Ranged\s+ATK|Magic\s+ATK|Slash|Pierce|Crush|Physical|Heat|Cold|Electric|Immaterial|Poison|SPD|CRIT\s+rate|CRIT\s+DMG|Accuracy|Evade|HP|Max\s+HP|AP\s+Recovery|Intelligence|Strength|Technic|Vitality|Agility|Slash\s+DEF)\b/gi,
 };
 
 // Export sanitized highlighting patterns
@@ -338,24 +338,24 @@ export const inesHighlighting = sanitizeHighlightPatterns(rawHighlightPatterns);
 
 // SEO metadata
 export const inesSEO = {
-  title: 'Ines - Horizon Walker Character Guide',
-  description:
-    'Complete guide for Ines, an A rarity Warrior character in Horizon Walker. Determined swordswoman with powerful slash attacks, critical damage, and distance-scaling abilities.',
-  keywords: [
-    'Ines',
-    'Horizon Walker',
-    'A rarity',
-    'warrior',
-    'swordswoman',
-    'slash damage',
-    'critical striker',
-    'melee damage',
-    'area damage',
-    'two-handed sword',
-    'weakness hunter',
-    'distance scaling',
-    'guide',
-    'stats',
-    'build',
-  ],
+ title: 'Ines - Horizon Walker Character Guide',
+ description:
+  'Complete guide for Ines, an A rarity Warrior character in Horizon Walker. Determined swordswoman with powerful slash attacks, critical damage, and distance-scaling abilities.',
+ keywords: [
+  'Ines',
+  'Horizon Walker',
+  'A rarity',
+  'warrior',
+  'swordswoman',
+  'slash damage',
+  'critical striker',
+  'melee damage',
+  'area damage',
+  'two-handed sword',
+  'weakness hunter',
+  'distance scaling',
+  'guide',
+  'stats',
+  'build',
+ ],
 };

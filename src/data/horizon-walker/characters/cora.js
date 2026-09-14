@@ -162,7 +162,7 @@ const rawCoraData = {
       apCost: 0,
       cooldown: 0,
       description:
-        "If an enemy on a [Lava] zone is hit, at the end of the turn all [Lava] zones on the battlefield will explode. This explosion deals Additional Heat DMG equal to 76% of the caster's magic ATK to all enemies within the zone. This Additional Heat DMG takes double the effect of the Heat enhancement stat.",
+        "When an enemy located on a [Lava] Area is hit, all [Lava] Areas on the battlefield explode at the end of the Turn. This explosion deals additional Heat DMG equal to {40,44,48,52,56,60,64,68,72,76}% of the caster’s Magic ATK to all enemies within the Area. This additional Heat DMG reflects the Effect of Heat Boost at 2× potency. If triggered during Self’s Turn, the DMG is doubled.",
     },
     volcanicEruption: {
       gameKey: 'VolcanicEruption',

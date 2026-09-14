@@ -193,7 +193,7 @@ const rawOslaData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'Each time an attack is successfully made, has a 57% chance to Taunt the target.',
+        'Each time an attack is successfully made, has a {30,33,36,39,42,45,48,51,54,57}% chance to Taunt the target.',
     },
     cryOfTheAncients: {
       gameKey: 'CryOfTheAncientTimes',
@@ -208,7 +208,7 @@ const rawOslaData = {
         value: '57%',
       },
       description:
-        'With a shout filled with intense determination, demoralizes enemies and boosts own resolve. Deals Immaterial DMG equal to 57% of magic ATK. Hit enemies lose 10 AP, while self gains the [Primal Regeneration] effect for 2R and Aggro Adjustment increases. [Primal Regeneration]: Whenever damaged, recovers HP by 57% of magic ATK. This recovery amount increases as the current HP ratio decreases, up to 4 times at 40% HP ratio.',
+        'With a shout filled with intense determination, demoralizes enemies and boosts own resolve. Deals Immaterial DMG equal to N% of magic ATK. Hit enemies lose 10 AP, while self gains the [Primal Regeneration] effect for 2R and Aggro Adjustment increases. - [Primal Regeneration]: Whenever damaged, recovers HP by {30,33,36,39,42,45,48,51,54,57}% of magic ATK. This recovery amount increases as the current HP ratio decreases, up to 4 times at 40% HP ratio.',
     },
     endlessMalice: {
       gameKey: 'EndlessKillingAura',
@@ -219,7 +219,7 @@ const rawOslaData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'When attacked by an enemy, reflects the damage received back to the attacker, dealing Fixed DMG equal to 57% of the damage taken. This reflected damage increases as own current HP ratio decreases, up to 4 times at 40% HP.',
+        'When attacked by an enemy, reflects the damage received back to the attacker, dealing Fixed DMG equal to {30,33,36,39,42,45,48,51,54,57}% of the damage taken. This reflected damage increases as own current HP ratio decreases, up to 4 times at 40% HP.',
     },
   },
   rarityStages: {

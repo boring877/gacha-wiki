@@ -148,7 +148,7 @@ const rawRhasadinaData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'When an ally takes damage that would lead to incapacitation, there is a 40% chance to allow them to survive with 1 HP. This effect can activate only once per Vanguard.',
+        'When an ally takes damage that would lead to incapacitation, there is a {20,22,24,26,28,30,32,34,36,40}% chance to allow them to survive with 1 HP. This effect can activate only once per Vanguard.',
     },
     gameSpice: {
       gameKey: 'GameSpice',
@@ -159,7 +159,7 @@ const rawRhasadinaData = {
       apCost: 90,
       cooldown: 0,
       description:
-        'With fairy magic, brings about a powerful effect on the battlefield. One of the following five effects is activated at random: ① recovers all allies by 180% of own magic ATK. ② Deals additional Immaterial DMG equal to 300% of own magic ATK to all enemies. ③ Grants all allies an increase in All ATK by 45% for 2 rounds. ④ Grants all allies 45 AP. ⑤ nothing happens.',
+        'With fairy magic, brings about a powerful effect on the battlefield. One of the following five effects is activated at random: ①. recovers all allies by {120,180}% of own magic ATK. ②. Deals additional Immaterial DMG equal to {200,300}% of own magic ATK to all enemies. ③. Grants all allies an increase in All ATK by {30,45}% for 2 rounds. ④. Grants all allies {30,45} AP. ⑤. nothing happens.',
     },
   },
 

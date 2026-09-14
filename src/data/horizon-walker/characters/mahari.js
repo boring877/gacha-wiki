@@ -169,7 +169,7 @@ const rawMahariData = {
       apCost: 0,
       cooldown: 1,
       description:
-        'Activates once per round. After landing a Weak Point Attack, gain a [Resolve of Reversal] shield that lasts for 2 rounds. [Resolve of Reversal]: Grants a shield equal to 40% of max HP + 114% of Melee ATK.',
+        'Activates once per round. After landing a Weak Point Attack, gain a [Resolve of Reversal] shield that lasts for 2 rounds. [Resolve of Reversal]: Grants a shield equal to 40% of max HP + {60,66,72,78,84,90,96,102,108,114}% of Melee ATK.',
     },
     willOfResistance: {
       gameKey: 'WillToResist',

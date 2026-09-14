@@ -108,12 +108,12 @@ const rawHongpamangData = {
         value: '138%',
       },
       description:
-        'Attacks the enemy precisely with the power of the void. Deals Immaterial DMG equal to 138% of Magic ATK. Coefficient scales from 73% at Lv1 to 138% at Lv10.',
+        'Attacks the enemy precisely with the power of the void. Deals Immaterial DMG equal to N% of magic ATK.',
     },
     possessionOfEcstaticDream: {
       gameKey: 'PossessionOfEcstaticDream',
       icon: 'UI_SkillIcon_PossessionOfEcstaticDream',
-      name: 'Possession of Ecstatic Dream',
+      name: 'Ecstasy Possession',
       level: '10/10',
       type: 'Skill',
       apCost: 60,
@@ -123,23 +123,23 @@ const rawHongpamangData = {
         value: '65%',
       },
       description:
-        'Interpenetrates the enemy\'s mind with the power of the void. Deals Immaterial DMG equal to 65% of Magic ATK and possesses the enemy by seizing control of their body. The lower the enemy\'s HP and the higher the user\'s Magic ATK, the higher the success rate. When user\'s Magic ATK matches target\'s remaining HP, possession succeeds with 70-100% probability. Cannot possess bosses or elite enemies. Upon successful possession, user\'s AP is fixed at 0, while the possessed target is controlled instead. If the controlled target is defeated, possession ends, and the user immediately gains 150 AP. Coefficient scales from 36% at Lv1 to 65% at Lv10.',
+        'interpenetrates the enemy\'s mind with the power of the void. Deals Immaterial DMG equal to N% of magic ATK and possesses the enemy by seizing control of their body. The lower the enemy\'s HP and the higher the user\'s magic ATK, the higher the success rate of possession. (When the user\'s magic ATK matches the target\'s remaining HP, possession succeeds with a probability of {70,73,76,79,82,85,88,91,94,100}%.) Cannot possess bosses or elite enemies. Upon successful possession, the user\'s AP is fixed at 0, while the possessed target is controlled instead. If the controlled target is defeated, possession ends, and the user immediately gains 150 AP.',
     },
     someonesBody: {
       gameKey: 'SomeonesBody',
       icon: 'UI_SkillIcon_SomeonesBody',
-      name: "Someone's Body",
+      name: "Other's Body",
       level: '10/10',
       type: 'Passive',
       apCost: 0,
       cooldown: 0,
       description:
-        'While in a successful possession state, all ATK of the possessed target increases by 40-76%. Requires Possession of Ecstatic Dream Lv3 to unlock.',
+        'While in a successful possession state, all ATK of the possessed target increases by {40,44,48,52,56,60,64,68,72,76}%.',
     },
     nightmareMaterializes: {
       gameKey: 'NightmareMaterializes',
       icon: 'UI_SkillIcon_NightmareMaterializes',
-      name: 'Nightmare Materializes',
+      name: 'Nightmare Materialization',
       level: '10/10',
       type: 'Skill',
       apCost: 45,
@@ -149,7 +149,7 @@ const rawHongpamangData = {
         value: '138%',
       },
       description:
-        'Realizes a nightmare, attacking enemies in a wide area. Deals Immaterial DMG equal to 138% of Magic ATK to enemies within a 5m radius. Has a 30-57% chance to [Stun] hit enemies and inflict [nightmare materialization] (reduces all DEF by 200). After using this skill, the user also becomes [Stunned]. Coefficient scales from 73% at Lv1 to 138% at Lv10. Requires Someone\'s Body Lv3 to unlock.',
+        'Realizes a nightmare, attacking enemies in a wide area. Deals Immaterial DMG equal to N% of magic ATK to enemies within a 5m radius from self. Has a {30,33,36,39,42,45,48,51,54,57}% chance to [Stun] hit enemies and inflict them with the [nightmare materialization] effect. After using this skill, the user also becomes [Stunned]. - [nightmare materialization]: Reduces all DEF by 200.',
     },
   },
 };

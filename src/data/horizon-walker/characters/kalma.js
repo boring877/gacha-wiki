@@ -127,7 +127,7 @@ const rawKalmaData = {
         value: '152%',
       },
       description:
-        'Launches an electrified sphere to attack. The sphere burrows into the targeted enemy before bursting outward in all directions. Deals Electric DMG equal to 152% of Magic ATK to the target, and Splash Electric DMG equal to 48% of Magic ATK to enemies within a 4m radius. The designated target cannot be hit with a standard Weakness Attack by this skill.',
+        'Launches an electrified sphere to attack. The sphere burrows into the targeted enemy before bursting outward in all directions. Deals Electric DMG equal to M% of Magic ATK to the target, and Splash Electric DMG equal to N% of Magic ATK to enemies within a 4m radius. The designated target cannot be hit with a standard Weakness Attack by this skill.',
     },
     chargeAccumulation: {
       gameKey: 'VoltWeave',
@@ -153,7 +153,7 @@ const rawKalmaData = {
         value: '67%',
       },
       description:
-        'Dashes like lightning in the chosen direction. Charges 7m forward, dealing Electric DMG equal to 67% of Magic ATK to enemies within 3m along the path, and gains [Extra Action] once. After using this skill, Magic ATK increases by 70% for 1R and any attack made this turn via [Extra Action] is treated as a Weak Point Attack. This skill is considered a Basic Skill and cannot deal Weak Point Attack on its own.',
+        'Dashes like lightning in the chosen direction. Charges 7m forward, dealing Electric DMG equal to N% of Magic ATK to enemies within 3m along the path, and gains [Extra Action] once. After using this skill, Magic ATK increases by {47.5,50,52.5,55,57.5,60,62.5,65,67.5,70}% for 1R, and any attack made this turn via [Extra Action] is treated as a Weak Point Attack. This skill is considered a Basic Skill and cannot deal Weak Point Attack on its own.',
     },
     lightningCascade: {
       gameKey: 'SpreadingLightning',
@@ -168,7 +168,7 @@ const rawKalmaData = {
         value: '285%',
       },
       description:
-        'Emits a powerful current from your fingertips for a short time. Deals Electric DMG equal to 285% of Magic ATK to enemies within a 5m, 150° frontal cone, and inflicts [Volt Mark] for 1R on hit enemies. When an ally attacks an enemy with [Volt Mark], all ATK increases by 20% for 2R. While using this skill, ACC is temporarily increased by 100%.',
+        'Emits a powerful current from your fingertips for a short time. Deals Electric DMG equal to N% of Magic ATK to enemies within a 5m, 150° frontal cone, and inflicts [Volt Mark] for 1R on hit enemies. When an ally attacks an enemy with [Volt Mark], all ATK increases by {11,12,13,14,15,16,17,18,19,20}% for 2R. While using this skill, ACC is temporarily increased by 100%.',
     },
     ragingThunderstorm: {
       gameKey: 'RagingLightningStorm',

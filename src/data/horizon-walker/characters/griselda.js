@@ -165,7 +165,7 @@ const rawGriseldaData = {
         value: '57%',
       },
       description:
-        'Releases arcane energy, causing a massive explosion. Deals Immaterial DMG equal to 57% of Magic ATK to enemies within a 3m Circular Range at the designated location, and Additional Crush DMG equal to 57% of Magic ATK. When attacking with this skill, temporarily increases ACC by 100%.',
+        'Releases arcane energy, causing a massive explosion. Deals Immaterial DMG equal to N% of Magic ATK to enemies within a 3m Circular Range at the designated location, and Additional Crush DMG equal to {30,33,36,39,42,45,48,51,54,57}% of Magic ATK. When attacking with this skill, temporarily increases ACC by 100%.',
     },
     arcanePurge: {
       gameKey: 'ArcaneBaptism',
@@ -187,7 +187,7 @@ const rawGriseldaData = {
       apCost: 47,
       cooldown: 2,
       description:
-        "Bends space with overwhelming arcane power. Increases the SPD of all allies (excluding self) by 190% of the Arcane Elemental's base AP recovery until the end of their turn, and creates an [Undefined Space] zone at the target location for 3 rounds. Allies within the [Uncertain Space] zone recover a portion of AP spent on movement. Enemies within the zone are periodically pulled toward its center.",
+        "Bends space with overwhelming arcane power. Increases the SPD of all allies (excluding self) by {100,110,120,130,140,150,160,170,180,190}% of the Arcane Elemental’s base AP recovery until the end of their turn, and creates an [Undefined Space] zone at the target location for 3 rounds. Allies within the [Uncertain Space] zone recover a portion of AP spent on movement. Enemies within the zone are periodically pulled toward its center.",
     },
     certainFortune: {
       gameKey: 'DeterminedLuck',
@@ -198,7 +198,7 @@ const rawGriseldaData = {
       apCost: 0,
       cooldown: 0,
       description:
-        "On hit, grants all allies a [Banish Misfortune] shield for 1 round (does not stack), and restores HP to allies within [Undefined Space] equal to 38% of the Arcane Elemental's Max HP. The lower the target's current HP, the more HP is restored—up to an additional 40%.",
+        "On hit, grants all allies a [Banish Misfortune] shield for 1 round (does not stack), and restores HP to allies within [Undefined Space] equal to {20,22,24,26,28,30,32,34,36,38}% of the Arcane Elemental’s Max HP. The lower the target’s current HP, the more HP is restored—up to an additional 40%.",
     },
     quantumSingularity: {
       gameKey: 'QuantumSingularity',
@@ -213,7 +213,7 @@ const rawGriseldaData = {
         value: '190%',
       },
       description:
-        "Can be activated by consuming 3 stacks of [Pure Energy]. Unleashes overwhelming arcane force to collapse space. After use, reduces the caster's AP Recovery by 20 for 1R. Deals Immaterial DMG equal to Magic ATK × 190% and Additional Crush DMG equal to 190% of Magic ATK to enemies within a 6m radius at the target location. This Additional Crush DMG increases based on the target's missing HP, up to 10×. While using this skill, ACC is temporarily increased by 300%.",
+        "Can be activated by consuming 3 stacks of [Pure Energy]. Unleashes overwhelming arcane force to collapse space. After use, reduces the caster's AP Recovery by 20 for 1R. Deals Immaterial DMG equal to Magic ATK × N% and Additional Crush DMG equal to {100,110,120,130,140,150,160,170,180,190}% of Magic ATK to enemies within a 6m radius at the target location. This Additional Crush DMG increases based on the target’s missing HP, up to 10×. While using this skill, ACC is temporarily increased by 300%.",
     },
     reversalOfCausality: {
       gameKey: 'ReversedCausality',
@@ -224,7 +224,7 @@ const rawGriseldaData = {
       apCost: 0,
       cooldown: 0,
       description:
-        "If an ally with the [Arcane Purge] effect attacks and at least one target is struck with a Weak Point hit, their Melee and Ranged ATK increase by 190% of the Queen of Arcane Elemental's Magic ATK for the rest of that turn. At the end of that turn, the [Arcane Purge] effect is removed.",
+        "If an ally with the [Arcane Purge] effect attacks and at least one target is struck with a Weak Point hit, their Melee and Ranged ATK increase by {100,110,120,130,140,150,160,170,180,190}% of the Queen of Arcane Elemental’s Magic ATK for the rest of that turn. At the end of that turn, the [Arcane Purge] effect is removed.",
     },
   },
   rarityStages: {

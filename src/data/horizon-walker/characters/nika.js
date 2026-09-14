@@ -92,9 +92,9 @@ const rawNikaData = {
   // Unique Traits
   uniqueTraits: {
     dirtyPairMarhim: {
-      name: 'Dirty Pair • Marhim',
+      name: 'Dirty Pair · Marhim',
       description:
-        "Activates the Level 1 passive skill [Dirty Pair • Marhim]. [Dirty Pair • Marhim]: When Marhim attacks, supports with the 'Dirty Pair • Dagger Throw' skill. Gains [Shadow Step] effect for 1 round afterwards. Dirty Pair • Dagger Throw: Throws a dagger at an enemy within 7m, dealing Pierce DMG equal to 70% of Melee ATK.",
+        "Activates the Level 1 passive skill [Dirty Pair · Marhim]. [Dirty Pair · Marhim]: When Marhim attacks, supports with the 'Dirty Pair · Dagger Throw' skill. Gains [Shadow Step] effect for 1 round afterwards. Dirty Pair · Dagger Throw: Throws a dagger at an enemy within 7m, dealing Pierce DMG equal to 70% of Melee ATK.",
     },
     lackOfPresence: {
       name: 'Lack of Presence',
@@ -137,7 +137,7 @@ const rawNikaData = {
       apCost: 0,
       cooldown: 0,
       description:
-        "If not under the Stealth effect at the end of the turn and there are no enemies within a 5m radius, gains the [Shadow Steps] effect for 1R. At the start of own turn, if under the Stealth effect, gains the [Shining Steps from the Shadows] effect. While in Stealth, can perform a support attack using the 'Dirty Pair • Dagger Throw' skill. [Shadow Steps]: Enters Stealth, preventing the user from becoming a target of enemy skills. [Shining Steps from the Shadows]: Increases SPD by 57. This effect is removed at the end of the turn.",
+        "If not under the Stealth effect at the end of the turn and there are no enemies within a 5m radius, gains the [Shadow Steps] effect for 1R. At the start of own turn, if under the Stealth effect, gains the [Shining Steps from the Shadows] effect. While in Stealth, can perform a support attack using the 'Dirty Pair · Dagger Throw' skill. [Shadow Steps]: Enters Stealth, preventing the user from becoming a target of enemy skills. [Shining Steps from the Shadows]: Increases SPD by 57. This effect is removed at the end of the turn.",
     },
     poisonArrow: {
       gameKey: 'ToxicBolt',
@@ -152,12 +152,12 @@ const rawNikaData = {
         value: '57%',
       },
       description:
-        "Throws a poison-soaked special arrow. Deals Pierce DMG equal to 57% of melee ATK and applies the [Necrotoxin] effect, accumulating stacks equal to 133% of ACC. [Necrotoxin]: Increases accumulation based on the caster's Poison Boost when applied. At the start of the caster's round, inflicts Poison DMG equal to the accumulated [Necrotoxin] stacks. [Necrotoxin] can stack up to 6 times.",
+        "Targets up to 3 enemies in order of proximity and fires poisoned arrows drenched in a special toxin. On hit, deals Melee ATK N% as Pierce DMG and inflicts 1 stack of [Necrotoxin]. - [Necrotoxin]: Accumulates based on the user’s Accuracy {70,77,84,91,98,105,112,119,126,133}%. Newly applied stacks also scale with the user’s Additional DMG Boost and Poison Boost. At the start of each round, the afflicted target takes Additional Poison DMG equal to 100% of accumulated Necrotoxin. This effect can stack up to 6 times with the same name.",
     },
     lethalPoison: {
       gameKey: 'DeadlyPoison',
       icon: 'UI_SkillIcon_DeadlyPoison',
-      name: 'Lethal Poison',
+      name: 'Deadly Poison',
       level: '10/10',
       type: 'Skill',
       apCost: 60,
@@ -167,7 +167,7 @@ const rawNikaData = {
         value: '57%',
       },
       description:
-        "Targets an enemy affected by the [Necrotoxin] effect and attacks with a dagger infused with potent reactive poison. Deals Pierce DMG equal to 57% of melee ATK and inflicts additional Poison DMG equal to 3.9 times the target's [Necrotoxin] stacks. If the enemy is defeated, applies 2 stacks of [Necrotoxin] to all enemies affected by [Poison Accumulation], accumulating 266% of ACC in total. [Necrotoxin]: Accumulation increases based on the caster's Poison Boost when applied. At the start of the caster's round, inflicts additional Poison DMG equal to the accumulated [Necrotoxin] stacks. [Necrotoxin] can stack up to 6 times.",
+        "When the user’s attack hits, inflicts 1 stack of [Necrotoxin]. If the target is already afflicted, additionally deals {30,33,36,39,42,45,48,51,54,57}% of the accumulated Necrotoxin as Additional Poison DMG. (This bonus damage does not scale with the user’s Additional DMG Boost or Poison Boost.) [Necrotoxin]: Accumulates based on the user’s Accuracy {70,77,84,91,98,105,112,119,126,133}%. Newly applied stacks also scale with the user’s Additional DMG Boost and Poison Boost. At the start of each round, the afflicted target takes Additional Poison DMG equal to 100% of accumulated Necrotoxin. This effect can stack up to 6 times with the same name.",
     },
     poisonAccumulation: {
       gameKey: 'PoisonAccumulation',

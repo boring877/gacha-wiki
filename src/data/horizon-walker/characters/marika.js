@@ -109,7 +109,7 @@ const rawMarikaData = {
         value: '138%',
       },
       description:
-        'Deals Slash DMG equal to 73-138% of Melee ATK to enemies within range. Inflicts [Focused Vigil] for 2R on hit. When Marika attacks a target with [Focused Vigil], performs a Support Attack with [Sky-Piercing Thrust]. Each Sky-Piercing Thrust grants +20-38% Pierce Boost for 2R (max 10 stacks). [Sky-Piercing Thrust]: Deals Pierce DMG equal to 120-228% of Melee ATK, moves behind target. Counts as Weakness Attack.',
+        'Strikes with a sword slash. Deals Slash DMG equal to N% of Melee ATK to the enemy.',
     },
     swiftSupport: {
       gameKey: 'SwiftSupport',
@@ -120,7 +120,7 @@ const rawMarikaData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'Using [Sky-Piercing Thrust] grants 20 Action Power. Using [World-Piercing Strike] grants 40 Action Power. Requires Blade of Might Lv3 to unlock.',
+        'Targets hit by [Blade of Might] are inflicted with [Focused Vigil] for 2R. When Marika attacks a target affected by [Focused Vigil], performs a Support Attack with [Sky-Piercing Thrust]. Each time [Sky-Piercing Thrust] is used, allied Pierce Boost increases by {20,22,24,26,28,30,32,34,36,38}% for 2R. Stacks up to 10 times. - [Focused Vigil]: Base effect used for [Blade of Might]. - [Sky-Piercing Thrust]: Deals Pierce DMG equal to {120,132,144,156,168,180,192,204,216,228}% of Melee ATK and moves behind the target. This skill performs a Weak Point Attack if the target has a weak point.',
     },
     bloodlineAwakening: {
       gameKey: 'BloodlineAwakening',
@@ -131,7 +131,7 @@ const rawMarikaData = {
       apCost: 10,
       cooldown: 2,
       description:
-        'Awakens Kessak blood within. For 1R: Crit Rate increases by 50-95% of SPD, ignores counterattacks. Excess Crit Rate over 100% adds to Crit DMG. Requires Blade of Might Lv3 to unlock.',
+        'Awakens the blood of Kesak flowing within. For 1R, increases Crit Rate by {50,55,60,65,70,75,80,85,90,95}% of your SPD and ignores enemy counterattacks. Crit DMG additionally increases by the amount of Crit Rate exceeding 100%.',
     },
     swiftDestruction: {
       gameKey: 'SwiftDestruction',
@@ -142,7 +142,7 @@ const rawMarikaData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'Targets hit by [Sky-Piercing Thrust] are inflicted with [Status Tracking] for 2R. When Marika performs a Support Attack against a target with [Status Tracking], triggers a Reaction Attack with [World-Piercing Strike]. Each World-Piercing Strike reduces all enemies\' Pierce DEF by 150-240 for 2R (max 10 stacks). [World-Piercing Strike]: Deals Pierce DMG equal to 200-380% of Melee ATK, moves behind target. Requires Swift Support Lv3 to unlock.',
+        'Targets hit by [Sky-Piercing Thrust] are inflicted with [Status Tracking] for 2R. When Marika performs a Support Attack against a target affected by [Status Tracking], triggers a Reaction Attack with [World-Piercing Strike]. Each time [World-Piercing Strike] is used, for 2R, all enemies’ Pierce DEF decreases by {150,160,170,180,190,200,210,220,230,240}. Stacks up to 10 times. - [Status Tracking]: Base effect used for [Sky-Piercing Thrust]. - [World-Piercing Strike]: Deals Pierce DMG equal to {200,220,240,260,280,300,320,340,360,380}% of Melee ATK and moves behind the target. This skill performs a Weak Point Attack if the target has a weak point.',
     },
   },
 

@@ -136,7 +136,7 @@ const rawNonohaData = {
       apCost: 0,
       cooldown: 0,
       description:
-        "Gains the [Whirling Wind] effect whenever performing an action other than Standby. At the end of own turn, grants the [Wind's Gathering] effect to all allies. [Whirling Wind]: Increases SPD by 3%. Stacks up to 6 times. [Wind's Gathering]: Increases SPD by 9.5% per stack of [Whirling Wind] the caster possesses. This effect disappears at the end of own turn.",
+        "Gains the [Whirling Wind] effect whenever performing an action other than Standby. At the end of own turn, grants the [Wind's Gathering] effect to all allies. - [Whirling Wind]: Increases SPD by 3%. Stacks up to 6 times. - [Wind's Gathering]: Increases SPD by {5,5.5,6,6.5,7,7.5,8,8.5,9,9.5}% per stack of [Whirling Wind] the caster possesses. This effect disappears at the end of own turn.",
     },
     windShield: {
       gameKey: 'WindBarrier',
@@ -147,7 +147,7 @@ const rawNonohaData = {
       apCost: 45,
       cooldown: 1,
       description:
-        "Proportionally grants the [Wind Shield] effect to one ally and self for 2R, based on own magic ATK. [Wind Shield]: Provides a shield that blocks damage equal to 190% of the caster's magic ATK.",
+        "Proportionally grants the [Wind Shield] effect to one ally and self for 2R, based on own magic ATK. - [Wind Shield]: Provides a shield that blocks damage equal to {100,110,120,130,140,150,160,170,180,190}% of the caster's magic ATK.",
     },
     monsoon: {
       gameKey: 'SeasonalWind',
@@ -158,7 +158,7 @@ const rawNonohaData = {
       apCost: 90,
       cooldown: 1,
       description:
-        'Bestows the blessing of the Great Wind. Can only be activated when possessing 3 or more stacks of the [Whirling Wind] effect. Consumes 3 stacks of [Whirling Wind] to grant all allies AP equal to 39% of own AP Recovery, and increases AP Recovery by the same amount granted until the start of the next round.',
+        'Bestows the blessing of the Great Wind. Can only be activated when possessing 3 or more stacks of the [Whirling Wind] effect. Consumes 3 stacks of [Whirling Wind] to grant all allies AP equal to {30,31,32,33,34,35,36,37,38,39}% of own AP Recovery, and increases AP Recovery by the same amount granted until the start of the next round.',
     },
   },
 

@@ -135,7 +135,7 @@ const rawKalinaData = {
     doubleDown: {
       name: 'Double Down',
       description:
-        'Activates the Level 3 Active Skill [Full Extent]. [Full Extent]: AP cost 60, pushes self to prepare for more intense actions. For 4R, AP Recovery increases by 36 and Evasion increases by 24%.',
+        "Activates the Level 3 Active Skill [Full Extent]. [Full Extent]: Consumes 60 AP to drive oneself to prepare for more intense action. For 4 rounds, increases Melee ATK by 80% of the user's Base Evasion, and grants +36 AP Recovery and +24% Evasion. Melee ATK gained from this effect caps at 200. The AP Recovery and Evasion bonuses also apply to allies with the [Swamp Elf] trait.",
     },
     swampElf: {
       name: 'Swamp Elf',
@@ -173,7 +173,7 @@ const rawKalinaData = {
       apCost: 0,
       cooldown: 0,
       description:
-        'Increases Mobility by 10. After attacking, Evasion increases by 570% until the end of the turn. Additionally, during a basic attack, Melee ATK increases proportionally to the straight distance moved. Up to 10m movement grants a maximum of 114% increase.',
+        'Increases SPD by {20,23,26,29,32,35,38,41,44,47}. Additionally, when attacking, temporarily increases Melee ATK based on the straight-line distance moved. At 10 m, Melee ATK increases by up to {60,66,72,78,84,90,96,102,108,114}%.',
     },
     assault: {
       gameKey: 'DescentRaid',
@@ -188,7 +188,7 @@ const rawKalinaData = {
         value: '190%',
       },
       description:
-        'Leaps high and dives quickly to ambush enemies. Jumps to the designated location and deals Slash DMG equal to 190% of melee ATK to all enemies within a 1.5m circular radius. Ignores counterattacks from the target.',
+        'Leaps high and dives quickly to ambush enemies. Jumps to the designated location and deals Slash DMG equal to N% of Melee ATK to all enemies within a 1.3m circular radius. Ignores counterattacks from the target.',
     },
     bladesOfTyranny: {
       gameKey: 'BladeOfTyranny',
@@ -197,13 +197,13 @@ const rawKalinaData = {
       level: '10/10',
       type: 'Skill',
       apCost: 90,
-      cooldown: 2,
+      cooldown: 1,
       damage: {
         type: 'Melee ATK',
         value: '380%',
       },
       description:
-        'The harpe slashes around with lightning-like speed. Deals Slash DMG equal to 380% of melee ATK to all enemies within a 2.5m circular radius.',
+        "Slashes the area in a blinding flash of speed with twin harpes. Deals N% Slash DMG to all enemies within a 2.5m radius. Upon use, temporarily increases Crit Rate by {12.8,13.6,14.4,15.2,16,16.8,17.6,18.4,19.2,20}% of the user's Base Evasion. This bonus can reach up to a maximum of {32,34,36,38,40,42,44,46,48,50}%.",
     },
     survivalExpert: {
       gameKey: 'SurvivalExpert',
@@ -213,7 +213,8 @@ const rawKalinaData = {
       type: 'Passive',
       apCost: 0,
       cooldown: 0,
-      description: 'Once per battle, survives with 1 HP and immediately gains 150 AP.',
+      description:
+        'Once per battle, survives a fatal blow with 1 HP and immediately gains {105,110,115,120,125,130,135,140,145,150} AP. Then restores {12,14,16,18,20,22,24,26,28,30}% of own HP.',
     },
   },
   rarityStages: {
