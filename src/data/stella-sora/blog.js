@@ -19,10 +19,11 @@ export const blogConfig = {
       category: 'Guide',
       tags: ['gifts', 'affinity', 'beginner', 'strategy'],
       content: `
+        <p><em>Updated September 2026: the affinity numbers in this guide have been refreshed with data extracted from the game files (v1.15). The affinity cap is now Lv. 99 and the cost curve beyond Lv. 30 was rebalanced by the developers.</em></p>
         <h2>Understanding Affinity</h2>
         <p>Each character in Stella Sora has an Affinity system, which you can find on their individual <a href="/guides/stella-sora/characters/">character pages</a>. Affinity functions similarly to intimacy or a personal bond with your character.</p>
         <p>What makes this system particularly important is that affinity actually improves your character's damage and HP. The stat increases are quite significant and well worth investing in. However, maxing out a single character requires considerable time and resources, so planning ahead is essential.</p>
-        <p>Based on our observations (without access to the game's source code), we know there are currently 42 affinity levels in total. This appears to be the highest tier available in the game right now, though we expect this cap will increase later with the introduction of 5 star gifts.</p>
+        <p>The level cap has grown over time: version 1.6 raised it from 50 to 67, and version 1.10 raised it again from 67 to 99, where it stands today. Keep in mind that flat ATK and HP stats stop growing at Lv. 50, and levels 51 to 99 grant no further stats at all.</p>
 
         <h2>The Gift System</h2>
         <p>Currently, only 3 star and 4 star gifts are available. These provide a modest amount of affinity points and can be obtained by crafting or purchasing from the event shop. The main limitation is that you can only give 10 gifts per day across all characters.</p>
@@ -58,7 +59,7 @@ export const blogConfig = {
         <p>Level 30 offers the best cost to benefit ratio in the entire affinity system. You gain the most significant ATK and HP increases relative to the investment required.</p>
 
         <h3>Points Required Per Level</h3>
-        <p>Total points to max (Lv. 42): <strong>1,020,900</strong></p>
+        <p>Total points to max (Lv. 99): <strong>3,028,200</strong>. Each value below is the points needed to reach that level from the previous one.</p>
         <table class="ss-blog-table">
           <thead>
             <tr>
@@ -68,24 +69,27 @@ export const blogConfig = {
             </tr>
           </thead>
           <tbody>
-            <tr><td>Lv. 1</td><td>200</td><td>200</td></tr>
-            <tr><td>Lv. 2</td><td>300</td><td>500</td></tr>
-            <tr><td>Lv. 3</td><td>500</td><td>1,000</td></tr>
-            <tr><td>Lv. 4</td><td>900</td><td>1,900</td></tr>
-            <tr><td>Lv. 5 to 9</td><td>1,000</td><td>6,900</td></tr>
-            <tr><td>Lv. 10 to 14</td><td>2,000</td><td>16,900</td></tr>
-            <tr><td>Lv. 15 to 19</td><td>4,000</td><td>36,900</td></tr>
-            <tr><td>Lv. 20 to 24</td><td>8,000</td><td>76,900</td></tr>
-            <tr><td>Lv. 25 to 29</td><td>16,000</td><td>156,900</td></tr>
-            <tr><td>Lv. 30 to 34</td><td>32,000</td><td>316,900</td></tr>
-            <tr><td>Lv. 35 to 39</td><td>64,000</td><td>636,900</td></tr>
-            <tr><td>Lv. 40 to 42</td><td>128,000</td><td>1,020,900</td></tr>
+            <tr><td>Lv. 1</td><td>100</td><td>100</td></tr>
+            <tr><td>Lv. 2</td><td>200</td><td>300</td></tr>
+            <tr><td>Lv. 3</td><td>300</td><td>600</td></tr>
+            <tr><td>Lv. 4</td><td>500</td><td>1,100</td></tr>
+            <tr><td>Lv. 5</td><td>900</td><td>2,000</td></tr>
+            <tr><td>Lv. 6 to 10</td><td>1,000</td><td>7,000</td></tr>
+            <tr><td>Lv. 11 to 15</td><td>2,000</td><td>17,000</td></tr>
+            <tr><td>Lv. 16 to 20</td><td>4,000</td><td>37,000</td></tr>
+            <tr><td>Lv. 21 to 25</td><td>8,000</td><td>77,000</td></tr>
+            <tr><td>Lv. 26 to 30</td><td>16,000</td><td>157,000</td></tr>
+            <tr><td>Lv. 31 to 35</td><td>19,200</td><td>253,000</td></tr>
+            <tr><td>Lv. 36 to 40</td><td>23,000</td><td>368,000</td></tr>
+            <tr><td>Lv. 41 to 45</td><td>27,600</td><td>506,000</td></tr>
+            <tr><td>Lv. 46 to 67</td><td>33,100</td><td>1,234,200</td></tr>
+            <tr><td>Lv. 68 to 99</td><td>34,100 to 85,400</td><td>3,028,200</td></tr>
           </tbody>
         </table>
-        <p>As you can see, reaching level 42 requires almost 1 million points. These calculations are based on our observations, as we have not examined the source code directly.</p>
+        <p>As you can see, reaching level 99 requires over 3 million points, and the final 32 levels (the Soulmate stage added in version 1.10) alone cost nearly 1.8 million of them. These values come directly from the game's data files.</p>
 
         <h3>Why Level 30?</h3>
-        <p>To reach level 30, you only need <strong>188,900</strong> points. This gets you all the ATK% bonuses at roughly 31% of the total cost to max.</p>
+        <p>To reach level 30, you only need <strong>157,000</strong> points. This gets you all the ATK% bonuses at roughly 5% of the total cost to max.</p>
 
         <h3>Gifts Required for Level 30</h3>
         <table class="ss-blog-table">
@@ -97,15 +101,15 @@ export const blogConfig = {
             </tr>
           </thead>
           <tbody>
-            <tr><td>3 Star Loved (225 pts)</td><td>840 gifts</td><td>84 days</td></tr>
-            <tr><td>3 Star Neutral (150 pts)</td><td>1,260 gifts</td><td>126 days</td></tr>
-            <tr><td>3 Star Hated (120 pts)</td><td>1,575 gifts</td><td>158 days</td></tr>
-            <tr><td>4 Star Loved (750 pts)</td><td>252 gifts</td><td>26 days</td></tr>
-            <tr><td>4 Star Neutral (500 pts)</td><td>378 gifts</td><td>38 days</td></tr>
-            <tr><td>4 Star Hated (400 pts)</td><td>473 gifts</td><td>48 days</td></tr>
-            <tr><td>5 Star Loved (3,000 pts)</td><td>63 gifts</td><td>7 days</td></tr>
-            <tr><td>5 Star Neutral (2,000 pts)</td><td>95 gifts</td><td>10 days</td></tr>
-            <tr><td>5 Star Hated (1,600 pts)</td><td>119 gifts</td><td>12 days</td></tr>
+            <tr><td>3 Star Loved (225 pts)</td><td>698 gifts</td><td>70 days</td></tr>
+            <tr><td>3 Star Neutral (150 pts)</td><td>1,047 gifts</td><td>105 days</td></tr>
+            <tr><td>3 Star Hated (120 pts)</td><td>1,309 gifts</td><td>131 days</td></tr>
+            <tr><td>4 Star Loved (750 pts)</td><td>210 gifts</td><td>21 days</td></tr>
+            <tr><td>4 Star Neutral (500 pts)</td><td>314 gifts</td><td>32 days</td></tr>
+            <tr><td>4 Star Hated (400 pts)</td><td>393 gifts</td><td>40 days</td></tr>
+            <tr><td>5 Star Loved (3,000 pts)</td><td>53 gifts</td><td>6 days</td></tr>
+            <tr><td>5 Star Neutral (2,000 pts)</td><td>79 gifts</td><td>8 days</td></tr>
+            <tr><td>5 Star Hated (1,600 pts)</td><td>99 gifts</td><td>10 days</td></tr>
           </tbody>
         </table>
 
@@ -118,12 +122,12 @@ export const blogConfig = {
             </tr>
           </thead>
           <tbody>
-            <tr><td>ATK</td><td>+1,080</td></tr>
-            <tr><td>HP</td><td>+10,020</td></tr>
+            <tr><td>ATK</td><td>+864</td></tr>
+            <tr><td>HP</td><td>+8,006</td></tr>
             <tr><td>ATK%</td><td>+24%</td></tr>
           </tbody>
         </table>
-        <p>This requires almost 10 times fewer gifts than maxing out completely. Using 4 star loved gifts, you can reach level 30 in just 26 days.</p>
+        <p>This requires a fraction of the gifts needed to max out completely. Using 4 star loved gifts, you can reach level 30 in just 21 days. For reference, flat stats finish at Lv. 50 with +1,584 ATK and +14,678 HP, which costs 671,500 points total.</p>
 
         <h2>Conclusion</h2>
         <p>Focus on reaching level 30 affinity using 4 star loved gifts. This target provides excellent stat bonuses at a fraction of the total investment required for max level. Check our <a href="/guides/stella-sora/tier-list/">Tier List</a> to decide which characters are worth prioritizing. Do not hoard your 4 star gifts waiting for 5 star crafting since the immediate power boost will serve you far better right now.</p>

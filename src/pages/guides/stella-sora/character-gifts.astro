@@ -1,10 +1,11 @@
 ---
 // Stella Sora Character Gift Database Page
 // Lists all characters with their gift preferences
+// Affinity level data refreshed from game tables (v1.15 client, Sep 2026): cap 99,
+// flat stats cap at Lv. 50, Soulmate stage added at Lv. 68
 
 import CharacterGiftLayout from '../../../layouts/stella-sora/CharacterGiftLayout.astro';
 import SSGiftImage from '../../../components/stella-sora/SSGiftImage.astro';
-import SSRarityImage from '../../../components/stella-sora/SSRarityImage.astro';
 import SSCharacterImage from '../../../components/stella-sora/SSCharacterImage.astro';
 import SSElementImage from '../../../components/stella-sora/SSElementImage.astro';
 import {
@@ -44,39 +45,90 @@ const charactersWithGifts = characterNames
   })
   .sort((a, b) => a.name.localeCompare(b.name));
 
+// Affinity stages (AffinityLevel table, v1.15 client data, Sep 2026)
+const affinityStages = [
+  { name: 'Acquainted', range: 'Lv. 1-4', milestone: 'None' },
+  { name: 'Friendly', range: 'Lv. 5-9', milestone: '+4% ATK at Lv. 5' },
+  { name: 'Connected', range: 'Lv. 10-14', milestone: '+4% ATK at Lv. 10' },
+  { name: 'Devoted', range: 'Lv. 15-19', milestone: '+4% ATK at Lv. 15' },
+  { name: 'Inseparable', range: 'Lv. 20-67', milestone: '+4% ATK at Lv. 20, 25, 30' },
+  { name: 'Soulmate', range: 'Lv. 68-99', milestone: 'None' },
+];
+
 // Affinity level categories (grouped by points per level)
+// Each value is the points needed to go from the previous level to this one
 const affinityCategories = [
-  { range: 'Lv. 1', pointsPerLevel: 200, levels: 1, totalAtEnd: 200 },
-  { range: 'Lv. 2', pointsPerLevel: 300, levels: 1, totalAtEnd: 500 },
-  { range: 'Lv. 3', pointsPerLevel: 500, levels: 1, totalAtEnd: 1000 },
-  { range: 'Lv. 4', pointsPerLevel: 900, levels: 1, totalAtEnd: 1900 },
-  { range: 'Lv. 5-9', pointsPerLevel: 1000, levels: 5, totalAtEnd: 6900 },
-  { range: 'Lv. 10-14', pointsPerLevel: 2000, levels: 5, totalAtEnd: 16900 },
-  { range: 'Lv. 15-19', pointsPerLevel: 4000, levels: 5, totalAtEnd: 36900 },
-  { range: 'Lv. 20-24', pointsPerLevel: 8000, levels: 5, totalAtEnd: 76900 },
-  { range: 'Lv. 25-29', pointsPerLevel: 16000, levels: 5, totalAtEnd: 156900 },
-  { range: 'Lv. 30-34', pointsPerLevel: 32000, levels: 5, totalAtEnd: 316900 },
-  { range: 'Lv. 35-39', pointsPerLevel: 64000, levels: 5, totalAtEnd: 636900 },
-  { range: 'Lv. 40-42', pointsPerLevel: 128000, levels: 3, totalAtEnd: 1020900 },
+  { range: 'Lv. 1', pointsPerLevel: 100, totalAtEnd: 100 },
+  { range: 'Lv. 2', pointsPerLevel: 200, totalAtEnd: 300 },
+  { range: 'Lv. 3', pointsPerLevel: 300, totalAtEnd: 600 },
+  { range: 'Lv. 4', pointsPerLevel: 500, totalAtEnd: 1100 },
+  { range: 'Lv. 5', pointsPerLevel: 900, totalAtEnd: 2000 },
+  { range: 'Lv. 6-10', pointsPerLevel: 1000, totalAtEnd: 7000 },
+  { range: 'Lv. 11-15', pointsPerLevel: 2000, totalAtEnd: 17000 },
+  { range: 'Lv. 16-20', pointsPerLevel: 4000, totalAtEnd: 37000 },
+  { range: 'Lv. 21-25', pointsPerLevel: 8000, totalAtEnd: 77000 },
+  { range: 'Lv. 26-30', pointsPerLevel: 16000, totalAtEnd: 157000 },
+  { range: 'Lv. 31-35', pointsPerLevel: 19200, totalAtEnd: 253000 },
+  { range: 'Lv. 36-40', pointsPerLevel: 23000, totalAtEnd: 368000 },
+  { range: 'Lv. 41-45', pointsPerLevel: 27600, totalAtEnd: 506000 },
+  { range: 'Lv. 46-67', pointsPerLevel: 33100, totalAtEnd: 1234200 },
+];
+
+// Soulmate extension levels (v1.10 raised the cap from 67 to 99, costs escalate each level)
+const soulmateLevels = [
+  { level: 68, cost: 34100, total: 1268300 },
+  { level: 69, cost: 35100, total: 1303400 },
+  { level: 70, cost: 36200, total: 1339600 },
+  { level: 71, cost: 37300, total: 1376900 },
+  { level: 72, cost: 38400, total: 1415300 },
+  { level: 73, cost: 39600, total: 1454900 },
+  { level: 74, cost: 40800, total: 1495700 },
+  { level: 75, cost: 42000, total: 1537700 },
+  { level: 76, cost: 43300, total: 1581000 },
+  { level: 77, cost: 44600, total: 1625600 },
+  { level: 78, cost: 45900, total: 1671500 },
+  { level: 79, cost: 47300, total: 1718800 },
+  { level: 80, cost: 48700, total: 1767500 },
+  { level: 81, cost: 50200, total: 1817700 },
+  { level: 82, cost: 51700, total: 1869400 },
+  { level: 83, cost: 53300, total: 1922700 },
+  { level: 84, cost: 54900, total: 1977600 },
+  { level: 85, cost: 56500, total: 2034100 },
+  { level: 86, cost: 58200, total: 2092300 },
+  { level: 87, cost: 59900, total: 2152200 },
+  { level: 88, cost: 61700, total: 2213900 },
+  { level: 89, cost: 63600, total: 2277500 },
+  { level: 90, cost: 65500, total: 2343000 },
+  { level: 91, cost: 67500, total: 2410500 },
+  { level: 92, cost: 69500, total: 2480000 },
+  { level: 93, cost: 71600, total: 2551600 },
+  { level: 94, cost: 73700, total: 2625300 },
+  { level: 95, cost: 75900, total: 2701200 },
+  { level: 96, cost: 78200, total: 2779400 },
+  { level: 97, cost: 80500, total: 2859900 },
+  { level: 98, cost: 82900, total: 2942800 },
+  { level: 99, cost: 85400, total: 3028200 },
 ];
 
 // Affinity stat bonuses
+// Flat stats grow only on non-milestone levels; milestone levels (5, 10, 15, 20,
+// 25, 30) grant the ATK% bonus instead. Flat stats stop growing at Lv. 50.
 const affinityStats = {
-  perLevel: { atk: 36, hp: 334 },
-  maxLevel: 42,
-  totalAtk: 36 * 42, // 1,512 ATK
-  totalHp: 334 * 42, // 14,028 HP
+  perLevel: { atk: 36, hp: 333 },
+  statCapLevel: 50,
+  capAtk: 1584,
+  capHp: 14678,
   atkBonusLevels: [5, 10, 15, 20, 25, 30], // Levels that give 4% ATK bonus
   atkBonusPercent: 4,
   totalAtkBonus: 4 * 6, // 24% ATK total
 };
 
-// Level 30 stats
+// Level 30 stats (all 6 ATK% milestones reached)
 const lv30Stats = {
   level: 30,
-  atk: 36 * 30, // 1,080 ATK
-  hp: 334 * 30, // 10,020 HP
-  atkBonus: 4 * 6, // 24% ATK (all 6 milestones at 5, 10, 15, 20, 25, 30)
+  atk: 864,
+  hp: 8006,
+  atkBonus: 24,
 };
 
 // Calculate gifts needed and days for each gift type
@@ -92,13 +144,13 @@ function calculateDaysNeeded(giftsNeeded: number) {
   return Math.ceil(giftsNeeded / dailyGiftLimit);
 }
 
-// Max level total points
-const maxLevelPoints = 1020900;
+// Max level total points (Lv. 99)
+const maxLevelPoints = 3028200;
 
-// Level 30 total points (cost-efficient target)
-const level30Points = 188900;
+// Level 30 total points (cost-efficient milestone target)
+const level30Points = 157000;
 
-// Gift calculations for max level (42)
+// Gift calculations for max level (99)
 const giftCalculations = {
   '3star': {
     loved: {
@@ -199,7 +251,7 @@ const gameTitle = 'Character Gift Guide';
 <CharacterGiftLayout title={title} description={description} gameTitle={gameTitle}>
   <div class="character-gifts-index">
     <!-- Introduction Section -->
-    <div class="gifts-intro">
+    <div class="gifts-intro panel">
       <h2>Character Gift Preferences</h2>
       <p>
         Each character has unique gift preferences. Give them gifts they <span class="text-loved"
@@ -209,16 +261,16 @@ const gameTitle = 'Character Gift Guide';
       </p>
 
       <div class="gifts-legend">
-        <div class="legend-item loved">
-          <span class="legend-label">Loved</span>
+        <div class="legend-item">
+          <span class="ss-chip ss-chip-loved">Loved</span>
           <span class="legend-text">+50% bonus</span>
         </div>
-        <div class="legend-item neutral">
-          <span class="legend-label">Neutral</span>
+        <div class="legend-item">
+          <span class="ss-chip ss-chip-neutral">Neutral</span>
           <span class="legend-text">Base points</span>
         </div>
-        <div class="legend-item hated">
-          <span class="legend-label">Hated</span>
+        <div class="legend-item">
+          <span class="ss-chip ss-chip-hated">Hated</span>
           <span class="legend-text">-20% penalty</span>
         </div>
       </div>
@@ -231,58 +283,117 @@ const gameTitle = 'Character Gift Guide';
     </div>
 
     <!-- Affinity Level Requirements -->
-    <div class="affinity-section">
+    <div class="affinity-section panel">
       <h2>Affinity Level Requirements</h2>
       <p class="section-desc">
-        Points required per level at each tier. Total: <strong>1,020,900</strong> points to max (Lv.
-        42).
+        Points required per level at each tier. Total: <strong>3,028,200</strong> points to max (Lv.
+        99).
       </p>
 
-      <table class="affinity-table">
-        <thead>
-          <tr>
-            <th>Level Range</th>
-            <th>Points/Level</th>
-            <th>Total at End</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            affinityCategories.map(cat => (
-              <tr>
-                <td class="level-col">{cat.range}</td>
-                <td class="points-col">{cat.pointsPerLevel.toLocaleString()}</td>
-                <td class="total-col">{cat.totalAtEnd.toLocaleString()}</td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
+      <div class="table-scroll">
+        <table class="affinity-table stages-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>Levels</th>
+              <th>ATK% milestone</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              affinityStages.map(stage => (
+                <tr>
+                  <td class="level-col">{stage.name}</td>
+                  <td class="range-col">{stage.range}</td>
+                  <td class="total-col">{stage.milestone}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-scroll">
+        <table class="affinity-table">
+          <thead>
+            <tr>
+              <th>Level range</th>
+              <th>Points per level</th>
+              <th>Total at end</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              affinityCategories.map(cat => (
+                <tr class={cat.range === 'Lv. 26-30' ? 'milestone' : ''}>
+                  <td class="level-col">{cat.range}</td>
+                  <td class="range-col">{cat.pointsPerLevel.toLocaleString()}</td>
+                  <td class="total-col">{cat.totalAtEnd.toLocaleString()}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="soulmate-heading">Soulmate Stage (Lv. 68-99)</h3>
+      <p class="section-desc">
+        Version 1.10 raised the affinity cap from 67 to 99. These levels cost escalating points, so
+        they are listed individually.
+      </p>
+      <div class="soulmate-grid">
+        {[0, 1].map(half => (
+          <div class="table-scroll">
+            <table class="affinity-table">
+              <thead>
+                <tr>
+                  <th>Level</th>
+                  <th>Points</th>
+                  <th>Cumulative total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  soulmateLevels.slice(half * 16, half * 16 + 16).map(row => (
+                    <tr class={row.level === 99 ? 'milestone' : ''}>
+                      <td class="level-col">{row.level}</td>
+                      <td class="range-col">{row.cost.toLocaleString()}</td>
+                      <td class="total-col">{row.total.toLocaleString()}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        ))}
+      </div>
     </div>
 
     <!-- Affinity Stat Rewards -->
-    <div class="affinity-stats-section">
+    <div class="affinity-stats-section panel">
       <h2>Affinity Stat Rewards</h2>
       <p class="section-desc">Stats gained from raising affinity levels.</p>
 
       <div class="cost-efficiency-note">
         <strong>Tip:</strong> Level 30 is the most cost-efficient target. You get all 6 ATK% bonuses
-        (+24%) while only needing <strong>188,900</strong> points instead of 1,020,900 for max level.
+        (+24%) while only needing <strong>157,000</strong> points, about 5% of the 3,028,200
+        required for Lv. 99. Flat stats finish at Lv. 50 for 671,500 points, and levels 51 to 99
+        grant no further stats.
       </div>
 
       <div class="stats-rewards-grid">
         <!-- Per Level Stats -->
         <div class="stats-card">
           <div class="stats-card-header">
-            <span class="stats-title">Per Level</span>
+            <span class="stats-title">Per stat level</span>
           </div>
           <div class="stats-card-body">
             <div class="stat-row">
-              <span class="stat-label">ATK (Base)</span>
+              <span class="stat-label">ATK, base</span>
               <span class="stat-value">+{affinityStats.perLevel.atk}</span>
             </div>
             <div class="stat-row">
-              <span class="stat-label">HP (Base)</span>
+              <span class="stat-label">HP, base (avg)</span>
               <span class="stat-value">+{affinityStats.perLevel.hp}</span>
             </div>
           </div>
@@ -291,70 +402,83 @@ const gameTitle = 'Character Gift Guide';
         <!-- Milestone Bonuses -->
         <div class="stats-card">
           <div class="stats-card-header">
-            <span class="stats-title">ATK% Milestones</span>
+            <span class="stats-title">ATK% milestones</span>
           </div>
           <div class="stats-card-body">
-            <div class="stat-row milestone">
+            <div class="stat-row">
               <span class="stat-label">Lv. 5, 10, 15, 20, 25, 30</span>
-              <span class="stat-value atk-bonus">+{affinityStats.atkBonusPercent}% ATK each</span>
+              <span class="stat-value">+{affinityStats.atkBonusPercent}% ATK each</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Total from all six</span>
+              <span class="stat-value total">+{affinityStats.totalAtkBonus}% ATK</span>
             </div>
           </div>
         </div>
 
-        <!-- Max Level Totals -->
-        <div class="stats-card totals">
+        <!-- Stat Cap Totals -->
+        <div class="stats-card">
           <div class="stats-card-header">
-            <span class="stats-title">Max Level ({affinityStats.maxLevel}) Totals</span>
+            <span class="stats-title">Totals at the stat cap</span>
           </div>
           <div class="stats-card-body">
             <div class="stat-row">
-              <span class="stat-label">Total ATK (Base)</span>
-              <span class="stat-value total">+{affinityStats.totalAtk.toLocaleString()}</span>
+              <span class="stat-label">ATK, base</span>
+              <span class="stat-value total">+{affinityStats.capAtk.toLocaleString()}</span>
             </div>
             <div class="stat-row">
-              <span class="stat-label">Total HP (Base)</span>
-              <span class="stat-value total">+{affinityStats.totalHp.toLocaleString()}</span>
+              <span class="stat-label">HP, base</span>
+              <span class="stat-value total">+{affinityStats.capHp.toLocaleString()}</span>
             </div>
             <div class="stat-row">
-              <span class="stat-label">Total ATK%</span>
-              <span class="stat-value atk-bonus">+{affinityStats.totalAtkBonus}%</span>
+              <span class="stat-label">ATK%</span>
+              <span class="stat-value total">+{affinityStats.totalAtkBonus}%</span>
             </div>
           </div>
         </div>
       </div>
+
+      <p class="section-note">
+        Milestone levels grant the ATK% bonus instead of flat stats, and levels 51 to 99 grant no
+        further stats of any kind.
+      </p>
     </div>
 
     <!-- Gift Calculator Section -->
-    <div class="gift-calculator-section">
-      <h2>Gifts Needed to Max Affinity (Lv. 42)</h2>
+    <div class="gift-calculator-section panel">
+      <h2>Gifts Needed to Max Affinity (Lv. 99)</h2>
       <p class="section-desc">
-        Total points needed: <strong>{maxLevelPoints.toLocaleString()}</strong>. Here's how many
-        gifts you need for each type.
+        Total points needed: <strong>{maxLevelPoints.toLocaleString()}</strong>. Levels 51 to 99
+        grant no stats, so this is for completionists only. Here's how many gifts you need for each
+        type.
       </p>
 
       <div class="calculator-grid">
         <!-- 3-Star Gifts -->
         <div class="calc-card">
           <div class="calc-header">
-            <span class="calc-rarity rarity-3">3-Star Gifts</span>
+            <span class="calc-rarity">3-Star Gifts</span>
           </div>
           <div class="calc-body">
             <div class="calc-row loved">
-              <span class="calc-label">Loved (225 pts)</span>
+              <span class="ss-chip ss-chip-loved">Loved</span>
+              <span class="calc-label">225 pts</span>
               <span class="calc-value"
                 >{giftCalculations['3star'].loved.gifts.toLocaleString()} gifts</span
               >
               <span class="calc-days">{giftCalculations['3star'].loved.days} days</span>
             </div>
             <div class="calc-row neutral">
-              <span class="calc-label">Neutral (150 pts)</span>
+              <span class="ss-chip ss-chip-neutral">Neutral</span>
+              <span class="calc-label">150 pts</span>
               <span class="calc-value"
                 >{giftCalculations['3star'].neutral.gifts.toLocaleString()} gifts</span
               >
               <span class="calc-days">{giftCalculations['3star'].neutral.days} days</span>
             </div>
             <div class="calc-row hated">
-              <span class="calc-label">Hated (120 pts)</span>
+              <span class="ss-chip ss-chip-hated">Hated</span>
+              <span class="calc-label">120 pts</span>
               <span class="calc-value"
                 >{giftCalculations['3star'].hated.gifts.toLocaleString()} gifts</span
               >
@@ -366,25 +490,28 @@ const gameTitle = 'Character Gift Guide';
         <!-- 4-Star Gifts -->
         <div class="calc-card">
           <div class="calc-header">
-            <span class="calc-rarity rarity-4">4-Star Gifts</span>
+            <span class="calc-rarity">4-Star Gifts</span>
           </div>
           <div class="calc-body">
             <div class="calc-row loved">
-              <span class="calc-label">Loved (750 pts)</span>
+              <span class="ss-chip ss-chip-loved">Loved</span>
+              <span class="calc-label">750 pts</span>
               <span class="calc-value"
                 >{giftCalculations['4star'].loved.gifts.toLocaleString()} gifts</span
               >
               <span class="calc-days">{giftCalculations['4star'].loved.days} days</span>
             </div>
             <div class="calc-row neutral">
-              <span class="calc-label">Neutral (500 pts)</span>
+              <span class="ss-chip ss-chip-neutral">Neutral</span>
+              <span class="calc-label">500 pts</span>
               <span class="calc-value"
                 >{giftCalculations['4star'].neutral.gifts.toLocaleString()} gifts</span
               >
               <span class="calc-days">{giftCalculations['4star'].neutral.days} days</span>
             </div>
             <div class="calc-row hated">
-              <span class="calc-label">Hated (400 pts)</span>
+              <span class="ss-chip ss-chip-hated">Hated</span>
+              <span class="calc-label">400 pts</span>
               <span class="calc-value"
                 >{giftCalculations['4star'].hated.gifts.toLocaleString()} gifts</span
               >
@@ -396,25 +523,28 @@ const gameTitle = 'Character Gift Guide';
         <!-- 5-Star Gifts -->
         <div class="calc-card">
           <div class="calc-header">
-            <span class="calc-rarity rarity-5">5-Star Gifts</span>
+            <span class="calc-rarity">5-Star Gifts</span>
           </div>
           <div class="calc-body">
             <div class="calc-row loved">
-              <span class="calc-label">Loved (3,000 pts)</span>
+              <span class="ss-chip ss-chip-loved">Loved</span>
+              <span class="calc-label">3,000 pts</span>
               <span class="calc-value"
                 >{giftCalculations['5star'].loved.gifts.toLocaleString()} gifts</span
               >
               <span class="calc-days">{giftCalculations['5star'].loved.days} days</span>
             </div>
             <div class="calc-row neutral">
-              <span class="calc-label">Neutral (2,000 pts)</span>
+              <span class="ss-chip ss-chip-neutral">Neutral</span>
+              <span class="calc-label">2,000 pts</span>
               <span class="calc-value"
                 >{giftCalculations['5star'].neutral.gifts.toLocaleString()} gifts</span
               >
               <span class="calc-days">{giftCalculations['5star'].neutral.days} days</span>
             </div>
             <div class="calc-row hated">
-              <span class="calc-label">Hated (1,600 pts)</span>
+              <span class="ss-chip ss-chip-hated">Hated</span>
+              <span class="calc-label">1,600 pts</span>
               <span class="calc-value"
                 >{giftCalculations['5star'].hated.gifts.toLocaleString()} gifts</span
               >
@@ -430,36 +560,39 @@ const gameTitle = 'Character Gift Guide';
     </div>
 
     <!-- Gift Calculator Section - Level 30 -->
-    <div class="gift-calculator-section lv30">
+    <div class="gift-calculator-section lv30 panel">
       <h2>Gifts Needed for Lv. 30 (Recommended)</h2>
       <p class="section-desc">
         Total points needed: <strong>{level30Points.toLocaleString()}</strong>. Get all ATK% bonuses
-        at ~18% of the max level cost.
+        at about 5% of the max level cost.
       </p>
 
       <div class="calculator-grid">
         <!-- 3-Star Gifts -->
         <div class="calc-card">
           <div class="calc-header">
-            <span class="calc-rarity rarity-3">3-Star Gifts</span>
+            <span class="calc-rarity">3-Star Gifts</span>
           </div>
           <div class="calc-body">
             <div class="calc-row loved">
-              <span class="calc-label">Loved (225 pts)</span>
+              <span class="ss-chip ss-chip-loved">Loved</span>
+              <span class="calc-label">225 pts</span>
               <span class="calc-value"
                 >{giftCalculationsLv30['3star'].loved.gifts.toLocaleString()} gifts</span
               >
               <span class="calc-days">{giftCalculationsLv30['3star'].loved.days} days</span>
             </div>
             <div class="calc-row neutral">
-              <span class="calc-label">Neutral (150 pts)</span>
+              <span class="ss-chip ss-chip-neutral">Neutral</span>
+              <span class="calc-label">150 pts</span>
               <span class="calc-value"
                 >{giftCalculationsLv30['3star'].neutral.gifts.toLocaleString()} gifts</span
               >
               <span class="calc-days">{giftCalculationsLv30['3star'].neutral.days} days</span>
             </div>
             <div class="calc-row hated">
-              <span class="calc-label">Hated (120 pts)</span>
+              <span class="ss-chip ss-chip-hated">Hated</span>
+              <span class="calc-label">120 pts</span>
               <span class="calc-value"
                 >{giftCalculationsLv30['3star'].hated.gifts.toLocaleString()} gifts</span
               >
@@ -471,25 +604,28 @@ const gameTitle = 'Character Gift Guide';
         <!-- 4-Star Gifts -->
         <div class="calc-card">
           <div class="calc-header">
-            <span class="calc-rarity rarity-4">4-Star Gifts</span>
+            <span class="calc-rarity">4-Star Gifts</span>
           </div>
           <div class="calc-body">
             <div class="calc-row loved">
-              <span class="calc-label">Loved (750 pts)</span>
+              <span class="ss-chip ss-chip-loved">Loved</span>
+              <span class="calc-label">750 pts</span>
               <span class="calc-value"
                 >{giftCalculationsLv30['4star'].loved.gifts.toLocaleString()} gifts</span
               >
               <span class="calc-days">{giftCalculationsLv30['4star'].loved.days} days</span>
             </div>
             <div class="calc-row neutral">
-              <span class="calc-label">Neutral (500 pts)</span>
+              <span class="ss-chip ss-chip-neutral">Neutral</span>
+              <span class="calc-label">500 pts</span>
               <span class="calc-value"
                 >{giftCalculationsLv30['4star'].neutral.gifts.toLocaleString()} gifts</span
               >
               <span class="calc-days">{giftCalculationsLv30['4star'].neutral.days} days</span>
             </div>
             <div class="calc-row hated">
-              <span class="calc-label">Hated (400 pts)</span>
+              <span class="ss-chip ss-chip-hated">Hated</span>
+              <span class="calc-label">400 pts</span>
               <span class="calc-value"
                 >{giftCalculationsLv30['4star'].hated.gifts.toLocaleString()} gifts</span
               >
@@ -501,25 +637,28 @@ const gameTitle = 'Character Gift Guide';
         <!-- 5-Star Gifts -->
         <div class="calc-card">
           <div class="calc-header">
-            <span class="calc-rarity rarity-5">5-Star Gifts</span>
+            <span class="calc-rarity">5-Star Gifts</span>
           </div>
           <div class="calc-body">
             <div class="calc-row loved">
-              <span class="calc-label">Loved (3,000 pts)</span>
+              <span class="ss-chip ss-chip-loved">Loved</span>
+              <span class="calc-label">3,000 pts</span>
               <span class="calc-value"
                 >{giftCalculationsLv30['5star'].loved.gifts.toLocaleString()} gifts</span
               >
               <span class="calc-days">{giftCalculationsLv30['5star'].loved.days} days</span>
             </div>
             <div class="calc-row neutral">
-              <span class="calc-label">Neutral (2,000 pts)</span>
+              <span class="ss-chip ss-chip-neutral">Neutral</span>
+              <span class="calc-label">2,000 pts</span>
               <span class="calc-value"
                 >{giftCalculationsLv30['5star'].neutral.gifts.toLocaleString()} gifts</span
               >
               <span class="calc-days">{giftCalculationsLv30['5star'].neutral.days} days</span>
             </div>
             <div class="calc-row hated">
-              <span class="calc-label">Hated (1,600 pts)</span>
+              <span class="ss-chip ss-chip-hated">Hated</span>
+              <span class="calc-label">1,600 pts</span>
               <span class="calc-value"
                 >{giftCalculationsLv30['5star'].hated.gifts.toLocaleString()} gifts</span
               >
@@ -531,7 +670,7 @@ const gameTitle = 'Character Gift Guide';
 
       <!-- Lv.30 Stats Summary -->
       <div class="lv30-stats-summary">
-        <span class="lv30-stats-title">Stats at Lv. 30:</span>
+        <span class="lv30-stats-title">Stats at Lv. 30</span>
         <div class="lv30-stats-row">
           <span class="lv30-stat">+{lv30Stats.atk.toLocaleString()} ATK</span>
           <span class="lv30-stat">+{lv30Stats.hp.toLocaleString()} HP</span>
@@ -543,7 +682,7 @@ const gameTitle = 'Character Gift Guide';
     <!-- Quick Filter -->
     <div class="gifts-filter">
       <div class="filter-group">
-        <label for="element-filter">Filter by Element:</label>
+        <label for="element-filter">Filter by element</label>
         <select id="element-filter" class="filter-select">
           <option value="all">All Elements</option>
           <option value="ignis">Ignis</option>
@@ -555,7 +694,7 @@ const gameTitle = 'Character Gift Guide';
         </select>
       </div>
       <div class="filter-group">
-        <label for="search-filter">Search Character:</label>
+        <label for="search-filter">Search character</label>
         <input
           type="text"
           id="search-filter"
@@ -606,24 +745,15 @@ const gameTitle = 'Character Gift Guide';
                 <div class="gift-pref-grid">
                   {character.loves.map(gift => (
                     <div class="gift-item">
-                      <div class="gift-image">
-                        <SSRarityImage
-                          rarity={gift.rarity}
-                          type="item"
-                          width={56}
-                          height={56}
-                          class="gift-rarity-bg"
-                        />
-                        <SSGiftImage
+                      <SSGiftImage
                           giftName={gift.name}
                           width={48}
                           height={48}
                           class="gift-icon"
                         />
-                      </div>
                       <div class="gift-details">
                         <span class="gift-name">{gift.name}</span>
-                        <span class="gift-points loved">{gift.points.loved} pts</span>
+                        <span class="gift-points loved">{gift.points.loved.toLocaleString()} pts</span>
                       </div>
                     </div>
                   ))}
@@ -638,24 +768,15 @@ const gameTitle = 'Character Gift Guide';
                 <div class="gift-pref-grid">
                   {character.neutrals.map(gift => (
                     <div class="gift-item">
-                      <div class="gift-image">
-                        <SSRarityImage
-                          rarity={gift.rarity}
-                          type="item"
-                          width={56}
-                          height={56}
-                          class="gift-rarity-bg"
-                        />
-                        <SSGiftImage
+                      <SSGiftImage
                           giftName={gift.name}
                           width={48}
                           height={48}
                           class="gift-icon"
                         />
-                      </div>
                       <div class="gift-details">
                         <span class="gift-name">{gift.name}</span>
-                        <span class="gift-points neutral">{gift.points.neutral} pts</span>
+                        <span class="gift-points neutral">{gift.points.neutral.toLocaleString()} pts</span>
                       </div>
                     </div>
                   ))}
@@ -671,24 +792,15 @@ const gameTitle = 'Character Gift Guide';
                   <div class="gift-pref-grid">
                     {character.hates.map(gift => (
                       <div class="gift-item">
-                        <div class="gift-image">
-                          <SSRarityImage
-                            rarity={gift.rarity}
-                            type="item"
-                            width={56}
-                            height={56}
-                            class="gift-rarity-bg"
-                          />
-                          <SSGiftImage
+                        <SSGiftImage
                             giftName={gift.name}
                             width={48}
                             height={48}
                             class="gift-icon"
                           />
-                        </div>
                         <div class="gift-details">
                           <span class="gift-name">{gift.name}</span>
-                          <span class="gift-points hated">{gift.points.hated} pts</span>
+                          <span class="gift-points hated">{gift.points.hated.toLocaleString()} pts</span>
                         </div>
                       </div>
                     ))}
@@ -715,7 +827,7 @@ const gameTitle = 'Character Gift Guide';
     </div>
 
     <!-- Points Reference Table -->
-    <div class="points-reference">
+    <div class="points-reference panel">
       <h2>Gift Point Reference</h2>
       <table class="points-ref-table">
         <thead>

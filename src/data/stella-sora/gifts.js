@@ -1,4 +1,5 @@
 // Gift data extracted from character preferences
+// Category families verified against game AffinityGift table tags (v1.15 client, Sep 2026)
 // Each gift has an id, name, slug, category, rarity tier, rarity image, item image, and point values
 
 // Rarity image paths
@@ -84,7 +85,7 @@ export const gifts = [
     id: 5,
     name: "Moonlit Companion",
     slug: "moonlit-companion",
-    category: "Star",
+    category: "Enchantment",
     rarity: 4,
     rarityImage: rarityImages[4],
     image: `${itemBasePath}/moonlit-companion.png`,
@@ -94,7 +95,7 @@ export const gifts = [
     id: 6,
     name: "Cosmic Form",
     slug: "cosmic-form",
-    category: "Star",
+    category: "Enchantment",
     rarity: 5,
     rarityImage: rarityImages[5],
     image: `${itemBasePath}/cosmic-form.png`,
@@ -276,7 +277,7 @@ export const gifts = [
     id: 23,
     name: "Emerging Talent",
     slug: "emerging-talent",
-    category: "Enchantment",
+    category: "Star",
     rarity: 4,
     rarityImage: rarityImages[4],
     image: `${itemBasePath}/emerging-talent.png`,
@@ -286,7 +287,7 @@ export const gifts = [
     id: 24,
     name: "Shining Star",
     slug: "shining-star",
-    category: "Enchantment",
+    category: "Star",
     rarity: 5,
     rarityImage: rarityImages[5],
     image: `${itemBasePath}/shining-star.png`,
