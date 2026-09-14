@@ -1,10 +1,23 @@
 ---
+// Stella Sora Ascension Q&A (Monolith quiz events 114-116)
+// Sources: StarTowerEventAction/StarTowerEventOptionAction loc keys, StarTowerNPC names,
+// EventOptions reward text ("Choose the correct answer to obtain random ...").
+// Correct answers cross-checked against community key (stella.ennead.cc/monolith);
+// in the client data the correct option is always slot 3 of 5.
 import AscensionQALayout from '../../../layouts/stella-sora/AscensionQALayout.astro';
 
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora/star-tower';
+
+const NPC_AVATARS = {
+  Portia: `${R2}/portia.png`,
+  Beatrixa: `${R2}/beatrixa.png`,
+  Bernina: `${R2}/bernina.png`,
+  Virigia: `${R2}/virigia.png`,
+};
+
 const questions = [
-  // Event #114
+  // Event 114: Musical Notes
   {
-    id: 1,
     event: 114,
     character: 'Portia',
     question: 'What time do you think counts as "staying up late"?',
@@ -15,11 +28,10 @@ const questions = [
       '5 AM?',
       "Eight o'clock tomorrow morning?",
     ],
-    correctAnswer: 3,
+    correctAnswer: 2,
     reward: 'Random Musical Note ×10!',
   },
   {
-    id: 2,
     event: 114,
     character: 'Beatrixa',
     question: 'Which of the following helps with maintaining your health?',
@@ -30,11 +42,10 @@ const questions = [
       'Turn into a Stellaroid?',
       'Overeating?',
     ],
-    correctAnswer: 3,
+    correctAnswer: 2,
     reward: 'Random Musical Note ×10!',
   },
   {
-    id: 3,
     event: 114,
     character: 'Bernina',
     question: 'Being true to your desire... What do you think that means?',
@@ -45,11 +56,10 @@ const questions = [
       'Eat in moderation!',
       'Working late into the night!',
     ],
-    correctAnswer: 3,
+    correctAnswer: 2,
     reward: 'Random Musical Note ×10!',
   },
   {
-    id: 4,
     event: 114,
     character: 'Virigia',
     question: 'How would you define aiming high?',
@@ -63,9 +73,8 @@ const questions = [
     correctAnswer: 2,
     reward: 'Random Musical Note ×10!',
   },
-  // Event #115
+  // Event 115: Potentials
   {
-    id: 5,
     event: 115,
     character: 'Portia',
     question: "Take a guess... What's the Monolith's favorite number?",
@@ -76,11 +85,10 @@ const questions = [
       '4? Because there are 4 of you...',
       '5? Because I always end up with 5 coins left...',
     ],
-    correctAnswer: 3,
+    correctAnswer: 2,
     reward: 'Random Potential ×1!',
   },
   {
-    id: 6,
     event: 115,
     character: 'Beatrixa',
     question: 'Which food is better for your health?',
@@ -95,7 +103,6 @@ const questions = [
     reward: 'Random Potential ×1!',
   },
   {
-    id: 7,
     event: 115,
     character: 'Bernina',
     question: 'Take a guess... Which kind of Trekker do I admire more?',
@@ -106,11 +113,10 @@ const questions = [
       "Someone who's gloomy and pessimistic.",
       "Someone who's foolish and slow.",
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     reward: 'Random Potential ×1!',
   },
   {
-    id: 8,
     event: 115,
     character: 'Virigia',
     question: 'Take a guess... Which kind of Trekker do I prefer to talk with?',
@@ -124,9 +130,8 @@ const questions = [
     correctAnswer: 2,
     reward: 'Random Potential ×1!',
   },
-  // Event #116
+  // Event 116: Rare Potentials
   {
-    id: 9,
     event: 116,
     character: 'Portia',
     question: 'Quiz time: What is 2 to the power of 10?',
@@ -135,7 +140,6 @@ const questions = [
     reward: 'Random Rare Potential ×1!',
   },
   {
-    id: 10,
     event: 116,
     character: 'Beatrixa',
     question: 'Which of the following should you do less of for the sake of your health?',
@@ -150,7 +154,6 @@ const questions = [
     reward: 'Random Rare Potential ×1!',
   },
   {
-    id: 11,
     event: 116,
     character: 'Bernina',
     question: 'Quiz time: How many notes are in an octave?',
@@ -159,7 +162,6 @@ const questions = [
     reward: 'Random Rare Potential ×1!',
   },
   {
-    id: 12,
     event: 116,
     character: 'Virigia',
     question: 'Quiz time: How many faces does a cube have?',
@@ -168,6 +170,75 @@ const questions = [
     reward: 'Random Rare Potential ×1!',
   },
 ];
+
+const EVENT_META = {
+  114: { title: 'Musical Notes', reward: 'Random Musical Note ×10!' },
+  115: { title: 'Potentials', reward: 'Random Potential ×1!' },
+  116: { title: 'Rare Potentials', reward: 'Random Rare Potential ×1!' },
+};
+
+// The 25 other Choice Domain event types (StarTowerEvent 101-128), grouped by what
+// the interaction is, per the table's own category fields plus the option texts.
+const OTHER_EVENTS = [
+  {
+    group: 'Trades',
+    note: 'Swap Stella Coins, Musical Notes or HP for goods. Most also offer a "scraps" fallback if you would rather not pay.',
+    events: [
+      { id: 101, label: 'Trade for items (Portia\'s shop)' },
+      { id: 102, label: 'Trade for Potentials' },
+      { id: 104, label: 'Limited item: pay Notes or Coins' },
+      { id: 108, label: 'Trade with the music box' },
+      { id: 120, label: 'Buy goods or take scraps (Notes)' },
+      { id: 121, label: 'Buy goods or take scraps (Potentials)' },
+      { id: 122, label: 'Premium goods or scraps (Potentials)' },
+    ],
+  },
+  {
+    group: 'Gambles',
+    note: 'Bet on a machine, a potion or the Gamble of Destiny. Winning pays Coins or Potentials, losing costs what you wagered, so only gamble what you can spare.',
+    events: [
+      { id: 105, label: 'Gamble of Destiny (Coins)' },
+      { id: 106, label: 'Gamble of Destiny (Potentials)' },
+      { id: 109, label: 'Mystery box' },
+      { id: 110, label: 'Mystery box' },
+      { id: 117, label: 'Magic game machine (Coins)' },
+      { id: 118, label: 'Game machine (Coins + Potentials)' },
+      { id: 119, label: 'Game machine (Coins + Potentials)' },
+      { id: 124, label: 'Machine or potion (Potentials)' },
+      { id: 125, label: 'Machine or potion (Potentials)' },
+    ],
+  },
+  {
+    group: 'HP trades',
+    note: 'Trade a slice of your HP for a reward. Risky mid-run.',
+    events: [
+      { id: 111, label: 'Heal or trade HP' },
+      { id: 112, label: 'Heal or trade HP' },
+      { id: 113, label: 'Heal or trade HP' },
+      { id: 123, label: 'Offer HP for Potentials' },
+    ],
+  },
+  {
+    group: 'Blessings',
+    note: 'No strings attached: pick a song for a blessing or accept a gift from the Demons.',
+    events: [
+      { id: 103, label: 'Follow the music (Coins)' },
+      { id: 107, label: 'Pick a song (Musical Notes)' },
+      { id: 126, label: 'Gift of friendship (Potentials + Notes)' },
+      { id: 127, label: 'Gift of friendship (Potentials + Coins)' },
+      { id: 128, label: 'Gift of friendship (Potentials + Coins)' },
+    ],
+  },
+];
+
+// Group questions by event, keeping event order 114, 115, 116
+const events = Object.keys(EVENT_META)
+  .map(Number)
+  .map((eventId) => ({
+    id: eventId,
+    ...EVENT_META[eventId],
+    questions: questions.filter((q) => q.event === eventId),
+  }));
 ---
 
 <AscensionQALayout
@@ -176,27 +247,76 @@ const questions = [
   gameTitle="Ascension Q&A"
 >
   <div class="ascension-qa-container">
-    <div class="qa-list">
-      {
-        questions.map((q, index) => (
-          <div class="qa-card">
-            <div class="qa-header">
-              <span class="qa-num">{index + 1}</span>
-              <span class="qa-character">{q.character}</span>
-            </div>
-            <h3 class="qa-question">{q.question}</h3>
-            <div class="qa-options">
-              {q.options.map((option, optIndex) => (
-                <div class={`qa-option ${optIndex === q.correctAnswer ? 'correct' : 'wrong'}`}>
-                  <span class="option-num">{optIndex + 1}</span>
-                  <span class="option-text">{option}</span>
-                  {optIndex === q.correctAnswer && <span class="correct-badge">Correct</span>}
+    <p class="ascension-intro">
+      During Ascension runs, Choice Domain rooms hold an event hosted by the shop assistant Portia,
+      the medic Beatrixa, or the two Demons of the Monolith, Bernina and Virigia. Events 114 to 116
+      are knowledge quizzes: only the correct answer pays out (Musical Notes or Potentials), a wrong
+      answer pays nothing and that option is locked out, but you may pick again. All other event
+      types are trades, gambles or gifts, and gamble payouts are decided per run.
+    </p>
+
+    {
+      events.map((event) => (
+        <section class="ascension-event" aria-label={`Event ${event.id}: ${event.title}`}>
+          <header class="ascension-event-header">
+            <h2 class="ascension-event-title">
+              Event {event.id}
+              <span class="ascension-event-name">{event.title}</span>
+            </h2>
+            <span class="ascension-event-reward">{event.reward}</span>
+          </header>
+          <div class="qa-list">
+            {event.questions.map((q) => (
+              <article class="qa-card">
+                <header class="qa-header">
+                  <img
+                    class="qa-avatar"
+                    src={NPC_AVATARS[q.character]}
+                    alt={`${q.character} portrait`}
+                    width="55"
+                    height="48"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="qa-character">{q.character}</span>
+                </header>
+                <h3 class="qa-question">{q.question}</h3>
+                <div class="qa-options">
+                  {q.options.map((option, optIndex) => (
+                    <div class={`qa-option ${optIndex === q.correctAnswer ? 'correct' : ''}`}>
+                      <span class="option-num">{optIndex + 1}</span>
+                      <span class="option-text">{option}</span>
+                      {optIndex === q.correctAnswer && <span class="correct-badge">Correct</span>}
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </article>
+            ))}
           </div>
-        ))
-      }
-    </div>
+        </section>
+      ))
+    }
+
+    <section class="ascension-other" aria-label="Other Choice Domain events">
+      <h2 class="ascension-other-title">Every other Choice Domain event</h2>
+      <p class="ascension-other-intro">
+        Quizzes are only 3 of the 28 Choice Domain events (101 to 128). Here is the rest, grouped by
+        how they play. Exact Coin payouts are decided per run.
+      </p>
+      {OTHER_EVENTS.map((group) => (
+        <div class="ascension-event-group">
+          <h3 class="ascension-event-group-title">{group.group}</h3>
+          <p class="ascension-event-group-note">{group.note}</p>
+          <ul class="ascension-event-list">
+            {group.events.map((e) => (
+              <li class="ascension-event-item">
+                <span class="ascension-event-id">Event {e.id}</span>
+                <span class="ascension-event-label">{e.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </section>
   </div>
 </AscensionQALayout>
