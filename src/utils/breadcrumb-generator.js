@@ -47,6 +47,7 @@ const GAME_CONFIG = {
       'character-gifts': 'Character Gifts',
       'ap-guide': 'AP Guide',
       'story-gallery': 'Story Gallery',
+      banners: 'Banner Timeline',
     },
   },
   'rebellion-gilgamesh': {

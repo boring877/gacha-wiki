@@ -141,6 +141,7 @@ export const horizonWalkerConfig = {
         { id: 'character-gifts', title: 'Character Gifts', url: '/guides/horizon-walker/character-gifts/' },
         { id: 'clock', title: 'Clock', url: '/clock/horizon-walker/' },
         { id: 'redeem-codes', title: 'Redeem Codes', url: '/guides/horizon-walker/redeem-codes/' },
+        { id: 'banners', title: 'Banner Timeline', url: '/guides/horizon-walker/banners/' },
         { id: 'patch-notes', title: 'Patch Notes', url: '/guides/horizon-walker/updates/' },
       ],
     },

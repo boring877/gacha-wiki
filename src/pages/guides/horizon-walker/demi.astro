@@ -3,12 +3,21 @@
 import GuideLayout from '../../../layouts/horizon-walker/GuideLayout.astro';
 import { r2Url } from '../../../data/r2-config.js';
 import { DEMI_CHARACTERS, getMightSkillList, TIER_PROBABILITIES } from '../../../data/horizon-walker/demiskills.js';
+import { demiReleases } from '../../../data/horizon-walker/banner-timeline.js';
 
 const title = 'Demi-Ascension Database - All Authorities and Might Skills | Horizon Walker Wiki';
 const description =
   'Complete Demi-Ascension reference for Horizon Walker: all 12 demigods with their Authority skills at every stage, deployment costs, the 10 random Might skills with tier values, and tier probabilities.';
 
 const demigods = Object.values(DEMI_CHARACTERS);
+
+const fmtDate = (iso: string) =>
+  new Date(iso + 'T12:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
+
+const demiBySlug: Record<string, (typeof demiReleases)[number]> = {};
+for (const d of demiReleases) {
+  if (d.slug) demiBySlug[d.slug] = d;
+}
 
 const substitute = (desc: string, stage: number) =>
   String(desc ?? '').replace(/\{\s*([-0-9.][-0-9.,%\s]*?)\s*\}/g, (_m: string, list: string) => {
@@ -62,8 +71,21 @@ export const prerender = true;
               <h3 class="demi-db-name">{d.name}</h3>
               <div class="demi-db-meta">
                 <span class="demi-db-cost" title="Deployment cost">DP {d.deploymentCost}</span>
+                {d.slug && demiBySlug[d.slug] && (
+                  <span
+                    class="demi-db-rel"
+                    title={demiBySlug[d.slug].batch ? 'Released with the Demi-God system launch' : 'From the official patch note'}
+                  >
+                    Demi: {fmtDate(demiBySlug[d.slug].date)}
+                  </span>
+                )}
                 {d.slug && <a class="demi-db-link" href={`/guides/horizon-walker/characters/${d.slug}/`}>View character</a>}
               </div>
+              {d.slug && demiBySlug[d.slug]?.url && (
+                <a class="demi-db-note" href={demiBySlug[d.slug].url} target="_blank" rel="noopener">
+                  Patch note
+                </a>
+              )}
             </div>
           </div>
 
@@ -211,6 +233,23 @@ export const prerender = true;
     font-weight: 600;
     padding: 0.15rem 0.5rem;
   }
+  .demi-db-rel {
+    background: var(--hw-accent-mint-20);
+    border: 1px solid var(--hw-accent-mint-50);
+    color: var(--hw-accent-mint);
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    white-space: nowrap;
+  }
+  .demi-db-note {
+    color: #9ecbff;
+    font-size: 0.78rem;
+    text-decoration: none;
+    width: fit-content;
+  }
+  .demi-db-note:hover { text-decoration: underline; }
   .demi-db-link {
     color: #9ecbff;
     font-size: 0.82rem;

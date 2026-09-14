@@ -1,0 +1,752 @@
+---
+// Horizon Walker banner timeline: every Special Search (gacha banner) run,
+// reconstructed from the Special Search sections of the official patch notes.
+import GuideLayout from '../../../layouts/horizon-walker/GuideLayout.astro';
+import { bannerRuns, focusedSearches, characterReleases } from '../../../data/horizon-walker/banner-timeline.js';
+import { HORIZON_WALKER_CHARACTERS } from '../../../data/horizon-walker/characters.js';
+import { r2Url } from '../../../data/r2-config.js';
+import { CharacterImage, WeaponImage } from '../../../components/horizon-walker/index.astro';
+
+export const prerender = true;
+
+const title = 'Banner History and Special Search Timeline | Horizon Walker Wiki';
+const description =
+  'Complete Horizon Walker banner history: every Special Search for new Vanguards and signature weapons, plus reruns, with start and end dates from the official patch notes.';
+
+const charBySlug: Record<string, (typeof HORIZON_WALKER_CHARACTERS)[number]> = {};
+for (const c of HORIZON_WALKER_CHARACTERS) {
+  charBySlug[c.slug] = c;
+}
+
+const fmtShort = (iso: string) =>
+  new Date(iso + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+const fmtFull = (iso: string) =>
+  new Date(iso + 'T12:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
+
+const windowLabel = (r: (typeof bannerRuns)[number]) => {
+  if (r.start.slice(0, 4) === r.end.slice(0, 4)) return `${fmtShort(r.start)} to ${fmtFull(r.end)}`;
+  return `${fmtFull(r.start)} to ${fmtFull(r.end)}`;
+};
+
+// days a run stays up, for the duration chip
+const days = (r: (typeof bannerRuns)[number]) =>
+  Math.round((Date.parse(r.end + 'T12:00:00Z') - Date.parse(r.start + 'T12:00:00Z')) / 86400000);
+
+const isNew = (r: (typeof bannerRuns)[number]) => r.type === 'debut';
+const isActive = (r: (typeof bannerRuns)[number]) => Date.parse(r.end + 'T23:59:59Z') >= Date.now();
+
+// group runs by year, newest first
+const yearGroups: { year: string; runs: typeof bannerRuns }[] = [];
+for (const r of bannerRuns) {
+  const year = r.start.slice(0, 4);
+  const last = yearGroups[yearGroups.length - 1];
+  if (last && last.year === year) last.runs.push(r);
+  else yearGroups.push({ year, runs: [r] });
+}
+
+const searchOf = (r: (typeof bannerRuns)[number]) =>
+  r.entries.map((e) => e.name).join(' ').toLowerCase();
+---
+
+<GuideLayout title={title} description={description} pageTitle="Banner Timeline" subtitle="Every Special Search from launch to today, with dates from the official patch notes.">
+  <div class="bt-page">
+    <div class="bt-intro">
+      <p>
+        Horizon Walker's gacha is the FairyNet Special Search. New Vanguard and signature weapon
+        banners usually run for two weeks and return later as Rerun Searches. This timeline is
+        assembled entirely from the Special Search sections of the
+        <a href="/guides/horizon-walker/updates/">official English patch notes</a>: windows with an
+        explicit period are exact, and the rest are derived from maintenance dates and later
+        "Searches have ended" announcements (marked approximate). Dates follow the Korean service
+        schedule and reset at 10:00 KST.
+      </p>
+    </div>
+
+    <div class="bt-controls">
+      <div class="bt-filters" role="group" aria-label="Filter banner runs">
+        <button class="bt-filter active" data-filter="all">All</button>
+        <button class="bt-filter" data-filter="debut">New Banners</button>
+        <button class="bt-filter" data-filter="rerun">Reruns</button>
+        <button class="bt-filter" data-filter="active">Active Now</button>
+      </div>
+      <input type="text" id="bt-search" class="bt-search" placeholder="Search banners (e.g. Juza, Doomstar...)" autocomplete="off" />
+      <span class="bt-count" id="bt-count">{bannerRuns.length} banner runs</span>
+    </div>
+
+    {
+      yearGroups.map((g) => (
+        <section class="bt-year" data-year={g.year}>
+          <h2 class="bt-year-title">{g.year}</h2>
+          <div class="bt-cards">
+            {g.runs.map((r) => (
+              <article
+                class={`bt-card ${isNew(r) ? 'bt-new' : 'bt-rerun'} ${r.bannerImage ? 'bt-has-art' : ''}`}
+                data-type={r.type}
+                data-active={isActive(r) ? '1' : '0'}
+                data-search={searchOf(r)}
+              >
+                <div class="bt-card-body">
+                  {r.bannerImage && (
+                    <a class="bt-art" href={r2Url('horizon-walker', r.bannerImage)} target="_blank" rel="noopener">
+                      <img
+                        src={r2Url('horizon-walker', r.bannerImage)}
+                        alt={`Official banner art: ${r.entries.map((e) => e.name).join(' and ')}`}
+                        loading="lazy"
+                        width="700"
+                        height="650"
+                      />
+                    </a>
+                  )}
+                  <div class="bt-card-info">
+                    <header class="bt-card-head">
+                      <div class="bt-card-when">
+                        <span class="bt-dates">{windowLabel(r)}</span>
+                        <span class="bt-len">{days(r)} days</span>
+                        {isActive(r) && <span class="bt-badge bt-live">Active</span>}
+                        <span class={`bt-badge ${isNew(r) ? 'bt-badge-new' : 'bt-badge-rerun'}`}>
+                          {isNew(r) ? 'New' : 'Rerun'}
+                        </span>
+                      </div>
+                      <a class="bt-src" href={r.sourceUrl}>Patch Note</a>
+                    </header>
+                    {(r.approximate || r.reconstructed) && (
+                      <p class="bt-flag">
+                        {r.reconstructed
+                          ? 'Window reconstructed: this run is known from a later "Searches have ended" announcement.'
+                          : 'Approximate window: the patch notes do not give an exact end date for this run.'}
+                      </p>
+                    )}
+                    <div class={r.bannerImage ? 'bt-chips' : 'bt-entries'}>
+                      {r.entries.map((e) => {
+                        const ch = e.charSlug ? charBySlug[e.charSlug] : undefined;
+                        const icon = e.noteImage ? (
+          <img src={r2Url('horizon-walker', e.noteImage)} alt={e.name} loading="lazy" width="44" height="44" />
+                        ) : ch ? (
+                          <CharacterImage imageName={ch.image || ch.name} alt={e.name} width={44} height={44} />
+                        ) : e.weaponImage ? (
+                          <WeaponImage imageName={e.weaponImage} alt={e.name} width={44} height={44} />
+                        ) : null;
+                        const inner = (
+                          <>
+                            {icon && <span class="bt-chip-img">{icon}</span>}
+                            <span class="bt-chip-meta">
+                              <span class="bt-kind">{e.kind === 'vanguard' ? 'Vanguard' : e.kind === 'weapon' ? 'Weapon' : 'Search'}</span>
+                              <span class="bt-name">{e.name}</span>
+                            </span>
+                          </>
+                        );
+                        return ch ? (
+                          <a class="bt-chip" href={`/guides/horizon-walker/characters/${ch.slug}/`}>{inner}</a>
+                        ) : (
+                          <span class="bt-chip">{inner}</span>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+                {r.bannerImage && (
+                  <p class="bt-art-note">Official banner art from the patch note</p>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+
+    {
+      focusedSearches.length > 0 && (
+        <section class="bt-focused">
+          <h2 class="bt-year-title">Focused Search Windows</h2>
+          <p class="bt-focused-note">
+            Limited selectable-pool searches announced in the patch notes. Unused Focused Search
+            Tickets expire when the window ends.
+          </p>
+          <div class="bt-focused-list">
+            {focusedSearches.map((f) => (
+              <span class="bt-focused-chip">
+                {fmtFull(f.start)} to {fmtFull(f.end)}
+              </span>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <section class="bt-releases" id="releases">
+      <h2 class="bt-year-title">Character Release Dates</h2>
+      <p class="bt-focused-note">
+        When each Vanguard became obtainable, straight from the patch notes: launch roster,
+        banner debuts, and direct additions. Signatures weapons keep their own banner cards above.
+      </p>
+      <div class="bt-controls bt-rel-controls">
+        <input type="text" id="bt-rel-search" class="bt-search" placeholder="Search characters (e.g. Juza, Korabi...)" autocomplete="off" />
+        <div class="bt-filters" role="group" aria-label="Sort release dates">
+          <button class="bt-filter active" data-rsort="new">Newest</button>
+          <button class="bt-filter" data-rsort="old">Oldest</button>
+          <button class="bt-filter" data-rsort="az">A to Z</button>
+        </div>
+        <span class="bt-count" id="bt-rel-count">{characterReleases.length} characters</span>
+      </div>
+      <div class="bt-rel-wrap">
+        <table class="bt-rel-table">
+          <thead>
+            <tr>
+              <th>Character</th>
+              <th>Rarity</th>
+              <th>Released</th>
+              <th>How to obtain</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="bt-rel-body">
+            {characterReleases.map((c) => {
+              const ch = c.slug ? charBySlug[c.slug] : undefined;
+              return (
+                <tr data-date={c.date} data-name={c.name.toLowerCase()} data-search={`${c.name} ${c.bannerName ?? ''} ${c.via}`.toLowerCase()}>
+                  <td class="bt-rel-char">
+                    <span class="bt-chip-img">
+                      {ch ? (
+                        <CharacterImage imageName={ch.image || ch.name} alt={c.name} width={40} height={40} />
+                      ) : (
+                        <span class="bt-noimg-sm" aria-hidden="true">{c.name.slice(0, 1)}</span>
+                      )}
+                    </span>
+                    {c.slug ? (
+                      <a class="bt-rel-name" href={`/guides/horizon-walker/characters/${c.slug}/`}>{c.name}</a>
+                    ) : (
+                      <span class="bt-rel-name">{c.name}</span>
+                    )}
+                  </td>
+                  <td>{c.rarity ?? ''}</td>
+                  <td class="bt-rel-date">{fmtFull(c.date)}</td>
+                  <td class="bt-rel-how">
+                    {c.via === 'launch' ? (
+                      <span class="bt-how bt-how-launch">Launch roster</span>
+                    ) : c.via === 'banner' ? (
+                      <span class="bt-how bt-how-banner">Banner: {c.bannerName}</span>
+                    ) : (
+                      <span class="bt-how bt-how-direct">New Vanguard</span>
+                    )}
+                  </td>
+                  <td>{c.sourceUrl && <a class="bt-src" href={c.sourceUrl}>Note</a>}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script is:inline>
+    // graceful fallback: a broken icon tile becomes the character's initial
+    function handleBrokenIcon(img) {
+      const wrap = img.closest('.bt-chip-img');
+      if (!wrap || wrap.classList.contains('bt-noicon')) return;
+      const row = img.closest('tr');
+      const name = row ? row.querySelector('.bt-rel-name') : null;
+      const label = name ? name.textContent.trim().charAt(0).toUpperCase() : '';
+      img.remove();
+      wrap.classList.add('bt-noicon');
+      wrap.dataset.letter = label || '?';
+    }
+    document.addEventListener('error', (ev) => {
+      const img = ev.target;
+      if (!img || img.tagName !== 'IMG') return;
+      if (img.closest('.bt-chip-img')) handleBrokenIcon(img);
+    }, true);
+    // icons that already failed before this script ran
+    document.querySelectorAll('.bt-chip-img img').forEach((img) => {
+      if (img.complete && img.naturalWidth === 0) handleBrokenIcon(img);
+    });
+
+    const input = document.getElementById('bt-search');
+    const cards = document.querySelectorAll('.bt-card');
+    const years = document.querySelectorAll('.bt-year');
+    const count = document.getElementById('bt-count');
+    const total = cards.length;
+    let filter = 'all';
+    function apply() {
+      const q = input.value.trim().toLowerCase();
+      let visible = 0;
+      cards.forEach((c) => {
+        const okType =
+          filter === 'all' ||
+          (filter === 'active' ? c.dataset.active === '1' : c.dataset.type === filter);
+        const okText = !q || (c.dataset.search || '').includes(q);
+        const show = okType && okText;
+        c.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      years.forEach((y) => {
+        const any = [...y.querySelectorAll('.bt-card')].some((c) => c.style.display !== 'none');
+        y.style.display = any ? '' : 'none';
+      });
+      count.textContent = q || filter !== 'all' ? `${visible} of ${total} banner runs` : `${total} banner runs`;
+    }
+    input.addEventListener('input', apply);
+    document.querySelectorAll('.bt-filter').forEach((b) => {
+      b.addEventListener('click', () => {
+        document.querySelectorAll('.bt-filter').forEach((x) => x.classList.remove('active'));
+        b.classList.add('active');
+        filter = b.dataset.filter;
+        apply();
+      });
+    });
+
+    // release table: filter + sort
+    const relBody = document.getElementById('bt-rel-body');
+    if (relBody) {
+      const relSearch = document.getElementById('bt-rel-search');
+      const relCount = document.getElementById('bt-rel-count');
+      const rows = [...relBody.querySelectorAll('tr')];
+      let rsort = 'new';
+      function applyRel() {
+        const q = relSearch.value.trim().toLowerCase();
+        let visible = 0;
+        rows.forEach((r) => {
+          const show = !q || (r.dataset.search || '').includes(q);
+          r.style.display = show ? '' : 'none';
+          if (show) visible++;
+        });
+        relCount.textContent = q ? `${visible} of ${rows.length} characters` : `${rows.length} characters`;
+      }
+      function sortRel() {
+        const sorted = [...rows].sort((a, b) => {
+          if (rsort === 'az') return a.dataset.name.localeCompare(b.dataset.name);
+          const da = a.dataset.date, db = b.dataset.date;
+          return rsort === 'new' ? db.localeCompare(da) : da.localeCompare(db);
+        });
+        sorted.forEach((r) => relBody.appendChild(r));
+      }
+      relSearch.addEventListener('input', applyRel);
+      document.querySelectorAll('[data-rsort]').forEach((b) => {
+        b.addEventListener('click', () => {
+          document.querySelectorAll('[data-rsort]').forEach((x) => x.classList.remove('active'));
+          b.classList.add('active');
+          rsort = b.dataset.rsort;
+          sortRel();
+        });
+      });
+    }
+  </script>
+
+  <style>
+    .bt-page {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .bt-intro {
+      background: var(--hw-white-05);
+      border: 1px solid var(--hw-border-muted);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+    }
+    .bt-intro p {
+      color: var(--hw-text-muted);
+      font-size: 0.93rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .bt-intro a {
+      color: var(--hw-primary-warm);
+    }
+    .bt-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+    .bt-filters {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .bt-filter {
+      background: var(--hw-input-bg);
+      border: 1px solid var(--hw-border-gray);
+      border-radius: 8px;
+      color: var(--hw-text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.45rem 0.9rem;
+      cursor: pointer;
+    }
+    .bt-filter.active {
+      background: var(--hw-primary-warm-20);
+      border-color: var(--hw-primary-warm);
+      color: var(--hw-primary-warm);
+    }
+    .bt-search {
+      flex: 1;
+      min-width: 200px;
+      background: var(--hw-input-bg);
+      border: 1px solid var(--hw-border-gray);
+      border-radius: 8px;
+      color: var(--hw-input-text);
+      font-size: 0.92rem;
+      padding: 0.55rem 0.9rem;
+      outline: none;
+    }
+    .bt-search:focus {
+      border-color: var(--hw-input-focus-border);
+    }
+    .bt-count {
+      color: var(--hw-text-very-muted);
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+    .bt-year {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .bt-year-title {
+      color: var(--hw-primary-warm);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 0.4rem 0 0;
+      border-bottom: 1px solid var(--hw-border-accent);
+      padding-bottom: 0.4rem;
+    }
+    .bt-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+    .bt-card {
+      background: var(--hw-white-05);
+      border: 1px solid var(--hw-border-light);
+      border-radius: 10px;
+      padding: 0.95rem 1.05rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .bt-card.bt-new {
+      border-color: var(--hw-border-accent);
+    }
+    .bt-card-body {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .bt-card:not(.bt-has-art) .bt-card-body {
+      flex-direction: column;
+    }
+    .bt-art {
+      flex: 0 0 440px;
+      max-width: 440px;
+      display: block;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .bt-art img {
+      width: 100%;
+      height: auto;
+      max-height: 560px;
+      object-fit: contain;
+      background: rgba(255, 255, 255, 0.02);
+      display: block;
+    }
+    .bt-art-note {
+      color: var(--hw-text-very-muted);
+      font-size: 0.75rem;
+      margin: -0.3rem 0 0;
+      text-align: center;
+    }
+    .bt-card-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .bt-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+    .bt-card-when {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+    }
+    .bt-dates {
+      color: var(--hw-accent-mint);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .bt-len {
+      color: var(--hw-text-very-muted);
+      font-size: 0.78rem;
+    }
+    .bt-badge {
+      border-radius: 5px;
+      padding: 0.12rem 0.55rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .bt-badge-new {
+      background: var(--hw-bg-solid-gold);
+      color: var(--hw-text-dark);
+    }
+    .bt-badge-rerun {
+      background: var(--hw-bg-light);
+      color: var(--hw-text-muted);
+    }
+    .bt-live {
+      background: var(--hw-accent-mint-20);
+      color: var(--hw-accent-mint);
+    }
+    .bt-src {
+      color: var(--hw-primary-warm);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--hw-border-strong);
+      border-radius: 7px;
+      padding: 0.3rem 0.7rem;
+      white-space: nowrap;
+    }
+    .bt-src:hover {
+      background: var(--hw-primary-warm-20);
+    }
+    .bt-flag {
+      color: var(--hw-text-very-muted);
+      font-size: 0.8rem;
+      font-style: italic;
+      margin: 0;
+    }
+    .bt-entries {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+    .bt-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+    /* cards without official banner art rely on the tiles for imagery */
+    .bt-entries .bt-chip {
+      background: var(--hw-white-05);
+      padding: 0.4rem 0.8rem 0.4rem 0.4rem;
+    }
+    .bt-entries .bt-chip-img {
+      width: 60px;
+      height: 60px;
+    }
+    .bt-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: var(--hw-white-05);
+      border: 1px solid var(--hw-border-light);
+      border-radius: 8px;
+      padding: 0.3rem 0.7rem 0.3rem 0.3rem;
+      text-decoration: none;
+      max-width: 100%;
+    }
+    .bt-chip-img {
+      width: 44px;
+      height: 44px;
+      flex: none;
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--hw-bg-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bt-chip-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .bt-chip-img :global(img) {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .bt-chip-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      min-width: 0;
+    }
+    .bt-kind {
+      color: var(--hw-text-very-muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .bt-name {
+      color: var(--hw-text-muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      line-height: 1.3;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+    a.bt-chip:hover .bt-name {
+      color: var(--hw-primary-warm);
+    }
+    .bt-focused {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+    .bt-focused-note {
+      color: var(--hw-text-muted);
+      font-size: 0.88rem;
+      margin: 0;
+    }
+    .bt-focused-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+    .bt-focused-chip {
+      background: var(--hw-primary-warm-10);
+      border: 1px solid var(--hw-border-strong);
+      color: var(--hw-primary-warm);
+      border-radius: 7px;
+      padding: 0.32rem 0.75rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    .bt-releases {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+    .bt-rel-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--hw-border-light);
+      border-radius: 10px;
+    }
+    .bt-rel-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      color: var(--hw-text-muted);
+      min-width: 640px;
+    }
+    .bt-rel-table th {
+      text-align: left;
+      background: var(--hw-primary-warm-15);
+      color: var(--hw-primary-warm);
+      font-weight: 700;
+      padding: 0.6rem 0.8rem;
+      white-space: nowrap;
+    }
+    .bt-rel-table td {
+      padding: 0.5rem 0.8rem;
+      border-top: 1px solid var(--hw-border-light);
+      vertical-align: middle;
+    }
+    .bt-rel-table tbody tr:nth-child(odd) {
+      background: var(--hw-white-05);
+    }
+    .bt-rel-char {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      min-width: 190px;
+    }
+    .bt-rel-name {
+      color: var(--hw-text-muted);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    a.bt-rel-name:hover {
+      color: var(--hw-primary-warm);
+    }
+    .bt-rel-date {
+      color: var(--hw-accent-mint);
+      white-space: nowrap;
+    }
+    .bt-rel-how {
+      color: var(--hw-text-muted);
+      font-size: 0.84rem;
+    }
+    .bt-how {
+      display: inline-block;
+      border-radius: 5px;
+      padding: 0.14rem 0.55rem;
+      font-size: 0.76rem;
+      font-weight: 600;
+    }
+    .bt-how-launch {
+      background: var(--hw-stat-bg);
+      color: var(--hw-text-muted);
+    }
+    .bt-how-banner {
+      background: var(--hw-primary-warm-20);
+      color: var(--hw-primary-warm);
+    }
+    .bt-how-direct {
+      background: var(--hw-accent-mint-20);
+      color: var(--hw-accent-mint);
+    }
+    .bt-noimg-sm {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--hw-text-very-muted);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .bt-chip-img.bt-noicon {
+      background: #2a2a2a;
+    }
+    .bt-chip-img.bt-noicon::after {
+      content: attr(data-letter);
+      color: var(--hw-primary-warm);
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .bt-rel-controls {
+      flex-wrap: wrap;
+    }
+    @media (max-width: 960px) {
+      .bt-card-body {
+        flex-direction: column;
+      }
+      .bt-art {
+        flex: none;
+        max-width: 480px;
+        width: 100%;
+      }
+    }
+    @media (max-width: 640px) {
+      .bt-art {
+        max-width: 100%;
+        width: 100%;
+      }
+      .bt-card-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+  </style>
+</GuideLayout>
