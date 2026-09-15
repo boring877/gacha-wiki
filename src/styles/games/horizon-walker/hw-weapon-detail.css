@@ -173,6 +173,17 @@
   padding: 1.5rem;
 }
 
+/* Section titles inside the master card (h2) - without this they fall back
+   to the global h2 rule (36-48px), bigger than the page title */
+.weapon-stats-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--hw-primary-warm);
+  line-height: var(--leading-tight);
+  margin: 0 0 var(--hw-spacing-md) 0;
+}
+
 /* Navigation */
 .weapon-nav {
   display: flex;
