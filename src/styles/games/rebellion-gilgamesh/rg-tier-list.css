@@ -236,6 +236,21 @@
   transition: transform 0.2s ease;
 }
 
+/* Monogram tile for characters without art (mirrors the busty-burst convention) */
+.char-img-fallback {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background: var(--rg-primary-10);
+  color: var(--rg-primary-light);
+  font-weight: 700;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  user-select: none;
+}
+
 .tier-stars {
   color: var(--rg-accent);
   font-size: 0.72rem;

@@ -111,7 +111,7 @@ function starString(stars: number | undefined): string {
               {imgFor(char.image) ? (
                 <Image src={imgFor(char.image)!} alt={char.name} width={60} height={60} loading="lazy" format="webp" />
               ) : (
-                <img src="/favicon.svg" alt={char.name} width={60} height={60} loading="lazy" />
+                <span class="char-img-fallback" aria-hidden="true">{char.name.charAt(0)}</span>
               )}
             </div>
             <div class="pool-character-name">{char.name}</div>
@@ -158,7 +158,7 @@ function starString(stars: number | undefined): string {
                           {imgFor(char.image) ? (
                             <Image src={imgFor(char.image)!} alt={char.name} width={84} height={84} loading="lazy" format="webp" />
                           ) : (
-                            <img src="/favicon.svg" alt={char.name} width={84} height={84} loading="lazy" />
+                            <span class="char-img-fallback" aria-hidden="true">{char.name.charAt(0)}</span>
                           )}
                         </div>
                         {stars && <div class="tier-stars">{stars}</div>}
@@ -311,7 +311,10 @@ function starString(stars: number | undefined): string {
         if (!poolCard || !targetZone) return;
         poolCard.style.display = 'none';
         const charData = characterMap[characterName];
-        const imgSrc = poolCard.querySelector('img')?.src || '';
+        const poolImg = poolCard.querySelector('img');
+        const imgHtml = poolImg
+          ? `<img src="${poolImg.src}" alt="${characterName}" loading="lazy" />`
+          : `<span class="char-img-fallback" aria-hidden="true">${characterName.charAt(0)}</span>`;
         const rarity = charData?.rarity || '';
         const rarityUrl = rarityImageUrls[rarity] || '';
         const tierCard = document.createElement('div');
@@ -321,7 +324,7 @@ function starString(stars: number | undefined): string {
         tierCard.draggable = true;
         tierCard.innerHTML = `
           <div class="character-image-wrapper">
-            <img src="${imgSrc}" alt="${characterName}" loading="lazy" />
+            ${imgHtml}
           </div>
           <div class="character-name">${characterName}</div>
           ${rarityUrl ? `<img src="${rarityUrl}" alt="${rarity}" class="tier-rarity" />` : ''}
