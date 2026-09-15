@@ -1,0 +1,116 @@
+/* MAJO updates page: official patch notes timeline, flat dark cards. */
+
+.majo-updates-intro {
+  margin: 0 auto 2rem;
+  max-width: 860px;
+  padding: 1rem 1.25rem;
+  background: var(--majo-bg-secondary);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+}
+
+.majo-updates-intro-label {
+  margin: 0 0 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--majo-primary-light);
+}
+
+.majo-updates-intro-text {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--majo-text-secondary);
+}
+
+.majo-updates-intro-text a {
+  color: var(--majo-primary-light);
+  font-weight: 600;
+}
+
+/* Entry cards */
+.majo-update-entry {
+  background: var(--majo-bg-secondary);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+  padding: 1.1rem 1.4rem 1.2rem;
+  margin-bottom: 1.25rem;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.majo-update-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.45rem;
+}
+
+.majo-update-cat {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 5px;
+  padding: 0.14rem 0.55rem;
+}
+
+.update-cat-update {
+  background: #f2c14e;
+  color: #2a2118;
+}
+
+.update-cat-event {
+  background: #a89bd1;
+  color: #221f2c;
+}
+
+.update-cat-maintenance {
+  background: #f87171;
+  color: #2b1414;
+}
+
+.update-cat-news {
+  background: #6d93bd;
+  color: #16202b;
+}
+
+.majo-update-date {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--majo-text-tertiary);
+}
+
+.majo-update-title {
+  margin: 0 0 0.55rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.majo-update-title a {
+  color: var(--majo-text-primary);
+  text-decoration: none;
+}
+
+.majo-update-points {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 0.86rem;
+  line-height: 1.65;
+  color: var(--majo-text-secondary);
+}
+
+.majo-update-points li + li {
+  margin-top: 0.3rem;
+}
+
+@media (max-width: 720px) {
+  .majo-update-entry {
+    padding: 1rem;
+  }
+}

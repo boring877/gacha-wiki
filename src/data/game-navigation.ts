@@ -476,6 +476,7 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
       {
         title: 'Resources',
         links: [
+          { name: 'Updates', href: '/guides/majo/updates/' },
           { name: 'Clock', href: '/clock/majo/' },
         ],
       },

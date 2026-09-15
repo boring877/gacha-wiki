@@ -1,0 +1,141 @@
+// MAJO update/patch history. Sourced from the official site news archive
+// (majo-x.com/en/news/) plus community calendars; newest first.
+
+const OFFICIAL = 'https://majo-x.com/en/news/';
+
+export const majoUpdates = [
+  {
+    date: '2026-09-09',
+    display: 'Sep 9, 2026',
+    category: 'Event',
+    title: 'Witch Arena (PvP) Now Available',
+    url: OFFICIAL + '20260909_announcement/',
+    points: [
+      'PvP mode where Observers attack other players\' defense teams and defend their own. Season runs Sep 9 to Dec 2, 2026.',
+      '5 Arena tickets per day on login (max held: 5). Defense teams are auto-built from your witches if you do not set one.',
+      'Rankings: daily rewards, fortnightly (second Wednesday) and monthly (fourth Wednesday) rank rewards, version-final rewards on Dec 2, plus one-time milestone and score-threshold rewards.',
+    ],
+  },
+  {
+    date: '2026-09-07',
+    display: 'Sep 7, 2026',
+    category: 'Update',
+    title: 'September Update Content Overview',
+    url: OFFICIAL + '20260907_majo-witchesnight-announcement/',
+    points: [
+      'Wishlist on Origin Contact (permanent from Sep 9): pick up to 3 SSR witches. Pool rate 1.8% total; 3 picks = 0.6% each with the rest at 0%, 2 picks = 0.6% each, 1 pick = 0.6% with the rest sharing 1.2%.',
+      'Limited Contact: Emily (Sep 9 to Sep 30). Decreasing pity 100, then 80, then 60 from the third onward.',
+      'Eternal Contact: Bazhuli, UR (Sep 16 to Oct 7). Decreasing pity 80, then 70, then 60. Pity carries over between periods.',
+      'Limited Contact: Luoqin + Lucia dual Pickup (Sep 30 to Oct 21). Same decreasing pity as Emily.',
+      'Event: Magic Bow\'s First Hunt (Sep 16 to Oct 7). Event story, challenge stages, event token shop and Lucky Wheel tickets.',
+      'New story: Chapter 7, "The Greediest of Gambles" (casino and Entropy Spirits themed).',
+      'Boss Training: Arcane Robot Moai (Sep 9 to Sep 23). Combat Training: Healing Battle (Sep 23 to Oct 7), score bonuses for healing.',
+      'Tower of Anomalies: General Exploration Zone expanded to 100 stages (permanent); Human Exploration Zone, human witches only (Sep 9 to Dec 2).',
+      'MAJO Welfare Committee (Sep 23 to Oct 7): Lucky Draw for Omen Stones; doubled Class Hunting Grounds resource rewards.',
+      'QoL: weekly Law allowance resets Mondays from Sep 14, pity counter shown in the Contact UI, resolution setting, not-owned roster preview, loading tips, improved 6-star crystal conversion, Witch Contract: First exchange option.',
+      'Sep 9 maintenance 09:30 to 11:00 (UTC+8); restart the game after to download data.',
+    ],
+  },
+  {
+    date: '2026-08-28',
+    display: 'Aug 28, 2026',
+    category: 'Maintenance',
+    title: 'Fixed In-Game Irregularities',
+    url: OFFICIAL + '20260828/',
+    points: [
+      'Fixed Xuanji wallpaper switching glitch (twice: the function and the wallpaper itself).',
+      'Fixed incorrect unlock conditions and stage titles in Chapter 6.',
+      'Corrected some character skill descriptions.',
+      'Removed SR appearance options that had been made available by accident.',
+    ],
+  },
+  {
+    date: '2026-08-28',
+    display: 'Aug 28, 2026',
+    category: 'Maintenance',
+    title: 'Known Issues',
+    url: OFFICIAL + '20260828_known_issues/',
+    points: [
+      'Official list of known issues, published alongside the Aug 28 fix note.',
+    ],
+  },
+  {
+    date: '2026-08-26',
+    display: 'Aug 26, 2026',
+    category: 'Update',
+    title: 'No-Downtime Update',
+    url: OFFICIAL + '20260826_announcement/',
+    points: [
+      'New story: Chapter 6, "A Harmonious Family".',
+      'Origin Contact: Lumi rate-up (Aug 26 to Sep 2).',
+      'Eternal Contact: Isabelle, first UR pool (Aug 26 to Sep 16). Drawn only with Witch Contract: Eternal or Revelation Crystals. Decreasing pity 80, then 70, then 60, carryover between periods.',
+      'Boss Training: Venomfrill (Aug 26 to Sep 9).',
+      'New mode: Crystal Refinement, win battles to earn SR Witch Crystals.',
+      'Story 2-6 difficulty lowered. New achievement skins: 3-star and 4-star default skins, EX1 and EX2 awakening skins for SSR and UR witches.',
+      'Early-game stages added where character fragments can be farmed freely (promised in the producer letter).',
+    ],
+  },
+  {
+    date: '2026-08-21',
+    display: 'Aug 21, 2026',
+    category: 'News',
+    title: 'Producer\'s Letter: Recent Version Adjustments and Future Plans',
+    url: OFFICIAL + '20260821_notice/',
+    points: [
+      'Sep 9 roadmap: Floating Law system, a brand-new PvP mode, character-exclusive events and story, new main story developments, and season challenges and rewards.',
+      'Card pool UI rework promised for Sep 9: live pity counter, remaining pulls to pity, per-pool rules and carryover rules.',
+      'Anti-cheat: strengthened automatic detection; confirmed cheat or script users banned by severity; warned against buying accounts.',
+      'R18 exclusive content to be expanded gradually alongside character events and story.',
+      'Aug 26: new early-game stages with freely farmable character fragments; more replayable early stages and smoother growth curve promised.',
+    ],
+  },
+  {
+    date: '2026-08-19',
+    display: 'Aug 19, 2026',
+    category: 'Update',
+    title: 'No-Downtime Update',
+    url: OFFICIAL + '20260819_notice/',
+    points: [
+      'New story: Chapter 5, "The Grudge of the Seven".',
+      'Origin Contact: Yuhong rate-up (Aug 19 to Aug 26).',
+      'Limited Contact: Yun + Alice dual rate-up (Aug 19 to Sep 9). Decreasing pity 100, then 80, then 60, carryover between periods.',
+      'MAJO Welfare Committee (Aug 19 to Sep 9): Lucky Draw for Omen Stones.',
+      'Tower of Anomalies unlock lowered from Main Story 2-15 to 2-5.',
+      'Thousandfold Contact final claim moved from day 5 to day 3 (claiming it ends the event early).',
+      'Primal Crystal exchange rates: UR 1:1, SSR 1:1, SR 5:1.',
+    ],
+  },
+  {
+    date: '2026-08-17',
+    display: 'Aug 17, 2026',
+    category: 'News',
+    title: 'Managing Abnormal Gaming Behavior',
+    url: OFFICIAL + '20260817_notice/',
+    points: [
+      'Anti-cheat notice about handling abnormal play and third-party tools.',
+    ],
+  },
+  {
+    date: '2026-08-14',
+    display: 'Aug 14, 2026',
+    category: 'Update',
+    title: 'August Update Content Overview',
+    url: OFFICIAL + '20260814_majo-witchesnight-announcement/',
+    points: [
+      'Preview of the Aug 19 no-downtime data update: Chapter 5, Yuhong Origin rate-up, Yun + Alice Limited Contact, Welfare Committee, and the Aug 26 wave (Chapter 6, Lumi, Isabelle Eternal, Venomfrill boss training).',
+    ],
+  },
+  {
+    date: '2026-08-12',
+    display: 'Aug 12, 2026',
+    category: 'News',
+    title: 'Launch: First Week of Content',
+    url: OFFICIAL + 'majo-witchesnight-launch/',
+    points: [
+      'Main story from the Prologue "Twisted Heroic Dream" through Chapter 4, "What the Messenger Carries".',
+      'Thousandfold Contact: 21 days of daily quests from first login, each granting 10 Contact chances.',
+      'Origin Contact: Jenny rate-up (Aug 12 to Aug 19).',
+      'Boss Training: Abyssal Slime (Aug 12 to Aug 26).',
+    ],
+  },
+];
