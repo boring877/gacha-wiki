@@ -56,6 +56,7 @@ import { info as drowatt_info, skills as drowatt_skills, stats as drowatt_stats 
 import { info as elaine_info, skills as elaine_skills, stats as elaine_stats } from "./elaine.js";
 import { info as elegant_bunny_girl_bernadette_info, skills as elegant_bunny_girl_bernadette_skills, stats as elegant_bunny_girl_bernadette_stats } from "./elegant-bunny-girl-bernadette.js";
 import { info as elegant_portrait_aysis_info, skills as elegant_portrait_aysis_skills, stats as elegant_portrait_aysis_stats } from "./elegant-portrait-aysis.js";
+import { info as elegant_portrait_shamshel_info, skills as elegant_portrait_shamshel_skills, stats as elegant_portrait_shamshel_stats } from "./elegant-portrait-shamshel.js";
 import { info as elrons_sturdy_shield_natasha_info, skills as elrons_sturdy_shield_natasha_skills, stats as elrons_sturdy_shield_natasha_stats } from "./elrons-sturdy-shield-natasha.js";
 import { info as elythia_info, skills as elythia_skills, stats as elythia_stats } from "./elythia.js";
 import { info as emelaria_info, skills as emelaria_skills, stats as emelaria_stats } from "./emelaria.js";
@@ -296,6 +297,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
   "elaine": elaine_info,
   "elegant-bunny-girl-bernadette": elegant_bunny_girl_bernadette_info,
   "elegant-portrait-aysis": elegant_portrait_aysis_info,
+  "elegant-portrait-shamshel": elegant_portrait_shamshel_info,
   "elrons-sturdy-shield-natasha": elrons_sturdy_shield_natasha_info,
   "elythia": elythia_info,
   "emelaria": emelaria_info,
@@ -537,6 +539,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
   "elaine": elaine_stats,
   "elegant-bunny-girl-bernadette": elegant_bunny_girl_bernadette_stats,
   "elegant-portrait-aysis": elegant_portrait_aysis_stats,
+  "elegant-portrait-shamshel": elegant_portrait_shamshel_stats,
   "elrons-sturdy-shield-natasha": elrons_sturdy_shield_natasha_stats,
   "elythia": elythia_stats,
   "emelaria": emelaria_stats,
@@ -778,6 +781,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
   elaine_skills,
   elegant_bunny_girl_bernadette_skills,
   elegant_portrait_aysis_skills,
+  elegant_portrait_shamshel_skills,
   elrons_sturdy_shield_natasha_skills,
   elythia_skills,
   emelaria_skills,
@@ -1019,6 +1023,7 @@ export const BUSTY_BURST_SKILLS_MAP = {
   "elaine": elaine_skills,
   "elegant-bunny-girl-bernadette": elegant_bunny_girl_bernadette_skills,
   "elegant-portrait-aysis": elegant_portrait_aysis_skills,
+  "elegant-portrait-shamshel": elegant_portrait_shamshel_skills,
   "elrons-sturdy-shield-natasha": elrons_sturdy_shield_natasha_skills,
   "elythia": elythia_skills,
   "emelaria": emelaria_skills,
