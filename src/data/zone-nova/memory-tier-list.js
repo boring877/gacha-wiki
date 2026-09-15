@@ -50,11 +50,12 @@ export const MEMORY_CLASS_ORDER = [
 
 export const MEMORY_TIER_LIST = {
   name: 'Memory Card Rankings by Class',
-  lastUpdated: '2026-09-06',
+  lastUpdated: '2026-09-15',
   description:
     'Memory card rankings by class. Each character can only equip memories matching their class.',
   tiers: {
     Tank: {
+      UR: [],
       SSS: [{ name: "Sea Deity's Soft Ritual" }, { name: "Under the Holy Armor" }],
       SS: [
         { name: "Eating secretly in a cafe" },
@@ -68,7 +69,8 @@ export const MEMORY_TIER_LIST = {
       Situational: [],
     },
     Warrior: {
-      SSS: [{ name: "Afternoon tantrums" }, { name: "Wrong time of appearance" }],
+      UR: [],
+      SSS: [{ name: "Afternoon tantrums" }, { name: "Afternoon Waiting" }, { name: "Wrong time of appearance" }],
       SS: [{ name: "Halloween candy" }, { name: "Pride or Tsundere?" }],
       S: [{ name: "Secret Garden" }],
       A: [
@@ -80,6 +82,7 @@ export const MEMORY_TIER_LIST = {
       Situational: [],
     },
     Attacker: {
+      UR: [],
       SSS: [
         { name: "Frozen Heart" },
         { name: "King of Lust" },
@@ -97,6 +100,7 @@ export const MEMORY_TIER_LIST = {
       Situational: [],
     },
     Destroyer: {
+      UR: [],
       SSS: [{ name: "A Dream of Peace" }],
       SS: [{ name: "Night of Blood and Storm" }, { name: "The Servant's Aspiration" }, { name: "Unreserved love" }],
       S: [{ name: "Reorganizing Revolution" }, { name: "The maid's bath" }, { name: "The Way of Revenge" }],
@@ -111,17 +115,14 @@ export const MEMORY_TIER_LIST = {
     },
     Supporter: {
       UR: [{ name: "Unholy Alliance" }],
-      SSS: [
-        { name: "Absolutely perfect buttocks" },
-        { name: "Bath Time" },
-        { name: "Hot Spring & Her " },
-      ],
+      SSS: [{ name: "Absolutely perfect buttocks" }, { name: "Bath Time" }, { name: "Hot Spring & Her " }],
       SS: [{ name: "Awkward Appearance" }, { name: "The Loneliest Moment" }],
       S: [{ name: "And Also Chocolate" }, { name: "Dawn's Sunlight" }],
       A: [{ name: "Sleep Treasure" }, { name: "SUPPORTER REMEM." }],
       Situational: [],
     },
     Disruptor: {
+      UR: [],
       SSS: [{ name: "The Knight and the Fuzzy" }],
       SS: [
         { name: "A perfect makeup look?" },
@@ -141,6 +142,7 @@ export const MEMORY_TIER_LIST = {
       Situational: [],
     },
     Healer: {
+      UR: [],
       SSS: [{ name: "Serpentine Frenzy " }, { name: "The Beauty of Heikyo Castle" }],
       SS: [
         { name: "A Smile to Topple Cities" },
