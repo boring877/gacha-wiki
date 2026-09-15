@@ -80,6 +80,7 @@ export const PVE_TIER_LIST = {
       { name: 'Veronica' },
       { name: 'Set' },
       { name: 'Nephthys' },
+      { name: 'Brynhild' },
     ],
     SS: [
       { name: 'Guinevere' },
@@ -101,7 +102,6 @@ export const PVE_TIER_LIST = {
       { name: 'Erika' },
       { name: 'Poseidon' },
       { name: 'Bedivere' },
-      { name: 'Brynhild' },
     ],
     S: [
       { name: 'Zashiki-warashi' },
@@ -142,7 +142,7 @@ export const PVP_TIER_LIST = {
   description: 'Class-based Arena PvP rankings with role highlights for competitive play.',
   tiers: {
     UR: [{ name: 'Pride-Lucifer' }, { name: 'Bors' }, { name: 'Medusa' }],
-    SSS: [{ name: 'Sharin' }, { name: 'Gluttony - Beelzebub' }, { name: 'Keller' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }, { name: 'Wrath-Samael' }, { name: 'Gaia' }, { name: 'Jill' }, { name: 'Jorogumo' }, { name: 'Thor' }, { name: 'Apep' }, { name: 'Artemis' }, { name: 'Freya' }, { name: 'Hiyori' }, { name: 'Veronica' }, { name: 'Set' }],
+    SSS: [{ name: 'Sharin' }, { name: 'Gluttony - Beelzebub' }, { name: 'Keller' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }, { name: 'Wrath-Samael' }, { name: 'Gaia' }, { name: 'Jill' }, { name: 'Jorogumo' }, { name: 'Thor' }, { name: 'Apep' }, { name: 'Artemis' }, { name: 'Freya' }, { name: 'Hiyori' }, { name: 'Veronica' }, { name: 'Set' }, { name: 'Brynhild' }],
     SS: [
       { name: 'Guinevere' },
       { name: 'Frigga' },
@@ -164,7 +164,6 @@ export const PVP_TIER_LIST = {
       { name: 'Nephthys' },
       { name: 'Bedivere' },
       { name: 'Ibaraki-doji' },
-      { name: 'Brynhild' },
     ],
     S: [
       { name: 'Arthur' },
@@ -366,7 +365,7 @@ export const TIER_LIST_CHANGELOG = [
   {
     date: '2026-09-15',
     changes: [
-      'New character added: Brynhild (SS, both PvE and PvP, S for New Players)',
+      'New character added: Brynhild (SSS, both PvE and PvP, S for New Players)',
       'Holy Warrior DPS who scales entirely off DEF: attacks deal DEF-based Holy damage and her passive [Soul Hue] gains permanent stacks when attacked (each stack +6% DEF, up to 12)',
       'Ultimate [Einherjar Judgment] executes the lowest-HP enemy (+195% damage, +94% DEF pen, +77% Holy res pen below 50% HP) and punishes death-prevention buffs with [Pending Judgment]',
       'Auto skill applies [Nethermark]: -130% healing received, -53% shields received, and DEF-based Holy DOT',
