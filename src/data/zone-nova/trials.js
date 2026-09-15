@@ -1,13 +1,13 @@
 // Zone Nova Trials data — generated 2026-09-06 from live master data
 // (tower_info + tower_setting_info + translations). Faction ids:
-// 1=Safir 2=Kemich 3=Avalon 4=Otis 5=Asa 6=Heikyo Castle 7=Monochrome Realm 8=Bikta
+// 1=Safir 2=Kemich 3=Avalon 4=Otis 5=A.S.A 6=Heikyo Castle 7=Monochrome Realm 8=Bikta
 
 export const FACTIONS = {
   1: 'Safir',
   2: 'Kemich',
   3: 'Avalon',
   4: 'Otis',
-  5: 'Asa',
+  5: 'A.S.A',
   6: 'Heikyo Castle',
   7: 'Monochrome Realm',
   8: 'Bikta',
@@ -143,6 +143,14 @@ export const BRAVERY_SEASONS = [
     factions: factionsOf([1, 3, 4, 8]),
     factionsRaw: [1, 3, 4, 8],
     rule: 'Healing effects dealt by all allies are reduced by 125%, and shield effects received are reduced by 125%. While receiving healing, damage dealt is increased by 50% and penetration rate is increased by 50% for 5 seconds. While receiving a shield, damage taken is reduced by 50% and resistance penetration is increased by 50% for 5 seconds.',
+  },
+  {
+    id: 26,
+    start: '2026-09-01',
+    end: '2026-09-29',
+    factions: factionsOf([2, 4, 5, 6]),
+    factionsRaw: [2, 4, 5, 6],
+    rule: 'Every 5 seconds, all units gain 2 seconds of [Tenacity]: Health cannot fall below 1 point.',
   },
 ];
 
