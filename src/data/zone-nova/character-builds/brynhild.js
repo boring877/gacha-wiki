@@ -40,24 +40,36 @@ export const brynhildBuild = {
     recommendedMemoryCards: [
       {
         name: "Afternoon Waiting",
-        effect: "Exclusive card: DEF +69%, Holy damage +33%, and a 53% Max HP shield after every ultimate (every 3 seconds at most). Perfectly mirrors her kit: defense becomes damage, shields, and Holy output all at once.",
+        effect: "Exclusive card: DEF +69%, Holy damage +33%, and a 53% Max HP shield after every ultimate.",
         priority: "Must Have",
-        note: "Exclusive card: DEF +69%, Holy damage +33%, and a 53% Max HP shield after every ultimate (every 3 seconds at most). Perfectly mirrors her kit: defense becomes damage, shields, and Holy output all at once.",
+        note: "Her signature card.",
         characterSpecific: true
       },
       {
         name: "Wrong time of appearance",
-        effect: "DEF +64%, healing below 50% HP when attacking, and +40% damage dealt while above 50% HP: a genuine stat-stick alternative that feeds her DEF scaling and stays active almost permanently behind her shields.",
+        effect: "Defense +64%. When HP is below 50%, the wearer recovers 2% of maximum HP after attacking. When HP is above 50%, damage taken is reduced by 10%, and damage dealt is increased by 40%.",
         priority: "Great",
-        note: "Best non-exclusive option. The +40% damage window (above 50% HP) is nearly permanent for her.",
-        characterSpecific: false
+        note: "Best non-exclusive option.",
+        characterSpecific: false,
+        memoryImage: "Apepcard.jpg",
+        memoryStats: {
+          hp: "6,600",
+          attack: "480",
+          defense: "690"
+        }
       },
       {
         name: "Halloween candy",
-        effect: "Crit Damage +60% plus +40% all damage above 30% HP. Turns her 55.8% talent Crit Rate into consistent burst, especially on the executing ultimate.",
+        effect: "Increases critical hit damage by 60%. When HP is above 30%, the wearer recovers 2% of their maximum HP after attacking, and all damage is increased by 40%.",
         priority: "Good",
-        note: "Crit-damage option if you want bigger ults; the 30% HP threshold is trivial for her.",
-        characterSpecific: false
+        note: "Crit damage option.",
+        characterSpecific: false,
+        memoryImage: "Ninacard.jpg",
+        memoryStats: {
+          hp: "6,600",
+          attack: "480",
+          defense: "690"
+        }
       }
     ],
     runes: {
@@ -69,13 +81,13 @@ export const brynhildBuild = {
       ],
       additionalStats: [
         "Crit Rate %",
-        "Penetration"
+        "HP %"
       ],
-      buildNote: "Three DEF-flavored 2-piece sets beat a 4-piece for her: every point of DEF is simultaneously damage, shields, and [Soul Hue] value, and her base Crit Damage is low (50%), which caps the payoff of crit-damage 4-piece bonuses. With 24% DEF and 6% Crit Rate shecrits harder AND shields harder with no HP conditions. If your client only activates two sets, run Beth 4-piece + Poki 2-piece instead. Warning: Attack/element sets are bait on her. She never uses attack power, and there is no Holy rune set, so Kryos/Anemos/Hepha/Skota do nothing.",
+      buildNote: "All-DEF 2-piece sets: every point of DEF is damage, shields, and [Soul Hue] value at once. If your client only activates two sets, run Beth 4-piece + Poki 2-piece. Attack and element sets are bait on her: she never uses attack power, and there is no Holy rune set.",
       recommendedSets: [
         {
           threeSets: ["Poki", "Kappa", "Beth"],
-          description: "24% DEF from two 2-piece bonuses (damage AND shields scale off it) plus 6% Crit Rate on top of her 55.8% talent Crit Rate. Unconditional: no HP thresholds to maintain."
+          description: "24% DEF plus 6% Crit Rate, with no HP conditions."
         }
       ],
       alternativeSets: [
@@ -87,7 +99,7 @@ export const brynhildBuild = {
           mainRune2Piece: "2-piece: Critical Rate increases by 6%",
           mainRune4Piece: "4-piece: When HP is above 80%, Critical Damage increases by 24%",
           secondaryRuneEffect: "2-piece: Defense increases by 12%",
-          description: "Two-set fallback if 2+2+2 is not active in your client. More conditional, but the biggest crit-damage payoff behind her 55.8% talent Crit Rate."
+          description: "Two-set fallback if 2+2+2 is not active in your client."
         },
         {
           name: "Poki 4-piece + Beth 2-piece",
@@ -97,7 +109,7 @@ export const brynhildBuild = {
           mainRune2Piece: "2-piece: Defense increases by 12%",
           mainRune4Piece: "4-piece: Shield effect increases by 20%",
           secondaryRuneEffect: "2-piece: Critical Rate increases by 6%",
-          description: "Frontline tank variant for tower and long fights: +20% shield effect on her dash shields and Dupe 1 stack shields keeps her at full HP forever. Costs damage, buys immovability."
+          description: "Frontline tank variant for tower and long fights."
         }
       ]
     },
@@ -132,7 +144,7 @@ export const brynhildBuild = {
           "HP (%)",
           "Defense (%)"
         ],
-        description: "Defense % multiplies her damage, her shields, and her passive stacks at once. Crit Damage is the offensive alternative."
+        description: "Defense % for damage and shields, or Crit Damage % for offense."
       },
       "5": {
         name: "Position 5: Variable Main Stats",

@@ -9,6 +9,7 @@ import { ALL_CHARACTER_BUILDS } from '../../../../data/zone-nova/character-build
 import { getCharacterBySlug } from '../../../../data/zone-nova/characters.js';
 import { apepData } from '../../../../data/zone-nova/characters/apep.js';
 import { helaData } from '../../../../data/zone-nova/characters/hela.js';
+import { brynhildData } from '../../../../data/zone-nova/characters/brynhild.js';
 import { naiyaData } from '../../../../data/zone-nova/characters/naiya.js';
 import { pennyData } from '../../../../data/zone-nova/characters/penny.js';
 import { apolloData } from '../../../../data/zone-nova/characters/apollo.js';
@@ -78,6 +79,8 @@ const finalBuild = build || fallbackBuild;
 const characterData =
   finalCharacter.slug === 'apep'
     ? apepData
+    : finalCharacter.slug === 'brynhild'
+      ? brynhildData
     : finalCharacter.slug === 'hela'
       ? helaData
       : finalCharacter.slug === 'naiya'
