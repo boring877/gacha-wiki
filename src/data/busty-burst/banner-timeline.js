@@ -5,10 +5,69 @@
  */
 
 export const bannerTimelineData = [
-  // #38 - Bridal Festival / Bride of Luck Theresia & Bride of Purity Giselle (Sep 1 - Sep 8) - CURRENT
+  // #41 - "The Cave Lurker" / Ilugio & Ange (Sep 15 - Sep 29) - CURRENT
+  {
+    id: 'cave-lurker-2026',
+    title: '"The Cave Lurker" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: 'Ilugio',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Ange',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+    ],
+    startDate: '2026-09-15T04:00:00Z',
+    endDate: '2026-09-29T04:00:00Z',
+    description:
+      '"The Cave Lurker" Event Summon! New Paladin Rate Up! Ilugio (SSR Water Physical Attacker) and Ange (SSR Fire Magic Attacker). Guaranteed SR Paladin when performing a 10-pull.',
+    note: 'Two-week event summon, end time from game data (2026/09/29 04:00 UTC), start from the rotation switch on Sep 15.',
+    status: 'current',
+    image: 'banner-cave-lurker',
+  },
+  // #40 - 300-Day Launch Anniversary Summon (Sep 15 - Sep 29) - CURRENT
+  {
+    id: 'anniversary-300day-2026',
+    title: '"300-Day Launch Anniversary" Summon',
+    bannerType: 'event',
+    featuredPaladins: [],
+    startDate: '2026-09-15T04:00:00Z',
+    endDate: '2026-09-29T04:00:00Z',
+    description:
+      '300-Day Launch Anniversary Summon! A special anniversary summon with a guaranteed SSR Paladin. No single rate-up Paladin.',
+    note: 'Anniversary special summon running alongside "The Cave Lurker". End time from game data (2026/09/29 04:00 UTC).',
+    status: 'current',
+    image: 'banner-anniversary-300day',
+  },
+  // #39 - "FANZINE" 3rd / Alluring Naked Apron Zilka (Sep 8 - Sep 15) - ENDED
+  {
+    id: 'fanzine-3rd-2026',
+    title: '"FANZINE" 3rd Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: '[Alluring Naked Apron] Zilka',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+    ],
+    startDate: '2026-09-08T04:00:00Z',
+    endDate: '2026-09-15T04:00:00Z',
+    description:
+      '"FANZINE" 3rd Event Summon! New Paladin Rate Up! [Alluring Naked Apron] Zilka (SSR Mind Magic Attacker). Guaranteed SR Paladin when performing a 10-pull.',
+    note: '[Alluring Naked Apron] Zilka (characterId 2143). End time from game data (2026/09/15 04:00 UTC); start derived from the standard 7-day EN rotation like FANZINE 1st and 2nd.',
+    status: 'ended',
+    image: 'banner-fanzine-3rd',
+  },
+  // #38 - "Bridal Blessing" / Bride of Luck Theresia & Bride of Purity Giselle (Sep 1 - Sep 15) - ENDED
   {
     id: 'bridal-festival-2026',
-    title: '"Blessing of the Brides" Event Summon',
+    title: '"Bridal Blessing" Event Summon',
     bannerType: 'event',
     featuredPaladins: [
       {
@@ -23,11 +82,11 @@ export const bannerTimelineData = [
       },
     ],
     startDate: '2026-09-01T04:00:00Z',
-    endDate: '2026-09-08T04:00:00Z',
+    endDate: '2026-09-15T04:00:00Z',
     description:
-      '"Blessing of the Brides" Event Summon! Rate up for [The Bride of Luck] Theresia and [The Bride of Purity] Giselle. Every summer solstice the town holds the Bridal Festival, where three brides scatter flower petals to bring blessings of happiness — but the Lord of Zoakis is determined to ruin it.',
-    note: 'Bridal Festival event. [The Bride of Seduction] Ophelio (characterId 2142) is NOT on the banner — she is obtained from the event itself (SR event reward). Dates assumed from the current EN rotation (Sep 1-8) — confirm in-game.',
-    status: 'current',
+      '"Bridal Blessing" Event Summon! Rate up for [The Bride of Luck] Theresia and [The Bride of Purity] Giselle. Every summer solstice the town holds the Bridal Festival, where three brides scatter flower petals to bring blessings of happiness, but the Lord of Zoakis is determined to ruin it.',
+    note: 'Bridal Festival event. [The Bride of Seduction] Ophelio (characterId 2142) is NOT on the banner, she is obtained from the event itself (SR event reward). Two-week banner: end time from game data (2026/09/15 04:00 UTC).',
+    status: 'ended',
     image: 'banner-bridal-festival',
   },
   // #37 - "No more bet" / Gil & Bonita (Aug 25 - Sep 1) - ENDED
@@ -981,6 +1040,126 @@ seasonalCharactersData.forEach(season => {
  * Guild Battle pickup summons, tracked separately from the main timeline.
  */
 export const guildBattleData = [
+  // Competitive Battle HOLY pick up (Sep 15 - Sep 22) - CURRENT
+  {
+    id: 'competitive-battle-holy-2026-09',
+    title: 'Competitive Battle・HOLY Pick Up Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: '[Golem Summoner] Nerys',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+      {
+        name: '[Mage of Bastinton] Sobrina',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Theresia',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Bianca',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Sobrina',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+      {
+        name: 'Liesel',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+    ],
+    startDate: '2026-09-15T04:00:00Z',
+    endDate: '2026-09-22T04:00:00Z',
+    description:
+      'Competitive Battle HOLY support summon! Rate up for Holy-attribute paladins Nerys, Sobrina (Mage of Bastinton), Theresia, Bianca, Sobrina and Liesel for the HOLY Competitive Battle.',
+    note: 'Attribute pickup summon for the Competitive Battle HOLY season. End time from game data (2026/09/22 04:00 UTC).',
+    status: 'current',
+    image: 'banner-competitive-battle-holy',
+  },
+  // Competitive Battle WATER pick up (Sep 1 - Sep 8) - ENDED
+  {
+    id: 'competitive-battle-water-2026-09',
+    title: 'Competitive Battle・WATER Pick Up Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: '[Hypnotic Dancer] Messeria',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+      {
+        name: 'Estiriel',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Luca',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Meinias',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Hisara',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Shaty',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Lucie',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Magdalena',
+        rarity: 'SSR',
+        type: 'Tank',
+      },
+      {
+        name: 'Nerys',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Messeria',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+      {
+        name: 'Artemis',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Celestia',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+    ],
+    startDate: '2026-09-01T04:00:00Z',
+    endDate: '2026-09-08T04:00:00Z',
+    description:
+      'Competitive Battle WATER support summon! Rate up for Water-attribute paladins for the WATER Competitive Battle.',
+    note: 'Attribute pickup summon for the Competitive Battle WATER season. End time from game data (2026/09/08 04:00 UTC).',
+    status: 'ended',
+    image: 'banner-competitive-battle-water',
+  },
   {
     id: 'guild-battle-wind-2026-09',
     title: 'Guild Battle・WIND Pick Up Summon',
