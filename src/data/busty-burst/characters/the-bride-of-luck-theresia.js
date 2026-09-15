@@ -124,11 +124,13 @@ export const info = {
 
 
 
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Look, the bride is here!",
+      "name": "Look, here comes the bride!",
       "icon": "skill001/skill0014",
       "description": "Applies Magic Attack 15%+30 UP to all allies for 10 seconds and Magic Critical Damage 40 UP for 10 seconds",
       "descriptionLv1": "Applies Magic Attack 15%+30 UP to all allies for 10 seconds and Magic Critical Damage 40 UP for 10 seconds",
@@ -201,7 +203,7 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Beloved Kiss - Happy Bouquet",
+      "name": "Liebling・kuss・Strauss",
       "icon": "skill001/skill0022_1",
       "description": "Restores HP by to all allies and inflicts Accuracy UP(LV 1) for 10 seconds and Action Speed UP(LV 1) for 10 seconds",
       "effect": "2000% + 1200",
@@ -222,7 +224,7 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Beloved Kiss - Happy Bouquet",
+      "name": "Liebling・kuss・Strauss",
       "icon": "skill001/skill0022_2",
       "description": "Restores HP by to all allies and inflicts Accuracy UP(LV 2) for 10 seconds and Action Speed UP(LV 2) for 10 seconds",
       "effect": "2300% + 1400",
@@ -243,7 +245,7 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Beloved Kiss - Happy Bouquet",
+      "name": "Liebling・kuss・Strauss",
       "icon": "skill001/skill0022_3",
       "description": "Restores HP by to all allies and inflicts Accuracy UP(LV 3) for 10 seconds and Action Speed UP(LV 3) for 10 seconds",
       "effect": "2500% + 1550",
@@ -264,7 +266,7 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Beloved Kiss - Happy Bouquet",
+      "name": "Liebling・kuss・Strauss",
       "icon": "skill001/skill0022_4",
       "description": "Restores HP by to all allies and inflicts Accuracy UP(LV 4) for 10 seconds and Action Speed UP(LV 4) for 10 seconds",
       "effect": "2700% + 1700",
@@ -285,7 +287,7 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Beloved Kiss - Happy Bouquet",
+      "name": "Liebling・kuss・Strauss",
       "icon": "skill001/skill0022_5",
       "description": "Restores HP by to all allies and inflicts Accuracy UP(LV 5) for 10 seconds and Action Speed UP(LV 5) for 10 seconds",
       "effect": "2800% + 1800",

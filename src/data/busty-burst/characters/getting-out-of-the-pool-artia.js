@@ -90,18 +90,20 @@ export const info = {
 
 
 
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Beat In Small Shield",
+      "name": "Beat in Buckler",
       "icon": "skill001/skill0010",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-40 DOWN for 6 seconds and Block-11 DOWN for 6 seconds",
       "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-40 DOWN for 6 seconds and Block-11 DOWN for 6 seconds",
       "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Magic Defense-21%-220 DOWN for 6 seconds and Block-23 DOWN for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.0,
-      "damageScaling": "110% ATK",
+      "damageScaling": "110.00000000000001% ATK",
       "baseDamage": "+150",
       "levelGrowth": "+6",
       "lvl1": "110% + 150",
@@ -130,11 +132,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "SB (SwimmingBoards) Boomerang",
+      "name": "SB（SwimmingBoards）boomerang",
       "icon": "skill001/skill0011",
-      "description": "3 to enemiesmagic damage and inflicts Stun for 2 seconds and Action Speed -20%DOWN for 10 seconds",
-      "descriptionLv1": "3 to enemiesmagic damage and inflicts Stun for 2 seconds and Action Speed -20%DOWN for 10 seconds",
-      "descriptionLv90": "3 to enemiesmagic damage and inflicts Stun for 2 seconds and Action Speed -20%DOWN for 10 seconds",
+      "description": "Deals magic damage to 3 farthest enemy, inflicts Stun for 2 seconds and Action Speed -20%DOWN for 10 seconds",
+      "descriptionLv1": "Deals magic damage to 3 farthest enemy, inflicts Stun for 2 seconds and Action Speed -20%DOWN for 10 seconds",
+      "descriptionLv90": "Deals magic damage to 3 farthest enemy, inflicts Stun for 2 seconds and Action Speed -20%DOWN for 10 seconds",
       "target": "Back Enemy",
       "castTime": 1.0,
       "damageScaling": "90% ATK",
@@ -166,9 +168,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Lethal - Board Blade",
+      "name": "Kickboard Blade!",
       "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 3 seconds and Accuracy DOWN(LV 1) for 10 seconds",
+      "description": "Deals magic damage to the 3 nearest enemiesand inflicts Dispel for 3 seconds and Accuracy DOWN(LV 1) for 10 seconds",
       "effect": "390% + 500",
       "buffEffects": [
         {
@@ -187,9 +189,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Lethal - Board Blade",
+      "name": "Kickboard Blade!",
       "icon": "skill001/skill0012_2",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 4 seconds and Accuracy DOWN(LV 2) for 10 seconds",
+      "description": "Deals magic damage to the 3 nearest enemiesand inflicts Dispel for 4 seconds and Accuracy DOWN(LV 2) for 10 seconds",
       "effect": "459% + 600",
       "buffEffects": [
         {
@@ -208,9 +210,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Lethal - Board Blade",
+      "name": "Kickboard Blade!",
       "icon": "skill001/skill0012_3",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 4 seconds and Accuracy DOWN(LV 3) for 10 seconds",
+      "description": "Deals magic damage to the 3 nearest enemiesand inflicts Dispel for 4 seconds and Accuracy DOWN(LV 3) for 10 seconds",
       "effect": "509% + 700",
       "buffEffects": [
         {
@@ -229,9 +231,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Lethal - Board Blade",
+      "name": "Kickboard Blade!",
       "icon": "skill001/skill0012_4",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 5 seconds and Accuracy DOWN(LV 4) for 10 seconds",
+      "description": "Deals magic damage to the 3 nearest enemiesand inflicts Dispel for 5 seconds and Accuracy DOWN(LV 4) for 10 seconds",
       "effect": "550% + 800",
       "buffEffects": [
         {
@@ -250,9 +252,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Lethal - Board Blade",
+      "name": "Kickboard Blade!",
       "icon": "skill001/skill0012_5",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Dispel for 5 seconds and Accuracy DOWN(LV 5) for 10 seconds",
+      "description": "Deals magic damage to the 3 nearest enemiesand inflicts Dispel for 5 seconds and Accuracy DOWN(LV 5) for 10 seconds",
       "effect": "570% + 900",
       "buffEffects": [
         {
@@ -275,17 +277,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Max HP +",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Large), Max HP UP (Medium)",
       "effect": "Magic Attack + (+389), Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         },
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     },
@@ -293,17 +298,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Magic Critical Damage+",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Magic Critical Damage UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Magic Critical Damage+ (+90)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Magic Critical Damage+",
           "value": 90,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Medium)"
         }
       ]
     }
@@ -335,7 +343,7 @@ export const skills = {
     "speedLabel": "Fast",
     "speedValue": "0.55"
   },
-  "slug": "getting-out-of-the-pool-artia"
+  "slug": "fresh-out-of-the-pool-artia"
 };
 
 export const stats = {

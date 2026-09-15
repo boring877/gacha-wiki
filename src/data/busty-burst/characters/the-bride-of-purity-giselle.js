@@ -124,11 +124,13 @@ export const info = {
 
 
 
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Clair Storia",
+      "name": "CULEAR STORYA",
       "icon": "skill001/skill0010",
       "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 6 seconds and Burn(HP --150 per second) for 15 seconds",
       "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 6 seconds and Burn(HP --150 per second) for 15 seconds",
@@ -164,7 +166,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Does it suit me?",
+      "name": "Is it good?",
       "icon": "skill001/skill0019",
       "description": "Applies Action Speed 14%UP to all allies for 15 seconds and Hit-Based Magic Damage UP(40%+450, 3 hit(s)) for 15 seconds",
       "descriptionLv1": "Applies Action Speed 14%UP to all allies for 15 seconds and Hit-Based Magic Damage UP(40%+450, 3 hit(s)) for 15 seconds",
@@ -201,7 +203,7 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Tobt Love Song",
+      "name": "Taubte Liebeslieder",
       "icon": "skill001/skill0006_1",
       "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 1) for 15 secondsand applies Burn(LV 1) to self for 15 seconds",
       "effect": "1100% + 800",
@@ -222,7 +224,7 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Tobt Love Song",
+      "name": "Taubte Liebeslieder",
       "icon": "skill001/skill0006_2",
       "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 2) for 15 secondsand applies Burn(LV 2) to self for 15 seconds",
       "effect": "1320% + 1000",
@@ -243,7 +245,7 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Tobt Love Song",
+      "name": "Taubte Liebeslieder",
       "icon": "skill001/skill0006_3",
       "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 3) for 15 secondsand applies Burn(LV 3) to self for 15 seconds",
       "effect": "1470% + 1150",
@@ -264,7 +266,7 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Tobt Love Song",
+      "name": "Taubte Liebeslieder",
       "icon": "skill001/skill0006_4",
       "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 4) for 15 secondsand applies Burn(LV 4) to self for 15 seconds",
       "effect": "1590% + 1300",
@@ -285,7 +287,7 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Tobt Love Song",
+      "name": "Taubte Liebeslieder",
       "icon": "skill001/skill0006_5",
       "description": "Deals magic damage to the nearest enemy and inflicts Burn(LV 5) for 15 secondsand applies Burn(LV 5) to self for 15 seconds",
       "effect": "1700% + 1400",

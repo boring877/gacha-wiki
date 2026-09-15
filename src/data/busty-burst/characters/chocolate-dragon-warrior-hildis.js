@@ -90,11 +90,13 @@ export const info = {
 
 
 
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Take it, you want it too right!",
+      "name": "You Want This, Right? Take It!",
       "icon": "skill001/skill0010",
       "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 6 seconds",
       "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 6 seconds",
@@ -122,7 +124,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Ugh... is this the way of the strong...?",
+      "name": "mph… This Is the Path to True Strength?",
       "icon": "skill001/skill0019",
       "description": "Applies Magic Critical Damage 50 UP to self for 10 seconds and MP Regeneration 40 for 4 seconds",
       "descriptionLv1": "Applies Magic Critical Damage 50 UP to self for 10 seconds and MP Regeneration 40 for 4 seconds",
@@ -159,9 +161,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Shameful Burst Sweet Cannon",
+      "name": "Shameful Explosion: Sweet-Sweet Cannon",
       "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the nearest enemy and inflicts BlockDOWN(LV 1) for 10 seconds and Magic Defense DOWN(LV 1) for 10 seconds , 2s Charm for",
+      "description": "Deals magic damage to the nearest enemy and inflicts BlockDOWN(LV 1) for 10 seconds and Magic Defense DOWN(LV 1) for 10 seconds, and Charm for 2 seconds",
       "effect": "1400% + 700",
       "buffEffects": [
         {
@@ -186,9 +188,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Shameful Burst Sweet Cannon",
+      "name": "Shameful Explosion: Sweet-Sweet Cannon",
       "icon": "skill001/skill0012_2",
-      "description": "Deals magic damage to the nearest enemy and inflicts BlockDOWN(LV 2) for 10 seconds and Magic Defense DOWN(LV 2) for 10 seconds , 3s Charm for",
+      "description": "Deals magic damage to the nearest enemy and inflicts BlockDOWN(LV 2) for 10 seconds and Magic Defense DOWN(LV 2) for 10 seconds, and Charm for 3 seconds",
       "effect": "1650% + 900",
       "buffEffects": [
         {
@@ -213,9 +215,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Shameful Burst Sweet Cannon",
+      "name": "Shameful Explosion: Sweet-Sweet Cannon",
       "icon": "skill001/skill0012_3",
-      "description": "Deals magic damage to the nearest enemy and inflicts BlockDOWN(LV 3) for 10 seconds and Magic Defense DOWN(LV 3) for 10 seconds , 3s Charm for",
+      "description": "Deals magic damage to the nearest enemy and inflicts BlockDOWN(LV 3) for 10 seconds and Magic Defense DOWN(LV 3) for 10 seconds, and Charm for 3 seconds",
       "effect": "1950% + 1050",
       "buffEffects": [
         {
@@ -240,9 +242,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Shameful Burst Sweet Cannon",
+      "name": "Shameful Explosion: Sweet-Sweet Cannon",
       "icon": "skill001/skill0012_4",
-      "description": "Deals magic damage to the nearest enemy and inflicts BlockDOWN(LV 4) for 10 seconds and Magic Defense DOWN(LV 4) for 10 seconds , 4s Charm for",
+      "description": "Deals magic damage to the nearest enemy and inflicts BlockDOWN(LV 4) for 10 seconds and Magic Defense DOWN(LV 4) for 10 seconds, and Charm for 4 seconds",
       "effect": "2050% + 1200",
       "buffEffects": [
         {
@@ -267,9 +269,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Shameful Burst Sweet Cannon",
+      "name": "Shameful Explosion: Sweet-Sweet Cannon",
       "icon": "skill001/skill0012_5",
-      "description": "Deals magic damage to the nearest enemy and inflicts BlockDOWN(LV 5) for 10 seconds and Magic Defense DOWN(LV 5) for 10 seconds , 4s Charm for",
+      "description": "Deals magic damage to the nearest enemy and inflicts BlockDOWN(LV 5) for 10 seconds and Magic Defense DOWN(LV 5) for 10 seconds, and Charm for 4 seconds",
       "effect": "2100% + 1300",
       "buffEffects": [
         {
@@ -298,17 +300,20 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Magic Critical Damage+",
       "icon": "skill001/skill1001",
+      "description": "Gain Magic Attack UP (Large), Magic Critical Damage UP (Medium)",
       "effect": "Magic Attack + (+389), Magic Critical Damage+ (+90)",
       "effectValues": [
         {
           "name": "Magic Attack +",
           "value": 389,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Attack UP (Large)"
         },
         {
           "name": "Magic Critical Damage+",
           "value": 90,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Critical Damage UP (Medium)"
         }
       ]
     },
@@ -316,17 +321,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Max HP +",
       "icon": "skill001/skill1001",
+      "description": "Gain Ultimate Damage UP (Large), Max HP UP (Medium)",
       "effect": "Ultimate Damage + (+15%), Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     }
@@ -358,7 +366,7 @@ export const skills = {
     "speedLabel": "Very Fast",
     "speedValue": "0.36"
   },
-  "slug": "chocolate-dragon-warrior-hildis"
+  "slug": "chocolate-dragon-knight-hildis"
 };
 
 export const stats = {

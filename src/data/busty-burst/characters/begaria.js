@@ -119,6 +119,8 @@ export const info = {
 
 
 
+
+
 export const skills = {
   "skills": [
     {

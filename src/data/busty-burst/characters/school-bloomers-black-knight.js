@@ -124,15 +124,17 @@ export const info = {
 
 
 
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Twin Demon Fist",
       "icon": "skill001/skill0008",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 5 seconds and Block-11 DOWN for 5 seconds, enemy has status, deal damage +30%",
-      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 5 seconds and Block-11 DOWN for 5 seconds, enemy has status, deal damage +30%",
-      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-320 DOWN for 5 seconds and Block-23 DOWN for 5 seconds, enemy has status, deal damage +30%",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 5 seconds and Block-11 DOWN for 5 seconds. When enemy possessed Curse, damage +30",
+      "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-50 DOWN for 5 seconds and Block-11 DOWN for 5 seconds. When enemy possessed Curse, damage +30",
+      "descriptionLv90": "Deals magic damage to the nearest enemy and inflicts Magic Defense-23%-320 DOWN for 5 seconds and Block-23 DOWN for 5 seconds. When enemy possessed Curse, damage +30",
       "target": "Nearest Enemy",
       "castTime": 0.75,
       "damageScaling": "350% ATK",
@@ -166,9 +168,9 @@ export const skills = {
       "slot": 3,
       "name": "Nightmare Fist",
       "icon": "skill001/skill0011",
-      "description": "Deals magic damage to the 3 nearest enemies, applies 5s, 8s Blind",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies, applies 5s, 8s Blind",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies, applies 5s, 8s Blind",
+      "description": "Deals magic damage to the 3 nearest enemies. Also inflicts Curse for 5 seconds and Blind for 8 seconds",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies. Also inflicts Curse for 5 seconds and Blind for 8 seconds",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies. Also inflicts Curse for 5 seconds and Blind for 8 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.75,
       "damageScaling": "110.00000000000001% ATK",
@@ -200,9 +202,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Heavenly Descent God's Broadcast",
+      "name": "The God-Shattering Barrage",
       "icon": "skill001/skill0012_1",
-      "description": "Deals magic damage to the nearest enemy, applies 5s(LV 1)and applies Fear(MP --50 per secondBlock 0) to self for 5 seconds",
+      "description": "Deals magic damage to the nearest enemy. Also Inflicts Fear(LV 1) to the enemy for 5 seconds and applies Fear(MP --50 per secondBlock 0) to self for 5 seconds",
       "effect": "1200% + 1000",
       "buffEffects": [
         {
@@ -221,9 +223,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Heavenly Descent God's Broadcast",
+      "name": "The God-Shattering Barrage",
       "icon": "skill001/skill0012_2",
-      "description": "Deals magic damage to the nearest enemy, applies 5s(LV 2)and applies Fear(MP --70 per secondBlock 0) to self for 5 seconds",
+      "description": "Deals magic damage to the nearest enemy. Also Inflicts Fear(LV 1) to the enemy for 5 seconds and applies Fear(MP --70 per secondBlock 0) to self for 5 seconds",
       "effect": "1440% + 1250",
       "buffEffects": [
         {
@@ -242,9 +244,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Heavenly Descent God's Broadcast",
+      "name": "The God-Shattering Barrage",
       "icon": "skill001/skill0012_3",
-      "description": "Deals magic damage to the nearest enemy, applies 5s(LV 3)and applies Fear(MP --80 per secondBlock 0) to self for 5 seconds",
+      "description": "Deals magic damage to the nearest enemy. Also Inflicts Fear(LV 1) to the enemy for 5 seconds and applies Fear(MP --80 per secondBlock 0) to self for 5 seconds",
       "effect": "1620% + 1500",
       "buffEffects": [
         {
@@ -263,9 +265,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Heavenly Descent God's Broadcast",
+      "name": "The God-Shattering Barrage",
       "icon": "skill001/skill0012_4",
-      "description": "Deals magic damage to the nearest enemy, applies 5s(LV 4)and applies Fear(MP --90 per secondBlock 0) to self for 5 seconds",
+      "description": "Deals magic damage to the nearest enemy. Also Inflicts Fear(LV 1) to the enemy for 5 seconds and applies Fear(MP --90 per secondBlock 0) to self for 5 seconds",
       "effect": "1739% + 1700",
       "buffEffects": [
         {
@@ -284,9 +286,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Heavenly Descent God's Broadcast",
+      "name": "The God-Shattering Barrage",
       "icon": "skill001/skill0012_5",
-      "description": "Deals magic damage to the nearest enemy, applies 5s(LV 5)and applies Fear(MP --100 per secondBlock 0) to self for 5 seconds",
+      "description": "Deals magic damage to the nearest enemy. Also Inflicts Fear(LV 1) to the enemy for 5 seconds and applies Fear(MP --100 per secondBlock 0) to self for 5 seconds",
       "effect": "1800% + 1900",
       "buffEffects": [
         {
@@ -348,7 +350,7 @@ export const skills = {
       ]
     }
   ],
-  "name": "School bloomers: Black Knight",
+  "name": "School Buruma: Black Knight",
   "id": 2138,
   "rarity": "SSR",
   "element": "Dark",
@@ -375,7 +377,7 @@ export const skills = {
     "speedLabel": "Fast",
     "speedValue": "0.55"
   },
-  "slug": "school-bloomers-black-knight"
+  "slug": "school-buruma-black-knight"
 };
 
 export const stats = {

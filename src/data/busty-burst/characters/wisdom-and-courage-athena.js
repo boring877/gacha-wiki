@@ -91,15 +91,17 @@ export const info = {
 
 
 
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Polycos",
       "icon": "skill001/skill0007",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -11%-25 DOWN for 6 seconds and Magic Attack -11%-25 DOWN for 6 seconds , 6 Block-13 DOWN",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Attack -11%-25 DOWN for 6 seconds and Magic Attack -11%-25 DOWN for 6 seconds , 6 Block-13 DOWN",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Attack -11%-205 DOWN for 6 seconds and Magic Attack -11%-205 DOWN for 6 seconds , 6 Block-26 DOWN",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -11%-25 DOWN for 6 seconds and Magic Attack -11%-25 DOWN for 6 seconds, 6s Block-13 DOWN",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Attack -11%-25 DOWN for 6 seconds and Magic Attack -11%-25 DOWN for 6 seconds, 6s Block-13 DOWN",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Attack -11%-205 DOWN for 6 seconds and Magic Attack -11%-205 DOWN for 6 seconds, 6s Block-26 DOWN",
       "target": "Nearest Enemy",
       "castTime": 0.88,
       "damageScaling": "380% ATK",
@@ -141,9 +143,9 @@ export const skills = {
       "slot": 3,
       "name": "Paladion",
       "icon": "skill001/skill0025",
-      "description": "Restores own HP by and inflicts Physical Defense 30%+190 UP for 12 seconds and Magic Defense 30%+190 UP for 12 seconds , all allies12 Hit-Based Shield (40%+4 hit(s))",
-      "descriptionLv1": "Restores own HP by and inflicts Physical Defense 30%+190 UP for 12 seconds and Magic Defense 30%+190 UP for 12 seconds , all allies12 Hit-Based Shield (40%+4 hit(s))",
-      "descriptionLv90": "Restores own HP by and inflicts Physical Defense 30%+460 UP for 12 seconds and Magic Defense 30%+460 UP for 12 seconds , all allies12 Hit-Based Shield (40%+4 hit(s))",
+      "description": "Restores own HP by and inflicts Physical Defense 30%+190 UP for 12 seconds and Magic Defense 30%+190 UP for 12 seconds, all allies 12s Hit-Based Shield (40%+4 hit(s))",
+      "descriptionLv1": "Restores own HP by and inflicts Physical Defense 30%+190 UP for 12 seconds and Magic Defense 30%+190 UP for 12 seconds, all allies 12s Hit-Based Shield (40%+4 hit(s))",
+      "descriptionLv90": "Restores own HP by and inflicts Physical Defense 30%+460 UP for 12 seconds and Magic Defense 30%+460 UP for 12 seconds, all allies 12s Hit-Based Shield (40%+4 hit(s))",
       "target": "Self",
       "castTime": 0.88,
       "damageScaling": "2000% ATK",
@@ -186,7 +188,7 @@ export const skills = {
       "rank": 1,
       "name": "Bringing regret to the foolish with knowledge.",
       "icon": "skill001/skill0012_1",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit, inflict 3s , 5 , 10 Physical Defense DOWN(LV 1)",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit, applies 3s, 5s, 10s Physical Defense DOWN(LV 1)",
       "effect": "1400% + 800",
       "buffEffects": [
         {
@@ -213,7 +215,7 @@ export const skills = {
       "rank": 2,
       "name": "Bringing regret to the foolish with knowledge.",
       "icon": "skill001/skill0012_2",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit, inflict 4s , 6 , 10 Physical Defense DOWN(LV 2)",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit, applies 4s, 6s, 10s Physical Defense DOWN(LV 2)",
       "effect": "1680% + 1000",
       "buffEffects": [
         {
@@ -240,7 +242,7 @@ export const skills = {
       "rank": 3,
       "name": "Bringing regret to the foolish with knowledge.",
       "icon": "skill001/skill0012_3",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit, inflict 4s , 6 , 10 Physical Defense DOWN(LV 3)",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit, applies 4s, 6s, 10s Physical Defense DOWN(LV 3)",
       "effect": "1889% + 1200",
       "buffEffects": [
         {
@@ -267,7 +269,7 @@ export const skills = {
       "rank": 4,
       "name": "Bringing regret to the foolish with knowledge.",
       "icon": "skill001/skill0012_4",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit, inflict 5s , 7 , 10 Physical Defense DOWN(LV 4)",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit, applies 5s, 7s, 10s Physical Defense DOWN(LV 4)",
       "effect": "2030% + 1350",
       "buffEffects": [
         {
@@ -294,7 +296,7 @@ export const skills = {
       "rank": 5,
       "name": "Bringing regret to the foolish with knowledge.",
       "icon": "skill001/skill0012_5",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit, inflict 5s , 7 , 10 Physical Defense DOWN(LV 5)",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit, applies 5s, 7s, 10s Physical Defense DOWN(LV 5)",
       "effect": "2100% + 1500",
       "buffEffects": [
         {
@@ -323,22 +325,14 @@ export const skills = {
       "slot": 1,
       "name": "Damage UP, Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1002",
-      "effect": "Damage UP (+9999%), Physical Defense + (0), Magic Defense+ (0)",
+      "description": "Gain Damage +UP (Cannot be Cleansed), Physical Defense UP (Cannot be Cleansed), Magic Defense UP (Cannot be Cleansed)",
+      "effect": "Damage UP (+9999%)",
       "effectValues": [
         {
           "name": "Damage UP",
           "value": 9999,
-          "type": "percent"
-        },
-        {
-          "name": "Physical Defense +",
-          "value": 0,
-          "type": "flat"
-        },
-        {
-          "name": "Magic Defense+",
-          "value": 0,
-          "type": "flat"
+          "type": "percent",
+          "gameText": "Damage +UP (Cannot be Cleansed)"
         }
       ]
     },
@@ -346,17 +340,20 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+4.5%)",
+      "description": "Gain Ultimate Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
           "name": "Ultimate Damage +",
           "value": 15,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Ultimate Damage UP (Large)"
         },
         {
           "name": "Physical Critical Damage+",
-          "value": 4.5,
-          "type": "percent"
+          "value": 90,
+          "type": "percent",
+          "gameText": "Physical Critical Damage UP (Medium)"
         }
       ]
     }
@@ -364,7 +361,7 @@ export const skills = {
   "name": "Goddess of Wisdom and Courage: Athena",
   "id": 2207,
   "rarity": "SSR",
-  "element": "Light",
+  "element": "Holy",
   "role": "Tank",
   "tags": [
     "Buff",
@@ -389,7 +386,7 @@ export const skills = {
     "speedLabel": "Very Fast",
     "speedValue": "0.36"
   },
-  "slug": "wisdom-and-courage-athena"
+  "slug": "goddess-of-wisdom-and-courage-athena"
 };
 
 export const stats = {

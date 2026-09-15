@@ -126,15 +126,17 @@ export const info = {
 
 
 
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Delicious Magic♪",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed 20%UP to self for 12 seconds, MP Recovery 200, all alliesinflict 8s Magic Attack 18%+35 UP",
-      "descriptionLv1": "Applies Action Speed 20%UP to self for 12 seconds, MP Recovery 200, all alliesinflict 8s Magic Attack 18%+35 UP",
-      "descriptionLv90": "Applies Action Speed 20%UP to self for 12 seconds, MP Recovery 200, all alliesinflict 8s Magic Attack 18%+665 UP",
+      "description": "Applies Action Speed 20%UP to self for 12 seconds. MP Recovery 200. Also applies Magic Attack 18%+35 UP to all allies for 8 seconds",
+      "descriptionLv1": "Applies Action Speed 20%UP to self for 12 seconds. MP Recovery 200. Also applies Magic Attack 18%+35 UP to all allies for 8 seconds",
+      "descriptionLv90": "Applies Action Speed 20%UP to self for 12 seconds. MP Recovery 200. Also applies Magic Attack 18%+665 UP to all allies for 8 seconds",
       "target": "Self",
       "castTime": 1.1,
       "damageScaling": null,
@@ -171,11 +173,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "How is it...? Does it suit me...?",
+      "name": "So……? Is it OK……?",
       "icon": "skill001/skill0011",
-      "description": "2 enemies 8s Blind and Physical Attack -15%-40 DOWN for 10 seconds, 10s Magic Attack -15%-40 DOWN",
-      "descriptionLv1": "2 enemies 8s Blind and Physical Attack -15%-40 DOWN for 10 seconds, 10s Magic Attack -15%-40 DOWN",
-      "descriptionLv90": "2 enemies 8s Blind and Physical Attack -15%-4000 DOWN for 10 seconds, 10s Magic Attack -15%-40 DOWN",
+      "description": "Inflicts BLIND to the farthest 2 enemy, Physical Attack -15%-40 DOWN for 10 seconds and Magic Attack -15%-40 DOWN for 10 seconds",
+      "descriptionLv1": "Inflicts BLIND to the farthest 2 enemy, Physical Attack -15%-40 DOWN for 10 seconds and Magic Attack -15%-40 DOWN for 10 seconds",
+      "descriptionLv90": "Inflicts BLIND to the farthest 2 enemy, Physical Attack -15%-4000 DOWN for 10 seconds and Magic Attack -15%-40 DOWN for 10 seconds",
       "target": "Farthest Enemy",
       "castTime": 1.1,
       "damageScaling": null,
@@ -216,9 +218,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Cute Heart Shot!",
+      "name": "Cutie Heart Shot!",
       "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the farthest enemy, before Ultimate activationApplies Magic Attack UP(LV 1) to self for 8 seconds, enemy hasBlind status, before Ultimate activation applies to self 8s Mind Type ATK UP(LV 1)",
+      "description": "Deals magic damage to the farthest enemy. Applies Magic Attack UP(LV 1) to self for 8 seconds before casting ultimate. If the enemy possessed BLIND, applies Mind Type ATK UP(LV 1) to self for 8 seconds before casting ultimate",
       "effect": "1000% + 1200",
       "buffEffects": [
         {
@@ -237,9 +239,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Cute Heart Shot!",
+      "name": "Cutie Heart Shot!",
       "icon": "skill001/skill0006_2",
-      "description": "Deals magic damage to the farthest enemy, before Ultimate activationApplies Magic Attack UP(LV 2) to self for 8 seconds, enemy hasBlind status, before Ultimate activation applies to self 8s Mind Type ATK UP(LV 2)",
+      "description": "Deals magic damage to the farthest enemy. Applies Magic Attack UP(LV 2) to self for 8 seconds before casting ultimate. If the enemy possessed BLIND, applies Mind Type ATK UP(LV 2) to self for 8 seconds before casting ultimate",
       "effect": "1200% + 1400",
       "buffEffects": [
         {
@@ -258,9 +260,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Cute Heart Shot!",
+      "name": "Cutie Heart Shot!",
       "icon": "skill001/skill0006_3",
-      "description": "Deals magic damage to the farthest enemy, before Ultimate activationApplies Magic Attack UP(LV 3) to self for 8 seconds, enemy hasBlind status, before Ultimate activation applies to self 8s Mind Type ATK UP(LV 3)",
+      "description": "Deals magic damage to the farthest enemy. Applies Magic Attack UP(LV 3) to self for 8 seconds before casting ultimate. If the enemy possessed BLIND, applies Mind Type ATK UP(LV 3) to self for 8 seconds before casting ultimate",
       "effect": "1350% + 1550",
       "buffEffects": [
         {
@@ -279,9 +281,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Cute Heart Shot!",
+      "name": "Cutie Heart Shot!",
       "icon": "skill001/skill0006_4",
-      "description": "Deals magic damage to the farthest enemy, before Ultimate activationApplies Magic Attack UP(LV 4) to self for 8 seconds, enemy hasBlind status, before Ultimate activation applies to self 8s Mind Type ATK UP(LV 4)",
+      "description": "Deals magic damage to the farthest enemy. Applies Magic Attack UP(LV 4) to self for 8 seconds before casting ultimate. If the enemy possessed BLIND, applies Mind Type ATK UP(LV 4) to self for 8 seconds before casting ultimate",
       "effect": "1450% + 1700",
       "buffEffects": [
         {
@@ -300,9 +302,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Cute Heart Shot!",
+      "name": "Cutie Heart Shot!",
       "icon": "skill001/skill0006_5",
-      "description": "Deals magic damage to the farthest enemy, before Ultimate activationApplies Magic Attack UP(LV 5) to self for 8 seconds, enemy hasBlind status, before Ultimate activation applies to self 8s Mind Type ATK UP(LV 5)",
+      "description": "Deals magic damage to the farthest enemy. Applies Magic Attack UP(LV 5) to self for 8 seconds before casting ultimate. If the enemy possessed BLIND, applies Mind Type ATK UP(LV 5) to self for 8 seconds before casting ultimate",
       "effect": "1500% + 1800",
       "buffEffects": [
         {

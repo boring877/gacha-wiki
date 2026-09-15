@@ -124,11 +124,13 @@ export const info = {
 
 
 
+
+
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Bouquet Throw",
+      "name": "Toss the bouquet ",
       "icon": "skill001/skill0010",
       "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-40 DOWN for 6 seconds",
       "descriptionLv1": "Deals magic damage to the nearest enemy and inflicts Magic Defense-21%-40 DOWN for 6 seconds",
@@ -156,11 +158,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Drop the Veil",
+      "name": "Takes off the veil",
       "icon": "skill001/skill0011",
-      "description": "To 3 nearest enemies 1s and Action Speed -14%DOWN for 8 seconds, 8s Accuracy -9 DOWN",
-      "descriptionLv1": "To 3 nearest enemies 1s and Action Speed -14%DOWN for 8 seconds, 8s Accuracy -9 DOWN",
-      "descriptionLv90": "To 3 nearest enemies 1s and Action Speed -14%DOWN for 8 seconds, 8s Accuracy -18 DOWN",
+      "description": "Inflicts Charm to the nearest 3 enemies for 1 seconds, Action Speed -14%DOWN for 8 seconds and Accuracy -9 DOWN for 8 seconds",
+      "descriptionLv1": "Inflicts Charm to the nearest 3 enemies for 1 seconds, Action Speed -14%DOWN for 8 seconds and Accuracy -9 DOWN for 8 seconds",
+      "descriptionLv90": "Inflicts Charm to the nearest 3 enemies for 1 seconds, Action Speed -14%DOWN for 8 seconds and Accuracy -18 DOWN for 8 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.35,
       "damageScaling": null,
@@ -200,7 +202,7 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Liberal - Lily Marriage",
+      "name": "Le Gay Mariage",
       "icon": "skill001/skill0012_1",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 1) for 15 seconds and Freeze(LV 1) for 2 seconds",
       "effect": "350% + 400",
@@ -221,7 +223,7 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Liberal - Lily Marriage",
+      "name": "Le Gay Mariage",
       "icon": "skill001/skill0012_2",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 2) for 15 seconds and Freeze(LV 2) for 2 seconds",
       "effect": "450% + 450",
@@ -242,7 +244,7 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Liberal - Lily Marriage",
+      "name": "Le Gay Mariage",
       "icon": "skill001/skill0012_3",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 3) for 15 seconds and Freeze(LV 3) for 2 seconds",
       "effect": "500% + 500",
@@ -263,7 +265,7 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Liberal - Lily Marriage",
+      "name": "Le Gay Mariage",
       "icon": "skill001/skill0012_4",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 4) for 15 seconds and Freeze(LV 4) for 2 seconds",
       "effect": "530% + 550",
@@ -284,7 +286,7 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Liberal - Lily Marriage",
+      "name": "Le Gay Mariage",
       "icon": "skill001/skill0012_5",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Burn(LV 5) for 15 seconds and Freeze(LV 5) for 2 seconds",
       "effect": "550% + 600",
