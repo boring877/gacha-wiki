@@ -187,6 +187,25 @@
   font-weight: 400;
 }
 
+.majo-banner-entry-art {
+  aspect-ratio: 5 / 2;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 0.6rem;
+  background: var(--majo-bg-tertiary);
+}
+
+.majo-banner-entry-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.majo-banner-entry-art img.is-portrait {
+  object-position: center 18%;
+}
+
 .majo-banner-entry-name {
   margin: 0 0 0.4rem;
   font-size: 1.02rem;

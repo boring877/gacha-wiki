@@ -62,6 +62,17 @@ import '../../../../styles/games/majo/majo-banners.css';
             <span class="majo-banner-entry-type">{b.type}</span>
             <span class="majo-banner-entry-date">{b.date}<span class="majo-banner-entry-datenote"> ({b.dateNote})</span></span>
           </div>
+          <div class="majo-banner-entry-art">
+            <img
+              src={b.image}
+              alt={`${b.name} banner art`}
+              loading="lazy"
+              decoding="async"
+              width={b.imageWidth}
+              height={b.imageHeight}
+              class={b.imageHeight > b.imageWidth ? 'is-portrait' : ''}
+            />
+          </div>
           <h3 class="majo-banner-entry-name">{b.name}</h3>
           <div class="majo-banner-entry-featured">
             {b.featured.map((name, i) => {

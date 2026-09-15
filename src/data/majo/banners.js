@@ -1,7 +1,11 @@
 // MAJO gacha banners: banner types, pity rules, featured timeline and pull
 // economics. Pity rules are quoted from the game's own Gachas localization
 // texts; dates are community-sourced (Bahamut, Bilibili, Gamerch, Arca.live,
-// DC Inside, September 2026), not official.
+// DC Inside, September 2026), not official. Banner art is extracted from the
+// gacha UI bundles (activity_button_images / gacha_cover_animations) and lives
+// on R2 under majo/banners/.
+
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/banners';
 
 export const bannerTypes = [
   {
@@ -72,6 +76,9 @@ export const bannerTypes = [
 export const bannerTimeline = [
   {
     name: 'Luoqin + Lucia dual Pickup',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/banners/ssr-pu-3-luoqin-lucia.webp',
+    imageWidth: 1200,
+    imageHeight: 480,
     type: 'Limited Contact',
     date: 'Sep 30, 2026',
     dateNote: 'start date',
@@ -81,6 +88,9 @@ export const bannerTimeline = [
   },
   {
     name: 'Bazhuli UR Pickup',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/banners/bazhuli-gacha.webp',
+    imageWidth: 1440,
+    imageHeight: 1920,
     type: 'Eternal Contact',
     date: 'Sep 16 to Oct 7, 2026',
     dateNote: 'run window',
@@ -90,6 +100,9 @@ export const bannerTimeline = [
   },
   {
     name: 'Emily Pickup',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/banners/ssr-pu-2-emily.webp',
+    imageWidth: 1200,
+    imageHeight: 480,
     type: 'Limited Contact',
     date: 'Sep 9, 2026',
     dateNote: 'start date',
@@ -99,6 +112,9 @@ export const bannerTimeline = [
   },
   {
     name: 'Daphine, Dayu and Macak UR rotation',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/banners/ur-pu-4-dayu.webp',
+    imageWidth: 1200,
+    imageHeight: 480,
     type: 'Eternal Contact',
     date: 'Current pool text',
     dateNote: 'rotation',
@@ -108,6 +124,9 @@ export const bannerTimeline = [
   },
   {
     name: 'Isabelle UR Pickup',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/banners/ur-pu-1-isabelle.webp',
+    imageWidth: 512,
+    imageHeight: 205,
     type: 'Eternal Contact',
     date: 'Opened Aug 26, 2026',
     dateNote: 'pool opened',
@@ -117,6 +136,9 @@ export const bannerTimeline = [
   },
   {
     name: 'Yun + Alice dual Pickup',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/banners/ssr-pu-1-yun-alice.webp',
+    imageWidth: 512,
+    imageHeight: 205,
     type: 'Limited Contact',
     date: 'Launch window (Aug 2026)',
     dateNote: 'launch',
