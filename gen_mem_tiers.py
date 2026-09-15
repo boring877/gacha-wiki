@@ -58,6 +58,8 @@ new_placements = {
     'Serpentine Frenzy': 'SS',
     'A perfect makeup look?': 'SS',
     'Reorganizing Revolution': 'S',
+    # 2026-09-15 wave: Brynhild signature (DEF% scales her damage, Holy dmg, shield on ult)
+    'Afternoon Waiting': 'SSS',
     # SR
     'Drowning Lake Knight': 'S',
     'Pennie Trying on New Clothes': 'A',
@@ -83,7 +85,7 @@ assert not unresolved, 'unresolved old entries: %s' % unresolved
 
 # 6. Build new tiers grouped by TRUE class
 CLASSES = ['Tank', 'Warrior', 'Attacker', 'Destroyer', 'Supporter', 'Disruptor', 'Healer']
-TIERS = ['SSS', 'SS', 'S', 'A', 'Situational']
+TIERS = ['UR', 'SSS', 'SS', 'S', 'A', 'Situational']
 new_tiers = {cls: {t: [] for t in TIERS} for cls in CLASSES}
 for c in cards:
     tier = placed[c['slug']]
@@ -164,7 +166,7 @@ export const MEMORY_CLASS_ORDER = [
 
 export const MEMORY_TIER_LIST = {
   name: 'Memory Card Rankings by Class',
-  lastUpdated: '2026-09-06',
+  lastUpdated: '2026-09-15',
   description:
     'Memory card rankings by class. Each character can only equip memories matching their class.',
   tiers: {
