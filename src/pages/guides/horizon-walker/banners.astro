@@ -33,7 +33,9 @@ const days = (r: (typeof bannerRuns)[number]) =>
   Math.round((Date.parse(r.end + 'T12:00:00Z') - Date.parse(r.start + 'T12:00:00Z')) / 86400000);
 
 const isNew = (r: (typeof bannerRuns)[number]) => r.type === 'debut';
-const isActive = (r: (typeof bannerRuns)[number]) => Date.parse(r.end + 'T23:59:59Z') >= Date.now();
+// Active means "now" is inside the run window (a future-dated run is not Active yet)
+const isActive = (r: (typeof bannerRuns)[number]) =>
+  Date.parse(r.start + 'T00:00:00Z') <= Date.now() && Date.now() <= Date.parse(r.end + 'T23:59:59Z');
 
 // group runs by year, newest first
 const yearGroups: { year: string; runs: typeof bannerRuns }[] = [];
@@ -83,6 +85,8 @@ const searchOf = (r: (typeof bannerRuns)[number]) =>
                 class={`bt-card ${isNew(r) ? 'bt-new' : 'bt-rerun'} ${r.bannerImage ? 'bt-has-art' : ''}`}
                 data-type={r.type}
                 data-active={isActive(r) ? '1' : '0'}
+                data-start={r.start}
+                data-end={r.end}
                 data-search={searchOf(r)}
               >
                 <div class="bt-card-body">
@@ -267,6 +271,31 @@ const searchOf = (r: (typeof bannerRuns)[number]) =>
     const count = document.getElementById('bt-count');
     const total = cards.length;
     let filter = 'all';
+
+    // Recompute Active from the run windows: the server markup reflects the last
+    // build, so a run may have started or ended since then
+    cards.forEach((c) => {
+      const s = Date.parse((c.dataset.start || '') + 'T00:00:00Z');
+      const e = Date.parse((c.dataset.end || '') + 'T23:59:59Z');
+      if (Number.isNaN(s) || Number.isNaN(e)) return;
+      const now = Date.now();
+      const live = now >= s && now <= e;
+      if ((c.dataset.active || '0') === (live ? '1' : '0')) return;
+      c.dataset.active = live ? '1' : '0';
+      const when = c.querySelector('.bt-card-when');
+      if (!when) return;
+      const badge = when.querySelector('.bt-live');
+      if (live && !badge) {
+        const created = document.createElement('span');
+        created.className = 'bt-badge bt-live';
+        created.textContent = 'Active';
+        const typeBadge = when.querySelector('.bt-badge-new, .bt-badge-rerun');
+        when.insertBefore(created, typeBadge);
+      } else if (!live && badge) {
+        badge.remove();
+      }
+    });
+
     function apply() {
       const q = input.value.trim().toLowerCase();
       let visible = 0;

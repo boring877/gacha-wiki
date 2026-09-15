@@ -26,15 +26,6 @@
   margin: 0 0 1.5rem 0;
   line-height: 1.2;
 }
-
-.hw-character-gift-subtitle {
-  font-size: var(--text-xl);
-  font-family: var(--font-primary);
-  color: var(--hw-text-medium);
-  margin: 0 0 2rem 0;
-  opacity: 0.9;
-}
-
 /* Character Gift Content Container */
 .hw-character-gift-content {
   background: var(--hw-bg-dark);
@@ -495,54 +486,6 @@
   grid-template-columns: 1fr;
   gap: 1rem;
 }
-
-.hw-gift-preference-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: var(--hw-bg-dark);
-  border-radius: var(--hw-radius-md);
-  border: 2px solid var(--hw-white-overlay-10);
-}
-
-.hw-gift-preference-image {
-  width: 70px;
-  height: 70px;
-  border-radius: var(--hw-radius-md);
-  overflow: hidden;
-  background: var(--hw-bg-darker);
-  flex-shrink: 0;
-}
-
-.gift-preference-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.hw-gift-preference-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.hw-gift-preference-name {
-  font-size: var(--text-base);
-  font-weight: var(--font-semibold);
-  font-family: var(--font-primary);
-  color: var(--hw-text-light);
-  margin: 0 0 0.25rem 0;
-  line-height: 1.2;
-}
-
-.hw-gift-preference-points {
-  font-size: var(--text-sm);
-  color: var(--hw-primary-warm);
-  font-weight: var(--font-bold);
-  font-family: var(--font-primary);
-  margin: 0 0 0.25rem 0;
-}
-
 .hw-gifts-needed {
   font-size: var(--text-sm);
   color: var(--hw-text-muted);
@@ -551,12 +494,6 @@
   margin: 0 0 0.5rem 0;
   font-style: italic;
 }
-
-/* Inline Gift Sources */
-.hw-gift-sources-inline {
-  margin-top: 0.75rem;
-}
-
 .hw-sources-label {
   font-size: var(--text-sm);
   color: var(--hw-text-medium);
@@ -596,30 +533,6 @@
   font-family: var(--font-primary);
   color: var(--hw-primary-warm);
 }
-
-.hw-gift-preference-badge {
-  flex-shrink: 0;
-  margin-right: 0.5rem;
-}
-
-.hw-gift-preference-badge .hw-badge {
-  font-size: var(--text-xs);
-  padding: 0.25rem 0.5rem;
-}
-
-/* Preference Level Styling */
-.hw-gift-preference-item[data-preference='favorites'] {
-  /* Using consolidated background class - add hw-gift-favorite-bg class in HTML */
-  background: linear-gradient(135deg, var(--hw-bg-dark) 0%, rgba(220, 38, 38, 0.15) 100%);
-  border-color: rgba(220, 38, 38, 0.4);
-}
-
-.hw-gift-preference-item[data-preference='likes'] {
-  /* Using consolidated background class - add hw-gift-likes-bg class in HTML */
-  background: linear-gradient(135deg, var(--hw-bg-dark) 0%, rgba(34, 197, 94, 0.15) 100%);
-  border-color: rgba(34, 197, 94, 0.4);
-}
-
 .hw-great-value-item {
   /* Using consolidated background class - add hw-great-value-bg class in HTML */
   background: linear-gradient(135deg, var(--hw-bg-dark) 0%, rgba(251, 146, 60, 0.15) 100%);
@@ -1065,27 +978,6 @@
   font-size: var(--text-xs);
   padding: 0.3rem 0.6rem;
 }
-
-/* Gift Boxes Section */
-.hw-gift-boxes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.hw-gift-box-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem;
-  background: var(--hw-primary-warm-10);
-  border: 1px solid var(--hw-primary-warm-30);
-  border-radius: var(--hw-radius-md);
-  flex: 1;
-  min-width: 200px;
-}
-
 .hw-gift-box-image {
   width: 50px;
   height: 50px;
@@ -1192,12 +1084,6 @@
     width: 80px;
     height: 80px;
   }
-
-  .hw-gift-preference-image {
-    width: 45px;
-    height: 45px;
-  }
-
   /* Rarity Filter Mobile */
   .hw-filter-title {
     font-size: var(--text-lg);
@@ -1262,12 +1148,6 @@
   .hw-character-name {
     font-size: var(--text-lg);
   }
-
-  .hw-gift-preference-item {
-    padding: 0.75rem;
-    gap: 0.75rem;
-  }
-
   /* Tip box mobile optimization */
   .hw-tip-box {
     padding: 1rem;
@@ -1322,16 +1202,6 @@
   .hw-level5-bonus-title {
     font-size: var(--text-base);
   }
-
-  .hw-gift-preference-image {
-    width: 40px;
-    height: 40px;
-  }
-
-  .hw-gift-preference-name {
-    font-size: var(--text-sm);
-  }
-
   .hw-gifts-needed {
     font-size: var(--text-xs);
   }
@@ -1599,14 +1469,6 @@
   .hw-reward-item span {
     font-size: var(--text-sm);
   }
-
-  /* Gift Boxes Mobile */
-  .hw-gift-box-item {
-    min-width: 180px;
-    padding: 0.6rem;
-    gap: 0.6rem;
-  }
-
   .hw-gift-box-image {
     width: 40px;
     height: 40px;

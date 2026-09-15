@@ -16,7 +16,6 @@ const MUSIC_SRC_2 = `${R2}/login-music-2.mp3?v=1`;
 <div class={`hw-music ${variant === 'mobile' ? 'hw-music-mobile' : ''}`}>
   <button
     type="button"
-    id="hw-music-toggle"
     class="hw-music-btn"
     aria-label="Toggle Horizon Walker background music"
     aria-pressed="false"
@@ -48,7 +47,8 @@ const MUSIC_SRC_2 = `${R2}/login-music-2.mp3?v=1`;
   >
     <span class="hw-music-track-num">1</span>
   </button>
-  <audio id="hw-music-audio" src={MUSIC_SRC} loop preload="none"></audio>
+  {/* One shared audio per page: only the desktop header instance renders it */}
+  {variant === 'desktop' && <audio id="hw-music-audio" src={MUSIC_SRC} loop preload="none"></audio>}
 </div>
 
 <style>
@@ -128,7 +128,7 @@ const MUSIC_SRC_2 = `${R2}/login-music-2.mp3?v=1`;
 
     document.addEventListener('DOMContentLoaded', function () {
       var audio = document.getElementById('hw-music-audio');
-      var playBtns = document.querySelectorAll('#hw-music-toggle');
+      var playBtns = document.querySelectorAll('.hw-music-btn:not(.hw-music-track-btn)');
       var trackBtns = document.querySelectorAll('.hw-music-track-btn');
       if (!audio || !playBtns.length || !trackBtns.length) return;
 
