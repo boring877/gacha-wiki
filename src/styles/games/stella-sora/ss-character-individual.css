@@ -954,75 +954,11 @@
 .skill-damage p:last-child {
   margin-bottom: 0;
 }
-
-.damage-strikes {
-  margin: 1rem 0;
-  padding: 0;
-}
-
-.damage-strikes h4 {
-  margin: 0 0 0.75rem 0;
-  color: var(--ss-text-primary);
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-  font-family: var(--font-primary);
-  line-height: var(--leading-normal);
-}
-
-.damage-strikes ul {
-  margin: 0;
-  padding-left: 1rem;
-  list-style: none;
-}
-
-.damage-strikes li {
-  margin-bottom: 0.5rem;
-  line-height: var(--leading-normal);
-  font-size: var(--text-sm);
-  padding-left: 1.5rem;
-  position: relative;
-  color: var(--ss-text-secondary);
-  font-family: var(--font-primary);
-  letter-spacing: var(--tracking-normal);
-}
-
-.damage-strikes li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.6rem;
-  width: 6px;
-  height: 6px;
-  background: var(--ss-primary);
-  border-radius: 50%;
-}
-
-.damage-strikes li:last-child {
-  margin-bottom: 0;
-}
-
-/* Aqua specific styling - removed highlighting */
-.damage-aqua {
-  color: inherit;
-  font-weight: inherit;
-}
-
 /* Strike emphasis styling */
 .strike-emphasis {
   font-weight: var(--font-semibold);
   color: var(--ss-primary);
 }
-
-/* Strong tag styling for skill damage and effects */
-.skill-damage strong,
-.damage-strikes strong,
-.skill-effects strong {
-  color: var(--ss-primary);
-  font-weight: var(--font-semibold);
-}
-
 /* Status Effects strong tag styling */
 .status-effect-description strong {
   color: var(--ss-primary);
@@ -1086,27 +1022,6 @@
   background: var(--ss-primary);
   border-radius: 50%;
 }
-
-/* Character Status Effects Section */
-.character-status-effects {
-  background: var(--ss-bg-secondary);
-  border-radius: 12px;
-  padding: 2rem;
-  border: 1px solid var(--ss-border);
-}
-
-.character-status-effects h2 {
-  margin: 0 0 1.5rem 0;
-  font-size: var(--text-2xl);
-  color: var(--ss-primary);
-  font-weight: var(--font-semibold);
-  font-family: var(--font-display);
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-normal);
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--ss-border);
-}
-
 /* Status Effects Section - Improved Organization */
 
 .status-effects-list {
@@ -1535,15 +1450,6 @@
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-normal);
 }
-
-.potential-build-header .build-subtitle {
-  margin: 0 0 0.75rem 0;
-  font-size: var(--text-lg);
-  font-weight: var(--font-semibold);
-  color: var(--ss-primary);
-  font-family: var(--font-primary);
-}
-
 .potential-build-header .build-description {
   color: var(--ss-text-secondary);
   margin: 0;
@@ -1678,24 +1584,6 @@
   flex-direction: column;
   gap: 1.5rem;
 }
-
-.potential-build.build-separator {
-  padding-top: 2rem;
-  border-top: 1px solid var(--ss-border);
-  position: relative;
-}
-
-.potential-build.build-separator::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 2px;
-  background: var(--ss-bg-secondary);
-}
-
 .potentials-list {
   display: flex;
   flex-direction: column;
@@ -2152,108 +2040,6 @@
   color: var(--ss-text-primary);
   font-weight: var(--font-semibold);
 }
-
-/* Disc Image Placeholder */
-.disc-image-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--ss-bg-tertiary);
-  border: 1px solid var(--ss-border);
-  border-radius: 8px;
-  color: var(--ss-text-secondary);
-  font-size: var(--text-xs);
-  text-align: center;
-}
-
-/* Generic Cards Section */
-.character-generic-cards {
-  background: var(--ss-bg-secondary);
-  border-radius: 12px;
-  padding: 2rem;
-  border: 1px solid var(--ss-border);
-}
-
-.character-generic-cards h2 {
-  margin: 0 0 2rem 0;
-  font-size: var(--text-3xl);
-  color: var(--ss-text-primary);
-  text-align: left;
-  font-weight: var(--font-medium);
-  letter-spacing: var(--tracking-tight);
-  position: relative;
-  padding-bottom: 1rem;
-  font-family: var(--font-display);
-  line-height: var(--leading-tight);
-}
-
-.generic-cards-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-}
-
-.generic-card-item {
-  display: flex;
-  gap: 1.5rem;
-  background: var(--ss-bg-secondary);
-  border: 1px solid var(--ss-border);
-  border-radius: 8px;
-  padding: 1.5rem;
-  position: relative;
-  align-items: flex-start;
-}
-
-.generic-card-image {
-  flex-shrink: 0;
-  width: 100px;
-  height: 100px;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid var(--ss-border);
-  box-shadow: var(--ss-shadow-sm);
-}
-
-.generic-card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: var(--ss-transition);
-}
-
-.generic-card-content {
-  flex: 1;
-  min-width: 0;
-}
-
-.generic-card-name {
-  margin: 0 0 0.75rem 0;
-  color: var(--ss-text-primary);
-  font-size: var(--text-xl);
-  font-weight: var(--font-semibold);
-  font-family: var(--font-primary);
-  line-height: var(--leading-normal);
-  letter-spacing: var(--tracking-normal);
-}
-
-.generic-card-description {
-  color: var(--ss-text-secondary);
-  margin: 0;
-  line-height: var(--leading-relaxed);
-  font-family: var(--font-primary);
-  font-size: var(--text-base);
-  font-weight: var(--font-normal);
-  letter-spacing: var(--tracking-normal);
-}
-
-.generic-card-description strong {
-  color: var(--ss-primary);
-  font-weight: var(--font-semibold);
-}
-
 /* Character Tags Section */
 .character-tags {
   background: var(--ss-bg-secondary);
