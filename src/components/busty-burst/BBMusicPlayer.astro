@@ -14,7 +14,6 @@ const MUSIC_SRC =
 <div class={`bb-music ${variant === 'mobile' ? 'bb-music-mobile' : ''}`}>
   <button
     type="button"
-    id="bb-music-toggle"
     class="bb-music-btn"
     aria-label="Toggle Busty Burst background music"
     aria-pressed="false"
@@ -38,7 +37,8 @@ const MUSIC_SRC =
     </svg>
     <span class="bb-music-label">Music</span>
   </button>
-  <audio id="bb-music-audio" src={MUSIC_SRC} loop preload="none"></audio>
+  {/* One shared audio per page: only the desktop header instance renders it */}
+  {variant === 'desktop' && <audio id="bb-music-audio" src={MUSIC_SRC} loop preload="none"></audio>}
 </div>
 
 <style>

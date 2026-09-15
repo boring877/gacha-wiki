@@ -48,6 +48,31 @@ const getStatusLabel = (status: string) => {
       return status;
   }
 };
+
+// Status is computed from dates (not the hand-maintained data field) so an
+// unrefreshed entry can never show an expired banner as Active
+const computeStatus = (startDate: string, endDate: string, fallback: string) => {
+  const start = Date.parse(startDate);
+  const end = Date.parse(endDate);
+  if (Number.isNaN(start) || Number.isNaN(end)) return fallback;
+  const now = Date.now();
+  if (now < start) return 'upcoming';
+  if (now > end) return 'ended';
+  return 'current';
+};
+
+const banners = bannerTimelineData.map(b => ({
+  ...b,
+  live: computeStatus(b.startDate, b.endDate, b.status),
+}));
+const seasons = seasonalCharactersData.map(s => ({
+  ...s,
+  live: computeStatus(s.startDate, s.endDate, s.status),
+}));
+const guildBanners = guildBattleData.map(b => ({
+  ...b,
+  live: computeStatus(b.startDate, b.endDate, b.status),
+}));
 ---
 
 <BannerTimelineLayout title={pageTitle} description={pageDescription} gameTitle={gameTitle}>
@@ -104,7 +129,7 @@ const getStatusLabel = (status: string) => {
     <!-- Banners Tab Content -->
     <div id="banners" class="tab-content active" role="tabpanel" aria-labelledby="banners-tab">
       {
-        bannerTimelineData.map((banner, index) => (
+        banners.map((banner, index) => (
           <article class="banner-section">
             <header class="banner-header">
               <h2>
@@ -113,8 +138,12 @@ const getStatusLabel = (status: string) => {
               <span class={`banner-type-badge banner-type-badge--${banner.bannerType}`}>
                 {getBannerTypeLabel(banner.bannerType)}
               </span>
-              <span class={`status-badge status-badge--${banner.status}`}>
-                {getStatusLabel(banner.status)}
+              <span
+                class={`status-badge status-badge--${banner.live}`}
+                data-start={banner.startDate}
+                data-end={banner.endDate}
+              >
+                {getStatusLabel(banner.live)}
               </span>
             </header>
 
@@ -178,12 +207,16 @@ const getStatusLabel = (status: string) => {
         </p>
       </div>
       {
-        seasonalCharactersData.map(season => (
+        seasons.map(season => (
           <article class="banner-section">
             <header class="banner-header">
               <h2>{season.name}</h2>
-              <span class={`status-badge status-badge--${season.status}`}>
-                {getStatusLabel(season.status)}
+              <span
+                class={`status-badge status-badge--${season.live}`}
+                data-start={season.startDate}
+                data-end={season.endDate}
+              >
+                {getStatusLabel(season.live)}
               </span>
             </header>
 
@@ -228,15 +261,19 @@ const getStatusLabel = (status: string) => {
     <!-- Guild Battle Tab Content -->
     <div id="guild" class="tab-content" role="tabpanel" aria-labelledby="guild-tab">
       {
-        guildBattleData.map(banner => (
+        guildBanners.map(banner => (
           <article class="banner-section">
             <header class="banner-header">
               <h2>{banner.title}</h2>
               <span class={`banner-type-badge banner-type-badge--${banner.bannerType}`}>
                 {getBannerTypeLabel(banner.bannerType)}
               </span>
-              <span class={`status-badge status-badge--${banner.status}`}>
-                {getStatusLabel(banner.status)}
+              <span
+                class={`status-badge status-badge--${banner.live}`}
+                data-start={banner.startDate}
+                data-end={banner.endDate}
+              >
+                {getStatusLabel(banner.live)}
               </span>
             </header>
 
@@ -319,6 +356,23 @@ const getStatusLabel = (status: string) => {
           targetTab.classList.add('active');
         }
       });
+    });
+
+    // Refresh statuses from dates so the page stays correct between rebuilds
+    const statusLabels: Record<string, string> = {
+      current: 'Active',
+      upcoming: 'Upcoming',
+      ended: 'Ended',
+    };
+    document.querySelectorAll<HTMLElement>('.status-badge[data-start]').forEach(el => {
+      const start = Date.parse(el.dataset.start || '');
+      const end = Date.parse(el.dataset.end || '');
+      if (Number.isNaN(start) || Number.isNaN(end)) return;
+      const now = Date.now();
+      const status = now < start ? 'upcoming' : now > end ? 'ended' : 'current';
+      el.classList.remove('status-badge--current', 'status-badge--upcoming', 'status-badge--ended');
+      el.classList.add(`status-badge--${status}`);
+      el.textContent = statusLabels[status];
     });
   });
 </script>

@@ -65,6 +65,18 @@ const getStatusLabel = (status: string) => {
       return status;
   }
 };
+
+// Status is computed from dates (not the hand-maintained data field) so an
+// unrefreshed entry can never show an expired event as Active
+const computeStatus = (startDate: string, endDate: string, fallback: string) => {
+  const start = Date.parse(startDate);
+  const end = Date.parse(endDate);
+  if (Number.isNaN(start) || Number.isNaN(end)) return fallback;
+  const now = Date.now();
+  if (now < start) return 'upcoming';
+  if (now > end) return 'ended';
+  return 'current';
+};
 ---
 
 <BannerTimelineLayout title={pageTitle} description={pageDescription} gameTitle={gameTitle}>
@@ -142,6 +154,7 @@ const getStatusLabel = (status: string) => {
             {yearBanners.map(banner => {
               const number = newestFirst.findIndex(b => b.id === banner.id) + 1;
               const img = bannerImageMap[banner.id];
+              const live = computeStatus(banner.startDate, banner.endDate, banner.status);
               return (
                 <article
                   class="banner-section jp-banner-entry"
@@ -156,8 +169,12 @@ const getStatusLabel = (status: string) => {
                     <span class={`banner-type-badge banner-type-badge--${banner.bannerType}`}>
                       {getBannerTypeLabel(banner.bannerType)}
                     </span>
-                    <span class={`status-badge status-badge--${banner.status}`}>
-                      {getStatusLabel(banner.status)}
+                    <span
+                      class={`status-badge status-badge--${live}`}
+                      data-start={banner.startDate}
+                      data-end={banner.endDate}
+                    >
+                      {getStatusLabel(live)}
                     </span>
                   </header>
 
@@ -421,6 +438,23 @@ const getStatusLabel = (status: string) => {
         activeFilter = chip.dataset.filter || 'all';
         applyFilters();
       });
+    });
+
+    // Refresh statuses from dates so the page stays correct between rebuilds
+    const statusLabels: Record<string, string> = {
+      current: 'Active',
+      upcoming: 'Upcoming',
+      ended: 'Ended',
+    };
+    document.querySelectorAll<HTMLElement>('.status-badge[data-start]').forEach(el => {
+      const start = Date.parse(el.dataset.start || '');
+      const end = Date.parse(el.dataset.end || '');
+      if (Number.isNaN(start) || Number.isNaN(end)) return;
+      const now = Date.now();
+      const status = now < start ? 'upcoming' : now > end ? 'ended' : 'current';
+      el.classList.remove('status-badge--current', 'status-badge--upcoming', 'status-badge--ended');
+      el.classList.add(`status-badge--${status}`);
+      el.textContent = statusLabels[status];
     });
   });
 </script>
