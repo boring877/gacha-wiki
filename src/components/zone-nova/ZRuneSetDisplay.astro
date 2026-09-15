@@ -15,6 +15,21 @@ const lookupSet = (key: string) =>
 
 // Function to determine the rune configuration type and extract rune data
 function getRuneConfiguration(runeSet) {
+  // Generic 2+2+2 configuration: threeSets = ['Poki', 'Kappa', 'Beth']
+  if (Array.isArray(runeSet.threeSets) && runeSet.threeSets.length >= 3) {
+    const runes = runeSet.threeSets.map((name: string) => ({
+      name,
+      pieces: '2-piece',
+      effect: lookupSet(name)?.twoPiece || '',
+    }));
+    return {
+      type: '3-set',
+      runes,
+      name:
+        runeSet.englishName ||
+        runes.map(r => lookupSet(r.name)?.name || r.name).join(' 2-piece + ') + ' 2-piece',
+    };
+  }
   // Check if this is a 3-set configuration (separate 2-piece runes)
   if (
     (runeSet.shatteredFoundation && runeSet.tide && runeSet.zahn) ||

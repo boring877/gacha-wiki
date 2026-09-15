@@ -39,6 +39,7 @@ import { bastetBuild } from './character-builds/bastet.js';
 import { bedivereBuild } from './character-builds/bedivere.js';
 import { belphegarBuild } from './character-builds/belphegar.js';
 import { borsBuild } from './character-builds/bors.js';
+import { brynhildBuild } from './character-builds/brynhild.js';
 import { cleopatraBuild } from './character-builds/cleopatra.js';
 import { erikaBuild } from './character-builds/erika.js';
 import { greedMammonBuild } from './character-builds/greed-mammon.js';
@@ -184,6 +185,9 @@ export const CHARACTER_BUILDS = {
 
   // Bors Build - SSR Fire Supporter
   'bors': borsBuild,
+
+  // Brynhild Build - SSR Holy Warrior
+  'brynhild': brynhildBuild,
 
   // Cleopatra Build - SSR Chaos Destroyer
   'cleopatra': cleopatraBuild,
