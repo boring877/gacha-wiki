@@ -536,8 +536,8 @@ class MajoClockTimer {
 }
 
 // Initialize clock when script loads
-const horizonWalkerClockTimer = new MajoClockTimer();
+const majoClockTimer = new MajoClockTimer();
 
 // Export for potential external use
 window.MajoClockTimer = MajoClockTimer;
-window.horizonWalkerClockTimer = horizonWalkerClockTimer;
+window.majoClockTimer = majoClockTimer;

@@ -1,20 +1,23 @@
 ---
-// MAJO provisional tier list, grouped by class.
+// MAJO tier list, grouped by class: kit-based placements with per-witch reasons.
 import MajoLayout from '../../../../layouts/majo/LandingLayout.astro';
 import MajoCharacterImage from '../../../../components/majo/MajoCharacterImage.astro';
 import MajoIcon from '../../../../components/majo/MajoIcon.astro';
-import { majoTierByClass } from '../../../../data/majo/tier-list.js';
+import { majoTierByClass, MAJO_TIER_UPDATED } from '../../../../data/majo/tier-list.js';
 import '../../../../styles/games/majo/majo-tier.css';
 ---
 
 <MajoLayout
   title="Tier List"
-  description="Provisional tier list for MAJO: Witches Night, grouped by class (Fighter, Mage, Tank, Healer). Placeholder rankings until the meta develops."
+  description={`MAJO: Witches Night tier list, grouped by class: best Fighters, Mages, Tanks and Healers, updated ${MAJO_TIER_UPDATED} with kit-based placements for all 30 witches.`}
   gameTitle="Tier List"
 >
   <section>
     <p class="majo-tier-note">
-      Early tier list, under work. Please visit the
+      Updated {MAJO_TIER_UPDATED}. Placements are based on each witch's full kit
+      (skill numbers and team utility) and cross-checked with community
+      launch-month lists. The four September witches are ranked on kit alone and
+      may move as the meta settles. Questions or feedback? Visit the
       <a href="https://discord.gg/YdWFddQKR8" target="_blank" rel="noopener noreferrer" class="majo-tier-discord">Discord</a>.
     </p>
 
@@ -41,6 +44,7 @@ import '../../../../styles/games/majo/majo-tier.css';
                       <MajoIcon filename={`CharacterDetails_Icon_${c.rarity}.png`} alt={c.rarity} class="majo-icon-rarity" />
                     </span>
                     <span class="majo-tier-name-label">{c.nameEn}</span>
+                    {c.placement.isNew && <span class="majo-tier-new-chip">New</span>}
                   </a>
                 ))}
               </div>

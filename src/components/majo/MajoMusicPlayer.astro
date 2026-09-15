@@ -1,0 +1,251 @@
+---
+// MAJO: Witches Night background music player with two selectable tracks
+// (title screen theme, main screen loop) and a header toggle. Persists across
+// majo page navigations: preference + track in localStorage, per-track playback
+// position in sessionStorage, and an autoplay-block fallback that resumes on
+// the first user interaction. Same pattern as ZN/BB/HW music players.
+interface Props {
+  variant?: 'desktop' | 'mobile';
+}
+const { variant = 'desktop' } = Astro.props;
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/audio';
+const MUSIC_SRC = `${R2}/landing-music.mp3?v=1`;
+const MUSIC_SRC_2 = `${R2}/landing-music-2.mp3?v=1`;
+---
+
+<div class={`mj-music ${variant === 'mobile' ? 'mj-music-mobile' : ''}`}>
+  <button
+    type="button"
+    class="mj-music-btn"
+    aria-label="Toggle MAJO background music"
+    aria-pressed="false"
+    title="Background music"
+  >
+    <svg class="mj-music-icon mj-music-on-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+      <path
+        d="M9 18V6l10-2v12"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      ></path>
+      <circle cx="6.5" cy="18" r="2.5" fill="currentColor"></circle>
+      <circle cx="16.5" cy="16" r="2.5" fill="currentColor"></circle>
+    </svg>
+    <svg class="mj-music-icon mj-music-off-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+      <path
+        d="M9 18V6l10-2v12"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      ></path>
+      <circle cx="6.5" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="2"></circle>
+      <line x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+    </svg>
+    <span class="mj-music-label">Music</span>
+  </button>
+  <button
+    type="button"
+    class="mj-music-btn mj-music-track-btn"
+    aria-label="Switch background music track"
+    title="Background music track"
+  >
+    <span class="mj-music-track-num">1</span>
+  </button>
+  {/* One shared audio per page: only the desktop header instance renders it */}
+  {variant === 'desktop' && <audio id="mj-music-audio" src={MUSIC_SRC} loop preload="none"></audio>}
+</div>
+
+<style>
+  .mj-music {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+  }
+
+  .mj-music-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.75rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #b3b3b3;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .mj-music-btn:first-child {
+    border-radius: 999px 0 0 999px;
+    border-right: none;
+  }
+
+  .mj-music-track-btn {
+    border-radius: 0 999px 999px 0;
+    min-width: 1.8rem;
+    justify-content: center;
+    padding: 0.35rem 0.5rem;
+  }
+
+  .mj-music-btn .mj-music-on-icon {
+    display: none;
+  }
+
+  .mj-music-btn.playing {
+    color: #c084fc;
+    border-color: rgba(192, 132, 252, 0.4);
+  }
+
+  .mj-music-btn.playing + .mj-music-track-btn {
+    border-color: rgba(192, 132, 252, 0.4);
+    color: #c084fc;
+  }
+
+  .mj-music-btn.playing .mj-music-on-icon {
+    display: block;
+  }
+
+  .mj-music-btn.playing .mj-music-off-icon {
+    display: none;
+  }
+
+  .mj-music-track-num {
+    min-width: 0.6rem;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .mj-music-label {
+      display: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    // Desktop + mobile header instances both render; init once, bind all.
+    if (window.__mjMusicInit) return;
+    window.__mjMusicInit = true;
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var audio = document.getElementById('mj-music-audio');
+      var playBtns = document.querySelectorAll('.mj-music-btn:not(.mj-music-track-btn)');
+      var trackBtns = document.querySelectorAll('.mj-music-track-btn');
+      if (!audio || !playBtns.length || !trackBtns.length) return;
+
+      var TRACKS = [
+        'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/audio/landing-music.mp3?v=1',
+        'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/audio/landing-music-2.mp3?v=1'
+      ];
+      var PREF = 'mj-music-on';
+      var TRACK = 'mj-music-track';
+
+      function posKey() {
+        return 'mj-music-pos-' + currentTrack();
+      }
+
+      function currentTrack() {
+        var t = parseInt(localStorage.getItem(TRACK) || '0', 10);
+        return t === 1 ? 1 : 0;
+      }
+
+      function setTrack(t, keepPlaying) {
+        localStorage.setItem(TRACK, String(t));
+        var wasPlaying = !audio.paused;
+        if (!keepPlaying) wasPlaying = false;
+        audio.src = TRACKS[t];
+        trackBtns.forEach(function (b) {
+          b.querySelector('.mj-music-track-num').textContent = String(t + 1);
+        });
+        var pos = parseFloat(sessionStorage.getItem(posKey()) || '0');
+        if (isFinite(pos) && pos > 0) {
+          try {
+            audio.currentTime = pos;
+          } catch (e) {}
+        }
+        if (wasPlaying) tryPlay();
+      }
+
+      function setPlaying(on) {
+        playBtns.forEach(function (b) {
+          b.classList.toggle('playing', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+      }
+
+      function tryPlay() {
+        audio.play().then(
+          function () {
+            setPlaying(true);
+            localStorage.setItem(PREF, '1');
+          },
+          function () {
+            // Autoplay blocked - resume on the first user interaction
+            setPlaying(false);
+            var resume = function () {
+              audio.play().then(
+                function () {
+                  setPlaying(true);
+                },
+                function () {}
+              );
+              document.removeEventListener('pointerdown', resume);
+              document.removeEventListener('keydown', resume);
+            };
+            document.addEventListener('pointerdown', resume);
+            document.addEventListener('keydown', resume);
+          }
+        );
+      }
+
+      // restore track selection, then position for near-seamless playback
+      var t = currentTrack();
+      if (audio.src !== TRACKS[t]) audio.src = TRACKS[t];
+      trackBtns.forEach(function (b) {
+        b.querySelector('.mj-music-track-num').textContent = String(t + 1);
+      });
+      var pos = parseFloat(sessionStorage.getItem(posKey()) || '0');
+      if (isFinite(pos) && pos > 0) {
+        try {
+          audio.currentTime = pos;
+        } catch (e) {}
+      }
+
+      if (localStorage.getItem(PREF) === '1') {
+        tryPlay();
+      }
+
+      audio.addEventListener('playing', function () {
+        setPlaying(true);
+      });
+      audio.addEventListener('pause', function () {
+        setPlaying(false);
+      });
+
+      setInterval(function () {
+        if (!audio.paused) sessionStorage.setItem(posKey(), String(audio.currentTime));
+      }, 1000);
+      window.addEventListener('beforeunload', function () {
+        if (!audio.paused) sessionStorage.setItem(posKey(), String(audio.currentTime));
+      });
+
+      playBtns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          if (audio.paused) {
+            tryPlay();
+          } else {
+            audio.pause();
+            localStorage.removeItem(PREF);
+            sessionStorage.removeItem(posKey());
+            setPlaying(false);
+          }
+        });
+      });
+
+      trackBtns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          setTrack(currentTrack() === 0 ? 1 : 0, true);
+        });
+      });
+    });
+  })();
+</script>

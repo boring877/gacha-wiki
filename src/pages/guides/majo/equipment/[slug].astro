@@ -43,8 +43,8 @@ const slotInfo = SLOT_INFO[piece.slot] ?? { label: piece.slot, zh: '' };
 ---
 
 <MajoLayout
-  title={`${piece.nameEn} (${piece.nameZh}) — ${piece.tier} ${piece.slot}`}
-  description={`${piece.nameEn} equipment in MAJO: Witches Night — ${piece.tier} ${piece.slot} (${piece.stat} family).`}
+  title={`${piece.nameEn} (${piece.nameZh}), ${piece.tier} ${piece.slot}`}
+  description={`${piece.nameEn} equipment in MAJO: Witches Night, ${piece.tier} ${piece.slot} (${piece.stat} family).`}
   crumbName={piece.nameEn?.trim() || piece.nameZh}
 >
   <section>
@@ -69,7 +69,7 @@ const slotInfo = SLOT_INFO[piece.slot] ?? { label: piece.slot, zh: '' };
       <h2>Details</h2>
       <div class="majo-eq-fact-row">
         <span class="majo-eq-fact-label">Slot</span>
-        <span class="majo-eq-fact-value">{slotInfo.label} ({slotInfo.zh}) — one of the 6 equipment slots</span>
+        <span class="majo-eq-fact-value">{slotInfo.label} ({slotInfo.zh}), one of the 6 equipment slots</span>
       </div>
       <div class="majo-eq-fact-row">
         <span class="majo-eq-fact-label">Family</span>
@@ -82,7 +82,7 @@ const slotInfo = SLOT_INFO[piece.slot] ?? { label: piece.slot, zh: '' };
       <div class="majo-eq-fact-row">
         <span class="majo-eq-fact-label">Shared</span>
         <span class="majo-eq-fact-value">
-          Equipment is shared among witches of the same class (Fighter / Mage / Tank / Healer) —
+          Equipment is shared among witches of the same class (Fighter / Mage / Tank / Healer),
           one set of gear per class, not per witch.
         </span>
       </div>
@@ -108,7 +108,7 @@ const slotInfo = SLOT_INFO[piece.slot] ?? { label: piece.slot, zh: '' };
         ))}
       </div>
       <p class="majo-eq-desc" style="margin-top: 1rem;">
-        Exact piece-to-suit assignment is delivered by the game server (not in the client files) —
+        Exact piece-to-suit assignment is delivered by the game server (not in the client files),
         these are the suits whose bonuses match this piece's {piece.stat} family.
       </p>
     </div>

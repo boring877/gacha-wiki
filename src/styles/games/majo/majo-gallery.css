@@ -1,0 +1,223 @@
+/* MAJO gallery page: witch illustration and story artwork sections, image rows
+   and the shared lightbox viewer. Uses the dusk-lavender token system. */
+
+.majo-gal-note {
+  text-align: center;
+  color: var(--majo-text-tertiary);
+  font-size: 0.85rem;
+  margin: 0 auto 2rem;
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+.majo-gal-section-title {
+  margin: 2.5rem 0 0.35rem;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--majo-text-primary);
+}
+
+.majo-gal-section-sub {
+  margin: 0 0 1.25rem;
+  font-size: 0.85rem;
+  color: var(--majo-text-tertiary);
+  line-height: 1.6;
+}
+
+/* Per witch / per chapter group */
+.majo-gal-group {
+  background: var(--majo-bg-card);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+  padding: 1rem 1.1rem 1.1rem;
+  margin-bottom: 1.25rem;
+}
+
+.majo-gal-group-header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.85rem;
+}
+
+.majo-gal-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--majo-text-primary);
+  text-decoration: none;
+}
+
+.majo-gal-zh {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--majo-primary-light);
+}
+
+.majo-gal-chapter {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--majo-accent-light);
+  background: var(--majo-secondary);
+  border: 1px solid var(--majo-border-light);
+  border-radius: 5px;
+  padding: 0.2rem 0.55rem;
+}
+
+.majo-gal-chapter-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--majo-text-primary);
+}
+
+.majo-gal-count {
+  margin-left: auto;
+  font-size: 0.78rem;
+  color: var(--majo-text-tertiary);
+}
+
+/* Image rows: natural aspect, uniform height */
+.majo-gal-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.majo-gal-item {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border: 1px solid var(--majo-border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--majo-bg-tertiary);
+  cursor: zoom-in;
+}
+
+.majo-gal-item img {
+  display: block;
+  height: 300px;
+  width: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.majo-gal-item-label {
+  display: block;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--majo-text-secondary);
+  border-top: 1px solid var(--majo-border);
+  background: var(--majo-bg-secondary);
+  text-align: center;
+}
+
+/* Lightbox */
+.majo-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(8, 9, 14, 0.93);
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2.5rem 4.5rem;
+}
+
+.majo-lightbox.open {
+  display: flex;
+}
+
+.majo-lightbox-figure {
+  margin: 0;
+  max-width: min(1100px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+.majo-lightbox-figure img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 140px);
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  background: var(--majo-bg-tertiary);
+}
+
+.majo-lightbox-caption {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--majo-text-secondary);
+}
+
+.majo-lightbox-caption #majo-lightbox-counter {
+  color: var(--majo-text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+.majo-lightbox button {
+  flex: 0 0 auto;
+  background: var(--majo-secondary);
+  border: 1px solid var(--majo-border-light);
+  border-radius: 8px;
+  color: var(--majo-text-primary);
+  cursor: pointer;
+}
+
+.majo-lightbox-prev,
+.majo-lightbox-next {
+  width: 46px;
+  height: 46px;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.majo-lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+@media (max-width: 640px) {
+  .majo-gal-item img {
+    height: 200px;
+  }
+
+  .majo-gal-count {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .majo-lightbox {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .majo-lightbox-prev,
+  .majo-lightbox-next {
+    position: absolute;
+    bottom: 1rem;
+    z-index: 1;
+  }
+
+  .majo-lightbox-prev {
+    left: 1rem;
+  }
+
+  .majo-lightbox-next {
+    right: 1rem;
+  }
+}

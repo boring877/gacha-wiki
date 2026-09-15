@@ -1,4 +1,5 @@
-// MAJO: Witches Night character roster (26 launch witches).
+// MAJO: Witches Night character roster (26 launch witches + the four 2026-09-14
+// update witches: Luoqin P0020, Emily P0037, Lucia P0040, Bazhuli P0041).
 // Source: live game data pulled from BlueStacks (com.pinkcore.majo.erolabs) via ADB.
 // Names/titles/descriptions/skills: Localization/all.*.data (I2 Localization, msgpack
 //   format) decoded in D:/Majo/localization_dump.json - zh-Hans primary, en secondary.
@@ -662,6 +663,44 @@ export const majoCharacters = [
     },
   },
   {
+    id: 'P0020',
+    slug: 'luoqin',
+    nameZh: "罗琳",
+    nameEn: "Luoqin",
+    nameJa: "ローリン",
+    titleZh: "擒纵之心",
+    titleEn: "Heart of Escapement",
+    rarity: 'SSR',
+    cls: 'Fighter',
+    icon: 'P0020_figure_s.png',
+    image: 'P0020_figure_m.png',
+    awakenImage: 'P0020_Awaken_figure_m.png',
+    descriptionZh: "神秘钟表技师的单传弟子，据说该技师掌握了将机械与生命巧妙融合的技术，并以此为基础创造了罗琳，称她为「世界上最完美的造物」。只要作为心脏的自动钟表永不停歇，她就可以永生不死。\n\n会反覆迷恋上自己，必须住在摆满镜子的房间，否则会因为对自己的过度思恋而陷入癫狂。随身携带怀表，常常藉由怀表玻璃面的反射来映照自己。虽然搜集与设计钟表仍是嗜好之一，但程度远不及对自身的迷恋，谈话间几乎三句不离对自己的赞美或爱意。\n\n其实技师的目标是将自己的心脏改造为机械、获得永生，罗琳只是众多测试中意外成功的实验品。最终技师在替自己改造时遭逢突发状况，罗琳却碰巧看见自己在玻璃中映出的样貌、被倒影所吸引，错失了施行急救的时机。",
+    descriptionEn: "The sole disciple of a mysterious clockmaker, who was said to have mastered the art of seamlessly fusing machinery with life. Building on this technique, he created Luoqin, calling her \"the most perfect creation in the world.\" As long as the automatic clock that serves as her heart never stops ticking, she will remain immortal.\n \nShe repeatedly falls into obsession with herself, and must live in a room filled with mirrors, or else she'll spiral into madness from excessive longing for her own reflection. She always carries a pocket watch, often using the glass surface to admire her own image. While collecting and designing clocks remains one of her hobbies, it pales in comparison to her self-infatuation, as she can barely go three sentences in conversation without praising herself or professing her own love.\n \nIn truth, the clockmaker's goal was to transform his own heart into a mechanical one to achieve immortality, and Luoqin was merely one experimental subject among many who happened to succeed. In the end, while the clockmaker was performing the modification on himself, an unexpected complication arose. But Luoqin, captivated by the sight of her own reflection in the glass, missed the critical moment to administer emergency aid.",
+    skills: {
+      normal: [
+                { nameZh: "时序校准", nameEn: "Time Calibration", infoZh: "3段攻击范围内敌人。", infoEn: "Attacks enemies in range 3 times.", detailEn: "Hit 1: Deals <color=#C8B450>{DAMAGE:damageAdjust+58}%</color> damage to enemies in a forward fan-shaped area.\n Hit 2: Deals <color=#C8B450>{DAMAGE:damageAdjust+58}%</color> damage to enemies in a forward fan-shaped area.\n Hit 3: Deals <color=#C8B450>{DAMAGE:damageAdjust+58}%</color> damage to enemies in a forward fan-shaped area.", detailZh: "一段：对面前扇形范围内敌方造成<color=#C8B450>{DAMAGE:damageAdjust+58}%</color>伤害。\n二段：对面前扇形范围内敌方造成<color=#C8B450>{DAMAGE:damageAdjust+58}%</color>伤害。\n三段：对面前扇形范围内敌方造成<color=#C8B450>{DAMAGE:damageAdjust+58}%</color>伤害。" },
+      ],
+      class: [
+                { nameZh: "瞬时疾光", nameEn: "Flash of Instant Light", infoZh: "[闪避反击] 攻击范围内敌人。", infoEn: "[Dodge Counter] Attacks enemies within range.", detailEn: "[Dodge Counter]\n Trigger Condition: Activates after dodging\n Deals <color=#C8B450>{DAMAGE:damageAdjust+101}%</color> damage to enemies in a frontal rectangular area.", detailZh: "[闪避反击]\n触发条件：闪避后发动\n对面前矩形范围内敌方造成<color=#C8B450>{DAMAGE:damageAdjust+101}%</color>伤害。" },
+                { nameZh: "瞬时疾光", nameEn: "Flash of Instant Light", infoZh: "[闪避反击] 赋予自身职系技暴击率与暴击伤害提升，并攻击范围内敌人。", infoEn: "[Dodge Counter] Grants self increased Crit Rate and Crit Damage for Class skills, and attacks enemies within range.", detailEn: "[Dodge Counter]\n Trigger Condition: Activates after dodging\n Grants self Class Skill Crit Rate <color=#C8B450>+25%</color> and Class Skill Crit Damage <color=#C8B450>+50%</color> (lasts <color=#C8B450>6</color> seconds), and deals <color=#C8B450>{DAMAGE:damageAdjust_ex+125}%</color> damage to enemies in a frontal rectangular area.", detailZh: "[闪避反击]\n触发条件：闪避后发动\n赋予自身职系技暴击率<color=#C8B450>+25%</color>与职系技暴击伤害<color=#C8B450>+50%</color>效果(持续<color=#C8B450>6</color>秒)，并对面前矩形范围内敌方造成<color=#C8B450>{DAMAGE:damageAdjust_ex+125}%</color>伤害。" },
+      ],
+      auto: [
+                { nameZh: "黄金钟律", nameEn: "Golden Bell Rhythm", infoZh: "[普攻衍生] 在敌人脚下创造一个跟随目标的攻击领域。", infoEn: "[Normal Attack Salvo] Creates a zone that follows the target at the enemy's feet.", detailEn: "[Normal Attack Salvo]\n Trigger Conditions: Activates after completing the final hit of the Normal attack\n Creates a circular zone that follows the target at the feet of enemies within range (lasts <color=#C8B450>2</color> seconds), which deals <color=#C8B450>{DAMAGE:damageAdjust+95}%</color> damage to enemies within the zone after <color=#C8B450>1.33</color> seconds (the zone is not considered a skill of this character).", detailZh: "[普攻衍生]\n触发条件：完成最后一段普攻后施展\n在范围内敌方脚下创造一个跟随目标移动的圆形领域(持续<color=#C8B450>2</color>秒)，并于<color=#C8B450>1.33</color>秒后对领域范围内敌方造成<color=#C8B450>{DAMAGE:damageAdjust+95}%</color>伤害(领域不视为本角色的技能)。" },
+                { nameZh: "黄金钟律", nameEn: "Golden Bell Rhythm", infoZh: "[普攻衍生] 在敌人脚下创造一个跟随目标的攻击领域。", infoEn: "[Normal Attack Salvo] Creates a zone that follows the target at the enemy's feet.", detailEn: "[Normal Attack Salvo]\n Trigger Conditions: Activates after completing the final hit of the Normal attack\n Creates a circular zone that follows the target at the feet of enemies within range (lasts <color=#C8B450>2</color> seconds), which deals <color=#C8B450>{DAMAGE:damageAdjust_ex+105}%</color> damage to enemies within the zone after <color=#C8B450>1.33</color> seconds (the zone is not considered a skill of this character).", detailZh: "[普攻衍生]\n触发条件：完成最后一段普攻后施展\n在范围内敌方脚下创造一个跟随目标移动的圆形领域(持续<color=#C8B450>2</color>秒)，并于<color=#C8B450>1.33</color>秒后对领域范围内敌方造成<color=#C8B450>{DAMAGE:damageAdjust_ex+105}%</color>伤害(领域不视为本角色的技能)。" },
+      ],
+      extreme: [
+                { nameZh: "终焉计时", nameEn: "Countdown to the End", infoZh: "大幅提升自身攻击速度、暴击率与暴击伤害，并将特攻与职系技的冷却时间调整至固定数值。", infoEn: "Greatly increases self Attack Speed, Crit Rate, and Crit Damage, and fixes the cooldown time of Special and Class Skills to a set value.", detailEn: "Grants self Attack Speed <color=#C8B450>+50%</color>, Crit Rate <color=#C8B450>+25%</color>, and Crit Damage <color=#C8B450>+50%</color> (lasts <color=#C8B450>{STACKDURATION:stackableBuffDurationAdjust+10}</color> seconds), during which the maximum CD of Special and Class Skills is fixed at <color=#C8B450>4</color> seconds.", detailZh: "赋予自身攻击速度<color=#C8B450>+50%</color>、暴击率<color=#C8B450>+25%</color>与暴击伤害<color=#C8B450>+50%</color>效果(持续<color=#C8B450>{STACKDURATION:stackableBuffDurationAdjust+10}</color>秒)，期间特攻与职系技的最大冷却时间固定为<color=#C8B450>4</color>秒。" },
+      ],
+      interference: [
+                { nameZh: "流光增幅", nameEn: "Flowing Light Amplification", infoZh: "装备者暴击伤害提升。\n装备者职系技暴击伤害提升。", infoEn: "Increases the equipment bearer's Crit Damage.\n Increases the equipment bearer's Class Skill Crit Damage.", detailEn: "Equipment bearer's Crit Damage <color=#C8B450>+{BUFF:buffEffectAdjust+9}%</color>.\n Equipment bearer's Class Skill Crit Damage <color=#C8B450>+{BUFF:buffEffectAdjust2+9}%</color>.", detailZh: "装备者暴击伤害<color=#C8B450>+{BUFF:buffEffectAdjust+9}%</color>。\n装备者职系技暴击伤害<color=#C8B450>+{BUFF:buffEffectAdjust2+9}%</color>。" },
+      ],
+      passive: [
+                { nameZh: "时序无暇", nameEn: "Flawless Timing", infoZh: "完成最后一段普攻后，增加自身极式蓄能。", infoEn: "After completing the final Normal attack, increases self Extreme Skill Charge.", detailEn: "After completing the final Normal attack, increases self Extreme Skill Charge by <color=#C8B450>{COST:costAdjust+11000}</color>.", detailZh: "完成最后一段普攻后，增加自身极式蓄能<color=#C8B450>{COST:costAdjust+11000}</color>。" },
+      ],
+    },
+  },
+  {
     id: 'P0022',
     slug: 'zhijie',
     nameZh: "芝洁",
@@ -890,6 +929,44 @@ export const majoCharacters = [
     },
   },
   {
+    id: 'P0037',
+    slug: 'emily',
+    nameZh: "安玛莉",
+    nameEn: "Emily",
+    nameJa: "アンマリー",
+    titleZh: "雪山倩影",
+    titleEn: "Snow Mountain Beauty",
+    rarity: 'SSR',
+    cls: 'Healer',
+    icon: 'P0037_figure_s.png',
+    image: 'P0037_figure_m.png',
+    awakenImage: 'P0037_Awaken_figure_m.png',
+    descriptionZh: "是个在修道院长大的孤儿。\n\n因早早就觉醒了治愈系能力，在资讯封闭的小镇里，她的能力被视为是神使降临，一度受到近乎信仰般的崇拜。\n\n然而在她绝美外表下，潜藏着兽族对鲜血与生肉的本能渴望。当她舔舐鲜血的画面被目击后，她的地位从神使坠落为恶魔，被驱逐出村。\n\n此后，她独自在冰雪山林生存，仍会本能地救助遇难者，留下「白衣女人」的传说。直到加入MAJO，这段传闻才终止。安玛莉情感冷淡，对善恶界线模糊——她狩猎、杀生只因饥饿，却也会救人，只因「那样好像才是对的」。她迷恋血液与毛皮，嗜食生肉、不碰熟食，也从未洗过热水澡。",
+    descriptionEn: "An orphan who grew up in a monastery.\n\nHaving awakened healing abilities early, in an information-isolated small town, her abilities were seen as divine messenger's descent, once receiving near-religious worship.\n\nHowever, beneath her stunning appearance lurks the beastfolk's instinctual craving for fresh blood and raw meat. After being witnessed licking fresh blood, her status fell from divine messenger to demon, and she was exiled from the village.\n\nAfter that, she survived alone in the snowy mountains and forests, still instinctively rescuing those in distress, leaving behind the legend of the \"woman in white.\" This rumor only ended when she joined MAJO. Emily is emotionally detached with blurred lines between good and evil, she hunts and kills only due to hunger, but also saves people simply because \"that seems right.\" She's obsessed with blood and fur, eats only raw meat, never touches cooked food, and has never taken a hot bath.",
+    skills: {
+      normal: [
+                { nameZh: "血色玛莉", nameEn: "Bloody Mary", infoZh: "3段攻击范围内敌人。", infoEn: "Attacks enemies in range 3 times.", detailEn: "Hit 1: Deals <color=#C8B450>{DAMAGE:damageAdjust+130}%</color> damage to enemies in a designated circular area.\nHit 2: Deals <color=#C8B450>{DAMAGE:damageAdjust+130}%</color> damage to enemies in a designated circular area.\nHit 3: Deals <color=#C8B450>{DAMAGE:damageAdjust2+260}%</color> damage to enemies in a designated circular area.", detailZh: "一段：对指定圆形范围内敌人造成<color=#C8B450>{DAMAGE:damageAdjust+130}%</color>伤害。\n二段：对指定圆形范围内敌人造成<color=#C8B450>{DAMAGE:damageAdjust+130}%</color>伤害。\n三段：对指定圆形范围内敌人造成<color=#C8B450>{DAMAGE:damageAdjust2+260}%</color>伤害。" },
+                { nameZh: "血色玛莉", nameEn: "Bloody Mary", infoZh: "3段攻击范围内敌人，并在最后一段攻击额外治疗范围内我方角色。", infoEn: "Attacks enemies in range 3 times, additionally healing allies in range on the last hit.", detailEn: "Hit 1: Deals <color=#C8B450>{DAMAGE:damageAdjust_ex+130}%</color> damage to enemies in a designated circular area.\nHit 2: Deals <color=#C8B450>{DAMAGE:damageAdjust_ex+130}%</color> damage to enemies in a designated circular area.\nHit 3: Deals <color=#C8B450>{DAMAGE:damageAdjust2_ex+260}%</color> damage to enemies in a designated circular area, and heals allies in own circular area for <color=#C8B450>35%</color> HP.", detailZh: "一段：对指定圆形范围内敌方造成<color=#C8B450>{DAMAGE:damageAdjust_ex+130}%</color>伤害。\n二段：对指定圆形范围内敌方造成<color=#C8B450>{DAMAGE:damageAdjust_ex+130}%</color>伤害。\n三段：对指定圆形范围内敌方造成<color=#C8B450>{DAMAGE:damageAdjust2_ex+260}%</color>伤害，并治疗自身圆形范围内我方角色<color=#C8B450>35%</color>生命值。" },
+      ],
+      class: [
+                { nameZh: "雪瓣祝雨", nameEn: "Snowbless", infoZh: "[治愈] 治疗血量最低的我方角色，并治疗我方全体角色。", infoEn: "[Heal] Heals the ally with the lowest Health and heals all allies.", detailEn: "[Heal]\nTrigger Condition: Activates after CD completes\nHeals the ally with the lowest Health for <color=#C8B450>{HEAL:healAdjust+25}%</color> Health, then heals all allies for <color=#C8B450>{HEAL:healAdjust2+30}%</color> Health. If any ally's Extreme Skill charge is greater than or equal to <color=#C8B450>40</color>, additionally heals for <color=#C8B450>{HEAL:healAdjust3+30}%</color> Health.", detailZh: "[治愈]\n触发条件：CD完成后发动\n治疗血量最低的我方单体角色<color=#C8B450>{HEAL:healAdjust+25}%</color>生命值，随后治疗我方全体角色<color=#C8B450>{HEAL:healAdjust2+30}%</color>生命值。若我方角色极式蓄能大于等于<color=#C8B450>40</color>，则额外治疗<color=#C8B450>{HEAL:healAdjust3+30}%</color>生命值。" },
+      ],
+      auto: [
+                { nameZh: "冰花圣绽", nameEn: "Ice Flower Sacred Bloom", infoZh: "[极式衍生] 增加全体我方角色极式蓄能。", infoEn: "[Ultimate Salvo] Increases all allies' Extreme Skill charge.", detailEn: "[Ultimate Salvo]\nTrigger Condition: Activates after fully unleashing the Ultimate\nGrants all allies whose Extreme Skill charge is below <color=#C8B450>400</color> an Extreme Skill charge increase of <color=#C8B450>{COST:costAdjust+32000}</color>; grants all allies whose Extreme Skill charge is at or above <color=#C8B450>400</color> an Extreme Skill charge increase of <color=#C8B450>{COST:costAdjust2+64000}</color>.", detailZh: "[极式衍生]\n触发条件：在完整施展极式后发动\n赋予极式蓄能低于<color=#C8B450>400</color>的全体我方角色增加极式蓄能<color=#C8B450>{COST:costAdjust+32000}</color>；赋予极式蓄能高于或等于<color=#C8B450>400</color>的全体我方角色增加极式蓄能<color=#C8B450>{COST:costAdjust2+64000}</color>。" },
+      ],
+      extreme: [
+                { nameZh: "寒霜恩域", nameEn: "Frost Grace Domain", infoZh: "多次治疗自身范围内我方角色。", infoEn: "Heals allies inside area multiple times.", detailEn: "Centered on self, heals allies within the circular area <color=#C8B450>5</color> times, restoring <color=#C8B450>{HEAL:healAdjust+160}%</color> Health each time.", detailZh: "以自身为中心，对圆形范围内我方角色造成<color=#C8B450>5</color>次治疗，每次治疗<color=#C8B450>{HEAL:healAdjust+160}%</color>生命值。" },
+                { nameZh: "寒霜恩域", nameEn: "Frost Grace Domain", infoZh: "以自身为中心，交替治愈范围内我方角色并攻击范围内敌人。", infoEn: "Centered on self, alternately heals allies and attacks enemies inside area.", detailEn: "Centered on self, deals <color=#C8B450>5</color> hits of <color=#C8B450>{DAMAGE:damageAdjust_ex+165}%</color> damage to enemies in the circular area; simultaneously heals allies in the circular area <color=#C8B450>5</color> times, restoring <color=#C8B450>{HEAL:healAdjust3_ex+165}%</color> Health each time.", detailZh: "以自身为中心，对圆形范围内敌方造成<color=#C8B450>5</color>次<color=#C8B450>{DAMAGE:damageAdjust_ex+165}%</color>伤害；同时对圆形范围内我方角色造成<color=#C8B450>5</color>次治疗，每次治疗<color=#C8B450>{HEAL:healAdjust3_ex+165}%</color>生命值。" },
+      ],
+      interference: [
+                { nameZh: "血性本能", nameEn: "Bloodthirst Instinct", infoZh: "装备者僵直抗性提升\n装备者体干值提升", infoEn: "Increases the character's Stagger resistance\nIncreases the character's posture value", detailEn: "Character's Stagger resistance <color=#C8B450>+{BUFF:buffEffectAdjust+1}</color>\nCharacter's posture value <color=#C8B450>+{BUFF:buffEffectAdjust2+35}</color>", detailZh: "装备者僵直抗性<color=#C8B450>+{BUFF:buffEffectAdjust+1}</color>\n装备者体干值<color=#C8B450>+{BUFF:buffEffectAdjust2+35}</color>" },
+      ],
+      passive: [
+                { nameZh: "兽性之唤", nameEn: "Beast's Call", infoZh: "发动极式时，提升我方全体极式额外伤害，并对特定条件队友提供额外增益。", infoEn: "When using an Extreme Skill, increases all allies' Extreme Skill Bonus Damage and provides additional buffs to allies meeting certain conditions.", detailEn: "When using an Extreme Skill, grants all alliess Extreme Skill Bonus Damage <color=#C8B450>+5%</color> (max <color=#C8B450>1</color> stack) (lasts <color=#C8B450>10</color> seconds).\nWhen using an Extreme Skill, grants alliess with Extreme Skill charge of 400 or more Extreme Skill Bonus Damage <color=#C8B450>+{STACKABLEBUFF:StackableBuff_P0037_PassiveSkill_2_Lv1:stackableBuffIdAdjust:0}%</color> (max <color=#C8B450>1</color> stack) (lasts <color=#C8B450>10</color> seconds).", detailZh: "施展极式时，赋予我方全体角色极式额外伤害<color=#C8B450>+5%</color>(最大<color=#C8B450>1</color>层)(持续<color=#C8B450>10</color>秒)。\n施展极式时，赋予我方极式蓄能大于或等于400的角色极式额外伤害<color=#C8B450>+{STACKABLEBUFF:StackableBuff_P0037_PassiveSkill_2_Lv1:stackableBuffIdAdjust:0}%</color>(最大<color=#C8B450>1</color>层)(持续<color=#C8B450>10</color>秒)。" },
+      ],
+    },
+  },
+  {
     id: 'P0038',
     slug: 'macak',
     nameZh: "玫可可",
@@ -961,6 +1038,82 @@ export const majoCharacters = [
       passive: [
         { nameZh: "禁忌邪瞳", nameEn: "Forbidden Evil Eye", infoZh: "自身施展处决后，提升攻击速度。", infoEn: "After self uses an Execution, increases Attack Speed.", detailEn: "After using an Execution, grants self Attack Speed <color=#C8B450>+{STACKABLEBUFF:P0039_PassiveSkillEffects_AtkSpeedUp_Lv1:stackableBuffIdAdjust:0}%</color> (max <color=#C8B450>1</color> stack) (lasts <color=#C8B450>5</color> seconds).", detailZh: "施展处决后，赋予自身攻击速度<color=#C8B450>+{STACKABLEBUFF:P0039_PassiveSkillEffects_AtkSpeedUp_Lv1:stackableBuffIdAdjust:0}%</color>(最大<color=#C8B450>1</color>层)(持续<color=#C8B450>5</color>秒)。" },
         { nameZh: "禁忌邪瞳", nameEn: "Forbidden Evil Eye", infoZh: "我方角色施展处决后，提升自身攻击速度。", infoEn: "After an ally uses an Execution, increases self Attack Speed.", detailEn: "Each time an ally uses an Execution, grants self Attack Speed <color=#C8B450>+{STACKABLEBUFF:P0039_PassiveSkillEffectsEx_AtkSpeedUp_Lv1:stackableBuffIdAdjust_ex:0}%</color> (max <color=#C8B450>1</color> stack) (lasts <color=#C8B450>5</color> seconds).", detailZh: "每次我方角色施展处决后，赋予自身攻击速度<color=#C8B450>+{STACKABLEBUFF:P0039_PassiveSkillEffectsEx_AtkSpeedUp_Lv1:stackableBuffIdAdjust_ex:0}%</color>(最大<color=#C8B450>1</color>层)(持续<color=#C8B450>5</color>秒)。" },
+      ],
+    },
+  },
+
+  {
+    id: 'P0040',
+    slug: 'lucia',
+    nameZh: "露西亚",
+    nameEn: "Lucia",
+    nameJa: "ルシア",
+    titleZh: "静嗅行者",
+    titleEn: "Silent Sniffer",
+    rarity: 'SSR',
+    cls: 'Mage',
+    icon: 'P0040_figure_s.png',
+    image: 'P0040_figure_m.png',
+    awakenImage: 'P0040_Awaken_figure_m.png',
+    descriptionZh: "在一次冲突中失去视觉后，她反而迎来其他感官的异常觉醒，尤其沉溺于嗅觉所带来的世界。\n\n她偏爱「闻起来舒服」的气味，只是这份舒服往往与常人的理解截然不同——她曾形容尸水的气味，如同眼前绽放一片白色洋甘菊。\n\n她偶尔会心血来潮地靠近他人嗅闻，借此判断对方去过哪里、情绪如何，仿佛气味才是真正的语言。她寡言而沉静，不喜寒暄，发言总是直指核心，让试图搭话的人不知不觉陷入自言自语。情绪起伏极少，像永远站在局外，却总能在某个瞬间，用一句平淡的话，让人察觉——她其实一直都在看着。",
+    descriptionEn: "After losing her sight in a conflict, she experienced an abnormal awakening of her other senses instead, particularly indulging in the world brought by her sense of smell.\n\nShe favors scents that \"smell comfortable,\" but this comfort often differs completely from ordinary people's understanding, she once described the smell of corpse fluid as like white chamomile blooming before her eyes.\n\nShe occasionally gets the urge to approach others and sniff them, using this to judge where they've been and their emotional state, as if scent is the true language. She's taciturn and quiet, dislikes small talk, and her remarks always go straight to the core, causing those trying to chat with her to unconsciously fall into monologues. She has very few emotional fluctuations, always seeming to stand outside the situation, yet can always make people realize with a single plain statement, she's actually been watching all along.",
+    skills: {
+      normal: [
+                { nameZh: "钩魂．夺", nameEn: "Sword Soul - Seize", infoZh: "4段攻击范围内敌人，并附加额外失衡值。", infoEn: "Attacks enemies in range 4 times, additionally inflicting Stagger.", detailEn: "Hit 1: Deals <color=#C8B450>{DAMAGE:damageAdjust+80}%</color> damage and <color=#C8B450>0.5</color> Stagger to enemies in a fan-shaped area.\nHit 2: Deals <color=#C8B450>{DAMAGE:damageAdjust+80}%</color> damage and <color=#C8B450>0.5</color> Stagger to enemies in a fan-shaped area.\nHit 3: Deals <color=#C8B450>3</color> hits of <color=#C8B450>{DAMAGE:damageAdjust2+80}%</color> damage and <color=#C8B450>1</color> Stagger to enemies in a rectangular area.\nHit 4: Deals <color=#C8B450>{DAMAGE:damageAdjust4+190}%</color> damage and <color=#C8B450>1</color> Stagger to enemies in a fan-shaped area.", detailZh: "一段：对扇形范围内敌方造成<color=#C8B450>{DAMAGE:damageAdjust+80}%</color>伤害与<color=#C8B450>0.5</color>失衡值。\n二段：对扇形范围内敌方造成<color=#C8B450>{DAMAGE:damageAdjust+80}%</color>伤害与<color=#C8B450>0.5</color>失衡值。\n三段：对矩形范围内敌方造成<color=#C8B450>3</color>次<color=#C8B450>{DAMAGE:damageAdjust2+80}%</color>伤害与<color=#C8B450>1</color>失衡值。\n四段：对扇形范围内敌方造成<color=#C8B450>{DAMAGE:damageAdjust4+190}%</color>伤害与<color=#C8B450>1</color>失衡值。" },
+      ],
+      class: [
+                { nameZh: "噬影．崩", nameEn: "Devour Shadow: Collapse", infoZh: "[充能增幅] 赋予自身攻击速度、失衡值与额外伤害提升。", infoEn: "[Charge Amp] Grants self increased Attack Speed, Stagger value, and Bonus Damage.", detailEn: "[Charge Amp]\nGrants self Attack Speed <color=#C8B450>+{BUFF:buffEffectAdjust+21}%</color>, attacks carry additional <color=#C8B450>+0.5</color> Stagger, and Bonus Damage effect <color=#C8B450>+{BUFF:buffEffectAdjust2+5.5}%</color> (lasts <color=#C8B450>20</color> seconds).", detailZh: "[充能增幅]\n赋予自身攻击速度<color=#C8B450>+{BUFF:buffEffectAdjust+21}%</color>、攻击附带<color=#C8B450>+0.5</color>失衡值与额外伤害<color=#C8B450>+{BUFF:buffEffectAdjust2+5.5}%</color>效果(持续<color=#C8B450>20</color>秒)。" },
+                { nameZh: "噬影．崩", nameEn: "Devour Shadow: Collapse", infoZh: "[充能增幅] 赋予自身攻击速度、失衡值与额外伤害提升。", infoEn: "[Charge Amp] Grants self increased Attack Speed, Stagger value, and Bonus Damage.", detailEn: "[Charge Amp]\nGrants self Attack Speed <color=#C8B450>+{BUFF:buffEffectAdjust_ex+26}%</color>, attacks carry additional <color=#C8B450>+1</color> Stagger, and Bonus Damage adjustment effect <color=#C8B450>+{BUFF:buffEffectAdjust2_ex+5.5}%</color> (lasts <color=#C8B450>25</color> seconds).", detailZh: "[充能增幅]\n赋予自身攻击速度<color=#C8B450>+{BUFF:buffEffectAdjust_ex+26}%</color>、攻击附带额外<color=#C8B450>+1</color>失衡值与额外伤害调整<color=#C8B450>+{BUFF:buffEffectAdjust2_ex+5.5}%</color>效果(持续<color=#C8B450>25</color>秒)。" },
+      ],
+      auto: [
+                { nameZh: "锁命．坠", nameEn: "Life Lock - Fall", infoZh: "[处决] 攻击范围内敌人。", infoEn: "[Execution] Attacks enemies within range.", detailEn: "[Execution]\nTrigger Condition: Only affects targets that are knocked down\nDeals <color=#C8B450>3</color> hits of <color=#C8B450>{DAMAGE:damageAdjust+200}%</color> damage to enemies within a designated circular area.", detailZh: "[处决]\n触发条件：只能对倒地目标发动\n对指定圆形范围内敌方造成<color=#C8B450>3</color>次<color=#C8B450>{DAMAGE:damageAdjust+200}%</color>伤害。" },
+                { nameZh: "锁命．坠", nameEn: "Life Lock - Fall", infoZh: "[处决] 攻击范围内敌人。", infoEn: "[Execution] Attacks enemies within range.", detailEn: "[Execution]\nTrigger Condition: Only affects targets that are knocked down\nDeals <color=#C8B450>3</color> hits of <color=#C8B450>{DAMAGE:damageAdjust_ex+180}%</color> damage to enemies within a designated circular area, with the last hit additionally dealing <color=#C8B450>{DAMAGE:damageAdjust2_ex+200}%</color> damage.", detailZh: "[处决]\n触发条件：只能对倒地目标发动\n对指定圆形范围内敌方造成<color=#C8B450>3</color>次<color=#C8B450>{DAMAGE:damageAdjust_ex+180}%</color>伤害，最后一段额外造成<color=#C8B450>{DAMAGE:damageAdjust2_ex+200}%</color>伤害。" },
+      ],
+      extreme: [
+                { nameZh: "链狱．绽葬", nameEn: "Purgatory · Burial", infoZh: "多段攻击指定范围内敌人并附加失衡值。", infoEn: "Attacks enemies inside area multiple times and inflicts Stagger.", detailEn: "Launches consecutive attacks against enemies inside circular area, dealing <color=#C8B450>3</color> hits of <color=#C8B450>{DAMAGE:damageAdjust+250}%</color> damage and <color=#C8B450>10</color> Stagger as the area expands, then deals <color=#C8B450>{DAMAGE:damageAdjust4+1008}%</color> damage and <color=#C8B450>20</color> Stagger to enemies within the area.", detailZh: "对指定圆形范围内敌方发动连续攻击，随范围扩张分别造成<color=#C8B450>3</color>次<color=#C8B450>{DAMAGE:damageAdjust+250}%</color>伤害与<color=#C8B450>10</color>点失衡值，最后对该范围内敌人造成<color=#C8B450>{DAMAGE:damageAdjust4+1008}%</color>伤害与<color=#C8B450>20</color>点失衡值。" },
+      ],
+      interference: [
+                { nameZh: "崩裁．失序", nameEn: "Collapse Judgement: Disorder", infoZh: "装备者暴击伤害提升\n装备者极式攻击时造成额外失衡值", infoEn: "Increases the character's Critical Power\nDeals additional Stagger value when the character's Extreme Skill attacks", detailEn: "Character's Critical Power <color=#C8B450>+{BUFF:buffEffectAdjust+9}%</color>\nEach attack of the character's Extreme Skill additionally inflicts <color=#C8B450>{BUFF:buffEffectAdjust2+0.8}</color> Stagger value.", detailZh: "装备者暴击伤害<color=#C8B450>+{BUFF:buffEffectAdjust+9}%</color>\n装备者极式每次攻击额外附加<color=#C8B450>{BUFF:buffEffectAdjust2+0.8}</color>失衡值。" },
+      ],
+      passive: [
+                { nameZh: "杀息．归", nameEn: "Killing Breath: Return", infoZh: "发动极式时，减少自身特攻冷却时间。", infoEn: "When using an Extreme Skill, reduces own Special Attack CD.", detailEn: "When using an Xtreme Skill, reduces own Special Attack CD by <color=#C8B450>{CDELAPSED:cdElapsedTimeAdjust+3}</color> second(s).", detailZh: "发动极式时，减少自身特攻冷却时间<color=#C8B450>{CDELAPSED:cdElapsedTimeAdjust+3}</color>秒。" },
+      ],
+    },
+  },  {
+    id: 'P0041',
+    slug: 'bazhuli',
+    nameZh: "芭朵莉",
+    nameEn: "Bazhuli",
+    nameJa: "バートリ",
+    titleZh: "嗜血魔弓",
+    titleEn: "Bloodthirsty Cursed Bow",
+    rarity: 'UR',
+    cls: 'Mage',
+    icon: 'P0041_figure_s.png',
+    image: 'P0041_figure_m.png',
+    awakenImage: 'P0041_Awaken_figure_m.png',
+    descriptionZh: "过去在村落长大，向往「首狩」的传说，却无意间制造出发狂伤人的熵灵。她被家人保护在馬廄内，因而幸免。但看着家人死去的她，也因崩溃导致力量觉醒，得以使用家传的魔弓。虽然最终她除去了熵灵，但全村已近乎被屠杀，而后她被MAJO招揽。\n\n力量伴随着代价，魔弓让她不仅变得嗜血，情绪上也多表现出愉悦的那面，平时讲话都带着浅笑。但违背她的指令，或是危急状况发生时，会变得阴沉可怕、具有控制欲。\n那些过往让她对「保护」有所偏执。表面上看起来是可靠的保护，实际上是极端的控制，要是对方不从，就会让身边的龙直接束缚对方。\n\n虽然几乎淡忘过往的细节，芭朵莉仍出于本能地定期返回故乡清除熵灵，那是出于心底的愧疚，尽管她未有所觉。",
+    descriptionEn: "Originally a soldier, she was forced into retirement due to severe post-war trauma. Still driven by the desire to protect her homeland and contribute to its people, she voluntarily applied to join MAJO, an organization with virtually no mental health requirements. She can generally maintain composure during missions, only triggering a stress response when encountering targets that closely resemble human forms.\n \nUpright, generous, and disciplined, she is diligent and conscientious when carrying out missions, appearing rather ordinary among the more distinctly colorful Witches. Behind closed doors, however, she leads a decadent life, numbing herself day by day with alcohol and pain stimulation.\n \nShe feels shame and guilt over having withdrawn from the battlefield partway, and hopes to atone through self-sacrifice, seeking both liberation and a way to make up for her past failings. As a result, no matter what happens, her subconscious solution is always some kind of suicide mission, though such proposals are usually dismissed as too absurd to take seriously.\n \nShe drinks alcohol like water, even filling her canteen with it, and to save money and for convenience, what she drinks is medical-grade alcohol.",
+    skills: {
+      normal: [
+                { nameZh: "苍焰连矢", nameEn: "Azure Flame Volley", infoZh: "1段攻击范围内敌人。", infoEn: "Attacks enemies in range 1 time.", detailEn: "Stage 1: Deals <color=#C8B450>3</color> hits of <color=#C8B450>{DAMAGE:damageAdjust+101}%</color> damage to enemies inside a designated circular area.", detailZh: "一段：对指定圆形范围内敌方造成<color=#C8B450>3</color>次<color=#C8B450>{DAMAGE:damageAdjust+101}%</color>伤害。" },
+      ],
+      class: [
+                { nameZh: "作茧屏息", nameEn: "Cocoon's Held Breath", infoZh: "[充能增幅] 赋予自身极式蓄能回复速度提升效果。", infoEn: "[Charge Amp] Grants self increased Extreme Skill Charge recovery speed.", detailEn: "[Charge Amp]\n Grants self Extreme Skill Charge recovery speed <color=#C8B450>+15</color> for 1 stack (max <color=#C8B450>2</color> stacks) (lasts <color=#C8B450>{STACKDURATION:stackableBuffDurationAdjust+7.5}</color> seconds).", detailZh: "[充能增幅]\n赋予自身极式蓄能回复速度<color=#C8B450>+15</color>效果1层(最大<color=#C8B450>2</color>层)(持续<color=#C8B450>{STACKDURATION:stackableBuffDurationAdjust+7.5}</color>秒)。" },
+      ],
+      auto: [
+                { nameZh: "鳞下鼓动", nameEn: "Scales' Pulse", infoZh: "[充能增幅][职系技衍生] 赋予自身极式蓄能回复速度提升效果。", infoEn: "[Charge Amp][Class Skill Derivative] Grants self increased Extreme Skill Charge recovery speed.", detailEn: "[Charge Amp][Class Skill Derivative]\n Trigger Conditions: Activates after self uses a Class Skill\n Grants self Extreme Skill Charge recovery speed <color=#C8B450>+50</color> for 1 stack (max <color=#C8B450>1</color> stack) (lasts <color=#C8B450>{STACKDURATION:stackableBuffDurationAdjust+7.5}</color> seconds).", detailZh: "[充能增幅][职系技衍生]\n触发条件：自身施展职系技后发动\n赋予自身极式蓄能回复速度<color=#C8B450>+50</color>效果1层(最大<color=#C8B450>1</color>层)(持续<color=#C8B450>{STACKDURATION:stackableBuffDurationAdjust+7.5}</color>秒)。" },
+      ],
+      extreme: [
+                { nameZh: "苍龙归巢", nameEn: "Return of the Azure Dragon", infoZh: "攻击指定范围内敌人，随后在周围创造多个攻击领域。", infoEn: "Attacks enemies within a designated area, then creates multiple attack zones around it.", detailEn: "Deals <color=#C8B450>{DAMAGE:damageAdjust+90}%</color> damage to enemies in a designated circular area, then deals <color=#C8B450>{DAMAGE:damageAdjust2+90}%</color> damage to enemies in <color=#C8B450>3</color> circular areas around it, creating a circular zone in each area (lasts <color=#C8B450>4</color> seconds) that deals <color=#C8B450>{DAMAGE:damageAdjust3+50}%</color> damage per second to enemies within it (the zone is not considered a skill of this character).", detailZh: "对指定圆形范围内敌方造成<color=#C8B450>{DAMAGE:damageAdjust+90}%</color>伤害，随后在周围<color=#C8B450>3</color>处各对圆形范围内敌方造成<color=#C8B450>{DAMAGE:damageAdjust2+90}%</color>伤害，并在各范围内创造一个圆形领域(持续<color=#C8B450>4</color>秒)，每秒对范围内敌人造成<color=#C8B450>{DAMAGE:damageAdjust3+50}%</color>伤害(领域不视为本角色的技能)。" },
+                { nameZh: "苍龙归巢", nameEn: "Return of the Azure Dragon", infoZh: "强力攻击指定范围内敌人，随后在周围创造更多且持续更久的攻击领域。", infoEn: "Powerfully attacks enemies within a designated area, then creates more numerous and longer-lasting attack zones around it.", detailEn: "Deals <color=#C8B450>{DAMAGE:damageAdjust_ex+100}%</color> damage to enemies in a designated circular area, then deals <color=#C8B450>{DAMAGE:damageAdjust2_ex+65}%</color> damage to enemies in <color=#C8B450>4</color> circular areas around it, creating a circular zone in each area (lasts <color=#C8B450>6</color> seconds) that deals <color=#C8B450>{DAMAGE:damageAdjust3_ex+50}%</color> damage per second to enemies within it (the zone is not considered a skill of this character).", detailZh: "对指定圆形范围内敌方造成<color=#C8B450>{DAMAGE:damageAdjust_ex+100}%</color>伤害，随后在周围<color=#C8B450>4</color>处各对圆形范围内敌方造成<color=#C8B450>{DAMAGE:damageAdjust2_ex+65}%</color>伤害，并在各范围内创造一个圆形领域(持续<color=#C8B450>6</color>秒)，每秒对范围内敌人造成<color=#C8B450>{DAMAGE:damageAdjust3_ex+50}%</color>伤害(领域不视为本角色的技能)。" },
+      ],
+      interference: [
+                { nameZh: "首狩之影", nameEn: "Shadow of the First Hunt", infoZh: "装备者魔法攻击克制率提升。\n装备者的极式蓄能需求较高时，极式蓄能速度提升。", infoEn: "Increases the equipment bearer's Magic Attack rate.\n When the equipment bearer's Extreme Skill Charge requirement is higher, increases Extreme Skill Charge Speed.", detailEn: "Equipment bearer's Magic Attack rate <color=#C8B450>+{BUFF:buffEffectAdjust+3}%</color>.\n When the equipment bearer's Extreme Skill Charge requirement is <color=#C8B450>400</color> or higher, Extreme Skill Charge Speed <color=#C8B450>+{BUFF:buffEffectAdjust2+14}%</color>.", detailZh: "装备者魔法攻击克制率<color=#C8B450>+{BUFF:buffEffectAdjust+3}%</color>。\n装备者的极式蓄能需求大于或等于<color=#C8B450>400</color>时，极式蓄能速度<color=#C8B450>+{BUFF:buffEffectAdjust2+14}%</color>。" },
+      ],
+      passive: [
+                { nameZh: "同巢庇护", nameEn: "Nest of Shelter", infoZh: "自身以外的我方角色施展极式后，缩短自身职系技冷却时间并提升自身极式伤害。", infoEn: "When an ally other than self uses an Extreme Skill, reduces self Class Skill CD and increases self Extreme Skill damage.", detailEn: "When an ally other than self uses an Extreme Skill, reduces self Class Skill CD by <color=#C8B450>2</color> seconds, and grants self Extreme Skill damage <color=#C8B450>+3%</color> for 1 stack (max <color=#C8B450>6</color> stacks) (lasts <color=#C8B450>{STACKDURATION:stackableBuffDurationAdjust+10.5}</color> seconds).", detailZh: "自身以外的我方角色施展极式后，自身职系技冷却时间缩短<color=#C8B450>2</color>秒，并赋予自身极式伤害<color=#C8B450>+3%</color>效果1层(最大<color=#C8B450>6</color>层)(持续<color=#C8B450>{STACKDURATION:stackableBuffDurationAdjust+10.5}</color>秒)。" },
+                { nameZh: "同巢庇护", nameEn: "Nest of Shelter", infoZh: "自身以外的我方角色施展极式后，缩短自身职系技冷却时间并提升自身极式伤害。", infoEn: "When an ally other than self uses an Extreme Skill, reduces self Class Skill CD and increases self Extreme Skill damage.", detailEn: "When an ally other than self uses an Extreme Skill, reduces self Class Skill CD by <color=#C8B450>2</color> seconds, and grants self Extreme Skill damage <color=#C8B450>+4%</color> for 1 stack (max <color=#C8B450>10</color> stacks) (lasts <color=#C8B450>{STACKDURATION:stackableBuffDurationAdjust_ex+10.5}</color> seconds).", detailZh: "自身以外的我方角色施展极式后，自身职系技冷却时间缩短<color=#C8B450>2</color>秒，并赋予自身极式伤害<color=#C8B450>+4%</color>效果1层(最大<color=#C8B450>10</color>层)(持续<color=#C8B450>{STACKDURATION:stackableBuffDurationAdjust_ex+10.5}</color>秒)。" },
       ],
     },
   },
