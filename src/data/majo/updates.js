@@ -1,14 +1,21 @@
-// MAJO update/patch history. Sourced from the official site news archive
-// (majo-x.com/en/news/) plus community calendars; newest first.
+// MAJO update/patch history database. Sourced from the official site news
+// archive (majo-x.com/en/news/) plus community calendars; newest first.
+// Each entry has a slug used by /guides/majo/updates/[slug]/ detail pages and
+// a card image served from R2 majo/banners/.
 
 const OFFICIAL = 'https://majo-x.com/en/news/';
 
 export const majoUpdates = [
   {
+    slug: '2026-09-09-witch-arena-pvp',
     date: '2026-09-09',
     display: 'Sep 9, 2026',
     category: 'Event',
     title: 'Witch Arena (PvP) Now Available',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/banners/witch-arena.webp',
+    imageWidth: 1920,
+    imageHeight: 570,
+    summary: 'PvP arrives: attack other Observers\' defense teams, climb the leaderboard, season runs to Dec 2.',
     url: OFFICIAL + '20260909_announcement/',
     points: [
       'PvP mode where Observers attack other players\' defense teams and defend their own. Season runs Sep 9 to Dec 2, 2026.',
@@ -17,10 +24,15 @@ export const majoUpdates = [
     ],
   },
   {
+    slug: '2026-09-07-september-update-overview',
     date: '2026-09-07',
     display: 'Sep 7, 2026',
     category: 'Update',
     title: 'September Update Content Overview',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/banners/festival-s1.webp',
+    imageWidth: 512,
+    imageHeight: 205,
+    summary: 'Wishlist gacha, Emily pickup, Bazhuli UR, Luoqin + Lucia dual, Chapter 7, tower expansion and the September event wave.',
     url: OFFICIAL + '20260907_majo-witchesnight-announcement/',
     points: [
       'Wishlist on Origin Contact (permanent from Sep 9): pick up to 3 SSR witches. Pool rate 1.8% total; 3 picks = 0.6% each with the rest at 0%, 2 picks = 0.6% each, 1 pick = 0.6% with the rest sharing 1.2%.',
@@ -37,10 +49,15 @@ export const majoUpdates = [
     ],
   },
   {
+    slug: '2026-08-28-fixed-irregularities',
     date: '2026-08-28',
     display: 'Aug 28, 2026',
     category: 'Maintenance',
     title: 'Fixed In-Game Irregularities',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/P0001_Awaken_figure_m.webp',
+    imageWidth: 293,
+    imageHeight: 512,
+    summary: 'Six fixes: Xuanji wallpaper glitches, Chapter 6 stage text, skill descriptions and mistaken SR outfits.',
     url: OFFICIAL + '20260828/',
     points: [
       'Fixed Xuanji wallpaper switching glitch (twice: the function and the wallpaper itself).',
@@ -50,10 +67,15 @@ export const majoUpdates = [
     ],
   },
   {
+    slug: '2026-08-28-known-issues',
     date: '2026-08-28',
     display: 'Aug 28, 2026',
     category: 'Maintenance',
     title: 'Known Issues',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/banners/boss-treatment.webp',
+    imageWidth: 512,
+    imageHeight: 205,
+    summary: 'Boss Training Ticket distribution error, with 10 free tickets for all players as compensation.',
     url: OFFICIAL + '20260828_known_issues/',
     points: [
       'Boss Training Ticket distribution error: some Observers received an incorrect number of tickets.',
@@ -62,10 +84,15 @@ export const majoUpdates = [
     ],
   },
   {
+    slug: '2026-08-26-no-downtime-update',
     date: '2026-08-26',
     display: 'Aug 26, 2026',
     category: 'Update',
     title: 'No-Downtime Update',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/banners/ur-pu-1-isabelle.webp',
+    imageWidth: 1024,
+    imageHeight: 410,
+    summary: 'Chapter 6, Lumi rate-up, the first UR Eternal pool (Isabelle), Venomfrill boss and Crystal Refinement.',
     url: OFFICIAL + '20260826_announcement/',
     points: [
       'New story: Chapter 6, "A Harmonious Family".',
@@ -78,10 +105,15 @@ export const majoUpdates = [
     ],
   },
   {
+    slug: '2026-08-21-producers-letter',
     date: '2026-08-21',
     display: 'Aug 21, 2026',
     category: 'News',
     title: 'Producer\'s Letter: Recent Version Adjustments and Future Plans',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/banners/bazhuli-gacha.webp',
+    imageWidth: 1440,
+    imageHeight: 1920,
+    summary: 'The Sep 9 roadmap: Floating Law, PvP, pity UI, anti-cheat enforcement, R18 expansion and progression fixes.',
     url: OFFICIAL + '20260821_notice/',
     points: [
       'Sep 9 roadmap: Floating Law system, a brand-new PvP mode, character-exclusive events and story, new main story developments, and season challenges and rewards.',
@@ -92,10 +124,15 @@ export const majoUpdates = [
     ],
   },
   {
+    slug: '2026-08-19-no-downtime-update',
     date: '2026-08-19',
     display: 'Aug 19, 2026',
     category: 'Update',
     title: 'No-Downtime Update',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/banners/ssr-pu-1-yun-alice.webp',
+    imageWidth: 1024,
+    imageHeight: 410,
+    summary: 'Chapter 5, Yuhong rate-up, the Yun + Alice dual Limited pool, Welfare Committee and tower unlock drop.',
     url: OFFICIAL + '20260819_notice/',
     points: [
       'New story: Chapter 5, "The Grudge of the Seven".',
@@ -108,30 +145,45 @@ export const majoUpdates = [
     ],
   },
   {
+    slug: '2026-08-17-anti-cheat-notice',
     date: '2026-08-17',
     display: 'Aug 17, 2026',
     category: 'News',
     title: 'Managing Abnormal Gaming Behavior',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/banners/daphine-gacha.webp',
+    imageWidth: 384,
+    imageHeight: 512,
+    summary: 'Anti-cheat notice about handling abnormal play and third-party tools.',
     url: OFFICIAL + '20260817_notice/',
     points: [
       'Anti-cheat notice about handling abnormal play and third-party tools.',
     ],
   },
   {
+    slug: '2026-08-14-august-update-overview',
     date: '2026-08-14',
     display: 'Aug 14, 2026',
     category: 'Update',
     title: 'August Update Content Overview',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/banners/ur-pu-1-isabelle.webp',
+    imageWidth: 1024,
+    imageHeight: 410,
+    summary: 'Preview of the Aug 19 wave: Chapter 5, Yuhong, Yun + Alice, Welfare Committee, and the Aug 26 Lumi and Isabelle pools.',
     url: OFFICIAL + '20260814_majo-witchesnight-announcement/',
     points: [
       'Preview of the Aug 19 no-downtime data update: Chapter 5, Yuhong Origin rate-up, Yun + Alice Limited Contact, Welfare Committee, and the Aug 26 wave (Chapter 6, Lumi, Isabelle Eternal, Venomfrill boss training).',
     ],
   },
   {
+    slug: '2026-08-12-launch',
     date: '2026-08-12',
     display: 'Aug 12, 2026',
     category: 'News',
     title: 'Launch: First Week of Content',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/P0003_Awaken_figure_m.webp',
+    imageWidth: 293,
+    imageHeight: 512,
+    summary: 'Launch day: Prologue to Chapter 4, the 21-day Thousandfold Contact, Jenny rate-up and the Abyssal Slime boss.',
     url: OFFICIAL + 'majo-witchesnight-launch/',
     points: [
       'Main story from the Prologue "Twisted Heroic Dream" through Chapter 4, "What the Messenger Carries".',
@@ -141,3 +193,7 @@ export const majoUpdates = [
     ],
   },
 ];
+
+export function getMajoUpdate(slug) {
+  return majoUpdates.find(u => u.slug === slug);
+}

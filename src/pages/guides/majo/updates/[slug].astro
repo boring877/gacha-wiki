@@ -1,0 +1,73 @@
+---
+// MAJO individual update page: full notes, art and source link for one update.
+import MajoLayout from '../../../../layouts/majo/LandingLayout.astro';
+import { majoUpdates, getMajoUpdate } from '../../../../data/majo/updates.js';
+import '../../../../styles/games/majo/majo-updates.css';
+
+export async function getStaticPaths() {
+  return majoUpdates.map(u => ({
+    params: { slug: u.slug },
+    props: { update: u },
+  }));
+}
+
+const { update } = Astro.props;
+
+const categoryClass = (c) => 'update-cat-' + c.toLowerCase();
+const prev = majoUpdates[majoUpdates.indexOf(update) - 1];
+const next = majoUpdates[majoUpdates.indexOf(update) + 1];
+---
+
+<MajoLayout
+  title={`${update.title} (${update.display})`}
+  description={`${update.title}, MAJO: Witches Night update from ${update.display}. ${update.summary}`}
+  gameTitle="Updates"
+  crumbName={update.title}
+>
+  <section>
+    <article class="majo-update-detail">
+      <div class="majo-update-detail-art">
+        <img
+          src={update.image}
+          alt={`${update.title} art`}
+          loading="eager"
+          decoding="async"
+          width={update.imageWidth}
+          height={update.imageHeight}
+        />
+      </div>
+      <div class="majo-update-head">
+        <span class={`majo-update-cat ${categoryClass(update.category)}`}>{update.category}</span>
+        <span class="majo-update-date">{update.display}</span>
+      </div>
+      <h1 class="majo-update-detail-title">{update.title}</h1>
+      <ul class="majo-update-points">
+        {update.points.map(p => <li>{p}</li>)}
+      </ul>
+      {update.url && (
+        <p class="majo-update-source">
+          Source: <a href={update.url} target="_blank" rel="noopener noreferrer">official news archive</a>
+        </p>
+      )}
+    </article>
+
+    <nav class="majo-update-nav">
+      {prev ? (
+        <a class="majo-update-nav-link" href={`/guides/majo/updates/${prev.slug}/`}>
+          <span class="majo-update-nav-dir">Newer</span>
+          <span class="majo-update-nav-name">{prev.title}</span>
+        </a>
+      ) : <span />}
+      {next ? (
+        <a class="majo-update-nav-link is-older" href={`/guides/majo/updates/${next.slug}/`}>
+          <span class="majo-update-nav-dir">Older</span>
+          <span class="majo-update-nav-name">{next.title}</span>
+        </a>
+      ) : <span />}
+    </nav>
+
+    <p class="majo-update-back">
+      <a href="/guides/majo/updates/">Back to all updates</a>
+    </p>
+  </section>
+</MajoLayout>

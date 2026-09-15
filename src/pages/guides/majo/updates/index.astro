@@ -1,5 +1,5 @@
 ---
-// MAJO update/patch history page, sourced from the official majo-x.com news archive.
+// MAJO updates database: card grid of every official update, linking to detail pages.
 import MajoLayout from '../../../../layouts/majo/LandingLayout.astro';
 import { majoUpdates } from '../../../../data/majo/updates.js';
 import '../../../../styles/games/majo/majo-updates.css';
@@ -9,7 +9,7 @@ const categoryClass = (c) => 'update-cat-' + c.toLowerCase();
 
 <MajoLayout
   title="Updates & Patch Notes"
-  description={`MAJO: Witches Night update history and patch notes: every version update, banner, event and maintenance from launch through today, sourced from the official news archive.`}
+  description={`MAJO: Witches Night update database: every official version update, banner, event and maintenance note since launch, with full details and art.`}
   gameTitle="Updates & Patch Notes"
   crumbName="Updates"
 >
@@ -18,27 +18,35 @@ const categoryClass = (c) => 'update-cat-' + c.toLowerCase();
       <p class="majo-updates-intro-label">Sourced from the official news archive</p>
       <p class="majo-updates-intro-text">
         Every official update, event and maintenance note since launch, newest first.
-        All times are UTC+8. Source links go to the
+        Click any entry for the full details. All times are UTC+8. Raw sources live in the
         <a href="https://majo-x.com/en/news/" target="_blank" rel="noopener noreferrer">official majo-x.com news archive</a>.
       </p>
     </div>
 
-    {majoUpdates.map(u => (
-      <article class="majo-update-entry">
-        <div class="majo-update-head">
-          <span class={`majo-update-cat ${categoryClass(u.category)}`}>{u.category}</span>
-          <span class="majo-update-date">{u.display}</span>
-        </div>
-        <h2 class="majo-update-title">{u.title}</h2>
-        <ul class="majo-update-points">
-          {u.points.map(p => <li>{p}</li>)}
-        </ul>
-        {u.url && (
-          <p class="majo-update-source">
-            Source: <a href={u.url} target="_blank" rel="noopener noreferrer">official news archive</a>
-          </p>
-        )}
-      </article>
-    ))}
+    <div class="majo-updates-grid">
+      {majoUpdates.map(u => (
+        <a class="majo-update-card" href={`/guides/majo/updates/${u.slug}/`}>
+          <div class="majo-update-card-art">
+            <img
+              src={u.image}
+              alt={`${u.title} art`}
+              loading="lazy"
+              decoding="async"
+              width={u.imageWidth}
+              height={u.imageHeight}
+            />
+          </div>
+          <div class="majo-update-card-body">
+            <div class="majo-update-card-meta">
+              <span class={`majo-update-cat ${categoryClass(u.category)}`}>{u.category}</span>
+              <span class="majo-update-card-date">{u.display}</span>
+            </div>
+            <h2 class="majo-update-card-title">{u.title}</h2>
+            <p class="majo-update-card-summary">{u.summary}</p>
+            <span class="majo-update-card-more">Read more</span>
+          </div>
+        </a>
+      ))}
+    </div>
   </section>
 </MajoLayout>
