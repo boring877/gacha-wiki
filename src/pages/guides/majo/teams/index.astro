@@ -1,0 +1,61 @@
+---
+// MAJO team builds: curated comps with member roles, rotation and flex notes.
+import MajoLayout from '../../../../layouts/majo/LandingLayout.astro';
+import MajoCharacterImage from '../../../../components/majo/MajoCharacterImage.astro';
+import MajoIcon from '../../../../components/majo/MajoIcon.astro';
+import { majoTeams } from '../../../../data/majo/teams.js';
+import '../../../../styles/games/majo/majo-teams.css';
+---
+
+<MajoLayout
+  title="Team Builds"
+  description={`MAJO: Witches Night team builds: the best comps for magic burst, the proven physical meta deck, execution squads, sustain walls and free-to-play teams, curated from kit data and CN/JP/KR community play.`}
+  gameTitle="Team Builds"
+  crumbName="Team Builds"
+>
+  <section>
+    <p class="majo-teams-note">
+      Five comps covering every budget and game mode. Physical decks are the
+      proven meta today, magic decks have the highest ceiling but need star
+      investment. See the full reasoning on the
+      <a href="/guides/majo/tier-list/" class="majo-teams-note-link">tier list</a>.
+    </p>
+
+    {majoTeams.map(team => (
+      <div class="majo-team-card">
+        <div class="majo-team-header">
+          <div class="majo-team-titles">
+            <h2 class="majo-team-name">{team.name}</h2>
+            <p class="majo-team-tagline">{team.tagline}</p>
+          </div>
+          <div class="majo-team-chips">
+            <span class={`majo-team-chip chip-${team.availability.toLowerCase().replace(/[^a-z]/g, '')}`}>{team.availability}</span>
+            <span class="majo-team-chip chip-archetype">{team.archetype}</span>
+          </div>
+        </div>
+
+        <div class="majo-team-members">
+          {team.members.map(m => (
+            <a class="majo-team-member" href={`/guides/majo/characters/${m.slug}/`}>
+              <MajoCharacterImage filename={m.character.icon} alt={m.character.nameEn} class="majo-team-thumb" />
+              <span class="majo-team-member-name">{m.character.nameEn}</span>
+              <span class="majo-team-member-role">{m.role}</span>
+            </a>
+          ))}
+        </div>
+
+        <div class="majo-team-body">
+          <p class="majo-team-desc">{team.description}</p>
+          <div class="majo-team-block">
+            <h3 class="majo-team-block-title">Rotation</h3>
+            <p class="majo-team-block-text">{team.rotation}</p>
+          </div>
+          <div class="majo-team-block">
+            <h3 class="majo-team-block-title">Flex notes</h3>
+            <p class="majo-team-block-text">{team.flex}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </section>
+</MajoLayout>

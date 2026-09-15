@@ -1,12 +1,38 @@
 /* MAJO tier list — class sections with tier rows. Static: no hover/glow. */
 
-.majo-tier-note {
-  text-align: center;
-  color: var(--majo-text-tertiary);
+/* Single intro panel: date label + community meta takeaway + sources */
+.majo-tier-intro {
+  margin: 0 auto 2.25rem;
+  max-width: 860px;
+  padding: 1rem 1.25rem;
+  background: var(--majo-bg-secondary);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+}
+
+.majo-tier-intro-label {
+  margin: 0 0 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--majo-primary-light);
+}
+
+.majo-tier-intro-text {
+  margin: 0;
   font-size: 0.85rem;
-  margin: 0 auto 2rem;
-  max-width: 720px;
-  line-height: 1.6;
+  line-height: 1.65;
+  color: var(--majo-text-secondary);
+}
+
+.majo-tier-intro-text strong {
+  color: var(--majo-text-primary);
+}
+
+.majo-tier-intro-text a {
+  color: var(--majo-primary-light);
+  font-weight: 600;
 }
 
 .majo-tier-discord {

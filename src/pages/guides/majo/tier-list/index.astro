@@ -13,13 +13,20 @@ import '../../../../styles/games/majo/majo-tier.css';
   gameTitle="Tier List"
 >
   <section>
-    <p class="majo-tier-note">
-      Updated {MAJO_TIER_UPDATED}. Placements are based on each witch's full kit
-      (skill numbers and team utility) and cross-checked with community
-      launch-month lists. The four September witches are ranked on kit alone and
-      may move as the meta settles. Questions or feedback? Visit the
-      <a href="https://discord.gg/YdWFddQKR8" target="_blank" rel="noopener noreferrer" class="majo-tier-discord">Discord</a>.
-    </p>
+    <div class="majo-tier-intro">
+      <p class="majo-tier-intro-label">Updated {MAJO_TIER_UPDATED} · Kit-based ratings, community-checked</p>
+      <p class="majo-tier-intro-text">
+        <strong>Physical decks dominate the current meta</strong> (Yun, Alice, Yuhong, Zhijie, with Xinzi
+        and Peseshet as the free core). Magic comps are the higher ceiling but need star investment, and
+        their key banners just shipped in September, so the SS magic picks are forward-looking ratings.
+        The September witches may move as the meta settles. Sources:
+        <a href="https://forum.gamer.com.tw/B.php?bsn=85761" target="_blank" rel="noopener noreferrer">Bahamut</a>,
+        <a href="https://www.bilibili.com/video/BV1z8Yj6YEK7" target="_blank" rel="noopener noreferrer">Bilibili</a>,
+        <a href="https://gamerch.com/majorstudio/1009530" target="_blank" rel="noopener noreferrer">Gamerch</a>,
+        <a href="https://gall.dcinside.com/mgallery/board/lists/?id=majo" target="_blank" rel="noopener noreferrer">DC Inside</a>.
+        Questions? <a href="https://discord.gg/YdWFddQKR8" target="_blank" rel="noopener noreferrer" class="majo-tier-discord">Discord</a>.
+      </p>
+    </div>
 
     {majoTierByClass.map(group => (
       <div class="majo-tier-class-section">

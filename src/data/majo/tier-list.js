@@ -9,6 +9,9 @@
 import { majoCharacters } from './characters.js';
 
 export const MAJO_TIERS = [
+  // SSS is RESERVED for a future "broken" unit (so strong nothing compares);
+  // it stays empty and hidden until one actually ships.
+  { tier: 'SSS', color: '#f87171' },
   { tier: 'SS', color: '#f2c14e' },
   { tier: 'S', color: '#dbb06e' },
   { tier: 'A', color: '#a89bd1' },
@@ -26,8 +29,8 @@ export const MAJO_TIER_UPDATED = 'September 15, 2026';
 export const MAJO_TIER_PLACEMENTS = {
   // Fighters (破阵)
   xinzi: {
-    tier: 'A',
-    reason: 'Single-target breaker: a +100% Crit Rate Salvo auto, a teleport Extreme with heavy Stagger, and a 90% damage-reduction Dodge Counter. Best free SSR DPS, just not AoE.',
+    tier: 'S',
+    reason: 'Single-target breaker: a +100% Crit Rate Salvo auto, a teleport Extreme with heavy Stagger, and a 90% damage-reduction Dodge Counter. The all-region community core: strongest free DPS in the game.',
   },
   huarui: {
     tier: 'A',
@@ -57,8 +60,8 @@ export const MAJO_TIER_PLACEMENTS = {
 
   // Mages (飞袭)
   xuanji: {
-    tier: 'S',
-    reason: 'Best execution mage: knockdown-locked Charge skills, an Extreme that drops a damage zone, and Attack Speed that snowballs (up to 20 stacks) whenever allies execute.',
+    tier: 'SS',
+    reason: 'Best execution mage: knockdown-locked Charge skills, an Extreme that drops a damage zone, and Attack Speed that snowballs (up to 20 stacks) whenever allies execute. JP ranks her #1 Assault and #1 Mental attacker.',
   },
   jenny: {
     tier: 'SS',
@@ -66,15 +69,15 @@ export const MAJO_TIER_PLACEMENTS = {
   },
   patra: {
     tier: 'SS',
-    reason: 'AoE magic DPS whose Extreme shreds Magic Resistance by up to 20% and whose Class Skill instantly reloads whenever an allied Arcanist uses her Extreme.',
+    reason: 'AoE magic DPS whose Extreme shreds Magic Resistance by up to 20% and whose Class Skill instantly reloads whenever an allied Arcanist uses her Extreme. Star-gated: CN players say she is only truly good at max stars, so expect to invest dupes.',
   },
   macak: {
     tier: 'SS',
     reason: 'UR storm nuker: a 12-hit self-centered Extreme (about 3600% total), a full-field Ultimate Salvo auto, and 20s self Crit buffs plus 32% charge speed.',
   },
   yuhong: {
-    tier: 'A',
-    reason: 'Dodge-cannon DPS: 100% Dodge Value uptime, a fixed 2s dodge cooldown, and a +200% Special bonus during her Extreme; crits stack off every ally dodge too.',
+    tier: 'SS',
+    reason: 'Dodge-cannon DPS: 100% Dodge Value uptime, a fixed 2s dodge cooldown, and a +200% Special bonus during her Extreme; crits stack off every ally dodge too. CN players rate her T0 (strongest Flyer) and KR players prefer her over Jenny on auto.',
   },
   tomoe: {
     tier: 'A',
@@ -129,14 +132,14 @@ export const MAJO_TIER_PLACEMENTS = {
     reason: 'Self-sustaining axe tank (self-heal and Max HP on her Extreme) with solid taunt coverage; brings no buffs for the rest of the team.',
   },
   yun: {
-    tier: 'B',
-    reason: 'Block-stacking tank whose Class and Special keep resetting each other for near-permanent taunt uptime, but low team value beyond that.',
+    tier: 'A',
+    reason: 'Parry-counter tank that JP communities rank #1 Guardian, and the cornerstone of KR physical decks (biggest Break-gauge contributor in the game). Her Class and Special keep resetting each other for near-permanent taunt uptime.',
   },
 
   // Healers (支援)
   maro: {
-    tier: 'SS',
-    reason: 'Offense healer: her Execution auto gives every ally +10% damage (plus 16% vulnerability on the target) on top of AoE heals and an ally Magic Attack aura on her Interference.',
+    tier: 'S',
+    reason: 'Offense healer: her Execution auto gives every ally +10% damage (plus 16% vulnerability on the target) on top of AoE heals and an ally Magic Attack aura on her Interference. Strong on paper, but most CN/JP/KR players still run free Peseshet for sustained healing.',
   },
   emily: {
     tier: 'SS',
@@ -152,8 +155,8 @@ export const MAJO_TIER_PLACEMENTS = {
     reason: 'Pure heals (AoE, zone and single-target) with a healing Interference; no damage contribution, so Maro, Peseshet and Emily leave her behind.',
   },
   zhijie: {
-    tier: 'B',
-    reason: 'Defensive nurse: Defense buffs, get-up speed and posture support on her heals; outclassed offensively by every other healer.',
+    tier: 'A',
+    reason: 'The physical meta deck\'s healer and the highest healer ceiling in the game (CN players rate her T0, JP S): area heals with Defense buffs, get-up and posture support on her auto, and an Extreme that heals then attacks. Whale-spec to acquire and limit-break, which is the only thing keeping her out of SS. Free players should run Peseshet.',
   },
 };
 
