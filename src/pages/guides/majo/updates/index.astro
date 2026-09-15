@@ -29,14 +29,15 @@ const categoryClass = (c) => 'update-cat-' + c.toLowerCase();
           <span class={`majo-update-cat ${categoryClass(u.category)}`}>{u.category}</span>
           <span class="majo-update-date">{u.display}</span>
         </div>
-        <h2 class="majo-update-title">
-          {u.url ? (
-            <a href={u.url} target="_blank" rel="noopener noreferrer">{u.title}</a>
-          ) : u.title}
-        </h2>
+        <h2 class="majo-update-title">{u.title}</h2>
         <ul class="majo-update-points">
           {u.points.map(p => <li>{p}</li>)}
         </ul>
+        {u.url && (
+          <p class="majo-update-source">
+            Source: <a href={u.url} target="_blank" rel="noopener noreferrer">official news archive</a>
+          </p>
+        )}
       </article>
     ))}
   </section>

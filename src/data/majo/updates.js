@@ -56,7 +56,9 @@ export const majoUpdates = [
     title: 'Known Issues',
     url: OFFICIAL + '20260828_known_issues/',
     points: [
-      'Official list of known issues, published alongside the Aug 28 fix note.',
+      'Boss Training Ticket distribution error: some Observers received an incorrect number of tickets.',
+      'Fix comes in a future update; all players receive Boss Training Ticket x10 as compensation.',
+      'Other issues can be reported through the customer service form.',
     ],
   },
   {
