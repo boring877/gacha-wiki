@@ -54,7 +54,7 @@ export const CLASS_ORDER = [
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'PvE Rankings by Class & Role',
-  lastUpdated: '2026-09-04',
+  lastUpdated: '2026-09-15',
   description:
     'Class-based PvE rankings with role highlights for story, events, and general progression.',
   tiers: {
@@ -101,6 +101,7 @@ export const PVE_TIER_LIST = {
       { name: 'Erika' },
       { name: 'Poseidon' },
       { name: 'Bedivere' },
+      { name: 'Brynhild' },
     ],
     S: [
       { name: 'Zashiki-warashi' },
@@ -137,7 +138,7 @@ export const PVE_TIER_LIST = {
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
   name: 'Arena PvP Rankings by Class & Role',
-  lastUpdated: '2026-09-04',
+  lastUpdated: '2026-09-15',
   description: 'Class-based Arena PvP rankings with role highlights for competitive play.',
   tiers: {
     UR: [{ name: 'Pride-Lucifer' }, { name: 'Bors' }, { name: 'Medusa' }],
@@ -163,6 +164,7 @@ export const PVP_TIER_LIST = {
       { name: 'Nephthys' },
       { name: 'Bedivere' },
       { name: 'Ibaraki-doji' },
+      { name: 'Brynhild' },
     ],
     S: [
       { name: 'Arthur' },
@@ -195,7 +197,7 @@ export const PVP_TIER_LIST = {
 // New Player Tier List (F2P Friendly)
 export const NEW_PLAYER_TIER_LIST = {
   name: 'New Player / F2P Tier List',
-  lastUpdated: '2026-09-04',
+  lastUpdated: '2026-09-15',
   description:
     'You can get any character from this list from day 1. This tier list focuses on accessibility for new players. The main problem early on is finding good damage dealers.',
   tiers: {
@@ -219,7 +221,7 @@ export const NEW_PLAYER_TIER_LIST = {
       { name: 'Bors' },
       { name: 'Medusa' },
     ],
-    S: [{ name: 'Snow Girl' }, { name: 'Merlin' }, { name: 'Arthur' }, { name: 'Greed Mammon' }, { name: 'Veronica' }, { name: 'Poseidon' }, { name: 'Set' }, { name: 'Nephthys' }, { name: 'Bedivere' }],
+    S: [{ name: 'Snow Girl' }, { name: 'Merlin' }, { name: 'Arthur' }, { name: 'Greed Mammon' }, { name: 'Veronica' }, { name: 'Poseidon' }, { name: 'Set' }, { name: 'Nephthys' }, { name: 'Bedivere' }, { name: 'Brynhild' }],
     A: [
       { name: 'Tefnut' },
       { name: 'Bastet' },
@@ -361,6 +363,16 @@ export function getCharactersByTier(tierLevel, listType = 'pve') {
 
 // Tier list changelog
 export const TIER_LIST_CHANGELOG = [
+  {
+    date: '2026-09-15',
+    changes: [
+      'New character added: Brynhild (SS, both PvE and PvP, S for New Players)',
+      'Holy Warrior DPS who scales entirely off DEF: attacks deal DEF-based Holy damage and her passive [Soul Hue] gains permanent stacks when attacked (each stack +6% DEF, up to 12)',
+      'Ultimate [Einherjar Judgment] executes the lowest-HP enemy (+195% damage, +94% DEF pen, +77% Holy res pen below 50% HP) and punishes death-prevention buffs with [Pending Judgment]',
+      'Auto skill applies [Nethermark]: -130% healing received, -53% shields received, and DEF-based Holy DOT',
+      'Memory card Afternoon Waiting added: SSS for Warriors (signature card, DEF% + Holy dmg + shield on ultimate)',
+    ],
+  },
   {
     date: '2026-09-04',
     changes: [
