@@ -216,7 +216,7 @@ This is why some decompiled functions show string parsing code instead of game l
 
 ### Decompiled Files Location
 ```
-c:\Users\Borin\Documents\TaimaninSquad_Extract\decompiled_v2\
+<extractor workdir>\decompiled_v2\
 ├── BOExecuteManager_CalcDamage.c      (102 lines - MAIN DAMAGE FORMULA)
 ├── BOExecuteManager_CalcStats.c       (69 lines)
 ├── BOExecuteManager_GetStatsLessTarget.c
