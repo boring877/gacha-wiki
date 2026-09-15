@@ -1,6 +1,14 @@
 // Zone Nova Updates Data
 export const zoneNovaUpdates = [
   {
+    id: 'maintenance-september-15-2026',
+    title: 'September 15, 2026 Maintenance Update',
+    date: 'September 15, 2026',
+    type: 'maintenance',
+    summary: "Maintenance on September 15, 2026 (14:00 UTC+8, ~2 hours). Brynhild (Warrior, Holy) limited recruitment September 15, 2026 14:15 - September 29, 2026 03:59 (UTC+8). Rift Surge XXXVI open September 15, 2026 - September 29, 2026. New Holy Warrior who scales entirely off DEF: [Soul Hue] permanent DEF stacks, DEF-based Holy damage, and an executing ultimate [Einherjar Judgment] with [Pending Judgment] anti-death-prevention. Set and Ibaraki-doji limited recruitment reruns September 22 - September 29, 2026. Mid-Autumn Festival login event September 23 - October 6, 2026 (Reunion Mooncake event currency). New Prayer Codex system items: character and Remembrance selectors, Invocation Pages, and Prayer Codex Fragments for the Prayer Codex Shop.",
+    url: '/guides/zone-nova/updates/maintenance-september-15-2026/',
+  },
+  {
     id: 'maintenance-september-1-2026',
     title: 'September 1, 2026 Maintenance Update',
     date: 'September 1, 2026',
