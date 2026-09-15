@@ -62,29 +62,35 @@ import '../../../../styles/games/star-savior/ss-redeem-codes.css';
     btn.addEventListener('click', async () => {
       const code = btn.getAttribute('data-code');
       if (!code) return;
-      try {
-        await navigator.clipboard.writeText(code);
-        btn.textContent = 'Copied!';
-        btn.classList.add('copied');
+      const showResult = (ok: boolean) => {
+        btn.textContent = ok ? 'Copied!' : 'Failed';
+        btn.classList.toggle('copied', ok);
         setTimeout(() => {
           btn.textContent = 'Copy';
           btn.classList.remove('copied');
         }, 2000);
-      } catch {
+      };
+      const legacyCopy = () => {
         const textarea = document.createElement('textarea');
         textarea.value = code;
         textarea.style.position = 'fixed';
         textarea.style.opacity = '0';
         document.body.appendChild(textarea);
         textarea.select();
-        document.execCommand('copy');
+        let ok = false;
+        try {
+          ok = document.execCommand('copy');
+        } catch {
+          ok = false;
+        }
         document.body.removeChild(textarea);
-        btn.textContent = 'Copied!';
-        btn.classList.add('copied');
-        setTimeout(() => {
-          btn.textContent = 'Copy';
-          btn.classList.remove('copied');
-        }, 2000);
+        return ok;
+      };
+      try {
+        await navigator.clipboard.writeText(code);
+        showResult(true);
+      } catch {
+        showResult(legacyCopy());
       }
     });
   });

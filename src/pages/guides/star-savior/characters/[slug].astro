@@ -14,9 +14,12 @@ import SSJourneyStatIcon from '../../../../components/star-savior/SSJourneyStatI
 import SSStatIcon from '../../../../components/star-savior/SSStatIcon.astro';
 import SSGradeIcon from '../../../../components/star-savior/SSGradeIcon.astro';
 import SSArcanaImage from '../../../../components/star-savior/SSArcanaImage.astro';
-import SSRarityImage from '../../../../components/star-savior/SSRarityImage.astro';
 import SSArcpointImage from '../../../../components/star-savior/SSArcpointImage.astro';
 import { STAR_SAVIOR_ARCANA } from '../../../../data/star-savior/arcana.js';
+
+// JSON for inline <script> interpolation: escape "<" so a "</script>" sequence
+// inside game text can never terminate the script block early
+const safeJson = (value: unknown) => JSON.stringify(value).replace(/</g, '\\u003c');
 
 export function getStaticPaths() {
   return STAR_SAVIOR_CHARACTERS.map((c) => ({
@@ -635,9 +638,9 @@ const maxBattlePower = calcMaxBattlePower(data);
       </div>
       <script is:inline set:html={`
         (function() {
-          var base = ${JSON.stringify(data.stats)};
-          var growth = ${JSON.stringify(data.statGrowth || {})};
-          var resonance = ${JSON.stringify(data.resonance || [])};
+          var base = ${safeJson(data.stats)};
+          var growth = ${safeJson(data.statGrowth || {})};
+          var resonance = ${safeJson(data.resonance || [])};
           var numInput = document.getElementById('ss-level-input');
           var starInput = document.getElementById('ss-star-input');
           var affectionInput = document.getElementById('ss-affection-input');
@@ -688,7 +691,7 @@ const maxBattlePower = calcMaxBattlePower(data);
             return { ATK: atk, HP: hp, DEF: def };
           }
 
-          var STAT_LABELS = ${JSON.stringify(STAT_LABELS)};
+          var STAT_LABELS = ${safeJson(STAT_LABELS)};
 
           var statIconMap = {};
           var iconsContainer = document.getElementById('ss-stat-icons');

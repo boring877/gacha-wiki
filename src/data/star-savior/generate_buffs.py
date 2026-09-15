@@ -7,7 +7,7 @@ import json, sys, re, os
 sys.stdout.reconfigure(encoding="utf-8")
 
 BASE = "D:/starsavior-extractor/output/decrypted_templets"
-OUT_DIR = "C:/Users/Borin/OneDrive/Documents/gacha-wiki/src/data/star-savior"
+OUT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 def load(name):
