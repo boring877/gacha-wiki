@@ -85,12 +85,6 @@
   --zn-badge-passive: #c2185b; /* Passive skill */
   --zn-badge-team-skill: #9c27b0; /* Team skill */
 }
-
-/* Class Showcase Container */
-.class-showcase-container {
-  position: relative;
-}
-
 /* Class Name Styling */
 .class-name.guardian {
   color: var(--zn-badge-blue);
@@ -122,12 +116,6 @@
 .class-name.unknown {
   color: var(--zn-text-secondary);
 }
-
-/* Unified Class Card */
-.unified-class-card {
-  position: relative;
-}
-
 /* Gameplay Tags for future use */
 .gameplay-tag {
   padding: 0.3rem 0.6rem;
@@ -502,28 +490,6 @@
     margin-bottom: 0.3rem;
   }
 }
-
-/* Flat Badge Styles - Highlighter Style */
-.class-badge,
-.rarity-badge,
-.element-badge,
-.faction-badge,
-.role-badge,
-.skill-badge,
-.awakening-badge {
-  padding: 0.2rem 0.5rem;
-  font-size: 0.7rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  margin: 0.1rem 0.2rem 0.1rem 0;
-  line-height: 1.2;
-}
-
 /* ═══════════════════════════════════════════════════════════════════════ */
 /*                           CONSOLIDATED BADGE COLORS                     */
 /* ═══════════════════════════════════════════════════════════════════════ */
@@ -679,6 +645,10 @@
   background: var(--zn-badge-gray);
   color: var(--zn-badge-white);
 }
+.faction-badge.otis {
+  background: var(--zn-badge-otis);
+  color: var(--zn-badge-white);
+}
 
 .faction-badge.safir {
   background: var(--zn-badge-safir);
@@ -692,11 +662,6 @@
 
 .faction-badge.avalon {
   background: var(--zn-badge-avalon);
-  color: var(--zn-badge-white);
-}
-
-.faction-badge.otis {
-  background: var(--zn-badge-otis);
   color: var(--zn-badge-white);
 }
 
@@ -720,7 +685,6 @@
   background: var(--zn-badge-bikta);
   color: var(--zn-badge-white);
 }
-
 /* Skill Badge Colors */
 .skill-badge.normal-attack {
   background: var(--zn-badge-normal-attack);
@@ -746,26 +710,6 @@
   background: var(--zn-badge-team-skill);
   color: var(--zn-badge-white);
 }
-
-/* Awakening Badge Colors */
-.awakening-badge.dupe-3,
-.awakening-badge.dupe-5 {
-  background: var(--zn-badge-orange);
-  color: var(--zn-badge-black);
-}
-
-.awakening-badge.dupe-1,
-.awakening-badge.dupe-2,
-.awakening-badge.dupe-6 {
-  background: var(--zn-badge-teal);
-  color: var(--zn-badge-white);
-}
-
-.awakening-badge.dupe-4 {
-  background: var(--zn-badge-purple);
-  color: var(--zn-badge-white);
-}
-
 /* Faction Section Styling */
 .faction-section {
   text-align: center;
@@ -898,13 +842,12 @@
 .tag-class.supporter { color: var(--zn-badge-buffer); }
 .class-badge.tank { background: var(--zn-badge-guardian); color: var(--zn-badge-white); }
 .class-badge.supporter { background: var(--zn-badge-buffer); color: var(--zn-badge-black); }
+.faction-badge.otis { background: var(--zn-badge-otis); }
 .faction-badge.safir { background: var(--zn-badge-safir); }
 .faction-badge.kemich { background: var(--zn-badge-kemich); }
-.faction-badge.otis { background: var(--zn-badge-otis); }
 .faction-badge.heikyo-castle { background: var(--zn-badge-heikyo-castle); }
 .faction-badge.monochrome-realm { background: var(--zn-badge-monochrome-realm); }
 .faction-badge.bikta { background: var(--zn-badge-bikta); }
-
 /* renamed class/role selector coverage (game names) */
 .role-badge.supporter {
   background: var(--zn-badge-blue);

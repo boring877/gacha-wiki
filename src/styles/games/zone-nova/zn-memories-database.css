@@ -28,16 +28,6 @@
   margin: 1rem auto 0.8rem auto;
   overflow: hidden;
 }
-
-.filter-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 1.2rem;
-  background: var(--zn-bg-tertiary);
-  border-bottom: 1px solid var(--zn-border);
-}
-
 .filter-title {
   margin: 0;
   font-family: var(--font-display);
@@ -78,35 +68,12 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
-
-.button-group {
-  display: flex;
-  gap: 0.35rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
 .rarity-group {
   max-width: 300px;
 }
-
-.class-group {
-  max-width: 100%;
-}
-
 .sort-group {
   max-width: 250px;
 }
-
-.filter-section-label {
-  color: var(--zn-text-primary);
-  font-weight: 600;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.25rem;
-}
-
 /* Unified Button Styling - More compact and subtle */
 .filter-btn {
   padding: 0.35rem 0.65rem;
@@ -383,27 +350,6 @@ table.memory-table th {
   font-weight: 700;
   margin-right: 0.2em;
 }
-
-.mobile-card-effects {
-  margin-top: 0.75rem;
-}
-
-.mobile-card-effects h4 {
-  margin: 0 0 0.5rem 0;
-  font-size: 0.9rem;
-  color: var(--amber-glow);
-  font-weight: 600;
-}
-
-.mobile-effect-item {
-  background: rgba(255, 183, 77, 0.1);
-  padding: 0.5rem;
-  border-radius: 6px;
-  margin: 0.25rem 0;
-  font-size: 0.85rem;
-  color: var(--zn-text-secondary);
-}
-
 /* Desktop: show table, hide mobile cards */
 .memory-table-container {
   display: block;
@@ -592,12 +538,6 @@ table.memory-table th {
     margin: 0.5rem auto;
     border-radius: 6px;
   }
-
-  .filter-header {
-    padding: 0.8rem 0.8rem;
-    gap: 0.8rem;
-  }
-
   .filter-title {
     font-size: 1.05rem;
   }
@@ -615,11 +555,6 @@ table.memory-table th {
     font-size: 0.8rem;
     margin-bottom: 0.5rem;
   }
-
-  .button-group {
-    gap: 0.4rem;
-  }
-
   /* Rarity buttons for very small screens */
   .rarity-group .filter-btn {
     padding: 0.6rem 0.8rem;
@@ -627,15 +562,6 @@ table.memory-table th {
     min-height: 44px;
     min-width: 60px;
   }
-
-  /* Class buttons for very small screens */
-  .class-group .filter-btn {
-    padding: 0.6rem 0.8rem;
-    font-size: 0.75rem;
-    min-height: 44px;
-    min-width: 70px;
-  }
-
   /* Sort buttons for very small screens */
   .sort-group .sort-btn {
     padding: 0.6rem 0.8rem;

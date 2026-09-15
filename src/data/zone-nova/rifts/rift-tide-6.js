@@ -4,7 +4,7 @@ export const riftTide6Data = {
   name: 'Rift Tide VI',
   status: 'active',
   startDate: '2025-07-08',
-  endDate: '2025-08-04T20:00:00',
+  endDate: '2025-08-04T20:00:00+08:00',
   eventPeriod: 'July 8 - August 4, 2025',
   shortDescription:
     'Advanced rift featuring Conviction Resonance and Divine Retribution mechanics with healing-based power stacking.',

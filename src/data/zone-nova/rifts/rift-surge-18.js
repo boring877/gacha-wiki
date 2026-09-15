@@ -6,8 +6,8 @@ export const riftSurge18Data = {
   id: 'rift-surge-18',
   name: 'Rift Surge XVIII',
   status: 'active',
-  startDate: '2025-12-25T14:15:00',
-  endDate: '2026-01-19T03:59:00',
+  startDate: '2025-12-25T14:15:00+08:00',
+  endDate: '2026-01-19T03:59:00+08:00',
   eventPeriod: 'December 25, 2025 14:15 - January 19, 2026 03:59',
   shortDescription:
     'Limited-time Rift Surge Event (Wave XVIII) featuring healing-based damage reduction and Power of Faith mechanics with Surge of Conviction holy damage.',

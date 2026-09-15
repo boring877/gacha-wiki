@@ -4,7 +4,7 @@ export const riftXData = {
   name: 'Rift X',
   status: 'active',
   startDate: '2025-09-02',
-  endDate: '2025-09-29T20:00:00',
+  endDate: '2025-09-29T20:00:00+08:00',
   eventPeriod: 'September 2 - September 29, 2025',
   focus: 'Destroyer & Disruptor Synergy',
   lawEffects: [

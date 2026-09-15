@@ -4,7 +4,7 @@ export const rift8Data = {
   name: 'Rift VIII',
   status: 'active',
   startDate: '2025-08-05',
-  endDate: '2025-09-01T20:00:00',
+  endDate: '2025-09-01T20:00:00+08:00',
   eventPeriod: 'August 5 - September 1, 2025',
   shortDescription:
     'Tank-focused rift featuring energy recovery amplification, shield damage bonuses, and continuous damage mastery mechanics.',

@@ -4,7 +4,7 @@ export const riftTide5Data = {
   name: 'Rift Tide V',
   status: 'active',
   startDate: '2025-06-24',
-  endDate: '2025-07-22T03:59:59',
+  endDate: '2025-07-22T03:59:59+08:00',
   eventPeriod: 'June 24 - July 22, 2025',
   shortDescription:
     'Advanced rift featuring Divine Power mechanics with attack power scaling and defensive buffs.',

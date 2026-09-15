@@ -6,8 +6,8 @@ export const riftSurge17Data = {
   id: 'rift-surge-17',
   name: 'Rift Surge XVII',
   status: 'active',
-  startDate: '2025-12-09T14:15:00',
-  endDate: '2026-01-06T03:59:00',
+  startDate: '2025-12-09T14:15:00+08:00',
+  endDate: '2026-01-06T03:59:00+08:00',
   eventPeriod: 'December 9, 2025 14:15 - January 6, 2026 03:59',
   shortDescription:
     'Limited-time Rift Surge Event (Wave XVII) featuring Support and Interference character synergies with enhanced energy mechanics and elemental resistance reduction.',

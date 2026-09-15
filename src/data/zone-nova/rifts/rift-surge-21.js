@@ -5,8 +5,8 @@ export const riftSurge21Data = {
   id: 'rift-surge-21',
   name: 'Rift Surge XXI',
   status: 'active',
-  startDate: '2026-02-03T14:15:00',
-  endDate: '2026-03-03T03:59:00',
+  startDate: '2026-02-03T14:15:00+08:00',
+  endDate: '2026-03-03T03:59:00+08:00',
   eventPeriod: 'February 3, 2026 14:15 - March 3, 2026 03:59',
   shortDescription:
     'Limited-time Rift Surge Event (Wave XXI) featuring Assault and Support Ultimate Skill synergy with elemental weakness and energy recovery mechanics.',

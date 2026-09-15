@@ -4,7 +4,7 @@ export const riftSurge7Data = {
   name: 'Rift Surge VII',
   status: 'active',
   startDate: '2025-07-21',
-  endDate: '2025-08-18T20:00:00',
+  endDate: '2025-08-18T20:00:00+08:00',
   eventPeriod: 'July 21 - August 18, 2025',
   shortDescription:
     'Limited-time Rift Event (Wave VII) featuring amplified global modifiers applied to all battles within the Rift of Time.',

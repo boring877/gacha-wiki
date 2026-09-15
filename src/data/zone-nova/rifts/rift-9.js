@@ -4,7 +4,7 @@ export const rift9Data = {
   name: 'Rift IX',
   status: 'active',
   startDate: '2025-08-19',
-  endDate: '2025-09-15T20:00:00',
+  endDate: '2025-09-15T20:00:00+08:00',
   eventPeriod: 'August 19 - September 15, 2025',
   focus: 'Disruptor & Tank Synergy',
   lawEffects: [

@@ -4,7 +4,7 @@ export const riftTide4Data = {
   name: 'Rift Tide IV',
   status: 'active',
   startDate: '2025-06-10',
-  endDate: '2025-07-08T03:59:59',
+  endDate: '2025-07-08T03:59:59+08:00',
   eventPeriod: 'June 10 - July 8, 2025',
   shortDescription: 'Pursuit and Thunder Mark mechanics with enhanced blocking effects.',
   fullDescription:

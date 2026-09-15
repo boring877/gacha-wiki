@@ -6,8 +6,8 @@ export const riftSurge19Data = {
   id: 'rift-surge-19',
   name: 'Rift Surge XIX',
   status: 'active',
-  startDate: '2026-01-07T14:15:00',
-  endDate: '2026-02-02T03:59:00',
+  startDate: '2026-01-07T14:15:00+08:00',
+  endDate: '2026-02-02T03:59:00+08:00',
   eventPeriod: 'January 7, 2026 14:15 - February 2, 2026 03:59',
   shortDescription:
     'Limited-time Rift Surge Event (Wave XIX) featuring Pursue Damage amplification with Thunder Mark detonation and Block-based damage mechanics.',

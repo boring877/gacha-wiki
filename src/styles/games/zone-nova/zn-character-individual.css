@@ -580,12 +580,6 @@
   gap: 1rem;
   margin-bottom: 0.5rem;
 }
-
-.character-class-role {
-  color: var(--zn-text-secondary);
-  font-size: 0.9rem;
-}
-
 .character-class-compatibility {
   color: var(--zn-text-primary);
   margin: 0;
@@ -751,26 +745,6 @@
   margin-bottom: 2rem;
   border: 1px solid var(--zn-border);
 }
-
-.description-content {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
-}
-
-.description-image {
-  flex-shrink: 0;
-}
-
-.description-image img {
-  border-radius: 8px;
-}
-
-.description-text {
-  flex: 1;
-  min-width: 0;
-}
-
 .node-tree-intro {
   color: var(--zn-text-primary);
   font-size: 1rem;
@@ -877,14 +851,6 @@
   font-weight: 600;
   font-size: 0.85rem;
 }
-
-.atk-hp-nodes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-}
-
 .node-tier {
   background: var(--zn-bg-primary);
   border-radius: 10px;
@@ -997,36 +963,6 @@
   color: var(--zn-text-primary);
   font-weight: 800;
 }
-
-.awakening-badge {
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
-  display: inline-block;
-  flex-shrink: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.awakening-badge.dupe-1,
-.awakening-badge.dupe-2 {
-  background: var(--teal-crystal);
-}
-
-.awakening-badge.dupe-3,
-.awakening-badge.dupe-5 {
-  background: var(--amber-glow);
-}
-
-.awakening-badge.dupe-4 {
-  background: var(--rose-quartz);
-}
-
-.awakening-badge.dupe-6 {
-  background: var(--cosmic-purple);
-}
-
 .awakening-description {
   color: var(--zn-text-secondary);
   line-height: 1.6;
@@ -1358,19 +1294,6 @@
   .node-tree-description {
     padding: 1rem;
   }
-
-  .description-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
-  }
-
-  .description-image img {
-    width: 100px;
-    height: 100px;
-  }
-
   .node-components {
     padding-left: 1rem;
   }
@@ -1393,11 +1316,6 @@
   .skill-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .atk-hp-nodes {
-    grid-template-columns: 1fr;
-  }
-
   .node-tier {
     padding: 1rem;
   }

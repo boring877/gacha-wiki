@@ -1,17 +1,22 @@
-import json, subprocess, re
+import json, os, subprocess, re, tempfile
+
+REPO = os.path.dirname(os.path.abspath(__file__))
 
 # 1. Get current tier entries + card data via bun (authoritative JS parse)
 BUN = r"""
-import { MEMORY_TIER_LIST } from 'C:/Users/Borin/ZCodeProject/gacha-wiki/src/data/zone-nova/memory-tier-list.js';
-import { ZONE_NOVA_MEMORIES } from 'C:/Users/Borin/ZCodeProject/gacha-wiki/src/data/zone-nova/memories.js';
+import { MEMORY_TIER_LIST } from '{REPO}/src/data/zone-nova/memory-tier-list.js';
+import { ZONE_NOVA_MEMORIES } from '{REPO}/src/data/zone-nova/memories.js';
 const entries = [];
 for (const [cls, tiers] of Object.entries(MEMORY_TIER_LIST.tiers)) {
   for (const [tier, cards] of Object.entries(tiers)) for (const c of cards) entries.push({ oldClass: cls, tier, name: c.name });
 }
 console.log(JSON.stringify({ entries, cards: ZONE_NOVA_MEMORIES.map(m => ({ slug: m.slug, name: m.name, cls: m.class, rarity: m.rarity })) }));
-"""
-open('C:/Users/Borin/AppData/Local/Temp/memdump.mjs', 'w', encoding='utf-8').write(BUN)
-out = subprocess.run(['bun', 'C:/Users/Borin/AppData/Local/Temp/memdump.mjs'], cwd='C:/Users/Borin/ZCodeProject/gacha-wiki', capture_output=True, text=True)
+""".replace('{REPO}', REPO.replace('\\', '/'))
+with tempfile.NamedTemporaryFile('w', suffix='.mjs', delete=False, encoding='utf-8') as dump:
+    dump.write(BUN)
+    dump_path = dump.name
+out = subprocess.run(['bun', dump_path], cwd=REPO, capture_output=True, text=True)
+os.unlink(dump_path)
 assert out.returncode == 0, out.stderr
 data = json.loads(out.stdout.strip().splitlines()[-1])
 entries, cards = data['entries'], data['cards']
@@ -226,7 +231,7 @@ export function getMemoryByName(name) {
 }
 ''' % fmt_tiers()
 
-open('C:/Users/Borin/ZCodeProject/gacha-wiki/src/data/zone-nova/memory-tier-list.js', 'w', encoding='utf-8', newline='\n').write(file_js)
+open(os.path.join(REPO, 'src', 'data', 'zone-nova', 'memory-tier-list.js'), 'w', encoding='utf-8', newline='\n').write(file_js)
 print('regenerated: %d/%d cards tiered' % (total, len(cards)))
 for cls in CLASSES:
     counts = {t: len(new_tiers[cls][t]) for t in TIERS if new_tiers[cls][t]}

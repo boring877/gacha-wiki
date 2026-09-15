@@ -4,7 +4,7 @@ export const riftTide3Data = {
   name: 'Rift Tide III',
   status: 'active',
   startDate: '2025-05-07',
-  endDate: '2025-06-23T23:59:59',
+  endDate: '2025-06-23T23:59:59+08:00',
   eventPeriod: 'May 7 - June 23, 2025',
   shortDescription: 'Block-focused rift with energy recovery and damage stacking mechanics.',
   fullDescription:

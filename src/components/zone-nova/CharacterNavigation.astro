@@ -44,6 +44,8 @@ if (currentIndex !== -1) {
     if (
       target?.tagName === 'INPUT' ||
       target?.tagName === 'TEXTAREA' ||
+      target?.tagName === 'SELECT' ||
+      target?.isContentEditable ||
       e.ctrlKey ||
       e.altKey ||
       e.metaKey

@@ -14,7 +14,6 @@ const MUSIC_SRC =
 <div class={`zn-music ${variant === 'mobile' ? 'zn-music-mobile' : ''}`}>
   <button
     type="button"
-    id="zn-music-toggle"
     class="zn-music-btn"
     aria-label="Toggle Zone Nova background music"
     aria-pressed="false"
@@ -38,7 +37,8 @@ const MUSIC_SRC =
     </svg>
     <span class="zn-music-label">Music</span>
   </button>
-  <audio id="zn-music-audio" src={MUSIC_SRC} loop preload="none"></audio>
+  {/* One shared audio per page: only the desktop header instance renders it */}
+  {variant === 'desktop' && <audio id="zn-music-audio" src={MUSIC_SRC} loop preload="none"></audio>}
 </div>
 
 <style>

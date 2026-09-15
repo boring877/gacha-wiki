@@ -6,8 +6,8 @@ export const riftSurge22Data = {
   id: 'rift-surge-22',
   name: 'Rift Surge XXII',
   status: 'active',
-  startDate: '2026-02-17T14:15:00',
-  endDate: '2026-03-17T03:59:00',
+  startDate: '2026-02-17T14:15:00+08:00',
+  endDate: '2026-03-17T03:59:00+08:00',
   eventPeriod: 'February 17, 2026 14:15 - March 17, 2026 03:59',
   shortDescription:
     'Limited-time Rift Surge Event (Wave XXII) featuring Neutralize-based damage and team-wide buff stacking mechanics.',
