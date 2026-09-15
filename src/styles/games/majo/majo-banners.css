@@ -1,0 +1,278 @@
+/* MAJO banners & gacha page: flat dark panels, no hover/glow. */
+
+.majo-banner-intro {
+  margin: 0 auto 2.25rem;
+  max-width: 860px;
+  padding: 1rem 1.25rem;
+  background: var(--majo-bg-secondary);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+}
+
+.majo-banner-intro-label {
+  margin: 0 0 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--majo-primary-light);
+}
+
+.majo-banner-intro-text {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--majo-text-secondary);
+}
+
+.majo-banner-intro-text strong {
+  color: var(--majo-text-primary);
+}
+
+.majo-banner-section-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--majo-text-primary);
+}
+
+/* Banner type cards */
+.majo-banner-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.25rem;
+}
+
+.majo-banner-type {
+  background: var(--majo-bg-secondary);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+}
+
+.majo-banner-type.type-eternal {
+  border-color: rgba(242, 193, 78, 0.45);
+}
+
+.majo-banner-type-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.35rem;
+}
+
+.majo-banner-type-name {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--majo-text-primary);
+}
+
+.majo-banner-type-kind {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--majo-text-tertiary);
+}
+
+.majo-banner-type-pity {
+  margin: 0 0 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--majo-primary-light);
+}
+
+.majo-banner-type-details {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--majo-text-secondary);
+}
+
+.majo-banner-type-details li + li {
+  margin-top: 0.25rem;
+}
+
+/* Pity cheat sheet */
+.majo-banner-pity {
+  background: var(--majo-bg-secondary);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+  padding: 0.9rem 1.25rem;
+  margin-bottom: 2.25rem;
+}
+
+.majo-banner-pity-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.45rem 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.majo-banner-pity-row + .majo-banner-pity-row {
+  border-top: 1px solid var(--majo-border);
+}
+
+.majo-banner-pity-label {
+  flex-shrink: 0;
+  width: 11rem;
+  font-weight: 600;
+  color: var(--majo-text-primary);
+}
+
+.majo-banner-pity-value {
+  flex-shrink: 0;
+  width: 12rem;
+  font-weight: 700;
+  color: var(--majo-primary-light);
+}
+
+.majo-banner-pity-note {
+  color: var(--majo-text-tertiary);
+}
+
+/* Timeline */
+.majo-banner-timeline-note {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  color: var(--majo-text-tertiary);
+}
+
+.majo-banner-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2.25rem;
+}
+
+.majo-banner-entry {
+  background: var(--majo-bg-secondary);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+  padding: 0.9rem 1.25rem;
+}
+
+.majo-banner-entry-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.3rem;
+}
+
+.majo-banner-entry-type {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--majo-text-tertiary);
+}
+
+.majo-banner-entry-date {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--majo-primary-light);
+}
+
+.majo-banner-entry-datenote {
+  color: var(--majo-text-tertiary);
+  font-weight: 400;
+}
+
+.majo-banner-entry-name {
+  margin: 0 0 0.4rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--majo-text-primary);
+}
+
+.majo-banner-entry-featured {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.majo-banner-featured-witch {
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 5px;
+  padding: 0.12rem 0.5rem;
+  background: var(--majo-bg-tertiary);
+  border: 1px solid var(--majo-border);
+  color: var(--majo-text-primary);
+  text-decoration: none;
+}
+
+.majo-banner-featured-witch.is-plain {
+  text-decoration: none;
+}
+
+.majo-banner-entry-note {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: var(--majo-text-secondary);
+}
+
+/* Economics */
+.majo-banner-economics {
+  background: var(--majo-bg-secondary);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+  padding: 0.9rem 1.25rem;
+}
+
+.majo-banner-econ-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.45rem 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.majo-banner-econ-row + .majo-banner-econ-row {
+  border-top: 1px solid var(--majo-border);
+}
+
+.majo-banner-econ-label {
+  flex-shrink: 0;
+  width: 10rem;
+  font-weight: 600;
+  color: var(--majo-text-primary);
+}
+
+.majo-banner-econ-value {
+  flex-shrink: 0;
+  width: 13rem;
+  font-weight: 700;
+  color: var(--majo-primary-light);
+}
+
+.majo-banner-econ-note {
+  color: var(--majo-text-tertiary);
+}
+
+@media (max-width: 720px) {
+  .majo-banner-pity-row,
+  .majo-banner-econ-row {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .majo-banner-pity-label,
+  .majo-banner-pity-value,
+  .majo-banner-econ-label,
+  .majo-banner-econ-value {
+    width: auto;
+  }
+}

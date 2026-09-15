@@ -1,0 +1,92 @@
+---
+// MAJO gacha banners page: banner types, featured timeline, pity and economics.
+import MajoLayout from '../../../../layouts/majo/LandingLayout.astro';
+import MajoIcon from '../../../../components/majo/MajoIcon.astro';
+import { bannerTypes, bannerTimeline, pityRules, pullEconomics } from '../../../../data/majo/banners.js';
+import '../../../../styles/games/majo/majo-banners.css';
+---
+
+<MajoLayout
+  title="Banners & Gacha"
+  description={`MAJO: Witches Night gacha guide: every banner type (Origin, Limited, Eternal, First and Novice Contact), pity rules, featured banner timeline and pull economics, updated September 2026.`}
+  gameTitle="Banners & Gacha"
+  crumbName="Banners & Gacha"
+>
+  <section>
+    <div class="majo-banner-intro">
+      <p class="majo-banner-intro-label">Updated September 2026 · Pity rules quoted from the game's own Contact texts</p>
+      <p class="majo-banner-intro-text">
+        <strong>Six Contact pool types share one currency</strong>, and the pity you build in Limited
+        Contact or Eternal Contact carries over between pools of the same series, so never spend those
+        tickets on a banner you do not want. Banner dates are community-sourced (CN/JP/KR posts) and may
+        shift with maintenance. Duplicate witches become Witch Crystals, the star-up material.
+      </p>
+    </div>
+
+    <h2 class="majo-banner-section-title">Banner types</h2>
+    <div class="majo-banner-types">
+      {bannerTypes.map(bt => (
+        <div class={`majo-banner-type type-${bt.id}`}>
+          <div class="majo-banner-type-head">
+            <h3 class="majo-banner-type-name">{bt.name}</h3>
+            <span class="majo-banner-type-kind">{bt.kind}</span>
+          </div>
+          <p class="majo-banner-type-pity">{bt.pity}</p>
+          <ul class="majo-banner-type-details">
+            {bt.details.map(d => <li>{d}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <h2 class="majo-banner-section-title">Pity cheat sheet</h2>
+    <div class="majo-banner-pity">
+      {pityRules.map(r => (
+        <div class="majo-banner-pity-row">
+          <span class="majo-banner-pity-label">{r.label}</span>
+          <span class="majo-banner-pity-value">{r.value}</span>
+          <span class="majo-banner-pity-note">{r.note}</span>
+        </div>
+      ))}
+    </div>
+
+    <h2 class="majo-banner-section-title">Featured banner timeline</h2>
+    <p class="majo-banner-timeline-note">
+      Newest first. Dates come from community calendars and posts (JP wiki calendar, KR Arca schedule,
+      CN forum announcements), not official notices.
+    </p>
+    <div class="majo-banner-timeline">
+      {bannerTimeline.map(b => (
+        <div class="majo-banner-entry">
+          <div class="majo-banner-entry-head">
+            <span class="majo-banner-entry-type">{b.type}</span>
+            <span class="majo-banner-entry-date">{b.date}<span class="majo-banner-entry-datenote"> ({b.dateNote})</span></span>
+          </div>
+          <h3 class="majo-banner-entry-name">{b.name}</h3>
+          <div class="majo-banner-entry-featured">
+            {b.featured.map((name, i) => {
+              const slug = b.slugs && b.slugs[i];
+              return slug ? (
+                <a class="majo-banner-featured-witch" href={`/guides/majo/characters/${slug}/`}>{name}</a>
+              ) : (
+                <span class="majo-banner-featured-witch is-plain">{name}</span>
+              );
+            })}
+          </div>
+          <p class="majo-banner-entry-note">{b.note}</p>
+        </div>
+      ))}
+    </div>
+
+    <h2 class="majo-banner-section-title">Pull economics</h2>
+    <div class="majo-banner-economics">
+      {pullEconomics.map(e => (
+        <div class="majo-banner-econ-row">
+          <span class="majo-banner-econ-label">{e.label}</span>
+          <span class="majo-banner-econ-value">{e.value}</span>
+          <span class="majo-banner-econ-note">{e.note}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+</MajoLayout>
