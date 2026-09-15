@@ -210,6 +210,9 @@ export const ZONE_NOVA_CHARACTERS = [
     stats: { hp: 6600, attack: 480, defense: 690, energyRecovery: 0.25, critRate: 0, critDmg: 50 },
     image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/zone-nova/characters/Brynhild.png',
     slug: 'brynhild',
+    maxStats: { hp: 6600, attack: 480, defense: 1232 },
+    maxCritRate: 55.8,
+    maxCritDmg: 50,
     detailUrl: '/guides/zone-nova/characters/brynhild/',
   },
   {
