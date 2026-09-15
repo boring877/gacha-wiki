@@ -232,7 +232,7 @@ export const lyraData = {
     },
     {
       level: 4,
-      effect: "<color=#c90d0d>Blaze</color> damage increases by 35%",
+      effect: "Blaze damage increases by 35%",
     },
     {
       level: 5,

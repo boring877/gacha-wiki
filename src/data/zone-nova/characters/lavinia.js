@@ -224,7 +224,7 @@ export const laviniaData = {
     },
     {
       level: 2,
-      effect: "Ultimate skill cost reduced by 1.\nAfter Lavinia's normal attacks, skills, or ultimate skill critically hit, they deal an additional 20% attack damage as <color=#c90d0d>blaze</color> damage",
+      effect: "Ultimate skill cost reduced by 1.\nAfter Lavinia's normal attacks, skills, or ultimate skill critically hit, they deal an additional 20% attack damage as blaze damage",
     },
     {
       level: 3,

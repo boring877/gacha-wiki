@@ -221,7 +221,7 @@ export const shannaData = {
   awakenings: [
     {
       level: 1,
-      effect: "When [Focus] reaches 10 stacks, normal attacks deal an additional 20% Attack as <color=#c90d0d>Blaze</color> damage",
+      effect: "When [Focus] reaches 10 stacks, normal attacks deal an additional 20% Attack as Blaze damage",
     },
     {
       level: 2,

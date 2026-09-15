@@ -44,12 +44,12 @@ export const ZONE_NOVA_FACTIONS = {
     color: '#9c27b0',
     description: 'The Otis faction with Greek mythology influences',
   },
-  'Asa': {
-    name: 'Asa',
+  'A.S.A': {
+    name: 'A.S.A',
     chineseName: '亞薩',
-    characters: ['Frigga', 'Freya', 'Hela', 'Loki', 'Odin', 'Sigurd', 'Thor'],
+    characters: ['Frigga', 'Freya', 'Hela', 'Loki', 'Odin', 'Sigurd', 'Thor', 'Brynhild', ],
     color: '#f44336',
-    description: 'The Asa faction with Norse mythology influences',
+    description: 'The A.S.A faction with Norse mythology influences',
   },
   'Heikyo Castle': {
     name: 'Heikyo Castle',

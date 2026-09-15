@@ -232,7 +232,7 @@ export const tamamoNoMaeData = {
     },
     {
       level: 4,
-      effect: "During [Hyakki Kitan], allies' Resistance to non-<color=#c90d0d>Blaze</color> DMG increases by 56.5%.",
+      effect: "During [Hyakki Kitan], allies' Resistance to non-Blaze DMG increases by 56.5%.",
     },
     {
       level: 5,

@@ -223,7 +223,7 @@ export const setData = {
     },
     {
       level: 4,
-      effect: "<color=#c90d0d>Blaze</color> damage increased by 35%.",
+      effect: "Blaze damage increased by 35%.",
     },
     {
       level: 5,

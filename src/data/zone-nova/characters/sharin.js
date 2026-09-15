@@ -190,8 +190,8 @@ export const sharinData = {
       name: "Monthly Agreement",
       energyCost: "3",
       cooldown: "1.0s",
-      description: "The ally with the highest attack power gains [Extreme Battle Spirit], increasing attack power by 171.1% and critical hit damage by 86.1%, lasting 10 seconds. The ally with the highest defense power also gains [Tank Heart], increasing defense by 146.7% and maximum health by 85.6%, lasting 10 seconds.",
-      template: "The ally with the highest attack power gains [Extreme Battle Spirit], increasing attack power by {0} and critical hit damage by {1}, lasting 10 seconds. The ally with the highest defense power also gains [Tank Heart], increasing defense by {2} and maximum health by {3}, lasting 10 seconds.",
+      description: "The ally with the highest attack power gains [Extreme Battle Spirit], increasing attack power by 171.1% and critical hit damage by 86.1%, lasting 10 seconds. The ally with the highest defense power also gains [Guardian Heart], increasing defense by 146.7% and maximum health by 85.6%, lasting 10 seconds.",
+      template: "The ally with the highest attack power gains [Extreme Battle Spirit], increasing attack power by {0} and critical hit damage by {1}, lasting 10 seconds. The ally with the highest defense power also gains [Guardian Heart], increasing defense by {2} and maximum health by {3}, lasting 10 seconds.",
       levelValues: [["70%", "50%", "60%", "35%"], ["77.8%", "52.8%", "66.7%", "38.9%"], ["85.6%", "55.6%", "73.3%", "42.8%"], ["93.3%", "58.3%", "80%", "46.7%"], ["101.1%", "61.1%", "86.7%", "50.6%"], ["108.9%", "63.9%", "93.3%", "54.4%"], ["116.7%", "66.7%", "100%", "58.3%"], ["124.4%", "69.4%", "106.7%", "62.2%"], ["132.2%", "72.2%", "113.3%", "66.1%"], ["140%", "75%", "120%", "70%"], ["147.8%", "77.8%", "126.7%", "73.9%"], ["155.6%", "80.6%", "133.3%", "77.8%"], ["163.3%", "83.3%", "140%", "81.7%"], ["171.1%", "86.1%", "146.7%", "85.6%"]],
     },
     passive:     {
@@ -215,7 +215,7 @@ export const sharinData = {
   awakenings: [
     {
       level: 1,
-      effect: "The ultimate skill’s [Extreme Battle Spirit] and [Tank Heart] now target two friendly units instead of one, and the first ultimate skill used after entering the battlefield no longer consumes energy.",
+      effect: "The ultimate skill’s [Extreme Battle Spirit] and [Guardian Heart] now target two friendly units instead of one, and the first ultimate skill used after entering the battlefield no longer consumes energy.",
     },
     {
       level: 2,

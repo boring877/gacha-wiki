@@ -198,7 +198,7 @@ export const freyaData = {
       levelValues: [["27.5%", "220%"], ["30%", "240%"], ["32.5%", "260%"], ["35%", "280%"], ["37.5%", "300%"], ["40%", "320%"], ["42.5%", "340%"], ["45%", "360%"], ["47.5%", "380%"], ["50%", "400%"], ["52.5%", "420%"], ["55%", "440%"], ["57.5%", "460%"], ["60%", "480%"]],
     },
     passive:     {
-      name: "Deity War Dance",
+      name: "Goddess War Dance",
       description: "All normal attack damage can additionally inflict 24% attack damage of ice damage.\n\nAfter every 10 normal attacks or skill casts, the user's normal attacks targeting the primary target become 5 segmented hits, each dealing 20% of the original normal attack damage, lasting 5 seconds.",
       template: "All normal attack damage can additionally inflict {0} attack damage of ice damage.\n\nAfter every 10 normal attacks or skill casts, the user's normal attacks targeting the primary target become 5 segmented hits, each dealing 20% of the original normal attack damage, lasting 5 seconds.",
       levelValues: [["11%"], ["12%"], ["13%"], ["14%"], ["15%"], ["16%"], ["17%"], ["18%"], ["19%"], ["20%"], ["21%"], ["22%"], ["23%"], ["24%"]],
@@ -232,7 +232,7 @@ export const freyaData = {
     },
     {
       level: 4,
-      effect: "<color=#1ec1ff>Frost</color> damage increases by 30%.",
+      effect: "Frost damage increases by 30%.",
     },
     {
       level: 5,
@@ -240,7 +240,7 @@ export const freyaData = {
     },
     {
       level: 6,
-      effect: "Freya's normal attack damage penetrates 20% of frost resistance.\nAfter every 10 normal attacks or skill casts, deal 100% attack damage as <color=#1ec1ff>frost</color> damage to the designated enemy unit and other targets within a 3-meter radius around the target.",
+      effect: "Freya's normal attack damage penetrates 20% of frost resistance.\nAfter every 10 normal attacks or skill casts, deal 100% attack damage as frost damage to the designated enemy unit and other targets within a 3-meter radius around the target.",
     },
   ],
 

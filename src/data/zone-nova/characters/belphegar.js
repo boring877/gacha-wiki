@@ -225,7 +225,7 @@ export const belphegarData = {
     },
     {
       level: 2,
-      effect: "Normal attacks deal additional <color=#9754d5>Chaos</color> damage equal to 20% of Attack",
+      effect: "Normal attacks deal additional Chaos damage equal to 20% of Attack",
     },
     {
       level: 3,

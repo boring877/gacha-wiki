@@ -232,7 +232,7 @@ export const niniData = {
     },
     {
       level: 4,
-      effect: "[Frost Erosion] additionally increases the target's received <color=#1ec1ff>Frost</color> damage by 10%",
+      effect: "[Frost Erosion] additionally increases the target's received Frost damage by 10%",
     },
     {
       level: 5,

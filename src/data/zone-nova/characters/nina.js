@@ -232,7 +232,7 @@ export const ninaData = {
     },
     {
       level: 4,
-      effect: "Increases <color=#1ec1ff>frost</color> damage by 30%",
+      effect: "Increases frost damage by 30%",
     },
     {
       level: 5,

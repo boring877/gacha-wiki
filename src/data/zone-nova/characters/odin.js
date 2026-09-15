@@ -232,7 +232,7 @@ export const odinData = {
     },
     {
       level: 4,
-      effect: "<color=#c90d0d>Blaze</color> damage increases by 30%.",
+      effect: "Blaze damage increases by 30%.",
     },
     {
       level: 5,
@@ -254,11 +254,11 @@ export const odinData = {
       defense: "474",
     },
     effects: [  // awakening levels 1-5
-      "Attack power increases by 24%, and all damage increases by 24% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 9% <color=#c90d0d>Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds.",
-      "Attack power increases by 28%, and all damage increases by 28% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 10.5% <color=#c90d0d>Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds.",
-      "Attack power increases by 32%, and all damage increases by 32% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 12% <color=#c90d0d>Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds.",
-      "Attack power increases by 36%, and all damage increases by 36% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any Roshi, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 13.5% <color=#c90d0d>Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds.",
-      "Attack power increases by 40%, and all damage increases by 40% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 15% <color=#c90d0d>Blaze</color> damage every 2 seconds, up to 5 stacks, lasting 10 seconds.",
+      "Attack power increases by 24%, and all damage increases by 24% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 9% Blaze damage every 2 seconds, up to 5 stacks, lasting 10 seconds.",
+      "Attack power increases by 28%, and all damage increases by 28% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 10.5% Blaze damage every 2 seconds, up to 5 stacks, lasting 10 seconds.",
+      "Attack power increases by 32%, and all damage increases by 32% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 12% Blaze damage every 2 seconds, up to 5 stacks, lasting 10 seconds.",
+      "Attack power increases by 36%, and all damage increases by 36% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any Roshi, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 13.5% Blaze damage every 2 seconds, up to 5 stacks, lasting 10 seconds.",
+      "Attack power increases by 40%, and all damage increases by 40% when casting an ultimate skill.\nAfter the equipped character casts an ultimate skill, gain 1 stack of [Charge]. After dealing damage to any target, consume [Charge] to apply 1 stack of [Final Flame].\n[Final Flame]: Deals 15% Blaze damage every 2 seconds, up to 5 stacks, lasting 10 seconds.",
     ],
     restriction: "Only effective for Attacker",
   },

@@ -193,8 +193,8 @@ export const morganLeFayData = {
       name: "Holy Sword Summoning",
       energyCost: "3",
       cooldown: "1.0s",
-      description: "The [Destruction Sword] falls at the location of our unit with the highest attack power, dealing 240% attack power holy damage to all enemy units within a 5-meter radius, and increasing the attack power of all friendly units within the radius by 60% and their damage dealt by 48%, lasting for 10 seconds. The [Tank Sword] falls at the location of our unit with the highest defense power, dealing 240% attack power holy damage to all enemy units within a 5-meter radius, and increasing the defense of all friendly units within the radius by 60% and reducing damage taken by 19%, lasting for 10 seconds.",
-      template: "The [Destruction Sword] falls at the location of our unit with the highest attack power, dealing {0} attack power holy damage to all enemy units within a 5-meter radius, and increasing the attack power of all friendly units within the radius by {1} and their damage dealt by {2}, lasting for 10 seconds. The [Tank Sword] falls at the location of our unit with the highest defense power, dealing {3} attack power holy damage to all enemy units within a 5-meter radius, and increasing the defense of all friendly units within the radius by {4} and reducing damage taken by {5}, lasting for 10 seconds.",
+      description: "The [Destruction Sword] falls at the location of our unit with the highest attack power, dealing 240% attack power holy damage to all enemy units within a 5-meter radius, and increasing the attack power of all friendly units within the radius by 60% and their damage dealt by 48%, lasting for 10 seconds. The [Guardian Sword] falls at the location of our unit with the highest defense power, dealing 240% attack power holy damage to all enemy units within a 5-meter radius, and increasing the defense of all friendly units within the radius by 60% and reducing damage taken by 19%, lasting for 10 seconds.",
+      template: "The [Destruction Sword] falls at the location of our unit with the highest attack power, dealing {0} attack power holy damage to all enemy units within a 5-meter radius, and increasing the attack power of all friendly units within the radius by {1} and their damage dealt by {2}, lasting for 10 seconds. The [Guardian Sword] falls at the location of our unit with the highest defense power, dealing {3} attack power holy damage to all enemy units within a 5-meter radius, and increasing the defense of all friendly units within the radius by {4} and reducing damage taken by {5}, lasting for 10 seconds.",
       levelValues: [["110%", "27.5%", "22%", "110%", "27.5%", "6%"], ["120%", "30%", "24%", "120%", "30%", "7%"], ["130%", "32.5%", "26%", "130%", "32.5%", "8%"], ["140%", "35%", "28%", "140%", "35%", "9%"], ["150%", "37.5%", "30%", "150%", "37.5%", "10%"], ["160%", "40%", "32%", "160%", "40%", "11%"], ["170%", "42.5%", "34%", "170%", "42.5%", "12%"], ["180%", "45%", "36%", "180%", "45%", "13%"], ["190%", "47.5%", "38%", "190%", "47.5%", "14%"], ["200%", "50%", "40%", "200%", "50%", "15%"], ["210%", "52.5%", "42%", "210%", "52.5%", "16%"], ["220%", "55%", "44%", "220%", "55%", "17%"], ["230%", "57.5%", "46%", "230%", "57.5%", "18%"], ["240%", "60%", "48%", "240%", "60%", "19%"]],
     },
     passive:     {
@@ -240,7 +240,7 @@ export const morganLeFayData = {
     },
     {
       level: 6,
-      effect: "[Destruction Holy Sword] Grants all allied units within range an additional 10% all-resistance penetration.\n[Tank Holy Sword] Grants all allied units within range an additional 10% all-resistance.",
+      effect: "[Destruction Holy Sword] Grants all allied units within range an additional 10% all-resistance penetration.\n[Guardian Holy Sword] Grants all allied units within range an additional 10% all-resistance.",
     },
   ],
 

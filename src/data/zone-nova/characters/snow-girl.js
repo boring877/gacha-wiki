@@ -225,7 +225,7 @@ export const snowGirlData = {
     },
     {
       level: 2,
-      effect: "Normal attacks deal additional <color=#1ec1ff>Frost</color> damage equal to 50% of Attack",
+      effect: "Normal attacks deal additional Frost damage equal to 50% of Attack",
     },
     {
       level: 3,

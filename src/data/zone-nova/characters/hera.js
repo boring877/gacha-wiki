@@ -199,7 +199,7 @@ export const heraData = {
       levelValues: [["660%", "880%"], ["720%", "960%"], ["780%", "1040%"], ["840%", "1120%"], ["900%", "1200%"], ["960%", "1280%"], ["1020%", "1360%"], ["1080%", "1440%"], ["1140%", "1520%"], ["1200%", "1600%"], ["1260%", "1680%"], ["1320%", "1760%"], ["1380%", "1840%"], ["1440%", "1920%"]],
     },
     passive:     {
-      name: "Deity's Authority",
+      name: "Goddess's Authority",
       description: "Every 5 flying sword hits, the next attack can apply [Void Erosion]\n[Void Erosion]: Deals 36% Attack as chaos damage every 3 seconds, up to 10 stacks, for 10 seconds",
       template: "Every 5 flying sword hits, the next attack can apply [Void Erosion]\n[Void Erosion]: Deals {0} Attack as chaos damage every 3 seconds, up to 10 stacks, for 10 seconds",
       levelValues: [["16.5%"], ["18%"], ["19.5%"], ["21%"], ["22.5%"], ["24%"], ["25.5%"], ["27%"], ["28.5%"], ["30%"], ["31.5%"], ["33%"], ["34.5%"], ["36%"]],
@@ -233,7 +233,7 @@ export const heraData = {
     },
     {
       level: 4,
-      effect: "<color=#9754d5>Chaos</color> damage increases by 30%",
+      effect: "Chaos damage increases by 30%",
     },
     {
       level: 5,

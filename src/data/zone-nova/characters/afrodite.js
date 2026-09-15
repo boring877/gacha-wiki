@@ -177,7 +177,7 @@ export const afroditeData = {
   // Skills
   skills: {
     normal:     {
-      name: "Fist of the Love Deity",
+      name: "Fist of the Love Goddess",
       cooldown: "2.0s",
       description: "Deals 120% Attack as holy damage to the targeted enemy unit",
       template: "Deals {0} Attack as holy damage to the targeted enemy unit",

@@ -242,7 +242,7 @@ export const hiyoriData = {
     },
     {
       level: 6,
-      effect: "[Shield Burst] <color=#9754d5>Chaos</color> DMG multiplier is increased by 50%.\nAdditionally, all attacks ignore an extra 40% of the target's Chaos Resistance.",
+      effect: "[Shield Burst] Chaos DMG multiplier is increased by 50%.\nAdditionally, all attacks ignore an extra 40% of the target's Chaos Resistance.",
     },
   ],
 

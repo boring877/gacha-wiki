@@ -184,7 +184,7 @@ export const athenaData = {
       levelValues: [["55%"], ["60%"], ["65%"], ["70%"], ["75%"], ["80%"], ["85%"], ["90%"], ["95%"], ["100%"], ["105%"], ["110%"], ["115%"], ["120%"]],
     },
     auto:     {
-      name: "War Deity's Command",
+      name: "War God's Command",
       cooldown: "5.0s",
       description: "Attacks a designated enemy unit 3 times, dealing 120% Attack Power as wind damage each time",
       template: "Attacks a designated enemy unit 3 times, dealing {0} Attack Power as wind damage each time",
@@ -221,7 +221,7 @@ export const athenaData = {
   awakenings: [
     {
       level: 1,
-      effect: "After any allied character deals Normal Attack damage, Athena deals an additional 50% Attack Power as <color=#01d828>Storm</color> Damage to the target, which cannot crit, triggering up to once per character per second",
+      effect: "After any allied character deals Normal Attack damage, Athena deals an additional 50% Attack Power as Storm Damage to the target, which cannot crit, triggering up to once per character per second",
     },
     {
       level: 2,

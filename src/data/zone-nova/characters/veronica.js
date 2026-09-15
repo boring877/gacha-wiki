@@ -215,7 +215,7 @@ export const veronicaData = {
     },
     {
       level: 2,
-      effect: "Increases maximum HP by 25% and defense by 40%. Upon entering the arena, all allies gain the Deity's Love buff. When receiving a fatal wound, all allies gain the Tenacity effect for 3 seconds. The Deity's Love effect can only be triggered once. Tenacity: HP cannot fall below 1 point.",
+      effect: "Increases maximum HP by 25% and defense by 40%. Upon entering the arena, all allies gain the Goddess's Love buff. When receiving a fatal wound, all allies gain the Tenacity effect for 3 seconds. The Goddess's Love effect can only be triggered once. Tenacity: HP cannot fall below 1 point.",
     },
     {
       level: 3,

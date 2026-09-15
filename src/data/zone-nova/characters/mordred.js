@@ -240,7 +240,7 @@ export const mordredData = {
     },
     {
       level: 6,
-      effect: "Normal attacks deal additional <color=#c90d0d>Blaze</color> damage equal to 5% of max HP",
+      effect: "Normal attacks deal additional Blaze damage equal to 5% of max HP",
     },
   ],
 

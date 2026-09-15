@@ -224,7 +224,7 @@ export const shutenDojiData = {
     },
     {
       level: 2,
-      effect: "Upon entering the battlefield, immediately deal 160% attack power as <color=#01d828>storm</color> damage to all enemies and apply 2 stacks of [Wind Evil]. At the same time, all allies gain 50% [Block] for 10 seconds. ",
+      effect: "Upon entering the battlefield, immediately deal 160% attack power as storm damage to all enemies and apply 2 stacks of [Wind Evil]. At the same time, all allies gain 50% [Block] for 10 seconds. ",
     },
     {
       level: 3,
@@ -232,7 +232,7 @@ export const shutenDojiData = {
     },
     {
       level: 4,
-      effect: "<color=#01d828>Storm</color> damage increased by 30%.",
+      effect: "Storm damage increased by 30%.",
     },
     {
       level: 5,

@@ -235,7 +235,7 @@ export const helaData = {
     },
     {
       level: 4,
-      effect: "<color=#9754d5>Chaos</color> damage increased by 30%",
+      effect: "Chaos damage increased by 30%",
     },
     {
       level: 5,

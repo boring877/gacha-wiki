@@ -232,7 +232,7 @@ export const naiyaData = {
     },
     {
       level: 4,
-      effect: "Characters with [Battle Intent] deal additional <color=#1ec1ff>Frost</color> damage equal to 500% of Nia's Attack, triggering up to once every 10 seconds",
+      effect: "Characters with [Battle Intent] deal additional Frost damage equal to 500% of Nia's Attack, triggering up to once every 10 seconds",
     },
     {
       level: 5,

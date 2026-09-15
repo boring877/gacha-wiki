@@ -221,7 +221,7 @@ export const friggaData = {
   awakenings: [
     {
       level: 1,
-      effect: "After battle starts,you can immediately cast 【Enhanced Ultimate Skill】.\n\nThe first target damaged by an Ultimate Skill takes an additional 100% <color=#9754d5>Chaos</color> damage,which cannot crit.",
+      effect: "After battle starts,you can immediately cast 【Enhanced Ultimate Skill】.\n\nThe first target damaged by an Ultimate Skill takes an additional 100% Chaos damage,which cannot crit.",
     },
     {
       level: 2,
@@ -255,11 +255,11 @@ export const friggaData = {
       defense: "600",
     },
     effects: [  // awakening levels 1-5
-      "Attack Power increased by 24%.\nUltimate Skill damage can apply \u3010Fate Blossom\u3011, with each stack increasing damage taken by 2% for 10 seconds, up to 10 stacks.",
-      "Attack Power increased by 28%.\nUltimate Skill damage can apply \u3010Fate Blossom\u3011, with each stack increasing damage taken by 2.4% for 10 seconds, up to 10 stacks.",
-      "Attack Power increased by 32%.\nUltimate Skill damage can apply \u3010Fate Blossom\u3011, with each stack increasing damage taken by 2.8% for 10 seconds, up to 10 stacks.",
-      "Attack Power increased by 36%.\nUltimate Skill damage can apply \u3010Fate Blossom\u3011, with each stack increasing damage taken by 3.2% for 10 seconds, up to 10 stacks.",
-      "Attack Power increased by 40%.\nUltimate Skill damage can apply \u3010Fate Blossom\u3011, with each stack increasing damage taken by 3.6% for 10 seconds, up to 10 stacks.",
+      "Attack Power increased by 24%.\nUltimate Skill damage can apply 【Fate Blossom】, with each stack increasing damage taken by 2% for 10 seconds, up to 10 stacks.",
+      "Attack Power increased by 28%.\nUltimate Skill damage can apply 【Fate Blossom】, with each stack increasing damage taken by 2.4% for 10 seconds, up to 10 stacks.",
+      "Attack Power increased by 32%.\nUltimate Skill damage can apply 【Fate Blossom】, with each stack increasing damage taken by 2.8% for 10 seconds, up to 10 stacks.",
+      "Attack Power increased by 36%.\nUltimate Skill damage can apply 【Fate Blossom】, with each stack increasing damage taken by 3.2% for 10 seconds, up to 10 stacks.",
+      "Attack Power increased by 40%.\nUltimate Skill damage can apply 【Fate Blossom】, with each stack increasing damage taken by 3.6% for 10 seconds, up to 10 stacks.",
     ],
     restriction: "Only effective for Disruptor",
   },

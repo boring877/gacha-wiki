@@ -236,7 +236,7 @@ export const sigurdData = {
     },
     {
       level: 4,
-      effect: "<color=#c90d0d>Blaze</color> damage increased by 30%.",
+      effect: "Blaze damage increased by 30%.",
     },
     {
       level: 5,

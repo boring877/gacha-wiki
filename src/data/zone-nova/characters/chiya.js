@@ -233,7 +233,7 @@ export const chiyaData = {
     },
     {
       level: 4,
-      effect: "<color=#1ec1ff>Frost</color> damage increases by 30%",
+      effect: "Frost damage increases by 30%",
     },
     {
       level: 5,

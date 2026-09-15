@@ -233,7 +233,7 @@ export const artemisData = {
     },
     {
       level: 4,
-      effect: "<color=#01d828>Storm</color> damage increases by 35%",
+      effect: "Storm damage increases by 35%",
     },
     {
       level: 5,

@@ -1,0 +1,16 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import { brynhildData, brynhildSEO } from '../../../../data/zone-nova/characters/brynhild.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={brynhildSEO.title}
+  description={brynhildSEO.description}
+  gameTitle={brynhildData.name}
+  character={brynhildData}
+>
+  <CharacterPageTemplate characterData={brynhildData} />
+</CharacterIndividualLayout>

@@ -235,7 +235,7 @@ export const poseidonData = {
     },
   ],
   memoryCard: {
-    name: "Sea Deity's Soft Ritual",
+    name: "Sea God's Soft Ritual",
     image: "Poseidoncard.png",
     stats: {
       hp: "6,600",

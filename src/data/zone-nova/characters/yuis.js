@@ -233,7 +233,7 @@ export const yuisData = {
     },
     {
       level: 4,
-      effect: "<color=#faba18>Holy</color> Damage increased by 30%",
+      effect: "Holy Damage increased by 30%",
     },
     {
       level: 5,
@@ -241,7 +241,7 @@ export const yuisData = {
     },
     {
       level: 6,
-      effect: "After Zeus deals 12 Pursue Damages to the same target, an additional greatsword drops, dealing 150% Attack Power as <color=#faba18>Holy</color> Damage, treated as Pursue Damage\n\nZeus's Pursue Damage penetrates 20% Elemental Resistance",
+      effect: "After Zeus deals 12 Pursue Damages to the same target, an additional greatsword drops, dealing 150% Attack Power as Holy Damage, treated as Pursue Damage\n\nZeus's Pursue Damage penetrates 20% Elemental Resistance",
     },
   ],
 
