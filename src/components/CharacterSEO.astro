@@ -29,6 +29,9 @@ export interface Props {
 
 const { gameKey, character, customTitle, customDescription, additionalKeywords = [] } = Astro.props;
 
+// JSON-LD payload: escape "<" so "</script>" inside game text cannot break the head
+const safeJson = (value: unknown) => JSON.stringify(value).replace(/</g, '\\u003c');
+
 const gameConfig = getGameConfig(gameKey);
 
 if (!gameConfig) {
@@ -82,13 +85,13 @@ const faqStructuredData = generateFAQStructuredData(characterFAQs);
 <meta name="theme-color" content={gameConfig.themeColor} />
 
 <!-- Schema.org Structured Data for Character -->
-{structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
+{structuredData && <script type="application/ld+json" set:html={safeJson(structuredData)} />}
 
 <!-- Breadcrumb Structured Data -->
-<script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbStructuredData)} />
+<script type="application/ld+json" is:inline set:html={safeJson(breadcrumbStructuredData)} />
 
 <!-- FAQ Structured Data for Character Information -->
-<script type="application/ld+json" is:inline set:html={JSON.stringify(faqStructuredData)} />
+<script type="application/ld+json" is:inline set:html={safeJson(faqStructuredData)} />
 
 <!-- Character-specific Open Graph tags -->
 <meta property="og:type" content="profile" />

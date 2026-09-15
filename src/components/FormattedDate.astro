@@ -1,4 +1,6 @@
 ---
+// All callers pass date-only data (parsed as UTC midnight), so formatting is
+// pinned to UTC to stay identical on any build machine
 interface Props {
   date: Date;
 }
@@ -12,6 +14,7 @@ const { date } = Astro.props;
       year: 'numeric',
       month: 'short',
       day: 'numeric',
+      timeZone: 'UTC',
     })
   }
 </time>

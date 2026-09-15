@@ -4,6 +4,8 @@ import { Image } from 'astro:assets';
 import ZNMusicPlayer from './zone-nova/ZNMusicPlayer.astro';
 import BBMusicPlayer from './busty-burst/BBMusicPlayer.astro';
 import HWMusicPlayer from './horizon-walker/HWMusicPlayer.astro';
+import MajoMusicPlayer from './majo/MajoMusicPlayer.astro';
+import SSMusicPlayer from './stella-sora/SSMusicPlayer.astro';
 
 interface Props {
   currentPath?: string;
@@ -69,6 +71,8 @@ const isActive = (href: string) => href === bestMatch;
       {validatedGameKey === 'zone-nova' && <ZNMusicPlayer variant="mobile" />}
       {validatedGameKey === 'busty-burst' && <BBMusicPlayer variant="mobile" />}
       {validatedGameKey === 'horizon-walker' && <HWMusicPlayer variant="mobile" />}
+      {validatedGameKey === 'majo' && <MajoMusicPlayer variant="mobile" />}
+      {validatedGameKey === 'stella-sora' && <SSMusicPlayer variant="mobile" />}
     </div>
   </div>
 </nav>

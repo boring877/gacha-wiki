@@ -110,6 +110,7 @@ const GAME_CONFIG = {
     patterns: {
       characters: 'Characters',
       'tier-list': 'Tier List',
+      gallery: 'Gallery',
       equipment: 'Equipment',
       items: 'Items',
     },

@@ -1,26 +1,9 @@
 # Header rules for Cloudflare Pages
-# This file should be placed in your public directory
+# Later matching rules override earlier ones for the same header name, so the
+# no-cache default comes FIRST and the cacheable asset rules come AFTER it.
+# Note: Cloudflare _headers supports only * splats, not {a,b} brace globs.
 
-# Cache rules for JS files
-/assets/*.js
-  Cache-Control: public, max-age=86400
-
-# Cache rules for CSS files
-/assets/*.css
-  Cache-Control: public, max-age=86400
-
-# Cache rules for static assets (fonts, images)
-/assets/*.{woff2,woff,png,jpg,jpeg,gif,svg,webp,avif,ico}
-  Cache-Control: public, max-age=31536000, immutable
-
-/*.{woff2,woff,png,jpg,jpeg,gif,svg,webp,avif,ico}
-  Cache-Control: public, max-age=31536000, immutable
-
-# No cache for HTML files
-/*.html
-  Cache-Control: no-cache, no-store, must-revalidate
-
-# Security headers for all routes
+# Default for HTML and everything unmatched: no caching, plus security headers
 /*
   Cache-Control: no-cache, no-store, must-revalidate
   X-Frame-Options: DENY
@@ -28,3 +11,43 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+# Hashed build output under /assets/ (Astro emits name-hash.ext there): cache forever
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Prerendered /data/*.json endpoints (their code intends 1800-3600s)
+/data/*
+  Cache-Control: public, max-age=1800
+
+# Root-level static fonts: cache forever (they never change)
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+
+# Non-hashed static files from public/: cache for a day (a week for videos)
+/*.png
+  Cache-Control: public, max-age=86400
+/*.jpg
+  Cache-Control: public, max-age=86400
+/*.jpeg
+  Cache-Control: public, max-age=86400
+/*.gif
+  Cache-Control: public, max-age=86400
+/*.webp
+  Cache-Control: public, max-age=86400
+/*.avif
+  Cache-Control: public, max-age=86400
+/*.svg
+  Cache-Control: public, max-age=86400
+/*.ico
+  Cache-Control: public, max-age=86400
+/*.mp4
+  Cache-Control: public, max-age=604800
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+/images/*
+  Cache-Control: public, max-age=86400
+/videos/*
+  Cache-Control: public, max-age=604800

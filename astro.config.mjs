@@ -139,14 +139,6 @@ export default defineConfig({
             {
               src: 'src/scripts/horizon-walker/character-database.js',
               dest: 'public/scripts/horizon-walker/character-database.js'
-            },
-            {
-              src: 'src/scripts/horizon-walker/mercenary-database.js',
-              dest: 'public/scripts/horizon-walker/mercenary-database.js'
-            },
-            {
-              src: 'src/scripts/horizon-walker/gifts.js',
-              dest: 'public/scripts/horizon-walker/character-gifts.js'
             }
           ];
 
