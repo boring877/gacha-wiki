@@ -25,9 +25,9 @@ export const BUSTY_BURST_TIER_LISTS = {
           color: '#feca57',
         },
         characters: [
-          'teresia', 'dark_knight', 'ophelio', 'luca', 'lapis', 'rosa', 'chocolate-hildis', 'giselle', 'meinias', 'shaty', 'gemini', 'lust', 'setsuka', 'samurai_cow_girl_setsuka', 'trish', 'diana', 'sarka', 'priscilla',
+          'teresia', 'dark_knight', 'ophelio', 'luca', 'lapis', 'rosa', 'chocolate-hildis', 'giselle', 'meinias', 'shaty', 'gemini', 'lust', 'setsuka', 'samurai_cow_girl_setsuka', 'trish', 'diana', 'priscilla',
           // September 2026 wave (rated from kits)
-          'school-bloomers-black-knight', 'ilugio', 'ange', 'raffine', 'the-bride-of-luck-theresia', 'alluring-naked-apron-zilka', 'gil', 'nina',
+          'school-bloomers-black-knight', 'ange', 'raffine', 'the-bride-of-luck-theresia', 'alluring-naked-apron-zilka', 'gil', 'nina',
         ],
       },
       {
@@ -72,6 +72,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           'zilka',
           'lilith',
           'lilirara',
+          'ilugio',
           // Summer + September 2026 wave (rated from kits)
           'tempting-naked-apron-diana',
           'the-bride-of-purity-giselle',
@@ -168,6 +169,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           'slightly-mischievous-devil-luca',
           'collie',
           'the-bride-of-seduction-ophelio',
+          'sarka',
         ],
       },
       {

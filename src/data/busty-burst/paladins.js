@@ -1159,7 +1159,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: 'SR',
     element: 'Water',
     role: 'Attacker',
-    tier: 'A',
+    tier: 'S',
   },
   {
     id: 'priscilla',
@@ -1473,7 +1473,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: 'SSR',
     element: 'Water',
     role: 'Attacker',
-    tier: 'SS',
+    tier: 'S',
   },
   {
     id: 'ange',
