@@ -819,4 +819,171 @@ export const STORY_GALLERY = {
       "caption": "Wog Passage"
     }
   ]
+,
+  "xart": [
+    {
+      "file": "x/1983458797726335039-0.webp",
+      "caption": "Event key visual: The Ghost Ship Haunts the Deep"
+    },
+    {
+      "file": "x/1980937174972260776-0.webp",
+      "caption": "Wallpaper: The Tyrant (1)"
+    },
+    {
+      "file": "x/1980937174972260776-1.webp",
+      "caption": "Wallpaper: The Tyrant (2)"
+    },
+    {
+      "file": "x/1980937174972260776-2.webp",
+      "caption": "Wallpaper: The Tyrant (3)"
+    },
+    {
+      "file": "x/1980937174972260776-3.webp",
+      "caption": "Wallpaper: The Tyrant (4)"
+    },
+    {
+      "file": "x/1985995510931652714-0.webp",
+      "caption": "Wallpaper: Beach Holiday (1)"
+    },
+    {
+      "file": "x/1985995510931652714-1.webp",
+      "caption": "Wallpaper: Beach Holiday (2)"
+    },
+    {
+      "file": "x/1985995510931652714-2.webp",
+      "caption": "Wallpaper: Beach Holiday (3)"
+    },
+    {
+      "file": "x/1925027518714634378-0.webp",
+      "caption": "Worldview Introduction PV: Tyrant"
+    },
+    {
+      "file": "x/2036729805207687291-0.webp",
+      "caption": "Wallpaper: To My Dearest You Vol. 2 (1)"
+    },
+    {
+      "file": "x/2036729805207687291-1.webp",
+      "caption": "Wallpaper: To My Dearest You Vol. 2 (2)"
+    },
+    {
+      "file": "x/2036729805207687291-2.webp",
+      "caption": "Wallpaper: To My Dearest You Vol. 2 (3)"
+    },
+    {
+      "file": "x/2082315181066219837-0.webp",
+      "caption": "Wallpaper: Sunlit Breeze, Azure Seas (1)"
+    },
+    {
+      "file": "x/2082315181066219837-1.webp",
+      "caption": "Wallpaper: Sunlit Breeze, Azure Seas (2)"
+    },
+    {
+      "file": "x/2082315181066219837-2.webp",
+      "caption": "Wallpaper: Sunlit Breeze, Azure Seas (3)"
+    },
+    {
+      "file": "x/2013816321151255039-0.webp",
+      "caption": "Wallpaper: Office Chic Vol. 1 (1)"
+    },
+    {
+      "file": "x/2013816321151255039-1.webp",
+      "caption": "Wallpaper: Office Chic Vol. 1 (2)"
+    },
+    {
+      "file": "x/2013816321151255039-2.webp",
+      "caption": "Wallpaper: Office Chic Vol. 1 (3)"
+    },
+    {
+      "file": "x/1869219787756490819-0.webp",
+      "caption": "Gameplay trailer key art"
+    },
+    {
+      "file": "x/1869216019690242367-0.webp",
+      "caption": "Concept PV: To the endless sky"
+    },
+    {
+      "file": "x/1869200914210283694-0.webp",
+      "caption": "Teaser PV: Return of the Tyrant"
+    },
+    {
+      "file": "x/2001215815643697308-0.webp",
+      "caption": "Wallpaper: Beyond the Dream (1)"
+    },
+    {
+      "file": "x/2001215815643697308-1.webp",
+      "caption": "Wallpaper: Beyond the Dream (2)"
+    },
+    {
+      "file": "x/1988909713153790449-0.webp",
+      "caption": "Main Story PV: Guild Sweet Guild"
+    },
+    {
+      "file": "x/2026869836954083543-0.webp",
+      "caption": "Wallpaper: Winter Requiem and the Trigger of Dawn (1)"
+    },
+    {
+      "file": "x/2026869836954083543-1.webp",
+      "caption": "Wallpaper: Winter Requiem and the Trigger of Dawn (2)"
+    },
+    {
+      "file": "x/1982418238521929876-0.webp",
+      "caption": "Event key visual: Summer voyage (1)"
+    },
+    {
+      "file": "x/1982418238521929876-1.webp",
+      "caption": "Event key visual: Summer voyage (2)"
+    },
+    {
+      "file": "x/1982418238521929876-2.webp",
+      "caption": "Event key visual: Summer voyage (3)"
+    },
+    {
+      "file": "x/1982418238521929876-3.webp",
+      "caption": "Event key visual: Summer voyage (4)"
+    },
+    {
+      "file": "x/1987445060439277606-0.webp",
+      "caption": "Wallpaper: Sunflower Whispers"
+    },
+    {
+      "file": "x/1986992077100753321-0.webp",
+      "caption": "Wallpaper: Tyrant and the Sea (1)"
+    },
+    {
+      "file": "x/1986992077100753321-1.webp",
+      "caption": "Wallpaper: Tyrant and the Sea (2)"
+    },
+    {
+      "file": "x/1984455361374396755-0.webp",
+      "caption": "Wallpaper: Longing for the Infinite Sky (1)"
+    },
+    {
+      "file": "x/1984455361374396755-1.webp",
+      "caption": "Wallpaper: Longing for the Infinite Sky (2)"
+    },
+    {
+      "file": "x/2056208159954354666-0.webp",
+      "caption": "Wallpaper: Dressed-up Tyrant (1)"
+    },
+    {
+      "file": "x/2056208159954354666-1.webp",
+      "caption": "Wallpaper: Dressed-up Tyrant (2)"
+    },
+    {
+      "file": "x/1873549569163669940-0.webp",
+      "caption": "Worldview Introduction PV"
+    },
+    {
+      "file": "x/2075414709877235944-0.webp",
+      "caption": "Wallpaper: A Sandstorm of Gunfire (1)"
+    },
+    {
+      "file": "x/2075414709877235944-1.webp",
+      "caption": "Wallpaper: A Sandstorm of Gunfire (2)"
+    },
+    {
+      "file": "x/2075414709877235944-2.webp",
+      "caption": "Wallpaper: A Sandstorm of Gunfire (3)"
+    }
+  ]
 };

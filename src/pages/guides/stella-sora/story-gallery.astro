@@ -11,6 +11,7 @@ const TABS = [
   { id: 'event', label: 'Event Stories' },
   { id: 'tales', label: 'Tales' },
   { id: 'bg', label: 'World' },
+  { id: 'xart', label: 'Official Art' },
 ];
 
 // group main story by chapter for subheadings
@@ -44,7 +45,7 @@ const structuredData = {
   description:
     'Story illustrations and world artwork from Stella Sora: main story CGs, event stories, tales, and location backgrounds.',
   url: new URL(Astro.url.pathname, Astro.site).href,
-  numberOfItems: STORY_GALLERY.main.length + STORY_GALLERY.event.length + STORY_GALLERY.tales.length + STORY_GALLERY.bg.length,
+  numberOfItems: STORY_GALLERY.main.length + STORY_GALLERY.event.length + STORY_GALLERY.tales.length + STORY_GALLERY.bg.length + STORY_GALLERY.xart.length,
 };
 ---
 
@@ -57,8 +58,8 @@ const structuredData = {
 
   <section class="story-gallery-content">
     <p class="story-gallery-intro">
-      Story illustrations and world artwork extracted from the game. Click any image to view it in
-      full resolution.
+      Story illustrations and world artwork extracted from the game, plus official art from the
+      Stella Sora X account. Click any image to view it in full resolution.
     </p>
 
     <div class="story-tabs" role="tablist">
@@ -158,6 +159,26 @@ const structuredData = {
               <img
                 src={`${R2_BASE}/${item.file}`}
                 alt={`Stella Sora world art - ${item.caption}`}
+                width={400}
+                height={283}
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="story-caption">{item.caption}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="story-tab-panel" id="panel-xart" role="tabpanel" data-panel="xart" hidden>
+      <div class="story-grid">
+        {
+          STORY_GALLERY.xart.map((item: any) => (
+            <a class="story-card" href={`${R2_BASE}/${item.file}`} target="_blank" rel="noopener">
+              <img
+                src={`${R2_BASE}/${item.file}`}
+                alt={`Stella Sora official art - ${item.caption}`}
                 width={400}
                 height={283}
                 loading="lazy"

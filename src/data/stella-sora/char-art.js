@@ -1,5 +1,6 @@
 // Stella Sora character art manifest: main portrait / gallery / skins per character.
 // Auto-generated from the CharacterSkin table + extracted head textures (charart/ on R2).
+// Gallery also includes official X account art (x/ on R2, harvested 2026-09).
 export const CHAR_ART = {
   "amber": {
     "base": "10301",
@@ -55,6 +56,22 @@ export const CHAR_ART = {
       {
         "src": "charart/10304_adv.png",
         "caption": "Skin Promo: Ease Into an Unhurried Summer"
+      },
+      {
+        "src": "x/1890234522068783139-0.webp",
+        "caption": "Valentine's Day art"
+      },
+      {
+        "src": "x/1985270727537512912-0.webp",
+        "caption": "Nova Doodles comic"
+      },
+      {
+        "src": "x/1979850013049299113-0.webp",
+        "caption": "Release countdown art"
+      },
+      {
+        "src": "x/1869669008745570634-0.webp",
+        "caption": "Introduction card"
       }
     ]
   },
@@ -112,6 +129,18 @@ export const CHAR_ART = {
       {
         "src": "charart/10704_adv.png",
         "caption": "Skin Promo: Shining Bright, Spirits High"
+      },
+      {
+        "src": "x/2096886188401709547-0.webp",
+        "caption": "Skin promo: Shining Bright, Spirits High"
+      },
+      {
+        "src": "x/2068166960836178261-0.webp",
+        "caption": "Nova Manga"
+      },
+      {
+        "src": "x/1990676344846291097-0.webp",
+        "caption": "Birthday Log art (Nov 2025)"
       }
     ]
   },
@@ -188,6 +217,14 @@ export const CHAR_ART = {
       {
         "src": "dating/firenze-event-1.png",
         "caption": "Date: The Bait"
+      },
+      {
+        "src": "Banner_timeline/official/10110.webp",
+        "caption": "Recruitment: Mirroring the Jade's Ideal"
+      },
+      {
+        "src": "x/1977675688120582502-0.webp",
+        "caption": "Release countdown art"
       }
     ]
   },
@@ -245,6 +282,14 @@ export const CHAR_ART = {
       {
         "src": "charart/11104_adv.png",
         "caption": "Skin Promo: Drifting Together on Gentle Waves"
+      },
+      {
+        "src": "x/2050107958261113208-0.webp",
+        "caption": "Birthday Log art (May 2026)"
+      },
+      {
+        "src": "x/1985648213093654687-0.webp",
+        "caption": "Nova Doodles comic"
       }
     ]
   },
@@ -296,6 +341,18 @@ export const CHAR_ART = {
       {
         "src": "charart/11203_adv.png",
         "caption": "Skin Promo: Lingering Sunlight"
+      },
+      {
+        "src": "x/2068589735728304619-0.webp",
+        "caption": "Birthday Log art (Jun 2026)"
+      },
+      {
+        "src": "x/1986372990095982782-0.webp",
+        "caption": "Nova Doodles comic"
+      },
+      {
+        "src": "x/1871752738863747117-0.webp",
+        "caption": "Introduction card"
       }
     ]
   },
@@ -378,6 +435,10 @@ export const CHAR_ART = {
       {
         "src": "dating/chaton-event-1.png",
         "caption": "Date: Not Her Day"
+      },
+      {
+        "src": "x/2070711214678921639-0.webp",
+        "caption": "Skill introduction card"
       }
     ]
   },
@@ -418,6 +479,14 @@ export const CHAR_ART = {
       {
         "src": "dating/firefly-event-1.png",
         "caption": "Date: Vantage Point"
+      },
+      {
+        "src": "x/2053777139439399072-0.webp",
+        "caption": "Skill introduction card"
+      },
+      {
+        "src": "x/2054509458525757458-0.webp",
+        "caption": "Trekker PV key art"
       }
     ]
   },
@@ -460,6 +529,10 @@ export const CHAR_ART = {
       {
         "src": "dating/ridge-event-1.png",
         "caption": "Date: Cakes To-Go"
+      },
+      {
+        "src": "x/1953742981879505157-0.webp",
+        "caption": "Introduction card"
       }
     ]
   },
@@ -540,6 +613,14 @@ export const CHAR_ART = {
       {
         "src": "dating/coronis-event-1.png",
         "caption": "Date: Burning Gaze"
+      },
+      {
+        "src": "x/1978038075700715562-0.webp",
+        "caption": "Release countdown art"
+      },
+      {
+        "src": "x/1895398541801201914-0.webp",
+        "caption": "Introduction card"
       }
     ]
   },
@@ -591,6 +672,10 @@ export const CHAR_ART = {
       {
         "src": "charart/11903_adv.png",
         "caption": "Skin Promo: When Distant Winds Rise"
+      },
+      {
+        "src": "Banner_timeline/3/Nanoha.jpg",
+        "caption": "Recruitment: A Fateful Encounter"
       }
     ]
   },
@@ -637,6 +722,14 @@ export const CHAR_ART = {
       {
         "src": "dating/canace-event-1.png",
         "caption": "Date: Faculty Cafeteria"
+      },
+      {
+        "src": "x/2014231560497537400-0.webp",
+        "caption": "Birthday Log art (Jan 2026)"
+      },
+      {
+        "src": "x/2100057097979249067-0.webp",
+        "caption": "Misti's Investigation Journal"
       }
     ]
   },
@@ -683,6 +776,10 @@ export const CHAR_ART = {
       {
         "src": "dating/ann-event-1.png",
         "caption": "Date: View From High"
+      },
+      {
+        "src": "x/1872568105639252054-0.webp",
+        "caption": "Introduction card"
       }
     ]
   },
@@ -734,6 +831,18 @@ export const CHAR_ART = {
       {
         "src": "charart/12503_adv.png",
         "caption": "Skin Promo: The Gift of Falling Snow"
+      },
+      {
+        "src": "x/1979487623900192902-0.webp",
+        "caption": "Release countdown art"
+      },
+      {
+        "src": "x/1874742432132137440-0.webp",
+        "caption": "Introduction card"
+      },
+      {
+        "src": "x/2097641726664126506-0.webp",
+        "caption": "Birthday Log art (Sep 2026)"
       }
     ]
   },
@@ -774,6 +883,22 @@ export const CHAR_ART = {
       {
         "src": "dating/flora-event-1.png",
         "caption": "Date: Outside Help"
+      },
+      {
+        "src": "x/1892861830285910389-0.webp",
+        "caption": "Introduction card"
+      },
+      {
+        "src": "x/2096131221483123107-0.webp",
+        "caption": "Birthday Log art (Sep 2026)"
+      },
+      {
+        "src": "x/1909894064130187456-0.webp",
+        "caption": "2M pre-registration celebration art"
+      },
+      {
+        "src": "x/1978400467932864830-0.webp",
+        "caption": "Release countdown art"
       }
     ]
   },
@@ -860,6 +985,10 @@ export const CHAR_ART = {
       {
         "src": "dating/donna-event-1.png",
         "caption": "Date: Old Letters"
+      },
+      {
+        "src": "x/2032652949483335998-0.webp",
+        "caption": "Trekker PV key art"
       }
     ]
   },
@@ -917,6 +1046,10 @@ export const CHAR_ART = {
       {
         "src": "charart/13204_adv.png",
         "caption": "Skin Promo: Rippling Void of the Darkest Heartbreak"
+      },
+      {
+        "src": "x/1978762854825415153-0.webp",
+        "caption": "Release countdown art"
       }
     ]
   },
@@ -968,6 +1101,22 @@ export const CHAR_ART = {
       {
         "src": "charart/13303_adv.png",
         "caption": "Skin Promo: A Dip of Fresh Summer"
+      },
+      {
+        "src": "x/1996867147432448075-0.webp",
+        "caption": "Introduction card"
+      },
+      {
+        "src": "Banner_timeline/6/1.png",
+        "caption": "Recruitment: A Breezy Romance"
+      },
+      {
+        "src": "x/1997139064370405501-0.webp",
+        "caption": "Trekker PV key art"
+      },
+      {
+        "src": "x/1997146480876872144-0.webp",
+        "caption": "Skill introduction card"
       }
     ]
   },
@@ -1015,6 +1164,26 @@ export const CHAR_ART = {
       {
         "src": "charart/13403_adv.png",
         "caption": "Skin Promo: Probation Period Cleared!"
+      },
+      {
+        "src": "x/1989257005953929723-0.webp",
+        "caption": "Introduction card"
+      },
+      {
+        "src": "x/1989258251683139997-0.webp",
+        "caption": "Trekker's Call video art"
+      },
+      {
+        "src": "x/1989619388660822484-0.webp",
+        "caption": "Trekker PV key art"
+      },
+      {
+        "src": "Banner_timeline/4/Fuyuka.jpg",
+        "caption": "Recruitment: The Promise of Melting Snow"
+      },
+      {
+        "src": "x/2093905297051902015-0.webp",
+        "caption": "Recruitment art: Fireworks Dazzling the Night"
       }
     ]
   },
@@ -1072,6 +1241,22 @@ export const CHAR_ART = {
       {
         "src": "charart/13504_adv.png",
         "caption": "Skin Promo: Carefree in the Golden Glow"
+      },
+      {
+        "src": "x/1979125248185487529-0.webp",
+        "caption": "Release countdown art"
+      },
+      {
+        "src": "x/1987052466328789075-0.webp",
+        "caption": "Birthday Log art (Nov 2025)"
+      },
+      {
+        "src": "x/1882352581336596959-0.webp",
+        "caption": "Introduction card"
+      },
+      {
+        "src": "x/1986010611038531677-0.webp",
+        "caption": "Nova Doodles comic"
       }
     ]
   },
@@ -1112,6 +1297,22 @@ export const CHAR_ART = {
       {
         "src": "dating/eleanor-event-1.png",
         "caption": "Date: Diving in the Hot Spring"
+      },
+      {
+        "src": "x/2096078365283549216-0.webp",
+        "caption": "Skill introduction card"
+      },
+      {
+        "src": "x/2098713240939139155-0.webp",
+        "caption": "Misti's Investigation Journal"
+      },
+      {
+        "src": "x/2098969921707233406-0.webp",
+        "caption": "Stella Odyssey episode art"
+      },
+      {
+        "src": "x/2095436640684827008-0.webp",
+        "caption": "Introduction card"
       }
     ]
   },
@@ -1152,6 +1353,18 @@ export const CHAR_ART = {
       {
         "src": "dating/sparkla-event-1.png",
         "caption": "Date: Fairy Tale Fanatic"
+      },
+      {
+        "src": "x/2068166960836178261-0.webp",
+        "caption": "Nova Manga"
+      },
+      {
+        "src": "x/2060556820909830160-0.webp",
+        "caption": "Trekker PV key art"
+      },
+      {
+        "src": "x/2060564356190904574-0.webp",
+        "caption": "Skill introduction card"
       }
     ]
   },
@@ -1203,6 +1416,10 @@ export const CHAR_ART = {
       {
         "src": "charart/14103_adv.png",
         "caption": "Skin Promo: Crimson Reflection of Queen of Hearts"
+      },
+      {
+        "src": "x/1956642090231967814-0.webp",
+        "caption": "Introduction card"
       }
     ]
   },
@@ -1249,6 +1466,14 @@ export const CHAR_ART = {
       {
         "src": "dating/cosette-event-1.png",
         "caption": "Date: The Lure of the Bling-Bling"
+      },
+      {
+        "src": "x/2050470346252542250-0.webp",
+        "caption": "Birthday Log art (May 2026)"
+      },
+      {
+        "src": "x/1953018211978625256-0.webp",
+        "caption": "Introduction card"
       }
     ]
   },
@@ -1289,6 +1514,10 @@ export const CHAR_ART = {
       {
         "src": "dating/wraith-event-1.png",
         "caption": "Date: \"Hot\" Springs?"
+      },
+      {
+        "src": "x/2025050346348052711-0.webp",
+        "caption": "Skill introduction card"
       }
     ]
   },
@@ -1336,6 +1565,42 @@ export const CHAR_ART = {
       {
         "src": "charart/14403_adv.png",
         "caption": "Skin Promo: When Morning Glories Bloom, Her Eyes Open"
+      },
+      {
+        "src": "x/1979110148754018473-0.webp",
+        "caption": "Introduction card"
+      },
+      {
+        "src": "x/1985240529685385573-0.webp",
+        "caption": "Birthday Log art (Nov 2025)"
+      },
+      {
+        "src": "Banner_timeline/1/Chitose.jpg",
+        "caption": "Recruitment: Blades Beneath the Moon"
+      },
+      {
+        "src": "x/1979389473310794090-0.webp",
+        "caption": "Skill introduction card"
+      },
+      {
+        "src": "x/1979389473659195481-0.webp",
+        "caption": "Combat motions video art"
+      },
+      {
+        "src": "x/1981918638102741360-0.webp",
+        "caption": "Misti's Investigation Journal"
+      },
+      {
+        "src": "x/1977338457975402633-0.webp",
+        "caption": "Release countdown art"
+      },
+      {
+        "src": "x/1980559689185456203-0.webp",
+        "caption": "Nova Manga"
+      },
+      {
+        "src": "x/1980922072038519104-0.webp",
+        "caption": "Nova Doodles comic"
       }
     ]
   },
@@ -1418,6 +1683,14 @@ export const CHAR_ART = {
       {
         "src": "dating/caramel-event-1.png",
         "caption": "Date: Artistic Integrity"
+      },
+      {
+        "src": "x/1954830153177342231-0.webp",
+        "caption": "Introduction card"
+      },
+      {
+        "src": "x/1988139633885200535-0.webp",
+        "caption": "Birthday Log art (Nov 2025)"
       }
     ]
   },
@@ -1460,6 +1733,10 @@ export const CHAR_ART = {
       {
         "src": "dating/gerie-event-1.png",
         "caption": "Date: Sea Prayer"
+      },
+      {
+        "src": "x/1955554961850314970-0.webp",
+        "caption": "Introduction card"
       }
     ]
   },
@@ -1500,6 +1777,10 @@ export const CHAR_ART = {
       {
         "src": "dating/laru-event-1.png",
         "caption": "Date: Port Fishing Guide"
+      },
+      {
+        "src": "x/2090333012885926104-0.webp",
+        "caption": "Birthday Log art (Aug 2026)"
       }
     ]
   },
@@ -1540,6 +1821,34 @@ export const CHAR_ART = {
       {
         "src": "dating/shia-event-1.png",
         "caption": "Date: Underground Drift"
+      },
+      {
+        "src": "x/1982650964197994663-0.webp",
+        "caption": "Introduction card"
+      },
+      {
+        "src": "x/1982650965426917723-0.webp",
+        "caption": "Skill introduction card"
+      },
+      {
+        "src": "Banner_timeline/2/Shia.jpg",
+        "caption": "Recruitment: Tide to the Full Moon"
+      },
+      {
+        "src": "x/1984908350060937354-0.webp",
+        "caption": "Trekker Board art"
+      },
+      {
+        "src": "x/1982421954436170156-0.webp",
+        "caption": "Trekker's Call video art"
+      },
+      {
+        "src": "x/1985557621760541070-0.webp",
+        "caption": "Misti's Investigation Journal"
+      },
+      {
+        "src": "x/2092507341815976251-0.webp",
+        "caption": "Birthday Log art (Aug 2026)"
       }
     ]
   },
@@ -1631,6 +1940,30 @@ export const CHAR_ART = {
       {
         "src": "dating/karin-event-1.png",
         "caption": "Date: Cute Instinct"
+      },
+      {
+        "src": "x/2093217018694479914-0.webp",
+        "caption": "Official video art"
+      },
+      {
+        "src": "x/2088460676125835678-0.webp",
+        "caption": "Trekker PV key art"
+      },
+      {
+        "src": "x/1984576155496722589-0.webp",
+        "caption": "Nova Manga"
+      },
+      {
+        "src": "Banner_timeline/official/10157.webp",
+        "caption": "Recruitment: Bloom to the Bright Sun"
+      },
+      {
+        "src": "x/1983821178889498722-0.webp",
+        "caption": "Nova Doodles comic"
+      },
+      {
+        "src": "x/2094681670351724890-0.webp",
+        "caption": "Birthday Log art (Sep 2026)"
       }
     ]
   },
@@ -1659,6 +1992,10 @@ export const CHAR_ART = {
       {
         "src": "gameimg/characters/Snowish_Laru.jpg",
         "caption": "Splash Art"
+      },
+      {
+        "src": "x/2003027738429653105-0.webp",
+        "caption": "Skill introduction card"
       }
     ]
   },
@@ -1695,6 +2032,10 @@ export const CHAR_ART = {
       {
         "src": "dating/springseek-coronis-event-1.png",
         "caption": "Date: A Peculiar Doll"
+      },
+      {
+        "src": "x/2017440201052754032-0.webp",
+        "caption": "Skill introduction card"
       }
     ]
   },
