@@ -1382,7 +1382,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Wind",
     role: "Attacker",
-    tier: 'A',
+    tier: 'SS',
   },
   {
     id: "bonita",
