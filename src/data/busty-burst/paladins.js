@@ -1312,7 +1312,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Wind",
     role: "Support",
-    tier: 'S',
+    tier: 'SSS',
   },
   {
     id: "underboob-cheerleader-henrietti",

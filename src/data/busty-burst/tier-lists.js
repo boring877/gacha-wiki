@@ -15,7 +15,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           description: 'Must-have for beginners',
           color: '#ff6b6b',
         },
-        characters: ['festive_attire_estiriel', 'liesel', 'frey', 'dragon_crusher_medusa', 'messeria', 'top_dancer_messeria', 'sweet-bunny-artia'],
+        characters: ['festive_attire_estiriel', 'liesel', 'frey', 'dragon_crusher_medusa', 'messeria', 'top_dancer_messeria', 'sweet-bunny-artia', 'underboob-cheerleader-gemini'],
       },
       {
         tier: 'SS',
@@ -82,7 +82,6 @@ export const BUSTY_BURST_TIER_LISTS = {
           'nina',
           'yaksha',
           'fionore',
-          'underboob-cheerleader-gemini',
         ],
       },
       {
