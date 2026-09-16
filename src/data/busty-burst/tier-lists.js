@@ -27,7 +27,7 @@ export const BUSTY_BURST_TIER_LISTS = {
         characters: [
           'teresia', 'dark_knight', 'ophelio', 'luca', 'lapis', 'rosa', 'chocolate-hildis', 'giselle', 'meinias', 'shaty', 'gemini', 'lust', 'setsuka', 'samurai_cow_girl_setsuka', 'trish', 'diana', 'sarka', 'priscilla',
           // September 2026 wave (rated from kits)
-          'school-bloomers-black-knight', 'ilugio', 'ange', 'raffine', 'the-bride-of-luck-theresia', 'alluring-naked-apron-zilka',
+          'school-bloomers-black-knight', 'ilugio', 'ange', 'raffine', 'the-bride-of-luck-theresia', 'alluring-naked-apron-zilka', 'gil',
         ],
       },
       {
@@ -125,7 +125,6 @@ export const BUSTY_BURST_TIER_LISTS = {
           'katisha',
           'magdalena',
           // Summer 2026 wave (rated from kits)
-          'gil',
           'bonita',
           'raoul',
           'cluul',
