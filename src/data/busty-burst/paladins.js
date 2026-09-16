@@ -1463,7 +1463,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: 'SSR',
     element: 'Mind',
     role: 'Attacker',
-    tier: 'S',
+    tier: 'SS',
   },
   {
     id: 'ilugio',
