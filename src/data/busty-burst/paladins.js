@@ -1212,7 +1212,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SR",
     element: "Wind",
     role: "Attacker",
-    tier: 'NYR',
+    tier: 'A',
   },
   {
     id: "american-police-lapis",
@@ -1222,7 +1222,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Water",
     role: "Attacker",
-    tier: 'NYR',
+    tier: 'A',
   },
   {
     id: "sweet-bunny-artia",
@@ -1232,7 +1232,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Mind",
     role: "Support",
-    tier: 'NYR',
+    tier: 'S',
   },
   {
     id: "raoul",
@@ -1242,7 +1242,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Mind",
     role: "Attacker",
-    tier: 'NYR',
+    tier: 'A',
   },
   {
     id: "cluul",
@@ -1252,7 +1252,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Mind",
     role: "Attacker",
-    tier: 'NYR',
+    tier: 'A',
   },
   {
     id: "beautia",
@@ -1262,7 +1262,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SR",
     element: "Mind",
     role: "Support",
-    tier: 'NYR',
+    tier: 'A',
   },
   {
     id: "fionore",
@@ -1272,7 +1272,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Light",
     role: "Tank",
-    tier: 'NYR',
+    tier: 'S',
   },
   {
     id: "yaksha",
@@ -1282,7 +1282,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Dark",
     role: "Attacker",
-    tier: 'NYR',
+    tier: 'S',
   },
   {
     id: "nina",
@@ -1292,7 +1292,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Water",
     role: "Attacker",
-    tier: 'NYR',
+    tier: 'S',
   },
   {
     id: "abigail",
@@ -1302,7 +1302,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Fire",
     role: "Support",
-    tier: 'NYR',
+    tier: 'A',
   },
   {
     id: "underboob-cheerleader-gemini",
@@ -1312,7 +1312,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Wind",
     role: "Support",
-    tier: 'NYR',
+    tier: 'S',
   },
   {
     id: "underboob-cheerleader-henrietti",
@@ -1322,7 +1322,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SR",
     element: "Mind",
     role: "Support",
-    tier: 'NYR',
+    tier: 'A',
   },
   {
     id: "getting-out-of-the-pool-artia",
@@ -1332,7 +1332,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Water",
     role: "Attacker",
-    tier: 'NYR',
+    tier: 'S',
   },
   {
     id: "eva",
@@ -1342,7 +1342,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Dark",
     role: "Tank",
-    tier: 'NYR',
+    tier: 'S',
   },
   {
     id: "ines",
@@ -1352,7 +1352,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Dark",
     role: "Attacker",
-    tier: 'NYR',
+    tier: 'S',
   },
   {
     id: "collie",
@@ -1362,7 +1362,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SR",
     element: "Wind",
     role: "Attacker",
-    tier: 'NYR',
+    tier: 'S',
   },
   {
     id: "tempting-naked-apron-diana",
@@ -1372,7 +1372,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Light",
     role: "Attacker",
-    tier: 'NYR',
+    tier: 'S',
   },
   {
     id: "gil",
@@ -1382,7 +1382,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Wind",
     role: "Attacker",
-    tier: 'NYR',
+    tier: 'A',
   },
   {
     id: "bonita",
@@ -1392,7 +1392,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Fire",
     role: "Support",
-    tier: 'NYR',
+    tier: 'A',
   },
   {
     id: "ashley",
@@ -1402,7 +1402,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SR",
     element: "Fire",
     role: "Attacker",
-    tier: 'NYR',
+    tier: 'A',
   },
   {
     id: "school-bloomers-black-knight",
@@ -1412,7 +1412,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Dark",
     role: "Attacker",
-    tier: 'NYR',
+    tier: 'SS',
   },
   {
     id: "sirius",
@@ -1422,7 +1422,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Light",
     role: "Attacker",
-    tier: 'NYR',
+    tier: 'S',
   },
   {
     id: "the-bride-of-luck-theresia",
@@ -1432,7 +1432,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Light",
     role: "Support",
-    tier: 'NYR',
+    tier: 'SS',
   },
   {
     id: "the-bride-of-purity-giselle",
@@ -1442,7 +1442,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SSR",
     element: "Fire",
     role: "Attacker",
-    tier: 'NYR',
+    tier: 'S',
   },
   {
     id: "the-bride-of-seduction-ophelio",
@@ -1452,7 +1452,58 @@ export const BUSTY_BURST_PALADINS = [
     rarity: "SR",
     element: "Light",
     role: "Attacker",
-    tier: 'NYR',
+    tier: 'S',
+  },
+  // 2026 summer + September wave (characterIds from live hero data)
+  {
+    id: 'alluring-naked-apron-zilka',
+    characterId: 2143,
+    name: 'Alluring Naked Apron: Zilka',
+    fileName: 'Zilka',
+    rarity: 'SSR',
+    element: 'Mind',
+    role: 'Attacker',
+    tier: 'S',
+  },
+  {
+    id: 'ilugio',
+    characterId: 2144,
+    name: 'Ilugio',
+    fileName: 'Ilugio',
+    rarity: 'SSR',
+    element: 'Water',
+    role: 'Attacker',
+    tier: 'SS',
+  },
+  {
+    id: 'ange',
+    characterId: 2145,
+    name: 'Ange',
+    fileName: 'Ange',
+    rarity: 'SSR',
+    element: 'Fire',
+    role: 'Attacker',
+    tier: 'SS',
+  },
+  {
+    id: 'raffi',
+    characterId: 2146,
+    name: 'Raffi',
+    fileName: 'Raffi',
+    rarity: 'SR',
+    element: 'Water',
+    role: 'Tank',
+    tier: 'SS',
+  },
+  {
+    id: 'raffine',
+    characterId: 2147,
+    name: 'Raffine',
+    fileName: 'Raffine',
+    rarity: 'SSR',
+    element: 'Light',
+    role: 'Support',
+    tier: 'SS',
   },
 ];
 
