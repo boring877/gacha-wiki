@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -142,7 +64,7 @@ export const skills = {
       "baseDamage": "+500",
       "levelGrowth": "+20",
       "lvl1": "350% + 500",
-      "lvl90": "350% + 233",
+      "lvl90": null,
       "effects": [
         "Stun",
         "Blind",
@@ -356,7 +278,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Debuff Resistance+",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Large), Debuff Resistance UP (Small)",
+      "description": "Gain Action Speed UP(Large), Debuff Resistance UP(Small)",
       "effect": "Action Speed + (+15)",
       "effectValues": [
         {
@@ -371,7 +293,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Accuracy UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Accuracy + (+20)",
       "effectValues": [
         {

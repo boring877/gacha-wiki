@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -140,7 +62,7 @@ export const skills = {
       "baseDamage": "+105",
       "levelGrowth": "+20",
       "lvl1": "276% + 105",
-      "lvl90": "276% + 728",
+      "lvl90": null,
       "effects": [
         "Physical Attack + Lv4"
       ],
@@ -168,7 +90,7 @@ export const skills = {
       "baseDamage": "+83",
       "levelGrowth": "+20",
       "lvl1": "220% + 83",
-      "lvl90": "220% + -95",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv4"
       ],
@@ -231,7 +153,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP (Medium)",
+      "description": "Gain Max HP(Medium)",
       "effect": "Max HP + (+2896)",
       "effectValues": [
         {
@@ -246,7 +168,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Large), Physical Critical Damage UP (Large)",
+      "description": "When defeating an enemy, applies Physical Attack UP(Large) to self for 5 seconds and Physical Critical Damage UP(Large) for 5 seconds",
       "effect": "Physical Attack + (+389), Physical Critical Damage+ (+176%)",
       "effectValues": [
         {

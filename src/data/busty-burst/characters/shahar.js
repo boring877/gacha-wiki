@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -157,7 +79,7 @@ export const skills = {
       "baseDamage": "+60",
       "levelGrowth": "+6",
       "lvl1": "125% + 60",
-      "lvl90": "125% + -29",
+      "lvl90": null,
       "effects": [
         "Physical Attack - Lv2",
         "Magic Attack - Lv2"
@@ -228,7 +150,7 @@ export const skills = {
       "slot": 1,
       "name": "Charm Resistance LvMax",
       "icon": "skill001/skill1003",
-      "description": "Gain Charm Resistance UP",
+      "description": "Gain Charm Resistance 1%UP",
       "effect": "Charm Resistance LvMax (+1%)",
       "effectValues": [
         {
@@ -243,7 +165,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Critical Damage UP (Small)",
+      "description": "Gain Physical Critical Damage UP(Small)",
       "effect": "Physical Critical Damage+ (+59%)",
       "effectValues": [
         {

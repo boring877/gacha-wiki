@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -134,14 +56,14 @@ export const skills = {
       "icon": "skill001/skill0008",
       "description": "Deals magic damage to the 2 nearest enemies and inflicts Physical Attack -9%-20 DOWN for 10 seconds and Magic Attack -9%-20 DOWN for 10 seconds",
       "descriptionLv1": "Deals magic damage to the 2 nearest enemies and inflicts Physical Attack -9%-20 DOWN for 10 seconds and Magic Attack -9%-20 DOWN for 10 seconds",
-      "descriptionLv90": "Deals magic damage to the 2 nearest enemies and inflicts Physical Attack -9%-2000 DOWN for 10 seconds and Magic Attack -9%-20 DOWN for 10 seconds",
+      "descriptionLv90": "Deals magic damage to the 2 nearest enemies and inflicts Physical Attack -9%-200 DOWN for 10 seconds and Magic Attack -9%-200 DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.78,
       "damageScaling": "114.99999999999999% ATK",
       "baseDamage": "+80",
       "levelGrowth": "+7",
       "lvl1": "114% + 80",
-      "lvl90": "114% + -98",
+      "lvl90": null,
       "effects": [
         "Physical Attack - Lv3",
         "Magic Attack - Lv3"
@@ -312,7 +234,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1002",
-      "description": "Gain Physical Defense UP (Small), Magic Defense UP (Small)",
+      "description": "Gain Physical Defense UP(Small), Magic Defense UP(Small)",
       "effect": "Physical Defense + (+70), Magic Defense+ (+70)",
       "effectValues": [
         {
@@ -333,7 +255,7 @@ export const skills = {
       "slot": 2,
       "name": "Magic Attack +, Block+",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Medium), Block UP (Medium)",
+      "description": "Gain Magic Attack UP(Medium), Block UP(Medium)",
       "effect": "Magic Attack + (+259), Block+ (+15)",
       "effectValues": [
         {

@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -134,7 +56,7 @@ export const skills = {
       "icon": "skill001/skill0002",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds, applies to self Recovers HP by 10%+300",
       "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds, applies to self Recovers HP by 10%+300",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-220 DOWN for 6 seconds, applies to self Recovers HP by 10%+300",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-220 DOWN for 6 seconds, applies to self Recovers HP by 10%+3000",
       "target": "Nearest Enemy",
       "castTime": 0.9,
       "damageScaling": "350% ATK",
@@ -159,7 +81,8 @@ export const skills = {
           "value": 10,
           "type": "percent",
           "duration": 0,
-          "levelGrowth": 30.0
+          "flatValue": 300,
+          "flatGrowth": 30.0
         }
       ],
       "duration": 6
@@ -319,7 +242,7 @@ export const skills = {
       "slot": 1,
       "name": "Ultimate Damage +, Shield",
       "icon": "skill001/skill1002",
-      "description": "Gain Ultimate Damage UP (Medium), Damage Reduction (3 times, cannot be cleansed)",
+      "description": "Gain Ultimate Damage UP(Medium), after casting an ultimate, self gains 50% damage taken reduction(3)",
       "effect": "Ultimate Damage + (+10%), Shield (+50%)",
       "effectValues": [
         {
@@ -340,7 +263,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Medium), Action Speed UP (Medium)",
+      "description": "Gain Skill Damage UP(Medium), Action Speed UP(Medium)",
       "effect": "Skill Damage + (+20%), Action Speed + (+10)",
       "effectValues": [
         {

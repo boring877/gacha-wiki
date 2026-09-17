@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -135,7 +57,7 @@ export const skills = {
       "icon": "skill001/skill0007",
       "description": "Inflicts Physical Attack -9%-20 DOWN on the 3 nearest enemies for 8 seconds and Magic Attack -9%-20 DOWN for 8 seconds",
       "descriptionLv1": "Inflicts Physical Attack -9%-20 DOWN on the 3 nearest enemies for 8 seconds and Magic Attack -9%-20 DOWN for 8 seconds",
-      "descriptionLv90": "Inflicts Physical Attack -9%-2000 DOWN on the 3 nearest enemies for 8 seconds and Magic Attack -9%-20 DOWN for 8 seconds",
+      "descriptionLv90": "Inflicts Physical Attack -9%-200 DOWN on the 3 nearest enemies for 8 seconds and Magic Attack -9%-200 DOWN for 8 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.38,
       "damageScaling": null,
@@ -178,7 +100,7 @@ export const skills = {
       "baseDamage": "+120",
       "levelGrowth": "+15",
       "lvl1": "250% + 120",
-      "lvl90": "250% + 108",
+      "lvl90": null,
       "effects": [
         "Accuracy - Lv4"
       ],
@@ -276,7 +198,7 @@ export const skills = {
       "slot": 1,
       "name": "Healing Amount +",
       "icon": "skill001/skill1004",
-      "description": "Gain Healing Amount UP (Medium)",
+      "description": "Gain Healing Amount UP(Medium)",
       "effect": "Healing Amount + (+15%)",
       "effectValues": [
         {
@@ -291,7 +213,7 @@ export const skills = {
       "slot": 2,
       "name": "Healing Received +, Block+",
       "icon": "skill001/skill1008",
-      "description": "Gain Healing Received UP (Small), Block UP (Small)",
+      "description": "All allies receive Healing Received UP(Small), Block UP(Small)",
       "effect": "Healing Received + (+20%), Block+ (+10)",
       "effectValues": [
         {

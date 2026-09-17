@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+110",
       "levelGrowth": "+20",
       "lvl1": "240% + 110",
-      "lvl90": "240% + -68",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv3"
       ],
@@ -162,7 +84,7 @@ export const skills = {
       "icon": "skill001/skill0017",
       "description": "Applies Physical Critical Damage 50 UP to the 3 nearest allies for 12 seconds",
       "descriptionLv1": "Applies Physical Critical Damage 50 UP to the 3 nearest allies for 12 seconds",
-      "descriptionLv90": "Applies Physical Critical Damage 50 UP to the 3 nearest allies for 12 seconds",
+      "descriptionLv90": "Applies Physical Critical Damage 680 UP to the 3 nearest allies for 12 seconds",
       "target": "Nearest Ally",
       "castTime": 1.58,
       "damageScaling": null,
@@ -179,7 +101,8 @@ export const skills = {
           "value": 50,
           "type": "percent",
           "duration": 12,
-          "levelGrowth": 7.0
+          "flatValue": 50,
+          "flatGrowth": 7.0
         }
       ],
       "duration": 12
@@ -297,7 +220,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1002",
-      "description": "Gain Physical Defense UP (Medium), Magic Defense UP (Medium)",
+      "description": "Gain Physical Defense UP(Medium), Magic Defense UP(Medium)",
       "effect": "Physical Defense + (+141), Magic Defense+ (+141)",
       "effectValues": [
         {
@@ -318,7 +241,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Block+",
       "icon": "skill001/skill1007",
-      "description": "Gain Physical Attack UP (Small), Block UP (Small)",
+      "description": "Front Row allies receive Physical Attack UP(Small) and Block UP(Small)",
       "effect": "Physical Attack + (+130), Block+ (+10)",
       "effectValues": [
         {

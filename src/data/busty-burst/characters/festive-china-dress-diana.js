@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -140,7 +62,7 @@ export const skills = {
       "baseDamage": "+250",
       "levelGrowth": "+25",
       "lvl1": "350% + 250",
-      "lvl90": "350% + 695",
+      "lvl90": null,
       "effects": [
         "Physical Attack + Lv3"
       ],
@@ -168,7 +90,7 @@ export const skills = {
       "baseDamage": "+150",
       "levelGrowth": "+20",
       "lvl1": "300% + 150",
-      "lvl90": "300% + -28",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv3"
       ],
@@ -266,7 +188,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Medium)",
+      "description": "Gain Physical Attack UP(Medium)",
       "effect": "Physical Attack + (+259)",
       "effectValues": [
         {
@@ -281,7 +203,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Medium), Physical Critical Damage UP (Small)",
+      "description": "Gain Skill Damage UP(Medium), Physical Critical Damage UP(Small)",
       "effect": "Skill Damage + (+20%), Physical Critical Damage+ (+59%)",
       "effectValues": [
         {

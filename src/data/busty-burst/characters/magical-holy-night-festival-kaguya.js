@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+100",
       "levelGrowth": "+7",
       "lvl1": "130% + 100",
-      "lvl90": "130% + 88",
+      "lvl90": null,
       "effects": [
         "Action Speed - Lv3",
         "Accuracy - Lv4"
@@ -169,7 +91,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Hit-Based Healing Shield (30%+40, restores 40%, 9 hit(s)) to self for 15 seconds and Block 13 UP for 15 seconds",
       "descriptionLv1": "Applies Hit-Based Healing Shield (30%+40, restores 40%, 9 hit(s)) to self for 15 seconds and Block 13 UP for 15 seconds",
-      "descriptionLv90": "Applies Hit-Based Healing Shield (30%+40, restores 40%, 9 hit(s)) to self for 15 seconds and Block 26 UP for 15 seconds",
+      "descriptionLv90": "Applies Hit-Based Healing Shield (44%+40, restores 40%, 3609 hit(s)) to self for 15 seconds and Block 26 UP for 15 seconds",
       "target": "Self",
       "castTime": 1.38,
       "damageScaling": null,
@@ -187,7 +109,9 @@ export const skills = {
           "value": 30,
           "type": "percent",
           "duration": 15,
-          "levelGrowth": 40.0
+          "flatValue": 9,
+          "flatGrowth": 40.0,
+          "levelGrowth": 0.15
         },
         {
           "name": "Block+ Lv5",
@@ -312,7 +236,7 @@ export const skills = {
       "slot": 1,
       "name": "Healing Amount +, Max HP +",
       "icon": "skill001/skill1003",
-      "description": "Gain Healing Amount UP (Medium), Max HP UP (Large)",
+      "description": "Gain Healing Amount UP(Medium), Max HP UP(Large)",
       "effect": "Healing Amount + (+15%), Max HP + (+3444)",
       "effectValues": [
         {
@@ -333,7 +257,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1006",
-      "description": "Gain Physical Defense UP (Medium), Magic Defense UP (Medium)",
+      "description": "All allies receive Physical Defense UP(Medium), Magic Defense UP(Medium)",
       "effect": "Physical Defense + (+141), Magic Defense+ (+141)",
       "effectValues": [
         {

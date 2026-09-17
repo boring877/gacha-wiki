@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -150,7 +72,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Hit-Based Physical Damage UP(150%+500, 1 hit(s)) to self for 4 secondsand Debuff Resistance 1%UP for 4 seconds",
       "descriptionLv1": "Applies Hit-Based Physical Damage UP(150%+500, 1 hit(s)) to self for 4 secondsand Debuff Resistance 1%UP for 4 seconds",
-      "descriptionLv90": "Applies Hit-Based Physical Damage UP(4500150%+500, 1 hit(s)) to self for 4 secondsand Debuff Resistance 1%UP for 4 seconds",
+      "descriptionLv90": "Applies Hit-Based Physical Damage UP(150%+500, 45001 hit(s)) to self for 4 secondsand Debuff Resistance 1%UP for 4 seconds",
       "target": "Self",
       "castTime": 1.6,
       "damageScaling": null,
@@ -292,7 +214,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Physical Attack UP(Large), Accuracy UP(Medium)",
       "effect": "Physical Attack + (+389), Accuracy + (+20)",
       "effectValues": [
         {
@@ -313,7 +235,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Accuracy UP(Medium)",
       "effect": "Skill Damage + (+30%), Accuracy + (+20)",
       "effectValues": [
         {

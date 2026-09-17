@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -142,7 +64,7 @@ export const skills = {
       "baseDamage": "+500",
       "levelGrowth": "+20",
       "lvl1": "370% + 500",
-      "lvl90": "370% + 322",
+      "lvl90": null,
       "effects": [
         "Burn Lv5",
         "Block- Lv4",
@@ -351,7 +273,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Large), Magic Attack UP (Cannot be Cleansed)",
+      "description": "Gain Action Speed UP(Large), after casting an ultimate, self 5% Magic Attack UP(stackable up to 15%)",
       "effect": "Action Speed + (+15)",
       "effectValues": [
         {
@@ -366,7 +288,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Magic Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Magic Critical Damage UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Magic Critical Damage UP(Medium)",
       "effect": "Skill Damage + (+30%), Magic Critical Damage+ (+90)",
       "effectValues": [
         {

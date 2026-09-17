@@ -1215,7 +1215,7 @@ export const characterBuilds = {
     })(),
   },
 
-  'innocent-confectioner-frey': {
+  'purehearted-pâtissière-frey': {
     slug: 'chocolate-frey',
     character: {
       name: 'Chocolate Frey',
@@ -1299,7 +1299,7 @@ export const characterBuilds = {
     })(),
   },
 
-  'champion-of-love-and-chocolate-shaty': {
+  'warrior-of-love-and-chocolate-shaty': {
     slug: 'chocolate-shaty',
     character: {
       name: 'Chocolate Shaty',

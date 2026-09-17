@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+600",
       "levelGrowth": "+25",
       "lvl1": "330% + 600",
-      "lvl90": "330% + 1401",
+      "lvl90": null,
       "effects": [
         "Physical Attack + Lv5"
       ],
@@ -162,7 +84,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Action Speed 17%UP for 10 seconds, all allies 10s Hit-Based Physical Damage UP(40%+450, 3 hit(s))",
       "descriptionLv1": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Action Speed 17%UP for 10 seconds, all allies 10s Hit-Based Physical Damage UP(40%+450, 3 hit(s))",
-      "descriptionLv90": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Action Speed 17%UP for 10 seconds, all allies 10s Hit-Based Physical Damage UP(40%+450, 40503 hit(s))",
+      "descriptionLv90": "Applies Physical Critical Damage 870 UP to self for 10 seconds and Action Speed 17%UP for 10 seconds, all allies 10s Hit-Based Physical Damage UP(40%+450, 40503 hit(s))",
       "target": "Self",
       "castTime": 0.95,
       "damageScaling": null,
@@ -181,7 +103,8 @@ export const skills = {
           "value": 60,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 9.0
+          "flatValue": 60,
+          "flatGrowth": 9.0
         },
         {
           "name": "Action Speed + Lv4",
@@ -312,7 +235,7 @@ export const skills = {
       "slot": 1,
       "name": "Holy Type ATK +, Damage UP",
       "icon": "skill001/skill1001",
-      "description": "Gain Holy Type ATK UP, Damage UP (Cannot be Cleansed)",
+      "description": "After casting a skill, self 3% Light-type Attack UP(stackable up to 15%), after a normal attack, self 5000 Damage UP(stackable up to 100000)",
       "effect": "Holy Type ATK + (+3%), Damage UP (+9999%)",
       "effectValues": [
         {
@@ -333,7 +256,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Physical Critical Damage UP(Medium)",
       "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {

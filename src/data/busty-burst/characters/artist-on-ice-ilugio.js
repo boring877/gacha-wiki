@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+500",
       "levelGrowth": "+20",
       "lvl1": "380% + 500",
-      "lvl90": "380% + 488",
+      "lvl90": null,
       "effects": [
         "Action Speed - Lv5",
         "Accuracy - Lv4"
@@ -167,9 +89,9 @@ export const skills = {
       "slot": 3,
       "name": "Hope that is born and vanishes every night",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed 20%UP to self for 12 seconds and Physical Attack 18%+35 UP for 12 seconds, 20000 damageUP(max 100000stackable),, Physical AttackUP effect +50%, damageUPall allies",
-      "descriptionLv1": "Applies Action Speed 20%UP to self for 12 seconds and Physical Attack 18%+35 UP for 12 seconds, 20000 damageUP(max 100000stackable),, Physical AttackUP effect +50%, damageUPall allies",
-      "descriptionLv90": "Applies Action Speed 20%UP to self for 12 seconds and Physical Attack 18%+665 UP for 12 seconds, 20000 damageUP(max 100000stackable),, Physical AttackUP effect +50%, damageUPall allies",
+      "description": "Applies Action Speed 20%UP to self for 12 seconds and Physical Attack 18%+35 UP for 12 seconds, 20000 Damage UP(stackable up to 100000), Physical AttackUP effect +50%, Damage UPall allies",
+      "descriptionLv1": "Applies Action Speed 20%UP to self for 12 seconds and Physical Attack 18%+35 UP for 12 seconds, 20000 Damage UP(stackable up to 100000), Physical AttackUP effect +50%, Damage UPall allies",
+      "descriptionLv90": "Applies Action Speed 20%UP to self for 12 seconds and Physical Attack 18%+665 UP for 12 seconds, 20000 Damage UP(stackable up to 100000), Physical AttackUP effect +50%, Damage UPall allies",
       "target": "Self",
       "castTime": 0.9,
       "damageScaling": null,
@@ -211,7 +133,7 @@ export const skills = {
       "rank": 1,
       "name": "Even sealed in ice, you shall melt in the flames of love",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies, applies 2s(LV 1) and Physical Defense DOWN(LV 1) for 10 seconds, self 10s Action Speed UP(LV 1),, damage +50%, action speedUPall allies",
+      "description": "Deals physical damage to the 3 nearest enemies, applies 2s(LV 1) and Physical Defense DOWN(LV 1) for 10 seconds, self 10s Action Speed UP(LV 1), damage +50%, Action Speed UPall allies",
       "effect": "450% + 450",
       "buffEffects": [
         {
@@ -238,7 +160,7 @@ export const skills = {
       "rank": 2,
       "name": "Even sealed in ice, you shall melt in the flames of love",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the 3 nearest enemies, applies 3s(LV 2) and Physical Defense DOWN(LV 2) for 10 seconds, self 10s Action Speed UP(LV 2),, damage +50%, action speedUPall allies",
+      "description": "Deals physical damage to the 3 nearest enemies, applies 3s(LV 2) and Physical Defense DOWN(LV 2) for 10 seconds, self 10s Action Speed UP(LV 2), damage +50%, Action Speed UPall allies",
       "effect": "530% + 550",
       "buffEffects": [
         {
@@ -265,7 +187,7 @@ export const skills = {
       "rank": 3,
       "name": "Even sealed in ice, you shall melt in the flames of love",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the 3 nearest enemies, applies 3s(LV 3) and Physical Defense DOWN(LV 3) for 10 seconds, self 10s Action Speed UP(LV 3),, damage +50%, action speedUPall allies",
+      "description": "Deals physical damage to the 3 nearest enemies, applies 3s(LV 3) and Physical Defense DOWN(LV 3) for 10 seconds, self 10s Action Speed UP(LV 3), damage +50%, Action Speed UPall allies",
       "effect": "585% + 650",
       "buffEffects": [
         {
@@ -292,7 +214,7 @@ export const skills = {
       "rank": 4,
       "name": "Even sealed in ice, you shall melt in the flames of love",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the 3 nearest enemies, applies 4s(LV 4) and Physical Defense DOWN(LV 4) for 10 seconds, self 10s Action Speed UP(LV 4),, damage +50%, action speedUPall allies",
+      "description": "Deals physical damage to the 3 nearest enemies, applies 4s(LV 4) and Physical Defense DOWN(LV 4) for 10 seconds, self 10s Action Speed UP(LV 4), damage +50%, Action Speed UPall allies",
       "effect": "630% + 725",
       "buffEffects": [
         {
@@ -319,7 +241,7 @@ export const skills = {
       "rank": 5,
       "name": "Even sealed in ice, you shall melt in the flames of love",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the 3 nearest enemies, applies 4s(LV 5) and Physical Defense DOWN(LV 5) for 10 seconds, self 10s Action Speed UP(LV 5),, damage +50%, action speedUPall allies",
+      "description": "Deals physical damage to the 3 nearest enemies, applies 4s(LV 5) and Physical Defense DOWN(LV 5) for 10 seconds, self 10s Action Speed UP(LV 5), damage +50%, Action Speed UPall allies",
       "effect": "660% + 800",
       "buffEffects": [
         {
@@ -348,7 +270,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Wind Type ATK +",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Large), Wind Type ATK UP (Cannot be Cleansed)",
+      "description": "Gain Action Speed UP(Large), after a normal attack, self 1% Wind-type Attack UP(stackable up to 20%)",
       "effect": "Action Speed + (+15), Wind Type ATK + (+1%)",
       "effectValues": [
         {
@@ -369,7 +291,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Physical Critical Damage UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {

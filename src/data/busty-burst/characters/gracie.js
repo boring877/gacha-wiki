@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -140,7 +62,7 @@ export const skills = {
       "baseDamage": "+110",
       "levelGrowth": "+20",
       "lvl1": "220% + 110",
-      "lvl90": "220% + -68",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv3"
       ],
@@ -161,7 +83,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Healing Shield (270, restores 20%) to self for 12 seconds and Taunt for 12 seconds",
       "descriptionLv1": "Applies Healing Shield (270, restores 20%) to self for 12 seconds and Taunt for 12 seconds",
-      "descriptionLv90": "Applies Healing Shield (270, restores 20%) to self for 12 seconds and Taunt for 12 seconds",
+      "descriptionLv90": "Applies Healing Shield (270, restores 2000%) to self for 12 seconds and Taunt for 12 seconds",
       "target": "Self",
       "castTime": 1.38,
       "damageScaling": null,
@@ -179,7 +101,8 @@ export const skills = {
           "value": 270,
           "type": "percent",
           "duration": 12,
-          "levelGrowth": 22.0
+          "flatValue": 20,
+          "flatGrowth": 22.0
         },
         {
           "name": "Taunt",
@@ -273,7 +196,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Medium)",
+      "description": "Gain Max HP UP(Medium)",
       "effect": "Max HP + (+2896)",
       "effectValues": [
         {
@@ -288,7 +211,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1003",
-      "description": "Gain Physical Defense UP (Medium), Magic Defense UP (Medium)",
+      "description": "Gain Physical Defense UP(Medium), Magic Defense UP(Medium)",
       "effect": "Physical Defense + (+141), Magic Defense+ (+141)",
       "effectValues": [
         {

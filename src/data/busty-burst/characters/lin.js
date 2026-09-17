@@ -48,100 +48,22 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Swift Wind Assault",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds while [Swift Wind] is active activation before applies to self 6s Wind Type ATK 30%UP",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds while [Swift Wind] is active activation before applies to self 6s Wind Type ATK 30%UP",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-220 DOWN for 6 seconds while [Swift Wind] is active activation before applies to self 6s Wind Type ATK 30%UP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds while [Swift Wind] is active activation before applies to self 6s Wind-type Attack 30%UP",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-40 DOWN for 6 seconds while [Swift Wind] is active activation before applies to self 6s Wind-type Attack 30%UP",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -21%-220 DOWN for 6 seconds while [Swift Wind] is active activation before applies to self 6s Wind-type Attack 30%UP",
       "target": "Nearest Enemy",
       "castTime": 1.2,
       "damageScaling": "300% ATK",
       "baseDamage": "+300",
       "levelGrowth": "+25",
       "lvl1": "300% + 300",
-      "lvl90": "300% + 122",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv4"
       ],
@@ -160,9 +82,9 @@ export const skills = {
       "slot": 3,
       "name": "Wind Wrap",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed 14%UP to all allies for 10 seconds and Accuracy 9 UP for 10 seconds, when team hasWind Type when 3+ allies are presentWind Type allies 10s Wind Type ATK 15%UP",
-      "descriptionLv1": "Applies Action Speed 14%UP to all allies for 10 seconds and Accuracy 9 UP for 10 seconds, when team hasWind Type when 3+ allies are presentWind Type allies 10s Wind Type ATK 15%UP",
-      "descriptionLv90": "Applies Action Speed 14%UP to all allies for 10 seconds and Accuracy 18 UP for 10 seconds, when team hasWind Type when 3+ allies are presentWind Type allies 10s Wind Type ATK 15%UP",
+      "description": "Applies Action Speed 14%UP to all allies for 10 seconds and Accuracy 9 UP for 10 seconds, when the party has 3+ Wind allies, Wind allies gain 10s Wind Type ATK 15%UP",
+      "descriptionLv1": "Applies Action Speed 14%UP to all allies for 10 seconds and Accuracy 9 UP for 10 seconds, when the party has 3+ Wind allies, Wind allies gain 10s Wind Type ATK 15%UP",
+      "descriptionLv90": "Applies Action Speed 14%UP to all allies for 10 seconds and Accuracy 18 UP for 10 seconds, when the party has 3+ Wind allies, Wind allies gain 10s Wind Type ATK 15%UP",
       "target": "All Allies",
       "castTime": 1.4,
       "damageScaling": null,
@@ -311,7 +233,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Damage UP(Cannot be Cleansed)",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Large), Damage UP (Cannot be Cleansed)",
+      "description": "Gain Action Speed UP(Large), when the party has 3+ Wind allies, Wind allies gain Damage 10%UP(Cannot be Cleansed)",
       "effect": "Action Speed + (+15), Damage UP(Cannot be Cleansed) (+10%)",
       "effectValues": [
         {
@@ -332,7 +254,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Physical Attack UP(Medium)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {

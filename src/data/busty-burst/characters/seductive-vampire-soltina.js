@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -134,14 +56,14 @@ export const skills = {
       "icon": "skill001/skill0002",
       "description": "Deals physical damage to the 3 nearest enemies, and when the skill activates, applies HP Absorb 19%+UP to self for 5 seconds and absorbs 3% of the damage dealt to restore own HP",
       "descriptionLv1": "Deals physical damage to the 3 nearest enemies, and when the skill activates, applies HP Absorb 19%+UP to self for 5 seconds and absorbs 3% of the damage dealt to restore own HP",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies, and when the skill activates, applies HP Absorb 19%+UP to self for 5 seconds and absorbs 3% of the damage dealt to restore own HP",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies, and when the skill activates, applies HP Absorb 469%+UP to self for 5 seconds and absorbs 3% of the damage dealt to restore own HP",
       "target": "Nearest Enemy",
       "castTime": 1.08,
       "damageScaling": "130% ATK",
       "baseDamage": "+100",
       "levelGrowth": "+8",
       "lvl1": "130% + 100",
-      "lvl90": "130% + 545",
+      "lvl90": null,
       "effects": [
         "HP Absorb+ Lv5"
       ],
@@ -305,7 +227,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Physical Attack +",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Large), Physical Attack UP (Medium)",
+      "description": "Gain Max HP UP(Large), Physical Attack UP(Medium)",
       "effect": "Max HP + (+3444), Physical Attack + (+259)",
       "effectValues": [
         {
@@ -326,7 +248,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Accuracy UP(Medium)",
       "effect": "Skill Damage + (+30%), Accuracy + (+20)",
       "effectValues": [
         {

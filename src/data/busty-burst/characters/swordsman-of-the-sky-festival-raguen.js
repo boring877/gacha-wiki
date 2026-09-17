@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -169,7 +91,7 @@ export const skills = {
       "icon": "skill001/skill0011",
       "description": "Applies Physical Critical Damage 50 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds, 1 enemies 4s",
       "descriptionLv1": "Applies Physical Critical Damage 50 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds, 1 enemies 4s",
-      "descriptionLv90": "Applies Physical Critical Damage 50 UP to self for 12 seconds and Accuracy 23 UP for 12 seconds, 1 enemies 4s",
+      "descriptionLv90": "Applies Physical Critical Damage 680 UP to self for 12 seconds and Accuracy 23 UP for 12 seconds, 1 enemies 4s",
       "target": "Nearest Enemy",
       "castTime": 1.45,
       "damageScaling": null,
@@ -188,7 +110,8 @@ export const skills = {
           "value": 50,
           "type": "percent",
           "duration": 12,
-          "levelGrowth": 7.0
+          "flatValue": 50,
+          "flatGrowth": 7.0
         },
         {
           "name": "Accuracy + Lv4",
@@ -319,7 +242,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, MP Recovery",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Medium), MP Recovery",
+      "description": "Gain Action Speed UP(Medium), after casting an ultimate, self MP Recovery 200",
       "effect": "Action Speed + (+10), MP Recovery (+200%)",
       "effectValues": [
         {
@@ -340,7 +263,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Physical Critical Damage UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {

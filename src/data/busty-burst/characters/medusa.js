@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -272,7 +194,7 @@ export const skills = {
       "slot": 1,
       "name": "Petrify Resistance LvMax",
       "icon": "skill001/skill1003",
-      "description": "Gain Petrify Resistance UP",
+      "description": "Gain Petrify Resistance 1%UP",
       "effect": "Petrify Resistance LvMax (+1%)",
       "effectValues": [
         {
@@ -287,7 +209,7 @@ export const skills = {
       "slot": 2,
       "name": "Magic Critical Damage+, Magic Defense+",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Critical Damage UP (Medium), Magic Defense UP (Medium)",
+      "description": "Gain Magic Critical Damage UP(Medium), Magic Defense UP(Medium)",
       "effect": "Magic Critical Damage+ (+118), Magic Defense+ (+141)",
       "effectValues": [
         {

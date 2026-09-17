@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -135,7 +57,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Hit-Based Damage UP(35%+400, 3 hit(s)) to all allies for 10 seconds and Accuracy 11 UP for 10 seconds",
       "descriptionLv1": "Applies Hit-Based Damage UP(35%+400, 3 hit(s)) to all allies for 10 seconds and Accuracy 11 UP for 10 seconds",
-      "descriptionLv90": "Applies Hit-Based Damage UP(35%+400, 3 hit(s)) to all allies for 10 seconds and Accuracy 23 UP for 10 seconds",
+      "descriptionLv90": "Applies Hit-Based Damage UP(35%+400, 36003 hit(s)) to all allies for 10 seconds and Accuracy 23 UP for 10 seconds",
       "target": "All Allies",
       "castTime": 1.22,
       "damageScaling": null,
@@ -153,7 +75,8 @@ export const skills = {
           "value": 35,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 400.0
+          "flatValue": 3,
+          "flatGrowth": 400.0
         },
         {
           "name": "Accuracy + Lv4",
@@ -171,7 +94,7 @@ export const skills = {
       "icon": "skill001/skill0021",
       "description": "Applies HP Regeneration 6%+200 to all allies for 10 seconds and Healing Shield (300) for 15 seconds and remove debuffs",
       "descriptionLv1": "Applies HP Regeneration 6%+200 to all allies for 10 seconds and Healing Shield (300) for 15 seconds and remove debuffs",
-      "descriptionLv90": "Applies HP Regeneration 6%+200 to all allies for 10 seconds and Healing Shield (300) for 15 seconds and remove debuffs",
+      "descriptionLv90": "Applies HP Regeneration 6%+920 to all allies for 10 seconds and Healing Shield (300) for 15 seconds and remove debuffs",
       "target": "All Allies",
       "castTime": 1.22,
       "damageScaling": null,
@@ -190,7 +113,8 @@ export const skills = {
           "value": 6,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 8.0
+          "flatValue": 200,
+          "flatGrowth": 8.0
         },
         {
           "name": "Healing Shield Lv5",
@@ -349,7 +273,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1002",
-      "description": "Gain Physical Defense UP (Large), Magic Defense UP (Large)",
+      "description": "Gain Physical Defense UP(Large), Magic Defense UP(Large)",
       "effect": "Physical Defense + (+211), Magic Defense+ (+211)",
       "effectValues": [
         {
@@ -370,7 +294,7 @@ export const skills = {
       "slot": 2,
       "name": "Healing Received +, Max HP +",
       "icon": "skill001/skill1008",
-      "description": "Gain Healing Received UP (Small), Max HP UP (Medium)",
+      "description": "All allies receive Healing Received UP(Small), Max HP UP(Medium)",
       "effect": "Healing Received + (+20%), Max HP + (+2896)",
       "effectValues": [
         {

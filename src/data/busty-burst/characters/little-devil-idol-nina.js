@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -358,7 +280,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Action Speed +",
       "icon": "skill001/skill1005",
-      "description": "Gain Max HP UP (Large), Action Speed UP (Medium)",
+      "description": "Gain Max HP UP(Large), Action Speed UP(Medium)",
       "effect": "Max HP + (+3444), Action Speed + (+10)",
       "effectValues": [
         {
@@ -379,7 +301,7 @@ export const skills = {
       "slot": 2,
       "name": "MP Regeneration, Physical Critical Damage+, Magic Critical Damage+",
       "icon": "skill001/skill1005",
-      "description": "Gain MP Regeneration, Physical Critical Damage UP, Magic Critical Damage UP",
+      "description": "Within 3s of battle start, Gain MP Regeneration 200, before casting a skill, all allies gain 20 Physical Critical UP(stackable up to 200), 20 Magic Critical UP(stackable up to 200)",
       "effect": "MP Regeneration (+200%), Physical Critical Damage+ (+20)",
       "effectValues": [
         {

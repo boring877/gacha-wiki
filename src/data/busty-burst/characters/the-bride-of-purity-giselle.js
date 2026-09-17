@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+500",
       "levelGrowth": "+20",
       "lvl1": "370% + 500",
-      "lvl90": "370% + -835",
+      "lvl90": null,
       "effects": [
         "Magic Defense- Lv5",
         "Burn Lv5"
@@ -312,7 +234,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Normal ATK Inflicts Burn",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Large), 70% chance to inflict Burn for 10 seconds on Normal ATK",
+      "description": "Gain Magic Attack UP(Large). When normal attack, 70% to deal 10 seconds burn damage",
       "effect": "Magic Attack + (+389)",
       "effectValues": [
         {
@@ -327,7 +249,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Magic Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Magic Critical Damage UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Magic Critical Damage UP(Medium)",
       "effect": "Skill Damage + (+30%), Magic Critical Damage+ (+90)",
       "effectValues": [
         {

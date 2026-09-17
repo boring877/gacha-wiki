@@ -240,7 +240,7 @@ export const thorBuild = {
   },
   teamSkill: {
     name: 'Team Synergy',
-    activationCondition: 'When the team contains 2 [Asa] characters or 2 [Holy] characters',
+    activationCondition: 'When the team contains 2 [A.S.A] characters or 2 [Holy] characters',
     effects: [
       'Own Defense increased by 15%',
       'At the start of battle, every 500 Defense reduces team damage taken by 1.5%, maximum 6 stacks',

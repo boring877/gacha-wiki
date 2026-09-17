@@ -51,84 +51,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -313,7 +235,7 @@ export const skills = {
       "slot": 1,
       "name": "Debuff Resistance+, MP Recovery",
       "icon": "skill001/skill1003",
-      "description": "Gain Debuff Resistance UP (Small), MP Recovery",
+      "description": "Gain Debuff Resistance UP(Small), after casting a skill, self MP Recovery 100",
       "effect": "MP Recovery (+100%)",
       "effectValues": [
         {
@@ -328,7 +250,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Action Speed UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Action Speed UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Action Speed + (+10)",
       "effectValues": [
         {

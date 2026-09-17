@@ -223,7 +223,7 @@ export const lokiBuild = {
   },
   teamSkill: {
     name: 'Combination Skill',
-    activationCondition: 'Team contains 2 [Asa] faction or 2 [Chaos] attribute characters',
+    activationCondition: 'Team contains 2 [A.S.A] faction or 2 [Chaos] attribute characters',
     effects: [
       'Self attack power +10%',
       'Battle Start: Every 500 attack power increases self chaos damage by 5%, max 6 stacks (up to 30% chaos damage)',

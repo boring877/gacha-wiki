@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -348,7 +270,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Critical Damage+, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Critical Damage UP (Large), Action Speed UP (Medium)",
+      "description": "Gain Magic Critical Damage UP(Large), Action Speed UP(Medium)",
       "effect": "Magic Critical Damage+ (+176), Action Speed + (+10)",
       "effectValues": [
         {
@@ -369,7 +291,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Magic Attack UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Magic Attack UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Magic Attack + (+259)",
       "effectValues": [
         {

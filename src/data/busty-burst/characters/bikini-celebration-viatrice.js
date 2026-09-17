@@ -47,87 +47,15 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "おしゃれしてみたら？",
       "icon": "skill001/skill0005",
-      "description": "3 nearest enemiesmagic damage, on activation,self 6s Magic Critical Damage 50 UP and Action Speed 17%UP for 6 seconds",
-      "descriptionLv1": "3 nearest enemiesmagic damage, on activation,self 6s Magic Critical Damage 50 UP and Action Speed 17%UP for 6 seconds",
-      "descriptionLv90": "3 nearest enemiesmagic damage, on activation,self 6s Magic Critical Damage 680 UP and Action Speed 17%UP for 6 seconds",
+      "description": "3 nearest enemiesmagic damage, on casting a skill, self gains 6s Magic Critical Damage 50 UP and Action Speed 17%UP for 6 seconds",
+      "descriptionLv1": "3 nearest enemiesmagic damage, on casting a skill, self gains 6s Magic Critical Damage 50 UP and Action Speed 17%UP for 6 seconds",
+      "descriptionLv90": "3 nearest enemiesmagic damage, on casting a skill, self gains 6s Magic Critical Damage 680 UP and Action Speed 17%UP for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.6,
       "damageScaling": "130% ATK",
@@ -169,7 +97,7 @@ export const skills = {
       "baseDamage": "+200",
       "levelGrowth": "+6",
       "lvl1": "120% + 200",
-      "lvl90": "120% + 188",
+      "lvl90": null,
       "effects": [
         "Magic Defense- Lv4",
         "Block- Lv4"
@@ -335,7 +263,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Fire Type ATK +",
       "icon": "skill001/skill1007",
-      "description": "Gain Magic Attack UP (Large), Fire Type ATK UP",
+      "description": "Gain Magic Attack UP(Large), on casting an ultimate, Fire allies 6s Fire Type ATK 20%UP",
       "effect": "Magic Attack + (+389), Fire Type ATK + (+20%)",
       "effectValues": [
         {
@@ -356,7 +284,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Accuracy UP(Medium)",
       "effect": "Skill Damage + (+30%), Accuracy + (+20)",
       "effectValues": [
         {

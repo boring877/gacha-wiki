@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -170,7 +92,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Water Type ATK 20%UP for 10 seconds, 4s MP Regeneration 50",
       "descriptionLv1": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Water Type ATK 20%UP for 10 seconds, 4s MP Regeneration 50",
-      "descriptionLv90": "Applies Physical Critical Damage 60 UP to self for 10 seconds and Water Type ATK 20%UP for 10 seconds, 4s MP Regeneration 50",
+      "descriptionLv90": "Applies Physical Critical Damage 870 UP to self for 10 seconds and Water Type ATK 20%UP for 10 seconds, 4s MP Regeneration 50",
       "target": "Self",
       "castTime": 1.0,
       "damageScaling": null,
@@ -189,7 +111,8 @@ export const skills = {
           "value": 60,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 9.0
+          "flatValue": 60,
+          "flatGrowth": 9.0
         },
         {
           "name": "Water Type ATK + Lv5",
@@ -319,7 +242,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Critical Damage+, MP Recovery",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Critical Damage UP (Large), MP Recovery",
+      "description": "Gain Physical Critical Damage UP(Large), after a normal attack, self MP Recovery 30",
       "effect": "Physical Critical Damage+ (+176%), MP Recovery (+30%)",
       "effectValues": [
         {
@@ -340,7 +263,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Physical Critical Damage UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {

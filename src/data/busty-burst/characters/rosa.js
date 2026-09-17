@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -140,7 +62,7 @@ export const skills = {
       "baseDamage": "+500",
       "levelGrowth": "+25",
       "lvl1": "450% + 500",
-      "lvl90": "450% + 1301",
+      "lvl90": null,
       "effects": [
         "Physical Attack + Lv5"
       ],
@@ -161,7 +83,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Physical Critical Damage 40 UP to all allies for 7 seconds and Accuracy 9 UP for 7 seconds",
       "descriptionLv1": "Applies Physical Critical Damage 40 UP to all allies for 7 seconds and Accuracy 9 UP for 7 seconds",
-      "descriptionLv90": "Applies Physical Critical Damage 40 UP to all allies for 7 seconds and Accuracy 18 UP for 7 seconds",
+      "descriptionLv90": "Applies Physical Critical Damage 490 UP to all allies for 7 seconds and Accuracy 18 UP for 7 seconds",
       "target": "All Allies",
       "castTime": 1.58,
       "damageScaling": null,
@@ -179,7 +101,8 @@ export const skills = {
           "value": 40,
           "type": "percent",
           "duration": 7,
-          "levelGrowth": 5.0
+          "flatValue": 40,
+          "flatGrowth": 5.0
         },
         {
           "name": "Accuracy + Lv3",
@@ -304,7 +227,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Large), Physical Critical Damage UP (Medium)",
+      "description": "Gain Physical Attack UP(Large), Physical Critical Damage UP(Medium)",
       "effect": "Physical Attack + (+389), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
@@ -325,7 +248,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Accuracy UP(Medium)",
       "effect": "Skill Damage + (+30%), Accuracy + (+20)",
       "effectValues": [
         {

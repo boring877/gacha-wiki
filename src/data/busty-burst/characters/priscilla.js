@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+300",
       "levelGrowth": "+25",
       "lvl1": "370% + 300",
-      "lvl90": "370% + 62600",
+      "lvl90": null,
       "effects": [
         "Hit-Based Magic Damage +"
       ],
@@ -312,7 +234,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Large), Action Speed UP (Medium)",
+      "description": "Gain Magic Attack UP(Large), Action Speed UP(Medium)",
       "effect": "Magic Attack + (+389), Action Speed + (+10)",
       "effectValues": [
         {
@@ -333,7 +255,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Max HP +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Max HP UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Max HP UP(Medium)",
       "effect": "Skill Damage + (+30%), Max HP + (+2896)",
       "effectValues": [
         {

@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -285,7 +207,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Large)",
+      "description": "Gain Physical Attack UP(Large)",
       "effect": "Physical Attack + (+389)",
       "effectValues": [
         {
@@ -300,7 +222,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Hit-Based Physical Damage + Lv2",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Medium), Hit-Based Physical Damage UP (+, hit (s))",
+      "description": "Gain Skill Damage UP(Medium). Apply Hit-Based Physical Damage UP(35%+400, 2 hit(s)) to self for 15 seconds after casting ultimate",
       "effect": "Skill Damage + (+20%), Hit-Based Physical Damage + Lv2 (+2)",
       "effectValues": [
         {

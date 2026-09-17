@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -170,7 +92,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "All allies 10s Physical Critical Damage 30 UP and Magic Critical Damage 30 UP for 10 seconds",
       "descriptionLv1": "All allies 10s Physical Critical Damage 30 UP and Magic Critical Damage 30 UP for 10 seconds",
-      "descriptionLv90": "All allies 10s Physical Critical Damage 300 UP and Magic Critical Damage 30 UP for 10 seconds",
+      "descriptionLv90": "All allies 10s Physical Critical Damage 300 UP and Magic Critical Damage 300 UP for 10 seconds",
       "target": "All Allies",
       "castTime": 1.45,
       "damageScaling": null,
@@ -188,7 +110,8 @@ export const skills = {
           "value": 30,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 3.0
+          "flatValue": 30,
+          "flatGrowth": 3.0
         },
         {
           "name": "Magic Critical Damage+ Lv2",
@@ -283,7 +206,7 @@ export const skills = {
       "slot": 1,
       "name": "MP Recovery+",
       "icon": "skill001/skill1003",
-      "description": "Gain MP Recovery",
+      "description": "After casting a skill Gain MP Recovery 50",
       "effect": "MP Recovery+ (+50%)",
       "effectValues": [
         {
@@ -298,7 +221,7 @@ export const skills = {
       "slot": 2,
       "name": "Max HP +, Accuracy +",
       "icon": "skill001/skill1007",
-      "description": "Gain Max HP UP (Small), Accuracy UP (Small)",
+      "description": "All allies receive Max HP UP(Small), Accuracy UP(Small)",
       "effect": "Max HP + (+1447), Accuracy + (+10)",
       "effectValues": [
         {

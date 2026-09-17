@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -133,7 +55,7 @@ export const skills = {
       "icon": "skill001/skill0017",
       "description": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds",
       "descriptionLv1": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds",
-      "descriptionLv90": "Applies Physical Attack 18%+665 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds",
+      "descriptionLv90": "Applies Physical Attack 18%+665 UP to self for 10 seconds and Physical Critical Damage 680 UP for 10 seconds",
       "target": "Self",
       "castTime": 1.08,
       "damageScaling": null,
@@ -158,7 +80,8 @@ export const skills = {
           "value": 50,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 7.0
+          "flatValue": 50,
+          "flatGrowth": 7.0
         }
       ],
       "duration": 10
@@ -169,7 +92,7 @@ export const skills = {
       "icon": "skill001/skill0007",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-20%-50 DOWN for 7 seconds",
       "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-20%-50 DOWN for 7 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-20%-50 DOWN for 7 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Critical Damage-20%-410 DOWN for 7 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.08,
       "damageScaling": "360% ATK",
@@ -186,7 +109,8 @@ export const skills = {
           "value": -20,
           "type": "percent",
           "duration": 7,
-          "levelGrowth": -4.0
+          "flatValue": -50,
+          "flatGrowth": -4.0
         }
       ],
       "duration": 7
@@ -304,7 +228,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Medium), Physical Critical Damage UP (Large)",
+      "description": "Gain Physical Attack UP(Medium), Physical Critical Damage UP(Large)",
       "effect": "Physical Attack + (+259), Physical Critical Damage+ (+179%)",
       "effectValues": [
         {
@@ -325,7 +249,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Action Speed +",
       "icon": "skill001/skill1005",
-      "description": "Gain Skill Damage UP (Medium), Action Speed UP (Medium)",
+      "description": "Front Row allies receive Skill Damage UP(Medium) and Action Speed UP(Medium)",
       "effect": "Skill Damage + (+20%), Action Speed + (+10)",
       "effectValues": [
         {

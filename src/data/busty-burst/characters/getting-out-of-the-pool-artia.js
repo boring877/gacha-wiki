@@ -48,50 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -107,7 +63,7 @@ export const skills = {
       "baseDamage": "+150",
       "levelGrowth": "+6",
       "lvl1": "110% + 150",
-      "lvl90": "110% + 138",
+      "lvl90": null,
       "effects": [
         "Magic Defense- Lv4",
         "Block- Lv4"
@@ -277,7 +233,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Max HP +",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Large), Max HP UP (Medium)",
+      "description": "Gain Magic Attack UP(Large), Max HP UP(Medium)",
       "effect": "Magic Attack + (+389), Max HP + (+2896)",
       "effectValues": [
         {
@@ -298,7 +254,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Magic Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Magic Critical Damage UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Magic Critical Damage UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Magic Critical Damage+ (+90)",
       "effectValues": [
         {

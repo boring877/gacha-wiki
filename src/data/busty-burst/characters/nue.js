@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+140",
       "levelGrowth": "+15",
       "lvl1": "270% + 140",
-      "lvl90": "270% + -38",
+      "lvl90": null,
       "effects": [
         "Paralysis",
         "Physical Defense - Lv3"
@@ -246,7 +168,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Medium), Physical Attack UP (Small)",
+      "description": "Gain Action Speed UP(Medium), Physical Attack UP(Small)",
       "effect": "Action Speed + (+10), Physical Attack + (+130)",
       "effectValues": [
         {
@@ -267,7 +189,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Medium)",
       "effect": "Ultimate Damage + (+10%)",
       "effectValues": [
         {

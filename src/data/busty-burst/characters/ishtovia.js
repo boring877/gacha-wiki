@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -276,7 +198,7 @@ export const skills = {
       "slot": 1,
       "name": "MP Recovery+",
       "icon": "skill001/skill1001",
-      "description": "Gain MP Recovery UP (Small)",
+      "description": "When an enemy is defeated, Gain MP Recovery UP(Small)",
       "effect": "MP Recovery+ (+21%)",
       "effectValues": [
         {
@@ -291,7 +213,7 @@ export const skills = {
       "slot": 2,
       "name": "Magic Attack +, Magic Defense+",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Medium), Magic Defense UP (Small)",
+      "description": "Gain Magic Attack UP(Medium), Magic Defense UP(Small)",
       "effect": "Magic Attack + (+259), Magic Defense+ (+70)",
       "effectValues": [
         {

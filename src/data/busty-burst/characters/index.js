@@ -41,7 +41,6 @@ import { info as breasty_blessing_hand_shushu_info, skills as breasty_blessing_h
 import { info as captain_of_the_vern_holy_knights_order_frigis_info, skills as captain_of_the_vern_holy_knights_order_frigis_skills, stats as captain_of_the_vern_holy_knights_order_frigis_stats } from "./captain-of-the-vern-holy-knights-order-frigis.js";
 import { info as celebria_info, skills as celebria_skills, stats as celebria_stats } from "./celebria.js";
 import { info as celestia_info, skills as celestia_skills, stats as celestia_stats } from "./celestia.js";
-import { info as champion_of_love_and_chocolate_shaty_info, skills as champion_of_love_and_chocolate_shaty_skills, stats as champion_of_love_and_chocolate_shaty_stats } from "./champion-of-love-and-chocolate-shaty.js";
 import { info as chocolate_dragon_warrior_hildis_info, skills as chocolate_dragon_warrior_hildis_skills, stats as chocolate_dragon_warrior_hildis_stats } from "./chocolate-dragon-warrior-hildis.js";
 import { info as chocolate_is_mine_ange_info, skills as chocolate_is_mine_ange_skills, stats as chocolate_is_mine_ange_stats } from "./chocolate-is-mine-ange.js";
 import { info as cluul_info, skills as cluul_skills, stats as cluul_stats } from "./cluul.js";
@@ -97,11 +96,9 @@ import { info as hisara_info, skills as hisara_skills, stats as hisara_stats } f
 import { info as holy_knight_of_the_binding_staff_katisha_info, skills as holy_knight_of_the_binding_staff_katisha_skills, stats as holy_knight_of_the_binding_staff_katisha_stats } from "./holy-knight-of-the-binding-staff-katisha.js";
 import { info as holy_night_boob_demon_lust_info, skills as holy_night_boob_demon_lust_skills, stats as holy_night_boob_demon_lust_stats } from "./holy-night-boob-demon-lust.js";
 import { info as holy_night_succubus_yu_rima_elca_info, skills as holy_night_succubus_yu_rima_elca_skills, stats as holy_night_succubus_yu_rima_elca_stats } from "./holy-night-succubus-yu-rima-elca.js";
-import { info as how_about_a_beer_stenrina_info, skills as how_about_a_beer_stenrina_skills, stats as how_about_a_beer_stenrina_stats } from "./how-about-a-beer-stenrina.js";
 import { info as hypnotic_dancer_messeria_info, skills as hypnotic_dancer_messeria_skills, stats as hypnotic_dancer_messeria_stats } from "./hypnotic-dancer-messeria.js";
 import { info as ilugio_info, skills as ilugio_skills, stats as ilugio_stats } from "./ilugio.js";
 import { info as ines_info, skills as ines_skills, stats as ines_stats } from "./ines.js";
-import { info as innocent_confectioner_frey_info, skills as innocent_confectioner_frey_skills, stats as innocent_confectioner_frey_stats } from "./innocent-confectioner-frey.js";
 import { info as inrine_info, skills as inrine_skills, stats as inrine_stats } from "./inrine.js";
 import { info as invincible_empress_gladys_info, skills as invincible_empress_gladys_skills, stats as invincible_empress_gladys_stats } from "./invincible-empress-gladys.js";
 import { info as irina_info, skills as irina_skills, stats as irina_stats } from "./irina.js";
@@ -150,7 +147,6 @@ import { info as nerys_info, skills as nerys_skills, stats as nerys_stats } from
 import { info as new_years_feast_box_lynette_info, skills as new_years_feast_box_lynette_skills, stats as new_years_feast_box_lynette_stats } from "./new-years-feast-box-lynette.js";
 import { info as new_years_first_sketch_pastel_info, skills as new_years_first_sketch_pastel_skills, stats as new_years_first_sketch_pastel_stats } from "./new-years-first-sketch-pastel.js";
 import { info as nina_info, skills as nina_skills, stats as nina_stats } from "./nina.js";
-import { info as noble_succubus_empress_shamshel_info, skills as noble_succubus_empress_shamshel_skills, stats as noble_succubus_empress_shamshel_stats } from "./noble-succubus-empress-shamshel.js";
 import { info as noir_info, skills as noir_skills, stats as noir_stats } from "./noir.js";
 import { info as nora_info, skills as nora_skills, stats as nora_stats } from "./nora.js";
 import { info as nue_info, skills as nue_skills, stats as nue_stats } from "./nue.js";
@@ -213,7 +209,6 @@ import { info as the_bride_of_luck_theresia_info, skills as the_bride_of_luck_th
 import { info as the_bride_of_purity_giselle_info, skills as the_bride_of_purity_giselle_skills, stats as the_bride_of_purity_giselle_stats } from "./the-bride-of-purity-giselle.js";
 import { info as the_bride_of_seduction_ophelio_info, skills as the_bride_of_seduction_ophelio_skills, stats as the_bride_of_seduction_ophelio_stats } from "./the-bride-of-seduction-ophelio.js";
 import { info as the_dark_knight_info, skills as the_dark_knight_skills, stats as the_dark_knight_stats } from "./the-dark-knight.js";
-import { info as the_noble_succubus_empress_shamshel_info, skills as the_noble_succubus_empress_shamshel_skills, stats as the_noble_succubus_empress_shamshel_stats } from "./the-noble-succubus-empress-shamshel.js";
 import { info as the_strongest_witch_shaharl_info, skills as the_strongest_witch_shaharl_skills, stats as the_strongest_witch_shaharl_stats } from "./the-strongest-witch-shaharl.js";
 import { info as theresia_info, skills as theresia_skills, stats as theresia_stats } from "./theresia.js";
 import { info as tomboy_bride_meinias_info, skills as tomboy_bride_meinias_skills, stats as tomboy_bride_meinias_stats } from "./tomboy-bride-meinias.js";
@@ -240,6 +235,7 @@ import { info as yu_lima_elka_info, skills as yu_lima_elka_skills, stats as yu_l
 import { info as yura_info, skills as yura_skills, stats as yura_stats } from "./yura.js";
 import { info as zilka_info, skills as zilka_skills, stats as zilka_stats } from "./zilka.js";
 import { info as zoe_info, skills as zoe_skills, stats as zoe_stats } from "./zoe.js";
+import { info as the_noble_succubus_empress_shamshel_info, skills as the_noble_succubus_empress_shamshel_skills, stats as the_noble_succubus_empress_shamshel_stats } from "./the-noble-succubus-empress-shamshel.js";
 
 export const BUSTY_BURST_CHARACTER_INFO = {
   "a-dreamlike-moment-estiriel": a_dreamlike_moment_estiriel_info,
@@ -282,7 +278,6 @@ export const BUSTY_BURST_CHARACTER_INFO = {
   "captain-of-the-vern-holy-knights-order-frigis": captain_of_the_vern_holy_knights_order_frigis_info,
   "celebria": celebria_info,
   "celestia": celestia_info,
-  "champion-of-love-and-chocolate-shaty": champion_of_love_and_chocolate_shaty_info,
   "chocolate-dragon-warrior-hildis": chocolate_dragon_warrior_hildis_info,
   "chocolate-is-mine-ange": chocolate_is_mine_ange_info,
   "cluul": cluul_info,
@@ -338,11 +333,9 @@ export const BUSTY_BURST_CHARACTER_INFO = {
   "holy-knight-of-the-binding-staff-katisha": holy_knight_of_the_binding_staff_katisha_info,
   "holy-night-boob-demon-lust": holy_night_boob_demon_lust_info,
   "holy-night-succubus-yu-rima-elca": holy_night_succubus_yu_rima_elca_info,
-  "how-about-a-beer-stenrina": how_about_a_beer_stenrina_info,
   "hypnotic-dancer-messeria": hypnotic_dancer_messeria_info,
   "ilugio": ilugio_info,
   "ines": ines_info,
-  "innocent-confectioner-frey": innocent_confectioner_frey_info,
   "inrine": inrine_info,
   "invincible-empress-gladys": invincible_empress_gladys_info,
   "irina": irina_info,
@@ -356,6 +349,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
   "legendary-hero-gemini": legendary_hero_gemini_info,
   "liesel": liesel_info,
   "lilirara": lilirara_info,
+  "the-noble-succubus-empress-shamshel": the_noble_succubus_empress_shamshel_info,
   "lilith": lilith_info,
   "lin": lin_info,
   "little-devil-idol-nina": little_devil_idol_nina_info,
@@ -391,7 +385,6 @@ export const BUSTY_BURST_CHARACTER_INFO = {
   "new-years-feast-box-lynette": new_years_feast_box_lynette_info,
   "new-years-first-sketch-pastel": new_years_first_sketch_pastel_info,
   "nina": nina_info,
-  "noble-succubus-empress-shamshel": noble_succubus_empress_shamshel_info,
   "noir": noir_info,
   "nora": nora_info,
   "nue": nue_info,
@@ -454,7 +447,6 @@ export const BUSTY_BURST_CHARACTER_INFO = {
   "the-bride-of-purity-giselle": the_bride_of_purity_giselle_info,
   "the-bride-of-seduction-ophelio": the_bride_of_seduction_ophelio_info,
   "the-dark-knight": the_dark_knight_info,
-  "the-noble-succubus-empress-shamshel": the_noble_succubus_empress_shamshel_info,
   "the-strongest-witch-shaharl": the_strongest_witch_shaharl_info,
   "theresia": theresia_info,
   "tomboy-bride-meinias": tomboy_bride_meinias_info,
@@ -524,7 +516,6 @@ export const BUSTY_BURST_CHARACTER_STATS = {
   "captain-of-the-vern-holy-knights-order-frigis": captain_of_the_vern_holy_knights_order_frigis_stats,
   "celebria": celebria_stats,
   "celestia": celestia_stats,
-  "champion-of-love-and-chocolate-shaty": champion_of_love_and_chocolate_shaty_stats,
   "chocolate-dragon-warrior-hildis": chocolate_dragon_warrior_hildis_stats,
   "chocolate-is-mine-ange": chocolate_is_mine_ange_stats,
   "cluul": cluul_stats,
@@ -580,11 +571,9 @@ export const BUSTY_BURST_CHARACTER_STATS = {
   "holy-knight-of-the-binding-staff-katisha": holy_knight_of_the_binding_staff_katisha_stats,
   "holy-night-boob-demon-lust": holy_night_boob_demon_lust_stats,
   "holy-night-succubus-yu-rima-elca": holy_night_succubus_yu_rima_elca_stats,
-  "how-about-a-beer-stenrina": how_about_a_beer_stenrina_stats,
   "hypnotic-dancer-messeria": hypnotic_dancer_messeria_stats,
   "ilugio": ilugio_stats,
   "ines": ines_stats,
-  "innocent-confectioner-frey": innocent_confectioner_frey_stats,
   "inrine": inrine_stats,
   "invincible-empress-gladys": invincible_empress_gladys_stats,
   "irina": irina_stats,
@@ -598,6 +587,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
   "legendary-hero-gemini": legendary_hero_gemini_stats,
   "liesel": liesel_stats,
   "lilirara": lilirara_stats,
+  "the-noble-succubus-empress-shamshel": the_noble_succubus_empress_shamshel_stats,
   "lilith": lilith_stats,
   "lin": lin_stats,
   "little-devil-idol-nina": little_devil_idol_nina_stats,
@@ -633,7 +623,6 @@ export const BUSTY_BURST_CHARACTER_STATS = {
   "new-years-feast-box-lynette": new_years_feast_box_lynette_stats,
   "new-years-first-sketch-pastel": new_years_first_sketch_pastel_stats,
   "nina": nina_stats,
-  "noble-succubus-empress-shamshel": noble_succubus_empress_shamshel_stats,
   "noir": noir_stats,
   "nora": nora_stats,
   "nue": nue_stats,
@@ -696,7 +685,6 @@ export const BUSTY_BURST_CHARACTER_STATS = {
   "the-bride-of-purity-giselle": the_bride_of_purity_giselle_stats,
   "the-bride-of-seduction-ophelio": the_bride_of_seduction_ophelio_stats,
   "the-dark-knight": the_dark_knight_stats,
-  "the-noble-succubus-empress-shamshel": the_noble_succubus_empress_shamshel_stats,
   "the-strongest-witch-shaharl": the_strongest_witch_shaharl_stats,
   "theresia": theresia_stats,
   "tomboy-bride-meinias": tomboy_bride_meinias_stats,
@@ -766,7 +754,6 @@ export const BUSTY_BURST_SKILLS_DATA = [
   captain_of_the_vern_holy_knights_order_frigis_skills,
   celebria_skills,
   celestia_skills,
-  champion_of_love_and_chocolate_shaty_skills,
   chocolate_dragon_warrior_hildis_skills,
   chocolate_is_mine_ange_skills,
   cluul_skills,
@@ -822,11 +809,9 @@ export const BUSTY_BURST_SKILLS_DATA = [
   holy_knight_of_the_binding_staff_katisha_skills,
   holy_night_boob_demon_lust_skills,
   holy_night_succubus_yu_rima_elca_skills,
-  how_about_a_beer_stenrina_skills,
   hypnotic_dancer_messeria_skills,
   ilugio_skills,
   ines_skills,
-  innocent_confectioner_frey_skills,
   inrine_skills,
   invincible_empress_gladys_skills,
   irina_skills,
@@ -840,6 +825,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
   legendary_hero_gemini_skills,
   liesel_skills,
   lilirara_skills,
+  the_noble_succubus_empress_shamshel_skills,
   lilith_skills,
   lin_skills,
   little_devil_idol_nina_skills,
@@ -875,7 +861,6 @@ export const BUSTY_BURST_SKILLS_DATA = [
   new_years_feast_box_lynette_skills,
   new_years_first_sketch_pastel_skills,
   nina_skills,
-  noble_succubus_empress_shamshel_skills,
   noir_skills,
   nora_skills,
   nue_skills,
@@ -938,7 +923,6 @@ export const BUSTY_BURST_SKILLS_DATA = [
   the_bride_of_purity_giselle_skills,
   the_bride_of_seduction_ophelio_skills,
   the_dark_knight_skills,
-  the_noble_succubus_empress_shamshel_skills,
   the_strongest_witch_shaharl_skills,
   theresia_skills,
   tomboy_bride_meinias_skills,
@@ -1008,7 +992,6 @@ export const BUSTY_BURST_SKILLS_MAP = {
   "captain-of-the-vern-holy-knights-order-frigis": captain_of_the_vern_holy_knights_order_frigis_skills,
   "celebria": celebria_skills,
   "celestia": celestia_skills,
-  "champion-of-love-and-chocolate-shaty": champion_of_love_and_chocolate_shaty_skills,
   "chocolate-dragon-warrior-hildis": chocolate_dragon_warrior_hildis_skills,
   "chocolate-is-mine-ange": chocolate_is_mine_ange_skills,
   "cluul": cluul_skills,
@@ -1064,11 +1047,9 @@ export const BUSTY_BURST_SKILLS_MAP = {
   "holy-knight-of-the-binding-staff-katisha": holy_knight_of_the_binding_staff_katisha_skills,
   "holy-night-boob-demon-lust": holy_night_boob_demon_lust_skills,
   "holy-night-succubus-yu-rima-elca": holy_night_succubus_yu_rima_elca_skills,
-  "how-about-a-beer-stenrina": how_about_a_beer_stenrina_skills,
   "hypnotic-dancer-messeria": hypnotic_dancer_messeria_skills,
   "ilugio": ilugio_skills,
   "ines": ines_skills,
-  "innocent-confectioner-frey": innocent_confectioner_frey_skills,
   "inrine": inrine_skills,
   "invincible-empress-gladys": invincible_empress_gladys_skills,
   "irina": irina_skills,
@@ -1082,6 +1063,7 @@ export const BUSTY_BURST_SKILLS_MAP = {
   "legendary-hero-gemini": legendary_hero_gemini_skills,
   "liesel": liesel_skills,
   "lilirara": lilirara_skills,
+  "the-noble-succubus-empress-shamshel": the_noble_succubus_empress_shamshel_skills,
   "lilith": lilith_skills,
   "lin": lin_skills,
   "little-devil-idol-nina": little_devil_idol_nina_skills,
@@ -1117,7 +1099,6 @@ export const BUSTY_BURST_SKILLS_MAP = {
   "new-years-feast-box-lynette": new_years_feast_box_lynette_skills,
   "new-years-first-sketch-pastel": new_years_first_sketch_pastel_skills,
   "nina": nina_skills,
-  "noble-succubus-empress-shamshel": noble_succubus_empress_shamshel_skills,
   "noir": noir_skills,
   "nora": nora_skills,
   "nue": nue_skills,
@@ -1180,7 +1161,6 @@ export const BUSTY_BURST_SKILLS_MAP = {
   "the-bride-of-purity-giselle": the_bride_of_purity_giselle_skills,
   "the-bride-of-seduction-ophelio": the_bride_of_seduction_ophelio_skills,
   "the-dark-knight": the_dark_knight_skills,
-  "the-noble-succubus-empress-shamshel": the_noble_succubus_empress_shamshel_skills,
   "the-strongest-witch-shaharl": the_strongest_witch_shaharl_skills,
   "theresia": theresia_skills,
   "tomboy-bride-meinias": tomboy_bride_meinias_skills,

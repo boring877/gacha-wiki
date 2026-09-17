@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -204,7 +126,7 @@ export const skills = {
       "rank": 1,
       "name": "I, the sweeping that devours all",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 1) for 10 seconds, before Ultimate activation applies to self 10s Physical Attack UP(LV 1)",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 1) for 10 seconds, before casting an ultimate, self gains 10s Physical Attack UP(LV 1)",
       "effect": "240% + 200",
       "buffEffects": [
         {
@@ -225,7 +147,7 @@ export const skills = {
       "rank": 2,
       "name": "I, the sweeping that devours all",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 2) for 10 seconds, before Ultimate activation applies to self 10s Physical Attack UP(LV 2)",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 2) for 10 seconds, before casting an ultimate, self gains 10s Physical Attack UP(LV 2)",
       "effect": "290% + 250",
       "buffEffects": [
         {
@@ -246,7 +168,7 @@ export const skills = {
       "rank": 3,
       "name": "I, the sweeping that devours all",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 3) for 10 seconds, before Ultimate activation applies to self 10s Physical Attack UP(LV 3)",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 3) for 10 seconds, before casting an ultimate, self gains 10s Physical Attack UP(LV 3)",
       "effect": "325% + 300",
       "buffEffects": [
         {
@@ -267,7 +189,7 @@ export const skills = {
       "rank": 4,
       "name": "I, the sweeping that devours all",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 4) for 10 seconds, before Ultimate activation applies to self 10s Physical Attack UP(LV 4)",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 4) for 10 seconds, before casting an ultimate, self gains 10s Physical Attack UP(LV 4)",
       "effect": "350% + 350",
       "buffEffects": [
         {
@@ -288,7 +210,7 @@ export const skills = {
       "rank": 5,
       "name": "I, the sweeping that devours all",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 5) for 10 seconds, before Ultimate activation applies to self 10s Physical Attack UP(LV 5)",
+      "description": "Deals physical damage to the 5 nearest enemies and inflicts Action Speed DOWN(LV 5) for 10 seconds, before casting an ultimate, self gains 10s Physical Attack UP(LV 5)",
       "effect": "365% + 400",
       "buffEffects": [
         {
@@ -311,7 +233,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Critical Damage+, Holy Type ATK +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Critical Damage UP (Medium), Holy Type ATK UP",
+      "description": "Gain Physical Critical Damage UP(Medium), after casting an ultimate, self gains 5% Light-type Attack UP(max 15%)",
       "effect": "Physical Critical Damage+ (+90%), Holy Type ATK + (+5%)",
       "effectValues": [
         {
@@ -332,7 +254,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Skill Enhancement Regol Cost DOWNHoly",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Regol cost for enhancing Holy Type Paladin skills -%",
+      "description": "Gain Skill Damage UP(Large), Regol cost for enhancing Holy Type Paladin skills -5%",
       "effect": "Skill Damage + (+30%), Skill Enhancement Regol Cost DOWNHoly (+5%)",
       "effectValues": [
         {

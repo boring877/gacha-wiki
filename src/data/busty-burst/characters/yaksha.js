@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -309,7 +231,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Hit-Based Shield",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Large), Hit-Based Shield (、hit (s))",
+      "description": "Gain Action Speed UP(Large). Aslo before casting skills, gain Hit-Based Shield(30%1 hit(s)) for 10 seconds",
       "effect": "Action Speed + (+15), Hit-Based Shield (+30%)",
       "effectValues": [
         {
@@ -330,7 +252,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Physical Critical Damage UP(Medium)",
       "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {

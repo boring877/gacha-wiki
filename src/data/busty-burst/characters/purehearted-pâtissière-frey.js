@@ -49,53 +49,11 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Please accept this!",
+      "name": "Take It!",
       "icon": "skill001/skill0007",
       "description": "Deals physical damage to the nearest enemy and inflicts Action Speed -17%DOWN for 7 seconds and Accuracy -11 DOWN for 7 seconds",
       "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Action Speed -17%DOWN for 7 seconds and Accuracy -11 DOWN for 7 seconds",
@@ -106,7 +64,7 @@ export const skills = {
       "baseDamage": "+120",
       "levelGrowth": "+20",
       "lvl1": "300% + 120",
-      "lvl90": "300% + 108",
+      "lvl90": null,
       "effects": [
         "Action Speed - Lv4",
         "Accuracy - Lv4"
@@ -116,8 +74,7 @@ export const skills = {
           "name": "Action Speed - Lv4",
           "value": -17,
           "type": "flat",
-          "duration": 7,
-          "levelGrowth": 0
+          "duration": 7
         },
         {
           "name": "Accuracy - Lv4",
@@ -131,11 +88,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Mm~ feels great!",
+      "name": "Yeah, That Feels Right!",
       "icon": "skill001/skill0018",
       "description": "Applies Magic Critical Damage 40 UP to all allies for 9 seconds and Accuracy 9 UP for 9 seconds",
       "descriptionLv1": "Applies Magic Critical Damage 40 UP to all allies for 9 seconds and Accuracy 9 UP for 9 seconds",
-      "descriptionLv90": "Applies Magic Critical Damage 4180 UP to all allies for 9 seconds and Accuracy 9 UP for 9 seconds",
+      "descriptionLv90": "Applies Magic Critical Damage 490 UP to all allies for 9 seconds and Accuracy 18 UP for 9 seconds",
       "target": "All Allies",
       "castTime": 1.22,
       "damageScaling": null,
@@ -169,7 +126,7 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Hope everyone's feelings reach ",
+      "name": "May Everyone’s Feelings Reach…",
       "icon": "skill001/skill0022_1",
       "description": "Restores HP by to all allies and inflicts Count-Based Recovery Shield(LV 1) for 20 secondsand BlockUP(LV 1) for 10 seconds",
       "effect": "3000% + 1000",
@@ -190,7 +147,7 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Hope everyone's feelings reach ",
+      "name": "May Everyone’s Feelings Reach…",
       "icon": "skill001/skill0022_2",
       "description": "Restores HP by to all allies and inflicts Count-Based Recovery Shield(LV 2) for 20 secondsand BlockUP(LV 2) for 10 seconds",
       "effect": "3400% + 1300",
@@ -211,7 +168,7 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Hope everyone's feelings reach ",
+      "name": "May Everyone’s Feelings Reach…",
       "icon": "skill001/skill0022_3",
       "description": "Restores HP by to all allies and inflicts Count-Based Recovery Shield(LV 3) for 20 secondsand BlockUP(LV 3) for 10 seconds",
       "effect": "3700% + 1500",
@@ -232,7 +189,7 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Hope everyone's feelings reach ",
+      "name": "May Everyone’s Feelings Reach…",
       "icon": "skill001/skill0022_4",
       "description": "Restores HP by to all allies and inflicts Count-Based Recovery Shield(LV 4) for 20 secondsand BlockUP(LV 4) for 10 seconds",
       "effect": "4000% + 1600",
@@ -253,7 +210,7 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Hope everyone's feelings reach ",
+      "name": "May Everyone’s Feelings Reach…",
       "icon": "skill001/skill0022_5",
       "description": "Restores HP by to all allies and inflicts Count-Based Recovery Shield(LV 5) for 20 secondsand BlockUP(LV 5) for 10 seconds",
       "effect": "4200% + 1700",
@@ -278,17 +235,20 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Accuracy +",
       "icon": "skill001/skill1007",
+      "description": "Middle Row allies receive Max HP UP(Small) and Accuracy UP(Small)",
       "effect": "Max HP + (+1447), Accuracy + (+15)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 1447,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Small)"
         },
         {
           "name": "Accuracy +",
           "value": 15,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Accuracy UP (Small)"
         }
       ]
     },
@@ -296,22 +256,25 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Action Speed +",
       "icon": "skill001/skill1005",
+      "description": "Middle Row allies receive Skill Damage UP(Medium) and Action Speed UP(Medium)",
       "effect": "Skill Damage + (+20%), Action Speed + (+10)",
       "effectValues": [
         {
           "name": "Skill Damage +",
           "value": 20,
-          "type": "percent"
+          "type": "percent",
+          "gameText": "Skill Damage UP (Medium)"
         },
         {
           "name": "Action Speed +",
           "value": 10,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Action Speed UP (Medium)"
         }
       ]
     }
   ],
-  "name": "Innocent Confectioner: Frey",
+  "name": "Innocent Confectioner: Frey ",
   "id": 2109,
   "rarity": "SSR",
   "element": "Fire",
@@ -339,7 +302,7 @@ export const skills = {
     "speedLabel": "Normal",
     "speedValue": "0.82"
   },
-  "slug": "purehearted-pâtissière-frey"
+  "slug": "innocent-confectioner-frey"
 };
 
 export const stats = {

@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -295,7 +217,7 @@ export const skills = {
       "slot": 1,
       "name": "Healing Amount +",
       "icon": "skill001/skill1004",
-      "description": "Gain Healing Amount UP (Medium)",
+      "description": "Gain Healing Amount UP(Medium)",
       "effect": "Healing Amount + (+15%)",
       "effectValues": [
         {
@@ -310,7 +232,7 @@ export const skills = {
       "slot": 2,
       "name": "Healing Received +, Block+",
       "icon": "skill001/skill1008",
-      "description": "Gain Healing Received UP (Small), Block UP (Small)",
+      "description": "All allies receive Healing Received UP(Small), Block UP(Small)",
       "effect": "Healing Received + (+20%), Block+ (+5)",
       "effectValues": [
         {

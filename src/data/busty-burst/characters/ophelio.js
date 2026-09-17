@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -140,7 +62,7 @@ export const skills = {
       "baseDamage": "+70",
       "levelGrowth": "+6",
       "lvl1": "85% + 70",
-      "lvl90": "85% + 58",
+      "lvl90": null,
       "effects": [
         "Freeze Lv5",
         "Accuracy - Lv4"
@@ -176,7 +98,7 @@ export const skills = {
       "baseDamage": "+200",
       "levelGrowth": "+20",
       "lvl1": "280% + 200",
-      "lvl90": "280% + -67",
+      "lvl90": null,
       "effects": [
         "Stun",
         "Magic Defense- Lv5"
@@ -311,7 +233,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Magic Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Medium), Magic Critical Damage UP (Medium)",
+      "description": "Gain Magic Attack UP(Medium), Magic Critical Damage UP(Medium)",
       "effect": "Magic Attack + (+259), Magic Critical Damage+ (+90)",
       "effectValues": [
         {
@@ -332,7 +254,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Medium), Action Speed UP (Large)",
+      "description": "Gain Ultimate Damage UP(Medium), Action Speed UP(Large)",
       "effect": "Ultimate Damage + (+10%), Action Speed + (+15)",
       "effectValues": [
         {

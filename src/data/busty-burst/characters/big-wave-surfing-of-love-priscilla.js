@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+150",
       "levelGrowth": "+6",
       "lvl1": "100% + 150",
-      "lvl90": "100% + 138",
+      "lvl90": null,
       "effects": [
         "Block- Lv4",
         "Accuracy - Lv4"
@@ -311,7 +233,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Wind Type ATK +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Large), Wind Type ATK UP",
+      "description": "Gain Physical Attack UP(Large), after casting a skill, self gains 3% Wind-type Attack UP(max 15%)",
       "effect": "Physical Attack + (+389), Wind Type ATK + (+3%)",
       "effectValues": [
         {
@@ -332,7 +254,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Physical Attack UP(Medium)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {

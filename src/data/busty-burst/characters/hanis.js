@@ -47,94 +47,22 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Annihilation Lance",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 1 seconds, on activation,self 6s Physical Attack 20%+40 UP",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Dispel for 1 seconds, on activation,self 6s Physical Attack 20%+40 UP",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Dispel for 1 seconds, on activation,self 6s Physical Attack 20%+850 UP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Dispel for 1 seconds, on casting a skill, self gains 6s Physical Attack 20%+40 UP",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Dispel for 1 seconds, on casting a skill, self gains 6s Physical Attack 20%+40 UP",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Dispel for 1 seconds, on casting a skill, self gains 6s Physical Attack 20%+850 UP",
       "target": "Nearest Enemy",
       "castTime": 1.2,
       "damageScaling": "350% ATK",
       "baseDamage": "+300",
       "levelGrowth": "+20",
       "lvl1": "350% + 300",
-      "lvl90": "350% + 1101",
+      "lvl90": null,
       "effects": [
         "Cleanse",
         "Physical Attack + Lv5"
@@ -205,7 +133,7 @@ export const skills = {
       "rank": 1,
       "name": "<ruby=></ruby>",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense DOWN(LV 1) for 10 seconds, on Ultimate activation, self 10s Physical Critical DamageUP(LV 1)",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense DOWN(LV 1) for 10 seconds, on casting an ultimate, self 10s Physical Critical DamageUP(LV 1)",
       "effect": "1100% + 1000",
       "buffEffects": [
         {
@@ -226,7 +154,7 @@ export const skills = {
       "rank": 2,
       "name": "<ruby=></ruby>",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense DOWN(LV 2) for 10 seconds, on Ultimate activation, self 10s Physical Critical DamageUP(LV 2)",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense DOWN(LV 2) for 10 seconds, on casting an ultimate, self 10s Physical Critical DamageUP(LV 2)",
       "effect": "1320% + 1300",
       "buffEffects": [
         {
@@ -247,7 +175,7 @@ export const skills = {
       "rank": 3,
       "name": "<ruby=></ruby>",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense DOWN(LV 3) for 10 seconds, on Ultimate activation, self 10s Physical Critical DamageUP(LV 3)",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense DOWN(LV 3) for 10 seconds, on casting an ultimate, self 10s Physical Critical DamageUP(LV 3)",
       "effect": "1470% + 1600",
       "buffEffects": [
         {
@@ -268,7 +196,7 @@ export const skills = {
       "rank": 4,
       "name": "<ruby=></ruby>",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense DOWN(LV 4) for 10 seconds, on Ultimate activation, self 10s Physical Critical DamageUP(LV 4)",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense DOWN(LV 4) for 10 seconds, on casting an ultimate, self 10s Physical Critical DamageUP(LV 4)",
       "effect": "1590% + 1800",
       "buffEffects": [
         {
@@ -289,7 +217,7 @@ export const skills = {
       "rank": 5,
       "name": "<ruby=></ruby>",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense DOWN(LV 5) for 10 seconds, on Ultimate activation, self 10s Physical Critical DamageUP(LV 5)",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit and inflicts Physical Defense DOWN(LV 5) for 10 seconds, on casting an ultimate, self 10s Physical Critical DamageUP(LV 5)",
       "effect": "1700% + 2000",
       "buffEffects": [
         {
@@ -312,7 +240,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, MP Recovery",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Large), MP Recovery",
+      "description": "Gain Action Speed UP(Large), on casting an ultimate, self MP Recovery 200",
       "effect": "Action Speed + (+15), MP Recovery (+200%)",
       "effectValues": [
         {
@@ -333,7 +261,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Physical Critical Damage UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {

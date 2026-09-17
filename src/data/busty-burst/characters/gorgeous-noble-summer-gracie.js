@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -150,7 +72,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Debuff Resistance 1%UP to self for 4 seconds and Hit-Based Physical Damage UP(100%+300, 1 hit(s)) for 4 seconds",
       "descriptionLv1": "Applies Debuff Resistance 1%UP to self for 4 seconds and Hit-Based Physical Damage UP(100%+300, 1 hit(s)) for 4 seconds",
-      "descriptionLv90": "Applies Debuff Resistance 27001%UP to self for 4 seconds and Hit-Based Physical Damage UP(100%+300, 1 hit(s)) for 4 seconds",
+      "descriptionLv90": "Applies Debuff Resistance 1%UP to self for 4 seconds and Hit-Based Physical Damage UP(100%+300, 27001 hit(s)) for 4 seconds",
       "target": "Self",
       "castTime": 1.5,
       "damageScaling": null,
@@ -262,7 +184,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Medium)",
+      "description": "Gain Action Speed UP(Medium)",
       "effect": "Action Speed + (+10)",
       "effectValues": [
         {
@@ -277,7 +199,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Medium), Physical Critical Damage UP (Small)",
+      "description": "Gain Skill Damage UP(Medium), Physical Critical Damage UP(Small)",
       "effect": "Skill Damage + (+20%), Physical Critical Damage+ (+59%)",
       "effectValues": [
         {

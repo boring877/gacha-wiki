@@ -50,84 +50,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -136,7 +58,7 @@ export const skills = {
       "icon": "skill001/skill0009",
       "description": "Deals physical damage to the nearest enemy. 50% chance Accuracy -9 DOWN for 10 seconds, 50% chance Block-9 DOWN for 10 seconds and 50% chance Physical Critical Damage-11%-30 DOWN for 10 seconds",
       "descriptionLv1": "Deals physical damage to the nearest enemy. 50% chance Accuracy -9 DOWN for 10 seconds, 50% chance Block-9 DOWN for 10 seconds and 50% chance Physical Critical Damage-11%-30 DOWN for 10 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy. 50% chance Accuracy -18 DOWN for 10 seconds, 50% chance Block-18 DOWN for 10 seconds and 50% chance Physical Critical Damage-11%-30 DOWN for 10 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy. 50% chance Accuracy -18 DOWN for 10 seconds, 50% chance Block-18 DOWN for 10 seconds and 50% chance Physical Critical Damage-11%-210 DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.5,
       "damageScaling": "170% ATK",
@@ -169,7 +91,8 @@ export const skills = {
           "value": -11,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": -2.0
+          "flatValue": -30,
+          "flatGrowth": -2.0
         }
       ],
       "duration": 10
@@ -180,7 +103,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Physical Defense 25%+170 UP to all allies for 15 seconds and HP Regeneration 6%+200 for 10 seconds",
       "descriptionLv1": "Applies Physical Defense 25%+170 UP to all allies for 15 seconds and HP Regeneration 6%+200 for 10 seconds",
-      "descriptionLv90": "Applies Physical Defense 25%+350 UP to all allies for 15 seconds and HP Regeneration 6%+200 for 10 seconds",
+      "descriptionLv90": "Applies Physical Defense 25%+350 UP to all allies for 15 seconds and HP Regeneration 6%+920 for 10 seconds",
       "target": "All Allies",
       "castTime": 1.5,
       "damageScaling": null,
@@ -205,7 +128,8 @@ export const skills = {
           "value": 6,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 8.0
+          "flatValue": 200,
+          "flatGrowth": 8.0
         }
       ],
       "duration": 15
@@ -293,7 +217,7 @@ export const skills = {
       "slot": 1,
       "name": "Debuff Resistance+, Max HP +",
       "icon": "skill001/skill1002",
-      "description": "Gain Debuff Resistance UP (Small), Max HP UP (Medium)",
+      "description": "All allies receive Debuff Resistance UP(Small), Max HP UP(Medium)",
       "effect": "Max HP + (+2896)",
       "effectValues": [
         {
@@ -308,7 +232,7 @@ export const skills = {
       "slot": 2,
       "name": "MP Recovery, Physical Defense +",
       "icon": "skill001/skill1007",
-      "description": "Gain MP Recovery, Physical Defense UP (Large)",
+      "description": "All allies Physical Defense UP(Large). Apply MP Recovery 100 to self for seconds after casting ultimate",
       "effect": "MP Recovery (+100%), Physical Defense + (+211)",
       "effectValues": [
         {

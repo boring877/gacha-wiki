@@ -46,84 +46,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -132,7 +54,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Physical Critical Damage 40 UP to Front Row allies for 8 seconds and Magic Critical Damage 40 UP for 8 seconds",
       "descriptionLv1": "Applies Physical Critical Damage 40 UP to Front Row allies for 8 seconds and Magic Critical Damage 40 UP for 8 seconds",
-      "descriptionLv90": "Applies Physical Critical Damage 490 UP to Front Row allies for 8 seconds and Magic Critical Damage 40 UP for 8 seconds",
+      "descriptionLv90": "Applies Physical Critical Damage 490 UP to Front Row allies for 8 seconds and Magic Critical Damage 490 UP for 8 seconds",
       "target": "Frontmost Ally",
       "castTime": 1.58,
       "damageScaling": null,
@@ -150,6 +72,8 @@ export const skills = {
           "value": 40,
           "type": "percent",
           "duration": 8,
+          "flatValue": 40,
+          "flatGrowth": 5.0,
           "levelGrowth": 5.0
         },
         {
@@ -311,7 +235,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Magic Attack +",
       "icon": "skill001/skill1005",
-      "description": "Gain Physical Attack UP (Medium), Magic Attack UP (Medium)",
+      "description": "Front Row allies receive Physical Attack UP(Medium) and Magic Attack UP(Medium)",
       "effect": "Physical Attack + (+300), Magic Attack + (+300)",
       "effectValues": [
         {
@@ -332,7 +256,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Critical Damage+, Magic Critical Damage+",
       "icon": "skill001/skill1005",
-      "description": "Gain Physical Critical Damage UP (Medium), Magic Critical Damage UP (Medium)",
+      "description": "Front Row allies receive Physical Critical Damage UP(Medium) and Magic Critical Damage UP(Medium)",
       "effect": "Physical Critical Damage+ (+120%), Magic Critical Damage+ (+120)",
       "effectValues": [
         {

@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -229,7 +151,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Small)",
+      "description": "Gain Physical Attack UP(Small)",
       "effect": "Physical Attack + (+130)",
       "effectValues": [
         {
@@ -244,7 +166,7 @@ export const skills = {
       "slot": 2,
       "name": "Max HP +",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Small)",
+      "description": "Gain Max HP UP(Small)",
       "effect": "Max HP + (+1447)",
       "effectValues": [
         {

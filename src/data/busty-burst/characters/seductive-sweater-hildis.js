@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+500",
       "levelGrowth": "+20",
       "lvl1": "360% + 500",
-      "lvl90": "360% + 488",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv4",
         "Accuracy - Lv4"
@@ -349,7 +271,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Mind Type ATK +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Large), Mind Type ATK UP",
+      "description": "Gain Physical Attack UP(Large), after casting a skill, self 5% Mind-type Attack UP(stackable up to 15%)",
       "effect": "Physical Attack + (+389), Mind Type ATK + (+3%)",
       "effectValues": [
         {
@@ -370,7 +292,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Skill Enhancement Regol Cost DOWNMind",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Regol cost for enhancing Mind type Paladin skills -%",
+      "description": "Gain Ultimate Damage UP(Large), Regol cost for enhancing Mind type Paladin skills -5%",
       "effect": "Ultimate Damage + (+15%), Skill Enhancement Regol Cost DOWNMind (+5%)",
       "effectValues": [
         {

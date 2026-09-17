@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+350",
       "levelGrowth": "+20",
       "lvl1": "270% + 350",
-      "lvl90": "270% + 172",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv3"
       ],
@@ -305,7 +227,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Medium)",
+      "description": "Gain Max HP UP(Medium)",
       "effect": "Max HP + (+2896)",
       "effectValues": [
         {
@@ -320,7 +242,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Taunt",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Medium), Focuses attacks on self for a period of time.",
+      "description": "Gain Ultimate Damage UP(Medium), after casting an ultimate, self gains 10s Taunt",
       "effect": "Ultimate Damage + (+10%), Taunt (+0)",
       "effectValues": [
         {

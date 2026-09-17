@@ -50,84 +50,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -177,7 +99,7 @@ export const skills = {
       "icon": "skill001/skill0011",
       "description": "Inflicts BLIND to the farthest 2 enemy, Physical Attack -15%-40 DOWN for 10 seconds and Magic Attack -15%-40 DOWN for 10 seconds",
       "descriptionLv1": "Inflicts BLIND to the farthest 2 enemy, Physical Attack -15%-40 DOWN for 10 seconds and Magic Attack -15%-40 DOWN for 10 seconds",
-      "descriptionLv90": "Inflicts BLIND to the farthest 2 enemy, Physical Attack -15%-4000 DOWN for 10 seconds and Magic Attack -15%-40 DOWN for 10 seconds",
+      "descriptionLv90": "Inflicts BLIND to the farthest 2 enemy, Physical Attack -15%-400 DOWN for 10 seconds and Magic Attack -15%-400 DOWN for 10 seconds",
       "target": "Farthest Enemy",
       "castTime": 1.1,
       "damageScaling": null,
@@ -327,7 +249,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, MP Recovery",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Medium), MP Recovery",
+      "description": "Gain Magic Attack UP(Medium). Applies MP Recovery 100 to self after casting ultimate",
       "effect": "Magic Attack + (+259), MP Recovery (+100%)",
       "effectValues": [
         {
@@ -348,7 +270,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Shield",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Damage Reduction",
+      "description": "Gain Ultimate Damage UP(Large). Applies 25%Damage Reduction to all allies for 5 seconds before casting ultimate",
       "effect": "Ultimate Damage + (+15%), Shield (+25%)",
       "effectValues": [
         {

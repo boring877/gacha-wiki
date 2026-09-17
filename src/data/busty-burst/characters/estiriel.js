@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+150",
       "levelGrowth": "+25",
       "lvl1": "320% + 150",
-      "lvl90": "320% + -28",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv3",
         "Magic Defense- Lv3"
@@ -170,7 +92,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies HP Regeneration 3%+50 to all allies for 10 seconds and Block 7 UP for 10 seconds",
       "descriptionLv1": "Applies HP Regeneration 3%+50 to all allies for 10 seconds and Block 7 UP for 10 seconds",
-      "descriptionLv90": "Applies HP Regeneration 3%+50 to all allies for 10 seconds and Block 14 UP for 10 seconds",
+      "descriptionLv90": "Applies HP Regeneration 12%+500 to all allies for 10 seconds and Block 14 UP for 10 seconds",
       "target": "All Allies",
       "castTime": 1.38,
       "damageScaling": null,
@@ -188,7 +110,9 @@ export const skills = {
           "value": 3,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 5.0
+          "flatValue": 50,
+          "flatGrowth": 5.0,
+          "levelGrowth": 0.1
         },
         {
           "name": "Block+ Lv2",
@@ -313,7 +237,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Action Speed +",
       "icon": "skill001/skill1006",
-      "description": "Gain Magic Attack UP (Medium), Action Speed UP (Medium)",
+      "description": "Gain Magic Attack UP(Medium), Action Speed UP(Medium)",
       "effect": "Magic Attack + (+259), Action Speed + (+10)",
       "effectValues": [
         {
@@ -334,7 +258,7 @@ export const skills = {
       "slot": 2,
       "name": "Healing Received +, Block+",
       "icon": "skill001/skill1003",
-      "description": "Gain Healing Received UP (Small), Block UP (Small)",
+      "description": "All allies receive Healing Received UP(Small), Block UP(Small)",
       "effect": "Healing Received + (+20%), Block+ (+10)",
       "effectValues": [
         {

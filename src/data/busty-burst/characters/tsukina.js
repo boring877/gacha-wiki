@@ -47,78 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -127,7 +55,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Frontmost allies 310s Action Speed 14%UP and Hit-Based Damage UP(30%+350, 3 hit(s)) for 10 seconds",
       "descriptionLv1": "Frontmost allies 310s Action Speed 14%UP and Hit-Based Damage UP(30%+350, 3 hit(s)) for 10 seconds",
-      "descriptionLv90": "Frontmost allies 310s Action Speed 14%UP and Hit-Based Damage UP(30%+350, 3 hit(s)) for 10 seconds",
+      "descriptionLv90": "Frontmost allies 310s Action Speed 14%UP and Hit-Based Damage UP(30%+350, 31503 hit(s)) for 10 seconds",
       "target": "Frontmost Ally",
       "castTime": 1.25,
       "damageScaling": null,
@@ -151,7 +79,8 @@ export const skills = {
           "value": 30,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 350.0
+          "flatValue": 3,
+          "flatGrowth": 350.0
         }
       ],
       "duration": 10
@@ -296,7 +225,7 @@ export const skills = {
       "slot": 1,
       "name": "Healing Amount +",
       "icon": "skill001/skill1004",
-      "description": "Gain Healing Amount UP (Medium)",
+      "description": "Gain Healing Amount UP(Medium)",
       "effect": "Healing Amount + (+15%)",
       "effectValues": [
         {
@@ -311,7 +240,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1006",
-      "description": "Gain Physical Defense UP (Small), Magic Defense UP (Small)",
+      "description": "All allies receive Physical Defense UP(Small), Magic Defense UP(Small)",
       "effect": "Physical Defense + (+70), Magic Defense+ (+70)",
       "effectValues": [
         {

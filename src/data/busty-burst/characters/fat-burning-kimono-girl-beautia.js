@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -142,7 +64,7 @@ export const skills = {
       "baseDamage": "+500",
       "levelGrowth": "+20",
       "lvl1": "350% + 500",
-      "lvl90": "350% + 322",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv4"
       ],
@@ -335,7 +257,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Physical Attack +",
       "icon": "skill001/skill1003",
-      "description": "Gain Action Speed UP (Large), Physical Attack UP (Cannot be Cleansed)",
+      "description": "Gain Action Speed UP(Large), after casting a skill, self 3%Physical Attack UP(stackable up to 15%)",
       "effect": "Action Speed + (+15)",
       "effectValues": [
         {
@@ -350,7 +272,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Physical Attack UP(Medium)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {

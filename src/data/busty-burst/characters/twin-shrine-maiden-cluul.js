@@ -50,84 +50,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -305,7 +227,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Normal Attack Magic Defense DOWN",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Large), Normal Attacks reduce enemy Magic Defense DOWN",
+      "description": "Gain Action Speed UP(Large), after a normal attack, enemy Magic Defense 20 DOWN(stackable up to 400)",
       "effect": "Action Speed + (+15)",
       "effectValues": [
         {
@@ -320,7 +242,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Magic Attack UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Magic Attack UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Magic Attack + (+259)",
       "effectValues": [
         {

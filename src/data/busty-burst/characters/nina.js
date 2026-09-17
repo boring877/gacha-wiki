@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -341,7 +263,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Magic Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Large), Magic Critical Damage UP (Medium)",
+      "description": "Gain Magic Attack UP(Large), Magic Critical Damage UP(Medium)",
       "effect": "Magic Attack + (+389), Magic Critical Damage+ (+90)",
       "effectValues": [
         {
@@ -362,7 +284,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Water Type ATK +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Water Type ATK UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Water Type ATK UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Water Type ATK + (+10%)",
       "effectValues": [
         {

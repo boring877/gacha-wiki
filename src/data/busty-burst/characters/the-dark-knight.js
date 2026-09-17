@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -175,7 +97,7 @@ export const skills = {
       "baseDamage": "+160",
       "levelGrowth": "+20",
       "lvl1": "240% + 160",
-      "lvl90": "240% + -18",
+      "lvl90": null,
       "effects": [
         "Physical Attack - Lv4",
         "Magic Attack - Lv4"
@@ -311,7 +233,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Critical Damage+, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Critical Damage UP (Medium), Action Speed UP (Medium)",
+      "description": "Gain Magic Critical Damage UP(Medium), Action Speed UP(Medium)",
       "effect": "Magic Critical Damage+ (+90), Action Speed + (+10)",
       "effectValues": [
         {
@@ -332,7 +254,7 @@ export const skills = {
       "slot": 2,
       "name": "Magic Type ATK +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Type ATK UP (Medium), Magic Attack UP (Large)",
+      "description": "Gain Magic Type ATK UP(Medium), Magic Attack UP(Large)",
       "effect": "Magic Type ATK + (+10%), Magic Attack + (+389)",
       "effectValues": [
         {
@@ -353,7 +275,7 @@ export const skills = {
       "slot": 3,
       "name": "Passive EX",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Magic Type ATK UP (Cannot be Cleansed), Action Speed UP (Cannot be Cleansed)",
+      "description": "Gain Skill Damage UP(Large), and after activating a Skill, grants 1 stack of Dark Power (Magic ATK +3%, Action Speed +2%, up to 10 stacks). With 6 or more stacks of Dark Power, Ultimate damage +20% and inflicts Magic DEF Down",
       "effect": "Skill Damage + (+30%), Power of Darkness (+3%)",
       "effectValues": [
         {

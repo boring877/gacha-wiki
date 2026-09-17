@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -140,7 +62,7 @@ export const skills = {
       "baseDamage": "+200",
       "levelGrowth": "+6",
       "lvl1": "105% + 200",
-      "lvl90": "105% + 186",
+      "lvl90": null,
       "effects": [
         "Accuracy - Lv5"
       ],
@@ -159,9 +81,9 @@ export const skills = {
       "slot": 3,
       "name": "Almandine of Refining Fire",
       "icon": "skill001/skill0014",
-      "description": "Applies Magic Attack 18%+35 UP to self for 10 seconds, self 1 stacks[Fire Mark]([Fire Mark]1 stacksFire Type ATK 3%UP, max 3 stacks)",
-      "descriptionLv1": "Applies Magic Attack 18%+35 UP to self for 10 seconds, self 1 stacks[Fire Mark]([Fire Mark]1 stacksFire Type ATK 3%UP, max 3 stacks)",
-      "descriptionLv90": "Applies Magic Attack 18%+665 UP to self for 10 seconds, self 1 stacks[Fire Mark]([Fire Mark]1 stacksFire Type ATK 3%UP, max 3 stacks)",
+      "description": "Applies Magic Attack 18%+35 UP to self for 10 seconds, self 1 stacks[Fire Mark]([Fire Mark]1 stacks Fire-type Attack 3%UP, max 3 stacks)",
+      "descriptionLv1": "Applies Magic Attack 18%+35 UP to self for 10 seconds, self 1 stacks[Fire Mark]([Fire Mark]1 stacks Fire-type Attack 3%UP, max 3 stacks)",
+      "descriptionLv90": "Applies Magic Attack 18%+665 UP to self for 10 seconds, self 1 stacks[Fire Mark]([Fire Mark]1 stacks Fire-type Attack 3%UP, max 3 stacks)",
       "target": "Self",
       "castTime": 1.1,
       "damageScaling": null,
@@ -303,7 +225,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Large), Action Speed UP (Medium)",
+      "description": "Gain Magic Attack UP(Large), Action Speed UP(Medium)",
       "effect": "Magic Attack + (+389), Action Speed + (+10)",
       "effectValues": [
         {
@@ -324,7 +246,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Magic Attack UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Magic Attack UP(Medium)",
       "effect": "Skill Damage + (+30%), Magic Attack + (+259)",
       "effectValues": [
         {

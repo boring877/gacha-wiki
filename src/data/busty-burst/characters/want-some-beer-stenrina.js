@@ -48,60 +48,18 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "A bit drunk ",
+      "name": "A Little Tipsy…",
       "icon": "skill001/skill0011",
       "description": "Deals physical damage to the nearest enemy and inflicts Stun for 1 seconds",
       "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 1 seconds",
       "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 1 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.58,
-      "damageScaling": "220% ATK",
+      "damageScaling": "220.00000000000003% ATK",
       "baseDamage": "+150",
       "levelGrowth": "+20",
       "lvl1": "220% + 150",
@@ -121,7 +79,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Come, let's drink together!",
+      "name": "Now, Let’s Drink!",
       "icon": "skill001/skill0019",
       "description": "Applies Block 9 UP to the 3 nearest allies for 10 seconds and Accuracy 9 UP for 10 seconds",
       "descriptionLv1": "Applies Block 9 UP to the 3 nearest allies for 10 seconds and Accuracy 9 UP for 10 seconds",
@@ -159,7 +117,7 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Cheers!",
+      "name": "Prosit!",
       "icon": "skill001/skill0020_1",
       "description": "Applies Physical Attack UP(LV 1) to all allies for 12 seconds and Magic Attack UP(LV 1) for 12 seconds",
       "effect": "300% + 0",
@@ -180,7 +138,7 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Cheers!",
+      "name": "Prosit!",
       "icon": "skill001/skill0020_2",
       "description": "Applies Physical Attack UP(LV 2) to all allies for 12 seconds and Magic Attack UP(LV 2) for 12 seconds",
       "effect": "300% + 0",
@@ -201,7 +159,7 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Cheers!",
+      "name": "Prosit!",
       "icon": "skill001/skill0020_3",
       "description": "Applies Physical Attack UP(LV 3) to all allies for 12 seconds and Magic Attack UP(LV 3) for 12 seconds",
       "effect": "300% + 0",
@@ -222,7 +180,7 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Cheers!",
+      "name": "Prosit!",
       "icon": "skill001/skill0020_4",
       "description": "Applies Physical Attack UP(LV 4) to all allies for 12 seconds and Magic Attack UP(LV 4) for 12 seconds",
       "effect": "300% + 0",
@@ -243,7 +201,7 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Cheers!",
+      "name": "Prosit!",
       "icon": "skill001/skill0020_5",
       "description": "Applies Physical Attack UP(LV 5) to all allies for 12 seconds and Magic Attack UP(LV 5) for 12 seconds",
       "effect": "300% + 0",
@@ -268,12 +226,14 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +",
       "icon": "skill001/skill1003",
+      "description": "Gain Max HP UP(Medium)",
       "effect": "Max HP + (+2896)",
       "effectValues": [
         {
           "name": "Max HP +",
           "value": 2896,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Max HP UP (Medium)"
         }
       ]
     },
@@ -281,22 +241,25 @@ export const skills = {
       "slot": 2,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1005",
+      "description": "All allies receive Physical Defense UP(Small), Magic Defense UP(Small)",
       "effect": "Physical Defense + (+70), Magic Defense+ (+70)",
       "effectValues": [
         {
           "name": "Physical Defense +",
           "value": 70,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Physical Defense UP (Small)"
         },
         {
           "name": "Magic Defense+",
           "value": 70,
-          "type": "flat"
+          "type": "flat",
+          "gameText": "Magic Defense UP (Small)"
         }
       ]
     }
   ],
-  "name": "Want some beer?: Stenrina",
+  "name": "How About a Beer?: Stenrina",
   "id": 2091,
   "rarity": "SR",
   "element": "Mind",
@@ -323,7 +286,7 @@ export const skills = {
     "speedLabel": "Slow",
     "speedValue": "1.11"
   },
-  "slug": "want-some-beer-stenrina"
+  "slug": "how-about-a-beer-stenrina"
 };
 
 export const stats = {

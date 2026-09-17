@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -160,7 +82,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Physical Healing Shield (350, restores 25%) to all allies for 12 seconds and Physical Healing Shield (350, restores 25%) for 12 seconds",
       "descriptionLv1": "Applies Physical Healing Shield (350, restores 25%) to all allies for 12 seconds and Physical Healing Shield (350, restores 25%) for 12 seconds",
-      "descriptionLv90": "Applies Physical Healing Shield (350, restores 25%) to all allies for 12 seconds and Physical Healing Shield (350, restores 25%) for 12 seconds",
+      "descriptionLv90": "Applies Physical Healing Shield (350, restores 3175%) to all allies for 12 seconds and Physical Healing Shield (350, restores 3175%) for 12 seconds",
       "target": "All Allies",
       "castTime": 1.58,
       "damageScaling": null,
@@ -178,14 +100,16 @@ export const skills = {
           "value": 350,
           "type": "percent",
           "duration": 12,
-          "levelGrowth": 35.0
+          "flatValue": 25,
+          "flatGrowth": 35.0
         },
         {
           "name": "Magic Healing Shield Lv4",
           "value": 350,
           "type": "percent",
           "duration": 12,
-          "levelGrowth": 35.0
+          "flatValue": 25,
+          "flatGrowth": 35.0
         }
       ],
       "duration": 12
@@ -303,7 +227,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Defense+, Max HP +",
       "icon": "skill001/skill1002",
-      "description": "Gain Magic Defense UP (Medium), Max HP UP (Large)",
+      "description": "Gain Magic Defense UP(Medium), Max HP UP(Large)",
       "effect": "Magic Defense+ (+141), Max HP + (+3444)",
       "effectValues": [
         {
@@ -324,7 +248,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Medium), Physical Critical Damage UP (Medium)",
+      "description": "Gain Physical Attack UP(Medium), Physical Critical Damage UP(Medium)",
       "effect": "Physical Attack + (+159), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {

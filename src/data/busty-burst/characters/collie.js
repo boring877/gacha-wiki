@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -150,7 +72,7 @@ export const skills = {
       "icon": "skill001/skill0013",
       "description": "Applies Physical Critical Damage 30 UP to self for 12 seconds. Also applies Sharpness to self(each Sharpness increase physical damage 10%max 2). When Sharpness reach to 2, applies physical damage up on-hit(20%, 6 times) for 20 seconds",
       "descriptionLv1": "Applies Physical Critical Damage 30 UP to self for 12 seconds. Also applies Sharpness to self(each Sharpness increase physical damage 10%max 2). When Sharpness reach to 2, applies physical damage up on-hit(20%, 6 times) for 20 seconds",
-      "descriptionLv90": "Applies Physical Critical Damage 30 UP to self for 12 seconds. Also applies Sharpness to self(each Sharpness increase physical damage 10%max 2). When Sharpness reach to 2, applies physical damage up on-hit(20%, 6 times) for 20 seconds",
+      "descriptionLv90": "Applies Physical Critical Damage 300 UP to self for 12 seconds. Also applies Sharpness to self(each Sharpness increase physical damage 10%max 2). When Sharpness reach to 2, applies physical damage up on-hit(20%, 6 times) for 20 seconds",
       "target": "Self",
       "castTime": 1.3,
       "damageScaling": null,
@@ -168,7 +90,8 @@ export const skills = {
           "value": 30,
           "type": "percent",
           "duration": 12,
-          "levelGrowth": 3.0
+          "flatValue": 30,
+          "flatGrowth": 3.0
         },
         {
           "name": "Sharpness",
@@ -227,7 +150,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Medium)",
+      "description": "Gain Action Speed UP(Medium)",
       "effect": "Action Speed + (+10)",
       "effectValues": [
         {
@@ -242,7 +165,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Medium), Physical Attack UP (Small)",
+      "description": "Gain Skill Damage UP(Medium), Physical Attack UP(Small)",
       "effect": "Skill Damage + (+20%), Physical Attack + (+130)",
       "effectValues": [
         {

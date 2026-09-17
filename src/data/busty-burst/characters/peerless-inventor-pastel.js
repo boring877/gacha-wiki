@@ -47,78 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -134,7 +62,7 @@ export const skills = {
       "baseDamage": "+500",
       "levelGrowth": "+20",
       "lvl1": "330% + 500",
-      "lvl90": "330% + 482",
+      "lvl90": null,
       "effects": [
         "Block- LvMax"
       ],
@@ -153,9 +81,9 @@ export const skills = {
       "slot": 3,
       "name": "Limiter Release",
       "icon": "skill001/skill0019",
-      "description": "To self 12s'sPhysical Attack 20%+40 UP, 12s'sAction Speed 25%UP, 12s MP Regeneration 40, 12s after 3s's",
-      "descriptionLv1": "To self 12s'sPhysical Attack 20%+40 UP, 12s'sAction Speed 25%UP, 12s MP Regeneration 40, 12s after 3s's",
-      "descriptionLv90": "To self 12s'sPhysical Attack 20%+850 UP, 12s'sAction Speed 25%UP, 12s MP Regeneration 40, 12s after 3s's",
+      "description": "To self 12s Physical Attack 20%+40 UP, 12s Action Speed 25%UP, 12s MP Regeneration 40, 12s after 3s",
+      "descriptionLv1": "To self 12s Physical Attack 20%+40 UP, 12s Action Speed 25%UP, 12s MP Regeneration 40, 12s after 3s",
+      "descriptionLv90": "To self 12s Physical Attack 20%+850 UP, 12s Action Speed 25%UP, 12s MP Regeneration 40, 12s after 3s",
       "target": "Self",
       "castTime": 1.25,
       "damageScaling": null,
@@ -197,7 +125,7 @@ export const skills = {
       "rank": 1,
       "name": "ハイパーギガマギノランチャー",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to 6 nearest enemies, 10s'sPhysical Defense DOWN(LV 1), on Ultimate activation, self 10s'sPhysical Critical DamageUP(LV 1)",
+      "description": "Deals physical damage to 6 nearest enemies, 10s Physical Defense DOWN(LV 1), on casting an ultimate, self 10s Physical Critical DamageUP(LV 1)",
       "effect": "229% + 500",
       "buffEffects": [
         {
@@ -218,7 +146,7 @@ export const skills = {
       "rank": 2,
       "name": "ハイパーギガマギノランチャー",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to 6 nearest enemies, 10s'sPhysical Defense DOWN(LV 2), on Ultimate activation, self 10s'sPhysical Critical DamageUP(LV 2)",
+      "description": "Deals physical damage to 6 nearest enemies, 10s Physical Defense DOWN(LV 2), on casting an ultimate, self 10s Physical Critical DamageUP(LV 2)",
       "effect": "270% + 650",
       "buffEffects": [
         {
@@ -239,7 +167,7 @@ export const skills = {
       "rank": 3,
       "name": "ハイパーギガマギノランチャー",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to 6 nearest enemies, 10s'sPhysical Defense DOWN(LV 3), on Ultimate activation, self 10s'sPhysical Critical DamageUP(LV 3)",
+      "description": "Deals physical damage to 6 nearest enemies, 10s Physical Defense DOWN(LV 3), on casting an ultimate, self 10s Physical Critical DamageUP(LV 3)",
       "effect": "310% + 800",
       "buffEffects": [
         {
@@ -260,7 +188,7 @@ export const skills = {
       "rank": 4,
       "name": "ハイパーギガマギノランチャー",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to 6 nearest enemies, 10s'sPhysical Defense DOWN(LV 4), on Ultimate activation, self 10s'sPhysical Critical DamageUP(LV 4)",
+      "description": "Deals physical damage to 6 nearest enemies, 10s Physical Defense DOWN(LV 4), on casting an ultimate, self 10s Physical Critical DamageUP(LV 4)",
       "effect": "345% + 900",
       "buffEffects": [
         {
@@ -281,7 +209,7 @@ export const skills = {
       "rank": 5,
       "name": "ハイパーギガマギノランチャー",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to 6 nearest enemies, 10s'sPhysical Defense DOWN(LV 5), on Ultimate activation, self 10s'sPhysical Critical DamageUP(LV 5)",
+      "description": "Deals physical damage to 6 nearest enemies, 10s Physical Defense DOWN(LV 5), on casting an ultimate, self 10s Physical Critical DamageUP(LV 5)",
       "effect": "370% + 1000",
       "buffEffects": [
         {
@@ -304,7 +232,7 @@ export const skills = {
       "slot": 1,
       "name": "Wind Type ATK +, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Wind Type ATK UP (Cannot be Cleansed), Action Speed UP (Cannot be Cleansed)",
+      "description": "On casting a skill, self gains 4% Wind-type Attack UP(stackable up to 20%), 4% Action Speed UP(stackable up to 20%)",
       "effect": "Wind Type ATK + (+4%)",
       "effectValues": [
         {
@@ -319,7 +247,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Action Speed UP (Medium)",
+      "description": "Self Ultimate Damage UP(Large), Action Speed UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Action Speed + (+10)",
       "effectValues": [
         {

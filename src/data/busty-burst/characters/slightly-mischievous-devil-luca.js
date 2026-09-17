@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -151,7 +73,7 @@ export const skills = {
       "icon": "skill001/skill0011",
       "description": "Inflicts Charm to nearest 3 enemies for 1 seconds and Physical Critical Damage-11%-30 DOWN for 10 seconds",
       "descriptionLv1": "Inflicts Charm to nearest 3 enemies for 1 seconds and Physical Critical Damage-11%-30 DOWN for 10 seconds",
-      "descriptionLv90": "Inflicts Charm to nearest 3 enemies for 1 seconds and Physical Critical Damage-11%-30 DOWN for 10 seconds",
+      "descriptionLv90": "Inflicts Charm to nearest 3 enemies for 1 seconds and Physical Critical Damage-11%-210 DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.38,
       "damageScaling": null,
@@ -175,7 +97,8 @@ export const skills = {
           "value": -11,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": -2.0
+          "flatValue": -30,
+          "flatGrowth": -2.0
         }
       ],
       "duration": 10
@@ -263,7 +186,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +",
       "icon": "skill001/skill1003",
-      "description": "Gain Physical Attack UP (Medium)",
+      "description": "Gain Physical Attack UP(Medium)",
       "effect": "Physical Attack + (+259)",
       "effectValues": [
         {
@@ -278,7 +201,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Max HP +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Medium), Max HP UP (Medium)",
+      "description": "Gain Skill Damage UP(Medium), Max HP UP(Medium)",
       "effect": "Skill Damage + (+20%), Max HP + (+2896)",
       "effectValues": [
         {

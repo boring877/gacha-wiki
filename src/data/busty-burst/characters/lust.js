@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+250",
       "levelGrowth": "+20",
       "lvl1": "330% + 250",
-      "lvl90": "330% + -106",
+      "lvl90": null,
       "effects": [
         "Silence",
         "Curse",
@@ -318,7 +240,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Debuff Resistance +",
       "icon": "skill001/skill1001",
-      "description": "Gain Max HP UP (Large), Debuff Resistance UP (Small)",
+      "description": "Gain Max HP UP(Large), Debuff Resistance UP(Small)",
       "effect": "Max HP + (+3444)",
       "effectValues": [
         {
@@ -333,7 +255,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Magic Attack UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Magic Attack UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Magic Attack + (+259)",
       "effectValues": [
         {

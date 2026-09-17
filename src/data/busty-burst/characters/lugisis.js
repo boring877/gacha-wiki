@@ -51,84 +51,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -186,7 +108,7 @@ export const skills = {
       "baseDamage": "+500",
       "levelGrowth": "+50",
       "lvl1": "1500% + 500",
-      "lvl90": "1500% + 513",
+      "lvl90": null,
       "effects": [
         "Hit-Based Shield",
         "Shield",
@@ -358,7 +280,7 @@ export const skills = {
       "slot": 1,
       "name": "Debuff Resistance+, MP Recovery",
       "icon": "skill001/skill1003",
-      "description": "Gain Debuff Resistance UP (Small), MP Recovery",
+      "description": "Gain Debuff Resistance UP(Small), after casting a skill, self MP Recovery 100",
       "effect": "MP Recovery (+100%)",
       "effectValues": [
         {
@@ -373,7 +295,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Action Speed +",
       "icon": "skill001/skill1007",
-      "description": "Gain Ultimate Damage UP (Small), Action Speed UP (Medium)",
+      "description": "All allies receive Ultimate Damage UP(Small), Action Speed UP(Medium)",
       "effect": "Ultimate Damage + (+5%), Action Speed + (+10)",
       "effectValues": [
         {

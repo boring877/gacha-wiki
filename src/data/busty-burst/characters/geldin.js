@@ -47,78 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -154,7 +82,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Action Speed 20%UP for 10 seconds, all allies 10s Physical Attack 15%+30 UP",
       "descriptionLv1": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Action Speed 20%UP for 10 seconds, all allies 10s Physical Attack 15%+30 UP",
-      "descriptionLv90": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Action Speed 20%UP for 10 seconds, all allies 10s Physical Attack 15%+480 UP",
+      "descriptionLv90": "Applies Physical Critical Damage 680 UP to self for 10 seconds and Action Speed 20%UP for 10 seconds, all allies 10s Physical Attack 15%+480 UP",
       "target": "Self",
       "castTime": 1.1,
       "damageScaling": null,
@@ -173,7 +101,8 @@ export const skills = {
           "value": 50,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 7.0
+          "flatValue": 50,
+          "flatGrowth": 7.0
         },
         {
           "name": "Action Speed + Lv5",
@@ -197,7 +126,7 @@ export const skills = {
       "rank": 1,
       "name": "An Hadad Ki Ada",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy, applies 4s Blind and Physical Defense DOWN(LV 1) for 10 seconds, on Ultimate activation, self 10s Wind Type ATK UP(LV 1)",
+      "description": "Deals physical damage to the nearest enemy, applies 4s Blind and Physical Defense DOWN(LV 1) for 10 seconds, on casting an ultimate, self 10s Wind Type ATK UP(LV 1)",
       "effect": "1100% + 800",
       "buffEffects": [
         {
@@ -224,7 +153,7 @@ export const skills = {
       "rank": 2,
       "name": "An Hadad Ki Ada",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy, applies 5s Blind and Physical Defense DOWN(LV 2) for 10 seconds, on Ultimate activation, self 10s Wind Type ATK UP(LV 2)",
+      "description": "Deals physical damage to the nearest enemy, applies 5s Blind and Physical Defense DOWN(LV 2) for 10 seconds, on casting an ultimate, self 10s Wind Type ATK UP(LV 2)",
       "effect": "1320% + 1000",
       "buffEffects": [
         {
@@ -251,7 +180,7 @@ export const skills = {
       "rank": 3,
       "name": "An Hadad Ki Ada",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy, applies 5s Blind and Physical Defense DOWN(LV 3) for 10 seconds, on Ultimate activation, self 10s Wind Type ATK UP(LV 3)",
+      "description": "Deals physical damage to the nearest enemy, applies 5s Blind and Physical Defense DOWN(LV 3) for 10 seconds, on casting an ultimate, self 10s Wind Type ATK UP(LV 3)",
       "effect": "1470% + 1150",
       "buffEffects": [
         {
@@ -278,7 +207,7 @@ export const skills = {
       "rank": 4,
       "name": "An Hadad Ki Ada",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy, applies 6s Blind and Physical Defense DOWN(LV 4) for 10 seconds, on Ultimate activation, self 10s Wind Type ATK UP(LV 4)",
+      "description": "Deals physical damage to the nearest enemy, applies 6s Blind and Physical Defense DOWN(LV 4) for 10 seconds, on casting an ultimate, self 10s Wind Type ATK UP(LV 4)",
       "effect": "1590% + 1300",
       "buffEffects": [
         {
@@ -305,7 +234,7 @@ export const skills = {
       "rank": 5,
       "name": "An Hadad Ki Ada",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy, applies 6s Blind and Physical Defense DOWN(LV 5) for 10 seconds, on Ultimate activation, self 10s Wind Type ATK UP(LV 5)",
+      "description": "Deals physical damage to the nearest enemy, applies 6s Blind and Physical Defense DOWN(LV 5) for 10 seconds, on casting an ultimate, self 10s Wind Type ATK UP(LV 5)",
       "effect": "1700% + 1400",
       "buffEffects": [
         {
@@ -334,7 +263,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, MP Recovery",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Large), MP Recovery",
+      "description": "Gain Physical Attack UP(Large), on casting a skill, self MP Recovery 100",
       "effect": "Physical Attack + (+389), MP Recovery (+100%)",
       "effectValues": [
         {
@@ -355,7 +284,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Accuracy UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Accuracy + (+20)",
       "effectValues": [
         {

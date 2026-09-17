@@ -50,84 +50,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -143,7 +65,7 @@ export const skills = {
       "baseDamage": "+120",
       "levelGrowth": "+25",
       "lvl1": "340% + 120",
-      "lvl90": "340% + -147",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv5"
       ],
@@ -298,7 +220,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Healing Amount +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Large), Healing Amount UP (Medium)",
+      "description": "Gain Physical Attack UP(Large), Healing Amount UP(Medium)",
       "effect": "Physical Attack + (+389), Healing Amount + (+15%)",
       "effectValues": [
         {
@@ -319,7 +241,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Accuracy UP(Medium)",
       "effect": "Skill Damage + (+30%), Accuracy + (+20)",
       "effectValues": [
         {

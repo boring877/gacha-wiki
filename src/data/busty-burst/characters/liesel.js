@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -312,7 +234,7 @@ export const skills = {
       "slot": 1,
       "name": "Block+",
       "icon": "skill001/skill1002",
-      "description": "Gain Block UP (Medium)",
+      "description": "Gain Block UP(Medium)",
       "effect": "Block+ (+15)",
       "effectValues": [
         {
@@ -327,7 +249,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1007",
-      "description": "Gain Physical Defense UP (Small), Magic Defense UP (Small)",
+      "description": "Middle Row allies receive Physical Defense UP(Small) and Magic Defense UP(Small)",
       "effect": "Physical Defense + (+70), Magic Defense+ (+70)",
       "effectValues": [
         {

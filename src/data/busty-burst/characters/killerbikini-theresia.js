@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -142,7 +64,7 @@ export const skills = {
       "baseDamage": "+80",
       "levelGrowth": "+8",
       "lvl1": "120% + 80",
-      "lvl90": "120% + 49030",
+      "lvl90": null,
       "effects": [
         "Stun",
         "Hit-Based Magic Damage + Lv5"
@@ -312,7 +234,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Debuff Resistance +",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Medium), Debuff Resistance UP (Small)",
+      "description": "Gain Max HP UP(Medium), Debuff Resistance UP(Small)",
       "effect": "Max HP + (+2896)",
       "effectValues": [
         {
@@ -327,7 +249,7 @@ export const skills = {
       "slot": 2,
       "name": "Magic Attack +, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Magic Attack UP(Large), Accuracy UP(Medium)",
       "effect": "Magic Attack + (+389), Accuracy + (+15)",
       "effectValues": [
         {

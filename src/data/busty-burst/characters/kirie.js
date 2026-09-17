@@ -47,78 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -179,7 +107,7 @@ export const skills = {
       "rank": 1,
       "name": "Ir Kabab",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 1) for 20 seconds, on Ultimate activation, selfinflict 10s Fire Type ATK UP(LV 1)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 1) for 20 seconds, on casting an ultimate, self gains 10s Fire Type ATK UP(LV 1)",
       "effect": "1000% + 700",
       "buffEffects": [
         {
@@ -200,7 +128,7 @@ export const skills = {
       "rank": 2,
       "name": "Ir Kabab",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 2) for 20 seconds, on Ultimate activation, selfinflict 10s Fire Type ATK UP(LV 2)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 2) for 20 seconds, on casting an ultimate, self gains 10s Fire Type ATK UP(LV 2)",
       "effect": "1200% + 900",
       "buffEffects": [
         {
@@ -221,7 +149,7 @@ export const skills = {
       "rank": 3,
       "name": "Ir Kabab",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 3) for 20 seconds, on Ultimate activation, selfinflict 10s Fire Type ATK UP(LV 3)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 3) for 20 seconds, on casting an ultimate, self gains 10s Fire Type ATK UP(LV 3)",
       "effect": "1350% + 1050",
       "buffEffects": [
         {
@@ -242,7 +170,7 @@ export const skills = {
       "rank": 4,
       "name": "Ir Kabab",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 4) for 20 seconds, on Ultimate activation, selfinflict 10s Fire Type ATK UP(LV 4)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 4) for 20 seconds, on casting an ultimate, self gains 10s Fire Type ATK UP(LV 4)",
       "effect": "1450% + 1200",
       "buffEffects": [
         {
@@ -263,7 +191,7 @@ export const skills = {
       "rank": 5,
       "name": "Ir Kabab",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 5) for 20 seconds, on Ultimate activation, selfinflict 10s Fire Type ATK UP(LV 5)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Burn(LV 5) for 20 seconds, on casting an ultimate, self gains 10s Fire Type ATK UP(LV 5)",
       "effect": "1500% + 1300",
       "buffEffects": [
         {
@@ -286,7 +214,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Medium)",
+      "description": "Gain Action Speed UP(Medium)",
       "effect": "Action Speed + (+10)",
       "effectValues": [
         {
@@ -301,7 +229,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Medium), Action Speed UP (Small)",
+      "description": "Gain Skill Damage UP(Medium), Action Speed UP(Small)",
       "effect": "Skill Damage + (+20%), Action Speed + (+5)",
       "effectValues": [
         {

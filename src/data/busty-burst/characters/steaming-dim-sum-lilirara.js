@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -142,7 +64,7 @@ export const skills = {
       "baseDamage": "+500",
       "levelGrowth": "+20",
       "lvl1": "330% + 500",
-      "lvl90": "330% + 491",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv4",
         "Block- Lv3"
@@ -171,7 +93,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies HP Regeneration 4%+100 to all allies for 10 seconds and Hit-Based Physical Damage UP(40%+450, 3 hit(s)) for 15 seconds",
       "descriptionLv1": "Applies HP Regeneration 4%+100 to all allies for 10 seconds and Hit-Based Physical Damage UP(40%+450, 3 hit(s)) for 15 seconds",
-      "descriptionLv90": "Applies HP Regeneration 4%+100 to all allies for 10 seconds and Hit-Based Physical Damage UP(40%+450, 40503 hit(s)) for 15 seconds",
+      "descriptionLv90": "Applies HP Regeneration 4%+640 to all allies for 10 seconds and Hit-Based Physical Damage UP(40%+450, 40503 hit(s)) for 15 seconds",
       "target": "All Allies",
       "castTime": 0.95,
       "damageScaling": null,
@@ -189,7 +111,8 @@ export const skills = {
           "value": 4,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 6.0
+          "flatValue": 100,
+          "flatGrowth": 6.0
         },
         {
           "name": "Hit-Based Physical Damage +",
@@ -314,7 +237,7 @@ export const skills = {
       "slot": 1,
       "name": "Healing Received +, Skill Enhancement",
       "icon": "skill001/skill1008",
-      "description": "Gain Healing Received UP (Tiny), Specific Skill Enhancement",
+      "description": "All allies receive Healing Received UP(Tiny), \"Eat Lots Meow♪\" additional 10s Fire-type Attack 10%UP",
       "effect": "Healing Received + (+10%)",
       "effectValues": [
         {
@@ -329,7 +252,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Physical Critical Damage UP(Medium)",
       "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {

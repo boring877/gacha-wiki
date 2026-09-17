@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -142,7 +64,7 @@ export const skills = {
       "baseDamage": "+600",
       "levelGrowth": "+20",
       "lvl1": "370% + 600",
-      "lvl90": "370% + 591",
+      "lvl90": null,
       "effects": [
         "Block- Lv3"
       ],
@@ -275,7 +197,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Medium)",
+      "description": "Gain Action Speed UP(Medium)",
       "effect": "Action Speed + (+10)",
       "effectValues": [
         {
@@ -290,7 +212,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Medium), Physical Attack UP (Small)",
+      "description": "Gain Skill Damage UP(Medium), Physical Attack UP(Small)",
       "effect": "Skill Damage + (+20%), Physical Attack + (+130)",
       "effectValues": [
         {

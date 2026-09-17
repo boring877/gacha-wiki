@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+90",
       "levelGrowth": "+12",
       "lvl1": "180% + 90",
-      "lvl90": "180% + 1",
+      "lvl90": null,
       "effects": [
         "Physical Attack - Lv2",
         "Magic Attack - Lv2"
@@ -282,7 +204,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +",
       "icon": "skill001/skill1002",
-      "description": "Gain Physical Defense UP (Small)",
+      "description": "Gain Physical Defense UP(Small)",
       "effect": "Physical Defense + (+70)",
       "effectValues": [
         {
@@ -297,7 +219,7 @@ export const skills = {
       "slot": 2,
       "name": "Max HP +",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Small)",
+      "description": "Gain Max HP UP(Small)",
       "effect": "Max HP + (+1447)",
       "effectValues": [
         {

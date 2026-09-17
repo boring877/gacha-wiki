@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -142,7 +64,7 @@ export const skills = {
       "baseDamage": "+100",
       "levelGrowth": "+6",
       "lvl1": "120% + 100",
-      "lvl90": "120% + -78",
+      "lvl90": null,
       "effects": [
         "Physical Attack - Lv4",
         "Magic Attack - Lv4"
@@ -171,7 +93,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) to all allies for 15 seconds,Block 9 UP for 8 seconds and Magic Attack 15%+30 UP for 8 seconds",
       "descriptionLv1": "Applies Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) to all allies for 15 seconds,Block 9 UP for 8 seconds and Magic Attack 15%+30 UP for 8 seconds",
-      "descriptionLv90": "Applies Hit-Based Healing Shield (480%+40, restores 40%, 4 hit(s)) to all allies for 15 seconds,Block 18 UP for 8 seconds and Magic Attack 15%+30 UP for 8 seconds",
+      "descriptionLv90": "Applies Hit-Based Healing Shield (30%+40, restores 40%, 3604 hit(s)) to all allies for 15 seconds,Block 18 UP for 8 seconds and Magic Attack 15%+480 UP for 8 seconds",
       "target": "All Allies",
       "castTime": 1.28,
       "damageScaling": null,
@@ -190,7 +112,8 @@ export const skills = {
           "value": 30,
           "type": "percent",
           "duration": 15,
-          "levelGrowth": 40.0
+          "flatValue": 4,
+          "flatGrowth": 40.0
         },
         {
           "name": "Block+ Lv3",
@@ -352,7 +275,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Healing Received +",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Large), Healing Received UP (Small)",
+      "description": "Gain Max HP UP(Large), Healing Received UP(Small)",
       "effect": "Max HP + (+3444), Healing Received + (+20%)",
       "effectValues": [
         {
@@ -373,7 +296,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1006",
-      "description": "Gain Physical Defense UP (Medium), Magic Defense UP (Medium)",
+      "description": "All allies receive Physical Defense UP(Medium), Magic Defense UP(Medium)",
       "effect": "Physical Defense + (+141), Magic Defense+ (+141)",
       "effectValues": [
         {

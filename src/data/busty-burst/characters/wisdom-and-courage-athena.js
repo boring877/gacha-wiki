@@ -49,50 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -108,7 +64,7 @@ export const skills = {
       "baseDamage": "+350",
       "levelGrowth": "+20",
       "lvl1": "380% + 350",
-      "lvl90": "380% + 336",
+      "lvl90": null,
       "effects": [
         "Physical Attack - Lv4",
         "Magic Attack - Lv4",
@@ -325,7 +281,7 @@ export const skills = {
       "slot": 1,
       "name": "Damage UP, Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1002",
-      "description": "Gain Damage +UP (Cannot be Cleansed), Physical Defense UP (Cannot be Cleansed), Magic Defense UP (Cannot be Cleansed)",
+      "description": "When hit by an enemy attack, self 1%+5000 Damage UP(max 1 stack per 1s, stackable up to 20%+100000), all allies 15 Physical Defense UP(max 1 stack per 1s, stackable up to 300), 15 Magic Defense UP(max 1 stack per 1s, stackable up to 300)",
       "effect": "Damage UP (+9999%)",
       "effectValues": [
         {
@@ -340,7 +296,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Physical Critical Damage UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {

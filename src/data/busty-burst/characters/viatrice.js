@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+70",
       "levelGrowth": "+6",
       "lvl1": "105% + 70",
-      "lvl90": "105% + 58",
+      "lvl90": null,
       "effects": [
         "Burn LvMax",
         "Block- Lv4"
@@ -312,7 +234,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Block+",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Large), Block UP (Medium)",
+      "description": "Gain Magic Attack UP(Large), Block UP(Medium)",
       "effect": "Magic Attack + (+389), Block+ (+15)",
       "effectValues": [
         {
@@ -333,7 +255,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Max HP +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Max HP UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Max HP UP(Medium)",
       "effect": "Skill Damage + (+30%), Max HP + (+2896)",
       "effectValues": [
         {

@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -142,7 +64,7 @@ export const skills = {
       "baseDamage": "+150",
       "levelGrowth": "+6",
       "lvl1": "110% + 150",
-      "lvl90": "110% + 138",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv4",
         "Accuracy - Lv4"
@@ -171,14 +93,14 @@ export const skills = {
       "icon": "skill001/skill0011",
       "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Critical Damage-13%-35 DOWN for 8 seconds, 8s Magic Critical Damage-13%-35 DOWN",
       "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Critical Damage-13%-35 DOWN for 8 seconds, 8s Magic Critical Damage-13%-35 DOWN",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Critical Damage-13%-215 DOWN for 8 seconds, 8s Magic Critical Damage-13%-35 DOWN",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Physical Critical Damage-13%-215 DOWN for 8 seconds, 8s Magic Critical Damage-13%-215 DOWN",
       "target": "Nearest Enemy",
       "castTime": 1.15,
       "damageScaling": "350% ATK",
       "baseDamage": "+300",
       "levelGrowth": "+20",
       "lvl1": "350% + 300",
-      "lvl90": "350% + 122",
+      "lvl90": null,
       "effects": [
         "Stun",
         "Physical Critical Damage- Lv4",
@@ -196,7 +118,8 @@ export const skills = {
           "value": -13,
           "type": "percent",
           "duration": 8,
-          "levelGrowth": -2.0
+          "flatValue": -35,
+          "flatGrowth": -2.0
         },
         {
           "name": "Magic Critical Damage- Lv4",
@@ -351,7 +274,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Critical Damage+, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Critical Damage UP (Large), Action Speed UP",
+      "description": "Gain Physical Critical Damage UP(Large), and before activating the Ultimate, all allies 10s Action Speed 10%UP",
       "effect": "Physical Critical Damage+ (+176%), Action Speed + (+10)",
       "effectValues": [
         {
@@ -372,7 +295,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Physical Attack UP(Medium)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {

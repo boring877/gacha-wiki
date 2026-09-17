@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -196,7 +118,7 @@ export const skills = {
       "rank": 1,
       "name": "Foolish one, offer your head to your beloved",
       "icon": "skill001/skill0003_1",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 1) for 10 seconds and Action Speed DOWN(LV 1) for 10 seconds, [Spirit]at 3 stacks: [Spirit], Ultimate activation afterrecover own MP 100%",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 1) for 10 seconds and Action Speed DOWN(LV 1) for 10 seconds, [Spirit]at 3 stacks: [Spirit], after casting an ultimate, self MP Recovery 100%",
       "effect": "1200% + 1200",
       "buffEffects": [
         {
@@ -217,7 +139,7 @@ export const skills = {
       "rank": 2,
       "name": "Foolish one, offer your head to your beloved",
       "icon": "skill001/skill0003_2",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 2) for 10 seconds and Action Speed DOWN(LV 2) for 10 seconds, [Spirit]at 3 stacks: [Spirit], Ultimate activation afterrecover own MP 100%",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 2) for 10 seconds and Action Speed DOWN(LV 2) for 10 seconds, [Spirit]at 3 stacks: [Spirit], after casting an ultimate, self MP Recovery 100%",
       "effect": "1440% + 1400",
       "buffEffects": [
         {
@@ -238,7 +160,7 @@ export const skills = {
       "rank": 3,
       "name": "Foolish one, offer your head to your beloved",
       "icon": "skill001/skill0003_3",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 3) for 10 seconds and Action Speed DOWN(LV 3) for 10 seconds, [Spirit]at 3 stacks: [Spirit], Ultimate activation afterrecover own MP 100%",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 3) for 10 seconds and Action Speed DOWN(LV 3) for 10 seconds, [Spirit]at 3 stacks: [Spirit], after casting an ultimate, self MP Recovery 100%",
       "effect": "1620% + 1600",
       "buffEffects": [
         {
@@ -259,7 +181,7 @@ export const skills = {
       "rank": 4,
       "name": "Foolish one, offer your head to your beloved",
       "icon": "skill001/skill0003_4",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 4) for 10 seconds and Action Speed DOWN(LV 4) for 10 seconds, [Spirit]at 3 stacks: [Spirit], Ultimate activation afterrecover own MP 100%",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 4) for 10 seconds and Action Speed DOWN(LV 4) for 10 seconds, [Spirit]at 3 stacks: [Spirit], after casting an ultimate, self MP Recovery 100%",
       "effect": "1739% + 1800",
       "buffEffects": [
         {
@@ -280,7 +202,7 @@ export const skills = {
       "rank": 5,
       "name": "Foolish one, offer your head to your beloved",
       "icon": "skill001/skill0003_5",
-      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 5) for 10 seconds and Action Speed DOWN(LV 5) for 10 seconds, [Spirit]at 3 stacks: [Spirit], Ultimate activation afterrecover own MP 100%",
+      "description": "Deals magic damage to the nearest enemy and inflicts Magic Defense DOWN(LV 5) for 10 seconds and Action Speed DOWN(LV 5) for 10 seconds, [Spirit]at 3 stacks: [Spirit], after casting an ultimate, self MP Recovery 100%",
       "effect": "1800% + 2000",
       "buffEffects": [
         {
@@ -303,7 +225,7 @@ export const skills = {
       "slot": 1,
       "name": "Skill Damage +, MP Recovery",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Small), MP Recovery",
+      "description": "Gain Skill Damage UP(Small), after a normal attack or skill, self MP Recovery 30",
       "effect": "Skill Damage + (+10%), MP Recovery (+30%), MP Recovery (+30%)",
       "effectValues": [
         {
@@ -330,7 +252,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Action Speed UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Action Speed UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Action Speed + (+10)",
       "effectValues": [
         {

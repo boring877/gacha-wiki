@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -134,7 +56,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Physical Critical Damage 20 UP to all allies for 8 seconds",
       "descriptionLv1": "Applies Physical Critical Damage 20 UP to all allies for 8 seconds",
-      "descriptionLv90": "Applies Physical Critical Damage 20 UP to all allies for 8 seconds",
+      "descriptionLv90": "Applies Physical Critical Damage 110 UP to all allies for 8 seconds",
       "target": "All Allies",
       "castTime": 1.78,
       "damageScaling": null,
@@ -151,7 +73,8 @@ export const skills = {
           "value": 20,
           "type": "percent",
           "duration": 8,
-          "levelGrowth": 1.0
+          "flatValue": 20,
+          "flatGrowth": 1.0
         }
       ],
       "duration": 8
@@ -267,7 +190,7 @@ export const skills = {
       "slot": 1,
       "name": "Block+",
       "icon": "skill001/skill1001",
-      "description": "Gain Block UP (Small)",
+      "description": "Gain Block UP(Small)",
       "effect": "Block+ (+10)",
       "effectValues": [
         {
@@ -282,7 +205,7 @@ export const skills = {
       "slot": 2,
       "name": "Healing Amount +",
       "icon": "skill001/skill1002",
-      "description": "Gain Healing Amount UP (Small)",
+      "description": "Gain Healing Amount UP(Small)",
       "effect": "Healing Amount + (+10%)",
       "effectValues": [
         {

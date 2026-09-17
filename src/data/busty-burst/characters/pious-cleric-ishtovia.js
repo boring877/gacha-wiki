@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -142,7 +64,7 @@ export const skills = {
       "baseDamage": "+40",
       "levelGrowth": "+6",
       "lvl1": "100% + 40",
-      "lvl90": "100% + -138",
+      "lvl90": null,
       "effects": [
         "Magic Attack - Lv3",
         "Magic Defense- Lv3"
@@ -312,7 +234,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Magic Defense+",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Medium), Magic Defense UP (Medium)",
+      "description": "Gain Magic Attack UP(Medium), Magic Defense UP(Medium)",
       "effect": "Magic Attack + (+259), Magic Defense+ (+141)",
       "effectValues": [
         {
@@ -333,7 +255,7 @@ export const skills = {
       "slot": 2,
       "name": "Magic Defense+, Max HP +",
       "icon": "skill001/skill1007",
-      "description": "Gain Magic Defense UP (Medium), Max HP UP (Small)",
+      "description": "Front Row allies receive Magic Defense UP(Medium) and Max HP UP(Small)",
       "effect": "Magic Defense+ (+141), Max HP + (+1447)",
       "effectValues": [
         {

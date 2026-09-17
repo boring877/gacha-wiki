@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+180",
       "levelGrowth": "+20",
       "lvl1": "320% + 180",
-      "lvl90": "320% + -3380",
+      "lvl90": null,
       "effects": [
         "Burn Lv5",
         "Freeze Lv5"
@@ -312,7 +234,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Magic Attack UP(Large), Accuracy UP(Medium)",
       "effect": "Magic Attack + (+389), Accuracy + (+20)",
       "effectValues": [
         {
@@ -333,7 +255,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Magic Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Magic Critical Damage UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Magic Critical Damage UP(Medium)",
       "effect": "Skill Damage + (+30%), Magic Critical Damage+ (+90)",
       "effectValues": [
         {

@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -134,7 +56,7 @@ export const skills = {
       "icon": "skill001/skill0021",
       "description": "Restores HP by to all allies and inflicts HP Regeneration 5%+150 for 3 seconds",
       "descriptionLv1": "Restores HP by to all allies and inflicts HP Regeneration 5%+150 for 3 seconds",
-      "descriptionLv90": "Restores HP by to all allies and inflicts HP Regeneration 5%+150 for 3 seconds",
+      "descriptionLv90": "Restores HP by to all allies and inflicts HP Regeneration 5%+780 for 3 seconds",
       "target": "All Allies",
       "castTime": 1.38,
       "damageScaling": "2500% ATK",
@@ -151,7 +73,8 @@ export const skills = {
           "value": 5,
           "type": "percent",
           "duration": 3,
-          "levelGrowth": 7.0
+          "flatValue": 150,
+          "flatGrowth": 7.0
         }
       ],
       "duration": 3
@@ -294,7 +217,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1006",
-      "description": "Gain Physical Defense UP (Medium), Magic Defense UP (Medium)",
+      "description": "Front Row allies receive Physical Defense UP(Medium) and Magic Defense UP(Medium)",
       "effect": "Physical Defense + (+141), Magic Defense+ (+141)",
       "effectValues": [
         {
@@ -315,7 +238,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Action Speed +",
       "icon": "skill001/skill1005",
-      "description": "Gain Skill Damage UP (Small), Action Speed UP (Medium)",
+      "description": "Middle Row allies receive Skill Damage UP(Small) and Action Speed UP(Medium)",
       "effect": "Skill Damage + (+10%), Action Speed + (+10)",
       "effectValues": [
         {
@@ -336,7 +259,7 @@ export const skills = {
       "slot": 3,
       "name": "Passive EX",
       "icon": "skill001/skill1005",
-      "description": "Gain Ultimate Damage UP (Small), Max HP UP (Cannot be Cleansed), Block UP",
+      "description": "All allies receive Ultimate Damage UP(Small), and before activating the Ultimate, all allies 3% Max HP UP(stackable up to 15%), 3 Block UP(stackable up to 15)",
       "effect": "Ultimate Damage + (+5%)",
       "effectValues": [
         {

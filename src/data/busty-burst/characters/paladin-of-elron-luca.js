@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -142,7 +64,7 @@ export const skills = {
       "baseDamage": "+500",
       "levelGrowth": "+20",
       "lvl1": "350% + 500",
-      "lvl90": "350% + 144",
+      "lvl90": null,
       "effects": [
         "Stun",
         "Physical Defense - LvMax"
@@ -170,7 +92,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Physical Attack 18%+35 UP for 10 seconds, all allies 20s Hit-Based Physical Damage UP(45%+500, 3 hit(s))",
       "descriptionLv1": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Physical Attack 18%+35 UP for 10 seconds, all allies 20s Hit-Based Physical Damage UP(45%+500, 3 hit(s))",
-      "descriptionLv90": "Applies Physical Critical Damage 50 UP to self for 10 seconds and Physical Attack 18%+665 UP for 10 seconds, all allies 20s Hit-Based Physical Damage UP(45%+500, 45003 hit(s))",
+      "descriptionLv90": "Applies Physical Critical Damage 680 UP to self for 10 seconds and Physical Attack 18%+665 UP for 10 seconds, all allies 20s Hit-Based Physical Damage UP(45%+500, 45003 hit(s))",
       "target": "Self",
       "castTime": 0.9,
       "damageScaling": null,
@@ -189,7 +111,8 @@ export const skills = {
           "value": 50,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 7.0
+          "flatValue": 50,
+          "flatGrowth": 7.0
         },
         {
           "name": "Physical Attack + Lv4",
@@ -351,7 +274,7 @@ export const skills = {
       "slot": 1,
       "name": "Skill Damage +, Wind Type ATK +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Medium), Wind Type ATK UP (Cannot be Cleansed)",
+      "description": "Gain Skill Damage UP(Medium), after casting a skill, self 3% Wind-type Attack UP(stackable up to 15%)",
       "effect": "Skill Damage + (+20%), Wind Type ATK + (+3%)",
       "effectValues": [
         {
@@ -372,7 +295,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Debuff Resistance+",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Medium), Debuff Resistance{0:P1}UP (Cannot be Cleansed)",
+      "description": "Gain Ultimate Damage UP(Medium), after casting an ultimate, self 10%DEBUFF Resistance UP(stackable up to 40%)",
       "effect": "Ultimate Damage + (+10%)",
       "effectValues": [
         {

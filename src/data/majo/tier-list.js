@@ -1,8 +1,8 @@
-// MAJO tier list: kit-based placements (updated 2026-09-15), grouped by class.
+// MAJO tier list: kit-based placements (updated 2026-09-16), grouped by class.
 // Placements are editorial, grounded in each witch's full skill data in
-// characters.js and cross-checked with community launch-month lists
-// (OSLink 2026-08-18, GamingPile 2026-08-30). The four September witches
-// (luoqin, emily, lucia, bazhuli) are ranked on kit alone.
+// characters.js and cross-checked with community lists (OSLink 2026-08-18,
+// GamingPile 2026-08-30, Bilibili + Gamerch 2026-09-16). Emily and bazhuli
+// are community-checked; luoqin and lucia (banner 2026-09-30) are kit-only.
 // NEW WITCHES MUST BE ADDED TO MAJO_TIER_PLACEMENTS or they land in C with a
 // console warning in dev.
 
@@ -23,7 +23,7 @@ export const MAJO_CLASS_SECTIONS = ['Fighter', 'Mage', 'Tank', 'Healer'];
 
 const CLASS_ZH = { Fighter: '破阵', Mage: '飞袭', Tank: '守护', Healer: '支援' };
 
-export const MAJO_TIER_UPDATED = 'September 15, 2026';
+export const MAJO_TIER_UPDATED = 'September 16, 2026';
 
 // slug -> { tier, reason, isNew? }
 export const MAJO_TIER_PLACEMENTS = {
@@ -89,8 +89,8 @@ export const MAJO_TIER_PLACEMENTS = {
     isNew: true,
   },
   bazhuli: {
-    tier: 'A',
-    reason: 'New. Zone-control mage: her Extreme seeds up to 5 lingering damage zones and her passive snowballs up to +40% Extreme damage in ult-heavy teams. The Magic-charge Interference is made for Macak and Patra.',
+    tier: 'SS',
+    reason: "New. UR ult-cycler: her awakened Extreme drops 4 lingering zones at 50% damage per second each, her kit self-stacks up to +80 Extreme charge speed, and every ally ult refunds her Class cooldown and feeds her passive up to +40% Extreme damage (10 stacks x 4%). CN players already call her the top DPS efficiency in the game and JP ranks her the #1 magic attacker, with one caveat: she is welded to Patra's ult cycle and wants heavy investment.",
     isNew: true,
   },
   grina: {

@@ -46,84 +46,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -149,14 +71,14 @@ export const skills = {
       "icon": "skill001/skill0008",
       "description": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -9%-20 DOWN for 10 seconds and Magic Attack -9%-20 DOWN for 10 seconds",
       "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -9%-20 DOWN for 10 seconds and Magic Attack -9%-20 DOWN for 10 seconds",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -9%-2000 DOWN for 10 seconds and Magic Attack -9%-20 DOWN for 10 seconds",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Physical Attack -9%-200 DOWN for 10 seconds and Magic Attack -9%-200 DOWN for 10 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.66,
       "damageScaling": "130% ATK",
       "baseDamage": "+50",
       "levelGrowth": "+6",
       "lvl1": "130% + 50",
-      "lvl90": "130% + -128",
+      "lvl90": null,
       "effects": [
         "Physical Attack - Lv3",
         "Magic Attack - Lv3"
@@ -292,7 +214,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Action Speed +",
       "icon": "skill001/skill1005",
-      "description": "Gain Magic Attack UP (Medium), Action Speed UP (Medium)",
+      "description": "Gain Magic Attack UP(Medium), Action Speed UP(Medium)",
       "effect": "Magic Attack + (+259), Action Speed + (+10)",
       "effectValues": [
         {
@@ -313,7 +235,7 @@ export const skills = {
       "slot": 2,
       "name": "Block+, Skill Damage +",
       "icon": "skill001/skill1006",
-      "description": "Gain Block UP (Medium), Skill Damage UP (Large)",
+      "description": "Gain Block UP(Medium), Skill Damage UP(Large)",
       "effect": "Block+ (+15), Skill Damage + (+30%)",
       "effectValues": [
         {

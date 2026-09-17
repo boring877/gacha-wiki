@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -140,7 +62,7 @@ export const skills = {
       "baseDamage": "+370",
       "levelGrowth": "+40",
       "lvl1": "2000% + 370",
-      "lvl90": "2000% + 459",
+      "lvl90": null,
       "effects": [
         "Physical Defense + Lv2",
         "Magic Defense+ Lv2"
@@ -311,7 +233,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Debuff Resistance +",
       "icon": "skill001/skill1004",
-      "description": "Gain Action Speed UP (Large), Debuff Resistance UP (Small)",
+      "description": "Gain Action Speed UP(Large), Debuff Resistance UP(Small)",
       "effect": "Action Speed + (+15)",
       "effectValues": [
         {
@@ -326,7 +248,7 @@ export const skills = {
       "slot": 2,
       "name": "Max HP +, Block+",
       "icon": "skill001/skill1006",
-      "description": "Gain Max HP UP (Small), Block UP (Medium)",
+      "description": "All allies receive Max HP UP(Small), Block UP(Medium)",
       "effect": "Max HP + (+1447), Block+ (+15)",
       "effectValues": [
         {

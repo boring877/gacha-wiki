@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -142,7 +64,7 @@ export const skills = {
       "baseDamage": "+110",
       "levelGrowth": "+20",
       "lvl1": "210% + 110",
-      "lvl90": "210% + -68",
+      "lvl90": null,
       "effects": [
         "Physical Attack - Lv4"
       ],
@@ -163,7 +85,7 @@ export const skills = {
       "icon": "skill001/skill0021",
       "description": "Restores HP by to the ally with the lowest HP and inflicts HP Regeneration 5%+150 for 3 seconds",
       "descriptionLv1": "Restores HP by to the ally with the lowest HP and inflicts HP Regeneration 5%+150 for 3 seconds",
-      "descriptionLv90": "Restores HP by to the ally with the lowest HP and inflicts HP Regeneration 5%+150 for 3 seconds",
+      "descriptionLv90": "Restores HP by to the ally with the lowest HP and inflicts HP Regeneration 5%+780 for 3 seconds",
       "target": "Lowest HP Ally",
       "castTime": 1.58,
       "damageScaling": "3000% ATK",
@@ -180,7 +102,8 @@ export const skills = {
           "value": 5,
           "type": "percent",
           "duration": 3,
-          "levelGrowth": 7.0
+          "flatValue": 150,
+          "flatGrowth": 7.0
         }
       ],
       "duration": 3
@@ -268,7 +191,7 @@ export const skills = {
       "slot": 1,
       "name": "Healing Amount +",
       "icon": "skill001/skill1004",
-      "description": "Gain Healing Amount UP (Small)",
+      "description": "Gain Healing Amount UP(Small)",
       "effect": "Healing Amount + (+15%)",
       "effectValues": [
         {
@@ -283,7 +206,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1006",
-      "description": "Gain Physical Defense UP (Small), Magic Defense UP (Small)",
+      "description": "Front Row allies receive Physical Defense UP(Small) and Magic Defense UP(Small)",
       "effect": "Physical Defense + (+70), Magic Defense+ (+70)",
       "effectValues": [
         {

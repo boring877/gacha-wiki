@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -142,7 +64,7 @@ export const skills = {
       "baseDamage": "+70",
       "levelGrowth": "+6",
       "lvl1": "80% + 70",
-      "lvl90": "80% + 56",
+      "lvl90": null,
       "effects": [
         "Burn Lv5",
         "Accuracy - Lv5"
@@ -313,7 +235,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Physical Attack +",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Large), Physical Attack UP (Medium)",
+      "description": "Gain Max HP UP(Large), Physical Attack UP(Medium)",
       "effect": "Max HP + (+3444), Physical Attack + (+259)",
       "effectValues": [
         {
@@ -334,7 +256,7 @@ export const skills = {
       "slot": 2,
       "name": "Debuff Resistance +, Block+",
       "icon": "skill001/skill1006",
-      "description": "Gain Debuff Resistance UP (Tiny), Block UP (Small)",
+      "description": "All allies receive Debuff Resistance UP(Tiny), Block UP(Small)",
       "effect": "Block+ (+10)",
       "effectValues": [
         {

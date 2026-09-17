@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -133,7 +55,7 @@ export const skills = {
       "icon": "skill001/skill0008",
       "description": "Deals magic damage to the 3 farthest enemies and inflicts Accuracy -9 DOWN for 8 seconds and Physical Critical Damage-11%-30 DOWN for 8 seconds",
       "descriptionLv1": "Deals magic damage to the 3 farthest enemies and inflicts Accuracy -9 DOWN for 8 seconds and Physical Critical Damage-11%-30 DOWN for 8 seconds",
-      "descriptionLv90": "Deals magic damage to the 3 farthest enemies and inflicts Accuracy -18 DOWN for 8 seconds and Physical Critical Damage-11%-30 DOWN for 8 seconds",
+      "descriptionLv90": "Deals magic damage to the 3 farthest enemies and inflicts Accuracy -18 DOWN for 8 seconds and Physical Critical Damage-11%-210 DOWN for 8 seconds",
       "target": "Back Enemy",
       "castTime": 1.08,
       "damageScaling": "140% ATK",
@@ -158,7 +80,8 @@ export const skills = {
           "value": -11,
           "type": "percent",
           "duration": 8,
-          "levelGrowth": -2.0
+          "flatValue": -30,
+          "flatGrowth": -2.0
         }
       ],
       "duration": 8
@@ -176,7 +99,7 @@ export const skills = {
       "baseDamage": "+60",
       "levelGrowth": "+6",
       "lvl1": "120% + 60",
-      "lvl90": "120% + 51",
+      "lvl90": null,
       "effects": [
         "Action Speed - Lv3",
         "Block- Lv3"
@@ -311,7 +234,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Magic Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Medium), Magic Critical Damage UP (Medium)",
+      "description": "Gain Magic Attack UP(Medium), Magic Critical Damage UP(Medium)",
       "effect": "Magic Attack + (+259), Magic Critical Damage+ (+90)",
       "effectValues": [
         {
@@ -332,7 +255,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Max HP +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Max HP UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Max HP UP(Medium)",
       "effect": "Skill Damage + (+30%), Max HP + (+2896)",
       "effectValues": [
         {

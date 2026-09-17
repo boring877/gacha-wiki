@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -140,7 +62,7 @@ export const skills = {
       "baseDamage": "+110",
       "levelGrowth": "+20",
       "lvl1": "240% + 110",
-      "lvl90": "240% + -869",
+      "lvl90": null,
       "effects": [
         "Burn Lv3"
       ],
@@ -274,7 +196,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Small)",
+      "description": "Gain Max HP UP(Small)",
       "effect": "Max HP + (+1447)",
       "effectValues": [
         {
@@ -289,7 +211,7 @@ export const skills = {
       "slot": 2,
       "name": "Magic Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Critical Damage UP (Small)",
+      "description": "Gain Magic Critical Damage UP(Small)",
       "effect": "Magic Critical Damage+ (+59)",
       "effectValues": [
         {

@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+300",
       "levelGrowth": "+15",
       "lvl1": "350% + 300",
-      "lvl90": "350% + 122",
+      "lvl90": null,
       "effects": [
         "Burn Lv3",
         "Magic Defense- Lv3"
@@ -282,7 +204,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Medium)",
+      "description": "Gain Action Speed UP(Medium)",
       "effect": "Action Speed + (+10)",
       "effectValues": [
         {
@@ -297,7 +219,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Medium), Magic Attack UP (Small)",
+      "description": "Gain Ultimate Damage UP(Medium), Magic Attack UP(Small)",
       "effect": "Ultimate Damage + (+10%), Magic Attack + (+130)",
       "effectValues": [
         {

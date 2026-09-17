@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+500",
       "levelGrowth": "+25",
       "lvl1": "350% + 500",
-      "lvl90": "350% + 486",
+      "lvl90": null,
       "effects": [
         "Block- Lv5"
       ],
@@ -196,7 +118,7 @@ export const skills = {
       "rank": 1,
       "name": "Full Exhaust - Sonic Assault",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy, before Ultimate activationApplies Action Speed UP(LV 1) to self for 10 seconds and Physical Attack UP(LV 1) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, before casting an ultimate, Applies Action Speed UP(LV 1) to self for 10 seconds and Physical Attack UP(LV 1) for 10 seconds",
       "effect": "1200% + 1000",
       "buffEffects": [
         {
@@ -217,7 +139,7 @@ export const skills = {
       "rank": 2,
       "name": "Full Exhaust - Sonic Assault",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy, before Ultimate activationApplies Action Speed UP(LV 2) to self for 10 seconds and Physical Attack UP(LV 2) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, before casting an ultimate, Applies Action Speed UP(LV 2) to self for 10 seconds and Physical Attack UP(LV 2) for 10 seconds",
       "effect": "1440% + 1200",
       "buffEffects": [
         {
@@ -238,7 +160,7 @@ export const skills = {
       "rank": 3,
       "name": "Full Exhaust - Sonic Assault",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy, before Ultimate activationApplies Action Speed UP(LV 3) to self for 10 seconds and Physical Attack UP(LV 3) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, before casting an ultimate, Applies Action Speed UP(LV 3) to self for 10 seconds and Physical Attack UP(LV 3) for 10 seconds",
       "effect": "1620% + 1400",
       "buffEffects": [
         {
@@ -259,7 +181,7 @@ export const skills = {
       "rank": 4,
       "name": "Full Exhaust - Sonic Assault",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy, before Ultimate activationApplies Action Speed UP(LV 4) to self for 10 seconds and Physical Attack UP(LV 4) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, before casting an ultimate, Applies Action Speed UP(LV 4) to self for 10 seconds and Physical Attack UP(LV 4) for 10 seconds",
       "effect": "1739% + 1550",
       "buffEffects": [
         {
@@ -280,7 +202,7 @@ export const skills = {
       "rank": 5,
       "name": "Full Exhaust - Sonic Assault",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy, before Ultimate activationApplies Action Speed UP(LV 5) to self for 10 seconds and Physical Attack UP(LV 5) for 10 seconds",
+      "description": "Deals physical damage to the nearest enemy, before casting an ultimate, Applies Action Speed UP(LV 5) to self for 10 seconds and Physical Attack UP(LV 5) for 10 seconds",
       "effect": "1800% + 1700",
       "buffEffects": [
         {
@@ -303,7 +225,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +",
       "icon": "skill001/skill1003",
-      "description": "Gain Action Speed UP (Large), Action Speed UP",
+      "description": "Gain Action Speed UP(Large), after casting an ultimate, self 5% Action Speed UP(stackable up to 20%)",
       "effect": "Action Speed + (+15)",
       "effectValues": [
         {
@@ -318,7 +240,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Physical Critical Damage UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {

@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -255,7 +177,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Defense+",
       "icon": "skill001/skill1002",
-      "description": "Gain Magic Defense UP (Small)",
+      "description": "Gain Magic Defense UP(Small)",
       "effect": "Magic Defense+ (+70)",
       "effectValues": [
         {
@@ -270,7 +192,7 @@ export const skills = {
       "slot": 2,
       "name": "Paralysis Resistance LvMax",
       "icon": "skill001/skill1002",
-      "description": "Gain Paralysis Resistance UP",
+      "description": "Gain Paralysis Resistance 1%UP",
       "effect": "Paralysis Resistance LvMax (+1%)",
       "effectValues": [
         {

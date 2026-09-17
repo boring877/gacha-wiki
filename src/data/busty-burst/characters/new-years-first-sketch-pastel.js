@@ -50,84 +50,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -143,7 +65,7 @@ export const skills = {
       "baseDamage": "+600",
       "levelGrowth": "+40",
       "lvl1": "2000% + 600",
-      "lvl90": "2000% + 608",
+      "lvl90": null,
       "effects": [
         "Debuff Resistance Lv2",
         "Accuracy + Lv3"
@@ -178,7 +100,7 @@ export const skills = {
       "baseDamage": "+120",
       "levelGrowth": "+6",
       "lvl1": "110% + 120",
-      "lvl90": "110% + -58",
+      "lvl90": null,
       "effects": [
         "Physical Attack - Lv4",
         "Magic Attack - Lv4"
@@ -314,7 +236,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Max HP +",
       "icon": "skill001/skill1003",
-      "description": "Gain Action Speed UP (Medium), Max HP UP (Large)",
+      "description": "Gain Action Speed UP(Medium), Max HP UP(Large)",
       "effect": "Action Speed + (+10), Max HP + (+3444)",
       "effectValues": [
         {
@@ -335,7 +257,7 @@ export const skills = {
       "slot": 2,
       "name": "Block+, Max HP +",
       "icon": "skill001/skill1007",
-      "description": "Gain Block UP (Medium), Max HP UP (Medium)",
+      "description": "All allies receive Block UP(Medium), Max HP UP(Medium)",
       "effect": "Block+ (+15), Max HP + (+2896)",
       "effectValues": [
         {

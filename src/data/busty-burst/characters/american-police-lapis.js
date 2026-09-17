@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -176,7 +98,7 @@ export const skills = {
       "baseDamage": "+150",
       "levelGrowth": "+20",
       "lvl1": "285% + 150",
-      "lvl90": "285% + 138",
+      "lvl90": null,
       "effects": [
         "Freeze LvMax",
         "Block- Lv4"
@@ -312,7 +234,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Magic Attack UP(Large), Accuracy UP(Medium)",
       "effect": "Magic Attack + (+389), Accuracy + (+20)",
       "effectValues": [
         {
@@ -333,7 +255,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Skill Enhancement Regol Cost DOWNWater",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Regol cost for enhancing Water Type Paladin skills -%",
+      "description": "Gain Skill Damage UP(Large), Regol cost for enhancing Water Type Paladin skills -5%",
       "effect": "Skill Damage + (+30%), Skill Enhancement Regol Cost DOWNWater (+5%)",
       "effectValues": [
         {

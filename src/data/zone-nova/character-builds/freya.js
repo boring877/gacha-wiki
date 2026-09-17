@@ -219,7 +219,7 @@ export const freyaBuild = {
   },
   teamSkill: {
     name: 'Combination Skill',
-    activationCondition: 'When the team contains 2 [Asa] characters or 2 [Ice] characters',
+    activationCondition: 'When the team contains 2 [A.S.A] characters or 2 [Ice] characters',
     effects: [
       'Critical Rate increases by 7.5%',
       'At combat start: For every 15% Critical Rate, gain 7.5% Critical Damage (maximum 6 stacks, up to 45% bonus)',

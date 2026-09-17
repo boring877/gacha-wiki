@@ -1,0 +1,170 @@
+---
+// Official Art gallery: art posted on the game's official X accounts, harvested with the
+// Internet Archive (both accounts delete old posts). Sections: intro cards per character,
+// JP-only cards, ultimate reveal art, and game event/banner/campaign art.
+import CharacterDatabaseLayout from '../../../layouts/busty-burst/CharacterDatabaseLayout.astro';
+import { BB_X_CARDS, BB_X_JP_ONLY_CARDS, BB_X_VIDEO_ART, BB_X_GAME_ART } from '../../../data/busty-burst/x-art.js';
+import { R2 } from '../../../data/busty-burst/image-manifest.js';
+import { getAllCharacterData } from '../../../data/busty-burst/character-database.js';
+
+import '../../../styles/games/busty-burst/busty-burst-official-art.css';
+
+const nameBySlug = new Map(
+  getAllCharacterData().map((c) => [c.slug, c.displayName || c.name || c.slug])
+);
+
+// One block per character (EN card first, then JP), newest character first
+const charBlocks = Object.entries(BB_X_CARDS)
+  .map(([slug, cards]) => ({
+    slug,
+    name: nameBySlug.get(slug) || slug,
+    cards: cards.slice().sort((a, b) => (a.lang === b.lang ? b.date.localeCompare(a.date) : a.lang === 'en' ? -1 : 1)),
+    newest: cards.reduce((m, c) => (c.date > m ? c.date : m), ''),
+  }))
+  .sort((a, b) => b.newest.localeCompare(a.newest) || a.name.localeCompare(b.name));
+
+// Ultimate reveal (video thumbnail) art blocks, newest first
+const videoBlocks = Object.entries(BB_X_VIDEO_ART)
+  .map(([slug, items]) => ({
+    slug,
+    name: nameBySlug.get(slug) || slug,
+    items: items.slice().sort((a, b) => b.date.localeCompare(a.date)),
+    newest: items.reduce((m, c) => (c.date > m ? c.date : m), ''),
+  }))
+  .sort((a, b) => b.newest.localeCompare(a.newest) || a.name.localeCompare(b.name));
+
+const KIND_LABELS = {
+  banner: 'Summon',
+  event: 'Event',
+  campaign: 'Campaign',
+  video: 'Video',
+  misc: 'Other',
+};
+
+const gameArt = BB_X_GAME_ART;
+const jpOnly = BB_X_JP_ONLY_CARDS;
+---
+
+<CharacterDatabaseLayout
+  title="Official Art | Busty Burst"
+  description="All official art from the Busty Burst X accounts: character introduction cards, ultimate reveal art, and event or campaign illustrations for EN and JP releases."
+  gameTitle="Official Art"
+>
+  <div class="bb-xart-page">
+    <p class="bb-xart-intro">
+      Art posted on the official X accounts
+      (<a href="https://x.com/BurstBusty82601" rel="noopener noreferrer" target="_blank">@BurstBusty82601</a>,
+      <a href="https://x.com/kyonyuburst" rel="noopener noreferrer" target="_blank">@kyonyuburst</a>).
+      Click a card's name to open that paladin's page.
+    </p>
+
+    <section id="intro-cards" class="bb-xart-section">
+      <h2 class="bb-xart-heading">Character Introduction Cards</h2>
+      <div class="bb-xart-grid">
+        {charBlocks.map((block) => (
+          <div class="bb-xart-card">
+            <a class="bb-xart-name" href={`/guides/busty-burst/characters/${block.slug}/`}>{block.name}</a>
+            <div class="bb-xart-card-images">
+              {block.cards.map((card) => (
+                <figure class="bb-xart-figure">
+                  <img
+                    src={`${R2}/${card.src}`}
+                    alt={`${block.name} Paladin Introduction card (${card.lang.toUpperCase()})`}
+                    loading="lazy"
+                    decoding="async"
+                    width={900}
+                    height={1200}
+                  />
+                  <figcaption class="bb-xart-figure-caption">
+                    <span class={`bb-xart-lang ${card.lang}`}>{card.lang.toUpperCase()}</span>
+                    <span class="bb-xart-date">{card.date}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="jp-only" class="bb-xart-section">
+      <h2 class="bb-xart-heading">Japan-Server Only</h2>
+      <p class="bb-xart-note">Characters and variants that have not released on the global server yet.</p>
+      <div class="bb-xart-grid">
+        {jpOnly.map((card) => (
+          <div class="bb-xart-card">
+            <span class="bb-xart-name bb-xart-name-plain">{card.name}</span>
+            <div class="bb-xart-card-images">
+              <figure class="bb-xart-figure">
+                <img
+                  src={`${R2}/${card.src}`}
+                  alt={`${card.name} Paladin Introduction card (JP)`}
+                  loading="lazy"
+                  decoding="async"
+                  width={900}
+                  height={1200}
+                />
+                <figcaption class="bb-xart-figure-caption">
+                  <span class="bb-xart-lang jp">JP</span>
+                  <span class="bb-xart-date">{card.date}</span>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="ultimate-art" class="bb-xart-section">
+      <h2 class="bb-xart-heading">Ultimate Reveal Art</h2>
+      <p class="bb-xart-note">Thumbnails from the official ultimate skill reveal videos.</p>
+      <div class="bb-xart-grid">
+        {videoBlocks.map((block) => (
+          <div class="bb-xart-card">
+            <a class="bb-xart-name" href={`/guides/busty-burst/characters/${block.slug}/`}>{block.name}</a>
+            <div class="bb-xart-card-images">
+              {block.items.map((item) => (
+                <figure class="bb-xart-figure">
+                  <img
+                    src={`${R2}/${item.src}`}
+                    alt={`${block.name} ultimate skill reveal art`}
+                    loading="lazy"
+                    decoding="async"
+                    width={900}
+                    height={1200}
+                  />
+                  <figcaption class="bb-xart-figure-caption">
+                    <span class={`bb-xart-lang ${item.lang}`}>{item.lang.toUpperCase()}</span>
+                    <span class="bb-xart-date">{item.date}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="game-art" class="bb-xart-section">
+      <h2 class="bb-xart-heading">Events, Summons &amp; Campaigns</h2>
+      <p class="bb-xart-note">Official banner and campaign illustrations, newest first.</p>
+      <div class="bb-xart-game-grid">
+        {gameArt.map((item) => (
+          <figure class="bb-xart-game-item">
+            <img
+              src={`${R2}/${item.src}`}
+              alt={item.caption || 'Official Busty Burst art'}
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption class="bb-xart-game-caption">
+              <span class={`bb-xart-kind bb-xart-kind-${item.kind}`}>{KIND_LABELS[item.kind] || 'Other'}</span>
+              <span class="bb-xart-kind-date">{item.date}</span>
+              {item.caption && <span class="bb-xart-kind-text">{item.caption}</span>}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  </div>
+</CharacterDatabaseLayout>

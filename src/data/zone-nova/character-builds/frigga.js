@@ -224,7 +224,7 @@ export const friggaChaosBuild = {
   },
   teamSkill: {
     name: 'Divine Protection',
-    activationCondition: 'Team contains 2 [Asa] characters or 2 [Chaos] characters',
+    activationCondition: 'Team contains 2 [A.S.A] characters or 2 [Chaos] characters',
     effects: [
       'After combat starts, reduces total damage dealt by all enemy units by 2.5%',
       'For every 1000 attack power Frigga has, this effect increases by 100% (doubles), maximum increase of 300%',

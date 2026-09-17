@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -142,7 +64,7 @@ export const skills = {
       "baseDamage": "+200",
       "levelGrowth": "+20",
       "lvl1": "350% + 200",
-      "lvl90": "350% + 186",
+      "lvl90": null,
       "effects": [
         "Cleanse",
         "Block- Lv5"
@@ -170,7 +92,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies HP Regeneration 5%+150 to self for 5 seconds Hit-Based Shield(35%+10 hit(s)) for 10 seconds and Debuff Resistance 70%UP for 10 seconds",
       "descriptionLv1": "Applies HP Regeneration 5%+150 to self for 5 seconds Hit-Based Shield(35%+10 hit(s)) for 10 seconds and Debuff Resistance 70%UP for 10 seconds",
-      "descriptionLv90": "Applies HP Regeneration 5%+150 to self for 5 seconds Hit-Based Shield(35%+10 hit(s)) for 10 seconds and Debuff Resistance 70%UP for 10 seconds",
+      "descriptionLv90": "Applies HP Regeneration 5%+780 to self for 5 seconds Hit-Based Shield(35%+10 hit(s)) for 10 seconds and Debuff Resistance 70%UP for 10 seconds",
       "target": "Self",
       "castTime": 1.22,
       "damageScaling": null,
@@ -189,7 +111,8 @@ export const skills = {
           "value": 5,
           "type": "percent",
           "duration": 5,
-          "levelGrowth": 7.0
+          "flatValue": 150,
+          "flatGrowth": 7.0
         },
         {
           "name": "Hit-Based Shield LvMax",
@@ -349,7 +272,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Debuff Resistance +",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Large), Debuff Resistance UP (Small)",
+      "description": "Gain Max HP UP(Large), Debuff Resistance UP(Small)",
       "effect": "Max HP + (+3444)",
       "effectValues": [
         {
@@ -364,7 +287,7 @@ export const skills = {
       "slot": 2,
       "name": "Block+, Max HP +",
       "icon": "skill001/skill1003",
-      "description": "Gain Block UP (Small), Max HP UP (Large)",
+      "description": "All allies receive Block UP(Small), Max HP UP(Large)",
       "effect": "Block+ (+10), Max HP + (+3444)",
       "effectValues": [
         {

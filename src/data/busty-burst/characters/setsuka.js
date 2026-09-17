@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -150,7 +72,7 @@ export const skills = {
       "icon": "skill001/skill0013",
       "description": "Applies Physical Attack 20%+40 UP to self for 8 seconds and Physical Critical Damage 50 UP for 8 seconds",
       "descriptionLv1": "Applies Physical Attack 20%+40 UP to self for 8 seconds and Physical Critical Damage 50 UP for 8 seconds",
-      "descriptionLv90": "Applies Physical Attack 20%+850 UP to self for 8 seconds and Physical Critical Damage 50 UP for 8 seconds",
+      "descriptionLv90": "Applies Physical Attack 20%+850 UP to self for 8 seconds and Physical Critical Damage 680 UP for 8 seconds",
       "target": "Self",
       "castTime": 0.98,
       "damageScaling": null,
@@ -175,7 +97,8 @@ export const skills = {
           "value": 50,
           "type": "percent",
           "duration": 8,
-          "levelGrowth": 7.0
+          "flatValue": 50,
+          "flatGrowth": 7.0
         }
       ],
       "duration": 8
@@ -263,7 +186,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Medium), Physical Critical Damage UP (Large)",
+      "description": "Gain Physical Attack UP(Medium), Physical Critical Damage UP(Large)",
       "effect": "Physical Attack + (+259), Physical Critical Damage+ (+176%)",
       "effectValues": [
         {
@@ -284,7 +207,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Physical Attack UP(Medium)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {

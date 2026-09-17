@@ -280,6 +280,7 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
           { name: 'Stats', href: '/guides/busty-burst/character-stats/' },
           { name: 'Support Stats', href: '/guides/busty-burst/support-stats/' },
           { name: 'Support Bonus', href: '/guides/busty-burst/support-bonus/' },
+          { name: 'Official Art', href: '/guides/busty-burst/official-art/' },
         ],
       },
       {

@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -211,7 +133,7 @@ export const skills = {
       "rank": 1,
       "name": "Ah wah wah, I'm falling!?",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds, before Ultimate activationself 10s Physical Attack UP(LV 1)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds, before casting an ultimate, self 10s Physical Attack UP(LV 1)",
       "effect": "1100% + 1000",
       "buffEffects": [
         {
@@ -232,7 +154,7 @@ export const skills = {
       "rank": 2,
       "name": "Ah wah wah, I'm falling!?",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds, before Ultimate activationself 10s Physical Attack UP(LV 2)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds, before casting an ultimate, self 10s Physical Attack UP(LV 2)",
       "effect": "1320% + 1200",
       "buffEffects": [
         {
@@ -253,7 +175,7 @@ export const skills = {
       "rank": 3,
       "name": "Ah wah wah, I'm falling!?",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds, before Ultimate activationself 10s Physical Attack UP(LV 3)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds, before casting an ultimate, self 10s Physical Attack UP(LV 3)",
       "effect": "1470% + 1350",
       "buffEffects": [
         {
@@ -274,7 +196,7 @@ export const skills = {
       "rank": 4,
       "name": "Ah wah wah, I'm falling!?",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds, before Ultimate activationself 10s Physical Attack UP(LV 4)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds, before casting an ultimate, self 10s Physical Attack UP(LV 4)",
       "effect": "1590% + 1500",
       "buffEffects": [
         {
@@ -295,7 +217,7 @@ export const skills = {
       "rank": 5,
       "name": "Ah wah wah, I'm falling!?",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds, before Ultimate activationself 10s Physical Attack UP(LV 5)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 5 seconds, before casting an ultimate, self 10s Physical Attack UP(LV 5)",
       "effect": "1700% + 1600",
       "buffEffects": [
         {
@@ -318,7 +240,7 @@ export const skills = {
       "slot": 1,
       "name": "Accuracy +, MP Recovery",
       "icon": "skill001/skill1001",
-      "description": "Gain Accuracy UP (Medium), MP Recovery",
+      "description": "Gain Accuracy UP(Medium), after casting an ultimate, self MP Recovery 200",
       "effect": "Accuracy + (+20), MP Recovery (+200%)",
       "effectValues": [
         {
@@ -339,7 +261,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Physical Critical Damage UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {

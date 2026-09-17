@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -140,7 +62,7 @@ export const skills = {
       "baseDamage": "+50",
       "levelGrowth": "+6",
       "lvl1": "100% + 50",
-      "lvl90": "100% + 36",
+      "lvl90": null,
       "effects": [
         "Action Speed - Lv5",
         "Block- Lv5"
@@ -168,7 +90,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "All allies 6s Physical Critical Damage 40 UP and Magic Critical Damage 40 UP for 6 seconds",
       "descriptionLv1": "All allies 6s Physical Critical Damage 40 UP and Magic Critical Damage 40 UP for 6 seconds",
-      "descriptionLv90": "All allies 6s Physical Critical Damage 490 UP and Magic Critical Damage 40 UP for 6 seconds",
+      "descriptionLv90": "All allies 6s Physical Critical Damage 490 UP and Magic Critical Damage 490 UP for 6 seconds",
       "target": "All Allies",
       "castTime": 1.08,
       "damageScaling": null,
@@ -186,6 +108,8 @@ export const skills = {
           "value": 40,
           "type": "percent",
           "duration": 6,
+          "flatValue": 40,
+          "flatGrowth": 5.0,
           "levelGrowth": 5.0
         },
         {
@@ -311,7 +235,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Critical Damage+, Magic Critical Damage+",
       "icon": "skill001/skill1006",
-      "description": "Gain Physical Critical Damage UP (Medium), Magic Critical Damage UP (Medium)",
+      "description": "Middle Row allies receive Physical Critical Damage UP(Medium) and Magic Critical Damage UP(Medium)",
       "effect": "Physical Critical Damage+ (+90%), Magic Critical Damage+ (+90)",
       "effectValues": [
         {
@@ -332,7 +256,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Action Speed +",
       "icon": "skill001/skill1005",
-      "description": "Gain Skill Damage UP (Medium), Action Speed UP (Small)",
+      "description": "Middle Row allies receive Skill Damage UP(Medium) and Action Speed UP(Small)",
       "effect": "Skill Damage + (+20%), Action Speed + (+5)",
       "effectValues": [
         {

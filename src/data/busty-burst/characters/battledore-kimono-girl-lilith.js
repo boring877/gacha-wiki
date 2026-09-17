@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+350",
       "levelGrowth": "+20",
       "lvl1": "350% + 350",
-      "lvl90": "350% + 338",
+      "lvl90": null,
       "effects": [
         "Block- Lv4",
         "Accuracy - Lv4"
@@ -349,7 +271,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, MP Recovery",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Large), MP Recovery",
+      "description": "Gain Magic Attack UP(Large), after casting an ultimate, self MP Recovery 200",
       "effect": "Magic Attack + (+389), MP Recovery (+200%)",
       "effectValues": [
         {
@@ -370,7 +292,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Magic Attack UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Magic Attack UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Magic Attack + (+259)",
       "effectValues": [
         {

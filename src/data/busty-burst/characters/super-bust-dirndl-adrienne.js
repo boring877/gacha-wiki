@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+200",
       "levelGrowth": "+20",
       "lvl1": "320% + 200",
-      "lvl90": "320% + 22",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv4"
       ],
@@ -239,7 +161,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Medium)",
+      "description": "Gain Physical Attack UP(Medium)",
       "effect": "Physical Attack + (+259)",
       "effectValues": [
         {
@@ -254,7 +176,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Medium), Physical Attack UP (Small)",
+      "description": "Gain Ultimate Damage UP(Medium), Physical Attack UP(Small)",
       "effect": "Ultimate Damage + (+10%), Physical Attack + (+130)",
       "effectValues": [
         {

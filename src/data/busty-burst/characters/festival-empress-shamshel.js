@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -303,7 +225,7 @@ export const skills = {
       "slot": 1,
       "name": "Charm Resistance LvMax, Magic Attack +",
       "icon": "skill001/skill1003",
-      "description": "Gain Charm Resistance UP, Magic Attack UP (Medium)",
+      "description": "Gain Charm Resistance 1%UP, Magic Attack UP(Medium)",
       "effect": "Charm Resistance LvMax (+1%), Magic Attack + (+259)",
       "effectValues": [
         {
@@ -324,7 +246,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Accuracy +",
       "icon": "skill001/skill1005",
-      "description": "Gain Skill Damage UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Accuracy UP(Medium)",
       "effect": "Skill Damage + (+30%), Accuracy + (+20)",
       "effectValues": [
         {

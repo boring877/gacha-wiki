@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -294,7 +216,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Critical Damage+, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Critical Damage UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Physical Critical Damage UP(Large), Accuracy UP(Medium)",
       "effect": "Physical Critical Damage+ (+176%), Accuracy + (+20)",
       "effectValues": [
         {
@@ -315,7 +237,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Large)",
+      "description": "Gain Skill Damage UP(Large), Physical Attack UP(Large)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {

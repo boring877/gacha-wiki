@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+50",
       "levelGrowth": "+6",
       "lvl1": "90% + 50",
-      "lvl90": "90% + 38",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv4",
         "Accuracy - Lv4"
@@ -170,7 +92,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Physical Attack 15%+30 UP to all allies for 10 seconds and Physical Critical Damage 40 UP for 10 seconds",
       "descriptionLv1": "Applies Physical Attack 15%+30 UP to all allies for 10 seconds and Physical Critical Damage 40 UP for 10 seconds",
-      "descriptionLv90": "Applies Physical Attack 15%+480 UP to all allies for 10 seconds and Physical Critical Damage 40 UP for 10 seconds",
+      "descriptionLv90": "Applies Physical Attack 15%+480 UP to all allies for 10 seconds and Physical Critical Damage 490 UP for 10 seconds",
       "target": "All Allies",
       "castTime": 1.08,
       "damageScaling": null,
@@ -195,7 +117,8 @@ export const skills = {
           "value": 40,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 5.0
+          "flatValue": 40,
+          "flatGrowth": 5.0
         }
       ],
       "duration": 10
@@ -313,7 +236,7 @@ export const skills = {
       "slot": 1,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Small), Physical Attack UP (Small)",
+      "description": "All allies receive Skill Damage UP(Small), Physical Attack UP(Small)",
       "effect": "Skill Damage + (+10%), Physical Attack + (+130)",
       "effectValues": [
         {
@@ -334,7 +257,7 @@ export const skills = {
       "slot": 2,
       "name": "Block+, Action Speed +",
       "icon": "skill001/skill1007",
-      "description": "Gain Block UP (Small), Action Speed UP (Medium)",
+      "description": "All allies receive Block UP(Small), Action Speed UP(Medium)",
       "effect": "Block+ (+10), Action Speed + (+10)",
       "effectValues": [
         {

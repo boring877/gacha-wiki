@@ -50,84 +50,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -197,7 +119,8 @@ export const skills = {
           "value": 15,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 2000.0
+          "flatValue": 9999,
+          "flatGrowth": 2000.0
         },
         {
           "name": "Shield",
@@ -358,7 +281,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, MP Recovery",
       "icon": "skill001/skill1005",
-      "description": "Gain Action Speed UP (Large), MP Recovery",
+      "description": "Gain Action Speed UP(Large), after casting a skill, self MP Recovery 30",
       "effect": "Action Speed + (+15), MP Recovery (+30%)",
       "effectValues": [
         {
@@ -379,7 +302,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Spirit Energy",
       "icon": "skill001/skill1005",
-      "description": "Gain Ultimate Damage UP (Small), MP Regeneration (Cannot be Cleansed)",
+      "description": "All allies receive Ultimate Damage UP(Small), after casting an ultimate, self gains [Spirit]+1",
       "effect": "Ultimate Damage + (+5%), Spirit Energy (+5)",
       "effectValues": [
         {

@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+100",
       "levelGrowth": "+6",
       "lvl1": "100% + 100",
-      "lvl90": "100% + 88",
+      "lvl90": null,
       "effects": [
         "Magic Type Damage Taken + Lv3",
         "Block- Lv4"
@@ -167,9 +89,9 @@ export const skills = {
       "slot": 3,
       "name": "Water Gate Blessing",
       "icon": "skill001/skill0019",
-      "description": "Applies Accuracy 9 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 15 seconds, when team has-type 3 when-type 10s Magic Type ATK 20%UP",
-      "descriptionLv1": "Applies Accuracy 9 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 15 seconds, when team has-type 3 when-type 10s Magic Type ATK 20%UP",
-      "descriptionLv90": "Applies Accuracy 18 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 15 seconds, when team has-type 3 when-type 10s Magic Type ATK 20%UP",
+      "description": "Applies Accuracy 9 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 15 seconds, when the party has 3+ Dark allies, Dark characters gain 10s Magic Type ATK 20%UP",
+      "descriptionLv1": "Applies Accuracy 9 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 15 seconds, when the party has 3+ Dark allies, Dark characters gain 10s Magic Type ATK 20%UP",
+      "descriptionLv90": "Applies Accuracy 18 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 31503 hit(s)) for 15 seconds, when the party has 3+ Dark allies, Dark characters gain 10s Magic Type ATK 20%UP",
       "target": "All Allies",
       "castTime": 1.3,
       "damageScaling": null,
@@ -195,7 +117,8 @@ export const skills = {
           "value": 30,
           "type": "percent",
           "duration": 15,
-          "levelGrowth": 350.0
+          "flatValue": 3,
+          "flatGrowth": 350.0
         },
         {
           "name": "Magic Type ATK + Lv5",
@@ -349,7 +272,7 @@ export const skills = {
       "slot": 1,
       "name": "Healing Received +, Max HP +",
       "icon": "skill001/skill1008",
-      "description": "Gain Healing Received UP (Tiny), Max HP UP (Small)",
+      "description": "All allies receive Healing Received UP(Tiny), Max HP UP(Small)",
       "effect": "Healing Received + (+10%), Max HP + (+1447)",
       "effectValues": [
         {
@@ -370,7 +293,7 @@ export const skills = {
       "slot": 2,
       "name": "Action Speed +, Damage UP(Cannot be Cleansed)",
       "icon": "skill001/skill1005",
-      "description": "Gain Action Speed UP (Medium), Damage UP (Cannot be Cleansed)",
+      "description": "All allies receive Action Speed UP(Medium), when the party has 3+ Dark allies, Dark characters gain Damage 20%UP(Cannot be Cleansed)",
       "effect": "Action Speed + (+10), Damage UP(Cannot be Cleansed) (+20%)",
       "effectValues": [
         {

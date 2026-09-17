@@ -47,78 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -134,7 +62,7 @@ export const skills = {
       "baseDamage": "+150",
       "levelGrowth": "+15",
       "lvl1": "310% + 150",
-      "lvl90": "310% + -1007",
+      "lvl90": null,
       "effects": [
         "Burn Lv4"
       ],
@@ -155,14 +83,14 @@ export const skills = {
       "icon": "skill001/skill0021",
       "description": "Restores HP to 3 nearest allies and inflicts Hit-Based Physical Damage UP(45%+500, 3 hit(s)) for 10 seconds and Accuracy 9 UP for 10 seconds",
       "descriptionLv1": "Restores HP to 3 nearest allies and inflicts Hit-Based Physical Damage UP(45%+500, 3 hit(s)) for 10 seconds and Accuracy 9 UP for 10 seconds",
-      "descriptionLv90": "Restores HP to 45003 nearest allies and inflicts Hit-Based Physical Damage UP(45%+500, 3 hit(s)) for 10 seconds and Accuracy 18 UP for 10 seconds",
+      "descriptionLv90": "Restores HP to 3 nearest allies and inflicts Hit-Based Physical Damage UP(45%+500, 45003 hit(s)) for 10 seconds and Accuracy 18 UP for 10 seconds",
       "target": "Nearest Ally",
       "castTime": 1.25,
       "damageScaling": "1000% ATK",
       "baseDamage": "+250",
       "levelGrowth": "+20",
       "lvl1": "1000% + 250",
-      "lvl90": "1000% + 258",
+      "lvl90": null,
       "effects": [
         "Hit-Based Physical Damage + Lv4",
         "Accuracy + Lv3"
@@ -268,7 +196,7 @@ export const skills = {
       "slot": 1,
       "name": "Healing Received +",
       "icon": "skill001/skill1008",
-      "description": "Gain Healing Received UP (Tiny)",
+      "description": "All allies receive Healing Received UP(Tiny)",
       "effect": "Healing Received + (+10%)",
       "effectValues": [
         {
@@ -283,7 +211,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Medium), Accuracy UP (Small)",
+      "description": "Gain Ultimate Damage UP(Medium), Accuracy UP(Small)",
       "effect": "Ultimate Damage + (+10%), Accuracy + (+15)",
       "effectValues": [
         {

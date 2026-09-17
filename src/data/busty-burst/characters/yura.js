@@ -47,87 +47,15 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "ケートー",
       "icon": "skill001/skill0005",
-      "description": "1 nearest enemymagic damage and inflicts Magic Defense-25%-60 DOWN for 6 seconds, Magic Defense 150 DOWN(max 450stackable)",
-      "descriptionLv1": "1 nearest enemymagic damage and inflicts Magic Defense-25%-60 DOWN for 6 seconds, Magic Defense 150 DOWN(max 450stackable)",
-      "descriptionLv90": "1 nearest enemymagic damage and inflicts Magic Defense-25%-420 DOWN for 6 seconds, Magic Defense 150 DOWN(max 450stackable)",
+      "description": "1 nearest enemymagic damage and inflicts Magic Defense-25%-60 DOWN for 6 seconds, Magic Defense 150 DOWN(stackable up to 450)",
+      "descriptionLv1": "1 nearest enemymagic damage and inflicts Magic Defense-25%-60 DOWN for 6 seconds, Magic Defense 150 DOWN(stackable up to 450)",
+      "descriptionLv90": "1 nearest enemymagic damage and inflicts Magic Defense-25%-420 DOWN for 6 seconds, Magic Defense 150 DOWN(stackable up to 450)",
       "target": "Nearest Enemy",
       "castTime": 0.55,
       "damageScaling": "420% ATK",
@@ -169,7 +97,7 @@ export const skills = {
       "baseDamage": "+500",
       "levelGrowth": "+20",
       "lvl1": "380% + 500",
-      "lvl90": "380% + 482",
+      "lvl90": null,
       "effects": [
         "Silence",
         "Curse",
@@ -204,7 +132,7 @@ export const skills = {
       "rank": 1,
       "name": "<ruby=></ruby>",
       "icon": "skill001/skill0006_1",
-      "description": "1 nearest enemymagic damage and inflicts BlockDOWN(LV 1) for 10 seconds and Water Type Damage Taken UP(LV 1) for 10 seconds, on Ultimate activation, self 15000magic damageUP(max 75000stackable)",
+      "description": "1 nearest enemymagic damage and inflicts BlockDOWN(LV 1) for 10 seconds and Water Type Damage Taken UP(LV 1) for 10 seconds, on casting an ultimate, self 15000magic damageUP(stackable up to 75000)",
       "effect": "1300% + 1000",
       "buffEffects": [
         {
@@ -231,7 +159,7 @@ export const skills = {
       "rank": 2,
       "name": "<ruby=></ruby>",
       "icon": "skill001/skill0006_2",
-      "description": "1 nearest enemymagic damage and inflicts BlockDOWN(LV 2) for 10 seconds and Water Type Damage Taken UP(LV 2) for 10 seconds, on Ultimate activation, self 18000magic damageUP(max 90000stackable)",
+      "description": "1 nearest enemymagic damage and inflicts BlockDOWN(LV 2) for 10 seconds and Water Type Damage Taken UP(LV 2) for 10 seconds, on casting an ultimate, self 18000magic damageUP(stackable up to 90000)",
       "effect": "1560% + 1200",
       "buffEffects": [
         {
@@ -258,7 +186,7 @@ export const skills = {
       "rank": 3,
       "name": "<ruby=></ruby>",
       "icon": "skill001/skill0006_3",
-      "description": "1 nearest enemymagic damage and inflicts BlockDOWN(LV 3) for 10 seconds and Water Type Damage Taken UP(LV 3) for 10 seconds, on Ultimate activation, self 21000magic damageUP(max 105000stackable)",
+      "description": "1 nearest enemymagic damage and inflicts BlockDOWN(LV 3) for 10 seconds and Water Type Damage Taken UP(LV 3) for 10 seconds, on casting an ultimate, self 21000magic damageUP(stackable up to 105000)",
       "effect": "1760% + 1350",
       "buffEffects": [
         {
@@ -285,7 +213,7 @@ export const skills = {
       "rank": 4,
       "name": "<ruby=></ruby>",
       "icon": "skill001/skill0006_4",
-      "description": "1 nearest enemymagic damage and inflicts BlockDOWN(LV 4) for 10 seconds and Water Type Damage Taken UP(LV 4) for 10 seconds, on Ultimate activation, self 23000magic damageUP(max 115000stackable)",
+      "description": "1 nearest enemymagic damage and inflicts BlockDOWN(LV 4) for 10 seconds and Water Type Damage Taken UP(LV 4) for 10 seconds, on casting an ultimate, self 23000magic damageUP(stackable up to 115000)",
       "effect": "1900% + 1500",
       "buffEffects": [
         {
@@ -312,7 +240,7 @@ export const skills = {
       "rank": 5,
       "name": "<ruby=></ruby>",
       "icon": "skill001/skill0006_5",
-      "description": "1 nearest enemymagic damage and inflicts BlockDOWN(LV 5) for 10 seconds and Water Type Damage Taken UP(LV 5) for 10 seconds, on Ultimate activation, self 25000magic damageUP(max 125000stackable)",
+      "description": "1 nearest enemymagic damage and inflicts BlockDOWN(LV 5) for 10 seconds and Water Type Damage Taken UP(LV 5) for 10 seconds, on casting an ultimate, self 25000magic damageUP(stackable up to 125000)",
       "effect": "2039% + 1600",
       "buffEffects": [
         {
@@ -341,7 +269,7 @@ export const skills = {
       "slot": 1,
       "name": "Ultimate Damage +, Water Type ATK +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Small), Water Type ATK UP",
+      "description": "Gain Ultimate Damage UP(Small), on casting an ultimate, self 5% Water-type Attack UP(stackable up to 25%)",
       "effect": "Ultimate Damage + (+5%), Water Type ATK + (+5%)",
       "effectValues": [
         {
@@ -362,7 +290,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Action Speed UP (Large)",
+      "description": "Gain Skill Damage UP(Large), Action Speed UP(Large)",
       "effect": "Skill Damage + (+30%), Action Speed + (+15)",
       "effectValues": [
         {

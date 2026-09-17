@@ -47,78 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -134,7 +62,7 @@ export const skills = {
       "baseDamage": "+150",
       "levelGrowth": "+6",
       "lvl1": "105% + 150",
-      "lvl90": "105% + -1185",
+      "lvl90": null,
       "effects": [
         "Magic Defense- Lv5",
         "Burn Lv5"
@@ -163,7 +91,7 @@ export const skills = {
       "icon": "skill001/skill0021",
       "description": "Restores HP to 3 nearest allies and inflicts HP Regeneration 4%+100 for 4 seconds, debuff cleanse",
       "descriptionLv1": "Restores HP to 3 nearest allies and inflicts HP Regeneration 4%+100 for 4 seconds, debuff cleanse",
-      "descriptionLv90": "Restores HP to 3 nearest allies and inflicts HP Regeneration 4%+100 for 4 seconds, debuff cleanse",
+      "descriptionLv90": "Restores HP to 3 nearest allies and inflicts HP Regeneration 4%+640 for 4 seconds, debuff cleanse",
       "target": "Nearest Ally",
       "castTime": 1.3,
       "damageScaling": "800% ATK",
@@ -181,7 +109,8 @@ export const skills = {
           "value": 4,
           "type": "percent",
           "duration": 4,
-          "levelGrowth": 6.0
+          "flatValue": 100,
+          "flatGrowth": 6.0
         },
         {
           "name": "Debuff Resistance LvMax",
@@ -198,7 +127,7 @@ export const skills = {
       "rank": 1,
       "name": "カンデェイン・スラッシュ!!",
       "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to 5 nearest enemies, applies 3s, on Ultimate activation, self 10s Magic Attack UP(LV 1), 10s Magic Critical DamageUP(LV 1)",
+      "description": "Deals magic damage to 5 nearest enemies, applies 3s, on casting an ultimate, self 10s Magic Attack UP(LV 1), 10s Magic Critical DamageUP(LV 1)",
       "effect": "200% + 300",
       "buffEffects": [
         {
@@ -225,7 +154,7 @@ export const skills = {
       "rank": 2,
       "name": "カンデェイン・スラッシュ!!",
       "icon": "skill001/skill0006_2",
-      "description": "Deals magic damage to 5 nearest enemies, applies 4s, on Ultimate activation, self 10s Magic Attack UP(LV 2), 10s Magic Critical DamageUP(LV 2)",
+      "description": "Deals magic damage to 5 nearest enemies, applies 4s, on casting an ultimate, self 10s Magic Attack UP(LV 2), 10s Magic Critical DamageUP(LV 2)",
       "effect": "240% + 350",
       "buffEffects": [
         {
@@ -252,7 +181,7 @@ export const skills = {
       "rank": 3,
       "name": "カンデェイン・スラッシュ!!",
       "icon": "skill001/skill0006_3",
-      "description": "Deals magic damage to 5 nearest enemies, applies 4s, on Ultimate activation, self 10s Magic Attack UP(LV 3), 10s Magic Critical DamageUP(LV 3)",
+      "description": "Deals magic damage to 5 nearest enemies, applies 4s, on casting an ultimate, self 10s Magic Attack UP(LV 3), 10s Magic Critical DamageUP(LV 3)",
       "effect": "265% + 390",
       "buffEffects": [
         {
@@ -279,7 +208,7 @@ export const skills = {
       "rank": 4,
       "name": "カンデェイン・スラッシュ!!",
       "icon": "skill001/skill0006_4",
-      "description": "Deals magic damage to 5 nearest enemies, applies 5s, on Ultimate activation, self 10s Magic Attack UP(LV 4), 10s Magic Critical DamageUP(LV 4)",
+      "description": "Deals magic damage to 5 nearest enemies, applies 5s, on casting an ultimate, self 10s Magic Attack UP(LV 4), 10s Magic Critical DamageUP(LV 4)",
       "effect": "290% + 420",
       "buffEffects": [
         {
@@ -306,7 +235,7 @@ export const skills = {
       "rank": 5,
       "name": "カンデェイン・スラッシュ!!",
       "icon": "skill001/skill0006_5",
-      "description": "Deals magic damage to 5 nearest enemies, applies 5s, on Ultimate activation, self 10s Magic Attack UP(LV 5), 10s Magic Critical DamageUP(LV 5)",
+      "description": "Deals magic damage to 5 nearest enemies, applies 5s, on casting an ultimate, self 10s Magic Attack UP(LV 5), 10s Magic Critical DamageUP(LV 5)",
       "effect": "310% + 450",
       "buffEffects": [
         {
@@ -335,7 +264,7 @@ export const skills = {
       "slot": 1,
       "name": "Holy Type ATK +, Healing Received +",
       "icon": "skill001/skill1007",
-      "description": "Gain Holy Type ATK UP (Medium), Healing Received UP (Small)",
+      "description": "When the party has 4+ Light allies, Light allies gain -type All allies receive Holy Type ATK UP(Medium), Healing Received UP(Small)",
       "effect": "Holy Type ATK + (+10%), Healing Received + (+20%)",
       "effectValues": [
         {
@@ -356,7 +285,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Accuracy UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Accuracy + (+20)",
       "effectValues": [
         {

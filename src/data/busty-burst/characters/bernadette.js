@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -134,7 +56,7 @@ export const skills = {
       "icon": "skill001/skill0017",
       "description": "Applies Physical Critical Damage 50 UP to all allies for 12 seconds and Accuracy 11 UP for 12 seconds",
       "descriptionLv1": "Applies Physical Critical Damage 50 UP to all allies for 12 seconds and Accuracy 11 UP for 12 seconds",
-      "descriptionLv90": "Applies Physical Critical Damage 50 UP to all allies for 12 seconds and Accuracy 23 UP for 12 seconds",
+      "descriptionLv90": "Applies Physical Critical Damage 680 UP to all allies for 12 seconds and Accuracy 23 UP for 12 seconds",
       "target": "All Allies",
       "castTime": 0.6,
       "damageScaling": null,
@@ -152,7 +74,8 @@ export const skills = {
           "value": 50,
           "type": "percent",
           "duration": 12,
-          "levelGrowth": 7.0
+          "flatValue": 50,
+          "flatGrowth": 7.0
         },
         {
           "name": "Accuracy + Lv4",
@@ -350,7 +273,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, MP Recovery",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Large), MP Recovery",
+      "description": "Gain Max HP UP(Large), after an ally casts an ultimate, self gains MP Recovery 50",
       "effect": "Max HP + (+3444), MP Recovery (+50%)",
       "effectValues": [
         {
@@ -371,7 +294,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Max HP +",
       "icon": "skill001/skill1005",
-      "description": "Gain Physical Attack UP (Cannot be Cleansed), Max HP UP (Cannot be Cleansed)",
+      "description": "Before casting an ultimate, all allies gain 3% Physical Attack UP(max 15%), 3% Max HP UP(max 15%)",
       "effect": "HP()",
       "effectValues": []
     }

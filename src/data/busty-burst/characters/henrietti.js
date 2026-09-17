@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -135,7 +57,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Physical Healing Shield (300, restores 20%) to all allies for 15 seconds and Physical Healing Shield (300, restores 20%) for 15 seconds",
       "descriptionLv1": "Applies Physical Healing Shield (300, restores 20%) to all allies for 15 seconds and Physical Healing Shield (300, restores 20%) for 15 seconds",
-      "descriptionLv90": "Applies Physical Healing Shield (300, restores 20%) to all allies for 15 seconds and Physical Healing Shield (300, restores 20%) for 15 seconds",
+      "descriptionLv90": "Applies Physical Healing Shield (300, restores 2720%) to all allies for 15 seconds and Physical Healing Shield (300, restores 2720%) for 15 seconds",
       "target": "All Allies",
       "castTime": 1.22,
       "damageScaling": null,
@@ -153,14 +75,16 @@ export const skills = {
           "value": 300,
           "type": "percent",
           "duration": 15,
-          "levelGrowth": 30.0
+          "flatValue": 20,
+          "flatGrowth": 30.0
         },
         {
           "name": "Magic Healing Shield Lv3",
           "value": 300,
           "type": "percent",
           "duration": 15,
-          "levelGrowth": 30.0
+          "flatValue": 20,
+          "flatGrowth": 30.0
         }
       ],
       "duration": 15
@@ -171,7 +95,7 @@ export const skills = {
       "icon": "skill001/skill0021",
       "description": "Restore HP by to nearest 3 allies and inflicts HP Regeneration 5%+150 for 5 seconds",
       "descriptionLv1": "Restore HP by to nearest 3 allies and inflicts HP Regeneration 5%+150 for 5 seconds",
-      "descriptionLv90": "Restore HP by to nearest 3 allies and inflicts HP Regeneration 5%+150 for 5 seconds",
+      "descriptionLv90": "Restore HP by to nearest 3 allies and inflicts HP Regeneration 5%+780 for 5 seconds",
       "target": "Nearest Ally",
       "castTime": 1.22,
       "damageScaling": "800% ATK",
@@ -188,7 +112,8 @@ export const skills = {
           "value": 5,
           "type": "percent",
           "duration": 5,
-          "levelGrowth": 7.0
+          "flatValue": 150,
+          "flatGrowth": 7.0
         }
       ],
       "duration": 5
@@ -306,7 +231,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Medium)",
+      "description": "Gain Max HP UP(Medium)",
       "effect": "Max HP + (+2896)",
       "effectValues": [
         {
@@ -321,7 +246,7 @@ export const skills = {
       "slot": 2,
       "name": "Action Speed +, Debuff Resistance+",
       "icon": "skill001/skill1003",
-      "description": "Gain Action Speed UP (Medium), Debuff Resistance UP (Small)",
+      "description": "Gain Action Speed UP(Medium), Debuff Resistance UP(Small)",
       "effect": "Action Speed + (+10)",
       "effectValues": [
         {

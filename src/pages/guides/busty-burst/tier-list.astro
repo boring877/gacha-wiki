@@ -10,6 +10,7 @@ import {
 } from "../../../data/busty-burst/tier-lists.js";
 import { BUSTY_BURST_PALADINS } from "../../../data/busty-burst/paladins.js";
 import { getSlugByCharacterId } from "../../../data/busty-burst/character-database.js";
+import { R2 } from "../../../components/busty-burst/bb-r2";
 
 // Get all tier lists
 const beginnerElementTierList = getElementTierList("beginner");
@@ -120,6 +121,7 @@ const gameTitle = "Tier List";
         >All Content Tier List</button
       >
       <button class="bb-tab-button" data-tab="sr">SR Only Tier List</button>
+      <button class="bb-tab-button" data-tab="jp">JP Server Meta</button>
     </div>
 
     <!-- Beginner Tier List Tab -->
@@ -299,6 +301,26 @@ const gameTitle = "Tier List";
           <p>Try adjusting your search criteria.</p>
         </div>
       </section>
+    </div>
+
+    <!-- JP Server Meta Tab -->
+    <div id="jp-tab" class="bb-tab-content">
+      <img
+        class="bb-jp-image"
+        src={`${R2}/jp_meta/board-a-full.webp`}
+        alt="JP server community tier list, board A"
+        width="1308"
+        height="601"
+        loading="lazy"
+      />
+      <img
+        class="bb-jp-image"
+        src={`${R2}/jp_meta/board-b-full.webp`}
+        alt="JP server community tier list, board B"
+        width="1314"
+        height="590"
+        loading="lazy"
+      />
     </div>
   </div>
 

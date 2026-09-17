@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -176,7 +98,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Gain MP Recovery 100 and Physical Critical Damage 50 UP for 15 seconds, 15s Hit-Based Physical Damage UP(50%+550, 4 hit(s))",
       "descriptionLv1": "Gain MP Recovery 100 and Physical Critical Damage 50 UP for 15 seconds, 15s Hit-Based Physical Damage UP(50%+550, 4 hit(s))",
-      "descriptionLv90": "Gain MP Recovery 100 and Physical Critical Damage 50 UP for 15 seconds, 15s Hit-Based Physical Damage UP(50%+550, 49504 hit(s))",
+      "descriptionLv90": "Gain MP Recovery 100 and Physical Critical Damage 680 UP for 15 seconds, 15s Hit-Based Physical Damage UP(50%+550, 49504 hit(s))",
       "target": "Self",
       "castTime": 1.15,
       "damageScaling": null,
@@ -201,7 +123,8 @@ export const skills = {
           "value": 50,
           "type": "percent",
           "duration": 15,
-          "levelGrowth": 7.0
+          "flatValue": 50,
+          "flatGrowth": 7.0
         },
         {
           "name": "Hit-Based Physical Damage + Lv5",
@@ -326,7 +249,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP, Physical Critical Damage UP",
+      "description": "After casting a skill, self 60 Physical Critical UP(stackable up to 300), 4% Action Speed UP(stackable up to 20%)",
       "effect": "Physical Critical Damage+ (+60)",
       "effectValues": [
         {
@@ -341,7 +264,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Skill Enhancement Regol Cost DOWNWind",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Regol cost for enhancing Wind type Paladin skills -%",
+      "description": "Gain Ultimate Damage UP(Large), Regol cost for enhancing Wind type Paladin skills -5%",
       "effect": "Ultimate Damage + (+15%), Skill Enhancement Regol Cost DOWNWind (+5%)",
       "effectValues": [
         {

@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -140,7 +62,7 @@ export const skills = {
       "baseDamage": "+150",
       "levelGrowth": "+20",
       "lvl1": "280% + 150",
-      "lvl90": "280% + 136",
+      "lvl90": null,
       "effects": [
         "Stun",
         "Block- Lv5"
@@ -292,7 +214,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Debuff Resistance +",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Medium), Debuff Resistance UP (Small)",
+      "description": "Gain Max HP UP(Medium), Debuff Resistance UP(Small)",
       "effect": "Max HP + (+2896)",
       "effectValues": [
         {
@@ -307,7 +229,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Accuracy +",
       "icon": "skill001/skill1005",
-      "description": "Gain Physical Attack UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Physical Attack UP(Large), Accuracy UP(Medium)",
       "effect": "Physical Attack + (+389), Accuracy + (+20)",
       "effectValues": [
         {

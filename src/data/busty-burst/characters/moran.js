@@ -47,87 +47,15 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "フィジカルリフレクト",
       "icon": "skill001/skill0019",
-      "description": "All allies 6s Physical Shield (Damage Taken 20%+) and Physical Reflect Shield(100%+300) for 6 seconds, 10s Physical Shield (1500)",
-      "descriptionLv1": "All allies 6s Physical Shield (Damage Taken 20%+) and Physical Reflect Shield(100%+300) for 6 seconds, 10s Physical Shield (1500)",
-      "descriptionLv90": "All allies 6s Physical Shield (Damage Taken 20%+) and Physical Reflect Shield(100%+300) for 6 seconds, 10s Physical Shield (1500)",
+      "description": "All allies 6s Physical Shield (Damage Taken 20%+ reduction) and Physical Reflect Shield(100%+300) for 6 seconds, 10s Physical Shield (1500)",
+      "descriptionLv1": "All allies 6s Physical Shield (Damage Taken 20%+ reduction) and Physical Reflect Shield(100%+300) for 6 seconds, 10s Physical Shield (1500)",
+      "descriptionLv90": "All allies 6s Physical Shield (Damage Taken 20%+ reduction) and Physical Reflect Shield(100%+300) for 6 seconds, 10s Physical Shield (1500)",
       "target": "All Allies",
       "castTime": 0.1,
       "damageScaling": null,
@@ -167,9 +95,9 @@ export const skills = {
       "slot": 3,
       "name": "マジックリフレクト",
       "icon": "skill001/skill0019",
-      "description": "All allies 6s Magic Shield (Damage Taken 20%+) and Magic Reflect Shield(100%+300) for 6 seconds, 10s Magic Shield (1500)",
-      "descriptionLv1": "All allies 6s Magic Shield (Damage Taken 20%+) and Magic Reflect Shield(100%+300) for 6 seconds, 10s Magic Shield (1500)",
-      "descriptionLv90": "All allies 6s Magic Shield (Damage Taken 20%+) and Magic Reflect Shield(100%+300) for 6 seconds, 10s Magic Shield (1500)",
+      "description": "All allies 6s Magic Shield (Damage Taken 20%+ reduction) and Magic Reflect Shield(100%+300) for 6 seconds, 10s Magic Shield (1500)",
+      "descriptionLv1": "All allies 6s Magic Shield (Damage Taken 20%+ reduction) and Magic Reflect Shield(100%+300) for 6 seconds, 10s Magic Shield (1500)",
+      "descriptionLv90": "All allies 6s Magic Shield (Damage Taken 20%+ reduction) and Magic Reflect Shield(100%+300) for 6 seconds, 10s Magic Shield (1500)",
       "target": "All Allies",
       "castTime": 0.1,
       "damageScaling": null,
@@ -348,7 +276,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +, Magic Defense+, Debuff Resistance",
       "icon": "skill001/skill1005",
-      "description": "Gain Physical Defense UP (Medium), Magic Defense UP (Medium), Debuff Resistance UP",
+      "description": "All allies receive Physical Defense UP(Medium), Magic Defense UP(Medium), when an enemy casts a skill, all allies 3s Debuff Resistance 30%UP(max once per 15s)",
       "effect": "Physical Defense + (+141), Magic Defense+ (+141)",
       "effectValues": [
         {
@@ -369,7 +297,7 @@ export const skills = {
       "slot": 2,
       "name": "MP Recovery, Shield",
       "icon": "skill001/skill1005",
-      "description": "Gain MP Recovery, Damage Taken -",
+      "description": "All allies damage taken 3000 reduction, when an ally is hit by an attack, All allies receive MP Recovery 200(max once per 20s)",
       "effect": "MP Recovery (+200%), Shield (+99999%)",
       "effectValues": [
         {

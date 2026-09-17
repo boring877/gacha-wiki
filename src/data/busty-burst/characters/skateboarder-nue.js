@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -159,7 +81,8 @@ export const skills = {
           "value": 400,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 30.0
+          "flatValue": 30,
+          "flatGrowth": 30.0
         }
       ],
       "duration": 10
@@ -170,7 +93,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Taunt to self for 12 seconds, all enemies 12s Physical Attack -9%-20 DOWN, 12s Magic Attack -9%-20 DOWN",
       "descriptionLv1": "Applies Taunt to self for 12 seconds, all enemies 12s Physical Attack -9%-20 DOWN, 12s Magic Attack -9%-20 DOWN",
-      "descriptionLv90": "Applies Taunt to self for 12 seconds, all enemies 12s Physical Attack -9%-2000 DOWN, 12s Magic Attack -9%-20 DOWN",
+      "descriptionLv90": "Applies Taunt to self for 12 seconds, all enemies 12s Physical Attack -9%-200 DOWN, 12s Magic Attack -9%-200 DOWN",
       "target": "All Enemies",
       "castTime": 1.0,
       "damageScaling": null,
@@ -350,7 +273,7 @@ export const skills = {
       "slot": 1,
       "name": "Debuff Resistance+, MP Regeneration",
       "icon": "skill001/skill1001",
-      "description": "Gain Debuff Resistance UP (Small), MP Regeneration",
+      "description": "Gain Debuff Resistance UP(Small), within 3s of battle start, self gains MP Regeneration 200",
       "effect": "MP Regeneration (+200%)",
       "effectValues": [
         {
@@ -365,7 +288,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Max HP +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Max HP UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Max HP UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Max HP + (+2896)",
       "effectValues": [
         {

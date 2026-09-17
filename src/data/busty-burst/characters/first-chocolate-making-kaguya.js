@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+500",
       "levelGrowth": "+40",
       "lvl1": "2300% + 500",
-      "lvl90": "2300% + 511",
+      "lvl90": null,
       "effects": [
         "Hit-Based Shield Lv4",
         "Healing Shield Lv5",
@@ -327,7 +249,7 @@ export const skills = {
       "slot": 1,
       "name": "MP Recovery, Shield",
       "icon": "skill001/skill1007",
-      "description": "Gain MP Recovery, Damage Reduction (Cannot be Cleansed)",
+      "description": "After an ally casts a skill Gain MP Recovery 30, before casting a skill, all allies gain 2% damage taken reduction(stackable up to 10%)",
       "effect": "MP Recovery (+30%), Shield (+9999%)",
       "effectValues": [
         {
@@ -348,7 +270,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Attack +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Physical Attack UP (Cannot be Cleansed), Magic Attack UP (Cannot be Cleansed)",
+      "description": "Gain Ultimate Damage UP(Large), and before activating the Ultimate, all allies 5% Physical Attack UP(stackable up to 15%), 5% Magic Attack UP(stackable up to 15%)",
       "effect": "Ultimate Damage + (+15%)",
       "effectValues": [
         {

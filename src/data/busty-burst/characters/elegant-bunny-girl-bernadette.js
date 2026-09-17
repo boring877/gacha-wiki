@@ -49,93 +49,15 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Graceful Bunny, Showdown!!",
       "icon": "skill001/skill0009",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -25%-60 DOWN for 6 seconds and Block-11 DOWN for 6 seconds, self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +50%, 6s Water Type damage taken by damage 20%UP",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -25%-60 DOWN for 6 seconds and Block-11 DOWN for 6 seconds, self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +50%, 6s Water Type damage taken by damage 20%UP",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -25%-420 DOWN for 6 seconds and Block-23 DOWN for 6 seconds, self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +50%, 6s Water Type damage taken by damage 20%UP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -25%-60 DOWN for 6 seconds and Block-11 DOWN for 6 seconds, self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +50%, additional 6s Water Type damage taken by damage 20%UP",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -25%-60 DOWN for 6 seconds and Block-11 DOWN for 6 seconds, self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +50%, additional 6s Water Type damage taken by damage 20%UP",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Defense -25%-420 DOWN for 6 seconds and Block-23 DOWN for 6 seconds, self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +50%, additional 6s Water Type damage taken by damage 20%UP",
       "target": "Back Enemy",
       "castTime": 1.05,
       "damageScaling": "360% ATK",
@@ -176,9 +98,9 @@ export const skills = {
       "slot": 3,
       "name": "GoGo,Bunny's！",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy, applies 3s Blind and Action Speed -20%DOWN for 10 seconds, self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +50%, 3s",
-      "descriptionLv1": "Deals physical damage to the nearest enemy, applies 3s Blind and Action Speed -20%DOWN for 10 seconds, self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +50%, 3s",
-      "descriptionLv90": "Deals physical damage to the nearest enemy, applies 3s Blind and Action Speed -20%DOWN for 10 seconds, self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +50%, 3s",
+      "description": "Deals physical damage to the nearest enemy, applies 3s Blind and Action Speed -20%DOWN for 10 seconds, self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +50%, additional 3s",
+      "descriptionLv1": "Deals physical damage to the nearest enemy, applies 3s Blind and Action Speed -20%DOWN for 10 seconds, self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +50%, additional 3s",
+      "descriptionLv90": "Deals physical damage to the nearest enemy, applies 3s Blind and Action Speed -20%DOWN for 10 seconds, self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +50%, additional 3s",
       "target": "Nearest Enemy",
       "castTime": 1.1,
       "damageScaling": "300% ATK",
@@ -219,7 +141,7 @@ export const skills = {
       "rank": 1,
       "name": "Rabit Rave Recital",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 1) for 10 seconds, all allies 15s Hit-Based Damage UP(LV 1), self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +30%, all allies 10s Water Type ATKUP(LV 1)",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 1) for 10 seconds, all allies 15s Hit-Based Damage UP(LV 1), self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +30%, all allies additional 10s Water-type AttackUP(LV 1)",
       "effect": "400% + 500",
       "buffEffects": [
         {
@@ -246,7 +168,7 @@ export const skills = {
       "rank": 2,
       "name": "Rabit Rave Recital",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 2) for 10 seconds, all allies 15s Hit-Based Damage UP(LV 2), self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +30%, all allies 10s Water Type ATKUP(LV 2)",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 2) for 10 seconds, all allies 15s Hit-Based Damage UP(LV 2), self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +30%, all allies additional 10s Water-type AttackUP(LV 2)",
       "effect": "520% + 600",
       "buffEffects": [
         {
@@ -273,7 +195,7 @@ export const skills = {
       "rank": 3,
       "name": "Rabit Rave Recital",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 3) for 10 seconds, all allies 15s Hit-Based Damage UP(LV 3), self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +30%, all allies 10s Water Type ATKUP(LV 3)",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 3) for 10 seconds, all allies 15s Hit-Based Damage UP(LV 3), self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +30%, all allies additional 10s Water-type AttackUP(LV 3)",
       "effect": "600% + 700",
       "buffEffects": [
         {
@@ -300,7 +222,7 @@ export const skills = {
       "rank": 4,
       "name": "Rabit Rave Recital",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 4) for 10 seconds, all allies 15s Hit-Based Damage UP(LV 4), self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +30%, all allies 10s Water Type ATKUP(LV 4)",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 4) for 10 seconds, all allies 15s Hit-Based Damage UP(LV 4), self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +30%, all allies additional 10s Water-type AttackUP(LV 4)",
       "effect": "660% + 800",
       "buffEffects": [
         {
@@ -327,7 +249,7 @@ export const skills = {
       "rank": 5,
       "name": "Rabit Rave Recital",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 5) for 10 seconds, all allies 15s Hit-Based Damage UP(LV 5), self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +30%, all allies 10s Water Type ATKUP(LV 5)",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Action Speed DOWN(LV 5) for 10 seconds, all allies 15s Hit-Based Damage UP(LV 5), self[Bunny]1 stacks([Bunny]1 stacksaction speed 2%UP, max 10 stacks), [Bunny]at 10 stacks: damage +30%, all allies additional 10s Water-type AttackUP(LV 5)",
       "effect": "700% + 900",
       "buffEffects": [
         {
@@ -356,7 +278,7 @@ export const skills = {
       "slot": 1,
       "name": "Skill Damage +, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Medium), Action Speed UP",
+      "description": "Gain Skill Damage UP(Medium), and before activating the Ultimate, all allies 5% Action Speed UP(stackable up to 15%)",
       "effect": "Skill Damage + (+20%)",
       "effectValues": [
         {
@@ -371,7 +293,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Medium), Action Speed UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Medium), Action Speed UP(Medium)",
       "effect": "Ultimate Damage + (+10%), Action Speed + (+10)",
       "effectValues": [
         {

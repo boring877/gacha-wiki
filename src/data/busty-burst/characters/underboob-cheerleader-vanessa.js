@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -318,7 +240,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Debuff Resistance+",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Large), Debuff Resistance UP (Small)",
+      "description": "Gain Max HP UP(Large), Debuff Resistance UP(Small)",
       "effect": "Max HP + (+3444)",
       "effectValues": [
         {
@@ -333,7 +255,7 @@ export const skills = {
       "slot": 2,
       "name": "MP Recovery+, Magic Attack +",
       "icon": "skill001/skill1007",
-      "description": "Gain MP Recovery, Magic Attack UP (Large)",
+      "description": "Gain MP Recovery 100 before casting a skill. Apply Magic Attack UP(Large) to all allies for 10 seconds before casting an ultimate",
       "effect": "MP Recovery+ (+100%), Magic Attack + (+389)",
       "effectValues": [
         {

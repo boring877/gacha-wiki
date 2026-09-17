@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -160,7 +82,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds. When 3 or more allies with slash weapon, Holy Type ATK 15%UP for 10 seconds",
       "descriptionLv1": "Applies Physical Attack 18%+35 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds. When 3 or more allies with slash weapon, Holy Type ATK 15%UP for 10 seconds",
-      "descriptionLv90": "Applies Physical Attack 18%+665 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds. When 3 or more allies with slash weapon, Holy Type ATK 15%UP for 10 seconds",
+      "descriptionLv90": "Applies Physical Attack 18%+665 UP to self for 10 seconds and Physical Critical Damage 680 UP for 10 seconds. When 3 or more allies with slash weapon, Holy Type ATK 15%UP for 10 seconds",
       "target": "Self",
       "castTime": 1.37,
       "damageScaling": null,
@@ -186,7 +108,8 @@ export const skills = {
           "value": 50,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 7.0
+          "flatValue": 50,
+          "flatGrowth": 7.0
         },
         {
           "name": "Holy Type ATK + Lv4",
@@ -310,7 +233,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Critical Damage+, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Critical Damage UP (Large), Action Speed UP (Medium)",
+      "description": "Gain Physical Critical Damage UP(Large), Action Speed UP(Medium)",
       "effect": "Physical Critical Damage+ (+176%), Action Speed + (+10)",
       "effectValues": [
         {
@@ -331,7 +254,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Physical Attack UP(Medium)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {

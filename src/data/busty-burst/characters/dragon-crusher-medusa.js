@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -140,7 +62,7 @@ export const skills = {
       "baseDamage": "+100",
       "levelGrowth": "+7",
       "lvl1": "120% + 100",
-      "lvl90": "120% + 86",
+      "lvl90": null,
       "effects": [
         "Petrify",
         "Block- Lv5"
@@ -168,7 +90,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Hit-Based Magic Damage UP(60%+600, 4 hit(s)) to self for 15 seconds and Magic Attack 20%+40 UP for 12 seconds and silences all enemies for 1.5 seconds",
       "descriptionLv1": "Applies Hit-Based Magic Damage UP(60%+600, 4 hit(s)) to self for 15 seconds and Magic Attack 20%+40 UP for 12 seconds and silences all enemies for 1.5 seconds",
-      "descriptionLv90": "Applies Hit-Based Magic Damage UP(60%+600, 585004 hit(s)) to self for 15 seconds and Magic Attack 20%+40 UP for 12 seconds and silences all enemies for 1.5 seconds",
+      "descriptionLv90": "Applies Hit-Based Magic Damage UP(60%+600, 54004 hit(s)) to self for 15 seconds and Magic Attack 20%+850 UP for 12 seconds and silences all enemies for 1.5 seconds",
       "target": "Self",
       "castTime": 0.8,
       "damageScaling": null,
@@ -318,7 +240,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Critical Damage+, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Critical Damage UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Magic Critical Damage UP(Large), Accuracy UP(Medium)",
       "effect": "Magic Critical Damage+ (+176), Accuracy + (+20)",
       "effectValues": [
         {
@@ -339,7 +261,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Magic Attack UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Magic Attack UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Magic Attack + (+259)",
       "effectValues": [
         {

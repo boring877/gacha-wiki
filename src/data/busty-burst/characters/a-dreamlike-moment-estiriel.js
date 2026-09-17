@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -349,7 +271,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Large), Magic Attack UP (Cannot be Cleansed)",
+      "description": "Gain Magic Attack UP(Large), after casting a skill, self 3%Magic Attack UP(stackable up to 15%)",
       "effect": "Magic Attack + (+389)",
       "effectValues": [
         {
@@ -364,7 +286,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Accuracy UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Accuracy + (+20)",
       "effectValues": [
         {

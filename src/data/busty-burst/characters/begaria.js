@@ -49,78 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -136,7 +64,7 @@ export const skills = {
       "baseDamage": "+150",
       "levelGrowth": "+3",
       "lvl1": "60% + 150",
-      "lvl90": "60% + -28",
+      "lvl90": null,
       "effects": [
         "Curse",
         "Physical Attack - Lv4",
@@ -352,7 +280,7 @@ export const skills = {
       "slot": 1,
       "name": "Skill Damage +, MP Recovery",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Small), MP Recovery",
+      "description": "Gain Skill Damage UP(Small), after casting a skill, self MP Recovery 50",
       "effect": "Skill Damage + (+10%), MP Recovery (+50%)",
       "effectValues": [
         {
@@ -373,7 +301,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Taunt Resistance LvMax",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Taunt Resistance UP",
+      "description": "Gain Ultimate Damage UP(Large), Taunt Resistance 1%UP",
       "effect": "Ultimate Damage + (+15%), Taunt Resistance LvMax (+1%)",
       "effectValues": [
         {

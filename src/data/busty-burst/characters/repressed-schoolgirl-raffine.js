@@ -50,84 +50,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -143,7 +65,7 @@ export const skills = {
       "baseDamage": "+400",
       "levelGrowth": "+25",
       "lvl1": "350% + 400",
-      "lvl90": "350% + 386",
+      "lvl90": null,
       "effects": [
         "Block- Lv5"
       ],
@@ -305,7 +227,7 @@ export const skills = {
       "slot": 1,
       "name": "Accuracy +, Physical Critical Damage+",
       "icon": "skill001/skill1003",
-      "description": "Gain Accuracy UP (Large), Physical Critical Damage UP",
+      "description": "Gain Accuracy UP(Large), and before activating the Ultimate, self 100 Physical Critical UP(stackable up to 300)",
       "effect": "Accuracy + (+25), Physical Critical Damage+ (+100)",
       "effectValues": [
         {
@@ -326,7 +248,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Physical Critical Damage UP(Medium)",
       "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {

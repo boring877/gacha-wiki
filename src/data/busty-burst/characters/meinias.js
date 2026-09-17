@@ -46,84 +46,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -139,7 +61,7 @@ export const skills = {
       "baseDamage": "+40",
       "levelGrowth": "+6",
       "lvl1": "100% + 40",
-      "lvl90": "100% + 28",
+      "lvl90": null,
       "effects": [
         "Accuracy - Lv4",
         "Block- Lv4"
@@ -281,7 +203,7 @@ export const skills = {
       "slot": 1,
       "name": "Accuracy +, Action Speed +",
       "icon": "skill001/skill1004",
-      "description": "Gain Accuracy UP (Large), Action Speed UP (Medium)",
+      "description": "Gain Accuracy UP(Large), Action Speed UP(Medium)",
       "effect": "Accuracy + (+25), Action Speed + (+10)",
       "effectValues": [
         {
@@ -302,7 +224,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Ultimate Damage +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Medium), Ultimate Damage UP (Large)",
+      "description": "Gain Physical Attack UP(Medium), Ultimate Damage UP(Large)",
       "effect": "Physical Attack + (+259), Ultimate Damage + (+15%)",
       "effectValues": [
         {

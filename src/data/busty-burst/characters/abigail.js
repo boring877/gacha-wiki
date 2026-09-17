@@ -50,84 +50,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -143,7 +65,7 @@ export const skills = {
       "baseDamage": "+200",
       "levelGrowth": "+20",
       "lvl1": "300% + 200",
-      "lvl90": "300% + 182",
+      "lvl90": null,
       "effects": [
         "Cleanse",
         "Paralysis",
@@ -178,7 +100,7 @@ export const skills = {
       "icon": "skill001/skill0021",
       "description": "Restores HP by to the head of the formation. Also applies HP Regeneration 5%+150 for 8 seconds, Debuff Resistance 50%UP for 8 seconds and 25%Damage Reduction for 8 seconds",
       "descriptionLv1": "Restores HP by to the head of the formation. Also applies HP Regeneration 5%+150 for 8 seconds, Debuff Resistance 50%UP for 8 seconds and 25%Damage Reduction for 8 seconds",
-      "descriptionLv90": "Restores HP by to the head of the formation. Also applies HP Regeneration 5%+150 for 8 seconds, Debuff Resistance 50%UP for 8 seconds and 25%Damage Reduction for 8 seconds",
+      "descriptionLv90": "Restores HP by to the head of the formation. Also applies HP Regeneration 5%+780 for 8 seconds, Debuff Resistance 50%UP for 8 seconds and 25%Damage Reduction for 8 seconds",
       "target": "Frontmost Ally",
       "castTime": 1.58,
       "damageScaling": "3500% ATK",
@@ -197,7 +119,8 @@ export const skills = {
           "value": 5,
           "type": "percent",
           "duration": 8,
-          "levelGrowth": 7.0
+          "flatValue": 150,
+          "flatGrowth": 7.0
         },
         {
           "name": "Debuff Resistance Lv3",
@@ -327,7 +250,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Taunt Resistance LvMax",
       "icon": "skill001/skill1003",
-      "description": "Gain Physical Attack UP (Medium), Taunt Resistance UP",
+      "description": "Gain Physical Attack UP(Medium), Taunt Resistance 1%UP",
       "effect": "Physical Attack + (+259), Taunt Resistance LvMax (+1%)",
       "effectValues": [
         {
@@ -348,7 +271,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Extra Large), Magic Attack UP (Extra Large)",
+      "description": "Within 30 seconds of the battle begins, all allies receive Physical Attack UP(Extra Large), Magic Attack UP(Extra Large)",
       "effect": "Physical Attack + (+584), Magic Attack + (+584)",
       "effectValues": [
         {

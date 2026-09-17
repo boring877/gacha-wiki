@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -273,7 +195,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Small)",
+      "description": "Gain Max HP UP(Small)",
       "effect": "Max HP + (+1447)",
       "effectValues": [
         {
@@ -288,7 +210,7 @@ export const skills = {
       "slot": 2,
       "name": "Healing Amount +",
       "icon": "skill001/skill1004",
-      "description": "Gain Healing Amount UP (Small)",
+      "description": "Gain Healing Amount UP(Small)",
       "effect": "Healing Amount + (+10%)",
       "effectValues": [
         {

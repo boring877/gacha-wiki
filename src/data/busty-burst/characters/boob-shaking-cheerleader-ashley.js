@@ -48,93 +48,15 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "St and up yell！",
       "icon": "skill001/skill0019",
-      "description": "All allies 10s Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) and Block 11 UP for 10 seconds, 3%damage taken(max 15%stackable)",
-      "descriptionLv1": "All allies 10s Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) and Block 11 UP for 10 seconds, 3%damage taken(max 15%stackable)",
-      "descriptionLv90": "All allies 10s Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) and Block 23 UP for 10 seconds, 3%damage taken(max 15%stackable)",
+      "description": "All allies 10s Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) and Block 11 UP for 10 seconds, 3%damage taken reduction(stackable up to 15%)",
+      "descriptionLv1": "All allies 10s Hit-Based Healing Shield (30%+40, restores 40%, 4 hit(s)) and Block 11 UP for 10 seconds, 3%damage taken reduction(stackable up to 15%)",
+      "descriptionLv90": "All allies 10s Hit-Based Healing Shield (30%+40, restores 40%, 3604 hit(s)) and Block 23 UP for 10 seconds, 3%damage taken reduction(stackable up to 15%)",
       "target": "All Allies",
       "castTime": 0.85,
       "damageScaling": null,
@@ -153,7 +75,8 @@ export const skills = {
           "value": 30,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 40.0
+          "flatValue": 4,
+          "flatGrowth": 40.0
         },
         {
           "name": "Block+ Lv4",
@@ -175,9 +98,9 @@ export const skills = {
       "slot": 3,
       "name": "Go for it！",
       "icon": "skill001/skill0019",
-      "description": "All allies 10s Action Speed 17%UP and Accuracy 11 UP for 10 seconds, 10000damageUP(max 50000stackable)",
-      "descriptionLv1": "All allies 10s Action Speed 17%UP and Accuracy 11 UP for 10 seconds, 10000damageUP(max 50000stackable)",
-      "descriptionLv90": "All allies 10s Action Speed 17%UP and Accuracy 23 UP for 10 seconds, 10000damageUP(max 50000stackable)",
+      "description": "All allies 10s Action Speed 17%UP and Accuracy 11 UP for 10 seconds, 10000 Damage UP(stackable up to 50000)",
+      "descriptionLv1": "All allies 10s Action Speed 17%UP and Accuracy 11 UP for 10 seconds, 10000 Damage UP(stackable up to 50000)",
+      "descriptionLv90": "All allies 10s Action Speed 17%UP and Accuracy 23 UP for 10 seconds, 10000 Damage UP(stackable up to 50000)",
       "target": "All Allies",
       "castTime": 0.85,
       "damageScaling": null,
@@ -356,7 +279,7 @@ export const skills = {
       "slot": 1,
       "name": "Debuff Resistance+, MP Recovery",
       "icon": "skill001/skill1003",
-      "description": "Gain Debuff Resistance UP (Small), MP Recovery",
+      "description": "Gain Debuff Resistance UP(Small), after casting a skill, self MP Recovery 30",
       "effect": "MP Recovery (+30%)",
       "effectValues": [
         {
@@ -371,7 +294,7 @@ export const skills = {
       "slot": 2,
       "name": "Max HP +, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Max HP UP (Cannot be Cleansed), Action Speed UP (Cannot be Cleansed)",
+      "description": "Before casting an ultimate, all allies gain 4% Max HP UP(stackable up to 20%), 5% Action Speed UP stackable up to 15%",
       "effect": "HP",
       "effectValues": []
     }

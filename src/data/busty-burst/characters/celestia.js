@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -142,7 +64,7 @@ export const skills = {
       "baseDamage": "+110",
       "levelGrowth": "+20",
       "lvl1": "240% + 110",
-      "lvl90": "240% + -68",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv3"
       ],
@@ -257,7 +179,7 @@ export const skills = {
       "slot": 1,
       "name": "Paralysis Resistance LvMax",
       "icon": "skill001/skill1003",
-      "description": "Gain Paralysis Resistance UP",
+      "description": "Gain Paralysis Resistance 1%UP",
       "effect": "Paralysis Resistance LvMax (+1%)",
       "effectValues": [
         {
@@ -272,7 +194,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Max HP +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Medium), Max HP UP (Small)",
+      "description": "Gain Physical Attack UP(Medium), Max HP UP(Small)",
       "effect": "Physical Attack + (+259), Max HP + (+1447)",
       "effectValues": [
         {

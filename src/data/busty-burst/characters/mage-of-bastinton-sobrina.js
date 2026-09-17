@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -140,7 +62,7 @@ export const skills = {
       "baseDamage": "+60",
       "levelGrowth": "+8",
       "lvl1": "85% + 60",
-      "lvl90": "85% + -3500",
+      "lvl90": null,
       "effects": [
         "Freeze Lv5"
       ],
@@ -168,7 +90,7 @@ export const skills = {
       "baseDamage": "+90",
       "levelGrowth": "+8",
       "lvl1": "100% + 90",
-      "lvl90": "100% + 78",
+      "lvl90": null,
       "effects": [
         "Paralysis",
         "Accuracy - Lv4"
@@ -303,7 +225,7 @@ export const skills = {
       "slot": 1,
       "name": "Freeze Resistance LvMax, Paralysis Resistance LvMax",
       "icon": "skill001/skill1003",
-      "description": "Gain Freeze Resistance UP, Paralysis Resistance UP",
+      "description": "Gain Freeze Resistance 1%UP, Paralysis Resistance 1%UP",
       "effect": "Freeze Resistance LvMax (+1%), Paralysis Resistance LvMax (+1%)",
       "effectValues": [
         {
@@ -324,7 +246,7 @@ export const skills = {
       "slot": 2,
       "name": "Magic Attack +, Skill Damage +",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Large), Skill Damage UP (Large)",
+      "description": "Gain Magic Attack UP(Large), Skill Damage UP(Large)",
       "effect": "Magic Attack + (+389), Skill Damage + (+30%)",
       "effectValues": [
         {

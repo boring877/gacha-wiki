@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -135,14 +57,14 @@ export const skills = {
       "icon": "skill001/skill0007",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -9%-20 DOWN for 5 seconds and Magic Attack -9%-20 DOWN for 5 seconds",
       "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Attack -9%-20 DOWN for 5 seconds and Magic Attack -9%-20 DOWN for 5 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Attack -9%-2000 DOWN for 5 seconds and Magic Attack -9%-20 DOWN for 5 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Attack -9%-200 DOWN for 5 seconds and Magic Attack -9%-200 DOWN for 5 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.88,
       "damageScaling": "280% ATK",
       "baseDamage": "+90",
       "levelGrowth": "+15",
       "lvl1": "280% + 90",
-      "lvl90": "280% + -88",
+      "lvl90": null,
       "effects": [
         "Physical Attack - Lv3",
         "Magic Attack - Lv3"
@@ -178,7 +100,7 @@ export const skills = {
       "baseDamage": "+416",
       "levelGrowth": "+60",
       "lvl1": "2000% + 416",
-      "lvl90": "2000% + 429",
+      "lvl90": null,
       "effects": [
         "Block+ Lv5"
       ],
@@ -306,7 +228,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1002",
-      "description": "Gain Physical Defense UP (Small), Magic Defense UP (Small)",
+      "description": "Gain Physical Defense UP(Small), Magic Defense UP(Small)",
       "effect": "Physical Defense + (+70), Magic Defense+ (+70)",
       "effectValues": [
         {
@@ -327,7 +249,7 @@ export const skills = {
       "slot": 2,
       "name": "Max HP +, Block+",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Small), Block UP (Medium)",
+      "description": "Gain Max HP UP(Small), Block UP(Medium)",
       "effect": "Max HP + (+1447), Block+ (+15)",
       "effectValues": [
         {

@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -134,7 +56,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Restores own HP by and inflicts Block 15 UP for 10 seconds and Healing Shield (300, restores 25%) for 10 seconds",
       "descriptionLv1": "Restores own HP by and inflicts Block 15 UP for 10 seconds and Healing Shield (300, restores 25%) for 10 seconds",
-      "descriptionLv90": "Restores own HP by and inflicts Block 33 UP for 10 seconds and Healing Shield (300, restores 25%) for 10 seconds",
+      "descriptionLv90": "Restores own HP by and inflicts Block 33 UP for 10 seconds and Healing Shield (300, restores 2275%) for 10 seconds",
       "target": "Self",
       "castTime": 1.58,
       "damageScaling": "2500% ATK",
@@ -159,7 +81,8 @@ export const skills = {
           "value": 300,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 25.0
+          "flatValue": 25,
+          "flatGrowth": 25.0
         }
       ],
       "duration": 10
@@ -177,7 +100,7 @@ export const skills = {
       "baseDamage": "+100",
       "levelGrowth": "+25",
       "lvl1": "300% + 100",
-      "lvl90": "300% + 82",
+      "lvl90": null,
       "effects": [
         "Accuracy - LvMax"
       ],
@@ -305,7 +228,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Max HP +",
       "icon": "skill001/skill1003",
-      "description": "Gain Physical Attack UP (Medium), Max HP UP (Large)",
+      "description": "Gain Physical Attack UP(Medium), Max HP UP(Large)",
       "effect": "Physical Attack + (+159), Max HP + (+3444)",
       "effectValues": [
         {
@@ -326,7 +249,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Defense +, Block+",
       "icon": "skill001/skill1006",
-      "description": "Gain Physical Defense UP (Medium), Block UP (Large)",
+      "description": "Front Row allies receive Physical Defense UP(Medium) and Block UP(Large)",
       "effect": "Physical Defense + (+141), Block+ (+20)",
       "effectValues": [
         {
@@ -347,7 +270,7 @@ export const skills = {
       "slot": 3,
       "name": "Passive EX",
       "icon": "skill001/skill1006",
-      "description": "Gain Ultimate Damage UP (Large), Damage UP, Debuff Resistance UP",
+      "description": "Gain Ultimate Damage UP(Large), and when hit by an enemy, increases own damage by 2% (max 1 stack per second, up to 50%, stackable) and increases own Debuff Resistance by 2% (max 1 stack per second, up to 50%, stackable)",
       "effect": "Ultimate Damage + (+15%), Damage UP (+9999%)",
       "effectValues": [
         {

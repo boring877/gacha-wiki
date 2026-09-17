@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -152,7 +74,7 @@ export const skills = {
       "icon": "skill001/skill0011",
       "description": "1 enemies 15s [Intimidation](treated asBlind, Block-20%, -20%), 15s Physical Critical Damage-15%-40 DOWN, 15s Magic Critical Damage-15%-40 DOWN",
       "descriptionLv1": "1 enemies 15s [Intimidation](treated asBlind, Block-20%, -20%), 15s Physical Critical Damage-15%-40 DOWN, 15s Magic Critical Damage-15%-40 DOWN",
-      "descriptionLv90": "1 enemies 15s [Intimidation](treated asBlind, Block-20%, -20%), 15s Physical Critical Damage-15%-310 DOWN, 15s Magic Critical Damage-15%-40 DOWN",
+      "descriptionLv90": "1 enemies 15s [Intimidation](treated asBlind, Block-20%, -20%), 15s Physical Critical Damage-15%-310 DOWN, 15s Magic Critical Damage-15%-310 DOWN",
       "target": "Nearest Enemy",
       "castTime": 1.5,
       "damageScaling": null,
@@ -177,7 +99,8 @@ export const skills = {
           "value": -15,
           "type": "percent",
           "duration": 15,
-          "levelGrowth": -3.0
+          "flatValue": -40,
+          "flatGrowth": -3.0
         },
         {
           "name": "Magic Critical Damage- Lv5",
@@ -195,7 +118,7 @@ export const skills = {
       "rank": 1,
       "name": "Bern Sacred Spear Art - Phantom Godspeed",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit, applies 5s, applies to self 10s [Haste](action speed 10%UP), enemies haveIntimidation status,, before Ultimate activation applies to self 10sdamageUP(LV 1)",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit, applies 5s, applies to self 10s [Haste](action speed 10%UP), enemies haveIntimidation status, before casting an ultimate, self gains 10s Damage UP(LV 1)",
       "effect": "1000% + 1000",
       "buffEffects": [
         {
@@ -216,7 +139,7 @@ export const skills = {
       "rank": 2,
       "name": "Bern Sacred Spear Art - Phantom Godspeed",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit, applies 6s, applies to self 10s [Haste](action speed 13%UP), enemies haveIntimidation status, before Ultimate activation applies to self 10sdamageUP(LV 2)",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit, applies 6s, applies to self 10s [Haste](action speed 13%UP), enemies haveIntimidation status, before casting an ultimate, self gains 10s Damage UP(LV 2)",
       "effect": "1200% + 1200",
       "buffEffects": [
         {
@@ -237,7 +160,7 @@ export const skills = {
       "rank": 3,
       "name": "Bern Sacred Spear Art - Phantom Godspeed",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit, applies 6s, applies to self 10s [Haste](action speed 16%UP), enemies haveIntimidation status, before Ultimate activation applies to self 10sdamageUP(LV 3)",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit, applies 6s, applies to self 10s [Haste](action speed 16%UP), enemies haveIntimidation status, before casting an ultimate, self gains 10s Damage UP(LV 3)",
       "effect": "1350% + 1380",
       "buffEffects": [
         {
@@ -258,7 +181,7 @@ export const skills = {
       "rank": 4,
       "name": "Bern Sacred Spear Art - Phantom Godspeed",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit, applies 7s, applies to self 10s [Haste](action speed 18%UP), enemies haveIntimidation status, before Ultimate activation applies to self 10sdamageUP(LV 4)",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit, applies 7s, applies to self 10s [Haste](action speed 18%UP), enemies haveIntimidation status, before casting an ultimate, self gains 10s Damage UP(LV 4)",
       "effect": "1450% + 1500",
       "buffEffects": [
         {
@@ -279,7 +202,7 @@ export const skills = {
       "rank": 5,
       "name": "Bern Sacred Spear Art - Phantom Godspeed",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit, applies 7s, applies to self 10s [Haste](action speed 20%UP), enemies haveIntimidation status, before Ultimate activation applies to self 10sdamageUP(LV 5)",
+      "description": "Deals physical damage to the nearest enemy, guaranteed hit, applies 7s, applies to self 10s [Haste](action speed 20%UP), enemies haveIntimidation status, before casting an ultimate, self gains 10s Damage UP(LV 5)",
       "effect": "1500% + 1600",
       "buffEffects": [
         {
@@ -302,7 +225,7 @@ export const skills = {
       "slot": 1,
       "name": "Skill Damage +, Skill Enhancement",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Medium), Specific Skill Enhancement",
+      "description": "Gain Skill Damage UP(Medium), \"Should I go a bit lighter?\" additional Physical Defense DOWN",
       "effect": "Skill Damage + (+20%)",
       "effectValues": [
         {
@@ -317,7 +240,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, MP Recovery",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Medium), MP Recovery",
+      "description": "Gain Ultimate Damage UP(Medium), after casting an ultimate, self gains MP Recovery 200",
       "effect": "Ultimate Damage + (+10%), MP Recovery (+200%)",
       "effectValues": [
         {

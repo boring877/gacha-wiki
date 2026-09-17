@@ -46,84 +46,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -253,7 +175,7 @@ export const skills = {
       "slot": 1,
       "name": "MP Recovery+, Physical Attack +",
       "icon": "skill001/skill1004",
-      "description": "Gain MP Recovery (Super Large), Physical Attack UP (Super Large)",
+      "description": "When defeating an enemy, Gain MP Recovery(Super Large), gains 5s Physical Attack UP(Super Large)",
       "effect": "MP Recovery+ (+42%), Physical Attack + (+420)",
       "effectValues": [
         {
@@ -274,7 +196,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Medium), Physical Critical Damage UP (Large)",
+      "description": "Gain Physical Attack UP(Medium), Physical Critical Damage UP(Large)",
       "effect": "Physical Attack + (+259), Physical Critical Damage+ (+176%)",
       "effectValues": [
         {

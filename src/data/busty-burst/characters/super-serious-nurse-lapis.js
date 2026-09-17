@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -340,7 +262,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Damage UP",
       "icon": "skill001/skill1003",
-      "description": "Gain Action Speed UP (Large), Damage UP",
+      "description": "Gain Action Speed UP(Large), after casting an ultimate, all allies gain 2% Damage UP(stackable up to 10%)",
       "effect": "Action Speed + (+15), Damage UP (+9999%)",
       "effectValues": [
         {
@@ -361,7 +283,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Physical Attack UP(Medium)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {

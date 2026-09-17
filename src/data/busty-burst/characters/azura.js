@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+120",
       "levelGrowth": "+15",
       "lvl1": "270% + 120",
-      "lvl90": "270% + -58",
+      "lvl90": null,
       "effects": [
         "Physical Attack - Lv3",
         "Physical Defense - Lv3"
@@ -170,7 +92,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies HP Regeneration 3%+50 to self for 10 seconds and Taunt for 10 seconds",
       "descriptionLv1": "Applies HP Regeneration 3%+50 to self for 10 seconds and Taunt for 10 seconds",
-      "descriptionLv90": "Applies HP Regeneration 3%+50 to self for 10 seconds and Taunt for 10 seconds",
+      "descriptionLv90": "Applies HP Regeneration 3%+500 to self for 10 seconds and Taunt for 10 seconds",
       "target": "Self",
       "castTime": 1.38,
       "damageScaling": null,
@@ -188,7 +110,8 @@ export const skills = {
           "value": 3,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 5.0
+          "flatValue": 50,
+          "flatGrowth": 5.0
         },
         {
           "name": "Taunt",
@@ -282,7 +205,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +",
       "icon": "skill001/skill1002",
-      "description": "Gain Max HP UP (Medium)",
+      "description": "Gain Max HP UP(Medium)",
       "effect": "Max HP + (+2896)",
       "effectValues": [
         {
@@ -297,7 +220,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Attack +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Medium), Physical Critical Damage UP (Medium)",
+      "description": "Gain Physical Attack UP(Medium), Physical Critical Damage UP(Medium)",
       "effect": "Physical Attack + (+259), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {

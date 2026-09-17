@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+200",
       "levelGrowth": "+20",
       "lvl1": "270% + 200",
-      "lvl90": "270% + 188",
+      "lvl90": null,
       "effects": [
         "Accuracy - Lv4"
       ],
@@ -162,7 +84,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Block 9 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 20 seconds",
       "descriptionLv1": "Applies Block 9 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 20 seconds",
-      "descriptionLv90": "Applies Block 18 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 3 hit(s)) for 20 seconds",
+      "descriptionLv90": "Applies Block 18 UP to all allies for 10 seconds and Hit-Based Damage UP(30%+350, 31503 hit(s)) for 20 seconds",
       "target": "All Allies",
       "castTime": 1.1,
       "damageScaling": null,
@@ -187,7 +109,8 @@ export const skills = {
           "value": 30,
           "type": "percent",
           "duration": 20,
-          "levelGrowth": 350.0
+          "flatValue": 3,
+          "flatGrowth": 350.0
         }
       ],
       "duration": 20
@@ -275,7 +198,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Medium)",
+      "description": "Gain Max HP UP(Medium)",
       "effect": "Max HP + (+2896)",
       "effectValues": [
         {
@@ -290,7 +213,7 @@ export const skills = {
       "slot": 2,
       "name": "Block+, Accuracy +",
       "icon": "skill001/skill1006",
-      "description": "Gain Block UP (Small), Accuracy UP (Small)",
+      "description": "All allies receive Block UP(Small), Accuracy UP(Small)",
       "effect": "Block+ (+10), Accuracy + (+15)",
       "effectValues": [
         {

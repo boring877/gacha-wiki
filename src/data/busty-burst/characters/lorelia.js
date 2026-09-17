@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -151,7 +73,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Physical Critical Damage 30 UP to the 3 nearest allies for 12 seconds and Physical Defense 15%+100 UP for 12 seconds",
       "descriptionLv1": "Applies Physical Critical Damage 30 UP to the 3 nearest allies for 12 seconds and Physical Defense 15%+100 UP for 12 seconds",
-      "descriptionLv90": "Applies Physical Critical Damage 30 UP to the 3 nearest allies for 12 seconds and Physical Defense 15%+190 UP for 12 seconds",
+      "descriptionLv90": "Applies Physical Critical Damage 300 UP to the 3 nearest allies for 12 seconds and Physical Defense 15%+190 UP for 12 seconds",
       "target": "Nearest Ally",
       "castTime": 1.38,
       "damageScaling": null,
@@ -169,7 +91,8 @@ export const skills = {
           "value": 30,
           "type": "percent",
           "duration": 12,
-          "levelGrowth": 3.0
+          "flatValue": 30,
+          "flatGrowth": 3.0
         },
         {
           "name": "Physical Defense + Lv2",
@@ -264,7 +187,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +",
       "icon": "skill001/skill1002",
-      "description": "Gain Physical Defense UP (Small)",
+      "description": "Gain Physical Defense UP(Small)",
       "effect": "Physical Defense + (+70)",
       "effectValues": [
         {
@@ -279,7 +202,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Critical Damage UP (Small)",
+      "description": "Gain Physical Critical Damage UP(Small)",
       "effect": "Physical Critical Damage+ (+59%)",
       "effectValues": [
         {

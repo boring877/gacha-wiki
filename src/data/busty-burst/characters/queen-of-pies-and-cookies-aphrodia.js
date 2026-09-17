@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+150",
       "levelGrowth": "+20",
       "lvl1": "330% + 150",
-      "lvl90": "330% + 138",
+      "lvl90": null,
       "effects": [
         "Poison Lv5",
         "Block- Lv4"
@@ -170,7 +92,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Hit-Based Damage UP(35%+400, 3 hit(s)) to all allies for 15 seconds and Debuff Resistance 30%UP for 8 seconds",
       "descriptionLv1": "Applies Hit-Based Damage UP(35%+400, 3 hit(s)) to all allies for 15 seconds and Debuff Resistance 30%UP for 8 seconds",
-      "descriptionLv90": "Applies Hit-Based Damage UP(35%+400, 3 hit(s)) to all allies for 15 seconds and Debuff Resistance 30%UP for 8 seconds",
+      "descriptionLv90": "Applies Hit-Based Damage UP(665%+400, 36003 hit(s)) to all allies for 15 seconds and Debuff Resistance 30%UP for 8 seconds",
       "target": "All Allies",
       "castTime": 1.08,
       "damageScaling": null,
@@ -188,7 +110,9 @@ export const skills = {
           "value": 35,
           "type": "percent",
           "duration": 15,
-          "levelGrowth": 400.0
+          "flatValue": 3,
+          "flatGrowth": 400.0,
+          "levelGrowth": 7.0
         },
         {
           "name": "Debuff Resistance Lv2",
@@ -312,7 +236,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Large), Action Speed UP (Medium)",
+      "description": "Gain Physical Attack UP(Large), Action Speed UP(Medium)",
       "effect": "Physical Attack + (+389), Action Speed + (+10)",
       "effectValues": [
         {
@@ -333,7 +257,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Mind Type ATK +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Mind Type ATK UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Mind Type ATK UP(Medium)",
       "effect": "Skill Damage + (+30%), Mind Type ATK + (+10%)",
       "effectValues": [
         {

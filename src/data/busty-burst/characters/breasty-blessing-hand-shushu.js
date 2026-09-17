@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+150",
       "levelGrowth": "+6",
       "lvl1": "114% + 150",
-      "lvl90": "114% + 141",
+      "lvl90": null,
       "effects": [
         "Fire Type Damage Taken + Lv3",
         "Block- Lv3"
@@ -349,7 +271,7 @@ export const skills = {
       "slot": 1,
       "name": "Fire Type ATK +, MP Recovery+",
       "icon": "skill001/skill1001",
-      "description": "Gain Fire Type ATK UP (Medium), MP Recovery",
+      "description": "Gain Fire Type ATK UP(Medium), after casting a skill, self MP Recovery 50",
       "effect": "Fire Type ATK + (+10%), MP Recovery+ (+50%)",
       "effectValues": [
         {
@@ -370,7 +292,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Action Speed UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Action Speed UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Action Speed + (+10)",
       "effectValues": [
         {

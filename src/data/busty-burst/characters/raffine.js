@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -176,7 +98,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Hit-Based Physical Damage UP(40%+450, 3 hit(s)) to all allies for 15 seconds and Hit-Based Magic Damage UP(40%+450, 3 hit(s)) for 15 seconds",
       "descriptionLv1": "Applies Hit-Based Physical Damage UP(40%+450, 3 hit(s)) to all allies for 15 seconds and Hit-Based Magic Damage UP(40%+450, 3 hit(s)) for 15 seconds",
-      "descriptionLv90": "Applies Hit-Based Physical Damage UP(40%+450, 405040503 hit(s)) to all allies for 15 seconds and Hit-Based Magic Damage UP(40%+450, 3 hit(s)) for 15 seconds",
+      "descriptionLv90": "Applies Hit-Based Physical Damage UP(40%+450, 40503 hit(s)) to all allies for 15 seconds and Hit-Based Magic Damage UP(40%+450, 40503 hit(s)) for 15 seconds",
       "target": "All Allies",
       "castTime": 1.4,
       "damageScaling": null,
@@ -254,7 +176,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, MP Recovery",
       "icon": "skill001/skill1007",
-      "description": "Gain Max HP UP (Small), MP Recovery",
+      "description": "After casting a skill, self gains MP Recovery 100, All allies receive Max HP UP(Small)",
       "effect": "Max HP + (+1447), MP Recovery (+100%)",
       "effectValues": [
         {
@@ -275,7 +197,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Damage UP",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Damage UP",
+      "description": "Gain Ultimate Damage UP(Large), before casting an ultimate, all allies gain 10s Damage 10%UP",
       "effect": "Ultimate Damage + (+15%), Damage UP (+10%)",
       "effectValues": [
         {

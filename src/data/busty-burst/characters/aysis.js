@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -263,7 +185,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +",
       "icon": "skill001/skill1002",
-      "description": "Gain Physical Defense UP (Small)",
+      "description": "Gain Physical Defense UP(Small)",
       "effect": "Physical Defense + (+70)",
       "effectValues": [
         {
@@ -278,7 +200,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Critical Damage UP (Small)",
+      "description": "Gain Physical Critical Damage UP(Small)",
       "effect": "Physical Critical Damage+ (+59%)",
       "effectValues": [
         {

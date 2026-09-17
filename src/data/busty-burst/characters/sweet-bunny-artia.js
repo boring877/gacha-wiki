@@ -50,84 +50,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -136,7 +58,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "All allies receive MP Recovery 110 and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds Hit-Based Shield(30%+4 hit(s)) for 20 seconds",
       "descriptionLv1": "All allies receive MP Recovery 110 and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds Hit-Based Shield(30%+4 hit(s)) for 20 seconds",
-      "descriptionLv90": "All allies receive MP Recovery 110 and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds Hit-Based Shield(30%+4 hit(s)) for 20 seconds",
+      "descriptionLv90": "All allies receive MP Recovery 200 and Hit-Based Damage UP(35%+400, 36003 hit(s)) for 20 seconds Hit-Based Shield(30%+4 hit(s)) for 20 seconds",
       "target": "All Allies",
       "castTime": 1.0,
       "damageScaling": null,
@@ -154,14 +76,16 @@ export const skills = {
           "name": "MP Recovery",
           "value": 110,
           "type": "percent",
-          "levelGrowth": 1.0
+          "flatValue": 110,
+          "flatGrowth": 1.0
         },
         {
           "name": "Hit-Based Damage + Lv4",
           "value": 35,
           "type": "percent",
           "duration": 20,
-          "levelGrowth": 400.0
+          "flatValue": 3,
+          "flatGrowth": 400.0
         },
         {
           "name": "Hit-Based Shield Lv5",
@@ -357,7 +281,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Action Speed +",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Medium), Action Speed UP (Large)",
+      "description": "Gain Max HP UP(Medium), Action Speed UP(Large)",
       "effect": "Max HP + (+2896), Action Speed + (+15)",
       "effectValues": [
         {
@@ -378,7 +302,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Ultimate Damage +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Small), Ultimate Damage UP (Small)",
+      "description": "All allies receive Skill Damage UP(Small), Ultimate Damage UP(Small)",
       "effect": "Skill Damage + (+10%), Ultimate Damage + (+5%)",
       "effectValues": [
         {

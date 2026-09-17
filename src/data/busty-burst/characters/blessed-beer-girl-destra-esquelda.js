@@ -50,84 +50,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -312,7 +234,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1006",
-      "description": "Gain Physical Defense UP (Cannot be Cleansed), Magic Defense UP (Cannot be Cleansed)",
+      "description": "After casting an ultimate, all allies gain 50 Physical Defense UP(stackable up to 250), 50 Magic Defense UP(stackable up to 250)",
       "effect": "()",
       "effectValues": []
     },
@@ -320,7 +242,7 @@ export const skills = {
       "slot": 2,
       "name": "Max HP +, Banquet",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Large), Debuff Resistance{0:P1}UP",
+      "description": "Gain Max HP UP(Large), after casting a skill or ultimate, self gains 1 stacks[ Banquet ]([ Banquet ]1 stacks Debuff Resistance 0 5%UP, max 50 stacks), [ Banquet ], at 25+ stacks: skills activate simultaneously, [ Banquet ], at 50 stacks: ultimates activate simultaneously",
       "effect": "Max HP + (+3444)",
       "effectValues": [
         {

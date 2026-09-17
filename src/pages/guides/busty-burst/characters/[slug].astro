@@ -20,6 +20,8 @@ import {
   STAT_DISPLAY_NAMES,
 } from '../../../../data/busty-burst/character-database.js';
 import { SPEED_LABELS } from '../../../../data/busty-burst/characters/index.js';
+import { BB_X_CARDS } from '../../../../data/busty-burst/x-art.js';
+import { R2 } from '../../../../data/busty-burst/image-manifest.js';
 
 // Import CSS
 import '../../../../styles/games/busty-burst/busty-burst-character-individual.css';
@@ -55,6 +57,9 @@ const positionNameMap = {
   'II': 'Mid',
   'III': 'Back',
 };
+
+// Official X introduction cards for this character (EN card first, then JP)
+const xCards = (BB_X_CARDS[slug] || []).slice().sort((a, b) => (a.lang === b.lang ? a.date.localeCompare(b.date) : a.lang === 'en' ? -1 : 1));
 
 // Action Speed values (time in seconds)
 const ACTION_SPEED_VALUES = {
@@ -1027,6 +1032,34 @@ const description = `${character.displayName || character.name} - ${character.ra
               </div>
             </div>
           )}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Official Art Section (X introduction cards) -->
+  {xCards.length > 0 && (
+    <section class="bb-char-section">
+      <h2 class="bb-char-section-title">Official Art</h2>
+      <p class="bb-char-xart-note">Paladin Introduction cards posted on the official X accounts.</p>
+      <div class="bb-char-section-content">
+        <div class="bb-char-xart-grid">
+          {xCards.map((card) => (
+            <figure class="bb-char-xart-item">
+              <img
+                src={`${R2}/${card.src}`}
+                alt={`${card.name} official Paladin Introduction card`}
+                loading="lazy"
+                decoding="async"
+                width={900}
+                height={1200}
+              />
+              <figcaption class="bb-char-xart-caption">
+                <span class={`bb-char-xart-lang ${card.lang}`}>{card.lang === 'en' ? 'EN' : 'JP'}</span>
+                <span class="bb-char-xart-date">{card.date}</span>
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </div>
     </section>

@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+150",
       "levelGrowth": "+20",
       "lvl1": "350% + 150",
-      "lvl90": "350% + -1185",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv5",
         "Burn Lv5"
@@ -312,7 +234,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Physical Attack +",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Large), Physical Attack UP (Medium)",
+      "description": "Gain Max HP UP(Large), Physical Attack UP(Medium)",
       "effect": "Max HP + (+3444), Physical Attack + (+259)",
       "effectValues": [
         {
@@ -333,7 +255,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Critical Damage+, Physical Attack +",
       "icon": "skill001/skill1005",
-      "description": "Gain Physical Critical Damage UP (Medium), Physical Attack UP (Small)",
+      "description": "Front Row allies receive Physical Critical Damage UP(Medium) and Physical Attack UP(Small)",
       "effect": "Physical Critical Damage+ (+90%), Physical Attack + (+130)",
       "effectValues": [
         {

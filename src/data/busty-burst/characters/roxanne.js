@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -256,7 +178,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Critical Damage UP (Small)",
+      "description": "Gain Physical Critical Damage UP(Small)",
       "effect": "Physical Critical Damage+ (+59%)",
       "effectValues": [
         {
@@ -271,7 +193,7 @@ export const skills = {
       "slot": 2,
       "name": "Healing Amount +",
       "icon": "skill001/skill1004",
-      "description": "Gain Healing Amount UP (Small)",
+      "description": "Gain Healing Amount UP(Small)",
       "effect": "Healing Amount + (+10%)",
       "effectValues": [
         {

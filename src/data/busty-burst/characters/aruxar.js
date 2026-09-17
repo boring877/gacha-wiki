@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -167,9 +89,9 @@ export const skills = {
       "slot": 3,
       "name": "Female Pirate Command",
       "icon": "skill001/skill0019",
-      "description": "All allies 10s Physical Critical Damage 50 UP and Action Speed 14%UP for 10 seconds [Command Boost] effect +50%, MP+200",
-      "descriptionLv1": "All allies 10s Physical Critical Damage 50 UP and Action Speed 14%UP for 10 seconds [Command Boost] effect +50%, MP+200",
-      "descriptionLv90": "All allies 10s Physical Critical Damage 50 UP and Action Speed 14%UP for 10 seconds [Command Boost] effect +50%, MP+200",
+      "description": "All allies 10s Physical Critical Damage 50 UP and Action Speed 14%UP for 10 seconds.[Command Boost] effect +50%, MP+200",
+      "descriptionLv1": "All allies 10s Physical Critical Damage 50 UP and Action Speed 14%UP for 10 seconds.[Command Boost] effect +50%, MP+200",
+      "descriptionLv90": "All allies 10s Physical Critical Damage 680 UP and Action Speed 14%UP for 10 seconds.[Command Boost] effect +50%, MP+200",
       "target": "All Allies",
       "castTime": 1.2,
       "damageScaling": null,
@@ -187,7 +109,8 @@ export const skills = {
           "value": 50,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 7.0
+          "flatValue": 50,
+          "flatGrowth": 7.0
         },
         {
           "name": "Action Speed + Lv3",
@@ -204,7 +127,7 @@ export const skills = {
       "rank": 1,
       "name": "Minions, time to raise hell!!",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 1) for 10 seconds and BlockDOWN(LV 1) for 10 seconds, self[Command Boost] enhanced \"\" effect when[Command Boost]",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 1) for 10 seconds and BlockDOWN(LV 1) for 10 seconds, self[Command Boost]. enhanced \"\" effect when[Command Boost]",
       "effect": "400% + 550",
       "buffEffects": [
         {
@@ -231,7 +154,7 @@ export const skills = {
       "rank": 2,
       "name": "Minions, time to raise hell!!",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 2) for 10 seconds and BlockDOWN(LV 2) for 10 seconds, self[Command Boost] enhanced \"\" effect when[Command Boost]",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 2) for 10 seconds and BlockDOWN(LV 2) for 10 seconds, self[Command Boost]. enhanced \"\" effect when[Command Boost]",
       "effect": "470% + 700",
       "buffEffects": [
         {
@@ -258,7 +181,7 @@ export const skills = {
       "rank": 3,
       "name": "Minions, time to raise hell!!",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 3) for 10 seconds and BlockDOWN(LV 3) for 10 seconds, self[Command Boost] enhanced \"\" effect when[Command Boost]",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 3) for 10 seconds and BlockDOWN(LV 3) for 10 seconds, self[Command Boost]. enhanced \"\" effect when[Command Boost]",
       "effect": "520% + 850",
       "buffEffects": [
         {
@@ -285,7 +208,7 @@ export const skills = {
       "rank": 4,
       "name": "Minions, time to raise hell!!",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 4) for 10 seconds and BlockDOWN(LV 4) for 10 seconds, self[Command Boost] enhanced \"\" effect when[Command Boost]",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 4) for 10 seconds and BlockDOWN(LV 4) for 10 seconds, self[Command Boost]. enhanced \"\" effect when[Command Boost]",
       "effect": "560% + 950",
       "buffEffects": [
         {
@@ -312,7 +235,7 @@ export const skills = {
       "rank": 5,
       "name": "Minions, time to raise hell!!",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 5) for 10 seconds and BlockDOWN(LV 5) for 10 seconds, self[Command Boost] enhanced \"\" effect when[Command Boost]",
+      "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Defense DOWN(LV 5) for 10 seconds and BlockDOWN(LV 5) for 10 seconds, self[Command Boost]. enhanced \"\" effect when[Command Boost]",
       "effect": "580% + 1050",
       "buffEffects": [
         {
@@ -341,7 +264,7 @@ export const skills = {
       "slot": 1,
       "name": "Debuff Resistance+, Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Debuff Resistance UP (Small), Physical Attack +UP",
+      "description": "Gain Debuff Resistance UP(Small), and before activating the Ultimate, all allies 10s Physical Attack 15%+500 UP",
       "effect": "Physical Attack + (+500)",
       "effectValues": [
         {
@@ -356,7 +279,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Accuracy UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Accuracy + (+20)",
       "effectValues": [
         {

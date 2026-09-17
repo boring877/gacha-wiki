@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+300",
       "levelGrowth": "+25",
       "lvl1": "280% + 300",
-      "lvl90": "280% + 286",
+      "lvl90": null,
       "effects": [
         "Deadly Poison Lv5",
         "Accuracy - Lv5"
@@ -177,7 +99,7 @@ export const skills = {
       "baseDamage": "+500",
       "levelGrowth": "+20",
       "lvl1": "330% + 500",
-      "lvl90": "330% + 488",
+      "lvl90": null,
       "effects": [
         "Stun",
         "Physical Defense - Lv4",
@@ -350,7 +272,7 @@ export const skills = {
       "slot": 1,
       "name": "Skill Damage +, Max HP +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Medium), Max HP UP (Medium)",
+      "description": "Gain Skill Damage UP(Medium), Max HP UP(Medium)",
       "effect": "Skill Damage + (+20%), Max HP + (+2896)",
       "effectValues": [
         {
@@ -371,7 +293,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Medium), Action Speed UP (Large)",
+      "description": "Gain Skill Damage UP(Medium), Action Speed UP(Large)",
       "effect": "Skill Damage + (+20%), Action Speed + (+15)",
       "effectValues": [
         {

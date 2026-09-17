@@ -47,78 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -205,7 +133,7 @@ export const skills = {
       "rank": 1,
       "name": "Ea Frusag Gibe Karl",
       "icon": "skill001/skill0006_1",
-      "description": "1 nearest enemymagic damage, guaranteed hit and inflicts Magic Defense DOWN(LV 1) for 10 seconds, on Ultimate activation, selfinflict 10s Magic Attack UP(LV 1)",
+      "description": "1 nearest enemymagic damage, guaranteed hit and inflicts Magic Defense DOWN(LV 1) for 10 seconds, on casting an ultimate, self gains 10s Magic Attack UP(LV 1)",
       "effect": "1200% + 1200",
       "buffEffects": [
         {
@@ -226,7 +154,7 @@ export const skills = {
       "rank": 2,
       "name": "Ea Frusag Gibe Karl",
       "icon": "skill001/skill0006_2",
-      "description": "1 nearest enemymagic damage, guaranteed hit and inflicts Magic Defense DOWN(LV 2) for 10 seconds, on Ultimate activation, selfinflict 10s Magic Attack UP(LV 2)",
+      "description": "1 nearest enemymagic damage, guaranteed hit and inflicts Magic Defense DOWN(LV 2) for 10 seconds, on casting an ultimate, self gains 10s Magic Attack UP(LV 2)",
       "effect": "1440% + 1500",
       "buffEffects": [
         {
@@ -247,7 +175,7 @@ export const skills = {
       "rank": 3,
       "name": "Ea Frusag Gibe Karl",
       "icon": "skill001/skill0006_3",
-      "description": "1 nearest enemymagic damage, guaranteed hit and inflicts Magic Defense DOWN(LV 3) for 10 seconds, on Ultimate activation, selfinflict 10s Magic Attack UP(LV 3)",
+      "description": "1 nearest enemymagic damage, guaranteed hit and inflicts Magic Defense DOWN(LV 3) for 10 seconds, on casting an ultimate, self gains 10s Magic Attack UP(LV 3)",
       "effect": "1620% + 1750",
       "buffEffects": [
         {
@@ -268,7 +196,7 @@ export const skills = {
       "rank": 4,
       "name": "Ea Frusag Gibe Karl",
       "icon": "skill001/skill0006_4",
-      "description": "1 nearest enemymagic damage, guaranteed hit and inflicts Magic Defense DOWN(LV 4) for 10 seconds, on Ultimate activation, selfinflict 10s Magic Attack UP(LV 4)",
+      "description": "1 nearest enemymagic damage, guaranteed hit and inflicts Magic Defense DOWN(LV 4) for 10 seconds, on casting an ultimate, self gains 10s Magic Attack UP(LV 4)",
       "effect": "1739% + 1900",
       "buffEffects": [
         {
@@ -289,7 +217,7 @@ export const skills = {
       "rank": 5,
       "name": "Ea Frusag Gibe Karl",
       "icon": "skill001/skill0006_5",
-      "description": "1 nearest enemymagic damage, guaranteed hit and inflicts Magic Defense DOWN(LV 5) for 10 seconds, on Ultimate activation, selfinflict 10s Magic Attack UP(LV 5)",
+      "description": "1 nearest enemymagic damage, guaranteed hit and inflicts Magic Defense DOWN(LV 5) for 10 seconds, on casting an ultimate, self gains 10s Magic Attack UP(LV 5)",
       "effect": "1800% + 2000",
       "buffEffects": [
         {
@@ -312,7 +240,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, MP Recovery",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Large), MP Recovery",
+      "description": "Gain Action Speed UP(Large), on casting an ultimate, self MP Recovery 200",
       "effect": "Action Speed + (+15), MP Recovery (+200%)",
       "effectValues": [
         {
@@ -333,7 +261,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Magic Attack UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Magic Attack UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Magic Attack + (+259)",
       "effectValues": [
         {

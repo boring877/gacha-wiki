@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -133,7 +55,7 @@ export const skills = {
       "icon": "skill001/skill0013",
       "description": "When without Cheer Up(10%UP movement speed), gain Cheer Upfor 20 seconds. Also apply Physical Attack 25%+50 UP for 15 seconds and Physical Critical Damage 80 UP for 15 seconds to the ally with highest physical damage. During Cheer Up, additionally apply physical damage up on-cast(30%, 5 times)",
       "descriptionLv1": "When without Cheer Up(10%UP movement speed), gain Cheer Upfor 20 seconds. Also apply Physical Attack 25%+50 UP for 15 seconds and Physical Critical Damage 80 UP for 15 seconds to the ally with highest physical damage. During Cheer Up, additionally apply physical damage up on-cast(30%, 5 times)",
-      "descriptionLv90": "When without Cheer Up(10%UP movement speed), gain Cheer Upfor 20 seconds. Also apply Physical Attack 25%+950 UP for 15 seconds and Physical Critical Damage 80 UP for 15 seconds to the ally with highest physical damage. During Cheer Up, additionally apply physical damage up on-cast(30%, 5 times)",
+      "descriptionLv90": "When without Cheer Up(10%UP movement speed), gain Cheer Upfor 20 seconds. Also apply Physical Attack 25%+950 UP for 15 seconds and Physical Critical Damage 980 UP for 15 seconds to the ally with highest physical damage. During Cheer Up, additionally apply physical damage up on-cast(30%, 5 times)",
       "target": "Highest Phys ATK Ally",
       "castTime": 1.3,
       "damageScaling": null,
@@ -165,7 +87,8 @@ export const skills = {
           "value": 80,
           "type": "percent",
           "duration": 15,
-          "levelGrowth": 10.0
+          "flatValue": 80,
+          "flatGrowth": 10.0
         }
       ],
       "duration": 20
@@ -319,7 +242,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Debuff Resistance+",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Large), Debuff Resistance UP (Small)",
+      "description": "Gain Max HP UP(Large), Debuff Resistance UP(Small)",
       "effect": "Max HP + (+3444)",
       "effectValues": [
         {
@@ -334,7 +257,7 @@ export const skills = {
       "slot": 2,
       "name": "MP Recovery+, Physical Attack +",
       "icon": "skill001/skill1007",
-      "description": "Gain MP Recovery, Physical Attack UP (Large)",
+      "description": "Gain MP Recovery 100 before casting a skill. Apply Physical Attack UP(Large) to all allies for 10 seconds before casting an ultimate",
       "effect": "MP Recovery+ (+100%), Physical Attack + (+389)",
       "effectValues": [
         {

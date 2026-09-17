@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+120",
       "levelGrowth": "+20",
       "lvl1": "270% + 120",
-      "lvl90": "270% + -3440",
+      "lvl90": null,
       "effects": [
         "Freeze Lv5"
       ],
@@ -305,7 +227,7 @@ export const skills = {
       "slot": 1,
       "name": "Freeze Resistance LvMax",
       "icon": "skill001/skill1003",
-      "description": "Gain Freeze Resistance UP",
+      "description": "Gain Freeze Resistance 1%UP",
       "effect": "Freeze Resistance LvMax (+1%)",
       "effectValues": [
         {
@@ -320,7 +242,7 @@ export const skills = {
       "slot": 2,
       "name": "Magic Critical Damage+, Block+",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Critical Damage UP (Medium), Block UP (Medium)",
+      "description": "Gain Magic Critical Damage UP(Medium), Block UP(Medium)",
       "effect": "Magic Critical Damage+ (+118), Block+ (+15)",
       "effectValues": [
         {

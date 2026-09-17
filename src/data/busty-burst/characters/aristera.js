@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -254,7 +176,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Defense+",
       "icon": "skill001/skill1002",
-      "description": "Gain Magic Defense UP (Small)",
+      "description": "Gain Magic Defense UP(Small)",
       "effect": "Magic Defense+ (+70)",
       "effectValues": [
         {
@@ -269,7 +191,7 @@ export const skills = {
       "slot": 2,
       "name": "Magic Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Small)",
+      "description": "Gain Magic Attack UP(Small)",
       "effect": "Magic Attack + (+130)",
       "effectValues": [
         {

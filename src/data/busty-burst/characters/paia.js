@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -142,7 +64,7 @@ export const skills = {
       "baseDamage": "+110",
       "levelGrowth": "+20",
       "lvl1": "267% + 110",
-      "lvl90": "267% + -2115",
+      "lvl90": null,
       "effects": [
         "Poison Lv5"
       ],
@@ -275,7 +197,7 @@ export const skills = {
       "slot": 1,
       "name": "Block+",
       "icon": "skill001/skill1002",
-      "description": "Gain Block UP (Medium)",
+      "description": "Gain Block UP(Medium)",
       "effect": "Block+ (+15)",
       "effectValues": [
         {
@@ -290,7 +212,7 @@ export const skills = {
       "slot": 2,
       "name": "Poison Resistance LvMax, Magic Defense+",
       "icon": "skill001/skill1002",
-      "description": "Gain Poison Resistance UP, Magic Defense UP (Small)",
+      "description": "Gain Poison Resistance 1%UP, Magic Defense UP(Small)",
       "effect": "Poison Resistance LvMax (+1%), Magic Defense+ (+70)",
       "effectValues": [
         {

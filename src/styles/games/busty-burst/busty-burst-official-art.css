@@ -1,0 +1,191 @@
+/* Official Art gallery page (X Paladin Introduction cards) */
+
+.bb-xart-page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bb-xart-intro {
+  margin: 0 0 1.5rem;
+  font-size: 0.9rem;
+  color: var(--bb-text-secondary);
+}
+
+.bb-xart-intro a {
+  color: var(--bbc-accent, #6db8d8);
+  text-decoration: none;
+}
+
+.bb-xart-section {
+  margin-bottom: 2.5rem;
+}
+
+.bb-xart-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--bb-text-primary, #fff);
+  margin: 0 0 1rem;
+}
+
+.bb-xart-note {
+  margin: -0.5rem 0 1rem;
+  font-size: 0.85rem;
+  color: var(--bb-text-secondary);
+}
+
+.bb-xart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.bb-xart-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  padding: 0.9rem;
+}
+
+.bb-xart-name {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--bbc-accent-strong, #8fd0ea);
+  text-decoration: none;
+}
+
+.bb-xart-name-plain {
+  color: var(--bb-text-primary, #fff);
+}
+
+.bb-xart-card-images {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.bb-xart-figure {
+  margin: 0;
+  flex: 1 1 0;
+  min-width: 130px;
+  max-width: 260px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.bb-xart-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.bb-xart-figure-caption {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.6rem;
+}
+
+.bb-xart-lang {
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.25rem 0.45rem;
+  border-radius: 5px;
+}
+
+.bb-xart-lang.en {
+  background: var(--bbc-accent, #6db8d8);
+  color: #10222c;
+}
+
+.bb-xart-lang.jp {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.bb-xart-date {
+  font-size: 0.7rem;
+  color: var(--bb-text-secondary);
+}
+
+@media (max-width: 768px) {
+  .bb-xart-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bb-xart-figure {
+    max-width: none;
+  }
+}
+
+/* Ultimate reveal + game art grids */
+.bb-xart-game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.9rem;
+}
+
+.bb-xart-game-item {
+  margin: 0;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.bb-xart-game-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.bb-xart-game-caption {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0.5rem 0.7rem;
+}
+
+.bb-xart-kind {
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.25rem 0.45rem;
+  border-radius: 5px;
+  color: #10222c;
+}
+
+.bb-xart-kind-banner {
+  background: var(--bbc-accent, #6db8d8);
+}
+
+.bb-xart-kind-event {
+  background: #a7d8a0;
+}
+
+.bb-xart-kind-campaign {
+  background: #f2d98c;
+}
+
+.bb-xart-kind-video,
+.bb-xart-kind-misc {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.bb-xart-kind-date {
+  font-size: 0.7rem;
+  color: var(--bb-text-secondary);
+}
+
+.bb-xart-kind-text {
+  flex-basis: 100%;
+  font-size: 0.78rem;
+  color: var(--bb-text-primary, #eee);
+  overflow-wrap: anywhere;
+}

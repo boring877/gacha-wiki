@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -170,7 +92,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Physical Critical Damage 40 UP to all allies for 10 seconds and Action Speed 14%UP for 10 seconds",
       "descriptionLv1": "Applies Physical Critical Damage 40 UP to all allies for 10 seconds and Action Speed 14%UP for 10 seconds",
-      "descriptionLv90": "Applies Physical Critical Damage 40 UP to all allies for 10 seconds and Action Speed 14%UP for 10 seconds",
+      "descriptionLv90": "Applies Physical Critical Damage 490 UP to all allies for 10 seconds and Action Speed 14%UP for 10 seconds",
       "target": "All Allies",
       "castTime": 0.85,
       "damageScaling": null,
@@ -188,7 +110,8 @@ export const skills = {
           "value": 40,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 5.0
+          "flatValue": 40,
+          "flatGrowth": 5.0
         },
         {
           "name": "Action Speed + Lv3",
@@ -312,7 +235,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Mind Type ATK +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Large), Mind Type ATK UP",
+      "description": "Gain Physical Attack UP(Large), after casting an ultimate, self 5% Mind-type Attack UP(max 15%)",
       "effect": "Physical Attack + (+389), Mind Type ATK + (+5%)",
       "effectValues": [
         {
@@ -333,7 +256,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Physical Critical Damage UP(Medium)",
       "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {

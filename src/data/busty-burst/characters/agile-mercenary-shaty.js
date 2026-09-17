@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+100",
       "levelGrowth": "+6",
       "lvl1": "100% + 100",
-      "lvl90": "100% + 91",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv4",
         "Block- Lv3"
@@ -177,7 +99,7 @@ export const skills = {
       "baseDamage": "+300",
       "levelGrowth": "+20",
       "lvl1": "310% + 300",
-      "lvl90": "310% + 44800",
+      "lvl90": null,
       "effects": [
         "Hit-Based Physical Damage +"
       ],
@@ -305,7 +227,7 @@ export const skills = {
       "slot": 1,
       "name": "Taunt Resistance LvMax, Magic Type ATK +",
       "icon": "skill001/skill1001",
-      "description": "Gain Taunt Resistance UP, Magic Type ATK UP",
+      "description": "Gain Taunt Resistance 1%UP, after casting a skill, self 3% Dark-type Attack UP(stackable up to 15%)",
       "effect": "Taunt Resistance LvMax (+1%), Magic Type ATK + (+3%)",
       "effectValues": [
         {
@@ -326,7 +248,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Physical Attack UP(Medium)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {

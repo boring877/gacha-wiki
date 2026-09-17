@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -142,7 +64,7 @@ export const skills = {
       "baseDamage": "+834",
       "levelGrowth": "+60",
       "lvl1": "3300% + 834",
-      "lvl90": "3300% + 842",
+      "lvl90": null,
       "effects": [
         "Block+ Lv3"
       ],
@@ -276,7 +198,7 @@ export const skills = {
       "slot": 1,
       "name": "Healing Amount +",
       "icon": "skill001/skill1004",
-      "description": "Gain Healing Amount UP (Medium)",
+      "description": "Gain Healing Amount UP(Medium)",
       "effect": "Healing Amount + (+15%)",
       "effectValues": [
         {
@@ -291,7 +213,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1006",
-      "description": "Gain Physical Defense UP (Small), Magic Defense UP (Small)",
+      "description": "Front Row allies receive Physical Defense UP(Small) and Magic Defense UP(Small)",
       "effect": "Physical Defense + (+70), Magic Defense+ (+70)",
       "effectValues": [
         {

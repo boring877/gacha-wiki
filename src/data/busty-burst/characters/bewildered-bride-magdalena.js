@@ -47,78 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -171,7 +99,7 @@ export const skills = {
       "icon": "skill001/skill0021",
       "description": "Restores HP by to all allies, MP Recovery 110, Debuff",
       "descriptionLv1": "Restores HP by to all allies, MP Recovery 110, Debuff",
-      "descriptionLv90": "Restores HP by to all allies, MP Recovery 110, Debuff",
+      "descriptionLv90": "Restores HP by to all allies, MP Recovery 200, Debuff",
       "target": "All Allies",
       "castTime": 1.2,
       "damageScaling": "1800% ATK",
@@ -189,7 +117,8 @@ export const skills = {
           "value": 110,
           "type": "percent",
           "duration": 0,
-          "levelGrowth": 1.0
+          "flatValue": 110,
+          "flatGrowth": 1.0
         },
         {
           "name": "Debuff Resistance LvMax",
@@ -343,7 +272,7 @@ export const skills = {
       "slot": 1,
       "name": "Debuff Resistance+, Healing Received +",
       "icon": "skill001/skill1008",
-      "description": "Gain Debuff Resistance UP (Small), Healing Received UP (Tiny)",
+      "description": "Gain Debuff Resistance UP(Small), all alliesHealing Received UP(Tiny)",
       "effect": "Healing Received + (+10%)",
       "effectValues": [
         {
@@ -358,7 +287,7 @@ export const skills = {
       "slot": 2,
       "name": "Magic Attack +, Action Speed +",
       "icon": "skill001/skill1007",
-      "description": "Gain Magic Attack UP (Cannot be Cleansed), Action Speed UP (Cannot be Cleansed)",
+      "description": "On casting an ultimate, Magic allies 5%Magic Attack UP(stackable up to 20%), 5% Action Speed UP stackable up to 20%",
       "effect": "()()",
       "effectValues": []
     }

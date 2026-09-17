@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -142,7 +64,7 @@ export const skills = {
       "baseDamage": "+110",
       "levelGrowth": "+6",
       "lvl1": "110% + 110",
-      "lvl90": "110% + 21",
+      "lvl90": null,
       "effects": [
         "Magic Defense- Lv2"
       ],
@@ -267,7 +189,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Cannot be Cleansed)",
+      "description": "After casting an ultimate, self 5%Magic Attack UP(stackable up to 15%)",
       "effect": "()",
       "effectValues": []
     },
@@ -275,7 +197,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Medium), Magic Attack UP (Small)",
+      "description": "Gain Ultimate Damage UP(Medium), Magic Attack UP(Small)",
       "effect": "Ultimate Damage + (+10%), Magic Attack + (+130)",
       "effectValues": [
         {

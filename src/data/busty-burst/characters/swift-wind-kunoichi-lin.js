@@ -47,94 +47,22 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Shuriken Wild Dance",
       "icon": "skill001/skill0009",
-      "description": "3 nearest enemiesphysical damage and inflicts Mind Type Damage Taken 16%UP for 6 seconds and Block-13 DOWN for 6 seconds while [Clone] is active+50%",
-      "descriptionLv1": "3 nearest enemiesphysical damage and inflicts Mind Type Damage Taken 16%UP for 6 seconds and Block-13 DOWN for 6 seconds while [Clone] is active+50%",
-      "descriptionLv90": "3 nearest enemiesphysical damage and inflicts Mind Type Damage Taken 16%UP for 6 seconds and Block-26 DOWN for 6 seconds while [Clone] is active+50%",
+      "description": "3 nearest enemiesphysical damage and inflicts Mind Type Damage Taken 16%UP for 6 seconds and Block-13 DOWN for 6 seconds while [Clone] is active damage+50%",
+      "descriptionLv1": "3 nearest enemiesphysical damage and inflicts Mind Type Damage Taken 16%UP for 6 seconds and Block-13 DOWN for 6 seconds while [Clone] is active damage+50%",
+      "descriptionLv90": "3 nearest enemiesphysical damage and inflicts Mind Type Damage Taken 16%UP for 6 seconds and Block-26 DOWN for 6 seconds while [Clone] is active damage+50%",
       "target": "Nearest Enemy",
       "castTime": 0.7,
       "damageScaling": "125% ATK",
       "baseDamage": "+300",
       "levelGrowth": "+6",
       "lvl1": "125% + 300",
-      "lvl90": "125% + 286",
+      "lvl90": null,
       "effects": [
         "Mind Type Damage Taken + Lv3",
         "Block- Lv5"
@@ -160,9 +88,9 @@ export const skills = {
       "slot": 3,
       "name": "Clone Jutsu",
       "icon": "skill001/skill0019",
-      "description": "Self 10s Physical Critical Damage 50 UP and Action Speed 20%UP for 10 seconds, 10s [Clone] status (by 50%, 3)",
-      "descriptionLv1": "Self 10s Physical Critical Damage 50 UP and Action Speed 20%UP for 10 seconds, 10s [Clone] status (by 50%, 3)",
-      "descriptionLv90": "Self 10s Physical Critical Damage 50 UP and Action Speed 20%UP for 10 seconds, 10s [Clone] status (by 50%, 3)",
+      "description": "Self 10s Physical Critical Damage 50 UP and Action Speed 20%UP for 10 seconds, 10s [Clone] status ( damage taken 50% reduction, 3)",
+      "descriptionLv1": "Self 10s Physical Critical Damage 50 UP and Action Speed 20%UP for 10 seconds, 10s [Clone] status ( damage taken 50% reduction, 3)",
+      "descriptionLv90": "Self 10s Physical Critical Damage 680 UP and Action Speed 20%UP for 10 seconds, 10s [Clone] status ( damage taken 50% reduction, 3)",
       "target": "Self",
       "castTime": 0.8,
       "damageScaling": null,
@@ -181,7 +109,8 @@ export const skills = {
           "value": 50,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 7.0
+          "flatValue": 50,
+          "flatGrowth": 7.0
         },
         {
           "name": "Action Speed + Lv5",
@@ -204,7 +133,7 @@ export const skills = {
       "rank": 1,
       "name": "Ninjutsu - Ambush Kiri Kiri Dance",
       "icon": "skill001/skill0003_1",
-      "description": "3 nearest enemiesphysical damage, guaranteed hit, on Ultimate activation, self 10s Physical Attack UP(LV 1), [Clone], self 10s [Clone] while [Clone] is active+50%, on Ultimate activation, self 10sphysical damageUP(LV 1)",
+      "description": "3 nearest enemiesphysical damage, guaranteed hit, on casting an ultimate, self 10s Physical Attack UP(LV 1), [Clone], self 10s [Clone]. while [Clone] is active damage+50%, on casting an ultimate, self 10sphysical damageUP(LV 1)",
       "effect": "400% + 600",
       "buffEffects": [
         {
@@ -225,7 +154,7 @@ export const skills = {
       "rank": 2,
       "name": "Ninjutsu - Ambush Kiri Kiri Dance",
       "icon": "skill001/skill0003_2",
-      "description": "3 nearest enemiesphysical damage, guaranteed hit, on Ultimate activation, self 10s Physical Attack UP(LV 2), [Clone], self 10s [Clone] while [Clone] is active+50%, on Ultimate activation, self 10sphysical damageUP(LV 2)",
+      "description": "3 nearest enemiesphysical damage, guaranteed hit, on casting an ultimate, self 10s Physical Attack UP(LV 2), [Clone], self 10s [Clone]. while [Clone] is active damage+50%, on casting an ultimate, self 10sphysical damageUP(LV 2)",
       "effect": "470% + 750",
       "buffEffects": [
         {
@@ -246,7 +175,7 @@ export const skills = {
       "rank": 3,
       "name": "Ninjutsu - Ambush Kiri Kiri Dance",
       "icon": "skill001/skill0003_3",
-      "description": "3 nearest enemiesphysical damage, guaranteed hit, on Ultimate activation, self 10s Physical Attack UP(LV 3), [Clone], self 10s [Clone] while [Clone] is active+50%, on Ultimate activation, self 10sphysical damageUP(LV 3)",
+      "description": "3 nearest enemiesphysical damage, guaranteed hit, on casting an ultimate, self 10s Physical Attack UP(LV 3), [Clone], self 10s [Clone]. while [Clone] is active damage+50%, on casting an ultimate, self 10sphysical damageUP(LV 3)",
       "effect": "520% + 900",
       "buffEffects": [
         {
@@ -267,7 +196,7 @@ export const skills = {
       "rank": 4,
       "name": "Ninjutsu - Ambush Kiri Kiri Dance",
       "icon": "skill001/skill0003_4",
-      "description": "3 nearest enemiesphysical damage, guaranteed hit, on Ultimate activation, self 10s Physical Attack UP(LV 4), [Clone], self 10s [Clone] while [Clone] is active+50%, on Ultimate activation, self 10sphysical damageUP(LV 4)",
+      "description": "3 nearest enemiesphysical damage, guaranteed hit, on casting an ultimate, self 10s Physical Attack UP(LV 4), [Clone], self 10s [Clone]. while [Clone] is active damage+50%, on casting an ultimate, self 10sphysical damageUP(LV 4)",
       "effect": "560% + 1000",
       "buffEffects": [
         {
@@ -288,7 +217,7 @@ export const skills = {
       "rank": 5,
       "name": "Ninjutsu - Ambush Kiri Kiri Dance",
       "icon": "skill001/skill0003_5",
-      "description": "3 nearest enemiesphysical damage, guaranteed hit, on Ultimate activation, self 10s Physical Attack UP(LV 5), [Clone], self 10s [Clone] while [Clone] is active+50%, on Ultimate activation, self 10sphysical damageUP(LV 5)",
+      "description": "3 nearest enemiesphysical damage, guaranteed hit, on casting an ultimate, self 10s Physical Attack UP(LV 5), [Clone], self 10s [Clone]. while [Clone] is active damage+50%, on casting an ultimate, self 10sphysical damageUP(LV 5)",
       "effect": "580% + 1100",
       "buffEffects": [
         {
@@ -311,7 +240,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Large), Action Speed UP (Cannot be Cleansed)",
+      "description": "Gain Physical Attack UP(Large), after a normal attack, self 1% Action Speed UP(stackable up to 20%)",
       "effect": "Physical Attack + (+389)",
       "effectValues": [
         {
@@ -326,7 +255,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Action Speed UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Action Speed UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Action Speed + (+10)",
       "effectValues": [
         {

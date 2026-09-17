@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -134,14 +56,14 @@ export const skills = {
       "icon": "skill001/skill0007",
       "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Critical Damage-13%-35 DOWN for 11 seconds and Magic Critical Damage-13%-35 DOWN for 11 seconds",
       "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Critical Damage-13%-35 DOWN for 11 seconds and Magic Critical Damage-13%-35 DOWN for 11 seconds",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Critical Damage-13%-215 DOWN for 11 seconds and Magic Critical Damage-13%-35 DOWN for 11 seconds",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Critical Damage-13%-215 DOWN for 11 seconds and Magic Critical Damage-13%-215 DOWN for 11 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.78,
       "damageScaling": "105% ATK",
       "baseDamage": "+60",
       "levelGrowth": "+6",
       "lvl1": "105% + 60",
-      "lvl90": "105% + -118",
+      "lvl90": null,
       "effects": [
         "Physical Critical Damage- Lv4",
         "Magic Critical Damage- Lv4"
@@ -152,7 +74,8 @@ export const skills = {
           "value": -13,
           "type": "percent",
           "duration": 11,
-          "levelGrowth": -2.0
+          "flatValue": -35,
+          "flatGrowth": -2.0
         },
         {
           "name": "Magic Critical Damage- Lv4",
@@ -170,7 +93,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Physical Critical Damage 50 UP to the 3 nearest allies for 10 seconds and Healing Shield (300) for 10 seconds",
       "descriptionLv1": "Applies Physical Critical Damage 50 UP to the 3 nearest allies for 10 seconds and Healing Shield (300) for 10 seconds",
-      "descriptionLv90": "Applies Physical Critical Damage 50 UP to the 3 nearest allies for 10 seconds and Healing Shield (300) for 10 seconds",
+      "descriptionLv90": "Applies Physical Critical Damage 680 UP to the 3 nearest allies for 10 seconds and Healing Shield (300) for 10 seconds",
       "target": "Nearest Ally",
       "castTime": 1.78,
       "damageScaling": null,
@@ -188,6 +111,8 @@ export const skills = {
           "value": 50,
           "type": "percent",
           "duration": 10,
+          "flatValue": 50,
+          "flatGrowth": 7.0,
           "levelGrowth": 7.0
         },
         {
@@ -312,7 +237,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Block+",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Large), Block UP (Medium)",
+      "description": "Gain Max HP UP(Large), Block UP(Medium)",
       "effect": "Max HP + (+3444), Block+ (+15)",
       "effectValues": [
         {
@@ -333,7 +258,7 @@ export const skills = {
       "slot": 2,
       "name": "Physical Defense +, Magic Defense+",
       "icon": "skill001/skill1006",
-      "description": "Gain Physical Defense UP (Medium), Magic Defense UP (Medium)",
+      "description": "Front Row allies receive Physical Defense UP(Medium) and Magic Defense UP(Medium)",
       "effect": "Physical Defense + (+141), Magic Defense+ (+141)",
       "effectValues": [
         {

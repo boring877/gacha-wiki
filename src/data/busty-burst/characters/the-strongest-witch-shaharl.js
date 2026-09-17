@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+90",
       "levelGrowth": "+6",
       "lvl1": "90% + 90",
-      "lvl90": "90% + -177",
+      "lvl90": null,
       "effects": [
         "Curse",
         "Magic Defense- Lv5"
@@ -316,7 +238,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Magic Critical Damage+",
       "icon": "skill001/skill1003",
-      "description": "Gain Magic Attack UP (Medium), Magic Critical Damage UP (Large)",
+      "description": "Gain Magic Attack UP(Medium), Magic Critical Damage UP(Large)",
       "effect": "Magic Attack + (+259), Magic Critical Damage+ (+176)",
       "effectValues": [
         {
@@ -337,7 +259,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Accuracy UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Accuracy + (+20)",
       "effectValues": [
         {

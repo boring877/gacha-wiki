@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+500",
       "levelGrowth": "+20",
       "lvl1": "350% + 500",
-      "lvl90": "350% + 488",
+      "lvl90": null,
       "effects": [
         "Accuracy - Lv5",
         "Block- Lv4"
@@ -168,9 +90,9 @@ export const skills = {
       "slot": 3,
       "name": "I can't stop!",
       "icon": "skill001/skill0019",
-      "description": "Self 10%Max HPUP(max 30%stackable) and HP Regeneration 5%+150 for 12 seconds and Taunt for 12 seconds",
-      "descriptionLv1": "Self 10%Max HPUP(max 30%stackable) and HP Regeneration 5%+150 for 12 seconds and Taunt for 12 seconds",
-      "descriptionLv90": "Self 10%Max HPUP(max 30%stackable) and HP Regeneration 5%+150 for 12 seconds and Taunt for 12 seconds",
+      "description": "Self 10% Max HP UP(stackable up to 30%) and HP Regeneration 5%+150 for 12 seconds and Taunt for 12 seconds",
+      "descriptionLv1": "Self 10% Max HP UP(stackable up to 30%) and HP Regeneration 5%+150 for 12 seconds and Taunt for 12 seconds",
+      "descriptionLv90": "Self 10% Max HP UP(stackable up to 30%) and HP Regeneration 5%+780 for 12 seconds and Taunt for 12 seconds",
       "target": "Self",
       "castTime": 1.35,
       "damageScaling": null,
@@ -195,7 +117,8 @@ export const skills = {
           "value": 5,
           "type": "percent",
           "duration": 12,
-          "levelGrowth": 7.0
+          "flatValue": 150,
+          "flatGrowth": 7.0
         },
         {
           "name": "Taunt",
@@ -319,7 +242,7 @@ export const skills = {
       "slot": 1,
       "name": "Healing Received +, Max HP +",
       "icon": "skill001/skill1008",
-      "description": "Gain Healing Received UP (Medium), Max HP UP (Cannot be Cleansed)",
+      "description": "Gain Healing Received UP(Medium), Attack, after casting a skill, self 2% Max HP UP(stackable up to 20%)",
       "effect": "Healing Received + (+30%)",
       "effectValues": [
         {
@@ -334,7 +257,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Max HP +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Max HP UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Max HP UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Max HP + (+2896)",
       "effectValues": [
         {

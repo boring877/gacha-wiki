@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -170,7 +92,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Debuff Resistance 30%UP to all allies for 10 seconds and Healing Shield (400, restores 30%) for 10 seconds",
       "descriptionLv1": "Applies Debuff Resistance 30%UP to all allies for 10 seconds and Healing Shield (400, restores 30%) for 10 seconds",
-      "descriptionLv90": "Applies Debuff Resistance 30%UP to all allies for 10 seconds and Healing Shield (400, restores 30%) for 10 seconds",
+      "descriptionLv90": "Applies Debuff Resistance 2730%UP to all allies for 10 seconds and Healing Shield (400, restores 30%) for 10 seconds",
       "target": "All Allies",
       "castTime": 1.45,
       "damageScaling": null,
@@ -194,7 +116,8 @@ export const skills = {
           "value": 400,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 30.0
+          "flatValue": 30,
+          "flatGrowth": 30.0
         }
       ],
       "duration": 10
@@ -312,7 +235,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Action Speed +",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Large), Action Speed UP (Medium)",
+      "description": "Gain Max HP UP(Large), Action Speed UP(Medium)",
       "effect": "Max HP + (+3444), Action Speed + (+10)",
       "effectValues": [
         {
@@ -333,7 +256,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Magic Attack +",
       "icon": "skill001/skill1005",
-      "description": "Gain Skill Damage UP (Small), Magic Attack UP (Medium)",
+      "description": "All allies receive Skill Damage UP(Small), Magic Attack UP(Medium)",
       "effect": "Skill Damage + (+10%), Magic Attack + (+259)",
       "effectValues": [
         {

@@ -15,7 +15,7 @@ export const BUSTY_BURST_TIER_LISTS = {
           description: 'Must-have for beginners',
           color: '#ff6b6b',
         },
-        characters: ['festive_attire_estiriel', 'liesel', 'frey', 'dragon_crusher_medusa', 'messeria', 'top_dancer_messeria', 'sweet-bunny-artia', 'underboob-cheerleader-gemini'],
+        characters: ['festive_attire_estiriel', 'liesel', 'frey', 'dragon_crusher_medusa', 'messeria', 'top_dancer_messeria', 'sweet-bunny-artia', 'underboob-cheerleader-gemini', 'tempting-naked-apron-diana'],
       },
       {
         tier: 'SS',
@@ -74,7 +74,6 @@ export const BUSTY_BURST_TIER_LISTS = {
           'lilirara',
           'ilugio',
           // Summer + September 2026 wave (rated from kits)
-          'tempting-naked-apron-diana',
           'the-bride-of-purity-giselle',
           'sirius',
           'getting-out-of-the-pool-artia',

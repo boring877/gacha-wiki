@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+150",
       "levelGrowth": "+20",
       "lvl1": "300% + 150",
-      "lvl90": "300% + 138",
+      "lvl90": null,
       "effects": [
         "Block- Lv5",
         "Accuracy - Lv4"
@@ -313,7 +235,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Magic Critical Damage+",
       "icon": "skill001/skill1003",
-      "description": "Gain Magic Attack UP (Small), Magic Critical Damage UP (Medium)",
+      "description": "All allies receive Magic Attack UP(Small), Magic Critical Damage UP(Medium)",
       "effect": "Magic Attack + (+130), Magic Critical Damage+ (+90)",
       "effectValues": [
         {
@@ -334,7 +256,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Block+",
       "icon": "skill001/skill1005",
-      "description": "Gain Ultimate Damage UP (Small), Block UP (Small)",
+      "description": "All allies receive Ultimate Damage UP(Small), Block UP(Small)",
       "effect": "Ultimate Damage + (+5%), Block+ (+10)",
       "effectValues": [
         {

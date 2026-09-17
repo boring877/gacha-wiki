@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -319,7 +241,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, MP Recovery+",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Large), MP Recovery",
+      "description": "Gain Magic Attack UP(Large), after casting an ultimate, self MP Recovery 200",
       "effect": "Magic Attack + (+389), MP Recovery+ (+200%)",
       "effectValues": [
         {
@@ -340,7 +262,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Action Speed +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Action Speed UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Action Speed UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Action Speed + (+10)",
       "effectValues": [
         {

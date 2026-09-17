@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -176,7 +98,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Accuracy 9 UP to all allies for 10 seconds and Physical Critical Damage 50 UP for 10 seconds, 10s Magic Critical Damage 50 UP",
       "descriptionLv1": "Applies Accuracy 9 UP to all allies for 10 seconds and Physical Critical Damage 50 UP for 10 seconds, 10s Magic Critical Damage 50 UP",
-      "descriptionLv90": "Applies Accuracy 18 UP to all allies for 10 seconds and Physical Critical Damage 680 UP for 10 seconds, 10s Magic Critical Damage 50 UP",
+      "descriptionLv90": "Applies Accuracy 18 UP to all allies for 10 seconds and Physical Critical Damage 680 UP for 10 seconds, 10s Magic Critical Damage 680 UP",
       "target": "All Allies",
       "castTime": 1.35,
       "damageScaling": null,
@@ -202,7 +124,8 @@ export const skills = {
           "value": 50,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 7.0
+          "flatValue": 50,
+          "flatGrowth": 7.0
         },
         {
           "name": "Magic Critical Damage+ Lv4",
@@ -357,7 +280,7 @@ export const skills = {
       "slot": 1,
       "name": "Accuracy +, Physical Damage UP, Magic Damage UP",
       "icon": "skill001/skill1005",
-      "description": "Gain Accuracy UP (Small), Physical Damage UP (Cannot be Cleansed), Magic Damage UP (Cannot be Cleansed)",
+      "description": "All allies receive Accuracy UP(Small), when the party has 3+ Physical allies, all allies gain Physical Damage 15%UP(Cannot be Cleansed), when the party has 4+ Magic allies, all allies gain Magic Damage 15%UP(Cannot be Cleansed)",
       "effect": "Accuracy + (+10), Physical Damage UP (+9999), Magic Damage UP (+9999)",
       "effectValues": [
         {
@@ -384,7 +307,7 @@ export const skills = {
       "slot": 2,
       "name": "Action Speed +, Damage UP",
       "icon": "skill001/skill1005",
-      "description": "Gain Action Speed UP, Damage UP",
+      "description": "Before casting an ultimate, Applies Action Speed 15%UP to all allies for 8 seconds and Damage 15%UP for 8 seconds",
       "effect": "Action Speed + (+15), Damage UP (+15%)",
       "effectValues": [
         {

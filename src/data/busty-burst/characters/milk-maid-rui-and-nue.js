@@ -47,78 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -134,7 +62,7 @@ export const skills = {
       "baseDamage": "+600",
       "levelGrowth": "+20",
       "lvl1": "360% + 600",
-      "lvl90": "360% + -6520",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv4",
         "Block- Lv4",
@@ -167,7 +95,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Now I can squeeze all I want♪",
+      "name": "Skill 3",
       "icon": "skill001/skill0019",
       "description": "All allies 10s Physical Attack 18%+35 UP and Action Speed 17%UP for 10 seconds, 3 nearest enemies 3s",
       "descriptionLv1": "All allies 10s Physical Attack 18%+35 UP and Action Speed 17%UP for 10 seconds, 3 nearest enemies 3s",
@@ -350,7 +278,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Magic Type ATK +",
       "icon": "skill001/skill1007",
-      "description": "Gain Action Speed UP (Large), Magic Type ATK UP",
+      "description": "Gain Action Speed UP(Large), and before activating the Ultimate, all allies 8s Magic Type ATK 10%UP",
       "effect": "Action Speed + (+15), Magic Type ATK + (+10%)",
       "effectValues": [
         {
@@ -371,7 +299,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Physical Attack UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Physical Attack UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Physical Attack + (+259)",
       "effectValues": [
         {

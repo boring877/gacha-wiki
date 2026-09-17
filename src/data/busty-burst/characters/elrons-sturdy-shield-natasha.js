@@ -47,87 +47,15 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "ダブルバンプ",
       "icon": "skill001/skill0008",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -11%-25 DOWN for 6 seconds and Magic Attack -11%-25 DOWN for 6 seconds, 6s Action Speed -20%DOWN, +30%, DOWN effect +30%",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Attack -11%-25 DOWN for 6 seconds and Magic Attack -11%-25 DOWN for 6 seconds, 6s Action Speed -20%DOWN, +30%, DOWN effect +30%",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Attack -11%-205 DOWN for 6 seconds and Magic Attack -11%-205 DOWN for 6 seconds, 6s Action Speed -20%DOWN, +30%, DOWN effect +30%",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Attack -11%-25 DOWN for 6 seconds and Magic Attack -11%-25 DOWN for 6 seconds, 6s Action Speed -20%DOWN., damage+30%, DOWN effect +30%",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Attack -11%-25 DOWN for 6 seconds and Magic Attack -11%-25 DOWN for 6 seconds, 6s Action Speed -20%DOWN., damage+30%, DOWN effect +30%",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Physical Attack -11%-205 DOWN for 6 seconds and Magic Attack -11%-205 DOWN for 6 seconds, 6s Action Speed -20%DOWN., damage+30%, DOWN effect +30%",
       "target": "Nearest Enemy",
       "castTime": 1.05,
       "damageScaling": "330% ATK",
@@ -168,9 +96,9 @@ export const skills = {
       "slot": 3,
       "name": "フルガーディアンズ",
       "icon": "skill001/skill0019",
-      "description": "All allies 10s Defense Shield(800) and Defense Reflection Shield(400) for 10 seconds, 10s Block 11 UP, ×2000%",
-      "descriptionLv1": "All allies 10s Defense Shield(800) and Defense Reflection Shield(400) for 10 seconds, 10s Block 11 UP, ×2000%",
-      "descriptionLv90": "All allies 10s Defense Shield(800) and Defense Reflection Shield(400) for 10 seconds, 10s Block 23 UP, ×2000%",
+      "description": "All allies 10s Defense Shield(800) and Defense Reflection Shield(400) for 10 seconds, 10s Block 11 UP., damage×2000%",
+      "descriptionLv1": "All allies 10s Defense Shield(800) and Defense Reflection Shield(400) for 10 seconds, 10s Block 11 UP., damage×2000%",
+      "descriptionLv90": "All allies 10s Defense Shield(800) and Defense Reflection Shield(400) for 10 seconds, 10s Block 23 UP., damage×2000%",
       "target": "All Allies",
       "castTime": 1.05,
       "damageScaling": null,
@@ -214,7 +142,7 @@ export const skills = {
       "rank": 1,
       "name": "ガーディアンズアーテラリィ",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 1) for 8 seconds, all allies 8s Shield (LV 1), 8s Defense Reflection Shield(LV 1), +50%, ×2000%",
+      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 1) for 8 seconds, all allies 8s Shield (LV 1), 8s Defense Reflection Shield(LV 1)., damage+50%, damage×2000%",
       "effect": "1000% + 1000",
       "buffEffects": [
         {
@@ -241,7 +169,7 @@ export const skills = {
       "rank": 2,
       "name": "ガーディアンズアーテラリィ",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 2) for 8 seconds, all allies 8s Shield (LV 2), 8s Defense Reflection Shield(LV 2), +50%, ×2000%",
+      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 2) for 8 seconds, all allies 8s Shield (LV 2), 8s Defense Reflection Shield(LV 2)., damage+50%, damage×2000%",
       "effect": "1200% + 1300",
       "buffEffects": [
         {
@@ -268,7 +196,7 @@ export const skills = {
       "rank": 3,
       "name": "ガーディアンズアーテラリィ",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 3) for 8 seconds, all allies 8s Shield (LV 3), 8s Defense Reflection Shield(LV 3), +50%, ×2000%",
+      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 3) for 8 seconds, all allies 8s Shield (LV 3), 8s Defense Reflection Shield(LV 3)., damage+50%, damage×2000%",
       "effect": "1350% + 1500",
       "buffEffects": [
         {
@@ -295,7 +223,7 @@ export const skills = {
       "rank": 4,
       "name": "ガーディアンズアーテラリィ",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 4) for 8 seconds, all allies 8s Shield (LV 4), 8s Defense Reflection Shield(LV 4), +50%, ×2000%",
+      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 4) for 8 seconds, all allies 8s Shield (LV 4), 8s Defense Reflection Shield(LV 4)., damage+50%, damage×2000%",
       "effect": "1450% + 1650",
       "buffEffects": [
         {
@@ -322,7 +250,7 @@ export const skills = {
       "rank": 5,
       "name": "ガーディアンズアーテラリィ",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 5) for 8 seconds, all allies 8s Shield (LV 5), 8s Defense Reflection Shield(LV 5), +50%, ×2000%",
+      "description": "Deals physical damage to the nearest enemy and inflicts Accuracy DOWN(LV 5) for 8 seconds, all allies 8s Shield (LV 5), 8s Defense Reflection Shield(LV 5)., damage+50%, damage×2000%",
       "effect": "1500% + 1800",
       "buffEffects": [
         {
@@ -351,7 +279,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Defense Shield",
       "icon": "skill001/skill1006",
-      "description": "Gain Max HP UP (Large), Defense Shield ()",
+      "description": "Gain Max HP UP(Large), at battle start, all allies Defense Shield(1200)",
       "effect": "Max HP + (+3444), Defense Shield (+1200%)",
       "effectValues": [
         {
@@ -372,7 +300,7 @@ export const skills = {
       "slot": 2,
       "name": "Debuff Resistance+, Shield, Defense Shield",
       "icon": "skill001/skill1006",
-      "description": "Gain Debuff Resistance UP (Medium), Damage Taken -, Defense Shield ()",
+      "description": "Gain Debuff Resistance UP(Medium), Damage Taken -20%, on casting an ultimate, all allies Defense Shield(1000)",
       "effect": "Shield (+20%), Defense Shield (+1000%)",
       "effectValues": [
         {

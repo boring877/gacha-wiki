@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+500",
       "levelGrowth": "+20",
       "lvl1": "350% + 500",
-      "lvl90": "350% + -3950",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv4",
         "Bleed"
@@ -170,7 +92,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Block 11 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds, 4s MP Regeneration 50",
       "descriptionLv1": "Applies Block 11 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds, 4s MP Regeneration 50",
-      "descriptionLv90": "Applies Block 23 UP to self for 10 seconds and Physical Critical Damage 50 UP for 10 seconds, 4s MP Regeneration 50",
+      "descriptionLv90": "Applies Block 23 UP to self for 10 seconds and Physical Critical Damage 680 UP for 10 seconds, 4s MP Regeneration 50",
       "target": "Self",
       "castTime": 0.85,
       "damageScaling": null,
@@ -196,7 +118,8 @@ export const skills = {
           "value": 50,
           "type": "percent",
           "duration": 10,
-          "levelGrowth": 7.0
+          "flatValue": 50,
+          "flatGrowth": 7.0
         },
         {
           "name": "MP Regeneration + LvMax",
@@ -213,7 +136,7 @@ export const skills = {
       "rank": 1,
       "name": "Nato Fire Wheel",
       "icon": "skill001/skill0003_1",
-      "description": "MP 1 to enemiesphysical damage, guaranteed hit and inflicts Dispel for 4 seconds, before Ultimate activationself 10s Physical Attack UP(LV 1)",
+      "description": "MP 1 to enemiesphysical damage, guaranteed hit and inflicts Dispel for 4 seconds, before casting an ultimate, self 10s Physical Attack UP(LV 1)",
       "effect": "1200% + 1200",
       "buffEffects": [
         {
@@ -234,7 +157,7 @@ export const skills = {
       "rank": 2,
       "name": "Nato Fire Wheel",
       "icon": "skill001/skill0003_2",
-      "description": "MP 1 to enemiesphysical damage, guaranteed hit and inflicts Dispel for 5 seconds, before Ultimate activationself 10s Physical Attack UP(LV 2)",
+      "description": "MP 1 to enemiesphysical damage, guaranteed hit and inflicts Dispel for 5 seconds, before casting an ultimate, self 10s Physical Attack UP(LV 2)",
       "effect": "1440% + 1400",
       "buffEffects": [
         {
@@ -255,7 +178,7 @@ export const skills = {
       "rank": 3,
       "name": "Nato Fire Wheel",
       "icon": "skill001/skill0003_3",
-      "description": "MP 1 to enemiesphysical damage, guaranteed hit and inflicts Dispel for 5 seconds, before Ultimate activationself 10s Physical Attack UP(LV 3)",
+      "description": "MP 1 to enemiesphysical damage, guaranteed hit and inflicts Dispel for 5 seconds, before casting an ultimate, self 10s Physical Attack UP(LV 3)",
       "effect": "1620% + 1550",
       "buffEffects": [
         {
@@ -276,7 +199,7 @@ export const skills = {
       "rank": 4,
       "name": "Nato Fire Wheel",
       "icon": "skill001/skill0003_4",
-      "description": "MP 1 to enemiesphysical damage, guaranteed hit and inflicts Dispel for 6 seconds, before Ultimate activationself 10s Physical Attack UP(LV 4)",
+      "description": "MP 1 to enemiesphysical damage, guaranteed hit and inflicts Dispel for 6 seconds, before casting an ultimate, self 10s Physical Attack UP(LV 4)",
       "effect": "1739% + 1700",
       "buffEffects": [
         {
@@ -297,7 +220,7 @@ export const skills = {
       "rank": 5,
       "name": "Nato Fire Wheel",
       "icon": "skill001/skill0003_5",
-      "description": "MP 1 to enemiesphysical damage, guaranteed hit and inflicts Dispel for 6 seconds, before Ultimate activationself 10s Physical Attack UP(LV 5)",
+      "description": "MP 1 to enemiesphysical damage, guaranteed hit and inflicts Dispel for 6 seconds, before casting an ultimate, self 10s Physical Attack UP(LV 5)",
       "effect": "1800% + 1800",
       "buffEffects": [
         {
@@ -320,7 +243,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Debuff Resistance+",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Large), Debuff Resistance UP (Small)",
+      "description": "Gain Action Speed UP(Large), Debuff Resistance UP(Small)",
       "effect": "Action Speed + (+15)",
       "effectValues": [
         {
@@ -335,7 +258,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Physical Attack UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Physical Attack UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Physical Attack + (+259)",
       "effectValues": [
         {

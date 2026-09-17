@@ -194,7 +194,8 @@
 .rarity-badge,
 .element-badge,
 .role-badge,
-.class-badge {
+.class-badge,
+.skill-badge {
   padding: 0.4rem 0.8rem;
   border-radius: 4px;
   text-transform: uppercase;
@@ -209,23 +210,7 @@
   margin: 0.2rem 0.3rem 0.2rem 0;
 }
 
-.class-badge {
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.rarity-badge,
-.element-badge {
-  padding: 0.4rem 0.8rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  border-radius: 4px;
-}
-
+/* Faction badge is not uppercase (shows faction name + Chinese name) */
 .role-badge,
 .faction-badge {
   padding: 0.4rem 0.8rem;

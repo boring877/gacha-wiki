@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -140,7 +62,7 @@ export const skills = {
       "baseDamage": "+100",
       "levelGrowth": "+16",
       "lvl1": "220% + 100",
-      "lvl90": "220% + -78",
+      "lvl90": null,
       "effects": [
         "Magic Attack - Lv3"
       ],
@@ -168,7 +90,7 @@ export const skills = {
       "baseDamage": "+1010",
       "levelGrowth": "+50",
       "lvl1": "2203% + 1010",
-      "lvl90": "2203% + 1018",
+      "lvl90": null,
       "effects": [
         "Block+ Lv3"
       ],
@@ -266,7 +188,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Small)",
+      "description": "Gain Magic Attack UP(Small)",
       "effect": "Magic Attack + (+130)",
       "effectValues": [
         {
@@ -281,7 +203,7 @@ export const skills = {
       "slot": 2,
       "name": "Healing Received +",
       "icon": "skill001/skill1004",
-      "description": "Gain Healing Received UP (Small)",
+      "description": "Gain Healing Received UP(Small)",
       "effect": "Healing Received + (+20%)",
       "effectValues": [
         {

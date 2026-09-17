@@ -49,84 +49,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -142,7 +64,7 @@ export const skills = {
       "baseDamage": "+150",
       "levelGrowth": "+20",
       "lvl1": "280% + 150",
-      "lvl90": "280% + 138",
+      "lvl90": null,
       "effects": [
         "Block- Lv4"
       ],
@@ -335,7 +257,7 @@ export const skills = {
       "slot": 1,
       "name": "MP Recovery",
       "icon": "skill001/skill1003",
-      "description": "Gain MP Recovery",
+      "description": "After an ally casts an ultimate, Gain MP Recovery 50",
       "effect": "MP Recovery (+50%)",
       "effectValues": [
         {
@@ -350,7 +272,7 @@ export const skills = {
       "slot": 2,
       "name": "Action Speed +, Max HP +",
       "icon": "skill001/skill1005",
-      "description": "Gain Action Speed UP (Medium), Max HP UP (Cannot be Cleansed)",
+      "description": "Gain Action Speed UP(Medium), before casting an ultimate, all allies gain 3% Max HP UP(max 15%)",
       "effect": "Action Speed + (+10)",
       "effectValues": [
         {

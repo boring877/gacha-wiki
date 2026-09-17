@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -311,7 +233,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Block+",
       "icon": "skill001/skill1003",
-      "description": "Gain Action Speed UP (Medium), Block UP (Medium)",
+      "description": "Gain Action Speed UP(Medium), Block UP(Medium)",
       "effect": "Action Speed + (+10), Block+ (+20)",
       "effectValues": [
         {
@@ -332,7 +254,7 @@ export const skills = {
       "slot": 2,
       "name": "Max HP +, Physical Defense +",
       "icon": "skill001/skill1007",
-      "description": "Gain Max HP UP (Tiny), Physical Defense UP (Small)",
+      "description": "Front Row allies receive Max HP UP(Tiny) and Physical Defense UP(Small)",
       "effect": "Max HP + (+955), Physical Defense + (+70)",
       "effectValues": [
         {

@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+500",
       "levelGrowth": "+20",
       "lvl1": "380% + 500",
-      "lvl90": "380% + 486",
+      "lvl90": null,
       "effects": [
         "Water Type Damage Taken + Lv5",
         "Block- Lv5"
@@ -348,7 +270,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Water Type ATK +",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Large), Water Type ATK UP",
+      "description": "Gain Action Speed UP(Large), after casting an ultimate, self 5% Water-type Attack UP(stackable up to 15%)",
       "effect": "Action Speed + (+15), Water Type ATK + (+5%)",
       "effectValues": [
         {
@@ -369,7 +291,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Magic Attack UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Magic Attack UP(Medium)",
       "effect": "Skill Damage + (+30%), Magic Attack + (+259)",
       "effectValues": [
         {

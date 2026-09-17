@@ -47,87 +47,15 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Stop your futile resistance!",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, on activation,self 6s Holy Type ATK 30%UP, state, +30%",
-      "descriptionLv1": "Deals physical damage to the nearest enemy, on activation,self 6s Holy Type ATK 30%UP, state, +30%",
-      "descriptionLv90": "Deals physical damage to the nearest enemy, on activation,self 6s Holy Type ATK 30%UP, state, +30%",
+      "description": "Deals physical damage to the nearest enemy, on casting a skill, self gains 6s Holy Type ATK 30%UP, state, damage+30%",
+      "descriptionLv1": "Deals physical damage to the nearest enemy, on casting a skill, self gains 6s Holy Type ATK 30%UP, state, damage+30%",
+      "descriptionLv90": "Deals physical damage to the nearest enemy, on casting a skill, self gains 6s Holy Type ATK 30%UP, state, damage+30%",
       "target": "Nearest Enemy",
       "castTime": 1.2,
       "damageScaling": "300% ATK",
@@ -335,7 +263,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Large), Physical Critical Damage UP",
+      "description": "Gain Action Speed UP(Large), on casting an ultimate, self 8s Physical Critical Damage 200 UP",
       "effect": "Action Speed + (+15), Physical Critical Damage+ (+200%)",
       "effectValues": [
         {
@@ -356,7 +284,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Physical Critical Damage UP(Medium)",
       "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {

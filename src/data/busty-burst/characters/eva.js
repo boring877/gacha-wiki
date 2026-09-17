@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+200",
       "levelGrowth": "+25",
       "lvl1": "320% + 200",
-      "lvl90": "320% + 182",
+      "lvl90": null,
       "effects": [
         "Accuracy - LvMax"
       ],
@@ -162,7 +84,7 @@ export const skills = {
       "icon": "skill001/skill0019",
       "description": "Applies Taunt to self for 12 seconds and Physical Attack 20%+40 UP for 12 seconds, 12s HP Regeneration 5%+150",
       "descriptionLv1": "Applies Taunt to self for 12 seconds and Physical Attack 20%+40 UP for 12 seconds, 12s HP Regeneration 5%+150",
-      "descriptionLv90": "Applies Taunt to self for 12 seconds and Physical Attack 20%+850 UP for 12 seconds, 12s HP Regeneration 5%+150",
+      "descriptionLv90": "Applies Taunt to self for 12 seconds and Physical Attack 20%+850 UP for 12 seconds, 12s HP Regeneration 5%+780",
       "target": "Self",
       "castTime": 1.44,
       "damageScaling": null,
@@ -194,7 +116,8 @@ export const skills = {
           "value": 5,
           "type": "percent",
           "duration": 12,
-          "levelGrowth": 7.0
+          "flatValue": 150,
+          "flatGrowth": 7.0
         }
       ],
       "duration": 12
@@ -312,7 +235,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Shield",
       "icon": "skill001/skill1001",
-      "description": "Gain Max HP UP (Large), Damage Reduction (Cannot be Cleansed)",
+      "description": "Gain Max HP UP(Large). And reduce damage for 2%(max 20%) after casting skill or ultimate",
       "effect": "Max HP + (+3444), Shield (+9999%), Shield (+9999%)",
       "effectValues": [
         {
@@ -339,7 +262,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Block+",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Block UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Block UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Block+ (+10)",
       "effectValues": [
         {

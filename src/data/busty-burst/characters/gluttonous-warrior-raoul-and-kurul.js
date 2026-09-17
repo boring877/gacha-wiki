@@ -47,78 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -134,7 +62,7 @@ export const skills = {
       "baseDamage": "+300",
       "levelGrowth": "+20",
       "lvl1": "400% + 300",
-      "lvl90": "400% + 286",
+      "lvl90": null,
       "effects": [
         "Bleed",
         "Block- Lv5"
@@ -161,9 +89,9 @@ export const skills = {
       "slot": 3,
       "name": "Full Tummy Pose!",
       "icon": "skill001/skill0019",
-      "description": "Applies Action Speed 17%UP to self for 12 seconds and Physical Attack 18%+35 UP for 12 seconds, 20000damageUP(max 100000stackable)",
-      "descriptionLv1": "Applies Action Speed 17%UP to self for 12 seconds and Physical Attack 18%+35 UP for 12 seconds, 20000damageUP(max 100000stackable)",
-      "descriptionLv90": "Applies Action Speed 17%UP to self for 12 seconds and Physical Attack 18%+665 UP for 12 seconds, 20000damageUP(max 100000stackable)",
+      "description": "Applies Action Speed 17%UP to self for 12 seconds and Physical Attack 18%+35 UP for 12 seconds, 20000 Damage UP(stackable up to 100000)",
+      "descriptionLv1": "Applies Action Speed 17%UP to self for 12 seconds and Physical Attack 18%+35 UP for 12 seconds, 20000 Damage UP(stackable up to 100000)",
+      "descriptionLv90": "Applies Action Speed 17%UP to self for 12 seconds and Physical Attack 18%+665 UP for 12 seconds, 20000 Damage UP(stackable up to 100000)",
       "target": "Self",
       "castTime": 0.7,
       "damageScaling": null,
@@ -312,7 +240,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Fire Type ATK +",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Large), Fire Type ATK UP",
+      "description": "Gain Action Speed UP(Large), after a normal attack, self 1% Fire-type Attack UP(stackable up to 20%)",
       "effect": "Action Speed + (+15), Fire Type ATK + (+1%)",
       "effectValues": [
         {
@@ -333,7 +261,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Skill Enhancement Regol Cost DOWNFire",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Regol cost for enhancing Fire Type Paladin skills -%",
+      "description": "Gain Ultimate Damage UP(Large), Regol cost for enhancing Fire Type Paladin skills -5%",
       "effect": "Ultimate Damage + (+15%), Skill Enhancement Regol Cost DOWNFire (+5%)",
       "effectValues": [
         {

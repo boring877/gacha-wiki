@@ -46,84 +46,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -132,14 +54,14 @@ export const skills = {
       "icon": "skill001/skill0002",
       "description": "Deals physical damage to the farthest enemy, and when the skill activates, applies Wind Type ATK 20%UP to self for 6 seconds",
       "descriptionLv1": "Deals physical damage to the farthest enemy, and when the skill activates, applies Wind Type ATK 20%UP to self for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the farthest enemy, and when the skill activates, applies Wind Type ATK 20%UP to self for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the farthest enemy, and when the skill activates, applies Wind Type ATK 830%UP to self for 6 seconds",
       "target": "Farthest Enemy",
       "castTime": 1.78,
       "damageScaling": "270% ATK",
       "baseDamage": "+150",
       "levelGrowth": "+25",
       "lvl1": "270% + 150",
-      "lvl90": "270% + 951",
+      "lvl90": null,
       "effects": [
         "Wind Type ATK + Lv5"
       ],
@@ -302,7 +224,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Medium), Accuracy UP (Medium)",
+      "description": "Gain Physical Attack UP(Medium), Accuracy UP(Medium)",
       "effect": "Physical Attack + (+259), Accuracy + (+15)",
       "effectValues": [
         {
@@ -323,7 +245,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Ultimate Damage UP(Large), Accuracy UP(Medium)",
       "effect": "Ultimate Damage + (+15%), Accuracy + (+15)",
       "effectValues": [
         {

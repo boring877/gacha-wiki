@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -263,7 +185,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Medium)",
+      "description": "Gain Physical Attack UP(Medium)",
       "effect": "Physical Attack + (+259)",
       "effectValues": [
         {
@@ -278,7 +200,7 @@ export const skills = {
       "slot": 2,
       "name": "Action Speed +, Skill Damage +",
       "icon": "skill001/skill1001",
-      "description": "Gain Action Speed UP (Medium), Skill Damage UP (Small)",
+      "description": "Gain Action Speed UP(Medium), Skill Damage UP(Small)",
       "effect": "Action Speed + (+10), Skill Damage + (+10%)",
       "effectValues": [
         {

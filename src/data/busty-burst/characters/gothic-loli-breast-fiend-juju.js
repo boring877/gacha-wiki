@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -134,7 +56,7 @@ export const skills = {
       "icon": "skill001/skill0013",
       "description": "Deals physical damage to the nearest enemy, activation beforeApplies Physical Critical Damage 60 UP to self for 6 seconds",
       "descriptionLv1": "Deals physical damage to the nearest enemy, activation beforeApplies Physical Critical Damage 60 UP to self for 6 seconds",
-      "descriptionLv90": "Deals physical damage to the nearest enemy, activation beforeApplies Physical Critical Damage 60 UP to self for 6 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy, activation beforeApplies Physical Critical Damage 870 UP to self for 6 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.15,
       "damageScaling": "320% ATK",
@@ -151,7 +73,8 @@ export const skills = {
           "value": 60,
           "type": "percent",
           "duration": 6,
-          "levelGrowth": 9.0
+          "flatValue": 60,
+          "flatGrowth": 9.0
         }
       ],
       "duration": 6
@@ -169,7 +92,7 @@ export const skills = {
       "baseDamage": "+200",
       "levelGrowth": "+6",
       "lvl1": "125% + 200",
-      "lvl90": "125% + 188",
+      "lvl90": null,
       "effects": [
         "Physical Defense - Lv4",
         "Block- Lv4"
@@ -335,7 +258,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Damage UP",
       "icon": "skill001/skill1005",
-      "description": "Gain Action Speed UP (Cannot be Cleansed), Damage UP (Cannot be Cleansed)",
+      "description": "After casting a skill, self 4% Action Speed UP(stackable up to 20%), and before activating the Ultimate, all allies 5% Damage UP(stackable up to 15%)",
       "effect": "Damage UP (+9999%)",
       "effectValues": [
         {
@@ -350,7 +273,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Physical Critical Damage UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Physical Critical Damage UP(Medium)",
       "effect": "Skill Damage + (+30%), Physical Critical Damage+ (+90%)",
       "effectValues": [
         {

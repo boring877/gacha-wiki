@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -140,7 +62,7 @@ export const skills = {
       "baseDamage": "+160",
       "levelGrowth": "+20",
       "lvl1": "310% + 160",
-      "lvl90": "310% + -18",
+      "lvl90": null,
       "effects": [
         "Stun",
         "Magic Defense- Lv4"
@@ -281,7 +203,7 @@ export const skills = {
       "slot": 1,
       "name": "Action Speed +, Block+",
       "icon": "skill001/skill1003",
-      "description": "Gain Action Speed UP (Medium), Block UP (Medium)",
+      "description": "Gain Action Speed UP(Medium), Block UP(Medium)",
       "effect": "Action Speed + (+10), Block+ (+15)",
       "effectValues": [
         {
@@ -302,7 +224,7 @@ export const skills = {
       "slot": 2,
       "name": "Mind Type ATK +, Magic Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Mind Type ATK UP (Medium), Magic Attack UP (Large)",
+      "description": "Gain Mind Type ATK UP(Medium), Magic Attack UP(Large)",
       "effect": "Mind Type ATK + (+10%), Magic Attack + (+389)",
       "effectValues": [
         {
@@ -323,7 +245,7 @@ export const skills = {
       "slot": 3,
       "name": "Passive EX",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP (Large), Damage UP",
+      "description": "Applies Ultimate Damage UP(Large) to self, and after using a Skill or Ultimate, grants 1 stack of Charge (Each Charge increases damage by 10000, up to a maximum of 10). With 5 or more Charge stacks, the MP regeneration duration of the skill Winged Lightning is increased by 50%. With 10 or more Charge stacks, consumes all Charge stacks and restores 100% MP after using the Ultimate",
       "effect": "Ultimate Damage + (+15%), Charge (+9999%), Charge (+9999%)",
       "effectValues": [
         {

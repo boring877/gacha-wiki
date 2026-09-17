@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -158,7 +80,7 @@ export const skills = {
       "baseDamage": "+35",
       "levelGrowth": "+6",
       "lvl1": "90% + 35",
-      "lvl90": "90% + 26",
+      "lvl90": null,
       "effects": [
         "Charm",
         "Accuracy - Lv3"
@@ -263,7 +185,7 @@ export const skills = {
       "slot": 1,
       "name": "Charm Resistance LvMax, Confusion Resistance LvMax",
       "icon": "skill001/skill1003",
-      "description": "Gain Charm Resistance UP, Confusion Resistance UP",
+      "description": "Gain Charm Resistance 1%UP, Confusion Resistance 1%UP",
       "effect": "Charm Resistance LvMax (+1%), Confusion Resistance LvMax (+1%)",
       "effectValues": [
         {
@@ -284,7 +206,7 @@ export const skills = {
       "slot": 2,
       "name": "Magic Attack +, Skill Damage +",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Large), Skill Damage UP (Large)",
+      "description": "Gain Magic Attack UP(Large), Skill Damage UP(Large)",
       "effect": "Magic Attack + (+389), Skill Damage + (+30%)",
       "effectValues": [
         {

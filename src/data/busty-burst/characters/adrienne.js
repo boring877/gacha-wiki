@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -349,7 +271,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, MP Recovery",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Large), MP Recovery",
+      "description": "Gain Max HP UP(Large), after an ally casts an ultimate, self gains MP Recovery 50",
       "effect": "Max HP + (+3444), MP Recovery (+50%)",
       "effectValues": [
         {
@@ -370,7 +292,7 @@ export const skills = {
       "slot": 2,
       "name": "Magic Attack +, Max HP +",
       "icon": "skill001/skill1005",
-      "description": "Gain Magic Attack UP (Cannot be Cleansed), Max HP UP (Cannot be Cleansed)",
+      "description": "After casting an ultimate, all allies gain 3% Magic Attack UP(max 15%), 3% Max HP UP(max 15%)",
       "effect": "HP()",
       "effectValues": []
     }

@@ -47,84 +47,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -133,14 +55,14 @@ export const skills = {
       "icon": "skill001/skill0008",
       "description": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -9%-20 DOWN for 7 seconds and Magic Attack -9%-20 DOWN for 7 seconds",
       "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -9%-20 DOWN for 7 seconds and Magic Attack -9%-20 DOWN for 7 seconds",
-      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -9%-2000 DOWN for 7 seconds and Magic Attack -9%-20 DOWN for 7 seconds",
+      "descriptionLv90": "Deals physical damage to the 3 nearest enemies and inflicts Physical Attack -9%-200 DOWN for 7 seconds and Magic Attack -9%-200 DOWN for 7 seconds",
       "target": "Nearest Enemy",
       "castTime": 1.58,
       "damageScaling": "110.00000000000001% ATK",
       "baseDamage": "+60",
       "levelGrowth": "+6",
       "lvl1": "110% + 60",
-      "lvl90": "110% + -118",
+      "lvl90": null,
       "effects": [
         "Physical Attack - Lv3",
         "Magic Attack - Lv3"
@@ -303,7 +225,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Block+",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Large), Block UP (Medium)",
+      "description": "Gain Max HP UP(Large), Block UP(Medium)",
       "effect": "Max HP + (+3444), Block+ (+15)",
       "effectValues": [
         {
@@ -324,7 +246,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Action Speed +",
       "icon": "skill001/skill1003",
-      "description": "Gain Skill Damage UP (Medium), Action Speed UP (Medium)",
+      "description": "Gain Skill Damage UP(Medium), Action Speed UP(Medium)",
       "effect": "Skill Damage + (+20%), Action Speed + (+10)",
       "effectValues": [
         {

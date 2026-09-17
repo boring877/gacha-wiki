@@ -47,94 +47,22 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
       "slot": 2,
       "name": "Smash 'em!",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds, on activation,self 6s Physical Attack 20%+40 UP",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds, on activation,self 6s Physical Attack 20%+40 UP",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds, on activation,self 6s Physical Attack 20%+850 UP",
+      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds, on casting a skill, self gains 6s Physical Attack 20%+40 UP",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds, on casting a skill, self gains 6s Physical Attack 20%+40 UP",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds, on casting a skill, self gains 6s Physical Attack 20%+850 UP",
       "target": "Nearest Enemy",
       "castTime": 1.05,
       "damageScaling": "360% ATK",
       "baseDamage": "+500",
       "levelGrowth": "+20",
       "lvl1": "360% + 500",
-      "lvl90": "360% + 1301",
+      "lvl90": null,
       "effects": [
         "Stun",
         "Physical Attack + Lv5"
@@ -162,14 +90,14 @@ export const skills = {
       "icon": "skill001/skill0011",
       "description": "3 nearest enemiesphysical damage, applies 3s Blind and Physical Critical Damage-13%-35 DOWN for 12 seconds, 12s Magic Critical Damage-13%-35 DOWN",
       "descriptionLv1": "3 nearest enemiesphysical damage, applies 3s Blind and Physical Critical Damage-13%-35 DOWN for 12 seconds, 12s Magic Critical Damage-13%-35 DOWN",
-      "descriptionLv90": "3 nearest enemiesphysical damage, applies 3s Blind and Physical Critical Damage-13%-215 DOWN for 12 seconds, 12s Magic Critical Damage-13%-35 DOWN",
+      "descriptionLv90": "3 nearest enemiesphysical damage, applies 3s Blind and Physical Critical Damage-13%-215 DOWN for 12 seconds, 12s Magic Critical Damage-13%-215 DOWN",
       "target": "Nearest Enemy",
       "castTime": 1.1,
       "damageScaling": "114.99999999999999% ATK",
       "baseDamage": "+200",
       "levelGrowth": "+6",
       "lvl1": "114% + 200",
-      "lvl90": "114% + 22",
+      "lvl90": null,
       "effects": [
         "Blind",
         "Physical Critical Damage- Lv4",
@@ -187,7 +115,8 @@ export const skills = {
           "value": -13,
           "type": "percent",
           "duration": 12,
-          "levelGrowth": -2.0
+          "flatValue": -35,
+          "flatGrowth": -2.0
         },
         {
           "name": "Magic Critical Damage- Lv4",
@@ -342,7 +271,7 @@ export const skills = {
       "slot": 1,
       "name": "Debuff Resistance+, Physical Critical Damage+",
       "icon": "skill001/skill1001",
-      "description": "Gain Debuff Resistance UP (Small), Physical Critical Damage UP (Medium)",
+      "description": "Gain Debuff Resistance UP(Small), Physical Critical Damage UP(Medium)",
       "effect": "Physical Critical Damage+ (+90%)",
       "effectValues": [
         {
@@ -357,7 +286,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Physical Attack +",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Physical Attack UP (Medium)",
+      "description": "Gain Skill Damage UP(Large), Physical Attack UP(Medium)",
       "effect": "Skill Damage + (+30%), Physical Attack + (+259)",
       "effectValues": [
         {

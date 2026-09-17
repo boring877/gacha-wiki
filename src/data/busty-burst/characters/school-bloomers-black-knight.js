@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+500",
       "levelGrowth": "+20",
       "lvl1": "350% + 500",
-      "lvl90": "350% + 488",
+      "lvl90": null,
       "effects": [
         "Magic Defense- Lv5",
         "Block- Lv4"
@@ -311,7 +233,7 @@ export const skills = {
       "slot": 1,
       "name": "Magic Attack +, Magic Type ATK +",
       "icon": "skill001/skill1001",
-      "description": "Gain Magic Attack UP (Large), Magic Type ATK UP",
+      "description": "Gain Magic Attack UP(Large), and apply Magic property damage 5% UP(Max 15%) to self after casting ultimate",
       "effect": "Magic Attack + (+389), Magic Type ATK + (+5%)",
       "effectValues": [
         {
@@ -332,7 +254,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Skill Enhancement Regol Cost DOWNMagic",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Regol cost for enhancing Magic Type Paladin skills -%",
+      "description": "Gain Skill Damage UP(Large), Regol cost for enhancing Magic Type Paladin skills -5%",
       "effect": "Skill Damage + (+30%), Skill Enhancement Regol Cost DOWNMagic (+5%)",
       "effectValues": [
         {

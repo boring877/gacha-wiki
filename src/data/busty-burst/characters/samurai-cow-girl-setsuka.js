@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -141,7 +63,7 @@ export const skills = {
       "baseDamage": "+150",
       "levelGrowth": "+25",
       "lvl1": "310% + 150",
-      "lvl90": "310% + 49100",
+      "lvl90": null,
       "effects": [
         "Hit-Based Physical Damage + Lv5"
       ],
@@ -169,7 +91,7 @@ export const skills = {
       "baseDamage": "+100",
       "levelGrowth": "+20",
       "lvl1": "270% + 100",
-      "lvl90": "270% + 86",
+      "lvl90": null,
       "effects": [
         "Stun",
         "Block- Lv5"
@@ -274,7 +196,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Accuracy +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP (Large), Accuracy UP (Medium)",
+      "description": "Gain Physical Attack UP(Large), Accuracy UP(Medium)",
       "effect": "Physical Attack + (+389), Accuracy + (+20)",
       "effectValues": [
         {
@@ -295,7 +217,7 @@ export const skills = {
       "slot": 2,
       "name": "Skill Damage +, Skill Enhancement Regol Cost DOWNFire",
       "icon": "skill001/skill1001",
-      "description": "Gain Skill Damage UP (Large), Regol cost for enhancing Fire Type Paladin skills -%",
+      "description": "Gain Skill Damage UP(Large), Regol cost for enhancing Fire Type Paladin skills -5%",
       "effect": "Skill Damage + (+30%), Skill Enhancement Regol Cost DOWNFire (+5%)",
       "effectValues": [
         {

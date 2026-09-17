@@ -48,84 +48,6 @@ export const info = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const skills = {
   "skills": [
     {
@@ -174,7 +96,7 @@ export const skills = {
       "icon": "skill001/skill0021",
       "description": "Restore HP to all alliesHP and inflicts Healing Shield (400, restores 30%) for 20 seconds and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds",
       "descriptionLv1": "Restore HP to all alliesHP and inflicts Healing Shield (400, restores 30%) for 20 seconds and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds",
-      "descriptionLv90": "Restore HP to all alliesHP and inflicts Healing Shield (400, restores 30%) for 20 seconds and Hit-Based Damage UP(35%+400, 3 hit(s)) for 20 seconds",
+      "descriptionLv90": "Restore HP to all alliesHP and inflicts Healing Shield (400, restores 2730%) for 20 seconds and Hit-Based Damage UP(35%+400, 36003 hit(s)) for 20 seconds",
       "target": "All Allies",
       "castTime": 1.35,
       "damageScaling": "1000% ATK",
@@ -192,14 +114,16 @@ export const skills = {
           "value": 400,
           "type": "percent",
           "duration": 20,
-          "levelGrowth": 30.0
+          "flatValue": 30,
+          "flatGrowth": 30.0
         },
         {
           "name": "Hit-Based Damage + Lv4",
           "value": 35,
           "type": "percent",
           "duration": 20,
-          "levelGrowth": 400.0
+          "flatValue": 3,
+          "flatGrowth": 400.0
         }
       ],
       "duration": 20
@@ -347,7 +271,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, Debuff Resistance+",
       "icon": "skill001/skill1003",
-      "description": "Gain Max HP UP (Large), Debuff Resistance UP (Small)",
+      "description": "Gain Max HP UP(Large), Debuff Resistance UP(Small)",
       "effect": "Max HP + (+3444)",
       "effectValues": [
         {
@@ -362,7 +286,7 @@ export const skills = {
       "slot": 2,
       "name": "Damage UP, Physical Defense, Magic Defense",
       "icon": "skill001/skill1005",
-      "description": "Gain Damage UP, Physical Defense +DOWN, Magic Defense+DOWN",
+      "description": "Before casting an ultimate, all allies gain 8s Damage 20%UP, 8s Physical Defense -15%-200 DOWN, 8s Magic Defense-15%-200 DOWN",
       "effect": "Damage UP (+20%), Physical Defense (+-200), Magic Defense (+-200)",
       "effectValues": [
         {
