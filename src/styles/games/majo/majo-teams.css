@@ -118,6 +118,53 @@
   line-height: 1.3;
 }
 
+.majo-team-member-type {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 5px;
+  padding: 0.1rem 0.45rem;
+  white-space: nowrap;
+}
+
+.majo-team-member-chips {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.majo-team-member-type.faction-human {
+  background: #f2c14e;
+  color: #2a2118;
+}
+
+.majo-team-member-type.faction-android {
+  background: #6d93bd;
+  color: #16202b;
+}
+
+.majo-team-member-type.faction-beastfolk {
+  background: #74a86e;
+  color: #16220f;
+}
+
+.majo-team-member-type.type-physical {
+  background: #d98873;
+  color: #2b1712;
+}
+
+.majo-team-member-type.type-magic {
+  background: #a89bd1;
+  color: #221f2c;
+}
+
+.majo-team-member-type.type-mental {
+  background: #74a8a0;
+  color: #10231f;
+}
+
 .majo-team-member-role {
   font-size: 0.7rem;
   color: var(--majo-text-tertiary);

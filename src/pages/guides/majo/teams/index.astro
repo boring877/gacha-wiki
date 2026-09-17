@@ -39,6 +39,10 @@ import '../../../../styles/games/majo/majo-teams.css';
             <a class="majo-team-member" href={`/guides/majo/characters/${m.slug}/`}>
               <MajoCharacterImage filename={m.character.icon} alt={m.character.nameEn} class="majo-team-thumb" />
               <span class="majo-team-member-name">{m.character.nameEn}</span>
+              <span class="majo-team-member-chips">
+                <span class={`majo-team-member-type type-${(m.character.attackType || '').toLowerCase()}`}>{m.character.attackType}</span>
+                <span class={`majo-team-member-type faction-${(m.character.faction || '').toLowerCase()}`}>{m.character.faction}</span>
+              </span>
               <span class="majo-team-member-role">{m.role}</span>
             </a>
           ))}

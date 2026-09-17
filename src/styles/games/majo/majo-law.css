@@ -1,0 +1,75 @@
+/* MAJO Law system page: node rows inside the shared patch-note container (majo-updates.css). */
+
+.majo-law-intro {
+  margin: 0 0 0.8rem;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--majo-text-secondary);
+}
+
+.majo-law-board {
+  margin-top: 1.4rem;
+}
+
+.majo-law-board-title {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--majo-text-primary);
+}
+
+.majo-law-board-note {
+  margin: 0 0 0.5rem;
+  font-size: 0.78rem;
+  color: var(--majo-text-tertiary);
+}
+
+.majo-law-rows {
+  border: 1px solid var(--majo-border);
+  border-radius: 10px;
+  padding: 0.4rem 1rem;
+  background: var(--majo-bg-tertiary);
+}
+
+.majo-law-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.4rem 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.majo-law-row + .majo-law-row {
+  border-top: 1px solid var(--majo-border);
+}
+
+.majo-law-slot {
+  flex-shrink: 0;
+  width: 1.6rem;
+  text-align: center;
+  font-weight: 700;
+  color: var(--majo-text-tertiary);
+}
+
+.majo-law-name {
+  flex-shrink: 0;
+  width: 13rem;
+  font-weight: 600;
+  color: var(--majo-primary-light);
+}
+
+.majo-law-desc {
+  color: var(--majo-text-secondary);
+}
+
+@media (max-width: 720px) {
+  .majo-law-row {
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .majo-law-name {
+    width: auto;
+  }
+}

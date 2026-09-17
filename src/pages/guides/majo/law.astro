@@ -1,0 +1,108 @@
+---
+// MAJO Law system page: Normal Law and Floating Law node reference, one patch-note style container.
+import MajoLayout from '../../../layouts/majo/LandingLayout.astro';
+import { LAW_BOARDS } from '../../../data/majo/law.js';
+import '../../../styles/games/majo/majo-updates.css';
+import '../../../styles/games/majo/majo-law.css';
+
+const normalBoards = LAW_BOARDS.filter((b) => b.law === 'Normal Law');
+const floatingBoards = LAW_BOARDS.filter((b) => b.law === 'Floating Law');
+---
+
+<MajoLayout
+  title="Law System"
+  description={`MAJO: Witches Night Law system guide: Normal Law and Floating Law nodes, verification, faction and attack type stat boosts, reject rules and all node effects, updated September 2026.`}
+  gameTitle="Law System"
+  crumbName="Law System"
+>
+  <section>
+    <article class="majo-update-detail">
+      <div class="majo-event-head">
+        <span class="majo-update-cat update-cat-news">Progression</span>
+        <span class="majo-update-date">Account-wide stat boosts</span>
+      </div>
+
+      <h1 class="majo-update-detail-title">Law System</h1>
+
+      <p class="majo-law-intro">
+        The Law menu, called Fictional Law in game, is the account-wide stat boost system: every
+        verified node grants Battle Enhancement effects shared by all Witches. It holds two systems,
+        the permanent Normal Law and the seasonal Floating Law, and its nodes boost Witches by class,
+        by attack type (Physical, Magic, Mental) and by faction (Human, Android, Beastfolk), which is
+        why those two chips now appear on every witch page and team build.
+      </p>
+
+      <h2 class="majo-event-subtitle">How it works</h2>
+      <ul class="majo-update-points">
+        <li>Verify nodes to gain their effects. Most nodes have 3 or 5 levels, shown in game as per-level values like 4/8/12/16/20.</li>
+        <li>Verify a set number of nodes on a page to unlock the next page. Pages 2 and 3 both unlock through verification counts.</li>
+        <li>The first node of a page is a Medium Node: witch teams that meet its condition receive an Overwrite Effect, such as [Class Resonance], immediately on verification.</li>
+        <li>Changed your mind? Reject resets a Law's nodes and refunds all upgrade costs, paid in Omen Stones. The number of rejections is limited, and per the official Sep 7 notice a Law Reject reset was added, refreshing weekly on Mondays at 05:00 (UTC+8) from Sept 14, 2026.</li>
+      </ul>
+
+      <h2 class="majo-event-subtitle">Normal Law (permanent)</h2>
+      <ul class="majo-update-points">
+        <li>Three pages of 12 nodes each. Verified with Normal Law · Inspiration, with Key Law · Conviction as the higher material.</li>
+        <li>Core stat nodes boost every Witch: Attack, Defense and Health lines.</li>
+        <li>Type nodes boost only Witches of that attack type: Attack (Physical), Attack (Magic), Attack (Mental) and the matching Defense lines.</li>
+        <li>Named nodes to watch: Interference Authorization I (all Witches start battles with 120 Extreme Skill Charge), Dislocation Pulse (posture value +30), and Reactive Resonance (Stagger Resistance +2 while casting Extremes, the node the loading tips call the third stage of the Normal Law).</li>
+      </ul>
+
+      <h2 class="majo-event-subtitle">Floating Law (seasonal)</h2>
+      <ul class="majo-update-points">
+        <li>Seasonal boards verified with Floating Law · Echo S1 and Echo S2 materials, currently Season 1.</li>
+        <li>Floating Law effects do not apply to battles in the main story chapters, in game notice states this directly.</li>
+        <li>Faction nodes boost Witches of one faction: Attack and Defense (Human), (Android) and (Beastfolk) lines on every page, plus Health lines on page 3.</li>
+        <li>Faction Resonance nodes add battle-wide perks: bonus Extreme energy at battle start, Critical Resistance, Stagger Resistance and posture, knockdown-triggered Attack buffs and more.</li>
+        <li>Each page also carries a unique capstone: Extreme Overclock (page 1), Ascending Sequence (page 2), Stress Pulse (page 3) and Lossless Conduction Trigger on the bonus board.</li>
+      </ul>
+
+      {normalBoards.map((b) => (
+        <div class="majo-law-board">
+          <h3 class="majo-law-board-title">{b.law}, {b.page}</h3>
+          <div class="majo-law-rows">
+            {b.nodes.map((n) => (
+              <div class="majo-law-row">
+                <span class="majo-law-slot">{n.slot}</span>
+                <span class="majo-law-name">{n.name}</span>
+                <span class="majo-law-desc">{n.desc}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      {floatingBoards.map((b) => (
+        <div class="majo-law-board">
+          <h3 class="majo-law-board-title">{b.law}, {b.page}</h3>
+          {b.note && <p class="majo-law-board-note">{b.note}</p>}
+          <div class="majo-law-rows">
+            {b.nodes.map((n) => (
+              <div class="majo-law-row">
+                <span class="majo-law-slot">{n.slot}</span>
+                <span class="majo-law-name">{n.name}</span>
+                <span class="majo-law-desc">{n.desc}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <h2 class="majo-event-subtitle">Factions and attack types</h2>
+      <ul class="majo-update-points">
+        <li>Every Witch has one attack type, Physical, Magic or Mental, and one faction, Human, Android or Beastfolk. Both are shown as chips on witch pages and in team builds.</li>
+        <li>Law nodes boost stats by both axes, so a Mental Beastfolk Witch like Jenny feeds on different nodes than a Magic Human like Peseshet.</li>
+        <li>Current roster split: 11 Human, 10 Beastfolk and 9 Android Witches.</li>
+        <li>Factions also gate content: the Tower of Anomalies has three Faction Recon Zones, Human, Beastfolk and Android, available for a limited time after each version update, with Human-faction Witches required in the Human zone.</li>
+      </ul>
+
+      <p class="majo-update-source">
+        Sources: in-game Law, StarCharts and tutorial strings from game data (Sep 14, 2026 pull); official September Update Content Overview (Sep 7, 2026) for the Law Reject reset schedule.
+      </p>
+    </article>
+
+    <p class="majo-update-back">
+      <a href="/guides/majo/">Back to MAJO guides</a>
+    </p>
+  </section>
+</MajoLayout>

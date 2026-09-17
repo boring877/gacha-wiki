@@ -285,3 +285,46 @@
   color: var(--majo-text-muted);
   font-size: 0.75rem;
 }
+
+/* Attack type and faction chips (character pages; teams page keeps its own copy) */
+.majo-type-chip {
+  display: inline-block;
+  align-self: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 5px;
+  padding: 0.14rem 0.55rem;
+  white-space: nowrap;
+}
+
+.majo-type-chip.chip-attack-physical {
+  background: #d98873;
+  color: #2b1712;
+}
+
+.majo-type-chip.chip-attack-magic {
+  background: #a89bd1;
+  color: #221f2c;
+}
+
+.majo-type-chip.chip-attack-mental {
+  background: #74a8a0;
+  color: #10231f;
+}
+
+.majo-type-chip.chip-faction-human {
+  background: #f2c14e;
+  color: #2a2118;
+}
+
+.majo-type-chip.chip-faction-android {
+  background: #6d93bd;
+  color: #16202b;
+}
+
+.majo-type-chip.chip-faction-beastfolk {
+  background: #74a86e;
+  color: #16220f;
+}

@@ -139,7 +139,7 @@ export const MAJO_TIER_PLACEMENTS = {
   // Healers (支援)
   maro: {
     tier: 'S',
-    reason: 'Offense healer: her Execution auto gives every ally +10% damage (plus 16% vulnerability on the target) on top of AoE heals and an ally Magic Attack aura on her Interference. Strong on paper, but most CN/JP/KR players still run free Peseshet for sustained healing.',
+    reason: 'Offense healer: her Execution auto gives every ally +10% damage (plus 16% vulnerability on the target) on top of AoE heals and an ally Mental Attack aura on her Interference. Strong on paper, but most CN/JP/KR players still run free Peseshet for sustained healing.',
   },
   emily: {
     tier: 'SS',

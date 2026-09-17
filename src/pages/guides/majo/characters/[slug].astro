@@ -103,6 +103,12 @@ function parseEffects(en: string, zh: string): Array<{ label: string; kind: stri
             alt={char.cls}
             class="majo-icon-class majo-icon-lg"
           />
+          {char.attackType && (
+            <span class={`majo-type-chip chip-attack-${char.attackType.toLowerCase()}`}>{char.attackType}</span>
+          )}
+          {char.faction && (
+            <span class={`majo-type-chip chip-faction-${char.faction.toLowerCase()}`}>{char.faction}</span>
+          )}
         </div>
       </div>
     </div>
