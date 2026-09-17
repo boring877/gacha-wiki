@@ -510,102 +510,102 @@ export const BB_X_JP_ONLY_CARDS = [
 // Ultimate-reveal (video thumbnail) art per character slug
 export const BB_X_VIDEO_ART = {
   "agile-mercenary-shaty": [
-    { src: "x/1912445864322428962-1.webp", lang: "jp", date: "2025-04-16" },
+    { src: "x/1912445864322428962-1.webp", lang: "jp", date: "2025-04-16" , video: "x/videos/1912445864322428962.mp4" },
   ],
   "aiming-for-your-heart-shati": [
-    { src: "x/1816742990699975104-1.webp", lang: "jp", date: "2024-07-26" },
+    { src: "x/1816742990699975104-1.webp", lang: "jp", date: "2024-07-26" , video: "x/videos/1816742990699975104.mp4" },
   ],
   "artist-on-ice-ilugio": [
-    { src: "x/1897225583035334987-1.webp", lang: "jp", date: "2025-03-05" },
+    { src: "x/1897225583035334987-1.webp", lang: "jp", date: "2025-03-05" , video: "x/videos/1897225583035334987.mp4" },
   ],
   "assassin-beer-girl-rui": [
-    { src: "x/1856653248574464073-1.webp", lang: "jp", date: "2024-11-13" },
+    { src: "x/1856653248574464073-1.webp", lang: "jp", date: "2024-11-13" , video: "x/videos/1856653248574464073.mp4" },
   ],
   "bernadette": [
-    { src: "x/1821139223476314514-1.webp", lang: "jp", date: "2024-08-07" },
+    { src: "x/1821139223476314514-1.webp", lang: "jp", date: "2024-08-07" , video: "x/videos/1821139223476314514.mp4" },
   ],
   "bewildered-bride-magdalena": [
-    { src: "x/1932754690581705020-1.webp", lang: "jp", date: "2025-06-11" },
+    { src: "x/1932754690581705020-1.webp", lang: "jp", date: "2025-06-11" , video: "x/videos/1932754690581705020.mp4" },
   ],
   "bikini-beatdown-gil": [
-    { src: "x/1945438268327448886-1.webp", lang: "jp", date: "2025-07-16" },
+    { src: "x/1945438268327448886-1.webp", lang: "jp", date: "2025-07-16" , video: "x/videos/1945438268327448886.mp4" },
   ],
   "boob-shaking-cheerleader-ashley": [
-    { src: "x/1907387535719834005-1.webp", lang: "jp", date: "2025-04-02" },
+    { src: "x/1907387535719834005-1.webp", lang: "jp", date: "2025-04-02" , video: "x/videos/1907387535719834005.mp4" },
   ],
   "elaine": [
-    { src: "x/1968253600364106122-1.webp", lang: "jp", date: "2025-09-17" },
+    { src: "x/1968253600364106122-1.webp", lang: "jp", date: "2025-09-17" , video: "x/videos/1968253600364106122.mp4" },
     { src: "x/1813513982545916218-1.webp", lang: "jp", date: "2024-07-17" },
   ],
   "elegant-bunny-girl-bernadette": [
-    { src: "x/1899769843118993890-1.webp", lang: "jp", date: "2025-03-12" },
+    { src: "x/1899769843118993890-1.webp", lang: "jp", date: "2025-03-12" , video: "x/videos/1899769843118993890.mp4" },
   ],
   "fireworks-master-of-the-sky-festival-viatrice": [
-    { src: "x/1826212660884521461-1.webp", lang: "jp", date: "2024-08-21" },
+    { src: "x/1826212660884521461-1.webp", lang: "jp", date: "2024-08-21" , video: "x/videos/1826212660884521461.mp4" },
   ],
   "gil": [
-    { src: "x/1973327034215547202-1.webp", lang: "jp", date: "2025-10-01" },
-    { src: "x/1795772072498766087-1.webp", lang: "jp", date: "2024-05-29" },
+    { src: "x/1973327034215547202-1.webp", lang: "jp", date: "2025-10-01" , video: "x/videos/1973327034215547202.mp4" },
+    { src: "x/1795772072498766087-1.webp", lang: "jp", date: "2024-05-29" , video: "x/videos/1795772072498766087.mp4" },
   ],
   "gothic-loli-breast-fiend-juju": [
-    { src: "x/1904835725910315517-1.webp", lang: "jp", date: "2025-03-26" },
+    { src: "x/1904835725910315517-1.webp", lang: "jp", date: "2025-03-26" , video: "x/videos/1904835725910315517.mp4" },
   ],
   "hanis": [
     { src: "x/1981193869292425652-1.webp", lang: "jp", date: "2025-10-23" },
-    { src: "x/1940364838422581700-1.webp", lang: "jp", date: "2025-07-02" },
+    { src: "x/1940364838422581700-1.webp", lang: "jp", date: "2025-07-02" , video: "x/videos/1940364838422581700.mp4" },
   ],
   "ilugio": [
-    { src: "x/1808455660176285990-1.webp", lang: "jp", date: "2024-07-03" },
+    { src: "x/1808455660176285990-1.webp", lang: "jp", date: "2024-07-03" , video: "x/videos/1808455660176285990.mp4" },
   ],
   "inrine": [
     { src: "x/1823660841964855717-1.webp", lang: "jp", date: "2024-08-14" },
   ],
   "legendary-hero-gemini": [
-    { src: "x/1942886457741287895-1.webp", lang: "jp", date: "2025-07-09" },
+    { src: "x/1942886457741287895-1.webp", lang: "jp", date: "2025-07-09" , video: "x/videos/1942886457741287895.mp4" },
   ],
   "louise": [
     { src: "x/1991084040762327474-1.webp", lang: "jp", date: "2025-11-19" },
-    { src: "x/1879483676410445949-1.webp", lang: "jp", date: "2025-01-15" },
+    { src: "x/1879483676410445949-1.webp", lang: "jp", date: "2025-01-15" , video: "x/videos/1879483676410445949.mp4" },
   ],
   "my-little-sister-is-a-sailor-bonita": [
-    { src: "x/1854101429767540885-1.webp", lang: "jp", date: "2024-11-06" },
+    { src: "x/1854101429767540885-1.webp", lang: "jp", date: "2024-11-06" , video: "x/videos/1854101429767540885.mp4" },
   ],
   "peerless-inventor-pastel": [
-    { src: "x/1950496591443325369-1.webp", lang: "jp", date: "2025-07-30" },
+    { src: "x/1950496591443325369-1.webp", lang: "jp", date: "2025-07-30" , video: "x/videos/1950496591443325369.mp4" },
   ],
   "priscilla": [
-    { src: "x/1757706249603564008-1.webp", lang: "jp", date: "2024-02-14" },
+    { src: "x/1757706249603564008-1.webp", lang: "jp", date: "2024-02-14" , video: "x/videos/1757706249603564008.mp4" },
   ],
   "raffine": [
-    { src: "x/1810977268891562207-1.webp", lang: "jp", date: "2024-07-10" },
+    { src: "x/1810977268891562207-1.webp", lang: "jp", date: "2024-07-10" , video: "x/videos/1810977268891562207.mp4" },
   ],
   "roxanne": [
-    { src: "x/1965996221585342955-1.webp", lang: "jp", date: "2025-09-11" },
+    { src: "x/1965996221585342955-1.webp", lang: "jp", date: "2025-09-11" , video: "x/videos/1965996221585342955.mp4" },
   ],
   "shushu": [
-    { src: "x/1838881138854518839-1.webp", lang: "jp", date: "2024-09-25" },
+    { src: "x/1838881138854518839-1.webp", lang: "jp", date: "2024-09-25" , video: "x/videos/1838881138854518839.mp4" },
   ],
   "sirius": [
-    { src: "x/1800840678928457988-1.webp", lang: "jp", date: "2024-06-12" },
+    { src: "x/1800840678928457988-1.webp", lang: "jp", date: "2024-06-12" , video: "x/videos/1800840678928457988.mp4" },
   ],
   "sonia": [
     { src: "x/1917791093497946371-1.webp", lang: "jp", date: "2025-05-01" },
-    { src: "x/1914997687910306019-1.webp", lang: "jp", date: "2025-04-23" },
+    { src: "x/1914997687910306019-1.webp", lang: "jp", date: "2025-04-23" , video: "x/videos/1914997687910306019.mp4" },
   ],
   "tempting-naked-apron-diana": [
     { src: "x/1793220257470873906-1.webp", lang: "jp", date: "2024-05-22" },
   ],
   "the-bride-of-luck-theresia": [
-    { src: "x/1803382228417744934-1.webp", lang: "jp", date: "2024-06-19" },
+    { src: "x/1803382228417744934-1.webp", lang: "jp", date: "2024-06-19" , video: "x/videos/1803382228417744934.mp4" },
   ],
   "twin-shrine-maiden-raoul": [
-    { src: "x/1874395145619345638-1.webp", lang: "jp", date: "2025-01-01" },
+    { src: "x/1874395145619345638-1.webp", lang: "jp", date: "2025-01-01" , video: "x/videos/1874395145619345638.mp4" },
   ],
   "underboob-cheerleader-gemini": [
-    { src: "x/1783092270813581756-1.webp", lang: "jp", date: "2024-04-24" },
+    { src: "x/1783092270813581756-1.webp", lang: "jp", date: "2024-04-24" , video: "x/videos/1783092270813581756.mp4" },
   ],
   "wisdom-and-courage-athena": [
-    { src: "x/1902299015448031359-1.webp", lang: "jp", date: "2025-03-19" },
+    { src: "x/1902299015448031359-1.webp", lang: "jp", date: "2025-03-19" , video: "x/videos/1902299015448031359.mp4" },
   ],
 };
 

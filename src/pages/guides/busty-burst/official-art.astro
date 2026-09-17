@@ -116,23 +116,37 @@ const jpOnly = BB_X_JP_ONLY_CARDS;
     </section>
 
     <section id="ultimate-art" class="bb-xart-section">
-      <h2 class="bb-xart-heading">Ultimate Reveal Art</h2>
-      <p class="bb-xart-note">Thumbnails from the official ultimate skill reveal videos.</p>
-      <div class="bb-xart-grid">
+      <h2 class="bb-xart-heading">Ultimate Reveal Videos</h2>
+      <p class="bb-xart-note">
+        Clips from the official ultimate skill reveal videos, newest first. Some older tweets were
+        deleted before their clip could be saved, so those show the thumbnail only.
+      </p>
+      <div class="bb-xart-video-grid">
         {videoBlocks.map((block) => (
           <div class="bb-xart-card">
             <a class="bb-xart-name" href={`/guides/busty-burst/characters/${block.slug}/`}>{block.name}</a>
             <div class="bb-xart-card-images">
               {block.items.map((item) => (
                 <figure class="bb-xart-figure">
-                  <img
-                    src={`${R2}/${item.src}`}
-                    alt={`${block.name} ultimate skill reveal art`}
-                    loading="lazy"
-                    decoding="async"
-                    width={900}
-                    height={1200}
-                  />
+                  {item.video ? (
+                    <video
+                      controls
+                      preload="none"
+                      poster={`${R2}/${item.src}`}
+                      src={`${R2}/${item.video}`}
+                      width={1280}
+                      height={720}
+                    />
+                  ) : (
+                    <img
+                      src={`${R2}/${item.src}`}
+                      alt={`${block.name} ultimate skill reveal art`}
+                      loading="lazy"
+                      decoding="async"
+                      width={1280}
+                      height={720}
+                    />
+                  )}
                   <figcaption class="bb-xart-figure-caption">
                     <span class={`bb-xart-lang ${item.lang}`}>{item.lang.toUpperCase()}</span>
                     <span class="bb-xart-date">{item.date}</span>

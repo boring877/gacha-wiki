@@ -123,6 +123,26 @@
 }
 
 /* Ultimate reveal + game art grids */
+.bb-xart-video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.bb-xart-video-grid .bb-xart-figure {
+  min-width: 0;
+  max-width: none;
+  flex: 1 1 100%;
+}
+
+.bb-xart-figure video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
 .bb-xart-game-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
