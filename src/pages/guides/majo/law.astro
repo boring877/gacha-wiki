@@ -1,9 +1,11 @@
 ---
-// MAJO Law system page: Normal Law and Floating Law node reference, one patch-note style container.
+// MAJO Law system page: Normal Law and Floating Law node reference with in-game node icons, one patch-note style container.
 import MajoLayout from '../../../layouts/majo/LandingLayout.astro';
-import { LAW_BOARDS } from '../../../data/majo/law.js';
+import { LAW_BOARDS, LAW_MATERIALS } from '../../../data/majo/law.js';
 import '../../../styles/games/majo/majo-updates.css';
 import '../../../styles/games/majo/majo-law.css';
+
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/majo/law';
 
 const normalBoards = LAW_BOARDS.filter((b) => b.law === 'Normal Law');
 const floatingBoards = LAW_BOARDS.filter((b) => b.law === 'Floating Law');
@@ -17,19 +19,34 @@ const floatingBoards = LAW_BOARDS.filter((b) => b.law === 'Floating Law');
 >
   <section>
     <article class="majo-update-detail">
+      <div class="majo-update-detail-art">
+        <img
+          src={`${R2}/law-hero.webp`}
+          alt="Normal Law and Floating Law star charts in game"
+          loading="eager"
+          decoding="async"
+          width={2000}
+          height={1000}
+        />
+      </div>
+
       <div class="majo-event-head">
         <span class="majo-update-cat update-cat-news">Progression</span>
         <span class="majo-update-date">Account-wide stat boosts</span>
       </div>
 
-      <h1 class="majo-update-detail-title">Law System</h1>
+      <h1 class="majo-law-title">
+        <img class="majo-law-emblem" src={`${R2}/law-emblem.webp`} alt="" loading="eager" decoding="async" width={308} height={383} />
+        Law System
+      </h1>
 
       <p class="majo-law-intro">
         The Law menu, called Fictional Law in game, is the account-wide stat boost system: every
         verified node grants Battle Enhancement effects shared by all Witches. It holds two systems,
-        the permanent Normal Law and the seasonal Floating Law, and its nodes boost Witches by class,
-        by attack type (Physical, Magic, Mental) and by faction (Human, Android, Beastfolk), which is
-        why those two chips now appear on every witch page and team build.
+        the permanent Normal Law (blue star chart) and the seasonal Floating Law (red star chart),
+        and its nodes boost Witches by class, by attack type (Physical, Magic, Mental) and by faction
+        (Human, Android, Beastfolk), which is why those two chips now appear on every witch page and
+        team build.
       </p>
 
       <h2 class="majo-event-subtitle">How it works</h2>
@@ -40,9 +57,21 @@ const floatingBoards = LAW_BOARDS.filter((b) => b.law === 'Floating Law');
         <li>Changed your mind? Reject resets a Law's nodes and refunds all upgrade costs, paid in Omen Stones. The number of rejections is limited, and per the official Sep 7 notice a Law Reject reset was added, refreshing weekly on Mondays at 05:00 (UTC+8) from Sept 14, 2026.</li>
       </ul>
 
+      <h2 class="majo-event-subtitle">Verification materials</h2>
+      <div class="majo-law-materials">
+        {LAW_MATERIALS.map((mt) => (
+          <div class="majo-law-material">
+            <img class="majo-law-material-icon" src={`${R2}/${mt.icon}.webp`} alt={mt.name} loading="lazy" decoding="async" width={500} height={500} />
+            <p class="majo-law-material-name">{mt.name}</p>
+            <p class="majo-law-material-law">{mt.law}</p>
+            <p class="majo-law-material-note">{mt.note}</p>
+          </div>
+        ))}
+      </div>
+
       <h2 class="majo-event-subtitle">Normal Law (permanent)</h2>
       <ul class="majo-update-points">
-        <li>Three pages of 12 nodes each. Verified with Normal Law · Inspiration, with Key Law · Conviction as the higher material.</li>
+        <li>Three pages of 12 nodes each, verified with Normal Law · Inspiration, with Key Law · Conviction as the higher material.</li>
         <li>Core stat nodes boost every Witch: Attack, Defense and Health lines.</li>
         <li>Type nodes boost only Witches of that attack type: Attack (Physical), Attack (Magic), Attack (Mental) and the matching Defense lines.</li>
         <li>Named nodes to watch: Interference Authorization I (all Witches start battles with 120 Extreme Skill Charge), Dislocation Pulse (posture value +30), and Reactive Resonance (Stagger Resistance +2 while casting Extremes, the node the loading tips call the third stage of the Normal Law).</li>
@@ -63,9 +92,8 @@ const floatingBoards = LAW_BOARDS.filter((b) => b.law === 'Floating Law');
           <div class="majo-law-rows">
             {b.nodes.map((n) => (
               <div class="majo-law-row">
-                <span class="majo-law-slot">{n.slot}</span>
-                <span class="majo-law-name">{n.name}</span>
-                <span class="majo-law-desc">{n.desc}</span>
+                <img class="majo-law-node-icon" src={`${R2}/icon-${n.icon}.webp`} alt="" loading="lazy" decoding="async" width={72} height={72} />
+                <p class="majo-law-node-text"><strong>{n.name}:</strong> {n.desc}</p>
               </div>
             ))}
           </div>
@@ -79,9 +107,8 @@ const floatingBoards = LAW_BOARDS.filter((b) => b.law === 'Floating Law');
           <div class="majo-law-rows">
             {b.nodes.map((n) => (
               <div class="majo-law-row">
-                <span class="majo-law-slot">{n.slot}</span>
-                <span class="majo-law-name">{n.name}</span>
-                <span class="majo-law-desc">{n.desc}</span>
+                <img class="majo-law-node-icon" src={`${R2}/icon-${n.icon}.webp`} alt="" loading="lazy" decoding="async" width={72} height={72} />
+                <p class="majo-law-node-text"><strong>{n.name}:</strong> {n.desc}</p>
               </div>
             ))}
           </div>
@@ -97,7 +124,7 @@ const floatingBoards = LAW_BOARDS.filter((b) => b.law === 'Floating Law');
       </ul>
 
       <p class="majo-update-source">
-        Sources: in-game Law, StarCharts and tutorial strings from game data (Sep 14, 2026 pull); official September Update Content Overview (Sep 7, 2026) for the Law Reject reset schedule.
+        Sources: in-game Law, StarCharts and tutorial strings from game data (Sep 14, 2026 pull); node icons, board art and material art extracted from the game's UI bundles; official September Update Content Overview (Sep 7, 2026) for the Law Reject reset schedule.
       </p>
     </article>
 
