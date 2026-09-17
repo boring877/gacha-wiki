@@ -1,0 +1,53 @@
+---
+// MAJO events hub: lists in-game events with live status and links to detail guides.
+import MajoLayout from '../../../../layouts/majo/LandingLayout.astro';
+import { MAJO_EVENTS, eventStatus } from '../../../../data/majo/events.js';
+import '../../../../styles/games/majo/majo-events.css';
+---
+
+<MajoLayout
+  title="Events"
+  description={`MAJO: Witches Night event guides: current and past in-game events with stage structure, currencies, event shops, the Lucky Wheel and rewards, updated September 2026.`}
+  gameTitle="Events"
+  crumbName="Events"
+>
+  <section>
+    <div class="majo-event-intro">
+      <p>
+        Guides for MAJO's in-game events: how each one plays, what to farm, where the currencies go
+        and which rewards are worth pushing for. Status chips below are computed against the event's
+        own start and end times, shown in UTC+8 like the official notices.
+      </p>
+    </div>
+
+    <h2 class="majo-event-section-title">All events</h2>
+    <div class="majo-event-grid">
+      {MAJO_EVENTS.map((ev) => {
+        const status = eventStatus(ev);
+        return (
+          <div class="majo-event-card">
+            <div class="majo-event-card-art">
+              <img
+                src={ev.hero.src}
+                alt={`${ev.name} event art`}
+                loading="lazy"
+                decoding="async"
+                width={ev.hero.w}
+                height={ev.hero.h}
+              />
+            </div>
+            <div class="majo-event-card-head">
+              <h3 class="majo-event-card-name">
+                <a href={`/guides/majo/events/${ev.slug}/`}>{ev.name}</a>
+              </h3>
+              <span class={`majo-event-status is-${status.id}`}>{status.label}</span>
+            </div>
+            <p class="majo-event-card-dates">{ev.periodLabel}</p>
+            <p class="majo-event-card-summary">{ev.summary}</p>
+            <a class="majo-event-card-link" href={`/guides/majo/events/${ev.slug}/`}>Read guide</a>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+</MajoLayout>

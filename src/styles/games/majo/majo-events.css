@@ -1,0 +1,170 @@
+/* MAJO events pages: detail reuses the updates patch-note container (majo-updates.css);
+   this file adds the event head, logo, subtitles, gallery and status chips. */
+
+.majo-event-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.6rem;
+}
+
+.majo-event-status {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 5px;
+  padding: 0.14rem 0.55rem;
+  white-space: nowrap;
+}
+
+.majo-event-status.is-live {
+  background: #74a86e;
+  color: #16220f;
+}
+
+.majo-event-status.is-upcoming {
+  background: #f2c14e;
+  color: #2a2118;
+}
+
+.majo-event-status.is-ended {
+  background: var(--majo-bg-tertiary);
+  border: 1px solid var(--majo-border);
+  color: var(--majo-text-tertiary);
+}
+
+.majo-event-logo {
+  display: block;
+  width: min(420px, 100%);
+  height: auto;
+  margin: 0 auto 1.2rem;
+}
+
+.majo-event-subtitle {
+  margin: 1.4rem 0 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--majo-primary-light);
+}
+
+.majo-event-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.majo-event-fig {
+  margin: 0;
+}
+
+.majo-event-fig-img {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--majo-bg-tertiary);
+  border: 1px solid var(--majo-border);
+}
+
+.majo-event-fig-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+}
+
+.majo-event-fig figcaption {
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--majo-text-tertiary);
+}
+
+@media (max-width: 560px) {
+  .majo-event-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Index card grid */
+.majo-event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.majo-event-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--majo-bg-secondary);
+  border: 1px solid var(--majo-border);
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem 1rem;
+}
+
+.majo-event-card-art {
+  aspect-ratio: 5 / 2;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 0.6rem;
+  background: var(--majo-bg-tertiary);
+}
+
+.majo-event-card-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.majo-event-card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+}
+
+.majo-event-card-name {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--majo-text-primary);
+}
+
+.majo-event-card-name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.majo-event-card-dates {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--majo-primary-light);
+  margin-bottom: 0.4rem;
+}
+
+.majo-event-card-summary {
+  margin: 0 0 0.6rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--majo-text-secondary);
+}
+
+.majo-event-card-link {
+  margin-top: auto;
+  align-self: flex-start;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 5px;
+  padding: 0.25rem 0.7rem;
+  background: var(--majo-bg-tertiary);
+  border: 1px solid var(--majo-border);
+  color: var(--majo-text-primary);
+  text-decoration: none;
+}

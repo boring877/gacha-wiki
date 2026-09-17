@@ -1,0 +1,101 @@
+---
+// MAJO event detail page: one patch-note style article per event, rendered from events.js.
+import MajoLayout from '../../../../layouts/majo/LandingLayout.astro';
+import { MAJO_EVENTS, eventStatus } from '../../../../data/majo/events.js';
+import '../../../../styles/games/majo/majo-updates.css';
+import '../../../../styles/games/majo/majo-events.css';
+
+export function getStaticPaths() {
+  return MAJO_EVENTS.map((ev) => ({ params: { slug: ev.slug }, props: { ev } }));
+}
+
+const { ev } = Astro.props;
+const status = eventStatus(ev);
+---
+
+<MajoLayout
+  title={ev.name}
+  description={`${ev.name} event guide for MAJO: Witches Night. ${ev.summary}`}
+  gameTitle="Events"
+  crumbName={ev.name}
+>
+  <section>
+    <article class="majo-update-detail">
+      <div class="majo-update-detail-art">
+        <img
+          src={ev.hero.src}
+          alt={`${ev.name} event art`}
+          loading="eager"
+          decoding="async"
+          width={ev.hero.w}
+          height={ev.hero.h}
+        />
+      </div>
+
+      <div class="majo-event-head">
+        <span class="majo-update-cat update-cat-event">Event</span>
+        <span class="majo-update-date">{ev.periodLabel}</span>
+        <span class={`majo-event-status is-${status.id}`}>{status.label}</span>
+      </div>
+
+      <h1 class="majo-update-detail-title">{ev.name}</h1>
+
+      <img
+        class="majo-event-logo"
+        src={ev.logo.src}
+        alt={`${ev.storyName} logo`}
+        loading="eager"
+        decoding="async"
+        width={ev.logo.w}
+        height={ev.logo.h}
+      />
+
+      <h2 class="majo-event-subtitle">Official notes</h2>
+      <ul class="majo-update-points">
+        {ev.officialNotes.map((p) => <li>{p}</li>)}
+      </ul>
+
+      <h2 class="majo-event-subtitle">Details from game data</h2>
+      <ul class="majo-update-points">
+        {ev.dataNotes.map((p) => <li>{p}</li>)}
+      </ul>
+
+      <h2 class="majo-event-subtitle">Event art</h2>
+      <div class="majo-event-gallery">
+        {ev.gallery.map((g) => (
+          <figure class="majo-event-fig">
+            <div class="majo-event-fig-img">
+              <img
+                src={g.src}
+                alt={g.caption}
+                loading="lazy"
+                decoding="async"
+                width={g.w}
+                height={g.h}
+              />
+            </div>
+            <figcaption>{g.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <p class="majo-update-source">
+        Sources:
+        {ev.sources.map((s, i) => (
+          <>
+            {i > 0 && ', '}
+            {s.url ? (
+              <a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a>
+            ) : (
+              <span>{s.label}</span>
+            )}
+          </>
+        ))}
+      </p>
+    </article>
+
+    <p class="majo-update-back">
+      <a href="/guides/majo/events/">Back to all events</a>
+    </p>
+  </section>
+</MajoLayout>
