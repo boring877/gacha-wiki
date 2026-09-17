@@ -1,0 +1,71 @@
+---
+// Gene-Sys: Adam character database (grid of all profiled characters).
+import GSALayout from '../../../../layouts/gene-sys-adam/LandingLayout.astro';
+import { gsaCharacters } from '../../../../data/gene-sys-adam/characters.js';
+import '../../../../styles/games/gene-sys-adam/gsa-common.css';
+
+const characters = gsaCharacters;
+---
+
+<GSALayout
+  title="Character Database"
+  description={`Complete character database for Gene-Sys: Adam. Browse all ${characters.length} characters with English and Chinese names, titles, gacha availability, profiles, stats and skills.`}
+  gameTitle="Characters"
+  crumbName="Characters"
+>
+  <section class="gsa-section">
+    <div class="gsa-toolbar">
+      <input type="text" class="gsa-search" placeholder="Search name, title or epithet..." id="gsa-search" />
+      <button class="gsa-filter-btn active" data-filter="all">All</button>
+      <button class="gsa-filter-btn" data-filter="gacha">In Gacha</button>
+      <button class="gsa-filter-btn" data-filter="female">Female</button>
+      <button class="gsa-filter-btn" data-filter="male">Male</button>
+    </div>
+    <div class="gsa-grid-cards" id="gsa-grid">
+      {characters.map(c => (
+        <a class="gsa-card" href={`/guides/gene-sys-adam/characters/${c.slug}/`} data-search={`${c.name} ${c.nameZh} ${c.title} ${c.epithet}`.toLowerCase()} data-tags={[c.inGacha ? 'gacha' : '', (c.sex || '').toLowerCase()].filter(Boolean).join(' ')}>
+          <div class="gsa-icon-frame">
+            {c.icon ? <img src={c.icon} alt={c.name} loading="lazy" /> : <span class="gsa-monogram">{c.name?.[0]}</span>}
+          </div>
+          <p class="gsa-card-title">{c.name}</p>
+          <p class="gsa-card-sub">{c.title}</p>
+          {c.inGacha && <span class="gsa-chip solid-accent" style="margin-top:6px">Gacha</span>}
+        </a>
+      ))}
+    </div>
+    <p class="gsa-no-results" id="gsa-no-results">No characters match your search.</p>
+  </section>
+</GSALayout>
+
+<script is:inline>
+  // Client-side search and tag filters for the character grid.
+  (function () {
+    var search = document.getElementById('gsa-search');
+    var grid = document.getElementById('gsa-grid');
+    var cards = grid.querySelectorAll('.gsa-card');
+    var noResults = document.getElementById('gsa-no-results');
+    var activeFilter = 'all';
+    function apply() {
+      var q = (search.value || '').trim().toLowerCase();
+      var visible = 0;
+      cards.forEach(function (card) {
+        var text = card.getAttribute('data-search') || '';
+        var tags = card.getAttribute('data-tags') || '';
+        var ok = (!q || text.indexOf(q) !== -1) &&
+          (activeFilter === 'all' || tags.indexOf(activeFilter) !== -1);
+        card.style.display = ok ? '' : 'none';
+        if (ok) visible++;
+      });
+      noResults.style.display = visible === 0 ? 'block' : 'none';
+    }
+    search.addEventListener('input', apply);
+    document.querySelectorAll('.gsa-filter-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.gsa-filter-btn').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        activeFilter = btn.getAttribute('data-filter');
+        apply();
+      });
+    });
+  })();
+</script>

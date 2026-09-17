@@ -1,0 +1,74 @@
+---
+// Breadcrumb nav for Gene-Sys: Adam pages (mirrors majo breadcrumb behavior, gsa classes).
+import {
+  generateBreadcrumbs,
+  getParentBreadcrumb,
+  generateBackNavigation,
+} from '../../utils/breadcrumb-generator.js';
+import type { BreadcrumbItem, BackNavigation } from '../../utils/breadcrumb-generator.js';
+
+export interface Props {
+  items?: Array<{ name: string; href?: string }>;
+  autoGenerate?: boolean;
+  gameKey?: string;
+  currentPageName?: string;
+  includeHome?: boolean;
+  showBackButton?: boolean;
+}
+
+const {
+  items,
+  autoGenerate = false,
+  gameKey,
+  currentPageName,
+  includeHome = true,
+  showBackButton = true,
+} = Astro.props;
+
+let breadcrumbItems: BreadcrumbItem[] = items || [];
+let backNavigation: BackNavigation | null = null;
+
+if (autoGenerate) {
+  breadcrumbItems = generateBreadcrumbs(Astro.url.pathname, {
+    includeHome,
+    currentPageName,
+    gameKey,
+  });
+  if (showBackButton) {
+    backNavigation = generateBackNavigation(Astro.url.pathname, { gameKey });
+  }
+} else if (showBackButton && items) {
+  const parent = getParentBreadcrumb(items);
+  if (parent) {
+    backNavigation = {
+      href: parent.href || '/',
+      text: `Back to ${parent.name}`,
+      parentName: parent.name,
+    };
+  }
+}
+---
+
+<nav class="gsa-breadcrumb" aria-label="Breadcrumb">
+  <div class="gsa-breadcrumb-container">
+    {
+      backNavigation && (
+        <button class="gsa-breadcrumb-back" data-back-href={backNavigation.href}>
+          <span class="gsa-breadcrumb-back-arrow" aria-hidden="true">‹</span>
+          <span class="gsa-breadcrumb-back-text">{backNavigation.parentName}</span>
+        </button>
+      )
+    }
+    <ol class="gsa-breadcrumb-list">
+      {breadcrumbItems.map(item => (
+        <li class="gsa-breadcrumb-item">
+          {item.href ? (
+            <a href={item.href} class="gsa-breadcrumb-link">{item.name}</a>
+          ) : (
+            <span class="gsa-breadcrumb-current" aria-current="page">{item.name}</span>
+          )}
+        </li>
+      ))}
+    </ol>
+  </div>
+</nav>

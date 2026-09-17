@@ -1,0 +1,130 @@
+---
+// Gene-Sys: Adam landing page: game overview, facts, roster preview.
+import GSALayout from '../../../layouts/gene-sys-adam/LandingLayout.astro';
+import { gsaCharacters } from '../../../data/gene-sys-adam/characters.js';
+
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam';
+const roster = gsaCharacters;
+const inGacha = roster.filter(c => c.inGacha).length;
+const withArt = roster.filter(c => c.icon).slice(0, 12);
+const facts = [
+  { label: 'Developer', value: 'Neversoft (EROLABS)' },
+  { label: 'Genre', value: 'R18 dark urban revenge RPG, real-time squad combat' },
+  { label: 'Platform', value: 'Android, PC client via EROLABS' },
+  { label: 'Status', value: 'Live' },
+  { label: 'Roster', value: `${roster.length} profiled characters, ${inGacha} in the gacha pool` },
+  { label: 'Data source', value: 'Decrypted live client tables (updated September 2026)' },
+];
+---
+
+<GSALayout
+  title="Home"
+  description="Gene-Sys: Adam wiki: Sin City revenge RPG on EROLABS. Character database with profiles and skills, gacha machines and rates, item database."
+  gameTitle="Gene-Sys: Adam"
+  heroImage={`${R2}/gameimg_icon_a.webp`}
+>
+  <section class="gsa-section">
+    <h2 class="gsa-section-title">The Story</h2>
+    <p class="gsa-story-text">
+      <strong>Gene-Sys: Adam</strong> is an R18 dark urban revenge RPG set in a crime-ridden
+      metropolis. You follow Theodore, a mysterious survivor of the plague and countless
+      battlefields, who returns to the land of his birth with a thirst for revenge. Recruit
+      agents from the city's factions, uncover the conspiracy behind the outbreak, and take
+      back the streets in real-time squad combat.
+    </p>
+    <p class="gsa-story-text">
+      The game launched on EROLABS in September 2026. This wiki is built from the live client
+      data: every table on these pages was decrypted from the game files, so numbers match the
+      shipped game exactly.
+    </p>
+  </section>
+
+  <section class="gsa-section">
+    <h2 class="gsa-section-title">Game Facts</h2>
+    <div class="gsa-facts-grid">
+      {facts.map(f => (
+        <div class="gsa-fact">
+          <span class="gsa-fact-label">{f.label}</span>
+          <span class="gsa-fact-value">{f.value}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="gsa-section">
+    <h2 class="gsa-section-title">Roster Preview</h2>
+    <div class="gsa-grid-cards">
+      {withArt.map(c => (
+        <a class="gsa-card" href={`/guides/gene-sys-adam/characters/${c.slug}/`}>
+          <div class="gsa-icon-frame">
+            {c.icon ? <img src={c.icon} alt={c.name} loading="lazy" /> : <span class="gsa-monogram">{c.name?.[0]}</span>}
+          </div>
+          <p class="gsa-card-title">{c.name}</p>
+          <p class="gsa-card-sub">{c.title}</p>
+        </a>
+      ))}
+    </div>
+    <p style="margin-top:14px">
+      <a class="gsa-link-all" href="/guides/gene-sys-adam/characters/">View all {roster.length} characters</a>
+    </p>
+  </section>
+
+  <section class="gsa-section">
+    <h2 class="gsa-section-title">Resources</h2>
+    <div class="gsa-grid-cards">
+      <a class="gsa-card" href="/guides/gene-sys-adam/characters/">
+        <p class="gsa-card-title">Character Database</p>
+        <p class="gsa-card-sub">{roster.length} characters with profiles, stats and skills</p>
+      </a>
+      <a class="gsa-card" href="/guides/gene-sys-adam/gacha/">
+        <p class="gsa-card-title">Gacha Guide</p>
+        <p class="gsa-card-sub">Summon machines, pool rates and guarantees</p>
+      </a>
+      <a class="gsa-card" href="/guides/gene-sys-adam/items/">
+        <p class="gsa-card-title">Item Database</p>
+        <p class="gsa-card-sub">All items with descriptions</p>
+      </a>
+    </div>
+  </section>
+</GSALayout>
+
+<style>
+  .gsa-story-text {
+    color: var(--gsa-text);
+    line-height: 1.7;
+    margin: 0 0 12px;
+  }
+  .gsa-facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+  .gsa-fact {
+    background: var(--gsa-bg-tertiary);
+    border: 1px solid var(--gsa-border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .gsa-fact-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gsa-text-dim);
+    font-weight: 700;
+  }
+  .gsa-fact-value {
+    font-size: 0.92rem;
+    color: var(--gsa-text);
+  }
+  .gsa-link-all {
+    color: var(--gsa-accent-strong);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  a.gsa-card {
+    text-decoration: none;
+  }
+</style>

@@ -1,0 +1,225 @@
+---
+// Gene-Sys: Adam character detail: profile, stats, skills.
+import GSALayout from '../../../../layouts/gene-sys-adam/LandingLayout.astro';
+import { gsaCharacters, getGsaCharacter } from '../../../../data/gene-sys-adam/characters.js';
+import '../../../../styles/games/gene-sys-adam/gsa-common.css';
+
+export async function getStaticPaths() {
+  return gsaCharacters.map(c => ({ params: { slug: c.slug } }));
+}
+
+const { slug } = Astro.params;
+const c = getGsaCharacter(slug);
+if (!c) return Astro.redirect('/guides/gene-sys-adam/characters/');
+
+const profile = c.profile || {};
+const stats = c.stats || {};
+const statRows = [
+  ['Attack Range', stats.atkRange],
+  ['Normal Attack GCD', stats.normalAttackGCD ? `${Number(stats.normalAttackGCD) / 1000}s` : null],
+  ['Crit Rate', stats.critPer ? `${Number(stats.critPer) / 100}%` : null],
+  ['Crit Amplification', stats.critAmpPer ? `${Number(stats.critAmpPer) / 100}%` : null],
+  ['Hit Rate', stats.hitPer ? `${Number(stats.hitPer) / 100}%` : null],
+  ['Dodge Rate', stats.ddgPer ? `${Number(stats.ddgPer) / 100}%` : null],
+  ['Block Rate', stats.blkPer ? `${Number(stats.blkPer) / 100}%` : null],
+].filter(r => r[1] !== null && r[1] !== undefined && r[1] !== '');
+
+const skillKinds = ['Normal', 'Active', 'Passive'];
+function skillSlot(id) {
+  const tail = Number(String(id).slice(-2));
+  if (tail === 0 || tail === 10) return 'Normal';
+  if (tail % 10 === 0) return 'Passive';
+  return 'Active';
+}
+---
+
+<GSALayout
+  title={c.name}
+  description={`${c.name} (${c.nameZh}) guide for Gene-Sys: Adam: profile, stats, skills${c.title ? `, ${c.title}` : ''}.`}
+  gameTitle={c.name}
+  crumbName={c.name}
+>
+  <section class="gsa-section gsa-detail-head">
+    <div class="gsa-detail-icon">
+      {c.icon ? <img src={c.icon} alt={c.name} /> : <span class="gsa-monogram">{c.name?.[0]}</span>}
+    </div>
+    <div class="gsa-detail-id">
+      <h2 class="gsa-detail-name">{c.name} <span class="gsa-detail-namezh">{c.nameZh}</span></h2>
+      <p class="gsa-detail-title">{c.title}</p>
+      {c.epithet && <p class="gsa-detail-epithet">{c.epithet}</p>}
+      <div class="gsa-detail-chips">
+        {c.inGacha ? <span class="gsa-chip solid-accent">Gacha</span> : <span class="gsa-chip solid-muted">Not in gacha yet</span>}
+        {c.sex && <span class={`gsa-chip ${c.sex === 'Male' ? 'solid-male' : 'solid-female'}`}>{c.sex}</span>}
+        <span class="gsa-chip">{c.model}</span>
+      </div>
+    </div>
+  </section>
+
+  {
+    profile.resume || profile.personality || profile.interest ? (
+      <section class="gsa-section">
+        <h2 class="gsa-section-title">Profile</h2>
+        <div class="gsa-profile-grid">
+          {profile.title && <div class="gsa-profile-row"><span class="gsa-profile-label">Title</span><span>{profile.title}</span></div>}
+          {profile.birthday && profile.birthday !== '-1' && <div class="gsa-profile-row"><span class="gsa-profile-label">Birthday</span><span>{profile.birthday}</span></div>}
+          {profile.age && profile.age !== '-1' && <div class="gsa-profile-row"><span class="gsa-profile-label">Age</span><span>{profile.age}</span></div>}
+          {profile.height && profile.height !== '-1' && <div class="gsa-profile-row"><span class="gsa-profile-label">Height</span><span>{profile.height} cm</span></div>}
+          {profile.weight && profile.weight !== '-1' && <div class="gsa-profile-row"><span class="gsa-profile-label">Weight</span><span>{profile.weight} kg</span></div>}
+          {profile.interest && <div class="gsa-profile-row"><span class="gsa-profile-label">Interests</span><span>{profile.interest}</span></div>}
+          {profile.personality && <div class="gsa-profile-row"><span class="gsa-profile-label">Personality</span><span>{profile.personality}</span></div>}
+        </div>
+        {profile.resume && <p class="gsa-resume">{profile.resume}</p>}
+      </section>
+    ) : null
+  }
+
+  {
+    statRows.length ? (
+      <section class="gsa-section">
+        <h2 class="gsa-section-title">Base Stats</h2>
+        <table class="gsa-table">
+          <tbody>
+            {statRows.map(r => <tr><td style="width:220px" class="gsa-text-dim">{r[0]}</td><td>{r[1]}</td></tr>)}
+          </tbody>
+        </table>
+      </section>
+    ) : null
+  }
+
+  {
+    c.skills && c.skills.length ? (
+      <section class="gsa-section">
+        <h2 class="gsa-section-title">Skills</h2>
+        <div class="gsa-skills">
+          {c.skills.filter(s => !s.name?.includes('+')).map(s => (
+            <div class="gsa-skill">
+              <div class="gsa-skill-head">
+                <span class="gsa-chip solid-gold">{skillSlot(s.id)}</span>
+                <span class="gsa-skill-name">{s.name}</span>
+                {s.cooldown && Number(s.cooldown) > 0 && <span class="gsa-chip">CD {Number(s.cooldown) >= 100 ? `${Number(s.cooldown) / 100}s` : `${s.cooldown}s`}</span>}
+                {s.cost && Number(s.cost) > 0 && <span class="gsa-chip">Cost {Number(s.cost) / 1000}</span>}
+              </div>
+              {s.desc && <p class="gsa-skill-desc">{s.desc}</p>}
+              {s.detail && s.detail !== s.desc && <p class="gsa-skill-detail">{s.detail}</p>}
+            </div>
+          ))}
+        </div>
+      </section>
+    ) : null
+  }
+</GSALayout>
+
+<style>
+  .gsa-detail-head {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .gsa-detail-icon {
+    width: 128px;
+    height: 128px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--gsa-bg-tertiary);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--gsa-border);
+  }
+  .gsa-detail-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .gsa-detail-name {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  .gsa-detail-namezh {
+    color: var(--gsa-text-dim);
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 6px;
+  }
+  .gsa-detail-title {
+    margin: 4px 0 2px;
+    color: var(--gsa-accent-strong);
+    font-weight: 700;
+  }
+  .gsa-detail-epithet {
+    margin: 0 0 8px;
+    color: var(--gsa-text-dim);
+    font-size: 0.9rem;
+  }
+  .gsa-detail-chips {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .gsa-profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .gsa-profile-row {
+    background: var(--gsa-bg-tertiary);
+    border: 1px solid var(--gsa-border);
+    border-radius: 8px;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 0.9rem;
+  }
+  .gsa-profile-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gsa-text-dim);
+    font-weight: 700;
+  }
+  .gsa-resume {
+    line-height: 1.7;
+    color: var(--gsa-text);
+    margin: 0;
+  }
+  .gsa-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .gsa-skill {
+    background: var(--gsa-bg-tertiary);
+    border: 1px solid var(--gsa-border);
+    border-radius: 8px;
+    padding: 12px;
+  }
+  .gsa-skill-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+  .gsa-skill-name {
+    font-weight: 700;
+  }
+  .gsa-skill-desc {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .gsa-skill-detail {
+    margin: 6px 0 0;
+    font-size: 0.82rem;
+    color: var(--gsa-text-dim);
+    line-height: 1.6;
+  }
+  @media (max-width: 560px) {
+    .gsa-detail-head {
+      flex-direction: column;
+    }
+  }
+</style>

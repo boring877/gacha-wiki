@@ -12,7 +12,8 @@ export type GameKey =
   | 'desire-immortal-realm'
   | 'majo'
   | 'agent-x'
-  | 'muv-luv-girls-garden';
+  | 'muv-luv-girls-garden'
+  | 'gene-sys-adam';
 
 export interface NavigationLink {
   name: string;
@@ -527,6 +528,28 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
         title: 'Banners',
         links: [
           { name: 'Banner History', href: '/guides/muv-luv-girls-garden/banners/' },
+        ],
+      },
+    ],
+  },
+  'gene-sys-adam': {
+    sections: [
+      {
+        title: 'Characters',
+        links: [
+          { name: 'Database', href: '/guides/gene-sys-adam/characters/' },
+        ],
+      },
+      {
+        title: 'Gacha',
+        links: [
+          { name: 'Summon Guide', href: '/guides/gene-sys-adam/gacha/' },
+        ],
+      },
+      {
+        title: 'Resources',
+        links: [
+          { name: 'Items', href: '/guides/gene-sys-adam/items/' },
         ],
       },
     ],

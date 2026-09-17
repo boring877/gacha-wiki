@@ -179,6 +179,17 @@ export const GAMES: Game[] = [
     themeColor: '#d4a017',
     sections: ['Agents', 'Gacha', 'Elements', 'Roles'],
   },
+  {
+    id: 'gene-sys-adam',
+    name: 'Gene-Sys: Adam',
+    slug: 'gene-sys-adam',
+    description: 'R18 Noir Revenge RPG • EROLABS • 54 Characters • Squad Combat • Gacha Rates',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/gameimg_icon_a.webp',
+    url: '/guides/gene-sys-adam/',
+    status: 'active',
+    themeColor: '#b02a37',
+    sections: ['Characters', 'Gacha', 'Items'],
+  },
 ];
 
 export function getGameById(id: string): Game | undefined {

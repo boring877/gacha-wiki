@@ -24,6 +24,7 @@ const starSavior = g('star-savior');
 const rebellionGilgamesh = g('rebellion-gilgamesh');
 const majo = g('majo');
 const agentX = g('agent-x');
+const geneSysAdam = g('gene-sys-adam');
 const muvLuvGirlsGarden = g('muv-luv-girls-garden');
 
 // Type definitions for better code quality and IntelliSense
@@ -991,6 +992,40 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
     themeColor: agentX.themeColor,
     description: `Agent X wiki - R18 spy-agency gacha RPG on EROLABS. Command P.R.I.S.M.'s covert squad against The Fallen. Full agent database with rarity, element, role, stats, skills, gacha rates, and lore.`,
     genres: ['Spy RPG', 'Gacha', 'R18'] as const,
+    platform: 'Mobile, PC',
+    playMode: 'SinglePlayer',
+  },
+  [geneSysAdam.id]: {
+    gameName: geneSysAdam.name,
+    keywords: [
+      geneSysAdam.name,
+      'gene-sys adam',
+      'genesys adam',
+      'gene sys adam',
+      'gene-sys: adam',
+      'gene-sys adam wiki',
+      'gene-sys adam guide',
+      'gene-sys adam characters',
+      'gene-sys adam gacha',
+      'gene-sys adam erolabs',
+      'com.neversoft.cr.erolabs',
+      '潔妮絲亞當',
+      '基因素亚当',
+      // Game-type keywords
+      'r18 gacha',
+      'noir gacha game',
+      'erolabs games',
+      'crime rpg',
+      'sin city rpg',
+      // Generic
+      'gacha game',
+      'character database',
+      'gacha rates',
+      'mobile rpg',
+    ] as const,
+    themeColor: geneSysAdam.themeColor,
+    description: 'Gene-Sys: Adam wiki: R18 noir revenge RPG on EROLABS by Neversoft. Full character database with profiles, stats and skills, gacha machines and rates, and item database, built from decrypted live client data.',
+    genres: ['Dark Urban RPG', 'Gacha', 'R18'] as const,
     platform: 'Mobile, PC',
     playMode: 'SinglePlayer',
   },

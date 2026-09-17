@@ -1,0 +1,79 @@
+---
+// Gene-Sys: Adam item database with client-side search.
+import GSALayout from '../../../../layouts/gene-sys-adam/LandingLayout.astro';
+import { gsaItems } from '../../../../data/gene-sys-adam/items.js';
+import '../../../../styles/games/gene-sys-adam/gsa-common.css';
+
+const items = gsaItems;
+const qualityColors = {
+  70: 'solid-gold',
+};
+---
+
+<GSALayout
+  title="Item Database"
+  description={`All ${items.length} items in Gene-Sys: Adam with descriptions, from the decrypted ItemData table with English localization.`}
+  gameTitle="Items"
+  crumbName="Items"
+>
+  <section class="gsa-section">
+    <div class="gsa-toolbar">
+      <input type="text" class="gsa-search" placeholder="Search items..." id="gsa-item-search" />
+      <span class="gsa-text-dim" id="gsa-item-count">{items.length} items</span>
+    </div>
+    <div class="gsa-table-wrap">
+      <table class="gsa-table" id="gsa-item-table">
+        <thead>
+          <tr><th style="width:70px">ID</th><th style="width:230px">Name</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          {items.map(it => (
+            <tr data-search={`${it.id} ${it.name} ${it.desc}`.toLowerCase()}>
+              <td class="gsa-text-dim">{it.id}</td>
+              <td>
+                <span style="font-weight:700">{it.name}</span>
+                {Number(it.quality) >= 70 && <span class="gsa-chip solid-gold" style="margin-left:6px">High</span>}
+              </td>
+              <td class="gsa-text-dim">{it.desc}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="gsa-no-results" id="gsa-item-no-results">No items match your search.</p>
+  </section>
+</GSALayout>
+
+<style>
+  .gsa-table-wrap {
+    max-height: 70vh;
+    overflow: auto;
+    border: 1px solid var(--gsa-border);
+    border-radius: 8px;
+  }
+  .gsa-table-wrap table {
+    margin: 0;
+  }
+</style>
+
+<script is:inline>
+  // Client-side search for the item table.
+  (function () {
+    var search = document.getElementById('gsa-item-search');
+    var rows = document.querySelectorAll('#gsa-item-table tbody tr');
+    var noResults = document.getElementById('gsa-item-no-results');
+    var count = document.getElementById('gsa-item-count');
+    var total = rows.length;
+    search.addEventListener('input', function () {
+      var q = search.value.trim().toLowerCase();
+      var visible = 0;
+      rows.forEach(function (row) {
+        var ok = !q || (row.getAttribute('data-search') || '').indexOf(q) !== -1;
+        row.style.display = ok ? '' : 'none';
+        if (ok) visible++;
+      });
+      noResults.style.display = visible === 0 ? 'block' : 'none';
+      count.textContent = visible === total ? total + ' items' : visible + ' of ' + total + ' items';
+    });
+  })();
+</script>

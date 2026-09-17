@@ -1,0 +1,72 @@
+---
+// Landing layout for Gene-Sys: Adam (compact adaptation of the majo landing layout).
+import GameSEO from '../../components/GameSEO.astro';
+import Analytics from '../../components/Analytics.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import GSABreadcrumb from '../../components/gene-sys-adam/GSABreadcrumb.astro';
+
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/gene-sys-adam/gsa-common.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  heroImage?: string;
+  crumbName?: string;
+  seoKeywords?: readonly string[];
+}
+
+const { title, description, gameTitle, heroImage, crumbName, seoKeywords } = Astro.props;
+const seoTitle = `${title} | Gene-Sys: Adam Wiki`;
+const seoDescription =
+  description ||
+  'Gene-Sys: Adam wiki: Sin City revenge RPG on EROLABS. Character database, skills, gacha rates, items and game systems.';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/webp" href="https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/gameimg_icon_a.webp" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{seoTitle}</title>
+    <meta name="description" content={seoDescription} />
+    <GameSEO
+      gameKey="gene-sys-adam"
+      title={seoTitle}
+      description={seoDescription}
+      additionalKeywords={seoKeywords}
+    />
+    <Analytics />
+  </head>
+  <body class="gsa-body">
+    <CustomScrollbar />
+    <div class="bg-layer gsa-bg"></div>
+
+    <div class="gsa-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="gene-sys-adam" />
+      <MobileMenu />
+
+      <div class="gsa-container">
+        <main class="gsa-main" id="main-content">
+          {heroImage && gameTitle && (
+            <section class="gsa-hero">
+              <img src={heroImage} alt={gameTitle} class="gsa-hero-img" loading="eager" />
+            </section>
+          )}
+          <GSABreadcrumb autoGenerate gameKey="gene-sys-adam" currentPageName={crumbName || title} />
+          <h1 class="gsa-page-title">{gameTitle || title}</h1>
+          <slot />
+        </main>
+      </div>
+      <Footer />
+    </div>
+  </body>
+</html>
