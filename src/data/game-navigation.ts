@@ -458,6 +458,7 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
           { name: 'Database', href: '/guides/majo/characters/' },
           { name: 'Tier List', href: '/guides/majo/tier-list/' },
           { name: 'Team Builds', href: '/guides/majo/teams/' },
+          { name: 'Banners', href: '/guides/majo/banners/' },
         ],
       },
       {

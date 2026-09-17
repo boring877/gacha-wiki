@@ -113,6 +113,7 @@ export const horizonWalkerConfig = {
         { id: 'characters', title: 'Database', url: '/guides/horizon-walker/characters/' },
         { id: 'tier-list', title: 'Tier List', url: '/guides/horizon-walker/tier-list/' },
         { id: 'builds', title: 'Builds', url: '/guides/horizon-walker/builds/' },
+        { id: 'community-builds', title: 'Community Builds', url: '/guides/horizon-walker/builds/community/' },
         { id: 'mercenaries', title: 'Mercenaries', url: '/guides/horizon-walker/mercenaries/' },
         { id: 'weapons', title: 'Weapons', url: '/guides/horizon-walker/weapons/' },
         { id: 'stigmas', title: 'Stigmas', url: '/guides/horizon-walker/stigmas/' },

@@ -62,6 +62,7 @@ export const bustyBurstConfig = {
         { id: 'bb-char-stats', title: 'Stats', url: '/guides/busty-burst/character-stats/' },
         { id: 'bb-support-stats', title: 'Support Stats', url: '/guides/busty-burst/support-stats/' },
         { id: 'bb-support-bonus', title: 'Support Bonus', url: '/guides/busty-burst/support-bonus/' },
+        { id: 'bb-official-art', title: 'Official Art', url: '/guides/busty-burst/official-art/' },
       ],
     },
     {
@@ -104,6 +105,7 @@ export const bustyBurstConfig = {
         { id: 'bb-phys-def', title: 'Physical DEF Down', url: '/guides/busty-burst/physical-defense-down/' },
         { id: 'bb-mag-def', title: 'Magic DEF Down', url: '/guides/busty-burst/magic-defense-down/' },
         { id: 'bb-elem-def', title: 'Element DEF Down', url: '/guides/busty-burst/element-defense-down/' },
+        { id: 'bb-dot', title: 'Burn & DoT Damage', url: '/guides/busty-burst/dot-damage/' },
         { id: 'bb-team-builder', title: 'Team Builder', url: '/guides/busty-burst/team-builder/' },
         { id: 'bb-skill-formulas', title: 'Skill Formulas', url: '/guides/busty-burst/skill-formulas/' },
       ],
@@ -116,6 +118,7 @@ export const bustyBurstConfig = {
       size: 'small',
       guides: [
         { id: 'bb-banner-timeline', title: 'Banner Timeline', url: '/guides/busty-burst/banner-timeline/' },
+        { id: 'bb-banner-jp', title: 'JP Event Timeline', url: '/guides/busty-burst/banner-timeline-jp/' },
         { id: 'bb-limited', title: 'Limited Time Challenges', url: '/guides/busty-burst/limited-time-challenges/' },
       ],
     },

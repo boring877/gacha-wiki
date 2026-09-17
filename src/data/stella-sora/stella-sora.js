@@ -124,6 +124,7 @@ export const stellaSoraConfig = {
       size: 'large',
       guides: [
         { id: 'st-blog', title: 'Blog', url: '/guides/stella-sora/blog/' },
+        { id: 'st-story-gallery', title: 'Story Gallery', url: '/guides/stella-sora/story-gallery/' },
         { id: 'st-ascension', title: 'Ascension Q&A', url: '/guides/stella-sora/ascension-qa/' },
         { id: 'st-exclusive', title: 'Exclusive Items', url: '/guides/stella-sora/exclusive-items/' },
         { id: 'st-clock', title: 'Clock', url: '/clock/stella-sora/' },
