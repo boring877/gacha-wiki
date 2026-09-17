@@ -163,6 +163,15 @@ const GAME_CONFIG = {
       banners: 'Banner History',
     },
   },
+  'gene-sys-adam': {
+    name: 'Gene-Sys: Adam',
+    basePath: '/guides/gene-sys-adam/',
+    patterns: {
+      characters: 'Characters',
+      gacha: 'Gacha',
+      items: 'Items',
+    },
+  },
 };
 
 /**
