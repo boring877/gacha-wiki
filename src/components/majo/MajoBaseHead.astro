@@ -12,7 +12,13 @@ const {
   description = 'MAJO: Witches Night Wiki - Character Database, Skills, Gacha & Lore',
 } = Astro.props;
 
-const metaTitle = title === SITE_TITLE ? SITE_TITLE : `${title} | MAJO: Witches Night Wiki`;
+// Layouts pass titles that may already end in "| MAJO: Witches Night" or "| GachaWiki",
+// so strip those before appending the site suffix or the game name renders twice.
+const stripped = title
+  .replace(/\s*\|\s*(MAJO: Witches Night|GachaWiki)$/, '')
+  .trim();
+const metaTitle =
+  title === SITE_TITLE ? SITE_TITLE : `${stripped || 'MAJO: Witches Night'} | MAJO: Witches Night Wiki`;
 ---
 
 <meta charset="utf-8" />

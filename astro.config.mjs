@@ -7,6 +7,9 @@ import path from 'path';
 // Check if we're in development mode
 const isDev = process.env.NODE_ENV !== 'production' && !process.argv.includes('build');
 
+// Every deploy rebuilds every page, so the sitemap lastmod is the build time
+const buildTime = new Date().toISOString();
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://gachawiki.info',
@@ -16,7 +19,11 @@ export default defineConfig({
   // Use 'ignore' in dev mode so both /path and /path/ work locally
   trailingSlash: isDev ? 'ignore' : 'always',
   integrations: [
-    sitemap(),
+    sitemap({
+      serialize(item) {
+        return { ...item, lastmod: buildTime };
+      },
+    }),
   ],
   i18n: {
     defaultLocale: 'en',
