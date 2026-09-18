@@ -522,6 +522,7 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
         title: 'Characters',
         links: [
           { name: 'Database', href: '/guides/muv-luv-girls-garden/characters/' },
+          { name: 'Tier List', href: '/guides/muv-luv-girls-garden/tier-list/' },
         ],
       },
       {

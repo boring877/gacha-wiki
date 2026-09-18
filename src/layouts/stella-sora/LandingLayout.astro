@@ -25,10 +25,11 @@ export interface Props {
   description?: string;
   gameTitle?: string;
   heroImage?: any;
+  ambientVideo?: string;
   breadcrumbs?: { name: string; url: string }[];
 }
 
-const { title, description, gameTitle, heroImage } = Astro.props;
+const { title, description, gameTitle, heroImage, ambientVideo } = Astro.props;
 ---
 
 <html lang="en">
@@ -53,6 +54,15 @@ const { title, description, gameTitle, heroImage } = Astro.props;
 
       <div class="stella-sora-container">
         <main class="stella-sora-main" id="main-content">
+          {
+            ambientVideo && (
+              <div class="ss-bg-video-wrap" aria-hidden="true">
+                <video class="ss-bg-video" autoplay muted loop playsinline preload="auto">
+                  <source src={ambientVideo} type="video/mp4" />
+                </video>
+              </div>
+            )
+          }
           {
             heroImage && gameTitle && (
               <section class="hero-section">

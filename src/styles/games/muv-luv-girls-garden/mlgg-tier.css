@@ -1,0 +1,158 @@
+/* Muv-Luv Girls Garden tier list page (JP community placements from kamigame).
+   Single container, tab bar for categories, tier rows of pilot chips. */
+
+.mlgg-tier-container {
+  padding: 2.5rem;
+  background: var(--mlgg-bg-secondary);
+  border-radius: 16px;
+  border: 1px solid var(--mlgg-border);
+}
+
+.mlgg-tier-callout {
+  font-size: 0.9rem;
+  color: var(--mlgg-text-secondary);
+  line-height: 1.65;
+}
+
+.mlgg-tier-callout p {
+  margin-bottom: 0.5rem;
+}
+
+.mlgg-tier-callout p:last-child {
+  margin-bottom: 0;
+}
+
+.mlgg-tier-callout a {
+  color: var(--mlgg-accent-light);
+  text-decoration: none;
+}
+
+/* category tab bar: underline style, flat */
+.mlgg-tier-tabs {
+  display: flex;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+  margin: 2.2rem 0 2rem;
+  border-bottom: 1px solid var(--mlgg-border);
+}
+
+.mlgg-tier-tab {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0.7rem 0.2rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--mlgg-text-tertiary);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.mlgg-tier-tab .mlgg-tier-tab-jp {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  margin-top: 0.1rem;
+}
+
+.mlgg-tier-tab.active {
+  color: var(--mlgg-accent-light);
+  border-bottom-color: var(--mlgg-accent);
+}
+
+/* tier rows */
+.mlgg-tier-row {
+  display: flex;
+  gap: 1.4rem;
+  align-items: flex-start;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--mlgg-border);
+}
+
+.mlgg-tier-row:last-child {
+  border-bottom: none;
+}
+
+.mlgg-tier-rank {
+  flex: 0 0 3.6rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.05rem;
+  border-radius: 5px;
+  padding: 0.6rem 0;
+  margin-top: 0.2rem;
+  color: #ffffff;
+}
+
+.mlgg-tier-rank[data-rank='SS'] { background: #ffb347; color: #201a0e; }
+.mlgg-tier-rank[data-rank='S+'] { background: #fa3c8c; }
+.mlgg-tier-rank[data-rank='S'] { background: #ff7cb1; }
+.mlgg-tier-rank[data-rank='A+'] { background: #b18cff; }
+.mlgg-tier-rank[data-rank='A'] { background: #6fb3ff; }
+.mlgg-tier-rank[data-rank='B'] { background: #52606d; }
+.mlgg-tier-rank[data-rank='C'] { background: #383f4d; }
+
+.mlgg-tier-chips {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.mlgg-tier-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: var(--mlgg-bg-card);
+  border: 1px solid var(--mlgg-border);
+  border-radius: 10px;
+  padding: 0.4rem 1rem 0.4rem 0.4rem;
+  text-decoration: none;
+}
+
+.mlgg-tier-chip img {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+}
+
+.mlgg-tier-chip-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--mlgg-text-primary);
+  line-height: 1.25;
+}
+
+.mlgg-tier-chip-jp {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--mlgg-text-tertiary);
+  margin-top: 0.1rem;
+}
+
+.mlgg-tier-footnote {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: var(--mlgg-text-tertiary);
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .mlgg-tier-container {
+    padding: 1.5rem;
+  }
+
+  .mlgg-tier-tabs {
+    gap: 1rem;
+  }
+
+  .mlgg-tier-row {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+}

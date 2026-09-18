@@ -161,6 +161,7 @@ const GAME_CONFIG = {
       info: 'Game Info',
       characters: 'Characters',
       banners: 'Banner History',
+      'tier-list': 'Tier List',
     },
   },
   'gene-sys-adam': {

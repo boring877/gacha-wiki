@@ -49,7 +49,7 @@ const { title, description, gameTitle, heroImage, ambientVideo } = Astro.props;
       <div class="horizon-walker-container">
         <main class="horizon-walker-main" id="main-content">
           {
-            heroImage && gameTitle && (
+            gameTitle && (
               <section class="hero-section">
                 {
                   ambientVideo && (
@@ -60,29 +60,25 @@ const { title, description, gameTitle, heroImage, ambientVideo } = Astro.props;
                     </div>
                   )
                 }
-                <div class="hero-image-wrapper">
-                  <div class="hero-image-container">
-                    <Image
-                      src={heroImage}
-                      alt={gameTitle}
-                      class="hero-image"
-                      width={1200}
-                      height={400}
-                      loading="eager"
-                      decoding="async"
-                    />
-                    <div class="hero-overlay" />
-                  </div>
-                </div>
+                {
+                  heroImage && (
+                    <div class="hero-image-wrapper">
+                      <div class="hero-image-container">
+                        <Image
+                          src={heroImage}
+                          alt={gameTitle}
+                          class="hero-image"
+                          width={1200}
+                          height={400}
+                          loading="eager"
+                          decoding="async"
+                        />
+                        <div class="hero-overlay" />
+                      </div>
+                    </div>
+                  )
+                }
                 <h1 class="hero-title">{gameTitle}</h1>
-                <DecorativeLines />
-              </section>
-            )
-          }
-          {
-            !heroImage && gameTitle && (
-              <section class="title-only-section">
-                <h1 class="title-only-heading">{gameTitle}</h1>
                 <DecorativeLines />
               </section>
             )

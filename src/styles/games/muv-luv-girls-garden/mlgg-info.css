@@ -1,58 +1,89 @@
-/* Muv-Luv Girls Garden game info page (facts grid, setting, team table). */
+/* Muv-Luv Girls Garden game info page: one big container for the whole page,
+   facts as hairline label rows, setting prose with h3 subsections, plain table. */
 
-.mlgg-facts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 0.9rem;
+.mlgg-info-container {
+  padding: 2.5rem;
+  background: var(--mlgg-bg-secondary);
+  border-radius: 16px;
+  border: 1px solid var(--mlgg-border);
 }
 
-.mlgg-fact {
-  padding: 1rem 1.1rem;
-}
-
-.mlgg-fact-label {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--mlgg-text-tertiary);
-  margin-bottom: 0.35rem;
-}
-
-.mlgg-fact-value {
-  font-weight: 700;
-  color: var(--mlgg-text-primary);
-  font-size: 1rem;
-}
-
-.mlgg-fact-sub {
-  font-size: 0.8rem;
-  color: var(--mlgg-text-tertiary);
-  margin-top: 0.25rem;
-}
-
-.mlgg-setting {
-  padding: 1.3rem 1.5rem;
-}
-
-.mlgg-setting p {
-  color: var(--mlgg-text-secondary);
-  line-height: 1.75;
-  margin-bottom: 0.9rem;
-  font-size: 0.95rem;
-}
-
-.mlgg-setting p:last-child {
+.mlgg-info-container .mlgg-section:last-child {
   margin-bottom: 0;
 }
 
-.mlgg-table-wrap {
-  padding: 0.4rem 0.6rem;
+.mlgg-section-title {
+  font-family: var(--font-display);
+  color: var(--mlgg-accent-light);
+  margin-bottom: 0.6rem;
+}
+
+.mlgg-info-h3 {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--mlgg-text-primary);
+  margin: 1.5rem 0 0.5rem;
+}
+
+.mlgg-info-p {
+  color: var(--mlgg-text-secondary);
+  line-height: 1.75;
+  font-size: 0.95rem;
+  margin-bottom: 0.9rem;
+  max-width: 62rem;
+}
+
+/* facts as a definition list: one hairline row per fact, no boxes */
+.mlgg-facts-list {
+  margin: 0;
+  border-top: 1px solid var(--mlgg-border);
+  max-width: 62rem;
+}
+
+.mlgg-fact-row {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 0.2rem 1.5rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--mlgg-border);
+}
+
+.mlgg-fact-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mlgg-text-tertiary);
+  padding-top: 0.2rem;
+}
+
+.mlgg-fact-value {
+  margin: 0;
+  font-weight: 700;
+  color: var(--mlgg-text-primary);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.mlgg-fact-sub {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--mlgg-text-tertiary);
+  margin-top: 0.15rem;
+}
+
+/* teams: plain table, only horizontal scroll when narrow */
+.mlgg-info-table-scroll {
   overflow-x: auto;
+}
+
+.mlgg-info-table-scroll .mlgg-table {
+  min-width: 640px;
 }
 
 .mlgg-team-members {
   display: flex;
-  gap: 0.35rem 0.6rem;
+  gap: 0.35rem 0.7rem;
   flex-wrap: wrap;
 }
 
@@ -64,6 +95,16 @@
 }
 
 @media (max-width: 640px) {
+  .mlgg-info-container {
+    padding: 1.5rem;
+  }
+
+  .mlgg-fact-row {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+    padding: 0.7rem 0;
+  }
+
   .mlgg-team-member {
     font-size: 0.8rem;
   }

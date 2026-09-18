@@ -249,3 +249,14 @@
     padding: 1rem;
   }
 }
+
+/* title zone fills the ambient video's viewport so content starts below it
+   (static hero image removed, video-only hero) */
+.majo-title-only-section {
+  min-height: 62vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 13vh;
+}

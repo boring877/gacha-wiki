@@ -12,8 +12,6 @@ import { bannerTimeline } from '../../../data/muv-luv-girls-garden/banners.js';
 import '../../../styles/games/muv-luv-girls-garden/mlgg-common.css';
 import '../../../styles/games/muv-luv-girls-garden/mlgg-landing.css';
 
-const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/muv-luv-girls-garden';
-const R2_HERO = `${R2}/gameimg/hero.webp`;
 const pilots = girlsGardenCharacters.length;
 const cards = girlsGardenCharacters.reduce((n, c) => n + c.cards.length, 0);
 const teamCount = new Set(girlsGardenCharacters.map(c => c.team)).size;
@@ -24,8 +22,14 @@ const lastUpdate = bannerTimeline[0]?.date;
   title="Home"
   description="Muv-Luv Girls Garden (マブラヴ ガールズガーデン) wiki: pilot database with all card styles, banner history, teams, types and roles. Idle RPG in the Muv-Luv universe on DMM GAMES, Japan live, English release TBA."
   gameTitle="Muv-Luv Girls Garden"
-  heroImage={R2_HERO}
 >
+  <!-- Ambient background video (EN version pre-registration PV) — full-bleed top, fades out by mid-page -->
+  <div class="mlgg-bg-video-wrap" aria-hidden="true">
+    <video class="mlgg-bg-video" autoplay muted loop playsinline preload="auto">
+      <source src="/videos/mlgg-hero.mp4" type="video/mp4" />
+    </video>
+  </div>
+
   <section class="mlgg-content-section">
     <div class="mlgg-story">
       <p>
@@ -61,6 +65,22 @@ const lastUpdate = bannerTimeline[0]?.date;
         Official Site &amp; Play on DMM GAMES
         <span class="mlgg-download-arrow">→</span>
       </a>
+      <a
+        class="mlgg-download-ghost"
+        href="https://x.com/Muvluv_GG"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Official X
+      </a>
+      <a
+        class="mlgg-download-ghost"
+        href="https://muvluv-girls-garden.wikiru.jp/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        wikiru.jp
+      </a>
     </div>
 
     <DiscordPromo accent="#FA3C8C" />
@@ -86,6 +106,7 @@ const lastUpdate = bannerTimeline[0]?.date;
         </div>
         <div class="mlgg-buttons-grid">
           <a href="/guides/muv-luv-girls-garden/characters/" class="mlgg-resource-button">Pilot Database</a>
+          <a href="/guides/muv-luv-girls-garden/tier-list/" class="mlgg-resource-button">Tier List</a>
         </div>
       </div>
 
@@ -111,20 +132,6 @@ const lastUpdate = bannerTimeline[0]?.date;
         </div>
         <div class="mlgg-buttons-grid">
           <a href="/guides/muv-luv-girls-garden/info/" class="mlgg-resource-button">Game Info</a>
-        </div>
-      </div>
-
-      <div class="mlgg-resource-category">
-        <div class="mlgg-category-header">
-          <h3>Official Links</h3>
-          <p class="mlgg-category-description">
-            The game's official site, X account, and the Japanese community wiki.
-          </p>
-        </div>
-        <div class="mlgg-buttons-grid">
-          <a href="https://muvluv-girls-garden.com/" target="_blank" rel="noopener noreferrer" class="mlgg-resource-button">Official Site</a>
-          <a href="https://x.com/Muvluv_GG" target="_blank" rel="noopener noreferrer" class="mlgg-resource-button">Official X</a>
-          <a href="https://muvluv-girls-garden.wikiru.jp/" target="_blank" rel="noopener noreferrer" class="mlgg-resource-button">wikiru.jp</a>
         </div>
       </div>
     </div>

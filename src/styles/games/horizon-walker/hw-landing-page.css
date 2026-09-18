@@ -6,6 +6,22 @@
   position: relative;
 }
 
+/* video-only hero (landing): full-bleed so the video starts right under the
+   nav like majo/agent-x, title anchored low, content starts below the video.
+   Scoped with :has so pages without the video keep a plain title section. */
+.hero-section:has(.hw-bg-video-wrap) {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-top: -4rem;
+  margin-bottom: 3rem;
+  min-height: 62vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 13vh;
+}
+
 .hw-bg-video-wrap {
   position: absolute;
   top: 0;

@@ -1,7 +1,57 @@
 /* Muv-Luv Girls Garden landing page styles (mirrors agent-x/majo landing structure). */
 
+/* Ambient background video (EN version pre-registration PV), full-bleed top, fades out */
+.mlgg-bg-video-wrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 70vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.mlgg-bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.45;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 22%, transparent 82%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 22%, transparent 82%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mlgg-bg-video-wrap {
+    display: none;
+  }
+}
+
+/* keep landing content above the ambient video */
+.mlgg-content-section,
+.mlgg-resources-section {
+  position: relative;
+  z-index: 1;
+}
+
+/* with the static hero image gone, the title zone fills the video's viewport
+   so the content card starts below the ambient video instead of over it */
+.mlgg-title-only-section {
+  min-height: 62vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 13vh;
+}
+
 .mlgg-content-section {
-  margin-bottom: 2.5rem;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  background: var(--mlgg-bg-secondary);
+  border-radius: 16px;
+  border: 1px solid var(--mlgg-border);
 }
 
 .mlgg-story p {
@@ -17,6 +67,8 @@
 
 .mlgg-download-row {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 0.8rem;
   flex-wrap: wrap;
   margin: 1.5rem 0;
@@ -40,20 +92,41 @@
   font-size: 1.05rem;
 }
 
+/* secondary official links beside the primary DMM button */
+.mlgg-download-ghost {
+  display: inline-flex;
+  align-items: center;
+  background: var(--mlgg-accent-tint);
+  border: 1px solid rgba(250, 60, 140, 0.35);
+  color: var(--mlgg-accent-light);
+  border-radius: 8px;
+  padding: 0.85rem 1.2rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
 .mlgg-last-updated {
   color: var(--mlgg-text-tertiary);
   font-size: 0.85rem;
   margin-top: 1rem;
+  text-align: center;
 }
 
 .mlgg-resources-section {
-  margin-bottom: 2.5rem;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  background: var(--mlgg-bg-secondary);
+  border-radius: 16px;
+  border: 1px solid var(--mlgg-border);
 }
 
 .mlgg-resources-title {
-  font-size: 1.35rem;
+  font-size: 2rem;
   font-weight: 700;
-  color: var(--mlgg-text-primary);
+  text-align: center;
+  color: var(--mlgg-accent-light);
   margin-bottom: 1.2rem;
 }
 
@@ -112,6 +185,14 @@
   }
 
   .mlgg-download-btn {
+    width: 100%;
     justify-content: center;
+    text-align: center;
+  }
+
+  .mlgg-download-ghost {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
   }
 }

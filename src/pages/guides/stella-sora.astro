@@ -5,8 +5,6 @@ import DiscordPromo from '../../components/DiscordPromo.astro';
 import { stellaSoraConfig } from '../../data/stella-sora/stella-sora.js';
 import { r2Url } from '../../data/r2-config.js';
 
-const heroImg = r2Url('stella-sora', 'gameimg/BG1.jpg');
-
 const { meta, gameInfo, story, categoryGroups } = stellaSoraConfig;
 
 const breadcrumbs = [
@@ -19,7 +17,7 @@ const breadcrumbs = [
   title={meta.title}
   description={meta.description}
   gameTitle={meta.gameTitle}
-  heroImage={heroImg}
+  ambientVideo="/videos/stella-sora-hero.mp4"
   breadcrumbs={breadcrumbs}
 >
   <!-- Comprehensive Structured Data for Stella Sora -->

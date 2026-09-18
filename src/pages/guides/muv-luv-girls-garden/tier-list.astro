@@ -1,0 +1,122 @@
+---
+// Muv-Luv Girls Garden tier list page: Japanese community placements from
+// kamigame.jp across four categories, rendered as tier rows of pilot chips.
+import MLGGLayout from '../../../layouts/muv-luv-girls-garden/LandingLayout.astro';
+import MLGGImage from '../../../components/muv-luv-girls-garden/MLGGImage.astro';
+import { girlsGardenCharacters } from '../../../data/muv-luv-girls-garden/characters.js';
+import {
+  TIER_ORDER,
+  TIER_CATEGORIES,
+  TIER_SOURCE,
+  TIER_NOTES,
+  MLGG_TIER_PLACEMENTS,
+} from '../../../data/muv-luv-girls-garden/tier-list.js';
+import '../../../styles/games/muv-luv-girls-garden/mlgg-common.css';
+import '../../../styles/games/muv-luv-girls-garden/mlgg-tier.css';
+
+const bySlug = new Map(girlsGardenCharacters.map(c => [c.slug, c]));
+
+// Pilot chip icon: newest card style, same convention as the pilot database.
+function newestIcon(ch) {
+  return ch.cards[ch.cards.length - 1].icon;
+}
+
+const updated = new Date(`${TIER_SOURCE.updated}T00:00:00Z`).toLocaleDateString('en-US', {
+  timeZone: 'UTC',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<MLGGLayout
+  title="Tier List - Muv-Luv Girls Garden"
+  description="Muv-Luv Girls Garden (マブラヴ ガールズガーデン) pilot tier list from the Japanese community: Overall, Maze Exploration, Tactical Exercise and No Limit Break rankings for all 51 pilots."
+  gameTitle="Tier List"
+>
+  <div class="mlgg-tier-container">
+    <div class="mlgg-note mlgg-tier-callout">
+      <p>
+        Tier placements come from the Japanese community source
+        <a href={TIER_SOURCE.url} target="_blank" rel="noopener noreferrer">{TIER_SOURCE.name}</a>
+        (最強キャラランキング, updated {updated}), mapped onto this wiki's pilot database.
+        A pilot sits in the tier of their best-ranked card: the source scores individual
+        card styles, so the same pilot can appear in two tiers there. See also the
+        <a href={TIER_SOURCE.secondary.url} target="_blank" rel="noopener noreferrer">Gamerch tier ranking</a>.
+      </p>
+      {TIER_NOTES.map(note => <p>{note}</p>)}
+    </div>
+
+    <div class="mlgg-tier-tabs" role="tablist">
+      {TIER_CATEGORIES.map((cat, i) => (
+        <button
+          class={`mlgg-tier-tab${i === 0 ? ' active' : ''}`}
+          data-tier-tab={cat.key}
+          type="button"
+        >
+          {cat.en}
+          <span class="mlgg-tier-tab-jp">{cat.jp}</span>
+        </button>
+      ))}
+    </div>
+
+    {TIER_CATEGORIES.map((cat, i) => (
+      <div
+        class="mlgg-tier-panel"
+        data-tier-panel={cat.key}
+        hidden={i !== 0}
+      >
+        {TIER_ORDER.map(rank => {
+          const slugs = MLGG_TIER_PLACEMENTS[cat.key]?.[rank] || [];
+          if (!slugs.length) return null;
+          return (
+            <div class="mlgg-tier-row">
+              <span class="mlgg-tier-rank" data-rank={rank}>{rank}</span>
+              <div class="mlgg-tier-chips">
+                {slugs.map(slug => {
+                  const ch = bySlug.get(slug);
+                  if (!ch) return null;
+                  return (
+                    <a
+                      href={`/guides/muv-luv-girls-garden/characters/${ch.slug}/`}
+                      class="mlgg-tier-chip"
+                    >
+                      <MLGGImage
+                        path={newestIcon(ch)}
+                        alt={`${ch.name} card style`}
+                        width={40}
+                        height={40}
+                      />
+                      <span class="mlgg-tier-chip-name">
+                        {ch.romaji}
+                        <span class="mlgg-tier-chip-jp">{ch.name}</span>
+                      </span>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    ))}
+
+    <p class="mlgg-tier-footnote">
+      Source order within a tier follows the pilot database roster. Rankings reflect the
+      Japanese release meta as of {updated} and will change as new cards ship.
+    </p>
+  </div>
+</MLGGLayout>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('[data-tier-tab]');
+  const panels = document.querySelectorAll<HTMLElement>('[data-tier-panel]');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.toggle('active', t === tab));
+      panels.forEach(p => {
+        p.hidden = p.dataset.tierPanel !== tab.dataset.tierTab;
+      });
+    });
+  });
+</script>

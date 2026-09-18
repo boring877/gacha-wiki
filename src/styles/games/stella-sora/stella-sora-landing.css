@@ -637,3 +637,44 @@
     transition: transform 0.1s ease;
   }
 }
+
+
+/* Ambient background video (To the Endless Sky concept PV), full-bleed top */
+.ss-bg-video-wrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 70vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ss-bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.45;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 22%, transparent 82%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 22%, transparent 82%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ss-bg-video-wrap {
+    display: none;
+  }
+}
+
+/* title zone fills the video's viewport so content starts below it */
+.title-only-section {
+  min-height: 62vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 13vh;
+  position: relative;
+  z-index: 2;
+}

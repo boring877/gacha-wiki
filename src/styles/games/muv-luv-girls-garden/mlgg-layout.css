@@ -42,9 +42,10 @@
 }
 
 .mlgg-title-only-heading {
-  font-size: 2.2rem;
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
   font-weight: 700;
-  color: var(--mlgg-text-primary);
+  color: var(--mlgg-accent-light);
   margin-bottom: 0.75rem;
   letter-spacing: 0.02em;
 }
@@ -94,6 +95,12 @@
   }
 
   .mlgg-title-only-heading {
-    font-size: 1.7rem;
+    font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .mlgg-title-only-heading {
+    font-size: var(--text-2xl);
   }
 }

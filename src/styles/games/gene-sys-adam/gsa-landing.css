@@ -230,3 +230,14 @@
   position: relative;
   z-index: 1;
 }
+
+/* with the static hero image gone, the title zone fills the video's viewport
+   so the content card starts below the ambient video instead of over it */
+.gsa-title-only-section {
+  min-height: 62vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 13vh;
+}
