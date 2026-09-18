@@ -80,7 +80,7 @@ const samarikaData = {
       icon: 'UI_SkillIcon_DualSword',
       name: 'Harpe Art',
       level: '10/10',
-      type: 'Active',
+      type: 'Skill',
       apCost: 30,
       cooldown: 0,
       damage: {
@@ -106,7 +106,7 @@ const samarikaData = {
       icon: 'UI_SkillIcon_BogDownPrey',
       name: "Swamp's Arrest",
       level: '10/10',
-      type: 'Active',
+      type: 'Skill',
       apCost: 60,
       cooldown: 0,
       damage: {
@@ -121,7 +121,7 @@ const samarikaData = {
       icon: 'UI_SkillIcon_TheFangsOfABog',
       name: 'Fang of the Swamp',
       level: '10/10',
-      type: 'Active',
+      type: 'Skill',
       apCost: 90,
       cooldown: 2,
       damage: {

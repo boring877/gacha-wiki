@@ -85,7 +85,7 @@ const nariData = {
       icon: 'UI_SkillIcon_Rifle',
       name: 'Military Shooting',
       level: '10/10',
-      type: 'Active',
+      type: 'Skill',
       apCost: 45,
       cooldown: 0,
       damage: {
@@ -100,7 +100,7 @@ const nariData = {
       icon: 'UI_SkillIcon_RollingMove',
       name: 'Combat Roll',
       level: '10/10',
-      type: 'Active',
+      type: 'Skill',
       apCost: 30,
       cooldown: 0,
       description: 'Jump low to the designated location and gain AP of 38.',
@@ -110,7 +110,7 @@ const nariData = {
       icon: 'UI_SkillIcon_PrecisionFiringPosition',
       name: 'Precision Shooting Stance',
       level: '10/10',
-      type: 'Active',
+      type: 'Skill',
       apCost: 42,
       cooldown: 0,
       description:
@@ -132,7 +132,7 @@ const nariData = {
       icon: 'UI_SkillIcon_DeathBulletOfPenetration',
       name: 'Piercing Aether Bullet',
       level: '10/10',
-      type: 'Active',
+      type: 'Skill',
       apCost: 60,
       cooldown: 0,
       description:

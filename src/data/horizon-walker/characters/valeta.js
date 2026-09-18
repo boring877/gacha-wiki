@@ -180,7 +180,7 @@ const rawValetaData = {
    icon: 'UI_SkillIcon_CheckDarkSacrament',
    name: 'Thornwhip of Condemnation',
    level: 'Transform',
-   type: 'Transform Skill',
+   type: 'Skill',
    apCost: 30,
    cooldown: 0,
    damage: {
