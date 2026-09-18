@@ -17,6 +17,7 @@ import { getStoryCgByHeroId } from '../../data/horizon-walker/story-cg.js';
 import { getDemiskillData, getMightSkillList, TIER_PROBABILITIES } from '../../data/horizon-walker/demiskills.js';
 import { getCommunityBuild } from '../../data/horizon-walker/community-builds.js';
 import { getReworkArchive } from '../../data/horizon-walker/rework-archive.js';
+import { getVideosBySlug, VIDEO_TYPE_LABELS } from '../../data/horizon-walker/videos.js';
 
 // Import image components from central location
 import {
@@ -151,6 +152,12 @@ const hwCharEntry = HORIZON_WALKER_CHARACTERS.find(
 );
 const communityBuild = hwCharEntry ? getCommunityBuild(hwCharEntry.slug) : null;
 const reworkArchive = hwCharEntry ? getReworkArchive(hwCharEntry.slug) : null;
+
+// Official YouTube videos (from the @official.horizonwalker channel, keyed by character slug).
+// The intro video is featured first; the rest render in the grid, newest first.
+const charVideos = hwCharEntry ? getVideosBySlug(hwCharEntry.slug) : [];
+const featuredVideo = charVideos.find((v: any) => v.type === 'intro') || charVideos[0] || null;
+const gridVideos = featuredVideo ? charVideos.filter((v: any) => v !== featuredVideo) : [];
 
 // Character data validation
 function validateCharacterSafely() {
@@ -1612,6 +1619,86 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
   )
 }
 
+<!-- Character Videos Section (official YouTube channel, click a thumbnail to play) -->
+{
+  charVideos.length > 0 && (
+    <section class="content-section videos-section" id="videos-section">
+      <h2 class="section-title">Videos</h2>
+      <p class="hw-videos-note">
+        Official videos featuring {characterData.name} from the Horizon Walker YouTube channel.
+      </p>
+      {featuredVideo && (
+        <div
+          class="hw-video-feature"
+          data-yt-facade
+          data-yt-id={featuredVideo.id}
+          data-yt-title={`${characterData.name}: ${featuredVideo.title}`}
+          role="button"
+          tabindex={0}
+          aria-label={`Play video: ${featuredVideo.title}`}
+        >
+          <div class="hw-video-frame-slot">
+            <img
+              class="hw-video-thumb"
+              src={`https://i.ytimg.com/vi/${featuredVideo.id}/maxresdefault.jpg`}
+              alt={`${featuredVideo.title} video thumbnail`}
+              loading="lazy"
+              onerror={`if(this.dataset.step!=='hq'){this.dataset.step='hq';this.src='https://i.ytimg.com/vi/${featuredVideo.id}/hqdefault.jpg';}else{this.onerror=null;}`}
+            />
+            <span class="hw-video-play" aria-hidden="true"></span>
+          </div>
+          <div class="hw-video-caption">
+            <span class={`hw-video-badge hw-video-badge-${featuredVideo.type}`}>
+              {VIDEO_TYPE_LABELS[featuredVideo.type] || 'Video'}
+            </span>
+            <span class="hw-video-title">{featuredVideo.title}</span>
+            <span class="hw-video-date">{featuredVideo.date}</span>
+          </div>
+        </div>
+      )}
+      {gridVideos.length > 0 && (
+        <div class="hw-video-grid">
+          {gridVideos.map((v: any) => (
+            <div
+              class="hw-video-card"
+              data-yt-facade
+              data-yt-id={v.id}
+              data-yt-title={`${characterData.name}: ${v.title}`}
+              role="button"
+              tabindex={0}
+              aria-label={`Play video: ${v.title}`}
+            >
+              <div class="hw-video-frame-slot">
+                <img
+                  class="hw-video-thumb"
+                  src={`https://i.ytimg.com/vi/${v.id}/mqdefault.jpg`}
+                  alt={`${v.title} video thumbnail`}
+                  loading="lazy"
+                  onerror={`this.onerror=null;this.style.display='none';`}
+                />
+                <span class="hw-video-play hw-video-play-small" aria-hidden="true"></span>
+                <span class={`hw-video-badge hw-video-badge-${v.type} hw-video-badge-float`}>
+                  {VIDEO_TYPE_LABELS[v.type] || 'Video'}
+                </span>
+              </div>
+              <span class="hw-video-title">{v.title}</span>
+              <span class="hw-video-date">{v.date}</span>
+            </div>
+          ))}
+        </div>
+      )}
+      <a
+        class="hw-video-channel-link"
+        href="https://www.youtube.com/@official.horizonwalker"
+        target="_blank"
+        rel="noopener"
+      >
+        Watch more on the official YouTube channel
+      </a>
+    </section>
+  )
+}
+
 <!-- Gift Preferences Section -->
 <section class="content-section gift-section">
   <h2 class="section-title">Gift Preferences</h2>
@@ -1983,3 +2070,38 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 
 <!-- Development Debug Panel (only shown in development mode) -->
 <div set:html={renderDebugPanel()} />
+
+<!-- Click-to-play facade for the Videos section: swaps the thumbnail for the YouTube iframe on click -->
+<script>
+  function activateHwVideoFacade(facade: Element) {
+    if (facade.getAttribute('data-yt-active')) return;
+    const id = facade.getAttribute('data-yt-id');
+    const slot = facade.querySelector('.hw-video-frame-slot');
+    if (!id || !slot) return;
+    facade.setAttribute('data-yt-active', '1');
+    const frame = document.createElement('iframe');
+    frame.className = 'hw-video-frame';
+    frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+    frame.title = facade.getAttribute('data-yt-title') || 'YouTube video';
+    frame.allow =
+      'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    frame.allowFullscreen = true;
+    slot.replaceChildren(frame);
+  }
+
+  document.addEventListener('click', (e) => {
+    const target = e.target as Element | null;
+    const facade = target ? target.closest('[data-yt-facade]') : null;
+    if (facade) activateHwVideoFacade(facade);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const target = e.target as Element | null;
+    const facade = target ? target.closest('[data-yt-facade]') : null;
+    if (facade) {
+      e.preventDefault();
+      activateHwVideoFacade(facade);
+    }
+  });
+</script>

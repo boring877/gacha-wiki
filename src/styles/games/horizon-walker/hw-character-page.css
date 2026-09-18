@@ -2473,4 +2473,186 @@
     }
   }
 
+  /* ═══════════════════════════════════════════════════════════════════════ */
+  /*                     VIDEOS SECTION (official YouTube)                   */
+  /* ═══════════════════════════════════════════════════════════════════════ */
+
+  .videos-section {
+    scroll-margin-top: 5rem;
+  }
+
+  .hw-videos-note {
+    color: var(--hw-text-muted);
+    font-size: var(--text-sm);
+    margin: -2.25rem 0 1.5rem;
+  }
+
+  .hw-video-feature {
+    background: var(--hw-bg-dark, rgba(20, 20, 26, 0.9));
+    border: 1px solid var(--hw-border-accent, rgba(232, 165, 71, 0.35));
+    border-radius: var(--hw-radius-md, 10px);
+    padding: 0.75rem;
+    margin-bottom: var(--hw-spacing-md, 1rem);
+    cursor: pointer;
+  }
+
+  .hw-video-feature:focus-visible,
+  .hw-video-card:focus-visible {
+    outline: 2px solid var(--hw-primary-warm);
+    outline-offset: 2px;
+  }
+
+  .hw-video-frame-slot {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--hw-radius-sm, 6px);
+    overflow: hidden;
+    background: #000;
+  }
+
+  .hw-video-thumb {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hw-video-frame {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* Round-rect plate with a CSS triangle, YouTube style */
+  .hw-video-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 64px;
+    height: 44px;
+    transform: translate(-50%, -50%);
+    background: rgba(33, 33, 33, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+  }
+
+  .hw-video-play::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-42%, -50%);
+    border-style: solid;
+    border-width: 10px 0 10px 17px;
+    border-color: transparent transparent transparent #fff;
+  }
+
+  .hw-video-play-small {
+    width: 46px;
+    height: 32px;
+    border-radius: 8px;
+  }
+
+  .hw-video-play-small::after {
+    border-width: 7px 0 7px 12px;
+  }
+
+  .hw-video-caption {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    padding: 0.6rem 0.35rem 0.25rem;
+  }
+
+  /* Full solid chips (site-wide badge convention), one hue per video type */
+  .hw-video-badge {
+    flex: none;
+    font-size: var(--text-xs, 0.75rem);
+    font-weight: var(--font-bold, 700);
+    letter-spacing: 0.03em;
+    border-radius: 5px;
+    padding: 0.2rem 0.5rem;
+    text-transform: uppercase;
+    color: #fff;
+    background: #6b7280;
+  }
+
+  .hw-video-badge-intro {
+    background: var(--hw-primary-warm, #e8a547);
+    color: #1c1408;
+  }
+
+  .hw-video-badge-costume {
+    background: #9c7fd4;
+  }
+
+  .hw-video-badge-affection {
+    background: #e07a5f;
+  }
+
+  .hw-video-badge-float {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+
+  .hw-video-title {
+    font-family: var(--font-display);
+    font-weight: var(--font-semibold, 600);
+    color: var(--hw-text-light, #eee);
+    font-size: var(--text-base, 1rem);
+  }
+
+  .hw-video-date {
+    color: var(--hw-text-muted, #ccc);
+    font-size: var(--text-sm, 0.875rem);
+    margin-left: auto;
+  }
+
+  .hw-video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--hw-spacing-md, 1rem);
+  }
+
+  .hw-video-card {
+    background: var(--hw-bg-dark, rgba(20, 20, 26, 0.9));
+    border: 1px solid var(--hw-border-muted);
+    border-radius: var(--hw-radius-md, 10px);
+    padding: 0.6rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .hw-video-card .hw-video-title {
+    font-size: var(--text-sm, 0.875rem);
+    line-height: 1.35;
+  }
+
+  .hw-video-card .hw-video-date {
+    margin-left: 0;
+  }
+
+  .hw-video-channel-link {
+    display: inline-block;
+    margin-top: 1.25rem;
+    color: var(--hw-primary-warm, #e8a547);
+    font-size: var(--text-sm, 0.875rem);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 720px) {
+    .hw-videos-note {
+      margin-top: -1.75rem;
+    }
+
+    .hw-video-date {
+      margin-left: 0;
+    }
+  }
+
 } /* End @scope (.horizon-walker-main) */

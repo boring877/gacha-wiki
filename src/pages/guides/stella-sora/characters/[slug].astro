@@ -20,6 +20,7 @@ import { STELLA_SORA_CHARACTERS } from '../../../../data/stella-sora/characters.
 import { getGiftByName } from '../../../../data/stella-sora/gifts.js';
 import { allPotentials } from '../../../../data/stella-sora/all-potentials.js';
 import { CHAR_ART } from '../../../../data/stella-sora/char-art.js';
+import { CHAR_VIDEOS } from '../../../../data/stella-sora/char-videos.js';
 
 const R2_BASE = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/stella-sora';
 
@@ -36,6 +37,9 @@ const { character } = Astro.props;
 
 // Character art manifest entry (main portrait / gallery / skins)
 const charArt = CHAR_ART[character.slug];
+
+// Official Trekker PV video (absent for characters Yostar has not featured yet)
+const charVideo = CHAR_VIDEOS[character.slug];
 
 // Safety check to ensure character data exists
 if (!character) {
@@ -387,6 +391,39 @@ function getTotalDupes(rarity: string): number {
         </div>
       </div>
     </section>
+
+    <!-- Trekker PV Video Section -->
+    {
+      charVideo && (
+        <section class="character-pv-section">
+          <div class="pv-heading-row">
+            <h2 class="section-title">Trekker PV</h2>
+            <span class="pv-badge">Official Video</span>
+          </div>
+          <p class="gallery-explanation">
+            Watch {character.name} star in the official introduction video, straight from the Stella Sora team.
+          </p>
+          <div class="pv-stage">
+            <video
+              controls
+              preload="none"
+              playsinline
+              poster={`${R2_BASE}/${charVideo.poster}`}
+              aria-label={`${character.name} Trekker PV`}
+            >
+              <source src={`${R2_BASE}/${charVideo.video}`} type="video/mp4" />
+            </video>
+          </div>
+          <div class="pv-meta-row">
+            <span class="pv-duration">{charVideo.duration}</span>
+            <span class="pv-caption">{charVideo.title}</span>
+            <a class="pv-source" href="https://stellasora.global/video" target="_blank" rel="noopener">
+              More videos on stellasora.global
+            </a>
+          </div>
+        </section>
+      )
+    }
 
     <!-- Character Portrait Section -->
     {charArt && charArt.gallery.length > 0 && (
