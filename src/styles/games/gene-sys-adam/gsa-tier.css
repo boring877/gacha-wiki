@@ -8,13 +8,21 @@
 
 .gsa-tier-job-header {
   display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
+  align-items: center;
+  gap: 0.7rem;
   padding: 0.9rem 1.25rem;
   background: var(--gsa-bg-secondary);
   border: 1px solid var(--gsa-border);
   border-radius: 12px;
   margin-bottom: 0.75rem;
+}
+
+.gsa-tier-job-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: block;
+  align-self: center;
 }
 
 .gsa-tier-job-title {

@@ -20,12 +20,15 @@ export const GSA_TIERS = [
   { tier: 'C', color: '#736f85' },
 ];
 
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam';
+
+// element-neutral job icons (JobData.jobicon base with element 0)
 export const GSA_JOB_SECTIONS = [
-  { job: 'Guardian', zh: '防護' },
-  { job: 'Striker', zh: '突擊' },
-  { job: 'Sniper', zh: '狙擊' },
-  { job: 'Support', zh: '支援' },
-  { job: 'Breaker', zh: '破壞' },
+  { job: 'Guardian', zh: '防護', icon: `${R2}/guard_0.webp` },
+  { job: 'Striker', zh: '突擊', icon: `${R2}/fighters_0.webp` },
+  { job: 'Sniper', zh: '狙擊', icon: `${R2}/archer_0.webp` },
+  { job: 'Support', zh: '支援', icon: `${R2}/priest_0.webp` },
+  { job: 'Breaker', zh: '破壞', icon: `${R2}/master_0.webp` },
 ];
 
 export const GSA_TIER_UPDATED = 'September 17, 2026';
@@ -88,9 +91,10 @@ export const gsaTierByJob = GSA_JOB_SECTIONS.concat([{
   // characters with no job data yet would land here
   job: 'Unclassified',
   zh: '未分類',
-}]).map(({ job, zh }) => ({
+}]).map(({ job, zh, icon }) => ({
   job,
   zh,
+  icon,
   tiers: GSA_TIERS.map(({ tier, color }) => ({
     tier,
     color,

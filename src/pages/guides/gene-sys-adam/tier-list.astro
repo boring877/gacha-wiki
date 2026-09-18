@@ -19,6 +19,7 @@ const total = gsaTierByJob.reduce((n, g) => n + g.tiers.reduce((m, t) => m + t.c
     {gsaTierByJob.map(group => (
       <div class="gsa-tier-job-section">
         <div class="gsa-tier-job-header">
+          {group.icon && <img class="gsa-tier-job-icon" src={group.icon} alt="" width="40" height="40" loading="lazy" />}
           <h2 class="gsa-tier-job-title">{group.job}<span class="gsa-tier-job-zh">{group.zh}</span></h2>
           <span class="gsa-tier-job-count">
             {group.tiers.reduce((n, t) => n + t.characters.length, 0)} characters
