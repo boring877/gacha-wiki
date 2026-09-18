@@ -1,23 +1,36 @@
-// Gene-Sys: Adam tier list: kit-based assessment from the decrypted skill
-// numbers (multipliers, cooldowns, EN costs, buff values). Ladder follows the
-// house convention: SSS reserved for broken units, SS = meta-defining,
-// S = strong, A = solid, B = fringe, C = unrated or pending data.
-// Rarity on the cards is derived from the gacha rate buckets (group 3 = SR,
-// group 4 = SSR); the SSR side is confirmed in-game, SR labels are implied.
-// Day-one launch assessment: no community consensus exists yet, dupes and
-// star upgrades are not factored.
+// Gene-Sys: Adam tier list: kit-based placements (updated 2026-09-17),
+// grouped by job like the majo list. Placements are editorial, grounded in
+// each character's skill data in characters.js (multipliers, cooldowns, EN
+// costs, buff values). Day-one launch assessment: no community consensus
+// exists yet, dupes and star upgrades are not factored.
+// NEW CHARACTERS MUST BE ADDED TO GSA_TIER_PLACEMENTS or they land in C with
+// a console warning in dev.
 
-export const GSA_TIER_UPDATED = '2026-09-17';
+import { gsaCharacters } from './characters.js';
 
-export const GSA_TIER_META = [
-  { id: 'SSS', label: 'SSS', note: 'Reserved. Nothing is broken yet.' },
-  { id: 'SS', label: 'SS', note: 'Meta-defining. Build your team around them.' },
-  { id: 'S', label: 'S', note: 'Strong picks that carry their slot.' },
-  { id: 'A', label: 'A', note: 'Solid, playable, no regrets.' },
-  { id: 'B', label: 'B', note: 'Fringe. Needs a niche, a partner or dupes.' },
-  { id: 'C', label: 'C', note: 'Awaiting data or thoroughly outclassed.' },
+// Same tier ladder colors as the majo list so tiers read the same site-wide.
+// SSS is RESERVED for a future "broken" unit; it stays empty and hidden until
+// one actually ships.
+export const GSA_TIERS = [
+  { tier: 'SSS', color: '#f87171' },
+  { tier: 'SS', color: '#f2c14e' },
+  { tier: 'S', color: '#dbb06e' },
+  { tier: 'A', color: '#a89bd1' },
+  { tier: 'B', color: '#6d93bd' },
+  { tier: 'C', color: '#736f85' },
 ];
 
+export const GSA_JOB_SECTIONS = [
+  { job: 'Guardian', zh: '防護' },
+  { job: 'Striker', zh: '突擊' },
+  { job: 'Sniper', zh: '狙擊' },
+  { job: 'Support', zh: '支援' },
+  { job: 'Breaker', zh: '破壞' },
+];
+
+export const GSA_TIER_UPDATED = 'September 17, 2026';
+
+// slug -> { tier, rarity, reason }
 export const GSA_TIER_PLACEMENTS = {
   'kurosawa-shion': { tier: 'SS', rarity: 'SR', reason: 'The energy battery. Her loop refills 4.5 team EN every 6 seconds, her ultimate grants the whole party EN Gain Up 45% for 24s, and her active stacks up to 15% party Basic Damage three times. Every ultimate in the team comes online faster with her on the field.' },
   'jessica': { tier: 'SS', rarity: 'SSR', reason: 'Best defensive support: a 795% party shield on an 8s cooldown, constant top-up healing on her loop and passive, and an ultimate that cleanses all debuffs and applies a 1285% party shield.' },
@@ -29,6 +42,7 @@ export const GSA_TIER_PLACEMENTS = {
   'thalia': { tier: 'S', rarity: 'SR', reason: 'Boss-killer: everything targets the highest-ATK enemy, her loop shreds their Basic Damage by 20%, a passive proc gives her Basic Damage Up 40%, and the ultimate adds Knockdown.' },
   'milena': { tier: 'S', rarity: 'SR', reason: 'A ten-hit 800% ultimate on a single target, Knockdown and Petrify control, and a passive that shreds Guardian-type blocks. The SR you can actually dupe without guilt.' },
   'hijikata-chizuru': { tier: 'S', rarity: 'SSR', reason: 'The best tank: Physical damage taken cut 20%, EN Gain 25% for the team, a Petrify on a 4s loop and a five-hit AoE ultimate with 35% Petrify rate. Deals real damage while holding the line.' },
+  'vera': { tier: 'A', rarity: 'SR', reason: 'Textbook Guardian: a two-hit 400% stun active, a regeneration loop, Block 30% on the ultimate and passive self-healing. Dependable, if unexciting next to Hijikata Chizuru.' },
   'takajou-ranka': { tier: 'S', rarity: 'SR', reason: 'A Guardian that carries: a 466% self-heal loop, a five-hit forward-area ultimate and Silence utility. Lets you keep the tank slot without giving up damage.' },
   'elena': { tier: 'S', rarity: 'SSR', reason: 'Fire-team engine: her loop grants EN Gain 40% and Skill Damage 12%, and her ultimate hits all targets for 250% while shredding Fire Res 10% for 12s. Pairs with any Burn source.' },
   'shiraishi-ai': { tier: 'S', rarity: 'SSR', reason: 'Nuclear numbers (832% rotation, a four-hit 208% ultimate) but nearly all of it prioritizes Support-type enemies and cuts their healing. A PvP and anti-healer weapon first, general DPS second.' },
@@ -58,3 +72,49 @@ export const GSA_TIER_PLACEMENTS = {
   'belle-clumsy-cowgirl': { tier: 'B', rarity: 'SSR', reason: 'Physical Spread support with tiny heals and a five-hit all-targets ultimate. Fun, forgettable.' },
   'connie': { tier: 'C', rarity: 'SSR', reason: 'Her kit text is not readable in the current data tables, so she cannot be scored yet. The assessment lands when the tables do.' },
 };
+
+const RARITY_RANK = { SSR: 0, SR: 1 };
+
+const placementOf = slug =>
+  GSA_TIER_PLACEMENTS[slug] || {
+    tier: 'C',
+    rarity: null,
+    reason: 'No written assessment yet. Defaulted to C.',
+  };
+
+// Job sections -> tier rows -> compact character cards (reasons stay here in
+// the data file, they are not rendered on the page, matching the majo list).
+export const gsaTierByJob = GSA_JOB_SECTIONS.map(({ job, zh }) => ({
+  job,
+  zh,
+  tiers: GSA_TIERS.map(({ tier, color }) => ({
+    tier,
+    color,
+    characters: gsaCharacters
+      .filter(c => (c.job ? c.job.name === job : false) && placementOf(c.slug).tier === tier)
+      .map(c => ({ ...c, placement: placementOf(c.slug) }))
+      .sort((a, b) =>
+        ((RARITY_RANK[placementOf(a.slug).rarity] ?? 9) - (RARITY_RANK[placementOf(b.slug).rarity] ?? 9)) ||
+        a.name.localeCompare(b.name)
+      ),
+  })).filter(t => t.characters.length > 0),
+})).concat([{
+  // characters with no job data yet (currently connie)
+  job: 'Unclassified',
+  zh: '未分類',
+  tiers: GSA_TIERS.map(({ tier, color }) => ({
+    tier,
+    color,
+    characters: gsaCharacters
+      .filter(c => !c.job && placementOf(c.slug).tier === tier)
+      .map(c => ({ ...c, placement: placementOf(c.slug) }))
+      .sort((a, b) => a.name.localeCompare(b.name)),
+  })).filter(t => t.characters.length > 0),
+}]);
+
+if (import.meta.env.DEV) {
+  const unplaced = gsaCharacters.filter(c => !GSA_TIER_PLACEMENTS[c.slug]);
+  if (unplaced.length) {
+    console.warn('[gsa-tier-list] characters without a placement (rendered as C):', unplaced.map(c => c.slug));
+  }
+}

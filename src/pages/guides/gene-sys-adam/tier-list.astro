@@ -1,208 +1,65 @@
 ---
-// Gene-Sys: Adam tier list page: renders the kit-based placements from
-// tier-list.js. Every character without a placement drops to C with a warning,
-// so newly released units are never silently missing.
+// Gene-Sys: Adam tier list: job sections with tier rows, same shape as the
+// majo list. Reasons live in tier-list.js, not on the page.
 import GSALayout from '../../../layouts/gene-sys-adam/LandingLayout.astro';
-import { gsaCharacters } from '../../../data/gene-sys-adam/characters.js';
-import { GSA_TIER_META, GSA_TIER_PLACEMENTS, GSA_TIER_UPDATED } from '../../../data/gene-sys-adam/tier-list.js';
+import { gsaTierByJob, GSA_TIER_UPDATED } from '../../../data/gene-sys-adam/tier-list.js';
 import '../../../styles/games/gene-sys-adam/gsa-common.css';
-import '../../../styles/games/gene-sys-adam/gsa-characters.css';
+import '../../../styles/games/gene-sys-adam/gsa-tier.css';
 
-const bySlug = new Map(gsaCharacters.map(c => [c.slug, c]));
-const placed = new Set(Object.keys(GSA_TIER_PLACEMENTS));
-
-const missing = gsaCharacters.filter(c => !placed.has(c.slug));
-if (missing.length && import.meta.env.DEV) {
-  console.warn('[gsa-tier-list] characters without a placement (rendered as C):', missing.map(c => c.slug));
-}
-
-const tiers = GSA_TIER_META.map(t => {
-  let entries = Object.entries(GSA_TIER_PLACEMENTS)
-    .filter(([, p]) => p.tier === t.id)
-    .map(([slug, p]) => ({ ...p, char: bySlug.get(slug), slug }))
-    .filter(e => e.char);
-  // newly added characters without a written assessment land in C
-  if (t.id === 'C') {
-    entries.push(...missing.map(c => ({
-      tier: 'C', rarity: (c.attackType ? 'SSR' : 'SR'), reason: 'No written assessment yet. Defaulted to C.',
-      char: c, slug: c.slug,
-    })));
-  }
-  entries.sort((a, b) => a.char.name.localeCompare(b.char.name));
-  return { ...t, entries };
-});
-
-const fmtDate = new Date(GSA_TIER_UPDATED + 'T12:00:00Z').toLocaleDateString('en-US', {
-  year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC',
-});
+const total = gsaTierByJob.reduce((n, g) => n + g.tiers.reduce((m, t) => m + t.characters.length, 0), 0);
 ---
 
 <GSALayout
   title="Tier List"
-  description={`Gene-Sys: Adam character tier list (${fmtDate}): every character scored on kit numbers from the decrypted game data.`}
+  description={`Gene-Sys: Adam tier list (${GSA_TIER_UPDATED}): all ${total} characters rated by job, from the decrypted kit numbers.`}
   gameTitle="Tier List"
   crumbName="Tier List"
 >
-  <div class="gsa-content-section">
-    <section class="gsa-detail-section">
-      <h2>About this tier list</h2>
-      <p class="gsa-section-note" style="margin-top:6px">
-        Scores are based on the numbers in each character's own kit: damage
-        multipliers, cooldowns, EN costs, buff and shield values, and how the
-        pieces fit a four-person team. This is a day-one launch assessment from
-        the game data, so there is no community consensus behind it yet, and
-        dupe value (star unlocks) is not factored in. Rarity chips are derived
-        from the gacha rate buckets. Last updated {fmtDate}.
+  <section>
+    <div class="gsa-tier-intro">
+      <p class="gsa-tier-intro-label">Updated {GSA_TIER_UPDATED} · Kit-based ratings, day-one launch</p>
+      <p class="gsa-tier-intro-text">
+        <strong>The EN battery is the premium slot</strong>: Kurosawa Shion's
+        team-wide energy refill makes every ultimate come online faster, so
+        supports and batteries rate above raw damage at launch. Ratings come
+        straight from each kit's own numbers (multipliers, cooldowns, EN costs,
+        buff values) in our character database; there is no community consensus
+        to lean on yet since the game just launched, and dupe value (star
+        unlocks) is not factored in. Ratings will move as the meta forms.
       </p>
-    </section>
+    </div>
 
-    {tiers.map(t => (
-      <section class="gsa-detail-section gsa-tier-section">
-        <div class="gsa-tier-head">
-          <span class={`gsa-tier-chip gsa-tier-${t.id}`}>{t.label}</span>
-          <p class="gsa-tier-note">{t.note}{t.entries.length ? ` ${t.entries.length} character${t.entries.length > 1 ? 's' : ''}.` : ''}</p>
+    {gsaTierByJob.map(group => (
+      <div class="gsa-tier-job-section">
+        <div class="gsa-tier-job-header">
+          <h2 class="gsa-tier-job-title">{group.job}<span class="gsa-tier-job-zh">{group.zh}</span></h2>
+          <span class="gsa-tier-job-count">
+            {group.tiers.reduce((n, t) => n + t.characters.length, 0)} characters
+          </span>
         </div>
-        {t.entries.length ? (
-          <div class="gsa-tier-grid">
-            {t.entries.map(e => (
-              <a class="gsa-tier-card" href={`/guides/gene-sys-adam/characters/${e.slug}/`}>
-                <div class="gsa-tier-portrait">
-                  {e.char.icon ? (
-                    <img src={e.char.icon} alt={e.char.name} width="64" height="64" loading="lazy" />
-                  ) : (
-                    <span class="gsa-monogram">{e.char.name?.[0]}</span>
-                  )}
-                </div>
-                <div class="gsa-tier-body">
-                  <p class="gsa-tier-name">
-                    {e.char.name}
-                    {e.rarity && <span class={`gsa-chip ${e.rarity === 'SSR' ? 'solid-gold' : 'solid-muted'}`}>{e.rarity}</span>}
-                  </p>
-                  <p class="gsa-tier-tags">
-                    {(e.char.attackType || {}).name} attack
-                    {e.char.job ? ` | ${e.char.job.name}` : ''}
-                    {e.char.element ? ` | ${e.char.element.name}` : ''}
-                  </p>
-                  <p class="gsa-tier-reason">{e.reason}</p>
-                </div>
-              </a>
-            ))}
-          </div>
-        ) : (
-          <p class="gsa-text-dim gsa-tier-empty">Nobody here yet.</p>
-        )}
-      </section>
+        <div class="gsa-tier-grid">
+          {group.tiers.map(row => (
+            <div class="gsa-tier-row">
+              <div class="gsa-tier-label">
+                <span class="gsa-tier-name" style={`color:${row.color}`}>{row.tier}</span>
+              </div>
+              <div class="gsa-tier-characters">
+                {row.characters.map(c => (
+                  <a class="gsa-tier-card" href={`/guides/gene-sys-adam/characters/${c.slug}/`}>
+                    {c.icon ? (
+                      <img class="gsa-tier-thumb" src={c.icon} alt={c.name} loading="lazy" />
+                    ) : (
+                      <span class="gsa-tier-thumb gsa-monogram">{c.name?.[0]}</span>
+                    )}
+                    <span class={`gsa-tier-rarity gsa-tier-rarity-${(c.placement.rarity || 'sr').toLowerCase()}`}>{c.placement.rarity}</span>
+                    <span class="gsa-tier-name-label">{c.name}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     ))}
-  </div>
+  </section>
 </GSALayout>
-
-<style>
-  .gsa-tier-section {
-    padding: 1.25rem;
-  }
-  .gsa-tier-head {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-  }
-  .gsa-tier-chip {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 52px;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-weight: 800;
-    font-size: 1rem;
-    color: #fff;
-    background: var(--gsa-bg-tertiary);
-    border: 1px solid var(--gsa-border);
-  }
-  .gsa-tier-SSS {
-    background: linear-gradient(135deg, #b02a37, #e0596b);
-    border-color: #e0596b;
-  }
-  .gsa-tier-SS {
-    background: var(--gsa-accent);
-    border-color: var(--gsa-accent);
-  }
-  .gsa-tier-S {
-    background: var(--gsa-gold);
-    color: #1c1610;
-    border-color: var(--gsa-gold);
-  }
-  .gsa-tier-note {
-    margin: 0;
-    font-size: 0.85rem;
-    color: var(--gsa-text-dim);
-  }
-  .gsa-tier-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 10px;
-  }
-  a.gsa-tier-card,
-  a.gsa-tier-card:link,
-  a.gsa-tier-card:visited,
-  a.gsa-tier-card:hover,
-  a.gsa-tier-card:active {
-    text-decoration: none;
-    color: var(--gsa-text);
-  }
-  .gsa-tier-card {
-    display: flex;
-    gap: 12px;
-    background: var(--gsa-bg-secondary);
-    border: 1px solid var(--gsa-border);
-    border-radius: 10px;
-    padding: 12px;
-  }
-  .gsa-tier-portrait {
-    width: 64px;
-    height: 64px;
-    flex-shrink: 0;
-    border-radius: 10px;
-    border: 1px solid var(--gsa-border);
-    background: var(--gsa-bg-tertiary);
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .gsa-tier-portrait img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .gsa-tier-body {
-    min-width: 0;
-  }
-  .gsa-tier-name {
-    margin: 0 0 4px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .gsa-tier-tags {
-    margin: 0 0 6px;
-    font-size: 0.72rem;
-    color: var(--gsa-text-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-  .gsa-tier-reason {
-    margin: 0;
-    font-size: 0.83rem;
-    line-height: 1.55;
-    color: var(--gsa-text);
-  }
-  .gsa-tier-empty {
-    margin: 0;
-    font-size: 0.85rem;
-    font-style: italic;
-  }
-</style>
