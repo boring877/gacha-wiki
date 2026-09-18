@@ -173,6 +173,15 @@
   object-fit: cover;
 }
 
+/* Rarity badge: exempt from the square 60px portrait rule above */
+.pool-character-card img.hw-rarity-icon {
+  width: 24px;
+  height: 12px;
+  border: none;
+  border-radius: 0;
+  object-fit: contain;
+}
+
 .pool-character-placeholder {
   width: 60px;
   height: 60px;
@@ -770,26 +779,13 @@
 /* 19. MAKER MODE - REMOVE BUTTON */
 /* ============================================ */
 
-#maker-tier-list .remove-btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 28px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
-  border: none;
-  border-radius: 6px 6px 0 0;
-  color: rgba(255, 255, 255, 0.8);
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 2px;
-  z-index: 10;
-  opacity: 0;
-  transition: opacity 0.2s ease;
+/* Inherits the base .remove-btn style (visible red circle) so removal is discoverable */
+
+/* Armed tier row: the target that double-clicking a pool card places into */
+.tier-characters.tier-armed {
+  background: rgba(232, 165, 71, 0.1);
+  border-color: var(--hw-primary-warm);
+  border-style: dashed;
 }
 
 
@@ -1018,6 +1014,23 @@
   color: var(--hw-text-muted);
   margin: 0;
   font-style: italic;
+}
+
+.priorities-section {
+  margin-bottom: 2rem;
+}
+
+.priorities-section:last-child {
+  margin-bottom: 0;
+}
+
+.priorities-section-title {
+  font-size: var(--hw-font-xl);
+  font-weight: var(--font-bold);
+  color: #e8a547;
+  margin: 0 0 0.75rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--hw-border-light);
 }
 
 .priorities-characters-grid {

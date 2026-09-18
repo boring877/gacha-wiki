@@ -128,7 +128,7 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
                 <div class="pool-character-placeholder">📷</div>
               )}
             </div>
-            <HWRarityIcon rarity={unit.rarity || 'A'} width={36} height={18} />
+            <HWRarityIcon rarity={unit.rarity || 'A'} width={24} height={12} />
             <div class="pool-character-name">{unit.name}</div>
           </div>
         ))}
@@ -321,41 +321,46 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
         <h3 class="priorities-title">These units should take care of you anywhere!</h3>
         <p class="priorities-subtitle">Must-have characters with their EX weapons</p>
       </div>
-      <div class="priorities-characters-grid">
-        {(HORIZON_WALKER_TIER_LISTS['priorities'] as any).characters.map(charData => (
-          <div
-            class="priorities-character-card"
-            onclick={`window.location.href=${JSON.stringify(charData.detailUrl || '#')}`}
-          >
-            <div class="character-image-wrapper">
-              {charData.image && charData.image.split('/').pop() ? (
-                charData.isMercenary ? (
-                  <MercenaryImage
-                    imageName={charData.image.split('/').pop()}
-                    alt={charData.name}
-                    width={280}
-                    height={280}
-                    loading="lazy"
-                    quality={100}
-                  />
-                ) : (
-                  <CharacterImage
-                    imageName={charData.image.split('/').pop()}
-                    alt={charData.name}
-                    width={280}
-                    height={280}
-                    loading="lazy"
-                    quality={100}
-                  />
-                )
-              ) : (
-                <div class="character-placeholder">📷</div>
-              )}
-            </div>
-            <div class="character-name">{charData.name}</div>
+      {(HORIZON_WALKER_TIER_LISTS['priorities'] as any).sections.map(section => (
+        <div class="priorities-section">
+          <h4 class="priorities-section-title">{section.title}</h4>
+          <div class="priorities-characters-grid">
+            {section.characters.map(charData => (
+              <div
+                class="priorities-character-card"
+                onclick={`window.location.href=${JSON.stringify(charData.detailUrl || '#')}`}
+              >
+                <div class="character-image-wrapper">
+                  {charData.image && charData.image.split('/').pop() ? (
+                    charData.isMercenary ? (
+                      <MercenaryImage
+                        imageName={charData.image.split('/').pop()}
+                        alt={charData.name}
+                        width={280}
+                        height={280}
+                        loading="lazy"
+                        quality={100}
+                      />
+                    ) : (
+                      <CharacterImage
+                        imageName={charData.image.split('/').pop()}
+                        alt={charData.name}
+                        width={280}
+                        height={280}
+                        loading="lazy"
+                        quality={100}
+                      />
+                    )
+                  ) : (
+                    <div class="character-placeholder">📷</div>
+                  )}
+                </div>
+                <div class="character-name">{charData.name}</div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
 
   </div>
@@ -481,6 +486,7 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
       const resetBtn = document.getElementById('reset-tier-list');
 
       let selectedCharacter = null;
+      let armedTier = 'UR'; // tier that double-click on a pool card places into
       const tierAssignments = {};
       const STORAGE_KEY = 'hw-custom-tier-list';
       let makerInitialized = false;
@@ -510,7 +516,16 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
       function initializeMaker() {
         setupPoolCards();
         setupDropZones();
+        armTier(armedTier);
         loadFromStorage();
+      }
+
+      // Arm a tier row: highlighted target that double-click on a pool card places into
+      function armTier(tierName) {
+        armedTier = tierName;
+        document.querySelectorAll('#maker-tier-list .tier-characters').forEach(z => {
+          z.classList.toggle('tier-armed', z.dataset.tier === tierName);
+        });
       }
 
       // Setup pool card drag events
@@ -546,6 +561,15 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
             selectedCharacter = characterName;
             document.querySelectorAll('.tier-characters.droppable').forEach(z => z.classList.add('awaiting-placement'));
           });
+
+          // Double-click to place into the armed tier
+          card.addEventListener('dblclick', () => {
+            moveCardToTier(characterName, armedTier);
+            document.querySelectorAll('.pool-character-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tier-character-card.in-tier').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tier-characters').forEach(z => z.classList.remove('awaiting-placement'));
+            selectedCharacter = null;
+          });
         });
       }
 
@@ -579,9 +603,12 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
             }
           });
 
-          // Click to place (works on all devices now)
+          // Click to place (works on all devices now); with nothing selected, arm the tier
           zone.addEventListener('click', () => {
-            if (!selectedCharacter) return;
+            if (!selectedCharacter) {
+              armTier(tierName);
+              return;
+            }
             moveCardToTier(selectedCharacter, tierName);
             document.querySelectorAll('.pool-character-card').forEach(c => c.classList.remove('selected'));
             document.querySelectorAll('.tier-character-card.in-tier').forEach(c => c.classList.remove('selected'));
@@ -615,7 +642,7 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
           <div class="character-image-wrapper">
             <img src="${poolCard.querySelector('img')?.src || ''}" alt="${characterName}" loading="lazy" />
           </div>
-          <img class="hw-rarity-icon" src="${rarityIconMap[rarity] || rarityIconMap['A']}" alt="${rarity}" width="36" height="18" />
+          <img class="hw-rarity-icon" src="${rarityIconMap[rarity] || rarityIconMap['A']}" alt="${rarity}" width="24" height="12" />
           <div class="character-name">${characterName}</div>
           <button class="remove-btn" title="Remove from tier">×</button>
         `;
@@ -629,6 +656,7 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
 
         targetZone.appendChild(tierCard);
         tierAssignments[characterName] = tierName;
+        armTier(tierName);
         saveToStorage();
       }
 
@@ -643,6 +671,15 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
 
         card.addEventListener('dragend', () => {
           card.classList.remove('dragging');
+        });
+
+        // Keep card clicks from arming/placing on the parent zone
+        card.addEventListener('click', e => e.stopPropagation());
+
+        // Double-click to return the card to the pool
+        card.addEventListener('dblclick', e => {
+          e.stopPropagation();
+          returnCardToPool(characterName);
         });
 
         card.querySelector('.remove-btn').addEventListener('click', e => {

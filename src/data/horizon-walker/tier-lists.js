@@ -4,21 +4,31 @@
 import { HORIZON_WALKER_CHARACTERS } from './characters.js';
 import { HORIZON_WALKER_MERCENARIES } from './mercenaries.js';
 
-// Helper function to find character by name (case-insensitive)
+// Helper function to find character by name (case-insensitive, exact match preferred)
+// Exact match must win before substring matching, otherwise short names
+// (e.g. "Mira" vs "Mirana", "Marika" vs "Samarika") resolve to the wrong character
 const findCharacter = name => {
-  return HORIZON_WALKER_CHARACTERS.find(
-    char =>
-      char.name.toLowerCase().includes(name.toLowerCase().trim()) ||
-      name.toLowerCase().trim().includes(char.name.toLowerCase())
+  const query = name.toLowerCase().trim();
+  return (
+    HORIZON_WALKER_CHARACTERS.find(char => char.name.toLowerCase() === query) ||
+    HORIZON_WALKER_CHARACTERS.find(
+      char =>
+        char.name.toLowerCase().includes(query) ||
+        query.includes(char.name.toLowerCase())
+    )
   );
 };
 
-// Helper function to find mercenary by name (case-insensitive)
+// Helper function to find mercenary by name (case-insensitive, exact match preferred)
 const findMercenary = name => {
-  return HORIZON_WALKER_MERCENARIES.find(
-    merc =>
-      merc.name.toLowerCase().includes(name.toLowerCase().trim()) ||
-      name.toLowerCase().trim().includes(merc.name.toLowerCase())
+  const query = name.toLowerCase().trim();
+  return (
+    HORIZON_WALKER_MERCENARIES.find(merc => merc.name.toLowerCase() === query) ||
+    HORIZON_WALKER_MERCENARIES.find(
+      merc =>
+        merc.name.toLowerCase().includes(query) ||
+        query.includes(merc.name.toLowerCase())
+    )
   );
 };
 
@@ -117,8 +127,8 @@ export const GAME_MODES = {
 
 // Character lists from your tier list data (only characters with EX Weapons)
 const MAP_CLEAR_CHARACTERS = {
-  UR: ['Cora', 'Luise'],
-  SSS: ['Olivia', 'Vlissing', 'Palekar', 'Matrotho', 'Eugenia'],
+  UR: ['Cora', 'Luise', 'Juza'],
+  SSS: ['Olivia', 'Vlissing', 'Palekar', 'Matrotho', 'Eugenia', 'Ahram', 'Nari'],
   SS: [
     'Yui',
     'Valeta',
@@ -136,7 +146,6 @@ const MAP_CLEAR_CHARACTERS = {
     'Tx -Manticore',
     'Leah',
     'Erneste',
-    'nari',
     'Mahari',
     'Nika',
     'nymset',
@@ -145,10 +154,14 @@ const MAP_CLEAR_CHARACTERS = {
     'Puppy Stepper',
     'Emilia',
     'Maximilia',
+    'Mira',
+    'Mirana',
+    'Kotoha',
+    'Yeon Chae-Young',
+    'Ines',
   ],
   S: [
     'Echidna',
-    'Yeon Chae-young',
     'Min eun-sol',
     'Kalina',
     'Kilon',
@@ -160,7 +173,6 @@ const MAP_CLEAR_CHARACTERS = {
     'Samarika',
     'Puppy shooter',
     'Kobold mercenary',
-    'Ines',
     'Fammene',
     'Kim ga-young',
   ],
@@ -182,8 +194,8 @@ const MAP_CLEAR_CHARACTERS = {
 };
 
 const SPECIAL_OPERATIONS_CHARACTERS = {
-  UR: ['Cora', 'Luise'],
-  SSS: ['Yeonwoo', 'Leah', 'Nymset', 'Palekar', 'Juha', 'So Joo-Hee', 'Mahari', 'Matrotho', 'Eugenia'],
+  UR: ['Cora', 'Luise', 'Juza'],
+  SSS: ['Yeonwoo', 'Leah', 'Nymset', 'Palekar', 'Juha', 'So Joo-Hee', 'Mahari', 'Matrotho', 'Eugenia', 'Ahram', 'Nari'],
   SS: [
     'Olivia',
     'Yvonna',
@@ -194,11 +206,15 @@ const SPECIAL_OPERATIONS_CHARACTERS = {
     'Griselda',
     'Erneste',
     'Bella',
-    'Nari',
     'Efreeti',
     'Maximilia',
     'Emilia',
     'Yui',
+    'Mira',
+    'Mirana',
+    'Kotoha',
+    'Yeon Chae-Young',
+    'Ines',
   ],
   S: [
     'Echidna',
@@ -210,7 +226,6 @@ const SPECIAL_OPERATIONS_CHARACTERS = {
     'Pantheri',
     'Samarika',
     'Fammene',
-    'Ines',
     'Marhim',
     'Nika',
     'Berga',
@@ -224,7 +239,6 @@ const SPECIAL_OPERATIONS_CHARACTERS = {
   A: [
     'Min Eun-sol',
     'Kalina',
-    'Yeon Chae-young',
     'Platina',
     'Delia',
     'Puppy shooter',
@@ -240,7 +254,7 @@ const SPECIAL_OPERATIONS_CHARACTERS = {
 };
 
 const DOPAMIN_CHARACTERS = {
-  UR: ['Cora', 'Luise'],
+  UR: ['Cora', 'Luise', 'Juza'],
   SSS: [
     'Olivia',
     'Kaul',
@@ -259,6 +273,9 @@ const DOPAMIN_CHARACTERS = {
     'Palekar',
     'Eugenia',
     'Matrotho',
+    'Ahram',
+    'Nari',
+    'Marhim',
   ],
   SS: [
     'Kalina',
@@ -267,7 +284,6 @@ const DOPAMIN_CHARACTERS = {
     'Osla',
     'Erneste',
     'Bella',
-    'Nari',
     'Efreeti',
     'so joo-hee',
     'Nika',
@@ -277,11 +293,15 @@ const DOPAMIN_CHARACTERS = {
     'Emilia',
     'Kim ga-young',
     'Maximilia',
+    'Mira',
+    'Mirana',
+    'Kotoha',
+    'Yeon Chae-Young',
+    'Ines',
   ],
   S: [
     'Echidna',
     'Min Eun-sol',
-    'Yeon chae-young',
     'Platina',
     'araha',
     'Pantheri',
@@ -289,8 +309,6 @@ const DOPAMIN_CHARACTERS = {
     'Samarika',
     'Fammene',
     'delia',
-    'ines',
-    'Marhim',
     'tx -mantocore',
     'puppy shooter',
     'Koblod mercenary',
@@ -309,19 +327,31 @@ const DOPAMIN_CHARACTERS = {
 };
 
 // Priorities characters - simple list (no tiers) of must-have characters with EX weapons
-const PRIORITIES_CHARACTERS = [
+// Split into two sections: the core must-haves and the rest
+const PRIORITIES_CORE_CHARACTERS = [
   'Olivia',
   'Vlissing',
-  'Mahari',
-  'Cora',
-  'Yeonwoo',
   'Juha',
+  'Juza',
+  'Nymset',
+  'Luise',
+  'Ahram',
+  'Eugenia',
+  'Cora',
+  'Palekar',
+];
+const PRIORITIES_SECONDARY_CHARACTERS = [
+  'Mahari',
+  'Bella',
+  'Yeonwoo',
   'Yui',
   'So joo-hee',
   'Korabi',
-  'Bella',
-  'Nymset',
-  'Palekar',
+  'Leah',
+  'Maximilia',
+  'Yvonna',
+  'Kotoha',
+  'Emilia',
 ];
 
 // Process all character lists to create tier lists with valid characters
@@ -355,7 +385,19 @@ export const HORIZON_WALKER_TIER_LISTS = {
 
   [GAME_MODES.PRIORITIES.id]: {
     ...GAME_MODES.PRIORITIES,
-    characters: processUnitList(PRIORITIES_CHARACTERS),
+    sections: [
+      {
+        id: 'core',
+        title: 'Core',
+        characters: processUnitList(PRIORITIES_CORE_CHARACTERS),
+      },
+      {
+        id: 'rest',
+        title: 'The Rest',
+        characters: processUnitList(PRIORITIES_SECONDARY_CHARACTERS),
+      },
+    ],
+    characters: processUnitList([...PRIORITIES_CORE_CHARACTERS, ...PRIORITIES_SECONDARY_CHARACTERS]),
     isSimpleList: true, // Flag to indicate this is a simple list, not tiered
   },
 };
@@ -423,6 +465,31 @@ export const TIER_CHARACTER_NOTES = {
     type: 'info',
     title: 'Demi Skill & Weapon Required',
     text: 'Luise needs her Demi skill unlocked to reach UR potential. Without it she performs significantly lower. She also requires at least a 4/5 weapon to be usable and a good team to enable her full potential. Unlike Cora who is easier to deal damage with, Luise has a higher skill ceiling but deals more damage when fully built.',
+  },
+  Juza: {
+    type: 'info',
+    title: 'Massive Damage, Locks Herself On Target',
+    text: 'Juza deals truly massive damage and can work in all types of content as long as you can keep her locked on the target. Her one weakness is that once she jumps she cannot really move, so she stays locked in place. She does not need a lot of investment, but she needs good teammates: Eugenia is a must. With Eugenia her damage output becomes huge, and she is highly recommended as a speedrun pick for Total War.',
+  },
+  Nari: {
+    type: 'warning',
+    title: 'Conditional, Needs Her Demi Skill',
+    text: 'Nari needs her Demi skill to scale. Without it she is really quite weak. The only reason she is rated this high is Total War: she can speedrun it quite fast. On other maps she is not that great, and there are a lot of characters much better than her. Overall she is quite conditional, so keep her for Total War.',
+  },
+  Ines: {
+    type: 'warning',
+    title: 'Weak Point Hits & AP Required',
+    text: 'Ines has the potential to be quite strong and deal quite a bit of damage, but you need to hit the target in its weak point, and she needs quite a bit of AP so she can one shot. She also needs her Demi skill. She is quite great for clearing maps and Dopamin, but she is not very good at Total War or any other kind of maps, and she is also quite bad in Special Operations.',
+  },
+  'Yeon Chae-Young': {
+    type: 'warning',
+    title: 'Needs Investment, Has Potential',
+    text: 'Yeon Chae-Young\'s damage is actually quite good and you can get a lot of turns, but you need back attacks and quite a bit of AP recovery, and she needs her Demi skill. She is not that great and there are a lot of much better characters than her, though she has some potential, so do not dismiss her fully. She is not great for free to play because she needs quite a bit of investment.',
+  },
+  Marhim: {
+    type: 'info',
+    title: 'Dopamin Specialist',
+    text: 'Marhim needs her Demi skill to be great at Dopamin: with it she is really strong there. On other maps she is not that much.',
   },
 };
 
