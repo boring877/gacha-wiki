@@ -16,19 +16,6 @@ const total = gsaTierByJob.reduce((n, g) => n + g.tiers.reduce((m, t) => m + t.c
   crumbName="Tier List"
 >
   <section>
-    <div class="gsa-tier-intro">
-      <p class="gsa-tier-intro-label">Updated {GSA_TIER_UPDATED} · Kit-based ratings, day-one launch</p>
-      <p class="gsa-tier-intro-text">
-        <strong>The EN battery is the premium slot</strong>: Kurosawa Shion's
-        team-wide energy refill makes every ultimate come online faster, so
-        supports and batteries rate above raw damage at launch. Ratings come
-        straight from each kit's own numbers (multipliers, cooldowns, EN costs,
-        buff values) in our character database; there is no community consensus
-        to lean on yet since the game just launched, and dupe value (star
-        unlocks) is not factored in. Ratings will move as the meta forms.
-      </p>
-    </div>
-
     {gsaTierByJob.map(group => (
       <div class="gsa-tier-job-section">
         <div class="gsa-tier-job-header">
