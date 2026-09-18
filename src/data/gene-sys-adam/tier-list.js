@@ -84,33 +84,25 @@ const placementOf = slug =>
 
 // Job sections -> tier rows -> compact character cards (reasons stay here in
 // the data file, they are not rendered on the page, matching the majo list).
-export const gsaTierByJob = GSA_JOB_SECTIONS.map(({ job, zh }) => ({
+export const gsaTierByJob = GSA_JOB_SECTIONS.concat([{
+  // characters with no job data yet would land here
+  job: 'Unclassified',
+  zh: '未分類',
+}]).map(({ job, zh }) => ({
   job,
   zh,
   tiers: GSA_TIERS.map(({ tier, color }) => ({
     tier,
     color,
     characters: gsaCharacters
-      .filter(c => (c.job ? c.job.name === job : false) && placementOf(c.slug).tier === tier)
+      .filter(c => (c.job ? c.job.name === job : job === 'Unclassified') && placementOf(c.slug).tier === tier)
       .map(c => ({ ...c, placement: placementOf(c.slug) }))
       .sort((a, b) =>
         ((RARITY_RANK[placementOf(a.slug).rarity] ?? 9) - (RARITY_RANK[placementOf(b.slug).rarity] ?? 9)) ||
         a.name.localeCompare(b.name)
       ),
   })).filter(t => t.characters.length > 0),
-})).concat([{
-  // characters with no job data yet (currently connie)
-  job: 'Unclassified',
-  zh: '未分類',
-  tiers: GSA_TIERS.map(({ tier, color }) => ({
-    tier,
-    color,
-    characters: gsaCharacters
-      .filter(c => !c.job && placementOf(c.slug).tier === tier)
-      .map(c => ({ ...c, placement: placementOf(c.slug) }))
-      .sort((a, b) => a.name.localeCompare(b.name)),
-  })).filter(t => t.characters.length > 0),
-}]);
+})).filter(g => g.tiers.length > 0);
 
 if (import.meta.env.DEV) {
   const unplaced = gsaCharacters.filter(c => !GSA_TIER_PLACEMENTS[c.slug]);

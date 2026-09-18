@@ -6079,7 +6079,12 @@ export const gsaCharacters = [
     "icon": null,
     "sortOrder": 73,
     "element": null,
-    "job": null,
+    "job": {
+      "id": 5,
+      "name": "Breaker",
+      "color": "#9433EA",
+      "icon": null
+    },
     "attackType": {
       "id": 1,
       "name": "Physical",
