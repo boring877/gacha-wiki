@@ -1,0 +1,564 @@
+/* Gene-Sys: Adam character pages (DB grid + detail): majo-style structure,
+   one outer content panel, header card with portrait, section cards.
+   Flat noir crimson: no shadows, no hover effects. */
+
+.gsa-content-section {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  background: var(--gsa-bg-secondary);
+  border-radius: 16px;
+  border: 1px solid var(--gsa-border);
+}
+
+/* ---------- detail header card ---------- */
+.gsa-detail-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: var(--gsa-bg-tertiary);
+  border: 1px solid var(--gsa-border);
+  border-radius: 12px;
+}
+
+.gsa-detail-art {
+  width: 200px;
+  max-width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
+  border: 1px solid var(--gsa-border);
+  background: var(--gsa-bg-secondary);
+  display: block;
+}
+
+.gsa-detail-art-monogram {
+  width: 200px;
+  max-width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  flex-shrink: 0;
+  border: 1px solid var(--gsa-border);
+  background: var(--gsa-bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--gsa-text-dim);
+}
+
+.gsa-detail-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.gsa-detail-info h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.8rem;
+  color: var(--gsa-text);
+}
+
+.gsa-detail-name-zh {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+  color: var(--gsa-text-dim);
+}
+
+.gsa-detail-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--gsa-accent-strong);
+}
+
+.gsa-detail-epithet {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  color: var(--gsa-text-dim);
+}
+
+.gsa-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Type chips in the header meta row (attack type, job, element) carry
+   20px icon tiles, matching the in-game Info tab icon row. */
+.gsa-meta .gsa-chip img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ---------- section cards ---------- */
+.gsa-detail-section {
+  background: var(--gsa-bg-tertiary);
+  border: 1px solid var(--gsa-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.gsa-detail-section:last-child {
+  margin-bottom: 0;
+}
+
+.gsa-detail-section h2 {
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+  color: var(--gsa-accent-strong);
+  font-weight: 600;
+}
+
+.gsa-section-note {
+  margin: 1rem 0 0;
+  font-size: 0.78rem;
+  color: var(--gsa-text-dim);
+  line-height: 1.5;
+}
+
+/* ---------- stat tiles ---------- */
+.gsa-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.gsa-stat-tile {
+  background: var(--gsa-bg-secondary);
+  border: 1px solid var(--gsa-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.gsa-stat-value {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--gsa-text);
+}
+
+.gsa-stat-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gsa-text-dim);
+  font-weight: 700;
+}
+
+/* ---------- skills ---------- */
+.gsa-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gsa-skill {
+  background: var(--gsa-bg-secondary);
+  border: 1px solid var(--gsa-border);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.gsa-skill-ult {
+  background: var(--gsa-accent-tint);
+  border-color: var(--gsa-accent);
+}
+
+.gsa-skill-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+/* Icon tile: the game frames skill art on a dark tile with an EX ribbon
+   for Ultimate skills. */
+.gsa-skill-iconwrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.gsa-skill-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  border: 1px solid var(--gsa-border);
+  background: #171114;
+  object-fit: cover;
+  display: block;
+}
+
+.gsa-skill-icon-ph {
+  display: block;
+}
+
+.gsa-skill-ex {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  background: var(--gsa-accent);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 800;
+  line-height: 1;
+  padding: 2px 5px;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+}
+
+.gsa-skill-heading {
+  flex: 1;
+  min-width: 200px;
+}
+
+.gsa-skill-props {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 16px;
+  margin-top: 4px;
+  font-size: 0.85rem;
+}
+
+.gsa-skill-prop {
+  margin: 0;
+}
+
+.gsa-skill-prop span {
+  color: var(--gsa-gold);
+}
+
+.gsa-skill-prop b {
+  color: #7fa8c9;
+}
+
+.gsa-sub-title {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--gsa-text);
+}
+
+/* ---------- level switcher ---------- */
+.gsa-lv-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.gsa-lv-btn {
+  background: var(--gsa-bg-secondary);
+  border: 1px solid var(--gsa-border);
+  color: var(--gsa-text-dim);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.gsa-lv-btn.active {
+  background: var(--gsa-accent);
+  border-color: var(--gsa-accent);
+  color: #fff;
+}
+
+.gsa-lv-panel {
+  background: var(--gsa-bg-secondary);
+  border: 1px solid var(--gsa-border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gsa-lv-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.gsa-lv-key {
+  color: var(--gsa-text-dim);
+  font-size: 0.85rem;
+}
+
+.gsa-lv-exp {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--gsa-accent-strong);
+}
+
+.gsa-lv-max {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--gsa-gold);
+}
+
+.gsa-lv-costs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.gsa-lv-costs b {
+  margin-left: 4px;
+  color: var(--gsa-gold);
+}
+
+.gsa-lv-note {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--gsa-text-dim);
+}
+
+.gsa-table-scroll {
+  overflow-x: auto;
+}
+
+.gsa-cost-table {
+  min-width: 480px;
+}
+
+.gsa-skill-name {
+  margin: 0;
+  font-weight: 700;
+}
+
+.gsa-skill-tag {
+  color: var(--gsa-gold);
+  margin-right: 2px;
+}
+
+.gsa-star-chip {
+  background: var(--gsa-gold);
+  color: #1c1610;
+}
+
+.gsa-skill-desc {
+  position: relative;
+  margin: 0 0 2px;
+  padding-left: 17px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.gsa-skill-desc::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 0.68rem;
+  line-height: 2.15;
+  color: var(--gsa-gold);
+}
+
+.gsa-skill-desc:last-of-type {
+  margin-bottom: 0;
+}
+
+.gsa-skill-detail {
+  margin: 6px 0 0;
+  font-size: 0.82rem;
+  color: var(--gsa-text-dim);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.gsa-skill-statuses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.gsa-skill-awake {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: var(--gsa-accent-tint);
+  border: 1px solid var(--gsa-border);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+/* ---------- class up materials ---------- */
+.gsa-classmat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--gsa-bg-secondary);
+  border: 1px solid var(--gsa-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.gsa-classmat img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--gsa-border);
+  background: #171114;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.gsa-classmat-name {
+  margin: 0 0 2px;
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.gsa-classmat .gsa-section-note {
+  margin: 0;
+}
+
+/* ---------- star unlock list ---------- */
+.gsa-star-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.gsa-star-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--gsa-border);
+}
+
+.gsa-star-row:last-child {
+  border-bottom: none;
+}
+
+.gsa-growth-label {
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.gsa-growth-note {
+  color: var(--gsa-text-dim);
+  font-size: 0.82rem;
+  margin-left: auto;
+  text-align: right;
+}
+
+/* ---------- tight facts list (profile, system caps) ---------- */
+.gsa-facts-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  column-gap: 2rem;
+}
+
+.gsa-facts-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--gsa-border);
+  font-size: 0.9rem;
+}
+
+.gsa-facts-row span {
+  color: var(--gsa-text-dim);
+  flex-shrink: 0;
+}
+
+.gsa-facts-row b {
+  font-weight: 600;
+  color: var(--gsa-text);
+  text-align: right;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+/* long values (interests, personality): full-width row, label above text */
+.gsa-facts-long {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  grid-column: 1 / -1;
+}
+
+.gsa-facts-long b {
+  text-align: left;
+  line-height: 1.55;
+}
+
+/* ---------- story block ---------- */
+.gsa-story {
+  margin-top: 1rem;
+  padding: 14px 16px;
+  background: var(--gsa-bg-secondary);
+  border: 1px solid var(--gsa-border);
+  border-radius: 8px;
+}
+
+.gsa-story-title {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gsa-accent-strong);
+}
+
+.gsa-story p {
+  margin: 0 0 10px;
+  line-height: 1.7;
+  color: var(--gsa-text);
+  font-size: 0.92rem;
+}
+
+.gsa-story p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .gsa-content-section {
+    padding: 1rem;
+  }
+
+  .gsa-skill-props {
+    grid-template-columns: 1fr;
+  }
+
+  .gsa-detail-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .gsa-detail-art,
+  .gsa-detail-art-monogram {
+    width: 160px;
+  }
+
+  .gsa-meta {
+    justify-content: center;
+  }
+
+  .gsa-growth-note {
+    display: none;
+  }
+}

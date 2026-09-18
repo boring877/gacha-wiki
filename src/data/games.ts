@@ -184,7 +184,7 @@ export const GAMES: Game[] = [
     name: 'Gene-Sys: Adam',
     slug: 'gene-sys-adam',
     description: 'R18 Noir Revenge RPG • EROLABS • 54 Characters • Squad Combat • Gacha Rates',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/gameimg_icon_a.webp',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/a000_01_Icon_Texture.webp',
     url: '/guides/gene-sys-adam/',
     status: 'active',
     themeColor: '#b02a37',

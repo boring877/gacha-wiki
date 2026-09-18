@@ -52,15 +52,15 @@ export const gsaItems = [
  },
  {
   "id": "200000008",
-  "name": "X(不翻)公會經驗值。",
-  "desc": "X(不翻)公會經驗值。",
+  "name": "X(\u4e0d\u7ffb)\u516c\u6703\u7d93\u9a57\u503c\u3002",
+  "desc": "X(\u4e0d\u7ffb)\u516c\u6703\u7d93\u9a57\u503c\u3002",
   "quality": "30",
   "icon": null
  },
  {
   "id": "200000009",
-  "name": "X(不翻)公會徽章",
-  "desc": "X(不翻)公會捐獻後取得。 可以在公會市集裡換取道具。",
+  "name": "X(\u4e0d\u7ffb)\u516c\u6703\u5fbd\u7ae0",
+  "desc": "X(\u4e0d\u7ffb)\u516c\u6703\u6350\u737b\u5f8c\u53d6\u5f97\u3002 \u53ef\u4ee5\u5728\u516c\u6703\u5e02\u96c6\u88e1\u63db\u53d6\u9053\u5177\u3002",
   "quality": "50",
   "icon": null
  },
@@ -94,50 +94,50 @@ export const gsaItems = [
  },
  {
   "id": "200000014",
-  "name": "X(不翻)安卡之符",
-  "desc": "X(不翻)在埃及豔后藏寶室活動中取得，可在藏寶兌換中換取獎勵（活動結束後回收）。",
+  "name": "X(\u4e0d\u7ffb)\u5b89\u5361\u4e4b\u7b26",
+  "desc": "X(\u4e0d\u7ffb)\u5728\u57c3\u53ca\u8c54\u540e\u85cf\u5bf6\u5ba4\u6d3b\u52d5\u4e2d\u53d6\u5f97\uff0c\u53ef\u5728\u85cf\u5bf6\u514c\u63db\u4e2d\u63db\u53d6\u734e\u52f5\uff08\u6d3b\u52d5\u7d50\u675f\u5f8c\u56de\u6536\uff09\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200000015",
-  "name": "X(不翻)時光聖甲蟲",
-  "desc": "X(不翻)在埃及豔后藏寶室活動中取得，可在藏寶兌換中換取獎勵（活動結束後回收）。",
+  "name": "X(\u4e0d\u7ffb)\u6642\u5149\u8056\u7532\u87f2",
+  "desc": "X(\u4e0d\u7ffb)\u5728\u57c3\u53ca\u8c54\u540e\u85cf\u5bf6\u5ba4\u6d3b\u52d5\u4e2d\u53d6\u5f97\uff0c\u53ef\u5728\u85cf\u5bf6\u514c\u63db\u4e2d\u63db\u53d6\u734e\u52f5\uff08\u6d3b\u52d5\u7d50\u675f\u5f8c\u56de\u6536\uff09\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200000016",
-  "name": "X(不翻)彩凰之羽",
-  "desc": "X(不翻)在埃及豔后藏寶室活動中取得，可在藏寶兌換中換取獎勵（活動結束後回收）。",
+  "name": "X(\u4e0d\u7ffb)\u5f69\u51f0\u4e4b\u7fbd",
+  "desc": "X(\u4e0d\u7ffb)\u5728\u57c3\u53ca\u8c54\u540e\u85cf\u5bf6\u5ba4\u6d3b\u52d5\u4e2d\u53d6\u5f97\uff0c\u53ef\u5728\u85cf\u5bf6\u514c\u63db\u4e2d\u63db\u53d6\u734e\u52f5\uff08\u6d3b\u52d5\u7d50\u675f\u5f8c\u56de\u6536\uff09\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200000017",
-  "name": "X(不翻)古埃及金字塔",
-  "desc": "X(不翻)在埃及豔后藏寶室活動中取得，可在藏寶兌換中換取獎勵（活動結束後回收）。",
+  "name": "X(\u4e0d\u7ffb)\u53e4\u57c3\u53ca\u91d1\u5b57\u5854",
+  "desc": "X(\u4e0d\u7ffb)\u5728\u57c3\u53ca\u8c54\u540e\u85cf\u5bf6\u5ba4\u6d3b\u52d5\u4e2d\u53d6\u5f97\uff0c\u53ef\u5728\u85cf\u5bf6\u514c\u63db\u4e2d\u63db\u53d6\u734e\u52f5\uff08\u6d3b\u52d5\u7d50\u675f\u5f8c\u56de\u6536\uff09\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200000018",
-  "name": "X(不翻)豔后神力鋤",
-  "desc": "X(不翻)埃及豔后珍貴的神力鋤，可用於敲碎石板。",
+  "name": "X(\u4e0d\u7ffb)\u8c54\u540e\u795e\u529b\u92e4",
+  "desc": "X(\u4e0d\u7ffb)\u57c3\u53ca\u8c54\u540e\u73cd\u8cb4\u7684\u795e\u529b\u92e4\uff0c\u53ef\u7528\u65bc\u6572\u788e\u77f3\u677f\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200000019",
-  "name": "X(不翻)探視之眼",
-  "desc": "X(不翻)埃及豔后珍貴的窺視之眼，可用於窺視石板下的物品。",
+  "name": "X(\u4e0d\u7ffb)\u63a2\u8996\u4e4b\u773c",
+  "desc": "X(\u4e0d\u7ffb)\u57c3\u53ca\u8c54\u540e\u73cd\u8cb4\u7684\u7aba\u8996\u4e4b\u773c\uff0c\u53ef\u7528\u65bc\u7aba\u8996\u77f3\u677f\u4e0b\u7684\u7269\u54c1\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200000020",
-  "name": "X(不翻)埃及豔后的飾品堆",
-  "desc": "X(不翻)在埃及豔后的藏寶室活動中取得（活動結束後回收）。",
+  "name": "X(\u4e0d\u7ffb)\u57c3\u53ca\u8c54\u540e\u7684\u98fe\u54c1\u5806",
+  "desc": "X(\u4e0d\u7ffb)\u5728\u57c3\u53ca\u8c54\u540e\u7684\u85cf\u5bf6\u5ba4\u6d3b\u52d5\u4e2d\u53d6\u5f97\uff08\u6d3b\u52d5\u7d50\u675f\u5f8c\u56de\u6536\uff09\u3002",
   "quality": "50",
   "icon": null
  },
@@ -146,33 +146,33 @@ export const gsaItems = [
   "name": "SSR Medallion",
   "desc": "Business cards obtained from acquiring duplicate SSR characters at max stars. Can be exchanged for items at the Exchange Shop.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200000021.webp"
  },
  {
   "id": "200000022",
   "name": "SR Medallion",
   "desc": "Business cards obtained from acquiring duplicate SR characters at max stars. Can be exchanged for items at the Exchange Shop.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200000022.webp"
  },
  {
   "id": "200000023",
   "name": "R Medallion",
   "desc": "Business cards obtained from acquiring duplicate R characters at max stars. Can be exchanged for items at the Exchange Shop.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200000023.webp"
  },
  {
   "id": "200000024",
-  "name": "X(不翻)魔鏡精華",
-  "desc": "X(不翻)在埃及豔后的藏寶室活動中取得（活動結束後回收）。",
+  "name": "X(\u4e0d\u7ffb)\u9b54\u93e1\u7cbe\u83ef",
+  "desc": "X(\u4e0d\u7ffb)\u5728\u57c3\u53ca\u8c54\u540e\u7684\u85cf\u5bf6\u5ba4\u6d3b\u52d5\u4e2d\u53d6\u5f97\uff08\u6d3b\u52d5\u7d50\u675f\u5f8c\u56de\u6536\uff09\u3002",
   "quality": "30",
   "icon": null
  },
  {
   "id": "200000025",
-  "name": "X(不翻)魔鏡晶核",
-  "desc": "X(不翻)用來強化裝備的魔法粉末，從失控煉成陣取得。",
+  "name": "X(\u4e0d\u7ffb)\u9b54\u93e1\u6676\u6838",
+  "desc": "X(\u4e0d\u7ffb)\u7528\u4f86\u5f37\u5316\u88dd\u5099\u7684\u9b54\u6cd5\u7c89\u672b\uff0c\u5f9e\u5931\u63a7\u7149\u6210\u9663\u53d6\u5f97\u3002",
   "quality": "50",
   "icon": null
  },
@@ -202,7 +202,7 @@ export const gsaItems = [
   "name": "Vitality",
   "desc": "The vitality needed to interact with women.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200000029.webp"
  },
  {
   "id": "200000030",
@@ -216,7 +216,7 @@ export const gsaItems = [
   "name": "Battery",
   "desc": "A Phone Battery. You'll need this to stay in touch with the lovely ladies.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200000031.webp"
  },
  {
   "id": "200010001",
@@ -230,7 +230,7 @@ export const gsaItems = [
   "name": "Mission Activity",
   "desc": "Obtained by completing missions. Accumulate them to claim rewards.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200010002.webp"
  },
  {
   "id": "200020001",
@@ -244,98 +244,98 @@ export const gsaItems = [
   "name": "Honor Medal",
   "desc": "A medal obtained from the Carducci Arena. Can be exchanged for items at the Exchange Shop.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200020002.webp"
  },
  {
   "id": "200020003",
   "name": "Tournament Token",
   "desc": "A reward obtained from the Desperate Deathmatch. Can be exchanged for items at the Exchange Shop.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200020003.webp"
  },
  {
   "id": "200020004",
   "name": "Flame Energy Module",
   "desc": "Obtained from Fire Resonance stages. Can be exchanged for items at the Exchange Shop.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200020004.webp"
  },
  {
   "id": "200020005",
   "name": "Cryo Energy Module",
   "desc": "Obtained from Water Resonance stages. Can be exchanged for items at the Exchange Shop.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200020005.webp"
  },
  {
   "id": "200020006",
   "name": "Fissure Energy Module",
   "desc": "Obtained from Earth Resonance stages. Can be exchanged for items at the Exchange Shop.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200020006.webp"
  },
  {
   "id": "200020007",
   "name": "Storm Energy Module",
   "desc": "Obtained from Wind Resonance stages. Can be exchanged for items at the Exchange Shop.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200020007.webp"
  },
  {
   "id": "200020008",
   "name": "Shadow Energy Module",
   "desc": "Obtained from Dark Resonance stages. Can be exchanged for items at the Exchange Shop.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200020008.webp"
  },
  {
   "id": "200020009",
   "name": "Radiant Energy Module",
   "desc": "Obtained from Light Resonance stages. Can be exchanged for items at the Exchange Shop.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200020009.webp"
  },
  {
   "id": "200020012",
   "name": "Gale Crystal Cluster",
   "desc": "Obtained from events. Can be exchanged for premium items at the Exchange Shop.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200020012.webp"
  },
  {
   "id": "200020013",
   "name": "Inferno Crystal Cluster",
   "desc": "Obtained from events. Can be exchanged for premium items at the Exchange Shop.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200020013.webp"
  },
  {
   "id": "200020014",
   "name": "Rockslide Crystal Cluster",
   "desc": "Obtained from events. Can be exchanged for premium items at the Exchange Shop.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200020014.webp"
  },
  {
   "id": "200020015",
   "name": "Frost Crystal Cluster",
   "desc": "Obtained from events. Can be exchanged for premium items at the Exchange Shop.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200020015.webp"
  },
  {
   "id": "200020016",
   "name": "Holy Light Crystal Cluster",
   "desc": "Obtained from events. Can be exchanged for premium items at the Exchange Shop.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200020016.webp"
  },
  {
   "id": "200020017",
   "name": "Umbra Crystal Cluster",
   "desc": "Obtained from events. Can be exchanged for premium items at the Exchange Shop.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200020017.webp"
  },
  {
   "id": "200020018",
@@ -363,14 +363,14 @@ export const gsaItems = [
   "name": "President Gold Card",
   "desc": "[Recreation Club] Only those who have proven their luck through the Lucky Wheel may enter the President's Secret Club.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200020021.webp"
  },
  {
   "id": "200020022",
   "name": "Raffle Ticket",
   "desc": "[Recreation Club] Visit the club 7 times within one week to receive a Lucky Wheel raffle ticket, with a chance to win a President Gold Card.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200020022.webp"
  },
  {
   "id": "200020023",
@@ -391,7 +391,7 @@ export const gsaItems = [
   "name": "[Combat Expertise] Entry Permit",
   "desc": "Increases the number of [Combat Expertise] attempts by 1.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200020025.webp"
  },
  {
   "id": "200020026",
@@ -405,14 +405,14 @@ export const gsaItems = [
   "name": "SSR Advanced Referral Ticket (Premium)",
   "desc": "Obtained by exchanging an SSR Medallion. Can be used to redeem a character at the SSR Advanced Agency.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200020027.webp"
  },
  {
   "id": "200020028",
   "name": "SSR Advanced Referral Ticket (Regular)",
   "desc": "Obtained by exchanging an SSR Medallion. Can be used to redeem a character at the SSR Talent Agency.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200020028.webp"
  },
  {
   "id": "200020029",
@@ -454,70 +454,70 @@ export const gsaItems = [
   "name": "7-Day Stamina Potion (50 Stamina)",
   "desc": "Immediately restores 50 Stamina. Valid for 7 days only.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200040003.webp"
  },
  {
   "id": "200050000",
   "name": "Combat Training Record (Excess EXP Refunded)",
   "desc": "A record of basic training used to enhance combat skills. Can be used to quickly increase a character's EXP by {0}. When a character reaches max level, any excess EXP is refunded.",
   "quality": "0",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200050001.webp"
  },
  {
   "id": "200050001",
   "name": "Combat Training Record (Lv. 1)",
   "desc": "Advanced training record that combines theory and practical experience. Can be used to quickly increase a character's EXP by {0}.",
   "quality": "10",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200050002.webp"
  },
  {
   "id": "200050002",
   "name": "Combat Training Record (Lv. 2)",
   "desc": "Advanced combat training that enhances your combat skills. Can be used to quickly increase a character's EXP by {0}.",
   "quality": "30",
-  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200050002.webp"
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200050003.webp"
  },
  {
   "id": "200050003",
   "name": "Combat Training Record (Lv. 3)",
   "desc": "Elite combat training that combines battlefield experience with practical tactics. Can be used to quickly increase a character's EXP by {0}.",
   "quality": "50",
-  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200050003.webp"
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200050004.webp"
  },
  {
   "id": "200060001",
   "name": "Guardian Module (Lv. 1)",
   "desc": "Suitable for beginners to learn basic defense techniques.",
   "quality": "10",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060001.webp"
  },
  {
   "id": "200060002",
   "name": "Guardian Module (Lv. 2)",
   "desc": "Enhances durability and stability. Contains an intermediate-level core component.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060002.webp"
  },
  {
   "id": "200060003",
   "name": "Guardian Module (Lv. 3)",
   "desc": "Precisely adjusts reaction and defense capabilities to improve combat synchronization rates.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060003.webp"
  },
  {
   "id": "200060004",
   "name": "Guardian Module (Lv. 4)",
   "desc": "Integrates an advanced defense database to enhance combat command capability.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060004.webp"
  },
  {
   "id": "200060005",
   "name": "Guardian Module (Lv. 5)",
   "desc": "Supports versatile combat roles, designed for high-stress environments.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060005.webp"
  },
  {
   "id": "200060006",
@@ -538,35 +538,35 @@ export const gsaItems = [
   "name": "Assault Module (Lv. 1)",
   "desc": "Suitable for beginner combat, teaches the fundamentals of basic assault.",
   "quality": "10",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060011.webp"
  },
  {
   "id": "200060012",
   "name": "Assault Module (Lv. 2)",
   "desc": "Enhances propulsion stability and close-quarters dash efficiency. Contains an intermediate-level kinetic module.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060012.webp"
  },
  {
   "id": "200060013",
   "name": "Assault Module (Lv. 3)",
   "desc": "Precisely adjusts motion response and combat accuracy to improve combat chain synchronization.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060013.webp"
  },
  {
   "id": "200060014",
   "name": "Assault Module (Lv. 4)",
   "desc": "Integrates an advanced assault tactics database to enhance formation breaking and combat rhythm sensing capabilities.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060014.webp"
  },
  {
   "id": "200060015",
   "name": "Assault Module (Lv. 5)",
   "desc": "Supports versatile frontline breakthrough operations, suitable for high-intensity mission environments.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060015.webp"
  },
  {
   "id": "200060016",
@@ -587,21 +587,21 @@ export const gsaItems = [
   "name": "Sniper Module (Lv. 1)",
   "desc": "Suitable for beginner sniper practice. Activates the basic aim-assist function.",
   "quality": "10",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060021.webp"
  },
  {
   "id": "200060022",
   "name": "Sniper Module (Lv. 2)",
   "desc": "Enhances stability and target-locking capabilities. Contains an intermediate-level sensor component.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060022.webp"
  },
  {
   "id": "200060023",
   "name": "Sniper Module (Lv. 3)",
   "desc": "Precisely adjusts aiming accuracy and firing rhythm to improve long-range combat efficiency and fluency.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060023.webp"
  },
  {
   "id": "200060024",
@@ -636,35 +636,35 @@ export const gsaItems = [
   "name": "Support Module (Lv. 1)",
   "desc": "Suitable for beginner support training, teaches basic assist and recovery skills.",
   "quality": "10",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060031.webp"
  },
  {
   "id": "200060032",
   "name": "Support Module (Lv. 2)",
   "desc": "Enhances stability and continuous recovery efficiency. Contains an intermediate-level restoration module.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060032.webp"
  },
  {
   "id": "200060033",
   "name": "Support Module (Lv. 3)",
   "desc": "Precisely adjusts healing intervals and status reinforcement parameters to improve coordinated support synchronization rates.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060033.webp"
  },
  {
   "id": "200060034",
   "name": "Support Module (Lv. 4)",
   "desc": "Integrates an advanced medical database to enhance tactical signal diffusion and command coordination capabilities.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060034.webp"
  },
  {
   "id": "200060035",
   "name": "Support Module (Lv. 5)",
   "desc": "Supports versatile assistance and enhancement missions in hybrid warfare environments.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060035.webp"
  },
  {
   "id": "200060036",
@@ -685,21 +685,21 @@ export const gsaItems = [
   "name": "Breaker Module (Lv. 1)",
   "desc": "Suitable for beginners to learn basic fire support.",
   "quality": "10",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060041.webp"
  },
  {
   "id": "200060042",
   "name": "Breaker Module (Lv. 2)",
   "desc": "Enhances explosive impact force. Contains an intermediate-level explosive core component.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060042.webp"
  },
  {
   "id": "200060043",
   "name": "Breaker Module (Lv. 3)",
   "desc": "Precisely adjusts critical hit parameters and area control to improve strike efficiency.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200060043.webp"
  },
  {
   "id": "200060044",
@@ -734,49 +734,49 @@ export const gsaItems = [
   "name": "Dream Lipstick",
   "desc": "A limited-edition mini lipstick set by a fashion brand, featuring three beautifully designed, trendy shades. These cute lipsticks make for a delightful and charming little gift. (Affection +50)",
   "quality": "10",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200070001.webp"
  },
  {
   "id": "200070002",
   "name": "Premium Salon Voucher",
   "desc": "A premium voucher for top-tier salon services, including styling, hair and nail services and private make up consultations. (Affection +250)",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200070002.webp"
  },
  {
   "id": "200070003",
   "name": "Curated Skincare Set",
   "desc": "A curated skincare gift set from a cosmetic brand, containing a variety of popular and effective skincare products. Each item is presented in elegant and unique packaging. (Affection +500)",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200070003.webp"
  },
  {
   "id": "200080001",
   "name": "Silver Ore",
   "desc": "Ore required to rank up equipment, obtained from <color=#e88418>Practical Assessment</color> stages.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200080001.webp"
  },
  {
   "id": "200080002",
   "name": "Blue Jade",
   "desc": "Ore required to rank up equipment, obtained from <color=#e88418>Practical Assessment</color> stages.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200080002.webp"
  },
  {
   "id": "200080003",
   "name": "Blaze Core",
   "desc": "Ore required to rank up equipment, obtained from <color=#e88418>Practical Assessment</color> stages.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200080003.webp"
  },
  {
   "id": "200080004",
   "name": "Celestial Iron",
   "desc": "Ore required to rank up equipment, obtained from <color=#e88418>Practical Assessment</color> stages.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200080004.webp"
  },
  {
   "id": "200080005",
@@ -1012,245 +1012,245 @@ export const gsaItems = [
  {
   "id": "200080038",
   "name": "[Random] Fire Type Weapon Blueprint",
-  "desc": "Life is like this book of recipes—you never know what you're going to get.",
+  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080039",
   "name": "[Targeted] Fire Type Weapon Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor—but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080040",
   "name": "[Random] Fire Type Armor Blueprint",
-  "desc": "Life is like this book of recipes—you never know what you're going to get.",
+  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080041",
   "name": "[Targeted] Fire Type Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor—but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080042",
   "name": "[Random] Water Type Weapon Blueprint",
-  "desc": "Life is like this book of recipes—you never know what you're going to get.",
+  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080043",
   "name": "[Targeted] Water Type Weapon Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor—but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080044",
   "name": "[Random] Water Type Armor Blueprint",
-  "desc": "Life is like this book of recipes—you never know what you're going to get.",
+  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080045",
   "name": "[Targeted] Water Type Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor—but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080046",
   "name": "[Random] Wind Type Weapon Blueprint",
-  "desc": "Life is like this book of recipes—you never know what you're going to get.",
+  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080047",
   "name": "[Targeted] Wind Type Weapon Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor—but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080048",
   "name": "[Random] Wind Type Armor Blueprint",
-  "desc": "Life is like this book of recipes—you never know what you're going to get.",
+  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080049",
   "name": "[Targeted] Wind Type Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor—but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080050",
   "name": "[Random] Earth Type Weapon Blueprint",
-  "desc": "Life is like this book of recipes—you never know what you're going to get.",
+  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080051",
   "name": "[Targeted] Earth Type Weapon Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor—but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080052",
   "name": "[Random] Earth Type Armor Blueprint",
-  "desc": "Life is like this book of recipes—you never know what you're going to get.",
+  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080053",
   "name": "[Targeted] Earth Type Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor—but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080054",
   "name": "[Random] Light Type Weapon Blueprint",
-  "desc": "Life is like this book of recipes—you never know what you're going to get.",
+  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080055",
   "name": "[Targeted] Light Type Weapon Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor—but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080056",
   "name": "[Random] Light Type Armor Blueprint",
-  "desc": "Life is like this book of recipes—you never know what you're going to get.",
+  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080057",
   "name": "[Targeted] Light Type Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor—but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080058",
   "name": "[Random] Dark Type Weapon Blueprint",
-  "desc": "Life is like this book of recipes—you never know what you're going to get.",
+  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080059",
   "name": "[Targeted] Dark Type Weapon Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor—but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080060",
   "name": "[Random] Dark Type Armor Blueprint",
-  "desc": "Life is like this book of recipes—you never know what you're going to get.",
+  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080061",
   "name": "[Targeted] Dark Type Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor—but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080062",
   "name": "[Random] Guardian Specialized Armor Blueprint",
-  "desc": "Life is like this book of recipes—you never know what you're going to get.",
+  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080063",
   "name": "[Targeted] Guardian Specialized Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor—but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080064",
   "name": "[Random] Support Specialized Armor Blueprint",
-  "desc": "Life is like this book of recipes—you never know what you're going to get.",
+  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080065",
   "name": "[Targeted] Support Specialized Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor—but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080066",
   "name": "[Random] Sniper Specialized Armor Blueprint",
-  "desc": "Life is like this book of recipes—you never know what you're going to get.",
+  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080067",
   "name": "[Targeted] Sniper Specialized Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor—but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080068",
   "name": "[Random] Bombardier Specialized Armor Blueprint",
-  "desc": "Life is like this book of recipes—you never know what you're going to get.",
+  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080069",
   "name": "[Targeted] Bombardier Specialized Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor—but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080070",
   "name": "[Random] Vanguard Specialized Armor Blueprint",
-  "desc": "Life is like this book of recipes—you never know what you're going to get.",
+  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080071",
   "name": "[Targeted] Vanguard Specialized Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor—but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080072",
   "name": "[Random] Basic Armor Blueprint",
-  "desc": "Life is like this book of recipes—you never know what you're going to get.",
+  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
@@ -1259,21 +1259,21 @@ export const gsaItems = [
   "name": "Combat Style Module (Lv. 1) Random Chest",
   "desc": "Use to randomly receive a Combat Style Module (Lv. 1). Receive 5 per use.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200090001.webp"
  },
  {
   "id": "200090002",
   "name": "Combat Style Module (Lv. 2) Random Chest",
   "desc": "Use to randomly receive a Combat Style Module (Lv. 2). Receive 5 per use.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200090002.webp"
  },
  {
   "id": "200090003",
   "name": "Combat Style Module (Lv. 3) Random Chest",
   "desc": "Use to randomly receive a Combat Style Module (Lv. 3). Receive 5 per use.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200090003.webp"
  },
  {
   "id": "200090004",
@@ -1315,35 +1315,35 @@ export const gsaItems = [
   "name": "Elemental Cluster Random Chest",
   "desc": "Use to randomly receive an Elemental Cluster. Receive 1 per use.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200090009.webp"
  },
  {
   "id": "200090010",
   "name": "Beginner's Common Accessory Random Chest",
   "desc": "Open to randomly receive 1 Common-Grade accessory. Tap to preview contents.",
   "quality": "0",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200090010.webp"
  },
  {
   "id": "200090011",
   "name": "Beginner's Standard-Grade Accessory Random Chest",
   "desc": "Open to randomly receive 1 Standard-Grade Accessory. Tap to preview contents.",
   "quality": "10",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200090011.webp"
  },
  {
   "id": "200090012",
   "name": "Beginner's Tactical Accessory Random Chest",
   "desc": "Open to randomly receive 1 Tactical-Grade Accessory. Tap to preview contents.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200090012.webp"
  },
  {
   "id": "200090013",
   "name": "Beginner's Specialized Accessory Random Chest",
   "desc": "Open to randomly receive 1 Specialized-Grade Accessory. Tap to preview contents.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200090013.webp"
  },
  {
   "id": "200090014",
@@ -1357,7 +1357,7 @@ export const gsaItems = [
   "name": "Elemental Forged Steel Choice Chest",
   "desc": "Use to select and receive an Elemental Forged Steel. Receive 1 per use.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200090015.webp"
  },
  {
   "id": "200090016",
@@ -1483,21 +1483,21 @@ export const gsaItems = [
   "name": "Combat Style Module (Lv. 3) Selection Chest",
   "desc": "Use to select and receive a Combat Style Module (Lv. 3). Receive 5 per use.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200100003.webp"
  },
  {
   "id": "200100004",
   "name": "Combat Style Module (Lv. 4) Selection Chest",
   "desc": "Use to select and receive a Combat Style Module (Lv. 4). Receive 5 per use.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200100004.webp"
  },
  {
   "id": "200100005",
   "name": "Combat Style Module (Lv. 5) Selection Chest",
   "desc": "Use to select and receive a Combat Style Module (Lv. 5). Receive 5 per use.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200100005.webp"
  },
  {
   "id": "200100006",
@@ -1511,56 +1511,56 @@ export const gsaItems = [
   "name": "Combat Style Module (Lv. 7) Selection Chest",
   "desc": "Obtain a chosen Combat Style Module (Lv. 7) Grants 1 item each time.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200100007.webp"
  },
  {
   "id": "200100011",
   "name": "Large Combat Style Module (Lv. 1) Selection Chest",
   "desc": "Use to select and receive a Combat Style Module (Lv. 1). Receive 50 per use.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200100011.webp"
  },
  {
   "id": "200100012",
   "name": "Large Combat Style Module (Lv. 2) Selection Chest",
   "desc": "Use to select and receive a Combat Style Module (Lv. 2). Receive 50 per use.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200100012.webp"
  },
  {
   "id": "200100013",
   "name": "Large Combat Style Module (Lv. 3) Selection Chest",
   "desc": "Use to select and receive a Combat Style Module (Lv. 3). Receive 50 per use.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200100013.webp"
  },
  {
   "id": "200100014",
   "name": "Large Combat Style Module (Lv. 4) Selection Chest",
   "desc": "Use to select and receive a Combat Style Module (Lv. 4). Receive 50 per use.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200100014.webp"
  },
  {
   "id": "200100015",
   "name": "Large Combat Style Module (Lv. 5) Selection Chest",
   "desc": "Use to select and receive a Combat Style Module (Lv. 5). Receive 50 per use.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200100015.webp"
  },
  {
   "id": "200100016",
   "name": "Large Combat Style Module (Lv. 6) Selection Chest",
   "desc": "Use to select and receive a Combat Style Module (Lv. 6). Receive 50 per use.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200100016.webp"
  },
  {
   "id": "200100018",
   "name": "Elemental Cluster Selection Chest",
   "desc": "Use to select and receive an Elemental Cluster. Receive 1 per use.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200100018.webp"
  },
  {
   "id": "200100019",
@@ -1581,14 +1581,14 @@ export const gsaItems = [
   "name": "<color=#9BE1FE>Tactical</color> Physical Armor Choice Resupply Chest",
   "desc": "Choose 1 piece of <color=#9BE1FE>Tactical</color> Physical-type Armor.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200100021.webp"
  },
  {
   "id": "200100022",
   "name": "<color=#9BE1FE>Tactical</color> Energy Armor Choice Resupply Chest",
   "desc": "Choose 1 piece of <color=#9BE1FE>Tactical</color> Energy-type Armor.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200100022.webp"
  },
  {
   "id": "200100023",
@@ -1672,110 +1672,110 @@ export const gsaItems = [
   "name": "Advanced Supply Chest",
   "desc": "Grants various Combat Style Modules (Lv. 2), Combat Training Records (Lv. 1), and Enhancement Components.",
   "quality": "10",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200100034.webp"
  },
  {
   "id": "200100035",
-  "name": "【地獄光明】特化級足部自選補給箱",
-  "desc": "指定選擇1件<color=#F7AFFD>特化</color>級【地獄光明】SSR角色專屬足部。（黑澤 詩音、克蘿伊）",
+  "name": "\u3010\u5730\u7344\u5149\u660e\u3011\u7279\u5316\u7d1a\u8db3\u90e8\u81ea\u9078\u88dc\u7d66\u7bb1",
+  "desc": "\u6307\u5b9a\u9078\u64c71\u4ef6<color=#F7AFFD>\u7279\u5316</color>\u7d1a\u3010\u5730\u7344\u5149\u660e\u3011SSR\u89d2\u8272\u5c08\u5c6c\u8db3\u90e8\u3002\uff08\u9ed1\u6fa4 \u8a69\u97f3\u3001\u514b\u863f\u4f0a\uff09",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200100036",
-  "name": "【地獄光明】特化級手套自選補給箱",
-  "desc": "指定選擇1件<color=#F7AFFD>特化</color>級【地獄光明】SSR角色專屬手套。（黑澤 詩音、克蘿伊）",
+  "name": "\u3010\u5730\u7344\u5149\u660e\u3011\u7279\u5316\u7d1a\u624b\u5957\u81ea\u9078\u88dc\u7d66\u7bb1",
+  "desc": "\u6307\u5b9a\u9078\u64c71\u4ef6<color=#F7AFFD>\u7279\u5316</color>\u7d1a\u3010\u5730\u7344\u5149\u660e\u3011SSR\u89d2\u8272\u5c08\u5c6c\u624b\u5957\u3002\uff08\u9ed1\u6fa4 \u8a69\u97f3\u3001\u514b\u863f\u4f0a\uff09",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200100037",
-  "name": "【地獄光明】特化級武器自選補給箱",
-  "desc": "指定選擇1件<color=#F7AFFD>特化</color>級【地獄光明】SSR角色專屬武器。（黑澤 詩音、克蘿伊）",
+  "name": "\u3010\u5730\u7344\u5149\u660e\u3011\u7279\u5316\u7d1a\u6b66\u5668\u81ea\u9078\u88dc\u7d66\u7bb1",
+  "desc": "\u6307\u5b9a\u9078\u64c71\u4ef6<color=#F7AFFD>\u7279\u5316</color>\u7d1a\u3010\u5730\u7344\u5149\u660e\u3011SSR\u89d2\u8272\u5c08\u5c6c\u6b66\u5668\u3002\uff08\u9ed1\u6fa4 \u8a69\u97f3\u3001\u514b\u863f\u4f0a\uff09",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200100038",
-  "name": "【羅士昂兄弟會】特化級足部自選補給箱",
-  "desc": "指定選擇1件<color=#F7AFFD>特化</color>級【羅士昂兄弟會】SSR角色專屬足部。（愛蜜莉、米蓮娜）",
+  "name": "\u3010\u7f85\u58eb\u6602\u5144\u5f1f\u6703\u3011\u7279\u5316\u7d1a\u8db3\u90e8\u81ea\u9078\u88dc\u7d66\u7bb1",
+  "desc": "\u6307\u5b9a\u9078\u64c71\u4ef6<color=#F7AFFD>\u7279\u5316</color>\u7d1a\u3010\u7f85\u58eb\u6602\u5144\u5f1f\u6703\u3011SSR\u89d2\u8272\u5c08\u5c6c\u8db3\u90e8\u3002\uff08\u611b\u871c\u8389\u3001\u7c73\u84ee\u5a1c\uff09",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200100039",
-  "name": "【羅士昂兄弟會】特化級手套自選補給箱",
-  "desc": "指定選擇1件<color=#F7AFFD>特化</color>級【羅士昂兄弟會】SSR角色專屬手套。（愛蜜莉、米蓮娜）",
+  "name": "\u3010\u7f85\u58eb\u6602\u5144\u5f1f\u6703\u3011\u7279\u5316\u7d1a\u624b\u5957\u81ea\u9078\u88dc\u7d66\u7bb1",
+  "desc": "\u6307\u5b9a\u9078\u64c71\u4ef6<color=#F7AFFD>\u7279\u5316</color>\u7d1a\u3010\u7f85\u58eb\u6602\u5144\u5f1f\u6703\u3011SSR\u89d2\u8272\u5c08\u5c6c\u624b\u5957\u3002\uff08\u611b\u871c\u8389\u3001\u7c73\u84ee\u5a1c\uff09",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200100040",
-  "name": "【羅士昂兄弟會】特化級武器自選補給箱",
-  "desc": "指定選擇1件<color=#F7AFFD>特化</color>級【羅士昂兄弟會】SSR角色專屬武器。（愛蜜莉、米蓮娜）",
+  "name": "\u3010\u7f85\u58eb\u6602\u5144\u5f1f\u6703\u3011\u7279\u5316\u7d1a\u6b66\u5668\u81ea\u9078\u88dc\u7d66\u7bb1",
+  "desc": "\u6307\u5b9a\u9078\u64c71\u4ef6<color=#F7AFFD>\u7279\u5316</color>\u7d1a\u3010\u7f85\u58eb\u6602\u5144\u5f1f\u6703\u3011SSR\u89d2\u8272\u5c08\u5c6c\u6b66\u5668\u3002\uff08\u611b\u871c\u8389\u3001\u7c73\u84ee\u5a1c\uff09",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200100041",
-  "name": "【月華組】特化級足部自選補給箱",
-  "desc": "指定選擇1件<color=#F7AFFD>特化</color>級【月華組】SSR角色專屬足部。（荻野 瑠衣、杉本 有菜）",
+  "name": "\u3010\u6708\u83ef\u7d44\u3011\u7279\u5316\u7d1a\u8db3\u90e8\u81ea\u9078\u88dc\u7d66\u7bb1",
+  "desc": "\u6307\u5b9a\u9078\u64c71\u4ef6<color=#F7AFFD>\u7279\u5316</color>\u7d1a\u3010\u6708\u83ef\u7d44\u3011SSR\u89d2\u8272\u5c08\u5c6c\u8db3\u90e8\u3002\uff08\u837b\u91ce \u7460\u8863\u3001\u6749\u672c \u6709\u83dc\uff09",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200100042",
-  "name": "【月華組】特化級手套自選補給箱",
-  "desc": "指定選擇1件<color=#F7AFFD>特化</color>級【月華組】SSR角色專屬手套。（荻野 瑠衣、杉本 有菜）",
+  "name": "\u3010\u6708\u83ef\u7d44\u3011\u7279\u5316\u7d1a\u624b\u5957\u81ea\u9078\u88dc\u7d66\u7bb1",
+  "desc": "\u6307\u5b9a\u9078\u64c71\u4ef6<color=#F7AFFD>\u7279\u5316</color>\u7d1a\u3010\u6708\u83ef\u7d44\u3011SSR\u89d2\u8272\u5c08\u5c6c\u624b\u5957\u3002\uff08\u837b\u91ce \u7460\u8863\u3001\u6749\u672c \u6709\u83dc\uff09",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200100043",
-  "name": "【月華組】特化級武器自選補給箱",
-  "desc": "指定選擇1件<color=#F7AFFD>特化</color>級【月華組】SSR角色專屬武器。（荻野 瑠衣、杉本 有菜）",
+  "name": "\u3010\u6708\u83ef\u7d44\u3011\u7279\u5316\u7d1a\u6b66\u5668\u81ea\u9078\u88dc\u7d66\u7bb1",
+  "desc": "\u6307\u5b9a\u9078\u64c71\u4ef6<color=#F7AFFD>\u7279\u5316</color>\u7d1a\u3010\u6708\u83ef\u7d44\u3011SSR\u89d2\u8272\u5c08\u5c6c\u6b66\u5668\u3002\uff08\u837b\u91ce \u7460\u8863\u3001\u6749\u672c \u6709\u83dc\uff09",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200100044",
-  "name": "【青龍幫】特化級足部自選補給箱",
-  "desc": "指定選擇1件<color=#F7AFFD>特化</color>級【青龍幫】SSR角色專屬足部。（若蘭、李沐）",
+  "name": "\u3010\u9752\u9f8d\u5e6b\u3011\u7279\u5316\u7d1a\u8db3\u90e8\u81ea\u9078\u88dc\u7d66\u7bb1",
+  "desc": "\u6307\u5b9a\u9078\u64c71\u4ef6<color=#F7AFFD>\u7279\u5316</color>\u7d1a\u3010\u9752\u9f8d\u5e6b\u3011SSR\u89d2\u8272\u5c08\u5c6c\u8db3\u90e8\u3002\uff08\u82e5\u862d\u3001\u674e\u6c90\uff09",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200100045",
-  "name": "【青龍幫】特化級手套自選補給箱",
-  "desc": "指定選擇1件<color=#F7AFFD>特化</color>級【青龍幫】SSR角色專屬手套。（若蘭、李沐）",
+  "name": "\u3010\u9752\u9f8d\u5e6b\u3011\u7279\u5316\u7d1a\u624b\u5957\u81ea\u9078\u88dc\u7d66\u7bb1",
+  "desc": "\u6307\u5b9a\u9078\u64c71\u4ef6<color=#F7AFFD>\u7279\u5316</color>\u7d1a\u3010\u9752\u9f8d\u5e6b\u3011SSR\u89d2\u8272\u5c08\u5c6c\u624b\u5957\u3002\uff08\u82e5\u862d\u3001\u674e\u6c90\uff09",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200100046",
-  "name": "【青龍幫】特化級武器自選補給箱",
-  "desc": "指定選擇1件<color=#F7AFFD>特化</color>級【青龍幫】SSR角色專屬武器。（若蘭、李沐）",
+  "name": "\u3010\u9752\u9f8d\u5e6b\u3011\u7279\u5316\u7d1a\u6b66\u5668\u81ea\u9078\u88dc\u7d66\u7bb1",
+  "desc": "\u6307\u5b9a\u9078\u64c71\u4ef6<color=#F7AFFD>\u7279\u5316</color>\u7d1a\u3010\u9752\u9f8d\u5e6b\u3011SSR\u89d2\u8272\u5c08\u5c6c\u6b66\u5668\u3002\uff08\u82e5\u862d\u3001\u674e\u6c90\uff09",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200100047",
-  "name": "【卡迪久家族】特化級足部自選補給箱",
-  "desc": "指定選擇1件<color=#F7AFFD>特化</color>級【卡迪久家族】SSR角色專屬足部。（莉茲、安娜貝爾）",
+  "name": "\u3010\u5361\u8fea\u4e45\u5bb6\u65cf\u3011\u7279\u5316\u7d1a\u8db3\u90e8\u81ea\u9078\u88dc\u7d66\u7bb1",
+  "desc": "\u6307\u5b9a\u9078\u64c71\u4ef6<color=#F7AFFD>\u7279\u5316</color>\u7d1a\u3010\u5361\u8fea\u4e45\u5bb6\u65cf\u3011SSR\u89d2\u8272\u5c08\u5c6c\u8db3\u90e8\u3002\uff08\u8389\u8332\u3001\u5b89\u5a1c\u8c9d\u723e\uff09",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200100048",
-  "name": "【卡迪久家族】特化級手套自選補給箱",
-  "desc": "指定選擇1件<color=#F7AFFD>特化</color>級【卡迪久家族】SSR角色專屬手套。（莉茲、安娜貝爾）",
+  "name": "\u3010\u5361\u8fea\u4e45\u5bb6\u65cf\u3011\u7279\u5316\u7d1a\u624b\u5957\u81ea\u9078\u88dc\u7d66\u7bb1",
+  "desc": "\u6307\u5b9a\u9078\u64c71\u4ef6<color=#F7AFFD>\u7279\u5316</color>\u7d1a\u3010\u5361\u8fea\u4e45\u5bb6\u65cf\u3011SSR\u89d2\u8272\u5c08\u5c6c\u624b\u5957\u3002\uff08\u8389\u8332\u3001\u5b89\u5a1c\u8c9d\u723e\uff09",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200100049",
-  "name": "【卡迪久家族】特化級武器自選補給箱",
-  "desc": "指定選擇1件<color=#F7AFFD>特化</color>級【卡迪久家族】SSR角色專屬武器。（莉茲、安娜貝爾）",
+  "name": "\u3010\u5361\u8fea\u4e45\u5bb6\u65cf\u3011\u7279\u5316\u7d1a\u6b66\u5668\u81ea\u9078\u88dc\u7d66\u7bb1",
+  "desc": "\u6307\u5b9a\u9078\u64c71\u4ef6<color=#F7AFFD>\u7279\u5316</color>\u7d1a\u3010\u5361\u8fea\u4e45\u5bb6\u65cf\u3011SSR\u89d2\u8272\u5c08\u5c6c\u6b66\u5668\u3002\uff08\u8389\u8332\u3001\u5b89\u5a1c\u8c9d\u723e\uff09",
   "quality": "50",
   "icon": null
  },
@@ -1868,273 +1868,273 @@ export const gsaItems = [
   "name": "Belle Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SR Belle</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110041",
   "name": "Adele Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SR Adele</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110042",
   "name": "Theodore Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SR Theodore</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110043",
   "name": "Ruo Lan Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Ruo Lan</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110044",
   "name": "Amber Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Amber</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110045",
   "name": "Kurosawa Shion Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Kurosawa Shion</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110046",
   "name": "Chloe Promotion Certification",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Chloe</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110047",
   "name": "Charlotte Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Charlotte</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110048",
   "name": "Rachel Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Rachel</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110049",
   "name": "Milena Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Milena</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110050",
   "name": "Amelie Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Amelie</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110051",
   "name": "Annabelle Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Annabelle</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110052",
   "name": "Fujiwara Shiyoi Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up<color=#e88418>SSR Fujiwara Shiyoi</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110053",
   "name": "Sugimoto Arina Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Sugimoto Arina</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110054",
   "name": "Ogino Rui Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Ogino Rui</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110055",
   "name": "Lin Lin Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Lin Lin</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110056",
   "name": "Ruby Promotion Certification",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Ruby</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110057",
   "name": "Liz Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Liz</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110058",
   "name": "Li Mu Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Li Mu</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110059",
   "name": "Bernardo Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Bernardo</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110060",
   "name": "Danxin Promotion Certification",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Danxin</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110061",
   "name": "Ojima Erina Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Ojima Erina</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110062",
   "name": "Shiraishi Ai Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Shiraishi Ai</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110063",
   "name": "Andou Kana Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Andou Kana</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110064",
   "name": "Komachi Sayaka Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Komachi Sayaka</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110065",
   "name": "Hijikata Chizuru Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Hijikata Chizuru</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110066",
   "name": "Fujiwara Arisa Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up<color=#e88418>SSR Fujiwara Arisa</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110067",
   "name": "Qingyin Promotion Certification",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Qingyin</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110068",
   "name": "Leng Zhen Promotion Certification",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Leng Zhen</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110069",
   "name": "Banxia Promotion Certification",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Banxia</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110070",
   "name": "Elena Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Elena</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110071",
   "name": "Victoria Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Victoria</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110072",
   "name": "Alyna Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Alyna</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110073",
   "name": "Connie Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Connie</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110074",
   "name": "Jessica Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Jessica</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110075",
   "name": "Komachi Yuu Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Komachi Yuu</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110078",
   "name": "Awana Promotion Certification",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Awana</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110082",
   "name": "Rookie Maid - Sugimoto Arina Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Rookie Maid - Sugimoto Arina</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200110107",
   "name": "Clumsy Cowgirl - Belle Promotion Certificate",
   "desc": "A promotion certificate issued by senior authorities, awarded only to members who have demonstrated outstanding performance. It serves as official verification that the holder is authorized to advance to a higher rank. Can be used to rank up <color=#e88418>SSR Clumsy Cowgirl - Belle</color>.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200110001.webp"
  },
  {
   "id": "200120001",
@@ -2568,7 +2568,7 @@ export const gsaItems = [
   "name": "Advanced Certificate",
   "desc": "Obtained by performing the [Advanced Summon].",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200130011.webp"
  },
  {
   "id": "200130012",
@@ -2740,8 +2740,8 @@ export const gsaItems = [
  },
  {
   "id": "200130048",
-  "name": "【200萬下載】紀念憑證",
-  "desc": "進行【200萬下載紀念期間召募】取得。",
+  "name": "\u3010200\u842c\u4e0b\u8f09\u3011\u7d00\u5ff5\u6191\u8b49",
+  "desc": "\u9032\u884c\u3010200\u842c\u4e0b\u8f09\u7d00\u5ff5\u671f\u9593\u53ec\u52df\u3011\u53d6\u5f97\u3002",
   "quality": "50",
   "icon": null
  },
@@ -2834,14 +2834,14 @@ export const gsaItems = [
   "name": "Ruo Lan Summon Letter",
   "desc": "Use to summon the SSR character: Ruo Lan.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200150043.webp"
  },
  {
   "id": "200150044",
   "name": "Amber Summon Letter",
   "desc": "Use to summon the SSR character: Amber.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200150044.webp"
  },
  {
   "id": "200150045",
@@ -2869,21 +2869,21 @@ export const gsaItems = [
   "name": "Rachel Summon Letter",
   "desc": "Use to summon the SSR character: Rachel.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200150048.webp"
  },
  {
   "id": "200150049",
   "name": "Milena Summon Letter",
   "desc": "Use to summon the SSR character: Milena.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200150049.webp"
  },
  {
   "id": "200150050",
   "name": "Amelie Summon Letter",
   "desc": "Use to summon the SSR character: Amelie.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200150050.webp"
  },
  {
   "id": "200150051",
@@ -2904,21 +2904,21 @@ export const gsaItems = [
   "name": "Sugimoto Arina Summon Letter",
   "desc": "Use to summon the SSR character: Sugimoto Arina.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200150053.webp"
  },
  {
   "id": "200150054",
   "name": "Ogino Rui Summon Letter",
   "desc": "Use to summon the SSR character: Ogino Rui.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200150054.webp"
  },
  {
   "id": "200150055",
   "name": "Lin Lin Summon Letter",
   "desc": "Use to summon the SSR character: Lin Lin.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200150055.webp"
  },
  {
   "id": "200150056",
@@ -2932,14 +2932,14 @@ export const gsaItems = [
   "name": "Liz Summon Letter",
   "desc": "Use to summon the SSR character: Liz.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200150057.webp"
  },
  {
   "id": "200150058",
   "name": "Li Mu Summon Letter",
   "desc": "Use to summon the SSR character: Li Mu.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200150058.webp"
  },
  {
   "id": "200150059",
@@ -3090,29 +3090,29 @@ export const gsaItems = [
  },
  {
   "id": "200150108",
-  "name": "X(不翻)節慶_泳裝1召募信",
-  "desc": "X(不翻)使用後可召募SSR角色：『節慶_泳裝1』。",
+  "name": "X(\u4e0d\u7ffb)\u7bc0\u6176_\u6cf3\u88dd1\u53ec\u52df\u4fe1",
+  "desc": "X(\u4e0d\u7ffb)\u4f7f\u7528\u5f8c\u53ef\u53ec\u52dfSSR\u89d2\u8272\uff1a\u300e\u7bc0\u6176_\u6cf3\u88dd1\u300f\u3002",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200150109",
-  "name": "X(不翻)節慶_泳裝2召募信",
-  "desc": "X(不翻)使用後可召募SSR角色：『節慶_泳裝2』。",
+  "name": "X(\u4e0d\u7ffb)\u7bc0\u6176_\u6cf3\u88dd2\u53ec\u52df\u4fe1",
+  "desc": "X(\u4e0d\u7ffb)\u4f7f\u7528\u5f8c\u53ef\u53ec\u52dfSSR\u89d2\u8272\uff1a\u300e\u7bc0\u6176_\u6cf3\u88dd2\u300f\u3002",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200150110",
-  "name": "X(不翻)節慶_中秋召募信",
-  "desc": "X(不翻)使用後可召募SSR角色：『節慶_中秋』。",
+  "name": "X(\u4e0d\u7ffb)\u7bc0\u6176_\u4e2d\u79cb\u53ec\u52df\u4fe1",
+  "desc": "X(\u4e0d\u7ffb)\u4f7f\u7528\u5f8c\u53ef\u53ec\u52dfSSR\u89d2\u8272\uff1a\u300e\u7bc0\u6176_\u4e2d\u79cb\u300f\u3002",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200150111",
-  "name": "X(不翻)節慶_聖誕召募信",
-  "desc": "X(不翻)使用後可召募SSR角色：『節慶_聖誕』。",
+  "name": "X(\u4e0d\u7ffb)\u7bc0\u6176_\u8056\u8a95\u53ec\u52df\u4fe1",
+  "desc": "X(\u4e0d\u7ffb)\u4f7f\u7528\u5f8c\u53ef\u53ec\u52dfSSR\u89d2\u8272\uff1a\u300e\u7bc0\u6176_\u8056\u8a95\u300f\u3002",
   "quality": "70",
   "icon": null
  },
@@ -3198,7 +3198,7 @@ export const gsaItems = [
   "name": "[SSR Choice] Summon Letter",
   "desc": "Summon one selected SR character. (Standard Summon Characters: Ruo Lan, Kurosawa Shion, Chloe, Charlotte, Milena, Amelie, Annabelle, Sugimoto Arina, Ogino Rui, Lin Lin, Liz, Li Mu)",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200160012.webp"
  },
  {
   "id": "200160013",
@@ -3212,7 +3212,7 @@ export const gsaItems = [
   "name": "[SR Choice] Summon Letter",
   "desc": "Summon one selected SR character. (Standard Summon Characters: Aira, Denice, Vera, Mudia, Yulia, Lin Lan, Takajou Ranka, Katya, Thalia)",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200160014.webp"
  },
  {
   "id": "200160015",
@@ -3300,71 +3300,71 @@ export const gsaItems = [
  },
  {
   "id": "200160027",
-  "name": "【地獄光明】隨機召募信",
-  "desc": "組織召募信，使用後可隨機召募一名【地獄光明】SSR角色：『黑澤 詩音』或『克蘿伊』。",
+  "name": "\u3010\u5730\u7344\u5149\u660e\u3011\u96a8\u6a5f\u53ec\u52df\u4fe1",
+  "desc": "\u7d44\u7e54\u53ec\u52df\u4fe1\uff0c\u4f7f\u7528\u5f8c\u53ef\u96a8\u6a5f\u53ec\u52df\u4e00\u540d\u3010\u5730\u7344\u5149\u660e\u3011SSR\u89d2\u8272\uff1a\u300e\u9ed1\u6fa4 \u8a69\u97f3\u300f\u6216\u300e\u514b\u863f\u4f0a\u300f\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200160028",
-  "name": "【羅士昂兄弟會】隨機召募信",
-  "desc": "組織召募信，使用後可隨機召募一名【羅士昂兄弟會】SSR角色：『愛蜜莉』或『米蓮娜』。",
+  "name": "\u3010\u7f85\u58eb\u6602\u5144\u5f1f\u6703\u3011\u96a8\u6a5f\u53ec\u52df\u4fe1",
+  "desc": "\u7d44\u7e54\u53ec\u52df\u4fe1\uff0c\u4f7f\u7528\u5f8c\u53ef\u96a8\u6a5f\u53ec\u52df\u4e00\u540d\u3010\u7f85\u58eb\u6602\u5144\u5f1f\u6703\u3011SSR\u89d2\u8272\uff1a\u300e\u611b\u871c\u8389\u300f\u6216\u300e\u7c73\u84ee\u5a1c\u300f\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200160029",
-  "name": "【月華組】隨機召募信",
-  "desc": "組織召募信，使用後可隨機召募一名【月華組】SSR角色：『荻野 瑠衣』或『杉本 有菜』。",
+  "name": "\u3010\u6708\u83ef\u7d44\u3011\u96a8\u6a5f\u53ec\u52df\u4fe1",
+  "desc": "\u7d44\u7e54\u53ec\u52df\u4fe1\uff0c\u4f7f\u7528\u5f8c\u53ef\u96a8\u6a5f\u53ec\u52df\u4e00\u540d\u3010\u6708\u83ef\u7d44\u3011SSR\u89d2\u8272\uff1a\u300e\u837b\u91ce \u7460\u8863\u300f\u6216\u300e\u6749\u672c \u6709\u83dc\u300f\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200160030",
-  "name": "【青龍幫】隨機召募信",
-  "desc": "組織召募信，使用後可隨機召募一名【青龍幫】SSR角色：『若蘭』或『李沐』。",
+  "name": "\u3010\u9752\u9f8d\u5e6b\u3011\u96a8\u6a5f\u53ec\u52df\u4fe1",
+  "desc": "\u7d44\u7e54\u53ec\u52df\u4fe1\uff0c\u4f7f\u7528\u5f8c\u53ef\u96a8\u6a5f\u53ec\u52df\u4e00\u540d\u3010\u9752\u9f8d\u5e6b\u3011SSR\u89d2\u8272\uff1a\u300e\u82e5\u862d\u300f\u6216\u300e\u674e\u6c90\u300f\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200160031",
-  "name": "【卡迪久家族】隨機召募信",
-  "desc": "組織召募信，使用後可隨機召募一名【卡迪久家族】SSR角色：『莉茲』或『安娜貝爾』。",
+  "name": "\u3010\u5361\u8fea\u4e45\u5bb6\u65cf\u3011\u96a8\u6a5f\u53ec\u52df\u4fe1",
+  "desc": "\u7d44\u7e54\u53ec\u52df\u4fe1\uff0c\u4f7f\u7528\u5f8c\u53ef\u96a8\u6a5f\u53ec\u52df\u4e00\u540d\u3010\u5361\u8fea\u4e45\u5bb6\u65cf\u3011SSR\u89d2\u8272\uff1a\u300e\u8389\u8332\u300f\u6216\u300e\u5b89\u5a1c\u8c9d\u723e\u300f\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200160032",
-  "name": "【地獄光明】指定召募信",
-  "desc": "組織召募信，使用後可指定召募一名【地獄光明】SSR角色：『黑澤 詩音』或『克蘿伊』。",
+  "name": "\u3010\u5730\u7344\u5149\u660e\u3011\u6307\u5b9a\u53ec\u52df\u4fe1",
+  "desc": "\u7d44\u7e54\u53ec\u52df\u4fe1\uff0c\u4f7f\u7528\u5f8c\u53ef\u6307\u5b9a\u53ec\u52df\u4e00\u540d\u3010\u5730\u7344\u5149\u660e\u3011SSR\u89d2\u8272\uff1a\u300e\u9ed1\u6fa4 \u8a69\u97f3\u300f\u6216\u300e\u514b\u863f\u4f0a\u300f\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200160033",
-  "name": "【羅士昂兄弟會】指定召募信",
-  "desc": "組織召募信，使用後可指定召募一名【羅士昂兄弟會】SSR角色：『愛蜜莉』或『米蓮娜』。",
+  "name": "\u3010\u7f85\u58eb\u6602\u5144\u5f1f\u6703\u3011\u6307\u5b9a\u53ec\u52df\u4fe1",
+  "desc": "\u7d44\u7e54\u53ec\u52df\u4fe1\uff0c\u4f7f\u7528\u5f8c\u53ef\u6307\u5b9a\u53ec\u52df\u4e00\u540d\u3010\u7f85\u58eb\u6602\u5144\u5f1f\u6703\u3011SSR\u89d2\u8272\uff1a\u300e\u611b\u871c\u8389\u300f\u6216\u300e\u7c73\u84ee\u5a1c\u300f\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200160034",
-  "name": "【月華組】指定召募信",
-  "desc": "組織召募信，使用後可指定召募一名【月華組】SSR角色：『荻野 瑠衣』或『杉本 有菜』。",
+  "name": "\u3010\u6708\u83ef\u7d44\u3011\u6307\u5b9a\u53ec\u52df\u4fe1",
+  "desc": "\u7d44\u7e54\u53ec\u52df\u4fe1\uff0c\u4f7f\u7528\u5f8c\u53ef\u6307\u5b9a\u53ec\u52df\u4e00\u540d\u3010\u6708\u83ef\u7d44\u3011SSR\u89d2\u8272\uff1a\u300e\u837b\u91ce \u7460\u8863\u300f\u6216\u300e\u6749\u672c \u6709\u83dc\u300f\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200160035",
-  "name": "【青龍幫】指定召募信",
-  "desc": "組織召募信，使用後可指定召募一名【青龍幫】SSR角色：『若蘭』或『李沐』。",
+  "name": "\u3010\u9752\u9f8d\u5e6b\u3011\u6307\u5b9a\u53ec\u52df\u4fe1",
+  "desc": "\u7d44\u7e54\u53ec\u52df\u4fe1\uff0c\u4f7f\u7528\u5f8c\u53ef\u6307\u5b9a\u53ec\u52df\u4e00\u540d\u3010\u9752\u9f8d\u5e6b\u3011SSR\u89d2\u8272\uff1a\u300e\u82e5\u862d\u300f\u6216\u300e\u674e\u6c90\u300f\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200160036",
-  "name": "【卡迪久家族】指定召募信",
-  "desc": "組織召募信，使用後可指定召募一名【卡迪久家族】SSR角色：『莉茲』或『安娜貝爾』。",
+  "name": "\u3010\u5361\u8fea\u4e45\u5bb6\u65cf\u3011\u6307\u5b9a\u53ec\u52df\u4fe1",
+  "desc": "\u7d44\u7e54\u53ec\u52df\u4fe1\uff0c\u4f7f\u7528\u5f8c\u53ef\u6307\u5b9a\u53ec\u52df\u4e00\u540d\u3010\u5361\u8fea\u4e45\u5bb6\u65cf\u3011SSR\u89d2\u8272\uff1a\u300e\u8389\u8332\u300f\u6216\u300e\u5b89\u5a1c\u8c9d\u723e\u300f\u3002",
   "quality": "50",
   "icon": null
  },
@@ -3373,14 +3373,14 @@ export const gsaItems = [
   "name": "Sweet Motion Gloves Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr040_glove.webp"
  },
  {
   "id": "200170405",
   "name": "PP-9C Self-Defense Pistol Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr040_wp.webp"
  },
  {
   "id": "200170406",
@@ -3394,84 +3394,84 @@ export const gsaItems = [
   "name": "Urban Walker Gloves Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr041_glove.webp"
  },
  {
   "id": "200170415",
   "name": "Hanzo Blade: Violet Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr041_wp.webp"
  },
  {
   "id": "200170416",
   "name": "Urban Walker Leather Boots Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr041_shoe.webp"
  },
  {
   "id": "200170424",
   "name": "Tactical Gloves: Shadow Wolf Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr042_glove.webp"
  },
  {
   "id": "200170425",
   "name": "CQC Gunblade Set Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr042_wp.webp"
  },
  {
   "id": "200170426",
   "name": "Assault Boots: Shadow Wolf Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr042_shoe.webp"
  },
  {
   "id": "200170434",
   "name": "Actuarial Profit Gloves Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr043_glove.webp"
  },
  {
   "id": "200170435",
   "name": "CFQ-76K Submachine Gun Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr043_wp.webp"
  },
  {
   "id": "200170436",
   "name": "Obsidian Curve Heels Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr043_shoe.webp"
  },
  {
   "id": "200170444",
   "name": "Prestige Dealer Gloves Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr042_glove.webp"
  },
  {
   "id": "200170445",
   "name": "Royal Prestige Poker Card Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr042_wp.webp"
  },
  {
   "id": "200170446",
   "name": "Brilliant Charm High Heels Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr042_shoe.webp"
  },
  {
   "id": "200170454",
@@ -3937,21 +3937,21 @@ export const gsaItems = [
  },
  {
   "id": "200170674",
-  "name": "翠雨金鐲的零件",
+  "name": "\u7fe0\u96e8\u91d1\u9432\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
  },
  {
   "id": "200170675",
-  "name": "鳴風玉笛的零件",
+  "name": "\u9cf4\u98a8\u7389\u7b1b\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
  },
  {
   "id": "200170676",
-  "name": "清風高跟的零件",
+  "name": "\u6e05\u98a8\u9ad8\u8ddf\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
@@ -3965,7 +3965,7 @@ export const gsaItems = [
  },
  {
   "id": "200170685",
-  "name": "MW9-Λ Support System Component",
+  "name": "MW9-\u039b Support System Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
@@ -3979,84 +3979,84 @@ export const gsaItems = [
  },
  {
   "id": "200170694",
-  "name": "定心環的零件",
+  "name": "\u5b9a\u5fc3\u74b0\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
  },
  {
   "id": "200170695",
-  "name": "藏藥匣的零件",
+  "name": "\u85cf\u85e5\u5323\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
  },
  {
   "id": "200170696",
-  "name": "靜影履的零件",
+  "name": "\u975c\u5f71\u5c65\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
  },
  {
   "id": "200170704",
-  "name": "紋身貼紙的零件",
+  "name": "\u7d0b\u8eab\u8cbc\u7d19\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
  },
  {
   "id": "200170705",
-  "name": "父親的舊手槍的零件",
+  "name": "\u7236\u89aa\u7684\u820a\u624b\u69cd\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
  },
  {
   "id": "200170706",
-  "name": "高級訂製女鞋的零件",
+  "name": "\u9ad8\u7d1a\u8a02\u88fd\u5973\u978b\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
  },
  {
   "id": "200170714",
-  "name": "黑色指甲油的零件",
+  "name": "\u9ed1\u8272\u6307\u7532\u6cb9\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
  },
  {
   "id": "200170715",
-  "name": "祭血之誓的零件",
+  "name": "\u796d\u8840\u4e4b\u8a93\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
  },
  {
   "id": "200170716",
-  "name": "設計師訂製款高跟鞋的零件",
+  "name": "\u8a2d\u8a08\u5e2b\u8a02\u88fd\u6b3e\u9ad8\u8ddf\u978b\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
  },
  {
   "id": "200170724",
-  "name": "有痣之士的零件",
+  "name": "\u6709\u75e3\u4e4b\u58eb\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
  },
  {
   "id": "200170725",
-  "name": "淑女之心的零件",
+  "name": "\u6dd1\u5973\u4e4b\u5fc3\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
  },
  {
   "id": "200170726",
-  "name": "漆皮高跟鞋的零件",
+  "name": "\u6f06\u76ae\u9ad8\u8ddf\u978b\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
@@ -4105,21 +4105,21 @@ export const gsaItems = [
  },
  {
   "id": "200170754",
-  "name": "X(不翻)-1的零件",
+  "name": "X(\u4e0d\u7ffb)-1\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
  },
  {
   "id": "200170755",
-  "name": "X(不翻)-1的零件",
+  "name": "X(\u4e0d\u7ffb)-1\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
  },
  {
   "id": "200170756",
-  "name": "X(不翻)-1的零件",
+  "name": "X(\u4e0d\u7ffb)-1\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
@@ -4514,21 +4514,21 @@ export const gsaItems = [
   "name": "Monthly Romantica",
   "desc": "Monthly Romantica, a fiction-focused literary journal cherished by young women, serves as a sanctuary for the dreams of countless girls. For Belle, it is also the outlet for her own sweet fantasies. (Belle's Affection +1000)",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200200040.webp"
  },
  {
   "id": "200200041",
   "name": "Merino Scarf",
-  "desc": "Finely woven from the highest quality merino wool. The understated color and exquisite craftsmanship make it both lightweight and warm—perfect for missions or everyday wear. (Adele's Affection +1000)",
+  "desc": "Finely woven from the highest quality merino wool. The understated color and exquisite craftsmanship make it both lightweight and warm\u2014perfect for missions or everyday wear. (Adele's Affection +1000)",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200200041.webp"
  },
  {
   "id": "200200042",
   "name": "Scented Candle",
   "desc": "Compact and easy to carry, available in a variety of natural scents. Perfect for meditation and relaxation. It comes with a delicate lid or carrying pouch. (Theodore's Affection +1000)",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200200042.webp"
  },
  {
   "id": "200200043",
@@ -4563,7 +4563,7 @@ export const gsaItems = [
   "name": "NeoBra Enhanced Pastie Set",
   "desc": "Specialized invisible lingerie featuring a skin-conforming gel interior. Engineered for an instant cup-size boost, it sculpts a natural silhouette with a seamless, wire-free design. (Charlotte's Affection +1000)",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200200047.webp"
  },
  {
   "id": "200200048",
@@ -4584,7 +4584,7 @@ export const gsaItems = [
   "name": "Luxury Brand Clutch Bag",
   "desc": "A piece with a bold, unmistakable logo and avant-garde design that prioritizes style over function. Amelie will approve of your taste if you give this to her. (Amelie's Affection +1000)",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200200050.webp"
  },
  {
   "id": "200200051",
@@ -4619,7 +4619,7 @@ export const gsaItems = [
   "name": "Imported Loquat Syrup",
   "desc": "A loquat syrup made from natural medicinal formulas, effective in protecting and restoring the voice. Exclusively produced in a small Eastern nation, it utilizes the traits of \"Sonic-Type Espers\" to strengthen the vocal cords and improve breath control efficiency. It is distributed worldwide. (Ruby's Affection +1000)",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200200056.webp"
  },
  {
   "id": "200200057",
@@ -4645,7 +4645,7 @@ export const gsaItems = [
  {
   "id": "200200060",
   "name": "Spicy Snacks",
-  "desc": "A premium spicy crispy snack, with every bite hot enough to work up a sweat. It’s especially satisfying after boxing practice' the heat hits your stomach and instantly wakes you up. (Danxin's Affection +1000)",
+  "desc": "A premium spicy crispy snack, with every bite hot enough to work up a sweat. It\u2019s especially satisfying after boxing practice' the heat hits your stomach and instantly wakes you up. (Danxin's Affection +1000)",
   "quality": "30",
   "icon": null
  },
@@ -4654,7 +4654,7 @@ export const gsaItems = [
   "name": "Toffee Cake",
   "desc": "Soft cake drenched in smooth toffee sauce and finished with a sprinkle of toasted almonds. The savory-sweet notes and nutty fragrance offer a gentle comfort with every mouthful. It's a dreamlike confection that melts away even the darkest moods. (Ojima Erina's Affection +1000)",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200200061.webp"
  },
  {
   "id": "200200062",
@@ -4701,7 +4701,7 @@ export const gsaItems = [
  {
   "id": "200200068",
   "name": "Cute Shaped Gummies",
-  "desc": "Colorful, sparkling gummies bursting with sweet fruit flavors. She may not understand complicated things just yet, but this little treat is enough to win her over. Offer her one, and she’ll happily listen to you. (Leng Zhen's Affection +1000)",
+  "desc": "Colorful, sparkling gummies bursting with sweet fruit flavors. She may not understand complicated things just yet, but this little treat is enough to win her over. Offer her one, and she\u2019ll happily listen to you. (Leng Zhen's Affection +1000)",
   "quality": "30",
   "icon": null
  },
@@ -4749,8 +4749,8 @@ export const gsaItems = [
  },
  {
   "id": "200200075",
-  "name": "X(不翻)角色好感度075小町憂",
-  "desc": "X(不翻)（小町 憂好感度+1000）",
+  "name": "X(\u4e0d\u7ffb)\u89d2\u8272\u597d\u611f\u5ea6075\u5c0f\u753a\u6182",
+  "desc": "X(\u4e0d\u7ffb)\uff08\u5c0f\u753a \u6182\u597d\u611f\u5ea6+1000\uff09",
   "quality": "30",
   "icon": null
  },
@@ -4764,7 +4764,7 @@ export const gsaItems = [
  {
   "id": "200200078",
   "name": "Strawberry Shortcake",
-  "desc": "A round strawberry cake piled high with fresh cream, topped with plump, juicy strawberries and filled with a layer of fruit jam inside. With the perfect sweetness and a rich aroma, it’s the shop’s signature dessert that often sells out early. (Awana's Affection +1000)",
+  "desc": "A round strawberry cake piled high with fresh cream, topped with plump, juicy strawberries and filled with a layer of fruit jam inside. With the perfect sweetness and a rich aroma, it\u2019s the shop\u2019s signature dessert that often sells out early. (Awana's Affection +1000)",
   "quality": "30",
   "icon": null
  },
@@ -4785,287 +4785,287 @@ export const gsaItems = [
  {
   "id": "200210040",
   "name": "[Chat Portrait] Belle",
-  "desc": "Obtained by owning 5★ [Spacey Sweetheart - Belle].",
+  "desc": "Obtained by owning 5\u2605 [Spacey Sweetheart - Belle].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210041",
   "name": "[Chat Portrait] Adele",
-  "desc": "Obtained by owning 5★ [Shadow Dagger - Adele].",
+  "desc": "Obtained by owning 5\u2605 [Shadow Dagger - Adele].",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/cr041_h1_Icon_Texture.webp"
  },
  {
   "id": "200210043",
   "name": "[Chat Portrait] Ruo Lan",
-  "desc": "Obtained by owning 5★ [Fiscal Fixer - Ruo Lan].",
+  "desc": "Obtained by owning 5\u2605 [Fiscal Fixer - Ruo Lan].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210044",
   "name": "[Chat Portrait] Amber",
-  "desc": "Obtained by owning 5★ [Elegant Croupier - Amber].",
+  "desc": "Obtained by owning 5\u2605 [Elegant Croupier - Amber].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210045",
   "name": "[Chat Portrait] Kurosawa Shion",
-  "desc": "Obtained by owning 5★ [Meta-Research Freak - Kurosawa Shion].",
+  "desc": "Obtained by owning 5\u2605 [Meta-Research Freak - Kurosawa Shion].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210046",
   "name": "[Chat Portrait] Chloe",
-  "desc": "Obtained by owning 5★ [Sacrificial Lamb - Chloe].",
+  "desc": "Obtained by owning 5\u2605 [Sacrificial Lamb - Chloe].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210047",
   "name": "[Chat Portrait] Charlotte",
-  "desc": "Obtained by owning 5★ [Silvergun Sweetheart - Charlotte].",
+  "desc": "Obtained by owning 5\u2605 [Silvergun Sweetheart - Charlotte].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210048",
   "name": "[Chat Portrait] Rachel",
-  "desc": "Obtained by owning 5★ [Iron Law Sentinel - Rachel].",
+  "desc": "Obtained by owning 5\u2605 [Iron Law Sentinel - Rachel].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210049",
   "name": "[Chat Portrait] Milena",
-  "desc": "Obtained by owning 5★ [Black-Sector Inker - Milena].",
+  "desc": "Obtained by owning 5\u2605 [Black-Sector Inker - Milena].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210050",
   "name": "[Chat Portrait] Amelie",
-  "desc": "Obtained by owning 5★ [Heart-Stealer - Amelie].",
+  "desc": "Obtained by owning 5\u2605 [Heart-Stealer - Amelie].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210051",
   "name": "[Chat Portrait] Annabelle",
-  "desc": "Obtained by owning 5★ [Shackled Saintess - Annabelle].",
+  "desc": "Obtained by owning 5\u2605 [Shackled Saintess - Annabelle].",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/cr051_h1_Icon_Texture.webp"
  },
  {
   "id": "200210052",
   "name": "[Chat Portrait] Fujiwara Shiyoi",
-  "desc": "Obtained by owning 5★ [Usurping Strategist - Fujiwara Shiyoi].",
+  "desc": "Obtained by owning 5\u2605 [Usurping Strategist - Fujiwara Shiyoi].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210053",
   "name": "[Chat Portrait] Sugimoto Arina",
-  "desc": "Obtained by owning 5★ [Soothing Touch - Sugimoto Arina].",
+  "desc": "Obtained by owning 5\u2605 [Soothing Touch - Sugimoto Arina].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210054",
   "name": "[Chat Portrait] Ogino Rui",
-  "desc": "Obtained by owning 5★ [Yandere Maid - Ogino Rui].",
+  "desc": "Obtained by owning 5\u2605 [Yandere Maid - Ogino Rui].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210055",
   "name": "[Chat Portrait] Lin Lin",
-  "desc": "Obtained by owning 5★ [Divine Oracle - Lin Lin].",
+  "desc": "Obtained by owning 5\u2605 [Divine Oracle - Lin Lin].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210056",
   "name": "[Chat Portrait] Ruby",
-  "desc": "Obtained by owning 5★ [Radiant Diva - Ruby].",
+  "desc": "Obtained by owning 5\u2605 [Radiant Diva - Ruby].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210057",
   "name": "[Chat Portrait] Liz",
-  "desc": "Obtained by owning 5★ [Bare-Knuckle Bodyguard - Liz].",
+  "desc": "Obtained by owning 5\u2605 [Bare-Knuckle Bodyguard - Liz].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210058",
   "name": "[Chat Portrait] Li Mu",
-  "desc": "Obtained by owning 5★ [Icy Femme Fatale - Li Mu].",
+  "desc": "Obtained by owning 5\u2605 [Icy Femme Fatale - Li Mu].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210060",
   "name": "[Chat Portrait] Danxin",
-  "desc": "Obtained by owning 5★ [Kung Fu Beauty - Danxin].",
+  "desc": "Obtained by owning 5\u2605 [Kung Fu Beauty - Danxin].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210061",
   "name": "[Chat Portrait] Ojima Erina",
-  "desc": "Obtained by owning 5★ [Sugar-Sweet Maid - Ojima Erina].",
+  "desc": "Obtained by owning 5\u2605 [Sugar-Sweet Maid - Ojima Erina].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210062",
   "name": "[Chat Portrait] Shiraishi Ai",
-  "desc": "Obtained by owning 5★ [Gentle Manager - Shiraishi Ai].",
+  "desc": "Obtained by owning 5\u2605 [Gentle Manager - Shiraishi Ai].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210063",
   "name": "[Chat Portrait] Andou Kana",
-  "desc": "Obtained by owning 5★ [Scholastic Agent - Andou Kana].",
+  "desc": "Obtained by owning 5\u2605 [Scholastic Agent - Andou Kana].",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/cr063_h1_Icon_Texture.webp"
  },
  {
   "id": "200210064",
   "name": "[Chat Portrait] Komachi Sayaka",
-  "desc": "Obtained by owning 5★ [Moonlit Courtesan - Komachi Sayaka].",
+  "desc": "Obtained by owning 5\u2605 [Moonlit Courtesan - Komachi Sayaka].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210065",
   "name": "[Chat Portrait] Hijikata Chizuru",
-  "desc": "Obtained by owning 5★ [Immovable Sword Maiden - Hijikata Chizuru].",
+  "desc": "Obtained by owning 5\u2605 [Immovable Sword Maiden - Hijikata Chizuru].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210066",
   "name": "[Chat Portrait] Fujiwara Arisa",
-  "desc": "Obtained by owning 5★ [Ephemeral Splendor - Fujiwara Arisa].",
+  "desc": "Obtained by owning 5\u2605 [Ephemeral Splendor - Fujiwara Arisa].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210067",
   "name": "[Chat Portrait] Qingyin",
-  "desc": "Obtained by owning 5★ [Siren of a Fallen City - Qingyin].",
+  "desc": "Obtained by owning 5\u2605 [Siren of a Fallen City - Qingyin].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210068",
   "name": "[Chat Portrait] Leng Zhen",
-  "desc": "Obtained by owning 5★ [Soulless Executioner - Leng Zhen].",
+  "desc": "Obtained by owning 5\u2605 [Soulless Executioner - Leng Zhen].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210069",
   "name": "[Chat Portrait] Banxia",
-  "desc": "Obtained by owning 5★ [Illusive Physician - Banxia].",
+  "desc": "Obtained by owning 5\u2605 [Illusive Physician - Banxia].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210070",
   "name": "[Chat Portrait] Elena",
-  "desc": "Obtained by owning 5★ [Rebellious Thorn - Elena].",
+  "desc": "Obtained by owning 5\u2605 [Rebellious Thorn - Elena].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210071",
   "name": "[Chat Portrait] Victoria",
-  "desc": "Obtained by owning 5★ [Machiavellian Witch - Victoria].",
+  "desc": "Obtained by owning 5\u2605 [Machiavellian Witch - Victoria].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210072",
   "name": "[Chat Portrait] Alyna",
-  "desc": "Obtained by owning 5★ [Loving Enforcer - Alyna].",
+  "desc": "Obtained by owning 5\u2605 [Loving Enforcer - Alyna].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210073",
   "name": "[Chat Portrait] Connie",
-  "desc": "Obtained by owning 5★ [Flawless Goddess - Connie].",
+  "desc": "Obtained by owning 5\u2605 [Flawless Goddess - Connie].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210074",
   "name": "[Chat Portrait] Jessica",
-  "desc": "Obtained by owning 5★ [Seraphim Diva - Jessica].",
+  "desc": "Obtained by owning 5\u2605 [Seraphim Diva - Jessica].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210075",
   "name": "[Chat Portrait] Komachi Yuu",
-  "desc": "X(不翻)「XXX-小町憂」5星入手。",
+  "desc": "X(\u4e0d\u7ffb)\u300cXXX-\u5c0f\u753a\u6182\u300d5\u661f\u5165\u624b\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210078",
   "name": "[Chat Portrait] Awana",
-  "desc": "Obtained by owning 5★ [Spicy Beer Babe - Awana].",
+  "desc": "Obtained by owning 5\u2605 [Spicy Beer Babe - Awana].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210082",
   "name": "[Chat Portrait] Rookie Maid - Sugimoto Arina",
-  "desc": "Obtained by owning 5★ [Rookie Maid - Sugimoto Arina].",
+  "desc": "Obtained by owning 5\u2605 [Rookie Maid - Sugimoto Arina].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210107",
   "name": "[Chat Portrait] Clumsy Cowgirl - Belle",
-  "desc": "Obtained by owning 5★ [Clumsy Cowgirl - Belle].",
+  "desc": "Obtained by owning 5\u2605 [Clumsy Cowgirl - Belle].",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210108",
-  "name": "X(不翻)[通訊頭像]節慶_泳裝1_cr108",
-  "desc": "X(不翻)「XXX-泳裝1」5星入手。",
+  "name": "X(\u4e0d\u7ffb)[\u901a\u8a0a\u982d\u50cf]\u7bc0\u6176_\u6cf3\u88dd1_cr108",
+  "desc": "X(\u4e0d\u7ffb)\u300cXXX-\u6cf3\u88dd1\u300d5\u661f\u5165\u624b\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210109",
-  "name": "X(不翻)[通訊頭像]節慶_泳裝2_cr109",
-  "desc": "X(不翻)「XXX-泳裝2」5星入手。",
+  "name": "X(\u4e0d\u7ffb)[\u901a\u8a0a\u982d\u50cf]\u7bc0\u6176_\u6cf3\u88dd2_cr109",
+  "desc": "X(\u4e0d\u7ffb)\u300cXXX-\u6cf3\u88dd2\u300d5\u661f\u5165\u624b\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210110",
-  "name": "X(不翻)[通訊頭像]節慶_中秋_cr110",
-  "desc": "X(不翻)「XXX-中秋」5星入手。",
+  "name": "X(\u4e0d\u7ffb)[\u901a\u8a0a\u982d\u50cf]\u7bc0\u6176_\u4e2d\u79cb_cr110",
+  "desc": "X(\u4e0d\u7ffb)\u300cXXX-\u4e2d\u79cb\u300d5\u661f\u5165\u624b\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200210111",
-  "name": "X(不翻)[通訊頭像]節慶_聖誕_cr111",
-  "desc": "X(不翻)「XXX-聖誕」5星入手。",
+  "name": "X(\u4e0d\u7ffb)[\u901a\u8a0a\u982d\u50cf]\u7bc0\u6176_\u8056\u8a95_cr111",
+  "desc": "X(\u4e0d\u7ffb)\u300cXXX-\u8056\u8a95\u300d5\u661f\u5165\u624b\u3002",
   "quality": "50",
   "icon": null
  },
@@ -5074,21 +5074,21 @@ export const gsaItems = [
   "name": "[Profile Picture] Default",
   "desc": "Default Profile Picture.",
   "quality": "0",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/cr000_Icon_Texture.webp"
  },
  {
   "id": "200220040",
   "name": "[Date Portrait] Belle",
   "desc": "Complete Belle's Message Logs \"A Strange Sample\" to obtain.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/cr040_h2_Icon_Texture.webp"
  },
  {
   "id": "200220041",
   "name": "[Date Portrait] Adele",
   "desc": "Complete Adele's Message Log, \"Too Busy Lately\" to obtain.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/cr041_h2_Icon_Texture.webp"
  },
  {
   "id": "200220043",
@@ -5156,7 +5156,7 @@ export const gsaItems = [
  {
   "id": "200220052",
   "name": "[Date Portrait] Fujiwara Shiyoi",
-  "desc": "X(不翻)完成藤原 紫宵通訊故事〈〉入手。",
+  "desc": "X(\u4e0d\u7ffb)\u5b8c\u6210\u85e4\u539f \u7d2b\u5bb5\u901a\u8a0a\u6545\u4e8b\u3008\u3009\u5165\u624b\u3002",
   "quality": "70",
   "icon": null
  },
@@ -5186,7 +5186,7 @@ export const gsaItems = [
   "name": "[Date Portrait] Ruby",
   "desc": "Complete Ruby's Message Logs \"The Same Thought\" to obtain.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/cr056_h2_Icon_Texture.webp"
  },
  {
   "id": "200220057",
@@ -5228,7 +5228,7 @@ export const gsaItems = [
   "name": "[Date Portrait] Andou Kana",
   "desc": "Complete Andou Kana's Message Logs \"Results of the Second Revision\" to obtain.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/cr063_h2_Icon_Texture.webp"
  },
  {
   "id": "200220064",
@@ -5282,7 +5282,7 @@ export const gsaItems = [
  {
   "id": "200220071",
   "name": "[Date Portrait] Victoria",
-  "desc": "完成維多莉亞通訊故事〈權欲魔女的任性〉入手。",
+  "desc": "\u5b8c\u6210\u7dad\u591a\u8389\u4e9e\u901a\u8a0a\u6545\u4e8b\u3008\u6b0a\u6b32\u9b54\u5973\u7684\u4efb\u6027\u3009\u5165\u624b\u3002",
   "quality": "70",
   "icon": null
  },
@@ -5310,7 +5310,7 @@ export const gsaItems = [
  {
   "id": "200220075",
   "name": "[Date Portrait] Komachi Yuu",
-  "desc": "X(不翻)完成小町 憂通訊故事〈〉入手。",
+  "desc": "X(\u4e0d\u7ffb)\u5b8c\u6210\u5c0f\u753a \u6182\u901a\u8a0a\u6545\u4e8b\u3008\u3009\u5165\u624b\u3002",
   "quality": "70",
   "icon": null
  },
@@ -5324,7 +5324,7 @@ export const gsaItems = [
  {
   "id": "200220082",
   "name": "[Date Portrait] Rookie Maid - Sugimoto Arina",
-  "desc": "X(不翻完成新手女僕-杉本 有菜通訊故事〈〉入手。",
+  "desc": "X(\u4e0d\u7ffb\u5b8c\u6210\u65b0\u624b\u5973\u50d5-\u6749\u672c \u6709\u83dc\u901a\u8a0a\u6545\u4e8b\u3008\u3009\u5165\u624b\u3002",
   "quality": "70",
   "icon": null
  },
@@ -5337,29 +5337,29 @@ export const gsaItems = [
  },
  {
   "id": "200220108",
-  "name": "X(不翻)[約會頭像]節慶_泳裝1_cr108",
-  "desc": "X(不翻)完成cr108通訊故事〈〉入手。",
+  "name": "X(\u4e0d\u7ffb)[\u7d04\u6703\u982d\u50cf]\u7bc0\u6176_\u6cf3\u88dd1_cr108",
+  "desc": "X(\u4e0d\u7ffb)\u5b8c\u6210cr108\u901a\u8a0a\u6545\u4e8b\u3008\u3009\u5165\u624b\u3002",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200220109",
-  "name": "X(不翻)[約會頭像]節慶_泳裝2_cr109",
-  "desc": "X(不翻)完成cr109通訊故事〈〉入手。",
+  "name": "X(\u4e0d\u7ffb)[\u7d04\u6703\u982d\u50cf]\u7bc0\u6176_\u6cf3\u88dd2_cr109",
+  "desc": "X(\u4e0d\u7ffb)\u5b8c\u6210cr109\u901a\u8a0a\u6545\u4e8b\u3008\u3009\u5165\u624b\u3002",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200220110",
-  "name": "X(不翻)[約會頭像]節慶_中秋_cr110",
-  "desc": "X(不翻)完成cr110通訊故事〈〉入手。",
+  "name": "X(\u4e0d\u7ffb)[\u7d04\u6703\u982d\u50cf]\u7bc0\u6176_\u4e2d\u79cb_cr110",
+  "desc": "X(\u4e0d\u7ffb)\u5b8c\u6210cr110\u901a\u8a0a\u6545\u4e8b\u3008\u3009\u5165\u624b\u3002",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200220111",
-  "name": "X(不翻)[約會頭像]節慶_聖誕_cr111",
-  "desc": "X(不翻)完成_cr111通訊故事〈〉入手。",
+  "name": "X(\u4e0d\u7ffb)[\u7d04\u6703\u982d\u50cf]\u7bc0\u6176_\u8056\u8a95_cr111",
+  "desc": "X(\u4e0d\u7ffb)\u5b8c\u6210_cr111\u901a\u8a0a\u6545\u4e8b\u3008\u3009\u5165\u624b\u3002",
   "quality": "70",
   "icon": null
  },
@@ -5382,14 +5382,14 @@ export const gsaItems = [
   "name": "[Portrait Frame] VIP 5",
   "desc": "VIP 5 Exclusive Pack: Limited Portrait Frame.",
   "quality": "30",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200240003.webp"
  },
  {
   "id": "200240004",
   "name": "[Portrait Frame] VIP 10",
   "desc": "VIP 10 Exclusive Pack: Limited Portrait Frame.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200240004.webp"
  },
  {
   "id": "200240005",
@@ -5415,14 +5415,14 @@ export const gsaItems = [
  {
   "id": "200240008",
   "name": "[Portrait Frame] Cheer Captain",
-  "desc": "Heaven's Door Event – 1st Place Reward.",
+  "desc": "Heaven's Door Event \u2013 1st Place Reward.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200240009",
   "name": "[Portrait Frame] Prospector",
-  "desc": "Garmr Treasure Mine Event – 1st Place Reward.",
+  "desc": "Garmr Treasure Mine Event \u2013 1st Place Reward.",
   "quality": "50",
   "icon": null
  },
@@ -5505,22 +5505,22 @@ export const gsaItems = [
  },
  {
   "id": "200245004",
-  "name": "X(不翻)[頭像框]泳裝",
-  "desc": "X(不翻)『節慶活動-泳裝』限定頭像框。",
+  "name": "X(\u4e0d\u7ffb)[\u982d\u50cf\u6846]\u6cf3\u88dd",
+  "desc": "X(\u4e0d\u7ffb)\u300e\u7bc0\u6176\u6d3b\u52d5-\u6cf3\u88dd\u300f\u9650\u5b9a\u982d\u50cf\u6846\u3002",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200245005",
-  "name": "X(不翻)[頭像框]中秋",
-  "desc": "X(不翻)『節慶活動-中秋』限定頭像框。",
+  "name": "X(\u4e0d\u7ffb)[\u982d\u50cf\u6846]\u4e2d\u79cb",
+  "desc": "X(\u4e0d\u7ffb)\u300e\u7bc0\u6176\u6d3b\u52d5-\u4e2d\u79cb\u300f\u9650\u5b9a\u982d\u50cf\u6846\u3002",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200245006",
-  "name": "X(不翻)[頭像框]聖誕",
-  "desc": "X(不翻)『節慶活動-聖誕』限定頭像框。",
+  "name": "X(\u4e0d\u7ffb)[\u982d\u50cf\u6846]\u8056\u8a95",
+  "desc": "X(\u4e0d\u7ffb)\u300e\u7bc0\u6176\u6d3b\u52d5-\u8056\u8a95\u300f\u9650\u5b9a\u982d\u50cf\u6846\u3002",
   "quality": "70",
   "icon": null
  },
@@ -5550,7 +5550,7 @@ export const gsaItems = [
   "name": "[Background] Night of Tobia",
   "desc": "Tobia's enchanting night. The city's vitality only awakens after nightfall, and with it, all its dangers are revealed.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200250001.webp"
  },
  {
   "id": "200250002",
@@ -5564,12 +5564,12 @@ export const gsaItems = [
   "name": "[Background] Tobia Airport",
   "desc": "The gateway to Tobia. A destination coveted by many people. After all, a good environment is the most important thing for a bright future.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200255001.webp"
  },
  {
   "id": "200255002",
   "name": "[Background] VORTEX",
-  "desc": "Music, alcohol, bodies—you can find the night you crave most in VORTEX.",
+  "desc": "Music, alcohol, bodies\u2014you can find the night you crave most in VORTEX.",
   "quality": "50",
   "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200255002.webp"
  },
@@ -5585,98 +5585,98 @@ export const gsaItems = [
   "name": "[Background] Bathroom",
   "desc": "The faint fragrance lingering inside still recalls the intimate entanglement of that night's bath.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200255004.webp"
  },
  {
   "id": "200255005",
   "name": "[Background] Twilight of Tobia",
   "desc": "As the sun sinks low, the gradually lit city calls out to pedestrians and perils alike.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200255005.webp"
  },
  {
   "id": "200255006",
   "name": "[Background] Room",
   "desc": "As the room sinks into darkness, the mind grows bright.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200255006.webp"
  },
  {
   "id": "200255007",
   "name": "[Background] Adele's Home",
   "desc": "All traces of Adele's life are laid bare before you.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200255007.webp"
  },
  {
   "id": "200255008",
   "name": "[Background] Hotel Room",
   "desc": "A double bed. How many times has it been tumbled upon? How many lingering traces of unbridled desires does it hold?",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200255008.webp"
  },
  {
   "id": "200255009",
   "name": "[Background] Abandoned Warehouse",
-  "desc": "In the empty warehouse, a scent of rust lingers—a remnant of violence.",
+  "desc": "In the empty warehouse, a scent of rust lingers\u2014a remnant of violence.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200255009.webp"
  },
  {
   "id": "200255010",
   "name": "[Background] City Back Alley",
   "desc": "Filthy and dark, the stench of crime permeates this place. Unfamiliar faces will be met with suspicion; you'll need some connections or know-how to find any illicit dealings.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200255010.webp"
  },
  {
   "id": "200255011",
   "name": "[Background] Heaven's Door",
   "desc": "Witness the birth of a new generation of female idols. Countless people have been captivated in this place, losing their hearts and their fortunes.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200255011.webp"
  },
  {
   "id": "200255012",
   "name": "[Background] Moonflower Clan Estate",
   "desc": "Step into the solemn main house of the Moonflower Clan, where every blade of grass and every tree exudes order, etiquette, and chivalry.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200255012.webp"
  },
  {
   "id": "200255013",
   "name": "[Background] Japanese-Style Private Room",
   "desc": "Power struggles and absurd sexual desires are concealed within this elegant Japanese-style room, never to be revealed.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200255013.webp"
  },
  {
   "id": "200255014",
   "name": "[Background] Study",
   "desc": "Only a ruler with the power to command all is worthy of this study.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200255014.webp"
  },
  {
   "id": "200255015",
   "name": "[Background] Pleasure District Street - Day",
   "desc": "A seemingly ordinary street bustling with commuters, yet it can hardly conceal its decadent nature.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200255015.webp"
  },
  {
   "id": "200255016",
   "name": "[Background] Pleasure District Street - Night",
   "desc": "After nightfall, the pleasure district overflows with alcohol and sex. This is a playground for adults only.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200255016.webp"
  },
  {
   "id": "200255017",
   "name": "[Background] Pleasure District Street - Festival",
   "desc": "Brilliant festival banners hang high for the Yoikasumi Festival. This is a dreamlike annual event in the Moonflower pleasure district.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200255017.webp"
  },
  {
   "id": "200255018",
@@ -5709,7 +5709,7 @@ export const gsaItems = [
  {
   "id": "200255022",
   "name": "[Background] HL Lobby",
-  "desc": "The grand hall of paradise. Everyone in the world would give up everything just to enter this place—from girls chasing star-studded dreams, to men hunting for sultry beauties.",
+  "desc": "The grand hall of paradise. Everyone in the world would give up everything just to enter this place\u2014from girls chasing star-studded dreams, to men hunting for sultry beauties.",
   "quality": "50",
   "icon": null
  },
@@ -5730,7 +5730,7 @@ export const gsaItems = [
  {
   "id": "200255025",
   "name": "[Background] Carducci Family",
-  "desc": "Forged in fine wine, fresh blood, and bullets—that's a style born of unyielding resilience.",
+  "desc": "Forged in fine wine, fresh blood, and bullets\u2014that's a style born of unyielding resilience.",
   "quality": "50",
   "icon": null
  },
@@ -5802,7 +5802,7 @@ export const gsaItems = [
   "name": "[Background] Tobia",
   "desc": "The light shines in the darkness, and the darkness has not overcome it.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200255035.webp"
  },
  {
   "id": "200255036",
@@ -5813,113 +5813,113 @@ export const gsaItems = [
  },
  {
   "id": "200255037",
-  "name": "【背景】溫馨小店",
-  "desc": "歡迎光臨！請問今天需要什麼呢？來喝杯茶嗎？",
+  "name": "\u3010\u80cc\u666f\u3011\u6eab\u99a8\u5c0f\u5e97",
+  "desc": "\u6b61\u8fce\u5149\u81e8\uff01\u8acb\u554f\u4eca\u5929\u9700\u8981\u4ec0\u9ebc\u5462\uff1f\u4f86\u559d\u676f\u8336\u55ce\uff1f",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200255038",
-  "name": "【背景】茶樓包廂",
-  "desc": "隱蔽雅致，適合商談大事。",
+  "name": "\u3010\u80cc\u666f\u3011\u8336\u6a13\u5305\u5ec2",
+  "desc": "\u96b1\u853d\u96c5\u81f4\uff0c\u9069\u5408\u5546\u8ac7\u5927\u4e8b\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200255039",
-  "name": "【背景】飯店廊道",
-  "desc": "你曾經聽說關於盡頭的那個房間嗎？",
+  "name": "\u3010\u80cc\u666f\u3011\u98ef\u5e97\u5eca\u9053",
+  "desc": "\u4f60\u66fe\u7d93\u807d\u8aaa\u95dc\u65bc\u76e1\u982d\u7684\u90a3\u500b\u623f\u9593\u55ce\uff1f",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200255040",
-  "name": "【背景】柳相寨",
-  "desc": "這裡的巷弄因為多日陰雨而有股濃濃的霉味。",
+  "name": "\u3010\u80cc\u666f\u3011\u67f3\u76f8\u5be8",
+  "desc": "\u9019\u88e1\u7684\u5df7\u5f04\u56e0\u70ba\u591a\u65e5\u9670\u96e8\u800c\u6709\u80a1\u6fc3\u6fc3\u7684\u9709\u5473\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200255041",
-  "name": "【背景】高級餐廳",
-  "desc": "所有的女人都夢想在有儀式感的餐廳享用一餐。",
+  "name": "\u3010\u80cc\u666f\u3011\u9ad8\u7d1a\u9910\u5ef3",
+  "desc": "\u6240\u6709\u7684\u5973\u4eba\u90fd\u5922\u60f3\u5728\u6709\u5100\u5f0f\u611f\u7684\u9910\u5ef3\u4eab\u7528\u4e00\u9910\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200255042",
-  "name": "【背景】西奧多的病房",
-  "desc": "今夜註定有人要徹夜未眠……",
+  "name": "\u3010\u80cc\u666f\u3011\u897f\u5967\u591a\u7684\u75c5\u623f",
+  "desc": "\u4eca\u591c\u8a3b\u5b9a\u6709\u4eba\u8981\u5fb9\u591c\u672a\u7720\u2026\u2026",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200255043",
-  "name": "【背景】實驗室病房",
-  "desc": "長生不老的秘密……？",
+  "name": "\u3010\u80cc\u666f\u3011\u5be6\u9a57\u5ba4\u75c5\u623f",
+  "desc": "\u9577\u751f\u4e0d\u8001\u7684\u79d8\u5bc6\u2026\u2026\uff1f",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200255044",
-  "name": "【背景】城市公路之夜",
-  "desc": "來吧！油門踩到底，出發！",
+  "name": "\u3010\u80cc\u666f\u3011\u57ce\u5e02\u516c\u8def\u4e4b\u591c",
+  "desc": "\u4f86\u5427\uff01\u6cb9\u9580\u8e29\u5230\u5e95\uff0c\u51fa\u767c\uff01",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200255045",
-  "name": "【背景】羅士昂兄弟會本部",
-  "desc": "女人崇拜我們，男人渴望成為我們。",
+  "name": "\u3010\u80cc\u666f\u3011\u7f85\u58eb\u6602\u5144\u5f1f\u6703\u672c\u90e8",
+  "desc": "\u5973\u4eba\u5d07\u62dc\u6211\u5011\uff0c\u7537\u4eba\u6e34\u671b\u6210\u70ba\u6211\u5011\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200255046",
-  "name": "【背景】海濱之晝",
-  "desc": "豔陽、沙灘、還有鹹鹹的海。",
+  "name": "\u3010\u80cc\u666f\u3011\u6d77\u6ff1\u4e4b\u665d",
+  "desc": "\u8c54\u967d\u3001\u6c99\u7058\u3001\u9084\u6709\u9e79\u9e79\u7684\u6d77\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200255047",
-  "name": "【背景】海濱之夜",
-  "desc": "月夜、晚風、還有閃閃星光。",
+  "name": "\u3010\u80cc\u666f\u3011\u6d77\u6ff1\u4e4b\u591c",
+  "desc": "\u6708\u591c\u3001\u665a\u98a8\u3001\u9084\u6709\u9583\u9583\u661f\u5149\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200255048",
-  "name": "【背景】森林之夜",
-  "desc": "指引我走了一路的，是枝葉間落下的月光。",
+  "name": "\u3010\u80cc\u666f\u3011\u68ee\u6797\u4e4b\u591c",
+  "desc": "\u6307\u5f15\u6211\u8d70\u4e86\u4e00\u8def\u7684\uff0c\u662f\u679d\u8449\u9593\u843d\u4e0b\u7684\u6708\u5149\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200255049",
-  "name": "【背景】托比亞娛樂城",
-  "desc": "一夜致富？或是清空歸零？",
+  "name": "\u3010\u80cc\u666f\u3011\u6258\u6bd4\u4e9e\u5a1b\u6a02\u57ce",
+  "desc": "\u4e00\u591c\u81f4\u5bcc\uff1f\u6216\u662f\u6e05\u7a7a\u6b78\u96f6\uff1f",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200255050",
-  "name": "【背景】繁星點點",
-  "desc": "那一晚也是這樣的夜空，寧靜，神秘。",
+  "name": "\u3010\u80cc\u666f\u3011\u7e41\u661f\u9ede\u9ede",
+  "desc": "\u90a3\u4e00\u665a\u4e5f\u662f\u9019\u6a23\u7684\u591c\u7a7a\uff0c\u5be7\u975c\uff0c\u795e\u79d8\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200255051",
-  "name": "【背景】大雪山",
-  "desc": "一望無際的銀白，夾雜寒風而來的，是轉機？還是殺機？",
+  "name": "\u3010\u80cc\u666f\u3011\u5927\u96ea\u5c71",
+  "desc": "\u4e00\u671b\u7121\u969b\u7684\u9280\u767d\uff0c\u593e\u96dc\u5bd2\u98a8\u800c\u4f86\u7684\uff0c\u662f\u8f49\u6a5f\uff1f\u9084\u662f\u6bba\u6a5f\uff1f",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200255052",
-  "name": "【背景】中式廳院",
-  "desc": "宏大、幽邃、人力、蒼古、水泉、眺望。",
+  "name": "\u3010\u80cc\u666f\u3011\u4e2d\u5f0f\u5ef3\u9662",
+  "desc": "\u5b8f\u5927\u3001\u5e7d\u9083\u3001\u4eba\u529b\u3001\u84bc\u53e4\u3001\u6c34\u6cc9\u3001\u773a\u671b\u3002",
   "quality": "50",
   "icon": null
  },
@@ -5928,7 +5928,7 @@ export const gsaItems = [
   "name": "[CG] A Heavy Blow",
   "desc": "Beat it.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200260001.webp"
  },
  {
   "id": "200260002",
@@ -5940,7 +5940,7 @@ export const gsaItems = [
  {
   "id": "200260003",
   "name": "[CG] Stage Performance",
-  "desc": "Fire away, come on~♪",
+  "desc": "Fire away, come on~\u266a",
   "quality": "50",
   "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200260003.webp"
  },
@@ -5956,96 +5956,96 @@ export const gsaItems = [
   "name": "[CG] Mutation",
   "desc": "Hahaha! I'm gonna tear you all to shreads!!",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200260005.webp"
  },
  {
   "id": "200260006",
   "name": "[CG] Vigilante Justice",
   "desc": "So long, loser.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200260006.webp"
  },
  {
   "id": "200260007",
   "name": "[CG] Memories",
   "desc": "...Thank you...",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200260007.webp"
  },
  {
   "id": "200260008",
   "name": "[CG] Dragon and Tiger",
   "desc": "Since you have come so far and honor me with your presence, it is only right that I entertain you.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200260008.webp"
  },
  {
   "id": "200260009",
   "name": "[CG] Dancing Hearts",
   "desc": "Now, I shall don this attire, and let my dance speak for itself.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200260009.webp"
  },
  {
   "id": "200260010",
   "name": "[CG] Slash Marks",
   "desc": "This, and this alone, I can never forgive.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200260010.webp"
  },
  {
   "id": "200260011",
   "name": "[CG] The Puppeteer",
   "desc": "The \"Prelude to Vengeance\"... has begun.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200260011.webp"
  },
  {
   "id": "200260012",
   "name": "[CG] Dance Practice",
   "desc": "She has long since become someone far beyond my reach.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200260012.webp"
  },
  {
   "id": "200260013",
   "name": "[CG] Tears of Hatred",
   "desc": "Go to hell...!",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200260013.webp"
  },
  {
   "id": "200260014",
   "name": "[CG] Interrogation in the Rain",
   "desc": "Tell me why you did it?! Brother!",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200260014.webp"
  },
  {
   "id": "200260015",
   "name": "[CG] Betrayal",
-  "desc": "But what matters most—is the Carducci honor you threw away.",
+  "desc": "But what matters most\u2014is the Carducci honor you threw away.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200260015.webp"
  },
  {
   "id": "200260016",
   "name": "[CG] Bloodstained Rainy Night",
   "desc": "...Theodore?",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200260016.webp"
  },
  {
   "id": "200260017",
   "name": "[CG] Blade Drawn",
   "desc": "This will end in two minutes.",
   "quality": "50",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200260017.webp"
  },
  {
   "id": "200260018",
-  "name": "X(不翻)【CG】",
-  "desc": "X(不翻)亞莉娜膝枕",
+  "name": "X(\u4e0d\u7ffb)\u3010CG\u3011",
+  "desc": "X(\u4e0d\u7ffb)\u4e9e\u8389\u5a1c\u819d\u6795",
   "quality": "50",
   "icon": null
  },
@@ -6058,22 +6058,22 @@ export const gsaItems = [
  },
  {
   "id": "200260020",
-  "name": "X(不翻)【CG】",
-  "desc": "X(不翻)維多莉亞參加宴會圖",
+  "name": "X(\u4e0d\u7ffb)\u3010CG\u3011",
+  "desc": "X(\u4e0d\u7ffb)\u7dad\u591a\u8389\u4e9e\u53c3\u52a0\u5bb4\u6703\u5716",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200260021",
-  "name": "X(不翻)【CG】",
-  "desc": "X(不翻)伊蓮娜率眾攻擊軍火商",
+  "name": "X(\u4e0d\u7ffb)\u3010CG\u3011",
+  "desc": "X(\u4e0d\u7ffb)\u4f0a\u84ee\u5a1c\u7387\u773e\u653b\u64ca\u8ecd\u706b\u5546",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200260022",
-  "name": "X(不翻)【CG】",
-  "desc": "X(不翻)SCG_0022",
+  "name": "X(\u4e0d\u7ffb)\u3010CG\u3011",
+  "desc": "X(\u4e0d\u7ffb)SCG_0022",
   "quality": "50",
   "icon": null
  },
@@ -6093,8 +6093,8 @@ export const gsaItems = [
  },
  {
   "id": "200260025",
-  "name": "X(不翻)【CG】",
-  "desc": "X(不翻)清晨亞莉娜陪睡",
+  "name": "X(\u4e0d\u7ffb)\u3010CG\u3011",
+  "desc": "X(\u4e0d\u7ffb)\u6e05\u6668\u4e9e\u8389\u5a1c\u966a\u7761",
   "quality": "50",
   "icon": null
  },
@@ -6107,22 +6107,22 @@ export const gsaItems = [
  },
  {
   "id": "200260027",
-  "name": "X(不翻)【CG】",
-  "desc": "X(不翻)尼古拉泳裝吃早餐",
+  "name": "X(\u4e0d\u7ffb)\u3010CG\u3011",
+  "desc": "X(\u4e0d\u7ffb)\u5c3c\u53e4\u62c9\u6cf3\u88dd\u5403\u65e9\u9910",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200260028",
-  "name": "X(不翻)【CG】",
-  "desc": "X(不翻)丹妮絲與防曬油",
+  "name": "X(\u4e0d\u7ffb)\u3010CG\u3011",
+  "desc": "X(\u4e0d\u7ffb)\u4e39\u59ae\u7d72\u8207\u9632\u66ec\u6cb9",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200260029",
-  "name": "X(不翻)【CG】",
-  "desc": "X(不翻)亞莉娜抱緊西奧多",
+  "name": "X(\u4e0d\u7ffb)\u3010CG\u3011",
+  "desc": "X(\u4e0d\u7ffb)\u4e9e\u8389\u5a1c\u62b1\u7dca\u897f\u5967\u591a",
   "quality": "50",
   "icon": null
  },
@@ -6131,140 +6131,140 @@ export const gsaItems = [
   "name": "[HCG] Nightclub Dance Floor",
   "desc": "Who is pressed against Belle's back?",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270001.webp"
  },
  {
   "id": "200270002",
   "name": "[HCG] Soapy Bath",
   "desc": "Must smell wonderful.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270002.webp"
  },
  {
   "id": "200270003",
   "name": "[HCG] On the Job",
   "desc": "You're just a cum dumpster for me to use and abuse.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270003.webp"
  },
  {
   "id": "200270004",
   "name": "[HCG] Struggle",
   "desc": "A stage in heat is the most alluring of all.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270004.webp"
  },
  {
   "id": "200270005",
   "name": "[HCG] Fuyutsuki Kasumi's Footjob",
   "desc": "Please be a little rougher.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270005.webp"
  },
  {
   "id": "200270006",
   "name": "[HCG] Streetwalker",
   "desc": "In broad daylight, you can have pleasure anywhere.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270006.webp"
  },
  {
   "id": "200270007",
   "name": "[HCG] Surprise Bar",
   "desc": "If I wear a mask, no one will recognize me, right?",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270007.webp"
  },
  {
   "id": "200270008",
   "name": "[HCG] Ritual of Purification",
   "desc": "Washed completely clean, from the inside out.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270008.webp"
  },
  {
   "id": "200270009",
   "name": "[HCG] Maid Cafe",
   "desc": "One could happily spend a whole day here, just waiting for a sudden surprise.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270009.webp"
  },
  {
   "id": "200270010",
   "name": "[HCG] Professional Spirit",
   "desc": "If you're not going to obey, then this cock will have to teach you a lesson.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270010.webp"
  },
  {
   "id": "200270011",
   "name": "[HCG] Bare Skinship",
   "desc": "Is a physical examination necessary?",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270011.webp"
  },
  {
   "id": "200270012",
   "name": "[HCG] Naked Banquet",
   "desc": "A vessel perfect down to its appearance and blood type still requires rigorous training before it can be \"served.\"",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270012.webp"
  },
  {
   "id": "200270013",
   "name": "[HCG] Photo Album",
   "desc": "Which goddesses had their scandalous photos leaked?",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270013.webp"
  },
  {
   "id": "200270014",
   "name": "[HCG] Rowdy Patron",
   "desc": "Never casually experiment with the pleasure of asphyxiation.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270014.webp"
  },
  {
   "id": "200270015",
   "name": "[HCG] Underground Auction",
   "desc": "Behind the glitz and glamour of an idol lies a world of unseen hardships.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270015.webp"
  },
  {
   "id": "200270016",
   "name": "[HCG] Making a Comeback",
   "desc": "Struggling artists must always find ways to reinvent themselves just to survive.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270016.webp"
  },
  {
   "id": "200270017",
   "name": "[HCG] Honey Trap",
   "desc": "A gift exclusively for you, wishing only to serve you.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270017.webp"
  },
  {
   "id": "200270018",
   "name": "[HCG] Kidnapping",
   "desc": "No matter how you struggle or scream, it is all in vain.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270018.webp"
  },
  {
   "id": "200270019",
   "name": "[HCG] Bathing",
   "desc": "The hot water pours down, washing away exhaustion and settling the mind.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270019.webp"
  },
  {
   "id": "200270020",
   "name": "[HCG] Illusory Dream",
   "desc": "A nightmare from the abyss, tightly coiling and burrowing deep into mind and flesh.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270020.webp"
  },
  {
   "id": "200270021",
@@ -6292,21 +6292,21 @@ export const gsaItems = [
   "name": "[Special HCG] Splashdown Paradise",
   "desc": "Take a refreshing dip in that pool.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270024.webp"
  },
  {
   "id": "200270025",
   "name": "[Special HCG] Euphoria Live Lounge",
   "desc": "Ultimate Whale.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270025.webp"
  },
  {
   "id": "200270026",
   "name": "[Special HCG] Chamber of Bondage",
   "desc": "Restrained desire runs high in the dead of night.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270026.webp"
  },
  {
   "id": "200270027",
@@ -6327,7 +6327,7 @@ export const gsaItems = [
   "name": "[HCG] Side Effects",
   "desc": "The potion's side effects caused reason to be overwhelmed by desire.",
   "quality": "70",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200270029.webp"
  },
  {
   "id": "200270030",
@@ -6352,29 +6352,29 @@ export const gsaItems = [
  },
  {
   "id": "200270033",
-  "name": "X(不翻)【HCG】",
-  "desc": "X(不翻)與尼古拉夜裡海邊性愛",
+  "name": "X(\u4e0d\u7ffb)\u3010HCG\u3011",
+  "desc": "X(\u4e0d\u7ffb)\u8207\u5c3c\u53e4\u62c9\u591c\u88e1\u6d77\u908a\u6027\u611b",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200270034",
-  "name": "X(不翻)【HCG】",
-  "desc": "X(不翻)青龍幫女性睡姦西奧多",
+  "name": "X(\u4e0d\u7ffb)\u3010HCG\u3011",
+  "desc": "X(\u4e0d\u7ffb)\u9752\u9f8d\u5e6b\u5973\u6027\u7761\u59e6\u897f\u5967\u591a",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200270035",
-  "name": "X(不翻)【HCG】",
-  "desc": "X(不翻)艾琳娜發情自慰",
+  "name": "X(\u4e0d\u7ffb)\u3010HCG\u3011",
+  "desc": "X(\u4e0d\u7ffb)\u827e\u7433\u5a1c\u767c\u60c5\u81ea\u6170",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200270036",
-  "name": "X(不翻)【HCG】",
-  "desc": "X(不翻)亞莉娜與西奧多車子性愛",
+  "name": "X(\u4e0d\u7ffb)\u3010HCG\u3011",
+  "desc": "X(\u4e0d\u7ffb)\u4e9e\u8389\u5a1c\u8207\u897f\u5967\u591a\u8eca\u5b50\u6027\u611b",
   "quality": "70",
   "icon": null
  },
@@ -6394,22 +6394,22 @@ export const gsaItems = [
  },
  {
   "id": "200270039",
-  "name": "X(不翻)【HCG】",
-  "desc": "X(不翻)與亞莉娜在海上做愛",
+  "name": "X(\u4e0d\u7ffb)\u3010HCG\u3011",
+  "desc": "X(\u4e0d\u7ffb)\u8207\u4e9e\u8389\u5a1c\u5728\u6d77\u4e0a\u505a\u611b",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200270040",
-  "name": "X(不翻)【HCG】",
-  "desc": "X(不翻)伊蓮娜音樂性交派對",
+  "name": "X(\u4e0d\u7ffb)\u3010HCG\u3011",
+  "desc": "X(\u4e0d\u7ffb)\u4f0a\u84ee\u5a1c\u97f3\u6a02\u6027\u4ea4\u6d3e\u5c0d",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200270041",
-  "name": "X(不翻)【HCG】",
-  "desc": "X(不翻)艾琳娜調教警察分局長兒子",
+  "name": "X(\u4e0d\u7ffb)\u3010HCG\u3011",
+  "desc": "X(\u4e0d\u7ffb)\u827e\u7433\u5a1c\u8abf\u6559\u8b66\u5bdf\u5206\u5c40\u9577\u5152\u5b50",
   "quality": "70",
   "icon": null
  },
@@ -6465,7 +6465,7 @@ export const gsaItems = [
  {
   "id": "200285007",
   "name": "Ranch Tycoon",
-  "desc": "[Title] Even though you only have one cow, that’s already enough.",
+  "desc": "[Title] Even though you only have one cow, that\u2019s already enough.",
   "quality": "50",
   "icon": null
  },
@@ -6954,58 +6954,58 @@ export const gsaItems = [
  },
  {
   "id": "200980001",
-  "name": "X(不翻)[互動]手",
-  "desc": "X(不翻)互動道具，要擄獲女孩芳心，一開始都要靠這雙手。",
+  "name": "X(\u4e0d\u7ffb)[\u4e92\u52d5]\u624b",
+  "desc": "X(\u4e0d\u7ffb)\u4e92\u52d5\u9053\u5177\uff0c\u8981\u64c4\u7372\u5973\u5b69\u82b3\u5fc3\uff0c\u4e00\u958b\u59cb\u90fd\u8981\u9760\u9019\u96d9\u624b\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200980002",
-  "name": "X(不翻)[互動]舌頭",
-  "desc": "X(不翻)互動道具，愈靈活的舌頭，女孩就愈是喜歡。",
+  "name": "X(\u4e0d\u7ffb)[\u4e92\u52d5]\u820c\u982d",
+  "desc": "X(\u4e0d\u7ffb)\u4e92\u52d5\u9053\u5177\uff0c\u6108\u9748\u6d3b\u7684\u820c\u982d\uff0c\u5973\u5b69\u5c31\u6108\u662f\u559c\u6b61\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200980003",
-  "name": "X(不翻)[互動]陽具",
-  "desc": "X(不翻)互動道具，又粗又硬又長的肉棒，所有女孩都無法抗拒。",
+  "name": "X(\u4e0d\u7ffb)[\u4e92\u52d5]\u967d\u5177",
+  "desc": "X(\u4e0d\u7ffb)\u4e92\u52d5\u9053\u5177\uff0c\u53c8\u7c97\u53c8\u786c\u53c8\u9577\u7684\u8089\u68d2\uff0c\u6240\u6709\u5973\u5b69\u90fd\u7121\u6cd5\u6297\u62d2\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200980004",
-  "name": "X(不翻)[互動]毛筆",
-  "desc": "X(不翻)互動道具，軟性的羊毫筆，最能增添情趣。",
+  "name": "X(\u4e0d\u7ffb)[\u4e92\u52d5]\u6bdb\u7b46",
+  "desc": "X(\u4e0d\u7ffb)\u4e92\u52d5\u9053\u5177\uff0c\u8edf\u6027\u7684\u7f8a\u6beb\u7b46\uff0c\u6700\u80fd\u589e\u6dfb\u60c5\u8da3\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200980005",
-  "name": "X(不翻)[互動]按摩棒",
-  "desc": "X(不翻)互動道具，適切的力道與頻率，最能直擊敏感的深處。",
+  "name": "X(\u4e0d\u7ffb)[\u4e92\u52d5]\u6309\u6469\u68d2",
+  "desc": "X(\u4e0d\u7ffb)\u4e92\u52d5\u9053\u5177\uff0c\u9069\u5207\u7684\u529b\u9053\u8207\u983b\u7387\uff0c\u6700\u80fd\u76f4\u64ca\u654f\u611f\u7684\u6df1\u8655\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200980006",
-  "name": "X(不翻)[互動]清酒",
-  "desc": "X(不翻)互動道具，醉翁之意不在酒。",
+  "name": "X(\u4e0d\u7ffb)[\u4e92\u52d5]\u6e05\u9152",
+  "desc": "X(\u4e0d\u7ffb)\u4e92\u52d5\u9053\u5177\uff0c\u9189\u7fc1\u4e4b\u610f\u4e0d\u5728\u9152\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200980007",
-  "name": "X(不翻)[互動]毛巾",
-  "desc": "X(不翻)互動道具，情慾焚燒的夜，得好好安撫在肌膚躁動的汗水。",
+  "name": "X(\u4e0d\u7ffb)[\u4e92\u52d5]\u6bdb\u5dfe",
+  "desc": "X(\u4e0d\u7ffb)\u4e92\u52d5\u9053\u5177\uff0c\u60c5\u617e\u711a\u71d2\u7684\u591c\uff0c\u5f97\u597d\u597d\u5b89\u64ab\u5728\u808c\u819a\u8e81\u52d5\u7684\u6c57\u6c34\u3002",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200980008",
-  "name": "X(不翻)[互動]羽子板",
-  "desc": "X(不翻)互動道具，適切的力道與頻率，最能直擊敏感的深處。",
+  "name": "X(\u4e0d\u7ffb)[\u4e92\u52d5]\u7fbd\u5b50\u677f",
+  "desc": "X(\u4e0d\u7ffb)\u4e92\u52d5\u9053\u5177\uff0c\u9069\u5207\u7684\u529b\u9053\u8207\u983b\u7387\uff0c\u6700\u80fd\u76f4\u64ca\u654f\u611f\u7684\u6df1\u8655\u3002",
   "quality": "50",
   "icon": null
  }
-];
+]

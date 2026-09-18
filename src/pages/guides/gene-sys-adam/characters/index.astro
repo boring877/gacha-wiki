@@ -1,49 +1,87 @@
 ---
-// Gene-Sys: Adam character database (grid of all profiled characters).
+// Gene-Sys: Adam character database (grid of all profiled characters,
+// categorized by element and job like the in-game roster, sorted by the
+// game's own library order from RoleInfoData.battlePosition).
 import GSALayout from '../../../../layouts/gene-sys-adam/LandingLayout.astro';
 import { gsaCharacters } from '../../../../data/gene-sys-adam/characters.js';
 import '../../../../styles/games/gene-sys-adam/gsa-common.css';
+import '../../../../styles/games/gene-sys-adam/gsa-characters.css';
 
-const characters = gsaCharacters;
+const characters = [...gsaCharacters].sort((a, b) => (a.sortOrder ?? 9999) - (b.sortOrder ?? 9999));
+const ELEMENT_ORDER = ['Fire', 'Earth', 'Wind', 'Water', 'Light', 'Dark'];
+const JOB_ORDER = ['Guardian', 'Striker', 'Sniper', 'Support', 'Breaker'];
+const elements = ELEMENT_ORDER
+  .map(n => characters.find(c => c.element?.name === n)?.element)
+  .filter(Boolean);
+const elByName = new Map(elements.map(e => [e.name, e]));
+const jobs = JOB_ORDER.filter(j => characters.some(c => c.job?.name === j));
 ---
 
 <GSALayout
   title="Character Database"
-  description={`Complete character database for Gene-Sys: Adam. Browse all ${characters.length} characters with English and Chinese names, titles, gacha availability, profiles, stats and skills.`}
+  description={`Complete character database for Gene-Sys: Adam. Browse all ${characters.length} characters with elements, jobs, gacha availability, profiles, stats and skills.`}
   gameTitle="Characters"
   crumbName="Characters"
 >
-  <section class="gsa-section">
+  <div class="gsa-content-section">
     <div class="gsa-toolbar">
       <input type="text" class="gsa-search" placeholder="Search name, title or epithet..." id="gsa-search" />
+      <span class="gsa-count" id="gsa-count">{characters.length} characters</span>
+    </div>
+    <div class="gsa-toolbar gsa-toolbar-filters">
       <button class="gsa-filter-btn active" data-filter="all">All</button>
       <button class="gsa-filter-btn" data-filter="gacha">In Gacha</button>
-      <button class="gsa-filter-btn" data-filter="female">Female</button>
-      <button class="gsa-filter-btn" data-filter="male">Male</button>
+      {ELEMENT_ORDER.map(n => elByName.get(n) && (
+        <button class="gsa-filter-btn" data-filter={n.toLowerCase()}>
+          <img src={elByName.get(n).icon} alt="" width="14" height="14" loading="lazy" /> {n}
+        </button>
+      ))}
+      <span class="gsa-filter-sep" aria-hidden="true"></span>
+      {jobs.map(j => (
+        <button class="gsa-filter-btn" data-filter={j.toLowerCase()}>{j}</button>
+      ))}
     </div>
     <div class="gsa-grid-cards" id="gsa-grid">
       {characters.map(c => (
-        <a class="gsa-card" href={`/guides/gene-sys-adam/characters/${c.slug}/`} data-search={`${c.name} ${c.nameZh} ${c.title} ${c.epithet}`.toLowerCase()} data-tags={[c.inGacha ? 'gacha' : '', (c.sex || '').toLowerCase()].filter(Boolean).join(' ')}>
+        <a class="gsa-card" href={`/guides/gene-sys-adam/characters/${c.slug}/`} data-search={`${c.name} ${c.nameZh} ${c.title} ${c.epithet} ${c.attackType?.name || ''}`.toLowerCase()} data-tags={[c.inGacha ? 'gacha' : '', (c.element?.name || '').toLowerCase(), (c.job?.name || '').toLowerCase()].filter(Boolean).join(' ')}>
           <div class="gsa-icon-frame">
             {c.icon ? <img src={c.icon} alt={c.name} loading="lazy" /> : <span class="gsa-monogram">{c.name?.[0]}</span>}
           </div>
           <p class="gsa-card-title">{c.name}</p>
-          <p class="gsa-card-sub">{c.title}</p>
-          {c.inGacha && <span class="gsa-chip solid-accent" style="margin-top:6px">Gacha</span>}
+          {c.title && <p class="gsa-card-sub">{c.title}</p>}
+          <div class="gsa-card-types">
+            {c.attackType && (
+              <span class="gsa-type-tile" title={`Attack type: ${c.attackType.name}`}>
+                <img src={c.attackType.icon} alt={c.attackType.name} width="24" height="24" loading="lazy" />
+              </span>
+            )}
+            {c.element && (
+              <span class="gsa-type-tile" title={`Element: ${c.element.name}`}>
+                <img src={c.element.icon} alt={c.element.name} width="24" height="24" loading="lazy" />
+              </span>
+            )}
+            {c.job && (
+              <span class="gsa-type-tile" title={`Job: ${c.job.name}`}>
+                <img src={c.job.icon} alt={c.job.name} width="24" height="24" loading="lazy" />
+              </span>
+            )}
+          </div>
         </a>
       ))}
     </div>
     <p class="gsa-no-results" id="gsa-no-results">No characters match your search.</p>
-  </section>
+  </div>
 </GSALayout>
 
 <script is:inline>
-  // Client-side search and tag filters for the character grid.
+  // Client-side search and element/job/gacha filters for the character grid.
   (function () {
     var search = document.getElementById('gsa-search');
     var grid = document.getElementById('gsa-grid');
     var cards = grid.querySelectorAll('.gsa-card');
     var noResults = document.getElementById('gsa-no-results');
+    var count = document.getElementById('gsa-count');
+    var total = cards.length;
     var activeFilter = 'all';
     function apply() {
       var q = (search.value || '').trim().toLowerCase();
@@ -57,6 +95,7 @@ const characters = gsaCharacters;
         if (ok) visible++;
       });
       noResults.style.display = visible === 0 ? 'block' : 'none';
+      count.textContent = visible === total ? total + ' characters' : visible + ' of ' + total + ' characters';
     }
     search.addEventListener('input', apply);
     document.querySelectorAll('.gsa-filter-btn').forEach(function (btn) {
@@ -69,3 +108,64 @@ const characters = gsaCharacters;
     });
   })();
 </script>
+
+<style>
+  .gsa-count {
+    color: var(--gsa-text-dim);
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+  .gsa-toolbar-filters {
+    margin-bottom: 16px;
+  }
+  .gsa-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .gsa-filter-btn img {
+    display: block;
+  }
+  .gsa-filter-sep {
+    width: 1px;
+    height: 22px;
+    background: var(--gsa-border);
+    margin: 0 4px;
+  }
+  .gsa-icon-frame {
+    position: relative;
+  }
+  .gsa-card-title {
+    margin-top: 10px;
+  }
+  .gsa-card-types {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: auto;
+    padding-top: 12px;
+  }
+  .gsa-type-tile {
+    display: block;
+    line-height: 0;
+  }
+  .gsa-type-tile img {
+    width: 24px;
+    height: 24px;
+    display: block;
+    border-radius: 6px;
+    background: #171114;
+    border: 1px solid var(--gsa-border);
+  }
+  a.gsa-card,
+  a.gsa-card .gsa-card-title {
+    text-decoration: none;
+  }
+  @media (max-width: 640px) {
+    .gsa-count {
+      margin-left: 0;
+    }
+  }
+</style>

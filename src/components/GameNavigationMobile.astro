@@ -6,6 +6,7 @@ import BBMusicPlayer from './busty-burst/BBMusicPlayer.astro';
 import HWMusicPlayer from './horizon-walker/HWMusicPlayer.astro';
 import MajoMusicPlayer from './majo/MajoMusicPlayer.astro';
 import SSMusicPlayer from './stella-sora/SSMusicPlayer.astro';
+import GSAMusicPlayer from './gene-sys-adam/GSAMusicPlayer.astro';
 
 interface Props {
   currentPath?: string;
@@ -73,6 +74,7 @@ const isActive = (href: string) => href === bestMatch;
       {validatedGameKey === 'horizon-walker' && <HWMusicPlayer variant="mobile" />}
       {validatedGameKey === 'majo' && <MajoMusicPlayer variant="mobile" />}
       {validatedGameKey === 'stella-sora' && <SSMusicPlayer variant="mobile" />}
+      {validatedGameKey === 'gene-sys-adam' && <GSAMusicPlayer variant="mobile" />}
     </div>
   </div>
 </nav>

@@ -538,18 +538,7 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
         title: 'Characters',
         links: [
           { name: 'Database', href: '/guides/gene-sys-adam/characters/' },
-        ],
-      },
-      {
-        title: 'Gacha',
-        links: [
-          { name: 'Summon Guide', href: '/guides/gene-sys-adam/gacha/' },
-        ],
-      },
-      {
-        title: 'Resources',
-        links: [
-          { name: 'Items', href: '/guides/gene-sys-adam/items/' },
+          { name: 'Tier List', href: '/guides/gene-sys-adam/tier-list/' },
         ],
       },
     ],

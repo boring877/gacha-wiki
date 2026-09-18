@@ -1,5 +1,5 @@
 ---
-// Landing layout for Gene-Sys: Adam (compact adaptation of the majo landing layout).
+// Landing layout for Gene-Sys: Adam (mirrors the majo/desire-immortal-realm landing layout).
 import GameSEO from '../../components/GameSEO.astro';
 import Analytics from '../../components/Analytics.astro';
 import Header from '../../components/Header.astro';
@@ -7,6 +7,7 @@ import Footer from '../../components/Footer.astro';
 import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
 import MobileMenu from '../../components/MobileMenu.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
 import GSABreadcrumb from '../../components/gene-sys-adam/GSABreadcrumb.astro';
 
 import '../../styles/global.css';
@@ -57,13 +58,28 @@ const seoDescription =
       <div class="gsa-container">
         <main class="gsa-main" id="main-content">
           {heroImage && gameTitle && (
-            <section class="gsa-hero">
-              <img src={heroImage} alt={gameTitle} class="gsa-hero-img" loading="eager" />
+            <section class="gsa-hero-section">
+              <div class="gsa-hero-image-container">
+                <img src={heroImage} alt={gameTitle} class="gsa-hero-image" width={1920} height={1080} loading="eager" decoding="async" />
+                <div class="gsa-hero-overlay" />
+              </div>
+              <h1 class="gsa-title-only-heading">{gameTitle}</h1>
+              <DecorativeLines />
             </section>
           )}
-          <GSABreadcrumb autoGenerate gameKey="gene-sys-adam" currentPageName={crumbName || title} />
-          <h1 class="gsa-page-title">{gameTitle || title}</h1>
-          <slot />
+
+          {!heroImage && gameTitle && (
+            <section class="gsa-title-only-section">
+              <h1 class="gsa-title-only-heading">{gameTitle}</h1>
+              <DecorativeLines />
+            </section>
+          )}
+
+          <GSABreadcrumb autoGenerate gameKey="gene-sys-adam" showBackButton={true} currentPageName={crumbName} />
+
+          <div class="gsa-content-area">
+            <slot />
+          </div>
         </main>
       </div>
       <Footer />

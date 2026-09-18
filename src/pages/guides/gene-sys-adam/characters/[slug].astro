@@ -1,8 +1,11 @@
 ---
-// Gene-Sys: Adam character detail: profile, stats, skills.
+// Gene-Sys: Adam character detail: header card with portrait, base stats,
+// skills with slot unlock stars, growth system, profile (majo-style structure).
 import GSALayout from '../../../../layouts/gene-sys-adam/LandingLayout.astro';
 import { gsaCharacters, getGsaCharacter } from '../../../../data/gene-sys-adam/characters.js';
+import { gsaItems } from '../../../../data/gene-sys-adam/items.js';
 import '../../../../styles/games/gene-sys-adam/gsa-common.css';
+import '../../../../styles/games/gene-sys-adam/gsa-characters.css';
 
 export async function getStaticPaths() {
   return gsaCharacters.map(c => ({ params: { slug: c.slug } }));
@@ -14,212 +17,301 @@ if (!c) return Astro.redirect('/guides/gene-sys-adam/characters/');
 
 const profile = c.profile || {};
 const stats = c.stats || {};
-const statRows = [
+
+// Class Up (Transfer) material: each character's own Promotion Certificate,
+// item id = 200110000 + <cr number> (cr050 Amelie -> 200110050). The other
+// material slots (sigils) are bound at runtime and are not in the tables.
+const cert = (() => {
+  const n = parseInt(String(c.model || '').replace('cr', ''), 10);
+  if (!Number.isFinite(n)) return null;
+  return gsaItems.find(i => i.id === String(200110000 + n)) || null;
+})();
+const resumeParas = profile.resumeParas || (profile.resume ? [profile.resume] : []);
+const statTiles = [
   ['Attack Range', stats.atkRange],
   ['Normal Attack GCD', stats.normalAttackGCD ? `${Number(stats.normalAttackGCD) / 1000}s` : null],
   ['Crit Rate', stats.critPer ? `${Number(stats.critPer) / 100}%` : null],
+  ['Crit Resist', stats.critRstPer ? `${Number(stats.critRstPer) / 100}%` : null],
   ['Crit Amplification', stats.critAmpPer ? `${Number(stats.critAmpPer) / 100}%` : null],
+  ['Crit DMG Reduction', stats.critDmgRdcPer ? `${Number(stats.critDmgRdcPer) / 100}%` : null],
   ['Hit Rate', stats.hitPer ? `${Number(stats.hitPer) / 100}%` : null],
   ['Dodge Rate', stats.ddgPer ? `${Number(stats.ddgPer) / 100}%` : null],
   ['Block Rate', stats.blkPer ? `${Number(stats.blkPer) / 100}%` : null],
-].filter(r => r[1] !== null && r[1] !== undefined && r[1] !== '');
+  ['Block Penetration', stats.blkPenPer ? `${Number(stats.blkPenPer) / 100}%` : null],
+  ['Block Reduction', stats.blkRdcPer ? `${Number(stats.blkRdcPer) / 100}%` : null],
+  ['Heal Crit Rate', stats.healCritPer ? `${Number(stats.healCritPer) / 100}%` : null],
+  ['Heal Crit Amplification', stats.healCritAmpPer ? `${Number(stats.healCritAmpPer) / 100}%` : null],
+  ['ATK Haste', stats.atkHastePer ? `${Number(stats.atkHastePer) / 100}%` : null],
+  ['CD Haste', stats.cdHastePer ? `${Number(stats.cdHastePer) / 100}%` : null],
+].filter(r => r[1] !== null && r[1] !== undefined && r[1] !== '' && Number(String(r[1]).replace('%', '').replace('s', '')) !== 0);
 
-const skillKinds = ['Normal', 'Active', 'Passive'];
-function skillSlot(id) {
-  const tail = Number(String(id).slice(-2));
-  if (tail === 0 || tail === 10) return 'Normal';
-  if (tail % 10 === 0) return 'Passive';
-  return 'Active';
-}
+// Star progression (SkillOpenStateData default row; skillOpenID is NULL for
+// every role, so this unlock ladder is the same for all characters).
+const starUnlocks = [
+  { star: 1, label: 'Loop skill', note: 'Third skill slot' },
+  { star: 2, label: 'Ultimate skill', note: 'Costs 3 EN' },
+  { star: 4, label: 'Passive 1', note: 'Fourth skill slot' },
+  { star: 6, label: 'Passive 2', note: 'Fifth skill slot' },
+  { star: 7, label: 'Passive 3 + SP star', note: 'Star Plus (over-limit) star' },
+];
+
+// Level switcher data: cumulative character EXP (RoleExpData) and per-skill
+// upgrade costs in gold (SkillUpgradeCostData), both straight from the tables.
+const levelData = [
+  { lv: 1, exp: 15, active: 6, loop: 6, p1: 7, p2: 7, awake: 8 },
+  { lv: 10, exp: 19260, active: 59, loop: 62, p1: 65, p2: 65, awake: 77 },
+  { lv: 20, exp: 176460, active: 237, loop: 249, p1: 261, p2: 261, awake: 308 },
+  { lv: 30, exp: 621660, active: 819, loop: 860, p1: 901, p2: 901, awake: 1065 },
+  { lv: 40, exp: 1504860, active: 3575, loop: 3754, p1: 3933, p2: 3933, awake: 4648 },
+  { lv: 50, exp: null, active: 9750, loop: 10238, p1: 10725, p2: 10725, awake: 12675 },
+];
 ---
 
 <GSALayout
   title={c.name}
-  description={`${c.name} (${c.nameZh}) guide for Gene-Sys: Adam: profile, stats, skills${c.title ? `, ${c.title}` : ''}.`}
-  gameTitle={c.name}
+  description={`${c.name} (${c.nameZh}) guide for Gene-Sys: Adam: profile, base stats, skills${c.title ? `, ${c.title}` : ''}.`}
   crumbName={c.name}
 >
-  <section class="gsa-section gsa-detail-head">
-    <div class="gsa-detail-icon">
-      {c.icon ? <img src={c.icon} alt={c.name} /> : <span class="gsa-monogram">{c.name?.[0]}</span>}
-    </div>
-    <div class="gsa-detail-id">
-      <h2 class="gsa-detail-name">{c.name} <span class="gsa-detail-namezh">{c.nameZh}</span></h2>
-      <p class="gsa-detail-title">{c.title}</p>
-      {c.epithet && <p class="gsa-detail-epithet">{c.epithet}</p>}
-      <div class="gsa-detail-chips">
-        {c.inGacha ? <span class="gsa-chip solid-accent">Gacha</span> : <span class="gsa-chip solid-muted">Not in gacha yet</span>}
-        {c.sex && <span class={`gsa-chip ${c.sex === 'Male' ? 'solid-male' : 'solid-female'}`}>{c.sex}</span>}
-        <span class="gsa-chip">{c.model}</span>
+  <div class="gsa-content-section">
+    <div class="gsa-detail-header">
+      {c.icon ? (
+        <img src={c.icon} alt={c.name} class="gsa-detail-art" />
+      ) : (
+        <div class="gsa-detail-art-monogram">{c.name?.[0]}</div>
+      )}
+      <div class="gsa-detail-info">
+        <h1>{c.name}</h1>
+        <p class="gsa-detail-name-zh">{c.nameZh}</p>
+        {c.title && <p class="gsa-detail-title">{c.title}</p>}
+        {c.epithet && <p class="gsa-detail-epithet">{c.epithet}</p>}
+        <div class="gsa-meta">
+          {c.attackType && (
+            <span class="gsa-chip gsa-chip-type" title={`Attack type: ${c.attackType.name}`}>
+              <img src={c.attackType.icon} alt={c.attackType.name} width="20" height="20" loading="lazy" />
+              {c.attackType.name}
+            </span>
+          )}
+          {c.job && (
+            <span class="gsa-chip gsa-chip-type" style={c.job.color ? `background:${c.job.color};color:#fff` : ''}>
+              {c.job.icon && <img src={c.job.icon} alt={c.job.name} width="20" height="20" loading="lazy" />}
+              {c.job.name}
+            </span>
+          )}
+          {c.element && (
+            <span class="gsa-chip gsa-chip-elem">
+              <img src={c.element.icon} alt={c.element.name} width="20" height="20" loading="lazy" />
+              {c.element.name}
+            </span>
+          )}
+          {c.inGacha ? null : <span class="gsa-chip solid-muted">Not in gacha yet</span>}
+        </div>
       </div>
     </div>
-  </section>
 
-  {
-    profile.resume || profile.personality || profile.interest ? (
-      <section class="gsa-section">
-        <h2 class="gsa-section-title">Profile</h2>
-        <div class="gsa-profile-grid">
-          {profile.title && <div class="gsa-profile-row"><span class="gsa-profile-label">Title</span><span>{profile.title}</span></div>}
-          {profile.birthday && profile.birthday !== '-1' && <div class="gsa-profile-row"><span class="gsa-profile-label">Birthday</span><span>{profile.birthday}</span></div>}
-          {profile.age && profile.age !== '-1' && <div class="gsa-profile-row"><span class="gsa-profile-label">Age</span><span>{profile.age}</span></div>}
-          {profile.height && profile.height !== '-1' && <div class="gsa-profile-row"><span class="gsa-profile-label">Height</span><span>{profile.height} cm</span></div>}
-          {profile.weight && profile.weight !== '-1' && <div class="gsa-profile-row"><span class="gsa-profile-label">Weight</span><span>{profile.weight} kg</span></div>}
-          {profile.interest && <div class="gsa-profile-row"><span class="gsa-profile-label">Interests</span><span>{profile.interest}</span></div>}
-          {profile.personality && <div class="gsa-profile-row"><span class="gsa-profile-label">Personality</span><span>{profile.personality}</span></div>}
-        </div>
-        {profile.resume && <p class="gsa-resume">{profile.resume}</p>}
-      </section>
-    ) : null
-  }
-
-  {
-    statRows.length ? (
-      <section class="gsa-section">
-        <h2 class="gsa-section-title">Base Stats</h2>
-        <table class="gsa-table">
-          <tbody>
-            {statRows.map(r => <tr><td style="width:220px" class="gsa-text-dim">{r[0]}</td><td>{r[1]}</td></tr>)}
-          </tbody>
-        </table>
-      </section>
-    ) : null
-  }
-
-  {
-    c.skills && c.skills.length ? (
-      <section class="gsa-section">
-        <h2 class="gsa-section-title">Skills</h2>
-        <div class="gsa-skills">
-          {c.skills.filter(s => !s.name?.includes('+')).map(s => (
-            <div class="gsa-skill">
-              <div class="gsa-skill-head">
-                <span class="gsa-chip solid-gold">{skillSlot(s.id)}</span>
-                <span class="gsa-skill-name">{s.name}</span>
-                {s.cooldown && Number(s.cooldown) > 0 && <span class="gsa-chip">CD {Number(s.cooldown) >= 100 ? `${Number(s.cooldown) / 100}s` : `${s.cooldown}s`}</span>}
-                {s.cost && Number(s.cost) > 0 && <span class="gsa-chip">Cost {Number(s.cost) / 1000}</span>}
-              </div>
-              {s.desc && <p class="gsa-skill-desc">{s.desc}</p>}
-              {s.detail && s.detail !== s.desc && <p class="gsa-skill-detail">{s.detail}</p>}
+    {
+      (profile.birthday || profile.age || profile.height || profile.interest || resumeParas.length) ? (
+        <div class="gsa-detail-section">
+          <h2>Profile</h2>
+          <div class="gsa-facts-list">
+            {c.sex && <div class="gsa-facts-row"><span>Sex</span><b>{c.sex}</b></div>}
+            {profile.birthday && profile.birthday !== '-1' && <div class="gsa-facts-row"><span>Birthday</span><b>{profile.birthday}</b></div>}
+            {profile.age && profile.age !== '-1' && <div class="gsa-facts-row"><span>Age</span><b>{profile.age}</b></div>}
+            {profile.height && profile.height !== '-1' && <div class="gsa-facts-row"><span>Height</span><b>{profile.height} cm</b></div>}
+            {profile.weight && profile.weight !== '-1' && <div class="gsa-facts-row"><span>Weight</span><b>{profile.weight} kg</b></div>}
+            {profile.interest && <div class="gsa-facts-row gsa-facts-long"><span>Interests</span><b>{profile.interest}</b></div>}
+            {profile.personality && <div class="gsa-facts-row gsa-facts-long"><span>Personality</span><b>{profile.personality}</b></div>}
+          </div>
+          {resumeParas.length > 0 && (
+            <div class="gsa-story">
+              <h3 class="gsa-story-title">Story</h3>
+              {resumeParas.map(p => <p>{p}</p>)}
             </div>
-          ))}
+          )}
         </div>
-      </section>
-    ) : null
-  }
-</GSALayout>
-
-<style>
-  .gsa-detail-head {
-    display: flex;
-    gap: 18px;
-    align-items: flex-start;
-  }
-  .gsa-detail-icon {
-    width: 128px;
-    height: 128px;
-    border-radius: 10px;
-    overflow: hidden;
-    background: var(--gsa-bg-tertiary);
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--gsa-border);
-  }
-  .gsa-detail-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .gsa-detail-name {
-    margin: 0;
-    font-size: 1.5rem;
-  }
-  .gsa-detail-namezh {
-    color: var(--gsa-text-dim);
-    font-size: 1rem;
-    font-weight: 400;
-    margin-left: 6px;
-  }
-  .gsa-detail-title {
-    margin: 4px 0 2px;
-    color: var(--gsa-accent-strong);
-    font-weight: 700;
-  }
-  .gsa-detail-epithet {
-    margin: 0 0 8px;
-    color: var(--gsa-text-dim);
-    font-size: 0.9rem;
-  }
-  .gsa-detail-chips {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-  .gsa-profile-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-  .gsa-profile-row {
-    background: var(--gsa-bg-tertiary);
-    border: 1px solid var(--gsa-border);
-    border-radius: 8px;
-    padding: 8px 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    font-size: 0.9rem;
-  }
-  .gsa-profile-label {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--gsa-text-dim);
-    font-weight: 700;
-  }
-  .gsa-resume {
-    line-height: 1.7;
-    color: var(--gsa-text);
-    margin: 0;
-  }
-  .gsa-skills {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .gsa-skill {
-    background: var(--gsa-bg-tertiary);
-    border: 1px solid var(--gsa-border);
-    border-radius: 8px;
-    padding: 12px;
-  }
-  .gsa-skill-head {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 6px;
-  }
-  .gsa-skill-name {
-    font-weight: 700;
-  }
-  .gsa-skill-desc {
-    margin: 0;
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-  .gsa-skill-detail {
-    margin: 6px 0 0;
-    font-size: 0.82rem;
-    color: var(--gsa-text-dim);
-    line-height: 1.6;
-  }
-  @media (max-width: 560px) {
-    .gsa-detail-head {
-      flex-direction: column;
+      ) : null
     }
-  }
-</style>
+
+    <div class="gsa-detail-section" id="gsa-stats-growth">
+      <h2>Stats and Growth</h2>
+
+      <div class="gsa-lv-switcher" id="gsa-lv-switcher">
+        {levelData.map((d, i) => (
+          <button class={`gsa-lv-btn${i === 0 ? ' active' : ''}`} data-lv={d.lv}>Lv {d.lv}</button>
+        ))}
+      </div>
+
+      <div class="gsa-lv-panel" id="gsa-lv-panel"></div>
+
+      <h3 class="gsa-sub-title">Base combat stats (fixed)</h3>
+      <p class="gsa-section-note" style="margin-top:-4px">
+        These rates do not change with level. Levels and stars raise HP and ATK
+        instead, but those growth values are assigned by the game at runtime and
+        are not in the data files, so they cannot be shown here.
+      </p>
+      <div class="gsa-stat-grid">
+        {statTiles.map(([label, value]) => (
+          <div class="gsa-stat-tile">
+            <span class="gsa-stat-value">{value}</span>
+            <span class="gsa-stat-label">{label}</span>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="gsa-sub-title">Star unlocks (dupe system)</h3>
+      <p class="gsa-section-note" style="margin-top:-4px">
+        Stars come from pulling dupes of the character. Each star level unlocks
+        the skills below on top of stat gains.
+      </p>
+      <div class="gsa-star-list">
+        {starUnlocks.map(u => (
+          <div class="gsa-star-row">
+            <span class="gsa-chip solid-gold">{u.star}★</span>
+            <span class="gsa-growth-label">{u.label}</span>
+            <span class="gsa-growth-note">{u.note}</span>
+          </div>
+        ))}
+      </div>
+
+      <h3 class="gsa-sub-title">Class Up materials</h3>
+      {cert ? (
+        <div class="gsa-classmat">
+          {cert.icon && <img src={cert.icon} alt="" width="40" height="40" loading="lazy" />}
+          <div>
+            <p class="gsa-classmat-name">{cert.name}</p>
+            <p class="gsa-section-note">
+              Raising Class tiers costs farmed materials. This character's own
+              certificate is the rare drop of their trial stage; the shared
+              sigil materials are bound by the game at runtime and are not in
+              the data tables.
+            </p>
+          </div>
+        </div>
+      ) : (
+        <p class="gsa-section-note">Class Up materials for this character are not in the item tables yet.</p>
+      )}
+
+      <h3 class="gsa-sub-title">System caps</h3>
+      <div class="gsa-facts-list">
+        <div class="gsa-facts-row"><span>Level cap</span><b>Lv 50</b></div>
+        <div class="gsa-facts-row"><span>Skill levels</span><b>Lv 1 to 99 per skill</b></div>
+        <div class="gsa-facts-row"><span>Ranks</span><b>Rank 0 to 9 per character</b></div>
+        <div class="gsa-facts-row"><span>Stars</span><b>Up to 6★, plus the SP (7th) star</b></div>
+        <div class="gsa-facts-row"><span>Ultimate</span><b>Upgrades passives and loop skills (+ variants)</b></div>
+      </div>
+
+      <p class="gsa-section-note">
+        The level switcher shows, per character level: the total EXP needed to
+        reach it, and the gold cost to upgrade one skill to that level (each
+        skill type has its own cost). EXP values come from the game's level
+        table, costs from its skill upgrade table.
+      </p>
+    </div>
+  </div>
+
+  <script type="application/json" id="gsa-lv-data" set:html={JSON.stringify(levelData)}></script>
+  <script is:inline>
+    // Level switcher: updates EXP required + skill upgrade costs per level.
+    (function () {
+      var dataEl = document.getElementById('gsa-lv-data');
+      var panel = document.getElementById('gsa-lv-panel');
+      if (!dataEl || !panel) return;
+      var levelData = JSON.parse(dataEl.textContent);
+      function fmt(n) {
+        return n.toLocaleString('en-US');
+      }
+      function render(d) {
+        var exp = d.exp === null
+          ? '<span class="gsa-lv-max">Max level</span>'
+          : '<span class="gsa-lv-exp">' + fmt(d.exp) + '</span>';
+        panel.innerHTML =
+          '<div class="gsa-lv-row"><span class="gsa-lv-key">EXP to reach Lv ' + d.lv + '</span>' + exp + '</div>' +
+          '<div class="gsa-lv-row"><span class="gsa-lv-key">Upgrade one skill to Lv ' + d.lv + ' (gold)</span></div>' +
+          '<div class="gsa-lv-costs">' +
+            '<span class="gsa-chip">Active <b>' + fmt(d.active) + '</b></span>' +
+            '<span class="gsa-chip">Loop <b>' + fmt(d.loop) + '</b></span>' +
+            '<span class="gsa-chip">Passive 1 <b>' + fmt(d.p1) + '</b></span>' +
+            '<span class="gsa-chip">Passive 2 <b>' + fmt(d.p2) + '</b></span>' +
+            '<span class="gsa-chip">Ultimate <b>' + fmt(d.awake) + '</b></span>' +
+          '</div>';
+      }
+      render(levelData[0]);
+      document.querySelectorAll('#gsa-lv-switcher .gsa-lv-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.querySelectorAll('#gsa-lv-switcher .gsa-lv-btn').forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          var lv = parseInt(btn.getAttribute('data-lv'), 10);
+          render(levelData.find(function (d) { return d.lv === lv; }));
+        });
+      });
+    })();
+  </script>
+
+    {
+      c.skills && c.skills.length ? (
+        <div class="gsa-detail-section">
+          <h2>Skills</h2>
+          <div class="gsa-skills">
+            {c.skills.map(s => (
+              <div class={`gsa-skill ${s.slot === 'Ultimate' ? 'gsa-skill-ult' : ''}`}>
+                <div class="gsa-skill-head">
+                  <div class="gsa-skill-iconwrap">
+                    {s.icon ? (
+                      <img src={s.icon} alt="" class="gsa-skill-icon" width="52" height="52" loading="lazy" />
+                    ) : (
+                      <span class="gsa-skill-icon gsa-skill-icon-ph" aria-hidden="true"></span>
+                    )}
+                    {s.slot === 'Ultimate' && <span class="gsa-skill-ex">EX</span>}
+                  </div>
+                  <div class="gsa-skill-heading">
+                    <p class="gsa-skill-name">
+                      <span class="gsa-skill-tag">[{s.slot}]</span>
+                      {s.name}
+                    </p>
+                    <div class="gsa-skill-props">
+                      {s.mainStat && <p class="gsa-skill-prop"><span>Main Stat:</span> <b>{s.mainStat}</b></p>}
+                      {s.type && <p class="gsa-skill-prop"><span>Type:</span> <b>{s.type}</b></p>}
+                      {s.cost ? <p class="gsa-skill-prop"><span>Cost:</span> <b>{s.cost} EN</b></p> : null}
+                      {s.gcd ? <p class="gsa-skill-prop"><span>Normal Attack GCD:</span> <b>{s.gcd}</b></p> : null}
+                      {s.cooldown ? <p class="gsa-skill-prop"><span>Cooldown Time:</span> <b>{s.cooldown}</b></p> : null}
+                    </div>
+                  </div>
+                  {s.unlockStar > 0 && <span class="gsa-chip gsa-star-chip">{s.unlockStar}★</span>}
+                </div>
+                {s.desc && s.desc.split('\n').map(line => <p class="gsa-skill-desc">{line}</p>)}
+                {s.detail && <p class="gsa-skill-detail">{s.detail}</p>}
+                {s.awakened && (s.awakened.desc || s.awakened.detail) && (
+                  <div class="gsa-skill-awake">
+                    <span class="gsa-chip solid-accent">Awakened</span>
+                    {s.awakened.desc && s.awakened.desc.split('\n').map(line => <p class="gsa-skill-desc">{line}</p>)}
+                    {s.awakened.detail && <p class="gsa-skill-detail">{s.awakened.detail}</p>}
+                  </div>
+                )}
+                {s.statuses?.length ? (
+                  <div class="gsa-skill-statuses">
+                    {s.statuses.map(st => <span class="gsa-chip solid-muted">{st}</span>)}
+                  </div>
+                ) : null}
+              </div>
+            ))}
+          </div>
+          <p class="gsa-section-note">
+            Skill values shown at level 1. Every skill can be raised from Lv 1 to
+            Lv 99 (gold costs in the growth panel above); the per-level value
+            scaling is computed by the game client at runtime and is not part of
+            the data tables. The star chip marks the star level that unlocks the
+            skill. Main Stat, Type, Cost and Cooldown Time mirror the in-game
+            skill card; skill icons exist only for characters whose art has been
+            pulled from the game so far.
+          </p>
+        </div>
+      ) : (
+        <div class="gsa-detail-section">
+          <h2>Skills</h2>
+          <p class="gsa-text-dim">
+            This character's skill data is not in the live game tables yet (unreleased kit).
+          </p>
+        </div>
+      )
+    }
+  </div>
+</GSALayout>

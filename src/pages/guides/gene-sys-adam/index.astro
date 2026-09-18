@@ -1,130 +1,102 @@
 ---
-// Gene-Sys: Adam landing page: game overview, facts, roster preview.
+// Gene-Sys: Adam game overview landing page (standard wiki landing: hero banner,
+// story, facts, download row, resources — mirrors agent-x/majo structure).
 import GSALayout from '../../../layouts/gene-sys-adam/LandingLayout.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
+import DiscordPromo from '../../../components/DiscordPromo.astro';
 import { gsaCharacters } from '../../../data/gene-sys-adam/characters.js';
+import { SITE } from '../../../consts';
+import '../../../styles/games/gene-sys-adam/gsa-landing.css';
 
 const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam';
-const roster = gsaCharacters;
-const inGacha = roster.filter(c => c.inGacha).length;
-const withArt = roster.filter(c => c.icon).slice(0, 12);
-const facts = [
-  { label: 'Developer', value: 'Neversoft (EROLABS)' },
-  { label: 'Genre', value: 'R18 dark urban revenge RPG, real-time squad combat' },
-  { label: 'Platform', value: 'Android, PC client via EROLABS' },
-  { label: 'Status', value: 'Live' },
-  { label: 'Roster', value: `${roster.length} profiled characters, ${inGacha} in the gacha pool` },
-  { label: 'Data source', value: 'Decrypted live client tables (updated September 2026)' },
-];
+const roster = gsaCharacters.length;
 ---
 
 <GSALayout
   title="Home"
-  description="Gene-Sys: Adam wiki: Sin City revenge RPG on EROLABS. Character database with profiles and skills, gacha machines and rates, item database."
+  description="Gene-Sys: Adam wiki: Sin City revenge RPG on EROLABS. Character database with profiles, stats, skills and growth systems."
   gameTitle="Gene-Sys: Adam"
-  heroImage={`${R2}/gameimg_icon_a.webp`}
+  heroImage={`${R2}/gameimg_hero.webp?v=2`}
 >
-  <section class="gsa-section">
-    <h2 class="gsa-section-title">The Story</h2>
-    <p class="gsa-story-text">
-      <strong>Gene-Sys: Adam</strong> is an R18 dark urban revenge RPG set in a crime-ridden
-      metropolis. You follow Theodore, a mysterious survivor of the plague and countless
-      battlefields, who returns to the land of his birth with a thirst for revenge. Recruit
-      agents from the city's factions, uncover the conspiracy behind the outbreak, and take
-      back the streets in real-time squad combat.
-    </p>
-    <p class="gsa-story-text">
-      The game launched on EROLABS in September 2026. This wiki is built from the live client
-      data: every table on these pages was decrypted from the game files, so numbers match the
-      shipped game exactly.
+  <!-- Ambient background video (opening movie, 60s loop) — full-bleed top, fades out by mid-page -->
+  <div class="gsa-bg-video-wrap" aria-hidden="true">
+    <video class="gsa-bg-video" autoplay muted loop playsinline preload="auto">
+      <source src="/videos/gsa-hero.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <section class="gsa-content-section">
+    <div class="gsa-story">
+      <p>
+        <strong>Gene-Sys: Adam</strong> (黑色基因) is an R18 dark urban revenge RPG set in a
+        crime-ridden metropolis. You follow <strong>Theodore</strong>, a mysterious survivor of
+        the plague and countless battlefields, who returns to the land of his birth with a thirst
+        for revenge. Recruit agents from the city's factions, uncover the conspiracy behind the
+        outbreak, and take back the streets in real-time squad combat.
+      </p>
+      <p>
+        The game launched on EROLABS in September 2026 with a roster of {roster} profiled
+        characters. This wiki is built from the live client data: every table on these pages was
+        decrypted from the game files, so numbers match the shipped game exactly.
+      </p>
+    </div>
+
+    <div class="gsa-download-row">
+      <a
+        class="gsa-download-btn"
+        href="https://www.ero-labs.com/game/gene-sys-adam/66"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Download &amp; Play Gene-Sys: Adam
+        <span class="gsa-download-arrow">→</span>
+      </a>
+
+      <a
+        class="gsa-download-btn gsa-discord-btn"
+        href={SITE.SOCIAL.DISCORD}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg
+          class="gsa-discord-icon"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"
+          />
+        </svg>
+        Join our Discord
+      </a>
+    </div>
+
+    <DiscordPromo accent="#d24a58" />
+
+    <p class="gsa-last-updated">
+      Last Updated: <FormattedDate date={new Date('2026-09-17')} />
     </p>
   </section>
 
-  <section class="gsa-section">
-    <h2 class="gsa-section-title">Game Facts</h2>
-    <div class="gsa-facts-grid">
-      {facts.map(f => (
-        <div class="gsa-fact">
-          <span class="gsa-fact-label">{f.label}</span>
-          <span class="gsa-fact-value">{f.value}</span>
+  <section class="gsa-resources-section">
+    <h2 class="gsa-resources-title">Guides &amp; Resources</h2>
+
+    <div class="gsa-resources-grid">
+      <div class="gsa-resource-category">
+        <div class="gsa-category-header">
+          <h3>Characters</h3>
+          <p class="gsa-category-description">
+            All {roster} profiled characters with stats, skills, profiles and gacha availability.
+          </p>
         </div>
-      ))}
-    </div>
-  </section>
-
-  <section class="gsa-section">
-    <h2 class="gsa-section-title">Roster Preview</h2>
-    <div class="gsa-grid-cards">
-      {withArt.map(c => (
-        <a class="gsa-card" href={`/guides/gene-sys-adam/characters/${c.slug}/`}>
-          <div class="gsa-icon-frame">
-            {c.icon ? <img src={c.icon} alt={c.name} loading="lazy" /> : <span class="gsa-monogram">{c.name?.[0]}</span>}
-          </div>
-          <p class="gsa-card-title">{c.name}</p>
-          <p class="gsa-card-sub">{c.title}</p>
-        </a>
-      ))}
-    </div>
-    <p style="margin-top:14px">
-      <a class="gsa-link-all" href="/guides/gene-sys-adam/characters/">View all {roster.length} characters</a>
-    </p>
-  </section>
-
-  <section class="gsa-section">
-    <h2 class="gsa-section-title">Resources</h2>
-    <div class="gsa-grid-cards">
-      <a class="gsa-card" href="/guides/gene-sys-adam/characters/">
-        <p class="gsa-card-title">Character Database</p>
-        <p class="gsa-card-sub">{roster.length} characters with profiles, stats and skills</p>
-      </a>
-      <a class="gsa-card" href="/guides/gene-sys-adam/gacha/">
-        <p class="gsa-card-title">Gacha Guide</p>
-        <p class="gsa-card-sub">Summon machines, pool rates and guarantees</p>
-      </a>
-      <a class="gsa-card" href="/guides/gene-sys-adam/items/">
-        <p class="gsa-card-title">Item Database</p>
-        <p class="gsa-card-sub">All items with descriptions</p>
-      </a>
+        <div class="gsa-buttons-grid">
+          <a href="/guides/gene-sys-adam/characters/" class="gsa-resource-button">Character Database</a>
+          <a href="/guides/gene-sys-adam/tier-list/" class="gsa-resource-button">Tier List</a>
+        </div>
+      </div>
     </div>
   </section>
 </GSALayout>
-
-<style>
-  .gsa-story-text {
-    color: var(--gsa-text);
-    line-height: 1.7;
-    margin: 0 0 12px;
-  }
-  .gsa-facts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 12px;
-  }
-  .gsa-fact {
-    background: var(--gsa-bg-tertiary);
-    border: 1px solid var(--gsa-border);
-    border-radius: 8px;
-    padding: 10px 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .gsa-fact-label {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--gsa-text-dim);
-    font-weight: 700;
-  }
-  .gsa-fact-value {
-    font-size: 0.92rem;
-    color: var(--gsa-text);
-  }
-  .gsa-link-all {
-    color: var(--gsa-accent-strong);
-    font-weight: 700;
-    text-decoration: none;
-  }
-  a.gsa-card {
-    text-decoration: none;
-  }
-</style>
