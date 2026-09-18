@@ -1,7 +1,8 @@
 ---
-// Gene-Sys: Adam background music player with two selectable tracks:
-// 1 = the game's main theme (Bgm_Main), 2 = the lobby theme (Bgm_lobby3),
-// both extracted from the client's systembgm bundles (mirror-swap descrambled,
+// Gene-Sys: Adam background music player with three selectable tracks:
+// 1 = the official site theme (the landing page's own BGM, 1:10), 2 = the
+// game's main theme (Bgm_Main), 3 = the lobby theme (Bgm_lobby3), tracks 2-3
+// extracted from the client's systembgm bundles (mirror-swap descrambled,
 // UnityPy AudioClip decode, 128k mp3 on R2). Persists across GSA page
 // navigations: preference + track in localStorage, per-track playback position
 // in sessionStorage, autoplay-block fallback resumes on first interaction.
@@ -10,8 +11,9 @@ interface Props {
 }
 const { variant = 'desktop' } = Astro.props;
 const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/audio';
-const MUSIC_SRC = `${R2}/bgm-main.mp3`;
-const MUSIC_SRC_2 = `${R2}/bgm-lobby.mp3`;
+const MUSIC_SRC = `${R2}/bgm-site.mp3`;
+const MUSIC_SRC_2 = `${R2}/bgm-main.mp3`;
+const MUSIC_SRC_3 = `${R2}/bgm-lobby.mp3`;
 ---
 
 <div class={`gsa-music ${variant === 'mobile' ? 'gsa-music-mobile' : ''}`}>
@@ -134,6 +136,7 @@ const MUSIC_SRC_2 = `${R2}/bgm-lobby.mp3`;
       if (!audio || !playBtns.length || !trackBtns.length) return;
 
       var TRACKS = [
+        'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/audio/bgm-site.mp3',
         'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/audio/bgm-main.mp3',
         'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/audio/bgm-lobby.mp3'
       ];
