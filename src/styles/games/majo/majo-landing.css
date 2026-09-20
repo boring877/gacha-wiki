@@ -119,6 +119,22 @@
   display: block;
 }
 
+/* Mobile: swap the ultra-wide loading-screen video for the 16:9 crop
+   (a 2.8:1 strip renders only ~120px tall on phones) */
+.majo-title-video-square {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .majo-title-video-wide {
+    display: none;
+  }
+
+  .majo-title-video-square {
+    display: block;
+  }
+}
+
 .majo-title-video-caption {
   margin: 0.5rem 0 0;
   font-size: 0.78rem;

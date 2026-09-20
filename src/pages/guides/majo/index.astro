@@ -39,14 +39,24 @@ const witches = majoCharacters.length;
     </div>
 
     <div class="majo-title-video-wrap">
+      <!-- Desktop: original ultra-wide loading-screen video; Mobile: 16:9 crop so it is not a thin strip -->
       <video
-        class="majo-title-video"
+        class="majo-title-video majo-title-video-wide"
         controls
         preload="metadata"
         playsinline
         poster={`${R2}/hero.webp`}
       >
         <source src="/videos/majo-title.mp4" type="video/mp4" />
+      </video>
+      <video
+        class="majo-title-video majo-title-video-square"
+        controls
+        preload="metadata"
+        playsinline
+        poster="/videos/majo-title-16x9-poster.jpg"
+      >
+        <source src="/videos/majo-title-16x9.mp4" type="video/mp4" />
       </video>
       <p class="majo-title-video-caption">Title theme, from the game's loading screen</p>
     </div>
