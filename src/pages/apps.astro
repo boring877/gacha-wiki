@@ -35,6 +35,13 @@ const APPS = [
     description: 'Decrypt encrypted Unity bundles, extract game data tables (templets), textures, and sprites from Star Savior.',
     assetPattern: 'setup.exe',
   },
+  {
+    id: 'video-downloader',
+    repo: 'boring877/youtube-mp3-downloader',
+    name: 'Video Downloader',
+    description: 'Download videos and audio from YouTube, X (Twitter), Instagram, TikTok and 1000+ more sites. Saves as MP3, M4A, WAV, OPUS, MP4 or MKV. The full installer bundles everything, no extra installs needed.',
+    assetPattern: 'setup.exe',
+  },
 ];
 
 async function fetchLatestRelease(repo) {
@@ -59,10 +66,14 @@ const apps = await Promise.all(
 
 <HomeLayout
   title={`${SITE_TITLE} - Apps`}
-  description="Download free community tools built for the GachaWiki ecosystem — Voice Type (speech to text), Silver and Blood data extractor, Busty Burst extractor, and more open-source utilities."
+  description="Download free community tools built for the GachaWiki ecosystem: Voice Type (speech to text), Silver and Blood data extractor, Busty Burst extractor, Star Savior extractor, and Video Downloader (YouTube, X and 1000+ sites)."
   keywords={[
     'gachawiki apps',
     'gacha game tools',
+    'Video Downloader',
+    'youtube downloader',
+    'X twitter video download',
+    'mp3 downloader',
     'Voice Type',
     'speech to text',
     'Silver and Blood extractor',
