@@ -23,7 +23,7 @@ export const blogConfig = {
         <p>Almost everyone was surprised by the new Taimanin Squad announcement, but after looking into it more, things start to make sense. The developer is Gremory, the same studio behind Action Taimanin, which has been doing really well. So it seems like Gremory Games is trying to keep that momentum going.</p>
 
         <h2>Game Overview</h2>
-        <p>Taimanin Squad is going to be a turn-based RPG featuring 3D characters. You'll be able to choose 4 characters and fight enemies in turn-based combat. I personally didn't see a speed stat, so I'm not sure how turn order is decided—maybe it's round-based instead?</p>
+        <p>Taimanin Squad is going to be a turn-based RPG featuring 3D characters. You'll be able to choose 4 characters and fight enemies in turn-based combat. I personally didn't see a speed stat, so I'm not sure how turn order is decided, maybe it's round-based instead?</p>
 
         <h2>Combat Systems</h2>
         <p>From what I saw, there will be a crit rate, crit resist, and crit damage system, along with an elemental system featuring fire, water, and wind. There's also what looks like a dark element with no counter? Or maybe it's a non-elemental type. Check our <a href="/guides/taimanin-squad/mechanics/">Mechanics</a> page for a breakdown of these systems.</p>

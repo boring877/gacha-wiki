@@ -22,30 +22,19 @@
   "names": {
     "key": "Tbl_Unit_Name_134",
     "english": "Orc Brawler",
-    "japanese": "Orc Brawler",
-    "korean": "Orc Brawler"
+    "japanese": "オーク暴漢",
+    "korean": "오크 폭력배"
   },
   "lore": {
     "key": "Tbl_Unit_Desc_134",
-    "english": "Among the orcs of the Demon Realm, these kinds have completely settled in the human world, doing tough work for a living. Orcs who have gained experience in crime syndicates of the human world mostly claim their place as the assault commander. With a crude fireaxe and shield to depend their lives on, an orc leading their men into battle is a feared subject among civilians who live in the underworld.",
-    "japanese": "Among the orcs of the Demon Realm, these kinds have completely settled in the human world, doing tough work for a living. Orcs who have gained experience in crime syndicates of the human world mostly claim their place as the assault commander. With a crude fireaxe and shield to depend their lives on, an orc leading their men into battle is a feared subject among civilians who live in the underworld.",
-    "korean": "Among the orcs of the Demon Realm, these kinds have completely settled in the human world, doing tough work for a living. Orcs who have gained experience in crime syndicates of the human world mostly claim their place as the assault commander. With a crude fireaxe and shield to depend their lives on, an orc leading their men into battle is a feared subject among civilians who live in the underworld.",
-    "chinese_simplified": "Among the orcs of the Demon Realm, these kinds have completely settled in the human world, doing tough work for a living. Orcs who have gained experience in crime syndicates of the human world mostly claim their place as the assault commander. With a crude fireaxe and shield to depend their lives on, an orc leading their men into battle is a feared subject among civilians who live in the underworld.",
-    "chinese_traditional": "Among the orcs of the Demon Realm, these kinds have completely settled in the human world, doing tough work for a living. Orcs who have gained experience in crime syndicates of the human world mostly claim their place as the assault commander. With a crude fireaxe and shield to depend their lives on, an orc leading their men into battle is a feared subject among civilians who live in the underworld.",
-    "spanish": "Among the orcs of the Demon Realm, these kinds have completely settled in the human world, doing tough work for a living. Orcs who have gained experience in crime syndicates of the human world mostly claim their place as the assault commander. With a crude fireaxe and shield to depend their lives on, an orc leading their men into battle is a feared subject among civilians who live in the underworld."
+    "english": "Among the orcs of the Demon Realm, these kinds have completely settled in the human world, doing tough work for a living. Orcs who have gained experience in crime syndicates of the human world mostly claim their place as the assault commander. With a crude fireaxe and shield to depend on for their lives, an orc leading their men into battle is feared among civilians who live in the underworld.",
+    "japanese": "魔界の住人・オークの中、人間界に完全に住みつき、荒事で稼いでいる連中。人間界の犯罪組織にてある程度実力を積んだオークの大抵は切り込み隊長に任命される場合が多い。粗末な消防斧とゴツい盾だけに命を委ね、下っ端を連れ添って切り込むオークの姿は、裏社会で生きる小市民たちには恐怖そのもの。",
+    "korean": "마계의 주민 오크 중, 인간계에 완전히 눌러앉아 거친 일을 하며 살아가는 족속들. 인간계의 범죄조직에서 어느 정도 실력을 쌓은 오크들은 보통 돌격대장 자리에 오르는 경우가 많다. 조악한 소방 도끼와 투박한 방패 하나에 목숨줄을 맡긴 채, 부하들을 이끌고 나서는 오크의 모습은, 암흑가에서 살아가는 소시민들에게는 공포의 대상이다.",
+    "chinese_simplified": "魔界居民——兽人中，完全定居于人界、从事粗活的一群人。在人界的犯罪组织中积累了一定实力的兽人，通常都会升任突击队长。他们手持粗劣的消防斧与笨重的盾牌，豁出性命，率领部下冲锋陷阵的身影，对在黑暗世界中挣扎求生的市井小民而言，简直是恐惧的化身。",
+    "chinese_traditional": "魔界居民——獸人中，完全定居於人界、從事粗活的一群人。在人界的犯罪組織中累積了一定實力的獸人，通常都會升任突擊隊長。他們手持粗劣的消防斧與笨重的盾牌，豁出性命，率領部下衝鋒陷陣的身影，對在黑暗世界中掙扎求生的市井小民而言，簡直是恐懼的化身。",
+    "spanish": "Entre los orcos del Reino de los Demonios, estos individuos se han establecido por completo en el mundo humano, ganándose la vida con trabajos pesados. Los orcos que adquieren experiencia dentro de los sindicatos criminales del mundo humano suelen ocupar el cargo de comandante de asalto. Armados con un tosco hacha ígnea y un escudo del que depende su vida, los orcos que lideran a sus hombres en combate son temidos por los civiles que habitan en el inframundo."
   },
   "base_stats": {
-    "HP": 5340,
-    "ATK": 249,
-    "DEF": 238,
-    "SPD": 66,
-    "CRATE": 25,
-    "CDMG": 500,
-    "CRES": 0,
-    "ACC": -50,
-    "EVD": 0
-  },
-  "stats": {
     "HP": 16240,
     "ATK": 765,
     "DEF": 742,
@@ -56,8 +45,19 @@
     "ACC": 0,
     "EVD": 0
   },
+  "stats": {
+    "HP": 30929,
+    "ATK": 1466,
+    "DEF": 1432,
+    "SPD": 66,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 50,
+    "EVD": 0
+  },
   "evol_stat_id": 3,
-  "evol_stat_type": "Balanced",
+  "evol_stat_type": "Support",
   "evolution_bonuses": {
     "1": {
       "HP": 25,
@@ -199,14 +199,14 @@
       "grade": 1,
       "max_level": 10,
       "stats": {
-        "HP": 6984,
-        "ATK": 326,
-        "DEF": 311,
+        "HP": 18461,
+        "ATK": 869,
+        "DEF": 843,
         "SPD": 66,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       },
       "evolution_bonus_total": {
@@ -225,14 +225,14 @@
       "grade": 2,
       "max_level": 20,
       "stats": {
-        "HP": 8810,
-        "ATK": 411,
-        "DEF": 393,
+        "HP": 20930,
+        "ATK": 985,
+        "DEF": 956,
         "SPD": 66,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       },
       "evolution_bonus_total": {
@@ -251,14 +251,14 @@
       "grade": 3,
       "max_level": 30,
       "stats": {
-        "HP": 10636,
-        "ATK": 496,
-        "DEF": 474,
+        "HP": 23398,
+        "ATK": 1102,
+        "DEF": 1069,
         "SPD": 66,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       },
       "evolution_bonus_total": {
@@ -277,14 +277,14 @@
       "grade": 4,
       "max_level": 40,
       "stats": {
-        "HP": 12462,
-        "ATK": 581,
-        "DEF": 555,
+        "HP": 25867,
+        "ATK": 1218,
+        "DEF": 1181,
         "SPD": 66,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       },
       "evolution_bonus_total": {
@@ -303,14 +303,14 @@
       "grade": 5,
       "max_level": 50,
       "stats": {
-        "HP": 14289,
-        "ATK": 666,
-        "DEF": 637,
+        "HP": 28335,
+        "ATK": 1334,
+        "DEF": 1294,
         "SPD": 66,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       },
       "evolution_bonus_total": {
@@ -329,14 +329,14 @@
       "grade": 6,
       "max_level": 60,
       "stats": {
-        "HP": 16115,
-        "ATK": 751,
-        "DEF": 718,
+        "HP": 30804,
+        "ATK": 1451,
+        "DEF": 1407,
         "SPD": 66,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       },
       "evolution_bonus_total": {
@@ -357,14 +357,14 @@
       "level": 10,
       "grade_required": 1,
       "stats": {
-        "HP": 6984,
-        "ATK": 326,
-        "DEF": 311,
+        "HP": 18461,
+        "ATK": 869,
+        "DEF": 843,
         "SPD": 66,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       }
     },
@@ -372,14 +372,14 @@
       "level": 20,
       "grade_required": 2,
       "stats": {
-        "HP": 8810,
-        "ATK": 411,
-        "DEF": 393,
+        "HP": 20930,
+        "ATK": 985,
+        "DEF": 956,
         "SPD": 66,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       }
     },
@@ -387,14 +387,14 @@
       "level": 30,
       "grade_required": 3,
       "stats": {
-        "HP": 10636,
-        "ATK": 496,
-        "DEF": 474,
+        "HP": 23398,
+        "ATK": 1102,
+        "DEF": 1069,
         "SPD": 66,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       }
     },
@@ -402,14 +402,14 @@
       "level": 40,
       "grade_required": 4,
       "stats": {
-        "HP": 12462,
-        "ATK": 581,
-        "DEF": 555,
+        "HP": 25867,
+        "ATK": 1218,
+        "DEF": 1181,
         "SPD": 66,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       }
     },
@@ -417,14 +417,14 @@
       "level": 50,
       "grade_required": 5,
       "stats": {
-        "HP": 14289,
-        "ATK": 666,
-        "DEF": 637,
+        "HP": 28335,
+        "ATK": 1334,
+        "DEF": 1294,
         "SPD": 66,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       }
     },
@@ -432,14 +432,14 @@
       "level": 60,
       "grade_required": 6,
       "stats": {
-        "HP": 16115,
-        "ATK": 751,
-        "DEF": 718,
+        "HP": 30804,
+        "ATK": 1451,
+        "DEF": 1407,
         "SPD": 66,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       }
     }
@@ -453,7 +453,7 @@
       "description": "Swings at the enemy with an axe.\nTarget hit is inflicted with [&Color_Cyan]([V3:1340102]%)[-] [&DefDown] at a [&Color_Cyan][R:1340102]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:1340102] turn(s)",
       "description_key": "Tbl_UnitSkill_Desc_13401",
       "description_readable": "Swings at the enemy with an axe.\nTarget hit is inflicted with (-60%) DEF DOWN at a 30% chance.\nDuration: 2 turn(s)",
-      "type_description": "[&Color_Orange][Normal Attack][-]",
+      "type_description": "[Normal Attack]",
       "type_description_readable": "[Normal Attack]",
       "icon": "13401",
       "cooldown": 0,
@@ -461,18 +461,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": 504.0,
-      "effects": [
-        {
-          "type": "eBOFunc_AddDeBuff/DefDown",
-          "target": "eBOTarget_HitTarget",
-          "duration": 2,
-          "value": -60.0,
-          "rate": 30,
-          "timing": "eBOTiming_OnAction",
-          "condition": ""
-        }
-      ],
+      "multiplier": 0.0,
+      "effects": [],
       "battle_options": "1340101/1340102",
       "battle_option_ids": [
         1340101,
@@ -493,7 +483,7 @@
       "description": "Roars and grants [&Color_Cyan]([V3:1340201]%)[-] [&AtkUp] and [&Color_Cyan]([V3:1340202]%)[-] [&DefUp] to 1 ally.\n[&Common_Word_Skill_ValueTurn]: [V2:1340201] turn(s)",
       "description_key": "Tbl_UnitSkill_Desc_13402",
       "description_readable": "Roars and grants (45%) ATK UP and (45%) DEF UP to 1 ally.\nDuration: 2 turn(s)",
-      "type_description": "[&Color_Orange][Support Skill][-]",
+      "type_description": "[Support Skill]",
       "type_description_readable": "[Support Skill]",
       "icon": "13402",
       "cooldown": 2,
@@ -501,27 +491,8 @@
       "additional_hits": 0,
       "damage_scaling": "",
       "skill_level_scaling": "[B:10]/[B:10]/[B:10]/[B:10]/[B:10]",
-      "multiplier": null,
-      "effects": [
-        {
-          "type": "eBOFunc_AddBuff/AtkUp",
-          "target": "eBOTarget_Ally/1",
-          "duration": 2,
-          "value": 45.0,
-          "rate": 0,
-          "timing": "eBOTiming_Action",
-          "condition": ""
-        },
-        {
-          "type": "eBOFunc_AddBuff/DefUp",
-          "target": "eBOTarget_HitTargetList",
-          "duration": 2,
-          "value": 45.0,
-          "rate": 0,
-          "timing": "eBOTiming_ActionLast",
-          "condition": ""
-        }
-      ],
+      "multiplier": 1.0,
+      "effects": [],
       "battle_options": "1340201/1340202",
       "battle_option_ids": [
         1340201,

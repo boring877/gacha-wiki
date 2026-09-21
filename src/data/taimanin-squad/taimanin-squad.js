@@ -5,7 +5,7 @@ export const taimaninSquadConfig = {
   meta: {
     title: 'Taimanin Squad Wiki - Character Guide & Game Database | GachaWiki',
     description:
-      'Complete Taimanin Squad wiki with character guides, tier lists, and game database. Download now on Google Play, App Store & Galaxy Store. Collecting RPG for Android, iOS & PC.',
+      'Complete Taimanin Squad wiki with character guides, tier lists, and game database. Download now on Steam, Google Play, App Store & Galaxy Store. Collecting RPG for PC, Android & iOS.',
     gameTitle: 'Taimanin Squad',
     heroImage: '/images/games/taimanin-squad/taimanin-squad.jpg',
   },
@@ -17,11 +17,12 @@ export const taimaninSquadConfig = {
     apkUrl: 'https://mega.nz/file/tX0mFIhb#aM_xCfLpPuMSp-WlQlBVy9Ds5xxrXHDvsYc43MGGHW8',
     appStoreUrl: 'https://apps.apple.com/us/app/taimanin-squad/id6755016024',
     galaxyStoreUrl: 'https://galaxystore.samsung.com/detail/com.GREMORYGames.TaimaninSquad.Galaxy',
+    steamUrl: 'https://store.steampowered.com/app/4195470/Taimanin_Squad/',
     lastUpdated: new Date(),
     status: 'released',
     launch: 'Official Launch: March 1, 2026 13:00 UTC - Open Beta Ends!',
     developer: 'Gremory Games Inc.',
-    platforms: ['Android', 'iOS', 'PC'],
+    platforms: ['PC (Steam)', 'Android', 'iOS'],
     socialLinks: {
       website: 'https://taimaninsquad.com/',
     },

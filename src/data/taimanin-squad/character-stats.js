@@ -8,7 +8,7 @@ const GAME_CONFIG = {
 };
 
 const STAT_GROWTH_FORMULA = {
-  description: "HP/ATK/DEF: Base * (1 + (Level-1) * 0.018 * RarityRate) + EvolBonus. SPD/CRATE/CDMG/etc only get evolution bonuses.",
+  description: "HP/ATK/DEF: Base * (1 + (Level-1) * 0.008 * RarityRate) + EvolBonus. SPD/CRATE/CDMG/etc only get evolution bonuses. Growth scalar rebalanced (1.8 to 0.8) with the September 2026 stat rescale.",
 };
 
 export function getAllCharacterStats() {

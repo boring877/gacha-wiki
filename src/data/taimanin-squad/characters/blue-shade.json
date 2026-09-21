@@ -15,37 +15,26 @@
   "icon": "208_Shadow2",
   "model": "208_Shadow2/Unit/prf_208",
   "animation_event": "208_shadow2",
-  "book_index": 0,
+  "book_index": 15,
   "acquisition_id": 10001,
   "btl_power": 5800,
   "btl_rate": 353035,
   "names": {
     "key": "Tbl_Unit_Name_208",
     "english": "Blue Shade",
-    "japanese": "Blue Shade",
-    "korean": "Blue Shade"
+    "japanese": "ブルーシェード",
+    "korean": "블루 셰이드"
   },
   "lore": {
     "key": "Tbl_Unit_Desc_208",
-    "english": "Shadow 2 (Black Skin)",
-    "japanese": "Shadow 2 (Black Skin)",
-    "korean": "Shadow 2 (Black Skin)",
-    "chinese_simplified": "Shadow 2 (Black Skin)",
-    "chinese_traditional": "Shadow 2 (Black Skin)",
-    "spanish": "Shadow 2 (Black Skin)"
+    "english": "An entity manifested when a shadow spirit possesses the physical flesh of the deceased that had been corrupted by the miasma of the Demon Realm.\n\nShrouded in dense miasma, it mesmerizes humans from the shadows, silently devouring their life energy.",
+    "japanese": "影の霊体が魔界の瘴気に浸食され、死者の肉体を得て実体化した存在。\n\n肉体に濃い瘴気を纏い、闇の中で人間を惑わせ、音もなく生命エネルギーを貪る。",
+    "korean": "그림자 영체가 마계의 독기에 침식되어 죽은 자의 육신을 얻어 실체화한 존재이다.\n\n육체에 짙은 독기를 휘감아 어둠 속에서 인간을 현혹하여, 소리 없이 생명 에너지를 탐식한다.",
+    "chinese_simplified": "阴影灵体受魔界瘴气侵蚀，在获得死者肉身后实体化的形态。\n\n厚重瘴气缠绕于肉身，她们潜伏于黑暗中，通过诱惑人类，悄无声息地贪婪吸食生命能量。",
+    "chinese_traditional": "陰影靈體受魔界瘴氣侵蝕，在獲得死者肉身後實體化的形態。\n\n厚重瘴氣纏繞於肉身，她們潛伏於黑暗中，透過誘惑人類，悄無聲息地貪婪吸食生命能量。",
+    "spanish": "Entidad materializada cuando un espíritu sombrío, corrompido por la energía maligna del Mundo Demoníaco, obtiene el cuerpo de un difunto.\n\nEnvuelve su cuerpo con una densa aura de energía maligna y, oculto en las sombras, atrae a los humanos para devorar silenciosamente su energía vital."
   },
   "base_stats": {
-    "HP": 5340,
-    "ATK": 226,
-    "DEF": 261,
-    "SPD": 72,
-    "CRATE": 25,
-    "CDMG": 500,
-    "CRES": 0,
-    "ACC": -50,
-    "EVD": 0
-  },
-  "stats": {
     "HP": 16240,
     "ATK": 696,
     "DEF": 812,
@@ -56,8 +45,19 @@
     "ACC": 0,
     "EVD": 0
   },
+  "stats": {
+    "HP": 30929,
+    "ATK": 1335,
+    "DEF": 1565,
+    "SPD": 72,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 50,
+    "EVD": 0
+  },
   "evol_stat_id": 3,
-  "evol_stat_type": "Balanced",
+  "evol_stat_type": "Support",
   "evolution_bonuses": {
     "1": {
       "HP": 25,
@@ -199,14 +199,14 @@
       "grade": 1,
       "max_level": 10,
       "stats": {
-        "HP": 6984,
-        "ATK": 296,
-        "DEF": 341,
+        "HP": 18461,
+        "ATK": 791,
+        "DEF": 923,
         "SPD": 72,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       },
       "evolution_bonus_total": {
@@ -225,14 +225,14 @@
       "grade": 2,
       "max_level": 20,
       "stats": {
-        "HP": 8810,
-        "ATK": 373,
-        "DEF": 431,
+        "HP": 20930,
+        "ATK": 897,
+        "DEF": 1046,
         "SPD": 72,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       },
       "evolution_bonus_total": {
@@ -251,14 +251,14 @@
       "grade": 3,
       "max_level": 30,
       "stats": {
-        "HP": 10636,
-        "ATK": 450,
-        "DEF": 520,
+        "HP": 23398,
+        "ATK": 1002,
+        "DEF": 1169,
         "SPD": 72,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       },
       "evolution_bonus_total": {
@@ -277,14 +277,14 @@
       "grade": 4,
       "max_level": 40,
       "stats": {
-        "HP": 12462,
-        "ATK": 527,
-        "DEF": 609,
+        "HP": 25867,
+        "ATK": 1108,
+        "DEF": 1293,
         "SPD": 72,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       },
       "evolution_bonus_total": {
@@ -303,14 +303,14 @@
       "grade": 5,
       "max_level": 50,
       "stats": {
-        "HP": 14289,
-        "ATK": 605,
-        "DEF": 698,
+        "HP": 28335,
+        "ATK": 1214,
+        "DEF": 1416,
         "SPD": 72,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       },
       "evolution_bonus_total": {
@@ -329,14 +329,14 @@
       "grade": 6,
       "max_level": 60,
       "stats": {
-        "HP": 16115,
-        "ATK": 682,
-        "DEF": 788,
+        "HP": 30804,
+        "ATK": 1320,
+        "DEF": 1540,
         "SPD": 72,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       },
       "evolution_bonus_total": {
@@ -357,14 +357,14 @@
       "level": 10,
       "grade_required": 1,
       "stats": {
-        "HP": 6984,
-        "ATK": 296,
-        "DEF": 341,
+        "HP": 18461,
+        "ATK": 791,
+        "DEF": 923,
         "SPD": 72,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       }
     },
@@ -372,14 +372,14 @@
       "level": 20,
       "grade_required": 2,
       "stats": {
-        "HP": 8810,
-        "ATK": 373,
-        "DEF": 431,
+        "HP": 20930,
+        "ATK": 897,
+        "DEF": 1046,
         "SPD": 72,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       }
     },
@@ -387,14 +387,14 @@
       "level": 30,
       "grade_required": 3,
       "stats": {
-        "HP": 10636,
-        "ATK": 450,
-        "DEF": 520,
+        "HP": 23398,
+        "ATK": 1002,
+        "DEF": 1169,
         "SPD": 72,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       }
     },
@@ -402,14 +402,14 @@
       "level": 40,
       "grade_required": 4,
       "stats": {
-        "HP": 12462,
-        "ATK": 527,
-        "DEF": 609,
+        "HP": 25867,
+        "ATK": 1108,
+        "DEF": 1293,
         "SPD": 72,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       }
     },
@@ -417,14 +417,14 @@
       "level": 50,
       "grade_required": 5,
       "stats": {
-        "HP": 14289,
-        "ATK": 605,
-        "DEF": 698,
+        "HP": 28335,
+        "ATK": 1214,
+        "DEF": 1416,
         "SPD": 72,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       }
     },
@@ -432,14 +432,14 @@
       "level": 60,
       "grade_required": 6,
       "stats": {
-        "HP": 16115,
-        "ATK": 682,
-        "DEF": 788,
+        "HP": 30804,
+        "ATK": 1320,
+        "DEF": 1540,
         "SPD": 72,
         "CRATE": 25,
         "CDMG": 500,
         "CRES": 0,
-        "ACC": -50,
+        "ACC": 0,
         "EVD": 0
       }
     }
@@ -453,7 +453,7 @@
       "description": "Gracefully jumps and attacks the enemy 2 times.\nPerforms a [&Common_Word_Skill_ShieldPenetrate] attack.",
       "description_key": "Tbl_UnitSkill_Desc_20801",
       "description_readable": "Gracefully jumps and attacks the enemy 2 times.\nPerforms a Shield Penetrate attack.",
-      "type_description": "[&Color_Orange][Normal Attack][-]",
+      "type_description": "[Normal Attack]",
       "type_description_readable": "[Normal Attack]",
       "icon": "20801",
       "cooldown": 0,
@@ -461,7 +461,7 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": 252.0,
+      "multiplier": 0.0,
       "effects": [],
       "battle_options": "2080101/2080102",
       "battle_option_ids": [
@@ -483,7 +483,7 @@
       "description": "Absorbs an enemy's energy, attacking them 4 times.\nEach attack absorbs [&Common_Word_Skill_TurnGauge] by [&Color_Cyan]([V3:2080202]%)[-] at a [&Color_Cyan][R:2080202]%[-] chance.",
       "description_key": "Tbl_UnitSkill_Desc_20802",
       "description_readable": "Absorbs an enemy's energy, attacking them 4 times.\nEach attack absorbs Turn Gauge by (12.5%) at a 10% chance.",
-      "type_description": "[&Color_Orange][Attack Skill][-]",
+      "type_description": "[Attack Skill]",
       "type_description_readable": "[Attack Skill]",
       "icon": "20802",
       "cooldown": 3,
@@ -491,17 +491,8 @@
       "additional_hits": 0,
       "damage_scaling": "[ATK]",
       "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": 184.6,
-      "effects": [
-        {
-          "type": "eBOFunc_TurnGaugeDrain",
-          "target": "eBOTarget_HitTarget",
-          "value": 12.5,
-          "rate": 10,
-          "timing": "eBOTiming_OnAction",
-          "condition": ""
-        }
-      ],
+      "multiplier": 0.0,
+      "effects": [],
       "battle_options": "2080201/2080202",
       "battle_option_ids": [
         2080201,

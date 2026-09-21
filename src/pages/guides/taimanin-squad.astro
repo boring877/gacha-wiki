@@ -40,7 +40,7 @@ const breadcrumbs = [
       "@type": "WebSite",
       "name": "Taimanin Squad Wiki - Game Guide & Database",
       "url": "https://gachawiki.info/guides/taimanin-squad/",
-      "description": "Complete Taimanin Squad wiki with character guides, tier lists, and game database. Download now on Google Play, App Store, and Galaxy Store.",
+      "description": "Complete Taimanin Squad wiki with character guides, tier lists, and game database. Download now on Steam, Google Play, App Store, and Galaxy Store.",
       "publisher": {
         "@type": "Organization",
         "name": "GachaWiki",
@@ -85,6 +85,9 @@ const breadcrumbs = [
 
     <!-- Play Game Buttons -->
     <div class="play-button-container">
+      <a href={gameInfo.steamUrl} target="_blank" rel="noopener noreferrer" class="play-button">
+        Steam
+      </a>
       <a href={gameInfo.playUrl} target="_blank" rel="noopener noreferrer" class="play-button">
         Google Play
       </a>
