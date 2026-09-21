@@ -18,9 +18,10 @@ import '../styles/pages/about.css';
 export interface Props {
   title: string;
   description?: string;
+  keywords?: string[];
 }
 
-const { title, description } = Astro.props;
+const { title, description, keywords } = Astro.props;
 ---
 
 <html lang="en">
@@ -29,7 +30,7 @@ const { title, description } = Astro.props;
     <GeneralSEO
       title={title}
       description={description || 'Learn about GachaWiki - your comprehensive guide to gacha games'}
-      keywords={['about gachawiki', 'gacha wiki info', 'gaming guides', 'about us']}
+      keywords={keywords || ['about gachawiki', 'gacha wiki info', 'gaming guides', 'about us']}
       pageType="website"
     />
     <Analytics />

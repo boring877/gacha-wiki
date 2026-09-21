@@ -56,13 +56,9 @@
 
 .mlgg-story p {
   color: var(--mlgg-text-secondary);
-  line-height: 1.75;
+  line-height: 1.7;
   margin-bottom: 1rem;
-  font-size: 0.98rem;
-}
-
-.mlgg-story strong {
-  color: var(--mlgg-text-primary);
+  font-size: 0.9375rem;
 }
 
 .mlgg-download-row {
@@ -71,7 +67,12 @@
   justify-content: center;
   gap: 0.8rem;
   flex-wrap: wrap;
-  margin: 1.5rem 0;
+  margin: 1.5rem 0 0;
+}
+
+/* secondary official/community links on their own centered line below the Steam buttons */
+.mlgg-download-row.mlgg-download-row-secondary {
+  margin: 0.7rem 0 1.5rem;
 }
 
 .mlgg-download-btn {
@@ -84,7 +85,7 @@
   border-radius: 8px;
   padding: 0.85rem 1.4rem;
   font-weight: 700;
-  font-size: 0.98rem;
+  font-size: 0.9375rem;
   text-decoration: none;
 }
 
@@ -92,7 +93,7 @@
   font-size: 1.05rem;
 }
 
-/* secondary official links beside the primary DMM button */
+/* secondary official links (tinted, quieter than the solid Steam buttons) */
 .mlgg-download-ghost {
   display: inline-flex;
   align-items: center;
@@ -102,14 +103,14 @@
   border-radius: 8px;
   padding: 0.85rem 1.2rem;
   font-weight: 600;
-  font-size: 0.92rem;
+  font-size: 0.875rem;
   text-decoration: none;
   white-space: nowrap;
 }
 
 .mlgg-last-updated {
   color: var(--mlgg-text-tertiary);
-  font-size: 0.85rem;
+  font-size: 0.8125rem;
   margin-top: 1rem;
   text-align: center;
 }
@@ -123,7 +124,7 @@
 }
 
 .mlgg-resources-title {
-  font-size: 2rem;
+  font-size: 1.375rem;
   font-weight: 700;
   text-align: center;
   color: var(--mlgg-accent-light);
@@ -144,14 +145,14 @@
 }
 
 .mlgg-category-header h3 {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--mlgg-text-primary);
   margin-bottom: 0.4rem;
 }
 
 .mlgg-category-description {
   color: var(--mlgg-text-tertiary);
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   margin-bottom: 0.9rem;
   line-height: 1.5;
 }
@@ -168,7 +169,7 @@
   color: var(--mlgg-accent-light);
   border-radius: 8px;
   padding: 0.55rem 0.95rem;
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;

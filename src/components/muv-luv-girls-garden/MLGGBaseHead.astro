@@ -9,7 +9,7 @@ export interface Props {
 
 const {
   title = SITE_TITLE,
-  description = 'Muv-Luv Girls Garden Wiki - Character Database, Cards, Teams & Pilot Profiles',
+  description = 'Muv-Luv Girls Garden Wiki - Student List, Style Cards, Teams & Profiles',
 } = Astro.props;
 
 const metaTitle =
@@ -40,6 +40,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 <link rel="preload" href="/fonts/space-grotesk-600.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/fonts/dm-sans-600.woff2" as="font" type="font/woff2" crossorigin />
 
+<!-- Rounded display font matching the game's UI typography (FOT Rodin NTLG Pro look) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800&display=swap" />
+
 <meta name="game:title" content="Muv-Luv Girls Garden マブラヴ ガールズガーデン" />
 <meta name="game:genre" content="Idle RPG, Gacha, School" />
 <meta name="game:platform" content="PC, Android, iOS" />
@@ -53,7 +58,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
     name: 'Muv-Luv Girls Garden',
     alternateName: ['マブラヴ ガールズガーデン', 'マブガル'],
     description:
-      'Idle RPG set at the academy city Zaltoom in the Muv-Luv universe. Pilots dive into the underground Maze in giant Maze Guarder mechs. Japan-only release on DMM GAMES.',
+      'Full-auto idle RPG set at the academy city of Zar\'tum in the Muv-Luv universe. Students dive into the underground Maze in giant Maze Guarder mechs. Live in Japan on DMM GAMES and coming worldwide to Steam.',
     genre: ['Idle RPG', 'Gacha', 'School'],
     applicationCategory: 'Game',
     operatingSystem: 'PC, Android, iOS',

@@ -1,0 +1,390 @@
+/* Collector bed hero for MLGG Style Card pages: replicates the game's
+   Style Card acquisition layout (dotted circle + character art + info
+   panel + rarity/title/name block) using official game assets. */
+.mlgg-collector {
+  position: relative;
+  aspect-ratio: 16 / 8.4;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #dfe6f2;
+  box-shadow: 0 14px 34px rgba(10, 16, 28, 0.35);
+}
+.mlgg-collector-bgimg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mlgg-collector-dots {
+  position: absolute;
+  left: 4%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #aedcf5;
+  background-image: radial-gradient(circle, #ffffff 26%, transparent 28%);
+  background-size: 34px 34px;
+  opacity: 0.92;
+  box-shadow: inset 0 0 0 12px rgba(255, 255, 255, 0.35);
+}
+.mlgg-collector-dots::after {
+  content: '';
+  position: absolute;
+  inset: -22px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+}
+.mlgg-collector-art {
+  position: absolute;
+  left: 5%;
+  bottom: 0;
+  width: 42%;
+  height: 97%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.mlgg-collector-art .mlgg-collector-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom;
+  filter: drop-shadow(0 16px 22px rgba(30, 50, 90, 0.28));
+}
+/* Opaque scene illustrations (n=3 exclusive art, small card icons): render
+   as a framed portrait instead of a cutout, since there is no alpha. */
+.mlgg-collector-art.is-framed {
+  align-items: center;
+}
+.mlgg-collector-art.is-framed .mlgg-collector-img {
+  width: 76%;
+  height: 86%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 22px;
+  border: 6px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 22px 40px rgba(30, 50, 90, 0.35);
+  filter: none;
+}
+/* Icon-only cards (no demo art): keep the small icon near native size in a
+   neat little frame instead of blowing it up. */
+.mlgg-collector-art.is-lowres .mlgg-collector-img {
+  width: auto;
+  height: auto;
+  max-width: 64%;
+  max-height: 62%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 12px;
+  border-width: 4px;
+}
+.mlgg-collector-who {
+  position: absolute;
+  left: 4.5%;
+  bottom: 5.5%;
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  padding: 10px 18px;
+  backdrop-filter: blur(3px);
+}
+.mlgg-collector-rarity {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+}
+.mlgg-collector-title {
+  font-family: 'M PLUS Rounded 1c', 'Hiragino Maru Gothic ProN', 'Yu Gothic UI', sans-serif;
+  font-size: clamp(15px, 1.7vw, 24px);
+  font-weight: 800;
+  color: #151e2f;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
+  line-height: 1.2;
+}
+.mlgg-collector-panel {
+  position: absolute;
+  right: 3.5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46%;
+  max-width: 560px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 3px solid #a8d8f0;
+  border-radius: 18px;
+  padding: 20px 26px 12px;
+  box-shadow: 0 14px 30px rgba(40, 60, 100, 0.2);
+}
+.mlgg-collector-os-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #8a97a8;
+  text-align: center;
+}
+.mlgg-collector-osline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.mlgg-collector-emblem {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex: none;
+  background: #151e2f;
+  border-radius: 50%;
+  padding: 7px;
+}
+.mlgg-collector-os {
+  text-align: center;
+  font-family: 'M PLUS Rounded 1c', 'Hiragino Maru Gothic ProN', 'Yu Gothic UI', sans-serif;
+  font-size: clamp(20px, 2.6vw, 34px);
+  line-height: 1.15;
+  font-weight: 800;
+  color: #151e2f;
+  letter-spacing: 0.5px;
+  margin: 2px 0 12px;
+}
+.mlgg-collector-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 0;
+  border-top: 2px dotted #b9c6d4;
+}
+.mlgg-collector-row:first-of-type {
+  border-top: 0;
+}
+.mlgg-collector-label {
+  flex: none;
+  width: 108px;
+  text-align: center;
+  background: linear-gradient(180deg, #7b8794, #5d6976);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 5px 0;
+  letter-spacing: 0.4px;
+}
+.mlgg-collector-icon {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  flex: none;
+}
+.mlgg-collector-value {
+  font-size: clamp(15px, 1.6vw, 21px);
+  font-weight: 600;
+  color: #25314a;
+}
+/* The student info block keeps living under the stage. */
+.mlgg-detail-info-solo {
+  margin-top: 18px;
+}
+
+/* Style Card tile grid for the global list page: the game's collection
+   screen shrunk to a card, one tile per Style Card. */
+/* Official 360x640 portrait fills the tile bed. */
+.mlgg-sctile-portrait {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.mlgg-sctile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.mlgg-sctile {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  background: var(--mlgg-bg-card);
+  border: 1px solid var(--mlgg-border);
+  border-radius: 14px;
+  overflow: hidden;
+  color: var(--mlgg-text-primary);
+}
+.mlgg-sctile-bed {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #dfe6f2;
+}
+.mlgg-sctile-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mlgg-sctile-dots {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  transform: translate(-50%, -50%);
+  width: 74%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #aedcf5;
+  background-image: radial-gradient(circle, #ffffff 26%, transparent 28%);
+  background-size: 22px 22px;
+  opacity: 0.92;
+  box-shadow: inset 0 0 0 8px rgba(255, 255, 255, 0.35);
+}
+.mlgg-sctile-art {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 74%;
+  height: 97%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.mlgg-sctile-art .mlgg-sctile-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom;
+  filter: drop-shadow(0 10px 14px rgba(30, 50, 90, 0.28));
+}
+/* Opaque scene art fills the whole tile bed, like a full-bleed card
+   illustration; only icon fallbacks sit in a small frame. */
+.mlgg-sctile-art.is-framed {
+  align-items: center;
+}
+.mlgg-sctile-art.is-framed .mlgg-sctile-img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: center 22%;
+  border-radius: 0;
+  border: 0;
+  box-shadow: none;
+  filter: none;
+}
+.mlgg-sctile-art.is-framed.is-lowres .mlgg-sctile-img {
+  width: auto;
+  height: auto;
+  max-width: 58%;
+  max-height: 58%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 8px;
+  border: 3px solid rgba(255, 255, 255, 0.95);
+}
+.mlgg-sctile-plate {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px 6px;
+}
+.mlgg-sctile-rarity {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  flex: none;
+}
+.mlgg-sctile-names {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.mlgg-sctile-title {
+  font-family: 'M PLUS Rounded 1c', 'Hiragino Maru Gothic ProN', 'Yu Gothic UI', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--mlgg-text-primary);
+  line-height: 1.25;
+}
+.mlgg-sctile-student {
+  font-size: 0.8rem;
+  color: var(--mlgg-text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mlgg-sctile-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  padding: 6px 12px 10px;
+  font-size: 0.78rem;
+  color: var(--mlgg-text-secondary);
+}
+.mlgg-sctile-max {
+  color: var(--mlgg-accent-light);
+  font-weight: 700;
+}
+.mlgg-sctile-power em {
+  font-style: normal;
+  color: var(--mlgg-text-tertiary);
+  margin-right: 3px;
+}
+
+@media (max-width: 760px) {
+  .mlgg-collector {
+    aspect-ratio: auto;
+    min-height: 0;
+  }
+  .mlgg-collector-bgimg {
+    display: none;
+  }
+  .mlgg-collector-dots {
+    display: none;
+  }
+  .mlgg-collector-art,
+  .mlgg-collector-art.is-framed {
+    position: static;
+    width: 100%;
+    height: auto;
+    background: #dfe6f2;
+    padding: 18px 12px 6px;
+  }
+  .mlgg-collector-art .mlgg-collector-img,
+  .mlgg-collector-art.is-framed .mlgg-collector-img {
+    max-height: 420px;
+    width: auto;
+  }
+  .mlgg-collector-panel {
+    position: static;
+    transform: none;
+    width: 100%;
+    max-width: none;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+  }
+  .mlgg-collector-who {
+    position: static;
+    padding: 10px 14px 14px;
+    background: #eef2f7;
+  }
+}

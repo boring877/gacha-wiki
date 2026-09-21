@@ -1,6 +1,6 @@
 ---
 // Muv-Luv Girls Garden tier list page: Japanese community placements from
-// kamigame.jp across four categories, rendered as tier rows of pilot chips.
+// kamigame.jp across four categories, rendered as tier rows of student chips.
 import MLGGLayout from '../../../layouts/muv-luv-girls-garden/LandingLayout.astro';
 import MLGGImage from '../../../components/muv-luv-girls-garden/MLGGImage.astro';
 import { girlsGardenCharacters } from '../../../data/muv-luv-girls-garden/characters.js';
@@ -11,14 +11,16 @@ import {
   TIER_NOTES,
   MLGG_TIER_PLACEMENTS,
 } from '../../../data/muv-luv-girls-garden/tier-list.js';
+import { mlggVariantHref } from '../../../data/muv-luv-girls-garden/default-variant.js';
 import '../../../styles/games/muv-luv-girls-garden/mlgg-common.css';
 import '../../../styles/games/muv-luv-girls-garden/mlgg-tier.css';
 
 const bySlug = new Map(girlsGardenCharacters.map(c => [c.slug, c]));
 
-// Pilot chip icon: newest card style, same convention as the pilot database.
+// Student chip icon: newest Style Card, same convention as the student list.
 function newestIcon(ch) {
-  return ch.cards[ch.cards.length - 1].icon;
+  const newest = ch.cards[ch.cards.length - 1];
+  return newest.iconEn || newest.icon;
 }
 
 const updated = new Date(`${TIER_SOURCE.updated}T00:00:00Z`).toLocaleDateString('en-US', {
@@ -31,7 +33,7 @@ const updated = new Date(`${TIER_SOURCE.updated}T00:00:00Z`).toLocaleDateString(
 
 <MLGGLayout
   title="Tier List - Muv-Luv Girls Garden"
-  description="Muv-Luv Girls Garden (マブラヴ ガールズガーデン) pilot tier list from the Japanese community: Overall, Maze Exploration, Tactical Exercise and No Limit Break rankings for all 51 pilots."
+  description="Muv-Luv Girls Garden (マブラヴ ガールズガーデン) tier list from the Japanese community: Overall, Maze Exploration, Tactical Exercise and No Limit Break rankings for all 51 students."
   gameTitle="Tier List"
 >
   <div class="mlgg-tier-container">
@@ -39,9 +41,9 @@ const updated = new Date(`${TIER_SOURCE.updated}T00:00:00Z`).toLocaleDateString(
       <p>
         Tier placements come from the Japanese community source
         <a href={TIER_SOURCE.url} target="_blank" rel="noopener noreferrer">{TIER_SOURCE.name}</a>
-        (最強キャラランキング, updated {updated}), mapped onto this wiki's pilot database.
-        A pilot sits in the tier of their best-ranked card: the source scores individual
-        card styles, so the same pilot can appear in two tiers there. See also the
+        (最強キャラランキング, updated {updated}), mapped onto this wiki's student list.
+        A student sits in the tier of their best-ranked card: the source scores individual
+        Style Cards, so the same student can appear in two tiers there. See also the
         <a href={TIER_SOURCE.secondary.url} target="_blank" rel="noopener noreferrer">Gamerch tier ranking</a>.
       </p>
       {TIER_NOTES.map(note => <p>{note}</p>)}
@@ -78,17 +80,17 @@ const updated = new Date(`${TIER_SOURCE.updated}T00:00:00Z`).toLocaleDateString(
                   if (!ch) return null;
                   return (
                     <a
-                      href={`/guides/muv-luv-girls-garden/characters/${ch.slug}/`}
+                      href={mlggVariantHref(ch.slug)}
                       class="mlgg-tier-chip"
                     >
                       <MLGGImage
                         path={newestIcon(ch)}
-                        alt={`${ch.name} card style`}
+                        alt={`${ch.name} Style Card`}
                         width={40}
                         height={40}
                       />
                       <span class="mlgg-tier-chip-name">
-                        {ch.romaji}
+                        {ch.nameEn || ch.romaji}
                         <span class="mlgg-tier-chip-jp">{ch.name}</span>
                       </span>
                     </a>
@@ -102,7 +104,7 @@ const updated = new Date(`${TIER_SOURCE.updated}T00:00:00Z`).toLocaleDateString(
     ))}
 
     <p class="mlgg-tier-footnote">
-      Source order within a tier follows the pilot database roster. Rankings reflect the
+      Source order within a tier follows the student list roster. Rankings reflect the
       Japanese release meta as of {updated} and will change as new cards ship.
     </p>
   </div>

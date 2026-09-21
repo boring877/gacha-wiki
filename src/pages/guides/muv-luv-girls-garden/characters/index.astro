@@ -26,11 +26,18 @@ function newestCardRarities(ch) {
 ---
 
 <MLGGLayout
-  title="Pilot Database - Muv-Luv Girls Garden"
-  description={`Complete character database for Muv-Luv Girls Garden (マブラヴ ガールズガーデン). All ${characters.length} pilots and ${characters.reduce((n, c) => n + c.cards.length, 0)} card styles with rarity, attribute, type, role, team and profile.`}
-  gameTitle="Pilot Database"
+  title="Student List (Japan) - Muv-Luv Girls Garden"
+  description={`Complete Japan server student database for Muv-Luv Girls Garden (マブラヴ ガールズガーデン). All ${characters.length} students and ${characters.reduce((n, c) => n + c.cards.length, 0)} card styles with rarity, attribute, type, role, team and profile.`}
+  gameTitle="Student List (Japan)"
 >
   <section class="mlgg-section">
+    <p class="mlgg-section-sub">
+      The complete Japan server roster, including students that have not come
+      to the global version yet. For the worldwide Steam version's official
+      English student pages, see the
+      <a href="/guides/muv-luv-girls-garden/students/">Students (Global)</a>
+      list.
+    </p>
     <div class="mlgg-filter-bar">
       <input
         type="text"

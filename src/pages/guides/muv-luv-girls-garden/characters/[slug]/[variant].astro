@@ -1,0 +1,603 @@
+---
+// Per-Style-Card page for Muv-Luv Girls Garden: one variant of a student,
+// with its own art, rarity ladder, stat calculator, skills and story.
+// Reached from the student hub page; n is the card's number on the hub.
+import MLGGLayout from '../../../../../layouts/muv-luv-girls-garden/LandingLayout.astro';
+import MLGGImage from '../../../../../components/muv-luv-girls-garden/MLGGImage.astro';
+import { R2_BASE } from '../../../../../data/r2-config.js';
+import { mlggVariantHref, variantSlug } from '../../../../../data/muv-luv-girls-garden/default-variant.js';
+import { mlggPortrait } from '../../../../../data/muv-luv-girls-garden/portraits.js';
+import {
+  girlsGardenCharacters,
+  ATTRIBUTES,
+  TYPES,
+  ROLES,
+  SCHOOLS,
+  TEAMS,
+  ACQUISITIONS,
+  RARITY_ICONS,
+} from '../../../../../data/muv-luv-girls-garden/characters.js';
+import {
+  MLGG_CARDS,
+  MLGG_LEVEL_CAP,
+  MLGG_SKILL_CAP,
+  MLGG_LERP,
+  MLGG_RARITY_LABELS,
+  mlggResolveSkill,
+  mlggStatAt,
+} from '../../../../../data/muv-luv-girls-garden/game-data.js';
+import '../../../../../styles/games/muv-luv-girls-garden/mlgg-common.css';
+import '../../../../../styles/games/muv-luv-girls-garden/mlgg-characters.css';
+import '../../../../../styles/games/muv-luv-girls-garden/mlgg-collector.css';
+
+export function getStaticPaths() {
+  return girlsGardenCharacters.flatMap(character =>
+    character.cards
+      .filter(card => card.titleEn)
+      .map(card => ({
+        params: { slug: character.slug, variant: variantSlug(card.titleEn) },
+        props: { character, card },
+      })),
+  );
+}
+
+const { character: ch, card } = Astro.props;
+
+const gameBySlugN = new Map<string, any>(
+  Object.values(MLGG_CARDS).map((c: any) => [`${c.slug}:${c.n}`, c]),
+);
+const g = gameBySlugN.get(`${ch.slug}:${card.n}`) || null;
+const cardId = Object.entries(MLGG_CARDS).find(([, c]: [string, any]) => c.slug === ch.slug && c.n === card.n)?.[0];
+const portrait = mlggPortrait(cardId);
+
+const positionLabel: Record<string, string> = {
+  front: 'Front',
+  back: 'Back',
+};
+const STAT_LABELS: Record<string, string> = {
+  hp: 'HP', atk: 'ATK', def: 'DEF', spd: 'SPD', crit: 'CRT',
+};
+const STAT_ORDER = ['hp', 'atk', 'def', 'spd', 'crit'];
+const SKILL_TYPE_CLASS: Record<string, string> = {
+  Extra: 'mlgg-badge mlgg-badge-skill-extra',
+  Active: 'mlgg-badge mlgg-badge-skill-active',
+  Passive: 'mlgg-badge mlgg-badge-skill-passive',
+};
+const SKILL_COST_LABEL: Record<string, string> = {
+  Extra: 'EX Charge',
+  Active: 'AP Cost',
+  Passive: 'PP Cost',
+};
+const defaultSkillLv = 10;
+
+// Strength / Hits values as the game's skill screen shows them: from the
+// skill's display tags at a given level (hitsTag may be a literal count).
+function tagAt(skill: any, tagName: string | null, level: number): number | null {
+  if (!tagName) return null;
+  if (/^\d+$/.test(tagName)) return Number(tagName);
+  const tag = skill.tags[tagName];
+  if (!tag) return null;
+  const pts = tag.v;
+  if (pts.length === 1 || level <= pts[0][0]) return pts[0][1];
+  if (level >= pts[pts.length - 1][0]) return pts[pts.length - 1][1];
+  for (let i = 0; i < pts.length - 1; i++) {
+    const [la, va] = pts[i], [lb, vb] = pts[i + 1];
+    if (level >= la && level <= lb) {
+      if (tag.m === 1 || tag.m === 3) return va;
+      return va + (vb - va) * ((level - la) / Math.max(lb - la, 1));
+    }
+  }
+  return pts[0][1];
+}
+function fmtTag(v: number | null): string | null {
+  if (v === null) return null;
+  return Number.isInteger(v) ? String(v) : v.toFixed(1);
+}
+
+function fmt(v: number): string {
+  return Number.isInteger(v) ? String(v) : v.toFixed(1);
+}
+function nfmt(v: number): string {
+  return v.toLocaleString('en-US');
+}
+function roleClass(roleJp: string) {
+  const en = ROLES[roleJp] || roleJp;
+  return `mlgg-badge mlgg-badge-role-${en.replace(/\s+/g, '-')}`;
+}
+function positionParts(position: string) {
+  return position.split('-').filter(p => positionLabel[p]);
+}
+function rarityClass(label: string) {
+  return `mlgg-badge mlgg-badge-rarity-${String(label).replace('+', '')}`;
+}
+
+const displayName = card.titleEn || card.title;
+const rarOptions = g ? [g.rarity, ...g.rarityUp.map(u => u.rarity)] : [];
+const artPath = g?.fullbody || portrait || card.iconEn || card.icon;
+
+// Collector bed hero: the game's Style Card acquisition layout. Icon keys
+// map the card's Japanese stat keys onto the official icon art extracted
+// from the Steam demo (uploaded to R2 icons/). Opaque scene art (the n=3
+// exclusive illustrations) gets the framed-portrait treatment; transparent
+// standees sit directly on the dotted circle.
+const ATTR_ICON: Record<string, string> = {
+  'アグレッシブ': 'aggressive', 'スマート': 'smart', 'シャイ': 'shy',
+  'キュート': 'cute', 'コミカル': 'comical', 'クレバー': 'clever',
+};
+const TYPE_ICON: Record<string, string> = { '物理': 'physics', 'EN': 'energy', '敏捷': 'agile' };
+const ROLE_ICON: Record<string, string> = {
+  '物理アタッカー': 'physicalAttacker', 'ENアタッカー': 'intelligenceAttacker',
+  'タンク': 'tank', 'サポート': 'support', 'コントロール': 'control',
+};
+// OS class emblem shown beside the headline, like the game's OS screens:
+// attackers (flame), defenders (shield), supporters (atom).
+const ROLE_EMBLEM: Record<string, string> = {
+  '物理アタッカー': 'attacker', 'ENアタッカー': 'attacker',
+  'タンク': 'defender', 'サポート': 'supporter', 'コントロール': 'supporter',
+};
+// Opaque scene art = the demo's Exclusive OS illustrations, whose card ids
+// end in 301; transparent standees are every other fullbody. Cards without
+// demo art fall back to their icon in a small frame.
+const framed = !g?.fullbody;
+const lowres = !g?.fullbody && !portrait;
+const bgKey = ({ R: 'r', SR: 'sr', SSR: 'ssr', UR: 'ssr', LR: 'ssr' } as Record<string, string>)[String(card.rarity).replace('+', '')] || 'r';
+const aptitude = positionParts(card.position).map(p => positionLabel[p]).join(' & ') || '—';
+---
+
+  <MLGGLayout
+    title={`${displayName} - ${ch.nameEn || ch.romaji} - Muv-Luv Girls Garden`}
+    description={`${displayName}, a ${card.rarity} student of ${ch.nameEn || ch.romaji} in Muv-Luv Girls Garden. ${TYPES[card.type] || card.type} type, ${ROLES[card.role] || card.role} role.${g ? ' Stats, skills and rarity upgrades from the official Steam demo master data.' : ''}`}
+    crumbName={displayName}
+    breadcrumbItems={[
+      { name: 'Home', href: '/' },
+      { name: 'Muv-Luv Girls Garden', href: '/guides/muv-luv-girls-garden/' },
+      { name: 'Characters', href: '/guides/muv-luv-girls-garden/characters/' },
+      { name: ch.nameEn || ch.romaji, href: mlggVariantHref(ch.slug) },
+      { name: displayName },
+    ]}
+  >
+  <section class="mlgg-section">
+    <div class="mlgg-collector" data-rarity={card.rarity}>
+      <MLGGImage
+        path={`gameimg/collector_bg_${bgKey}.webp`}
+        alt=""
+        class="mlgg-collector-bgimg"
+        loading="eager"
+      />
+      <div class="mlgg-collector-dots" aria-hidden="true"></div>
+      <div class={`mlgg-collector-art ${framed ? (lowres ? 'is-framed is-lowres' : 'is-framed') : 'is-standee'}`}>
+        <MLGGImage
+          path={artPath}
+          alt={`${ch.nameEn || ch.romaji} ${displayName} student art`}
+          class="mlgg-collector-img"
+          loading="eager"
+        />
+      </div>
+      <div class="mlgg-collector-who">
+        {RARITY_ICONS[card.rarity] && (
+          <MLGGImage
+            path={RARITY_ICONS[card.rarity]}
+            alt={`${card.rarity} rarity`}
+            class="mlgg-collector-rarity"
+            width={64}
+            height={64}
+          />
+        )}
+        <div>
+          <p class="mlgg-collector-title">{displayName}</p>
+        </div>
+      </div>
+      <div class="mlgg-collector-panel">
+        <p class="mlgg-collector-os-eyebrow">{g?.os ? 'Exclusive OS' : g ? 'Standard Issue' : 'Student'}</p>
+        <div class="mlgg-collector-osline">
+          {ROLE_EMBLEM[card.role] && (
+            <img
+              class="mlgg-collector-emblem"
+              src={`${R2_BASE}/muv-luv-girls-garden/icons/os_${ROLE_EMBLEM[card.role]}.webp`}
+              alt=""
+              width="44"
+              height="44"
+              loading="lazy"
+            />
+          )}
+          <p class="mlgg-collector-os">{g?.os ? g.os.name : 'Pre Class'}</p>
+        </div>
+        <div class="mlgg-collector-row">
+          <span class="mlgg-collector-label">School</span>
+          <span class="mlgg-collector-value">{SCHOOLS[ch.school] || ch.school}</span>
+        </div>
+        <div class="mlgg-collector-row">
+          <span class="mlgg-collector-label">Attribute</span>
+          {ATTR_ICON[card.attribute] && (
+            <img class="mlgg-collector-icon" src={`${R2_BASE}/muv-luv-girls-garden/icons/attribute_${ATTR_ICON[card.attribute]}.webp`} alt="" width="40" height="40" loading="lazy" />
+          )}
+          <span class="mlgg-collector-value">{ATTRIBUTES[card.attribute] || card.attribute}</span>
+        </div>
+        <div class="mlgg-collector-row">
+          <span class="mlgg-collector-label">Type</span>
+          {TYPE_ICON[card.type] && (
+            <img class="mlgg-collector-icon" src={`${R2_BASE}/muv-luv-girls-garden/icons/type_${TYPE_ICON[card.type]}.webp`} alt="" width="40" height="40" loading="lazy" />
+          )}
+          <span class="mlgg-collector-value">{TYPES[card.type] || card.type}</span>
+        </div>
+        <div class="mlgg-collector-row">
+          <span class="mlgg-collector-label">Role</span>
+          {ROLE_ICON[card.role] && (
+            <img class="mlgg-collector-icon" src={`${R2_BASE}/muv-luv-girls-garden/icons/role_${ROLE_ICON[card.role]}.webp`} alt="" width="40" height="40" loading="lazy" />
+          )}
+          <span class="mlgg-collector-value">{ROLES[card.role] || card.role}</span>
+        </div>
+        <div class="mlgg-collector-row">
+          <span class="mlgg-collector-label">Aptitude</span>
+          <span class="mlgg-collector-value">{aptitude}</span>
+        </div>
+      </div>
+    </div>
+    <div class="mlgg-detail-info mlgg-detail-info-solo">
+        <h1 class="mlgg-detail-name">{displayName}</h1>
+        <p class="mlgg-detail-kana">{ch.nameEn || ch.romaji} · {TEAMS[ch.team] || ch.team}</p>
+        <div class="mlgg-detail-badges">
+          {RARITY_ICONS[card.rarity] && (
+            <MLGGImage
+              path={RARITY_ICONS[card.rarity]}
+              alt={`${card.rarity} rarity badge`}
+              class="mlgg-rarity-icon"
+              width={26}
+              height={26}
+            />
+          )}
+          <span class={`mlgg-badge mlgg-badge-rarity-${card.rarity}`}>{card.rarity}</span>
+          {g && g.maxRarity > g.rarity && (
+            <span class="mlgg-badge mlgg-badge-rarity-up">
+              Upgrades to {MLGG_RARITY_LABELS[String(g.maxRarity)]}
+            </span>
+          )}
+          <span class={`mlgg-badge mlgg-badge-attr-${ATTRIBUTES[card.attribute] || ''}`}>{ATTRIBUTES[card.attribute] || card.attribute}</span>
+          <span class={`mlgg-badge mlgg-badge-type-${TYPES[card.type] || ''}`}>{TYPES[card.type] || card.type}</span>
+          <span class={roleClass(card.role)}>{ROLES[card.role] || card.role}</span>
+          {positionParts(card.position).map(p => (
+            <span class={`mlgg-badge mlgg-badge-position-${p}`}>{positionLabel[p]}</span>
+          ))}
+          <span class="mlgg-badge mlgg-badge-acq">{ACQUISITIONS[card.acquisition] || card.acquisition}</span>
+          <span class="mlgg-badge">{card.released}</span>
+        </div>
+        {g && (
+          <p class="mlgg-variant-statsline">
+            AP <b>{g.ap}</b> · PP <b>{g.pp}</b> · CP <b>{nfmt(g.cp[0])}</b> to <b>{nfmt(g.cp[1])}</b>
+          </p>
+        )}
+        {g?.os && (
+          <p class="mlgg-stylecard-os">
+            <span class="mlgg-os-label">Exclusive MG OS</span>
+            <span class="mlgg-os-name">{g.os.name}</span>
+            <span class="mlgg-os-desc">{g.os.desc}</span>
+          </p>
+        )}
+    </div>
+  </section>
+
+  {g ? (
+    <section class="mlgg-section">
+      <article class="mlgg-card mlgg-stylecard" data-mlgg-card="0">
+        <script type="application/json" data-mlgg-data="0" set:html={JSON.stringify(g)} />
+
+        <div class="mlgg-stylecard-grid">
+          <div class="mlgg-stylecard-panel">
+            <h4 class="mlgg-panel-title">Stats</h4>
+            <div class="mlgg-grades-row">
+              {STAT_ORDER.map(k => (
+                <span class="mlgg-grade-chip mlgg-grade-{g.grades[k]}">
+                  {STAT_LABELS[k]} <b>{g.grades[k]}</b>
+                </span>
+              ))}
+            </div>
+
+            <div class="mlgg-stat-controls">
+              <label class="mlgg-stat-ctrl">
+                <span>Level</span>
+                <input type="range" min="1" max={MLGG_LEVEL_CAP} value={MLGG_LEVEL_CAP} data-mlgg-level />
+                <b data-mlgg-level-label>{MLGG_LEVEL_CAP}</b>
+              </label>
+              <label class="mlgg-stat-ctrl mlgg-stat-ctrl-rarity">
+                <span>Rarity</span>
+                <select data-mlgg-rarity>
+                  {rarOptions.map(r => (
+                    <option value={r} selected={r === g.rarity}>{MLGG_RARITY_LABELS[String(r)]}</option>
+                  ))}
+                </select>
+              </label>
+            </div>
+
+            <div class="mlgg-stat-tiles" data-mlgg-stats>
+              {STAT_ORDER.map(k => {
+                const v = mlggStatAt(g, MLGG_LEVEL_CAP, g.rarity)[k];
+                return (
+                  <div class="mlgg-stat-tile">
+                    <span class="mlgg-stat-tile-label">{STAT_LABELS[k]}</span>
+                    <span class="mlgg-stat-tile-value" data-stat={k}>{k === 'crit' ? fmt(v) : nfmt(v)}{k === 'crit' ? '%' : ''}</span>
+                  </div>
+                );
+              })}
+            </div>
+            <p class="mlgg-stat-note">
+              Lv1 base: {STAT_ORDER.map(k => `${STAT_LABELS[k]} ${k === 'crit' ? fmt(g.min[k]) + '%' : nfmt(g.min[k])}`).join(', ')}.
+              Lv{MLGG_LEVEL_CAP} at base rarity: {STAT_ORDER.map(k => `${STAT_LABELS[k]} ${k === 'crit' ? fmt(mlggStatAt(g, MLGG_LEVEL_CAP, g.rarity)[k]) + '%' : nfmt(mlggStatAt(g, MLGG_LEVEL_CAP, g.rarity)[k])}`).join(', ')}.
+            </p>
+          </div>
+
+          <div class="mlgg-stylecard-panel">
+            <h4 class="mlgg-panel-title">Limit Break Bonuses</h4>
+            <div class="mlgg-cards-table-wrap mlgg-rarity-table-wrap">
+              <table class="mlgg-table mlgg-rarity-table">
+                <thead>
+                  <tr><th>Rarity</th><th>HP</th><th>ATK</th><th>DEF</th><th>SPD</th><th>CRT</th><th>AP</th><th>PP</th></tr>
+                </thead>
+                <tbody>
+                  {g.rarityUp.map(u => (
+                    <tr>
+                      <td><span class={rarityClass(MLGG_RARITY_LABELS[String(u.rarity)])}>{MLGG_RARITY_LABELS[String(u.rarity)]}</span></td>
+                      <td>+{nfmt(u.hp)}</td>
+                      <td>+{nfmt(u.atk)}</td>
+                      <td>+{nfmt(u.def)}</td>
+                      <td>+{nfmt(u.spd)}</td>
+                      <td>{u.crit ? `+${fmt(u.crit)}%` : '-'}</td>
+                      <td>{u.ap ? `+${u.ap}` : '-'}</td>
+                      <td>{u.pp ? `+${u.pp}` : '-'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p class="mlgg-stat-note">Each Limit Break raises this card's rarity and adds these stats on top of the level scaling shown under Stats.</p>
+          </div>
+        </div>
+
+        <div class="mlgg-stylecard-panel mlgg-skills-panel">
+          <div class="mlgg-skills-head">
+            <h4 class="mlgg-panel-title">Skills</h4>
+            <label class="mlgg-stat-ctrl">
+              <span>Skill Lv</span>
+              <input type="range" min="1" max={MLGG_SKILL_CAP} value={defaultSkillLv} data-mlgg-skill-level />
+              <b data-mlgg-skill-label>{defaultSkillLv}</b>
+            </label>
+          </div>
+          <div class="mlgg-skill-list" data-mlgg-skills>
+            {g.skills.map((skill: any, si: number) => (
+              <div class="mlgg-skill" data-skill={si}>
+                <div class="mlgg-skill-head">
+                  <span class={SKILL_TYPE_CLASS[skill.type] || 'mlgg-badge'}>{skill.type}</span>
+                  <span class="mlgg-skill-name">{skill.name}</span>
+                  <span class="mlgg-skill-cost">{SKILL_COST_LABEL[skill.type]} {skill.cost}</span>
+                </div>
+                <div class="mlgg-skill-rows">
+                  {tagAt(skill, skill.powerTag, defaultSkillLv) !== null && (
+                    <span><em>Strength</em> <b data-mlgg-strength>{fmtTag(tagAt(skill, skill.powerTag, defaultSkillLv))}%</b></span>
+                  )}
+                  {tagAt(skill, skill.hitsTag, defaultSkillLv) !== null && (
+                    <span><em>Hits</em> <b>{fmtTag(tagAt(skill, skill.hitsTag, defaultSkillLv))}</b></span>
+                  )}
+                  {skill.tType && <span><em>Target</em> {skill.tType}</span>}
+                  {skill.tRange && <span><em>Range</em> {skill.tRange}</span>}
+                  {skill.tPriority && <span><em>Priority</em> {skill.tPriority}</span>}
+                  {skill.ct !== null && <span><em>Cooldown</em> {skill.ct} ({skill.ctTiming})</span>}
+                </div>
+                {skill.traits.length > 0 && (
+                  <div class="mlgg-skill-traits">
+                    {skill.traits.map(t => <span class="mlgg-skill-trait">{t}</span>)}
+                  </div>
+                )}
+                <p class="mlgg-skill-desc" data-mlgg-desc>{mlggResolveSkill(g, si, defaultSkillLv)}</p>
+              </div>
+            ))}
+          </div>
+          <p class="mlgg-stat-note">
+            Skill levels 1 to 10 are available at base rarity; Limit Breaks
+            raise the cap to Lv{MLGG_SKILL_CAP}. Values update with the slider.
+          </p>
+        </div>
+      </article>
+    </section>
+  ) : (
+    <section class="mlgg-section">
+      <div class="mlgg-card mlgg-lore">
+        <p class="mlgg-lore-en">
+          Japan server release only: this student has not come to the
+          global version yet, so official stats and skills are not available
+          for it.
+        </p>
+      </div>
+    </section>
+  )}
+
+  <section class="mlgg-section">
+    <h2 class="mlgg-section-title">Profile</h2>
+    <p class="mlgg-section-sub">
+      {ch.nameEn || ch.romaji} ({ch.name}), {SCHOOLS[ch.school] || ch.school}, {TEAMS[ch.team] || ch.team}
+    </p>
+    <div class="mlgg-profile-wrap">
+      {portrait && (
+        <MLGGImage
+          path={portrait}
+          alt={`${ch.nameEn || ch.romaji} portrait`}
+          class="mlgg-profile-portrait"
+          width={180}
+          height={320}
+        />
+      )}
+      <div class="mlgg-profile-grid">
+      <div class="mlgg-profile-item">
+        <p class="mlgg-profile-label">Birthday</p>
+        <p class="mlgg-profile-value">{ch.birthday}</p>
+      </div>
+      <div class="mlgg-profile-item">
+        <p class="mlgg-profile-label">Height</p>
+        <p class="mlgg-profile-value">{ch.height}</p>
+      </div>
+      <div class="mlgg-profile-item">
+        <p class="mlgg-profile-label">Origin</p>
+        <p class="mlgg-profile-value">{ch.originEn || ch.origin}</p>
+      </div>
+      <div class="mlgg-profile-item">
+        <p class="mlgg-profile-label">Hobby</p>
+        <p class="mlgg-profile-value">{ch.hobbyEn || ch.hobby}</p>
+      </div>
+      <div class="mlgg-profile-item">
+        <p class="mlgg-profile-label">Likes</p>
+        <p class="mlgg-profile-value">{ch.likesEn || ch.likes}</p>
+      </div>
+      {ch.cv && (
+        <div class="mlgg-profile-item">
+          <p class="mlgg-profile-label">CV</p>
+          <p class="mlgg-profile-value">{ch.cv}</p>
+        </div>
+      )}
+    </div>
+    </div>
+    <div class="mlgg-card mlgg-lore mlgg-profile-lore">
+      <p class="mlgg-lore-en">{ch.loreEn}</p>
+      {ch.lore && (
+        <div>
+          <p class="mlgg-lore-jp-label">Official profile (Japanese)</p>
+          <p class="mlgg-lore-jp">{ch.lore}</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  {card.flavor && (
+    <section class="mlgg-section">
+      <h2 class="mlgg-section-title">Story</h2>
+      <div class="mlgg-card mlgg-lore">
+        <p class="mlgg-lore-jp">{card.flavor}</p>
+        <p class="mlgg-lore-jp-label">Official flavor text (Japanese)</p>
+      </div>
+    </section>
+  )}
+
+  <section class="mlgg-section">
+    <h2 class="mlgg-section-title">Other variants of {ch.nameEn || ch.romaji}</h2>
+    <div class="mlgg-related-grid">
+      {ch.cards.filter(c => c.titleEn && c.n !== card.n).map(c => (
+        <a href={`/guides/muv-luv-girls-garden/characters/${ch.slug}/${variantSlug(c.titleEn)}/`} class="mlgg-related-card">
+          <MLGGImage
+            path={c.iconEn || c.icon}
+            alt={`${ch.name} ${c.titleEn || c.title} student card`}
+            class={c.iconEn ? 'mlgg-related-icon mlgg-char-icon-en' : 'mlgg-related-icon'}
+            width={150}
+            height={150}
+          />
+          <p class="mlgg-related-name">{c.titleEn}</p>
+          <p class="mlgg-related-jp">
+            {RARITY_ICONS[c.rarity] && (
+              <MLGGImage path={RARITY_ICONS[c.rarity]} alt={`${c.rarity} rarity badge`} class="mlgg-rarity-badge" width={18} height={18} loading="lazy" />
+            )}
+            {c.rarity}
+          </p>
+        </a>
+      ))}
+    </div>
+  </section>
+</MLGGLayout>
+
+<script>
+  // Stat/skill recompute for this student page. The lerp curve and the card
+  // data ship as JSON islands rendered with the page.
+  const lerpEl = document.getElementById('mlgg-lerp');
+  const LERP = lerpEl ? JSON.parse(lerpEl.textContent) : null;
+
+  document.querySelectorAll('.mlgg-stylecard[data-mlgg-card]').forEach(block => {
+    const idx = block.getAttribute('data-mlgg-card');
+    const dataEl = document.querySelector(`script[data-mlgg-data="${idx}"]`);
+    if (!dataEl || !LERP) return;
+    let card;
+    try { card = JSON.parse(dataEl.textContent); } catch { return; }
+
+    const levelInput = block.querySelector('[data-mlgg-level]');
+    const levelLabel = block.querySelector('[data-mlgg-level-label]');
+    const raritySel = block.querySelector('[data-mlgg-rarity]');
+    const statEls = block.querySelectorAll('[data-mlgg-stats] [data-stat]');
+    const skillInput = block.querySelector('[data-mlgg-skill-level]');
+    const skillLabel = block.querySelector('[data-mlgg-skill-label]');
+
+    function tagValue(tag, level) {
+      const pts = tag.v;
+      if (pts.length === 1 || level <= pts[0][0]) return pts[0][1];
+      if (level >= pts[pts.length - 1][0]) return pts[pts.length - 1][1];
+      for (let i = 0; i < pts.length - 1; i++) {
+        const [la, va] = pts[i], [lb, vb] = pts[i + 1];
+        if (level >= la && level <= lb) {
+          if (tag.m === 1 || tag.m === 3) return va;
+          return va + (vb - va) * ((level - la) / Math.max(lb - la, 1));
+        }
+      }
+      return pts[0][1];
+    }
+
+    function tagValueLevel(skill, tagName, level) {
+      if (/^\d+$/.test(tagName)) return Number(tagName);
+      const tag = skill.tags[tagName];
+      return tag ? tagValue(tag, level) : null;
+    }
+
+    function resolveDesc(skill, level) {
+      let desc = skill.descs.length ? skill.descs[0][1] : '';
+      for (const [lv, tpl] of skill.descs) if (lv <= level) desc = tpl;
+      return desc.replace(/\{([^}]+)\}/g, (all, name) => {
+        const tag = skill.tags[name];
+        if (!tag) return all;
+        const v = tagValue(tag, level);
+        if (v === null || v === undefined) return all;
+        return Number.isInteger(v) ? String(v) : v.toFixed(1);
+      });
+    }
+
+    function statAt(level, rarity) {
+      const amt = LERP[Math.min(Math.max(level, 1), LERP.length) - 1];
+      const up = card.rarityUp.find(r => r.rarity === Number(rarity));
+      const out = {};
+      for (const k of ['hp', 'atk', 'def', 'spd', 'crit']) {
+        const base = card.min[k] + (card.max[k] - card.min[k]) * amt + (up ? (up[k] || 0) : 0);
+        out[k] = k === 'crit' ? Math.round(base * 10) / 10 : Math.round(base);
+      }
+      return out;
+    }
+
+    function fmtN(v) {
+      return Number.isInteger(v) ? v.toLocaleString('en-US') : v.toFixed(1);
+    }
+
+    function updateStats() {
+      if (!levelInput || !statEls.length) return;
+      const level = Number(levelInput.value);
+      const rarity = raritySel ? Number(raritySel.value) : card.rarity;
+      if (levelLabel) levelLabel.textContent = String(level);
+      const stats = statAt(level, rarity);
+      statEls.forEach(el => {
+        const k = el.getAttribute('data-stat');
+        el.textContent = k === 'crit' ? `${fmtN(stats.crit)}%` : fmtN(stats[k]);
+      });
+    }
+
+    function updateSkills() {
+      if (!skillInput) return;
+      const lv = Number(skillInput.value);
+      if (skillLabel) skillLabel.textContent = String(lv);
+      block.querySelectorAll('[data-mlgg-skills] .mlgg-skill').forEach(el => {
+        const si = Number(el.getAttribute('data-skill'));
+        const skill = card.skills[si];
+        const descEl = el.querySelector('[data-mlgg-desc]');
+        if (descEl && skill) descEl.textContent = resolveDesc(skill, lv);
+        const strengthEl = el.querySelector('[data-mlgg-strength]');
+        if (strengthEl && skill && skill.powerTag) {
+          const v = tagValueLevel(skill, skill.powerTag, lv);
+          if (v !== null) strengthEl.textContent = (Number.isInteger(v) ? String(v) : v.toFixed(1)) + '%';
+        }
+      });
+    }
+
+    levelInput?.addEventListener('input', updateStats);
+    raritySel?.addEventListener('change', updateStats);
+    skillInput?.addEventListener('input', updateSkills);
+  });
+</script>
+<script type="application/json" id="mlgg-lerp" set:html={JSON.stringify(MLGG_LERP)} />

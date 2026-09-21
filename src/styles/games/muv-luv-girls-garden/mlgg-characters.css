@@ -1,4 +1,4 @@
-/* Muv-Luv Girls Garden pilot database + character detail styles (dark flat). */
+/* Muv-Luv Girls Garden student list + character detail styles (dark flat). */
 
 /* ---- Database filter bar ---- */
 .mlgg-filter-bar {
@@ -49,7 +49,7 @@
   white-space: nowrap;
 }
 
-/* ---- Pilot grid ---- */
+/* ---- Student grid ---- */
 .mlgg-char-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -197,6 +197,32 @@
   font-weight: 600;
 }
 
+/* Portrait beside the profile grid on student pages. */
+.mlgg-profile-wrap {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.mlgg-profile-portrait {
+  width: 180px;
+  flex: none;
+  border-radius: 12px;
+  border: 1px solid var(--mlgg-border);
+}
+@media (max-width: 760px) {
+  .mlgg-profile-wrap {
+    flex-direction: column;
+  }
+  .mlgg-profile-portrait {
+    width: 150px;
+  }
+}
+
+/* Spacing between the profile grid and the lore card under it. */
+.mlgg-profile-lore {
+  margin-top: 1rem;
+}
+
 .mlgg-lore {
   padding: 1.2rem 1.4rem;
 }
@@ -240,6 +266,21 @@
   display: flex;
   gap: 0.3rem;
   flex-wrap: wrap;
+}
+
+.mlgg-card-title-en {
+  font-size: 0.82rem;
+  color: var(--mlgg-accent-light);
+  white-space: normal;
+  line-height: 1.5;
+  margin: 0.15rem 0 0;
+}
+
+/* Card style title linking to its English Style Card page. */
+.mlgg-card-link {
+  color: var(--mlgg-accent-light);
+  font-weight: 600;
+  text-decoration: none;
 }
 
 .mlgg-card-flavor {
@@ -304,4 +345,828 @@
     margin-left: 0;
     text-align: center;
   }
+}
+
+/* Official EN client card icons are portrait (360x640) or framed (300x240):
+   letterbox inside the icon boxes instead of cropping the art. */
+.mlgg-card-icon-en {
+  width: 46px;
+  height: 68px;
+  object-fit: contain;
+}
+
+.mlgg-char-icon-en {
+  object-fit: contain;
+}
+
+/* Rarity cell: game badge image + text chip side by side. */
+.mlgg-rarity-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.mlgg-rarity-icon {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  flex: none;
+}
+
+/* Teammate cards: EN name primary, JP name below. */
+.mlgg-related-jp {
+  font-size: 0.78rem;
+  color: var(--mlgg-text-tertiary);
+  margin: 0.1rem 0 0;
+}
+
+/* ---- Full body hero art: never crop the standee ---- */
+.mlgg-detail-art-body {
+  object-fit: contain;
+  max-height: 560px;
+  width: auto;
+  min-width: 240px;
+  padding: 0.6rem;
+}
+
+/* ---- Style Card blocks (demo master data) ---- */
+.mlgg-stylecard {
+  padding: 1.1rem 1.25rem 1.25rem;
+  margin-bottom: 1.2rem;
+}
+
+.mlgg-stylecard-head {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.mlgg-stylecard-icon {
+  flex: none;
+  width: 60px;
+}
+
+.mlgg-stylecard-titles {
+  flex: 1;
+  min-width: 0;
+}
+
+.mlgg-stylecard-title {
+  margin: 0 0 0.55rem;
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--mlgg-text-primary);
+  line-height: 1.35;
+}
+
+.mlgg-stylecard-title-jp {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--mlgg-text-tertiary);
+  margin-top: 0.15rem;
+}
+
+.mlgg-stylecard-body {
+  flex: none;
+  height: 190px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  border: 1px solid var(--mlgg-border);
+  background: var(--mlgg-bg-tertiary);
+  padding: 0.35rem;
+}
+
+.mlgg-stylecard-os {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: var(--mlgg-text-secondary);
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.mlgg-os-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mlgg-text-tertiary);
+}
+
+.mlgg-os-name {
+  font-weight: 700;
+  color: var(--mlgg-accent-light);
+}
+
+.mlgg-os-desc {
+  color: var(--mlgg-text-tertiary);
+  font-size: 0.8rem;
+}
+
+.mlgg-stylecard-flavor {
+  margin: 0.8rem 0 0;
+  font-size: 0.84rem;
+  color: var(--mlgg-text-tertiary);
+  line-height: 1.65;
+}
+
+.mlgg-stylecard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.mlgg-stylecard-panel {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+/* two columns share the outer card, separated by one hairline */
+.mlgg-stylecard-grid .mlgg-stylecard-panel + .mlgg-stylecard-panel {
+  border-left: 1px solid var(--mlgg-border);
+  padding-left: 1rem;
+}
+
+.mlgg-skills-panel {
+  border-top: 1px solid var(--mlgg-border);
+  margin-top: 1.3rem;
+  padding-top: 1.1rem;
+}
+
+.mlgg-panel-title {
+  margin: 0 0 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mlgg-accent-light);
+}
+
+/* Stat grade chips */
+.mlgg-grades-row {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.85rem;
+}
+
+.mlgg-grade-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  font-size: 0.8rem;
+  color: var(--mlgg-text-tertiary);
+}
+
+.mlgg-grade-chip b {
+  font-size: 0.88rem;
+  color: var(--mlgg-text-primary);
+}
+
+.mlgg-grade-S b { color: #ff6ea9; }
+.mlgg-grade-A b { color: #f5a623; }
+.mlgg-grade-B b { color: #3ec46d; }
+.mlgg-grade-C b { color: #4f9cf9; }
+.mlgg-grade-D b { color: #8a93a6; }
+
+.mlgg-grade-ap b { color: var(--mlgg-accent-light); }
+
+/* Level / rarity controls */
+.mlgg-stat-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.85rem;
+}
+
+.mlgg-stat-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--mlgg-text-tertiary);
+}
+
+.mlgg-stat-ctrl b {
+  color: var(--mlgg-text-primary);
+  font-size: 0.9rem;
+  min-width: 2.2rem;
+  text-align: right;
+}
+
+.mlgg-stat-ctrl input[type='range'] {
+  width: 150px;
+  accent-color: var(--mlgg-teal);
+}
+
+.mlgg-stat-ctrl select {
+  background: var(--mlgg-bg-tertiary);
+  border: 1px solid var(--mlgg-border-strong);
+  border-radius: 8px;
+  color: var(--mlgg-text-primary);
+  padding: 0.35rem 0.5rem;
+  font-size: 0.85rem;
+}
+
+/* Stat tiles */
+.mlgg-stat-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.7rem;
+}
+
+.mlgg-stat-tile {
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.mlgg-stat-tile-label {
+  display: block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mlgg-text-tertiary);
+  margin-bottom: 0.15rem;
+}
+
+.mlgg-stat-tile-value {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--mlgg-text-primary);
+}
+
+
+
+.mlgg-stat-note {
+  margin: 0.75rem 0 0;
+  font-size: 0.78rem;
+  color: var(--mlgg-text-tertiary);
+  line-height: 1.6;
+}
+
+.mlgg-rarity-table-wrap {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+/* Skills */
+.mlgg-skills-panel {
+  margin-top: 1rem;
+}
+
+.mlgg-skills-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.mlgg-skills-head .mlgg-panel-title {
+  margin: 0;
+}
+
+.mlgg-skill-list {
+  margin-top: 0.4rem;
+  display: block;
+}
+
+.mlgg-skill:first-child {
+  border-top: none;
+}
+
+.mlgg-skill {
+  background: none;
+  border: none;
+  border-top: 1px solid var(--mlgg-border);
+  border-radius: 0;
+  padding: 0.85rem 0.15rem;
+}
+
+.mlgg-skill-head {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.45rem;
+}
+
+.mlgg-skill-name {
+  font-weight: 700;
+  color: var(--mlgg-text-primary);
+  font-size: 0.94rem;
+}
+
+.mlgg-skill-cost {
+  font-size: 0.76rem;
+  color: var(--mlgg-text-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--mlgg-border);
+  border-radius: 5px;
+  padding: 0.14rem 0.45rem;
+}
+
+.mlgg-skill-target {
+  font-size: 0.75rem;
+  color: var(--mlgg-text-tertiary);
+}
+
+.mlgg-skill-desc {
+  margin: 0;
+  color: var(--mlgg-text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.mlgg-skill-max {
+  margin: 0.35rem 0 0;
+  font-size: 0.74rem;
+  color: var(--mlgg-text-muted);
+}
+
+.mlgg-badge-skill-extra { background: #d12f74; color: #fff; }
+.mlgg-badge-skill-active { background: #0072c9; color: #fff; }
+.mlgg-badge-skill-passive { background: #5b6478; color: #fff; }
+
+.mlgg-badge-rarity-up {
+  background: #7c3aed;
+  color: #fff;
+}
+
+/* Compact (non demo data) card blocks */
+.mlgg-stylecard-compact {
+  padding: 1rem 1.25rem;
+}
+
+.mlgg-compact-note {
+  margin: 0.7rem 0 0;
+  font-size: 0.8rem;
+  color: var(--mlgg-text-muted);
+}
+
+@media (max-width: 900px) {
+  .mlgg-stylecard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mlgg-stylecard-grid .mlgg-stylecard-panel + .mlgg-stylecard-panel {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--mlgg-border);
+    padding-top: 1.2rem;
+  }
+
+  .mlgg-stylecard-body {
+    height: 150px;
+  }
+
+  .mlgg-variantrow {
+    padding: 0.7rem 0.9rem;
+    gap: 0.8rem;
+  }
+
+  .mlgg-variantrow-art {
+    width: 52px;
+    height: 74px;
+  }
+
+  .mlgg-variantrow-img {
+    max-height: 74px;
+    max-width: 52px;
+  }
+}
+
+@media (max-width: 700px) {
+  .mlgg-detail-art-body {
+    max-height: 420px;
+    width: 100%;
+  }
+
+  .mlgg-stylecard-head {
+    flex-wrap: wrap;
+  }
+
+  .mlgg-stylecard-body {
+    order: -1;
+    height: 220px;
+  }
+}
+
+/* ---- Student hub: Style List (one container, hairline rows) ---- */
+.mlgg-variantlist {
+  padding: 0.35rem 0;
+}
+
+.mlgg-variantrow {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 0.85rem 1.2rem;
+  text-decoration: none;
+  border-top: 1px solid var(--mlgg-border);
+}
+
+.mlgg-variantrow:first-child {
+  border-top: none;
+}
+
+.mlgg-variantrow-art {
+  width: 66px;
+  height: 92px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex: none;
+  overflow: hidden;
+}
+
+.mlgg-variantrow-img {
+  max-height: 92px;
+  max-width: 66px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.mlgg-variantrow-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mlgg-variantrow-title {
+  color: var(--mlgg-text-primary);
+  font-weight: 700;
+  font-size: 0.98rem;
+  line-height: 1.3;
+}
+
+.mlgg-variantrow-title-jp {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--mlgg-text-tertiary);
+  margin-top: 0.1rem;
+}
+
+.mlgg-variantrow-meta {
+  display: flex;
+  flex-wrap: wrap;
+  color: var(--mlgg-text-secondary);
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
+.mlgg-variantrow-meta > span + span::before,
+.mlgg-variantrow-meta > b + span::before {
+  content: '·';
+  margin: 0 0.55rem;
+  color: var(--mlgg-text-muted);
+}
+
+.mlgg-variantrow-meta b {
+  font-weight: 700;
+}
+
+.mlgg-rarity-text-R { color: #6fb3ec; }
+.mlgg-rarity-text-SR { color: #a893f5; }
+.mlgg-rarity-text-SSR { color: #f0b13f; }
+.mlgg-rarity-text-UR { color: #f46fa8; }
+.mlgg-rarity-text-LR { color: #e05c72; }
+
+.mlgg-variantrow-max {
+  color: #a78bfa;
+}
+
+.mlgg-variantrow-sub {
+  color: var(--mlgg-text-tertiary);
+  font-size: 0.76rem;
+}
+
+.mlgg-variantrow-arrow {
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid var(--mlgg-text-muted);
+  border-bottom: 2px solid var(--mlgg-text-muted);
+  transform: rotate(-45deg);
+  flex: none;
+}
+
+.mlgg-section-title-note {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--mlgg-text-tertiary);
+  margin-left: 0.6rem;
+}
+
+/* ---- Variant page ---- */
+.mlgg-variant-back {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin: 0 0 0.9rem;
+  font-size: 0.85rem;
+}
+
+.mlgg-variant-back a {
+  color: var(--mlgg-accent-light);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.mlgg-variant-back span {
+  color: var(--mlgg-text-tertiary);
+  font-size: 0.78rem;
+}
+
+.mlgg-variant-art {
+  max-height: 480px;
+}
+
+.mlgg-variant-appp {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin: 0.6rem 0 0;
+}
+
+.mlgg-related-hub {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.6rem 0.7rem;
+}
+
+/* ---- Style Card browser grid (variant tiles) ---- */
+.mlgg-variant-grid {
+  grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+}
+
+.mlgg-variant-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  background: var(--mlgg-bg-card);
+  border: 1px solid var(--mlgg-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.mlgg-variant-card-art {
+  display: block;
+  width: 100%;
+  aspect-ratio: 654 / 260;
+  height: auto;
+  padding: 0;
+  background: var(--mlgg-bg-tertiary);
+  overflow: hidden;
+}
+
+.mlgg-variant-card-img {
+  max-height: 160px;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* in-game icons are portrait or framed; keep them whole */
+.mlgg-variant-card-img-en {
+  max-height: 160px;
+}
+
+.mlgg-variant-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+  padding: 0.65rem 0.8rem 0.8rem;
+}
+
+.mlgg-variant-card-title {
+  color: var(--mlgg-text-primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.mlgg-variant-card-student {
+  color: var(--mlgg-text-secondary);
+  font-size: 0.8rem;
+}
+
+.mlgg-variant-card-student i {
+  font-style: normal;
+  color: var(--mlgg-text-tertiary);
+  margin-left: 0.35rem;
+  font-size: 0.74rem;
+}
+
+.mlgg-variant-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+  color: var(--mlgg-text-tertiary);
+  font-size: 0.76rem;
+  line-height: 1.4;
+}
+
+.mlgg-variant-card-meta b {
+  font-weight: 700;
+}
+
+/* EN top / JP bottom separation on tiles and rows */
+.mlgg-variant-card-title-jp {
+  color: var(--mlgg-text-tertiary);
+  font-size: 0.76rem;
+  line-height: 1.4;
+}
+
+/* small solid marker for cards that have no official English yet */
+.mlgg-jp-tag {
+  display: inline-block;
+  white-space: nowrap;
+  font-style: normal;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #241c04;
+  background: #d9a716;
+  border-radius: 4px;
+  padding: 0.06rem 0.32rem;
+  margin-left: 0.4rem;
+  vertical-align: 1px;
+}
+
+/* ---- Tile v2: official card illustration art + labeled meta ---- */
+.mlgg-variant-grid {
+  grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
+}
+
+.mlgg-variant-card-artimg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* icon fallback (no illustration published yet): letterbox the icon */
+.mlgg-variant-card-art-icon {
+  aspect-ratio: auto;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem;
+}
+
+.mlgg-variant-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  margin-top: 0.4rem;
+}
+
+.mlgg-variant-card-meta em {
+  font-style: normal;
+  color: var(--mlgg-text-muted);
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-right: 0.3rem;
+}
+
+.mlgg-variant-card-meta b {
+  font-weight: 700;
+}
+
+/* symmetric server tags */
+.mlgg-global-tag {
+  display: inline-block;
+  white-space: nowrap;
+  font-style: normal;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #06232a;
+  background: var(--mlgg-teal);
+  border-radius: 4px;
+  padding: 0.06rem 0.32rem;
+  margin-left: 0.4rem;
+  vertical-align: 1px;
+}
+
+/* Official rarity badge art in meta lines */
+.mlgg-rarity-badge {
+  height: 22px;
+  width: 22px;
+  display: inline-block;
+  vertical-align: -5px;
+}
+
+.mlgg-meta-rarity {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.mlgg-meta-rarity .mlgg-rarity-badge {
+  margin-left: 0.1rem;
+}
+
+.mlgg-variantrow-meta .mlgg-rarity-badge {
+  vertical-align: middle;
+}
+
+.mlgg-related-jp .mlgg-rarity-badge {
+  height: 18px;
+  width: 18px;
+  vertical-align: -4px;
+  margin-right: 0.25rem;
+}
+
+/* Skill labeled rows (game skill screen: Strength/Hits/Target/Range/Priority/Cooldown) */
+.mlgg-skill-rows {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.1rem;
+  margin: 0 0 0.4rem;
+  color: var(--mlgg-text-secondary);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.mlgg-skill-rows em {
+  font-style: normal;
+  color: var(--mlgg-text-muted);
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-right: 0.3rem;
+}
+
+.mlgg-skill-rows b {
+  color: var(--mlgg-accent-light);
+  font-weight: 700;
+}
+
+.mlgg-skill-traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0 0 0.45rem;
+}
+
+.mlgg-skill-trait {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #ffd25c;
+  background: rgba(255, 210, 92, 0.12);
+  border: none;
+  border-radius: 4px;
+  padding: 0.08rem 0.4rem;
+}
+
+/* Game position colors: Front orange, Back cyan */
+.mlgg-pos-front { color: #ff8a3d; font-weight: 700; }
+.mlgg-pos-back { color: #3ecbf0; font-weight: 700; }
+
+/* Rarity ceiling text -> game teal */
+.mlgg-variantrow-max {
+  color: var(--mlgg-teal);
+  font-weight: 700;
+}
+
+/* Power line on tiles (the game list cell leads with Power, pink) */
+.mlgg-power-line {
+  margin-top: 0.3rem;
+  color: var(--mlgg-accent-light);
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+.mlgg-power-line em {
+  font-style: normal;
+  color: var(--mlgg-text-muted);
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-right: 0.3rem;
+  font-weight: 400;
 }

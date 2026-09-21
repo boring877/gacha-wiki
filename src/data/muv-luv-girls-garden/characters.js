@@ -1,10 +1,12 @@
-// Muv-Luv Girls Garden character roster (51 pilots, 91 card styles).
+// Muv-Luv Girls Garden student roster (51 students, 91 Style Cards).
 // Source: official site muvluv-girls-garden.com (romaji names, profiles,
 //   team art) cross-checked with the wikiru.jp community wiki
 //   (muvluv-girls-garden.wikiru.jp): card list, per-card flavor text,
-//   profile table. JP-only release; EN localization not out yet.
-// loreEn = editorial EN translation of the official JP profile text.
-// Images live on R2 under muv-luv-girls-garden/.
+//   profile table. loreEn = editorial EN translation of the official JP
+//   profile text. nameEn/titleEn = official English names extracted from
+//   the Steam demo (Sep 17, 2026) master data, covering the 29 launch
+//   students and 34 launch Style Cards; later waves remain JP-only until
+//   the EN client ships them. Images live on R2 under muv-luv-girls-garden/.
 
 export const ATTRIBUTES = {
   "キュート": "Cute",
@@ -18,45 +20,54 @@ export const ATTRIBUTES = {
 export const TYPES = {
   "EN": "EN",
   "物理": "Physical",
-  "敏捷": "Agility",
+  "敏捷": "Agile",
 };
 
 export const ROLES = {
   "タンク": "Tank",
   "サポート": "Support",
   "コントロール": "Control",
-  "物理アタッカー": "Physical Attacker",
-  "ENアタッカー": "EN Attacker",
+  "物理アタッカー": "Physical Striker",
+  "ENアタッカー": "EN Striker",
 };
 
 export const SCHOOLS = {
   "柊校舎": "Hiiragi",
-  "スカラ校舎": "Skala",
+  "スカラ校舎": "Scalar",
   "ユーロ・タワー": "Euro Tower",
-  "特別養成校舎": "Special Training",
+  "特別養成校舎": "Remedial Education",
   "ゾリャー校舎": "Zorya",
   "LOC": "LOC",
   "行政居住区": "Administrative District",
   "不明": "Unknown",
   "-": "Unaffiliated",
-  "ザルトゥーム学園": "Zaltoom Academy",
+  "ザルトゥーム学園": "Zar'tum Academy",
 };
 
 export const TEAMS = {
   "シリウスシュガー": "Sirius Sugar",
   "カラフルブーケ": "Colorful Bouquet",
   "カオスメイデン": "Chaos Maiden",
-  "インスカーレット": "In Scarlet",
+  "インスカーレット": "InScarlet",
   "トレブルクインテット": "Treble Quintet",
-  "ピクシス・マスール": "Pyxis Massue",
+  "ピクシス・マスール": "Pyxis Ma Soeur",
   "クラスナ": "Krasna",
   "風紀委員会": "Discipline Committee",
-  "プレ・クラス－Ａ": "Pre-Class-A",
+  "プレ・クラス－Ａ": "Pre-Class A",
   "トリニティ・ジュエル": "Trinity Jewel",
   "STRANGERS Ⅰ": "STRANGERS I",
   "STRANGERS Ⅱ": "STRANGERS II",
   "The Manor's Favor": "The Manor's Favor",
   "双頭の斧": "Double-Headed Axe",
+};
+
+// Official rarity badge art from the Steam demo client (rarity_r ... rarity_lr_plus5).
+export const RARITY_ICONS = {
+  R: "rarity/rarity_r.webp",
+  SR: "rarity/rarity_sr.webp",
+  SSR: "rarity/rarity_ssr.webp",
+  UR: "rarity/rarity_ur.webp",
+  LR: "rarity/rarity_lr.webp",
 };
 
 export const ACQUISITIONS = {
@@ -80,6 +91,9 @@ export const girlsGardenCharacters = [
     origin: "リバティ",
     hobby: "研究・読書・友達と出かける",
     likes: "スイーツ・友達",
+    originEn: "Liberty",
+    hobbyEn: "Research, reading, & going out with friends",
+    likesEn: "Sweets & friends",
     cv: "結城ほのか",
     lore: "社交的で明るいメイズオタク。 会員が自分だけの『メイズ研究同好会』を立ち上げ, １人で研究を行う変わり者。 非常に賢いらしいが, 怪しい実験をしては部室で爆発を起こすため, 周囲からは頭のいいバカと思われている。",
     loreEn: "A sociable, cheerful Maze otaku. An oddball who founded a Maze Research Club where she is the only member and does all the research alone. Apparently very smart, but her suspicious experiments keep exploding in the club room, so people around her think of her as a clever idiot.",
@@ -88,6 +102,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "博識なメイズの探求者",
+        titleEn: "Maze Enthusiast",
+        iconEn: "cards-en/chiyuru-tsukigase-1.webp",
         rarity: "SSR",
         attribute: "シャイ",
         type: "敏捷",
@@ -101,6 +117,8 @@ export const girlsGardenCharacters = [
       {
         n: 2,
         title: "紙一重なメイズオタク",
+        titleEn: "Maze Fanatic",
+        iconEn: "cards-en/chiyuru-tsukigase-2.webp",
         rarity: "SR",
         attribute: "シャイ",
         type: "物理",
@@ -152,6 +170,9 @@ export const girlsGardenCharacters = [
     origin: "アマツ",
     hobby: "園芸",
     likes: "花・自然物",
+    originEn: "Amatsu",
+    hobbyEn: "Gardening",
+    likesEn: "Flowers/Nature",
     cv: "歩サラ",
     lore: "シリウスシュガーのリーダー。 ＭＧ事業で１代にして財を築いた鳴滝家の長女。 世の中からは『成金』として知られ, そのことにコンプレックスを抱く。 鳴滝家をまっとうな資産家として世の中に認めさせたいと考えている。",
     loreEn: "Leader of Sirius Sugar. Eldest daughter of the Narutaki family, which built a fortune in a single generation through the MG business. Society knows them as nouveau riche, a label she feels self-conscious about. She wants the world to recognize the Narutaki family as a proper, respectable house.",
@@ -160,6 +181,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "オールラウンダーな統率者",
+        titleEn: "Versatile Leader",
+        iconEn: "cards-en/nanairo-narutaki-1.webp",
         rarity: "SSR",
         attribute: "キュート",
         type: "EN",
@@ -173,6 +196,8 @@ export const girlsGardenCharacters = [
       {
         n: 2,
         title: "器用貧乏なお嬢様リーダー",
+        titleEn: "Ladylike Leader",
+        iconEn: "cards-en/nanairo-narutaki-2.webp",
         rarity: "SR",
         attribute: "スマート",
         type: "EN",
@@ -211,6 +236,9 @@ export const girlsGardenCharacters = [
     origin: "スカラ",
     hobby: "日向ぼっこ",
     likes: "変なデザインの小物・動物",
+    originEn: "Scalar",
+    hobbyEn: "Basking in the sun",
+    likesEn: "Animals & oddly designed accessories",
     cv: "夏峰いろは",
     lore: "カオスメイデンのリーダー。 パイロットとして天才的なセンスを持っているが, 性格は問題だらけ。 明るくカリスマはあるものの, 子供っぽくデリカシーがない。 出自に何か秘密があるらしいが……",
     loreEn: "Leader of Chaos Maiden. She has genius talent as a pilot, but her personality is full of problems. Bright and charismatic, yet childish and tactless. There seems to be some secret about her origins...",
@@ -219,6 +247,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "享楽のワイルドカード",
+        titleEn: "Hedonistic Wild Card",
+        iconEn: "cards-en/julia-barnes-1.webp",
         rarity: "SSR",
         attribute: "スマート",
         type: "物理",
@@ -270,6 +300,9 @@ export const girlsGardenCharacters = [
     origin: "リバティ",
     hobby: "ファッション・アクセサリー",
     likes: "ジョギング・海",
+    originEn: "Liberty",
+    hobbyEn: "Fashion & accessories",
+    likesEn: "Jogging & the sea",
     cv: "",
     lore: "起業家の父親と画家の母親の間に生まれた, 商売人気質な少女。 親から教わった手腕で, 学生ながらいくつもビジネスを手掛けている。 人付き合いも広く, 社交的ではあるものの不器用で, 人間関係を損得で考えてしまう悩みがある。",
     loreEn: "Born between an entrepreneur father and a painter mother, a girl with a business head. Using the skills her parents taught her, she runs several businesses while still a student. She has a wide social network, but she is clumsy at intimacy and worries that she ends up weighing relationships in profit and loss.",
@@ -278,6 +311,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "戦うアントレプレナー",
+        titleEn: "Fighting Entrepreneur",
+        iconEn: "cards-en/layla-jenkins-1.webp",
         rarity: "SSR",
         attribute: "アグレッシブ",
         type: "敏捷",
@@ -316,6 +351,9 @@ export const girlsGardenCharacters = [
     origin: "リバティ",
     hobby: "金属工芸",
     likes: "音楽を聴くこと・歌うこと",
+    originEn: "Liberty",
+    hobbyEn: "Metal crafting",
+    likesEn: "Listening to music & singing",
     cv: "",
     lore: "金属工芸アーティストとして有名であり, 一部界隈からは『空想造形師ロージー』という二つ名で呼ばれている。 実家が小さな自動車整備工場なせいか, 機械にも強い。 非常に明るく自由気ままな性格で, 気に入った相手を振り回す人物。",
     loreEn: "Famous as a metalwork artist, known in certain circles by the nickname Rosie the Fantasy Sculptor. Her family runs a small auto repair shop, so she is good with machines too. Extremely bright and free-spirited, she drags along anyone she takes a liking to.",
@@ -324,6 +362,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "空想造形アーティスト",
+        titleEn: "Fantasy Sculptor",
+        iconEn: "cards-en/rosie-hughes-1.webp",
         rarity: "SSR",
         attribute: "シャイ",
         type: "物理",
@@ -408,6 +448,9 @@ export const girlsGardenCharacters = [
     origin: "アマツ",
     hobby: "アクセサリー作り",
     likes: "静かな場所・自分の部屋",
+    originEn: "Amatsu",
+    hobbyEn: "Making accessories",
+    likesEn: "Quiet places & her room",
     cv: "",
     lore: "引っ込み思案で自信のない少女。 学園にも両親に言われて入学しただけで, 危険で怖いから辞めたいと思っている。 しかし, その実力は非常に高く, チームからも評価されている。 だが本人は自覚していないため, 常に怯えている。",
     loreEn: "A shy girl with no self-confidence. She only enrolled at the academy because her parents told her to, and thinks about quitting because it is dangerous and scary. Her actual skill is extremely high and her teammates rate her well, but she is unaware of it and stays anxious.",
@@ -416,6 +459,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "臆病な褒められたがり少女",
+        titleEn: "Timid Girl Seeking Praise",
+        iconEn: "cards-en/uruu-namise-1.webp",
         rarity: "SSR",
         attribute: "アグレッシブ",
         type: "EN",
@@ -454,6 +499,9 @@ export const girlsGardenCharacters = [
     origin: "スカラ",
     hobby: "ゴスロリ",
     likes: "甘いもの・姫系の衣服",
+    originEn: "Scalar",
+    hobbyEn: "Gothic Lolita fashion",
+    likesEn: "Sweets & princess-style clothes",
     cv: "みる",
     lore: "ノヴァセレスをルーツに持つ少女。 仲の良い相手をからかい, その反応で親愛を試すような悪癖を持っている。 母子家庭であり, 母親は心の病で入院中。 その費用を稼ぐことと将来の安定のため, パイロットになった。",
     loreEn: "A girl with Nova Ceres roots. She has the bad habit of teasing people she is close to, testing their affection by their reactions. She is from a single-mother household, and her mother is hospitalized with an illness. She became a pilot to pay for that and to secure her future.",
@@ -462,6 +510,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "愛を求めるトラブルメーカー",
+        titleEn: "Love-Hungry Tease",
+        iconEn: "cards-en/anis-bennett-1.webp",
         rarity: "SSR",
         attribute: "キュート",
         type: "敏捷",
@@ -658,6 +708,9 @@ export const girlsGardenCharacters = [
     origin: "アマツ",
     hobby: "芸術鑑賞",
     likes: "ふかふかのクッション・ハンモック",
+    originEn: "Amatsu",
+    hobbyEn: "Art appreciation",
+    likesEn: "Soft cushions & hammocks",
     cv: "青山ゆかり",
     lore: "面倒くさがりな省エネ主義で, 目立ったことを嫌い, 必要以上に前に出ないようにしている。 葵とは昔からの仲で親友同士。 何かと軋轢を生みやすい彼女を常日頃からサポートしている。",
     loreEn: "A lazy energy-saver who dislikes standing out and avoids stepping forward more than necessary. She and Aoi are old friends. She is always supporting Aoi, whose nature tends to create friction with others.",
@@ -666,6 +719,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "温厚篤実な面倒くさがり",
+        titleEn: "Gentle Slacker",
+        iconEn: "cards-en/maia-yunagi-1.webp",
         rarity: "SSR",
         attribute: "スマート",
         type: "EN",
@@ -704,6 +759,9 @@ export const girlsGardenCharacters = [
     origin: "アマツ",
     hobby: "ペットアプリ",
     likes: "犬・フワフワしたもの",
+    originEn: "Amatsu",
+    hobbyEn: "Virtual pet games",
+    likesEn: "Dogs & fluffy things",
     cv: "",
     lore: "カラフルブーケのリーダー。 政治家の父を持つ名家出身の少女。 柊校舎内でも優秀なパイロット。 自他ともに厳しい性格で, 特に規律を重んじる。 校舎内では一部の生徒から恐れられるが, 根は思いやり深い。",
     loreEn: "Leader of Colorful Bouquet. A girl from a prestigious family with a politician father, and one of the best pilots in the Hiiragi building. Strict with herself and others, placing particular weight on discipline. Some students fear her, but at heart she is deeply caring.",
@@ -712,6 +770,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "厳格な規律の守護者",
+        titleEn: "Strict Disciplinarian",
+        iconEn: "cards-en/aoi-ikoma-1.webp",
         rarity: "SSR",
         attribute: "キュート",
         type: "物理",
@@ -849,6 +909,9 @@ export const girlsGardenCharacters = [
     origin: "ノヴァセレス",
     hobby: "漫画集め",
     likes: "ピクシス・マスールの皆",
+    originEn: "Nova Ceres",
+    hobbyEn: "Collecting manga",
+    likesEn: "Everyone in Pyxis Ma Soeur",
     cv: "",
     lore: "下級貴族ヘイワード家の生まれ。 実家は貴族としての体面を維持するのがギリギリで, 暮らしぶりは平民とほぼ同じ。 ある事件からドロテアを尊敬し, メイド見習いに。 勉強はできないが自信は誰にも負けない。",
     loreEn: "Born to the lower noble Hayward family. The family can barely keep up noble appearances, and their lifestyle is almost commoner. After a certain incident she came to admire Dorothea and became a maid-in-training. She is bad at studying, but her confidence yields to no one.",
@@ -857,6 +920,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "腕白メイド娘",
+        titleEn: "Sprightly Maid",
+        iconEn: "cards-en/miriam-hayward-1.webp",
         rarity: "SR",
         attribute: "スマート",
         type: "敏捷",
@@ -895,6 +960,9 @@ export const girlsGardenCharacters = [
     origin: "ノヴァセレス",
     hobby: "動物のお世話",
     likes: "ふわふわしたもの",
+    originEn: "Nova Ceres",
+    hobbyEn: "Caring for animals",
+    likesEn: "Fluffy things",
     cv: "",
     lore: "中級貴族フルニエ家の生まれ。 やや特殊な家庭環境で育ったせいか, 運動神経抜群。 ある事件からドロテアに憧れ, メイド見習いに。 普段は気弱だが, 実は怒らせたらチームで一番怖いらしい。",
     loreEn: "Born to the middle noble Fournier family. Perhaps because of her somewhat unusual home environment, her athletic ability is outstanding. After a certain incident she came to admire Dorothea and became a maid-in-training. She is normally timid, but she is said to be the scariest one on the team when angered.",
@@ -903,6 +971,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "臆病メイド娘",
+        titleEn: "Timid Maid",
+        iconEn: "cards-en/kate-fournier-1.webp",
         rarity: "SR",
         attribute: "アグレッシブ",
         type: "敏捷",
@@ -941,6 +1011,9 @@ export const girlsGardenCharacters = [
     origin: "ノヴァセレス",
     hobby: "使わない雑学を調べる",
     likes: "お菓子",
+    originEn: "Nova Ceres",
+    hobbyEn: "Looking up useless trivia",
+    likesEn: "Snacks",
     cv: "",
     lore: "下級貴族ミルズ家の生まれ。 多忙な両親の元で一人で過ごしてきた事から, 内向的で人見知りな性格となった。 ある事件からドロテアを崇拝し, メイド見習いに。 チームメンバー以外には警戒心が強く毒舌家だが, 根は真面目で情が深い。",
     loreEn: "Born to the lower noble Mills family. Growing up alone under busy parents made her introverted and shy around strangers. After a certain incident she came to revere Dorothea and became a maid-in-training. She is guarded and sharp-tongued toward anyone outside the team, but at root she is serious and deeply affectionate.",
@@ -949,6 +1022,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "毒舌メイド娘",
+        titleEn: "Sharp-Tongued Maid",
+        iconEn: "cards-en/harriet-mills-1.webp",
         rarity: "SR",
         attribute: "キュート",
         type: "EN",
@@ -1053,6 +1128,9 @@ export const girlsGardenCharacters = [
     origin: "スカラ",
     hobby: "お茶",
     likes: "お茶・和菓子",
+    originEn: "Scalar",
+    hobbyEn: "Tea ceremonies",
+    likesEn: "Tea & Japanese sweets",
     cv: "遠野そよぎ",
     lore: "アマツをルーツに持つスカラ地区出身の茶道宗家の息女。 茶の道を究める精神修行を兼ねてパイロットに。 ほんわかしたお嬢様と周囲からは認識されているが, チームメンバーからは違う認識を持たれているらしい。",
     loreEn: "Daughter of a tea ceremony grandmaster family from the Skala district with Amatsu roots. She became a pilot as part of the spiritual discipline of pursuing the way of tea. People around her see her as a gentle, soft lady, but her teammates apparently see her differently.",
@@ -1061,6 +1139,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "渇望秘めし淑女",
+        titleEn: "Secretly Yearning Lady",
+        iconEn: "cards-en/saya-shiun-1.webp",
         rarity: "SSR",
         attribute: "スマート",
         type: "EN",
@@ -1092,6 +1172,7 @@ export const girlsGardenCharacters = [
     name: "劉翠蘭",
     kana: "りゅうすいらん",
     romaji: "Cuilan Liu",
+    nameEn: "Liu Cuilan",
     school: "スカラ校舎",
     team: "カオスメイデン",
     birthday: "June 20",
@@ -1099,6 +1180,9 @@ export const girlsGardenCharacters = [
     origin: "スカラ",
     hobby: "茶葉・茶器を集める",
     likes: "清潔な場所",
+    originEn: "Scalar",
+    hobbyEn: "Collecting tea leaves and tea sets",
+    likesEn: "Clean places",
     cv: "",
     lore: "スカラ地区の華連というコミュニティの出身。 商家の娘でビジネスの世界を知るせいか他人にやや厳しめだが, 根は面倒見が良く優しい性格。 一族の商売に縛られることを厭い, 将来は待遇のいい安定した企業に就職したいと思っている。",
     loreEn: "From the Hualian community in the Skala district. A merchant family's daughter who knows the business world, which makes her a bit harsh on others, but at root she is caring and kind. She dislikes being tied to her family's trade and wants a stable job with good conditions in the future.",
@@ -1107,6 +1191,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "混沌の立役者",
+        titleEn: "Architect of Chaos",
+        iconEn: "cards-en/cuilan-liu-1.webp",
         rarity: "SSR",
         attribute: "アグレッシブ",
         type: "EN",
@@ -1224,6 +1310,9 @@ export const girlsGardenCharacters = [
     origin: "リバティ",
     hobby: "サボテン栽培",
     likes: "小動物",
+    originEn: "Liberty",
+    hobbyEn: "Growing cacti",
+    likesEn: "Small animals",
     cv: "秋野花",
     lore: "かつてはザルトゥーム島でも有名な歌手として活動していた。 現在は活動を休止し, パイロットとして活動中。ふわふわして明るく, 一緒にいると癒されるような雰囲気をしている。 サボテン栽培が趣味。",
     loreEn: "Once a famous singer known across Zaltoom island. She has put that career on hold and now works as a pilot. Fluffy and bright, being around her feels healing. Her hobby is growing cacti.",
@@ -1232,6 +1321,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "舞台を降りた元歌姫",
+        titleEn: "Former Diva",
+        iconEn: "cards-en/sienna-clark-1.webp",
         rarity: "SSR",
         attribute: "スマート",
         type: "EN",
@@ -1303,6 +1394,9 @@ export const girlsGardenCharacters = [
     origin: "アマツ",
     hobby: "ファッション・古着屋巡り",
     likes: "服・アクセサリー",
+    originEn: "Amatsu",
+    hobbyEn: "Fashion & thrifting",
+    likesEn: "Clothes & accessories",
     cv: "風音",
     lore: "ミステリアスなオーラを漂わせる寡黙な少女。 様々な分野で好成績を残し, 学内でも一目置かれている。 何やら, 誰にも言えない秘密があるらしいが……?",
     loreEn: "A quiet girl wrapped in a mysterious aura. She posts excellent grades across many fields and is regarded highly inside the academy. Rumor has it she has a secret she cannot tell anyone...?",
@@ -1311,6 +1405,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "ミステリアスガール",
+        titleEn: "Mysterious Girl",
+        iconEn: "cards-en/shirona-ichijo-1.webp",
         rarity: "SR",
         attribute: "シャイ",
         type: "敏捷",
@@ -1324,6 +1420,8 @@ export const girlsGardenCharacters = [
       {
         n: 2,
         title: "純白のラッキーガール",
+        titleEn: "Pristine Good Fortune",
+        iconEn: "cards-en/shirona-ichijo-2.webp",
         rarity: "SSR",
         attribute: "スマート",
         type: "物理",
@@ -1362,6 +1460,9 @@ export const girlsGardenCharacters = [
     origin: "アマツ",
     hobby: "料理",
     likes: "おいしいもの",
+    originEn: "Amatsu",
+    hobbyEn: "Cooking",
+    likesEn: "Good food",
     cv: "藤崎紗矢香",
     lore: "平凡な家庭に生まれた少女。 過集中の傾向があり, 集中すれば高いパフォーマンスを発揮できるが, 一方で周囲とトラブルを起こしてしまった過去も。 人の役に立ちたいという気持ちが強い。",
     loreEn: "A girl born into an ordinary family. She tends toward hyperfocus: when she concentrates she performs at a very high level, but it has also gotten her into trouble with the people around her in the past. She strongly wants to be of help to others.",
@@ -1370,6 +1471,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "シリウスシュガーのエース",
+        titleEn: "Sirius Sugar's Ace",
+        iconEn: "cards-en/meru-momozono-1.webp",
         rarity: "SSR",
         attribute: "アグレッシブ",
         type: "敏捷",
@@ -1383,6 +1486,8 @@ export const girlsGardenCharacters = [
       {
         n: 2,
         title: "ドジで純粋な未来のエース",
+        titleEn: "Clumsy Future Ace",
+        iconEn: "cards-en/meru-momozono-2.webp",
         rarity: "SR",
         attribute: "アグレッシブ",
         type: "EN",
@@ -1566,6 +1671,9 @@ export const girlsGardenCharacters = [
     origin: "ノヴァセレス",
     hobby: "スポーツ観戦",
     likes: "手作りのもの",
+    originEn: "Nova Ceres",
+    hobbyEn: "Watching sports",
+    likesEn: "Handmade items",
     cv: "月野きいろ",
     lore: "ピクシス・マスールのリーダー。名門カークランド公爵家の一人娘。 上に立つべき人間としての責務を大切に考えて, 誰からも尊敬されるように振舞う本物の貴族。 メイドのリュシーとは幼い頃からの親友同士で, 姉のように想っている。",
     loreEn: "Leader of Pyxis Massue. Only daughter of the prestigious Duke Kirkland family. She treasures the duty of those who stand above others and carries herself so as to be respected by everyone, a true noble. She and her maid Lucie have been close friends since childhood, and she thinks of her like a younger sister.",
@@ -1574,6 +1682,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "ノーブル・グレイス",
+        titleEn: "Noble Grace",
+        iconEn: "cards-en/dorothea-kirkland-1.webp",
         rarity: "SSR",
         attribute: "コミカル",
         type: "物理",
@@ -1612,6 +1722,9 @@ export const girlsGardenCharacters = [
     origin: "ノヴァセレス",
     hobby: "料理",
     likes: "ジェラート",
+    originEn: "Nova Ceres",
+    hobbyEn: "Cooking",
+    likesEn: "Gelato",
     cv: "",
     lore: "母親がアマツ出身なハーフの女の子。弟や妹が多く, 家族の生活のためにパイロットを目指して学園に入学した。 おっとりとしたお姉さん気質な少女で, 誰かの助けになれる事を喜べる優しい性格をしている。 お化けと虫がとても苦手。",
     loreEn: "A half girl whose mother is from Amatsu. With many younger brothers and sisters, she aimed to become a pilot and entered the academy to support her family's livelihood. She has a gentle big-sister nature and is happy when she can help someone. She is very bad with ghosts and bugs.",
@@ -1620,6 +1733,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "プレクラス－Aのお姉さん",
+        titleEn: "Pre-Class A's Big Sis",
+        iconEn: "cards-en/laura-kuromori-1.webp",
         rarity: "R",
         attribute: "シャイ",
         type: "EN",
@@ -1658,6 +1773,9 @@ export const girlsGardenCharacters = [
     origin: "リバティ",
     hobby: "占い雑誌を読むこと",
     likes: "ジャンクフード",
+    originEn: "Liberty",
+    hobbyEn: "Reading astrology magazines",
+    likesEn: "Junk food",
     cv: "",
     lore: "プレ・クラス－Ａのリーダー。 ４人兄妹の末っ子として, 家族に愛されて育ってきた明るい女の子。 小さな会社の経営者である父親を尊敬していて, 将来は自分も起業しようと考えている。 ポンコツだが, とにかくポジティブ。",
     loreEn: "Leader of Pre-Class-A. The youngest of four siblings, a bright girl raised full of family love. She admires her father, who runs a small company, and intends to start her own business someday. A klutz, but relentlessly positive.",
@@ -1666,6 +1784,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "爆走お転婆少女",
+        titleEn: "Reckless Tomboy",
+        iconEn: "cards-en/julie-stacy-1.webp",
         rarity: "R",
         attribute: "アグレッシブ",
         type: "物理",
@@ -1704,14 +1824,19 @@ export const girlsGardenCharacters = [
     origin: "アマツ",
     hobby: "読書・野良猫マップ作成",
     likes: "お金",
+    originEn: "Amatsu",
+    hobbyEn: "Reading & making stray cat maps",
+    likesEn: "Money",
     cv: "",
     lore: "お金を稼ぐためにザルトゥーム学園へ入学した少女。 生意気で負けず嫌いな性格で, 相手が年上でも決して引かない。 複雑な家庭環境で, それについてはあまり語らない。",
-    loreEn: "A girl who entered Zaltoom Academy to earn money. Cheeky and fiercely competitive, she never backs down even against someone older. Her family situation is complicated, and she does not like to talk about it.",
+    loreEn: "A girl who entered Zar'tum Academy to earn money. Cheeky and fiercely competitive, she never backs down even against someone older. Her family situation is complicated, and she does not like to talk about it.",
     art: "characters/rami-kuchiba.webp",
     cards: [
       {
         n: 1,
         title: "お金大好きな生意気娘",
+        titleEn: "Moneygrubbing Brat",
+        iconEn: "cards-en/rami-kuchiba-1.webp",
         rarity: "SR",
         attribute: "キュート",
         type: "物理",
@@ -1725,6 +1850,8 @@ export const girlsGardenCharacters = [
       {
         n: 2,
         title: "負けず嫌いな不屈少女",
+        titleEn: "Fierce Competitor",
+        iconEn: "cards-en/rami-kuchiba-2.webp",
         rarity: "SSR",
         attribute: "シャイ",
         type: "物理",
@@ -1776,6 +1903,9 @@ export const girlsGardenCharacters = [
     origin: "ノヴァセレス",
     hobby: "アロマ・お香集め",
     likes: "友人からのプレゼント",
+    originEn: "Nova Ceres",
+    hobbyEn: "Incense & aromatherapy",
+    likesEn: "Gifts from friends",
     cv: "",
     lore: "ノヴァセレスの元貴族。 元貴族ではあるが, 誇りを重んじる負けん気の強い性格。 いつか実家の事業を再興して, 周囲を見返すのが夢。 分かりやすくチョロい一面がある。 『綺羅』は母方の姓。",
     loreEn: "A former noble of Nova Ceres. Her family has fallen, but she is proud and fiercely competitive. Her dream is to revive her family's business and prove everyone wrong someday. She has an easily-read, soft-hearted side. Kira is her mother's family name.",
@@ -1784,6 +1914,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "正々堂々なミス・ツンデレ",
+        titleEn: "Forthright Tsundere",
+        iconEn: "cards-en/kurara-kira-1.webp",
         rarity: "SSR",
         attribute: "キュート",
         type: "敏捷",
@@ -1822,6 +1954,9 @@ export const girlsGardenCharacters = [
     origin: "アマツ",
     hobby: "ボードゲーム・読書",
     likes: "スイーツ",
+    originEn: "Amatsu",
+    hobbyEn: "Board games & reading",
+    likesEn: "Sports",
     cv: "",
     lore: "生まれつき知能が高く, 周囲にも献身的で慕われている優等生。 効率的に立ち回る事を好んでいる。 カラフルブーケの参謀であり, 表にはあまり出ず裏方としてチームを支えている。 何やら彼女には隠している秘密があるらしい。",
     loreEn: "A model student: born with high intelligence, devoted to the people around her and loved by them. She likes to move efficiently. She is the strategist of Colorful Bouquet, staying out of the spotlight and supporting the team from behind the scenes. Apparently she is keeping a secret from the others.",
@@ -1830,6 +1965,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "自称腹黒の深謀策士",
+        titleEn: "Cutthroat Strategist",
+        iconEn: "cards-en/senka-himekawa-1.webp",
         rarity: "SSR",
         attribute: "シャイ",
         type: "敏捷",
@@ -1868,6 +2005,9 @@ export const girlsGardenCharacters = [
     origin: "スカラ",
     hobby: "なし",
     likes: "なし(静かな時間)",
+    originEn: "Scalar",
+    hobbyEn: "Nothing",
+    likesEn: "Nothing (Quiet time)",
     cv: "",
     lore: "掴みどころのない性格をしており, 普段はぼんやりとしていることが多い。 しかしＭＧに乗ると一流のパイロットとして, 様々な状況に対応できる優秀さを発揮する。学園には感情を学びに来たとは彼女の弁",
     loreEn: "She has an elusive personality and is usually spaced out. But when she boards an MG she performs as a first-rate pilot, handling all kinds of situations. By her own account, she came to the academy to learn about emotions.",
@@ -1876,6 +2016,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "空っぽのアクター",
+        titleEn: "Empty Actress",
+        iconEn: "cards-en/fee-drese-1.webp",
         rarity: "SSR",
         attribute: "シャイ",
         type: "EN",
@@ -2079,6 +2221,9 @@ export const girlsGardenCharacters = [
     origin: "リバティ",
     hobby: "コンピュータゲーム",
     likes: "コンピューター",
+    originEn: "Liberty",
+    hobbyEn: "Computer games",
+    likesEn: "Computers",
     cv: "",
     lore: "幼い頃からＰＣに慣れ親しみ, ネットで出会った師匠から教わったハッキング技術で, 一流のホワイトハッカーとして活動している。 夢や野心を持たず, タイパ・コスパ重視な効率を重んじる価値観をしている。",
     loreEn: "At home on a PC since childhood, she learned hacking from a mentor she met online and works as a first-rate white-hat hacker. She holds no dreams or ambitions, and her values center on efficiency: time-performance and cost-performance above all.",
@@ -2087,6 +2232,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "省エネ主義の天才ハッカー",
+        titleEn: "Genius Hacker",
+        iconEn: "cards-en/evi-leenhardt-1.webp",
         rarity: "SSR",
         attribute: "アグレッシブ",
         type: "物理",
@@ -2125,6 +2272,9 @@ export const girlsGardenCharacters = [
     origin: "リバティ",
     hobby: "雑誌を読むこと",
     likes: "フルーツ全般",
+    originEn: "Liberty",
+    hobbyEn: "Reading magazines",
+    likesEn: "Fruits",
     cv: "",
     lore: "トレブルクインテットのリーダー。 元々は真面目で大人しい地味な子だったが, ネットを通じてアマツの『ギャル文化』を知ったことでギャルを目指すように。 現在はギャル配信者として活動しており, 人気を博している。",
     loreEn: "Leader of Treble Quintet. Originally a serious, quiet, plain girl, she discovered Amatsu gyaru culture through the internet and set out to become a gyaru herself. She now works as a gyaru streamer and has become quite popular.",
@@ -2133,6 +2283,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "ギャルインフルエンサー",
+        titleEn: "Gyaru Influencer",
+        iconEn: "cards-en/flute-melville-1.webp",
         rarity: "SSR",
         attribute: "キュート",
         type: "EN",
@@ -2171,6 +2323,9 @@ export const girlsGardenCharacters = [
     origin: "アマツ",
     hobby: "トレーニング",
     likes: "かわいいもの",
+    originEn: "Amatsu",
+    hobbyEn: "Physical training",
+    likesEn: "Cute things",
     cv: "",
     lore: "かつて将来を期待された陸上競技の選手だったが, 事故によってその道を諦めることに。 メイズ適性の判明を機に, 第２の人生として学園へ入学。 ストイックで努力家だが, 協調性がなくトラブルになることも。",
     loreEn: "Once a promising track and field athlete, she gave up that path after an accident. When her Maze aptitude was discovered, she entered the academy as her second life. Stoic and hardworking, but lacking in cooperativeness, which sometimes causes trouble.",
@@ -2179,6 +2334,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "ストイックな努力家",
+        titleEn: "Stoic Hard Worker",
+        iconEn: "cards-en/shinka-himukai-1.webp",
         rarity: "R",
         attribute: "スマート",
         type: "物理",
@@ -2217,6 +2374,9 @@ export const girlsGardenCharacters = [
     origin: "ノヴァセレス",
     hobby: "食べ歩き",
     likes: "物を壊すこと",
+    originEn: "Nova Ceres",
+    hobbyEn: "Food tours",
+    likesEn: "Breaking things",
     cv: "",
     lore: "人懐っこく誰とでも仲良くなれるが, メイズに潜ると我を忘れて暴れまわる危険な一面を持っている。 実はロマンチストな一面があり, 誰にもバレないように恋愛小説を愛読している。",
     loreEn: "Friendly and able to get along with anyone, but she has a dangerous side: when she dives into a Maze she loses herself and rampages wildly. She is secretly a romantic at heart, and reads romance novels where no one can find out.",
@@ -2225,6 +2385,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "制御不能の破壊者",
+        titleEn: "Unstoppable Destroyer",
+        iconEn: "cards-en/noelle-arouet-1.webp",
         rarity: "R",
         attribute: "キュート",
         type: "物理",
@@ -2263,6 +2425,9 @@ export const girlsGardenCharacters = [
     origin: "ガレムグラード山中",
     hobby: "下着集め",
     likes: "父",
+    originEn: "Garemgrad Mountains",
+    hobbyEn: "Collecting lingerie",
+    likesEn: "Her father",
     cv: "",
     lore: "アマツ系の少女。凄腕のパイロットだが他人と行動するのが苦手。 実力で学園に特例を認めさせ, 単独でチームとして活動することを許されている。 幼い頃は父親と山で自給自足の生活を送っていた。 愛用のネイルガンはその父親の形見。",
     loreEn: "A girl of Amatsu descent. A superb pilot, but bad at operating with others. Her skill forced the academy to make a special exception, allowing her to act as a one-person team. As a child she lived self-sufficiently in the mountains with her father. Her beloved nail gun is a memento of him.",
@@ -2271,6 +2436,8 @@ export const girlsGardenCharacters = [
       {
         n: 1,
         title: "緋色の一匹狼",
+        titleEn: "Scarlet Lone Wolf",
+        iconEn: "cards-en/hiiro-sakakino-1.webp",
         rarity: "SSR",
         attribute: "クレバー",
         type: "敏捷",
@@ -2302,7 +2469,7 @@ export function getCharacterBySlug(slug) {
   return girlsGardenCharacters.find(c => c.slug === slug);
 }
 
-// Card styles across all characters, newest first (for the timeline view).
+// Style Cards across all characters, newest first (for the timeline view).
 export const allCardStyles = girlsGardenCharacters
   .flatMap(c => c.cards.map(card => ({ ...card, character: c })))
   .sort((a, b) => (a.released < b.released ? 1 : a.released > b.released ? -1 : 0));

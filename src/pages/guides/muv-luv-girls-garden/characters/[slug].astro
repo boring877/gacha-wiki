@@ -11,6 +11,7 @@ import {
   TEAMS,
   ACQUISITIONS,
 } from '../../../../data/muv-luv-girls-garden/characters.js';
+import { variantSlug } from '../../../../data/muv-luv-girls-garden/default-variant.js';
 import '../../../../styles/games/muv-luv-girls-garden/mlgg-common.css';
 import '../../../../styles/games/muv-luv-girls-garden/mlgg-characters.css';
 
@@ -151,7 +152,17 @@ function positionParts(position) {
                 />
               </td>
               <td>
-                {card.title}
+                {card.titleEn ? (
+                  <a
+                    class="mlgg-card-link"
+                    href={`/guides/muv-luv-girls-garden/characters/${ch.slug}/${variantSlug(card.titleEn)}/`}
+                    title={card.titleEn}
+                  >
+                    {card.title}
+                  </a>
+                ) : (
+                  card.title
+                )}
                 {card.flavor && <p class="mlgg-card-flavor">{card.flavor}</p>}
               </td>
               <td><span class={`mlgg-badge mlgg-badge-rarity-${card.rarity}`}>{card.rarity}</span></td>

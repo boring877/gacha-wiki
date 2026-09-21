@@ -1,0 +1,230 @@
+---
+// Muv-Luv Girls Garden global student list: every student of the worldwide
+// Steam version (demo coverage), one page per student, shown with the game's
+// official 360x640 card portraits on the collection-style tile grid. The
+// Japan server's full student database lives separately at /characters/.
+import MLGGLayout from '../../../layouts/muv-luv-girls-garden/LandingLayout.astro';
+import MLGGImage from '../../../components/muv-luv-girls-garden/MLGGImage.astro';
+import {
+  girlsGardenCharacters,
+  ATTRIBUTES,
+  TYPES,
+  ROLES,
+  SCHOOLS,
+  TEAMS,
+  RARITY_ICONS,
+} from '../../../data/muv-luv-girls-garden/characters.js';
+import {
+  MLGG_CARDS,
+} from '../../../data/muv-luv-girls-garden/game-data.js';
+import { mlggPortrait } from '../../../data/muv-luv-girls-garden/portraits.js';
+import { variantSlug } from '../../../data/muv-luv-girls-garden/default-variant.js';
+import '../../../styles/games/muv-luv-girls-garden/mlgg-common.css';
+import '../../../styles/games/muv-luv-girls-garden/mlgg-characters.css';
+import '../../../styles/games/muv-luv-girls-garden/mlgg-collector.css';
+
+// One entry per global student, flattened for the tile grid.
+const gameBySlugN = new Map<string, any>(
+  Object.values(MLGG_CARDS).map((c: any) => [`${c.slug}:${c.n}`, c]),
+);
+const idBySlugN = new Map<string, string>(
+  Object.entries(MLGG_CARDS).map(([id, c]: [string, any]) => [`${c.slug}:${c.n}`, id]),
+);
+const variants = girlsGardenCharacters.flatMap(ch =>
+  ch.cards
+    .filter(card => card.titleEn)
+    .map(card => {
+      const g = gameBySlugN.get(`${ch.slug}:${card.n}`) || null;
+      const portrait = mlggPortrait(idBySlugN.get(`${ch.slug}:${card.n}`));
+      return {
+        href: `/guides/muv-luv-girls-garden/characters/${ch.slug}/${variantSlug(card.titleEn)}/`,
+        title: card.titleEn,
+        titleJp: card.title,
+        portrait,
+        art: (g?.fullbody || card.iconEn || card.icon) as string,
+        framed: !g?.fullbody,
+        lowres: !g?.fullbody,
+        rarity: card.rarity,
+        rarityRank: ['R', 'SR', 'SSR', 'UR', 'LR'].indexOf(card.rarity),
+        released: card.released,
+        student: ch.nameEn || ch.romaji,
+        studentRomaji: (ch.nameEn || ch.romaji || '').toLowerCase(),
+        kana: (ch.kana || '').toLowerCase(),
+        school: ch.school,
+        team: ch.team,
+      };
+    }),
+);
+
+const studentsWithGlobal = new Set(
+  girlsGardenCharacters.filter(c => c.cards.some(k => k.titleEn)).map(c => c.slug)
+).size;
+const schools = [...new Set(girlsGardenCharacters.map(c => c.school).filter(Boolean))];
+const teams = [...new Set(girlsGardenCharacters.map(c => c.team).filter(Boolean))];
+// base rarities that actually exist (UR and LR only appear via Limit Break)
+const rarities = ['SSR', 'SR', 'R'];
+---
+
+<MLGGLayout
+  title="Students (Global) - Muv-Luv Girls Garden"
+  description={`All ${variants.length} students of the global version of Muv-Luv Girls Garden (マブラヴ ガールズガーデン): ${studentsWithGlobal} girls with official English names, stats, skills and profiles from the Steam demo master data.`}
+  gameTitle="Students (Global)"
+>
+  <section class="mlgg-section">
+    <p class="mlgg-section-sub">
+      The worldwide Steam version of Muv-Luv Girls Garden, one page per student:
+      {variants.length} students with stats, skills and profiles from the
+      official demo data. Variants of the same girl are listed separately.
+      Students that have not come to the global version yet stay on the
+      <a href="/guides/muv-luv-girls-garden/characters/">Student List (Japan)</a>.
+    </p>
+
+    <div class="mlgg-filter-bar">
+      <input
+        type="text"
+        class="mlgg-search"
+        placeholder="Search student..."
+        id="mlgg-search"
+        aria-label="Search students"
+      />
+      <select id="mlgg-school" class="mlgg-select" aria-label="Filter by school">
+        <option value="all">All Schools</option>
+        {schools.map(s => <option value={s}>{SCHOOLS[s] || s}</option>)}
+      </select>
+      <select id="mlgg-team" class="mlgg-select" aria-label="Filter by team">
+        <option value="all">All Teams</option>
+        {teams.map(t => <option value={t}>{TEAMS[t] || t}</option>)}
+      </select>
+      <select id="mlgg-rarity" class="mlgg-select" aria-label="Filter by rarity">
+        <option value="all">All Rarities</option>
+        {rarities.map(r => <option value={r}>{r}</option>)}
+      </select>
+      <select id="mlgg-sort" class="mlgg-select" aria-label="Sort">
+        <option value="roster">Student roster</option>
+        <option value="newest">Newest</option>
+        <option value="rarity">Rarity</option>
+        <option value="student">Name A to Z</option>
+      </select>
+      <button type="button" class="mlgg-btn mlgg-btn-secondary mlgg-reset" id="mlgg-reset">Reset</button>
+      <span class="mlgg-count" id="mlgg-count">{variants.length} Students</span>
+    </div>
+
+    <div class="mlgg-sctile-grid" id="mlgg-variant-grid">
+      {variants.map(v => (
+        <a
+          href={v.href}
+          class="mlgg-sctile"
+          data-school={v.school}
+          data-team={v.team}
+          data-rarity={v.rarity}
+          data-search={(v.title + ' ' + v.titleJp + ' ' + v.student + ' ' + v.studentRomaji + ' ' + v.kana).toLowerCase()}
+          data-released={v.released}
+          data-rarity-rank={v.rarityRank}
+          data-student={v.studentRomaji}
+        >
+          {v.portrait ? (
+            <span class="mlgg-sctile-bed">
+              <MLGGImage
+                path={v.portrait}
+                alt={`${v.student} ${v.title}`}
+                class="mlgg-sctile-portrait"
+                loading="lazy"
+              />
+            </span>
+          ) : (
+            <span class="mlgg-sctile-bed">
+              <MLGGImage
+                path={`gameimg/collector_bg_r.webp`}
+                alt=""
+                class="mlgg-sctile-bg"
+                loading="lazy"
+              />
+              <span class="mlgg-sctile-dots" aria-hidden="true"></span>
+              <span class={`mlgg-sctile-art ${v.framed ? (v.lowres ? 'is-framed is-lowres' : 'is-framed') : 'is-standee'}`}>
+                <MLGGImage
+                  path={v.art}
+                  alt={`${v.student} ${v.title}`}
+                  class="mlgg-sctile-img"
+                  loading="lazy"
+                />
+              </span>
+            </span>
+          )}
+          <span class="mlgg-sctile-plate">
+            {RARITY_ICONS[v.rarity] && (
+              <MLGGImage
+                path={RARITY_ICONS[v.rarity]}
+                alt={`${v.rarity} rarity`}
+                class="mlgg-sctile-rarity"
+                width={34}
+                height={34}
+                loading="lazy"
+              />
+            )}
+            <span class="mlgg-sctile-names">
+              <span class="mlgg-sctile-title">{v.title}</span>
+              <span class="mlgg-sctile-student">{v.student}</span>
+            </span>
+          </span>
+        </a>
+      ))}
+    </div>
+    <p class="mlgg-no-results" id="mlgg-no-results" hidden>No students match these filters.</p>
+  </section>
+</MLGGLayout>
+
+<script>
+  const search = document.getElementById('mlgg-search') as HTMLInputElement;
+  const schoolSel = document.getElementById('mlgg-school') as HTMLSelectElement;
+  const teamSel = document.getElementById('mlgg-team') as HTMLSelectElement;
+  const raritySel = document.getElementById('mlgg-rarity') as HTMLSelectElement;
+  const sortSel = document.getElementById('mlgg-sort') as HTMLSelectElement;
+  const resetBtn = document.getElementById('mlgg-reset');
+  const grid = document.getElementById('mlgg-variant-grid');
+  const countEl = document.getElementById('mlgg-count');
+  const noResults = document.getElementById('mlgg-no-results');
+
+  function updateDisplay() {
+    if (!grid) return;
+    const query = (search?.value || '').toLowerCase();
+    const cards = grid.querySelectorAll('.mlgg-sctile') as NodeListOf<HTMLElement>;
+    const items: HTMLElement[] = Array.from(cards);
+
+    items.forEach(card => {
+      const matchesSearch = !query || (card.dataset.search || '').includes(query);
+      const matchesSchool = !schoolSel || schoolSel.value === 'all' || card.dataset.school === schoolSel.value;
+      const matchesTeam = !teamSel || teamSel.value === 'all' || card.dataset.team === teamSel.value;
+      const matchesRarity = !raritySel || raritySel.value === 'all' || card.dataset.rarity === raritySel.value;
+      card.style.display = (matchesSearch && matchesSchool && matchesTeam && matchesRarity) ? '' : 'none';
+    });
+
+    const by = {
+      newest: (a: HTMLElement, b: HTMLElement) => (b.dataset.released || '').localeCompare(a.dataset.released || ''),
+      rarity: (a: HTMLElement, b: HTMLElement) => Number(b.dataset.rarityRank || 0) - Number(a.dataset.rarityRank || 0) || (b.dataset.released || '').localeCompare(a.dataset.released || ''),
+      student: (a: HTMLElement, b: HTMLElement) => (a.dataset.student || '').localeCompare(b.dataset.student || ''),
+      roster: (a: HTMLElement, b: HTMLElement) => 0,
+    };
+    const sorter = by[(sortSel?.value as keyof typeof by) || 'roster'] || by.roster;
+    items.sort(sorter).forEach(card => grid.appendChild(card));
+
+    const visible = items.filter(c => c.style.display !== 'none').length;
+    if (countEl) countEl.textContent = `${visible} Student${visible !== 1 ? 's' : ''}`;
+    if (noResults) noResults.hidden = visible !== 0;
+  }
+
+  updateDisplay();
+
+  search?.addEventListener('input', updateDisplay);
+  schoolSel?.addEventListener('change', updateDisplay);
+  teamSel?.addEventListener('change', updateDisplay);
+  raritySel?.addEventListener('change', updateDisplay);
+  sortSel?.addEventListener('change', updateDisplay);
+  resetBtn?.addEventListener('click', () => {
+    if (search) search.value = '';
+    if (schoolSel) schoolSel.value = 'all';
+    if (teamSel) teamSel.value = 'all';
+    if (raritySel) raritySel.value = 'all';
+    if (sortSel) sortSel.value = 'roster';
+    updateDisplay();
+  });
+</script>

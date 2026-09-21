@@ -1,9 +1,9 @@
-// Muv-Luv Girls Garden pilot tier list from the Japanese community source
-// kamigame.jp (最強キャラランキング, updated 2026-09-16), mapped to pilot slugs
+// Muv-Luv Girls Garden student tier list from the Japanese community source
+// kamigame.jp (最強キャラランキング, updated 2026-09-16), mapped to student slugs
 // in characters.js by JP display name (variant prefixes like 周年/水着 resolved
-// to the pilot). Each placement = the pilot's best-ranked card in that category.
+// to the student). Each placement = the student's best-ranked card in that category.
 // Coverage note: the Sep 15, 2026 duo unit ニーナジーナ (Nina Zina) is ranked SS
-// Overall on the source but is not in the pilot database yet.
+// Overall on the source but is not in the student list yet.
 export const TIER_ORDER = ['SS', 'S+', 'S', 'A+', 'A', 'B', 'C'];
 
 export const TIER_CATEGORIES = [
@@ -21,11 +21,11 @@ export const TIER_SOURCE = {
 };
 
 export const TIER_NOTES = [
-  'The September 15, 2026 duo unit Nina Zina (ニーナジーナ) ranks SS Overall on the source but is not in the pilot database yet.',
-  'A placement reflects the highest-ranked card of a pilot: kamigame scores individual card styles, so a pilot with several ranked cards takes the highest one here.',
+  'The September 15, 2026 duo unit Nina Zina (ニーナジーナ) ranks SS Overall on the source but is not in the student list yet.',
+  'A placement reflects the highest-ranked card of a student: kamigame scores individual Style Cards, so a student with several ranked cards takes the highest one here.',
 ];
 
-// category -> tier -> pilot slugs (roster order)
+// category -> tier -> student slugs (roster order)
 export const MLGG_TIER_PLACEMENTS = 
 {
   "overall": {

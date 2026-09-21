@@ -1,0 +1,87 @@
+---
+// TCG Shop page: featured trading card sets and store directory with referral links
+import AboutLayout from '../layouts/AboutLayout.astro';
+import { SITE_TITLE } from '../consts';
+import { featuredSets, shopLink } from '../data/shop.js';
+import '../styles/pages/shop.css';
+
+const title = `${SITE_TITLE} Shop: Where to Buy Weiss Schwarz NIKKE Vol.2 and More`;
+const description =
+  'Where to buy the Weiss Schwarz GODDESS OF VICTORY: NIKKE Vol.2 booster boxes and Trial Decks. Store links support the wiki at no extra cost to you.';
+const keywords = [
+  'weiss schwarz nikke',
+  'nikke vol.2',
+  'goddess of victory nikke tcg',
+  'weiss schwarz booster box',
+  'nikke cards where to buy',
+  'ws tcg shop',
+];
+
+const fmtDate = (iso: string) =>
+  new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<AboutLayout title={title} description={description} keywords={keywords}>
+  <div class="main-content">
+    <header class="page-header">
+      <h1 class="page-title">TCG Shop</h1>
+    </header>
+
+    <p class="shop-intro">
+      Trading card sets for the games and franchises our community loves, with store links that
+      support the wiki. Buying through a referral link costs you nothing extra: the store pays us a
+      small commission instead.
+    </p>
+
+    {
+      featuredSets.map(set => (
+        <section class="shop-set" aria-label={set.name}>
+          <div class="shop-set-body">
+            <div class="shop-set-media">
+              <img
+                src={set.image}
+                alt={set.imageAlt}
+                width={set.imageWidth}
+                height={set.imageHeight}
+                loading="lazy"
+              />
+            </div>
+            <div class="shop-set-info">
+              <div class="shop-set-head">
+                <h2 class="shop-set-title">{set.name}</h2>
+                <span class="shop-set-game">{set.game}</span>
+              </div>
+              <p class="shop-set-tagline">{set.tagline}</p>
+              <p class="shop-set-blurb">{set.blurb}</p>
+              <div class="shop-chips">
+                {set.releases.map(r => (
+                  <span class={`shop-chip shop-chip-${r.status}`}>{`${r.region}: ${fmtDate(r.date)}${r.status === 'preorder' ? ', preorder open' : ''}`}</span>
+                ))}
+              </div>
+              <ul class="shop-specs">
+                {set.specs.map(spec => (
+                  <li>{spec}</li>
+                ))}
+              </ul>
+              <div class="shop-links">
+                {set.links.map(link => (
+                  <a
+                    class="shop-btn"
+                    href={shopLink(link)}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow sponsored"
+                  >
+                    <span class="shop-btn-store">{link.store}</span>
+                    <span class="shop-btn-note">{link.note}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      ))
+    }
+
+    <p class="shop-fineprint">As an Amazon Associate, GachaWiki earns from qualifying purchases.</p>
+  </div>
+</AboutLayout>

@@ -1,0 +1,184 @@
+/* TCG Shop page styles: featured set cards, store grid and referral disclosure box */
+
+/* === INTRO + DISCLOSURE === */
+.shop-intro {
+  max-width: 820px;
+  margin: 0 auto 2.5rem auto;
+  text-align: center;
+  color: var(--text-inverse);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+/* === FEATURED SET CARDS === */
+.shop-set {
+  max-width: 900px;
+  margin: 0 auto 2.5rem auto;
+  background: var(--zn-card-bg);
+  border: 1px solid var(--text-secondary);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.shop-set-body {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 1.8rem;
+  align-items: start;
+}
+
+.shop-set-media {
+  min-width: 0;
+}
+
+.shop-set-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.shop-set-info {
+  min-width: 0;
+}
+
+.shop-set-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.shop-set-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: var(--font-bold);
+  color: var(--amber-glow);
+  margin: 0;
+}
+
+.shop-set-game {
+  font-size: 0.8rem;
+  font-weight: var(--font-bold);
+  color: #1a1a1a;
+  background: var(--amber-glow);
+  border-radius: 5px;
+  padding: 0.2rem 0.6rem;
+}
+
+.shop-set-tagline {
+  color: var(--text-inverse);
+  opacity: 0.75;
+  font-size: 0.9rem;
+  margin: 0 0 0.9rem 0;
+}
+
+.shop-set-blurb {
+  color: var(--text-inverse);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  margin: 0 0 1rem 0;
+}
+
+/* Release status chips: full solid, per site badge convention */
+.shop-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.shop-chip {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 0.28rem 0.7rem;
+  font-size: 0.8rem;
+  font-weight: var(--font-bold);
+  color: #ffffff;
+  background: #22c55e;
+}
+
+.shop-chip-preorder {
+  background: var(--amber-glow);
+  color: #1a1a1a;
+}
+
+.shop-specs {
+  margin: 0 0 1.4rem 0;
+  padding-left: 1.2rem;
+  color: var(--text-inverse);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* === STORE LINK BUTTONS === */
+.shop-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 0.75rem;
+}
+
+.shop-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--text-secondary);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  text-decoration: none;
+}
+
+.shop-btn:hover {
+  border-color: var(--amber-glow);
+}
+
+.shop-btn-store {
+  color: var(--amber-glow);
+  font-weight: var(--font-bold);
+  font-size: 0.95rem;
+}
+
+.shop-btn-note {
+  color: var(--text-inverse);
+  opacity: 0.7;
+  font-size: 0.78rem;
+}
+
+/* Small print: the one-line Amazon Associates disclosure (program requirement) */
+.shop-fineprint {
+  max-width: 820px;
+  margin: 0.5rem auto 0 auto;
+  text-align: center;
+  color: var(--text-inverse);
+  opacity: 0.5;
+  font-size: 0.75rem;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .shop-set {
+    padding: 1.3rem;
+  }
+
+  .shop-set-body {
+    grid-template-columns: 1fr;
+  }
+
+  .shop-set-media {
+    max-width: 240px;
+    margin: 0 auto;
+  }
+
+  .shop-links {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .shop-links {
+    grid-template-columns: 1fr;
+  }
+}

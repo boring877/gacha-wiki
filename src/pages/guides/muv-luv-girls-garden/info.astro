@@ -3,24 +3,35 @@
 // prose with subsections, and the full team table. No boxed containers.
 import MLGGLayout from '../../../layouts/muv-luv-girls-garden/LandingLayout.astro';
 import { girlsGardenCharacters, SCHOOLS, TEAMS } from '../../../data/muv-luv-girls-garden/characters.js';
+import { mlggVariantHref } from '../../../data/muv-luv-girls-garden/default-variant.js';
 import '../../../styles/games/muv-luv-girls-garden/mlgg-common.css';
 import '../../../styles/games/muv-luv-girls-garden/mlgg-info.css';
 
-const pilots = girlsGardenCharacters.length;
+const students = girlsGardenCharacters.length;
 const cards = girlsGardenCharacters.reduce((n, c) => n + c.cards.length, 0);
 
-// Team summary: members + schools + links to each pilot page.
+// Team summary: members + schools + links to each student page.
 const teamMap = new Map();
 for (const ch of girlsGardenCharacters) {
   if (!teamMap.has(ch.team)) teamMap.set(ch.team, { members: [] });
   teamMap.get(ch.team).members.push(ch);
 }
+// Official EN team descriptions from the Steam demo master data (TeamMaster).
+const TEAM_DESC_EN = {
+  'シリウスシュガー': 'Led by Nanairo. No one can beat them at friendship!',
+  'カラフルブーケ': 'Led by Aoi. Excels at precise team tactics.',
+  'カオスメイデン': "A top team that reflects the leader Julia's personality.",
+  'インスカーレット': 'A team made up solely of Hiiro under special permission.',
+  'ピクシス・マスール': 'Led by Dorothea. Efficient teamwork is their strength.',
+  'トレブルクインテット': 'Led by Flute. They all have talents outside of piloting.',
+  'プレ・クラス－Ａ': 'A team from the Remedial Education Facility.',
+};
 const teams = [...teamMap.entries()]
   .map(([jp, info]) => {
     const schools = [...new Set(
       info.members.map(m => (m.school && m.school !== '-' ? SCHOOLS[m.school] || m.school : null)).filter(Boolean)
     )];
-    return { jp, en: TEAMS[jp] || jp, schools, members: info.members };
+    return { jp, en: TEAMS[jp] || jp, schools, members: info.members, desc: TEAM_DESC_EN[jp] || null };
   })
   .sort((a, b) => b.members.length - a.members.length || a.en.localeCompare(b.en));
 
@@ -29,16 +40,19 @@ const facts = [
   { label: 'Genre', value: 'Full-auto idle RPG', sub: '放置系RPG' },
   { label: 'Platforms', value: 'PC, Android, iOS', sub: 'PC browser / DMM GAMES PLAYER, DMM GAMES STORE' },
   { label: 'JP Launch', value: 'September 3, 2025', sub: 'Free to play, with in-app purchases' },
+  { label: 'Steam Version', value: 'Worldwide, coming soon', sub: 'By MOEDOKI, Shiravune and aNCHOR. Free to play' },
+  { label: 'Steam Demo', value: 'Live since September 17, 2026', sub: 'English, Simplified Chinese, Traditional Chinese' },
+  { label: 'Companion App', value: 'Mellow Days', sub: 'Productivity ADV with Meru. November 2026, own demo since August 31, 2026' },
   { label: 'Age Rating', value: 'General + R18 builds', sub: 'DMM distributes both versions' },
   { label: 'Theme Song', value: 'Fukutsu no Fanfare', sub: '不屈のファンファーレ, sung by Koki Nakae' },
-  { label: 'Roster', value: `${pilots} pilots, ${cards} cards`, sub: `Across ${teams.length} teams` },
+  { label: 'Roster', value: `${students} students, ${cards} Style Cards`, sub: `Across ${teams.length} teams` },
   { label: 'Staff', value: 'World: Tashiro Hayato', sub: 'Chara draft: Hasama, design: Siino / Pro-p, mecha: Wataru Inada' },
 ];
 ---
 
 <MLGGLayout
   title="Game Info - Muv-Luv Girls Garden"
-  description="Muv-Luv Girls Garden (マブラヴ ガールズガーデン) game info: developer, platforms, release dates, the world of Zaltoom and the Maze, and every team with its school and pilots."
+  description="Muv-Luv Girls Garden (マブラヴ ガールズガーデン) game info: developer, platforms, release dates, the world of Zar'tum and the Maze, and every team with its school and students."
   gameTitle="Game Info"
 >
   <div class="mlgg-info-container">
@@ -58,14 +72,35 @@ const facts = [
   </section>
 
   <section class="mlgg-section">
-    <h2 class="mlgg-section-title">Setting</h2>
-    <p class="mlgg-section-sub">Zaltoom, the academy city of prodigies</p>
-
-    <h3 class="mlgg-info-h3">The academy city Zaltoom</h3>
+    <h2 class="mlgg-section-title">Steam Version (Worldwide)</h2>
+    <p class="mlgg-section-sub">Announced for Steam, published by MOEDOKI, Shiravune and aNCHOR Inc.</p>
     <p class="mlgg-info-p">
-      Zaltoom is an academy city that gathers gifted students of scholarship, art, and
+      On September 17, 2026 a free playable <strong>Steam demo</strong> went live, and the
+      full <strong>free-to-play game</strong> is listed as coming soon. The Steam version
+      supports <strong>English, Simplified Chinese and Traditional Chinese</strong>, with
+      region-selectable servers, and carries over the full-auto idle RPG loop of the
+      Japanese release: Main Quests, randomized Maze dives, Recruit (gacha) with a wishlist
+      system, Groups (guilds), and PvP through Combined Tactical Exercises.
+    </p>
+    <p class="mlgg-info-p">
+      A standalone companion app, <strong>MUV-LUV GIRLS GARDEN Mellow Days</strong>
+      (November 2026, by DESK GARDEN PROJECT and aNCHOR), stars Meru Momozono as a
+      productivity partner: Pomodoro timer, ToDo list, calendar, music and ambient sounds,
+      with new conversations unlocking as you work. Its own free demo has been live since
+      August 31, 2026. English names and terms on this wiki are taken from the official
+      English text of the Steam demo.
+    </p>
+  </section>
+
+  <section class="mlgg-section">
+    <h2 class="mlgg-section-title">Setting</h2>
+    <p class="mlgg-section-sub">Zar'tum, the academy city of prodigies</p>
+
+    <h3 class="mlgg-info-h3">The academy city Zar'tum</h3>
+    <p class="mlgg-info-p">
+      Zar'tum is an academy city that gathers gifted students of scholarship, art, and
       sport from all over the world. Beneath it spreads the Maze, a colossal,
-      shape-shifting underground space that is also the only source of Tatsumiya ore, a
+      shape-shifting underground space that is also the only source of Tatsumiya Ore, a
       resource of extraordinary value.
     </p>
 
@@ -73,13 +108,13 @@ const facts = [
     <p class="mlgg-info-p">
       To mine the ore and answer the unknown threats inside, humanity built the Maze
       Guarder (MG), a giant humanoid machine with the mobility to handle the Maze's
-      terrain. The girls who pilot them belong to the Pilot Program at the city's
-      schools, each flying the colors of their own team.
+      terrain. The students of Zar'tum Academy's school buildings ride them into the Maze,
+      each flying the colors of their own team.
     </p>
 
-    <h3 class="mlgg-info-h3">The story: an amnesiac commander</h3>
+    <h3 class="mlgg-info-h3">The story: an amnesiac Commander</h3>
     <p class="mlgg-info-p">
-      The story begins when you, a commander who has lost their memory, takes charge of
+      The story begins when you, a Commander who has lost their memory, takes charge of
       these girls. Deeper in the Maze, riders of Tactical Surface Fighters who call
       themselves Eishi appear: guests from the world of the main Muv-Luv series.
     </p>
@@ -88,8 +123,8 @@ const facts = [
   <section class="mlgg-section">
     <h2 class="mlgg-section-title">Teams</h2>
     <p class="mlgg-section-sub">
-      {teams.length} squads across the schools of Zaltoom. Pilots link to their database
-      page.
+      {teams.length} squads across the schools of Zar'tum. Students link to their student
+      list page.
     </p>
     <div class="mlgg-info-table-scroll">
       <table class="mlgg-table">
@@ -98,20 +133,23 @@ const facts = [
             <th>Team</th>
             <th>Japanese</th>
             <th>School</th>
-            <th>Pilots</th>
+            <th>Students</th>
           </tr>
         </thead>
         <tbody>
           {teams.map(t => (
             <tr>
-              <td>{t.en}</td>
+              <td>
+                {t.en}
+                {t.desc && <p class="mlgg-team-desc-en">{t.desc}</p>}
+              </td>
               <td>{t.jp}</td>
               <td>{t.schools.join(', ')}</td>
               <td>
                 <div class="mlgg-team-members">
                   {t.members.map(m => (
-                    <a href={`/guides/muv-luv-girls-garden/characters/${m.slug}/`} class="mlgg-team-member">
-                      {m.name}
+                    <a href={mlggVariantHref(m.slug)} class="mlgg-team-member">
+                      {m.nameEn || m.romaji}
                     </a>
                   ))}
                 </div>
