@@ -1,4 +1,4 @@
-// Gene-Sys: Adam item database (1001 items), from decrypted ItemData + EN localization.
+// Gene-Sys: Adam item database (1078 items), from decrypted ItemData + EN localization.
 
 export const gsaItems = [
  {
@@ -88,7 +88,7 @@ export const gsaItems = [
  {
   "id": "200000013",
   "name": "Support Points",
-  "desc": "The level of support shown for your favorite idol, used as the basis for fan ranking in the Heaven's Door event. Obtained by exchanging for merchandise in Heaven's Door.",
+  "desc": "The level of support shown for your favorite idol, used as the basis for fan ranking in the Heaven's Door event. Obtained by exchanging for merchandise in Heaven's Door. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
@@ -1465,6 +1465,27 @@ export const gsaItems = [
   "icon": null
  },
  {
+  "id": "200090031",
+  "name": "\u3010\u6df7\u6c8c\u4e4b\u6e90\u3011\u6b66\u88dd\u88dc\u7d66\u7bb1",
+  "desc": "\u96a8\u6a5f\u7372\u5f97\u6df7\u6c8c\u4e4b\u6e90\u6b66\u88dd\u3002\u5fc5\u5b9a\u7372\u5f97\"\u3010\u6df7\u6c8c\u4e4b\u6e90\u3011\u6b66\u88dd\u88dc\u7d66\u6191\u8b49x1\"\uff0c\u67094%\u7684\u6a5f\u7387\u53ef\u4ee5\u7372\u5f97\u7279\u5316\u7d1a\u5b8c\u6574\u88dd\u5099\u3002",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200090032",
+  "name": "X(\u4e0d\u7ffb){\u4e3b\u984c\u6d3b\u52d55\u540d\u7a31}\u6b66\u88dd\u88dc\u7d66\u7bb1",
+  "desc": "X(\u4e0d\u7ffb)\u96a8\u6a5f\u7372\u5f97{\u4e3b\u984c\u6d3b\u52d55\u540d\u7a31}\u6b66\u88dd\u3002\u5fc5\u5b9a\u7372\u5f97\"\u3010{\u4e3b\u984c\u6d3b\u52d55\u540d\u7a31}\u3011\u6b66\u88dd\u88dc\u7d66\u6191\u8b49x1\"\uff0c\u67094%\u7684\u6a5f\u7387\u53ef\u4ee5\u7372\u5f97\u7279\u5316\u7d1a\u5b8c\u6574\u88dd\u5099\u3002",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200090033",
+  "name": "X(\u4e0d\u7ffb){\u4e3b\u984c\u6d3b\u52d56\u540d\u7a31}\u6b66\u88dd\u88dc\u7d66\u7bb1",
+  "desc": "X(\u4e0d\u7ffb)\u96a8\u6a5f\u7372\u5f97{\u4e3b\u984c\u6d3b\u52d56\u540d\u7a31}\u6b66\u88dd\u3002\u5fc5\u5b9a\u7372\u5f97\"\u3010{\u4e3b\u984c\u6d3b\u52d56\u540d\u7a31}\u3011\u6b66\u88dd\u88dc\u7d66\u6191\u8b49x1\"\uff0c\u67094%\u7684\u6a5f\u7387\u53ef\u4ee5\u7372\u5f97\u7279\u5316\u7d1a\u5b8c\u6574\u88dd\u5099\u3002",
+  "quality": "50",
+  "icon": null
+ },
+ {
   "id": "200100001",
   "name": "Combat Style Module (Lv. 1) Selection Chest",
   "desc": "Use to select and receive a Combat Style Module (Lv. 1). Receive 5 per use.",
@@ -2167,399 +2188,462 @@ export const gsaItems = [
  {
   "id": "200120006",
   "name": "[Ogino Rui] Targeted Summon Ticket",
-  "desc": "Character Selector Ticket. Can be used for 1 Summon.",
+  "desc": "Character Selector Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120007",
   "name": "[Ogino Rui] Targeted Summon 10-Pull Ticket",
-  "desc": "Character Selector Ticket. Can be used for 10 Summons.",
+  "desc": "Character Selector Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120008",
   "name": "[Lunar Splendor of the Pleasure District] Limited Summon Ticket",
-  "desc": "Limited Character Summon Ticket. Can be used for 1 Summon.",
+  "desc": "Limited Character Summon Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120009",
   "name": "[Lunar Splendor of the Pleasure District] Limited Summon 10-Pull Ticket",
-  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons.",
+  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120010",
   "name": "[Lunar Splendor of the Pleasure District] Limited Summon x10 Ticket (ECoin)",
-  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons.",
+  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120011",
   "name": "[Lunar Splendor of the Pleasure District] Armament Resupply 10-Pull Ticket",
-  "desc": "Limited Armament Resupply Ticket. Can be used for 10 Resupplies.",
+  "desc": "Limited Armament Resupply Ticket. Can be used for 10 Resupplies. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120012",
   "name": "[Sugimoto Arina] Targeted Summon Ticket",
-  "desc": "Character Selector Ticket. Can be used for 1 Summon.",
+  "desc": "Character Selector Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120013",
   "name": "[Sugimoto Arina] Targeted Summon 10-Pull Ticket",
-  "desc": "Character Selector Ticket. Can be used for 10 Summons.",
+  "desc": "Character Selector Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120014",
   "name": "[War & Music] Limited Summon Ticket",
-  "desc": "Limited Character Summon Ticket. Can be used for 1 Summon.",
+  "desc": "Limited Character Summon Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120015",
   "name": "[War & Music] Limited Summon 10-Pull Ticket",
-  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons.",
+  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120016",
   "name": "[War & Music] Limited Summon 10-Pull Ticket (ECoin)",
-  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons.",
+  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120017",
   "name": "[War & Music] Armament Resupply 10-Pull Ticket",
-  "desc": "Limited Armament Resupply Ticket. Can be used for 10 Resupplies.",
+  "desc": "Limited Armament Resupply Ticket. Can be used for 10 Resupplies. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120018",
   "name": "[Echoing Melody] Limited Summon Ticket",
-  "desc": "Limited Character Summon Ticket. Can be used for 1 Summon.",
+  "desc": "Limited Character Summon Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120019",
   "name": "[Echoing Melody] Limited Summon 10-Pull Ticket",
-  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons.",
+  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120020",
   "name": "[Echoing Melody] Limited Summon 10-Pull Ticket (ECoin)",
-  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons.",
+  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120021",
   "name": "[Echoing Melody] Armament Resupply 10-Pull Ticket",
-  "desc": "Limited Armament Resupply Ticket. Can be used for 10 Resupplies.",
+  "desc": "Limited Armament Resupply Ticket. Can be used for 10 Resupplies. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120022",
   "name": "Heaven's Door Summon Ticket",
-  "desc": "Can be used to summon a Perfect Lady from Heaven's Door.",
+  "desc": "Can be used to summon a Perfect Lady from Heaven's Door. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120023",
   "name": "Heaven's Door Summon 10-Pull Ticket",
-  "desc": "Can be used to summon 10 Perfect Ladies from Heaven's Door.",
+  "desc": "Can be used to summon 10 Perfect Ladies from Heaven's Door. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120024",
   "name": "[Clumsy Cowgirl - Belle] Limited Summon Ticket",
-  "desc": "Limited Character Summon Ticket. Can be used for 1 Summon.",
+  "desc": "Limited Character Summon Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120025",
   "name": "[Clumsy Cowgirl - Belle] Limited Summon 10-Pull Ticket",
-  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons.",
+  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120027",
   "name": "[Rookie Maid - Sugimoto Arina] Limited Summon Ticket",
-  "desc": "Limited Character Summon Ticket. Can be used for 1 Summon.",
+  "desc": "Limited Character Summon Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120028",
   "name": "[Rookie Maid - Sugimoto Arina] Limited Summon 10-Pull Ticket",
-  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons.",
+  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120029",
   "name": "[1M Downloads Celebration] Event Summon Ticket",
-  "desc": "Event Summon Ticket. Can be used for 1 Summon.",
+  "desc": "Event Summon Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120030",
   "name": "[1M Downloads Celebration] Event Summon 10-Pull Ticket",
-  "desc": "Event Summon Ticket. Can be used for 10 Summons.",
+  "desc": "Event Summon Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120031",
   "name": "[Ruo Lan] Targeted Summon Ticket",
-  "desc": "Character Selector Ticket. Can be used for 1 Summon.",
+  "desc": "Character Selector Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120032",
   "name": "[Ruo Lan] Targeted Summon 10-Pull Ticket",
-  "desc": "Character Selector Ticket. Can be used for 10 Summons.",
+  "desc": "Character Selector Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120033",
   "name": "[Amber] Targeted Summon Ticket",
-  "desc": "Character Selector Ticket. Can be used for 1 Summon.",
+  "desc": "Character Selector Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120034",
   "name": "[Amber] Targeted Summon 10-Pull Ticket",
-  "desc": "Character Selector Ticket. Can be used for 10 Summons.",
+  "desc": "Character Selector Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120035",
   "name": "[Kurosawa Shion] Targeted Summon Ticket",
-  "desc": "Character Selector Ticket. Can be used for 1 Summon.",
+  "desc": "Character Selector Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120036",
   "name": "[Kurosawa Shion] Targeted Summon 10-Pull Ticket",
-  "desc": "Character Selector Ticket. Can be used for 10 Summons.",
+  "desc": "Character Selector Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120037",
   "name": "[Chloe] Targeted Summon Ticket",
-  "desc": "Character Selector Ticket. Can be used for 1 Summon.",
+  "desc": "Character Selector Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120038",
   "name": "[Chloe] Targeted Summon 10-Pull Ticket",
-  "desc": "Character Selector Ticket. Can be used for 10 Summons.",
+  "desc": "Character Selector Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120039",
   "name": "[Charlotte] Targeted Summon Ticket",
-  "desc": "Character Selector Ticket. Can be used for 1 Summon.",
+  "desc": "Character Selector Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120040",
   "name": "[Charlotte] Targeted Summon 10-Pull Ticket",
-  "desc": "Character Selector Ticket. Can be used for 10 Summons.",
+  "desc": "Character Selector Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120041",
   "name": "[Rachel] Targeted Summon Ticket",
-  "desc": "Character Selector Ticket. Can be used for 1 Summon.",
+  "desc": "Character Selector Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120042",
   "name": "[Rachel] Targeted Summon 10-Pull Ticket",
-  "desc": "Character Selector Ticket. Can be used for 10 Summons.",
+  "desc": "Character Selector Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120043",
   "name": "[Milena] Targeted Summon Ticket",
-  "desc": "Character Selector Ticket. Can be used for 1 Summon.",
+  "desc": "Character Selector Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120044",
   "name": "[Milena] Targeted Summon 10-Pull Ticket",
-  "desc": "Character Selector Ticket. Can be used for 10 Summons.",
+  "desc": "Character Selector Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120045",
   "name": "[Amelie] Targeted Summon Ticket",
-  "desc": "Character Selector Ticket. Can be used for 1 Summon.",
+  "desc": "Character Selector Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120046",
   "name": "[Amelie] Targeted Summon 10-Pull Ticket",
-  "desc": "Character Selector Ticket. Can be used for 10 Summons.",
+  "desc": "Character Selector Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120047",
   "name": "[Liz] Targeted Summon Ticket",
-  "desc": "Character Selector Ticket. Can be used for 1 Summon.",
+  "desc": "Character Selector Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120048",
   "name": "[Liz] Targeted Summon 10-Pull Ticket",
-  "desc": "Character Selector Ticket. Can be used for 10 Summons.",
+  "desc": "Character Selector Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120049",
   "name": "[Lin Lin] Targeted Summon Ticket",
-  "desc": "Character Selector Ticket. Can be used for 1 Summon.",
+  "desc": "Character Selector Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120050",
   "name": "[Lin Lin] Targeted Summon 10-Pull Ticket",
-  "desc": "Character Selector Ticket. Can be used for 10 Summons.",
+  "desc": "Character Selector Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120051",
   "name": "[Annabelle] Targeted Summon Ticket",
-  "desc": "Character Selector Ticket. Can be used for 1 Summon.",
+  "desc": "Character Selector Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120052",
   "name": "[Annabelle] Targeted Summon 10-Pull Ticket",
-  "desc": "Character Selector Ticket. Can be used for 10 Summons.",
+  "desc": "Character Selector Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120053",
   "name": "[Li Mu] Targeted Summon Ticket",
-  "desc": "Character Selector Ticket. Can be used for 1 Summon.",
+  "desc": "Character Selector Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200120054",
   "name": "[Li Mu] Targeted Summon 10-Pull Ticket",
-  "desc": "Character Selector Ticket. Can be used for 10 Summons.",
+  "desc": "Character Selector Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200120055",
+  "name": "\u3010\u6df7\u6c8c\u4e4b\u6e90\u3011\u9650\u5b9a\u53ec\u52df\u5361",
+  "desc": "Limited Character Summon Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200120056",
+  "name": "\u3010\u6df7\u6c8c\u4e4b\u6e90\u3011\u9650\u5b9a\u53ec\u52df\u5341\u62bd\u5361",
+  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200120057",
+  "name": "\u3010\u6df7\u6c8c\u4e4b\u6e90\u3011\u9650\u5b9a\u53ec\u52df\u5341\u62bd\u5361(Ecoin)",
+  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200120058",
+  "name": "X(\u4e0d\u7ffb)\u3010{\u4e3b\u984c\u6d3b\u52d55\u540d\u7a31}\u3011\u9650\u5b9a\u53ec\u52df\u5361",
+  "desc": "Limited Character Summon Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200120059",
+  "name": "X(\u4e0d\u7ffb)\u3010{\u4e3b\u984c\u6d3b\u52d55\u540d\u7a31}\u3011\u9650\u5b9a\u53ec\u52df\u5341\u62bd\u5361",
+  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200120060",
+  "name": "X(\u4e0d\u7ffb)\u3010{\u4e3b\u984c\u6d3b\u52d55\u540d\u7a31}\u3011\u9650\u5b9a\u53ec\u52df\u5341\u62bd\u5361(Ecoin)",
+  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200120061",
+  "name": "X(\u4e0d\u7ffb)\u3010{\u4e3b\u984c\u6d3b\u52d56\u540d\u7a31}\u3011\u9650\u5b9a\u53ec\u52df\u5361",
+  "desc": "Limited Character Summon Ticket. Can be used for 1 Summon. (This item will be reclaimed after the current event ends.)",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200120062",
+  "name": "X(\u4e0d\u7ffb)\u3010{\u4e3b\u984c\u6d3b\u52d56\u540d\u7a31}\u3011\u9650\u5b9a\u53ec\u52df\u5341\u62bd\u5361",
+  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200120063",
+  "name": "X(\u4e0d\u7ffb)\u3010{\u4e3b\u984c\u6d3b\u52d56\u540d\u7a31}\u3011\u9650\u5b9a\u53ec\u52df\u5341\u62bd\u5361(Ecoin)",
+  "desc": "Limited Character Summon Ticket. Can be used for 10 Summons. (This item will be reclaimed after the current event ends.)",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200130001",
   "name": "Moonflower Crest",
-  "desc": "A Lunar Splendor Crest. Carrying this emblem in Moonflower territory can help you avoid some trouble. Obtained through events, it can be exchanged for items at the Exchange Shop.",
+  "desc": "A Lunar Splendor Crest. Carrying this emblem in Moonflower territory can help you avoid some trouble. Obtained through events, it can be exchanged for items at the Exchange Shop. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130002",
   "name": "Hanafuda Badge",
-  "desc": "A badge from a traditional card game popular in the territory of the Moonflower Clan. Obtained through event stage, it can be exchanged for items at the Exchange Shop.",
+  "desc": "A badge from a traditional card game popular in the territory of the Moonflower Clan. Obtained through event stage, it can be exchanged for items at the Exchange Shop. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130003",
   "name": "[Lunar Splendor of the Pleasure District] Armament Resupply Certificate",
-  "desc": "Obtained through Packs and the [Lunar Splendor of the Pleasure District] Armament Resupply Chest.",
+  "desc": "Obtained through Packs and the [Lunar Splendor of the Pleasure District] Armament Resupply Chest. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130005",
   "name": "Phantom Emblem",
-  "desc": "The loneliness of tragedy is the most timeless love. Obtainable from the event; can be used to exchange for items at the Exchange Shop.",
+  "desc": "The loneliness of tragedy is the most timeless love. Obtainable from the event; can be used to exchange for items at the Exchange Shop. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130006",
   "name": "Witch Badge",
-  "desc": "The suffocating, oppressive love of a witch. Obtainable from the event; can be used to exchange for items at the Exchange Shop.",
+  "desc": "The suffocating, oppressive love of a witch. Obtainable from the event; can be used to exchange for items at the Exchange Shop. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130007",
   "name": "[War & Music] Armament Resupply Certificate",
-  "desc": "Obtained through Packs and the [War & Music] Armament Resupply Chest.",
+  "desc": "Obtained through Packs and the [War & Music] Armament Resupply Chest. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130008",
   "name": "Gagaku Emblem",
-  "desc": "The sound spreads, vast and ethereal; the curse binds, deep in a dark prison. Obtainable from the event; can be used to exchange for items at the Exchange Shop.",
+  "desc": "The sound spreads, vast and ethereal; the curse binds, deep in a dark prison. Obtainable from the event; can be used to exchange for items at the Exchange Shop. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130009",
   "name": "Parasite Slave Badge",
-  "desc": "All living things are but materials; souls scattered and spirits broken into servitude. Obtainable from the event; can be used to exchange for items at the Exchange Shop.",
+  "desc": "All living things are but materials; souls scattered and spirits broken into servitude. Obtainable from the event; can be used to exchange for items at the Exchange Shop. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130010",
   "name": "[Echoing Melody] Armament Resupply Certificate",
-  "desc": "Obtained through Packs and the [Echoing Melody] Armament Resupply Chest.",
+  "desc": "Obtained through Packs and the [Echoing Melody] Armament Resupply Chest. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
@@ -2573,140 +2657,140 @@ export const gsaItems = [
  {
   "id": "200130012",
   "name": "Agate",
-  "desc": "Hard in texture, its surface features banded patterns of concentric circles or parallel layers. Obtainable from the [Black Gold Hunter] Warrant Stage.",
+  "desc": "Hard in texture, its surface features banded patterns of concentric circles or parallel layers. Obtainable from the [Black Gold Hunter] Warrant Stage. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130013",
   "name": "Amber",
-  "desc": "An organic fossil formed from ancient resin with a smooth, gentle feel. Obtainable in the [Black Gold Hunter] Warrant Stage.",
+  "desc": "An organic fossil formed from ancient resin with a smooth, gentle feel. Obtainable in the [Black Gold Hunter] Warrant Stage. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130014",
   "name": "Jade",
-  "desc": "Features a finely interwoven fibrous structure, giving it a green hue that ranges from translucent to opaque. Obtainable in the [Black Gold Hunter] Warrant Stage.",
+  "desc": "Features a finely interwoven fibrous structure, giving it a green hue that ranges from translucent to opaque. Obtainable in the [Black Gold Hunter] Warrant Stage. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130015",
   "name": "Crystal",
-  "desc": "A quartz crystal with high Mohs hardness and a pure, transparent texture. Obtainable in the [Black Gold Hunter] Warrant Stage.",
+  "desc": "A quartz crystal with high Mohs hardness and a pure, transparent texture. Obtainable in the [Black Gold Hunter] Warrant Stage. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130016",
   "name": "[1 Million Downloads] Celebration Certificate",
-  "desc": "Obtained by performing the [1M Downloads Celebration Summon].",
+  "desc": "Obtained by performing the [1M Downloads Celebration Summon]. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130017",
   "name": "[Ogino Rui] Targeted Certificate",
-  "desc": "Obtained by performing the [Ogino Rui Targeted Summon].",
+  "desc": "Obtained by performing the [Ogino Rui Targeted Summon]. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130018",
   "name": "[Sugimoto Arina] Targeted Certificate",
-  "desc": "Obtained by performing the [Sugimoto Arina Targeted Summon].",
+  "desc": "Obtained by performing the [Sugimoto Arina Targeted Summon]. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130019",
   "name": "[Clumsy Cowgirl - Belle] Targeted Certificate",
-  "desc": "Obtained by performing the [Clumsy Cowgirl - Belle Limited Summon].",
+  "desc": "Obtained by performing the [Clumsy Cowgirl - Belle Limited Summon]. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130020",
   "name": "[Ruo Lan] Targeted Certificate",
-  "desc": "Obtained by performing the [Ruo Lan Targeted Summon].",
+  "desc": "Obtained by performing the [Ruo Lan Targeted Summon]. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130021",
   "name": "[Amber] Targeted Certificate",
-  "desc": "Obtained by performing the [Amber Targeted Summon].",
+  "desc": "Obtained by performing the [Amber Targeted Summon]. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130022",
   "name": "[Kurosawa Shion] Targeted Certificate",
-  "desc": "Obtained by performing the [Kurosawa Shion Targeted Summon].",
+  "desc": "Obtained by performing the [Kurosawa Shion Targeted Summon]. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130023",
   "name": "[Chloe] Targeted Certificate",
-  "desc": "Obtained by performing the [Chloe Targeted Summon].",
+  "desc": "Obtained by performing the [Chloe Targeted Summon]. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130024",
   "name": "[Charlotte] Targeted Certificate",
-  "desc": "Obtained by performing the [Charlotte Targeted Summon].",
+  "desc": "Obtained by performing the [Charlotte Targeted Summon]. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130025",
   "name": "[Rachel] Targeted Certificate",
-  "desc": "Obtained by performing the [Rachel Targeted Summon].",
+  "desc": "Obtained by performing the [Rachel Targeted Summon]. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130026",
   "name": "[Milena] Targeted Certificate",
-  "desc": "Obtained by performing the [Milena Targeted Summon].",
+  "desc": "Obtained by performing the [Milena Targeted Summon]. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130027",
   "name": "[Amelie] Targeted Certificate",
-  "desc": "Obtained by performing the [Amelie Targeted Summon].",
+  "desc": "Obtained by performing the [Amelie Targeted Summon]. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130028",
   "name": "[Liz] Targeted Certificate",
-  "desc": "Obtained by performing the [Liz Targeted Summon].",
+  "desc": "Obtained by performing the [Liz Targeted Summon]. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130029",
   "name": "[Lin Lin] Targeted Certificate",
-  "desc": "Obtained by performing the [Lin Lin Targeted Summon].",
+  "desc": "Obtained by performing the [Lin Lin Targeted Summon]. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130030",
   "name": "[Annabelle] Targeted Certificate",
-  "desc": "Obtained by performing the [Annabelle Targeted Summon].",
+  "desc": "Obtained by performing the [Annabelle Targeted Summon]. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200130031",
   "name": "[Li Mu] Targeted Certificate",
-  "desc": "Obtained by performing the [Li Mu Targeted Summon].",
+  "desc": "Obtained by performing the [Li Mu Targeted Summon]. (This item will be reclaimed after the current event ends.)",
   "quality": "50",
   "icon": null
  },
@@ -2739,9 +2823,93 @@ export const gsaItems = [
   "icon": null
  },
  {
+  "id": "200130036",
+  "name": "\u6df7\u6c8c\u5fbd\u8a18",
+  "desc": "\u85cf\u6c61\u7d0d\u57a2\u7684\u767d\u8272\u5de8\u5854\u7684\u88e1\u9762\uff0c\u96b1\u85cf\u8457\u6975\u5176\u6158\u5fcd\u7684\u8840\u8165\u8b0a\u8a00\u3002\u900f\u904e\u6d3b\u52d5\u53d6\u5f97\uff0c\u53ef\u65bc\u4ea4\u6613\u6240\u514c\u63db\u5546\u54c1\u3002(\u6b64\u7269\u54c1\u5c07\u65bc\u672c\u671f\u6d3b\u52d5\u7d50\u675f\u5f8c\u56de\u6536)",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200130037",
+  "name": "\u540c\u7a2e\u52f3\u7ae0",
+  "desc": "\u5c07\u5065\u5eb7\u8207\u58fd\u547d\u632a\u7528\u5728\u66f4\u6709\u50f9\u503c\u7684\u4eba\u8eab\u4e0a\u3002\u900f\u904e\u6d3b\u52d5\u95dc\u5361\u53d6\u5f97\uff0c\u53ef\u65bc\u4ea4\u6613\u6240\u514c\u63db\u5546\u54c1\u3002(\u6b64\u7269\u54c1\u5c07\u65bc\u672c\u671f\u6d3b\u52d5\u7d50\u675f\u5f8c\u56de\u6536)",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200130038",
+  "name": "\u3010\u6df7\u6c8c\u4e4b\u6e90\u3011\u6b66\u88dd\u88dc\u7d66\u6191\u8b49",
+  "desc": "\u900f\u904e\u79ae\u5305\u8207\u3010\u6df7\u6c8c\u4e4b\u6e90\u3011\u6b66\u88dd\u88dc\u7d66\u7bb1\u53d6\u5f97\u3002(\u6b64\u7269\u54c1\u5c07\u65bc\u672c\u671f\u6d3b\u52d5\u7d50\u675f\u5f8c\u56de\u6536)",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200130039",
+  "name": "\u75c5\u5b0c\u523b\u5370",
+  "desc": "\u5728\u5730\u7344\uff0c\u5149\u660e\u6b63\u5927\u6bba\u4eba\uff0c\u662f\u88ab\u5141\u8a31\u7684\u3002\u900f\u904e\u8abf\u67e5\u95dc\u5361\u53d6\u5f97\uff0c\u53ef\u65bc\u4ea4\u6613\u6240\u514c\u63db\u5546\u54c1\u3002",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200130040",
+  "name": "X(\u4e0d\u7ffb){\u6d3b\u52d55}\u5fbd\u8a18",
+  "desc": "X(\u4e0d\u7ffb){\u63cf\u8ff0}\u3002\u900f\u904e\u6d3b\u52d5\u53d6\u5f97\uff0c\u53ef\u65bc\u4ea4\u6613\u6240\u514c\u63db\u5546\u54c1\u3002(\u6b64\u7269\u54c1\u5c07\u65bc\u672c\u671f\u6d3b\u52d5\u7d50\u675f\u5f8c\u56de\u6536)",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200130041",
+  "name": "X(\u4e0d\u7ffb){\u6d3b\u52d55}\u52f3\u7ae0",
+  "desc": "X(\u4e0d\u7ffb){\u63cf\u8ff0}\u3002\u900f\u904e\u6d3b\u52d5\u95dc\u5361\u53d6\u5f97\uff0c\u53ef\u65bc\u4ea4\u6613\u6240\u514c\u63db\u5546\u54c1\u3002(\u6b64\u7269\u54c1\u5c07\u65bc\u672c\u671f\u6d3b\u52d5\u7d50\u675f\u5f8c\u56de\u6536)",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200130042",
+  "name": "X(\u4e0d\u7ffb)\u3010{\u4e3b\u984c\u6d3b\u52d55\u540d\u7a31}\u3011\u6b66\u88dd\u88dc\u7d66\u6191\u8b49",
+  "desc": "X(\u4e0d\u7ffb)\u900f\u904e\u79ae\u5305\u8207\u3010\u4e3b\u984c\u6d3b\u52d55\u540d\u7a31\u3011\u6b66\u88dd\u88dc\u7d66\u7bb1\u53d6\u5f97\u3002(\u6b64\u7269\u54c1\u5c07\u65bc\u672c\u671f\u6d3b\u52d5\u7d50\u675f\u5f8c\u56de\u6536)",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200130043",
+  "name": "X(\u4e0d\u7ffb){\u6d3b\u52d55}\u523b\u5370",
+  "desc": "X(\u4e0d\u7ffb){\u63cf\u8ff0}\u3002\u900f\u904e\u8abf\u67e5\u95dc\u5361\u53d6\u5f97\uff0c\u53ef\u65bc\u4ea4\u6613\u6240\u514c\u63db\u5546\u54c1\u3002",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200130044",
+  "name": "X(\u4e0d\u7ffb){\u6d3b\u52d56}\u5fbd\u8a18",
+  "desc": "X(\u4e0d\u7ffb){\u63cf\u8ff0}\u3002\u900f\u904e\u6d3b\u52d5\u53d6\u5f97\uff0c\u53ef\u65bc\u4ea4\u6613\u6240\u514c\u63db\u5546\u54c1\u3002(\u6b64\u7269\u54c1\u5c07\u65bc\u672c\u671f\u6d3b\u52d5\u7d50\u675f\u5f8c\u56de\u6536)",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200130045",
+  "name": "X(\u4e0d\u7ffb){\u6d3b\u52d56}\u52f3\u7ae0",
+  "desc": "X(\u4e0d\u7ffb){\u63cf\u8ff0}\u3002\u900f\u904e\u6d3b\u52d5\u95dc\u5361\u53d6\u5f97\uff0c\u53ef\u65bc\u4ea4\u6613\u6240\u514c\u63db\u5546\u54c1\u3002(\u6b64\u7269\u54c1\u5c07\u65bc\u672c\u671f\u6d3b\u52d5\u7d50\u675f\u5f8c\u56de\u6536)",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200130046",
+  "name": "X(\u4e0d\u7ffb)\u3010{\u4e3b\u984c\u6d3b\u52d56\u540d\u7a31}\u3011\u6b66\u88dd\u88dc\u7d66\u6191\u8b49",
+  "desc": "X(\u4e0d\u7ffb)\u900f\u904e\u79ae\u5305\u8207\u3010\u4e3b\u984c\u6d3b\u52d56\u540d\u7a31\u3011\u6b66\u88dd\u88dc\u7d66\u7bb1\u53d6\u5f97\u3002(\u6b64\u7269\u54c1\u5c07\u65bc\u672c\u671f\u6d3b\u52d5\u7d50\u675f\u5f8c\u56de\u6536)",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200130047",
+  "name": "X(\u4e0d\u7ffb){\u6d3b\u52d56}\u523b\u5370",
+  "desc": "X(\u4e0d\u7ffb){\u63cf\u8ff0}\u3002\u900f\u904e\u8abf\u67e5\u95dc\u5361\u53d6\u5f97\uff0c\u53ef\u65bc\u4ea4\u6613\u6240\u514c\u63db\u5546\u54c1\u3002",
+  "quality": "50",
+  "icon": null
+ },
+ {
   "id": "200130048",
   "name": "\u3010200\u842c\u4e0b\u8f09\u3011\u7d00\u5ff5\u6191\u8b49",
-  "desc": "\u9032\u884c\u3010200\u842c\u4e0b\u8f09\u7d00\u5ff5\u671f\u9593\u53ec\u52df\u3011\u53d6\u5f97\u3002",
+  "desc": "\u9032\u884c\u3010200\u842c\u4e0b\u8f09\u7d00\u5ff5\u671f\u9593\u53ec\u52df\u3011\u53d6\u5f97\u3002(\u6b64\u7269\u54c1\u5c07\u65bc\u672c\u671f\u6d3b\u52d5\u7d50\u675f\u5f8c\u56de\u6536)",
   "quality": "50",
   "icon": null
  },
@@ -3075,9 +3243,79 @@ export const gsaItems = [
   "icon": null
  },
  {
+  "id": "200150079",
+  "name": "\u8389\u6b50\u59ae\u7d72\u53ec\u52df\u4fe1",
+  "desc": "\u4f7f\u7528\u5f8c\u53ef\u53ec\u52dfSSR\u89d2\u8272\uff1a\u300e\u8389\u6b50\u59ae\u7d72\u300f\u3002",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200150080",
+  "name": "\u91cc\u6069\u53ec\u52df\u4fe1",
+  "desc": "\u4f7f\u7528\u5f8c\u53ef\u53ec\u52dfSSR\u89d2\u8272\uff1a\u300e\u91cc\u6069\u300f\u3002",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200150081",
+  "name": "\u8299\u6d1b\u7df9\u53ec\u52df\u4fe1",
+  "desc": "\u4f7f\u7528\u5f8c\u53ef\u53ec\u52dfSSR\u89d2\u8272\uff1a\u300e\u8299\u6d1b\u7df9\u300f\u3002",
+  "quality": "70",
+  "icon": null
+ },
+ {
   "id": "200150082",
   "name": "Rookie Maid - Sugimoto Arina Summon Letter",
   "desc": "Use to summon the SSR character: Rookie Maid - Sugimoto Arina",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200150083",
+  "name": "\u591c\u7fbd\u53ec\u52df\u4fe1",
+  "desc": "\u4f7f\u7528\u5f8c\u53ef\u53ec\u52dfSSR\u89d2\u8272\uff1a\u300e\u591c\u7fbd\u300f\u3002",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200150084",
+  "name": "\u4e9e\u8389\u73ca\u5353\u53ec\u52df\u4fe1",
+  "desc": "\u4f7f\u7528\u5f8c\u53ef\u53ec\u52dfSSR\u89d2\u8272\uff1a\u300e\u4e9e\u8389\u73ca\u5353\u300f\u3002",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200150085",
+  "name": "\u514b\u7433\u5a1c\u53ec\u52df\u4fe1",
+  "desc": "\u4f7f\u7528\u5f8c\u53ef\u53ec\u52dfSSR\u89d2\u8272\uff1a\u300e\u514b\u7433\u5a1c\u300f\u3002",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200150086",
+  "name": "\u871c\u96c5\u53ec\u52df\u4fe1",
+  "desc": "\u4f7f\u7528\u5f8c\u53ef\u53ec\u52dfSSR\u89d2\u8272\uff1a\u300e\u871c\u96c5\u300f\u3002",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200150093",
+  "name": "DJ JOY\u53ec\u52df\u4fe1",
+  "desc": "\u4f7f\u7528\u5f8c\u53ef\u53ec\u52dfSSR\u89d2\u8272\uff1a\u300eDJ JOY\u300f\u3002",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200150094",
+  "name": "X(\u4e0d\u7ffb){cr094}\u53ec\u52df\u4fe1",
+  "desc": "X(\u4e0d\u7ffb)\u4f7f\u7528\u5f8c\u53ef\u53ec\u52dfSSR\u89d2\u8272\uff1a\u300e{cr094}\u300f\u3002",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200150100",
+  "name": "\u863f\u62c9\uff0e\u5361\u8fea\u4e45\u53ec\u52df\u4fe1",
+  "desc": "\u4f7f\u7528\u5f8c\u53ef\u53ec\u52dfSSR\u89d2\u8272\uff1a\u300e\u863f\u62c9\uff0e\u5361\u8fea\u4e45\u300f\u3002",
   "quality": "70",
   "icon": null
  },
@@ -3365,6 +3603,41 @@ export const gsaItems = [
   "id": "200160036",
   "name": "\u3010\u5361\u8fea\u4e45\u5bb6\u65cf\u3011\u6307\u5b9a\u53ec\u52df\u4fe1",
   "desc": "\u7d44\u7e54\u53ec\u52df\u4fe1\uff0c\u4f7f\u7528\u5f8c\u53ef\u6307\u5b9a\u53ec\u52df\u4e00\u540d\u3010\u5361\u8fea\u4e45\u5bb6\u65cf\u3011SSR\u89d2\u8272\uff1a\u300e\u8389\u8332\u300f\u6216\u300e\u5b89\u5a1c\u8c9d\u723e\u300f\u3002",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200160037",
+  "name": "\u3010\u6df7\u6c8c\u4e4b\u6e90\u3011\u53ec\u52df\u4fe1",
+  "desc": "\u4f7f\u7528\u5f8c\u53ef\u96a8\u6a5f\u53ec\u52df\u4e00\u540dSSR\u89d2\u8272\uff1a\u300e\u8389\u6b50\u59ae\u7d72\u300f\u6216\u300e\u91cc\u6069\u300f\u3002",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200160038",
+  "name": "\u3010\u5929\u5802\u4e4b\u9580 - \u6606\u59ae\u3011\u53ec\u52df\u4fe1",
+  "desc": "Use to summon the SSR character: Connie.",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200160039",
+  "name": "X(\u4e0d\u7ffb)\u3010{\u4e3b\u984c\u6d3b\u52d55\u540d\u7a31}\u3011\u53ec\u52df\u4fe1",
+  "desc": "\u4f7f\u7528\u5f8c\u53ef\u96a8\u6a5f\u53ec\u52df\u4e00\u540dSSR\u89d2\u8272\uff1a\u300e\u4e9e\u8389\u73ca\u5353\u300f\u6216\u300e\u514b\u7433\u5a1c\u300f\u3002",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200160040",
+  "name": "X(\u4e0d\u7ffb)\u3010{\u4e3b\u984c\u6d3b\u52d56\u540d\u7a31}\u3011\u53ec\u52df\u4fe1",
+  "desc": "\u4f7f\u7528\u5f8c\u53ef\u96a8\u6a5f\u53ec\u52df\u4e00\u540dSSR\u89d2\u8272\uff1a\u300e\u863f\u62c9\uff0e\u5361\u8fea\u4e45\u300f\u6216\u300eDJ JOY\u300f\u3002",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200160041",
+  "name": "\u3010\u5929\u5802\u4e4b\u9580 - \u5c0f\u753a \u6182\u3011\u53ec\u52df\u4fe1",
+  "desc": "Use to summon the SSR character: Komachi Yuu.",
   "quality": "50",
   "icon": null
  },
@@ -3958,21 +4231,21 @@ export const gsaItems = [
  },
  {
   "id": "200170684",
-  "name": "Spatial Touch Gloves Component",
+  "name": "\u6ce3\u8840\u8896\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
  },
  {
   "id": "200170685",
-  "name": "MW9-\u039b Support System Component",
+  "name": "\u7e1b\u547d\u91dd\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
  },
  {
   "id": "200170686",
-  "name": "Shock-Absorbing Sensor Boots Component",
+  "name": "\u51dd\u971c\u5c65\u7684\u96f6\u4ef6",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
   "icon": null
@@ -4769,9 +5042,79 @@ export const gsaItems = [
   "icon": null
  },
  {
+  "id": "200200079",
+  "name": "\u7bb1\u88dd\u8ecd\u7528\u80fd\u91cf\u53e3\u7ce7",
+  "desc": "\u9577\u6642\u9593\u884c\u8ecd\u8207\u9ad8\u5f37\u5ea6\u4f5c\u6230\u4f7f\u7528\u7684\u9ad8\u71b1\u91cf\u71df\u990a\u88dc\u7d66\u54c1\uff0c\u4e00\u7bb1\u88dd\u6709\u6578\u5341\u689d\u3002\u4fdd\u5b58\u5bb9\u6613\u3001\u651c\u5e36\u65b9\u4fbf\uff0c\u5373\u4f7f\u6c92\u6709\u6642\u9593\u5403\u98ef\u4e5f\u80fd\u8fc5\u901f\u88dc\u5145\u9ad4\u529b\u3002\u8389\u6b50\u59ae\u7d72\u7684\u8fa6\u516c\u5ba4\u88e1\u4f3c\u4e4e\u6c38\u9060\u7f3a\u9019\u500b\u3002\uff08\u8389\u6b50\u59ae\u7d72\u597d\u611f\u5ea6+1000\uff09",
+  "quality": "30",
+  "icon": null
+ },
+ {
+  "id": "200200080",
+  "name": "\u9ad8\u7d1a\u8702\u871c",
+  "desc": "\u73cd\u8cb4\u7684\u8702\u5de2\u871c\uff0c\u4fdd\u7559\u539f\u672c\u7684\u9999\u6c23\u8207\u53e3\u611f\u3002\u5bcc\u542b\u5929\u7136\u80fd\u91cf\uff0c\u80fd\u5728\u75b2\u52de\u6216\u53d7\u50b7\u5f8c\u88dc\u5145\u9ad4\u529b\u3002\u91cc\u6069\u4f3c\u4e4e\u7279\u5225\u559c\u6b61\u9019\u7a2e\u4f86\u81ea\u5927\u81ea\u7136\u7684\u751c\u5473\u3002\u3002\uff08\u91cc\u6069\u597d\u611f\u5ea6+1000\uff09",
+  "quality": "30",
+  "icon": null
+ },
+ {
+  "id": "200200081",
+  "name": "\u7d72\u7d68\u9aee\u5708",
+  "desc": "\u63a1\u7528\u6975\u81f4\u67d4\u8edf\u7684\u7d72\u7d68\u9762\u6599\u88fd\u6210\uff0c\u89f8\u611f\u6eab\u6f64\uff0c\u80fd\u6eab\u67d4\u5730\u675f\u8d77\u9577\u9aee\u800c\u4e0d\u7559\u58d3\u75d5\u3002\u8299\u6d1b\u7df9\u4f3c\u4e4e\u5f88\u4e2d\u610f\u9019\u6b3e\u9aee\u5708\u5e36\u4f86\u7684\u67d4\u8edf\u89f8\u611f\uff0c\u5e38\u5c07\u5176\u7e8f\u5728\u624b\u8155\u4e0a\u628a\u73a9\u3002\uff08\u8299\u6d1b\u7df9\u597d\u611f\u5ea6+1000\uff09",
+  "quality": "30",
+  "icon": null
+ },
+ {
   "id": "200200082",
   "name": "Lavender Relaxation Spray",
   "desc": "A popular stress-relief spray blending lavender and eucalyptus with a soothing base inspired by aromatherapy massage formulas. Sugimoto Arina, whose ample bust makes her prone to shoulder and neck stiffness, sprays a few times before bed to relax and enjoy a good night's sleep. (Rookie Maid - Sugimoto Arina's Affection +1000)",
+  "quality": "30",
+  "icon": null
+ },
+ {
+  "id": "200200083",
+  "name": "\u71d9\u91d1\u5de5\u85dd\u5361\u7d19",
+  "desc": "\u63a1\u7528\u9ad8\u6a94\u71d9\u91d1\u5de5\u85dd\u88fd\u6210\u7684\u7279\u88fd\u5361\u7d19\uff0c\u8cea\u5730\u539a\u5be6\u4e14\u5e36\u6709\u512a\u96c5\u7684\u6697\u7d0b\u3002\u591c\u7fbd\u975e\u5e38\u559c\u6b61\u7528\u5b83\u4f86\u88c1\u526a\u3001\u88fd\u4f5c\u5979\u9ad8\u8abf\u6311\u91c1\u8b66\u65b9\u7528\u7684\u602a\u76dc\u9810\u544a\u4fe1\u3002\uff08\u591c\u7fbd\u597d\u611f\u5ea6+1000\uff09",
+  "quality": "30",
+  "icon": null
+ },
+ {
+  "id": "200200084",
+  "name": "\u7cbe\u7dfb\u76c6\u683d",
+  "desc": "\u5929\u7136\u8c50\u5bcc\u7684\u690d\u7269\u76c6\u683d\uff0c\u878d\u5408\u4e86\u591a\u7a2e\u690d\u683d\uff0c\u4e26\u914d\u6709\u7cbe\u7dfb\u7684\u88dd\u98fe\u3002\u4e9e\u8389\u73ca\u5353\u975e\u5e38\u71b1\u8877\u4fee\u526a\u8207\u8abf\u6574\u690d\u7269\u5f62\u614b\uff0c\u904e\u7a0b\u4e2d\u80fd\u7372\u5f97\u6975\u5927\u7684\u652f\u914d\u611f\u8207\u5e73\u975c\u3002\uff08\u4e9e\u8389\u73ca\u5353\u597d\u611f\u5ea6+1000\uff09",
+  "quality": "30",
+  "icon": null
+ },
+ {
+  "id": "200200085",
+  "name": "\u751f\u614b\u98fc\u990a\u7bb1",
+  "desc": "\u7531\u9ad8\u900f\u5149\u73bb\u7483\u8207\u5929\u7136\u690d\u7269\u88fd\u6210\u7684\u5c0f\u578b\u98fc\u990a\u76d2\uff0c\u5167\u90e8\u92ea\u8a2d\u4e86\u6eab\u6f64\u7684\u82d4\u861a\u8207\u9d5d\u5375\u77f3\u3002\u8b93\u5979\u7684\u5bf5\u7269\u5011\u6709\u4e00\u500b\u7f8e\u597d\u7684\u4e16\u754c\u3002\uff08\u514b\u7433\u5a1c\u597d\u611f\u5ea6+1000\uff09",
+  "quality": "30",
+  "icon": null
+ },
+ {
+  "id": "200200086",
+  "name": "\u9650\u91cf\u684c\u904a\u9ab0\u5b50\u79ae\u76d2",
+  "desc": "\u7cbe\u7dfb\u76d2\u88dd\u9650\u91cf\u7248\u591a\u9762\u9ad4\u684c\u904a\u9ab0\u5b50\u5957\u7d44\uff0c\u9ab0\u5b50\u5448\u73fe\u6676\u7469\u5254\u900f\u7684\u5bf6\u77f3\u5149\u6fa4\u3002\u96d6\u7136\u871c\u96c5\u56e0\u70ba\u904b\u6c23\u6975\u5dee\u800c\u5e38\u5728\u8dd1\u5718\u6642\u64f2\u51fa\u300c\u5927\u5931\u6557\u300d\uff0c\u4f46\u5979\u4f9d\u7136\u96d9\u773c\u767c\u4eae\u5730\u62b1\u8457\u9019\u5957\u9ab0\u5b50\uff0c\u7948\u79b1\u4e0b\u4e00\u6b21\u80fd\u64f2\u51fa\u5947\u8e5f\u822c\u7684\u300c\u5927\u6210\u529f\u300d\u3002\uff08\u871c\u96c5\u597d\u611f\u5ea6+1000\uff09",
+  "quality": "30",
+  "icon": null
+ },
+ {
+  "id": "200200093",
+  "name": "X(\u4e0d\u7ffb){cr093\u597d\u611f\u9053\u5177}",
+  "desc": "X(\u4e0d\u7ffb)\uff08{cr093}\u597d\u611f\u5ea6+1000\uff09",
+  "quality": "30",
+  "icon": null
+ },
+ {
+  "id": "200200094",
+  "name": "X(\u4e0d\u7ffb){cr094\u597d\u611f\u9053\u5177}",
+  "desc": "X(\u4e0d\u7ffb)\uff08{cr094}\u597d\u611f\u5ea6+1000\uff09",
+  "quality": "30",
+  "icon": null
+ },
+ {
+  "id": "200200100",
+  "name": "X(\u4e0d\u7ffb){cr100\u597d\u611f\u9053\u5177}",
+  "desc": "X(\u4e0d\u7ffb)\uff08{cr100}\u597d\u611f\u5ea6+1000\uff09",
   "quality": "30",
   "icon": null
  },
@@ -5028,9 +5371,79 @@ export const gsaItems = [
   "icon": null
  },
  {
+  "id": "200210079",
+  "name": "\u3010\u901a\u8a0a\u982d\u50cf\u3011\u8389\u6b50\u59ae\u7d72 #",
+  "desc": "\u300c\u5967\u5fb7\u4fee\u65af-\u8389\u6b50\u59ae\u7d72\u300d5\u661f\u5165\u624b\u3002",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200210080",
+  "name": "\u3010\u901a\u8a0a\u982d\u50cf\u3011\u91cc\u6069",
+  "desc": "\u300c\u9ed1\u8089\u5c0f\u91ce\u7378-\u91cc\u6069\u300d5\u661f\u5165\u624b\u3002",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200210081",
+  "name": "\u3010\u901a\u8a0a\u982d\u50cf\u3011\u8299\u6d1b\u7df9",
+  "desc": "\u300c\u75c5\u5b0c\u96d9\u5200-\u8299\u6d1b\u7df9\u300d5\u661f\u5165\u624b\u3002",
+  "quality": "50",
+  "icon": null
+ },
+ {
   "id": "200210082",
   "name": "[Chat Portrait] Rookie Maid - Sugimoto Arina",
   "desc": "Obtained by owning 5\u2605 [Rookie Maid - Sugimoto Arina].",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200210083",
+  "name": "\u3010\u901a\u8a0a\u982d\u50cf\u3011\u591c\u7fbd",
+  "desc": "\u300c\u602a\u76dc\u591c\u7fbd-\u591c\u7fbd\u300d5\u661f\u5165\u624b\u3002",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200210084",
+  "name": "\u3010\u901a\u8a0a\u982d\u50cf\u3011\u4e9e\u8389\u73ca\u5353",
+  "desc": "\u300c\u7070\u8272\u5224\u5b98-\u4e9e\u8389\u73ca\u5353\u300d5\u661f\u5165\u624b\u3002",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200210085",
+  "name": "\u3010\u901a\u8a0a\u982d\u50cf\u3011\u514b\u7433\u5a1c",
+  "desc": "\u300c\u82ad\u857e\u9ed1\u5929\u9d5d-\u514b\u7433\u5a1c\u300d5\u661f\u5165\u624b\u3002",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200210086",
+  "name": "\u3010\u901a\u8a0a\u982d\u50cf\u3011\u871c\u96c5",
+  "desc": "\u300c\u4e0d\u5e78\u4e4b\u661f-\u871c\u96c5\u300d5\u661f\u5165\u624b\u3002",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200210093",
+  "name": "\u3010\u901a\u8a0a\u982d\u50cf\u3011DJ JOY",
+  "desc": "X(\u4e0d\u7ffb)\u300c{\u7a31\u865f}-DJ JOY\u300d5\u661f\u5165\u624b\u3002",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200210094",
+  "name": "X(\u4e0d\u7ffb)\u3010\u901a\u8a0a\u982d\u50cf\u3011{cr094}",
+  "desc": "X(\u4e0d\u7ffb)\u300c{\u7a31\u865f}-{cr094}\u300d5\u661f\u5165\u624b\u3002",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200210100",
+  "name": "\u3010\u901a\u8a0a\u982d\u50cf\u3011\u863f\u62c9\uff0e\u5361\u8fea\u4e45",
+  "desc": "\u300c\u5bb6\u65cf\u5bf5\u5152-\u863f\u62c9\uff0e\u5361\u8fea\u4e45\u300d5\u661f\u5165\u624b\u3002",
   "quality": "50",
   "icon": null
  },
@@ -5322,9 +5735,79 @@ export const gsaItems = [
   "icon": null
  },
  {
+  "id": "200220079",
+  "name": "\u3010\u7d04\u6703\u982d\u50cf\u3011\u8389\u6b50\u59ae\u7d72 #",
+  "desc": "\u5b8c\u6210\u8389\u6b50\u59ae\u7d72\u901a\u8a0a\u6545\u4e8b\u3008\u4efb\u52d9\u5f8c\u7684\u7279\u5225\u56de\u79ae\u3009\u5165\u624b\u3002",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200220080",
+  "name": "\u3010\u7d04\u6703\u982d\u50cf\u3011\u91cc\u6069",
+  "desc": "\u5b8c\u6210\u91cc\u6069\u901a\u8a0a\u6545\u4e8b\u3008\u5c0f\u91ce\u7378\u7684\u7955\u5bc6\u57fa\u5730\u3009\u5165\u624b\u3002",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200220081",
+  "name": "\u3010\u7d04\u6703\u982d\u50cf\u3011\u8299\u6d1b\u7df9",
+  "desc": "X(\u4e0d\u7ffb)",
+  "quality": "70",
+  "icon": null
+ },
+ {
   "id": "200220082",
   "name": "[Date Portrait] Rookie Maid - Sugimoto Arina",
   "desc": "X(\u4e0d\u7ffb\u5b8c\u6210\u65b0\u624b\u5973\u50d5-\u6749\u672c \u6709\u83dc\u901a\u8a0a\u6545\u4e8b\u3008\u3009\u5165\u624b\u3002",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200220083",
+  "name": "\u3010\u7d04\u6703\u982d\u50cf\u3011\u591c\u7fbd",
+  "desc": "X(\u4e0d\u7ffb)",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200220084",
+  "name": "\u3010\u7d04\u6703\u982d\u50cf\u3011\u4e9e\u8389\u73ca\u5353",
+  "desc": "X(\u4e0d\u7ffb)",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200220085",
+  "name": "\u3010\u7d04\u6703\u982d\u50cf\u3011\u514b\u7433\u5a1c",
+  "desc": "X(\u4e0d\u7ffb)",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200220086",
+  "name": "\u3010\u7d04\u6703\u982d\u50cf\u3011\u871c\u96c5",
+  "desc": "X(\u4e0d\u7ffb)",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200220093",
+  "name": "\u3010\u7d04\u6703\u982d\u50cf\u3011DJ JOY",
+  "desc": "X(\u4e0d\u7ffb)",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200220094",
+  "name": "X(\u4e0d\u7ffb)\u3010\u7d04\u6703\u982d\u50cf\u3011{cr094}",
+  "desc": "X(\u4e0d\u7ffb)",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200220100",
+  "name": "\u3010\u7d04\u6703\u982d\u50cf\u3011\u863f\u62c9\uff0e\u5361\u8fea\u4e45",
+  "desc": "X(\u4e0d\u7ffb)",
   "quality": "70",
   "icon": null
  },
@@ -5546,6 +6029,27 @@ export const gsaItems = [
   "icon": null
  },
  {
+  "id": "200245010",
+  "name": "\u3010\u982d\u50cf\u6846\u3011\u6df7\u6c8c\u4e4b\u6e90",
+  "desc": "\u300e\u6df7\u6c8c\u4e4b\u6e90\u300f\u9650\u5b9a\u982d\u50cf\u6846\u3002",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200245011",
+  "name": "X(\u4e0d\u7ffb)\u3010\u982d\u50cf\u6846\u3011{\u4e3b\u984c\u6d3b\u52d55\u540d\u7a31}",
+  "desc": "X(\u4e0d\u7ffb)\u300e{\u4e3b\u984c\u6d3b\u52d55\u540d\u7a31}\u300f\u9650\u5b9a\u982d\u50cf\u6846\u3002",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200245012",
+  "name": "X(\u4e0d\u7ffb)\u3010\u982d\u50cf\u6846\u3011{\u4e3b\u984c\u6d3b\u52d56\u540d\u7a31}",
+  "desc": "X(\u4e0d\u7ffb)\u300e{\u4e3b\u984c\u6d3b\u52d56\u540d\u7a31}\u300f\u9650\u5b9a\u982d\u50cf\u6846\u3002",
+  "quality": "70",
+  "icon": null
+ },
+ {
   "id": "200250001",
   "name": "[Background] Night of Tobia",
   "desc": "Tobia's enchanting night. The city's vitality only awakens after nightfall, and with it, all its dangers are revealed.",
@@ -5681,7 +6185,7 @@ export const gsaItems = [
  {
   "id": "200255018",
   "name": "[Background] Moonveil Pavilion",
-  "desc": "The Sensual Maid Cafe, Moonveil Pavilion, awaits the arrival of its masters once again.",
+  "desc": "The sensual maid caf\u00e9\u2014Moonveil Pavilion\u2014had, as always, awaited the arrival of its masters.",
   "quality": "50",
   "icon": null
  },
@@ -6058,22 +6562,22 @@ export const gsaItems = [
  },
  {
   "id": "200260020",
-  "name": "X(\u4e0d\u7ffb)\u3010CG\u3011",
-  "desc": "X(\u4e0d\u7ffb)\u7dad\u591a\u8389\u4e9e\u53c3\u52a0\u5bb4\u6703\u5716",
+  "name": "\u3010CG\u3011\u793e\u4ea4\u665a\u5bb4",
+  "desc": "\u300c\u8b93\u6211\u5011\u597d\u597d\u4eab\u53d7\u4eca\u665a\u7684\u97f3\u6a02\u5427\u3002\u300d",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200260021",
-  "name": "X(\u4e0d\u7ffb)\u3010CG\u3011",
-  "desc": "X(\u4e0d\u7ffb)\u4f0a\u84ee\u5a1c\u7387\u773e\u653b\u64ca\u8ecd\u706b\u5546",
+  "name": "\u3010CG\u3011\u7a81\u8972",
+  "desc": "\u300c\u611f\u5230\u69ae\u5e78\u5427\u2014\u2014\u300d",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200260022",
-  "name": "X(\u4e0d\u7ffb)\u3010CG\u3011",
-  "desc": "X(\u4e0d\u7ffb)SCG_0022",
+  "name": "\u3010CG\u3011\u85e5\u6d74",
+  "desc": "\u300c\u7684\u85e5\u6d74\u6700\u80fd\u8b93\u4eba\u653e\u9b06\u300d",
   "quality": "50",
   "icon": null
  },
@@ -6352,29 +6856,29 @@ export const gsaItems = [
  },
  {
   "id": "200270033",
-  "name": "X(\u4e0d\u7ffb)\u3010HCG\u3011",
-  "desc": "X(\u4e0d\u7ffb)\u8207\u5c3c\u53e4\u62c9\u591c\u88e1\u6d77\u908a\u6027\u611b",
+  "name": "\u3010HCG\u3011\u6c99\u7058\u4e0a\u7684\u6027\u611b\u6bd4\u8a66",
+  "desc": "\u4fd7\u8a71\u8aaa\uff1a\u7f8e\u9e97\u7684\u82b1\u6735\u7e3d\u5e36\u523a\uff0c\u5371\u96aa\u7684\u5973\u4eba\u7576\u7136\u4e5f\u6709\u8457\u81f4\u547d\u7684\u5438\u5f15\u529b\u2026\u2026",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200270034",
-  "name": "X(\u4e0d\u7ffb)\u3010HCG\u3011",
-  "desc": "X(\u4e0d\u7ffb)\u9752\u9f8d\u5e6b\u5973\u6027\u7761\u59e6\u897f\u5967\u591a",
+  "name": "\u3010HCG\u3011\u898b\u8272\u8d77\u610f\u7684\u8b77\u885b",
+  "desc": "\u7cbe\u795e\u840e\u9761\u3001\u8eab\u9ad4\u865b\u5f31\uff0c\u4f46\u662f\u4e0b\u9762\u9084\u662f\u5f88\u6709\u7cbe\u795e\u3002",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200270035",
-  "name": "X(\u4e0d\u7ffb)\u3010HCG\u3011",
-  "desc": "X(\u4e0d\u7ffb)\u827e\u7433\u5a1c\u767c\u60c5\u81ea\u6170",
+  "name": "\u3010HCG\u3011\u5c0d\u597d\u7537\u4eba\u7684\u9951\u6e34\u5984\u60f3",
+  "desc": "\u7d93\u6b77\u904e\u77ed\u66ab\u7684\u5408\u4f5c\u8207\u76f8\u8655\u904e\u5f8c\uff0c\u827e\u7433\u5a1c\u770b\u5411\u897f\u5967\u591a\u773c\u795e\u4e0d\u518d\u53ea\u6709\u6b3d\u4f69\uff0c\u9084\u53c3\u96dc\u4e86\u591a\u9918\u7684\u60c5\u611f\u2026\u2026",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200270036",
-  "name": "X(\u4e0d\u7ffb)\u3010HCG\u3011",
-  "desc": "X(\u4e0d\u7ffb)\u4e9e\u8389\u5a1c\u8207\u897f\u5967\u591a\u8eca\u5b50\u6027\u611b",
+  "name": "\u3010HCG\u3011\u672b\u8def\u6fc0\u60c5",
+  "desc": "\u6062\u5fa9\u7cbe\u795e\u7684\u6700\u597d\u65b9\u6cd5\u5c31\u662f\u4f86\u4e00\u767c\u3002",
   "quality": "70",
   "icon": null
  },
@@ -6394,22 +6898,36 @@ export const gsaItems = [
  },
  {
   "id": "200270039",
-  "name": "X(\u4e0d\u7ffb)\u3010HCG\u3011",
-  "desc": "X(\u4e0d\u7ffb)\u8207\u4e9e\u8389\u5a1c\u5728\u6d77\u4e0a\u505a\u611b",
+  "name": "\u3010HCG\u3011\u9060\u96e2\u5875\u56c2\u7684\u6d6a\u6f2b\u5047\u671f",
+  "desc": "\u5076\u723e\u4e5f\u8a72\u653e\u4e0b\u5fc3\u4e2d\u96dc\u5ff5\u9060\u96e2\u5875\u56c2\uff0c\u76e1\u60c5\u4eab\u53d7\u653e\u9b06\u3001\u5feb\u6d3b\u7684\u5047\u65e5\u3002",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200270040",
-  "name": "X(\u4e0d\u7ffb)\u3010HCG\u3011",
-  "desc": "X(\u4e0d\u7ffb)\u4f0a\u84ee\u5a1c\u97f3\u6a02\u6027\u4ea4\u6d3e\u5c0d",
+  "name": "\u3010HCG\u3011\u97f3\u6a02\u6027\u4ea4\u6d3e\u5c0d",
+  "desc": "\u5168\u8eab\u5fc3\u90fd\u6c90\u6d74\u5728\u6027\u611b\u8207\u97f3\u6a02\u7684\u72c2\u6b61\u4e4b\u4e2d\u3002",
   "quality": "70",
   "icon": null
  },
  {
   "id": "200270041",
-  "name": "X(\u4e0d\u7ffb)\u3010HCG\u3011",
-  "desc": "X(\u4e0d\u7ffb)\u827e\u7433\u5a1c\u8abf\u6559\u8b66\u5bdf\u5206\u5c40\u9577\u5152\u5b50",
+  "name": "\u3010HCG\u3011\u8ab2\u5f8c\u8f14\u5c0e",
+  "desc": "\u6c92\u6709\u8001\u5e2b\u7684\u5141\u8a31\u5c31\u4e0d\u80fd\u5c04\u51fa\u4f86\u3002",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200270042",
+  "name": "\u3010HCG\u3011\u704c\u7cbe\u88dc\u5145\u967d\u6c23",
+  "desc": "\u6eff\u6eff\u5730\uff0c\u6ce8\u5165\u7d14\u967d\u4e4b\u6db2\u3002",
+  "quality": "70",
+  "icon": null
+ },
+ {
+  "id": "200270043",
+  "name": "\u3010HCG\u3011\u53cd\u566c\u7684\u8831\u6bd2",
+  "desc": "\u8831\u6bd2\u2026\u2026\u4f3c\u4e4e\u4e5f\u6c92\u90a3\u9ebc\u7cdf\u7cd5\u3002",
   "quality": "70",
   "icon": null
  },
@@ -6473,6 +6991,27 @@ export const gsaItems = [
   "id": "200285008",
   "name": "Mineral Tycoon",
   "desc": "[Title] As you seize the treasure of the abyss, the abyss seizes your conscience.",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200285009",
+  "name": "\u6df7\u6c8c\u4e4b\u6e90",
+  "desc": "X(\u4e0d\u7ffb)\u3010\u7a31\u865f\u3011{\u63cf\u8ff0}",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200285010",
+  "name": "X(\u4e0d\u7ffb){\u4e3b\u984c\u6d3b\u52d55\u540d\u7a31}",
+  "desc": "X(\u4e0d\u7ffb)\u3010\u7a31\u865f\u3011{\u63cf\u8ff0}",
+  "quality": "50",
+  "icon": null
+ },
+ {
+  "id": "200285011",
+  "name": "X(\u4e0d\u7ffb){\u4e3b\u984c\u6d3b\u52d56\u540d\u7a31}",
+  "desc": "X(\u4e0d\u7ffb)\u3010\u7a31\u865f\u3011{\u63cf\u8ff0}",
   "quality": "50",
   "icon": null
  },

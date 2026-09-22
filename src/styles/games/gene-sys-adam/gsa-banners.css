@@ -1,0 +1,294 @@
+/* Gene-Sys: Adam banners + updates pages. Static: no hover/glow, borders from
+   the game color system. */
+
+.gsa-banner-intro {
+  color: var(--gsa-text-dim);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 1.75rem;
+  max-width: 72ch;
+}
+
+.gsa-banner-updated {
+  color: var(--gsa-text-dim);
+  font-size: 0.85rem;
+}
+
+/* Current banner highlight */
+.gsa-banner-live {
+  background: var(--gsa-bg-secondary);
+  border: 1px solid var(--gsa-border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 2.25rem;
+}
+
+.gsa-banner-live-label {
+  display: inline-block;
+  background: var(--gsa-accent);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 5px;
+  padding: 0.25rem 0.6rem;
+  margin-bottom: 0.9rem;
+}
+
+.gsa-banner-live-name {
+  margin: 0 0 0.25rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gsa-text);
+}
+
+.gsa-banner-live-zh {
+  color: var(--gsa-text-dim);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* Shared banner card */
+.gsa-banner-card {
+  background: var(--gsa-bg-secondary);
+  border: 1px solid var(--gsa-border);
+  border-radius: 14px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.gsa-banner-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.gsa-banner-card-name {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--gsa-text);
+}
+
+.gsa-banner-card-zh {
+  color: var(--gsa-text-dim);
+  font-size: 0.9rem;
+}
+
+.gsa-banner-kind {
+  background: var(--gsa-accent-tint);
+  color: var(--gsa-accent-strong);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 5px;
+  padding: 0.2rem 0.55rem;
+}
+
+.gsa-banner-since {
+  color: var(--gsa-text-dim);
+  font-size: 0.85rem;
+  margin-bottom: 0.9rem;
+}
+
+.gsa-banner-art {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--gsa-border);
+  display: block;
+  margin-bottom: 0.9rem;
+}
+
+.gsa-banner-featured {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.gsa-banner-char {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--gsa-border);
+  border-radius: 10px;
+  padding: 0.5rem 0.8rem;
+  text-decoration: none;
+  color: var(--gsa-text);
+  min-width: 0;
+}
+
+.gsa-banner-char-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
+  background: var(--gsa-bg-secondary);
+}
+
+.gsa-banner-char-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.gsa-banner-char-meta {
+  display: block;
+  color: var(--gsa-text-dim);
+  font-size: 0.78rem;
+}
+
+.gsa-banner-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.gsa-banner-fact {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--gsa-border);
+  border-radius: 6px;
+  color: var(--gsa-text);
+  font-size: 0.8rem;
+  padding: 0.28rem 0.6rem;
+}
+
+.gsa-banner-fact b {
+  color: var(--gsa-accent-strong);
+}
+
+.gsa-banner-note {
+  color: var(--gsa-text-dim);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Pity box */
+.gsa-pity-box {
+  background: var(--gsa-bg-secondary);
+  border: 1px solid var(--gsa-border);
+  border-radius: 14px;
+  padding: 1.4rem 1.5rem;
+  margin: 2.25rem 0;
+}
+
+.gsa-pity-title {
+  margin: 0 0 0.8rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gsa-text);
+}
+
+.gsa-pity-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--gsa-text);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* Permanent summons */
+.gsa-perm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.gsa-perm-card {
+  background: var(--gsa-bg-secondary);
+  border: 1px solid var(--gsa-border);
+  border-radius: 12px;
+  padding: 1.1rem 1.2rem;
+}
+
+.gsa-perm-name {
+  margin: 0 0 0.15rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--gsa-text);
+}
+
+.gsa-perm-zh {
+  color: var(--gsa-text-dim);
+  font-size: 0.82rem;
+  margin-bottom: 0.6rem;
+}
+
+.gsa-perm-desc {
+  color: var(--gsa-text-dim);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Monogram fallback for icon-less characters */
+.gsa-monogram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gsa-accent-tint);
+  color: var(--gsa-accent-strong);
+  font-weight: 700;
+}
+
+/* Updates page */
+.gsa-update-card {
+  background: var(--gsa-bg-secondary);
+  border: 1px solid var(--gsa-border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.gsa-update-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.7rem;
+  margin-bottom: 0.8rem;
+}
+
+.gsa-update-tag {
+  background: var(--gsa-accent);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 5px;
+  padding: 0.22rem 0.55rem;
+}
+
+.gsa-update-title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gsa-text);
+}
+
+.gsa-update-date {
+  color: var(--gsa-text-dim);
+  font-size: 0.88rem;
+  width: 100%;
+}
+
+.gsa-update-points {
+  margin: 0 0 0.9rem;
+  padding-left: 1.2rem;
+  color: var(--gsa-text);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.gsa-update-source {
+  color: var(--gsa-text-dim);
+  font-size: 0.8rem;
+  margin: 0;
+}

@@ -1,0 +1,37 @@
+---
+// Gene-Sys: Adam update log. The developer ships no external patch notes, so
+// entries are reconstructed from diffs of the decrypted Patch tables.
+import GSALayout from '../../../layouts/gene-sys-adam/LandingLayout.astro';
+import { GSA_UPDATES } from '../../../data/gene-sys-adam/updates.js';
+import '../../../styles/games/gene-sys-adam/gsa-common.css';
+import '../../../styles/games/gene-sys-adam/gsa-banners.css';
+---
+
+<GSALayout
+  title="Updates"
+  description="Gene-Sys: Adam update log: every game update reconstructed from the decrypted client tables, newest first."
+  gameTitle="Updates"
+  crumbName="Updates"
+>
+  <section>
+    <p class="gsa-banner-intro">
+      The developer does not publish patch notes outside the game client. Each entry
+      below is reconstructed by diffing the decrypted game tables before and after
+      the update, so the content lists are exact even where dates are approximate.
+    </p>
+
+    {GSA_UPDATES.map(u => (
+      <article class="gsa-update-card">
+        <div class="gsa-update-head">
+          <span class="gsa-update-tag">{u.tag}</span>
+          <h2 class="gsa-update-title">{u.title}</h2>
+          <span class="gsa-update-date">{u.date}</span>
+        </div>
+        <ul class="gsa-update-points">
+          {u.points.map(p => <li>{p}</li>)}
+        </ul>
+        <p class="gsa-update-source">Source: {u.source}</p>
+      </article>
+    ))}
+  </section>
+</GSALayout>

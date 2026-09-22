@@ -1,4 +1,5 @@
-// Gene-Sys: Adam tier list: kit-based placements (updated 2026-09-17),
+// Gene-Sys: Adam tier list: kit-based placements (updated 2026-09-22: Qing Yin,
+// Leng Zhen added, Connie rescored now that her kit ships readable data),
 // grouped by job like the majo list. Placements are editorial, grounded in
 // each character's skill data in characters.js (multipliers, cooldowns, EN
 // costs, buff values). Day-one launch assessment: no community consensus
@@ -31,7 +32,7 @@ export const GSA_JOB_SECTIONS = [
   { job: 'Breaker', zh: '破壞', icon: `${R2}/master_0.webp` },
 ];
 
-export const GSA_TIER_UPDATED = 'September 17, 2026';
+export const GSA_TIER_UPDATED = 'September 22, 2026';
 
 // slug -> { tier, rarity, reason }
 export const GSA_TIER_PLACEMENTS = {
@@ -73,7 +74,9 @@ export const GSA_TIER_PLACEMENTS = {
   'bernardo': { tier: 'B', rarity: 'SSR', reason: 'Support numbers too small to matter (a 5% Damage Up loop) and a Petrify chance that is Medium at best. The attitude is carrying the kit.' },
   'belle': { tier: 'B', rarity: 'SR', reason: 'A healer on a Sniper frame whose numbers lose to Jessica and Sugimoto Arina at every line. The Evasion quirks do not save the slot.' },
   'belle-clumsy-cowgirl': { tier: 'B', rarity: 'SSR', reason: 'Physical Spread support with tiny heals and a five-hit all-targets ultimate. Fun, forgettable.' },
-  'connie': { tier: 'C', rarity: 'SSR', reason: 'Her kit text is not readable in the current data tables, so she cannot be scored yet. The assessment lands when the tables do.' },
+  'connie': { tier: 'B', rarity: 'SSR', reason: 'An anti-healer: her loop and active aim at the lowest-HP targets and stack Healing Down with Healing Received Down 25%, and the awakened passive gives the whole team ATK SPD Up 23%. The ultimate\u0027s Abyss pursuit needs the Ebon status, which nobody on the roster applies yet. Real PvP utility, modest raw numbers.' },
+  'qing-yin': { tier: 'S', rarity: 'SSR', reason: 'CC-and-burst Breaker: a 6s loop that stuns at Extremely High chance, an 827% double-strike ultimate with Attack Up 15% and ATK SPD Up 30% attached, and Wind Res Down 12% shredding. Every line prioritizes Electrocuted targets, so she wants Li Mu or Ruby applying Shock, and the awakened passives spread Crit Chance 14% and Energy DMG Up 6% to the team.' },
+  'leng-zhen': { tier: 'S', rarity: 'SSR', reason: 'A second energy battery with Freeze attached: her active injects +2 team EN per hit (+2.5 awakened, on her normal attack too), the loop lands three Freeze M rolls every 6s, and the ultimate is a 900% three-hit with Freeze Hit Rate Up 35% and a freeze on every strike. Awakened passive adds party Skill Damage Up 12.5%. Random targeting keeps the numbers unfocused, but Freeze feeds the Ice Break core.' },
 };
 
 const RARITY_RANK = { SSR: 0, SR: 1 };

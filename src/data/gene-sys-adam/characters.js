@@ -1,4 +1,4 @@
-// Gene-Sys: Adam character roster (39 profiled characters).
+// Gene-Sys: Adam character roster (41 profiled characters).
 // Source: live game data from BlueStacks (com.neversoft.cr.erolabs), Patch/_settings
 // DES-CBC tables decrypted to pipe-text in D:/GeneSysAdam/output/tables_json.
 // Skill descs resolved from SkillTemplateTextData + EN localization + SkillEffectData
@@ -765,7 +765,7 @@ export const gsaCharacters = [
         "mainStat": null,
         "gcd": null,
         "desc": "Grant self Dark ATK Up 6%.",
-        "detail": "Each attack is fiercer than the last—a testament to Yulia’s relentless training.",
+        "detail": "Each attack is fiercer than the last, a testament to Yulia's relentless training.",
         "cooldown": null,
         "cost": null,
         "statuses": [],
@@ -1094,7 +1094,7 @@ export const gsaCharacters = [
         "mainStat": null,
         "gcd": null,
         "desc": "Grant self Earth Res Up 6%.",
-        "detail": "I'm the luckiest fool alive! — Gratitude for everyone who ever lent a hand transforms pure, innocent passion into an intangible shield.",
+        "detail": "I'm the luckiest fool alive!, Gratitude for everyone who ever lent a hand transforms pure, innocent passion into an intangible shield.",
         "cooldown": null,
         "cost": null,
         "statuses": [],
@@ -1566,7 +1566,7 @@ export const gsaCharacters = [
         "mainStat": "Healing",
         "gcd": null,
         "desc": "When healing, Extremely Low chance to grant self Attack Up 8% (6s).",
-        "detail": "Despite her frequent blunders, Belle’s words of encouragement fill her allies with a renewed sense of vigor.",
+        "detail": "Despite her frequent blunders, Belle's words of encouragement fill her allies with a renewed sense of vigor.",
         "cooldown": null,
         "cost": null,
         "statuses": [],
@@ -3101,13 +3101,13 @@ export const gsaCharacters = [
         "type": "Passive",
         "mainStat": null,
         "gcd": null,
-        "desc": "On hit, if the target is Guardian Type, inflict DMG Block Down 3 (6s).\nThis effect can stack up to 3 times.",
-        "detail": "She has tattooed herself so many times that she has grown accustomed to the pain—and even finds a sort of pleasure in it.",
+        "desc": "On hit, if the target is Guardian Type, inflict DMG Block Down 3% (6s).\nThis effect can stack up to 3 times.",
+        "detail": "She has tattooed herself so many times that she has grown accustomed to the pain, and even finds a sort of pleasure in it.",
         "cooldown": null,
         "cost": null,
         "statuses": [],
         "awakened": {
-          "desc": "On hit, if the target is Guardian Type, inflict DMG Block Down 3 (6s).\nThis effect can stack up to 3 times.\nGrant all party members Earth ATK Up 4%.",
+          "desc": "On hit, if the target is Guardian Type, inflict DMG Block Down 3% (6s).\nThis effect can stack up to 3 times.\nGrant all party members Earth ATK Up 4%.",
           "detail": null
         }
       },
@@ -4978,13 +4978,13 @@ export const gsaCharacters = [
         "type": "Passive",
         "mainStat": null,
         "gcd": null,
-        "desc": "On hit, if the target is Guardian or Striker Type, inflict ATK SPD Down 25 (6s).\nThis effect can only be triggered on the same target once every 10 seconds.",
+        "desc": "On hit, if the target is Guardian or Striker Type, inflict ATK SPD Down 25% (6s).\nThis effect can only be triggered on the same target once every 10 seconds.",
         "detail": "With her optimistic and unyielding spirit, her very presence is like a warm breeze that lifts everyone's morale.",
         "cooldown": null,
         "cost": null,
         "statuses": [],
         "awakened": {
-          "desc": "On hit, if the target is Guardian or Striker Type, inflict ATK SPD Down 25 (6s).\nThis effect can only be triggered on the same target once every 10 seconds.\nGrant all party members Dark ATK Up 4%.",
+          "desc": "On hit, if the target is Guardian or Striker Type, inflict ATK SPD Down 25% (6s).\nThis effect can only be triggered on the same target once every 10 seconds.\nGrant all party members Dark ATK Up 4%.",
           "detail": null
         }
       },
@@ -5146,13 +5146,13 @@ export const gsaCharacters = [
         "type": "Passive",
         "mainStat": null,
         "gcd": null,
-        "desc": "On hit, if the target is Support Type, inflict Healing Down 18 (8s).",
+        "desc": "On hit, if the target is Support Type, inflict Healing Down 18% (8s).",
         "detail": "She acts with calm composure, always wearing a confident smile. Anyone she targets unconsciously loses their cool, becoming tense and agitated.",
         "cooldown": null,
         "cost": null,
         "statuses": [],
         "awakened": {
-          "desc": "On hit, if the target is Support Type, inflict Healing Down 18 (8s).\nGrant all party members ACC Up 4%.",
+          "desc": "On hit, if the target is Support Type, inflict Healing Down 18% (8s).\nGrant all party members ACC Up 4%.",
           "detail": null
         }
       },
@@ -5252,7 +5252,7 @@ export const gsaCharacters = [
     "skills": [
       {
         "id": "150006300",
-        "name": "Ah—Go Away!",
+        "name": "Ah, Go Away!",
         "slot": "Normal Attack",
         "unlockStar": 0,
         "icon": null,
@@ -5399,7 +5399,7 @@ export const gsaCharacters = [
     "epithet": "Naginata Flurry, Frozen Shatter",
     "sex": "Female",
     "inGacha": true,
-    "icon": null,
+    "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/cr064_Icon_Texture.webp",
     "sortOrder": 64,
     "element": {
       "id": 4,
@@ -5442,7 +5442,7 @@ export const gsaCharacters = [
         "type": "Instant",
         "mainStat": "ATK",
         "gcd": null,
-        "desc": "Deal three hits of 40% Physical DMG to up to 2 targets within the forward area.\nOn the first hit, inflict Water Res Down 10% (6s) on the target.\nOn final hit, if the target has the Freeze status, trigger an Ice Break L Pursuit.",
+        "desc": "Deal three hits of 40% Physical DMG to up to 2 targets within the forward area.\nOn the first hit, inflict Water Res Down 10% (6s) on the target.\nOn final hit, if the target has the Freeze status, trigger an Ice Break M Pursuit.",
         "detail": null,
         "cooldown": "10s",
         "cost": 1,
@@ -5451,7 +5451,7 @@ export const gsaCharacters = [
           "Water Res Down"
         ],
         "awakened": {
-          "desc": "Deal three hits of 100% Physical DMG to up to 2 targets within the forward area.\nOn the first hit, inflict Water Res Down 10% (6s) on the target.\nOn final hit, if the target has the Freeze status, trigger an Ice Break L Pursuit.",
+          "desc": "Deal three hits of 100% Physical DMG to up to 2 targets within the forward area.\nOn the first hit, inflict Water Res Down 10% (6s) on the target.\nOn final hit, if the target has the Freeze status, trigger an Ice Break M Pursuit.",
           "detail": null
         }
       },
@@ -5570,7 +5570,7 @@ export const gsaCharacters = [
     "epithet": "Immovable Strikes, Wisdom of Stone",
     "sex": "Female",
     "inGacha": true,
-    "icon": null,
+    "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/cr065_Icon_Texture.webp",
     "sortOrder": 65,
     "element": {
       "id": 2,
@@ -5726,6 +5726,342 @@ export const gsaCharacters = [
       "hitPer": "8500",
       "ddgPer": "0",
       "blkPer": "4000",
+      "blkPenPer": "0",
+      "blkRdcPer": "2000",
+      "healCritPer": "1000",
+      "healCritAmpPer": "5000",
+      "atkHastePer": "0",
+      "cdHastePer": "0"
+    }
+  },
+  {
+    "id": "133006700",
+    "model": "cr067",
+    "slug": "qing-yin",
+    "name": "Qing Yin",
+    "nameZh": "清音",
+    "title": "Siren of a Fallen City",
+    "epithet": "",
+    "sex": "Female",
+    "inGacha": true,
+    "icon": null,
+    "sortOrder": 67,
+    "element": {
+      "id": 3,
+      "name": "Wind",
+      "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/battleelement_3.webp"
+    },
+    "job": {
+      "id": 5,
+      "name": "Breaker",
+      "color": "#9433EA",
+      "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/master_3.webp"
+    },
+    "attackType": {
+      "id": 2,
+      "name": "Energy",
+      "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Attributes_01.webp"
+    },
+    "skills": [
+      {
+        "id": "150006700",
+        "name": "Cloud-Piercing Note",
+        "slot": "Normal Attack",
+        "unlockStar": 0,
+        "icon": null,
+        "type": "Instant",
+        "mainStat": null,
+        "gcd": "10s",
+        "desc": "Prioritizes Electrocuted targets, dealing 75% Energy DMG.",
+        "detail": null,
+        "cooldown": null,
+        "cost": null,
+        "statuses": []
+      },
+      {
+        "id": "150006710",
+        "name": "Layered Rhythm Resonance",
+        "slot": "Active",
+        "unlockStar": 0,
+        "icon": null,
+        "type": "Instant",
+        "mainStat": null,
+        "gcd": null,
+        "desc": "Prioritizes Electrocuted targets, dealing three hits of 90% Energy DMG.\nOn the first hit, inflict Wind Res Down 12% (6s) on the target.\nOn final hit, if the target has the Electrocute status, trigger an Overload M Pursuit.",
+        "detail": null,
+        "cooldown": "10s",
+        "cost": 1,
+        "statuses": [],
+        "awakened": {
+          "desc": "Prioritizes Electrocuted targets, dealing three hits of 152% Energy DMG.\nOn the first hit, inflict Wind Res Down 12% (10s) on the target.\nOn final hit, if the target has the Electrocute status, trigger an Overload M Pursuit.",
+          "detail": null
+        }
+      },
+      {
+        "id": "150006720",
+        "name": "Echobind Formation",
+        "slot": "Loop",
+        "unlockStar": 1,
+        "icon": null,
+        "type": "Instant",
+        "mainStat": null,
+        "gcd": null,
+        "desc": "Prioritizes Electrocuted targets, dealing 110% Energy DMG.\nOn hit, High chance to inflict Stun (3s).",
+        "detail": null,
+        "cooldown": "6s",
+        "cost": null,
+        "statuses": [],
+        "awakened": {
+          "desc": "Prioritizes Electrocuted targets, dealing 176% Energy DMG.\nOn hit, Extremely High chance to inflict Stun (3s).",
+          "detail": null
+        }
+      },
+      {
+        "id": "150006730",
+        "name": "Gentle Note, Hidden Blade",
+        "slot": "Passive 1",
+        "unlockStar": 4,
+        "icon": null,
+        "type": "Passive",
+        "mainStat": null,
+        "gcd": null,
+        "desc": "On hit, if the target is Electrocuted, grant self Wind ATK Up 8% (12s).\nThis effect can stack up to 2 times.",
+        "detail": "Qingyin appears gentle on the surface, but there is a blade hidden behind her smile.",
+        "cooldown": null,
+        "cost": null,
+        "statuses": [],
+        "awakened": {
+          "desc": "On hit, if the target is Electrocuted, grant self Wind ATK Up 9% (12s).\nThis effect can stack up to 2 times.\nGrant all party members Energy DMG Up 6%.",
+          "detail": null
+        }
+      },
+      {
+        "id": "150006750",
+        "name": "Refined Medley",
+        "slot": "Passive 2",
+        "unlockStar": 6,
+        "icon": null,
+        "type": "Passive",
+        "mainStat": null,
+        "gcd": null,
+        "desc": "Grant self Crit Chance Up 14%.",
+        "detail": "Qingyin quietly observes every change in the words and demeanor of others, gently guiding their rhythm with her music.",
+        "cooldown": null,
+        "cost": null,
+        "statuses": [],
+        "awakened": {
+          "desc": "Grant all party members Crit Chance Up 14%.\nIn PVP mode, grant self ATK SPD Up 15%.",
+          "detail": null
+        }
+      },
+      {
+        "id": "150006741",
+        "name": "Myriad Note Burst",
+        "slot": "Ultimate",
+        "unlockStar": 2,
+        "icon": null,
+        "type": "Instant",
+        "mainStat": null,
+        "gcd": null,
+        "desc": "Enter the Awakening state, granting self Attack Up 15% (24s).\nPrioritizes Electrocuted targets, dealing two hits of 413.5% Energy DMG.\nOn the first hit, grant Wind ATK Up 15% (12s) to self.\nOn the first hit, grant ATK SPD Up 30% (12s) to self.\nOn final hit, if the target has the Electrocute status, trigger an Overload L Pursuit.",
+        "detail": null,
+        "cooldown": "24s",
+        "cost": 3,
+        "statuses": []
+      }
+    ],
+    "profile": {
+      "title": "Siren of a Fallen City",
+      "birthday": "10 / 14",
+      "age": "23",
+      "height": "166",
+      "weight": "55",
+      "interest": "Observing subjects of interest, music",
+      "personality": "Gentle and graceful, cultured and refined. Skilled at steering conversations into a dominant position.",
+      "resumeParas": [
+        "A former musician of the Nine Nether Gang who later defected to the Azure Dragon Triad.. Qingyin served as a musician and sex slave for the Nine Nether Gang, using her bewitching flute music to assist the assassin Leng Zhen during hit operations. However, Leng Zhen was later transformed by the gang's hierarchy into a mindless \"Gu Slave.\" After Qingyin learned of the hopeless fate of Gu Slaves from Banxia, an undercover apothecary from the Azure Dragon Triad, she finally decided to strike back to change her destiny, despite having long submitted to the gang.. Relying on drugs concocted by Banxia and the sound of her own flute to assassinate members of the Nine Nether Gang, she brought Leng Zhen to the Azure Dragon Triad to seek sanctuary."
+      ]
+    },
+    "stats": {
+      "atkRange": "600",
+      "normalAttackGCD": "10000",
+      "critPer": "1000",
+      "critRstPer": "0",
+      "critAmpPer": "5000",
+      "critDmgRdcPer": "0",
+      "hitPer": "9300",
+      "ddgPer": "0",
+      "blkPer": "2500",
+      "blkPenPer": "0",
+      "blkRdcPer": "2000",
+      "healCritPer": "1000",
+      "healCritAmpPer": "5000",
+      "atkHastePer": "0",
+      "cdHastePer": "0"
+    }
+  },
+  {
+    "id": "133006800",
+    "model": "cr068",
+    "slug": "leng-zhen",
+    "name": "Leng Zhen",
+    "nameZh": "冷鴆",
+    "title": "Soulless Executioner",
+    "epithet": "",
+    "sex": "Female",
+    "inGacha": true,
+    "icon": null,
+    "sortOrder": 68,
+    "element": {
+      "id": 4,
+      "name": "Water",
+      "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/battleelement_4.webp"
+    },
+    "job": {
+      "id": 5,
+      "name": "Breaker",
+      "color": "#9433EA",
+      "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/master_4.webp"
+    },
+    "attackType": {
+      "id": 2,
+      "name": "Energy",
+      "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Attributes_01.webp"
+    },
+    "skills": [
+      {
+        "id": "150006800",
+        "name": "Severed Breath",
+        "slot": "Normal Attack",
+        "unlockStar": 0,
+        "icon": null,
+        "type": "Instant",
+        "mainStat": "ATK",
+        "gcd": "10s",
+        "desc": "Deal 69% Energy DMG to a Random target.",
+        "detail": null,
+        "cooldown": null,
+        "cost": null,
+        "statuses": []
+      },
+      {
+        "id": "150006810",
+        "name": "Meridian Sever",
+        "slot": "Active",
+        "unlockStar": 0,
+        "icon": null,
+        "type": "Instant",
+        "mainStat": "ATK",
+        "gcd": null,
+        "desc": "Deal three hits of 105% Energy DMG to a Random target.\nOn hit, increase the team's EN by 2.",
+        "detail": null,
+        "cooldown": "10s",
+        "cost": 1,
+        "statuses": [
+          "EN Gain Up"
+        ],
+        "awakened": {
+          "desc": "Deal three hits of 125% Energy DMG to a Random target.\nOn hit, increase the team's EN by 2.5.",
+          "detail": null
+        }
+      },
+      {
+        "id": "150006820",
+        "name": "Seal Acupoint",
+        "slot": "Loop",
+        "unlockStar": 1,
+        "icon": null,
+        "type": "Instant",
+        "mainStat": "ATK",
+        "gcd": null,
+        "desc": "Deal three hits of 105% Energy DMG to a Random target.\nOn hit, High chance to inflict Freeze M (3s).",
+        "detail": null,
+        "cooldown": "6s",
+        "cost": null,
+        "statuses": [
+          "Frozen"
+        ],
+        "awakened": {
+          "desc": "Deal three hits of 145% Energy DMG to a Random target.\nOn hit, inflict Freeze M (3s).",
+          "detail": null
+        }
+      },
+      {
+        "id": "150006830",
+        "name": "Severed Senses",
+        "slot": "Passive 1",
+        "unlockStar": 4,
+        "icon": null,
+        "type": "Passive",
+        "mainStat": null,
+        "gcd": null,
+        "desc": "On hit, Medium chance to grant self Water ATK Up 7% (6s).",
+        "detail": "Having been reduced to a vessel with no sense of self, she is completely cut off from the interference of emotions like fear and hesitation.",
+        "cooldown": null,
+        "cost": null,
+        "statuses": [],
+        "awakened": {
+          "desc": "On hit, Medium chance to grant self Water ATK Up 8.5% (6s).",
+          "detail": null
+        }
+      },
+      {
+        "id": "150006850",
+        "name": "Venomous Edict",
+        "slot": "Passive 2",
+        "unlockStar": 6,
+        "icon": null,
+        "type": "Passive",
+        "mainStat": null,
+        "gcd": null,
+        "desc": "Grant self Skill Damage Up 12.5%.",
+        "detail": "A body whose sense of pain is devoured by venom can push itself to the limit, utterly ignoring the price of torn muscles.",
+        "cooldown": null,
+        "cost": null,
+        "statuses": [],
+        "awakened": {
+          "desc": "Grant all party members Skill Damage Up 12.5%.",
+          "detail": null
+        }
+      },
+      {
+        "id": "150006841",
+        "name": "Burial Order",
+        "slot": "Ultimate",
+        "unlockStar": 2,
+        "icon": null,
+        "type": "Instant",
+        "mainStat": "ATK",
+        "gcd": null,
+        "desc": "Enter the Awakening state, granting self Freeze Hit Rate Up 35% (24s).\nDeal three hits of 300% Energy DMG to a Random target.\nOn hit, inflict Freeze M (3s).",
+        "detail": null,
+        "cooldown": "24s",
+        "cost": 3,
+        "statuses": []
+      }
+    ],
+    "profile": {
+      "title": "Soulless Executioner",
+      "birthday": "12 / 25",
+      "age": "26",
+      "height": "172",
+      "weight": "53",
+      "interest": "Candies, sweet drinks (due to childlike tendencies)",
+      "personality": "1. Extremely slow to respond to external stimuli. 2. Highly attached to and protective of Qingyin.",
+      "resumeParas": [
+        "Formerly an assassin of the Nine Nether Gang, she later defected to the Azure Dragon Triad alongside Qingyin.. Born in Tobia, she was sold to the Nine Nether Gang at a young age to settle her family's debts. After being trained and groomed by the gang, she became an assassin. Having long been partnered with the musician \"Qingyin,\" their shared chemistry and secret affection deepened with every mission they undertook. She secretly plotted to escape the Nine Nether Gang with Qingyin. However, before they could carry out their plan, the gang's higher-ups turned her into a Gu slave, utilizing her as both a sex slave and an assassin.. She was later brought to the Azure Dragon Triad by Qingyin to seek their aid."
+      ]
+    },
+    "stats": {
+      "atkRange": "480",
+      "normalAttackGCD": "10000",
+      "critPer": "1000",
+      "critRstPer": "0",
+      "critAmpPer": "5000",
+      "critDmgRdcPer": "0",
+      "hitPer": "9300",
+      "ddgPer": "0",
+      "blkPer": "2500",
       "blkPenPer": "0",
       "blkRdcPer": "2000",
       "healCritPer": "1000",
@@ -5953,13 +6289,13 @@ export const gsaCharacters = [
         "type": "Instant",
         "mainStat": "ATK",
         "gcd": null,
-        "desc": "Deal 360% Physical DMG to a target.\nOn hit, inflict Petrify M (s).",
+        "desc": "Deal 360% Physical DMG to a target.\nOn final hit, inflict Petrify M (4s).",
         "detail": null,
         "cooldown": "10s",
         "cost": 1,
         "statuses": [],
         "awakened": {
-          "desc": "Deal 420% Physical DMG to a target.\nOn hit, inflict Petrify M (s).\nOn final hit, inflict Block Down 15% (8s) on the target.",
+          "desc": "Deal 420% Physical DMG to a target.\nOn final hit, inflict Petrify M (4s).\nOn final hit, inflict Block Down 15% (8s) on the target.",
           "detail": null
         }
       },
@@ -5972,13 +6308,13 @@ export const gsaCharacters = [
         "type": "Instant",
         "mainStat": null,
         "gcd": null,
-        "desc": "Prioritizes 2 highest ATK party members, granting Crit DMG Up 40% (8s).",
+        "desc": "Grant 2 highest ATK party members Crit DMG Up 40% (8s).",
         "detail": null,
         "cooldown": "6s",
         "cost": null,
         "statuses": [],
         "awakened": {
-          "desc": "Prioritizes 2 highest ATK party members, granting Crit DMG Up 45% (10s).",
+          "desc": "Grant 2 highest ATK party members Crit DMG Up 45% (10s).",
           "detail": null
         }
       },
@@ -5991,13 +6327,13 @@ export const gsaCharacters = [
         "type": "Passive",
         "mainStat": null,
         "gcd": null,
-        "desc": "On hit, if the target is Petrified Buffed, grant self Healing Received Down 22% (6s).",
-        "detail": "A rumor circulates within the Rosian Brotherhood—anyone who sees the witch's true identity will die a violent death.",
+        "desc": "On hit, if the target is Petrified or Block Down, inflict Healing Received Down 22% (6s).\nThis effect can only trigger once every 6 seconds.",
+        "detail": "A rumor circulates within the Rosian Brotherhood, anyone who sees the witch's true identity will die a violent death.",
         "cooldown": null,
         "cost": null,
         "statuses": [],
         "awakened": {
-          "desc": "On hit, if the target is Petrified Buffed, grant self Healing Received Down 22% (6s).\nGrant all party members Block Penetration Up 6.5%.",
+          "desc": "On hit, if the target is Petrified or Block Down, inflict Healing Received Down 22% (6s).\nThis effect can only trigger once every 6 seconds.\nGrant all party members Block Penetration Up 6.5%.",
           "detail": null
         }
       },
@@ -6078,12 +6414,16 @@ export const gsaCharacters = [
     "inGacha": true,
     "icon": null,
     "sortOrder": 73,
-    "element": null,
+    "element": {
+      "id": 6,
+      "name": "Dark",
+      "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/battleelement_6.webp"
+    },
     "job": {
       "id": 5,
       "name": "Breaker",
       "color": "#9433EA",
-      "icon": null
+      "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/master_6.webp"
     },
     "attackType": {
       "id": 1,
@@ -6092,63 +6432,115 @@ export const gsaCharacters = [
     },
     "skills": [
       {
+        "id": "150007300",
+        "name": "Pinpoint Volley",
+        "slot": "Normal Attack",
+        "unlockStar": 0,
+        "icon": null,
+        "type": "Instant",
+        "mainStat": "ATK",
+        "gcd": "10s",
+        "desc": "Deal three hits of 26% Physical DMG to a lowest HP target.",
+        "detail": null,
+        "cooldown": null,
+        "cost": null,
+        "statuses": []
+      },
+      {
+        "id": "150007310",
+        "name": "Phantom Skyrend",
+        "slot": "Active",
+        "unlockStar": 0,
+        "icon": null,
+        "type": "Instant",
+        "mainStat": "ATK",
+        "gcd": null,
+        "desc": "Deal five hits of 32% Physical DMG to two lowest HP targets.\nOn the first hit, inflict Light ATK Down 15% (10s) on the target.\nOn the first hit, inflict Evasion Down 10% (10s) on the target.",
+        "detail": null,
+        "cooldown": "10s",
+        "cost": 1,
+        "statuses": [
+          "Light ATK Down",
+          "Evasion Down"
+        ],
+        "awakened": {
+          "desc": "Deal five hits of 54% Physical DMG to two lowest HP targets.\nOn the first hit, inflict Light ATK Down 15% (10s) on the target.\nOn the first hit, inflict Evasion Down 10% (10s) on the target.",
+          "detail": null
+        }
+      },
+      {
+        "id": "150007320",
+        "name": "Serene Starfall",
+        "slot": "Loop",
+        "unlockStar": 1,
+        "icon": null,
+        "type": "Instant",
+        "mainStat": "ATK",
+        "gcd": null,
+        "desc": "Deal five hits of 18% Physical DMG to a lowest HP target.\nOn final hit, inflict Healing Down 20% (10s) on the target.\nOn final hit, inflict Healing Received Down 20% (10s) on the target.",
+        "detail": null,
+        "cooldown": "6s",
+        "cost": null,
+        "statuses": [
+          "Healing Down",
+          "Healing Received Down"
+        ],
+        "awakened": {
+          "desc": "Deal five hits of 30% Physical DMG to a lowest HP target.\nOn final hit, inflict Healing Down 25% (10s) on the target.\nOn final hit, inflict Healing Received Down 25% (10s) on the target.",
+          "detail": null
+        }
+      },
+      {
         "id": "150007330",
-        "name": "Passive 1",
+        "name": "Perfectionism",
         "slot": "Passive 1",
         "unlockStar": 4,
         "icon": null,
         "type": "Passive",
         "mainStat": null,
         "gcd": null,
-        "desc": null,
+        "desc": "On kill, grant all Dark Type party members Physical DMG Up 15% (12s).\nThis effect can stack up to 2 times.",
         "detail": "Queenie is strict with herself, demanding perfection in every detail of her performances.",
         "cooldown": null,
         "cost": null,
-        "statuses": []
-      },
-      {
-        "id": "150007380",
-        "name": "Passive 3",
-        "slot": "Passive 3",
-        "unlockStar": 7,
-        "icon": null,
-        "type": "Passive",
-        "mainStat": null,
-        "gcd": null,
-        "desc": null,
-        "detail": "Queenie is strict with herself, demanding perfection in every detail of her performances.",
-        "cooldown": null,
-        "cost": null,
-        "statuses": []
+        "statuses": [],
+        "awakened": {
+          "desc": "On kill, grant all Dark Type party members Physical DMG Up 15% (12s).\nThis effect can stack up to 2 times.\nGrant all party members Evasion UP 6.5%.",
+          "detail": null
+        }
       },
       {
         "id": "150007350",
-        "name": "Passive 2",
+        "name": "Absolute Enthrallment",
         "slot": "Passive 2",
         "unlockStar": 6,
         "icon": null,
         "type": "Passive",
         "mainStat": null,
         "gcd": null,
-        "desc": null,
+        "desc": "Grant self ATK SPD Up 23%.",
         "detail": "With just a glance and a smile, Connie can make anyone willingly become her most devoted fan.",
         "cooldown": null,
         "cost": null,
-        "statuses": []
+        "statuses": [],
+        "awakened": {
+          "desc": "Grant all party members ATK SPD Up 23%.\nIn PVP mode, grant self Crit Chance Up 13%.",
+          "detail": null
+        }
       },
       {
-        "id": "150007390",
-        "name": "Passive 3",
-        "slot": "Passive 3",
-        "unlockStar": 7,
+        "id": "150007341",
+        "name": "Phantom Stage",
+        "slot": "Ultimate",
+        "unlockStar": 2,
         "icon": null,
-        "type": "Passive",
-        "mainStat": null,
+        "type": "Instant",
+        "mainStat": "ATK",
         "gcd": null,
-        "desc": null,
-        "detail": "With just a glance and a smile, Connie can make anyone willingly become her most devoted fan.",
-        "cooldown": null,
-        "cost": null,
+        "desc": "Enter the Awakening state, granting self Attack Up 17% (24s).\nDeal six hits of 85% Physical DMG to two lowest HP targets.\nOn final hit, if the target has the Ebon status, trigger an Abyss L Pursuit.",
+        "detail": null,
+        "cooldown": "24s",
+        "cost": 3,
         "statuses": []
       }
     ],
@@ -6277,7 +6669,7 @@ export const gsaCharacters = [
         "type": "Passive",
         "mainStat": null,
         "gcd": null,
-        "desc": "On basic attack hit, restore 59% HP to 2 lowest HP party members.",
+        "desc": "On basic attack hit, restore 59% HP to 2 lowest HP percentage party members.",
         "detail": "Her singing can evoke emotional resonance, providing those around her with a sense of security and inner peace.",
         "cooldown": null,
         "cost": null,
@@ -6285,7 +6677,7 @@ export const gsaCharacters = [
           "Heal"
         ],
         "awakened": {
-          "desc": "On basic attack hit, restore 63% HP to 2 lowest HP party members.\nGrant all party members Basic Attack Damage Taken Decreased 20%.",
+          "desc": "On basic attack hit, restore 63% HP to 2 lowest HP percentage party members.\nGrant all party members Basic Attack Damage Taken Decreased 20%.",
           "detail": null
         }
       },
@@ -6407,11 +6799,13 @@ export const gsaCharacters = [
         "type": "Instant",
         "mainStat": "ATK",
         "gcd": null,
-        "desc": "Deal five hits of 40% Physical Spread DMG to up to 3 targets within the forward area.\nOn hit, deal an additional 5% Physical DMG to the target.\nOn final hit, if the target has the Petrify status, trigger an Shatter M Pursuit.",
+        "desc": "Deal five hits of 40% Physical Spread DMG to up to 3 targets within the forward area.\nOn hit, deal an additional 5% Physical DMG to the target.\nOn final hit, if the target has the Petrify status, trigger an Shatter S Pursuit.",
         "detail": null,
         "cooldown": "10s",
         "cost": 1,
-        "statuses": [],
+        "statuses": [
+          "Shatter"
+        ],
         "awakened": {
           "desc": "Deal five hits of 60% Physical Spread DMG to up to 3 targets within the forward area.\nOn hit, deal an additional 9% Physical DMG to the target.\nOn final hit, if the target has the Petrify status, trigger an Shatter M Pursuit.",
           "detail": null
@@ -6430,7 +6824,9 @@ export const gsaCharacters = [
         "detail": null,
         "cooldown": "5s",
         "cost": null,
-        "statuses": [],
+        "statuses": [
+          "Heal"
+        ],
         "awakened": {
           "desc": "Restore 220% HP to lowest HP percentage party members.\nGrant lowest HP percentage party members Block Up 10% (8s).",
           "detail": null
@@ -6446,10 +6842,12 @@ export const gsaCharacters = [
         "mainStat": null,
         "gcd": null,
         "desc": "Upon a successful Shatter Pursuit, restore 65% HP to lowest HP percentage party members.",
-        "detail": "She can never bring herself to turn off the light once she starts reading her favorite romance novels before bed. She always says, \"Just one more page, then I’ll go to sleep,\" only to end up reading another half the book.",
+        "detail": "She can never bring herself to turn off the light once she starts reading her favorite romance novels before bed. She always says, \"Just one more page, then I'll go to sleep,\" only to end up reading another half the book.",
         "cooldown": null,
         "cost": null,
-        "statuses": [],
+        "statuses": [
+          "Heal"
+        ],
         "awakened": {
           "desc": "Upon a successful Shatter Pursuit, restore 65% HP to lowest HP percentage party members.\nGrant all party members Crit DMG Up 15%.",
           "detail": null
@@ -6465,7 +6863,7 @@ export const gsaCharacters = [
         "mainStat": null,
         "gcd": null,
         "desc": "Grant self Earth ATK Up 9.5%.",
-        "detail": "One time, the fresh milk pudding she made herself somehow didn’t collapse, and the surface even came out nice and glossy. She was walking on air that day, feeling like she could accomplish anything.",
+        "detail": "One time, the fresh milk pudding she made herself somehow didn't collapse, and the surface even came out nice and glossy. She was walking on air that day, feeling like she could accomplish anything.",
         "cooldown": null,
         "cost": null,
         "statuses": [],

@@ -545,6 +545,13 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
           { name: 'Tier List', href: '/guides/gene-sys-adam/tier-list/' },
         ],
       },
+      {
+        title: 'Events',
+        links: [
+          { name: 'Banners', href: '/guides/gene-sys-adam/banners/' },
+          { name: 'Updates', href: '/guides/gene-sys-adam/updates/' },
+        ],
+      },
     ],
   },
 };
