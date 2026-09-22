@@ -53,11 +53,11 @@ export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Merciful Rain",
+      "name": "Merciful rain",
       "icon": "skill001/skill0021",
-      "description": "Restore HP to all alliesHP and inflicts Block 13 UP for 15 seconds and Debuff Resistance 30%UP for 15 seconds, DEBUFF",
-      "descriptionLv1": "Restore HP to all alliesHP and inflicts Block 13 UP for 15 seconds and Debuff Resistance 30%UP for 15 seconds, DEBUFF",
-      "descriptionLv90": "Restore HP to all alliesHP and inflicts Block 26 UP for 15 seconds and Debuff Resistance 30%UP for 15 seconds, DEBUFF",
+      "description": "All allies recover HP. Applies Block 13 UP for 15 seconds and Debuff Resistance 30%UP for 15 seconds. Removes DEBUFF.",
+      "descriptionLv1": "All allies recover HP. Applies Block 13 UP for 15 seconds and Debuff Resistance 30%UP for 15 seconds. Removes DEBUFF.",
+      "descriptionLv90": "All allies recover HP. Applies Block 26 UP for 15 seconds and Debuff Resistance 30%UP for 15 seconds. Removes DEBUFF.",
       "target": "All Allies",
       "castTime": 1.4,
       "damageScaling": "2500% ATK",
@@ -94,7 +94,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Arrow of Blessing",
+      "name": "Blessing arrow",
       "icon": "skill001/skill0019",
       "description": "Applies Hit-Based Physical Damage UP(40%+450, 3 hit(s)) to all allies for 15 seconds and Hit-Based Magic Damage UP(40%+450, 3 hit(s)) for 15 seconds",
       "descriptionLv1": "Applies Hit-Based Physical Damage UP(40%+450, 3 hit(s)) to all allies for 15 seconds and Hit-Based Magic Damage UP(40%+450, 3 hit(s)) for 15 seconds",
@@ -132,41 +132,41 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Offer holy salvation to the sinful",
+      "name": "Holy Salvation for the Sinful",
       "icon": "skill001/skill0006_1",
-      "description": "Deals magic damage to the nearest enemy, applies 4s, 4s",
+      "description": "Deals 900% + 800 magic damage to the nearest enemy. Inflicts SILENCE for 4 seconds and DISPEL for 4 seconds.",
       "effect": "900% + 800",
       "buffEffects": []
     },
     {
       "rank": 2,
-      "name": "Offer holy salvation to the sinful",
+      "name": "Holy Salvation for the Sinful",
       "icon": "skill001/skill0006_2",
-      "description": "Deals magic damage to the nearest enemy, applies 5s, 5s",
+      "description": "Deals 1080% + 1000 magic damage to the nearest enemy. Inflicts SILENCE for 5 seconds and DISPEL for 5 seconds.",
       "effect": "1080% + 1000",
       "buffEffects": []
     },
     {
       "rank": 3,
-      "name": "Offer holy salvation to the sinful",
+      "name": "Holy Salvation for the Sinful",
       "icon": "skill001/skill0006_3",
-      "description": "Deals magic damage to the nearest enemy, applies 5s, 5s",
+      "description": "Deals 1120% + 1200 magic damage to the nearest enemy. Inflicts SILENCE for 5 seconds and DISPEL for 5 seconds.",
       "effect": "1120% + 1200",
       "buffEffects": []
     },
     {
       "rank": 4,
-      "name": "Offer holy salvation to the sinful",
+      "name": "Holy Salvation for the Sinful",
       "icon": "skill001/skill0006_4",
-      "description": "Deals magic damage to the nearest enemy, applies 6s, 6s",
+      "description": "Deals 1210% + 1350 magic damage to the nearest enemy. Inflicts SILENCE for 6 seconds and DISPEL for 6 seconds.",
       "effect": "1210% + 1350",
       "buffEffects": []
     },
     {
       "rank": 5,
-      "name": "Offer holy salvation to the sinful",
+      "name": "Holy Salvation for the Sinful",
       "icon": "skill001/skill0006_5",
-      "description": "Deals magic damage to the nearest enemy, applies 6s, 6s",
+      "description": "Deals 1300% + 1500 magic damage to the nearest enemy. Inflicts SILENCE for 6 seconds and DISPEL for 6 seconds.",
       "effect": "1300% + 1500",
       "buffEffects": []
     }
@@ -176,7 +176,7 @@ export const skills = {
       "slot": 1,
       "name": "Max HP +, MP Recovery",
       "icon": "skill001/skill1007",
-      "description": "After casting a skill, self gains MP Recovery 100, All allies receive Max HP UP(Small)",
+      "description": "Applies MP Recovery 100 to self after casting skills. All allies receive Max HP UP(Small).",
       "effect": "Max HP + (+1447), MP Recovery (+100%)",
       "effectValues": [
         {
@@ -197,7 +197,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Damage UP",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP(Large), before casting an ultimate, all allies gain 10s Damage 10%UP",
+      "description": "Gain Ultimate Damage UP(Large). Applies Damage 10%UP to all allies for 10 seconds before casting ultimate.",
       "effect": "Ultimate Damage + (+15%), Damage UP (+10%)",
       "effectValues": [
         {

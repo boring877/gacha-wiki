@@ -5,7 +5,41 @@
  */
 
 export const bannerTimelineData = [
-  // #41 - "The Cave Lurker" / Ilugio & Ange (Sep 15 - Sep 29) - CURRENT
+  // #42 - "Heaven and Hentai" / Raffine (Sep 15 - Sep 29) - CURRENT
+  {
+    id: 'heaven-and-hentai-2026',
+    title: '"Heaven and Hentai" Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: 'Raffine',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+    ],
+    startDate: '2026-09-15T04:00:00Z',
+    endDate: '2026-09-29T04:00:00Z',
+    description:
+      '"Heaven and Hentai" Event Summon! New Paladin Rate Up! Raffine (SSR Holy Magic Support). Guaranteed SR Paladin when performing a 10-pull.',
+    note: 'Raffine (characterId 2147), the 300-Day Launch Anniversary paladin. End time from game data (2026/09/29 04:00 UTC); start from the rotation switch on Sep 15 alongside "The Cave Lurker".',
+    status: 'current',
+    image: 'banner-heaven-and-hentai',
+  },
+  // #41 - 300-Day Good Luck Challenge (Sep 15 - Sep 29) - CURRENT
+  {
+    id: 'anniversary-300day-good-luck-2026',
+    title: '"300-Day Launch Anniversary" Good Luck Challenge Summon',
+    bannerType: 'event',
+    featuredPaladins: [],
+    startDate: '2026-09-15T04:00:00Z',
+    endDate: '2026-09-29T04:00:00Z',
+    description:
+      '300-Day Launch Anniversary Good Luck Challenge Summon! A special anniversary summon with unlimited resets: restart as many times as you want until you get the paladin you like!',
+    note: 'Runs alongside the main "300-Day Launch Anniversary" Summon. End time from game data (2026/09/29 04:00 UTC); start from the rotation switch on Sep 15.',
+    status: 'current',
+    image: 'banner-300day-good-luck',
+  },
+  // #40 - "The Cave Lurker" / Ilugio & Ange (Sep 15 - Sep 29) - CURRENT
   {
     id: 'cave-lurker-2026',
     title: '"The Cave Lurker" Event Summon',
@@ -109,7 +143,7 @@ export const bannerTimelineData = [
     startDate: '2026-08-25T04:00:00Z',
     endDate: '2026-09-01T04:00:00Z',
     description:
-      '"No more bet" Event Summon! Rate up for Gil and Bonita in casino attire. The two dealers invite you to the table — no more bets!',
+      '"No more bet" Event Summon! Rate up for Gil and Bonita in casino attire. The two dealers invite you to the table: no more bets!',
     note: 'Casino-themed event summon featuring Gil (SSR Attacker) and Bonita (SSR Support). End time from game data; start derived from the standard 7-day EN rotation.',
     status: 'ended',
     image: 'banner-no-more-bet',
@@ -134,7 +168,7 @@ export const bannerTimelineData = [
     status: 'ended',
     image: 'banner-main-story-12',
   },
-  // #36 - FANZINE 2nd / Tempting Naked Apron Diana (Aug 11 - Aug 18) - CURRENT
+  // #36 - FANZINE 2nd / Tempting Naked Apron Diana (Aug 11 - Aug 18) - ENDED
   {
     id: 'fanzine-2nd-2026',
     title: '"FANZINE" 2nd Event Summon',
@@ -153,7 +187,7 @@ export const bannerTimelineData = [
     status: 'current',
     image: 'banner-fanzine-2nd',
   },
-  // #35 - Beast Huntress / Eva, Ines, Collie (Aug 1 - Aug 15) - CURRENT
+  // #35 - Beast Huntress / Eva, Ines, Collie (Aug 1 - Aug 15) - ENDED
   {
     id: 'beast-huntress-2026',
     title: '"Beast Huntress" Event Summon',
@@ -177,12 +211,12 @@ export const bannerTimelineData = [
     ],
     startDate: '2026-08-01T00:00:00Z',
     endDate: '2026-08-15T03:00:00Z',
-    description: '"Beast Huntress" Event Summon! New Paladin Rate Up! Eva, the One-Strike Busty Beauty of Dominion. Ines, the Busty Archer Who Pierces Magical Beasts. Collie, the Busty Beast Dismantler. Three Beast Huntresses travel to Elron in search of magical beasts—and something is following them.',
+    description: '"Beast Huntress" Event Summon! New Paladin Rate Up! Eva, the One-Strike Busty Beauty of Dominion. Ines, the Busty Archer Who Pierces Magical Beasts. Collie, the Busty Beast Dismantler. Three Beast Huntresses travel to Elron in search of magical beasts, and something is following them.',
     note: 'Burst Month Part.1 event. Eva (SSR Dark Physical Tank), Ines (SSR Dark Physical Attacker), and Collie (SR Wind Physical Attacker). New Paladins will be added to the Standard Banner after the event ends.',
     status: 'current',
     image: 'banner-beast-huntress',
   },
-  // #34 - Burst Month / Oppai Month 2026 (Aug 1 - Aug 31) - CURRENT
+  // #34 - Burst Month / Oppai Month 2026 (Aug 1 - Aug 31) - ENDED
   {
     id: 'burst-month-2026',
     title: '"Burst Month" Special Event Summon',
@@ -515,7 +549,7 @@ export const bannerTimelineData = [
     ],
     startDate: '2026-04-14T03:00:00Z',
     endDate: '2026-04-21T03:00:00Z',
-    description: 'Paladin Introduction Event Summon! New Paladin Rate Up! Viatrice, the Kind-Hearted Courtesan Lingering in This World. An exceptionally voluptuous courtesan who moved from the town of Haza to Elron, her gentle and loving nature made her highly sought-after — until misfortune found its way to her.',
+    description: 'Paladin Introduction Event Summon! New Paladin Rate Up! Viatrice, the Kind-Hearted Courtesan Lingering in This World. An exceptionally voluptuous courtesan who moved from the town of Haza to Elron, her gentle and loving nature made her highly sought-after, until misfortune found its way to her.',
     note: 'Viatrice (SSR Fire Physical Attacker). New Paladin will be added to the Standard Banner after the event ends.',
     status: 'ended',
     image: 'banner-paladin-introduction-viatrice',
@@ -1040,7 +1074,52 @@ seasonalCharactersData.forEach(season => {
  * Guild Battle pickup summons, tracked separately from the main timeline.
  */
 export const guildBattleData = [
-  // Competitive Battle HOLY pick up (Sep 15 - Sep 22) - CURRENT
+  // Competitive Battle MAGIC pick up (Sep 22 - Oct 6) - CURRENT
+  {
+    id: 'competitive-battle-magic-2026-09',
+    title: 'Competitive Battle・MAGIC Pick Up Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: '[Magical Princess] Luceria',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: '[Pious Cleric] Ishtovia',
+        rarity: 'SSR',
+        type: 'Support',
+      },
+      {
+        name: 'Frey',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Stenlina',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Sirius',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+      {
+        name: 'Irina',
+        rarity: 'SR',
+        type: 'Support',
+      },
+    ],
+    startDate: '2026-09-22T04:00:00Z',
+    endDate: '2026-10-06T04:00:00Z',
+    description:
+      'Competitive Battle MAGIC support summon! Rate up for Light-attribute paladins Luceria, Ishtovia, Frey, Stenlina, Sirius and Irina ahead of the MAGIC Competitive Battle. Guaranteed SR Paladin when performing a 10-pull.',
+    note: 'Attribute pickup summon for the Competitive Battle MAGIC season. Two-week run: end time from game data (2026/10/06 04:00 UTC).',
+    status: 'current',
+    image: 'banner-competitive-battle-magic',
+  },
+  // Competitive Battle HOLY pick up (Sep 15 - Sep 22) - ENDED
   {
     id: 'competitive-battle-holy-2026-09',
     title: 'Competitive Battle・HOLY Pick Up Summon',
@@ -1080,7 +1159,7 @@ export const guildBattleData = [
     startDate: '2026-09-15T04:00:00Z',
     endDate: '2026-09-22T04:00:00Z',
     description:
-      'Competitive Battle HOLY support summon! Rate up for Holy-attribute paladins Nerys, Sobrina (Mage of Bastinton), Theresia, Bianca, Sobrina and Liesel for the HOLY Competitive Battle.',
+      'Competitive Battle HOLY support summon! Rate up for Mind-attribute paladins Nerys, Sobrina (Mage of Bastinton), Theresia, Bianca, Sobrina and Liesel ahead of the HOLY Competitive Battle. Guaranteed SR Paladin when performing a 10-pull.',
     note: 'Attribute pickup summon for the Competitive Battle HOLY season. End time from game data (2026/09/22 04:00 UTC).',
     status: 'current',
     image: 'banner-competitive-battle-holy',
