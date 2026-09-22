@@ -45,7 +45,7 @@ export const robinhoodChain: AppKitNetwork = {
 
 export const EXPLORER_URL = 'https://robinhoodchain.blockscout.com';
 
-// $GW ERC-20 contract (already referenced in TokenBanner.astro).
+// $GW ERC-20 contract (used by the wallet button and the /swap + /verify pages).
 export const GW_CONTRACT = '0x50bE7832849EFEdB15611799074FcC409522f27A';
 
 // Minimal ERC-20 ABI surface for the balance read.

@@ -1,0 +1,451 @@
+---
+// Site-wide news ticker rendered in Header.astro (below the header bar).
+// A slow CSS marquee that loops: (1) manually pinned items from
+// src/data/ticker.js (shop promos), then (2) the latest wiki updates
+// AUTO-GENERATED from the git history by src/utils/ticker-updates.ts, so
+// new commits show up here without hand-editing anything. The item list is
+// duplicated in the markup so the translateX(-50%) animation loops
+// seamlessly. The live $GW price chip sits pinned on the right.
+import { tickerItems } from '../data/ticker';
+import { getTickerUpdates } from '../utils/ticker-updates';
+
+const items = [...tickerItems, ...getTickerUpdates()];
+const GW_CA = '0x50bE7832849EFEdB15611799074FcC409522f27A';
+const CA_SHORT = '0x50bE…f27A';
+---
+
+<div class="news-ticker">
+  <div class="ticker-inner">
+    <span class="ticker-chip">
+      <span class="ticker-dot" aria-hidden="true"></span>
+      Latest
+    </span>
+    <div class="ticker-viewport">
+      <div class="ticker-track">
+        {
+          [false, true].map((isClone) => (
+            <ul class:list={['ticker-group', { clone: isClone }]} aria-hidden={isClone ? 'true' : undefined}>
+              {items.map((item) => (
+                <li class="ticker-item">
+                  <a href={item.href} title={item.text}>
+                    <span class="ticker-date">{item.date}</span>
+                    <span class="ticker-game">{item.game}</span>
+                    <span class="ticker-text">{item.text}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Live $GW stats chip, pinned right. Cycles through price / 24h change
+         / market cap / volume / liquidity every few seconds. Hidden until
+         data loads (DexScreener free API, see the script below). -->
+    <span
+      class="ticker-price"
+      id="gw-price-chip"
+      hidden
+      title={`$GW token contract: ${GW_CA}`}
+    >
+      <span class="ticker-price-label">
+        $GW
+        <span class="ticker-price-ca">{CA_SHORT}</span>
+      </span>
+      <span class="ticker-price-stat" id="gw-stat">…</span>
+    </span>
+  </div>
+</div>
+
+<style>
+  /* Same chrome as the old token banner: dark gradient bar + amber border,
+     matching the Header/Footer treatment. */
+  .news-ticker {
+    display: block;
+    width: 100%;
+    background: var(--bg-dark);
+    border-bottom: 1px solid rgba(255, 183, 77, 0.3);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+
+  .ticker-inner {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0.5rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--text-inverse, #ffffff);
+    font-size: 0.88rem;
+  }
+
+  /* Fixed chip on the left, ticker scrolls behind it */
+  .ticker-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.16rem 0.55rem 0.16rem 0.45rem;
+    border-radius: 999px;
+    background: rgba(255, 183, 77, 0.1);
+    border: 1px solid rgba(255, 183, 77, 0.3);
+    color: var(--amber-glow, #ffb74d);
+    font-size: 0.66rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .ticker-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--success-color, #4caf50);
+    animation: ticker-blink 2s ease-in-out infinite;
+  }
+
+  @keyframes ticker-blink {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.45; }
+  }
+
+  .ticker-viewport {
+    overflow: hidden;
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* width:max-content keeps both groups on one line; translating the track
+     by exactly half its width (one group) loops the marquee seamlessly. */
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker-scroll 55s linear infinite;
+  }
+
+  .ticker-group {
+    display: flex;
+    align-items: center;
+    gap: 2.75rem;
+    padding: 0;
+    margin: 0;
+    padding-right: 2.75rem;
+    list-style: none;
+  }
+
+  .ticker-item {
+    white-space: nowrap;
+  }
+
+  .ticker-item a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.45rem;
+    text-decoration: none;
+    color: var(--text-inverse, #ffffff);
+  }
+
+  .ticker-date {
+    color: var(--text-inverse, #ffffff);
+    opacity: 0.55;
+    font-size: 0.72rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ticker-game {
+    color: var(--amber-glow, #ffb74d);
+    font-weight: 700;
+  }
+
+  .ticker-text {
+    opacity: 0.92;
+  }
+
+  /* Live $GW stats chip, pinned on the right edge of the bar.
+     Cycles through price/change/mcap/volume/liquidity, monospace numbers. */
+  .ticker-price {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding-left: 0.65rem;
+    border-left: 1px solid rgba(255, 183, 77, 0.25);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .ticker-price-label {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    color: var(--amber-glow, #ffb74d);
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+
+  .ticker-price-ca {
+    color: var(--text-inverse, #ffffff);
+    opacity: 0.55;
+    font-family: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+    font-size: 0.68rem;
+    font-weight: 400;
+  }
+
+  .ticker-price-stat {
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+
+  /* Color states, set by the script per-stat so each metric gets its accent */
+  .ticker-price-stat.c-amber { color: var(--amber-glow, #ffb74d); }
+  .ticker-price-stat.c-up { color: var(--success-color, #4caf50); }
+  .ticker-price-stat.c-down { color: #ff7676; }
+  .ticker-price-stat.c-teal { color: var(--teal-crystal, #00acc1); }
+  .ticker-price-stat.c-muted { color: var(--text-inverse, #ffffff); opacity: 0.75; }
+
+  @keyframes ticker-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 600px) {
+    .ticker-inner {
+      font-size: 0.78rem;
+      gap: 0.5rem;
+      padding: 0.4rem 0.75rem;
+    }
+
+    .ticker-chip {
+      padding: 0.14rem 0.45rem 0.14rem 0.4rem;
+      font-size: 0.6rem;
+      gap: 0.25rem;
+    }
+
+    /* Dates and the contract address cost width on phones; the game name
+       already anchors each item. */
+    .ticker-date,
+    .ticker-price-ca {
+      display: none;
+    }
+
+    .ticker-group {
+      gap: 2rem;
+      padding-right: 2rem;
+    }
+
+    .ticker-price-label,
+    .ticker-price-stat {
+      font-size: 0.74rem;
+    }
+
+    .ticker-price {
+      padding-left: 0.5rem;
+      gap: 0.25rem;
+    }
+  }
+
+  @media (max-width: 380px) {
+    /* Very narrow phones: chip shrinks to just the blinking dot */
+    .ticker-chip {
+      font-size: 0;
+      padding: 0.25rem;
+    }
+    .ticker-chip .ticker-dot {
+      width: 7px;
+      height: 7px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track {
+      animation: none;
+    }
+    .ticker-dot {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  // Live $GW stats for the pinned right chip, fetched from DexScreener's
+  // free public API (no key, Robinhood Chain 4663 supported). The chip
+  // CYCLES through several metrics every few seconds: price, 24h change,
+  // market cap, volume, and liquidity in turn, each color-coded.
+  // Cached in sessionStorage for 60s so navigating between pages doesn't
+  // spam the API (free tier = 60 req/min).
+  const GW_CA_KEY = '0x50bE7832849EFEdB15611799074FcC409522f27A';
+  const CACHE_KEY = 'gacha-wiki:gw-stats';
+  const CACHE_TTL = 60_000; // 60 seconds
+  const ROTATE_MS = 3000; // how long each stat shows before cycling
+
+  interface Stats {
+    ts: number;
+    price: number | null;
+    change24h: number | null;
+    change1h: number | null;
+    mc: number | null;
+    volume24h: number | null;
+    liquidity: number | null;
+  }
+
+  function readCache(): Stats | null {
+    try {
+      const raw = sessionStorage.getItem(CACHE_KEY);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw) as Stats;
+      if (Date.now() - parsed.ts < CACHE_TTL) return parsed;
+    } catch {
+      /* ignore */
+    }
+    return null;
+  }
+
+  function writeCache(data: Stats): void {
+    try {
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify(data));
+    } catch {
+      /* sessionStorage may be unavailable */
+    }
+  }
+
+  // --- formatting helpers ------------------------------------------------
+
+  function fmtPrice(usd: number): string {
+    if (usd >= 1) return `$${usd.toFixed(4)}`;
+    if (usd >= 0.0001) return `$${usd.toFixed(6)}`;
+    return `$${usd.toPrecision(4)}`;
+  }
+
+  function fmtUsd(usd: number | null): string {
+    if (usd == null || !isFinite(usd)) return '';
+    if (usd >= 1e6) return `$${(usd / 1e6).toFixed(2)}M`;
+    if (usd >= 1e3) return `$${(usd / 1e3).toFixed(1)}K`;
+    return `$${usd.toFixed(0)}`;
+  }
+
+  function fmtPct(p: number | null): string {
+    if (p == null || !isFinite(p)) return '';
+    const sign = p >= 0 ? '+' : '';
+    return `${sign}${p.toFixed(1)}%`;
+  }
+
+  // --- build the list of stats to cycle through --------------------------
+
+  interface StatItem {
+    text: string;
+    colorClass: string;
+  }
+
+  function buildStats(s: Stats): StatItem[] {
+    const items: StatItem[] = [];
+    if (s.price != null) items.push({ text: fmtPrice(s.price), colorClass: 'c-amber' });
+    if (s.change24h != null) {
+      items.push({
+        text: `24h ${fmtPct(s.change24h)}`,
+        colorClass: s.change24h >= 0 ? 'c-up' : 'c-down',
+      });
+    }
+    if (s.change1h != null) {
+      items.push({
+        text: `1h ${fmtPct(s.change1h)}`,
+        colorClass: s.change1h >= 0 ? 'c-up' : 'c-down',
+      });
+    }
+    if (s.mc != null) items.push({ text: `MC ${fmtUsd(s.mc)}`, colorClass: 'c-teal' });
+    if (s.volume24h != null) items.push({ text: `Vol ${fmtUsd(s.volume24h)}`, colorClass: 'c-muted' });
+    if (s.liquidity != null) items.push({ text: `Liq ${fmtUsd(s.liquidity)}`, colorClass: 'c-muted' });
+    return items;
+  }
+
+  // --- render + cycle ----------------------------------------------------
+
+  let rotateTimer: ReturnType<typeof setInterval> | undefined;
+
+  function startCycling(stats: StatItem[]) {
+    const chip = document.getElementById('gw-price-chip');
+    const statEl = document.getElementById('gw-stat');
+    if (!chip || !statEl || stats.length === 0) return;
+
+    chip.hidden = false;
+    let i = 0;
+
+    const show = () => {
+      const item = stats[i % stats.length];
+      statEl.textContent = item.text;
+      // reset color classes, apply this stat's color
+      statEl.className = `ticker-price-stat ${item.colorClass}`;
+      i++;
+    };
+
+    show(); // render the first stat immediately
+    if (rotateTimer) clearInterval(rotateTimer);
+    rotateTimer = setInterval(show, ROTATE_MS);
+  }
+
+  async function loadStats(): Promise<void> {
+    // 1) Try the cache first (instant, no network).
+    const cached = readCache();
+    if (cached) {
+      startCycling(buildStats(cached));
+      return;
+    }
+
+    // 2) Fetch fresh data from DexScreener.
+    try {
+      const res = await fetch(
+        `https://api.dexscreener.com/latest/dex/tokens/${GW_CA_KEY}`,
+      );
+      if (!res.ok) return;
+      const json = (await res.json()) as {
+        pairs?: Array<{
+          chainId?: string;
+          priceUsd?: string;
+          fdv?: number;
+          liquidity?: { usd?: number };
+          volume?: { h24?: number };
+          priceChange?: { h24?: number; h1?: number };
+        }>;
+      };
+
+      // Prefer the Robinhood Chain pair; fall back to the first pair.
+      const pairs = json.pairs ?? [];
+      const pair = pairs.find(p => p.chainId === 'robinhood') ?? pairs[0];
+      if (!pair) return;
+
+      const stats: Stats = {
+        ts: Date.now(),
+        price: pair.priceUsd ? parseFloat(pair.priceUsd) : null,
+        change24h: pair.priceChange?.h24 ?? null,
+        change1h: pair.priceChange?.h1 ?? null,
+        mc: pair.fdv ?? null,
+        volume24h: pair.volume?.h24 ?? null,
+        liquidity: pair.liquidity?.usd ?? null,
+      };
+
+      startCycling(buildStats(stats));
+      writeCache(stats);
+    } catch {
+      /* network/parse failure — leave the chip hidden */
+    }
+  }
+
+  // Defer the fetch until the browser is idle so it doesn't contend with
+  // first paint on any page (the ticker is in the global header). The chip
+  // stays hidden until data arrives, so there's no visible downside.
+  const start = () => {
+    if ('requestIdleCallback' in window) {
+      (window as Window).requestIdleCallback(() => loadStats(), { timeout: 4000 });
+    } else {
+      setTimeout(loadStats, 2000);
+    }
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+</script>
