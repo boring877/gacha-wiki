@@ -111,7 +111,9 @@ const items = [...tickerItems, ...getTickerUpdates()];
   }
 
   /* width:max-content keeps both groups on one line; translating the track
-     by exactly half its width (one group) loops the marquee seamlessly. */
+     by exactly half its width (one group) loops the marquee seamlessly.
+     Duration comes from the script below so the tape always scrolls at a
+     constant px/s; the 55s here is only the no-JS fallback. */
   .ticker-track {
     display: flex;
     width: max-content;
@@ -254,6 +256,22 @@ const items = [...tickerItems, ...getTickerUpdates()];
     }
   }
 </style>
+
+<script>
+  // Constant tape speed: the marquee duration is derived from the real track
+  // width so the tape always scrolls at TICKER_SPEED px/s. The update items
+  // come from the git log at build time, so the item count (and track width)
+  // differs between builds; a fixed CSS duration made narrow tickers crawl.
+  // One group = half the doubled track, duration = width / speed.
+  const TICKER_SPEED = 95; // px per second
+  const track = document.querySelector('.ticker-track');
+  if (track) {
+    const groupWidth = track.scrollWidth / 2;
+    if (groupWidth > 0) {
+      track.style.animationDuration = `${(groupWidth / TICKER_SPEED).toFixed(1)}s`;
+    }
+  }
+</script>
 
 <script>
   // Live $GW stats for the pinned right chip, fetched from DexScreener's
