@@ -1,0 +1,134 @@
+---
+// Gene-Sys: Adam element advantage card: the game's wheel (Fire > Wind >
+// Earth > Water > Fire) plus the mutual Light/Dark pair, rebuilt from the
+// battleelement icons on R2. Icons and +30% / -30% arrows only, no text:
+// the chart explains itself. Used on the characters list and tier list.
+import { GSA_ELEMENT_MATCHUPS, GSA_ELEMENT_BONUS } from '../../data/gene-sys-adam/elements.js';
+const M = GSA_ELEMENT_MATCHUPS;
+const B = GSA_ELEMENT_BONUS;
+---
+
+<div class="gsa-elem-card">
+  <div class="gsa-elem-wheel">
+    <span class="gsa-elem-tile" title="Fire: strong vs Wind"><img src={M.Fire.icon} alt="Fire" width="44" height="44" loading="lazy" /></span>
+    <span class="gsa-elem-arrow" aria-hidden="true">
+      <svg viewBox="0 0 26 12" width="28" height="13"><path d="M0 6 H20 M15 1 L20 6 L15 11" stroke="currentColor" fill="none" stroke-width="2" /></svg>
+      <b>+{B}%</b>
+    </span>
+    <span class="gsa-elem-tile" title="Wind: strong vs Earth"><img src={M.Wind.icon} alt="Wind" width="44" height="44" loading="lazy" /></span>
+
+    <span class="gsa-elem-arrow gsa-elem-arrow-up" aria-hidden="true">
+      <svg viewBox="0 0 26 12" width="28" height="13"><path d="M0 6 H20 M15 1 L20 6 L15 11" stroke="currentColor" fill="none" stroke-width="2" /></svg>
+      <b>+{B}%</b>
+    </span>
+    <span class="gsa-elem-minus"><b>-{B}%</b></span>
+    <span class="gsa-elem-arrow gsa-elem-arrow-down" aria-hidden="true">
+      <svg viewBox="0 0 26 12" width="28" height="13"><path d="M0 6 H20 M15 1 L20 6 L15 11" stroke="currentColor" fill="none" stroke-width="2" /></svg>
+      <b>+{B}%</b>
+    </span>
+
+    <span class="gsa-elem-tile" title="Water: strong vs Fire"><img src={M.Water.icon} alt="Water" width="44" height="44" loading="lazy" /></span>
+    <span class="gsa-elem-arrow gsa-elem-arrow-left" aria-hidden="true">
+      <svg viewBox="0 0 26 12" width="28" height="13"><path d="M0 6 H20 M15 1 L20 6 L15 11" stroke="currentColor" fill="none" stroke-width="2" /></svg>
+      <b>+{B}%</b>
+    </span>
+    <span class="gsa-elem-tile" title="Earth: strong vs Water"><img src={M.Earth.icon} alt="Earth" width="44" height="44" loading="lazy" /></span>
+  </div>
+
+  <div class="gsa-elem-duo">
+    <span class="gsa-elem-tile" title="Light"><img src={M.Light.icon} alt="Light" width="40" height="40" loading="lazy" /></span>
+    <span class="gsa-elem-arrow-double" aria-hidden="true">
+      <svg viewBox="0 0 26 12" width="28" height="13"><path d="M6 1 L1 6 L6 11 M1 6 H25 M20 1 L25 6 L20 11" stroke="currentColor" fill="none" stroke-width="2" /></svg>
+      <b>+{B}%</b>
+    </span>
+    <span class="gsa-elem-tile" title="Dark"><img src={M.Dark.icon} alt="Dark" width="40" height="40" loading="lazy" /></span>
+  </div>
+</div>
+
+<style>
+  /* Compact by default: the card rides in tight spots (page title band
+     corner, character header right side), so it ships at reduced size. */
+  .gsa-elem-card {
+    width: fit-content;
+    margin: 0 auto 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: var(--gsa-bg-secondary);
+    border: 1px solid var(--gsa-border);
+    border-radius: var(--gsa-radius);
+    padding: 12px 16px;
+  }
+  .gsa-elem-wheel {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 8px 12px;
+    align-items: center;
+    justify-items: center;
+  }
+  .gsa-elem-tile img {
+    display: block;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #171114;
+    border: 1px solid var(--gsa-border);
+  }
+  .gsa-elem-duo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .gsa-elem-duo .gsa-elem-tile img {
+    width: 32px;
+    height: 32px;
+  }
+  .gsa-elem-arrow,
+  .gsa-elem-arrow-double {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    color: var(--gsa-gold);
+  }
+  .gsa-elem-arrow svg,
+  .gsa-elem-arrow-double svg {
+    display: block;
+  }
+  .gsa-elem-arrow b,
+  .gsa-elem-arrow-double b {
+    font-size: 0.66rem;
+    color: var(--gsa-gold);
+  }
+  .gsa-elem-arrow-up svg {
+    transform: rotate(-90deg);
+  }
+  .gsa-elem-arrow-down svg {
+    transform: rotate(90deg);
+  }
+  .gsa-elem-arrow-left svg {
+    transform: rotate(180deg);
+  }
+  .gsa-elem-minus b {
+    display: block;
+    color: var(--gsa-accent-strong);
+    font-size: 0.92rem;
+  }
+  @media (max-width: 640px) {
+    .gsa-elem-card {
+      padding: 10px 14px;
+    }
+    .gsa-elem-wheel {
+      gap: 8px 10px;
+    }
+    .gsa-elem-tile img {
+      width: 32px;
+      height: 32px;
+    }
+    .gsa-elem-duo .gsa-elem-tile img {
+      width: 28px;
+      height: 28px;
+    }
+  }
+</style>

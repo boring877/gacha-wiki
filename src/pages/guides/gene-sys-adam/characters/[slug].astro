@@ -4,6 +4,8 @@
 import GSALayout from '../../../../layouts/gene-sys-adam/LandingLayout.astro';
 import { gsaCharacters, getGsaCharacter } from '../../../../data/gene-sys-adam/characters.js';
 import { gsaItems } from '../../../../data/gene-sys-adam/items.js';
+import { GSA_ELEMENT_MATCHUPS, GSA_ELEMENT_BONUS } from '../../../../data/gene-sys-adam/elements.js';
+import GSAElementCard from '../../../../components/gene-sys-adam/GSAElementCard.astro';
 import '../../../../styles/games/gene-sys-adam/gsa-common.css';
 import '../../../../styles/games/gene-sys-adam/gsa-characters.css';
 
@@ -27,6 +29,12 @@ const cert = (() => {
   return gsaItems.find(i => i.id === String(200110000 + n)) || null;
 })();
 const resumeParas = profile.resumeParas || (profile.resume ? [profile.resume] : []);
+
+// Element matchup from RoleElementWeaknessData: what this character's element
+// beats (+30% damage dealt) and what beats it (-30% when attacking into it).
+const matchup = c.element ? GSA_ELEMENT_MATCHUPS[c.element.name] || null : null;
+const strongEl = matchup ? GSA_ELEMENT_MATCHUPS[matchup.strongVs] : null;
+const weakEl = matchup ? GSA_ELEMENT_MATCHUPS[matchup.weakVs] : null;
 const statTiles = [
   ['Attack Range', stats.atkRange],
   ['Normal Attack GCD', stats.normalAttackGCD ? `${Number(stats.normalAttackGCD) / 1000}s` : null],
@@ -70,6 +78,7 @@ const levelData = [
 <GSALayout
   title={c.name}
   description={`${c.name} (${c.nameZh}) guide for Gene-Sys: Adam: profile, base stats, skills${c.title ? `, ${c.title}` : ''}.`}
+  gameTitle={c.name}
   crumbName={c.name}
 >
   <div class="gsa-content-section">
@@ -105,6 +114,21 @@ const levelData = [
           )}
           {c.inGacha ? null : <span class="gsa-chip solid-muted">Not in gacha yet</span>}
         </div>
+        {matchup && strongEl && weakEl && (
+          <div class="gsa-elem-matchup">
+            <span class="gsa-chip gsa-elem-strong">
+              Strong vs <img src={strongEl.icon} alt={matchup.strongVs} width="16" height="16" loading="lazy" /> {matchup.strongVs}
+              <b>+{GSA_ELEMENT_BONUS}%</b>
+            </span>
+            <span class="gsa-chip gsa-elem-weak">
+              Weak vs <img src={weakEl.icon} alt={matchup.weakVs} width="16" height="16" loading="lazy" /> {matchup.weakVs}
+              <b>-{GSA_ELEMENT_BONUS}%</b>
+            </span>
+          </div>
+        )}
+      </div>
+      <div class="gsa-elem-side">
+        <GSAElementCard />
       </div>
     </div>
 

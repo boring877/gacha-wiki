@@ -97,7 +97,42 @@
 }
 
 .gsa-content-area {
+  position: relative;
   width: 100%;
+}
+
+/* Element advantage card placements. CORNER: floats in the page's top
+   right corner, level with the title band and outside the main container,
+   out of flow so it costs no vertical space; normal flow above the
+   container on narrow screens. SIDE: rides in the character header card's
+   right corner on detail pages. Sizing lives in the component. */
+.gsa-elem-corner {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  z-index: 2;
+  margin-bottom: 10px;
+}
+.gsa-elem-corner .gsa-elem-card {
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .gsa-elem-corner {
+    position: static;
+    margin: 0;
+  }
+}
+.gsa-elem-side {
+  flex-shrink: 0;
+  align-self: center;
+}
+.gsa-elem-side .gsa-elem-card {
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .gsa-elem-side {
+    align-self: center;
+  }
 }
 
 @media (max-width: 768px) {

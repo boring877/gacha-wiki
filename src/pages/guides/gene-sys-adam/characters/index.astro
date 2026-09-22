@@ -4,6 +4,7 @@
 // game's own library order from RoleInfoData.battlePosition).
 import GSALayout from '../../../../layouts/gene-sys-adam/LandingLayout.astro';
 import { gsaCharacters } from '../../../../data/gene-sys-adam/characters.js';
+import GSAElementCard from '../../../../components/gene-sys-adam/GSAElementCard.astro';
 import '../../../../styles/games/gene-sys-adam/gsa-common.css';
 import '../../../../styles/games/gene-sys-adam/gsa-characters.css';
 
@@ -23,6 +24,9 @@ const jobs = JOB_ORDER.filter(j => characters.some(c => c.job?.name === j));
   gameTitle="Characters"
   crumbName="Characters"
 >
+  <div class="gsa-elem-corner">
+    <GSAElementCard />
+  </div>
   <div class="gsa-content-section">
     <div class="gsa-toolbar">
       <input type="text" class="gsa-search" placeholder="Search name, title or epithet..." id="gsa-search" />
@@ -41,6 +45,7 @@ const jobs = JOB_ORDER.filter(j => characters.some(c => c.job?.name === j));
         <button class="gsa-filter-btn" data-filter={j.toLowerCase()}>{j}</button>
       ))}
     </div>
+
     <div class="gsa-grid-cards" id="gsa-grid">
       {characters.map(c => (
         <a class="gsa-card" href={`/guides/gene-sys-adam/characters/${c.slug}/`} data-search={`${c.name} ${c.nameZh} ${c.title} ${c.epithet} ${c.attackType?.name || ''}`.toLowerCase()} data-tags={[c.inGacha ? 'gacha' : '', (c.element?.name || '').toLowerCase(), (c.job?.name || '').toLowerCase()].filter(Boolean).join(' ')}>

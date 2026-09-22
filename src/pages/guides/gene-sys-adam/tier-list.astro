@@ -4,6 +4,7 @@
 import GSALayout from '../../../layouts/gene-sys-adam/LandingLayout.astro';
 import { gsaTierByJob, GSA_TIER_UPDATED, GSA_BEGINNER_NOTE, GSA_TIER_PLACEMENTS, gsaRarityBadge } from '../../../data/gene-sys-adam/tier-list.js';
 import { gsaCharacters } from '../../../data/gene-sys-adam/characters.js';
+import GSAElementCard from '../../../components/gene-sys-adam/GSAElementCard.astro';
 import '../../../styles/games/gene-sys-adam/gsa-common.css';
 import '../../../styles/games/gene-sys-adam/gsa-tier.css';
 
@@ -18,8 +19,15 @@ const total = gsaTierByJob.reduce((n, g) => n + g.tiers.reduce((m, t) => m + t.c
 >
   <section>
     <div class="gsa-beginner-box">
-      <h2 class="gsa-beginner-title">{GSA_BEGINNER_NOTE.title}</h2>
-      <p class="gsa-beginner-intro">{GSA_BEGINNER_NOTE.intro}</p>
+      <div class="gsa-beginner-head">
+        <div class="gsa-beginner-head-copy">
+          <h2 class="gsa-beginner-title">{GSA_BEGINNER_NOTE.title}</h2>
+          <p class="gsa-beginner-intro">{GSA_BEGINNER_NOTE.intro}</p>
+        </div>
+        <div class="gsa-elem-side">
+          <GSAElementCard />
+        </div>
+      </div>
       <div class="gsa-beginner-team">
         {GSA_BEGINNER_NOTE.picks.map(pick => {
           const c = gsaCharacters.find(x => x.slug === pick.slug);

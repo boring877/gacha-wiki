@@ -172,6 +172,26 @@ a.gsa-tier-card:active {
   margin-bottom: 2.25rem;
 }
 
+/* Title + intro on the left, element advantage card on the right. */
+.gsa-beginner-head {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.gsa-beginner-head-copy {
+  flex: 1;
+  min-width: 0;
+}
+@media (max-width: 900px) {
+  .gsa-beginner-head {
+    flex-direction: column;
+    align-items: center;
+  }
+  .gsa-beginner-head-copy {
+    flex: none;
+  }
+}
+
 .gsa-beginner-title {
   margin: 0 0 0.6rem;
   font-size: 1.25rem;

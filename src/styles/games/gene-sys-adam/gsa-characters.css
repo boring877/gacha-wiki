@@ -562,3 +562,29 @@
     display: none;
   }
 }
+
+.gsa-elem-matchup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.gsa-elem-matchup .gsa-chip img {
+  display: block;
+  border-radius: 4px;
+  background: #171114;
+}
+.gsa-elem-matchup .gsa-chip b {
+  font-weight: 800;
+}
+.gsa-elem-matchup .gsa-elem-strong b {
+  color: var(--gsa-gold);
+}
+.gsa-elem-matchup .gsa-elem-weak b {
+  color: var(--gsa-accent-strong);
+}
+@media (max-width: 640px) {
+  .gsa-elem-matchup {
+    justify-content: center;
+  }
+}
