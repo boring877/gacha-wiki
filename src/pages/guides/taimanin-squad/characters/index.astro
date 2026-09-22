@@ -2,7 +2,7 @@
 // Taimanin Squad Character Database Listing Page
 import CharacterDatabaseLayout from '../../../../layouts/taimanin-squad/CharacterDatabaseLayout.astro';
 import { TAIMANIN_SQUAD_CHARACTERS } from '../../../../data/taimanin-squad/characters.js';
-import { RELEASED_IDS } from '../../../../data/taimanin-squad/tier-list-v2.js';
+import { RELEASED_UNIT_IDS } from '../../../../data/taimanin-squad/released-units.js';
 import TSCharacterImage from '../../../../components/taimanin-squad/TSCharacterImage.astro';
 import TSTypeIcon from '../../../../components/taimanin-squad/TSTypeIcon.astro';
 import TSRoleIcon from '../../../../components/taimanin-squad/TSRoleIcon.astro';
@@ -22,12 +22,14 @@ const STAR_MAP = { 'SSR': '★★★★★', 'SR+': '★★★★', 'SR': '★�
 const STAR_COUNT = { 'SSR': 5, 'SR+': 4, 'SR': 3, 'R+': 2, 'R': 1 };
 
 const rarityOrder = { SSR: 0, 'SR+': 1, SR: 2, 'R+': 3, R: 4 };
+// default order = released units first, by rarity tier, then game roster id;
+// not-yet-released (placeholder) units sink to the bottom
 const sorted = [...TAIMANIN_SQUAD_CHARACTERS].sort((a, b) => {
-  const aReleased = RELEASED_IDS.has(a.id) ? 0 : 1;
-  const bReleased = RELEASED_IDS.has(b.id) ? 0 : 1;
+  const aReleased = RELEASED_UNIT_IDS.has(a.id) ? 0 : 1;
+  const bReleased = RELEASED_UNIT_IDS.has(b.id) ? 0 : 1;
   if (aReleased !== bReleased) return aReleased - bReleased;
   if (rarityOrder[a.rarity] !== rarityOrder[b.rarity]) return rarityOrder[a.rarity] - rarityOrder[b.rarity];
-  return (a.names?.english || a.name).localeCompare(b.names?.english || b.name);
+  return a.id - b.id;
 });
 
 const pageTitle = 'Character Database - Taimanin Squad Wiki | GachaWiki';
@@ -139,9 +141,9 @@ const pageDescription = `Complete character database for Taimanin Squad. Browse 
           </tr>
         </thead>
         <tbody id="char-table-body">
-          {sorted.map((char, i) => (
-            <tr class="ts-cdb-row" data-name={char.names?.english || char.name} data-rarity={char.rarity} data-element={char.element} data-role={char.role} data-hp={char.stats?.HP || 0} data-atk={char.stats?.ATK || 0} data-def={char.stats?.DEF || 0} data-spd={char.stats?.SPD || 0}>
-              <td class="ts-cdb-cell-num">{i + 1}</td>
+          {sorted.map(char => (
+            <tr class="ts-cdb-row" data-id={char.id} data-released={RELEASED_UNIT_IDS.has(char.id) ? '1' : '0'} data-name={char.names?.english || char.name} data-rarity={char.rarity} data-element={char.element} data-role={char.role} data-hp={char.stats?.HP || 0} data-atk={char.stats?.ATK || 0} data-def={char.stats?.DEF || 0} data-spd={char.stats?.SPD || 0}>
+              <td class="ts-cdb-cell-num">{char.id}</td>
               <td class="ts-cdb-cell-char">
                 <a href={`/guides/taimanin-squad/characters/${char.slug}/`} class="ts-cdb-char-link">
                   <TSCharacterImage icon={char.icon} alt={char.names?.english || 'Character'} width={40} height={40} />
@@ -184,7 +186,7 @@ const pageDescription = `Complete character database for Taimanin Squad. Browse 
     <!-- Grid View -->
     <div class="ts-cdb-grid" id="grid-view" style="display: none;">
       {sorted.map(char => (
-        <a href={`/guides/taimanin-squad/characters/${char.slug}/`} class="ts-cdb-grid-card" data-name={char.names?.english || char.name} data-rarity={char.rarity} data-element={char.element} data-role={char.role}>
+        <a href={`/guides/taimanin-squad/characters/${char.slug}/`} class="ts-cdb-grid-card" data-id={char.id} data-released={RELEASED_UNIT_IDS.has(char.id) ? '1' : '0'} data-name={char.names?.english || char.name} data-rarity={char.rarity} data-element={char.element} data-role={char.role}>
           <div class="ts-cdb-grid-img">
             <TSCharacterImage icon={char.icon} alt={char.names?.english || 'Character'} width={80} height={80} />
           </div>
@@ -266,10 +268,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const rowArray = Array.from(rows);
     rowArray.sort((a, b) => {
       if (sortBy === 'default') {
+        const va = a.dataset.released === '1' ? 0 : 1;
+        const vb = b.dataset.released === '1' ? 0 : 1;
+        if (va !== vb) return va - vb;
         const ra = rarityOrder[a.dataset.rarity] ?? 9;
         const rb = rarityOrder[b.dataset.rarity] ?? 9;
         if (ra !== rb) return ra - rb;
-        return (a.dataset.name || '').localeCompare(b.dataset.name || '');
+        return (parseInt(a.dataset.id, 10) || 0) - (parseInt(b.dataset.id, 10) || 0);
       }
       if (sortBy === 'name') {
         return dir * (a.dataset.name || '').localeCompare(b.dataset.name || '');
@@ -285,10 +290,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const gridArray = Array.from(gridCards);
     gridArray.sort((a, b) => {
       if (sortBy === 'default') {
+        const va = a.dataset.released === '1' ? 0 : 1;
+        const vb = b.dataset.released === '1' ? 0 : 1;
+        if (va !== vb) return va - vb;
         const ra = rarityOrder[a.dataset.rarity] ?? 9;
         const rb = rarityOrder[b.dataset.rarity] ?? 9;
         if (ra !== rb) return ra - rb;
-        return (a.dataset.name || '').localeCompare(b.dataset.name || '');
+        return (parseInt(a.dataset.id, 10) || 0) - (parseInt(b.dataset.id, 10) || 0);
       }
       if (sortBy === 'name') {
         return dir * (a.dataset.name || '').localeCompare(b.dataset.name || '');
