@@ -176,7 +176,6 @@ const classSections = getGroupedMemorySections();
       const viewModeContent = document.getElementById('view-mode-content');
       const makerModeContent = document.getElementById('maker-mode-content');
       const tierListInfo = document.getElementById('tier-list-info');
-      const tierLegend = document.getElementById('tier-legend');
 
       const makerPool = document.getElementById('maker-pool');
       const makerTierList = document.getElementById('maker-tier-list');
@@ -195,7 +194,6 @@ const classSections = getGroupedMemorySections();
         viewModeContent.style.display = 'block';
         makerModeContent.style.display = 'none';
         tierListInfo.style.display = 'block';
-        if (tierLegend) tierLegend.style.display = 'grid';
         if (makerPool) makerPool.style.display = 'none';
         if (makerTierList) makerTierList.style.display = 'none';
       });
@@ -207,7 +205,6 @@ const classSections = getGroupedMemorySections();
         viewModeContent.style.display = 'none';
         makerModeContent.style.display = 'block';
         tierListInfo.style.display = 'none';
-        if (tierLegend) tierLegend.style.display = 'none';
         if (makerPool) makerPool.style.display = 'block';
         if (makerTierList) makerTierList.style.display = 'flex';
         if (!makerInitialized) {

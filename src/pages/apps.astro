@@ -1,4 +1,7 @@
 ---
+// Apps page: static cards. Versions + direct download links are filled in
+// client-side from the GitHub API, because build-time fetching got rate-limited
+// and baked "v?" into the deployed HTML.
 import HomeLayout from '../layouts/HomeLayout.astro';
 import DecorativeLines from '../components/DecorativeLines.astro';
 import { SITE_TITLE } from '../consts';
@@ -43,25 +46,6 @@ const APPS = [
     assetPattern: 'setup.exe',
   },
 ];
-
-async function fetchLatestRelease(repo) {
-  try {
-    const res = await fetch(`https://api.github.com/repos/${repo}/releases/latest`);
-    if (!res.ok) return null;
-    const data = await res.json();
-    const exeAsset = data.assets.find(a => a.name.endsWith('.exe'));
-    return { version: data.tag_name.replace(/^v/, ''), downloadUrl: exeAsset?.browser_download_url || '' };
-  } catch {
-    return null;
-  }
-}
-
-const apps = await Promise.all(
-  APPS.map(async (app) => {
-    const release = await fetchLatestRelease(app.repo);
-    return { ...app, version: release?.version || '?', downloadUrl: release?.downloadUrl || '' };
-  })
-);
 ---
 
 <HomeLayout
@@ -92,21 +76,26 @@ const apps = await Promise.all(
     </header>
 
     <div class="apps-list">
-      {apps.map((app) => (
-        <article class="app-card">
+      {APPS.map((app) => (
+        <article class="app-card" data-app-repo={app.repo}>
           <div class="app-card-body">
             <div class="app-info">
               <h2 class="app-name">{app.name}</h2>
               <p class="app-desc">{app.description}</p>
-              <span class="app-tag">v{app.version}</span>
+              <span class="app-tag" data-app-version hidden>v?</span>
             </div>
             <div class="app-downloads">
-              {app.downloadUrl && (
-                <a href={app.downloadUrl} class="dl-btn dl-btn-primary" target="_blank" rel="noopener noreferrer" download>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                  Windows
-                </a>
-              )}
+              <a
+                href={`https://github.com/${app.repo}/releases/latest`}
+                data-app-download
+                class="dl-btn dl-btn-primary"
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Windows
+              </a>
               {app.extraLinks?.map((link) => (
                 <a href={link.url} class={`dl-btn dl-btn-${link.type}`} target="_blank" rel="noopener noreferrer">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
@@ -114,7 +103,7 @@ const apps = await Promise.all(
                 </a>
               ))}
               <a href={`https://github.com/${app.repo}`} class="dl-btn dl-btn-ghost" target="_blank" rel="noopener noreferrer">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 22.792 24 18.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-.745-.083-.729-.083-.729-1.205.084-1.839.237-1.839.237-1.839 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 22.792 24 18.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
                 Source
               </a>
             </div>
@@ -123,6 +112,71 @@ const apps = await Promise.all(
       ))}
     </div>
   </div>
+
+  <script>
+    // Fill the version pills and upgrade the Windows buttons to direct .exe links
+    // using the GitHub API from the visitor's device. Results are cached in
+    // localStorage for an hour; on API failure the releases-page fallback stays.
+    const CACHE_KEY = 'gw-app-releases-v1';
+    const CACHE_TTL_MS = 60 * 60 * 1000;
+
+    async function initAppReleases() {
+      const cards = Array.from(document.querySelectorAll('[data-app-repo]'));
+      if (!cards.length) return;
+
+      let cache = {};
+      try {
+        cache = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}');
+      } catch {}
+
+      const apply = (card, release) => {
+        const pill = card.querySelector('[data-app-version]');
+        if (pill && release.version) {
+          pill.textContent = `v${release.version}`;
+          pill.hidden = false;
+        }
+        const btn = card.querySelector('[data-app-download]');
+        if (btn && release.downloadUrl) btn.href = release.downloadUrl;
+      };
+
+      const now = Date.now();
+      const needsFetch = [];
+
+      for (const card of cards) {
+        const repo = card.dataset.appRepo || '';
+        const hit = cache[repo];
+        if (hit && hit.version) apply(card, hit);
+        if (!hit || now - hit.fetchedAt > CACHE_TTL_MS) needsFetch.push({ card, repo });
+      }
+
+      if (!needsFetch.length) return;
+
+      const results = await Promise.allSettled(
+        needsFetch.map(async ({ card, repo }) => {
+          const res = await fetch(`https://api.github.com/repos/${repo}/releases/latest`, {
+            headers: { Accept: 'application/vnd.github+json' },
+          });
+          if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+          const data = await res.json();
+          const exe = (Array.isArray(data.assets) ? data.assets : []).find((a) => a.name.endsWith('.exe'));
+          const release = {
+            version: String(data.tag_name || '').replace(/^v/, ''),
+            downloadUrl: exe ? exe.browser_download_url : '',
+          };
+          apply(card, release);
+          return [repo, { ...release, fetchedAt: now }];
+        })
+      );
+      for (const r of results) {
+        if (r.status === 'fulfilled') cache[r.value[0]] = r.value[1];
+      }
+      try {
+        localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
+      } catch {}
+    }
+
+    initAppReleases();
+  </script>
 
   <style>
     @import '../styles/pages/apps.css';

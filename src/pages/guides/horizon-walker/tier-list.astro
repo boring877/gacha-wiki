@@ -378,7 +378,6 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
       const viewModeContent = document.getElementById('view-mode-content');
       const makerModeContent = document.getElementById('maker-mode-content');
       const tierListInfo = document.getElementById('tier-list-info');
-      const tierLegend = document.getElementById('tier-legend');
 
       // Current active tier list
       let currentListType = 'map-clear';
@@ -455,7 +454,6 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
         viewModeContent.classList.remove('tier-list-hidden');
         makerModeContent.classList.add('tier-list-hidden');
         tierListInfo.classList.remove('tier-list-hidden');
-        if (tierLegend) tierLegend.classList.remove('tier-list-hidden');
         document.getElementById('maker-pool')?.classList.add('maker-pool-hidden');
         document.getElementById('maker-tier-list')?.classList.add('maker-tier-list-hidden');
         switchTierList(currentListType);
@@ -477,7 +475,6 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
       const viewModeContent = document.getElementById('view-mode-content');
       const makerModeContent = document.getElementById('maker-mode-content');
       const tierListInfo = document.getElementById('tier-list-info');
-      const tierLegend = document.getElementById('tier-legend');
       const tierListDisplays = document.querySelectorAll('.tier-list-display[id$="-tier-display"], .priorities-list-display');
 
       // Maker mode elements
@@ -498,7 +495,6 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
         viewModeContent.classList.add('tier-list-hidden');
         makerModeContent.classList.remove('tier-list-hidden');
         tierListInfo.classList.add('tier-list-hidden');
-        if (tierLegend) tierLegend.classList.add('tier-list-hidden');
         if (makerPool) {
           makerPool.classList.remove('maker-pool-hidden');
         }

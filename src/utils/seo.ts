@@ -1024,7 +1024,7 @@ const GAME_SEO_CONFIG: Record<string, GameSEOConfig> = {
       'mobile rpg',
     ] as const,
     themeColor: geneSysAdam.themeColor,
-    description: 'Gene-Sys: Adam wiki: R18 noir revenge RPG on EROLABS by Neversoft. Full character database with profiles, stats and skills, gacha machines and rates, and item database, built from decrypted live client data.',
+    description: 'Gene-Sys: Adam wiki: R18 noir revenge RPG on EROLABS by Neversoft. Full character database with profiles, stats and skills, built from decrypted live client data.',
     genres: ['Dark Urban RPG', 'Gacha', 'R18'] as const,
     platform: 'Mobile, PC',
     playMode: 'SinglePlayer',

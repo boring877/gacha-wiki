@@ -224,6 +224,19 @@
   }
 }
 
+/* mobile: 70vh of a portrait screen cover-crops the 16:9 video into an extreme
+   zoom and crowds the page; a shorter box shows more of the frame */
+@media (max-width: 768px) {
+  .gsa-bg-video-wrap {
+    height: 45vh;
+  }
+
+  .gsa-title-only-section {
+    min-height: 38vh;
+    padding-bottom: 8vh;
+  }
+}
+
 /* keep landing content above the ambient video */
 .gsa-content-section,
 .gsa-resources-section {

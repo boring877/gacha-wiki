@@ -471,7 +471,6 @@ const rarities = ['SSR', 'SR', 'R'];
   }
 
   function initSkillLevelCalc() {
-    const globalLevelInput = document.getElementById('global-level') as HTMLInputElement;
     const skillSections = document.querySelectorAll('.bb-skill-block.action-skill');
 
     skillSections.forEach(section => {
@@ -510,18 +509,6 @@ const rarities = ['SSR', 'SR', 'R'];
       }
     });
 
-    if (globalLevelInput) {
-      globalLevelInput.addEventListener('input', () => {
-        const level = globalLevelInput.value;
-        skillSections.forEach(section => {
-          const input = section.querySelector('.skill-level-input') as HTMLInputElement;
-          if (input) {
-            input.value = level;
-            input.dispatchEvent(new Event('input'));
-          }
-        });
-      });
-    }
   }
 
   function initUltRankTabs() {

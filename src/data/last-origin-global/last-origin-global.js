@@ -15,7 +15,7 @@ export const lastOriginGlobalConfig = {
       'Last Origin is a post-apocalyptic, turn-based strategy RPG where you play as the last surviving human in a world populated by Bioroids. Build your squad, master grid-based tactical combat, and lead humanity to victory.',
     publisher: 'VFUN',
     platforms: ['Mobile'],
-    status: 'pre-registration',
+    status: 'active',
     lastUpdated: new Date(),
     socialLinks: {
       vfun: 'https://vfun.valofe.com/library?service_code=lastorigin-gl',
@@ -24,19 +24,14 @@ export const lastOriginGlobalConfig = {
       orvvit: 'https://www.orvvit.com/page/last-origin-global',
       koreanWiki: 'https://lo.swaytwig.com/units/PECS_Spartoia',
     },
-    preRegistration: {
-      startDate: 'April 30, 2026',
-      endDate: 'May 21, 2026',
-      url: 'https://vfun.valofe.com/library?service_code=lastorigin-gl',
-    },
   },
 
   story: {
     title: 'Story',
     content: [
-      'In a post-apocalyptic world, humanity has been wiped out. You are the last surviving human male. The world is now populated by Bioroids — female android-like beings created by humans.',
+      'In a post-apocalyptic world, humanity has been wiped out. You are the last surviving human male. The world is now populated by Bioroids, female android-like beings created by humans.',
       'Because you are the only human left, every character treats you as extremely important. This heavily shapes the story and interactions. You are central to every faction and conflict, and dialogue often changes based on your decisions or presence.',
-      'The Bioroids face threats from Metal Parasites and other dangers. Build your squad, craft your strategy, and lead humanity to victory in the final war. Uncover the truth behind the world\'s collapse — and the key to humanity\'s revival.',
+      'The Bioroids face threats from Metal Parasites and other dangers. Build your squad, craft your strategy, and lead humanity to victory in the final war. Uncover the truth behind the world\'s collapse, and the key to humanity\'s revival.',
     ],
   },
 
