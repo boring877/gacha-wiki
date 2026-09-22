@@ -162,3 +162,84 @@ a.gsa-tier-card:active {
     height: 84px;
   }
 }
+
+/* Beginner callout: why invested SRs carry progression early. Static. */
+.gsa-beginner-box {
+  background: var(--gsa-accent-tint);
+  border: 1px solid var(--gsa-border);
+  border-radius: 14px;
+  padding: 1.4rem 1.5rem;
+  margin-bottom: 2.25rem;
+}
+
+.gsa-beginner-title {
+  margin: 0 0 0.6rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--gsa-accent-strong);
+}
+
+.gsa-beginner-intro {
+  color: var(--gsa-text);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0 0 0.75rem;
+  max-width: 78ch;
+}
+
+.gsa-beginner-team {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+
+.gsa-beginner-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+  background: var(--gsa-bg-secondary);
+  border: 1px solid var(--gsa-border);
+  border-radius: 12px;
+  padding: 1rem 0.75rem;
+  text-decoration: none;
+  color: var(--gsa-text);
+  min-width: 0;
+}
+
+.gsa-beginner-card-last {
+  border-style: dashed;
+}
+
+.gsa-beginner-thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+  font-size: 1.6rem;
+}
+
+.gsa-beginner-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.gsa-beginner-note {
+  color: var(--gsa-text-dim);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+/* The game's own rarity badge art (Icon_SR / Icon_SSR, 32px tall). */
+.gsa-rarity-badge {
+  height: 16px;
+  width: auto;
+  display: block;
+}
+
+.gsa-beginner-card .gsa-rarity-badge {
+  height: 18px;
+  margin: 0 auto;
+}

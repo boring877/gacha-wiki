@@ -4,6 +4,8 @@
 // each character's skill data in characters.js (multipliers, cooldowns, EN
 // costs, buff values). Day-one launch assessment: no community consensus
 // exists yet, dupes and star upgrades are not factored.
+// The beginner callout below carries the early-game reality the tiers cannot
+// show: class upgrades are dupe-gated, so invested SRs carry progression.
 // NEW CHARACTERS MUST BE ADDED TO GSA_TIER_PLACEMENTS or they land in C with
 // a console warning in dev.
 
@@ -23,6 +25,18 @@ export const GSA_TIERS = [
 
 const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam';
 
+// The game's own rarity badges (Icon_SR / Icon_SSR from the gacha UI bundles).
+// No Icon_R has shipped in any pulled bundle yet; R falls back to a text chip.
+// When an R badge lands on device, extract it, upload, and add it here.
+export const GSA_RARITY_BADGES = {
+  SR: `${R2}/Icon_SR.webp`,
+  SSR: `${R2}/Icon_SSR.webp`,
+};
+
+export function gsaRarityBadge(rarity) {
+  return GSA_RARITY_BADGES[rarity] || null;
+}
+
 // element-neutral job icons (JobData.jobicon base with element 0)
 export const GSA_JOB_SECTIONS = [
   { job: 'Guardian', zh: '防護', icon: `${R2}/guard_0.webp` },
@@ -34,6 +48,23 @@ export const GSA_JOB_SECTIONS = [
 
 export const GSA_TIER_UPDATED = 'September 22, 2026';
 
+// Early-game callout rendered above the job sections. The tiers rate end-state
+// power; this box explains why low placements still carry your account early.
+export const GSA_BEGINNER_NOTE = {
+  title: 'Early-game priorities',
+  intro: 'Tiers rate late-game power, but progression runs on dupes: the class system is tied to duplicate count, and a character cannot class up past the dupes she owns. SR units are far easier to pull and duplicate, which makes them the cheapest units to class up and max, so invested SRs carry your account early.',
+  picks: [
+    { slug: 'theodore', note: 'Weapon obtainable, quick SR dupes' },
+    { slug: 'adele', note: 'Weapon obtainable, quick SR dupes' },
+    { slug: 'belle', note: 'Weapon obtainable, quick SR dupes' },
+    { slug: 'ruby', note: 'SSR: dupes from a quest, weapon obtainable' },
+  ],
+  lastSlot: {
+    name: 'Last slot',
+    note: 'Your highest-dupe SSR, or an SR with good dupes from missions. Prioritize a DPS.',
+  },
+};
+
 // slug -> { tier, rarity, reason }
 export const GSA_TIER_PLACEMENTS = {
   'kurosawa-shion': { tier: 'SS', rarity: 'SR', reason: 'The energy battery. Her loop refills 4.5 team EN every 6 seconds, her ultimate grants the whole party EN Gain Up 45% for 24s, and her active stacks up to 15% party Basic Damage three times. Every ultimate in the team comes online faster with her on the field.' },
@@ -41,7 +72,7 @@ export const GSA_TIER_PLACEMENTS = {
   'ogino-rui': { tier: 'SS', rarity: 'SSR', reason: 'Highest raw damage in the roster: 850% combined rotation, a permanent self Physical DMG Up 20% and Crit 18% loop, self-healing, and a five-hit 170% ultimate.' },
   'victoria': { tier: 'SS', rarity: 'SSR', reason: 'Amplifier and carry in one: her loop grants Crit DMG Up 40% to the two highest-ATK allies, and her ultimate brings EN Gain 45%, a 425% strike to up to 3 targets and a Petrify finisher.' },
   'lin-lan': { tier: 'SS', rarity: 'SR', reason: 'The Guardian partner: 1785% shields on a 10s cooldown, a loop that cuts basic attack damage taken by 35%, and a 3700% ultimate shield. Rating assumes you run a Guardian, which you should.' },
-  'adele': { tier: 'S', rarity: 'SR', reason: 'Best SR damage dealer: a 660% ultimate, a self Attack Up 20% and ACC loop, plus Burn and Wind ATK Down utility. Strong enough that dupes are a bonus, not a requirement.' },
+  'adele': { tier: 'S', rarity: 'SR', reason: 'Best SR damage dealer: a 660% ultimate, a self Attack Up 20% and ACC loop, plus Burn and Wind ATK Down utility. Strong enough that dupes are a bonus, not a requirement. Early-game cornerstone: SR dupes class her up fast and her weapon is obtainable.' },
   'yulia': { tier: 'S', rarity: 'SR', reason: 'Dark nuker: a 615% single-target ultimate with Dark Res Down follow-up, Light ATK Down debuffs for the mirror matchup, and Evasion uptime for survivability.' },
   'thalia': { tier: 'S', rarity: 'SR', reason: 'Boss-killer: everything targets the highest-ATK enemy, her loop shreds their Basic Damage by 20%, a passive proc gives her Basic Damage Up 40%, and the ultimate adds Knockdown.' },
   'milena': { tier: 'S', rarity: 'SR', reason: 'A ten-hit 800% ultimate on a single target, Knockdown and Petrify control, and a passive that shreds Guardian-type blocks. The SR you can actually dupe without guilt.' },
@@ -67,12 +98,12 @@ export const GSA_TIER_PLACEMENTS = {
   'rachel': { tier: 'A', rarity: 'SR', reason: 'Utility Breaker: her loop interrupts enemy skills from range, the ultimate is a line nuke with a conditional execute, and kills debuff enemy Snipers and Breakers by 15%.' },
   'katya': { tier: 'A', rarity: 'SR', reason: 'Freeze-and-punish support: multi-hit forward-area attacks that trigger Ice Break pursuits on frozen targets, plus ACC Down and Water ATK self-buffs. Wants freeze partners.' },
   'lin-lin': { tier: 'A', rarity: 'SSR', reason: 'Fire debuffer and cleanup crew: Fire Res Down 8%, Burn on loop, Crit Chance cuts, and everything aims at the lowest-HP target. The executioner slot for fire teams.' },
-  'ruby': { tier: 'A', rarity: 'SSR', reason: 'Wildcard: 900% combined damage and an Electrocute-focused ultimate with 30% hit rate up, but on a Support frame whose ATK scaling could not be verified from the tables. Promising, unproven.' },
-  'theodore': { tier: 'B', rarity: 'SR', reason: 'The protagonist starter: functional Fire shred and a serviceable eight-hit ultimate, but every limited unit outclasses him. He is free, be kind.' },
+  'ruby': { tier: 'A', rarity: 'SSR', reason: 'Wildcard: 900% combined damage and an Electrocute-focused ultimate with 30% hit rate up, but on a Support frame whose ATK scaling could not be verified from the tables. Promising, unproven. The cheap SSR: quest dupes and an obtainable weapon make her the easiest premium unit to actually build.' },
+  'theodore': { tier: 'B', rarity: 'SR', reason: 'The protagonist starter: functional Fire shred and a serviceable eight-hit ultimate, but every limited unit outclasses him. He is free, be kind. Early on he is a core build anyway: his weapon is obtainable and SR dupes come quickly.' },
   'denice': { tier: 'B', rarity: 'SR', reason: 'A fifteen-hit ultimate sounds fun until you see Random targeting. The Petrify-synergy active is real, the base multipliers are not.' },
   'ruo-lan': { tier: 'B', rarity: 'SR', reason: 'All value is locked behind Earth allies: Earth ATK Up 20%, shields and damage procs for Earth teams only. Off-element she is a plain Sniper.' },
   'bernardo': { tier: 'B', rarity: 'SSR', reason: 'Support numbers too small to matter (a 5% Damage Up loop) and a Petrify chance that is Medium at best. The attitude is carrying the kit.' },
-  'belle': { tier: 'B', rarity: 'SR', reason: 'A healer on a Sniper frame whose numbers lose to Jessica and Sugimoto Arina at every line. The Evasion quirks do not save the slot.' },
+  'belle': { tier: 'B', rarity: 'SR', reason: 'A healer on a Sniper frame whose numbers lose to Jessica and Sugimoto Arina at every line. The Evasion quirks do not save the slot. Early on she is a real pick: her weapon is obtainable and SR dupes let you fully max her while your SSRs are still class-starved.' },
   'belle-clumsy-cowgirl': { tier: 'B', rarity: 'SSR', reason: 'Physical Spread support with tiny heals and a five-hit all-targets ultimate. Fun, forgettable.' },
   'connie': { tier: 'B', rarity: 'SSR', reason: 'An anti-healer: her loop and active aim at the lowest-HP targets and stack Healing Down with Healing Received Down 25%, and the awakened passive gives the whole team ATK SPD Up 23%. The ultimate\u0027s Abyss pursuit needs the Ebon status, which nobody on the roster applies yet. Real PvP utility, modest raw numbers.' },
   'qing-yin': { tier: 'S', rarity: 'SSR', reason: 'CC-and-burst Breaker: a 6s loop that stuns at Extremely High chance, an 827% double-strike ultimate with Attack Up 15% and ATK SPD Up 30% attached, and Wind Res Down 12% shredding. Every line prioritizes Electrocuted targets, so she wants Li Mu or Ruby applying Shock, and the awakened passives spread Crit Chance 14% and Energy DMG Up 6% to the team.' },

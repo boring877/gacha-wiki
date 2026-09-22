@@ -2,7 +2,8 @@
 // Gene-Sys: Adam tier list: job sections with tier rows, same shape as the
 // majo list. Reasons live in tier-list.js, not on the page.
 import GSALayout from '../../../layouts/gene-sys-adam/LandingLayout.astro';
-import { gsaTierByJob, GSA_TIER_UPDATED } from '../../../data/gene-sys-adam/tier-list.js';
+import { gsaTierByJob, GSA_TIER_UPDATED, GSA_BEGINNER_NOTE, GSA_TIER_PLACEMENTS, gsaRarityBadge } from '../../../data/gene-sys-adam/tier-list.js';
+import { gsaCharacters } from '../../../data/gene-sys-adam/characters.js';
 import '../../../styles/games/gene-sys-adam/gsa-common.css';
 import '../../../styles/games/gene-sys-adam/gsa-tier.css';
 
@@ -16,6 +17,36 @@ const total = gsaTierByJob.reduce((n, g) => n + g.tiers.reduce((m, t) => m + t.c
   crumbName="Tier List"
 >
   <section>
+    <div class="gsa-beginner-box">
+      <h2 class="gsa-beginner-title">{GSA_BEGINNER_NOTE.title}</h2>
+      <p class="gsa-beginner-intro">{GSA_BEGINNER_NOTE.intro}</p>
+      <div class="gsa-beginner-team">
+        {GSA_BEGINNER_NOTE.picks.map(pick => {
+          const c = gsaCharacters.find(x => x.slug === pick.slug);
+          const rarity = (GSA_TIER_PLACEMENTS[pick.slug]?.rarity || 'sr').toLowerCase();
+          return (
+            <a class="gsa-beginner-card" href={`/guides/gene-sys-adam/characters/${pick.slug}/`}>
+              {c?.icon
+                ? <img class="gsa-beginner-thumb" src={c.icon} alt={c.name} width="64" height="64" loading="lazy" />
+                : <span class="gsa-beginner-thumb gsa-monogram">{c?.name?.[0]}</span>}
+              <span class="gsa-beginner-name">{c?.name ?? pick.slug}</span>
+              {gsaRarityBadge(GSA_TIER_PLACEMENTS[pick.slug]?.rarity) ? (
+                <img class="gsa-rarity-badge" src={gsaRarityBadge(GSA_TIER_PLACEMENTS[pick.slug].rarity)} alt={GSA_TIER_PLACEMENTS[pick.slug].rarity} width="50" height="32" loading="lazy" />
+              ) : (
+                <span class={`gsa-tier-rarity gsa-tier-rarity-${rarity}`}>{GSA_TIER_PLACEMENTS[pick.slug]?.rarity ?? 'SR'}</span>
+              )}
+              <span class="gsa-beginner-note">{pick.note}</span>
+            </a>
+          );
+        })}
+        <div class="gsa-beginner-card gsa-beginner-card-last">
+          <span class="gsa-beginner-thumb gsa-monogram">?</span>
+          <span class="gsa-beginner-name">{GSA_BEGINNER_NOTE.lastSlot.name}</span>
+          <span class="gsa-beginner-note">{GSA_BEGINNER_NOTE.lastSlot.note}</span>
+        </div>
+      </div>
+    </div>
+
     {gsaTierByJob.map(group => (
       <div class="gsa-tier-job-section">
         <div class="gsa-tier-job-header">
@@ -39,7 +70,11 @@ const total = gsaTierByJob.reduce((n, g) => n + g.tiers.reduce((m, t) => m + t.c
                     ) : (
                       <span class="gsa-tier-thumb gsa-monogram">{c.name?.[0]}</span>
                     )}
-                    <span class={`gsa-tier-rarity gsa-tier-rarity-${(c.placement.rarity || 'sr').toLowerCase()}`}>{c.placement.rarity}</span>
+                    {gsaRarityBadge(c.placement.rarity) ? (
+                      <img class="gsa-rarity-badge gsa-tier-thumb-badge" src={gsaRarityBadge(c.placement.rarity)} alt={c.placement.rarity} width="50" height="32" loading="lazy" />
+                    ) : (
+                      <span class={`gsa-tier-rarity gsa-tier-rarity-${(c.placement.rarity || 'sr').toLowerCase()}`}>{c.placement.rarity}</span>
+                    )}
                     <span class="gsa-tier-name-label">{c.name}</span>
                   </a>
                 ))}

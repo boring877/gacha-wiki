@@ -10,8 +10,6 @@ import { tickerItems } from '../data/ticker';
 import { getTickerUpdates } from '../utils/ticker-updates';
 
 const items = [...tickerItems, ...getTickerUpdates()];
-const GW_CA = '0x50bE7832849EFEdB15611799074FcC409522f27A';
-const CA_SHORT = '0x50bE…f27A';
 ---
 
 <div class="news-ticker">
@@ -40,20 +38,14 @@ const CA_SHORT = '0x50bE…f27A';
       </div>
     </div>
 
-    <!-- Live $GW stats chip, pinned right. Cycles through price / 24h change
-         / market cap / volume / liquidity every few seconds. Hidden until
-         data loads (DexScreener free API, see the script below). -->
-    <span
-      class="ticker-price"
-      id="gw-price-chip"
-      hidden
-      title={`$GW token contract: ${GW_CA}`}
-    >
-      <span class="ticker-price-label">
-        $GW
-        <span class="ticker-price-ca">{CA_SHORT}</span>
-      </span>
-      <span class="ticker-price-stat" id="gw-stat">…</span>
+    <!-- Live $GW stats chip, pinned right. Price stays visible once loaded;
+         the other stats (24h change / market cap / volume / liquidity) cycle
+         next to it every few seconds. Hidden until data loads (DexScreener
+         free API, see the script below). -->
+    <span class="ticker-price" id="gw-price-chip" hidden>
+      <span class="ticker-price-label">$GW</span>
+      <span class="ticker-price-stat c-amber" id="gw-price" hidden></span>
+      <span class="ticker-price-stat" id="gw-stat"></span>
     </span>
   </div>
 </div>
@@ -164,8 +156,12 @@ const CA_SHORT = '0x50bE…f27A';
     opacity: 0.92;
   }
 
-  /* Live $GW stats chip, pinned on the right edge of the bar.
-     Cycles through price/change/mcap/volume/liquidity, monospace numbers. */
+  /* Live $GW stats chip, pinned on the right edge of the bar. Price stays
+     visible; the other stats cycle next to it, monospace numbers. */
+  .ticker-price[hidden] {
+    display: none;
+  }
+
   .ticker-price {
     display: inline-flex;
     align-items: center;
@@ -184,14 +180,6 @@ const CA_SHORT = '0x50bE…f27A';
     color: var(--amber-glow, #ffb74d);
     font-weight: 700;
     font-size: 0.8rem;
-  }
-
-  .ticker-price-ca {
-    color: var(--text-inverse, #ffffff);
-    opacity: 0.55;
-    font-family: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
-    font-size: 0.68rem;
-    font-weight: 400;
   }
 
   .ticker-price-stat {
@@ -224,10 +212,8 @@ const CA_SHORT = '0x50bE…f27A';
       gap: 0.25rem;
     }
 
-    /* Dates and the contract address cost width on phones; the game name
-       already anchors each item. */
-    .ticker-date,
-    .ticker-price-ca {
+    /* Dates cost width on phones; the game name already anchors each item. */
+    .ticker-date {
       display: none;
     }
 
@@ -339,41 +325,52 @@ const CA_SHORT = '0x50bE…f27A';
     colorClass: string;
   }
 
-  function buildStats(s: Stats): StatItem[] {
-    const items: StatItem[] = [];
-    if (s.price != null) items.push({ text: fmtPrice(s.price), colorClass: 'c-amber' });
+  function buildStats(s: Stats): { price: StatItem | null; rest: StatItem[] } {
+    const rest: StatItem[] = [];
     if (s.change24h != null) {
-      items.push({
+      rest.push({
         text: `24h ${fmtPct(s.change24h)}`,
         colorClass: s.change24h >= 0 ? 'c-up' : 'c-down',
       });
     }
     if (s.change1h != null) {
-      items.push({
+      rest.push({
         text: `1h ${fmtPct(s.change1h)}`,
         colorClass: s.change1h >= 0 ? 'c-up' : 'c-down',
       });
     }
-    if (s.mc != null) items.push({ text: `MC ${fmtUsd(s.mc)}`, colorClass: 'c-teal' });
-    if (s.volume24h != null) items.push({ text: `Vol ${fmtUsd(s.volume24h)}`, colorClass: 'c-muted' });
-    if (s.liquidity != null) items.push({ text: `Liq ${fmtUsd(s.liquidity)}`, colorClass: 'c-muted' });
-    return items;
+    if (s.mc != null) rest.push({ text: `MC ${fmtUsd(s.mc)}`, colorClass: 'c-teal' });
+    if (s.volume24h != null) rest.push({ text: `Vol ${fmtUsd(s.volume24h)}`, colorClass: 'c-muted' });
+    if (s.liquidity != null) rest.push({ text: `Liq ${fmtUsd(s.liquidity)}`, colorClass: 'c-muted' });
+    return {
+      price: s.price != null ? { text: fmtPrice(s.price), colorClass: 'c-amber' } : null,
+      rest,
+    };
   }
 
   // --- render + cycle ----------------------------------------------------
 
   let rotateTimer: ReturnType<typeof setInterval> | undefined;
 
-  function startCycling(stats: StatItem[]) {
+  function startCycling({ price, rest }: { price: StatItem | null; rest: StatItem[] }) {
     const chip = document.getElementById('gw-price-chip');
     const statEl = document.getElementById('gw-stat');
-    if (!chip || !statEl || stats.length === 0) return;
+    const priceEl = document.getElementById('gw-price');
+    if (!chip || !statEl) return;
+
+    // Price gets its own always-visible slot; the other stats cycle.
+    const cycle = priceEl && price ? rest : [...(price ? [price] : []), ...rest];
+    if (price && priceEl) {
+      priceEl.textContent = price.text;
+      priceEl.hidden = false;
+    }
+    if (cycle.length === 0) return;
 
     chip.hidden = false;
     let i = 0;
 
     const show = () => {
-      const item = stats[i % stats.length];
+      const item = cycle[i % cycle.length];
       statEl.textContent = item.text;
       // reset color classes, apply this stat's color
       statEl.className = `ticker-price-stat ${item.colorClass}`;
