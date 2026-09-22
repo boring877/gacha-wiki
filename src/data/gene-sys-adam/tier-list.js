@@ -4,8 +4,13 @@
 // each character's skill data in characters.js (multipliers, cooldowns, EN
 // costs, buff values). Day-one launch assessment: no community consensus
 // exists yet, dupes and star upgrades are not factored.
-// The beginner callout below carries the early-game reality the tiers cannot
-// show: class upgrades are dupe-gated, so invested SRs carry progression.
+// Rarities come from the gacha tables, not guesswork: joining DrawSingleData
+// buckets to DrawMachineChanceTitleData makes group 3 = SR (cr031-cr041 plus
+// quest-only Theodore on the same qualification tier) and group 4+ = SSR
+// (cr043 and up; Amber and Rachel also appear in an explicit Pick UP SSR
+// bucket). The beginner callout below carries the early-game reality the
+// tiers cannot show: class upgrades are dupe-gated, so invested SRs carry
+// progression.
 // NEW CHARACTERS MUST BE ADDED TO GSA_TIER_PLACEMENTS or they land in C with
 // a console warning in dev.
 
@@ -67,7 +72,7 @@ export const GSA_BEGINNER_NOTE = {
 
 // slug -> { tier, rarity, reason }
 export const GSA_TIER_PLACEMENTS = {
-  'kurosawa-shion': { tier: 'SS', rarity: 'SR', reason: 'The energy battery. Her loop refills 4.5 team EN every 6 seconds, her ultimate grants the whole party EN Gain Up 45% for 24s, and her active stacks up to 15% party Basic Damage three times. Every ultimate in the team comes online faster with her on the field.' },
+  'kurosawa-shion': { tier: 'SS', rarity: 'SSR', reason: 'The energy battery. Her loop refills 4.5 team EN every 6 seconds, her ultimate grants the whole party EN Gain Up 45% for 24s, and her active stacks up to 15% party Basic Damage three times. Every ultimate in the team comes online faster with her on the field.' },
   'jessica': { tier: 'SS', rarity: 'SSR', reason: 'Best defensive support: a 795% party shield on an 8s cooldown, constant top-up healing on her loop and passive, and an ultimate that cleanses all debuffs and applies a 1285% party shield.' },
   'ogino-rui': { tier: 'SS', rarity: 'SSR', reason: 'Highest raw damage in the roster: 850% combined rotation, a permanent self Physical DMG Up 20% and Crit 18% loop, self-healing, and a five-hit 170% ultimate.' },
   'victoria': { tier: 'SS', rarity: 'SSR', reason: 'Amplifier and carry in one: her loop grants Crit DMG Up 40% to the two highest-ATK allies, and her ultimate brings EN Gain 45%, a 425% strike to up to 3 targets and a Petrify finisher.' },
@@ -75,7 +80,7 @@ export const GSA_TIER_PLACEMENTS = {
   'adele': { tier: 'S', rarity: 'SR', reason: 'Best SR damage dealer: a 660% ultimate, a self Attack Up 20% and ACC loop, plus Burn and Wind ATK Down utility. Strong enough that dupes are a bonus, not a requirement. Early-game cornerstone: SR dupes class her up fast and her weapon is obtainable.' },
   'yulia': { tier: 'S', rarity: 'SR', reason: 'Dark nuker: a 615% single-target ultimate with Dark Res Down follow-up, Light ATK Down debuffs for the mirror matchup, and Evasion uptime for survivability.' },
   'thalia': { tier: 'S', rarity: 'SR', reason: 'Boss-killer: everything targets the highest-ATK enemy, her loop shreds their Basic Damage by 20%, a passive proc gives her Basic Damage Up 40%, and the ultimate adds Knockdown.' },
-  'milena': { tier: 'S', rarity: 'SR', reason: 'A ten-hit 800% ultimate on a single target, Knockdown and Petrify control, and a passive that shreds Guardian-type blocks. The SR you can actually dupe without guilt.' },
+  'milena': { tier: 'S', rarity: 'SSR', reason: 'A ten-hit 800% ultimate on a single target, Knockdown and Petrify control, and a passive that shreds Guardian-type blocks. An SSR whose dupes are still worth the investment.' },
   'hijikata-chizuru': { tier: 'S', rarity: 'SSR', reason: 'The best tank: Physical damage taken cut 20%, EN Gain 25% for the team, a Petrify on a 4s loop and a five-hit AoE ultimate with 35% Petrify rate. Deals real damage while holding the line.' },
   'vera': { tier: 'A', rarity: 'SR', reason: 'Textbook Guardian: a two-hit 400% stun active, a regeneration loop, Block 30% on the ultimate and passive self-healing. Dependable, if unexciting next to Hijikata Chizuru.' },
   'takajou-ranka': { tier: 'S', rarity: 'SR', reason: 'A Guardian that carries: a 466% self-heal loop, a five-hit forward-area ultimate and Silence utility. Lets you keep the tank slot without giving up damage.' },
@@ -90,18 +95,18 @@ export const GSA_TIER_PLACEMENTS = {
   'li-mu': { tier: 'A', rarity: 'SSR', reason: 'A steady 360% Striker with a four-hit ultimate and Crit chance procs. Perfectly playable, outshone by the SSR carry tier.' },
   'danxin': { tier: 'A', rarity: 'SSR', reason: 'A Striker that tanks: a 2145% self-shield on the active, Energy damage taken cut 10%, and an ultimate that cuts basic attack damage taken 40%. Great in content that hits hard.' },
   'annabelle': { tier: 'A', rarity: 'SSR', reason: 'Light nuker with a seven-hit forward-area ultimate, a Light Res Down loop and ATK SPD Down control. Solid and unremarkable in equal measure.' },
-  'chloe': { tier: 'A', rarity: 'SR', reason: 'Her thirteen-hit 585% ultimate is sneaky good, and the self-inflicted Pain cost is manageable behind any healing support.' },
-  'charlotte': { tier: 'A', rarity: 'SR', reason: 'Shield-tank hybrid: Block procs on her active, a nine-hit ultimate that applies a 2900% shield on hit, and passive self-shielding. Fine wherever a second Guardian fits.' },
+  'chloe': { tier: 'A', rarity: 'SSR', reason: 'Her thirteen-hit 585% ultimate is sneaky good, and the self-inflicted Pain cost is manageable behind any healing support.' },
+  'charlotte': { tier: 'A', rarity: 'SSR', reason: 'Shield-tank hybrid: Block procs on her active, a nine-hit ultimate that applies a 2900% shield on hit, and passive self-shielding. Fine wherever a second Guardian fits.' },
   'mudia': { tier: 'A', rarity: 'SR', reason: 'Lifesteal Guardian: heals on her active, on hits and on every ultimate strike, bleeds on loop, and buffs her own Max HP. Hard to kill, moderate damage.' },
-  'amber': { tier: 'A', rarity: 'SR', reason: 'The self-sufficient tank: 1920% loop shields, self-cleanse with a 1000% heal, Max HP stacking and a reflecting 2900% ultimate shield. Needs no support to hold the line.' },
+  'amber': { tier: 'A', rarity: 'SSR', reason: 'The self-sufficient tank: 1920% loop shields, self-cleanse with a 1000% heal, Max HP stacking and a reflecting 2900% ultimate shield. Needs no support to hold the line.' },
   'liz': { tier: 'A', rarity: 'SSR', reason: 'Half tank, half support: a 960% party-wide shield ultimate with Fire ATK Down 10% attached, self-sustain on loop and stacking ATK SPD when hit.' },
-  'rachel': { tier: 'A', rarity: 'SR', reason: 'Utility Breaker: her loop interrupts enemy skills from range, the ultimate is a line nuke with a conditional execute, and kills debuff enemy Snipers and Breakers by 15%.' },
+  'rachel': { tier: 'A', rarity: 'SSR', reason: 'Utility Breaker: her loop interrupts enemy skills from range, the ultimate is a line nuke with a conditional execute, and kills debuff enemy Snipers and Breakers by 15%.' },
   'katya': { tier: 'A', rarity: 'SR', reason: 'Freeze-and-punish support: multi-hit forward-area attacks that trigger Ice Break pursuits on frozen targets, plus ACC Down and Water ATK self-buffs. Wants freeze partners.' },
   'lin-lin': { tier: 'A', rarity: 'SSR', reason: 'Fire debuffer and cleanup crew: Fire Res Down 8%, Burn on loop, Crit Chance cuts, and everything aims at the lowest-HP target. The executioner slot for fire teams.' },
   'ruby': { tier: 'A', rarity: 'SSR', reason: 'Wildcard: 900% combined damage and an Electrocute-focused ultimate with 30% hit rate up, but on a Support frame whose ATK scaling could not be verified from the tables. Promising, unproven. The cheap SSR: quest dupes and an obtainable weapon make her the easiest premium unit to actually build.' },
   'theodore': { tier: 'B', rarity: 'SR', reason: 'The protagonist starter: functional Fire shred and a serviceable eight-hit ultimate, but every limited unit outclasses him. He is free, be kind. Early on he is a core build anyway: his weapon is obtainable and SR dupes come quickly.' },
   'denice': { tier: 'B', rarity: 'SR', reason: 'A fifteen-hit ultimate sounds fun until you see Random targeting. The Petrify-synergy active is real, the base multipliers are not.' },
-  'ruo-lan': { tier: 'B', rarity: 'SR', reason: 'All value is locked behind Earth allies: Earth ATK Up 20%, shields and damage procs for Earth teams only. Off-element she is a plain Sniper.' },
+  'ruo-lan': { tier: 'B', rarity: 'SSR', reason: 'All value is locked behind Earth allies: Earth ATK Up 20%, shields and damage procs for Earth teams only. Off-element she is a plain Sniper.' },
   'bernardo': { tier: 'B', rarity: 'SSR', reason: 'Support numbers too small to matter (a 5% Damage Up loop) and a Petrify chance that is Medium at best. The attitude is carrying the kit.' },
   'belle': { tier: 'B', rarity: 'SR', reason: 'A healer on a Sniper frame whose numbers lose to Jessica and Sugimoto Arina at every line. The Evasion quirks do not save the slot. Early on she is a real pick: her weapon is obtainable and SR dupes let you fully max her while your SSRs are still class-starved.' },
   'belle-clumsy-cowgirl': { tier: 'B', rarity: 'SSR', reason: 'Physical Spread support with tiny heals and a five-hit all-targets ultimate. Fun, forgettable.' },
