@@ -361,6 +361,7 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
           { name: 'Buffs & Debuffs', href: '/guides/taimanin-squad/buff-debuff/' },
           { name: 'Bonds & Synergy', href: '/guides/taimanin-squad/bonds/' },
           { name: 'Game Mechanics', href: '/guides/taimanin-squad/mechanics/' },
+          { name: 'Banner History', href: '/guides/taimanin-squad/banners/' },
         ],
       },
       {
@@ -368,6 +369,7 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
         links: [
           { name: 'Blog', href: '/guides/taimanin-squad/blog/' },
           { name: 'Redeem Codes', href: '/guides/taimanin-squad/redeem-codes/' },
+          { name: 'Updates', href: '/guides/taimanin-squad/updates/' },
         ],
       },
     ],

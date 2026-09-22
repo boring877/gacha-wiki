@@ -1,0 +1,59 @@
+---
+/**
+ * Taimanin Squad updates database: card grid of every official news post
+ * (notices, updates, known issues, events), linking to detail pages.
+ */
+import LandingLayout from '../../../../layouts/taimanin-squad/LandingLayout.astro';
+import { UPDATES } from '../../../../data/taimanin-squad/updates.js';
+
+import '../../../../styles/games/taimanin-squad/ts-updates.css';
+
+const title = 'Updates & Patch Notes - Taimanin Squad | GachaWiki';
+const description =
+  'Taimanin Squad update database: every official patch note, banner announcement, event and maintenance note since launch, with full details and art.';
+const gameTitle = 'Updates & Patch Notes';
+
+const fmt = (iso) => {
+  const d = new Date(iso + 'T00:00:00Z');
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+};
+const kindClass = (k) => 'ts-upd-cat-' + k.toLowerCase().replace(/\s+/g, '-');
+---
+
+<LandingLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="ts-upd-container">
+    <div class="ts-upd-intro">
+      <p class="ts-upd-intro-label">Sourced from the official news archive</p>
+      <p class="ts-upd-intro-text">
+        Every official update, banner announcement, event and maintenance note since launch, newest first.
+        Click any entry for the full details. All dates are UTC. Raw sources live in the
+        <a href="https://taimaninsquad.com/information-view" target="_blank" rel="noopener noreferrer">official news archive</a>.
+      </p>
+    </div>
+
+    <div class="ts-upd-grid">
+      {
+        UPDATES.map((u) => (
+          <a class="ts-upd-card" href={`/guides/taimanin-squad/updates/${u.slug}/`}>
+            <div class="ts-upd-card-art">
+              {u.image ? (
+                <img src={u.image} alt={`${u.title} art`} loading="lazy" decoding="async" width={820} height={260} />
+              ) : (
+                <div class={`ts-upd-card-art-fallback ${kindClass(u.kind)}`}>{u.kind}</div>
+              )}
+            </div>
+            <div class="ts-upd-card-body">
+              <div class="ts-upd-card-meta">
+                <span class={`ts-upd-cat ${kindClass(u.kind)}`}>{u.kind}</span>
+                <span class="ts-upd-card-date">{fmt(u.date)}</span>
+              </div>
+              <h2 class="ts-upd-card-title">{u.title}</h2>
+              <p class="ts-upd-card-summary">{u.summary}</p>
+              <span class="ts-upd-card-more">Read more</span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</LandingLayout>

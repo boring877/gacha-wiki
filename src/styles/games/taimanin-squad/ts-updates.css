@@ -1,0 +1,250 @@
+/* Taimanin Squad updates & patch notes: card grid + detail pages.
+   Flat dark style matching the other ts-*.css files. */
+
+.ts-upd-container {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+
+.ts-upd-intro {
+  margin-bottom: 1.5rem;
+}
+
+.ts-upd-intro-label {
+  color: var(--ts-accent, #9a8aaa);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.3rem;
+}
+
+.ts-upd-intro-text {
+  color: #b3a8ab;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.ts-upd-intro-text a {
+  color: var(--ts-accent-light, #b8a9c8);
+  text-decoration: underline;
+}
+
+/* card grid */
+.ts-upd-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.1rem;
+}
+
+.ts-upd-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--ts-bg-card, #1e1a23);
+  border: 1px solid var(--ts-border, #2e2838);
+  border-radius: 12px;
+  overflow: hidden;
+  color: inherit;
+}
+
+.ts-upd-card-art img {
+  width: 100%;
+  aspect-ratio: 820 / 260;
+  object-fit: cover;
+  display: block;
+}
+
+.ts-upd-card-art-fallback {
+  aspect-ratio: 820 / 260;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  color: #8f8698;
+  background: var(--ts-bg-tertiary, #242028);
+}
+
+.ts-upd-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.9rem 1rem 1rem;
+}
+
+.ts-upd-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.ts-upd-cat {
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ts-upd-cat-notice {
+  background: rgba(154, 138, 170, 0.18);
+  color: #c9bcd6;
+}
+
+.ts-upd-cat-update {
+  background: rgba(103, 160, 210, 0.18);
+  color: #8fc0e8;
+}
+
+.ts-upd-cat-event {
+  background: rgba(103, 197, 138, 0.16);
+  color: #7fd39b;
+}
+
+.ts-upd-cat-known-issues {
+  background: rgba(224, 110, 110, 0.16);
+  color: #e89a9a;
+}
+
+.ts-upd-card-date {
+  color: #8f8698;
+  font-size: 0.78rem;
+}
+
+.ts-upd-card-title {
+  color: #e8e2ee;
+  font-size: 0.98rem;
+  line-height: 1.35;
+}
+
+.ts-upd-card-summary {
+  color: #9a90a3;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ts-upd-card-more {
+  color: var(--ts-accent-light, #b8a9c8);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-top: 0.15rem;
+}
+
+/* detail page */
+.ts-upd-detail {
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.ts-upd-detail-art {
+  margin-bottom: 1.25rem;
+}
+
+.ts-upd-detail-art img {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--ts-border, #2e2838);
+}
+
+.ts-upd-head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+
+.ts-upd-date {
+  color: #8f8698;
+  font-size: 0.85rem;
+}
+
+.ts-upd-detail-title {
+  color: #e8e2ee;
+  font-size: 1.45rem;
+  line-height: 1.3;
+  margin-bottom: 1.25rem;
+}
+
+.ts-upd-detail-body {
+  color: #c5bdcf;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.ts-upd-detail-body img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 0.5rem 0;
+}
+
+.ts-upd-detail-body a {
+  color: var(--ts-accent-light, #b8a9c8);
+  text-decoration: underline;
+}
+
+.ts-upd-source {
+  margin-top: 1.5rem;
+  color: #8f8698;
+  font-size: 0.82rem;
+}
+
+.ts-upd-source a {
+  color: var(--ts-accent-light, #b8a9c8);
+  text-decoration: underline;
+}
+
+.ts-upd-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--ts-border, #2e2838);
+}
+
+.ts-upd-nav-link {
+  color: var(--ts-accent-light, #b8a9c8);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.ts-upd-nav-older {
+  text-align: right;
+}
+
+.ts-upd-card {
+  text-decoration: none;
+}
+
+.ts-upd-card-title,
+.ts-upd-card-summary {
+  text-decoration: none;
+}
+
+/* body structure: restored line breaks, section headings, contained images */
+.ts-upd-detail-body {
+  font-size: 0.93rem;
+  line-height: 1.75;
+}
+
+.ts-upd-detail-body .ts-upd-h {
+  display: block;
+  color: #ded6e6;
+  font-size: 1.02rem;
+  margin: 1.1rem 0 0.35rem;
+}
+
+.ts-upd-detail-body img {
+  display: block;
+  margin: 0.9rem auto;
+  max-width: min(100%, 680px);
+  border: 1px solid var(--ts-border, #2e2838);
+  border-radius: 8px;
+}

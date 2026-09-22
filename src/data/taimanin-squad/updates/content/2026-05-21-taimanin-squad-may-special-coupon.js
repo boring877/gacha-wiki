@@ -1,0 +1,2 @@
+// Cleaned official news HTML for 2026-05-21 Taimanin Squad May Special Coupon!
+export default "Greetings, Captains.<br />Special gifts from GM have arrived in appreciation of your support for Taimanin Squad.<br />Register the coupon code now, and claim your rewards.<br /><br />Coupon Rewards<br />└Pickup Ticket x 5<br />└Gems x 400<br /><br />Coupon Code: J45QGUM8PT<br />Valid Until: June 4th, 2026, 02:00 (UTC)<br /><br />※ You can register the coupon code on our official website https://taimaninsquad.com/coupon <br /><br />Thank you for playing Taimanin Squad!";

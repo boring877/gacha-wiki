@@ -1,0 +1,161 @@
+/* Taimanin Squad banner history: timeline of Pickup Recruits and Step-Up
+   packs. Card layout mirrors the Busty Burst banner timeline: big art left,
+   details right. Flat dark style matching the other ts-*.css files. */
+
+.ts-bn-container {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+
+.ts-bn-intro {
+  color: #b3a8ab;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin-bottom: 1.75rem;
+  max-width: 60rem;
+}
+
+.ts-bn-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.ts-bn-card {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  background: var(--ts-bg-card, #1e1a23);
+  border: 1px solid var(--ts-border, #2e2838);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.ts-bn-card-art {
+  flex-shrink: 0;
+  width: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ts-bn-card-art img {
+  width: 100%;
+  display: block;
+}
+
+.ts-bn-card-art-portrait {
+  aspect-ratio: 820 / 260;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at 75% 40%, rgba(154, 138, 170, 0.22), transparent 65%),
+    var(--ts-bg-tertiary, #242028);
+}
+
+.ts-bn-card-art-portrait :global(.ts-char-icon) {
+  border-radius: 10px;
+}
+
+.ts-bn-art-none {
+  color: #8f8698;
+  font-size: 0.85rem;
+}
+
+.ts-bn-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.ts-bn-card-top {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.ts-bn-type,
+.ts-bn-status {
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ts-bn-type-pickup {
+  background: rgba(184, 169, 200, 0.16);
+  color: #cdbfd9;
+}
+
+.ts-bn-type-stepup {
+  background: rgba(216, 165, 118, 0.16);
+  color: #e2c3a2;
+}
+
+.ts-bn-type-launch {
+  background: rgba(255, 255, 255, 0.08);
+  color: #c5bdcf;
+}
+
+.ts-bn-status-active {
+  background: rgba(103, 197, 138, 0.16);
+  color: #67c58a;
+}
+
+.ts-bn-status-ended {
+  background: rgba(255, 255, 255, 0.06);
+  color: #7d7486;
+}
+
+.ts-bn-dates {
+  color: #8f8698;
+  font-size: 0.8rem;
+}
+
+.ts-bn-card-title {
+  color: #e8e2ee;
+  font-size: 1.08rem;
+}
+
+.ts-bn-card-sub {
+  color: var(--ts-accent, #9a8aaa);
+  font-size: 0.83rem;
+}
+
+.ts-bn-card-epic {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: #b3a8ab;
+  font-size: 0.85rem;
+}
+
+.ts-bn-card-epic .ts-char-icon {
+  border-radius: 6px;
+}
+
+.ts-bn-rarity {
+  color: #8f8698;
+}
+
+.ts-bn-card-notes {
+  color: #9a90a3;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .ts-bn-card {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .ts-bn-card-art {
+    width: 100%;
+  }
+}

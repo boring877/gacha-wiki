@@ -1,0 +1,78 @@
+---
+/**
+ * Taimanin Squad banner history: every Limited Pickup Recruit and Step-Up
+ * pack since launch, sourced from the official news archive. Card layout
+ * mirrors the Busty Burst banner timeline: big art left, details right.
+ */
+import LandingLayout from '../../../../layouts/taimanin-squad/LandingLayout.astro';
+import TSCharacterImage from '../../../../components/taimanin-squad/TSCharacterImage.astro';
+import { BANNER_HISTORY, getBannerStatus } from '../../../../data/taimanin-squad/banners.js';
+
+import '../../../../styles/games/taimanin-squad/ts-banners.css';
+
+const title = 'Banner History - Taimanin Squad | GachaWiki';
+const description =
+  'Complete Taimanin Squad banner history: every Limited Pickup Recruit and Step-Up pack since launch, with dates, featured units, rates and pity rules.';
+const gameTitle = 'Banner History';
+
+const formatDate = (iso) => {
+  const d = new Date(iso + 'T00:00:00Z');
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+};
+---
+
+<LandingLayout title={title} description={description} gameTitle={gameTitle}>
+  <div class="ts-bn-container">
+    <p class="ts-bn-intro">
+      Complete history of all Limited Pickup Recruits and Step-Up packs, from the official news archive. Newest first.
+      Pickups run two to three weeks with the featured Legend guaranteed at 100 (gauge carries over between banners);
+      Step-Up packs are one-per-account purchases whose characters join Assemble and Weapon Development a few weeks later.
+    </p>
+
+    <div class="ts-bn-list">
+      {
+        BANNER_HISTORY.map((b) => {
+          const status = getBannerStatus(b);
+          return (
+            <article class={`ts-bn-card ${status === 'active' ? 'ts-bn-active' : ''}`}>
+              <div class="ts-bn-card-art">
+                {b.image ? (
+                  <img src={b.image} alt={`${b.legend.name} banner art`} loading="lazy" decoding="async" width={820} height={260} />
+                ) : b.legend.icon ? (
+                  <div class="ts-bn-card-art-portrait">
+                    <TSCharacterImage icon={b.legend.icon} alt={b.legend.name} width={110} height={110} />
+                  </div>
+                ) : (
+                  <div class="ts-bn-card-art-portrait ts-bn-art-none">No banner art</div>
+                )}
+              </div>
+              <div class="ts-bn-card-body">
+                <div class="ts-bn-card-top">
+                  <span class={`ts-bn-type ts-bn-type-${b.type}`}>{b.type === 'pickup' ? 'Limited Pickup' : b.type === 'stepup' ? 'Step-Up Pack' : 'Launch Pack'}</span>
+                  <span class={`ts-bn-status ts-bn-status-${status}`}>{status === 'active' ? 'Active' : 'Ended'}</span>
+                  <span class="ts-bn-dates">
+                    {formatDate(b.start)} - {formatDate(b.end)} (UTC)
+                  </span>
+                </div>
+                <h3 class="ts-bn-card-title">Featured: {b.legend.name}</h3>
+                <p class="ts-bn-card-sub">
+                  {b.legend.rarity}
+                  {b.weapon ? ` with ${b.weapon}` : ''}
+                </p>
+                {b.epic && (
+                  <div class="ts-bn-card-epic">
+                    <TSCharacterImage icon={b.epic.icon} alt={b.epic.name} width={36} height={36} />
+                    <span>
+                      Also featured: {b.epic.name} <span class="ts-bn-rarity">({b.epic.rarity})</span>
+                    </span>
+                  </div>
+                )}
+                {b.notes && <p class="ts-bn-card-notes">{b.notes}</p>}
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+</LandingLayout>

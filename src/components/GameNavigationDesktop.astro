@@ -8,6 +8,7 @@ import HWMusicPlayer from './horizon-walker/HWMusicPlayer.astro';
 import MajoMusicPlayer from './majo/MajoMusicPlayer.astro';
 import SSMusicPlayer from './stella-sora/SSMusicPlayer.astro';
 import GSAMusicPlayer from './gene-sys-adam/GSAMusicPlayer.astro';
+import TSMusicPlayer from './taimanin-squad/TSMusicPlayer.astro';
 
 interface Props {
   currentPath?: string;
@@ -88,6 +89,7 @@ const isActive = (href: string) => href === bestMatch;
       {validatedGameKey === 'majo' && <MajoMusicPlayer />}
       {validatedGameKey === 'stella-sora' && <SSMusicPlayer />}
       {validatedGameKey === 'gene-sys-adam' && <GSAMusicPlayer />}
+      {validatedGameKey === 'taimanin-squad' && <TSMusicPlayer />}
 
       <!-- Desktop Section Navigation -->
       <div class="section-nav">

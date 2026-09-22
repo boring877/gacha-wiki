@@ -1,0 +1,253 @@
+---
+// Taimanin Squad background music player with three selectable tracks from
+// the Steam build's soundbgm bundle (UnityPy AudioClip decode, 128k mp3):
+// 1 = lobby theme (OST_bgm_Lobby), 2 = academy lobby (OST_bgm_Lobby_Academy),
+// 3 = arena battle theme (snd_bgm_battle_arena). Persists across TS page
+// navigations: preference + track in localStorage, per-track playback position
+// in sessionStorage, autoplay-block fallback resumes on first interaction.
+interface Props {
+  variant?: 'desktop' | 'mobile';
+}
+const { variant = 'desktop' } = Astro.props;
+const MUSIC_SRC = '/audio/taimanin-squad/bgm-lobby.mp3';
+const MUSIC_SRC_2 = '/audio/taimanin-squad/bgm-academy.mp3';
+const MUSIC_SRC_3 = '/audio/taimanin-squad/bgm-arena.mp3';
+---
+
+<div class={`ts-music ${variant === 'mobile' ? 'ts-music-mobile' : ''}`}>
+  <button
+    type="button"
+    class="ts-music-btn"
+    aria-label="Toggle Taimanin Squad background music"
+    aria-pressed="false"
+    title="Background music"
+  >
+    <svg class="ts-music-icon ts-music-on-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+      <path
+        d="M9 18V6l10-2v12"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      ></path>
+      <circle cx="6.5" cy="18" r="2.5" fill="currentColor"></circle>
+      <circle cx="16.5" cy="16" r="2.5" fill="currentColor"></circle>
+    </svg>
+    <svg class="ts-music-icon ts-music-off-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+      <path
+        d="M9 18V6l10-2v12"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      ></path>
+      <circle cx="6.5" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="2"></circle>
+      <line x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-line></line>
+    </svg>
+    <span class="ts-music-label">Music</span>
+  </button>
+  <button
+    type="button"
+    class="ts-music-btn ts-music-track-btn"
+    aria-label="Switch background music track"
+    title="Background music track"
+  >
+    <span class="ts-music-track-num">1</span>
+  </button>
+  {/* One shared audio per page: only the desktop header instance renders it */}
+  {variant === 'desktop' && <audio id="ts-music-audio" src={MUSIC_SRC} loop preload="none"></audio>}
+</div>
+
+<style>
+  .ts-music {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+  }
+
+  .ts-music-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.75rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--ts-border, #2e2838);
+    color: #b3a8ab;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .ts-music-btn:first-child {
+    border-radius: 999px 0 0 999px;
+    border-right: none;
+  }
+
+  .ts-music-track-btn {
+    border-radius: 0 999px 999px 0;
+    min-width: 1.8rem;
+    justify-content: center;
+    padding: 0.35rem 0.5rem;
+  }
+
+  .ts-music-btn .ts-music-on-icon {
+    display: none;
+  }
+
+  .ts-music-btn.playing {
+    color: #b8a9c8;
+    border-color: rgba(184, 169, 200, 0.45);
+  }
+
+  .ts-music-btn.playing + .ts-music-track-btn {
+    border-color: rgba(184, 169, 200, 0.45);
+    color: #b8a9c8;
+  }
+
+  .ts-music-btn.playing .ts-music-on-icon {
+    display: block;
+  }
+
+  .ts-music-btn.playing .ts-music-off-icon {
+    display: none;
+  }
+
+  .ts-music-track-num {
+    min-width: 0.6rem;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .ts-music-label {
+      display: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    // Desktop + mobile header instances both render; init once, bind all.
+    if (window.__tsMusicInit) return;
+    window.__tsMusicInit = true;
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var audio = document.getElementById('ts-music-audio');
+      var playBtns = document.querySelectorAll('.ts-music-btn:not(.ts-music-track-btn)');
+      var trackBtns = document.querySelectorAll('.ts-music-track-btn');
+      if (!audio || !playBtns.length || !trackBtns.length) return;
+
+      var TRACKS = [
+        '/audio/taimanin-squad/bgm-lobby.mp3',
+        '/audio/taimanin-squad/bgm-academy.mp3',
+        '/audio/taimanin-squad/bgm-arena.mp3'
+      ];
+      var PREF = 'ts-music-on';
+      var TRACK = 'ts-music-track';
+
+      function posKey() {
+        return 'ts-music-pos-' + currentTrack();
+      }
+
+      function currentTrack() {
+        var t = parseInt(localStorage.getItem(TRACK) || '0', 10);
+        return t >= 0 && t < TRACKS.length ? t : 0;
+      }
+
+      function setTrack(t, keepPlaying) {
+        localStorage.setItem(TRACK, String(t));
+        var wasPlaying = !audio.paused;
+        if (!keepPlaying) wasPlaying = false;
+        audio.src = TRACKS[t];
+        trackBtns.forEach(function (b) {
+          b.querySelector('.ts-music-track-num').textContent = String(t + 1);
+        });
+        var pos = parseFloat(sessionStorage.getItem(posKey()) || '0');
+        if (isFinite(pos) && pos > 0) {
+          try {
+            audio.currentTime = pos;
+          } catch (e) {}
+        }
+        if (wasPlaying) tryPlay();
+      }
+
+      function setPlaying(on) {
+        playBtns.forEach(function (b) {
+          b.classList.toggle('playing', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+      }
+
+      function tryPlay() {
+        audio.play().then(
+          function () {
+            setPlaying(true);
+            localStorage.setItem(PREF, '1');
+          },
+          function () {
+            // Autoplay blocked - resume on the first user interaction
+            setPlaying(false);
+            var resume = function () {
+              audio.play().then(
+                function () {
+                  setPlaying(true);
+                },
+                function () {}
+              );
+              document.removeEventListener('pointerdown', resume);
+              document.removeEventListener('keydown', resume);
+            };
+            document.addEventListener('pointerdown', resume);
+            document.addEventListener('keydown', resume);
+          }
+        );
+      }
+
+      // restore track selection, then position for near-seamless playback
+      var t = currentTrack();
+      if (audio.src !== TRACKS[t]) audio.src = TRACKS[t];
+      trackBtns.forEach(function (b) {
+        b.querySelector('.ts-music-track-num').textContent = String(t + 1);
+      });
+      var pos = parseFloat(sessionStorage.getItem(posKey()) || '0');
+      if (isFinite(pos) && pos > 0) {
+        try {
+          audio.currentTime = pos;
+        } catch (e) {}
+      }
+
+      if (localStorage.getItem(PREF) === '1') {
+        tryPlay();
+      }
+
+      audio.addEventListener('playing', function () {
+        setPlaying(true);
+      });
+      audio.addEventListener('pause', function () {
+        setPlaying(false);
+      });
+
+      setInterval(function () {
+        if (!audio.paused) sessionStorage.setItem(posKey(), String(audio.currentTime));
+      }, 1000);
+      window.addEventListener('beforeunload', function () {
+        if (!audio.paused) sessionStorage.setItem(posKey(), String(audio.currentTime));
+      });
+
+      playBtns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          if (audio.paused) {
+            tryPlay();
+          } else {
+            audio.pause();
+            localStorage.removeItem(PREF);
+            sessionStorage.removeItem(posKey());
+            setPlaying(false);
+          }
+        });
+      });
+
+      trackBtns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          setTrack((currentTrack() + 1) % TRACKS.length, true);
+        });
+      });
+    });
+  })();
+</script>

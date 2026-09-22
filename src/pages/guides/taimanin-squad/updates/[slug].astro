@@ -1,0 +1,66 @@
+---
+/**
+ * Taimanin Squad individual update page: full official notes with art,
+ * kind chip and Newer/Older navigation.
+ */
+import LandingLayout from '../../../../layouts/taimanin-squad/LandingLayout.astro';
+import { UPDATES } from '../../../../data/taimanin-squad/updates.js';
+
+import '../../../../styles/games/taimanin-squad/ts-updates.css';
+
+export async function getStaticPaths() {
+  return UPDATES.map((u) => ({
+    params: { slug: u.slug },
+    props: { update: u },
+  }));
+}
+
+const { update } = Astro.props;
+
+// content files eager-globbed from src/data/taimanin-squad/updates/content/
+const contents = import.meta.glob('../../../../data/taimanin-squad/updates/content/*.js', { eager: true });
+const contentKey = `../../../../data/taimanin-squad/updates/content/${update.slug}.js`;
+const html = contents[contentKey]?.default ?? '';
+
+const kindClass = (k) => 'ts-upd-cat-' + k.toLowerCase().replace(/\s+/g, '-');
+const idx = UPDATES.indexOf(update);
+const newer = UPDATES[idx - 1];
+const older = UPDATES[idx + 1];
+
+const fmt = (iso) => {
+  const d = new Date(iso + 'T00:00:00Z');
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+};
+---
+
+<LandingLayout
+  title={`${update.title} (${fmt(update.date)})`}
+  description={`${update.title}, Taimanin Squad update from ${fmt(update.date)}. ${update.summary}`}
+  gameTitle="Updates"
+>
+  <div class="ts-upd-container">
+    <article class="ts-upd-detail">
+      {update.image && (
+        <div class="ts-upd-detail-art">
+          <img src={update.image} alt={`${update.title} art`} loading="eager" decoding="async" width={820} height={260} />
+        </div>
+      )}
+      <div class="ts-upd-head">
+        <span class={`ts-upd-cat ${kindClass(update.kind)}`}>{update.kind}</span>
+        <span class="ts-upd-date">{fmt(update.date)}</span>
+      </div>
+      <h1 class="ts-upd-detail-title">{update.title}</h1>
+      <div class="ts-upd-detail-body" set:html={html} />
+      <p class="ts-upd-source">
+        Source:
+        <a href={`https://taimaninsquad.com/information-detail/${update.encryptUrl}`} target="_blank" rel="noopener noreferrer">
+          official news archive
+        </a>
+      </p>
+      <nav class="ts-upd-nav">
+        {newer ? <a class="ts-upd-nav-link" href={`/guides/taimanin-squad/updates/${newer.slug}/`}>← Newer: {newer.title}</a> : <span />}
+        {older ? <a class="ts-upd-nav-link ts-upd-nav-older" href={`/guides/taimanin-squad/updates/${older.slug}/`}>Older: {older.title} →</a> : <span />}
+      </nav>
+    </article>
+  </div>
+</LandingLayout>

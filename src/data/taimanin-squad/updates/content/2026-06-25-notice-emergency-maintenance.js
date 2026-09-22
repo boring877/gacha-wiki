@@ -1,0 +1,2 @@
+// Cleaned official news HTML for 2026-06-25 Notice: Emergency Maintenance
+export default "Taimanin Squad will be on an emergency maintenance.<br /><br />[Maintenance Notice]<br /><br />Maintenance Detail: Hotfix for abnormal reset on Arena Tower ranking data<br />Maintenance Period: 2026/6/25 09:00 ∼ 10:00 (UTC)<br /><br />※ The period is subject to change.<br /><br />We apologize for the inconvenience.";

@@ -1,0 +1,2 @@
+// Cleaned official news HTML for 2026-06-25 Emergency Maintenance Complete
+export default "The emergency maintenance is complete. The game is available now.<br /><br />[Maintenance Notice]<br /><br />Maintenance Detail: Hotfix for abnormal reset on Arena Tower ranking data<br />Maintenance Period: 2026/06/25 09:00 ~ 10:00 (UTC)";

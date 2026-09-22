@@ -1,0 +1,2 @@
+// Cleaned official news HTML for 2026-03-19 Pre-registration begins in [DMM Games]
+export default "The pre-registration for Taimanin Sqaud in DMM Games has started on March 19th, 2026!<br />Please visit the website below for the details.<br /><br /><a href=\"https://predmg.taimaninsquad.com/\" target=\"_blank\" rel=\"noopener noreferrer\"><span style=\"color:#3F86C4\">[DMM Games Taimanin Sqaud Pre-Registration]</span></a><br /><br />Thank you.";
