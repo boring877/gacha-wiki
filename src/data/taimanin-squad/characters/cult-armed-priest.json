@@ -1,570 +1,602 @@
 {
-  "id": 162,
-  "name": "Cult Armed Priest",
-  "name_key": "Tbl_Unit_Name_162",
-  "slug": "cult-armed-priest",
-  "rarity": "SR",
-  "rarity_stars": "★★★",
-  "rarity_numeric": 3,
-  "element": "Power",
-  "element_numeric": 1,
-  "role": "Attacker",
-  "role_numeric": 1,
-  "trait": "Mars",
-  "disposition_numeric": 2,
-  "icon": "162_Knightguard",
-  "model": "162_Knightguard/Unit/prf_162",
-  "animation_event": "162_knightguard",
-  "book_index": 1,
-  "acquisition_id": 10002,
-  "btl_power": 7050,
-  "btl_rate": 264430,
-  "names": {
-    "key": "Tbl_Unit_Name_162",
-    "english": "Cult Armed Priest",
-    "japanese": "カルト武装神官",
-    "korean": "교단 무장신관"
+ "id": 162,
+ "name": "Cult Armed Priest",
+ "name_key": "Tbl_Unit_Name_162",
+ "slug": "cult-armed-priest",
+ "rarity": "SR",
+ "rarity_stars": "★★★",
+ "rarity_numeric": 3,
+ "element": "Power",
+ "element_numeric": 1,
+ "role": "Attacker",
+ "role_numeric": 1,
+ "trait": "Mars",
+ "disposition_numeric": 2,
+ "icon": "162_Knightguard",
+ "model": "162_Knightguard/Unit/prf_162",
+ "animation_event": "162_knightguard",
+ "book_index": 1,
+ "acquisition_id": 10002,
+ "btl_power": 7050,
+ "btl_rate": 264430,
+ "names": {
+  "key": "Tbl_Unit_Name_162",
+  "english": "Cult Armed Priest",
+  "japanese": "カルト武装神官",
+  "korean": "교단 무장신관"
+ },
+ "lore": {
+  "key": "Tbl_Unit_Desc_162",
+  "english": "Showing promising skills in an evil demonic cult, it ascended to a higher ranking position. Proving its fanatical loyalty and faith toward the cult, it obtained enough power to go against the demons of the Demon Realm by reinforcing and transforming its body with spells. It personally carries out the will of the cult, and punish those non-believers and heretics if needed.",
+  "japanese": "魔界の邪教で頭角を現し、教団の上層部に加担した者。教団への狂的な忠誠心と信仰を証明し、呪術で身体を強化・改造し、魔界の魔族とも立ちはだかれる戦闘能力を身に着けた。教団上層部の意思を直接貫き、必要に応じては不信者や異端者を直接断罪することもある。",
+  "korean": "마계의 사악한 교단에서 두각을 드러내, 교단의 상층부에 가담한 자. 교단에 대한 광적인 충성심과 신앙심을 증명하고, 주술로 신체를 강화, 개조하여 마계의 마족들과도 맞서 싸울 수 있는 전투 능력을 갖췄다. 교단 상층부의 뜻을 직접 관철하고, 필요할 경우 불신자와 이단자를 직접 단죄하기도 한다.",
+  "chinese_simplified": "在魔界邪教团中脱颖而出，加入了教团上层的一群人。他们证明了自己对教团的狂热忠诚和信仰，并通过咒术强化、改造了自身，获得了能与魔界魔族抗衡的战斗能力。亲自执行教团上层的旨意，在必要时判决不信者与异端者。",
+  "chinese_traditional": "在魔界邪教團中脫穎而出，加入了教團上層的一群人。他們證明了自己對教團的狂熱忠誠和信仰，並透過咒術強化、改造了自身，獲得了能與魔界魔族抗衡的戰鬥能力。親自執行教團上層的旨意，在必要時判決不信者與異端者。",
+  "spanish": "Alguien que alcanzó prominencia dentro de la secta demoníaca del Reino de los Demonios, uniéndose a sus altas esferas. Tras demostrar una lealtad y devoción fanáticas a la secta, mejoraron y modificaron su físico mediante la brujería, adquiriendo destreza en el combate suficiente para enfrentarse a las razas demoníacas del Inframundo. Hacen cumplir directamente la voluntad de los altos mandos de la secta y, cuando es necesario, ejecutan personalmente la condena de los infieles y herejes."
+ },
+ "base_stats": {
+  "HP": 14664,
+  "ATK": 1240,
+  "DEF": 846,
+  "SPD": 76,
+  "CRATE": 50,
+  "CDMG": 575,
+  "CRES": 0,
+  "ACC": 0,
+  "EVD": 0
+ },
+ "stats": {
+  "HP": 27322,
+  "ATK": 2323,
+  "DEF": 1564,
+  "SPD": 76,
+  "CRATE": 75,
+  "CDMG": 650,
+  "CRES": 0,
+  "ACC": 0,
+  "EVD": 0
+ },
+ "evol_stat_id": 1,
+ "evol_stat_type": "Attacker",
+ "evolution_bonuses": {
+  "1": {
+   "HP": 40,
+   "ATK": 6,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
   },
-  "lore": {
-    "key": "Tbl_Unit_Desc_162",
-    "english": "Showing promising skills in an evil demonic cult, it ascended to a higher ranking position. Proving its fanatical loyalty and faith toward the cult, it obtained enough power to go against the demons of the Demon Realm by reinforcing and transforming its body with spells. It personally carries out the will of the cult, and punish those non-believers and heretics if needed.",
-    "japanese": "魔界の邪教で頭角を現し、教団の上層部に加担した者。教団への狂的な忠誠心と信仰を証明し、呪術で身体を強化・改造し、魔界の魔族とも立ちはだかれる戦闘能力を身に着けた。教団上層部の意思を直接貫き、必要に応じては不信者や異端者を直接断罪することもある。",
-    "korean": "마계의 사악한 교단에서 두각을 드러내, 교단의 상층부에 가담한 자. 교단에 대한 광적인 충성심과 신앙심을 증명하고, 주술로 신체를 강화, 개조하여 마계의 마족들과도 맞서 싸울 수 있는 전투 능력을 갖췄다. 교단 상층부의 뜻을 직접 관철하고, 필요할 경우 불신자와 이단자를 직접 단죄하기도 한다.",
-    "chinese_simplified": "在魔界邪教团中脱颖而出，加入了教团上层的一群人。他们证明了自己对教团的狂热忠诚和信仰，并通过咒术强化、改造了自身，获得了能与魔界魔族抗衡的战斗能力。亲自执行教团上层的旨意，在必要时判决不信者与异端者。",
-    "chinese_traditional": "在魔界邪教團中脫穎而出，加入了教團上層的一群人。他們證明了自己對教團的狂熱忠誠和信仰，並透過咒術強化、改造了自身，獲得了能與魔界魔族抗衡的戰鬥能力。親自執行教團上層的旨意，在必要時判決不信者與異端者。",
-    "spanish": "Alguien que alcanzó prominencia dentro de la secta demoníaca del Reino de los Demonios, uniéndose a sus altas esferas. Tras demostrar una lealtad y devoción fanáticas a la secta, mejoraron y modificaron su físico mediante la brujería, adquiriendo destreza en el combate suficiente para enfrentarse a las razas demoníacas del Inframundo. Hacen cumplir directamente la voluntad de los altos mandos de la secta y, cuando es necesario, ejecutan personalmente la condena de los infieles y herejes."
+  "2": {
+   "HP": 80,
+   "ATK": 12,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
   },
-  "base_stats": {
-    "HP": 14664,
-    "ATK": 1240,
-    "DEF": 846,
+  "3": {
+   "HP": 120,
+   "ATK": 18,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "4": {
+   "HP": 160,
+   "ATK": 24,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "5": {
+   "HP": 200,
+   "ATK": 30,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "6": {
+   "HP": 200,
+   "ATK": 30,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 25,
+   "CDMG": 75,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  }
+ },
+ "evolution_bonuses_per_grade": {
+  "1": {
+   "HP": 40,
+   "ATK": 6,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "2": {
+   "HP": 80,
+   "ATK": 12,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "3": {
+   "HP": 120,
+   "ATK": 18,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "4": {
+   "HP": 160,
+   "ATK": 24,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "5": {
+   "HP": 200,
+   "ATK": 30,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "6": {
+   "HP": 200,
+   "ATK": 30,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 25,
+   "CDMG": 75,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  }
+ },
+ "stats_by_grade": {
+  "1": {
+   "grade": 1,
+   "max_level": 10,
+   "stats": {
+    "HP": 16564,
+    "ATK": 1400,
+    "DEF": 955,
     "SPD": 76,
     "CRATE": 50,
     "CDMG": 575,
     "CRES": 0,
     "ACC": 0,
     "EVD": 0
-  },
-  "stats": {
-    "HP": 27322,
-    "ATK": 2323,
-    "DEF": 1564,
-    "SPD": 76,
-    "CRATE": 75,
-    "CDMG": 650,
+   },
+   "evolution_bonus_total": {
+    "HP": 40,
+    "ATK": 6,
+    "DEF": 0,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
     "CRES": 0,
     "ACC": 0,
     "EVD": 0
+   }
   },
-  "evol_stat_id": 1,
-  "evol_stat_type": "Attacker",
-  "evolution_bonuses": {
-    "1": {
-      "HP": 40,
-      "ATK": 6,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "2": {
-      "HP": 80,
-      "ATK": 12,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "3": {
-      "HP": 120,
-      "ATK": 18,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "4": {
-      "HP": 160,
-      "ATK": 24,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "5": {
-      "HP": 200,
-      "ATK": 30,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "6": {
-      "HP": 200,
-      "ATK": 30,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 25,
-      "CDMG": 75,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    }
+  "2": {
+   "grade": 2,
+   "max_level": 20,
+   "stats": {
+    "HP": 18676,
+    "ATK": 1579,
+    "DEF": 1077,
+    "SPD": 76,
+    "CRATE": 50,
+    "CDMG": 575,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 80,
+    "ATK": 12,
+    "DEF": 0,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "evolution_bonuses_per_grade": {
-    "1": {
-      "HP": 40,
-      "ATK": 6,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "2": {
-      "HP": 80,
-      "ATK": 12,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "3": {
-      "HP": 120,
-      "ATK": 18,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "4": {
-      "HP": 160,
-      "ATK": 24,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "5": {
-      "HP": 200,
-      "ATK": 30,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "6": {
-      "HP": 200,
-      "ATK": 30,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 25,
-      "CDMG": 75,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    }
+  "3": {
+   "grade": 3,
+   "max_level": 30,
+   "stats": {
+    "HP": 20787,
+    "ATK": 1757,
+    "DEF": 1199,
+    "SPD": 76,
+    "CRATE": 50,
+    "CDMG": 575,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 120,
+    "ATK": 18,
+    "DEF": 0,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "stats_by_grade": {
-    "1": {
-      "grade": 1,
-      "max_level": 10,
-      "stats": {
-        "HP": 16564,
-        "ATK": 1400,
-        "DEF": 955,
-        "SPD": 76,
-        "CRATE": 50,
-        "CDMG": 575,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 40,
-        "ATK": 6,
-        "DEF": 0,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "2": {
-      "grade": 2,
-      "max_level": 20,
-      "stats": {
-        "HP": 18676,
-        "ATK": 1579,
-        "DEF": 1077,
-        "SPD": 76,
-        "CRATE": 50,
-        "CDMG": 575,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 80,
-        "ATK": 12,
-        "DEF": 0,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "3": {
-      "grade": 3,
-      "max_level": 30,
-      "stats": {
-        "HP": 20787,
-        "ATK": 1757,
-        "DEF": 1199,
-        "SPD": 76,
-        "CRATE": 50,
-        "CDMG": 575,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 120,
-        "ATK": 18,
-        "DEF": 0,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "4": {
-      "grade": 4,
-      "max_level": 40,
-      "stats": {
-        "HP": 22899,
-        "ATK": 1936,
-        "DEF": 1321,
-        "SPD": 76,
-        "CRATE": 50,
-        "CDMG": 575,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 160,
-        "ATK": 24,
-        "DEF": 0,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "5": {
-      "grade": 5,
-      "max_level": 50,
-      "stats": {
-        "HP": 25010,
-        "ATK": 2114,
-        "DEF": 1442,
-        "SPD": 76,
-        "CRATE": 50,
-        "CDMG": 575,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 200,
-        "ATK": 30,
-        "DEF": 0,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "6": {
-      "grade": 6,
-      "max_level": 60,
-      "stats": {
-        "HP": 27122,
-        "ATK": 2293,
-        "DEF": 1564,
-        "SPD": 76,
-        "CRATE": 50,
-        "CDMG": 575,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 200,
-        "ATK": 30,
-        "DEF": 0,
-        "SPD": 0,
-        "CRATE": 25,
-        "CDMG": 75,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    }
+  "4": {
+   "grade": 4,
+   "max_level": 40,
+   "stats": {
+    "HP": 22899,
+    "ATK": 1936,
+    "DEF": 1321,
+    "SPD": 76,
+    "CRATE": 50,
+    "CDMG": 575,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 160,
+    "ATK": 24,
+    "DEF": 0,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "stats_by_level": {
-    "10": {
-      "level": 10,
-      "grade_required": 1,
-      "stats": {
-        "HP": 16564,
-        "ATK": 1400,
-        "DEF": 955,
-        "SPD": 76,
-        "CRATE": 50,
-        "CDMG": 575,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "20": {
-      "level": 20,
-      "grade_required": 2,
-      "stats": {
-        "HP": 18676,
-        "ATK": 1579,
-        "DEF": 1077,
-        "SPD": 76,
-        "CRATE": 50,
-        "CDMG": 575,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "30": {
-      "level": 30,
-      "grade_required": 3,
-      "stats": {
-        "HP": 20787,
-        "ATK": 1757,
-        "DEF": 1199,
-        "SPD": 76,
-        "CRATE": 50,
-        "CDMG": 575,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "40": {
-      "level": 40,
-      "grade_required": 4,
-      "stats": {
-        "HP": 22899,
-        "ATK": 1936,
-        "DEF": 1321,
-        "SPD": 76,
-        "CRATE": 50,
-        "CDMG": 575,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "50": {
-      "level": 50,
-      "grade_required": 5,
-      "stats": {
-        "HP": 25010,
-        "ATK": 2114,
-        "DEF": 1442,
-        "SPD": 76,
-        "CRATE": 50,
-        "CDMG": 575,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "60": {
-      "level": 60,
-      "grade_required": 6,
-      "stats": {
-        "HP": 27122,
-        "ATK": 2293,
-        "DEF": 1564,
-        "SPD": 76,
-        "CRATE": 50,
-        "CDMG": 575,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    }
+  "5": {
+   "grade": 5,
+   "max_level": 50,
+   "stats": {
+    "HP": 25010,
+    "ATK": 2114,
+    "DEF": 1442,
+    "SPD": 76,
+    "CRATE": 50,
+    "CDMG": 575,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 200,
+    "ATK": 30,
+    "DEF": 0,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "skills": [
-    {
-      "id": 16200,
-      "name": "[&Color_Orange][&ATK] Aura[-]",
-      "name_key": "Tbl_UnitSkill_Name_ATK",
-      "name_readable": "ATK Aura",
-      "description": "Increase {3} of {2} allies by {0} in {1}",
-      "description_key": "Tbl_UnitSkill_Desc_Aura",
-      "description_readable": "Increase ATK of Power allies by 40% in Tactical Training",
-      "type_description": "[Aura Skill]",
-      "type_description_readable": "[Aura Skill]",
-      "icon": "leader_atk",
-      "cooldown": 0,
-      "hit_count": 0,
-      "additional_hits": 0,
-      "damage_scaling": "",
-      "skill_level_scaling": "",
-      "multiplier": 1.0,
-      "effects": [],
-      "battle_options": "1620001",
-      "battle_option_ids": [
-        1620001
-      ],
-      "evolution_level_required": 3,
-      "trigger_keyword": "",
-      "aura_info": "40,QUEST_TACTICS_ANALYSIS,Destruction,AtkRate",
-      "skill_button_type": -2,
-      "camera_type": 0,
-      "cutscene_flag": 0
-    },
-    {
-      "id": 16201,
-      "name": "[&Color_Cyan]Lance Pierce[-]",
-      "name_key": "Tbl_UnitSkill_Name_16201",
-      "name_readable": "Lance Pierce",
-      "description": "Rushes towards the enemy and performs a powerful stabbing attack.\nPerforms a [&Color_Cyan]([V3:1620102]%)[-] [&Common_Word_Skill_DefPenetrate] attack.",
-      "description_key": "Tbl_UnitSkill_Desc_16201",
-      "description_readable": "Rushes towards the enemy and performs a powerful stabbing attack.\nPerforms a (10%) DEF Penetrate attack.",
-      "type_description": "[Normal Attack]",
-      "type_description_readable": "[Normal Attack]",
-      "icon": "16201",
-      "cooldown": 0,
-      "hit_count": 1,
-      "additional_hits": 0,
-      "damage_scaling": "[ATK]",
-      "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": 0.0,
-      "effects": [],
-      "battle_options": "1620101/1620102",
-      "battle_option_ids": [
-        1620101,
-        1620102
-      ],
-      "evolution_level_required": 0,
-      "trigger_keyword": "",
-      "aura_info": "",
-      "skill_button_type": 0,
-      "camera_type": 0,
-      "cutscene_flag": 0
-    },
-    {
-      "id": 16202,
-      "name": "[&Color_Cyan]Cultist Guardian[-]",
-      "name_key": "Tbl_UnitSkill_Name_16202",
-      "name_readable": "Cultist Guardian",
-      "description": "When hit, inflicts [&Color_Cyan]([V3:1620201]%)[-] [&Weaken] to the attacker at a [&Color_Cyan][R:1620201]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:1620201] turn(s)\nIf the character's [&HP] is less than [&Color_Cyan]75%[-] when hit, grants [&CountAttack].\n[&Common_Word_Skill_ValueTurn]: [V2:1620202] turn(s)",
-      "description_key": "Tbl_UnitSkill_Desc_16202",
-      "description_readable": "When hit, inflicts (19.5%) Weaken to the attacker at a 45% chance.\nDuration: 2 turn(s)\nIf the character's HP is less than 75% when hit, grants Counterattack.\nDuration: 2 turn(s)",
-      "type_description": "[Passive Skill]",
-      "type_description_readable": "[Passive Skill]",
-      "icon": "16202",
-      "cooldown": 3,
-      "hit_count": 1,
-      "additional_hits": 0,
-      "damage_scaling": "",
-      "skill_level_scaling": "[P:10]/[B:10]/[P:10]/[B:10]/[P:10]",
-      "multiplier": 0.02,
-      "effects": [],
-      "battle_options": "1620201/1620202",
-      "battle_option_ids": [
-        1620201,
-        1620202
-      ],
-      "evolution_level_required": 0,
-      "trigger_keyword": "",
-      "aura_info": "",
-      "skill_button_type": -1,
-      "camera_type": 0,
-      "cutscene_flag": 0
-    },
-    {
-      "id": 16203,
-      "name": "[&Color_Cyan]Lance Brandish[-]",
-      "name_key": "Tbl_UnitSkill_Name_16203",
-      "name_readable": "Lance Brandish",
-      "description": "Quickly swings the spear to attack an enemy 5 times.\nPerforms a [&Color_Cyan]([V3:1620302]%)[-] [&Common_Word_Skill_DefPenetrate] attack.\nIf the target's HP is less than [&Color_Cyan]50%[-], performs a [&Common_Word_Skill_ShieldPenetrate] attack.",
-      "description_key": "Tbl_UnitSkill_Desc_16203",
-      "description_readable": "Quickly swings the spear to attack an enemy 5 times.\nPerforms a (50%) DEF Penetrate attack.\nIf the target's HP is less than 50%, performs a Shield Penetrate attack.",
-      "type_description": "[Attack Skill]",
-      "type_description_readable": "[Attack Skill]",
-      "icon": "16203",
-      "cooldown": 3,
-      "hit_count": 5,
-      "additional_hits": 0,
-      "damage_scaling": "[ATK]",
-      "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": 0.0,
-      "effects": [],
-      "battle_options": "1620301/1620302/1620303",
-      "battle_option_ids": [
-        1620301,
-        1620302,
-        1620303
-      ],
-      "evolution_level_required": 1,
-      "trigger_keyword": "",
-      "aura_info": "",
-      "skill_button_type": 0,
-      "camera_type": 0,
-      "cutscene_flag": 0
-    }
-  ],
-  "weapons": []
+  "6": {
+   "grade": 6,
+   "max_level": 60,
+   "stats": {
+    "HP": 27122,
+    "ATK": 2293,
+    "DEF": 1564,
+    "SPD": 76,
+    "CRATE": 50,
+    "CDMG": 575,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 200,
+    "ATK": 30,
+    "DEF": 0,
+    "SPD": 0,
+    "CRATE": 25,
+    "CDMG": 75,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  }
+ },
+ "stats_by_level": {
+  "10": {
+   "level": 10,
+   "grade_required": 1,
+   "stats": {
+    "HP": 16564,
+    "ATK": 1400,
+    "DEF": 955,
+    "SPD": 76,
+    "CRATE": 50,
+    "CDMG": 575,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  },
+  "20": {
+   "level": 20,
+   "grade_required": 2,
+   "stats": {
+    "HP": 18676,
+    "ATK": 1579,
+    "DEF": 1077,
+    "SPD": 76,
+    "CRATE": 50,
+    "CDMG": 575,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  },
+  "30": {
+   "level": 30,
+   "grade_required": 3,
+   "stats": {
+    "HP": 20787,
+    "ATK": 1757,
+    "DEF": 1199,
+    "SPD": 76,
+    "CRATE": 50,
+    "CDMG": 575,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  },
+  "40": {
+   "level": 40,
+   "grade_required": 4,
+   "stats": {
+    "HP": 22899,
+    "ATK": 1936,
+    "DEF": 1321,
+    "SPD": 76,
+    "CRATE": 50,
+    "CDMG": 575,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  },
+  "50": {
+   "level": 50,
+   "grade_required": 5,
+   "stats": {
+    "HP": 25010,
+    "ATK": 2114,
+    "DEF": 1442,
+    "SPD": 76,
+    "CRATE": 50,
+    "CDMG": 575,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  },
+  "60": {
+   "level": 60,
+   "grade_required": 6,
+   "stats": {
+    "HP": 27122,
+    "ATK": 2293,
+    "DEF": 1564,
+    "SPD": 76,
+    "CRATE": 50,
+    "CDMG": 575,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  }
+ },
+ "skills": [
+  {
+   "id": 16200,
+   "name": "[&Color_Orange][&ATK] Aura[-]",
+   "name_key": "Tbl_UnitSkill_Name_ATK",
+   "name_readable": "ATK Aura",
+   "description": "Increase {3} of {2} allies by {0} in {1}",
+   "description_key": "Tbl_UnitSkill_Desc_Aura",
+   "description_readable": "Increase ATK of Power allies by 40% in Tactical Training",
+   "type_description": "[Aura Skill]",
+   "type_description_readable": "[Aura Skill]",
+   "icon": "leader_atk",
+   "cooldown": 0,
+   "hit_count": 0,
+   "additional_hits": 0,
+   "damage_scaling": "",
+   "skill_level_scaling": "",
+   "multiplier": null,
+   "effects": [],
+   "battle_options": "1620001",
+   "battle_option_ids": [
+    1620001
+   ],
+   "evolution_level_required": 3,
+   "trigger_keyword": "",
+   "aura_info": "40,QUEST_TACTICS_ANALYSIS,Destruction,AtkRate",
+   "skill_button_type": -2,
+   "camera_type": 0,
+   "cutscene_flag": 0,
+   "damage": null
+  },
+  {
+   "id": 16201,
+   "name": "[&Color_Cyan]Lance Pierce[-]",
+   "name_key": "Tbl_UnitSkill_Name_16201",
+   "name_readable": "Lance Pierce",
+   "description": "Rushes towards the enemy and performs a powerful stabbing attack.\nPerforms a [&Color_Cyan]([V3:1620102]%)[-] [&Common_Word_Skill_DefPenetrate] attack.",
+   "description_key": "Tbl_UnitSkill_Desc_16201",
+   "description_readable": "Rushes towards the enemy and performs a powerful stabbing attack.\nPerforms a (10%) DEF Penetrate attack.",
+   "type_description": "[Normal Attack]",
+   "type_description_readable": "[Normal Attack]",
+   "icon": "16201",
+   "cooldown": 0,
+   "hit_count": 1,
+   "additional_hits": 0,
+   "damage_scaling": "[ATK]",
+   "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+   "multiplier": 504.0,
+   "effects": [],
+   "battle_options": "1620101/1620102",
+   "battle_option_ids": [
+    1620101,
+    1620102
+   ],
+   "evolution_level_required": 0,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": 0,
+   "camera_type": 0,
+   "cutscene_flag": 0,
+   "damage": {
+    "scaling": [
+     {
+      "stat": "ATK",
+      "pct": 504.0
+     }
+    ],
+    "hits": [
+     {
+      "pct": 504.0,
+      "count": 1
+     }
+    ],
+    "total": 504.0
+   }
+  },
+  {
+   "id": 16202,
+   "name": "[&Color_Cyan]Cultist Guardian[-]",
+   "name_key": "Tbl_UnitSkill_Name_16202",
+   "name_readable": "Cultist Guardian",
+   "description": "When hit, inflicts [&Color_Cyan]([V3:1620201]%)[-] [&Weaken] to the attacker at a [&Color_Cyan][R:1620201]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:1620201] turn(s)\nIf the character's [&HP] is less than [&Color_Cyan]75%[-] when hit, grants [&CountAttack].\n[&Common_Word_Skill_ValueTurn]: [V2:1620202] turn(s)",
+   "description_key": "Tbl_UnitSkill_Desc_16202",
+   "description_readable": "When hit, inflicts (19.5%) Weaken to the attacker at a 45% chance.\nDuration: 2 turn(s)\nIf the character's HP is less than 75% when hit, grants Counterattack.\nDuration: 2 turn(s)",
+   "type_description": "[Passive Skill]",
+   "type_description_readable": "[Passive Skill]",
+   "icon": "16202",
+   "cooldown": 3,
+   "hit_count": 1,
+   "additional_hits": 0,
+   "damage_scaling": "",
+   "skill_level_scaling": "[P:10]/[B:10]/[P:10]/[B:10]/[P:10]",
+   "multiplier": null,
+   "effects": [],
+   "battle_options": "1620201/1620202",
+   "battle_option_ids": [
+    1620201,
+    1620202
+   ],
+   "evolution_level_required": 0,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": -1,
+   "camera_type": 0,
+   "cutscene_flag": 0,
+   "damage": null
+  },
+  {
+   "id": 16203,
+   "name": "[&Color_Cyan]Lance Brandish[-]",
+   "name_key": "Tbl_UnitSkill_Name_16203",
+   "name_readable": "Lance Brandish",
+   "description": "Quickly swings the spear to attack an enemy 5 times.\nPerforms a [&Color_Cyan]([V3:1620302]%)[-] [&Common_Word_Skill_DefPenetrate] attack.\nIf the target's HP is less than [&Color_Cyan]50%[-], performs a [&Common_Word_Skill_ShieldPenetrate] attack.",
+   "description_key": "Tbl_UnitSkill_Desc_16203",
+   "description_readable": "Quickly swings the spear to attack an enemy 5 times.\nPerforms a (50%) DEF Penetrate attack.\nIf the target's HP is less than 50%, performs a Shield Penetrate attack.",
+   "type_description": "[Attack Skill]",
+   "type_description_readable": "[Attack Skill]",
+   "icon": "16203",
+   "cooldown": 3,
+   "hit_count": 5,
+   "additional_hits": 0,
+   "damage_scaling": "[ATK]",
+   "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+   "multiplier": 138.4,
+   "effects": [],
+   "battle_options": "1620301/1620302/1620303",
+   "battle_option_ids": [
+    1620301,
+    1620302,
+    1620303
+   ],
+   "evolution_level_required": 1,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": 0,
+   "camera_type": 0,
+   "cutscene_flag": 0,
+   "damage": {
+    "scaling": [
+     {
+      "stat": "ATK",
+      "pct": 138.4
+     }
+    ],
+    "hits": [
+     {
+      "pct": 138.4,
+      "count": 5
+     }
+    ],
+    "total": 692.0
+   }
+  }
+ ],
+ "weapons": []
 }

@@ -1,569 +1,601 @@
 {
-  "id": 202,
-  "name": "Death Knight",
-  "name_key": "Tbl_Unit_Name_202",
-  "slug": "death-knight",
-  "rarity": "SR",
-  "rarity_stars": "★★★",
-  "rarity_numeric": 3,
-  "element": "Power",
-  "element_numeric": 1,
-  "role": "Defender",
-  "role_numeric": 2,
-  "trait": "Moon",
-  "disposition_numeric": 1,
-  "icon": "202_Deathknight",
-  "model": "202_Deathknight/Unit/prf_202",
-  "animation_event": "202_deathknight",
-  "book_index": 12,
-  "acquisition_id": 10002,
-  "btl_power": 7050,
-  "btl_rate": 352342,
-  "names": {
-    "key": "Tbl_Unit_Name_202",
-    "english": "Death Knight",
-    "japanese": "デスナイト",
-    "korean": "데스나이트"
+ "id": 202,
+ "name": "Death Knight",
+ "name_key": "Tbl_Unit_Name_202",
+ "slug": "death-knight",
+ "rarity": "SR",
+ "rarity_stars": "★★★",
+ "rarity_numeric": 3,
+ "element": "Power",
+ "element_numeric": 1,
+ "role": "Defender",
+ "role_numeric": 2,
+ "trait": "Moon",
+ "disposition_numeric": 1,
+ "icon": "202_Deathknight",
+ "model": "202_Deathknight/Unit/prf_202",
+ "animation_event": "202_deathknight",
+ "book_index": 12,
+ "acquisition_id": 10002,
+ "btl_power": 7050,
+ "btl_rate": 352342,
+ "names": {
+  "key": "Tbl_Unit_Name_202",
+  "english": "Death Knight",
+  "japanese": "デスナイト",
+  "korean": "데스나이트"
+ },
+ "lore": {
+  "key": "Tbl_Unit_Desc_202",
+  "english": "A Death Knight that has awakened from the eternal slumber after being corrupted by the miasma of the Demon Realm.\n\nSet apart from lesser mutants driven solely by instinct, this entity's masterly swordsmanship and superb combat senses from its past life have been reconstructed through the Demon Realm's miasma.\n\nWithin its skeletal frame, the miasma is intensely condensed. By releasing it outward, it can shroud itself in a solid 'armor' that mitigates any physical impact or magical interference.",
+  "japanese": "魔界の瘴気に侵され、永遠の眠りから目を覚めた死の騎士。\n\n本能に振り回される下級変異体たちとは桁違いの力を持ち、生前の優れた剣術と戦闘感覚が魔界の瘴気によって再構成されている。\n\n骨格内に大量の魔界の瘴気が凝縮されていて、それを外部に放出することにより、どんな物理的な衝撃や魔法的な干渉も軽減する堅い「鎧」を纏うことができる。",
+  "korean": "마계의 독기에 침식되어 영원한 잠에서 깨어난 죽음의 기사.\n\n본능에만 휘둘리는 하위 변이체들과는 궤를 달리하며, 생전의 숙련된 검술과 탁월한 전투 감각이 마계의 독기를 통해 재구성된 존재이다.\n\n이들의 골격 내부에는 마계의 독기가 극도로 응축되어 있으며, 이를 외부로 방출하여 어떠한 물리적 타격이나 마법적 간섭조차 감쇄하는 견고한 '갑주'를 두를 수 있다.",
+  "chinese_simplified": "因魔界瘴气侵蚀而从永眠中苏醒的死亡骑士。\n\n与仅凭本能驱使的低阶变异体不可同日而语，其生前精湛的剑术与卓越的战斗天赋，在魔界瘴气的淬炼下得到完美重构。\n\n其骨骼内部凝聚着浓度极高的魔界瘴气，释放于体表时可形成一层坚固「铠甲」，足以消解任何物理打击与魔法干涉。",
+  "chinese_traditional": "因魔界瘴氣侵蝕而從永眠中甦醒的死亡騎士。\n\n與僅憑本能驅使的低階變異體不可同日而語，其生前精湛的劍術與卓越的戰鬥天賦，在魔界瘴氣的淬鍊下得到完美重構。\n\n其骨骼內部凝聚著濃度極高的魔界瘴氣，釋放於體表時可形成一層堅固「鎧甲」，足以消解任何物理打擊與魔法干涉。",
+  "spanish": "Un caballero de la muerte que despertó de su sueño eterno tras ser corrompido por la energía demoníaca del Mundo Demoníaco.\n\nA diferencia de las variantes inferiores que actúan únicamente por instinto, esta entidad conserva y reconstruye, a través de la energía demoníaca, la maestría en el manejo de la espada y el excepcional sentido del combate que poseía en vida.\n\nEn el interior de su esqueleto se concentra una cantidad extrema de energía demoníaca. Al liberarla hacia el exterior, puede revestirse con una sólida \"armadura\" capaz de mitigar incluso los ataques físicos más contundentes y las interferencias mágicas más poderosas."
+ },
+ "base_stats": {
+  "HP": 19740,
+  "ATK": 648,
+  "DEF": 1184,
+  "SPD": 71,
+  "CRATE": 25,
+  "CDMG": 500,
+  "CRES": 50,
+  "ACC": 0,
+  "EVD": 25
+ },
+ "stats": {
+  "HP": 37761,
+  "ATK": 1198,
+  "DEF": 2289,
+  "SPD": 71,
+  "CRATE": 25,
+  "CDMG": 500,
+  "CRES": 100,
+  "ACC": 0,
+  "EVD": 50
+ },
+ "evol_stat_id": 2,
+ "evol_stat_type": "Defender",
+ "evolution_bonuses": {
+  "1": {
+   "HP": 250,
+   "ATK": 0,
+   "DEF": 20,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
   },
-  "lore": {
-    "key": "Tbl_Unit_Desc_202",
-    "english": "A Death Knight that has awakened from the eternal slumber after being corrupted by the miasma of the Demon Realm.\n\nSet apart from lesser mutants driven solely by instinct, this entity's masterly swordsmanship and superb combat senses from its past life have been reconstructed through the Demon Realm's miasma.\n\nWithin its skeletal frame, the miasma is intensely condensed. By releasing it outward, it can shroud itself in a solid 'armor' that mitigates any physical impact or magical interference.",
-    "japanese": "魔界の瘴気に侵され、永遠の眠りから目を覚めた死の騎士。\n\n本能に振り回される下級変異体たちとは桁違いの力を持ち、生前の優れた剣術と戦闘感覚が魔界の瘴気によって再構成されている。\n\n骨格内に大量の魔界の瘴気が凝縮されていて、それを外部に放出することにより、どんな物理的な衝撃や魔法的な干渉も軽減する堅い「鎧」を纏うことができる。",
-    "korean": "마계의 독기에 침식되어 영원한 잠에서 깨어난 죽음의 기사.\n\n본능에만 휘둘리는 하위 변이체들과는 궤를 달리하며, 생전의 숙련된 검술과 탁월한 전투 감각이 마계의 독기를 통해 재구성된 존재이다.\n\n이들의 골격 내부에는 마계의 독기가 극도로 응축되어 있으며, 이를 외부로 방출하여 어떠한 물리적 타격이나 마법적 간섭조차 감쇄하는 견고한 '갑주'를 두를 수 있다.",
-    "chinese_simplified": "因魔界瘴气侵蚀而从永眠中苏醒的死亡骑士。\n\n与仅凭本能驱使的低阶变异体不可同日而语，其生前精湛的剑术与卓越的战斗天赋，在魔界瘴气的淬炼下得到完美重构。\n\n其骨骼内部凝聚着浓度极高的魔界瘴气，释放于体表时可形成一层坚固「铠甲」，足以消解任何物理打击与魔法干涉。",
-    "chinese_traditional": "因魔界瘴氣侵蝕而從永眠中甦醒的死亡騎士。\n\n與僅憑本能驅使的低階變異體不可同日而語，其生前精湛的劍術與卓越的戰鬥天賦，在魔界瘴氣的淬鍊下得到完美重構。\n\n其骨骼內部凝聚著濃度極高的魔界瘴氣，釋放於體表時可形成一層堅固「鎧甲」，足以消解任何物理打擊與魔法干涉。",
-    "spanish": "Un caballero de la muerte que despertó de su sueño eterno tras ser corrompido por la energía demoníaca del Mundo Demoníaco.\n\nA diferencia de las variantes inferiores que actúan únicamente por instinto, esta entidad conserva y reconstruye, a través de la energía demoníaca, la maestría en el manejo de la espada y el excepcional sentido del combate que poseía en vida.\n\nEn el interior de su esqueleto se concentra una cantidad extrema de energía demoníaca. Al liberarla hacia el exterior, puede revestirse con una sólida \"armadura\" capaz de mitigar incluso los ataques físicos más contundentes y las interferencias mágicas más poderosas."
+  "2": {
+   "HP": 500,
+   "ATK": 0,
+   "DEF": 40,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
   },
-  "base_stats": {
-    "HP": 19740,
-    "ATK": 648,
-    "DEF": 1184,
+  "3": {
+   "HP": 750,
+   "ATK": 0,
+   "DEF": 60,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "4": {
+   "HP": 1000,
+   "ATK": 0,
+   "DEF": 80,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "5": {
+   "HP": 1250,
+   "ATK": 0,
+   "DEF": 100,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "6": {
+   "HP": 1250,
+   "ATK": 0,
+   "DEF": 100,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 50,
+   "ACC": 0,
+   "EVD": 25
+  }
+ },
+ "evolution_bonuses_per_grade": {
+  "1": {
+   "HP": 250,
+   "ATK": 0,
+   "DEF": 20,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "2": {
+   "HP": 500,
+   "ATK": 0,
+   "DEF": 40,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "3": {
+   "HP": 750,
+   "ATK": 0,
+   "DEF": 60,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "4": {
+   "HP": 1000,
+   "ATK": 0,
+   "DEF": 80,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "5": {
+   "HP": 1250,
+   "ATK": 0,
+   "DEF": 100,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "6": {
+   "HP": 1250,
+   "ATK": 0,
+   "DEF": 100,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 50,
+   "ACC": 0,
+   "EVD": 25
+  }
+ },
+ "stats_by_grade": {
+  "1": {
+   "grade": 1,
+   "max_level": 10,
+   "stats": {
+    "HP": 22298,
+    "ATK": 731,
+    "DEF": 1337,
     "SPD": 71,
     "CRATE": 25,
     "CDMG": 500,
     "CRES": 50,
     "ACC": 0,
     "EVD": 25
+   },
+   "evolution_bonus_total": {
+    "HP": 250,
+    "ATK": 0,
+    "DEF": 20,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "stats": {
-    "HP": 37761,
-    "ATK": 1198,
-    "DEF": 2289,
+  "2": {
+   "grade": 2,
+   "max_level": 20,
+   "stats": {
+    "HP": 25140,
+    "ATK": 825,
+    "DEF": 1507,
     "SPD": 71,
     "CRATE": 25,
     "CDMG": 500,
-    "CRES": 100,
+    "CRES": 50,
     "ACC": 0,
-    "EVD": 50
+    "EVD": 25
+   },
+   "evolution_bonus_total": {
+    "HP": 500,
+    "ATK": 0,
+    "DEF": 40,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "evol_stat_id": 2,
-  "evol_stat_type": "Defender",
-  "evolution_bonuses": {
-    "1": {
-      "HP": 250,
-      "ATK": 0,
-      "DEF": 20,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "2": {
-      "HP": 500,
-      "ATK": 0,
-      "DEF": 40,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "3": {
-      "HP": 750,
-      "ATK": 0,
-      "DEF": 60,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "4": {
-      "HP": 1000,
-      "ATK": 0,
-      "DEF": 80,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "5": {
-      "HP": 1250,
-      "ATK": 0,
-      "DEF": 100,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "6": {
-      "HP": 1250,
-      "ATK": 0,
-      "DEF": 100,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 50,
-      "ACC": 0,
-      "EVD": 25
-    }
+  "3": {
+   "grade": 3,
+   "max_level": 30,
+   "stats": {
+    "HP": 27983,
+    "ATK": 918,
+    "DEF": 1678,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 50,
+    "ACC": 0,
+    "EVD": 25
+   },
+   "evolution_bonus_total": {
+    "HP": 750,
+    "ATK": 0,
+    "DEF": 60,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "evolution_bonuses_per_grade": {
-    "1": {
-      "HP": 250,
-      "ATK": 0,
-      "DEF": 20,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "2": {
-      "HP": 500,
-      "ATK": 0,
-      "DEF": 40,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "3": {
-      "HP": 750,
-      "ATK": 0,
-      "DEF": 60,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "4": {
-      "HP": 1000,
-      "ATK": 0,
-      "DEF": 80,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "5": {
-      "HP": 1250,
-      "ATK": 0,
-      "DEF": 100,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "6": {
-      "HP": 1250,
-      "ATK": 0,
-      "DEF": 100,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 50,
-      "ACC": 0,
-      "EVD": 25
-    }
+  "4": {
+   "grade": 4,
+   "max_level": 40,
+   "stats": {
+    "HP": 30825,
+    "ATK": 1011,
+    "DEF": 1848,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 50,
+    "ACC": 0,
+    "EVD": 25
+   },
+   "evolution_bonus_total": {
+    "HP": 1000,
+    "ATK": 0,
+    "DEF": 80,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "stats_by_grade": {
-    "1": {
-      "grade": 1,
-      "max_level": 10,
-      "stats": {
-        "HP": 22298,
-        "ATK": 731,
-        "DEF": 1337,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 50,
-        "ACC": 0,
-        "EVD": 25
-      },
-      "evolution_bonus_total": {
-        "HP": 250,
-        "ATK": 0,
-        "DEF": 20,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "2": {
-      "grade": 2,
-      "max_level": 20,
-      "stats": {
-        "HP": 25140,
-        "ATK": 825,
-        "DEF": 1507,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 50,
-        "ACC": 0,
-        "EVD": 25
-      },
-      "evolution_bonus_total": {
-        "HP": 500,
-        "ATK": 0,
-        "DEF": 40,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "3": {
-      "grade": 3,
-      "max_level": 30,
-      "stats": {
-        "HP": 27983,
-        "ATK": 918,
-        "DEF": 1678,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 50,
-        "ACC": 0,
-        "EVD": 25
-      },
-      "evolution_bonus_total": {
-        "HP": 750,
-        "ATK": 0,
-        "DEF": 60,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "4": {
-      "grade": 4,
-      "max_level": 40,
-      "stats": {
-        "HP": 30825,
-        "ATK": 1011,
-        "DEF": 1848,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 50,
-        "ACC": 0,
-        "EVD": 25
-      },
-      "evolution_bonus_total": {
-        "HP": 1000,
-        "ATK": 0,
-        "DEF": 80,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "5": {
-      "grade": 5,
-      "max_level": 50,
-      "stats": {
-        "HP": 33668,
-        "ATK": 1105,
-        "DEF": 2019,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 50,
-        "ACC": 0,
-        "EVD": 25
-      },
-      "evolution_bonus_total": {
-        "HP": 1250,
-        "ATK": 0,
-        "DEF": 100,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "6": {
-      "grade": 6,
-      "max_level": 60,
-      "stats": {
-        "HP": 36511,
-        "ATK": 1198,
-        "DEF": 2189,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 50,
-        "ACC": 0,
-        "EVD": 25
-      },
-      "evolution_bonus_total": {
-        "HP": 1250,
-        "ATK": 0,
-        "DEF": 100,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 50,
-        "ACC": 0,
-        "EVD": 25
-      }
-    }
+  "5": {
+   "grade": 5,
+   "max_level": 50,
+   "stats": {
+    "HP": 33668,
+    "ATK": 1105,
+    "DEF": 2019,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 50,
+    "ACC": 0,
+    "EVD": 25
+   },
+   "evolution_bonus_total": {
+    "HP": 1250,
+    "ATK": 0,
+    "DEF": 100,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "stats_by_level": {
-    "10": {
-      "level": 10,
-      "grade_required": 1,
-      "stats": {
-        "HP": 22298,
-        "ATK": 731,
-        "DEF": 1337,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 50,
-        "ACC": 0,
-        "EVD": 25
-      }
-    },
-    "20": {
-      "level": 20,
-      "grade_required": 2,
-      "stats": {
-        "HP": 25140,
-        "ATK": 825,
-        "DEF": 1507,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 50,
-        "ACC": 0,
-        "EVD": 25
-      }
-    },
-    "30": {
-      "level": 30,
-      "grade_required": 3,
-      "stats": {
-        "HP": 27983,
-        "ATK": 918,
-        "DEF": 1678,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 50,
-        "ACC": 0,
-        "EVD": 25
-      }
-    },
-    "40": {
-      "level": 40,
-      "grade_required": 4,
-      "stats": {
-        "HP": 30825,
-        "ATK": 1011,
-        "DEF": 1848,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 50,
-        "ACC": 0,
-        "EVD": 25
-      }
-    },
-    "50": {
-      "level": 50,
-      "grade_required": 5,
-      "stats": {
-        "HP": 33668,
-        "ATK": 1105,
-        "DEF": 2019,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 50,
-        "ACC": 0,
-        "EVD": 25
-      }
-    },
-    "60": {
-      "level": 60,
-      "grade_required": 6,
-      "stats": {
-        "HP": 36511,
-        "ATK": 1198,
-        "DEF": 2189,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 50,
-        "ACC": 0,
-        "EVD": 25
-      }
-    }
+  "6": {
+   "grade": 6,
+   "max_level": 60,
+   "stats": {
+    "HP": 36511,
+    "ATK": 1198,
+    "DEF": 2189,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 50,
+    "ACC": 0,
+    "EVD": 25
+   },
+   "evolution_bonus_total": {
+    "HP": 1250,
+    "ATK": 0,
+    "DEF": 100,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 50,
+    "ACC": 0,
+    "EVD": 25
+   }
+  }
+ },
+ "stats_by_level": {
+  "10": {
+   "level": 10,
+   "grade_required": 1,
+   "stats": {
+    "HP": 22298,
+    "ATK": 731,
+    "DEF": 1337,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 50,
+    "ACC": 0,
+    "EVD": 25
+   }
   },
-  "skills": [
-    {
-      "id": 20200,
-      "name": "[&Color_Orange][&DEF] Aura[-]",
-      "name_key": "Tbl_UnitSkill_Name_DEF",
-      "name_readable": "DEF Aura",
-      "description": "Increase {3} of {2} allies by {0} in {1}",
-      "description_key": "Tbl_UnitSkill_Desc_Aura",
-      "description_readable": "Increase DEF of Power allies by 27.5% in All Battles",
-      "type_description": "[Aura Skill]",
-      "type_description_readable": "[Aura Skill]",
-      "icon": "leader_def",
-      "cooldown": 0,
-      "hit_count": 0,
-      "additional_hits": 0,
-      "damage_scaling": "",
-      "skill_level_scaling": "",
-      "multiplier": 1.0,
-      "effects": [],
-      "battle_options": "2020001",
-      "battle_option_ids": [
-        2020001
-      ],
-      "evolution_level_required": 3,
-      "trigger_keyword": "",
-      "aura_info": "27.5,QUEST_ALL,Destruction,DefRate",
-      "skill_button_type": -2,
-      "camera_type": 0,
-      "cutscene_flag": 0
-    },
-    {
-      "id": 20201,
-      "name": "[&Color_Cyan]Death Slash[-]",
-      "name_key": "Tbl_UnitSkill_Name_20201",
-      "name_readable": "Death Slash",
-      "description": "Swings a massive sword upward from below to attack the enemy.\n[&Provocation]s the target hit at a [&Color_Cyan][R:2020102]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2020102] turn(s)",
-      "description_key": "Tbl_UnitSkill_Desc_20201",
-      "description_readable": "Swings a massive sword upward from below to attack the enemy.\nTaunts the target hit at a 5% chance.\nDuration: 2 turn(s)",
-      "type_description": "[Normal Attack]",
-      "type_description_readable": "[Normal Attack]",
-      "icon": "20201",
-      "cooldown": 0,
-      "hit_count": 1,
-      "additional_hits": 0,
-      "damage_scaling": "[ATK]",
-      "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": 0.0,
-      "effects": [],
-      "battle_options": "2020101/2020102",
-      "battle_option_ids": [
-        2020101,
-        2020102
-      ],
-      "evolution_level_required": 0,
-      "trigger_keyword": "",
-      "aura_info": "",
-      "skill_button_type": 0,
-      "camera_type": 0,
-      "cutscene_flag": 0
-    },
-    {
-      "id": 20202,
-      "name": "[&Color_Cyan]Ruinous Strike[-]",
-      "name_key": "Tbl_UnitSkill_Name_20202",
-      "name_readable": "Ruinous Strike",
-      "description": "Slams the sword down and lifts it back up to attack [A:20202] times.\nWhen a [&Common_Word_Skill_CriticalAttack] lands during the attack, grants a [&Shield] equal to [&Color_Cyan][V3:2020202]%[-] of [&DEF] to the character. \n[&Common_Word_Skill_ValueTurn]: [V2:2020202] turn(s)",
-      "description_key": "Tbl_UnitSkill_Desc_20202",
-      "description_readable": "Slams the sword down and lifts it back up to attack 2 times.\nWhen a CRIT ATK lands during the attack, grants a Shield equal to 300% of DEF to the character. \nDuration: 2 turn(s)",
-      "type_description": "[Attack Skill]",
-      "type_description_readable": "[Attack Skill]",
-      "icon": "20202",
-      "cooldown": 3,
-      "hit_count": 2,
-      "additional_hits": 0,
-      "damage_scaling": "[ATK]",
-      "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
-      "multiplier": 0.0,
-      "effects": [],
-      "battle_options": "2020201/2020202",
-      "battle_option_ids": [
-        2020201,
-        2020202
-      ],
-      "evolution_level_required": 0,
-      "trigger_keyword": "",
-      "aura_info": "",
-      "skill_button_type": 0,
-      "camera_type": 0,
-      "cutscene_flag": 0
-    },
-    {
-      "id": 20203,
-      "name": "[&Color_Cyan]Fleshless Skeleton[-]",
-      "name_key": "Tbl_UnitSkill_Name_20203",
-      "name_readable": "Fleshless Skeleton",
-      "description": "[&Color_Orange][&Tbl_Unit_Name_202][-] is immune to [&Burn] and [&Poison].",
-      "description_key": "Tbl_UnitSkill_Desc_20203",
-      "description_readable": "Death Knight is immune to Burn and Poison.",
-      "type_description": "[Passive Skill]",
-      "type_description_readable": "[Passive Skill]",
-      "icon": "20203",
-      "cooldown": 0,
-      "hit_count": 1,
-      "additional_hits": 0,
-      "damage_scaling": "",
-      "skill_level_scaling": "",
-      "multiplier": 1.0,
-      "effects": [],
-      "battle_options": "2020301/2020302",
-      "battle_option_ids": [
-        2020301,
-        2020302
-      ],
-      "evolution_level_required": 1,
-      "trigger_keyword": "",
-      "aura_info": "",
-      "skill_button_type": -1,
-      "camera_type": 0,
-      "cutscene_flag": 0
-    }
-  ],
-  "weapons": []
+  "20": {
+   "level": 20,
+   "grade_required": 2,
+   "stats": {
+    "HP": 25140,
+    "ATK": 825,
+    "DEF": 1507,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 50,
+    "ACC": 0,
+    "EVD": 25
+   }
+  },
+  "30": {
+   "level": 30,
+   "grade_required": 3,
+   "stats": {
+    "HP": 27983,
+    "ATK": 918,
+    "DEF": 1678,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 50,
+    "ACC": 0,
+    "EVD": 25
+   }
+  },
+  "40": {
+   "level": 40,
+   "grade_required": 4,
+   "stats": {
+    "HP": 30825,
+    "ATK": 1011,
+    "DEF": 1848,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 50,
+    "ACC": 0,
+    "EVD": 25
+   }
+  },
+  "50": {
+   "level": 50,
+   "grade_required": 5,
+   "stats": {
+    "HP": 33668,
+    "ATK": 1105,
+    "DEF": 2019,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 50,
+    "ACC": 0,
+    "EVD": 25
+   }
+  },
+  "60": {
+   "level": 60,
+   "grade_required": 6,
+   "stats": {
+    "HP": 36511,
+    "ATK": 1198,
+    "DEF": 2189,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 50,
+    "ACC": 0,
+    "EVD": 25
+   }
+  }
+ },
+ "skills": [
+  {
+   "id": 20200,
+   "name": "[&Color_Orange][&DEF] Aura[-]",
+   "name_key": "Tbl_UnitSkill_Name_DEF",
+   "name_readable": "DEF Aura",
+   "description": "Increase {3} of {2} allies by {0} in {1}",
+   "description_key": "Tbl_UnitSkill_Desc_Aura",
+   "description_readable": "Increase DEF of Power allies by 27.5% in All Battles",
+   "type_description": "[Aura Skill]",
+   "type_description_readable": "[Aura Skill]",
+   "icon": "leader_def",
+   "cooldown": 0,
+   "hit_count": 0,
+   "additional_hits": 0,
+   "damage_scaling": "",
+   "skill_level_scaling": "",
+   "multiplier": null,
+   "effects": [],
+   "battle_options": "2020001",
+   "battle_option_ids": [
+    2020001
+   ],
+   "evolution_level_required": 3,
+   "trigger_keyword": "",
+   "aura_info": "27.5,QUEST_ALL,Destruction,DefRate",
+   "skill_button_type": -2,
+   "camera_type": 0,
+   "cutscene_flag": 0,
+   "damage": null
+  },
+  {
+   "id": 20201,
+   "name": "[&Color_Cyan]Death Slash[-]",
+   "name_key": "Tbl_UnitSkill_Name_20201",
+   "name_readable": "Death Slash",
+   "description": "Swings a massive sword upward from below to attack the enemy.\n[&Provocation]s the target hit at a [&Color_Cyan][R:2020102]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2020102] turn(s)",
+   "description_key": "Tbl_UnitSkill_Desc_20201",
+   "description_readable": "Swings a massive sword upward from below to attack the enemy.\nTaunts the target hit at a 5% chance.\nDuration: 2 turn(s)",
+   "type_description": "[Normal Attack]",
+   "type_description_readable": "[Normal Attack]",
+   "icon": "20201",
+   "cooldown": 0,
+   "hit_count": 1,
+   "additional_hits": 0,
+   "damage_scaling": "[ATK]",
+   "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+   "multiplier": 504.0,
+   "effects": [],
+   "battle_options": "2020101/2020102",
+   "battle_option_ids": [
+    2020101,
+    2020102
+   ],
+   "evolution_level_required": 0,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": 0,
+   "camera_type": 0,
+   "cutscene_flag": 0,
+   "damage": {
+    "scaling": [
+     {
+      "stat": "ATK",
+      "pct": 504.0
+     }
+    ],
+    "hits": [
+     {
+      "pct": 504.0,
+      "count": 1
+     }
+    ],
+    "total": 504.0
+   }
+  },
+  {
+   "id": 20202,
+   "name": "[&Color_Cyan]Ruinous Strike[-]",
+   "name_key": "Tbl_UnitSkill_Name_20202",
+   "name_readable": "Ruinous Strike",
+   "description": "Slams the sword down and lifts it back up to attack [A:20202] times.\nWhen a [&Common_Word_Skill_CriticalAttack] lands during the attack, grants a [&Shield] equal to [&Color_Cyan][V3:2020202]%[-] of [&DEF] to the character. \n[&Common_Word_Skill_ValueTurn]: [V2:2020202] turn(s)",
+   "description_key": "Tbl_UnitSkill_Desc_20202",
+   "description_readable": "Slams the sword down and lifts it back up to attack 2 times.\nWhen a CRIT ATK lands during the attack, grants a Shield equal to 300% of DEF to the character. \nDuration: 2 turn(s)",
+   "type_description": "[Attack Skill]",
+   "type_description_readable": "[Attack Skill]",
+   "icon": "20202",
+   "cooldown": 3,
+   "hit_count": 2,
+   "additional_hits": 0,
+   "damage_scaling": "[ATK]",
+   "skill_level_scaling": "[D:10]/[B:10]/[D:10]/[B:10]/[D:10]",
+   "multiplier": 369.2,
+   "effects": [],
+   "battle_options": "2020201/2020202",
+   "battle_option_ids": [
+    2020201,
+    2020202
+   ],
+   "evolution_level_required": 0,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": 0,
+   "camera_type": 0,
+   "cutscene_flag": 0,
+   "damage": {
+    "scaling": [
+     {
+      "stat": "ATK",
+      "pct": 369.2
+     }
+    ],
+    "hits": [
+     {
+      "pct": 369.2,
+      "count": 2
+     }
+    ],
+    "total": 738.4
+   }
+  },
+  {
+   "id": 20203,
+   "name": "[&Color_Cyan]Fleshless Skeleton[-]",
+   "name_key": "Tbl_UnitSkill_Name_20203",
+   "name_readable": "Fleshless Skeleton",
+   "description": "[&Color_Orange][&Tbl_Unit_Name_202][-] is immune to [&Burn] and [&Poison].",
+   "description_key": "Tbl_UnitSkill_Desc_20203",
+   "description_readable": "Death Knight is immune to Burn and Poison.",
+   "type_description": "[Passive Skill]",
+   "type_description_readable": "[Passive Skill]",
+   "icon": "20203",
+   "cooldown": 0,
+   "hit_count": 1,
+   "additional_hits": 0,
+   "damage_scaling": "",
+   "skill_level_scaling": "",
+   "multiplier": null,
+   "effects": [],
+   "battle_options": "2020301/2020302",
+   "battle_option_ids": [
+    2020301,
+    2020302
+   ],
+   "evolution_level_required": 1,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": -1,
+   "camera_type": 0,
+   "cutscene_flag": 0,
+   "damage": null
+  }
+ ],
+ "weapons": []
 }

@@ -1,480 +1,495 @@
 {
-  "id": 163,
-  "name": "Familiar (Evil-Eye)",
-  "name_key": "Tbl_Unit_Name_163",
-  "slug": "familiar-evil-eye",
-  "rarity": "R",
-  "rarity_stars": "★",
-  "rarity_numeric": 1,
-  "element": "Power",
-  "element_numeric": 1,
-  "role": "Attacker",
-  "role_numeric": 1,
-  "trait": "Jupiter",
-  "disposition_numeric": 4,
-  "icon": "163_Familiar1",
-  "model": "163_Familiar1/Unit/prf_163",
-  "animation_event": "163_familiar1",
-  "book_index": 1,
-  "acquisition_id": 10001,
-  "btl_power": 4800,
-  "btl_rate": 284428,
-  "names": {
-    "key": "Tbl_Unit_Name_163",
-    "english": "Familiar (Evil-Eye)",
-    "japanese": "邪眼の使い魔",
-    "korean": "사안의 사역마"
+ "id": 163,
+ "name": "Familiar (Evil-Eye)",
+ "name_key": "Tbl_Unit_Name_163",
+ "slug": "familiar-evil-eye",
+ "rarity": "R",
+ "rarity_stars": "★",
+ "rarity_numeric": 1,
+ "element": "Power",
+ "element_numeric": 1,
+ "role": "Attacker",
+ "role_numeric": 1,
+ "trait": "Jupiter",
+ "disposition_numeric": 4,
+ "icon": "163_Familiar1",
+ "model": "163_Familiar1/Unit/prf_163",
+ "animation_event": "163_familiar1",
+ "book_index": 1,
+ "acquisition_id": 10001,
+ "btl_power": 4800,
+ "btl_rate": 284428,
+ "names": {
+  "key": "Tbl_Unit_Name_163",
+  "english": "Familiar (Evil-Eye)",
+  "japanese": "邪眼の使い魔",
+  "korean": "사안의 사역마"
+ },
+ "lore": {
+  "key": "Tbl_Unit_Desc_163",
+  "english": "A lesser demon that dwells in the Demon Realm. It can be made as a servant at the cost of demonic energy and use its developed eyes for overwatch or recon. It can also shoot the enemies of their master or target by focusing demonic energy in its eye.",
+  "japanese": "魔界に棲む下級魔物。魔力を代償として主従の契約を結び、大きく発達した目で監視や偵察などの仕事を務める。魔力を目に集中させて撃つことで監視対象や主の敵を迎撃することもできる。",
+  "korean": "마계에 서식하는 하급 마물. 마력을 대가로 주종 관계의 계약을 맺어, 발달한 눈으로 감시나 정찰 등의 일을 맡는다. 마력을 눈에 집중시켜 쏘아 감시 대상이나 주인의 적을 요격하기도 한다.",
+  "chinese_simplified": "栖息于魔界的下级魔物。以魔力为代价，与其主人缔结契约，凭借发达的视力，承担监视或侦察等工作。它们也能将魔力集中至眼睛并发射，以截击监视目标或主人的敌人。",
+  "chinese_traditional": "棲息於魔界的下級魔物。以魔力為代價，與其主人締結契約，憑藉發達的視力，承擔監視或偵察等工作。牠們也能將魔力集中至眼睛並發射，以截擊監視目標或主人的敵人。",
+  "spanish": "Una criatura demoníaca de bajo rango que habita en el Reino de los Demonios. Establece un contrato de amo y sirviente a cambio de poder mágico, y realiza tareas como vigilancia y reconocimiento gracias a sus ojos altamente desarrollados. También puede concentrar poder mágico en sus ojos y dispararlo para interceptar objetivos bajo vigilancia o enemigos de su amo."
+ },
+ "base_stats": {
+  "HP": 10752,
+  "ATK": 844,
+  "DEF": 537,
+  "SPD": 66,
+  "CRATE": 25,
+  "CDMG": 500,
+  "CRES": 0,
+  "ACC": 0,
+  "EVD": 0
+ },
+ "stats": {
+  "HP": 21101,
+  "ATK": 1670,
+  "DEF": 1043,
+  "SPD": 66,
+  "CRATE": 50,
+  "CDMG": 575,
+  "CRES": 0,
+  "ACC": 0,
+  "EVD": 0
+ },
+ "evol_stat_id": 1,
+ "evol_stat_type": "Attacker",
+ "evolution_bonuses": {
+  "1": {
+   "HP": 40,
+   "ATK": 6,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
   },
-  "lore": {
-    "key": "Tbl_Unit_Desc_163",
-    "english": "A lesser demon that dwells in the Demon Realm. It can be made as a servant at the cost of demonic energy and use its developed eyes for overwatch or recon. It can also shoot the enemies of their master or target by focusing demonic energy in its eye.",
-    "japanese": "魔界に棲む下級魔物。魔力を代償として主従の契約を結び、大きく発達した目で監視や偵察などの仕事を務める。魔力を目に集中させて撃つことで監視対象や主の敵を迎撃することもできる。",
-    "korean": "마계에 서식하는 하급 마물. 마력을 대가로 주종 관계의 계약을 맺어, 발달한 눈으로 감시나 정찰 등의 일을 맡는다. 마력을 눈에 집중시켜 쏘아 감시 대상이나 주인의 적을 요격하기도 한다.",
-    "chinese_simplified": "栖息于魔界的下级魔物。以魔力为代价，与其主人缔结契约，凭借发达的视力，承担监视或侦察等工作。它们也能将魔力集中至眼睛并发射，以截击监视目标或主人的敌人。",
-    "chinese_traditional": "棲息於魔界的下級魔物。以魔力為代價，與其主人締結契約，憑藉發達的視力，承擔監視或偵察等工作。牠們也能將魔力集中至眼睛並發射，以截擊監視目標或主人的敵人。",
-    "spanish": "Una criatura demoníaca de bajo rango que habita en el Reino de los Demonios. Establece un contrato de amo y sirviente a cambio de poder mágico, y realiza tareas como vigilancia y reconocimiento gracias a sus ojos altamente desarrollados. También puede concentrar poder mágico en sus ojos y dispararlo para interceptar objetivos bajo vigilancia o enemigos de su amo."
+  "2": {
+   "HP": 80,
+   "ATK": 12,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
   },
-  "base_stats": {
-    "HP": 10752,
-    "ATK": 844,
-    "DEF": 537,
+  "3": {
+   "HP": 120,
+   "ATK": 18,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "4": {
+   "HP": 160,
+   "ATK": 24,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "5": {
+   "HP": 200,
+   "ATK": 30,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "6": {
+   "HP": 200,
+   "ATK": 30,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 25,
+   "CDMG": 75,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  }
+ },
+ "evolution_bonuses_per_grade": {
+  "1": {
+   "HP": 40,
+   "ATK": 6,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "2": {
+   "HP": 80,
+   "ATK": 12,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "3": {
+   "HP": 120,
+   "ATK": 18,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "4": {
+   "HP": 160,
+   "ATK": 24,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "5": {
+   "HP": 200,
+   "ATK": 30,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "6": {
+   "HP": 200,
+   "ATK": 30,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 25,
+   "CDMG": 75,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  }
+ },
+ "stats_by_grade": {
+  "1": {
+   "grade": 1,
+   "max_level": 10,
+   "stats": {
+    "HP": 12300,
+    "ATK": 965,
+    "DEF": 614,
     "SPD": 66,
     "CRATE": 25,
     "CDMG": 500,
     "CRES": 0,
     "ACC": 0,
     "EVD": 0
-  },
-  "stats": {
-    "HP": 21101,
-    "ATK": 1670,
-    "DEF": 1043,
-    "SPD": 66,
-    "CRATE": 50,
-    "CDMG": 575,
+   },
+   "evolution_bonus_total": {
+    "HP": 40,
+    "ATK": 6,
+    "DEF": 0,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
     "CRES": 0,
     "ACC": 0,
     "EVD": 0
+   }
   },
-  "evol_stat_id": 1,
-  "evol_stat_type": "Attacker",
-  "evolution_bonuses": {
-    "1": {
-      "HP": 40,
-      "ATK": 6,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "2": {
-      "HP": 80,
-      "ATK": 12,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "3": {
-      "HP": 120,
-      "ATK": 18,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "4": {
-      "HP": 160,
-      "ATK": 24,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "5": {
-      "HP": 200,
-      "ATK": 30,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "6": {
-      "HP": 200,
-      "ATK": 30,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 25,
-      "CDMG": 75,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    }
+  "2": {
+   "grade": 2,
+   "max_level": 20,
+   "stats": {
+    "HP": 14020,
+    "ATK": 1100,
+    "DEF": 700,
+    "SPD": 66,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 80,
+    "ATK": 12,
+    "DEF": 0,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "evolution_bonuses_per_grade": {
-    "1": {
-      "HP": 40,
-      "ATK": 6,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "2": {
-      "HP": 80,
-      "ATK": 12,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "3": {
-      "HP": 120,
-      "ATK": 18,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "4": {
-      "HP": 160,
-      "ATK": 24,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "5": {
-      "HP": 200,
-      "ATK": 30,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "6": {
-      "HP": 200,
-      "ATK": 30,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 25,
-      "CDMG": 75,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    }
+  "3": {
+   "grade": 3,
+   "max_level": 30,
+   "stats": {
+    "HP": 15740,
+    "ATK": 1235,
+    "DEF": 786,
+    "SPD": 66,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 120,
+    "ATK": 18,
+    "DEF": 0,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "stats_by_grade": {
-    "1": {
-      "grade": 1,
-      "max_level": 10,
-      "stats": {
-        "HP": 12300,
-        "ATK": 965,
-        "DEF": 614,
-        "SPD": 66,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 40,
-        "ATK": 6,
-        "DEF": 0,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "2": {
-      "grade": 2,
-      "max_level": 20,
-      "stats": {
-        "HP": 14020,
-        "ATK": 1100,
-        "DEF": 700,
-        "SPD": 66,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 80,
-        "ATK": 12,
-        "DEF": 0,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "3": {
-      "grade": 3,
-      "max_level": 30,
-      "stats": {
-        "HP": 15740,
-        "ATK": 1235,
-        "DEF": 786,
-        "SPD": 66,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 120,
-        "ATK": 18,
-        "DEF": 0,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "4": {
-      "grade": 4,
-      "max_level": 40,
-      "stats": {
-        "HP": 17461,
-        "ATK": 1370,
-        "DEF": 872,
-        "SPD": 66,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 160,
-        "ATK": 24,
-        "DEF": 0,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "5": {
-      "grade": 5,
-      "max_level": 50,
-      "stats": {
-        "HP": 19181,
-        "ATK": 1505,
-        "DEF": 958,
-        "SPD": 66,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 200,
-        "ATK": 30,
-        "DEF": 0,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "6": {
-      "grade": 6,
-      "max_level": 60,
-      "stats": {
-        "HP": 20901,
-        "ATK": 1640,
-        "DEF": 1043,
-        "SPD": 66,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 200,
-        "ATK": 30,
-        "DEF": 0,
-        "SPD": 0,
-        "CRATE": 25,
-        "CDMG": 75,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    }
+  "4": {
+   "grade": 4,
+   "max_level": 40,
+   "stats": {
+    "HP": 17461,
+    "ATK": 1370,
+    "DEF": 872,
+    "SPD": 66,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 160,
+    "ATK": 24,
+    "DEF": 0,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "stats_by_level": {
-    "10": {
-      "level": 10,
-      "grade_required": 1,
-      "stats": {
-        "HP": 12300,
-        "ATK": 965,
-        "DEF": 614,
-        "SPD": 66,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "20": {
-      "level": 20,
-      "grade_required": 2,
-      "stats": {
-        "HP": 14020,
-        "ATK": 1100,
-        "DEF": 700,
-        "SPD": 66,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "30": {
-      "level": 30,
-      "grade_required": 3,
-      "stats": {
-        "HP": 15740,
-        "ATK": 1235,
-        "DEF": 786,
-        "SPD": 66,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "40": {
-      "level": 40,
-      "grade_required": 4,
-      "stats": {
-        "HP": 17461,
-        "ATK": 1370,
-        "DEF": 872,
-        "SPD": 66,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "50": {
-      "level": 50,
-      "grade_required": 5,
-      "stats": {
-        "HP": 19181,
-        "ATK": 1505,
-        "DEF": 958,
-        "SPD": 66,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "60": {
-      "level": 60,
-      "grade_required": 6,
-      "stats": {
-        "HP": 20901,
-        "ATK": 1640,
-        "DEF": 1043,
-        "SPD": 66,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    }
+  "5": {
+   "grade": 5,
+   "max_level": 50,
+   "stats": {
+    "HP": 19181,
+    "ATK": 1505,
+    "DEF": 958,
+    "SPD": 66,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 200,
+    "ATK": 30,
+    "DEF": 0,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "skills": [
-    {
-      "id": 16301,
-      "name": "[&Color_Cyan]Piercing Eye[-]",
-      "name_key": "Tbl_UnitSkill_Name_16301",
-      "name_readable": "Piercing Eye",
-      "description": "Attacks an enemy by firing beams from the eyes.\nPerforms a [&Common_Word_Skill_ShieldPenetrate] attack.",
-      "description_key": "Tbl_UnitSkill_Desc_16301",
-      "description_readable": "Attacks an enemy by firing beams from the eyes.\nPerforms a Shield Penetrate attack.",
-      "type_description": "[Normal Attack]",
-      "type_description_readable": "[Normal Attack]",
-      "icon": "16301",
-      "cooldown": 0,
-      "hit_count": 1,
-      "additional_hits": 0,
-      "damage_scaling": "[ATK]",
-      "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": 0.0,
-      "effects": [],
-      "battle_options": "1630101/1630102",
-      "battle_option_ids": [
-        1630101,
-        1630102
-      ],
-      "evolution_level_required": 0,
-      "trigger_keyword": "",
-      "aura_info": "",
-      "skill_button_type": 0,
-      "camera_type": 0,
-      "cutscene_flag": 0
-    }
-  ],
-  "weapons": []
+  "6": {
+   "grade": 6,
+   "max_level": 60,
+   "stats": {
+    "HP": 20901,
+    "ATK": 1640,
+    "DEF": 1043,
+    "SPD": 66,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 200,
+    "ATK": 30,
+    "DEF": 0,
+    "SPD": 0,
+    "CRATE": 25,
+    "CDMG": 75,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  }
+ },
+ "stats_by_level": {
+  "10": {
+   "level": 10,
+   "grade_required": 1,
+   "stats": {
+    "HP": 12300,
+    "ATK": 965,
+    "DEF": 614,
+    "SPD": 66,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  },
+  "20": {
+   "level": 20,
+   "grade_required": 2,
+   "stats": {
+    "HP": 14020,
+    "ATK": 1100,
+    "DEF": 700,
+    "SPD": 66,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  },
+  "30": {
+   "level": 30,
+   "grade_required": 3,
+   "stats": {
+    "HP": 15740,
+    "ATK": 1235,
+    "DEF": 786,
+    "SPD": 66,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  },
+  "40": {
+   "level": 40,
+   "grade_required": 4,
+   "stats": {
+    "HP": 17461,
+    "ATK": 1370,
+    "DEF": 872,
+    "SPD": 66,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  },
+  "50": {
+   "level": 50,
+   "grade_required": 5,
+   "stats": {
+    "HP": 19181,
+    "ATK": 1505,
+    "DEF": 958,
+    "SPD": 66,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  },
+  "60": {
+   "level": 60,
+   "grade_required": 6,
+   "stats": {
+    "HP": 20901,
+    "ATK": 1640,
+    "DEF": 1043,
+    "SPD": 66,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  }
+ },
+ "skills": [
+  {
+   "id": 16301,
+   "name": "[&Color_Cyan]Piercing Eye[-]",
+   "name_key": "Tbl_UnitSkill_Name_16301",
+   "name_readable": "Piercing Eye",
+   "description": "Attacks an enemy by firing beams from the eyes.\nPerforms a [&Common_Word_Skill_ShieldPenetrate] attack.",
+   "description_key": "Tbl_UnitSkill_Desc_16301",
+   "description_readable": "Attacks an enemy by firing beams from the eyes.\nPerforms a Shield Penetrate attack.",
+   "type_description": "[Normal Attack]",
+   "type_description_readable": "[Normal Attack]",
+   "icon": "16301",
+   "cooldown": 0,
+   "hit_count": 1,
+   "additional_hits": 0,
+   "damage_scaling": "[ATK]",
+   "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+   "multiplier": 504.0,
+   "effects": [],
+   "battle_options": "1630101/1630102",
+   "battle_option_ids": [
+    1630101,
+    1630102
+   ],
+   "evolution_level_required": 0,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": 0,
+   "camera_type": 0,
+   "cutscene_flag": 0,
+   "damage": {
+    "scaling": [
+     {
+      "stat": "ATK",
+      "pct": 504.0
+     }
+    ],
+    "hits": [
+     {
+      "pct": 504.0,
+      "count": 1
+     }
+    ],
+    "total": 504.0
+   }
+  }
+ ],
+ "weapons": []
 }

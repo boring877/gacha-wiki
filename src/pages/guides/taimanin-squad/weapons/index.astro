@@ -40,6 +40,30 @@ function cleanSkillName(name: string) {
 }
 
 const percentStats = new Set(['Attack %', 'HP %', 'Critical Rate', 'Critical Damage', 'Crit Resistance', 'Accuracy', 'Evasion', 'Resistance']);
+
+// Compact damage label from the extracted per-skill damage (see gen_damage.py)
+function damageLabel(dmg: any): string | null {
+  if (!dmg || !dmg.scaling || !dmg.scaling.length) return null;
+  const s0 = dmg.scaling[0];
+  const dual = dmg.scaling.length > 1;
+  const merged: any[] = [];
+  for (const h of dmg.hits || []) {
+    const last = merged[merged.length - 1];
+    if (last && last.pct === h.pct) last.count += h.count;
+    else merged.push({ pct: h.pct, count: h.count });
+  }
+  const totalHits = (dmg.hits || []).reduce((n: number, h: any) => n + h.count, 0);
+  if (dual) {
+    const extra = totalHits > 1 ? ` x ${totalHits} hits` : '';
+    let label = `${s0.pct}% ${s0.stat} + ${dmg.scaling[1].pct}% ${dmg.scaling[1].stat}${extra}`;
+    for (const a of dmg.add || []) label += ` + ${a.pct}% ${s0.stat} extra${a.count > 1 ? ` x ${a.count}` : ''}`;
+    return label;
+  }
+  if (merged.length === 1 && merged[0].count > 1) return `${merged[0].pct}% ${s0.stat} x ${merged[0].count} = ${dmg.total}%`;
+  if (merged.length === 1) return `${merged[0].pct}% ${s0.stat}`;
+  const seg = merged.map((h: any) => `${h.pct}% x ${h.count}`).join(' + ');
+  return dmg.total ? `${seg} = ${dmg.total}% ${s0.stat}` : `${seg} ${s0.stat}`;
+}
 ---
 
 <WeaponsLayout
@@ -198,6 +222,9 @@ const percentStats = new Set(['Attack %', 'HP %', 'Critical Rate', 'Critical Dam
                             </div>
                             {w.skill_desc && (
                               <p class="weapon-skill-desc">{w.skill_desc}</p>
+                            )}
+                            {damageLabel(w.skill_damage) && (
+                              <p class="weapon-skill-damage">{damageLabel(w.skill_damage)}</p>
                             )}
                           </div>
                         )}

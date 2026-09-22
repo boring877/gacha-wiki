@@ -119,6 +119,26 @@ const baseStats = [
       Taimanin Squad uses two different calculation modes for damage modifiers. Understanding these formulas is key to optimizing your team composition.
     </p>
 
+    <div class="ts-formula-box">
+      <h3 class="ts-formula-title">Skill Damage (per hit)</h3>
+      <div class="ts-formula-code">
+        Damage = (Skill% / 100) * ATK  +  (Second% / 100) * SecondStat
+      </div>
+      <p class="ts-formula-desc">
+        Every skill stores its own scaling percents. Most skills scale off ATK only (single term), but some add a second stat: SPD, DEF, Current HP, Lost HP ("damage increases in proportion to HP lost"), or Max HP. The per-skill numbers are shown on each character page and the Skills database. Multi-hit skills apply the per-hit percent for each hit; extra attacks (like stealth follow-ups) list their own percent. These percents are the base values before skill level bonuses.
+      </p>
+    </div>
+
+    <div class="ts-example-box">
+      <h4 class="ts-example-title">Skill Scaling Examples (from game data)</h4>
+      <p class="ts-example-calc">
+        Normal Attack, 1 hit: 393.8% ATK + 2231% SPD<br>
+        Attack Skill, 5 hits: 153.1% ATK per hit = 765.5% total<br>
+        Ultimate, 6 hits: 104.9% ATK + 594% SPD per hit<br>
+        HP-scaling skill: 402% ATK + 18% of Lost HP
+      </p>
+    </div>
+
     <div class="ts-formula-container">
       <div class="ts-formula-box">
         <h3 class="ts-formula-title">Multiplicative Mode (Default)</h3>
@@ -282,10 +302,12 @@ const baseStats = [
     <div class="ts-formula-box" style="margin-top: 1.5rem;">
       <h3 class="ts-formula-title">Stat Growth Formula</h3>
       <div class="ts-formula-code">
-        Final Stat = Base * (1 + (Level - 1) * 0.018 * RarityRate) + EvolBonus
+        Final Stat = Base * (1 + (Level - 1) * 0.008 * RarityRate) + EvolBonus
       </div>
       <p class="ts-formula-desc">
-        Rarity rates: 1-star = 2.0, 2-star = 1.9, 3-star = 1.8, 4-star = 1.7, 5-star = 1.7
+        Rarity rates: 1-star = 2.0, 2-star = 1.9, 3-star = 1.8, 4-star = 1.7, 5-star = 1.7.
+        Growth scalar rebalanced from 0.018 to 0.008 with the September 2026 stat rescale.
+        Verified: 5-star base HP 22,196 at level 60 = 22,196 * (1 + 59 * 0.008 * 1.7) = 40,006.
       </p>
     </div>
   </section>

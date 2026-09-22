@@ -367,3 +367,62 @@
     padding: 1rem 0.5rem;
   }
 }
+
+/* Ambient background video (official Erolabs store trailer, 51s muted loop) — full-bleed top, fades out */
+.bb-bg-video-wrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 70vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bb-bg-video {
+  width: 100%;
+  height: 100%;
+  /* contain, never cover: the 100vw x 70vh layer is much wider than 16:9,
+     cover turned the trailer into a zoomed horizontal slice (user complaint);
+     contain shows the entire frame, centered, full frame height */
+  object-fit: contain;
+  object-position: 50% 0%;
+  opacity: 0.45;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 22%, transparent 82%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 22%, transparent 82%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bb-bg-video-wrap {
+    display: none;
+  }
+}
+
+/* mobile: shorter box so the 16:9 crop does not crowd the hero */
+@media (max-width: 768px) {
+  .bb-bg-video-wrap {
+    height: 45vh;
+  }
+}
+
+/* keep landing content above the ambient video */
+.hero-section,
+.bb-breadcrumb,
+.content-area {
+  position: relative;
+  z-index: 1;
+}
+
+/* nudge the hero logo block down so it sits over the middle of the
+   ambient video instead of covering the frame's top edge */
+.hero-section {
+  padding-top: 24vh;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding-top: 10vh;
+  }
+}

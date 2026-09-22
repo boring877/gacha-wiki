@@ -1,614 +1,661 @@
 {
-  "id": 212,
-  "name": "Dullahan",
-  "name_key": "Tbl_Unit_Name_212",
-  "slug": "dullahan",
-  "rarity": "SR",
-  "rarity_stars": "★★★",
-  "rarity_numeric": 3,
-  "element": "Power",
-  "element_numeric": 1,
-  "role": "Support",
-  "role_numeric": 3,
-  "trait": "Saturn",
-  "disposition_numeric": 6,
-  "icon": "212_Dullahan",
-  "model": "212_Dullahan/Unit/prf_212",
-  "animation_event": "212_dullahan",
-  "book_index": 15,
-  "acquisition_id": 10003,
-  "btl_power": 7050,
-  "btl_rate": 403030,
-  "names": {
-    "key": "Tbl_Unit_Name_212",
-    "english": "Dullahan",
-    "japanese": "デュラハン",
-    "korean": "듀라한"
+ "id": 212,
+ "name": "Dullahan",
+ "name_key": "Tbl_Unit_Name_212",
+ "slug": "dullahan",
+ "rarity": "SR",
+ "rarity_stars": "★★★",
+ "rarity_numeric": 3,
+ "element": "Power",
+ "element_numeric": 1,
+ "role": "Support",
+ "role_numeric": 3,
+ "trait": "Saturn",
+ "disposition_numeric": 6,
+ "icon": "212_Dullahan",
+ "model": "212_Dullahan/Unit/prf_212",
+ "animation_event": "212_dullahan",
+ "book_index": 15,
+ "acquisition_id": 10003,
+ "btl_power": 7050,
+ "btl_rate": 403030,
+ "names": {
+  "key": "Tbl_Unit_Name_212",
+  "english": "Dullahan",
+  "japanese": "デュラハン",
+  "korean": "듀라한"
+ },
+ "lore": {
+  "key": "Tbl_Unit_Desc_212",
+  "english": "Demon, Revenant Knight.\nA high-ranking demon known as a 'Wraith', who possesses the ability to temporarily grant life to the deceased and control them.\n\nShe serves as one of the Revenant Knights under the Wraith Lord—the self-proclaimed Corpse Lord—and is called the Black Yaksha for her command over black miasma. She also commands a golem instantiated through her powers.\n\nIt is said that her black miasma corrodes the flesh of the living, turning them into living statues.",
+  "japanese": "魔族、死霊騎士＜レヴァナント＞\n死者に一時的に生命を与え操る能力を持つ『レイス』と呼ばれる高位魔族。\n\n『屍の王』と呼ばれる死霊卿、レイスロードに仕える死霊騎士＜レヴァナント＞の一角であり、黒い瘴気を操ることで黒夜叉と呼ばれている。\n自分の能力を具現化したゴーレムを使役する。\n\n彼女の黒い瘴気は、生者の肉体を蝕み、生きた石像に変えてしまうという。",
+  "korean": "마족, 사령기사<레버넌트>\n죽은 자에게 일시적으로 생명을 부여해 조종하는 능력을 지닌 '레이스'라 불리는 고위 마족.\n\n시체의 왕이라 자칭하는 사령경 레이스 로드를 시중드는 사령기사<레버넌트>의 일각으로, 검은색 독기를 조종하여 흑야차라 불린다.\n자신의 능력을 구현화시킨 골렘을 사역한다.\n\n그녀의 검은 독기는 살아있는 자의 육체를 좀먹어 살아있는 석상으로 바꾸어 버린다고 한다.",
+  "chinese_simplified": "高级魔族——死灵骑士。\n来自能够暂时赋予死者生命，并操控死者的「死灵族」。\n\n侍奉自称为「尸王」——死灵卿「死灵王」的强大战士，因操纵黑色瘴气而被称为「黑夜叉」。\n可驱使具现化自身能力的傀儡。\n\n其黑色瘴气可侵蚀生者肉体，将其变为活石像。",
+  "chinese_traditional": "高級魔族——死靈騎士。\n來自能夠暫時賦予死者生命，並操控死者的「死靈族」。\n\n侍奉自稱為「屍王」——死靈卿「死靈王」的強大戰士，因操縱黑色瘴氣而被稱為「黑夜叉」。\n可驅使具現化自身能力的傀儡。\n\n其黑色瘴氣可侵蝕生者肉體，將其變為活石像。",
+  "spanish": "Demonio, Caballero Vengador.\nUn demonio de alto rango conocido como un Espectro, capaz de otorgar temporalmente vida a los muertos y controlarlos.\n\nForma parte de los Caballeros Vengadores al servicio del Señor de los Cadáveres y es conocida como la Yasha Negra por su dominio sobre la energía maligna de color negro. También controla un gólem materializado a partir de sus propios poderes.\n\nSe dice que su energía maligna negra corroe el cuerpo de los seres vivos hasta convertirlos en estatuas vivientes."
+ },
+ "base_stats": {
+  "HP": 22560,
+  "ATK": 846,
+  "DEF": 846,
+  "SPD": 77,
+  "CRATE": 25,
+  "CDMG": 500,
+  "CRES": 0,
+  "ACC": 50,
+  "EVD": 0
+ },
+ "stats": {
+  "HP": 41851,
+  "ATK": 1579,
+  "DEF": 1589,
+  "SPD": 77,
+  "CRATE": 25,
+  "CDMG": 500,
+  "CRES": 0,
+  "ACC": 100,
+  "EVD": 0
+ },
+ "evol_stat_id": 3,
+ "evol_stat_type": "Support",
+ "evolution_bonuses": {
+  "1": {
+   "HP": 25,
+   "ATK": 3,
+   "DEF": 5,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
   },
-  "lore": {
-    "key": "Tbl_Unit_Desc_212",
-    "english": "Demon, Revenant Knight.\nA high-ranking demon known as a 'Wraith', who possesses the ability to temporarily grant life to the deceased and control them.\n\nShe serves as one of the Revenant Knights under the Wraith Lord—the self-proclaimed Corpse Lord—and is called the Black Yaksha for her command over black miasma. She also commands a golem instantiated through her powers.\n\nIt is said that her black miasma corrodes the flesh of the living, turning them into living statues.",
-    "japanese": "魔族、死霊騎士＜レヴァナント＞\n死者に一時的に生命を与え操る能力を持つ『レイス』と呼ばれる高位魔族。\n\n『屍の王』と呼ばれる死霊卿、レイスロードに仕える死霊騎士＜レヴァナント＞の一角であり、黒い瘴気を操ることで黒夜叉と呼ばれている。\n自分の能力を具現化したゴーレムを使役する。\n\n彼女の黒い瘴気は、生者の肉体を蝕み、生きた石像に変えてしまうという。",
-    "korean": "마족, 사령기사<레버넌트>\n죽은 자에게 일시적으로 생명을 부여해 조종하는 능력을 지닌 '레이스'라 불리는 고위 마족.\n\n시체의 왕이라 자칭하는 사령경 레이스 로드를 시중드는 사령기사<레버넌트>의 일각으로, 검은색 독기를 조종하여 흑야차라 불린다.\n자신의 능력을 구현화시킨 골렘을 사역한다.\n\n그녀의 검은 독기는 살아있는 자의 육체를 좀먹어 살아있는 석상으로 바꾸어 버린다고 한다.",
-    "chinese_simplified": "高级魔族——死灵骑士。\n来自能够暂时赋予死者生命，并操控死者的「死灵族」。\n\n侍奉自称为「尸王」——死灵卿「死灵王」的强大战士，因操纵黑色瘴气而被称为「黑夜叉」。\n可驱使具现化自身能力的傀儡。\n\n其黑色瘴气可侵蚀生者肉体，将其变为活石像。",
-    "chinese_traditional": "高級魔族——死靈騎士。\n來自能夠暫時賦予死者生命，並操控死者的「死靈族」。\n\n侍奉自稱為「屍王」——死靈卿「死靈王」的強大戰士，因操縱黑色瘴氣而被稱為「黑夜叉」。\n可驅使具現化自身能力的傀儡。\n\n其黑色瘴氣可侵蝕生者肉體，將其變為活石像。",
-    "spanish": "Demonio, Caballero Vengador.\nUn demonio de alto rango conocido como un Espectro, capaz de otorgar temporalmente vida a los muertos y controlarlos.\n\nForma parte de los Caballeros Vengadores al servicio del Señor de los Cadáveres y es conocida como la Yasha Negra por su dominio sobre la energía maligna de color negro. También controla un gólem materializado a partir de sus propios poderes.\n\nSe dice que su energía maligna negra corroe el cuerpo de los seres vivos hasta convertirlos en estatuas vivientes."
+  "2": {
+   "HP": 50,
+   "ATK": 6,
+   "DEF": 10,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
   },
-  "base_stats": {
-    "HP": 22560,
-    "ATK": 846,
-    "DEF": 846,
+  "3": {
+   "HP": 75,
+   "ATK": 9,
+   "DEF": 15,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "4": {
+   "HP": 100,
+   "ATK": 12,
+   "DEF": 20,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "5": {
+   "HP": 125,
+   "ATK": 15,
+   "DEF": 25,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "6": {
+   "HP": 125,
+   "ATK": 15,
+   "DEF": 25,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 50,
+   "EVD": 0
+  }
+ },
+ "evolution_bonuses_per_grade": {
+  "1": {
+   "HP": 25,
+   "ATK": 3,
+   "DEF": 5,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "2": {
+   "HP": 50,
+   "ATK": 6,
+   "DEF": 10,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "3": {
+   "HP": 75,
+   "ATK": 9,
+   "DEF": 15,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "4": {
+   "HP": 100,
+   "ATK": 12,
+   "DEF": 20,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "5": {
+   "HP": 125,
+   "ATK": 15,
+   "DEF": 25,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "6": {
+   "HP": 125,
+   "ATK": 15,
+   "DEF": 25,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 50,
+   "EVD": 0
+  }
+ },
+ "stats_by_grade": {
+  "1": {
+   "grade": 1,
+   "max_level": 10,
+   "stats": {
+    "HP": 25483,
+    "ATK": 955,
+    "DEF": 955,
     "SPD": 77,
     "CRATE": 25,
     "CDMG": 500,
     "CRES": 0,
     "ACC": 50,
     "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 25,
+    "ATK": 3,
+    "DEF": 5,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "stats": {
-    "HP": 41851,
-    "ATK": 1579,
-    "DEF": 1589,
+  "2": {
+   "grade": 2,
+   "max_level": 20,
+   "stats": {
+    "HP": 28732,
+    "ATK": 1077,
+    "DEF": 1077,
     "SPD": 77,
     "CRATE": 25,
     "CDMG": 500,
     "CRES": 0,
-    "ACC": 100,
+    "ACC": 50,
     "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 50,
+    "ATK": 6,
+    "DEF": 10,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "evol_stat_id": 3,
-  "evol_stat_type": "Support",
-  "evolution_bonuses": {
-    "1": {
-      "HP": 25,
-      "ATK": 3,
-      "DEF": 5,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "2": {
-      "HP": 50,
-      "ATK": 6,
-      "DEF": 10,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "3": {
-      "HP": 75,
-      "ATK": 9,
-      "DEF": 15,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "4": {
-      "HP": 100,
-      "ATK": 12,
-      "DEF": 20,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "5": {
-      "HP": 125,
-      "ATK": 15,
-      "DEF": 25,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "6": {
-      "HP": 125,
-      "ATK": 15,
-      "DEF": 25,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 50,
-      "EVD": 0
-    }
+  "3": {
+   "grade": 3,
+   "max_level": 30,
+   "stats": {
+    "HP": 31981,
+    "ATK": 1199,
+    "DEF": 1199,
+    "SPD": 77,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 50,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 75,
+    "ATK": 9,
+    "DEF": 15,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "evolution_bonuses_per_grade": {
-    "1": {
-      "HP": 25,
-      "ATK": 3,
-      "DEF": 5,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "2": {
-      "HP": 50,
-      "ATK": 6,
-      "DEF": 10,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "3": {
-      "HP": 75,
-      "ATK": 9,
-      "DEF": 15,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "4": {
-      "HP": 100,
-      "ATK": 12,
-      "DEF": 20,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "5": {
-      "HP": 125,
-      "ATK": 15,
-      "DEF": 25,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "6": {
-      "HP": 125,
-      "ATK": 15,
-      "DEF": 25,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 50,
-      "EVD": 0
-    }
+  "4": {
+   "grade": 4,
+   "max_level": 40,
+   "stats": {
+    "HP": 35229,
+    "ATK": 1321,
+    "DEF": 1321,
+    "SPD": 77,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 50,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 100,
+    "ATK": 12,
+    "DEF": 20,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "stats_by_grade": {
-    "1": {
-      "grade": 1,
-      "max_level": 10,
-      "stats": {
-        "HP": 25483,
-        "ATK": 955,
-        "DEF": 955,
-        "SPD": 77,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 50,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 25,
-        "ATK": 3,
-        "DEF": 5,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "2": {
-      "grade": 2,
-      "max_level": 20,
-      "stats": {
-        "HP": 28732,
-        "ATK": 1077,
-        "DEF": 1077,
-        "SPD": 77,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 50,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 50,
-        "ATK": 6,
-        "DEF": 10,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "3": {
-      "grade": 3,
-      "max_level": 30,
-      "stats": {
-        "HP": 31981,
-        "ATK": 1199,
-        "DEF": 1199,
-        "SPD": 77,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 50,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 75,
-        "ATK": 9,
-        "DEF": 15,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "4": {
-      "grade": 4,
-      "max_level": 40,
-      "stats": {
-        "HP": 35229,
-        "ATK": 1321,
-        "DEF": 1321,
-        "SPD": 77,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 50,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 100,
-        "ATK": 12,
-        "DEF": 20,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "5": {
-      "grade": 5,
-      "max_level": 50,
-      "stats": {
-        "HP": 38478,
-        "ATK": 1442,
-        "DEF": 1442,
-        "SPD": 77,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 50,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 125,
-        "ATK": 15,
-        "DEF": 25,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "6": {
-      "grade": 6,
-      "max_level": 60,
-      "stats": {
-        "HP": 41726,
-        "ATK": 1564,
-        "DEF": 1564,
-        "SPD": 77,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 50,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 125,
-        "ATK": 15,
-        "DEF": 25,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 50,
-        "EVD": 0
-      }
-    }
+  "5": {
+   "grade": 5,
+   "max_level": 50,
+   "stats": {
+    "HP": 38478,
+    "ATK": 1442,
+    "DEF": 1442,
+    "SPD": 77,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 50,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 125,
+    "ATK": 15,
+    "DEF": 25,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "stats_by_level": {
-    "10": {
-      "level": 10,
-      "grade_required": 1,
-      "stats": {
-        "HP": 25483,
-        "ATK": 955,
-        "DEF": 955,
-        "SPD": 77,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 50,
-        "EVD": 0
-      }
-    },
-    "20": {
-      "level": 20,
-      "grade_required": 2,
-      "stats": {
-        "HP": 28732,
-        "ATK": 1077,
-        "DEF": 1077,
-        "SPD": 77,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 50,
-        "EVD": 0
-      }
-    },
-    "30": {
-      "level": 30,
-      "grade_required": 3,
-      "stats": {
-        "HP": 31981,
-        "ATK": 1199,
-        "DEF": 1199,
-        "SPD": 77,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 50,
-        "EVD": 0
-      }
-    },
-    "40": {
-      "level": 40,
-      "grade_required": 4,
-      "stats": {
-        "HP": 35229,
-        "ATK": 1321,
-        "DEF": 1321,
-        "SPD": 77,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 50,
-        "EVD": 0
-      }
-    },
-    "50": {
-      "level": 50,
-      "grade_required": 5,
-      "stats": {
-        "HP": 38478,
-        "ATK": 1442,
-        "DEF": 1442,
-        "SPD": 77,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 50,
-        "EVD": 0
-      }
-    },
-    "60": {
-      "level": 60,
-      "grade_required": 6,
-      "stats": {
-        "HP": 41726,
-        "ATK": 1564,
-        "DEF": 1564,
-        "SPD": 77,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 50,
-        "EVD": 0
-      }
-    }
+  "6": {
+   "grade": 6,
+   "max_level": 60,
+   "stats": {
+    "HP": 41726,
+    "ATK": 1564,
+    "DEF": 1564,
+    "SPD": 77,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 50,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 125,
+    "ATK": 15,
+    "DEF": 25,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 50,
+    "EVD": 0
+   }
+  }
+ },
+ "stats_by_level": {
+  "10": {
+   "level": 10,
+   "grade_required": 1,
+   "stats": {
+    "HP": 25483,
+    "ATK": 955,
+    "DEF": 955,
+    "SPD": 77,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 50,
+    "EVD": 0
+   }
   },
-  "skills": [
-    {
-      "id": 21200,
-      "name": "[&Color_Orange][&CRI_DMG] Aura[-]",
-      "name_key": "Tbl_UnitSkill_Name_CRI_DMG",
-      "name_readable": "CRIT DMG Aura",
-      "description": "Increase {3} of {2} allies by {0} in {1}",
-      "description_key": "Tbl_UnitSkill_Desc_Aura",
-      "description_readable": "Increase CRIT DMG of All allies by 32.5% in All Battles",
-      "type_description": "[Aura Skill]",
-      "type_description_readable": "[Aura Skill]",
-      "icon": "leader_cdmg",
-      "cooldown": 0,
-      "hit_count": 0,
-      "additional_hits": 0,
-      "damage_scaling": "",
-      "skill_level_scaling": "",
-      "multiplier": 1.0,
-      "effects": [],
-      "battle_options": "2120001",
-      "battle_option_ids": [
-        2120001
-      ],
-      "evolution_level_required": 3,
-      "trigger_keyword": "",
-      "aura_info": "32.5,QUEST_ALL,Class_ATK,CriDmg",
-      "skill_button_type": -2,
-      "camera_type": 0,
-      "cutscene_flag": 0
-    },
-    {
-      "id": 21201,
-      "name": "[&Color_Cyan]Dark Spark[-]",
-      "name_key": "Tbl_UnitSkill_Name_21201",
-      "name_readable": "Dark Spark",
-      "description": "Fires a lightning bolt at the enemy to attack.\nInflicts [&Color_Cyan]([V3:2120102]%)[-] [&DefDown] on the target hit at a [&Color_Cyan][R:2120102]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2120102] turn(s)",
-      "description_key": "Tbl_UnitSkill_Desc_21201",
-      "description_readable": "Fires a lightning bolt at the enemy to attack.\nInflicts (-60%) DEF DOWN on the target hit at a 30% chance.\nDuration: 2 turn(s)",
-      "type_description": "[Normal Attack]",
-      "type_description_readable": "[Normal Attack]",
-      "icon": "21201",
-      "cooldown": 0,
-      "hit_count": 1,
-      "additional_hits": 0,
-      "damage_scaling": "[ATK]",
-      "skill_level_scaling": "[B:10]/[D:10]/[B:10]/[D:10]/[B:10]",
-      "multiplier": 0.0,
-      "effects": [],
-      "battle_options": "2120101/2120102",
-      "battle_option_ids": [
-        2120101,
-        2120102
-      ],
-      "evolution_level_required": 0,
-      "trigger_keyword": "",
-      "aura_info": "",
-      "skill_button_type": 0,
-      "camera_type": 0,
-      "cutscene_flag": 0
-    },
-    {
-      "id": 21202,
-      "name": "[&Color_Cyan]Dark Lightning[-]",
-      "name_key": "Tbl_UnitSkill_Name_21202",
-      "name_readable": "Dark Lightning",
-      "description": "Strikes the enemy with a powerful lightning bolt to attack.\nInflicts [&Stun] on the target hit at a [&Color_Cyan][R:2120202]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2120202] turn(s)\nInflicts [&Color_Cyan]([V3:2120203]%)[-] [&CriResDown] on the target hit at a [&Color_Cyan][R:2120203]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2120203] turn(s)",
-      "description_key": "Tbl_UnitSkill_Desc_21202",
-      "description_readable": "Strikes the enemy with a powerful lightning bolt to attack.\nInflicts Faint on the target hit at a 20% chance.\nDuration: 1 turn(s)\nInflicts (-47.5%) CRIT RES DOWN on the target hit at a 99% chance.\nDuration: 2 turn(s)",
-      "type_description": "[Attack Skill]",
-      "type_description_readable": "[Attack Skill]",
-      "icon": "21202",
-      "cooldown": 3,
-      "hit_count": 1,
-      "additional_hits": 0,
-      "damage_scaling": "[ATK]",
-      "skill_level_scaling": "[B:10]/[D:10]/[B:10]/[D:10]/[B:10]",
-      "multiplier": 0.0,
-      "effects": [],
-      "battle_options": "2120201/2120202/2120203",
-      "battle_option_ids": [
-        2120201,
-        2120202,
-        2120203
-      ],
-      "evolution_level_required": 0,
-      "trigger_keyword": "",
-      "aura_info": "",
-      "skill_button_type": 0,
-      "camera_type": 0,
-      "cutscene_flag": 0
-    },
-    {
-      "id": 21203,
-      "name": "[&Color_Cyan]Revenant Knight[-]",
-      "name_key": "Tbl_UnitSkill_Name_21203",
-      "name_readable": "Revenant Knight",
-      "description": "When an ally is defeated, resurrects 1 [&Common_Word_Skill_Random] defeated ally with [&Color_Cyan][V3:2120301]%[-] of [&HP] and grants [&Athanasia].\n[&Common_Word_Skill_ValueTurn]: [V2:2120302] turn(s)",
-      "description_key": "Tbl_UnitSkill_Desc_21203",
-      "description_readable": "When an ally is defeated, resurrects 1 Random defeated ally with 1% of HP and grants Immortal.\nDuration: 1 turn(s)",
-      "type_description": "[Passive Skill]",
-      "type_description_readable": "[Passive Skill]",
-      "icon": "21203",
-      "cooldown": 7,
-      "hit_count": 1,
-      "additional_hits": 0,
-      "damage_scaling": "",
-      "skill_level_scaling": "",
-      "multiplier": 1.0,
-      "effects": [],
-      "battle_options": "2120301/2120302",
-      "battle_option_ids": [
-        2120301,
-        2120302
-      ],
-      "evolution_level_required": 1,
-      "trigger_keyword": "",
-      "aura_info": "",
-      "skill_button_type": -1,
-      "camera_type": 0,
-      "cutscene_flag": 0
-    }
-  ],
-  "weapons": [
-    {
-      "id": 21201,
-      "name": "[&Color_Orange]Wraith's Black Armor[-]",
-      "name_key": "Tbl_UnitWeapon_Name_21201",
-      "icon": "Weapon_21201.png",
-      "rarity": 3,
-      "weapon_type": 212,
-      "opt_type": 8,
-      "opt_value": 20,
-      "skill_slot": 21202,
-      "skill_id": 21212,
-      "skill_data": {
-        "id": 21212,
-        "name": "<[&Tbl_UnitWeapon_Name_21201]> [&Color_Cyan]Dark Lightning[-]",
-        "name_key": "Tbl_UnitSkill_Name_21212",
-        "name_readable": "<Wraith's Black Armor> Dark Lightning",
-        "description": "Strikes the enemy with a powerful lightning bolt to attack.\nInflicts [&Stun] on the target hit at a [&Color_Cyan][R:2121202]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2121202] turn(s)\nInflicts [&Color_Cyan]([V3:2121203]%)[-] [&CriDmgDown] on the target hit at a [&Color_Cyan][R:2121203]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2121203] turn(s)",
-        "description_key": "Tbl_UnitSkill_Desc_21212",
-        "description_readable": "Strikes the enemy with a powerful lightning bolt to attack.\nInflicts Faint on the target hit at a 20% chance.\nDuration: 1 turn(s)\nInflicts (-80%) CRIT DMG DOWN on the target hit at a 99% chance.\nDuration: 2 turn(s)",
-        "type_description": "[Attack Skill]",
-        "type_description_readable": "[Attack Skill]",
-        "icon": "21212",
-        "cooldown": 3,
-        "hit_count": 1,
-        "additional_hits": 0,
-        "damage_scaling": "[ATK]",
-        "skill_level_scaling": "[B:10]/[D:10]/[B:10]/[D:10]/[B:10]",
-        "multiplier": 0.0,
-        "effects": [],
-        "battle_options": "2121201/2121202/2121203",
-        "battle_option_ids": [
-          2121201,
-          2121202,
-          2121203
-        ],
-        "evolution_level_required": 0,
-        "trigger_keyword": "",
-        "aura_info": "",
-        "skill_button_type": 0,
-        "camera_type": 0,
-        "cutscene_flag": 0
+  "20": {
+   "level": 20,
+   "grade_required": 2,
+   "stats": {
+    "HP": 28732,
+    "ATK": 1077,
+    "DEF": 1077,
+    "SPD": 77,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 50,
+    "EVD": 0
+   }
+  },
+  "30": {
+   "level": 30,
+   "grade_required": 3,
+   "stats": {
+    "HP": 31981,
+    "ATK": 1199,
+    "DEF": 1199,
+    "SPD": 77,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 50,
+    "EVD": 0
+   }
+  },
+  "40": {
+   "level": 40,
+   "grade_required": 4,
+   "stats": {
+    "HP": 35229,
+    "ATK": 1321,
+    "DEF": 1321,
+    "SPD": 77,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 50,
+    "EVD": 0
+   }
+  },
+  "50": {
+   "level": 50,
+   "grade_required": 5,
+   "stats": {
+    "HP": 38478,
+    "ATK": 1442,
+    "DEF": 1442,
+    "SPD": 77,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 50,
+    "EVD": 0
+   }
+  },
+  "60": {
+   "level": 60,
+   "grade_required": 6,
+   "stats": {
+    "HP": 41726,
+    "ATK": 1564,
+    "DEF": 1564,
+    "SPD": 77,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 50,
+    "EVD": 0
+   }
+  }
+ },
+ "skills": [
+  {
+   "id": 21200,
+   "name": "[&Color_Orange][&CRI_DMG] Aura[-]",
+   "name_key": "Tbl_UnitSkill_Name_CRI_DMG",
+   "name_readable": "CRIT DMG Aura",
+   "description": "Increase {3} of {2} allies by {0} in {1}",
+   "description_key": "Tbl_UnitSkill_Desc_Aura",
+   "description_readable": "Increase CRIT DMG of All allies by 32.5% in All Battles",
+   "type_description": "[Aura Skill]",
+   "type_description_readable": "[Aura Skill]",
+   "icon": "leader_cdmg",
+   "cooldown": 0,
+   "hit_count": 0,
+   "additional_hits": 0,
+   "damage_scaling": "",
+   "skill_level_scaling": "",
+   "multiplier": null,
+   "effects": [],
+   "battle_options": "2120001",
+   "battle_option_ids": [
+    2120001
+   ],
+   "evolution_level_required": 3,
+   "trigger_keyword": "",
+   "aura_info": "32.5,QUEST_ALL,Class_ATK,CriDmg",
+   "skill_button_type": -2,
+   "camera_type": 0,
+   "cutscene_flag": 0,
+   "damage": null
+  },
+  {
+   "id": 21201,
+   "name": "[&Color_Cyan]Dark Spark[-]",
+   "name_key": "Tbl_UnitSkill_Name_21201",
+   "name_readable": "Dark Spark",
+   "description": "Fires a lightning bolt at the enemy to attack.\nInflicts [&Color_Cyan]([V3:2120102]%)[-] [&DefDown] on the target hit at a [&Color_Cyan][R:2120102]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2120102] turn(s)",
+   "description_key": "Tbl_UnitSkill_Desc_21201",
+   "description_readable": "Fires a lightning bolt at the enemy to attack.\nInflicts (-60%) DEF DOWN on the target hit at a 30% chance.\nDuration: 2 turn(s)",
+   "type_description": "[Normal Attack]",
+   "type_description_readable": "[Normal Attack]",
+   "icon": "21201",
+   "cooldown": 0,
+   "hit_count": 1,
+   "additional_hits": 0,
+   "damage_scaling": "[ATK]",
+   "skill_level_scaling": "[B:10]/[D:10]/[B:10]/[D:10]/[B:10]",
+   "multiplier": 504.0,
+   "effects": [],
+   "battle_options": "2120101/2120102",
+   "battle_option_ids": [
+    2120101,
+    2120102
+   ],
+   "evolution_level_required": 0,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": 0,
+   "camera_type": 0,
+   "cutscene_flag": 0,
+   "damage": {
+    "scaling": [
+     {
+      "stat": "ATK",
+      "pct": 504.0
+     }
+    ],
+    "hits": [
+     {
+      "pct": 504.0,
+      "count": 1
+     }
+    ],
+    "total": 504.0
+   }
+  },
+  {
+   "id": 21202,
+   "name": "[&Color_Cyan]Dark Lightning[-]",
+   "name_key": "Tbl_UnitSkill_Name_21202",
+   "name_readable": "Dark Lightning",
+   "description": "Strikes the enemy with a powerful lightning bolt to attack.\nInflicts [&Stun] on the target hit at a [&Color_Cyan][R:2120202]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2120202] turn(s)\nInflicts [&Color_Cyan]([V3:2120203]%)[-] [&CriResDown] on the target hit at a [&Color_Cyan][R:2120203]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2120203] turn(s)",
+   "description_key": "Tbl_UnitSkill_Desc_21202",
+   "description_readable": "Strikes the enemy with a powerful lightning bolt to attack.\nInflicts Faint on the target hit at a 20% chance.\nDuration: 1 turn(s)\nInflicts (-47.5%) CRIT RES DOWN on the target hit at a 99% chance.\nDuration: 2 turn(s)",
+   "type_description": "[Attack Skill]",
+   "type_description_readable": "[Attack Skill]",
+   "icon": "21202",
+   "cooldown": 3,
+   "hit_count": 1,
+   "additional_hits": 0,
+   "damage_scaling": "[ATK]",
+   "skill_level_scaling": "[B:10]/[D:10]/[B:10]/[D:10]/[B:10]",
+   "multiplier": 692.2,
+   "effects": [],
+   "battle_options": "2120201/2120202/2120203",
+   "battle_option_ids": [
+    2120201,
+    2120202,
+    2120203
+   ],
+   "evolution_level_required": 0,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": 0,
+   "camera_type": 0,
+   "cutscene_flag": 0,
+   "damage": {
+    "scaling": [
+     {
+      "stat": "ATK",
+      "pct": 692.2
+     }
+    ],
+    "hits": [
+     {
+      "pct": 692.2,
+      "count": 1
+     }
+    ],
+    "total": 692.2
+   }
+  },
+  {
+   "id": 21203,
+   "name": "[&Color_Cyan]Revenant Knight[-]",
+   "name_key": "Tbl_UnitSkill_Name_21203",
+   "name_readable": "Revenant Knight",
+   "description": "When an ally is defeated, resurrects 1 [&Common_Word_Skill_Random] defeated ally with [&Color_Cyan][V3:2120301]%[-] of [&HP] and grants [&Athanasia].\n[&Common_Word_Skill_ValueTurn]: [V2:2120302] turn(s)",
+   "description_key": "Tbl_UnitSkill_Desc_21203",
+   "description_readable": "When an ally is defeated, resurrects 1 Random defeated ally with 1% of HP and grants Immortal.\nDuration: 1 turn(s)",
+   "type_description": "[Passive Skill]",
+   "type_description_readable": "[Passive Skill]",
+   "icon": "21203",
+   "cooldown": 7,
+   "hit_count": 1,
+   "additional_hits": 0,
+   "damage_scaling": "",
+   "skill_level_scaling": "",
+   "multiplier": null,
+   "effects": [],
+   "battle_options": "2120301/2120302",
+   "battle_option_ids": [
+    2120301,
+    2120302
+   ],
+   "evolution_level_required": 1,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": -1,
+   "camera_type": 0,
+   "cutscene_flag": 0,
+   "damage": null
+  }
+ ],
+ "weapons": [
+  {
+   "id": 21201,
+   "name": "[&Color_Orange]Wraith's Black Armor[-]",
+   "name_key": "Tbl_UnitWeapon_Name_21201",
+   "icon": "Weapon_21201.png",
+   "rarity": 3,
+   "weapon_type": 212,
+   "opt_type": 8,
+   "opt_value": 20,
+   "skill_slot": 21202,
+   "skill_id": 21212,
+   "skill_data": {
+    "id": 21212,
+    "name": "<[&Tbl_UnitWeapon_Name_21201]> [&Color_Cyan]Dark Lightning[-]",
+    "name_key": "Tbl_UnitSkill_Name_21212",
+    "name_readable": "<Wraith's Black Armor> Dark Lightning",
+    "description": "Strikes the enemy with a powerful lightning bolt to attack.\nInflicts [&Stun] on the target hit at a [&Color_Cyan][R:2121202]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2121202] turn(s)\nInflicts [&Color_Cyan]([V3:2121203]%)[-] [&CriDmgDown] on the target hit at a [&Color_Cyan][R:2121203]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2121203] turn(s)",
+    "description_key": "Tbl_UnitSkill_Desc_21212",
+    "description_readable": "Strikes the enemy with a powerful lightning bolt to attack.\nInflicts Faint on the target hit at a 20% chance.\nDuration: 1 turn(s)\nInflicts (-80%) CRIT DMG DOWN on the target hit at a 99% chance.\nDuration: 2 turn(s)",
+    "type_description": "[Attack Skill]",
+    "type_description_readable": "[Attack Skill]",
+    "icon": "21212",
+    "cooldown": 3,
+    "hit_count": 1,
+    "additional_hits": 0,
+    "damage_scaling": "[ATK]",
+    "skill_level_scaling": "[B:10]/[D:10]/[B:10]/[D:10]/[B:10]",
+    "multiplier": 692.2,
+    "effects": [],
+    "battle_options": "2121201/2121202/2121203",
+    "battle_option_ids": [
+     2121201,
+     2121202,
+     2121203
+    ],
+    "evolution_level_required": 0,
+    "trigger_keyword": "",
+    "aura_info": "",
+    "skill_button_type": 0,
+    "camera_type": 0,
+    "cutscene_flag": 0,
+    "damage": {
+     "scaling": [
+      {
+       "stat": "ATK",
+       "pct": 692.2
       }
+     ],
+     "hits": [
+      {
+       "pct": 692.2,
+       "count": 1
+      }
+     ],
+     "total": 692.2
     }
-  ]
+   }
+  }
+ ]
 }

@@ -23,9 +23,10 @@ export interface Props {
   description?: string;
   gameTitle?: string;
   heroImage?: string;
+  heroVideo?: string;
 }
 
-const { title, description, gameTitle, heroImage } = Astro.props;
+const { title, description, gameTitle, heroImage, heroVideo } = Astro.props;
 ---
 
 <html lang="en">
@@ -54,9 +55,19 @@ const { title, description, gameTitle, heroImage } = Astro.props;
 
       <div class="taimanin-squad-container">
         <main class="taimanin-squad-main" id="main-content">
+          {/* Ambient background video (landing only): muted loop, fades out by mid-page */}
+          {
+            heroVideo && (
+              <div class="ts-bg-video-wrap" aria-hidden="true">
+                <video class="ts-bg-video" autoplay muted loop playsinline preload="auto">
+                  <source src={heroVideo} type="video/mp4" />
+                </video>
+              </div>
+            )
+          }
           <!-- Hero Section -->
           {
-            heroImage && gameTitle && (
+            heroImage && gameTitle && !heroVideo && (
               <section class="hero-section">
                 {/* Hero Image Container */}
                 <div class="hero-image-wrapper">
@@ -82,9 +93,9 @@ const { title, description, gameTitle, heroImage } = Astro.props;
               </section>
             )
           }
-          <!-- Title Only Section (when no hero image) -->
+          <!-- Title Only Section (no hero image, or video takes its place) -->
           {
-            !heroImage && gameTitle && (
+            (!heroImage || heroVideo) && gameTitle && (
               <section class="title-only-section">
                 <h1 class="title-only-heading">{gameTitle}</h1>
 

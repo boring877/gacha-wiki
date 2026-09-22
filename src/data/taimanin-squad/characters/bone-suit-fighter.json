@@ -1,509 +1,539 @@
 {
-  "id": 192,
-  "name": "Bone Suit Fighter",
-  "name_key": "Tbl_Unit_Name_192",
-  "slug": "bone-suit-fighter",
-  "rarity": "R+",
-  "rarity_stars": "★★",
-  "rarity_numeric": 2,
-  "element": "Technique",
-  "element_numeric": 2,
-  "role": "Defender",
-  "role_numeric": 2,
-  "trait": "Sun",
-  "disposition_numeric": 7,
-  "icon": "192_Fighter2",
-  "model": "192_Fighter2/Unit/prf_192",
-  "animation_event": "192_fighter2",
-  "book_index": 9,
-  "acquisition_id": 10001,
-  "btl_power": 5800,
-  "btl_rate": 254431,
-  "names": {
-    "key": "Tbl_Unit_Name_192",
-    "english": "Bone Suit Fighter",
-    "japanese": "ボーンスーツファイター",
-    "korean": "본 슈트 파이터"
+ "id": 192,
+ "name": "Bone Suit Fighter",
+ "name_key": "Tbl_Unit_Name_192",
+ "slug": "bone-suit-fighter",
+ "rarity": "R+",
+ "rarity_stars": "★★",
+ "rarity_numeric": 2,
+ "element": "Technique",
+ "element_numeric": 2,
+ "role": "Defender",
+ "role_numeric": 2,
+ "trait": "Sun",
+ "disposition_numeric": 7,
+ "icon": "192_Fighter2",
+ "model": "192_Fighter2/Unit/prf_192",
+ "animation_event": "192_fighter2",
+ "book_index": 9,
+ "acquisition_id": 10001,
+ "btl_power": 5800,
+ "btl_rate": 254431,
+ "names": {
+  "key": "Tbl_Unit_Name_192",
+  "english": "Bone Suit Fighter",
+  "japanese": "ボーンスーツファイター",
+  "korean": "본 슈트 파이터"
+ },
+ "lore": {
+  "key": "Tbl_Unit_Desc_192",
+  "english": "A special agent belonging to the UFS's Personal Powered Exoskeleton Unit.\n\nWith precision hydraulic actuators specialized in shock absorption, the suit delivers an ironclad defense that remains unyielding against any level of firepower.\n\nCharacterized by a merciless assault capability that breaches deep into enemy lines while nullifying incoming bombardment, this agent absorbs fierce enemy offensives head-on, shatters their formations, and neutralizes targets with an overwhelming durability that refuses to buckle under any strike.",
+  "japanese": "米連・パーソナル強化外骨格部隊所属のエージェント。\n\n精密油圧アクチュエータを衝撃吸収に特化させ、どんな火力を相手にも揺れない鉄壁の防御性能を具現する。\n\n降り注ぐ砲火の衝撃を無効化して敵陣に深く入り込む無慈悲な突撃性能が特徴であり、敵の激しい攻勢をその身で受け止めながら陣形を崩壊させ、どんな打撃にも屈しない圧倒的な頑丈さで標的を無力化させる。",
+  "korean": "미연, 퍼스널 강화외골격 부대 소속의 특수 요원.\n\n정밀 유압식 액추에이터를 충격 흡수에 특화시켜, 어떠한 화력에도 흔들림 없는 철벽같은 방어 성능을 구현한다.\n\n쏟아지는 포화의 충격을 무효화하며 적진 깊숙이 파고드는 무자비한 돌격 성능이 특징이며, 적의 격렬한 공세를 온몸으로 받아내며 진형을 붕괴시키고, 어떤 타격에도 굴하지 않는 압도적인 견고함으로 표적을 무력화한다.",
+  "chinese_simplified": "美联个人强化外骨骼部队所属精锐特工。\n\n将精密油压致动器专用于吸收冲击，实现了在任何火力面前也岿然不动、如铁壁般的防御性能。\n\n特色是可无视密集炮火并深入敌阵的无情突击能力。在亲身承受敌方猛烈攻势的同时，瓦解其阵型，并以不屈服于任何打击的压倒性坚固度使目标瘫痪。",
+  "chinese_traditional": "美聯個人強化外骨骼部隊所屬精銳特工。\n\n將精密油壓致動器專用於吸收衝擊，實現了在任何火力面前也巋然不動、如鐵壁般的防禦性能。\n\n特色是可無視密集炮火並深入敵陣的無情突擊能力。在親身承受敵方猛烈攻勢的同時，瓦解其陣型，並以不屈服於任何打擊的壓倒性堅固度使目標癱瘓。",
+  "spanish": "Agente especial perteneciente a la unidad de exoesqueletos de refuerzo personal de UFS.\n\nLos actuadores hidráulicos de precisión están optimizados para la absorción de impactos, permitiéndole alcanzar un rendimiento defensivo impenetrable que no vacila ante ningún nivel de potencia de fuego.\n\nSe caracteriza por su despiadada capacidad de asalto, anulando el impacto de intensos bombardeos mientras se abre paso profundamente en las líneas enemigas. Recibe con su propio cuerpo las feroces ofensivas del enemigo para desmoronar sus formaciones y neutraliza sus objetivos con una resistencia abrumadora que no cede ante ningún ataque."
+ },
+ "base_stats": {
+  "HP": 11600,
+  "ATK": 1020,
+  "DEF": 719,
+  "SPD": 71,
+  "CRATE": 25,
+  "CDMG": 500,
+  "CRES": 0,
+  "ACC": 0,
+  "EVD": 0
+ },
+ "stats": {
+  "HP": 23252,
+  "ATK": 1934,
+  "DEF": 1463,
+  "SPD": 71,
+  "CRATE": 25,
+  "CDMG": 500,
+  "CRES": 50,
+  "ACC": 0,
+  "EVD": 25
+ },
+ "evol_stat_id": 2,
+ "evol_stat_type": "Defender",
+ "evolution_bonuses": {
+  "1": {
+   "HP": 250,
+   "ATK": 0,
+   "DEF": 20,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
   },
-  "lore": {
-    "key": "Tbl_Unit_Desc_192",
-    "english": "A special agent belonging to the UFS's Personal Powered Exoskeleton Unit.\n\nWith precision hydraulic actuators specialized in shock absorption, the suit delivers an ironclad defense that remains unyielding against any level of firepower.\n\nCharacterized by a merciless assault capability that breaches deep into enemy lines while nullifying incoming bombardment, this agent absorbs fierce enemy offensives head-on, shatters their formations, and neutralizes targets with an overwhelming durability that refuses to buckle under any strike.",
-    "japanese": "米連・パーソナル強化外骨格部隊所属のエージェント。\n\n精密油圧アクチュエータを衝撃吸収に特化させ、どんな火力を相手にも揺れない鉄壁の防御性能を具現する。\n\n降り注ぐ砲火の衝撃を無効化して敵陣に深く入り込む無慈悲な突撃性能が特徴であり、敵の激しい攻勢をその身で受け止めながら陣形を崩壊させ、どんな打撃にも屈しない圧倒的な頑丈さで標的を無力化させる。",
-    "korean": "미연, 퍼스널 강화외골격 부대 소속의 특수 요원.\n\n정밀 유압식 액추에이터를 충격 흡수에 특화시켜, 어떠한 화력에도 흔들림 없는 철벽같은 방어 성능을 구현한다.\n\n쏟아지는 포화의 충격을 무효화하며 적진 깊숙이 파고드는 무자비한 돌격 성능이 특징이며, 적의 격렬한 공세를 온몸으로 받아내며 진형을 붕괴시키고, 어떤 타격에도 굴하지 않는 압도적인 견고함으로 표적을 무력화한다.",
-    "chinese_simplified": "美联个人强化外骨骼部队所属精锐特工。\n\n将精密油压致动器专用于吸收冲击，实现了在任何火力面前也岿然不动、如铁壁般的防御性能。\n\n特色是可无视密集炮火并深入敌阵的无情突击能力。在亲身承受敌方猛烈攻势的同时，瓦解其阵型，并以不屈服于任何打击的压倒性坚固度使目标瘫痪。",
-    "chinese_traditional": "美聯個人強化外骨骼部隊所屬精銳特工。\n\n將精密油壓致動器專用於吸收衝擊，實現了在任何火力面前也巋然不動、如鐵壁般的防禦性能。\n\n特色是可無視密集炮火並深入敵陣的無情突擊能力。在親身承受敵方猛烈攻勢的同時，瓦解其陣型，並以不屈服於任何打擊的壓倒性堅固度使目標癱瘓。",
-    "spanish": "Agente especial perteneciente a la unidad de exoesqueletos de refuerzo personal de UFS.\n\nLos actuadores hidráulicos de precisión están optimizados para la absorción de impactos, permitiéndole alcanzar un rendimiento defensivo impenetrable que no vacila ante ningún nivel de potencia de fuego.\n\nSe caracteriza por su despiadada capacidad de asalto, anulando el impacto de intensos bombardeos mientras se abre paso profundamente en las líneas enemigas. Recibe con su propio cuerpo las feroces ofensivas del enemigo para desmoronar sus formaciones y neutraliza sus objetivos con una resistencia abrumadora que no cede ante ningún ataque."
+  "2": {
+   "HP": 500,
+   "ATK": 0,
+   "DEF": 40,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
   },
-  "base_stats": {
-    "HP": 11600,
-    "ATK": 1020,
-    "DEF": 719,
+  "3": {
+   "HP": 750,
+   "ATK": 0,
+   "DEF": 60,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "4": {
+   "HP": 1000,
+   "ATK": 0,
+   "DEF": 80,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "5": {
+   "HP": 1250,
+   "ATK": 0,
+   "DEF": 100,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "6": {
+   "HP": 1250,
+   "ATK": 0,
+   "DEF": 100,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 50,
+   "ACC": 0,
+   "EVD": 25
+  }
+ },
+ "evolution_bonuses_per_grade": {
+  "1": {
+   "HP": 250,
+   "ATK": 0,
+   "DEF": 20,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "2": {
+   "HP": 500,
+   "ATK": 0,
+   "DEF": 40,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "3": {
+   "HP": 750,
+   "ATK": 0,
+   "DEF": 60,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "4": {
+   "HP": 1000,
+   "ATK": 0,
+   "DEF": 80,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "5": {
+   "HP": 1250,
+   "ATK": 0,
+   "DEF": 100,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "6": {
+   "HP": 1250,
+   "ATK": 0,
+   "DEF": 100,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 50,
+   "ACC": 0,
+   "EVD": 25
+  }
+ },
+ "stats_by_grade": {
+  "1": {
+   "grade": 1,
+   "max_level": 10,
+   "stats": {
+    "HP": 13186,
+    "ATK": 1159,
+    "DEF": 817,
     "SPD": 71,
     "CRATE": 25,
     "CDMG": 500,
     "CRES": 0,
     "ACC": 0,
     "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 250,
+    "ATK": 0,
+    "DEF": 20,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "stats": {
-    "HP": 23252,
-    "ATK": 1934,
-    "DEF": 1463,
+  "2": {
+   "grade": 2,
+   "max_level": 20,
+   "stats": {
+    "HP": 14950,
+    "ATK": 1314,
+    "DEF": 926,
     "SPD": 71,
     "CRATE": 25,
     "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 500,
+    "ATK": 0,
+    "DEF": 40,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  },
+  "3": {
+   "grade": 3,
+   "max_level": 30,
+   "stats": {
+    "HP": 16713,
+    "ATK": 1469,
+    "DEF": 1035,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 750,
+    "ATK": 0,
+    "DEF": 60,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  },
+  "4": {
+   "grade": 4,
+   "max_level": 40,
+   "stats": {
+    "HP": 18476,
+    "ATK": 1624,
+    "DEF": 1145,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 1000,
+    "ATK": 0,
+    "DEF": 80,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  },
+  "5": {
+   "grade": 5,
+   "max_level": 50,
+   "stats": {
+    "HP": 20239,
+    "ATK": 1779,
+    "DEF": 1254,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 1250,
+    "ATK": 0,
+    "DEF": 100,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  },
+  "6": {
+   "grade": 6,
+   "max_level": 60,
+   "stats": {
+    "HP": 22002,
+    "ATK": 1934,
+    "DEF": 1363,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 1250,
+    "ATK": 0,
+    "DEF": 100,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
     "CRES": 50,
     "ACC": 0,
     "EVD": 25
+   }
+  }
+ },
+ "stats_by_level": {
+  "10": {
+   "level": 10,
+   "grade_required": 1,
+   "stats": {
+    "HP": 13186,
+    "ATK": 1159,
+    "DEF": 817,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "evol_stat_id": 2,
-  "evol_stat_type": "Defender",
-  "evolution_bonuses": {
-    "1": {
-      "HP": 250,
-      "ATK": 0,
-      "DEF": 20,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "2": {
-      "HP": 500,
-      "ATK": 0,
-      "DEF": 40,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "3": {
-      "HP": 750,
-      "ATK": 0,
-      "DEF": 60,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "4": {
-      "HP": 1000,
-      "ATK": 0,
-      "DEF": 80,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "5": {
-      "HP": 1250,
-      "ATK": 0,
-      "DEF": 100,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "6": {
-      "HP": 1250,
-      "ATK": 0,
-      "DEF": 100,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 50,
-      "ACC": 0,
-      "EVD": 25
-    }
+  "20": {
+   "level": 20,
+   "grade_required": 2,
+   "stats": {
+    "HP": 14950,
+    "ATK": 1314,
+    "DEF": 926,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "evolution_bonuses_per_grade": {
-    "1": {
-      "HP": 250,
-      "ATK": 0,
-      "DEF": 20,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "2": {
-      "HP": 500,
-      "ATK": 0,
-      "DEF": 40,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "3": {
-      "HP": 750,
-      "ATK": 0,
-      "DEF": 60,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "4": {
-      "HP": 1000,
-      "ATK": 0,
-      "DEF": 80,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "5": {
-      "HP": 1250,
-      "ATK": 0,
-      "DEF": 100,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "6": {
-      "HP": 1250,
-      "ATK": 0,
-      "DEF": 100,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 50,
-      "ACC": 0,
-      "EVD": 25
-    }
+  "30": {
+   "level": 30,
+   "grade_required": 3,
+   "stats": {
+    "HP": 16713,
+    "ATK": 1469,
+    "DEF": 1035,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "stats_by_grade": {
-    "1": {
-      "grade": 1,
-      "max_level": 10,
-      "stats": {
-        "HP": 13186,
-        "ATK": 1159,
-        "DEF": 817,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 250,
-        "ATK": 0,
-        "DEF": 20,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "2": {
-      "grade": 2,
-      "max_level": 20,
-      "stats": {
-        "HP": 14950,
-        "ATK": 1314,
-        "DEF": 926,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 500,
-        "ATK": 0,
-        "DEF": 40,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "3": {
-      "grade": 3,
-      "max_level": 30,
-      "stats": {
-        "HP": 16713,
-        "ATK": 1469,
-        "DEF": 1035,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 750,
-        "ATK": 0,
-        "DEF": 60,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "4": {
-      "grade": 4,
-      "max_level": 40,
-      "stats": {
-        "HP": 18476,
-        "ATK": 1624,
-        "DEF": 1145,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 1000,
-        "ATK": 0,
-        "DEF": 80,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "5": {
-      "grade": 5,
-      "max_level": 50,
-      "stats": {
-        "HP": 20239,
-        "ATK": 1779,
-        "DEF": 1254,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 1250,
-        "ATK": 0,
-        "DEF": 100,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "6": {
-      "grade": 6,
-      "max_level": 60,
-      "stats": {
-        "HP": 22002,
-        "ATK": 1934,
-        "DEF": 1363,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 1250,
-        "ATK": 0,
-        "DEF": 100,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 50,
-        "ACC": 0,
-        "EVD": 25
-      }
-    }
+  "40": {
+   "level": 40,
+   "grade_required": 4,
+   "stats": {
+    "HP": 18476,
+    "ATK": 1624,
+    "DEF": 1145,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "stats_by_level": {
-    "10": {
-      "level": 10,
-      "grade_required": 1,
-      "stats": {
-        "HP": 13186,
-        "ATK": 1159,
-        "DEF": 817,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "20": {
-      "level": 20,
-      "grade_required": 2,
-      "stats": {
-        "HP": 14950,
-        "ATK": 1314,
-        "DEF": 926,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "30": {
-      "level": 30,
-      "grade_required": 3,
-      "stats": {
-        "HP": 16713,
-        "ATK": 1469,
-        "DEF": 1035,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "40": {
-      "level": 40,
-      "grade_required": 4,
-      "stats": {
-        "HP": 18476,
-        "ATK": 1624,
-        "DEF": 1145,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "50": {
-      "level": 50,
-      "grade_required": 5,
-      "stats": {
-        "HP": 20239,
-        "ATK": 1779,
-        "DEF": 1254,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "60": {
-      "level": 60,
-      "grade_required": 6,
-      "stats": {
-        "HP": 22002,
-        "ATK": 1934,
-        "DEF": 1363,
-        "SPD": 71,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    }
+  "50": {
+   "level": 50,
+   "grade_required": 5,
+   "stats": {
+    "HP": 20239,
+    "ATK": 1779,
+    "DEF": 1254,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "skills": [
-    {
-      "id": 19201,
-      "name": "[&Color_Cyan]Soldier's Beat[-]",
-      "name_key": "Tbl_UnitSkill_Name_19201",
-      "name_readable": "Soldier's Beat",
-      "description": "Swings their fists consecutively to attack [A:19201] times.",
-      "description_key": "Tbl_UnitSkill_Desc_19201",
-      "description_readable": "Swings their fists consecutively to attack 2 times.",
-      "type_description": "[Normal Attack]",
-      "type_description_readable": "[Normal Attack]",
-      "icon": "19201",
-      "cooldown": 0,
-      "hit_count": 2,
-      "additional_hits": 0,
-      "damage_scaling": "[ATK]",
-      "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": 0.0,
-      "effects": [],
-      "battle_options": "1920101",
-      "battle_option_ids": [
-        1920101
-      ],
-      "evolution_level_required": 0,
-      "trigger_keyword": "",
-      "aura_info": "",
-      "skill_button_type": 0,
-      "camera_type": 0,
-      "cutscene_flag": 0
-    },
-    {
-      "id": 19202,
-      "name": "[&Color_Cyan]Iron Rush[-]",
-      "name_key": "Tbl_UnitSkill_Name_19202",
-      "name_readable": "Iron Rush",
-      "description": "Swings both fists aggressively in turns to strike the target [A:19202] times.\nTarget hit is inflicited with [&Stun] at a [&Color_Cyan][R:1920202]%[-] chance on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:1920202] turn(s)",
-      "description_key": "Tbl_UnitSkill_Desc_19202",
-      "description_readable": "Swings both fists aggressively in turns to strike the target 4 times.\nTarget hit is inflicited with Faint at a 20% chance on the Last Attack.\nDuration: 1 turn(s)",
-      "type_description": "[Attack Skill]",
-      "type_description_readable": "[Attack Skill]",
-      "icon": "19202",
-      "cooldown": 3,
-      "hit_count": 4,
-      "additional_hits": 0,
-      "damage_scaling": "[ATK]",
-      "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": 0.0,
-      "effects": [],
-      "battle_options": "1920201/1920202",
-      "battle_option_ids": [
-        1920201,
-        1920202
-      ],
-      "evolution_level_required": 0,
-      "trigger_keyword": "",
-      "aura_info": "",
-      "skill_button_type": 0,
-      "camera_type": 0,
-      "cutscene_flag": 0
-    }
-  ],
-  "weapons": []
+  "60": {
+   "level": 60,
+   "grade_required": 6,
+   "stats": {
+    "HP": 22002,
+    "ATK": 1934,
+    "DEF": 1363,
+    "SPD": 71,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  }
+ },
+ "skills": [
+  {
+   "id": 19201,
+   "name": "[&Color_Cyan]Soldier's Beat[-]",
+   "name_key": "Tbl_UnitSkill_Name_19201",
+   "name_readable": "Soldier's Beat",
+   "description": "Swings their fists consecutively to attack [A:19201] times.",
+   "description_key": "Tbl_UnitSkill_Desc_19201",
+   "description_readable": "Swings their fists consecutively to attack 2 times.",
+   "type_description": "[Normal Attack]",
+   "type_description_readable": "[Normal Attack]",
+   "icon": "19201",
+   "cooldown": 0,
+   "hit_count": 2,
+   "additional_hits": 0,
+   "damage_scaling": "[ATK]",
+   "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+   "multiplier": 262.5,
+   "effects": [],
+   "battle_options": "1920101",
+   "battle_option_ids": [
+    1920101
+   ],
+   "evolution_level_required": 0,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": 0,
+   "camera_type": 0,
+   "cutscene_flag": 0,
+   "damage": {
+    "scaling": [
+     {
+      "stat": "ATK",
+      "pct": 262.5
+     }
+    ],
+    "hits": [
+     {
+      "pct": 262.5,
+      "count": 2
+     }
+    ],
+    "total": 525.0
+   }
+  },
+  {
+   "id": 19202,
+   "name": "[&Color_Cyan]Iron Rush[-]",
+   "name_key": "Tbl_UnitSkill_Name_19202",
+   "name_readable": "Iron Rush",
+   "description": "Swings both fists aggressively in turns to strike the target [A:19202] times.\nTarget hit is inflicited with [&Stun] at a [&Color_Cyan][R:1920202]%[-] chance on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:1920202] turn(s)",
+   "description_key": "Tbl_UnitSkill_Desc_19202",
+   "description_readable": "Swings both fists aggressively in turns to strike the target 4 times.\nTarget hit is inflicited with Faint at a 20% chance on the Last Attack.\nDuration: 1 turn(s)",
+   "type_description": "[Attack Skill]",
+   "type_description_readable": "[Attack Skill]",
+   "icon": "19202",
+   "cooldown": 3,
+   "hit_count": 4,
+   "additional_hits": 0,
+   "damage_scaling": "[ATK]",
+   "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+   "multiplier": 184.6,
+   "effects": [],
+   "battle_options": "1920201/1920202",
+   "battle_option_ids": [
+    1920201,
+    1920202
+   ],
+   "evolution_level_required": 0,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": 0,
+   "camera_type": 0,
+   "cutscene_flag": 0,
+   "damage": {
+    "scaling": [
+     {
+      "stat": "ATK",
+      "pct": 184.6
+     }
+    ],
+    "hits": [
+     {
+      "pct": 184.6,
+      "count": 4
+     }
+    ],
+    "total": 738.4
+   }
+  }
+ ],
+ "weapons": []
 }

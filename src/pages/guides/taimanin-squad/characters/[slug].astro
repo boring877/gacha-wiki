@@ -217,14 +217,37 @@ if (data.weapons) {
 }
 
 function formatMultiplier(skill: any): string | null {
-  if (!skill.multiplier) return null;
-  const m = skill.multiplier;
-  const hits = skill.hit_count || 1;
-  const scaling = skill.damage_scaling || '[ATK]';
-  const extraStat = scaling.replace('[ATK]', '').replace(/[\[\]]/g, '').replace(/^\//, '').trim();
-  const scalingLabel = extraStat ? ` (Scales with ${extraStat === 'CostHP' ? 'HP Cost' : extraStat === 'NowHp' || extraStat === 'NowHP' ? 'Current HP' : extraStat})` : '';
-  const hitLabel = hits > 1 ? ` (${hits} hits)` : '';
-  return `${m}% ATK${hitLabel}${scalingLabel}`;
+  const dmg = skill.damage;
+  if (!dmg) return null;
+  const scaling = dmg.scaling || [];
+  if (!scaling.length) return null;
+  const stat = scaling[0].stat;
+  const dual = scaling.length > 1;
+  // merge consecutive hits with the same pct: [{200,1},{200,1},{122,1}] -> [{200,2},{122,1}]
+  const merged: any[] = [];
+  for (const h of dmg.hits || []) {
+    const last = merged[merged.length - 1];
+    if (last && last.pct === h.pct) last.count += h.count;
+    else merged.push({ ...h });
+  }
+  const parts: string[] = [];
+  const totalHitCount = (dmg.hits || []).reduce((n: number, h: any) => n + h.count, 0);
+  if (dual) {
+    const hitTxt = totalHitCount > 1 ? ` x ${totalHitCount} hits` : '';
+    parts.push(`${scaling[0].pct}% ${stat} + ${scaling[1].pct}% ${scaling[1].stat}${hitTxt}`);
+    for (const a of dmg.add || []) parts.push(`+ ${a.pct}% ${stat} extra${a.count > 1 ? ` x ${a.count}` : ''}`);
+  } else if (merged.length === 1 && merged[0].count > 1) {
+    parts.push(`${merged[0].pct}% ${stat} x ${merged[0].count} = ${dmg.total}%`);
+  } else if (merged.length === 1) {
+    parts.push(`${merged[0].pct}% ${stat}`);
+  } else {
+    const seg = merged.map((h: any) => `${h.pct}% x ${h.count}`).join(' + ');
+    parts.push(dmg.total ? `${seg} = ${dmg.total}% ${stat}` : `${seg} ${stat}`);
+  }
+  for (const a of dmg.add || []) {
+    parts.push(`+ ${a.pct}% ${stat} extra${a.count > 1 ? ` x ${a.count}` : ''}`);
+  }
+  return parts.length ? parts.join(' ') : null;
 }
 ---
 
@@ -369,7 +392,7 @@ function formatMultiplier(skill: any): string | null {
                     {skill.hit_count > 1 && <span class="ts-cd-skill-hits">Hits: {skill.hit_count}</span>}
                   </div>
                 </div>
-                {skill.multiplier && (
+                {skill.damage && (
                   <div class="ts-cd-skill-mult">
                     {formatMultiplier(skill)}
                   </div>
@@ -412,7 +435,7 @@ function formatMultiplier(skill: any): string | null {
                   {wp.skill_data.description_readable && (
                     <div class="ts-cd-skill-desc" set:html={cleanDescription(wp.skill_data.description_readable)} />
                   )}
-                  {wp.skill_data.multiplier && (
+                  {wp.skill_data.damage && (
                     <div class="ts-cd-skill-mult">{formatMultiplier(wp.skill_data)}</div>
                   )}
                 </div>

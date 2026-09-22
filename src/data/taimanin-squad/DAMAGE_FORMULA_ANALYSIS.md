@@ -4,6 +4,42 @@ Generated from Ghidra decompilation of libil2cpp.so (98MB ARM64 binary)
 
 ---
 
+## SKILL DAMAGE FORMULA (DECODED 2026-09-22, Steam build 119 GameAssembly.dll x64)
+
+`BOExecuteManager$$CalcDamage` @ RVA 0x25e7c0 (script.json; callers: BOEvent @ 0x254f80).
+Disassembly-verified: DmgBase is split on `/` (immediate 0x2f fed to String.Split),
+`GetDmgBaseStats` (RVA 0x26cda0) resolves each part to a stat value on the attacker.
+
+```
+damage = 0.01 * ( BOFuncValue3 * stat0  +  BOFuncValue2 * stat1 )
+```
+
+- `DmgBase` ("[ATK]", "[ATK]/[SPD]", "[ATK]/[DEF]", "[ATK]/[LostHP]", "[ATK]/[NowHp]", "[DEF]", ...) -> stat0 = first part, stat1 = second part
+- `BOFuncValue3` (float) = percent of stat0 (393.8 = 393.8% ATK); single-stat skills use ONLY this
+- `BOFuncValue2` (int) = percent of stat1; 0 when no second stat
+- The 0.01 global is read as `[[BattleSettings_static]+chain+0x28]+0x48` and multiplies
+  EVERY BO V3 in BOEvent (42 call sites) and CalcDamage. Proof it is 0.01: the same V3
+  field is printed RAW as "%" in skill descriptions for heals/shields/debuffs
+  (e.g. shield BO 130301 V3=21 displayed as "21% of Max HP"; [V3:id]% tokens), so
+  V3 is a percent and the runtime multiplier must convert percent -> fraction.
+- Attack components per skill = its BattleOption list:
+  - `eBOFunc_Attack` (plain) covers all `SkillAtkCnt` hits
+  - `eBOFunc_Attack/1` = last hit, `/2` = normal hits (one BO per hit when counts match)
+  - `eBOFunc_AddAttack` = extra conditional attack (its own V3)
+  - `eBOFunc_DmgDrainHp` V3 = lifesteal % of damage dealt, NOT damage
+  - `eBOFunc_Attack` with DmgBase "[ATK]/[LostHP]": +V2% of the caster's MISSING HP
+    ("Damage increases in proportion to HP lost")
+- Cross-check: all normal attacks total ~400-530% ATK regardless of hit split
+  (101: 393.8x1; 201: 141.8x2+196.9; 401: 262.5x2; 701: 141.8x2+189)
+- Extractor: `D:\TaimaninSquad\tools\gen_damage.py` -> writes `damage` object
+  {scaling:[{stat,pct},...], hits:[{pct,count}], add:[...], total} into
+  skills_complete.json, characters/*.json (skills + weapons skill_data),
+  character-skills-map.json. `multiplier` field = per-hit primary stat % (V3).
+  NOTE: pre-2026-09-22 `multiplier` values were BOFuncValue2/100 = WRONG (V2 is the
+  secondary-stat percent or a turn count, not damage).
+
+---
+
 ## CalcDamage Function (BOExecuteManager$$CalcDamage)
 
 **IL2CPP Address:** 0x27FA7E4

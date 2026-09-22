@@ -140,12 +140,38 @@ const skills = skillsData.skills || [];
 
 import characterSkillsMap from '../../../../data/taimanin-squad/character-skills-map.json';
 
-function getSkillData(charId: number, skillId: number): { multiplier: number | null; hit_count: number; attack_count: number } | null {
+function getSkillData(charId: number, skillId: number): { multiplier: number | null; hit_count: number; attack_count: number; damage: any } | null {
   const charEntry = (characterSkillsMap as any)[String(charId)];
   if (!charEntry) return null;
   const skillEntry = charEntry[String(skillId)];
   if (!skillEntry) return null;
-  return { multiplier: skillEntry.multiplier, hit_count: skillEntry.hit_count || 0, attack_count: skillEntry.attack_count || 0 };
+  return { multiplier: skillEntry.multiplier, hit_count: skillEntry.hit_count || 0, attack_count: skillEntry.attack_count || 0, damage: skillEntry.damage ?? null };
+}
+
+// Render the extracted per-skill damage (game formula: % of ATK/DEF/SPD per hit)
+function damageLabel(sd: any): string | null {
+  const dmg = sd?.damage;
+  if (!dmg || !dmg.scaling || !dmg.scaling.length) return null;
+  const s0 = dmg.scaling[0];
+  const dual = dmg.scaling.length > 1;
+  // merge consecutive hits with the same pct for compact display
+  const merged: any[] = [];
+  for (const h of dmg.hits || []) {
+    const last = merged[merged.length - 1];
+    if (last && last.pct === h.pct) last.count += h.count;
+    else merged.push({ pct: h.pct, count: h.count });
+  }
+  const totalHits = (dmg.hits || []).reduce((n: number, h: any) => n + h.count, 0);
+  if (dual) {
+    const extra = totalHits > 1 ? ` x ${totalHits} hits` : '';
+    let label = `${s0.pct}% ${s0.stat} + ${dmg.scaling[1].pct}% ${dmg.scaling[1].stat}${extra}`;
+    for (const a of dmg.add || []) label += ` + ${a.pct}% ${s0.stat} extra${a.count > 1 ? ` x ${a.count}` : ''}`;
+    return label;
+  }
+  if (merged.length === 1 && merged[0].count > 1) return `${merged[0].pct}% ${s0.stat} x ${merged[0].count} = ${dmg.total}%`;
+  if (merged.length === 1) return `${merged[0].pct}% ${s0.stat}`;
+  const seg = merged.map((h: any) => `${h.pct}% x ${h.count}`).join(' + ');
+  return dmg.total ? `${seg} = ${dmg.total}% ${s0.stat}` : `${seg} ${s0.stat}`;
 }
 
 // Group skills by character ID
@@ -327,25 +353,12 @@ const totalCharWithSkills = charactersWithSkills.length;
                         <div class="skill-meta">
                           {(() => {
                             const sd = getSkillData(character.id, skill.id);
-                            if (!sd || sd.multiplier === null) return null;
-                            const { multiplier: mult, hit_count: hits, attack_count: atks } = sd;
-                            if (atks > 1) {
-                              return (
-                                <span class="skill-multiplier">
-                                  <span class="highlight">{mult}%</span> ATK <span class="mult-note">(total)</span>
-                                </span>
-                              );
-                            }
-                            if (hits > 1) {
-                              const total = Math.round(mult * hits * 10) / 10;
-                              return (
-                                <span class="skill-multiplier">
-                                  <span class="highlight">{mult}%</span> x {hits} = <span class="highlight">{total}%</span> ATK
-                                </span>
-                              );
-                            }
+                            const label = damageLabel(sd);
+                            if (!label) return null;
                             return (
-                              <span class="skill-multiplier"><span class="highlight">{mult}%</span> ATK</span>
+                              <span class="skill-multiplier">
+                                <span class="highlight">{label}</span>
+                              </span>
                             );
                           })()}
                           {skill.cooldown > 0 && (
@@ -395,25 +408,12 @@ const totalCharWithSkills = charactersWithSkills.length;
                         <div class="skill-meta">
                           {(() => {
                             const sd = getSkillData(character.id, skill.id);
-                            if (!sd || sd.multiplier === null) return null;
-                            const { multiplier: mult, hit_count: hits, attack_count: atks } = sd;
-                            if (atks > 1) {
-                              return (
-                                <span class="skill-multiplier">
-                                  <span class="highlight">{mult}%</span> ATK <span class="mult-note">(total)</span>
-                                </span>
-                              );
-                            }
-                            if (hits > 1) {
-                              const total = Math.round(mult * hits * 10) / 10;
-                              return (
-                                <span class="skill-multiplier">
-                                  <span class="highlight">{mult}%</span> x {hits} = <span class="highlight">{total}%</span> ATK
-                                </span>
-                              );
-                            }
+                            const label = damageLabel(sd);
+                            if (!label) return null;
                             return (
-                              <span class="skill-multiplier"><span class="highlight">{mult}%</span> ATK</span>
+                              <span class="skill-multiplier">
+                                <span class="highlight">{label}</span>
+                              </span>
                             );
                           })()}
                           {skill.cooldown > 0 && (

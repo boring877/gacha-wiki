@@ -426,3 +426,52 @@
     border-width: 2px;
   }
 }
+
+/* Ambient background video (official preview trailer): visible at the top,
+   fades to nothing by mid-page. Same pattern as gene-sys-adam / majo. */
+.ts-bg-video-wrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 70vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ts-bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.45;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 22%, transparent 82%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 22%, transparent 82%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ts-bg-video-wrap {
+    display: none;
+  }
+}
+
+/* mobile: 70vh of a portrait screen cover-crops the video into an extreme
+   zoom and crowds the page; a shorter box shows more of the frame */
+@media (max-width: 768px) {
+  .ts-bg-video-wrap {
+    height: 45vh;
+  }
+
+  .title-only-section {
+    min-height: 38vh;
+    padding-bottom: 8vh;
+  }
+}
+
+/* keep landing content above the ambient video */
+.content-section,
+.ts-resources-section {
+  position: relative;
+  z-index: 1;
+}

@@ -152,10 +152,22 @@ export const taimaninSquadConfig = {
     {
       id: 'resources',
       title: 'Resources',
-      description: 'Blog, codes, and useful links',
+      description: 'Updates, blog, codes, and useful links',
       icon: 'Emoticon_5.png',
       size: 'medium',
       guides: [
+        {
+          id: 'updates',
+          title: 'Updates & Patch Notes',
+          url: '/guides/taimanin-squad/updates/',
+          external: false,
+        },
+        {
+          id: 'banner-history',
+          title: 'Banner History',
+          url: '/guides/taimanin-squad/banners/',
+          external: false,
+        },
         {
           id: 'blog',
           title: 'Blog',

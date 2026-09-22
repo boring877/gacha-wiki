@@ -21,9 +21,11 @@ export interface Props {
   description?: string;
   gameTitle?: string;
   heroImage?: any;
+  // Hero image is the game logo itself, so the visible text title would duplicate it; h1 stays for SEO as sr-only
+  heroIsLogo?: boolean;
 }
 
-const { title, description, gameTitle, heroImage } = Astro.props;
+const { title, description, gameTitle, heroImage, heroIsLogo } = Astro.props;
 ---
 
 <html lang="en">
@@ -52,6 +54,13 @@ const { title, description, gameTitle, heroImage } = Astro.props;
 
       <div class="bb-container">
         <main class="bb-main" id="main-content">
+          <!-- Ambient background video (official Erolabs store trailer, 51s muted loop) — full-bleed top, fades out by mid-page -->
+          <div class="bb-bg-video-wrap" aria-hidden="true">
+            <video class="bb-bg-video" autoplay muted loop playsinline preload="auto">
+              <source src="/videos/bb-hero.mp4" type="video/mp4" />
+            </video>
+          </div>
+
           {
             heroImage && gameTitle && (
               <section class="hero-section">
@@ -67,7 +76,7 @@ const { title, description, gameTitle, heroImage } = Astro.props;
                   />
                   <div class="hero-overlay" />
                 </div>
-                <h1 class="hero-title">{gameTitle}</h1>
+                <h1 class:list={['hero-title', { 'sr-only': heroIsLogo }]}>{gameTitle}</h1>
                 <DecorativeLines />
               </section>
             )

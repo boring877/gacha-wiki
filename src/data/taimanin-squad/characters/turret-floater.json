@@ -1,480 +1,495 @@
 {
-  "id": 188,
-  "name": "Turret Floater",
-  "name_key": "Tbl_Unit_Name_188",
-  "slug": "turret-floater",
-  "rarity": "R",
-  "rarity_stars": "★",
-  "rarity_numeric": 1,
-  "element": "Agility",
-  "element_numeric": 3,
-  "role": "Attacker",
-  "role_numeric": 1,
-  "trait": "Saturn",
-  "disposition_numeric": 6,
-  "icon": "188_Weabo3",
-  "model": "188_Weabo3/Unit/prf_188",
-  "animation_event": "188_weabo3",
-  "book_index": 9,
-  "acquisition_id": 10001,
-  "btl_power": 4800,
-  "btl_rate": 195130,
-  "names": {
-    "key": "Tbl_Unit_Name_188",
-    "english": "Turret Floater",
-    "japanese": "タレット・フローター",
-    "korean": "터렛 플로터"
+ "id": 188,
+ "name": "Turret Floater",
+ "name_key": "Tbl_Unit_Name_188",
+ "slug": "turret-floater",
+ "rarity": "R",
+ "rarity_stars": "★",
+ "rarity_numeric": 1,
+ "element": "Agility",
+ "element_numeric": 3,
+ "role": "Attacker",
+ "role_numeric": 1,
+ "trait": "Saturn",
+ "disposition_numeric": 6,
+ "icon": "188_Weabo3",
+ "model": "188_Weabo3/Unit/prf_188",
+ "animation_event": "188_weabo3",
+ "book_index": 9,
+ "acquisition_id": 10001,
+ "btl_power": 4800,
+ "btl_rate": 195130,
+ "names": {
+  "key": "Tbl_Unit_Name_188",
+  "english": "Turret Floater",
+  "japanese": "タレット・フローター",
+  "korean": "터렛 플로터"
+ },
+ "lore": {
+  "key": "Tbl_Unit_Desc_188",
+  "english": "A hovering combat drone developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt remains airborne over designated zones to monitor vast areas. Upon locking onto any target not identified as friendly by its IFF system, this killing machine ruthlessly eliminates them under a relentless barrage of quad-linked missiles.",
+  "japanese": "米連の持つ世界最高レベルの科学力と、極秘裏に奪取した魔界技術を集約して誕生させた、浮遊型戦闘ドローン。\n\n指定の区画の上空に滞留しながら広範囲に監視し、敵味方の識別信号が確認されない対象が捕捉されると、四連発ミサイルで無差別に排除する殺戮兵器。",
+  "korean": "미연이 보유한 세계 최고 수준의 과학력과 극비리에 탈취한 마계 기술을 집약하여 탄생시킨 부유형 전투 드론. \n\n지정 구역의 상공에 체류하여 넓은 구역을 감시하며, 피아식별 신호가 확인되지 않는 대상을 포착하면 4연발 미사일을 쏟아부으며 무차별적으로 배제하는 살육 병기이다.",
+  "chinese_simplified": "结合美联掌握的世界顶尖科学技术，与秘密夺取的魔界技术，而制成的悬浮型战斗无人机。\n\n能自动巡逻指定区域上空并进行广域监视，一旦捕捉到未发出友军信号的目标，便以多联装导弹排除的杀戮武器。",
+  "chinese_traditional": "結合美聯掌握的世界頂尖科學技術，與祕密奪取的魔界技術，而製成的懸浮型戰鬥無人機。\n\n能自動巡邏指定區域上空並進行廣域監視，一旦捕捉到未發出友軍訊號的目標，便以多聯裝飛彈排除的殺戮武器。",
+  "spanish": "Drone de combate flotante creado al concentrar la tecnología científica de más alto nivel que posee UFS junto con tecnología del Mundo Demoníaco robada en secreto.\n\nPermanece sobrevolando el área designada mientras vigila una amplia zona y, al detectar un objetivo sin señal de identificación aliada, dispara una ráfaga de misiles cuádruples para eliminarlo indiscriminadamente. Un arma de exterminio."
+ },
+ "base_stats": {
+  "HP": 7296,
+  "ATK": 979,
+  "DEF": 576,
+  "SPD": 69,
+  "CRATE": 25,
+  "CDMG": 500,
+  "CRES": 0,
+  "ACC": 0,
+  "EVD": 0
+ },
+ "stats": {
+  "HP": 14383,
+  "ATK": 1933,
+  "DEF": 1119,
+  "SPD": 69,
+  "CRATE": 50,
+  "CDMG": 575,
+  "CRES": 0,
+  "ACC": 0,
+  "EVD": 0
+ },
+ "evol_stat_id": 1,
+ "evol_stat_type": "Attacker",
+ "evolution_bonuses": {
+  "1": {
+   "HP": 40,
+   "ATK": 6,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
   },
-  "lore": {
-    "key": "Tbl_Unit_Desc_188",
-    "english": "A hovering combat drone developed using covertly acquired Demon Realm technology alongside UFS's cutting-edge science.\n\nIt remains airborne over designated zones to monitor vast areas. Upon locking onto any target not identified as friendly by its IFF system, this killing machine ruthlessly eliminates them under a relentless barrage of quad-linked missiles.",
-    "japanese": "米連の持つ世界最高レベルの科学力と、極秘裏に奪取した魔界技術を集約して誕生させた、浮遊型戦闘ドローン。\n\n指定の区画の上空に滞留しながら広範囲に監視し、敵味方の識別信号が確認されない対象が捕捉されると、四連発ミサイルで無差別に排除する殺戮兵器。",
-    "korean": "미연이 보유한 세계 최고 수준의 과학력과 극비리에 탈취한 마계 기술을 집약하여 탄생시킨 부유형 전투 드론. \n\n지정 구역의 상공에 체류하여 넓은 구역을 감시하며, 피아식별 신호가 확인되지 않는 대상을 포착하면 4연발 미사일을 쏟아부으며 무차별적으로 배제하는 살육 병기이다.",
-    "chinese_simplified": "结合美联掌握的世界顶尖科学技术，与秘密夺取的魔界技术，而制成的悬浮型战斗无人机。\n\n能自动巡逻指定区域上空并进行广域监视，一旦捕捉到未发出友军信号的目标，便以多联装导弹排除的杀戮武器。",
-    "chinese_traditional": "結合美聯掌握的世界頂尖科學技術，與祕密奪取的魔界技術，而製成的懸浮型戰鬥無人機。\n\n能自動巡邏指定區域上空並進行廣域監視，一旦捕捉到未發出友軍訊號的目標，便以多聯裝飛彈排除的殺戮武器。",
-    "spanish": "Drone de combate flotante creado al concentrar la tecnología científica de más alto nivel que posee UFS junto con tecnología del Mundo Demoníaco robada en secreto.\n\nPermanece sobrevolando el área designada mientras vigila una amplia zona y, al detectar un objetivo sin señal de identificación aliada, dispara una ráfaga de misiles cuádruples para eliminarlo indiscriminadamente. Un arma de exterminio."
+  "2": {
+   "HP": 80,
+   "ATK": 12,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
   },
-  "base_stats": {
-    "HP": 7296,
-    "ATK": 979,
-    "DEF": 576,
+  "3": {
+   "HP": 120,
+   "ATK": 18,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "4": {
+   "HP": 160,
+   "ATK": 24,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "5": {
+   "HP": 200,
+   "ATK": 30,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "6": {
+   "HP": 200,
+   "ATK": 30,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 25,
+   "CDMG": 75,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  }
+ },
+ "evolution_bonuses_per_grade": {
+  "1": {
+   "HP": 40,
+   "ATK": 6,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "2": {
+   "HP": 80,
+   "ATK": 12,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "3": {
+   "HP": 120,
+   "ATK": 18,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "4": {
+   "HP": 160,
+   "ATK": 24,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "5": {
+   "HP": 200,
+   "ATK": 30,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 0,
+   "CDMG": 0,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  },
+  "6": {
+   "HP": 200,
+   "ATK": 30,
+   "DEF": 0,
+   "SPD": 0,
+   "CRATE": 25,
+   "CDMG": 75,
+   "CRES": 0,
+   "ACC": 0,
+   "EVD": 0
+  }
+ },
+ "stats_by_grade": {
+  "1": {
+   "grade": 1,
+   "max_level": 10,
+   "stats": {
+    "HP": 8346,
+    "ATK": 1119,
+    "DEF": 658,
     "SPD": 69,
     "CRATE": 25,
     "CDMG": 500,
     "CRES": 0,
     "ACC": 0,
     "EVD": 0
-  },
-  "stats": {
-    "HP": 14383,
-    "ATK": 1933,
-    "DEF": 1119,
-    "SPD": 69,
-    "CRATE": 50,
-    "CDMG": 575,
+   },
+   "evolution_bonus_total": {
+    "HP": 40,
+    "ATK": 6,
+    "DEF": 0,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
     "CRES": 0,
     "ACC": 0,
     "EVD": 0
+   }
   },
-  "evol_stat_id": 1,
-  "evol_stat_type": "Attacker",
-  "evolution_bonuses": {
-    "1": {
-      "HP": 40,
-      "ATK": 6,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "2": {
-      "HP": 80,
-      "ATK": 12,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "3": {
-      "HP": 120,
-      "ATK": 18,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "4": {
-      "HP": 160,
-      "ATK": 24,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "5": {
-      "HP": 200,
-      "ATK": 30,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "6": {
-      "HP": 200,
-      "ATK": 30,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 25,
-      "CDMG": 75,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    }
+  "2": {
+   "grade": 2,
+   "max_level": 20,
+   "stats": {
+    "HP": 9513,
+    "ATK": 1276,
+    "DEF": 751,
+    "SPD": 69,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 80,
+    "ATK": 12,
+    "DEF": 0,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "evolution_bonuses_per_grade": {
-    "1": {
-      "HP": 40,
-      "ATK": 6,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "2": {
-      "HP": 80,
-      "ATK": 12,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "3": {
-      "HP": 120,
-      "ATK": 18,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "4": {
-      "HP": 160,
-      "ATK": 24,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "5": {
-      "HP": 200,
-      "ATK": 30,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 0,
-      "CDMG": 0,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    },
-    "6": {
-      "HP": 200,
-      "ATK": 30,
-      "DEF": 0,
-      "SPD": 0,
-      "CRATE": 25,
-      "CDMG": 75,
-      "CRES": 0,
-      "ACC": 0,
-      "EVD": 0
-    }
+  "3": {
+   "grade": 3,
+   "max_level": 30,
+   "stats": {
+    "HP": 10681,
+    "ATK": 1433,
+    "DEF": 843,
+    "SPD": 69,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 120,
+    "ATK": 18,
+    "DEF": 0,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "stats_by_grade": {
-    "1": {
-      "grade": 1,
-      "max_level": 10,
-      "stats": {
-        "HP": 8346,
-        "ATK": 1119,
-        "DEF": 658,
-        "SPD": 69,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 40,
-        "ATK": 6,
-        "DEF": 0,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "2": {
-      "grade": 2,
-      "max_level": 20,
-      "stats": {
-        "HP": 9513,
-        "ATK": 1276,
-        "DEF": 751,
-        "SPD": 69,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 80,
-        "ATK": 12,
-        "DEF": 0,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "3": {
-      "grade": 3,
-      "max_level": 30,
-      "stats": {
-        "HP": 10681,
-        "ATK": 1433,
-        "DEF": 843,
-        "SPD": 69,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 120,
-        "ATK": 18,
-        "DEF": 0,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "4": {
-      "grade": 4,
-      "max_level": 40,
-      "stats": {
-        "HP": 11848,
-        "ATK": 1589,
-        "DEF": 935,
-        "SPD": 69,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 160,
-        "ATK": 24,
-        "DEF": 0,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "5": {
-      "grade": 5,
-      "max_level": 50,
-      "stats": {
-        "HP": 13016,
-        "ATK": 1746,
-        "DEF": 1027,
-        "SPD": 69,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 200,
-        "ATK": 30,
-        "DEF": 0,
-        "SPD": 0,
-        "CRATE": 0,
-        "CDMG": 0,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "6": {
-      "grade": 6,
-      "max_level": 60,
-      "stats": {
-        "HP": 14183,
-        "ATK": 1903,
-        "DEF": 1119,
-        "SPD": 69,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      },
-      "evolution_bonus_total": {
-        "HP": 200,
-        "ATK": 30,
-        "DEF": 0,
-        "SPD": 0,
-        "CRATE": 25,
-        "CDMG": 75,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    }
+  "4": {
+   "grade": 4,
+   "max_level": 40,
+   "stats": {
+    "HP": 11848,
+    "ATK": 1589,
+    "DEF": 935,
+    "SPD": 69,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 160,
+    "ATK": 24,
+    "DEF": 0,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "stats_by_level": {
-    "10": {
-      "level": 10,
-      "grade_required": 1,
-      "stats": {
-        "HP": 8346,
-        "ATK": 1119,
-        "DEF": 658,
-        "SPD": 69,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "20": {
-      "level": 20,
-      "grade_required": 2,
-      "stats": {
-        "HP": 9513,
-        "ATK": 1276,
-        "DEF": 751,
-        "SPD": 69,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "30": {
-      "level": 30,
-      "grade_required": 3,
-      "stats": {
-        "HP": 10681,
-        "ATK": 1433,
-        "DEF": 843,
-        "SPD": 69,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "40": {
-      "level": 40,
-      "grade_required": 4,
-      "stats": {
-        "HP": 11848,
-        "ATK": 1589,
-        "DEF": 935,
-        "SPD": 69,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "50": {
-      "level": 50,
-      "grade_required": 5,
-      "stats": {
-        "HP": 13016,
-        "ATK": 1746,
-        "DEF": 1027,
-        "SPD": 69,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    },
-    "60": {
-      "level": 60,
-      "grade_required": 6,
-      "stats": {
-        "HP": 14183,
-        "ATK": 1903,
-        "DEF": 1119,
-        "SPD": 69,
-        "CRATE": 25,
-        "CDMG": 500,
-        "CRES": 0,
-        "ACC": 0,
-        "EVD": 0
-      }
-    }
+  "5": {
+   "grade": 5,
+   "max_level": 50,
+   "stats": {
+    "HP": 13016,
+    "ATK": 1746,
+    "DEF": 1027,
+    "SPD": 69,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 200,
+    "ATK": 30,
+    "DEF": 0,
+    "SPD": 0,
+    "CRATE": 0,
+    "CDMG": 0,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
   },
-  "skills": [
-    {
-      "id": 18801,
-      "name": "[&Color_Cyan]Quad Missile[-]",
-      "name_key": "Tbl_UnitSkill_Name_18801",
-      "name_readable": "Quad Missile",
-      "description": "Fires missiles to a target [A:18801] times.\nInflicts [&Common_Word_Skill_ShieldPenetrate] attack.",
-      "description_key": "Tbl_UnitSkill_Desc_18801",
-      "description_readable": "Fires missiles to a target 4 times.\nInflicts Shield Penetrate attack.",
-      "type_description": "[Normal Attack]",
-      "type_description_readable": "[Normal Attack]",
-      "icon": "18801",
-      "cooldown": 0,
-      "hit_count": 4,
-      "additional_hits": 0,
-      "damage_scaling": "[ATK]",
-      "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
-      "multiplier": 0.0,
-      "effects": [],
-      "battle_options": "1880101/1880102",
-      "battle_option_ids": [
-        1880101,
-        1880102
-      ],
-      "evolution_level_required": 0,
-      "trigger_keyword": "",
-      "aura_info": "",
-      "skill_button_type": 0,
-      "camera_type": 0,
-      "cutscene_flag": 0
-    }
-  ],
-  "weapons": []
+  "6": {
+   "grade": 6,
+   "max_level": 60,
+   "stats": {
+    "HP": 14183,
+    "ATK": 1903,
+    "DEF": 1119,
+    "SPD": 69,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   },
+   "evolution_bonus_total": {
+    "HP": 200,
+    "ATK": 30,
+    "DEF": 0,
+    "SPD": 0,
+    "CRATE": 25,
+    "CDMG": 75,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  }
+ },
+ "stats_by_level": {
+  "10": {
+   "level": 10,
+   "grade_required": 1,
+   "stats": {
+    "HP": 8346,
+    "ATK": 1119,
+    "DEF": 658,
+    "SPD": 69,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  },
+  "20": {
+   "level": 20,
+   "grade_required": 2,
+   "stats": {
+    "HP": 9513,
+    "ATK": 1276,
+    "DEF": 751,
+    "SPD": 69,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  },
+  "30": {
+   "level": 30,
+   "grade_required": 3,
+   "stats": {
+    "HP": 10681,
+    "ATK": 1433,
+    "DEF": 843,
+    "SPD": 69,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  },
+  "40": {
+   "level": 40,
+   "grade_required": 4,
+   "stats": {
+    "HP": 11848,
+    "ATK": 1589,
+    "DEF": 935,
+    "SPD": 69,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  },
+  "50": {
+   "level": 50,
+   "grade_required": 5,
+   "stats": {
+    "HP": 13016,
+    "ATK": 1746,
+    "DEF": 1027,
+    "SPD": 69,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  },
+  "60": {
+   "level": 60,
+   "grade_required": 6,
+   "stats": {
+    "HP": 14183,
+    "ATK": 1903,
+    "DEF": 1119,
+    "SPD": 69,
+    "CRATE": 25,
+    "CDMG": 500,
+    "CRES": 0,
+    "ACC": 0,
+    "EVD": 0
+   }
+  }
+ },
+ "skills": [
+  {
+   "id": 18801,
+   "name": "[&Color_Cyan]Quad Missile[-]",
+   "name_key": "Tbl_UnitSkill_Name_18801",
+   "name_readable": "Quad Missile",
+   "description": "Fires missiles to a target [A:18801] times.\nInflicts [&Common_Word_Skill_ShieldPenetrate] attack.",
+   "description_key": "Tbl_UnitSkill_Desc_18801",
+   "description_readable": "Fires missiles to a target 4 times.\nInflicts Shield Penetrate attack.",
+   "type_description": "[Normal Attack]",
+   "type_description_readable": "[Normal Attack]",
+   "icon": "18801",
+   "cooldown": 0,
+   "hit_count": 4,
+   "additional_hits": 0,
+   "damage_scaling": "[ATK]",
+   "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+   "multiplier": 126.0,
+   "effects": [],
+   "battle_options": "1880101/1880102",
+   "battle_option_ids": [
+    1880101,
+    1880102
+   ],
+   "evolution_level_required": 0,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": 0,
+   "camera_type": 0,
+   "cutscene_flag": 0,
+   "damage": {
+    "scaling": [
+     {
+      "stat": "ATK",
+      "pct": 126.0
+     }
+    ],
+    "hits": [
+     {
+      "pct": 126.0,
+      "count": 4
+     }
+    ],
+    "total": 504.0
+   }
+  }
+ ],
+ "weapons": []
 }

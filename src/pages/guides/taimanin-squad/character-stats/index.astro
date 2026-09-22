@@ -253,8 +253,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const evolPerGrade = JSON.parse(card.dataset.evolPerGrade || '{}');
     const thisGradeBonus = evolPerGrade[String(grade)] || {};
 
-    // Formula: Base * (1 + (L-1) * 0.018 * RarityRate) + EvolBonusTotal (cumulative)
-    const multiplier = 1 + (level - 1) * 0.018 * rarityRate;
+    // Formula: Base * (1 + (L-1) * 0.008 * RarityRate) + EvolBonusTotal (cumulative)
+    // Growth scalar 0.008 rebalanced (was 0.018) with the September 2026 stat rescale
+    const multiplier = 1 + (level - 1) * 0.008 * rarityRate;
 
     return {
       hp: Math.floor(baseHP * multiplier) + (evolBonusTotal.HP || 0),
