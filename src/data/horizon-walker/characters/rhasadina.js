@@ -165,6 +165,8 @@ const rawRhasadinaData = {
 
   // Weapon - Not yet released in game
   weapon: null,
+  heroId: 42,
+
   rarityStages: {
     'EX': {
       strength: 7,
@@ -265,8 +267,6 @@ const rawRhasadinaData = {
       startingAp: 114
     },
   },
-  heroId: 42,
-
 };
 
 // Validate and sanitize the character data

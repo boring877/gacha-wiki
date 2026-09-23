@@ -218,6 +218,8 @@ const rawPalekarData = {
         'When an ally attacks an enemy afflicted with [Unstable] using a skill that consumes 60 or more AP, this unit performs a Support ATK with Trajectory of Severance. The ally who triggered the Support ATK gains 37 AP at the end of their turn. This effect activates once per character per round.',
     },
   },
+  heroId: 60,
+
   rarityStages: {
     'EX': {
       strength: 6,
@@ -318,8 +320,6 @@ const rawPalekarData = {
       startingAp: 122
     },
   },
-  heroId: 60,
-
 };
 
 // Validate and sanitize the character data

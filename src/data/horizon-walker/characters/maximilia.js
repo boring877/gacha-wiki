@@ -189,6 +189,8 @@ const rawMaximiliaData = {
       ],
     },
   },
+  heroId: 63,
+
   rarityStages: {
     'EX': {
       strength: 5,
@@ -289,8 +291,6 @@ const rawMaximiliaData = {
       startingAp: 114
     },
   },
-  heroId: 63,
-
 };
 
 const validation = validateCharacterData(rawMaximiliaData);

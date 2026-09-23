@@ -208,6 +208,8 @@ const nariData = {
       ],
     },
   },
+  heroId: 25,
+
   rarityStages: {
     'EX': {
       strength: 9,
@@ -308,8 +310,6 @@ const nariData = {
       startingAp: 121
     },
   },
-  heroId: 25,
-
 };
 
 export const nari = nariData;

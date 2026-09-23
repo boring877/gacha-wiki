@@ -190,6 +190,8 @@ const samarikaData = {
       ],
     },
   },
+  heroId: 21,
+
   rarityStages: {
     'EX': {
       strength: 11,
@@ -290,8 +292,6 @@ const samarikaData = {
       startingAp: 120
     },
   },
-  heroId: 21,
-
 };
 
 export const samarika = samarikaData;

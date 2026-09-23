@@ -194,6 +194,8 @@ const rawEugeniaData = {
       ],
     },
   },
+  heroId: 62,
+
   rarityStages: {
     'EX': {
       strength: 5,
@@ -294,8 +296,6 @@ const rawEugeniaData = {
       startingAp: 121
     },
   },
-  heroId: 62,
-
 };
 
 const validation = validateCharacterData(rawEugeniaData);

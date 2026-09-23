@@ -222,6 +222,8 @@ const rawLuiseData = {
         'Commands surging flames to burn enemies in front. Deals Unblockable Heat DMG equal to 380% of magic ATK to all enemies within a 3m circular radius. During the attack, ACC temporarily increases by 300%, but weakness attacks are not possible.',
     },
   },
+  heroId: 19,
+
   rarityStages: {
     'EX': {
       strength: 6,
@@ -322,8 +324,6 @@ const rawLuiseData = {
       startingAp: 120
     },
   },
-  heroId: 19,
-
 };
 
 // Validate and sanitize the character data

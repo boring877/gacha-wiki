@@ -218,6 +218,8 @@ const rawNikaData = {
       ],
     },
   },
+  heroId: 39,
+
   rarityStages: {
     'EX': {
       strength: 12,
@@ -318,8 +320,6 @@ const rawNikaData = {
       startingAp: 140
     },
   },
-  heroId: 39,
-
 };
 
 // Validate and sanitize the character data

@@ -68,7 +68,7 @@ const rawMiraData = {
     aHeartThatFollowsBehind: { name: 'A Heart That Follows Behind', description: 'Activates the Level 1 passive skill [A Heart That Follows Behind]. [A Heart That Follows Behind]: At the start of each round, sets AP</color> to 101 + 50% of [Radiance of Oath] stacks.' },
     halfElf: { name: 'Half-Elf', description: 'Starting AP +8, AP Recovery +6%' },
     aKnightsOath: { name: 'A Knight\'s Oath', description: 'Activates the Level 1 passive skill [A Knight\'s Oath]. [A Knight\'s Oath]: At the start of battle, grants [Bound Master] to the ally with the highest INT. [Bound Master]: Mira and Mirana\'s skills are empowered based on the AP Cost of skills used by the holder of this effect.' },
-    interested: { name: 'Interested', description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.' },
+    interested: { name: 'Interested', description: 'Special trait with no listed characteristics.' },
   },
 
   skills: {
@@ -106,6 +106,47 @@ const rawMiraData = {
       name: "Inscribed Trail of Stars",
       type: 'Skill',
       description: "Gathers the power of light and hurls it at the enemy. Deals Immaterial DMG equal to N% of Magic ATK. For each stack of [Radiance of Oath] you possess, deals additional Immaterial DMG equal to {10.5,11,11.5,12,12.5,13,13.5,14,14.5,15}% of Magic ATK. Afterward, grants the holder of [Bound Master] 1 stack of [Arcane Bond] for each stack of [Radiance of Oath] you possess. [Radiance of Oath]: A stacking effect gained through [Master-Servant Bond]. [Bound Master]: An effect gained through [A Knight's Oath]. Mira and Mirana's skills are empowered based on the AP Cost of skills used by the holder of this effect. [Arcane Bond]: At the start of the [Bound Master] holder's turn, consumes all [Arcane Bond] stacks and grants AP equal to 40% of the number of stacks consumed.",
+    },
+  },
+  story: 'Mira and Mirana were twin half-blood sisters born of a human parent, a lineage looked down upon among the Highland Elves. With no companions in their childhood, the two sisters grew up relying upon no one but each other. Thus, when they were granted the honor of becoming Knights of the Golden Ratio - royal knights entrusted with guarding their Queen - the sisters rejoiced beyond measure. Yet before long, the Rift Crisis descended upon the world. Though the twins sought to fulfill their duties as knights, the Queen ultimately left them behind in order to shield them from the vengeance of the spirits. To the sisters, it felt as though they had once again been abandoned. Afterward, the twins volunteered to guard the rear of the refugee procession, eventually becoming separated from the Queen as they journeyed across Siberia and into Earth\'s lands. Following the path laid before them by duty alone, the sisters endured countless hardships before finally reaching the Federation. Now reunited with their Queen at last, Mira and Mirana have pledged themselves to the Eternal God, wishing only to serve at his side and guard him for all the years yet to come.',
+
+  heroId: 65,
+
+  weapon: {
+    name: "Eleuthia",
+    flavor: "Eleuthia is one of the ancient twin-bladed greatswords passed down exclusively to the royal guard knights entrusted with protecting the noble sovereigns of the Platinum Bough Kingdom at the closest of distances. Though its origins have long faded beyond even the memory of the Highland Elves, the weapon continues to gleam with the beauty of a masterwork untouched by time, its twin edges retaining a flawless sharpness even in the modern age. According to ancient legend, the weapon was forged in the image of a heroic elf of old who strode into battle bearing both shield and bow. \"Eleuthia\" itself is merely a codename. The original ancient elven name of the weapon proved too difficult for human tongues to pronounce, and so, with the wielder's permission, it was instead renamed after a word drawn from Earth's mythology. The meaning carried by the original elven name is said to be: \"The Golden Veil of the Constellations.\"",
+    type: "Torturas",
+    rarity: 'EX',
+    image: "Weapon_FullIMG_Torturas_ForMira",
+    imageOnR2: false,
+    maxLevel: 60,
+    stats: {
+      "Melee ATK (weapon)": "70",
+      "Magic ATK (weapon)": "70",
+      "Magic ATK (%)": "+49%",
+    },
+    uniqueSkills: {
+      unique: {
+        name: "Guardian Star's Riposte",
+        type: 'Unique',
+        description: "At the start of each round, gains {1,2,3,4,5} additional Counterattack opportunities. Max HP increases by {20,25,30,35,40}%.",
+      },
+      signature: {
+        name: "Mira Signature: Dawnlight's Response",
+        type: 'Signature',
+        description: "At the start of battle, gains 280 stacks of [Radiance of Oath]. When using [Afterimage of Stars], the effect is also applied to yourself.",
+      },
+    },
+    levelStats: {
+      "Melee ATK (weapon)": [11.0, 70.0],
+      "Magic ATK (weapon)": [11.0, 70.0],
+      "Magic ATK (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "At the start of each round, gains", valuesByLevel: "1 / 2 / 3 / 4 / 5" },
+        { name: "Max HP increases", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+      ],
     },
   },
   rarityStages: {
@@ -206,47 +247,6 @@ const rawMiraData = {
       evade: 51,
       apRecovery: 97,
       startingAp: 112
-    },
-  },
-  story: 'Mira and Mirana were twin half-blood sisters born of a human parent, a lineage looked down upon among the Highland Elves. With no companions in their childhood, the two sisters grew up relying upon no one but each other. Thus, when they were granted the honor of becoming Knights of the Golden Ratio - royal knights entrusted with guarding their Queen - the sisters rejoiced beyond measure. Yet before long, the Rift Crisis descended upon the world. Though the twins sought to fulfill their duties as knights, the Queen ultimately left them behind in order to shield them from the vengeance of the spirits. To the sisters, it felt as though they had once again been abandoned. Afterward, the twins volunteered to guard the rear of the refugee procession, eventually becoming separated from the Queen as they journeyed across Siberia and into Earth\'s lands. Following the path laid before them by duty alone, the sisters endured countless hardships before finally reaching the Federation. Now reunited with their Queen at last, Mira and Mirana have pledged themselves to the Eternal God, wishing only to serve at his side and guard him for all the years yet to come.',
-
-  heroId: 65,
-
-  weapon: {
-    name: "Eleuthia",
-    flavor: "Eleuthia is one of the ancient twin-bladed greatswords passed down exclusively to the royal guard knights entrusted with protecting the noble sovereigns of the Platinum Bough Kingdom at the closest of distances. Though its origins have long faded beyond even the memory of the Highland Elves, the weapon continues to gleam with the beauty of a masterwork untouched by time, its twin edges retaining a flawless sharpness even in the modern age. According to ancient legend, the weapon was forged in the image of a heroic elf of old who strode into battle bearing both shield and bow. \"Eleuthia\" itself is merely a codename. The original ancient elven name of the weapon proved too difficult for human tongues to pronounce, and so, with the wielder's permission, it was instead renamed after a word drawn from Earth's mythology. The meaning carried by the original elven name is said to be: \"The Golden Veil of the Constellations.\"",
-    type: "Torturas",
-    rarity: 'EX',
-    image: "Weapon_FullIMG_Torturas_ForMira",
-    imageOnR2: false,
-    maxLevel: 60,
-    stats: {
-      "Melee ATK (weapon)": "70",
-      "Magic ATK (weapon)": "70",
-      "Magic ATK (%)": "+49%",
-    },
-    uniqueSkills: {
-      unique: {
-        name: "Guardian Star's Riposte",
-        type: 'Unique',
-        description: "At the start of each round, gains {1,2,3,4,5} additional Counterattack opportunities. Max HP increases by {20,25,30,35,40}%.",
-      },
-      signature: {
-        name: "Mira Signature: Dawnlight's Response",
-        type: 'Signature',
-        description: "At the start of battle, gains 280 stacks of [Radiance of Oath]. When using [Afterimage of Stars], the effect is also applied to yourself.",
-      },
-    },
-    levelStats: {
-      "Melee ATK (weapon)": [11.0, 70.0],
-      "Magic ATK (weapon)": [11.0, 70.0],
-      "Magic ATK (%)": [7.7, 49.0],
-    },
-    exLevels: {
-      effects: [
-        { name: "At the start of each round, gains", valuesByLevel: "1 / 2 / 3 / 4 / 5" },
-        { name: "Max HP increases", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
-      ],
     },
   },
 };

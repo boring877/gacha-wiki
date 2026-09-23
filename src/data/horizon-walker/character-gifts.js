@@ -2193,6 +2193,47 @@ export const CHARACTER_GIFT_PREFERENCES = [
     ],
   },
 
+  {
+    id: 'garud',
+    name: 'Garud',
+    rarity: 'EX',
+    image: 'Garud.jpg',
+    level5Bonus: {
+      type: 'Magic ATK',
+      value: '10%',
+    },
+    favorites: [
+      {
+        id: 'antique-music-box',
+        name: 'Antique Music Box',
+        rarity: 'S',
+        image: '../../assets/images/games/horizon-walker/Gifts/Antique_Music_Box.jpg',
+        basePoints: 30,
+        bonusPoints: 20,
+        totalPoints: 50,
+      },
+    ],
+    likes: [
+      {
+        id: 'fire-octopus-noodles',
+        name: 'Fire Octopus Noodles',
+        rarity: 'B',
+        image: '../../assets/images/games/horizon-walker/Gifts/Fire_Octopus_Noodles.jpg',
+        basePoints: 10,
+        bonusPoints: 10,
+        totalPoints: 20,
+      },
+      {
+        id: 'snow-globe',
+        name: 'Snow Globe',
+        rarity: 'A',
+        image: '../../assets/images/games/horizon-walker/Gifts/Snow_Globe.jpg',
+        basePoints: 20,
+        bonusPoints: 10,
+        totalPoints: 30,
+      },
+    ],
+  },
 ];
 export const getCharacterById = characterId => {
   return CHARACTER_GIFT_PREFERENCES.find(char => char.id === characterId);

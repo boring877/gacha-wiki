@@ -9,6 +9,13 @@ import { getCharacterBySlug } from '../characters.js';
 
 const characterBuilds = [
   {
+    id: 9,
+    buildSlug: 'garud',
+    displayName: 'Garud',
+    rarity: 'EX',
+    available: true,
+  },
+  {
     id: 1,
     buildSlug: 'juha',
     displayName: 'Juha',

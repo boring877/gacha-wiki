@@ -214,6 +214,8 @@ const rawMarhimData = {
       ],
     },
   },
+  heroId: 38,
+
   rarityStages: {
     'EX': {
       strength: 12,
@@ -314,8 +316,6 @@ const rawMarhimData = {
       startingAp: 139
     },
   },
-  heroId: 38,
-
 };
 
 // Validate and sanitize the character data

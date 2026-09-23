@@ -234,6 +234,8 @@ const rawKorabiData = {
         'When an ally is hit or attacks an enemy, gain 1 stack of [Bloodlust]. This skill can be used while holding 5 or more stacks. Unleashes a Whirlwind of Bloodlust to strike enemies. Deals Slash DMG equal to N% of Magic ATK to enemies within a 3m radius around the targeted location and slightly pulls them toward the center. This skill cannot trigger a Weak Point attack, but temporarily increases Accuracy by 300%.',
     },
   },
+  heroId: 56,
+
   rarityStages: {
     'EX': {
       strength: 7,
@@ -334,8 +336,6 @@ const rawKorabiData = {
       startingAp: 128
     },
   },
-  heroId: 56,
-
 };
 
 // Validate and sanitize the character data

@@ -75,6 +75,7 @@ export const CHAR_SKINS = {
     { id: 77, number: 'S01', name: "BunnyGirl", icon: 'UI_Icon_Hero_Araha_S01.png', fullIcon: 'UI_Icon_Hero_Full_Araha_S01.png', isDefault: false },
     { id: 84, number: 'S02', name: "Winter Season", icon: 'UI_Icon_Hero_Araha_S02.png', fullIcon: 'UI_Icon_Hero_Full_Araha_S02.png', isDefault: false },
     { id: 113, number: 'S03', name: "Bloomers", icon: 'UI_Icon_Hero_Araha_S03.png', fullIcon: 'UI_Icon_Hero_Full_Araha_S03.png', isDefault: false },
+    { id: 224, number: 'S04', name: "Barely-Maid", icon: 'UI_Icon_Hero_Araha_S04.png', fullIcon: 'UI_Icon_Hero_Full_Araha_S04.png', isDefault: false },
   ],
   16: [
     { id: 21, number: 'N01', name: "Default", icon: 'UI_Icon_Hero_Pantheri_N01.png', fullIcon: 'UI_Icon_Hero_Full_Pantheri_N01.png', isDefault: true },
@@ -133,7 +134,7 @@ export const CHAR_SKINS = {
   ],
   29: [
     { id: 28, number: 'N01', name: "Default", icon: 'UI_Icon_Hero_SoJoohee_N01.png', fullIcon: 'UI_Icon_Hero_Full_SoJoohee_N01.png', isDefault: true },
-    { id: 81, number: 'S01', name: "Lingerie", icon: 'UI_Icon_Hero_SoJoohee_S01.png', fullIcon: 'UI_Icon_Hero_Full_SoJoohee_S01.png', isDefault: false },
+    { id: 81, number: 'S01', name: "Memopad", icon: 'UI_Icon_Hero_SoJoohee_S01.png', fullIcon: 'UI_Icon_Hero_Full_SoJoohee_S01.png', isDefault: false },
     { id: 145, number: 'S02', name: "Inverted Bunny Girl", icon: 'UI_Icon_Hero_SoJoohee_S02.png', fullIcon: 'UI_Icon_Hero_Full_SoJoohee_S02.png', isDefault: false },
     { id: 180, number: 'S03', name: "Barely-Maid", icon: 'UI_Icon_Hero_SoJoohee_S03.png', fullIcon: 'UI_Icon_Hero_Full_SoJoohee_S03.png', isDefault: false },
   ],
@@ -193,8 +194,8 @@ export const CHAR_SKINS = {
   39: [
     { id: 35, number: 'N01', name: "Default", icon: 'UI_Icon_Hero_Nika_N01.png', fullIcon: 'UI_Icon_Hero_Full_Nika_N01.png', isDefault: true },
     { id: 64, number: 'S01', name: "Swimsuit", icon: 'UI_Icon_Hero_Nika_S01.png', fullIcon: 'UI_Icon_Hero_Full_Nika_S01.png', isDefault: false },
-    { id: 90, number: 'S02', name: "Winter Season", icon: 'UI_Icon_Hero_Nika_S02.png', fullIcon: 'UI_Icon_Hero_Full_Nika_S02.png', isDefault: false },
-    { id: 97, number: 'S03', name: "Hot Spring", icon: 'UI_Icon_Hero_Nika_S03.png', fullIcon: 'UI_Icon_Hero_Full_Nika_S03.png', isDefault: false },
+    { id: 90, number: 'S02', name: "Hot Spring", icon: 'UI_Icon_Hero_Nika_S02.png', fullIcon: 'UI_Icon_Hero_Full_Nika_S02.png', isDefault: false },
+    { id: 97, number: 'S03', name: "Winter Season", icon: 'UI_Icon_Hero_Nika_S03.png', fullIcon: 'UI_Icon_Hero_Full_Nika_S03.png', isDefault: false },
     { id: 171, number: 'S04', name: "Barely-Maid", icon: 'UI_Icon_Hero_Nika_S04.png', fullIcon: 'UI_Icon_Hero_Full_Nika_S04.png', isDefault: false },
   ],
   40: [
@@ -291,6 +292,7 @@ export const CHAR_SKINS = {
   59: [
     { id: 156, number: 'N01', name: "Default", icon: 'UI_Icon_Hero_Emilia_N01.png', fullIcon: 'UI_Icon_Hero_Full_Emilia_N01.png', isDefault: true },
     { id: 159, number: 'S01', name: "Medic", icon: 'UI_Icon_Hero_Emilia_S01.png', fullIcon: 'UI_Icon_Hero_Full_Emilia_S01.png', isDefault: false },
+    { id: 226, number: 'S02', name: "Defiant Maiden", icon: 'UI_Icon_Hero_Emilia_S02.png', fullIcon: 'UI_Icon_Hero_Full_Emilia_S02.png', isDefault: false },
   ],
   60: [
     { id: 162, number: 'N01', name: "Default", icon: 'UI_Icon_Hero_Palekar_N01.png', fullIcon: 'UI_Icon_Hero_Full_Palekar_N01.png', isDefault: true },
@@ -303,6 +305,7 @@ export const CHAR_SKINS = {
   62: [
     { id: 185, number: 'N01', name: "Default", icon: 'UI_Icon_Hero_Eugenia_N01.png', fullIcon: 'UI_Icon_Hero_Full_Eugenia_N01.png', isDefault: true },
     { id: 186, number: 'S01', name: "Bondage", icon: 'UI_Icon_Hero_Eugenia_S01.png', fullIcon: 'UI_Icon_Hero_Full_Eugenia_S01.png', isDefault: false },
+    { id: 225, number: 'S02', name: "Lingerie", icon: 'UI_Icon_Hero_Eugenia_S02.png', fullIcon: 'UI_Icon_Hero_Full_Eugenia_S02.png', isDefault: false },
   ],
   63: [
     { id: 14, number: 'N01', name: "Default", icon: 'UI_Icon_Hero_Maximilia_N01.png', fullIcon: 'UI_Icon_Hero_Full_Maximilia_N01.png', isDefault: true },
@@ -333,6 +336,10 @@ export const CHAR_SKINS = {
   69: [
     { id: 212, number: 'N01', name: "Default", icon: 'UI_Icon_Hero_ShiraishiKotoha_N01.png', fullIcon: 'UI_Icon_Hero_Full_ShiraishiKotoha_N01.png', isDefault: true },
     { id: 214, number: 'S01', name: "Miko", icon: 'UI_Icon_Hero_ShiraishiKotoha_S01.png', fullIcon: 'UI_Icon_Hero_Full_ShiraishiKotoha_S01.png', isDefault: false },
+  ],
+  70: [
+    { id: 222, number: 'N01', name: "Default", icon: 'UI_Icon_Hero_Garud_N01.png', fullIcon: 'UI_Icon_Hero_Full_Garud_N01.png', isDefault: true },
+    { id: 223, number: 'S01', name: "Lingerie", icon: 'UI_Icon_Hero_Garud_S01.png', fullIcon: 'UI_Icon_Hero_Full_Garud_S01.png', isDefault: false },
   ],
   996: [
     { id: 142, number: 'N01', name: "Default", icon: 'UI_Icon_Hero_Player_N01.png', fullIcon: 'UI_Icon_Hero_Full_Player_N01.png', isDefault: true },

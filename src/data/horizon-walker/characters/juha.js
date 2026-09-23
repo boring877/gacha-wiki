@@ -224,6 +224,8 @@ const rawJuhaData = {
       ],
     },
   },
+  heroId: 33,
+
   rarityStages: {
     'EX': {
       strength: 7,
@@ -324,8 +326,6 @@ const rawJuhaData = {
       startingAp: 123
     },
   },
-  heroId: 33,
-
 };
 
 // Validate and sanitize the character data

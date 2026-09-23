@@ -227,6 +227,8 @@ const rawGriseldaData = {
         "If an ally with the [Arcane Purge] effect attacks and at least one target is struck with a Weak Point hit, their Melee and Ranged ATK increase by {100,110,120,130,140,150,160,170,180,190}% of the Queen of Arcane Elemental’s Magic ATK for the rest of that turn. At the end of that turn, the [Arcane Purge] effect is removed.",
     },
   },
+  heroId: 8,
+
   rarityStages: {
     'EX': {
       strength: 6,
@@ -327,8 +329,6 @@ const rawGriseldaData = {
       startingAp: 119
     },
   },
-  heroId: 8,
-
 };
 
 // Validate and sanitize the character data

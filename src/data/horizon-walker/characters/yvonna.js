@@ -237,6 +237,8 @@ const rawYvonnaData = {
       ],
     },
   },
+  heroId: 49,
+
   rarityStages: {
     'EX': {
       strength: 7,
@@ -337,8 +339,6 @@ const rawYvonnaData = {
       startingAp: 140
     },
   },
-  heroId: 49,
-
 };
 
 // Validate and sanitize the character data

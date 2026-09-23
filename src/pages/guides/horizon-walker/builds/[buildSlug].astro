@@ -41,130 +41,101 @@ const description = `Complete build guide for ${character.name} in Horizon Walke
 // Get character-specific build configuration
 const buildConfig = getCharacterBuildConfig(character.slug);
 
-// Determine the type of stigma recommendation
-const isMixedStigma =
-  typeof buildConfig.recommendedStigma === 'string' &&
-  buildConfig.recommendedStigma.includes('Mixed 2-Set');
-const isObjectRecommendation =
-  typeof buildConfig.recommendedStigma === 'object' && buildConfig.recommendedStigma !== null;
+// Resolve one stigma recommendation (same shapes as the legacy top-level config)
+// into a display model: { type: 'mixed' | 'object' | 'single', ... }
+const findStigmaSet = (name: string) =>
+  stigmas.EX?.find((stigma: any) => stigma.name === name) ||
+  stigmas.SS?.find((stigma: any) => stigma.name === name) ||
+  stigmas.S?.find((stigma: any) => stigma.name === name) ||
+  stigmas.A?.find((stigma: any) => stigma.name === name) ||
+  null;
 
-// Get stigma data for display
-let recommendedStigma: any = null;
-let recommendedStigmaZeroDupe: any = null;
-let recommendedStigmaFullEx5: any = null;
-let mixedStigmaPieces: any = null;
-
-if (isMixedStigma) {
-  // Handle mixed 2-set stigma builds
-  // Prefer an explicit per-slot layout from the build config (mixedSetLayout);
-  // fall back to the per-character defaults below for older configs.
-    const layout = buildConfig.mixedSetLayout;
-  if (layout && layout.top && layout.bottom && layout.left && layout.right) {
-    const setNames = [...new Set([layout.top, layout.bottom, layout.left, layout.right])];
-    if (setNames.length === 2) {
-      const st1 = stigmas.EX?.find((stigma) => stigma.name === setNames[0]);
-      const st2 = stigmas.EX?.find((stigma) => stigma.name === setNames[1]);
-      if (st1 && st2) {
-        const pieceFor = (slot: string) =>
-          (layout[slot] === setNames[0] ? st1 : st2).pieces[slot];
-        mixedStigmaPieces = {
-          stigma1Name: setNames[0],
-          stigma2Name: setNames[1],
-          top: pieceFor('top'),
-          bottom: pieceFor('bottom'),
-          left: pieceFor('left'),
-          right: pieceFor('right'),
-          twoSetBonus1: st1.twoSet,
-          twoSetBonus2: st2.twoSet,
+function resolveStigmaDisplay(rec: any, mixedLayout: any): any {
+  if (rec === null || rec === undefined) return null;
+  if (typeof rec === 'string' && rec.includes('Mixed 2-Set')) {
+    // Explicit per-slot layout from the config wins; fall back to the
+    // per-character defaults below for older configs.
+    const layout = mixedLayout;
+    if (layout && layout.top && layout.bottom && layout.left && layout.right) {
+      const setNames = [...new Set([layout.top, layout.bottom, layout.left, layout.right])];
+      if (setNames.length === 2) {
+        const st1 = stigmas.EX?.find((stigma: any) => stigma.name === setNames[0]);
+        const st2 = stigmas.EX?.find((stigma: any) => stigma.name === setNames[1]);
+        if (st1 && st2) {
+          const pieceFor = (slot: string) =>
+            (layout[slot] === setNames[0] ? st1 : st2).pieces[slot];
+          return {
+            type: 'mixed',
+            pieces: {
+              stigma1Name: setNames[0],
+              stigma2Name: setNames[1],
+              top: pieceFor('top'),
+              bottom: pieceFor('bottom'),
+              left: pieceFor('left'),
+              right: pieceFor('right'),
+              twoSetBonus1: st1.twoSet,
+              twoSetBonus2: st2.twoSet,
+            },
+          };
+        }
+      }
+    }
+    if (character.slug !== 'echidna') {
+      // Default to Olivia's build: Reckoning of Sin + The Thousand Mile Weave
+      const reckoningOfSin = stigmas.EX?.find(stigma => stigma.name === 'Reckoning of Sin');
+      const thousandMileWeave = stigmas.EX?.find(stigma => stigma.name === 'The Thousand Mile Weave');
+      if (reckoningOfSin && thousandMileWeave) {
+        return {
+          type: 'mixed',
+          pieces: {
+            stigma1Name: 'Reckoning of Sin',
+            stigma2Name: 'The Thousand Mile Weave',
+            top: thousandMileWeave.pieces.top,
+            bottom: reckoningOfSin.pieces.bottom,
+            left: reckoningOfSin.pieces.left,
+            right: thousandMileWeave.pieces.right,
+            twoSetBonus1: reckoningOfSin.twoSet,
+            twoSetBonus2: thousandMileWeave.twoSet,
+          },
+        };
+      }
+    } else {
+      // Echidna: The Eternal Battle + The Wind that Wanders the World
+      const eternalBattle = stigmas.EX?.find(stigma => stigma.name === 'The Eternal Battle');
+      const windWanders = stigmas.EX?.find(stigma => stigma.name === 'The Wind that Wanders the World');
+      if (eternalBattle && windWanders) {
+        return {
+          type: 'mixed',
+          pieces: {
+            stigma1Name: 'The Eternal Battle',
+            stigma2Name: 'The Wind that Wanders the World',
+            top: eternalBattle.pieces.top,
+            bottom: windWanders.pieces.bottom,
+            left: eternalBattle.pieces.left,
+            right: windWanders.pieces.right,
+            twoSetBonus1: eternalBattle.twoSet,
+            twoSetBonus2: windWanders.twoSet,
+          },
         };
       }
     }
+    return null;
   }
-  // Check which character this is and load appropriate stigmas
-  if (!mixedStigmaPieces && character.slug !== 'echidna') {
-    // Default to Olivia's build: Reckoning of Sin + The Thousand Mile Weave
-    const reckoningOfSin = stigmas.EX?.find(stigma => stigma.name === 'Reckoning of Sin');
-    const thousandMileWeave = stigmas.EX?.find(stigma => stigma.name === 'The Thousand Mile Weave');
-
-    if (reckoningOfSin && thousandMileWeave) {
-      mixedStigmaPieces = {
-        stigma1Name: 'Reckoning of Sin',
-        stigma2Name: 'The Thousand Mile Weave',
-        top: thousandMileWeave.pieces.top, // The Thousand Mile Weave
-        bottom: reckoningOfSin.pieces.bottom, // Reckoning of Sin
-        left: reckoningOfSin.pieces.left, // Reckoning of Sin
-        right: thousandMileWeave.pieces.right, // The Thousand Mile Weave
-        twoSetBonus1: reckoningOfSin.twoSet, // AP Recovery +4% during battle
-        twoSetBonus2: thousandMileWeave.twoSet, // Melee ATK +10% during battle
-      };
-    }
-  } else if (!mixedStigmaPieces && character.slug === 'echidna') {
-    // Echidna: The Eternal Battle + The Wind that Wanders the World
-    const eternalBattle = stigmas.EX?.find(stigma => stigma.name === 'The Eternal Battle');
-    const windWanders = stigmas.EX?.find(stigma => stigma.name === 'The Wind that Wanders the World');
-
-    if (eternalBattle && windWanders) {
-      mixedStigmaPieces = {
-        stigma1Name: 'The Eternal Battle',
-        stigma2Name: 'The Wind that Wanders the World',
-        top: eternalBattle.pieces.top, // The Eternal Battle
-        bottom: windWanders.pieces.bottom, // The Wind that Wanders the World
-        left: eternalBattle.pieces.left, // The Eternal Battle
-        right: windWanders.pieces.right, // The Wind that Wanders the World
-        twoSetBonus1: eternalBattle.twoSet, // Magic ATK +10% during battle
-        twoSetBonus2: windWanders.twoSet, // SPD +10% during battle
-      };
-    }
+  if (typeof rec === 'object') {
+    return { type: 'object', zeroDupe: findStigmaSet(rec.zeroDupe), fullEx5: findStigmaSet(rec.fullEx5) };
   }
-} else if (isObjectRecommendation) {
-  // Handle object-based recommendations (like Emilia)
-  const zeroDupeName = buildConfig.recommendedStigma.zeroDupe;
-  const fullEx5Name = buildConfig.recommendedStigma.fullEx5;
-
-  // Find zero dupe stigma
-  if (stigmas.EX && stigmas.EX.length > 0) {
-    recommendedStigmaZeroDupe = stigmas.EX.find(stigma => stigma.name === zeroDupeName);
-  }
-  if (!recommendedStigmaZeroDupe && stigmas.SS && stigmas.SS.length > 0) {
-    recommendedStigmaZeroDupe = stigmas.SS.find(stigma => stigma.name === zeroDupeName);
-  }
-  if (!recommendedStigmaZeroDupe && stigmas.S && stigmas.S.length > 0) {
-    recommendedStigmaZeroDupe = stigmas.S.find(stigma => stigma.name === zeroDupeName);
-  }
-  if (!recommendedStigmaZeroDupe && stigmas.A && stigmas.A.length > 0) {
-    recommendedStigmaZeroDupe = stigmas.A.find(stigma => stigma.name === zeroDupeName);
-  }
-
-  // Find full EX5 stigma
-  if (stigmas.EX && stigmas.EX.length > 0) {
-    recommendedStigmaFullEx5 = stigmas.EX.find(stigma => stigma.name === fullEx5Name);
-  }
-  if (!recommendedStigmaFullEx5 && stigmas.SS && stigmas.SS.length > 0) {
-    recommendedStigmaFullEx5 = stigmas.SS.find(stigma => stigma.name === fullEx5Name);
-  }
-  if (!recommendedStigmaFullEx5 && stigmas.S && stigmas.S.length > 0) {
-    recommendedStigmaFullEx5 = stigmas.S.find(stigma => stigma.name === fullEx5Name);
-  }
-  if (!recommendedStigmaFullEx5 && stigmas.A && stigmas.A.length > 0) {
-    recommendedStigmaFullEx5 = stigmas.A.find(stigma => stigma.name === fullEx5Name);
-  }
-} else {
-  // Handle single stigma set builds (string recommendation)
-  const recommendedStigmaName = buildConfig.recommendedStigma;
-
-  if (stigmas.EX && stigmas.EX.length > 0) {
-    recommendedStigma = stigmas.EX.find(stigma => stigma.name === recommendedStigmaName);
-  }
-  if (!recommendedStigma && stigmas.SS && stigmas.SS.length > 0) {
-    recommendedStigma = stigmas.SS.find(stigma => stigma.name === recommendedStigmaName);
-  }
-  if (!recommendedStigma && stigmas.S && stigmas.S.length > 0) {
-    recommendedStigma = stigmas.S.find(stigma => stigma.name === recommendedStigmaName);
-  }
-  if (!recommendedStigma && stigmas.A && stigmas.A.length > 0) {
-    recommendedStigma = stigmas.A.find(stigma => stigma.name === recommendedStigmaName);
-  }
+  return { type: 'single', set: findStigmaSet(rec) };
 }
+
+// One stigma section per build when the config defines stigmaBuilds,
+// otherwise a single legacy section from the top-level config.
+const stigmaSections: any[] =
+  Array.isArray(buildConfig.stigmaBuilds) && buildConfig.stigmaBuilds.length > 0
+    ? buildConfig.stigmaBuilds.map((sb: any) => ({
+        label: sb.name || null,
+        display: resolveStigmaDisplay(sb.recommendedStigma, sb.mixedSetLayout),
+      }))
+    : [{ label: null, display: resolveStigmaDisplay(buildConfig.recommendedStigma, buildConfig.mixedSetLayout) }];
 ---
 
 <CharacterBuildLayout title={title} description={description} characterName={character.name}>
@@ -262,14 +233,16 @@ if (isMixedStigma) {
 
   <!-- Recommended Stigma Section -->
   {
-    (recommendedStigma ||
-      recommendedStigmaZeroDupe ||
-      recommendedStigmaFullEx5 ||
-      mixedStigmaPieces) && (
+    stigmaSections.some((s: any) => s.display) && (
       <section class="character-build-section">
         <h3 class="character-build-section-title">Recommended Stigma</h3>
         <div class="stigma-container">
-          {isMixedStigma ? (
+          {stigmaSections
+            .filter((s: any) => s.display)
+            .map((section: any) => (
+          <div class="stigma-build-section">
+            {section.label && <div class="stigma-build-label">{section.label}</div>}
+            {section.display.type === 'mixed' ? (
             // Mixed 2-Set Stigma Display
             <>
               <div class="stigma-header">
@@ -277,8 +250,8 @@ if (isMixedStigma) {
                   <div class="stigma-info-container">
                     <div class="stigma-image-container">
                       <StigmaImage
-                        imageName={mixedStigmaPieces.stigma1Name}
-                        alt={`${mixedStigmaPieces.stigma1Name} stigma`}
+                        imageName={section.display.pieces.stigma1Name}
+                        alt={`${section.display.pieces.stigma1Name} stigma`}
                         width={60}
                         height={60}
                         class="stigma-portrait-small"
@@ -286,7 +259,7 @@ if (isMixedStigma) {
                       />
                     </div>
                     <div class="stigma-name-label">
-                      <h5>{mixedStigmaPieces.stigma1Name}</h5>
+                      <h5>{section.display.pieces.stigma1Name}</h5>
                       <HWRarityIcon rarity="EX" width={36} height={18} />
                     </div>
                   </div>
@@ -296,8 +269,8 @@ if (isMixedStigma) {
                   <div class="stigma-info-container">
                     <div class="stigma-image-container">
                       <StigmaImage
-                        imageName={mixedStigmaPieces.stigma2Name}
-                        alt={`${mixedStigmaPieces.stigma2Name} stigma`}
+                        imageName={section.display.pieces.stigma2Name}
+                        alt={`${section.display.pieces.stigma2Name} stigma`}
                         width={60}
                         height={60}
                         class="stigma-portrait-small"
@@ -305,7 +278,7 @@ if (isMixedStigma) {
                       />
                     </div>
                     <div class="stigma-name-label">
-                      <h5>{mixedStigmaPieces.stigma2Name}</h5>
+                      <h5>{section.display.pieces.stigma2Name}</h5>
                       <HWRarityIcon rarity="EX" width={36} height={18} />
                     </div>
                   </div>
@@ -314,12 +287,12 @@ if (isMixedStigma) {
 
               <div class="stigma-bonuses">
                 <div class="stigma-set-bonus">
-                  <h5>{mixedStigmaPieces.stigma1Name} (2-Set Bonus)</h5>
-                  <p>{mixedStigmaPieces.twoSetBonus1}</p>
+                  <h5>{section.display.pieces.stigma1Name} (2-Set Bonus)</h5>
+                  <p>{section.display.pieces.twoSetBonus1}</p>
                 </div>
                 <div class="stigma-set-bonus">
-                  <h5>{mixedStigmaPieces.stigma2Name} (2-Set Bonus)</h5>
-                  <p>{mixedStigmaPieces.twoSetBonus2}</p>
+                  <h5>{section.display.pieces.stigma2Name} (2-Set Bonus)</h5>
+                  <p>{section.display.pieces.twoSetBonus2}</p>
                 </div>
               </div>
 
@@ -329,35 +302,35 @@ if (isMixedStigma) {
                   <div class="stigma-piece">
                     <div class="piece-slot">Top</div>
                     <div class="piece-info">
-                      <div class="piece-set-name">{mixedStigmaPieces.top.name}</div>
-                      <div class="piece-stat-value">{mixedStigmaPieces.top.stat}</div>
+                      <div class="piece-set-name">{section.display.pieces.top.name}</div>
+                      <div class="piece-stat-value">{section.display.pieces.top.stat}</div>
                     </div>
                   </div>
                   <div class="stigma-piece">
                     <div class="piece-slot">Bottom</div>
                     <div class="piece-info">
-                      <div class="piece-set-name">{mixedStigmaPieces.bottom.name}</div>
-                      <div class="piece-stat-value">{mixedStigmaPieces.bottom.stat}</div>
+                      <div class="piece-set-name">{section.display.pieces.bottom.name}</div>
+                      <div class="piece-stat-value">{section.display.pieces.bottom.stat}</div>
                     </div>
                   </div>
                   <div class="stigma-piece">
                     <div class="piece-slot">Left</div>
                     <div class="piece-info">
-                      <div class="piece-set-name">{mixedStigmaPieces.left.name}</div>
-                      <div class="piece-stat-value">{mixedStigmaPieces.left.stat}</div>
+                      <div class="piece-set-name">{section.display.pieces.left.name}</div>
+                      <div class="piece-stat-value">{section.display.pieces.left.stat}</div>
                     </div>
                   </div>
                   <div class="stigma-piece">
                     <div class="piece-slot">Right</div>
                     <div class="piece-info">
-                      <div class="piece-set-name">{mixedStigmaPieces.right.name}</div>
-                      <div class="piece-stat-value">{mixedStigmaPieces.right.stat}</div>
+                      <div class="piece-set-name">{section.display.pieces.right.name}</div>
+                      <div class="piece-stat-value">{section.display.pieces.right.stat}</div>
                     </div>
                   </div>
                 </div>
               </div>
             </>
-          ) : isObjectRecommendation ? (
+            ) : section.display.type === 'object' ? (
             // Object-based Stigma Recommendations - Each stigma in separate section
             <>
               {/* First Stigma Option */}
@@ -367,8 +340,8 @@ if (isMixedStigma) {
                   <div class="stigma-title-section">
                     <div class="stigma-image-container">
                       <StigmaImage
-                        imageName={recommendedStigmaZeroDupe.name}
-                        alt={`${recommendedStigmaZeroDupe.name} stigma`}
+                        imageName={section.display.zeroDupe.name}
+                        alt={`${section.display.zeroDupe.name} stigma`}
                         width={60}
                         height={60}
                         class="stigma-portrait-small"
@@ -376,7 +349,7 @@ if (isMixedStigma) {
                       />
                     </div>
                     <div class="stigma-title-info">
-                      <h4 class="stigma-name">{recommendedStigmaZeroDupe.name}</h4>
+                      <h4 class="stigma-name">{section.display.zeroDupe.name}</h4>
                       <HWRarityIcon rarity="EX" width={36} height={18} />
                     </div>
                   </div>
@@ -385,12 +358,12 @@ if (isMixedStigma) {
                 <div class="stigma-bonuses">
                   <div class="stigma-set-bonus">
                     <h5>2-Set Bonus</h5>
-                    <p>{recommendedStigmaZeroDupe.twoSet}</p>
+                    <p>{section.display.zeroDupe.twoSet}</p>
                   </div>
-                  {recommendedStigmaZeroDupe.fourSet && (
+                  {section.display.zeroDupe.fourSet && (
                     <div class="stigma-set-bonus">
                       <h5>4-Set Bonus</h5>
-                      <p>{recommendedStigmaZeroDupe.fourSet}</p>
+                      <p>{section.display.zeroDupe.fourSet}</p>
                     </div>
                   )}
                 </div>
@@ -401,29 +374,29 @@ if (isMixedStigma) {
                     <div class="stigma-piece">
                       <div class="piece-slot">Top</div>
                       <div class="piece-info">
-                        <div class="piece-name">{recommendedStigmaZeroDupe.pieces.top.name}</div>
-                        <div class="piece-stat">{recommendedStigmaZeroDupe.pieces.top.stat}</div>
+                        <div class="piece-name">{section.display.zeroDupe.pieces.top.name}</div>
+                        <div class="piece-stat">{section.display.zeroDupe.pieces.top.stat}</div>
                       </div>
                     </div>
                     <div class="stigma-piece">
                       <div class="piece-slot">Bottom</div>
                       <div class="piece-info">
-                        <div class="piece-name">{recommendedStigmaZeroDupe.pieces.bottom.name}</div>
-                        <div class="piece-stat">{recommendedStigmaZeroDupe.pieces.bottom.stat}</div>
+                        <div class="piece-name">{section.display.zeroDupe.pieces.bottom.name}</div>
+                        <div class="piece-stat">{section.display.zeroDupe.pieces.bottom.stat}</div>
                       </div>
                     </div>
                     <div class="stigma-piece">
                       <div class="piece-slot">Left</div>
                       <div class="piece-info">
-                        <div class="piece-name">{recommendedStigmaZeroDupe.pieces.left.name}</div>
-                        <div class="piece-stat">{recommendedStigmaZeroDupe.pieces.left.stat}</div>
+                        <div class="piece-name">{section.display.zeroDupe.pieces.left.name}</div>
+                        <div class="piece-stat">{section.display.zeroDupe.pieces.left.stat}</div>
                       </div>
                     </div>
                     <div class="stigma-piece">
                       <div class="piece-slot">Right</div>
                       <div class="piece-info">
-                        <div class="piece-name">{recommendedStigmaZeroDupe.pieces.right.name}</div>
-                        <div class="piece-stat">{recommendedStigmaZeroDupe.pieces.right.stat}</div>
+                        <div class="piece-name">{section.display.zeroDupe.pieces.right.name}</div>
+                        <div class="piece-stat">{section.display.zeroDupe.pieces.right.stat}</div>
                       </div>
                     </div>
                   </div>
@@ -442,8 +415,8 @@ if (isMixedStigma) {
                   <div class="stigma-title-section">
                     <div class="stigma-image-container">
                       <StigmaImage
-                        imageName={recommendedStigmaFullEx5.name}
-                        alt={`${recommendedStigmaFullEx5.name} stigma`}
+                        imageName={section.display.fullEx5.name}
+                        alt={`${section.display.fullEx5.name} stigma`}
                         width={60}
                         height={60}
                         class="stigma-portrait-small"
@@ -451,7 +424,7 @@ if (isMixedStigma) {
                       />
                     </div>
                     <div class="stigma-title-info">
-                      <h4 class="stigma-name">{recommendedStigmaFullEx5.name}</h4>
+                      <h4 class="stigma-name">{section.display.fullEx5.name}</h4>
                       <HWRarityIcon rarity="EX" width={36} height={18} />
                     </div>
                   </div>
@@ -460,12 +433,12 @@ if (isMixedStigma) {
                 <div class="stigma-bonuses">
                   <div class="stigma-set-bonus">
                     <h5>2-Set Bonus</h5>
-                    <p>{recommendedStigmaFullEx5.twoSet}</p>
+                    <p>{section.display.fullEx5.twoSet}</p>
                   </div>
-                  {recommendedStigmaFullEx5.fourSet && (
+                  {section.display.fullEx5.fourSet && (
                     <div class="stigma-set-bonus">
                       <h5>4-Set Bonus</h5>
-                      <p>{recommendedStigmaFullEx5.fourSet}</p>
+                      <p>{section.display.fullEx5.fourSet}</p>
                     </div>
                   )}
                 </div>
@@ -476,44 +449,44 @@ if (isMixedStigma) {
                     <div class="stigma-piece">
                       <div class="piece-slot">Top</div>
                       <div class="piece-info">
-                        <div class="piece-name">{recommendedStigmaFullEx5.pieces.top.name}</div>
-                        <div class="piece-stat">{recommendedStigmaFullEx5.pieces.top.stat}</div>
+                        <div class="piece-name">{section.display.fullEx5.pieces.top.name}</div>
+                        <div class="piece-stat">{section.display.fullEx5.pieces.top.stat}</div>
                       </div>
                     </div>
                     <div class="stigma-piece">
                       <div class="piece-slot">Bottom</div>
                       <div class="piece-info">
-                        <div class="piece-name">{recommendedStigmaFullEx5.pieces.bottom.name}</div>
-                        <div class="piece-stat">{recommendedStigmaFullEx5.pieces.bottom.stat}</div>
+                        <div class="piece-name">{section.display.fullEx5.pieces.bottom.name}</div>
+                        <div class="piece-stat">{section.display.fullEx5.pieces.bottom.stat}</div>
                       </div>
                     </div>
                     <div class="stigma-piece">
                       <div class="piece-slot">Left</div>
                       <div class="piece-info">
-                        <div class="piece-name">{recommendedStigmaFullEx5.pieces.left.name}</div>
-                        <div class="piece-stat">{recommendedStigmaFullEx5.pieces.left.stat}</div>
+                        <div class="piece-name">{section.display.fullEx5.pieces.left.name}</div>
+                        <div class="piece-stat">{section.display.fullEx5.pieces.left.stat}</div>
                       </div>
                     </div>
                     <div class="stigma-piece">
                       <div class="piece-slot">Right</div>
                       <div class="piece-info">
-                        <div class="piece-name">{recommendedStigmaFullEx5.pieces.right.name}</div>
-                        <div class="piece-stat">{recommendedStigmaFullEx5.pieces.right.stat}</div>
+                        <div class="piece-name">{section.display.fullEx5.pieces.right.name}</div>
+                        <div class="piece-stat">{section.display.fullEx5.pieces.right.stat}</div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </>
-          ) : (
+            ) : (
             // Single Stigma Set Display (like Juha, Vlissing)
             <>
               <div class="stigma-header">
                 <div class="stigma-title-section">
                   <div class="stigma-image-container">
                     <StigmaImage
-                      imageName={recommendedStigma.name}
-                      alt={`${recommendedStigma.name} stigma`}
+                      imageName={section.display.set.name}
+                      alt={`${section.display.set.name} stigma`}
                       width={60}
                       height={60}
                       class="stigma-portrait-small"
@@ -521,7 +494,7 @@ if (isMixedStigma) {
                     />
                   </div>
                   <div class="stigma-title-info">
-                    <h4 class="stigma-name">{recommendedStigma.name}</h4>
+                    <h4 class="stigma-name">{section.display.set.name}</h4>
                     <HWRarityIcon rarity="EX" width={36} height={18} />
                   </div>
                 </div>
@@ -530,13 +503,13 @@ if (isMixedStigma) {
               <div class="stigma-bonuses">
                 <div class="stigma-set-bonus">
                   <h5>2-Set Bonus</h5>
-                  <p>{recommendedStigma.twoSet}</p>
+                  <p>{section.display.set.twoSet}</p>
                 </div>
                 <div class="stigma-set-bonus">
                   <h5>4-Set Bonus</h5>
-                  <p>{recommendedStigma.fourSet}</p>
-                  {recommendedStigma.specialEffect && (
-                    <p class="stigma-special-effect"><strong>[{recommendedStigma.specialEffect.name}]:</strong> {recommendedStigma.specialEffect.description}</p>
+                  <p>{section.display.set.fourSet}</p>
+                  {section.display.set.specialEffect && (
+                    <p class="stigma-special-effect"><strong>[{section.display.set.specialEffect.name}]:</strong> {section.display.set.specialEffect.description}</p>
                   )}
                 </div>
               </div>
@@ -547,35 +520,37 @@ if (isMixedStigma) {
                   <div class="stigma-piece">
                     <div class="piece-slot">Top</div>
                     <div class="piece-info">
-                      <div class="piece-name">{recommendedStigma.pieces.top.name}</div>
-                      <div class="piece-stat">{recommendedStigma.pieces.top.stat}</div>
+                      <div class="piece-name">{section.display.set.pieces.top.name}</div>
+                      <div class="piece-stat">{section.display.set.pieces.top.stat}</div>
                     </div>
                   </div>
                   <div class="stigma-piece">
                     <div class="piece-slot">Bottom</div>
                     <div class="piece-info">
-                      <div class="piece-name">{recommendedStigma.pieces.bottom.name}</div>
-                      <div class="piece-stat">{recommendedStigma.pieces.bottom.stat}</div>
+                      <div class="piece-name">{section.display.set.pieces.bottom.name}</div>
+                      <div class="piece-stat">{section.display.set.pieces.bottom.stat}</div>
                     </div>
                   </div>
                   <div class="stigma-piece">
                     <div class="piece-slot">Left</div>
                     <div class="piece-info">
-                      <div class="piece-name">{recommendedStigma.pieces.left.name}</div>
-                      <div class="piece-stat">{recommendedStigma.pieces.left.stat}</div>
+                      <div class="piece-name">{section.display.set.pieces.left.name}</div>
+                      <div class="piece-stat">{section.display.set.pieces.left.stat}</div>
                     </div>
                   </div>
                   <div class="stigma-piece">
                     <div class="piece-slot">Right</div>
                     <div class="piece-info">
-                      <div class="piece-name">{recommendedStigma.pieces.right.name}</div>
-                      <div class="piece-stat">{recommendedStigma.pieces.right.stat}</div>
+                      <div class="piece-name">{section.display.set.pieces.right.name}</div>
+                      <div class="piece-stat">{section.display.set.pieces.right.stat}</div>
                     </div>
                   </div>
                 </div>
               </div>
             </>
-          )}
+            )}
+          </div>
+            ))}
 
           <div class="recommended-substats">
             <h5>Recommended Sub Stats</h5>
@@ -698,30 +673,56 @@ if (isMixedStigma) {
         <section class="character-build-section">
           <h3 class="character-build-section-title">Recommended Traits</h3>
           <div class="recommended-traits">
-            <h5>Best Traits for {buildConfig.traitsType} (Max {buildConfig.traitsMax || 5} Traits)</h5>
-            <div class="traits-list">
-              {buildConfig.recommendedTraits.map((trait, index) => (
-                <div class={`trait-item ${trait.priority === 'Best' ? 'priority-best' : 'priority-alternative'}`}>
-                  <div class="trait-info">
-                    <div class="trait-name">{trait.name}</div>
-                    <span
-                      class="hw-badge"
-                      data-type={trait.priority === 'Best' ? 'Main' : 'Alt'}
-                    >
-                      {trait.priority === 'Best' ? 'Main' : 'Alt'}
-                    </span>
+            {buildConfig.traitBuilds ? (
+              <div class="trait-builds">
+                {buildConfig.traitBuilds.map(traitBuild => (
+                  <div class="trait-build-block">
+                    <h5 class="trait-build-title">{traitBuild.name}</h5>
+                    <div class="traits-list">
+                      {traitBuild.traits.map(trait => (
+                        <div class="trait-item">
+                          <div class="trait-info">
+                            <div class="trait-name">{trait.name}</div>
+                          </div>
+                          <div class="trait-effects">
+                            {trait.effects.map(effect => (
+                              <div class="trait-effect">{effect}</div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div class="trait-effects">
-                    {trait.effects.map(effect => (
-                      <div class="trait-effect">{effect}</div>
-                    ))}
-                  </div>
+                ))}
+              </div>
+            ) : (
+              <>
+                <h5>Best Traits for {buildConfig.traitsType} (Max {buildConfig.traitsMax || 5} Traits)</h5>
+                <div class="traits-list">
+                  {buildConfig.recommendedTraits.map((trait, index) => (
+                    <div class={`trait-item ${trait.priority === 'Best' ? 'priority-best' : 'priority-alternative'}`}>
+                      <div class="trait-info">
+                        <div class="trait-name">{trait.name}</div>
+                        <span
+                          class="hw-badge"
+                          data-type={trait.priority === 'Best' ? 'Main' : 'Alt'}
+                        >
+                          {trait.priority === 'Best' ? 'Main' : 'Alt'}
+                        </span>
+                      </div>
+                      <div class="trait-effects">
+                        {trait.effects.map(effect => (
+                          <div class="trait-effect">{effect}</div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            <div class="traits-note">
-              <strong>Recommended Selection:</strong> {buildConfig.traitRecommendation}
-            </div>
+                <div class="traits-note">
+                  <strong>Recommended Selection:</strong> {buildConfig.traitRecommendation}
+                </div>
+              </>
+            )}
           </div>
         </section>
       </>

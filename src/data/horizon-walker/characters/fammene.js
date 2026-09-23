@@ -200,6 +200,8 @@ const rawFammeneData = {
       ],
     },
   },
+  heroId: 35,
+
   rarityStages: {
     'EX': {
       strength: 4,
@@ -300,8 +302,6 @@ const rawFammeneData = {
       startingAp: 118
     },
   },
-  heroId: 35,
-
 };
 
 // Validate and sanitize the character data

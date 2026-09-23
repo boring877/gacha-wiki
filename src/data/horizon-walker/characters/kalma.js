@@ -258,6 +258,8 @@ const rawKalmaData = {
       ],
     },
   },
+  heroId: 55,
+
   rarityStages: {
     'EX': {
       strength: 4,
@@ -358,8 +360,6 @@ const rawKalmaData = {
       startingAp: 130
     },
   },
-  heroId: 55,
-
 };
 
 // Validate and sanitize the character data

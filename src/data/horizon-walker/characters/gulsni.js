@@ -178,6 +178,8 @@ const rawGulsniData = {
         'If in [Burrow] state at the start of the turn, the effect applies. Increases Physical DEF by {300,330,360,390,420,450,480,510,540,570} and AP Recovery by {20,22,24,26,28,30,32,34,36,38}% until the start of the next round.',
     },
   },
+  heroId: 26,
+
   rarityStages: {
     'EX': {
       strength: 7,
@@ -278,8 +280,6 @@ const rawGulsniData = {
       startingAp: 127
     },
   },
-  heroId: 26,
-
 };
 
 // Validate and sanitize the character data

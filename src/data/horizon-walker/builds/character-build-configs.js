@@ -2,6 +2,7 @@
 // Centralized import point for individual character build configurations
 
 import {
+  garudBuildConfig,
   juhaBuildConfig,
   juzaBuildConfig,
   vlissingBuildConfig,
@@ -14,6 +15,7 @@ import {
 } from './characters/index.js';
 
 export const characterBuildConfigs = {
+  garud: garudBuildConfig,
   juha: juhaBuildConfig,
   juza: juzaBuildConfig,
   vlissing: vlissingBuildConfig,

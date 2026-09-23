@@ -205,6 +205,8 @@ const rawBellaData = {
         "Opens the path of the branches to invoke the goddess's miracle. Restores consciousness to one incapacitated ally and recovers HP by {200,220,240,260,280,300,320,340,360,380}% of magic ATK. The target resumes battle with AP set to {50,55,60,65,70,75,80,85,90,95}.",
     },
   },
+  heroId: 17,
+
   rarityStages: {
     'EX': {
       strength: 9,
@@ -305,8 +307,6 @@ const rawBellaData = {
       startingAp: 128
     },
   },
-  heroId: 17,
-
 };
 
 // Validate and sanitize the character data

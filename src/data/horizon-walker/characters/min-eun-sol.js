@@ -213,6 +213,8 @@ const rawMinEunSolData = {
         "This skill can only target an enemy with the [Touched the King's Offering] effect originating from yourself that exists on the battlefield. This attack does not trigger a critical hit and must hit as a Weakness Attack if the target has a weakness.",
     },
   },
+  heroId: 2,
+
   rarityStages: {
     'EX': {
       strength: 5,
@@ -313,8 +315,6 @@ const rawMinEunSolData = {
       startingAp: 115
     },
   },
-  heroId: 2,
-
 };
 
 // Validate and sanitize the character data

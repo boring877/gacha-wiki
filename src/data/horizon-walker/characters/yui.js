@@ -211,6 +211,8 @@ const rawYuiData = {
       ],
     },
   },
+  heroId: 53,
+
   rarityStages: {
     'EX': {
       strength: 7,
@@ -311,8 +313,6 @@ const rawYuiData = {
       startingAp: 127
     },
   },
-  heroId: 53,
-
 };
 
 // Validate and sanitize the character data

@@ -219,6 +219,8 @@ const rawNymsetData = {
       ],
     },
   },
+  heroId: 46,
+
   rarityStages: {
     'EX': {
       strength: 10,
@@ -319,8 +321,6 @@ const rawNymsetData = {
       startingAp: 117
     },
   },
-  heroId: 46,
-
 };
 
 // Validate and sanitize the character data

@@ -222,6 +222,8 @@ const rawOslaData = {
         'When attacked by an enemy, reflects the damage received back to the attacker, dealing Fixed DMG equal to {30,33,36,39,42,45,48,51,54,57}% of the damage taken. This reflected damage increases as own current HP ratio decreases, up to 4 times at 40% HP.',
     },
   },
+  heroId: 10,
+
   rarityStages: {
     'EX': {
       strength: 14,
@@ -322,8 +324,6 @@ const rawOslaData = {
       startingAp: 118
     },
   },
-  heroId: 10,
-
 };
 
 // Validate and sanitize the character data

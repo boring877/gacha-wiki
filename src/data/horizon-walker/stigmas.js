@@ -323,6 +323,35 @@ export const stigmas = {
         },
       },
     },
+    {
+      name: 'Scorching Sun',
+      twoSet: 'Magic ATK +10% during battle',
+      fourSet:
+        'On a successful attack, increases Magic ATK and Heat Boost by 3% for 2 Rounds. Stacks up to 6 times.',
+      specialEffect: {
+        name: 'Scorching Sun',
+        description:
+          'On a successful attack, increases Magic ATK and Heat Boost by 3% for 2 Rounds. Stacks up to 6 times.',
+      },
+      pieces: {
+        top: {
+          name: 'Blade of the Sun',
+          stat: 'Magic ATK',
+        },
+        bottom: {
+          name: 'Spear of Sunlight',
+          stat: 'Max HP',
+        },
+        left: {
+          name: 'Sacred Flame',
+          stat: 'Heat Boost',
+        },
+        right: {
+          name: 'Wisdom of the Sun',
+          stat: 'Magic ATK',
+        },
+      },
+    },
   ],
   SS: [
     {

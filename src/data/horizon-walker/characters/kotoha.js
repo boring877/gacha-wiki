@@ -68,7 +68,7 @@ const rawKotohaData = {
     foxSpiritsBlessing: { name: 'Fox Spirit\'s Blessing', description: 'Max HP +20%, Magic ATK +20%' },
     human: { name: 'Human', description: 'Technic +1, AP Recovery +4%' },
     kindredSpirit: { name: 'Kindred Spirit', description: 'Activates the Level 1 passive skill [Kindred Spirit]. [Kindred Spirit]: Designates the ally affected by [Perfect Unity] as a [Kindred Spirit]. While protected by [Boundary Ward], that ally gains a Barrier equal to 20% of Max HP at the start of the target\'s turn. The Barrier lasts for 1 Round and cannot stack or be refreshed.' },
-    interested: { name: 'Interested', description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.' },
+    interested: { name: 'Interested', description: 'Special trait with no listed characteristics.' },
   },
 
   skills: {
@@ -106,6 +106,46 @@ const rawKotohaData = {
       name: "Boundary Ward",
       type: 'Skill',
       description: "Upon using [Art of Perfect Unity], gains a Barrier equal to {40,48,56,64,72,80,88,96,104,112}% of the HP lost. When this Barrier is removed, or if the ally affected by [Perfect Unity] is defeated, gains 120 AP. While protected by the Barrier granted by [Boundary Ward], cannot be defeated. Additionally, the first time incoming damage exceeds the Barrier's remaining strength, the excess damage will not reduce HP. However, all incoming attacks are guaranteed to hit.",
+    },
+  },
+  story: 'Shiraishi Kotoha was abandoned as an infant outside a shrine in Tokyo dedicated to a fox spirit. When she was found, several white foxes had gathered around her, shielding her from the cold. From that day on, she became known as "the child brought by the foxes," and was taken in as one of the shrine\'s mikos. Raised in a shrine devoted to the fox spirit, Kotoha grew up surrounded by warmth and kindness. Gifted with both a sharp mind and a compassionate heart, she devoted herself to her training from an early age, determined to repay the shrine and the mikos who had given her a home. In time, her extraordinary spiritual power and graceful beauty earned her recognition as the shrine\'s foremost miko. The fox spirit she served guided the souls of the departed to the afterlife, and Kotoha often accompanied it in carrying out that sacred duty. One day, however, while escorting the dead, she sensed an unfamiliar fear among the spirits. Countless Abominations were descending upon Tokyo. Realizing the catastrophe before it unfolded, Kotoha acted without hesitation. She led her fellow mikos and countless civilians to safety in Nagoya, narrowly escaping the disaster that would soon engulf the city. The miracle came at a terrible cost. The shrine was reduced to ruins, and the fox spirit sacrificed its life to protect the people. Having lost both their home and the deity they had faithfully served, the displaced mikos were left without a shrine - or a god. Not long afterward, news reached them that a new Human God had appeared in Neo Seoul. When Kotoha and the other mikos witnessed the Human God\'s divine power from afar, their souls resonated with it. The feeling was so familiar that it was as though they had finally found their way home. After much deliberation, the mikos resolved to serve the Human God as their new deity. Chosen as their representative, Kotoha volunteered to become one of his Vanguards. The moment she arrived at the Bureau of Rift Management, she boldly announced, "The Human God\'s miko has arrived." From that day forward, she became a constant source of headaches for everyone around her.',
+
+  heroId: 69,
+
+  weapon: {
+    name: "Ofuda: Fox Spirit's Guidance",
+    flavor: "Crafted by a miko for her new god using an ancient talisman-making technique passed down through generations at the Fox Shrine. Originally, these talismans were created to guide wandering souls and ward off the evil spirits that preyed upon them. This one, however, has been transformed into an all-purpose sacred implement, made with this miko's personal feelings poured into it without the slightest restraint. Alongside its original purpose, it has been imbued with countless blessings: Great Fortune · Prosperity · Happy Marriage · Academic Success · Protection from Misfortune · Wishes Fulfilled! Even in the hands of an ordinary person, it is capable of repelling minor evil spirits and warding off everyday misfortune. Lovingly crafted with a miko's unwavering devotion to her god, its power as a sacred implement is anything but ordinary. The stronger one's faith in the god it was created for, the greater its blessings become. Though born from this miko's shamelessly selfish desires, her absolute faith in her god has produced an unexpected miracle. That unwavering devotion has elevated the talisman into something truly extraordinary.",
+    type: "Mana Shard",
+    rarity: 'EX',
+    image: "Weapon_FullIMG_ShardOfSpell_ForShiraishiKotoha",
+    imageOnR2: false,
+    maxLevel: 60,
+    stats: {
+      "Magic ATK (weapon)": "77",
+      "Magic ATK (%)": "+49%",
+    },
+    uniqueSkills: {
+      unique: {
+        name: "Miko's Guidance",
+        type: 'Unique',
+        description: "At the start of battle, gains {40,45,50,55,60} AP and reduces damage taken by {10,15,20,25,30}% throughout the battle. Whenever a Support skill is used, increases allies' All ATK by {20,28,36,44,52}% for the rest of the battle. ATK increases applied to allies by [Unique: Miko's Guidance] do not stack.",
+      },
+      signature: {
+        name: "Kotoha Signature: Light in the Darkness",
+        type: 'Signature',
+        description: "Reduces the AP cost of [Offering of Life] to 0 during battle. While [Perfect Unity] is active, Elemental Boost increases by {40}%, plus an additional {4}% for each skill level of [Art of Perfect Unity].",
+      },
+    },
+    levelStats: {
+      "Magic ATK (weapon)": [12.1, 77.0],
+      "Magic ATK (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "At the start of battle, gains", valuesByLevel: "40 / 45 / 50 / 55 / 60" },
+        { name: "AP and reduces damage taken", valuesByLevel: "10% / 15% / 20% / 25% / 30%" },
+        { name: "Whenever a Support skill is used, increases allies' All ATK", valuesByLevel: "20% / 28% / 36% / 44% / 52%" },
+      ],
     },
   },
   rarityStages: {
@@ -206,46 +246,6 @@ const rawKotohaData = {
       evade: 228,
       apRecovery: 127,
       startingAp: 139
-    },
-  },
-  story: 'Shiraishi Kotoha was abandoned as an infant outside a shrine in Tokyo dedicated to a fox spirit. When she was found, several white foxes had gathered around her, shielding her from the cold. From that day on, she became known as "the child brought by the foxes," and was taken in as one of the shrine\'s mikos. Raised in a shrine devoted to the fox spirit, Kotoha grew up surrounded by warmth and kindness. Gifted with both a sharp mind and a compassionate heart, she devoted herself to her training from an early age, determined to repay the shrine and the mikos who had given her a home. In time, her extraordinary spiritual power and graceful beauty earned her recognition as the shrine\'s foremost miko. The fox spirit she served guided the souls of the departed to the afterlife, and Kotoha often accompanied it in carrying out that sacred duty. One day, however, while escorting the dead, she sensed an unfamiliar fear among the spirits. Countless Abominations were descending upon Tokyo. Realizing the catastrophe before it unfolded, Kotoha acted without hesitation. She led her fellow mikos and countless civilians to safety in Nagoya, narrowly escaping the disaster that would soon engulf the city. The miracle came at a terrible cost. The shrine was reduced to ruins, and the fox spirit sacrificed its life to protect the people. Having lost both their home and the deity they had faithfully served, the displaced mikos were left without a shrine - or a god. Not long afterward, news reached them that a new Human God had appeared in Neo Seoul. When Kotoha and the other mikos witnessed the Human God\'s divine power from afar, their souls resonated with it. The feeling was so familiar that it was as though they had finally found their way home. After much deliberation, the mikos resolved to serve the Human God as their new deity. Chosen as their representative, Kotoha volunteered to become one of his Vanguards. The moment she arrived at the Bureau of Rift Management, she boldly announced, "The Human God\'s miko has arrived." From that day forward, she became a constant source of headaches for everyone around her.',
-
-  heroId: 69,
-
-  weapon: {
-    name: "Ofuda: Fox Spirit's Guidance",
-    flavor: "Crafted by a miko for her new god using an ancient talisman-making technique passed down through generations at the Fox Shrine. Originally, these talismans were created to guide wandering souls and ward off the evil spirits that preyed upon them. This one, however, has been transformed into an all-purpose sacred implement, made with this miko's personal feelings poured into it without the slightest restraint. Alongside its original purpose, it has been imbued with countless blessings: Great Fortune · Prosperity · Happy Marriage · Academic Success · Protection from Misfortune · Wishes Fulfilled! Even in the hands of an ordinary person, it is capable of repelling minor evil spirits and warding off everyday misfortune. Lovingly crafted with a miko's unwavering devotion to her god, its power as a sacred implement is anything but ordinary. The stronger one's faith in the god it was created for, the greater its blessings become. Though born from this miko's shamelessly selfish desires, her absolute faith in her god has produced an unexpected miracle. That unwavering devotion has elevated the talisman into something truly extraordinary.",
-    type: "Mana Shard",
-    rarity: 'EX',
-    image: "Weapon_FullIMG_ShardOfSpell_ForShiraishiKotoha",
-    imageOnR2: false,
-    maxLevel: 60,
-    stats: {
-      "Magic ATK (weapon)": "77",
-      "Magic ATK (%)": "+49%",
-    },
-    uniqueSkills: {
-      unique: {
-        name: "Miko's Guidance",
-        type: 'Unique',
-        description: "At the start of battle, gains {40,45,50,55,60} AP and reduces damage taken by {10,15,20,25,30}% throughout the battle. Whenever a Support skill is used, increases allies' All ATK by {20,28,36,44,52}% for the rest of the battle. ATK increases applied to allies by [Unique: Miko's Guidance] do not stack.",
-      },
-      signature: {
-        name: "Kotoha Signature: Light in the Darkness",
-        type: 'Signature',
-        description: "Reduces the AP cost of [Offering of Life] to 0 during battle. While [Perfect Unity] is active, Elemental Boost increases by {40}%, plus an additional {4}% for each skill level of [Art of Perfect Unity].",
-      },
-    },
-    levelStats: {
-      "Magic ATK (weapon)": [12.1, 77.0],
-      "Magic ATK (%)": [7.7, 49.0],
-    },
-    exLevels: {
-      effects: [
-        { name: "At the start of battle, gains", valuesByLevel: "40 / 45 / 50 / 55 / 60" },
-        { name: "AP and reduces damage taken", valuesByLevel: "10% / 15% / 20% / 25% / 30%" },
-        { name: "Whenever a Support skill is used, increases allies' All ATK", valuesByLevel: "20% / 28% / 36% / 44% / 52%" },
-      ],
     },
   },
 };

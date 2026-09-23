@@ -163,6 +163,8 @@ const rawReDeDaData = {
       note: 'Self-stun after use',
     },
   },
+  heroId: 31,
+
   rarityStages: {
     'EX': {
       strength: 7,
@@ -263,8 +265,6 @@ const rawReDeDaData = {
       startingAp: 119
     },
   },
-  heroId: 31,
-
 };
 
 // Validate and sanitize the character data

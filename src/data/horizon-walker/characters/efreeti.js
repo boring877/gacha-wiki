@@ -234,6 +234,8 @@ const rawEfreetiData = {
       ],
     },
   },
+  heroId: 27,
+
   rarityStages: {
     'EX': {
       strength: 6,
@@ -334,8 +336,6 @@ const rawEfreetiData = {
       startingAp: 119
     },
   },
-  heroId: 27,
-
 };
 
 // Validate and sanitize the character data

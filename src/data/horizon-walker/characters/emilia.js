@@ -226,6 +226,8 @@ const rawEmiliaData = {
         "When using the Miraculous Injection skill, the targeted ally also gains the [Sacred Overdose] effect for 2 rounds, based on the user's Crit Rate as the activation chance. The ally consumes a portion of their current HP, and their Combat Skill DMG is slightly reduced, but their Basic ATK DMG increases. Effect: Sacred Overdose - Consumes 25% of current HP when activated. Reduces Combat Skill DMG by 8%, but increases Basic ATK DMG by 16%.",
     },
   },
+  heroId: 59,
+
   rarityStages: {
     'EX': {
       strength: 10,
@@ -326,8 +328,6 @@ const rawEmiliaData = {
       startingAp: 111
     },
   },
-  heroId: 59,
-
 };
 
 // SEO Metadata

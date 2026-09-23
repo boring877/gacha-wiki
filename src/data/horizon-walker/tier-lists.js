@@ -127,7 +127,7 @@ export const GAME_MODES = {
 
 // Character lists from your tier list data (only characters with EX Weapons)
 const MAP_CLEAR_CHARACTERS = {
-  UR: ['Cora', 'Luise', 'Juza'],
+  UR: ['Cora', 'Luise', 'Juza', 'Garud'],
   SSS: ['Olivia', 'Vlissing', 'Palekar', 'Matrotho', 'Eugenia', 'Ahram', 'Nari'],
   SS: [
     'Yui',
@@ -194,7 +194,7 @@ const MAP_CLEAR_CHARACTERS = {
 };
 
 const SPECIAL_OPERATIONS_CHARACTERS = {
-  UR: ['Cora', 'Luise', 'Juza'],
+  UR: ['Cora', 'Luise', 'Juza', 'Garud'],
   SSS: ['Yeonwoo', 'Leah', 'Nymset', 'Palekar', 'Juha', 'So Joo-Hee', 'Mahari', 'Matrotho', 'Eugenia', 'Ahram', 'Nari'],
   SS: [
     'Olivia',
@@ -254,7 +254,7 @@ const SPECIAL_OPERATIONS_CHARACTERS = {
 };
 
 const DOPAMIN_CHARACTERS = {
-  UR: ['Cora', 'Luise', 'Juza'],
+  UR: ['Cora', 'Luise', 'Juza', 'Garud'],
   SSS: [
     'Olivia',
     'Kaul',
@@ -456,6 +456,11 @@ export const TIER_LIST_CHANGELOG = [];
 
 // Notes for specific characters displayed on tier list cards
 export const TIER_CHARACTER_NOTES = {
+  Garud: {
+    type: 'info',
+    title: 'Either SSS or UR, Needs Testing',
+    text: 'She is either SSS or UR. She needs more testing as of now, but she has so much potential to be busted~',
+  },
   Matrotho: {
     type: 'warning',
     title: 'Requires Team Synergy',

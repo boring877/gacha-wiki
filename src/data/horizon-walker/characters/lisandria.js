@@ -216,6 +216,8 @@ const rawLisandriaData = {
         'Creates a [Blood Judgment] zone on the battlefield and earns 1 stack of [Salvation] effect. At the end of any turn, enemies within the zone take Additional Immaterial DMG equal to {200,225,250,275,300,325,350,375,400,425}% of Melee ATK, and 1 [Salvation] effect and 9% of Max HP are lost. This effect repeatedly triggers while [Salvation] is possessed. If [Salvation] is no longer possessed, the [Blood Judgment] zone disappears.',
     },
   },
+  heroId: 20,
+
   rarityStages: {
     'EX': {
       strength: 7,
@@ -316,8 +318,6 @@ const rawLisandriaData = {
       startingAp: 126
     },
   },
-  heroId: 20,
-
 };
 
 // Validate and sanitize the character data

@@ -259,6 +259,8 @@ const rawKaulData = {
       triggersReplacements: ['gapStab', 'masochisticFrenzy'],
     },
   },
+  heroId: 58,
+
   rarityStages: {
     'EX': {
       strength: 8,
@@ -359,8 +361,6 @@ const rawKaulData = {
       startingAp: 131
     },
   },
-  heroId: 58,
-
 };
 
 // Validate and sanitize the character data

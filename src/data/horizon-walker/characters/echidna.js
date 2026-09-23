@@ -230,6 +230,8 @@ const rawEchidnaData = {
       ],
     },
   },
+  heroId: 61,
+
   rarityStages: {
     'EX': {
       strength: 6,
@@ -330,8 +332,6 @@ const rawEchidnaData = {
       startingAp: 142
     },
   },
-  heroId: 61,
-
 };
 
 // Validate and sanitize the character data

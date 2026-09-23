@@ -203,6 +203,8 @@ const rawVlissingData = {
       ],
     },
   },
+  heroId: 47,
+
   rarityStages: {
     'EX': {
       strength: 7,
@@ -303,8 +305,6 @@ const rawVlissingData = {
       startingAp: 129
     },
   },
-  heroId: 47,
-
 };
 
 // Validate and sanitize the character data

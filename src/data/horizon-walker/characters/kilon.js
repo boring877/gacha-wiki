@@ -207,6 +207,8 @@ const rawKilonData = {
         "Strikes downward with a greatsword to deliver a powerful blow. Deals Slash DMG equal to N% of Melee ATK. This skill’s Slash Boost increases proportionally to missing HP, up to 200% for the turn it's used. If this skill defeats an enemy, restores {40,44,48,52,56,60,64,68,72,76}% of Max HP as HP Recovery.",
     },
   },
+  heroId: 9,
+
   rarityStages: {
     'EX': {
       strength: 11,
@@ -307,8 +309,6 @@ const rawKilonData = {
       startingAp: 132
     },
   },
-  heroId: 9,
-
 };
 
 // Validate and sanitize the character data

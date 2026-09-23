@@ -184,6 +184,8 @@ const rawMarikaData = {
       ],
     },
   },
+  heroId: 64,
+
   rarityStages: {
     'EX': {
       strength: 16,
@@ -284,8 +286,6 @@ const rawMarikaData = {
       startingAp: 164
     },
   },
-  heroId: 64,
-
 };
 
 const validation = validateCharacterData(rawMarikaData);

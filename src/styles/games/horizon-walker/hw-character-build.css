@@ -1266,3 +1266,65 @@
     padding: 0.25rem 0.8rem;
   }
 }
+
+/* Per-build trait containers (Build 1 / Build 2 side by side) */
+@scope (.horizon-walker-main) {
+  .trait-builds {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .trait-build-block {
+    background: var(--hw-bg-surface);
+    border: 1px solid var(--hw-border-gray);
+    border-radius: 8px;
+    padding: 1rem;
+    min-width: 0;
+  }
+
+  .trait-build-title {
+    margin: 0 0 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--hw-text-bright, inherit);
+  }
+
+  .trait-build-block .traits-list {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .trait-builds {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+/* Per-build stigma sections (Build 1 / Build 2 labels) */
+@scope (.horizon-walker-main) {
+  .stigma-build-section {
+    padding: 0 0 1.25rem;
+    margin: 0 0 1.25rem;
+    border-bottom: 1px solid var(--hw-border-gray);
+    min-width: 0;
+  }
+
+  .stigma-build-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .stigma-build-label {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--hw-text-bright, inherit);
+    background: var(--hw-bg-surface);
+    border: 1px solid var(--hw-border-gray);
+    border-radius: 6px;
+    padding: 0.25rem 0.7rem;
+    margin-bottom: 1rem;
+  }
+}

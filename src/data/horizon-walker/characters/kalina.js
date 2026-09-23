@@ -217,6 +217,8 @@ const rawKalinaData = {
         'Once per battle, survives a fatal blow with 1 HP and immediately gains {105,110,115,120,125,130,135,140,145,150} AP. Then restores {12,14,16,18,20,22,24,26,28,30}% of own HP.',
     },
   },
+  heroId: 4,
+
   rarityStages: {
     'EX': {
       strength: 10,
@@ -317,8 +319,6 @@ const rawKalinaData = {
       startingAp: 119
     },
   },
-  heroId: 4,
-
 };
 
 // Validate and sanitize the character data

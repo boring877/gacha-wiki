@@ -182,6 +182,8 @@ const rawGulamData = {
 
   // Weapon - Not available yet
   weapon: null,
+  heroId: 34,
+
   rarityStages: {
     'EX': {
       strength: 7,
@@ -282,8 +284,6 @@ const rawGulamData = {
       startingAp: 123
     },
   },
-  heroId: 34,
-
 };
 
 // Validate and sanitize the character data

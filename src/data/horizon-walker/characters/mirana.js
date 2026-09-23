@@ -68,7 +68,7 @@ const rawMiranaData = {
     aHeartThatFollowsBehind: { name: 'A Heart That Follows Behind', description: 'Activates the Level 1 Passive skill [A Heart That Follows Behind]. [A Heart That Follows Behind]: At the start of each round, sets AP</color> to 100 + 50% of [Radiance of the Oath] stacks.' },
     halfElf: { name: 'Half-Elf', description: 'Starting AP +8, AP Recovery +6%' },
     aKnightsOath: { name: 'A Knight\'s Oath', description: 'Activates the Level 1 passive skill [A Knight\'s Oath]. [A Knight\'s Oath]: At the start of battle, grants [Bound Master] to the ally with the highest INT. [Bound Master]: Mira and Mirana\'s skills are empowered based on the AP Cost of skills used by the holder of this effect.' },
-    interested: { name: 'Interested', description: 'Unlocks at Gift Affection Level 5: becomes active after reaching 2,000 affection points through gift-giving. Special trait with no listed characteristics.' },
+    interested: { name: 'Interested', description: 'Special trait with no listed characteristics.' },
   },
 
   skills: {
@@ -99,6 +99,47 @@ const rawMiranaData = {
       name: "Shattered Trail of Light",
       type: 'Skill',
       description: "Throws a spear of light at the enemy. Deals Immaterial DMG equal to N% of Magic ATK. For each stack of [Radiance of Oath] you possess, deals additional Immaterial DMG equal to {10.5,11,11.5,12,12.5,13,13.5,14,14.5,15}% of Magic ATK. Afterward, grants the holder of [Bound Master] 1 stack of [Arcane Bond] for each stack of [Radiance of Oath] you possess. [Radiance of Oath]: A stacking effect gained through [Master-Servant Bond]. [Bound Master]: An effect gained through [A Knight's Oath]. Mira and Mirana's skills are empowered based on the AP Cost of skills used by the holder of this effect. [Arcane Bond]: At the start of the [Bound Master] holder's turn, consumes all [Arcane Bond] stacks and grants AP equal to 40% of the stacks consumed.",
+    },
+  },
+  story: 'Mira and Mirana were twin half-blood sisters born of a human parent, a lineage looked down upon among the Highland Elves. With no companions in their childhood, the two sisters grew up relying upon no one but each other. Thus, when they were granted the honor of becoming Knights of the Golden Ratio - royal knights entrusted with guarding their Queen - the sisters rejoiced beyond measure. Yet before long, the Rift Crisis descended upon the world. Though the twins sought to fulfill their duties as knights, the Queen ultimately left them behind in order to shield them from the vengeance of the spirits. To the sisters, it felt as though they had once again been abandoned. Afterward, the twins volunteered to guard the rear of the refugee procession, eventually becoming separated from the Queen as they journeyed across Siberia and into Earth\'s lands. Following the path laid before them by duty alone, the sisters endured countless hardships before finally reaching the Federation. Now reunited with their Queen at last, Mira and Mirana have pledged themselves to the Eternal God, wishing only to serve at his side and guard him for all the years yet to come.',
+
+  heroId: 66,
+
+  weapon: {
+    name: "Chrysaor",
+    flavor: "Chrysaor is one of the ancient twin-bladed greatswords passed down exclusively to the royal guard knights entrusted with protecting the noble sovereigns of the Platinum Bough Kingdom at the closest of distances. Much like the immeasurably long history of the Highland Elves themselves, the origins of this sacred weapon have long faded beyond certainty. Yet even in the modern age, it retains the flawless brilliance of a treasured masterpiece, its gleaming edges remaining untouched by rust or decay. The tips of the blades resemble blooming flower buds, and at first glance do not appear especially sharp. This is said to be because the weapon's true power does not lie in its physical edge, but in the wielder's innate mana. \"Chrysaor\" itself is merely a codename. The original ancient elven name of the weapon proved too difficult for human tongues to pronounce, and so, with the wielder's permission, it was instead renamed after a term drawn from Earth's mythology. The meaning carried by the original elven name is said to be: \"The Keen Trail Across the Heavens.\"",
+    type: "Torturas",
+    rarity: 'EX',
+    image: "Weapon_FullIMG_Torturas_ForMirana",
+    imageOnR2: false,
+    maxLevel: 60,
+    stats: {
+      "Melee ATK (weapon)": "70",
+      "Magic ATK (weapon)": "70",
+      "Magic ATK (%)": "+49%",
+    },
+    uniqueSkills: {
+      unique: {
+        name: "Echo of Light",
+        type: 'Unique',
+        description: "At the start of each round, gains {1,2,3,4,5} additional Counterattack opportunities. Magic ATK increases by {20,25,30,35,40}%.",
+      },
+      signature: {
+        name: "Mirana Signature: Dawnlight's Resonance",
+        type: 'Signature',
+        description: "At the start of battle, gains 280 stacks of [Radiance of Oath] and increases Immaterial Boost by 40%. When Mira uses [Afterimage of Stars], its effects are also applied to the weapon holder.",
+      },
+    },
+    levelStats: {
+      "Melee ATK (weapon)": [11.0, 70.0],
+      "Magic ATK (weapon)": [11.0, 70.0],
+      "Magic ATK (%)": [7.7, 49.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "At the start of each round, gains", valuesByLevel: "1 / 2 / 3 / 4 / 5" },
+        { name: "Magic ATK increases", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+      ],
     },
   },
   rarityStages: {
@@ -199,47 +240,6 @@ const rawMiranaData = {
       evade: 153,
       apRecovery: 120,
       startingAp: 115
-    },
-  },
-  story: 'Mira and Mirana were twin half-blood sisters born of a human parent, a lineage looked down upon among the Highland Elves. With no companions in their childhood, the two sisters grew up relying upon no one but each other. Thus, when they were granted the honor of becoming Knights of the Golden Ratio - royal knights entrusted with guarding their Queen - the sisters rejoiced beyond measure. Yet before long, the Rift Crisis descended upon the world. Though the twins sought to fulfill their duties as knights, the Queen ultimately left them behind in order to shield them from the vengeance of the spirits. To the sisters, it felt as though they had once again been abandoned. Afterward, the twins volunteered to guard the rear of the refugee procession, eventually becoming separated from the Queen as they journeyed across Siberia and into Earth\'s lands. Following the path laid before them by duty alone, the sisters endured countless hardships before finally reaching the Federation. Now reunited with their Queen at last, Mira and Mirana have pledged themselves to the Eternal God, wishing only to serve at his side and guard him for all the years yet to come.',
-
-  heroId: 66,
-
-  weapon: {
-    name: "Chrysaor",
-    flavor: "Chrysaor is one of the ancient twin-bladed greatswords passed down exclusively to the royal guard knights entrusted with protecting the noble sovereigns of the Platinum Bough Kingdom at the closest of distances. Much like the immeasurably long history of the Highland Elves themselves, the origins of this sacred weapon have long faded beyond certainty. Yet even in the modern age, it retains the flawless brilliance of a treasured masterpiece, its gleaming edges remaining untouched by rust or decay. The tips of the blades resemble blooming flower buds, and at first glance do not appear especially sharp. This is said to be because the weapon's true power does not lie in its physical edge, but in the wielder's innate mana. \"Chrysaor\" itself is merely a codename. The original ancient elven name of the weapon proved too difficult for human tongues to pronounce, and so, with the wielder's permission, it was instead renamed after a term drawn from Earth's mythology. The meaning carried by the original elven name is said to be: \"The Keen Trail Across the Heavens.\"",
-    type: "Torturas",
-    rarity: 'EX',
-    image: "Weapon_FullIMG_Torturas_ForMirana",
-    imageOnR2: false,
-    maxLevel: 60,
-    stats: {
-      "Melee ATK (weapon)": "70",
-      "Magic ATK (weapon)": "70",
-      "Magic ATK (%)": "+49%",
-    },
-    uniqueSkills: {
-      unique: {
-        name: "Echo of Light",
-        type: 'Unique',
-        description: "At the start of each round, gains {1,2,3,4,5} additional Counterattack opportunities. Magic ATK increases by {20,25,30,35,40}%.",
-      },
-      signature: {
-        name: "Mirana Signature: Dawnlight's Resonance",
-        type: 'Signature',
-        description: "At the start of battle, gains 280 stacks of [Radiance of Oath] and increases Immaterial Boost by 40%. When Mira uses [Afterimage of Stars], its effects are also applied to the weapon holder.",
-      },
-    },
-    levelStats: {
-      "Melee ATK (weapon)": [11.0, 70.0],
-      "Magic ATK (weapon)": [11.0, 70.0],
-      "Magic ATK (%)": [7.7, 49.0],
-    },
-    exLevels: {
-      effects: [
-        { name: "At the start of each round, gains", valuesByLevel: "1 / 2 / 3 / 4 / 5" },
-        { name: "Magic ATK increases", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
-      ],
     },
   },
 };

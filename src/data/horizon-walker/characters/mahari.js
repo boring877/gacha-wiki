@@ -222,6 +222,8 @@ const rawMahariData = {
       ],
     },
   },
+  heroId: 32,
+
   rarityStages: {
     'EX': {
       strength: 8,
@@ -322,8 +324,6 @@ const rawMahariData = {
       startingAp: 127
     },
   },
-  heroId: 32,
-
 };
 
 // Validate and sanitize the character data

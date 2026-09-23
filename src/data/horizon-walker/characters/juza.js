@@ -255,6 +255,106 @@ const rawJuzaData = {
 
  heroId: 68,
 
+  rarityStages: {
+    'EX': {
+      strength: 12,
+      technic: 6,
+      intelligence: 6,
+      vitality: 17,
+      agility: 7,
+      maxHp: 1044,
+      meleeAtk: 161,
+      rangedAtk: 80,
+      magicAtk: 79,
+      evade: 89,
+      apRecovery: 101,
+      startingAp: 116
+    },
+    'EX 1': {
+      strength: 12,
+      technic: 6,
+      intelligence: 6,
+      vitality: 18,
+      agility: 7,
+      maxHp: 1105,
+      meleeAtk: 161,
+      rangedAtk: 80,
+      magicAtk: 79,
+      evade: 89,
+      apRecovery: 101,
+      startingAp: 116
+    },
+    'EX 2': {
+      strength: 12,
+      technic: 6,
+      intelligence: 6,
+      vitality: 19,
+      agility: 7,
+      maxHp: 1167,
+      meleeAtk: 161,
+      rangedAtk: 80,
+      magicAtk: 79,
+      evade: 89,
+      apRecovery: 101,
+      startingAp: 116
+    },
+    'EX 3': {
+      strength: 12,
+      technic: 6,
+      intelligence: 6,
+      vitality: 20,
+      agility: 7,
+      maxHp: 1228,
+      meleeAtk: 161,
+      rangedAtk: 80,
+      magicAtk: 79,
+      evade: 89,
+      apRecovery: 101,
+      startingAp: 116
+    },
+    'EX 4': {
+      strength: 14,
+      technic: 6,
+      intelligence: 6,
+      vitality: 20,
+      agility: 7,
+      maxHp: 1228,
+      meleeAtk: 188,
+      rangedAtk: 80,
+      magicAtk: 79,
+      evade: 89,
+      apRecovery: 101,
+      startingAp: 116
+    },
+    'EX 5': {
+      strength: 14,
+      technic: 6,
+      intelligence: 6,
+      vitality: 20,
+      agility: 8,
+      maxHp: 1228,
+      meleeAtk: 188,
+      rangedAtk: 80,
+      magicAtk: 79,
+      evade: 102,
+      apRecovery: 104,
+      startingAp: 119
+    },
+    'EX 6': {
+      strength: 14,
+      technic: 6,
+      intelligence: 6,
+      vitality: 22,
+      agility: 8,
+      maxHp: 1351,
+      meleeAtk: 188,
+      rangedAtk: 80,
+      magicAtk: 79,
+      evade: 102,
+      apRecovery: 104,
+      startingAp: 119
+    },
+  },
 };
 
 // Sanitize and validate the character data

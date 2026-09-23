@@ -248,6 +248,8 @@ const rawHeadlessKnightData = {
       ],
     },
   },
+  heroId: 51,
+
   rarityStages: {
     'EX': {
       strength: 15,
@@ -348,8 +350,6 @@ const rawHeadlessKnightData = {
       startingAp: 113
     },
   },
-  heroId: 51,
-
 };
 
 // Validate and sanitize the character data

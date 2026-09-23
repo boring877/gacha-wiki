@@ -164,6 +164,43 @@ const rawNonohaData = {
 
   // Weapon - Not yet released in game
   weapon: null,
+  heroId: 40,
+
+  weapon: {
+    name: "Whispering Breeze",
+    flavor: "Identifying why a spirit chooses an object is never simple. Some are drawn to relics rich with history, others settle for reasons known only to them. Bound spirits drift between the seen and unseen - resting, wandering, observing. And on rare occasions, fate guides them to someone whose soul resonates with theirs… and they offer their strength in return.",
+    type: "Arcane Orb",
+    rarity: 'EX',
+    image: "Weapon_FullIMG_ArcaneBall_ForNonoha",
+    imageOnR2: true,
+    maxLevel: 60,
+    stats: {
+      "Magic ATK (weapon)": "105",
+      "Magic ATK (%)": "+21%",
+    },
+    uniqueSkills: {
+      unique: {
+        name: "Call of the Skyweave",
+        type: 'Unique',
+        description: "During battle, increases Magic ATK by {20,25,30,35,40}%. At the end of a turn in which a Support skill is used, increases all allies' SPD by {40,44,48,52,56}% for 2 rounds. Can stack up to 2 times.",
+      },
+      signature: {
+        name: "Nonoha Signature: Endless Wings",
+        type: 'Signature',
+        description: "At the start of battle, grants all allies except the user the [Source of Wind] effect. If the user becomes incapacitated, [Source of Wind] is removed from all allies. Once per battle, the following effect triggers: If an ally with [Source of Wind] ends their turn with 30% HP or less, they gain a Shield equal to 50% of their Max HP. This Shield lasts until the start of that ally's next turn. - [Source of Wind]: At the start of the holder's turn, if their SPD exceeds 200, increases Elemental Boost by 1% for every 10 SPD above 200, up to a maximum of 40%. If the holder attacks the same enemy twice during their turn, after the turn ends, deals Fixed DMG equal to half of the holder's total ATK to that enemy. If the holder's SPD exceeds 200, this Fixed DMG is increased by 1% for every 2 SPD above 200, up to a maximum increase of 200%.",
+      },
+    },
+    levelStats: {
+      "Magic ATK (weapon)": [16.5, 105.0],
+      "Magic ATK (%)": [3.3, 21.0],
+    },
+    exLevels: {
+      effects: [
+        { name: "During battle, increases Magic ATK", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
+        { name: "At the end of a turn in which a Support skill is used, increases all allies' SPD", valuesByLevel: "40% / 44% / 48% / 52% / 56%" },
+      ],
+    },
+  },
   rarityStages: {
     'EX': {
       strength: 4,
@@ -262,43 +299,6 @@ const rawNonohaData = {
       evade: 192,
       apRecovery: 128,
       startingAp: 137
-    },
-  },
-  heroId: 40,
-
-  weapon: {
-    name: "Whispering Breeze",
-    flavor: "Identifying why a spirit chooses an object is never simple. Some are drawn to relics rich with history, others settle for reasons known only to them. Bound spirits drift between the seen and unseen - resting, wandering, observing. And on rare occasions, fate guides them to someone whose soul resonates with theirs… and they offer their strength in return.",
-    type: "Arcane Orb",
-    rarity: 'EX',
-    image: "Weapon_FullIMG_ArcaneBall_ForNonoha",
-    imageOnR2: true,
-    maxLevel: 60,
-    stats: {
-      "Magic ATK (weapon)": "105",
-      "Magic ATK (%)": "+21%",
-    },
-    uniqueSkills: {
-      unique: {
-        name: "Call of the Skyweave",
-        type: 'Unique',
-        description: "During battle, increases Magic ATK by {20,25,30,35,40}%. At the end of a turn in which a Support skill is used, increases all allies' SPD by {40,44,48,52,56}% for 2 rounds. Can stack up to 2 times.",
-      },
-      signature: {
-        name: "Nonoha Signature: Endless Wings",
-        type: 'Signature',
-        description: "At the start of battle, grants all allies except the user the [Source of Wind] effect. If the user becomes incapacitated, [Source of Wind] is removed from all allies. Once per battle, the following effect triggers: If an ally with [Source of Wind] ends their turn with 30% HP or less, they gain a Shield equal to 50% of their Max HP. This Shield lasts until the start of that ally's next turn. - [Source of Wind]: At the start of the holder's turn, if their SPD exceeds 200, increases Elemental Boost by 1% for every 10 SPD above 200, up to a maximum of 40%. If the holder attacks the same enemy twice during their turn, after the turn ends, deals Fixed DMG equal to half of the holder's total ATK to that enemy. If the holder's SPD exceeds 200, this Fixed DMG is increased by 1% for every 2 SPD above 200, up to a maximum increase of 200%.",
-      },
-    },
-    levelStats: {
-      "Magic ATK (weapon)": [16.5, 105.0],
-      "Magic ATK (%)": [3.3, 21.0],
-    },
-    exLevels: {
-      effects: [
-        { name: "During battle, increases Magic ATK", valuesByLevel: "20% / 25% / 30% / 35% / 40%" },
-        { name: "At the end of a turn in which a Support skill is used, increases all allies' SPD", valuesByLevel: "40% / 44% / 48% / 52% / 56%" },
-      ],
     },
   },
 };

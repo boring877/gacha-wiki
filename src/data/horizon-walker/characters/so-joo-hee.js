@@ -220,6 +220,8 @@ const rawSoJooHeeData = {
       ],
     },
   },
+  heroId: 29,
+
   rarityStages: {
     'EX': {
       strength: 9,
@@ -320,8 +322,6 @@ const rawSoJooHeeData = {
       startingAp: 109
     },
   },
-  heroId: 29,
-
 };
 
 // Validate and sanitize the character data

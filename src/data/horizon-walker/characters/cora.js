@@ -217,6 +217,8 @@ const rawCoraData = {
       ],
     },
   },
+  heroId: 45,
+
   rarityStages: {
     'EX': {
       strength: 5,
@@ -317,8 +319,6 @@ const rawCoraData = {
       startingAp: 117
     },
   },
-  heroId: 45,
-
 };
 
 // Validate and sanitize the character data
