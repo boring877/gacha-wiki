@@ -255,6 +255,17 @@ const events = Object.keys(EVENT_META)
       types are trades, gambles or gifts, and gamble payouts are decided per run.
     </p>
 
+    <div class="ascension-search" role="search" aria-label="Search quiz questions">
+      <input
+        type="search"
+        class="ascension-search-input"
+        id="ascension-search-input"
+        placeholder="Search by name or question: Portia, Beatrixa, Bernina, Virigia..."
+        aria-label="Search by character name or question"
+        autocomplete="off"
+      />
+    </div>
+
     {
       events.map((event) => (
         <section class="ascension-event" aria-label={`Event ${event.id}: ${event.title}`}>
@@ -266,8 +277,12 @@ const events = Object.keys(EVENT_META)
             <span class="ascension-event-reward">{event.reward}</span>
           </header>
           <div class="qa-list">
-            {event.questions.map((q) => (
-              <article class="qa-card">
+            {event.questions.map((q) => {
+              const searchText = [event.id, event.title, q.character, q.question, ...q.options]
+                .join(' ')
+                .toLowerCase();
+              return (
+              <article class="qa-card" data-search={searchText}>
                 <header class="qa-header">
                   <img
                     class="qa-avatar"
@@ -291,13 +306,25 @@ const events = Object.keys(EVENT_META)
                   ))}
                 </div>
               </article>
-            ))}
+              );
+            })}
           </div>
         </section>
       ))
     }
 
-    <section class="ascension-other" aria-label="Other Choice Domain events">
+    <div class="ascension-no-results" id="ascension-no-results" style="display: none;">
+      <p class="ascension-no-results-title">No matches found</p>
+      <p class="ascension-no-results-hint">
+        Try a character name like Portia, or a keyword from a question.
+      </p>
+    </div>
+
+    <section
+      class="ascension-other"
+      id="ascension-other"
+      aria-label="Other Choice Domain events"
+    >
       <h2 class="ascension-other-title">Every other Choice Domain event</h2>
       <p class="ascension-other-intro">
         Quizzes are only 3 of the 28 Choice Domain events (101 to 128). Here is the rest, grouped by
@@ -308,15 +335,80 @@ const events = Object.keys(EVENT_META)
           <h3 class="ascension-event-group-title">{group.group}</h3>
           <p class="ascension-event-group-note">{group.note}</p>
           <ul class="ascension-event-list">
-            {group.events.map((e) => (
-              <li class="ascension-event-item">
-                <span class="ascension-event-id">Event {e.id}</span>
-                <span class="ascension-event-label">{e.label}</span>
-              </li>
-            ))}
+            {group.events.map((e) => {
+              const itemSearch = [e.id, e.label, group.group].join(' ').toLowerCase();
+              return (
+                <li class="ascension-event-item" data-search={itemSearch}>
+                  <span class="ascension-event-id">Event {e.id}</span>
+                  <span class="ascension-event-label">{e.label}</span>
+                </li>
+              );
+            })}
           </ul>
         </div>
       ))}
     </section>
   </div>
 </AscensionQALayout>
+
+<script>
+  // Ascension Q&A live search: filters quiz cards and Choice Domain events by name or text
+  function initializeAscensionSearch() {
+    const searchInput = document.getElementById('ascension-search-input') as HTMLInputElement | null;
+    const noResults = document.getElementById('ascension-no-results');
+    const otherSection = document.getElementById('ascension-other');
+    if (!searchInput || !noResults || !otherSection) return;
+
+    const eventSections = Array.from(
+      document.querySelectorAll<HTMLElement>('.ascension-event')
+    );
+    const otherGroups = Array.from(
+      document.querySelectorAll<HTMLElement>('.ascension-event-group')
+    );
+
+    function applyFilters() {
+      const term = searchInput.value.toLowerCase().trim();
+      let visibleCount = 0;
+
+      eventSections.forEach((section) => {
+        let sectionVisible = 0;
+        section.querySelectorAll<HTMLElement>('.qa-card').forEach((card) => {
+          const show = term === '' || (card.dataset.search || '').includes(term);
+          card.style.display = show ? '' : 'none';
+          if (show) {
+            sectionVisible++;
+            visibleCount++;
+          }
+        });
+        section.style.display = sectionVisible > 0 ? '' : 'none';
+      });
+
+      let otherVisible = 0;
+      otherGroups.forEach((group) => {
+        let groupVisible = 0;
+        group.querySelectorAll<HTMLElement>('.ascension-event-item').forEach((item) => {
+          const show = term === '' || (item.dataset.search || '').includes(term);
+          item.style.display = show ? '' : 'none';
+          if (show) {
+            groupVisible++;
+            otherVisible++;
+          }
+        });
+        group.style.display = groupVisible > 0 ? '' : 'none';
+      });
+      otherSection.style.display = otherVisible > 0 ? '' : 'none';
+      visibleCount += otherVisible;
+
+      noResults.style.display = visibleCount === 0 ? '' : 'none';
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+    applyFilters();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeAscensionSearch);
+  } else {
+    initializeAscensionSearch();
+  }
+</script>
