@@ -38,13 +38,14 @@ const items = [...tickerItems, ...getTickerUpdates()];
       </div>
     </div>
 
-    <!-- Live $GW stats chip, pinned right. Price stays visible once loaded;
-         the other stats (24h change / market cap / volume / liquidity) cycle
-         next to it every few seconds. Hidden until data loads (DexScreener
-         free API, see the script below). -->
+    <!-- Live $GW stats chip, pinned right. Price and the 24h change stay
+         visible once loaded; the other stats (1h change / market cap /
+         volume / liquidity) cycle next to them every few seconds. Hidden
+         until data loads (DexScreener free API, see the script below). -->
     <span class="ticker-price" id="gw-price-chip" hidden>
       <span class="ticker-price-label">$GW</span>
       <span class="ticker-price-stat c-amber" id="gw-price" hidden></span>
+      <span class="ticker-price-stat" id="gw-change" hidden></span>
       <span class="ticker-price-stat" id="gw-stat"></span>
     </span>
   </div>
@@ -275,9 +276,10 @@ const items = [...tickerItems, ...getTickerUpdates()];
 
 <script>
   // Live $GW stats for the pinned right chip, fetched from DexScreener's
-  // free public API (no key, Robinhood Chain 4663 supported). The chip
-  // CYCLES through several metrics every few seconds: price, 24h change,
-  // market cap, volume, and liquidity in turn, each color-coded.
+  // free public API (no key, Robinhood Chain 4663 supported). Price and the
+  // 24h change are ALWAYS visible side by side; the remaining metrics (1h
+  // change, market cap, volume, liquidity) cycle in the third slot every few
+  // seconds, each color-coded.
   // Cached in sessionStorage for 60s so navigating between pages doesn't
   // spam the API (free tier = 60 req/min).
   const GW_CA_KEY = '0x50bE7832849EFEdB15611799074FcC409522f27A';
@@ -343,14 +345,8 @@ const items = [...tickerItems, ...getTickerUpdates()];
     colorClass: string;
   }
 
-  function buildStats(s: Stats): { price: StatItem | null; rest: StatItem[] } {
+  function buildStats(s: Stats): { price: StatItem | null; change: StatItem | null; rest: StatItem[] } {
     const rest: StatItem[] = [];
-    if (s.change24h != null) {
-      rest.push({
-        text: `24h ${fmtPct(s.change24h)}`,
-        colorClass: s.change24h >= 0 ? 'c-up' : 'c-down',
-      });
-    }
     if (s.change1h != null) {
       rest.push({
         text: `1h ${fmtPct(s.change1h)}`,
@@ -362,6 +358,13 @@ const items = [...tickerItems, ...getTickerUpdates()];
     if (s.liquidity != null) rest.push({ text: `Liq ${fmtUsd(s.liquidity)}`, colorClass: 'c-muted' });
     return {
       price: s.price != null ? { text: fmtPrice(s.price), colorClass: 'c-amber' } : null,
+      change:
+        s.change24h != null
+          ? {
+              text: `24h ${fmtPct(s.change24h)}`,
+              colorClass: s.change24h >= 0 ? 'c-up' : 'c-down',
+            }
+          : null,
       rest,
     };
   }
@@ -370,18 +373,43 @@ const items = [...tickerItems, ...getTickerUpdates()];
 
   let rotateTimer: ReturnType<typeof setInterval> | undefined;
 
-  function startCycling({ price, rest }: { price: StatItem | null; rest: StatItem[] }) {
+  function startCycling({
+    price,
+    change,
+    rest,
+  }: {
+    price: StatItem | null;
+    change: StatItem | null;
+    rest: StatItem[];
+  }) {
     const chip = document.getElementById('gw-price-chip');
     const statEl = document.getElementById('gw-stat');
     const priceEl = document.getElementById('gw-price');
+    const changeEl = document.getElementById('gw-change');
     if (!chip || !statEl) return;
 
-    // Price gets its own always-visible slot; the other stats cycle.
-    const cycle = priceEl && price ? rest : [...(price ? [price] : []), ...rest];
-    if (price && priceEl) {
-      priceEl.textContent = price.text;
-      priceEl.hidden = false;
+    // Price + 24h change get their own always-visible slots; if either's
+    // element is somehow missing from the page it falls into the cycle
+    // instead so the value is never lost.
+    const cycle: StatItem[] = [];
+    if (price) {
+      if (priceEl) {
+        priceEl.textContent = price.text;
+        priceEl.hidden = false;
+      } else {
+        cycle.push(price);
+      }
     }
+    if (change) {
+      if (changeEl) {
+        changeEl.textContent = change.text;
+        changeEl.className = `ticker-price-stat ${change.colorClass}`;
+        changeEl.hidden = false;
+      } else {
+        cycle.push(change);
+      }
+    }
+    cycle.push(...rest);
     if (cycle.length === 0) return;
 
     chip.hidden = false;
