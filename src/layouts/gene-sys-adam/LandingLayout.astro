@@ -21,9 +21,10 @@ export interface Props {
   heroImage?: string;
   crumbName?: string;
   seoKeywords?: readonly string[];
+  ambientVideo?: boolean;
 }
 
-const { title, description, gameTitle, heroImage, crumbName, seoKeywords } = Astro.props;
+const { title, description, gameTitle, heroImage, crumbName, seoKeywords, ambientVideo = false } = Astro.props;
 const seoTitle = `${title} | Gene-Sys: Adam Wiki`;
 const seoDescription =
   description ||
@@ -57,6 +58,17 @@ const seoDescription =
 
       <div class="gsa-container">
         <main class="gsa-main" id="main-content">
+          {/* Ambient landing video lives HERE, not in the page slot: it is
+              position:absolute with top:0, and .gsa-content-area is
+              position:relative, so slot placement would anchor it below the
+              hero instead of at the page top. */}
+          {ambientVideo && (
+            <div class="gsa-bg-video-wrap" aria-hidden="true">
+              <video class="gsa-bg-video" autoplay muted loop playsinline preload="auto">
+                <source src="/videos/gsa-hero.mp4" type="video/mp4" />
+              </video>
+            </div>
+          )}
           {heroImage && gameTitle && (
             <section class="gsa-hero-section">
               <div class="gsa-hero-image-container">

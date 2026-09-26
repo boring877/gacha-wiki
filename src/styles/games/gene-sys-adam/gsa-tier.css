@@ -263,3 +263,38 @@ a.gsa-tier-card:active {
   height: 18px;
   margin: 0 auto;
 }
+
+/* Rarity tabs (SSR / SR): each rarity gets its own scale, since dupes gate
+   class-ups and invested SRs are not competing with base SSRs. Flat buttons,
+   active = accent fill, no hover effects. */
+.gsa-tier-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1.75rem;
+}
+.gsa-tier-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gsa-bg-tertiary);
+  border: 1px solid var(--gsa-border);
+  border-radius: 9px;
+  color: var(--gsa-text);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 9px 22px;
+  cursor: pointer;
+}
+.gsa-tier-tab.active {
+  background: var(--gsa-accent);
+  border-color: var(--gsa-accent);
+  color: #fff;
+}
+.gsa-tier-tab-count {
+  font-size: 0.72rem;
+  font-weight: 700;
+  opacity: 0.75;
+  font-variant-numeric: tabular-nums;
+}

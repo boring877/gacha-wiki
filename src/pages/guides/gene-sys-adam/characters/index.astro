@@ -4,7 +4,6 @@
 // game's own library order from RoleInfoData.battlePosition).
 import GSALayout from '../../../../layouts/gene-sys-adam/LandingLayout.astro';
 import { gsaCharacters } from '../../../../data/gene-sys-adam/characters.js';
-import GSAElementCard from '../../../../components/gene-sys-adam/GSAElementCard.astro';
 import '../../../../styles/games/gene-sys-adam/gsa-common.css';
 import '../../../../styles/games/gene-sys-adam/gsa-characters.css';
 
@@ -20,13 +19,10 @@ const jobs = JOB_ORDER.filter(j => characters.some(c => c.job?.name === j));
 
 <GSALayout
   title="Character Database"
-  description={`Complete character database for Gene-Sys: Adam. Browse all ${characters.length} characters with elements, jobs, gacha availability, profiles, stats and skills.`}
+  description={`Complete character database for Gene-Sys: Adam. Browse all ${characters.length} characters with elements, combat styles, Summon availability, profiles, stats and skills.`}
   gameTitle="Characters"
   crumbName="Characters"
 >
-  <div class="gsa-elem-corner">
-    <GSAElementCard />
-  </div>
   <div class="gsa-content-section">
     <div class="gsa-toolbar">
       <input type="text" class="gsa-search" placeholder="Search name, title or epithet..." id="gsa-search" />
@@ -34,7 +30,7 @@ const jobs = JOB_ORDER.filter(j => characters.some(c => c.job?.name === j));
     </div>
     <div class="gsa-toolbar gsa-toolbar-filters">
       <button class="gsa-filter-btn active" data-filter="all">All</button>
-      <button class="gsa-filter-btn" data-filter="gacha">In Gacha</button>
+      <button class="gsa-filter-btn" data-filter="gacha">In Summons</button>
       {ELEMENT_ORDER.map(n => elByName.get(n) && (
         <button class="gsa-filter-btn" data-filter={n.toLowerCase()}>
           <img src={elByName.get(n).icon} alt="" width="14" height="14" loading="lazy" /> {n}

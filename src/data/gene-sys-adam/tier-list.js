@@ -115,8 +115,6 @@ export const GSA_TIER_PLACEMENTS = {
   'leng-zhen': { tier: 'S', rarity: 'SSR', reason: 'A second energy battery with Freeze attached: her active injects +2 team EN per hit (+2.5 awakened, on her normal attack too), the loop lands three Freeze M rolls every 6s, and the ultimate is a 900% three-hit with Freeze Hit Rate Up 35% and a freeze on every strike. Awakened passive adds party Skill Damage Up 12.5%. Random targeting keeps the numbers unfocused, but Freeze feeds the Ice Break core.' },
 };
 
-const RARITY_RANK = { SSR: 0, SR: 1 };
-
 const placementOf = slug =>
   GSA_TIER_PLACEMENTS[slug] || {
     tier: 'C',
@@ -124,32 +122,56 @@ const placementOf = slug =>
     reason: 'No written assessment yet. Defaulted to C.',
   };
 
-// Job sections -> tier rows -> compact character cards (reasons stay here in
-// the data file, they are not rendered on the page, matching the majo list).
-export const gsaTierByJob = GSA_JOB_SECTIONS.concat([{
-  // characters with no job data yet would land here
-  job: 'Unclassified',
-  zh: '未分類',
-}]).map(({ job, zh, icon }) => ({
-  job,
-  zh,
-  icon,
-  tiers: GSA_TIERS.map(({ tier, color }) => ({
-    tier,
-    color,
-    characters: gsaCharacters
-      .filter(c => (c.job ? c.job.name === job : job === 'Unclassified') && placementOf(c.slug).tier === tier)
-      .map(c => ({ ...c, placement: placementOf(c.slug) }))
-      .sort((a, b) =>
-        ((RARITY_RANK[placementOf(a.slug).rarity] ?? 9) - (RARITY_RANK[placementOf(b.slug).rarity] ?? 9)) ||
-        a.name.localeCompare(b.name)
-      ),
-  })).filter(t => t.characters.length > 0),
-})).filter(g => g.tiers.length > 0);
+// Job sections -> tier rows -> compact character cards, SPLIT BY RARITY into
+// SSR / SR tab groups: each tab rates one rarity against itself, since dupes
+// gate class-ups and an invested SR is not competing with a base SSR. The
+// reasons stay here in the data file, they are not rendered on the page,
+// matching the majo list. Unplaced characters default to C on the SSR tab
+// (the dev warning below flags them).
+//
+// RELEASE GATE: only units with pulled icon art are listed. This game
+// preloads future kits and draw-table buckets into the client before the
+// server enables them, and a unit's art bundle only downloads once it is
+// actually encounterable in game, so "has art" = "released". Artless units
+// (qing-yin, leng-zhen, elena, victoria, connie, belle-clumsy-cowgirl as of
+// the September 22 data pull) stay off the list and return automatically
+// once their bundles are pulled and uploaded.
+const isReleased = c => Boolean(c.icon);
+
+export const gsaTierTabs = ['SSR', 'SR'].map(rarity => ({
+  rarity,
+  jobs: GSA_JOB_SECTIONS.concat([{
+    // characters with no job data yet would land here
+    job: 'Unclassified',
+    zh: '未分類',
+  }]).map(({ job, zh, icon }) => ({
+    job,
+    zh,
+    icon,
+    tiers: GSA_TIERS.map(({ tier, color }) => ({
+      tier,
+      color,
+      characters: gsaCharacters
+        .filter(c => isReleased(c)
+          && (c.job ? c.job.name === job : job === 'Unclassified')
+          && (placementOf(c.slug).rarity || 'SSR') === rarity
+          && placementOf(c.slug).tier === tier)
+        .map(c => ({ ...c, placement: placementOf(c.slug) }))
+        .sort((a, b) => a.name.localeCompare(b.name)),
+    })).filter(t => t.characters.length > 0),
+  })).filter(g => g.tiers.length > 0),
+}));
+
+export const gsaTierTabCount = rarity =>
+  gsaCharacters.filter(c => isReleased(c) && (placementOf(c.slug).rarity || 'SSR') === rarity).length;
 
 if (import.meta.env.DEV) {
   const unplaced = gsaCharacters.filter(c => !GSA_TIER_PLACEMENTS[c.slug]);
   if (unplaced.length) {
     console.warn('[gsa-tier-list] characters without a placement (rendered as C):', unplaced.map(c => c.slug));
+  }
+  const artless = gsaCharacters.filter(c => !isReleased(c));
+  if (artless.length) {
+    console.warn('[gsa-tier-list] artless units skipped as not yet released:', artless.map(c => c.slug));
   }
 }

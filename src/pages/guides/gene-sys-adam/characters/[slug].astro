@@ -4,8 +4,7 @@
 import GSALayout from '../../../../layouts/gene-sys-adam/LandingLayout.astro';
 import { gsaCharacters, getGsaCharacter } from '../../../../data/gene-sys-adam/characters.js';
 import { gsaItems } from '../../../../data/gene-sys-adam/items.js';
-import { GSA_ELEMENT_MATCHUPS, GSA_ELEMENT_BONUS } from '../../../../data/gene-sys-adam/elements.js';
-import GSAElementCard from '../../../../components/gene-sys-adam/GSAElementCard.astro';
+import { gsaPropertyTypes } from '../../../../data/gene-sys-adam/property-types.js';
 import '../../../../styles/games/gene-sys-adam/gsa-common.css';
 import '../../../../styles/games/gene-sys-adam/gsa-characters.css';
 
@@ -20,59 +19,66 @@ if (!c) return Astro.redirect('/guides/gene-sys-adam/characters/');
 const profile = c.profile || {};
 const stats = c.stats || {};
 
-// Class Up (Transfer) material: each character's own Promotion Certificate,
-// item id = 200110000 + <cr number> (cr050 Amelie -> 200110050). The other
-// material slots (sigils) are bound at runtime and are not in the tables.
-const cert = (() => {
-  const n = parseInt(String(c.model || '').replace('cr', ''), 10);
-  if (!Number.isFinite(n)) return null;
-  return gsaItems.find(i => i.id === String(200110000 + n)) || null;
-})();
+// Potential stat block: every stat the character owns, straight from
+// RoleInfoData (percent fields are stored /100). Groups mirror the in-game
+// Stat Details panel order (RoleDisplayProperty ID map): DPS Rating, Defense
+// Rating, Status Rating, Special Rating. Zeros are hidden.
+const pct = v => `${Number(v) / 100}%`;
+// The game shows every row even at 0 (base values before gear and the other
+// sources), so zeros stay visible here too. Only the Status Rating
+// reductions, which no released character owns at nonzero, stay filtered.
+const statGroups = [
+  { group: 'DPS Rating', rows: [
+    ['Damage Boost %', '0'],
+    ['ACC %', stats.hitPer],
+    ['Crit %', stats.critPer],
+    ['Crit DMG %', stats.critAmpPer],
+    ['Block PEN %', stats.blkPenPer],
+    ['ATK Speed %', stats.atkHastePer],
+  ] },
+  { group: 'Defense Rating', rows: [
+    ['Evasion %', stats.ddgPer],
+    ['Crit Evasion %', stats.critRstPer],
+    ['Crit RES %', stats.critDmgRdcPer],
+    ['Block %', stats.blkPer],
+    ['DMG BLK %', stats.blkRdcPer],
+  ] },
+  { group: 'Status Rating', rows: [
+    ['Freeze RES %', stats.freezeHitRdcPer],
+    ['Burn RES %', stats.burnHitRdcPer],
+    ['Electrocute RES %', stats.shockHitRdcPer],
+    ['Petrify RES %', stats.stoneHitRdcPer],
+    ['Light RES %', stats.lightHitRdcPer],
+    ['Dark RES %', stats.darkHitRdcPer],
+  ] },
+  { group: 'Special Rating', rows: [
+    ['Critical Heal %', stats.healCritPer],
+    ['Critical Heal Bonus %', stats.healCritAmpPer],
+    ['Post-Wave HP Recovery %', stats.hpRcvPer],
+    ['Mana Amplification %', stats.manaAmpPer],
+    ['Cooldown Speed %', stats.cdHastePer],
+  ] },
+]
+  .map(g => ({
+    group: g.group,
+    rows: g.rows
+      .map(([label, value]) => [label, value == null || value === '' ? '0%' : pct(value)]),
+  }))
+  .filter(g => g.rows.length > 0);
+// Raw (per ten-thousand) rating rows for the live table: label -> base value.
+const ratingRows = statGroups.map(g => ({
+  group: g.group,
+  rows: g.rows.map(([label, value]) => [label, Number(value.replace('%', '')) * 100 || 0]),
+}));
+const basicTiles = [
+  ['Attack Range', stats.atkRange],
+  ['Basic Attack GCD', stats.normalAttackGCD ? `${Number(stats.normalAttackGCD) / 1000}s` : null],
+].filter(([label, value]) => value != null && value !== '');
+
 const resumeParas = profile.resumeParas || (profile.resume ? [profile.resume] : []);
 
-// Element matchup from RoleElementWeaknessData: what this character's element
-// beats (+30% damage dealt) and what beats it (-30% when attacking into it).
-const matchup = c.element ? GSA_ELEMENT_MATCHUPS[c.element.name] || null : null;
-const strongEl = matchup ? GSA_ELEMENT_MATCHUPS[matchup.strongVs] : null;
-const weakEl = matchup ? GSA_ELEMENT_MATCHUPS[matchup.weakVs] : null;
-const statTiles = [
-  ['Attack Range', stats.atkRange],
-  ['Normal Attack GCD', stats.normalAttackGCD ? `${Number(stats.normalAttackGCD) / 1000}s` : null],
-  ['Crit Rate', stats.critPer ? `${Number(stats.critPer) / 100}%` : null],
-  ['Crit Resist', stats.critRstPer ? `${Number(stats.critRstPer) / 100}%` : null],
-  ['Crit Amplification', stats.critAmpPer ? `${Number(stats.critAmpPer) / 100}%` : null],
-  ['Crit DMG Reduction', stats.critDmgRdcPer ? `${Number(stats.critDmgRdcPer) / 100}%` : null],
-  ['Hit Rate', stats.hitPer ? `${Number(stats.hitPer) / 100}%` : null],
-  ['Dodge Rate', stats.ddgPer ? `${Number(stats.ddgPer) / 100}%` : null],
-  ['Block Rate', stats.blkPer ? `${Number(stats.blkPer) / 100}%` : null],
-  ['Block Penetration', stats.blkPenPer ? `${Number(stats.blkPenPer) / 100}%` : null],
-  ['Block Reduction', stats.blkRdcPer ? `${Number(stats.blkRdcPer) / 100}%` : null],
-  ['Heal Crit Rate', stats.healCritPer ? `${Number(stats.healCritPer) / 100}%` : null],
-  ['Heal Crit Amplification', stats.healCritAmpPer ? `${Number(stats.healCritAmpPer) / 100}%` : null],
-  ['ATK Haste', stats.atkHastePer ? `${Number(stats.atkHastePer) / 100}%` : null],
-  ['CD Haste', stats.cdHastePer ? `${Number(stats.cdHastePer) / 100}%` : null],
-].filter(r => r[1] !== null && r[1] !== undefined && r[1] !== '' && Number(String(r[1]).replace('%', '').replace('s', '')) !== 0);
-
-// Star progression (SkillOpenStateData default row; skillOpenID is NULL for
-// every role, so this unlock ladder is the same for all characters).
-const starUnlocks = [
-  { star: 1, label: 'Loop skill', note: 'Third skill slot' },
-  { star: 2, label: 'Ultimate skill', note: 'Costs 3 EN' },
-  { star: 4, label: 'Passive 1', note: 'Fourth skill slot' },
-  { star: 6, label: 'Passive 2', note: 'Fifth skill slot' },
-  { star: 7, label: 'Passive 3 + SP star', note: 'Star Plus (over-limit) star' },
-];
-
-// Level switcher data: cumulative character EXP (RoleExpData) and per-skill
-// upgrade costs in gold (SkillUpgradeCostData), both straight from the tables.
-const levelData = [
-  { lv: 1, exp: 15, active: 6, loop: 6, p1: 7, p2: 7, awake: 8 },
-  { lv: 10, exp: 19260, active: 59, loop: 62, p1: 65, p2: 65, awake: 77 },
-  { lv: 20, exp: 176460, active: 237, loop: 249, p1: 261, p2: 261, awake: 308 },
-  { lv: 30, exp: 621660, active: 819, loop: 860, p1: 901, p2: 901, awake: 1065 },
-  { lv: 40, exp: 1504860, active: 3575, loop: 3754, p1: 3933, p2: 3933, awake: 4648 },
-  { lv: 50, exp: null, active: 9750, loop: 10238, p1: 10725, p2: 10725, awake: 12675 },
-];
+const tierStats = (c.tierStats || []).slice().sort((a, b) => a.tier - b.tier);
+const growth = c.growth || { rate: 1, hp: [0, 0, 0, 0, 0, 0], atk: [0, 0, 0, 0, 0, 0] };
 ---
 
 <GSALayout
@@ -101,7 +107,7 @@ const levelData = [
             </span>
           )}
           {c.job && (
-            <span class="gsa-chip gsa-chip-type" style={c.job.color ? `background:${c.job.color};color:#fff` : ''}>
+            <span class="gsa-chip gsa-chip-type">
               {c.job.icon && <img src={c.job.icon} alt={c.job.name} width="20" height="20" loading="lazy" />}
               {c.job.name}
             </span>
@@ -112,23 +118,8 @@ const levelData = [
               {c.element.name}
             </span>
           )}
-          {c.inGacha ? null : <span class="gsa-chip solid-muted">Not in gacha yet</span>}
+          {c.inGacha ? null : <span class="gsa-chip solid-muted">Not in Summons</span>}
         </div>
-        {matchup && strongEl && weakEl && (
-          <div class="gsa-elem-matchup">
-            <span class="gsa-chip gsa-elem-strong">
-              Strong vs <img src={strongEl.icon} alt={matchup.strongVs} width="16" height="16" loading="lazy" /> {matchup.strongVs}
-              <b>+{GSA_ELEMENT_BONUS}%</b>
-            </span>
-            <span class="gsa-chip gsa-elem-weak">
-              Weak vs <img src={weakEl.icon} alt={matchup.weakVs} width="16" height="16" loading="lazy" /> {matchup.weakVs}
-              <b>-{GSA_ELEMENT_BONUS}%</b>
-            </span>
-          </div>
-        )}
-      </div>
-      <div class="gsa-elem-side">
-        <GSAElementCard />
       </div>
     </div>
 
@@ -155,121 +146,208 @@ const levelData = [
       ) : null
     }
 
-    <div class="gsa-detail-section" id="gsa-stats-growth">
-      <h2>Stats and Growth</h2>
-
-      <div class="gsa-lv-switcher" id="gsa-lv-switcher">
-        {levelData.map((d, i) => (
-          <button class={`gsa-lv-btn${i === 0 ? ' active' : ''}`} data-lv={d.lv}>Lv {d.lv}</button>
-        ))}
-      </div>
-
-      <div class="gsa-lv-panel" id="gsa-lv-panel"></div>
-
-      <h3 class="gsa-sub-title">Base combat stats (fixed)</h3>
-      <p class="gsa-section-note" style="margin-top:-4px">
-        These rates do not change with level. Levels and stars raise HP and ATK
-        instead, but those growth values are assigned by the game at runtime and
-        are not in the data files, so they cannot be shown here.
-      </p>
-      <div class="gsa-stat-grid">
-        {statTiles.map(([label, value]) => (
-          <div class="gsa-stat-tile">
-            <span class="gsa-stat-value">{value}</span>
-            <span class="gsa-stat-label">{label}</span>
-          </div>
-        ))}
-      </div>
-
-      <h3 class="gsa-sub-title">Star unlocks (dupe system)</h3>
-      <p class="gsa-section-note" style="margin-top:-4px">
-        Stars come from pulling dupes of the character. Each star level unlocks
-        the skills below on top of stat gains.
-      </p>
-      <div class="gsa-star-list">
-        {starUnlocks.map(u => (
-          <div class="gsa-star-row">
-            <span class="gsa-chip solid-gold">{u.star}★</span>
-            <span class="gsa-growth-label">{u.label}</span>
-            <span class="gsa-growth-note">{u.note}</span>
-          </div>
-        ))}
-      </div>
-
-      <h3 class="gsa-sub-title">Class Up materials</h3>
-      {cert ? (
-        <div class="gsa-classmat">
-          {cert.icon && <img src={cert.icon} alt="" width="40" height="40" loading="lazy" />}
-          <div>
-            <p class="gsa-classmat-name">{cert.name}</p>
-            <p class="gsa-section-note">
-              Raising Class tiers costs farmed materials. This character's own
-              certificate is the rare drop of their trial stage; the shared
-              sigil materials are bound by the game at runtime and are not in
-              the data tables.
-            </p>
-          </div>
-        </div>
-      ) : (
-        <p class="gsa-section-note">Class Up materials for this character are not in the item tables yet.</p>
-      )}
-
-      <h3 class="gsa-sub-title">System caps</h3>
-      <div class="gsa-facts-list">
-        <div class="gsa-facts-row"><span>Level cap</span><b>Lv 50</b></div>
-        <div class="gsa-facts-row"><span>Skill levels</span><b>Lv 1 to 99 per skill</b></div>
-        <div class="gsa-facts-row"><span>Ranks</span><b>Rank 0 to 9 per character</b></div>
-        <div class="gsa-facts-row"><span>Stars</span><b>Up to 6★, plus the SP (7th) star</b></div>
-        <div class="gsa-facts-row"><span>Ultimate</span><b>Upgrades passives and loop skills (+ variants)</b></div>
-      </div>
-
+    <div class="gsa-detail-section" id="gsa-stats">
+      <h2>Stats</h2>
       <p class="gsa-section-note">
-        The level switcher shows, per character level: the total EXP needed to
-        reach it, and the gold cost to upgrade one skill to that level (each
-        skill type has its own cost). EXP values come from the game's level
-        table, costs from its skill upgrade table.
+        Pick a Level, Class tier, Rank and Affection state to see every stat
+        this character gets. Core values come from the game's own stat data:
+        the base cell of the tier plus a fixed per-level growth scaled by
+        Rank, multiplied by the character's rarity rate, with the Affection
+        track applied. Armament, Bond and the Element Altar stack on top of
+        these in-game.
       </p>
+
+      <div class="gsa-calc" id="gsa-calc">
+        <div class="gsa-calc-controls">
+          <label>
+            Level
+            <span class="gsa-num">
+              <input type="number" id="gsa-calc-lv" min="1" max="50" value="50" />
+              <button type="button" class="gsa-num-up" aria-label="Increase level">&#9650;</button>
+              <button type="button" class="gsa-num-down" aria-label="Decrease level">&#9660;</button>
+            </span>
+          </label>
+          <label>
+            Class Tier
+            <select id="gsa-calc-tier">
+              {tierStats.map(t => (
+                <option value={t.tier} selected={t.tier === tierStats.length}>Tier {t.tier}</option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Rank
+            <select id="gsa-calc-star">
+              {[1, 2, 3, 4, 5, 6].map(s => (
+                <option value={s} selected={s === 6}>{s} stars</option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Affection
+            <select id="gsa-calc-aff">
+              <option value="0">Off</option>
+              <option value="1" selected>Max</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <p class="gsa-section-note" style="margin-top:-2px">
+        Class tier advance gates: Lv 2, 10, 20, 25, 30, 40, 40, 50, 50 with
+        Rank 1, 1, 2, 3, 4, 5, 6, 6, 6, plus this character's certificate and
+        sigils. Level cap is Lv 50 at every tier.
+      </p>
+
+      <table class="gsa-stats-table" id="gsa-allstats">
+        <tbody>
+          <tr class="gsa-stats-group"><th colSpan={2}>Core</th></tr>
+          <tr>
+            <th scope="row"><span>HP</span>{gsaPropertyTypes['HP'] && <small class="gsa-stat-desc">{gsaPropertyTypes['HP']}</small>}</th>
+            <td id="gsa-row-HP">-</td>
+          </tr>
+          <tr>
+            <th scope="row"><span>ATK</span>{gsaPropertyTypes['ATK'] && <small class="gsa-stat-desc">{gsaPropertyTypes['ATK']}</small>}</th>
+            <td id="gsa-row-ATK">-</td>
+          </tr>
+          {basicTiles.length > 0 && (
+            <tr class="gsa-stats-group"><th colSpan={2}>Basic</th></tr>
+          )}
+          {basicTiles.map(([label, value]) => (
+            <tr>
+              <th scope="row">{label}</th>
+              <td>{value}</td>
+            </tr>
+          ))}
+          {ratingRows.map(g => (
+            <>
+              <tr class="gsa-stats-group"><th colSpan={2}>{g.group}</th></tr>
+              {g.rows.map(([label, base]) => (
+                <tr>
+                  <th scope="row"><span>{label}</span>{gsaPropertyTypes[label] && <small class="gsa-stat-desc">{gsaPropertyTypes[label]}</small>}</th>
+                  <td data-rating={label} data-base={base}>{base / 100}%</td>
+                </tr>
+              ))}
+            </>
+          ))}
+        </tbody>
+      </table>
+
+      <script type="application/json" id="gsa-calc-data" set:html={JSON.stringify({ tierStats, growth, affection: c.affection || [] })}></script>
+      <script is:inline>
+        // Stat calculator: Level + Class tier + Rank + Affection -> all stats.
+        // Core: rate * (tierBase + perLevelGrowth * Lv), flat affection ATK
+        // added after the rate. Ratings: base + affection track (same
+        // per-ten-thousand scale), with the delta shown in brackets.
+        (function () {
+          var dataEl = document.getElementById('gsa-calc-data');
+          var lvIn = document.getElementById('gsa-calc-lv');
+          var tierIn = document.getElementById('gsa-calc-tier');
+          var starIn = document.getElementById('gsa-calc-star');
+          var affIn = document.getElementById('gsa-calc-aff');
+          if (!dataEl || !lvIn || !tierIn || !starIn || !affIn) return;
+          var data = JSON.parse(dataEl.textContent);
+          var fmt = function (n) { return Math.round(n).toLocaleString('en-US'); };
+          var norm = function (s) { return String(s).replace(/ %$/, '').replace(/%/g, '').trim(); };
+          // row labels now use the game's official EN names, matching the
+          // affection track labels directly; aliases kept for safety only
+          var ALIAS = {};
+          var affMap = {};
+          (data.affection || []).forEach(function (a) { affMap[norm(a.label)] = (affMap[norm(a.label)] || 0) + a.value; });
+          var affOn = false;
+          function statAt(lv, tier, star) {
+            var t = data.tierStats.find(function (r) { return r.tier === tier; }) || data.tierStats[data.tierStats.length - 1];
+            var g = data.growth;
+            var si = Math.max(1, Math.min(6, star)) - 1;
+            var atkFlat = affOn ? (affMap['ATK'] || 0) : 0;
+            return {
+              hp: g.rate * (t.hp + g.hp[si] * lv),
+              atk: g.rate * (t.atk + g.atk[si] * lv) + atkFlat,
+              hpPer: g.rate * g.hp[si],
+              atkPer: g.rate * g.atk[si]
+            };
+          }
+          function renderRows(cur) {
+            var hpEl = document.getElementById('gsa-row-HP');
+            var atkEl = document.getElementById('gsa-row-ATK');
+            if (hpEl) hpEl.textContent = fmt(cur.hp) + ' (+' + fmt(cur.hpPer) + ' per level)';
+            if (atkEl) atkEl.textContent = fmt(cur.atk) + ' (+' + fmt(cur.atkPer) + ' per level)';
+            var matched = {};
+            document.querySelectorAll('#gsa-allstats [data-rating]').forEach(function (td) {
+              var base = Number(td.getAttribute('data-base'));
+              var key = ALIAS[norm(td.getAttribute('data-rating'))] || norm(td.getAttribute('data-rating'));
+              var delta = affOn ? (affMap[key] || 0) : 0;
+              if (affMap[key]) matched[key] = true;
+              td.textContent = delta ? (base + delta) / 100 + '% (+' + delta / 100 + '%)' : base / 100 + '%';
+            });
+            var table = document.getElementById('gsa-allstats');
+            var extras = Object.keys(affMap).filter(function (k) { return !matched[k] && k !== 'ATK' && k !== 'HP'; });
+            if (extras.length && !document.getElementById('gsa-aff-extra-body') && table) {
+              var wrap = document.createElement('tbody');
+              wrap.id = 'gsa-aff-extra-body';
+              wrap.innerHTML = '<tr class="gsa-stats-group"><th colSpan="2">From Affection</th></tr>' +
+                extras.map(function (k) {
+                  return '<tr><th scope="row">' + k + '</th><td>' + affMap[k] / 100 + '%</td></tr>';
+                }).join('');
+              table.appendChild(wrap);
+            }
+            var extraBody = document.getElementById('gsa-aff-extra-body');
+            if (extraBody) extraBody.style.display = (affOn && extras.length) ? '' : 'none';
+          }
+          function render() {
+            var lv = Math.max(1, Math.min(50, parseInt(lvIn.value, 10) || 1));
+            var tier = parseInt(tierIn.value, 10);
+            var star = parseInt(starIn.value, 10);
+            affOn = affIn.value === '1';
+            renderRows(statAt(lv, tier, star));
+          }
+          lvIn.addEventListener('input', render);
+          tierIn.addEventListener('change', render);
+          starIn.addEventListener('change', render);
+          affIn.addEventListener('change', render);
+          document.querySelectorAll('.gsa-num button').forEach(function (b) {
+            b.addEventListener('click', function () {
+              var d = b.classList.contains('gsa-num-up') ? 1 : -1;
+              lvIn.value = Math.max(1, Math.min(50, (parseInt(lvIn.value, 10) || 1) + d));
+              render();
+            });
+          });
+          render();
+        })();
+      </script>
     </div>
 
-  <script type="application/json" id="gsa-lv-data" set:html={JSON.stringify(levelData)}></script>
-  <script is:inline>
-    // Level switcher: updates EXP required + skill upgrade costs per level.
-    (function () {
-      var dataEl = document.getElementById('gsa-lv-data');
-      var panel = document.getElementById('gsa-lv-panel');
-      if (!dataEl || !panel) return;
-      var levelData = JSON.parse(dataEl.textContent);
-      function fmt(n) {
-        return n.toLocaleString('en-US');
-      }
-      function render(d) {
-        var exp = d.exp === null
-          ? '<span class="gsa-lv-max">Max level</span>'
-          : '<span class="gsa-lv-exp">' + fmt(d.exp) + '</span>';
-        panel.innerHTML =
-          '<div class="gsa-lv-row"><span class="gsa-lv-key">EXP to reach Lv ' + d.lv + '</span>' + exp + '</div>' +
-          '<div class="gsa-lv-row"><span class="gsa-lv-key">Upgrade one skill to Lv ' + d.lv + ' (gold)</span></div>' +
-          '<div class="gsa-lv-costs">' +
-            '<span class="gsa-chip">Active <b>' + fmt(d.active) + '</b></span>' +
-            '<span class="gsa-chip">Loop <b>' + fmt(d.loop) + '</b></span>' +
-            '<span class="gsa-chip">Passive 1 <b>' + fmt(d.p1) + '</b></span>' +
-            '<span class="gsa-chip">Passive 2 <b>' + fmt(d.p2) + '</b></span>' +
-            '<span class="gsa-chip">Ultimate <b>' + fmt(d.awake) + '</b></span>' +
-          '</div>';
-      }
-      render(levelData[0]);
-      document.querySelectorAll('#gsa-lv-switcher .gsa-lv-btn').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          document.querySelectorAll('#gsa-lv-switcher .gsa-lv-btn').forEach(function (b) { b.classList.remove('active'); });
-          btn.classList.add('active');
-          var lv = parseInt(btn.getAttribute('data-lv'), 10);
-          render(levelData.find(function (d) { return d.lv === lv; }));
-        });
-      });
-    })();
-  </script>
+    {(c.gear || []).length > 0 && (
+      <div class="gsa-detail-section" id="gsa-armament">
+        <h2>Armament</h2>
+        <p class="gsa-section-note">
+          This character's signature gear (best variant of each slot), straight
+          from the game tables. Stat lines are the base values before
+          enhancement; gear ratings are flat points, which the game converts
+          through its level-scaled curve.
+        </p>
+        <table class="gsa-stats-table">
+          <thead>
+            <tr><th>Slot</th><th>Piece</th><th>Stat lines</th></tr>
+          </thead>
+          <tbody>
+            {c.gear.map(g => (
+              <tr>
+                <th scope="row">{g.slot}</th>
+                <td class="gsa-gear-name">{g.name}</td>
+                <td class="gsa-gear-stats">
+                  {g.stats.map(s => (
+                    <span class="gsa-chip solid-muted">{s.label} +{s.pct ? `${s.base / 100}%` : s.base.toLocaleString('en-US')}</span>
+                  ))}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )}
 
-    {
+  {
       c.skills && c.skills.length ? (
         <div class="gsa-detail-section">
           <h2>Skills</h2>
@@ -294,7 +372,7 @@ const levelData = [
                       {s.mainStat && <p class="gsa-skill-prop"><span>Main Stat:</span> <b>{s.mainStat}</b></p>}
                       {s.type && <p class="gsa-skill-prop"><span>Type:</span> <b>{s.type}</b></p>}
                       {s.cost ? <p class="gsa-skill-prop"><span>Cost:</span> <b>{s.cost} EN</b></p> : null}
-                      {s.gcd ? <p class="gsa-skill-prop"><span>Normal Attack GCD:</span> <b>{s.gcd}</b></p> : null}
+                      {s.gcd ? <p class="gsa-skill-prop"><span>Basic Attack GCD:</span> <b>{s.gcd}</b></p> : null}
                       {s.cooldown ? <p class="gsa-skill-prop"><span>Cooldown Time:</span> <b>{s.cooldown}</b></p> : null}
                     </div>
                   </div>
@@ -338,3 +416,4 @@ const levelData = [
     }
   </div>
 </GSALayout>
+

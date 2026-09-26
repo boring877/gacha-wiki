@@ -563,28 +563,190 @@
   }
 }
 
-.gsa-elem-matchup {
+
+/* Potential stats as a paper table: thin row rules, no card boxes. */
+.gsa-stats-table {
+  width: 100%;
+  max-width: 620px;
+  border-collapse: collapse;
+}
+.gsa-stats-table th,
+.gsa-stats-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--gsa-border);
+  text-align: left;
+  font-size: 0.88rem;
+}
+.gsa-stats-table th {
+  color: var(--gsa-text-dim);
+  font-weight: 600;
+}
+.gsa-stats-table td {
+  text-align: right;
+  font-weight: 800;
+  color: var(--gsa-text);
+  font-variant-numeric: tabular-nums;
+}
+.gsa-stats-table tbody tr:last-child th,
+.gsa-stats-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* group header rows inside the stats paper table */
+.gsa-stats-table tr.gsa-stats-group th {
+  color: var(--gsa-accent-strong);
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding-top: 14px;
+  border-bottom: 1px solid var(--gsa-border);
+}
+
+/* level EXP: two half-tables side by side, stacked on phones */
+.gsa-exp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0 28px;
+  align-items: start;
+}
+.gsa-exp-grid .gsa-stats-table {
+  max-width: none;
+}
+
+/* level EXP: two half-tables side by side, stacked on phones */
+.gsa-exp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0 28px;
+  align-items: start;
+}
+.gsa-exp-grid .gsa-stats-table {
+  max-width: none;
+}
+
+/* progression calculator */
+.gsa-calc {
+  background: var(--gsa-bg-tertiary);
+  border: 1px solid var(--gsa-border);
+  border-radius: var(--gsa-radius);
+  padding: 14px 16px;
+  margin-bottom: 18px;
+}
+.gsa-calc-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.gsa-calc-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: var(--gsa-text-dim);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.gsa-calc-controls input,
+.gsa-calc-controls select {
+  background: var(--gsa-bg-secondary);
+  border: 1px solid var(--gsa-border);
+  border-radius: 7px;
+  color: var(--gsa-text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 7px 10px;
+  width: 110px;
+}
+.gsa-calc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--gsa-border);
+  font-size: 0.88rem;
+  color: var(--gsa-text-dim);
+}
+.gsa-calc-row:last-child {
+  border-bottom: none;
+}
+.gsa-calc-row b {
+  color: var(--gsa-text);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+/* Stats calculator: the single All-stats table fills its container, and the
+   Level input gets a themed stepper instead of the default browser arrows. */
+#gsa-allstats.gsa-stats-table {
+  max-width: none;
+}
+.gsa-calc-controls input[type="number"]::-webkit-outer-spin-button,
+.gsa-calc-controls input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.gsa-calc-controls input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.gsa-num {
+  position: relative;
+  display: block;
+}
+.gsa-num input[type="number"] {
+  padding-right: 30px;
+}
+.gsa-num button {
+  position: absolute;
+  right: 4px;
+  width: 21px;
+  height: 11px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gsa-bg-secondary);
+  border: 1px solid var(--gsa-border);
+  border-radius: 3px;
+  color: var(--gsa-accent-strong);
+  font-size: 8px;
+  line-height: 1;
+  cursor: pointer;
+}
+.gsa-num .gsa-num-up {
+  top: 5px;
+}
+.gsa-num .gsa-num-down {
+  bottom: 5px;
+}
+
+/* stat label + official game description subtext */
+#gsa-allstats th span {
+  display: block;
+}
+#gsa-allstats th .gsa-stat-desc {
+  display: block;
+  margin-top: 2px;
+  color: var(--gsa-text-dim);
+  font-weight: 400;
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+/* Armament table: piece name + stat chips */
+#gsa-armament .gsa-gear-name {
+  font-weight: 700;
+  color: var(--gsa-text);
+}
+#gsa-armament .gsa-gear-stats {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 10px;
+  justify-content: flex-end;
 }
-.gsa-elem-matchup .gsa-chip img {
-  display: block;
-  border-radius: 4px;
-  background: #171114;
-}
-.gsa-elem-matchup .gsa-chip b {
-  font-weight: 800;
-}
-.gsa-elem-matchup .gsa-elem-strong b {
-  color: var(--gsa-gold);
-}
-.gsa-elem-matchup .gsa-elem-weak b {
-  color: var(--gsa-accent-strong);
-}
-@media (max-width: 640px) {
-  .gsa-elem-matchup {
-    justify-content: center;
-  }
+#gsa-armament .gsa-gear-stats .gsa-chip {
+  font-size: 0.72rem;
 }

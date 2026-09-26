@@ -2,18 +2,18 @@
 // Gene-Sys: Adam tier list: job sections with tier rows, same shape as the
 // majo list. Reasons live in tier-list.js, not on the page.
 import GSALayout from '../../../layouts/gene-sys-adam/LandingLayout.astro';
-import { gsaTierByJob, GSA_TIER_UPDATED, GSA_BEGINNER_NOTE, GSA_TIER_PLACEMENTS, gsaRarityBadge } from '../../../data/gene-sys-adam/tier-list.js';
+import { gsaTierTabs, gsaTierTabCount, GSA_TIER_UPDATED, GSA_BEGINNER_NOTE, GSA_TIER_PLACEMENTS, gsaRarityBadge } from '../../../data/gene-sys-adam/tier-list.js';
 import { gsaCharacters } from '../../../data/gene-sys-adam/characters.js';
 import GSAElementCard from '../../../components/gene-sys-adam/GSAElementCard.astro';
 import '../../../styles/games/gene-sys-adam/gsa-common.css';
 import '../../../styles/games/gene-sys-adam/gsa-tier.css';
 
-const total = gsaTierByJob.reduce((n, g) => n + g.tiers.reduce((m, t) => m + t.characters.length, 0), 0);
+const total = gsaTierTabs.reduce((n, t) => n + gsaTierTabCount(t.rarity), 0);
 ---
 
 <GSALayout
   title="Tier List"
-  description={`Gene-Sys: Adam tier list (${GSA_TIER_UPDATED}): all ${total} characters rated by job, from the decrypted kit numbers.`}
+  description={`Gene-Sys: Adam tier list (${GSA_TIER_UPDATED}): all ${total} released characters rated by combat style, from the decrypted kit numbers.`}
   gameTitle="Tier List"
   crumbName="Tier List"
 >
@@ -55,42 +55,79 @@ const total = gsaTierByJob.reduce((n, g) => n + g.tiers.reduce((m, t) => m + t.c
       </div>
     </div>
 
-    {gsaTierByJob.map(group => (
-      <div class="gsa-tier-job-section">
-        <div class="gsa-tier-job-header">
-          {group.icon && <img class="gsa-tier-job-icon" src={group.icon} alt="" width="40" height="40" loading="lazy" />}
-          <h2 class="gsa-tier-job-title">{group.job}<span class="gsa-tier-job-zh">{group.zh}</span></h2>
-          <span class="gsa-tier-job-count">
-            {group.tiers.reduce((n, t) => n + t.characters.length, 0)} characters
-          </span>
-        </div>
-        <div class="gsa-tier-grid">
-          {group.tiers.map(row => (
-            <div class="gsa-tier-row">
-              <div class="gsa-tier-label">
-                <span class="gsa-tier-name" style={`color:${row.color}`}>{row.tier}</span>
-              </div>
-              <div class="gsa-tier-characters">
-                {row.characters.map(c => (
-                  <a class="gsa-tier-card" href={`/guides/gene-sys-adam/characters/${c.slug}/`}>
-                    {c.icon ? (
-                      <img class="gsa-tier-thumb" src={c.icon} alt={c.name} loading="lazy" />
-                    ) : (
-                      <span class="gsa-tier-thumb gsa-monogram">{c.name?.[0]}</span>
-                    )}
-                    {gsaRarityBadge(c.placement.rarity) ? (
-                      <img class="gsa-rarity-badge gsa-tier-thumb-badge" src={gsaRarityBadge(c.placement.rarity)} alt={c.placement.rarity} width="50" height="32" loading="lazy" />
-                    ) : (
-                      <span class={`gsa-tier-rarity gsa-tier-rarity-${(c.placement.rarity || 'sr').toLowerCase()}`}>{c.placement.rarity}</span>
-                    )}
-                    <span class="gsa-tier-name-label">{c.name}</span>
-                  </a>
-                ))}
-              </div>
+    <div class="gsa-tier-tabs" role="tablist" aria-label="Rarity">
+      {gsaTierTabs.map((tab, i) => (
+        <button
+          class={`gsa-tier-tab${i === 0 ? ' active' : ''}`}
+          data-rarity-tab={tab.rarity}
+          role="tab"
+          aria-selected={i === 0 ? 'true' : 'false'}
+        >
+          {tab.rarity}
+          <span class="gsa-tier-tab-count">{gsaTierTabCount(tab.rarity)}</span>
+        </button>
+      ))}
+    </div>
+
+    {gsaTierTabs.map((tab, i) => (
+      <div class="gsa-tier-tabpanel" data-rarity-panel={tab.rarity} style={i > 0 ? 'display:none' : undefined}>
+        {tab.jobs.map(group => (
+          <div class="gsa-tier-job-section">
+            <div class="gsa-tier-job-header">
+              {group.icon && <img class="gsa-tier-job-icon" src={group.icon} alt="" width="40" height="40" loading="lazy" />}
+              <h2 class="gsa-tier-job-title">{group.job}<span class="gsa-tier-job-zh">{group.zh}</span></h2>
+              <span class="gsa-tier-job-count">
+                {group.tiers.reduce((n, t) => n + t.characters.length, 0)} characters
+              </span>
             </div>
-          ))}
-        </div>
+            <div class="gsa-tier-grid">
+              {group.tiers.map(row => (
+                <div class="gsa-tier-row">
+                  <div class="gsa-tier-label">
+                    <span class="gsa-tier-name" style={`color:${row.color}`}>{row.tier}</span>
+                  </div>
+                  <div class="gsa-tier-characters">
+                    {row.characters.map(c => (
+                      <a class="gsa-tier-card" href={`/guides/gene-sys-adam/characters/${c.slug}/`}>
+                        {c.icon ? (
+                          <img class="gsa-tier-thumb" src={c.icon} alt={c.name} loading="lazy" />
+                        ) : (
+                          <span class="gsa-tier-thumb gsa-monogram">{c.name?.[0]}</span>
+                        )}
+                        {gsaRarityBadge(c.placement.rarity) ? (
+                          <img class="gsa-rarity-badge gsa-tier-thumb-badge" src={gsaRarityBadge(c.placement.rarity)} alt={c.placement.rarity} width="50" height="32" loading="lazy" />
+                        ) : (
+                          <span class={`gsa-tier-rarity gsa-tier-rarity-${(c.placement.rarity || 'sr').toLowerCase()}`}>{c.placement.rarity}</span>
+                        )}
+                        <span class="gsa-tier-name-label">{c.name}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     ))}
   </section>
 </GSALayout>
+
+<script is:inline>
+  // Rarity tabs: SSR and SR rate their own tier lists independently.
+  (function () {
+    var tabs = document.querySelectorAll('.gsa-tier-tab');
+    var panels = document.querySelectorAll('.gsa-tier-tabpanel');
+    tabs.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        tabs.forEach(function (b) { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        var rarity = btn.getAttribute('data-rarity-tab');
+        panels.forEach(function (p) {
+          p.style.display = p.getAttribute('data-rarity-panel') === rarity ? '' : 'none';
+        });
+      });
+    });
+  })();
+</script>
