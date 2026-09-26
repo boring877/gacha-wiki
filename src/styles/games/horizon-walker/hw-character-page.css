@@ -2656,3 +2656,304 @@
   }
 
 } /* End @scope (.horizon-walker-main) */
+
+
+/* Recommended Build section (compact per-build summary cards) */
+@scope (.horizon-walker-main) {
+  .recommended-build-section {
+    margin-top: var(--hw-spacing-xl);
+  }
+
+  .recommended-build-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--hw-spacing-lg);
+    margin-bottom: var(--hw-spacing-md);
+  }
+
+  .recommended-build-weapon {
+    display: flex;
+    align-items: center;
+    gap: var(--hw-spacing-lg);
+    padding: var(--hw-spacing-md) var(--hw-spacing-lg);
+    margin-bottom: var(--hw-spacing-md);
+    background: var(--hw-gradient-skill-card);
+    border: 1px solid var(--hw-border-accent);
+    border-radius: var(--hw-radius-lg);
+  }
+
+  .recommended-build-weapon-img {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+    background: var(--hw-bg-dark);
+    border: 1px solid var(--hw-border-gray);
+    border-radius: var(--hw-radius-md);
+    padding: 6px;
+    flex: 0 0 auto;
+  }
+
+  .recommended-build-weapon-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+  }
+
+  .recommended-build-weapon-kicker {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--hw-text-very-muted);
+  }
+
+  .recommended-build-weapon-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--hw-text-light);
+  }
+
+  .recommended-build-weapon-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.9rem;
+    margin-top: 0.35rem;
+  }
+
+  .recommended-build-weapon-stat {
+    font-size: 0.85rem;
+    color: var(--hw-text-muted);
+  }
+
+  .recommended-build-weapon-stat strong {
+    color: var(--hw-primary-warm);
+    margin-left: 0.25rem;
+  }
+
+  .recommended-build-head-text {
+    flex: 1 1 auto;
+    min-width: 0;
+    align-self: center;
+  }
+
+  .recommended-build-sub {
+    margin: 0.4rem 0 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--hw-text-light);
+  }
+
+  .recommended-build-scaling {
+    display: inline-block;
+    margin: 0.5rem 0 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--hw-text-dark);
+    background: var(--hw-primary-warm);
+    border-radius: 999px;
+    padding: 0.18rem 0.7rem;
+  }
+
+  .recommended-build-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex: 0 0 auto;
+    align-self: center;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--hw-primary-warm);
+    text-decoration: none;
+    background: var(--hw-primary-warm-10);
+    border: 1px solid var(--hw-border-accent);
+    border-radius: var(--hw-radius-md);
+    padding: 0.55rem 1rem;
+    white-space: nowrap;
+  }
+
+  .recommended-build-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: var(--hw-spacing-md);
+  }
+
+  .recommended-build-card {
+    background: var(--hw-gradient-skill-card);
+    border: 1px solid var(--hw-border-muted);
+    border-radius: var(--hw-radius-lg);
+    padding: var(--hw-spacing-lg);
+    min-width: 0;
+  }
+
+  .recommended-build-card-label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--hw-primary-warm);
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--hw-border-muted);
+    margin-bottom: 0.25rem;
+  }
+
+  .recommended-build-row {
+    display: grid;
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: var(--hw-spacing-md);
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--hw-border-muted);
+    font-size: 0.95rem;
+    align-items: start;
+  }
+
+  .recommended-build-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .recommended-build-row-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--hw-text-very-muted);
+    padding-top: 0.3rem;
+  }
+
+  .recommended-build-row-value {
+    min-width: 0;
+  }
+
+  .recommended-build-stigma-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .recommended-build-stigma {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .recommended-build-stigma-img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    flex: 0 0 auto;
+  }
+
+  .recommended-build-stigma-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px dashed var(--hw-border-gray);
+    border-radius: var(--hw-radius-md);
+    background: var(--hw-bg-dark);
+    color: var(--hw-primary-warm);
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex: 0 0 auto;
+  }
+
+  .recommended-build-stigma-tag {
+    font-style: normal;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--hw-text-very-muted);
+  }
+
+  .recommended-build-stigma-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .recommended-build-substats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .recommended-build-substat {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .recommended-build-substat img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    flex: 0 0 auto;
+  }
+
+  .recommended-build-stat-priority {
+    margin-left: auto;
+    font-style: normal;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--hw-text-dark);
+    background: var(--hw-primary-warm);
+    border-radius: 999px;
+    padding: 0.15rem 0.55rem;
+    flex: 0 0 auto;
+  }
+
+  .recommended-build-traits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .recommended-build-trait-chip {
+    display: inline-flex;
+    align-items: center;
+    background: var(--hw-bg-dark);
+    border: 1px solid var(--hw-border-gray);
+    border-radius: 999px;
+    padding: 0.22rem 0.7rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  .recommended-build-traits-text {
+    color: var(--hw-text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .recommended-build-title-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}
+
+@scope (.horizon-walker-main) {
+  .recommended-build-stigma-plus {
+    color: var(--hw-text-very-muted);
+    font-weight: 700;
+    padding: 0 0.15rem;
+  }
+}
+
+@scope (.horizon-walker-main) {
+  .recommended-build-stigma-pair {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .recommended-build-stigma-plus {
+    color: var(--hw-text-very-muted);
+    font-weight: 700;
+    padding-right: 0.1rem;
+  }
+}

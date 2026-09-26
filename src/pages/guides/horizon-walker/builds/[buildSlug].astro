@@ -552,6 +552,20 @@ const stigmaSections: any[] =
           </div>
             ))}
 
+        </div>
+      </section>
+    )
+  }
+
+    )
+  }
+
+  {/* Recommended Substats Section */}
+  {
+    (buildConfig.substatBuilds || buildConfig.recommendedSubstats) && (
+      <section class="character-build-section">
+        <h3 class="character-build-section-title">Recommended Substats</h3>
+        <div class="stigma-container">
           <div class="recommended-substats">
             <h5>Recommended Sub Stats</h5>
             {
@@ -598,7 +612,7 @@ const stigmaSections: any[] =
             <div class="substats-note">
               <strong>Priority:</strong> {buildConfig.substatsPriority}
             </div>
-          </div>
+                    </div>
         </div>
       </section>
     )

@@ -877,3 +877,41 @@
     }
   }
 } /* End @scope (.horizon-walker-main) */
+
+/* Stats stage toggle (EX default / full EX 6) */
+@scope (.horizon-walker-main) {
+  .hw-stage-toggle {
+    display: inline-flex;
+    align-items: stretch;
+    border: 1px solid var(--hw-border-muted);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .stage-btn {
+    padding: 0.45rem 0.9rem;
+    background: var(--hw-bg-surface, transparent);
+    color: var(--hw-text-body, inherit);
+    border: none;
+    font-family: inherit;
+    font-size: 0.8rem;
+    cursor: pointer;
+  }
+
+  .stage-btn + .stage-btn {
+    border-left: 1px solid var(--hw-border-muted);
+  }
+
+  .stage-btn.active {
+    background: var(--hw-primary-warm);
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    .hw-stage-toggle {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}

@@ -16,6 +16,7 @@ import { getSkinsByHeroId } from '../../data/horizon-walker/char-skins.js';
 import { getStoryCgByHeroId } from '../../data/horizon-walker/story-cg.js';
 import { getDemiskillData, getMightSkillList, TIER_PROBABILITIES } from '../../data/horizon-walker/demiskills.js';
 import { getCommunityBuild } from '../../data/horizon-walker/community-builds.js';
+import RecommendedBuildSection from '../../components/horizon-walker/RecommendedBuildSection.astro';
 import { getReworkArchive } from '../../data/horizon-walker/rework-archive.js';
 import { getVideosBySlug, VIDEO_TYPE_LABELS } from '../../data/horizon-walker/videos.js';
 
@@ -1285,6 +1286,13 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
         </div>
       ))}
     </section>
+  )
+}
+
+<!-- Recommended Build Section (curated site build) -->
+{
+  hwCharEntry && (
+    <RecommendedBuildSection characterSlug={hwCharEntry.slug} character={characterData} />
   )
 }
 

@@ -47,6 +47,16 @@ const sCount = HORIZON_WALKER_CHARACTERS.filter(char => char.rarity === 'S').len
 const aCount = HORIZON_WALKER_CHARACTERS.filter(char => char.rarity === 'A').length;
 const bCount = HORIZON_WALKER_CHARACTERS.filter(char => char.rarity === 'B').length;
 
+// DB table stats: default = base EX rarity stage, toggleable to full EX 6
+// (values from each character's computed rarityStages; 5 primary stats)
+const getStageStat = (char, field) => {
+  if (char.stages?.ex?.[field] !== undefined) return char.stages.ex[field];
+  return char.stats?.[field] ?? 'N/A';
+};
+const stageData = JSON.stringify(
+  Object.fromEntries(HORIZON_WALKER_CHARACTERS.filter(c => c.stages).map(c => [c.id, c.stages]))
+);
+
 // Character name to filename mapping
 const getImageKey = characterName => {
   let filename = characterName
@@ -81,7 +91,7 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
         <div class="hw-character-database-header">
           <h1 class="hw-character-database-title">Character Database</h1>
           <p class="hw-character-database-subtitle">
-            All stats shown at max level (Level {gameInfo.maxLevel})
+            Level {gameInfo.maxLevel} stats at base EX rarity. Toggle for full EX 6.
           </p>
           <div class="hw-char-db-stats-summary">
             <div class="hw-rarity-stat">
@@ -136,6 +146,10 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
             <button class="sort-btn" data-sort="agility">AGI</button>
             <button class="sort-btn" data-sort="technic">TEC</button>
             <button class="reset-btn" id="reset-table">Reset</button>
+          </div>
+          <div class="hw-stage-toggle" id="stage-toggle" role="group" aria-label="Rarity stage">
+            <button type="button" class="stage-btn active" data-stage="ex">EX</button>
+            <button type="button" class="stage-btn" data-stage="ex6">Full EX 6</button>
           </div>
         </div>
 
@@ -204,19 +218,19 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                       <strong class="cost-value">{character.cost}</strong>
                     </td>
                     <td data-sort-key="strength">
-                      <strong class="stat-value">{getStrengthValue(character.stats)}</strong>
+                      <strong class="stat-value" data-field="strength">{getStageStat(character, 'strength')}</strong>
                     </td>
                     <td data-sort-key="intelligence">
-                      <strong class="stat-value">{getIntelligenceValue(character.stats)}</strong>
+                      <strong class="stat-value" data-field="intelligence">{getStageStat(character, 'intelligence')}</strong>
                     </td>
                     <td data-sort-key="vitality">
-                      <strong class="stat-value">{getVitalityValue(character.stats)}</strong>
+                      <strong class="stat-value" data-field="vitality">{getStageStat(character, 'vitality')}</strong>
                     </td>
                     <td data-sort-key="agility">
-                      <strong class="stat-value">{getAgilityValue(character.stats)}</strong>
+                      <strong class="stat-value" data-field="agility">{getStageStat(character, 'agility')}</strong>
                     </td>
                     <td data-sort-key="technic">
-                      <strong class="stat-value">{getTechnicValue(character.stats)}</strong>
+                      <strong class="stat-value" data-field="technic">{getStageStat(character, 'technic')}</strong>
                     </td>
                   </tr>
                 ))
@@ -275,32 +289,32 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
                 <div class="mobile-card-stats-grid">
                   <div class="stat-item">
                     <span class="stat-label">STR</span>
-                    <strong class="stat-value" data-stat="strength">
-                      {getStrengthValue(char.stats)}
+                    <strong class="stat-value" data-stat="strength" data-field="strength">
+                      {getStageStat(char, 'strength')}
                     </strong>
                   </div>
                   <div class="stat-item">
                     <span class="stat-label">INT</span>
-                    <strong class="stat-value" data-stat="intelligence">
-                      {getIntelligenceValue(char.stats)}
+                    <strong class="stat-value" data-stat="intelligence" data-field="intelligence">
+                      {getStageStat(char, 'intelligence')}
                     </strong>
                   </div>
                   <div class="stat-item">
                     <span class="stat-label">VIT</span>
-                    <strong class="stat-value" data-stat="vitality">
-                      {getVitalityValue(char.stats)}
+                    <strong class="stat-value" data-stat="vitality" data-field="vitality">
+                      {getStageStat(char, 'vitality')}
                     </strong>
                   </div>
                   <div class="stat-item">
                     <span class="stat-label">AGI</span>
-                    <strong class="stat-value" data-stat="agility">
-                      {getAgilityValue(char.stats)}
+                    <strong class="stat-value" data-stat="agility" data-field="agility">
+                      {getStageStat(char, 'agility')}
                     </strong>
                   </div>
                   <div class="stat-item">
                     <span class="stat-label">TEC</span>
-                    <strong class="stat-value" data-stat="technic">
-                      {getTechnicValue(char.stats)}
+                    <strong class="stat-value" data-stat="technic" data-field="technic">
+                      {getStageStat(char, 'technic')}
                     </strong>
                   </div>
                 </div>
@@ -312,6 +326,43 @@ const description = `Explore all ${totalCharacters} Horizon Walker characters in
       </div>
     </div>
   </section>
+
+  <!-- Per-character rarity-stage values for the stats toggle -->
+  <script type="application/json" id="hw-stage-data" set:html={stageData} />
+
+  <!-- Stats stage toggle: swaps the 5 primary stats between EX and full EX 6 -->
+  <script is:inline>
+    (function () {
+      var dataEl = document.getElementById('hw-stage-data');
+      var toggle = document.getElementById('stage-toggle');
+      if (!dataEl || !toggle) return;
+      var stageMap = {};
+      try {
+        stageMap = JSON.parse(dataEl.textContent);
+      } catch (e) {
+        return;
+      }
+      var buttons = toggle.querySelectorAll('.stage-btn');
+      function applyStage(stage) {
+        document.querySelectorAll('[data-character-id]').forEach(function (row) {
+          var stages = stageMap[row.getAttribute('data-character-id')];
+          if (!stages || !stages[stage]) return;
+          row.querySelectorAll('[data-field]').forEach(function (el) {
+            var value = stages[stage][el.getAttribute('data-field')];
+            if (value !== undefined) el.textContent = value;
+          });
+        });
+        buttons.forEach(function (btn) {
+          btn.classList.toggle('active', btn.getAttribute('data-stage') === stage);
+        });
+      }
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          applyStage(btn.getAttribute('data-stage'));
+        });
+      });
+    })();
+  </script>
 
   <!-- Load the character database script with sorting and filtering functionality -->
   <script src="../../../scripts/horizon-walker/character-database.js"></script>

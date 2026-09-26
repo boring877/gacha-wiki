@@ -1,0 +1,237 @@
+<!-- Recommended Build section: compact per-build summary of the site's curated
+     build for one character (same data as /guides/horizon-walker/builds/<slug>/).
+     Pass the character slug + character record (for weapon art). Renders nothing
+     when no specific build config exists (default fallback excluded). -->
+---
+import { characterBuildConfigs } from '../../data/horizon-walker/builds/character-build-configs.js';
+import StigmaImage from './StigmaImage.astro';
+import WeaponImage from './WeaponImage.astro';
+
+interface Props {
+  characterSlug?: string;
+  character?: any;
+}
+const { characterSlug, character } = Astro.props;
+const config = characterSlug ? characterBuildConfigs[characterSlug] : undefined;
+
+// Stigma sets with icon art on R2 (screenshot-sourced, mirrors the stigmas page).
+// Sets without art render a neutral rarity chip instead of wrong fallback art.
+const STIGMA_WITH_ART: Record<string, boolean> = {
+  "Jester's Mask": true,
+  'Reckoning of Sin': true,
+  Jupiter: true,
+  Harmony: true,
+  'Phantom Banquet': true,
+  'The Brilliant Touch of Earth': true,
+  'The Eternal Battle': true,
+  'The Knight of the Seven Petals': true,
+  'The Four Horsemen': true,
+  'Scorching Sun': true,
+  'Lifebound': true,
+  'The Wind that Wanders the World': true,
+  'The Thousand Mile Weave': true,
+  "Dawn's Grace": true,
+};
+
+// Game stat icons (StatsIconAtlas exports on R2 stat-icons/)
+const STAT_ICONS: Record<string, string> = {
+  'Magic ATK': 'stat-icons/UI_StatIcon_MagicPower.png',
+  'Crit DMG': 'stat-icons/UI_StatIcon_CriticalDamageMulti.png',
+  'Crit Rate': 'stat-icons/UI_StatIcon_CriticalPoint.png',
+  'AP Recovery': 'stat-icons/UI_StatIcon_StaminaRecovery.png',
+  'Starting AP': 'stat-icons/UI_StatIcon_BattleInitStamina.png',
+  'Max HP': 'stat-icons/UI_StatIcon_MaxHp.png',
+  'Melee ATK': 'stat-icons/UI_StatIcon_MeleePower.png',
+  'Ranged ATK': 'stat-icons/UI_StatIcon_ShootPower.png',
+  Accuracy: 'stat-icons/UI_StatIcon_HitPoint.png',
+  Evade: 'stat-icons/UI_StatIcon_DodgePoint.png',
+  'Movement Speed (SPD)': 'stat-icons/UI_StatIcon_MoveSpeed.png',
+};
+const statIcon = (name: string) => STAT_ICONS[name] || null;
+const r2 = (path: string) =>
+  `https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/horizon-walker/${path}`;
+
+// Normalize every config shape (new stigmaBuilds + legacy string/object) into
+// one list of {label, stigmaRows: [{label, names, text}], substats, traits}.
+type StigmaRow = { label?: string; names: string[]; text: string };
+type BuildView = {
+  label: string | null;
+  stigmaRows: StigmaRow[];
+  substats: { stat: string; priority?: string }[];
+  traits: string[] | null;
+  traitsText: string | null;
+};
+
+function stigmaNamesFor(rec: any, layout: any): { names: string[]; text: string } {
+  if (typeof rec === 'string' && rec.includes('Mixed 2-Set')) {
+    const names = layout ? [...new Set(Object.values(layout))] : [];
+    const readable = names.join(' + ');
+    return { names, text: readable || rec };
+  }
+  if (typeof rec === 'string') return { names: [rec], text: rec };
+  return { names: [], text: String(rec ?? '') };
+}
+
+const builds: BuildView[] = [];
+if (config) {
+  if (Array.isArray(config.stigmaBuilds)) {
+    for (const sb of config.stigmaBuilds) {
+      const { names, text } = stigmaNamesFor(sb.recommendedStigma, sb.mixedSetLayout);
+      builds.push({
+        label: sb.name || null,
+        stigmaRows: [{ names, text }],
+        substats: [],
+        traits: null,
+        traitsText: null,
+      });
+    }
+  } else if (config.recommendedStigma && typeof config.recommendedStigma === 'object') {
+    // Legacy object form: { zeroDupe, fullEx5 } (e.g. Emilia)
+    const rows: StigmaRow[] = [];
+    if (config.recommendedStigma.zeroDupe)
+      rows.push({ label: 'Zero dupe', names: [config.recommendedStigma.zeroDupe], text: config.recommendedStigma.zeroDupe });
+    if (config.recommendedStigma.fullEx5)
+      rows.push({ label: 'Full EX5', names: [config.recommendedStigma.fullEx5], text: config.recommendedStigma.fullEx5 });
+    builds.push({ label: null, stigmaRows: rows, substats: [], traits: null, traitsText: null });
+  } else if (typeof config.recommendedStigma === 'string') {
+    const { names, text } = stigmaNamesFor(config.recommendedStigma, config.mixedSetLayout);
+    builds.push({ label: null, stigmaRows: [{ names, text }], substats: [], traits: null, traitsText: null });
+  }
+
+  // Attach substats per build when the counts line up; otherwise to the first card
+  const substatBuilds: { name?: string; stats: any[] }[] = Array.isArray(config.substatBuilds)
+    ? config.substatBuilds
+    : [];
+  if (substatBuilds.length === builds.length) {
+    builds.forEach((b, i) => (b.substats = substatBuilds[i].stats));
+  } else if (substatBuilds.length) {
+    builds[0].substats = substatBuilds.flatMap((sb: any) => sb.stats);
+  } else if (Array.isArray(config.recommendedSubstats)) {
+    builds[0].substats = config.recommendedSubstats;
+  }
+
+  // Traits per build when counts line up; otherwise one text line
+  const traitBuilds: { name?: string; traits: any[] }[] = Array.isArray(config.traitBuilds)
+    ? config.traitBuilds
+    : [];
+  if (traitBuilds.length === builds.length) {
+    builds.forEach((b, i) => (b.traits = traitBuilds[i].traits.map((t: any) => t.name)));
+  } else if (traitBuilds.length) {
+    builds[0].traits = traitBuilds.flatMap((tb: any) => tb.traits.map((t: any) => t.name));
+  } else if (config.traitsType) {
+    builds[0].traitsText = config.traitsType;
+  }
+}
+---
+
+{
+  config && builds.length > 0 && (
+    <section class="content-section recommended-build-section">
+      <div class="recommended-build-title-row">
+        <div class="recommended-build-head-text">
+          <h2 class="section-title">Recommended Build</h2>
+          <p class="recommended-build-sub">{config.buildStrategyTitle}</p>
+          <p class="recommended-build-scaling">{config.damageScaling}</p>
+        </div>
+        <a class="recommended-build-link" href={`/guides/horizon-walker/builds/${characterSlug}/`}>
+          Full build page
+        </a>
+      </div>
+
+      {character?.weapon?.name && (
+        <div class="recommended-build-weapon">
+          {character.weapon.image && (
+            <WeaponImage
+              imageName={character.weapon.image}
+              alt={`${character.weapon.name} weapon`}
+              width={96}
+              height={96}
+              class="recommended-build-weapon-img"
+              loading="lazy"
+            />
+          )}
+          <div class="recommended-build-weapon-info">
+            <span class="recommended-build-weapon-kicker">EX Weapon</span>
+            <span class="recommended-build-weapon-name">{character.weapon.name}</span>
+            {character.weapon.stats && (
+              <div class="recommended-build-weapon-stats">
+                {Object.entries(character.weapon.stats)
+                  .slice(0, 4)
+                  .map(([k, v]) => (
+                    <span class="recommended-build-weapon-stat">
+                      {k} <strong>{v}</strong>
+                    </span>
+                  ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      <div class="recommended-build-grid">
+        {builds.map(build => (
+          <div class="recommended-build-card">
+            {build.label && <div class="recommended-build-card-label">{build.label}</div>}
+
+            <div class="recommended-build-row">
+              <span class="recommended-build-row-label">Stigma</span>
+              <div class="recommended-build-row-value recommended-build-stigma-row">
+                {build.stigmaRows.map(row => (
+                  <span class="recommended-build-stigma">
+                    {row.label && <em class="recommended-build-stigma-tag">{row.label}</em>}
+                    {row.names.map((n, i) => (
+                      <span class="recommended-build-stigma-pair">
+                        {i > 0 && <span class="recommended-build-stigma-plus">+</span>}
+                        {STIGMA_WITH_ART[n] ? (
+                          <StigmaImage
+                            imageName={n}
+                            alt={n}
+                            width={44}
+                            height={44}
+                            class="recommended-build-stigma-img"
+                            loading="lazy"
+                          />
+                        ) : (
+                          <span class="recommended-build-stigma-chip">EX</span>
+                        )}
+                        <span class="recommended-build-stigma-name">{n}</span>
+                      </span>
+                    ))}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {build.substats.length > 0 && (
+              <div class="recommended-build-row">
+                <span class="recommended-build-row-label">Substats</span>
+                <div class="recommended-build-row-value recommended-build-substats">
+                  {build.substats.map(s => (
+                    <span class="recommended-build-substat">
+                      {statIcon(s.stat) && (
+                        <img src={r2(statIcon(s.stat))} alt="" width={18} height={18} loading="lazy" />
+                      )}
+                      {s.stat}
+                      {s.priority && <em class="recommended-build-stat-priority">{s.priority}</em>}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div class="recommended-build-row">
+              <span class="recommended-build-row-label">Traits</span>
+              <div class="recommended-build-row-value recommended-build-traits">
+                {build.traits ? (
+                  build.traits.map(t => <span class="recommended-build-trait-chip">{t}</span>)
+                ) : (
+                  <span class="recommended-build-traits-text">{build.traitsText}</span>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
