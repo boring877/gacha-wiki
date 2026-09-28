@@ -42,7 +42,7 @@ function getTierClassName(tier: string): string {
 }
 
 // Pre-compute character notes lookup
-const charNoteMap: Record<string, { type: string; title: string; text: string }> = TIER_CHARACTER_NOTES;
+const charNoteMap: Record<string, { type: string; variant?: string; shortTitle?: string; title: string; text: string }> = TIER_CHARACTER_NOTES;
 ---
 
 <TierListLayout
@@ -90,7 +90,7 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
         {HORIZON_WALKER_TIER_LISTS['map-clear'].description}
       </p>
       <p class="tier-list-updated" id="list-updated" data-initial-type="map-clear">
-        Last updated: 2026-09-23
+        Last updated: 2026-09-28
       </p>
     </div>
 
@@ -157,14 +157,15 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
           <div class="tier-characters">
             {tierData.characters.map(charData => {
               const note = charNoteMap[charData.name];
+              const noteVariantClass = note?.variant ? ` tier-note-${note.variant}` : '';
               return (
               <div
-                class={`tier-character-card${note ? ' has-note' : ''}`}
+                class={`tier-character-card${note ? ` has-note${noteVariantClass ? ` note-variant-${note.variant}` : ''}` : ''}`}
                 onclick={`window.location.href=${JSON.stringify(charData.detailUrl || '#')}`}
               >
                 {note && (
-                  <div class={`tier-note-badge tier-note-${note.type}`}>
-                    <span class="tier-note-icon">!</span>
+                  <div class={`tier-note-badge tier-note-${note.type}${noteVariantClass}`}>
+                    <span class="tier-note-icon">{note.variant ? '★' : '!'}</span>
                     <div class="tier-note-tooltip">
                       <div class="tier-note-tooltip-title">{note.title}</div>
                       <div class="tier-note-tooltip-text" set:html={note.text} />
@@ -172,6 +173,7 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
                   </div>
                 )}
                 <div class="character-image-wrapper">
+                  {note?.variant && <div class="tier-card-highlight">{note.shortTitle}</div>}
                   {charData.isMercenary ? (
                     <MercenaryImage
                       imageName={charData.name}
@@ -213,14 +215,15 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
           <div class="tier-characters">
             {tierData.characters.map(charData => {
               const note = charNoteMap[charData.name];
+              const noteVariantClass = note?.variant ? ` tier-note-${note.variant}` : '';
               return (
               <div
-                class={`tier-character-card${note ? ' has-note' : ''}`}
+                class={`tier-character-card${note ? ` has-note${noteVariantClass ? ` note-variant-${note.variant}` : ''}` : ''}`}
                 onclick={`window.location.href=${JSON.stringify(charData.detailUrl || '#')}`}
               >
                 {note && (
-                  <div class={`tier-note-badge tier-note-${note.type}`}>
-                    <span class="tier-note-icon">!</span>
+                  <div class={`tier-note-badge tier-note-${note.type}${noteVariantClass}`}>
+                    <span class="tier-note-icon">{note.variant ? '★' : '!'}</span>
                     <div class="tier-note-tooltip">
                       <div class="tier-note-tooltip-title">{note.title}</div>
                       <div class="tier-note-tooltip-text" set:html={note.text} />
@@ -228,6 +231,7 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
                   </div>
                 )}
                 <div class="character-image-wrapper">
+                  {note?.variant && <div class="tier-card-highlight">{note.shortTitle}</div>}
                   {charData.isMercenary ? (
                     <MercenaryImage
                       imageName={charData.name}
@@ -269,14 +273,15 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
           <div class="tier-characters">
             {tierData.characters.map(charData => {
               const note = charNoteMap[charData.name];
+              const noteVariantClass = note?.variant ? ` tier-note-${note.variant}` : '';
               return (
               <div
-                class={`tier-character-card${note ? ' has-note' : ''}`}
+                class={`tier-character-card${note ? ` has-note${noteVariantClass ? ` note-variant-${note.variant}` : ''}` : ''}`}
                 onclick={`window.location.href=${JSON.stringify(charData.detailUrl || '#')}`}
               >
                 {note && (
-                  <div class={`tier-note-badge tier-note-${note.type}`}>
-                    <span class="tier-note-icon">!</span>
+                  <div class={`tier-note-badge tier-note-${note.type}${noteVariantClass}`}>
+                    <span class="tier-note-icon">{note.variant ? '★' : '!'}</span>
                     <div class="tier-note-tooltip">
                       <div class="tier-note-tooltip-title">{note.title}</div>
                       <div class="tier-note-tooltip-text" set:html={note.text} />
@@ -284,6 +289,7 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
                   </div>
                 )}
                 <div class="character-image-wrapper">
+                  {note?.variant && <div class="tier-card-highlight">{note.shortTitle}</div>}
                   {charData.isMercenary ? (
                     <MercenaryImage
                       imageName={charData.name}
@@ -395,8 +401,8 @@ const charNoteMap: Record<string, { type: string; title: string; text: string }>
         if (listDescription && listDescription.textContent !== tierList.description) {
           listDescription.textContent = tierList.description;
         }
-        if (listUpdated && listUpdated.textContent !== `Last updated: 2026-09-23`) {
-          listUpdated.textContent = `Last updated: 2026-09-23`;
+        if (listUpdated && listUpdated.textContent !== `Last updated: 2026-09-28`) {
+          listUpdated.textContent = `Last updated: 2026-09-28`;
         }
 
         // Hide all tier list displays

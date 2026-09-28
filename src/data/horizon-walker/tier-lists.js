@@ -455,7 +455,31 @@ export const getCharactersWithEXWeapons = () => {
 export const TIER_LIST_CHANGELOG = [];
 
 // Notes for specific characters displayed on tier list cards
+// variant (optional): marks a unique "best in class" attribute and gives the badge
+// its own color + on-card title chip: 'dps' red, 'wave-clear' orange, 'buffer' green,
+// 'def-down' purple. shortTitle is the label shown on the card (e.g. 'Best DPS').
 export const TIER_CHARACTER_NOTES = {
+  Cora: {
+    type: 'info',
+    variant: 'wave-clear',
+    shortTitle: 'Best Wave Clear',
+    title: 'Best Wave Clear in the Game',
+    text: 'Cora is the best wave clear character in the game: her Volcanic Eruption hits every enemy on the entire battlefield at once. Her single target damage is also very strong, so she is no wave clear one trick: after an eruption her Forbidden Land detonations hit 8 times harder, and they double again when they go off on her own turn. Just note that she needs a bit of investment before it one shots mobs in events and daily tasks, so do not expect it right away on a fresh account. Pair her with Eugenia and whole maps melt in a single cast.',
+  },
+  Eugenia: {
+    type: 'info',
+    variant: 'buffer',
+    shortTitle: 'Best Buffer',
+    title: 'One of the Best Buffers in the Game',
+    text: 'Eugenia is one of the best buffers in the game: her Soul Resonance grants a carry a huge ATK increase that scales with her Max HP, and every attack the buffed target makes deals additional Immaterial DMG on top. She pushes good damage into one shot territory, which is why so many notes on this page tell you to pair with her.',
+  },
+  Palekar: {
+    type: 'info',
+    variant: 'def-down',
+    shortTitle: 'Best DEF Down',
+    title: 'Highest DEF Down in the Game',
+    text: 'Palekar has the highest DEF down of any character: [Unstable] from her Verse of Ordeal slashes All DEF by a massive 1140, shreds up to 200 more DEF based on her Evasion, and increases the DMG Taken of the target on top. Apply it to a boss and your whole team hits dramatically harder, making her a premier enabler for one shotting things.',
+  },
   Garud: {
     type: 'info',
     title: 'Either SSS or UR, Needs Testing',
@@ -473,8 +497,10 @@ export const TIER_CHARACTER_NOTES = {
   },
   Juza: {
     type: 'info',
-    title: 'Massive Damage, Locks Herself On Target',
-    text: 'Juza deals truly massive damage and can work in all types of content as long as you can keep her locked on the target. Her one weakness is that once she jumps she cannot really move, so she stays locked in place. She does not need a lot of investment, but she needs good teammates: Eugenia is a must. With Eugenia her damage output becomes huge, and she is highly recommended as a speedrun pick for Total War.',
+    variant: 'dps',
+    shortTitle: 'Best DPS',
+    title: 'Highest DPS in the Game',
+    text: 'Juza is the highest DPS character in the game as of now, and she can work in all types of content as long as you can keep her locked on the target. Her one weakness is that once she jumps she cannot really move, so she stays locked in place. She does not need a lot of investment, but she needs good teammates: Eugenia is a must. With Eugenia her damage output becomes huge, and she is highly recommended as a speedrun pick for Total War.',
   },
   Nari: {
     type: 'warning',
