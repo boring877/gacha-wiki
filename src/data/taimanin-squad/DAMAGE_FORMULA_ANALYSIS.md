@@ -25,16 +25,33 @@ damage = 0.01 * ( BOFuncValue3 * stat0  +  BOFuncValue2 * stat1 )
 - Attack components per skill = its BattleOption list:
   - `eBOFunc_Attack` (plain) covers all `SkillAtkCnt` hits
   - `eBOFunc_Attack/1` = last hit, `/2` = normal hits (one BO per hit when counts match)
-  - `eBOFunc_AddAttack` = extra conditional attack (its own V3)
+  - `eBOFunc_AddAttack` = extra conditional attack; a PLAIN AddAttack fires on every
+    `SkillAddAtkCnt` hit (12003 desc "Additional Attack 4 times" = AddAtkCnt 4 with ONE BO;
+    27102 desc "12 times" = AtkCnt 6 + AddAtkCnt 6)
   - `eBOFunc_DmgDrainHp` V3 = lifesteal % of damage dealt, NOT damage
   - `eBOFunc_Attack` with DmgBase "[ATK]/[LostHP]": +V2% of the caster's MISSING HP
     ("Damage increases in proportion to HP lost")
 - Cross-check: all normal attacks total ~400-530% ATK regardless of hit split
   (101: 393.8x1; 201: 141.8x2+196.9; 401: 262.5x2; 701: 141.8x2+189)
+- PER-HIT SEMANTICS VERIFIED (2026-09-28): CalcDamage takes no hit-count argument and
+  never divides V3; the table itself pre-divides per-hit V3 so V3 x AtkCnt stays in the
+  tuned band (normal attacks: 1 hit = 504-525, 4 hits = 118.1-131.3, 7 hits = 72-75,
+  14 hits = 36). Multi-hit wiki totals ("189% x 5 = 945%") are correct.
+- TARGET SEMANTICS (2026-09-28 fix): each attack BO carries its own BOTarType.
+  Separate BOs aimed at `eBOTarget_EnemyRnd/1` or `eBOTarget_Enemy/All` hit DIFFERENT
+  enemies and must NOT be summed into one per-target total. Skill 7101 desc: "Attacks 1
+  additional Random enemy" (BO1 Enemy/1 252% + BO2 EnemyRnd/1 252%) previously rendered
+  "252% x 2 = 504%" on one target; bond skill 25202 rendered 1799.7% for what is 599.9%
+  to the target plus 599.9% to each of 2 random enemies.
 - Extractor: `D:\TaimaninSquad\tools\gen_damage.py` -> writes `damage` object
-  {scaling:[{stat,pct},...], hits:[{pct,count}], add:[...], total} into
+  {scaling:[{stat,pct},...], hits:[{pct,count,tar}], add:[{pct,count,tar}], total} into
   skills_complete.json, characters/*.json (skills + weapons skill_data),
-  character-skills-map.json. `multiplier` field = per-hit primary stat % (V3).
+  character-skills-map.json, and weapons.js (embedded skill_damage blocks).
+  `tar` = "" for main-target groups (Enemy/1, HitTargetList), else a display label
+  ("1 random enemy", "all enemies", "the lowest-HP enemy", ...).
+  `total` = guaranteed hits on ONE target (main-target hit groups only, adds excluded;
+  falls back to the first group for AoE-only skills). `multiplier` field = per-hit
+  primary stat % (V3).
   NOTE: pre-2026-09-22 `multiplier` values were BOFuncValue2/100 = WRONG (V2 is the
   secondary-stat percent or a turn count, not damage).
 

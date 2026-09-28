@@ -31,7 +31,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 104.9,
-          "count": 6
+          "count": 6,
+          "tar": ""
         }
       ],
       "total": null
@@ -66,7 +67,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 153.1,
-          "count": 5
+          "count": 5,
+          "tar": ""
         }
       ],
       "total": 765.5
@@ -122,7 +124,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 429.8,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 429.8
@@ -157,7 +160,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 252.0,
-          "count": 2
+          "count": 2,
+          "tar": ""
         }
       ],
       "total": 504.0
@@ -192,7 +196,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 692.2,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 692.2
@@ -269,7 +274,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 504.9,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 504.9
@@ -304,18 +310,21 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 238.1,
-          "count": 1
+          "count": 1,
+          "tar": ""
         },
         {
           "pct": 238.1,
-          "count": 1
+          "count": 1,
+          "tar": "the lowest-HP enemy"
         },
         {
           "pct": 122.0,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
-      "total": 598.2
+      "total": 238.1
     },
     "skill_icon": "712",
     "char_name": "Yukikaze",
@@ -347,7 +356,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 467.4,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 467.4
@@ -403,7 +413,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 458.5,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 458.5
@@ -459,16 +470,18 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 128.6,
-          "count": 4
+          "count": 4,
+          "tar": ""
         }
       ],
       "add": [
         {
           "pct": 178.6,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
-      "total": 693.0
+      "total": 514.4
     },
     "skill_icon": "1112",
     "char_name": "Rinko",
@@ -500,7 +513,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 436.2,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 436.2
@@ -535,7 +549,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 692.2,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 692.2
@@ -570,7 +585,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 765.5,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 765.5
@@ -710,15 +726,18 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 96.0,
-          "count": 2
+          "count": 2,
+          "tar": ""
         },
         {
           "pct": 120.0,
-          "count": 2
+          "count": 2,
+          "tar": ""
         },
         {
           "pct": 144.0,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 576.0
@@ -753,15 +772,18 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 96.0,
-          "count": 2
+          "count": 2,
+          "tar": ""
         },
         {
           "pct": 120.0,
-          "count": 2
+          "count": 2,
+          "tar": ""
         },
         {
           "pct": 144.0,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 576.0
@@ -796,7 +818,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 354.8,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 354.8
@@ -835,7 +858,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 126.0,
-          "count": 3
+          "count": 3,
+          "tar": ""
         }
       ],
       "total": null
@@ -870,7 +894,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 214.9,
-          "count": 2
+          "count": 2,
+          "tar": "all enemies"
         }
       ],
       "total": 429.8
@@ -947,7 +972,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 366.1,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 366.1
@@ -1045,7 +1071,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 894.6,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 894.6
@@ -1143,16 +1170,18 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 99.5,
-          "count": 4
+          "count": 4,
+          "tar": ""
         }
       ],
       "add": [
         {
           "pct": 138.2,
-          "count": 1
+          "count": 2,
+          "tar": ""
         }
       ],
-      "total": 536.2
+      "total": 398.0
     },
     "skill_icon": "2512",
     "char_name": "Ingrid",
@@ -1184,7 +1213,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 851.1,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 851.1
@@ -1223,7 +1253,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 609.8,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": null
@@ -1279,7 +1310,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 418.4,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 418.4
@@ -1419,16 +1451,18 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 116.3,
-          "count": 4
+          "count": 4,
+          "tar": ""
         }
       ],
       "add": [
         {
           "pct": 161.5,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
-      "total": 626.7
+      "total": 465.2
     },
     "skill_icon": "3012",
     "char_name": "Felicia",
@@ -1460,7 +1494,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 782.8,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 782.8
@@ -1499,7 +1534,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 288.9,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": null
@@ -1534,7 +1570,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 467.4,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 467.4
@@ -1569,7 +1606,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 835.9,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 835.9
@@ -1625,7 +1663,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 165.0,
-          "count": 4
+          "count": 4,
+          "tar": ""
         }
       ],
       "total": 660.0
@@ -1660,7 +1699,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 126.0,
-          "count": 4
+          "count": 4,
+          "tar": ""
         }
       ],
       "total": 504.0
@@ -1716,7 +1756,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 173.1,
-          "count": 4
+          "count": 4,
+          "tar": ""
         }
       ],
       "total": 692.4
@@ -1751,7 +1792,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 252.0,
-          "count": 2
+          "count": 2,
+          "tar": ""
         }
       ],
       "total": 504.0
@@ -1853,7 +1895,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 301.1,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": null
@@ -1913,7 +1956,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 134.0,
-          "count": 3
+          "count": 3,
+          "tar": ""
         }
       ],
       "total": null
@@ -1969,7 +2013,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 504.0,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 504.0
@@ -2004,7 +2049,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 118.1,
-          "count": 4
+          "count": 4,
+          "tar": ""
         }
       ],
       "total": 472.4
@@ -2064,7 +2110,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 173.0,
-          "count": 4
+          "count": 4,
+          "tar": ""
         }
       ],
       "total": null
@@ -2162,7 +2209,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 173.1,
-          "count": 4
+          "count": 4,
+          "tar": ""
         }
       ],
       "total": 692.4
@@ -2197,7 +2245,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 405.0,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 405.0
@@ -2232,7 +2281,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 100.8,
-          "count": 5
+          "count": 5,
+          "tar": ""
         }
       ],
       "total": 504.0
@@ -2267,7 +2317,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 279.6,
-          "count": 3
+          "count": 3,
+          "tar": ""
         }
       ],
       "total": 838.8
@@ -2302,7 +2353,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 668.7,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 668.7
@@ -2400,7 +2452,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 168.0,
-          "count": 3
+          "count": 3,
+          "tar": ""
         }
       ],
       "total": 504.0
@@ -2435,7 +2488,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 139.8,
-          "count": 6
+          "count": 6,
+          "tar": ""
         }
       ],
       "total": 838.8
@@ -2491,7 +2545,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 538.6,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 538.6
@@ -2551,7 +2606,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 412.1,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": null
@@ -2607,7 +2663,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 98.9,
-          "count": 7
+          "count": 7,
+          "tar": ""
         }
       ],
       "total": 692.3
@@ -2642,7 +2699,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 608.0,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 608.0
@@ -2677,7 +2735,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 252.0,
-          "count": 2
+          "count": 2,
+          "tar": ""
         }
       ],
       "total": 504.0
@@ -2712,7 +2771,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 80.8,
-          "count": 9
+          "count": 9,
+          "tar": ""
         }
       ],
       "total": 727.2
@@ -2747,7 +2807,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 738.4,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 738.4
@@ -2845,7 +2906,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 258.3,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 258.3
@@ -2880,7 +2942,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 911.9,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 911.9
@@ -2915,18 +2978,21 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 200.0,
-          "count": 1
+          "count": 1,
+          "tar": ""
         },
         {
           "pct": 200.0,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         },
         {
           "pct": 200.0,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         }
       ],
-      "total": 600.0
+      "total": 200.0
     },
     "skill_icon": "6012",
     "char_name": "Tougekinki",
@@ -3004,7 +3070,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 689.2,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": null
@@ -3081,7 +3148,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 504.0,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 504.0
@@ -3116,7 +3184,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 118.3,
-          "count": 3
+          "count": 3,
+          "tar": "all enemies"
         }
       ],
       "total": 354.9
@@ -3151,7 +3220,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 152.8,
-          "count": 3
+          "count": 3,
+          "tar": "all enemies"
         }
       ],
       "total": 458.4
@@ -3186,7 +3256,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 130.8,
-          "count": 3
+          "count": 3,
+          "tar": "all enemies"
         }
       ],
       "total": 392.4
@@ -3225,7 +3296,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 662.8,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": null
@@ -3302,7 +3374,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 401.2,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 401.2
@@ -3337,7 +3410,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 109.4,
-          "count": 7
+          "count": 7,
+          "tar": ""
         }
       ],
       "total": 765.8
@@ -3393,7 +3467,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 838.7,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 838.7
@@ -3449,7 +3524,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 911.9,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 911.9
@@ -3484,7 +3560,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 279.6,
-          "count": 3
+          "count": 3,
+          "tar": ""
         }
       ],
       "total": 838.8
@@ -3519,7 +3596,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 76.4,
-          "count": 6
+          "count": 6,
+          "tar": "all enemies"
         }
       ],
       "total": 458.4
@@ -3554,7 +3632,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 223.7,
-          "count": 4
+          "count": 4,
+          "tar": ""
         }
       ],
       "total": 894.8
@@ -3589,7 +3668,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 378.4,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 378.4
@@ -3624,7 +3704,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 118.3,
-          "count": 3
+          "count": 3,
+          "tar": "all enemies"
         }
       ],
       "total": 354.9
@@ -3659,66 +3740,81 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 40.5,
-          "count": 1
+          "count": 1,
+          "tar": ""
         },
         {
           "pct": 40.5,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         },
         {
           "pct": 40.5,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         },
         {
           "pct": 40.5,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         },
         {
           "pct": 40.5,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         },
         {
           "pct": 40.5,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         },
         {
           "pct": 40.5,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         },
         {
           "pct": 40.5,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         },
         {
           "pct": 40.5,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         },
         {
           "pct": 40.5,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         },
         {
           "pct": 40.5,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         },
         {
           "pct": 40.5,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         },
         {
           "pct": 40.5,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         },
         {
           "pct": 40.5,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         },
         {
           "pct": 40.5,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         }
       ],
-      "total": 607.5
+      "total": 40.5
     },
     "skill_icon": "7713",
     "char_name": "Anemone",
@@ -3750,7 +3846,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 86.5,
-          "count": 8
+          "count": 8,
+          "tar": ""
         }
       ],
       "total": 692.0
@@ -3827,7 +3924,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 782.8,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 782.8
@@ -3904,7 +4002,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 72.0,
-          "count": 7
+          "count": 7,
+          "tar": ""
         }
       ],
       "total": 504.0
@@ -3939,7 +4038,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 838.7,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 838.7
@@ -3974,14 +4074,16 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 236.3,
-          "count": 1
+          "count": 1,
+          "tar": ""
         },
         {
           "pct": 236.3,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         }
       ],
-      "total": 472.6
+      "total": 236.3
     },
     "skill_icon": "8411",
     "char_name": "Anje",
@@ -4055,16 +4157,18 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 126.7,
-          "count": 6
+          "count": 6,
+          "tar": ""
         }
       ],
       "add": [
         {
           "pct": 175.9,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
-      "total": 936.1
+      "total": 760.2
     },
     "skill_icon": "8713",
     "char_name": "Torajiro",
@@ -4117,7 +4221,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 94.6,
-          "count": 4
+          "count": 4,
+          "tar": "all enemies"
         }
       ],
       "total": 378.4
@@ -4194,7 +4299,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 692.2,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 692.2
@@ -4229,7 +4335,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 272.2,
-          "count": 3
+          "count": 3,
+          "tar": ""
         }
       ],
       "total": 816.6
@@ -4310,7 +4417,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 243.2,
-          "count": 3
+          "count": 3,
+          "tar": ""
         }
       ],
       "total": null
@@ -4345,7 +4453,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 692.2,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 692.2
@@ -4401,7 +4510,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 205.0,
-          "count": 3
+          "count": 3,
+          "tar": ""
         }
       ],
       "total": 615.0
@@ -4436,7 +4546,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 168.0,
-          "count": 3
+          "count": 3,
+          "tar": ""
         }
       ],
       "total": 504.0
@@ -4471,7 +4582,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 467.4,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 467.4
@@ -4527,7 +4639,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 218.1,
-          "count": 2
+          "count": 2,
+          "tar": "all enemies"
         }
       ],
       "total": 436.2
@@ -4583,7 +4696,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 418.4,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 418.4
@@ -4618,7 +4732,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 184.6,
-          "count": 4
+          "count": 4,
+          "tar": ""
         }
       ],
       "total": 738.4
@@ -4653,7 +4768,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 738.4,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 738.4
@@ -4688,7 +4804,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 911.9,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 911.9
@@ -4723,14 +4840,16 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 236.3,
-          "count": 1
+          "count": 1,
+          "tar": ""
         },
         {
           "pct": 236.3,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         }
       ],
-      "total": 472.6
+      "total": 236.3
     },
     "skill_icon": "11011",
     "char_name": "Denji",
@@ -4762,7 +4881,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 143.3,
-          "count": 3
+          "count": 3,
+          "tar": "all enemies"
         }
       ],
       "total": 429.9
@@ -4818,7 +4938,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 911.9,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 911.9
@@ -4874,7 +4995,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 504.0,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 504.0
@@ -4909,7 +5031,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 252.0,
-          "count": 2
+          "count": 2,
+          "tar": ""
         }
       ],
       "total": 504.0
@@ -4944,7 +5067,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 504.0,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 504.0
@@ -5000,7 +5124,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 498.5,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 498.5
@@ -5035,7 +5160,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 204.1,
-          "count": 4
+          "count": 4,
+          "tar": ""
         }
       ],
       "total": 816.4
@@ -5112,7 +5238,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 178.9,
-          "count": 5
+          "count": 5,
+          "tar": ""
         }
       ],
       "total": 894.5
@@ -5189,7 +5316,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 851.1,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 851.1
@@ -5245,7 +5373,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 782.8,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 782.8
@@ -5364,7 +5493,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 467.4,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 467.4
@@ -5399,7 +5529,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 149.1,
-          "count": 6
+          "count": 6,
+          "tar": ""
         }
       ],
       "total": 894.6
@@ -5434,7 +5565,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 401.2,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 401.2
@@ -5473,7 +5605,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 392.4,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": null
@@ -5529,7 +5662,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 436.2,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 436.2
@@ -5564,7 +5698,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 692.2,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 692.2
@@ -5599,7 +5734,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 191.4,
-          "count": 4
+          "count": 4,
+          "tar": ""
         }
       ],
       "total": 765.6
@@ -5676,7 +5812,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 168.0,
-          "count": 3
+          "count": 3,
+          "tar": ""
         }
       ],
       "total": 504.0
@@ -5711,7 +5848,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 184.6,
-          "count": 4
+          "count": 4,
+          "tar": ""
         }
       ],
       "total": 738.4
@@ -5746,7 +5884,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 894.6,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 894.6
@@ -5802,7 +5941,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 252.0,
-          "count": 2
+          "count": 2,
+          "tar": ""
         }
       ],
       "total": 504.0
@@ -5858,7 +5998,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 128.2,
-          "count": 6
+          "count": 6,
+          "tar": ""
         }
       ],
       "total": 769.2
@@ -5893,7 +6034,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 931.9,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 931.9
@@ -5970,7 +6112,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 173.1,
-          "count": 4
+          "count": 4,
+          "tar": ""
         }
       ],
       "total": 692.4
@@ -6005,7 +6148,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 838.7,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 838.7
@@ -6040,7 +6184,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 192.3,
-          "count": 4
+          "count": 4,
+          "tar": ""
         }
       ],
       "total": 769.2
@@ -6075,7 +6220,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 931.9,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 931.9
@@ -6194,7 +6340,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 378.4,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 378.4
@@ -6229,7 +6376,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 765.5,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 765.5
@@ -6264,7 +6412,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 354.8,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 354.8
@@ -6320,7 +6469,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 504.0,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 504.0
@@ -6359,7 +6509,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 596.5,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": null
@@ -6394,7 +6545,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 838.7,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 838.7
@@ -6450,7 +6602,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 126.0,
-          "count": 4
+          "count": 4,
+          "tar": ""
         }
       ],
       "total": 504.0
@@ -6485,7 +6638,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 138.4,
-          "count": 5
+          "count": 5,
+          "tar": ""
         }
       ],
       "total": 692.0
@@ -6520,7 +6674,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 985.2,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 985.2
@@ -6576,7 +6731,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 911.9,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 911.9
@@ -6636,7 +6792,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 108.7,
-          "count": 6
+          "count": 6,
+          "tar": ""
         }
       ],
       "total": null
@@ -6675,7 +6832,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 552.0,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": null
@@ -6710,16 +6868,18 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 26.6,
-          "count": 6
+          "count": 6,
+          "tar": "all enemies"
         }
       ],
       "add": [
         {
           "pct": 37.0,
-          "count": 1
+          "count": 6,
+          "tar": ""
         }
       ],
-      "total": 196.6
+      "total": 159.6
     },
     "skill_icon": "27112",
     "char_name": "Asagi",
@@ -6755,7 +6915,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 729.6,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": null
@@ -6790,18 +6951,21 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 200.0,
-          "count": 1
+          "count": 1,
+          "tar": ""
         },
         {
           "pct": 200.0,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         },
         {
           "pct": 200.0,
-          "count": 1
+          "count": 1,
+          "tar": "1 random enemy"
         }
       ],
-      "total": 600.0
+      "total": 200.0
     },
     "skill_icon": "27212",
     "char_name": "Shiranui",
@@ -6858,7 +7022,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 344.3,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": null
@@ -6935,7 +7100,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 331.1,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 331.1
@@ -6970,7 +7136,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 80.2,
-          "count": 5
+          "count": 5,
+          "tar": "all enemies"
         }
       ],
       "total": 401.0
@@ -7026,7 +7193,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 838.7,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 838.7
@@ -7082,7 +7250,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 504.0,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": 504.0
@@ -7117,7 +7286,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 161.5,
-          "count": 4
+          "count": 4,
+          "tar": ""
         }
       ],
       "total": 646.0
@@ -7156,7 +7326,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 609.9,
-          "count": 1
+          "count": 1,
+          "tar": ""
         }
       ],
       "total": null
@@ -7212,7 +7383,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 354.8,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 354.8
@@ -7289,7 +7461,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 436.2,
-          "count": 1
+          "count": 1,
+          "tar": "all enemies"
         }
       ],
       "total": 436.2
@@ -7328,7 +7501,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
       "hits": [
         {
           "pct": 179.6,
-          "count": 3
+          "count": 3,
+          "tar": ""
         }
       ],
       "total": null
