@@ -63,6 +63,20 @@ function getPotentialByName(pots: any, name: string): any {
   return allPots.find((p: any) => p.name === name);
 }
 
+// Sort a build's potentials for display: cores first, then normals by rarity
+// ascending (Rarity 1 blue before Rarity 2 orange)
+function sortBuildList(pots: any, names: string[]): string[] {
+  return [...names].sort((a, b) => {
+    const pa = getPotentialByName(pots, a);
+    const pb = getPotentialByName(pots, b);
+    if (!pa || !pb) return 0;
+    const ra = pa.corner === null ? 0 : 1;
+    const rb = pb.corner === null ? 0 : 1;
+    if (ra !== rb) return ra - rb;
+    return (pa.rarity || 0) - (pb.rarity || 0);
+  });
+}
+
 // Helper to group normals by corner
 function groupByCorner(normals: any[]): Record<number, any[]> {
   const groups: Record<number, any[]> = { 1: [], 2: [], 3: [] };
@@ -1337,7 +1351,7 @@ function getTotalDupes(rarity: string): number {
               </div>
               <div class="build-cards">
                 {buildOrder?.main?.build1 ? (
-                  buildOrder.main.build1.potentials.map((name: string) => {
+                  sortBuildList(pots, buildOrder.main.build1.potentials).map((name: string) => {
                     const potential = getPotentialByName(pots, name);
                     if (!potential) return null;
                     const isCore = potential.corner === null;
@@ -1413,7 +1427,7 @@ function getTotalDupes(rarity: string): number {
               </div>
               <div class="build-cards">
                 {buildOrder?.main?.build2 ? (
-                  buildOrder.main.build2.potentials.map((name: string) => {
+                  sortBuildList(pots, buildOrder.main.build2.potentials).map((name: string) => {
                     const potential = getPotentialByName(pots, name);
                     if (!potential) return null;
                     const isCore = potential.corner === null;
@@ -1508,7 +1522,7 @@ function getTotalDupes(rarity: string): number {
                           </div>
                         );
                       })
-                    : [...common, ...mainRemaining]
+                    : [...mainRemaining, ...common]
                         .sort((a, b) => a.rarity - b.rarity)
                         .map((potential: any) => (
                           <div
@@ -1544,7 +1558,7 @@ function getTotalDupes(rarity: string): number {
               </div>
               <div class="build-cards">
                 {buildOrder?.support?.build1 ? (
-                  buildOrder.support.build1.potentials.map((name: string) => {
+                  sortBuildList(pots, buildOrder.support.build1.potentials).map((name: string) => {
                     const potential = getPotentialByName(pots, name);
                     if (!potential) return null;
                     const isCore = potential.corner === null;
@@ -1620,7 +1634,7 @@ function getTotalDupes(rarity: string): number {
               </div>
               <div class="build-cards">
                 {buildOrder?.support?.build2 ? (
-                  buildOrder.support.build2.potentials.map((name: string) => {
+                  sortBuildList(pots, buildOrder.support.build2.potentials).map((name: string) => {
                     const potential = getPotentialByName(pots, name);
                     if (!potential) return null;
                     const isCore = potential.corner === null;
@@ -1715,7 +1729,7 @@ function getTotalDupes(rarity: string): number {
                           </div>
                         );
                       })
-                    : [...common, ...supportRemaining]
+                    : [...supportRemaining, ...common]
                         .sort((a, b) => a.rarity - b.rarity)
                         .map((potential: any) => (
                           <div

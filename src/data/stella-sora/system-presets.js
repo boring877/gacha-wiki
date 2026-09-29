@@ -7929,6 +7929,339 @@ export const SYSTEM_PRESETS = [
     ]
   },
   {
+    "slug": "allie",
+    "name": "Allie",
+    "element": "Aqua",
+    "grade": 5,
+    "baseUnit": "13901",
+    "presets": [
+      {
+        "label": "Default Preset 1",
+        "skin": 13901,
+        "skinType": "base",
+        "code": "AAAAiwAAAH0AAAB/zbADAEbMSDAAAKIABAeI",
+        "members": [
+          {
+            "slug": "allie",
+            "name": "Allie",
+            "element": "Aqua",
+            "role": "Main",
+            "baseUnit": "13901",
+            "selection": {
+              "cores": [
+                {
+                  "icon": "513901",
+                  "name": "Quick Sweep",
+                  "level": null
+                },
+                {
+                  "icon": "513902",
+                  "name": "Multi Sweep",
+                  "level": null
+                }
+              ],
+              "normals": [
+                {
+                  "icon": "513905",
+                  "name": "Clothesline Stance",
+                  "level": 6
+                },
+                {
+                  "icon": "513906",
+                  "name": "Sweeper's Blow",
+                  "level": 6
+                },
+                {
+                  "icon": "513907",
+                  "name": "Cleaver Ready",
+                  "level": 6
+                },
+                {
+                  "icon": "513913",
+                  "name": "Sweep Dash",
+                  "level": 6
+                }
+              ],
+              "commons": [
+                {
+                  "icon": "513941",
+                  "name": "Purge Stance",
+                  "level": 1
+                },
+                {
+                  "icon": "513943",
+                  "name": "Mirror Blade",
+                  "level": 6
+                }
+              ]
+            }
+          },
+          {
+            "slug": "freesia",
+            "name": "Freesia",
+            "element": "Aqua",
+            "role": "Support",
+            "baseUnit": "12501",
+            "selection": {
+              "cores": [
+                {
+                  "icon": "512521",
+                  "name": "Realm of Frost",
+                  "level": null
+                },
+                {
+                  "icon": "512522",
+                  "name": "Chill Forecast",
+                  "level": null
+                }
+              ],
+              "normals": [
+                {
+                  "icon": "512525",
+                  "name": "Winter's Grip",
+                  "level": 6
+                },
+                {
+                  "icon": "512526",
+                  "name": "Penetrating Chill",
+                  "level": 1
+                },
+                {
+                  "icon": "512527",
+                  "name": "Crackling Zero",
+                  "level": 1
+                },
+                {
+                  "icon": "512530",
+                  "name": "Blessing of Faith",
+                  "level": 1
+                },
+                {
+                  "icon": "512531",
+                  "name": "Guardian's Heart",
+                  "level": 4
+                }
+              ],
+              "commons": []
+            }
+          },
+          {
+            "slug": "teresa",
+            "name": "Teresa",
+            "element": "Aqua",
+            "role": "Support",
+            "baseUnit": "12701",
+            "selection": {
+              "cores": [
+                {
+                  "icon": "512721",
+                  "name": "Surge: Infinite",
+                  "level": null
+                },
+                {
+                  "icon": "512723",
+                  "name": "Surge: Immortality",
+                  "level": null
+                }
+              ],
+              "normals": [
+                {
+                  "icon": "512725",
+                  "name": "Isn't It Awesome!",
+                  "level": 1
+                },
+                {
+                  "icon": "512731",
+                  "name": "Band-aid Collector",
+                  "level": 1
+                },
+                {
+                  "icon": "512733",
+                  "name": "Shortcut Seeker",
+                  "level": 3
+                }
+              ],
+              "commons": [
+                {
+                  "icon": "512741",
+                  "name": "Wave Breaker",
+                  "level": 6
+                },
+                {
+                  "icon": "512742",
+                  "name": "Power Unbound",
+                  "level": 1
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "Allie Default Preset 2",
+        "skin": 13902,
+        "skinType": "awakened",
+        "code": "AAAAiwAAAH0AAAB/MABnYkDMSBAMAKwABGOA",
+        "members": [
+          {
+            "slug": "allie",
+            "name": "Allie",
+            "element": "Aqua",
+            "role": "Main",
+            "baseUnit": "13901",
+            "selection": {
+              "cores": [
+                {
+                  "icon": "513903",
+                  "name": "Dusting Vortex",
+                  "level": null
+                },
+                {
+                  "icon": "513904",
+                  "name": "Sweep Extension",
+                  "level": null
+                }
+              ],
+              "normals": [
+                {
+                  "icon": "513909",
+                  "name": "Pending Chore",
+                  "level": 3
+                },
+                {
+                  "icon": "513911",
+                  "name": "Silent Paws",
+                  "level": 1
+                },
+                {
+                  "icon": "513913",
+                  "name": "Sweep Dash",
+                  "level": 6
+                },
+                {
+                  "icon": "513910",
+                  "name": "Overtime Chore",
+                  "level": 6
+                },
+                {
+                  "icon": "513912",
+                  "name": "Repeated Sweep",
+                  "level": 1
+                }
+              ],
+              "commons": [
+                {
+                  "icon": "513941",
+                  "name": "Purge Stance",
+                  "level": 1
+                }
+              ]
+            }
+          },
+          {
+            "slug": "freesia",
+            "name": "Freesia",
+            "element": "Aqua",
+            "role": "Support",
+            "baseUnit": "12501",
+            "selection": {
+              "cores": [
+                {
+                  "icon": "512521",
+                  "name": "Realm of Frost",
+                  "level": null
+                },
+                {
+                  "icon": "512522",
+                  "name": "Chill Forecast",
+                  "level": null
+                }
+              ],
+              "normals": [
+                {
+                  "icon": "512525",
+                  "name": "Winter's Grip",
+                  "level": 6
+                },
+                {
+                  "icon": "512526",
+                  "name": "Penetrating Chill",
+                  "level": 1
+                },
+                {
+                  "icon": "512527",
+                  "name": "Crackling Zero",
+                  "level": 1
+                },
+                {
+                  "icon": "512531",
+                  "name": "Guardian's Heart",
+                  "level": 4
+                },
+                {
+                  "icon": "512533",
+                  "name": "Temporal Revival",
+                  "level": 6
+                }
+              ],
+              "commons": []
+            }
+          },
+          {
+            "slug": "teresa",
+            "name": "Teresa",
+            "element": "Aqua",
+            "role": "Support",
+            "baseUnit": "12701",
+            "selection": {
+              "cores": [
+                {
+                  "icon": "512721",
+                  "name": "Surge: Infinite",
+                  "level": null
+                },
+                {
+                  "icon": "512723",
+                  "name": "Surge: Immortality",
+                  "level": null
+                }
+              ],
+              "normals": [
+                {
+                  "icon": "512725",
+                  "name": "Isn't It Awesome!",
+                  "level": 6
+                },
+                {
+                  "icon": "512731",
+                  "name": "Band-aid Collector",
+                  "level": 1
+                },
+                {
+                  "icon": "512729",
+                  "name": "Let Me Help!",
+                  "level": 6
+                },
+                {
+                  "icon": "512733",
+                  "name": "Shortcut Seeker",
+                  "level": 1
+                }
+              ],
+              "commons": [
+                {
+                  "icon": "512741",
+                  "name": "Wave Breaker",
+                  "level": 6
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
     "slug": "sparkla",
     "name": "Sparkla",
     "element": "Terra",

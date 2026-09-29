@@ -821,6 +821,27 @@ export const characterInfo = [
     tags: ["Support", "Steady", "Trekker Association"],
   },
 
+  {
+    id: 139,
+    slug: 'allie',
+    name: 'Allie',
+    description: 'As the mother of the orphanage, Allie wields her long blade to protect her children at all costs.',
+    voiceActor: {
+      cn: 'Zeng Tong',
+      cnLocalized: '曾彤',
+      jp: 'Erika Ishitobi',
+      jpLocalized: '石飛恵里花',
+    },
+    birthday: '3.21',
+    rarity: 5,
+    element: 'Aqua',
+    position: 'Vanguard',
+    attackType: 'Melee',
+    style: 'Steady',
+    faction: 'Freelance Trekker',
+    tags: ["Vanguard", "Steady", "Freelance Trekker"],
+  },
+
 ];
 
 // Helper function to get character by slug

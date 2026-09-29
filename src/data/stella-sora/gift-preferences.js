@@ -2,6 +2,38 @@
 // References gifts from gifts.js
 
 export const giftPreferences = {
+  "Allie": {
+    loves: [
+      "Blossom Porcelain Cup",
+      "Deluxe Blower",
+      "Exquisite Blower",
+      "Fragrant Ice Delight",
+      "Gilded Ceramic Bowl",
+      "Mystic Potion Kettle",
+      "Portable Blower",
+      "Summer Chill Crushed Ice",
+      "Sweet IceFurry",
+    ],
+    hates: [
+      "Emerging Talent",
+      "Rising Star",
+      "Shining Star",
+    ],
+    neutral: [
+      "Blazing Wind Spinner",
+      "Blazing Wings",
+      "Card Photo Capturer",
+      "Chilling Wind Spinner",
+      "Cosmic Form",
+      "Fiery Honeypot",
+      "Love Candle",
+      "Moonlit Companion",
+      "Reflective Photo Capturer",
+      "Stellanite Enchantment",
+      "Ultra-Precision Photo Capturer",
+      "Whisper Wind Spinner",
+    ],
+  },
   "Amber": {
     loves: [
       "Card Photo Capturer",

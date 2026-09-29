@@ -5031,5 +5031,134 @@ export const POTENTIAL_LISTS = {
         "name": "Marine Justice"
       }
     ]
+  },
+  "allie": {
+    "cid": 139,
+    "masterSpec": [
+      {
+        "id": 513901,
+        "name": "Quick Sweep"
+      },
+      {
+        "id": 513902,
+        "name": "Multi Sweep"
+      },
+      {
+        "id": 513903,
+        "name": "Dusting Vortex"
+      },
+      {
+        "id": 513904,
+        "name": "Sweep Extension"
+      }
+    ],
+    "masterNorm": [
+      {
+        "id": 513905,
+        "name": "Clothesline Stance"
+      },
+      {
+        "id": 513906,
+        "name": "Sweeper's Blow"
+      },
+      {
+        "id": 513907,
+        "name": "Cleaver Ready"
+      },
+      {
+        "id": 513908,
+        "name": "Wide Blade Arc"
+      },
+      {
+        "id": 513909,
+        "name": "Pending Chore"
+      },
+      {
+        "id": 513911,
+        "name": "Silent Paws"
+      },
+      {
+        "id": 513913,
+        "name": "Sweep Dash"
+      },
+      {
+        "id": 513910,
+        "name": "Overtime Chore"
+      },
+      {
+        "id": 513912,
+        "name": "Repeated Sweep"
+      }
+    ],
+    "assistSpec": [
+      {
+        "id": 513921,
+        "name": "Frost Blade"
+      },
+      {
+        "id": 513922,
+        "name": "Repeat Sweep"
+      },
+      {
+        "id": 513923,
+        "name": "Sweeper's Finale"
+      },
+      {
+        "id": 513924,
+        "name": "Accidental Ruin"
+      }
+    ],
+    "assistNorm": [
+      {
+        "id": 513925,
+        "name": "Timber Splitter"
+      },
+      {
+        "id": 513926,
+        "name": "Frosty Gale"
+      },
+      {
+        "id": 513927,
+        "name": "Housework Hazard"
+      },
+      {
+        "id": 513928,
+        "name": "Deep Freeze"
+      },
+      {
+        "id": 513930,
+        "name": "Crescent Icicle"
+      },
+      {
+        "id": 513931,
+        "name": "Winter's Vigil"
+      },
+      {
+        "id": 513932,
+        "name": "Icy Aegis"
+      },
+      {
+        "id": 513929,
+        "name": "Solitary Chill"
+      },
+      {
+        "id": 513933,
+        "name": "Moonglow Haven"
+      }
+    ],
+    "commons": [
+      {
+        "id": 513941,
+        "name": "Purge Stance"
+      },
+      {
+        "id": 513942,
+        "name": "Swift Wipe"
+      },
+      {
+        "id": 513943,
+        "name": "Mirror Blade"
+      }
+    ]
   }
 };

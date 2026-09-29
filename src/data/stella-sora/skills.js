@@ -3492,4 +3492,114 @@ export const characterSkills = {
     }
   },
 
+  'allie': {
+    name: 'Allie',
+    id: 139,
+    normalAttack: {
+      name: 'Housework Slash',
+      icon: 'Icon/Skill/13901_Normal',
+      description: 'Wields the long blade to deal DMG multiple times.Strike 1: <color=#fb8037>&Param1&</color> and <color=#fb8037>&Param2&</color> of ATK as Aqua Auto Attack DMG.Strike 2: <color=#fb8037>&Param3&</color> of ATK as Aqua Auto Attack DMG.Strike 3: <color=#fb8037>&Param4& x2</color> of ATK as Aqua Auto Attack DMG.Strike 4: <color=#fb8037>&Param5&</color>, <color=#fb8037>&Param6&</color>, and <color=#fb8037>&Param7&</color> of ATK as Aqua Auto Attack DMG.Strike 5: <color=#fb8037>&Param8&</color> of ATK as Aqua Auto Attack DMG.',
+      shortDescription: 'Wields the long blade to deal DMG multiple times.',
+      params: [
+        '17%/19%/22%/30%/32%/34%/39%/41%/43%/47%/51%/54%/58%',
+        '19%/21%/24%/33%/35%/38%/43%/46%/48%/52%/56%/60%/64%',
+        '29%/33%/37%/51%/55%/59%/67%/70%/74%/81%/87%/93%/98%',
+        '6%/7%/8%/11%/12%/13%/15%/16%/17%/19%/20%/21%/23%',
+        '17%/20%/22%/30%/33%/35%/40%/42%/45%/49%/52%/56%/59%',
+        '19%/22%/25%/33%/36%/39%/44%/46%/49%/53%/57%/61%/65%',
+        '20%/24%/27%/36%/39%/42%/48%/50%/53%/58%/62%/66%/70%',
+        '28%/33%/37%/50%/54%/58%/66%/70%/73%/80%/86%/92%/97%'
+      ],
+      hints: {}
+    },
+    skill: {
+      name: 'Sweeping Rush',
+      icon: 'Icon/Skill/13901_Skill_Main',
+      description: 'Dashes to the target\'s location, dealing <color=#fb8037>&Param1& x3</color> and <color=#fb8037>&Param6& x3</color> of ATK as AoE Aqua Skill DMG, which can trigger ##Aqua Mark#1018# and generate ##Tidal Wave#4053#.When Sweeping Rush (Main Skill) deals DMG, obtains 1 Sweep Mark: increases own &Param2& by <color=#fb8037>&Param3&</color> for &Param4&s. Up to 3 Sweep Marks can exist, and this effect grants at most 1 Sweep Mark each time.',
+      shortDescription: 'Dashes to the target\'s location, dealing AoE Aqua Skill DMG, which can trigger ##Aqua Mark#1018#.When Sweeping Rush (Main Skill) deals DMG, obtains 1 Sweep Mark: increases own &Param2&.',
+      params: [
+        '248%/285%/322%/434%/469%/503%/573%/603%/632%/692%/741%/791%/841%',
+        '',
+        '',
+        '12',
+        '3',
+        '217%/250%/282%/380%/410%/440%/501%/527%/553%/605%/649%/692%/736%',
+        '',
+        '',
+        '63%/82%/101%/120%/139%/157%/176%/195%/214%'
+      ],
+      hints: {
+        1018: {
+          id: 1018,
+          name: 'Aqua Mark',
+          description: 'The generic name for all Aqua Marks.When triggered by specific Aqua Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        },
+        4053: {
+          id: 4053,
+          name: 'Tide'
+        }
+      },
+      cooldown: '7s'
+    },
+    supportSkill: {
+      name: 'Sweeping Slashes',
+      icon: 'Icon/Skill/13901_Skill_Support',
+      description: 'Wields the long blade to perform Cycling Slashes, dealing <color=#fb8037>&Param1& x4</color> of ATK as AoE Aqua Skill DMG. Then unleashes a powerful Finishing Slash and forms ice crystals, dealing <color=#fb8037>&Param2&</color> and <color=#fb8037>&Param3&</color> of ATK as AoE Aqua Skill DMG. When the Support Skill deals DMG, it can trigger ##Aqua Mark#1018# and generate ##Tide#4053#.',
+      shortDescription: 'Wields the long blade to perform Cycling Slashes, dealing AoE Aqua Skill DMG. Then unleashes a powerful Finishing Slash and forms ice crystals, dealing AoE Aqua Skill DMG. When the Support Skill deals DMG, it can trigger ##Aqua Mark#1018#.',
+      params: [
+        '88%/101%/114%/154%/166%/178%/203%/214%/224%/245%/263%/280%/298%',
+        '158%/182%/206%/277%/299%/321%/365%/384%/403%/441%/473%/505%/536%',
+        '193%/222%/251%/338%/365%/392%/446%/470%/493%/539%/578%/617%/655%',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '63%/82%/101%/120%/139%/157%/176%/195%/214%'
+      ],
+      hints: {
+        1018: {
+          id: 1018,
+          name: 'Aqua Mark',
+          description: 'The generic name for all Aqua Marks.When triggered by specific Aqua Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        },
+        4053: {
+          id: 4053,
+          name: 'Tide'
+        }
+      },
+      cooldown: '12s'
+    },
+    ultimate: {
+      name: 'Deep Sweep',
+      icon: 'Icon/Skill/13901_Ultra_A',
+      description: 'Deep Sweep: Dust Off (Ultimate Phase 1): Deals <color=#fb8037>&Param1&</color> of ATK as AoE Aqua Ultimate DMG, and enters Sweeping Stance, increasing own &Param2& by <color=#fb8037>&Param3&</color> for &Param4&s. After casting Deep Sweep: Dust Off, unlocks Deep Sweep: Restore Order (Ultimate Phase 2) within a short time.Deep Sweep: Restore Order (Ultimate Phase 2): Pursues the target, dealing <color=#fb8037>&Param5&</color> of ATK as AoE Aqua Ultimate DMG.When the Ultimate deals DMG, it can trigger ##Aqua Mark#1018# and generate ##Tide#4053#.',
+      shortDescription: 'Deep Sweep: Dust Off (Ultimate Phase 1): Deals AoE Aqua Ultimate DMG and enters Sweeping Stance, increasing own &Param2&. After casting Deep Sweep: Dust Off, unlocks Deep Sweep: Restore Order (Ultimate Phase 2) within a short time.Deep Sweep: Restore Order (Ultimate Phase 2): Pursues the target, dealing AoE Aqua Ultimate DMG.When the Ultimate deals DMG, it can trigger ##Aqua Mark#1018#.',
+      params: [
+        '423%/486%/550%/740%/799%/859%/977%/1028%/1078%/1180%/1265%/1349%/1434%',
+        'ATK',
+        '11%/14%/18%/27%/30%/33%/40%/42%/45%',
+        '15',
+        '358%/412%/466%/627%/677%/728%/828%/871%/914%/1000%/1072%/1143%/1215%',
+        '',
+        '',
+        '',
+        '63%/82%/101%/120%/139%/157%/176%/195%/214%'
+      ],
+      hints: {
+        1018: {
+          id: 1018,
+          name: 'Aqua Mark',
+          description: 'The generic name for all Aqua Marks.When triggered by specific Aqua Trekkers\' attacks, the status is removed, and a special effect is activated.'
+        },
+        4053: {
+          id: 4053,
+          name: 'Tide'
+        }
+      },
+      cooldown: '40s',
+      energy: 275
+    }
+  },
+
 };

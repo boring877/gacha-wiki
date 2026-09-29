@@ -110,6 +110,33 @@ import { disc as swordAgainstStream } from './discs/sword-against-stream.js';
 import { disc as theLostPilgrim } from './discs/the-lost-pilgrim.js';
 import { disc as aGiftForTheJourney } from './discs/a-gift-for-the-journey.js';
 import { disc as snowyNightSurprise } from './discs/snowy-night-surprise.js';
+import { disc as AllThatWasBeautiful } from './discs/all-that-was-beautiful.js';
+import { disc as BedtimeStory } from './discs/bedtime-story.js';
+import { disc as MomentOfGlory } from './discs/moment-of-glory.js';
+import { disc as FlyOCagedBird } from './discs/fly-o-caged-bird.js';
+import { disc as SummerMarch } from './discs/summer-march.js';
+import { disc as RideTheWavesWithMe } from './discs/ride-the-waves-with-me.js';
+import { disc as DappledSunlight } from './discs/dappled-sunlight.js';
+import { disc as FleetingGlimmers } from './discs/fleeting-glimmers.js';
+import { disc as LittleParadise } from './discs/little-paradise.js';
+import { disc as JoyfulGathering } from './discs/joyful-gathering.js';
+import { disc as TouchOfMiracle } from './discs/touch-of-miracle.js';
+import { disc as StellarDestination } from './discs/stellar-destination.js';
+import { disc as PhantomOfTheBanquet } from './discs/phantom-of-the-banquet.js';
+import { disc as TracesOfStarlight } from './discs/traces-of-starlight.js';
+import { disc as DeliveredByTheBreeze } from './discs/delivered-by-the-breeze.js';
+import { disc as DawnAfterWinter } from './discs/dawn-after-winter.js';
+import { disc as PetalsOfBloomingMirage } from './discs/petals-of-blooming-mirage.js';
+import { disc as VeiledDawnOfSpring } from './discs/veiled-dawn-of-spring.js';
+import { disc as TheBudOfChange } from './discs/the-bud-of-change.js';
+import { disc as WineWarmLampsAlight } from './discs/wine-warm-lamps-alight.js';
+import { disc as TheCatSTreasure } from './discs/the-cat-s-treasure.js';
+import { disc as ChroniclesOfSpring } from './discs/chronicles-of-spring.js';
+import { disc as SoaringBlue } from './discs/soaring-blue.js';
+import { disc as WisteriaDream } from './discs/wisteria-dream.js';
+import { disc as SeedAlike } from './discs/seed-alike.js';
+import { disc as SeasonalWaves } from './discs/seasonal-waves.js';
+import { disc as ZestyCuriosity } from './discs/zesty-curiosity.js';
 
 // Collect all raw discs
 const allRawDiscs = [
@@ -188,6 +215,33 @@ const allRawDiscs = [
   theLostPilgrim,
   aGiftForTheJourney,
   snowyNightSurprise,
+  AllThatWasBeautiful,
+  BedtimeStory,
+  MomentOfGlory,
+  FlyOCagedBird,
+  SummerMarch,
+  RideTheWavesWithMe,
+  DappledSunlight,
+  FleetingGlimmers,
+  LittleParadise,
+  JoyfulGathering,
+  TouchOfMiracle,
+  StellarDestination,
+  PhantomOfTheBanquet,
+  TracesOfStarlight,
+  DeliveredByTheBreeze,
+  DawnAfterWinter,
+  PetalsOfBloomingMirage,
+  VeiledDawnOfSpring,
+  TheBudOfChange,
+  WineWarmLampsAlight,
+  TheCatSTreasure,
+  ChroniclesOfSpring,
+  SoaringBlue,
+  WisteriaDream,
+  SeedAlike,
+  SeasonalWaves,
+  ZestyCuriosity,
 ];
 
 // Process discs with full data for database

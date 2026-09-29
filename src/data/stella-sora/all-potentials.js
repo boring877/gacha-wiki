@@ -23422,7 +23422,551 @@ export const allPotentials = {
         }
       ]
     }
-  }
+  },
+  allie: {
+    id: 139,
+    name: 'Allie',
+    element: 'Aqua',
+    buildOrder: {
+      main: {
+        build1: {
+          title: 'Allie: Main Build 1',
+          description: 'A build that steadily stacks Sweep Marks to unleash Ultimate Phase 2 and deal higher DMG.',
+          potentials: [
+            'Quick Sweep',
+            'Multi Sweep',
+            'Clothesline Stance',
+            'Sweeper\'s Blow',
+            'Cleaver Ready'
+          ]
+        },
+        build2: {
+          title: 'Allie: Main Build 2',
+          description: 'A build that stacks Sweep Marks to cast Ultimate Phase 1 while boosting Auto Attacks and Marks.',
+          potentials: [
+            'Dusting Vortex',
+            'Sweep Extension',
+            'Wide Blade Arc',
+            'Pending Chore',
+            'Overtime Chore'
+          ]
+        }
+      },
+      support: {
+        build1: {
+          title: 'Allie: Support Build 1',
+          description: 'A build focused on boosting Cycling Slashes and casting Frost Blades.',
+          potentials: [
+            'Frost Blade',
+            'Repeat Sweep',
+            'Timber Splitter',
+            'Frosty Gale',
+            'Housework Hazard'
+          ]
+        },
+        build2: {
+          title: 'Allie: Support Build 2',
+          description: 'A build focused on boosting Finishing Slashes and ice crystals.',
+          potentials: [
+            'Sweeper\'s Finale',
+            'Accidental Ruin',
+            'Deep Freeze',
+            'Solitary Chill',
+            'Crescent Icicle'
+          ]
+        }
+      }
+    },
+    potentials: {
+      mainCore: [
+        {
+          name: 'Quick Sweep',
+          icon: '513901',
+          description: 'In an all-Aqua squad, increases the maximum number of Sweep Marks to <color=#0abec5>5</color>. They no longer disappear over time, and each Sweep Mark additionally increases Allie\'s &Param2& by <color=#0abec5>&Param3&</color>. When the number of lit ##Sweep Mark#4052# reaches the maximum, Deep Sweep: Restore Order (Ultimate Phase 2) can be cast via the Main Skill.',
+          shortDescription: 'In an all-Aqua squad, increases the maximum number of Sweep Marks. They no longer disappear over time, and each Sweep Mark additionally increases Allie\'s &Param2&. When the number of lit ##Sweep Mark#4052# reaches the maximum, Ultimate Phase 2 can be cast via the Main Skill.',
+          params: [
+            '5',
+            '',
+            ''
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            4052: {
+              id: 4052,
+              name: 'Sweep Mark',
+              description: 'After casting Deep Sweep: Restore Order (Ultimate Phase 2) via the Main Skill, Sweep Marks switch from lit to unlit, but still retain all of their bonus effects.'
+            }
+          }
+        },
+        {
+          name: 'Multi Sweep',
+          icon: '513902',
+          description: 'When casting Housework Slash (Auto Attack) or Sweeping Rush (Main Skill), generates a blade shadow that deals <color=#0abec5>&Param1&</color> of ATK as AoE Aqua Skill DMG, and gains 1 Sweep Mark. This effect can be triggered once every &Param4&s.',
+          shortDescription: 'When casting Auto Attacks or Main Skill, generates a blade shadow that deals AoE Aqua DMG and gains Sweep Mark.',
+          params: [
+            '114%/131%/148%/199%/215%/231%/263%/277%/291%/318%/341%/363%/386%',
+            '',
+            '',
+            '4'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Dusting Vortex',
+          icon: '513903',
+          description: 'When the number of lit Sweep Marks reaches the maximum, Deep Sweep: Dust Off (Ultimate Phase 1) can be cast via the Main Skill. Casting Ultimate Phase 1 by any means consumes all Sweep Marks and grants max stacks of Sweep Mark buffs. Cannot gain Sweep Marks while Sweeping Stance is active.',
+          shortDescription: 'When the number of lit Sweep Marks reaches the maximum, Ultimate Phase 1 can be cast via the Main Skill. Casting Ultimate Phase 1 by any means consumes all Sweep Marks and grants max stacks of Sweep Mark buffs.',
+          params: [],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Sweep Extension',
+          icon: '513904',
+          description: 'While Sweeping Stance of Deep Sweep: Dust Off (Ultimate Phase 1) is active, additionally increases Allie\'s &Param1& by <color=#0abec5>&Param2&</color>. Meanwhile, when Allie triggers ##Aqua Mark#1018# to generate ##Tidal Wave#4053#, if the target\'s Tide stacks reach <color=#0abec5>3</color> and <color=#0abec5>6</color>, additionally generates a Wave. Wave is enhanced to ##Abyssal Wave#4054#: deals <color=#0abec5>&Param3&</color> of ATK as AoE Mark DMG.',
+          shortDescription: 'While Sweeping Stance of Ultimate Phase 1 is active, additionally increases Allie\'s &Param1&.While Sweeping Stance is active, when the target\'s Tide reaches a certain number of stacks, additionally generates a Wave. Wave is enhanced to ##Abyssal Wave#4054#.',
+          params: [
+            '',
+            '',
+            '138%/179%/221%/262%/303%/344%/385%/427%/468%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {
+            1018: {
+              id: 1018,
+              name: 'Aqua Mark',
+              description: 'The generic name for all Aqua Marks.When triggered by specific Aqua Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            },
+            4053: {
+              id: 4053,
+              name: 'Tide'
+            },
+            4054: {
+              id: 4054,
+              name: 'Abyssal Wave',
+              description: 'Abyssal Wave is treated as Wave and can trigger effects related to Wave.'
+            }
+          }
+        }
+      ],
+      mainNormal: [
+        {
+          name: 'Clothesline Stance',
+          icon: '513905',
+          description: 'All Ultimate DMG dealt by Deep Sweep: Restore Order (Ultimate Phase 2) becomes Skill DMG. When casting Deep Sweep: Restore Order (Ultimate Phase 2) or Sweeping Rush (Main Skill), increases own &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks.',
+          shortDescription: 'All DMG dealt by Ultimate Phase 2 becomes Skill DMG. When casting Ultimate Phase 2 or the Main Skill, increases own &Param1&.',
+          params: [
+            'Skill DMG',
+            '2%/3.2%/4.4%/5.6%/6.8%/8%/8.4%/8.8%/9.2%',
+            '8',
+            '6'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Wide Blade Arc',
+          icon: '513908',
+          description: 'In an all-Aqua squad, all DMG dealt by Deep Sweep: Dust Off (Ultimate Phase 1) and Housework Slash (Auto Attack) becomes Mark DMG. Meanwhile, every &Param1& increase in Auto Attack DMG additionally increases Allie\'s Mark DMG by &Param2&, up to <color=#ec6d21>&Param3&</color>. Reduces Allie\'s &Param4& by &Param5&.',
+          shortDescription: 'In an all-Aqua squad, all DMG dealt by Ultimate Phase 1 and Auto Attacks becomes Mark DMG. Meanwhile, increasing Allie\'s Auto Attack DMG additionally increases her Mark DMG. Reduces Allie\'s &Param4&.',
+          params: [
+            '1.3%/1.3%/1.3%/1.3%/1.3%/1.3%/1.3%/1.3%/1.3%',
+            '1%/1%/1%/1%/1%/1%/1%/1%/1%',
+            '50%/80%/110%/140%/170%/200%/210%/220%/230%',
+            'Mark Crit Rate',
+            '-100%/-100%/-100%/-100%/-100%/-100%/-100%/-100%/-100%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Silent Paws',
+          icon: '513911',
+          description: 'When dodging or gaining a Shield, increases Allie\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s.',
+          shortDescription: 'When dodging or gaining a Shield, increases Allie\'s &Param1&.',
+          params: [
+            'ATK',
+            '10%/13%/17%/20%/23%/27%/30%/33%/37%',
+            '8'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Sweeper\'s Blow',
+          icon: '513906',
+          description: 'When gaining a Sweep Mark, increases the &Param1& dealt by Sweeping Rush (Main Skill) and Multi Sweep (Potential) by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks.',
+          shortDescription: 'When gaining a Sweep Mark, increases the &Param1& dealt by the Main Skill and Multi Sweep (Potential).',
+          params: [
+            'Skill DMG',
+            '2.5%/4%/5.5%/7%/8.5%/10%/10.5%/11%/11.5%',
+            '8',
+            '6'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Pending Chore',
+          icon: '513909',
+          description: 'While Sweeping Stance is active, every <color=#ec6d21>&Param5&</color> times Wave is generated via ##Tidal Wave#4053#, grants 1 stack of Pending Chore, up to 4 stacks. Meanwhile, increases Allie\'s &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks. Upon exiting Sweeping Stance, each stack of Pending Chore is converted into 1 Sweep Mark.',
+          shortDescription: 'While Sweeping Stance is active, generating Wave via ##Tidal Wave#4053# a certain number of times grants 1 stack of Pending Chore and increases Allie\'s &Param1&. Upon exiting Sweeping Stance, Pending Chores are converted into Sweep Marks.',
+          params: [
+            'Auto Attack DMG',
+            '10%/16%/22%/28%/34%/40%/41%/42%/44%',
+            '9',
+            '3',
+            ''
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {
+            4053: {
+              id: 4053,
+              name: 'Tide'
+            }
+          }
+        },
+        {
+          name: 'Repeated Sweep',
+          icon: '513912',
+          description: 'When Allie deals Mark DMG, increases her &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks.',
+          shortDescription: 'When Allie deals Mark DMG, increases her &Param1&.',
+          params: [
+            'ATK',
+            '2%/3.2%/4.4%/5.6%/6.8%/8%/9.2%/10.4%/11.6%',
+            '5',
+            '6'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Cleaver Ready',
+          icon: '513907',
+          description: 'For the next <color=#ec6d21>&Param2&</color>s after casting Deep Sweep: Restore Order (Ultimate Phase 2), the trigger interval of blade shadow is reduced to <color=#ec6d21>&Param3&</color>s. This effect can be triggered only once every &Param4&s. In an all-Aqua squad, increases Allie\'s &Param5& by <color=#ec6d21>&Param6&</color> and &Param7& by <color=#ec6d21>&Param8&</color>.',
+          shortDescription: 'For a period of time after casting Ultimate Phase 2, the trigger interval of blade shadow is reduced. In an all-Aqua squad, increases Allie\'s &Param5& and &Param7&.',
+          params: [
+            '',
+            '8/10/12/14/16/20/20/20/20',
+            '',
+            '15',
+            'Skill Crit Rate',
+            '5%/8%/11%/14%/17%/20%/20%/20%/20%',
+            'Skill Crit DMG',
+            ''
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Overtime Chore',
+          icon: '513910',
+          description: 'Increases Allie\'s &Param3& by <color=#ec6d21>&Param4&</color>. In an all-Aqua squad and while Sweeping Stance is active, Housework Slash (Auto Attack) is enhanced, increasing its &Param1& by <color=#ec6d21>&Param2&</color>. It can also trigger ##Aqua Mark#1018# to generate ##Tidal Wave#4053#.',
+          shortDescription: 'Increases Allie\'s &Param3&. In an all-Aqua squad and while Sweeping Stance is active, Housework Slash (Auto Attack) is enhanced, increasing its &Param1&. It can also trigger ##Aqua Mark#1018# to generate ##Tidal Wave#4053#.',
+          params: [
+            'DMG multiplier',
+            '17.5%/28%/38.5%/49%/59.5%/70%/79.3%/92.2%/108.5%',
+            'Auto Attack DMG',
+            '15%/24%/33%/42%/51%/60%/63%/66%/69%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {
+            1018: {
+              id: 1018,
+              name: 'Aqua Mark',
+              description: 'The generic name for all Aqua Marks.When triggered by specific Aqua Trekkers\' attacks, the status is removed, and a special effect is activated.'
+            },
+            4053: {
+              id: 4053,
+              name: 'Tide'
+            }
+          }
+        },
+        {
+          name: 'Sweep Dash',
+          icon: '513913',
+          description: '0.5s after holding Dodge to dash, immediately gains 3 Sweep Marks. This effect can be triggered once every &Param1&s.For each Aqua Trekker in the squad, increases Allie\'s &Param2& by <color=#ec6d21>&Param3&</color>.',
+          shortDescription: 'A period of time after holding Dodge to dash, immediately gains 3 Sweep Marks.For each Aqua Trekker in the squad, increases Allie\'s &Param2&.',
+          params: [
+            '120',
+            'Aqua DMG',
+            '5%/8%/11%/14%/17%/20%/23%/26%/29%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        }
+      ],
+      supportCore: [
+        {
+          name: 'Frost Blade',
+          icon: '513921',
+          description: 'Cycling Slashes fires Frost Blades, dealing <color=#0abec5>&Param1&</color> of ATK as AoE Aqua Skill DMG multiple times.',
+          shortDescription: 'Cycling Slashes fires Frost Blades, dealing AoE Aqua Skill DMG multiple times.',
+          params: [
+            '27%/32%/36%/48%/52%/56%/64%/67%/71%/77%/83%/89%/94%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Repeat Sweep',
+          icon: '513922',
+          description: 'Cycling Slashes can deal <color=#0abec5>8</color> more hits, and its &Param1& dealt is increased by <color=#0abec5>&Param2&</color>.',
+          shortDescription: 'Cycling Slashes can deal more hits, and its &Param1& dealt is increased.',
+          params: [
+            'Aqua DMG',
+            '20%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Sweeper\'s Finale',
+          icon: '513923',
+          description: 'Finishing Slash deals an additional <color=#0abec5>&Param1& x3</color> of ATK as AoE Aqua Skill DMG.',
+          shortDescription: 'Finishing Slash deals additional AoE Aqua Skill DMG.',
+          params: [
+            '127%/147%/166%/223%/241%/259%/294%/310%/325%/356%/381%/407%/432%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Accidental Ruin',
+          icon: '513924',
+          description: 'The ice crystals formed by Finishing Slash will explode, dealing <color=#0abec5>&Param1&</color> of ATK as AoE Aqua Skill DMG again.',
+          shortDescription: 'The ice crystals formed by Finishing Slash will explode, dealing AoE Aqua Skill DMG again.',
+          params: [
+            '127%/147%/166%/223%/241%/259%/294%/310%/325%/356%/381%/407%/432%'
+          ],
+          rarity: 1,
+          stype: 42,
+          corner: null,
+          hints: {}
+        }
+      ],
+      supportNormal: [
+        {
+          name: 'Timber Splitter',
+          icon: '513925',
+          description: 'Additionally increases the &Param1& dealt by Cycling Slashes by <color=#ec6d21>&Param2&</color>. It is further increased by <color=#ec6d21>&Param4&</color> against targets with ##Resilience Break#1006#.',
+          shortDescription: 'Additionally increases the &Param1& dealt by Cycling Slashes. It is further increased against targets with ##Resilience Break#1006#.',
+          params: [
+            'Skill DMG',
+            '12.2%/19.5%/26.8%/34.2%/41.5%/48.8%/56.1%/63.4%/70.8%',
+            'Skill DMG',
+            '6.1%/9.8%/13.4%/17.1%/20.7%/24.4%/28.1%/31.7%/35.4%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {
+            1006: {
+              id: 1006,
+              name: 'Resilience Break',
+              description: 'When Resilience decreases to 0, Superarmor effect is removed'
+            }
+          }
+        },
+        {
+          name: 'Deep Freeze',
+          icon: '513928',
+          description: 'Increases the &Param1& dealt by Finishing Slash and ice crystals by <color=#ec6d21>&Param2&</color>. It is additionally increased by <color=#ec6d21>&Param4&</color> against elite or higher-tier targets.',
+          shortDescription: 'Increases the &Param1& dealt by Finishing Slash and ice crystals. It is additionally increased against elite or higher-tier targets.',
+          params: [
+            'Skill DMG',
+            '11%/18%/25%/32%/39%/46%/52%/59%/66%',
+            'Skill DMG',
+            '6%/9%/13%/16%/19%/23%/26%/30%/33%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Winter\'s Vigil',
+          icon: '513931',
+          description: 'When a Support Trekker is on the battlefield, increases &Param1& dealt by Allie by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'When a Support Trekker is on the battlefield, increases &Param1& dealt by Allie.',
+          params: [
+            'Aqua DMG',
+            '15%/24%/33%/42%/51%/60%/69%/78%/87%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 1,
+          hints: {}
+        },
+        {
+          name: 'Frosty Gale',
+          icon: '513926',
+          description: 'When Cycling Slashes hits more than 3 targets, increases its &Param1& dealt by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'When Cycling Slashes hits more than 3 targets, increases its &Param1& dealt.',
+          params: [
+            'Aqua DMG',
+            '15%/24%/33%/42%/51%/60%/69%/78%/87%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Solitary Chill',
+          icon: '513929',
+          description: 'When Finishing Slash and ice crystals hit fewer than 4 targets, increases their &Param1& dealt by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'When Finishing Slash and ice crystals hit fewer than 4 targets, increases their &Param1& dealt.',
+          params: [
+            'Aqua DMG',
+            '17%/27.2%/37.4%/47.6%/57.8%/68%/78.2%/88.4%/98.6%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Icy Aegis',
+          icon: '513932',
+          description: 'Increases Allie\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Increases Allie\'s &Param1&.',
+          params: [
+            'Aqua DMG',
+            '12%/19%/26%/34%/41%/48%/55%/62%/70%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: 2,
+          hints: {}
+        },
+        {
+          name: 'Housework Hazard',
+          icon: '513927',
+          description: 'For every 0.5s Allie is on the battlefield, increases her &Param1& dealt by <color=#ec6d21>&Param2&</color>, up to 4 stacks.',
+          shortDescription: 'The longer Allie is on the battlefield, the higher the &Param1& she deals.',
+          params: [
+            'Skill DMG',
+            '3%/4%/6%/7%/9%/10%/12%/13%/15%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Crescent Icicle',
+          icon: '513930',
+          description: 'Increases the range of ice crystals. Finishing Slash generates 2 more ice crystals, each dealing <color=#ec6d21>&Param1&</color> of ATK as Aqua AoE Skill DMG.',
+          shortDescription: 'Increases the range of ice crystals. Finishing Slash generates more ice crystals, each dealing Aqua AoE Skill DMG.',
+          params: [
+            '117%/187%/257%/327%/397%/467%/537%/607%/677%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        },
+        {
+          name: 'Moonglow Haven',
+          icon: '513933',
+          description: 'In an all-Aqua squad, boosts the squad\'s &Param1& by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'In an all-Aqua squad, boosts the squad\'s stats.',
+          params: [
+            'Aqua DMG',
+            '10%/16%/22%/28%/34%/40%/46%/52%/58%'
+          ],
+          rarity: 1,
+          stype: 41,
+          corner: 3,
+          hints: {}
+        }
+      ],
+      common: [
+        {
+          name: 'Purge Stance',
+          icon: '513941',
+          description: 'When casting Deep Sweep (Ultimate), increases her &Param1& by <color=#ec6d21>&Param2&</color> for &Param3&s, up to &Param4& stacks.',
+          shortDescription: 'When casting the Ultimate, boosts stats.',
+          params: [
+            'ATK',
+            '6%/9.6%/13.2%/16.8%/20%/24%/28%/31.2%/34.8%',
+            '15',
+            '2'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Swift Wipe',
+          icon: '513942',
+          description: 'Increases the burst range of Deep Sweep: Dust Off (Ultimate Phase 1) by <color=#ec6d21>&Param3&</color>, and increases its &Param4& dealt by <color=#ec6d21>&Param5&</color>.',
+          shortDescription: 'Increases the burst range and DMG of Ultimate Phase 1.',
+          params: [
+            'DMG multiplier',
+            '50%/80%/110%/140%/170%/200%/230%/260%/290%',
+            '',
+            'DMG multiplier',
+            '50%/80%/110%/140%/170%/200%/230%/260%/290%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        },
+        {
+          name: 'Mirror Blade',
+          icon: '513943',
+          description: 'Deep Sweep: Restore Order (Ultimate Phase 2) creates an additional long blade phantom that deals <color=#ec6d21>&Param3&</color> of ATK as AoE Aqua Ultimate DMG. Increases Ultimate Phase 2\'s &Param1& dealt by <color=#ec6d21>&Param2&</color>.',
+          shortDescription: 'Ultimate Phase 2 creates an additional long blade phantom that deals DMG. Increases Ultimate Phase 2\'s &Param1& dealt.',
+          params: [
+            'DMG multiplier',
+            '8%/12%/17%/21%/26%/30%/35%/39%/44%',
+            '337%/540%/742%/944%/1147%/1349%/1551%/1754%/1956%'
+          ],
+          rarity: 2,
+          stype: 41,
+          corner: null,
+          hints: {}
+        }
+      ]
+    }
+  },
 };
 
 // Helper functions
@@ -23435,6 +23979,10 @@ export const getAllCharacterNames = () =>
   });
 
 
+
+
+// kebab-slug aliases
+allPotentials['allie'] = allPotentials.allie;
 
 // Get a specific potential by name for a character (searches all categories)
 export const getPotentialByName = (characterName, potentialName) => {

@@ -62,6 +62,7 @@ import { Sparkla } from './characters/characters/sparkla.js';
 import { Otoha } from './characters/characters/otoha.js';
 import { Karin } from './characters/characters/karin.js';
 import { SuntideWillow } from './characters/characters/suntide-willow.js';
+import { Allie } from './characters/characters/allie.js';
 
 // Map character data by slug for easy lookup
 const characterDataMap = {
@@ -106,6 +107,8 @@ const characterDataMap = {
   'otoha': Otoha,
   'karin': Karin,
   'suntide-willow': SuntideWillow,
+  allie: Allie,
+  'allie': Allie,
 };
 
 // Map 5-star characters to their signature discs

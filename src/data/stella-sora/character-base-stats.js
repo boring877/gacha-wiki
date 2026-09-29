@@ -607,6 +607,21 @@ export const characterBaseStats = {
     elementalIgnoreRes: 0.0
   },
 
+  'allie': {
+    def: 190,
+    critRate: 5.0,
+    critDmg: 150.0,
+    maxEnergy: 275,
+    chargeEfficiencyMain: 100.0,
+    chargeEfficiencySupport: 75.0,
+    vulExploit: 0.0,
+    defPen: 0,
+    ignoreDef: 0.0,
+    element: "Aqua",
+    elementalDmg: 100.0,
+    elementalPen: 0,
+    elementalIgnoreRes: 0.0,
+  },
 };
 
 // Add aliases for kebab-case slugs

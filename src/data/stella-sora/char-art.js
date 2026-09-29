@@ -2078,5 +2078,45 @@ export const CHAR_ART = {
         "caption": "Date: By Your Side"
       }
     ]
-  }
+  },
+  "allie": {
+      "base": "13901",
+      "main": "charart/13901_SK.png",
+      "skins": [
+        {
+          "unit": "13901",
+          "name": "Default",
+          "desc": "",
+          "type": 1
+        },
+        {
+          "unit": "13902",
+          "name": "Awakened",
+          "desc": "",
+          "type": 2
+        }
+      ],
+      "gallery": [
+        {
+          "src": "charart/13901_GOODS.png",
+          "caption": "Illustrated Card"
+        },
+        {
+          "src": "charart/13901_Q.png",
+          "caption": "Portrait"
+        },
+        {
+          "src": "gameimg/characters/Allie.jpg",
+          "caption": "Splash Art"
+        },
+        {
+          "src": "dating/allie-event-0.png",
+          "caption": "Date: Call Your Parents"
+        },
+        {
+          "src": "dating/allie-event-1.png",
+          "caption": "Date: The Charcoal Cake"
+        }
+      ]
+    }
 };

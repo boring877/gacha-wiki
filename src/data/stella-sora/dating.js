@@ -899,6 +899,29 @@ export const datingEvents = [
       },
     ],
   },
+  {
+    id: 139,
+    character: 'Allie',
+    slug: 'allie',
+    events: [
+      {
+        index: 0,
+        name: 'Call Your Parents',
+        icon: 'DatingSPCG_139301',
+        image: 'allie-event-0.png',
+        clue: 'Visit the Academy to unlock',
+        secondChoice: 'The professor\'s glare is so intense you don\'t dare correct him. You grit your teeth and follow him into the classroom.\nThe second you step through the door, he puts you in charge of handing out the exams and announces that the pop quiz is starting.\nYou fully intend to ditch through the back door the moment the last paper leaves your hand, but he catches you in the act. He marches you straight back to a seat, then casually hands you an exam paper and a pen.',
+      },
+      {
+        index: 1,
+        name: 'The Charcoal Cake',
+        icon: 'DatingSPCG_139302',
+        image: 'allie-event-1.png',
+        clue: 'Visit the Dessert Shop to unlock',
+        secondChoice: 'With a few professional pastry chefs walking you through it, the two of you get straight to work.\nSurprisingly, the prep phase actually goes off without a hitch. Whipping the cream, folding the dough, mixing in the eggs and milk—no disasters whatsoever.\nSo you both slide your cake batter into the oven.',
+      },
+    ],
+  },
 ];
 
 // Helper function to get dating events by character slug
