@@ -22,7 +22,7 @@ export const kellerBuild = {
         description: "Energy Cost: 4\nCooldown: 5.0s\nDeals ice damage equal to 1711.1% attack power to all enemies and increase their skill cooldown by 40% for 8 seconds. Enters the [Ice Giant] state,  increasing MaxHP by 73.3%,  attack power by 172.2%,  defense by 344.4%,  and resistance to all attributes by 58.9% for 8 seconds. When performing a normal attack while in the [Ice Giant] ultimate skill state,  an additional ice damage equal to 51.7% attack power will be dealt as normal attack damage."
       },
       {
-        skill: "Passive: Cold Moon Flowing Light",
+        skill: "Passive: Winter Blade",
         priority: 3,
         level: "Level 14",
         reason: "Every normal hit shreds DEF (−9.8%, 10 stacks) and cuts enemy shield gain/healing",

@@ -195,7 +195,7 @@ export const sharinData = {
       levelValues: [["70%", "50%", "60%", "35%"], ["77.8%", "52.8%", "66.7%", "38.9%"], ["85.6%", "55.6%", "73.3%", "42.8%"], ["93.3%", "58.3%", "80%", "46.7%"], ["101.1%", "61.1%", "86.7%", "50.6%"], ["108.9%", "63.9%", "93.3%", "54.4%"], ["116.7%", "66.7%", "100%", "58.3%"], ["124.4%", "69.4%", "106.7%", "62.2%"], ["132.2%", "72.2%", "113.3%", "66.1%"], ["140%", "75%", "120%", "70%"], ["147.8%", "77.8%", "126.7%", "73.9%"], ["155.6%", "80.6%", "133.3%", "77.8%"], ["163.3%", "83.3%", "140%", "81.7%"], ["171.1%", "86.1%", "146.7%", "85.6%"]],
     },
     passive:     {
-      name: "Azure Motion",
+      name: "Cang Dong",
       description: "At the start of battle, all allies gain 1 stack of [Qi] every 5 seconds. Each stack of [Qi] increases healing received by 12.2%, shield received by 12.2%, damage dealt by 12.2%, and energy recovery efficiency by 3.4%, up to a maximum of 10 stacks.",
       template: "At the start of battle, all allies gain 1 stack of [Qi] every 5 seconds. Each stack of [Qi] increases healing received by {0}, shield received by {1}, damage dealt by {2}, and energy recovery efficiency by {3}, up to a maximum of 10 stacks.",
       levelValues: [["5%", "5%", "5%", "2%"], ["5.6%", "5.6%", "5.6%", "2.1%"], ["6.1%", "6.1%", "6.1%", "2.2%"], ["6.7%", "6.7%", "6.7%", "2.3%"], ["7.2%", "7.2%", "7.2%", "2.4%"], ["7.8%", "7.8%", "7.8%", "2.6%"], ["8.3%", "8.3%", "8.3%", "2.7%"], ["8.9%", "8.9%", "8.9%", "2.8%"], ["9.4%", "9.4%", "9.4%", "2.9%"], ["10%", "10%", "10%", "3%"], ["10.6%", "10.6%", "10.6%", "3.1%"], ["11.1%", "11.1%", "11.1%", "3.2%"], ["11.7%", "11.7%", "11.7%", "3.3%"], ["12.2%", "12.2%", "12.2%", "3.4%"]],
