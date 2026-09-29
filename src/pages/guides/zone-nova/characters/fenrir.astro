@@ -1,0 +1,16 @@
+---
+import CharacterIndividualLayout from '../../../../layouts/zone-nova/CharacterIndividualLayout.astro';
+import CharacterPageTemplate from '../../../../templates/zone-nova/CharacterPageTemplate.astro';
+import { fenrirData, fenrirSEO } from '../../../../data/zone-nova/characters/fenrir.js';
+
+export const prerender = true;
+---
+
+<CharacterIndividualLayout
+  title={fenrirSEO.title}
+  description={fenrirSEO.description}
+  gameTitle={fenrirData.name}
+  character={fenrirData}
+>
+  <CharacterPageTemplate characterData={fenrirData} />
+</CharacterIndividualLayout>
