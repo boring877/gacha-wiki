@@ -1,5 +1,5 @@
 // Zone Nova item database - generated from decrypted stack_item_info master data
-// 478 items. Source: D:\ZoneNova\output\masterdata (AES crack 2026-09-03).
+// 481 items. Source: D:\ZoneNova\output\masterdata (AES crack 2026-09-03).
 // Regen: python D:\ZoneNova\gen_items_js.py
 
 export const items = [
@@ -782,6 +782,22 @@ export const items = [
   {
     id: 9016,
     name: 'Selectable Limited Character II',
+    description: 'You can choose to obtain one of the specified limited memories or permanent Remembrance.',
+    rarity: 'SSR',
+    type: 'Selection Box',
+    icon: 'Icon_Remem_Pickbox.png',
+  },
+  {
+    id: 9017,
+    name: 'DMM 15th Anniversary Selectable Limited Character',
+    description: 'You can choose one of the specified limited-time characters or permanent characters.',
+    rarity: 'SSR',
+    type: 'Selection Box',
+    icon: 'Icon_Char_Pickbox.png',
+  },
+  {
+    id: 9018,
+    name: 'DMM 15th Anniversary Selectable Limited Remembrance',
     description: 'You can choose to obtain one of the specified limited memories or permanent Remembrance.',
     rarity: 'SSR',
     type: 'Selection Box',
@@ -3820,6 +3836,14 @@ export const items = [
     icon: 'Icon_Character_Awaken_4058.png',
   },
   {
+    id: 1104059,
+    name: 'Fenrir\'s Soul Stone',
+    description: 'Inside, a tiny, ever-burning flame seems to slowly rotate, occasionally flashing with starlight-like highlights. Its surface is etched with fine cracks, yet it exudes an aura of indestructibility, as if it has withstood the test of countless years. When you hold it in your hand, a warm and weighty feeling spreads from your palm, reaching deep into your heart.',
+    rarity: 'SSR',
+    type: 'Awakening',
+    icon: 'Icon_Character_Awaken_4059.png',
+  },
+  {
     id: 1108001,
     name: 'Sigurd Soul Stone',
     description: 'Inside, there seems to be a ball of everlasting flame slowly rotating, occasionally flashing bright spots like stars. Its surface is engraved with tiny cracks, but it exudes an indestructible aura, as if it has experienced the baptism of countless years. When you hold it in your hand, a warm and heavy feeling will spread along the palm of your hand and reach the bottom of your heart.',
@@ -3831,7 +3855,7 @@ export const items = [
 
 export const itemTypes = [
   { name: 'Avatar', count: 179 },
-  { name: 'Awakening', count: 65 },
+  { name: 'Awakening', count: 66 },
   { name: 'Campaign Token', count: 38 },
   { name: 'Character EXP', count: 3 },
   { name: 'Character Rank-Up', count: 21 },
@@ -3844,7 +3868,7 @@ export const itemTypes = [
   { name: 'Rune Craft', count: 1 },
   { name: 'Rune EXP', count: 3 },
   { name: 'Rune Shard', count: 3 },
-  { name: 'Selection Box', count: 34 },
+  { name: 'Selection Box', count: 36 },
   { name: 'Story Unlock', count: 1 },
   { name: 'Talent', count: 15 },
   { name: 'Training Material', count: 22 },
