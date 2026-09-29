@@ -152,6 +152,14 @@ export const BRAVERY_SEASONS = [
     factionsRaw: [2, 4, 5, 6],
     rule: 'Every 5 seconds, all units gain 2 seconds of [Tenacity]: Health cannot fall below 1 point.',
   },
+  {
+    id: 27,
+    start: '2026-09-30',
+    end: '2026-10-13',
+    factions: factionsOf([2, 5, 6, 7]),
+    factionsRaw: [2, 5, 6, 7],
+    rule: 'All allies receive 70% less damage. Every 3 seconds, all allies receive and deal 1% more damage. DISRUPTOR reduces the target’s damage dealt by 40% for 10 seconds when using an ultimate skill. DISRUPTOR reduces the target’s movement speed by 45%, increases their chances of being critical hit by 30%, and increases their damage taken by 50% for 4 seconds when dealing frost damage.',
+  },
 ];
 
 // Current season stages (tower_setting_info): 180s time limit each
