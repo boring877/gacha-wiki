@@ -54,7 +54,7 @@ export const CLASS_ORDER = [
 // Overall PvE Tier List - General content performance
 export const PVE_TIER_LIST = {
   name: 'PvE Rankings by Class & Role',
-  lastUpdated: '2026-09-15',
+  lastUpdated: '2026-09-29',
   description:
     'Class-based PvE rankings with role highlights for story, events, and general progression.',
   tiers: {
@@ -102,6 +102,7 @@ export const PVE_TIER_LIST = {
       { name: 'Erika' },
       { name: 'Poseidon' },
       { name: 'Bedivere' },
+      { name: 'Fenrir' },
     ],
     S: [
       { name: 'Zashiki-warashi' },
@@ -138,11 +139,11 @@ export const PVE_TIER_LIST = {
 // PvP Arena Tier List
 export const PVP_TIER_LIST = {
   name: 'Arena PvP Rankings by Class & Role',
-  lastUpdated: '2026-09-15',
+  lastUpdated: '2026-09-29',
   description: 'Class-based Arena PvP rankings with role highlights for competitive play.',
   tiers: {
     UR: [{ name: 'Pride-Lucifer' }, { name: 'Bors' }, { name: 'Medusa' }],
-    SSS: [{ name: 'Sharin' }, { name: 'Gluttony - Beelzebub' }, { name: 'Keller' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }, { name: 'Wrath-Samael' }, { name: 'Gaia' }, { name: 'Jill' }, { name: 'Jorogumo' }, { name: 'Thor' }, { name: 'Apep' }, { name: 'Artemis' }, { name: 'Freya' }, { name: 'Hiyori' }, { name: 'Veronica' }, { name: 'Set' }, { name: 'Brynhild' }],
+    SSS: [{ name: 'Sharin' }, { name: 'Gluttony - Beelzebub' }, { name: 'Keller' }, { name: 'Nina' }, { name: 'Morgan Le Fay' }, { name: 'Odin' }, { name: 'Tamamo-no-Mae' }, { name: 'Wrath-Samael' }, { name: 'Gaia' }, { name: 'Jill' }, { name: 'Jorogumo' }, { name: 'Thor' }, { name: 'Apep' }, { name: 'Artemis' }, { name: 'Freya' }, { name: 'Hiyori' }, { name: 'Veronica' }, { name: 'Set' }, { name: 'Brynhild' }, { name: 'Fenrir' }],
     SS: [
       { name: 'Guinevere' },
       { name: 'Frigga' },
@@ -196,7 +197,7 @@ export const PVP_TIER_LIST = {
 // New Player Tier List (F2P Friendly)
 export const NEW_PLAYER_TIER_LIST = {
   name: 'New Player / F2P Tier List',
-  lastUpdated: '2026-09-15',
+  lastUpdated: '2026-09-29',
   description:
     'You can get any character from this list from day 1. This tier list focuses on accessibility for new players. The main problem early on is finding good damage dealers.',
   tiers: {
@@ -220,7 +221,7 @@ export const NEW_PLAYER_TIER_LIST = {
       { name: 'Bors' },
       { name: 'Medusa' },
     ],
-    S: [{ name: 'Snow Girl' }, { name: 'Merlin' }, { name: 'Arthur' }, { name: 'Greed Mammon' }, { name: 'Veronica' }, { name: 'Poseidon' }, { name: 'Set' }, { name: 'Nephthys' }, { name: 'Bedivere' }, { name: 'Brynhild' }],
+    S: [{ name: 'Snow Girl' }, { name: 'Merlin' }, { name: 'Arthur' }, { name: 'Greed Mammon' }, { name: 'Veronica' }, { name: 'Poseidon' }, { name: 'Set' }, { name: 'Nephthys' }, { name: 'Bedivere' }, { name: 'Brynhild' }, { name: 'Fenrir' }],
     A: [
       { name: 'Tefnut' },
       { name: 'Bastet' },
@@ -362,6 +363,17 @@ export function getCharactersByTier(tierLevel, listType = 'pve') {
 
 // Tier list changelog
 export const TIER_LIST_CHANGELOG = [
+  {
+    date: '2026-09-29',
+    changes: [
+      'New character added: Fenrir (SS PvE, SSS PvP, S for New Players)',
+      'Ice Disruptor built around denial: skill applies [Broken Edict] (-40% shield received, -18% Energy Recovery) to the highest-ATK and highest-DEF enemies, and strips 1 Energy from shielded targets',
+      'Ultimate [Final Verdict] hits all enemies for 550% ATK and applies [Final Judgment]: -50% Energy Recovery and -50% shield received for 4s',
+      'Passive [Judgment Seal] converts repeated hits into [Edict], locking enemy Ultimates for 2s (3s at Awakening 6, plus -15% all resistance and +15% damage taken)',
+      'Team skill weakens all enemies at battle start (-8% DEF and -8% Energy Recovery, scaling to -48% DEF with her ATK)',
+      'Memory card Wolf and Snowman added: SS for Disruptors (signature card, ATK% plus anti-shield and Energy Recovery reduction on hit)',
+    ],
+  },
   {
     date: '2026-09-15',
     changes: [
