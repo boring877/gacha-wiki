@@ -1,5 +1,5 @@
 // ZONE NOVA February 17, 2026 Maintenance Update
-// Compiled 2026-09-04 from official EROLABS announcements + live game data
+// Compiled 2026-09-29 from official EROLABS announcements + live game data
 
 export const february172026MaintenanceData = {
   title: 'February 17, 2026 Maintenance Update',
@@ -21,6 +21,7 @@ export const february172026MaintenanceData = {
       "Rift Surge XXI open 2026/02/17 14:15 - 2026/03/03 03:59 (recommended levels per stage 3-30).",
       '',
     ],
+    closing: 'Thank you for your continued support of ZONE NOVA. See you in-game!',
   },
 
   sourceInfo: {

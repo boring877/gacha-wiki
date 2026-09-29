@@ -1,5 +1,5 @@
 // ZONE NOVA June 9, 2026 Maintenance Update
-// Compiled 2026-09-04 from official EROLABS announcements + live game data
+// Compiled 2026-09-29 from official EROLABS announcements + live game data
 
 export const june92026MaintenanceData = {
   title: 'June 9, 2026 Maintenance Update',
@@ -30,6 +30,7 @@ export const june92026MaintenanceData = {
       "Start of the new character wave that runs through September 2026.",
       '',
     ],
+    closing: 'Thank you for your continued support of ZONE NOVA. See you in-game!',
   },
 
   sourceInfo: {

@@ -1,5 +1,5 @@
 // ZONE NOVA September 15, 2026 Maintenance Update
-// Compiled 2026-09-15 from official EROLABS announcements + live game data
+// Compiled 2026-09-29 from official EROLABS announcements + live game data
 
 export const september152026MaintenanceData = {
   title: 'September 15, 2026 Maintenance Update',

@@ -1,5 +1,5 @@
 // ZONE NOVA September 1, 2026 Maintenance Update
-// Compiled 2026-09-04 from official EROLABS announcements + live game data
+// Compiled 2026-09-29 from official EROLABS announcements + live game data
 
 export const september12026MaintenanceData = {
   title: 'September 1, 2026 Maintenance Update',
@@ -35,6 +35,7 @@ export const september12026MaintenanceData = {
       "Veronica limited recruitment rerun September 8 - September 15, 2026.",
       '',
     ],
+    closing: 'Thank you for your continued support of ZONE NOVA. See you in-game!',
   },
 
   sourceInfo: {
