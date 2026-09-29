@@ -10,6 +10,7 @@ import { getCharacterBySlug } from '../../../../data/zone-nova/characters.js';
 import { apepData } from '../../../../data/zone-nova/characters/apep.js';
 import { helaData } from '../../../../data/zone-nova/characters/hela.js';
 import { brynhildData } from '../../../../data/zone-nova/characters/brynhild.js';
+import { fenrirData } from '../../../../data/zone-nova/characters/fenrir.js';
 import { naiyaData } from '../../../../data/zone-nova/characters/naiya.js';
 import { pennyData } from '../../../../data/zone-nova/characters/penny.js';
 import { apolloData } from '../../../../data/zone-nova/characters/apollo.js';
@@ -81,6 +82,8 @@ const characterData =
     ? apepData
     : finalCharacter.slug === 'brynhild'
       ? brynhildData
+    : finalCharacter.slug === 'fenrir'
+      ? fenrirData
     : finalCharacter.slug === 'hela'
       ? helaData
       : finalCharacter.slug === 'naiya'
