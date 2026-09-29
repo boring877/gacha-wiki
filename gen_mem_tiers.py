@@ -60,6 +60,8 @@ new_placements = {
     'Reorganizing Revolution': 'S',
     # 2026-09-15 wave: Brynhild signature (DEF% scales her damage, Holy dmg, shield on ult)
     'Afternoon Waiting': 'SSS',
+    # 2026-09-29 wave: Fenrir signature (ATK% + anti-shield/energy-recovery on-hit, syncs with her kit)
+    'Wolf and Snowman': 'SS',
     # SR
     'Drowning Lake Knight': 'S',
     'Pennie Trying on New Clothes': 'A',
@@ -166,7 +168,7 @@ export const MEMORY_CLASS_ORDER = [
 
 export const MEMORY_TIER_LIST = {
   name: 'Memory Card Rankings by Class',
-  lastUpdated: '2026-09-15',
+  lastUpdated: '2026-09-29',
   description:
     'Memory card rankings by class. Each character can only equip memories matching their class.',
   tiers: {
