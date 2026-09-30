@@ -12,6 +12,7 @@ import {
   defaultZNHighlightPatterns,
 } from '../../utils/zone-nova/skill-highlighting.js';
 import { BUFF_EXPLANATIONS } from '../../data/zone-nova/memories.js';
+import { getCharGallery } from '../../data/zone-nova/char-galleries.js';
 import CharacterNavigation from '../../components/zone-nova/CharacterNavigation.astro';
 
 interface Props {
@@ -23,6 +24,9 @@ const { characterData } = Astro.props;
 // URL slug of this character page (e.g. /guides/zone-nova/characters/erika/ → erika)
 // — used by the mobile side-tap navigation. Matches the index's slug/detailUrl.
 const currentSlug = Astro.url.pathname.replace(/\/+$/, '').split('/').pop() ?? '';
+
+// Story event artwork for this character (R2 gallery), if any exists
+const gallery = getCharGallery(currentSlug);
 
 // Buff/debuff tokens in the memory card's effect text that the text never defines
 const memoryEffectText = (characterData.memoryCard?.effects ?? []).join('\n');
@@ -930,6 +934,35 @@ function getTagCategory(tag: string): string {
     </div>
   </div>
 </section>
+
+{/* Image Gallery Section (story event artwork) */}
+{gallery && gallery.length > 0 && (
+  <section class="content-section character-gallery-section">
+    <h2 class="section-title character-gallery-title">Image Gallery</h2>
+    <div class="character-gallery-grid">
+      {gallery.map((ev) => (
+        <figure class="character-gallery-item">
+          <div class="character-gallery-image-box">
+            <img
+              src={ev.image}
+              alt={`${characterData.name} ${ev.label} artwork${ev.title ? `: ${ev.title}` : ''}`}
+              width="1024"
+              height="512"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="character-gallery-caption">
+            <span class="character-gallery-label">{ev.label}</span>
+            {ev.title && <span class="character-gallery-event-title">{ev.title}</span>}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+    <p class="character-gallery-note">
+      Key art from in-game events featuring {characterData.name}.
+    </p>
+  </section>
+)}
 
   <!-- Memory awakening picker -->
   <script>

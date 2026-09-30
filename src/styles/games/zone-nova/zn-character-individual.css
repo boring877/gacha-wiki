@@ -1678,3 +1678,62 @@
   font-size: 0.82rem;
   margin: 0 0 0.6rem 0;
 }
+
+/* Character image gallery (story event artwork) */
+.character-gallery-section {
+  margin-top: 2rem;
+}
+
+.character-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr));
+  gap: 1rem;
+}
+
+.character-gallery-item {
+  margin: 0;
+  background: var(--zn-bg-secondary);
+  border: 1px solid var(--zn-border);
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.character-gallery-image-box {
+  background: var(--zn-bg-primary);
+  line-height: 0;
+}
+
+.character-gallery-image-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.character-gallery-caption {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.55rem 0.75rem;
+  border-top: 1px solid var(--zn-border);
+}
+
+.character-gallery-label {
+  color: var(--zn-primary);
+  font-weight: 700;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.character-gallery-event-title {
+  color: var(--zn-text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+
+.character-gallery-note {
+  color: var(--zn-text-muted);
+  font-size: 0.82rem;
+  margin: 0.75rem 0 0 0;
+}
