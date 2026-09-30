@@ -8,6 +8,17 @@ import { SITE_TITLE } from '../consts';
 
 const APPS = [
   {
+    id: 'play-helper',
+    repo: 'boring877/gachawiki-play-helper',
+    name: 'GachaWiki Play Helper',
+    description: 'Browser extension plus one-click Japan VPN script for playing Japan-only DMM browser games from anywhere. Pins the DMM region cookies, skips the age gate, and can route only DMM traffic through your own Japan proxy.',
+    assetPattern: 'gachawiki-dmm-pack.zip',
+    downloadLabel: 'Download pack',
+    extraLinks: [
+      { label: 'How to use', url: 'https://github.com/boring877/gachawiki-play-helper#readme', type: 'secondary' },
+    ],
+  },
+  {
     id: 'voice-type',
     repo: 'boring877/voice_type_rust',
     name: 'Voice Type',
@@ -50,10 +61,13 @@ const APPS = [
 
 <HomeLayout
   title={`${SITE_TITLE} - Apps`}
-  description="Download free community tools built for the GachaWiki ecosystem: Voice Type (speech to text), Silver and Blood data extractor, Busty Burst extractor, Star Savior extractor, and Video Downloader (YouTube, X and 1000+ sites)."
+  description="Download free community tools built for the GachaWiki ecosystem: GachaWiki Play Helper (play Japan-only DMM games from anywhere), Voice Type (speech to text), Silver and Blood data extractor, Busty Burst extractor, Star Savior extractor, and Video Downloader (YouTube, X and 1000+ sites)."
   keywords={[
     'gachawiki apps',
     'gacha game tools',
+    'Play DMM games outside Japan',
+    'DMM region helper',
+    'Japan VPN one click',
     'Video Downloader',
     'youtube downloader',
     'X twitter video download',
@@ -77,7 +91,7 @@ const APPS = [
 
     <div class="apps-list">
       {APPS.map((app) => (
-        <article class="app-card" data-app-repo={app.repo}>
+        <article class="app-card" data-app-repo={app.repo} data-asset-pattern={app.assetPattern || '.exe'}>
           <div class="app-card-body">
             <div class="app-info">
               <h2 class="app-name">{app.name}</h2>
@@ -94,7 +108,7 @@ const APPS = [
                 download
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Windows
+                {app.downloadLabel ?? 'Windows'}
               </a>
               {app.extraLinks?.map((link) => (
                 <a href={link.url} class={`dl-btn dl-btn-${link.type}`} target="_blank" rel="noopener noreferrer">
@@ -158,10 +172,15 @@ const APPS = [
           });
           if (!res.ok) throw new Error(`GitHub API ${res.status}`);
           const data = await res.json();
-          const exe = (Array.isArray(data.assets) ? data.assets : []).find((a) => a.name.endsWith('.exe'));
+          // Each card carries its own asset pattern: .exe installers for the
+          // desktop apps, the pack .zip for the Play Helper.
+          const pattern = (card.dataset.assetPattern || '.exe').toLowerCase();
+          const asset = (Array.isArray(data.assets) ? data.assets : []).find((a) =>
+            String(a.name).toLowerCase().includes(pattern)
+          );
           const release = {
             version: String(data.tag_name || '').replace(/^v/, ''),
-            downloadUrl: exe ? exe.browser_download_url : '',
+            downloadUrl: asset ? asset.browser_download_url : '',
           };
           apply(card, release);
           return [repo, { ...release, fetchedAt: now }];
