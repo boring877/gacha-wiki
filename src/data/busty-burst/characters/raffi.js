@@ -52,7 +52,7 @@ export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Let's go over there!",
+      "name": "Let's go there!",
       "icon": "skill001/skill0009",
       "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 6 seconds",
       "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Physical Defense -18%-30 DOWN for 6 seconds",
@@ -80,7 +80,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Fighting isn't my specialty ",
+      "name": "I am not good at fighting...",
       "icon": "skill001/skill0025",
       "description": "Applies Physical Defense 25%+170 UP to self for 15 seconds and Magic Defense 25%+170 UP for 15 seconds",
       "descriptionLv1": "Applies Physical Defense 25%+170 UP to self for 15 seconds and Magic Defense 25%+170 UP for 15 seconds",
@@ -118,7 +118,7 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Take this! I'm going all out!",
+      "name": "Take this! I'm going all in!",
       "icon": "skill001/skill0012_1",
       "description": "Deals physical damage to the nearest enemy and inflicts Stun for 2 seconds and Action Speed DOWN(LV 1) for 10 seconds",
       "effect": "1000% + 600",
@@ -139,7 +139,7 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Take this! I'm going all out!",
+      "name": "Take this! I'm going all in!",
       "icon": "skill001/skill0012_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds and Action Speed DOWN(LV 2) for 10 seconds",
       "effect": "1200% + 800",
@@ -160,7 +160,7 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Take this! I'm going all out!",
+      "name": "Take this! I'm going all in!",
       "icon": "skill001/skill0012_3",
       "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds and Action Speed DOWN(LV 3) for 10 seconds",
       "effect": "1350% + 950",
@@ -181,7 +181,7 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Take this! I'm going all out!",
+      "name": "Take this! I'm going all in!",
       "icon": "skill001/skill0012_4",
       "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds and Action Speed DOWN(LV 4) for 10 seconds",
       "effect": "1450% + 1100",
@@ -202,7 +202,7 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Take this! I'm going all out!",
+      "name": "Take this! I'm going all in!",
       "icon": "skill001/skill0012_5",
       "description": "Deals physical damage to the nearest enemy and inflicts Stun for 4 seconds and Action Speed DOWN(LV 5) for 10 seconds",
       "effect": "1550% + 1200",
@@ -242,7 +242,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Taunt",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP(Medium), after casting an ultimate, self gains 10s Taunt",
+      "description": "Gain Ultimate Damage UP(Medium). Applies Taunt for 10 seconds after casting ultimate",
       "effect": "Ultimate Damage + (+10%), Taunt (+0)",
       "effectValues": [
         {

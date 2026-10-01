@@ -6,7 +6,7 @@ export const BUSTY_BURST_TIER_LISTS = {
     name: 'SSR Tier List',
     description:
       'Tier list for SSR characters. Covers general performance across all game modes.',
-    lastUpdated: '2026-09-16',
+    lastUpdated: '2026-10-01',
     tiers: [
       {
         tier: 'SSS',
@@ -81,6 +81,8 @@ export const BUSTY_BURST_TIER_LISTS = {
           'eva',
           'yaksha',
           'fionore',
+          // October 2026 Burst FES release (rated from kit)
+          'elaine',
         ],
       },
       {

@@ -1505,6 +1505,16 @@ export const BUSTY_BURST_PALADINS = [
     role: 'Support',
     tier: 'SS',
   },
+  {
+    id: 'elaine',
+    characterId: 2148,
+    name: 'Elaine',
+    fileName: 'Elaine',
+    rarity: 'SSR',
+    element: 'Dark',
+    role: 'Attacker',
+    tier: 'S',
+  },
 ];
 
 export const getPaladinById = id => {

@@ -41,8 +41,8 @@ export const info = {
     }
   },
   "obtain": {
-    "type": "unknown",
-    "source": ""
+    "type": "banner",
+    "source": "Burst FES Summon"
   },
   "characterId": 2148
 };
@@ -54,9 +54,9 @@ export const skills = {
       "slot": 2,
       "name": "Blade Storm",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy, guaranteed hit",
-      "descriptionLv1": "Deals physical damage to the nearest enemy, guaranteed hit",
-      "descriptionLv90": "Deals physical damage to the nearest enemy, guaranteed hit",
+      "description": "Deals physical damage to the nearest enemy, guaranteed to hit",
+      "descriptionLv1": "Deals physical damage to the nearest enemy, guaranteed to hit",
+      "descriptionLv90": "Deals physical damage to the nearest enemy, guaranteed to hit",
       "target": "Nearest Enemy",
       "castTime": 0.95,
       "damageScaling": "350% ATK",
@@ -69,11 +69,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Damn, this power...",
+      "name": "Damn, this power…",
       "icon": "skill001/skill0019",
-      "description": "Self dealHP 50% damage and inflicts Physical Attack 20%+40 UP for 15 seconds and Physical Critical Damage 50 UP for 15 seconds, 4s MP Regeneration 50",
-      "descriptionLv1": "Self dealHP 50% damage and inflicts Physical Attack 20%+40 UP for 15 seconds and Physical Critical Damage 50 UP for 15 seconds, 4s MP Regeneration 50",
-      "descriptionLv90": "Self dealHP 50% damage and inflicts Physical Attack 20%+850 UP for 15 seconds and Physical Critical Damage 680 UP for 15 seconds, 4s MP Regeneration 50",
+      "description": "Deals damage equal to 50% of self current HP. Also inflicts Physical Attack 20%+40 UP for 15 seconds, Physical Critical Damage 50 UP for 15 seconds and MP Regeneration 50 for 4 seconds",
+      "descriptionLv1": "Deals damage equal to 50% of self current HP. Also inflicts Physical Attack 20%+40 UP for 15 seconds, Physical Critical Damage 50 UP for 15 seconds and MP Regeneration 50 for 4 seconds",
+      "descriptionLv90": "Deals damage equal to 50% of self current HP. Also inflicts Physical Attack 20%+850 UP for 15 seconds, Physical Critical Damage 680 UP for 15 seconds and MP Regeneration 50 for 4 seconds",
       "target": "Self",
       "castTime": 0.95,
       "damageScaling": null,
@@ -115,9 +115,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Stay away from me!!",
+      "name": "Get Away from Me!!",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 1) for 10 seconds and Action Speed DOWN(LV 1) for 10 seconds, before casting an ultimate, self gains 10s Magic Type ATK UP(LV 1)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 1) for 10 seconds and Action Speed DOWN(LV 1) for 10 seconds. Applies Magic Type ATK UP(LV 1) to self for 10 seconds before casting ultimate",
       "effect": "1200% + 1000",
       "buffEffects": [
         {
@@ -142,9 +142,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Stay away from me!!",
+      "name": "Get Away from Me!!",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 2) for 10 seconds and Action Speed DOWN(LV 2) for 10 seconds, before casting an ultimate, self gains 10s Magic Type ATK UP(LV 2)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 2) for 10 seconds and Action Speed DOWN(LV 2) for 10 seconds. Applies Magic Type ATK UP(LV 2) to self for 10 seconds before casting ultimate",
       "effect": "1440% + 1300",
       "buffEffects": [
         {
@@ -169,9 +169,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Stay away from me!!",
+      "name": "Get Away from Me!!",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 3) for 10 seconds and Action Speed DOWN(LV 3) for 10 seconds, before casting an ultimate, self gains 10s Magic Type ATK UP(LV 3)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 3) for 10 seconds and Action Speed DOWN(LV 3) for 10 seconds. Applies Magic Type ATK UP(LV 3) to self for 10 seconds before casting ultimate",
       "effect": "1620% + 1500",
       "buffEffects": [
         {
@@ -196,9 +196,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Stay away from me!!",
+      "name": "Get Away from Me!!",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 4) for 10 seconds and Action Speed DOWN(LV 4) for 10 seconds, before casting an ultimate, self gains 10s Magic Type ATK UP(LV 4)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 4) for 10 seconds and Action Speed DOWN(LV 4) for 10 seconds. Applies Magic Type ATK UP(LV 4) to self for 10 seconds before casting ultimate",
       "effect": "1739% + 1600",
       "buffEffects": [
         {
@@ -223,9 +223,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Stay away from me!!",
+      "name": "Get Away from Me!!",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 5) for 10 seconds and Action Speed DOWN(LV 5) for 10 seconds, before casting an ultimate, self gains 10s Magic Type ATK UP(LV 5)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Physical Defense DOWN(LV 5) for 10 seconds and Action Speed DOWN(LV 5) for 10 seconds. Applies Magic Type ATK UP(LV 5) to self for 10 seconds before casting ultimate",
       "effect": "1800% + 1700",
       "buffEffects": [
         {
@@ -275,7 +275,7 @@ export const skills = {
       "slot": 2,
       "name": "Ultimate Damage +, Physical Damage UP",
       "icon": "skill001/skill1001",
-      "description": "Gain Ultimate Damage UP(Medium), before casting an ultimate, self gains 10s Physical Damage 20%UP",
+      "description": "Gain Ultimate Damage UP(Medium). Applies Physical Damage 20%UP to self for 10 seconds before casting ultimate",
       "effect": "Ultimate Damage + (+10%), Physical Damage UP (+9999)",
       "effectValues": [
         {

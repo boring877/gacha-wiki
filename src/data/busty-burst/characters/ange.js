@@ -51,11 +51,11 @@ export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Radiant Pyrope",
+      "name": "Bright Pyrope",
       "icon": "skill001/skill0005",
-      "description": "Deals magic damage to the 3 nearest enemies and inflicts Accuracy -13 DOWN for 6 seconds, having 3 stacks[Fire Mark] when, 1 stacks[Burn Mark](treated as, 1 stacksHP-2000)",
-      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Accuracy -13 DOWN for 6 seconds, having 3 stacks[Fire Mark] when, 1 stacks[Burn Mark](treated as, 1 stacksHP-2000)",
-      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Accuracy -26 DOWN for 6 seconds, having 3 stacks[Fire Mark] when, 1 stacks[Burn Mark](treated as, 1 stacksHP-2000)",
+      "description": "Deals magic damage to the 3 nearest enemies and inflicts Accuracy -13 DOWN for 6 seconds. When self possessed 3 fire mark, inflicts enemy one Burning(Fire damage that -2000 HP every second)",
+      "descriptionLv1": "Deals magic damage to the 3 nearest enemies and inflicts Accuracy -13 DOWN for 6 seconds. When self possessed 3 fire mark, inflicts enemy one Burning(Fire damage that -2000 HP every second)",
+      "descriptionLv90": "Deals magic damage to the 3 nearest enemies and inflicts Accuracy -26 DOWN for 6 seconds. When self possessed 3 fire mark, inflicts enemy one Burning(Fire damage that -2000 HP every second)",
       "target": "Nearest Enemy",
       "castTime": 1.1,
       "damageScaling": "105% ATK",
@@ -79,11 +79,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Almandine of Refining Fire",
+      "name": "Burning Alm andine",
       "icon": "skill001/skill0014",
-      "description": "Applies Magic Attack 18%+35 UP to self for 10 seconds, self 1 stacks[Fire Mark]([Fire Mark]1 stacks Fire-type Attack 3%UP, max 3 stacks)",
-      "descriptionLv1": "Applies Magic Attack 18%+35 UP to self for 10 seconds, self 1 stacks[Fire Mark]([Fire Mark]1 stacks Fire-type Attack 3%UP, max 3 stacks)",
-      "descriptionLv90": "Applies Magic Attack 18%+665 UP to self for 10 seconds, self 1 stacks[Fire Mark]([Fire Mark]1 stacks Fire-type Attack 3%UP, max 3 stacks)",
+      "description": "Applies Magic Attack 18%+35 UP to self for 10 seconds. Applies Magic Attack 18%+35 UP to self for 10 seconds. Applies one Fire mark to self.(Every Fire mark grant fire property attack 3% UP, max 3)",
+      "descriptionLv1": "Applies Magic Attack 18%+35 UP to self for 10 seconds. Applies Magic Attack 18%+35 UP to self for 10 seconds. Applies one Fire mark to self.(Every Fire mark grant fire property attack 3% UP, max 3)",
+      "descriptionLv90": "Applies Magic Attack 18%+665 UP to self for 10 seconds. Applies Magic Attack 18%+35 UP to self for 10 seconds. Applies one Fire mark to self.(Every Fire mark grant fire property attack 3% UP, max 3)",
       "target": "Self",
       "castTime": 1.1,
       "damageScaling": null,
@@ -93,7 +93,7 @@ export const skills = {
       "lvl90": null,
       "effects": [
         "Magic Attack + Lv4",
-        "Mark of Fire"
+        "Fire Mark"
       ],
       "buffEffects": [
         {
@@ -104,7 +104,7 @@ export const skills = {
           "levelGrowth": 7.0
         },
         {
-          "name": "Mark of Fire",
+          "name": "Fire Mark",
           "value": 3,
           "type": "percent",
           "duration": 999
@@ -116,9 +116,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Eternal Light. Touch it and let it burn to ashes!",
+      "name": "Eternal Light: Scorch Thy Existence!",
       "icon": "skill001/skill0006_1",
-      "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 1) for 10 seconds and BlockDOWN(LV 1) for 10 seconds, having 3 stacks[Fire Mark] when, 1 stacks[Burn Mark](treated as, 1 stacksHP-2000)",
+      "description": "Deals magic damage to nearest 5 enemies and inflicts Magic Defense DOWN(LV 1) for 10 seconds and BlockDOWN(LV 1) for 10 seconds. When self possessed 3 Fire mark, inflicts enemy one Burning(Fire damage that -2000 HP every second)",
       "effect": "229% + 300",
       "buffEffects": [
         {
@@ -137,9 +137,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Eternal Light. Touch it and let it burn to ashes!",
+      "name": "Eternal Light: Scorch Thy Existence!",
       "icon": "skill001/skill0006_2",
-      "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 2) for 10 seconds and BlockDOWN(LV 2) for 10 seconds, having 3 stacks[Fire Mark] when, 1 stacks[Burn Mark](treated as, 1 stacksHP-2000)",
+      "description": "Deals magic damage to nearest 5 enemies and inflicts Magic Defense DOWN(LV 2) for 10 seconds and BlockDOWN(LV 2) for 10 seconds. When self possessed 3 Fire mark, inflicts enemy one Burning(Fire damage that -2000 HP every second)",
       "effect": "270% + 400",
       "buffEffects": [
         {
@@ -158,9 +158,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Eternal Light. Touch it and let it burn to ashes!",
+      "name": "Eternal Light: Scorch Thy Existence!",
       "icon": "skill001/skill0006_3",
-      "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 3) for 10 seconds and BlockDOWN(LV 3) for 10 seconds, having 3 stacks[Fire Mark] when, 1 stacks[Burn Mark](treated as, 1 stacksHP-2000)",
+      "description": "Deals magic damage to nearest 5 enemies and inflicts Magic Defense DOWN(LV 3) for 10 seconds and BlockDOWN(LV 3) for 10 seconds. When self possessed 3 Fire mark, inflicts enemy one Burning(Fire damage that -2000 HP every second)",
       "effect": "300% + 500",
       "buffEffects": [
         {
@@ -179,9 +179,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Eternal Light. Touch it and let it burn to ashes!",
+      "name": "Eternal Light: Scorch Thy Existence!",
       "icon": "skill001/skill0006_4",
-      "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 4) for 10 seconds and BlockDOWN(LV 4) for 10 seconds, having 3 stacks[Fire Mark] when, 1 stacks[Burn Mark](treated as, 1 stacksHP-2000)",
+      "description": "Deals magic damage to nearest 5 enemies and inflicts Magic Defense DOWN(LV 4) for 10 seconds and BlockDOWN(LV 4) for 10 seconds. When self possessed 3 Fire mark, inflicts enemy one Burning(Fire damage that -2000 HP every second)",
       "effect": "320% + 550",
       "buffEffects": [
         {
@@ -200,9 +200,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Eternal Light. Touch it and let it burn to ashes!",
+      "name": "Eternal Light: Scorch Thy Existence!",
       "icon": "skill001/skill0006_5",
-      "description": "5 nearest enemies dealmagic damage and inflicts Magic Defense DOWN(LV 5) for 10 seconds and BlockDOWN(LV 5) for 10 seconds, having 3 stacks[Fire Mark] when, 1 stacks[Burn Mark](treated as, 1 stacksHP-2000)",
+      "description": "Deals magic damage to nearest 5 enemies and inflicts Magic Defense DOWN(LV 5) for 10 seconds and BlockDOWN(LV 5) for 10 seconds. When self possessed 3 Fire mark, inflicts enemy one Burning(Fire damage that -2000 HP every second)",
       "effect": "340% + 600",
       "buffEffects": [
         {

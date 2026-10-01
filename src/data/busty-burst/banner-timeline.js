@@ -5,7 +5,27 @@
  */
 
 export const bannerTimelineData = [
-  // #42 - "Heaven and Hentai" / Raffine (Sep 15 - Sep 29) - CURRENT
+  // #43 - "Burst FES" / Elaine (Sep 29 - Oct 6) - CURRENT
+  {
+    id: 'burst-fes-elaine-2026',
+    title: '"Burst FES" Special Event Summon',
+    bannerType: 'event',
+    featuredPaladins: [
+      {
+        name: 'Elaine',
+        rarity: 'SSR',
+        type: 'Attacker',
+      },
+    ],
+    startDate: '2026-09-29T04:00:00Z',
+    endDate: '2026-10-06T04:00:00Z',
+    description:
+      '"Burst FES" Special Event Summon! New FES Paladin Rate Up! Elaine (SSR Dark Physical Attacker), a berserk swordswoman who trades her own HP for massive self buffs. Guaranteed SR Paladin when performing a 10-pull.',
+    note: 'Elaine (characterId 2148), the second EN Burst FES limited paladin after Abigail (July). End time from game data (2026/10/06 04:00 UTC); start confirmed by the banner art (9/29 4:00 UTC). Official EN skill text landed in the Oct 1 hot-update.',
+    status: 'current',
+    image: 'banner-burst-fes-elaine',
+  },
+  // #42 - "Heaven and Hentai" / Raffine (Sep 15 - Sep 29) - ENDED
   {
     id: 'heaven-and-hentai-2026',
     title: '"Heaven and Hentai" Event Summon',
@@ -22,10 +42,10 @@ export const bannerTimelineData = [
     description:
       '"Heaven and Hentai" Event Summon! New Paladin Rate Up! Raffine (SSR Holy Magic Support). Guaranteed SR Paladin when performing a 10-pull.',
     note: 'Raffine (characterId 2147), the 300-Day Launch Anniversary paladin. End time from game data (2026/09/29 04:00 UTC); start from the rotation switch on Sep 15 alongside "The Cave Lurker".',
-    status: 'current',
+    status: 'ended',
     image: 'banner-heaven-and-hentai',
   },
-  // #41 - 300-Day Good Luck Challenge (Sep 15 - Sep 29) - CURRENT
+  // #41 - 300-Day Good Luck Challenge (Sep 15 - Sep 29) - ENDED
   {
     id: 'anniversary-300day-good-luck-2026',
     title: '"300-Day Launch Anniversary" Good Luck Challenge Summon',
@@ -36,10 +56,10 @@ export const bannerTimelineData = [
     description:
       '300-Day Launch Anniversary Good Luck Challenge Summon! A special anniversary summon with unlimited resets: restart as many times as you want until you get the paladin you like!',
     note: 'Runs alongside the main "300-Day Launch Anniversary" Summon. End time from game data (2026/09/29 04:00 UTC); start from the rotation switch on Sep 15.',
-    status: 'current',
+    status: 'ended',
     image: 'banner-300day-good-luck',
   },
-  // #40 - "The Cave Lurker" / Ilugio & Ange (Sep 15 - Sep 29) - CURRENT
+  // #40 - "The Cave Lurker" / Ilugio & Ange (Sep 15 - Sep 29) - ENDED
   {
     id: 'cave-lurker-2026',
     title: '"The Cave Lurker" Event Summon',
@@ -61,10 +81,10 @@ export const bannerTimelineData = [
     description:
       '"The Cave Lurker" Event Summon! New Paladin Rate Up! Ilugio (SSR Water Physical Attacker) and Ange (SSR Fire Magic Attacker). Guaranteed SR Paladin when performing a 10-pull.',
     note: 'Two-week event summon, end time from game data (2026/09/29 04:00 UTC), start from the rotation switch on Sep 15.',
-    status: 'current',
+    status: 'ended',
     image: 'banner-cave-lurker',
   },
-  // #40 - 300-Day Launch Anniversary Summon (Sep 15 - Sep 29) - CURRENT
+  // #40 - 300-Day Launch Anniversary Summon (Sep 15 - Sep 29) - ENDED
   {
     id: 'anniversary-300day-2026',
     title: '"300-Day Launch Anniversary" Summon',
@@ -75,7 +95,7 @@ export const bannerTimelineData = [
     description:
       '300-Day Launch Anniversary Summon! A special anniversary summon with a guaranteed SSR Paladin. No single rate-up Paladin.',
     note: 'Anniversary special summon running alongside "The Cave Lurker". End time from game data (2026/09/29 04:00 UTC).',
-    status: 'current',
+    status: 'ended',
     image: 'banner-anniversary-300day',
   },
   // #39 - "FANZINE" 3rd / Alluring Naked Apron Zilka (Sep 8 - Sep 15) - ENDED
