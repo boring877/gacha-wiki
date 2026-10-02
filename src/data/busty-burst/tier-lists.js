@@ -15,7 +15,9 @@ export const BUSTY_BURST_TIER_LISTS = {
           description: 'Must-have for beginners',
           color: '#ff6b6b',
         },
-        characters: ['festive_attire_estiriel', 'liesel', 'frey', 'dragon_crusher_medusa', 'messeria', 'top_dancer_messeria', 'sweet-bunny-artia', 'underboob-cheerleader-gemini', 'tempting-naked-apron-diana'],
+        characters: ['festive_attire_estiriel', 'liesel', 'frey', 'dragon_crusher_medusa', 'messeria', 'top_dancer_messeria', 'sweet-bunny-artia', 'underboob-cheerleader-gemini', 'tempting-naked-apron-diana',
+          // October 2026 Burst FES release (user correction: SSS DPS)
+          'elaine',],
       },
       {
         tier: 'SS',
@@ -81,8 +83,6 @@ export const BUSTY_BURST_TIER_LISTS = {
           'eva',
           'yaksha',
           'fionore',
-          // October 2026 Burst FES release (rated from kit)
-          'elaine',
         ],
       },
       {

@@ -1513,7 +1513,7 @@ export const BUSTY_BURST_PALADINS = [
     rarity: 'SSR',
     element: 'Dark',
     role: 'Attacker',
-    tier: 'S',
+    tier: 'SSS',
   },
 ];
 
