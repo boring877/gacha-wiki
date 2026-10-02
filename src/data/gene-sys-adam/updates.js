@@ -8,9 +8,8 @@ export const GSA_UPDATES = [
     date: 'October 2, 2026',
     title: 'Skill reworks and the Ogino Rui / Sugimoto Arina rotation',
     tag: 'Update',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Draw_Bg_19.webp',
-    image2: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Draw_Bg_21.webp',
-    imageCaption: 'Rotation banners of this wave: Sugimoto Arina (left) and Ogino Rui (right), from the official draw-card art.',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/News_2026-10-02.webp',
+    imageCaption: 'Official update notice from genesys-adam.com: Limited Summon x2 Rate UP, with Sugimoto Arina and Ogino Rui.',
     summary: 'The solo rate-up rotation turned over to Ogino Rui and Sugimoto Arina, kits were reworked on Elena, Victoria and Alyna, and a character-growth training mission set shipped.',
     points: [
       'Solo rate-up rotation turned over to Ogino Rui and Sugimoto Arina; the client downloaded both banner art panels (Draw_Bg_19 and Draw_Bg_21) on October 2, confirming the current pair. Each solo banner keeps the 100-pull featured guarantee.',
@@ -27,6 +26,8 @@ export const GSA_UPDATES = [
     date: 'September 22, 2026',
     title: 'Lingering Echoes: Qing Yin and Leng Zhen',
     tag: 'Update',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/News_2026-09-22.webp',
+    imageCaption: 'Official update notice from genesys-adam.com: New Character, Qing Yin and Leng Zhen.',
     summary: 'Two new SSRs, Qing Yin and Leng Zhen, their dual rate-up banner with the Gagaku Emblem event, and 90 preload items for upcoming content.',
     points: [
       'Two new SSR characters: Qing Yin, a Wind Breaker whose whole kit prioritizes Electrocuted targets and triggers Overload pursuits, and Leng Zhen, a Water Breaker who charges the team 2 EN per hit and lands Freeze M rolls on every loop.',
@@ -57,9 +58,8 @@ export const GSA_UPDATES = [
     date: 'September 17, 2026',
     title: 'Global launch',
     tag: 'Launch',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Draw_Bg_20_1.webp',
-    image2: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Draw_Bg_20_2.webp',
-    imageCaption: 'Lunar Splendor of the Pleasure District launch banner: Komachi Sayaka (left) and Hijikata Chizuru (right).',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/News_2026-09-17.webp',
+    imageCaption: 'Official launch-wave notice art from genesys-adam.com.',
     summary: 'The global launch roster, the Lunar Splendor launch banner with the Moonflower Crest event, Black Gold Hunter with Cowgirl Belle, and the Heaven Door recruits.',
     points: [
       'Launch roster: 54 profiled characters, 39 of them visible in gacha pools on day one.',
