@@ -462,6 +462,7 @@
    "damage_scaling": "",
    "skill_level_scaling": "",
    "multiplier": null,
+   "damage": null,
    "effects": [],
    "battle_options": "970001",
    "battle_option_ids": [
@@ -472,8 +473,7 @@
    "aura_info": "40,QUEST_TACTICS_ANALYSIS,Technique,AtkRate",
    "skill_button_type": -2,
    "camera_type": 0,
-   "cutscene_flag": 0,
-   "damage": null
+   "cutscene_flag": 0
   },
   {
    "id": 9701,
@@ -492,18 +492,6 @@
    "damage_scaling": "[ATK]",
    "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
    "multiplier": 126.0,
-   "effects": [],
-   "battle_options": "970101/970102",
-   "battle_option_ids": [
-    970101,
-    970102
-   ],
-   "evolution_level_required": 0,
-   "trigger_keyword": "",
-   "aura_info": "",
-   "skill_button_type": 0,
-   "camera_type": 0,
-   "cutscene_flag": 0,
    "damage": {
     "scaling": [
      {
@@ -519,7 +507,19 @@
      }
     ],
     "total": 504.0
-   }
+   },
+   "effects": [],
+   "battle_options": "970101/970102",
+   "battle_option_ids": [
+    970101,
+    970102
+   ],
+   "evolution_level_required": 0,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": 0,
+   "camera_type": 0,
+   "cutscene_flag": 0
   },
   {
    "id": 9702,
@@ -538,19 +538,6 @@
    "damage_scaling": "[ATK]",
    "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
    "multiplier": 692.2,
-   "effects": [],
-   "battle_options": "970201/970202/970203",
-   "battle_option_ids": [
-    970201,
-    970202,
-    970203
-   ],
-   "evolution_level_required": 0,
-   "trigger_keyword": "",
-   "aura_info": "",
-   "skill_button_type": 0,
-   "camera_type": 0,
-   "cutscene_flag": 0,
    "damage": {
     "scaling": [
      {
@@ -566,16 +553,29 @@
      }
     ],
     "total": 692.2
-   }
+   },
+   "effects": [],
+   "battle_options": "970201/970202/970203",
+   "battle_option_ids": [
+    970201,
+    970202,
+    970203
+   ],
+   "evolution_level_required": 0,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": 0,
+   "camera_type": 0,
+   "cutscene_flag": 0
   },
   {
    "id": 9703,
    "name": "[&Color_Cyan]Evil Eye: Mermaid's Azure Eye[-]",
    "name_key": "Tbl_UnitSkill_Name_9703",
    "name_readable": "Evil Eye: Mermaid's Azure Eye",
-   "description": "Drains life energy from [&Common_Word_Skill_EnemyAll].\nUpon energy drain, steals [V3:970302] [&Common_Word_Skill_Random] [&Buff](s) the target has at a [&Color_Cyan][R:970302]%[-] chance.\nIf the target is the only one remaining, steals [&Buff].",
+   "description": "Drains life energy from [&Common_Word_Skill_EnemyAll].\nUpon energy drain, steals [V3:970302] [&Common_Word_Skill_Random] [&Buff](s) the target has at a [&Color_Cyan][R:970302]%[-] chance.\nIf the target is the only one remaining, guaranteed to steal [V3:970303] [&Common_Word_Skill_Random] [&Buff](s) the target has.",
    "description_key": "Tbl_UnitSkill_Desc_9703",
-   "description_readable": "Drains life energy from ALL enemies.\nUpon energy drain, steals 1 Random Buff(s) the target has at a 35% chance.\nIf the target is the only one remaining, steals Buff.",
+   "description_readable": "Drains life energy from ALL enemies.\nUpon energy drain, steals 1 Random Buff(s) the target has at a 35% chance.\nIf the target is the only one remaining, guaranteed to steal 1 Random Buff(s) the target has.",
    "type_description": "[Attack Skill]",
    "type_description_readable": "[Attack Skill]",
    "icon": "9703",
@@ -585,19 +585,6 @@
    "damage_scaling": "[ATK]",
    "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
    "multiplier": 467.4,
-   "effects": [],
-   "battle_options": "970301/970302/970303",
-   "battle_option_ids": [
-    970301,
-    970302,
-    970303
-   ],
-   "evolution_level_required": 1,
-   "trigger_keyword": "",
-   "aura_info": "",
-   "skill_button_type": 0,
-   "camera_type": 0,
-   "cutscene_flag": 0,
    "damage": {
     "scaling": [
      {
@@ -613,7 +600,20 @@
      }
     ],
     "total": 467.4
-   }
+   },
+   "effects": [],
+   "battle_options": "970301/970302/970303",
+   "battle_option_ids": [
+    970301,
+    970302,
+    970303
+   ],
+   "evolution_level_required": 1,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": 0,
+   "camera_type": 0,
+   "cutscene_flag": 0
   }
  ],
  "weapons": [
@@ -645,19 +645,6 @@
     "damage_scaling": "[ATK]",
     "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
     "multiplier": 692.2,
-    "effects": [],
-    "battle_options": "971201/971202/971203",
-    "battle_option_ids": [
-     971201,
-     971202,
-     971203
-    ],
-    "evolution_level_required": 0,
-    "trigger_keyword": "",
-    "aura_info": "",
-    "skill_button_type": 0,
-    "camera_type": 0,
-    "cutscene_flag": 0,
     "damage": {
      "scaling": [
       {
@@ -673,7 +660,20 @@
       }
      ],
      "total": 692.2
-    }
+    },
+    "effects": [],
+    "battle_options": "971201/971202/971203",
+    "battle_option_ids": [
+     971201,
+     971202,
+     971203
+    ],
+    "evolution_level_required": 0,
+    "trigger_keyword": "",
+    "aura_info": "",
+    "skill_button_type": 0,
+    "camera_type": 0,
+    "cutscene_flag": 0
    }
   }
  ]

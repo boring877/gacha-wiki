@@ -1,5 +1,5 @@
 // Taimanin Squad Weapon Data
-// Generated from game data (build 119, 2026-09-21) - 245 weapons
+// Generated from game data (build 119, 2026-09-21) - 247 weapons
 
 export const TAIMANIN_SQUAD_WEAPONS =
 [
@@ -3947,8 +3947,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
     "opt_value": 20,
     "bonus_value": 2.0,
     "skill_id": 8112,
-    "skill_name": "<Photon Plasma Blade> ",
-    "skill_desc": "[In preparation]",
+    "skill_name": "<Photon Plasma Blade> Silicon Art: Crystalization",
+    "skill_desc": "Enters Stealth mode.\nDuration: 2 turn(s)\nWhen defeating an enemy while the character is in Stealth mode, gains (60%) CRIT DMG UP and (24%) SPD UP.\nDuration: 2 turn(s)",
     "skill_type": "[Support Skill]",
     "skill_damage": null,
     "skill_icon": "8112",
@@ -3968,8 +3968,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
     "opt_value": 47,
     "bonus_value": 4.7,
     "skill_id": 8114,
-    "skill_name": "<Optical Stealth Blade> ",
-    "skill_desc": "[In preparation]",
+    "skill_name": "<Optical Stealth Blade> Fuuma's Oniwaban",
+    "skill_desc": "When the character attacks while in Stealth mode, removes 1 Random Buff from the target at a 50% chance.\nWhen the Buff is removed, inflicts (3.5%) Burn on the target.\nWhen the character attacks while in Stealth mode, if the target doesn't have any Buff, inflicts (3.5%) Burn.\nWhen the target is inflicted with Burn, the character inflicts 1 additional (3.5%) Burn.\nBurn Duration: 3 turn(s)",
     "skill_type": "[Passive Skill]",
     "skill_damage": null,
     "skill_icon": "8114",
@@ -6651,6 +6651,78 @@ export const TAIMANIN_SQUAD_WEAPONS =
     "large_icon": "Weapon_25802_m.png"
   },
   {
+    "id": 25901,
+    "unit_id": 259,
+    "name": "Sugar Twist Broom",
+    "slot": "Weapon 1",
+    "rarity_stars": 4,
+    "opt_type": 10,
+    "opt_type_name": "HP",
+    "opt_value": 47,
+    "bonus_value": 4.7,
+    "skill_id": 25911,
+    "skill_name": "",
+    "skill_desc": "",
+    "skill_type": "[Normal Attack]",
+    "skill_damage": {
+      "scaling": [
+        {
+          "stat": "ATK",
+          "pct": 525.0
+        }
+      ],
+      "hits": [
+        {
+          "pct": 525.0,
+          "count": 1,
+          "tar": ""
+        }
+      ],
+      "total": 525.0
+    },
+    "skill_icon": "25911",
+    "char_name": "Hebiko",
+    "char_icon": "259_Hebiko",
+    "icon": "Weapon_25901.png",
+    "large_icon": "Weapon_25901_m.png"
+  },
+  {
+    "id": 25902,
+    "unit_id": 259,
+    "name": "Spooky Jack Broom",
+    "slot": "Weapon 2",
+    "rarity_stars": 4,
+    "opt_type": 11,
+    "opt_type_name": "ATK",
+    "opt_value": 47,
+    "bonus_value": 4.7,
+    "skill_id": 25912,
+    "skill_name": "",
+    "skill_desc": "",
+    "skill_type": "[Attack Skill]",
+    "skill_damage": {
+      "scaling": [
+        {
+          "stat": "ATK",
+          "pct": 769.1
+        }
+      ],
+      "hits": [
+        {
+          "pct": 769.1,
+          "count": 1,
+          "tar": ""
+        }
+      ],
+      "total": 769.1
+    },
+    "skill_icon": "25912",
+    "char_name": "Hebiko",
+    "char_icon": "259_Hebiko",
+    "icon": "Weapon_25902.png",
+    "large_icon": "Weapon_25902_m.png"
+  },
+  {
     "id": 26701,
     "unit_id": 267,
     "name": "",
@@ -7066,8 +7138,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
     "opt_value": 35,
     "bonus_value": 3.5,
     "skill_id": 27514,
-    "skill_name": "",
-    "skill_desc": "",
+    "skill_name": "<Neon Dimension>Oni",
+    "skill_desc": "At the end of each side's turn, grants (1) Protective Shield to 1 ally with the lowest HP below 70%, except for the character.\nDuration: 2 turn(s)\nWhen the chatacter's HP is below 50%, the chance of being inflicted by Debuffs reduces by 20%.\n[Always-active passive effect regardless of cooldown]\nWhen hit by an all-target attack, restores HP to the character and the ally with the highest ATK by 6% of the character's Max. HP for each attack. [Always-active passive effect regardless of cooldown]",
     "skill_type": "[Passive Skill]",
     "skill_damage": null,
     "skill_icon": "27514",
@@ -7087,8 +7159,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
     "opt_value": 47,
     "bonus_value": 4.7,
     "skill_id": 27512,
-    "skill_name": "",
-    "skill_desc": "",
+    "skill_name": "<Oni-Gear Blade>Calamity",
+    "skill_desc": "Spins the whole body to attack ALL enemies 1 time(s).\nDMG increases in proportion to the character's DEF.\nWhen attacking, consumes -10% of the character's current HP to activate the effects listed below.\nRemoves 1 Random Debuff from ALL allies.\nGrants Shield equal to 7% of the character's Max. HP to ALL allies after the attack.\nDuration: 2 turn(s)",
     "skill_type": "[Attack Skill]",
     "skill_damage": {
       "scaling": [
@@ -7124,7 +7196,7 @@ export const TAIMANIN_SQUAD_WEAPONS =
     "bonus_value": 4.7,
     "skill_id": 27913,
     "skill_name": "<Hex Pulse CQC>Lightning Tempest",
-    "skill_desc": "",
+    "skill_desc": "Strikes ALL enemies with a powerful lightning bolt to attack 5 time(s).\nWhen a CRIT ATK lands, performs a (90%) DEF Penetrate attack.\nIf the target is afflicted with Overload, inflicts Electrocute at a 55% chance on the Last Attack.\nDuration: 2 turn(s)\nInflicts (-15%) SPD DOWN at a 90% chance after the attack.\nDuration: 1 turn(s)",
     "skill_type": "[Ultimate Skill]",
     "skill_damage": {
       "scaling": [
@@ -7160,7 +7232,7 @@ export const TAIMANIN_SQUAD_WEAPONS =
     "bonus_value": 5.7,
     "skill_id": 27914,
     "skill_name": "<Black Volt Assault>Lightning Onyx",
-    "skill_desc": "",
+    "skill_desc": "The following effects apply depending on the total number of Overloads the enemies are afflicted with.\n1 or more Overload: Performs a (15%) DEF Penetrate attack.\n3 or more Overload: Increases CRIT DMG by (15%).",
     "skill_type": "[Passive Skill]",
     "skill_damage": null,
     "skill_icon": "27914",
@@ -7237,7 +7309,7 @@ export const TAIMANIN_SQUAD_WEAPONS =
     "opt_value": 20,
     "bonus_value": 2.0,
     "skill_id": 28211,
-    "skill_name": "",
+    "skill_name": "<Mirage Tactical Leg>Earth-Shattering Kick",
     "skill_desc": "Strikes down the enemy with the heel.\nWhen the character is in Stealth mode, inflicts (-40%) CRIT RES DOWN at a 25% chance.\nDuration: 2 turn(s)",
     "skill_type": "[Normal Attack]",
     "skill_damage": {
@@ -7273,8 +7345,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
     "opt_value": 57,
     "bonus_value": 5.7,
     "skill_id": 28212,
-    "skill_name": "",
-    "skill_desc": "Moves at blinding speed to attack 4 time(s).\nConsumes -10% of the character's HP to go into Stealth mode and gain (19.5%) SPD UP after the attack.\nDuration: 2 turn(s)",
+    "skill_name": "<Active Cloaking Leg>Shadow Dance Kick",
+    "skill_desc": "Moves at blinding speed to attack 4 time(s).\nConsumes -10% of the character's HP to go into Stealth mode and gains (19.5%) SPD UP after the attack.\nDuration: 2 turn(s)",
     "skill_type": "[Attack Skill]",
     "skill_damage": {
       "scaling": [
@@ -7309,8 +7381,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
     "opt_value": 47,
     "bonus_value": 4.7,
     "skill_id": 28313,
-    "skill_name": "",
-    "skill_desc": "Leaps high into the air and rapidly plummets down to attack the enemy.\nDamage increases in proportion to Max. HP.\nInflicts (10%) Overload on 2 Random enemies at a 90% chance before the attack.\nIf the targer has Overload, inflicts (-57.5%) CRIT Rate DOWN at a 99% chance.\nDuration: 2 turn(s)\nIf the target has 3 or more Debuffs, increases the target's Cooldown time of all skills by 1 turn.",
+    "skill_name": "<Plasma Circuit Blade>Twin Lightning",
+    "skill_desc": "Leaps high into the air and rapidly plummets down to attack the enemy.\nDamage increases in proportion to Max. HP.\nInflicts (10%) Overload on 2 Random enemies at a 90% chance before the attack.\nDuration: 3 turn(s)\nIf the targer is afflicted with Overload, inflicts (-57.5%) CRIT Rate DOWN at a 99% chance.\nDuration: 2 turn(s)\nIf the target has 3 or more Debuffs, increases the target's Cooldown time of all skills by 1 turn.",
     "skill_type": "[Ultimate Skill]",
     "skill_damage": {
       "scaling": [
@@ -7349,8 +7421,8 @@ export const TAIMANIN_SQUAD_WEAPONS =
     "opt_value": 20,
     "bonus_value": 2.0,
     "skill_id": 28314,
-    "skill_name": "",
-    "skill_desc": "At the end of the turn, removes all Overload from allies, inflicts Overload to the character, and grants Overclock to the ally with the highest ATK.\nIf the enemy has 3 or more Debuffs at the start of your turn, inflicts ACC DOWN to all enemies.[Always-active passive effect regardless of cooldown]\nBased on the number of Debuffs the enemy has (3/4/5), the effect of ACC DOWN increases by -22.5%/-30%/-35%, respectively.\nDuration: 1 turn(s)",
+    "skill_name": "<Quantum Spark Blade>Thunder Volt",
+    "skill_desc": "At the end of the turn, removes all Overload from allies, inflicts (10%) Overload to the character, and grants (30%) Overclock to the ally with the highest ATK.\nDuration: 2 turn(s)\nIf the enemy has 3 or more Debuffs at the start of your turn, inflicts ACC DOWN on all enemies.\n[Always-active passive effect regardless of cooldown]\nBased on the number of Debuffs the enemy has (3/4/5), the effect of ACC DOWN increases by -22.5%/-30%/-35%, respectively.\nDuration: 1 turn(s)",
     "skill_type": "[Passive Skill]",
     "skill_damage": null,
     "skill_icon": "28314",

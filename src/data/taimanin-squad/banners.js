@@ -57,6 +57,17 @@ const E = (name, icon, rarity = '★4 Epic') => ({ name, icon, rarity });
 
 export const BANNER_HISTORY = [
   {
+    id: 'thunder-volt-pickup',
+    start: '2026-10-01',
+    end: '2026-10-29',
+    type: 'pickup',
+    legend: L('[Thunder Volt] Uehara Rin', '283_Rin'),
+    epic: E('[Lightning Onyx] Mizuki Yukikaze', '279_Yukikaze'),
+    notes: 'Rin guaranteed on every 100th Pickup Recruit, gauge carries over. Limited units, never added to standard pools.',
+    image: '/images/games/taimanin-squad/news/img014.webp',
+    source: '/information-detail/',
+  },
+  {
     id: 'ragnarok-stepup',
     start: '2026-09-17',
     end: '2026-10-08',

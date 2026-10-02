@@ -4,6 +4,22 @@
 
 export const redeemCodes = [
   {
+    code: 'WELCOMESQUAD01',
+    source: 'Official Coupon',
+    validUntil: 'Until further notice',
+    rewards: 'Premium Recruit Ticket x 10, Special Recruit Ticket x 50, Weapon Supply Ticket x 30',
+    status: 'active',
+    notes: 'Register at https://taimaninsquad.com/coupon',
+  },
+  {
+    code: 'WELCOMESQUAD02',
+    source: 'Official Coupon',
+    validUntil: 'Until further notice',
+    rewards: 'Premium Recruit Ticket x 10, Special Recruit Ticket x 50, EXP Chip x 15 (for each Type)',
+    status: 'active',
+    notes: 'Register at https://taimaninsquad.com/coupon',
+  },
+  {
     code: 'EUPR7QR5TP',
     source: 'April Special Coupon #2',
     validUntil: '2026-05-05 02:00 UTC',

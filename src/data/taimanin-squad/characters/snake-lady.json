@@ -462,6 +462,7 @@
    "damage_scaling": "",
    "skill_level_scaling": "",
    "multiplier": null,
+   "damage": null,
    "effects": [],
    "battle_options": "710001",
    "battle_option_ids": [
@@ -472,8 +473,7 @@
    "aura_info": "10,QUEST_ALL,Agility,Acc",
    "skill_button_type": -2,
    "camera_type": 0,
-   "cutscene_flag": 0,
-   "damage": null
+   "cutscene_flag": 0
   },
   {
    "id": 7101,
@@ -492,18 +492,6 @@
    "damage_scaling": "[ATK]",
    "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
    "multiplier": 252.0,
-   "effects": [],
-   "battle_options": "710101/710102",
-   "battle_option_ids": [
-    710101,
-    710102
-   ],
-   "evolution_level_required": 0,
-   "trigger_keyword": "",
-   "aura_info": "",
-   "skill_button_type": 0,
-   "camera_type": 0,
-   "cutscene_flag": 0,
    "damage": {
     "scaling": [
      {
@@ -524,7 +512,19 @@
      }
     ],
     "total": 252.0
-   }
+   },
+   "effects": [],
+   "battle_options": "710101/710102",
+   "battle_option_ids": [
+    710101,
+    710102
+   ],
+   "evolution_level_required": 0,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": 0,
+   "camera_type": 0,
+   "cutscene_flag": 0
   },
   {
    "id": 7102,
@@ -543,6 +543,22 @@
    "damage_scaling": "[ATK]",
    "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
    "multiplier": 346.1,
+   "damage": {
+    "scaling": [
+     {
+      "stat": "ATK",
+      "pct": 346.1
+     }
+    ],
+    "hits": [
+     {
+      "pct": 346.1,
+      "count": 2,
+      "tar": ""
+     }
+    ],
+    "total": 692.2
+   },
    "effects": [],
    "battle_options": "710201/710202/710203/710204/710205/710206/710207/710208",
    "battle_option_ids": [
@@ -560,23 +576,7 @@
    "aura_info": "",
    "skill_button_type": 0,
    "camera_type": 0,
-   "cutscene_flag": 0,
-   "damage": {
-    "scaling": [
-     {
-      "stat": "ATK",
-      "pct": 346.1
-     }
-    ],
-    "hits": [
-     {
-      "pct": 346.1,
-      "count": 2,
-      "tar": ""
-     }
-    ],
-    "total": 692.2
-   }
+   "cutscene_flag": 0
   },
   {
    "id": 7103,
@@ -595,20 +595,6 @@
    "damage_scaling": "[ATK]",
    "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
    "multiplier": 900.2,
-   "effects": [],
-   "battle_options": "710301/710302/710303/710304",
-   "battle_option_ids": [
-    710301,
-    710302,
-    710303,
-    710304
-   ],
-   "evolution_level_required": 1,
-   "trigger_keyword": "",
-   "aura_info": "",
-   "skill_button_type": 0,
-   "camera_type": 0,
-   "cutscene_flag": 2,
    "damage": {
     "scaling": [
      {
@@ -624,7 +610,21 @@
      }
     ],
     "total": 900.2
-   }
+   },
+   "effects": [],
+   "battle_options": "710301/710302/710303/710304",
+   "battle_option_ids": [
+    710301,
+    710302,
+    710303,
+    710304
+   ],
+   "evolution_level_required": 1,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": 0,
+   "camera_type": 0,
+   "cutscene_flag": 2
   },
   {
    "id": 7104,
@@ -643,6 +643,7 @@
    "damage_scaling": "",
    "skill_level_scaling": "",
    "multiplier": null,
+   "damage": null,
    "effects": [],
    "battle_options": "710401",
    "battle_option_ids": [
@@ -653,8 +654,7 @@
    "aura_info": "",
    "skill_button_type": -1,
    "camera_type": 0,
-   "cutscene_flag": 0,
-   "damage": null
+   "cutscene_flag": 0
   }
  ],
  "weapons": [
@@ -686,19 +686,6 @@
     "damage_scaling": "[ATK]",
     "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
     "multiplier": 838.7,
-    "effects": [],
-    "battle_options": "711301/711302/711303",
-    "battle_option_ids": [
-     711301,
-     711302,
-     711303
-    ],
-    "evolution_level_required": 1,
-    "trigger_keyword": "",
-    "aura_info": "",
-    "skill_button_type": 0,
-    "camera_type": 0,
-    "cutscene_flag": 2,
     "damage": {
      "scaling": [
       {
@@ -714,7 +701,20 @@
       }
      ],
      "total": 838.7
-    }
+    },
+    "effects": [],
+    "battle_options": "711301/711302/711303",
+    "battle_option_ids": [
+     711301,
+     711302,
+     711303
+    ],
+    "evolution_level_required": 1,
+    "trigger_keyword": "",
+    "aura_info": "",
+    "skill_button_type": 0,
+    "camera_type": 0,
+    "cutscene_flag": 2
    }
   },
   {
@@ -745,6 +745,7 @@
     "damage_scaling": "",
     "skill_level_scaling": "",
     "multiplier": null,
+    "damage": null,
     "effects": [],
     "battle_options": "711401",
     "battle_option_ids": [
@@ -755,8 +756,7 @@
     "aura_info": "",
     "skill_button_type": -1,
     "camera_type": 0,
-    "cutscene_flag": 0,
-    "damage": null
+    "cutscene_flag": 0
    }
   }
  ]

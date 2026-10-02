@@ -1,0 +1,2 @@
+// Cleaned official news HTML for 2026-09-30 【ANNOUNCEMENT】Maintenance
+export default "Maintenance is scheduled for tomorrow.<br />2026.10. 1. 02:00 ~ 06:00 (UTC)<br /><br />You will not be able to play during the maintenance. We apologize for the inconvenience and thank you for your patience.<br />※ Maintenance schedule is subject to change.<br />※ ※ Please be advised that Arena Tower Season 4 will begin following the maintenance mentioned above, as previously announced.";

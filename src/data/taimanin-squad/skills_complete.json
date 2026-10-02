@@ -1,8 +1,8 @@
 {
  "version": "4",
- "total_skills": 1654,
- "total_buffs": 254,
- "total_debuffs": 562,
+ "total_skills": 1656,
+ "total_buffs": 444,
+ "total_debuffs": 698,
  "skills": [
   {
    "id": 100,
@@ -19871,12 +19871,12 @@
   },
   {
    "id": 8101,
-   "name": "",
+   "name": "[&Color_Cyan]Burning Blade[-]",
    "name_key": "Tbl_UnitSkill_Name_8101",
-   "name_readable": "",
-   "description": "[In preparation]",
+   "name_readable": "Burning Blade",
+   "description": "Uses forearm blades to slash the enemy [A:8101] time(s).\nEach attack inflicts [&Color_Cyan]([V3:810102]%)[-] [&Burn] at a [&Color_Cyan][R:810102]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:810102] turn(s)\nInflicts [&Color_Cyan]([V3:810103]%)[-] [&BurnDmg] at a [&Color_Cyan][R:810103]%[-] chance on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:810103] turn(s)\nWhen the character is in [&Stealth] mode, increases the target's [&Burn] duration by [V2:810104] turn(s).",
    "description_key": "Tbl_UnitSkill_Desc_8101",
-   "description_readable": "[In preparation]",
+   "description_readable": "Uses forearm blades to slash the enemy 3 time(s).\nEach attack inflicts (3.5%) Burn at a 5% chance.\nDuration: 3 turn(s)\nInflicts (50%) Vulnerable to Burn at a 20% chance on the Last Attack.\nDuration: 2 turn(s)\nWhen the character is in Stealth mode, increases the target's Burn duration by 1 turn(s).",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "8101",
@@ -19919,12 +19919,12 @@
   },
   {
    "id": 8102,
-   "name": "",
+   "name": "[&Color_Cyan]Silicon Art: Crystalization[-]",
    "name_key": "Tbl_UnitSkill_Name_8102",
-   "name_readable": "",
-   "description": "[In preparation]",
+   "name_readable": "Silicon Art: Crystalization",
+   "description": "Gains [&Color_Cyan]([V3:810202]%)[-] [&CriRateUp] and enters [&Stealth] mode.\n[&Common_Word_Skill_ValueTurn]: [V2:810202] turn(s)\nWhen the character is in [&Stealth] mode, [&Common_Word_Skill_CriticalRate] increases by [&Color_Cyan]([V3:810203]%)[-] when attacking enemies with [&Burn]. [&Common_Word_Skill_CooltimeIgnore]",
    "description_key": "Tbl_UnitSkill_Desc_8102",
-   "description_readable": "[In preparation]",
+   "description_readable": "Gains (32.5%) CRIT Rate UP and enters Stealth mode.\nDuration: 2 turn(s)\nWhen the character is in Stealth mode, CRIT Rate increases by (40%) when attacking enemies with Burn. [Always-active passive effect regardless of cooldown]",
    "type_description": "[Support Skill]",
    "type_description_readable": "[Support Skill]",
    "icon": "8102",
@@ -19951,12 +19951,12 @@
   },
   {
    "id": 8103,
-   "name": "",
+   "name": "[&Color_Cyan]Silicon Art: Shadow Attack[-]",
    "name_key": "Tbl_UnitSkill_Name_8103",
-   "name_readable": "",
-   "description": "[In preparation]",
+   "name_readable": "Silicon Art: Shadow Attack",
+   "description": "Hides in the darkness and delivers a powerful slash to the enemy.\nInflicts [&Color_Cyan]([V3:810301]%)[-] [&Burn] to the target [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ValueTurn]: [V2:810301] turn(s)\nIf the target has 5 or more [&Burn]s, performs a [&Color_Cyan]([V3:810303]%)[-] [&Common_Word_Skill_DefPenetrate] attack.\nIf the character is in [&Stealth] mode, and the target is inflicted with [&Burn] with its [&HP] below [&Color_Cyan]10%[-], deals [&Common_Word_Skill_DeathDmg] at a fixed [&Color_Cyan][R:810304]%[-] chance.",
    "description_key": "Tbl_UnitSkill_Desc_8103",
-   "description_readable": "[In preparation]",
+   "description_readable": "Hides in the darkness and delivers a powerful slash to the enemy.\nInflicts (3.5%) Burn to the target before the attack.\nDuration: 3 turn(s)\nIf the target has 5 or more Burns, performs a (90%) DEF Penetrate attack.\nIf the character is in Stealth mode, and the target is inflicted with Burn with its HP below 10%, deals Instant Death at a fixed 25% chance.",
    "type_description": "[Ultimate Skill]",
    "type_description_readable": "[Ultimate Skill]",
    "icon": "8103",
@@ -19999,12 +19999,12 @@
   },
   {
    "id": 8104,
-   "name": "",
+   "name": "[&Color_Cyan]Fuuma's Oniwaban[-]",
    "name_key": "Tbl_UnitSkill_Name_8104",
-   "name_readable": "",
-   "description": "[In preparation]",
+   "name_readable": "Fuuma's Oniwaban",
+   "description": "When the character attacks while in [&Stealth] mode, inflicts [&Color_Cyan]([V3:810401]%)[-] [&EvdDown].\n[&Common_Word_Skill_ValueTurn]: [V2:810401] turn(s)\n[&Common_Word_Skill_Damage] increases by [&Color_Cyan][V3:810402]%[-] for each [&Burn] the enemy has.",
    "description_key": "Tbl_UnitSkill_Desc_8104",
-   "description_readable": "[In preparation]",
+   "description_readable": "When the character attacks while in Stealth mode, inflicts (-24%) EVD DOWN.\nDuration: 2 turn(s)\nDMG increases by 12.5% for each Burn the enemy has.",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "8104",
@@ -20032,10 +20032,10 @@
    "id": 8112,
    "name": "<[&Tbl_UnitWeapon_Name_8101]> [&Tbl_UnitSkill_Name_8102]",
    "name_key": "Tbl_UnitSkill_Name_8112",
-   "name_readable": "<Photon Plasma Blade> ",
-   "description": "[In preparation]",
+   "name_readable": "<Photon Plasma Blade> Silicon Art: Crystalization",
+   "description": "Enters [&Stealth] mode.\n[&Common_Word_Skill_ValueTurn]: [V2:811201] turn(s)\nWhen defeating an enemy while the character is in [&Stealth] mode, gains [&Color_Cyan]([V3:811202]%)[-] [&CriDmgUp] and [&Color_Cyan]([V3:811203]%)[-] [&SpdUp].\n[&Common_Word_Skill_ValueTurn]: [V2:811203] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_8112",
-   "description_readable": "[In preparation]",
+   "description_readable": "Enters Stealth mode.\nDuration: 2 turn(s)\nWhen defeating an enemy while the character is in Stealth mode, gains (60%) CRIT DMG UP and (24%) SPD UP.\nDuration: 2 turn(s)",
    "type_description": "[Support Skill]",
    "type_description_readable": "[Support Skill]",
    "icon": "8112",
@@ -20064,10 +20064,10 @@
    "id": 8114,
    "name": "<[&Tbl_UnitWeapon_Name_8102]> [&Tbl_UnitSkill_Name_8104]",
    "name_key": "Tbl_UnitSkill_Name_8114",
-   "name_readable": "<Optical Stealth Blade> ",
-   "description": "[In preparation]",
+   "name_readable": "<Optical Stealth Blade> Fuuma's Oniwaban",
+   "description": "When the character attacks while in [&Stealth] mode, removes 1 [&Common_Word_Skill_Random] [&Buff] from the target at a [&Color_Cyan][R:811401]%[-] chance.\nWhen the [&Buff] is removed, inflicts [&Color_Cyan]([V3:811402]%)[-] [&Burn] on the target.\nWhen the character attacks while in [&Stealth] mode, if the target doesn't have any [&Buff], inflicts [&Color_Cyan]([V3:811403]%)[-] [&Burn].\nWhen the target is inflicted with [&Burn], the character inflicts 1 additional [&Color_Cyan]([V3:811404]%)[-] [&Burn].\n[&Burn] [&Common_Word_Skill_ValueTurn]: [V2:811402] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_8114",
-   "description_readable": "[In preparation]",
+   "description_readable": "When the character attacks while in Stealth mode, removes 1 Random Buff from the target at a 50% chance.\nWhen the Buff is removed, inflicts (3.5%) Burn on the target.\nWhen the character attacks while in Stealth mode, if the target doesn't have any Buff, inflicts (3.5%) Burn.\nWhen the target is inflicted with Burn, the character inflicts 1 additional (3.5%) Burn.\nBurn Duration: 3 turn(s)",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "8114",
@@ -23032,9 +23032,9 @@
    "name": "[&Color_Cyan]Evil Eye: Mermaid's Azure Eye[-]",
    "name_key": "Tbl_UnitSkill_Name_9703",
    "name_readable": "Evil Eye: Mermaid's Azure Eye",
-   "description": "Drains life energy from [&Common_Word_Skill_EnemyAll].\nUpon energy drain, steals [V3:970302] [&Common_Word_Skill_Random] [&Buff](s) the target has at a [&Color_Cyan][R:970302]%[-] chance.\nIf the target is the only one remaining, steals [&Buff].",
+   "description": "Drains life energy from [&Common_Word_Skill_EnemyAll].\nUpon energy drain, steals [V3:970302] [&Common_Word_Skill_Random] [&Buff](s) the target has at a [&Color_Cyan][R:970302]%[-] chance.\nIf the target is the only one remaining, guaranteed to steal [V3:970303] [&Common_Word_Skill_Random] [&Buff](s) the target has.",
    "description_key": "Tbl_UnitSkill_Desc_9703",
-   "description_readable": "Drains life energy from ALL enemies.\nUpon energy drain, steals 1 Random Buff(s) the target has at a 35% chance.\nIf the target is the only one remaining, steals Buff.",
+   "description_readable": "Drains life energy from ALL enemies.\nUpon energy drain, steals 1 Random Buff(s) the target has at a 35% chance.\nIf the target is the only one remaining, guaranteed to steal 1 Random Buff(s) the target has.",
    "type_description": "[Attack Skill]",
    "type_description_readable": "[Attack Skill]",
    "icon": "9703",
@@ -44819,6 +44819,96 @@
    "cutscene_flag": 0
   },
   {
+   "id": 25911,
+   "name": "",
+   "name_key": "Tbl_UnitSkill_Name_25911",
+   "name_readable": "",
+   "description": "",
+   "description_key": "Tbl_UnitSkill_Desc_25911",
+   "description_readable": "",
+   "type_description": "[Normal Attack]",
+   "type_description_readable": "[Normal Attack]",
+   "icon": "25911",
+   "cooldown": 0,
+   "hit_count": 1,
+   "additional_hits": 0,
+   "damage_scaling": "[ATK]",
+   "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+   "multiplier": 525.0,
+   "damage": {
+    "scaling": [
+     {
+      "stat": "ATK",
+      "pct": 525.0
+     }
+    ],
+    "hits": [
+     {
+      "pct": 525.0,
+      "count": 1,
+      "tar": ""
+     }
+    ],
+    "total": 525.0
+   },
+   "effects": [],
+   "battle_options": "2591101",
+   "battle_option_ids": [
+    2591101
+   ],
+   "evolution_level_required": 0,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": 0,
+   "camera_type": 0,
+   "cutscene_flag": 0
+  },
+  {
+   "id": 25912,
+   "name": "",
+   "name_key": "Tbl_UnitSkill_Name_25912",
+   "name_readable": "",
+   "description": "",
+   "description_key": "Tbl_UnitSkill_Desc_25912",
+   "description_readable": "",
+   "type_description": "[Attack Skill]",
+   "type_description_readable": "[Attack Skill]",
+   "icon": "25912",
+   "cooldown": 3,
+   "hit_count": 1,
+   "additional_hits": 0,
+   "damage_scaling": "[ATK]",
+   "skill_level_scaling": "[D:10]/[D:10]/[D:10]/[D:10]/[D:10]",
+   "multiplier": 769.1,
+   "damage": {
+    "scaling": [
+     {
+      "stat": "ATK",
+      "pct": 769.1
+     }
+    ],
+    "hits": [
+     {
+      "pct": 769.1,
+      "count": 1,
+      "tar": ""
+     }
+    ],
+    "total": 769.1
+   },
+   "effects": [],
+   "battle_options": "2591201",
+   "battle_option_ids": [
+    2591201
+   ],
+   "evolution_level_required": 0,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": 0,
+   "camera_type": 0,
+   "cutscene_flag": 0
+  },
+  {
    "id": 26001,
    "name": "",
    "name_key": "Tbl_UnitSkill_Name_26001",
@@ -48008,12 +48098,12 @@
   },
   {
    "id": 27501,
-   "name": "",
+   "name": "[&Color_Cyan]Slay[-]",
    "name_key": "Tbl_UnitSkill_Name_27501",
-   "name_readable": "",
-   "description": "",
+   "name_readable": "Slay",
+   "description": "Swings a sword vertically to attack the enemy a total of [A:27501] time(s).\n[&Common_Word_Skill_Damage] increases in proportion to the character's DEF.\nPerforms a [&Color_Cyan]([V3:2750102]%)[-] [&Common_Word_Skill_DmgDrainHp] attack in proportion to lost HP.",
    "description_key": "Tbl_UnitSkill_Desc_27501",
-   "description_readable": "",
+   "description_readable": "Swings a sword vertically to attack the enemy a total of 3 time(s).\nDMG increases in proportion to the character's DEF.\nPerforms a (12%) Life Steal attack in proportion to lost HP.",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "27501",
@@ -48058,12 +48148,12 @@
   },
   {
    "id": 27502,
-   "name": "",
+   "name": "[&Color_Cyan]Calamity[-]",
    "name_key": "Tbl_UnitSkill_Name_27502",
-   "name_readable": "",
-   "description": "",
+   "name_readable": "Calamity",
+   "description": "Spins the whole body to attack [&Common_Word_Skill_EnemyAll] [A:27502] time(s).\n[&Common_Word_Skill_Damage] increases in proportion to the character's DEF.\nWhen attacking, consumes [&Color_Cyan][V3:2750201]%[-] of the character's current [&HP] to activate the effects listed below.\nTarget hit is inflicted with [&Color_Cyan]([V3:2750203]%)[-] [&AtkDown] at a [&Color_Cyan][R:2750203]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2750203] turn(s)\nGrants [&Shield] equal to [&Color_Cyan][V3:2750204]%[-] of the character's Max. [&HP] to [&Common_Word_Skill_AllyAll] [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn]: [V2:2750204] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_27502",
-   "description_readable": "",
+   "description_readable": "Spins the whole body to attack ALL enemies 1 time(s).\nDMG increases in proportion to the character's DEF.\nWhen attacking, consumes -10% of the character's current HP to activate the effects listed below.\nTarget hit is inflicted with (-30%) ATK DOWN at a 99% chance.\nDuration: 2 turn(s)\nGrants Shield equal to 7% of the character's Max. HP to ALL allies after the attack.\nDuration: 2 turn(s)",
    "type_description": "[Attack Skill]",
    "type_description_readable": "[Attack Skill]",
    "icon": "27502",
@@ -48106,12 +48196,12 @@
   },
   {
    "id": 27503,
-   "name": "",
+   "name": "[&Color_Cyan]Ruthless[-]",
    "name_key": "Tbl_UnitSkill_Name_27503",
-   "name_readable": "",
-   "description": "",
+   "name_readable": "Ruthless",
+   "description": "Swings the sword upward from below to attack the enemy.\n[&Common_Word_Skill_ATKCOSTHP]\nPerforms a [&Color_Cyan]([V3:2750302]%)[-] [&Common_Word_Skill_DmgDrainHp] attack in proportion to lost [&HP].",
    "description_key": "Tbl_UnitSkill_Desc_27503",
-   "description_readable": "",
+   "description_readable": "Swings the sword upward from below to attack the enemy.\nDamage increases in proportion to HP lost.\nPerforms a (18%) Life Steal attack in proportion to lost HP.",
    "type_description": "[Ultimate Skill]",
    "type_description_readable": "[Ultimate Skill]",
    "icon": "27503",
@@ -48156,12 +48246,12 @@
   },
   {
    "id": 27504,
-   "name": "",
+   "name": "[&Color_Cyan]Oni[-]",
    "name_key": "Tbl_UnitSkill_Name_27504",
-   "name_readable": "",
-   "description": "",
+   "name_readable": "Oni",
+   "description": "At the end of each side's turn, grants [&Color_Cyan]([V3:2750402])[-] [&DmgBlockCount] to 1 ally with the lowest [&HP] below [&Color_Cyan]70%[-], except for the character.\n[&Common_Word_Skill_ValueTurn]: [V2:2750402] turn(s)\nIf the character's [&HP] is below [&Color_Cyan]50%[-], the restoration amount increases by [&Color_Cyan][V3:2750401]%[-].\n[&Common_Word_Skill_CooltimeIgnore]\nWhen hit by an all-target attack, restores [&Color_Cyan][V3:2750403]%[-] of the character's Max. [&HP] for each attack.\n[&Common_Word_Skill_CooltimeIgnore]",
    "description_key": "Tbl_UnitSkill_Desc_27504",
-   "description_readable": "",
+   "description_readable": "At the end of each side's turn, grants (1) Protective Shield to 1 ally with the lowest HP below 70%, except for the character.\nDuration: 2 turn(s)\nIf the character's HP is below 50%, the restoration amount increases by 35%.\n[Always-active passive effect regardless of cooldown]\nWhen hit by an all-target attack, restores 6% of the character's Max. HP for each attack.\n[Always-active passive effect regardless of cooldown]",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "27504",
@@ -48188,12 +48278,12 @@
   },
   {
    "id": 27512,
-   "name": "",
+   "name": "<[&Tbl_UnitWeapon_Name_27502]>[&Color_Cyan]Calamity[-]",
    "name_key": "Tbl_UnitSkill_Name_27512",
-   "name_readable": "",
-   "description": "",
+   "name_readable": "<Oni-Gear Blade>Calamity",
+   "description": "Spins the whole body to attack [&Common_Word_Skill_EnemyAll] [A:27512] time(s).\n[&Common_Word_Skill_Damage] increases in proportion to the character's DEF.\nWhen attacking, consumes [&Color_Cyan][V3:2751201]%[-] of the character's current [&HP] to activate the effects listed below.\nRemoves 1 [&Common_Word_Skill_Random] [&DeBuff] from [&Common_Word_Skill_AllyAll].\nGrants [&Shield] equal to [&Color_Cyan][V3:2751204]%[-] of the character's Max. [&HP] to [&Common_Word_Skill_AllyAll] [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn]: [V2:2751204] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_27512",
-   "description_readable": "",
+   "description_readable": "Spins the whole body to attack ALL enemies 1 time(s).\nDMG increases in proportion to the character's DEF.\nWhen attacking, consumes -10% of the character's current HP to activate the effects listed below.\nRemoves 1 Random Debuff from ALL allies.\nGrants Shield equal to 7% of the character's Max. HP to ALL allies after the attack.\nDuration: 2 turn(s)",
    "type_description": "[Attack Skill]",
    "type_description_readable": "[Attack Skill]",
    "icon": "27512",
@@ -48236,12 +48326,12 @@
   },
   {
    "id": 27514,
-   "name": "",
+   "name": "<[&Tbl_UnitWeapon_Name_27501]>[&Color_Cyan]Oni[-]",
    "name_key": "Tbl_UnitSkill_Name_27514",
-   "name_readable": "",
-   "description": "",
+   "name_readable": "<Neon Dimension>Oni",
+   "description": "At the end of each side's turn, grants [&Color_Cyan]([V3:2751402])[-] [&DmgBlockCount] to 1 ally with the lowest [&HP] below [&Color_Cyan]70%[-], except for the character.\n[&Common_Word_Skill_ValueTurn]: [V2:2751402] turn(s)\nWhen the chatacter's [&HP] is below [&Color_Cyan]50%[-], the chance of being inflicted by [&DeBuff]s reduces by [&Color_Cyan][V3:2751401]%[-].\n[&Common_Word_Skill_CooltimeIgnore]\nWhen hit by an all-target attack, restores [&HP] to the character and the ally with the highest [&ATK] by [&Color_Cyan][V3:2751403]%[-] of the character's Max. [&HP] for each attack. [&Common_Word_Skill_CooltimeIgnore]",
    "description_key": "Tbl_UnitSkill_Desc_27514",
-   "description_readable": "",
+   "description_readable": "At the end of each side's turn, grants (1) Protective Shield to 1 ally with the lowest HP below 70%, except for the character.\nDuration: 2 turn(s)\nWhen the chatacter's HP is below 50%, the chance of being inflicted by Debuffs reduces by 20%.\n[Always-active passive effect regardless of cooldown]\nWhen hit by an all-target attack, restores HP to the character and the ally with the highest ATK by 6% of the character's Max. HP for each attack. [Always-active passive effect regardless of cooldown]",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "27514",
@@ -48798,9 +48888,9 @@
    "name": "[&Color_Cyan]Spiral Stinger[-]",
    "name_key": "Tbl_UnitSkill_Name_27901",
    "name_readable": "Spiral Stinger",
-   "description": "",
+   "description": "Imbues the dagger with lightning and slashes to attack [A:27901] time(s).\nIf the target is afflicted with [&Overload], increases [&Common_Word_Skill_CriticalRate] by [&Color_Cyan]([V3:2790102]%)[-].",
    "description_key": "Tbl_UnitSkill_Desc_27901",
-   "description_readable": "",
+   "description_readable": "Imbues the dagger with lightning and slashes to attack 6 time(s).\nIf the target is afflicted with Overload, increases CRIT Rate by (7.5%).",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "27901",
@@ -48844,9 +48934,9 @@
    "name": "[&Color_Cyan]Volt Spin[-]",
    "name_key": "Tbl_UnitSkill_Name_27902",
    "name_readable": "Volt Spin",
-   "description": "",
+   "description": "Quickly moves and fires at the enemy [A:27902] time(s).\nInflicts [&Color_Cyan]([V3:2790202]%)[-] [&Overload] on the target hit at a [&Color_Cyan][R:2790202]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2790202] turn(s)\nGains [&Color_Cyan]([V3:2790203]%)[-] [&SpdUp] [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn]: [V2:2790203] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_27902",
-   "description_readable": "",
+   "description_readable": "Quickly moves and fires at the enemy 5 time(s).\nInflicts (10%) Overload on the target hit at a 10% chance.\nDuration: 3 turn(s)\nGains (19.5%) SPD UP after the attack.\nDuration: 1 turn(s)",
    "type_description": "[Attack Skill]",
    "type_description_readable": "[Attack Skill]",
    "icon": "27902",
@@ -48891,9 +48981,9 @@
    "name": "[&Color_Cyan]Lightning Tempest[-]",
    "name_key": "Tbl_UnitSkill_Name_27903",
    "name_readable": "Lightning Tempest",
-   "description": "",
+   "description": "Strikes [&Common_Word_Skill_EnemyAll] with a powerful lightning bolt to attack [A:27903] time(s).\nIncreases [&Common_Word_Skill_Damage] dealt by [&Color_Cyan][V3:2790303]%[-] for each [&Overload] the enemy is afflicted with.\nInflicts [&Color_Cyan]([V3:2790302]%)[-] [&SpdDown] at a [&Color_Cyan][R:2790302]%[-] chance [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn]: [V2:2790302] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_27903",
-   "description_readable": "",
+   "description_readable": "Strikes ALL enemies with a powerful lightning bolt to attack 5 time(s).\nIncreases DMG dealt by 15% for each Overload the enemy is afflicted with.\nInflicts (-15%) SPD DOWN at a 90% chance after the attack.\nDuration: 1 turn(s)",
    "type_description": "[Ultimate Skill]",
    "type_description_readable": "[Ultimate Skill]",
    "icon": "27903",
@@ -48938,9 +49028,9 @@
    "name": "[&Color_Cyan]Lightning Onyx[-]",
    "name_key": "Tbl_UnitSkill_Name_27904",
    "name_readable": "Lightning Onyx",
-   "description": "",
+   "description": "On [&Common_Word_Skill_TurnStart], if there is an enemy afflicted with [&Overload], inflicts [&Color_Cyan]([V3:2790401]%)[-] [&Overload] on 2 [&Common_Word_Skill_Random] enemies at a [&Color_Cyan][R:2790401]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2790401] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_27904",
-   "description_readable": "",
+   "description_readable": "On Turn Start, if there is an enemy afflicted with Overload, inflicts (10%) Overload on 2 Random enemies at a 45% chance.\nDuration: 3 turn(s)",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "27904",
@@ -48968,9 +49058,9 @@
    "name": "<[&Tbl_UnitWeapon_Name_27901]>[&Color_Cyan]Lightning Tempest[-]",
    "name_key": "Tbl_UnitSkill_Name_27913",
    "name_readable": "<Hex Pulse CQC>Lightning Tempest",
-   "description": "",
+   "description": "Strikes [&Common_Word_Skill_EnemyAll] with a powerful lightning bolt to attack [A:27913] time(s).\nWhen a [&Common_Word_Skill_CriticalAttack] lands, performs a [&Color_Cyan]([V3:2791302]%)[-] [&Common_Word_Skill_DefPenetrate] attack.\nIf the target is afflicted with [&Overload], inflicts [&ElecShock] at a [&Color_Cyan][R:2791303]%[-] chance on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:2791303] turn(s)\nInflicts [&Color_Cyan]([V3:2791304]%)[-] [&SpdDown] at a [&Color_Cyan][R:2791304]%[-] chance [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn]: [V2:2791304] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_27913",
-   "description_readable": "",
+   "description_readable": "Strikes ALL enemies with a powerful lightning bolt to attack 5 time(s).\nWhen a CRIT ATK lands, performs a (90%) DEF Penetrate attack.\nIf the target is afflicted with Overload, inflicts Electrocute at a 55% chance on the Last Attack.\nDuration: 2 turn(s)\nInflicts (-15%) SPD DOWN at a 90% chance after the attack.\nDuration: 1 turn(s)",
    "type_description": "[Ultimate Skill]",
    "type_description_readable": "[Ultimate Skill]",
    "icon": "27913",
@@ -49016,9 +49106,9 @@
    "name": "<[&Tbl_UnitWeapon_Name_27902]>[&Color_Cyan]Lightning Onyx[-]",
    "name_key": "Tbl_UnitSkill_Name_27914",
    "name_readable": "<Black Volt Assault>Lightning Onyx",
-   "description": "",
+   "description": "The following effects apply depending on the [&Color_GreenYellow]total number[-] of [&Overload]s the enemies are afflicted with.\n1 or more [&Overload]: Performs a [&Color_Cyan]([V3:2791401]%)[-] [&Common_Word_Skill_DefPenetrate] attack.\n3 or more [&Overload]: Increases [&Common_Word_Skill_CriticalDamage] by [&Color_Cyan]([V3:2791402]%)[-].",
    "description_key": "Tbl_UnitSkill_Desc_27914",
-   "description_readable": "",
+   "description_readable": "The following effects apply depending on the total number of Overloads the enemies are afflicted with.\n1 or more Overload: Performs a (15%) DEF Penetrate attack.\n3 or more Overload: Increases CRIT DMG by (15%).",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "27914",
@@ -49670,9 +49760,9 @@
   },
   {
    "id": 28211,
-   "name": "",
+   "name": "<[&Tbl_UnitWeapon_Name_28201]>[&Color_Cyan]Earth-Shattering Kick[-]",
    "name_key": "Tbl_UnitSkill_Name_28211",
-   "name_readable": "",
+   "name_readable": "<Mirage Tactical Leg>Earth-Shattering Kick",
    "description": "Strikes down the enemy with the heel.\nWhen the character is in [&Stealth] mode, inflicts [&Color_Cyan]([V3:2821102]%)[-] [&CriResDown] at a [&Color_Cyan][R:2821102]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2821102] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_28211",
    "description_readable": "Strikes down the enemy with the heel.\nWhen the character is in Stealth mode, inflicts (-40%) CRIT RES DOWN at a 25% chance.\nDuration: 2 turn(s)",
@@ -49716,12 +49806,12 @@
   },
   {
    "id": 28212,
-   "name": "",
+   "name": "<[&Tbl_UnitWeapon_Name_28202]>[&Color_Cyan]Shadow Dance Kick[-]",
    "name_key": "Tbl_UnitSkill_Name_28212",
-   "name_readable": "",
-   "description": "Moves at blinding speed to attack [A:28212] time(s).\nConsumes [&Color_Cyan][V3:2821202]%[-] of the character's [&HP] to go into [&Stealth] mode and gain [&Color_Cyan]([V3:2821204]%)[-] [&SpdUp] [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn]: [V2:2821204] turn(s)",
+   "name_readable": "<Active Cloaking Leg>Shadow Dance Kick",
+   "description": "Moves at blinding speed to attack [A:28212] time(s).\nConsumes [&Color_Cyan][V3:2821202]%[-] of the character's [&HP] to go into [&Stealth] mode and gains [&Color_Cyan]([V3:2821204]%)[-] [&SpdUp] [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn]: [V2:2821204] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_28212",
-   "description_readable": "Moves at blinding speed to attack 4 time(s).\nConsumes -10% of the character's HP to go into Stealth mode and gain (19.5%) SPD UP after the attack.\nDuration: 2 turn(s)",
+   "description_readable": "Moves at blinding speed to attack 4 time(s).\nConsumes -10% of the character's HP to go into Stealth mode and gains (19.5%) SPD UP after the attack.\nDuration: 2 turn(s)",
    "type_description": "[Attack Skill]",
    "type_description_readable": "[Attack Skill]",
    "icon": "28212",
@@ -49797,9 +49887,9 @@
    "name": "[&Color_Cyan]Thunder Spark[-]",
    "name_key": "Tbl_UnitSkill_Name_28301",
    "name_readable": "Thunder Spark",
-   "description": "Leaps high into the air and strikes the enemy with dual swords. \nInflicts [&Color_Cyan]([V3:2830102]%)[-] [&DefDown] at a [&Color_Cyan][R:2830102]%[-] chance [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:2830102] turn(s)\nIf the target has [&Overload], inflicts [&ElecShock] at a [&Color_Cyan][R:2830103]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2830103] turn(s)",
+   "description": "Leaps high into the air and strikes the enemy with dual swords. \nInflicts [&Color_Cyan]([V3:2830102]%)[-] [&DefDown] at a [&Color_Cyan][R:2830102]%[-] chance on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:2830102] turn(s)\nIf the target is afflicted with [&Overload], inflicts [&ElecShock] at a [&Color_Cyan][R:2830103]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2830103] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_28301",
-   "description_readable": "Leaps high into the air and strikes the enemy with dual swords. \nInflicts (-60%) DEF DOWN at a 30% chance Last Attack.\nDuration: 2 turn(s)\nIf the target has Overload, inflicts Electrocute at a 5% chance.\nDuration: 2 turn(s)",
+   "description_readable": "Leaps high into the air and strikes the enemy with dual swords. \nInflicts (-60%) DEF DOWN at a 30% chance on the Last Attack.\nDuration: 2 turn(s)\nIf the target is afflicted with Overload, inflicts Electrocute at a 5% chance.\nDuration: 2 turn(s)",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "28301",
@@ -49876,9 +49966,9 @@
    "name": "[&Color_Cyan]Twin Lightning[-]",
    "name_key": "Tbl_UnitSkill_Name_28303",
    "name_readable": "Twin Lightning",
-   "description": "Leaps high into the air and rapidly plummets down to attack the enemy.\n[&Common_Word_Skill_ATKHP]\nInflicts [&Color_Cyan]([V3:2830301]%)[-] [&Overload] on 2 [&Common_Word_Skill_Random] enemies at a [&Color_Cyan][R:2830301]%[-] chance [&Common_Word_Skill_ActionBefore] .\nIf the target has [&Overload], reduces the target' [&Common_Word_Skill_TurnGauge] by [&Color_Cyan]([V3:2830303]%)[-] at a [&Color_Cyan][R:2830303]%[-] chance.\nIf the target has 3 or more [&DeBuff]s, increases all [&DeBuff] turns the target has by [V2:2830304] turn(s).",
+   "description": "Leaps high into the air and rapidly plummets down to attack the enemy.\n[&Common_Word_Skill_ATKHP]\nInflicts [&Color_Cyan]([V3:2830301]%)[-] [&Overload] on 2 [&Common_Word_Skill_Random] enemies at a [&Color_Cyan][R:2830301]%[-] chance [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ValueTurn]: [V2:2830301] turn(s)\nIf the target is afflicted with [&Overload], reduces the target's [&Common_Word_Skill_TurnGauge] by [&Color_Cyan]([V3:2830303]%)[-] at a [&Color_Cyan][R:2830303]%[-] chance.\nIf the target has 3 or more [&DeBuff]s, increases the duration of all [&DeBuff]s by [V2:2830304] turn(s).",
    "description_key": "Tbl_UnitSkill_Desc_28303",
-   "description_readable": "Leaps high into the air and rapidly plummets down to attack the enemy.\nDamage increases in proportion to Max. HP.\nInflicts (10%) Overload on 2 Random enemies at a 90% chance before the attack .\nIf the target has Overload, reduces the target' Turn Gauge by (15%) at a 99% chance.\nIf the target has 3 or more Debuffs, increases all Debuff turns the target has by 1 turn(s).",
+   "description_readable": "Leaps high into the air and rapidly plummets down to attack the enemy.\nDamage increases in proportion to Max. HP.\nInflicts (10%) Overload on 2 Random enemies at a 90% chance before the attack.\nDuration: 3 turn(s)\nIf the target is afflicted with Overload, reduces the target's Turn Gauge by (15%) at a 99% chance.\nIf the target has 3 or more Debuffs, increases the duration of all Debuffs by 1 turn(s).",
    "type_description": "[Ultimate Skill]",
    "type_description_readable": "[Ultimate Skill]",
    "icon": "28303",
@@ -49928,9 +50018,9 @@
    "name": "[&Color_Cyan]Thunder Volt[-]",
    "name_key": "Tbl_UnitSkill_Name_28304",
    "name_readable": "Thunder Volt",
-   "description": "At the end of the turn, removes all [&Overload] from allies, inflicts [&Overload] to the character, and grants [&OverCharge] to the ally with the highest ATK.\nIf the enemy has 3 or more [&DeBuff]s at the start of your turn, inflicts [&CriDmgDown] on all enemies.[&Common_Word_Skill_CooltimeIgnore]\nBased on the number of [&DeBuff]s the enemy has (3/4/5), the effect of [&CriDmgDown] increases by [&Color_Cyan][V3:2830406]%[-]/[&Color_Cyan][V3:2830405]%[-]/[&Color_Cyan][V3:2830404]%[-], respectively.\n[&Common_Word_Skill_ValueTurn]: [V2:2830404] turn(s)",
+   "description": "At the end of the turn, removes all [&Overload] from allies, inflicts [&Color_Cyan]([V3:2830402]%)[-] [&Overload] to the character, and grants [&Color_Cyan]([V3:2830403]%)[-] [&OverCharge] to the ally with the highest ATK.\n[&Common_Word_Skill_ValueTurn]: [V2:2830403] turn(s)\nIf the enemy has 3 or more [&DeBuff]s at the start of your turn, inflicts [&CriDmgDown] on all enemies.\n[&Common_Word_Skill_CooltimeIgnore]\nBased on the number of [&DeBuff]s the enemy has (3/4/5), the effect of [&CriDmgDown] increases by [&Color_Cyan][V3:2830406]%[-]/[&Color_Cyan][V3:2830405]%[-]/[&Color_Cyan][V3:2830404]%[-], respectively.\n[&Common_Word_Skill_ValueTurn]: [V2:2830404] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_28304",
-   "description_readable": "At the end of the turn, removes all Overload from allies, inflicts Overload to the character, and grants Overclock to the ally with the highest ATK.\nIf the enemy has 3 or more Debuffs at the start of your turn, inflicts CRIT DMG DOWN on all enemies.[Always-active passive effect regardless of cooldown]\nBased on the number of Debuffs the enemy has (3/4/5), the effect of CRIT DMG DOWN increases by -45%/-60%/-70%, respectively.\nDuration: 1 turn(s)",
+   "description_readable": "At the end of the turn, removes all Overload from allies, inflicts (10%) Overload to the character, and grants (30%) Overclock to the ally with the highest ATK.\nDuration: 2 turn(s)\nIf the enemy has 3 or more Debuffs at the start of your turn, inflicts CRIT DMG DOWN on all enemies.\n[Always-active passive effect regardless of cooldown]\nBased on the number of Debuffs the enemy has (3/4/5), the effect of CRIT DMG DOWN increases by -45%/-60%/-70%, respectively.\nDuration: 1 turn(s)",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "28304",
@@ -49960,12 +50050,12 @@
   },
   {
    "id": 28313,
-   "name": "",
+   "name": "<[&Tbl_UnitWeapon_Name_28301]>[&Color_Cyan]Twin Lightning[-]",
    "name_key": "Tbl_UnitSkill_Name_28313",
-   "name_readable": "",
-   "description": "Leaps high into the air and rapidly plummets down to attack the enemy.\n[&Common_Word_Skill_ATKHP]\nInflicts [&Color_Cyan]([V3:2830301]%)[-] [&Overload] on 2 [&Common_Word_Skill_Random] enemies at a [&Color_Cyan][R:2830301]%[-] chance [&Common_Word_Skill_ActionBefore].\nIf the targer has [&Overload], inflicts [&Color_Cyan]([V3:2831303]%)[-] [&CriRateDown] at a [&Color_Cyan][R:2831303]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2831303] turn(s)\nIf the target has 3 or more [&DeBuff]s, increases the target's [&Common_Word_Skill_CoolTime] time of all skills by 1 turn.",
+   "name_readable": "<Plasma Circuit Blade>Twin Lightning",
+   "description": "Leaps high into the air and rapidly plummets down to attack the enemy.\n[&Common_Word_Skill_ATKHP]\nInflicts [&Color_Cyan]([V3:2831301]%)[-] [&Overload] on 2 [&Common_Word_Skill_Random] enemies at a [&Color_Cyan][R:2830301]%[-] chance [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ValueTurn]: [V2:2831301] turn(s)\nIf the targer is afflicted with [&Overload], inflicts [&Color_Cyan]([V3:2831303]%)[-] [&CriRateDown] at a [&Color_Cyan][R:2831303]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:2831303] turn(s)\nIf the target has 3 or more [&DeBuff]s, increases the target's [&Common_Word_Skill_CoolTime] time of all skills by 1 turn.",
    "description_key": "Tbl_UnitSkill_Desc_28313",
-   "description_readable": "Leaps high into the air and rapidly plummets down to attack the enemy.\nDamage increases in proportion to Max. HP.\nInflicts (10%) Overload on 2 Random enemies at a 90% chance before the attack.\nIf the targer has Overload, inflicts (-57.5%) CRIT Rate DOWN at a 99% chance.\nDuration: 2 turn(s)\nIf the target has 3 or more Debuffs, increases the target's Cooldown time of all skills by 1 turn.",
+   "description_readable": "Leaps high into the air and rapidly plummets down to attack the enemy.\nDamage increases in proportion to Max. HP.\nInflicts (10%) Overload on 2 Random enemies at a 90% chance before the attack.\nDuration: 3 turn(s)\nIf the targer is afflicted with Overload, inflicts (-57.5%) CRIT Rate DOWN at a 99% chance.\nDuration: 2 turn(s)\nIf the target has 3 or more Debuffs, increases the target's Cooldown time of all skills by 1 turn.",
    "type_description": "[Ultimate Skill]",
    "type_description_readable": "[Ultimate Skill]",
    "icon": "28313",
@@ -50012,12 +50102,12 @@
   },
   {
    "id": 28314,
-   "name": "",
+   "name": "<[&Tbl_UnitWeapon_Name_28302]>[&Color_Cyan]Thunder Volt[-]",
    "name_key": "Tbl_UnitSkill_Name_28314",
-   "name_readable": "",
-   "description": "At the end of the turn, removes all [&Overload] from allies, inflicts [&Overload] to the character, and grants [&OverCharge] to the ally with the highest ATK.\nIf the enemy has 3 or more [&DeBuff]s at the start of your turn, inflicts [&AccDown] to all enemies.[&Common_Word_Skill_CooltimeIgnore]\nBased on the number of [&DeBuff]s the enemy has (3/4/5), the effect of [&AccDown] increases by [&Color_Cyan][V3:2831406]%[-]/[&Color_Cyan][V3:2831405]%[-]/[&Color_Cyan][V3:2831404]%[-], respectively.\n[&Common_Word_Skill_ValueTurn]: [V2:2831404] turn(s)",
+   "name_readable": "<Quantum Spark Blade>Thunder Volt",
+   "description": "At the end of the turn, removes all [&Overload] from allies, inflicts [&Color_Cyan]([V3:2831402]%)[-] [&Overload] to the character, and grants [&Color_Cyan]([V3:2831403]%)[-] [&OverCharge] to the ally with the highest ATK.\n[&Common_Word_Skill_ValueTurn]: [V2:2831403] turn(s)\nIf the enemy has 3 or more [&DeBuff]s at the start of your turn, inflicts [&AccDown] on all enemies.\n[&Common_Word_Skill_CooltimeIgnore]\nBased on the number of [&DeBuff]s the enemy has (3/4/5), the effect of [&AccDown] increases by [&Color_Cyan][V3:2831406]%[-]/[&Color_Cyan][V3:2831405]%[-]/[&Color_Cyan][V3:2831404]%[-], respectively.\n[&Common_Word_Skill_ValueTurn]: [V2:2831404] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_28314",
-   "description_readable": "At the end of the turn, removes all Overload from allies, inflicts Overload to the character, and grants Overclock to the ally with the highest ATK.\nIf the enemy has 3 or more Debuffs at the start of your turn, inflicts ACC DOWN to all enemies.[Always-active passive effect regardless of cooldown]\nBased on the number of Debuffs the enemy has (3/4/5), the effect of ACC DOWN increases by -22.5%/-30%/-35%, respectively.\nDuration: 1 turn(s)",
+   "description_readable": "At the end of the turn, removes all Overload from allies, inflicts (10%) Overload to the character, and grants (30%) Overclock to the ally with the highest ATK.\nDuration: 2 turn(s)\nIf the enemy has 3 or more Debuffs at the start of your turn, inflicts ACC DOWN on all enemies.\n[Always-active passive effect regardless of cooldown]\nBased on the number of Debuffs the enemy has (3/4/5), the effect of ACC DOWN increases by -22.5%/-30%/-35%, respectively.\nDuration: 1 turn(s)",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "28314",
@@ -54080,12 +54170,12 @@
   },
   {
    "id": 100010,
-   "name": "",
+   "name": "[&Color_Cyan]Momochi Style: Twin Snake[-]",
    "name_key": "Tbl_UnitSkill_Name_100010",
-   "name_readable": "",
-   "description": "",
+   "name_readable": "Momochi Style: Twin Snake",
+   "description": "While Toyo disrupts the enemy line with attacks, Nagi prepares sword aura. And the moment Toyo disengages, Nagi fires a powerful sword aura to attack [&Common_Word_Skill_EnemyAll] a total of [A:100010] time(s).\nIf the enemy has no [&DeBuff], inflicts [&Color_Cyan]([V3:10001001]%)[-] [&CriResDown] at a [&Color_Cyan][R:10001001]%[-] chance [&Common_Word_Skill_ActionBefore]. \n[&Common_Word_Skill_ValueTurn]: [V2:10001001] tun(s)\nPerforms a [&Color_Cyan]([V3:10001003]%)[-] [&Common_Word_Skill_DefPenetrate] attack for each [&DeBuff] the enemy has. Stacks up to 3.\nIf the target is not the [&Color_GreenYellow]boss[-] and its [&HP] is below [&Color_Cyan]15%[-], deals [&Common_Word_Skill_DeathDmg] at a fixed [&Color_Cyan][R:10001006]%[-] chance.\nIf the target is the [&Color_GreenYellow]boss[-], [&Common_Word_Skill_Damage] increases by [&Color_Cyan][V3:10001007]%[-] of the lost [&HP].",
    "description_key": "Tbl_UnitSkill_Desc_100010",
-   "description_readable": "",
+   "description_readable": "While Toyo disrupts the enemy line with attacks, Nagi prepares sword aura. And the moment Toyo disengages, Nagi fires a powerful sword aura to attack ALL enemies a total of 5 time(s).\nIf the enemy has no Debuff, inflicts (-50%) CRIT RES DOWN at a 99% chance before the attack. \nDuration: 2 tun(s)\nPerforms a (65%) DEF Penetrate attack for each Debuff the enemy has. Stacks up to 3.\nIf the target is not the boss and its HP is below 15%, deals Instant Death at a fixed 20% chance.\nIf the target is the boss, DMG increases by 7.5% of the lost HP.",
    "type_description": "[Attack Skill]",
    "type_description_readable": "[Attack Skill]",
    "icon": "100000",
@@ -61148,31 +61238,55 @@
    "type_description_readable": "[Normal Attack]",
    "icon": "1002101",
    "cooldown": 0,
-   "hit_count": 2,
+   "hit_count": 5,
    "additional_hits": 0,
    "damage_scaling": "[ATK]",
    "skill_level_scaling": "",
-   "multiplier": 262.5,
+   "multiplier": 105.0,
    "damage": {
     "scaling": [
      {
       "stat": "ATK",
-      "pct": 262.5
+      "pct": 105.0
      }
     ],
     "hits": [
      {
-      "pct": 262.5,
-      "count": 2,
+      "pct": 105.0,
+      "count": 1,
       "tar": ""
+     },
+     {
+      "pct": 105.0,
+      "count": 1,
+      "tar": "1 random enemy"
+     },
+     {
+      "pct": 105.0,
+      "count": 1,
+      "tar": "1 random enemy"
+     },
+     {
+      "pct": 105.0,
+      "count": 1,
+      "tar": "1 random enemy"
+     },
+     {
+      "pct": 105.0,
+      "count": 1,
+      "tar": "1 random enemy"
      }
     ],
-    "total": 525.0
+    "total": 105.0
    },
    "effects": [],
-   "battle_options": "100210101",
+   "battle_options": "100210101/100210102/100210103/100210104/100210105",
    "battle_option_ids": [
-    100210101
+    100210101,
+    100210102,
+    100210103,
+    100210104,
+    100210105
    ],
    "evolution_level_required": 0,
    "trigger_keyword": "",
@@ -62884,32 +62998,32 @@
   },
   {
    "id": 1003301,
-   "name": "",
+   "name": "[&Color_Cyan]Burning Blade[-]",
    "name_key": "Tbl_UnitSkill_Name_1003301",
-   "name_readable": "",
-   "description": "",
+   "name_readable": "Burning Blade",
+   "description": "Alternately swings blades on both forearms to attack the enemy [A:1003301] time(s).\nInflicts [&Color_Cyan]([V3:100330102]%)[-] [&Burn] to the target hit at a [&Color_Cyan][R:100330102]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:100330102] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_1003301",
-   "description_readable": "",
+   "description_readable": "Alternately swings blades on both forearms to attack the enemy 2 time(s).\nInflicts (3.5%) Burn to the target hit at a 5% chance.\nDuration: 3 turn(s)",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "1003301",
    "cooldown": 0,
-   "hit_count": 3,
+   "hit_count": 2,
    "additional_hits": 0,
    "damage_scaling": "[ATK]",
    "skill_level_scaling": "",
-   "multiplier": 175.0,
+   "multiplier": 262.5,
    "damage": {
     "scaling": [
      {
       "stat": "ATK",
-      "pct": 175.0
+      "pct": 262.5
      }
     ],
     "hits": [
      {
-      "pct": 175.0,
-      "count": 3,
+      "pct": 262.5,
+      "count": 2,
       "tar": ""
      }
     ],
@@ -62930,12 +63044,12 @@
   },
   {
    "id": 1003302,
-   "name": "",
+   "name": "[&Color_Cyan]Silicon Art: Crystalization[-]",
    "name_key": "Tbl_UnitSkill_Name_1003302",
-   "name_readable": "",
-   "description": "",
+   "name_readable": "Silicon Art: Crystalization",
+   "description": "Assumes a combat-ready stance to gain [&Color_Cyan]([V3:100330201]%)[-] [&AccUp].\n[&Common_Word_Skill_ValueTurn]: [V2:100330201] turn(s)\nIf the character's [&HP] is below [&Color_Cyan]50%[-], additionally grants [&Color_Cyan]([V3:100330202]%)[-] [&CriDmgUp].\n[&Common_Word_Skill_ValueTurn]: [V2:100330202] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_1003302",
-   "description_readable": "",
+   "description_readable": "Assumes a combat-ready stance to gain (25%) ACC UP.\nDuration: 2 turn(s)\nIf the character's HP is below 50%, additionally grants (60%) CRIT DMG UP.\nDuration: 2 turn(s)",
    "type_description": "[Support Skill]",
    "type_description_readable": "[Support Skill]",
    "icon": "1003302",
@@ -62961,44 +63075,43 @@
   },
   {
    "id": 1003303,
-   "name": "",
+   "name": "[&Color_Cyan]Inferno Bite[-]",
    "name_key": "Tbl_UnitSkill_Name_1003303",
-   "name_readable": "",
-   "description": "",
+   "name_readable": "Inferno Bite",
+   "description": "Spins body to attack [&Common_Word_Skill_EnemyAll] [A:1003303] times.\nInflicts [&Color_Cyan]([V3:100330301]%)[-] [&Burn] on [&Common_Word_Skill_EnemyAll] at a [&Color_Cyan][R:100330301]%[-] chance [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ValueTurn]: [V2:100330301] turn(s)\nIf [&Common_Word_Skill_EnemyAll] have 5 or more [&Burn]s in total, gains [&Color_Cyan]([V3:100330303]%)[-] [&AtkUp] [&Common_Word_Skill_ActionAfter].\n[&Common_Word_Skill_ValueTurn]: [V2:100330303] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_1003303",
-   "description_readable": "",
+   "description_readable": "Spins body to attack ALL enemies 5 times.\nInflicts (3.5%) Burn on ALL enemies at a 80% chance before the attack.\nDuration: 3 turn(s)\nIf ALL enemies have 5 or more Burns in total, gains (45%) ATK UP after the attack.\nDuration: 2 turn(s)",
    "type_description": "[Attack Skill]",
    "type_description_readable": "[Attack Skill]",
    "icon": "1003303",
    "cooldown": 6,
-   "hit_count": 1,
+   "hit_count": 5,
    "additional_hits": 0,
    "damage_scaling": "[ATK]",
    "skill_level_scaling": "",
-   "multiplier": 519.3,
+   "multiplier": 103.9,
    "damage": {
     "scaling": [
      {
       "stat": "ATK",
-      "pct": 519.3
+      "pct": 103.9
      }
     ],
     "hits": [
      {
-      "pct": 519.3,
-      "count": 1,
+      "pct": 103.9,
+      "count": 5,
       "tar": ""
      }
     ],
-    "total": 519.3
+    "total": 519.5
    },
    "effects": [],
-   "battle_options": "100330301/100330302/100330303/100330304",
+   "battle_options": "100330301/100330302/100330303",
    "battle_option_ids": [
     100330301,
     100330302,
-    100330303,
-    100330304
+    100330303
    ],
    "evolution_level_required": 0,
    "trigger_keyword": "",
@@ -63009,12 +63122,12 @@
   },
   {
    "id": 1003304,
-   "name": "",
+   "name": "[&Color_Cyan]Silicon Art: Red Crystal Array[-]",
    "name_key": "Tbl_UnitSkill_Name_1003304",
-   "name_readable": "",
-   "description": "",
+   "name_readable": "Silicon Art: Red Crystal Array",
+   "description": "When attacking an enemy afflicted with [&Burn], increases the [&Burn] damage by [&Color_Cyan][V3:100330401]%[-] each.\nWhen attacking an enemy afflicted with [&Burn], inflicts [&Color_Cyan]([V3:100330402]%)[-] [&BurnDmg] at a [&Color_Cyan][R:100330402]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:100330402] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_1003304",
-   "description_readable": "",
+   "description_readable": "When attacking an enemy afflicted with Burn, increases the Burn damage by 10% each.\nWhen attacking an enemy afflicted with Burn, inflicts (50%) Vulnerable to Burn at a 20% chance.\nDuration: 2 turn(s)",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "1003304",
@@ -63040,12 +63153,12 @@
   },
   {
    "id": 1003305,
-   "name": "",
+   "name": "[&Color_Cyan]Cyborg Taimanin[-]",
    "name_key": "Tbl_UnitSkill_Name_1003305",
-   "name_readable": "",
-   "description": "",
+   "name_readable": "Cyborg Taimanin",
+   "description": "When the character is afflicted with [&SpdDown], removes [&SpdDown] and inflicts [&BuffTurn_9999] [&Color_Cyan]([V3:100330502]%)[-] [&Target] on the attacker.\nThis effect ignores [&DeBuffBlock].",
    "description_key": "Tbl_UnitSkill_Desc_1003305",
-   "description_readable": "",
+   "description_readable": "When the character is afflicted with SPD DOWN, removes SPD DOWN and inflicts Unremovable (100%) Target on the attacker.\nThis effect ignores Debuff Block.",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "1003305",
@@ -63071,16 +63184,16 @@
   },
   {
    "id": 1003306,
-   "name": "",
+   "name": "[&Color_Cyan]Fuuma's Oniwaban Captain[-]",
    "name_key": "Tbl_UnitSkill_Name_1003306",
-   "name_readable": "",
-   "description": "",
+   "name_readable": "Fuuma's Oniwaban Captain",
+   "description": "When attacking, [&Common_Word_Skill_Damage] increases by [&Color_Cyan][V3:100330601]%[-] for each [&Burn] the enemy has.\nStacks up to 5.",
    "description_key": "Tbl_UnitSkill_Desc_1003306",
-   "description_readable": "",
+   "description_readable": "When attacking, DMG increases by 12.5% for each Burn the enemy has.\nStacks up to 5.",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "1003306",
-   "cooldown": 6,
+   "cooldown": 0,
    "hit_count": 0,
    "additional_hits": 0,
    "damage_scaling": "",
@@ -63088,12 +63201,9 @@
    "multiplier": null,
    "damage": null,
    "effects": [],
-   "battle_options": "100330601/100330602/100330603/100330604",
+   "battle_options": "100330601",
    "battle_option_ids": [
-    100330601,
-    100330602,
-    100330603,
-    100330604
+    100330601
    ],
    "evolution_level_required": 0,
    "trigger_keyword": "",
@@ -63104,12 +63214,12 @@
   },
   {
    "id": 1003307,
-   "name": "",
+   "name": "[&Color_Cyan]Silicon Art: Scorching Crystal[-]",
    "name_key": "Tbl_UnitSkill_Name_1003307",
-   "name_readable": "",
-   "description": "",
+   "name_readable": "Silicon Art: Scorching Crystal",
+   "description": "When a [&Common_Word_Skill_CriticalAttack] lands, performs a [&Color_Cyan]([V3:100330701]%)[-] [&Burn] [&Common_Word_Skill_DotBuffBurst] attack to [&Common_Word_Skill_EnemyAll].",
    "description_key": "Tbl_UnitSkill_Desc_1003307",
-   "description_readable": "",
+   "description_readable": "When a CRIT ATK lands, performs a (36%) Burn Debuff Resonance attack to ALL enemies.",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "1003307",
@@ -64618,9 +64728,9 @@
    "name": "[&Color_Cyan]Fanatical Judgement[-]",
    "name_key": "Tbl_UnitSkill_Name_15901",
    "name_readable": "Fanatical Judgement",
-   "description": "",
+   "description": "Fires electricity from the staff to attack an enemy 2 times.",
    "description_key": "Tbl_UnitSkill_Desc_2010101",
-   "description_readable": "",
+   "description_readable": "Fires electricity from the staff to attack an enemy 2 times.",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "15901",
@@ -64629,22 +64739,22 @@
    "additional_hits": 0,
    "damage_scaling": "[ATK]",
    "skill_level_scaling": "",
-   "multiplier": 0.0,
+   "multiplier": 525.0,
    "damage": {
     "scaling": [
      {
       "stat": "ATK",
-      "pct": 0.0
+      "pct": 525.0
      }
     ],
     "hits": [
      {
-      "pct": 0.0,
+      "pct": 525.0,
       "count": 1,
       "tar": ""
      }
     ],
-    "total": 0.0
+    "total": 525.0
    },
    "effects": [],
    "battle_options": "201010101",
@@ -64663,9 +64773,9 @@
    "name": "[&Color_Cyan]Fanatical Elation[-]",
    "name_key": "Tbl_UnitSkill_Name_15902",
    "name_readable": "Fanatical Elation",
-   "description": "",
+   "description": "Increases the morale of [&Common_Word_Skill_AllyAll] and grants a [&Color_Cyan]([V3:201010201]%)[-] [&DefUp]. \n[&Common_Word_Skill_ValueTurn]: [V2:201010201] turn(s)\nIf the target has [&DefUp] [&Common_Word_Skill_ActionAfter], increases the duration of the target's [&Shield] by [V2:201010202] turn(s).",
    "description_key": "Tbl_UnitSkill_Desc_2010102",
-   "description_readable": "",
+   "description_readable": "Increases the morale of ALL allies and grants a (50%) DEF UP. \nDuration: 2 turn(s)\nIf the target has DEF UP after the attack, increases the duration of the target's Shield by 1 turn(s).",
    "type_description": "[Support Skill]",
    "type_description_readable": "[Support Skill]",
    "icon": "15902",
@@ -64694,9 +64804,9 @@
    "name": "[&Color_Cyan]Staff Pound[-]",
    "name_key": "Tbl_UnitSkill_Name_13501",
    "name_readable": "Staff Pound",
-   "description": "",
+   "description": "Swings a staff to attack the enemy.",
    "description_key": "Tbl_UnitSkill_Desc_2010201",
-   "description_readable": "",
+   "description_readable": "Swings a staff to attack the enemy.",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "13501",
@@ -64705,22 +64815,22 @@
    "additional_hits": 0,
    "damage_scaling": "[ATK]",
    "skill_level_scaling": "",
-   "multiplier": 0.0,
+   "multiplier": 525.0,
    "damage": {
     "scaling": [
      {
       "stat": "ATK",
-      "pct": 0.0
+      "pct": 525.0
      }
     ],
     "hits": [
      {
-      "pct": 0.0,
+      "pct": 525.0,
       "count": 1,
       "tar": ""
      }
     ],
-    "total": 0.0
+    "total": 525.0
    },
    "effects": [],
    "battle_options": "201020101",
@@ -64739,16 +64849,16 @@
    "name": "[&Color_Cyan]Soothe Pain[-]",
    "name_key": "Tbl_UnitSkill_Name_13502",
    "name_readable": "Soothe Pain",
-   "description": "",
+   "description": "Grants a [&Shield] equal to [&Color_Cyan][V3:201020201]%[-] of [&DEF] to the character. \n[&Common_Word_Skill_ValueTurn]: [V2:201020201] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_2010202",
-   "description_readable": "",
-   "type_description": "[Attack Skill]",
-   "type_description_readable": "[Attack Skill]",
+   "description_readable": "Grants a Shield equal to 445% of DEF to the character. \nDuration: 2 turn(s)",
+   "type_description": "[Support Skill]",
+   "type_description_readable": "[Support Skill]",
    "icon": "13502",
    "cooldown": 3,
    "hit_count": 1,
    "additional_hits": 0,
-   "damage_scaling": "[ATK]",
+   "damage_scaling": "",
    "skill_level_scaling": "",
    "multiplier": null,
    "damage": null,
@@ -64769,9 +64879,9 @@
    "name": "[&Color_Cyan]Vile Miasma[-]",
    "name_key": "Tbl_UnitSkill_Name_21001",
    "name_readable": "Vile Miasma",
-   "description": "",
+   "description": "Launches a fireball to attack the enemy.",
    "description_key": "Tbl_UnitSkill_Desc_2010301",
-   "description_readable": "",
+   "description_readable": "Launches a fireball to attack the enemy.",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "21001",
@@ -64814,9 +64924,9 @@
    "name": "[&Color_Cyan]Surging Malice[-]",
    "name_key": "Tbl_UnitSkill_Name_21002",
    "name_readable": "Surging Malice",
-   "description": "",
+   "description": "Concentrates and grants [&Color_Cyan]([V3:201030201]%)[-] [&AtkUp] to 2 [&Common_Word_Skill_Random] allies.\n[&Common_Word_Skill_ValueTurn]: [V2:201030201] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_2010302",
-   "description_readable": "",
+   "description_readable": "Concentrates and grants (35%) ATK UP to 2 Random allies.\nDuration: 2 turn(s)",
    "type_description": "[Support Skill]",
    "type_description_readable": "[Support Skill]",
    "icon": "21002",
@@ -64844,9 +64954,9 @@
    "name": "[&Color_Cyan]Eldritch Magic[-]",
    "name_key": "Tbl_UnitSkill_Name_14501",
    "name_readable": "Eldritch Magic",
-   "description": "",
+   "description": "Summons the Eye of the Otherworld and attacks 1 time.",
    "description_key": "Tbl_UnitSkill_Desc_2010401",
-   "description_readable": "",
+   "description_readable": "Summons the Eye of the Otherworld and attacks 1 time.",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "14501",
@@ -64855,22 +64965,22 @@
    "additional_hits": 0,
    "damage_scaling": "[ATK]",
    "skill_level_scaling": "",
-   "multiplier": 0.0,
+   "multiplier": 525.0,
    "damage": {
     "scaling": [
      {
       "stat": "ATK",
-      "pct": 0.0
+      "pct": 525.0
      }
     ],
     "hits": [
      {
-      "pct": 0.0,
+      "pct": 525.0,
       "count": 1,
       "tar": ""
      }
     ],
-    "total": 0.0
+    "total": 525.0
    },
    "effects": [],
    "battle_options": "201040101",
@@ -64889,9 +64999,9 @@
    "name": "[&Color_Cyan]Eldritch Shield[-]",
    "name_key": "Tbl_UnitSkill_Name_14502",
    "name_readable": "Eldritch Shield",
-   "description": "",
+   "description": "Casts a spell to attack the enemy.\nGrants [&Color_Cyan]([V3:201040201]%)[-] [&CriRateUp] to 2 [&Common_Word_Skill_Random] allies.\n[&Common_Word_Skill_ValueTurn]: [V2:201040201] turn(s)\nIf 2 allies are defeated, additionally grants [&Color_Cyan]([V3:201040202]%)[-] [&CriDmgUp] to the target.\n[&Common_Word_Skill_ValueTurn]: [V2:201040202] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_2010402",
-   "description_readable": "",
+   "description_readable": "Casts a spell to attack the enemy.\nGrants (40%) CRIT Rate UP to 2 Random allies.\nDuration: 2 turn(s)\nIf 2 allies are defeated, additionally grants (70%) CRIT DMG UP to the target.\nDuration: 2 turn(s)",
    "type_description": "[Support Skill]",
    "type_description_readable": "[Support Skill]",
    "icon": "14502",
@@ -64920,9 +65030,9 @@
    "name": "[&Color_Cyan]Horse Spear[-]",
    "name_key": "Tbl_UnitSkill_Name_15201",
    "name_readable": "Horse Spear",
-   "description": "",
+   "description": "Throws a spear to attack the enemy.",
    "description_key": "Tbl_UnitSkill_Desc_2010501",
-   "description_readable": "",
+   "description_readable": "Throws a spear to attack the enemy.",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "15201",
@@ -64965,9 +65075,9 @@
    "name": "[&Color_Cyan]Warrior's Cry[-]",
    "name_key": "Tbl_UnitSkill_Name_15202",
    "name_readable": "Warrior's Cry",
-   "description": "",
+   "description": "Roars and grants [&Color_Cyan]([V3:201050201]%)[-] [&AtkUp] to all allies.\n[&Common_Word_Skill_ValueTurn]: [V2:201050201] turn(s)\nIf the character's [&HP] is below [&Color_Cyan]30%[-], grants [&Color_Cyan]([V3:201050202]%)[-] [&AtkUp].\n[&Common_Word_Skill_ValueTurn]: [V2:201050202] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_2010502",
-   "description_readable": "",
+   "description_readable": "Roars and grants (40%) ATK UP to all allies.\nDuration: 2 turn(s)\nIf the character's HP is below 30%, grants (60%) ATK UP.\nDuration: 2 turn(s)",
    "type_description": "[Support Skill]",
    "type_description_readable": "[Support Skill]",
    "icon": "15202",
@@ -64979,9 +65089,10 @@
    "multiplier": null,
    "damage": null,
    "effects": [],
-   "battle_options": "201050201",
+   "battle_options": "201050201/201050202",
    "battle_option_ids": [
-    201050201
+    201050201,
+    201050202
    ],
    "evolution_level_required": 0,
    "trigger_keyword": "",
@@ -64995,9 +65106,9 @@
    "name": "[&Color_Cyan]Cut Wind[-]",
    "name_key": "Tbl_UnitSkill_Name_14201",
    "name_readable": "Cut Wind",
-   "description": "",
+   "description": "Swings the sword consecutively to attack the enemy 2 times.\nTarget hit is inflicted with [&Color_Cyan]([V3:201060102]%)[-] [&Bleeding] at a [&Color_Cyan][R:201060102]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:201060102] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_2010601",
-   "description_readable": "",
+   "description_readable": "Swings the sword consecutively to attack the enemy 2 times.\nTarget hit is inflicted with (10%) Bleed at a 5% chance.\nDuration: 3 turn(s)",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "14201",
@@ -65041,9 +65152,9 @@
    "name": "[&Color_Cyan]Split Ground[-]",
    "name_key": "Tbl_UnitSkill_Name_14202",
    "name_readable": "Split Ground",
-   "description": "",
+   "description": "Swings the sword greatly to attack [&Common_Word_Skill_EnemyAll] 3 times.\nIncreases the effect value of [&Bleeding] on the target by [&Color_Cyan][V3:201060202][-]% on the [&Common_Word_Skill_ActionLast].",
    "description_key": "Tbl_UnitSkill_Desc_2010602",
-   "description_readable": "",
+   "description_readable": "Swings the sword greatly to attack ALL enemies 3 times.\nIncreases the effect value of Bleed on the target by 70% on the Last Attack.",
    "type_description": "[Attack Skill]",
    "type_description_readable": "[Attack Skill]",
    "icon": "14202",
@@ -65052,29 +65163,28 @@
    "additional_hits": 0,
    "damage_scaling": "[ATK]",
    "skill_level_scaling": "",
-   "multiplier": 105.7,
+   "multiplier": 112.8,
    "damage": {
     "scaling": [
      {
       "stat": "ATK",
-      "pct": 105.7
+      "pct": 112.8
      }
     ],
     "hits": [
      {
-      "pct": 105.7,
+      "pct": 112.8,
       "count": 3,
       "tar": "all enemies"
      }
     ],
-    "total": 317.1
+    "total": 338.4
    },
    "effects": [],
-   "battle_options": "201060201/201060202/201060203",
+   "battle_options": "201060201/201060202",
    "battle_option_ids": [
     201060201,
-    201060202,
-    201060203
+    201060202
    ],
    "evolution_level_required": 0,
    "trigger_keyword": "",
@@ -65088,9 +65198,9 @@
    "name": "[&Color_Cyan]Lightning of Demon Sealing[-]",
    "name_key": "Tbl_UnitSkill_Name_14401",
    "name_readable": "Lightning of Demon Sealing",
-   "description": "",
+   "description": "Casts a spell to fire a magical sphere to attack [&Common_Word_Skill_EnemyAll].",
    "description_key": "Tbl_UnitSkill_Desc_2010701",
-   "description_readable": "",
+   "description_readable": "Casts a spell to fire a magical sphere to attack ALL enemies.",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "14401",
@@ -65133,9 +65243,9 @@
    "name": "[&Color_Cyan]Lightning of Annihilation[-]",
    "name_key": "Tbl_UnitSkill_Name_14402",
    "name_readable": "Lightning of Annihilation",
-   "description": "",
+   "description": "Attacks [&Common_Word_Skill_EnemyAll] 4 times.\nIf a [&Common_Word_Skill_Random] enemy has [&SpdDown], inflicts [&ElecShock] at a [&Color_Cyan][R:201070201]%[-] chance [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ValueTurn]: [V2:201070201] turn(s)\nWhen attacking, inflicts [&Color_Cyan]([V3:201070203]%)[-] [&SpdDown] to the target at a [&Color_Cyan][R:201070203]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:201070203] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_2010702",
-   "description_readable": "",
+   "description_readable": "Attacks ALL enemies 4 times.\nIf a Random enemy has SPD DOWN, inflicts Electrocute at a 100% chance before the attack.\nDuration: 2 turn(s)\nWhen attacking, inflicts (-30%) SPD DOWN to the target at a 75% chance.\nDuration: 2 turn(s)",
    "type_description": "[Attack Skill]",
    "type_description_readable": "[Attack Skill]",
    "icon": "14402",
@@ -65180,9 +65290,9 @@
    "name": "[&Color_Cyan]Shaman Magic: Thunder[-]",
    "name_key": "Tbl_UnitSkill_Name_14101",
    "name_readable": "Shaman Magic: Thunder",
-   "description": "",
+   "description": "Powerfully strikes the stone scepter to attack [&Common_Word_Skill_EnemyAll].\nInflicts [&Color_Cyan]([V3:201080102]%)[-] [&SpdDown] at a [&Color_Cyan][R:201080102]%[-] on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:201080102] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_2010801",
-   "description_readable": "",
+   "description_readable": "Powerfully strikes the stone scepter to attack ALL enemies.\nInflicts (-30%) SPD DOWN at a 100% on the Last Attack.\nDuration: 2 turn(s)",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "14101",
@@ -65226,9 +65336,9 @@
    "name": "[&Color_Cyan]Gouging Slash[-]",
    "name_key": "Tbl_UnitSkill_Name_19901",
    "name_readable": "Gouging Slash",
-   "description": "Slashes the enemies [A:20109] times with a deformed arm.",
+   "description": "Slashes the enemies [A:2010901] time(s) with a deformed arm.",
    "description_key": "Tbl_UnitSkill_Desc_2010901",
-   "description_readable": "Slashes the enemies [A:20109] times with a deformed arm.",
+   "description_readable": "Slashes the enemies 2 time(s) with a deformed arm.",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "19901",
@@ -65271,9 +65381,9 @@
    "name": "[&Color_Cyan]Grinding Slash[-]",
    "name_key": "Tbl_UnitSkill_Name_19902",
    "name_readable": "Grinding Slash",
-   "description": "Spins the whole body toward [&Common_Word_Skill_EnemyAll] to attack [A:20109] times.",
+   "description": "Spins the whole body to attack [&Common_Word_Skill_EnemyAll] [A:2010902] time(s).\nInflicts [&Color_Cyan]([V3:201090202]%)[-] [&Burn] at a [&Color_Cyan][R:201090202]%[-] chance on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:201090202] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_2010902",
-   "description_readable": "Spins the whole body toward ALL enemies to attack [A:20109] times.",
+   "description_readable": "Spins the whole body to attack ALL enemies 5 time(s).\nInflicts (3.5%) Burn at a 85% chance on the Last Attack.\nDuration: 3 turn(s)",
    "type_description": "[Attack Skill]",
    "type_description_readable": "[Attack Skill]",
    "icon": "19902",
@@ -65317,9 +65427,9 @@
    "name": "[&Color_Cyan]Savage Kick[-]",
    "name_key": "Tbl_UnitSkill_Name_20701",
    "name_readable": "Savage Kick",
-   "description": "Gracefully jumps and attacks the enemy 2 times.",
+   "description": "Gracefully jumps and attacks the enemy [A:2011001] time(s).\nIf the target is afflicted with [&Burn], performs a [&Common_Word_Skill_JoinAttack] with other allies.",
    "description_key": "Tbl_UnitSkill_Desc_2011001",
-   "description_readable": "Gracefully jumps and attacks the enemy 2 times.",
+   "description_readable": "Gracefully jumps and attacks the enemy 2 time(s).\nIf the target is afflicted with Burn, performs a Joint Attack with other allies.",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "20701",
@@ -65363,9 +65473,9 @@
    "name": "[&Color_Cyan]Shade Lotus Kick[-]",
    "name_key": "Tbl_UnitSkill_Name_20702",
    "name_readable": "Shade Lotus Kick",
-   "description": "Kicks the enemy, attacking 2 times.",
+   "description": "Kicks the enemy, attacking 2 times.\nIf the target is inflicted with [&Burn], inflicts [&Color_Cyan]([V3:201100202]%)[-] [&Weaken] on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:201100202] turn(s)\nInflicts [&Color_Cyan]([V3:201100203]%)[-] [&Burn] at a [&Color_Cyan][R:201100203]%[-] on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:201100203] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_2011002",
-   "description_readable": "Kicks the enemy, attacking 2 times.",
+   "description_readable": "Kicks the enemy, attacking 2 times.\nIf the target is inflicted with Burn, inflicts (4%) Weaken on the Last Attack.\nDuration: 3 turn(s)\nInflicts (22.5%) Burn at a 35% on the Last Attack.\nDuration: 2 turn(s)",
    "type_description": "[Attack Skill]",
    "type_description_readable": "[Attack Skill]",
    "icon": "20702",
@@ -65374,22 +65484,22 @@
    "additional_hits": 0,
    "damage_scaling": "[ATK]",
    "skill_level_scaling": "",
-   "multiplier": 346.1,
+   "multiplier": 519.2,
    "damage": {
     "scaling": [
      {
       "stat": "ATK",
-      "pct": 346.1
+      "pct": 519.2
      }
     ],
     "hits": [
      {
-      "pct": 346.1,
+      "pct": 519.2,
       "count": 2,
-      "tar": "eBOTarget_AtkMoreEnemy/1"
+      "tar": ""
      }
     ],
-    "total": 692.2
+    "total": 1038.4
    },
    "effects": [],
    "battle_options": "201100201/201100202/201100203",
@@ -65410,9 +65520,9 @@
    "name": "[&Color_Cyan]Vibro-Slash[-]",
    "name_key": "Tbl_UnitSkill_Name_19001",
    "name_readable": "Vibro-Slash",
-   "description": "Slashes the enemy after switching to a reverse grip.",
+   "description": "Reverses their grip on the blade and slashes the enemy.",
    "description_key": "Tbl_UnitSkill_Desc_2011101",
-   "description_readable": "Slashes the enemy after switching to a reverse grip.",
+   "description_readable": "Reverses their grip on the blade and slashes the enemy.",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "19001",
@@ -65455,9 +65565,9 @@
    "name": "[&Color_Cyan]Pulse Wall[-]",
    "name_key": "Tbl_UnitSkill_Name_19002",
    "name_readable": "Pulse Wall",
-   "description": "",
+   "description": "Gains [&Shield] equal to [&Color_Cyan][V3:201110201]%[-] of the character's [&DEF].\n[&Common_Word_Skill_ValueTurn]: [V2:201110201] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_2011102",
-   "description_readable": "",
+   "description_readable": "Gains Shield equal to 1750% of the character's DEF.\nDuration: 2 turn(s)",
    "type_description": "[Support Skill]",
    "type_description_readable": "[Support Skill]",
    "icon": "19002",
@@ -65485,9 +65595,9 @@
    "name": "[&Color_Cyan]Rapid Shot[-]",
    "name_key": "Tbl_UnitSkill_Name_18901",
    "name_readable": "Rapid Shot",
-   "description": "Fires the gun [A:18901] times.",
+   "description": "Fires the gun [A:18901] time(s) to attack the enemy.\nOn [&Common_Word_Skill_RoundStart], gains [&BuffTurn_9999] [&Stealth].",
    "description_key": "Tbl_UnitSkill_Desc_2011201",
-   "description_readable": "Fires the gun 6 times.",
+   "description_readable": "Fires the gun 6 time(s) to attack the enemy.\nOn Round Start, gains Unremovable Stealth.",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "18901",
@@ -65531,9 +65641,9 @@
    "name": "[&Color_Cyan]Photon Charged Shot[-]",
    "name_key": "Tbl_UnitSkill_Name_18902",
    "name_readable": "Photon Charged Shot",
-   "description": "Fires a powerful laser blast.",
+   "description": "Fires a powerful laser blast to attack the enemy.\nInflicts [&Color_Cyan]([V3:201120202]%)[-] [&Weaken] at a [&Color_Cyan][R:201120202]%[-] chance on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:201120202] turn(s)\nPerforms a [&Common_Word_Skill_JoinAttack] with other allies.",
    "description_key": "Tbl_UnitSkill_Desc_2011202",
-   "description_readable": "Fires a powerful laser blast.",
+   "description_readable": "Fires a powerful laser blast to attack the enemy.\nInflicts (19.5%) Weaken at a 45% chance on the Last Attack.\nDuration: 2 turn(s)\nPerforms a Joint Attack with other allies.",
    "type_description": "[Attack Skill]",
    "type_description_readable": "[Attack Skill]",
    "icon": "18902",
@@ -65623,9 +65733,9 @@
    "name": "[&Color_Cyan]Mind Crush[-]",
    "name_key": "Tbl_UnitSkill_Name_21102",
    "name_readable": "Mind Crush",
-   "description": "Emits dark energy from the staff to attack [&Common_Word_Skill_EnemyAll].",
+   "description": "Emits dark energy from the staff to attack [&Common_Word_Skill_EnemyAll].\nIf the character has no [&Buff], grants [&Color_Cyan]([V3:201130201]%)[-] [&DefUp] [&Common_Word_Skill_ActionBefore].\n[&Common_Word_Skill_ValueTurn]: [V2:201130201] turn(s)\nSteals 1 [&Common_Word_Skill_Random] [&Buff] from the target hit.",
    "description_key": "Tbl_UnitSkill_Desc_2011302",
-   "description_readable": "Emits dark energy from the staff to attack ALL enemies.",
+   "description_readable": "Emits dark energy from the staff to attack ALL enemies.\nIf the character has no Buff, grants (45%) DEF UP before the attack.\nDuration: 2 turn(s)\nSteals 1 Random Buff from the target hit.",
    "type_description": "[Attack Skill]",
    "type_description_readable": "[Attack Skill]",
    "icon": "21102",
@@ -65670,9 +65780,9 @@
    "name": "[&Color_Cyan]Protection of Vengeful Souls[-]",
    "name_key": "Tbl_UnitSkill_Name_21103",
    "name_readable": "Protection of Vengeful Souls",
-   "description": "",
+   "description": "When the character gains [&Buff] during their turn, copies 1 [&Common_Word_Skill_Random] character's [&Buff] and grants them to all allies.",
    "description_key": "Tbl_UnitSkill_Desc_2011303",
-   "description_readable": "",
+   "description_readable": "When the character gains Buff during their turn, copies 1 Random character's Buff and grants them to all allies.",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "21103",
@@ -65700,12 +65810,104 @@
    "name": "[&Color_Cyan]Soldier's Beat[-]",
    "name_key": "Tbl_UnitSkill_Name_19201",
    "name_readable": "Soldier's Beat",
-   "description": "Swings their fists consecutively to attack [A:2011401] times.",
+   "description": "Swings their fists consecutively to attack [A:2011401] time(s).\nPerforms a [&Common_Word_Skill_JoinAttack] with the other [&Color_Orange][&Tbl_Unit_Name_192][-] on the enemy with [&Target].",
    "description_key": "Tbl_UnitSkill_Desc_2011401",
-   "description_readable": "Swings their fists consecutively to attack 2 times.",
+   "description_readable": "Swings their fists consecutively to attack 2 time(s).\nPerforms a Joint Attack with the other Bone Suit Fighter on the enemy with Target.",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "19201",
+   "cooldown": 0,
+   "hit_count": 2,
+   "additional_hits": 0,
+   "damage_scaling": "[ATK]",
+   "skill_level_scaling": "",
+   "multiplier": 315.0,
+   "damage": {
+    "scaling": [
+     {
+      "stat": "ATK",
+      "pct": 315.0
+     }
+    ],
+    "hits": [
+     {
+      "pct": 315.0,
+      "count": 2,
+      "tar": ""
+     }
+    ],
+    "total": 630.0
+   },
+   "effects": [],
+   "battle_options": "201140101/201140102",
+   "battle_option_ids": [
+    201140101,
+    201140102
+   ],
+   "evolution_level_required": 0,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": 0,
+   "camera_type": 0,
+   "cutscene_flag": 0
+  },
+  {
+   "id": 2011402,
+   "name": "[&Color_Cyan]Iron Rush[-]",
+   "name_key": "Tbl_UnitSkill_Name_19202",
+   "name_readable": "Iron Rush",
+   "description": "Swings both fists aggressively in turns to strike the target [A:2011402] time(s).\nIf the target is inflicted with [&Target], additionally inflicts [&Confuse].\n[&Common_Word_Skill_ValueTurn]: [V2:201140202] turn(s)",
+   "description_key": "Tbl_UnitSkill_Desc_2011402",
+   "description_readable": "Swings both fists aggressively in turns to strike the target 4 time(s).\nIf the target is inflicted with Target, additionally inflicts Confusion.\nDuration: 1 turn(s)",
+   "type_description": "[Attack Skill]",
+   "type_description_readable": "[Attack Skill]",
+   "icon": "19202",
+   "cooldown": 3,
+   "hit_count": 4,
+   "additional_hits": 0,
+   "damage_scaling": "[ATK]",
+   "skill_level_scaling": "",
+   "multiplier": 230.8,
+   "damage": {
+    "scaling": [
+     {
+      "stat": "ATK",
+      "pct": 230.8
+     }
+    ],
+    "hits": [
+     {
+      "pct": 230.8,
+      "count": 4,
+      "tar": ""
+     }
+    ],
+    "total": 923.2
+   },
+   "effects": [],
+   "battle_options": "201140201/201140202",
+   "battle_option_ids": [
+    201140201,
+    201140202
+   ],
+   "evolution_level_required": 0,
+   "trigger_keyword": "",
+   "aura_info": "",
+   "skill_button_type": 0,
+   "camera_type": 0,
+   "cutscene_flag": 0
+  },
+  {
+   "id": 2011501,
+   "name": "[&Color_Cyan]Cut Wind[-]",
+   "name_key": "Tbl_UnitSkill_Name_14201",
+   "name_readable": "Cut Wind",
+   "description": "Swings sword consecutively to attack the enemy 2 times.\nIf the target's [&HP] is less than [&Color_Cyan]40%[-], inflicts [&Color_Cyan]([V3:201150102]%)[-] [&Bleeding] at a [&Color_Cyan][R:201150102]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:201150102] turn(s)",
+   "description_key": "Tbl_UnitSkill_Desc_2011501",
+   "description_readable": "Swings sword consecutively to attack the enemy 2 times.\nIf the target's HP is less than 40%, inflicts (10%) Bleed at a 15% chance.\nDuration: 3 turn(s)",
+   "type_description": "[Normal Attack]",
+   "type_description_readable": "[Normal Attack]",
+   "icon": "14201",
    "cooldown": 0,
    "hit_count": 2,
    "additional_hits": 0,
@@ -65729,98 +65931,6 @@
     "total": 504.0
    },
    "effects": [],
-   "battle_options": "201140101/201140102",
-   "battle_option_ids": [
-    201140101,
-    201140102
-   ],
-   "evolution_level_required": 0,
-   "trigger_keyword": "",
-   "aura_info": "",
-   "skill_button_type": 0,
-   "camera_type": 0,
-   "cutscene_flag": 0
-  },
-  {
-   "id": 2011402,
-   "name": "[&Color_Cyan]Iron Rush[-]",
-   "name_key": "Tbl_UnitSkill_Name_19202",
-   "name_readable": "Iron Rush",
-   "description": "Swings both fists aggressively in turns to strike the target [A:2011402] times.",
-   "description_key": "Tbl_UnitSkill_Desc_2011402",
-   "description_readable": "Swings both fists aggressively in turns to strike the target 4 times.",
-   "type_description": "[Attack Skill]",
-   "type_description_readable": "[Attack Skill]",
-   "icon": "19202",
-   "cooldown": 3,
-   "hit_count": 4,
-   "additional_hits": 0,
-   "damage_scaling": "[ATK]",
-   "skill_level_scaling": "",
-   "multiplier": 184.6,
-   "damage": {
-    "scaling": [
-     {
-      "stat": "ATK",
-      "pct": 184.6
-     }
-    ],
-    "hits": [
-     {
-      "pct": 184.6,
-      "count": 4,
-      "tar": ""
-     }
-    ],
-    "total": 738.4
-   },
-   "effects": [],
-   "battle_options": "201140201/201140202",
-   "battle_option_ids": [
-    201140201,
-    201140202
-   ],
-   "evolution_level_required": 0,
-   "trigger_keyword": "",
-   "aura_info": "",
-   "skill_button_type": 0,
-   "camera_type": 0,
-   "cutscene_flag": 0
-  },
-  {
-   "id": 2011501,
-   "name": "[&Color_Cyan]Cut Wind[-]",
-   "name_key": "Tbl_UnitSkill_Name_14201",
-   "name_readable": "Cut Wind",
-   "description": "Swings sword consecutively to attack the enemy 2 times.",
-   "description_key": "Tbl_UnitSkill_Desc_2011501",
-   "description_readable": "Swings sword consecutively to attack the enemy 2 times.",
-   "type_description": "[Normal Attack]",
-   "type_description_readable": "[Normal Attack]",
-   "icon": "14201",
-   "cooldown": 0,
-   "hit_count": 1,
-   "additional_hits": 0,
-   "damage_scaling": "[ATK]",
-   "skill_level_scaling": "",
-   "multiplier": 504.0,
-   "damage": {
-    "scaling": [
-     {
-      "stat": "ATK",
-      "pct": 504.0
-     }
-    ],
-    "hits": [
-     {
-      "pct": 504.0,
-      "count": 1,
-      "tar": ""
-     }
-    ],
-    "total": 504.0
-   },
-   "effects": [],
    "battle_options": "201150101/201150102",
    "battle_option_ids": [
     201150101,
@@ -65838,33 +65948,33 @@
    "name": "[&Color_Cyan]Split Ground[-]",
    "name_key": "Tbl_UnitSkill_Name_14202",
    "name_readable": "Split Ground",
-   "description": "Swings the sword greatly to attack [&Common_Word_Skill_EnemyAll] 3 times.",
+   "description": "Swings the sword greatly to attack [&Common_Word_Skill_EnemyAll] 3 times.\nInflicts [&Color_Cyan]([V3:201150202]%)[-] [&Bleeding] to 1 [&Common_Word_Skill_Random] enemy at a [&Color_Cyan][R:201150202]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:201150202] turn(s)\nIf the target's [&HP] is less than [&Color_Cyan]40%[-], inflicts [&Color_Cyan]([V3:201150203]%)[-] [&Weaken] on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:201150203] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_2011502",
-   "description_readable": "Swings the sword greatly to attack ALL enemies 3 times.",
+   "description_readable": "Swings the sword greatly to attack ALL enemies 3 times.\nInflicts (10%) Bleed to 1 Random enemy at a 25% chance.\nDuration: 3 turn(s)\nIf the target's HP is less than 40%, inflicts (18%) Weaken on the Last Attack.\nDuration: 2 turn(s)",
    "type_description": "[Attack Skill]",
    "type_description_readable": "[Attack Skill]",
    "icon": "14202",
-   "cooldown": 3,
-   "hit_count": 1,
+   "cooldown": 2,
+   "hit_count": 3,
    "additional_hits": 0,
    "damage_scaling": "[ATK]",
    "skill_level_scaling": "",
-   "multiplier": 354.8,
+   "multiplier": 105.7,
    "damage": {
     "scaling": [
      {
       "stat": "ATK",
-      "pct": 354.8
+      "pct": 105.7
      }
     ],
     "hits": [
      {
-      "pct": 354.8,
-      "count": 1,
+      "pct": 105.7,
+      "count": 3,
       "tar": "all enemies"
      }
     ],
-    "total": 354.8
+    "total": 317.1
    },
    "effects": [],
    "battle_options": "201150201/201150202/201150203",
@@ -65892,26 +66002,26 @@
    "type_description_readable": "[Normal Attack]",
    "icon": "14401",
    "cooldown": 0,
-   "hit_count": 4,
+   "hit_count": 1,
    "additional_hits": 0,
    "damage_scaling": "[ATK]",
    "skill_level_scaling": "",
-   "multiplier": 131.3,
+   "multiplier": 525.0,
    "damage": {
     "scaling": [
      {
       "stat": "ATK",
-      "pct": 131.3
+      "pct": 525.0
      }
     ],
     "hits": [
      {
-      "pct": 131.3,
-      "count": 4,
+      "pct": 525.0,
+      "count": 1,
       "tar": ""
      }
     ],
-    "total": 525.2
+    "total": 525.0
    },
    "effects": [],
    "battle_options": "201160101",
@@ -65930,29 +66040,29 @@
    "name": "[&Color_Cyan]Lightning of Annihilation[-]",
    "name_key": "Tbl_UnitSkill_Name_14402",
    "name_readable": "Lightning of Annihilation",
-   "description": "Casts a spell to summon lightning over the head of an affected enemy.\nTarget hit is inflicted with [&ElecShock] at a [&Color_Cyan][R:201160202]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:201160202] turn(s)",
+   "description": "Casts a spell to summon lightning over the head of [&Common_Word_Skill_EnemyAll].\nInflicts [&ElecShock] to 1 [&Common_Word_Skill_Random] target among the targets hit at a [&Color_Cyan][R:201160202]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:201160202] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_2011602",
-   "description_readable": "Casts a spell to summon lightning over the head of an affected enemy.\nTarget hit is inflicted with Electrocute at a 30% chance.\nDuration: 2 turn(s)",
+   "description_readable": "Casts a spell to summon lightning over the head of ALL enemies.\nInflicts Electrocute to 1 Random target among the targets hit at a 35% chance.\nDuration: 2 turn(s)",
    "type_description": "[Attack Skill]",
    "type_description_readable": "[Attack Skill]",
    "icon": "14402",
    "cooldown": 3,
-   "hit_count": 4,
+   "hit_count": 1,
    "additional_hits": 0,
    "damage_scaling": "[ATK]",
    "skill_level_scaling": "",
-   "multiplier": 94.6,
+   "multiplier": 378.4,
    "damage": {
     "scaling": [
      {
       "stat": "ATK",
-      "pct": 94.6
+      "pct": 378.4
      }
     ],
     "hits": [
      {
-      "pct": 94.6,
-      "count": 4,
+      "pct": 378.4,
+      "count": 1,
       "tar": "all enemies"
      }
     ],
@@ -66021,9 +66131,9 @@
    "name": "[&Color_Cyan]Eldritch Shield[-]",
    "name_key": "Tbl_UnitSkill_Name_14502",
    "name_readable": "Eldritch Shield",
-   "description": "Casts a spell to grant 1 ally a [&Shield] equal to [&Color_Cyan][V3:1450201]%[-] of the target's Max. [&HP].",
+   "description": "Casts a spell to grant [&Color_Cyan]([V3:201170201])[-] [&DmgBlockCount] to [&Common_Word_Skill_AllyAll].\n[&Common_Word_Skill_ValueTurn]: [V2:201170201] turn(s)\nIf the target's [&HP] is less than [&Color_Cyan]40%[-], grants [&Color_Cyan]([V3:201170202])[-] [&DmgBlockCount].",
    "description_key": "Tbl_UnitSkill_Desc_2011702",
-   "description_readable": "Casts a spell to grant 1 ally a Shield equal to 27% of the target's Max. HP.",
+   "description_readable": "Casts a spell to grant (10) Protective Shield to ALL allies.\nDuration: 3 turn(s)\nIf the target's HP is less than 40%, grants (15) Protective Shield.",
    "type_description": "[Support Skill]",
    "type_description_readable": "[Support Skill]",
    "icon": "14502",
@@ -66252,9 +66362,9 @@
    "name": "[&Color_Cyan]Demon Blade: Blazing Wind[-]",
    "name_key": "Tbl_UnitSkill_Name_1000601",
    "name_readable": "Demon Blade: Blazing Wind",
-   "description": "Crosses swords and unleashes two sword waves, attacking an enemy 1 time.",
+   "description": "Crosses swords and unleashes two sword auras, attacking the enemy 1 time.\nTarget hit is inflicted with [&Color_Cyan]([V3:300061102]%)[-] [&SpdDown] at a [&Color_Cyan][R:300061102]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:300061102] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_3000611",
-   "description_readable": "Crosses swords and unleashes two sword waves, attacking an enemy 1 time.",
+   "description_readable": "Crosses swords and unleashes two sword auras, attacking the enemy 1 time.\nTarget hit is inflicted with (20%) SPD DOWN at a 30% chance.\nDuration: 2 turn(s)",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "1000601",
@@ -66298,9 +66408,9 @@
    "name": "[&Color_Cyan]Demon Blade: Storm[-]",
    "name_key": "Tbl_UnitSkill_Name_1000602",
    "name_readable": "Demon Blade: Storm",
-   "description": "Knocks up an enemy and slashes them mercilessly 9 times.",
+   "description": "Knocks up an enemy and slashes them mercilessly 9 times.\nIf the target has [&SpdDown], increases [&Common_Word_Skill_Damage] equal to [&Color_Cyan][V3:300061202]%[-] of the target's lost [&HP].\nInflicts [&Stun] at a [&Color_Cyan][R:300061203]%[-] chance on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:300061203] turn(s)\nIf the target has [&SpdDown], inflicts [&Color_Cyan]([V3:300061204]%)[-] [&Weaken] on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:300061204] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_3000612",
-   "description_readable": "Knocks up an enemy and slashes them mercilessly 9 times.",
+   "description_readable": "Knocks up an enemy and slashes them mercilessly 9 times.\nIf the target has SPD DOWN, increases DMG equal to 5% of the target's lost HP.\nInflicts Faint at a 15% chance on the Last Attack.\nDuration: 1 turn(s)\nIf the target has SPD DOWN, inflicts (22.5%) Weaken on the Last Attack.\nDuration: 2 turn(s)",
    "type_description": "[Attack Skill]",
    "type_description_readable": "[Attack Skill]",
    "icon": "1000602",
@@ -66346,13 +66456,13 @@
    "name": "[&Color_Cyan]Red Gust[-]",
    "name_key": "Tbl_UnitSkill_Name_1000603",
    "name_readable": "Red Gust",
-   "description": "",
+   "description": "On [&Common_Word_Skill_TurnStart], inflicts [&Color_Cyan]([V3:300061301])[-] [&Target] on the enemy with the highest [&ATK].\n[&Common_Word_Skill_ValueTurn]: [V2:300061301] turn(s)\nAdditionally increases the duration of the target's [&SpdDown] by 1 turn.",
    "description_key": "Tbl_UnitSkill_Desc_3000613",
-   "description_readable": "",
+   "description_readable": "On Turn Start, inflicts (10) Target on the enemy with the highest ATK.\nDuration: 2 turn(s)\nAdditionally increases the duration of the target's SPD DOWN by 1 turn.",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "1000603",
-   "cooldown": 5,
+   "cooldown": 3,
    "hit_count": 0,
    "additional_hits": 0,
    "damage_scaling": "",
@@ -66374,16 +66484,16 @@
   },
   {
    "id": 3000614,
-   "name": "[&Color_Cyan]Red Gust[-]",
-   "name_key": "Tbl_UnitSkill_Name_1000603",
-   "name_readable": "Red Gust",
-   "description": "",
+   "name": "[&Color_Cyan]Raksha[-]",
+   "name_key": "Tbl_UnitSkill_Name_3000614",
+   "name_readable": "Raksha",
+   "description": "Inflicts [&BuffTurn_9999] [&Color_Cyan]([V3:300061401]%)[-] [&DefDown] on the enemy with [&Target] [&Common_Word_Skill_ActionAfter].",
    "description_key": "Tbl_UnitSkill_Desc_3000614",
-   "description_readable": "",
+   "description_readable": "Inflicts Unremovable (-15%) DEF DOWN on the enemy with Target after the attack.",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "1000604",
-   "cooldown": 5,
+   "cooldown": 0,
    "hit_count": 0,
    "additional_hits": 0,
    "damage_scaling": "",
@@ -66407,9 +66517,9 @@
    "name": "[&Color_Cyan]Blazing Earthquake[-]",
    "name_key": "Tbl_UnitSkill_Name_1001101",
    "name_readable": "Blazing Earthquake",
-   "description": "Strikes the ground hard with a fist, attacking the enemy.",
+   "description": "Strikes the ground hard with a fist to attack the enemy.\nInflicts [&Color_Cyan]([V3:300110102]%)[-] [&Bleeding] at a [&Color_Cyan][R:300110102]%[-] chance on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:300110102] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_3001101",
-   "description_readable": "Strikes the ground hard with a fist, attacking the enemy.",
+   "description_readable": "Strikes the ground hard with a fist to attack the enemy.\nInflicts (10%) Bleed at a 55% chance on the Last Attack.\nDuration: 3 turn(s)",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "1001101",
@@ -66453,9 +66563,9 @@
    "name": "[&Color_Cyan]Fireball Volley[-]",
    "name_key": "Tbl_UnitSkill_Name_1001102",
    "name_readable": "Fireball Volley",
-   "description": "Conjures a fireball to attack [&Common_Word_Skill_Random] enemies 4 times.",
+   "description": "Conjures a fireball to attack [&Common_Word_Skill_Random] enemies 4 times.\nInflicts [&Color_Cyan]([V3:300110205]%)[-] [&Bleeding] on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:300110205] turn(s)\nInflicts [&Color_Cyan]([V3:300110206]%)[-] [&BleedingDmg] at a [&Color_Cyan][R:300110206]%[-] chance on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:300110206] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_3001102",
-   "description_readable": "Conjures a fireball to attack Random enemies 4 times.",
+   "description_readable": "Conjures a fireball to attack Random enemies 4 times.\nInflicts (10%) Bleed on the Last Attack.\nDuration: 3 turn(s)\nInflicts (37.5%) Vulnerable to Bleeding at a 70% chance on the Last Attack.\nDuration: 2 turn(s)",
    "type_description": "[Attack Skill]",
    "type_description_readable": "[Attack Skill]",
    "icon": "1001102",
@@ -66464,37 +66574,37 @@
    "additional_hits": 2,
    "damage_scaling": "[ATK]",
    "skill_level_scaling": "",
-   "multiplier": 128.2,
+   "multiplier": 96.2,
    "damage": {
     "scaling": [
      {
       "stat": "ATK",
-      "pct": 128.2
+      "pct": 96.2
      }
     ],
     "hits": [
      {
-      "pct": 128.2,
+      "pct": 96.2,
       "count": 1,
       "tar": ""
      },
      {
-      "pct": 128.2,
+      "pct": 96.2,
       "count": 1,
       "tar": "1 random enemy"
      },
      {
-      "pct": 128.2,
+      "pct": 96.2,
       "count": 1,
       "tar": "1 random enemy"
      },
      {
-      "pct": 128.2,
+      "pct": 96.2,
       "count": 1,
       "tar": "1 random enemy"
      }
     ],
-    "total": 128.2
+    "total": 96.2
    },
    "effects": [],
    "battle_options": "300110201/300110202/300110203/300110204/300110205/300110206",
@@ -66518,9 +66628,9 @@
    "name": "[&Color_Cyan]Infernal Land[-]",
    "name_key": "Tbl_UnitSkill_Name_1001103",
    "name_readable": "Infernal Land",
-   "description": "Gains a [&Shield] equal to [&Color_Cyan][V3:100110301]%[-] of the Max. [&HP].",
+   "description": "Gains [&Color_Cyan]([V3:300110301]%)[-] [&DmgReflect].\n[&Common_Word_Skill_ValueTurn]: [V2:300110301] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_3001103",
-   "description_readable": "Gains a Shield equal to 35% of the Max. HP.",
+   "description_readable": "Gains (5%) Damage Reflect.\nDuration: 3 turn(s)",
    "type_description": "[Support Skill]",
    "type_description_readable": "[Support Skill]",
    "icon": "1001103",
@@ -66548,9 +66658,9 @@
    "name": "[&Color_Cyan]Flames of Wrath[-]",
    "name_key": "Tbl_UnitSkill_Name_1001104",
    "name_readable": "Flames of Wrath",
-   "description": "",
+   "description": "When a [&Common_Word_Skill_CriticalAttack] lands, performs a [&Bleeding] [&Common_Word_Skill_DotBuffBurst] attack.",
    "description_key": "Tbl_UnitSkill_Desc_3001104",
-   "description_readable": "",
+   "description_readable": "When a CRIT ATK lands, performs a Bleed Debuff Resonance attack.",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "1001104",
@@ -66578,9 +66688,9 @@
    "name": "[&Color_Cyan]Flames of Dominance[-]",
    "name_key": "Tbl_UnitSkill_Name_1001105",
    "name_readable": "Flames of Dominance",
-   "description": "",
+   "description": "If the target is afflicted with [&Bleeding], inflicts [&Color_Cyan]([V3:300110501]%)[-] [&HealRateDown] at a [&Color_Cyan][R:300110501]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:300110501] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_3001105",
-   "description_readable": "",
+   "description_readable": "If the target is afflicted with Bleed, inflicts (75%) Heal Reduction at a 25% chance.\nDuration: 2 turn(s)",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "1001105",
@@ -66608,9 +66718,9 @@
    "name": "[&Color_Cyan]Flames of Death[-]",
    "name_key": "Tbl_UnitSkill_Name_1001106",
    "name_readable": "Flames of Death",
-   "description": "",
+   "description": "If [&Common_Word_Skill_EnemyAll] are afflicted with 3 or more [&Bleeding] in total, [&Common_Word_Skill_Damage] increases by [&Color_Cyan][V3:300110601]%[-].",
    "description_key": "Tbl_UnitSkill_Desc_3001106",
-   "description_readable": "",
+   "description_readable": "If ALL enemies are afflicted with 3 or more Bleed in total, DMG increases by 7.5%.",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "1001106",
@@ -67103,9 +67213,9 @@
    "name": "[&Color_Cyan]Terra Crash[-]",
    "name_key": "Tbl_UnitSkill_Name_1001502",
    "name_readable": "Terra Crash",
-   "description": "Smites the ground, dealing damage to [&Common_Word_Skill_EnemyAll] 5 times.",
+   "description": "Slams the ground, dealing damage to [&Common_Word_Skill_EnemyAll] 5 times.\nInflicts [&Stun] to 1 [&Common_Word_Skill_Random] enemy at a [&Color_Cyan][R:300151202]%[-] chance on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:300151202] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_3001512",
-   "description_readable": "Smites the ground, dealing damage to ALL enemies 5 times.",
+   "description_readable": "Slams the ground, dealing damage to ALL enemies 5 times.\nInflicts Faint to 1 Random enemy at a 45% chance on the Last Attack.\nDuration: 1 turn(s)",
    "type_description": "[Attack Skill]",
    "type_description_readable": "[Attack Skill]",
    "icon": "1001502",
@@ -67149,9 +67259,9 @@
    "name": "[&Color_Cyan]Land of Treason[-]",
    "name_key": "Tbl_UnitSkill_Name_1001503",
    "name_readable": "Land of Treason",
-   "description": "",
+   "description": "Gains [&Color_Cyan]([V3:300151301])[-] [&DmgBlockCount].",
    "description_key": "Tbl_UnitSkill_Desc_3001513",
-   "description_readable": "",
+   "description_readable": "Gains (10) Protective Shield.",
    "type_description": "[Support Skill]",
    "type_description_readable": "[Support Skill]",
    "icon": "1001503",
@@ -67179,9 +67289,9 @@
    "name": "[&Color_Cyan]Land of Solitude[-]",
    "name_key": "Tbl_UnitSkill_Name_1001504",
    "name_readable": "Land of Solitude",
-   "description": "",
+   "description": "Decreases [&Common_Word_Skill_Damage] taken by [&Color_Cyan][V3:300151401]%[-] every 3 turns.\nStacks up to 3 times.",
    "description_key": "Tbl_UnitSkill_Desc_3001514",
-   "description_readable": "",
+   "description_readable": "Decreases DMG taken by -5% every 3 turns.\nStacks up to 3 times.",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "1001504",
@@ -67211,9 +67321,9 @@
    "name": "[&Color_Cyan]Land of Fortitude[-]",
    "name_key": "Tbl_UnitSkill_Name_1001505",
    "name_readable": "Land of Fortitude",
-   "description": "",
+   "description": "Increases the [&Common_Word_Skill_Damage] dealt to enemy inflicted with [&Stun] by [&Color_Cyan][V3:300151501]%[-].",
    "description_key": "Tbl_UnitSkill_Desc_3001515",
-   "description_readable": "",
+   "description_readable": "Increases the DMG dealt to enemy inflicted with Faint by 10%.",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "1001505",
@@ -67351,9 +67461,9 @@
    "name": "[&Color_Cyan]Dark Lightning[-]",
    "name_key": "Tbl_UnitSkill_Name_1002001",
    "name_readable": "Dark Lightning",
-   "description": "Strikes the enemy with a powerful lightning bolt to attack.",
+   "description": "Strikes the enemy with a powerful lightning bolt to attack.\nRemoves [V3:300200102] [&Common_Word_Skill_Random] [&Buff]s from the target hit.\nInflicts [&ElecShock] on the target hit at a [&Color_Cyan][R:300061203]%[-] chance on the [&Common_Word_Skill_ActionLast].\n[&Common_Word_Skill_ValueTurn]: [V2:300200103] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_3002001",
-   "description_readable": "Strikes the enemy with a powerful lightning bolt to attack.",
+   "description_readable": "Strikes the enemy with a powerful lightning bolt to attack.\nRemoves 1 Random Buffs from the target hit.\nInflicts Electrocute on the target hit at a 15% chance on the Last Attack.\nDuration: 2 turn(s)",
    "type_description": "[Normal Attack]",
    "type_description_readable": "[Normal Attack]",
    "icon": "1002001",
@@ -67374,7 +67484,7 @@
      {
       "pct": 525.0,
       "count": 1,
-      "tar": "1 random enemy"
+      "tar": ""
      }
     ],
     "total": 525.0
@@ -67398,9 +67508,9 @@
    "name": "[&Color_Cyan]Focused Resonance[-]",
    "name_key": "Tbl_UnitSkill_Name_1002002",
    "name_readable": "Focused Resonance",
-   "description": "Charges electricity to grant [&Color_Cyan]([V3:100200201]%)[-] [&AtkUp] to the character.\n[&Common_Word_Skill_ValueTurn]: [V2:100200201] turn(s)\nInflicts [&Color_Cyan]([V3:100200202]%)[-] [&CriResDown] on [&Common_Word_Skill_EnemyAll] at a [&Color_Cyan][R:100200202]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:100200202] turn(s)\nInflicts [&Color_Cyan]([V3:100200203]%)[-] [&CriDmgDown] on [&Common_Word_Skill_EnemyAll] at a [&Color_Cyan][R:100200203]%[-] chance.\n[&Common_Word_Skill_ValueTurn]: [V2:100200203] turn(s)",
+   "description": "Charges electricity to grant [&Color_Cyan]([V3:300200202]%)[-] [&AtkUp] to the character.\n[&Common_Word_Skill_ValueTurn]: [V2:300200202] turn(s)\nIf [&Common_Word_Skill_EnemyAll] have 5 or more [&Buff]s in total, additionally grants [&Color_Cyan]([V3:300200201]%)[-] [&CriDmgUp] to the character.\n[&Common_Word_Skill_ValueTurn]: [V2:300200201] turn(s)",
    "description_key": "Tbl_UnitSkill_Desc_3002002",
-   "description_readable": "Charges electricity to grant (40%) ATK UP to the character.\nDuration: 2 turn(s)\nInflicts (-30%) CRIT RES DOWN on ALL enemies at a 90% chance.\nDuration: 2 turn(s)\nInflicts (-50%) CRIT DMG DOWN on ALL enemies at a 90% chance.\nDuration: 2 turn(s)",
+   "description_readable": "Charges electricity to grant (60%) ATK UP to the character.\nDuration: 2 turn(s)\nIf ALL enemies have 5 or more Buffs in total, additionally grants (40%) CRIT DMG UP to the character.\nDuration: 2 turn(s)",
    "type_description": "[Support Skill]",
    "type_description_readable": "[Support Skill]",
    "icon": "1002002",
@@ -67429,9 +67539,9 @@
    "name": "[&Color_Cyan]Black Yaksha[-]",
    "name_key": "Tbl_UnitSkill_Name_1002003",
    "name_readable": "Black Yaksha",
-   "description": "",
+   "description": "On [&Common_Word_Skill_TurnStart], reduces the duration of [V3:300200301] [&Common_Word_Skill_Random] [&Buff]s on 1 [&Common_Word_Skill_Random] enemy by 1 turn.",
    "description_key": "Tbl_UnitSkill_Desc_3002003",
-   "description_readable": "",
+   "description_readable": "On Turn Start, reduces the duration of 1 Random Buffs on 1 Random enemy by 1 turn.",
    "type_description": "[Passive Skill]",
    "type_description_readable": "[Passive Skill]",
    "icon": "1002003",
