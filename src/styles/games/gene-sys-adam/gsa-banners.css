@@ -408,3 +408,93 @@
   font-size: 0.8rem;
   margin: 0;
 }
+
+/* Updates index teasers: whole card is one link to the detail page */
+.gsa-update-teaser {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.gsa-update-summary {
+  color: var(--gsa-text-dim);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0 0 0.8rem;
+}
+
+.gsa-update-more {
+  display: inline-block;
+  background: var(--gsa-accent-tint);
+  color: var(--gsa-accent-strong);
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+}
+
+/* Update detail page */
+.gsa-update-back {
+  display: inline-block;
+  color: var(--gsa-accent-strong);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.gsa-update-artwrap-tall {
+  aspect-ratio: 16 / 7;
+}
+
+.gsa-update-detail-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gsa-text);
+}
+
+.gsa-update-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 560px) {
+  .gsa-update-nav {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gsa-update-nav-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: var(--gsa-bg-secondary);
+  border: 1px solid var(--gsa-border);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  text-decoration: none;
+  color: var(--gsa-text);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.gsa-update-nav-right {
+  text-align: right;
+}
+
+.gsa-update-nav-dir {
+  color: var(--gsa-text-dim);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gsa-update-nav-empty {
+  background: transparent;
+  border: none;
+}
+

@@ -9,7 +9,9 @@ export const GSA_UPDATES = [
     title: 'Skill reworks and the Ogino Rui / Sugimoto Arina rotation',
     tag: 'Update',
     image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Draw_Bg_19.webp',
-    imageCaption: 'Ogino Rui rate-up banner art from this wave.',
+    image2: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Draw_Bg_21.webp',
+    imageCaption: 'Rotation banners of this wave: Sugimoto Arina (left) and Ogino Rui (right), from the official draw-card art.',
+    summary: 'The solo rate-up rotation turned over to Ogino Rui and Sugimoto Arina, kits were reworked on Elena, Victoria and Alyna, and a character-growth training mission set shipped.',
     points: [
       'Solo rate-up rotation turned over to Ogino Rui and Sugimoto Arina; the client downloaded both banner art panels (Draw_Bg_19 and Draw_Bg_21) on October 2, confirming the current pair. Each solo banner keeps the 100-pull featured guarantee.',
       'Kit data reworks across three characters: Elena (6 skills), Victoria (7 skills) and Alyna (7 skills) gained status riders and extra effect rows, including Detonate interactions on Elena, Block Penetration and Fire RES Down riders on Victoria, and Alyna\'s Survival of the Fittest expanding to five hit targets.',
@@ -25,6 +27,7 @@ export const GSA_UPDATES = [
     date: 'September 22, 2026',
     title: 'Lingering Echoes: Qing Yin and Leng Zhen',
     tag: 'Update',
+    summary: 'Two new SSRs, Qing Yin and Leng Zhen, their dual rate-up banner with the Gagaku Emblem event, and 90 preload items for upcoming content.',
     points: [
       'Two new SSR characters: Qing Yin, a Wind Breaker whose whole kit prioritizes Electrocuted targets and triggers Overload pursuits, and Leng Zhen, a Water Breaker who charges the team 2 EN per hit and lands Freeze M rolls on every loop.',
       'Lingering Echoes dual rate-up banner for both new characters, with a 120-pull featured guarantee, plus training missions for each.',
@@ -40,6 +43,7 @@ export const GSA_UPDATES = [
     date: 'September 2026, launch week',
     title: 'War & Music: Elena and Victoria',
     tag: 'Event wave',
+    summary: 'The first post-launch event wave: the War & Music dual banner for Elena and Victoria, the Phantom Emblem event, and the Connie ticket recruit.',
     points: [
       'War & Music dual rate-up banner: SSR Elena and SSR Victoria with a 120-pull featured guarantee.',
       'Collect Phantom Emblems event with its own exchange shop.',
@@ -54,7 +58,9 @@ export const GSA_UPDATES = [
     title: 'Global launch',
     tag: 'Launch',
     image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Draw_Bg_20_1.webp',
-    imageCaption: 'Lunar Splendor of the Pleasure District launch banner.',
+    image2: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Draw_Bg_20_2.webp',
+    imageCaption: 'Lunar Splendor of the Pleasure District launch banner: Komachi Sayaka (left) and Hijikata Chizuru (right).',
+    summary: 'The global launch roster, the Lunar Splendor launch banner with the Moonflower Crest event, Black Gold Hunter with Cowgirl Belle, and the Heaven Door recruits.',
     points: [
       'Launch roster: 54 profiled characters, 39 of them visible in gacha pools on day one.',
       'Lunar Splendor of the Pleasure District launch banner: SSR Komachi Sayaka and SSR Hijikata Chizuru, alongside the Moonflower Crest collection event, training missions for Sayaka, Chizuru and Fujiwara Arisa, and Moonflower gear components in the exchange shop.',

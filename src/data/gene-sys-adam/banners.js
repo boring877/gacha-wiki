@@ -26,7 +26,7 @@ export const GSA_BANNERS = [
     pity: 100,
     eventToken: null,
     training: [],
-    image: `${R2}/Draw_Bg_19.webp`,
+    image: `${R2}/Draw_Bg_21.webp`,
     note: 'Currently rotating solo banner, confirmed by the client pulling its banner art on October 2. 100-pull featured guarantee.',
   },
   {
@@ -40,7 +40,7 @@ export const GSA_BANNERS = [
     pity: 100,
     eventToken: null,
     training: [],
-    image: `${R2}/Draw_Bg_21.webp`,
+    image: `${R2}/Draw_Bg_19.webp`,
     note: 'Currently rotating solo banner, confirmed by the client pulling its banner art on October 2. 100-pull featured guarantee.',
   },
   {

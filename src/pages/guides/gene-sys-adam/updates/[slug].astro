@@ -1,0 +1,61 @@
+---
+// Gene-Sys: Adam update detail page: one reconstructed update entry with the
+// wave's banner art, full point list and newer/older navigation.
+import GSALayout from '../../../../layouts/gene-sys-adam/LandingLayout.astro';
+import { GSA_UPDATES } from '../../../../data/gene-sys-adam/updates.js';
+import '../../../../styles/games/gene-sys-adam/gsa-common.css';
+import '../../../../styles/games/gene-sys-adam/gsa-banners.css';
+
+export function getStaticPaths() {
+  return GSA_UPDATES.map(u => ({ params: { slug: u.slug } }));
+}
+
+const { slug } = Astro.params;
+const idx = GSA_UPDATES.findIndex(u => u.slug === slug);
+const entry = GSA_UPDATES[idx];
+const newer = idx > 0 ? GSA_UPDATES[idx - 1] : null;
+const older = idx < GSA_UPDATES.length - 1 ? GSA_UPDATES[idx + 1] : null;
+---
+
+<GSALayout
+  title={entry.title}
+  description={`Gene-Sys: Adam update ${entry.date}: ${entry.title}. Reconstructed from the decrypted game tables.`}
+  gameTitle="Updates"
+  crumbName={entry.title}
+>
+  <section>
+    <a class="gsa-update-back" href="/guides/gene-sys-adam/updates/">All updates</a>
+
+    <article class="gsa-update-card gsa-update-detail">
+      <div class="gsa-update-artwrap gsa-update-artwrap-tall">
+        {entry.image
+          ? (
+            <div class="gsa-banner-art-pair">
+              <img class="gsa-update-art" src={entry.image} alt={entry.imageCaption || `${entry.title} art`} width="1920" height="1080" />
+              {entry.image2 && <img class="gsa-update-art" src={entry.image2} alt={entry.imageCaption || `${entry.title} second panel`} width="1920" height="1080" />}
+            </div>
+          )
+          : <div class="gsa-update-art-band">{entry.date}</div>}
+        <span class="gsa-update-tag">{entry.tag}</span>
+      </div>
+      <div class="gsa-update-head">
+        <h1 class="gsa-update-detail-title">{entry.title}</h1>
+        <span class="gsa-update-date">{entry.date}</span>
+      </div>
+      <ul class="gsa-update-points">
+        {entry.points.map(p => <li>{p}</li>)}
+      </ul>
+      {entry.imageCaption && <p class="gsa-update-caption">{entry.imageCaption}</p>}
+      <p class="gsa-update-source">Source: {entry.source}</p>
+    </article>
+
+    <nav class="gsa-update-nav">
+      {newer
+        ? <a class="gsa-update-nav-link" href={`/guides/gene-sys-adam/updates/${newer.slug}/`}><span class="gsa-update-nav-dir">Newer</span><span>{newer.title}</span></a>
+        : <span class="gsa-update-nav-link gsa-update-nav-empty"></span>}
+      {older
+        ? <a class="gsa-update-nav-link gsa-update-nav-right" href={`/guides/gene-sys-adam/updates/${older.slug}/`}><span class="gsa-update-nav-dir">Older</span><span>{older.title}</span></a>
+        : <span class="gsa-update-nav-link gsa-update-nav-empty"></span>}
+    </nav>
+  </section>
+</GSALayout>
