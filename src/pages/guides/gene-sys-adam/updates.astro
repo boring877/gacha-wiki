@@ -1,6 +1,8 @@
 ---
 // Gene-Sys: Adam update log. The developer ships no external patch notes, so
 // entries are reconstructed from diffs of the decrypted Patch tables.
+// Art-led layout: entries carry a banner-art header when the wave's art
+// shipped to the client, otherwise a dated title band.
 import GSALayout from '../../../layouts/gene-sys-adam/LandingLayout.astro';
 import { GSA_UPDATES } from '../../../data/gene-sys-adam/updates.js';
 import '../../../styles/games/gene-sys-adam/gsa-common.css';
@@ -22,14 +24,20 @@ import '../../../styles/games/gene-sys-adam/gsa-banners.css';
 
     {GSA_UPDATES.map(u => (
       <article class="gsa-update-card">
-        <div class="gsa-update-head">
+        <div class="gsa-update-artwrap">
+          {u.image
+            ? <img class="gsa-update-art" src={u.image} alt={u.imageCaption || `${u.title} art`} width="1920" height="1080" loading="lazy" />
+            : <div class="gsa-update-art-band">{u.date}</div>}
           <span class="gsa-update-tag">{u.tag}</span>
+        </div>
+        <div class="gsa-update-head">
           <h2 class="gsa-update-title">{u.title}</h2>
           <span class="gsa-update-date">{u.date}</span>
         </div>
         <ul class="gsa-update-points">
           {u.points.map(p => <li>{p}</li>)}
         </ul>
+        {u.imageCaption && <p class="gsa-update-caption">{u.imageCaption}</p>}
         <p class="gsa-update-source">Source: {u.source}</p>
       </article>
     ))}

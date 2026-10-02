@@ -1012,245 +1012,245 @@ export const gsaItems = [
  {
   "id": "200080038",
   "name": "[Random] Fire Type Weapon Blueprint",
-  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
+  "desc": "Life is like this book of recipes, you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080039",
   "name": "[Targeted] Fire Type Weapon Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor, but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080040",
   "name": "[Random] Fire Type Armor Blueprint",
-  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
+  "desc": "Life is like this book of recipes, you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080041",
   "name": "[Targeted] Fire Type Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor, but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080042",
   "name": "[Random] Water Type Weapon Blueprint",
-  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
+  "desc": "Life is like this book of recipes, you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080043",
   "name": "[Targeted] Water Type Weapon Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor, but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080044",
   "name": "[Random] Water Type Armor Blueprint",
-  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
+  "desc": "Life is like this book of recipes, you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080045",
   "name": "[Targeted] Water Type Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor, but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080046",
   "name": "[Random] Wind Type Weapon Blueprint",
-  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
+  "desc": "Life is like this book of recipes, you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080047",
   "name": "[Targeted] Wind Type Weapon Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor, but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080048",
   "name": "[Random] Wind Type Armor Blueprint",
-  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
+  "desc": "Life is like this book of recipes, you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080049",
   "name": "[Targeted] Wind Type Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor, but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080050",
   "name": "[Random] Earth Type Weapon Blueprint",
-  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
+  "desc": "Life is like this book of recipes, you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080051",
   "name": "[Targeted] Earth Type Weapon Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor, but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080052",
   "name": "[Random] Earth Type Armor Blueprint",
-  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
+  "desc": "Life is like this book of recipes, you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080053",
   "name": "[Targeted] Earth Type Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor, but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080054",
   "name": "[Random] Light Type Weapon Blueprint",
-  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
+  "desc": "Life is like this book of recipes, you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080055",
   "name": "[Targeted] Light Type Weapon Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor, but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080056",
   "name": "[Random] Light Type Armor Blueprint",
-  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
+  "desc": "Life is like this book of recipes, you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080057",
   "name": "[Targeted] Light Type Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor, but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080058",
   "name": "[Random] Dark Type Weapon Blueprint",
-  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
+  "desc": "Life is like this book of recipes, you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080059",
   "name": "[Targeted] Dark Type Weapon Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor, but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080060",
   "name": "[Random] Dark Type Armor Blueprint",
-  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
+  "desc": "Life is like this book of recipes, you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080061",
   "name": "[Targeted] Dark Type Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor, but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080062",
   "name": "[Random] Guardian Specialized Armor Blueprint",
-  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
+  "desc": "Life is like this book of recipes, you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080063",
   "name": "[Targeted] Guardian Specialized Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor, but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080064",
   "name": "[Random] Support Specialized Armor Blueprint",
-  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
+  "desc": "Life is like this book of recipes, you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080065",
   "name": "[Targeted] Support Specialized Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor, but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080066",
   "name": "[Random] Sniper Specialized Armor Blueprint",
-  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
+  "desc": "Life is like this book of recipes, you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080067",
   "name": "[Targeted] Sniper Specialized Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor, but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080068",
   "name": "[Random] Bombardier Specialized Armor Blueprint",
-  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
+  "desc": "Life is like this book of recipes, you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080069",
   "name": "[Targeted] Bombardier Specialized Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor, but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080070",
   "name": "[Random] Vanguard Specialized Armor Blueprint",
-  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
+  "desc": "Life is like this book of recipes, you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080071",
   "name": "[Targeted] Vanguard Specialized Armor Blueprint",
-  "desc": "This Blueprint is a high-investment, high-risk endeavor\u2014but the rewards are just as great.",
+  "desc": "This Blueprint is a high-investment, high-risk endeavor, but the rewards are just as great.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200080072",
   "name": "[Random] Basic Armor Blueprint",
-  "desc": "Life is like this book of recipes\u2014you never know what you're going to get.",
+  "desc": "Life is like this book of recipes, you never know what you're going to get.",
   "quality": "50",
   "icon": null
  },
@@ -3660,7 +3660,7 @@ export const gsaItems = [
   "name": "Midnight Sparkle Shoes Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr040_shoe.webp"
  },
  {
   "id": "200170414",
@@ -3758,7 +3758,7 @@ export const gsaItems = [
   "name": "High-Density Dark Energy Sphere Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr045_wp.webp"
  },
  {
   "id": "200170456",
@@ -3779,7 +3779,7 @@ export const gsaItems = [
   "name": "N17-Heavy Tactical Rifle Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr046_wp.webp"
  },
  {
   "id": "200170466",
@@ -3821,14 +3821,14 @@ export const gsaItems = [
   "name": "SA556 Tactical Rifle Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr048_wp.webp"
  },
  {
   "id": "200170486",
   "name": "Patrol Duty Heeled Boots Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr048_shoe.webp"
  },
  {
   "id": "200170494",
@@ -3842,7 +3842,7 @@ export const gsaItems = [
   "name": "Black & Gold Butterfly Knife Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr049_wp.webp"
  },
  {
   "id": "200170496",
@@ -3877,21 +3877,21 @@ export const gsaItems = [
   "name": "Leather Protective Gloves Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr051_glove.webp"
  },
  {
   "id": "200170515",
   "name": "Winters MK3 Gen5 Lever-Action Carbine Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr051_wp.webp"
  },
  {
   "id": "200170516",
   "name": "Cowboy Boots Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr051_shoe.webp"
  },
  {
   "id": "200170524",
@@ -3919,63 +3919,63 @@ export const gsaItems = [
   "name": "Moonlit Jade Circlet Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr053_glove.webp"
  },
  {
   "id": "200170535",
   "name": "Moonveil Massage Oil Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr053_wp.webp"
  },
  {
   "id": "200170536",
   "name": "Moonveil Sandals Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr053_shoe.webp"
  },
  {
   "id": "200170544",
   "name": "Devoted Love Gloves Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr054_glove.webp"
  },
  {
   "id": "200170545",
   "name": "Personal Fruit Knife Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr054_wp.webp"
  },
  {
   "id": "200170546",
   "name": "Shoes of Punishment Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr054_shoe.webp"
  },
  {
   "id": "200170554",
   "name": "Seeker Jade Bracelet Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr055_glove.webp"
  },
  {
   "id": "200170555",
   "name": "Words of Fate Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr055_wp.webp"
  },
  {
   "id": "200170556",
   "name": "Scent-Seeker Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr055_shoe.webp"
  },
  {
   "id": "200170564",
@@ -4024,35 +4024,35 @@ export const gsaItems = [
   "name": "Jade Wind Gloves Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr058_glove.webp"
  },
  {
   "id": "200170585",
   "name": "Clouded Ink Twin Dragon Staff Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr058_wp.webp"
  },
  {
   "id": "200170586",
   "name": "Vigilante's Short Boots Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr058_shoe.webp"
  },
  {
   "id": "200170594",
   "name": "Gilded Bloodheart Ring Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr059_glove.webp"
  },
  {
   "id": "200170595",
   "name": "LAR-58 Assault Rifle Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr059_wp.webp"
  },
  {
   "id": "200170596",
@@ -4066,35 +4066,35 @@ export const gsaItems = [
   "name": "Bluesteel Fistguards Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr060_glove.webp"
  },
  {
   "id": "200170605",
   "name": "Dragon Surge Palm Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr060_wp.webp"
  },
  {
   "id": "200170606",
   "name": "Traceless Boots Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr060_shoe.webp"
  },
  {
   "id": "200170614",
   "name": "Tsukuyomi Maid Gloves Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr061_glove.webp"
  },
  {
   "id": "200170615",
   "name": "Dark Psyche Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr061_wp.webp"
  },
  {
   "id": "200170616",
@@ -4108,21 +4108,21 @@ export const gsaItems = [
   "name": "Foreman's Ruffled Sleeves Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr062_glove.webp"
  },
  {
   "id": "200170625",
   "name": "Foreman's Dart Blade Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr062_wp.webp"
  },
  {
   "id": "200170626",
   "name": "Foreman's Leather Shoes Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr062_shoe.webp"
  },
  {
   "id": "200170634",
@@ -4150,42 +4150,42 @@ export const gsaItems = [
   "name": "Oiran Handbag Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr064_glove.webp"
  },
  {
   "id": "200170645",
   "name": "Moonflower Naginata Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr064_wp.webp"
  },
  {
   "id": "200170646",
   "name": "Moonflower Footwear Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr064_shoe.webp"
  },
  {
   "id": "200170654",
   "name": "Nio's Gauntlets Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr065_glove.webp"
  },
  {
   "id": "200170655",
   "name": "Fudomaru Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr065_wp.webp"
  },
  {
   "id": "200170656",
   "name": "Lacquered Geta Heels Component",
   "desc": "Collect {0} to combine into {1}.",
   "quality": "55",
-  "icon": null
+  "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Equip_cr065_shoe.webp"
  },
  {
   "id": "200170664",
@@ -4792,7 +4792,7 @@ export const gsaItems = [
  {
   "id": "200200041",
   "name": "Merino Scarf",
-  "desc": "Finely woven from the highest quality merino wool. The understated color and exquisite craftsmanship make it both lightweight and warm\u2014perfect for missions or everyday wear. (Adele's Affection +1000)",
+  "desc": "Finely woven from the highest quality merino wool. The understated color and exquisite craftsmanship make it both lightweight and warm, perfect for missions or everyday wear. (Adele's Affection +1000)",
   "quality": "30",
   "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200200041.webp"
  },
@@ -5898,14 +5898,14 @@ export const gsaItems = [
  {
   "id": "200240008",
   "name": "[Portrait Frame] Cheer Captain",
-  "desc": "Heaven's Door Event \u2013 1st Place Reward.",
+  "desc": "Heaven's Door Event , 1st Place Reward.",
   "quality": "50",
   "icon": null
  },
  {
   "id": "200240009",
   "name": "[Portrait Frame] Prospector",
-  "desc": "Garmr Treasure Mine Event \u2013 1st Place Reward.",
+  "desc": "Garmr Treasure Mine Event , 1st Place Reward.",
   "quality": "50",
   "icon": null
  },
@@ -6073,7 +6073,7 @@ export const gsaItems = [
  {
   "id": "200255002",
   "name": "[Background] VORTEX",
-  "desc": "Music, alcohol, bodies\u2014you can find the night you crave most in VORTEX.",
+  "desc": "Music, alcohol, bodies, you can find the night you crave most in VORTEX.",
   "quality": "50",
   "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200255002.webp"
  },
@@ -6122,7 +6122,7 @@ export const gsaItems = [
  {
   "id": "200255009",
   "name": "[Background] Abandoned Warehouse",
-  "desc": "In the empty warehouse, a scent of rust lingers\u2014a remnant of violence.",
+  "desc": "In the empty warehouse, a scent of rust lingers, a remnant of violence.",
   "quality": "50",
   "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200255009.webp"
  },
@@ -6185,7 +6185,7 @@ export const gsaItems = [
  {
   "id": "200255018",
   "name": "[Background] Moonveil Pavilion",
-  "desc": "The sensual maid caf\u00e9\u2014Moonveil Pavilion\u2014had, as always, awaited the arrival of its masters.",
+  "desc": "The sensual maid caf\u00e9, Moonveil Pavilion, had, as always, awaited the arrival of its masters.",
   "quality": "50",
   "icon": null
  },
@@ -6213,7 +6213,7 @@ export const gsaItems = [
  {
   "id": "200255022",
   "name": "[Background] HL Lobby",
-  "desc": "The grand hall of paradise. Everyone in the world would give up everything just to enter this place\u2014from girls chasing star-studded dreams, to men hunting for sultry beauties.",
+  "desc": "The grand hall of paradise. Everyone in the world would give up everything just to enter this place, from girls chasing star-studded dreams, to men hunting for sultry beauties.",
   "quality": "50",
   "icon": null
  },
@@ -6234,7 +6234,7 @@ export const gsaItems = [
  {
   "id": "200255025",
   "name": "[Background] Carducci Family",
-  "desc": "Forged in fine wine, fresh blood, and bullets\u2014that's a style born of unyielding resilience.",
+  "desc": "Forged in fine wine, fresh blood, and bullets, that's a style born of unyielding resilience.",
   "quality": "50",
   "icon": null
  },
@@ -6528,7 +6528,7 @@ export const gsaItems = [
  {
   "id": "200260015",
   "name": "[CG] Betrayal",
-  "desc": "But what matters most\u2014is the Carducci honor you threw away.",
+  "desc": "But what matters most, is the Carducci honor you threw away.",
   "quality": "50",
   "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Icon_200260015.webp"
  },
@@ -6570,7 +6570,7 @@ export const gsaItems = [
  {
   "id": "200260021",
   "name": "\u3010CG\u3011\u7a81\u8972",
-  "desc": "\u300c\u611f\u5230\u69ae\u5e78\u5427\u2014\u2014\u300d",
+  "desc": "\u300c\u611f\u5230\u69ae\u5e78\u5427, , \u300d",
   "quality": "50",
   "icon": null
  },

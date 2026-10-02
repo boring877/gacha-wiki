@@ -1,29 +1,61 @@
 // Gene-Sys: Adam banner timeline + summon reference, built from the decrypted
 // DrawMachineData / DrawMachineGroupData / DrawSingleData / ActivityMissionTimeData
-// tables (Patch pull 2026-09-22, D:/GeneSysAdam). Banner schedules are
+// tables (Patch pull 2026-10-02, D:/GeneSysAdam). Banner schedules are
 // server-controlled: "since" marks the data wave a banner appeared in, not an
 // exact start time. Featured units resolve against characters.js by slug.
+// Banner art (Draw_Bg_*) comes from the game's drawcard bundles on R2; banners
+// whose art has not shipped to the client yet render the featured strip instead.
 import { gsaCharacters } from './characters.js';
 
 const bySlug = Object.fromEntries(gsaCharacters.map(c => [c.slug, c]));
 
-export const GSA_BANNERS_UPDATED = 'September 22, 2026';
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam';
+
+export const GSA_BANNERS_UPDATED = 'October 2, 2026';
 
 // status: live | recent | launch | rotation
 export const GSA_BANNERS = [
+  {
+    slug: 'ogino-rui-rate-up',
+    name: 'Ogino Rui Rate-Up',
+    nameZh: '限定召募 - 荻野瑠衣',
+    kind: 'Solo Rate-Up',
+    status: 'live',
+    since: 'Rotated in by the October 2, 2026 wave',
+    featured: ['ogino-rui'],
+    pity: 100,
+    eventToken: null,
+    training: [],
+    image: `${R2}/Draw_Bg_19.webp`,
+    note: 'Currently rotating solo banner, confirmed by the client pulling its banner art on October 2. 100-pull featured guarantee.',
+  },
+  {
+    slug: 'sugimoto-arina-rate-up',
+    name: 'Sugimoto Arina Rate-Up',
+    nameZh: '限定召募 - 杉本有菜',
+    kind: 'Solo Rate-Up',
+    status: 'live',
+    since: 'Rotated in by the October 2, 2026 wave',
+    featured: ['sugimoto-arina'],
+    pity: 100,
+    eventToken: null,
+    training: [],
+    image: `${R2}/Draw_Bg_21.webp`,
+    note: 'Currently rotating solo banner, confirmed by the client pulling its banner art on October 2. 100-pull featured guarantee.',
+  },
   {
     slug: 'lingering-echoes',
     name: 'Lingering Echoes',
     nameZh: '音行自鳴',
     kind: 'Dual Rate-Up',
-    status: 'live',
+    status: 'recent',
     since: 'September 22, 2026',
     featured: ['qing-yin', 'leng-zhen'],
     pity: 120,
     eventToken: 'Gagaku Emblem',
     training: ['Qing Yin', 'Leng Zhen'],
     image: null,
-    note: 'Running as of the September 22 data pull. Rate rows for a live banner are injected server-side; sibling dual banners run a shared featured bucket with a 120-pull featured guarantee.',
+    note: 'The September 22 dual banner for Qing Yin and Leng Zhen. Rate rows for a live banner are injected server-side; sibling dual banners run a shared featured bucket with a 120-pull featured guarantee.',
   },
   {
     slug: 'war-and-music',
@@ -37,7 +69,7 @@ export const GSA_BANNERS = [
     eventToken: 'Phantom Emblem',
     training: ['Elena', 'Victoria', 'Alyna', 'Awana'],
     image: null,
-    note: 'First entry of the post-launch event series. Its machines shipped preloaded in the launch tables, so the exact start date is server-side.',
+    note: 'First entry of the post-launch event series. Its machines shipped preloaded in the launch tables, so the exact start date is server-side. Both featured kits were reworked in the October 2 tables.',
   },
   {
     slug: 'lunar-splendor',
@@ -50,8 +82,9 @@ export const GSA_BANNERS = [
     pity: 120,
     eventToken: 'Moonflower Crest',
     training: ['Komachi Sayaka', 'Hijikata Chizuru', 'Fujiwara Arisa'],
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Draw_Bg_20_1.webp',
-    note: 'Launch banner. The exchange shop also stocks Moonflower Naginata and Footwear components for Hijikata Chizuru.',
+    image: `${R2}/Draw_Bg_20_1.webp`,
+    image2: `${R2}/Draw_Bg_20_2.webp`,
+    note: 'Launch banner: one art panel per featured character. The exchange shop also stocks Moonflower Naginata and Footwear components for Hijikata Chizuru.',
   },
   {
     slug: 'black-gold-hunter',
@@ -107,7 +140,7 @@ export const GSA_BANNERS = [
     eventToken: null,
     training: [],
     image: null,
-    note: 'Rotating solo rate-ups with a 100-pull featured guarantee: Ogino Rui, Sugimoto Arina, Milena, Lin Lin and Annabelle.',
+    note: 'The five solo banners take turns on a server-side schedule. Ogino Rui and Sugimoto Arina hold the current slots (their art shipped in the October 2 client wave); Milena, Lin Lin and Annabelle rotate in over time.',
   },
 ];
 
@@ -118,30 +151,36 @@ export const GSA_PERMANENT = [
     nameZh: '一般召募',
     featured: [],
     desc: 'The rotating core pool. 100-pull featured guarantee; every 10th summon guarantees an SR or better.',
+    image: `${R2}/Draw_Bg_22.webp`,
   },
   {
     name: 'Advanced Summon',
     nameZh: '精英召募',
     featured: ['amber', 'rachel'],
     desc: 'Elite pool focused on Amber and Rachel with a 120-pull featured guarantee and a wishlist pick.',
+    image: `${R2}/Draw_Bg_25.webp`,
+    image2: `${R2}/Draw_Bg_29.webp`,
   },
   {
     name: 'Rookie Summon',
     nameZh: '新人召募',
     featured: ['takajou-ranka'],
     desc: 'One free summon for new accounts; the client tables list SR Takajou Ranka as its guarantee.',
+    image: null,
   },
   {
     name: 'Unlimited Summon',
     nameZh: '無限召募',
     featured: [],
     desc: 'Reroll freely before confirming the result. The in-game description guarantees one SSR within the first 10 summons.',
+    image: null,
   },
   {
     name: 'Mirror Gacha',
     nameZh: '鏡像抽卡',
     featured: [],
     desc: 'Costume card gacha played with Mirror tickets across six themes: Summer Swimsuit, Ballgown Gala, Dream Academy, Sports Superstars, Rhythmic Harmony and Silken Glow.',
+    image: null,
   },
 ];
 

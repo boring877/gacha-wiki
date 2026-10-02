@@ -543,6 +543,7 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
         links: [
           { name: 'Database', href: '/guides/gene-sys-adam/characters/' },
           { name: 'Tier List', href: '/guides/gene-sys-adam/tier-list/' },
+          { name: 'Armament', href: '/guides/gene-sys-adam/armament/' },
         ],
       },
       {

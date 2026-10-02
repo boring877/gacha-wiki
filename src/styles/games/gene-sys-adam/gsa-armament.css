@@ -1,0 +1,135 @@
+/* Gene-Sys: Adam armament page: signature gear cards + guide sections
+   (noir crimson house style, flat cards, no hover or glow effects). */
+
+.gsa-arm-intro {
+  max-width: 860px;
+  margin-bottom: 20px;
+}
+
+.gsa-arm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  margin: 18px 0 8px;
+}
+
+.gsa-arm-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  padding: 14px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.gsa-arm-head {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.gsa-arm-icon {
+  /* override gsa-icon-frame's width:100% (sized for the characters grid);
+     light tile like the in-game inventory: gear sprites are dark-on-transparent
+     and vanish on the dark tertiary background */
+  width: 56px;
+  height: 56px;
+  flex: 0 0 56px;
+  background: #d8d2d3;
+}
+
+.gsa-arm-icon img {
+  object-fit: contain;
+}
+
+.gsa-arm-icon .gsa-monogram {
+  font-size: 1.3rem;
+  color: #6e5c62;
+}
+
+.gsa-arm-id {
+  min-width: 0;
+}
+
+.gsa-arm-char {
+  margin: 0 0 4px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #f3d9dc;
+}
+
+.gsa-arm-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.gsa-arm-name {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #e8e2e3;
+}
+
+.gsa-arm-stats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.82rem;
+}
+
+.gsa-arm-stats li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 4px;
+}
+
+.gsa-arm-stats li span:first-child {
+  color: #a89aa0;
+}
+
+.gsa-arm-stats li span:last-child {
+  color: #f0e9ea;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.gsa-arm-flavor {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: #9c8f94;
+  font-style: italic;
+}
+
+.gsa-arm-guide {
+  margin-top: 26px;
+}
+
+.gsa-table-scroll {
+  overflow-x: auto;
+  margin-top: 12px;
+}
+
+.gsa-table-scroll .gsa-stats-table {
+  min-width: 560px;
+}
+
+.gsa-arm-updated {
+  margin-top: 26px;
+  opacity: 0.75;
+}
+
+@media (max-width: 640px) {
+  .gsa-arm-grid {
+    grid-template-columns: 1fr;
+  }
+}

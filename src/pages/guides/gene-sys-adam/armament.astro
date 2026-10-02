@@ -1,0 +1,251 @@
+---
+// Gene-Sys: Adam armament page: signature gear browser (per character, EX
+// chain stats) plus the enhancement / star-up / dismantle cost reference.
+import GSALayout from '../../../layouts/gene-sys-adam/LandingLayout.astro';
+import {
+  gsaSignatureGear,
+  gsaGearSlots,
+  gsaEnhanceCosts,
+  gsaStarUpCosts,
+  gsaDismantleReturns,
+  gsaArmamentLastUpdated,
+} from '../../../data/gene-sys-adam/armament.js';
+import '../../../styles/games/gene-sys-adam/gsa-common.css';
+import '../../../styles/games/gene-sys-adam/gsa-characters.css';
+import '../../../styles/games/gene-sys-adam/gsa-armament.css';
+
+// game's own slot wording (EquipData description prefixes)
+const SLOT_LABEL = { Gloves: 'Handwear', Weapon: 'Weapon', Shoes: 'Footwear', Accessory: 'Accessory' };
+const R2 = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam';
+const ELEMENTS = ['Fire', 'Earth', 'Wind', 'Water', 'Light', 'Dark'];
+
+const bySlot = new Map(gsaGearSlots.map(s => [s, gsaSignatureGear.filter(g => g.slot === s)]));
+const charCount = new Set(gsaSignatureGear.map(g => g.slug)).size;
+const fmt = (v, pct) => (pct ? `${v / 100}%` : v.toLocaleString('en-US'));
+const statLine = (s) =>
+  s.max !== null && s.max !== s.base
+    ? `${fmt(s.base, s.pct)} to ${fmt(s.max, s.pct)}`
+    : fmt(s.base, s.pct);
+---
+
+<GSALayout
+  title="Armament"
+  description={`Signature gear for every Gene-Sys: Adam character: weapons, handwear, footwear and accessories with EX rank stats, plus enhancement, star-up and dismantle cost tables.`}
+  gameTitle="Armament"
+  crumbName="Armament"
+>
+  <div class="gsa-content-section">
+    <p class="gsa-section-note gsa-arm-intro">
+      Every character past the launch wave carries four signature pieces
+      (Weapon, Handwear, Footwear, Accessory) that only they can equip, on top
+      of the shared Headwear, Bodywear and Legwear field gear. Each signature
+      piece exists as a six rank base chain and a six rank EX chain, shown here
+      at EX rank 1 growing to EX rank 6 before enhancement. Launch characters
+      (Aira through Thalia) have no signature pieces in the game data.
+    </p>
+
+    <div class="gsa-toolbar">
+      <input type="text" class="gsa-search" placeholder="Search character or piece..." id="gsa-search" />
+      <span class="gsa-count" id="gsa-count">{gsaSignatureGear.length} pieces, {charCount} characters</span>
+    </div>
+    <div class="gsa-toolbar gsa-toolbar-filters">
+      <button class="gsa-filter-btn active" data-filter="all">All Slots</button>
+      {gsaGearSlots.map(s => (
+        <button class="gsa-filter-btn" data-filter={s.toLowerCase()}>{SLOT_LABEL[s]} ({bySlot.get(s).length})</button>
+      ))}
+      <span class="gsa-filter-sep" aria-hidden="true"></span>
+      {ELEMENTS.map(e => (
+        <button class="gsa-filter-btn" data-filter={`el-${e.toLowerCase()}`}>{e}</button>
+      ))}
+    </div>
+
+    <div class="gsa-arm-grid" id="gsa-arm-grid">
+      {gsaSignatureGear.map(g => (
+        <a
+          class="gsa-arm-card"
+          href={`/guides/gene-sys-adam/characters/${g.slug}/`}
+          data-search={`${g.char} ${g.nameEx} ${g.name} ${SLOT_LABEL[g.slot]}`.toLowerCase()}
+          data-tags={[g.slot.toLowerCase(), `el-${(g.element || '').toLowerCase()}`].join(' ')}
+        >
+          <div class="gsa-arm-head">
+            <div class="gsa-icon-frame gsa-arm-icon">
+              {g.icon
+                ? <img src={`${R2}/${g.icon}.webp`} alt="" width="56" height="56" loading="lazy" />
+                : <span class="gsa-monogram">{SLOT_LABEL[g.slot][0]}</span>}
+            </div>
+            <div class="gsa-arm-id">
+              <p class="gsa-arm-char">{g.char}</p>
+              <div class="gsa-arm-chips">
+                <span class="gsa-chip gsa-chip-type">{SLOT_LABEL[g.slot]}</span>
+                {g.slot === 'Weapon' && g.weaponClass && (
+                  <span class="gsa-chip solid-muted">{g.weaponClass}</span>
+                )}
+                <span class={`gsa-chip ${g.nameEx.endsWith(' EX') ? 'solid-accent' : 'solid-gold'}`}>
+                  {g.nameEx.endsWith(' EX') ? 'EX' : g.quality}
+                </span>
+              </div>
+            </div>
+          </div>
+          <p class="gsa-arm-name">{g.nameEx}</p>
+          <ul class="gsa-arm-stats">
+            {g.stats.map(s => (
+              <li><span>{s.label}</span><span>{statLine(s)}</span></li>
+            ))}
+          </ul>
+          {g.flavor && <p class="gsa-arm-flavor">{g.flavor}</p>}
+        </a>
+      ))}
+    </div>
+
+    <div class="gsa-detail-section gsa-arm-guide">
+      <h2>How Armament Stats Work</h2>
+      <p class="gsa-section-note">
+        Signature pieces carry two to four stat lines. Line 1 is always flat
+        Attack. Line 2 is the character's element attack, a direct percent
+        bonus (10% at EX rank 1). Later lines are flat ratings such as Crit,
+        ACC or Evasion: flat ratings are points, which the game converts
+        through a level scaled curve, so the same points give less as your
+        level rises. Percent lines skip that curve entirely.
+      </p>
+      <p class="gsa-section-note">
+        The seven quality tiers, in the game's own order, are White, Green,
+        Blue, Purple, Gold, Red and Rainbow. Base signature pieces are Blue
+        (Accessories are Gold) and every EX piece is Rainbow. A piece upgrades
+        along three axes: ranks (the chain above, six per chain), stars (1 to
+        6) and enhancement (+0 to +100).
+      </p>
+    </div>
+
+    <div class="gsa-detail-section" id="gsa-arm-enhance">
+      <h2>Enhancement Costs</h2>
+      <p class="gsa-section-note">
+        Enhancement runs from +0 to +100 and is gated by player level. Costs
+        scale with the piece's quality tier; enhancement powder is returned in
+        full when the piece is dismantled.
+      </p>
+      <div class="gsa-table-scroll">
+        <table class="gsa-stats-table">
+          <thead>
+            <tr><th>+</th><th>Player Lv</th><th>Gold</th><th>Powder</th></tr>
+          </thead>
+          <tbody>
+            {gsaEnhanceCosts.map(r => {
+              const coins = [...new Set(Object.values(r.coin))];
+              const powders = [...new Set(Object.values(r.powder))];
+              return (
+                <tr>
+                  <th scope="row">+{r.lv}</th>
+                  <td>{r.playerLv}</td>
+                  <td>{coins.length === 1 ? coins[0].toLocaleString('en-US') : `${Math.min(...coins).toLocaleString('en-US')} to ${Math.max(...coins).toLocaleString('en-US')}`}</td>
+                  <td>{powders.length === 1 ? powders[0].toLocaleString('en-US') : `${Math.min(...powders).toLocaleString('en-US')} to ${Math.max(...powders).toLocaleString('en-US')}`}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      <p class="gsa-section-note">
+        Ranges above span the seven quality tiers (White cheapest, Rainbow
+        most expensive). At +50 a Rainbow piece costs {gsaEnhanceCosts.find(r => r.lv === 50)?.coin.Rainbow.toLocaleString('en-US')} gold per level,
+        a White piece {gsaEnhanceCosts.find(r => r.lv === 50)?.coin.White.toLocaleString('en-US')}.
+      </p>
+    </div>
+
+    <div class="gsa-detail-section" id="gsa-arm-starup">
+      <h2>Star-Up Costs</h2>
+      <p class="gsa-section-note">
+        Raising a piece from star N to N+1 costs gold plus equipment ore; the
+        ore type depends on the piece. Costs below are per quality tier; field
+        gear tops out at Green while signature pieces are Blue, Gold or
+        Rainbow.
+      </p>
+      <div class="gsa-table-scroll">
+        <table class="gsa-stats-table">
+          <thead>
+            <tr><th>Tier</th><th>1 to 2</th><th>2 to 3</th><th>3 to 4</th><th>4 to 5</th><th>5 to 6</th></tr>
+          </thead>
+          <tbody>
+            {gsaStarUpCosts.map(t => (
+              <tr>
+                <th scope="row">{t.quality}</th>
+                {t.stars.map(s => (
+                  <td>{s.money.toLocaleString('en-US')} gold + {s.ore.toLocaleString('en-US')} ore</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="gsa-detail-section" id="gsa-arm-dismantle">
+      <h2>Dismantle Returns</h2>
+      <p class="gsa-section-note">
+        Dismantling a piece refunds enhancement powder based on its current
+        enhancement level and quality tier. Samples below; the full table in
+        the game data runs every level from +1 to +100.
+      </p>
+      <div class="gsa-table-scroll">
+        <table class="gsa-stats-table">
+          <thead>
+            <tr><th>+</th><th>Powder Returned</th></tr>
+          </thead>
+          <tbody>
+            {gsaDismantleReturns.map(r => {
+              const vals = [...new Set(Object.values(r.powder))];
+              return (
+                <tr>
+                  <th scope="row">+{r.lv}</th>
+                  <td>{vals.length === 1 ? vals[0].toLocaleString('en-US') : `${Math.min(...vals).toLocaleString('en-US')} to ${Math.max(...vals).toLocaleString('en-US')}`}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="gsa-section-note gsa-arm-updated">
+      Data from the game tables, updated {gsaArmamentLastUpdated}. Icons land
+      as the corresponding gear screens are viewed in game; pieces without art
+      show a letter tile.
+    </p>
+  </div>
+</GSALayout>
+
+<script>
+  // slot + element filters and text search over the signature gear grid
+  const grid = document.getElementById('gsa-arm-grid');
+  const search = document.getElementById('gsa-search') as HTMLInputElement | null;
+  const count = document.getElementById('gsa-count');
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('.gsa-filter-btn'));
+  let activeFilter = 'all';
+  let query = '';
+
+  function apply() {
+    if (!grid) return;
+    let shown = 0;
+    grid.querySelectorAll<HTMLElement>('.gsa-arm-card').forEach(card => {
+      const tags = card.dataset.tags || '';
+      const hay = card.dataset.search || '';
+      const ok =
+        (activeFilter === 'all' || tags.includes(activeFilter)) &&
+        (!query || hay.includes(query));
+      card.style.display = ok ? '' : 'none';
+      if (ok) shown++;
+    });
+    if (count) count.textContent = `${shown} pieces`;
+  }
+
+  buttons.forEach(btn =>
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.toggle('active', b === btn));
+      activeFilter = btn.dataset.filter || 'all';
+      apply();
+    })
+  );
+  search?.addEventListener('input', () => {
+    query = search.value.trim().toLowerCase();
+    apply();
+  });
+</script>
