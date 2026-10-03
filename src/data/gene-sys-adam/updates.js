@@ -1,18 +1,17 @@
-// Gene-Sys: Adam update log. The developer publishes no patch notes outside
-// the game client, so every entry is reconstructed from diffs of the decrypted
-// Patch tables (D:/GeneSysAdam, pulls of the listed dates). Server-scheduled
-// banner dates are approximate; content lists are exact.
+// Gene-Sys: Adam update log. Official posts (title, date, art) come from the
+// game's official site news feed (www.genesys-adam.com, served by the
+// ero-labs announcement API, hgameId 243; banners on res-r.hrbksd.com).
+// Waves the developer never posted about are reconstructed from diffs of the
+// decrypted Patch tables and marked tag: 'Datamine' (no official art exists).
 export const GSA_UPDATES = [
   {
-    slug: '2026-10-02-skill-reworks-and-rui-arina-rotation',
+    slug: '2026-10-02-solo-rotation-and-kit-reworks',
     date: 'October 2, 2026',
-    title: 'Skill reworks and the Ogino Rui / Sugimoto Arina rotation',
-    tag: 'Update',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/News_2026-10-02.webp',
-    imageCaption: 'Official update notice from genesys-adam.com: Limited Summon x2 Rate UP, with Sugimoto Arina and Ogino Rui.',
-    summary: 'The solo rate-up rotation turned over to Ogino Rui and Sugimoto Arina, kits were reworked on Elena, Victoria and Alyna, and a character-growth training mission set shipped.',
+    title: 'Solo rotation: Ogino Rui and Sugimoto Arina, plus kit reworks',
+    tag: 'Datamine',
+    summary: 'The solo rate-up rotation turned over to Ogino Rui and Sugimoto Arina, kits were reworked on Elena, Victoria and Alyna, and a character-growth training mission set shipped. No official notice was posted for this wave.',
     points: [
-      'Solo rate-up rotation turned over to Ogino Rui and Sugimoto Arina; the client downloaded both banner art panels (Draw_Bg_19 and Draw_Bg_21) on October 2, confirming the current pair. Each solo banner keeps the 100-pull featured guarantee.',
+      'Solo rate-up rotation turned over to Ogino Rui and Sugimoto Arina; the game client downloaded both banner art panels on October 2, confirming the current pair. Each solo banner keeps the 100-pull featured guarantee.',
       'Kit data reworks across three characters: Elena (6 skills), Victoria (7 skills) and Alyna (7 skills) gained status riders and extra effect rows, including Detonate interactions on Elena, Block Penetration and Fire RES Down riders on Victoria, and Alyna\'s Survival of the Fittest expanding to five hit targets.',
       'Rachel\'s Aimed Shot was retargeted from "a target" to "the furthest target", and description fixes landed on Lin Lin\'s and Ishikawa Shouji\'s skills.',
       'A new character-growth training mission set shipped in the activity tables: star-up, signature gear acquisition, class-up and affection milestones per character, plus one new training event entry.',
@@ -25,10 +24,8 @@ export const GSA_UPDATES = [
     slug: '2026-09-22-lingering-echoes',
     date: 'September 22, 2026',
     title: 'Lingering Echoes: Qing Yin and Leng Zhen',
-    tag: 'Update',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/News_2026-09-22.webp',
-    imageCaption: 'Official update notice from genesys-adam.com: New Character, Qing Yin and Leng Zhen.',
-    summary: 'Two new SSRs, Qing Yin and Leng Zhen, their dual rate-up banner with the Gagaku Emblem event, and 90 preload items for upcoming content.',
+    tag: 'Datamine',
+    summary: 'Two new SSRs, Qing Yin and Leng Zhen, their dual rate-up banner with the Gagaku Emblem event, and 90 preload items for upcoming content. No official notice was posted for this wave.',
     points: [
       'Two new SSR characters: Qing Yin, a Wind Breaker whose whole kit prioritizes Electrocuted targets and triggers Overload pursuits, and Leng Zhen, a Water Breaker who charges the team 2 EN per hit and lands Freeze M rolls on every loop.',
       'Lingering Echoes dual rate-up banner for both new characters, with a 120-pull featured guarantee, plus training missions for each.',
@@ -40,11 +37,29 @@ export const GSA_UPDATES = [
     source: 'Decrypted table diff, Patch pull of September 22, 2026.',
   },
   {
+    slug: '2026-09-22-official-launch-and-lunar-splendor',
+    date: 'September 22, 2026',
+    title: 'Official launch and the Lunar Splendor event',
+    tag: 'Launch',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/News_3520.webp',
+    imageCaption: 'Official notice: Themed Event, Lunar Splendor of the Pleasure District (September 22 to November 3, 2026). Art from genesys-adam.com.',
+    summary: 'Gene-Sys: Adam officially launched on September 22, headlined by the Lunar Splendor of the Pleasure District event with SSR Komachi Sayaka and Hijikata Chizuru, unlimited launch summons and a free SSR.',
+    points: [
+      'Official launch on September 22, 2026 (the September 17 opening was the non-wipe open beta; beta progress carried over).',
+      'Themed event Lunar Splendor of the Pleasure District runs from September 22 (post-maintenance) to November 3, 2026, 15:00 (UTC+8).',
+      'Two new SSRs debut on the Lunar Splendor dual rate-up banner: Komachi Sayaka and Hijikata Chizuru. The banner shares its rate with the Unlimited Summon, the Advanced Summon and the Standard Summon. The 10th summon guarantees an SR or higher, and 120 summons guarantee one of the featured SSRs.',
+      'The limited banner also accepts an ECoin 10-summon ticket, and the event adds Lunar Splendor login gifts, event missions and an exchange shop stocking Moonflower Naginata and Footwear components for Hijikata Chizuru.',
+      'Unlimited Summons are free during the launch celebration: pull as many times as you like and confirm the result you want; the first 10 summons guarantee an SSR character.',
+      'Every Commander also receives a free SSR selector ticket during the launch celebration.',
+    ],
+    source: 'Official site news (genesys-adam.com), announcement posts 3518 to 3520.',
+  },
+  {
     slug: '2026-09-launch-week-war-and-music',
-    date: 'September 2026, launch week',
+    date: 'September 2026, beta week',
     title: 'War & Music: Elena and Victoria',
-    tag: 'Event wave',
-    summary: 'The first post-launch event wave: the War & Music dual banner for Elena and Victoria, the Phantom Emblem event, and the Connie ticket recruit.',
+    tag: 'Datamine',
+    summary: 'The first post-launch event wave: the War & Music dual banner for Elena and Victoria, the Phantom Emblem event, and the Connie ticket recruit. No official notice was posted for this wave.',
     points: [
       'War & Music dual rate-up banner: SSR Elena and SSR Victoria with a 120-pull featured guarantee.',
       'Collect Phantom Emblems event with its own exchange shop.',
@@ -54,21 +69,33 @@ export const GSA_UPDATES = [
     source: 'Event series numbering in the decrypted tables; exact dates are server-side.',
   },
   {
-    slug: '2026-09-17-launch',
+    slug: '2026-09-17-beta-and-500k-pre-registrations',
     date: 'September 17, 2026',
-    title: 'Global launch',
-    tag: 'Launch',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/News_2026-09-17.webp',
-    imageCaption: 'Official launch-wave notice art from genesys-adam.com.',
-    summary: 'The global launch roster, the Lunar Splendor launch banner with the Moonflower Crest event, Black Gold Hunter with Cowgirl Belle, and the Heaven Door recruits.',
+    title: 'Non-wipe beta opens, 500,000 pre-registrations',
+    tag: 'Notice',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/News_3506.webp',
+    imageCaption: 'Official notice: 500,000 pre-registrations and the start of the non-wipe beta test. Art from genesys-adam.com.',
+    summary: 'The non-wipe open beta went live on September 17 with all progress retained into the official launch, after the game passed 500,000 pre-registrations.',
     points: [
-      'Launch roster: 54 profiled characters, 39 of them visible in gacha pools on day one.',
-      'Lunar Splendor of the Pleasure District launch banner: SSR Komachi Sayaka and SSR Hijikata Chizuru, alongside the Moonflower Crest collection event, training missions for Sayaka, Chizuru and Fujiwara Arisa, and Moonflower gear components in the exchange shop.',
-      'Black Gold Hunter event with Cowgirl Belle ticket recruits.',
-      'Heaven\'s Door special missions and the Jessica ticket recruit.',
-      '1M Downloads celebration ticket machine.',
-      'Solo rate-up rotation began: Ogino Rui, Sugimoto Arina, Milena, Lin Lin, Annabelle.',
+      'The non-wipe open beta test launched on September 17, 2026; all beta progress carries into the official launch.',
+      'Pre-registrations passed 500,000, unlocking the milestone reward set for every Commander at launch.',
+      'The beta build already included the launch roster of 54 profiled characters, the Black Gold Hunter event with Cowgirl Belle ticket recruits, and the Heaven\'s Door special missions with the Jessica ticket recruit.',
     ],
-    source: 'Decrypted launch tables (Patch pull of September 17, 2026).',
+    source: 'Official site news (genesys-adam.com), announcement posts 3506 and 3519.',
+  },
+  {
+    slug: '2026-08-26-pre-registration-opens',
+    date: 'August 26, 2026',
+    title: 'Pre-registration opens',
+    tag: 'Notice',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/News_3427.webp',
+    imageCaption: 'Official notice: pre-registration campaign. Art from genesys-adam.com.',
+    summary: 'Pre-registration for Gene-Sys: Adam opened on August 26, 2026, with milestone rewards for every registered Commander.',
+    points: [
+      'Pre-registration opened on August 26, 2026 (12:00, UTC+8).',
+      'Milestone rewards scale with total registrations, up to the 500,000 tier confirmed on September 17.',
+      'The campaign ran on the EROLABS platform store page.',
+    ],
+    source: 'Official site news (genesys-adam.com), announcement post 3427.',
   },
 ];
