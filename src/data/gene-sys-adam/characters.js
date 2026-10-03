@@ -1,4 +1,4 @@
-// Gene-Sys: Adam character roster (41 profiled characters).
+// Gene-Sys: Adam character roster (42 profiled characters).
 // Source: live game data from BlueStacks (com.neversoft.cr.erolabs), Patch/_settings
 // DES-CBC tables decrypted to pipe-text in D:/GeneSysAdam/output/tables_json.
 // Skill descs resolved from SkillTemplateTextData + EN localization + SkillEffectData
@@ -6293,6 +6293,193 @@ export const gsaCharacters = [
       "ddgPer": "0",
       "blkPer": "4000",
       "blkPenPer": "0",
+      "blkRdcPer": "2000",
+      "healCritPer": "1000",
+      "healCritAmpPer": "5000",
+      "atkHastePer": "0",
+      "cdHastePer": "0",
+      "manaAmpPer": "0",
+      "hpRcvPer": "1000"
+    }
+  },
+  {
+    "id": "133006600",
+    "tierStats": [
+      {"tier": 1, "hp": 6736, "atk": 277},
+      {"tier": 2, "hp": 9400, "atk": 414},
+      {"tier": 3, "hp": 18862, "atk": 831},
+      {"tier": 4, "hp": 28264, "atk": 1246},
+      {"tier": 5, "hp": 37726, "atk": 1663},
+      {"tier": 6, "hp": 50302, "atk": 2217},
+      {"tier": 7, "hp": 62879, "atk": 2772},
+      {"tier": 8, "hp": 75454, "atk": 3326},
+      {"tier": 9, "hp": 90545, "atk": 3991},
+      {"tier": 10, "hp": 108690, "atk": 4791}
+    ],
+    "growth": {"rate": 1.25, "hp": [85.41, 170.82, 427.05, 683.28, 939.52, 1195.75], "atk": [2.64, 5.28, 13.2, 21.12, 29.04, 36.96]},
+    "affection": [{"label": "Fire ATK %", "value": 50}, {"label": "Fire ATK %", "value": 50}, {"label": "Fire ATK %", "value": 50}, {"label": "Fire ATK %", "value": 50}, {"label": "Fire ATK %", "value": 50}, {"label": "Fire ATK %", "value": 50}, {"label": "Fire ATK %", "value": 100}, {"label": "Fire ATK %", "value": 100}, {"label": "Fire ATK %", "value": 100}, {"label": "Fire ATK %", "value": 200}],
+    "gear": [{"slot": "Gloves", "name": "Sword Maiden's Finger EX", "stats": [{"label": "ATK", "base": 100, "pct": false}, {"label": "Fire ATK", "base": 1000, "pct": true}, {"label": "ACC", "base": 58, "pct": false}, {"label": "Physical Boost", "base": 62, "pct": false}]}, {"slot": "Weapon", "name": "Evermoon Blade EX", "stats": [{"label": "ATK", "base": 100, "pct": false}, {"label": "Fire ATK", "base": 1000, "pct": true}, {"label": "Block PEN", "base": 80, "pct": false}, {"label": "Skill Boost", "base": 500, "pct": true}]}, {"slot": "Shoes", "name": "Elegant Travel Shoes EX", "stats": [{"label": "ATK", "base": 100, "pct": false}, {"label": "Fire ATK", "base": 1000, "pct": true}, {"label": "ATK Speed", "base": 182, "pct": false}, {"label": "Crit Evasion", "base": 80, "pct": false}]}, {"slot": "Accessory", "name": "Floral Kanzashi", "stats": [{"label": "ATK", "base": 77, "pct": false}]}],
+    "model": "cr066",
+    "slug": "fujiwara-arisa",
+    "name": "Fujiwara Arisa",
+    "nameZh": "藤原 亞璃紗",
+    "title": "Ephemeral Splendor",
+    "epithet": "Scorched Lotus, Fleeting Splendor",
+    "sex": "Female",
+    "inGacha": false,
+    "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/cr066_Icon_Texture.webp",
+    "sortOrder": 66,
+    "element": {
+      "id": 1,
+      "name": "Fire",
+      "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/battleelement_1.webp"
+    },
+    "job": {
+      "id": 2,
+      "name": "Striker",
+      "color": "#EA3333",
+      "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/fighters_1.webp"
+    },
+    "attackType": {
+      "id": 1,
+      "name": "Physical",
+      "icon": "https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Attributes_02.webp"
+    },
+    "skills": [
+      {
+        "id": "150006600",
+        "name": "Kesa Slash",
+        "slot": "Basic Attack",
+        "unlockStar": 0,
+        "icon": null,
+        "type": "Instant",
+        "mainStat": "ATK",
+        "gcd": "10s",
+        "desc": "Deal 75% Physical DMG to a target.",
+        "detail": null,
+        "cooldown": null,
+        "cost": null,
+        "statuses": []
+      },
+      {
+        "id": "150006610",
+        "name": "Resplendent Blade Flash",
+        "slot": "Talent",
+        "unlockStar": 0,
+        "icon": null,
+        "type": "Instant",
+        "mainStat": "ATK",
+        "gcd": null,
+        "desc": "Deal three hits of 145% Physical DMG to a target.\nOn final hit, grant Crit DMG Up 8% (8s) to self.",
+        "detail": null,
+        "cooldown": "10s",
+        "cost": 1,
+        "statuses": [
+          "Crit DMG Up"
+        ],
+        "awakened": {
+          "desc": "Deal three hits of 195% Physical DMG to a target.\nOn final hit, grant Crit DMG Up 20% (8s) to self.",
+          "detail": null
+        }
+      },
+      {
+        "id": "150006620",
+        "name": "Crimson Shadow Reversal",
+        "slot": "Auto",
+        "unlockStar": 1,
+        "icon": null,
+        "type": "Instant",
+        "mainStat": "ATK",
+        "gcd": null,
+        "desc": "Deal three hits of 30% Physical DMG to up to 2 targets within the forward area.\nOn final hit, Medium chance to inflict Burn S (6s).",
+        "detail": null,
+        "cooldown": "6s",
+        "cost": null,
+        "statuses": [
+          "Burn"
+        ],
+        "awakened": {
+          "desc": "Deal three hits of 50% Physical DMG to up to 2 targets within the forward area.\nOn final hit, Medium chance to inflict Burn S (6s).",
+          "detail": null
+        }
+      },
+      {
+        "id": "150006630",
+        "name": "Noble Discipline",
+        "slot": "Passive 1",
+        "unlockStar": 4,
+        "icon": null,
+        "type": "Passive",
+        "mainStat": null,
+        "gcd": null,
+        "desc": "On hit, Low chance to grant self Crit Evasion Up 10% (6s).",
+        "detail": "Fujiwara Arisa holds herself to the highest standards, always demanding her body and mind be at their peak.",
+        "cooldown": null,
+        "cost": null,
+        "statuses": [],
+        "awakened": {
+          "desc": "On hit, Low chance to grant self Crit Evasion Up 20% (6s).",
+          "detail": null
+        }
+      },
+      {
+        "id": "150006650",
+        "name": "Five Rings Creed",
+        "slot": "Passive 2",
+        "unlockStar": 6,
+        "icon": null,
+        "type": "Passive",
+        "mainStat": null,
+        "gcd": null,
+        "desc": "Grant self Wind Res Up 7.5%.",
+        "detail": "Disciplines herself in the spirit of Eastern bushido, striving to maintain pure clarity even in the direst moments.",
+        "cooldown": null,
+        "cost": null,
+        "statuses": [],
+        "awakened": {
+          "desc": "Grant all party members Wind Res Up 7.5%.",
+          "detail": null
+        }
+      },
+      {
+        "id": "150006641",
+        "name": "Flame Moon Waltz: Tetra Slash",
+        "slot": "Ultimate",
+        "unlockStar": 2,
+        "icon": null,
+        "type": "Instant",
+        "mainStat": "ATK",
+        "gcd": null,
+        "desc": "Enter the Awakening state, granting self Attack Up 10% (24s).\nDeal nine hits of 100% Physical DMG to a target.\nOn final hit, inflict Stun (2s).\nOn final hit, inflict Burn M (6s).",
+        "detail": null,
+        "cooldown": "24s",
+        "cost": 3,
+        "statuses": []
+      }
+    ],
+    "profile": {
+      "title": "Ephemeral Splendor",
+      "birthday": "8 / 31",
+      "age": "31",
+      "height": "170",
+      "weight": "58",
+      "interest": "Training, Kendo, cooking",
+      "personality": "Composed, steadfast, driven by a strong sense of justice, well-educated.",
+      "resumeParas": [
+        "An executive of the Gekka Group, ranking just below Aida Ryuunosuke. The daughter of a renowned samurai family, she was raised with excellent manners and carries herself with grace and dignity. A noble female samurai who combines a righteous nature with cool composure and commanding authority. She prioritizes mental discipline, swordsmanship, and etiquette above all else, diligently practicing kendou, tea ceremony, and flower arrangement without neglect. She believes that the strong have a duty to shoulder responsibility and refuses to show them any leniency. However, having been sheltered and raised in an environment dominated almost entirely by men, she can be surprisingly oblivious to certain social norms. She does not particularly mind nudity and is almost oblivious to men on the battlefield or in ordinary situations. However, when encountering men in an overtly erotic atmosphere, she becomes hyper-aware, growing intensely flustered and excited."
+      ]
+    },
+    "stats": {
+      "atkRange": "180",
+      "normalAttackGCD": "10000",
+      "critPer": "1000",
+      "critRstPer": "0",
+      "critAmpPer": "5000",
+      "critDmgRdcPer": "0",
+      "hitPer": "8500",
+      "ddgPer": "0",
+      "blkPer": "2500",
+      "blkPenPer": "1500",
       "blkRdcPer": "2000",
       "healCritPer": "1000",
       "healCritAmpPer": "5000",

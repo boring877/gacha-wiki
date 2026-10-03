@@ -1,12 +1,11 @@
 ---
-// Gene-Sys: Adam banners page: current + past event banners, permanent
-// summons and a pity cheat sheet, all from the decrypted draw tables.
+// Gene-Sys: Adam banner history page: live, beta-window and scheduled event
+// banners from the decrypted draw tables plus official notices.
 // Card layout mirrors the Taimanin Squad / Busty Burst banner timeline:
 // banner art left at its natural aspect, details right, chips in the body.
 import GSALayout from '../../../layouts/gene-sys-adam/LandingLayout.astro';
 import {
   GSA_BANNERS,
-  GSA_PERMANENT,
   GSA_PITY_NOTES,
   GSA_BANNERS_UPDATED,
   gsaBannerChar,
@@ -14,7 +13,13 @@ import {
 import '../../../styles/games/gene-sys-adam/gsa-common.css';
 import '../../../styles/games/gene-sys-adam/gsa-banners.css';
 
-const STATUS_LABEL = { live: 'Live', recent: 'Recent', launch: 'Launch', rotation: 'Rotation' };
+const STATUS_LABEL = { live: 'Live', beta: 'Beta window', scheduled: 'Scheduled' };
+
+const SECTIONS = [
+  { key: 'live', title: 'Live now' },
+  { key: 'beta', title: 'Beta window (September 17 to 22, 2026)' },
+  { key: 'scheduled', title: 'Scheduled in the client data' },
+];
 
 function charCard(slug) {
   const c = gsaBannerChar(slug);
@@ -25,117 +30,91 @@ function charCard(slug) {
 ---
 
 <GSALayout
-  title="Banners"
-  description={`Gene-Sys: Adam banner list and summon reference (${GSA_BANNERS_UPDATED}): featured units, pity and permanent summons, from the decrypted game tables.`}
-  gameTitle="Banners"
-  crumbName="Banners"
+  title="Banner History"
+  description={`Gene-Sys: Adam banner history (${GSA_BANNERS_UPDATED}): live, beta-window and upcoming event banners with featured units and pity, from the decrypted game tables and official notices.`}
+  gameTitle="Banner History"
+  crumbName="Banner History"
 >
   <section>
     <p class="gsa-banner-intro">
-      Every rate-up banner and summon pool, read from the game's own draw tables.
-      Banner schedules run server-side, so entries are listed by the data wave they
-      appeared in rather than by exact hours. Updated {GSA_BANNERS_UPDATED}.
+      Every event banner that has run or is loaded to run, read from the game's
+      own draw tables and cross-checked against the official notices and the X
+      account (@GeneSysAdamEN). Schedules run server-side, so entries carry the
+      data wave they appeared in rather than exact hours. Permanent pools
+      (Standard, Advanced, Rookie, Unlimited, Mirror) sit outside this history.
+      Updated {GSA_BANNERS_UPDATED}.
     </p>
 
-    <div class="gsa-bn-list">
-      {GSA_BANNERS.map(b => (
-        <article class={`gsa-bn-card${b.status === 'live' ? ' gsa-bn-card-live' : ''}`}>
-          <div class="gsa-bn-art">
-            {b.image
-              ? (
-                <div class="gsa-bn-art-imgs">
-                  <img src={b.image} alt={`${b.name} banner art`} width="1920" height="1080" loading="lazy" decoding="async" />
-                  {b.image2 && <img src={b.image2} alt={`${b.name} second panel`} width="1920" height="1080" loading="lazy" decoding="async" />}
+    {SECTIONS.map(sec => {
+      const cards = GSA_BANNERS.filter(b => b.status === sec.key);
+      return cards.length > 0 && (
+        <fragment>
+          <h2 class="gsa-banner-section-title">{sec.title}</h2>
+          <div class="gsa-bn-list">
+            {cards.map(b => (
+              <article class={`gsa-bn-card${b.status === 'live' ? ' gsa-bn-card-live' : ''}`}>
+                <div class="gsa-bn-art">
+                  {b.image
+                    ? (
+                      <div class="gsa-bn-art-imgs">
+                        <img src={b.image} alt={`${b.name} banner art`} width="1920" height="1080" loading="lazy" decoding="async" />
+                        {b.image2 && <img src={b.image2} alt={`${b.name} second panel`} width="1920" height="1080" loading="lazy" decoding="async" />}
+                      </div>
+                    )
+                    : (
+                      <div class="gsa-bn-art-none">
+                        {b.featured.length > 0 && b.featured.every(slug => charCard(slug).icon)
+                          ? b.featured.map(slug => {
+                              const c = charCard(slug);
+                              return <img class="gsa-bn-art-icon" src={c.icon} alt={c.name} width="110" height="110" loading="lazy" />;
+                            })
+                          : <span>No banner art yet</span>}
+                      </div>
+                    )}
                 </div>
-              )
-              : (
-                <div class="gsa-bn-art-none">
-                  {b.featured.length > 0 && b.featured.every(slug => charCard(slug).icon)
-                    ? b.featured.map(slug => {
-                        const c = charCard(slug);
-                        return <img class="gsa-bn-art-icon" src={c.icon} alt={c.name} width="110" height="110" loading="lazy" />;
-                      })
-                    : <span>No banner art yet</span>}
+                <div class="gsa-bn-body">
+                  <div class="gsa-bn-top">
+                    <span class="gsa-bn-kind">{b.kind}</span>
+                    <span class={`gsa-bn-status gsa-bn-status-${b.status}`}>{STATUS_LABEL[b.status]}</span>
+                    <span class="gsa-bn-since">{b.since}</span>
+                  </div>
+                  <h3 class="gsa-bn-title">{b.name}</h3>
+                  <p class="gsa-bn-sub">{b.nameZh}</p>
+                  <div class="gsa-banner-featured">
+                    {b.featured.map(slug => {
+                      const c = charCard(slug);
+                      return (
+                        <a class="gsa-banner-char" href={`/guides/gene-sys-adam/characters/${slug}/`}>
+                          {c.icon
+                            ? <img class="gsa-banner-char-thumb" src={c.icon} alt={c.name} width="44" height="44" loading="lazy" />
+                            : <span class="gsa-banner-char-thumb gsa-monogram">{c.name?.[0]}</span>}
+                          <span>
+                            <span class="gsa-banner-char-name">{c.name}</span>
+                            <span class="gsa-banner-char-meta">{c.meta}</span>
+                          </span>
+                        </a>
+                      );
+                    })}
+                  </div>
+                  <div class="gsa-banner-facts">
+                    {b.pity && <span class="gsa-banner-fact"><b>Pity:</b> {b.pity} pulls</span>}
+                    {b.eventToken && <span class="gsa-banner-fact"><b>Event token:</b> {b.eventToken}</span>}
+                    {b.training.length > 0 && <span class="gsa-banner-fact"><b>Training missions:</b> {b.training.join(', ')}</span>}
+                  </div>
+                  <p class="gsa-bn-note">{b.note}</p>
                 </div>
-              )}
+              </article>
+            ))}
           </div>
-          <div class="gsa-bn-body">
-            <div class="gsa-bn-top">
-              <span class="gsa-bn-kind">{b.kind}</span>
-              <span class={`gsa-bn-status gsa-bn-status-${b.status}`}>{STATUS_LABEL[b.status]}</span>
-              <span class="gsa-bn-since">{b.since}</span>
-            </div>
-            <h3 class="gsa-bn-title">{b.name}</h3>
-            <p class="gsa-bn-sub">{b.nameZh}</p>
-            <div class="gsa-banner-featured">
-              {b.featured.map(slug => {
-                const c = charCard(slug);
-                return (
-                  <a class="gsa-banner-char" href={`/guides/gene-sys-adam/characters/${slug}/`}>
-                    {c.icon
-                      ? <img class="gsa-banner-char-thumb" src={c.icon} alt={c.name} width="44" height="44" loading="lazy" />
-                      : <span class="gsa-banner-char-thumb gsa-monogram">{c.name?.[0]}</span>}
-                    <span>
-                      <span class="gsa-banner-char-name">{c.name}</span>
-                      <span class="gsa-banner-char-meta">{c.meta}</span>
-                    </span>
-                  </a>
-                );
-              })}
-            </div>
-            <div class="gsa-banner-facts">
-              {b.pity && <span class="gsa-banner-fact"><b>Pity:</b> {b.pity} pulls</span>}
-              {b.eventToken && <span class="gsa-banner-fact"><b>Event token:</b> {b.eventToken}</span>}
-              {b.training.length > 0 && <span class="gsa-banner-fact"><b>Training missions:</b> {b.training.join(', ')}</span>}
-            </div>
-            <p class="gsa-bn-note">{b.note}</p>
-          </div>
-        </article>
-      ))}
-    </div>
+        </fragment>
+      );
+    })}
 
     <div class="gsa-pity-box">
       <h3 class="gsa-pity-title">Pity and rates cheat sheet</h3>
       <ul class="gsa-pity-list">
         {GSA_PITY_NOTES.map(n => <li>{n}</li>)}
       </ul>
-    </div>
-
-    <h2 class="gsa-banner-section-title">Permanent summons</h2>
-    <div class="gsa-perm-grid">
-      {GSA_PERMANENT.map(p => (
-        <div class="gsa-perm-card">
-          {p.image
-            ? (
-              <div class="gsa-bn-art-imgs gsa-perm-art">
-                <img src={p.image} alt={`${p.name} art`} width="1920" height="1080" loading="lazy" decoding="async" />
-                {p.image2 && <img src={p.image2} alt={`${p.name} second panel`} width="1920" height="1080" loading="lazy" decoding="async" />}
-              </div>
-            )
-            : null}
-          <h3 class="gsa-perm-name">{p.name}</h3>
-          <div class="gsa-perm-zh">{p.nameZh}</div>
-          {p.featured.length > 0 && (
-            <div class="gsa-banner-featured">
-              {p.featured.map(slug => {
-                const c = charCard(slug);
-                return (
-                  <a class="gsa-banner-char" href={`/guides/gene-sys-adam/characters/${slug}/`}>
-                    {c.icon
-                      ? <img class="gsa-banner-char-thumb" src={c.icon} alt={c.name} width="44" height="44" loading="lazy" />
-                      : <span class="gsa-banner-char-thumb gsa-monogram">{c.name?.[0]}</span>}
-                    <span>
-                      <span class="gsa-banner-char-name">{c.name}</span>
-                      <span class="gsa-banner-char-meta">{c.meta}</span>
-                    </span>
-                  </a>
-                );
-              })}
-            </div>
-          )}
-          <p class="gsa-perm-desc">{p.desc}</p>
-        </div>
-      ))}
     </div>
   </section>
 </GSALayout>

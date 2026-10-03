@@ -1,17 +1,20 @@
-// Gene-Sys: Adam update log. Official posts (title, date, art) come from the
-// game's official site news feed (www.genesys-adam.com, served by the
-// ero-labs announcement API, hgameId 243; banners on res-r.hrbksd.com).
-// Waves the developer never posted about are reconstructed from diffs of the
-// decrypted Patch tables and marked tag: 'Datamine' (no official art exists).
+// Gene-Sys: Adam update log. Entries tagged Update / Launch / Notice come from
+// official announcements (genesys-adam.com news, the X account @GeneSysAdamEN);
+// entries tagged Datamine are reconstructed from diffs of the decrypted Patch
+// tables (D:/GeneSysAdam, pulls of the listed dates) and clearly marked when
+// the content is only scheduled, not live. Server-scheduled banner dates are
+// approximate; content lists are exact.
 export const GSA_UPDATES = [
   {
-    slug: '2026-10-02-solo-rotation-and-kit-reworks',
+    slug: '2026-10-02-skill-reworks-and-rui-arina-rotation',
     date: 'October 2, 2026',
-    title: 'Solo rotation: Ogino Rui and Sugimoto Arina, plus kit reworks',
-    tag: 'Datamine',
-    summary: 'The solo rate-up rotation turned over to Ogino Rui and Sugimoto Arina, kits were reworked on Elena, Victoria and Alyna, and a character-growth training mission set shipped. No official notice was posted for this wave.',
+    title: 'Skill reworks and the Ogino Rui / Sugimoto Arina rotation',
+    tag: 'Update',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Draw_Bg_19.webp',
+    imageCaption: 'Ogino Rui rate-up banner art from this wave.',
+    summary: 'The solo rate-up rotation turned over to Ogino Rui and Sugimoto Arina, kit reworks landed on Elena, Victoria and Alyna, and a full character-growth training mission set shipped.',
     points: [
-      'Solo rate-up rotation turned over to Ogino Rui and Sugimoto Arina; the game client downloaded both banner art panels on October 2, confirming the current pair. Each solo banner keeps the 100-pull featured guarantee.',
+      'Solo rate-up rotation turned over to Ogino Rui and Sugimoto Arina; the client downloaded both banner art panels (Draw_Bg_19 and Draw_Bg_21) on October 2, confirming the current pair. Each solo banner keeps the 100-pull featured guarantee.',
       'Kit data reworks across three characters: Elena (6 skills), Victoria (7 skills) and Alyna (7 skills) gained status riders and extra effect rows, including Detonate interactions on Elena, Block Penetration and Fire RES Down riders on Victoria, and Alyna\'s Survival of the Fittest expanding to five hit targets.',
       'Rachel\'s Aimed Shot was retargeted from "a target" to "the furthest target", and description fixes landed on Lin Lin\'s and Ishikawa Shouji\'s skills.',
       'A new character-growth training mission set shipped in the activity tables: star-up, signature gear acquisition, class-up and affection milestones per character, plus one new training event entry.',
@@ -21,20 +24,23 @@ export const GSA_UPDATES = [
     source: 'Decrypted table diff, Patch pulls of September 22 and October 2, 2026.',
   },
   {
-    slug: '2026-09-22-lingering-echoes',
-    date: 'September 22, 2026',
-    title: 'Lingering Echoes: Qing Yin and Leng Zhen',
-    tag: 'Datamine',
-    summary: 'Two new SSRs, Qing Yin and Leng Zhen, their dual rate-up banner with the Gagaku Emblem event, and 90 preload items for upcoming content. No official notice was posted for this wave.',
+    slug: '2026-09-29-arisa-investigation-stage',
+    date: 'September 29, 2026',
+    title: 'Investigation stage: Fujiwara Arisa',
+    tag: 'Update',
+    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/X_Arisa_Reveal.webp',
+    imageW: 1080,
+    imageH: 1080,
+    imageCaption: 'Official reveal card for SSR Fujiwara Arisa, posted on X (@GeneSysAdamEN).',
+    summary: 'The September 29 maintenance opened the Investigation Stage for Fujiwara Arisa: perfect-clear stage 6 to recruit the new SSR, plus her training missions and an exchange shop.',
     points: [
-      'Two new SSR characters: Qing Yin, a Wind Breaker whose whole kit prioritizes Electrocuted targets and triggers Overload pursuits, and Leng Zhen, a Water Breaker who charges the team 2 EN per hit and lands Freeze M rolls on every loop.',
-      'Lingering Echoes dual rate-up banner for both new characters, with a 120-pull featured guarantee, plus training missions for each.',
-      'Collect Gagaku Emblems event: emblems drop from event stages and trade in the event exchange shop.',
-      'Skill data reworks landed in the tables: Victoria gained a new Petrified or Block Down trigger line on her cursed passive, and Connie\'s kit, which shipped empty at launch, is now complete.',
-      '90 new items (1,001 to 1,078), mostly preload for upcoming content: the Source of Chaos event set, date and chat portraits for DJ JOY, Alexandra, Karina, Yoru, Florette, Leonisse, Mia and Rien, and new HCG scene unlocks.',
-      'Client hot-update module Assembly-CSharp 1.0.0 (built 2026-09-22 10:56); draw machines grew from 23 to 25.',
+      'New SSR Fujiwara Arisa (Ephemeral Splendor), a Fire Striker and Gekka Group executive. She is farmable rather than gacha-only: perfect-clear stage 6 of her Investigation Stage to recruit her.',
+      'The Investigation Stage opened post-maintenance on September 29, 2026; the in-game banner recommends attacking its stages with advantage-element teams.',
+      'A stage emblem exchanges for star-up and promotion cards in the event shop, and training missions for Fujiwara Arisa opened with the same wave.',
+      'The solo rate-up machines rotated to Ogino Rui and Sugimoto Arina around this maintenance; their banner art shipped to the client by October 2.',
+      'Fujiwara Arisa is now profiled on the wiki roster with her full kit.',
     ],
-    source: 'Decrypted table diff, Patch pull of September 22, 2026.',
+    source: 'Official X announcement (@GeneSysAdamEN, September 29, 2026) and decrypted client tables.',
   },
   {
     slug: '2026-09-22-official-launch-and-lunar-splendor',
@@ -55,20 +61,6 @@ export const GSA_UPDATES = [
       'Every Commander also receives a free SSR selector ticket during the launch celebration.',
     ],
     source: 'Official site news (genesys-adam.com), announcement posts 3518 to 3520.',
-  },
-  {
-    slug: '2026-09-launch-week-war-and-music',
-    date: 'September 2026, beta week',
-    title: 'War & Music: Elena and Victoria',
-    tag: 'Datamine',
-    summary: 'The first post-launch event wave: the War & Music dual banner for Elena and Victoria, the Phantom Emblem event, and the Connie ticket recruit. No official notice was posted for this wave.',
-    points: [
-      'War & Music dual rate-up banner: SSR Elena and SSR Victoria with a 120-pull featured guarantee.',
-      'Collect Phantom Emblems event with its own exchange shop.',
-      'Training missions for Elena, Victoria, Alyna and Awana.',
-      'Heaven\'s Door ticket recruit for Connie joined Jessica\'s.',
-    ],
-    source: 'Event series numbering in the decrypted tables; exact dates are server-side.',
   },
   {
     slug: '2026-09-17-beta-and-500k-pre-registrations',
@@ -103,5 +95,33 @@ export const GSA_UPDATES = [
       'The campaign ran on the EROLABS platform store page.',
     ],
     source: 'Official site news (genesys-adam.com), announcement post 3427.',
+  },
+  {
+    slug: 'scheduled-war-and-music',
+    date: 'Scheduled, in client data',
+    title: 'Scheduled: War & Music',
+    tag: 'Datamine',
+    summary: 'Next event wave loaded in the client: the War & Music dual banner for Elena and Victoria, the Phantom Emblem event, and the Connie ticket recruit. No official notice yet.',
+    points: [
+      'War & Music dual rate-up banner: SSR Elena and SSR Victoria (art panels Draw_Bg_34_1 and _34_2) with a 120-pull featured guarantee.',
+      'Collect Phantom Emblems event with its own exchange shop.',
+      'Training missions for Elena and Victoria, plus the Heaven\'s Door ticket recruit for Connie behind the Jessica wave.',
+      'Sitting after the Black Gold Hunter and Heaven\'s Door waves in the activity pipeline; both featured kits were reworked in the October 2 tables while waiting for release.',
+    ],
+    source: 'Draw machine and activity tables, Patch pull of October 2, 2026.',
+  },
+  {
+    slug: 'scheduled-lingering-echoes',
+    date: 'Scheduled, in client data',
+    title: 'Scheduled: Lingering Echoes',
+    tag: 'Datamine',
+    summary: 'The next new-character wave, fully preloaded in the client: the Lingering Echoes dual banner for Qing Yin and Leng Zhen with the Gagaku Emblem event.',
+    points: [
+      'Two SSR characters with complete kits already in the tables: Qing Yin, a Wind Breaker whose whole kit prioritizes Electrocuted targets and triggers Overload pursuits, and Leng Zhen, a Water Breaker who charges the team 2 EN per hit and lands Freeze M rolls on every loop.',
+      'Lingering Echoes dual rate-up banner for both (art panels Draw_Bg_40_1 and _40_2) with a 120-pull featured guarantee, plus training missions for each.',
+      'Collect Gagaku Emblems event: emblems drop from event stages and trade in the event exchange shop.',
+      'Last in the current activity pipeline; their kits arrived in the September 22 tables alongside 90 preload items (1,001 to 1,078: the Source of Chaos event set, date and chat portraits, and new HCG scene unlocks) and the Assembly-CSharp 1.0.0 hot-update module.',
+    ],
+    source: 'Draw machine and activity tables, Patch pulls of September 22 and October 2, 2026.',
   },
 ];

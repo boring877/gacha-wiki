@@ -113,9 +113,8 @@
   background: var(--gsa-accent);
 }
 
-.gsa-bn-status-recent,
-.gsa-bn-status-launch,
-.gsa-bn-status-rotation {
+.gsa-bn-status-beta,
+.gsa-bn-status-scheduled {
   background: #3a2a2c;
   color: var(--gsa-text-dim);
 }
@@ -232,46 +231,6 @@
   color: var(--gsa-text);
 }
 
-/* Permanent summons */
-.gsa-perm-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.gsa-perm-card {
-  background: var(--gsa-bg-secondary);
-  border: 1px solid var(--gsa-border);
-  border-radius: 12px;
-  padding: 1rem;
-  min-width: 0;
-}
-
-.gsa-perm-art {
-  margin-bottom: 0.9rem;
-}
-
-.gsa-perm-name {
-  margin: 0 0 0.15rem;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--gsa-text);
-}
-
-.gsa-perm-zh {
-  color: var(--gsa-text-dim);
-  font-size: 0.82rem;
-  margin-bottom: 0.6rem;
-}
-
-.gsa-perm-desc {
-  color: var(--gsa-text-dim);
-  font-size: 0.85rem;
-  line-height: 1.55;
-  margin: 0;
-}
-
 /* Pity box */
 .gsa-pity-box {
   background: var(--gsa-bg-secondary);
@@ -294,47 +253,6 @@
   color: var(--gsa-text);
   font-size: 0.9rem;
   line-height: 1.7;
-}
-
-/* Permanent summons */
-.gsa-perm-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.gsa-perm-card {
-  background: var(--gsa-bg-secondary);
-  border: 1px solid var(--gsa-border);
-  border-radius: 12px;
-  padding: 0 1rem 1rem;
-  overflow: hidden;
-  min-width: 0;
-}
-
-.gsa-perm-card .gsa-banner-artwrap {
-  margin: 0 -1rem 0.9rem;
-}
-
-.gsa-perm-name {
-  margin: 0 0 0.15rem;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--gsa-text);
-}
-
-.gsa-perm-zh {
-  color: var(--gsa-text-dim);
-  font-size: 0.82rem;
-  margin-bottom: 0.6rem;
-}
-
-.gsa-perm-desc {
-  color: var(--gsa-text-dim);
-  font-size: 0.85rem;
-  line-height: 1.55;
-  margin: 0;
 }
 
 /* Monogram fallback for icon-less characters */
