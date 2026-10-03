@@ -30,8 +30,8 @@ import '../../../styles/games/gene-sys-adam/gsa-banners.css';
             {u.image
               ? (
                 <div class="gsa-banner-art-pair">
-                  <img class="gsa-update-art" src={u.image} alt={u.imageCaption || `${u.title} art`} width="1920" height="1080" loading="lazy" />
-                  {u.image2 && <img class="gsa-update-art" src={u.image2} alt={u.imageCaption || `${u.title} second panel`} width="1920" height="1080" loading="lazy" />}
+                  <img class="gsa-update-art" src={u.image} alt={u.imageCaption || `${u.title} art`} width={u.imageW || 1280} height={u.imageH || 720} loading="lazy" />
+                  {u.image2 && <img class="gsa-update-art" src={u.image2} alt={u.imageCaption || `${u.title} second panel`} width={u.imageW || 1280} height={u.imageH || 720} loading="lazy" />}
                 </div>
               )
               : <div class="gsa-update-art-band">{u.date}</div>}

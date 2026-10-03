@@ -52,33 +52,57 @@
   border-color: var(--gsa-accent);
 }
 
-/* Art header */
+/* Art header: images render at their natural aspect (no forced crop);
+   ratio boxes only where content is generated (strips/bands/pairs). */
 .gsa-banner-artwrap {
   position: relative;
   margin: 0 -1.1rem 1rem;
-  aspect-ratio: 16 / 7;
   background: #17100f;
   overflow: hidden;
   flex-shrink: 0;
+}
+
+.gsa-banner-artwrap-strip {
+  aspect-ratio: 16 / 7;
+}
+
+.gsa-banner-artwrap-16x9 {
+  aspect-ratio: 16 / 9;
+}
+
+.gsa-banner-artwrap-pair {
+  aspect-ratio: 32 / 9;
 }
 
 .gsa-banner-art {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 22%;
   display: block;
 }
 
-/* Dual banners: two half panels side by side */
+/* Natural-aspect images (official notice art): width-driven, no crop */
+.gsa-update-artwrap .gsa-update-art,
+.gsa-update-artwrap .gsa-banner-art-pair .gsa-update-art {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Dual banners: two uncropped half panels side by side */
 .gsa-banner-art-pair {
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 100%;
 }
 
-.gsa-banner-art-pair .gsa-banner-art {
-  object-fit: cover;
+.gsa-banner-artwrap-pair .gsa-banner-art-pair,
+.gsa-update-artwrap .gsa-banner-art-pair {
+  height: auto;
+}
+
+.gsa-update-artwrap .gsa-banner-art-pair {
+  grid-template-columns: 1fr;
 }
 
 /* Featured strip fallback when no banner art shipped */
@@ -280,7 +304,6 @@
 
 .gsa-perm-card .gsa-banner-artwrap {
   margin: 0 -1rem 0.9rem;
-  aspect-ratio: 16 / 6;
 }
 
 .gsa-perm-name {
@@ -326,16 +349,13 @@
 .gsa-update-artwrap {
   position: relative;
   margin: 0 -1.4rem 1.1rem;
-  aspect-ratio: 16 / 6;
   background: #17100f;
   overflow: hidden;
 }
 
 .gsa-update-art {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
+  height: auto;
   display: block;
 }
 
@@ -343,7 +363,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  aspect-ratio: 16 / 6;
   background:
     radial-gradient(ellipse at 25% 130%, rgba(176, 42, 55, 0.3), transparent 60%),
     #1a1211;
@@ -441,10 +461,6 @@
   font-weight: 600;
   text-decoration: none;
   margin-bottom: 1rem;
-}
-
-.gsa-update-artwrap-tall {
-  aspect-ratio: 16 / 7;
 }
 
 .gsa-update-detail-title {

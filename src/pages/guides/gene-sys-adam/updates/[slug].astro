@@ -27,12 +27,12 @@ const older = idx < GSA_UPDATES.length - 1 ? GSA_UPDATES[idx + 1] : null;
     <a class="gsa-update-back" href="/guides/gene-sys-adam/updates/">All updates</a>
 
     <article class="gsa-update-card gsa-update-detail">
-      <div class="gsa-update-artwrap gsa-update-artwrap-tall">
+      <div class="gsa-update-artwrap">
         {entry.image
           ? (
             <div class="gsa-banner-art-pair">
-              <img class="gsa-update-art" src={entry.image} alt={entry.imageCaption || `${entry.title} art`} width="1920" height="1080" />
-              {entry.image2 && <img class="gsa-update-art" src={entry.image2} alt={entry.imageCaption || `${entry.title} second panel`} width="1920" height="1080" />}
+              <img class="gsa-update-art" src={entry.image} alt={entry.imageCaption || `${entry.title} art`} width={entry.imageW || 1280} height={entry.imageH || 720} />
+              {entry.image2 && <img class="gsa-update-art" src={entry.image2} alt={entry.imageCaption || `${entry.title} second panel`} width={entry.imageW || 1280} height={entry.imageH || 720} />}
             </div>
           )
           : <div class="gsa-update-art-band">{entry.date}</div>}

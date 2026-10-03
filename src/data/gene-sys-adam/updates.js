@@ -42,6 +42,8 @@ export const GSA_UPDATES = [
     title: 'Official launch and the Lunar Splendor event',
     tag: 'Launch',
     image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/News_3520.webp',
+    imageW: 790,
+    imageH: 352,
     imageCaption: 'Official notice: Themed Event, Lunar Splendor of the Pleasure District (September 22 to November 3, 2026). Art from genesys-adam.com.',
     summary: 'Gene-Sys: Adam officially launched on September 22, headlined by the Lunar Splendor of the Pleasure District event with SSR Komachi Sayaka and Hijikata Chizuru, unlimited launch summons and a free SSR.',
     points: [
@@ -74,6 +76,8 @@ export const GSA_UPDATES = [
     title: 'Non-wipe beta opens, 500,000 pre-registrations',
     tag: 'Notice',
     image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/News_3506.webp',
+    imageW: 1280,
+    imageH: 720,
     imageCaption: 'Official notice: 500,000 pre-registrations and the start of the non-wipe beta test. Art from genesys-adam.com.',
     summary: 'The non-wipe open beta went live on September 17 with all progress retained into the official launch, after the game passed 500,000 pre-registrations.',
     points: [
@@ -89,6 +93,8 @@ export const GSA_UPDATES = [
     title: 'Pre-registration opens',
     tag: 'Notice',
     image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/News_3427.webp',
+    imageW: 1280,
+    imageH: 720,
     imageCaption: 'Official notice: pre-registration campaign. Art from genesys-adam.com.',
     summary: 'Pre-registration for Gene-Sys: Adam opened on August 26, 2026, with milestone rewards for every registered Commander.',
     points: [

@@ -44,7 +44,7 @@ function charCard(slug) {
     <div class="gsa-banner-grid">
       {live.map(b => (
         <div class="gsa-banner-card gsa-banner-card-live">
-          <div class="gsa-banner-artwrap">
+          <div class={`gsa-banner-artwrap ${b.image ? 'gsa-banner-artwrap-16x9' : 'gsa-banner-artwrap-strip'}`}>
             {b.image
               ? <img class="gsa-banner-art" src={b.image} alt={`${b.name} banner art`} width="1920" height="1080" loading="lazy" />
               : (
@@ -95,7 +95,7 @@ function charCard(slug) {
     <div class="gsa-banner-grid">
       {rest.map(b => (
         <div class="gsa-banner-card">
-          <div class="gsa-banner-artwrap">
+          <div class={`gsa-banner-artwrap ${b.image2 ? 'gsa-banner-artwrap-pair' : b.image ? 'gsa-banner-artwrap-16x9' : 'gsa-banner-artwrap-strip'}`}>
             {b.image
               ? (
                 <div class="gsa-banner-art-pair">
@@ -158,7 +158,7 @@ function charCard(slug) {
     <div class="gsa-perm-grid">
       {GSA_PERMANENT.map(p => (
         <div class="gsa-perm-card">
-          <div class="gsa-banner-artwrap">
+          <div class={`gsa-banner-artwrap ${p.image2 ? 'gsa-banner-artwrap-pair' : p.image ? 'gsa-banner-artwrap-16x9' : 'gsa-banner-artwrap-strip'}`}>
             {p.image
               ? (
                 <div class="gsa-banner-art-pair">
