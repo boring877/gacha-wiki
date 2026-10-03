@@ -13,8 +13,6 @@ export function getStaticPaths() {
 const { slug } = Astro.params;
 const idx = GSA_UPDATES.findIndex(u => u.slug === slug);
 const entry = GSA_UPDATES[idx];
-const newer = idx > 0 ? GSA_UPDATES[idx - 1] : null;
-const older = idx < GSA_UPDATES.length - 1 ? GSA_UPDATES[idx + 1] : null;
 ---
 
 <GSALayout
@@ -49,13 +47,5 @@ const older = idx < GSA_UPDATES.length - 1 ? GSA_UPDATES[idx + 1] : null;
       <p class="gsa-update-source">Source: {entry.source}</p>
     </article>
 
-    <nav class="gsa-update-nav">
-      {newer
-        ? <a class="gsa-update-nav-link" href={`/guides/gene-sys-adam/updates/${newer.slug}/`}><span class="gsa-update-nav-dir">Newer</span><span>{newer.title}</span></a>
-        : <span class="gsa-update-nav-link gsa-update-nav-empty"></span>}
-      {older
-        ? <a class="gsa-update-nav-link gsa-update-nav-right" href={`/guides/gene-sys-adam/updates/${older.slug}/`}><span class="gsa-update-nav-dir">Older</span><span>{older.title}</span></a>
-        : <span class="gsa-update-nav-link gsa-update-nav-empty"></span>}
-    </nav>
   </section>
 </GSALayout>
