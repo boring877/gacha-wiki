@@ -2,6 +2,7 @@
    the game color system. Art-led cards: Draw_Bg_* banner art headers with
    overlaid status chips; featured strips fill in where art has not shipped. */
 
+/* Banners page: TS/BB-style cards, art left at natural aspect, details right */
 .gsa-banner-intro {
   color: var(--gsa-text-dim);
   font-size: 0.95rem;
@@ -10,224 +11,86 @@
   max-width: 72ch;
 }
 
-.gsa-banner-section-title {
-  margin: 2rem 0 1rem;
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--gsa-text);
-}
-
-.gsa-banner-section-title:first-of-type {
-  margin-top: 0;
-}
-
-/* Card grid: current + past banners */
-.gsa-banner-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
+.gsa-bn-list {
+  display: flex;
+  flex-direction: column;
   gap: 1.25rem;
   margin-bottom: 1rem;
 }
 
-@media (max-width: 560px) {
-  .gsa-banner-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Shared banner card */
-.gsa-banner-card {
+.gsa-bn-card {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
   background: var(--gsa-bg-secondary);
   border: 1px solid var(--gsa-border);
-  border-radius: 14px;
-  padding: 0 1.1rem 1.1rem;
-  margin-bottom: 0;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
+  border-radius: 10px;
+  padding: 1.25rem;
 }
 
-.gsa-banner-card-live {
+.gsa-bn-card-live {
   border-color: var(--gsa-accent);
 }
 
-/* Art header: images render at their natural aspect (no forced crop);
-   ratio boxes only where content is generated (strips/bands/pairs). */
-.gsa-banner-artwrap {
-  position: relative;
-  margin: 0 -1.1rem 1rem;
-  background: #17100f;
-  overflow: hidden;
+.gsa-bn-art {
   flex-shrink: 0;
+  width: 400px;
+  min-width: 0;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.gsa-banner-artwrap-strip {
-  aspect-ratio: 16 / 7;
-}
-
-.gsa-banner-artwrap-16x9 {
-  aspect-ratio: 16 / 9;
-}
-
-.gsa-banner-artwrap-pair {
-  aspect-ratio: 32 / 9;
-}
-
-.gsa-banner-art {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Natural-aspect images (official notice art): width-driven, no crop */
-.gsa-update-artwrap .gsa-update-art,
-.gsa-update-artwrap .gsa-banner-art-pair .gsa-update-art {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-/* Dual banners: two uncropped half panels side by side */
-.gsa-banner-art-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 100%;
-}
-
-.gsa-banner-artwrap-pair .gsa-banner-art-pair,
-.gsa-update-artwrap .gsa-banner-art-pair {
-  height: auto;
-}
-
-.gsa-update-artwrap .gsa-banner-art-pair {
-  grid-template-columns: 1fr;
-}
-
-/* Featured strip fallback when no banner art shipped */
-.gsa-banner-art-fallback {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
-  height: 100%;
-  background:
-    radial-gradient(ellipse at 30% 120%, rgba(176, 42, 55, 0.28), transparent 60%),
-    radial-gradient(ellipse at 80% -20%, rgba(176, 42, 55, 0.16), transparent 55%),
-    #1a1211;
-}
-
-/* Character-art strip for banners without banner art but with official art */
-.gsa-banner-strip {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  height: 100%;
-  background:
-    radial-gradient(ellipse at 20% 120%, rgba(176, 42, 55, 0.3), transparent 55%),
-    radial-gradient(ellipse at 85% -10%, rgba(176, 42, 55, 0.15), transparent 55%),
-    #1a1211;
-}
-
-.gsa-banner-strip-art {
-  height: 100%;
-  width: auto;
-  max-width: 45%;
-  object-fit: contain;
-  object-position: bottom center;
-  display: block;
-}
-
-/* Clean title band for banners with no art at all */
-.gsa-banner-titleband {
+.gsa-bn-art-imgs {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.3rem;
-  height: 100%;
-  background:
-    radial-gradient(ellipse at 25% 130%, rgba(176, 42, 55, 0.3), transparent 60%),
-    #1a1211;
-  color: var(--gsa-text);
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 0 1rem;
+  gap: 6px;
 }
 
-.gsa-banner-titleband-zh {
+.gsa-bn-art-imgs img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  background: #17100f;
+}
+
+.gsa-bn-art-none {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border-radius: 6px;
+  background:
+    radial-gradient(ellipse at 75% 40%, rgba(176, 42, 55, 0.16), transparent 65%),
+    var(--gsa-bg-tertiary);
   color: var(--gsa-text-dim);
   font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: none;
 }
 
-.gsa-fallback-portrait {
-  width: 96px;
-  height: 96px;
-  border-radius: 12px;
+.gsa-bn-art-icon {
+  width: 110px;
+  height: 110px;
+  border-radius: 10px;
   object-fit: cover;
-  border: 1px solid var(--gsa-border);
-  display: block;
-  background: var(--gsa-bg-secondary);
-  font-size: 2.2rem;
 }
 
-.gsa-fallback-word {
-  color: var(--gsa-text-dim);
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.gsa-bn-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+  flex: 1;
 }
 
-/* Status chip on art */
-.gsa-banner-status {
-  position: absolute;
-  top: 0.7rem;
-  left: 0.7rem;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border-radius: 5px;
-  padding: 0.24rem 0.6rem;
-  color: #fff;
-  background: rgba(23, 16, 15, 0.82);
-  border: 1px solid var(--gsa-border);
-}
-
-.gsa-banner-status-live {
-  background: var(--gsa-accent);
-  border-color: var(--gsa-accent);
-}
-
-.gsa-banner-card-head {
+.gsa-bn-top {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.6rem;
-  margin-bottom: 0.3rem;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.gsa-banner-card-name {
-  margin: 0;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--gsa-text);
-}
-
-.gsa-banner-card-zh {
-  color: var(--gsa-text-dim);
-  font-size: 0.88rem;
-}
-
-.gsa-banner-kind {
+.gsa-bn-kind {
   background: var(--gsa-accent-tint);
   color: var(--gsa-accent-strong);
   font-size: 0.75rem;
@@ -236,17 +99,68 @@
   padding: 0.2rem 0.55rem;
 }
 
-.gsa-banner-since {
-  color: var(--gsa-text-dim);
-  font-size: 0.83rem;
-  margin-bottom: 0.9rem;
+.gsa-bn-status {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 5px;
+  padding: 0.2rem 0.55rem;
+  color: #fff;
 }
 
+.gsa-bn-status-live {
+  background: var(--gsa-accent);
+}
+
+.gsa-bn-status-recent,
+.gsa-bn-status-launch,
+.gsa-bn-status-rotation {
+  background: #3a2a2c;
+  color: var(--gsa-text-dim);
+}
+
+.gsa-bn-since {
+  color: var(--gsa-text-dim);
+  font-size: 0.82rem;
+}
+
+.gsa-bn-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--gsa-text);
+}
+
+.gsa-bn-sub {
+  margin: 0;
+  color: var(--gsa-text-dim);
+  font-size: 0.85rem;
+}
+
+.gsa-bn-note {
+  color: var(--gsa-text-dim);
+  font-size: 0.84rem;
+  line-height: 1.55;
+  margin: 0.15rem 0 0;
+}
+
+@media (max-width: 860px) {
+  .gsa-bn-card {
+    flex-direction: column;
+  }
+
+  .gsa-bn-art {
+    width: 100%;
+  }
+}
+
+/* Featured char chips + facts (shared) */
 .gsa-banner-featured {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
-  margin-bottom: 0.9rem;
+  margin: 0.15rem 0;
 }
 
 .gsa-banner-char {
@@ -287,7 +201,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 0.75rem;
 }
 
 .gsa-banner-fact {
@@ -303,9 +216,58 @@
   color: var(--gsa-accent-strong);
 }
 
-.gsa-banner-note {
+.gsa-monogram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gsa-accent-tint);
+  color: var(--gsa-accent-strong);
+  font-weight: 700;
+}
+
+.gsa-banner-section-title {
+  margin: 2rem 0 1rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--gsa-text);
+}
+
+/* Permanent summons */
+.gsa-perm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.gsa-perm-card {
+  background: var(--gsa-bg-secondary);
+  border: 1px solid var(--gsa-border);
+  border-radius: 12px;
+  padding: 1rem;
+  min-width: 0;
+}
+
+.gsa-perm-art {
+  margin-bottom: 0.9rem;
+}
+
+.gsa-perm-name {
+  margin: 0 0 0.15rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--gsa-text);
+}
+
+.gsa-perm-zh {
   color: var(--gsa-text-dim);
-  font-size: 0.84rem;
+  font-size: 0.82rem;
+  margin-bottom: 0.6rem;
+}
+
+.gsa-perm-desc {
+  color: var(--gsa-text-dim);
+  font-size: 0.85rem;
   line-height: 1.55;
   margin: 0;
 }
