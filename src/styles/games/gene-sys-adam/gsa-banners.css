@@ -118,6 +118,55 @@
     #1a1211;
 }
 
+/* Character-art strip for banners without banner art but with official art */
+.gsa-banner-strip {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: 100%;
+  background:
+    radial-gradient(ellipse at 20% 120%, rgba(176, 42, 55, 0.3), transparent 55%),
+    radial-gradient(ellipse at 85% -10%, rgba(176, 42, 55, 0.15), transparent 55%),
+    #1a1211;
+}
+
+.gsa-banner-strip-art {
+  height: 100%;
+  width: auto;
+  max-width: 45%;
+  object-fit: contain;
+  object-position: bottom center;
+  display: block;
+}
+
+/* Clean title band for banners with no art at all */
+.gsa-banner-titleband {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  height: 100%;
+  background:
+    radial-gradient(ellipse at 25% 130%, rgba(176, 42, 55, 0.3), transparent 60%),
+    #1a1211;
+  color: var(--gsa-text);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.gsa-banner-titleband-zh {
+  color: var(--gsa-text-dim);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+
 .gsa-fallback-portrait {
   width: 96px;
   height: 96px;

@@ -98,6 +98,7 @@ export const GSA_BANNERS = [
     eventToken: null,
     training: ['Belle'],
     image: null,
+    stripImage: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/SiteArt_Belle.webp',
     note: 'Ticket recruits from the Black Gold Hunter event; the ticket variant doubles the featured bucket shown in the client tables.',
   },
   {
@@ -126,6 +127,7 @@ export const GSA_BANNERS = [
     eventToken: null,
     training: ['Jessica'],
     image: null,
+    stripImage: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/SiteArt_Jessica.webp',
     note: "Heaven's Door special missions award the summon letters.",
   },
   {

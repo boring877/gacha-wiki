@@ -48,14 +48,9 @@ function charCard(slug) {
             {b.image
               ? <img class="gsa-banner-art" src={b.image} alt={`${b.name} banner art`} width="1920" height="1080" loading="lazy" />
               : (
-                <div class="gsa-banner-art-fallback">
-                  {b.featured.map(slug => {
-                    const c = charCard(slug);
-                    return c.icon
-                      ? <img class="gsa-fallback-portrait" src={c.icon} alt={c.name} width="96" height="96" loading="lazy" />
-                      : <span class="gsa-fallback-portrait gsa-monogram">{c.name?.[0]}</span>;
-                  })}
-                </div>
+                b.stripImage
+                  ? <div class="gsa-banner-strip"><img class="gsa-banner-strip-art" src={b.stripImage} alt={`${b.name} character art`} loading="lazy" /></div>
+                  : <div class="gsa-banner-titleband"><span>{b.name}</span><span class="gsa-banner-titleband-zh">{b.nameZh}</span></div>
               )}
             <span class="gsa-banner-status gsa-banner-status-live">{STATUS_LABEL[b.status]}</span>
           </div>
@@ -104,14 +99,9 @@ function charCard(slug) {
                 </div>
               )
               : (
-                <div class="gsa-banner-art-fallback">
-                  {b.featured.map(slug => {
-                    const c = charCard(slug);
-                    return c.icon
-                      ? <img class="gsa-fallback-portrait" src={c.icon} alt={c.name} width="96" height="96" loading="lazy" />
-                      : <span class="gsa-fallback-portrait gsa-monogram">{c.name?.[0]}</span>;
-                  })}
-                </div>
+                b.stripImage
+                  ? <div class="gsa-banner-strip"><img class="gsa-banner-strip-art" src={b.stripImage} alt={`${b.name} character art`} loading="lazy" /></div>
+                  : <div class="gsa-banner-titleband"><span>{b.name}</span><span class="gsa-banner-titleband-zh">{b.nameZh}</span></div>
               )}
             <span class={`gsa-banner-status gsa-banner-status-${b.status}`}>{STATUS_LABEL[b.status]}</span>
           </div>
