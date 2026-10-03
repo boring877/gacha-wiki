@@ -56,9 +56,8 @@ export const GSA_BANNERS = [
     pity: 120,
     eventToken: 'Moonflower Crest',
     training: ['Komachi Sayaka', 'Hijikata Chizuru'],
-    image: `${R2}/Draw_Bg_20_1.webp`,
-    image2: `${R2}/Draw_Bg_20_2.webp`,
-    note: 'The official-launch limited banner: one art panel per featured SSR, a 120-pull featured guarantee, an ECoin ticket lane, and an exchange shop stocking Moonflower Naginata and Footwear components for Hijikata Chizuru. Dates from the official notice on genesys-adam.com.',
+    image: `${R2}/News_3520.webp`,
+    note: 'The official-launch limited banner: a 120-pull featured guarantee, an ECoin ticket lane, and an exchange shop stocking Moonflower Naginata and Footwear components for Hijikata Chizuru. Card art is the official event notice from genesys-adam.com; the in-game art panels are R18 and stay off the wiki. Dates from the same official notice.',
   },
   {
     slug: 'black-gold-hunter',
