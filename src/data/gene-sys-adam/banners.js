@@ -28,8 +28,8 @@ export const GSA_BANNERS = [
     pity: 100,
     eventToken: null,
     training: [],
-    image: `${R2}/Draw_Bg_19.webp`,
-    note: 'Live solo banner (art panel Draw_Bg_19, pulled by the client on October 2). SSR rate x2, a Designated Seal per pull and a 100-pull featured guarantee.',
+    image: null,
+    note: 'Live solo banner, confirmed by the client pulling its art panels on October 2 (the panels are plain backdrop art, so the card shows the featured strip instead). SSR rate x2, a Designated Seal per pull and a 100-pull featured guarantee.',
   },
   {
     slug: 'sugimoto-arina-rate-up',
@@ -42,8 +42,8 @@ export const GSA_BANNERS = [
     pity: 100,
     eventToken: null,
     training: [],
-    image: `${R2}/Draw_Bg_21.webp`,
-    note: 'Live solo banner (art panel Draw_Bg_21, pulled by the client on October 2). Same deal as every solo: SSR rate x2, Designated Seal per pull, 100-pull featured guarantee.',
+    image: null,
+    note: 'Live solo banner alongside the Rui rate-up. Same deal as every solo: SSR rate x2, Designated Seal per pull, 100-pull featured guarantee.',
   },
   {
     slug: 'lunar-splendor',
@@ -144,16 +144,6 @@ export const GSA_BANNERS = [
     image: null,
     note: 'Three more solo machines (Milena, Lin Lin, Annabelle) are configured in the current tables behind the live Rui and Arina pair, on the same 100-pull featured guarantee. A 1,000,000 Downloads celebration summon is also preloaded.',
   },
-];
-
-// Pity and rate rules that apply across the banner history above.
-export const GSA_PITY_NOTES = [
-  'Dual limited banners: both featured SSRs share one featured bucket with a 120-pull featured guarantee.',
-  'Solo rate-ups: SSR rate x2, a Designated Seal per pull, and a 100-pull featured guarantee.',
-  'ECoin and ticket lanes (Lunar Splendor ECoin, Black Gold Hunter, Heaven\u2019s Door) cost no gems; the client tables double their featured bucket.',
-  'Every 10th summon drops the lowest bucket entirely, guaranteeing an SR or better.',
-  'Rate rows for a running banner are injected server-side; anything not shown above is not dataminable.',
-  'Permanent pools (Standard, Advanced, Rookie, Unlimited, Mirror) always sit outside this timeline.',
 ];
 
 export function gsaBannerChar(slug) {

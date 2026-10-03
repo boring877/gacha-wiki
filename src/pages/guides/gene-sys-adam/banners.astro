@@ -6,7 +6,6 @@
 import GSALayout from '../../../layouts/gene-sys-adam/LandingLayout.astro';
 import {
   GSA_BANNERS,
-  GSA_PITY_NOTES,
   GSA_BANNERS_UPDATED,
   gsaBannerChar,
 } from '../../../data/gene-sys-adam/banners.js';
@@ -109,12 +108,5 @@ function charCard(slug) {
         </fragment>
       );
     })}
-
-    <div class="gsa-pity-box">
-      <h3 class="gsa-pity-title">Pity and rates cheat sheet</h3>
-      <ul class="gsa-pity-list">
-        {GSA_PITY_NOTES.map(n => <li>{n}</li>)}
-      </ul>
-    </div>
   </section>
 </GSALayout>

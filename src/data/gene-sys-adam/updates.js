@@ -10,8 +10,6 @@ export const GSA_UPDATES = [
     date: 'October 2, 2026',
     title: 'Skill reworks and the Ogino Rui / Sugimoto Arina rotation',
     tag: 'Update',
-    image: 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/Draw_Bg_19.webp',
-    imageCaption: 'Ogino Rui rate-up banner art from this wave.',
     summary: 'The solo rate-up rotation turned over to Ogino Rui and Sugimoto Arina, kit reworks landed on Elena, Victoria and Alyna, and a full character-growth training mission set shipped.',
     points: [
       'Solo rate-up rotation turned over to Ogino Rui and Sugimoto Arina; the client downloaded both banner art panels (Draw_Bg_19 and Draw_Bg_21) on October 2, confirming the current pair. Each solo banner keeps the 100-pull featured guarantee.',
