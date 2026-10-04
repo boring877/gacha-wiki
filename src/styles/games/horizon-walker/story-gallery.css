@@ -128,6 +128,35 @@
   border-top: 1px solid var(--hw-border-light);
 }
 
+/* Cutscene video cards */
+.hw-gallery-video-grid {
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+.hw-gallery-video-card {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--hw-bg-medium);
+  border: 1px solid var(--hw-border-light);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.hw-gallery-video-card video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  display: block;
+  background: #000;
+}
+
+.hw-video-duration {
+  float: right;
+  font-size: 0.75rem;
+  color: var(--hw-text-very-muted);
+}
+
 @media (max-width: 768px) {
   .hw-gallery-content {
     padding: 1rem;

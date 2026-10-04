@@ -324,6 +324,61 @@ export const STORY_GALLERY_COUNTS = {
   characters: 99, // from story-cg.js
   events: 64,
   story: 15,
+  cutscenes: 24,
   world: 68,
   popups: 79,
 };
+
+// In-game cutscene videos extracted from the game files (all cinematic movies the client ships).
+// Served from R2 videos/ with webp posters; durations measured from the files themselves.
+export const CUTSCENE_GROUPS = [
+  {
+    label: 'Chapter 4: Opening Cinematic',
+    videos: [
+      { file: 'videos/Mov_Chepter4_Intro_2340_1080_H264High.mp4', poster: 'videos/posters/Mov_Chepter4_Intro_2340_1080_H264High.webp', caption: 'Chapter 4 opening movie', duration: '0:38' },
+    ],
+  },
+  {
+    label: 'Chapter 2: Wall Battle, before the battle',
+    videos: [
+      { file: 'videos/Mov_P2_WallBattle_Before_C_Step_1_QHD_B128_8.mp4', poster: 'videos/posters/Mov_P2_WallBattle_Before_C_Step_1_QHD_B128_8.webp', caption: 'Before the battle: Step 1', duration: '0:07' },
+      { file: 'videos/Mov_P2_WallBattle_Before_C_Step_2_QHD_B128_8.mp4', poster: 'videos/posters/Mov_P2_WallBattle_Before_C_Step_2_QHD_B128_8.webp', caption: 'Before the battle: Step 2', duration: '0:06' },
+      { file: 'videos/Mov_P2_WallBattle_Before_C_Step_2_1_QHD_B128_8.mp4', poster: 'videos/posters/Mov_P2_WallBattle_Before_C_Step_2_1_QHD_B128_8.webp', caption: 'Before the battle: Step 2 (1)', duration: '0:04' },
+      { file: 'videos/Mov_P2_WallBattle_Before_C_Step_2_2_QHD_B128_8.mp4', poster: 'videos/posters/Mov_P2_WallBattle_Before_C_Step_2_2_QHD_B128_8.webp', caption: 'Before the battle: Step 2 (2)', duration: '0:04' },
+      { file: 'videos/Mov_P2_WallBattle_Before_C_Step_4_QHD_B128_8.mp4', poster: 'videos/posters/Mov_P2_WallBattle_Before_C_Step_4_QHD_B128_8.webp', caption: 'Before the battle: Step 4', duration: '0:04' },
+      { file: 'videos/Mov_P2_WallBattle_Before_C_Step_5_QHD_B128_8.mp4', poster: 'videos/posters/Mov_P2_WallBattle_Before_C_Step_5_QHD_B128_8.webp', caption: 'Before the battle: Step 5', duration: '0:01' },
+      { file: 'videos/Mov_P2_WallBattle_Before_C_Step_6_QHD_B128_8.mp4', poster: 'videos/posters/Mov_P2_WallBattle_Before_C_Step_6_QHD_B128_8.webp', caption: 'Before the battle: Step 6', duration: '0:02' },
+      { file: 'videos/Mov_P2_WallBattle_Before_C_Step_8_QHD_B128_8.mp4', poster: 'videos/posters/Mov_P2_WallBattle_Before_C_Step_8_QHD_B128_8.webp', caption: 'Before the battle: Step 8', duration: '0:05' },
+      { file: 'videos/Mov_P2_WallBattle_Before_C_Step_9_QHD_B128_8.mp4', poster: 'videos/posters/Mov_P2_WallBattle_Before_C_Step_9_QHD_B128_8.webp', caption: 'Before the battle: Step 9', duration: '0:07' },
+      { file: 'videos/Mov_P2_WallBattle_Before_C_Step_10_QHD_B128_8.mp4', poster: 'videos/posters/Mov_P2_WallBattle_Before_C_Step_10_QHD_B128_8.webp', caption: 'Before the battle: Step 10', duration: '0:08' },
+    ],
+  },
+  {
+    label: 'Chapter 2: Wall Battle, after the battle',
+    videos: [
+      { file: 'videos/Mov_P2_WallBattle_After_C_Step_1_QHD_B128_8.mp4', poster: 'videos/posters/Mov_P2_WallBattle_After_C_Step_1_QHD_B128_8.webp', caption: 'After the battle: Step 1', duration: '0:10' },
+      { file: 'videos/Mov_P2_WallBattle_After_C_Step_2_QHD_B128_8.mp4', poster: 'videos/posters/Mov_P2_WallBattle_After_C_Step_2_QHD_B128_8.webp', caption: 'After the battle: Step 2', duration: '0:04' },
+      { file: 'videos/Mov_P2_WallBattle_After_C_Step_3_QHD_B128_8.mp4', poster: 'videos/posters/Mov_P2_WallBattle_After_C_Step_3_QHD_B128_8.webp', caption: 'After the battle: Step 3', duration: '0:11' },
+      { file: 'videos/Mov_P2_WallBattle_After_C_Step_3_1_QHD_B128_8.mp4', poster: 'videos/posters/Mov_P2_WallBattle_After_C_Step_3_1_QHD_B128_8.webp', caption: 'After the battle: Step 3 (1)', duration: '0:06' },
+      { file: 'videos/Mov_P2_WallBattle_After_C_Step_5_QHD_B128_8.mp4', poster: 'videos/posters/Mov_P2_WallBattle_After_C_Step_5_QHD_B128_8.webp', caption: 'After the battle: Step 5', duration: '0:04' },
+      { file: 'videos/Mov_P2_WallBattle_After_C_Step_6_QHD_B128_8.mp4', poster: 'videos/posters/Mov_P2_WallBattle_After_C_Step_6_QHD_B128_8.webp', caption: 'After the battle: Step 6', duration: '0:11' },
+    ],
+  },
+  {
+    label: 'Chapter 4: Lugh Battle, the encounter',
+    videos: [
+      { file: 'videos/MOV_P4_LughBattle_Encounter_Step_1_QHD_128_8.mp4', poster: 'videos/posters/MOV_P4_LughBattle_Encounter_Step_1_QHD_128_8.webp', caption: 'The encounter: Step 1', duration: '0:09' },
+      { file: 'videos/MOV_P4_LughBattle_Encounter_Step_2_QHD_128_8.mp4', poster: 'videos/posters/MOV_P4_LughBattle_Encounter_Step_2_QHD_128_8.webp', caption: 'The encounter: Step 2', duration: '0:02' },
+      { file: 'videos/MOV_P4_LughBattle_Encounter_Step_4_QHD_128_8.mp4', poster: 'videos/posters/MOV_P4_LughBattle_Encounter_Step_4_QHD_128_8.webp', caption: 'The encounter: Step 4', duration: '0:08' },
+    ],
+  },
+  {
+    label: 'Chapter 4: Lugh Battle, the fall',
+    videos: [
+      { file: 'videos/Mov_P4_LughBattle_Death_Step1_1_QHD_128_8.mp4', poster: 'videos/posters/Mov_P4_LughBattle_Death_Step1_1_QHD_128_8.webp', caption: 'The fall: Step 1 (1)', duration: '0:09' },
+      { file: 'videos/Mov_P4_LughBattle_Death_Step1_2_QHD_128_8.mp4', poster: 'videos/posters/Mov_P4_LughBattle_Death_Step1_2_QHD_128_8.webp', caption: 'The fall: Step 1 (2)', duration: '0:12' },
+      { file: 'videos/Mov_P4_LughBattle_Death_Step1_3_QHD_128_8.mp4', poster: 'videos/posters/Mov_P4_LughBattle_Death_Step1_3_QHD_128_8.webp', caption: 'The fall: Step 1 (3)', duration: '0:09' },
+      { file: 'videos/Mov_Scene_P4_LughBattle_Death_Step2_QHD_128_8.mp4', poster: 'videos/posters/Mov_Scene_P4_LughBattle_Death_Step2_QHD_128_8.webp', caption: 'The fall: Step 2', duration: '0:20' },
+    ],
+  },
+];

@@ -8,6 +8,7 @@ import {
   MAIN_STORY_CGS,
   WORLD_ART,
   POPUP_ART,
+  CUTSCENE_GROUPS,
 } from '../../../data/horizon-walker/story-gallery.js';
 import { HORIZON_WALKER_CHARACTERS } from '../../../data/horizon-walker/characters.js';
 
@@ -25,37 +26,42 @@ const charGroups = Object.entries(STORY_CG)
 const charCgCount = charGroups.reduce((n, g) => n + g.cgs.length, 0);
 const eventCgCount = EVENT_STORY_GROUPS.reduce((n, g) => n + g.cgs.length, 0);
 
+const cutsceneCount = CUTSCENE_GROUPS.reduce((n, g) => n + g.videos.length, 0);
+
 const TABS = [
   { id: 'characters', label: 'Characters', count: charCgCount },
   { id: 'events', label: 'Event Stories', count: eventCgCount },
   { id: 'story', label: 'Main Story', count: MAIN_STORY_CGS.length },
+  { id: 'cutscenes', label: 'Cutscene Videos', count: cutsceneCount },
   { id: 'world', label: 'World', count: WORLD_ART.length },
   { id: 'popups', label: 'Dialogue Art', count: POPUP_ART.length },
 ];
 
-const totalCount = charCgCount + eventCgCount + MAIN_STORY_CGS.length + WORLD_ART.length + POPUP_ART.length;
+const totalCount =
+  charCgCount + eventCgCount + MAIN_STORY_CGS.length + cutsceneCount + WORLD_ART.length + POPUP_ART.length;
 
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'ImageGallery',
+  '@type': 'MediaGallery',
   name: 'Horizon Walker Story Gallery',
   description:
-    'Story illustrations from Horizon Walker: character friendship CGs, event story CGs, main story cutscene art, and world backgrounds.',
+    'Story media from Horizon Walker: character friendship CGs, event story CGs, main story cutscene art, world backgrounds, and in-game cutscene videos.',
   url: new URL(Astro.url.pathname, Astro.site).href,
   numberOfItems: totalCount,
 };
 ---
 
 <StoryGalleryLayout
-  title="Horizon Walker Story Gallery - Character, Event & Main Story CGs"
-  description="Browse every Horizon Walker story illustration: character friendship CGs, event story CGs, main story cutscene art, and world location backgrounds in full resolution."
+  title="Horizon Walker Story Gallery - CGs & Cutscene Videos"
+  description="Browse every Horizon Walker story illustration and in-game cutscene video: character friendship CGs, event story CGs, main story cutscene art, world backgrounds, and story cinematics."
   gameTitle="Story Gallery"
 >
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
   <section class="hw-gallery-content">
     <p class="hw-gallery-intro">
-      Story illustrations extracted from the game. Click any image to view it in full resolution.
+      Story illustrations and cutscene videos extracted from the game. Click any image to view it in
+      full resolution; cutscene videos play right on the page.
     </p>
 
     <div class="hw-gallery-tabs" role="tablist">
@@ -155,6 +161,36 @@ const structuredData = {
           ))
         }
       </div>
+    </div>
+
+    <div class="hw-gallery-panel" id="hw-panel-cutscenes" role="tabpanel" data-panel="cutscenes" hidden>
+      {
+        CUTSCENE_GROUPS.map(grp => (
+          <div class="hw-gallery-group">
+            <h2 class="hw-gallery-group-title">{grp.label}</h2>
+            <div class="hw-gallery-grid hw-gallery-video-grid">
+              {grp.videos.map(v => (
+                <figure class="hw-gallery-video-card">
+                  <video
+                    controls
+                    preload="none"
+                    poster={`${R2_BASE}/${v.poster}`}
+                    width={800}
+                    height={450}
+                  >
+                    <source src={`${R2_BASE}/${v.file}`} type="video/mp4" />
+                    Your browser does not support video playback.
+                  </video>
+                  <figcaption class="hw-gallery-caption">
+                    {v.caption}
+                    <span class="hw-video-duration">{v.duration}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        ))
+      }
     </div>
 
     <div class="hw-gallery-panel" id="hw-panel-world" role="tabpanel" data-panel="world" hidden>
