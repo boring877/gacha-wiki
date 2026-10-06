@@ -120,7 +120,7 @@ export const bannerTimeline = [
     dateNote: 'rotation',
     featured: ['Daphine', 'Dayu', 'Macak'],
     slugs: ['dayu', 'macak'],
-    note: 'The live Eternal Contact text lists this trio as rate-ups. Dayu is also obtainable from the event exchange shop (about 3,250 event tokens per copy). Daphine is a UR not yet covered by the wiki roster.',
+    note: 'The live Eternal Contact text lists this trio as rate-ups. Dayu is also obtainable from the event exchange shop (about 3,250 event tokens per copy). Daphine is a UR not yet covered by the wiki roster. Data-mined (Sep 23 client data): her personal event is preloaded (event token, chibi avatar, exchange shop and the "The Perfumer\'s Final Destination" challenge stage), but her skill and profile data has not shipped yet.',
   },
   {
     name: 'Isabelle UR Pickup',
