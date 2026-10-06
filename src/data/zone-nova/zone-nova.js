@@ -81,6 +81,11 @@ export const zoneNovaConfig = {
         { id: 'clock', title: 'Clock', url: '/clock/zone-nova/' },
         { id: 'redeem-codes', title: 'Redeem Codes', url: '/guides/zone-nova/redeem-codes/' },
         { id: 'summon-faq', title: 'Summon FAQ', url: '/guides/zone-nova/summon-faq/' },
+        {
+          id: 'data-extractor',
+          title: 'Data Extractor',
+          url: 'https://github.com/boring877/zone-nova-extractor',
+        },
       ],
     },
     {

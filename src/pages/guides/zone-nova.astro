@@ -123,6 +123,8 @@ const breadcrumbs = [
                   href={guide.url}
                   class="zn-resource-button"
                   aria-label={`Navigate to ${guide.title}`}
+                  target={guide.url.startsWith('http') ? '_blank' : undefined}
+                  rel={guide.url.startsWith('http') ? 'noopener noreferrer' : undefined}
                 >
                   {guide.title}
                 </a>
