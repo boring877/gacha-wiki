@@ -12,6 +12,7 @@ export const VIDEO_TYPE_LABELS = {
 
 export const HW_CHARACTER_VIDEOS = {
   araha: [
+    { id: 'Oi0ITyG6lLs', type: 'preview', title: 'Body Slider Preview (Araha)', date: '2026-10-02' },
     { id: 'Xo7war0xaoY', type: 'costume', title: 'Pass Costume - Midnight Blue', date: '2024-11-19' },
   ],
   ahram: [
