@@ -2,9 +2,11 @@
 // Chinese stigma sub-stats page: /zh/guides/horizon-walker/stigma-sub-stats/
 // Renders the wiki sub-stat scaling table with official ZH stat labels.
 import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
 import { stigmaSubStats } from '../../../../data/horizon-walker/stigma-sub-stats.js';
 import { HW_ZH_STAT_TYPES } from '../../../../data/horizon-walker/zh/game-text.js';
 import { HW_ZH } from '../../../../data/horizon-walker/zh/ui.js';
+import '../../../../styles/games/horizon-walker/stigma.css';
 import '../../../../styles/games/horizon-walker/hw-stigma-sub-stats.css';
 
 export const prerender = true;
@@ -28,14 +30,19 @@ const statZh = label => {
   title="圣痕副属性 - 地平线行者中文维基 - GachaWiki"
   description="地平线行者圣痕副属性的数值范围一览：各副属性的随机区间与强化数值，属性名称为游戏官方简体中文。"
   keywords={['地平线行者', '圣痕', '副属性', '攻略']}
-  pageTitle="圣痕副属性"
   breadcrumbItems={[
     { name: '首页', href: '/' },
     { name: '地平线行者', href: HW_ZH.baseUrl },
     { name: '圣痕副属性' },
   ]}
 >
-  <div class="hw-stigma-sub-stats-container">
+  <section class="stigma-title-section">
+    <h1 class="stigma-page-title">圣痕副属性</h1>
+    <DecorativeLines />
+  </section>
+
+  <div class="stigma-content-area">
+    <div class="hw-stigma-sub-stats-container">
     <div class="hw-stigma-sub-stats-content">
       <p class="zh-substats-note">圣痕在强化时会随机获得副属性，下表为各副属性可能出现的数值范围。</p>
       <table
@@ -63,6 +70,7 @@ const statZh = label => {
         </tbody>
       </table>
     </div>
+  </div>
   </div>
 </HwZhLayout>
 

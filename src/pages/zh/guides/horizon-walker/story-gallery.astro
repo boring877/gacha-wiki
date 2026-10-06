@@ -5,6 +5,7 @@
 // Chinese. Captions are cleaned asset names with no official ZH, so they are
 // kept verbatim from the data.
 import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
 import { STORY_CG } from '../../../../data/horizon-walker/story-cg.js';
 import {
   EVENT_STORY_GROUPS,
@@ -59,13 +60,18 @@ const totalCount =
   title="剧情画廊 - 地平线行者中文维基 - GachaWiki"
   description={`地平线行者剧情画廊：共 ${totalCount} 张剧情 CG、好感度剧情插画、活动剧情 CG、主线插画、世界背景图与过场动画视频，全部提取自游戏文件。`}
   keywords={['地平线行者', '剧情画廊', 'CG', '过场动画', '插画']}
-  pageTitle="剧情画廊"
   breadcrumbItems={[
     { name: '首页', href: '/' },
     { name: '地平线行者', href: HW_ZH.baseUrl },
     { name: '剧情画廊' },
   ]}
 >
+  <section class="hw-gallery-title-section">
+    <h1 class="hw-gallery-page-title">剧情画廊</h1>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-gallery-content-area">
   <section class="hw-gallery-content">
     <p class="hw-gallery-intro">
       从游戏内提取的剧情插画与过场动画视频，共 {totalCount} 项。点击任意图片可查看原图；过场视频可直接在页面内播放。图注为资源原始名称，保留英文。
@@ -225,6 +231,7 @@ const totalCount =
       </div>
     </div>
   </section>
+  </div>
 </HwZhLayout>
 
 <script is:inline>

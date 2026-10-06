@@ -5,6 +5,8 @@
 // note's summary points (title, date, highlights) in natural Chinese and
 // links to the EN page for the complete original note.
 import HwZhLayout from '../../../../../layouts/zh/HwZhLayout.astro';
+import DecorativeLines from '../../../../../components/DecorativeLines.astro';
+import '../../../../../styles/games/horizon-walker/hw-guide.css';
 import { patchNotes } from '../../../../../data/horizon-walker/patch-notes.js';
 import { HORIZON_WALKER_CHARACTERS } from '../../../../../data/horizon-walker/characters.js';
 import { HW_ZH_NAMES, HW_ZH_INHERITANCE } from '../../../../../data/horizon-walker/zh/game-text.js';
@@ -225,7 +227,6 @@ const enPageUrl = `/guides/horizon-walker/updates/${slug}/`;
   title={`${zhTitle} - 地平线行者中文维基 - GachaWiki`}
   description={`${zhTitle}（${posted}发布）要点中文整理：${zhTags.join('、')}。完整内容请查看对应的官方英文公告。`}
   keywords={['地平线行者', '更新公告', note.date]}
-  pageTitle={zhTitle}
   breadcrumbItems={[
     { name: '首页', href: '/' },
     { name: '地平线行者', href: HW_ZH.baseUrl },
@@ -233,35 +234,42 @@ const enPageUrl = `/guides/horizon-walker/updates/${slug}/`;
     { name: zhTitle },
   ]}
 >
-  <div class="zh-pn-page">
-    <div class="zh-pn-meta-card">
-      <div class="zh-pn-meta-row">
-        <span class="zh-pn-meta-label">发布日期</span>
-        <span class="zh-pn-meta-value">{posted}</span>
+  <section class="hw-guide-hero">
+    <h1 class="hw-guide-title">{zhTitle}</h1>
+    <p class="hw-guide-subtitle">{posted}发布的官方更新公告，中文要点整理。</p>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-guide-content">
+  <div class="pn-page">
+    <div class="pn-meta-card">
+      <div class="pn-meta-row">
+        <span class="pn-meta-label">发布日期</span>
+        <span class="pn-meta-value">{posted}</span>
       </div>
-      <div class="zh-pn-meta-row">
-        <span class="zh-pn-meta-label">原文标题</span>
-        <span class="zh-pn-meta-value">{note.title}</span>
+      <div class="pn-meta-row">
+        <span class="pn-meta-label">原文标题</span>
+        <span class="pn-meta-value">{note.title}</span>
       </div>
-      <div class="zh-pn-meta-row">
-        <span class="zh-pn-meta-label">来源</span>
-        <a class="zh-pn-meta-link" href={note.sourceUrl} target="_blank" rel="noopener">
+      <div class="pn-meta-row">
+        <span class="pn-meta-label">来源</span>
+        <a class="pn-meta-link" href={note.sourceUrl} target="_blank" rel="noopener">
           Naver Lounge 官方帖子
         </a>
       </div>
-      <div class="zh-pn-meta-row">
-        <span class="zh-pn-meta-label">语言</span>
-        <span class="zh-pn-meta-value">官方英文公告，本页为中文要点整理</span>
+      <div class="pn-meta-row">
+        <span class="pn-meta-label">语言</span>
+        <span class="pn-meta-value">官方英文公告，本页为中文要点整理</span>
       </div>
     </div>
 
-    <p class="zh-pn-schedule-note">
+    <p class="pn-schedule-note">
       更新公告跟随韩服日程，韩服进度领先全球服数周。官方原文中的具体技能数值以 N 占位符表示。活动、卡池等专有名称暂无官方中文，保留英文原文。
     </p>
 
     {
       firstImage && (
-        <div class="zh-pn-banner">
+        <div class="pn-banner">
           <img
             src={r2Url('horizon-walker', `patch-notes/${firstImage.src}`)}
             alt={`${zhTitle} 头图`}
@@ -273,123 +281,128 @@ const enPageUrl = `/guides/horizon-walker/updates/${slug}/`;
       )
     }
 
-    <article class="zh-pn-body">
-      <h2 class="zh-pn-body-title">本次更新要点</h2>
-      <ul class="zh-pn-points">
+    <article class="pn-body">
+      <h2 class="pn-sec">本次更新要点</h2>
+      <ul class="pn-points">
         {
           zhTags.map((t) => (
-            <li class="zh-pn-point">{t}</li>
+            <li class="pn-point">{t}</li>
           ))
         }
       </ul>
-      <p class="zh-pn-note">
+      <p class="pn-note">
         以上为该公告的要点中文整理。完整内容（全部章节、技能表格与图片）请查看
         <a href={enPageUrl}>对应的英文公告页</a>。
       </p>
     </article>
 
-    <div class="zh-pn-footer-nav">
-      <a class="zh-pn-back" href={`${HW_ZH.baseUrl}updates/`}>全部更新公告</a>
-      <a class="zh-pn-back" href={enPageUrl}>查看完整英文公告</a>
-      <a class="zh-pn-back" href={note.sourceUrl} target="_blank" rel="noopener">
+    <div class="pn-footer-nav">
+      <a class="pn-back" href={`${HW_ZH.baseUrl}updates/`}>全部更新公告</a>
+      <a class="pn-back" href={enPageUrl}>查看完整英文公告</a>
+      <a class="pn-back" href={note.sourceUrl} target="_blank" rel="noopener">
         在 Naver Lounge 查看原帖
       </a>
     </div>
   </div>
+  </div>
 </HwZhLayout>
 
 <style>
-  .zh-pn-page {
+  .pn-page {
     display: flex;
     flex-direction: column;
     gap: 1.1rem;
     max-width: 980px;
     margin: 0 auto;
   }
-  .zh-pn-meta-card {
+  .pn-meta-card {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.25rem;
+    gap: 1.5rem;
     background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 12px;
+    border: 1px solid rgba(232, 165, 71, 0.18);
+    border-radius: 10px;
     padding: 0.85rem 1.2rem;
   }
-  .zh-pn-meta-row {
+  .pn-meta-row {
     display: flex;
     align-items: baseline;
     gap: 0.5rem;
   }
-  .zh-pn-meta-label {
-    color: var(--hw-text-very-muted);
+  .pn-meta-label {
+    color: #999;
     font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
     white-space: nowrap;
   }
-  .zh-pn-meta-value {
-    color: var(--hw-text-light);
+  .pn-meta-value {
+    color: #ddd;
     font-size: 0.92rem;
   }
-  .zh-pn-meta-link {
-    color: var(--hw-primary-warm);
+  .pn-meta-link {
+    color: #e8a547;
     font-size: 0.92rem;
     text-decoration: none;
   }
-  .zh-pn-schedule-note {
-    color: var(--hw-text-muted);
+  .pn-schedule-note {
+    color: #9a9a9a;
     font-size: 0.85rem;
-    line-height: 1.7;
+    line-height: 1.5;
     margin: 0;
     padding: 0 0.2rem;
   }
-  .zh-pn-banner img {
+  .pn-banner img {
     width: 100%;
     height: auto;
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.09);
     display: block;
   }
-  .zh-pn-body {
+  .pn-body {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.09);
     border-radius: 12px;
     padding: 1.5rem 1.7rem;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.55rem;
   }
-  .zh-pn-body-title {
-    color: var(--hw-primary-warm);
+  .pn-sec {
+    color: #e8a547;
     font-size: 1.18rem;
     font-weight: 700;
     margin: 0 0 0.25rem 0;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid rgba(232, 165, 71, 0.25);
   }
-  .zh-pn-points {
+  .pn-points {
     margin: 0;
     padding-left: 1.4rem;
     display: flex;
     flex-direction: column;
     gap: 0.45rem;
   }
-  .zh-pn-point {
+  .pn-point {
     color: #ccc;
-    font-size: 0.95rem;
-    line-height: 1.7;
+    font-size: 0.93rem;
+    line-height: 1.65;
   }
-  .zh-pn-note {
-    color: var(--hw-text-muted);
+  .pn-note {
+    color: #9a9a9a;
     font-size: 0.88rem;
-    line-height: 1.7;
+    line-height: 1.65;
     margin: 0.25rem 0 0 0;
   }
-  .zh-pn-note a {
-    color: var(--hw-primary-warm);
+  .pn-note a {
+    color: #e8a547;
   }
-  .zh-pn-footer-nav {
+  .pn-footer-nav {
     display: flex;
     gap: 0.8rem;
     flex-wrap: wrap;
   }
-  .zh-pn-back {
+  .pn-back {
     display: inline-block;
     background: rgba(232, 165, 71, 0.12);
     border: 1px solid rgba(232, 165, 71, 0.3);
@@ -401,7 +414,7 @@ const enPageUrl = `/guides/horizon-walker/updates/${slug}/`;
     text-decoration: none;
   }
   @media (max-width: 640px) {
-    .zh-pn-body {
+    .pn-body {
       padding: 1.05rem 1rem;
     }
   }

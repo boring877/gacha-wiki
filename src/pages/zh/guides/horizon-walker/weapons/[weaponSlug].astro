@@ -19,6 +19,7 @@ import {
 } from '../../../../../data/horizon-walker/zh/game-text.js';
 import { HW_ZH } from '../../../../../data/horizon-walker/zh/ui.js';
 import '../../../../../styles/games/horizon-walker/hw-weapon-detail.css';
+import DecorativeLines from '../../../../../components/DecorativeLines.astro';
 
 export const prerender = true;
 
@@ -126,6 +127,13 @@ const description = weaponFlavor
     { name: weaponName },
   ]}
 >
+  <section class="hw-char-db-hero-section">
+    <h1 class="hw-char-db-hero-title">武器详情</h1>
+    <p class="hw-char-db-hero-subtitle">{isExWeapon ? 'EX 武器资料' : '武器资料'}</p>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-char-db-content-area">
   <div class="weapon-detail-container">
     <!-- Hero Section -->
     <section class="weapon-hero">
@@ -414,6 +422,7 @@ const description = weaponFlavor
         </section>
       )
     }
+  </div>
   </div>
 
   <!-- EX tab switching for the unique skill panels -->

@@ -5,6 +5,7 @@
 // no official ZH in the wiki's game-text maps, so they keep the EN text
 // verbatim (never machine-translated).
 import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
 import { StigmaImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
 import { stigmas } from '../../../../data/horizon-walker/stigmas.js';
 import { HW_ZH_INHERITANCE, HW_ZH_STAT_TYPES } from '../../../../data/horizon-walker/zh/game-text.js';
@@ -76,13 +77,18 @@ const rarities = ['EX', 'SS', 'S', 'A'];
   title="圣痕 - 地平线行者中文维基 - GachaWiki"
   description="地平线行者圣痕数据库：按稀有度整理的全部圣痕套装，包含二件套与四件套效果、套装部位与部位名称，部位名称为游戏官方简体中文。"
   keywords={['地平线行者', '圣痕', '圣痕套装', '攻略']}
-  pageTitle="圣痕"
   breadcrumbItems={[
     { name: '首页', href: '/' },
     { name: '地平线行者', href: HW_ZH.baseUrl },
     { name: '圣痕' },
   ]}
 >
+  <section class="stigma-title-section">
+    <h1 class="stigma-page-title">圣痕</h1>
+    <DecorativeLines />
+  </section>
+
+  <div class="stigma-content-area">
   <p class="zh-stigma-note">
     套装名称与套装效果的官方中文尚未收录，暂以英文原文显示；部位名称与属性为游戏官方简体中文。
   </p>
@@ -157,6 +163,7 @@ const rarities = ['EX', 'SS', 'S', 'A'];
       </section>
     )
   ))}
+  </div>
 </HwZhLayout>
 
 <style>

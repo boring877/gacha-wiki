@@ -5,6 +5,8 @@
 // game's own ZH character/weapon names, keeping EN proper nouns (event and
 // banner titles have no official ZH) verbatim.
 import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import '../../../../styles/games/horizon-walker/hw-guide.css';
 import { patchNotes } from '../../../../data/horizon-walker/patch-notes.js';
 import { HORIZON_WALKER_CHARACTERS } from '../../../../data/horizon-walker/characters.js';
 import { HW_ZH_NAMES, HW_ZH_INHERITANCE } from '../../../../data/horizon-walker/zh/game-text.js';
@@ -215,49 +217,55 @@ const oldest = patchNotes[patchNotes.length - 1];
   title="更新公告 - 地平线行者中文维基 - GachaWiki"
   description={`地平线行者官方更新公告中文整理，共 ${patchNotes.length} 篇：新先锋、新武器、活动、平衡调整与问题修复，时间跨度 ${fmt(oldest.date)} 至 ${fmt(newest.date)}。`}
   keywords={['地平线行者', '更新公告', '维护', '版本更新']}
-  pageTitle="更新公告"
   breadcrumbItems={[
     { name: '首页', href: '/' },
     { name: '地平线行者', href: HW_ZH.baseUrl },
     { name: '更新公告' },
   ]}
 >
-  <div class="zh-pn-index">
-    <div class="zh-pn-intro">
+  <section class="hw-guide-hero">
+    <h1 class="hw-guide-title">更新公告</h1>
+    <p class="hw-guide-subtitle">全部官方英文更新公告的中文整理，{fmt(oldest.date)} 至 {fmt(newest.date)}。</p>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-guide-content">
+  <div class="pn-index">
+    <div class="pn-index-intro">
       <p>
         《地平线行者》团队每次维护都会在官方 Naver Lounge 发布英文更新公告。本页为全部
         {patchNotes.length} 篇公告的中文整理（标题与要点均为人工翻译），完整原文（全部表格与细节）请查看对应的英文公告页。更新跟随韩服日程，韩服进度领先全球服数周；官方原文中的具体技能数值以 N 占位符表示。活动与卡池等专有名称暂无官方中文，保留英文原文。
       </p>
     </div>
 
-    <div class="zh-pn-controls">
+    <div class="pn-index-controls">
       <input
         type="text"
-        id="zhPnSearch"
-        class="zh-pn-search"
+        id="pn-search-input"
+        class="pn-search"
         placeholder="搜索更新公告（中英文均可，如 科拉比、Doomstar、活动）"
         autocomplete="off"
       />
-      <span class="zh-pn-count" id="zhPnCount">{patchNotes.length} 篇公告</span>
+      <span class="pn-count" id="pn-count-el">{patchNotes.length} 篇公告</span>
     </div>
 
     {
       groups.map((g) => (
-        <section class="zh-pn-month" data-month={g.month}>
-          <h2 class="zh-pn-month-title">{g.label}</h2>
-          <div class="zh-pn-cards">
+        <section class="pn-month" data-month={g.month}>
+          <h2 class="pn-month-title">{g.label}</h2>
+          <div class="pn-cards">
             {g.notes.map((n) => {
               const zhTitle = titleZh(n.title);
               const zhTags = n.highlights.map((h) => highlightZh(h));
               const search = [n.title, zhTitle, ...n.highlights, ...zhTags].join(' ').toLowerCase();
               return (
-                <a class="zh-pn-card" href={`${HW_ZH.baseUrl}updates/${n.slug}/`} data-search={search}>
-                  <div class="zh-pn-card-date">{fmt(n.date)}</div>
-                  <h3 class="zh-pn-card-title">{zhTitle}</h3>
+                <a class="pn-card" href={`${HW_ZH.baseUrl}updates/${n.slug}/`} data-search={search}>
+                  <div class="pn-card-date">{fmt(n.date)}</div>
+                  <h3 class="pn-card-title">{zhTitle}</h3>
                   {zhTags.length > 0 && (
-                    <div class="zh-pn-card-tags">
+                    <div class="pn-card-tags">
                       {zhTags.map((t) => (
-                        <span class="zh-pn-card-tag">{t}</span>
+                        <span class="pn-card-tag">{t}</span>
                       ))}
                     </div>
                   )}
@@ -269,13 +277,14 @@ const oldest = patchNotes[patchNotes.length - 1];
       ))
     }
   </div>
+  </div>
 </HwZhLayout>
 
 <script is:inline>
-  var input = document.getElementById('zhPnSearch');
-  var cards = document.querySelectorAll('.zh-pn-card');
-  var months = document.querySelectorAll('.zh-pn-month');
-  var count = document.getElementById('zhPnCount');
+  var input = document.getElementById('pn-search-input');
+  var cards = document.querySelectorAll('.pn-card');
+  var months = document.querySelectorAll('.pn-month');
+  var count = document.getElementById('pn-count-el');
   var total = cards.length;
   input.addEventListener('input', function () {
     var q = input.value.trim().toLowerCase();
@@ -286,7 +295,7 @@ const oldest = patchNotes[patchNotes.length - 1];
       if (show) visible++;
     });
     months.forEach(function (m) {
-      var any = Array.prototype.some.call(m.querySelectorAll('.zh-pn-card'), function (c) {
+      var any = Array.prototype.some.call(m.querySelectorAll('.pn-card'), function (c) {
         return c.style.display !== 'none';
       });
       m.style.display = any ? '' : 'none';
@@ -296,103 +305,106 @@ const oldest = patchNotes[patchNotes.length - 1];
 </script>
 
 <style>
-  .zh-pn-index {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
-  .zh-pn-intro {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 12px;
-    padding: 1rem 1.2rem;
-  }
-  .zh-pn-intro p {
-    color: var(--hw-text-muted);
-    font-size: 0.9rem;
-    line-height: 1.7;
-    margin: 0;
-  }
-  .zh-pn-controls {
-    display: flex;
-    align-items: center;
-    gap: 0.9rem;
-    flex-wrap: wrap;
-  }
-  .zh-pn-search {
-    flex: 1;
-    min-width: 220px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    color: var(--hw-text-light);
-    font-size: 0.92rem;
-    padding: 0.6rem 0.9rem;
-    outline: none;
-  }
-  .zh-pn-search::placeholder {
-    color: var(--hw-text-very-muted);
-  }
-  .zh-pn-count {
-    color: var(--hw-text-very-muted);
-    font-size: 0.85rem;
-    white-space: nowrap;
-  }
-  .zh-pn-month {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-  }
-  .zh-pn-month-title {
-    color: var(--hw-primary-warm);
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin: 0.4rem 0 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
-    padding-bottom: 0.4rem;
-  }
-  .zh-pn-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 0.9rem;
-  }
-  .zh-pn-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0.45rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 12px;
-    padding: 0.95rem 1.05rem;
-    text-decoration: none;
-  }
-  .zh-pn-card-date {
-    color: var(--hw-text-very-muted);
-    font-size: 0.8rem;
-    letter-spacing: 0.03em;
-  }
-  .zh-pn-card-title {
-    color: #e8d9bf;
-    font-size: 0.98rem;
-    font-weight: 700;
-    margin: 0;
-    line-height: 1.4;
-  }
-  .zh-pn-card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-  }
-  .zh-pn-card-tag {
-    color: #cccccc;
-    background: #3a3a3a;
-    border-radius: 4px;
-    padding: 0.14rem 0.55rem;
-    font-size: 0.72rem;
-    font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-  }
-</style>
+    .pn-index {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .pn-index-intro {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(232, 165, 71, 0.18);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+    }
+    .pn-index-intro p {
+      color: #ccc;
+      font-size: 0.93rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .pn-index-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+    .pn-search {
+      flex: 1;
+      min-width: 220px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      color: #ddd;
+      font-size: 0.92rem;
+      padding: 0.6rem 0.9rem;
+      outline: none;
+    }
+    .pn-search::placeholder {
+      color: var(--hw-text-very-muted);
+    }
+    .pn-search:focus {
+      border-color: rgba(232, 165, 71, 0.5);
+    }
+    .pn-count {
+      color: #999;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+    .pn-month {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .pn-month-title {
+      color: #e8a547;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0.4rem 0 0;
+      border-bottom: 1px solid rgba(232, 165, 71, 0.2);
+      padding-bottom: 0.4rem;
+    }
+    .pn-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 0.9rem;
+    }
+    .pn-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 10px;
+      padding: 0.95rem 1.05rem;
+      text-decoration: none;
+    }
+    .pn-card-date {
+      color: #999;
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+    }
+    .pn-card-title {
+      color: #e8d9bf;
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.4;
+    }
+    .pn-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .pn-card-tag {
+      color: #cccccc;
+      background: #3a3a3a;
+      border-radius: 4px;
+      padding: 0.14rem 0.55rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+  </style>

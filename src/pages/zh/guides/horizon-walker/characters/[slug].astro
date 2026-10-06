@@ -1,49 +1,40 @@
 ---
 // Chinese (zh-Hans) character detail pages: /zh/guides/horizon-walker/
-// characters/<slug>/. All game text (names, skills, traits, story, profile,
-// weapon, skins) comes from the game's own official Simplified Chinese
-// localization via src/data/horizon-walker/zh/game-text.js. Stats and
-// per-level values are the wiki's data rendered with official ZH labels.
+// characters/<slug>/. Renders the EN CharacterPageTemplate with a labels
+// override and a shallow-cloned character record whose game text (name, story,
+// profile, traits, weapon, skins, skill names) is swapped for the official
+// Simplified Chinese from src/data/horizon-walker/zh/game-text.js. Stats,
+// per-level values and image references are the wiki's own data, unchanged.
 import HwZhLayout from '../../../../../layouts/zh/HwZhLayout.astro';
+import CharacterPageTemplate from '../../../../../templates/horizon-walker/CharacterPageTemplate.astro';
 import { HORIZON_WALKER_CHARACTERS } from '../../../../../data/horizon-walker/characters.js';
-import { CHARACTER_GIFT_PREFERENCES } from '../../../../../data/horizon-walker/character-gifts.js';
-import { CHAR_SKINS } from '../../../../../data/horizon-walker/char-skins.js';
-import { getVideosBySlug } from '../../../../../data/horizon-walker/videos.js';
 import {
   HW_ZH_NAMES,
   HW_ZH_SKILLS,
   HW_ZH_TRAITS,
   HW_ZH_HERO_TRAITS,
   HW_ZH_HERO_STORY,
+  HW_ZH_HERO_EPITHET,
   HW_ZH_PROFILE,
-  HW_ZH_STAT_LABELS,
   HW_ZH_STAT_TYPES,
   HW_ZH_INHERITANCE,
   HW_ZH_WEAPON_SKILLS,
+  HW_ZH_SKILL_BY_NAME,
   HW_ZH_SKINS,
-  HW_ZH_CLASSES,
-  HW_ZH_TAGS,
   HW_ZH_ITEMS,
 } from '../../../../../data/horizon-walker/zh/game-text.js';
 import { HW_ZH } from '../../../../../data/horizon-walker/zh/ui.js';
-import { CharacterImage, GiftImage } from '../../../../../components/horizon-walker/index.astro';
-import { r2Url } from '../../../../../data/r2-config.js';
+
+// Same CSS set as the EN CharacterIndividualLayout so the page is pixel-identical
+import '../../../../../styles/global.css';
+import '../../../../../styles/typography.css';
+import '../../../../../styles/games/horizon-walker/hw-colors.css';
+import '../../../../../styles/games/horizon-walker/hw-layout.css';
 import '../../../../../styles/games/horizon-walker/hw-character-page.css';
+import '../../../../../styles/games/horizon-walker/hw-badges.css';
+import '../../../../../styles/games/horizon-walker/hw-community-build.css';
 
 export const prerender = true;
-
-// Same name->filename rules as the EN pages
-const getImageKey = characterName => {
-  let filename = characterName.replace(/ /g, '_').replace(/-/g, '_').replace(/\./g, '_');
-  if (characterName === 'TX - Manticore') filename = 'TX_Manticore';
-  if (characterName === 'Re_De_Da') filename = 'Re_De_Da';
-  if (characterName === 'Headless Knight') filename = 'Headless_Knight';
-  if (characterName === 'Kim Ga-young') filename = 'kim_Ga_young';
-  if (characterName === 'Yeon Chae-Young') filename = 'Yeon_Chae-Young';
-  if (characterName === 'Min Eun-sol') filename = 'Min_Eun_sol';
-  if (characterName === 'So Joo-hee') filename = 'So_Joo_hee';
-  return filename;
-};
 
 // Per-character detail modules: each file exports one *Data
 const modules = import.meta.glob('/src/data/horizon-walker/characters/*.js', {
@@ -52,17 +43,15 @@ const modules = import.meta.glob('/src/data/horizon-walker/characters/*.js', {
 const dataBySlug = {};
 for (const [path, mod] of Object.entries(modules)) {
   const slug = path.split('/').pop().replace('.js', '');
-  const exportKey = Object.keys(mod).find(k => k.endsWith('Data'));
+  // most modules export <name>Data; nari/samarika export the bare name
+  const keys = Object.keys(mod);
+  const exportKey =
+    keys.find(k => k.endsWith('Data')) ||
+    keys.find(k => !k.endsWith('SEO') && !k.endsWith('Highlighting'));
   if (exportKey) dataBySlug[slug] = mod[exportKey];
 }
 
-const giftsBySlug = {};
-for (const g of CHARACTER_GIFT_PREFERENCES) giftsBySlug[g.id] = g;
-
-// gift EN display name -> official ZH (Item loc); EN fallback if unmapped
-const giftZhName = name => HW_ZH_ITEMS[name]?.name || name;
-
-// weapon stat label: match EN StatType labels, keep suffixes like (weapon)
+// weapon stat label: translate EN StatType names, keep suffixes like (weapon)
 const weaponStatLabel = k => {
   if (HW_ZH_STAT_TYPES[k]) return HW_ZH_STAT_TYPES[k];
   const m = k.match(/^(.+?)\s*\((.+)\)$/);
@@ -70,8 +59,10 @@ const weaponStatLabel = k => {
   return k;
 };
 
-// skill damage type label (EN StatType name -> ZH)
-const damageTypeZh = t => HW_ZH_STAT_TYPES[t] || t;
+// EN item name -> official ZH name (gifts and gift boxes)
+const zhItemNames = Object.fromEntries(
+  Object.entries(HW_ZH_ITEMS).map(([en, v]) => [en, v.name])
+);
 
 // Only roster heroes that have an official ZH name get a Chinese page
 export function getStaticPaths() {
@@ -85,103 +76,251 @@ const { id } = Astro.props;
 const char = HORIZON_WALKER_CHARACTERS.find(c => c.id === id);
 const detail = dataBySlug[char.slug] || {};
 const zhName = HW_ZH_NAMES[id];
+const epithet = HW_ZH_HERO_EPITHET[id];
 const zhStory = HW_ZH_HERO_STORY[id];
 const zhProfile = HW_ZH_PROFILE[id] || {};
 const zhTraitIds = HW_ZH_HERO_TRAITS[id] || [];
 
-const classNameZh = HW_ZH_CLASSES[char.class] || char.class;
-const elementZh = HW_ZH_TAGS[char.element] || char.element;
-const tagsZh = (char.tags || []).map(t => HW_ZH_TAGS[t] || t);
+// Shallow clone + swap: structure, stats, levels and image refs stay EN/wiki;
+// every official game string that has a ZH localization is replaced.
+const zhData = { ...detail };
+zhData.name = zhName;
+zhData.nameEn = detail.name || char.name; // used by the template for EN-keyed lookups
+zhData.description = epithet || detail.description;
+zhData.shortDescription = epithet
+  ? `${zhName}，${epithet}。`
+  : String(detail.description || '').split('.')[0] + '.';
+zhData.story = zhStory || detail.story;
 
-// Traits: official ZH text; wiki EN fallback for the rare trait the game has no ZH for
-const traitEntries = zhTraitIds
-  .map(tid => {
-    const zh = HW_ZH_TRAITS[tid];
-    if (zh) return { name: zh.name, desc: zh.desc || '' };
-    const wikiTrait = Object.values(detail.uniqueTraits || {})[zhTraitIds.indexOf(tid)];
-    return wikiTrait ? { name: wikiTrait.name, desc: wikiTrait.description || '' } : null;
-  })
-  .filter(Boolean);
-
-// Profile rows: official ZH values with wiki EN fallback
-const profileRows = [
-  ['年龄', zhProfile.age || detail.profile?.age],
-  ['生日', zhProfile.birthday || detail.profile?.birthday],
-  ['种族', zhProfile.tribe || detail.profile?.racial],
-  ['出身地', zhProfile.hometown || detail.profile?.homeland],
-  ['身高', zhProfile.height || detail.profile?.height],
-  ['三围', zhProfile.threeSize || detail.profile?.bwhRatio],
-].filter(([, v]) => v);
-
-// Skills from the wiki module (order, levels, costs); names + descs official ZH
-const skills = Object.values(detail.skills || {}).map(sk => {
-  const zh = sk.gameKey ? HW_ZH_SKILLS[sk.gameKey] : null;
-  const desc = (zh && zh.desc) || sk.description || '';
-  return {
-    icon: sk.icon,
-    name: (zh && zh.name) || sk.name,
-    lines: desc.split('\n').filter(Boolean),
-    level: sk.level,
-    apCost: sk.apCost,
-    cooldown: sk.cooldown,
-    type: sk.type,
-    damage: sk.damage,
+// Profile values from the official ZH game profile (EN fallback per field)
+if (detail.profile) {
+  zhData.profile = {
+    ...detail.profile,
+    age: zhProfile.age || detail.profile.age,
+    birthday: zhProfile.birthday || detail.profile.birthday,
+    racial: zhProfile.tribe || detail.profile.racial,
+    homeland: zhProfile.hometown || detail.profile.homeland,
+    height: zhProfile.height || detail.profile.height,
+    bwhRatio: zhProfile.threeSize || detail.profile.bwhRatio,
   };
-});
+}
 
-// EX weapon: official ZH name + flavor via Inheritance loc
-const w = detail.weapon || null;
-const weaponZh = w ? HW_ZH_INHERITANCE[w.name] : null;
-const weaponSkills = w
-  ? Object.values(w.uniqueSkills || {}).map(us => {
-      const zh = HW_ZH_WEAPON_SKILLS[us.name];
-      return {
-        name: (zh && zh.name) || us.name,
-        type: us.type,
-        desc: (zh && zh.desc) || us.description || '',
-      };
+// Skill names from the game's ZH skill table (keyed by gameKey); the wiki's EN
+// descriptions stay when the ZH table has no description text
+if (detail.skills) {
+  zhData.skills = Object.fromEntries(
+    Object.entries(detail.skills).map(([k, sk]) => {
+      const zh = sk.gameKey ? HW_ZH_SKILLS[sk.gameKey] : null;
+      return [
+        k,
+        {
+          ...sk,
+          name: (zh && zh.name) || sk.name,
+          description: (zh && zh.desc) || sk.description,
+        },
+      ];
     })
-  : [];
+  );
+}
 
-// Main stats with official labels (values: wiki Lv60 snapshot)
-const statOrder = [
-  'strength', 'technic', 'intelligence', 'vitality', 'agility',
-  'meleeAtk', 'rangedAtk', 'magicAtk', 'maxHp', 'spd',
-  'startingAp', 'apRecovery', 'accuracy', 'evade', 'critRate', 'critDmg',
-];
-const statRows = statOrder
-  .map(k => [HW_ZH_STAT_LABELS[k] || k, detail.stats?.[k]])
-  .filter(([, v]) => v !== undefined && v !== null);
+// Traits: ZH trait ids map positionally onto the EN trait object order; the
+// gift-level-5 trait (Interested / 兴趣) keeps its special structure
+if (detail.uniqueTraits) {
+  const enTraitValues = Object.values(detail.uniqueTraits);
+  zhData.uniqueTraits = Object.fromEntries(
+    Object.entries(detail.uniqueTraits).map(([k, t], i) => {
+      let zh = zhTraitIds.length === enTraitValues.length ? HW_ZH_TRAITS[zhTraitIds[i]] : null;
+      if (!zh && t.name === 'Interested') zh = HW_ZH_TRAITS[55001]; // 兴趣
+      if (!zh) return [k, t];
+      return [k, { ...t, name: zh.name, description: zh.desc || t.description }];
+    })
+  );
+}
 
-// Rarity stages table (EX to EX6)
-const stageNames = { EX: 'EX', 'EX 1': 'EX1', 'EX 2': 'EX2', 'EX 3': 'EX3', 'EX 4': 'EX4', 'EX 5': 'EX5', 'EX 6': 'EX6' };
-const stageKeys = Object.keys(detail.rarityStages || {});
-const stageStatKeys = ['maxHp', 'meleeAtk', 'rangedAtk', 'magicAtk', 'evade', 'apRecovery', 'startingAp', 'strength', 'technic', 'intelligence', 'vitality', 'agility'];
+// EX weapon: official ZH name + flavor via the Inheritance (stigma/weapon) loc;
+// stat-label keys translated, unique-skill names via EN-name ZH tables
+if (detail.weapon) {
+  const w = detail.weapon;
+  const weaponZh = HW_ZH_INHERITANCE[w.name];
+  zhData.weapon = {
+    ...w,
+    name: weaponZh?.name || w.name,
+    flavor: weaponZh?.desc || w.flavor,
+    stats: w.stats
+      ? Object.fromEntries(Object.entries(w.stats).map(([k, v]) => [weaponStatLabel(k), v]))
+      : w.stats,
+    levelStats: w.levelStats
+      ? Object.fromEntries(Object.entries(w.levelStats).map(([k, v]) => [weaponStatLabel(k), v]))
+      : w.levelStats,
+    uniqueSkills: w.uniqueSkills
+      ? Object.fromEntries(
+          Object.entries(w.uniqueSkills).map(([k, us]) => {
+            const zh = HW_ZH_WEAPON_SKILLS[us.name] || HW_ZH_SKILL_BY_NAME[us.name];
+            return [
+              k,
+              {
+                ...us,
+                name: (zh && zh.name) || us.name,
+                description: (zh && zh.desc) || us.description,
+              },
+            ];
+          })
+        )
+      : w.uniqueSkills,
+  };
+}
 
-// Gifts (favorites + likes)
-const gifts = giftsBySlug[char.slug];
-const giftGroups = gifts
-  ? [
-      { title: '最爱礼物', list: gifts.favorites || [] },
-      { title: '喜欢礼物', list: gifts.likes || [] },
-    ].filter(g => g.list.length)
-  : null;
-const giftLevel5 = gifts?.level5Bonus
-  ? { type: HW_ZH_STAT_LABELS[gifts.level5Bonus.type] || HW_ZH[gifts.level5Bonus.type] || gifts.level5Bonus.type, value: gifts.level5Bonus.value }
-  : null;
-
-// Skins
-const skins = (CHAR_SKINS[id] || []).map(s => ({
-  number: s.number,
-  name: HW_ZH_SKINS[s.id] || s.name,
-  isDefault: s.isDefault,
-  icon: s.icon,
-}));
-
-// Videos
-const videos = getVideosBySlug(char.slug) || [];
-
-const enPageUrl = `/guides/horizon-walker/characters/${char.slug}/`;
+// Simplified Chinese UI labels for CharacterPageTemplate (official game system
+// terms: 技能 skills, 特性 traits, 属性 stats, 圣痕 stigma, 行动力 AP, 礼物 gifts,
+// 皮肤 skins; stat names from the game's own ZH StatType table)
+const ZH_LABELS = {
+  portraitAlt: '{name}，地平线行者 {rarity} 稀有度角色',
+  crystalAlt: '{name}的未来水晶',
+  costBadge: '编成费用 {n}',
+  defaultSummary: '一位随时准备加入战斗的干练角色。',
+  profileTitle: '档案',
+  ageLabel: '年龄：',
+  raceLabel: '种族：',
+  homelandLabel: '出身地：',
+  heightLabel: '身高：',
+  birthdayLabel: '生日：',
+  baseStatsTitle: '基础属性',
+  statsCaptionFull: '等级 60，满 EX（EX 6）',
+  statsStageCaption: '等级 60，{stage}',
+  statsStageCaptionFullSuffix: '（满）',
+  statsAtStage: '{stage} 时的属性',
+  coreStatsSubtitle: '主要属性',
+  statStr: '力量',
+  statTec: '技巧',
+  statInt: '智力',
+  statVit: '体质',
+  statAgi: '敏捷',
+  coreStrRest: '：近战攻击力',
+  coreTecRest: '：射击攻击力',
+  coreIntRest: '：魔法攻击力',
+  coreVitRest: '：最大生命值',
+  coreAgiRest: '：回避与行动恢复',
+  combatSubtitle: '战斗',
+  maxHpLabel: '最大生命值',
+  meleeAtkLabel: '近战攻击力',
+  rangedAtkLabel: '射击攻击力',
+  magicAtkLabel: '魔法攻击力',
+  speedLabel: '移动力',
+  startingApLabel: '战斗开始行动力',
+  apRecoveryLabel: '行动恢复力',
+  accuracyLabel: '命中',
+  evadeLabel: '回避',
+  critRateLabel: '暴击率',
+  critDmgLabel: '暴击伤害',
+  blockRateLabel: '格挡机率',
+  startingApNote: '战斗开始行动力 = 角色自身基础战斗开始行动力 + 行动恢复力。',
+  statsFootnote:
+    '* 战斗开始行动力为战斗开始时的总行动力：角色自身的基础战斗开始行动力，加上行动恢复力（见上）。行动恢复力部分会随着 EX 阶段提升带来的敏捷增长而增长。',
+  attributesSubtitle: '属性攻防',
+  boostCol: '强化',
+  defCol: '防御',
+  attrSlash: '斩击',
+  attrPierce: '穿刺',
+  attrCrush: '打击',
+  attrHeat: '火焰',
+  attrCold: '冰霜',
+  attrElectric: '雷电',
+  attrImmaterial: '无形',
+  attrPoison: '毒素',
+  storyTitle: '角色故事',
+  sentenceJoin: '',
+  skillsTitle: '技能',
+  skillsExplanation: '所有技能均以最高等级显示',
+  reworkPointerPre: '{name}已于{date}重做。当前页面显示重做后的版本；重做前的文本保留在页面底部的',
+  reworkArchiveLink: '重做档案',
+  reworkPointerPost: '。',
+  passiveLabel: '被动',
+  skillLabel: '技能',
+  cdLabel: '冷却 {n}',
+  apLabel: '行动力 {n}',
+  damageLabel: '伤害：',
+  damageOfType: ' 的{type}',
+  damageSplash: '（+{n} 溅射）',
+  triggerCondition: '{name} 启用条件：[Seeker of Pleasure] 生效时',
+  traitsTitle: '固有特性',
+  interestedTraitName: '兴趣',
+  giftLevel5Badge: '好感度等级 5',
+  uniqueTraitBadge: '固有特性',
+  interestedNoteStrong: '于好感度等级 5 解锁：',
+  interestedNoteRest: '通过赠送礼物累计达到 2000 好感度后，此特性生效。',
+  level5BonusLabel: '好感度等级 5 加成：',
+  demiTitle: '半神晋升',
+  exRequiredBadge: '需要 EX',
+  demiBanner:
+    '半神晋升后，该角色可以取代主角担任队伍的 Executor，使全队获得对遗忘现象的免疫。编成时消耗 {n} 点神力（DP）。',
+  authoritySkillBadge: '权能技能',
+  demiStageValuesLabel: '各晋升阶段数值：',
+  demiStageView: '第 {n} 阶段',
+  demiStageAria: '第 {n} 阶段',
+  mightTitle: '随机 Might 技能',
+  mightIntro:
+    '半神晋升时将随机获得以下 10 种 Might 技能之一。每种技能的阶级为 1 至 5，阶级越高越稀有。',
+  effectsTitle: '效果说明',
+  weaponTitlePrefix: '武器：',
+  weaponGrowNote: '基础数值随武器等级成长（Lv 1 至 Lv 60）。EX 提升（EX 1 至 EX 5）仅强化特殊技能。',
+  weaponStaticNote: '数值与技能为等级 60、满 EX 状态',
+  basicStatsTitle: '基础数值（Lv 1 → Lv 60）',
+  weaponStatSuffix: '（weapon）',
+  ratingStatSuffix: '（评分）',
+  pctSuffix: '（%）',
+  signatureSkillPrefix: '专属技能：',
+  uniqueSkillPrefix: '特殊技能：',
+  signatureNameStrip: '^[^：]+专属：\\s*',
+  skillValuesAtRaise: 'EX 提升时的技能数值：',
+  signatureReqNote: '需要{name}：仅在{name}装备此武器时生效。固定数值：不随武器等级或 EX 提升变化。',
+  noteLabel: '注：',
+  storyGalleryTitle: '剧情画廊',
+  storyGalleryNote: '{name}剧情章节中的插画。',
+  storyCgAlt: '{name}剧情插画：{caption}',
+  skinsTitle: '皮肤',
+  skinAlt: '{name}的{skin}皮肤',
+  skinPromoAlt: '{name}的{skin}皮肤宣传图',
+  skinPortraitAlt: '{name}的{skin}头像',
+  videosTitle: '相关视频',
+  videosNote: '来自地平线行者官方 YouTube 频道的{name}相关视频。',
+  videoTitleTpl: '{name}：{title}',
+  playVideoAria: '播放视频：{title}',
+  videoThumbAlt: '{title} 视频缩略图',
+  videoBadgeFallback: '视频',
+  watchMoreLabel: '在官方 YouTube 频道观看更多',
+  videoTypes: {
+    intro: '新守护者',
+    costume: '服装',
+    affection: '好感度',
+    preview: '预告',
+  },
+  giftTitle: '礼物偏好',
+  giftExplanation: '需要 2000 点好感度达到等级 5 以解锁特性加成，同时还可获得金币与游戏货币',
+  level5BonusTitle: '好感度等级 5 加成',
+  affectionBonusBadge: '好感度加成',
+  highValueGiftsTitle: '高价值礼物',
+  highValueGiftsDesc: '这些稀有礼物提供极高的好感度（总计 80 以上），非常珍贵',
+  favoriteGiftsTitle: '最爱礼物',
+  favoriteGiftsDesc: '这些礼物提供加成分数（20 以上），是该角色非常喜爱的礼物',
+  likedGiftsTitle: '喜欢礼物',
+  likedGiftsDesc: '这些礼物提供 10 点额外分数，是该角色喜欢的礼物',
+  altHighValueTitle: '替代高价值选项',
+  altHighValueDesc: '女王的王冠为任意角色提供最高的好感度（100 点），不受偏好影响',
+  basePointsLabel: '基础：',
+  bonusPointsLabel: '+ 加成：',
+  totalPointsLabel: '= 总计：',
+  maxAffectionLabel: '升至好感度等级 5 所需：',
+  giftsCountLabel: '{n} 个',
+  foundInLabel: '获取途径：',
+  noGiftsTitle: '礼物偏好即将上线',
+  noGiftsDesc: '{name}的礼物偏好尚未公开。请稍后再来查看其喜爱的礼物！',
+  reworkTitle: '重做档案',
+  beforeTag: '重做前',
+  afterTag: '重做后',
+  itemNames: zhItemNames,
+  skinNames: HW_ZH_SKINS,
+  statTypeNames: HW_ZH_STAT_TYPES,
+};
 ---
 
 <HwZhLayout
@@ -195,666 +334,5 @@ const enPageUrl = `/guides/horizon-walker/characters/${char.slug}/`;
     { name: zhName },
   ]}
 >
-  <div class="zh-char-page">
-    <!-- Header -->
-    <header class="zh-section zh-char-header">
-      <CharacterImage
-        imageName={`${getImageKey(char.name)}.jpg`}
-        alt={zhName}
-        class="zh-char-portrait"
-        width={160}
-        height={160}
-      />
-      <div class="zh-char-title">
-        <h1 class="zh-char-name">{zhName}</h1>
-        <p class="zh-char-en">{char.name}</p>
-        <div class="zh-char-chips">
-          <span class="zh-rarity-chip">{char.rarity}</span>
-          <span class="zh-plain-chip">{classNameZh}</span>
-          <span class="zh-plain-chip">{elementZh}</span>
-          <span class="zh-plain-chip">编成费用 {char.cost}</span>
-        </div>
-        {tagsZh.length > 0 && (
-          <div class="zh-char-tags">
-            {tagsZh.map(t => <span class="zh-tag-chip">{t}</span>)}
-          </div>
-        )}
-      </div>
-    </header>
-
-    <!-- Official story -->
-    {zhStory && (
-      <section class="zh-section">
-        <h2 class="zh-section-title">官方角色故事</h2>
-        <p class="zh-story">{zhStory}</p>
-      </section>
-    )}
-
-    <!-- Profile -->
-    {profileRows.length > 0 && (
-      <section class="zh-section">
-        <h2 class="zh-section-title">档案</h2>
-        <div class="zh-grid">
-          {profileRows.map(([label, value]) => (
-            <div class="zh-cell">
-              <span class="zh-cell-label">{label}</span>
-              <span class="zh-cell-value">{value}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-    )}
-
-    <!-- Unique traits -->
-    {traitEntries.length > 0 && (
-      <section class="zh-section">
-        <h2 class="zh-section-title">固有特性</h2>
-        <div class="zh-card-list">
-          {traitEntries.map(t => (
-            <div class="zh-card">
-              <h3 class="zh-card-title">{t.name}</h3>
-              {t.desc && <p class="zh-card-text">{t.desc}</p>}
-            </div>
-          ))}
-        </div>
-      </section>
-    )}
-
-    <!-- Skills -->
-    {skills.length > 0 && (
-      <section class="zh-section">
-        <h2 class="zh-section-title">技能</h2>
-        <p class="zh-section-note">{HW_ZH.labels.statNote}</p>
-        <div class="zh-skill-list">
-          {skills.map(sk => (
-            <div class="zh-skill">
-              <div class="zh-skill-head">
-                {sk.icon && (
-                  <img
-                    src={r2Url('horizon-walker', `skills/${sk.icon}.png`)}
-                    alt={sk.name}
-                    width={48}
-                    height={48}
-                    loading="lazy"
-                    class="zh-skill-icon"
-                  />
-                )}
-                <div class="zh-skill-meta">
-                  <p class="zh-skill-name">{sk.name}</p>
-                  <p class="zh-skill-sub">
-                    {sk.type === 'Passive' ? '被动' : '技能'}
-                    {sk.level ? ` · 等级 ${sk.level}` : ''}
-                    {sk.apCost ? ` · 行动力 ${sk.apCost}` : ''}
-                    {sk.cooldown ? ` · 冷却 ${sk.cooldown}R` : ''}
-                    {sk.damage?.value && sk.damage?.type ? ` · ${damageTypeZh(sk.damage.type)} ${sk.damage.value}` : ''}
-                  </p>
-                </div>
-              </div>
-              {sk.lines.length > 0 && (
-                <p class="zh-skill-desc">
-                  {sk.lines.map((line, i) => (
-                    <span>
-                      {line}
-                      {i < sk.lines.length - 1 && <br />}
-                    </span>
-                  ))}
-                </p>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-    )}
-
-    <!-- EX weapon -->
-    {w && (
-      <section class="zh-section">
-        <h2 class="zh-section-title">EX 武器</h2>
-        <div class="zh-card">
-          <h3 class="zh-card-title">{weaponZh?.name || w.name}{weaponZh ? `（${w.name}）` : ''}</h3>
-          <p class="zh-plain-chip-line">
-            <span class="zh-plain-chip">{w.type}</span>
-            <span class="zh-plain-chip">稀有度 {w.rarity}</span>
-          </p>
-          {(weaponZh?.desc || w.flavor) && (
-            <p class="zh-card-text">{weaponZh?.desc || w.flavor}</p>
-          )}
-          {Object.keys(w.stats || {}).length > 0 && (
-            <div class="zh-grid zh-grid-tight">
-              {Object.entries(w.stats).map(([k, v]) => (
-                <div class="zh-cell">
-                  <span class="zh-cell-label">{weaponStatLabel(k)}</span>
-                  <span class="zh-cell-value">{v}</span>
-                </div>
-              ))}
-            </div>
-          )}
-          {weaponSkills.length > 0 && (
-            <div class="zh-skill-list zh-weapon-skills">
-              {weaponSkills.map(us => (
-                <div class="zh-skill">
-                  <p class="zh-skill-name">
-                    {us.name}
-                    <span class="zh-skill-kind">{us.type === 'Signature' ? '专属技能' : '特殊技能'}</span>
-                  </p>
-                  {us.desc && <p class="zh-skill-desc">{us.desc}</p>}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-    )}
-
-    <!-- Stats -->
-    {statRows.length > 0 && (
-      <section class="zh-section">
-        <h2 class="zh-section-title">属性</h2>
-        <p class="zh-section-note">等级 60 数值。</p>
-        <div class="zh-grid">
-          {statRows.map(([label, value]) => (
-            <div class="zh-cell">
-              <span class="zh-cell-label">{label}</span>
-              <span class="zh-cell-value">{value}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-    )}
-
-    <!-- Rarity stages -->
-    {stageKeys.length > 0 && (
-      <section class="zh-section">
-        <h2 class="zh-section-title">突破阶段属性</h2>
-        <div class="zh-table-wrap">
-          <table class="zh-table">
-            <thead>
-              <tr>
-                <th>阶段</th>
-                {stageStatKeys.map(k => <th>{HW_ZH_STAT_LABELS[k] || k}</th>)}
-              </tr>
-            </thead>
-            <tbody>
-              {stageKeys.map(sk => (
-                <tr>
-                  <td class="zh-stage-cell">{stageNames[sk] || sk}</td>
-                  {stageStatKeys.map(k => (
-                    <td>{detail.rarityStages[sk][k] ?? '-'}</td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-    )}
-
-    <!-- Gifts -->
-    {giftGroups && (
-      <section class="zh-section">
-        <h2 class="zh-section-title">礼物偏好</h2>
-        {giftLevel5 && (
-          <p class="zh-section-note">好感度等级 5 加成：{giftLevel5.type} +{giftLevel5.value}</p>
-        )}
-        {giftGroups.map(g => (
-          <div class="zh-gift-group">
-            <h3 class="zh-card-title">{g.title}</h3>
-            <div class="zh-gift-list">
-              {g.list.map(gift => (
-                <div class="zh-gift">
-                  <GiftImage
-                    imageName={gift.image}
-                    alt={giftZhName(gift.name)}
-                    width={64}
-                    height={64}
-                    format="webp"
-                    quality={85}
-                    loading="lazy"
-                    class="zh-gift-img"
-                  />
-                  <div class="zh-gift-meta">
-                    <p class="zh-gift-name">{giftZhName(gift.name)}</p>
-                    <p class="zh-gift-pts">{gift.rarity} · {gift.totalPoints} 好感度</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </section>
-    )}
-
-    <!-- Skins -->
-    {skins.length > 0 && (
-      <section class="zh-section">
-        <h2 class="zh-section-title">皮肤</h2>
-        <div class="zh-skin-list">
-          {skins.map(s => (
-            <div class="zh-skin">
-              <span class="zh-skin-number">{s.number}</span>
-              <span class="zh-skin-name">{s.name}{s.isDefault ? '（默认）' : ''}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-    )}
-
-    <!-- Videos -->
-    {videos.length > 0 && (
-      <section class="zh-section">
-        <h2 class="zh-section-title">相关视频</h2>
-        <div class="zh-video-grid">
-          {videos.map(v => (
-            <div class="zh-video">
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${v.id}?rel=0`}
-                title={v.title}
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              ></iframe>
-              <p class="zh-video-title">{v.title}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-    )}
-
-    <!-- Cross links -->
-    <section class="zh-section">
-      <div class="zh-card">
-        <h3 class="zh-card-title">更多内容</h3>
-        <ul class="zh-link-list">
-          <li><a href={enPageUrl}>完整英文攻略页（配装推荐、圣痕搭配、画廊等）</a></li>
-          <li><a href={`${HW_ZH.baseUrl}characters/`}>返回角色资料库</a></li>
-          <li><a href={HW_ZH.selectorUrl}>切换语言（English）</a></li>
-        </ul>
-      </div>
-    </section>
-  </div>
+  <CharacterPageTemplate characterData={zhData} labels={ZH_LABELS} />
 </HwZhLayout>
-
-<style>
-  .zh-char-page {
-    display: grid;
-    gap: 1.75rem;
-  }
-
-  .zh-section {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 14px;
-    padding: 1.5rem;
-  }
-
-  .zh-section-title {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    font-weight: var(--font-bold);
-    color: var(--hw-primary-warm);
-    margin: 0 0 1rem 0;
-  }
-
-  .zh-section-note {
-    font-size: 0.8125rem;
-    color: var(--hw-text-muted);
-    margin: -0.5rem 0 1rem 0;
-  }
-
-  .zh-char-header {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-  }
-
-  .zh-char-portrait {
-    width: 132px;
-    height: 132px;
-    border-radius: 12px;
-    object-fit: cover;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    flex-shrink: 0;
-  }
-
-  .zh-char-name {
-    font-family: var(--font-display);
-    font-size: 1.9rem;
-    font-weight: var(--font-bold);
-    color: var(--hw-text-light);
-    margin: 0 0 0.15rem 0;
-    line-height: 1.15;
-  }
-
-  .zh-char-en {
-    font-size: 0.9375rem;
-    color: var(--hw-text-muted);
-    margin: 0 0 0.75rem 0;
-  }
-
-  .zh-char-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    align-items: center;
-  }
-
-  .zh-plain-chip {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    color: var(--hw-text-light);
-    font-weight: 600;
-    font-size: 0.8125rem;
-    border-radius: 999px;
-    padding: 0.2rem 0.7rem;
-    white-space: nowrap;
-  }
-
-  .zh-rarity-chip {
-    background: var(--hw-primary-warm);
-    color: var(--hw-text-dark);
-    font-weight: 700;
-    font-size: 0.8125rem;
-    border-radius: 999px;
-    padding: 0.2rem 0.7rem;
-    white-space: nowrap;
-  }
-
-  .zh-char-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 0.6rem;
-  }
-
-  .zh-tag-chip {
-    font-size: 0.75rem;
-    color: var(--hw-text-muted);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 999px;
-    padding: 0.1rem 0.55rem;
-  }
-
-  .zh-story {
-    font-size: 0.9375rem;
-    line-height: 1.8;
-    color: var(--hw-text-light);
-    margin: 0;
-    white-space: pre-line;
-  }
-
-  .zh-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 0.6rem;
-  }
-
-  .zh-grid-tight {
-    margin-top: 0.75rem;
-  }
-
-  .zh-cell {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 10px;
-    padding: 0.6rem 0.8rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-    min-width: 0;
-  }
-
-  .zh-cell-label {
-    font-size: 0.75rem;
-    color: var(--hw-text-muted);
-  }
-
-  .zh-cell-value {
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--hw-text-light);
-    word-break: break-word;
-  }
-
-  .zh-card-list {
-    display: grid;
-    gap: 0.75rem;
-  }
-
-  .zh-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 1rem 1.25rem;
-  }
-
-  .zh-card-title {
-    font-size: 1.0625rem;
-    font-weight: 700;
-    color: var(--hw-primary-warm);
-    margin: 0 0 0.5rem 0;
-  }
-
-  .zh-card-text {
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    color: var(--hw-text-light);
-    margin: 0;
-  }
-
-  .zh-plain-chip-line {
-    display: flex;
-    gap: 0.5rem;
-    margin: 0 0 0.75rem 0;
-  }
-
-  .zh-skill-list {
-    display: grid;
-    gap: 0.75rem;
-  }
-
-  .zh-skill {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 1rem 1.25rem;
-  }
-
-  .zh-skill-head {
-    display: flex;
-    gap: 0.875rem;
-    align-items: center;
-    margin-bottom: 0.5rem;
-  }
-
-  .zh-skill-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 10px;
-    object-fit: cover;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    flex-shrink: 0;
-  }
-
-  .zh-skill-name {
-    font-size: 1.0625rem;
-    font-weight: 700;
-    color: var(--hw-primary-warm);
-    margin: 0 0 0.2rem 0;
-  }
-
-  .zh-skill-kind {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--hw-text-muted);
-    margin-left: 0.5rem;
-  }
-
-  .zh-skill-sub {
-    font-size: 0.8125rem;
-    color: var(--hw-text-muted);
-    margin: 0;
-  }
-
-  .zh-skill-desc {
-    font-size: 0.9375rem;
-    line-height: 1.75;
-    color: var(--hw-text-light);
-    margin: 0.5rem 0 0 0;
-  }
-
-  .zh-weapon-skills {
-    margin-top: 0.75rem;
-  }
-
-  .zh-table-wrap {
-    overflow-x: auto;
-  }
-
-  .zh-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.875rem;
-    min-width: 640px;
-  }
-
-  .zh-table th,
-  .zh-table td {
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    padding: 0.45rem 0.6rem;
-    text-align: center;
-    color: var(--hw-text-light);
-  }
-
-  .zh-table th {
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--hw-primary-warm);
-    font-weight: 700;
-    white-space: nowrap;
-  }
-
-  .zh-stage-cell {
-    font-weight: 700;
-    white-space: nowrap;
-  }
-
-  .zh-gift-group {
-    margin-bottom: 1.25rem;
-  }
-
-  .zh-gift-group:last-child {
-    margin-bottom: 0;
-  }
-
-  .zh-gift-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 0.6rem;
-  }
-
-  .zh-gift {
-    display: flex;
-    gap: 0.75rem;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 10px;
-    padding: 0.6rem 0.75rem;
-  }
-
-  .zh-gift-img {
-    width: 56px;
-    height: 56px;
-    border-radius: 8px;
-    object-fit: cover;
-    flex-shrink: 0;
-  }
-
-  .zh-gift-name {
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--hw-text-light);
-    margin: 0 0 0.15rem 0;
-  }
-
-  .zh-gift-pts {
-    font-size: 0.8125rem;
-    color: var(--hw-text-muted);
-    margin: 0;
-  }
-
-  .zh-skin-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 0.6rem;
-  }
-
-  .zh-skin {
-    display: flex;
-    gap: 0.6rem;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 10px;
-    padding: 0.6rem 0.8rem;
-  }
-
-  .zh-skin-number {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 0.8125rem;
-    color: var(--hw-text-dark);
-    background: var(--hw-primary-warm);
-    border-radius: 6px;
-    padding: 0.15rem 0.45rem;
-  }
-
-  .zh-skin-name {
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--hw-text-light);
-  }
-
-  .zh-video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
-  }
-
-  .zh-video iframe {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 10px;
-  }
-
-  .zh-video-title {
-    font-size: 0.8125rem;
-    color: var(--hw-text-muted);
-    margin: 0.4rem 0 0 0;
-  }
-
-  .zh-link-list {
-    margin: 0;
-    padding-left: 1.25rem;
-    color: var(--hw-text-light);
-    font-size: 0.9375rem;
-    line-height: 1.9;
-  }
-
-  .zh-link-list a {
-    color: var(--hw-primary-warm);
-    text-decoration: none;
-    font-weight: 600;
-  }
-
-  @media (max-width: 640px) {
-    .zh-char-header {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .zh-char-chips,
-    .zh-char-tags {
-      justify-content: center;
-    }
-  }
-</style>

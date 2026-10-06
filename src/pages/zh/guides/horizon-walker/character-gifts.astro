@@ -3,7 +3,9 @@
 // character-gifts/. Character names via HW_ZH_NAMES (roster id), gift names
 // via HW_ZH_ITEMS, level-5 bonus stat types via HW_ZH_STAT_TYPES: all the
 // game's official ZH with EN fallback. Point math is the wiki's data unchanged.
+// Re-skinned onto the EN hw-character-gifts.css classes for visual parity.
 import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
 import { CHARACTER_GIFT_PREFERENCES } from '../../../../data/horizon-walker/character-gifts.js';
 import { GIFT_BOXES } from '../../../../data/horizon-walker/gifts.js';
 import { HORIZON_WALKER_CHARACTERS } from '../../../../data/horizon-walker/characters.js';
@@ -14,6 +16,7 @@ import {
 } from '../../../../data/horizon-walker/zh/game-text.js';
 import { HW_ZH } from '../../../../data/horizon-walker/zh/ui.js';
 import { GiftImage, CharacterImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
+import '../../../../styles/games/horizon-walker/hw-character-gifts.css';
 
 export const prerender = true;
 
@@ -96,234 +99,370 @@ const boxesFor = gift => {
   title="角色礼物偏好 - 地平线行者中文维基 - GachaWiki"
   description="地平线行者全角色礼物偏好指南：各角色最爱与喜欢的礼物、好感度等级 5 加成、女王的王冠获取途径与好感度速刷建议。角色与礼物名称均取自游戏官方简体中文。"
   keywords={['地平线行者', '礼物', '好感度', '角色礼物偏好']}
-  pageTitle="角色礼物偏好"
   breadcrumbItems={[
     { name: '首页', href: '/' },
     { name: '地平线行者', href: HW_ZH.baseUrl },
     { name: '角色礼物偏好' },
   ]}
 >
-  <div class="zh-cg-page">
-    <!-- Guide intro -->
-    <section class="zh-section">
-      <h2 class="zh-section-title">礼物偏好指南</h2>
-      <p class="zh-text">每个角色都有特定的礼物偏好，会影响好感度加成。用本指南为你喜欢的角色挑选最合适的礼物。</p>
-      <div class="zh-card">
-        <h3 class="zh-card-title">送礼方法</h3>
-        <p class="zh-card-text">
-          在手机中选择通话（Call）呼叫角色，然后在 4 个选项中选择礼物（Gift）即可送礼。
-        </p>
-      </div>
-      <div class="zh-warning">
-        <h4 class="zh-warning-title">重要：已知问题</h4>
-        <p class="zh-warning-text">
-          有时与角色对话后，不会出现继续好感度任务线的 (!) 提示。遇到该问题时，请完全退出并重启游戏即可修复。
-        </p>
-      </div>
-      <div class="zh-tip">
-        <h3 class="zh-tip-title">推荐：华丽礼物箱子</h3>
-        <p class="zh-tip-text">
-          女王的王冠无论送给哪位角色都有最高的分值（100 至 120）。它包含在华丽礼物箱子中，想要最大化好感度时请优先选择。
-        </p>
-      </div>
-      <div class="zh-info-grid">
-        <div class="zh-card">
-          <h4 class="zh-card-title">好感度偏好</h4>
-          <p class="zh-card-text">最爱礼物：基础分 + <strong>20 加成</strong></p>
-          <p class="zh-card-text">喜欢礼物：基础分 + <strong>10 加成</strong></p>
-          <p class="zh-card-text">无偏好：仅基础分</p>
-        </div>
-        <div class="zh-card">
-          <h4 class="zh-card-title">好感度目标</h4>
-          <p class="zh-card-text">角色好感度共有 <strong>5 个等级</strong>。</p>
-          <p class="zh-card-text">升满任意角色共需 <strong>2000 分</strong>。</p>
-        </div>
-        <div class="zh-card">
-          <h4 class="zh-card-title">奖励</h4>
-          <p class="zh-card-text">升级奖励：</p>
-          <div class="zh-reward-row">
-            <div class="zh-reward">
-              <GiftImage imageName="Gold.jpg" alt="Gold" class="zh-reward-img" width={32} height={32} loading="lazy" />
-              <span class="zh-reward-name">Gold</span>
-            </div>
-            <div class="zh-reward">
-              <GiftImage imageName="Extercium.jpg" alt="Extercium" class="zh-reward-img" width={32} height={32} loading="lazy" />
-              <span class="zh-reward-name">Extercium</span>
-            </div>
+  <section class="hw-character-gift-hero">
+    <h1 class="hw-character-gift-title">角色礼物偏好</h1>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-character-gift-content">
+    <section class="hw-gift-section" id="character-gifts">
+      <h2 class="hw-section-title">礼物偏好指南</h2>
+
+      <div class="hw-section-content">
+        <p>每个角色都有特定的礼物偏好，会影响好感度加成。用本指南为你喜欢的角色挑选最合适的礼物。</p>
+
+        <div class="hw-how-to-gift">
+          <p>
+            <span class="hw-how-to-label">送礼方法：</span>在手机中选择<span class="hw-highlight-action">通话</span>呼叫角色，然后在 4 个选项中选择<span class="hw-highlight-action">礼物</span>即可送礼。
+          </p>
+
+          <div class="hw-warning-box">
+            <h4 class="hw-warning-title">重要：已知问题</h4>
+            <p class="hw-warning-text">
+              有时与角色对话后，不会出现继续好感度任务线的 (!) 提示。遇到该问题时，请完全退出并重启游戏即可修复。
+            </p>
           </div>
-          <p class="zh-card-text">特殊解锁：<strong>Message Room</strong>、<strong>Jacuzzi Bathroom</strong></p>
         </div>
-      </div>
-    </section>
 
-    <!-- Filters -->
-    <section class="zh-section">
-      <div class="zh-filters">
-        <input
-          type="search"
-          id="zhCgSearch"
-          class="zh-search"
-          placeholder="搜索角色名（中文或英文）"
-          aria-label="搜索角色"
-        />
-        <div class="zh-filter-row" id="zhRarityRow">
-          <button class="zh-filter-chip active" data-rarity="">全部</button>
-          <button class="zh-filter-chip" data-rarity="EX">EX</button>
-          <button class="zh-filter-chip" data-rarity="SS">SS</button>
-          <button class="zh-filter-chip" data-rarity="S">S</button>
-          <button class="zh-filter-chip" data-rarity="A">A</button>
-          <button class="zh-filter-chip" data-rarity="B">B</button>
+        <div class="hw-tip-box">
+          <h3>推荐：华丽礼物箱子</h3>
+          <p>
+            女王的王冠无论送给哪位角色都有最高的分值（100 至 120）。它包含在华丽礼物箱子中，想要最大化好感度时请优先选择。
+          </p>
         </div>
-      </div>
-      <p class="zh-empty" id="zhEmpty" hidden>没有符合筛选条件的角色。</p>
-    </section>
 
-    <!-- Character grid -->
-    <div class="zh-char-grid" id="zhCharGrid">
-      {sortedCharacters.map(character => {
-        const zhName = charZhName(character);
-        const boxes = g => boxesFor(g);
-        return (
-          <div
-            class="zh-char-card"
-            data-search={`${zhName} ${character.name}`.toLowerCase()}
-            data-rarity={character.rarity}
-          >
-            <div class="zh-char-header">
-              <CharacterImage
-                imageName={character.image.split('/').pop() || character.image}
-                alt={zhName}
-                class="zh-char-img"
-                width={100}
-                height={100}
-                loading="lazy"
-              />
-              <div>
-                <h3 class="zh-char-name">{zhName}</h3>
-                <p class="zh-char-en">{character.name}</p>
-                <HWRarityIcon rarity={character.rarity} width={44} height={22} />
-              </div>
-            </div>
+        <div class="hw-info-section">
+          <div class="hw-info-item">
+            <h4>好感度偏好</h4>
+            <p><span class="hw-label">最爱礼物：</span>基础分 + <span class="hw-highlight">20 加成</span></p>
+            <p><span class="hw-label">喜欢礼物：</span>基础分 + <span class="hw-highlight">10 加成</span></p>
+            <p><span class="hw-label">无偏好：</span>仅基础分</p>
+          </div>
 
-            {character.level5Bonus && (
-              <p class="zh-bonus-line">
-                好感度等级 5 加成：{bonusTypeZh(character.level5Bonus.type)} {bonusValue(character.level5Bonus.value)}
-              </p>
-            )}
+          <div class="hw-info-item">
+            <h4>好感度目标</h4>
+            <p>角色好感度共有 <span class="hw-highlight">5 个等级</span>。</p>
+            <p><span class="hw-label">升满任意角色共需</span><span class="hw-highlight">2000 分</span>。</p>
+          </div>
 
-            {character.favorites && character.favorites.length > 0 && (
-              <div class="zh-pref-group">
-                <h4 class="zh-pref-title zh-pref-fav">最爱礼物（+20 分）</h4>
-                {character.favorites.map(gift => (
-                  <div class="zh-gift-item">
+          <div class="hw-info-item">
+            <h4>奖励</h4>
+            <div class="hw-rewards-content">
+              <div class="hw-reward-item">
+                <span class="hw-label">升级奖励：</span>
+                <div class="hw-reward-icons">
+                  <div class="hw-reward-icon-item">
                     <GiftImage
-                      imageName={gift.image.split('/').pop() || gift.image}
-                      alt={giftZhName(gift.name)}
-                      class="zh-gift-img"
-                      width={70}
-                      height={70}
+                      imageName="Gold.jpg"
+                      alt="Gold"
+                      class="hw-reward-icon"
+                      width={32}
+                      height={32}
                       loading="lazy"
                     />
-                    <div class="zh-gift-detail">
-                      <p class="zh-gift-name">
-                        {giftZhName(gift.name)}
-                        <span class="zh-gift-chip zh-chip-fav">最爱</span>
-                      </p>
-                      <p class="zh-gift-sub">
-                        {gift.rarity} · 总好感度 {gift.totalPoints} · 升至等级 5 需 {giftsNeeded(gift)} 个
-                      </p>
-                      {boxes(gift).length > 0 && (
-                        <p class="zh-gift-src">获取来源：{boxes(gift).map(b => giftZhName(b.name)).join('、')}</p>
-                      )}
-                    </div>
+                    <span class="hw-reward-name">Gold</span>
                   </div>
-                ))}
-              </div>
-            )}
-
-            {character.likes && character.likes.length > 0 && (
-              <div class="zh-pref-group">
-                <h4 class="zh-pref-title">喜欢礼物（+10 分）</h4>
-                {character.likes.map(gift => (
-                  <div class="zh-gift-item">
+                  <div class="hw-reward-icon-item">
                     <GiftImage
-                      imageName={gift.image.split('/').pop() || gift.image}
-                      alt={giftZhName(gift.name)}
-                      class="zh-gift-img"
-                      width={70}
-                      height={70}
+                      imageName="Extercium.jpg"
+                      alt="Extercium"
+                      class="hw-reward-icon"
+                      width={32}
+                      height={32}
                       loading="lazy"
                     />
-                    <div class="zh-gift-detail">
-                      <p class="zh-gift-name">
-                        {giftZhName(gift.name)}
-                        <span class="zh-gift-chip">喜欢</span>
-                      </p>
-                      <p class="zh-gift-sub">
-                        {gift.rarity} · 总好感度 {gift.totalPoints} · 升至等级 5 需 {giftsNeeded(gift)} 个
-                      </p>
-                      {boxes(gift).length > 0 && (
-                        <p class="zh-gift-src">获取来源：{boxes(gift).map(b => giftZhName(b.name)).join('、')}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {!hasQueensTiara(character) && hasReleasedInfo(character) && (
-              <div class="zh-pref-group">
-                <h4 class="zh-pref-title">高价值替代选择</h4>
-                <div class="zh-gift-item">
-                  <GiftImage
-                    imageName={queensTiaraGift.image}
-                    alt={giftZhName(queensTiaraGift.name)}
-                    class="zh-gift-img"
-                    width={70}
-                    height={70}
-                    loading="lazy"
-                  />
-                  <div class="zh-gift-detail">
-                    <p class="zh-gift-name">
-                      {giftZhName(queensTiaraGift.name)}
-                      <span class="zh-gift-chip zh-chip-value">高分值</span>
-                    </p>
-                    <p class="zh-gift-sub">
-                      {queensTiaraGift.rarity} · 总好感度 {queensTiaraGift.totalPoints} · 升至等级 5 需 {giftsNeeded(queensTiaraGift)} 个
-                    </p>
-                    {boxesFor(queensTiaraGift).length > 0 && (
-                      <p class="zh-gift-src">
-                        获取来源：{boxesFor(queensTiaraGift).map(b => giftZhName(b.name)).join('、')}
-                      </p>
-                    )}
+                    <span class="hw-reward-name">Extercium</span>
                   </div>
                 </div>
               </div>
-            )}
-
-            {!hasReleasedInfo(character) && (
-              <p class="zh-unreleased"><strong>尚未公开</strong>：该角色的礼物偏好暂未公布。</p>
-            )}
+              <p>
+                <span class="hw-label">特殊解锁：</span><span class="hw-highlight">Message Room</span>、<span class="hw-highlight">Jacuzzi Bathroom</span>
+              </p>
+            </div>
           </div>
-        );
-      })}
-    </div>
+        </div>
+      </div>
+
+      <div class="hw-search-section">
+        <h3 class="hw-search-title">搜索角色</h3>
+        <div class="hw-character-search">
+          <input
+            type="text"
+            id="zh-cg-search"
+            class="hw-search-input"
+            placeholder="输入角色名（中文或英文）"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      <div class="hw-rarity-filter">
+        <h3 class="hw-filter-title">按稀有度筛选</h3>
+        <div class="hw-rarity-buttons" id="zh-rarity-row">
+          <button class="hw-rarity-btn active" data-rarity="">全部</button>
+          <button class="hw-rarity-btn" data-rarity="EX">EX</button>
+          <button class="hw-rarity-btn" data-rarity="SS">SS</button>
+          <button class="hw-rarity-btn" data-rarity="S">S</button>
+          <button class="hw-rarity-btn" data-rarity="A">A</button>
+          <button class="hw-rarity-btn" data-rarity="B">B</button>
+        </div>
+      </div>
+
+      <p class="hw-no-preferences" id="zh-empty" hidden>没有符合筛选条件的角色。</p>
+
+      <div class="hw-character-grid" id="zh-char-grid">
+        {sortedCharacters.map(character => {
+          const zhName = charZhName(character);
+          return (
+            <div
+              class="hw-character-card"
+              data-character={character.id}
+              data-search={`${zhName} ${character.name}`.toLowerCase()}
+              data-rarity={character.rarity}
+            >
+              <div class="hw-character-header">
+                <div class="hw-character-image">
+                  <CharacterImage
+                    imageName={character.image.split('/').pop() || character.image}
+                    alt={zhName}
+                    class="character-img"
+                    width={100}
+                    height={100}
+                    loading="lazy"
+                  />
+                </div>
+                <div class="hw-character-info">
+                  <h3 class="hw-character-name">{zhName}</h3>
+                  <p class="zh-char-en">{character.name}</p>
+                  <div class="hw-character-rarity">
+                    <HWRarityIcon rarity={character.rarity} width={44} height={22} />
+                  </div>
+                </div>
+              </div>
+
+              <div class="hw-gift-preferences">
+                {character.level5Bonus && (
+                  <div class="hw-level5-bonus-section">
+                    <h4 class="hw-level5-bonus-title">好感度等级 5 加成</h4>
+                    <div class="hw-level5-bonus-content">
+                      <div class="hw-level5-bonus-item">
+                        <span class="hw-bonus-type">{bonusTypeZh(character.level5Bonus.type)}</span>
+                        <span class="hw-bonus-value">{bonusValue(character.level5Bonus.value)}</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {character.favorites && character.favorites.length > 0 && (
+                  <div class="hw-preference-section hw-favorites-section">
+                    <h4 class="hw-preference-title hw-favorites-title">最爱礼物（+20 分）</h4>
+                    {character.favorites.map(gift => (
+                      <div class="hw-favorite-item">
+                        <div class="hw-favorite-gift-image">
+                          <GiftImage
+                            imageName={gift.image.split('/').pop() || gift.image}
+                            alt={giftZhName(gift.name)}
+                            class="gift-favorite-img"
+                            width={70}
+                            height={70}
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="hw-favorite-details">
+                          <div class="hw-favorite-header">
+                            <div class="hw-favorite-title-group">
+                              <h5 class="hw-favorite-name">{giftZhName(gift.name)}</h5>
+                              <div class="hw-favorite-badges">
+                                <HWRarityIcon rarity={gift.rarity} width={40} height={20} />
+                                <span class="hw-badge hw-badge-favorites">最爱</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="hw-favorite-stats">
+                            <div class="hw-favorite-stat">
+                              <span class="hw-stat-label">总好感度：</span>
+                              <span class="hw-stat-value hw-stat-points">{gift.totalPoints}</span>
+                            </div>
+                            <div class="hw-favorite-stat">
+                              <span class="hw-stat-label">升至等级 5 需：</span>
+                              <span class="hw-stat-value">{giftsNeeded(gift)} 个</span>
+                            </div>
+                          </div>
+                          {boxesFor(gift).length > 0 && (
+                            <div class="hw-gift-sources">
+                              <h6 class="hw-sources-title">获取来源</h6>
+                              {boxesFor(gift).map(box => (
+                                <div class="hw-source-box">
+                                  <GiftImage
+                                    imageName={box.image.split('/').pop() || box.image}
+                                    alt={giftZhName(box.name)}
+                                    class="hw-source-icon"
+                                    width={40}
+                                    height={40}
+                                    loading="lazy"
+                                  />
+                                  <span class="hw-source-name">{giftZhName(box.name)}</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {character.likes && character.likes.length > 0 && (
+                  <div class="hw-preference-section hw-likes-section" style="margin-top: 1rem;">
+                    <h4 class="hw-preference-title hw-likes-title">喜欢礼物（+10 分）</h4>
+                    {character.likes.map(gift => (
+                      <div class="hw-like-item">
+                        <div class="hw-like-gift-image">
+                          <GiftImage
+                            imageName={gift.image.split('/').pop() || gift.image}
+                            alt={giftZhName(gift.name)}
+                            class="gift-like-img"
+                            width={70}
+                            height={70}
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="hw-like-details">
+                          <div class="hw-like-header">
+                            <div class="hw-like-title-group">
+                              <h5 class="hw-like-name">{giftZhName(gift.name)}</h5>
+                              <div class="hw-like-badges">
+                                <HWRarityIcon rarity={gift.rarity} width={40} height={20} />
+                                <span class="hw-badge hw-badge-likes">喜欢</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="hw-like-stats">
+                            <div class="hw-like-stat">
+                              <span class="hw-stat-label">总好感度：</span>
+                              <span class="hw-stat-value hw-stat-points">{gift.totalPoints}</span>
+                            </div>
+                            <div class="hw-like-stat">
+                              <span class="hw-stat-label">升至等级 5 需：</span>
+                              <span class="hw-stat-value">{giftsNeeded(gift)} 个</span>
+                            </div>
+                          </div>
+                          {boxesFor(gift).length > 0 && (
+                            <div class="hw-gift-sources">
+                              <h6 class="hw-sources-title">获取来源</h6>
+                              {boxesFor(gift).map(box => (
+                                <div class="hw-source-box">
+                                  <GiftImage
+                                    imageName={box.image.split('/').pop() || box.image}
+                                    alt={giftZhName(box.name)}
+                                    class="hw-source-icon"
+                                    width={40}
+                                    height={40}
+                                    loading="lazy"
+                                  />
+                                  <span class="hw-source-name">{giftZhName(box.name)}</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {!hasQueensTiara(character) && hasReleasedInfo(character) && (
+                  <div class="hw-preference-section hw-alternative-section" style="margin-top: 1.5rem;">
+                    <h4 class="hw-preference-title hw-alternative-title">高价值替代选择</h4>
+                    <div class="hw-alternative-content">
+                      <div class="hw-alternative-item">
+                        <div class="hw-alternative-gift-image">
+                          <GiftImage
+                            imageName={queensTiaraGift.image}
+                            alt={giftZhName(queensTiaraGift.name)}
+                            class="gift-alternative-img"
+                            width={70}
+                            height={70}
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="hw-alternative-details">
+                          <div class="hw-alternative-header">
+                            <div class="hw-alternative-title-group">
+                              <h5 class="hw-alternative-name">{giftZhName(queensTiaraGift.name)}</h5>
+                              <div class="hw-alternative-badges">
+                                <HWRarityIcon rarity={queensTiaraGift.rarity} width={40} height={20} />
+                                <span class="hw-badge hw-badge-value">高分值</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="hw-alternative-stats">
+                            <div class="hw-alternative-stat">
+                              <span class="hw-stat-label">总好感度：</span>
+                              <span class="hw-stat-value hw-stat-points">{queensTiaraGift.totalPoints}</span>
+                            </div>
+                            <div class="hw-alternative-stat">
+                              <span class="hw-stat-label">升至等级 5 需：</span>
+                              <span class="hw-stat-value">{giftsNeeded(queensTiaraGift)} 个</span>
+                            </div>
+                          </div>
+                          {boxesFor(queensTiaraGift).length > 0 && (
+                            <div class="hw-gift-sources">
+                              <h6 class="hw-sources-title">获取来源</h6>
+                              {boxesFor(queensTiaraGift).map(box => (
+                                <div class="hw-source-box">
+                                  <GiftImage
+                                    imageName={box.image.split('/').pop() || box.image}
+                                    alt={giftZhName(box.name)}
+                                    class="hw-source-icon"
+                                    width={40}
+                                    height={40}
+                                    loading="lazy"
+                                  />
+                                  <span class="hw-source-name">{giftZhName(box.name)}</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {!hasReleasedInfo(character) && (
+                  <div class="hw-no-preferences">
+                    <strong>尚未公开</strong>：该角色的礼物偏好暂未公布。
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
   </div>
 </HwZhLayout>
 
 <script>
   function initZhCgFilters() {
-    const search = document.getElementById('zhCgSearch');
-    const grid = document.getElementById('zhCharGrid');
-    const empty = document.getElementById('zhEmpty');
-    const cards = Array.from(grid.querySelectorAll('.zh-char-card'));
+    const search = document.getElementById('zh-cg-search');
+    const grid = document.getElementById('zh-char-grid');
+    const empty = document.getElementById('zh-empty');
+    const cards = Array.from(grid.querySelectorAll('.hw-character-card'));
     let rarity = '';
 
     const apply = () => {
       const q = (search.value || '').trim().toLowerCase();
       let shown = 0;
       for (const card of cards) {
-        const okSearch = !q || card.dataset.search.includes(q);
+        const okSearch = !q || (card.dataset.search || '').includes(q);
         const okRarity = !rarity || card.dataset.rarity === rarity;
         const visible = okSearch && okRarity;
         card.style.display = visible ? '' : 'none';
@@ -334,11 +473,11 @@ const boxesFor = gift => {
 
     search.addEventListener('input', apply);
 
-    const row = document.getElementById('zhRarityRow');
+    const row = document.getElementById('zh-rarity-row');
     row.addEventListener('click', e => {
-      const btn = e.target.closest('.zh-filter-chip');
+      const btn = e.target.closest('.hw-rarity-btn');
       if (!btn) return;
-      row.querySelectorAll('.zh-filter-chip').forEach(b => b.classList.remove('active'));
+      row.querySelectorAll('.hw-rarity-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       rarity = btn.dataset.rarity || '';
       apply();
@@ -353,318 +492,10 @@ const boxesFor = gift => {
 </script>
 
 <style>
-  .zh-cg-page {
-    display: grid;
-    gap: 1.75rem;
-  }
-
-  .zh-section {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 14px;
-    padding: 1.5rem;
-  }
-
-  .zh-section-title {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    font-weight: var(--font-bold);
-    color: var(--hw-primary-warm);
-    margin: 0 0 1rem 0;
-  }
-
-  .zh-text {
-    font-size: 0.9375rem;
-    line-height: 1.8;
-    color: var(--hw-text-light);
-    margin: 0 0 0.75rem 0;
-  }
-
-  .zh-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 1rem 1.25rem;
-  }
-
-  .zh-card-title {
-    font-size: 1.0625rem;
-    font-weight: 700;
-    color: var(--hw-primary-warm);
-    margin: 0 0 0.5rem 0;
-  }
-
-  .zh-card-text {
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    color: var(--hw-text-light);
-    margin: 0 0 0.35rem 0;
-  }
-
-  .zh-warning {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 1rem 1.25rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .zh-warning-title {
-    font-size: 0.9375rem;
-    font-weight: 700;
-    color: var(--hw-primary-warm);
-    margin: 0 0 0.4rem 0;
-  }
-
-  .zh-warning-text {
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    color: var(--hw-text-light);
-    margin: 0;
-  }
-
-  .zh-tip {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 1rem 1.25rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .zh-tip-title {
-    font-size: 1.0625rem;
-    font-weight: 700;
-    color: var(--hw-primary-warm);
-    margin: 0 0 0.5rem 0;
-  }
-
-  .zh-tip-text {
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    color: var(--hw-text-light);
-    margin: 0;
-  }
-
-  .zh-info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 0.75rem;
-  }
-
-  .zh-reward-row {
-    display: flex;
-    gap: 0.9rem;
-    margin: 0.25rem 0 0.5rem 0;
-  }
-
-  .zh-reward {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-
-  .zh-reward-img {
-    width: 32px;
-    height: 32px;
-    border-radius: 6px;
-    object-fit: cover;
-  }
-
-  .zh-reward-name {
-    font-size: 0.875rem;
-    color: var(--hw-text-light);
-    font-weight: 600;
-  }
-
-  .zh-filters {
-    display: grid;
-    gap: 0.6rem;
-  }
-
-  .zh-search {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 10px;
-    color: var(--hw-text-light);
-    font-size: 0.9375rem;
-    padding: 0.6rem 0.9rem;
-    outline: none;
-  }
-
-  .zh-search::placeholder {
-    color: var(--hw-text-very-muted);
-  }
-
-  .zh-filter-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .zh-filter-chip {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: var(--hw-text-light);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    border-radius: 999px;
-    padding: 0.3rem 0.8rem;
-    cursor: pointer;
-  }
-
-  .zh-filter-chip.active {
-    background: var(--hw-primary-warm);
-    border-color: var(--hw-primary-warm);
-    color: var(--hw-text-dark);
-  }
-
-  .zh-empty {
-    font-size: 0.9375rem;
-    color: var(--hw-text-muted);
-    margin: 0.75rem 0 0 0;
-  }
-
-  .zh-char-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 0.75rem;
-  }
-
-  .zh-char-card {
-    display: grid;
-    gap: 0.75rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 12px;
-    padding: 1rem;
-    min-width: 0;
-    align-content: start;
-  }
-
-  .zh-char-header {
-    display: flex;
-    gap: 0.9rem;
-    align-items: center;
-  }
-
-  .zh-char-img {
-    width: 80px;
-    height: 80px;
-    border-radius: 10px;
-    object-fit: cover;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    flex-shrink: 0;
-  }
-
-  .zh-char-name {
-    font-size: 1.0625rem;
-    font-weight: 700;
-    color: var(--hw-text-light);
-    margin: 0 0 0.1rem 0;
-  }
-
+  /* ZH-only: EN gloss under the Chinese character name */
   .zh-char-en {
     font-size: 0.75rem;
     color: var(--hw-text-muted);
     margin: 0 0 0.35rem 0;
-  }
-
-  .zh-bonus-line {
-    font-size: 0.875rem;
-    color: var(--hw-text-light);
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
-    padding: 0.45rem 0.6rem;
-    margin: 0;
-  }
-
-  .zh-pref-group {
-    display: grid;
-    gap: 0.5rem;
-  }
-
-  .zh-pref-title {
-    font-size: 0.9375rem;
-    font-weight: 700;
-    color: var(--hw-primary-warm);
-    margin: 0;
-  }
-
-  .zh-gift-item {
-    display: flex;
-    gap: 0.75rem;
-    align-items: flex-start;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 10px;
-    padding: 0.6rem 0.75rem;
-  }
-
-  .zh-gift-img {
-    width: 56px;
-    height: 56px;
-    border-radius: 8px;
-    object-fit: cover;
-    flex-shrink: 0;
-  }
-
-  .zh-gift-detail {
-    min-width: 0;
-  }
-
-  .zh-gift-name {
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--hw-text-light);
-    margin: 0 0 0.15rem 0;
-  }
-
-  .zh-gift-chip {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    color: var(--hw-text-light);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    border-radius: 999px;
-    padding: 0.05rem 0.5rem;
-    margin-left: 0.4rem;
-    vertical-align: middle;
-    white-space: nowrap;
-  }
-
-  .zh-chip-fav {
-    background: var(--hw-primary-warm);
-    border-color: var(--hw-primary-warm);
-    color: var(--hw-text-dark);
-  }
-
-  .zh-chip-value {
-    border-color: var(--hw-primary-warm);
-    color: var(--hw-primary-warm);
-  }
-
-  .zh-gift-sub {
-    font-size: 0.8125rem;
-    color: var(--hw-text-muted);
-    margin: 0 0 0.15rem 0;
-  }
-
-  .zh-gift-src {
-    font-size: 0.8125rem;
-    color: var(--hw-text-muted);
-    margin: 0;
-  }
-
-  .zh-unreleased {
-    font-size: 0.875rem;
-    color: var(--hw-text-muted);
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
-    padding: 0.45rem 0.6rem;
-    margin: 0;
   }
 </style>

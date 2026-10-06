@@ -5,6 +5,8 @@
 // use the game's official ZH via game-text.js; the spreadsheet's own values
 // (stigma set names, stat lines, effect text) are kept verbatim in English.
 import HwZhLayout from '../../../../../../layouts/zh/HwZhLayout.astro';
+import '../../../../../../styles/games/horizon-walker/hw-character-build.css';
+import '../../../../../../styles/games/horizon-walker/hw-community-build.css';
 import { COMMUNITY_BUILDS } from '../../../../../../data/horizon-walker/community-builds.js';
 import { HORIZON_WALKER_CHARACTERS } from '../../../../../../data/horizon-walker/characters.js';
 import { characterBuildConfigs } from '../../../../../../data/horizon-walker/builds/character-build-configs.js';
@@ -157,520 +159,223 @@ const coreStats = [
     { name: zhName },
   ]}
 >
-  <div class="zh-cbu">
-    <header class="zh-cbu-section zh-cbu-header">
+  <div class="character-build-header">
+    <div class="character-build-image">
       <CharacterImage
         imageName={character.image || character.name}
         alt={zhName}
         width={120}
         height={120}
-        class="zh-cbu-portrait"
+        class="character-build-portrait"
         loading="eager"
       />
-      <div class="zh-cbu-title">
-        <h2 class="zh-cbu-name">{zhName} 社区配装</h2>
-        <p class="zh-cbu-en">{character.name} Community Build</p>
-        <div class="zh-cbu-chips">
-          <span class="zh-cbu-chip">费用 {character.cost}</span>
-          <HWRarityIcon rarity={character.rarity} width={44} height={22} />
-          <span class="zh-cbu-chip zh-cbu-chip-community">社区配装</span>
-        </div>
-        <div class="zh-cbu-links">
-          <a href={`${HW_ZH.baseUrl}characters/${character.slug}/`}>角色页面</a>
-          {hasHandBuild && <a href={`${HW_ZH.baseUrl}builds/${character.slug}/`}>手动精选配装</a>}
-        </div>
+    </div>
+    <div class="character-build-info">
+      <h2 class="character-build-name">{zhName} 社区配装</h2>
+      <p class="zh-cbu-en">{character.name} Community Build</p>
+      <div class="character-build-badges">
+        <span class="hw-badge" data-type="Cost">费用 {character.cost}</span>
+        <HWRarityIcon rarity={character.rarity} width={44} height={22} />
+        <span class="character-tag damage-scaling">社区配装</span>
       </div>
-    </header>
-
-    <section class="zh-cbu-section">
-      <h3 class="zh-cbu-section-title">社区配装</h3>
-      <p class="zh-cbu-credit">
-        以下推荐整理自 Envy、Liauw 与 Gamekee 的社区配装表格，
-        <a href={SHEET_URL} target="_blank" rel="noopener noreferrer">查看完整表格</a>。表格中的圣痕套装名称与数值保留英文原文。
-      </p>
-
-      <div class="zh-cbu-grid">
-        {
-          (communityBuild.weaponName || communityBuild.weaponStats || communityBuild.subStats) && (
-            <div class="zh-cbu-card">
-              <h4 class="zh-cbu-card-title">武器</h4>
-              <div class="zh-cbu-weapon-row">
-                {characterDetail?.weapon?.image && (
-                  <div class="zh-cbu-weapon-img">
-                    <WeaponImage
-                      imageName={characterDetail.weapon.image}
-                      alt={communityBuild.weaponName}
-                      width={72}
-                      height={72}
-                      class="zh-cbu-weapon"
-                      loading="lazy"
-                    />
-                  </div>
-                )}
-                <div class="zh-cbu-weapon-info">
-                  {communityBuild.weaponName && (
-                    <p class="zh-cbu-weapon-name">
-                      {weaponNameZh || communityBuild.weaponName}
-                      {weaponNameZh && <span class="zh-cbu-weapon-en">{communityBuild.weaponName}</span>}
-                    </p>
-                  )}
-                  {communityBuild.weaponStats && <p class="zh-cbu-line">{communityBuild.weaponStats}</p>}
-                  {communityBuild.subStats && <p class="zh-cbu-line">{communityBuild.subStats}</p>}
-                </div>
-              </div>
-            </div>
-          )
-        }
-
-        {
-          communityBuild.substatsPriority && (
-            <div class="zh-cbu-card">
-              <h4 class="zh-cbu-card-title">副属性优先级</h4>
-              <ol class="zh-cbu-ordered">
-                {communityBuild.substatsPriority
-                  .split('\n')
-                  .map((line) => line.trim())
-                  .filter(Boolean)
-                  .map((line) => (
-                    <li>{line.replace(/^\d+\.\s*/, '')}</li>
-                  ))}
-              </ol>
-            </div>
-          )
-        }
-
-        {
-          communityBuild.stigmaSets?.length > 0 && (
-            <div class="zh-cbu-card zh-cbu-card-wide">
-              <h4 class="zh-cbu-card-title">圣痕</h4>
-              <div class="zh-cbu-stigma-sets">
-                {communityBuild.stigmaSets.map((set) => {
-                  const art = stigmaArtFor(set.name);
-                  return (
-                    <div class="zh-cbu-stigma-set">
-                      <div class="zh-cbu-stigma-head">
-                        {art && (
-                          <StigmaImage imageName={art} alt={`${set.name} 圣痕图`} width={44} height={44} class="zh-cbu-stigma-img" loading="lazy" />
-                        )}
-                        <span class="zh-cbu-set-label">{setLabelZh(set.label)}</span>
-                        <span class="zh-cbu-set-name">{set.name}</span>
-                      </div>
-                      {set.effects && (
-                        <div class="zh-cbu-stigma-effects">
-                          {set.effects
-                            .split('\n')
-                            .map((line) => line.trim())
-                            .filter(Boolean)
-                            .map((line) =>
-                              line.startsWith('- ') ? (
-                                <p class="zh-cbu-effect zh-cbu-effect-sub">{line.slice(2)}</p>
-                              ) : (
-                                <p class="zh-cbu-effect">{line}</p>
-                              )
-                            )}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          )
-        }
-
-        {
-          communityBuild.traitsToGet?.length > 0 && (
-            <div class="zh-cbu-card">
-              <h4 class="zh-cbu-card-title">推荐特性</h4>
-              <ul class="zh-cbu-traits">
-                {communityBuild.traitsToGet.map((trait) => (
-                  <li class="zh-cbu-trait">
-                    <span class="zh-cbu-trait-name">
-                      {traitZh(trait.name)}
-                      {traitZh(trait.name) !== trait.name && <span class="zh-cbu-trait-en">{trait.name}</span>}
-                    </span>
-                    <span class="zh-cbu-trait-effect">{trait.effect}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )
-        }
-
-        {
-          communityBuild.skillPriority?.length > 0 && (
-            <div class="zh-cbu-card">
-              <h4 class="zh-cbu-card-title">技能升级顺序</h4>
-              <ol class="zh-cbu-skills">
-                {communityBuild.skillPriority.map((p) => {
-                  const skill = skillForPriority(p.name);
-                  const line = skillLineZh(p.name);
-                  return (
-                    <li class="zh-cbu-skill">
-                      <span class="zh-cbu-rank">{p.priority}</span>
-                      {skill?.icon && <SkillIcon iconName={skill.icon} />}
-                      <span class="zh-cbu-skill-name">
-                        {line.text}
-                        {line.en && <span class="zh-cbu-skill-en">{line.en}</span>}
-                      </span>
-                    </li>
-                  );
-                })}
-              </ol>
-            </div>
-          )
-        }
+      <div class="character-build-links">
+        <a href={`${HW_ZH.baseUrl}characters/${character.slug}/`}>角色页面</a>
+        {hasHandBuild && <a href={`${HW_ZH.baseUrl}builds/${character.slug}/`}>手动精选配装</a>}
       </div>
-    </section>
-
-    <section class="zh-cbu-section">
-      <h3 class="zh-cbu-section-title">核心属性</h3>
-      <div class="zh-cbu-stat-notes">
-        <span><strong>力量：</strong>提升近战攻击力</span>
-        <span><strong>技巧：</strong>提升射击攻击力</span>
-        <span><strong>智力：</strong>提升魔法攻击力</span>
-        <span><strong>体质：</strong>提升最大生命值</span>
-        <span><strong>敏捷：</strong>提升回避与行动恢复力</span>
-      </div>
-      <div class="zh-cbu-stat-grid">
-        {
-          coreStats.map((s) => (
-            <div class="zh-cbu-stat">
-              <div class="zh-cbu-stat-label">{s.label}</div>
-              <div class="zh-cbu-stat-value">{s.value ?? '无数据'}</div>
-            </div>
-          ))
-        }
-      </div>
-    </section>
+    </div>
   </div>
+
+  <section class="content-section community-build-section">
+    <h3 class="section-title">社区配装</h3>
+    <p class="community-build-credit">
+      以下推荐整理自 Envy、Liauw 与 Gamekee 的社区配装表格，
+      <a href={SHEET_URL} target="_blank" rel="noopener noreferrer">查看完整表格</a>。表格中的圣痕套装名称与数值保留英文原文。
+    </p>
+
+    <div class="community-build-grid">
+      {
+        (communityBuild.weaponName || communityBuild.weaponStats || communityBuild.subStats) && (
+          <div class="community-build-card">
+            <h4 class="community-build-card-title">武器</h4>
+            <div class="community-weapon-row">
+              {characterDetail?.weapon?.image && (
+                <div class="community-weapon-image-box">
+                  <WeaponImage
+                    imageName={characterDetail.weapon.image}
+                    alt={communityBuild.weaponName}
+                    width={72}
+                    height={72}
+                    class="community-weapon-image"
+                    loading="lazy"
+                  />
+                </div>
+              )}
+              <div class="community-weapon-info">
+                {communityBuild.weaponName && (
+                  <p class="community-weapon-name">
+                    {weaponNameZh || communityBuild.weaponName}
+                    {weaponNameZh && <span class="zh-cbu-weapon-en">{communityBuild.weaponName}</span>}
+                  </p>
+                )}
+                {communityBuild.weaponStats && <p class="community-stat-line">{communityBuild.weaponStats}</p>}
+                {communityBuild.subStats && <p class="community-stat-line">{communityBuild.subStats}</p>}
+              </div>
+            </div>
+          </div>
+        )
+      }
+
+      {
+        communityBuild.substatsPriority && (
+          <div class="community-build-card">
+            <h4 class="community-build-card-title">副属性优先级</h4>
+            <ol class="community-substats-list">
+              {communityBuild.substatsPriority
+                .split('\n')
+                .map((line) => line.trim())
+                .filter(Boolean)
+                .map((line) => (
+                  <li>{line.replace(/^\d+\.\s*/, '')}</li>
+                ))}
+            </ol>
+          </div>
+        )
+      }
+
+      {
+        communityBuild.stigmaSets?.length > 0 && (
+          <div class="community-build-card community-build-card-wide">
+            <h4 class="community-build-card-title">圣痕</h4>
+            <div class="community-stigma-sets">
+              {communityBuild.stigmaSets.map((set) => {
+                const art = stigmaArtFor(set.name);
+                return (
+                  <div class="community-stigma-set">
+                    <div class="community-stigma-header">
+                      {art && (
+                        <StigmaImage imageName={art} alt={`${set.name} 圣痕图`} width={44} height={44} class="community-stigma-image" loading="lazy" />
+                      )}
+                      <span class="community-set-label">{setLabelZh(set.label)}</span>
+                      <span class="community-stigma-name">{set.name}</span>
+                    </div>
+                    {set.effects && (
+                      <div class="community-stigma-effects">
+                        {set.effects
+                          .split('\n')
+                          .map((line) => line.trim())
+                          .filter(Boolean)
+                          .map((line) =>
+                            line.startsWith('- ') ? (
+                              <p class="community-effect-line community-effect-sub">{line.slice(2)}</p>
+                            ) : (
+                              <p class="community-effect-line">{line}</p>
+                            )
+                          )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )
+      }
+
+      {
+        communityBuild.traitsToGet?.length > 0 && (
+          <div class="community-build-card">
+            <h4 class="community-build-card-title">推荐特性</h4>
+            <ul class="community-traits-list">
+              {communityBuild.traitsToGet.map((trait) => (
+                <li class="community-trait-item">
+                  <span class="community-trait-name">
+                    {traitZh(trait.name)}
+                    {traitZh(trait.name) !== trait.name && <span class="zh-cbu-trait-en">{trait.name}</span>}
+                  </span>
+                  <span class="community-trait-effect">{trait.effect}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+
+      {
+        communityBuild.skillPriority?.length > 0 && (
+          <div class="community-build-card">
+            <h4 class="community-build-card-title">技能升级顺序</h4>
+            <ol class="community-skill-priority">
+              {communityBuild.skillPriority.map((p) => {
+                const skill = skillForPriority(p.name);
+                const line = skillLineZh(p.name);
+                return (
+                  <li class="community-priority-item">
+                    <span class="community-priority-rank">{p.priority}</span>
+                    {skill?.icon && <SkillIcon iconName={skill.icon} />}
+                    <span class="community-priority-name">
+                      {line.text}
+                      {line.en && <span class="zh-cbu-skill-en">{line.en}</span>}
+                    </span>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="character-build-section">
+    <h3 class="character-build-section-title">核心属性</h3>
+    <div class="core-stats-explanation">
+      <div class="stat-explanation-grid">
+        <span><span class="stat-name">力量：</span><span class="stat-description">提升近战攻击力</span></span>
+        <span><span class="stat-name">技巧：</span><span class="stat-description">提升射击攻击力</span></span>
+        <span><span class="stat-name">智力：</span><span class="stat-description">提升魔法攻击力</span></span>
+        <span><span class="stat-name">体质：</span><span class="stat-description">提升最大生命值</span></span>
+        <span><span class="stat-name">敏捷：</span><span class="stat-description">提升回避与行动恢复力</span></span>
+      </div>
+    </div>
+    <div class="core-stats-grid">
+      {
+        coreStats.map((s) => (
+          <div class="core-stat-card">
+            <div class="core-stat-title">{s.label}</div>
+            <div class="core-stat-value">{s.value ?? '无数据'}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
 </HwZhLayout>
 
 <style>
-  .zh-cbu {
-    display: grid;
-    gap: 1.5rem;
-  }
-  .zh-cbu-section {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 14px;
-    padding: 1.4rem;
-  }
-  .zh-cbu-section-title {
-    color: var(--hw-primary-warm);
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin: 0 0 1rem 0;
-  }
-  .zh-cbu-header {
-    display: flex;
-    gap: 1.4rem;
-    align-items: center;
-  }
-  .zh-cbu-portrait {
-    width: 120px;
-    height: 120px;
-    border-radius: 12px;
-    object-fit: cover;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    flex-shrink: 0;
-  }
-  .zh-cbu-name {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    font-weight: var(--font-bold);
-    color: var(--hw-text-light);
-    margin: 0;
-  }
+  /* ZH-only gloss lines without an EN equivalent */
   .zh-cbu-en {
     color: var(--hw-text-very-muted);
     font-size: 0.85rem;
     margin: 0.1rem 0 0.6rem 0;
   }
-  .zh-cbu-chips {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-  .zh-cbu-chip {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: var(--hw-text-light);
-    font-weight: 600;
-    font-size: 0.8125rem;
-    border-radius: 999px;
-    padding: 0.2rem 0.7rem;
-    white-space: nowrap;
-  }
-  .zh-cbu-chip-community {
-    color: var(--hw-primary-warm);
-    border-color: rgba(232, 165, 71, 0.4);
-  }
-  .zh-cbu-links {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: 0.7rem;
-  }
-  .zh-cbu-links a {
-    color: var(--hw-primary-warm);
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-decoration: none;
-    border: 1px solid rgba(232, 165, 71, 0.35);
-    border-radius: 8px;
-    padding: 0.35rem 0.8rem;
-  }
-  .zh-cbu-credit {
-    color: var(--hw-text-muted);
-    font-size: 0.88rem;
-    line-height: 1.7;
-    margin: 0 0 1rem 0;
-  }
-  .zh-cbu-credit a {
-    color: var(--hw-primary-warm);
-  }
-  .zh-cbu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 0.8rem;
-  }
-  .zh-cbu-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 0.95rem 1.1rem;
-  }
-  .zh-cbu-card-wide {
-    grid-column: 1 / -1;
-  }
-  .zh-cbu-card-title {
-    color: var(--hw-primary-warm);
-    font-size: 0.98rem;
-    font-weight: 700;
-    margin: 0 0 0.7rem 0;
-  }
-  .zh-cbu-weapon-row {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-  .zh-cbu-weapon-img {
-    flex: none;
-    width: 72px;
-    height: 72px;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-  }
-  .zh-cbu-weapon {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .zh-cbu-weapon-name {
-    color: var(--hw-text-light);
-    font-size: 0.98rem;
-    font-weight: 700;
-    margin: 0 0 0.2rem 0;
-  }
+
   .zh-cbu-weapon-en {
-    display: block;
     color: var(--hw-text-very-muted);
-    font-size: 0.75rem;
-    font-weight: 400;
-  }
-  .zh-cbu-line {
-    color: var(--hw-text-muted);
-    font-size: 0.84rem;
-    line-height: 1.6;
-    margin: 0;
-    white-space: pre-line;
-  }
-  .zh-cbu-ordered {
-    margin: 0;
-    padding-left: 1.4rem;
-    color: var(--hw-text-light);
-    font-size: 0.9rem;
-    line-height: 1.9;
-  }
-  .zh-cbu-stigma-sets {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 0.8rem;
-  }
-  .zh-cbu-stigma-set {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 10px;
-    padding: 0.8rem 0.9rem;
-  }
-  .zh-cbu-stigma-head {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    flex-wrap: wrap;
-    margin-bottom: 0.5rem;
-  }
-  .zh-cbu-stigma-img {
-    width: 44px;
-    height: 44px;
-    border-radius: 8px;
-    object-fit: cover;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-  }
-  .zh-cbu-set-label {
-    background: rgba(232, 165, 71, 0.14);
-    color: var(--hw-primary-warm);
-    font-size: 0.74rem;
-    font-weight: 700;
-    border-radius: 6px;
-    padding: 0.12rem 0.5rem;
-    white-space: nowrap;
-  }
-  .zh-cbu-set-name {
-    color: var(--hw-text-light);
-    font-size: 0.9rem;
-    font-weight: 600;
-  }
-  .zh-cbu-stigma-effects {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-  .zh-cbu-effect {
-    color: var(--hw-text-muted);
-    font-size: 0.82rem;
-    line-height: 1.6;
-    margin: 0;
-    white-space: pre-line;
-  }
-  .zh-cbu-effect-sub {
-    padding-left: 0.9rem;
-  }
-  .zh-cbu-traits {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-  .zh-cbu-trait {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 0.8rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
-    padding: 0.45rem 0.7rem;
-    flex-wrap: wrap;
-  }
-  .zh-cbu-trait-name {
-    color: var(--hw-text-light);
-    font-size: 0.9rem;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-  .zh-cbu-trait-en {
-    color: var(--hw-text-very-muted);
-    font-size: 0.74rem;
+    font-size: 0.78rem;
     font-weight: 400;
     margin-left: 0.4rem;
   }
-  .zh-cbu-trait-effect {
-    color: var(--hw-text-muted);
-    font-size: 0.8rem;
-    text-align: right;
+
+  .zh-cbu-trait-en {
+    color: var(--hw-text-very-muted);
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin-left: 0.35rem;
   }
-  .zh-cbu-skills {
-    margin: 0;
-    padding-left: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-  .zh-cbu-skill {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
-    padding: 0.45rem 0.7rem;
-  }
-  .zh-cbu-rank {
-    flex: none;
-    width: 1.5rem;
-    height: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(232, 165, 71, 0.14);
-    color: var(--hw-primary-warm);
-    font-size: 0.78rem;
-    font-weight: 700;
-    border-radius: 6px;
-  }
-  .zh-cbu-skill-name {
-    color: var(--hw-text-light);
-    font-size: 0.9rem;
-    font-weight: 600;
-  }
+
   .zh-cbu-skill-en {
     color: var(--hw-text-very-muted);
     font-size: 0.75rem;
     font-weight: 400;
-    margin-left: 0.45rem;
-  }
-  .zh-cbu-stat-notes {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 0.4rem;
-    margin-bottom: 0.9rem;
-  }
-  .zh-cbu-stat-notes span {
-    color: var(--hw-text-muted);
-    font-size: 0.85rem;
-  }
-  .zh-cbu-stat-notes strong {
-    color: var(--hw-primary-warm);
-  }
-  .zh-cbu-stat-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 0.6rem;
-  }
-  .zh-cbu-stat {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 10px;
-    padding: 0.6rem 0.8rem;
-    text-align: center;
-  }
-  .zh-cbu-stat-label {
-    color: var(--hw-text-muted);
-    font-size: 0.8rem;
-    margin-bottom: 0.15rem;
-  }
-  .zh-cbu-stat-value {
-    color: var(--hw-text-light);
-    font-size: 1.05rem;
-    font-weight: 700;
-  }
-  @media (max-width: 640px) {
-    .zh-cbu-header {
-      flex-direction: column;
-      text-align: center;
-    }
-    .zh-cbu-chips,
-    .zh-cbu-links {
-      justify-content: center;
-    }
+    margin-left: 0.35rem;
   }
 </style>

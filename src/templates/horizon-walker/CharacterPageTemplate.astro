@@ -141,15 +141,205 @@ interface CharacterData {
 
 interface Props {
   characterData: CharacterData;
+  labels?: Partial<HWPageLabels>;
 }
 
+// Default (English) UI labels for every user-visible string this template
+// renders. Other languages (zh-Hans) pass their own subset via the `labels`
+// prop; EN pages pass nothing and get exactly these strings. `{n}`, `{name}`,
+// `{stage}`, `{type}` etc. inside a string are value placeholders filled at
+// render time. Data-name lookups (itemNames/skinNames/statTypeNames) translate
+// game-data names and default to empty (keep the original name).
+const DEFAULT_LABELS = {
+  // portrait / hero card
+  portraitAlt: '{name} - {rarity} rarity character from Horizon Walker',
+  crystalAlt: '{name} Future Crystal',
+  costBadge: 'Cost {n}',
+  defaultSummary: 'A skilled character ready to join the battle.',
+  // profile card
+  profileTitle: 'Profile',
+  ageLabel: 'Age:',
+  raceLabel: 'Race:',
+  homelandLabel: 'Homeland:',
+  heightLabel: 'Height:',
+  birthdayLabel: 'Birthday:',
+  // stats box
+  baseStatsTitle: 'Base Stats',
+  statsCaptionFull: 'Level 60, full EX (EX 6)',
+  statsStageCaption: 'Level 60, {stage}',
+  statsStageCaptionFullSuffix: ' (full)',
+  statsAtStage: 'Stats at {stage}',
+  coreStatsSubtitle: 'Core Stats',
+  statStr: 'STR',
+  statTec: 'TEC',
+  statInt: 'INT',
+  statVit: 'VIT',
+  statAgi: 'AGI',
+  coreStrRest: ' Melee ATK',
+  coreTecRest: ' Ranged ATK',
+  coreIntRest: ' Magic ATK',
+  coreVitRest: ' Max HP',
+  coreAgiRest: ' Evasion & AP Rec.',
+  combatSubtitle: 'Combat',
+  maxHpLabel: 'Max HP',
+  meleeAtkLabel: 'Melee ATK',
+  rangedAtkLabel: 'Ranged ATK',
+  magicAtkLabel: 'Magic ATK',
+  speedLabel: 'Speed',
+  startingApLabel: 'Starting AP',
+  apRecoveryLabel: 'AP Recovery',
+  accuracyLabel: 'Accuracy',
+  evadeLabel: 'Evade',
+  critRateLabel: 'Crit Rate',
+  critDmgLabel: 'Crit DMG',
+  blockRateLabel: 'Block Rate',
+  startingApNote: "Starting AP = the character's base starting AP + AP Recovery.",
+  statsFootnote:
+    '* Starting AP is the total AP at the start of battle: each character\'s own base starting AP plus their AP Recovery (shown above). The AP Recovery portion grows with AGI as you raise EX stages.',
+  attributesSubtitle: 'Attributes',
+  boostCol: 'Boost',
+  defCol: 'DEF',
+  attrSlash: 'Slash',
+  attrPierce: 'Pierce',
+  attrCrush: 'Crush',
+  attrHeat: 'Heat',
+  attrCold: 'Cold',
+  attrElectric: 'Electric',
+  attrImmaterial: 'Immaterial',
+  attrPoison: 'Poison',
+  // story
+  storyTitle: 'Character Story',
+  sentenceJoin: ' ',
+  // skills
+  skillsTitle: 'Skills',
+  skillsExplanation: 'All skills shown at maximum level',
+  reworkPointerPre:
+    '{name} was reworked on {date}. The current version is shown here; the pre-rework text is preserved in the ',
+  reworkArchiveLink: 'Rework Archive',
+  reworkPointerPost: ' at the bottom of this page.',
+  passiveLabel: 'Passive',
+  skillLabel: 'Skill',
+  cdLabel: 'CD {n}',
+  apLabel: 'AP {n}',
+  damageLabel: 'Damage:',
+  damageOfType: ' of {type}',
+  damageSplash: ' (+{n} splash)',
+  triggerCondition: '{name} enables: When [Seeker of Pleasure] is active',
+  // unique traits
+  traitsTitle: 'Unique Traits',
+  interestedTraitName: 'Interested',
+  giftLevel5Badge: 'Gift Level 5',
+  uniqueTraitBadge: 'Unique Trait',
+  interestedNoteStrong: 'Unlocks at Gift Affection Level 5:',
+  interestedNoteRest:
+    ' This trait becomes active after reaching 2000 affection points through gift-giving.',
+  level5BonusLabel: 'Gift Affection Level 5 Bonus:',
+  // demi-ascension
+  demiTitle: 'Demi-Ascension',
+  exRequiredBadge: 'EX Required',
+  demiBanner:
+    'Upon Demi-Ascension, this character can replace the leader as party Executor, granting the squad Oblivia immunity. Deployment costs {n} Divine Power.',
+  authoritySkillBadge: 'Authority Skill',
+  demiStageValuesLabel: 'Ascension stage values:',
+  demiStageView: 'Stage {n}',
+  demiStageAria: 'Stage {n}',
+  mightTitle: 'Random Might Skill',
+  mightIntro:
+    'One of these 10 Might skills is granted randomly upon Demi-Ascension. Each skill ranges from Tier 1 to Tier 5, with higher tiers being rarer.',
+  // effects
+  effectsTitle: 'Effect Descriptions',
+  // weapon
+  weaponTitlePrefix: 'Weapon: ',
+  weaponGrowNote:
+    'Base stats grow with weapon level (Lv 1 to Lv 60). EX raises (EX 1 to EX 5) only improve the unique skill.',
+  weaponStaticNote: 'Stats and skills shown at Level 60 and full EX',
+  basicStatsTitle: 'Basic Stats (Lv 1 \u2192 Lv 60)',
+  weaponStatSuffix: ' (weapon)',
+  ratingStatSuffix: ' (rating)',
+  pctSuffix: '(%)',
+  signatureSkillPrefix: 'Signature Skill: ',
+  uniqueSkillPrefix: 'Unique Skill: ',
+  signatureNameStrip: '^[^:]+Signature:\\s*',
+  skillValuesAtRaise: 'Skill values at raise:',
+  signatureReqNote:
+    'Requires {name}: only takes effect while {name} has this weapon equipped. Fixed: no weapon level or EX scaling.',
+  noteLabel: 'Note:',
+  // story gallery
+  storyGalleryTitle: 'Story Gallery',
+  storyGalleryNote: "Illustrations from {name}'s story episodes.",
+  storyCgAlt: '{name} story illustration: {caption}',
+  // skins
+  skinsTitle: 'Skins',
+  skinAlt: '{name} {skin} skin',
+  skinPromoAlt: '{name} {skin} skin announcement art',
+  skinPortraitAlt: '{name} {skin} portrait icon',
+  // videos
+  videosTitle: 'Videos',
+  videosNote: 'Official videos featuring {name} from the Horizon Walker YouTube channel.',
+  videoTitleTpl: '{name}: {title}',
+  playVideoAria: 'Play video: {title}',
+  videoThumbAlt: '{title} video thumbnail',
+  videoBadgeFallback: 'Video',
+  watchMoreLabel: 'Watch more on the official YouTube channel',
+  // gifts
+  giftTitle: 'Gift Preferences',
+  giftExplanation:
+    'Need 2000 points of affection to reach Level 5 to unlock trait bonus and also get gold and game currency too',
+  level5BonusTitle: 'Level 5 Affection Bonus',
+  affectionBonusBadge: 'Affection Bonus',
+  highValueGiftsTitle: 'High-Value Gifts',
+  highValueGiftsDesc:
+    'These rare gifts provide exceptional affection points (80+ total) and are extremely valuable',
+  favoriteGiftsTitle: 'Favorite Gifts',
+  favoriteGiftsDesc:
+    'These gifts give bonus points (20+ more) and are highly valued by this character',
+  likedGiftsTitle: 'Liked Gifts',
+  likedGiftsDesc: 'These gifts give 10 points more and are appreciated by this character',
+  altHighValueTitle: 'Alternative High-Value Option',
+  altHighValueDesc:
+    "Queen's Tiara provides the highest affection points (100) for any character, regardless of preferences",
+  basePointsLabel: 'Base:',
+  bonusPointsLabel: '+ Bonus:',
+  totalPointsLabel: '= Total:',
+  maxAffectionLabel: 'For Max Affection:',
+  giftsCountLabel: '{n} gifts',
+  foundInLabel: 'Found in:',
+  noGiftsTitle: 'Gift Preferences Coming Soon',
+  noGiftsDesc:
+    'Gift preferences for {name} have not been released yet. Check back later for updates on their favorite gifts!',
+  // rework archive
+  reworkTitle: 'Rework Archive',
+  beforeTag: 'Before',
+  afterTag: 'After',
+  // data-name lookups (default empty = keep the original data names)
+  itemNames: {} as Record<string, string>,
+  skinNames: {} as Record<string | number, string>,
+  statTypeNames: {} as Record<string, string>,
+  videoTypes: {} as Record<string, string>,
+};
+
+type HWPageLabels = typeof DEFAULT_LABELS;
+
 const { characterData } = Astro.props;
-const demiskillData = getDemiskillData((characterData as any).heroId ?? characterData.name);
+const labels: HWPageLabels = { ...DEFAULT_LABELS, ...(Astro.props.labels || {}) };
+const usingDefaultLabels = !Astro.props.labels;
+// Fills a `{placeholder}` template string.
+const fill = (tpl: string, values: Record<string, string | number>): string =>
+  tpl.replace(/\{(name|n|stage|type|date|skin|title|caption)\}/g, (m, k) =>
+    values[k] !== undefined ? String(values[k]) : m
+  );
+// English name for internal data lookups (zh pages pass nameEn; EN pages this
+// is just characterData.name, keeping their output unchanged).
+const enName = (characterData as any).nameEn || characterData.name;
+const skinDisplayName = (skin: any): string => labels.skinNames[skin.id] || skin.name;
+const itemDisplayName = (name: string): string => labels.itemNames[name] || name;
+const statTypeDisplayName = (name: string): string => labels.statTypeNames[name] || name;
+const demiskillData = getDemiskillData((characterData as any).heroId ?? enName);
 
 // Community build (from the community builds spreadsheet, keyed by character slug)
 const normHwName = (s: unknown) => String(s ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
 const hwCharEntry = HORIZON_WALKER_CHARACTERS.find(
-  (c: any) => normHwName(c.name) === normHwName(characterData.name)
+  (c: any) => normHwName(c.name) === normHwName(enName)
 );
 const communityBuild = hwCharEntry ? getCommunityBuild(hwCharEntry.slug) : null;
 const reworkArchive = hwCharEntry ? getReworkArchive(hwCharEntry.slug) : null;
@@ -496,8 +686,8 @@ function renderSkillDesc(desc: unknown, key: string): string {
 
 function getDamageSuffix(damage: any): string {
   if (!damage) return '';
-  const suffix = damage.type ? ` of ${damage.type}` : '';
-  const splash = damage.splash ? ` (+${damage.splash} splash)` : '';
+  const suffix = damage.type ? fill(labels.damageOfType, { type: statTypeDisplayName(damage.type) }) : '';
+  const splash = damage.splash ? fill(labels.damageSplash, { n: damage.splash }) : '';
   return suffix + splash;
 }
 
@@ -510,13 +700,11 @@ function formatDamage(skillKey: string, damage: any): string {
   const levelInfo = ld.levels ? ld.levels[String(maxLevel)] : null;
   if (!levelInfo) return damage?.value || '';
   const val = Math.round(parseFloat(levelInfo.min) * 100);
-  const suffix = damage.type ? ` of ${damage.type}` : '';
-  const splash = damage.splash ? ` (+${damage.splash} splash)` : '';
-  return `${val}%${suffix}${splash}`;
+  return `${val}%${getDamageSuffix(damage)}`;
 }
 
 // Convert character name to gift data ID format (handle spaces and special chars)
-const characterId = characterData.name
+const characterId = enName
   .toLowerCase()
   .replace(/\s+/g, '-') // Replace spaces with hyphens
   .replace(/[^a-z0-9-]/g, '') // Remove special characters except hyphens
@@ -598,23 +786,24 @@ function flattenLevelArrays(text) {
 
 function splitStoryParagraphs(story: string | undefined): string[] {
   if (!story) return [];
-  const sentences = story.match(/[^.!?]+[.!?]+(?:["')]?)?/g) || [story];
+  // sentence enders include CJK 。！？ so localized stories split too
+  const sentences = story.match(/[^.!?。！？]+[.!?。！？]+(?:["')]?)?/g) || [story];
   const paragraphs: string[] = [];
   let current: string[] = [];
   for (const sentence of sentences) {
     current.push(sentence.trim());
     if (current.join(' ').length >= 260) {
-      paragraphs.push(current.join(' '));
+      paragraphs.push(current.join(labels.sentenceJoin));
       current = [];
     }
   }
-  if (current.length) paragraphs.push(current.join(' '));
+  if (current.length) paragraphs.push(current.join(labels.sentenceJoin));
   return paragraphs;
 }
 
 // Helper function to create character description from story
 function getCharacterSummary(story: string | undefined): string {
-  if (!story) return 'A skilled character ready to join the battle.';
+  if (!story) return labels.defaultSummary;
 
   // Take first sentence or up to 150 characters, whichever comes first
   const firstSentence = story.split('.')[0];
@@ -627,6 +816,11 @@ function getCharacterSummary(story: string | undefined): string {
   const lastSpace = truncated.lastIndexOf(' ');
   return truncated.substring(0, lastSpace) + '...';
 }
+
+// Short hero-card summary; zh pages pass a ready-made shortDescription
+const heroSummary =
+  (characterData as any).shortDescription ??
+  getCharacterSummary(characterData.story || characterData.description);
 
 // Performance-optimized helper functions for skill replacement grouping
 function groupSkillsByReplacement(skills: Record<string, any>) {
@@ -743,19 +937,19 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
         <div class="character-portrait-img-wrapper">
           <CharacterFullBodyImage
             imageName={characterData.image}
-            alt={`${characterData.name} - ${characterData.rarity} rarity character from Horizon Walker`}
+            alt={fill(labels.portraitAlt, { name: characterData.name, rarity: characterData.rarity })}
             loading="eager"
             format="webp"
             quality={90}
             class="hw-character-fullbody"
           />
-          <CrystalIcon characterImage={characterData.image} alt={`${characterData.name} Future Crystal`} size={48} class="crystal-icon-portrait" />
+          <CrystalIcon characterImage={characterData.image} alt={fill(labels.crystalAlt, { name: characterData.name })} size={48} class="crystal-icon-portrait" />
           <div class="character-portrait-overlay"></div>
           <div class="character-portrait-info">
             <h1 class="character-name">{characterData.name}</h1>
             <div class="character-portrait-badges">
               <HWRarityIcon rarity={characterData.rarity} width={56} height={28} />
-              <span class="hw-badge" data-type="Cost">Cost {characterData.cost}</span>
+              <span class="hw-badge" data-type="Cost">{fill(labels.costBadge, { n: characterData.cost })}</span>
             </div>
           </div>
         </div>
@@ -763,32 +957,32 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 
       <div class="character-info-card">
         <p class="character-description">
-          {getCharacterSummary(characterData.story || characterData.description)}
+          {heroSummary}
         </p>
 
         {
           characterData.profile && (
             <div class="character-profile-section">
-              <div class="character-info-label">Profile</div>
+              <div class="character-info-label">{labels.profileTitle}</div>
               <div class="character-profile-grid">
                 <div class="profile-item">
-                  <span class="profile-label">Age:</span>
+                  <span class="profile-label">{labels.ageLabel}</span>
                   <span class="profile-value">{characterData.profile.age}</span>
                 </div>
                 <div class="profile-item">
-                  <span class="profile-label">Race:</span>
+                  <span class="profile-label">{labels.raceLabel}</span>
                   <span class="profile-value">{characterData.profile.racial}</span>
                 </div>
                 <div class="profile-item">
-                  <span class="profile-label">Homeland:</span>
+                  <span class="profile-label">{labels.homelandLabel}</span>
                   <span class="profile-value">{characterData.profile.homeland}</span>
                 </div>
                 <div class="profile-item">
-                  <span class="profile-label">Height:</span>
+                  <span class="profile-label">{labels.heightLabel}</span>
                   <span class="profile-value">{characterData.profile.height}</span>
                 </div>
                 <div class="profile-item">
-                  <span class="profile-label">Birthday:</span>
+                  <span class="profile-label">{labels.birthdayLabel}</span>
                   <span class="profile-value">{characterData.profile.birthday}</span>
                 </div>
               </div>
@@ -803,8 +997,8 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
     {characterData.stats && (<div class="character-stats-container">
       <div class="character-stats-box">
         <div class="character-stats-header">
-          <h3 class="character-stats-title">Base Stats</h3>
-          <p class="character-stats-explanation" data-stats-caption>Level 60, full EX (EX 6)</p>
+          <h3 class="character-stats-title">{labels.baseStatsTitle}</h3>
+          <p class="character-stats-explanation" data-stats-caption>{labels.statsCaptionFull}</p>
         </div>
         {(characterData as any).rarityStages && (
           <div class="rarity-stage-selector" data-stages={JSON.stringify((characterData as any).rarityStages)}>
@@ -813,8 +1007,8 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                 type="button"
                 class={`rarity-stage-chip${stage === 'EX 6' ? ' active' : ''}`}
                 data-stage={stage}
-                title={`Stats at ${stage}`}
-                aria-label={`Stats at ${stage}`}
+                title={fill(labels.statsAtStage, { stage })}
+                aria-label={fill(labels.statsAtStage, { stage })}
               >
                 <img
                   src={r2Url('horizon-walker', `tier-icons/UI_Tier_Icon_${String(5 + i).padStart(2, '0')}.png`)}
@@ -828,159 +1022,187 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
           </div>
         )}
 
-        <div class="character-stats-subtitle">Core Stats</div>
+        <div class="character-stats-subtitle">{labels.coreStatsSubtitle}</div>
         <div class="core-stats-explanation">
-          <span><span class="stat-name">STR</span> Melee ATK</span>
-          <span><span class="stat-name">TEC</span> Ranged ATK</span>
-          <span><span class="stat-name">INT</span> Magic ATK</span>
-          <span><span class="stat-name">VIT</span> Max HP</span>
-          <span><span class="stat-name">AGI</span> Evasion & AP Rec.</span>
+          <span><span class="stat-name">{labels.statStr}</span>{labels.coreStrRest}</span>
+          <span><span class="stat-name">{labels.statTec}</span>{labels.coreTecRest}</span>
+          <span><span class="stat-name">{labels.statInt}</span>{labels.coreIntRest}</span>
+          <span><span class="stat-name">{labels.statVit}</span>{labels.coreVitRest}</span>
+          <span><span class="stat-name">{labels.statAgi}</span>{labels.coreAgiRest}</span>
         </div>
         <div class="stats-core-row">
           <div class="stats-core-item">
             <div class="stats-core-value" data-stat-field="strength">{characterData.stats.strength}</div>
-            <div class="stats-core-label">STR</div>
+            <div class="stats-core-label">{labels.statStr}</div>
           </div>
           <div class="stats-core-item">
             <div class="stats-core-value" data-stat-field="technic">{characterData.stats.technic}</div>
-            <div class="stats-core-label">TEC</div>
+            <div class="stats-core-label">{labels.statTec}</div>
           </div>
           <div class="stats-core-item">
             <div class="stats-core-value" data-stat-field="intelligence">{characterData.stats.intelligence}</div>
-            <div class="stats-core-label">INT</div>
+            <div class="stats-core-label">{labels.statInt}</div>
           </div>
           <div class="stats-core-item">
             <div class="stats-core-value" data-stat-field="vitality">{characterData.stats.vitality}</div>
-            <div class="stats-core-label">VIT</div>
+            <div class="stats-core-label">{labels.statVit}</div>
           </div>
           <div class="stats-core-item">
             <div class="stats-core-value" data-stat-field="agility">{characterData.stats.agility}</div>
-            <div class="stats-core-label">AGI</div>
+            <div class="stats-core-label">{labels.statAgi}</div>
           </div>
         </div>
 
-        <div class="character-stats-subtitle">Combat</div>
+        <div class="character-stats-subtitle">{labels.combatSubtitle}</div>
         <div class="stats-table">
           <div class="stats-row">
-            <span class="stats-row-label">Max HP</span>
+            <span class="stats-row-label">{labels.maxHpLabel}</span>
             <span class="stats-row-value" data-stat-field="maxHp">{characterData.stats.maxHp}</span>
           </div>
           <div class="stats-row">
-            <span class="stats-row-label">Melee ATK</span>
+            <span class="stats-row-label">{labels.meleeAtkLabel}</span>
             <span class="stats-row-value" data-stat-field="meleeAtk">{characterData.stats.meleeAtk}</span>
           </div>
           <div class="stats-row">
-            <span class="stats-row-label">Ranged ATK</span>
+            <span class="stats-row-label">{labels.rangedAtkLabel}</span>
             <span class="stats-row-value" data-stat-field="rangedAtk">{characterData.stats.rangedAtk}</span>
           </div>
           <div class="stats-row">
-            <span class="stats-row-label">Magic ATK</span>
+            <span class="stats-row-label">{labels.magicAtkLabel}</span>
             <span class="stats-row-value" data-stat-field="magicAtk">{characterData.stats.magicAtk}</span>
           </div>
           <div class="stats-row">
-            <span class="stats-row-label">Speed</span>
+            <span class="stats-row-label">{labels.speedLabel}</span>
             <span class="stats-row-value">{characterData.stats.spd}</span>
           </div>
-          <div class="stats-row" title="Starting AP = the character's base starting AP + AP Recovery.">
-            <span class="stats-row-label">Starting AP<sup class="stats-note">*</sup></span>
+          <div class="stats-row" title={labels.startingApNote}>
+            <span class="stats-row-label">{labels.startingApLabel}<sup class="stats-note">*</sup></span>
             <span class="stats-row-value" data-stat-field="startingAp">{characterData.stats.startingAp}</span>
           </div>
           <div class="stats-row">
-            <span class="stats-row-label">AP Recovery</span>
+            <span class="stats-row-label">{labels.apRecoveryLabel}</span>
             <span class="stats-row-value" data-stat-field="apRecovery">{characterData.stats.apRecovery}</span>
           </div>
           <div class="stats-row">
-            <span class="stats-row-label">Accuracy</span>
+            <span class="stats-row-label">{labels.accuracyLabel}</span>
             <span class="stats-row-value">{characterData.stats.accuracy}</span>
           </div>
           <div class="stats-row">
-            <span class="stats-row-label">Evade</span>
+            <span class="stats-row-label">{labels.evadeLabel}</span>
             <span class="stats-row-value" data-stat-field="evade">{characterData.stats.evade}</span>
           </div>
           <div class="stats-row">
-            <span class="stats-row-label">Crit Rate</span>
+            <span class="stats-row-label">{labels.critRateLabel}</span>
             <span class="stats-row-value">{characterData.stats.critRate}%</span>
           </div>
           <div class="stats-row">
-            <span class="stats-row-label">Crit DMG</span>
+            <span class="stats-row-label">{labels.critDmgLabel}</span>
             <span class="stats-row-value">{characterData.stats.critDmg}%</span>
           </div>
           <div class="stats-row">
-            <span class="stats-row-label">Block Rate</span>
+            <span class="stats-row-label">{labels.blockRateLabel}</span>
             <span class="stats-row-value">{characterData.stats.blockRate}</span>
           </div>
         </div>
-        <p class="stats-footnote">* Starting AP is the total AP at the start of battle: each character's own base starting AP plus their AP Recovery (shown above). The AP Recovery portion grows with AGI as you raise EX stages.</p>
-        <script is:inline>
-          (function() {
-            document.querySelectorAll('.rarity-stage-selector').forEach(function(sel) {
-              var stages;
-              try { stages = JSON.parse(sel.getAttribute('data-stages') || '{}'); } catch (e) { return; }
-              var box = sel.closest('.character-stats-box');
-              if (!box) return;
-              sel.querySelectorAll('.rarity-stage-chip').forEach(function(chip) {
-                chip.addEventListener('click', function() {
-                  sel.querySelectorAll('.rarity-stage-chip').forEach(function(c) { c.classList.remove('active'); });
-                  chip.classList.add('active');
-                  var stage = chip.getAttribute('data-stage');
-                  var st = stages[stage];
-                  if (!st) return;
-                  box.querySelectorAll('[data-stat-field]').forEach(function(el) {
-                    var f = el.getAttribute('data-stat-field');
-                    if (st[f] !== undefined) el.textContent = st[f];
+        <p class="stats-footnote">{labels.statsFootnote}</p>
+        {usingDefaultLabels ? (
+          <script is:inline>
+            (function() {
+              document.querySelectorAll('.rarity-stage-selector').forEach(function(sel) {
+                var stages;
+                try { stages = JSON.parse(sel.getAttribute('data-stages') || '{}'); } catch (e) { return; }
+                var box = sel.closest('.character-stats-box');
+                if (!box) return;
+                sel.querySelectorAll('.rarity-stage-chip').forEach(function(chip) {
+                  chip.addEventListener('click', function() {
+                    sel.querySelectorAll('.rarity-stage-chip').forEach(function(c) { c.classList.remove('active'); });
+                    chip.classList.add('active');
+                    var stage = chip.getAttribute('data-stage');
+                    var st = stages[stage];
+                    if (!st) return;
+                    box.querySelectorAll('[data-stat-field]').forEach(function(el) {
+                      var f = el.getAttribute('data-stat-field');
+                      if (st[f] !== undefined) el.textContent = st[f];
+                    });
+                    var cap = box.querySelector('[data-stats-caption]');
+                    if (cap) cap.textContent = 'Level 60, ' + stage + (stage === 'EX 6' ? ' (full)' : '');
                   });
-                  var cap = box.querySelector('[data-stats-caption]');
-                  if (cap) cap.textContent = 'Level 60, ' + stage + (stage === 'EX 6' ? ' (full)' : '');
                 });
               });
-            });
-          })();
-        </script>
+            })();
+          </script>
+        ) : (
+          <script is:inline define:vars={{ hwStageCaption: labels.statsStageCaption, hwStageFullSuffix: labels.statsStageCaptionFullSuffix }}>
+            (function() {
+              document.querySelectorAll('.rarity-stage-selector').forEach(function(sel) {
+                var stages;
+                try { stages = JSON.parse(sel.getAttribute('data-stages') || '{}'); } catch (e) { return; }
+                var box = sel.closest('.character-stats-box');
+                if (!box) return;
+                sel.querySelectorAll('.rarity-stage-chip').forEach(function(chip) {
+                  chip.addEventListener('click', function() {
+                    sel.querySelectorAll('.rarity-stage-chip').forEach(function(c) { c.classList.remove('active'); });
+                    chip.classList.add('active');
+                    var stage = chip.getAttribute('data-stage');
+                    var st = stages[stage];
+                    if (!st) return;
+                    box.querySelectorAll('[data-stat-field]').forEach(function(el) {
+                      var f = el.getAttribute('data-stat-field');
+                      if (st[f] !== undefined) el.textContent = st[f];
+                    });
+                    var cap = box.querySelector('[data-stats-caption]');
+                    if (cap) cap.textContent = hwStageCaption.replace('{stage}', stage) + (stage === 'EX 6' ? hwStageFullSuffix : '');
+                  });
+                });
+              });
+            })();
+          </script>
+        )}
 
-        <div class="character-stats-subtitle">Attributes</div>
+        <div class="character-stats-subtitle">{labels.attributesSubtitle}</div>
         <div class="stats-attr-table">
           <div class="stats-attr-header">
             <span></span>
-            <span class="stats-attr-col">Boost</span>
-            <span class="stats-attr-col">DEF</span>
+            <span class="stats-attr-col">{labels.boostCol}</span>
+            <span class="stats-attr-col">{labels.defCol}</span>
           </div>
           <div class="stats-attr-row">
-            <span class="stats-attr-label">Slash</span>
+            <span class="stats-attr-label">{labels.attrSlash}</span>
             <span class="stats-attr-value">{characterData.stats.slashBoost}</span>
             <span class="stats-attr-value">{characterData.stats.slashDef}</span>
           </div>
           <div class="stats-attr-row">
-            <span class="stats-attr-label">Pierce</span>
+            <span class="stats-attr-label">{labels.attrPierce}</span>
             <span class="stats-attr-value">{characterData.stats.pierceBoost}</span>
             <span class="stats-attr-value">{characterData.stats.pierceDef}</span>
           </div>
           <div class="stats-attr-row">
-            <span class="stats-attr-label">Crush</span>
+            <span class="stats-attr-label">{labels.attrCrush}</span>
             <span class="stats-attr-value">{characterData.stats.crushBoost}</span>
             <span class="stats-attr-value">{characterData.stats.crushDef}</span>
           </div>
           <div class="stats-attr-row">
-            <span class="stats-attr-label">Heat</span>
+            <span class="stats-attr-label">{labels.attrHeat}</span>
             <span class="stats-attr-value">{characterData.stats.heatBoost}</span>
             <span class="stats-attr-value">{characterData.stats.heatDef}</span>
           </div>
           <div class="stats-attr-row">
-            <span class="stats-attr-label">Cold</span>
+            <span class="stats-attr-label">{labels.attrCold}</span>
             <span class="stats-attr-value">{characterData.stats.coldBoost}</span>
             <span class="stats-attr-value">{characterData.stats.coldDef}</span>
           </div>
           <div class="stats-attr-row">
-            <span class="stats-attr-label">Electric</span>
+            <span class="stats-attr-label">{labels.attrElectric}</span>
             <span class="stats-attr-value">{characterData.stats.electricBoost}</span>
             <span class="stats-attr-value">{characterData.stats.electricDef}</span>
           </div>
           <div class="stats-attr-row">
-            <span class="stats-attr-label">Immaterial</span>
+            <span class="stats-attr-label">{labels.attrImmaterial}</span>
             <span class="stats-attr-value">{characterData.stats.immaterialBoost}</span>
             <span class="stats-attr-value">{characterData.stats.immaterialDef}</span>
           </div>
           <div class="stats-attr-row">
-            <span class="stats-attr-label">Poison</span>
+            <span class="stats-attr-label">{labels.attrPoison}</span>
             <span class="stats-attr-value">{characterData.stats.poisonBoost}</span>
             <span class="stats-attr-value">{characterData.stats.poisonDef}</span>
           </div>
@@ -994,7 +1216,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 {
   characterData.story && (
     <section class="content-section character-story-section">
-      <h2 class="section-title">Character Story</h2>
+      <h2 class="section-title">{labels.storyTitle}</h2>
       <div class="character-story-content">
         {splitStoryParagraphs(characterData.story).map((para) => <p class="character-story-text">{para}</p>)}
       </div>
@@ -1004,14 +1226,14 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 
 <!-- Skills Section -->
 <section class="content-section skills-section" data-skill-levels={skillLevelJson}>
-  <h2 class="section-title">Skills</h2>
-  <p class="skills-explanation">All skills shown at maximum level</p>
+  <h2 class="section-title">{labels.skillsTitle}</h2>
+  <p class="skills-explanation">{labels.skillsExplanation}</p>
   {
     reworkArchive && (
       <p class="legacy-rework-pointer">
-        {characterData.name} was reworked on {reworkArchive.date}. The current version is shown
-        here; the pre-rework text is preserved in the{' '}
-        <a href="#rework-archive">Rework Archive</a> at the bottom of this page.
+        {fill(labels.reworkPointerPre, { name: characterData.name, date: reworkArchive.date })}{' '}
+        <a href="#rework-archive">{labels.reworkArchiveLink}</a>
+        {labels.reworkPointerPost}
       </p>
     )
   }
@@ -1036,22 +1258,22 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                   <h3 class="skill-title">{triggerSkill.name}</h3>
                   <div class="skill-meta">
                     {triggerSkill.type === 'Passive' ? (
-                      <span class="skill-type-label passive-label">Passive</span>
+                      <span class="skill-type-label passive-label">{labels.passiveLabel}</span>
                     ) : (
-                      <span class="skill-type-label skill-label">Skill</span>
+                      <span class="skill-type-label skill-label">{labels.skillLabel}</span>
                     )}
                     {skillLevelData[triggerKey] && (
                       <input type="number" class="skill-level-input" data-skill={triggerKey} min="1" max={skillLevelData[triggerKey].maxLevel} value={skillLevelData[triggerKey].maxLevel} />
                     )}
                     {triggerSkill.type !== 'Passive' && triggerSkill.cooldown != null && triggerSkill.cooldown > 0 && (
-                      <span class="skill-cooldown">CD {triggerSkill.cooldown}</span>
+                      <span class="skill-cooldown">{fill(labels.cdLabel, { n: triggerSkill.cooldown })}</span>
                     )}
                   </div>
                 </div>
                 <p class="skill-description" set:html={safeRenderHtml(renderSkillDesc(triggerSkill.description, triggerKey)).content} />
                 {triggerSkill.damage && (
                   <div class="skill-damage">
-                    <span class="damage-label">Damage:</span>{' '}
+                    <span class="damage-label">{labels.damageLabel}</span>{' '}
                     <span class="damage-value" data-skill-key={triggerKey} data-damage-suffix={getDamageSuffix(triggerSkill.damage)}>
                       {formatDamage(triggerKey, triggerSkill.damage)}
                     </span>
@@ -1064,7 +1286,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                 <div class="skill-replacement-group">
                   <div class="skill-replacement-header">
                     <p class="skill-replacement-condition">
-                      {triggerSkill.name} enables: When [Seeker of Pleasure] is active
+                      {fill(labels.triggerCondition, { name: triggerSkill.name })}
                     </p>
                   </div>
                   <div class="skill-replacement-pair">
@@ -1077,25 +1299,25 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                         <h3 class="skill-title">{pair.baseSkill.name}</h3>
                         <div class="skill-meta">
                           {pair.baseSkill.type === 'Passive' ? (
-                            <span class="skill-type-label passive-label">Passive</span>
+                            <span class="skill-type-label passive-label">{labels.passiveLabel}</span>
                           ) : (
-                            <span class="skill-type-label skill-label">Skill</span>
+                            <span class="skill-type-label skill-label">{labels.skillLabel}</span>
                           )}
                           {skillLevelData[pair.baseKey] && (
                             <input type="number" class="skill-level-input" data-skill={pair.baseKey} min="1" max={skillLevelData[pair.baseKey].maxLevel} value={skillLevelData[pair.baseKey].maxLevel} />
                           )}
                           {pair.baseSkill.type !== 'Passive' && pair.baseSkill.apCost != null && pair.baseSkill.apCost > 0 && (
-                            <span class="skill-cost">AP {pair.baseSkill.apCost}</span>
+                            <span class="skill-cost">{fill(labels.apLabel, { n: pair.baseSkill.apCost })}</span>
                           )}
                           {pair.baseSkill.type !== 'Passive' && pair.baseSkill.cooldown != null && pair.baseSkill.cooldown > 0 && (
-                            <span class="skill-cooldown">CD {pair.baseSkill.cooldown}</span>
+                            <span class="skill-cooldown">{fill(labels.cdLabel, { n: pair.baseSkill.cooldown })}</span>
                           )}
                         </div>
                       </div>
                       <p class="skill-description" set:html={safeRenderHtml(renderSkillDesc(pair.baseSkill.description, pair.baseKey)).content} />
                       {pair.baseSkill.damage && (
                         <div class="skill-damage">
-                          <span class="damage-label">Damage:</span>{' '}
+                          <span class="damage-label">{labels.damageLabel}</span>{' '}
                           <span class="damage-value" data-skill-key={pair.baseKey} data-damage-suffix={getDamageSuffix(pair.baseSkill.damage)}>
                             {formatDamage(pair.baseKey, pair.baseSkill.damage)}
                           </span>
@@ -1115,25 +1337,25 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                         <h3 class="skill-title">{pair.replacementSkill.name}</h3>
                         <div class="skill-meta">
                           {pair.replacementSkill.type === 'Passive' ? (
-                            <span class="skill-type-label passive-label">Passive</span>
+                            <span class="skill-type-label passive-label">{labels.passiveLabel}</span>
                           ) : (
-                            <span class="skill-type-label skill-label">Skill</span>
+                            <span class="skill-type-label skill-label">{labels.skillLabel}</span>
                           )}
                           {skillLevelData[pair.replacementKey] && (
                             <input type="number" class="skill-level-input" data-skill={pair.replacementKey} min="1" max={skillLevelData[pair.replacementKey].maxLevel} value={skillLevelData[pair.replacementKey].maxLevel} />
                           )}
                           {pair.replacementSkill.type !== 'Passive' && pair.replacementSkill.apCost != null && pair.replacementSkill.apCost > 0 && (
-                            <span class="skill-cost">AP {pair.replacementSkill.apCost}</span>
+                            <span class="skill-cost">{fill(labels.apLabel, { n: pair.replacementSkill.apCost })}</span>
                           )}
                           {pair.replacementSkill.type !== 'Passive' && pair.replacementSkill.cooldown != null && pair.replacementSkill.cooldown > 0 && (
-                            <span class="skill-cooldown">CD {pair.replacementSkill.cooldown}</span>
+                            <span class="skill-cooldown">{fill(labels.cdLabel, { n: pair.replacementSkill.cooldown })}</span>
                           )}
                         </div>
                       </div>
                       <p class="skill-description" set:html={safeRenderHtml(renderSkillDesc(pair.replacementSkill.description, pair.replacementKey)).content} />
                       {pair.replacementSkill.damage && (
                         <div class="skill-damage">
-                          <span class="damage-label">Damage:</span>{' '}
+                          <span class="damage-label">{labels.damageLabel}</span>{' '}
                           <span class="damage-value" data-skill-key={pair.replacementKey} data-damage-suffix={getDamageSuffix(pair.replacementSkill.damage)}>
                             {formatDamage(pair.replacementKey, pair.replacementSkill.damage)}
                           </span>
@@ -1157,25 +1379,25 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                 <h3 class="skill-title">{skill.name}</h3>
                 <div class="skill-meta">
                   {skill.type === 'Passive' ? (
-                    <span class="skill-type-label passive-label">Passive</span>
+                    <span class="skill-type-label passive-label">{labels.passiveLabel}</span>
                   ) : (
-                    <span class="skill-type-label skill-label">Skill</span>
+                    <span class="skill-type-label skill-label">{labels.skillLabel}</span>
                   )}
                   {skillLevelData[key] && (
                     <input type="number" class="skill-level-input" data-skill={key} min="1" max={skillLevelData[key].maxLevel} value={skillLevelData[key].maxLevel} />
                   )}
                   {skill.type !== 'Passive' && skill.apCost != null && skill.apCost > 0 && (
-                    <span class="skill-cost">AP {skill.apCost}</span>
+                    <span class="skill-cost">{fill(labels.apLabel, { n: skill.apCost })}</span>
                   )}
                   {skill.type !== 'Passive' && skill.cooldown != null && skill.cooldown > 0 && (
-                    <span class="skill-cooldown">CD {skill.cooldown}</span>
+                    <span class="skill-cooldown">{fill(labels.cdLabel, { n: skill.cooldown })}</span>
                   )}
                 </div>
               </div>
               <p class="skill-description" set:html={safeRenderHtml(renderSkillDesc(skill.description, key)).content} />
               {skill.damage && (
                 <div class="skill-damage">
-                  <span class="damage-label">Damage:</span>{' '}
+                  <span class="damage-label">{labels.damageLabel}</span>{' '}
                   <span class="damage-value" data-skill-key={key} data-damage-suffix={getDamageSuffix(skill.damage)}>
                     {formatDamage(key, skill.damage)}
                   </span>
@@ -1240,43 +1462,42 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 {
   highlightedTraits && (
     <section class="content-section traits-section">
-      <h2 class="section-title">Unique Traits</h2>
+      <h2 class="section-title">{labels.traitsTitle}</h2>
 
       {Object.entries(highlightedTraits).map(([key, trait]: [string, any]) => (
         <div
-          class={`trait-card ${key.replace(/([A-Z])/g, '-$1').toLowerCase()} ${trait.name === 'Interested' ? 'interested-trait-card' : ''}`}
+          class={`trait-card ${key.replace(/([A-Z])/g, '-$1').toLowerCase()} ${trait.name === labels.interestedTraitName ? 'interested-trait-card' : ''}`}
         >
           <div class="trait-header">
             <h3 class="trait-title">{trait.name}</h3>
-            {trait.name === 'Interested' ? (
+            {trait.name === labels.interestedTraitName ? (
               <div class="trait-badges">
                 <span class="hw-badge" data-type="Special">
-                  Gift Level 5
+                  {labels.giftLevel5Badge}
                 </span>
                 <span class="hw-badge" data-type="Trait">
-                  Unique Trait
+                  {labels.uniqueTraitBadge}
                 </span>
               </div>
             ) : (
               <span class="hw-badge" data-type="Trait">
-                Unique Trait
+                {labels.uniqueTraitBadge}
               </span>
             )}
           </div>
           <p class="trait-description" set:html={safeRenderHtml(trait.description).content} />
-          {trait.name === 'Interested' && (
+          {trait.name === labels.interestedTraitName && (
             <div class="interested-trait-info">
               <p class="gift-affection-note">
-                <strong>Unlocks at Gift Affection Level 5:</strong> This trait becomes active after
-                reaching 2000 affection points through gift-giving.
+                <strong>{labels.interestedNoteStrong}</strong>{labels.interestedNoteRest}
               </p>
               {/* Display gift affection bonuses */}
               {giftData?.level5Bonus && (
                 <div class="trait-bonuses">
-                  <strong>Gift Affection Level 5 Bonus:</strong>
+                  <strong>{labels.level5BonusLabel}</strong>
                   <ul class="bonus-list">
                     <li>
-                      {giftData.level5Bonus.type} +{giftData.level5Bonus.value}
+                      {statTypeDisplayName(giftData.level5Bonus.type)} +{giftData.level5Bonus.value}
                     </li>
                   </ul>
                 </div>
@@ -1305,26 +1526,26 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 {
   demiskillData && (
     <section class="content-section demiskill-section">
-      <h2 class="section-title">Demi-Ascension</h2>
+      <h2 class="section-title">{labels.demiTitle}</h2>
 
       <div class="demiskill-info-banner">
-        <span class="hw-badge" data-type="EX">EX Required</span>
-        <p>Upon Demi-Ascension, this character can replace the leader as party Executor, granting the squad Oblivia immunity. Deployment costs {demiskillData.deploymentCost} Divine Power.</p>
+        <span class="hw-badge" data-type="EX">{labels.exRequiredBadge}</span>
+        <p>{fill(labels.demiBanner, { n: demiskillData.deploymentCost })}</p>
       </div>
 
       <div class="demiskill-authority-card">
         <div class="demiskill-authority-header">
           <h3 class="demiskill-authority-title">{demiskillData.authoritySkill.name}</h3>
-          <span class="hw-badge" data-type="Trait">Authority Skill</span>
+          <span class="hw-badge" data-type="Trait">{labels.authoritySkillBadge}</span>
         </div>
         <div class="demiskill-authority-tierbar">
-          <span class="demiskill-tierbar-label">Ascension stage values:</span>
+          <span class="demiskill-tierbar-label">{labels.demiStageValuesLabel}</span>
           <div class="demiskill-tier-chips">
             {[1, 2, 3, 4, 5, 6, 7].map((lv) => (
-              <button type="button" class={`demiskill-tier-chip${lv === 7 ? ' active' : ''}`} data-demi-tier={lv} aria-label={`Stage ${lv}`}>{lv}</button>
+              <button type="button" class={`demiskill-tier-chip${lv === 7 ? ' active' : ''}`} data-demi-tier={lv} aria-label={fill(labels.demiStageAria, { n: lv })}>{lv}</button>
             ))}
           </div>
-          <span class="demiskill-tier-view" data-demi-view>Stage 7</span>
+          <span class="demiskill-tier-view" data-demi-view>{fill(labels.demiStageView, { n: 7 })}</span>
         </div>
         <div class="demiskill-authority-body">
           {demiskillData.authoritySkill.description.split('\n\n').map((paragraph: string) => (
@@ -1334,8 +1555,8 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
       </div>
 
       <div class="demiskill-might-section">
-        <h3 class="demiskill-subtitle">Random Might Skill</h3>
-        <p class="demiskill-might-intro">One of these 10 Might skills is granted randomly upon Demi-Ascension. Each skill ranges from Tier 1 to Tier 5, with higher tiers being rarer.</p>
+        <h3 class="demiskill-subtitle">{labels.mightTitle}</h3>
+        <p class="demiskill-might-intro">{labels.mightIntro}</p>
 
         <div class="demiskill-tier-probabilities">
           {TIER_PROBABILITIES.map((tp: any) => (
@@ -1372,27 +1593,51 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
         </div>
       </div>
 
-      <script is:inline>
-        (function() {
-          document.querySelectorAll('.demiskill-tier-chips').forEach(function(chips) {
-            var wrap = chips.closest('.demiskill-section');
-            if (!wrap) return;
-            chips.querySelectorAll('.demiskill-tier-chip').forEach(function(chip) {
-              chip.addEventListener('click', function() {
-                chips.querySelectorAll('.demiskill-tier-chip').forEach(function(c) { c.classList.remove('active'); });
-                chip.classList.add('active');
-                var lv = parseInt(chip.getAttribute('data-demi-tier')) || 7;
-                wrap.querySelectorAll('.demi-arr').forEach(function(el) {
-                  var vals = (el.getAttribute('data-vals') || '').split(',');
-                  if (vals.length) el.textContent = vals[Math.min(lv, vals.length) - 1];
+      {usingDefaultLabels ? (
+        <script is:inline>
+          (function() {
+            document.querySelectorAll('.demiskill-tier-chips').forEach(function(chips) {
+              var wrap = chips.closest('.demiskill-section');
+              if (!wrap) return;
+              chips.querySelectorAll('.demiskill-tier-chip').forEach(function(chip) {
+                chip.addEventListener('click', function() {
+                  chips.querySelectorAll('.demiskill-tier-chip').forEach(function(c) { c.classList.remove('active'); });
+                  chip.classList.add('active');
+                  var lv = parseInt(chip.getAttribute('data-demi-tier')) || 7;
+                  wrap.querySelectorAll('.demi-arr').forEach(function(el) {
+                    var vals = (el.getAttribute('data-vals') || '').split(',');
+                    if (vals.length) el.textContent = vals[Math.min(lv, vals.length) - 1];
+                  });
+                  var view = wrap.querySelector('[data-demi-view]');
+                  if (view) view.textContent = 'Stage ' + lv;
                 });
-                var view = wrap.querySelector('[data-demi-view]');
-                if (view) view.textContent = 'Stage ' + lv;
               });
             });
-          });
-        })();
-      </script>
+          })();
+        </script>
+      ) : (
+        <script is:inline define:vars={{ hwDemiStageView: labels.demiStageView }}>
+          (function() {
+            document.querySelectorAll('.demiskill-tier-chips').forEach(function(chips) {
+              var wrap = chips.closest('.demiskill-section');
+              if (!wrap) return;
+              chips.querySelectorAll('.demiskill-tier-chip').forEach(function(chip) {
+                chip.addEventListener('click', function() {
+                  chips.querySelectorAll('.demiskill-tier-chip').forEach(function(c) { c.classList.remove('active'); });
+                  chip.classList.add('active');
+                  var lv = parseInt(chip.getAttribute('data-demi-tier')) || 7;
+                  wrap.querySelectorAll('.demi-arr').forEach(function(el) {
+                    var vals = (el.getAttribute('data-vals') || '').split(',');
+                    if (vals.length) el.textContent = vals[Math.min(lv, vals.length) - 1];
+                  });
+                  var view = wrap.querySelector('[data-demi-view]');
+                  if (view) view.textContent = hwDemiStageView.replace('{n}', lv);
+                });
+              });
+            });
+          })();
+        </script>
+      )}
     </section>
   )
 }
@@ -1401,7 +1646,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 {
   characterData.effects && Object.keys(characterData.effects).length > 0 && (
     <section class="content-section effects-section">
-      <h2 class="section-title">Effect Descriptions</h2>
+      <h2 class="section-title">{labels.effectsTitle}</h2>
       <div class="effects-grid">
         {Object.entries(characterData.effects).map(([, effect]: [string, Effect]) => (
           <div class="effect-item">
@@ -1420,8 +1665,8 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 {
   characterData.weapon && (
     <section class="content-section weapon-section">
-      <h2 class="section-title">Weapon: {characterData.weapon.name}</h2>
-      <p class="character-stats-explanation">{(characterData.weapon as any).levelStats ? 'Base stats grow with weapon level (Lv 1 to Lv 60). EX raises (EX 1 to EX 5) only improve the unique skill.' : 'Stats and skills shown at Level 60 and full EX'}</p>
+      <h2 class="section-title">{labels.weaponTitlePrefix}{characterData.weapon.name}</h2>
+      <p class="character-stats-explanation">{(characterData.weapon as any).levelStats ? labels.weaponGrowNote : labels.weaponStaticNote}</p>
 
       <div class="weapon-flex">
         {/* Left: weapon art + basic stats */}
@@ -1446,14 +1691,14 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 
           {(characterData.weapon as any).levelStats ? (
             <div class="weapon-basic-card">
-              <h3 class="weapon-basic-title">Basic Stats (Lv 1 {'→'} Lv 60)</h3>
+              <h3 class="weapon-basic-title">{labels.basicStatsTitle}</h3>
               <div class="stats-table">
                 {Object.entries((characterData.weapon as any).levelStats).map(([stat, vals]: [string, any]) => {
-                  const isPct = stat.includes('(%)');
+                  const isPct = stat.includes(labels.pctSuffix);
                   const fmt = (v: number) => (isPct ? `+${v}%` : `${v}`);
                   return (
                     <div class="stats-row">
-                      <span class="stats-row-label">{stat.replace(' (weapon)', ' (rating)')}</span>
+                      <span class="stats-row-label">{stat.replace(labels.weaponStatSuffix, labels.ratingStatSuffix)}</span>
                       <span class="stats-row-value">{fmt(vals[0])} {'→'} {fmt(vals[1])}</span>
                     </div>
                   );
@@ -1468,17 +1713,17 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
           {highlightedWeaponSkills &&
             Object.entries(highlightedWeaponSkills).map(([key, skill]: [string, any]) => {
               const isSignature = String(skill.type || '').includes('Signature');
-              const shortName = isSignature ? String(skill.name || '').replace(/^[^:]+Signature:\s*/, '') : skill.name;
+              const shortName = isSignature ? String(skill.name || '').replace(new RegExp(labels.signatureNameStrip), '') : skill.name;
               return (
                 <div class={`weapon-skill-card2${isSignature ? ' weapon-skill-card2-sig' : ''}`}>
                   <div class="weapon-skill-head">
-                    <h3 class="weapon-skill-head-title">{isSignature ? `Signature Skill: ${shortName}` : `Unique Skill: ${skill.name}`}</h3>
+                    <h3 class="weapon-skill-head-title">{isSignature ? `${labels.signatureSkillPrefix}${shortName}` : `${labels.uniqueSkillPrefix}${skill.name}`}</h3>
                     <span class="hw-badge" data-type={skill.type || 'Unique'}>{skill.type || 'Unique'}</span>
                   </div>
 
                   {!isSignature && (characterData.weapon as any).exLevels && (
                     <div class="weapon-ex-row">
-                      <span class="weapon-ex-label">Skill values at raise:</span>
+                      <span class="weapon-ex-label">{labels.skillValuesAtRaise}</span>
                       <div class="weapon-level-selector weapon-ex-tabs">
                         {[1, 2, 3, 4, 5].map((lv) => (
                           <button
@@ -1502,12 +1747,12 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 
                   {isSignature && (
                     <p class="weapon-skill-reqnote">
-                      Requires {characterData.name}: only takes effect while {characterData.name} has this weapon equipped. Fixed: no weapon level or EX scaling.
+                      {fill(labels.signatureReqNote, { name: characterData.name })}
                     </p>
                   )}
                   {skill.note && (
                     <div class="weapon-skill-note">
-                      <strong>Note:</strong> {skill.note}
+                      <strong>{labels.noteLabel}</strong> {skill.note}
                     </div>
                   )}
                 </div>
@@ -1555,14 +1800,14 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 {
   storyCg && storyCg.length > 0 && (
     <section class="content-section story-gallery-section">
-      <h2 class="section-title">Story Gallery</h2>
-      <p class="character-stats-explanation">Illustrations from {characterData.name}'s story episodes.</p>
+      <h2 class="section-title">{labels.storyGalleryTitle}</h2>
+      <p class="character-stats-explanation">{fill(labels.storyGalleryNote, { name: characterData.name })}</p>
       <div class="story-cg-grid">
         {storyCg.map((cg: any) => (
           <a class="story-cg-card" href={r2Url('horizon-walker', cg.file)} target="_blank" rel="noopener">
             <img
               src={r2Url('horizon-walker', cg.file)}
-              alt={`${characterData.name} story illustration: ${cg.caption}`}
+              alt={fill(labels.storyCgAlt, { name: characterData.name, caption: cg.caption })}
               loading="lazy"
             />
             <span class="story-cg-caption">{cg.caption}</span>
@@ -1577,21 +1822,21 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 {
   heroSkins.length > 1 && (
     <section class="content-section character-skins-section">
-      <h2 class="section-title">Skins</h2>
+      <h2 class="section-title">{labels.skinsTitle}</h2>
       <div class="skins-grid">
         {heroSkins.filter((skin: any) => skin.promo).map((skin: any) => (
           <div class="skin-promo-card">
             <a href={r2Url('horizon-walker', skin.promo)} target="_blank" rel="noopener" class="skin-promo-link">
               <img
                 src={r2Url('horizon-walker', skin.promo)}
-                alt={`${characterData.name} ${skin.name} skin announcement art`}
+                alt={fill(labels.skinPromoAlt, { name: characterData.name, skin: skinDisplayName(skin) })}
                 class="skin-promo-image"
                 loading="lazy"
               />
             </a>
             <div class="skin-promo-caption">
               <span class="skin-number">{skin.number}</span>
-              <span class="skin-promo-name">{skin.name}</span>
+              <span class="skin-promo-name">{skinDisplayName(skin)}</span>
               {skin.promoCaption && <span class="skin-promo-note">{skin.promoCaption}</span>}
             </div>
           </div>
@@ -1601,7 +1846,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
             <div class="skin-icon-wrap">
               <img
                 src={r2Url('horizon-walker', `heroes/${skin.fullIcon || skin.icon}`)}
-                alt={`${characterData.name} ${skin.name} skin`}
+                alt={fill(labels.skinAlt, { name: characterData.name, skin: skinDisplayName(skin) })}
                 width={150}
                 height={220}
                 loading="lazy"
@@ -1612,14 +1857,14 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
               <img
                 class="skin-face-icon"
                 src={r2Url('horizon-walker', `heroes/${skin.icon}`)}
-                alt={`${characterData.name} ${skin.name} portrait icon`}
+                alt={fill(labels.skinPortraitAlt, { name: characterData.name, skin: skinDisplayName(skin) })}
                 width={56}
                 height={56}
                 loading="lazy"
                 onerror={`this.onerror=null;this.style.display='none';`}
               />
             </div>
-            <p class="skin-name">{skin.name}</p>
+            <p class="skin-name">{skinDisplayName(skin)}</p>
           </div>
         ))}
       </div>
@@ -1631,25 +1876,25 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 {
   charVideos.length > 0 && (
     <section class="content-section videos-section" id="videos-section">
-      <h2 class="section-title">Videos</h2>
+      <h2 class="section-title">{labels.videosTitle}</h2>
       <p class="hw-videos-note">
-        Official videos featuring {characterData.name} from the Horizon Walker YouTube channel.
+        {fill(labels.videosNote, { name: characterData.name })}
       </p>
       {featuredVideo && (
         <div
           class="hw-video-feature"
           data-yt-facade
           data-yt-id={featuredVideo.id}
-          data-yt-title={`${characterData.name}: ${featuredVideo.title}`}
+          data-yt-title={fill(labels.videoTitleTpl, { name: characterData.name, title: featuredVideo.title })}
           role="button"
           tabindex={0}
-          aria-label={`Play video: ${featuredVideo.title}`}
+          aria-label={fill(labels.playVideoAria, { title: featuredVideo.title })}
         >
           <div class="hw-video-frame-slot">
             <img
               class="hw-video-thumb"
               src={`https://i.ytimg.com/vi/${featuredVideo.id}/maxresdefault.jpg`}
-              alt={`${featuredVideo.title} video thumbnail`}
+              alt={fill(labels.videoThumbAlt, { title: featuredVideo.title })}
               loading="lazy"
               onerror={`if(this.dataset.step!=='hq'){this.dataset.step='hq';this.src='https://i.ytimg.com/vi/${featuredVideo.id}/hqdefault.jpg';}else{this.onerror=null;}`}
             />
@@ -1657,7 +1902,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
           </div>
           <div class="hw-video-caption">
             <span class={`hw-video-badge hw-video-badge-${featuredVideo.type}`}>
-              {VIDEO_TYPE_LABELS[featuredVideo.type] || 'Video'}
+              {labels.videoTypes[featuredVideo.type] || VIDEO_TYPE_LABELS[featuredVideo.type] || labels.videoBadgeFallback}
             </span>
             <span class="hw-video-title">{featuredVideo.title}</span>
             <span class="hw-video-date">{featuredVideo.date}</span>
@@ -1671,22 +1916,22 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
               class="hw-video-card"
               data-yt-facade
               data-yt-id={v.id}
-              data-yt-title={`${characterData.name}: ${v.title}`}
+              data-yt-title={fill(labels.videoTitleTpl, { name: characterData.name, title: v.title })}
               role="button"
               tabindex={0}
-              aria-label={`Play video: ${v.title}`}
+              aria-label={fill(labels.playVideoAria, { title: v.title })}
             >
               <div class="hw-video-frame-slot">
                 <img
                   class="hw-video-thumb"
                   src={`https://i.ytimg.com/vi/${v.id}/mqdefault.jpg`}
-                  alt={`${v.title} video thumbnail`}
+                  alt={fill(labels.videoThumbAlt, { title: v.title })}
                   loading="lazy"
                   onerror={`this.onerror=null;this.style.display='none';`}
                 />
                 <span class="hw-video-play hw-video-play-small" aria-hidden="true"></span>
                 <span class={`hw-video-badge hw-video-badge-${v.type} hw-video-badge-float`}>
-                  {VIDEO_TYPE_LABELS[v.type] || 'Video'}
+                  {labels.videoTypes[v.type] || VIDEO_TYPE_LABELS[v.type] || labels.videoBadgeFallback}
                 </span>
               </div>
               <span class="hw-video-title">{v.title}</span>
@@ -1701,7 +1946,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
         target="_blank"
         rel="noopener"
       >
-        Watch more on the official YouTube channel
+        {labels.watchMoreLabel}
       </a>
     </section>
   )
@@ -1709,10 +1954,9 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 
 <!-- Gift Preferences Section -->
 <section class="content-section gift-section">
-  <h2 class="section-title">Gift Preferences</h2>
+  <h2 class="section-title">{labels.giftTitle}</h2>
   <p class="gift-explanation">
-    Need 2000 points of affection to reach Level 5 to unlock trait bonus and also get gold and game
-    currency too
+    {labels.giftExplanation}
   </p>
 
   {
@@ -1722,13 +1966,13 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
         {giftData.level5Bonus && (
           <div class="level5-bonus-card">
             <div class="level5-bonus-header">
-              <h3 class="level5-bonus-title">Level 5 Affection Bonus</h3>
+              <h3 class="level5-bonus-title">{labels.level5BonusTitle}</h3>
               <span class="hw-badge" data-type="Bonus">
-                Affection Bonus
+                {labels.affectionBonusBadge}
               </span>
             </div>
             <div class="level5-bonus-content">
-              <span class="bonus-type">{giftData.level5Bonus.type}:</span>
+              <span class="bonus-type">{statTypeDisplayName(giftData.level5Bonus.type)}:</span>
               <span class="bonus-value">+{giftData.level5Bonus.value}</span>
             </div>
           </div>
@@ -1737,10 +1981,9 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
         {/* High-Value Gifts */}
         {highValueGifts.length > 0 && (
           <div class="gift-category">
-            <h3 class="gift-category-title">High-Value Gifts</h3>
+            <h3 class="gift-category-title">{labels.highValueGiftsTitle}</h3>
             <p class="gift-category-description">
-              These rare gifts provide exceptional affection points (80+ total) and are extremely
-              valuable
+              {labels.highValueGiftsDesc}
             </p>
             <div class="gifts-grid">
               {highValueGifts.map((gift: any) => {
@@ -1750,7 +1993,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                     <div class="gift-image-container">
                       <GiftImage
                         imageName={gift.image}
-                        alt={gift.name}
+                        alt={itemDisplayName(gift.name)}
                         width={80}
                         height={80}
                         format="webp"
@@ -1761,28 +2004,28 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                       <HWRarityIcon rarity={gift.rarity} width={36} height={18} class="gift-rarity-badge" />
                     </div>
                     <div class="gift-info">
-                      <h4 class="gift-name">{gift.name}</h4>
+                      <h4 class="gift-name">{itemDisplayName(gift.name)}</h4>
                       <div class="gift-points">
-                        <span class="points-label">Base:</span>
+                        <span class="points-label">{labels.basePointsLabel}</span>
                         <span class="points-value">{gift.basePoints}</span>
-                        <span class="points-label">+ Bonus:</span>
+                        <span class="points-label">{labels.bonusPointsLabel}</span>
                         <span class="points-value bonus-points">+{gift.bonusPoints}</span>
-                        <span class="points-label">= Total:</span>
+                        <span class="points-label">{labels.totalPointsLabel}</span>
                         <span class="points-total">{gift.totalPoints}</span>
                       </div>
                       <div class="gift-max-affection">
-                        <span class="points-label">For Max Affection:</span>
-                        <span class="points-value">{calculateGiftsNeeded(gift)} gifts</span>
+                        <span class="points-label">{labels.maxAffectionLabel}</span>
+                        <span class="points-value">{fill(labels.giftsCountLabel, { n: calculateGiftsNeeded(gift) })}</span>
                       </div>
                       {giftBoxes && (
                         <div class="gift-sources">
-                          <span class="sources-label">Found in:</span>
+                          <span class="sources-label">{labels.foundInLabel}</span>
                           <div class="gift-boxes">
                             {giftBoxes.map((boxInfo: any) => (
                               <div class="gift-box-item">
                                 <GiftImage
                                   imageName={boxInfo.box.image}
-                                  alt={boxInfo.box.name}
+                                  alt={itemDisplayName(boxInfo.box.name)}
                                   width={32}
                                   height={32}
                                   format="webp"
@@ -1790,7 +2033,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                                   loading="lazy"
                                   class="gift-box-image"
                                 />
-                                <span class="gift-box-name">{boxInfo.box.name}</span>
+                                <span class="gift-box-name">{itemDisplayName(boxInfo.box.name)}</span>
                               </div>
                             ))}
                           </div>
@@ -1807,9 +2050,9 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
         {/* Favorite Gifts */}
         {regularFavoriteGifts.length > 0 && (
           <div class="gift-category">
-            <h3 class="gift-category-title">Favorite Gifts</h3>
+            <h3 class="gift-category-title">{labels.favoriteGiftsTitle}</h3>
             <p class="gift-category-description">
-              These gifts give bonus points (20+ more) and are highly valued by this character
+              {labels.favoriteGiftsDesc}
             </p>
             <div class="gifts-grid">
               {regularFavoriteGifts.map((gift: any) => {
@@ -1819,7 +2062,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                     <div class="gift-image-container">
                       <GiftImage
                         imageName={gift.image}
-                        alt={gift.name}
+                        alt={itemDisplayName(gift.name)}
                         width={80}
                         height={80}
                         format="webp"
@@ -1830,28 +2073,28 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                       <HWRarityIcon rarity={gift.rarity} width={36} height={18} class="gift-rarity-badge" />
                     </div>
                     <div class="gift-info">
-                      <h4 class="gift-name">{gift.name}</h4>
+                      <h4 class="gift-name">{itemDisplayName(gift.name)}</h4>
                       <div class="gift-points">
-                        <span class="points-label">Base:</span>
+                        <span class="points-label">{labels.basePointsLabel}</span>
                         <span class="points-value">{gift.basePoints}</span>
-                        <span class="points-label">+ Bonus:</span>
+                        <span class="points-label">{labels.bonusPointsLabel}</span>
                         <span class="points-value bonus-points">+{gift.bonusPoints}</span>
-                        <span class="points-label">= Total:</span>
+                        <span class="points-label">{labels.totalPointsLabel}</span>
                         <span class="points-total">{gift.totalPoints}</span>
                       </div>
                       <div class="gift-max-affection">
-                        <span class="points-label">For Max Affection:</span>
-                        <span class="points-value">{calculateGiftsNeeded(gift)} gifts</span>
+                        <span class="points-label">{labels.maxAffectionLabel}</span>
+                        <span class="points-value">{fill(labels.giftsCountLabel, { n: calculateGiftsNeeded(gift) })}</span>
                       </div>
                       {giftBoxes && (
                         <div class="gift-sources">
-                          <span class="sources-label">Found in:</span>
+                          <span class="sources-label">{labels.foundInLabel}</span>
                           <div class="gift-boxes">
                             {giftBoxes.map((boxInfo: any) => (
                               <div class="gift-box-item">
                                 <GiftImage
                                   imageName={boxInfo.box.image}
-                                  alt={boxInfo.box.name}
+                                  alt={itemDisplayName(boxInfo.box.name)}
                                   width={32}
                                   height={32}
                                   format="webp"
@@ -1859,7 +2102,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                                   loading="lazy"
                                   class="gift-box-image"
                                 />
-                                <span class="gift-box-name">{boxInfo.box.name}</span>
+                                <span class="gift-box-name">{itemDisplayName(boxInfo.box.name)}</span>
                               </div>
                             ))}
                           </div>
@@ -1876,9 +2119,9 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
         {/* Liked Gifts */}
         {regularLikedGifts.length > 0 && (
           <div class="gift-category">
-            <h3 class="gift-category-title">Liked Gifts</h3>
+            <h3 class="gift-category-title">{labels.likedGiftsTitle}</h3>
             <p class="gift-category-description">
-              These gifts give 10 points more and are appreciated by this character
+              {labels.likedGiftsDesc}
             </p>
             <div class="gifts-grid">
               {regularLikedGifts.map((gift: any) => {
@@ -1888,7 +2131,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                     <div class="gift-image-container">
                       <GiftImage
                         imageName={gift.image}
-                        alt={gift.name}
+                        alt={itemDisplayName(gift.name)}
                         width={200}
                         height={200}
                         format="webp"
@@ -1899,28 +2142,28 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                       <HWRarityIcon rarity={gift.rarity} width={36} height={18} class="gift-rarity-badge" />
                     </div>
                     <div class="gift-info">
-                      <h4 class="gift-name">{gift.name}</h4>
+                      <h4 class="gift-name">{itemDisplayName(gift.name)}</h4>
                       <div class="gift-points">
-                        <span class="points-label">Base:</span>
+                        <span class="points-label">{labels.basePointsLabel}</span>
                         <span class="points-value">{gift.basePoints}</span>
-                        <span class="points-label">+ Bonus:</span>
+                        <span class="points-label">{labels.bonusPointsLabel}</span>
                         <span class="points-value bonus-points">+{gift.bonusPoints}</span>
-                        <span class="points-label">= Total:</span>
+                        <span class="points-label">{labels.totalPointsLabel}</span>
                         <span class="points-total">{gift.totalPoints}</span>
                       </div>
                       <div class="gift-max-affection">
-                        <span class="points-label">For Max Affection:</span>
-                        <span class="points-value">{calculateGiftsNeeded(gift)} gifts</span>
+                        <span class="points-label">{labels.maxAffectionLabel}</span>
+                        <span class="points-value">{fill(labels.giftsCountLabel, { n: calculateGiftsNeeded(gift) })}</span>
                       </div>
                       {giftBoxes && (
                         <div class="gift-sources">
-                          <span class="sources-label">Found in:</span>
+                          <span class="sources-label">{labels.foundInLabel}</span>
                           <div class="gift-boxes">
                             {giftBoxes.map((boxInfo: any) => (
                               <div class="gift-box-item">
                                 <GiftImage
                                   imageName={boxInfo.box.image}
-                                  alt={boxInfo.box.name}
+                                  alt={itemDisplayName(boxInfo.box.name)}
                                   width={32}
                                   height={32}
                                   format="webp"
@@ -1928,7 +2171,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                                   loading="lazy"
                                   class="gift-box-image"
                                 />
-                                <span class="gift-box-name">{boxInfo.box.name}</span>
+                                <span class="gift-box-name">{itemDisplayName(boxInfo.box.name)}</span>
                               </div>
                             ))}
                           </div>
@@ -1947,17 +2190,16 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
           giftData &&
           (regularFavoriteGifts.length > 0 || regularLikedGifts.length > 0) && (
             <div class="gift-category">
-              <h3 class="gift-category-title">Alternative High-Value Option</h3>
+              <h3 class="gift-category-title">{labels.altHighValueTitle}</h3>
               <p class="gift-category-description">
-                Queen's Tiara provides the highest affection points (100) for any character,
-                regardless of preferences
+                {labels.altHighValueDesc}
               </p>
               <div class="gifts-grid">
                 <div class="gift-card high-value-gift">
                   <div class="gift-image-container">
                     <GiftImage
                       imageName={queensTiaraGift.image}
-                      alt={queensTiaraGift.name}
+                      alt={itemDisplayName(queensTiaraGift.name)}
                       width={80}
                       height={80}
                       format="webp"
@@ -1968,28 +2210,28 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                     <HWRarityIcon rarity={queensTiaraGift.rarity} width={36} height={18} class="gift-rarity-badge" />
                   </div>
                   <div class="gift-info">
-                    <h4 class="gift-name">{queensTiaraGift.name}</h4>
+                    <h4 class="gift-name">{itemDisplayName(queensTiaraGift.name)}</h4>
                     <div class="gift-points">
-                      <span class="points-label">Base:</span>
+                      <span class="points-label">{labels.basePointsLabel}</span>
                       <span class="points-value">{queensTiaraGift.basePoints}</span>
-                      <span class="points-label">+ Bonus:</span>
+                      <span class="points-label">{labels.bonusPointsLabel}</span>
                       <span class="points-value bonus-points">+{queensTiaraGift.bonusPoints}</span>
-                      <span class="points-label">= Total:</span>
+                      <span class="points-label">{labels.totalPointsLabel}</span>
                       <span class="points-total">{queensTiaraGift.totalPoints}</span>
                     </div>
                     <div class="gift-max-affection">
-                      <span class="points-label">For Max Affection:</span>
+                      <span class="points-label">{labels.maxAffectionLabel}</span>
                       <span class="points-value">
-                        {calculateGiftsNeeded(queensTiaraGift)} gifts
+                        {fill(labels.giftsCountLabel, { n: calculateGiftsNeeded(queensTiaraGift) })}
                       </span>
                     </div>
                     <div class="gift-sources">
-                      <span class="sources-label">Found in:</span>
+                      <span class="sources-label">{labels.foundInLabel}</span>
                       <div class="gift-boxes">
                         <div class="gift-box-item">
                           <GiftImage
                             imageName="/images/games/horizon-walker/Gifts/Brilliant_Gift_Box.jpg"
-                            alt="Brilliant Gift Box"
+                            alt={itemDisplayName('Brilliant Gift Box')}
                             width={32}
                             height={32}
                             format="webp"
@@ -1997,7 +2239,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                             loading="lazy"
                             class="gift-box-image"
                           />
-                          <span class="gift-box-name">Brilliant Gift Box</span>
+                          <span class="gift-box-name">{itemDisplayName('Brilliant Gift Box')}</span>
                         </div>
                       </div>
                     </div>
@@ -2012,10 +2254,9 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
           (!giftData.likes || giftData.likes.length === 0) && (
             <div class="no-gifts-card">
               <div class="no-gifts-content">
-                <h3 class="no-gifts-title">Gift Preferences Coming Soon</h3>
+                <h3 class="no-gifts-title">{labels.noGiftsTitle}</h3>
                 <p class="no-gifts-description">
-                  Gift preferences for {characterData.name} have not been released yet. Check back
-                  later for updates on their favorite gifts!
+                  {fill(labels.noGiftsDesc, { name: characterData.name })}
                 </p>
               </div>
             </div>
@@ -2024,10 +2265,9 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
     ) : (
       <div class="no-gifts-card">
         <div class="no-gifts-content">
-          <h3 class="no-gifts-title">Gift Preferences Coming Soon</h3>
+          <h3 class="no-gifts-title">{labels.noGiftsTitle}</h3>
           <p class="no-gifts-description">
-            Gift preferences for {characterData.name} have not been released yet. Check back later
-            for updates on their favorite gifts!
+            {fill(labels.noGiftsDesc, { name: characterData.name })}
           </p>
         </div>
       </div>
@@ -2039,7 +2279,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
 {
   reworkArchive && (
     <section class="content-section legacy-rework-section" id="rework-archive">
-      <h2 class="section-title">Rework Archive</h2>
+      <h2 class="section-title">{labels.reworkTitle}</h2>
       <p class="legacy-rework-intro">
         {reworkArchive.intro}{' '}
         <a href={reworkArchive.patchHref}>{reworkArchive.patchLabel}</a>.
@@ -2053,7 +2293,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
             <h3 class="legacy-rework-item-title">{item.title}</h3>
             <div class="legacy-compare-grid">
               <div class="legacy-compare-card legacy-before">
-                <span class="legacy-compare-tag">Before</span>
+                <span class="legacy-compare-tag">{labels.beforeTag}</span>
                 <div class="legacy-compare-text">
                   {item.before.split('\n').map((line: string) => (
                     <p>{line}</p>
@@ -2061,7 +2301,7 @@ function getSkillCardClasses(skill: any, key: string, isBase: boolean = false, i
                 </div>
               </div>
               <div class="legacy-compare-card legacy-after">
-                <span class="legacy-compare-tag">After</span>
+                <span class="legacy-compare-tag">{labels.afterTag}</span>
                 <div class="legacy-compare-text">
                   {item.after.split('\n').map((line: string) => (
                     <p>{line}</p>

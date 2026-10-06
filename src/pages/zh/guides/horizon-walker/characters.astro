@@ -1,22 +1,36 @@
 ---
 // Chinese character database index: /zh/guides/horizon-walker/characters/
-// Grid of all roster heroes with official ZH names, rarity/class/cost chips,
-// client-side search + rarity + race filters. Links to each ZH character page.
+// Same structure, classnames and client script as the EN character database
+// (hw-character.css + scripts/horizon-walker/character-database.js), with
+// official ZH names/labels. Races are the official ZH tribe names from the
+// game profile; search matches both the ZH and EN names.
 import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
-import { HORIZON_WALKER_CHARACTERS } from '../../../../data/horizon-walker/characters.js';
+import {
+  HORIZON_WALKER_CHARACTERS,
+  gameInfo,
+} from '../../../../data/horizon-walker/characters.js';
 import {
   HW_ZH_NAMES,
-  HW_ZH_CLASSES,
   HW_ZH_TAGS,
   HW_ZH_PROFILE,
 } from '../../../../data/horizon-walker/zh/game-text.js';
 import { HW_ZH } from '../../../../data/horizon-walker/zh/ui.js';
-import { CharacterImage } from '../../../../components/horizon-walker/index.astro';
+import { CharacterImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
+
+// Character database styles (same set the EN CharacterLayout imports)
+import '../../../../styles/games/horizon-walker/hw-character.css';
 
 export const prerender = true;
 
+const { rarities } = gameInfo;
+
+// Character name to filename mapping (same rules as the EN pages)
 const getImageKey = characterName => {
-  let filename = characterName.replace(/ /g, '_').replace(/-/g, '_').replace(/\./g, '_');
+  let filename = characterName
+    .replace(/ /g, '_')
+    .replace(/-/g, '_')
+    .replace(/\./g, '_');
+
   if (characterName === 'TX - Manticore') filename = 'TX_Manticore';
   if (characterName === 'Re_De_Da') filename = 'Re_De_Da';
   if (characterName === 'Headless Knight') filename = 'Headless_Knight';
@@ -24,52 +38,69 @@ const getImageKey = characterName => {
   if (characterName === 'Yeon Chae-Young') filename = 'Yeon_Chae-Young';
   if (characterName === 'Min Eun-sol') filename = 'Min_Eun_sol';
   if (characterName === 'So Joo-hee') filename = 'So_Joo_hee';
+
   return filename;
 };
 
+// Race tags used for filtering (EN tag -> official ZH tribe label)
 const RACE_TAGS = [
   'Human', 'Swamp Elf', 'Wood Elf', 'Catsidhe', 'Kobold', 'Orke', 'Torta',
   'Lamora', 'Lamoran', 'Fairy', 'Machine', 'Demon', 'Elemental', 'Kesak',
 ];
 
-// Official ZH race label: take the tribe value from any member's game profile
 const raceZh = {};
 for (const race of RACE_TAGS) {
   const member = HORIZON_WALKER_CHARACTERS.find(c => c.tags?.includes(race) && HW_ZH_PROFILE[c.id]?.tribe);
   if (member) raceZh[race] = HW_ZH_PROFILE[member.id].tribe;
 }
 
+// Only races that at least one ZH roster member carries
 const availableRaces = RACE_TAGS.filter(race =>
-  HORIZON_WALKER_CHARACTERS.some(char => char.tags && char.tags.includes(race))
+  HORIZON_WALKER_CHARACTERS.some(char => char.tags && char.tags.includes(race) && HW_ZH_NAMES[char.id])
 );
 
-const roster = HORIZON_WALKER_CHARACTERS.filter(c => HW_ZH_NAMES[c.id] && c.slug).map(c => ({
-  slug: c.slug,
-  name: HW_ZH_NAMES[c.id],
-  nameEn: c.name,
-  rarity: c.rarity,
-  cost: c.cost,
-  class: HW_ZH_CLASSES[c.class] || c.class,
-  element: HW_ZH_TAGS[c.element] || c.element,
-  races: (c.tags || []).filter(t => RACE_TAGS.includes(t)).map(t => raceZh[t] || t),
-  image: `${getImageKey(c.name)}.jpg`,
-  search: [HW_ZH_NAMES[c.id], c.name, c.rarity, c.class, c.element].join(' ').toLowerCase(),
+// ZH roster: official ZH names; tags translated so the race filter matches
+const roster = HORIZON_WALKER_CHARACTERS.filter(c => HW_ZH_NAMES[c.id] && c.slug);
+
+const totalCharacters = roster.length;
+const exCount = roster.filter(char => char.rarity === 'EX').length;
+const ssCount = roster.filter(char => char.rarity === 'SS').length;
+const sCount = roster.filter(char => char.rarity === 'S').length;
+const aCount = roster.filter(char => char.rarity === 'A').length;
+const bCount = roster.filter(char => char.rarity === 'B').length;
+
+// DB table stats: default = base EX rarity stage, toggleable to full EX 6
+const getStageStat = (char, field) => {
+  if (char.stages?.ex?.[field] !== undefined) return char.stages.ex[field];
+  return char.stats?.[field] ?? 'N/A';
+};
+const stageData = JSON.stringify(
+  Object.fromEntries(roster.filter(c => c.stages).map(c => [c.id, c.stages]))
+);
+
+// Per-row display data: ZH name for display, ZH+EN name for search, ZH tags.
+// Race tags use the canonical ZH tribe label (raceZh) so the race filter's
+// option values match the tag strings exactly.
+const rows = roster.map(char => ({
+  ...char,
+  zhName: HW_ZH_NAMES[char.id],
+  displayName: HW_ZH_NAMES[char.id],
+  searchName: `${HW_ZH_NAMES[char.id]} ${char.name}`,
+  zhTags: (char.tags || [])
+    .map(t => (RACE_TAGS.includes(t) ? raceZh[t] || t : HW_ZH_TAGS[t] || t))
+    .join(', '),
+  zhUrl: `${HW_ZH.baseUrl}characters/${char.slug}/`,
+  imageKey: getImageKey(char.name),
 }));
 
-const counts = {
-  total: roster.length,
-  EX: roster.filter(c => c.rarity === 'EX').length,
-  SS: roster.filter(c => c.rarity === 'SS').length,
-  S: roster.filter(c => c.rarity === 'S').length,
-  A: roster.filter(c => c.rarity === 'A').length,
-  B: roster.filter(c => c.rarity === 'B').length,
-};
+const title = '角色资料库 - 地平线行者中文维基 - GachaWiki';
+const description = `地平线行者全部 ${totalCharacters} 名角色（EX ${exCount} 名、SS ${ssCount} 名、S ${sCount} 名、A ${aCount} 名、B ${bCount} 名）的中文资料库：官方中文名、稀有度、编成费用与五维属性，支持搜索、种族与稀有度筛选。`;
 ---
 
 <HwZhLayout
-  title="角色资料库 - 地平线行者中文维基 - GachaWiki"
-  description={`地平线行者全部 ${counts.total} 名角色的中文资料库：官方中文名、稀有度、职业、编成费用与属性入口，支持搜索与筛选。`}
-  keywords={['地平线行者', '角色', '资料库', '排行榜']}
+  title={title}
+  description={description}
+  keywords={['地平线行者', '角色', '资料库', '属性', '排行榜']}
   pageTitle="角色资料库"
   breadcrumbItems={[
     { name: '首页', href: '/' },
@@ -77,249 +108,287 @@ const counts = {
     { name: '角色资料库' },
   ]}
 >
-  <div class="zh-db">
-    <p class="zh-db-note">
-      共 {counts.total} 名角色：EX {counts.EX} 名、SS {counts.SS} 名、S {counts.S} 名、A {counts.A} 名、B {counts.B} 名。点击卡片进入角色页面查看官方中文技能与属性。
-    </p>
-
-    <div class="zh-filters">
-      <input
-        type="search"
-        id="zhCharSearch"
-        class="zh-search"
-        placeholder="搜索角色名（中文或英文）"
-        aria-label="搜索角色"
-      />
-      <div class="zh-filter-row" id="zhRarityRow">
-        <button class="zh-filter-chip active" data-rarity="">全部</button>
-        <button class="zh-filter-chip" data-rarity="EX">EX</button>
-        <button class="zh-filter-chip" data-rarity="SS">SS</button>
-        <button class="zh-filter-chip" data-rarity="S">S</button>
-        <button class="zh-filter-chip" data-rarity="A">A</button>
-        <button class="zh-filter-chip" data-rarity="B">B</button>
-      </div>
-      <div class="zh-filter-row" id="zhRaceRow">
-        <button class="zh-filter-chip active" data-race="">全部种族</button>
-        {availableRaces.map(r => (
-          <button class="zh-filter-chip" data-race={r}>{raceZh[r] || r}</button>
-        ))}
-      </div>
-    </div>
-
-    <p class="zh-empty" id="zhEmpty" hidden>没有符合筛选条件的角色。</p>
-
-    <div class="zh-char-grid" id="zhCharGrid">
-      {roster.map(c => (
-        <a
-          href={`${HW_ZH.baseUrl}characters/${c.slug}/`}
-          class="zh-char-card"
-          data-search={c.search}
-          data-rarity={c.rarity}
-          data-races={c.races.join('|')}
-        >
-          <CharacterImage
-            imageName={c.image}
-            alt={c.name}
-            class="zh-card-img"
-            width={96}
-            height={96}
-            loading="lazy"
-          />
-          <div class="zh-card-body">
-            <p class="zh-card-name">{c.name}</p>
-            <p class="zh-card-en">{c.nameEn}</p>
-            <div class="zh-card-chips">
-              <span class="zh-rarity-chip">{c.rarity}</span>
-              <span class="zh-mini-chip">{c.class}</span>
-              <span class="zh-mini-chip">费用 {c.cost}</span>
+  <section class="hw-char-db-page-flex">
+    <div class="hw-char-db-main-content">
+      <div class="hw-char-db-content-wrapper">
+        <!-- Header with stats info -->
+        <div class="hw-character-database-header">
+          <h1 class="hw-character-database-title">角色资料库</h1>
+          <p class="hw-character-database-subtitle">
+            等级 {gameInfo.maxLevel} 属性为基础 EX 突破数值，可切换为满 EX 6。
+          </p>
+          <div class="hw-char-db-stats-summary">
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="EX" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{exCount}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="SS" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{ssCount}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="S" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{sCount}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="A" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{aCount}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="B" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{bCount}</span>
             </div>
           </div>
-        </a>
-      ))}
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+          <div class="filter-controls">
+            <select class="filter-select" id="rarity-filter">
+              <option value="">稀有度</option>
+              {rarities.map(rarity => <option value={rarity}>{rarity}</option>)}
+            </select>
+            <select class="filter-select" id="race-filter">
+              <option value="">种族</option>
+              {availableRaces.map(race => <option value={raceZh[race] || race}>{raceZh[race] || race}</option>)}
+            </select>
+          </div>
+          <div class="hw-search-container">
+            <input
+              type="text"
+              class="hw-search-input"
+              id="character-search"
+              placeholder="搜索角色名（中文或英文）"
+              aria-label="搜索角色"
+            />
+          </div>
+          <div class="sort-controls">
+            <button class="sort-btn" data-sort="rarity">稀有度</button>
+            <button class="sort-btn" data-sort="cost">费用</button>
+            <button class="sort-btn" data-sort="strength">力量</button>
+            <button class="sort-btn" data-sort="intelligence">智力</button>
+            <button class="sort-btn" data-sort="vitality">体质</button>
+            <button class="sort-btn" data-sort="agility">敏捷</button>
+            <button class="sort-btn" data-sort="technic">技巧</button>
+            <button class="reset-btn" id="reset-table">重置</button>
+          </div>
+          <div class="hw-stage-toggle" id="stage-toggle" role="group" aria-label="稀有度阶段">
+            <button type="button" class="stage-btn active" data-stage="ex">EX</button>
+            <button type="button" class="stage-btn" data-stage="ex6">满 EX 6</button>
+          </div>
+        </div>
+
+        <!-- Desktop table container with touch optimizations -->
+        <div class="character-table-container">
+          <table class="character-table" id="character-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>图像</th>
+                <th>名称</th>
+                <th>稀有度</th>
+                <th>费用</th>
+                <th>力量</th>
+                <th>智力</th>
+                <th>体质</th>
+                <th>敏捷</th>
+                <th>技巧</th>
+              </tr>
+            </thead>
+            <tbody id="character-table-body">
+              {
+                rows.map((character, idx) => (
+                  <tr
+                    data-character-id={character.id}
+                    data-url={character.zhUrl}
+                    data-name={character.searchName}
+                    data-rarity={character.rarity}
+                    data-class={character.class}
+                    data-element={character.element}
+                    data-faction={character.faction}
+                    data-tags={character.zhTags}
+                    class="clickable-row"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <td>{idx + 1}</td>
+                    <td>
+                      <div class="desktop-character-image">
+                        <CharacterImage
+                          imageName={character.imageKey}
+                          alt={character.zhName}
+                          class="character-img"
+                          width={80}
+                          height={80}
+                          loading={idx < 10 ? 'eager' : 'lazy'}
+                        />
+                      </div>
+                    </td>
+                    <td>
+                      <strong
+                        class="character-name"
+                        data-long={character.displayName.length > 12 ? 'true' : 'false'}
+                      >
+                        {character.displayName}
+                      </strong>
+                    </td>
+                    <td>
+                      <HWRarityIcon
+                        rarity={character.rarity}
+                        width={48}
+                        height={24}
+                      />
+                    </td>
+                    <td data-sort-key="cost">
+                      <strong class="cost-value">{character.cost}</strong>
+                    </td>
+                    <td data-sort-key="strength">
+                      <strong class="stat-value" data-field="strength">{getStageStat(character, 'strength')}</strong>
+                    </td>
+                    <td data-sort-key="intelligence">
+                      <strong class="stat-value" data-field="intelligence">{getStageStat(character, 'intelligence')}</strong>
+                    </td>
+                    <td data-sort-key="vitality">
+                      <strong class="stat-value" data-field="vitality">{getStageStat(character, 'vitality')}</strong>
+                    </td>
+                    <td data-sort-key="agility">
+                      <strong class="stat-value" data-field="agility">{getStageStat(character, 'agility')}</strong>
+                    </td>
+                    <td data-sort-key="technic">
+                      <strong class="stat-value" data-field="technic">{getStageStat(character, 'technic')}</strong>
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile card view container with touch optimization -->
+        <div class="mobile-card-view" id="mobile-cards-container">
+          {
+            rows.map((char, idx) => (
+              <div
+                class="mobile-character-card"
+                data-character-id={char.id}
+                data-slug={char.slug}
+                data-url={char.zhUrl}
+                data-name={char.searchName}
+                data-rarity={char.rarity}
+                data-class={char.class}
+                data-element={char.element}
+                data-faction={char.faction}
+                data-tags={char.zhTags}
+                role="button"
+                tabindex="0"
+                style="cursor:pointer; touch-action: manipulation;"
+              >
+                {/* Clean header section - image, name, rarity all together */}
+                <div class="mobile-card-header">
+                  <div class="mobile-card-image">
+                    <div class="mobile-character-image">
+                      <CharacterImage
+                        imageName={char.imageKey}
+                        alt={char.zhName}
+                        class="character-img"
+                        width={64}
+                        height={64}
+                        loading={idx < 6 ? 'eager' : 'lazy'}
+                      />
+                    </div>
+                  </div>
+                  <div class="mobile-card-info">
+                    <h3 class="character-name" data-long={char.displayName.length > 12 ? 'true' : 'false'}>
+                      {char.displayName}
+                    </h3>
+                    <div class="header-badges">
+                      <HWRarityIcon rarity={char.rarity} width={40} height={20} />
+                      <span class="cost-badge" data-type="Cost">
+                        费用：{char.cost}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Clean stats grid - 5 basic stats */}
+                <div class="mobile-card-stats-grid">
+                  <div class="stat-item">
+                    <span class="stat-label">力量</span>
+                    <strong class="stat-value" data-stat="strength" data-field="strength">
+                      {getStageStat(char, 'strength')}
+                    </strong>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">智力</span>
+                    <strong class="stat-value" data-stat="intelligence" data-field="intelligence">
+                      {getStageStat(char, 'intelligence')}
+                    </strong>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">体质</span>
+                    <strong class="stat-value" data-stat="vitality" data-field="vitality">
+                      {getStageStat(char, 'vitality')}
+                    </strong>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">敏捷</span>
+                    <strong class="stat-value" data-stat="agility" data-field="agility">
+                      {getStageStat(char, 'agility')}
+                    </strong>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">技巧</span>
+                    <strong class="stat-value" data-stat="technic" data-field="technic">
+                      {getStageStat(char, 'technic')}
+                    </strong>
+                  </div>
+                </div>
+
+              </div>
+            ))
+          }
+        </div>
+      </div>
     </div>
-  </div>
-</HwZhLayout>
+  </section>
 
-<script>
-  function initZhCharFilters() {
-    const search = document.getElementById('zhCharSearch');
-    const grid = document.getElementById('zhCharGrid');
-    const empty = document.getElementById('zhEmpty');
-    const cards = Array.from(grid.querySelectorAll('.zh-char-card'));
-    let rarity = '';
-    let race = '';
+  <!-- Per-character rarity-stage values for the stats toggle -->
+  <script type="application/json" id="hw-stage-data" set:html={stageData} />
 
-    const apply = () => {
-      const q = (search.value || '').trim().toLowerCase();
-      let shown = 0;
-      for (const card of cards) {
-        const okSearch = !q || card.dataset.search.includes(q);
-        const okRarity = !rarity || card.dataset.rarity === rarity;
-        const okRace = !race || (card.dataset.races || '').split('|').includes(race);
-        const visible = okSearch && okRarity && okRace;
-        card.style.display = visible ? '' : 'none';
-        if (visible) shown++;
+  <!-- Stats stage toggle: swaps the 5 primary stats between EX and full EX 6 -->
+  <script is:inline>
+    (function () {
+      var dataEl = document.getElementById('hw-stage-data');
+      var toggle = document.getElementById('stage-toggle');
+      if (!dataEl || !toggle) return;
+      var stageMap = {};
+      try {
+        stageMap = JSON.parse(dataEl.textContent);
+      } catch (e) {
+        return;
       }
-      empty.hidden = shown > 0;
-    };
-
-    search.addEventListener('input', apply);
-
-    const wireRow = (rowId, attr) => {
-      const row = document.getElementById(rowId);
-      row.addEventListener('click', e => {
-        const btn = e.target.closest('.zh-filter-chip');
-        if (!btn) return;
-        row.querySelectorAll('.zh-filter-chip').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        if (attr === 'rarity') rarity = btn.dataset.rarity || '';
-        else race = btn.dataset.race || '';
-        apply();
+      var buttons = toggle.querySelectorAll('.stage-btn');
+      function applyStage(stage) {
+        document.querySelectorAll('[data-character-id]').forEach(function (row) {
+          var stages = stageMap[row.getAttribute('data-character-id')];
+          if (!stages || !stages[stage]) return;
+          row.querySelectorAll('[data-field]').forEach(function (el) {
+            var value = stages[stage][el.getAttribute('data-field')];
+            if (value !== undefined) el.textContent = value;
+          });
+        });
+        buttons.forEach(function (btn) {
+          btn.classList.toggle('active', btn.getAttribute('data-stage') === stage);
+        });
+      }
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          applyStage(btn.getAttribute('data-stage'));
+        });
       });
-    };
-    wireRow('zhRarityRow', 'rarity');
-    wireRow('zhRaceRow', 'race');
-  }
+    })();
+  </script>
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initZhCharFilters);
-  } else {
-    initZhCharFilters();
-  }
-</script>
-
-<style>
-  .zh-db {
-    display: grid;
-    gap: 1.25rem;
-  }
-
-  .zh-db-note {
-    font-size: 0.875rem;
-    color: var(--hw-text-muted);
-    margin: 0;
-  }
-
-  .zh-filters {
-    display: grid;
-    gap: 0.6rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 12px;
-    padding: 1rem;
-  }
-
-  .zh-search {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 10px;
-    color: var(--hw-text-light);
-    font-size: 0.9375rem;
-    padding: 0.6rem 0.9rem;
-    outline: none;
-  }
-
-  .zh-search::placeholder {
-    color: var(--hw-text-very-muted);
-  }
-
-  .zh-filter-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .zh-filter-chip {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: var(--hw-text-light);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    border-radius: 999px;
-    padding: 0.3rem 0.8rem;
-    cursor: pointer;
-  }
-
-  .zh-filter-chip.active {
-    background: var(--hw-primary-warm);
-    border-color: var(--hw-primary-warm);
-    color: var(--hw-text-dark);
-  }
-
-  .zh-empty {
-    font-size: 0.9375rem;
-    color: var(--hw-text-muted);
-    margin: 0;
-  }
-
-  .zh-char-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: 0.75rem;
-  }
-
-  .zh-char-card {
-    display: flex;
-    gap: 0.9rem;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 12px;
-    padding: 0.9rem;
-    text-decoration: none;
-    min-width: 0;
-  }
-
-  .zh-card-img {
-    width: 72px;
-    height: 72px;
-    border-radius: 10px;
-    object-fit: cover;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    flex-shrink: 0;
-  }
-
-  .zh-card-body {
-    min-width: 0;
-  }
-
-  .zh-card-name {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--hw-text-light);
-    margin: 0 0 0.1rem 0;
-  }
-
-  .zh-card-en {
-    font-size: 0.75rem;
-    color: var(--hw-text-muted);
-    margin: 0 0 0.4rem 0;
-  }
-
-  .zh-card-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-  }
-
-  .zh-rarity-chip {
-    background: var(--hw-primary-warm);
-    color: var(--hw-text-dark);
-    font-weight: 700;
-    font-size: 0.75rem;
-    border-radius: 999px;
-    padding: 0.1rem 0.55rem;
-  }
-
-  .zh-mini-chip {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: var(--hw-text-light);
-    font-size: 0.75rem;
-    font-weight: 600;
-    border-radius: 999px;
-    padding: 0.1rem 0.55rem;
-    white-space: nowrap;
-  }
-</style>
+  <!-- Same database script as the EN page: filtering, sorting, row navigation -->
+  <script src="/scripts/horizon-walker/character-database.js"></script>
+</HwZhLayout>

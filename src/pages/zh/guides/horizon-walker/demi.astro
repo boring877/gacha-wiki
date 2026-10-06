@@ -4,11 +4,13 @@
 // official ZH from game-text.js (keyed by gameKey / EN skill name); EN is only
 // the fallback where the game ships no Chinese. Intro copy is zh wiki's own.
 import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
 import { r2Url } from '../../../../data/r2-config.js';
 import { DEMI_CHARACTERS, getMightSkillList, TIER_PROBABILITIES } from '../../../../data/horizon-walker/demiskills.js';
 import { demiReleases } from '../../../../data/horizon-walker/banner-timeline.js';
 import { HW_ZH_NAMES, HW_ZH_SKILLS, HW_ZH_SKILL_BY_NAME } from '../../../../data/horizon-walker/zh/game-text.js';
 import { HW_ZH } from '../../../../data/horizon-walker/zh/ui.js';
+import '../../../../styles/games/horizon-walker/hw-guide.css';
 
 export const prerender = true;
 
@@ -64,13 +66,19 @@ const mightList = getMightSkillList().map(m => {
   title="半神晋升 - 地平线行者中文维基 - GachaWiki"
   description={`地平线行者半神晋升数据库：全部 ${demigods.length} 位半神的权能技能（各阶段数值）、编成消耗 DP、10 种 Might 技能与各阶级出现概率。`}
   keywords={['地平线行者', '半神晋升', '权能技能', '半神', '攻略']}
-  pageTitle="半神晋升"
   breadcrumbItems={[
     { name: '首页', href: '/' },
     { name: '地平线行者', href: HW_ZH.baseUrl },
     { name: '半神晋升' },
   ]}
 >
+  <section class="hw-guide-hero">
+    <h1 class="hw-guide-title">半神晋升</h1>
+    <p class="hw-guide-subtitle">全部半神的权能技能、各阶段数值、编成消耗与共享的 Might 技能池</p>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-guide-content">
   <div class="demi-db">
     <section class="demi-db-intro">
       <div class="demi-db-intro-card">
@@ -162,7 +170,7 @@ const mightList = getMightSkillList().map(m => {
           </div>
           <div class="demi-db-might-tiers">
             {might.tiers.map(t => (
-              <div className={`demi-db-tier-row demi-db-tier-${t.tier}`}>
+              <div class={`demi-db-tier-row demi-db-tier-${t.tier}`}>
                 <span class="demi-db-tier-label">T{t.tier}</span>
                 <span class="demi-db-tier-desc" set:html={might.tierDesc(t)} />
               </div>
@@ -171,6 +179,7 @@ const mightList = getMightSkillList().map(m => {
         </article>
       ))}
     </div>
+  </div>
   </div>
 </HwZhLayout>
 
@@ -188,7 +197,7 @@ const mightList = getMightSkillList().map(m => {
   .demi-db-intro-card {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 14px;
+    border-radius: 10px;
     padding: 1rem 1.1rem;
   }
   .demi-db-intro-card h3 {
@@ -199,7 +208,7 @@ const mightList = getMightSkillList().map(m => {
   .demi-db-intro-card p {
     color: var(--hw-text-light);
     font-size: 0.925rem;
-    line-height: 1.7;
+    line-height: 1.6;
     margin: 0;
   }
   .demi-db-probs {
@@ -230,7 +239,7 @@ const mightList = getMightSkillList().map(m => {
   .demi-db-card {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 14px;
+    border-radius: 10px;
     padding: 1rem 1.1rem;
     display: flex;
     flex-direction: column;
@@ -346,6 +355,7 @@ const mightList = getMightSkillList().map(m => {
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--hw-primary-warm);
+    text-transform: uppercase;
     letter-spacing: 0.04em;
   }
   .demi-db-auth-body p {
@@ -367,7 +377,7 @@ const mightList = getMightSkillList().map(m => {
   .demi-db-might-card {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 14px;
+    border-radius: 10px;
     padding: 0.9rem 1rem;
   }
   .demi-db-might-head {

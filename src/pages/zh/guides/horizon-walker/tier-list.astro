@@ -14,6 +14,7 @@ import { HW_ZH } from '../../../../data/horizon-walker/zh/ui.js';
 import { CharacterImage, MercenaryImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
 import '../../../../styles/games/horizon-walker/hw-character.css';
 import '../../../../styles/games/horizon-walker/hw-tier-list.css';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
 
 export const prerender = true;
 
@@ -153,13 +154,17 @@ function getTierClassName(tier) {
   title="排行榜 - 地平线行者中文维基 - GachaWiki"
   description="地平线行者角色强度榜：按地图推进、特别行动、Dopamin 等游戏模式划分的角色排名，已将 EX 武器纳入考量，并附优先培养角色清单。"
   keywords={['地平线行者', '排行榜', '强度榜', '角色排名', '攻略']}
-  pageTitle="角色强度榜"
   breadcrumbItems={[
     { name: '首页', href: '/' },
     { name: '地平线行者', href: HW_ZH.baseUrl },
     { name: '排行榜' },
   ]}
 >
+  <section class="hw-char-db-hero-section">
+    <h1 class="hw-char-db-hero-title">角色强度榜</h1>
+    <DecorativeLines />
+  </section>
+
   <div class="tier-list-container">
     <p class="tier-list-subtitle-line">本强度榜已将 EX 武器纳入考量！</p>
 

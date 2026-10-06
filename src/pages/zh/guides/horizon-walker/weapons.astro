@@ -4,6 +4,7 @@
 // fallback; non-EX weapon names have no official ZH yet and keep the EN text.
 // Client-side rarity/type filters, search and sorting mirror the EN page.
 import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
 import { WeaponImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
 import {
   HORIZON_WALKER_WEAPONS,
@@ -46,13 +47,19 @@ const weapons = HORIZON_WALKER_WEAPONS.map(w => ({
   title={`武器数据库（共 ${WEAPON_METADATA.total} 件）- 地平线行者中文维基 - GachaWiki`}
   description={`地平线行者武器数据库：全部 ${WEAPON_METADATA.total} 件武器，包含 EX 武器与非 EX 武器，支持按稀有度、类型筛选与搜索。EX 武器名称为游戏官方简体中文。`}
   keywords={['地平线行者', '武器', 'EX 武器', '武器数据库', '攻略']}
-  pageTitle="武器数据库"
   breadcrumbItems={[
     { name: '首页', href: '/' },
     { name: '地平线行者', href: HW_ZH.baseUrl },
     { name: '武器' },
   ]}
 >
+  <section class="hw-char-db-hero-section">
+    <h1 class="hw-char-db-hero-title">武器数据库</h1>
+    <p class="hw-char-db-hero-subtitle">全部武器的数据库</p>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-char-db-content-area">
   <section class="hw-char-db-page-flex hw-weapons-page">
     <div class="hw-char-db-main-content">
       <div class="hw-char-db-content-wrapper">
@@ -171,6 +178,7 @@ const weapons = HORIZON_WALKER_WEAPONS.map(w => ({
       </div>
     </div>
   </section>
+  </div>
 </HwZhLayout>
 
 <script is:inline>

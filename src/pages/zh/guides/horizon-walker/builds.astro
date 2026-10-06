@@ -2,11 +2,14 @@
 // Chinese recommended builds index: /zh/guides/horizon-walker/builds/
 // Same build list as the EN builds/index.astro (getEnhancedBuilds), grouped
 // by rarity; character names use the official ZH from game-text.js.
+// Re-skinned onto the EN hw-builds.css classes for visual parity.
 import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
 import { getEnhancedBuilds } from '../../../../data/horizon-walker/builds/builds-data.js';
 import { HW_ZH_NAMES } from '../../../../data/horizon-walker/zh/game-text.js';
 import { HW_ZH } from '../../../../data/horizon-walker/zh/ui.js';
 import { CharacterImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
+import '../../../../styles/games/horizon-walker/hw-builds.css';
+import '../../../../styles/games/horizon-walker/hw-community-build.css';
 
 export const prerender = true;
 
@@ -45,9 +48,9 @@ const buildsByRarity = {
     { name: '配装推荐' },
   ]}
 >
-  <div class="zh-builds">
-    <div class="zh-builds-note">
-      <p>
+  <div class="hw-builds-container">
+    <div class="hw-community-builds-note">
+      <p class="hw-community-builds-text">
         想看更多？<a href={`${HW_ZH.baseUrl}builds/community/`}>社区配装</a>
         覆盖 50 名角色，整理自 Envy、Liauw 与 Gamekee 的社区配装表格。圣痕套装名称暂无官方中文，保留英文原文。
       </p>
@@ -57,37 +60,41 @@ const buildsByRarity = {
       Object.entries(buildsByRarity).map(([rarity, builds]) => {
         if (builds.length === 0) return null;
         return (
-          <section class="zh-builds-rarity">
-            <div class="zh-builds-rarity-header">
+          <section class="hw-builds-rarity-section">
+            <div class="hw-builds-rarity-header">
               <HWRarityIcon rarity={rarity} width={48} height={24} />
-              <span class="zh-builds-rarity-count">{builds.length} 套配装</span>
+              <span class="hw-builds-rarity-count">（{builds.length} 套配装）</span>
             </div>
-            <div class="zh-builds-grid">
+            <div class="hw-builds-grid">
               {builds.map((build) => {
                 const zh = zhNameOf(build);
                 return (
                   <a
                     href={`${HW_ZH.baseUrl}builds/${build.buildSlug}/`}
-                    class="zh-build-card"
+                    class="hw-build-card-link"
                     aria-label={`查看 ${zh} 的配装`}
                   >
-                    <div class="zh-build-card-head">
-                      <div class="zh-build-portrait">
-                        <CharacterImage
-                          imageName={build.characterData?.image || build.displayName}
-                          alt={zh}
-                          width={300}
-                          height={300}
-                          class="zh-build-img"
-                          loading="eager"
-                        />
-                      </div>
-                      <div class="zh-build-info">
-                        <h3 class="zh-build-name">{zh}</h3>
-                        <p class="zh-build-en">{build.characterData?.name || build.displayName}</p>
-                        <div class="zh-build-meta">
-                          <span class="zh-cost-chip">费用 {build.cost}</span>
-                          <HWRarityIcon rarity={build.rarity} width={40} height={20} />
+                    <div class="hw-build-card">
+                      <div class="hw-build-card-header">
+                        <div class="hw-build-character-image">
+                          <CharacterImage
+                            imageName={build.characterData?.image || build.displayName}
+                            alt={zh}
+                            width={300}
+                            height={300}
+                            class="hw-character-portrait"
+                            loading="eager"
+                          />
+                        </div>
+                        <div class="hw-build-character-info">
+                          <h3 class="hw-build-character-name">{zh}</h3>
+                          <p class="zh-build-en">{build.characterData?.name || build.displayName}</p>
+                          <div class="hw-build-character-meta">
+                            <span class="hw-badge" data-type="Cost">
+                              费用 {build.cost}
+                            </span>
+                            <HWRarityIcon rarity={build.rarity} width={40} height={20} />
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -102,23 +109,27 @@ const buildsByRarity = {
 
     {
       unavailableBuilds.length > 0 && (
-        <section class="zh-builds-soon">
-          <h3 class="zh-builds-soon-title">敬请期待</h3>
-          <div class="zh-builds-grid">
+        <section class="hw-builds-coming-soon">
+          <h3 class="hw-builds-coming-soon-title">敬请期待</h3>
+          <div class="hw-builds-coming-soon-grid">
             {unavailableBuilds.map((build) => {
               const zh = zhNameOf(build);
               return (
-                <div class="zh-build-card zh-build-card-disabled">
-                  <div class="zh-build-card-head">
-                    <div class="zh-build-info">
-                      <h3 class="zh-build-name">{zh}</h3>
-                      <div class="zh-build-meta">
-                        <span class="zh-cost-chip">费用 {build.cost}</span>
+                <div class="hw-build-card hw-build-card-disabled">
+                  <div class="hw-build-card-header">
+                    <div class="hw-build-character-info">
+                      <h3 class="hw-build-character-name">{zh}</h3>
+                      <div class="hw-build-character-meta">
+                        <span class="hw-badge" data-type="Cost">
+                          费用 {build.cost}
+                        </span>
                         <HWRarityIcon rarity={build.rarity} width={40} height={20} />
                       </div>
                     </div>
                   </div>
-                  <div class="zh-build-soon">敬请期待</div>
+                  <div class="hw-build-card-footer">
+                    <span class="hw-build-coming-soon">敬请期待</span>
+                  </div>
                 </div>
               );
             })}
@@ -130,118 +141,10 @@ const buildsByRarity = {
 </HwZhLayout>
 
 <style>
-  .zh-builds {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .zh-builds-note {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 12px;
-    padding: 0.9rem 1.1rem;
-  }
-  .zh-builds-note p {
-    margin: 0;
-    color: var(--hw-text-muted);
-    font-size: 0.9rem;
-    line-height: 1.7;
-  }
-  .zh-builds-note a {
-    color: var(--hw-primary-warm);
-  }
-  .zh-builds-rarity {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-  .zh-builds-rarity-header {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-  .zh-builds-rarity-count {
-    color: var(--hw-text-very-muted);
-    font-size: 0.85rem;
-  }
-  .zh-builds-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 0.9rem;
-  }
-  .zh-build-card {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 12px;
-    padding: 0.9rem;
-    text-decoration: none;
-  }
-  .zh-build-card-disabled {
-    opacity: 0.7;
-  }
-  .zh-build-card-head {
-    display: flex;
-    gap: 0.9rem;
-    align-items: center;
-  }
-  .zh-build-portrait {
-    flex: none;
-    width: 84px;
-    height: 84px;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-  }
-  .zh-build-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-    display: block;
-  }
-  .zh-build-info {
-    min-width: 0;
-  }
-  .zh-build-name {
-    margin: 0;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--hw-primary-warm);
-  }
+  /* ZH-only: EN gloss under the Chinese character name */
   .zh-build-en {
     margin: 0.1rem 0 0.45rem 0;
     font-size: 0.78rem;
     color: var(--hw-text-very-muted);
-  }
-  .zh-build-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-  .zh-cost-chip {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: var(--hw-text-light);
-    font-size: 0.75rem;
-    font-weight: 600;
-    border-radius: 999px;
-    padding: 0.1rem 0.55rem;
-    white-space: nowrap;
-  }
-  .zh-builds-soon-title {
-    color: var(--hw-primary-warm);
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin: 0.5rem 0 0 0;
-  }
-  .zh-build-soon {
-    margin-top: 0.7rem;
-    color: var(--hw-text-very-muted);
-    font-size: 0.82rem;
-    text-align: center;
-    border: 1px dashed rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    padding: 0.4rem;
   }
 </style>
