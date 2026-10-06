@@ -1,0 +1,428 @@
+---
+// Chinese Demi-Ascension database: /zh/guides/horizon-walker/demi/
+// Demigod names AND Authority/Might skill names+descriptions use the game's
+// official ZH from game-text.js (keyed by gameKey / EN skill name); EN is only
+// the fallback where the game ships no Chinese. Intro copy is zh wiki's own.
+import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
+import { r2Url } from '../../../../data/r2-config.js';
+import { DEMI_CHARACTERS, getMightSkillList, TIER_PROBABILITIES } from '../../../../data/horizon-walker/demiskills.js';
+import { demiReleases } from '../../../../data/horizon-walker/banner-timeline.js';
+import { HW_ZH_NAMES, HW_ZH_SKILLS, HW_ZH_SKILL_BY_NAME } from '../../../../data/horizon-walker/zh/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/zh/ui.js';
+
+export const prerender = true;
+
+const demigods = Object.values(DEMI_CHARACTERS);
+
+// official ZH first, EN fallback when the game ships no Chinese
+const authorityOf = d => {
+  const zh = d.authoritySkill?.gameKey ? HW_ZH_SKILLS[d.authoritySkill.gameKey] : null;
+  return {
+    name: (zh && zh.name) || d.authoritySkill.name,
+    desc: (zh && zh.desc) || d.authoritySkill.description,
+  };
+};
+const mightOf = m => {
+  const zh = HW_ZH_SKILL_BY_NAME[m.name] || null;
+  return { name: (zh && zh.name) || m.name, desc: (zh && zh.desc) || null };
+};
+
+const fmtDate = iso =>
+  new Date(iso + 'T12:00:00Z').toLocaleDateString('zh-CN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+
+const demiBySlug = {};
+for (const d of demiReleases) {
+  if (d.slug) demiBySlug[d.slug] = d;
+}
+
+const nameZh = d => HW_ZH_NAMES[d.heroId] || d.name;
+
+// Substitute {v1,v2,...} per-stage arrays, stage 1-7, same as the EN page
+const substitute = (desc, stage) =>
+  String(desc ?? '').replace(/\{\s*([-0-9.][-0-9.,%\s]*?)\s*\}/g, (_m, list) => {
+    const vals = list.replace(/\s+/g, '').split(',');
+    return `<span class="demi-arr" data-vals="${list.replace(/\s+/g, '')}">${vals[Math.min(stage, vals.length) - 1] ?? list}</span>`;
+  });
+
+// might pool with ZH name/desc merged in (tier descs substitute the ZH arrays)
+const mightList = getMightSkillList().map(m => {
+  const zh = mightOf(m);
+  return {
+    ...m,
+    zhName: zh.name,
+    tierDesc: t => (zh.desc ? substitute(zh.desc, t.tier) : t.description),
+  };
+});
+---
+
+<HwZhLayout
+  title="半神晋升 - 地平线行者中文维基 - GachaWiki"
+  description={`地平线行者半神晋升数据库：全部 ${demigods.length} 位半神的权能技能（各阶段数值）、编成消耗 DP、10 种 Might 技能与各阶级出现概率。`}
+  keywords={['地平线行者', '半神晋升', '权能技能', '半神', '攻略']}
+  pageTitle="半神晋升"
+  breadcrumbItems={[
+    { name: '首页', href: '/' },
+    { name: '地平线行者', href: HW_ZH.baseUrl },
+    { name: '半神晋升' },
+  ]}
+>
+  <div class="demi-db">
+    <section class="demi-db-intro">
+      <div class="demi-db-intro-card">
+        <h3>什么是半神晋升？</h3>
+        <p>
+          EX 角色可以进行半神晋升。晋升后的角色能够取代主角担任队伍的 Executor，使全队获得对遗忘现象的免疫。
+          编成时消耗 DP（神力），并且每位半神都带有一个独有的<strong>权能技能</strong>，该技能会随着 7 个晋升阶段逐步成长。
+        </p>
+      </div>
+      <div class="demi-db-intro-card">
+        <h3>Might 技能</h3>
+        <p>
+          完成半神晋升时，角色还会随机获得 10 种 <strong>Might 技能</strong>之一，阶级为 1 至 5，阶级越高越稀有：
+        </p>
+        <div class="demi-db-probs">
+          {TIER_PROBABILITIES.map(tp => (
+            <span class={`demi-db-prob demi-db-prob-${tp.tier}`}>T{tp.tier}：{tp.probability}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <h2 class="demi-db-heading">半神（{demigods.length} 位）</h2>
+    <div class="demi-db-grid">
+      {demigods.map(d => (
+        <article class="demi-db-card">
+          <div class="demi-db-card-head">
+            {d.faceIcon && (
+              <img class="demi-db-face" src={r2Url('horizon-walker', `heroes/${d.faceIcon}`)} alt={nameZh(d)} width={64} height={64} loading="lazy" />
+            )}
+            <div class="demi-db-id">
+              <h3 class="demi-db-name">{nameZh(d)}</h3>
+              <div class="demi-db-meta">
+                <span class="demi-db-cost" title="编成消耗">DP {d.deploymentCost}</span>
+                {d.slug && demiBySlug[d.slug] && (
+                  <span
+                    class="demi-db-rel"
+                    title={demiBySlug[d.slug].batch ? '随半神系统实装同期登场' : '出自官方更新公告'}
+                  >
+                    半神化：{fmtDate(demiBySlug[d.slug].date)}
+                  </span>
+                )}
+                {d.slug && (
+                  <a class="demi-db-link" href={`${HW_ZH.baseUrl}characters/${d.slug}/`}>查看角色</a>
+                )}
+              </div>
+              {d.slug && demiBySlug[d.slug]?.url && (
+                <a class="demi-db-note" href={demiBySlug[d.slug].url}>更新公告</a>
+              )}
+            </div>
+          </div>
+
+          <div class="demi-db-authority">
+            <div class="demi-db-auth-head">
+              <h4 class="demi-db-auth-name">{authorityOf(d).name}</h4>
+              <span class="demi-db-badge">Authority</span>
+            </div>
+            <div class="demi-db-tierbar">
+              <div class="demi-db-chips">
+                {[1, 2, 3, 4, 5, 6, 7].map(lv => (
+                  <button type="button" class={`demi-db-chip${lv === 7 ? ' active' : ''}`} data-demi-tier={lv} aria-label={`阶段 ${lv}`}>{lv}</button>
+                ))}
+              </div>
+              <span class="demi-db-view" data-demi-view>阶段 7</span>
+            </div>
+            <div class="demi-db-auth-body">
+              {authorityOf(d).desc.split('\n\n').map(paragraph => (
+                <p set:html={substitute(paragraph, 7)} />
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <h2 class="demi-db-heading">Might 技能池（10 种）</h2>
+    <p class="demi-db-note-p">
+      半神晋升时会随机获得其中一种。数值按阶级列出，阶级按上方概率随机决定。
+      权能技能与 Might 技能文本均取自游戏官方简体中文；游戏未提供中文的条目以英文原文显示。
+    </p>
+    <div class="demi-db-might-grid">
+      {mightList.map(might => (
+        <article class="demi-db-might-card">
+          <div class="demi-db-might-head">
+            {might.icon && (
+              <img class="demi-db-might-icon" src={r2Url('horizon-walker', `skills/${might.icon.includes('.') ? might.icon : might.icon + '.png'}`)} alt={might.zhName} width={40} height={40} loading="lazy" />
+            )}
+            <h3 class="demi-db-might-name">{might.zhName}</h3>
+          </div>
+          <div class="demi-db-might-tiers">
+            {might.tiers.map(t => (
+              <div className={`demi-db-tier-row demi-db-tier-${t.tier}`}>
+                <span class="demi-db-tier-label">T{t.tier}</span>
+                <span class="demi-db-tier-desc" set:html={might.tierDesc(t)} />
+              </div>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</HwZhLayout>
+
+<style>
+  .demi-db {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .demi-db-intro {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  .demi-db-intro-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+    padding: 1rem 1.1rem;
+  }
+  .demi-db-intro-card h3 {
+    color: var(--hw-primary-warm);
+    margin: 0 0 0.5rem;
+    font-size: 1.05rem;
+  }
+  .demi-db-intro-card p {
+    color: var(--hw-text-light);
+    font-size: 0.925rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+  .demi-db-probs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.6rem;
+  }
+  .demi-db-prob {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 6px;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.8rem;
+    color: var(--hw-text-light);
+  }
+  .demi-db-prob-4, .demi-db-prob-5 { color: var(--hw-primary-warm); border-color: rgba(232, 165, 71, 0.5); }
+  .demi-db-heading {
+    color: var(--hw-primary-warm);
+    font-size: 1.35rem;
+    margin: 1rem 0 0;
+  }
+  .demi-db-note-p { color: var(--hw-text-muted); font-size: 0.9rem; margin: 0.35rem 0 0; }
+  .demi-db-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 1rem;
+  }
+  .demi-db-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+    padding: 1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .demi-db-card-head {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .demi-db-face {
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    object-fit: cover;
+  }
+  .demi-db-name {
+    color: var(--hw-text-light);
+    margin: 0;
+    font-size: 1.1rem;
+  }
+  .demi-db-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-top: 0.25rem;
+    flex-wrap: wrap;
+  }
+  .demi-db-cost {
+    background: rgba(232, 165, 71, 0.14);
+    border: 1px solid rgba(232, 165, 71, 0.4);
+    color: var(--hw-primary-warm);
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+  }
+  .demi-db-rel {
+    background: var(--hw-accent-mint-20);
+    border: 1px solid var(--hw-accent-mint-50);
+    color: var(--hw-accent-mint);
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    white-space: nowrap;
+  }
+  .demi-db-note {
+    color: #9ecbff;
+    font-size: 0.78rem;
+    text-decoration: none;
+    width: fit-content;
+    display: inline-block;
+    margin-top: 0.3rem;
+  }
+  .demi-db-link {
+    color: #9ecbff;
+    font-size: 0.82rem;
+    text-decoration: none;
+  }
+  .demi-db-authority {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+    padding: 0.85rem 0.95rem;
+  }
+  .demi-db-auth-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+  .demi-db-auth-name {
+    color: var(--hw-primary-warm);
+    margin: 0;
+    font-size: 1rem;
+  }
+  .demi-db-badge {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border: 1px solid rgba(232, 165, 71, 0.4);
+    color: var(--hw-primary-warm);
+    border-radius: 6px;
+    padding: 0.12rem 0.45rem;
+    white-space: nowrap;
+  }
+  .demi-db-tierbar {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .demi-db-chips { display: flex; gap: 0.3rem; }
+  .demi-db-chip {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 6px;
+    color: var(--hw-text-light);
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.18rem 0.55rem;
+    cursor: pointer;
+    opacity: 0.55;
+  }
+  .demi-db-chip.active {
+    opacity: 1;
+    border-color: var(--hw-primary-warm);
+    color: var(--hw-primary-warm);
+  }
+  .demi-db-view {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--hw-primary-warm);
+    letter-spacing: 0.04em;
+  }
+  .demi-db-auth-body p {
+    color: var(--hw-text-light);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0 0 0.5rem;
+  }
+  .demi-db-auth-body p:last-child { margin-bottom: 0; }
+  :global(.demi-db .demi-arr) {
+    color: var(--hw-primary-warm);
+    font-weight: 600;
+  }
+  .demi-db-might-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1rem;
+  }
+  .demi-db-might-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+    padding: 0.9rem 1rem;
+  }
+  .demi-db-might-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+  .demi-db-might-icon {
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  .demi-db-might-name {
+    color: var(--hw-text-light);
+    margin: 0;
+    font-size: 1rem;
+  }
+  .demi-db-tier-row {
+    display: flex;
+    gap: 0.6rem;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 0.86rem;
+    line-height: 1.5;
+  }
+  .demi-db-tier-row:last-child { border-bottom: none; }
+  .demi-db-tier-label {
+    color: var(--hw-primary-warm);
+    font-weight: 600;
+    min-width: 1.6rem;
+  }
+  .demi-db-tier-desc { color: var(--hw-text-light); }
+  @media (max-width: 640px) {
+    .demi-db-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    document.querySelectorAll('.demi-db-chips').forEach(function(chips) {
+      var card = chips.closest('.demi-db-card');
+      if (!card) return;
+      chips.querySelectorAll('.demi-db-chip').forEach(function(chip) {
+        chip.addEventListener('click', function() {
+          chips.querySelectorAll('.demi-db-chip').forEach(function(c) { c.classList.remove('active'); });
+          chip.classList.add('active');
+          var lv = parseInt(chip.getAttribute('data-demi-tier')) || 7;
+          card.querySelectorAll('.demi-arr').forEach(function(el) {
+            var vals = (el.getAttribute('data-vals') || '').split(',');
+            if (vals.length) el.textContent = vals[Math.min(lv, vals.length) - 1];
+          });
+          var view = card.querySelector('[data-demi-view]');
+          if (view) view.textContent = '阶段 ' + lv;
+        });
+      });
+    });
+  })();
+</script>

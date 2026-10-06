@@ -1,0 +1,310 @@
+---
+// Chinese AP (action points) guide: /zh/guides/horizon-walker/ap-guide/
+// Editorial walkthrough translated from the EN ap-guide data, same numbers
+// (Yeonwoo 56/109/165, 30 AP skill, 100 AP threshold); stat names use the
+// game's official ZH from HW_ZH_STAT_LABELS/STAT_TYPES.
+import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../data/horizon-walker/characters.js';
+import { HW_ZH_NAMES, HW_ZH_STAT_LABELS, HW_ZH_STAT_TYPES } from '../../../../data/horizon-walker/zh/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/zh/ui.js';
+import { APImage } from '../../../../components/horizon-walker/index.astro';
+
+export const prerender = true;
+
+// Hero names mentioned in the guide -> official ZH (EN fallback)
+const heroZh = enName => {
+  const rosterChar = HORIZON_WALKER_CHARACTERS.find(c => c.name === enName);
+  return (rosterChar && HW_ZH_NAMES[rosterChar.id]) || enName;
+};
+const yeonwoo = heroZh('Yeonwoo');
+const kalma = heroZh('Kalma');
+
+// Official ZH stat names used in the guide
+const apRecovery = HW_ZH_STAT_LABELS.apRecovery; // 体力恢复力
+const startingAp = HW_ZH_STAT_LABELS.startingAp; // 战斗开始行动力
+const agility = HW_ZH_STAT_LABELS.agility; // 敏捷
+const apRecoveryEn = HW_ZH_STAT_TYPES['AP Recovery'];
+
+const IMG1 = '../../assets/images/games/horizon-walker/AP_recovery/img1.jpg';
+const IMG2 = '../../assets/images/games/horizon-walker/AP_recovery/img2.jpg';
+const IMG3 = '../../assets/images/games/horizon-walker/AP_recovery/img3.jpg';
+---
+
+<HwZhLayout
+  title="行动力（AP）系统指南 - 地平线行者中文维基 - GachaWiki"
+  description="地平线行者行动力（AP）系统详解：体力恢复力与战斗开始行动力的区别、行动顺序的计算、100 AP 行动门槛与额外回合等特殊效果。"
+  keywords={['地平线行者', '行动力', 'AP', '回合顺序', '体力恢复力']}
+  pageTitle="行动力（AP）系统指南"
+  breadcrumbItems={[
+    { name: '首页', href: '/' },
+    { name: '地平线行者', href: HW_ZH.baseUrl },
+    { name: '行动力指南' },
+  ]}
+>
+  <div class="zh-guide">
+    <section class="zh-section">
+      <h2 class="zh-section-title">AP 如何运作</h2>
+      <p class="zh-text">
+        本游戏使用行动力（AP）来计算行动顺序：AP 是衡量谁先行动的度量系统。下面解释 AP 的运作方式与相关机制。
+      </p>
+    </section>
+
+    <section class="zh-section">
+      <h2 class="zh-section-title">AP 相关属性一览</h2>
+      <p class="zh-text">首先，影响 AP 的属性共有两项：</p>
+      <ul class="zh-list">
+        <li>{apRecovery}（{apRecoveryEn}，AP Recovery）</li>
+        <li>{startingAp}（Starting AP）</li>
+      </ul>
+    </section>
+
+    <section class="zh-section">
+      <h2 class="zh-section-title">理解{apRecovery}</h2>
+      <p class="zh-text">
+        {apRecovery}（AP Recovery）：从第 1 回合开始，每回合获得的 AP 点数。
+      </p>
+      <p class="zh-text">
+        {startingAp}（Starting AP）：只在战斗的第 1 回合生效，帮助你的单位率先行动，提前启动连锁或增益。
+      </p>
+      <div class="zh-warning">
+        <p class="zh-warning-text">
+          注意：{agility}会提升基础{apRecovery}。{agility}高的角色从{apRecovery}提升中获益更大，因为提升的百分比会更高！
+        </p>
+      </div>
+      <div class="zh-img-block">
+        <APImage
+          imageName={IMG1}
+          alt="AP 属性界面：敏捷影响体力恢复力"
+          class="zh-img"
+          width={600}
+          height={400}
+          loading="lazy"
+          format="webp"
+          quality={85}
+        />
+        <p class="zh-img-caption">AP 属性界面：{agility}影响{apRecovery}</p>
+      </div>
+    </section>
+
+    <section class="zh-section">
+      <h2 class="zh-section-title">游戏中如何使用这些属性</h2>
+      <p class="zh-text">接下来看看这两项属性在实战中如何运作。以{yeonwoo}为例：</p>
+      <div class="zh-img-block">
+        <APImage
+          imageName={IMG2}
+          alt={`${yeonwoo}的 AP 属性：战斗开始行动力 56、体力恢复力 109`}
+          class="zh-img"
+          width={600}
+          height={400}
+          loading="lazy"
+          format="webp"
+          quality={85}
+        />
+        <p class="zh-img-caption">{yeonwoo}的 AP 属性：{startingAp} 56、{apRecovery} 109</p>
+      </div>
+      <div class="zh-example">
+        <p class="zh-example-title">{yeonwoo}的 AP 计算</p>
+        <p class="zh-example-text">
+          她的{startingAp}为 56，{apRecovery}为 109。第 1 回合合计应有 165 AP（56 + 109）。之后每回合在此基础上再获得 109。
+        </p>
+      </div>
+    </section>
+
+    <section class="zh-section">
+      <h2 class="zh-section-title">100 AP 行动门槛规则</h2>
+      <p class="zh-text">第 1 回合她拥有 165 AP，而她的基础技能消耗 30 AP。</p>
+      <div class="zh-img-block">
+        <APImage
+          imageName={IMG3}
+          alt="第 1 回合：妍雨拥有 165 AP，基础技能消耗 30 AP"
+          class="zh-img"
+          width={600}
+          height={400}
+          loading="lazy"
+          format="webp"
+          quality={85}
+        />
+        <p class="zh-img-caption">第 1 回合：{yeonwoo}拥有 165 AP，基础技能消耗 30 AP</p>
+      </div>
+      <div class="zh-warning">
+        <p class="zh-warning-text">
+          非常重要：AP 低于 100 时，必须等待下一回合直到 AP 达到 100 以上才能行动。行动门槛是 100 AP 及以上！
+        </p>
+      </div>
+      <div class="zh-info">
+        <p class="zh-info-title">AP 累积示例</p>
+        <p class="zh-info-text">
+          如果当前为 99 AP，那么要到下一回合才能行动，并获得 99 + 109（{apRecovery}）= 208 AP。
+        </p>
+      </div>
+    </section>
+
+    <section class="zh-section">
+      <h2 class="zh-section-title">特殊效果</h2>
+      <p class="zh-text">效果：</p>
+      <div class="zh-example">
+        <p class="zh-example-title">额外回合效果</p>
+        <p class="zh-example-text">
+          部分技能（如{kalma}的技能）的额外回合效果无需等待 100 AP 即可获得行动机会：当回合即可行动，相当于无视 100 AP 的行动门槛！
+        </p>
+      </div>
+    </section>
+
+    <section class="zh-section">
+      <h2 class="zh-section-title">总结</h2>
+      <div class="zh-info">
+        <p class="zh-info-title">要点</p>
+        <ul class="zh-list zh-info-list">
+          <li>AP 决定行动顺序</li>
+          <li>{startingAp}只影响第 1 回合</li>
+          <li>{apRecovery}每回合增加你的 AP</li>
+          <li>最低 100 AP 才能行动（特殊效果除外）</li>
+          <li>{agility}提升基础{apRecovery}</li>
+          <li>额外回合效果无视 100 AP 规则</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="zh-section">
+      <h2 class="zh-section-title">视频讲解</h2>
+      <p class="zh-text">想要更详细的 AP 系统视频讲解，可以观看这个视频：</p>
+      <a
+        href="https://www.youtube.com/watch?v=AUh3Fhjag24"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="zh-btn"
+      >
+        在 YouTube 观看 AP 系统讲解
+      </a>
+    </section>
+  </div>
+</HwZhLayout>
+
+<style>
+  .zh-guide {
+    display: grid;
+    gap: 1.75rem;
+  }
+
+  .zh-section {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+    padding: 1.5rem;
+  }
+
+  .zh-section-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: var(--font-bold);
+    color: var(--hw-primary-warm);
+    margin: 0 0 1rem 0;
+  }
+
+  .zh-text {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: var(--hw-text-light);
+    margin: 0 0 0.75rem 0;
+  }
+
+  .zh-list {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--hw-text-light);
+    font-size: 0.9375rem;
+    line-height: 1.9;
+  }
+
+  .zh-warning {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .zh-warning-text {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: var(--hw-text-light);
+    margin: 0;
+  }
+
+  .zh-info {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 0.9rem 1.1rem;
+  }
+
+  .zh-info-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--hw-primary-warm);
+    margin: 0 0 0.4rem 0;
+  }
+
+  .zh-info-text {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: var(--hw-text-light);
+    margin: 0;
+  }
+
+  .zh-info-list {
+    margin: 0;
+  }
+
+  .zh-example {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 0.9rem 1.1rem;
+  }
+
+  .zh-example-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--hw-primary-warm);
+    margin: 0 0 0.4rem 0;
+  }
+
+  .zh-example-text {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: var(--hw-text-light);
+    margin: 0;
+  }
+
+  .zh-img-block {
+    display: grid;
+    gap: 0.5rem;
+    justify-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .zh-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .zh-img-caption {
+    font-size: 0.8125rem;
+    color: var(--hw-text-muted);
+    margin: 0;
+  }
+
+  .zh-btn {
+    display: inline-block;
+    background: var(--hw-primary-warm);
+    color: var(--hw-text-dark);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    border-radius: 10px;
+    padding: 0.65rem 1.5rem;
+    text-decoration: none;
+  }
+</style>

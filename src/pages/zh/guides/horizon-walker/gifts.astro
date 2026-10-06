@@ -1,0 +1,421 @@
+---
+// Chinese gifts guide: /zh/guides/horizon-walker/gifts/
+// Gift box and gift names/descriptions use the game's official ZH via
+// HW_ZH_ITEMS (EN verbatim fallback when the game has no ZH entry); point
+// values are the wiki's data unchanged.
+import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
+import { GIFT_BOXES, UNIQUE_GIFTS } from '../../../../data/horizon-walker/gifts.js';
+import { HW_ZH_ITEMS } from '../../../../data/horizon-walker/zh/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/zh/ui.js';
+import { GiftImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
+
+export const prerender = true;
+
+// EN gift/box name -> official ZH (Item loc); EN fallback if unmapped
+const giftZhName = name => HW_ZH_ITEMS[name]?.name || name;
+const giftZhDesc = name => HW_ZH_ITEMS[name]?.desc || null;
+---
+
+<HwZhLayout
+  title="礼物与奖励 - 地平线行者中文维基 - GachaWiki"
+  description="地平线行者礼物数据库：华丽/高级/普通礼物箱的全部内容物、好感度积分系统、女王的王冠获取途径与独特礼物。礼物名称与说明均取自游戏官方简体中文。"
+  keywords={['地平线行者', '礼物', '好感度', '礼物箱']}
+  pageTitle="礼物与奖励"
+  breadcrumbItems={[
+    { name: '首页', href: '/' },
+    { name: '地平线行者', href: HW_ZH.baseUrl },
+    { name: '礼物' },
+  ]}
+>
+  <div class="zh-gifts-page">
+    <!-- Gift boxes -->
+    <section class="zh-section">
+      <h2 class="zh-section-title">礼物箱</h2>
+      <p class="zh-text">各类礼物箱与其内容物一览。每个礼物箱包含不同稀有度与类型的礼物。</p>
+      <div class="zh-card">
+        <h3 class="zh-card-title">角色礼物偏好</h3>
+        <p class="zh-card-text">
+          想知道每个角色喜欢什么礼物？查看<a href={`${HW_ZH.baseUrl}character-gifts/`} class="zh-link">角色礼物偏好指南</a>，把好感度收益最大化。
+        </p>
+      </div>
+
+      <h3 class="zh-h3">好感度积分系统</h3>
+      <p class="zh-text">礼物获得的好感度会随角色的偏好而增加：</p>
+      <div class="zh-grid zh-grid-tight">
+        <div class="zh-cell">
+          <span class="zh-cell-label">基础</span>
+          <span class="zh-cell-value">无加成</span>
+        </div>
+        <div class="zh-cell">
+          <span class="zh-cell-label">喜欢</span>
+          <span class="zh-cell-value">+10 分</span>
+        </div>
+        <div class="zh-cell">
+          <span class="zh-cell-label">最爱</span>
+          <span class="zh-cell-value">+20 分</span>
+        </div>
+      </div>
+      <p class="zh-note">
+        注意：截至目前，女王的王冠无论送给哪位角色都有最高的分值（100 至 120）。它包含在华丽礼物箱子中，想要最大化好感度时请优先选择。
+      </p>
+
+      <div class="zh-box-list">
+        {GIFT_BOXES.map(box => (
+          <div class="zh-box-card">
+            <div class="zh-box-header">
+              <GiftImage
+                imageName={box.image}
+                alt={giftZhName(box.name)}
+                class="zh-box-img"
+                width={80}
+                height={80}
+                loading="lazy"
+              />
+              <div class="zh-box-info">
+                <h4 class="zh-box-name">{giftZhName(box.name)}</h4>
+                <div class="zh-box-tier">
+                  <HWRarityIcon
+                    rarity={box.id === 'brilliant-gift-box' ? 'SS' : box.id === 'luxurious-gift-box' ? 'S' : 'A'}
+                    width={40}
+                    height={20}
+                  />
+                </div>
+                <p class="zh-box-desc">{giftZhDesc(box.name) || box.description}</p>
+                <p class="zh-box-count">{box.gifts.length} 件礼物</p>
+              </div>
+            </div>
+            <div class="zh-gift-grid">
+              {box.gifts.map(gift => (
+                <div class="zh-gift-item">
+                  <GiftImage
+                    imageName={gift.image}
+                    alt={giftZhName(gift.name)}
+                    class="zh-gift-img"
+                    width={60}
+                    height={60}
+                    loading="lazy"
+                  />
+                  <div class="zh-gift-info">
+                    <p class="zh-gift-name">{giftZhName(gift.name)}</p>
+                    <HWRarityIcon rarity={gift.rarity} width={36} height={18} />
+                    <div class="zh-points">
+                      <div class="zh-point">
+                        <span class="zh-point-label">基础</span>
+                        <span class="zh-point-value">{gift.points.min}</span>
+                      </div>
+                      <div class="zh-point">
+                        <span class="zh-point-label">喜欢</span>
+                        <span class="zh-point-value">{gift.points.min + 10}</span>
+                      </div>
+                      <div class="zh-point">
+                        <span class="zh-point-label">最爱</span>
+                        <span class="zh-point-value">{gift.points.max}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Unique gifts -->
+    <section class="zh-section">
+      <h2 class="zh-section-title">独特与特殊礼物</h2>
+      <p class="zh-text">仅在限定活动或庆典期间获得的纪念性与独特礼物。</p>
+      <div class="zh-card">
+        <h3 class="zh-card-title">重要说明</h3>
+        <p class="zh-card-text">皮肤同样提供 100 好感度（与 EX 级礼物相同），并适用标准好感度加成。</p>
+      </div>
+      <div class="zh-gift-grid">
+        {UNIQUE_GIFTS.map(gift => (
+          <div class="zh-gift-item">
+            <GiftImage
+              imageName={gift.image}
+              alt={giftZhName(gift.name)}
+              class="zh-gift-img"
+              width={60}
+              height={60}
+              loading="lazy"
+            />
+            <div class="zh-gift-info">
+              <p class="zh-gift-name">{giftZhName(gift.name)}</p>
+              <div class="zh-gift-badges">
+                <HWRarityIcon rarity={gift.rarity} width={36} height={18} />
+                <span class="zh-type-chip">{gift.type}</span>
+              </div>
+              {gift.description && <p class="zh-gift-desc">{gift.description}</p>}
+              <div class="zh-points">
+                <div class="zh-point">
+                  <span class="zh-point-label">基础</span>
+                  <span class="zh-point-value">{gift.points.min}</span>
+                </div>
+                <div class="zh-point">
+                  <span class="zh-point-label">喜欢</span>
+                  <span class="zh-point-value">{gift.points.min + 10}</span>
+                </div>
+                <div class="zh-point">
+                  <span class="zh-point-label">最爱</span>
+                  <span class="zh-point-value">{gift.points.max}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</HwZhLayout>
+
+<style>
+  .zh-gifts-page {
+    display: grid;
+    gap: 1.75rem;
+  }
+
+  .zh-section {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+    padding: 1.5rem;
+  }
+
+  .zh-section-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: var(--font-bold);
+    color: var(--hw-primary-warm);
+    margin: 0 0 1rem 0;
+  }
+
+  .zh-text {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: var(--hw-text-light);
+    margin: 0 0 0.75rem 0;
+  }
+
+  .zh-h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--hw-text-light);
+    margin: 1.25rem 0 0.5rem 0;
+  }
+
+  .zh-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .zh-card-title {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--hw-primary-warm);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .zh-card-text {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--hw-text-light);
+    margin: 0;
+  }
+
+  .zh-link {
+    color: var(--hw-primary-warm);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .zh-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.6rem;
+  }
+
+  .zh-grid-tight {
+    margin-bottom: 0.75rem;
+  }
+
+  .zh-cell {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 0.6rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .zh-cell-label {
+    font-size: 0.75rem;
+    color: var(--hw-text-muted);
+  }
+
+  .zh-cell-value {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--hw-text-light);
+  }
+
+  .zh-note {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--hw-text-muted);
+    margin: 0 0 1rem 0;
+  }
+
+  .zh-box-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .zh-box-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+  }
+
+  .zh-box-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .zh-box-img {
+    width: 72px;
+    height: 72px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+  }
+
+  .zh-box-info {
+    min-width: 0;
+  }
+
+  .zh-box-name {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--hw-primary-warm);
+    margin: 0 0 0.25rem 0;
+  }
+
+  .zh-box-desc {
+    font-size: 0.875rem;
+    color: var(--hw-text-light);
+    line-height: 1.7;
+    margin: 0.25rem 0;
+  }
+
+  .zh-box-count {
+    font-size: 0.8125rem;
+    color: var(--hw-text-muted);
+    margin: 0;
+  }
+
+  .zh-gift-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 0.6rem;
+  }
+
+  .zh-gift-item {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 0.7rem 0.8rem;
+  }
+
+  .zh-gift-img {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .zh-gift-info {
+    min-width: 0;
+    display: grid;
+    gap: 0.3rem;
+    justify-items: start;
+  }
+
+  .zh-gift-name {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--hw-text-light);
+    margin: 0;
+  }
+
+  .zh-gift-badges {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .zh-type-chip {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--hw-text-light);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 0.1rem 0.55rem;
+    white-space: nowrap;
+  }
+
+  .zh-gift-desc {
+    font-size: 0.8125rem;
+    color: var(--hw-text-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .zh-points {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .zh-point {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 0.2rem 0.5rem;
+    min-width: 52px;
+    align-items: center;
+  }
+
+  .zh-point-label {
+    font-size: 0.6875rem;
+    color: var(--hw-text-muted);
+  }
+
+  .zh-point-value {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--hw-text-light);
+  }
+
+  @media (max-width: 640px) {
+    .zh-box-header {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

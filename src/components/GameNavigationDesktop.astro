@@ -13,18 +13,30 @@ import TSMusicPlayer from './taimanin-squad/TSMusicPlayer.astro';
 interface Props {
   currentPath?: string;
   gameKey?: GameKey;
+  // Optional override for localized wikis (e.g. /zh/): replaces the English
+  // section names/links and the game landing URL; identity stays from gameKey.
+  navOverride?: {
+    name?: string;
+    gameUrl?: string;
+    sections: { title: string; links: { name: string; href: string }[] }[];
+  };
 }
 
-const { currentPath = '', gameKey } = Astro.props;
+const { currentPath = '', gameKey, navOverride } = Astro.props;
 
 // Import Stella Sora colors if needed.
 const isStellaSora = gameKey === 'stella-sora';
 
 // Validate and sanitize gameKey
 const validatedGameKey = isValidGameKey(gameKey) ? gameKey : undefined;
-const game = getGameData(validatedGameKey);
+const game = navOverride
+  ? { ...getGameData(validatedGameKey), ...navOverride }
+  : getGameData(validatedGameKey);
 // Game landing URL from the single registry (fixes every game at once — no per-game chain).
-const gameUrl = (validatedGameKey && getGameById(validatedGameKey)?.url) || '/guides/silver-and-blood/';
+const gameUrl =
+  navOverride?.gameUrl ||
+  (validatedGameKey && getGameById(validatedGameKey)?.url) ||
+  '/guides/silver-and-blood/';
 
 // Activate only the LONGEST matching nav href, so a deeper page like
 // /builds/community/ lights "Community Builds" instead of "Builds" too.

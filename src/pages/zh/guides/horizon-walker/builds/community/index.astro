@@ -1,0 +1,220 @@
+---
+// Chinese community builds index: /zh/guides/horizon-walker/builds/community/
+// Same units as the EN page (community-builds.js, credits: Envy, Liauw &
+// Gamekee); character names use the official ZH from game-text.js.
+import HwZhLayout from '../../../../../../layouts/zh/HwZhLayout.astro';
+import { COMMUNITY_BUILDS } from '../../../../../../data/horizon-walker/community-builds.js';
+import { getCharacterBySlug, HORIZON_WALKER_CHARACTERS } from '../../../../../../data/horizon-walker/characters.js';
+import { HW_ZH_NAMES } from '../../../../../../data/horizon-walker/zh/game-text.js';
+import { HW_ZH } from '../../../../../../data/horizon-walker/zh/ui.js';
+import { CharacterImage, HWRarityIcon } from '../../../../../../components/horizon-walker/index.astro';
+
+export const prerender = true;
+
+// Merge community data with roster records (cost, rarity, portrait, ZH name)
+const charBySlug = {};
+for (const c of HORIZON_WALKER_CHARACTERS) charBySlug[c.slug] = c;
+
+const communityUnits = Object.entries(COMMUNITY_BUILDS)
+  .map(([slug, communityData]) => {
+    const character = getCharacterBySlug(slug) || charBySlug[slug] || null;
+    return {
+      slug,
+      communityData,
+      character,
+      displayName: HW_ZH_NAMES[character?.id] || character?.name || communityData.name,
+      nameEn: character?.name || communityData.name,
+      rarity: character?.rarity || communityData.rarity,
+      cost: character?.cost || 0,
+      image: character?.image || communityData.name,
+    };
+  });
+
+const rarityOrder = { EX: 5, SS: 4, S: 3, A: 2, B: 1 };
+communityUnits.sort((a, b) => {
+  const rarityDiff = (rarityOrder[b.rarity] || 0) - (rarityOrder[a.rarity] || 0);
+  if (rarityDiff !== 0) return rarityDiff;
+  return a.displayName.localeCompare(b.displayName, 'zh');
+});
+
+const buildsByRarity = {
+  EX: communityUnits.filter((u) => u.rarity === 'EX'),
+  SS: communityUnits.filter((u) => u.rarity === 'SS'),
+  S: communityUnits.filter((u) => u.rarity === 'S'),
+  A: communityUnits.filter((u) => u.rarity === 'A'),
+  B: communityUnits.filter((u) => u.rarity === 'B'),
+};
+---
+
+<HwZhLayout
+  title="社区配装 - 地平线行者中文维基 - GachaWiki"
+  description={`地平线行者社区配装：整理自 Envy、Liauw 与 Gamekee 的社区配装表格，覆盖 ${communityUnits.length} 名角色的推荐武器、圣痕、副属性、特性与技能升级顺序。`}
+  keywords={['地平线行者', '社区配装', '配装', '圣痕']}
+  pageTitle="社区配装"
+  breadcrumbItems={[
+    { name: '首页', href: '/' },
+    { name: '地平线行者', href: HW_ZH.baseUrl },
+    { name: '配装推荐', href: `${HW_ZH.baseUrl}builds/` },
+    { name: '社区配装' },
+  ]}
+>
+  <div class="zh-cb-index">
+    <div class="zh-cb-note">
+      <h2 class="zh-cb-note-title">社区配装</h2>
+      <p class="zh-cb-note-text">
+        整理自 Envy、Liauw 与 Gamekee 的社区配装表格，覆盖 {communityUnits.length}
+        名角色。手动精选配装在单独的<a href={`${HW_ZH.baseUrl}builds/`}>配装推荐</a
+        >栏目，更详细的配装解析见各角色页面。圣痕套装与副属性数值来自社区表格，保留英文原文。
+      </p>
+    </div>
+
+    {
+      Object.entries(buildsByRarity).map(([rarity, units]) => {
+        if (units.length === 0) return null;
+        return (
+          <section class="zh-cb-rarity">
+            <div class="zh-cb-rarity-header">
+              <HWRarityIcon rarity={rarity} width={48} height={24} />
+              <span class="zh-cb-rarity-count">{units.length} 套配装</span>
+            </div>
+            <div class="zh-cb-grid">
+              {units.map((unit) => (
+                <a
+                  href={`${HW_ZH.baseUrl}builds/community/${unit.slug}/`}
+                  class="zh-cb-card"
+                  aria-label={`查看 ${unit.displayName} 的社区配装`}
+                >
+                  <div class="zh-cb-card-head">
+                    <div class="zh-cb-portrait">
+                      <CharacterImage
+                        imageName={unit.image}
+                        alt={unit.displayName}
+                        width={300}
+                        height={300}
+                        class="zh-cb-img"
+                        loading="eager"
+                      />
+                    </div>
+                    <div class="zh-cb-info">
+                      <h3 class="zh-cb-name">{unit.displayName}</h3>
+                      <p class="zh-cb-en">{unit.nameEn}</p>
+                      <div class="zh-cb-meta">
+                        <span class="zh-cb-cost">费用 {unit.cost}</span>
+                        <HWRarityIcon rarity={unit.rarity} width={40} height={20} />
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        );
+      })
+    }
+  </div>
+</HwZhLayout>
+
+<style>
+  .zh-cb-index {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .zh-cb-note {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+  }
+  .zh-cb-note-title {
+    color: var(--hw-primary-warm);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+  }
+  .zh-cb-note-text {
+    margin: 0;
+    color: var(--hw-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+  .zh-cb-note-text a {
+    color: var(--hw-primary-warm);
+  }
+  .zh-cb-rarity {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .zh-cb-rarity-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .zh-cb-rarity-count {
+    color: var(--hw-text-very-muted);
+    font-size: 0.85rem;
+  }
+  .zh-cb-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.9rem;
+  }
+  .zh-cb-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    padding: 0.9rem;
+    text-decoration: none;
+  }
+  .zh-cb-card-head {
+    display: flex;
+    gap: 0.9rem;
+    align-items: center;
+  }
+  .zh-cb-portrait {
+    flex: none;
+    width: 84px;
+    height: 84px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .zh-cb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+  .zh-cb-info {
+    min-width: 0;
+  }
+  .zh-cb-name {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--hw-primary-warm);
+  }
+  .zh-cb-en {
+    margin: 0.1rem 0 0.45rem 0;
+    font-size: 0.78rem;
+    color: var(--hw-text-very-muted);
+  }
+  .zh-cb-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .zh-cb-cost {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--hw-text-light);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 0.1rem 0.55rem;
+    white-space: nowrap;
+  }
+</style>

@@ -1,0 +1,325 @@
+---
+// Chinese character database index: /zh/guides/horizon-walker/characters/
+// Grid of all roster heroes with official ZH names, rarity/class/cost chips,
+// client-side search + rarity + race filters. Links to each ZH character page.
+import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../data/horizon-walker/characters.js';
+import {
+  HW_ZH_NAMES,
+  HW_ZH_CLASSES,
+  HW_ZH_TAGS,
+  HW_ZH_PROFILE,
+} from '../../../../data/horizon-walker/zh/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/zh/ui.js';
+import { CharacterImage } from '../../../../components/horizon-walker/index.astro';
+
+export const prerender = true;
+
+const getImageKey = characterName => {
+  let filename = characterName.replace(/ /g, '_').replace(/-/g, '_').replace(/\./g, '_');
+  if (characterName === 'TX - Manticore') filename = 'TX_Manticore';
+  if (characterName === 'Re_De_Da') filename = 'Re_De_Da';
+  if (characterName === 'Headless Knight') filename = 'Headless_Knight';
+  if (characterName === 'Kim Ga-young') filename = 'kim_Ga_young';
+  if (characterName === 'Yeon Chae-Young') filename = 'Yeon_Chae-Young';
+  if (characterName === 'Min Eun-sol') filename = 'Min_Eun_sol';
+  if (characterName === 'So Joo-hee') filename = 'So_Joo_hee';
+  return filename;
+};
+
+const RACE_TAGS = [
+  'Human', 'Swamp Elf', 'Wood Elf', 'Catsidhe', 'Kobold', 'Orke', 'Torta',
+  'Lamora', 'Lamoran', 'Fairy', 'Machine', 'Demon', 'Elemental', 'Kesak',
+];
+
+// Official ZH race label: take the tribe value from any member's game profile
+const raceZh = {};
+for (const race of RACE_TAGS) {
+  const member = HORIZON_WALKER_CHARACTERS.find(c => c.tags?.includes(race) && HW_ZH_PROFILE[c.id]?.tribe);
+  if (member) raceZh[race] = HW_ZH_PROFILE[member.id].tribe;
+}
+
+const availableRaces = RACE_TAGS.filter(race =>
+  HORIZON_WALKER_CHARACTERS.some(char => char.tags && char.tags.includes(race))
+);
+
+const roster = HORIZON_WALKER_CHARACTERS.filter(c => HW_ZH_NAMES[c.id] && c.slug).map(c => ({
+  slug: c.slug,
+  name: HW_ZH_NAMES[c.id],
+  nameEn: c.name,
+  rarity: c.rarity,
+  cost: c.cost,
+  class: HW_ZH_CLASSES[c.class] || c.class,
+  element: HW_ZH_TAGS[c.element] || c.element,
+  races: (c.tags || []).filter(t => RACE_TAGS.includes(t)).map(t => raceZh[t] || t),
+  image: `${getImageKey(c.name)}.jpg`,
+  search: [HW_ZH_NAMES[c.id], c.name, c.rarity, c.class, c.element].join(' ').toLowerCase(),
+}));
+
+const counts = {
+  total: roster.length,
+  EX: roster.filter(c => c.rarity === 'EX').length,
+  SS: roster.filter(c => c.rarity === 'SS').length,
+  S: roster.filter(c => c.rarity === 'S').length,
+  A: roster.filter(c => c.rarity === 'A').length,
+  B: roster.filter(c => c.rarity === 'B').length,
+};
+---
+
+<HwZhLayout
+  title="角色资料库 - 地平线行者中文维基 - GachaWiki"
+  description={`地平线行者全部 ${counts.total} 名角色的中文资料库：官方中文名、稀有度、职业、编成费用与属性入口，支持搜索与筛选。`}
+  keywords={['地平线行者', '角色', '资料库', '排行榜']}
+  pageTitle="角色资料库"
+  breadcrumbItems={[
+    { name: '首页', href: '/' },
+    { name: '地平线行者', href: HW_ZH.baseUrl },
+    { name: '角色资料库' },
+  ]}
+>
+  <div class="zh-db">
+    <p class="zh-db-note">
+      共 {counts.total} 名角色：EX {counts.EX} 名、SS {counts.SS} 名、S {counts.S} 名、A {counts.A} 名、B {counts.B} 名。点击卡片进入角色页面查看官方中文技能与属性。
+    </p>
+
+    <div class="zh-filters">
+      <input
+        type="search"
+        id="zhCharSearch"
+        class="zh-search"
+        placeholder="搜索角色名（中文或英文）"
+        aria-label="搜索角色"
+      />
+      <div class="zh-filter-row" id="zhRarityRow">
+        <button class="zh-filter-chip active" data-rarity="">全部</button>
+        <button class="zh-filter-chip" data-rarity="EX">EX</button>
+        <button class="zh-filter-chip" data-rarity="SS">SS</button>
+        <button class="zh-filter-chip" data-rarity="S">S</button>
+        <button class="zh-filter-chip" data-rarity="A">A</button>
+        <button class="zh-filter-chip" data-rarity="B">B</button>
+      </div>
+      <div class="zh-filter-row" id="zhRaceRow">
+        <button class="zh-filter-chip active" data-race="">全部种族</button>
+        {availableRaces.map(r => (
+          <button class="zh-filter-chip" data-race={r}>{raceZh[r] || r}</button>
+        ))}
+      </div>
+    </div>
+
+    <p class="zh-empty" id="zhEmpty" hidden>没有符合筛选条件的角色。</p>
+
+    <div class="zh-char-grid" id="zhCharGrid">
+      {roster.map(c => (
+        <a
+          href={`${HW_ZH.baseUrl}characters/${c.slug}/`}
+          class="zh-char-card"
+          data-search={c.search}
+          data-rarity={c.rarity}
+          data-races={c.races.join('|')}
+        >
+          <CharacterImage
+            imageName={c.image}
+            alt={c.name}
+            class="zh-card-img"
+            width={96}
+            height={96}
+            loading="lazy"
+          />
+          <div class="zh-card-body">
+            <p class="zh-card-name">{c.name}</p>
+            <p class="zh-card-en">{c.nameEn}</p>
+            <div class="zh-card-chips">
+              <span class="zh-rarity-chip">{c.rarity}</span>
+              <span class="zh-mini-chip">{c.class}</span>
+              <span class="zh-mini-chip">费用 {c.cost}</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</HwZhLayout>
+
+<script>
+  function initZhCharFilters() {
+    const search = document.getElementById('zhCharSearch');
+    const grid = document.getElementById('zhCharGrid');
+    const empty = document.getElementById('zhEmpty');
+    const cards = Array.from(grid.querySelectorAll('.zh-char-card'));
+    let rarity = '';
+    let race = '';
+
+    const apply = () => {
+      const q = (search.value || '').trim().toLowerCase();
+      let shown = 0;
+      for (const card of cards) {
+        const okSearch = !q || card.dataset.search.includes(q);
+        const okRarity = !rarity || card.dataset.rarity === rarity;
+        const okRace = !race || (card.dataset.races || '').split('|').includes(race);
+        const visible = okSearch && okRarity && okRace;
+        card.style.display = visible ? '' : 'none';
+        if (visible) shown++;
+      }
+      empty.hidden = shown > 0;
+    };
+
+    search.addEventListener('input', apply);
+
+    const wireRow = (rowId, attr) => {
+      const row = document.getElementById(rowId);
+      row.addEventListener('click', e => {
+        const btn = e.target.closest('.zh-filter-chip');
+        if (!btn) return;
+        row.querySelectorAll('.zh-filter-chip').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        if (attr === 'rarity') rarity = btn.dataset.rarity || '';
+        else race = btn.dataset.race || '';
+        apply();
+      });
+    };
+    wireRow('zhRarityRow', 'rarity');
+    wireRow('zhRaceRow', 'race');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initZhCharFilters);
+  } else {
+    initZhCharFilters();
+  }
+</script>
+
+<style>
+  .zh-db {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .zh-db-note {
+    font-size: 0.875rem;
+    color: var(--hw-text-muted);
+    margin: 0;
+  }
+
+  .zh-filters {
+    display: grid;
+    gap: 0.6rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    padding: 1rem;
+  }
+
+  .zh-search {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    color: var(--hw-text-light);
+    font-size: 0.9375rem;
+    padding: 0.6rem 0.9rem;
+    outline: none;
+  }
+
+  .zh-search::placeholder {
+    color: var(--hw-text-very-muted);
+  }
+
+  .zh-filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .zh-filter-chip {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--hw-text-light);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+  }
+
+  .zh-filter-chip.active {
+    background: var(--hw-primary-warm);
+    border-color: var(--hw-primary-warm);
+    color: var(--hw-text-dark);
+  }
+
+  .zh-empty {
+    font-size: 0.9375rem;
+    color: var(--hw-text-muted);
+    margin: 0;
+  }
+
+  .zh-char-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .zh-char-card {
+    display: flex;
+    gap: 0.9rem;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    padding: 0.9rem;
+    text-decoration: none;
+    min-width: 0;
+  }
+
+  .zh-card-img {
+    width: 72px;
+    height: 72px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+  }
+
+  .zh-card-body {
+    min-width: 0;
+  }
+
+  .zh-card-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--hw-text-light);
+    margin: 0 0 0.1rem 0;
+  }
+
+  .zh-card-en {
+    font-size: 0.75rem;
+    color: var(--hw-text-muted);
+    margin: 0 0 0.4rem 0;
+  }
+
+  .zh-card-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .zh-rarity-chip {
+    background: var(--hw-primary-warm);
+    color: var(--hw-text-dark);
+    font-weight: 700;
+    font-size: 0.75rem;
+    border-radius: 999px;
+    padding: 0.1rem 0.55rem;
+  }
+
+  .zh-mini-chip {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--hw-text-light);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 0.1rem 0.55rem;
+    white-space: nowrap;
+  }
+</style>

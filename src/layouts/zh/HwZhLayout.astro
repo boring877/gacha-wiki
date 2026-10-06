@@ -1,0 +1,89 @@
+---
+// Layout for all Horizon Walker /zh/ (Chinese) pages. Same house style as the
+// English wiki (hw-colors/hw-layout + per-page CSS imported by each page), but
+// the game navigation is Chinese (navOverride) and html lang is zh.
+import HWBaseHead from '../../components/horizon-walker/HWBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationDesktop from '../../components/GameNavigationDesktop.astro';
+import GameNavigationMobile from '../../components/GameNavigationMobile.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
+import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
+import { HW_ZH } from '../../data/horizon-walker/zh/ui.js';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/horizon-walker/hw-colors.css';
+import '../../styles/games/horizon-walker/hw-layout.css';
+import '../../styles/games/horizon-walker/hw-badges.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  // page H1 shown in the title-only section (omit for pages with their own hero)
+  pageTitle?: string;
+  // manual Chinese breadcrumb items: [{ name, href }]
+  breadcrumbItems?: { name: string; href?: string }[];
+  keywords?: string[];
+}
+
+const { title, description, pageTitle, breadcrumbItems, keywords } = Astro.props;
+
+const zhNav = {
+  name: HW_ZH.gameName,
+  gameUrl: HW_ZH.baseUrl,
+  sections: HW_ZH.nav,
+};
+---
+
+<html lang="zh">
+  <head>
+    <HWBaseHead title={title} description={description || ''} />
+    <GameSEO
+      gameKey="horizon-walker"
+      title={title}
+      description={description}
+      additionalKeywords={[...(keywords || []), '地平线行者', '中文', '攻略', 'wiki']}
+    />
+    <Analytics />
+  </head>
+  <body class="horizon-walker-body">
+    <CustomScrollbar />
+
+    <div class="bg-layer hw-bg-primary"></div>
+    <div class="bg-layer hw-bg-accent-1"></div>
+    <div class="bg-layer hw-bg-accent-2"></div>
+
+    <div class="horizon-walker-content">
+      <Header />
+      <GameNavigationDesktop currentPath={Astro.url.pathname} gameKey="horizon-walker" navOverride={zhNav} />
+      <GameNavigationMobile currentPath={Astro.url.pathname} gameKey="horizon-walker" navOverride={zhNav} />
+
+      <div class="horizon-walker-container">
+        <main class="horizon-walker-main" id="main-content">
+          {pageTitle && (
+            <section class="title-only-section">
+              <h1 class="title-only-heading">{pageTitle}</h1>
+            </section>
+          )}
+
+          {
+            breadcrumbItems && breadcrumbItems.length > 0 && (
+              <Breadcrumb
+                items={breadcrumbItems.map(c => ({ name: c.name, href: c.href || '#' }))}
+                showBackButton={true}
+              />
+            )
+          }
+
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

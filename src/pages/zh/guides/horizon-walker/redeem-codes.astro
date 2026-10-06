@@ -1,0 +1,254 @@
+---
+// Chinese redeem codes page: /zh/guides/horizon-walker/redeem-codes/
+// Same codes and data as the EN page (redeem-codes.js, codes verbatim); page
+// chrome, warnings and step-by-step instructions are in Chinese. Reward item
+// names have no official ZH map entry, so they stay in English.
+import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
+import { horizonWalkerRedeemCodes } from '../../../../data/horizon-walker/redeem-codes.js';
+import { HW_ZH } from '../../../../data/horizon-walker/zh/ui.js';
+import '../../../../styles/games/horizon-walker/hw-redeem-codes.css';
+
+export const prerender = true;
+
+const { availableCodes, expiredCodes, communitySection, warnings, meta } = horizonWalkerRedeemCodes;
+
+// localize the data's English date strings without changing the values
+const MONTH_NUM = {
+  january: 1, february: 2, march: 3, april: 4, may: 5, june: 6, july: 7,
+  august: 8, september: 9, october: 10, november: 11, december: 12,
+};
+const zhDateStr = (s) => {
+  if (!s) return s;
+  let m = s.match(/^([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})(.*)$/);
+  if (m && MONTH_NUM[m[1].toLowerCase()])
+    return `${m[3]} 年 ${MONTH_NUM[m[1].toLowerCase()]} 月 ${parseInt(m[2], 10)} 日${m[4] || ''}`;
+  m = s.match(/^([A-Za-z]+)\s+(\d{4})$/);
+  if (m && MONTH_NUM[m[1].toLowerCase()]) return `${m[2]} 年 ${MONTH_NUM[m[1].toLowerCase()]} 月`;
+  return s;
+};
+
+const lastUpdated = meta.lastUpdated;
+const lastUpdatedZh = `${lastUpdated.getFullYear()} 年 ${lastUpdated.getMonth() + 1} 月 ${lastUpdated.getDate()} 日`;
+
+const statusZh = { working: '可用', unknown: '未验证', expired: '已过期' };
+const statusText = (s) => statusZh[s] || s;
+
+// the EN instructions describe in-game redemption; same steps in Chinese
+const stepsZh = [
+  { title: '打开设置菜单', description: '在游戏主界面点击设置或菜单图标，进入游戏设置。' },
+  { title: '找到兑换码选项', description: '在设置菜单中找到「兑换码」（Redeem Code / Gift Code）选项并点击。' },
+  { title: '输入兑换码', description: '在输入框中输入或粘贴兑换码。' },
+  { title: '确认并领取', description: '点击「确认」或「兑换」按钮提交兑换码。成功后奖励会发送到游戏内邮箱。' },
+];
+
+const communityButtonsZh = communitySection.buttons.map((b) => ({
+  ...b,
+  textZh: b.id === 'discord' ? '在 Discord 反馈' : b.id === 'github' ? '在 GitHub 加星' : b.text,
+}));
+---
+
+<HwZhLayout
+  title="兑换码 - 地平线行者中文维基 - GachaWiki"
+  description="地平线行者最新兑换码与领取教程：可用兑换码一览、过期兑换码存档，以及在游戏内兑换码的详细步骤。"
+  keywords={['地平线行者', '兑换码', '礼包码', '福利码']}
+  pageTitle="兑换码"
+  breadcrumbItems={[
+    { name: '首页', href: '/' },
+    { name: '地平线行者', href: HW_ZH.baseUrl },
+    { name: '兑换码' },
+  ]}
+>
+  <section class="page-content">
+    <div class="hw-redeem-main-container">
+      <div class="hw-redeem-header-section">
+        <p class="important-notice">重要提示：这些兑换码可能有效也可能无效！游戏可能随时停用兑换码，恕不另行通知。</p>
+        <h3>不作保证</h3>
+        <p>以下兑换码来自社区整理，可能已过期或有使用次数限制。奖励内容为游戏内道具英文名称，暂无官方中文。</p>
+        <p class="last-updated">最后更新：{lastUpdatedZh}</p>
+      </div>
+
+      <div class="hw-redeem-codes-section">
+        <h2 class="hw-redeem-section-title">可用兑换码</h2>
+        <p class="hw-redeem-section-description">这些兑换码由社区分享，不妨逐一试试！</p>
+
+        <div class="hw-redeem-codes-grid">
+          {
+            availableCodes.map((codeData) => (
+              <div class="hw-redeem-code-card">
+                <div class="hw-code-info">
+                  <div class="hw-code-label">兑换码</div>
+                  <div class="hw-code-value">{codeData.code}</div>
+                </div>
+                <div class="hw-code-rewards">{codeData.rewards}</div>
+                <div class="hw-code-meta">
+                  <span class={`hw-code-status ${codeData.status}`}>{statusText(codeData.status)}</span>
+                  <span class="hw-code-date">检查于 {zhDateStr(codeData.lastChecked)}</span>
+                </div>
+                {codeData.expiryDate && (
+                  <div class="hw-code-expiry">过期时间：{zhDateStr(codeData.expiryDate)}</div>
+                )}
+                <button class="hw-copy-button" data-code={codeData.code}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                  </svg>
+                  复制兑换码
+                </button>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="hw-redeem-instructions-section">
+        <h2 class="hw-redeem-section-title">兑换码使用方法</h2>
+        <p class="hw-redeem-section-description">按照以下步骤在游戏内兑换地平线行者兑换码：</p>
+
+        <h3>详细步骤：</h3>
+        {
+          stepsZh.map((step, index) => (
+            <div class="hw-instruction-step" data-step={index + 1}>
+              <h4>{step.title}</h4>
+              <p>{step.description}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="hw-redeem-expired-section">
+        <h2 class="hw-redeem-section-title">已过期兑换码</h2>
+        {
+          expiredCodes.length > 0 ? (
+            <>
+              <p class="hw-redeem-section-description">这些兑换码已失效，仅供查阅参考。</p>
+              <div class="hw-redeem-codes-grid">
+                {expiredCodes.map((codeData) => (
+                  <div class="hw-redeem-code-card expired">
+                    <div class="hw-code-info">
+                      <div class="hw-code-label">过期兑换码</div>
+                      <div class="hw-code-value">{codeData.code}</div>
+                    </div>
+                    <div class="hw-code-rewards">{codeData.rewards}</div>
+                    <p class="hw-code-expiry">过期时间：{zhDateStr(codeData.expiryDate)}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <div class="hw-empty-section">
+              <p class="hw-empty-message">目前还没有过期兑换码！全部可用兑换码都值得一试。</p>
+            </div>
+          )
+        }
+      </div>
+
+      <div class="hw-redeem-community-section">
+        <h2 class="hw-redeem-section-title">帮助我们保持更新</h2>
+        <p class="hw-redeem-section-description">发现过期兑换码或新兑换码？欢迎告诉社区！</p>
+
+        <div class="hw-community-buttons">
+          {
+            communityButtonsZh.map((button) => (
+              <a
+                href={button.url}
+                class={`hw-community-button ${button.type}`}
+                target={button.external ? '_blank' : '_self'}
+                rel={button.external ? 'noopener noreferrer' : ''}
+              >
+                {button.textZh}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</HwZhLayout>
+
+<script is:inline>
+  // copy a code to the clipboard with multiple fallbacks (Chinese labels)
+  function copyCode(button) {
+    var code = button.getAttribute('data-code');
+    if (!code) return;
+
+    var originalHTML = button.innerHTML;
+    button.disabled = true;
+    button.textContent = '复制中';
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard
+        .writeText(code)
+        .then(function () {
+          showSuccess(button, originalHTML);
+        })
+        .catch(function () {
+          tryExecCommand(button, originalHTML, code);
+        });
+    } else {
+      tryExecCommand(button, originalHTML, code);
+    }
+  }
+
+  function tryExecCommand(button, originalHTML, code) {
+    try {
+      var textarea = document.createElement('textarea');
+      textarea.value = code;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      textarea.style.left = '-9999px';
+      textarea.setAttribute('readonly', '');
+      document.body.appendChild(textarea);
+
+      textarea.select();
+      textarea.setSelectionRange(0, 99999);
+
+      var success = document.execCommand('copy');
+      document.body.removeChild(textarea);
+
+      if (success) {
+        showSuccess(button, originalHTML);
+      } else {
+        throw new Error('execCommand failed');
+      }
+    } catch (err) {
+      console.error('Copy failed:', err);
+      showError(button, originalHTML);
+    }
+  }
+
+  function showSuccess(button, originalHTML) {
+    button.textContent = '已复制！';
+    button.style.background = '#10b981';
+    button.style.color = 'white';
+
+    setTimeout(function () {
+      button.innerHTML = originalHTML;
+      button.style.background = '';
+      button.style.color = '';
+      button.disabled = false;
+    }, 2000);
+  }
+
+  function showError(button, originalHTML) {
+    button.textContent = '再试一次';
+    button.style.background = '#ef4444';
+    button.style.color = 'white';
+
+    setTimeout(function () {
+      button.innerHTML = originalHTML;
+      button.style.background = '';
+      button.style.color = '';
+      button.disabled = false;
+    }, 2000);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var buttons = document.querySelectorAll('.hw-copy-button');
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+        copyCode(button);
+      });
+    });
+  });
+</script>

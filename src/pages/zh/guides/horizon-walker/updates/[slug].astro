@@ -1,0 +1,408 @@
+---
+// Chinese single patch note page: /zh/guides/horizon-walker/updates/<slug>/
+// Same slug set as the EN page (getStaticPaths from patch-notes.js). The EN
+// note bodies are the full official English text; this ZH page renders the
+// note's summary points (title, date, highlights) in natural Chinese and
+// links to the EN page for the complete original note.
+import HwZhLayout from '../../../../../layouts/zh/HwZhLayout.astro';
+import { patchNotes } from '../../../../../data/horizon-walker/patch-notes.js';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../../data/horizon-walker/characters.js';
+import { HW_ZH_NAMES, HW_ZH_INHERITANCE } from '../../../../../data/horizon-walker/zh/game-text.js';
+import { HW_ZH } from '../../../../../data/horizon-walker/zh/ui.js';
+import { r2Url } from '../../../../../data/r2-config.js';
+
+export const prerender = true;
+
+// ---------- shared ZH rendering of patch note titles & highlight tags --------
+const zhByEnChar = {};
+for (const c of HORIZON_WALKER_CHARACTERS) {
+  const z = HW_ZH_NAMES[c.id];
+  if (z) zhByEnChar[c.name] = z;
+}
+const charDisplay = (en) => {
+  const zh = zhByEnChar[en];
+  return zh ? `${zh}（${en}）` : en;
+};
+const weaponZh = (en) => {
+  if (en === 'Watcher of the Night') return HW_ZH_INHERITANCE['Nocturnal Watcher']?.name || null;
+  return HW_ZH_INHERITANCE[en]?.name || null;
+};
+const weaponDisplay = (en) => {
+  const zh = weaponZh(en);
+  if (!zh) return en;
+  const gloss = en.includes('–') ? en.split('–').map((p) => p.trim()).join(' ') : en;
+  return `${zh}（${gloss}）`;
+};
+const nameListZh = (rest) =>
+  rest
+    .split('/')
+    .map((seg) => seg.trim())
+    .filter(Boolean)
+    .map((seg) => (zhByEnChar[seg] ? charDisplay(seg) : weaponZh(seg) ? weaponDisplay(seg) : seg))
+    .join(' / ');
+
+const FEATURE_ZH = {
+  'Aide Affection Level Settings': '护卫好感度等级设置',
+  'Affection Improvements': '好感度系统优化',
+  'Content Expansion': '内容扩充',
+  'Content Unlock Guide': '内容解锁指南',
+  'Dual Affection System': '双重好感度系统',
+  'Hide Battle UI': '隐藏战斗界面',
+  'Maintain Aide Special Interactions': '保持护卫特殊互动',
+  'Multi-Aide Sanctuary': 'Multi-Aide Sanctuary（多护卫圣所）',
+  'New Vanguard Growth Support Event': '新先锋养成支援活动',
+  'Priority Target': 'Priority Target（优先目标）',
+  'TPS View': 'TPS View（第三人称视角）',
+  'Total War': 'Total War（全面战争）',
+  'The Demi-God System': 'The Demi-God System（半神系统）',
+  'The Path to the Divine Throne': 'The Path to the Divine Throne（通往神座之路）',
+};
+
+const EXACT_ZH = {
+  'Addition of New Products': '新增商品',
+  'Bug Fixes': '问题修复',
+  'Character Design Direction': '角色设计方向说明',
+  'Class Skills': '职业技能更新',
+  'Closing Notes': '结语',
+  'Costume Feature Update': '皮肤功能更新',
+  'Costume Shop': '新增皮肤商店',
+  'Early Game Improvements': '前期体验优化',
+  'Improvements': '优化内容',
+  'Limited-Time Event': '限时活动',
+  'Limited-time Event': '限时活动',
+  'Massage System Update': '按摩系统更新',
+  'New Affection Event': '新增好感度活动',
+  'New Affection Event Update': '好感度活动更新',
+  'New Affection Event Updates': '好感度活动更新',
+  'New Content': '新增内容',
+  'New Contents': '新增内容',
+  'New Costume': '新皮肤',
+  'New Costumes': '新皮肤',
+  'New Demi-God Ascension': '新增半神晋升',
+  'New Feature': '新功能',
+  'New Features': '新功能',
+  'New Path to the Divine Throne': '新增 The Path to the Divine Throne（通往神座之路）',
+  'New Product Added': '新增商品',
+  'New Story': '新增剧情',
+  'New Sub-Stages Added': '新增子关卡',
+  'Overall Difficulty Adjustment': '整体难度调整',
+  'Shop – New Bundles': '商店新增礼包',
+  'Special Search Schedule': 'Special Search 日程',
+  'Special Search Updates': 'Special Search 日程更新',
+  'Story': '剧情更新',
+  'Story Updates': '剧情更新',
+  'New Story - Sub-story “Palekar’s Past” has been added.': '新增子剧情：Palekar’s Past',
+  'Event Update : Operation: Steaming Hot WINTER Part 2': '活动更新：Operation: Steaming HOT WINTER（第 2 部分）',
+  'Event Update : The Halloween Horror Club Part.2': '活动更新：The Halloween Horror Club（第 2 部分）',
+  'New Content: Larina’s Special Training Grounds': '新增内容：Larina’s Special Training Grounds',
+  'New Content: Larina\'s Special Training Grounds': '新增内容：Larina’s Special Training Grounds',
+  'New Mini Event : Special Episode: Springtime Hot Springs': '新小型活动：Special Episode: Springtime Hot Springs',
+  'Event: Larina’s Dopamine Channel!': '活动：Larina’s Dopamine Channel!',
+  "Event: Larina's Dopamine Channel!": '活动：Larina’s Dopamine Channel!',
+  'Event: Larina’s Dopamine Channel! – Part 1': '活动：Larina’s Dopamine Channel!（第 1 部分）',
+  "Event: Larina's Dopamine Channel! – Part 1": '活动：Larina’s Dopamine Channel!（第 1 部分）',
+  'Event: Larina’s Dopamine Channel! – Part 2': '活动：Larina’s Dopamine Channel!（第 2 部分）',
+  "Event: Larina's Dopamine Channel! – Part 2": '活动：Larina’s Dopamine Channel!（第 2 部分）',
+  'Event: Cheers to Our Two Years! – Part 1': '活动：Cheers to Our Two Years!（第 1 部分）',
+  'Event: Cheers to Our Two Years! – Part 2': '活动：Cheers to Our Two Years!（第 2 部分）',
+  'Event: Where White Waves Wash Ashore – Part 1': '活动：Where White Waves Wash Ashore（第 1 部分）',
+  'Event: Where White Waves Wash Ashore – Prologue': '活动：Where White Waves Wash Ashore（序章）',
+  'New Event: Defense Op: Citadel of Change – Part 2': '新活动：Defense Op: Citadel of Change（第 2 部分）',
+  'New Event: Defense Operation - Citadel of Change': '新活动：Defense Operation: Citadel of Change',
+  'New Event: Yesterday\'s Sweet Valentine – Part 2': '新活动：Yesterday’s Sweet Valentine（第 2 部分）',
+  'New Event : The Orkean Lady’s Happy Ever After (Part.2)': '新活动：The Orkean Lady’s Happy Ever After（第 2 部分）',
+  'New Event : Larina\'s Dopamin Channel!': '新活动：Larina’s Dopamin Channel!',
+  'New Affection Content – Efreeti': '新增好感度内容：伊芙利特（Efreeti）',
+  'New Affection Content – Nymset': '新增好感度内容：妮姆赛（Nymset）',
+  'New Skill: Resolve': '新技能：Resolve',
+  'New Passive: Spearhead\'s Gleam': '新被动技能：Spearhead’s Gleam',
+  'New Stigma (Phantom Banquet EX)': '新圣痕：Phantom Banquet EX',
+  'New Stigma Set: Lifebound (EX)': '新圣痕套装：Lifebound EX',
+  'New Stigma: Blessing of Dawn (EX)': '新圣痕：Blessing of Dawn EX',
+  'New Stigma: Scorching Sun EX': '新圣痕：Scorching Sun EX',
+  'New Feature – Aide Affection Level Settings': '新功能：护卫好感度等级设置',
+  'New Feature – Content Expansion': '新功能：内容扩充',
+  'New Feature – Maintain Aide Special Interactions': '新功能：保持护卫特殊互动',
+  'New Feature - Total War': '新功能：Total War（全面战争）',
+  'New Feature - The Path to the Divine Throne': '新功能：The Path to the Divine Throne（通往神座之路）',
+  'New Feature - The Demi-God System': '新功能：The Demi-God System（半神系统）',
+  'New Feature: Aide Affection Level Settings': '新功能：护卫好感度等级设置',
+  'New Feature: Affection Improvements': '新功能：好感度系统优化',
+  'New Feature: Content Unlock Guide': '新功能：内容解锁指南',
+  'New Feature: Dual Affection System': '新功能：双重好感度系统',
+  'New Feature: Hide Battle UI': '新功能：隐藏战斗界面',
+  'New Feature: Multi-Aide Sanctuary': '新功能：Multi-Aide Sanctuary（多护卫圣所）',
+  'New Feature: New Vanguard Growth Support Event': '新功能：新先锋养成支援活动',
+  'New Feature: Priority Target': '新功能：Priority Target（优先目标）',
+  'New Feature: TPS View': '新功能：TPS View（第三人称视角）',
+  'New Pass: Agent Kim Ga-young Pass': '新通行证：Agent Kim Ga-young Pass',
+  'New Pass: Forge Elemental Efreeti Pass': '新通行证：Forge Elemental Efreeti Pass',
+  'New Pass: Liberated Prisoner Pass': '新通行证：Liberated Prisoner Pass',
+  'New Pass: Mind\'s Eye Lisandria': '新通行证：Mind’s Eye Lisandria',
+  'New Pass: Radiant Swordmaiden Eugenia Pass': '新通行证：Radiant Swordmaiden Eugenia Pass',
+  'New Pass: Winter Duchess Ines Pass': '新通行证：Winter Duchess Ines Pass',
+  'New Event Pass: Bella Pass': '新活动通行证：Bella Pass',
+  '신규 패스 : 사마리카 패스': '新通行证：萨玛莉卡通行证（Samarika Pass）',
+};
+
+const zhSuffixes = (s) =>
+  s
+    .replace(/\s*[–-]\s*Part\.?\s*(\d+)\s*$/i, '（第 $1 部分）')
+    .replace(/\s*[–-]\s*Prologue\s*$/i, '（序章）')
+    .replace(/\s*\(Part\.?(\d+)\)\s*$/i, '（第 $1 部分）');
+
+function highlightZh(raw) {
+  const h = raw.trim();
+  if (EXACT_ZH[h]) return EXACT_ZH[h];
+  let m;
+  if ((m = h.match(/^Vanguard\/Weapon Rework\s*:\s*(.+)$/i)))
+    return `先锋/武器重做：${nameListZh(m[1])}`;
+  if ((m = h.match(/^Vanguard Rework\s*:\s*(.+)$/i))) return `先锋重做：${nameListZh(m[1])}`;
+  if ((m = h.match(/^New Vanguard\s*:\s*(.+)$/i))) return `新先锋：${charDisplay(m[1].trim())}`;
+  if ((m = h.match(/^New Weapon\s*:\s*(.+)$/i))) return `新武器：${weaponDisplay(m[1].trim())}`;
+  if ((m = h.match(/^New Feature\s*[-–:]\s*(.+)$/))) {
+    const feat = m[1].trim();
+    return `新功能：${FEATURE_ZH[feat] || feat}`;
+  }
+  if ((m = h.match(/^New Event Pass\s*:\s*(.+)$/))) return `新活动通行证：${m[1].trim()}`;
+  if ((m = h.match(/^New Pass\s*:\s*(.+)$/))) return `新通行证：${m[1].trim()}`;
+  if ((m = h.match(/^New Stigma Set\s*:\s*(.+)$/i))) return `新圣痕套装：${m[1].trim()}`;
+  if ((m = h.match(/^New Stigma\s*\((.+)\)\s*$/i))) return `新圣痕：${m[1].trim()}`;
+  if ((m = h.match(/^New Stigma\s*:\s*(.+)$/i))) return `新圣痕：${m[1].trim()}`;
+  if ((m = h.match(/^New Event\s*:\s*(.+)$/i))) return `新活动：${zhSuffixes(m[1].trim())}`;
+  if ((m = h.match(/^Event Update\s*:\s*(.+)$/i))) return `活动更新：${zhSuffixes(m[1].trim())}`;
+  if ((m = h.match(/^Event\s*:\s*(.+)$/i))) return `活动：${zhSuffixes(m[1].trim())}`;
+  return h;
+}
+
+const MONTHS = {
+  January: 1, February: 2, March: 3, April: 4, May: 5, June: 6, July: 7,
+  August: 8, September: 9, October: 10, November: 11, December: 12,
+  Jan: 1, Feb: 2, Mar: 3, Apr: 4, Jun: 6, Jul: 7, Aug: 8, Sep: 9, Sept: 9, Oct: 10, Nov: 11, Dec: 12,
+};
+
+function titleZh(t) {
+  const m = t.match(/^Patch Note\s*-\s*(.+)$/);
+  if (!m) return t;
+  let inner = m[1];
+  let suffix = '';
+  if (inner.includes('(+ Update)')) {
+    suffix = '（含追加更新）';
+    inner = inner.replace(/\s*\(\+ Update\)/, '');
+  }
+  const mm = inner.match(/^([A-Za-z]+)\.?\s+(\d{1,2})/);
+  if (!mm || !MONTHS[mm[1]]) return `更新公告：${inner}`;
+  const isMaint = /maintenance/i.test(inner);
+  return `更新公告：${MONTHS[mm[1]]} 月 ${parseInt(mm[2], 10)} 日${isMaint ? '维护' : ''}${suffix}`;
+}
+
+export function getStaticPaths() {
+  return patchNotes.map((n) => ({
+    params: { slug: n.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const noteModules = import.meta.glob('/src/data/horizon-walker/patch-notes/*.js');
+const loader = noteModules[`/src/data/horizon-walker/patch-notes/${slug}.js`];
+if (!loader) {
+  return Astro.redirect(`${HW_ZH.baseUrl}updates/`);
+}
+const { note } = await loader();
+
+const meta = patchNotes.find((n) => n.slug === slug) || note;
+const zhTitle = titleZh(note.title);
+const posted = `${parseInt(note.date.slice(0, 4), 10)} 年 ${parseInt(note.date.slice(5, 7), 10)} 月 ${parseInt(
+  note.date.slice(8, 10),
+  10
+)} 日`;
+const zhTags = note.highlights.map((h) => highlightZh(h));
+const firstImage = note.blocks.find((b) => b.k === 'img');
+const enPageUrl = `/guides/horizon-walker/updates/${slug}/`;
+---
+
+<HwZhLayout
+  title={`${zhTitle} - 地平线行者中文维基 - GachaWiki`}
+  description={`${zhTitle}（${posted}发布）要点中文整理：${zhTags.join('、')}。完整内容请查看对应的官方英文公告。`}
+  keywords={['地平线行者', '更新公告', note.date]}
+  pageTitle={zhTitle}
+  breadcrumbItems={[
+    { name: '首页', href: '/' },
+    { name: '地平线行者', href: HW_ZH.baseUrl },
+    { name: '更新公告', href: `${HW_ZH.baseUrl}updates/` },
+    { name: zhTitle },
+  ]}
+>
+  <div class="zh-pn-page">
+    <div class="zh-pn-meta-card">
+      <div class="zh-pn-meta-row">
+        <span class="zh-pn-meta-label">发布日期</span>
+        <span class="zh-pn-meta-value">{posted}</span>
+      </div>
+      <div class="zh-pn-meta-row">
+        <span class="zh-pn-meta-label">原文标题</span>
+        <span class="zh-pn-meta-value">{note.title}</span>
+      </div>
+      <div class="zh-pn-meta-row">
+        <span class="zh-pn-meta-label">来源</span>
+        <a class="zh-pn-meta-link" href={note.sourceUrl} target="_blank" rel="noopener">
+          Naver Lounge 官方帖子
+        </a>
+      </div>
+      <div class="zh-pn-meta-row">
+        <span class="zh-pn-meta-label">语言</span>
+        <span class="zh-pn-meta-value">官方英文公告，本页为中文要点整理</span>
+      </div>
+    </div>
+
+    <p class="zh-pn-schedule-note">
+      更新公告跟随韩服日程，韩服进度领先全球服数周。官方原文中的具体技能数值以 N 占位符表示。活动、卡池等专有名称暂无官方中文，保留英文原文。
+    </p>
+
+    {
+      firstImage && (
+        <div class="zh-pn-banner">
+          <img
+            src={r2Url('horizon-walker', `patch-notes/${firstImage.src}`)}
+            alt={`${zhTitle} 头图`}
+            width={firstImage.w || 960}
+            height={firstImage.h || 200}
+            loading="eager"
+          />
+        </div>
+      )
+    }
+
+    <article class="zh-pn-body">
+      <h2 class="zh-pn-body-title">本次更新要点</h2>
+      <ul class="zh-pn-points">
+        {
+          zhTags.map((t) => (
+            <li class="zh-pn-point">{t}</li>
+          ))
+        }
+      </ul>
+      <p class="zh-pn-note">
+        以上为该公告的要点中文整理。完整内容（全部章节、技能表格与图片）请查看
+        <a href={enPageUrl}>对应的英文公告页</a>。
+      </p>
+    </article>
+
+    <div class="zh-pn-footer-nav">
+      <a class="zh-pn-back" href={`${HW_ZH.baseUrl}updates/`}>全部更新公告</a>
+      <a class="zh-pn-back" href={enPageUrl}>查看完整英文公告</a>
+      <a class="zh-pn-back" href={note.sourceUrl} target="_blank" rel="noopener">
+        在 Naver Lounge 查看原帖
+      </a>
+    </div>
+  </div>
+</HwZhLayout>
+
+<style>
+  .zh-pn-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .zh-pn-meta-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    padding: 0.85rem 1.2rem;
+  }
+  .zh-pn-meta-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .zh-pn-meta-label {
+    color: var(--hw-text-very-muted);
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+  .zh-pn-meta-value {
+    color: var(--hw-text-light);
+    font-size: 0.92rem;
+  }
+  .zh-pn-meta-link {
+    color: var(--hw-primary-warm);
+    font-size: 0.92rem;
+    text-decoration: none;
+  }
+  .zh-pn-schedule-note {
+    color: var(--hw-text-muted);
+    font-size: 0.85rem;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0 0.2rem;
+  }
+  .zh-pn-banner img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    display: block;
+  }
+  .zh-pn-body {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    padding: 1.5rem 1.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .zh-pn-body-title {
+    color: var(--hw-primary-warm);
+    font-size: 1.18rem;
+    font-weight: 700;
+    margin: 0 0 0.25rem 0;
+  }
+  .zh-pn-points {
+    margin: 0;
+    padding-left: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .zh-pn-point {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  .zh-pn-note {
+    color: var(--hw-text-muted);
+    font-size: 0.88rem;
+    line-height: 1.7;
+    margin: 0.25rem 0 0 0;
+  }
+  .zh-pn-note a {
+    color: var(--hw-primary-warm);
+  }
+  .zh-pn-footer-nav {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+  .zh-pn-back {
+    display: inline-block;
+    background: rgba(232, 165, 71, 0.12);
+    border: 1px solid rgba(232, 165, 71, 0.3);
+    color: #e8c887;
+    border-radius: 8px;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  @media (max-width: 640px) {
+    .zh-pn-body {
+      padding: 1.05rem 1rem;
+    }
+  }
+</style>

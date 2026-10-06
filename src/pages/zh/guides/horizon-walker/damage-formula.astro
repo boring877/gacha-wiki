@@ -1,0 +1,286 @@
+---
+// Chinese damage formula guide: /zh/guides/horizon-walker/damage-formula/
+// Same tables/numbers as the EN page from combat-mechanics.js; formulas stay
+// as code, stat names use the game's official ZH from HW_ZH_STAT_TYPES.
+import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
+import {
+  ATK_TYPES,
+  DEFENSE_MAPPING,
+  DEF_EXAMPLES_POSITIVE,
+  DEF_EXAMPLES_NEGATIVE,
+} from '../../../../data/horizon-walker/combat-mechanics.js';
+import {
+  HW_ZH_NAMES,
+  HW_ZH_STAT_TYPES,
+  HW_ZH_WEAPON_SKILLS,
+} from '../../../../data/horizon-walker/zh/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/zh/ui.js';
+import '../../../../styles/games/horizon-walker/hw-combat-mechanics.css';
+
+export const prerender = true;
+
+const S = HW_ZH_STAT_TYPES;
+const palekarZh = HW_ZH_NAMES[60] || 'Palekar'; // 帕莱卡
+const coraZh = HW_ZH_NAMES[45] || 'Cora'; // 罪犯 / 科拉
+const verseOfOrdealZh = HW_ZH_WEAPON_SKILLS['Verse of Ordeal']?.name || 'Verse of Ordeal'; // 试炼之文
+
+// ATK_TYPES rows in ZH (official stat names for the ATK/scaling stats)
+const atkRowsZh = {
+  'Melee skills': ['近战技能', `${S['Melee ATK']}（${S['Strength']}加成）`],
+  'Shooting skills': ['射击技能', `${S['Ranged ATK']}（${S['Technic']}加成）`],
+  'Arcane / magic skills': ['奥术/魔法技能', `${S['Magic ATK']}（${S['Intelligence']}加成）`],
+};
+
+// DEFENSE_MAPPING damage-type column in ZH; the stat column keeps the game's
+// internal stat key verbatim
+const defenseRowsZh = {
+  'Fire (Heat)': `火焰（Heat）`,
+  'Ice': '冰霜',
+  'Lightning': '雷电',
+  'Poison': '毒素',
+  'Odd (Immaterial)': '无形（Immaterial）',
+  'Hack (Slash), physical only': '斩击（Slash，仅物理）',
+  'Stab (Pierce), physical only': '穿刺（Pierce，仅物理）',
+  'Blow (Blunt), physical only': '打击（Blunt，仅物理）',
+};
+
+const negativeNotesZh = {
+  'Palekar [Unstable]': `${palekarZh} [Unstable]`,
+  'Palekar [Unstable] with Evasion scaling': `${palekarZh} [Unstable]（${S['Evade']}加成后）`,
+};
+---
+
+<HwZhLayout
+  title="伤害公式与防御 - 地平线行者中文维基 - GachaWiki"
+  description="地平线行者伤害计算公式详解：攻击力与防御的换算、每种伤害类型实际检查的防御属性、防御倍率的收益递减，以及防御降低（负防御）为何是最强增伤手段。"
+  keywords={['地平线行者', '伤害公式', '防御', '减防', '战斗机制']}
+  pageTitle="伤害公式与防御"
+  breadcrumbItems={[
+    { name: '首页', href: '/' },
+    { name: '地平线行者', href: HW_ZH.baseUrl },
+    { name: '伤害公式' },
+  ]}
+>
+  <div class="zh-guide">
+    <section class="zh-section">
+      <h2 class="zh-section-title">核心公式</h2>
+      <p class="zh-text">每次技能命中都会经过以下计算管线：</p>
+      <div class="hw-mech-formula">damage = skill% x ATK x defense multiplier x level multiplier x battle ratio</div>
+      <ul class="zh-list">
+        <li><strong>skill%</strong> 是技能的伤害系数（技能页面上的百分比）。</li>
+        <li><strong>ATK</strong> 是由技能类型决定的攻击方属性，见下表。</li>
+        <li><strong>defense multiplier</strong>（防御倍率）只由目标的某一项防御属性决定，见下文。</li>
+        <li><strong>level multiplier</strong>（等级倍率）即等级差规则，见等级差页面。</li>
+        <li><strong>battle ratio</strong>（战斗全局系数）按每场战斗给定，通常为 1。</li>
+      </ul>
+      <p class="zh-text">暴击、弱点攻击与增益效果在这个基础值之上继续乘算。</p>
+    </section>
+
+    <section class="zh-section">
+      <h2 class="zh-section-title">使用哪个攻击力</h2>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="技能类型与攻击属性对照">
+          <thead>
+            <tr>
+              <th scope="col">技能类型</th>
+              <th scope="col">攻击属性</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ATK_TYPES.map(row => (
+              <tr>
+                <td>{atkRowsZh[row.skill]?.[0] || row.skill}</td>
+                <td>{atkRowsZh[row.skill]?.[1] || row.stat}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="zh-section">
+      <h2 class="zh-section-title">使用哪个防御</h2>
+      <p class="zh-text">
+        这是最容易搞错的部分。技能的<strong>属性决定了要检查的防御属性，并且会完全替代物理防御</strong>。{coraZh}的火焰伤害永远不会碰斩击防御：它对照的是目标的火焰抗性。
+      </p>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="伤害类型与防御属性对照">
+          <thead>
+            <tr>
+              <th scope="col">伤害类型</th>
+              <th scope="col">检查的防御属性（游戏内数据名）</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DEFENSE_MAPPING.map(row => (
+              <tr>
+                <td>{defenseRowsZh[row.damage] || row.damage}</td>
+                <td><code>{row.stat}</code></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="zh-info">
+        <p class="zh-info-title">实用结论</p>
+        <p class="zh-info-text">
+          物理防御很高但属性抗性较低的 Boss，会受到属性攻击手远更多的伤害。被墙 Boss 卡住时，先看它哪项抗性最低再携带对应属性，效果可能比堆攻击力更大。
+        </p>
+      </div>
+    </section>
+
+    <section class="zh-section">
+      <h2 class="zh-section-title">防御倍率</h2>
+      <p class="zh-text">设匹配到的防御值为 D，倍率公式为 1 - D / (D + 1000)：</p>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="防御值与受到伤害对照">
+          <thead>
+            <tr>
+              <th scope="col">防御值</th>
+              <th scope="col">受到伤害</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DEF_EXAMPLES_POSITIVE.map(row => (
+              <tr>
+                <td>{row.def}</td>
+                <td>{row.taken}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="zh-text">
+        防御存在收益递减：最初的 250 点防御能减少 20% 所受伤害，而从 3000 提到 9000 只能再减少 15%。防御永远无法完全抵消伤害。
+      </p>
+    </section>
+
+    <section class="zh-section">
+      <h2 class="zh-section-title">负防御：防御降低真正强力的原因</h2>
+      <p class="zh-text">
+        当防御降低把目标防御压到<strong>零以下</strong>时，游戏会切换为另一个公式：1 + |DEF| / 1000。这是<strong>没有上限</strong>的固定增伤：
+      </p>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="负防御值与受到伤害对照">
+          <thead>
+            <tr>
+              <th scope="col">防御值</th>
+              <th scope="col">受到伤害</th>
+              <th scope="col">备注</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DEF_EXAMPLES_NEGATIVE.map(row => (
+              <tr class="hw-mech-highlight">
+                <td>{row.def}</td>
+                <td>{row.taken}</td>
+                <td>{negativeNotesZh[row.note] || row.note || ''}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="zh-example">
+        <p class="zh-example-title">为什么{palekarZh}能打出秒杀</p>
+        <p class="zh-example-text">
+          她的{verseOfOrdealZh}带来的 [Unstable] 会削减所有防御 1140 点，随{S['Evade']}加成最高可达 1340 点。当 Boss 的防御被压到零以下时，全队都会以 2.14 到 2.34 倍的伤害输出，这还不算该减益同时附加的伤害增加效果。这就是防御降低比大多数攻击增益更强的原因。
+        </p>
+      </div>
+    </section>
+  </div>
+</HwZhLayout>
+
+<style>
+  .zh-guide {
+    display: grid;
+    gap: 1.75rem;
+  }
+
+  .zh-section {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+    padding: 1.5rem;
+  }
+
+  .zh-section-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: var(--font-bold);
+    color: var(--hw-primary-warm);
+    margin: 0 0 1rem 0;
+  }
+
+  .zh-text {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: var(--hw-text-light);
+    margin: 0 0 0.75rem 0;
+  }
+
+  .zh-text strong {
+    color: var(--hw-primary-warm);
+  }
+
+  .zh-list {
+    margin: 0 0 0.75rem 0;
+    padding-left: 1.25rem;
+    color: var(--hw-text-light);
+    font-size: 0.9375rem;
+    line-height: 1.9;
+  }
+
+  .zh-list strong {
+    color: var(--hw-primary-warm);
+  }
+
+  .zh-info {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 0.9rem 1.1rem;
+    margin-top: 0.75rem;
+  }
+
+  .zh-info-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--hw-primary-warm);
+    margin: 0 0 0.4rem 0;
+  }
+
+  .zh-info-text {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: var(--hw-text-light);
+    margin: 0;
+  }
+
+  .zh-example {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 0.9rem 1.1rem;
+    margin-top: 0.75rem;
+  }
+
+  .zh-example-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--hw-primary-warm);
+    margin: 0 0 0.4rem 0;
+  }
+
+  .zh-example-text {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: var(--hw-text-light);
+    margin: 0;
+  }
+
+  .hw-mech-table code {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--hw-primary-warm);
+  }
+</style>

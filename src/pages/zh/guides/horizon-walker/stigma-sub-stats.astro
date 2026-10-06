@@ -1,0 +1,75 @@
+---
+// Chinese stigma sub-stats page: /zh/guides/horizon-walker/stigma-sub-stats/
+// Renders the wiki sub-stat scaling table with official ZH stat labels.
+import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
+import { stigmaSubStats } from '../../../../data/horizon-walker/stigma-sub-stats.js';
+import { HW_ZH_STAT_TYPES } from '../../../../data/horizon-walker/zh/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/zh/ui.js';
+import '../../../../styles/games/horizon-walker/hw-stigma-sub-stats.css';
+
+export const prerender = true;
+
+const STAT_ALIASES = {
+  'Movement Speed': 'SPD',
+};
+
+const statZh = label => {
+  const key = STAT_ALIASES[label] || label;
+  if (HW_ZH_STAT_TYPES[key]) return HW_ZH_STAT_TYPES[key];
+  const m = label.match(/^(.+?)\s*\((.+)\)$/);
+  if (m) {
+    const base = STAT_ALIASES[m[1]] || m[1];
+    if (HW_ZH_STAT_TYPES[base]) return `${HW_ZH_STAT_TYPES[base]}（${m[2]}）`;
+  }
+  return label;
+};
+---
+<HwZhLayout
+  title="圣痕副属性 - 地平线行者中文维基 - GachaWiki"
+  description="地平线行者圣痕副属性的数值范围一览：各副属性的随机区间与强化数值，属性名称为游戏官方简体中文。"
+  keywords={['地平线行者', '圣痕', '副属性', '攻略']}
+  pageTitle="圣痕副属性"
+  breadcrumbItems={[
+    { name: '首页', href: '/' },
+    { name: '地平线行者', href: HW_ZH.baseUrl },
+    { name: '圣痕副属性' },
+  ]}
+>
+  <div class="hw-stigma-sub-stats-container">
+    <div class="hw-stigma-sub-stats-content">
+      <p class="zh-substats-note">圣痕在强化时会随机获得副属性，下表为各副属性可能出现的数值范围。</p>
+      <table
+        class="hw-stigma-sub-stats-table"
+        role="table"
+        aria-label="圣痕副属性数值范围"
+      >
+        <thead>
+          <tr>
+            <th scope="col">属性</th>
+            <th scope="col">数值范围</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            stigmaSubStats.map(item => (
+              <tr>
+                <td class="stat-name">{statZh(item.stat)}</td>
+                <td class="stat-scale" aria-label={`数值范围：${item.scale}`}>
+                  {item.scale}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</HwZhLayout>
+
+<style>
+  .zh-substats-note {
+    font-size: 0.875rem;
+    color: var(--hw-text-muted);
+    margin: 0 0 1rem 0;
+  }
+</style>

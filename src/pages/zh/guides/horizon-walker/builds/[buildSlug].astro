@@ -1,0 +1,1339 @@
+---
+// Chinese recommended build detail: /zh/guides/horizon-walker/builds/<slug>/
+// Same slug set and data as the EN builds/[buildSlug].astro (stigmas.js sets,
+// character-build-configs.js values). Character/weapon/stat/trait names use
+// the game's official ZH; the wiki's own build prose is translated into
+// natural Chinese. Stigma set names have no official ZH and stay in English.
+import HwZhLayout from '../../../../../layouts/zh/HwZhLayout.astro';
+import { getEnhancedBuilds } from '../../../../../data/horizon-walker/builds/builds-data.js';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../../data/horizon-walker/characters.js';
+import { getCharacterBuildConfig } from '../../../../../data/horizon-walker/builds/character-build-configs.js';
+import { stigmas } from '../../../../../data/horizon-walker/stigmas.js';
+import { COMMUNITY_BUILDS } from '../../../../../data/horizon-walker/community-builds.js';
+import {
+  HW_ZH_NAMES,
+  HW_ZH_STAT_TYPES,
+  HW_ZH_TRAIT_NAMES,
+} from '../../../../../data/horizon-walker/zh/game-text.js';
+import { HW_ZH } from '../../../../../data/horizon-walker/zh/ui.js';
+import { CharacterImage, StigmaImage, HWRarityIcon } from '../../../../../components/horizon-walker/index.astro';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  const characters = HORIZON_WALKER_CHARACTERS;
+  const builds = getEnhancedBuilds();
+  return characters
+    .filter((character) => builds.some((build) => build.buildSlug === character.slug && build.available))
+    .map((character) => ({
+      params: { buildSlug: character.slug },
+      props: {
+        character,
+        build: builds.find((build) => build.buildSlug === character.slug && build.available),
+      },
+    }));
+}
+
+const { character, build } = Astro.props;
+
+if (!character || !build) {
+  return Astro.redirect(`${HW_ZH.baseUrl}builds/`);
+}
+
+const zhName = HW_ZH_NAMES[character.id] || character.name;
+const buildConfig = getCharacterBuildConfig(character.slug);
+const enPageUrl = `/guides/horizon-walker/builds/${character.slug}/`;
+
+// ---------- ZH stat/trait helpers (official game terms via game-text.js) ---
+const STAT_TOKEN_ZH = {
+  'Melee ATK': '近战攻击力',
+  'Ranged ATK': '射击攻击力',
+  'Magic ATK': '魔法攻击力',
+  'Max HP': '最大生命值',
+  'Crit Rate': '暴击率',
+  'Crit DMG': '暴击伤害',
+  'Accuracy': '命中',
+  'Evade': '回避',
+  'Evasion': '回避',
+  'Starting AP': '战斗开始行动力',
+  'AP Recovery': '行动恢复力',
+  'Immaterial DEF': '无形防御',
+  'All DEF': '所有防御',
+  'Slash Boost': '斩击强化',
+  'Pierce Boost': '穿刺强化',
+  'Crush Boost': '打击强化',
+  'Poison Boost': '毒素强化',
+  'Heat Boost': '火焰强化',
+  'Slash DEF': '斩击防御',
+  'Pierce DEF': '穿刺防御',
+  'Crush DEF': '打击防御',
+  'Aggro Adjustment': '仇恨修正',
+  'EX Weapon': 'EX 武器',
+};
+const statZh = (s) => STAT_TOKEN_ZH[s] || HW_ZH_STAT_TYPES[s] || s;
+
+// "Label: +5%" trait effect lines -> official ZH label + kept value
+const effectZh = (e) => {
+  const i = e.indexOf(':');
+  if (i < 0) return e;
+  const label = e.slice(0, i).trim();
+  let value = e.slice(i + 1);
+  for (const [en, zh] of Object.entries(STAT_TOKEN_ZH)) value = value.split(en).join(zh);
+  return statZh(label) ? `${statZh(label)}：${value}` : e;
+};
+
+const PRIORITY_ZH = {
+  Best: '主推',
+  Highest: '最高',
+  '2nd': '次选',
+  '3rd': '第三位',
+  'Good Alternative': '优质备选',
+  Alternative: '备选',
+  Optional: '可选',
+};
+
+const SCALING_ZH = {
+  'Heat DMG + Magic ATK': '火焰伤害 + 魔法攻击力',
+  'Ranged ATK + Team Support': '射击攻击力 + 团队辅助',
+  'Ranged ATK + Crit DMG': '射击攻击力 + 暴击伤害',
+  'Crush DMG + Crit DMG': '打击伤害 + 暴击伤害',
+  'Melee ATK + Counterattack': '近战攻击力 + 反击',
+  'Magic ATK': '魔法攻击力',
+  'Magic ATK + Support Debuffer': '魔法攻击力 + 减益辅助',
+  'Ranged ATK': '射击攻击力',
+};
+const TRAITS_TYPE_ZH = {
+  'Heat Boost + Magic ATK': '火焰强化 + 魔法攻击力',
+  'Ranged ATK + Team Buffer': '射击攻击力 + 团队增益',
+  'Crit DMG + Crush DMG + Max HP': '暴击伤害 + 打击伤害 + 最大生命值',
+  'Magic Healer/Support': '魔法治疗 / 辅助',
+  'Melee ATK + Counterattack': '近战攻击力 + 反击',
+  'Magic Poison/DoT': '魔法中毒 / 持续伤害',
+  'Crit DMG + Ranged ATK + EX Weapon Synergy': '暴击伤害 + 射击攻击力 + EX 武器联动',
+  'Debuffer / Support': '减益辅助 / 辅助',
+  'Ranged ATK': '射击攻击力',
+};
+const traitZh = (name) => HW_ZH_TRAIT_NAMES[name] || name;
+
+// ---------- translated wiki build prose, keyed by build slug ---------------
+const ZH_PROSE = {
+  garud: {
+    title: '不朽的太阳炮',
+    strategy: [
+      {
+        title: 'Scorching Sun 是她的最佳套装',
+        description:
+          '2 件套提供魔法攻击力 +10%，4 件套在每次成功攻击时叠加魔法攻击力与火焰强化，正合她的需求：她会通过 Crimson Blaze 的追加反击与 Blazing Feathers 的触发不断攻击，6 层很快叠满并持续保持。游戏中没有其他圣痕能同时提供魔法攻击力与火焰强化。',
+      },
+      {
+        title: '全魔法攻击力副属性',
+        description:
+          '迦露德拥有全游戏数一数二的基础智力（满突破 39），Transcendent 特性再额外提供魔法攻击力 +50%，因此魔法攻击力副属性能直接提升她的所有伤害来源：Incinerate、Ignite、Phoenix Feather、Blazing Feathers 的触发伤害与 Flame 的追加伤害全部以魔法攻击力结算。',
+      },
+      {
+        title: '暴击伤害第二配装',
+        description:
+          '暴击伤害配装同样可以非常强力：EX+4 之后，Ignite 每次成功攻击都会永久提供暴击率 +5% 与暴击伤害 +10%，最多叠加 10 层。长线战斗中她自己就能叠到暴击率 +50% 与暴击伤害 +100%，层数滚起来后，暴击伤害副属性会让她变得极其夸张。圣痕采用 2+2 混搭：The Four Horsemen 放在下部与右部提供暴击伤害，Scorching Sun 放在上部与左部（上部提供魔法攻击力，左部提供火焰强化），同时吃到 Scorching Sun 魔法攻击力 +10% 与 The Four Horsemen 暴击伤害 +20% 的 2 件套效果。注意：这套需要 EX+4 与叠层时间，魔法攻击力配装仍是更稳妥的默认选择。',
+      },
+    ],
+    substatBuilds: [
+      { name: '全魔法攻击力配装（主）', note: '主配装。她的技能组与 Transcendent 对魔法攻击力的乘算极高，魔法攻击力副属性在任何位置都是最优，剩余位置补暴击伤害或行动恢复力。' },
+      { name: '暴击伤害配装（第二套，EX+4 以上）', note: 'Ignite 层数滚起来之后的强力替代方案。需要 EX+4 或更高突破，让她自己堆暴击率。' },
+    ],
+    substatsPriority: '魔法攻击力配装：所有位置选魔法攻击力，其次暴击伤害或行动恢复力。暴击伤害配装：所有位置选暴击伤害，其次魔法攻击力或行动恢复力。',
+    traitBuildNames: { 'Build 1: Full Magic ATK': '配装 1：全魔法攻击力', 'Build 2: Crit DMG': '配装 2：暴击伤害' },
+    traitRecommendation: '',
+  },
+  juha: {
+    title: '子弹圣徒：团队增益辅助',
+    strategy: [
+      {
+        title: '堆高射击攻击力，强化「The Executioner」',
+        description:
+          '「The Executioner」按珠哈基础射击攻击力的 76% 提升队友的射击攻击力。基础射击攻击力越高，全体枪械角色获得的团队增益就越强。',
+      },
+      {
+        title: '团队增益定位优化',
+        description:
+          '「Blessing of Firepower」为队友提供射击攻击力 +52% 与行动恢复力 +28.5%。让珠哈站在能覆盖最多枪械队友的位置，并配合技能释放时机，把团队收益最大化。',
+      },
+      {
+        title: '平衡行动恢复力，保证技能循环',
+        description:
+          '射击攻击力是第一优先级，但足够的行动恢复力才能保证「The Executioner」的覆盖与技能使用。建议 2 到 3 条射击攻击力副属性，搭配 1 到 2 条行动恢复力副属性，获得最佳续航。',
+      },
+      {
+        title: '与枪械队友的联动',
+        description:
+          '「The Noble\'s Tactics」圣痕（射击攻击力 +9%、暴击率 +20%）与她的团队能力都专门服务枪械角色。围绕其他远程输出组队，可以打出毁灭性的联动。',
+      },
+    ],
+    substatsPriority: '射击攻击力（3 个位置），其次行动恢复力，最后命中（可选）。',
+    traitRecommendation:
+      '扫射的、技术性的、专业的、过劳的、正义的（核心射击攻击力 + 团队增益配装：射击攻击力 +12%、行动恢复力 +4%）。备选：有毅力的或有计划的强化行动力管理，高效的或激进的适合不同打法。',
+  },
+  juza: {
+    title: '依靠尤洁妮亚的暴击粉碎机',
+    strategy: [
+      {
+        title: '与尤洁妮亚（Eugenia）组队',
+        description:
+          '尤洁妮亚的增益是把朱子暴击率拉满的关键，也是暴击伤害配装打得如此疼的原因。没有尤洁妮亚时暴击配装不成立，请改用生命值配装。',
+      },
+    ],
+    substatBuilds: [
+      { name: '暴击伤害配装（搭配尤洁妮亚）', note: '主配装。尤洁妮亚负责暴击率后，暴击伤害是价值远超其他副属性的选择。' },
+      { name: '生命值配装（无尤洁妮亚）', note: '无法与尤洁妮亚组队时的替代方案。堆最大生命值，并用行动力支援团队。' },
+    ],
+    substatsPriority: '暴击伤害配装：暴击伤害，其次最大生命值，最后行动恢复力。生命值配装：最大生命值，其次行动恢复力。',
+    traitRecommendation:
+      '6 个主特性：孤注一掷的、盲目的、危险的提供暴击伤害，沉重的、攻城的提供打击伤害，结实的提供最大生命值。有尤洁妮亚在，孤注一掷的暴击率损失可以接受。若不介意用 3% 最大生命值换 12% 暴击伤害，毁灭的也是备选。',
+  },
+  vlissing: {
+    title: '流动守护者：辅助',
+    strategy: [
+      {
+        title: '堆高魔法攻击力，兼顾治疗与伤害',
+        description:
+          '布莉辛的「Ebb and Flow」与「Tangled Flow」都以魔法攻击力结算。魔法攻击力越高，治疗量（魔法攻击力的 60% + 目标最大生命值的 12%）与 Tangled Flow 伤害（魔法攻击力的 400%）都会越高。',
+      },
+      {
+        title: '技能等级 10 是关键',
+        description:
+          '「Ebb and Flow」与「Flooding Flow」都必须升到 10 级，才能从 Tangled Flow 减益中获得完整的伤害潜力。笔者自己就用布莉辛刷日常和推剧情！',
+      },
+      {
+        title: 'The Eternal Battle 圣痕',
+        description:
+          '4 件套效果（一次成功命中 3 名以上敌人时魔法攻击力 +35%）与布莉辛的范围技能「Sharp Wave」相性极佳，让她在日常清图中表现非常超模。',
+      },
+      {
+        title: '用行动恢复力与魔法攻击力取得平衡',
+        description: '魔法攻击力必堆，但适当的行动恢复力能让你更从容地放技能或治疗，不过它不是主要目标。',
+      },
+    ],
+    substatsPriority: '魔法攻击力（3 个位置），其次行动恢复力，最后最大生命值（可选）。',
+    traitRecommendation:
+      '理智的、神秘的、睿智的、过劳的、正义的（核心魔法攻击力配装：魔法攻击力 +20%、行动恢复力 +4%）。备选：有毅力的补行动力，聪明的或诡异的补魔法攻击力。',
+  },
+  olivia: {
+    title: '奥利维亚反击流',
+    strategy: [
+      {
+        title: '堆高近战攻击力，强化反击',
+        description: '奥利维亚的一切都取决于近战攻击力与斩击输出，而且她的攻击无视斩击防御。',
+      },
+      {
+        title: '技能等级 10',
+        description:
+          'Limitless Form 必须升到 10 级才能打出夸张伤害。由于这个被动的存在她无法暴击，所以直接全堆近战攻击力即可。其他技能升到 7 级其实也够用！',
+      },
+      {
+        title: '圣痕选择',
+        description:
+          '奥利维亚的配装思路很多，每个人的用法各不相同，但笔者认为这一套最好：Reckoning of Sin 与 The Thousand Mile Weave 混搭 2 件套。',
+      },
+      {
+        title: '反击',
+        description: '奥利维亚会进行大量反击，需要让她足够贴近敌人才能触发。她的承伤能力完全够用。',
+      },
+    ],
+    substatsPriority: '近战攻击力（3 个位置），其次行动恢复力，最后最大生命值（可选）。',
+    traitRecommendation:
+      '强大的、狂暴的、鲁莽的、尖锐的、锐利的（核心输出配装：近战攻击力与斩击强化合计 +30%）。备选：有力的更稳妥（+3% 攻击力），激进的全能属性，过劳的补行动力。',
+  },
+  emilia: {
+    title: '医学研究治疗者',
+    strategy: [
+      {
+        title: '用魔法攻击力强化 Miraculous Injection',
+        description:
+          '艾米莉亚的 Miraculous Injection 可以按她的魔法攻击力提升全攻击力，也就是说魔法攻击力越高，获得的全攻击力越多。该增益最高可提供 1000 点全攻击力，涵盖近战、魔法与射击攻击力。',
+      },
+      {
+        title: '固有特性 Diagnosis Method 机制',
+        description:
+          '艾米莉亚的「Diagnosis Method」特性允许对队友使用普通攻击，并通过「Stimulus Response Test」提供行动力。这算一点额外的行动力产出，但没有多夸张，量其实不多。',
+      },
+      {
+        title: 'Sacred Prescription Protocol',
+        description:
+          '艾米莉亚的「Sacred Prescription Protocol」提供 3 类增益：暴击伤害、行动力与移动力、属性强化。多数情况下选暴击伤害，因为它对输出提升最大。关于属性强化的讨论很多，但简单来说，截至 2025 年 12 月 6 日还没有真正能吃满属性强化收益的角色。',
+      },
+      {
+        title: 'Field Medbay',
+        description:
+          '这个被动不太好理解：首先需要 EX5 才能发挥全部效果，它会提升她增益技能的效果。例如 100% 全攻击力会变成 120% 或 180%，暴击伤害、行动力与移动力、属性强化等其他增益同理。',
+      },
+      {
+        title: 'Reckoning of Sin 圣痕',
+        description:
+          '选这套圣痕是因为它提供行动恢复力与战斗开始行动力。第 1 回合倾泻全部技能后，第 2 回合技能都在冷却，因此需要开局行动力与行动恢复力来支撑循环。',
+      },
+    ],
+    substatsPriority: '魔法攻击力（3 个位置），其次行动恢复力，最后最大生命值（可选）。',
+    traitRecommendation:
+      '理智的、神秘的、睿智的、过劳的、聪明的（核心魔法攻击力 + 行动恢复力配装：魔法攻击力 +21%、行动恢复力 +4%）。备选：有毅力的补行动力产出，诡异的以生命值为代价换更多魔法攻击力。',
+    alternativeBuilds: [
+      {
+        title: '暴击率特化配装',
+        description: '该配装将暴击率堆到 140%，让 Dawn\'s Grace 的效果最大化。需要满 EX5 武器来获得最佳的行动恢复力与暴击率。',
+        recommendedStigma: "Dawn's Grace",
+        playstyle:
+          '属性强化是这套配装的一部分，因此需要能吃属性强化收益的角色（火焰、冰霜等属性）。先激活其中两种增益，再用普通攻击为主力输出提升行动恢复力，依次提供暴击伤害、全攻击力与属性强化。',
+        substatsFocus: '暴击率（目标 140%），其次行动恢复力，最后魔法攻击力。',
+        note: '暴击率堆到 140% 之前全选暴击率副属性，达到 140% 后尽量堆行动恢复力。',
+      },
+    ],
+  },
+  echidna: {
+    title: '机制别扭：重度依赖队伍',
+    strategy: [
+      {
+        title: '机制混乱：重度依赖队伍',
+        description:
+          '艾姬德娜的毒素按命中结算，但必须先由队友命中目标、触发她的追击，才能施加中毒持续伤害。她的终结技需要 3 次队友命中才能正常发动。她本质上单兵能力很弱，完全依赖队友才能运转，这套机制并不适合独立作战的单位。',
+      },
+      {
+        title: '全行动力配装不可行',
+        description:
+          '理论上全行动力不错，因为持续伤害在回合结束时结算，但至少需要 6 层（2 个回合以上）的稳定单体命中才能成型。实战中太慢也不稳定，投入与回报不成正比。',
+      },
+      {
+        title: '唯一可行配装：全命中',
+        description:
+          '唯一勉强可行的配装，是用 The Eternal Battle 与 The Wind that Wanders the World 的下部与左部堆命中。即使想最大化终结技伤害也很弱，因为一切效果都取决于命中。她依然是一个难以有效培养、表现欠佳的角色。',
+      },
+    ],
+    substatsPriority: '命中（3 个位置），若刷不到命中则选魔法攻击力。',
+    traitRecommendation:
+      '精密的、致毒的、偏执的、剧毒的、准确的（核心命中 + 中毒配装：命中 +16%、毒素强化 +14%）。备选：神秘、理智、睿智，在刷不到命中或毒素时补魔法攻击力。',
+  },
+  'kim-ga-young': {
+    title: '隐身刺客狙击手',
+    strategy: [
+      {
+        title: '隐身',
+        description:
+          '金佳映大部分时间都处于隐身状态，基本不会被打。同时还能吃到圣痕与各种与隐身联动的增益。她的问题在于只能对单、需要大量暴击率才能成型，而且基础射击攻击力偏低。',
+      },
+      {
+        title: 'EX 武器特性联动',
+        description:
+          '她的 EX 武器「SS4-修改型」会按特定特性提供额外属性：高效的（战斗开始行动力 +15）、能干的（射击攻击力 +10%）、有计划的（支援攻击伤害 +5%）。其中可以更换的是高效的，它不提供伤害，但开局行动力很实用。其实她甚至不太需要轮到自己行动，因为她的定位是在别人攻击时进行支援攻击，所以基本不需要行动力。',
+      },
+      {
+        title: 'Drone Vision 支援定位',
+        description:
+          '搭配 EX 武器后，Drone Vision 会施加减益（所有防御 -100、回避 -100）。她是全游戏唯一能降低回避的角色，-100 回避在回避机制下其实非常强，所有防御下降则相对一般。',
+      },
+      {
+        title: '提升 Sniping 技能等级',
+        description:
+          '笔者认为支援攻击按角色的普通攻击结算，而金佳映的普通攻击是 Sniping，因此理论上提升普通攻击也能提高支援攻击伤害。',
+      },
+      {
+        title: '两种圣痕选择',
+        description:
+          '她有两套圣痕思路：The Four Horsemen 与 Phantom Banquet，都能用，玩法差异也很大。主要问题是她缺乏起飞所需的暴击率，必须想办法补足，否则伤害会明显下滑，而且漏掉一次暴击影响很大。The Four Horsemen 提供更高的暴击率，但需要至少命中 5 次才能吃满；Phantom Banquet 更稳定，还能吃到隐身增伤，也不算差。老实说，两套都能用。',
+      },
+    ],
+    substatsPriority: '暴击伤害（2 个位置），其次暴击率，最后射击攻击力（备选）。',
+    traitRecommendation:
+      '能干的、有计划的（EX 武器联动）、毁灭的、天命的、幸运的（核心暴击伤害 + 暴击率配装）。优先暴击类特性，因为金佳映需要高暴击率才能撑起伤害。高效的可选：她主要打支援攻击，不太需要行动力。',
+  },
+  palekar: {
+    title: '暗影记录者：减益辅助',
+    strategy: [
+      {
+        title: '主定位：团队减益辅助',
+        description:
+          '帕莱卡的核心作用是通过「Verse of Ordeal」施加 [Unstable] 减益：所有防御 -1140，且每点超过 9 的敏捷额外增加 7.5% 承受伤害。这个巨型减益能让全队的输出显著提高。',
+      },
+      {
+        title: 'Relentless Sworddance 的支援攻击',
+        description:
+          '当队友以消耗 60 行动力以上的技能攻击 [Unstable] 敌人时，帕莱卡会用「Trajectory of Severance」进行支援攻击，并返还 37 行动力给触发的队友。与科拉（Cora）的零耗 Lava 配合良好。',
+      },
+      {
+        title: '基于回避的伤害加成',
+        description:
+          '「Blade Dance」按基础回避的 16.25%（最高 32.5%）提升战斗技能伤害，「Trajectory of Severance」还按基础回避的 250% 提升魔法攻击力。高回避副属性与她的技能组联动，但她本身的输出仍然有限，所需的暴击率与暴击伤害很难补齐。',
+      },
+      {
+        title: 'Reckoning of Sin 圣痕联动',
+        description:
+          '2 件套：行动恢复力 +4%。4 件套：战斗开始获得 30 行动力，并在成功命中时对敌人施加 [Price of Sin]（属性防御 -200，被击后结束）。与她的 [Unstable] 减益叠加，实现防御削减最大化，与科拉的火焰伤害配合也很好。',
+      },
+    ],
+    substatsPriority: '回避（所有位置），需要时补行动恢复力。',
+    traitRecommendation:
+      '注意：作为减益辅助，她其实不太需要刷特性。剪刀（特性重选道具）太贵，保持默认特性也完全没问题。如果一定要刷：敏捷的、机敏的、过劳的、有毅力的、枯瘦的，补回避与行动恢复力。',
+  },
+  default: {
+    title: 'The Executioner 特化',
+    strategy: [
+      {
+        title: '为「The Executioner」增益堆射击攻击力',
+        description: '「The Executioner」是按基础射击攻击力结算的增益，提升基础射击攻击力可以直接提高增益效果。',
+      },
+      {
+        title: '不需要全行动力配装',
+        description: '由于游戏中没有太多能提升射击攻击力的优质圣痕，行动恢复力是仅剩的选择！',
+      },
+      {
+        title: '全行动恢复力还是射击攻击力',
+        description:
+          '副属性全选行动恢复力的理由是可以连续两次发动 The Executioner！但它不会叠加两次，所以全行动力并不划算。',
+      },
+    ],
+    substatsPriority: '射击攻击力（3 个位置），其次行动恢复力，最后战斗开始行动力（可选）。',
+    traitRecommendation:
+      '扫射的、技术性的、过劳的、高效的、正义的（核心配装）。备选：有毅力的或有计划的强化行动力管理，专业的或激进的偏输出。',
+  },
+};
+
+const prose = ZH_PROSE[character.slug] || ZH_PROSE.default;
+const strategyZh = (buildConfig.buildStrategy || []).map((s, i) => ({
+  title: prose.strategy[i]?.title || s.title,
+  description: prose.strategy[i]?.description || s.description,
+}));
+const substatBuildsZh = (buildConfig.substatBuilds || []).map((b, i) => ({
+  name: prose.substatBuilds?.[i]?.name || b.name,
+  note: prose.substatBuilds?.[i]?.note || b.note,
+  stats: b.stats,
+}));
+const altBuildsZh = (buildConfig.alternativeBuilds || []).map((b, i) => ({
+  ...b,
+  ...(prose.alternativeBuilds?.[i] || {}),
+}));
+const scalingZh = SCALING_ZH[buildConfig.damageScaling] || statZh(buildConfig.damageScaling);
+const traitsTypeZh = TRAITS_TYPE_ZH[buildConfig.traitsType] || buildConfig.traitsType;
+
+// ---------- stigma resolution (same logic as the EN page) -------------------
+const findStigmaSet = (name) =>
+  stigmas.EX?.find((stigma) => stigma.name === name) ||
+  stigmas.SS?.find((stigma) => stigma.name === name) ||
+  stigmas.S?.find((stigma) => stigma.name === name) ||
+  stigmas.A?.find((stigma) => stigma.name === name) ||
+  null;
+
+function resolveStigmaDisplay(rec, mixedLayout) {
+  if (rec === null || rec === undefined) return null;
+  if (typeof rec === 'string' && rec.includes('Mixed 2-Set')) {
+    const layout = mixedLayout;
+    if (layout && layout.top && layout.bottom && layout.left && layout.right) {
+      const setNames = [...new Set([layout.top, layout.bottom, layout.left, layout.right])];
+      if (setNames.length === 2) {
+        const st1 = stigmas.EX?.find((stigma) => stigma.name === setNames[0]);
+        const st2 = stigmas.EX?.find((stigma) => stigma.name === setNames[1]);
+        if (st1 && st2) {
+          const pieceFor = (slot) => (layout[slot] === setNames[0] ? st1 : st2).pieces[slot];
+          return {
+            type: 'mixed',
+            pieces: {
+              stigma1Name: setNames[0],
+              stigma2Name: setNames[1],
+              top: pieceFor('top'),
+              bottom: pieceFor('bottom'),
+              left: pieceFor('left'),
+              right: pieceFor('right'),
+              twoSetBonus1: st1.twoSet,
+              twoSetBonus2: st2.twoSet,
+            },
+          };
+        }
+      }
+    }
+    if (character.slug !== 'echidna') {
+      const reckoningOfSin = stigmas.EX?.find((stigma) => stigma.name === 'Reckoning of Sin');
+      const thousandMileWeave = stigmas.EX?.find((stigma) => stigma.name === 'The Thousand Mile Weave');
+      if (reckoningOfSin && thousandMileWeave) {
+        return {
+          type: 'mixed',
+          pieces: {
+            stigma1Name: 'Reckoning of Sin',
+            stigma2Name: 'The Thousand Mile Weave',
+            top: thousandMileWeave.pieces.top,
+            bottom: reckoningOfSin.pieces.bottom,
+            left: reckoningOfSin.pieces.left,
+            right: thousandMileWeave.pieces.right,
+            twoSetBonus1: reckoningOfSin.twoSet,
+            twoSetBonus2: thousandMileWeave.twoSet,
+          },
+        };
+      }
+    } else {
+      const eternalBattle = stigmas.EX?.find((stigma) => stigma.name === 'The Eternal Battle');
+      const windWanders = stigmas.EX?.find((stigma) => stigma.name === 'The Wind that Wanders the World');
+      if (eternalBattle && windWanders) {
+        return {
+          type: 'mixed',
+          pieces: {
+            stigma1Name: 'The Eternal Battle',
+            stigma2Name: 'The Wind that Wanders the World',
+            top: eternalBattle.pieces.top,
+            bottom: windWanders.pieces.bottom,
+            left: eternalBattle.pieces.left,
+            right: windWanders.pieces.right,
+            twoSetBonus1: eternalBattle.twoSet,
+            twoSetBonus2: windWanders.twoSet,
+          },
+        };
+      }
+    }
+    return null;
+  }
+  if (typeof rec === 'object') {
+    return { type: 'object', zeroDupe: findStigmaSet(rec.zeroDupe), fullEx5: findStigmaSet(rec.fullEx5) };
+  }
+  return { type: 'single', set: findStigmaSet(rec) };
+}
+
+const stigmaSections =
+  Array.isArray(buildConfig.stigmaBuilds) && buildConfig.stigmaBuilds.length > 0
+    ? buildConfig.stigmaBuilds.map((sb) => ({
+        label: sb.name || null,
+        display: resolveStigmaDisplay(sb.recommendedStigma, sb.mixedSetLayout),
+      }))
+    : [{ label: null, display: resolveStigmaDisplay(buildConfig.recommendedStigma, buildConfig.mixedSetLayout) }];
+
+const SLOT_ZH = { top: '上部', bottom: '下部', left: '左部', right: '右部' };
+const hasCommunityBuild = Boolean(COMMUNITY_BUILDS[character.slug]);
+
+const coreStats = [
+  { label: '力量', value: character.stats?.strength },
+  { label: '技巧', value: character.stats?.technic },
+  { label: '智力', value: character.stats?.intelligence },
+  { label: '体质', value: character.stats?.vitality },
+  { label: '敏捷', value: character.stats?.agility },
+];
+---
+
+<HwZhLayout
+  title={`${zhName} 配装 - 地平线行者中文维基 - GachaWiki`}
+  description={`地平线行者 ${zhName}（${character.name}）的配装推荐：配装思路、推荐圣痕、副属性优先级与特性选择。圣痕套装名称保留英文原文。`}
+  keywords={[zhName, character.name, '地平线行者', '配装', '圣痕']}
+  pageTitle={`${zhName} 配装`}
+  breadcrumbItems={[
+    { name: '首页', href: '/' },
+    { name: '地平线行者', href: HW_ZH.baseUrl },
+    { name: '配装推荐', href: `${HW_ZH.baseUrl}builds/` },
+    { name: zhName },
+  ]}
+>
+  <div class="zh-cb">
+    <header class="zh-cb-section zh-cb-header">
+      <CharacterImage
+        imageName={character.image || character.name}
+        alt={zhName}
+        width={120}
+        height={120}
+        class="zh-cb-portrait"
+        loading="eager"
+      />
+      <div class="zh-cb-title">
+        <h2 class="zh-cb-name">{zhName} 配装</h2>
+        <p class="zh-cb-en">{character.name} Build</p>
+        <div class="zh-cb-chips">
+          <span class="zh-cb-chip">费用 {build.cost}</span>
+          <HWRarityIcon rarity={build.rarity} width={44} height={22} />
+          <span class="zh-cb-chip zh-cb-chip-scaling">{scalingZh}</span>
+        </div>
+        <div class="zh-cb-links">
+          <a href={`${HW_ZH.baseUrl}characters/${character.slug}/`}>角色页面</a>
+          <a href={enPageUrl}>完整英文配装页</a>
+          {hasCommunityBuild && <a href={`${HW_ZH.baseUrl}builds/community/${character.slug}/`}>社区配装</a>}
+        </div>
+      </div>
+    </header>
+
+    <section class="zh-cb-section">
+      <h3 class="zh-cb-section-title">核心属性</h3>
+      <div class="zh-cb-stat-notes">
+        <span><strong>力量：</strong>提升近战攻击力</span>
+        <span><strong>技巧：</strong>提升射击攻击力</span>
+        <span><strong>智力：</strong>提升魔法攻击力</span>
+        <span><strong>体质：</strong>提升最大生命值</span>
+        <span><strong>敏捷：</strong>提升回避与行动恢复力</span>
+      </div>
+      <div class="zh-cb-stat-grid">
+        {
+          coreStats.map((s) => (
+            <div class="zh-cb-stat">
+              <div class="zh-cb-stat-label">{s.label}</div>
+              <div class="zh-cb-stat-value">{s.value ?? '无数据'}</div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="zh-cb-section">
+      <h3 class="zh-cb-section-title">配装思路</h3>
+      <div class="zh-cb-strategy">
+        <h4 class="zh-cb-strategy-title">{prose.title}</h4>
+        {strategyZh.map((s) => (
+          <div class="zh-cb-point">
+            <strong>{s.title}</strong>
+            <span class="zh-cb-point-sep">：</span>
+            {s.description}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {
+      stigmaSections.some((s) => s.display) && (
+        <section class="zh-cb-section">
+          <h3 class="zh-cb-section-title">推荐圣痕</h3>
+          <div class="zh-cb-stigma-list">
+            {stigmaSections
+              .filter((s) => s.display)
+              .map((section) => (
+              <div class="zh-cb-card">
+                {section.label && <div class="zh-cb-stigma-label">{section.label}</div>}
+                {section.display.type === 'mixed' ? (
+                  <>
+                    <div class="zh-cb-stigma-head">
+                      <div class="zh-cb-stigma-id">
+                        <StigmaImage imageName={section.display.pieces.stigma1Name} alt={`${section.display.pieces.stigma1Name} 圣痕`} width={60} height={60} class="zh-cb-stigma-img" loading="eager" />
+                        <div>
+                          <h5 class="zh-cb-stigma-name">{section.display.pieces.stigma1Name}</h5>
+                          <HWRarityIcon rarity="EX" width={36} height={18} />
+                        </div>
+                      </div>
+                      <div class="zh-cb-plus">+</div>
+                      <div class="zh-cb-stigma-id">
+                        <StigmaImage imageName={section.display.pieces.stigma2Name} alt={`${section.display.pieces.stigma2Name} 圣痕`} width={60} height={60} class="zh-cb-stigma-img" loading="eager" />
+                        <div>
+                          <h5 class="zh-cb-stigma-name">{section.display.pieces.stigma2Name}</h5>
+                          <HWRarityIcon rarity="EX" width={36} height={18} />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="zh-cb-bonuses">
+                      <div class="zh-cb-bonus">
+                        <h5>{section.display.pieces.stigma1Name}（2 件套效果）</h5>
+                        <p>{section.display.pieces.twoSetBonus1}</p>
+                      </div>
+                      <div class="zh-cb-bonus">
+                        <h5>{section.display.pieces.stigma2Name}（2 件套效果）</h5>
+                        <p>{section.display.pieces.twoSetBonus2}</p>
+                      </div>
+                    </div>
+                    <h5 class="zh-cb-subhead">混搭圣痕部件</h5>
+                    <div class="zh-cb-piece-grid">
+                      {['top', 'bottom', 'left', 'right'].map((slot) => (
+                        <div class="zh-cb-piece">
+                          <div class="zh-cb-slot">{SLOT_ZH[slot]}</div>
+                          <div class="zh-cb-piece-name">{section.display.pieces[slot].name}</div>
+                          <div class="zh-cb-piece-stat">{statZh(section.display.pieces[slot].stat)}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                ) : section.display.type === 'object' ? (
+                  <>
+                    <div class="zh-cb-option">
+                      <div class="zh-cb-option-label">方案 1：低投入（零突破）</div>
+                      <div class="zh-cb-stigma-head">
+                        <StigmaImage imageName={section.display.zeroDupe.name} alt={`${section.display.zeroDupe.name} 圣痕`} width={60} height={60} class="zh-cb-stigma-img" loading="eager" />
+                        <div>
+                          <h5 class="zh-cb-stigma-name">{section.display.zeroDupe.name}</h5>
+                          <HWRarityIcon rarity="EX" width={36} height={18} />
+                        </div>
+                      </div>
+                      <div class="zh-cb-bonuses">
+                        <div class="zh-cb-bonus">
+                          <h5>2 件套效果</h5>
+                          <p>{section.display.zeroDupe.twoSet}</p>
+                        </div>
+                        {section.display.zeroDupe.fourSet && (
+                          <div class="zh-cb-bonus">
+                            <h5>4 件套效果</h5>
+                            <p>{section.display.zeroDupe.fourSet}</p>
+                          </div>
+                        )}
+                      </div>
+                      <h5 class="zh-cb-subhead">圣痕部件</h5>
+                      <div class="zh-cb-piece-grid">
+                        {['top', 'bottom', 'left', 'right'].map((slot) => (
+                          <div class="zh-cb-piece">
+                            <div class="zh-cb-slot">{SLOT_ZH[slot]}</div>
+                            <div class="zh-cb-piece-name">{section.display.zeroDupe.pieces[slot].name}</div>
+                            <div class="zh-cb-piece-stat">{statZh(section.display.zeroDupe.pieces[slot].stat)}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div class="zh-cb-divider">或</div>
+                    <div class="zh-cb-option">
+                      <div class="zh-cb-option-label">方案 2：满突破 EX5 武器</div>
+                      <div class="zh-cb-stigma-head">
+                        <StigmaImage imageName={section.display.fullEx5.name} alt={`${section.display.fullEx5.name} 圣痕`} width={60} height={60} class="zh-cb-stigma-img" loading="eager" />
+                        <div>
+                          <h5 class="zh-cb-stigma-name">{section.display.fullEx5.name}</h5>
+                          <HWRarityIcon rarity="EX" width={36} height={18} />
+                        </div>
+                      </div>
+                      <div class="zh-cb-bonuses">
+                        <div class="zh-cb-bonus">
+                          <h5>2 件套效果</h5>
+                          <p>{section.display.fullEx5.twoSet}</p>
+                        </div>
+                        {section.display.fullEx5.fourSet && (
+                          <div class="zh-cb-bonus">
+                            <h5>4 件套效果</h5>
+                            <p>{section.display.fullEx5.fourSet}</p>
+                          </div>
+                        )}
+                      </div>
+                      <h5 class="zh-cb-subhead">圣痕部件</h5>
+                      <div class="zh-cb-piece-grid">
+                        {['top', 'bottom', 'left', 'right'].map((slot) => (
+                          <div class="zh-cb-piece">
+                            <div class="zh-cb-slot">{SLOT_ZH[slot]}</div>
+                            <div class="zh-cb-piece-name">{section.display.fullEx5.pieces[slot].name}</div>
+                            <div class="zh-cb-piece-stat">{statZh(section.display.fullEx5.pieces[slot].stat)}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div class="zh-cb-stigma-head">
+                      <StigmaImage imageName={section.display.set.name} alt={`${section.display.set.name} 圣痕`} width={60} height={60} class="zh-cb-stigma-img" loading="eager" />
+                      <div>
+                        <h5 class="zh-cb-stigma-name">{section.display.set.name}</h5>
+                        <HWRarityIcon rarity="EX" width={36} height={18} />
+                      </div>
+                    </div>
+                    <div class="zh-cb-bonuses">
+                      <div class="zh-cb-bonus">
+                        <h5>2 件套效果</h5>
+                        <p>{section.display.set.twoSet}</p>
+                      </div>
+                      <div class="zh-cb-bonus">
+                        <h5>4 件套效果</h5>
+                        <p>{section.display.set.fourSet}</p>
+                        {section.display.set.specialEffect && (
+                          <p class="zh-cb-special">[{section.display.set.specialEffect.name}]：{section.display.set.specialEffect.description}</p>
+                        )}
+                      </div>
+                    </div>
+                    <h5 class="zh-cb-subhead">圣痕部件</h5>
+                    <div class="zh-cb-piece-grid">
+                      {['top', 'bottom', 'left', 'right'].map((slot) => (
+                        <div class="zh-cb-piece">
+                          <div class="zh-cb-slot">{SLOT_ZH[slot]}</div>
+                          <div class="zh-cb-piece-name">{section.display.set.pieces[slot].name}</div>
+                          <div class="zh-cb-piece-stat">{statZh(section.display.set.pieces[slot].stat)}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+              ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      (buildConfig.substatBuilds || buildConfig.recommendedSubstats) && (
+        <section class="zh-cb-section">
+          <h3 class="zh-cb-section-title">推荐副属性</h3>
+          <div class="zh-cb-card">
+            <h5 class="zh-cb-subhead">副属性推荐</h5>
+            {buildConfig.substatBuilds ? (
+              <div class="zh-cb-substat-builds">
+                {substatBuildsZh.map((b) => (
+                  <div class="zh-cb-substat-build">
+                    <div class="zh-cb-substat-name">{b.name}</div>
+                    {b.note && <p class="zh-cb-substat-note">{b.note}</p>}
+                    <div class="zh-cb-substat-list">
+                      {b.stats.map((stat) => (
+                        <div class="zh-cb-substat">
+                          <span>{statZh(stat.stat)}</span>
+                          <span class="zh-cb-priority">{PRIORITY_ZH[stat.priority] || stat.priority}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div class="zh-cb-substat-list">
+                {buildConfig.recommendedSubstats.map((substat) => (
+                  <div class="zh-cb-substat zh-cb-substat-plain">
+                    <span>{statZh(substat.stat)}</span>
+                    <span class="zh-cb-scale">{substat.scale}</span>
+                    <span class="zh-cb-priority">{PRIORITY_ZH[substat.priority] || substat.priority}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+            <p class="zh-cb-note"><strong>优先级：</strong>{prose.substatsPriority}</p>
+          </div>
+        </section>
+      )
+    }
+
+    {
+      altBuildsZh.length > 0 && (
+        <section class="zh-cb-section">
+          <h3 class="zh-cb-section-title">备选配装思路</h3>
+          <div class="zh-cb-alt-grid">
+            {altBuildsZh.map((b) => (
+              <div class="zh-cb-card">
+                <div class="zh-cb-alt-head">
+                  <h4 class="zh-cb-alt-title">{b.title}</h4>
+                  {b.recommendedStigma && (
+                    <div class="zh-cb-alt-stigma">
+                      <StigmaImage imageName={b.recommendedStigma} alt={`${b.recommendedStigma} 圣痕`} width={64} height={64} class="zh-cb-stigma-img" loading="eager" />
+                      <div>
+                        <div class="zh-cb-alt-stigma-label">推荐圣痕</div>
+                        <div class="zh-cb-alt-stigma-name">{b.recommendedStigma}</div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <p class="zh-cb-text">{b.description}</p>
+                {b.playstyle && (
+                  <div class="zh-cb-alt-block">
+                    <h5>玩法思路</h5>
+                    <p>{b.playstyle}</p>
+                  </div>
+                )}
+                {b.substatsFocus && (
+                  <div class="zh-cb-alt-block">
+                    <h5>副属性优先级</h5>
+                    <p>{b.substatsFocus}</p>
+                  </div>
+                )}
+                {b.note && (
+                  <div class="zh-cb-alt-block">
+                    <h5>特性配装说明</h5>
+                    <p>{b.note}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <section class="zh-cb-section">
+      <h3 class="zh-cb-section-title">推荐特性</h3>
+      <div class="zh-cb-card">
+        {buildConfig.traitBuilds ? (
+          <div class="zh-cb-trait-builds">
+            {buildConfig.traitBuilds.map((tb) => (
+              <div class="zh-cb-trait-build">
+                <h5 class="zh-cb-subhead">{prose.traitBuildNames?.[tb.name] || tb.name}</h5>
+                <div class="zh-cb-trait-list">
+                  {tb.traits.map((trait) => (
+                    <div class="zh-cb-trait">
+                      <div class="zh-cb-trait-name">
+                        {traitZh(trait.name)}
+                        <span class="zh-cb-trait-en">{trait.name}</span>
+                      </div>
+                      <div class="zh-cb-trait-effects">
+                        {trait.effects.map((effect) => (
+                          <span class="zh-cb-trait-effect">{effectZh(effect)}</span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <>
+            <h5 class="zh-cb-subhead">
+              {traitsTypeZh} 的最佳特性（最多 {buildConfig.traitsMax || 5} 条）
+            </h5>
+            <div class="zh-cb-trait-list">
+              {buildConfig.recommendedTraits.map((trait) => (
+                <div class={`zh-cb-trait ${trait.priority === 'Best' ? 'zh-cb-trait-main' : 'zh-cb-trait-alt'}`}>
+                  <div class="zh-cb-trait-name">
+                    {traitZh(trait.name)}
+                    <span class="zh-cb-trait-en">{trait.name}</span>
+                    <span class="zh-cb-badge">{trait.priority === 'Best' ? '主推' : '备选'}</span>
+                  </div>
+                  <div class="zh-cb-trait-effects">
+                    {trait.effects.map((effect) => (
+                      <span class="zh-cb-trait-effect">{effectZh(effect)}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+        {buildConfig.traitRecommendation && (
+          <p class="zh-cb-note"><strong>推荐选择：</strong>{prose.traitRecommendation || buildConfig.traitRecommendation}</p>
+        )}
+      </div>
+    </section>
+  </div>
+</HwZhLayout>
+
+<style>
+  .zh-cb {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .zh-cb-section {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+    padding: 1.4rem;
+  }
+  .zh-cb-section-title {
+    color: var(--hw-primary-warm);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+  }
+  .zh-cb-header {
+    display: flex;
+    gap: 1.4rem;
+    align-items: center;
+  }
+  .zh-cb-portrait {
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+  }
+  .zh-cb-name {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: var(--font-bold);
+    color: var(--hw-text-light);
+    margin: 0;
+  }
+  .zh-cb-en {
+    color: var(--hw-text-very-muted);
+    font-size: 0.85rem;
+    margin: 0.1rem 0 0.6rem 0;
+  }
+  .zh-cb-chips {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .zh-cb-chip {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--hw-text-light);
+    font-weight: 600;
+    font-size: 0.8125rem;
+    border-radius: 999px;
+    padding: 0.2rem 0.7rem;
+    white-space: nowrap;
+  }
+  .zh-cb-chip-scaling {
+    color: var(--hw-primary-warm);
+    border-color: rgba(232, 165, 71, 0.4);
+  }
+  .zh-cb-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.7rem;
+  }
+  .zh-cb-links a {
+    color: var(--hw-primary-warm);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(232, 165, 71, 0.35);
+    border-radius: 8px;
+    padding: 0.35rem 0.8rem;
+  }
+  .zh-cb-stat-notes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.4rem;
+    margin-bottom: 0.9rem;
+  }
+  .zh-cb-stat-notes span {
+    color: var(--hw-text-muted);
+    font-size: 0.85rem;
+  }
+  .zh-cb-stat-notes strong {
+    color: var(--hw-primary-warm);
+  }
+  .zh-cb-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.6rem;
+  }
+  .zh-cb-stat {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+  }
+  .zh-cb-stat-label {
+    color: var(--hw-text-muted);
+    font-size: 0.8rem;
+    margin-bottom: 0.15rem;
+  }
+  .zh-cb-stat-value {
+    color: var(--hw-text-light);
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+  .zh-cb-strategy {
+    display: grid;
+    gap: 0.7rem;
+  }
+  .zh-cb-strategy-title {
+    color: var(--hw-primary-warm);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+  }
+  .zh-cb-point {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    color: var(--hw-text-light);
+    font-size: 0.92rem;
+    line-height: 1.75;
+  }
+  .zh-cb-point strong {
+    color: var(--hw-primary-warm);
+  }
+  .zh-cb-point-sep {
+    color: var(--hw-primary-warm);
+    font-weight: 700;
+  }
+  .zh-cb-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+  }
+  .zh-cb-stigma-list {
+    display: grid;
+    gap: 0.9rem;
+  }
+  .zh-cb-stigma-label {
+    color: var(--hw-primary-warm);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+  }
+  .zh-cb-stigma-head {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.8rem;
+  }
+  .zh-cb-stigma-id {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .zh-cb-stigma-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+  }
+  .zh-cb-stigma-name {
+    color: var(--hw-text-light);
+    font-size: 0.98rem;
+    font-weight: 700;
+    margin: 0 0 0.25rem 0;
+  }
+  .zh-cb-plus {
+    color: var(--hw-text-muted);
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+  .zh-cb-bonuses {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+  .zh-cb-bonus {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 0.7rem 0.85rem;
+  }
+  .zh-cb-bonus h5 {
+    color: var(--hw-primary-warm);
+    font-size: 0.9rem;
+    margin: 0 0 0.3rem 0;
+  }
+  .zh-cb-bonus p {
+    color: var(--hw-text-muted);
+    font-size: 0.85rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+  .zh-cb-special {
+    margin-top: 0.35rem;
+  }
+  .zh-cb-subhead {
+    color: var(--hw-primary-warm);
+    font-size: 0.92rem;
+    font-weight: 700;
+    margin: 0.8rem 0 0.5rem 0;
+  }
+  .zh-cb-piece-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 0.5rem;
+  }
+  .zh-cb-piece {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 0.55rem 0.75rem;
+  }
+  .zh-cb-slot {
+    display: inline-block;
+    background: rgba(232, 165, 71, 0.14);
+    color: var(--hw-primary-warm);
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 0.08rem 0.45rem;
+    margin-bottom: 0.3rem;
+  }
+  .zh-cb-piece-name {
+    color: var(--hw-text-light);
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+  .zh-cb-piece-stat {
+    color: var(--hw-text-muted);
+    font-size: 0.78rem;
+    margin-top: 0.1rem;
+  }
+  .zh-cb-option {
+    margin-bottom: 0.4rem;
+  }
+  .zh-cb-option-label {
+    color: var(--hw-primary-warm);
+    font-weight: 700;
+    font-size: 0.92rem;
+    margin-bottom: 0.6rem;
+  }
+  .zh-cb-divider {
+    text-align: center;
+    color: var(--hw-text-muted);
+    font-weight: 700;
+    margin: 0.9rem 0;
+  }
+  .zh-cb-substat-builds {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0.7rem;
+  }
+  .zh-cb-substat-build {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 0.8rem 0.9rem;
+  }
+  .zh-cb-substat-name {
+    color: var(--hw-primary-warm);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+  }
+  .zh-cb-substat-note {
+    color: var(--hw-text-muted);
+    font-size: 0.83rem;
+    line-height: 1.65;
+    margin: 0 0 0.6rem 0;
+  }
+  .zh-cb-substat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .zh-cb-substat {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 0.45rem 0.7rem;
+    color: var(--hw-text-light);
+    font-size: 0.88rem;
+  }
+  .zh-cb-substat-plain {
+    justify-content: space-between;
+  }
+  .zh-cb-scale {
+    color: var(--hw-text-muted);
+    font-size: 0.8rem;
+  }
+  .zh-cb-priority {
+    margin-left: auto;
+    background: rgba(232, 165, 71, 0.14);
+    color: var(--hw-primary-warm);
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: 999px;
+    padding: 0.1rem 0.55rem;
+    white-space: nowrap;
+  }
+  .zh-cb-note {
+    color: var(--hw-text-light);
+    font-size: 0.88rem;
+    line-height: 1.7;
+    margin: 0.9rem 0 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 0.8rem;
+  }
+  .zh-cb-note strong {
+    color: var(--hw-primary-warm);
+  }
+  .zh-cb-alt-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 0.8rem;
+  }
+  .zh-cb-alt-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.6rem;
+  }
+  .zh-cb-alt-title {
+    color: var(--hw-primary-warm);
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+  }
+  .zh-cb-alt-stigma {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .zh-cb-alt-stigma-label {
+    color: var(--hw-text-very-muted);
+    font-size: 0.72rem;
+  }
+  .zh-cb-alt-stigma-name {
+    color: var(--hw-text-light);
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+  .zh-cb-text {
+    color: var(--hw-text-light);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+  .zh-cb-alt-block {
+    margin-top: 0.6rem;
+  }
+  .zh-cb-alt-block h5 {
+    color: var(--hw-primary-warm);
+    font-size: 0.85rem;
+    margin: 0 0 0.2rem 0;
+  }
+  .zh-cb-alt-block p {
+    color: var(--hw-text-muted);
+    font-size: 0.85rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+  .zh-cb-trait-builds {
+    display: grid;
+    gap: 0.9rem;
+  }
+  .zh-cb-trait-build {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 0.8rem 0.9rem;
+  }
+  .zh-cb-trait-list {
+    display: grid;
+    gap: 0.45rem;
+  }
+  .zh-cb-trait {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 0.55rem 0.75rem;
+  }
+  .zh-cb-trait-main {
+    border-color: rgba(232, 165, 71, 0.3);
+  }
+  .zh-cb-trait-name {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    color: var(--hw-text-light);
+    font-size: 0.92rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+  }
+  .zh-cb-trait-en {
+    color: var(--hw-text-very-muted);
+    font-size: 0.75rem;
+    font-weight: 400;
+  }
+  .zh-cb-badge {
+    background: rgba(232, 165, 71, 0.14);
+    color: var(--hw-primary-warm);
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 999px;
+    padding: 0.08rem 0.5rem;
+  }
+  .zh-cb-trait-effects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .zh-cb-trait-effect {
+    color: var(--hw-text-muted);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 0.12rem 0.5rem;
+    font-size: 0.78rem;
+  }
+  @media (max-width: 640px) {
+    .zh-cb-header {
+      flex-direction: column;
+      text-align: center;
+    }
+    .zh-cb-chips,
+    .zh-cb-links {
+      justify-content: center;
+    }
+  }
+</style>

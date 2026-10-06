@@ -1,0 +1,860 @@
+---
+// Chinese tier list: /zh/guides/horizon-walker/tier-list/
+// Placements come from the same tier-lists.js data as the EN page. Character
+// and mercenary names use the game's official ZH; tier reasons are the zh
+// wiki's own translation with official ZH skill names substituted. Includes
+// the same view mode and maker mode as the EN page.
+import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
+import { r2Url } from '../../../../data/r2-config.js';
+import { HORIZON_WALKER_TIER_LISTS, TIER_DEFINITIONS } from '../../../../data/horizon-walker/tier-lists.js';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../data/horizon-walker/characters.js';
+import { HORIZON_WALKER_MERCENARIES } from '../../../../data/horizon-walker/mercenaries.js';
+import { HW_ZH_NAMES, HW_ZH_MERCENARIES } from '../../../../data/horizon-walker/zh/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/zh/ui.js';
+import { CharacterImage, MercenaryImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
+import '../../../../styles/games/horizon-walker/hw-character.css';
+import '../../../../styles/games/horizon-walker/hw-tier-list.css';
+
+export const prerender = true;
+
+const rarityIconMap = {
+  B: r2Url('horizon-walker', 'tier-icons/UI_Tier_Icon_01.png'),
+  A: r2Url('horizon-walker', 'tier-icons/UI_Tier_Icon_02.png'),
+  S: r2Url('horizon-walker', 'tier-icons/UI_Tier_Icon_03.png'),
+  SS: r2Url('horizon-walker', 'tier-icons/UI_Tier_Icon_04.png'),
+  EX: r2Url('horizon-walker', 'tier-icons/UI_Tier_Icon_05.png'),
+};
+
+// zh labels for the game-mode selector (Dopamin keeps the game's own name)
+const MODE_ZH = {
+  'map-clear': {
+    name: '地图推进与任务',
+    description: '适用于主线地图、活动、许愿、悬赏与裂缝探索的强度榜。',
+  },
+  'special-operations': {
+    name: '特别行动',
+    description: '以更少的回合数与低投入账号为前提制作，很多地图都有有趣的通关方式！',
+  },
+  dopamin: {
+    name: 'Dopamin',
+    description: 'Dopamin 模式难度较低，因此表现优秀的角色更多！',
+  },
+  priorities: {
+    name: '优先培养角色',
+    description: '这些角色在任何内容中都能帮到你！必备角色及其 EX 武器。',
+  },
+};
+
+// zh tier-list notes (editorial translation of the EN reasons; skill names use
+// the game's official ZH from game-text.js where one exists)
+const NOTE_ZH = {
+  Cora: {
+    type: 'info',
+    variant: 'wave-clear',
+    shortTitle: '最强清杂兵',
+    title: '全游戏最强清杂兵',
+    text: '科拉是全游戏最强的清杂兵角色：她的「火山爆发」能一次性命中战场上的所有敌人。她的单体伤害也非常高，并非只会清杂兵：「火山爆发」后，「禁忌之地」的引爆伤害会提高至 8 倍，若在自己的回合内引爆还会再翻倍。需要注意，需要一定练度之后才能在活动与日常任务中一击清掉小怪，新账号不要期待立刻做到。与尤洁妮亚搭配时，一次施放就能融化整张地图。',
+  },
+  Eugenia: {
+    type: 'info',
+    variant: 'buffer',
+    shortTitle: '最强增益辅助',
+    title: '全游戏最强增益辅助之一',
+    text: '尤洁妮亚是全游戏最强的增益辅助之一：她的 Soul Resonance 能为主力输出提供随自身最大生命值规模增长的大幅攻击力提升，被强化目标的每次攻击还会追加造成无形伤害。她能让尚可的伤害进入一击必杀的领域，这也是本页许多说明都建议与她搭配的原因。',
+  },
+  Palekar: {
+    type: 'info',
+    variant: 'def-down',
+    shortTitle: '最强削防',
+    title: '全游戏最高削防能力',
+    text: '帕莱卡拥有全游戏最高的削防能力：她的「试炼之文」附带的 [Unstable] 会直接削减 1140 点所有防御，并依自身回避最多再削减 200 点防御，同时还会提高目标的受伤量。施加给 Boss 后全队输出都会显著提升，是秒杀打法中的核心辅助。',
+  },
+  Garud: {
+    type: 'info',
+    title: 'SSS 或 UR，有待验证',
+    text: '她的定位在 SSS 或 UR 之间，目前仍需更多测试，但她潜力极高，有望变得非常超模。',
+  },
+  Matrotho: {
+    type: 'warning',
+    title: '需要队伍配合',
+    text: '马特罗索需要一支合适的队伍才能发挥 SSS 级实力，单打独斗时表现要低得多。推荐起点是与尤洁妮亚和伊芙利特搭配。不推荐不熟悉配队的新玩家使用。',
+  },
+  Luise: {
+    type: 'info',
+    title: '需要半神技能与武器',
+    text: '洛伊丝需要解锁半神技能才能达到 UR 级实力，没有半神技能时表现会明显下滑。她还至少需要 4/5 阶的武器才堪一用，并需要优秀的队伍才能发挥全部潜力。与更容易打出伤害的科拉不同，洛伊丝的上手门槛更高，但练度拉满后伤害更高。',
+  },
+  Juza: {
+    type: 'info',
+    variant: 'dps',
+    shortTitle: '最强输出',
+    title: '全游戏最高输出',
+    text: '朱子是目前全游戏输出最高的角色，只要能让她持续锁定目标，各类内容都能胜任。她的唯一弱点是跳跃之后就基本无法移动，会被固定在原地。她所需练度不高，但需要优秀的队友：尤洁妮亚是必需品。与尤洁妮亚搭配后她的输出量极为恐怖，非常推荐作为 Total War 速刷队的首选。',
+  },
+  Nari: {
+    type: 'warning',
+    title: '条件型角色，需要半神技能',
+    text: '娜莉需要半神技能才能成长，没有半神技能时相当弱。她获得如此高评价的唯一原因是 Total War：她能非常快地速刷该模式。在其他地图上她并不算出色，比她强的角色有很多。总体而言她是典型的条件型角色，专门留给 Total War 使用即可。',
+  },
+  Ines: {
+    type: 'warning',
+    title: '需要弱点攻击与行动力',
+    text: '伊涅丝有变得相当强、打出高额伤害的潜力，但需要命中目标的弱点，且需要充足的行动力才能一击必杀。她同样需要半神技能。她非常适合推进地图和 Dopamin，但在 Total War 及其他类型地图中表现不佳，特别行动模式中也非常弱。',
+  },
+  'Yeon Chae-Young': {
+    type: 'warning',
+    title: '需要练度，有潜力',
+    text: '妍彩英的伤害其实相当不错，也能获得大量行动机会，但需要打出背后攻击，需要可观的行动力恢复，而且需要半神技能。她的表现并不算顶尖，比她强的角色有很多，不过她仍有一定潜力，不要完全放弃。她所需练度较高，对免费玩家并不友好。',
+  },
+  Marhim: {
+    type: 'info',
+    title: 'Dopamin 特化',
+    text: '玛琳需要半神技能才能在 Dopamin 中大放异彩：拥有半神技能后她在该模式中非常强。在其他地图上则表现平平。',
+  },
+};
+
+// EN unit name -> official ZH display name (characters via heroId, mercenaries via name)
+const zhNameOf = unit =>
+  (!unit.isMercenary && HW_ZH_NAMES[unit.id]) || HW_ZH_MERCENARIES[unit.name] || unit.name;
+
+// zh detail URL: characters with a zh page link there, everything else keeps
+// the EN detail URL from the data
+const zhDetailUrl = unit =>
+  !unit.isMercenary && unit.slug && HW_ZH_NAMES[unit.id]
+    ? `${HW_ZH.baseUrl}characters/${unit.slug}/`
+    : unit.detailUrl || '#';
+
+// Combine all units (characters + mercenaries) for maker mode
+const allUnits = [
+  ...HORIZON_WALKER_CHARACTERS.map(char => ({
+    ...char,
+    isMercenary: false,
+    imageName: char.image?.split('/').pop() || null,
+  })),
+  ...HORIZON_WALKER_MERCENARIES.map(merc => ({
+    ...merc,
+    isMercenary: true,
+    imageName: merc.image?.split('/').pop() || merc.name || null,
+  })),
+];
+
+// EN name -> ZH display name (for the maker-mode script)
+const zhNameMap = {};
+allUnits.forEach(unit => {
+  zhNameMap[unit.name] = zhNameOf(unit);
+});
+
+function getTierClassName(tier) {
+  return tier.toLowerCase().replace('+', '-plus').replace(/\s+/g, '-');
+}
+---
+
+<HwZhLayout
+  title="排行榜 - 地平线行者中文维基 - GachaWiki"
+  description="地平线行者角色强度榜：按地图推进、特别行动、Dopamin 等游戏模式划分的角色排名，已将 EX 武器纳入考量，并附优先培养角色清单。"
+  keywords={['地平线行者', '排行榜', '强度榜', '角色排名', '攻略']}
+  pageTitle="角色强度榜"
+  breadcrumbItems={[
+    { name: '首页', href: '/' },
+    { name: '地平线行者', href: HW_ZH.baseUrl },
+    { name: '排行榜' },
+  ]}
+>
+  <div class="tier-list-container">
+    <p class="tier-list-subtitle-line">本强度榜已将 EX 武器纳入考量！</p>
+
+    <!-- Mode Toggle -->
+    <div class="mode-toggle">
+      <button class="mode-btn active" id="view-mode-btn"> 查看强度榜 </button>
+      <button class="mode-btn" id="maker-mode-btn"> 自制强度榜 </button>
+    </div>
+
+    <!-- View Mode Content -->
+    <div id="view-mode-content">
+      <div class="tier-list-selector">
+        <button class="tier-type-btn active" data-list-type="map-clear"> 地图推进与任务 </button>
+        <button class="tier-type-btn" data-list-type="special-operations"> 特别行动 </button>
+        <button class="tier-type-btn" data-list-type="dopamin"> Dopamin </button>
+        <button class="tier-type-btn" data-list-type="priorities"> 优先培养角色 </button>
+      </div>
+    </div>
+
+    <!-- Maker Mode Content -->
+    <div id="maker-mode-content" class="maker-mode-content tier-list-hidden">
+      <p class="maker-description">
+        点击角色选中，再点击分段即可放入。也可以直接拖拽。
+      </p>
+      <div class="maker-controls">
+        <button class="control-btn" id="reset-tier-list">重置强度榜</button>
+      </div>
+    </div>
+
+    <!-- Tier List Info -->
+    <div class="tier-list-info" id="tier-list-info">
+      <h2 class="tier-list-title" id="list-title" data-initial-type="map-clear">
+        {MODE_ZH['map-clear'].name}
+      </h2>
+      <p class="tier-list-description" id="list-description" data-initial-type="map-clear">
+        {MODE_ZH['map-clear'].description}
+      </p>
+      <p class="tier-list-updated" id="list-updated" data-initial-type="map-clear">
+        最后更新：2026-09-28
+      </p>
+    </div>
+
+    <!-- Maker Mode: Character Pool (Grid Layout) -->
+    <div id="maker-pool" class="maker-pool-hidden">
+      <div class="maker-pool-grid">
+        {allUnits.map(unit => (
+          <div
+            class="pool-character-card draggable"
+            data-character={unit.name}
+            data-rarity={unit.rarity || 'A'}
+            data-is-mercenary={unit.isMercenary ? 'true' : 'false'}
+            draggable="true"
+          >
+            <div class="pool-image-wrapper">
+              {unit.isMercenary ? (
+                <MercenaryImage
+                  imageName={unit.imageName}
+                  alt={zhNameOf(unit)}
+                  width={60}
+                  height={60}
+                  loading="lazy"
+                  quality={90}
+                />
+              ) : unit.imageName ? (
+                <CharacterImage
+                  imageName={unit.imageName}
+                  alt={zhNameOf(unit)}
+                  width={60}
+                  height={60}
+                  loading="lazy"
+                  quality={90}
+                />
+              ) : (
+                <div class="pool-character-placeholder">📷</div>
+              )}
+            </div>
+            <HWRarityIcon rarity={unit.rarity || 'A'} width={24} height={12} />
+            <div class="pool-character-name">{zhNameOf(unit)}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Maker Mode: Tier List -->
+    <div id="maker-tier-list" class="maker-tier-list-hidden">
+      {Object.entries(TIER_DEFINITIONS).map(([tier, definition]) => (
+        <div class="tier-row">
+          <div class={`tier-label tier-${getTierClassName(tier)}`}>{definition.label}</div>
+          <div class="tier-characters droppable" data-tier={tier}>
+            <div class="drop-zone-hint">将角色放到这里</div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Map Clear Tier List Display (Visible by default) -->
+    <div class="tier-list-display" id="map-clear-tier-display">
+      {HORIZON_WALKER_TIER_LISTS['map-clear'].tiers.map(tierData => (
+        <div class="tier-row" data-tier={tierData.tier}>
+          <div class={`tier-label tier-${getTierClassName(tierData.tier)}`}>
+            {tierData.definition.label}
+          </div>
+          <div class="tier-characters">
+            {tierData.characters.map(charData => {
+              const note = NOTE_ZH[charData.name];
+              const noteVariantClass = note?.variant ? ` tier-note-${note.variant}` : '';
+              return (
+                <div
+                  class={`tier-character-card${note ? ` has-note${noteVariantClass ? ` note-variant-${note.variant}` : ''}` : ''}`}
+                  onclick={`window.location.href=${JSON.stringify(zhDetailUrl(charData))}`}
+                >
+                  {note && (
+                    <div class={`tier-note-badge tier-note-${note.type}${noteVariantClass}`}>
+                      <span class="tier-note-icon">{note.variant ? '★' : '!'}</span>
+                      <div class="tier-note-tooltip">
+                        <div class="tier-note-tooltip-title">{note.title}</div>
+                        <div class="tier-note-tooltip-text">{note.text}</div>
+                      </div>
+                    </div>
+                  )}
+                  <div class="character-image-wrapper">
+                    {note?.variant && <div class="tier-card-highlight">{note.shortTitle}</div>}
+                    {charData.isMercenary ? (
+                      <MercenaryImage
+                        imageName={charData.name}
+                        alt={zhNameOf(charData)}
+                        width={280}
+                        height={280}
+                        loading="lazy"
+                        quality={100}
+                      />
+                    ) : charData.image && charData.image.split('/').pop() ? (
+                      <CharacterImage
+                        imageName={charData.image.split('/').pop()}
+                        alt={zhNameOf(charData)}
+                        width={280}
+                        height={280}
+                        loading="lazy"
+                        quality={100}
+                      />
+                    ) : (
+                      <div class="character-placeholder">📷</div>
+                    )}
+                  </div>
+                  <div class="character-name">{zhNameOf(charData)}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Special Operations Tier List Display (Hidden by default) -->
+    <div class="tier-list-display tier-list-hidden" id="special-operations-tier-display">
+      {HORIZON_WALKER_TIER_LISTS['special-operations'].tiers.map(tierData => (
+        <div class="tier-row" data-tier={tierData.tier}>
+          <div class={`tier-label tier-${getTierClassName(tierData.tier)}`}>
+            {tierData.definition.label}
+          </div>
+          <div class="tier-characters">
+            {tierData.characters.map(charData => {
+              const note = NOTE_ZH[charData.name];
+              const noteVariantClass = note?.variant ? ` tier-note-${note.variant}` : '';
+              return (
+                <div
+                  class={`tier-character-card${note ? ` has-note${noteVariantClass ? ` note-variant-${note.variant}` : ''}` : ''}`}
+                  onclick={`window.location.href=${JSON.stringify(zhDetailUrl(charData))}`}
+                >
+                  {note && (
+                    <div class={`tier-note-badge tier-note-${note.type}${noteVariantClass}`}>
+                      <span class="tier-note-icon">{note.variant ? '★' : '!'}</span>
+                      <div class="tier-note-tooltip">
+                        <div class="tier-note-tooltip-title">{note.title}</div>
+                        <div class="tier-note-tooltip-text">{note.text}</div>
+                      </div>
+                    </div>
+                  )}
+                  <div class="character-image-wrapper">
+                    {note?.variant && <div class="tier-card-highlight">{note.shortTitle}</div>}
+                    {charData.isMercenary ? (
+                      <MercenaryImage
+                        imageName={charData.name}
+                        alt={zhNameOf(charData)}
+                        width={280}
+                        height={280}
+                        loading="lazy"
+                        quality={100}
+                      />
+                    ) : charData.image && charData.image.split('/').pop() ? (
+                      <CharacterImage
+                        imageName={charData.image.split('/').pop()}
+                        alt={zhNameOf(charData)}
+                        width={280}
+                        height={280}
+                        loading="lazy"
+                        quality={100}
+                      />
+                    ) : (
+                      <div class="character-placeholder">📷</div>
+                    )}
+                  </div>
+                  <div class="character-name">{zhNameOf(charData)}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Dopamin Tier List Display (Hidden by default) -->
+    <div class="tier-list-display tier-list-hidden" id="dopamin-tier-display">
+      {HORIZON_WALKER_TIER_LISTS['dopamin'].tiers.map(tierData => (
+        <div class="tier-row" data-tier={tierData.tier}>
+          <div class={`tier-label tier-${getTierClassName(tierData.tier)}`}>
+            {tierData.definition.label}
+          </div>
+          <div class="tier-characters">
+            {tierData.characters.map(charData => {
+              const note = NOTE_ZH[charData.name];
+              const noteVariantClass = note?.variant ? ` tier-note-${note.variant}` : '';
+              return (
+                <div
+                  class={`tier-character-card${note ? ` has-note${noteVariantClass ? ` note-variant-${note.variant}` : ''}` : ''}`}
+                  onclick={`window.location.href=${JSON.stringify(zhDetailUrl(charData))}`}
+                >
+                  {note && (
+                    <div class={`tier-note-badge tier-note-${note.type}${noteVariantClass}`}>
+                      <span class="tier-note-icon">{note.variant ? '★' : '!'}</span>
+                      <div class="tier-note-tooltip">
+                        <div class="tier-note-tooltip-title">{note.title}</div>
+                        <div class="tier-note-tooltip-text">{note.text}</div>
+                      </div>
+                    </div>
+                  )}
+                  <div class="character-image-wrapper">
+                    {note?.variant && <div class="tier-card-highlight">{note.shortTitle}</div>}
+                    {charData.isMercenary ? (
+                      <MercenaryImage
+                        imageName={charData.name}
+                        alt={zhNameOf(charData)}
+                        width={280}
+                        height={280}
+                        loading="lazy"
+                        quality={100}
+                      />
+                    ) : charData.image && charData.image.split('/').pop() ? (
+                      <CharacterImage
+                        imageName={charData.image.split('/').pop()}
+                        alt={zhNameOf(charData)}
+                        width={280}
+                        height={280}
+                        loading="lazy"
+                        quality={100}
+                      />
+                    ) : (
+                      <div class="character-placeholder">📷</div>
+                    )}
+                  </div>
+                  <div class="character-name">{zhNameOf(charData)}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Priorities Characters List Display (Hidden by default) -->
+    <div class="priorities-list-display tier-list-hidden" id="priorities-list-display">
+      <div class="priorities-header">
+        <h3 class="priorities-title">这些角色在任何内容中都能帮到你！</h3>
+        <p class="priorities-subtitle">必备角色及其 EX 武器</p>
+      </div>
+      {HORIZON_WALKER_TIER_LISTS['priorities'].sections.map(section => (
+        <div class="priorities-section">
+          <h4 class="priorities-section-title">{section.id === 'core' ? '核心' : '其他推荐'}</h4>
+          <div class="priorities-characters-grid">
+            {section.characters.map(charData => (
+              <div
+                class="priorities-character-card"
+                onclick={`window.location.href=${JSON.stringify(zhDetailUrl(charData))}`}
+              >
+                <div class="character-image-wrapper">
+                  {charData.image && charData.image.split('/').pop() ? (
+                    charData.isMercenary ? (
+                      <MercenaryImage
+                        imageName={charData.image.split('/').pop()}
+                        alt={zhNameOf(charData)}
+                        width={280}
+                        height={280}
+                        loading="lazy"
+                        quality={100}
+                      />
+                    ) : (
+                      <CharacterImage
+                        imageName={charData.image.split('/').pop()}
+                        alt={zhNameOf(charData)}
+                        width={280}
+                        height={280}
+                        loading="lazy"
+                        quality={100}
+                      />
+                    )
+                  ) : (
+                    <div class="character-placeholder">📷</div>
+                  )}
+                </div>
+                <div class="character-name">{zhNameOf(charData)}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- View Mode Script -->
+  <script define:vars={{ MODE_ZH }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const listTitle = document.getElementById('list-title');
+      const listDescription = document.getElementById('list-description');
+      const listUpdated = document.getElementById('list-updated');
+      const typeButtons = document.querySelectorAll('.tier-type-btn');
+      const viewModeBtn = document.getElementById('view-mode-btn');
+      const makerModeBtn = document.getElementById('maker-mode-btn');
+      const viewModeContent = document.getElementById('view-mode-content');
+      const makerModeContent = document.getElementById('maker-mode-content');
+      const tierListInfo = document.getElementById('tier-list-info');
+
+      let currentListType = 'map-clear';
+      let currentMode = 'view';
+
+      function switchTierList(listType) {
+        const mode = MODE_ZH[listType];
+        if (!mode) return;
+
+        if (listTitle && listTitle.textContent !== mode.name) {
+          listTitle.textContent = mode.name;
+        }
+        if (listDescription && listDescription.textContent !== mode.description) {
+          listDescription.textContent = mode.description;
+        }
+        if (listUpdated && listUpdated.textContent !== '最后更新：2026-09-28') {
+          listUpdated.textContent = '最后更新：2026-09-28';
+        }
+
+        const allDisplays = document.querySelectorAll('.tier-list-display');
+        allDisplays.forEach(display => {
+          if (display.id && display.id.includes('-tier-display')) {
+            display.classList.add('tier-list-hidden');
+          }
+        });
+
+        const prioritiesDisplay = document.getElementById('priorities-list-display');
+        if (prioritiesDisplay) {
+          prioritiesDisplay.classList.add('tier-list-hidden');
+        }
+
+        const selectedDisplay = document.getElementById(`${listType}-tier-display`);
+        if (selectedDisplay) {
+          selectedDisplay.classList.remove('tier-list-hidden');
+        }
+
+        if (listType === 'priorities') {
+          const prioritiesDisplay = document.getElementById('priorities-list-display');
+          if (prioritiesDisplay) {
+            prioritiesDisplay.classList.remove('tier-list-hidden');
+          }
+        }
+      }
+
+      typeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const listType = button.dataset.listType;
+          if (!listType || listType === currentListType) return;
+
+          typeButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+
+          currentListType = listType;
+          switchTierList(listType);
+        });
+      });
+
+      viewModeBtn.addEventListener('click', () => {
+        currentMode = 'view';
+        viewModeBtn.classList.add('active');
+        makerModeBtn.classList.remove('active');
+        viewModeContent.classList.remove('tier-list-hidden');
+        makerModeContent.classList.add('tier-list-hidden');
+        tierListInfo.classList.remove('tier-list-hidden');
+        document.getElementById('maker-pool')?.classList.add('maker-pool-hidden');
+        document.getElementById('maker-tier-list')?.classList.add('maker-tier-list-hidden');
+        switchTierList(currentListType);
+      });
+
+      const initialType = listTitle?.dataset.initialType;
+      if (initialType !== 'map-clear') {
+        switchTierList('map-clear');
+      }
+    });
+  </script>
+
+  <!-- Tier List Maker Script -->
+  <script define:vars={{ zhNameMap, rarityIconMap }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const viewModeBtn = document.getElementById('view-mode-btn');
+      const makerModeBtn = document.getElementById('maker-mode-btn');
+      const viewModeContent = document.getElementById('view-mode-content');
+      const makerModeContent = document.getElementById('maker-mode-content');
+      const tierListInfo = document.getElementById('tier-list-info');
+      const tierListDisplays = document.querySelectorAll('.tier-list-display[id$="-tier-display"], .priorities-list-display');
+
+      const makerPool = document.getElementById('maker-pool');
+      const makerTierList = document.getElementById('maker-tier-list');
+      const resetBtn = document.getElementById('reset-tier-list');
+
+      let selectedCharacter = null;
+      let armedTier = 'UR';
+      const tierAssignments = {};
+      const STORAGE_KEY = 'hw-zh-custom-tier-list';
+      let makerInitialized = false;
+
+      const displayName = name => zhNameMap[name] || name;
+
+      makerModeBtn.addEventListener('click', () => {
+        makerModeBtn.classList.add('active');
+        viewModeBtn.classList.remove('active');
+        viewModeContent.classList.add('tier-list-hidden');
+        makerModeContent.classList.remove('tier-list-hidden');
+        tierListInfo.classList.add('tier-list-hidden');
+        if (makerPool) {
+          makerPool.classList.remove('maker-pool-hidden');
+        }
+        if (makerTierList) {
+          makerTierList.classList.remove('maker-tier-list-hidden');
+        }
+        tierListDisplays.forEach(d => d.classList.add('tier-list-hidden'));
+        if (!makerInitialized) {
+          initializeMaker();
+          makerInitialized = true;
+        }
+      });
+
+      function initializeMaker() {
+        setupPoolCards();
+        setupDropZones();
+        armTier(armedTier);
+        loadFromStorage();
+      }
+
+      function armTier(tierName) {
+        armedTier = tierName;
+        document.querySelectorAll('#maker-tier-list .tier-characters').forEach(z => {
+          z.classList.toggle('tier-armed', z.dataset.tier === tierName);
+        });
+      }
+
+      function setupPoolCards() {
+        document.querySelectorAll('#maker-pool .pool-character-card').forEach(card => {
+          const characterName = card.dataset.character;
+
+          card.addEventListener('dragstart', e => {
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('character', characterName);
+            e.dataTransfer.setData('source', 'pool');
+            card.classList.add('dragging');
+          });
+
+          card.addEventListener('dragend', () => {
+            card.classList.remove('dragging');
+          });
+
+          card.addEventListener('click', () => {
+            if (selectedCharacter === characterName) {
+              card.classList.remove('selected');
+              selectedCharacter = null;
+              document.querySelectorAll('.tier-characters.droppable').forEach(z => z.classList.remove('awaiting-placement'));
+              return;
+            }
+
+            document.querySelectorAll('.pool-character-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tier-character-card.in-tier').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            selectedCharacter = characterName;
+            document.querySelectorAll('.tier-characters.droppable').forEach(z => z.classList.add('awaiting-placement'));
+          });
+
+          card.addEventListener('dblclick', () => {
+            moveCardToTier(characterName, armedTier);
+            document.querySelectorAll('.pool-character-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tier-character-card.in-tier').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tier-characters').forEach(z => z.classList.remove('awaiting-placement'));
+            selectedCharacter = null;
+          });
+        });
+      }
+
+      function setupDropZones() {
+        document.querySelectorAll('.tier-characters.droppable').forEach(zone => {
+          const tierName = zone.dataset.tier;
+
+          zone.addEventListener('dragover', e => {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            zone.classList.add('drag-over');
+          });
+
+          zone.addEventListener('dragleave', () => {
+            zone.classList.remove('drag-over');
+          });
+
+          zone.addEventListener('drop', e => {
+            e.preventDefault();
+            zone.classList.remove('drag-over');
+            const characterName = e.dataTransfer.getData('character');
+            const source = e.dataTransfer.getData('source');
+
+            if (characterName) {
+              if (source === 'tier' && tierAssignments[characterName]) {
+                moveCardBetweenTiers(characterName, tierName);
+              } else {
+                moveCardToTier(characterName, tierName);
+              }
+            }
+          });
+
+          zone.addEventListener('click', () => {
+            if (!selectedCharacter) {
+              armTier(tierName);
+              return;
+            }
+            moveCardToTier(selectedCharacter, tierName);
+            document.querySelectorAll('.pool-character-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tier-character-card.in-tier').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.tier-characters').forEach(z => z.classList.remove('awaiting-placement'));
+            selectedCharacter = null;
+          });
+        });
+      }
+
+      function moveCardToTier(characterName, tierName) {
+        const poolCard = document.querySelector(`#maker-pool [data-character="${characterName}"]`);
+        const targetZone = document.querySelector(`#maker-tier-list [data-tier="${tierName}"]`);
+
+        if (!poolCard || !targetZone) return;
+
+        poolCard.classList.add('pool-card-hidden');
+
+        const rarity = poolCard.dataset.rarity || 'A';
+
+        const tierCard = document.createElement('div');
+        tierCard.className = 'tier-character-card draggable in-tier';
+        tierCard.dataset.character = characterName;
+        tierCard.dataset.rarity = rarity;
+        tierCard.draggable = true;
+
+        tierCard.innerHTML = `
+          <div class="character-image-wrapper">
+            <img src="${poolCard.querySelector('img')?.src || ''}" alt="${displayName(characterName)}" loading="lazy" />
+          </div>
+          <img class="hw-rarity-icon" src="${rarityIconMap[rarity] || rarityIconMap['A']}" alt="${rarity}" width="24" height="12" />
+          <div class="character-name">${displayName(characterName)}</div>
+          <button class="remove-btn" title="从该分段移除">×</button>
+        `;
+
+        setupTierCardEvents(tierCard, characterName);
+
+        const hint = targetZone.querySelector('.drop-zone-hint');
+        if (hint) hint.classList.add('hint-hidden');
+
+        targetZone.appendChild(tierCard);
+        tierAssignments[characterName] = tierName;
+        armTier(tierName);
+        saveToStorage();
+      }
+
+      function setupTierCardEvents(card, characterName) {
+        card.addEventListener('dragstart', e => {
+          e.dataTransfer.effectAllowed = 'move';
+          e.dataTransfer.setData('character', characterName);
+          e.dataTransfer.setData('source', 'tier');
+          card.classList.add('dragging');
+        });
+
+        card.addEventListener('dragend', () => {
+          card.classList.remove('dragging');
+        });
+
+        card.addEventListener('click', e => e.stopPropagation());
+
+        card.addEventListener('dblclick', e => {
+          e.stopPropagation();
+          returnCardToPool(characterName);
+        });
+
+        card.querySelector('.remove-btn').addEventListener('click', e => {
+          e.stopPropagation();
+          returnCardToPool(characterName);
+        });
+      }
+
+      function moveCardBetweenTiers(characterName, newTierName) {
+        const tierCard = document.querySelector(`#maker-tier-list .in-tier[data-character="${characterName}"]`);
+        const targetZone = document.querySelector(`#maker-tier-list [data-tier="${newTierName}"]`);
+
+        if (!tierCard || !targetZone) return;
+
+        const oldZone = tierCard.parentElement;
+        tierCard.remove();
+        targetZone.appendChild(tierCard);
+        tierAssignments[characterName] = newTierName;
+
+        if (oldZone && oldZone.querySelectorAll('.in-tier').length === 0) {
+          const hint = oldZone.querySelector('.drop-zone-hint');
+          if (hint) hint.classList.remove('hint-hidden');
+        }
+
+        const hint = targetZone.querySelector('.drop-zone-hint');
+        if (hint) hint.classList.add('hint-hidden');
+
+        saveToStorage();
+      }
+
+      function returnCardToPool(characterName) {
+        const poolCard = document.querySelector(`#maker-pool [data-character="${characterName}"]`);
+        const tierCard = document.querySelector(`#maker-tier-list .in-tier[data-character="${characterName}"]`);
+
+        if (!poolCard || !tierCard) return;
+
+        const oldZone = tierCard.parentElement;
+        poolCard.classList.remove('pool-card-hidden');
+        tierCard.remove();
+        delete tierAssignments[characterName];
+
+        if (oldZone && oldZone.querySelectorAll('.in-tier').length === 0) {
+          const hint = oldZone.querySelector('.drop-zone-hint');
+          if (hint) hint.classList.remove('hint-hidden');
+        }
+
+        saveToStorage();
+      }
+
+      resetBtn?.addEventListener('click', () => {
+        Object.keys(tierAssignments).forEach(returnCardToPool);
+        localStorage.removeItem(STORAGE_KEY);
+      });
+
+      function saveToStorage() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(tierAssignments));
+      }
+
+      function loadFromStorage() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (!stored) return;
+
+        try {
+          const data = JSON.parse(stored);
+          Object.entries(data).forEach(([name, tier]) => {
+            if (zhNameMap[name]) {
+              moveCardToTier(name, tier);
+            }
+          });
+        } catch (e) {
+          console.error('Failed to load tier list:', e);
+        }
+      }
+    });
+  </script>
+
+  <!-- Note badge tooltip toggle -->
+  <script>
+    document.addEventListener('click', e => {
+      const badge = e.target.closest('.tier-note-badge');
+      if (badge) {
+        e.stopPropagation();
+        const tooltip = badge.querySelector('.tier-note-tooltip');
+        if (!tooltip) return;
+        document.querySelectorAll('.tier-note-tooltip.active').forEach(t => {
+          if (t !== tooltip) t.classList.remove('active');
+        });
+        tooltip.classList.toggle('active');
+        return;
+      }
+      document.querySelectorAll('.tier-note-tooltip.active').forEach(t => t.classList.remove('active'));
+    });
+  </script>
+</HwZhLayout>
+
+<style>
+  .tier-list-subtitle-line {
+    font-size: 0.9375rem;
+    color: var(--hw-text-muted);
+    margin: 0 0 1rem 0;
+  }
+</style>

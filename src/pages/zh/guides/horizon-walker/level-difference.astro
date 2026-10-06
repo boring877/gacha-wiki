@@ -1,0 +1,225 @@
+---
+// Chinese level difference guide: /zh/guides/horizon-walker/level-difference/
+// Same LEVEL_PENALTY table and highlight rows as the EN page (numbers straight
+// from combat-mechanics.js); prose translated, formula kept as code.
+import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
+import { LEVEL_PENALTY } from '../../../../data/horizon-walker/combat-mechanics.js';
+import { HW_ZH_NAMES } from '../../../../data/horizon-walker/zh/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/zh/ui.js';
+import '../../../../styles/games/horizon-walker/hw-combat-mechanics.css';
+
+export const prerender = true;
+
+const breadcrumbs = [{ name: '首页', href: '/' }, { name: '地平线行者', href: HW_ZH.baseUrl }, { name: '等级差' }];
+
+// Rows worth highlighting in the table (same gaps as the EN page)
+const highlight = new Set([1, 5, 10, 16, 20, 30]);
+
+const coraZh = HW_ZH_NAMES[45] || 'Cora'; // 罪犯 / 科拉
+
+function pct(v) {
+  return `${parseFloat((v / 100).toFixed(2))}%`;
+}
+---
+
+<HwZhLayout
+  title="等级差与伤害 - 地平线行者中文维基 - GachaWiki"
+  description="地平线行者等级差伤害指南：完整的低等级惩罚表、高等级伤害加成（每级 8%）与最低伤害规则。等级差对伤害的影响超过几乎所有其他因素。"
+  keywords={['地平线行者', '等级差', '伤害惩罚', '等级压制', '战斗机制']}
+  pageTitle="等级差与伤害"
+  breadcrumbItems={breadcrumbs}
+>
+  <div class="zh-guide">
+    <section class="zh-section">
+      <h2 class="zh-section-title">规则</h2>
+      <p class="zh-text">每次命中都会比较攻击方与目标的等级，并对伤害进行乘算：</p>
+      <ul class="zh-list">
+        <li>攻击方等级<strong>低于</strong>目标：伤害乘以下方惩罚表的倍率。仅低 5 级就会损失 40% 伤害，低 16 级时只能打出约 10%。</li>
+        <li>攻击方等级<strong>高于</strong>目标：伤害乘以 1 + 每级 8% 的加成。高 10 级即 1.8 倍伤害，且没有上限。</li>
+        <li>等级相同：无变化，100% 伤害。</li>
+        <li>仅因等级惩罚，伤害永远不会低于 1。</li>
+      </ul>
+      <div class="zh-info">
+        <p class="zh-info-title">为什么这很重要</p>
+        <p class="zh-info-text">
+          比 Boss 低 5 级所损失的伤害，就超过大多数增益能补回的量；严重低等级的队伍只能打出个位数百分比伤害。反过来，等级压制是实打实的战力来源：为卡关 Boss 刷几级，往往比换一件装备更划算。
+        </p>
+      </div>
+    </section>
+
+    <section class="zh-section">
+      <h2 class="zh-section-title">低等级惩罚表</h2>
+      <p class="zh-text">
+        直接来自游戏数据的每级差精确倍率。高亮行是玩家最常问到的等级差。
+      </p>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="低等级时按等级差的伤害倍率">
+          <thead>
+            <tr>
+              <th scope="col">低于目标等级</th>
+              <th scope="col">造成伤害</th>
+            </tr>
+          </thead>
+          <tbody>
+            {LEVEL_PENALTY.map(row => (
+              <tr class={highlight.has(row.diff) ? 'hw-mech-highlight' : ''}>
+                <td>{row.diff}</td>
+                <td>{pct(row.value)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="zh-warning">
+        <p class="zh-warning-text">
+          曲线开头平缓：前 6 级每级 8%，随后惩罚越来越重。从低 15 级开始，每多低 1 级都会再损失约 15% 的剩余伤害。
+        </p>
+      </div>
+    </section>
+
+    <section class="zh-section">
+      <h2 class="zh-section-title">高等级加成</h2>
+      <p class="zh-text">
+        等级高于目标时是无表格、无上限的线性加成：
+      </p>
+      <div class="hw-mech-formula">1 + 0.08 x (your level minus target level)</div>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="高等级时按等级差的伤害倍率">
+          <thead>
+            <tr>
+              <th scope="col">高于目标等级</th>
+              <th scope="col">造成伤害</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>0（同级）</td><td>100%</td></tr>
+            <tr><td>5</td><td>140%</td></tr>
+            <tr><td>10</td><td>180%</td></tr>
+            <tr><td>15</td><td>220%</td></tr>
+            <tr><td>25</td><td>300%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="zh-example">
+        <p class="zh-example-title">示例</p>
+        <p class="zh-example-text">
+          等级 60 的{coraZh}攻击等级 55 的活动小怪时，在其他修正之前就能打出 1.4 倍伤害。同一角色在等级 50 对阵等级 60 的剧情 Boss 时，只能打出 27.14% 伤害。
+        </p>
+      </div>
+    </section>
+
+    <section class="zh-section">
+      <h2 class="zh-section-title">补充说明</h2>
+      <ul class="zh-list">
+        <li>等级倍率在主伤害管线内生效，与防御公式一同计算（见<a href={`${HW_ZH.baseUrl}damage-formula/`} class="zh-link">伤害公式页面</a>）。</li>
+        <li>暴击、弱点攻击与增益效果在等级结果之上继续乘算。</li>
+        <li>有一个特殊游戏模式完全跳过等级判定、直接使用原始伤害，因此固定强度的活动模式有时会突然变简单。</li>
+      </ul>
+    </section>
+  </div>
+</HwZhLayout>
+
+<style>
+  .zh-guide {
+    display: grid;
+    gap: 1.75rem;
+  }
+
+  .zh-section {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+    padding: 1.5rem;
+  }
+
+  .zh-section-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: var(--font-bold);
+    color: var(--hw-primary-warm);
+    margin: 0 0 1rem 0;
+  }
+
+  .zh-text {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: var(--hw-text-light);
+    margin: 0 0 0.75rem 0;
+  }
+
+  .zh-list {
+    margin: 0 0 0.75rem 0;
+    padding-left: 1.25rem;
+    color: var(--hw-text-light);
+    font-size: 0.9375rem;
+    line-height: 1.9;
+  }
+
+  .zh-list strong {
+    color: var(--hw-primary-warm);
+  }
+
+  .zh-link {
+    color: var(--hw-primary-warm);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .zh-info {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 0.9rem 1.1rem;
+  }
+
+  .zh-info-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--hw-primary-warm);
+    margin: 0 0 0.4rem 0;
+  }
+
+  .zh-info-text {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: var(--hw-text-light);
+    margin: 0;
+  }
+
+  .zh-warning {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 0.9rem 1.1rem;
+    margin-top: 0.75rem;
+  }
+
+  .zh-warning-text {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: var(--hw-text-light);
+    margin: 0;
+  }
+
+  .zh-example {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 0.9rem 1.1rem;
+    margin-top: 0.75rem;
+  }
+
+  .zh-example-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--hw-primary-warm);
+    margin: 0 0 0.4rem 0;
+  }
+
+  .zh-example-text {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: var(--hw-text-light);
+    margin: 0;
+  }
+</style>

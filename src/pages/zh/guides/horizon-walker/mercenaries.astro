@@ -1,0 +1,342 @@
+---
+// Chinese mercenaries database index: /zh/guides/horizon-walker/mercenaries/
+// Grid of all mercenary units with official ZH names (HW_ZH_MERCENARIES),
+// rarity/cost chips and Lv60 base stats, client-side search + rarity filters.
+// Links each card to the ZH mercenary detail page.
+import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
+import { HORIZON_WALKER_MERCENARIES } from '../../../../data/horizon-walker/mercenaries.js';
+import { HW_ZH_MERCENARIES, HW_ZH_STAT_LABELS } from '../../../../data/horizon-walker/zh/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/zh/ui.js';
+import { MercenaryImage } from '../../../../components/horizon-walker/index.astro';
+
+export const prerender = true;
+
+// Official ZH mercenary name; EN fallback when the game has no ZH entry
+const mercZhName = name => HW_ZH_MERCENARIES[name] || name;
+
+const roster = HORIZON_WALKER_MERCENARIES.map(m => ({
+  slug: m.slug,
+  name: mercZhName(m.name),
+  nameEn: m.name,
+  rarity: m.rarity,
+  cost: m.cost,
+  strength: m.stats.strength,
+  intelligence: m.stats.intelligence,
+  vitality: m.stats.vitality,
+  agility: m.stats.agility,
+  technic: m.stats.technic,
+  search: [mercZhName(m.name), m.name, m.rarity].join(' ').toLowerCase(),
+}));
+
+const counts = {
+  total: roster.length,
+  EX: roster.filter(m => m.rarity === 'EX').length,
+  SS: roster.filter(m => m.rarity === 'SS').length,
+  S: roster.filter(m => m.rarity === 'S').length,
+  A: roster.filter(m => m.rarity === 'A').length,
+  B: roster.filter(m => m.rarity === 'B').length,
+};
+---
+
+<HwZhLayout
+  title="佣兵资料库 - 地平线行者中文维基 - GachaWiki"
+  description={`地平线行者全部 ${counts.total} 名佣兵：EX ${counts.EX} 名、SS ${counts.SS} 名、S ${counts.S} 名、A ${counts.A} 名、B ${counts.B} 名。等级 60 满级数值、编成费用与通用特性说明，支持搜索与稀有度筛选。`}
+  keywords={['地平线行者', '佣兵', '通用特性', '资料库']}
+  pageTitle="佣兵资料库"
+  breadcrumbItems={[
+    { name: '首页', href: '/' },
+    { name: '地平线行者', href: HW_ZH.baseUrl },
+    { name: '佣兵' },
+  ]}
+>
+  <div class="zh-db">
+    <p class="zh-db-note">
+      共 {counts.total} 名佣兵：EX {counts.EX} 名、SS {counts.SS} 名、S {counts.S} 名、A {counts.A} 名、B {counts.B} 名。全部数值为满级（等级 60）的通用特性单位。佣兵是获取通用特性的重要来源：可以将其变形为其他角色来转移通用特性。点击卡片进入佣兵详情页。
+    </p>
+
+    <div class="zh-filters">
+      <input
+        type="search"
+        id="zhMercSearch"
+        class="zh-search"
+        placeholder="搜索佣兵（中文或英文）"
+        aria-label="搜索佣兵"
+      />
+      <div class="zh-filter-row" id="zhRarityRow">
+        <button class="zh-filter-chip active" data-rarity="">全部</button>
+        <button class="zh-filter-chip" data-rarity="EX">EX</button>
+        <button class="zh-filter-chip" data-rarity="SS">SS</button>
+        <button class="zh-filter-chip" data-rarity="S">S</button>
+        <button class="zh-filter-chip" data-rarity="A">A</button>
+        <button class="zh-filter-chip" data-rarity="B">B</button>
+      </div>
+    </div>
+
+    <p class="zh-empty" id="zhEmpty" hidden>没有符合筛选条件的佣兵。</p>
+
+    <div class="zh-merc-grid" id="zhMercGrid">
+      {roster.map((m, idx) => (
+        <a
+          href={`${HW_ZH.baseUrl}mercenaries/${m.slug}/`}
+          class="zh-merc-card"
+          data-search={m.search}
+          data-rarity={m.rarity}
+        >
+          <div class="zh-merc-head">
+            <MercenaryImage
+              imageName={m.nameEn}
+              alt={m.name}
+              class="zh-merc-img"
+              width={80}
+              height={80}
+              loading="lazy"
+            />
+            <div class="zh-merc-info">
+              <p class="zh-merc-name">{m.name}</p>
+              <p class="zh-merc-en">{m.nameEn}</p>
+              <div class="zh-merc-chips">
+                <span class="zh-rarity-chip">{m.rarity}</span>
+                <span class="zh-mini-chip">费用 {m.cost}</span>
+                <span class="zh-mini-chip">#{idx + 1}</span>
+              </div>
+            </div>
+          </div>
+          <div class="zh-merc-stats">
+            <div class="zh-stat-item">
+              <span class="zh-stat-label">{HW_ZH_STAT_LABELS.strength}</span>
+              <span class="zh-stat-value">{m.strength}</span>
+            </div>
+            <div class="zh-stat-item">
+              <span class="zh-stat-label">{HW_ZH_STAT_LABELS.intelligence}</span>
+              <span class="zh-stat-value">{m.intelligence}</span>
+            </div>
+            <div class="zh-stat-item">
+              <span class="zh-stat-label">{HW_ZH_STAT_LABELS.vitality}</span>
+              <span class="zh-stat-value">{m.vitality}</span>
+            </div>
+            <div class="zh-stat-item">
+              <span class="zh-stat-label">{HW_ZH_STAT_LABELS.agility}</span>
+              <span class="zh-stat-value">{m.agility}</span>
+            </div>
+            <div class="zh-stat-item">
+              <span class="zh-stat-label">{HW_ZH_STAT_LABELS.technic}</span>
+              <span class="zh-stat-value">{m.technic}</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</HwZhLayout>
+
+<script>
+  function initZhMercFilters() {
+    const search = document.getElementById('zhMercSearch');
+    const grid = document.getElementById('zhMercGrid');
+    const empty = document.getElementById('zhEmpty');
+    const cards = Array.from(grid.querySelectorAll('.zh-merc-card'));
+    let rarity = '';
+
+    const apply = () => {
+      const q = (search.value || '').trim().toLowerCase();
+      let shown = 0;
+      for (const card of cards) {
+        const okSearch = !q || card.dataset.search.includes(q);
+        const okRarity = !rarity || card.dataset.rarity === rarity;
+        const visible = okSearch && okRarity;
+        card.style.display = visible ? '' : 'none';
+        if (visible) shown++;
+      }
+      empty.hidden = shown > 0;
+    };
+
+    search.addEventListener('input', apply);
+
+    const row = document.getElementById('zhRarityRow');
+    row.addEventListener('click', e => {
+      const btn = e.target.closest('.zh-filter-chip');
+      if (!btn) return;
+      row.querySelectorAll('.zh-filter-chip').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      rarity = btn.dataset.rarity || '';
+      apply();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initZhMercFilters);
+  } else {
+    initZhMercFilters();
+  }
+</script>
+
+<style>
+  .zh-db {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .zh-db-note {
+    font-size: 0.875rem;
+    line-height: 1.8;
+    color: var(--hw-text-muted);
+    margin: 0;
+  }
+
+  .zh-filters {
+    display: grid;
+    gap: 0.6rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    padding: 1rem;
+  }
+
+  .zh-search {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    color: var(--hw-text-light);
+    font-size: 0.9375rem;
+    padding: 0.6rem 0.9rem;
+    outline: none;
+  }
+
+  .zh-search::placeholder {
+    color: var(--hw-text-very-muted);
+  }
+
+  .zh-filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .zh-filter-chip {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--hw-text-light);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+  }
+
+  .zh-filter-chip.active {
+    background: var(--hw-primary-warm);
+    border-color: var(--hw-primary-warm);
+    color: var(--hw-text-dark);
+  }
+
+  .zh-empty {
+    font-size: 0.9375rem;
+    color: var(--hw-text-muted);
+    margin: 0;
+  }
+
+  .zh-merc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .zh-merc-card {
+    display: grid;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    padding: 0.9rem;
+    text-decoration: none;
+    min-width: 0;
+  }
+
+  .zh-merc-head {
+    display: flex;
+    gap: 0.9rem;
+    align-items: center;
+  }
+
+  .zh-merc-img {
+    width: 72px;
+    height: 72px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+  }
+
+  .zh-merc-info {
+    min-width: 0;
+  }
+
+  .zh-merc-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--hw-text-light);
+    margin: 0 0 0.1rem 0;
+  }
+
+  .zh-merc-en {
+    font-size: 0.75rem;
+    color: var(--hw-text-muted);
+    margin: 0 0 0.4rem 0;
+  }
+
+  .zh-merc-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .zh-rarity-chip {
+    background: var(--hw-primary-warm);
+    color: var(--hw-text-dark);
+    font-weight: 700;
+    font-size: 0.75rem;
+    border-radius: 999px;
+    padding: 0.1rem 0.55rem;
+  }
+
+  .zh-mini-chip {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--hw-text-light);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 0.1rem 0.55rem;
+    white-space: nowrap;
+  }
+
+  .zh-merc-stats {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.4rem;
+  }
+
+  .zh-stat-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 0.35rem 0.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+  }
+
+  .zh-stat-label {
+    font-size: 0.6875rem;
+    color: var(--hw-text-muted);
+    white-space: nowrap;
+  }
+
+  .zh-stat-value {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--hw-text-light);
+  }
+</style>

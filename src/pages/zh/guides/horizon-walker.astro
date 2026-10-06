@@ -1,0 +1,305 @@
+---
+// Chinese landing page for the Horizon Walker wiki: /zh/guides/horizon-walker/
+// Intro copy is written for this wiki; every game term (人神/护卫/次元裂缝/
+// 圣痕/特性) is the game's own official Simplified Chinese wording.
+import HwZhLayout from '../../../layouts/zh/HwZhLayout.astro';
+import DiscordPromo from '../../../components/DiscordPromo.astro';
+import { HW_ZH } from '../../../data/horizon-walker/zh/ui.js';
+import { horizonWalkerConfig } from '../../../data/horizon-walker/horizon-walker.js';
+
+const { gameInfo } = horizonWalkerConfig;
+const hasPlatforms = gameInfo.platforms && gameInfo.platforms.length > 0;
+
+const sections = [
+  {
+    title: '角色',
+    description: '角色资料库、排行榜、配装与佣兵',
+    links: [
+      { name: '角色资料库', href: `${HW_ZH.baseUrl}characters/`, desc: '全部角色的官方中文技能与属性' },
+      { name: '排行榜', href: `${HW_ZH.baseUrl}tier-list/`, desc: '按游戏模式划分的强度榜' },
+      { name: '配装推荐', href: `${HW_ZH.baseUrl}builds/`, desc: '推荐配装与社区配装' },
+      { name: '社区配装', href: `${HW_ZH.baseUrl}builds/community/`, desc: '来自玩家社区的配装思路' },
+      { name: '佣兵', href: `${HW_ZH.baseUrl}mercenaries/`, desc: '通用佣兵单位资料' },
+      { name: '武器', href: `${HW_ZH.baseUrl}weapons/`, desc: 'EX 武器与非 EX 武器数据库' },
+      { name: '圣痕', href: `${HW_ZH.baseUrl}stigmas/`, desc: '圣痕套装与部位效果' },
+    ],
+  },
+  {
+    title: '游戏机制',
+    description: '战斗机制与成长系统',
+    links: [
+      { name: '行动力指南', href: `${HW_ZH.baseUrl}ap-guide/`, desc: '行动力系统详解' },
+      { name: '伤害公式', href: `${HW_ZH.baseUrl}damage-formula/`, desc: '游戏客户端解包的伤害计算公式' },
+      { name: '等级差', href: `${HW_ZH.baseUrl}level-difference/`, desc: '等级压制与伤害倍率' },
+      { name: '特性', href: `${HW_ZH.baseUrl}traits/`, desc: '特性数据库' },
+      { name: '半神晋升', href: `${HW_ZH.baseUrl}demi/`, desc: '半神晋升技能与材料' },
+      { name: '圣痕副属性', href: `${HW_ZH.baseUrl}stigma-sub-stats/`, desc: '副属性数值与强化' },
+    ],
+  },
+  {
+    title: '资源',
+    description: '礼物、画廊与实用工具',
+    links: [
+      { name: '礼物', href: `${HW_ZH.baseUrl}gifts/`, desc: '礼物与好感度系统' },
+      { name: '角色礼物偏好', href: `${HW_ZH.baseUrl}character-gifts/`, desc: '各角色最爱与喜欢的礼物' },
+      { name: '剧情画廊', href: `${HW_ZH.baseUrl}story-gallery/`, desc: '剧情 CG 与立绘' },
+      { name: '时钟', href: '/clock/horizon-walker/', desc: '体力与活动时钟（English）' },
+      { name: '兑换码', href: `${HW_ZH.baseUrl}redeem-codes/`, desc: '最新兑换码与领取方式' },
+    ],
+  },
+  {
+    title: '社区',
+    description: '卡池历史与更新公告',
+    links: [
+      { name: '卡池时间线', href: `${HW_ZH.baseUrl}banners/`, desc: '历期限定卡池一览' },
+      { name: '更新公告', href: `${HW_ZH.baseUrl}updates/`, desc: '官方更新公告中文整理' },
+    ],
+  },
+];
+---
+
+<HwZhLayout
+  title="地平线行者（Horizon Walker）中文维基 - 角色资料、技能、排行榜 - GachaWiki"
+  description="地平线行者中文维基：全部角色官方中文技能与属性、武器、圣痕、排行榜、卡池时间线与更新公告。游戏文本均取自游戏官方简体中文。"
+  keywords={['地平线行者', 'Horizon Walker', '中文', 'wiki', '攻略', '角色', '技能', '排行榜']}
+  breadcrumbItems={[{ name: '首页', href: '/' }, { name: '地平线行者' }]}
+>
+  <div class="zh-landing">
+    <section class="zh-hero">
+      <h1 class="zh-hero-title">地平线行者</h1>
+      <p class="zh-hero-en">Horizon Walker</p>
+      <p class="zh-hero-desc">
+        末世题材收集型 RPG：次元裂缝涌现的怪物终结了人类的黄金时代，跨越死亡、获得神之权能的人神与护卫们，在裂缝之上为夺回世界而战。
+      </p>
+      <p class="zh-hero-note">{HW_ZH.labels.dataFromGame}</p>
+      <a href={`${HW_ZH.baseUrl}characters/`} class="zh-hero-btn">进入角色资料库</a>
+    </section>
+
+    <section class="zh-section">
+      <h2 class="zh-section-title">游戏简介</h2>
+      <p class="zh-text">
+        《地平线行者》是一款末世题材的收集型 RPG。玩家将扮演人神，招募性格各异的护卫，编成队伍挑战回合制战斗：利用地形、行动力与技能连锁击败强敌，并通过礼物提升好感度、收集皮肤与剧情 CG。
+      </p>
+      <p class="zh-text">
+        本中文维基与英文维基内容一致：角色技能、特性、档案与武器文本直接取自游戏官方简体中文本地化，不使用机器翻译，避免与游戏内术语不一致。
+      </p>
+      {
+        hasPlatforms && (
+          <div class="zh-platforms">
+            <h3 class="zh-h3">游戏平台：</h3>
+            <ul class="zh-plain-list">
+              <li>• Google Play：和谐版</li>
+              <li>• One Store：无和谐（将迁移至 Steam）</li>
+              <li>• Ero-Labs：无和谐（不迁移至 Steam）</li>
+              <li>• Steam：无和谐版</li>
+            </ul>
+            <div class="zh-platform-grid">
+              {gameInfo.platforms.map(platform => (
+                <a
+                  href={platform.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="zh-platform-btn"
+                  aria-label={`在 ${platform.name} 游玩地平线行者`}
+                >
+                  {platform.name}
+                </a>
+              ))}
+            </div>
+          </div>
+        )
+      }
+      {
+        gameInfo.socialLinks && (
+          <div class="zh-social">
+            <h3 class="zh-h3">官方社区：</h3>
+            <div class="zh-social-links">
+              {gameInfo.socialLinks.twitter && (
+                <a href={gameInfo.socialLinks.twitter} target="_blank" rel="noopener noreferrer" class="zh-platform-btn">X/Twitter</a>
+              )}
+              {gameInfo.socialLinks.discord && (
+                <a href={gameInfo.socialLinks.discord} target="_blank" rel="noopener noreferrer" class="zh-platform-btn">Discord</a>
+              )}
+              {gameInfo.socialLinks.youtube && (
+                <a href={gameInfo.socialLinks.youtube} target="_blank" rel="noopener noreferrer" class="zh-platform-btn">YouTube</a>
+              )}
+            </div>
+          </div>
+        )
+      }
+      <DiscordPromo accent="#e8a547" />
+    </section>
+
+    {
+      sections.map(sec => (
+        <section class="zh-section">
+          <h2 class="zh-section-title">{sec.title}</h2>
+          <p class="zh-section-note">{sec.description}</p>
+          <div class="zh-link-grid">
+            {sec.links.map(l => (
+              <a href={l.href} class="zh-link-card">
+                <span class="zh-link-name">{l.name}</span>
+                <span class="zh-link-desc">{l.desc}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+
+    <section class="zh-section">
+      <h2 class="zh-section-title">语言</h2>
+      <div class="zh-link-grid">
+        <a href={HW_ZH.selectorUrl} class="zh-link-card">
+          <span class="zh-link-name">English</span>
+          <span class="zh-link-desc">切换到英文维基</span>
+        </a>
+      </div>
+    </section>
+  </div>
+</HwZhLayout>
+
+<style>
+  .zh-landing {
+    display: grid;
+    gap: 1.75rem;
+  }
+
+  .zh-hero {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .zh-hero-title {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    font-weight: var(--font-bold);
+    color: var(--hw-primary-warm);
+    margin: 0 0 0.25rem 0;
+  }
+
+  .zh-hero-en {
+    font-size: 1rem;
+    color: var(--hw-text-muted);
+    margin: 0 0 1.25rem 0;
+  }
+
+  .zh-hero-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--hw-text-light);
+    max-width: 640px;
+    margin: 0 auto 0.75rem auto;
+  }
+
+  .zh-hero-note {
+    font-size: 0.8125rem;
+    color: var(--hw-text-muted);
+    max-width: 640px;
+    margin: 0 auto 1.5rem auto;
+  }
+
+  .zh-hero-btn {
+    display: inline-block;
+    background: var(--hw-primary-warm);
+    color: var(--hw-text-dark);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    border-radius: 10px;
+    padding: 0.65rem 1.5rem;
+    text-decoration: none;
+  }
+
+  .zh-section {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+    padding: 1.5rem;
+  }
+
+  .zh-section-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: var(--font-bold);
+    color: var(--hw-primary-warm);
+    margin: 0 0 1rem 0;
+  }
+
+  .zh-section-note {
+    font-size: 0.8125rem;
+    color: var(--hw-text-muted);
+    margin: -0.5rem 0 1rem 0;
+  }
+
+  .zh-text {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: var(--hw-text-light);
+    margin: 0 0 0.75rem 0;
+  }
+
+  .zh-h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--hw-text-light);
+    margin: 1rem 0 0.5rem 0;
+  }
+
+  .zh-plain-list {
+    font-size: 0.875rem;
+    color: var(--hw-text-muted);
+    line-height: 1.8;
+    margin: 0 0 0.75rem 0;
+    padding-left: 1.1rem;
+    list-style: none;
+  }
+
+  .zh-platform-grid,
+  .zh-social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .zh-platform-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--hw-primary-warm);
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+  }
+
+  .zh-link-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .zh-link-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    padding: 0.9rem 1rem;
+    text-decoration: none;
+  }
+
+  .zh-link-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--hw-primary-warm);
+  }
+
+  .zh-link-desc {
+    font-size: 0.8125rem;
+    color: var(--hw-text-muted);
+  }
+</style>

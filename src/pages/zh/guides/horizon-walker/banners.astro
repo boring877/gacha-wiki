@@ -1,0 +1,797 @@
+---
+// Chinese banner timeline: /zh/guides/horizon-walker/banners/
+// Same banner-timeline.js data as the EN page (order, grouping, images).
+// Banner/search titles stay in English (official proper nouns without an
+// official ZH); character and weapon names use the game's official ZH via
+// game-text.js maps. Periods use the numeric 2026.01.01 ~ 2026.01.15 format.
+import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
+import { bannerRuns, focusedSearches, characterReleases } from '../../../../data/horizon-walker/banner-timeline.js';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../data/horizon-walker/characters.js';
+import { HW_ZH_NAMES, HW_ZH_INHERITANCE } from '../../../../data/horizon-walker/zh/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/zh/ui.js';
+import { r2Url } from '../../../../data/r2-config.js';
+import { CharacterImage, WeaponImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
+
+export const prerender = true;
+
+const charBySlug = {};
+for (const c of HORIZON_WALKER_CHARACTERS) {
+  charBySlug[c.slug] = c;
+}
+
+// official ZH name of a roster character, by EN name or slug
+const zhCharName = (c) => (c ? HW_ZH_NAMES[c.id] || null : null);
+const zhBySlug = (slug) => zhCharName(charBySlug[slug]);
+// official ZH name of an EX/inheritance weapon (EN loc name keyed)
+const zhWeaponName = (name) => HW_ZH_INHERITANCE[name]?.name || null;
+
+// numeric period format, kept identical in spirit to the EN dates
+const fmt = (iso) => `${iso.slice(0, 4)}.${iso.slice(5, 7)}.${iso.slice(8, 10)}`;
+const fmtShort = (iso) => `${iso.slice(5, 7)}.${iso.slice(8, 10)}`;
+const windowLabel = (r) =>
+  r.start.slice(0, 4) === r.end.slice(0, 4)
+    ? `${fmtShort(r.start)} ~ ${fmt(r.end)}`
+    : `${fmt(r.start)} ~ ${fmt(r.end)}`;
+
+const days = (r) =>
+  Math.round((Date.parse(r.end + 'T12:00:00Z') - Date.parse(r.start + 'T12:00:00Z')) / 86400000);
+
+const isNew = (r) => r.type === 'debut';
+const isActive = (r) =>
+  Date.parse(r.start + 'T00:00:00Z') <= Date.now() && Date.now() <= Date.parse(r.end + 'T23:59:59Z');
+
+// group runs by year, newest first (same as EN)
+const yearGroups = [];
+for (const r of bannerRuns) {
+  const year = r.start.slice(0, 4);
+  const last = yearGroups[yearGroups.length - 1];
+  if (last && last.year === year) last.runs.push(r);
+  else yearGroups.push({ year, runs: [r] });
+}
+
+// search index: EN names + official ZH names so both work
+const searchOf = (r) =>
+  r.entries
+    .map((e) => [e.name, zhBySlug(e.charSlug), zhWeaponName(e.name)].filter(Boolean).join(' '))
+    .join(' ')
+    .toLowerCase();
+
+const kindZh = (kind) => (kind === 'vanguard' ? '先锋' : kind === 'weapon' ? '武器' : '卡池');
+---
+
+<HwZhLayout
+  title="卡池时间线 - 地平线行者中文维基 - GachaWiki"
+  description="地平线行者全部 Special Search 限定卡池时间线：新先锋与专属武器卡池、复刻卡池的开池与关池日期，整理自官方更新公告。"
+  keywords={['地平线行者', '卡池', '卡池时间线', '复刻', 'Special Search']}
+  pageTitle="卡池时间线"
+  breadcrumbItems={[
+    { name: '首页', href: '/' },
+    { name: '地平线行者', href: HW_ZH.baseUrl },
+    { name: '卡池时间线' },
+  ]}
+>
+  <div class="zh-bt-page">
+    <div class="zh-bt-intro">
+      <p>
+        《地平线行者》的抽卡系统是 FairyNet Special Search。新先锋与专属武器卡池通常开放两周，之后会以复刻卡池的形式回归。本时间线整理自
+        <a href={`${HW_ZH.baseUrl}updates/`}>官方更新公告</a>的 Special Search 章节：公告中写明时间的卡池为确切时间窗，其余由维护日期与后续的卡池结束公告推算（标记为近似）。日期跟随韩服日程，每日 10:00（KST）重置。卡池标题为官方英文名称，暂无官方中文译名。
+      </p>
+    </div>
+
+    <div class="zh-bt-controls">
+      <div class="zh-bt-filters" role="group" aria-label="筛选卡池">
+        <button class="zh-bt-filter active" data-filter="all">全部</button>
+        <button class="zh-bt-filter" data-filter="debut">新卡池</button>
+        <button class="zh-bt-filter" data-filter="rerun">复刻</button>
+        <button class="zh-bt-filter" data-filter="active">进行中</button>
+      </div>
+      <input type="text" id="zhBtSearch" class="zh-bt-search" placeholder="搜索卡池（中文名或英文名，如 迦露德、Doomstar）" autocomplete="off" />
+      <span class="zh-bt-count" id="zhBtCount">{bannerRuns.length} 个卡池</span>
+    </div>
+
+    {
+      yearGroups.map((g) => (
+        <section class="zh-bt-year" data-year={g.year}>
+          <h2 class="zh-bt-year-title">{g.year}</h2>
+          <div class="zh-bt-cards">
+            {g.runs.map((r) => (
+              <article
+                class={`zh-bt-card ${isNew(r) ? 'zh-bt-new' : 'zh-bt-rerun'} ${r.bannerImage ? 'zh-bt-has-art' : ''}`}
+                data-type={r.type}
+                data-active={isActive(r) ? '1' : '0'}
+                data-start={r.start}
+                data-end={r.end}
+                data-search={searchOf(r)}
+              >
+                <div class="zh-bt-card-body">
+                  {r.bannerImage && (
+                    <a class="zh-bt-art" href={r2Url('horizon-walker', r.bannerImage)} target="_blank" rel="noopener">
+                      <img
+                        src={r2Url('horizon-walker', r.bannerImage)}
+                        alt={`官方卡池主视觉：${r.entries.map((e) => e.name).join('、')}`}
+                        loading="lazy"
+                        width="700"
+                        height="650"
+                      />
+                    </a>
+                  )}
+                  <div class="zh-bt-card-info">
+                    <header class="zh-bt-card-head">
+                      <div class="zh-bt-card-when">
+                        <span class="zh-bt-dates">{windowLabel(r)}</span>
+                        <span class="zh-bt-len">{days(r)} 天</span>
+                        {isActive(r) && <span class="zh-bt-badge zh-bt-live">进行中</span>}
+                        <span class={`zh-bt-badge ${isNew(r) ? 'zh-bt-badge-new' : 'zh-bt-badge-rerun'}`}>
+                          {isNew(r) ? '新卡池' : '复刻'}
+                        </span>
+                      </div>
+                      <a class="zh-bt-src" href={`${HW_ZH.baseUrl}updates/${r.sourceNote}/`}>更新公告</a>
+                    </header>
+                    {(r.approximate || r.reconstructed) && (
+                      <p class="zh-bt-flag">
+                        {r.reconstructed
+                          ? '时间窗为推算：该卡池仅在后续的卡池结束公告中被提及。'
+                          : '近似时间窗：官方公告未给出该卡池的确切结束日期。'}
+                      </p>
+                    )}
+                    <div class={r.bannerImage ? 'zh-bt-chips' : 'zh-bt-entries'}>
+                      {r.entries.map((e) => {
+                        const ch = e.charSlug ? charBySlug[e.charSlug] : undefined;
+                        const icon = e.noteImage ? (
+                          <img src={r2Url('horizon-walker', e.noteImage)} alt={e.name} loading="lazy" width="44" height="44" />
+                        ) : ch ? (
+                          <CharacterImage imageName={ch.image || ch.name} alt={zhCharName(ch) || e.name} width={44} height={44} />
+                        ) : e.weaponImage ? (
+                          <WeaponImage imageName={e.weaponImage} alt={e.name} width={44} height={44} />
+                        ) : null;
+                        const kindLine = [kindZh(e.kind), e.kind === 'vanguard' ? zhBySlug(e.charSlug) : zhWeaponName(e.name)]
+                          .filter(Boolean)
+                          .join(' · ');
+                        const inner = (
+                          <>
+                            {icon && <span class="zh-bt-chip-img">{icon}</span>}
+                            <span class="zh-bt-chip-meta">
+                              <span class="zh-bt-kind">{kindLine}</span>
+                              <span class="zh-bt-name">{e.name}</span>
+                            </span>
+                          </>
+                        );
+                        return ch ? (
+                          <a class="zh-bt-chip" href={`${HW_ZH.baseUrl}characters/${ch.slug}/`}>{inner}</a>
+                        ) : (
+                          <span class="zh-bt-chip">{inner}</span>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+                {r.bannerImage && <p class="zh-bt-art-note">官方更新公告中的卡池主视觉</p>}
+              </article>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+
+    {
+      focusedSearches.length > 0 && (
+        <section class="zh-bt-focused">
+          <h2 class="zh-bt-year-title">Focused Search 时间窗</h2>
+          <p class="zh-bt-focused-note">
+            官方更新公告中公布的限定自选卡池（Focused Search）时间窗。未使用的 Focused Search 票在时间窗结束后过期。
+          </p>
+          <div class="zh-bt-focused-list">
+            {focusedSearches.map((f) => (
+              <span class="zh-bt-focused-chip">{fmt(f.start)} ~ {fmt(f.end)}</span>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <section class="zh-bt-releases" id="releases">
+      <h2 class="zh-bt-year-title">角色实装日期</h2>
+      <p class="zh-bt-focused-note">
+        各先锋角色可获取的时间，直接取自官方更新公告：开服阵容、卡池首发与直接实装。专属武器卡池见上方卡片。
+      </p>
+      <div class="zh-bt-controls zh-bt-rel-controls">
+        <input type="text" id="zhBtRelSearch" class="zh-bt-search" placeholder="搜索角色（中文名或英文名，如 科拉比、Korabi）" autocomplete="off" />
+        <div class="zh-bt-filters" role="group" aria-label="排序">
+          <button class="zh-bt-filter active" data-rsort="new">最新优先</button>
+          <button class="zh-bt-filter" data-rsort="old">最早优先</button>
+          <button class="zh-bt-filter" data-rsort="az">按名称</button>
+        </div>
+        <span class="zh-bt-count" id="zhBtRelCount">{characterReleases.length} 名角色</span>
+      </div>
+      <div class="zh-bt-rel-wrap">
+        <table class="zh-bt-rel-table">
+          <thead>
+            <tr>
+              <th>角色</th>
+              <th>稀有度</th>
+              <th>实装日期</th>
+              <th>获取方式</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="zhBtRelBody">
+            {characterReleases.map((c) => {
+              const ch = c.slug ? charBySlug[c.slug] : undefined;
+              const zh = zhBySlug(c.slug);
+              return (
+                <tr
+                  data-date={c.date}
+                  data-name={(zh || c.name).toLowerCase()}
+                  data-search={`${c.name} ${zh || ''} ${c.bannerName ?? ''} ${c.via}`.toLowerCase()}
+                >
+                  <td class="zh-bt-rel-char">
+                    <span class="zh-bt-chip-img">
+                      {ch ? (
+                        <CharacterImage imageName={ch.image || ch.name} alt={zh || c.name} width={40} height={40} />
+                      ) : (
+                        <span class="zh-bt-noimg-sm" aria-hidden="true">{c.name.slice(0, 1)}</span>
+                      )}
+                    </span>
+                    {c.slug ? (
+                      <a class="zh-bt-rel-name" href={`${HW_ZH.baseUrl}characters/${c.slug}/`}>
+                        {zh || c.name}
+                        <span class="zh-bt-rel-en">{zh ? c.name : ''}</span>
+                      </a>
+                    ) : (
+                      <span class="zh-bt-rel-name">{zh || c.name}</span>
+                    )}
+                  </td>
+                  <td>{c.rarity ? <HWRarityIcon rarity={c.rarity} width={48} height={24} /> : ''}</td>
+                  <td class="zh-bt-rel-date">{fmt(c.date)}</td>
+                  <td class="zh-bt-rel-how">
+                    {c.via === 'launch' ? (
+                      <span class="zh-bt-how zh-bt-how-launch">开服阵容</span>
+                    ) : c.via === 'banner' ? (
+                      <span class="zh-bt-how zh-bt-how-banner">卡池：{c.bannerName}</span>
+                    ) : (
+                      <span class="zh-bt-how zh-bt-how-direct">新增先锋</span>
+                    )}
+                  </td>
+                  <td>{c.sourceNote && <a class="zh-bt-src" href={`${HW_ZH.baseUrl}updates/${c.sourceNote}/`}>公告</a>}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</HwZhLayout>
+
+<script is:inline>
+  // graceful fallback: a broken icon tile becomes the character's initial
+  function handleBrokenIcon(img) {
+    var wrap = img.closest('.zh-bt-chip-img');
+    if (!wrap || wrap.classList.contains('zh-bt-noicon')) return;
+    var row = img.closest('tr');
+    var name = row ? row.querySelector('.zh-bt-rel-name') : null;
+    var label = name ? name.textContent.trim().charAt(0).toUpperCase() : '';
+    img.remove();
+    wrap.classList.add('zh-bt-noicon');
+    wrap.dataset.letter = label || '?';
+  }
+  document.addEventListener('error', function (ev) {
+    var img = ev.target;
+    if (!img || img.tagName !== 'IMG') return;
+    if (img.closest('.zh-bt-chip-img')) handleBrokenIcon(img);
+  }, true);
+  document.querySelectorAll('.zh-bt-chip-img img').forEach(function (img) {
+    if (img.complete && img.naturalWidth === 0) handleBrokenIcon(img);
+  });
+
+  var input = document.getElementById('zhBtSearch');
+  var cards = document.querySelectorAll('.zh-bt-card');
+  var years = document.querySelectorAll('.zh-bt-year');
+  var count = document.getElementById('zhBtCount');
+  var total = cards.length;
+  var filter = 'all';
+
+  // Recompute the Active state client-side: the static markup reflects build time
+  cards.forEach(function (c) {
+    var s = Date.parse((c.dataset.start || '') + 'T00:00:00Z');
+    var e = Date.parse((c.dataset.end || '') + 'T23:59:59Z');
+    if (Number.isNaN(s) || Number.isNaN(e)) return;
+    var now = Date.now();
+    var live = now >= s && now <= e;
+    if ((c.dataset.active || '0') === (live ? '1' : '0')) return;
+    c.dataset.active = live ? '1' : '0';
+    var when = c.querySelector('.zh-bt-card-when');
+    if (!when) return;
+    var badge = when.querySelector('.zh-bt-live');
+    if (live && !badge) {
+      var created = document.createElement('span');
+      created.className = 'zh-bt-badge zh-bt-live';
+      created.textContent = '进行中';
+      var typeBadge = when.querySelector('.zh-bt-badge-new, .zh-bt-badge-rerun');
+      when.insertBefore(created, typeBadge);
+    } else if (!live && badge) {
+      badge.remove();
+    }
+  });
+
+  function apply() {
+    var q = input.value.trim().toLowerCase();
+    var visible = 0;
+    cards.forEach(function (c) {
+      var okType =
+        filter === 'all' ||
+        (filter === 'active' ? c.dataset.active === '1' : c.dataset.type === filter);
+      var okText = !q || (c.dataset.search || '').includes(q);
+      var show = okType && okText;
+      c.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    years.forEach(function (y) {
+      var any = Array.prototype.some.call(y.querySelectorAll('.zh-bt-card'), function (c) {
+        return c.style.display !== 'none';
+      });
+      y.style.display = any ? '' : 'none';
+    });
+    count.textContent = q || filter !== 'all' ? visible + ' / ' + total + ' 个卡池' : total + ' 个卡池';
+  }
+  input.addEventListener('input', apply);
+  document.querySelectorAll('.zh-bt-filter[data-filter]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.zh-bt-filter[data-filter]').forEach(function (x) {
+        x.classList.remove('active');
+      });
+      b.classList.add('active');
+      filter = b.dataset.filter;
+      apply();
+    });
+  });
+
+  // release table: filter + sort
+  var relBody = document.getElementById('zhBtRelBody');
+  if (relBody) {
+    var relSearch = document.getElementById('zhBtRelSearch');
+    var relCount = document.getElementById('zhBtRelCount');
+    var rows = Array.prototype.slice.call(relBody.querySelectorAll('tr'));
+    var rsort = 'new';
+    function applyRel() {
+      var q = relSearch.value.trim().toLowerCase();
+      var visible = 0;
+      rows.forEach(function (r) {
+        var show = !q || (r.dataset.search || '').includes(q);
+        r.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      relCount.textContent = q ? visible + ' / ' + rows.length + ' 名角色' : rows.length + ' 名角色';
+    }
+    function sortRel() {
+      var sorted = rows.slice().sort(function (a, b) {
+        if (rsort === 'az') return a.dataset.name.localeCompare(b.dataset.name, 'zh');
+        var da = a.dataset.date, db = b.dataset.date;
+        return rsort === 'new' ? db.localeCompare(da) : da.localeCompare(db);
+      });
+      sorted.forEach(function (r) {
+        relBody.appendChild(r);
+      });
+    }
+    relSearch.addEventListener('input', applyRel);
+    document.querySelectorAll('[data-rsort]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        document.querySelectorAll('[data-rsort]').forEach(function (x) {
+          x.classList.remove('active');
+        });
+        b.classList.add('active');
+        rsort = b.dataset.rsort;
+        sortRel();
+      });
+    });
+  }
+</script>
+
+<style>
+  .zh-bt-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .zh-bt-intro {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+  }
+  .zh-bt-intro p {
+    color: var(--hw-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+  .zh-bt-intro a {
+    color: var(--hw-primary-warm);
+  }
+  .zh-bt-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+  }
+  .zh-bt-filters {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+  .zh-bt-filter {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    color: var(--hw-text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.45rem 0.9rem;
+    cursor: pointer;
+  }
+  .zh-bt-filter.active {
+    background: rgba(232, 165, 71, 0.18);
+    border-color: var(--hw-primary-warm);
+    color: var(--hw-primary-warm);
+  }
+  .zh-bt-search {
+    flex: 1;
+    min-width: 200px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    color: var(--hw-text-light);
+    font-size: 0.92rem;
+    padding: 0.55rem 0.9rem;
+    outline: none;
+  }
+  .zh-bt-search::placeholder {
+    color: var(--hw-text-very-muted);
+  }
+  .zh-bt-count {
+    color: var(--hw-text-very-muted);
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+  .zh-bt-year {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .zh-bt-year-title {
+    color: var(--hw-primary-warm);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0.4rem 0 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    padding-bottom: 0.4rem;
+  }
+  .zh-bt-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .zh-bt-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    padding: 0.95rem 1.05rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .zh-bt-card.zh-bt-new {
+    border-color: rgba(232, 165, 71, 0.35);
+  }
+  .zh-bt-card-body {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .zh-bt-card:not(.zh-bt-has-art) .zh-bt-card-body {
+    flex-direction: column;
+  }
+  .zh-bt-art {
+    flex: 0 0 440px;
+    max-width: 440px;
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .zh-bt-art img {
+    width: 100%;
+    height: auto;
+    max-height: 560px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.02);
+    display: block;
+  }
+  .zh-bt-art-note {
+    color: var(--hw-text-very-muted);
+    font-size: 0.75rem;
+    margin: -0.3rem 0 0;
+    text-align: center;
+  }
+  .zh-bt-card-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .zh-bt-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+  .zh-bt-card-when {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+  }
+  .zh-bt-dates {
+    color: var(--hw-accent-mint);
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .zh-bt-len {
+    color: var(--hw-text-very-muted);
+    font-size: 0.78rem;
+  }
+  .zh-bt-badge {
+    border-radius: 5px;
+    padding: 0.12rem 0.55rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .zh-bt-badge-new {
+    background: var(--hw-primary-warm);
+    color: #1c1a16;
+  }
+  .zh-bt-badge-rerun {
+    background: #3a3a3a;
+    color: #cccccc;
+  }
+  .zh-bt-live {
+    background: rgba(96, 197, 166, 0.16);
+    color: var(--hw-accent-mint);
+    border: 1px solid rgba(96, 197, 166, 0.5);
+  }
+  .zh-bt-src {
+    color: var(--hw-primary-warm);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 7px;
+    padding: 0.3rem 0.7rem;
+    white-space: nowrap;
+  }
+  .zh-bt-flag {
+    color: var(--hw-text-very-muted);
+    font-size: 0.8rem;
+    margin: 0;
+  }
+  .zh-bt-entries {
+    display: flex;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+  }
+  .zh-bt-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .zh-bt-entries .zh-bt-chip {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.4rem 0.8rem 0.4rem 0.4rem;
+  }
+  .zh-bt-entries .zh-bt-chip-img {
+    width: 60px;
+    height: 60px;
+  }
+  .zh-bt-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 8px;
+    padding: 0.3rem 0.7rem 0.3rem 0.3rem;
+    text-decoration: none;
+    max-width: 100%;
+  }
+  .zh-bt-chip-img {
+    width: 44px;
+    height: 44px;
+    flex: none;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--hw-bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .zh-bt-chip-img :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+  .zh-bt-chip-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    min-width: 0;
+  }
+  .zh-bt-kind {
+    color: var(--hw-text-very-muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .zh-bt-name {
+    color: var(--hw-text-muted);
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.3;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  .zh-bt-focused {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+  }
+  .zh-bt-focused-note {
+    color: var(--hw-text-muted);
+    font-size: 0.88rem;
+    margin: 0;
+    line-height: 1.7;
+  }
+  .zh-bt-focused-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .zh-bt-focused-chip {
+    background: rgba(232, 165, 71, 0.1);
+    border: 1px solid rgba(232, 165, 71, 0.35);
+    color: var(--hw-primary-warm);
+    border-radius: 7px;
+    padding: 0.32rem 0.75rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+  .zh-bt-releases {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+  }
+  .zh-bt-rel-wrap {
+    overflow-x: auto;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 10px;
+  }
+  .zh-bt-rel-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    color: var(--hw-text-muted);
+    min-width: 640px;
+  }
+  .zh-bt-rel-table th {
+    text-align: left;
+    background: rgba(232, 165, 71, 0.12);
+    color: var(--hw-primary-warm);
+    font-weight: 700;
+    padding: 0.6rem 0.8rem;
+    white-space: nowrap;
+  }
+  .zh-bt-rel-table td {
+    padding: 0.5rem 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    vertical-align: middle;
+  }
+  .zh-bt-rel-table tbody tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .zh-bt-rel-char {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 190px;
+  }
+  .zh-bt-rel-name {
+    color: var(--hw-text-muted);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .zh-bt-rel-en {
+    display: block;
+    color: var(--hw-text-very-muted);
+    font-size: 0.75rem;
+    font-weight: 400;
+  }
+  .zh-bt-rel-date {
+    color: var(--hw-accent-mint);
+    white-space: nowrap;
+  }
+  .zh-bt-rel-how {
+    color: var(--hw-text-muted);
+    font-size: 0.84rem;
+  }
+  .zh-bt-how {
+    display: inline-block;
+    border-radius: 5px;
+    padding: 0.14rem 0.55rem;
+    font-size: 0.76rem;
+    font-weight: 600;
+  }
+  .zh-bt-how-launch {
+    background: rgba(110, 168, 205, 0.16);
+    border: 1px solid rgba(110, 168, 205, 0.4);
+    color: #8fb6d4;
+  }
+  .zh-bt-how-banner {
+    background: rgba(232, 165, 71, 0.16);
+    border: 1px solid rgba(232, 165, 71, 0.4);
+    color: var(--hw-primary-warm);
+  }
+  .zh-bt-how-direct {
+    background: rgba(96, 197, 166, 0.14);
+    border: 1px solid rgba(96, 197, 166, 0.4);
+    color: var(--hw-accent-mint);
+  }
+  .zh-bt-noimg-sm {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--hw-text-very-muted);
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .zh-bt-chip-img.zh-bt-noicon {
+    background: #2a2a2a;
+  }
+  .zh-bt-chip-img.zh-bt-noicon::after {
+    content: attr(data-letter);
+    color: var(--hw-primary-warm);
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  .zh-bt-rel-controls {
+    flex-wrap: wrap;
+  }
+  @media (max-width: 960px) {
+    .zh-bt-card-body {
+      flex-direction: column;
+    }
+    .zh-bt-art {
+      flex: none;
+      max-width: 480px;
+      width: 100%;
+    }
+  }
+  @media (max-width: 640px) {
+    .zh-bt-art {
+      max-width: 100%;
+      width: 100%;
+    }
+    .zh-bt-card-head {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.4rem;
+    }
+  }
+</style>

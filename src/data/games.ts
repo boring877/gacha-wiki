@@ -63,7 +63,7 @@ export const GAMES: Game[] = [
     description:
       'Post-apocalyptic RPG: Transcend mortality as a Chosen Human and battle Forsaken Entities through dimensional rifts',
     image: r2Url('horizon-walker', 'gameimg/gameicon.jpg'),
-    url: '/guides/horizon-walker/',
+    url: '/guides/horizon-walker/select/',
     status: 'active',
     themeColor: '#e8a547',
     sections: ['Chosen Humans', 'Tier List', 'Rift Combat', 'Transcendence', 'Survivor Resources'],

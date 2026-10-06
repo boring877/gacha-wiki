@@ -1,0 +1,130 @@
+---
+// Chinese general-traits database: /zh/guides/horizon-walker/traits/
+// All trait names and stat lines use the game's official Simplified Chinese;
+// category headings are wiki editorial labels written for the zh wiki.
+import HwZhLayout from '../../../../layouts/zh/HwZhLayout.astro';
+import { hwTraits, totalTraits } from '../../../../data/horizon-walker/traits.js';
+import { HW_ZH_TRAIT_NAMES, HW_ZH_STAT_TYPES } from '../../../../data/horizon-walker/zh/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/zh/ui.js';
+import '../../../../styles/games/horizon-walker/hw-traits.css';
+
+export const prerender = true;
+
+// Wiki editorial category headings (EN data key -> zh label)
+const CATEGORY_ZH = {
+  'Health & Vitality': '生命与体力',
+  'HP Penalties': '生命值代价',
+  'Melee Attack': '近战攻击',
+  'Ranged Attack': '远程攻击',
+  'Magic Attack': '魔法攻击',
+  Speed: '速度',
+  Accuracy: '命中',
+  Critical: '暴击',
+  Evasion: '回避',
+  Defense: '防御',
+  'Specialized Defense': '特化防御',
+  'Elemental Defense': '属性防御',
+  'Attack Boosts': '攻击类型强化',
+  'Elemental Boosts': '属性强化',
+  'Multi-Elemental': '多属性',
+  'AP & Starting': '行动力与开场',
+  'AP Recovery': '行动力恢复',
+  'Aggro Management': '仇恨调整',
+  'Knockback Resistance': '击退抗性',
+  'Special Defense': '特殊防御',
+};
+
+// wiki EN stat spellings that point at the same official stat label
+const STAT_ALIASES = {
+  ACC: 'Accuracy',
+  Evasion: 'Evade',
+};
+
+const statLabelZh = label => {
+  const key = STAT_ALIASES[label] || label;
+  return HW_ZH_STAT_TYPES[key] || label;
+};
+
+// 'Max HP: +3%' -> '最大生命值：+3%'; unmapped labels keep the EN line verbatim
+const effectZh = line => {
+  const idx = line.indexOf(': ');
+  if (idx < 1) return line;
+  const label = line.slice(0, idx);
+  const zh = statLabelZh(label.trim());
+  if (zh === label.trim()) return line;
+  return `${zh}：${line.slice(idx + 1).trim()}`;
+};
+
+const traitNameZh = name => HW_ZH_TRAIT_NAMES[name] || name;
+
+const categoryNames = Object.keys(hwTraits).sort();
+
+const createAnchorId = text => text.toLowerCase().replace(/[^a-z0-9]/g, '-');
+---
+
+<HwZhLayout
+  title="特性数据库 - 地平线行者中文维基 - GachaWiki"
+  description={`地平线行者全部 ${totalTraits} 条通用特性的中文数据库：特性名称与属性增减效果均为游戏官方简体中文，按功能分类整理。`}
+  keywords={['地平线行者', '特性', '通用特性', '攻略']}
+  pageTitle="特性"
+  breadcrumbItems={[
+    { name: '首页', href: '/' },
+    { name: '地平线行者', href: HW_ZH.baseUrl },
+    { name: '特性' },
+  ]}
+>
+  <div class="hw-traits-container">
+    <div class="hw-traits-header">
+      <h1 class="hw-traits-title">通用特性</h1>
+      <p class="hw-traits-subtitle">全部角色通用特性与效果一览</p>
+      <p class="hw-traits-total">共 {totalTraits} 条特性</p>
+    </div>
+
+    <nav class="hw-traits-nav" role="navigation" aria-label="分类导航">
+      <h2 class="hw-traits-nav-title">跳转到分类：</h2>
+      <div class="hw-traits-nav-links">
+        {
+          categoryNames.map(category => {
+            const categoryId = createAnchorId(category);
+            return (
+              <a href={`#${categoryId}`} class="hw-traits-nav-link">
+                {CATEGORY_ZH[category] || category}
+              </a>
+            );
+          })
+        }
+      </div>
+    </nav>
+
+    {
+      categoryNames.map(categoryName => {
+        const traitsInCategory = hwTraits[categoryName];
+        if (!traitsInCategory || traitsInCategory.length === 0) return null;
+
+        const categoryId = createAnchorId(categoryName);
+        const traitCount = traitsInCategory.length;
+
+        return (
+          <section class="hw-traits-section" id={categoryId}>
+            <div class="hw-traits-category-header">
+              <h2 class="hw-traits-category-title">{CATEGORY_ZH[categoryName] || categoryName}</h2>
+              <span class="hw-traits-category-count">（{traitCount} 条）</span>
+            </div>
+            <div class="hw-traits-grid">
+              {traitsInCategory.map(trait => (
+                <div class="hw-trait-card">
+                  <h3 class="hw-trait-name">{traitNameZh(trait.name)}</h3>
+                  <ul class="hw-trait-effects">
+                    {trait.effects.map(effect => (
+                      <li class="hw-trait-effect">{effectZh(effect)}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        );
+      })
+    }
+  </div>
+</HwZhLayout>
