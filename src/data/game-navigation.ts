@@ -125,6 +125,7 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
           { name: 'Clock', href: '/clock/zone-nova/' },
           { name: 'Redeem Codes', href: '/guides/zone-nova/redeem-codes/' },
           { name: 'Summon FAQ', href: '/guides/zone-nova/summon-faq/' },
+          { name: 'Data Extractor', href: 'https://github.com/boring877/zone-nova-extractor' },
         ],
       },
       {
@@ -155,6 +156,8 @@ export const NAV_DATA: Record<GameKey, { sections: NavigationSection[] }> = {
         title: 'Game Mechanics',
         links: [
           { name: 'AP Guide', href: '/guides/horizon-walker/ap-guide/' },
+          { name: 'Damage Formula', href: '/guides/horizon-walker/damage-formula/' },
+          { name: 'Level Difference', href: '/guides/horizon-walker/level-difference/' },
           { name: 'Traits', href: '/guides/horizon-walker/traits/' },
           { name: 'Demi-Ascension', href: '/guides/horizon-walker/demi/' },
           { name: 'Stigma Sub Stats', href: '/guides/horizon-walker/stigma-sub-stats/' },

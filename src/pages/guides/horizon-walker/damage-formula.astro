@@ -1,0 +1,170 @@
+---
+// Damage formula guide: how ATK, defense stats, and DEF Down interact in the damage pipeline
+import GuideLayout from '../../../layouts/horizon-walker/GuideLayout.astro';
+import {
+  ATK_TYPES,
+  DEFENSE_MAPPING,
+  DEF_EXAMPLES_POSITIVE,
+  DEF_EXAMPLES_NEGATIVE,
+} from '../../../data/horizon-walker/combat-mechanics.js';
+import '../../../styles/games/horizon-walker/hw-combat-mechanics.css';
+
+const breadcrumbs = [{ name: 'Damage Formula' }];
+---
+
+<GuideLayout
+  title="Horizon Walker Damage Formula and Defense Guide"
+  description="How Horizon Walker calculates damage: the ATK and defense formula, which defense stat each damage type uses, and how DEF Down including negative DEF amplifies your damage."
+  pageTitle="Damage Formula and Defense"
+  subtitle="How the game turns your ATK into damage, which defense stat actually gets checked, and why DEF Down is the strongest debuff in the game."
+  breadcrumbs={breadcrumbs}
+>
+  <section class="hw-guide-section" id="formula">
+    <h2 class="hw-section-title">The Core Formula</h2>
+    <div class="hw-section-content">
+      <p>Every skill hit rolls the following pipeline:</p>
+    </div>
+    <div class="hw-mech-formula">
+      damage = skill% x ATK x defense multiplier x level multiplier x battle ratio
+    </div>
+    <ul class="hw-guide-list">
+      <li><strong>skill%</strong> is the skill's damage coefficient (the percentages on skill pages).</li>
+      <li><strong>ATK</strong> is the attacker's stat chosen by the skill type, see below.</li>
+      <li><strong>defense multiplier</strong> comes from exactly one defense stat on the target, see below.</li>
+      <li><strong>level multiplier</strong> is the level difference rule, see the Level Difference page.</li>
+      <li><strong>battle ratio</strong> is a per battle global, normally 1.</li>
+    </ul>
+    <div class="hw-section-content">
+      <p>Critical hits, weakness attacks, and buff effects multiply on top of this base.</p>
+    </div>
+  </section>
+
+  <section class="hw-guide-section" id="atk">
+    <h2 class="hw-section-title">Which ATK Is Used</h2>
+    <div class="hw-mech-table-wrap">
+      <table class="hw-mech-table" aria-label="Skill type to ATK stat mapping">
+        <thead>
+          <tr>
+            <th scope="col">Skill Type</th>
+            <th scope="col">ATK Stat</th>
+          </tr>
+        </thead>
+        <tbody>
+          {ATK_TYPES.map(row => (
+            <tr>
+              <td>{row.skill}</td>
+              <td>{row.stat}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="hw-guide-section" id="defense-stat">
+    <h2 class="hw-section-title">Which Defense Is Used</h2>
+    <div class="hw-section-content">
+      <p>
+        This is the part most players get wrong. A skill's <strong>elemental property decides the defense
+        stat, and it replaces physical defense entirely</strong>. Cora's Heat damage never touches Slash
+        DEF: it rolls against the target's FireResist.
+      </p>
+    </div>
+    <div class="hw-mech-table-wrap">
+      <table class="hw-mech-table" aria-label="Damage type to defense stat mapping">
+        <thead>
+          <tr>
+            <th scope="col">Damage Type</th>
+            <th scope="col">Defense Stat Checked</th>
+          </tr>
+        </thead>
+        <tbody>
+          {DEFENSE_MAPPING.map(row => (
+            <tr>
+              <td>{row.damage}</td>
+              <td>{row.stat}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <div class="hw-info-box">
+      <div class="hw-info-box-title">Practical takeaway</div>
+      <div class="hw-info-box-content">
+        A boss with heavy physical DEF but low elemental Resist takes far more damage from elemental
+        attackers. When a wall boss stops you, check which Resist is lowest and bring that element,
+        it can be worth more than raw ATK.
+      </div>
+    </div>
+  </section>
+
+  <section class="hw-guide-section" id="defense-multiplier">
+    <h2 class="hw-section-title">The Defense Multiplier</h2>
+    <div class="hw-section-content">
+      <p>With the matched defense stat D, the multiplier is 1 - D / (D + 1000):</p>
+    </div>
+    <div class="hw-mech-table-wrap">
+      <table class="hw-mech-table" aria-label="Damage taken by defense value">
+        <thead>
+          <tr>
+            <th scope="col">Defense</th>
+            <th scope="col">Damage Taken</th>
+          </tr>
+        </thead>
+        <tbody>
+          {DEF_EXAMPLES_POSITIVE.map(row => (
+            <tr>
+              <td>{row.def}</td>
+              <td>{row.taken}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <div class="hw-section-content">
+      <p>
+        It has diminishing returns: the first 250 defense removes 20% of incoming damage, but going from
+        3000 to 9000 only removes another 15%. Defense can never fully nullify damage.
+      </p>
+    </div>
+  </section>
+
+  <section class="hw-guide-section" id="negative-def">
+    <h2 class="hw-section-title">Negative DEF: The Real Reason DEF Down Is Broken</h2>
+    <div class="hw-section-content">
+      <p>
+        When DEF Down pushes a target's defense <strong>below zero</strong>, the game switches to a
+        separate formula: 1 + |DEF| / 1000. That is flat damage amplification with <strong>no cap</strong>:
+      </p>
+    </div>
+    <div class="hw-mech-table-wrap">
+      <table class="hw-mech-table" aria-label="Damage taken at negative defense values">
+        <thead>
+          <tr>
+            <th scope="col">Defense</th>
+            <th scope="col">Damage Taken</th>
+            <th scope="col">Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          {DEF_EXAMPLES_NEGATIVE.map(row => (
+            <tr class="hw-mech-highlight">
+              <td>{row.def}</td>
+              <td>{row.taken}</td>
+              <td>{row.note || ''}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <div class="hw-example-box">
+      <div class="hw-example-title">Why Palekar enables one shots</div>
+      <div class="hw-example-content">
+        Her [Unstable] from Verse of Ordeal cuts All DEF by 1140, up to 1340 with her Evasion scaling.
+        On a boss whose defense drops below zero, the whole team hits at 2.14x to 2.34x damage, on top of
+        the increased DMG Taken the debuff also applies. That is why DEF Down is a bigger damage amp than
+        most attack buffs.
+      </div>
+    </div>
+  </section>
+</GuideLayout>

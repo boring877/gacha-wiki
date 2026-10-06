@@ -1,0 +1,123 @@
+---
+// Level difference damage guide: penalty table when underleveled, bonus when overleveled
+import GuideLayout from '../../../layouts/horizon-walker/GuideLayout.astro';
+import { LEVEL_PENALTY } from '../../../data/horizon-walker/combat-mechanics.js';
+import '../../../styles/games/horizon-walker/hw-combat-mechanics.css';
+
+const breadcrumbs = [{ name: 'Level Difference' }];
+
+// Rows worth highlighting in the table
+const highlight = new Set([1, 5, 10, 16, 20, 30]);
+
+function pct(v: number): string {
+  return `${parseFloat((v / 100).toFixed(2))}%`;
+}
+---
+
+<GuideLayout
+  title="Horizon Walker Level Difference Damage Penalty Guide"
+  description="How level difference affects damage in Horizon Walker: the full underlevel penalty table, the overlevel damage bonus, and the minimum damage rule."
+  pageTitle="Level Difference and Damage"
+  subtitle="How many levels above or below the target you are changes your damage more than almost any other single factor."
+  breadcrumbs={breadcrumbs}
+>
+  <section class="hw-guide-section" id="rules">
+    <h2 class="hw-section-title">The Rules</h2>
+    <div class="hw-section-content">
+      <p>
+        Every hit compares the attacker's level with the target's level and multiplies the damage:
+      </p>
+    </div>
+    <ul class="hw-guide-list">
+      <li>Attacker <strong>below</strong> the target's level: damage is multiplied by the penalty table below. 5 levels under already costs 40% of your damage, and at 16 levels under you deal about 10%.</li>
+      <li>Attacker <strong>above</strong> the target's level: damage is multiplied by 1 + 8% per level of advantage. 10 levels over means 1.8x damage, and there is no cap.</li>
+      <li>Equal level: no change, 100% damage.</li>
+      <li>Damage can never drop below 1 from the level penalty alone.</li>
+    </ul>
+    <div class="hw-info-box">
+      <div class="hw-info-box-title">Why this matters</div>
+      <div class="hw-info-box-content">
+        A character 5 levels under a boss loses more damage than most buffs can give back, and a heavily
+        underleveled team deals single digit percent damage. On the flip side, overleveling content is a
+        real power source: grinding a few levels for a wall boss is often worth more than a gear upgrade.
+      </div>
+    </div>
+  </section>
+
+  <section class="hw-guide-section" id="table">
+    <h2 class="hw-section-title">Underlevel Penalty Table</h2>
+    <div class="hw-section-content">
+      <p>
+        The exact multiplier per level gap, straight from the game's data. Highlighted rows are the gaps
+        players ask about most.
+      </p>
+    </div>
+    <div class="hw-mech-table-wrap">
+      <table class="hw-mech-table" aria-label="Damage multiplier by level gap when underleveled">
+        <thead>
+          <tr>
+            <th scope="col">Levels Under Target</th>
+            <th scope="col">Damage Dealt</th>
+          </tr>
+        </thead>
+        <tbody>
+          {LEVEL_PENALTY.map(row => (
+            <tr class={highlight.has(row.diff) ? 'hw-mech-highlight' : ''}>
+              <td>{row.diff}</td>
+              <td>{pct(row.value)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <div class="hw-warning-box">
+      <div class="hw-warning-content">
+        The curve starts gentle, 8% per level for the first 6 levels, then compounds harder and harder.
+        From 15 levels under, every extra level costs roughly 15% of what little damage remains.
+      </div>
+    </div>
+  </section>
+
+  <section class="hw-guide-section" id="overlevel">
+    <h2 class="hw-section-title">Overlevel Bonus</h2>
+    <div class="hw-section-content">
+      <p>
+        Being higher level than the target is a flat linear bonus with no table and no cap:
+        1 + 0.08 x (your level minus target level).
+      </p>
+    </div>
+    <div class="hw-mech-table-wrap">
+      <table class="hw-mech-table" aria-label="Damage multiplier by level advantage">
+        <thead>
+          <tr>
+            <th scope="col">Levels Over Target</th>
+            <th scope="col">Damage Dealt</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>0 (equal)</td><td>100%</td></tr>
+          <tr><td>5</td><td>140%</td></tr>
+          <tr><td>10</td><td>180%</td></tr>
+          <tr><td>15</td><td>220%</td></tr>
+          <tr><td>25</td><td>300%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="hw-example-box">
+      <div class="hw-example-title">Example</div>
+      <div class="hw-example-content">
+        A level 60 Cora hitting a level 55 event mob deals 1.4x her normal damage before any other
+        modifier. The same Cora at level 50 against a level 60 story boss deals only 27.14% damage.
+      </div>
+    </div>
+  </section>
+
+  <section class="hw-guide-section" id="notes">
+    <h2 class="hw-section-title">Extra Notes</h2>
+    <ul class="hw-guide-list">
+      <li>The level multiplier applies inside the main damage pipeline, together with the defense formula (see the Damage Formula page).</li>
+      <li>Critical hits, weakness attacks, and buff effects multiply on top of the level result.</li>
+      <li>One special game mode skips the level check entirely and uses raw damage, so fixed-power event modes can feel suddenly easier.</li>
+    </ul>
+  </section>
+</GuideLayout>

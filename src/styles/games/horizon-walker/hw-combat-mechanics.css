@@ -1,0 +1,59 @@
+/* Tables and formula boxes for the combat mechanics pages (Level Difference, Damage Formula) */
+
+.hw-mech-table-wrap {
+  background: var(--hw-bg-dark);
+  border: 1px solid var(--hw-border-light);
+  border-radius: var(--hw-radius-lg);
+  overflow: hidden;
+  margin: 1.25rem 0;
+}
+
+.hw-mech-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--hw-bg-dark);
+}
+
+.hw-mech-table th {
+  background: var(--hw-bg-darker);
+  color: var(--hw-primary-warm);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  padding: 0.75rem 1.25rem;
+  border-bottom: 2px solid rgba(232, 165, 71, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: left;
+}
+
+.hw-mech-table td {
+  padding: 0.6rem 1.25rem;
+  font-size: var(--text-sm);
+  border-bottom: 1px solid var(--hw-border-light);
+  color: var(--hw-text-light);
+}
+
+.hw-mech-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Highlighted reference rows (common level gaps, negative DEF examples) */
+.hw-mech-table .hw-mech-highlight td {
+  background: var(--hw-sunshine-gold-10);
+  color: var(--hw-sunshine-gold);
+  font-weight: 600;
+}
+
+/* Formula display box */
+.hw-mech-formula {
+  background: var(--hw-bg-darker);
+  border: 1px solid var(--hw-border-accent);
+  border-radius: var(--hw-radius-lg);
+  padding: 1rem 1.5rem;
+  margin: 1.25rem 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  color: var(--hw-primary-warm);
+  text-align: center;
+  font-weight: 600;
+}
