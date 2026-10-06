@@ -1,0 +1,83 @@
+---
+// Korean stigma sub-stats page: /ko/guides/horizon-walker/stigma-sub-stats/
+// Renders the wiki sub-stat scaling table with official Korean stat labels.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import { stigmaSubStats } from '../../../../data/horizon-walker/stigma-sub-stats.js';
+import { HW_ZH_STAT_TYPES } from '../../../../data/horizon-walker/ko/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ko/ui.js';
+import '../../../../styles/games/horizon-walker/stigma.css';
+import '../../../../styles/games/horizon-walker/hw-stigma-sub-stats.css';
+
+export const prerender = true;
+
+const STAT_ALIASES = {
+  'Movement Speed': 'SPD',
+};
+
+const statZh = label => {
+  const key = STAT_ALIASES[label] || label;
+  if (HW_ZH_STAT_TYPES[key]) return HW_ZH_STAT_TYPES[key];
+  const m = label.match(/^(.+?)\s*\((.+)\)$/);
+  if (m) {
+    const base = STAT_ALIASES[m[1]] || m[1];
+    if (HW_ZH_STAT_TYPES[base]) return `${HW_ZH_STAT_TYPES[base]} (${m[2]})`;
+  }
+  return label;
+};
+---
+<HwLangLayout lang="ko" ui={HW_ZH}
+  title="성흔 부옵션 - 호라이즌 워커 한국어 위키 - GachaWiki"
+  description="호라이즌 워커 성흔 부옵션 수치 범위 정리: 각 부옵션의 무작위 구간과 강화 수치를 담았으며, 스탯명은 게임 공식 한국어입니다."
+  keywords={['호라이즌 워커', '성흔', '부옵션', '공략']}
+  breadcrumbItems={[
+    { name: '홈', href: '/' },
+    { name: '호라이즌 워커', href: HW_ZH.baseUrl },
+    { name: '성흔 부옵션' },
+  ]}
+>
+  <section class="stigma-title-section">
+    <h1 class="stigma-page-title">성흔 부옵션</h1>
+    <DecorativeLines />
+  </section>
+
+  <div class="stigma-content-area">
+    <div class="hw-stigma-sub-stats-container">
+    <div class="hw-stigma-sub-stats-content">
+      <p class="zh-substats-note">성흔은 강화 시 부옵션을 무작위로 획득합니다. 아래 표는 각 부옵션이 나올 수 있는 수치 범위입니다.</p>
+      <table
+        class="hw-stigma-sub-stats-table"
+        role="table"
+        aria-label="성흔 부옵션 수치 범위"
+      >
+        <thead>
+          <tr>
+            <th scope="col">스탯</th>
+            <th scope="col">수치 범위</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            stigmaSubStats.map(item => (
+              <tr>
+                <td class="stat-name">{statZh(item.stat)}</td>
+                <td class="stat-scale" aria-label={`수치 범위: ${item.scale}`}>
+                  {item.scale}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+</HwLangLayout>
+
+<style>
+  .zh-substats-note {
+    font-size: 0.875rem;
+    color: var(--hw-text-muted);
+    margin: 0 0 1rem 0;
+  }
+</style>

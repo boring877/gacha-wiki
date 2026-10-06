@@ -1,0 +1,338 @@
+---
+// Traditional-Chinese (zh-tw) character detail pages: /zh-tw/guides/horizon-walker/
+// characters/<slug>/. Renders the EN CharacterPageTemplate with a labels
+// override and a shallow-cloned character record whose game text (name, story,
+// profile, traits, weapon, skins, skill names) is swapped for the official
+// Traditional Chinese from src/data/horizon-walker/zh-tw/game-text.js. Stats,
+// per-level values and image references are the wiki's own data, unchanged.
+import HwLangLayout from '../../../../../layouts/lang/HwLangLayout.astro';
+import CharacterPageTemplate from '../../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../../data/horizon-walker/characters.js';
+import {
+  HW_ZH_NAMES,
+  HW_ZH_SKILLS,
+  HW_ZH_TRAITS,
+  HW_ZH_HERO_TRAITS,
+  HW_ZH_HERO_STORY,
+  HW_ZH_HERO_EPITHET,
+  HW_ZH_PROFILE,
+  HW_ZH_STAT_TYPES,
+  HW_ZH_INHERITANCE,
+  HW_ZH_WEAPON_SKILLS,
+  HW_ZH_SKILL_BY_NAME,
+  HW_ZH_SKINS,
+  HW_ZH_ITEMS,
+} from '../../../../../data/horizon-walker/zh-tw/game-text.js';
+import { HW_ZH } from '../../../../../data/horizon-walker/zh-tw/ui.js';
+
+// Same CSS set as the EN CharacterIndividualLayout so the page is pixel-identical
+import '../../../../../styles/global.css';
+import '../../../../../styles/typography.css';
+import '../../../../../styles/games/horizon-walker/hw-colors.css';
+import '../../../../../styles/games/horizon-walker/hw-layout.css';
+import '../../../../../styles/games/horizon-walker/hw-character-page.css';
+import '../../../../../styles/games/horizon-walker/hw-badges.css';
+import '../../../../../styles/games/horizon-walker/hw-community-build.css';
+
+export const prerender = true;
+
+// Per-character detail modules: each file exports one *Data
+const modules = import.meta.glob('/src/data/horizon-walker/characters/*.js', {
+  eager: true,
+});
+const dataBySlug = {};
+for (const [path, mod] of Object.entries(modules)) {
+  const slug = path.split('/').pop().replace('.js', '');
+  // most modules export <name>Data; nari/samarika export the bare name
+  const keys = Object.keys(mod);
+  const exportKey =
+    keys.find(k => k.endsWith('Data')) ||
+    keys.find(k => !k.endsWith('SEO') && !k.endsWith('Highlighting'));
+  if (exportKey) dataBySlug[slug] = mod[exportKey];
+}
+
+// weapon stat label: translate EN StatType names, keep suffixes like (weapon)
+const weaponStatLabel = k => {
+  if (HW_ZH_STAT_TYPES[k]) return HW_ZH_STAT_TYPES[k];
+  const m = k.match(/^(.+?)\s*\((.+)\)$/);
+  if (m && HW_ZH_STAT_TYPES[m[1]]) return `${HW_ZH_STAT_TYPES[m[1]]}（${m[2]}）`;
+  return k;
+};
+
+// EN item name -> official ZH name (gifts and gift boxes)
+const zhItemNames = Object.fromEntries(
+  Object.entries(HW_ZH_ITEMS).map(([en, v]) => [en, v.name])
+);
+
+// Only roster heroes that have an official ZH name get a Chinese page
+export function getStaticPaths() {
+  return HORIZON_WALKER_CHARACTERS.filter(c => HW_ZH_NAMES[c.id] && c.slug).map(c => ({
+    params: { slug: c.slug },
+    props: { id: c.id },
+  }));
+}
+
+const { id } = Astro.props;
+const char = HORIZON_WALKER_CHARACTERS.find(c => c.id === id);
+const detail = dataBySlug[char.slug] || {};
+const zhName = HW_ZH_NAMES[id];
+const epithet = HW_ZH_HERO_EPITHET[id];
+const zhStory = HW_ZH_HERO_STORY[id];
+const zhProfile = HW_ZH_PROFILE[id] || {};
+const zhTraitIds = HW_ZH_HERO_TRAITS[id] || [];
+
+// Shallow clone + swap: structure, stats, levels and image refs stay EN/wiki;
+// every official game string that has a ZH localization is replaced.
+const zhData = { ...detail };
+zhData.name = zhName;
+zhData.nameEn = detail.name || char.name; // used by the template for EN-keyed lookups
+zhData.description = epithet || detail.description;
+zhData.shortDescription = epithet
+  ? `${zhName}，${epithet}。`
+  : String(detail.description || '').split('.')[0] + '.';
+zhData.story = zhStory || detail.story;
+
+// Profile values from the official ZH game profile (EN fallback per field)
+if (detail.profile) {
+  zhData.profile = {
+    ...detail.profile,
+    age: zhProfile.age || detail.profile.age,
+    birthday: zhProfile.birthday || detail.profile.birthday,
+    racial: zhProfile.tribe || detail.profile.racial,
+    homeland: zhProfile.hometown || detail.profile.homeland,
+    height: zhProfile.height || detail.profile.height,
+    bwhRatio: zhProfile.threeSize || detail.profile.bwhRatio,
+  };
+}
+
+// Skill names from the game's ZH skill table (keyed by gameKey); the wiki's EN
+// descriptions stay when the ZH table has no description text
+if (detail.skills) {
+  zhData.skills = Object.fromEntries(
+    Object.entries(detail.skills).map(([k, sk]) => {
+      const zh = sk.gameKey ? HW_ZH_SKILLS[sk.gameKey] : null;
+      return [
+        k,
+        {
+          ...sk,
+          name: (zh && zh.name) || sk.name,
+          description: (zh && zh.desc) || sk.description,
+        },
+      ];
+    })
+  );
+}
+
+// Traits: ZH trait ids map positionally onto the EN trait object order; the
+// gift-level-5 trait (Interested / 興趣) keeps its special structure
+if (detail.uniqueTraits) {
+  const enTraitValues = Object.values(detail.uniqueTraits);
+  zhData.uniqueTraits = Object.fromEntries(
+    Object.entries(detail.uniqueTraits).map(([k, t], i) => {
+      let zh = zhTraitIds.length === enTraitValues.length ? HW_ZH_TRAITS[zhTraitIds[i]] : null;
+      if (!zh && t.name === 'Interested') zh = HW_ZH_TRAITS[55001]; // 興趣
+      if (!zh) return [k, t];
+      return [k, { ...t, name: zh.name, description: zh.desc || t.description }];
+    })
+  );
+}
+
+// EX weapon: official ZH name + flavor via the Inheritance (stigma/weapon) loc;
+// stat-label keys translated, unique-skill names via EN-name ZH tables
+if (detail.weapon) {
+  const w = detail.weapon;
+  const weaponZh = HW_ZH_INHERITANCE[w.name];
+  zhData.weapon = {
+    ...w,
+    name: weaponZh?.name || w.name,
+    flavor: weaponZh?.desc || w.flavor,
+    stats: w.stats
+      ? Object.fromEntries(Object.entries(w.stats).map(([k, v]) => [weaponStatLabel(k), v]))
+      : w.stats,
+    levelStats: w.levelStats
+      ? Object.fromEntries(Object.entries(w.levelStats).map(([k, v]) => [weaponStatLabel(k), v]))
+      : w.levelStats,
+    uniqueSkills: w.uniqueSkills
+      ? Object.fromEntries(
+          Object.entries(w.uniqueSkills).map(([k, us]) => {
+            const zh = HW_ZH_WEAPON_SKILLS[us.name] || HW_ZH_SKILL_BY_NAME[us.name];
+            return [
+              k,
+              {
+                ...us,
+                name: (zh && zh.name) || us.name,
+                description: (zh && zh.desc) || us.description,
+              },
+            ];
+          })
+        )
+      : w.uniqueSkills,
+  };
+}
+
+// Simplified Chinese UI labels for CharacterPageTemplate (official game system
+// terms: 技能 skills, 特性 traits, 屬性 stats, 聖痕 stigma, 行動力 AP, 禮物 gifts,
+// 皮膚 skins; stat names from the game's own ZH StatType table)
+const ZH_LABELS = {
+  portraitAlt: '{name}，地平線行者 {rarity} 稀有度角色',
+  crystalAlt: '{name}的未來水晶',
+  costBadge: '編成費用 {n}',
+  defaultSummary: '一位隨時準備加入戰鬥的幹練角色。',
+  profileTitle: '檔案',
+  ageLabel: '年齡：',
+  raceLabel: '種族：',
+  homelandLabel: '出身地：',
+  heightLabel: '身高：',
+  birthdayLabel: '生日：',
+  baseStatsTitle: '基礎屬性',
+  statsCaptionFull: '等級 60，滿 EX（EX 6）',
+  statsStageCaption: '等級 60，{stage}',
+  statsStageCaptionFullSuffix: '（滿）',
+  statsAtStage: '{stage} 時的屬性',
+  coreStatsSubtitle: '主要屬性',
+  statStr: '力量',
+  statTec: '技巧',
+  statInt: '智力',
+  statVit: '體質',
+  statAgi: '敏捷',
+  coreStrRest: '：近戰攻擊力',
+  coreTecRest: '：射擊攻擊力',
+  coreIntRest: '：魔法攻擊力',
+  coreVitRest: '：最大生命值',
+  coreAgiRest: '：迴避與體力復原',
+  combatSubtitle: '戰鬥',
+  maxHpLabel: '最大生命值',
+  meleeAtkLabel: '近戰攻擊力',
+  rangedAtkLabel: '射擊攻擊力',
+  magicAtkLabel: '魔法攻擊力',
+  speedLabel: '移動力',
+  startingApLabel: '戰鬥開始行動力',
+  apRecoveryLabel: '體力復原力',
+  accuracyLabel: '命中',
+  evadeLabel: '迴避',
+  critRateLabel: '暴擊率',
+  critDmgLabel: '暴擊傷害',
+  blockRateLabel: '格擋機率',
+  startingApNote: '戰鬥開始行動力 = 角色自身基礎戰鬥開始行動力 + 體力復原力。',
+  statsFootnote:
+    '* 戰鬥開始行動力為戰鬥開始時的總行動力：角色自身的基礎戰鬥開始行動力，加上體力復原力（見上）。體力復原力部分會隨著 EX 階段提升帶來的敏捷增長而增長。',
+  attributesSubtitle: '屬性攻防',
+  boostCol: '強化',
+  defCol: '防禦',
+  attrSlash: '斬擊',
+  attrPierce: '穿刺',
+  attrCrush: '打擊',
+  attrHeat: '火焰',
+  attrCold: '冰霜',
+  attrElectric: '雷電',
+  attrImmaterial: '無形',
+  attrPoison: '毒素',
+  storyTitle: '角色故事',
+  sentenceJoin: '',
+  skillsTitle: '技能',
+  skillsExplanation: '所有技能均以最高等級顯示',
+  reworkPointerPre: '{name}已於{date}重做。目前頁面顯示重做後的版本；重做前的文字保留在頁面底部的',
+  reworkArchiveLink: '重做檔案',
+  reworkPointerPost: '。',
+  passiveLabel: '被動',
+  skillLabel: '技能',
+  cdLabel: '冷卻 {n}',
+  apLabel: '行動力 {n}',
+  damageLabel: '傷害：',
+  damageOfType: ' 的{type}',
+  damageSplash: '（+{n} 濺射）',
+  triggerCondition: '{name} 啟用條件：[Seeker of Pleasure] 生效時',
+  traitsTitle: '固有特性',
+  interestedTraitName: '興趣',
+  giftLevel5Badge: '好感度等級 5',
+  uniqueTraitBadge: '固有特性',
+  interestedNoteStrong: '於好感度等級 5 解鎖：',
+  interestedNoteRest: '透過贈送禮物累計達到 2000 好感度後，此特性生效。',
+  level5BonusLabel: '好感度等級 5 加成：',
+  demiTitle: '半神晉升',
+  exRequiredBadge: '需要 EX',
+  demiBanner:
+    '半神晉升後，該角色可以取代主角擔任隊伍的 Executor，使全隊獲得對遺忘現象的免疫。編成時消耗 {n} 點神力（DP）。',
+  authoritySkillBadge: '權能技能',
+  demiStageValuesLabel: '各晉升階段數值：',
+  demiStageView: '第 {n} 階段',
+  demiStageAria: '第 {n} 階段',
+  mightTitle: '隨機 Might 技能',
+  mightIntro:
+    '半神晉升時將隨機獲得以下 10 種 Might 技能之一。每種技能的階級為 1 至 5，階級越高越稀有。',
+  effectsTitle: '效果說明',
+  weaponTitlePrefix: '武器：',
+  weaponGrowNote: '基礎數值隨武器等級成長（Lv 1 至 Lv 60）。EX 提升（EX 1 至 EX 5）僅強化特殊技能。',
+  weaponStaticNote: '數值與技能為等級 60、滿 EX 狀態',
+  basicStatsTitle: '基礎數值（Lv 1 → Lv 60）',
+  weaponStatSuffix: '（weapon）',
+  ratingStatSuffix: '（評分）',
+  pctSuffix: '（%）',
+  signatureSkillPrefix: '專屬技能：',
+  uniqueSkillPrefix: '特殊技能：',
+  signatureNameStrip: '^[^：]+專屬：\\s*',
+  skillValuesAtRaise: 'EX 提升時的技能數值：',
+  signatureReqNote: '需要{name}：僅在{name}裝備此武器時生效。固定數值：不隨武器等級或 EX 提升變化。',
+  noteLabel: '注：',
+  storyGalleryTitle: '劇情畫廊',
+  storyGalleryNote: '{name}劇情章節中的插畫。',
+  storyCgAlt: '{name}劇情插畫：{caption}',
+  skinsTitle: '皮膚',
+  skinAlt: '{name}的{skin}皮膚',
+  skinPromoAlt: '{name}的{skin}皮膚宣傳圖',
+  skinPortraitAlt: '{name}的{skin}頭像',
+  videosTitle: '相關影片',
+  videosNote: '來自地平線行者官方 YouTube 頻道的{name}相關影片。',
+  videoTitleTpl: '{name}：{title}',
+  playVideoAria: '播放影片：{title}',
+  videoThumbAlt: '{title} 影片縮圖',
+  videoBadgeFallback: '影片',
+  watchMoreLabel: '在官方 YouTube 頻道觀看更多',
+  videoTypes: {
+    intro: '新守護者',
+    costume: '服裝',
+    affection: '好感度',
+    preview: '預告',
+  },
+  giftTitle: '禮物偏好',
+  giftExplanation: '需要 2000 點好感度達到等級 5 以解鎖特性加成，同時還可獲得金幣與遊戲貨幣',
+  level5BonusTitle: '好感度等級 5 加成',
+  affectionBonusBadge: '好感度加成',
+  highValueGiftsTitle: '高價值禮物',
+  highValueGiftsDesc: '這些稀有禮物提供極高的好感度（總計 80 以上），非常珍貴',
+  favoriteGiftsTitle: '最愛禮物',
+  favoriteGiftsDesc: '這些禮物提供加成分數（20 以上），是該角色非常喜愛的禮物',
+  likedGiftsTitle: '喜歡禮物',
+  likedGiftsDesc: '這些禮物提供 10 點額外分數，是該角色喜歡的禮物',
+  altHighValueTitle: '替代高價值選項',
+  altHighValueDesc: '女王的王冠為任意角色提供最高的好感度（100 點），不受偏好影響',
+  basePointsLabel: '基礎：',
+  bonusPointsLabel: '+ 加成：',
+  totalPointsLabel: '= 總計：',
+  maxAffectionLabel: '升至好感度等級 5 所需：',
+  giftsCountLabel: '{n} 個',
+  foundInLabel: '取得途徑：',
+  noGiftsTitle: '禮物偏好即將上線',
+  noGiftsDesc: '{name}的禮物偏好尚未公開。請稍後再來查看其喜愛的禮物！',
+  reworkTitle: '重做檔案',
+  beforeTag: '重做前',
+  afterTag: '重做後',
+  itemNames: zhItemNames,
+  skinNames: HW_ZH_SKINS,
+  statTypeNames: HW_ZH_STAT_TYPES,
+};
+---
+
+<HwLangLayout lang="zh-tw" ui={HW_ZH}
+  title={`${zhName}（${char.name}）- 地平線行者 角色資料 - GachaWiki`}
+  description={`地平線行者角色 ${zhName}（${char.name}）的繁體中文資料：官方技能說明、固有特性、檔案、屬性、EX 武器與禮物偏好。全部遊戲文字取自遊戲官方繁體中文。`}
+  keywords={[zhName, char.name, '地平線行者', '技能', '屬性', '攻略']}
+  breadcrumbItems={[
+    { name: '首頁', href: '/' },
+    { name: '地平線行者', href: HW_ZH.baseUrl },
+    { name: '角色資料庫', href: `${HW_ZH.baseUrl}characters/` },
+    { name: zhName },
+  ]}
+>
+  <CharacterPageTemplate characterData={zhData} labels={ZH_LABELS} />
+</HwLangLayout>

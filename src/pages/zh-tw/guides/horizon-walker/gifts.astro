@@ -1,0 +1,207 @@
+---
+// Traditional-Chinese (zh-tw) gifts guide: /zh-tw/guides/horizon-walker/gifts/
+// Gift box and gift names/descriptions use the game's official ZH via
+// HW_ZH_ITEMS (EN verbatim fallback when the game has no zh-tw entry); point
+// values are the wiki's data unchanged.
+// Re-skinned onto the EN hw-gifts.css classes for visual parity.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import { GIFT_BOXES, UNIQUE_GIFTS } from '../../../../data/horizon-walker/gifts.js';
+import { HW_ZH_ITEMS } from '../../../../data/horizon-walker/zh-tw/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/zh-tw/ui.js';
+import { GiftImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
+import '../../../../styles/games/horizon-walker/hw-gifts.css';
+
+export const prerender = true;
+
+// EN gift/box name -> official ZH (Item loc); EN fallback if unmapped
+const giftZhName = name => HW_ZH_ITEMS[name]?.name || name;
+const giftZhDesc = name => HW_ZH_ITEMS[name]?.desc || null;
+---
+
+<HwLangLayout lang="zh-tw" ui={HW_ZH}
+  title="禮物與獎勵 - 地平線行者繁體中文維基 - GachaWiki"
+  description="地平線行者禮物資料庫：華麗/高級/普通禮物箱的全部內容物、好感度積分系統、女王的王冠取得途徑與獨特禮物。禮物名稱與說明均取自遊戲官方繁體中文。"
+  keywords={['地平線行者', '禮物', '好感度', '禮物箱']}
+  breadcrumbItems={[
+    { name: '首頁', href: '/' },
+    { name: '地平線行者', href: HW_ZH.baseUrl },
+    { name: '禮物' },
+  ]}
+>
+  <section class="hw-gift-hero">
+    <h1 class="hw-gift-title">禮物與獎勵</h1>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-gift-content">
+    <section class="hw-gift-section" id="gift-boxes">
+      <h2 class="hw-section-title">禮物箱</h2>
+
+      <div class="hw-section-content">
+        <p>各類禮物箱與其內容物一覽。每個禮物箱包含不同稀有度與類型的禮物。</p>
+
+        <div class="hw-info-box">
+          <div class="hw-info-box-title">角色禮物偏好</div>
+          <div class="hw-info-box-content">
+            想知道每個角色喜歡什麼禮物？查看<a href={`${HW_ZH.baseUrl}character-gifts/`} class="hw-link">角色禮物偏好指南</a>，把好感度收益最大化。
+          </div>
+        </div>
+      </div>
+
+      <div class="hw-affection-system-info">
+        <div class="system-header">
+          <h3 class="system-title">好感度積分系統</h3>
+        </div>
+        <div class="system-content">
+          <div class="system-description">
+            <p>禮物獲得的好感度會隨角色的偏好而增加：</p>
+          </div>
+          <div class="system-levels">
+            <div class="level-item">
+              <span class="level-name">基礎</span>
+              <span class="level-desc">無加成</span>
+            </div>
+            <div class="level-item">
+              <span class="level-name">喜歡</span>
+              <span class="level-desc">+10 分</span>
+            </div>
+            <div class="level-item">
+              <span class="level-name">最愛</span>
+              <span class="level-desc">+20 分</span>
+            </div>
+          </div>
+          <div class="system-note">
+            <strong>注意：</strong>截至目前，女王的王冠無論送給哪位角色都有最高的分值（100 至 120）。它包含在華麗禮物箱中，想要最大化好感度時請優先選擇。
+          </div>
+        </div>
+      </div>
+
+      <div class="hw-gift-box-grid">
+        {GIFT_BOXES.map(box => (
+          <div class="hw-gift-box-card" id={box.id} data-box={box.id}>
+            <div class="hw-gift-box-header">
+              <div class="hw-gift-box-image">
+                <GiftImage
+                  imageName={box.image}
+                  alt={giftZhName(box.name)}
+                  class="gift-box-img"
+                  width={80}
+                  height={80}
+                  loading="lazy"
+                />
+              </div>
+              <div class="hw-gift-box-info">
+                <h3 class="hw-gift-box-name">{giftZhName(box.name)}</h3>
+                <div class="hw-gift-box-tier">
+                  <HWRarityIcon
+                    rarity={box.id === 'brilliant-gift-box' ? 'SS' : box.id === 'luxurious-gift-box' ? 'S' : 'A'}
+                    width={40}
+                    height={20}
+                  />
+                </div>
+                <p class="hw-gift-box-description">{giftZhDesc(box.name) || box.description}</p>
+                <div class="hw-gift-box-stats">
+                  <span class="gift-count">{box.gifts.length} 件禮物</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hw-gift-items-grid">
+              {box.gifts.map(gift => (
+                <div class="hw-gift-item" data-rarity={gift.rarity}>
+                  <div class="hw-gift-item-image">
+                    <GiftImage
+                      imageName={gift.image}
+                      alt={giftZhName(gift.name)}
+                      class="gift-item-img"
+                      width={60}
+                      height={60}
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="hw-gift-item-info">
+                    <h4 class="hw-gift-item-name">{giftZhName(gift.name)}</h4>
+                    <HWRarityIcon rarity={gift.rarity} width={36} height={18} />
+                    <div class="hw-gift-points">
+                      <div class="points-levels">
+                        <div class="points-item">
+                          <span class="points-label">基礎</span>
+                          <span class="points-value">{gift.points.min}</span>
+                        </div>
+                        <div class="points-item">
+                          <span class="points-label">喜歡</span>
+                          <span class="points-value">{gift.points.min + 10}</span>
+                        </div>
+                        <div class="points-item">
+                          <span class="points-label">最愛</span>
+                          <span class="points-value">{gift.points.max}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="hw-gift-section" id="unique-gifts">
+      <h2 class="hw-section-title">獨特與特殊禮物</h2>
+
+      <div class="hw-section-content">
+        <p>僅在限定活動或慶典期間獲得的紀念性與獨特禮物。</p>
+
+        <div class="hw-info-box">
+          <div class="hw-info-box-title">重要說明</div>
+          <div class="hw-info-box-content">
+            <strong>皮膚同樣提供 100 好感度</strong>（與 EX 級禮物相同），並適用標準好感度加成。
+          </div>
+        </div>
+      </div>
+
+      <div class="hw-gift-items-grid hw-unique-gifts-grid">
+        {UNIQUE_GIFTS.map(gift => (
+          <div class="hw-gift-item hw-unique-gift" data-rarity={gift.rarity}>
+            <div class="hw-gift-item-image">
+              <GiftImage
+                imageName={gift.image}
+                alt={giftZhName(gift.name)}
+                class="gift-item-img"
+                width={60}
+                height={60}
+                loading="lazy"
+              />
+            </div>
+            <div class="hw-gift-item-info">
+              <h4 class="hw-gift-item-name">{giftZhName(gift.name)}</h4>
+              <div class="hw-gift-badges">
+                <HWRarityIcon rarity={gift.rarity} width={36} height={18} />
+                <span class="hw-badge hw-badge-unique">{gift.type}</span>
+              </div>
+              {gift.description && <p class="hw-unique-description">{gift.description}</p>}
+              <div class="hw-gift-points">
+                <div class="points-levels">
+                  <div class="points-item">
+                    <span class="points-label">基礎</span>
+                    <span class="points-value">{gift.points.min}</span>
+                  </div>
+                  <div class="points-item">
+                    <span class="points-label">喜歡</span>
+                    <span class="points-value">{gift.points.min + 10}</span>
+                  </div>
+                  <div class="points-item">
+                    <span class="points-label">最愛</span>
+                    <span class="points-value">{gift.points.max}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</HwLangLayout>

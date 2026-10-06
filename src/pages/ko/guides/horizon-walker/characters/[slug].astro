@@ -1,0 +1,338 @@
+---
+// Korean character detail pages: /ko/guides/horizon-walker/
+// characters/<slug>/. Renders the EN CharacterPageTemplate with a labels
+// override and a shallow-cloned character record whose game text (name, story,
+// profile, traits, weapon, skins, skill names) is swapped for the official
+// Korean from src/data/horizon-walker/ko/game-text.js. Stats,
+// per-level values and image references are the wiki's own data, unchanged.
+import HwLangLayout from '../../../../../layouts/lang/HwLangLayout.astro';
+import CharacterPageTemplate from '../../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../../data/horizon-walker/characters.js';
+import {
+  HW_ZH_NAMES,
+  HW_ZH_SKILLS,
+  HW_ZH_TRAITS,
+  HW_ZH_HERO_TRAITS,
+  HW_ZH_HERO_STORY,
+  HW_ZH_HERO_EPITHET,
+  HW_ZH_PROFILE,
+  HW_ZH_STAT_TYPES,
+  HW_ZH_INHERITANCE,
+  HW_ZH_WEAPON_SKILLS,
+  HW_ZH_SKILL_BY_NAME,
+  HW_ZH_SKINS,
+  HW_ZH_ITEMS,
+} from '../../../../../data/horizon-walker/ko/game-text.js';
+import { HW_ZH } from '../../../../../data/horizon-walker/ko/ui.js';
+
+// Same CSS set as the EN CharacterIndividualLayout so the page is pixel-identical
+import '../../../../../styles/global.css';
+import '../../../../../styles/typography.css';
+import '../../../../../styles/games/horizon-walker/hw-colors.css';
+import '../../../../../styles/games/horizon-walker/hw-layout.css';
+import '../../../../../styles/games/horizon-walker/hw-character-page.css';
+import '../../../../../styles/games/horizon-walker/hw-badges.css';
+import '../../../../../styles/games/horizon-walker/hw-community-build.css';
+
+export const prerender = true;
+
+// Per-character detail modules: each file exports one *Data
+const modules = import.meta.glob('/src/data/horizon-walker/characters/*.js', {
+  eager: true,
+});
+const dataBySlug = {};
+for (const [path, mod] of Object.entries(modules)) {
+  const slug = path.split('/').pop().replace('.js', '');
+  // most modules export <name>Data; nari/samarika export the bare name
+  const keys = Object.keys(mod);
+  const exportKey =
+    keys.find(k => k.endsWith('Data')) ||
+    keys.find(k => !k.endsWith('SEO') && !k.endsWith('Highlighting'));
+  if (exportKey) dataBySlug[slug] = mod[exportKey];
+}
+
+// weapon stat label: translate EN StatType names, keep suffixes like (weapon)
+const weaponStatLabel = k => {
+  if (HW_ZH_STAT_TYPES[k]) return HW_ZH_STAT_TYPES[k];
+  const m = k.match(/^(.+?)\s*\((.+)\)$/);
+  if (m && HW_ZH_STAT_TYPES[m[1]]) return `${HW_ZH_STAT_TYPES[m[1]]} (${m[2]})`;
+  return k;
+};
+
+// EN item name -> official ZH name (gifts and gift boxes)
+const zhItemNames = Object.fromEntries(
+  Object.entries(HW_ZH_ITEMS).map(([en, v]) => [en, v.name])
+);
+
+// Only roster heroes that have an official ZH name get a Chinese page
+export function getStaticPaths() {
+  return HORIZON_WALKER_CHARACTERS.filter(c => HW_ZH_NAMES[c.id] && c.slug).map(c => ({
+    params: { slug: c.slug },
+    props: { id: c.id },
+  }));
+}
+
+const { id } = Astro.props;
+const char = HORIZON_WALKER_CHARACTERS.find(c => c.id === id);
+const detail = dataBySlug[char.slug] || {};
+const zhName = HW_ZH_NAMES[id];
+const epithet = HW_ZH_HERO_EPITHET[id];
+const zhStory = HW_ZH_HERO_STORY[id];
+const zhProfile = HW_ZH_PROFILE[id] || {};
+const zhTraitIds = HW_ZH_HERO_TRAITS[id] || [];
+
+// Shallow clone + swap: structure, stats, levels and image refs stay EN/wiki;
+// every official game string that has a ZH localization is replaced.
+const zhData = { ...detail };
+zhData.name = zhName;
+zhData.nameEn = detail.name || char.name; // used by the template for EN-keyed lookups
+zhData.description = epithet || detail.description;
+zhData.shortDescription = epithet
+  ? `${zhName}, ${epithet}.`
+  : String(detail.description || '').split('.')[0] + '.';
+zhData.story = zhStory || detail.story;
+
+// Profile values from the official ZH game profile (EN fallback per field)
+if (detail.profile) {
+  zhData.profile = {
+    ...detail.profile,
+    age: zhProfile.age || detail.profile.age,
+    birthday: zhProfile.birthday || detail.profile.birthday,
+    racial: zhProfile.tribe || detail.profile.racial,
+    homeland: zhProfile.hometown || detail.profile.homeland,
+    height: zhProfile.height || detail.profile.height,
+    bwhRatio: zhProfile.threeSize || detail.profile.bwhRatio,
+  };
+}
+
+// Skill names from the game's ZH skill table (keyed by gameKey); the wiki's EN
+// descriptions stay when the ZH table has no description text
+if (detail.skills) {
+  zhData.skills = Object.fromEntries(
+    Object.entries(detail.skills).map(([k, sk]) => {
+      const zh = sk.gameKey ? HW_ZH_SKILLS[sk.gameKey] : null;
+      return [
+        k,
+        {
+          ...sk,
+          name: (zh && zh.name) || sk.name,
+          description: (zh && zh.desc) || sk.description,
+        },
+      ];
+    })
+  );
+}
+
+// Traits: ZH trait ids map positionally onto the EN trait object order; the
+// gift-level-5 trait (Interested / 兴趣) keeps its special structure
+if (detail.uniqueTraits) {
+  const enTraitValues = Object.values(detail.uniqueTraits);
+  zhData.uniqueTraits = Object.fromEntries(
+    Object.entries(detail.uniqueTraits).map(([k, t], i) => {
+      let zh = zhTraitIds.length === enTraitValues.length ? HW_ZH_TRAITS[zhTraitIds[i]] : null;
+      if (!zh && t.name === 'Interested') zh = HW_ZH_TRAITS[55001]; // 兴趣
+      if (!zh) return [k, t];
+      return [k, { ...t, name: zh.name, description: zh.desc || t.description }];
+    })
+  );
+}
+
+// EX weapon: official ZH name + flavor via the Inheritance (stigma/weapon) loc;
+// stat-label keys translated, unique-skill names via EN-name ZH tables
+if (detail.weapon) {
+  const w = detail.weapon;
+  const weaponZh = HW_ZH_INHERITANCE[w.name];
+  zhData.weapon = {
+    ...w,
+    name: weaponZh?.name || w.name,
+    flavor: weaponZh?.desc || w.flavor,
+    stats: w.stats
+      ? Object.fromEntries(Object.entries(w.stats).map(([k, v]) => [weaponStatLabel(k), v]))
+      : w.stats,
+    levelStats: w.levelStats
+      ? Object.fromEntries(Object.entries(w.levelStats).map(([k, v]) => [weaponStatLabel(k), v]))
+      : w.levelStats,
+    uniqueSkills: w.uniqueSkills
+      ? Object.fromEntries(
+          Object.entries(w.uniqueSkills).map(([k, us]) => {
+            const zh = HW_ZH_WEAPON_SKILLS[us.name] || HW_ZH_SKILL_BY_NAME[us.name];
+            return [
+              k,
+              {
+                ...us,
+                name: (zh && zh.name) || us.name,
+                description: (zh && zh.desc) || us.description,
+              },
+            ];
+          })
+        )
+      : w.uniqueSkills,
+  };
+}
+
+// Korean UI labels for CharacterPageTemplate (official game system
+// terms: 스킬 skills, 특성 traits, 스탯 stats, 성흔 stigma, 행동력 AP, 선물 gifts,
+// 스킨 skins; stat names from the game's own KO StatType table)
+const ZH_LABELS = {
+  portraitAlt: '{name}, 호라이즌 워커 {rarity} 등급 캐릭터',
+  crystalAlt: '{name}의 미래 수정',
+  costBadge: '편성 비용 {n}',
+  defaultSummary: '언제든 전투에 합류할 준비가 된 유능한 캐릭터입니다.',
+  profileTitle: '프로필',
+  ageLabel: '나이: ',
+  raceLabel: '종족: ',
+  homelandLabel: '출신지: ',
+  heightLabel: '키: ',
+  birthdayLabel: '생일: ',
+  baseStatsTitle: '기본 스탯',
+  statsCaptionFull: '레벨 60, 만렙 EX (EX 6)',
+  statsStageCaption: '레벨 60, {stage}',
+  statsStageCaptionFullSuffix: ' (만렙)',
+  statsAtStage: '{stage} 기준 스탯',
+  coreStatsSubtitle: '주요 스탯',
+  statStr: '근력',
+  statTec: '기교',
+  statInt: '지능',
+  statVit: '체질',
+  statAgi: '민첩',
+  coreStrRest: ': 근접 공격력',
+  coreTecRest: ': 사격 공격력',
+  coreIntRest: ': 마법 공격력',
+  coreVitRest: ': 최대 생명력',
+  coreAgiRest: ': 회피와 행동 회복력',
+  combatSubtitle: '전투',
+  maxHpLabel: '최대 생명력',
+  meleeAtkLabel: '근접 공격력',
+  rangedAtkLabel: '사격 공격력',
+  magicAtkLabel: '마법 공격력',
+  speedLabel: '이동력',
+  startingApLabel: '전투 시작 행동력',
+  apRecoveryLabel: '행동 회복력',
+  accuracyLabel: '적중',
+  evadeLabel: '회피',
+  critRateLabel: '치명타 확률',
+  critDmgLabel: '치명타 피해',
+  blockRateLabel: '막기 확률',
+  startingApNote: '전투 시작 행동력 = 캐릭터 자신의 기본 전투 시작 행동력 + 행동 회복력.',
+  statsFootnote:
+    '* 전투 시작 행동력은 전투 시작 시의 총 행동력입니다. 캐릭터의 기본 전투 시작 행동력에 행동 회복력(위 참고)을 더한 값이며, 행동 회복력 부분은 EX 단계 상승에 따른 민첩 증가로 늘어납니다.',
+  attributesSubtitle: '속성 공방',
+  boostCol: '강화',
+  defCol: '방어',
+  attrSlash: '참격',
+  attrPierce: '통격',
+  attrCrush: '타격',
+  attrHeat: '열기',
+  attrCold: '냉기',
+  attrElectric: '전기',
+  attrImmaterial: '무형',
+  attrPoison: '독기',
+  storyTitle: '캐릭터 스토리',
+  sentenceJoin: ' ',
+  skillsTitle: '스킬',
+  skillsExplanation: '모든 스킬은 최대 레벨 기준으로 표기합니다',
+  reworkPointerPre: '{name}은(는) {date}에 리워크되었습니다. 현재 페이지에는 리워크 이후 버전이 표시되며, 리워크 이전 텍스트는 페이지 하단의 ',
+  reworkArchiveLink: '리워크 아카이브',
+  reworkPointerPost: '에서 확인할 수 있습니다.',
+  passiveLabel: '패시브',
+  skillLabel: '스킬',
+  cdLabel: '쿨타임 {n}',
+  apLabel: '행동력 {n}',
+  damageLabel: '피해:',
+  damageOfType: ' {type} 피해',
+  damageSplash: ' (+{n} 스플래시)',
+  triggerCondition: '{name} 발동 조건: [Seeker of Pleasure] 효과가 유지되는 동안',
+  traitsTitle: '고유 특성',
+  interestedTraitName: '흥미',
+  giftLevel5Badge: '호감도 레벨 5',
+  uniqueTraitBadge: '고유 특성',
+  interestedNoteStrong: '호감도 레벨 5에서 해금:',
+  interestedNoteRest: ' 선물을 통해 호감도를 누적 2000 달성하면 이 특성이 활성화됩니다.',
+  level5BonusLabel: '호감도 레벨 5 보너스:',
+  demiTitle: '반신 승급',
+  exRequiredBadge: 'EX 필요',
+  demiBanner:
+    '반신 승급 후 해당 캐릭터는 주인공을 대신해 부대의 Executor를 맡을 수 있으며, 부대 전체에 망각 현상 면역을 부여합니다. 편성 시 신력(DP) {n}을 소모합니다.',
+  authoritySkillBadge: '신위 스킬',
+  demiStageValuesLabel: '승급 단계별 수치:',
+  demiStageView: '{n}단계',
+  demiStageAria: '{n}단계',
+  mightTitle: '무작위 Might 스킬',
+  mightIntro:
+    '반신 승급 시 아래 10종의 Might 스킬 중 하나를 무작위로 획득합니다. 각 스킬은 1~5단계로 구분되며, 단계가 높을수록 희귀합니다.',
+  effectsTitle: '효과 설명',
+  weaponTitlePrefix: '무기: ',
+  weaponGrowNote: '기본 수치는 무기 레벨에 따라 성장합니다 (Lv 1 ~ Lv 60). EX 상승(EX 1 ~ EX 5)은 특수 스킬만 강화합니다.',
+  weaponStaticNote: '수치와 스킬은 레벨 60, 만렙 EX 기준입니다',
+  basicStatsTitle: '기본 수치 (Lv 1 → Lv 60)',
+  weaponStatSuffix: ' (weapon)',
+  ratingStatSuffix: ' (평가)',
+  pctSuffix: '(%)',
+  signatureSkillPrefix: '전용 스킬: ',
+  uniqueSkillPrefix: '특수 스킬: ',
+  signatureNameStrip: '^[^:]+전용:\\s*',
+  skillValuesAtRaise: 'EX 상승 시 스킬 수치:',
+  signatureReqNote: '{name} 필요: {name}이(가) 이 무기를 장착하고 있을 때만 효과가 발동합니다. 고정 수치: 무기 레벨이나 EX 상승에 따라 변하지 않습니다.',
+  noteLabel: '참고:',
+  storyGalleryTitle: '스토리 갤러리',
+  storyGalleryNote: '{name} 스토리 챕터의 일러스트입니다.',
+  storyCgAlt: '{name} 스토리 일러스트: {caption}',
+  skinsTitle: '스킨',
+  skinAlt: '{name}의 {skin} 스킨',
+  skinPromoAlt: '{name}의 {skin} 스킨 프로모션 이미지',
+  skinPortraitAlt: '{name}의 {skin} 초상화',
+  videosTitle: '관련 영상',
+  videosNote: '호라이즌 워커 공식 YouTube 채널의 {name} 관련 영상입니다.',
+  videoTitleTpl: '{name}: {title}',
+  playVideoAria: '영상 재생: {title}',
+  videoThumbAlt: '{title} 영상 썸네일',
+  videoBadgeFallback: '영상',
+  watchMoreLabel: '공식 YouTube 채널에서 더 보기',
+  videoTypes: {
+    intro: '신규 수호자',
+    costume: '코스튬',
+    affection: '호감도',
+    preview: '프리뷰',
+  },
+  giftTitle: '선물 취향',
+  giftExplanation: '호감도 2000을 모아 레벨 5에 도달하면 특성 보너스가 해금되며, 골드와 게임 재화도 함께 획득할 수 있습니다',
+  level5BonusTitle: '호감도 레벨 5 보너스',
+  affectionBonusBadge: '호감도 보너스',
+  highValueGiftsTitle: '고가치 선물',
+  highValueGiftsDesc: '이 희귀 선물은 매우 높은 호감도(총 80 이상)를 제공하므로 몹시 귀중합니다',
+  favoriteGiftsTitle: '가장 좋아하는 선물',
+  favoriteGiftsDesc: '이 선물은 보너스 점수(20 이상)를 제공하며, 해당 캐릭터가 특히 좋아하는 선물입니다',
+  likedGiftsTitle: '좋아하는 선물',
+  likedGiftsDesc: '이 선물은 추가 점수 10점을 제공하며, 해당 캐릭터가 좋아하는 선물입니다',
+  altHighValueTitle: '대체 고가치 옵션',
+  altHighValueDesc: '여왕의 티아라는 취향과 관계없이 모든 캐릭터에게 최고의 호감도(100점)를 제공합니다',
+  basePointsLabel: '기본: ',
+  bonusPointsLabel: '+ 보너스: ',
+  totalPointsLabel: '= 합계: ',
+  maxAffectionLabel: '호감도 레벨 5 도달에 필요:',
+  giftsCountLabel: '{n}개',
+  foundInLabel: '획득 경로: ',
+  noGiftsTitle: '선물 취향 정보 준비 중',
+  noGiftsDesc: '{name}의 선물 취향은 아직 공개되지 않았습니다. 좋아하는 선물이 정리되면 다시 확인해 주세요!',
+  reworkTitle: '리워크 아카이브',
+  beforeTag: '리워크 전',
+  afterTag: '리워크 후',
+  itemNames: zhItemNames,
+  skinNames: HW_ZH_SKINS,
+  statTypeNames: HW_ZH_STAT_TYPES,
+};
+---
+
+<HwLangLayout lang="ko" ui={HW_ZH}
+  title={`${zhName} (${char.name}) - 호라이즌 워커 캐릭터 정보 - GachaWiki`}
+  description={`호라이즌 워커 캐릭터 ${zhName}(${char.name})의 한국어 정보: 공식 스킬 설명, 고유 특성, 프로필, 스탯, EX 무기와 선물 취향. 모든 게임 텍스트는 게임 공식 한국어에서 인용했습니다.`}
+  keywords={[zhName, char.name, '호라이즌 워커', '스킬', '스탯', '공략']}
+  breadcrumbItems={[
+    { name: '홈', href: '/' },
+    { name: '호라이즌 워커', href: HW_ZH.baseUrl },
+    { name: '캐릭터 데이터베이스', href: `${HW_ZH.baseUrl}characters/` },
+    { name: zhName },
+  ]}
+>
+  <CharacterPageTemplate characterData={zhData} labels={ZH_LABELS} />
+</HwLangLayout>

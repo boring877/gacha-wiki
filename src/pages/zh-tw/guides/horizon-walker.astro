@@ -1,0 +1,217 @@
+---
+// Traditional-Chinese (zh-tw) landing page for the Horizon Walker wiki:
+// /zh-tw/guides/horizon-walker/ Reuses the EN landing's classes (hw-about-section
+// / hw-resources-section from hw-landing-page.css) so the look is identical;
+// labels are Traditional Chinese and the resource grid mirrors the EN
+// categoryGroups with /zh-tw/ URLs. Intro copy is written for this wiki; game
+// terms (人神/護衛/次元裂縫/聖痕/特性) are the game's own official Traditional
+// Chinese wording.
+import HwLangLayout from '../../../layouts/lang/HwLangLayout.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
+import DiscordPromo from '../../../components/DiscordPromo.astro';
+import HWGuideIcon from '../../../components/horizon-walker/HWGuideIcon.astro';
+import { horizonWalkerConfig } from '../../../data/horizon-walker/horizon-walker.js';
+import { HW_ZH } from '../../../data/horizon-walker/zh-tw/ui.js';
+
+const { gameInfo } = horizonWalkerConfig;
+const hasPlatforms = gameInfo.platforms && gameInfo.platforms.length > 0;
+
+// Traditional-Chinese titles for the EN guide ids (icons resolve by id, links go to /zh-tw/)
+const GUIDE_ZH = {
+  characters: '角色資料庫',
+  'tier-list': '排行榜',
+  builds: '配裝推薦',
+  'community-builds': '社群配裝',
+  mercenaries: '傭兵',
+  weapons: '武器',
+  stigmas: '聖痕',
+  'ap-guide': '行動力指南',
+  traits: '特性',
+  demi: '半神晉升',
+  'stigma-sub-stats': '聖痕副屬性',
+  'story-gallery': '劇情畫廊',
+  gifts: '禮物',
+  'character-gifts': '角色禮物偏好',
+  clock: '時鐘',
+  'redeem-codes': '兌換碼',
+  banners: '卡池時間線',
+  'patch-notes': '更新公告',
+};
+
+const GROUP_ZH = {
+  characters: { title: '角色', description: '角色資料庫、配裝、武器與聖痕' },
+  'game-mechanics': { title: '遊戲機制', description: '行動力、特性、半神晉升與聖痕副屬性' },
+  resources: { title: '資源', description: '劇情畫廊、禮物、時鐘、兌換碼與更新公告' },
+};
+
+const zhUrl = (id, enUrl) =>
+  id === 'clock' ? enUrl : enUrl.replace('/guides/horizon-walker/', HW_ZH.baseUrl);
+
+const categoryGroups = horizonWalkerConfig.categoryGroups.map(g => ({
+  ...g,
+  title: GROUP_ZH[g.id]?.title || g.title,
+  description: GROUP_ZH[g.id]?.description || g.description,
+  guides: g.guides.map(gd => ({
+    ...gd,
+    title: GUIDE_ZH[gd.id] || gd.title,
+    url: zhUrl(gd.id, gd.url),
+  })),
+}));
+---
+
+<HwLangLayout lang="zh-tw" ui={HW_ZH}
+  title="地平線行者（Horizon Walker）繁體中文維基 - 角色資料、技能、排行榜 - GachaWiki"
+  description="地平線行者繁體中文維基：全部角色官方中文技能與屬性、武器、聖痕、排行榜、卡池時間線與更新公告。遊戲文字均取自遊戲官方繁體中文。"
+  keywords={['地平線行者', 'Horizon Walker', '繁體中文', 'wiki', '攻略', '角色', '技能', '排行榜']}
+  heroTitle={HW_ZH.gameName}
+  ambientVideo="/videos/horizon-walker-hero.mp4"
+  breadcrumbItems={[{ name: '首頁', href: '/' }, { name: '地平線行者' }]}
+>
+  <!-- Game Overview Section (EN classes, Chinese labels) -->
+  <section class="content-section hw-about-section">
+    <h2 class="section-title">遊戲簡介</h2>
+    <div class="hw-about-content">
+      <div class="hw-about-text">
+        <div class="game-description">
+          <p>
+            《地平線行者》是一款末世題材的蒐集型 RPG。次元裂縫湧現的怪物終結了人類的黃金時代，跨越死亡、獲得神之權能的人神與護衛們，在裂縫之上為奪回世界而戰。
+          </p>
+          <p>
+            玩家將扮演人神，招募護衛編成隊伍，挑戰回合制戰鬥：利用地形、行動力與技能連鎖擊敗強敵，並透過禮物提升好感度、蒐集皮膚與劇情 CG。
+          </p>
+          <p>{HW_ZH.labels.dataFromGame}</p>
+        </div>
+
+        <!-- Play Game Platforms -->
+        {
+          hasPlatforms && (
+            <div class="platforms-container">
+              <h3>遊玩平台：</h3>
+              <div class="platform-notes">
+                <ul>
+                  <li>• Google Play：和諧版</li>
+                  <li>• One Store：無和諧（將遷移至 Steam）</li>
+                  <li>• Ero-Labs：無和諧（不遷移至 Steam）</li>
+                  <li>• Steam：無和諧版</li>
+                </ul>
+              </div>
+              <div class="platforms-grid">
+                {gameInfo.platforms.map(platform => (
+                  <a
+                    href={platform.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="platform-button"
+                    aria-label={`在 ${platform.name} 遊玩地平線行者`}
+                  >
+                    {platform.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )
+        }
+
+        <!-- Social Links -->
+        {
+          gameInfo.socialLinks && (
+            <div class="hw-social-links-container">
+              <h4>官方社群：</h4>
+              <div class="hw-social-links">
+                {gameInfo.socialLinks.twitter && (
+                  <a
+                    href={gameInfo.socialLinks.twitter}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hw-social-link"
+                    aria-label="地平線行者官方 X/Twitter"
+                  >
+                    X/Twitter
+                  </a>
+                )}
+                {gameInfo.socialLinks.discord && (
+                  <a
+                    href={gameInfo.socialLinks.discord}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hw-social-link"
+                    aria-label="地平線行者官方 Discord"
+                  >
+                    Discord
+                  </a>
+                )}
+                {gameInfo.socialLinks.youtube && (
+                  <a
+                    href={gameInfo.socialLinks.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hw-social-link"
+                    aria-label="地平線行者官方 YouTube 頻道"
+                  >
+                    YouTube
+                  </a>
+                )}
+              </div>
+            </div>
+          )
+        }
+
+        <DiscordPromo accent="#e8a547" />
+
+        <p class="last-updated">
+          最後更新：<FormattedDate date={gameInfo.lastUpdated} />
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources Section (same grid/cards as EN, Chinese labels) -->
+  <section class="hw-resources-section">
+    <h2 class="hw-resources-title">內容導覽</h2>
+
+    <div class="hw-resources-grid">
+      {
+        categoryGroups.map(category => {
+          return (
+            <div class={`hw-resource-category hw-category-${category.size}`}>
+              <div class="hw-category-header">
+                <h3>{category.title}</h3>
+                <p class="hw-category-description">{category.description}</p>
+              </div>
+              <div class="hw-buttons-grid">
+                {category.guides.map(guide => (
+                  <a
+                    href={guide.url}
+                    class="hw-resource-button"
+                    aria-label={`前往${guide.title}`}
+                  >
+                    <HWGuideIcon guideId={guide.id} alt={guide.title} class="hw-guide-icon" />
+                    <span class="hw-guide-label">{guide.title}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <!-- Language switch -->
+  <section class="hw-resources-section">
+    <h2 class="hw-resources-title">語言</h2>
+    <div class="hw-resources-grid">
+      <div class="hw-resource-category hw-category-medium">
+        <div class="hw-category-header">
+          <h3>Language</h3>
+          <p class="hw-category-description">切換到英文維基</p>
+        </div>
+        <div class="hw-buttons-grid">
+          <a href={HW_ZH.selectorUrl} class="hw-resource-button" aria-label="English version">
+            <span class="hw-guide-label">English</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</HwLangLayout>

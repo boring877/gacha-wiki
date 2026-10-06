@@ -1,0 +1,128 @@
+---
+// Traditional-Chinese (zh-tw) community builds index: /zh-tw/guides/horizon-walker/builds/community/
+// Same units as the EN page (community-builds.js, credits: Envy, Liauw &
+// Gamekee); character names use the official Traditional Chinese from game-text.js.
+// Re-skinned onto the EN hw-builds.css classes for visual parity.
+import HwLangLayout from '../../../../../../layouts/lang/HwLangLayout.astro';
+import '../../../../../../styles/games/horizon-walker/hw-builds.css';
+import { COMMUNITY_BUILDS } from '../../../../../../data/horizon-walker/community-builds.js';
+import { getCharacterBySlug, HORIZON_WALKER_CHARACTERS } from '../../../../../../data/horizon-walker/characters.js';
+import { HW_ZH_NAMES } from '../../../../../../data/horizon-walker/zh-tw/game-text.js';
+import { HW_ZH } from '../../../../../../data/horizon-walker/zh-tw/ui.js';
+import { CharacterImage, HWRarityIcon } from '../../../../../../components/horizon-walker/index.astro';
+
+export const prerender = true;
+
+// Merge community data with roster records (cost, rarity, portrait, ZH name)
+const charBySlug = {};
+for (const c of HORIZON_WALKER_CHARACTERS) charBySlug[c.slug] = c;
+
+const communityUnits = Object.entries(COMMUNITY_BUILDS)
+  .map(([slug, communityData]) => {
+    const character = getCharacterBySlug(slug) || charBySlug[slug] || null;
+    return {
+      slug,
+      communityData,
+      character,
+      displayName: HW_ZH_NAMES[character?.id] || character?.name || communityData.name,
+      nameEn: character?.name || communityData.name,
+      rarity: character?.rarity || communityData.rarity,
+      cost: character?.cost || 0,
+      image: character?.image || communityData.name,
+    };
+  });
+
+const rarityOrder = { EX: 5, SS: 4, S: 3, A: 2, B: 1 };
+communityUnits.sort((a, b) => {
+  const rarityDiff = (rarityOrder[b.rarity] || 0) - (rarityOrder[a.rarity] || 0);
+  if (rarityDiff !== 0) return rarityDiff;
+  return a.displayName.localeCompare(b.displayName, 'zh');
+});
+
+const buildsByRarity = {
+  EX: communityUnits.filter((u) => u.rarity === 'EX'),
+  SS: communityUnits.filter((u) => u.rarity === 'SS'),
+  S: communityUnits.filter((u) => u.rarity === 'S'),
+  A: communityUnits.filter((u) => u.rarity === 'A'),
+  B: communityUnits.filter((u) => u.rarity === 'B'),
+};
+---
+
+<HwLangLayout lang="zh-tw" ui={HW_ZH}
+  title="社群配裝 - 地平線行者繁體中文維基 - GachaWiki"
+  description={`地平線行者社群配裝：整理自 Envy、Liauw 與 Gamekee 的社群配裝表格，覆蓋 ${communityUnits.length} 名角色的推薦武器、聖痕、副屬性、特性與技能升級順序。`}
+  keywords={['地平線行者', '社群配裝', '配裝', '聖痕']}
+  pageTitle="社群配裝"
+  breadcrumbItems={[
+    { name: '首頁', href: '/' },
+    { name: '地平線行者', href: HW_ZH.baseUrl },
+    { name: '配裝推薦', href: `${HW_ZH.baseUrl}builds/` },
+    { name: '社群配裝' },
+  ]}
+>
+  <div class="hw-builds-container">
+    <div class="hw-community-builds-note">
+      <h2 class="hw-community-builds-title">社群配裝</h2>
+      <p class="hw-community-builds-text">
+        整理自 Envy、Liauw 與 Gamekee 的社群配裝表格，覆蓋 {communityUnits.length}
+        名角色。手動精選配裝在單獨的<a href={`${HW_ZH.baseUrl}builds/`}>配裝推薦</a
+      >欄目，更詳細的配裝解析見各角色頁面。聖痕套裝與副屬性數值來自社群表格，保留英文原文。
+      </p>
+    </div>
+
+    {
+      Object.entries(buildsByRarity).map(([rarity, units]) => {
+        if (units.length === 0) return null;
+        return (
+          <section class="hw-builds-rarity-section">
+            <div class="hw-builds-rarity-header">
+              <HWRarityIcon rarity={rarity} width={48} height={24} />
+              <span class="hw-builds-rarity-count">（{units.length} 套配裝）</span>
+            </div>
+            <div class="hw-builds-grid">
+              {units.map((unit) => (
+                <a
+                  href={`${HW_ZH.baseUrl}builds/community/${unit.slug}/`}
+                  class="hw-build-card-link"
+                  aria-label={`查看 ${unit.displayName} 的社群配裝`}
+                >
+                  <div class="hw-build-card">
+                    <div class="hw-build-card-header">
+                      <div class="hw-build-character-image">
+                        <CharacterImage
+                          imageName={unit.image}
+                          alt={unit.displayName}
+                          width={300}
+                          height={300}
+                          class="hw-character-portrait"
+                          loading="eager"
+                        />
+                      </div>
+                      <div class="hw-build-character-info">
+                        <h3 class="hw-build-character-name">{unit.displayName}</h3>
+                        <p class="zh-cb-en">{unit.nameEn}</p>
+                        <div class="hw-build-character-meta">
+                          <span class="hw-badge" data-type="Cost">費用 {unit.cost}</span>
+                          <HWRarityIcon rarity={unit.rarity} width={40} height={20} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        );
+      })
+    }
+  </div>
+</HwLangLayout>
+
+<style>
+  /* ZH-only: EN gloss under the Chinese character name */
+  .zh-cb-en {
+    margin: 0.1rem 0 0.45rem 0;
+    font-size: 0.78rem;
+    color: var(--hw-text-very-muted);
+  }
+</style>

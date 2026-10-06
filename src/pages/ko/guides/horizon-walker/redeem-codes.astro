@@ -1,0 +1,254 @@
+---
+// Korean redeem codes page: /ko/guides/horizon-walker/redeem-codes/
+// Same codes and data as the EN page (redeem-codes.js, codes verbatim); page
+// chrome, warnings and step-by-step instructions are in Korean. Reward item
+// names have no Korean map entry, so they stay in English.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import { horizonWalkerRedeemCodes } from '../../../../data/horizon-walker/redeem-codes.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ko/ui.js';
+import '../../../../styles/games/horizon-walker/hw-redeem-codes.css';
+
+export const prerender = true;
+
+const { availableCodes, expiredCodes, communitySection, warnings, meta } = horizonWalkerRedeemCodes;
+
+// localize the data's English date strings without changing the values
+const MONTH_NUM = {
+  january: 1, february: 2, march: 3, april: 4, may: 5, june: 6, july: 7,
+  august: 8, september: 9, october: 10, november: 11, december: 12,
+};
+const zhDateStr = (s) => {
+  if (!s) return s;
+  let m = s.match(/^([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})(.*)$/);
+  if (m && MONTH_NUM[m[1].toLowerCase()])
+    return `${m[3]}년 ${MONTH_NUM[m[1].toLowerCase()]}월 ${parseInt(m[2], 10)}일${m[4] || ''}`;
+  m = s.match(/^([A-Za-z]+)\s+(\d{4})$/);
+  if (m && MONTH_NUM[m[1].toLowerCase()]) return `${m[2]}년 ${MONTH_NUM[m[1].toLowerCase()]}월`;
+  return s;
+};
+
+const lastUpdated = meta.lastUpdated;
+const lastUpdatedZh = `${lastUpdated.getFullYear()}년 ${lastUpdated.getMonth() + 1}월 ${lastUpdated.getDate()}일`;
+
+const statusZh = { working: '사용 가능', unknown: '미확인', expired: '만료됨' };
+const statusText = (s) => statusZh[s] || s;
+
+// the EN instructions describe in-game redemption; same steps in Korean
+const stepsZh = [
+  { title: '설정 메뉴 열기', description: '게임 메인 화면에서 설정 또는 메뉴 아이콘을 눌러 게임 설정으로 들어갑니다.' },
+  { title: '교환 코드 항목 찾기', description: '설정 메뉴에서 "교환 코드"(Redeem Code / Gift Code) 항목을 찾아 누릅니다.' },
+  { title: '교환 코드 입력', description: '입력창에 교환 코드를 직접 입력하거나 붙여넣습니다.' },
+  { title: '확인 및 받기', description: '"확인" 또는 "교환" 버튼을 눌러 코드를 제출합니다. 성공하면 보상이 게임 내 우편함으로 지급됩니다.' },
+];
+
+const communityButtonsZh = communitySection.buttons.map((b) => ({
+  ...b,
+  textZh: b.id === 'discord' ? 'Discord에 알리기' : b.id === 'github' ? 'GitHub에 스타 주기' : b.text,
+}));
+---
+
+<HwLangLayout lang="ko" ui={HW_ZH}
+  title="교환 코드 - 호라이즌 워커 한국어 위키 - GachaWiki"
+  description="호라이즌 워커 최신 교환 코드와 사용법: 사용 가능한 교환 코드 목록, 만료된 교환 코드 아카이브, 게임 내에서 코드를 교환하는 자세한 단계를 정리했습니다."
+  keywords={['호라이즌 워커', '교환 코드', '쿠폰 코드', '선물 코드']}
+  heroTitle="교환 코드"
+  breadcrumbItems={[
+    { name: '홈', href: '/' },
+    { name: '호라이즌 워커', href: HW_ZH.baseUrl },
+    { name: '교환 코드' },
+  ]}
+>
+  <section class="page-content">
+    <div class="hw-redeem-main-container">
+      <div class="hw-redeem-header-section">
+        <p class="important-notice">중요 안내: 이 교환 코드는 유효할 수도, 아닐 수도 있습니다! 게임 측이 사전 공지 없이 언제든 코드를 비활성화할 수 있습니다.</p>
+        <h3>보증하지 않습니다</h3>
+        <p>아래 교환 코드는 커뮤니티에서 정리한 것으로, 이미 만료되었거나 사용 횟수 제한이 있을 수 있습니다. 보상 내역은 인게임 아이템의 영어 명칭 그대로 표기합니다.</p>
+        <p class="last-updated">최종 업데이트: {lastUpdatedZh}</p>
+      </div>
+
+      <div class="hw-redeem-codes-section">
+        <h2 class="hw-redeem-section-title">사용 가능한 교환 코드</h2>
+        <p class="hw-redeem-section-description">커뮤니티에서 공유된 교환 코드입니다. 하나씩 사용해 보세요!</p>
+
+        <div class="hw-redeem-codes-grid">
+          {
+            availableCodes.map((codeData) => (
+              <div class="hw-redeem-code-card">
+                <div class="hw-code-info">
+                  <div class="hw-code-label">교환 코드</div>
+                  <div class="hw-code-value">{codeData.code}</div>
+                </div>
+                <div class="hw-code-rewards">{codeData.rewards}</div>
+                <div class="hw-code-meta">
+                  <span class={`hw-code-status ${codeData.status}`}>{statusText(codeData.status)}</span>
+                  <span class="hw-code-date">확인일: {zhDateStr(codeData.lastChecked)}</span>
+                </div>
+                {codeData.expiryDate && (
+                  <div class="hw-code-expiry">만료일: {zhDateStr(codeData.expiryDate)}</div>
+                )}
+                <button class="hw-copy-button" data-code={codeData.code}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                  </svg>
+                  교환 코드 복사
+                </button>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="hw-redeem-instructions-section">
+        <h2 class="hw-redeem-section-title">교환 코드 사용 방법</h2>
+        <p class="hw-redeem-section-description">아래 단계를 따라 호라이즌 워커 교환 코드를 게임에서 사용하세요:</p>
+
+        <h3>자세한 단계:</h3>
+        {
+          stepsZh.map((step, index) => (
+            <div class="hw-instruction-step" data-step={index + 1}>
+              <h4>{step.title}</h4>
+              <p>{step.description}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="hw-redeem-expired-section">
+        <h2 class="hw-redeem-section-title">만료된 교환 코드</h2>
+        {
+          expiredCodes.length > 0 ? (
+            <>
+              <p class="hw-redeem-section-description">이 교환 코드는 더 이상 사용할 수 없으며, 참고용으로만 남겨두었습니다.</p>
+              <div class="hw-redeem-codes-grid">
+                {expiredCodes.map((codeData) => (
+                  <div class="hw-redeem-code-card expired">
+                    <div class="hw-code-info">
+                      <div class="hw-code-label">만료된 교환 코드</div>
+                      <div class="hw-code-value">{codeData.code}</div>
+                    </div>
+                    <div class="hw-code-rewards">{codeData.rewards}</div>
+                    <p class="hw-code-expiry">만료일: {zhDateStr(codeData.expiryDate)}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <div class="hw-empty-section">
+              <p class="hw-empty-message">아직 만료된 교환 코드가 없습니다! 모든 사용 가능한 코드를 시도해 볼 만합니다.</p>
+            </div>
+          )
+        }
+      </div>
+
+      <div class="hw-redeem-community-section">
+        <h2 class="hw-redeem-section-title">최신 상태 유지를 도와주세요</h2>
+        <p class="hw-redeem-section-description">만료된 코드나 새 코드를 발견하셨나요? 커뮤니티에 알려주세요!</p>
+
+        <div class="hw-community-buttons">
+          {
+            communityButtonsZh.map((button) => (
+              <a
+                href={button.url}
+                class={`hw-community-button ${button.type}`}
+                target={button.external ? '_blank' : '_self'}
+                rel={button.external ? 'noopener noreferrer' : ''}
+              >
+                {button.textZh}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</HwLangLayout>
+
+<script is:inline>
+  // copy a code to the clipboard with multiple fallbacks (Korean labels)
+  function copyCode(button) {
+    var code = button.getAttribute('data-code');
+    if (!code) return;
+
+    var originalHTML = button.innerHTML;
+    button.disabled = true;
+    button.textContent = '복사 중';
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard
+        .writeText(code)
+        .then(function () {
+          showSuccess(button, originalHTML);
+        })
+        .catch(function () {
+          tryExecCommand(button, originalHTML, code);
+        });
+    } else {
+      tryExecCommand(button, originalHTML, code);
+    }
+  }
+
+  function tryExecCommand(button, originalHTML, code) {
+    try {
+      var textarea = document.createElement('textarea');
+      textarea.value = code;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      textarea.style.left = '-9999px';
+      textarea.setAttribute('readonly', '');
+      document.body.appendChild(textarea);
+
+      textarea.select();
+      textarea.setSelectionRange(0, 99999);
+
+      var success = document.execCommand('copy');
+      document.body.removeChild(textarea);
+
+      if (success) {
+        showSuccess(button, originalHTML);
+      } else {
+        throw new Error('execCommand failed');
+      }
+    } catch (err) {
+      console.error('Copy failed:', err);
+      showError(button, originalHTML);
+    }
+  }
+
+  function showSuccess(button, originalHTML) {
+    button.textContent = '복사됨!';
+    button.style.background = '#10b981';
+    button.style.color = 'white';
+
+    setTimeout(function () {
+      button.innerHTML = originalHTML;
+      button.style.background = '';
+      button.style.color = '';
+      button.disabled = false;
+    }, 2000);
+  }
+
+  function showError(button, originalHTML) {
+    button.textContent = '다시 시도';
+    button.style.background = '#ef4444';
+    button.style.color = 'white';
+
+    setTimeout(function () {
+      button.innerHTML = originalHTML;
+      button.style.background = '';
+      button.style.color = '';
+      button.disabled = false;
+    }, 2000);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var buttons = document.querySelectorAll('.hw-copy-button');
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+        copyCode(button);
+      });
+    });
+  });
+</script>

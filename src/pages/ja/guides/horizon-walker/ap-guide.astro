@@ -1,0 +1,219 @@
+---
+// Japanese AP (action points) guide: /ja/guides/horizon-walker/ap-guide/
+// Editorial walkthrough translated from the EN ap-guide data, same numbers
+// (Yeonwoo 56/109/165, 30 AP skill, 100 AP threshold); stat names use the
+// game's official JA from HW_ZH_STAT_LABELS/STAT_TYPES.
+// Re-skinned onto the EN hw-guide.css classes for visual parity.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../data/horizon-walker/characters.js';
+import { HW_ZH_NAMES, HW_ZH_STAT_LABELS, HW_ZH_STAT_TYPES } from '../../../../data/horizon-walker/ja/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ja/ui.js';
+import { APImage } from '../../../../components/horizon-walker/index.astro';
+import '../../../../styles/games/horizon-walker/hw-guide.css';
+
+export const prerender = true;
+
+// Hero names mentioned in the guide -> official JA (EN fallback)
+const heroJa = enName => {
+  const rosterChar = HORIZON_WALKER_CHARACTERS.find(c => c.name === enName);
+  return (rosterChar && HW_ZH_NAMES[rosterChar.id]) || enName;
+};
+const yeonwoo = heroJa('Yeonwoo');
+const kalma = heroJa('Kalma');
+
+// Official JA stat names used in the guide
+const apRecovery = HW_ZH_STAT_LABELS.apRecovery; // スタミナ回復力
+const startingAp = HW_ZH_STAT_LABELS.startingAp; // 戦闘開始時の行動力
+const agility = HW_ZH_STAT_LABELS.agility; // 敏捷
+const apRecoveryEn = HW_ZH_STAT_TYPES['AP Recovery'];
+
+const IMG1 = '../../assets/images/games/horizon-walker/AP_recovery/img1.jpg';
+const IMG2 = '../../assets/images/games/horizon-walker/AP_recovery/img2.jpg';
+const IMG3 = '../../assets/images/games/horizon-walker/AP_recovery/img3.jpg';
+---
+
+<HwLangLayout lang="ja" ui={HW_ZH}
+  title="行動力（AP）システムガイド - ホライゾン・ウォーカー日本語ウィキ - GachaWiki"
+  description="ホライゾン・ウォーカーの行動力（AP）システムを徹底解説：スタミナ回復力と戦闘開始時の行動力の違い、行動順の計算方法、100 AP の行動条件、追加ターンなど特殊効果まで。"
+  keywords={['ホライゾン・ウォーカー', '行動力', 'AP', '行動順', 'スタミナ回復力']}
+  breadcrumbItems={[
+    { name: 'ホーム', href: '/' },
+    { name: 'ホライゾン・ウォーカー', href: HW_ZH.baseUrl },
+    { name: '行動力ガイド' },
+  ]}
+>
+  <section class="hw-guide-hero">
+    <h1 class="hw-guide-title">行動力（AP）システムガイド</h1>
+    <p class="hw-guide-subtitle">ホライゾン・ウォーカーの行動順を決める AP の仕組みを理解しよう</p>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-guide-content">
+    <section class="hw-guide-section" id="introduction">
+      <h2 class="hw-section-title">AP の仕組み</h2>
+      <div class="hw-section-content">
+        <p>
+          このゲームでは、行動順の計算に行動力（AP）が使われます。AP とは、誰が先に行動できるかを測る指標となるシステムです。ここでは AP の仕組みと関連メカニズムを解説します。
+        </p>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="ap-stats">
+      <h2 class="hw-section-title">AP 関連ステータス一覧</h2>
+      <div class="hw-section-content">
+        <p>まず、AP に影響するステータスは次の 2 つです：</p>
+      </div>
+      <ul class="hw-guide-list">
+        <li>{apRecovery}（{apRecoveryEn}、AP Recovery）</li>
+        <li>{startingAp}（Starting AP）</li>
+      </ul>
+    </section>
+
+    <section class="hw-guide-section" id="ap-recovery-explanation">
+      <h2 class="hw-section-title">{apRecovery}を理解する</h2>
+      <div class="hw-section-content">
+        <p>
+          {apRecovery}（AP Recovery）：戦闘の 1 ラウンド目から、毎ラウンド獲得する AP の量です。
+        </p>
+        <p>
+          {startingAp}（Starting AP）：戦闘の 1 ラウンド目にのみ適用されます。味方ユニットをいち早く行動させ、連携やバフを早く発動する助けになります。
+        </p>
+      </div>
+      <div class="hw-warning-box">
+        <div class="hw-warning-content">
+          注意：{agility}は基礎{apRecovery}を上昇させます。上昇量は割合で計算されるため、{agility}が高いキャラほど{apRecovery}上昇の恩恵が大きくなります！
+        </div>
+      </div>
+      <div class="hw-guide-image-container">
+        <APImage
+          imageName={IMG1}
+          alt="AP ステータス画面：敏捷がスタミナ回復力に影響"
+          class="hw-guide-image"
+          width={600}
+          height={400}
+          loading="lazy"
+          format="webp"
+          quality={85}
+        />
+        <p class="hw-guide-image-caption">AP ステータス画面：{agility}が{apRecovery}に影響</p>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="gameplay-mechanics">
+      <h2 class="hw-section-title">ゲーム内での使い方</h2>
+      <div class="hw-section-content">
+        <p>次に、この 2 つのステータスが実戦でどう働くかを見てみましょう。{yeonwoo}を例にします：</p>
+      </div>
+      <div class="hw-guide-image-container">
+        <APImage
+          imageName={IMG2}
+          alt={`${yeonwoo}の AP ステータス：戦闘開始時の行動力 56、スタミナ回復力 109`}
+          class="hw-guide-image"
+          width={600}
+          height={400}
+          loading="lazy"
+          format="webp"
+          quality={85}
+        />
+        <p class="hw-guide-image-caption">{yeonwoo}の AP ステータス：{startingAp} 56、{apRecovery} 109</p>
+      </div>
+      <div class="hw-example-box">
+        <div class="hw-example-title">{yeonwoo}の AP 計算</div>
+        <div class="hw-example-content">
+          彼女の{startingAp}は 56、{apRecovery}は 109 です。1 ラウンド目の合計は 165 AP（56 + 109）になり、以降のラウンドではさらに 109 ずつ獲得します。
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="turn-threshold">
+      <h2 class="hw-section-title">100 AP の行動条件ルール</h2>
+      <div class="hw-section-content">
+        <p>1 ラウンド目の彼女は 165 AP を持っており、基本スキルの消費 AP は 30 です。</p>
+      </div>
+      <div class="hw-guide-image-container">
+        <APImage
+          imageName={IMG3}
+          alt={`1 ラウンド目：${yeonwoo}は 165 AP を所持、基本スキルの消費 AP は 30`}
+          class="hw-guide-image"
+          width={600}
+          height={400}
+          loading="lazy"
+          format="webp"
+          quality={85}
+        />
+        <p class="hw-guide-image-caption">1 ラウンド目：{yeonwoo}は 165 AP を所持、基本スキルの消費 AP は 30</p>
+      </div>
+      <div class="hw-warning-box">
+        <div class="hw-warning-content">
+          非常に重要：AP が 100 未満の場合、AP が 100 以上になるまで次のラウンドを待つ必要があります。行動できるのは 100 AP 以上です！
+        </div>
+      </div>
+      <div class="hw-info-box">
+        <div class="hw-info-box-title">AP 蓄積の例</div>
+        <div class="hw-info-box-content">
+          現在 99 AP の場合、行動できるのは次のラウンドで、99 + 109（{apRecovery}）= 208 AP になります。
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="special-effects">
+      <h2 class="hw-section-title">特殊効果</h2>
+      <div class="hw-section-content">
+        <p>効果：</p>
+      </div>
+      <div class="hw-example-box">
+        <div class="hw-example-title">追加ターン効果</div>
+        <div class="hw-example-content">
+          一部のスキル（{kalma}のスキルなど）が持つ追加ターン効果は、100 AP を待たずに行動機会を獲得できます。そのラウンド中に行動できる、いわば 100 AP の行動条件を無視できる効果です！
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="tldr">
+      <h2 class="hw-section-title">まとめ</h2>
+      <div class="hw-info-box">
+        <div class="hw-info-box-title">ポイント</div>
+        <div class="hw-info-box-content">
+          <ul class="hw-guide-list zh-info-list">
+            <li>AP が行動順を決める</li>
+            <li>{startingAp}は 1 ラウンド目にのみ影響する</li>
+            <li>{apRecovery}は毎ラウンド AP を増やす</li>
+            <li>行動には最低 100 AP が必要（特殊効果を除く）</li>
+            <li>{agility}は基礎{apRecovery}を上昇させる</li>
+            <li>追加ターン効果は 100 AP ルールを無視できる</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="video-explanation">
+      <h2 class="hw-section-title">動画解説</h2>
+      <div class="hw-section-content">
+        <p>より詳しい AP システムの動画解説はこちら：</p>
+      </div>
+      <div class="hw-video-link-container">
+        <a
+          href="https://www.youtube.com/watch?v=AUh3Fhjag24"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hw-video-link"
+        >
+          YouTube で AP システム解説を見る →
+        </a>
+      </div>
+    </section>
+  </div>
+</HwLangLayout>
+
+<style>
+  /* Localize the EN pseudo-element labels; the list inside the TL;DR info box
+     needs tighter vertical rhythm than the standalone guide list. */
+  .hw-warning-box::before {
+    content: '⚠️ 注意';
+  }
+
+  .zh-info-list {
+    margin: 0;
+  }
+</style>

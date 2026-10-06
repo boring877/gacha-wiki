@@ -1,0 +1,144 @@
+---
+// Korean level difference guide: /ko/guides/horizon-walker/level-difference/
+// Same LEVEL_PENALTY table and highlight rows as the EN page (numbers straight
+// from combat-mechanics.js); prose written for this wiki, formula kept as code.
+// Re-skinned onto the EN hw-guide.css + hw-combat-mechanics.css classes.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import { LEVEL_PENALTY } from '../../../../data/horizon-walker/combat-mechanics.js';
+import { HW_ZH_NAMES } from '../../../../data/horizon-walker/ko/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ko/ui.js';
+import '../../../../styles/games/horizon-walker/hw-guide.css';
+import '../../../../styles/games/horizon-walker/hw-combat-mechanics.css';
+
+export const prerender = true;
+
+const breadcrumbs = [{ name: '홈', href: '/' }, { name: '호라이즌 워커', href: HW_ZH.baseUrl }, { name: '레벨 차이' }];
+
+// Rows worth highlighting in the table (same gaps as the EN page)
+const highlight = new Set([1, 5, 10, 16, 20, 30]);
+
+const coraZh = HW_ZH_NAMES[45] || 'Cora'; // 죄수/코라
+
+function pct(v) {
+  return `${parseFloat((v / 100).toFixed(2))}%`;
+}
+---
+
+<HwLangLayout lang="ko" ui={HW_ZH}
+  title="레벨 차이와 피해 - 호라이즌 워커 한국어 위키 - GachaWiki"
+  description="호라이즌 워커 레벨 차이 피해 가이드: 완전한 저레벨 페널티 표, 고레벨 피해 보너스(레벨당 8%)와 최소 피해 규칙을 정리했습니다. 레벨 차이는 거의 모든 다른 요소보다 피해에 큰 영향을 줍니다."
+  keywords={['호라이즌 워커', '레벨 차이', '피해 페널티', '레벨 차이 보정', '전투 메커니즘']}
+  breadcrumbItems={breadcrumbs}
+>
+  <section class="hw-guide-hero">
+    <h1 class="hw-guide-title">레벨 차이와 피해</h1>
+    <p class="hw-guide-subtitle">대상보다 몇 레벨 높은지 낮은지가, 다른 거의 모든 요소보다 피해에 큰 영향을 줍니다</p>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-guide-content">
+    <section class="hw-guide-section" id="rules">
+      <h2 class="hw-section-title">규칙</h2>
+      <div class="hw-section-content">
+        <p>모든 명중 시 공격자와 대상의 레벨을 비교해 피해에 배율이 적용됩니다:</p>
+      </div>
+      <ul class="hw-guide-list">
+        <li>공격자 레벨이 대상보다 <strong>낮으면</strong>: 피해에 아래 페널티 표의 배율이 곱해집니다. 5레벨만 낮아도 피해가 40% 줄고, 16레벨 낮으면 약 10%밖에 나오지 않습니다.</li>
+        <li>공격자 레벨이 대상보다 <strong>높으면</strong>: 피해에 1 + 레벨당 8%의 보너스가 곱해집니다. 10레벨 높으면 1.8배 피해이며 상한이 없습니다.</li>
+        <li>레벨이 같으면: 변화 없이 100% 피해입니다.</li>
+        <li>레벨 페널티만으로는 피해가 절대 1 미만으로 내려가지 않습니다.</li>
+      </ul>
+      <div class="hw-info-box">
+        <div class="hw-info-box-title">왜 중요한가</div>
+        <div class="hw-info-box-content">
+          보스보다 5레벨 낮을 때 잃는 피해는 대부분의 버프로 되돌릴 수 있는 양보다 큽니다. 심하게 저레벨인 부대는 한 자릿수 퍼센트의 피해밖에 내지 못합니다. 반대로 레벨 차이는 확실한 전력원입니다: 막힌 보스를 위해 몇 레벨 올리는 것이 장비를 바꾸는 것보다 더 효율적인 경우가 많습니다.
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="table">
+      <h2 class="hw-section-title">저레벨 페널티 표</h2>
+      <div class="hw-section-content">
+        <p>게임 데이터에서 직접 가져온 레벨 차이별 정확한 배율입니다. 강조된 행은 플레이어가 가장 자주 묻는 레벨 차이입니다.</p>
+      </div>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="저레벨일 때 레벨 차이별 피해 배율">
+          <thead>
+            <tr>
+              <th scope="col">대상보다 낮은 레벨</th>
+              <th scope="col">주는 피해</th>
+            </tr>
+          </thead>
+          <tbody>
+            {LEVEL_PENALTY.map(row => (
+              <tr class={highlight.has(row.diff) ? 'hw-mech-highlight' : ''}>
+                <td>{row.diff}</td>
+                <td>{pct(row.value)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="hw-warning-box">
+        <div class="hw-warning-content">
+          곡선의 초반은 완만합니다. 처음 6레벨은 레벨당 8%이고, 이후 페널티가 점점 무거워집니다. 15레벨 낮은 시점부터는 1레벨이 더 낮아질 때마다 남은 피해의 약 15%를 추가로 잃습니다.
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="overlevel">
+      <h2 class="hw-section-title">고레벨 보너스</h2>
+      <div class="hw-section-content">
+        <p>레벨이 대상보다 높을 때는 표도 없고 상한도 없는 선형 보너스가 적용됩니다:</p>
+      </div>
+      <div class="hw-mech-formula">1 + 0.08 x (자신의 레벨 - 대상의 레벨)</div>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="고레벨일 때 레벨 차이별 피해 배율">
+          <thead>
+            <tr>
+              <th scope="col">대상보다 높은 레벨</th>
+              <th scope="col">주는 피해</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>0 (동일 레벨)</td><td>100%</td></tr>
+            <tr><td>5</td><td>140%</td></tr>
+            <tr><td>10</td><td>180%</td></tr>
+            <tr><td>15</td><td>220%</td></tr>
+            <tr><td>25</td><td>300%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="hw-example-box">
+        <div class="hw-example-title">예시</div>
+        <div class="hw-example-content">
+          레벨 60의 {coraZh}이(가) 레벨 55 이벤트 잡몹을 공격하면 다른 보정 이전에 이미 1.4배의 피해를 냅니다. 같은 캐릭터가 레벨 50으로 레벨 60 스토리 보스를 상대할 때는 27.14%의 피해밖에 낼 수 없습니다.
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="notes">
+      <h2 class="hw-section-title">추가 설명</h2>
+      <ul class="hw-guide-list">
+        <li>레벨 배율은 메인 피해 계산 안에서 방어 공식과 함께 적용됩니다 (<a href={`${HW_ZH.baseUrl}damage-formula/`} class="zh-link">피해 공식 페이지</a> 참고).</li>
+        <li>치명타, 약점 공격, 버프 효과는 레벨 계산 결과에 추가로 곱해집니다.</li>
+        <li>레벨 판정을 완전히 건너뛰고 원시 피해를 그대로 사용하는 특수 게임 모드가 하나 있어서, 고정 난이도 이벤트 모드가 갑자기 쉬워 보일 때가 있습니다.</li>
+      </ul>
+    </section>
+  </div>
+</HwLangLayout>
+
+<style>
+  /* Localize the EN pseudo-element label */
+  .hw-warning-box::before {
+    content: '⚠️ 주의';
+  }
+
+  /* EN guide links are plain text color inside list items */
+  .zh-link {
+    color: var(--hw-primary-warm);
+    font-weight: 600;
+    text-decoration: none;
+  }
+</style>

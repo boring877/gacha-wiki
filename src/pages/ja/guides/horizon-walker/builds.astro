@@ -1,0 +1,149 @@
+---
+// Japanese recommended builds index: /ja/guides/horizon-walker/builds/
+// Same build list as the EN builds/index.astro (getEnhancedBuilds), grouped
+// by rarity; character names use the official JA from game-text.js.
+// Re-skinned onto the EN hw-builds.css classes for visual parity.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import { getEnhancedBuilds } from '../../../../data/horizon-walker/builds/builds-data.js';
+import { HW_ZH_NAMES } from '../../../../data/horizon-walker/ja/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ja/ui.js';
+import { CharacterImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
+import '../../../../styles/games/horizon-walker/hw-builds.css';
+
+export const prerender = true;
+
+const enhancedBuilds = getEnhancedBuilds();
+const availableBuilds = enhancedBuilds.filter((build) => build.available);
+const unavailableBuilds = enhancedBuilds.filter((build) => !build.available);
+
+const jaNameOf = (build) =>
+  (build.characterData && HW_ZH_NAMES[build.characterData.id]) || build.displayName;
+
+// Sort by rarity (EX, SS, S, A, B) then by JA name
+const rarityOrder = { EX: 5, SS: 4, S: 3, A: 2, B: 1 };
+const sortedBuilds = [...availableBuilds].sort((a, b) => {
+  const rarityDiff = rarityOrder[b.rarity] - rarityOrder[a.rarity];
+  if (rarityDiff !== 0) return rarityDiff;
+  return jaNameOf(a).localeCompare(jaNameOf(b), 'ja');
+});
+
+const buildsByRarity = {
+  EX: sortedBuilds.filter((b) => b.rarity === 'EX'),
+  SS: sortedBuilds.filter((b) => b.rarity === 'SS'),
+  S: sortedBuilds.filter((b) => b.rarity === 'S'),
+  A: sortedBuilds.filter((b) => b.rarity === 'A'),
+  B: sortedBuilds.filter((b) => b.rarity === 'B'),
+};
+---
+
+<HwLangLayout lang="ja" ui={HW_ZH}
+  title="おすすめ編成 - ホライゾン・ウォーカー日本語ウィキ - GachaWiki"
+  description={`ホライゾン・ウォーカーのおすすめ編成：全 ${availableBuilds.length} キャラの手動厳選ビルドで、おすすめ聖痕、サブ効果、特性の選択まで掲載。さらに 50 キャラを網羅したコミュニティ編成もあります。`}
+  keywords={['ホライゾン・ウォーカー', '編成', '聖痕', 'サブ効果', '特性']}
+  pageTitle="おすすめ編成"
+  breadcrumbItems={[
+    { name: 'ホーム', href: '/' },
+    { name: 'ホライゾン・ウォーカー', href: HW_ZH.baseUrl },
+    { name: 'おすすめ編成' },
+  ]}
+>
+  <div class="hw-builds-container">
+    <div class="hw-community-builds-note">
+      <p class="hw-community-builds-text">
+        もっと見たい方はこちら。<a href={`${HW_ZH.baseUrl}builds/community/`}>コミュニティ編成</a>
+        では 50 キャラを網羅しており、Envy、Liauw、Gamekee のコミュニティ編成表をもとに整理しています。聖痕セット名は公式日本語がまだ無いため、英語のまま掲載しています。
+      </p>
+    </div>
+
+    {
+      Object.entries(buildsByRarity).map(([rarity, builds]) => {
+        if (builds.length === 0) return null;
+        return (
+          <section class="hw-builds-rarity-section">
+            <div class="hw-builds-rarity-header">
+              <HWRarityIcon rarity={rarity} width={48} height={24} />
+              <span class="hw-builds-rarity-count">（{builds.length} 件の編成）</span>
+            </div>
+            <div class="hw-builds-grid">
+              {builds.map((build) => {
+                const ja = jaNameOf(build);
+                return (
+                  <a
+                    href={`${HW_ZH.baseUrl}builds/${build.buildSlug}/`}
+                    class="hw-build-card-link"
+                    aria-label={`${ja} の編成を見る`}
+                  >
+                    <div class="hw-build-card">
+                      <div class="hw-build-card-header">
+                        <div class="hw-build-character-image">
+                          <CharacterImage
+                            imageName={build.characterData?.image || build.displayName}
+                            alt={ja}
+                            width={300}
+                            height={300}
+                            class="hw-character-portrait"
+                            loading="eager"
+                          />
+                        </div>
+                        <div class="hw-build-character-info">
+                          <h3 class="hw-build-character-name">{ja}</h3>
+                          <p class="zh-build-en">{build.characterData?.name || build.displayName}</p>
+                          <div class="hw-build-character-meta">
+                            <span class="hw-badge" data-type="Cost">
+                              コスト {build.cost}
+                            </span>
+                            <HWRarityIcon rarity={build.rarity} width={40} height={20} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })
+    }
+
+    {
+      unavailableBuilds.length > 0 && (
+        <section class="hw-builds-coming-soon">
+          <h3 class="hw-builds-coming-soon-title">近日掲載予定</h3>
+          <div class="hw-builds-coming-soon-grid">
+            {unavailableBuilds.map((build) => {
+              const ja = jaNameOf(build);
+              return (
+                <div class="hw-build-card hw-build-card-disabled">
+                  <div class="hw-build-card-header">
+                    <div class="hw-build-character-info">
+                      <h3 class="hw-build-character-name">{ja}</h3>
+                      <div class="hw-build-character-meta">
+                        <span class="hw-badge" data-type="Cost">
+                          コスト {build.cost}
+                        </span>
+                        <HWRarityIcon rarity={build.rarity} width={40} height={20} />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="hw-build-card-footer">
+                    <span class="hw-build-coming-soon">近日掲載予定</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )
+    }
+  </div>
+</HwLangLayout>
+
+<style>
+  /* JA-only: EN gloss under the Japanese character name */
+  .zh-build-en {
+    margin: 0.1rem 0 0.45rem 0;
+    font-size: 0.78rem;
+    color: var(--hw-text-very-muted);
+  }
+</style>

@@ -1,0 +1,128 @@
+---
+// Japanese community builds index: /ja/guides/horizon-walker/builds/community/
+// Same units as the EN page (community-builds.js, credits: Envy, Liauw &
+// Gamekee); character names use the official JA from game-text.js.
+// Re-skinned onto the EN hw-builds.css classes for visual parity.
+import HwLangLayout from '../../../../../../layouts/lang/HwLangLayout.astro';
+import '../../../../../../styles/games/horizon-walker/hw-builds.css';
+import { COMMUNITY_BUILDS } from '../../../../../../data/horizon-walker/community-builds.js';
+import { getCharacterBySlug, HORIZON_WALKER_CHARACTERS } from '../../../../../../data/horizon-walker/characters.js';
+import { HW_ZH_NAMES } from '../../../../../../data/horizon-walker/ja/game-text.js';
+import { HW_ZH } from '../../../../../../data/horizon-walker/ja/ui.js';
+import { CharacterImage, HWRarityIcon } from '../../../../../../components/horizon-walker/index.astro';
+
+export const prerender = true;
+
+// Merge community data with roster records (cost, rarity, portrait, JA name)
+const charBySlug = {};
+for (const c of HORIZON_WALKER_CHARACTERS) charBySlug[c.slug] = c;
+
+const communityUnits = Object.entries(COMMUNITY_BUILDS)
+  .map(([slug, communityData]) => {
+    const character = getCharacterBySlug(slug) || charBySlug[slug] || null;
+    return {
+      slug,
+      communityData,
+      character,
+      displayName: HW_ZH_NAMES[character?.id] || character?.name || communityData.name,
+      nameEn: character?.name || communityData.name,
+      rarity: character?.rarity || communityData.rarity,
+      cost: character?.cost || 0,
+      image: character?.image || communityData.name,
+    };
+  });
+
+const rarityOrder = { EX: 5, SS: 4, S: 3, A: 2, B: 1 };
+communityUnits.sort((a, b) => {
+  const rarityDiff = (rarityOrder[b.rarity] || 0) - (rarityOrder[a.rarity] || 0);
+  if (rarityDiff !== 0) return rarityDiff;
+  return a.displayName.localeCompare(b.displayName, 'ja');
+});
+
+const buildsByRarity = {
+  EX: communityUnits.filter((u) => u.rarity === 'EX'),
+  SS: communityUnits.filter((u) => u.rarity === 'SS'),
+  S: communityUnits.filter((u) => u.rarity === 'S'),
+  A: communityUnits.filter((u) => u.rarity === 'A'),
+  B: communityUnits.filter((u) => u.rarity === 'B'),
+};
+---
+
+<HwLangLayout lang="ja" ui={HW_ZH}
+  title="コミュニティ編成 - ホライゾン・ウォーカー日本語ウィキ - GachaWiki"
+  description={`ホライゾン・ウォーカーのコミュニティ編成：Envy、Liauw、Gamekee のコミュニティ編成表をもとに、${communityUnits.length} キャラのおすすめ武器、聖痕、サブ効果、特性とスキル強化順を整理しています。`}
+  keywords={['ホライゾン・ウォーカー', 'コミュニティ編成', '編成', '聖痕']}
+  pageTitle="コミュニティ編成"
+  breadcrumbItems={[
+    { name: 'ホーム', href: '/' },
+    { name: 'ホライゾン・ウォーカー', href: HW_ZH.baseUrl },
+    { name: 'おすすめ編成', href: `${HW_ZH.baseUrl}builds/` },
+    { name: 'コミュニティ編成' },
+  ]}
+>
+  <div class="hw-builds-container">
+    <div class="hw-community-builds-note">
+      <h2 class="hw-community-builds-title">コミュニティ編成</h2>
+      <p class="hw-community-builds-text">
+        Envy、Liauw、Gamekee のコミュニティ編成表をもとに、{communityUnits.length}
+        キャラを網羅しています。手動厳選ビルドは<a href={`${HW_ZH.baseUrl}builds/`}>おすすめ編成</a
+      >のセクションに、より詳しい編成の解説は各キャラのページにあります。聖痕セットとサブ効果の数値はコミュニティ表からの引用で、英語のまま掲載しています。
+      </p>
+    </div>
+
+    {
+      Object.entries(buildsByRarity).map(([rarity, units]) => {
+        if (units.length === 0) return null;
+        return (
+          <section class="hw-builds-rarity-section">
+            <div class="hw-builds-rarity-header">
+              <HWRarityIcon rarity={rarity} width={48} height={24} />
+              <span class="hw-builds-rarity-count">（{units.length} 件の編成）</span>
+            </div>
+            <div class="hw-builds-grid">
+              {units.map((unit) => (
+                <a
+                  href={`${HW_ZH.baseUrl}builds/community/${unit.slug}/`}
+                  class="hw-build-card-link"
+                  aria-label={`${unit.displayName} のコミュニティ編成を見る`}
+                >
+                  <div class="hw-build-card">
+                    <div class="hw-build-card-header">
+                      <div class="hw-build-character-image">
+                        <CharacterImage
+                          imageName={unit.image}
+                          alt={unit.displayName}
+                          width={300}
+                          height={300}
+                          class="hw-character-portrait"
+                          loading="eager"
+                        />
+                      </div>
+                      <div class="hw-build-character-info">
+                        <h3 class="hw-build-character-name">{unit.displayName}</h3>
+                        <p class="zh-cb-en">{unit.nameEn}</p>
+                        <div class="hw-build-character-meta">
+                          <span class="hw-badge" data-type="Cost">コスト {unit.cost}</span>
+                          <HWRarityIcon rarity={unit.rarity} width={40} height={20} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        );
+      })
+    }
+  </div>
+</HwLangLayout>
+
+<style>
+  /* JA-only: EN gloss under the Japanese character name */
+  .zh-cb-en {
+    margin: 0.1rem 0 0.45rem 0;
+    font-size: 0.78rem;
+    color: var(--hw-text-very-muted);
+  }
+</style>

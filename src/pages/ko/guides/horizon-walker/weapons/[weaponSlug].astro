@@ -1,0 +1,455 @@
+---
+// Korean weapon detail pages: /ko/guides/horizon-walker/weapons/<slug>/
+// EX weapon names/flavor use the game's official Korean (Inheritance loc) and
+// unique/signature skill names use official Korean (weapon-skill loc); skill
+// descriptions and non-EX weapon text have no Korean entry in the game-text
+// maps yet, so they keep the EN text verbatim (never machine-translated).
+import HwLangLayout from '../../../../../layouts/lang/HwLangLayout.astro';
+import { WeaponImage, HWRarityIcon } from '../../../../../components/horizon-walker/index.astro';
+import { r2Url } from '../../../../../data/r2-config.js';
+import { HORIZON_WALKER_WEAPONS } from '../../../../../data/horizon-walker/weapons.js';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../../data/horizon-walker/characters.js';
+import {
+  HW_ZH_NAMES,
+  HW_ZH_INHERITANCE,
+  HW_ZH_ITEMS,
+  HW_ZH_WEAPON_SKILLS,
+  HW_ZH_SKILL_BY_NAME,
+  HW_ZH_STAT_TYPES,
+} from '../../../../../data/horizon-walker/ko/game-text.js';
+import { HW_ZH } from '../../../../../data/horizon-walker/ko/ui.js';
+import '../../../../../styles/games/horizon-walker/hw-weapon-detail.css';
+import DecorativeLines from '../../../../../components/DecorativeLines.astro';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return HORIZON_WALKER_WEAPONS.map(weapon => {
+    return {
+      params: { weaponSlug: weapon.id.replace('-weapon', '') },
+      props: { weapon },
+    };
+  });
+}
+
+const { weapon } = Astro.props;
+
+// heroId lookup by slug from the roster (weapon entries only carry name+slug)
+const charIdBySlug = {};
+for (const c of HORIZON_WALKER_CHARACTERS) {
+  if (c.slug) charIdBySlug[c.slug] = c.id;
+}
+
+const isExWeapon = weapon.character !== null;
+const levelStats = weapon.levelStats || null;
+const exEffects = (weapon.exLevels?.effects || []).filter(e => e.valuesByLevel);
+const EX_STAGES = [1, 2, 3, 4, 5];
+
+// EX weapons via Inheritance loc, non-EX via Item loc; EN fallback
+const weaponZh = isExWeapon
+  ? HW_ZH_INHERITANCE[weapon.name] || null
+  : HW_ZH_ITEMS[weapon.name] || null;
+const weaponName = weaponZh?.name || weapon.name;
+const weaponFlavor = weaponZh?.desc || weapon.flavor || weapon.description || '';
+
+const charZh = weapon.character
+  ? HW_ZH_NAMES[charIdBySlug[weapon.character.slug]] || weapon.character.name
+  : null;
+const charPageUrl = weapon.character
+  ? `${HW_ZH.baseUrl}characters/${weapon.character.slug}/`
+  : '';
+
+// weapon stat label: official KO base with the (suffix) kept, e.g.
+// 'Ranged ATK (weapon)' -> '사격 공격력 (weapon)'
+const weaponStatLabel = k => {
+  if (HW_ZH_STAT_TYPES[k]) return HW_ZH_STAT_TYPES[k];
+  const m = k.match(/^(.+?)\s*\((.+)\)$/);
+  if (m && HW_ZH_STAT_TYPES[m[1]]) return `${HW_ZH_STAT_TYPES[m[1]]} (${m[2]})`;
+  return k;
+};
+
+// skill display name: official KO via weapon-skill loc, EN fallback
+const skillNameZh = enName => (HW_ZH_WEAPON_SKILLS[enName] || HW_ZH_SKILL_BY_NAME[enName] || {}).name || enName;
+
+// Substitute {v1,v2,...} per-level arrays at stage i (same as the EN page)
+const substituteAt = (desc, stage) =>
+  String(desc ?? '').replace(/\{\s*([-0-9.][-0-9.,%\s]*?)\s*\}/g, (_m, list) => {
+    const vals = list.replace(/\s+/g, '').split(',');
+    return vals[Math.min(stage, vals.length) - 1] ?? list;
+  });
+
+// Unique skill text per EX stage: explicit per-level texts when present,
+// otherwise the single template with arrays substituted at each stage
+let exSkillTexts = [];
+const descByLevel = weapon.exLevels?.descByLevel || null;
+if (descByLevel) {
+  exSkillTexts = descByLevel;
+} else if (weapon.uniqueSkill?.description) {
+  exSkillTexts = EX_STAGES.map(i => substituteAt(weapon.uniqueSkill.description, i));
+  if (new Set(exSkillTexts).size === 1) exSkillTexts = []; // passive does not scale with EX
+}
+const hasExVariation = exSkillTexts.length > 1;
+
+// Non-EX special effects scale: {v1..v5} arrays over skill Lv 1-5
+let nonExSkillTexts = [];
+if (!isExWeapon && weapon.specialEffect?.description) {
+  nonExSkillTexts = EX_STAGES.map(i => substituteAt(weapon.specialEffect.description, i));
+  if (new Set(nonExSkillTexts).size === 1) nonExSkillTexts = [];
+}
+const hasNonExVariation = nonExSkillTexts.length > 1;
+
+// Display name without the "<Hero> Signature: " prefix (ko: "<캐릭터> 전용:")
+const signatureShortName = weapon.signatureSkill?.name
+  ? skillNameZh(weapon.signatureSkill.name).replace(/^[^:]+Signature:\s*/, '').replace(/^[^:]+전용:\s*/, '')
+  : '';
+const uniqueSkillName = weapon.uniqueSkill?.name ? skillNameZh(weapon.uniqueSkill.name) : '';
+const specialEffectName = weapon.specialEffect?.name
+  ? skillNameZh(weapon.specialEffect.name).replace(/^Unique:\s*/, '')
+  : '';
+
+// SEO metadata
+const title = isExWeapon
+  ? `${weaponName} (${weapon.name}) - ${charZh}의 EX 무기 - 호라이즌 워커 한국어 위키 - GachaWiki`
+  : `${weaponName} - ${weapon.rarity} ${weapon.type} - 호라이즌 워커 한국어 위키 - GachaWiki`;
+const description = weaponFlavor
+  ? weaponFlavor
+  : `호라이즌 워커 무기 ${weaponName}(${weapon.name})의 한국어 정보: 기본 스탯, 성장 수치와 스킬 효과.`;
+---
+
+<HwLangLayout lang="ko" ui={HW_ZH}
+  title={title}
+  description={description}
+  keywords={[weaponName, weapon.name, '호라이즌 워커', '무기', '공략']}
+  breadcrumbItems={[
+    { name: '홈', href: '/' },
+    { name: '호라이즌 워커', href: HW_ZH.baseUrl },
+    { name: '무기', href: `${HW_ZH.baseUrl}weapons/` },
+    { name: weaponName },
+  ]}
+>
+  <section class="hw-char-db-hero-section">
+    <h1 class="hw-char-db-hero-title">무기 상세</h1>
+    <p class="hw-char-db-hero-subtitle">{isExWeapon ? 'EX 무기 정보' : '무기 정보'}</p>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-char-db-content-area">
+  <div class="weapon-detail-container">
+    <!-- Hero Section -->
+    <section class="weapon-hero">
+      <div class="weapon-hero-content">
+        <div class="weapon-hero-image">
+          <WeaponImage imageName={weapon.image} alt={weaponName} width={350} height={400} />
+        </div>
+
+        <div class="weapon-hero-info">
+          <h1 class="weapon-detail-name">
+            {weaponName}{weaponZh ? ` (${weapon.name})` : ''}
+          </h1>
+          <p class="weapon-detail-type">
+            {weapon.type} • <HWRarityIcon rarity={weapon.rarity} width={44} height={22} />
+            {weapon.maxLevel && weapon.maxLevel > 1 && (
+              <span class="weapon-detail-maxlevel">
+                {isExWeapon ? '무기 레벨 1~60 · EX 1~5 단계' : '무기 레벨 1~60'}
+              </span>
+            )}
+          </p>
+
+          {isExWeapon ? (
+            <div class="weapon-detail-character">
+              <span class="weapon-detail-character-label">전용 무기 보유자</span>
+              <span class="weapon-detail-character-name">{charZh}</span>
+              <a href={charPageUrl} class="weapon-detail-character-link">
+                캐릭터 보기 →
+              </a>
+            </div>
+          ) : (
+            <div class="weapon-detail-character">
+              <span class="weapon-detail-character-label">{weapon.rarity} 등급 • {weapon.type}</span>
+            </div>
+          )}
+
+          {weaponFlavor && <p class="weapon-detail-description">{weaponFlavor}</p>}
+        </div>
+      </div>
+    </section>
+
+    {
+      isExWeapon ? (
+        <section class="weapon-master-card">
+          <div class="weapon-master-grid">
+            <div class="weapon-block">
+              <h2 class="weapon-stats-title">기본 스탯 (레벨 1 → 레벨 60)</h2>
+
+              {levelStats ? (
+                <div class="weapon-ex-table-wrap">
+                  <table class="weapon-ex-table">
+                    <thead>
+                      <tr>
+                        <th class="weapon-ex-head-stat">스탯</th>
+                        <th class="weapon-ex-head-lv">레벨 1</th>
+                        <th class="weapon-ex-head-lv">레벨 60</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {Object.entries(levelStats).map(([statKey, vals]) => (
+                        <tr>
+                          <td class="weapon-ex-stat-name">{weaponStatLabel(statKey)}</td>
+                          <td class="weapon-ex-val weapon-ex-val-pct">{statKey.includes('(%)') ? `+${vals[0]}%` : vals[0]}</td>
+                          <td class="weapon-ex-val">{statKey.includes('(%)') ? `+${vals[1]}%` : vals[1]}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <p class="weapon-ex-note">
+                    기본 스탯은 무기 레벨에 따라 성장합니다 (레벨 1~60, 60이 최대). 공격력 평가는 게임의 10점제 수치이며, (%) 행은 보유자 스탯에 대한 백분율 보너스입니다. EX 단계 상승은 이 수치를 바꾸지 않습니다.
+                  </p>
+                </div>
+              ) : (
+                <p class="weapon-muted-note">
+                  이 무기는 기본 스탯 보너스를 제공하지 않으며, 가치는 고유한 패시브 스킬에 있습니다.
+                </p>
+              )}
+            </div>
+
+            <div class="weapon-block">
+              <div class="weapon-exskills-header">
+                <h2 class="weapon-stats-title">특수 스킬: {uniqueSkillName}</h2>
+                <span class="hw-badge" data-type="Unique">특수</span>
+              </div>
+
+              {hasExVariation ? (
+                <div class="weapon-ex-tabs-wrap">
+                  <div class="weapon-ex-tabs" role="tablist">
+                    {exSkillTexts.map((_, i) => (
+                      <button
+                        type="button"
+                        role="tab"
+                        class={`weapon-ex-tab${i === exSkillTexts.length - 1 ? ' active' : ''}`}
+                        data-ex-stage={i + 1}
+                        aria-label={`EX ${i + 1}`}
+                      >
+                        <img
+                          src={r2Url('horizon-walker', `tier-icons/UI_Tier_Icon_${String(6 + i).padStart(2, '0')}.png`)}
+                          alt={`EX ${i + 1}`}
+                          width={40}
+                          height={38}
+                          loading="lazy"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                  <div class="weapon-exskill-panels">
+                    {exSkillTexts.map((text, i) => (
+                      <div class={`weapon-exskill-panel${i === exSkillTexts.length - 1 ? ' active' : ''}`} data-ex-stage={i + 1}>
+                        <img
+                          class="weapon-exskill-stage-icon"
+                          src={r2Url('horizon-walker', `tier-icons/UI_Tier_Icon_${String(6 + i).padStart(2, '0')}.png`)}
+                          alt={`EX ${i + 1}`}
+                          width={48}
+                          height={46}
+                          loading="lazy"
+                        />
+                        <p class="weapon-exskill-text">{text}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : weapon.uniqueSkill?.description ? (
+                <div class="weapon-exskill-panels">
+                  <div class="weapon-exskill-panel active">
+                    <p class="weapon-exskill-text">{substituteAt(weapon.uniqueSkill.description, 5)}</p>
+                  </div>
+                  <p class="weapon-ex-note">이 패시브 효과는 EX 단계가 올라도 변하지 않습니다.</p>
+                </div>
+              ) : (
+                <p class="weapon-muted-note">스킬 상세 정보는 아직 공개되지 않았습니다.</p>
+              )}
+            </div>
+          </div>
+
+          <div class="weapon-master-divider"></div>
+
+          {exEffects.length > 0 && (
+          <div class="weapon-master-grid">
+            <div class="weapon-block">
+              <div class="weapon-effects-block" style="margin-top: 0;">
+                    <h3 class="weapon-effects-subtitle">EX 단계별 스킬 효과 수치</h3>
+                    {exEffects.map(effect => {
+                      const vals = String(effect.valuesByLevel).split('/').map(v => v.trim());
+                      const raw = String(effect.name);
+                      const label = (raw.includes('{v}')
+                        ? raw.replace(/\{\s*v\s*\}/g, '').replace(/[\s+%]+$/, '')
+                        : raw
+                      ).replace(/\s{2,}/g, ' ').trim();
+                      return (
+                        <div class="weapon-effect-row">
+                          <span class="weapon-effect-name">{label}</span>
+                          <span class="weapon-effect-vals">
+                            {EX_STAGES.map((lv, i) => (
+                              <span class="weapon-effect-val">
+                                <span class="weapon-effect-lv">EX {lv}</span>
+                                {vals[i] ?? vals[vals.length - 1] ?? '-'}
+                              </span>
+                            ))}
+                          </span>
+                        </div>
+                      );
+                    })}
+              </div>
+            </div>
+          </div>
+          )}
+
+            <div class="weapon-block">
+              <div class="weapon-exskills-header">
+                <h2 class="weapon-stats-title">전용 스킬{signatureShortName ? `: ${signatureShortName}` : ''}</h2>
+                {weapon.signatureSkill && <span class="hw-badge" data-type="Signature">전용</span>}
+              </div>
+
+              {
+                weapon.signatureSkill && (
+                  <div class="weapon-exskill-panels">
+                    <div class="weapon-exskill-panel active">
+                      <p class="weapon-exskill-text">{substituteAt(weapon.signatureSkill.description, 5)}</p>
+                    </div>
+                  </div>
+                )
+              }
+
+              {
+                weapon.signatureSkill && (
+                  <p class="weapon-skill-levelnote">
+                    {charZh} 필요: 이 전용 스킬은 {charZh}이(가) 이 무기를 장착하고 있을 때만 발동하며, 무기 레벨이나 EX 단계가 올라도 변하지 않습니다.
+                  </p>
+                )
+              }
+
+              {
+                !weapon.signatureSkill && (
+                  <p class="weapon-muted-note">전용 스킬 없음</p>
+                )
+              }
+            </div>
+          </div>
+        </section>
+      ) : (
+        <section class="weapon-master-card">
+          <div class="weapon-master-grid">
+            <div class="weapon-block">
+              <h2 class="weapon-stats-title">기본 스탯 (레벨 1 → 레벨 60)</h2>
+
+              {levelStats ? (
+                <div class="weapon-ex-table-wrap">
+                  <table class="weapon-ex-table">
+                    <thead>
+                      <tr>
+                        <th class="weapon-ex-head-stat">스탯</th>
+                        <th class="weapon-ex-head-lv">레벨 1</th>
+                        <th class="weapon-ex-head-lv">레벨 60</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {Object.entries(levelStats).map(([statKey, vals]) => (
+                        <tr>
+                          <td class="weapon-ex-stat-name">{weaponStatLabel(statKey)}</td>
+                          <td class="weapon-ex-val weapon-ex-val-pct">{statKey.includes('(%)') ? `+${vals[0]}%` : vals[0]}</td>
+                          <td class="weapon-ex-val">{statKey.includes('(%)') ? `+${vals[1]}%` : vals[1]}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <p class="weapon-ex-note">
+                    기본 스탯은 무기 레벨에 따라 성장합니다 (레벨 1~60, 60이 최대). 공격력 평가는 게임의 10점제 수치이며, (%) 행은 보유자 스탯에 대한 백분율 보너스입니다.
+                  </p>
+                </div>
+              ) : (
+                <p class="weapon-muted-note">스탯 데이터가 아직 없습니다</p>
+              )}
+            </div>
+          </div>
+
+          {weapon.specialEffect && (
+            <>
+              <div class="weapon-master-divider"></div>
+              <div class="weapon-master-grid">
+                <div class="weapon-block">
+                  <div class="weapon-exskills-header">
+                    <h2 class="weapon-stats-title">특수 효과{specialEffectName ? `: ${specialEffectName}` : ''}</h2>
+                    <span class="hw-badge" data-type="Unique">특수</span>
+                  </div>
+
+                  {hasNonExVariation ? (
+                    <div class="weapon-ex-tabs-wrap">
+                      <div class="weapon-ex-tabs" role="tablist">
+                        {nonExSkillTexts.map((_, i) => (
+                          <button
+                            type="button"
+                            role="tab"
+                            class={`weapon-ex-tab weapon-ex-tab-text${i === nonExSkillTexts.length - 1 ? ' active' : ''}`}
+                            data-ex-stage={i + 1}
+                          >
+                            Lv {i + 1}
+                          </button>
+                        ))}
+                      </div>
+                      <div class="weapon-exskill-panels">
+                        {nonExSkillTexts.map((text, i) => (
+                          <div class={`weapon-exskill-panel${i === nonExSkillTexts.length - 1 ? ' active' : ''}`} data-ex-stage={i + 1}>
+                            <span class="weapon-exskill-stage-label">스킬 레벨 {i + 1}</span>
+                            <p class="weapon-exskill-text">{text}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <div class="weapon-exskill-panels">
+                      <div class="weapon-exskill-panel active">
+                        <p class="weapon-exskill-text">{substituteAt(weapon.specialEffect.description, 5)}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  <p class="weapon-skill-levelnote">
+                    {hasNonExVariation
+                      ? '특수 효과는 무기 강화(스킬 레벨 1~5)에 따라 단계적으로 강해지며, 기본 스탯은 무기 레벨에 따라 별도로 성장합니다.'
+                      : '특수 효과는 고정 수치로, 무기 레벨이 올라도 변하지 않습니다.'}
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
+        </section>
+      )
+    }
+  </div>
+  </div>
+
+  <!-- EX tab switching for the unique skill panels -->
+  <script is:inline>
+    (function() {
+      document.querySelectorAll('.weapon-ex-tabs').forEach(function(tabs) {
+        var scope = tabs.closest('.weapon-ex-tabs-wrap');
+        if (!scope) return;
+        tabs.querySelectorAll('.weapon-ex-tab').forEach(function(tab) {
+          tab.addEventListener('click', function() {
+            var stage = tab.getAttribute('data-ex-stage');
+            tabs.querySelectorAll('.weapon-ex-tab').forEach(function(t) { t.classList.remove('active'); });
+            tab.classList.add('active');
+            scope.querySelectorAll('.weapon-exskill-panel').forEach(function(p) {
+              p.classList.toggle('active', p.getAttribute('data-ex-stage') === stage);
+            });
+          });
+        });
+      });
+    })();
+  </script>
+</HwLangLayout>
+
+<style>
+  .weapon-muted-note {
+    color: var(--hw-text-muted);
+    font-style: italic;
+    margin: 0;
+  }
+</style>

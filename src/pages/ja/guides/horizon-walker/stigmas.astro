@@ -1,0 +1,175 @@
+---
+// Japanese stigma database: /ja/guides/horizon-walker/stigmas/
+// Piece names use the game's official JA via the Inheritance loc map and
+// piece stats use official JA stat labels. Set names and set-effect text have
+// no official JA in the wiki's game-text maps, so they keep the EN text
+// verbatim (never machine-translated).
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import { StigmaImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
+import { stigmas } from '../../../../data/horizon-walker/stigmas.js';
+import { HW_ZH_INHERITANCE, HW_ZH_STAT_TYPES } from '../../../../data/horizon-walker/ja/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ja/ui.js';
+import '../../../../styles/games/horizon-walker/stigma.css';
+
+export const prerender = true;
+
+// Same special name->filename mappings as the EN stigma page
+function getStigmaImageName(stigmaName, rarity) {
+  const specialMappings = {
+    "Jester's Mask": `Jester${rarity}`,
+    'Reckoning of Sin': `Reckoning_of_Sin${rarity}`,
+    Jupiter: `Jupiter${rarity}`,
+    Harmony: `Harmony${rarity}`,
+    'Phantom Banquet': `Phantom_Banquet${rarity}`,
+    'The Brilliant Touch of Earth': `The_Brilliant_Touch_of_Earth${rarity}`,
+    'The Eternal Battle': `The_Eternal_Battle${rarity}`,
+    'The Knight of the Seven Petals': `The_Knight_of_the_Seven_Petals${rarity}`,
+    'The Four Horsemen': `The_Four_Horsemen${rarity}`,
+    'Scorching Sun': 'ScorchingSunEX',
+    'Lifebound': 'BondOfLifeEX',
+    'The Wind that Wanders the World': 'The_Wind_that_Wanders_the_WorldEX',
+    'The Thousand Mile Weave': 'The_Thousand_Mile_WeaveEX',
+    'The Ship of Theseus': 'The_Ship_of_TheseusSS',
+    "The Noble's Tactics": "The_Noble's_TacticsSS",
+    'The Blacksmith Blessing': 'The_BlackSmith_BlessingSS',
+    'The Record of Orphan': 'The_Record_of_OrphanSS',
+    'The Irreversible Box of Secrets': 'The_Irreversible_Box_of_SecretsSS',
+    'Thorned Heart': 'Thorned_HeartSS',
+    Beast: `Beast${rarity}`,
+    Titan: `Titan${rarity}`,
+    Mage: `Mage${rarity}`,
+    Marksman: `Marksman${rarity}`,
+    Fighter: `Fighter${rarity}`,
+  };
+  return specialMappings[stigmaName];
+}
+
+// wiki EN stat spellings that point at the same official stat label
+const STAT_ALIASES = {
+  ACC: 'Accuracy',
+  Evasion: 'Evade',
+  Melee: 'Melee ATK',
+  Ranged: 'Ranged ATK',
+  Magic: 'Magic ATK',
+};
+
+const pieceStatJa = stat => {
+  const one = s => {
+    const key = STAT_ALIASES[s] || s;
+    return HW_ZH_STAT_TYPES[key] || s;
+  };
+  if (stat.includes('/')) {
+    return stat.split('/').map(p => one(p.trim())).join(' / ');
+  }
+  return one(stat);
+};
+
+// Official JA piece name via Inheritance loc, EN fallback
+const pieceNameJa = name => HW_ZH_INHERITANCE[name]?.name || name;
+
+const SLOT_JA = { top: '上', bottom: '下', left: '左', right: '右' };
+
+const rarities = ['EX', 'SS', 'S', 'A'];
+---
+
+<HwLangLayout lang="ja" ui={HW_ZH}
+  title="聖痕 - ホライゾン・ウォーカー日本語ウィキ - GachaWiki"
+  description="ホライゾン・ウォーカーの聖痕データベース：レアリティ別に整理した全聖痕セットで、2 セット効果と 4 セット効果、セット部位と部位名を掲載。部位名はゲーム公式の日本語です。"
+  keywords={['ホライゾン・ウォーカー', '聖痕', '聖痕セット', '攻略']}
+  breadcrumbItems={[
+    { name: 'ホーム', href: '/' },
+    { name: 'ホライゾン・ウォーカー', href: HW_ZH.baseUrl },
+    { name: '聖痕' },
+  ]}
+>
+  <section class="stigma-title-section">
+    <h1 class="stigma-page-title">聖痕</h1>
+    <DecorativeLines />
+  </section>
+
+  <div class="stigma-content-area">
+  <p class="zh-stigma-note">
+    セット名とセット効果は公式日本語がまだ収録されていないため、英語のまま表示しています。部位名とステータスはゲーム公式の日本語です。
+  </p>
+  {rarities.map(rarity => (
+    stigmas[rarity] && stigmas[rarity].length > 0 && (
+      <section class="content-section stigma-rarity-section">
+        <h2 class={`rarity-title ${rarity.toLowerCase()}-rarity`}>{rarity} 聖痕</h2>
+        <div class="stigma-grid">
+          {stigmas[rarity].map(stigma => (
+            <div class={`stigma-card ${rarity.toLowerCase()}-card`}>
+              <div class="stigma-header">
+                <div class="stigma-image-container">
+                  <StigmaImage
+                    imageName={getStigmaImageName(stigma.name, rarity)}
+                    alt={`${stigma.name} ${rarity} 聖痕アイコン`}
+                    width={80}
+                    height={80}
+                    loading="eager"
+                    class="stigma-icon"
+                  />
+                </div>
+                <div class="stigma-title-container">
+                  <h3 class="stigma-name">{stigma.name}</h3>
+                  <HWRarityIcon rarity={rarity} width={40} height={20} />
+                </div>
+              </div>
+
+              {stigma.description && (
+                <div class="stigma-description">
+                  <p>{stigma.description}</p>
+                </div>
+              )}
+
+              {(stigma.twoSet || stigma.fourSet) && (
+                <div class="stigma-bonuses">
+                  {stigma.twoSet && (
+                    <div class="bonus-section">
+                      <h4>2 セット効果</h4>
+                      <p>{stigma.twoSet}</p>
+                    </div>
+                  )}
+                  {stigma.fourSet && (
+                    <div class="bonus-section">
+                      <h4>4 セット効果</h4>
+                      <p>{stigma.fourSet}</p>
+                      {stigma.specialEffect && (
+                        <div class="special-effect">
+                          <strong>[{stigma.specialEffect.name}]：</strong>{' '}
+                          {stigma.specialEffect.description}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <div class="stigma-pieces">
+                <h4>セット部位</h4>
+                <div class="pieces-grid">
+                  {['top', 'bottom', 'left', 'right'].map(slot => (
+                    <div class="piece-item">
+                      <div class="piece-slot">{SLOT_JA[slot]}</div>
+                      <div class="piece-name">{pieceNameJa(stigma.pieces[slot].name)}</div>
+                      <div class="piece-stat">{pieceStatJa(stigma.pieces[slot].stat)}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  ))}
+  </div>
+</HwLangLayout>
+
+<style>
+  .zh-stigma-note {
+    font-size: 0.875rem;
+    color: var(--hw-text-muted);
+    margin: 0 0 1.25rem 0;
+  }
+</style>

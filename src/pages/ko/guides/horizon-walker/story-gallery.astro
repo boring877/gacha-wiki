@@ -1,0 +1,267 @@
+---
+// Korean story gallery: /ko/guides/horizon-walker/story-gallery/
+// Same media as the EN page (story-cg.js + story-gallery.js, identical image
+// URLs and grid); only the tab labels, intro and character group titles are
+// Korean. Captions are cleaned asset names with no official KO, so they are
+// kept verbatim from the data.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import { STORY_CG } from '../../../../data/horizon-walker/story-cg.js';
+import {
+  EVENT_STORY_GROUPS,
+  MAIN_STORY_CGS,
+  WORLD_ART,
+  POPUP_ART,
+  CUTSCENE_GROUPS,
+} from '../../../../data/horizon-walker/story-gallery.js';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../data/horizon-walker/characters.js';
+import { HW_ZH_NAMES } from '../../../../data/horizon-walker/ko/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ko/ui.js';
+import '../../../../styles/games/horizon-walker/story-gallery.css';
+
+export const prerender = true;
+
+const R2_BASE = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/horizon-walker';
+
+// Join character CGs (keyed by hero id) with the roster for ZH names and links.
+const charGroups = Object.entries(STORY_CG)
+  .map(([heroId, cgs]) => {
+    const roster = HORIZON_WALKER_CHARACTERS.find(c => String(c.id) === heroId);
+    if (!roster) return null;
+    return {
+      slug: roster.slug,
+      name: HW_ZH_NAMES[roster.id] || roster.name,
+      nameEn: roster.name,
+      url: `${HW_ZH.baseUrl}characters/${roster.slug}/`,
+      cgs,
+    };
+  })
+  .filter(g => g !== null)
+  .sort((a, b) => a.name.localeCompare(b.name, 'ko'));
+
+const charCgCount = charGroups.reduce((n, g) => n + g.cgs.length, 0);
+const eventCgCount = EVENT_STORY_GROUPS.reduce((n, g) => n + g.cgs.length, 0);
+const cutsceneCount = CUTSCENE_GROUPS.reduce((n, g) => n + g.videos.length, 0);
+
+const TABS = [
+  { id: 'characters', label: '캐릭터', count: charCgCount },
+  { id: 'events', label: '이벤트 스토리', count: eventCgCount },
+  { id: 'story', label: '메인 스토리', count: MAIN_STORY_CGS.length },
+  { id: 'cutscenes', label: '컷신', count: cutsceneCount },
+  { id: 'world', label: '월드', count: WORLD_ART.length },
+  { id: 'popups', label: '대화 일러스트', count: POPUP_ART.length },
+];
+
+const totalCount =
+  charCgCount + eventCgCount + MAIN_STORY_CGS.length + cutsceneCount + WORLD_ART.length + POPUP_ART.length;
+---
+
+<HwLangLayout lang="ko" ui={HW_ZH}
+  title="스토리 갤러리 - 호라이즌 워커 한국어 위키 - GachaWiki"
+  description={`호라이즌 워커 스토리 갤러리: 총 ${totalCount}개의 스토리 CG, 호감도 스토리 일러스트, 이벤트 스토리 CG, 메인 일러스트, 월드 배경 이미지와 컷신 영상을 게임 파일에서 추출해 정리했습니다.`}
+  keywords={['호라이즌 워커', '스토리 갤러리', 'CG', '컷신', '일러스트']}
+  breadcrumbItems={[
+    { name: '홈', href: '/' },
+    { name: '호라이즌 워커', href: HW_ZH.baseUrl },
+    { name: '스토리 갤러리' },
+  ]}
+>
+  <section class="hw-gallery-title-section">
+    <h1 class="hw-gallery-page-title">스토리 갤러리</h1>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-gallery-content-area">
+  <section class="hw-gallery-content">
+    <p class="hw-gallery-intro">
+      게임에서 추출한 스토리 일러스트와 컷신 영상, 총 {totalCount}개입니다. 이미지를 클릭하면 원본을 볼 수 있고, 컷신 영상은 페이지에서 바로 재생할 수 있습니다. 캡션은 리소스 원래 이름 그대로 영어로 표기합니다.
+    </p>
+
+    <div class="hw-gallery-tabs" role="tablist">
+      {
+        TABS.map(tab => (
+          <button
+            class="hw-gallery-tab"
+            role="tab"
+            id={`zh-tab-${tab.id}`}
+            data-tab={tab.id}
+            aria-selected={tab.id === 'characters' ? 'true' : 'false'}
+          >
+            {tab.label}
+            <span class="hw-gallery-tab-count">{tab.count}</span>
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="hw-gallery-panel" id="zh-panel-characters" role="tabpanel" data-panel="characters">
+      {
+        charGroups.map(grp => (
+          <div class="hw-gallery-group">
+            <h2 class="hw-gallery-group-title">
+              <a href={grp.url}>{grp.name}</a>
+              <span class="zh-gallery-en">{grp.nameEn}</span>
+            </h2>
+            <div class="hw-gallery-grid">
+              {grp.cgs.map(cg => (
+                <a class="hw-gallery-card" href={`${R2_BASE}/${cg.file}`} target="_blank" rel="noopener">
+                  <img
+                    src={`${R2_BASE}/${cg.file}`}
+                    alt={`호라이즌 워커 ${grp.name} 스토리 CG`}
+                    width={400}
+                    height={225}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="hw-gallery-caption">{cg.caption}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="hw-gallery-panel" id="zh-panel-events" role="tabpanel" data-panel="events" hidden>
+      {
+        EVENT_STORY_GROUPS.map(grp => (
+          <div class="hw-gallery-group">
+            <h2 class="hw-gallery-group-title">{grp.label}</h2>
+            <div class="hw-gallery-grid">
+              {grp.cgs.map(cg => (
+                <a class="hw-gallery-card" href={`${R2_BASE}/${cg.file}`} target="_blank" rel="noopener">
+                  <img
+                    src={`${R2_BASE}/${cg.file}`}
+                    alt={`호라이즌 워커 ${grp.label} 스토리 CG`}
+                    width={400}
+                    height={225}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="hw-gallery-caption">{cg.caption}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="hw-gallery-panel" id="zh-panel-story" role="tabpanel" data-panel="story" hidden>
+      <div class="hw-gallery-grid">
+        {
+          MAIN_STORY_CGS.map(cg => (
+            <a class="hw-gallery-card" href={`${R2_BASE}/${cg.file}`} target="_blank" rel="noopener">
+              <img
+                src={`${R2_BASE}/${cg.file}`}
+                alt={`호라이즌 워커 메인 스토리 일러스트: ${cg.caption}`}
+                width={400}
+                height={225}
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="hw-gallery-caption">{cg.caption}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="hw-gallery-panel" id="zh-panel-cutscenes" role="tabpanel" data-panel="cutscenes" hidden>
+      {
+        CUTSCENE_GROUPS.map(grp => (
+          <div class="hw-gallery-group">
+            <h2 class="hw-gallery-group-title">{grp.label}</h2>
+            <div class="hw-gallery-grid hw-gallery-video-grid">
+              {grp.videos.map(v => (
+                <figure class="hw-gallery-video-card">
+                  <video controls preload="none" poster={`${R2_BASE}/${v.poster}`} width={800} height={450}>
+                    <source src={`${R2_BASE}/${v.file}`} type="video/mp4" />
+                    사용 중인 브라우저가 영상 재생을 지원하지 않습니다.
+                  </video>
+                  <figcaption class="hw-gallery-caption">
+                    {v.caption}
+                    <span class="hw-video-duration">{v.duration}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="hw-gallery-panel" id="zh-panel-world" role="tabpanel" data-panel="world" hidden>
+      <div class="hw-gallery-grid">
+        {
+          WORLD_ART.map(cg => (
+            <a class="hw-gallery-card" href={`${R2_BASE}/${cg.file}`} target="_blank" rel="noopener">
+              <img
+                src={`${R2_BASE}/${cg.file}`}
+                alt={`호라이즌 워커 월드 배경: ${cg.caption}`}
+                width={400}
+                height={225}
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="hw-gallery-caption">{cg.caption}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="hw-gallery-panel" id="zh-panel-popups" role="tabpanel" data-panel="popups" hidden>
+      <div class="hw-gallery-grid hw-gallery-grid-square">
+        {
+          POPUP_ART.map(cg => (
+            <a class="hw-gallery-card" href={`${R2_BASE}/${cg.file}`} target="_blank" rel="noopener">
+              <img
+                src={`${R2_BASE}/${cg.file}`}
+                alt={`호라이즌 워커 대화 일러스트: ${cg.caption}`}
+                width={400}
+                height={400}
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="hw-gallery-caption">{cg.caption}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  </div>
+</HwLangLayout>
+
+<script is:inline>
+  // Tab switching for the Korean story gallery
+  function initZhGalleryTabs() {
+    var tabs = document.querySelectorAll('.hw-gallery-tab');
+    var panels = document.querySelectorAll('.hw-gallery-panel');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (t) {
+          t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+        });
+        panels.forEach(function (p) {
+          p.hidden = p.dataset.panel !== tab.dataset.tab;
+        });
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initZhGalleryTabs);
+  } else {
+    initZhGalleryTabs();
+  }
+</script>
+
+<style>
+  .zh-gallery-en {
+    color: var(--hw-text-very-muted);
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin-left: 0.5rem;
+  }
+</style>

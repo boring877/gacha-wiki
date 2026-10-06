@@ -1,0 +1,83 @@
+---
+// Traditional-Chinese (zh-tw) stigma sub-stats page: /zh-tw/guides/horizon-walker/stigma-sub-stats/
+// Renders the wiki sub-stat scaling table with official Traditional-Chinese stat labels.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import { stigmaSubStats } from '../../../../data/horizon-walker/stigma-sub-stats.js';
+import { HW_ZH_STAT_TYPES } from '../../../../data/horizon-walker/zh-tw/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/zh-tw/ui.js';
+import '../../../../styles/games/horizon-walker/stigma.css';
+import '../../../../styles/games/horizon-walker/hw-stigma-sub-stats.css';
+
+export const prerender = true;
+
+const STAT_ALIASES = {
+  'Movement Speed': 'SPD',
+};
+
+const statZh = label => {
+  const key = STAT_ALIASES[label] || label;
+  if (HW_ZH_STAT_TYPES[key]) return HW_ZH_STAT_TYPES[key];
+  const m = label.match(/^(.+?)\s*\((.+)\)$/);
+  if (m) {
+    const base = STAT_ALIASES[m[1]] || m[1];
+    if (HW_ZH_STAT_TYPES[base]) return `${HW_ZH_STAT_TYPES[base]}（${m[2]}）`;
+  }
+  return label;
+};
+---
+<HwLangLayout lang="zh-tw" ui={HW_ZH}
+  title="聖痕副屬性 - 地平線行者繁體中文維基 - GachaWiki"
+  description="地平線行者聖痕副屬性的數值範圍一覽：各副屬性的隨機區間與強化數值，屬性名稱為遊戲官方繁體中文。"
+  keywords={['地平線行者', '聖痕', '副屬性', '攻略']}
+  breadcrumbItems={[
+    { name: '首頁', href: '/' },
+    { name: '地平線行者', href: HW_ZH.baseUrl },
+    { name: '聖痕副屬性' },
+  ]}
+>
+  <section class="stigma-title-section">
+    <h1 class="stigma-page-title">聖痕副屬性</h1>
+    <DecorativeLines />
+  </section>
+
+  <div class="stigma-content-area">
+    <div class="hw-stigma-sub-stats-container">
+    <div class="hw-stigma-sub-stats-content">
+      <p class="zh-substats-note">聖痕在強化時會隨機獲得副屬性，下表為各副屬性可能出現的數值範圍。</p>
+      <table
+        class="hw-stigma-sub-stats-table"
+        role="table"
+        aria-label="聖痕副屬性數值範圍"
+      >
+        <thead>
+          <tr>
+            <th scope="col">屬性</th>
+            <th scope="col">數值範圍</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            stigmaSubStats.map(item => (
+              <tr>
+                <td class="stat-name">{statZh(item.stat)}</td>
+                <td class="stat-scale" aria-label={`數值範圍：${item.scale}`}>
+                  {item.scale}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+</HwLangLayout>
+
+<style>
+  .zh-substats-note {
+    font-size: 0.875rem;
+    color: var(--hw-text-muted);
+    margin: 0 0 1rem 0;
+  }
+</style>

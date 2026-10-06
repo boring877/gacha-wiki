@@ -1,0 +1,207 @@
+---
+// Japanese gifts guide: /ja/guides/horizon-walker/gifts/
+// Gift box and gift names/descriptions use the game's official JA via
+// HW_ZH_ITEMS (EN verbatim fallback when the game has no JA entry); point
+// values are the wiki's data unchanged.
+// Re-skinned onto the EN hw-gifts.css classes for visual parity.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import { GIFT_BOXES, UNIQUE_GIFTS } from '../../../../data/horizon-walker/gifts.js';
+import { HW_ZH_ITEMS } from '../../../../data/horizon-walker/ja/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ja/ui.js';
+import { GiftImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
+import '../../../../styles/games/horizon-walker/hw-gifts.css';
+
+export const prerender = true;
+
+// EN gift/box name -> official JA (Item loc); EN fallback if unmapped
+const giftJaName = name => HW_ZH_ITEMS[name]?.name || name;
+const giftJaDesc = name => HW_ZH_ITEMS[name]?.desc || null;
+---
+
+<HwLangLayout lang="ja" ui={HW_ZH}
+  title="プレゼントと報酬 - ホライゾン・ウォーカー日本語ウィキ - GachaWiki"
+  description="ホライゾン・ウォーカーのプレゼントデータベース：豪華・おしゃれ・平凡プレゼントボックスの中身一覧、好感度ポイントの仕組み、女王のティアラの入手方法と特別なプレゼントまで。プレゼント名と説明はゲーム公式の日本語から引用しています。"
+  keywords={['ホライゾン・ウォーカー', 'プレゼント', '好感度', 'プレゼントボックス']}
+  breadcrumbItems={[
+    { name: 'ホーム', href: '/' },
+    { name: 'ホライゾン・ウォーカー', href: HW_ZH.baseUrl },
+    { name: 'プレゼント' },
+  ]}
+>
+  <section class="hw-gift-hero">
+    <h1 class="hw-gift-title">プレゼントと報酬</h1>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-gift-content">
+    <section class="hw-gift-section" id="gift-boxes">
+      <h2 class="hw-section-title">プレゼントボックス</h2>
+
+      <div class="hw-section-content">
+        <p>各種プレゼントボックスとその中身の一覧です。ボックスごとに異なるレアリティと種類のプレゼントが入っています。</p>
+
+        <div class="hw-info-box">
+          <div class="hw-info-box-title">キャラのプレゼントの好み</div>
+          <div class="hw-info-box-content">
+            各キャラがどんなプレゼントを好むか知りたいですか？<a href={`${HW_ZH.baseUrl}character-gifts/`} class="hw-link">キャラの好みガイド</a>を確認して、好感度の伸びを最大化しましょう。
+          </div>
+        </div>
+      </div>
+
+      <div class="hw-affection-system-info">
+        <div class="system-header">
+          <h3 class="system-title">好感度ポイントの仕組み</h3>
+        </div>
+        <div class="system-content">
+          <div class="system-description">
+            <p>プレゼントで得られる好感度は、キャラの好みに応じて加算されます：</p>
+          </div>
+          <div class="system-levels">
+            <div class="level-item">
+              <span class="level-name">基本</span>
+              <span class="level-desc">ボーナスなし</span>
+            </div>
+            <div class="level-item">
+              <span class="level-name">好き</span>
+              <span class="level-desc">+10 ポイント</span>
+            </div>
+            <div class="level-item">
+              <span class="level-name">大好き</span>
+              <span class="level-desc">+20 ポイント</span>
+            </div>
+          </div>
+          <div class="system-note">
+            <strong>注意：</strong>現時点で、女王のティアラはどのキャラに贈っても最も高いポイント（100 から 120）を得られます。豪華なプレゼントボックスに入っているため、好感度を最大化したいときは最優先で選びましょう。
+          </div>
+        </div>
+      </div>
+
+      <div class="hw-gift-box-grid">
+        {GIFT_BOXES.map(box => (
+          <div class="hw-gift-box-card" id={box.id} data-box={box.id}>
+            <div class="hw-gift-box-header">
+              <div class="hw-gift-box-image">
+                <GiftImage
+                  imageName={box.image}
+                  alt={giftJaName(box.name)}
+                  class="gift-box-img"
+                  width={80}
+                  height={80}
+                  loading="lazy"
+                />
+              </div>
+              <div class="hw-gift-box-info">
+                <h3 class="hw-gift-box-name">{giftJaName(box.name)}</h3>
+                <div class="hw-gift-box-tier">
+                  <HWRarityIcon
+                    rarity={box.id === 'brilliant-gift-box' ? 'SS' : box.id === 'luxurious-gift-box' ? 'S' : 'A'}
+                    width={40}
+                    height={20}
+                  />
+                </div>
+                <p class="hw-gift-box-description">{giftJaDesc(box.name) || box.description}</p>
+                <div class="hw-gift-box-stats">
+                  <span class="gift-count">{box.gifts.length} 種のプレゼント</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hw-gift-items-grid">
+              {box.gifts.map(gift => (
+                <div class="hw-gift-item" data-rarity={gift.rarity}>
+                  <div class="hw-gift-item-image">
+                    <GiftImage
+                      imageName={gift.image}
+                      alt={giftJaName(gift.name)}
+                      class="gift-item-img"
+                      width={60}
+                      height={60}
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="hw-gift-item-info">
+                    <h4 class="hw-gift-item-name">{giftJaName(gift.name)}</h4>
+                    <HWRarityIcon rarity={gift.rarity} width={36} height={18} />
+                    <div class="hw-gift-points">
+                      <div class="points-levels">
+                        <div class="points-item">
+                          <span class="points-label">基本</span>
+                          <span class="points-value">{gift.points.min}</span>
+                        </div>
+                        <div class="points-item">
+                          <span class="points-label">好き</span>
+                          <span class="points-value">{gift.points.min + 10}</span>
+                        </div>
+                        <div class="points-item">
+                          <span class="points-label">大好き</span>
+                          <span class="points-value">{gift.points.max}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="hw-gift-section" id="unique-gifts">
+      <h2 class="hw-section-title">特別なプレゼント</h2>
+
+      <div class="hw-section-content">
+        <p>期間限定イベントや記念キャンペーンでのみ入手できる、記念品や特別なプレゼントです。</p>
+
+        <div class="hw-info-box">
+          <div class="hw-info-box-title">重要なお知らせ</div>
+          <div class="hw-info-box-content">
+            <strong>スキンも 100 の好感度を提供します</strong>（EX ランクのプレゼントと同等）。標準の好感度ボーナスも適用されます。
+          </div>
+        </div>
+      </div>
+
+      <div class="hw-gift-items-grid hw-unique-gifts-grid">
+        {UNIQUE_GIFTS.map(gift => (
+          <div class="hw-gift-item hw-unique-gift" data-rarity={gift.rarity}>
+            <div class="hw-gift-item-image">
+              <GiftImage
+                imageName={gift.image}
+                alt={giftJaName(gift.name)}
+                class="gift-item-img"
+                width={60}
+                height={60}
+                loading="lazy"
+              />
+            </div>
+            <div class="hw-gift-item-info">
+              <h4 class="hw-gift-item-name">{giftJaName(gift.name)}</h4>
+              <div class="hw-gift-badges">
+                <HWRarityIcon rarity={gift.rarity} width={36} height={18} />
+                <span class="hw-badge hw-badge-unique">{gift.type}</span>
+              </div>
+              {gift.description && <p class="hw-unique-description">{gift.description}</p>}
+              <div class="hw-gift-points">
+                <div class="points-levels">
+                  <div class="points-item">
+                    <span class="points-label">基本</span>
+                    <span class="points-value">{gift.points.min}</span>
+                  </div>
+                  <div class="points-item">
+                    <span class="points-label">好き</span>
+                    <span class="points-value">{gift.points.min + 10}</span>
+                  </div>
+                  <div class="points-item">
+                    <span class="points-label">大好き</span>
+                    <span class="points-value">{gift.points.max}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</HwLangLayout>

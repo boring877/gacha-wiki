@@ -1,0 +1,83 @@
+---
+// Japanese stigma sub-stats page: /ja/guides/horizon-walker/stigma-sub-stats/
+// Renders the wiki sub-stat scaling table with official JA stat labels.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import { stigmaSubStats } from '../../../../data/horizon-walker/stigma-sub-stats.js';
+import { HW_ZH_STAT_TYPES } from '../../../../data/horizon-walker/ja/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ja/ui.js';
+import '../../../../styles/games/horizon-walker/stigma.css';
+import '../../../../styles/games/horizon-walker/hw-stigma-sub-stats.css';
+
+export const prerender = true;
+
+const STAT_ALIASES = {
+  'Movement Speed': 'SPD',
+};
+
+const statJa = label => {
+  const key = STAT_ALIASES[label] || label;
+  if (HW_ZH_STAT_TYPES[key]) return HW_ZH_STAT_TYPES[key];
+  const m = label.match(/^(.+?)\s*\((.+)\)$/);
+  if (m) {
+    const base = STAT_ALIASES[m[1]] || m[1];
+    if (HW_ZH_STAT_TYPES[base]) return `${HW_ZH_STAT_TYPES[base]}（${m[2]}）`;
+  }
+  return label;
+};
+---
+<HwLangLayout lang="ja" ui={HW_ZH}
+  title="聖痕サブ効果 - ホライゾン・ウォーカー日本語ウィキ - GachaWiki"
+  description="ホライゾン・ウォーカーの聖痕サブ効果の数値範囲一覧：各サブ効果のランダム幅と強化数値を確認できます。ステータス名はゲーム公式の日本語です。"
+  keywords={['ホライゾン・ウォーカー', '聖痕', 'サブ効果', '攻略']}
+  breadcrumbItems={[
+    { name: 'ホーム', href: '/' },
+    { name: 'ホライゾン・ウォーカー', href: HW_ZH.baseUrl },
+    { name: '聖痕サブ効果' },
+  ]}
+>
+  <section class="stigma-title-section">
+    <h1 class="stigma-page-title">聖痕サブ効果</h1>
+    <DecorativeLines />
+  </section>
+
+  <div class="stigma-content-area">
+    <div class="hw-stigma-sub-stats-container">
+    <div class="hw-stigma-sub-stats-content">
+      <p class="zh-substats-note">聖痕は強化時にサブ効果をランダムで獲得します。下表は各サブ効果が出取り得る数値の範囲です。</p>
+      <table
+        class="hw-stigma-sub-stats-table"
+        role="table"
+        aria-label="聖痕サブ効果の数値範囲"
+      >
+        <thead>
+          <tr>
+            <th scope="col">効果</th>
+            <th scope="col">数値範囲</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            stigmaSubStats.map(item => (
+              <tr>
+                <td class="stat-name">{statJa(item.stat)}</td>
+                <td class="stat-scale" aria-label={`数値範囲：${item.scale}`}>
+                  {item.scale}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+</HwLangLayout>
+
+<style>
+  .zh-substats-note {
+    font-size: 0.875rem;
+    color: var(--hw-text-muted);
+    margin: 0 0 1rem 0;
+  }
+</style>

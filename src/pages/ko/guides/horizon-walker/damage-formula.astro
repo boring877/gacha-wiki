@@ -1,0 +1,219 @@
+---
+// Korean damage formula guide: /ko/guides/horizon-walker/damage-formula/
+// Same tables/numbers as the EN page from combat-mechanics.js; formulas stay
+// as code, stat names use the game's official Korean from HW_ZH_STAT_TYPES.
+// Re-skinned onto the EN hw-guide.css + hw-combat-mechanics.css classes.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import {
+  ATK_TYPES,
+  DEFENSE_MAPPING,
+  DEF_EXAMPLES_POSITIVE,
+  DEF_EXAMPLES_NEGATIVE,
+} from '../../../../data/horizon-walker/combat-mechanics.js';
+import {
+  HW_ZH_NAMES,
+  HW_ZH_STAT_TYPES,
+  HW_ZH_WEAPON_SKILLS,
+} from '../../../../data/horizon-walker/ko/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ko/ui.js';
+import '../../../../styles/games/horizon-walker/hw-guide.css';
+import '../../../../styles/games/horizon-walker/hw-combat-mechanics.css';
+
+export const prerender = true;
+
+const S = HW_ZH_STAT_TYPES;
+const palekarZh = HW_ZH_NAMES[60] || 'Palekar'; // 팔레카
+const coraZh = HW_ZH_NAMES[45] || 'Cora'; // 죄수/코라
+const verseOfOrdealZh = HW_ZH_WEAPON_SKILLS['Verse of Ordeal']?.name || 'Verse of Ordeal'; // 시련의 글귀
+
+// ATK_TYPES rows in KO (official stat names for the ATK/scaling stats)
+const atkRowsZh = {
+  'Melee skills': ['근접 스킬', `${S['Melee ATK']} (${S['Strength']} 보정)`],
+  'Shooting skills': ['사격 스킬', `${S['Ranged ATK']} (${S['Technic']} 보정)`],
+  'Arcane / magic skills': ['비전/마법 스킬', `${S['Magic ATK']} (${S['Intelligence']} 보정)`],
+};
+
+// DEFENSE_MAPPING damage-type column in KO; the stat column keeps the game's
+// internal stat key verbatim
+const defenseRowsZh = {
+  'Fire (Heat)': `열기 (Heat)`,
+  'Ice': '냉기',
+  'Lightning': '전기',
+  'Poison': '독기',
+  'Odd (Immaterial)': '무형 (Immaterial)',
+  'Hack (Slash), physical only': '참격 (Slash, 물리 전용)',
+  'Stab (Pierce), physical only': '통격 (Pierce, 물리 전용)',
+  'Blow (Blunt), physical only': '타격 (Blunt, 물리 전용)',
+};
+
+const negativeNotesZh = {
+  'Palekar [Unstable]': `${palekarZh} [Unstable]`,
+  'Palekar [Unstable] with Evasion scaling': `${palekarZh} [Unstable] (${S['Evade']} 보정 적용 후)`,
+};
+---
+
+<HwLangLayout lang="ko" ui={HW_ZH}
+  title="피해 공식과 방어 - 호라이즌 워커 한국어 위키 - GachaWiki"
+  description="호라이즌 워커 피해 계산 공식 해설: 공격력과 방어의 환산, 각 피해 유형이 실제로 참조하는 방어 스탯, 방어 배율의 수익 감소, 그리고 방어 감소(마이너스 방어)가 최강의 딜 증가 수단인 이유를 정리했습니다."
+  keywords={['호라이즌 워커', '피해 공식', '방어', '방어 감소', '전투 메커니즘']}
+  breadcrumbItems={[
+    { name: '홈', href: '/' },
+    { name: '호라이즌 워커', href: HW_ZH.baseUrl },
+    { name: '피해 공식' },
+  ]}
+>
+  <section class="hw-guide-hero">
+    <h1 class="hw-guide-title">피해 공식과 방어</h1>
+    <p class="hw-guide-subtitle">스킬이 피해로 환산되는 방식과, 공식에서 방어와 방어 감소가 실제로 하는 역할</p>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-guide-content">
+    <section class="hw-guide-section" id="formula">
+      <h2 class="hw-section-title">핵심 공식</h2>
+      <div class="hw-section-content">
+        <p>스킬이 명중할 때마다 아래 계산 파이프라인을 거칩니다:</p>
+      </div>
+      <div class="hw-mech-formula">damage = skill% x ATK x defense multiplier x level multiplier x battle ratio</div>
+      <ul class="hw-guide-list">
+        <li><strong>skill%</strong>는 스킬의 피해 계수입니다 (스킬 페이지의 백분율).</li>
+        <li><strong>ATK</strong>는 스킬 유형에 따라 결정되는 공격자의 스탯으로, 아래 표를 참고하세요.</li>
+        <li><strong>defense multiplier</strong> (방어 배율)는 대상의 방어 스탯 하나로만 결정되며, 아래에서 설명합니다.</li>
+        <li><strong>level multiplier</strong> (레벨 배율)는 레벨 차이 규칙으로, 레벨 차이 페이지를 참고하세요.</li>
+        <li><strong>battle ratio</strong> (전투 전체 계수)는 전투마다 주어지며, 보통 1입니다.</li>
+      </ul>
+      <div class="hw-section-content">
+        <p>치명타, 약점 공격, 버프 효과는 이 기본값에 추가로 곱해집니다.</p>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="atk">
+      <h2 class="hw-section-title">어떤 공격력을 쓰는가</h2>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="스킬 유형과 공격 스탯 대조">
+          <thead>
+            <tr>
+              <th scope="col">스킬 유형</th>
+              <th scope="col">공격 스탯</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ATK_TYPES.map(row => (
+              <tr>
+                <td>{atkRowsZh[row.skill]?.[0] || row.skill}</td>
+                <td>{atkRowsZh[row.skill]?.[1] || row.stat}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="defense-stat">
+      <h2 class="hw-section-title">어떤 방어를 보는가</h2>
+      <div class="hw-section-content">
+        <p>
+          가장 헷갈리기 쉬운 부분입니다. 스킬의 <strong>속성이 참조할 방어 스탯을 결정하며, 물리 방어를 완전히 대체합니다</strong>. {coraZh}의 열기 피해는 절대 참격 방어를 보지 않습니다. 대상의 열기 저항과 비교됩니다.
+        </p>
+      </div>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="피해 유형과 방어 스탯 대조">
+          <thead>
+            <tr>
+              <th scope="col">피해 유형</th>
+              <th scope="col">참조하는 방어 스탯 (게임 내부 데이터명)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DEFENSE_MAPPING.map(row => (
+              <tr>
+                <td>{defenseRowsZh[row.damage] || row.damage}</td>
+                <td><code>{row.stat}</code></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="hw-info-box">
+        <div class="hw-info-box-title">실전 결론</div>
+        <div class="hw-info-box-content">
+          물리 방어가 높지만 속성 저항이 낮은 보스는 속성 공격 캐릭터에게 훨씬 많은 피해를 입습니다. 보스 벽에 막혔다면 어떤 저항이 가장 낮은지 먼저 확인하고 해당 속성을 데려가는 것이 공격력을 쌓는 것보다 효과가 클 수 있습니다.
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="defense-multiplier">
+      <h2 class="hw-section-title">방어 배율</h2>
+      <div class="hw-section-content">
+        <p>매칭된 방어 값이 D일 때 배율 공식은 1 - D / (D + 1000)입니다:
+      </div>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="방어 값과 받는 피해 대조">
+          <thead>
+            <tr>
+              <th scope="col">방어 값</th>
+              <th scope="col">받는 피해</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DEF_EXAMPLES_POSITIVE.map(row => (
+              <tr>
+                <td>{row.def}</td>
+                <td>{row.taken}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="hw-section-content">
+        <p>
+          방어에는 수익 감소가 있습니다. 처음 250 방어는 받는 피해를 20% 줄이지만, 3000에서 9000으로 올려도 추가로 15%밖에 줄지 않습니다. 방어로 피해를 완전히 상쇄할 수는 없습니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="negative-def">
+      <h2 class="hw-section-title">마이너스 방어: 방어 감소가 진짜 강력한 이유</h2>
+      <div class="hw-section-content">
+        <p>
+          방어 감소로 대상의 방어가 <strong>0 이하</strong>로 내려가면 게임은 다른 공식으로 전환합니다: 1 + |DEF| / 1000. <strong>상한이 없는</strong> 고정 피해 증가입니다:
+        </p>
+      </div>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="마이너스 방어 값과 받는 피해 대조">
+          <thead>
+            <tr>
+              <th scope="col">방어 값</th>
+              <th scope="col">받는 피해</th>
+              <th scope="col">비고</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DEF_EXAMPLES_NEGATIVE.map(row => (
+              <tr class="hw-mech-highlight">
+                <td>{row.def}</td>
+                <td>{row.taken}</td>
+                <td>{negativeNotesZh[row.note] || row.note || ''}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="hw-example-box">
+        <div class="hw-example-title">{palekarZh}이(가) 원킬을 내는 이유</div>
+        <div class="hw-example-content">
+          그녀의 {verseOfOrdealZh}가 부여하는 [Unstable]은 모든 방어를 1140 감소시키고, {S['Evade']} 보정에 따라 최대 1340까지 감소시킵니다. 보스의 방어가 0 이하로 내려가면 부대 전체가 2.14~2.34배의 피해를 내며, 여기에 이 디버프가 동시에 부여하는 피해량 증가 효과는 아직 포함되지 않은 수치입니다. 방어 감소가 대부분의 공격 버프보다 강력한 이유입니다.
+        </div>
+      </div>
+    </section>
+  </div>
+</HwLangLayout>
+
+<style>
+  .hw-mech-table code {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--hw-primary-warm);
+  }
+</style>

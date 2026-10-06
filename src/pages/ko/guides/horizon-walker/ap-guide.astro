@@ -1,0 +1,219 @@
+---
+// Korean AP (action points) guide: /ko/guides/horizon-walker/ap-guide/
+// Editorial walkthrough translated from the EN ap-guide data, same numbers
+// (Yeonwoo 56/109/165, 30 AP skill, 100 AP threshold); stat names use the
+// game's official Korean from HW_ZH_STAT_LABELS/STAT_TYPES.
+// Re-skinned onto the EN hw-guide.css classes for visual parity.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../data/horizon-walker/characters.js';
+import { HW_ZH_NAMES, HW_ZH_STAT_LABELS, HW_ZH_STAT_TYPES } from '../../../../data/horizon-walker/ko/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ko/ui.js';
+import { APImage } from '../../../../components/horizon-walker/index.astro';
+import '../../../../styles/games/horizon-walker/hw-guide.css';
+
+export const prerender = true;
+
+// Hero names mentioned in the guide -> official ZH (EN fallback)
+const heroZh = enName => {
+  const rosterChar = HORIZON_WALKER_CHARACTERS.find(c => c.name === enName);
+  return (rosterChar && HW_ZH_NAMES[rosterChar.id]) || enName;
+};
+const yeonwoo = heroZh('Yeonwoo');
+const kalma = heroZh('Kalma');
+
+// Official KO stat names used in the guide
+const apRecovery = HW_ZH_STAT_LABELS.apRecovery; // 스태미나 회복력
+const startingAp = HW_ZH_STAT_LABELS.startingAp; // 전투 시작 행동력
+const agility = HW_ZH_STAT_LABELS.agility; // 민첩
+const apRecoveryEn = HW_ZH_STAT_TYPES['AP Recovery'];
+
+const IMG1 = '../../assets/images/games/horizon-walker/AP_recovery/img1.jpg';
+const IMG2 = '../../assets/images/games/horizon-walker/AP_recovery/img2.jpg';
+const IMG3 = '../../assets/images/games/horizon-walker/AP_recovery/img3.jpg';
+---
+
+<HwLangLayout lang="ko" ui={HW_ZH}
+  title="행동력(AP) 시스템 가이드 - 호라이즌 워커 한국어 위키 - GachaWiki"
+  description="호라이즌 워커 행동력(AP) 시스템 해설: 스태미나 회복력과 전투 시작 행동력의 차이, 행동 순서 계산 방식, 100 AP 행동 문턱과 추가 턴 등 특수 효과를 정리했습니다."
+  keywords={['호라이즌 워커', '행동력', 'AP', '행동 순서', '스태미나 회복력']}
+  breadcrumbItems={[
+    { name: '홈', href: '/' },
+    { name: '호라이즌 워커', href: HW_ZH.baseUrl },
+    { name: '행동력 가이드' },
+  ]}
+>
+  <section class="hw-guide-hero">
+    <h1 class="hw-guide-title">행동력(AP) 시스템 가이드</h1>
+    <p class="hw-guide-subtitle">호라이즌 워커에서 AP가 행동 순서를 결정하는 방식 이해하기</p>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-guide-content">
+    <section class="hw-guide-section" id="introduction">
+      <h2 class="hw-section-title">AP 작동 방식</h2>
+      <div class="hw-section-content">
+        <p>
+          호라이즌 워커는 행동 순서를 계산할 때 행동력(AP)을 사용합니다. AP는 누가 먼저 행동하는지를 가늠하는 척도 체계입니다. 아래에서 AP의 작동 방식과 관련 메커니즘을 설명합니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="ap-stats">
+      <h2 class="hw-section-title">AP 관련 스탯 정리</h2>
+      <div class="hw-section-content">
+        <p>먼저, AP에 영향을 주는 스탯은 두 가지입니다:</p>
+      </div>
+      <ul class="hw-guide-list">
+        <li>{apRecovery} ({apRecoveryEn}, AP Recovery)</li>
+        <li>{startingAp} (Starting AP)</li>
+      </ul>
+    </section>
+
+    <section class="hw-guide-section" id="ap-recovery-explanation">
+      <h2 class="hw-section-title">{apRecovery} 이해하기</h2>
+      <div class="hw-section-content">
+        <p>
+          {apRecovery} (AP Recovery): 1라운드부터 매 라운드 획득하는 AP 수치입니다.
+        </p>
+        <p>
+          {startingAp} (Starting AP): 전투의 첫 라운드에만 적용되며, 아군이 먼저 행동해 연계나 버프를 일찍 시작할 수 있게 도와줍니다.
+        </p>
+      </div>
+      <div class="hw-warning-box">
+        <div class="hw-warning-content">
+          주의: {agility}은(는) 기본 {apRecovery}을(를) 올립니다. {agility}이 높은 캐릭터는 증가 폭의 비율이 더 커지므로 {apRecovery} 증가 효과에서 더 큰 이득을 봅니다!
+        </div>
+      </div>
+      <div class="hw-guide-image-container">
+        <APImage
+          imageName={IMG1}
+          alt="AP 스탯 화면: 민첩이 스태미나 회복력에 영향"
+          class="hw-guide-image"
+          width={600}
+          height={400}
+          loading="lazy"
+          format="webp"
+          quality={85}
+        />
+        <p class="hw-guide-image-caption">AP 스탯 화면: {agility}이 {apRecovery}에 영향</p>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="gameplay-mechanics">
+      <h2 class="hw-section-title">게임에서 두 스탯은 이렇게 쓰입니다</h2>
+      <div class="hw-section-content">
+        <p>이제 이 두 스탯이 실전에서 어떻게 작동하는지 살펴보겠습니다. {yeonwoo}를 예로 들면:</p>
+      </div>
+      <div class="hw-guide-image-container">
+        <APImage
+          imageName={IMG2}
+          alt={`${yeonwoo}의 AP 스탯: 전투 시작 행동력 56, 스태미나 회복력 109`}
+          class="hw-guide-image"
+          width={600}
+          height={400}
+          loading="lazy"
+          format="webp"
+          quality={85}
+        />
+        <p class="hw-guide-image-caption">{yeonwoo}의 AP 스탯: {startingAp} 56, {apRecovery} 109</p>
+      </div>
+      <div class="hw-example-box">
+        <div class="hw-example-title">{yeonwoo}의 AP 계산</div>
+        <div class="hw-example-content">
+          {yeonwoo}의 {startingAp}는 56, {apRecovery}는 109입니다. 1라운드에 총 165 AP(56 + 109)를 보유하며, 이후 매 라운드 추가로 109를 획득합니다.
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="turn-threshold">
+      <h2 class="hw-section-title">100 AP 행동 문턱 규칙</h2>
+      <div class="hw-section-content">
+        <p>1라운드에 그녀는 165 AP를 보유하고 있으며, 기본 스킬은 30 AP를 소모합니다.</p>
+      </div>
+      <div class="hw-guide-image-container">
+        <APImage
+          imageName={IMG3}
+          alt="1라운드: 연우가 165 AP 보유, 기본 스킬은 30 AP 소모"
+          class="hw-guide-image"
+          width={600}
+          height={400}
+          loading="lazy"
+          format="webp"
+          quality={85}
+        />
+        <p class="hw-guide-image-caption">1라운드: {yeonwoo}이(가) 165 AP 보유, 기본 스킬은 30 AP 소모</p>
+      </div>
+      <div class="hw-warning-box">
+        <div class="hw-warning-content">
+          매우 중요: AP가 100 미만이면 행동할 수 없으며, AP가 100 이상이 될 때까지 다음 라운드를 기다려야 합니다. 행동 문턱은 100 AP 이상입니다!
+        </div>
+      </div>
+      <div class="hw-info-box">
+        <div class="hw-info-box-title">AP 누적 예시</div>
+        <div class="hw-info-box-content">
+          현재 99 AP라면 이번 라운드에는 행동할 수 없고, 다음 라운드에 99 + 109({apRecovery}) = 208 AP가 됩니다.
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="special-effects">
+      <h2 class="hw-section-title">특수 효과</h2>
+      <div class="hw-section-content">
+        <p>효과:</p>
+      </div>
+      <div class="hw-example-box">
+        <div class="hw-example-title">추가 턴 효과</div>
+        <div class="hw-example-content">
+          일부 스킬({kalma}의 스킬 등)의 추가 턴 효과는 100 AP를 채우지 않아도 행동 기회를 제공합니다. 해당 라운드에 즉시 행동할 수 있어, 사실상 100 AP 행동 문턱을 무시하는 효과입니다!
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="tldr">
+      <h2 class="hw-section-title">정리</h2>
+      <div class="hw-info-box">
+        <div class="hw-info-box-title">핵심 정리</div>
+        <div class="hw-info-box-content">
+          <ul class="hw-guide-list zh-info-list">
+            <li>AP가 행동 순서를 결정합니다</li>
+            <li>{startingAp}은(는) 첫 라운드에만 영향을 줍니다</li>
+            <li>{apRecovery}은(는) 매 라운드 AP를 늘립니다</li>
+            <li>행동하려면 최소 100 AP가 필요합니다 (특수 효과 제외)</li>
+            <li>{agility}은(는) 기본 {apRecovery}을(를) 올립니다</li>
+            <li>추가 턴 효과는 100 AP 규칙을 무시합니다</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="video-explanation">
+      <h2 class="hw-section-title">영상 해설</h2>
+      <div class="hw-section-content">
+        <p>AP 시스템에 대한 더 자세한 영상 해설을 원한다면 이 영상을 참고하세요:</p>
+      </div>
+      <div class="hw-video-link-container">
+        <a
+          href="https://www.youtube.com/watch?v=AUh3Fhjag24"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hw-video-link"
+        >
+          YouTube에서 AP 시스템 해설 보기 →
+        </a>
+      </div>
+    </section>
+  </div>
+</HwLangLayout>
+
+<style>
+  /* Localize the EN pseudo-element labels; the list inside the TL;DR info box
+     needs tighter vertical rhythm than the standalone guide list. */
+  .hw-warning-box::before {
+    content: '⚠️ 주의';
+  }
+
+  .zh-info-list {
+    margin: 0;
+  }
+</style>

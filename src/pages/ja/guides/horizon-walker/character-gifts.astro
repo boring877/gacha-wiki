@@ -1,0 +1,501 @@
+---
+// Japanese character gift preferences page: /ja/guides/horizon-walker/
+// character-gifts/. Character names via HW_ZH_NAMES (roster id), gift names
+// via HW_ZH_ITEMS, level-5 bonus stat types via HW_ZH_STAT_TYPES: all the
+// game's official JA with EN fallback. Point math is the wiki's data unchanged.
+// Re-skinned onto the EN hw-character-gifts.css classes for visual parity.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import { CHARACTER_GIFT_PREFERENCES } from '../../../../data/horizon-walker/character-gifts.js';
+import { GIFT_BOXES } from '../../../../data/horizon-walker/gifts.js';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../data/horizon-walker/characters.js';
+import {
+  HW_ZH_NAMES,
+  HW_ZH_ITEMS,
+  HW_ZH_STAT_TYPES,
+} from '../../../../data/horizon-walker/ja/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ja/ui.js';
+import { GiftImage, CharacterImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
+import '../../../../styles/games/horizon-walker/hw-character-gifts.css';
+
+export const prerender = true;
+
+// Gift -> gift box source mapping (same logic as the EN page)
+const giftToBoxMapping = {};
+const giftNameToBoxMapping = {};
+GIFT_BOXES.forEach(box => {
+  box.gifts?.forEach(gift => {
+    if (!giftToBoxMapping[gift.id]) giftToBoxMapping[gift.id] = [];
+    giftToBoxMapping[gift.id].push({ id: box.id, name: box.name, image: box.image });
+    if (!giftNameToBoxMapping[gift.name]) giftNameToBoxMapping[gift.name] = [];
+    if (!giftNameToBoxMapping[gift.name].find(b => b.id === box.id)) {
+      giftNameToBoxMapping[gift.name].push({ id: box.id, name: box.name, image: box.image });
+    }
+  });
+});
+
+// EN gift/box name -> official JA (Item loc); EN fallback if unmapped
+const giftJaName = name => HW_ZH_ITEMS[name]?.name || name;
+
+// Character JA name: resolve the roster entry (by slug or name) -> HW_ZH_NAMES
+const rosterBySlugOrName = new Map();
+for (const c of HORIZON_WALKER_CHARACTERS) {
+  if (c.slug) rosterBySlugOrName.set(c.slug, c);
+  rosterBySlugOrName.set(c.name, c);
+}
+const charJaName = g => {
+  const rosterChar = rosterBySlugOrName.get(g.id) || rosterBySlugOrName.get(g.name);
+  return (rosterChar && HW_ZH_NAMES[rosterChar.id]) || g.name;
+};
+
+// Level-5 bonus stat type: official JA stat name ('Evasion' aliases onto the
+// game's 'Evade' entry; 'Special' is wiki shorthand)
+const bonusTypeJa = t =>
+  HW_ZH_STAT_TYPES[t] || (t === 'Evasion' ? HW_ZH_STAT_TYPES['Evade'] : t === 'Special' ? '特殊' : t);
+
+// The three wiki "Special" bonus values, restated with official JA stat names
+const bonusValueJa = {
+  '10% Evade Bonus': () => `${HW_ZH_STAT_TYPES['Evade']} 10% ボーナス`,
+  '5% Melee ATK Bonus + 5% Magic ATK Bonus': () =>
+    `${HW_ZH_STAT_TYPES['Melee ATK']} 5% ボーナス + ${HW_ZH_STAT_TYPES['Magic ATK']} 5% ボーナス`,
+  '8% Heat Boost Increase': () => `${HW_ZH_STAT_TYPES['Heat Boost']} 8% 向上`,
+};
+const bonusValue = v => (bonusValueJa[v] ? bonusValueJa[v]() : v);
+
+const hasReleasedInfo = c =>
+  (c.favorites && c.favorites.length > 0) || (c.likes && c.likes.length > 0);
+
+// Released info first, then by EN name (same ordering as the EN page)
+const sortedCharacters = [...CHARACTER_GIFT_PREFERENCES].sort((a, b) => {
+  if (hasReleasedInfo(a) && !hasReleasedInfo(b)) return -1;
+  if (!hasReleasedInfo(a) && hasReleasedInfo(b)) return 1;
+  return a.name.localeCompare(b.name);
+});
+
+// Gifts needed to reach level 5 (2000 points)
+const giftsNeeded = gift => Math.ceil(2000 / gift.totalPoints);
+
+const hasQueensTiara = c =>
+  c.favorites?.some(g => g.id === 'queens-tiara') || c.likes?.some(g => g.id === 'queens-tiara');
+
+const queensTiaraGift = {
+  id: 'queens-tiara',
+  name: "Queen's Tiara",
+  rarity: 'EX',
+  image: 'Queen_tiara.jpg',
+  totalPoints: 100,
+};
+
+const boxesFor = gift => {
+  const all = [...(giftToBoxMapping[gift.id] || [])];
+  (giftNameToBoxMapping[gift.name] || []).forEach(nb => {
+    if (!all.find(b => b.id === nb.id)) all.push(nb);
+  });
+  return all;
+};
+---
+
+<HwLangLayout lang="ja" ui={HW_ZH}
+  title="キャラのプレゼントの好み - ホライゾン・ウォーカー日本語ウィキ - GachaWiki"
+  description="ホライゾン・ウォーカーの全キャラのプレゼントの好みを網羅したガイド：各キャラの大好き・好きなプレゼント、好感度レベル 5 ボーナス、女王のティアラの入手先と好感度効率的な稼ぎ方まで。キャラ名とプレゼント名はゲーム公式の日本語から引用しています。"
+  keywords={['ホライゾン・ウォーカー', 'プレゼント', '好感度', 'キャラの好み']}
+  breadcrumbItems={[
+    { name: 'ホーム', href: '/' },
+    { name: 'ホライゾン・ウォーカー', href: HW_ZH.baseUrl },
+    { name: 'キャラの好み' },
+  ]}
+>
+  <section class="hw-character-gift-hero">
+    <h1 class="hw-character-gift-title">キャラのプレゼントの好み</h1>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-character-gift-content">
+    <section class="hw-gift-section" id="character-gifts">
+      <h2 class="hw-section-title">プレゼントの好みガイド</h2>
+
+      <div class="hw-section-content">
+        <p>キャラごとにプレゼントの好みが設定されており、好感度ボーナスに影響します。このガイドで推しのキャラにぴったりのプレゼントを選びましょう。</p>
+
+        <div class="hw-how-to-gift">
+          <p>
+            <span class="hw-how-to-label">プレゼントの渡し方：</span>スマホで<span class="hw-highlight-action">通話</span>を選んでキャラを呼び出し、4 つの選択肢から<span class="hw-highlight-action">プレゼント</span>を選ぶと渡せます。
+          </p>
+
+          <div class="hw-warning-box">
+            <h4 class="hw-warning-title">重要：既知の不具合</h4>
+            <p class="hw-warning-text">
+              キャラと会話した後、好感度クエストを進める (!) マークが表示されないことがあります。その場合はゲームを完全に終了して再起動すると修正されます。
+            </p>
+          </div>
+        </div>
+
+        <div class="hw-tip-box">
+          <h3>おすすめ：豪華なプレゼントボックス</h3>
+          <p>
+            女王のティアラはどのキャラに贈っても最も高いポイント（100 から 120）を獲得できます。豪華なプレゼントボックスに入っているため、好感度を最大化したいときは最優先で選びましょう。
+          </p>
+        </div>
+
+        <div class="hw-info-section">
+          <div class="hw-info-item">
+            <h4>好感度の好み</h4>
+            <p><span class="hw-label">大好きなプレゼント：</span>基本ポイント + <span class="hw-highlight">20 ボーナス</span></p>
+            <p><span class="hw-label">好きなプレゼント：</span>基本ポイント + <span class="hw-highlight">10 ボーナス</span></p>
+            <p><span class="hw-label">特になし：</span>基本ポイントのみ</p>
+          </div>
+
+          <div class="hw-info-item">
+            <h4>好感度の目標</h4>
+            <p>キャラの好感度は全部で <span class="hw-highlight">5 レベル</span>です。</p>
+            <p><span class="hw-label">最大まで上げるのに必要なポイントは</span><span class="hw-highlight">2000</span><span class="hw-label">です</span>。</p>
+          </div>
+
+          <div class="hw-info-item">
+            <h4>報酬</h4>
+            <div class="hw-rewards-content">
+              <div class="hw-reward-item">
+                <span class="hw-label">レベルアップ報酬：</span>
+                <div class="hw-reward-icons">
+                  <div class="hw-reward-icon-item">
+                    <GiftImage
+                      imageName="Gold.jpg"
+                      alt="Gold"
+                      class="hw-reward-icon"
+                      width={32}
+                      height={32}
+                      loading="lazy"
+                    />
+                    <span class="hw-reward-name">Gold</span>
+                  </div>
+                  <div class="hw-reward-icon-item">
+                    <GiftImage
+                      imageName="Extercium.jpg"
+                      alt="Extercium"
+                      class="hw-reward-icon"
+                      width={32}
+                      height={32}
+                      loading="lazy"
+                    />
+                    <span class="hw-reward-name">Extercium</span>
+                  </div>
+                </div>
+              </div>
+              <p>
+                <span class="hw-label">特別解放：</span><span class="hw-highlight">Message Room</span>、<span class="hw-highlight">Jacuzzi Bathroom</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hw-search-section">
+        <h3 class="hw-search-title">キャラを検索</h3>
+        <div class="hw-character-search">
+          <input
+            type="text"
+            id="zh-cg-search"
+            class="hw-search-input"
+            placeholder="キャラ名を入力（日本語・英語）"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      <div class="hw-rarity-filter">
+        <h3 class="hw-filter-title">レアリティで絞り込み</h3>
+        <div class="hw-rarity-buttons" id="zh-rarity-row">
+          <button class="hw-rarity-btn active" data-rarity="">すべて</button>
+          <button class="hw-rarity-btn" data-rarity="EX">EX</button>
+          <button class="hw-rarity-btn" data-rarity="SS">SS</button>
+          <button class="hw-rarity-btn" data-rarity="S">S</button>
+          <button class="hw-rarity-btn" data-rarity="A">A</button>
+          <button class="hw-rarity-btn" data-rarity="B">B</button>
+        </div>
+      </div>
+
+      <p class="hw-no-preferences" id="zh-empty" hidden>絞り込み条件に一致するキャラがいません。</p>
+
+      <div class="hw-character-grid" id="zh-char-grid">
+        {sortedCharacters.map(character => {
+          const zhName = charJaName(character);
+          return (
+            <div
+              class="hw-character-card"
+              data-character={character.id}
+              data-search={`${zhName} ${character.name}`.toLowerCase()}
+              data-rarity={character.rarity}
+            >
+              <div class="hw-character-header">
+                <div class="hw-character-image">
+                  <CharacterImage
+                    imageName={character.image.split('/').pop() || character.image}
+                    alt={zhName}
+                    class="character-img"
+                    width={100}
+                    height={100}
+                    loading="lazy"
+                  />
+                </div>
+                <div class="hw-character-info">
+                  <h3 class="hw-character-name">{zhName}</h3>
+                  <p class="zh-char-en">{character.name}</p>
+                  <div class="hw-character-rarity">
+                    <HWRarityIcon rarity={character.rarity} width={44} height={22} />
+                  </div>
+                </div>
+              </div>
+
+              <div class="hw-gift-preferences">
+                {character.level5Bonus && (
+                  <div class="hw-level5-bonus-section">
+                    <h4 class="hw-level5-bonus-title">好感度レベル 5 ボーナス</h4>
+                    <div class="hw-level5-bonus-content">
+                      <div class="hw-level5-bonus-item">
+                        <span class="hw-bonus-type">{bonusTypeJa(character.level5Bonus.type)}</span>
+                        <span class="hw-bonus-value">{bonusValue(character.level5Bonus.value)}</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {character.favorites && character.favorites.length > 0 && (
+                  <div class="hw-preference-section hw-favorites-section">
+                    <h4 class="hw-preference-title hw-favorites-title">大好きなプレゼント（+20 ポイント）</h4>
+                    {character.favorites.map(gift => (
+                      <div class="hw-favorite-item">
+                        <div class="hw-favorite-gift-image">
+                          <GiftImage
+                            imageName={gift.image.split('/').pop() || gift.image}
+                            alt={giftJaName(gift.name)}
+                            class="gift-favorite-img"
+                            width={70}
+                            height={70}
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="hw-favorite-details">
+                          <div class="hw-favorite-header">
+                            <div class="hw-favorite-title-group">
+                              <h5 class="hw-favorite-name">{giftJaName(gift.name)}</h5>
+                              <div class="hw-favorite-badges">
+                                <HWRarityIcon rarity={gift.rarity} width={40} height={20} />
+                                <span class="hw-badge hw-badge-favorites">大好き</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="hw-favorite-stats">
+                            <div class="hw-favorite-stat">
+                              <span class="hw-stat-label">総好感度：</span>
+                              <span class="hw-stat-value hw-stat-points">{gift.totalPoints}</span>
+                            </div>
+                            <div class="hw-favorite-stat">
+                              <span class="hw-stat-label">レベル 5 まで必要：</span>
+                              <span class="hw-stat-value">{giftsNeeded(gift)} 個</span>
+                            </div>
+                          </div>
+                          {boxesFor(gift).length > 0 && (
+                            <div class="hw-gift-sources">
+                              <h6 class="hw-sources-title">入手先</h6>
+                              {boxesFor(gift).map(box => (
+                                <div class="hw-source-box">
+                                  <GiftImage
+                                    imageName={box.image.split('/').pop() || box.image}
+                                    alt={giftJaName(box.name)}
+                                    class="hw-source-icon"
+                                    width={40}
+                                    height={40}
+                                    loading="lazy"
+                                  />
+                                  <span class="hw-source-name">{giftJaName(box.name)}</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {character.likes && character.likes.length > 0 && (
+                  <div class="hw-preference-section hw-likes-section" style="margin-top: 1rem;">
+                    <h4 class="hw-preference-title hw-likes-title">好きなプレゼント（+10 ポイント）</h4>
+                    {character.likes.map(gift => (
+                      <div class="hw-like-item">
+                        <div class="hw-like-gift-image">
+                          <GiftImage
+                            imageName={gift.image.split('/').pop() || gift.image}
+                            alt={giftJaName(gift.name)}
+                            class="gift-like-img"
+                            width={70}
+                            height={70}
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="hw-like-details">
+                          <div class="hw-like-header">
+                            <div class="hw-like-title-group">
+                              <h5 class="hw-like-name">{giftJaName(gift.name)}</h5>
+                              <div class="hw-like-badges">
+                                <HWRarityIcon rarity={gift.rarity} width={40} height={20} />
+                                <span class="hw-badge hw-badge-likes">好き</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="hw-like-stats">
+                            <div class="hw-like-stat">
+                              <span class="hw-stat-label">総好感度：</span>
+                              <span class="hw-stat-value hw-stat-points">{gift.totalPoints}</span>
+                            </div>
+                            <div class="hw-like-stat">
+                              <span class="hw-stat-label">レベル 5 まで必要：</span>
+                              <span class="hw-stat-value">{giftsNeeded(gift)} 個</span>
+                            </div>
+                          </div>
+                          {boxesFor(gift).length > 0 && (
+                            <div class="hw-gift-sources">
+                              <h6 class="hw-sources-title">入手先</h6>
+                              {boxesFor(gift).map(box => (
+                                <div class="hw-source-box">
+                                  <GiftImage
+                                    imageName={box.image.split('/').pop() || box.image}
+                                    alt={giftJaName(box.name)}
+                                    class="hw-source-icon"
+                                    width={40}
+                                    height={40}
+                                    loading="lazy"
+                                  />
+                                  <span class="hw-source-name">{giftJaName(box.name)}</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {!hasQueensTiara(character) && hasReleasedInfo(character) && (
+                  <div class="hw-preference-section hw-alternative-section" style="margin-top: 1.5rem;">
+                    <h4 class="hw-preference-title hw-alternative-title">高ポイントの代替候補</h4>
+                    <div class="hw-alternative-content">
+                      <div class="hw-alternative-item">
+                        <div class="hw-alternative-gift-image">
+                          <GiftImage
+                            imageName={queensTiaraGift.image}
+                            alt={giftJaName(queensTiaraGift.name)}
+                            class="gift-alternative-img"
+                            width={70}
+                            height={70}
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="hw-alternative-details">
+                          <div class="hw-alternative-header">
+                            <div class="hw-alternative-title-group">
+                              <h5 class="hw-alternative-name">{giftJaName(queensTiaraGift.name)}</h5>
+                              <div class="hw-alternative-badges">
+                                <HWRarityIcon rarity={queensTiaraGift.rarity} width={40} height={20} />
+                                <span class="hw-badge hw-badge-value">高ポイント</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="hw-alternative-stats">
+                            <div class="hw-alternative-stat">
+                              <span class="hw-stat-label">総好感度：</span>
+                              <span class="hw-stat-value hw-stat-points">{queensTiaraGift.totalPoints}</span>
+                            </div>
+                            <div class="hw-alternative-stat">
+                              <span class="hw-stat-label">レベル 5 まで必要：</span>
+                              <span class="hw-stat-value">{giftsNeeded(queensTiaraGift)} 個</span>
+                            </div>
+                          </div>
+                          {boxesFor(queensTiaraGift).length > 0 && (
+                            <div class="hw-gift-sources">
+                              <h6 class="hw-sources-title">入手先</h6>
+                              {boxesFor(queensTiaraGift).map(box => (
+                                <div class="hw-source-box">
+                                  <GiftImage
+                                    imageName={box.image.split('/').pop() || box.image}
+                                    alt={giftJaName(box.name)}
+                                    class="hw-source-icon"
+                                    width={40}
+                                    height={40}
+                                    loading="lazy"
+                                  />
+                                  <span class="hw-source-name">{giftJaName(box.name)}</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {!hasReleasedInfo(character) && (
+                  <div class="hw-no-preferences">
+                    <strong>まだ公開されていません</strong>：このキャラのプレゼントの好みは未公開です。
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  </div>
+</HwLangLayout>
+
+<script>
+  function initZhCgFilters() {
+    const search = document.getElementById('zh-cg-search');
+    const grid = document.getElementById('zh-char-grid');
+    const empty = document.getElementById('zh-empty');
+    const cards = Array.from(grid.querySelectorAll('.hw-character-card'));
+    let rarity = '';
+
+    const apply = () => {
+      const q = (search.value || '').trim().toLowerCase();
+      let shown = 0;
+      for (const card of cards) {
+        const okSearch = !q || (card.dataset.search || '').includes(q);
+        const okRarity = !rarity || card.dataset.rarity === rarity;
+        const visible = okSearch && okRarity;
+        card.style.display = visible ? '' : 'none';
+        if (visible) shown++;
+      }
+      empty.hidden = shown > 0;
+    };
+
+    search.addEventListener('input', apply);
+
+    const row = document.getElementById('zh-rarity-row');
+    row.addEventListener('click', e => {
+      const btn = e.target.closest('.hw-rarity-btn');
+      if (!btn) return;
+      row.querySelectorAll('.hw-rarity-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      rarity = btn.dataset.rarity || '';
+      apply();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initZhCgFilters);
+  } else {
+    initZhCgFilters();
+  }
+</script>
+
+<style>
+  /* JA-only: EN gloss under the Japanese character name */
+  .zh-char-en {
+    font-size: 0.75rem;
+    color: var(--hw-text-muted);
+    margin: 0 0 0.35rem 0;
+  }
+</style>

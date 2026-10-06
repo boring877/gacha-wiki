@@ -1,0 +1,128 @@
+---
+// Korean community builds index: /ko/guides/horizon-walker/builds/community/
+// Same units as the EN page (community-builds.js, credits: Envy, Liauw &
+// Gamekee); character names use the official Korean from game-text.js.
+// Re-skinned onto the EN hw-builds.css classes for visual parity.
+import HwLangLayout from '../../../../../../layouts/lang/HwLangLayout.astro';
+import '../../../../../../styles/games/horizon-walker/hw-builds.css';
+import { COMMUNITY_BUILDS } from '../../../../../../data/horizon-walker/community-builds.js';
+import { getCharacterBySlug, HORIZON_WALKER_CHARACTERS } from '../../../../../../data/horizon-walker/characters.js';
+import { HW_ZH_NAMES } from '../../../../../../data/horizon-walker/ko/game-text.js';
+import { HW_ZH } from '../../../../../../data/horizon-walker/ko/ui.js';
+import { CharacterImage, HWRarityIcon } from '../../../../../../components/horizon-walker/index.astro';
+
+export const prerender = true;
+
+// Merge community data with roster records (cost, rarity, portrait, KO name)
+const charBySlug = {};
+for (const c of HORIZON_WALKER_CHARACTERS) charBySlug[c.slug] = c;
+
+const communityUnits = Object.entries(COMMUNITY_BUILDS)
+  .map(([slug, communityData]) => {
+    const character = getCharacterBySlug(slug) || charBySlug[slug] || null;
+    return {
+      slug,
+      communityData,
+      character,
+      displayName: HW_ZH_NAMES[character?.id] || character?.name || communityData.name,
+      nameEn: character?.name || communityData.name,
+      rarity: character?.rarity || communityData.rarity,
+      cost: character?.cost || 0,
+      image: character?.image || communityData.name,
+    };
+  });
+
+const rarityOrder = { EX: 5, SS: 4, S: 3, A: 2, B: 1 };
+communityUnits.sort((a, b) => {
+  const rarityDiff = (rarityOrder[b.rarity] || 0) - (rarityOrder[a.rarity] || 0);
+  if (rarityDiff !== 0) return rarityDiff;
+  return a.displayName.localeCompare(b.displayName, 'ko');
+});
+
+const buildsByRarity = {
+  EX: communityUnits.filter((u) => u.rarity === 'EX'),
+  SS: communityUnits.filter((u) => u.rarity === 'SS'),
+  S: communityUnits.filter((u) => u.rarity === 'S'),
+  A: communityUnits.filter((u) => u.rarity === 'A'),
+  B: communityUnits.filter((u) => u.rarity === 'B'),
+};
+---
+
+<HwLangLayout lang="ko" ui={HW_ZH}
+  title="커뮤니티 빌드 - 호라이즌 워커 한국어 위키 - GachaWiki"
+  description={`호라이즌 워커 커뮤니티 빌드: Envy, Liauw, Gamekee의 커뮤니티 빌드 표에서 정리했으며, ${communityUnits.length}명 캐릭터의 추천 무기, 성흔, 부옵션, 특성과 스킬 업그레이드 순서를 담았습니다.`}
+  keywords={['호라이즌 워커', '커뮤니티 빌드', '빌드', '성흔']}
+  pageTitle="커뮤니티 빌드"
+  breadcrumbItems={[
+    { name: '홈', href: '/' },
+    { name: '호라이즌 워커', href: HW_ZH.baseUrl },
+    { name: '추천 빌드', href: `${HW_ZH.baseUrl}builds/` },
+    { name: '커뮤니티 빌드' },
+  ]}
+>
+  <div class="hw-builds-container">
+    <div class="hw-community-builds-note">
+      <h2 class="hw-community-builds-title">커뮤니티 빌드</h2>
+      <p class="hw-community-builds-text">
+        Envy, Liauw, Gamekee의 커뮤니티 빌드 표에서 정리했으며, {communityUnits.length}명의
+        캐릭터를 다룹니다. 직접 작성한 추천 빌드는 별도의<a href={`${HW_ZH.baseUrl}builds/`}>추천 빌드</a
+      > 코너에 있으며, 더 자세한 빌드 해설은 각 캐릭터 페이지에서 확인할 수 있습니다. 성흔 세트명과 부옵션 수치는 커뮤니티 표의 영문 원문 그대로 표기합니다.
+      </p>
+    </div>
+
+    {
+      Object.entries(buildsByRarity).map(([rarity, units]) => {
+        if (units.length === 0) return null;
+        return (
+          <section class="hw-builds-rarity-section">
+            <div class="hw-builds-rarity-header">
+              <HWRarityIcon rarity={rarity} width={48} height={24} />
+              <span class="hw-builds-rarity-count">({units.length}개 빌드)</span>
+            </div>
+            <div class="hw-builds-grid">
+              {units.map((unit) => (
+                <a
+                  href={`${HW_ZH.baseUrl}builds/community/${unit.slug}/`}
+                  class="hw-build-card-link"
+                  aria-label={`${unit.displayName} 커뮤니티 빌드 보기`}
+                >
+                  <div class="hw-build-card">
+                    <div class="hw-build-card-header">
+                      <div class="hw-build-character-image">
+                        <CharacterImage
+                          imageName={unit.image}
+                          alt={unit.displayName}
+                          width={300}
+                          height={300}
+                          class="hw-character-portrait"
+                          loading="eager"
+                        />
+                      </div>
+                      <div class="hw-build-character-info">
+                        <h3 class="hw-build-character-name">{unit.displayName}</h3>
+                        <p class="zh-cb-en">{unit.nameEn}</p>
+                        <div class="hw-build-character-meta">
+                          <span class="hw-badge" data-type="Cost">비용 {unit.cost}</span>
+                          <HWRarityIcon rarity={unit.rarity} width={40} height={20} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        );
+      })
+    }
+  </div>
+</HwLangLayout>
+
+<style>
+  /* KO-only: EN gloss under the Korean character name */
+  .zh-cb-en {
+    margin: 0.1rem 0 0.45rem 0;
+    font-size: 0.78rem;
+    color: var(--hw-text-very-muted);
+  }
+</style>

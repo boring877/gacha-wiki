@@ -1,0 +1,394 @@
+---
+// Japanese character database index: /ja/guides/horizon-walker/characters/
+// Same structure, classnames and client script as the EN character database
+// (hw-character.css + scripts/horizon-walker/character-database.js), with
+// official JA names/labels. Races are the official JA tribe names from the
+// game profile; search matches both the JA and EN names.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import {
+  HORIZON_WALKER_CHARACTERS,
+  gameInfo,
+} from '../../../../data/horizon-walker/characters.js';
+import {
+  HW_ZH_NAMES,
+  HW_ZH_TAGS,
+  HW_ZH_PROFILE,
+} from '../../../../data/horizon-walker/ja/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ja/ui.js';
+import { CharacterImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
+
+// Character database styles (same set the EN CharacterLayout imports)
+import '../../../../styles/games/horizon-walker/hw-character.css';
+
+export const prerender = true;
+
+const { rarities } = gameInfo;
+
+// Character name to filename mapping (same rules as the EN pages)
+const getImageKey = characterName => {
+  let filename = characterName
+    .replace(/ /g, '_')
+    .replace(/-/g, '_')
+    .replace(/\./g, '_');
+
+  if (characterName === 'TX - Manticore') filename = 'TX_Manticore';
+  if (characterName === 'Re_De_Da') filename = 'Re_De_Da';
+  if (characterName === 'Headless Knight') filename = 'Headless_Knight';
+  if (characterName === 'Kim Ga-young') filename = 'kim_Ga_young';
+  if (characterName === 'Yeon Chae-Young') filename = 'Yeon_Chae-Young';
+  if (characterName === 'Min Eun-sol') filename = 'Min_Eun_sol';
+  if (characterName === 'So Joo-hee') filename = 'So_Joo_hee';
+
+  return filename;
+};
+
+// Race tags used for filtering (EN tag -> official JA tribe label)
+const RACE_TAGS = [
+  'Human', 'Swamp Elf', 'Wood Elf', 'Catsidhe', 'Kobold', 'Orke', 'Torta',
+  'Lamora', 'Lamoran', 'Fairy', 'Machine', 'Demon', 'Elemental', 'Kesak',
+];
+
+const raceJa = {};
+for (const race of RACE_TAGS) {
+  const member = HORIZON_WALKER_CHARACTERS.find(c => c.tags?.includes(race) && HW_ZH_PROFILE[c.id]?.tribe);
+  if (member) raceJa[race] = HW_ZH_PROFILE[member.id].tribe;
+}
+
+// Only races that at least one JA roster member carries
+const availableRaces = RACE_TAGS.filter(race =>
+  HORIZON_WALKER_CHARACTERS.some(char => char.tags && char.tags.includes(race) && HW_ZH_NAMES[char.id])
+);
+
+// JA roster: official JA names; tags translated so the race filter matches
+const roster = HORIZON_WALKER_CHARACTERS.filter(c => HW_ZH_NAMES[c.id] && c.slug);
+
+const totalCharacters = roster.length;
+const exCount = roster.filter(char => char.rarity === 'EX').length;
+const ssCount = roster.filter(char => char.rarity === 'SS').length;
+const sCount = roster.filter(char => char.rarity === 'S').length;
+const aCount = roster.filter(char => char.rarity === 'A').length;
+const bCount = roster.filter(char => char.rarity === 'B').length;
+
+// DB table stats: default = base EX rarity stage, toggleable to full EX 6
+const getStageStat = (char, field) => {
+  if (char.stages?.ex?.[field] !== undefined) return char.stages.ex[field];
+  return char.stats?.[field] ?? 'N/A';
+};
+const stageData = JSON.stringify(
+  Object.fromEntries(roster.filter(c => c.stages).map(c => [c.id, c.stages]))
+);
+
+// Per-row display data: JA name for display, JA+EN name for search, JA tags.
+// Race tags use the canonical JA tribe label (raceJa) so the race filter's
+// option values match the tag strings exactly.
+const rows = roster.map(char => ({
+  ...char,
+  zhName: HW_ZH_NAMES[char.id],
+  displayName: HW_ZH_NAMES[char.id],
+  searchName: `${HW_ZH_NAMES[char.id]} ${char.name}`,
+  zhTags: (char.tags || [])
+    .map(t => (RACE_TAGS.includes(t) ? raceJa[t] || t : HW_ZH_TAGS[t] || t))
+    .join(', '),
+  zhUrl: `${HW_ZH.baseUrl}characters/${char.slug}/`,
+  imageKey: getImageKey(char.name),
+}));
+
+const title = 'キャラデータベース - ホライゾン・ウォーカー日本語ウィキ - GachaWiki';
+const description = `ホライゾン・ウォーカーの全 ${totalCharacters} キャラ（EX ${exCount} 名、SS ${ssCount} 名、S ${sCount} 名、A ${aCount} 名、B ${bCount} 名）のデータベース：公式日本語名、レアリティ、編成コストと主要 5 ステータスを掲載。検索、種族とレアリティの絞り込みに対応しています。`;
+---
+
+<HwLangLayout lang="ja" ui={HW_ZH}
+  title={title}
+  description={description}
+  keywords={['ホライゾン・ウォーカー', 'キャラクター', 'データベース', 'ステータス', '評価一覧']}
+  pageTitle="キャラデータベース"
+  breadcrumbItems={[
+    { name: 'ホーム', href: '/' },
+    { name: 'ホライゾン・ウォーカー', href: HW_ZH.baseUrl },
+    { name: 'キャラデータベース' },
+  ]}
+>
+  <section class="hw-char-db-page-flex">
+    <div class="hw-char-db-main-content">
+      <div class="hw-char-db-content-wrapper">
+        <!-- Header with stats info -->
+        <div class="hw-character-database-header">
+          <h1 class="hw-character-database-title">キャラデータベース</h1>
+          <p class="hw-character-database-subtitle">
+            レベル {gameInfo.maxLevel} のステータスは基礎 EX 段階の数値で、EX 6 最大に切り替えられます。
+          </p>
+          <div class="hw-char-db-stats-summary">
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="EX" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{exCount}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="SS" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{ssCount}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="S" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{sCount}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="A" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{aCount}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="B" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{bCount}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+          <div class="filter-controls">
+            <select class="filter-select" id="rarity-filter">
+              <option value="">レアリティ</option>
+              {rarities.map(rarity => <option value={rarity}>{rarity}</option>)}
+            </select>
+            <select class="filter-select" id="race-filter">
+              <option value="">種族</option>
+              {availableRaces.map(race => <option value={raceJa[race] || race}>{raceJa[race] || race}</option>)}
+            </select>
+          </div>
+          <div class="hw-search-container">
+            <input
+              type="text"
+              class="hw-search-input"
+              id="character-search"
+              placeholder="キャラ名で検索（日本語・英語）"
+              aria-label="キャラを検索"
+            />
+          </div>
+          <div class="sort-controls">
+            <button class="sort-btn" data-sort="rarity">レアリティ</button>
+            <button class="sort-btn" data-sort="cost">コスト</button>
+            <button class="sort-btn" data-sort="strength">筋力</button>
+            <button class="sort-btn" data-sort="intelligence">知能</button>
+            <button class="sort-btn" data-sort="vitality">体質</button>
+            <button class="sort-btn" data-sort="agility">敏捷</button>
+            <button class="sort-btn" data-sort="technic">技巧</button>
+            <button class="reset-btn" id="reset-table">リセット</button>
+          </div>
+          <div class="hw-stage-toggle" id="stage-toggle" role="group" aria-label="レアリティ段階">
+            <button type="button" class="stage-btn active" data-stage="ex">EX</button>
+            <button type="button" class="stage-btn" data-stage="ex6">EX 6 最大</button>
+          </div>
+        </div>
+
+        <!-- Desktop table container with touch optimizations -->
+        <div class="character-table-container">
+          <table class="character-table" id="character-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>画像</th>
+                <th>名前</th>
+                <th>レアリティ</th>
+                <th>コスト</th>
+                <th>筋力</th>
+                <th>知能</th>
+                <th>体質</th>
+                <th>敏捷</th>
+                <th>技巧</th>
+              </tr>
+            </thead>
+            <tbody id="character-table-body">
+              {
+                rows.map((character, idx) => (
+                  <tr
+                    data-character-id={character.id}
+                    data-url={character.zhUrl}
+                    data-name={character.searchName}
+                    data-rarity={character.rarity}
+                    data-class={character.class}
+                    data-element={character.element}
+                    data-faction={character.faction}
+                    data-tags={character.zhTags}
+                    class="clickable-row"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <td>{idx + 1}</td>
+                    <td>
+                      <div class="desktop-character-image">
+                        <CharacterImage
+                          imageName={character.imageKey}
+                          alt={character.zhName}
+                          class="character-img"
+                          width={80}
+                          height={80}
+                          loading={idx < 10 ? 'eager' : 'lazy'}
+                        />
+                      </div>
+                    </td>
+                    <td>
+                      <strong
+                        class="character-name"
+                        data-long={character.displayName.length > 12 ? 'true' : 'false'}
+                      >
+                        {character.displayName}
+                      </strong>
+                    </td>
+                    <td>
+                      <HWRarityIcon
+                        rarity={character.rarity}
+                        width={48}
+                        height={24}
+                      />
+                    </td>
+                    <td data-sort-key="cost">
+                      <strong class="cost-value">{character.cost}</strong>
+                    </td>
+                    <td data-sort-key="strength">
+                      <strong class="stat-value" data-field="strength">{getStageStat(character, 'strength')}</strong>
+                    </td>
+                    <td data-sort-key="intelligence">
+                      <strong class="stat-value" data-field="intelligence">{getStageStat(character, 'intelligence')}</strong>
+                    </td>
+                    <td data-sort-key="vitality">
+                      <strong class="stat-value" data-field="vitality">{getStageStat(character, 'vitality')}</strong>
+                    </td>
+                    <td data-sort-key="agility">
+                      <strong class="stat-value" data-field="agility">{getStageStat(character, 'agility')}</strong>
+                    </td>
+                    <td data-sort-key="technic">
+                      <strong class="stat-value" data-field="technic">{getStageStat(character, 'technic')}</strong>
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile card view container with touch optimization -->
+        <div class="mobile-card-view" id="mobile-cards-container">
+          {
+            rows.map((char, idx) => (
+              <div
+                class="mobile-character-card"
+                data-character-id={char.id}
+                data-slug={char.slug}
+                data-url={char.zhUrl}
+                data-name={char.searchName}
+                data-rarity={char.rarity}
+                data-class={char.class}
+                data-element={char.element}
+                data-faction={char.faction}
+                data-tags={char.zhTags}
+                role="button"
+                tabindex="0"
+                style="cursor:pointer; touch-action: manipulation;"
+              >
+                {/* Clean header section - image, name, rarity all together */}
+                <div class="mobile-card-header">
+                  <div class="mobile-card-image">
+                    <div class="mobile-character-image">
+                      <CharacterImage
+                        imageName={char.imageKey}
+                        alt={char.zhName}
+                        class="character-img"
+                        width={64}
+                        height={64}
+                        loading={idx < 6 ? 'eager' : 'lazy'}
+                      />
+                    </div>
+                  </div>
+                  <div class="mobile-card-info">
+                    <h3 class="character-name" data-long={char.displayName.length > 12 ? 'true' : 'false'}>
+                      {char.displayName}
+                    </h3>
+                    <div class="header-badges">
+                      <HWRarityIcon rarity={char.rarity} width={40} height={20} />
+                      <span class="cost-badge" data-type="Cost">
+                        コスト：{char.cost}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Clean stats grid - 5 basic stats */}
+                <div class="mobile-card-stats-grid">
+                  <div class="stat-item">
+                    <span class="stat-label">筋力</span>
+                    <strong class="stat-value" data-stat="strength" data-field="strength">
+                      {getStageStat(char, 'strength')}
+                    </strong>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">知能</span>
+                    <strong class="stat-value" data-stat="intelligence" data-field="intelligence">
+                      {getStageStat(char, 'intelligence')}
+                    </strong>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">体質</span>
+                    <strong class="stat-value" data-stat="vitality" data-field="vitality">
+                      {getStageStat(char, 'vitality')}
+                    </strong>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">敏捷</span>
+                    <strong class="stat-value" data-stat="agility" data-field="agility">
+                      {getStageStat(char, 'agility')}
+                    </strong>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">技巧</span>
+                    <strong class="stat-value" data-stat="technic" data-field="technic">
+                      {getStageStat(char, 'technic')}
+                    </strong>
+                  </div>
+                </div>
+
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Per-character rarity-stage values for the stats toggle -->
+  <script type="application/json" id="hw-stage-data" set:html={stageData} />
+
+  <!-- Stats stage toggle: swaps the 5 primary stats between EX and full EX 6 -->
+  <script is:inline>
+    (function () {
+      var dataEl = document.getElementById('hw-stage-data');
+      var toggle = document.getElementById('stage-toggle');
+      if (!dataEl || !toggle) return;
+      var stageMap = {};
+      try {
+        stageMap = JSON.parse(dataEl.textContent);
+      } catch (e) {
+        return;
+      }
+      var buttons = toggle.querySelectorAll('.stage-btn');
+      function applyStage(stage) {
+        document.querySelectorAll('[data-character-id]').forEach(function (row) {
+          var stages = stageMap[row.getAttribute('data-character-id')];
+          if (!stages || !stages[stage]) return;
+          row.querySelectorAll('[data-field]').forEach(function (el) {
+            var value = stages[stage][el.getAttribute('data-field')];
+            if (value !== undefined) el.textContent = value;
+          });
+        });
+        buttons.forEach(function (btn) {
+          btn.classList.toggle('active', btn.getAttribute('data-stage') === stage);
+        });
+      }
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          applyStage(btn.getAttribute('data-stage'));
+        });
+      });
+    })();
+  </script>
+
+  <!-- Same database script as the EN page: filtering, sorting, row navigation -->
+  <script is:inline src="/scripts/horizon-walker/character-database.js"></script>
+</HwLangLayout>

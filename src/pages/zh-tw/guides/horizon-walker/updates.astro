@@ -1,0 +1,410 @@
+---
+// Chinese patch notes index: /zh-tw/guides/horizon-walker/updates/
+// Same entries and slugs as the EN page (patch-notes.js). Titles become
+// 更新公告：N 月 N 日維護；highlight tags are rendered in Traditional Chinese
+// with the game's own zh-tw character/weapon names, keeping EN proper nouns
+// (event and banner titles have no official zh-tw text) verbatim.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import '../../../../styles/games/horizon-walker/hw-guide.css';
+import { patchNotes } from '../../../../data/horizon-walker/patch-notes.js';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../data/horizon-walker/characters.js';
+import { HW_ZH_NAMES, HW_ZH_INHERITANCE } from '../../../../data/horizon-walker/zh-tw/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/zh-tw/ui.js';
+
+export const prerender = true;
+
+// ---------- shared ZH rendering of patch note titles & highlight tags --------
+const zhByEnChar = {};
+for (const c of HORIZON_WALKER_CHARACTERS) {
+  const z = HW_ZH_NAMES[c.id];
+  if (z) zhByEnChar[c.name] = z;
+}
+const charDisplay = (en) => {
+  const zh = zhByEnChar[en];
+  return zh ? `${zh}（${en}）` : en;
+};
+const weaponZh = (en) => {
+  if (en === 'Watcher of the Night') return HW_ZH_INHERITANCE['Nocturnal Watcher']?.name || null;
+  return HW_ZH_INHERITANCE[en]?.name || null;
+};
+const weaponDisplay = (en) => {
+  const zh = weaponZh(en);
+  if (!zh) return en;
+  const gloss = en.includes('–') ? en.split('–').map((p) => p.trim()).join(' ') : en;
+  return `${zh}（${gloss}）`;
+};
+const nameListZh = (rest) =>
+  rest
+    .split('/')
+    .map((seg) => seg.trim())
+    .filter(Boolean)
+    .map((seg) => (zhByEnChar[seg] ? charDisplay(seg) : weaponZh(seg) ? weaponDisplay(seg) : seg))
+    .join(' / ');
+
+const FEATURE_ZH = {
+  'Aide Affection Level Settings': '護衛好感度等級設定',
+  'Affection Improvements': '好感度系統最佳化',
+  'Content Expansion': '內容擴充',
+  'Content Unlock Guide': '內容解鎖指南',
+  'Dual Affection System': '雙重好感度系統',
+  'Hide Battle UI': '隱藏戰鬥介面',
+  'Maintain Aide Special Interactions': '保持護衛特殊互動',
+  'Multi-Aide Sanctuary': 'Multi-Aide Sanctuary（多護衛聖所）',
+  'New Vanguard Growth Support Event': '新先鋒養成支援活動',
+  'Priority Target': 'Priority Target（優先目標）',
+  'TPS View': 'TPS View（第三人稱視角）',
+  'Total War': 'Total War（全面戰爭）',
+  'The Demi-God System': 'The Demi-God System（半神系統）',
+  'The Path to the Divine Throne': 'The Path to the Divine Throne（通往神座之路）',
+};
+
+const EXACT_ZH = {
+  'Addition of New Products': '新增商品',
+  'Bug Fixes': '問題修復',
+  'Character Design Direction': '角色設計方向說明',
+  'Class Skills': '職業技能更新',
+  'Closing Notes': '結語',
+  'Costume Feature Update': '皮膚功能更新',
+  'Costume Shop': '新增皮膚商店',
+  'Early Game Improvements': '前期體驗最佳化',
+  'Improvements': '最佳化內容',
+  'Limited-Time Event': '限時活動',
+  'Limited-time Event': '限時活動',
+  'Massage System Update': '按摩系統更新',
+  'New Affection Event': '新增好感度活動',
+  'New Affection Event Update': '好感度活動更新',
+  'New Affection Event Updates': '好感度活動更新',
+  'New Content': '新增內容',
+  'New Contents': '新增內容',
+  'New Costume': '新皮膚',
+  'New Costumes': '新皮膚',
+  'New Demi-God Ascension': '新增半神晉升',
+  'New Feature': '新功能',
+  'New Features': '新功能',
+  'New Path to the Divine Throne': '新增 The Path to the Divine Throne（通往神座之路）',
+  'New Product Added': '新增商品',
+  'New Story': '新增劇情',
+  'New Sub-Stages Added': '新增子關卡',
+  'Overall Difficulty Adjustment': '整體難度調整',
+  'Shop – New Bundles': '商店新增禮包',
+  'Special Search Schedule': 'Special Search 日程',
+  'Special Search Updates': 'Special Search 日程更新',
+  'Story': '劇情更新',
+  'Story Updates': '劇情更新',
+  'New Story - Sub-story “Palekar’s Past” has been added.': '新增子劇情：Palekar’s Past',
+  'Event Update : Operation: Steaming Hot WINTER Part 2': '活動更新：Operation: Steaming HOT WINTER（第 2 部分）',
+  'Event Update : The Halloween Horror Club Part.2': '活動更新：The Halloween Horror Club（第 2 部分）',
+  'New Content: Larina’s Special Training Grounds': '新增內容：Larina’s Special Training Grounds',
+  'New Content: Larina\'s Special Training Grounds': '新增內容：Larina’s Special Training Grounds',
+  'New Mini Event : Special Episode: Springtime Hot Springs': '新小型活動：Special Episode: Springtime Hot Springs',
+  'Event: Larina’s Dopamine Channel!': '活動：Larina’s Dopamine Channel!',
+  "Event: Larina's Dopamine Channel!": '活動：Larina’s Dopamine Channel!',
+  'Event: Larina’s Dopamine Channel! – Part 1': '活動：Larina’s Dopamine Channel!（第 1 部分）',
+  "Event: Larina's Dopamine Channel! – Part 1": '活動：Larina’s Dopamine Channel!（第 1 部分）',
+  'Event: Larina’s Dopamine Channel! – Part 2': '活動：Larina’s Dopamine Channel!（第 2 部分）',
+  "Event: Larina's Dopamine Channel! – Part 2": '活動：Larina’s Dopamine Channel!（第 2 部分）',
+  'Event: Cheers to Our Two Years! – Part 1': '活動：Cheers to Our Two Years!（第 1 部分）',
+  'Event: Cheers to Our Two Years! – Part 2': '活動：Cheers to Our Two Years!（第 2 部分）',
+  'Event: Where White Waves Wash Ashore – Part 1': '活動：Where White Waves Wash Ashore（第 1 部分）',
+  'Event: Where White Waves Wash Ashore – Prologue': '活動：Where White Waves Wash Ashore（序章）',
+  'New Event: Defense Op: Citadel of Change – Part 2': '新活動：Defense Op: Citadel of Change（第 2 部分）',
+  'New Event: Defense Operation - Citadel of Change': '新活動：Defense Operation: Citadel of Change',
+  'New Event: Yesterday\'s Sweet Valentine – Part 2': '新活動：Yesterday’s Sweet Valentine（第 2 部分）',
+  'New Event : The Orkean Lady’s Happy Ever After (Part.2)': '新活動：The Orkean Lady’s Happy Ever After（第 2 部分）',
+  'New Event : Larina\'s Dopamin Channel!': '新活動：Larina’s Dopamin Channel!',
+  'New Affection Content – Efreeti': '新增好感度內容：伊芙利特（Efreeti）',
+  'New Affection Content – Nymset': '新增好感度內容：妮姆賽（Nymset）',
+  'New Skill: Resolve': '新技能：Resolve',
+  'New Passive: Spearhead\'s Gleam': '新被動技能：Spearhead’s Gleam',
+  'New Stigma (Phantom Banquet EX)': '新聖痕：Phantom Banquet EX',
+  'New Stigma Set: Lifebound (EX)': '新聖痕套裝：Lifebound EX',
+  'New Stigma: Blessing of Dawn (EX)': '新聖痕：Blessing of Dawn EX',
+  'New Stigma: Scorching Sun EX': '新聖痕：Scorching Sun EX',
+  'New Feature – Aide Affection Level Settings': '新功能：護衛好感度等級設定',
+  'New Feature – Content Expansion': '新功能：內容擴充',
+  'New Feature – Maintain Aide Special Interactions': '新功能：保持護衛特殊互動',
+  'New Feature - Total War': '新功能：Total War（全面戰爭）',
+  'New Feature - The Path to the Divine Throne': '新功能：The Path to the Divine Throne（通往神座之路）',
+  'New Feature - The Demi-God System': '新功能：The Demi-God System（半神系統）',
+  'New Feature: Aide Affection Level Settings': '新功能：護衛好感度等級設定',
+  'New Feature: Affection Improvements': '新功能：好感度系統最佳化',
+  'New Feature: Content Unlock Guide': '新功能：內容解鎖指南',
+  'New Feature: Dual Affection System': '新功能：雙重好感度系統',
+  'New Feature: Hide Battle UI': '新功能：隱藏戰鬥介面',
+  'New Feature: Multi-Aide Sanctuary': '新功能：Multi-Aide Sanctuary（多護衛聖所）',
+  'New Feature: New Vanguard Growth Support Event': '新功能：新先鋒養成支援活動',
+  'New Feature: Priority Target': '新功能：Priority Target（優先目標）',
+  'New Feature: TPS View': '新功能：TPS View（第三人稱視角）',
+  'New Pass: Agent Kim Ga-young Pass': '新通行證：Agent Kim Ga-young Pass',
+  'New Pass: Forge Elemental Efreeti Pass': '新通行證：Forge Elemental Efreeti Pass',
+  'New Pass: Liberated Prisoner Pass': '新通行證：Liberated Prisoner Pass',
+  'New Pass: Mind\'s Eye Lisandria': '新通行證：Mind’s Eye Lisandria',
+  'New Pass: Radiant Swordmaiden Eugenia Pass': '新通行證：Radiant Swordmaiden Eugenia Pass',
+  'New Pass: Winter Duchess Ines Pass': '新通行證：Winter Duchess Ines Pass',
+  'New Event Pass: Bella Pass': '新活動通行證：Bella Pass',
+  '신규 패스 : 사마리카 패스': '新通行證：莎瑪莉卡通行證（Samarika Pass）',
+};
+
+// suffixes like "– Part 2" / "(Part.2)" / "– Prologue" become Chinese
+const zhSuffixes = (s) =>
+  s
+    .replace(/\s*[–-]\s*Part\.?\s*(\d+)\s*$/i, '（第 $1 部分）')
+    .replace(/\s*[–-]\s*Prologue\s*$/i, '（序章）')
+    .replace(/\s*\(Part\.?(\d+)\)\s*$/i, '（第 $1 部分）');
+
+function highlightZh(raw) {
+  const h = raw.trim();
+  if (EXACT_ZH[h]) return EXACT_ZH[h];
+  let m;
+  if ((m = h.match(/^Vanguard\/Weapon Rework\s*:\s*(.+)$/i)))
+    return `先鋒/武器重做：${nameListZh(m[1])}`;
+  if ((m = h.match(/^Vanguard Rework\s*:\s*(.+)$/i))) return `先鋒重做：${nameListZh(m[1])}`;
+  if ((m = h.match(/^New Vanguard\s*:\s*(.+)$/i))) return `新先鋒：${charDisplay(m[1].trim())}`;
+  if ((m = h.match(/^New Weapon\s*:\s*(.+)$/i))) return `新武器：${weaponDisplay(m[1].trim())}`;
+  if ((m = h.match(/^New Feature\s*[-–:]\s*(.+)$/))) {
+    const feat = m[1].trim();
+    return `新功能：${FEATURE_ZH[feat] || feat}`;
+  }
+  if ((m = h.match(/^New Event Pass\s*:\s*(.+)$/))) return `新活動通行證：${m[1].trim()}`;
+  if ((m = h.match(/^New Pass\s*:\s*(.+)$/))) return `新通行證：${m[1].trim()}`;
+  if ((m = h.match(/^New Stigma Set\s*:\s*(.+)$/i))) return `新聖痕套裝：${m[1].trim()}`;
+  if ((m = h.match(/^New Stigma\s*\((.+)\)\s*$/i))) return `新聖痕：${m[1].trim()}`;
+  if ((m = h.match(/^New Stigma\s*:\s*(.+)$/i))) return `新聖痕：${m[1].trim()}`;
+  if ((m = h.match(/^New Event\s*:\s*(.+)$/i))) return `新活動：${zhSuffixes(m[1].trim())}`;
+  if ((m = h.match(/^Event Update\s*:\s*(.+)$/i))) return `活動更新：${zhSuffixes(m[1].trim())}`;
+  if ((m = h.match(/^Event\s*:\s*(.+)$/i))) return `活動：${zhSuffixes(m[1].trim())}`;
+  return h;
+}
+
+const MONTHS = {
+  January: 1, February: 2, March: 3, April: 4, May: 5, June: 6, July: 7,
+  August: 8, September: 9, October: 10, November: 11, December: 12,
+  Jan: 1, Feb: 2, Mar: 3, Apr: 4, Jun: 6, Jul: 7, Aug: 8, Sep: 9, Sept: 9, Oct: 10, Nov: 11, Dec: 12,
+};
+
+function titleZh(t) {
+  const m = t.match(/^Patch Note\s*-\s*(.+)$/);
+  if (!m) return t;
+  let inner = m[1];
+  let suffix = '';
+  if (inner.includes('(+ Update)')) {
+    suffix = '（含追加更新）';
+    inner = inner.replace(/\s*\(\+ Update\)/, '');
+  }
+  const mm = inner.match(/^([A-Za-z]+)\.?\s+(\d{1,2})/);
+  if (!mm || !MONTHS[mm[1]]) return `更新公告：${inner}`;
+  const isMaint = /maintenance/i.test(inner);
+  return `更新公告：${MONTHS[mm[1]]} 月 ${parseInt(mm[2], 10)} 日${isMaint ? '維護' : ''}${suffix}`;
+}
+
+const fmt = (iso) => `${iso.slice(0, 4)}.${iso.slice(5, 7)}.${iso.slice(8, 10)}`;
+
+// group by month like the EN index
+const groups = [];
+for (const n of patchNotes) {
+  const month = n.date.slice(0, 7);
+  const label = `${month.slice(0, 4)} 年 ${parseInt(month.slice(5, 7), 10)} 月`;
+  const last = groups[groups.length - 1];
+  if (last && last.month === month) last.notes.push(n);
+  else groups.push({ month, label, notes: [n] });
+}
+const newest = patchNotes[0];
+const oldest = patchNotes[patchNotes.length - 1];
+---
+
+<HwLangLayout lang="zh-tw" ui={HW_ZH}
+  title="更新公告 - 地平線行者繁體中文維基 - GachaWiki"
+  description={`地平線行者官方更新公告繁體中文整理，共 ${patchNotes.length} 篇：新先鋒、新武器、活動、平衡調整與問題修復，時間跨度 ${fmt(oldest.date)} 至 ${fmt(newest.date)}。`}
+  keywords={['地平線行者', '更新公告', '維護', '版本更新']}
+  breadcrumbItems={[
+    { name: '首頁', href: '/' },
+    { name: '地平線行者', href: HW_ZH.baseUrl },
+    { name: '更新公告' },
+  ]}
+>
+  <section class="hw-guide-hero">
+    <h1 class="hw-guide-title">更新公告</h1>
+    <p class="hw-guide-subtitle">全部官方英文更新公告的繁體中文整理，{fmt(oldest.date)} 至 {fmt(newest.date)}。</p>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-guide-content">
+  <div class="pn-index">
+    <div class="pn-index-intro">
+      <p>
+        《地平線行者》團隊每次維護都會在官方 Naver Lounge 發布英文更新公告。本頁為全部
+        {patchNotes.length} 篇公告的繁體中文整理（標題與要點均為人工翻譯），完整原文（全部表格與細節）請查看對應的英文公告頁。更新跟隨韓服日程，韓服進度領先全球服數週；官方原文中的具體技能數值以 N 佔位符表示。活動與卡池等專有名稱暫無官方中文，保留英文原文。
+      </p>
+    </div>
+
+    <div class="pn-index-controls">
+      <input
+        type="text"
+        id="pn-search-input"
+        class="pn-search"
+        placeholder="搜尋更新公告（中英文皆可，如 科拉比、Doomstar、活動）"
+        autocomplete="off"
+      />
+      <span class="pn-count" id="pn-count-el">{patchNotes.length} 篇公告</span>
+    </div>
+
+    {
+      groups.map((g) => (
+        <section class="pn-month" data-month={g.month}>
+          <h2 class="pn-month-title">{g.label}</h2>
+          <div class="pn-cards">
+            {g.notes.map((n) => {
+              const zhTitle = titleZh(n.title);
+              const zhTags = n.highlights.map((h) => highlightZh(h));
+              const search = [n.title, zhTitle, ...n.highlights, ...zhTags].join(' ').toLowerCase();
+              return (
+                <a class="pn-card" href={`${HW_ZH.baseUrl}updates/${n.slug}/`} data-search={search}>
+                  <div class="pn-card-date">{fmt(n.date)}</div>
+                  <h3 class="pn-card-title">{zhTitle}</h3>
+                  {zhTags.length > 0 && (
+                    <div class="pn-card-tags">
+                      {zhTags.map((t) => (
+                        <span class="pn-card-tag">{t}</span>
+                      ))}
+                    </div>
+                  )}
+                </a>
+              );
+            })}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+  </div>
+</HwLangLayout>
+
+<script is:inline>
+  var input = document.getElementById('pn-search-input');
+  var cards = document.querySelectorAll('.pn-card');
+  var months = document.querySelectorAll('.pn-month');
+  var count = document.getElementById('pn-count-el');
+  var total = cards.length;
+  input.addEventListener('input', function () {
+    var q = input.value.trim().toLowerCase();
+    var visible = 0;
+    cards.forEach(function (c) {
+      var show = !q || c.dataset.search.includes(q);
+      c.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    months.forEach(function (m) {
+      var any = Array.prototype.some.call(m.querySelectorAll('.pn-card'), function (c) {
+        return c.style.display !== 'none';
+      });
+      m.style.display = any ? '' : 'none';
+    });
+    count.textContent = q ? visible + ' / ' + total + ' 篇公告' : total + ' 篇公告';
+  });
+</script>
+
+<style>
+    .pn-index {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .pn-index-intro {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(232, 165, 71, 0.18);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+    }
+    .pn-index-intro p {
+      color: #ccc;
+      font-size: 0.93rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .pn-index-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+    .pn-search {
+      flex: 1;
+      min-width: 220px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      color: #ddd;
+      font-size: 0.92rem;
+      padding: 0.6rem 0.9rem;
+      outline: none;
+    }
+    .pn-search::placeholder {
+      color: var(--hw-text-very-muted);
+    }
+    .pn-search:focus {
+      border-color: rgba(232, 165, 71, 0.5);
+    }
+    .pn-count {
+      color: #999;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+    .pn-month {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .pn-month-title {
+      color: #e8a547;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0.4rem 0 0;
+      border-bottom: 1px solid rgba(232, 165, 71, 0.2);
+      padding-bottom: 0.4rem;
+    }
+    .pn-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 0.9rem;
+    }
+    .pn-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 10px;
+      padding: 0.95rem 1.05rem;
+      text-decoration: none;
+    }
+    .pn-card-date {
+      color: #999;
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+    }
+    .pn-card-title {
+      color: #e8d9bf;
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.4;
+    }
+    .pn-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .pn-card-tag {
+      color: #cccccc;
+      background: #3a3a3a;
+      border-radius: 4px;
+      padding: 0.14rem 0.55rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+  </style>

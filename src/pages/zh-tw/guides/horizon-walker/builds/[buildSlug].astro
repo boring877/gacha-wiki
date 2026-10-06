@@ -1,0 +1,1015 @@
+---
+// Traditional-Chinese (zh-tw) recommended build detail: /zh-tw/guides/horizon-walker/builds/<slug>/
+// Same slug set and data as the EN builds/[buildSlug].astro (stigmas.js sets,
+// character-build-configs.js values). Character/weapon/stat/trait names use
+// the game's official zh-tw text; the wiki's own build prose is translated
+// into natural Traditional Chinese. Stigma set names have no official zh-tw
+// text and stay in English.
+import HwLangLayout from '../../../../../layouts/lang/HwLangLayout.astro';
+import '../../../../../styles/games/horizon-walker/hw-character-build.css';
+import { getEnhancedBuilds } from '../../../../../data/horizon-walker/builds/builds-data.js';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../../data/horizon-walker/characters.js';
+import { getCharacterBuildConfig } from '../../../../../data/horizon-walker/builds/character-build-configs.js';
+import { stigmas } from '../../../../../data/horizon-walker/stigmas.js';
+import { COMMUNITY_BUILDS } from '../../../../../data/horizon-walker/community-builds.js';
+import {
+  HW_ZH_NAMES,
+  HW_ZH_STAT_TYPES,
+  HW_ZH_TRAIT_NAMES,
+} from '../../../../../data/horizon-walker/zh-tw/game-text.js';
+import { HW_ZH } from '../../../../../data/horizon-walker/zh-tw/ui.js';
+import { CharacterImage, StigmaImage, HWRarityIcon } from '../../../../../components/horizon-walker/index.astro';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  const characters = HORIZON_WALKER_CHARACTERS;
+  const builds = getEnhancedBuilds();
+  return characters
+    .filter((character) => builds.some((build) => build.buildSlug === character.slug && build.available))
+    .map((character) => ({
+      params: { buildSlug: character.slug },
+      props: {
+        character,
+        build: builds.find((build) => build.buildSlug === character.slug && build.available),
+      },
+    }));
+}
+
+const { character, build } = Astro.props;
+
+if (!character || !build) {
+  return Astro.redirect(`${HW_ZH.baseUrl}builds/`);
+}
+
+const zhName = HW_ZH_NAMES[character.id] || character.name;
+const buildConfig = getCharacterBuildConfig(character.slug);
+const enPageUrl = `/guides/horizon-walker/builds/${character.slug}/`;
+
+// ---------- ZH stat/trait helpers (official game terms via game-text.js) ---
+const STAT_TOKEN_ZH = {
+  'Melee ATK': '近戰攻擊力',
+  'Ranged ATK': '射擊攻擊力',
+  'Magic ATK': '魔法攻擊力',
+  'Max HP': '最大生命值',
+  'Crit Rate': '暴擊率',
+  'Crit DMG': '暴擊傷害',
+  'Accuracy': '命中',
+  'Evade': '迴避',
+  'Evasion': '迴避',
+  'Starting AP': '戰鬥開始行動力',
+  'AP Recovery': '體力復原力',
+  'Immaterial DEF': '無形防禦',
+  'All DEF': '所有防禦',
+  'Slash Boost': '斬擊強化',
+  'Pierce Boost': '穿刺強化',
+  'Crush Boost': '打擊強化',
+  'Poison Boost': '毒素強化',
+  'Heat Boost': '火焰強化',
+  'Slash DEF': '斬擊防禦',
+  'Pierce DEF': '穿刺防禦',
+  'Crush DEF': '打擊防禦',
+  'Aggro Adjustment': '仇恨修正',
+  'EX Weapon': 'EX 武器',
+};
+const statZh = (s) => STAT_TOKEN_ZH[s] || HW_ZH_STAT_TYPES[s] || s;
+
+// "Label: +5%" trait effect lines -> official ZH label + kept value
+const effectZh = (e) => {
+  const i = e.indexOf(':');
+  if (i < 0) return e;
+  const label = e.slice(0, i).trim();
+  let value = e.slice(i + 1);
+  for (const [en, zh] of Object.entries(STAT_TOKEN_ZH)) value = value.split(en).join(zh);
+  return statZh(label) ? `${statZh(label)}：${value}` : e;
+};
+
+const PRIORITY_ZH = {
+  Best: '主推',
+  Highest: '最高',
+  '2nd': '次選',
+  '3rd': '第三位',
+  'Good Alternative': '優質備選',
+  Alternative: '備選',
+  Optional: '可選',
+};
+
+const SCALING_ZH = {
+  'Heat DMG + Magic ATK': '火焰傷害 + 魔法攻擊力',
+  'Ranged ATK + Team Support': '射擊攻擊力 + 團隊輔助',
+  'Ranged ATK + Crit DMG': '射擊攻擊力 + 暴擊傷害',
+  'Crush DMG + Crit DMG': '打擊傷害 + 暴擊傷害',
+  'Melee ATK + Counterattack': '近戰攻擊力 + 反擊',
+  'Magic ATK': '魔法攻擊力',
+  'Magic ATK + Support Debuffer': '魔法攻擊力 + 減益輔助',
+  'Ranged ATK': '射擊攻擊力',
+};
+const TRAITS_TYPE_ZH = {
+  'Heat Boost + Magic ATK': '火焰強化 + 魔法攻擊力',
+  'Ranged ATK + Team Buffer': '射擊攻擊力 + 團隊增益',
+  'Crit DMG + Crush DMG + Max HP': '暴擊傷害 + 打擊傷害 + 最大生命值',
+  'Magic Healer/Support': '魔法治療 / 輔助',
+  'Melee ATK + Counterattack': '近戰攻擊力 + 反擊',
+  'Magic Poison/DoT': '魔法中毒 / 持續傷害',
+  'Crit DMG + Ranged ATK + EX Weapon Synergy': '暴擊傷害 + 射擊攻擊力 + EX 武器連動',
+  'Debuffer / Support': '減益輔助 / 輔助',
+  'Ranged ATK': '射擊攻擊力',
+};
+const traitZh = (name) => HW_ZH_TRAIT_NAMES[name] || name;
+
+// ---------- translated wiki build prose, keyed by build slug ---------------
+const ZH_PROSE = {
+  garud: {
+    title: '不朽的太陽砲',
+    strategy: [
+      {
+        title: 'Scorching Sun 是她的最佳套裝',
+        description:
+          '2 件套提供魔法攻擊力 +10%，4 件套在每次成功攻擊時疊加魔法攻擊力與火焰強化，正合她的需求：她會透過 Crimson Blaze 的追加反擊與 Blazing Feathers 的觸發不斷攻擊，6 層很快疊滿並持續保持。遊戲中沒有其他聖痕能同時提供魔法攻擊力與火焰強化。',
+      },
+      {
+        title: '全魔法攻擊力副屬性',
+        description:
+          '迦露德擁有全遊戲數一數二的基礎智力（滿突破 39），Transcendent 特性再額外提供魔法攻擊力 +50%，因此魔法攻擊力副屬性能直接提升她的所有傷害來源：Incinerate、Ignite、Phoenix Feather、Blazing Feathers 的觸發傷害與 Flame 的追加傷害全部以魔法攻擊力結算。',
+      },
+      {
+        title: '暴擊傷害第二配裝',
+        description:
+          '暴擊傷害配裝同樣可以非常強力：EX+4 之後，Ignite 每次成功攻擊都會永久提供暴擊率 +5% 與暴擊傷害 +10%，最多疊加 10 層。長線戰鬥中她自己就能疊到暴擊率 +50% 與暴擊傷害 +100%，層數滾起來後，暴擊傷害副屬性會讓她變得極其誇張。聖痕採用 2+2 混搭：The Four Horsemen 放在下部與右部提供暴擊傷害，Scorching Sun 放在上部與左部（上部提供魔法攻擊力，左部提供火焰強化），同時吃到 Scorching Sun 魔法攻擊力 +10% 與 The Four Horsemen 暴擊傷害 +20% 的 2 件套效果。注意：這套需要 EX+4 與疊層時間，魔法攻擊力配裝仍是更穩妥的預設選擇。',
+      },
+    ],
+    substatBuilds: [
+      { name: '全魔法攻擊力配裝（主）', note: '主配裝。她的技能組與 Transcendent 對魔法攻擊力的乘算極高，魔法攻擊力副屬性在任何位置都是最優，剩餘位置補暴擊傷害或體力復原力。' },
+      { name: '暴擊傷害配裝（第二套，EX+4 以上）', note: 'Ignite 層數滾起來之後的強力替代方案。需要 EX+4 或更高突破，讓她自己堆暴擊率。' },
+    ],
+    substatsPriority: '魔法攻擊力配裝：所有位置選魔法攻擊力，其次暴擊傷害或體力復原力。暴擊傷害配裝：所有位置選暴擊傷害，其次魔法攻擊力或體力復原力。',
+    traitBuildNames: { 'Build 1: Full Magic ATK': '配裝 1：全魔法攻擊力', 'Build 2: Crit DMG': '配裝 2：暴擊傷害' },
+    traitRecommendation: '',
+  },
+  juha: {
+    title: '子彈聖徒：團隊增益輔助',
+    strategy: [
+      {
+        title: '堆高射擊攻擊力，強化「The Executioner」',
+        description:
+          '「The Executioner」按珠哈基礎射擊攻擊力的 76% 提升隊友的射擊攻擊力。基礎射擊攻擊力越高，全體槍械角色獲得的團隊增益就越強。',
+      },
+      {
+        title: '團隊增益定位最佳化',
+        description:
+          '「Blessing of Firepower」為隊友提供射擊攻擊力 +52% 與體力復原力 +28.5%。讓珠哈站在能覆蓋最多槍械隊友的位置，並配合技能施放時機，把團隊收益最大化。',
+      },
+      {
+        title: '平衡體力復原力，保證技能循環',
+        description:
+          '射擊攻擊力是第一優先順序，但足夠的體力復原力才能保證「The Executioner」的覆蓋與技能使用。建議 2 到 3 條射擊攻擊力副屬性，搭配 1 到 2 條體力復原力副屬性，獲得最佳續航。',
+      },
+      {
+        title: '與槍械隊友的連動',
+        description:
+          '「The Noble\'s Tactics」聖痕（射擊攻擊力 +9%、暴擊率 +20%）與她的團隊能力都專門服務槍械角色。圍繞其他遠程輸出組隊，可以打出毀滅性的連動。',
+      },
+    ],
+    substatsPriority: '射擊攻擊力（3 個位置），其次體力復原力，最後命中（可選）。',
+    traitRecommendation:
+      '掃射的、技術性的、專業的、過勞的、正義的（核心射擊攻擊力 + 團隊增益配裝：射擊攻擊力 +12%、體力復原力 +4%）。備選：有毅力的或有計畫的強化行動力管理，高效的或激進的適合不同打法。',
+  },
+  juza: {
+    title: '依靠尤潔妮亞的暴擊粉碎機',
+    strategy: [
+      {
+        title: '與尤潔妮亞（Eugenia）組隊',
+        description:
+          '尤潔妮亞的增益是把朱子暴擊率拉滿的關鍵，也是暴擊傷害配裝打得如此疼的原因。沒有尤潔妮亞時暴擊配裝不成立，請改用生命值配裝。',
+      },
+    ],
+    substatBuilds: [
+      { name: '暴擊傷害配裝（搭配尤潔妮亞）', note: '主配裝。尤潔妮亞負責暴擊率後，暴擊傷害是價值遠超其他副屬性的選擇。' },
+      { name: '生命值配裝（無尤潔妮亞）', note: '無法與尤潔妮亞組隊時的替代方案。堆最大生命值，並用行動力支援團隊。' },
+    ],
+    substatsPriority: '暴擊傷害配裝：暴擊傷害，其次最大生命值，最後體力復原力。生命值配裝：最大生命值，其次體力復原力。',
+    traitRecommendation:
+      '6 個主特性：孤注一擲的、盲目的、危險的提供暴擊傷害，沉重的、攻城的提供打擊傷害，結實的提供最大生命值。有尤潔妮亞在，孤注一擲的暴擊率損失可以接受。若不介意用 3% 最大生命值換 12% 暴擊傷害，毀滅的也是備選。',
+  },
+  vlissing: {
+    title: '流動守護者：輔助',
+    strategy: [
+      {
+        title: '堆高魔法攻擊力，兼顧治療與傷害',
+        description:
+          '布莉辛的「Ebb and Flow」與「Tangled Flow」都以魔法攻擊力結算。魔法攻擊力越高，治療量（魔法攻擊力的 60% + 目標最大生命值的 12%）與 Tangled Flow 傷害（魔法攻擊力的 400%）都會越高。',
+      },
+      {
+        title: '技能等級 10 是關鍵',
+        description:
+          '「Ebb and Flow」與「Flooding Flow」都必須升到 10 級，才能從 Tangled Flow 減益中獲得完整的傷害潛力。筆者自己就用布莉辛刷日常和推劇情！',
+      },
+      {
+        title: 'The Eternal Battle 聖痕',
+        description:
+          '4 件套效果（一次成功命中 3 名以上敵人時魔法攻擊力 +35%）與布莉辛的範圍技能「Sharp Wave」相性極佳，讓她在日常清圖中表現非常超模。',
+      },
+      {
+        title: '用體力復原力與魔法攻擊力取得平衡',
+        description: '魔法攻擊力必堆，但適當的體力復原力能讓你更從容地放技能或治療，不過它不是主要目標。',
+      },
+    ],
+    substatsPriority: '魔法攻擊力（3 個位置），其次體力復原力，最後最大生命值（可選）。',
+    traitRecommendation:
+      '理智的、神秘的、睿智的、過勞的、正義的（核心魔法攻擊力配裝：魔法攻擊力 +20%、體力復原力 +4%）。備選：有毅力的補行動力，聰明的或詭異的補魔法攻擊力。',
+  },
+  olivia: {
+    title: '奧莉薇亞反擊流',
+    strategy: [
+      {
+        title: '堆高近戰攻擊力，強化反擊',
+        description: '奧莉薇亞的一切都取決於近戰攻擊力與斬擊輸出，而且她的攻擊無視斬擊防禦。',
+      },
+      {
+        title: '技能等級 10',
+        description:
+          'Limitless Form 必須升到 10 級才能打出誇張傷害。由於這個被動的存在她無法暴擊，所以直接全堆近戰攻擊力即可。其他技能升到 7 級其實也夠用！',
+      },
+      {
+        title: '聖痕選擇',
+        description:
+          '奧莉薇亞的配裝思路很多，每個人的用法各不相同，但筆者認為這一套最好：Reckoning of Sin 與 The Thousand Mile Weave 混搭 2 件套。',
+      },
+      {
+        title: '反擊',
+        description: '奧莉薇亞會進行大量反擊，需要讓她足夠貼近敵人才能觸發。她的承傷能力完全夠用。',
+      },
+    ],
+    substatsPriority: '近戰攻擊力（3 個位置），其次體力復原力，最後最大生命值（可選）。',
+    traitRecommendation:
+      '強大的、狂暴的、魯莽的、尖銳的、銳利的（核心輸出配裝：近戰攻擊力與斬擊強化合計 +30%）。備選：有力的更穩妥（+3% 攻擊力），激進的全能屬性，過勞的補行動力。',
+  },
+  emilia: {
+    title: '醫學研究治療者',
+    strategy: [
+      {
+        title: '用魔法攻擊力強化 Miraculous Injection',
+        description:
+          '艾米莉亞的 Miraculous Injection 可以按她的魔法攻擊力提升全攻擊力，也就是說魔法攻擊力越高，獲得的全攻擊力越多。該增益最高可提供 1000 點全攻擊力，涵蓋近戰、魔法與射擊攻擊力。',
+      },
+      {
+        title: '固有特性 Diagnosis Method 機制',
+        description:
+          '艾米莉亞的「Diagnosis Method」特性允許對隊友使用普通攻擊，並透過「Stimulus Response Test」提供行動力。這算一點額外的行動力產出，但沒有多誇張，量其實不多。',
+      },
+      {
+        title: 'Sacred Prescription Protocol',
+        description:
+          '艾米莉亞的「Sacred Prescription Protocol」提供 3 類增益：暴擊傷害、行動力與移動力、屬性強化。多數情況下選暴擊傷害，因為它對輸出提升最大。關於屬性強化的討論很多，但簡單來說，截至 2025 年 12 月 6 日還沒有真正能吃滿屬性強化收益的角色。',
+      },
+      {
+        title: 'Field Medbay',
+        description:
+          '這個被動不太好理解：首先需要 EX5 才能發揮全部效果，它會提升她增益技能的效果。例如 100% 全攻擊力會變成 120% 或 180%，暴擊傷害、行動力與移動力、屬性強化等其他增益同理。',
+      },
+      {
+        title: 'Reckoning of Sin 聖痕',
+        description:
+          '選這套聖痕是因為它提供體力復原力與戰鬥開始行動力。第 1 回合傾瀉全部技能後，第 2 回合技能都在冷卻，因此需要開局行動力與體力復原力來支撐循環。',
+      },
+    ],
+    substatsPriority: '魔法攻擊力（3 個位置），其次體力復原力，最後最大生命值（可選）。',
+    traitRecommendation:
+      '理智的、神秘的、睿智的、過勞的、聰明的（核心魔法攻擊力 + 體力復原力配裝：魔法攻擊力 +21%、體力復原力 +4%）。備選：有毅力的補行動力產出，詭異的以生命值為代價換更多魔法攻擊力。',
+    alternativeBuilds: [
+      {
+        title: '暴擊率特化配裝',
+        description: '該配裝將暴擊率堆到 140%，讓 Dawn\'s Grace 的效果最大化。需要滿 EX5 武器來獲得最佳的體力復原力與暴擊率。',
+        recommendedStigma: "Dawn's Grace",
+        playstyle:
+          '屬性強化是這套配裝的一部分，因此需要能吃屬性強化收益的角色（火焰、冰霜等屬性）。先激活其中兩種增益，再用普通攻擊為主力輸出提升體力復原力，依次提供暴擊傷害、全攻擊力與屬性強化。',
+        substatsFocus: '暴擊率（目標 140%），其次體力復原力，最後魔法攻擊力。',
+        note: '暴擊率堆到 140% 之前全選暴擊率副屬性，達到 140% 後盡量堆體力復原力。',
+      },
+    ],
+  },
+  echidna: {
+    title: '機制彆扭：重度依賴隊伍',
+    strategy: [
+      {
+        title: '機制混亂：重度依賴隊伍',
+        description:
+          '艾姬德娜的毒素按命中結算，但必須先由隊友命中目標、觸發她的追擊，才能施加中毒持續傷害。她的終結技需要 3 次隊友命中才能正常發動。她本質上單兵能力很弱，完全依賴隊友才能運轉，這套機制並不適合獨立作戰的單位。',
+      },
+      {
+        title: '全行動力配裝不可行',
+        description:
+          '理論上全行動力不錯，因為持續傷害在回合結束時結算，但至少需要 6 層（2 個回合以上）的穩定單體命中才能成型。實戰中太慢也不穩定，投入與回報不成正比。',
+      },
+      {
+        title: '唯一可行配裝：全命中',
+        description:
+          '唯一勉強可行的配裝，是用 The Eternal Battle 與 The Wind that Wanders the World 的下部與左部堆命中。即使想最大化終結技傷害也很弱，因為一切效果都取決於命中。她依然是一個難以有效培養、表現欠佳的角色。',
+      },
+    ],
+    substatsPriority: '命中（3 個位置），若刷不到命中則選魔法攻擊力。',
+    traitRecommendation:
+      '精密的、致毒的、偏執的、劇毒的、準確的（核心命中 + 中毒配裝：命中 +16%、毒素強化 +14%）。備選：神秘、理智、睿智，在刷不到命中或毒素時補魔法攻擊力。',
+  },
+  'kim-ga-young': {
+    title: '隱身刺客狙擊手',
+    strategy: [
+      {
+        title: '隱身',
+        description:
+          '金佳映大部分時間都處於隱身狀態，基本不會被打。同時還能吃到聖痕與各種與隱身連動的增益。她的問題在於只能對單、需要大量暴擊率才能成型，而且基礎射擊攻擊力偏低。',
+      },
+      {
+        title: 'EX 武器特性連動',
+        description:
+          '她的 EX 武器「SS4-修改型」會按特定特性提供額外屬性：高效的（戰鬥開始行動力 +15）、能幹的（射擊攻擊力 +10%）、有計畫的（支援攻擊傷害 +5%）。其中可以更換的是高效的，它不提供傷害，但開局行動力很實用。其實她甚至不太需要輪到自己行動，因為她的定位是在別人攻擊時進行支援攻擊，所以基本不需要行動力。',
+      },
+      {
+        title: 'Drone Vision 支援定位',
+        description:
+          '搭配 EX 武器後，Drone Vision 會施減益（所有防禦 -100、迴避 -100）。她是全遊戲唯一能降低迴避的角色，-100 迴避在迴避機制下其實非常強，所有防禦下降則相對一般。',
+      },
+      {
+        title: '提升 Sniping 技能等級',
+        description:
+          '筆者認為支援攻擊按角色的普通攻擊結算，而金佳映的普通攻擊是 Sniping，因此理論上提升普通攻擊也能提高支援攻擊傷害。',
+      },
+      {
+        title: '兩種聖痕選擇',
+        description:
+          '她有兩套聖痕思路：The Four Horsemen 與 Phantom Banquet，都能用，玩法差異也很大。主要問題是她缺乏起飛所需的暴擊率，必須想辦法補足，否則傷害會明顯下滑，而且漏掉一次暴擊影響很大。The Four Horsemen 提供更高的暴擊率，但需要至少命中 5 次才能吃滿；Phantom Banquet 更穩定，還能吃到隱身增傷，也不算差。老實說，兩套都能用。',
+      },
+    ],
+    substatsPriority: '暴擊傷害（2 個位置），其次暴擊率，最後射擊攻擊力（備選）。',
+    traitRecommendation:
+      '能幹的、有計畫的（EX 武器連動）、毀滅的、天命的、幸運的（核心暴擊傷害 + 暴擊率配裝）。優先暴擊類特性，因為金佳映需要高暴擊率才能撐起傷害。高效的可選：她主要打支援攻擊，不太需要行動力。',
+  },
+  palekar: {
+    title: '暗影記錄者：減益輔助',
+    strategy: [
+      {
+        title: '主定位：團隊減益輔助',
+        description:
+          '帕萊卡的核心作用是透過「Verse of Ordeal」施加 [Unstable] 減益：所有防禦 -1140，且每點超過 9 的敏捷額外增加 7.5% 承受傷害。這個巨型減益能讓全隊的輸出顯著提高。',
+      },
+      {
+        title: 'Relentless Sworddance 的支援攻擊',
+        description:
+          '當隊友以消耗 60 行動力以上的技能攻擊 [Unstable] 敵人時，帕萊卡會用「Trajectory of Severance」進行支援攻擊，並返還 37 行動力給觸發的隊友。與科拉（Cora）的零耗 Lava 配合良好。',
+      },
+      {
+        title: '基於迴避的傷害加成',
+        description:
+          '「Blade Dance」按基礎迴避的 16.25%（最高 32.5%）提升戰鬥技能傷害，「Trajectory of Severance」還按基礎迴避的 250% 提升魔法攻擊力。高迴避副屬性與她的技能組連動，但她本身的輸出仍然有限，所需的暴擊率與暴擊傷害很難補齊。',
+      },
+      {
+        title: 'Reckoning of Sin 聖痕連動',
+        description:
+          '2 件套：體力復原力 +4%。4 件套：戰鬥開始獲得 30 行動力，並在成功命中時對敵人施加 [Price of Sin]（屬性防禦 -200，被擊後結束）。與她的 [Unstable] 減益疊加，實現防禦削減最大化，與科拉的火焰傷害配合也很好。',
+      },
+    ],
+    substatsPriority: '迴避（所有位置），需要時補體力復原力。',
+    traitRecommendation:
+      '注意：作為減益輔助，她其實不太需要刷特性。剪刀（特性重選道具）太貴，保持預設特性也完全沒問題。如果一定要刷：敏捷的、機敏的、過勞的、有毅力的、枯瘦的，補迴避與體力復原力。',
+  },
+  default: {
+    title: 'The Executioner 特化',
+    strategy: [
+      {
+        title: '為「The Executioner」增益堆射擊攻擊力',
+        description: '「The Executioner」是按基礎射擊攻擊力結算的增益，提升基礎射擊攻擊力可以直接提高增益效果。',
+      },
+      {
+        title: '不需要全行動力配裝',
+        description: '由於遊戲中沒有太多能提升射擊攻擊力的優質聖痕，體力復原力是僅剩的選擇！',
+      },
+      {
+        title: '全體力復原力還是射擊攻擊力',
+        description:
+          '副屬性全選體力復原力的理由是可以連續兩次發動 The Executioner！但它不會疊加兩次，所以全行動力並不划算。',
+      },
+    ],
+    substatsPriority: '射擊攻擊力（3 個位置），其次體力復原力，最後戰鬥開始行動力（可選）。',
+    traitRecommendation:
+      '掃射的、技術性的、過勞的、高效的、正義的（核心配裝）。備選：有毅力的或有計畫的強化行動力管理，專業的或激進的偏輸出。',
+  },
+};
+
+const prose = ZH_PROSE[character.slug] || ZH_PROSE.default;
+const strategyZh = (buildConfig.buildStrategy || []).map((s, i) => ({
+  title: prose.strategy[i]?.title || s.title,
+  description: prose.strategy[i]?.description || s.description,
+}));
+const substatBuildsZh = (buildConfig.substatBuilds || []).map((b, i) => ({
+  name: prose.substatBuilds?.[i]?.name || b.name,
+  note: prose.substatBuilds?.[i]?.note || b.note,
+  stats: b.stats,
+}));
+const altBuildsZh = (buildConfig.alternativeBuilds || []).map((b, i) => ({
+  ...b,
+  ...(prose.alternativeBuilds?.[i] || {}),
+}));
+const scalingZh = SCALING_ZH[buildConfig.damageScaling] || statZh(buildConfig.damageScaling);
+const traitsTypeZh = TRAITS_TYPE_ZH[buildConfig.traitsType] || buildConfig.traitsType;
+
+// ---------- stigma resolution (same logic as the EN page) -------------------
+const findStigmaSet = (name) =>
+  stigmas.EX?.find((stigma) => stigma.name === name) ||
+  stigmas.SS?.find((stigma) => stigma.name === name) ||
+  stigmas.S?.find((stigma) => stigma.name === name) ||
+  stigmas.A?.find((stigma) => stigma.name === name) ||
+  null;
+
+function resolveStigmaDisplay(rec, mixedLayout) {
+  if (rec === null || rec === undefined) return null;
+  if (typeof rec === 'string' && rec.includes('Mixed 2-Set')) {
+    const layout = mixedLayout;
+    if (layout && layout.top && layout.bottom && layout.left && layout.right) {
+      const setNames = [...new Set([layout.top, layout.bottom, layout.left, layout.right])];
+      if (setNames.length === 2) {
+        const st1 = stigmas.EX?.find((stigma) => stigma.name === setNames[0]);
+        const st2 = stigmas.EX?.find((stigma) => stigma.name === setNames[1]);
+        if (st1 && st2) {
+          const pieceFor = (slot) => (layout[slot] === setNames[0] ? st1 : st2).pieces[slot];
+          return {
+            type: 'mixed',
+            pieces: {
+              stigma1Name: setNames[0],
+              stigma2Name: setNames[1],
+              top: pieceFor('top'),
+              bottom: pieceFor('bottom'),
+              left: pieceFor('left'),
+              right: pieceFor('right'),
+              twoSetBonus1: st1.twoSet,
+              twoSetBonus2: st2.twoSet,
+            },
+          };
+        }
+      }
+    }
+    if (character.slug !== 'echidna') {
+      const reckoningOfSin = stigmas.EX?.find((stigma) => stigma.name === 'Reckoning of Sin');
+      const thousandMileWeave = stigmas.EX?.find((stigma) => stigma.name === 'The Thousand Mile Weave');
+      if (reckoningOfSin && thousandMileWeave) {
+        return {
+          type: 'mixed',
+          pieces: {
+            stigma1Name: 'Reckoning of Sin',
+            stigma2Name: 'The Thousand Mile Weave',
+            top: thousandMileWeave.pieces.top,
+            bottom: reckoningOfSin.pieces.bottom,
+            left: reckoningOfSin.pieces.left,
+            right: thousandMileWeave.pieces.right,
+            twoSetBonus1: reckoningOfSin.twoSet,
+            twoSetBonus2: thousandMileWeave.twoSet,
+          },
+        };
+      }
+    } else {
+      const eternalBattle = stigmas.EX?.find((stigma) => stigma.name === 'The Eternal Battle');
+      const windWanders = stigmas.EX?.find((stigma) => stigma.name === 'The Wind that Wanders the World');
+      if (eternalBattle && windWanders) {
+        return {
+          type: 'mixed',
+          pieces: {
+            stigma1Name: 'The Eternal Battle',
+            stigma2Name: 'The Wind that Wanders the World',
+            top: eternalBattle.pieces.top,
+            bottom: windWanders.pieces.bottom,
+            left: eternalBattle.pieces.left,
+            right: windWanders.pieces.right,
+            twoSetBonus1: eternalBattle.twoSet,
+            twoSetBonus2: windWanders.twoSet,
+          },
+        };
+      }
+    }
+    return null;
+  }
+  if (typeof rec === 'object') {
+    return { type: 'object', zeroDupe: findStigmaSet(rec.zeroDupe), fullEx5: findStigmaSet(rec.fullEx5) };
+  }
+  return { type: 'single', set: findStigmaSet(rec) };
+}
+
+const stigmaSections =
+  Array.isArray(buildConfig.stigmaBuilds) && buildConfig.stigmaBuilds.length > 0
+    ? buildConfig.stigmaBuilds.map((sb) => ({
+        label: sb.name || null,
+        display: resolveStigmaDisplay(sb.recommendedStigma, sb.mixedSetLayout),
+      }))
+    : [{ label: null, display: resolveStigmaDisplay(buildConfig.recommendedStigma, buildConfig.mixedSetLayout) }];
+
+const SLOT_ZH = { top: '上部', bottom: '下部', left: '左部', right: '右部' };
+const hasCommunityBuild = Boolean(COMMUNITY_BUILDS[character.slug]);
+
+const coreStats = [
+  { label: '力量', value: character.stats?.strength },
+  { label: '技巧', value: character.stats?.technic },
+  { label: '智力', value: character.stats?.intelligence },
+  { label: '體質', value: character.stats?.vitality },
+  { label: '敏捷', value: character.stats?.agility },
+];
+---
+
+<HwLangLayout lang="zh-tw" ui={HW_ZH}
+  title={`${zhName} 配裝 - 地平線行者繁體中文維基 - GachaWiki`}
+  description={`地平線行者 ${zhName}（${character.name}）的配裝推薦：配裝思路、推薦聖痕、副屬性優先順序與特性選擇。聖痕套裝名稱保留英文原文。`}
+  keywords={[zhName, character.name, '地平線行者', '配裝', '聖痕']}
+  pageTitle={`${zhName} 配裝`}
+  breadcrumbItems={[
+    { name: '首頁', href: '/' },
+    { name: '地平線行者', href: HW_ZH.baseUrl },
+    { name: '配裝推薦', href: `${HW_ZH.baseUrl}builds/` },
+    { name: zhName },
+  ]}
+>
+  <div class="character-build-header">
+    <div class="character-build-image">
+      <CharacterImage
+        imageName={character.image || character.name}
+        alt={zhName}
+        width={120}
+        height={120}
+        class="character-build-portrait"
+        loading="eager"
+      />
+    </div>
+    <div class="character-build-info">
+      <h2 class="character-build-name">{zhName} 配裝</h2>
+      <p class="zh-cb-en">{character.name} Build</p>
+      <div class="character-build-badges">
+        <span class="hw-badge" data-type="Cost">費用 {build.cost}</span>
+        <HWRarityIcon rarity={build.rarity} width={44} height={22} />
+        <span class="character-tag damage-scaling">{scalingZh}</span>
+      </div>
+      <div class="zh-cb-links">
+        <a href={`${HW_ZH.baseUrl}characters/${character.slug}/`}>角色頁面</a>
+        <a href={enPageUrl}>完整英文配裝頁</a>
+        {hasCommunityBuild && <a href={`${HW_ZH.baseUrl}builds/community/${character.slug}/`}>社群配裝</a>}
+      </div>
+    </div>
+  </div>
+
+  <!-- Core Stats Section -->
+  <section class="character-build-section">
+    <h3 class="character-build-section-title">核心屬性</h3>
+    <div class="core-stats-explanation">
+      <div class="stat-explanation-grid">
+        <span><span class="stat-name">力量：</span><span class="stat-description">提升近戰攻擊力</span></span>
+        <span><span class="stat-name">技巧：</span><span class="stat-description">提升射擊攻擊力</span></span>
+        <span><span class="stat-name">智力：</span><span class="stat-description">提升魔法攻擊力</span></span>
+        <span><span class="stat-name">體質：</span><span class="stat-description">提升最大生命值</span></span>
+        <span><span class="stat-name">敏捷：</span><span class="stat-description">提升迴避與體力復原力</span></span>
+      </div>
+    </div>
+    <div class="core-stats-grid">
+      {
+        coreStats.map((s) => (
+          <div class="core-stat-card">
+            <div class="core-stat-title">{s.label}</div>
+            <div class="core-stat-value">{s.value ?? '無資料'}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Build Strategy Box -->
+  <section class="character-build-section">
+    <h3 class="character-build-section-title">配裝思路</h3>
+    <div class="strategy-box">
+      <h4 class="strategy-title">{prose.title}</h4>
+      <div class="strategy-content">
+        {
+          strategyZh.map((s) => (
+            <div class="strategy-point">
+              <div class="strategy-text">
+                <strong>{s.title}</strong>：{s.description}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommended Stigma Section -->
+  {
+    stigmaSections.some((s) => s.display) && (
+      <section class="character-build-section">
+        <h3 class="character-build-section-title">推薦聖痕</h3>
+        <div class="stigma-container">
+          {stigmaSections
+            .filter((s) => s.display)
+            .map((section) => (
+          <div class="stigma-build-section">
+            {section.label && <div class="stigma-build-label">{section.label}</div>}
+            {section.display.type === 'mixed' ? (
+              <>
+                <div class="stigma-header">
+                  <div class="stigma-title-section">
+                    <div class="stigma-info-container">
+                      <div class="stigma-image-container">
+                        <StigmaImage imageName={section.display.pieces.stigma1Name} alt={`${section.display.pieces.stigma1Name} 聖痕`} width={60} height={60} class="stigma-portrait-small" loading="eager" />
+                      </div>
+                      <div class="stigma-name-label">
+                        <h5>{section.display.pieces.stigma1Name}</h5>
+                        <HWRarityIcon rarity="EX" width={36} height={18} />
+                      </div>
+                    </div>
+
+                    <div class="stigma-plus-sign">+</div>
+
+                    <div class="stigma-info-container">
+                      <div class="stigma-image-container">
+                        <StigmaImage imageName={section.display.pieces.stigma2Name} alt={`${section.display.pieces.stigma2Name} 聖痕`} width={60} height={60} class="stigma-portrait-small" loading="eager" />
+                      </div>
+                      <div class="stigma-name-label">
+                        <h5>{section.display.pieces.stigma2Name}</h5>
+                        <HWRarityIcon rarity="EX" width={36} height={18} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="stigma-bonuses">
+                  <div class="stigma-set-bonus">
+                    <h5>{section.display.pieces.stigma1Name}（2 件套效果）</h5>
+                    <p>{section.display.pieces.twoSetBonus1}</p>
+                  </div>
+                  <div class="stigma-set-bonus">
+                    <h5>{section.display.pieces.stigma2Name}（2 件套效果）</h5>
+                    <p>{section.display.pieces.twoSetBonus2}</p>
+                  </div>
+                </div>
+
+                <div class="stigma-pieces">
+                  <h5>混搭聖痕部件</h5>
+                  <div class="stigma-grid">
+                    {['top', 'bottom', 'left', 'right'].map((slot) => (
+                      <div class="stigma-piece">
+                        <div class="piece-slot">{SLOT_ZH[slot]}</div>
+                        <div class="piece-info">
+                          <div class="piece-set-name">{section.display.pieces[slot].name}</div>
+                          <div class="piece-stat-value">{statZh(section.display.pieces[slot].stat)}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </>
+            ) : section.display.type === 'object' ? (
+              <>
+                <div class="stigma-option-section">
+                  <div class="stigma-option-label">方案 1：低投入（零突破）</div>
+                  <div class="stigma-header">
+                    <div class="stigma-title-section">
+                      <div class="stigma-image-container">
+                        <StigmaImage imageName={section.display.zeroDupe.name} alt={`${section.display.zeroDupe.name} 聖痕`} width={60} height={60} class="stigma-portrait-small" loading="eager" />
+                      </div>
+                      <div class="stigma-title-info">
+                        <h4 class="stigma-name">{section.display.zeroDupe.name}</h4>
+                        <HWRarityIcon rarity="EX" width={36} height={18} />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="stigma-bonuses">
+                    <div class="stigma-set-bonus">
+                      <h5>2 件套效果</h5>
+                      <p>{section.display.zeroDupe.twoSet}</p>
+                    </div>
+                    {section.display.zeroDupe.fourSet && (
+                      <div class="stigma-set-bonus">
+                        <h5>4 件套效果</h5>
+                        <p>{section.display.zeroDupe.fourSet}</p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div class="stigma-pieces">
+                    <h5>聖痕部件</h5>
+                    <div class="stigma-grid">
+                      {['top', 'bottom', 'left', 'right'].map((slot) => (
+                        <div class="stigma-piece">
+                          <div class="piece-slot">{SLOT_ZH[slot]}</div>
+                          <div class="piece-info">
+                            <div class="piece-name">{section.display.zeroDupe.pieces[slot].name}</div>
+                            <div class="piece-stat">{statZh(section.display.zeroDupe.pieces[slot].stat)}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="stigma-option-divider">
+                  <span>或</span>
+                </div>
+
+                <div class="stigma-option-section">
+                  <div class="stigma-option-label">方案 2：滿突破 EX5 武器</div>
+                  <div class="stigma-header">
+                    <div class="stigma-title-section">
+                      <div class="stigma-image-container">
+                        <StigmaImage imageName={section.display.fullEx5.name} alt={`${section.display.fullEx5.name} 聖痕`} width={60} height={60} class="stigma-portrait-small" loading="eager" />
+                      </div>
+                      <div class="stigma-title-info">
+                        <h4 class="stigma-name">{section.display.fullEx5.name}</h4>
+                        <HWRarityIcon rarity="EX" width={36} height={18} />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="stigma-bonuses">
+                    <div class="stigma-set-bonus">
+                      <h5>2 件套效果</h5>
+                      <p>{section.display.fullEx5.twoSet}</p>
+                    </div>
+                    {section.display.fullEx5.fourSet && (
+                      <div class="stigma-set-bonus">
+                        <h5>4 件套效果</h5>
+                        <p>{section.display.fullEx5.fourSet}</p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div class="stigma-pieces">
+                    <h5>聖痕部件</h5>
+                    <div class="stigma-grid">
+                      {['top', 'bottom', 'left', 'right'].map((slot) => (
+                        <div class="stigma-piece">
+                          <div class="piece-slot">{SLOT_ZH[slot]}</div>
+                          <div class="piece-info">
+                            <div class="piece-name">{section.display.fullEx5.pieces[slot].name}</div>
+                            <div class="piece-stat">{statZh(section.display.fullEx5.pieces[slot].stat)}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div class="stigma-header">
+                  <div class="stigma-title-section">
+                    <div class="stigma-image-container">
+                      <StigmaImage imageName={section.display.set.name} alt={`${section.display.set.name} 聖痕`} width={60} height={60} class="stigma-portrait-small" loading="eager" />
+                    </div>
+                    <div class="stigma-title-info">
+                      <h4 class="stigma-name">{section.display.set.name}</h4>
+                      <HWRarityIcon rarity="EX" width={36} height={18} />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="stigma-bonuses">
+                  <div class="stigma-set-bonus">
+                    <h5>2 件套效果</h5>
+                    <p>{section.display.set.twoSet}</p>
+                  </div>
+                  <div class="stigma-set-bonus">
+                    <h5>4 件套效果</h5>
+                    <p>{section.display.set.fourSet}</p>
+                    {section.display.set.specialEffect && (
+                      <p class="stigma-special-effect">[{section.display.set.specialEffect.name}]：{section.display.set.specialEffect.description}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div class="stigma-pieces">
+                  <h5>聖痕部件</h5>
+                  <div class="stigma-grid">
+                    {['top', 'bottom', 'left', 'right'].map((slot) => (
+                      <div class="stigma-piece">
+                        <div class="piece-slot">{SLOT_ZH[slot]}</div>
+                        <div class="piece-info">
+                          <div class="piece-name">{section.display.set.pieces[slot].name}</div>
+                          <div class="piece-stat">{statZh(section.display.set.pieces[slot].stat)}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+            ))}
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Recommended Substats Section -->
+  {
+    (buildConfig.substatBuilds || buildConfig.recommendedSubstats) && (
+      <section class="character-build-section">
+        <h3 class="character-build-section-title">推薦副屬性</h3>
+        <div class="stigma-container">
+          <div class="recommended-substats">
+            <h5>副屬性推薦</h5>
+            {
+              buildConfig.substatBuilds ? (
+                <div class="substat-builds">
+                  {substatBuildsZh.map((b) => (
+                    <div class="substat-build-card">
+                      <div class="substat-build-name">{b.name}</div>
+                      {b.note && <div class="substat-build-note">{b.note}</div>}
+                      <div class="substats-list">
+                        {b.stats.map((stat) => (
+                          <div class="substat-item">
+                            <div class="substat-info">
+                              <div class="substat-name">{statZh(stat.stat)}</div>
+                              <span
+                                class="hw-badge"
+                                data-type={stat.priority === 'Highest' ? 'Main' : 'Alt'}
+                              >
+                                {PRIORITY_ZH[stat.priority] || stat.priority}
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div class="substats-list">
+                  {buildConfig.recommendedSubstats.map((substat, index) => (
+                    <div
+                      class={`substat-item ${index < 3 ? 'priority-best' : index === 3 ? 'priority-alternative' : 'priority-optional'}`}
+                    >
+                      <div class="substat-info">
+                        <div class="substat-name">{statZh(substat.stat)}</div>
+                        <div class="substat-priority">{PRIORITY_ZH[substat.priority] || substat.priority}</div>
+                      </div>
+                      <div class="substat-scale">{substat.scale}</div>
+                    </div>
+                  ))}
+                </div>
+              )
+            }
+            <div class="substats-note">
+              <strong>優先順序：</strong>{prose.substatsPriority}
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Alternative Build Strategies Section -->
+  {
+    altBuildsZh.length > 0 && (
+      <section class="character-build-section">
+        <h3 class="character-build-section-title">備選配裝思路</h3>
+        <div class="alternative-builds-container">
+          <div class="alternative-builds-grid">
+            {altBuildsZh.map((b) => (
+              <div class="alternative-build-card">
+                <div class="alternative-build-header">
+                  <h4 class="alternative-build-title">{b.title}</h4>
+                  {b.recommendedStigma && (
+                    <div class="alternative-build-stigma">
+                      <div class="stigma-image-container">
+                        <StigmaImage imageName={b.recommendedStigma} alt={`${b.recommendedStigma} 聖痕`} width={64} height={64} class="stigma-portrait-medium" loading="eager" />
+                      </div>
+                      <div class="stigma-info">
+                        <div class="stigma-label">推薦聖痕</div>
+                        <div class="stigma-name">{b.recommendedStigma}</div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <div class="alternative-build-content">
+                  <p class="alternative-build-description">{b.description}</p>
+
+                  {b.playstyle && (
+                    <div class="alternative-build-playstyle">
+                      <h5>玩法思路</h5>
+                      <p>{b.playstyle}</p>
+                    </div>
+                  )}
+
+                  {b.substatsFocus && (
+                    <div class="alternative-build-substats">
+                      <h5>副屬性優先順序</h5>
+                      <p>{b.substatsFocus}</p>
+                    </div>
+                  )}
+
+                  {b.note && (
+                    <div class="alternative-build-note">
+                      <h5>特性配裝說明</h5>
+                      <p>{b.note}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Recommended Traits Section -->
+  <section class="character-build-section">
+    <h3 class="character-build-section-title">推薦特性</h3>
+    <div class="recommended-traits">
+      {buildConfig.traitBuilds ? (
+        <div class="trait-builds">
+          {buildConfig.traitBuilds.map((tb) => (
+            <div class="trait-build-block">
+              <h5 class="trait-build-title">{prose.traitBuildNames?.[tb.name] || tb.name}</h5>
+              <div class="traits-list">
+                {tb.traits.map((trait) => (
+                  <div class="trait-item">
+                    <div class="trait-info">
+                      <div class="trait-name">
+                        {traitZh(trait.name)}
+                        <span class="zh-cb-trait-en">{trait.name}</span>
+                      </div>
+                    </div>
+                    <div class="trait-effects">
+                      {trait.effects.map((effect) => (
+                        <div class="trait-effect">{effectZh(effect)}</div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <>
+          <h5>{traitsTypeZh} 的最佳特性（最多 {buildConfig.traitsMax || 5} 條）</h5>
+          <div class="traits-list">
+            {buildConfig.recommendedTraits.map((trait) => (
+              <div class={`trait-item ${trait.priority === 'Best' ? 'priority-best' : 'priority-alternative'}`}>
+                <div class="trait-info">
+                  <div class="trait-name">
+                    {traitZh(trait.name)}
+                    <span class="zh-cb-trait-en">{trait.name}</span>
+                    <span
+                      class="hw-badge"
+                      data-type={trait.priority === 'Best' ? 'Main' : 'Alt'}
+                    >
+                      {trait.priority === 'Best' ? '主推' : '備選'}
+                    </span>
+                  </div>
+                </div>
+                <div class="trait-effects">
+                  {trait.effects.map((effect) => (
+                    <div class="trait-effect">{effectZh(effect)}</div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          {buildConfig.traitRecommendation && (
+            <div class="traits-note">
+              <strong>推薦選擇：</strong>{prose.traitRecommendation || buildConfig.traitRecommendation}
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  </section>
+</HwLangLayout>
+
+<style>
+  /* ZH-only elements without an EN equivalent: the EN gloss line + quick links */
+  .zh-cb-en {
+    color: var(--hw-text-very-muted);
+    font-size: 0.85rem;
+    margin: 0.1rem 0 0.6rem 0;
+  }
+
+  .zh-cb-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.7rem;
+  }
+
+  .zh-cb-links a {
+    color: var(--hw-primary-warm);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(232, 165, 71, 0.35);
+    border-radius: 8px;
+    padding: 0.35rem 0.8rem;
+  }
+
+  .zh-cb-trait-en {
+    color: var(--hw-text-very-muted);
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin-left: 0.35rem;
+  }
+</style>

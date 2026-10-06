@@ -1,0 +1,381 @@
+---
+// Korean community build detail: /ko/guides/horizon-walker/builds/community/
+// <slug>/. Same data and slug set as the EN page (community-builds.js,
+// credits: Envy, Liauw & Gamekee). Character, weapon, skill and trait names
+// use the game's official Korean via game-text.js; the spreadsheet's own values
+// (stigma set names, stat lines, effect text) are kept verbatim in English.
+import HwLangLayout from '../../../../../../layouts/lang/HwLangLayout.astro';
+import '../../../../../../styles/games/horizon-walker/hw-character-build.css';
+import '../../../../../../styles/games/horizon-walker/hw-community-build.css';
+import { COMMUNITY_BUILDS } from '../../../../../../data/horizon-walker/community-builds.js';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../../../data/horizon-walker/characters.js';
+import { characterBuildConfigs } from '../../../../../../data/horizon-walker/builds/character-build-configs.js';
+import {
+  HW_ZH_NAMES,
+  HW_ZH_SKILLS,
+  HW_ZH_INHERITANCE,
+  HW_ZH_TRAIT_NAMES,
+} from '../../../../../../data/horizon-walker/ko/game-text.js';
+import { HW_ZH } from '../../../../../../data/horizon-walker/ko/ui.js';
+import {
+  CharacterImage,
+  WeaponImage,
+  StigmaImage,
+  HWRarityIcon,
+} from '../../../../../../components/horizon-walker/index.astro';
+import SkillIcon from '../../../../../../components/horizon-walker/SkillIcon.astro';
+
+export const prerender = true;
+
+const SHEET_URL =
+  'https://docs.google.com/spreadsheets/d/e/2PACX-1vQkHJLorAevtaAd3nEcXTZKD4L_8HfGEHmEOPKoUztaDujZxTLhR3-wBnL2UBJ9CgbxIRXsPl2a0SoT/pubhtml';
+
+export function getStaticPaths() {
+  return Object.keys(COMMUNITY_BUILDS).map((slug) => ({
+    params: { buildSlug: slug },
+  }));
+}
+
+const { buildSlug } = Astro.params;
+const communityBuild = COMMUNITY_BUILDS[buildSlug];
+const character = HORIZON_WALKER_CHARACTERS.find((c) => c.slug === buildSlug);
+
+if (!communityBuild || !character) {
+  return Astro.redirect(`${HW_ZH.baseUrl}builds/community/`);
+}
+
+// Full per-character data (weapon art, skill icons) lives in the individual
+// data modules; the characters.js index record does not carry them.
+const charDataModules = import.meta.glob('/src/data/horizon-walker/characters/*.js', {
+  eager: true,
+});
+let characterDetail = null;
+for (const [path, mod] of Object.entries(charDataModules)) {
+  if (path.split('/').pop()?.replace('.js', '') !== buildSlug) continue;
+  characterDetail = Object.values(mod).find((v) => v && typeof v === 'object' && v.name && v.skills);
+  break;
+}
+
+const zhName = HW_ZH_NAMES[character.id] || character.name;
+const weaponNameZh = HW_ZH_INHERITANCE[communityBuild.weaponName]?.name || null;
+const hasHandBuild = Boolean(characterBuildConfigs[buildSlug]);
+
+// community skill names ("Skill 2: Theater Control") -> character skill record
+const decodeEntities = (s) =>
+  String(s ?? '')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>');
+const norm = (s) =>
+  decodeEntities(s)
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, '');
+const skillsByName = new Map();
+for (const skill of Object.values(characterDetail?.skills ?? {})) {
+  if (skill?.name) skillsByName.set(norm(skill.name), skill);
+}
+const skillForPriority = (label) => {
+  const bare = decodeEntities(label).replace(/^(Skill \d+|Passive(?: \d+)?|Basic Attack):\s*/i, '');
+  return skillsByName.get(norm(bare)) || null;
+};
+// "Skill 2: Theater Control" -> 스킬 2: 극장 지배 (official KO when known)
+const skillLineZh = (label) => {
+  const m = decodeEntities(label).match(/^(Skill \d+|Passive(?: \d+)?|Basic Attack):\s*(.+)$/i);
+  const kindZh = (kind) =>
+    kind.startsWith('Skill')
+      ? `스킬 ${kind.replace(/\D/g, '')}`
+      : kind.startsWith('Passive')
+        ? `패시브${kind.replace(/\D/g, '') ? ` ${kind.replace(/\D/g, '')}` : ''}`
+        : '일반 공격';
+  if (!m) return { text: decodeEntities(label), en: decodeEntities(label) };
+  const skill = skillForPriority(label);
+  const zhSkillName = skill?.gameKey ? HW_ZH_SKILLS[skill.gameKey]?.name : null;
+  const name = zhSkillName || m[2];
+  return { text: `${kindZh(m[1])}: ${name}`, en: zhSkillName ? m[2] : null };
+};
+
+// Stigma set art: only some sets have art on R2 (mirrors the EN component map)
+const STIGMA_ALIASES = {
+  thethousandmileweaver: 'The Thousand Mile Weave',
+  thebrilianttouchofearth: 'The Brilliant Touch of Earth',
+  thethornyheart: 'Thorned Heart',
+  theblacksmithgodsblessing: 'The Blacksmith Blessing',
+  theknightofsevenpetals: 'The Knight of the Seven Petals',
+  thefourhorseman: 'The Four Horsemen',
+};
+const STIGMA_ART = {
+  jestersmask: 'JesterEX.jpg',
+  reckoningofsin: 'Reckoning_of_SinEX.jpg',
+  jupiter: 'JupiterEX.jpg',
+  harmony: 'HarmonyEX.jpg',
+  phantombanquet: 'Phantom_BanquetEX.jpg',
+  theeternalbattle: 'The_Eternal_BattleEX.jpg',
+  thewindthatwanderstheworld: 'The_Wind_that_Wanders_the_WorldEX.jpg',
+  thethousandmileweave: 'The_Thousand_Mile_WeaveEX.jpg',
+  thenoblestactics: "The_Noble's_TacticsSS.jpg",
+  theshipoftheseus: 'The_Ship_of_TheseusSS.jpg',
+  thornedheart: 'Thorned_HeartSS.jpg',
+  theblacksmithblessing: 'The_BlackSmith_BlessingSS.jpg',
+  thebrillianttouchofearth: 'The_Brilliant_Touch_of_EarthEX.jpg',
+};
+const stigmaArtFor = (name) => {
+  const cleaned = decodeEntities(name)
+    .replace(/\([^)]*\)/g, '')
+    .replace(/\[[^\]]*\]/g, '');
+  const key = norm(cleaned);
+  if (key.startsWith('mix')) return null;
+  const canonical = STIGMA_ALIASES[key] || cleaned;
+  return STIGMA_ART[norm(canonical)] || null;
+};
+
+// community set labels ("Late Game 1", "Early-Mid Game") in Korean
+const setLabelZh = (label) =>
+  label
+    .replace(/Late Game/g, '후반부')
+    .replace(/Early-Mid Game/g, '초중반부')
+    .replace(/Late Build/g, '후반부');
+
+const traitZh = (name) => HW_ZH_TRAIT_NAMES[name] || name;
+
+const coreStats = [
+  { label: '근력', value: character.stats?.strength },
+  { label: '기교', value: character.stats?.technic },
+  { label: '지능', value: character.stats?.intelligence },
+  { label: '체질', value: character.stats?.vitality },
+  { label: '민첩', value: character.stats?.agility },
+];
+---
+
+<HwLangLayout lang="ko" ui={HW_ZH}
+  title={`${zhName} 커뮤니티 빌드 - 호라이즌 워커 한국어 위키 - GachaWiki`}
+  description={`호라이즌 워커 ${zhName}(${character.name})의 커뮤니티 빌드: 추천 무기, 성흔 세트, 부옵션 우선순위, 특성 선택과 스킬 업그레이드 순서를 커뮤니티 빌드 표에서 정리했습니다.`}
+  keywords={[zhName, character.name, '호라이즌 워커', '커뮤니티 빌드', '빌드']}
+  pageTitle={`${zhName} 커뮤니티 빌드`}
+  breadcrumbItems={[
+    { name: '홈', href: '/' },
+    { name: '호라이즌 워커', href: HW_ZH.baseUrl },
+    { name: '추천 빌드', href: `${HW_ZH.baseUrl}builds/` },
+    { name: '커뮤니티 빌드', href: `${HW_ZH.baseUrl}builds/community/` },
+    { name: zhName },
+  ]}
+>
+  <div class="character-build-header">
+    <div class="character-build-image">
+      <CharacterImage
+        imageName={character.image || character.name}
+        alt={zhName}
+        width={120}
+        height={120}
+        class="character-build-portrait"
+        loading="eager"
+      />
+    </div>
+    <div class="character-build-info">
+      <h2 class="character-build-name">{zhName} 커뮤니티 빌드</h2>
+      <p class="zh-cbu-en">{character.name} Community Build</p>
+      <div class="character-build-badges">
+        <span class="hw-badge" data-type="Cost">비용 {character.cost}</span>
+        <HWRarityIcon rarity={character.rarity} width={44} height={22} />
+        <span class="character-tag damage-scaling">커뮤니티 빌드</span>
+      </div>
+      <div class="character-build-links">
+        <a href={`${HW_ZH.baseUrl}characters/${character.slug}/`}>캐릭터 페이지</a>
+        {hasHandBuild && <a href={`${HW_ZH.baseUrl}builds/${character.slug}/`}>추천 빌드</a>}
+      </div>
+    </div>
+  </div>
+
+  <section class="content-section community-build-section">
+    <h3 class="section-title">커뮤니티 빌드</h3>
+    <p class="community-build-credit">
+      아래 추천은 Envy, Liauw, Gamekee의 커뮤니티 빌드 표에서 정리했으며,
+      <a href={SHEET_URL} target="_blank" rel="noopener noreferrer">전체 표 보기</a>에서 원본을 확인할 수 있습니다. 표의 성흔 세트명과 수치는 영문 원문 그대로 표기합니다.
+    </p>
+
+    <div class="community-build-grid">
+      {
+        (communityBuild.weaponName || communityBuild.weaponStats || communityBuild.subStats) && (
+          <div class="community-build-card">
+            <h4 class="community-build-card-title">무기</h4>
+            <div class="community-weapon-row">
+              {characterDetail?.weapon?.image && (
+                <div class="community-weapon-image-box">
+                  <WeaponImage
+                    imageName={characterDetail.weapon.image}
+                    alt={communityBuild.weaponName}
+                    width={72}
+                    height={72}
+                    class="community-weapon-image"
+                    loading="lazy"
+                  />
+                </div>
+              )}
+              <div class="community-weapon-info">
+                {communityBuild.weaponName && (
+                  <p class="community-weapon-name">
+                    {weaponNameZh || communityBuild.weaponName}
+                    {weaponNameZh && <span class="zh-cbu-weapon-en">{communityBuild.weaponName}</span>}
+                  </p>
+                )}
+                {communityBuild.weaponStats && <p class="community-stat-line">{communityBuild.weaponStats}</p>}
+                {communityBuild.subStats && <p class="community-stat-line">{communityBuild.subStats}</p>}
+              </div>
+            </div>
+          </div>
+        )
+      }
+
+      {
+        communityBuild.substatsPriority && (
+          <div class="community-build-card">
+            <h4 class="community-build-card-title">부옵션 우선순위</h4>
+            <ol class="community-substats-list">
+              {communityBuild.substatsPriority
+                .split('\n')
+                .map((line) => line.trim())
+                .filter(Boolean)
+                .map((line) => (
+                  <li>{line.replace(/^\d+\.\s*/, '')}</li>
+                ))}
+            </ol>
+          </div>
+        )
+      }
+
+      {
+        communityBuild.stigmaSets?.length > 0 && (
+          <div class="community-build-card community-build-card-wide">
+            <h4 class="community-build-card-title">성흔</h4>
+            <div class="community-stigma-sets">
+              {communityBuild.stigmaSets.map((set) => {
+                const art = stigmaArtFor(set.name);
+                return (
+                  <div class="community-stigma-set">
+                    <div class="community-stigma-header">
+                      {art && (
+                        <StigmaImage imageName={art} alt={`${set.name} 성흔 이미지`} width={44} height={44} class="community-stigma-image" loading="lazy" />
+                      )}
+                      <span class="community-set-label">{setLabelZh(set.label)}</span>
+                      <span class="community-stigma-name">{set.name}</span>
+                    </div>
+                    {set.effects && (
+                      <div class="community-stigma-effects">
+                        {set.effects
+                          .split('\n')
+                          .map((line) => line.trim())
+                          .filter(Boolean)
+                          .map((line) =>
+                            line.startsWith('- ') ? (
+                              <p class="community-effect-line community-effect-sub">{line.slice(2)}</p>
+                            ) : (
+                              <p class="community-effect-line">{line}</p>
+                            )
+                          )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )
+      }
+
+      {
+        communityBuild.traitsToGet?.length > 0 && (
+          <div class="community-build-card">
+            <h4 class="community-build-card-title">추천 특성</h4>
+            <ul class="community-traits-list">
+              {communityBuild.traitsToGet.map((trait) => (
+                <li class="community-trait-item">
+                  <span class="community-trait-name">
+                    {traitZh(trait.name)}
+                    {traitZh(trait.name) !== trait.name && <span class="zh-cbu-trait-en">{trait.name}</span>}
+                  </span>
+                  <span class="community-trait-effect">{trait.effect}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+
+      {
+        communityBuild.skillPriority?.length > 0 && (
+          <div class="community-build-card">
+            <h4 class="community-build-card-title">스킬 업그레이드 순서</h4>
+            <ol class="community-skill-priority">
+              {communityBuild.skillPriority.map((p) => {
+                const skill = skillForPriority(p.name);
+                const line = skillLineZh(p.name);
+                return (
+                  <li class="community-priority-item">
+                    <span class="community-priority-rank">{p.priority}</span>
+                    {skill?.icon && <SkillIcon iconName={skill.icon} />}
+                    <span class="community-priority-name">
+                      {line.text}
+                      {line.en && <span class="zh-cbu-skill-en">{line.en}</span>}
+                    </span>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="character-build-section">
+    <h3 class="character-build-section-title">핵심 스탯</h3>
+    <div class="core-stats-explanation">
+      <div class="stat-explanation-grid">
+        <span><span class="stat-name">근력: </span><span class="stat-description">근접 공격력 증가</span></span>
+        <span><span class="stat-name">기교: </span><span class="stat-description">사격 공격력 증가</span></span>
+        <span><span class="stat-name">지능: </span><span class="stat-description">마법 공격력 증가</span></span>
+        <span><span class="stat-name">체질: </span><span class="stat-description">최대 생명력 증가</span></span>
+        <span><span class="stat-name">민첩: </span><span class="stat-description">회피와 행동 회복력 증가</span></span>
+      </div>
+    </div>
+    <div class="core-stats-grid">
+      {
+        coreStats.map((s) => (
+          <div class="core-stat-card">
+            <div class="core-stat-title">{s.label}</div>
+            <div class="core-stat-value">{s.value ?? '데이터 없음'}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</HwLangLayout>
+
+<style>
+  /* KO-only gloss lines without an EN equivalent */
+  .zh-cbu-en {
+    color: var(--hw-text-very-muted);
+    font-size: 0.85rem;
+    margin: 0.1rem 0 0.6rem 0;
+  }
+
+  .zh-cbu-weapon-en {
+    color: var(--hw-text-very-muted);
+    font-size: 0.78rem;
+    font-weight: 400;
+    margin-left: 0.4rem;
+  }
+
+  .zh-cbu-trait-en {
+    color: var(--hw-text-very-muted);
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin-left: 0.35rem;
+  }
+
+  .zh-cbu-skill-en {
+    color: var(--hw-text-very-muted);
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin-left: 0.35rem;
+  }
+</style>

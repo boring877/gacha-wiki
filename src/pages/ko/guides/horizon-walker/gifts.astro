@@ -1,0 +1,207 @@
+---
+// Korean gifts guide: /ko/guides/horizon-walker/gifts/
+// Gift box and gift names/descriptions use the game's official Korean via
+// HW_ZH_ITEMS (EN verbatim fallback when the game has no KO entry); point
+// values are the wiki's data unchanged.
+// Re-skinned onto the EN hw-gifts.css classes for visual parity.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import { GIFT_BOXES, UNIQUE_GIFTS } from '../../../../data/horizon-walker/gifts.js';
+import { HW_ZH_ITEMS } from '../../../../data/horizon-walker/ko/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ko/ui.js';
+import { GiftImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
+import '../../../../styles/games/horizon-walker/hw-gifts.css';
+
+export const prerender = true;
+
+// EN gift/box name -> official KO (Item loc); EN fallback if unmapped
+const giftZhName = name => HW_ZH_ITEMS[name]?.name || name;
+const giftZhDesc = name => HW_ZH_ITEMS[name]?.desc || null;
+---
+
+<HwLangLayout lang="ko" ui={HW_ZH}
+  title="선물과 보상 - 호라이즌 워커 한국어 위키 - GachaWiki"
+  description="호라이즌 워커 선물 데이터베이스: 화려한/고급진/평범한 선물 상자의 전체 내용물, 호감도 포인트 시스템, 여왕의 티아라 획득 경로와 특수 선물을 정리했습니다. 선물 이름과 설명은 모두 게임 공식 한국어에서 인용했습니다."
+  keywords={['호라이즌 워커', '선물', '호감도', '선물 상자']}
+  breadcrumbItems={[
+    { name: '홈', href: '/' },
+    { name: '호라이즌 워커', href: HW_ZH.baseUrl },
+    { name: '선물' },
+  ]}
+>
+  <section class="hw-gift-hero">
+    <h1 class="hw-gift-title">선물과 보상</h1>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-gift-content">
+    <section class="hw-gift-section" id="gift-boxes">
+      <h2 class="hw-section-title">선물 상자</h2>
+
+      <div class="hw-section-content">
+        <p>각종 선물 상자와 내용물 정리입니다. 상자마다 다른 등급과 종류의 선물이 들어 있습니다.</p>
+
+        <div class="hw-info-box">
+          <div class="hw-info-box-title">캐릭터 선물 취향</div>
+          <div class="hw-info-box-content">
+            각 캐릭터가 어떤 선물을 좋아하는지 궁금하신가요? <a href={`${HW_ZH.baseUrl}character-gifts/`} class="hw-link">캐릭터 선물 취향 가이드</a>에서 확인하고 호감도 이득을 극대화하세요.
+          </div>
+        </div>
+      </div>
+
+      <div class="hw-affection-system-info">
+        <div class="system-header">
+          <h3 class="system-title">호감도 포인트 시스템</h3>
+        </div>
+        <div class="system-content">
+          <div class="system-description">
+            <p>선물로 얻는 호감도는 캐릭터의 취향에 따라 늘어납니다:</p>
+          </div>
+          <div class="system-levels">
+            <div class="level-item">
+              <span class="level-name">기본</span>
+              <span class="level-desc">보너스 없음</span>
+            </div>
+            <div class="level-item">
+              <span class="level-name">좋아함</span>
+              <span class="level-desc">+10점</span>
+            </div>
+            <div class="level-item">
+              <span class="level-name">가장 좋아함</span>
+              <span class="level-desc">+20점</span>
+            </div>
+          </div>
+          <div class="system-note">
+            <strong>참고:</strong> 현재 기준 여왕의 티아라는 어떤 캐릭터에게 선물해도 가장 높은 점수(100~120)를 줍니다. 화려한 선물 상자에 들어 있으므로, 호감도를 극대화할 때 우선적으로 선택하세요.
+          </div>
+        </div>
+      </div>
+
+      <div class="hw-gift-box-grid">
+        {GIFT_BOXES.map(box => (
+          <div class="hw-gift-box-card" id={box.id} data-box={box.id}>
+            <div class="hw-gift-box-header">
+              <div class="hw-gift-box-image">
+                <GiftImage
+                  imageName={box.image}
+                  alt={giftZhName(box.name)}
+                  class="gift-box-img"
+                  width={80}
+                  height={80}
+                  loading="lazy"
+                />
+              </div>
+              <div class="hw-gift-box-info">
+                <h3 class="hw-gift-box-name">{giftZhName(box.name)}</h3>
+                <div class="hw-gift-box-tier">
+                  <HWRarityIcon
+                    rarity={box.id === 'brilliant-gift-box' ? 'SS' : box.id === 'luxurious-gift-box' ? 'S' : 'A'}
+                    width={40}
+                    height={20}
+                  />
+                </div>
+                <p class="hw-gift-box-description">{giftZhDesc(box.name) || box.description}</p>
+                <div class="hw-gift-box-stats">
+                  <span class="gift-count">선물 {box.gifts.length}개</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hw-gift-items-grid">
+              {box.gifts.map(gift => (
+                <div class="hw-gift-item" data-rarity={gift.rarity}>
+                  <div class="hw-gift-item-image">
+                    <GiftImage
+                      imageName={gift.image}
+                      alt={giftZhName(gift.name)}
+                      class="gift-item-img"
+                      width={60}
+                      height={60}
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="hw-gift-item-info">
+                    <h4 class="hw-gift-item-name">{giftZhName(gift.name)}</h4>
+                    <HWRarityIcon rarity={gift.rarity} width={36} height={18} />
+                    <div class="hw-gift-points">
+                      <div class="points-levels">
+                        <div class="points-item">
+                          <span class="points-label">기본</span>
+                          <span class="points-value">{gift.points.min}</span>
+                        </div>
+                        <div class="points-item">
+                          <span class="points-label">좋아함</span>
+                          <span class="points-value">{gift.points.min + 10}</span>
+                        </div>
+                        <div class="points-item">
+                          <span class="points-label">가장 좋아함</span>
+                          <span class="points-value">{gift.points.max}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="hw-gift-section" id="unique-gifts">
+      <h2 class="hw-section-title">특별한 및 특수 선물</h2>
+
+      <div class="hw-section-content">
+        <p>한정 이벤트나 기념 행사 기간에만 획득할 수 있는 기념 선물과 특수 선물입니다.</p>
+
+        <div class="hw-info-box">
+          <div class="hw-info-box-title">중요 안내</div>
+          <div class="hw-info-box-content">
+            <strong>스킨도 동일하게 호감도 100을 제공합니다</strong> (EX 등급 선물과 동일). 표준 호감도 보너스도 적용됩니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="hw-gift-items-grid hw-unique-gifts-grid">
+        {UNIQUE_GIFTS.map(gift => (
+          <div class="hw-gift-item hw-unique-gift" data-rarity={gift.rarity}>
+            <div class="hw-gift-item-image">
+              <GiftImage
+                imageName={gift.image}
+                alt={giftZhName(gift.name)}
+                class="gift-item-img"
+                width={60}
+                height={60}
+                loading="lazy"
+              />
+            </div>
+            <div class="hw-gift-item-info">
+              <h4 class="hw-gift-item-name">{giftZhName(gift.name)}</h4>
+              <div class="hw-gift-badges">
+                <HWRarityIcon rarity={gift.rarity} width={36} height={18} />
+                <span class="hw-badge hw-badge-unique">{gift.type}</span>
+              </div>
+              {gift.description && <p class="hw-unique-description">{gift.description}</p>}
+              <div class="hw-gift-points">
+                <div class="points-levels">
+                  <div class="points-item">
+                    <span class="points-label">기본</span>
+                    <span class="points-value">{gift.points.min}</span>
+                  </div>
+                  <div class="points-item">
+                    <span class="points-label">좋아함</span>
+                    <span class="points-value">{gift.points.min + 10}</span>
+                  </div>
+                  <div class="points-item">
+                    <span class="points-label">가장 좋아함</span>
+                    <span class="points-value">{gift.points.max}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</HwLangLayout>

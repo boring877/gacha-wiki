@@ -1,0 +1,219 @@
+---
+// Traditional-Chinese (zh-tw) damage formula guide: /zh-tw/guides/horizon-walker/damage-formula/
+// Same tables/numbers as the EN page from combat-mechanics.js; formulas stay
+// as code, stat names use the game's official Traditional Chinese from HW_ZH_STAT_TYPES.
+// Re-skinned onto the EN hw-guide.css + hw-combat-mechanics.css classes.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import {
+  ATK_TYPES,
+  DEFENSE_MAPPING,
+  DEF_EXAMPLES_POSITIVE,
+  DEF_EXAMPLES_NEGATIVE,
+} from '../../../../data/horizon-walker/combat-mechanics.js';
+import {
+  HW_ZH_NAMES,
+  HW_ZH_STAT_TYPES,
+  HW_ZH_WEAPON_SKILLS,
+} from '../../../../data/horizon-walker/zh-tw/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/zh-tw/ui.js';
+import '../../../../styles/games/horizon-walker/hw-guide.css';
+import '../../../../styles/games/horizon-walker/hw-combat-mechanics.css';
+
+export const prerender = true;
+
+const S = HW_ZH_STAT_TYPES;
+const palekarZh = HW_ZH_NAMES[60] || 'Palekar'; // 帕萊卡
+const coraZh = HW_ZH_NAMES[45] || 'Cora'; // 罪犯 / 科拉
+const verseOfOrdealZh = HW_ZH_WEAPON_SKILLS['Verse of Ordeal']?.name || 'Verse of Ordeal'; // 試煉之文
+
+// ATK_TYPES rows in ZH (official stat names for the ATK/scaling stats)
+const atkRowsZh = {
+  'Melee skills': ['近戰技能', `${S['Melee ATK']}（${S['Strength']}加成）`],
+  'Shooting skills': ['射擊技能', `${S['Ranged ATK']}（${S['Technic']}加成）`],
+  'Arcane / magic skills': ['奧術/魔法技能', `${S['Magic ATK']}（${S['Intelligence']}加成）`],
+};
+
+// DEFENSE_MAPPING damage-type column in ZH; the stat column keeps the game's
+// internal stat key verbatim
+const defenseRowsZh = {
+  'Fire (Heat)': `火焰（Heat）`,
+  'Ice': '冰霜',
+  'Lightning': '雷電',
+  'Poison': '毒素',
+  'Odd (Immaterial)': '無形（Immaterial）',
+  'Hack (Slash), physical only': '斬擊（Slash，僅物理）',
+  'Stab (Pierce), physical only': '穿刺（Pierce，僅物理）',
+  'Blow (Blunt), physical only': '打擊（Blunt，僅物理）',
+};
+
+const negativeNotesZh = {
+  'Palekar [Unstable]': `${palekarZh} [Unstable]`,
+  'Palekar [Unstable] with Evasion scaling': `${palekarZh} [Unstable]（${S['Evade']}加成後）`,
+};
+---
+
+<HwLangLayout lang="zh-tw" ui={HW_ZH}
+  title="傷害公式與防禦 - 地平線行者繁體中文維基 - GachaWiki"
+  description="地平線行者傷害計算公式詳解：攻擊力與防禦的換算、每種傷害類型實際檢查的防禦屬性、防禦倍率的效益遞減，以及防禦降低（負防禦）為何是最強增傷手段。"
+  keywords={['地平線行者', '傷害公式', '防禦', '減防', '戰鬥機制']}
+  breadcrumbItems={[
+    { name: '首頁', href: '/' },
+    { name: '地平線行者', href: HW_ZH.baseUrl },
+    { name: '傷害公式' },
+  ]}
+>
+  <section class="hw-guide-hero">
+    <h1 class="hw-guide-title">傷害公式與防禦</h1>
+    <p class="hw-guide-subtitle">技能如何換算成傷害，以及防禦與減防在公式中的真正作用</p>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-guide-content">
+    <section class="hw-guide-section" id="formula">
+      <h2 class="hw-section-title">核心公式</h2>
+      <div class="hw-section-content">
+        <p>每次技能命中都會經過以下計算管線：</p>
+      </div>
+      <div class="hw-mech-formula">damage = skill% x ATK x defense multiplier x level multiplier x battle ratio</div>
+      <ul class="hw-guide-list">
+        <li><strong>skill%</strong> 是技能的傷害係數（技能頁面上的百分比）。</li>
+        <li><strong>ATK</strong> 是由技能類型決定的攻擊方屬性，見下表。</li>
+        <li><strong>defense multiplier</strong>（防禦倍率）只由目標的某一項防禦屬性決定，見下文。</li>
+        <li><strong>level multiplier</strong>（等級倍率）即等級差規則，見等級差頁面。</li>
+        <li><strong>battle ratio</strong>（戰鬥全域係數）按每場戰鬥給定，通常為 1。</li>
+      </ul>
+      <div class="hw-section-content">
+        <p>暴擊、弱點攻擊與增益效果在這個基礎值之上繼續乘算。</p>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="atk">
+      <h2 class="hw-section-title">使用哪個攻擊力</h2>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="技能類型與攻擊屬性對照">
+          <thead>
+            <tr>
+              <th scope="col">技能類型</th>
+              <th scope="col">攻擊屬性</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ATK_TYPES.map(row => (
+              <tr>
+                <td>{atkRowsZh[row.skill]?.[0] || row.skill}</td>
+                <td>{atkRowsZh[row.skill]?.[1] || row.stat}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="defense-stat">
+      <h2 class="hw-section-title">使用哪個防禦</h2>
+      <div class="hw-section-content">
+        <p>
+          這是最容易搞錯的部分。技能的<strong>屬性決定了要檢查的防禦屬性，並且會完全替代物理防禦</strong>。{coraZh}的火焰傷害永遠不會碰斬擊防禦：它對照的是目標的火焰抗性。
+        </p>
+      </div>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="傷害類型與防禦屬性對照">
+          <thead>
+            <tr>
+              <th scope="col">傷害類型</th>
+              <th scope="col">檢查的防禦屬性（遊戲內數據名）</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DEFENSE_MAPPING.map(row => (
+              <tr>
+                <td>{defenseRowsZh[row.damage] || row.damage}</td>
+                <td><code>{row.stat}</code></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="hw-info-box">
+        <div class="hw-info-box-title">實用結論</div>
+        <div class="hw-info-box-content">
+          物理防禦很高但屬性抗性較低的 Boss，會受到屬性攻擊手遠更多的傷害。被牆 Boss 卡住時，先看它哪項抗性最低再攜帶對應屬性，效果可能比堆攻擊力更大。
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="defense-multiplier">
+      <h2 class="hw-section-title">防禦倍率</h2>
+      <div class="hw-section-content">
+        <p>設匹配到的防禦值為 D，倍率公式為 1 - D / (D + 1000)：</p>
+      </div>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="防禦值與受到傷害對照">
+          <thead>
+            <tr>
+              <th scope="col">防禦值</th>
+              <th scope="col">受到傷害</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DEF_EXAMPLES_POSITIVE.map(row => (
+              <tr>
+                <td>{row.def}</td>
+                <td>{row.taken}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="hw-section-content">
+        <p>
+          防禦存在效益遞減：最初的 250 點防禦能減少 20% 所受傷害，而從 3000 提到 9000 只能再減少 15%。防禦永遠無法完全抵銷傷害。
+        </p>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="negative-def">
+      <h2 class="hw-section-title">負防禦：防禦降低真正強力的原因</h2>
+      <div class="hw-section-content">
+        <p>
+          當防禦降低把目標防禦壓到<strong>零以下</strong>時，遊戲會切換為另一個公式：1 + |DEF| / 1000。這是<strong>沒有上限</strong>的固定增傷：
+        </p>
+      </div>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="負防禦值與受到傷害對照">
+          <thead>
+            <tr>
+              <th scope="col">防禦值</th>
+              <th scope="col">受到傷害</th>
+              <th scope="col">備註</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DEF_EXAMPLES_NEGATIVE.map(row => (
+              <tr class="hw-mech-highlight">
+                <td>{row.def}</td>
+                <td>{row.taken}</td>
+                <td>{negativeNotesZh[row.note] || row.note || ''}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="hw-example-box">
+        <div class="hw-example-title">為什麼{palekarZh}能打出秒殺</div>
+        <div class="hw-example-content">
+          她的{verseOfOrdealZh}帶來
+        </div>
+      </div>
+    </section>
+  </div>
+</HwLangLayout>
+
+<style>
+  .hw-mech-table code {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--hw-primary-warm);
+  }
+</style>

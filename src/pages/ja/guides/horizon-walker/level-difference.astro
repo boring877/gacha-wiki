@@ -1,0 +1,144 @@
+---
+// Japanese level difference guide: /ja/guides/horizon-walker/level-difference/
+// Same LEVEL_PENALTY table and highlight rows as the EN page (numbers straight
+// from combat-mechanics.js); prose translated, formula kept as code.
+// Re-skinned onto the EN hw-guide.css + hw-combat-mechanics.css classes.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import { LEVEL_PENALTY } from '../../../../data/horizon-walker/combat-mechanics.js';
+import { HW_ZH_NAMES } from '../../../../data/horizon-walker/ja/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ja/ui.js';
+import '../../../../styles/games/horizon-walker/hw-guide.css';
+import '../../../../styles/games/horizon-walker/hw-combat-mechanics.css';
+
+export const prerender = true;
+
+const breadcrumbs = [{ name: 'ホーム', href: '/' }, { name: 'ホライゾン・ウォーカー', href: HW_ZH.baseUrl }, { name: 'レベル差' }];
+
+// Rows worth highlighting in the table (same gaps as the EN page)
+const highlight = new Set([1, 5, 10, 16, 20, 30]);
+
+const coraJa = HW_ZH_NAMES[45] || 'Cora'; // 囚人/コラ
+
+function pct(v) {
+  return `${parseFloat((v / 100).toFixed(2))}%`;
+}
+---
+
+<HwLangLayout lang="ja" ui={HW_ZH}
+  title="レベル差とダメージ - ホライゾン・ウォーカー日本語ウィキ - GachaWiki"
+  description="ホライゾン・ウォーカーのレベル差ダメージガイド：低レベル時のペナルティ完全表、高レベル時のダメージボーナス（1 レベルあたり 8%）、最低ダメージの規則まで解説。レベル差はほかのほぼすべての要素よりダメージに影響します。"
+  keywords={['ホライゾン・ウォーカー', 'レベル差', 'ダメージペナルティ', 'レベル帯補正', '戦闘システム']}
+  breadcrumbItems={breadcrumbs}
+>
+  <section class="hw-guide-hero">
+    <h1 class="hw-guide-title">レベル差とダメージ</h1>
+    <p class="hw-guide-subtitle">目標より何レベル高いか低いかは、ほかのほぼすべての単一要素よりもダメージに影響します</p>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-guide-content">
+    <section class="hw-guide-section" id="rules">
+      <h2 class="hw-section-title">ルール</h2>
+      <div class="hw-section-content">
+        <p>ヒットごとに攻撃側と目標のレベルが比較され、ダメージに乗算されます：</p>
+      </div>
+      <ul class="hw-guide-list">
+        <li>攻撃側のレベルが目標<strong>より低い</strong>場合：ダメージに下のペナルティ表の倍率が掛かります。5 レベル低いだけでダメージは 40% 減少し、16 レベル低いと約 10% しか通りません。</li>
+        <li>攻撃側のレベルが目標<strong>より高い</strong>場合：ダメージに 1 + 1 レベルあたり 8% のボーナスが掛かります。10 レベル高ければ 1.8 倍で、上限はありません。</li>
+        <li>同じレベルなら変化なし、100% のダメージです。</li>
+        <li>レベルペナルティのみによってダメージが 1 未満になることはありません。</li>
+      </ul>
+      <div class="hw-info-box">
+        <div class="hw-info-box-title">なぜ重要なのか</div>
+        <div class="hw-info-box-content">
+          ボスより 5 レベル低いだけで失うダメージは、大半のバフで取り戻せる量を超えます。深刻にレベルが足りない部隊は一桁台のパーセントしかダメージを与えられません。逆に言えば、レベルによる優位は紛れもない戦力源です。詰まったボスのために数レベル上げる方が、装備を付け替えるより効果的なことも多いでしょう。
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="table">
+      <h2 class="hw-section-title">低レベルペナルティ表</h2>
+      <div class="hw-section-content">
+        <p>ゲームデータからそのまま抜き出した、レベル差ごとの正確な倍率です。ハイライト行はプレイヤーが特に気にすることの多いレベル差です。</p>
+      </div>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="低レベル時のレベル差によるダメージ倍率">
+          <thead>
+            <tr>
+              <th scope="col">目標より低いレベル</th>
+              <th scope="col">与ダメージ</th>
+            </tr>
+          </thead>
+          <tbody>
+            {LEVEL_PENALTY.map(row => (
+              <tr class={highlight.has(row.diff) ? 'hw-mech-highlight' : ''}>
+                <td>{row.diff}</td>
+                <td>{pct(row.value)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="hw-warning-box">
+        <div class="hw-warning-content">
+          曲線の出だしは緩やかで、最初の 6 レベルは 1 レベルあたり 8% ですが、その後ペナルティは急激に重くなります。15 レベル差を超えると、さらに 1 レベル低くなるごとに残りダメージの約 15% を失います。
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="overlevel">
+      <h2 class="hw-section-title">高レベルボーナス</h2>
+      <div class="hw-section-content">
+        <p>レベルが目標より高い場合は、表も上限もない線形のボーナスです：</p>
+      </div>
+      <div class="hw-mech-formula">1 + 0.08 x (your level minus target level)</div>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="高レベル時のレベル差によるダメージ倍率">
+          <thead>
+            <tr>
+              <th scope="col">目標より高いレベル</th>
+              <th scope="col">与ダメージ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>0（同レベル）</td><td>100%</td></tr>
+            <tr><td>5</td><td>140%</td></tr>
+            <tr><td>10</td><td>180%</td></tr>
+            <tr><td>15</td><td>220%</td></tr>
+            <tr><td>25</td><td>300%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="hw-example-box">
+        <div class="hw-example-title">例</div>
+        <div class="hw-example-content">
+          レベル 60 の{coraJa}がレベル 55 のイベント雑魚を攻撃すると、その他の補正を適用する前の時点で既に 1.4 倍のダメージになります。同じキャラでもレベル 50 でレベル 60 のストーリーボスと戦うと、与ダメージは 27.14% しか通りません。
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="notes">
+      <h2 class="hw-section-title">補足</h2>
+      <ul class="hw-guide-list">
+        <li>レベル倍率はメインのダメージ計算の中で適用され、防御式と合わせて計算されます（<a href={`${HW_ZH.baseUrl}damage-formula/`} class="zh-link">ダメージ計算式のページ</a>を参照）。</li>
+        <li>クリティカル、弱点攻撃、バフ効果はレベル判定の結果にさらに乗算されます。</li>
+        <li>レベル判定を完全にスキップして素のダメージをそのまま使う特殊なゲームモードもあり、そのため固定強度のイベントモードが突然簡単に感じることがあります。</li>
+      </ul>
+    </section>
+  </div>
+</HwLangLayout>
+
+<style>
+  /* Localize the EN pseudo-element label */
+  .hw-warning-box::before {
+    content: '⚠️ 注意';
+  }
+
+  /* EN guide links are plain text color inside list items */
+  .zh-link {
+    color: var(--hw-primary-warm);
+    font-weight: 600;
+    text-decoration: none;
+  }
+</style>

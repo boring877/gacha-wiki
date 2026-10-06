@@ -1,0 +1,501 @@
+---
+// Korean character gift preferences page: /ko/guides/horizon-walker/
+// character-gifts/. Character names via HW_ZH_NAMES (roster id), gift names
+// via HW_ZH_ITEMS, level-5 bonus stat types via HW_ZH_STAT_TYPES: all the
+// game's official Korean with EN fallback. Point math is the wiki's data unchanged.
+// Re-skinned onto the EN hw-character-gifts.css classes for visual parity.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import { CHARACTER_GIFT_PREFERENCES } from '../../../../data/horizon-walker/character-gifts.js';
+import { GIFT_BOXES } from '../../../../data/horizon-walker/gifts.js';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../data/horizon-walker/characters.js';
+import {
+  HW_ZH_NAMES,
+  HW_ZH_ITEMS,
+  HW_ZH_STAT_TYPES,
+} from '../../../../data/horizon-walker/ko/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ko/ui.js';
+import { GiftImage, CharacterImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
+import '../../../../styles/games/horizon-walker/hw-character-gifts.css';
+
+export const prerender = true;
+
+// Gift -> gift box source mapping (same logic as the EN page)
+const giftToBoxMapping = {};
+const giftNameToBoxMapping = {};
+GIFT_BOXES.forEach(box => {
+  box.gifts?.forEach(gift => {
+    if (!giftToBoxMapping[gift.id]) giftToBoxMapping[gift.id] = [];
+    giftToBoxMapping[gift.id].push({ id: box.id, name: box.name, image: box.image });
+    if (!giftNameToBoxMapping[gift.name]) giftNameToBoxMapping[gift.name] = [];
+    if (!giftNameToBoxMapping[gift.name].find(b => b.id === box.id)) {
+      giftNameToBoxMapping[gift.name].push({ id: box.id, name: box.name, image: box.image });
+    }
+  });
+});
+
+// EN gift/box name -> official KO (Item loc); EN fallback if unmapped
+const giftZhName = name => HW_ZH_ITEMS[name]?.name || name;
+
+// Character KO name: resolve the roster entry (by slug or name) -> HW_ZH_NAMES
+const rosterBySlugOrName = new Map();
+for (const c of HORIZON_WALKER_CHARACTERS) {
+  if (c.slug) rosterBySlugOrName.set(c.slug, c);
+  rosterBySlugOrName.set(c.name, c);
+}
+const charZhName = g => {
+  const rosterChar = rosterBySlugOrName.get(g.id) || rosterBySlugOrName.get(g.name);
+  return (rosterChar && HW_ZH_NAMES[rosterChar.id]) || g.name;
+};
+
+// Level-5 bonus stat type: official KO stat name ('Evasion' aliases onto the
+// game's 'Evade' entry; 'Special' is wiki shorthand)
+const bonusTypeZh = t =>
+  HW_ZH_STAT_TYPES[t] || (t === 'Evasion' ? HW_ZH_STAT_TYPES['Evade'] : t === 'Special' ? '특수' : t);
+
+// The three wiki "Special" bonus values, restated with official KO stat names
+const bonusValueZh = {
+  '10% Evade Bonus': () => `${HW_ZH_STAT_TYPES['Evade']} 10% 보너스`,
+  '5% Melee ATK Bonus + 5% Magic ATK Bonus': () =>
+    `${HW_ZH_STAT_TYPES['Melee ATK']} 5% 보너스 + ${HW_ZH_STAT_TYPES['Magic ATK']} 5% 보너스`,
+  '8% Heat Boost Increase': () => `${HW_ZH_STAT_TYPES['Heat Boost']} 8% 증가`,
+};
+const bonusValue = v => (bonusValueZh[v] ? bonusValueZh[v]() : v);
+
+const hasReleasedInfo = c =>
+  (c.favorites && c.favorites.length > 0) || (c.likes && c.likes.length > 0);
+
+// Released info first, then by EN name (same ordering as the EN page)
+const sortedCharacters = [...CHARACTER_GIFT_PREFERENCES].sort((a, b) => {
+  if (hasReleasedInfo(a) && !hasReleasedInfo(b)) return -1;
+  if (!hasReleasedInfo(a) && hasReleasedInfo(b)) return 1;
+  return a.name.localeCompare(b.name);
+});
+
+// Gifts needed to reach level 5 (2000 points)
+const giftsNeeded = gift => Math.ceil(2000 / gift.totalPoints);
+
+const hasQueensTiara = c =>
+  c.favorites?.some(g => g.id === 'queens-tiara') || c.likes?.some(g => g.id === 'queens-tiara');
+
+const queensTiaraGift = {
+  id: 'queens-tiara',
+  name: "Queen's Tiara",
+  rarity: 'EX',
+  image: 'Queen_tiara.jpg',
+  totalPoints: 100,
+};
+
+const boxesFor = gift => {
+  const all = [...(giftToBoxMapping[gift.id] || [])];
+  (giftNameToBoxMapping[gift.name] || []).forEach(nb => {
+    if (!all.find(b => b.id === nb.id)) all.push(nb);
+  });
+  return all;
+};
+---
+
+<HwLangLayout lang="ko" ui={HW_ZH}
+  title="캐릭터 선물 취향 - 호라이즌 워커 한국어 위키 - GachaWiki"
+  description="호라이즌 워커 전 캐릭터 선물 취향 가이드: 각 캐릭터가 가장 좋아하는 선물과 좋아하는 선물, 호감도 레벨 5 보너스, 여왕의 티아라 획득 경로와 호감도 작성 팁을 정리했습니다. 캐릭터명과 선물명은 모두 게임 공식 한국어입니다."
+  keywords={['호라이즌 워커', '선물', '호감도', '캐릭터 선물 취향']}
+  breadcrumbItems={[
+    { name: '홈', href: '/' },
+    { name: '호라이즌 워커', href: HW_ZH.baseUrl },
+    { name: '캐릭터 선물 취향' },
+  ]}
+>
+  <section class="hw-character-gift-hero">
+    <h1 class="hw-character-gift-title">캐릭터 선물 취향</h1>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-character-gift-content">
+    <section class="hw-gift-section" id="character-gifts">
+      <h2 class="hw-section-title">선물 취향 가이드</h2>
+
+      <div class="hw-section-content">
+        <p>모든 캐릭터에는 저마다의 선물 취향이 있어 호감도 보너스에 영향을 줍니다. 이 가이드로 좋아하는 캐릭터에게 가장 잘 맞는 선물을 골라 보세요.</p>
+
+        <div class="hw-how-to-gift">
+          <p>
+            <span class="hw-how-to-label">선물 주는 방법: </span>휴대폰에서 <span class="hw-highlight-action">통화</span>로 캐릭터를 호출한 뒤, 4개의 선택지 중 <span class="hw-highlight-action">선물</span>을 고르면 선물을 줄 수 있습니다.
+          </p>
+
+          <div class="hw-warning-box">
+            <h4 class="hw-warning-title">중요: 알려진 문제</h4>
+            <p class="hw-warning-text">
+              가끔 캐릭터와 대화한 뒤에도 호감도 퀘스트를 이어주는 (!) 표시가 나타나지 않을 때가 있습니다. 이 문제를 겪으면 게임을 완전히 종료한 뒤 다시 실행하면 해결됩니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="hw-tip-box">
+          <h3>추천: 화려한 선물 상자</h3>
+          <p>
+            여왕의 티아라는 어떤 캐릭터에게 선물해도 가장 높은 점수(100~120)를 줍니다. 화려한 선물 상자에 들어 있으므로, 호감도를 극대화할 때 우선적으로 선택하세요.
+          </p>
+        </div>
+
+        <div class="hw-info-section">
+          <div class="hw-info-item">
+            <h4>호감도 취향</h4>
+            <p><span class="hw-label">가장 좋아하는 선물: </span>기본 점수 + <span class="hw-highlight">20 보너스</span></p>
+            <p><span class="hw-label">좋아하는 선물: </span>기본 점수 + <span class="hw-highlight">10 보너스</span></p>
+            <p><span class="hw-label">취향 없음: </span>기본 점수만</p>
+          </div>
+
+          <div class="hw-info-item">
+            <h4>호감도 목표</h4>
+            <p>캐릭터 호감도는 총 <span class="hw-highlight">5개 레벨</span>입니다.</p>
+            <p><span class="hw-label">아무 캐릭터나 만렙까지 총 </span><span class="hw-highlight">2000점</span>이 필요합니다.</p>
+          </div>
+
+          <div class="hw-info-item">
+            <h4>보상</h4>
+            <div class="hw-rewards-content">
+              <div class="hw-reward-item">
+                <span class="hw-label">레벨업 보상: </span>
+                <div class="hw-reward-icons">
+                  <div class="hw-reward-icon-item">
+                    <GiftImage
+                      imageName="Gold.jpg"
+                      alt="Gold"
+                      class="hw-reward-icon"
+                      width={32}
+                      height={32}
+                      loading="lazy"
+                    />
+                    <span class="hw-reward-name">Gold</span>
+                  </div>
+                  <div class="hw-reward-icon-item">
+                    <GiftImage
+                      imageName="Extercium.jpg"
+                      alt="Extercium"
+                      class="hw-reward-icon"
+                      width={32}
+                      height={32}
+                      loading="lazy"
+                    />
+                    <span class="hw-reward-name">Extercium</span>
+                  </div>
+                </div>
+              </div>
+              <p>
+                <span class="hw-label">특수 해금: </span><span class="hw-highlight">Message Room</span>, <span class="hw-highlight">Jacuzzi Bathroom</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hw-search-section">
+        <h3 class="hw-search-title">캐릭터 검색</h3>
+        <div class="hw-character-search">
+          <input
+            type="text"
+            id="zh-cg-search"
+            class="hw-search-input"
+            placeholder="캐릭터명 입력 (한국어 또는 영어)"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+
+      <div class="hw-rarity-filter">
+        <h3 class="hw-filter-title">등급별 필터</h3>
+        <div class="hw-rarity-buttons" id="zh-rarity-row">
+          <button class="hw-rarity-btn active" data-rarity="">전체</button>
+          <button class="hw-rarity-btn" data-rarity="EX">EX</button>
+          <button class="hw-rarity-btn" data-rarity="SS">SS</button>
+          <button class="hw-rarity-btn" data-rarity="S">S</button>
+          <button class="hw-rarity-btn" data-rarity="A">A</button>
+          <button class="hw-rarity-btn" data-rarity="B">B</button>
+        </div>
+      </div>
+
+      <p class="hw-no-preferences" id="zh-empty" hidden>필터 조건에 맞는 캐릭터가 없습니다.</p>
+
+      <div class="hw-character-grid" id="zh-char-grid">
+        {sortedCharacters.map(character => {
+          const zhName = charZhName(character);
+          return (
+            <div
+              class="hw-character-card"
+              data-character={character.id}
+              data-search={`${zhName} ${character.name}`.toLowerCase()}
+              data-rarity={character.rarity}
+            >
+              <div class="hw-character-header">
+                <div class="hw-character-image">
+                  <CharacterImage
+                    imageName={character.image.split('/').pop() || character.image}
+                    alt={zhName}
+                    class="character-img"
+                    width={100}
+                    height={100}
+                    loading="lazy"
+                  />
+                </div>
+                <div class="hw-character-info">
+                  <h3 class="hw-character-name">{zhName}</h3>
+                  <p class="zh-char-en">{character.name}</p>
+                  <div class="hw-character-rarity">
+                    <HWRarityIcon rarity={character.rarity} width={44} height={22} />
+                  </div>
+                </div>
+              </div>
+
+              <div class="hw-gift-preferences">
+                {character.level5Bonus && (
+                  <div class="hw-level5-bonus-section">
+                    <h4 class="hw-level5-bonus-title">호감도 레벨 5 보너스</h4>
+                    <div class="hw-level5-bonus-content">
+                      <div class="hw-level5-bonus-item">
+                        <span class="hw-bonus-type">{bonusTypeZh(character.level5Bonus.type)}</span>
+                        <span class="hw-bonus-value">{bonusValue(character.level5Bonus.value)}</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {character.favorites && character.favorites.length > 0 && (
+                  <div class="hw-preference-section hw-favorites-section">
+                    <h4 class="hw-preference-title hw-favorites-title">가장 좋아하는 선물 (+20점)</h4>
+                    {character.favorites.map(gift => (
+                      <div class="hw-favorite-item">
+                        <div class="hw-favorite-gift-image">
+                          <GiftImage
+                            imageName={gift.image.split('/').pop() || gift.image}
+                            alt={giftZhName(gift.name)}
+                            class="gift-favorite-img"
+                            width={70}
+                            height={70}
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="hw-favorite-details">
+                          <div class="hw-favorite-header">
+                            <div class="hw-favorite-title-group">
+                              <h5 class="hw-favorite-name">{giftZhName(gift.name)}</h5>
+                              <div class="hw-favorite-badges">
+                                <HWRarityIcon rarity={gift.rarity} width={40} height={20} />
+                                <span class="hw-badge hw-badge-favorites">최애</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="hw-favorite-stats">
+                            <div class="hw-favorite-stat">
+                              <span class="hw-stat-label">총 호감도: </span>
+                              <span class="hw-stat-value hw-stat-points">{gift.totalPoints}</span>
+                            </div>
+                            <div class="hw-favorite-stat">
+                              <span class="hw-stat-label">레벨 5까지 필요: </span>
+                              <span class="hw-stat-value">{giftsNeeded(gift)}개</span>
+                            </div>
+                          </div>
+                          {boxesFor(gift).length > 0 && (
+                            <div class="hw-gift-sources">
+                              <h6 class="hw-sources-title">획득처</h6>
+                              {boxesFor(gift).map(box => (
+                                <div class="hw-source-box">
+                                  <GiftImage
+                                    imageName={box.image.split('/').pop() || box.image}
+                                    alt={giftZhName(box.name)}
+                                    class="hw-source-icon"
+                                    width={40}
+                                    height={40}
+                                    loading="lazy"
+                                  />
+                                  <span class="hw-source-name">{giftZhName(box.name)}</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {character.likes && character.likes.length > 0 && (
+                  <div class="hw-preference-section hw-likes-section" style="margin-top: 1rem;">
+                    <h4 class="hw-preference-title hw-likes-title">좋아하는 선물 (+10점)</h4>
+                    {character.likes.map(gift => (
+                      <div class="hw-like-item">
+                        <div class="hw-like-gift-image">
+                          <GiftImage
+                            imageName={gift.image.split('/').pop() || gift.image}
+                            alt={giftZhName(gift.name)}
+                            class="gift-like-img"
+                            width={70}
+                            height={70}
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="hw-like-details">
+                          <div class="hw-like-header">
+                            <div class="hw-like-title-group">
+                              <h5 class="hw-like-name">{giftZhName(gift.name)}</h5>
+                              <div class="hw-like-badges">
+                                <HWRarityIcon rarity={gift.rarity} width={40} height={20} />
+                                <span class="hw-badge hw-badge-likes">좋아함</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="hw-like-stats">
+                            <div class="hw-like-stat">
+                              <span class="hw-stat-label">총 호감도: </span>
+                              <span class="hw-stat-value hw-stat-points">{gift.totalPoints}</span>
+                            </div>
+                            <div class="hw-like-stat">
+                              <span class="hw-stat-label">레벨 5까지 필요: </span>
+                              <span class="hw-stat-value">{giftsNeeded(gift)}개</span>
+                            </div>
+                          </div>
+                          {boxesFor(gift).length > 0 && (
+                            <div class="hw-gift-sources">
+                              <h6 class="hw-sources-title">획득처</h6>
+                              {boxesFor(gift).map(box => (
+                                <div class="hw-source-box">
+                                  <GiftImage
+                                    imageName={box.image.split('/').pop() || box.image}
+                                    alt={giftZhName(box.name)}
+                                    class="hw-source-icon"
+                                    width={40}
+                                    height={40}
+                                    loading="lazy"
+                                  />
+                                  <span class="hw-source-name">{giftZhName(box.name)}</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {!hasQueensTiara(character) && hasReleasedInfo(character) && (
+                  <div class="hw-preference-section hw-alternative-section" style="margin-top: 1.5rem;">
+                    <h4 class="hw-preference-title hw-alternative-title">고가치 대안 선택지</h4>
+                    <div class="hw-alternative-content">
+                      <div class="hw-alternative-item">
+                        <div class="hw-alternative-gift-image">
+                          <GiftImage
+                            imageName={queensTiaraGift.image}
+                            alt={giftZhName(queensTiaraGift.name)}
+                            class="gift-alternative-img"
+                            width={70}
+                            height={70}
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="hw-alternative-details">
+                          <div class="hw-alternative-header">
+                            <div class="hw-alternative-title-group">
+                              <h5 class="hw-alternative-name">{giftZhName(queensTiaraGift.name)}</h5>
+                              <div class="hw-alternative-badges">
+                                <HWRarityIcon rarity={queensTiaraGift.rarity} width={40} height={20} />
+                                <span class="hw-badge hw-badge-value">고점수</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="hw-alternative-stats">
+                            <div class="hw-alternative-stat">
+                              <span class="hw-stat-label">총 호감도: </span>
+                              <span class="hw-stat-value hw-stat-points">{queensTiaraGift.totalPoints}</span>
+                            </div>
+                            <div class="hw-alternative-stat">
+                              <span class="hw-stat-label">레벨 5까지 필요: </span>
+                              <span class="hw-stat-value">{giftsNeeded(queensTiaraGift)}개</span>
+                            </div>
+                          </div>
+                          {boxesFor(queensTiaraGift).length > 0 && (
+                            <div class="hw-gift-sources">
+                              <h6 class="hw-sources-title">획득처</h6>
+                              {boxesFor(queensTiaraGift).map(box => (
+                                <div class="hw-source-box">
+                                  <GiftImage
+                                    imageName={box.image.split('/').pop() || box.image}
+                                    alt={giftZhName(box.name)}
+                                    class="hw-source-icon"
+                                    width={40}
+                                    height={40}
+                                    loading="lazy"
+                                  />
+                                  <span class="hw-source-name">{giftZhName(box.name)}</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {!hasReleasedInfo(character) && (
+                  <div class="hw-no-preferences">
+                    <strong>아직 미공개</strong>: 이 캐릭터의 선물 취향은 아직 공개되지 않았습니다.
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  </div>
+</HwLangLayout>
+
+<script>
+  function initZhCgFilters() {
+    const search = document.getElementById('zh-cg-search');
+    const grid = document.getElementById('zh-char-grid');
+    const empty = document.getElementById('zh-empty');
+    const cards = Array.from(grid.querySelectorAll('.hw-character-card'));
+    let rarity = '';
+
+    const apply = () => {
+      const q = (search.value || '').trim().toLowerCase();
+      let shown = 0;
+      for (const card of cards) {
+        const okSearch = !q || (card.dataset.search || '').includes(q);
+        const okRarity = !rarity || card.dataset.rarity === rarity;
+        const visible = okSearch && okRarity;
+        card.style.display = visible ? '' : 'none';
+        if (visible) shown++;
+      }
+      empty.hidden = shown > 0;
+    };
+
+    search.addEventListener('input', apply);
+
+    const row = document.getElementById('zh-rarity-row');
+    row.addEventListener('click', e => {
+      const btn = e.target.closest('.hw-rarity-btn');
+      if (!btn) return;
+      row.querySelectorAll('.hw-rarity-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      rarity = btn.dataset.rarity || '';
+      apply();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initZhCgFilters);
+  } else {
+    initZhCgFilters();
+  }
+</script>
+
+<style>
+  /* KO-only: EN gloss under the Korean character name */
+  .zh-char-en {
+    font-size: 0.75rem;
+    color: var(--hw-text-muted);
+    margin: 0 0 0.35rem 0;
+  }
+</style>

@@ -1,0 +1,130 @@
+---
+// Korean general-traits database: /ko/guides/horizon-walker/traits/
+// All trait names and stat lines use the game's official Korean;
+// category headings are wiki editorial labels written for the ko wiki.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import { hwTraits, totalTraits } from '../../../../data/horizon-walker/traits.js';
+import { HW_ZH_TRAIT_NAMES, HW_ZH_STAT_TYPES } from '../../../../data/horizon-walker/ko/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ko/ui.js';
+import '../../../../styles/games/horizon-walker/hw-traits.css';
+
+export const prerender = true;
+
+// Wiki editorial category headings (EN data key -> ko label)
+const CATEGORY_ZH = {
+  'Health & Vitality': '생명력과 활력',
+  'HP Penalties': '생명력 대가',
+  'Melee Attack': '근접 공격',
+  'Ranged Attack': '사격 공격',
+  'Magic Attack': '마법 공격',
+  Speed: '속도',
+  Accuracy: '적중',
+  Critical: '치명타',
+  Evasion: '회피',
+  Defense: '방어',
+  'Specialized Defense': '특화 방어',
+  'Elemental Defense': '속성 방어',
+  'Attack Boosts': '공격 유형 강화',
+  'Elemental Boosts': '속성 강화',
+  'Multi-Elemental': '다중 속성',
+  'AP & Starting': '행동력과 전투 시작',
+  'AP Recovery': '행동 회복력',
+  'Aggro Management': '어그로 조정',
+  'Knockback Resistance': '밀림 저항',
+  'Special Defense': '특수 방어',
+};
+
+// wiki EN stat spellings that point at the same official stat label
+const STAT_ALIASES = {
+  ACC: 'Accuracy',
+  Evasion: 'Evade',
+};
+
+const statLabelZh = label => {
+  const key = STAT_ALIASES[label] || label;
+  return HW_ZH_STAT_TYPES[key] || label;
+};
+
+// 'Max HP: +3%' -> '최대 생명력: +3%'; unmapped labels keep the EN line verbatim
+const effectZh = line => {
+  const idx = line.indexOf(': ');
+  if (idx < 1) return line;
+  const label = line.slice(0, idx);
+  const zh = statLabelZh(label.trim());
+  if (zh === label.trim()) return line;
+  return `${zh}: ${line.slice(idx + 1).trim()}`;
+};
+
+const traitNameZh = name => HW_ZH_TRAIT_NAMES[name] || name;
+
+const categoryNames = Object.keys(hwTraits).sort();
+
+const createAnchorId = text => text.toLowerCase().replace(/[^a-z0-9]/g, '-');
+---
+
+<HwLangLayout lang="ko" ui={HW_ZH}
+  title="특성 데이터베이스 - 호라이즌 워커 한국어 위키 - GachaWiki"
+  description={`호라이즌 워커 전체 ${totalTraits}종 일반 특성 데이터베이스: 특성명과 스탯 증감 효과는 모두 게임 공식 한국어이며, 기능별로 분류해 정리했습니다.`}
+  keywords={['호라이즌 워커', '특성', '일반 특성', '공략']}
+  pageTitle="특성"
+  breadcrumbItems={[
+    { name: '홈', href: '/' },
+    { name: '호라이즌 워커', href: HW_ZH.baseUrl },
+    { name: '특성' },
+  ]}
+>
+  <div class="hw-traits-container">
+    <div class="hw-traits-header">
+      <h1 class="hw-traits-title">일반 특성</h1>
+      <p class="hw-traits-subtitle">전 캐릭터 공통 특성과 효과 정리</p>
+      <p class="hw-traits-total">총 {totalTraits}종 특성</p>
+    </div>
+
+    <nav class="hw-traits-nav" role="navigation" aria-label="분류 바로가기">
+      <h2 class="hw-traits-nav-title">분류 바로가기:</h2>
+      <div class="hw-traits-nav-links">
+        {
+          categoryNames.map(category => {
+            const categoryId = createAnchorId(category);
+            return (
+              <a href={`#${categoryId}`} class="hw-traits-nav-link">
+                {CATEGORY_ZH[category] || category}
+              </a>
+            );
+          })
+        }
+      </div>
+    </nav>
+
+    {
+      categoryNames.map(categoryName => {
+        const traitsInCategory = hwTraits[categoryName];
+        if (!traitsInCategory || traitsInCategory.length === 0) return null;
+
+        const categoryId = createAnchorId(categoryName);
+        const traitCount = traitsInCategory.length;
+
+        return (
+          <section class="hw-traits-section" id={categoryId}>
+            <div class="hw-traits-category-header">
+              <h2 class="hw-traits-category-title">{CATEGORY_ZH[categoryName] || categoryName}</h2>
+              <span class="hw-traits-category-count">({traitCount}종)</span>
+            </div>
+            <div class="hw-traits-grid">
+              {traitsInCategory.map(trait => (
+                <div class="hw-trait-card">
+                  <h3 class="hw-trait-name">{traitNameZh(trait.name)}</h3>
+                  <ul class="hw-trait-effects">
+                    {trait.effects.map(effect => (
+                      <li class="hw-trait-effect">{effectZh(effect)}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        );
+      })
+    }
+  </div>
+</HwLangLayout>

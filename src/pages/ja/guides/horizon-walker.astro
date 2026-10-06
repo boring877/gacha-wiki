@@ -1,0 +1,216 @@
+---
+// Japanese landing page for the Horizon Walker wiki: /ja/guides/horizon-walker/
+// Reuses the EN landing's classes (hw-about-section / hw-resources-section from
+// hw-landing-page.css) so the look is identical; labels are Japanese and the
+// resource grid mirrors the EN categoryGroups with /ja/ URLs. Intro copy is
+// written for this wiki; game terms (人神/親衛/亀裂/聖痕/特性) are the
+// game's own official Japanese wording.
+import HwLangLayout from '../../../layouts/lang/HwLangLayout.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
+import DiscordPromo from '../../../components/DiscordPromo.astro';
+import HWGuideIcon from '../../../components/horizon-walker/HWGuideIcon.astro';
+import { horizonWalkerConfig } from '../../../data/horizon-walker/horizon-walker.js';
+import { HW_ZH } from '../../../data/horizon-walker/ja/ui.js';
+
+const { gameInfo } = horizonWalkerConfig;
+const hasPlatforms = gameInfo.platforms && gameInfo.platforms.length > 0;
+
+// Japanese titles for the EN guide ids (icons resolve by id, links go to /ja/)
+const GUIDE_JA = {
+  characters: 'キャラデータベース',
+  'tier-list': '評価一覧',
+  builds: 'おすすめ編成',
+  'community-builds': 'コミュニティ編成',
+  mercenaries: '傭兵',
+  weapons: '武器',
+  stigmas: '聖痕',
+  'ap-guide': '行動力ガイド',
+  traits: '特性',
+  demi: '半神昇格',
+  'stigma-sub-stats': '聖痕サブ効果',
+  'story-gallery': 'ストーリーギャラリー',
+  gifts: 'プレゼント',
+  'character-gifts': 'キャラの好み',
+  clock: 'クロック',
+  'redeem-codes': '引換コード',
+  banners: 'ガチャ履歴',
+  'patch-notes': '更新情報',
+};
+
+const GROUP_JA = {
+  characters: { title: 'キャラクター', description: 'キャラデータベース、編成、武器と聖痕' },
+  'game-mechanics': { title: 'ゲームシステム', description: '行動力、特性、半神昇格と聖痕サブ効果' },
+  resources: { title: 'リソース', description: 'ストーリーギャラリー、プレゼント、クロック、引換コードと更新情報' },
+};
+
+const jaUrl = (id, enUrl) =>
+  id === 'clock' ? enUrl : enUrl.replace('/guides/horizon-walker/', HW_ZH.baseUrl);
+
+const categoryGroups = horizonWalkerConfig.categoryGroups.map(g => ({
+  ...g,
+  title: GROUP_JA[g.id]?.title || g.title,
+  description: GROUP_JA[g.id]?.description || g.description,
+  guides: g.guides.map(gd => ({
+    ...gd,
+    title: GUIDE_JA[gd.id] || gd.title,
+    url: jaUrl(gd.id, gd.url),
+  })),
+}));
+---
+
+<HwLangLayout lang="ja" ui={HW_ZH}
+  title="ホライゾン・ウォーカー（Horizon Walker）日本語ウィキ - キャラ、スキル、評価一覧 - GachaWiki"
+  description="ホライゾン・ウォーカー日本語ウィキ：全キャラの公式日本語スキルとステータス、武器、聖痕、評価一覧、ガチャ履歴と更新情報。ゲームテキストはすべてゲーム公式の日本語ローカライズから引用しています。"
+  keywords={['ホライゾン・ウォーカー', 'Horizon Walker', '日本語', 'wiki', '攻略', 'キャラクター', 'スキル', '評価一覧']}
+  heroTitle={HW_ZH.gameName}
+  ambientVideo="/videos/horizon-walker-hero.mp4"
+  breadcrumbItems={[{ name: 'ホーム', href: '/' }, { name: 'ホライゾン・ウォーカー' }]}
+>
+  <!-- Game Overview Section (EN classes, Japanese labels) -->
+  <section class="content-section hw-about-section">
+    <h2 class="section-title">ゲーム紹介</h2>
+    <div class="hw-about-content">
+      <div class="hw-about-text">
+        <div class="game-description">
+          <p>
+            『ホライゾン・ウォーカー』は終末世界を舞台にした収集型 RPG です。次元の亀裂から湧き出したモンスターによって人類の黄金時代は終わりを迎え、死を越えて神の権能を得た人神と親衛たちは、亀裂の先で世界を取り戻すために戦い続けています。
+          </p>
+          <p>
+            プレイヤーは人神として親衛を招き入れ、部隊を編成してターン制の戦闘に挑みます。地形と行動力を活かしたスキル連携で強敵を打ち倒し、プレゼントで好感度を高めながら、スキンやストーリー CG を収集していきましょう。
+          </p>
+          <p>{HW_ZH.labels.dataFromGame}</p>
+        </div>
+
+        <!-- Play Game Platforms -->
+        {
+          hasPlatforms && (
+            <div class="platforms-container">
+              <h3>プレイ可能プラットフォーム：</h3>
+              <div class="platform-notes">
+                <ul>
+                  <li>• Google Play：規制版</li>
+                  <li>• One Store：無規制版（Steam へ移行予定）</li>
+                  <li>• Ero-Labs：無規制版（Steam へ移行なし）</li>
+                  <li>• Steam：無規制版</li>
+                </ul>
+              </div>
+              <div class="platforms-grid">
+                {gameInfo.platforms.map(platform => (
+                  <a
+                    href={platform.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="platform-button"
+                    aria-label={`${platform.name} でホライゾン・ウォーカーをプレイ`}
+                  >
+                    {platform.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )
+        }
+
+        <!-- Social Links -->
+        {
+          gameInfo.socialLinks && (
+            <div class="hw-social-links-container">
+              <h4>公式コミュニティ：</h4>
+              <div class="hw-social-links">
+                {gameInfo.socialLinks.twitter && (
+                  <a
+                    href={gameInfo.socialLinks.twitter}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hw-social-link"
+                    aria-label="ホライゾン・ウォーカー公式 X/Twitter"
+                  >
+                    X/Twitter
+                  </a>
+                )}
+                {gameInfo.socialLinks.discord && (
+                  <a
+                    href={gameInfo.socialLinks.discord}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hw-social-link"
+                    aria-label="ホライゾン・ウォーカー公式 Discord"
+                  >
+                    Discord
+                  </a>
+                )}
+                {gameInfo.socialLinks.youtube && (
+                  <a
+                    href={gameInfo.socialLinks.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hw-social-link"
+                    aria-label="ホライゾン・ウォーカー公式 YouTube チャンネル"
+                  >
+                    YouTube
+                  </a>
+                )}
+              </div>
+            </div>
+          )
+        }
+
+        <DiscordPromo accent="#e8a547" />
+
+        <p class="last-updated">
+          最終更新：<FormattedDate date={gameInfo.lastUpdated} />
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources Section (same grid/cards as EN, Japanese labels) -->
+  <section class="hw-resources-section">
+    <h2 class="hw-resources-title">コンテンツ一覧</h2>
+
+    <div class="hw-resources-grid">
+      {
+        categoryGroups.map(category => {
+          return (
+            <div class={`hw-resource-category hw-category-${category.size}`}>
+              <div class="hw-category-header">
+                <h3>{category.title}</h3>
+                <p class="hw-category-description">{category.description}</p>
+              </div>
+              <div class="hw-buttons-grid">
+                {category.guides.map(guide => (
+                  <a
+                    href={guide.url}
+                    class="hw-resource-button"
+                    aria-label={`${guide.title} へ移動`}
+                  >
+                    <HWGuideIcon guideId={guide.id} alt={guide.title} class="hw-guide-icon" />
+                    <span class="hw-guide-label">{guide.title}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <!-- Language switch -->
+  <section class="hw-resources-section">
+    <h2 class="hw-resources-title">言語</h2>
+    <div class="hw-resources-grid">
+      <div class="hw-resource-category hw-category-medium">
+        <div class="hw-category-header">
+          <h3>Language</h3>
+          <p class="hw-category-description">英語版ウィキに切り替える</p>
+        </div>
+        <div class="hw-buttons-grid">
+          <a href={HW_ZH.selectorUrl} class="hw-resource-button" aria-label="English version">
+            <span class="hw-guide-label">English</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</HwLangLayout>

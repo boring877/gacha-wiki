@@ -1,0 +1,410 @@
+---
+// Korean patch notes index: /ko/guides/horizon-walker/updates/
+// Same entries and slugs as the EN page (patch-notes.js). Titles become
+// 업데이트 공지: N월 N일 점검; highlight tags are rendered in Korean with the
+// game's own KO character/weapon names, keeping EN proper nouns (event and
+// banner titles have no separate Korean label) verbatim.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import '../../../../styles/games/horizon-walker/hw-guide.css';
+import { patchNotes } from '../../../../data/horizon-walker/patch-notes.js';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../data/horizon-walker/characters.js';
+import { HW_ZH_NAMES, HW_ZH_INHERITANCE } from '../../../../data/horizon-walker/ko/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ko/ui.js';
+
+export const prerender = true;
+
+// ---------- shared ZH rendering of patch note titles & highlight tags --------
+const zhByEnChar = {};
+for (const c of HORIZON_WALKER_CHARACTERS) {
+  const z = HW_ZH_NAMES[c.id];
+  if (z) zhByEnChar[c.name] = z;
+}
+const charDisplay = (en) => {
+  const zh = zhByEnChar[en];
+  return zh ? `${zh} (${en})` : en;
+};
+const weaponZh = (en) => {
+  if (en === 'Watcher of the Night') return HW_ZH_INHERITANCE['Nocturnal Watcher']?.name || null;
+  return HW_ZH_INHERITANCE[en]?.name || null;
+};
+const weaponDisplay = (en) => {
+  const zh = weaponZh(en);
+  if (!zh) return en;
+  const gloss = en.includes('–') ? en.split('–').map((p) => p.trim()).join(' ') : en;
+  return `${zh} (${gloss})`;
+};
+const nameListZh = (rest) =>
+  rest
+    .split('/')
+    .map((seg) => seg.trim())
+    .filter(Boolean)
+    .map((seg) => (zhByEnChar[seg] ? charDisplay(seg) : weaponZh(seg) ? weaponDisplay(seg) : seg))
+    .join(' / ');
+
+const FEATURE_ZH = {
+  'Aide Affection Level Settings': '수호자 호감도 레벨 설정',
+  'Affection Improvements': '호감도 시스템 개선',
+  'Content Expansion': '콘텐츠 확장',
+  'Content Unlock Guide': '콘텐츠 해금 가이드',
+  'Dual Affection System': '이중 호감도 시스템',
+  'Hide Battle UI': '전투 UI 숨기기',
+  'Maintain Aide Special Interactions': '수호자 특수 상호작용 유지',
+  'Multi-Aide Sanctuary': 'Multi-Aide Sanctuary (다중 수호자 성역)',
+  'New Vanguard Growth Support Event': '신규 수호자 육성 지원 이벤트',
+  'Priority Target': 'Priority Target (우선 목표)',
+  'TPS View': 'TPS View (3인칭 시점)',
+  'Total War': 'Total War (토털 워)',
+  'The Demi-God System': 'The Demi-God System (반신 시스템)',
+  'The Path to the Divine Throne': 'The Path to the Divine Throne (신좌로 가는 길)',
+};
+
+const EXACT_ZH = {
+  'Addition of New Products': '신규 상품 추가',
+  'Bug Fixes': '버그 수정',
+  'Character Design Direction': '캐릭터 디자인 방향 안내',
+  'Class Skills': '클래스 스킬 업데이트',
+  'Closing Notes': '맺음말',
+  'Costume Feature Update': '코스튬 기능 업데이트',
+  'Costume Shop': '신규 코스튬 상점',
+  'Early Game Improvements': '초반 플레이 개선',
+  'Improvements': '개선 사항',
+  'Limited-Time Event': '한정 이벤트',
+  'Limited-time Event': '한정 이벤트',
+  'Massage System Update': '마사지 시스템 업데이트',
+  'New Affection Event': '신규 호감도 이벤트',
+  'New Affection Event Update': '호감도 이벤트 업데이트',
+  'New Affection Event Updates': '호감도 이벤트 업데이트',
+  'New Content': '신규 콘텐츠',
+  'New Contents': '신규 콘텐츠',
+  'New Costume': '신규 코스튬',
+  'New Costumes': '신규 코스튬',
+  'New Demi-God Ascension': '신규 반신 승급',
+  'New Feature': '신규 기능',
+  'New Features': '신규 기능',
+  'New Path to the Divine Throne': '신규 The Path to the Divine Throne (신좌로 가는 길)',
+  'New Product Added': '신규 상품 추가',
+  'New Story': '신규 스토리',
+  'New Sub-Stages Added': '신규 서브 스테이지 추가',
+  'Overall Difficulty Adjustment': '전체 난이도 조정',
+  'Shop – New Bundles': '상점 신규 번들',
+  'Special Search Schedule': 'Special Search 일정',
+  'Special Search Updates': 'Special Search 일정 업데이트',
+  'Story': '스토리 업데이트',
+  'Story Updates': '스토리 업데이트',
+  'New Story - Sub-story “Palekar’s Past” has been added.': '신규 서브 스토리: Palekar’s Past',
+  'Event Update : Operation: Steaming Hot WINTER Part 2': '이벤트 업데이트: Operation: Steaming HOT WINTER (파트 2)',
+  'Event Update : The Halloween Horror Club Part.2': '이벤트 업데이트: The Halloween Horror Club (파트 2)',
+  'New Content: Larina’s Special Training Grounds': '신규 콘텐츠: Larina’s Special Training Grounds',
+  'New Content: Larina\'s Special Training Grounds': '신규 콘텐츠: Larina’s Special Training Grounds',
+  'New Mini Event : Special Episode: Springtime Hot Springs': '신규 미니 이벤트: Special Episode: Springtime Hot Springs',
+  'Event: Larina’s Dopamine Channel!': '이벤트: Larina’s Dopamine Channel!',
+  "Event: Larina's Dopamine Channel!": '이벤트: Larina’s Dopamine Channel!',
+  'Event: Larina’s Dopamine Channel! – Part 1': '이벤트: Larina’s Dopamine Channel! (파트 1)',
+  "Event: Larina's Dopamine Channel! – Part 1": '이벤트: Larina’s Dopamine Channel! (파트 1)',
+  'Event: Larina’s Dopamine Channel! – Part 2': '이벤트: Larina’s Dopamine Channel! (파트 2)',
+  "Event: Larina's Dopamine Channel! – Part 2": '이벤트: Larina’s Dopamine Channel! (파트 2)',
+  'Event: Cheers to Our Two Years! – Part 1': '이벤트: Cheers to Our Two Years! (파트 1)',
+  'Event: Cheers to Our Two Years! – Part 2': '이벤트: Cheers to Our Two Years! (파트 2)',
+  'Event: Where White Waves Wash Ashore – Part 1': '이벤트: Where White Waves Wash Ashore (파트 1)',
+  'Event: Where White Waves Wash Ashore – Prologue': '이벤트: Where White Waves Wash Ashore (프롤로그)',
+  'New Event: Defense Op: Citadel of Change – Part 2': '신규 이벤트: Defense Op: Citadel of Change (파트 2)',
+  'New Event: Defense Operation - Citadel of Change': '신규 이벤트: Defense Operation: Citadel of Change',
+  'New Event: Yesterday\'s Sweet Valentine – Part 2': '신규 이벤트: Yesterday’s Sweet Valentine (파트 2)',
+  'New Event : The Orkean Lady’s Happy Ever After (Part.2)': '신규 이벤트: The Orkean Lady’s Happy Ever After (파트 2)',
+  'New Event : Larina\'s Dopamin Channel!': '신규 이벤트: Larina’s Dopamin Channel!',
+  'New Affection Content – Efreeti': '신규 호감도 콘텐츠: 이프리트 (Efreeti)',
+  'New Affection Content – Nymset': '신규 호감도 콘텐츠: 님셋 (Nymset)',
+  'New Skill: Resolve': '신규 스킬: Resolve',
+  'New Passive: Spearhead\'s Gleam': '신규 패시브: Spearhead’s Gleam',
+  'New Stigma (Phantom Banquet EX)': '신규 성흔: Phantom Banquet EX',
+  'New Stigma Set: Lifebound (EX)': '신규 성흔 세트: Lifebound EX',
+  'New Stigma: Blessing of Dawn (EX)': '신규 성흔: Blessing of Dawn EX',
+  'New Stigma: Scorching Sun EX': '신규 성흔: Scorching Sun EX',
+  'New Feature – Aide Affection Level Settings': '신규 기능: 수호자 호감도 레벨 설정',
+  'New Feature – Content Expansion': '신규 기능: 콘텐츠 확장',
+  'New Feature – Maintain Aide Special Interactions': '신규 기능: 수호자 특수 상호작용 유지',
+  'New Feature - Total War': '신규 기능: Total War (토털 워)',
+  'New Feature - The Path to the Divine Throne': '신규 기능: The Path to the Divine Throne (신좌로 가는 길)',
+  'New Feature - The Demi-God System': '신규 기능: The Demi-God System (반신 시스템)',
+  'New Feature: Aide Affection Level Settings': '신규 기능: 수호자 호감도 레벨 설정',
+  'New Feature: Affection Improvements': '신규 기능: 호감도 시스템 개선',
+  'New Feature: Content Unlock Guide': '신규 기능: 콘텐츠 해금 가이드',
+  'New Feature: Dual Affection System': '신규 기능: 이중 호감도 시스템',
+  'New Feature: Hide Battle UI': '신규 기능: 전투 UI 숨기기',
+  'New Feature: Multi-Aide Sanctuary': '신규 기능: Multi-Aide Sanctuary (다중 수호자 성역)',
+  'New Feature: New Vanguard Growth Support Event': '신규 기능: 신규 수호자 육성 지원 이벤트',
+  'New Feature: Priority Target': '신규 기능: Priority Target (우선 목표)',
+  'New Feature: TPS View': '신규 기능: TPS View (3인칭 시점)',
+  'New Pass: Agent Kim Ga-young Pass': '신규 패스: Agent Kim Ga-young Pass',
+  'New Pass: Forge Elemental Efreeti Pass': '신규 패스: Forge Elemental Efreeti Pass',
+  'New Pass: Liberated Prisoner Pass': '신규 패스: Liberated Prisoner Pass',
+  'New Pass: Mind\'s Eye Lisandria': '신규 패스: Mind’s Eye Lisandria',
+  'New Pass: Radiant Swordmaiden Eugenia Pass': '신규 패스: Radiant Swordmaiden Eugenia Pass',
+  'New Pass: Winter Duchess Ines Pass': '신규 패스: Winter Duchess Ines Pass',
+  'New Event Pass: Bella Pass': '신규 이벤트 패스: Bella Pass',
+  '신규 패스 : 사마리카 패스': '신규 패스: 사마리카 패스 (Samarika Pass)',
+};
+
+// suffixes like "– Part 2" / "(Part.2)" / "– Prologue" become Korean
+const zhSuffixes = (s) =>
+  s
+    .replace(/\s*[–-]\s*Part\.?\s*(\d+)\s*$/i, ' (파트 $1)')
+    .replace(/\s*[–-]\s*Prologue\s*$/i, ' (프롤로그)')
+    .replace(/\s*\(Part\.?(\d+)\)\s*$/i, ' (파트 $1)');
+
+function highlightZh(raw) {
+  const h = raw.trim();
+  if (EXACT_ZH[h]) return EXACT_ZH[h];
+  let m;
+  if ((m = h.match(/^Vanguard\/Weapon Rework\s*:\s*(.+)$/i)))
+    return `수호자/무기 리워크: ${nameListZh(m[1])}`;
+  if ((m = h.match(/^Vanguard Rework\s*:\s*(.+)$/i))) return `수호자 리워크: ${nameListZh(m[1])}`;
+  if ((m = h.match(/^New Vanguard\s*:\s*(.+)$/i))) return `신규 수호자: ${charDisplay(m[1].trim())}`;
+  if ((m = h.match(/^New Weapon\s*:\s*(.+)$/i))) return `신규 무기: ${weaponDisplay(m[1].trim())}`;
+  if ((m = h.match(/^New Feature\s*[-–:]\s*(.+)$/))) {
+    const feat = m[1].trim();
+    return `신규 기능: ${FEATURE_ZH[feat] || feat}`;
+  }
+  if ((m = h.match(/^New Event Pass\s*:\s*(.+)$/))) return `신규 이벤트 패스: ${m[1].trim()}`;
+  if ((m = h.match(/^New Pass\s*:\s*(.+)$/))) return `신규 패스: ${m[1].trim()}`;
+  if ((m = h.match(/^New Stigma Set\s*:\s*(.+)$/i))) return `신규 성흔 세트: ${m[1].trim()}`;
+  if ((m = h.match(/^New Stigma\s*\((.+)\)\s*$/i))) return `신규 성흔: ${m[1].trim()}`;
+  if ((m = h.match(/^New Stigma\s*:\s*(.+)$/i))) return `신규 성흔: ${m[1].trim()}`;
+  if ((m = h.match(/^New Event\s*:\s*(.+)$/i))) return `신규 이벤트: ${zhSuffixes(m[1].trim())}`;
+  if ((m = h.match(/^Event Update\s*:\s*(.+)$/i))) return `이벤트 업데이트: ${zhSuffixes(m[1].trim())}`;
+  if ((m = h.match(/^Event\s*:\s*(.+)$/i))) return `이벤트: ${zhSuffixes(m[1].trim())}`;
+  return h;
+}
+
+const MONTHS = {
+  January: 1, February: 2, March: 3, April: 4, May: 5, June: 6, July: 7,
+  August: 8, September: 9, October: 10, November: 11, December: 12,
+  Jan: 1, Feb: 2, Mar: 3, Apr: 4, Jun: 6, Jul: 7, Aug: 8, Sep: 9, Sept: 9, Oct: 10, Nov: 11, Dec: 12,
+};
+
+function titleZh(t) {
+  const m = t.match(/^Patch Note\s*-\s*(.+)$/);
+  if (!m) return t;
+  let inner = m[1];
+  let suffix = '';
+  if (inner.includes('(+ Update)')) {
+    suffix = ' (추가 업데이트 포함)';
+    inner = inner.replace(/\s*\(\+ Update\)/, '');
+  }
+  const mm = inner.match(/^([A-Za-z]+)\.?\s+(\d{1,2})/);
+  if (!mm || !MONTHS[mm[1]]) return `업데이트 공지: ${inner}`;
+  const isMaint = /maintenance/i.test(inner);
+  return `업데이트 공지: ${MONTHS[mm[1]]}월 ${parseInt(mm[2], 10)}일${isMaint ? ' 점검' : ''}${suffix}`;
+}
+
+const fmt = (iso) => `${iso.slice(0, 4)}.${iso.slice(5, 7)}.${iso.slice(8, 10)}`;
+
+// group by month like the EN index
+const groups = [];
+for (const n of patchNotes) {
+  const month = n.date.slice(0, 7);
+  const label = `${month.slice(0, 4)}년 ${parseInt(month.slice(5, 7), 10)}월`;
+  const last = groups[groups.length - 1];
+  if (last && last.month === month) last.notes.push(n);
+  else groups.push({ month, label, notes: [n] });
+}
+const newest = patchNotes[0];
+const oldest = patchNotes[patchNotes.length - 1];
+---
+
+<HwLangLayout lang="ko" ui={HW_ZH}
+  title="업데이트 공지 - 호라이즌 워커 한국어 위키 - GachaWiki"
+  description={`호라이즌 워커 공식 업데이트 공지 한국어 정리, 총 ${patchNotes.length}편: 신규 수호자, 신규 무기, 이벤트, 밸런스 조정과 버그 수정을 ${fmt(oldest.date)}부터 ${fmt(newest.date)}까지 정리했습니다.`}
+  keywords={['호라이즌 워커', '업데이트 공지', '점검', '버전 업데이트']}
+  breadcrumbItems={[
+    { name: '홈', href: '/' },
+    { name: '호라이즌 워커', href: HW_ZH.baseUrl },
+    { name: '업데이트 공지' },
+  ]}
+>
+  <section class="hw-guide-hero">
+    <h1 class="hw-guide-title">업데이트 공지</h1>
+    <p class="hw-guide-subtitle">전체 공식 영어 업데이트 공지의 한국어 정리, {fmt(oldest.date)} ~ {fmt(newest.date)}.</p>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-guide-content">
+  <div class="pn-index">
+    <div class="pn-index-intro">
+      <p>
+        『호라이즌 워커』 팀은 점검마다 공식 Naver Lounge에 영어 업데이트 공지를 게시합니다. 이 페이지는 전체
+        {patchNotes.length}편 공지의 한국어 정리본이며(제목과 주요 사항을 직접 정리), 모든 표와 세부 사항을 담은 원문 전문은 해당 영어 공지 페이지에서 확인할 수 있습니다. 업데이트는 한국 서버 일정을 따르며 한국 서버가 글로벌 서버보다 몇 주 앞서 진행됩니다. 공식 원문의 구체적인 스킬 수치는 N 자리 표시자로 표기됩니다. 이벤트와 가챠 등 고유 명칭은 영어 원문 그대로 표기합니다.
+      </p>
+    </div>
+
+    <div class="pn-index-controls">
+      <input
+        type="text"
+        id="pn-search-input"
+        class="pn-search"
+        placeholder="업데이트 공지 검색 (한국어 또는 영어, 예: 코라비, Doomstar, 이벤트)"
+        autocomplete="off"
+      />
+      <span class="pn-count" id="pn-count-el">{patchNotes.length}편 공지</span>
+    </div>
+
+    {
+      groups.map((g) => (
+        <section class="pn-month" data-month={g.month}>
+          <h2 class="pn-month-title">{g.label}</h2>
+          <div class="pn-cards">
+            {g.notes.map((n) => {
+              const zhTitle = titleZh(n.title);
+              const zhTags = n.highlights.map((h) => highlightZh(h));
+              const search = [n.title, zhTitle, ...n.highlights, ...zhTags].join(' ').toLowerCase();
+              return (
+                <a class="pn-card" href={`${HW_ZH.baseUrl}updates/${n.slug}/`} data-search={search}>
+                  <div class="pn-card-date">{fmt(n.date)}</div>
+                  <h3 class="pn-card-title">{zhTitle}</h3>
+                  {zhTags.length > 0 && (
+                    <div class="pn-card-tags">
+                      {zhTags.map((t) => (
+                        <span class="pn-card-tag">{t}</span>
+                      ))}
+                    </div>
+                  )}
+                </a>
+              );
+            })}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+  </div>
+</HwLangLayout>
+
+<script is:inline>
+  var input = document.getElementById('pn-search-input');
+  var cards = document.querySelectorAll('.pn-card');
+  var months = document.querySelectorAll('.pn-month');
+  var count = document.getElementById('pn-count-el');
+  var total = cards.length;
+  input.addEventListener('input', function () {
+    var q = input.value.trim().toLowerCase();
+    var visible = 0;
+    cards.forEach(function (c) {
+      var show = !q || c.dataset.search.includes(q);
+      c.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    months.forEach(function (m) {
+      var any = Array.prototype.some.call(m.querySelectorAll('.pn-card'), function (c) {
+        return c.style.display !== 'none';
+      });
+      m.style.display = any ? '' : 'none';
+    });
+    count.textContent = q ? visible + ' / ' + total + '편 공지' : total + '편 공지';
+  });
+</script>
+
+<style>
+    .pn-index {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .pn-index-intro {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(232, 165, 71, 0.18);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+    }
+    .pn-index-intro p {
+      color: #ccc;
+      font-size: 0.93rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .pn-index-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+    .pn-search {
+      flex: 1;
+      min-width: 220px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      color: #ddd;
+      font-size: 0.92rem;
+      padding: 0.6rem 0.9rem;
+      outline: none;
+    }
+    .pn-search::placeholder {
+      color: var(--hw-text-very-muted);
+    }
+    .pn-search:focus {
+      border-color: rgba(232, 165, 71, 0.5);
+    }
+    .pn-count {
+      color: #999;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+    .pn-month {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .pn-month-title {
+      color: #e8a547;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0.4rem 0 0;
+      border-bottom: 1px solid rgba(232, 165, 71, 0.2);
+      padding-bottom: 0.4rem;
+    }
+    .pn-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 0.9rem;
+    }
+    .pn-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 10px;
+      padding: 0.95rem 1.05rem;
+      text-decoration: none;
+    }
+    .pn-card-date {
+      color: #999;
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+    }
+    .pn-card-title {
+      color: #e8d9bf;
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.4;
+    }
+    .pn-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .pn-card-tag {
+      color: #cccccc;
+      background: #3a3a3a;
+      border-radius: 4px;
+      padding: 0.14rem 0.55rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+  </style>

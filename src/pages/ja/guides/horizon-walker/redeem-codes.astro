@@ -1,0 +1,254 @@
+---
+// Japanese redeem codes page: /ja/guides/horizon-walker/redeem-codes/
+// Same codes and data as the EN page (redeem-codes.js, codes verbatim); page
+// chrome, warnings and step-by-step instructions are in Japanese. Reward item
+// names have no official JA map entry, so they stay in English.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import { horizonWalkerRedeemCodes } from '../../../../data/horizon-walker/redeem-codes.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ja/ui.js';
+import '../../../../styles/games/horizon-walker/hw-redeem-codes.css';
+
+export const prerender = true;
+
+const { availableCodes, expiredCodes, communitySection, warnings, meta } = horizonWalkerRedeemCodes;
+
+// localize the data's English date strings without changing the values
+const MONTH_NUM = {
+  january: 1, february: 2, march: 3, april: 4, may: 5, june: 6, july: 7,
+  august: 8, september: 9, october: 10, november: 11, december: 12,
+};
+const jaDateStr = (s) => {
+  if (!s) return s;
+  let m = s.match(/^([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})(.*)$/);
+  if (m && MONTH_NUM[m[1].toLowerCase()])
+    return `${m[3]} 年 ${MONTH_NUM[m[1].toLowerCase()]} 月 ${parseInt(m[2], 10)} 日${m[4] || ''}`;
+  m = s.match(/^([A-Za-z]+)\s+(\d{4})$/);
+  if (m && MONTH_NUM[m[1].toLowerCase()]) return `${m[2]} 年 ${MONTH_NUM[m[1].toLowerCase()]} 月`;
+  return s;
+};
+
+const lastUpdated = meta.lastUpdated;
+const lastUpdatedJa = `${lastUpdated.getFullYear()} 年 ${lastUpdated.getMonth() + 1} 月 ${lastUpdated.getDate()} 日`;
+
+const statusJa = { working: '使用可能', unknown: '未確認', expired: '期限切れ' };
+const statusText = (s) => statusJa[s] || s;
+
+// the EN instructions describe in-game redemption; same steps in Japanese
+const stepsJa = [
+  { title: '設定メニューを開く', description: 'ゲームのホーム画面で設定（またはメニュー）アイコンをタップし、ゲーム設定に入ります。' },
+  { title: '引換コード項目を探す', description: '設定メニューの中にある「引換コード」（Redeem Code / Gift Code）項目を探してタップします。' },
+  { title: 'コードを入力する', description: '入力欄に引換コードを入力、または貼り付けます。' },
+  { title: '確定して受け取る', description: '「確認」または「引換」ボタンを押してコードを送信します。成功すると報酬がゲーム内メールに届きます。' },
+];
+
+const communityButtonsJa = communitySection.buttons.map((b) => ({
+  ...b,
+  textJa: b.id === 'discord' ? 'Discord で報告する' : b.id === 'github' ? 'GitHub でスターを付ける' : b.text,
+}));
+---
+
+<HwLangLayout lang="ja" ui={HW_ZH}
+  title="引換コード - ホライゾン・ウォーカー日本語ウィキ - GachaWiki"
+  description="ホライゾン・ウォーカーの最新引換コードと引き換え手順：使用可能なコード一覧、期限切れコードの記録、ゲーム内での引き換え方法を丁寧に解説します。"
+  keywords={['ホライゾン・ウォーカー', '引換コード', 'ギフトコード', 'シリアルコード']}
+  heroTitle="引換コード"
+  breadcrumbItems={[
+    { name: 'ホーム', href: '/' },
+    { name: 'ホライゾン・ウォーカー', href: HW_ZH.baseUrl },
+    { name: '引換コード' },
+  ]}
+>
+  <section class="page-content">
+    <div class="hw-redeem-main-container">
+      <div class="hw-redeem-header-section">
+        <p class="important-notice">重要なお知らせ：これらの引換コードは有効な場合と無効な場合があります！ゲーム側が予告なくコードを無効化することもあります。</p>
+        <h3>保証はありません</h3>
+        <p>以下の引換コードはコミュニティがまとめたもので、既に期限切れや回数制限に達している可能性があります。報酬内容はゲーム内アイテムの英語名で、公式日本語はまだありません。</p>
+        <p class="last-updated">最終更新：{lastUpdatedJa}</p>
+      </div>
+
+      <div class="hw-redeem-codes-section">
+        <h2 class="hw-redeem-section-title">使用可能な引換コード</h2>
+        <p class="hw-redeem-section-description">コミュニティで共有されているコードです。ひとつずつ試してみてください！</p>
+
+        <div class="hw-redeem-codes-grid">
+          {
+            availableCodes.map((codeData) => (
+              <div class="hw-redeem-code-card">
+                <div class="hw-code-info">
+                  <div class="hw-code-label">引換コード</div>
+                  <div class="hw-code-value">{codeData.code}</div>
+                </div>
+                <div class="hw-code-rewards">{codeData.rewards}</div>
+                <div class="hw-code-meta">
+                  <span class={`hw-code-status ${codeData.status}`}>{statusText(codeData.status)}</span>
+                  <span class="hw-code-date">確認日 {jaDateStr(codeData.lastChecked)}</span>
+                </div>
+                {codeData.expiryDate && (
+                  <div class="hw-code-expiry">有効期限：{jaDateStr(codeData.expiryDate)}</div>
+                )}
+                <button class="hw-copy-button" data-code={codeData.code}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                  </svg>
+                  コードをコピー
+                </button>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="hw-redeem-instructions-section">
+        <h2 class="hw-redeem-section-title">引換コードの使い方</h2>
+        <p class="hw-redeem-section-description">以下の手順でゲーム内の引換コードを引き換えます：</p>
+
+        <h3>詳しい手順：</h3>
+        {
+          stepsJa.map((step, index) => (
+            <div class="hw-instruction-step" data-step={index + 1}>
+              <h4>{step.title}</h4>
+              <p>{step.description}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="hw-redeem-expired-section">
+        <h2 class="hw-redeem-section-title">期限切れの引換コード</h2>
+        {
+          expiredCodes.length > 0 ? (
+            <>
+              <p class="hw-redeem-section-description">これらのコードは既に無効化されています。記録としてご確認ください。</p>
+              <div class="hw-redeem-codes-grid">
+                {expiredCodes.map((codeData) => (
+                  <div class="hw-redeem-code-card expired">
+                    <div class="hw-code-info">
+                      <div class="hw-code-label">期限切れコード</div>
+                      <div class="hw-code-value">{codeData.code}</div>
+                    </div>
+                    <div class="hw-code-rewards">{codeData.rewards}</div>
+                    <p class="hw-code-expiry">有効期限：{jaDateStr(codeData.expiryDate)}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <div class="hw-empty-section">
+              <p class="hw-empty-message">現在期限切れのコードはありません！掲載中のコードはすべて試す価値があります。</p>
+            </div>
+          )
+        }
+      </div>
+
+      <div class="hw-redeem-community-section">
+        <h2 class="hw-redeem-section-title">情報提供にご協力ください</h2>
+        <p class="hw-redeem-section-description">期限切れのコードや新しいコードを見つけたら、ぜひコミュニティにお知らせください！</p>
+
+        <div class="hw-community-buttons">
+          {
+            communityButtonsJa.map((button) => (
+              <a
+                href={button.url}
+                class={`hw-community-button ${button.type}`}
+                target={button.external ? '_blank' : '_self'}
+                rel={button.external ? 'noopener noreferrer' : ''}
+              >
+                {button.textJa}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</HwLangLayout>
+
+<script is:inline>
+  // copy a code to the clipboard with multiple fallbacks (Japanese labels)
+  function copyCode(button) {
+    var code = button.getAttribute('data-code');
+    if (!code) return;
+
+    var originalHTML = button.innerHTML;
+    button.disabled = true;
+    button.textContent = 'コピー中';
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard
+        .writeText(code)
+        .then(function () {
+          showSuccess(button, originalHTML);
+        })
+        .catch(function () {
+          tryExecCommand(button, originalHTML, code);
+        });
+    } else {
+      tryExecCommand(button, originalHTML, code);
+    }
+  }
+
+  function tryExecCommand(button, originalHTML, code) {
+    try {
+      var textarea = document.createElement('textarea');
+      textarea.value = code;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      textarea.style.left = '-9999px';
+      textarea.setAttribute('readonly', '');
+      document.body.appendChild(textarea);
+
+      textarea.select();
+      textarea.setSelectionRange(0, 99999);
+
+      var success = document.execCommand('copy');
+      document.body.removeChild(textarea);
+
+      if (success) {
+        showSuccess(button, originalHTML);
+      } else {
+        throw new Error('execCommand failed');
+      }
+    } catch (err) {
+      console.error('Copy failed:', err);
+      showError(button, originalHTML);
+    }
+  }
+
+  function showSuccess(button, originalHTML) {
+    button.textContent = 'コピーしました！';
+    button.style.background = '#10b981';
+    button.style.color = 'white';
+
+    setTimeout(function () {
+      button.innerHTML = originalHTML;
+      button.style.background = '';
+      button.style.color = '';
+      button.disabled = false;
+    }, 2000);
+  }
+
+  function showError(button, originalHTML) {
+    button.textContent = 'もう一度試す';
+    button.style.background = '#ef4444';
+    button.style.color = 'white';
+
+    setTimeout(function () {
+      button.innerHTML = originalHTML;
+      button.style.background = '';
+      button.style.color = '';
+      button.disabled = false;
+    }, 2000);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var buttons = document.querySelectorAll('.hw-copy-button');
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+        copyCode(button);
+      });
+    });
+  });
+</script>

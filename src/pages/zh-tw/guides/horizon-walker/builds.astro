@@ -1,0 +1,149 @@
+---
+// Traditional-Chinese (zh-tw) recommended builds index: /zh-tw/guides/horizon-walker/builds/
+// Same build list as the EN builds/index.astro (getEnhancedBuilds), grouped
+// by rarity; character names use the official Traditional Chinese from game-text.js.
+// Re-skinned onto the EN hw-builds.css classes for visual parity.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import { getEnhancedBuilds } from '../../../../data/horizon-walker/builds/builds-data.js';
+import { HW_ZH_NAMES } from '../../../../data/horizon-walker/zh-tw/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/zh-tw/ui.js';
+import { CharacterImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
+import '../../../../styles/games/horizon-walker/hw-builds.css';
+
+export const prerender = true;
+
+const enhancedBuilds = getEnhancedBuilds();
+const availableBuilds = enhancedBuilds.filter((build) => build.available);
+const unavailableBuilds = enhancedBuilds.filter((build) => !build.available);
+
+const zhNameOf = (build) =>
+  (build.characterData && HW_ZH_NAMES[build.characterData.id]) || build.displayName;
+
+// Sort by rarity (EX, SS, S, A, B) then by ZH name
+const rarityOrder = { EX: 5, SS: 4, S: 3, A: 2, B: 1 };
+const sortedBuilds = [...availableBuilds].sort((a, b) => {
+  const rarityDiff = rarityOrder[b.rarity] - rarityOrder[a.rarity];
+  if (rarityDiff !== 0) return rarityDiff;
+  return zhNameOf(a).localeCompare(zhNameOf(b), 'zh');
+});
+
+const buildsByRarity = {
+  EX: sortedBuilds.filter((b) => b.rarity === 'EX'),
+  SS: sortedBuilds.filter((b) => b.rarity === 'SS'),
+  S: sortedBuilds.filter((b) => b.rarity === 'S'),
+  A: sortedBuilds.filter((b) => b.rarity === 'A'),
+  B: sortedBuilds.filter((b) => b.rarity === 'B'),
+};
+---
+
+<HwLangLayout lang="zh-tw" ui={HW_ZH}
+  title="配裝推薦 - 地平線行者繁體中文維基 - GachaWiki"
+  description={`地平線行者配裝推薦：共 ${availableBuilds.length} 名角色的手動精選配裝，含推薦聖痕、副屬性與特性選擇；另有覆蓋 50 名角色的社群配裝。`}
+  keywords={['地平線行者', '配裝', '聖痕', '副屬性', '特性']}
+  pageTitle="配裝推薦"
+  breadcrumbItems={[
+    { name: '首頁', href: '/' },
+    { name: '地平線行者', href: HW_ZH.baseUrl },
+    { name: '配裝推薦' },
+  ]}
+>
+  <div class="hw-builds-container">
+    <div class="hw-community-builds-note">
+      <p class="hw-community-builds-text">
+        想看更多？<a href={`${HW_ZH.baseUrl}builds/community/`}>社群配裝</a>
+        覆蓋 50 名角色，整理自 Envy、Liauw 與 Gamekee 的社群配裝表格。聖痕套裝名稱暫無官方中文，保留英文原文。
+      </p>
+    </div>
+
+    {
+      Object.entries(buildsByRarity).map(([rarity, builds]) => {
+        if (builds.length === 0) return null;
+        return (
+          <section class="hw-builds-rarity-section">
+            <div class="hw-builds-rarity-header">
+              <HWRarityIcon rarity={rarity} width={48} height={24} />
+              <span class="hw-builds-rarity-count">（{builds.length} 套配裝）</span>
+            </div>
+            <div class="hw-builds-grid">
+              {builds.map((build) => {
+                const zh = zhNameOf(build);
+                return (
+                  <a
+                    href={`${HW_ZH.baseUrl}builds/${build.buildSlug}/`}
+                    class="hw-build-card-link"
+                    aria-label={`查看 ${zh} 的配裝`}
+                  >
+                    <div class="hw-build-card">
+                      <div class="hw-build-card-header">
+                        <div class="hw-build-character-image">
+                          <CharacterImage
+                            imageName={build.characterData?.image || build.displayName}
+                            alt={zh}
+                            width={300}
+                            height={300}
+                            class="hw-character-portrait"
+                            loading="eager"
+                          />
+                        </div>
+                        <div class="hw-build-character-info">
+                          <h3 class="hw-build-character-name">{zh}</h3>
+                          <p class="zh-build-en">{build.characterData?.name || build.displayName}</p>
+                          <div class="hw-build-character-meta">
+                            <span class="hw-badge" data-type="Cost">
+                              費用 {build.cost}
+                            </span>
+                            <HWRarityIcon rarity={build.rarity} width={40} height={20} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })
+    }
+
+    {
+      unavailableBuilds.length > 0 && (
+        <section class="hw-builds-coming-soon">
+          <h3 class="hw-builds-coming-soon-title">敬請期待</h3>
+          <div class="hw-builds-coming-soon-grid">
+            {unavailableBuilds.map((build) => {
+              const zh = zhNameOf(build);
+              return (
+                <div class="hw-build-card hw-build-card-disabled">
+                  <div class="hw-build-card-header">
+                    <div class="hw-build-character-info">
+                      <h3 class="hw-build-character-name">{zh}</h3>
+                      <div class="hw-build-character-meta">
+                        <span class="hw-badge" data-type="Cost">
+                          費用 {build.cost}
+                        </span>
+                        <HWRarityIcon rarity={build.rarity} width={40} height={20} />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="hw-build-card-footer">
+                    <span class="hw-build-coming-soon">敬請期待</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )
+    }
+  </div>
+</HwLangLayout>
+
+<style>
+  /* ZH-only: EN gloss under the Chinese character name */
+  .zh-build-en {
+    margin: 0.1rem 0 0.45rem 0;
+    font-size: 0.78rem;
+    color: var(--hw-text-very-muted);
+  }
+</style>

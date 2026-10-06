@@ -1,0 +1,216 @@
+---
+// Korean landing page for the Horizon Walker wiki: /ko/guides/horizon-walker/
+// Reuses the EN landing's classes (hw-about-section / hw-resources-section from
+// hw-landing-page.css) so the look is identical; labels are Korean and the
+// resource grid mirrors the EN categoryGroups with /ko/ URLs. Intro copy is
+// written for this wiki; game terms (인신/수호자/차원 균열/성흔/특성) are the
+// game's own official Korean wording.
+import HwLangLayout from '../../../layouts/lang/HwLangLayout.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
+import DiscordPromo from '../../../components/DiscordPromo.astro';
+import HWGuideIcon from '../../../components/horizon-walker/HWGuideIcon.astro';
+import { horizonWalkerConfig } from '../../../data/horizon-walker/horizon-walker.js';
+import { HW_ZH } from '../../../data/horizon-walker/ko/ui.js';
+
+const { gameInfo } = horizonWalkerConfig;
+const hasPlatforms = gameInfo.platforms && gameInfo.platforms.length > 0;
+
+// Korean titles for the EN guide ids (icons resolve by id, links go to /ko/)
+const GUIDE_ZH = {
+  characters: '캐릭터 데이터베이스',
+  'tier-list': '티어 리스트',
+  builds: '추천 빌드',
+  'community-builds': '커뮤니티 빌드',
+  mercenaries: '용병',
+  weapons: '무기',
+  stigmas: '성흔',
+  'ap-guide': '행동력 가이드',
+  traits: '특성',
+  demi: '반신 승급',
+  'stigma-sub-stats': '성흔 부옵션',
+  'story-gallery': '스토리 갤러리',
+  gifts: '선물',
+  'character-gifts': '캐릭터 선물 취향',
+  clock: '시계',
+  'redeem-codes': '교환 코드',
+  banners: '가챠 타임라인',
+  'patch-notes': '업데이트 공지',
+};
+
+const GROUP_ZH = {
+  characters: { title: '캐릭터', description: '캐릭터 데이터베이스, 빌드, 무기와 성흔' },
+  'game-mechanics': { title: '게임 시스템', description: '행동력, 특성, 반신 승급과 성흔 부옵션' },
+  resources: { title: '리소스', description: '스토리 갤러리, 선물, 시계, 교환 코드와 업데이트 공지' },
+};
+
+const zhUrl = (id, enUrl) =>
+  id === 'clock' ? enUrl : enUrl.replace('/guides/horizon-walker/', HW_ZH.baseUrl);
+
+const categoryGroups = horizonWalkerConfig.categoryGroups.map(g => ({
+  ...g,
+  title: GROUP_ZH[g.id]?.title || g.title,
+  description: GROUP_ZH[g.id]?.description || g.description,
+  guides: g.guides.map(gd => ({
+    ...gd,
+    title: GUIDE_ZH[gd.id] || gd.title,
+    url: zhUrl(gd.id, gd.url),
+  })),
+}));
+---
+
+<HwLangLayout lang="ko" ui={HW_ZH}
+  title="호라이즌 워커(Horizon Walker) 한국어 위키 - 캐릭터, 스킬, 티어 리스트 - GachaWiki"
+  description="호라이즌 워커 한국어 위키: 전 캐릭터의 공식 스킬과 스탯, 무기, 성흔, 티어 리스트, 가챠 타임라인과 업데이트 공지. 게임 텍스트는 모두 게임 공식 한국어에서 인용했습니다."
+  keywords={['호라이즌 워커', 'Horizon Walker', '한국어', 'wiki', '공략', '캐릭터', '스킬', '티어 리스트']}
+  heroTitle={HW_ZH.gameName}
+  ambientVideo="/videos/horizon-walker-hero.mp4"
+  breadcrumbItems={[{ name: '홈', href: '/' }, { name: '호라이즌 워커' }]}
+>
+  <!-- Game Overview Section (EN classes, Korean labels) -->
+  <section class="content-section hw-about-section">
+    <h2 class="section-title">게임 소개</h2>
+    <div class="hw-about-content">
+      <div class="hw-about-text">
+        <div class="game-description">
+          <p>
+            『호라이즌 워커』는 종말 이후의 세계를 배경으로 한 수집형 RPG입니다. 차원 균열에서 쏟아져 나온 괴물들로 인류의 황금기는 막을 내렸고, 죽음을 넘어 신의 권능을 손에 넣은 인신과 수호자들은 균열 너머에서 세상을 되찾기 위해 싸웁니다.
+          </p>
+          <p>
+            플레이어는 인신이 되어 수호자들을 모아 부대를 편성하고 턴제 전투에 도전합니다. 지형, 행동력, 스킬 연계를 활용해 강적을 쓰러뜨리고, 선물로 호감도를 올리며 스킨과 스토리 CG를 수집할 수 있습니다.
+          </p>
+          <p>{HW_ZH.labels.dataFromGame}</p>
+        </div>
+
+        <!-- Play Game Platforms -->
+        {
+          hasPlatforms && (
+            <div class="platforms-container">
+              <h3>플레이 가능 플랫폼:</h3>
+              <div class="platform-notes">
+                <ul>
+                  <li>• Google Play: 검열 버전</li>
+                  <li>• One Store: 무검열 (Steam으로 이전 예정)</li>
+                  <li>• Ero-Labs: 무검열 (Steam으로 이전하지 않음)</li>
+                  <li>• Steam: 무검열 버전</li>
+                </ul>
+              </div>
+              <div class="platforms-grid">
+                {gameInfo.platforms.map(platform => (
+                  <a
+                    href={platform.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="platform-button"
+                    aria-label={`호라이즌 워커 ${platform.name}에서 플레이`}
+                  >
+                    {platform.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )
+        }
+
+        <!-- Social Links -->
+        {
+          gameInfo.socialLinks && (
+            <div class="hw-social-links-container">
+              <h4>공식 커뮤니티:</h4>
+              <div class="hw-social-links">
+                {gameInfo.socialLinks.twitter && (
+                  <a
+                    href={gameInfo.socialLinks.twitter}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hw-social-link"
+                    aria-label="호라이즌 워커 공식 X/Twitter"
+                  >
+                    X/Twitter
+                  </a>
+                )}
+                {gameInfo.socialLinks.discord && (
+                  <a
+                    href={gameInfo.socialLinks.discord}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hw-social-link"
+                    aria-label="호라이즌 워커 공식 Discord"
+                  >
+                    Discord
+                  </a>
+                )}
+                {gameInfo.socialLinks.youtube && (
+                  <a
+                    href={gameInfo.socialLinks.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hw-social-link"
+                    aria-label="호라이즌 워커 공식 YouTube 채널"
+                  >
+                    YouTube
+                  </a>
+                )}
+              </div>
+            </div>
+          )
+        }
+
+        <DiscordPromo accent="#e8a547" />
+
+        <p class="last-updated">
+          최종 업데이트:<FormattedDate date={gameInfo.lastUpdated} />
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources Section (same grid/cards as EN, Korean labels) -->
+  <section class="hw-resources-section">
+    <h2 class="hw-resources-title">콘텐츠 바로가기</h2>
+
+    <div class="hw-resources-grid">
+      {
+        categoryGroups.map(category => {
+          return (
+            <div class={`hw-resource-category hw-category-${category.size}`}>
+              <div class="hw-category-header">
+                <h3>{category.title}</h3>
+                <p class="hw-category-description">{category.description}</p>
+              </div>
+              <div class="hw-buttons-grid">
+                {category.guides.map(guide => (
+                  <a
+                    href={guide.url}
+                    class="hw-resource-button"
+                    aria-label={`${guide.title} 바로가기`}
+                  >
+                    <HWGuideIcon guideId={guide.id} alt={guide.title} class="hw-guide-icon" />
+                    <span class="hw-guide-label">{guide.title}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <!-- Language switch -->
+  <section class="hw-resources-section">
+    <h2 class="hw-resources-title">언어</h2>
+    <div class="hw-resources-grid">
+      <div class="hw-resource-category hw-category-medium">
+        <div class="hw-category-header">
+          <h3>Language</h3>
+          <p class="hw-category-description">영어 위키로 전환</p>
+        </div>
+        <div class="hw-buttons-grid">
+          <a href={HW_ZH.selectorUrl} class="hw-resource-button" aria-label="English version">
+            <span class="hw-guide-label">English</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</HwLangLayout>

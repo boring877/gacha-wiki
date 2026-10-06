@@ -1,0 +1,480 @@
+---
+// Traditional-Chinese (zh-tw) mercenary detail pages: /zh-tw/guides/horizon-walker/mercenaries/<slug>/
+// Skill names come from the game's official zh-tw text via HW_ZH_SKILLS (EN
+// fallback when the wiki skill has no gameKey or the game has no zh-tw entry);
+// skill descriptions without an official zh-tw entry stay EN verbatim. Stat
+// and attribute labels use the official zh-tw stat names from game-text.js.
+// Re-skinned onto the EN hw-mercenary-page.css classes for visual parity.
+import HwLangLayout from '../../../../../layouts/lang/HwLangLayout.astro';
+import '../../../../../styles/games/horizon-walker/hw-mercenary-page.css';
+import { HORIZON_WALKER_MERCENARIES } from '../../../../../data/horizon-walker/mercenaries.js';
+import { r2Url } from '../../../../../data/r2-config.js';
+import {
+  HW_ZH_SKILLS,
+  HW_ZH_MERCENARIES,
+  HW_ZH_STAT_LABELS,
+  HW_ZH_STAT_TYPES,
+} from '../../../../../data/horizon-walker/zh-tw/game-text.js';
+import { HW_ZH } from '../../../../../data/horizon-walker/zh-tw/ui.js';
+import { MercenaryImage, HWRarityIcon, CrystalIcon } from '../../../../../components/horizon-walker/index.astro';
+import CharacterFullBodyImage from '../../../../../components/horizon-walker/CharacterFullBodyImage.astro';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return HORIZON_WALKER_MERCENARIES.map(m => ({
+    params: { slug: m.slug },
+    props: { slug: m.slug },
+  }));
+}
+
+const { slug } = Astro.props;
+const merc = HORIZON_WALKER_MERCENARIES.find(m => m.slug === slug);
+const nameZh = HW_ZH_MERCENARIES[merc.name] || merc.name;
+// Mercs without an official ZH name (Torta Warrior, Wizard Legionnaire) keep
+// the EN name once instead of showing it twice
+const titleName = nameZh === merc.name ? merc.name : `${nameZh}（${merc.name}）`;
+
+// Same image filename mapping as the EN MercenaryPageTemplate
+const mercenaryImageKeyMap = {
+  'Puppy Shooter': 'Puppy_Shooter.jpg',
+  'Puppy Stepper': 'Puppy_Stepper.jpg',
+  'Grrik': 'Grrik_Mercenary.jpg',
+  'Koblod': 'Koblod_Mercenary.jpg',
+  'Kobold': 'Koblod_Mercenary.jpg',
+  'Goliath': 'Goliath.jpg',
+  'Wizard Legionnaire': 'Wizard_Legionnaire.jpg',
+  'War Mercenary': 'War_Mercenary.jpg',
+  'Torta Warrior': 'Torta_warrior.jpg',
+  'Imperial Shieldbearer': 'Imperial_Shieldbearer_Mercenary.jpg',
+  'Split Twigs Priest': 'Split_Twigs_Priest.jpg',
+  'Swamp Elf Vigilante': 'Swamp_Elf_Vigilante_member.jpg',
+  'Headless Knight': 'Headless_Knight.jpg',
+};
+const mercenaryImageKey = mercenaryImageKeyMap[merc.name] || `${merc.name.replace(/ /g, '_')}.jpg`;
+const mercenaryImageBaseName = mercenaryImageKey.replace('.jpg', '');
+
+const formatStat = value => {
+  if (value === null || value === undefined) return '0';
+  return String(value) || '0';
+};
+
+// Wiki editorial role summary (data usage.primaryRole) in Chinese, by EN name
+const roleZh = {
+  'Puppy Stepper': '為隊友提供行動力與生命值恢復的輔助單位，同時具備一定的輸出能力。',
+  'Puppy Shooter': '透過反應射擊提供持續穿刺傷害與團隊支援的遠程輔助單位。',
+  'Imperial Shieldbearer': '專注於隊伍保護與治療的坦克輔助傭兵。',
+  'Grrik': '擅長反擊與處決能力的近戰輸出單位。',
+  'Koblod': '擅長游擊戰術與地下機動的隱蔽機動單位。',
+  'Goliath': '專注於遠程攻擊與火箭彈幕的重砲輸出單位。',
+  'Swamp Elf Vigilante': '擁有雙職業分支、可應對不同戰術的高機動近戰刺客。',
+  'War Mercenary': '兼具防禦能力與團隊支援的均衡型戰士傭兵。',
+  'Torta Warrior': '擁有獨特鎖鏈武器機制與傷害反彈能力的高傷害近戰戰士。',
+  'Split Twigs Priest': '擁有強力單體與範圍治療以及復活能力的專職治療輔助傭兵。',
+  'Wizard Legionnaire': '擅長火焰魔法範圍傷害與餘燼效果連動的戰場控制型輸出單位。',
+};
+
+// Wiki editorial trait summaries (data traits[].description) in Chinese
+const traitDescZh = {
+  'Machine-type unit with enhanced defensive capabilities.': '機械類型單位，防禦能力得到強化。',
+  'Warrior heritage providing enhanced physical combat capabilities.': '繼承戰士血統，物理戰鬥能力得到強化。',
+  'Imperial heritage providing enhanced combat capabilities.': '繼承帝國血統，戰鬥能力得到強化。',
+  'Kobold heritage providing enhanced evasion and survivability.': '繼承科博特血統，迴避與生存能力得到強化。',
+  'Swamp elf heritage providing enhanced mobility and AP efficiency.': '繼承沼澤精靈血統，機動性與行動力效率得到強化。',
+  'Torta heritage with enhanced vitality but reduced agility.': '繼承托爾塔血統，體質提升但敏捷降低。',
+};
+
+// EN stat label -> official ZH; a few wiki spellings alias onto the game keys
+const statTermZh = { ...HW_ZH_STAT_TYPES, 'Starting AP': '戰鬥開始行動力', 'Block Rate': '格擋機率' };
+const statTerms = Object.keys(statTermZh).sort((a, b) => b.length - a.length);
+
+// Replace EN stat names inside wiki trait characteristics with official ZH
+const zhStatText = text => {
+  let out = String(text ?? '');
+  for (const en of statTerms) out = out.split(en).join(statTermZh[en]);
+  return out.replace(/, /g, '，');
+};
+
+// Skill damage line: translate the ATK stat name, keep numbers verbatim
+const dmgZh = dmg => {
+  let out = String(dmg ?? '');
+  for (const en of ['Melee ATK', 'Ranged ATK', 'Shoot ATK', 'Magic ATK']) {
+    out = out.split(en).join(HW_ZH_STAT_TYPES[en] || en);
+  }
+  return out;
+};
+
+// Skills: official ZH name via gameKey (EN fallback); descs have no official
+// ZH entry in the merc data, so the game's EN text stays verbatim
+const skills = (merc.skills || []).map(sk => {
+  const zh = sk.gameKey ? HW_ZH_SKILLS[sk.gameKey] : null;
+  const desc = (zh && zh.desc) || sk.description || '';
+  return {
+    name: (zh && zh.name) || sk.name,
+    lines: desc.split('\n').filter(Boolean),
+    type: sk.type,
+    level: sk.level,
+    apCost: sk.apCost,
+    cooldown: sk.cooldown,
+    damage: sk.damage,
+  };
+});
+
+// Base five stats + combat stats with official ZH labels
+const coreKeys = ['strength', 'technic', 'intelligence', 'vitality', 'agility'];
+const combatKeys = [
+  'maxHp', 'meleeAtk', 'rangedAtk', 'magicAtk', 'spd', 'startingAp',
+  'apRecovery', 'accuracy', 'evade', 'critRate', 'critDmg', 'blockRate',
+];
+const labelZh = k => HW_ZH_STAT_LABELS[k] || statTermZh[k] || k;
+
+// Attribute boost/def rows: 斬擊/穿刺/打擊/火焰/冰霜/雷電/無形/毒素
+const attrRows = [
+  ['Slash', 'slashBoost', 'slashDef'],
+  ['Pierce', 'pierceBoost', 'pierceDef'],
+  ['Crush', 'crushBoost', 'crushDef'],
+  ['Heat', 'heatBoost', 'heatDef'],
+  ['Cold', 'coldBoost', 'coldDef'],
+  ['Electric', 'electricBoost', 'electricDef'],
+  ['Immaterial', 'immaterialBoost', 'immaterialDef'],
+  ['Poison', 'poisonBoost', 'poisonDef'],
+].map(([k, boostKey, defKey]) => ({
+  label: HW_ZH_STAT_TYPES[`${k} Boost`].replace('強化', ''),
+  boost: merc.stats[boostKey],
+  def: merc.stats[defKey],
+}));
+
+// Rarity stages table (EX to EX6)
+const stageNames = { EX: 'EX', 'EX 1': 'EX1', 'EX 2': 'EX2', 'EX 3': 'EX3', 'EX 4': 'EX4', 'EX 5': 'EX5', 'EX 6': 'EX6' };
+const stageKeys = Object.keys(merc.rarityStages || {});
+const stageStatKeys = ['maxHp', 'meleeAtk', 'rangedAtk', 'magicAtk', 'evade', 'apRecovery', 'startingAp', 'strength', 'technic', 'intelligence', 'vitality', 'agility'];
+
+const traits = (merc.traits || []).map(t => ({
+  name: t.name,
+  desc: traitDescZh[t.description] || t.description,
+  characteristics: t.characteristics ? zhStatText(t.characteristics) : null,
+}));
+
+const enPageUrl = `/guides/horizon-walker/mercenaries/${merc.slug}/`;
+---
+
+<HwLangLayout lang="zh-tw" ui={HW_ZH}
+  title={`${titleName} - 地平線行者 傭兵資料 - GachaWiki`}
+  description={`地平線行者傭兵 ${titleName} 的繁體中文資料：技能、屬性（等級 60）、突破階段屬性與固有特性。遊戲文字取自遊戲官方繁體中文。`}
+  keywords={[nameZh, merc.name, '地平線行者', '傭兵', '技能', '屬性']}
+  pageTitle={titleName}
+  breadcrumbItems={[
+    { name: '首頁', href: '/' },
+    { name: '地平線行者', href: HW_ZH.baseUrl },
+    { name: '傭兵', href: `${HW_ZH.baseUrl}mercenaries/` },
+    { name: nameZh },
+  ]}
+>
+  <!-- Mercenary Header & Overview -->
+  <section class="content-section character-overview-section">
+    <div class="character-overview-flex">
+      <div class="character-hero-card">
+        <div class="character-portrait-fullbody">
+          <div class="character-portrait-img-wrapper">
+            <CharacterFullBodyImage
+              imageName={mercenaryImageKey}
+              alt={`${nameZh} - ${merc.rarity} 稀有度傭兵`}
+              loading="eager"
+              format="webp"
+              quality={90}
+              class="hw-character-fullbody"
+            />
+            <CrystalIcon characterImage={mercenaryImageBaseName} alt={`${nameZh} 未來水晶`} size={48} class="crystal-icon-portrait" />
+            <div class="character-portrait-overlay"></div>
+            <div class="character-portrait-info">
+              <h1 class="character-name">{nameZh}</h1>
+              {nameZh !== merc.name && <p class="zh-merc-en">{merc.name}</p>}
+              <div class="character-portrait-badges">
+                <HWRarityIcon rarity={merc.rarity} width={56} height={28} />
+                <span class="hw-badge" data-type="Cost">費用 {merc.cost}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="character-info-card">
+          <p class="character-description">
+            {roleZh[merc.name] || merc.usage?.primaryRole}
+          </p>
+        </div>
+      </div>
+
+      <!-- Complete Stats Box (Right) -->
+      <div class="character-stats-container">
+        <div class="character-stats-box">
+          <div class="character-stats-header">
+            <h3 class="character-stats-title">基礎屬性</h3>
+            <p class="character-stats-explanation" data-stats-caption>等級 60、滿突破（EX 6）</p>
+          </div>
+          {merc.rarityStages && (
+            <div class="rarity-stage-selector" data-stages={JSON.stringify(merc.rarityStages)}>
+              {['EX', 'EX 1', 'EX 2', 'EX 3', 'EX 4', 'EX 5', 'EX 6'].map((stage, i) => (
+                <button
+                  type="button"
+                  class={`rarity-stage-chip${stage === 'EX 6' ? ' active' : ''}`}
+                  data-stage={stage}
+                  title={`${stage} 階段數值`}
+                  aria-label={`${stage} 階段數值`}
+                >
+                  <img
+                    src={r2Url('horizon-walker', `tier-icons/UI_Tier_Icon_${String(5 + i).padStart(2, '0')}.png`)}
+                    alt={stage}
+                    width={40}
+                    height={20}
+                    loading="lazy"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
+
+          <div class="character-stats-subtitle">核心屬性</div>
+          <div class="core-stats-explanation">
+            <span><span class="stat-name">{HW_ZH_STAT_LABELS.strength}</span> 近戰攻擊力</span>
+            <span><span class="stat-name">{HW_ZH_STAT_LABELS.technic}</span> 射擊攻擊力</span>
+            <span><span class="stat-name">{HW_ZH_STAT_LABELS.intelligence}</span> 魔法攻擊力</span>
+            <span><span class="stat-name">{HW_ZH_STAT_LABELS.vitality}</span> 最大生命值</span>
+            <span><span class="stat-name">{HW_ZH_STAT_LABELS.agility}</span> 迴避與體力復原力</span>
+          </div>
+          <div class="stats-core-row">
+            {coreKeys.map(k => (
+              <div class="stats-core-item">
+                <div class="stats-core-value" data-stat-field={k}>{formatStat(merc.stats[k])}</div>
+                <div class="stats-core-label">{labelZh(k)}</div>
+              </div>
+            ))}
+          </div>
+
+          <div class="character-stats-subtitle">戰鬥屬性</div>
+          <div class="stats-table">
+            {combatKeys.map(k => (
+              <div class="stats-row" title={k === 'startingAp' ? '戰鬥開始行動力 = 單位自身基礎戰鬥開始行動力 + 體力復原力。' : undefined}>
+                <span class="stats-row-label">
+                  {labelZh(k)}{k === 'startingAp' ? <sup class="stats-note">*</sup> : ''}
+                </span>
+                <span class="stats-row-value" data-stat-field={k}>
+                  {formatStat(merc.stats[k])}{k === 'critRate' || k === 'critDmg' ? '%' : ''}
+                </span>
+              </div>
+            ))}
+          </div>
+          <p class="stats-footnote">
+            * 戰鬥開始行動力為開戰時的總行動力：單位自身基礎戰鬥開始行動力加上體力復原力（見上）。體力復原力部分會隨突破階段（EX）提升的敏捷而增長。
+          </p>
+
+          <div class="character-stats-subtitle">屬性強化與防禦</div>
+          <div class="stats-attr-table">
+            <div class="stats-attr-header">
+              <span></span>
+              <span class="stats-attr-col">強化</span>
+              <span class="stats-attr-col">防禦</span>
+            </div>
+            {attrRows.map(r => (
+              <div class="stats-attr-row">
+                <span class="stats-attr-label">{r.label}</span>
+                <span class="stats-attr-value">{formatStat(r.boost)}</span>
+                <span class="stats-attr-value">{formatStat(r.def)}</span>
+              </div>
+            ))}
+          </div>
+
+          <script is:inline>
+            (function() {
+              document.querySelectorAll('.rarity-stage-selector').forEach(function(sel) {
+                var stages;
+                try { stages = JSON.parse(sel.getAttribute('data-stages') || '{}'); } catch (e) { return; }
+                var box = sel.closest('.character-stats-box');
+                if (!box) return;
+                sel.querySelectorAll('.rarity-stage-chip').forEach(function(chip) {
+                  chip.addEventListener('click', function() {
+                    sel.querySelectorAll('.rarity-stage-chip').forEach(function(c) { c.classList.remove('active'); });
+                    chip.classList.add('active');
+                    var stage = chip.getAttribute('data-stage');
+                    var st = stages[stage];
+                    if (!st) return;
+                    box.querySelectorAll('[data-stat-field]').forEach(function(el) {
+                      var f = el.getAttribute('data-stat-field');
+                      if (st[f] !== undefined) el.textContent = st[f];
+                    });
+                    var cap = box.querySelector('[data-stats-caption]');
+                    if (cap) cap.textContent = '等級 60，' + stage + (stage === 'EX 6' ? '（滿突破）' : '');
+                  });
+                });
+              });
+            })();
+          </script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rarity stage table (full per-stage numbers) -->
+  {stageKeys.length > 0 && (
+    <section class="content-section">
+      <h2 class="section-title">突破階段屬性</h2>
+      <div class="zh-stage-wrap">
+        <table class="zh-stage-table">
+          <thead>
+            <tr>
+              <th>階段</th>
+              {stageStatKeys.map(k => <th>{labelZh(k)}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {stageKeys.map(sk => (
+              <tr>
+                <td class="zh-stage-cell">{stageNames[sk] || sk}</td>
+                {stageStatKeys.map(k => (
+                  <td>{merc.rarityStages[sk][k] ?? '-'}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )}
+
+  <!-- Skills Section -->
+  {skills.length > 0 && (
+    <section class="content-section skills-section">
+      <h2 class="section-title">技能</h2>
+      <p class="skills-explanation">{HW_ZH.labels.statNote}</p>
+
+      {skills.map(sk => (
+        <div class={`skill-card ${sk.type === 'Passive' ? 'passive-skill' : ''}`}>
+          <div class="skill-header">
+            <h3 class="skill-title">{sk.name}</h3>
+            <div class="skill-meta">
+              {sk.type === 'Passive' ? (
+                <span class="skill-type-label passive-label">被動</span>
+              ) : (
+                <span class="skill-type-label skill-label">主動</span>
+              )}
+              {sk.level && <span class="skill-type-label skill-label">等級 {sk.level}</span>}
+              {sk.type !== 'Passive' && sk.apCost != null && sk.apCost > 0 && (
+                <span class="skill-cost">行動力 {sk.apCost}</span>
+              )}
+              {sk.type !== 'Passive' && sk.cooldown != null && sk.cooldown !== '0R' && (
+                <span class="skill-cooldown">冷卻 {sk.cooldown.replace('R', '')}</span>
+              )}
+            </div>
+          </div>
+          {sk.lines.length > 0 && (
+            <p class="skill-description">
+              {sk.lines.map((line, i) => (
+                <span>
+                  {line}
+                  {i < sk.lines.length - 1 && <br />}
+                </span>
+              ))}
+            </p>
+          )}
+          {sk.damage && (
+            <div class="skill-damage">
+              <span class="damage-label">傷害：</span>{' '}
+              <span class="damage-value">{dmgZh(sk.damage)}</span>
+            </div>
+          )}
+        </div>
+      ))}
+    </section>
+  )}
+
+  <!-- Unique Traits Section -->
+  {traits.length > 0 && (
+    <section class="content-section traits-section">
+      <h2 class="section-title">固有特性</h2>
+      <div class="trait-system-note">
+        <strong>特性系統：</strong>
+        傭兵會隨機獲得固有特性與通用特性，其中只有通用特性可以轉移或移除。部分傭兵擁有 1 個或多個固定固有特性。
+      </div>
+
+      {traits.map(t => (
+        <div class="trait-card">
+          <div class="trait-header">
+            <h3 class="trait-title">{t.name}</h3>
+            <span class="hw-badge" data-type="Trait">特性</span>
+          </div>
+          {t.desc && <p class="trait-description">{t.desc}</p>}
+          {t.characteristics && (
+            <div class="trait-characteristics">
+              <strong>效果：</strong>{t.characteristics}
+            </div>
+          )}
+        </div>
+      ))}
+    </section>
+  )}
+
+  <!-- Cross links -->
+  <section class="content-section">
+    <h2 class="section-title">更多內容</h2>
+    <ul class="zh-link-list">
+      <li><a href={enPageUrl}>完整英文傭兵頁（English）</a></li>
+      <li><a href={`${HW_ZH.baseUrl}mercenaries/`}>返回傭兵資料庫</a></li>
+      <li><a href={HW_ZH.selectorUrl}>切換語言（English）</a></li>
+    </ul>
+  </section>
+</HwLangLayout>
+
+<style>
+  /* ZH-only elements without an EN equivalent */
+  .zh-merc-en {
+    font-size: 0.95rem;
+    color: var(--hw-text-light);
+    opacity: 0.75;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .zh-stage-wrap {
+    overflow-x: auto;
+    margin-top: 0.25rem;
+  }
+
+  .zh-stage-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    min-width: 640px;
+  }
+
+  .zh-stage-table th,
+  .zh-stage-table td {
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    padding: 0.45rem 0.6rem;
+    text-align: center;
+    color: var(--hw-text-light);
+  }
+
+  .zh-stage-table th {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--hw-primary-warm);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .zh-stage-cell {
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .zh-link-list {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--hw-text-light);
+    font-size: 0.9375rem;
+    line-height: 1.9;
+  }
+
+  .zh-link-list a {
+    color: var(--hw-primary-warm);
+    text-decoration: none;
+    font-weight: 600;
+  }
+</style>

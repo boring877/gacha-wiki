@@ -1,0 +1,267 @@
+---
+// Japanese story gallery: /ja/guides/horizon-walker/story-gallery/
+// Same media as the EN page (story-cg.js + story-gallery.js, identical image
+// URLs and grid); only the tab labels, intro and character group titles are
+// Japanese. Captions are cleaned asset names with no official JA, so they are
+// kept verbatim from the data.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import { STORY_CG } from '../../../../data/horizon-walker/story-cg.js';
+import {
+  EVENT_STORY_GROUPS,
+  MAIN_STORY_CGS,
+  WORLD_ART,
+  POPUP_ART,
+  CUTSCENE_GROUPS,
+} from '../../../../data/horizon-walker/story-gallery.js';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../data/horizon-walker/characters.js';
+import { HW_ZH_NAMES } from '../../../../data/horizon-walker/ja/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ja/ui.js';
+import '../../../../styles/games/horizon-walker/story-gallery.css';
+
+export const prerender = true;
+
+const R2_BASE = 'https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/horizon-walker';
+
+// Join character CGs (keyed by hero id) with the roster for JA names and links.
+const charGroups = Object.entries(STORY_CG)
+  .map(([heroId, cgs]) => {
+    const roster = HORIZON_WALKER_CHARACTERS.find(c => String(c.id) === heroId);
+    if (!roster) return null;
+    return {
+      slug: roster.slug,
+      name: HW_ZH_NAMES[roster.id] || roster.name,
+      nameEn: roster.name,
+      url: `${HW_ZH.baseUrl}characters/${roster.slug}/`,
+      cgs,
+    };
+  })
+  .filter(g => g !== null)
+  .sort((a, b) => a.name.localeCompare(b.name, 'ja'));
+
+const charCgCount = charGroups.reduce((n, g) => n + g.cgs.length, 0);
+const eventCgCount = EVENT_STORY_GROUPS.reduce((n, g) => n + g.cgs.length, 0);
+const cutsceneCount = CUTSCENE_GROUPS.reduce((n, g) => n + g.videos.length, 0);
+
+const TABS = [
+  { id: 'characters', label: 'キャラクター', count: charCgCount },
+  { id: 'events', label: 'イベントストーリー', count: eventCgCount },
+  { id: 'story', label: 'メインストーリー', count: MAIN_STORY_CGS.length },
+  { id: 'cutscenes', label: 'カットシーン', count: cutsceneCount },
+  { id: 'world', label: 'ワールド', count: WORLD_ART.length },
+  { id: 'popups', label: '会話イラスト', count: POPUP_ART.length },
+];
+
+const totalCount =
+  charCgCount + eventCgCount + MAIN_STORY_CGS.length + cutsceneCount + WORLD_ART.length + POPUP_ART.length;
+---
+
+<HwLangLayout lang="ja" ui={HW_ZH}
+  title="ストーリーギャラリー - ホライゾン・ウォーカー日本語ウィキ - GachaWiki"
+  description={`ホライゾン・ウォーカーのストーリーギャラリー：全 ${totalCount} 点のストーリー CG、好感度ストーリーイラスト、イベントストーリー CG、メインストーリーイラスト、ワールド背景とカットシーン動画を、ゲームファイルから抽出して掲載しています。`}
+  keywords={['ホライゾン・ウォーカー', 'ストーリーギャラリー', 'CG', 'カットシーン', 'イラスト']}
+  breadcrumbItems={[
+    { name: 'ホーム', href: '/' },
+    { name: 'ホライゾン・ウォーカー', href: HW_ZH.baseUrl },
+    { name: 'ストーリーギャラリー' },
+  ]}
+>
+  <section class="hw-gallery-title-section">
+    <h1 class="hw-gallery-page-title">ストーリーギャラリー</h1>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-gallery-content-area">
+  <section class="hw-gallery-content">
+    <p class="hw-gallery-intro">
+      ゲーム内から抽出したストーリーイラストとカットシーン動画、全 {totalCount} 点を掲載しています。画像をクリックすると原寸で表示できます。カットシーン動画はページ内でそのまま再生できます。キャプションはアセットの原名で、英語のまま掲載しています。
+    </p>
+
+    <div class="hw-gallery-tabs" role="tablist">
+      {
+        TABS.map(tab => (
+          <button
+            class="hw-gallery-tab"
+            role="tab"
+            id={`zh-tab-${tab.id}`}
+            data-tab={tab.id}
+            aria-selected={tab.id === 'characters' ? 'true' : 'false'}
+          >
+            {tab.label}
+            <span class="hw-gallery-tab-count">{tab.count}</span>
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="hw-gallery-panel" id="zh-panel-characters" role="tabpanel" data-panel="characters">
+      {
+        charGroups.map(grp => (
+          <div class="hw-gallery-group">
+            <h2 class="hw-gallery-group-title">
+              <a href={grp.url}>{grp.name}</a>
+              <span class="zh-gallery-en">{grp.nameEn}</span>
+            </h2>
+            <div class="hw-gallery-grid">
+              {grp.cgs.map(cg => (
+                <a class="hw-gallery-card" href={`${R2_BASE}/${cg.file}`} target="_blank" rel="noopener">
+                  <img
+                    src={`${R2_BASE}/${cg.file}`}
+                    alt={`ホライゾン・ウォーカー ${grp.name} ストーリー CG`}
+                    width={400}
+                    height={225}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="hw-gallery-caption">{cg.caption}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="hw-gallery-panel" id="zh-panel-events" role="tabpanel" data-panel="events" hidden>
+      {
+        EVENT_STORY_GROUPS.map(grp => (
+          <div class="hw-gallery-group">
+            <h2 class="hw-gallery-group-title">{grp.label}</h2>
+            <div class="hw-gallery-grid">
+              {grp.cgs.map(cg => (
+                <a class="hw-gallery-card" href={`${R2_BASE}/${cg.file}`} target="_blank" rel="noopener">
+                  <img
+                    src={`${R2_BASE}/${cg.file}`}
+                    alt={`ホライゾン・ウォーカー ${grp.label} ストーリー CG`}
+                    width={400}
+                    height={225}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="hw-gallery-caption">{cg.caption}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="hw-gallery-panel" id="zh-panel-story" role="tabpanel" data-panel="story" hidden>
+      <div class="hw-gallery-grid">
+        {
+          MAIN_STORY_CGS.map(cg => (
+            <a class="hw-gallery-card" href={`${R2_BASE}/${cg.file}`} target="_blank" rel="noopener">
+              <img
+                src={`${R2_BASE}/${cg.file}`}
+                alt={`ホライゾン・ウォーカー メインストーリーイラスト：${cg.caption}`}
+                width={400}
+                height={225}
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="hw-gallery-caption">{cg.caption}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="hw-gallery-panel" id="zh-panel-cutscenes" role="tabpanel" data-panel="cutscenes" hidden>
+      {
+        CUTSCENE_GROUPS.map(grp => (
+          <div class="hw-gallery-group">
+            <h2 class="hw-gallery-group-title">{grp.label}</h2>
+            <div class="hw-gallery-grid hw-gallery-video-grid">
+              {grp.videos.map(v => (
+                <figure class="hw-gallery-video-card">
+                  <video controls preload="none" poster={`${R2_BASE}/${v.poster}`} width={800} height={450}>
+                    <source src={`${R2_BASE}/${v.file}`} type="video/mp4" />
+                    お使いのブラウザは動画再生に対応していません。
+                  </video>
+                  <figcaption class="hw-gallery-caption">
+                    {v.caption}
+                    <span class="hw-video-duration">{v.duration}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="hw-gallery-panel" id="zh-panel-world" role="tabpanel" data-panel="world" hidden>
+      <div class="hw-gallery-grid">
+        {
+          WORLD_ART.map(cg => (
+            <a class="hw-gallery-card" href={`${R2_BASE}/${cg.file}`} target="_blank" rel="noopener">
+              <img
+                src={`${R2_BASE}/${cg.file}`}
+                alt={`ホライゾン・ウォーカー ワールド背景：${cg.caption}`}
+                width={400}
+                height={225}
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="hw-gallery-caption">{cg.caption}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="hw-gallery-panel" id="zh-panel-popups" role="tabpanel" data-panel="popups" hidden>
+      <div class="hw-gallery-grid hw-gallery-grid-square">
+        {
+          POPUP_ART.map(cg => (
+            <a class="hw-gallery-card" href={`${R2_BASE}/${cg.file}`} target="_blank" rel="noopener">
+              <img
+                src={`${R2_BASE}/${cg.file}`}
+                alt={`ホライゾン・ウォーカー 会話イラスト：${cg.caption}`}
+                width={400}
+                height={400}
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="hw-gallery-caption">{cg.caption}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  </div>
+</HwLangLayout>
+
+<script is:inline>
+  // Tab switching for the Japanese story gallery
+  function initZhGalleryTabs() {
+    var tabs = document.querySelectorAll('.hw-gallery-tab');
+    var panels = document.querySelectorAll('.hw-gallery-panel');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabs.forEach(function (t) {
+          t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+        });
+        panels.forEach(function (p) {
+          p.hidden = p.dataset.panel !== tab.dataset.tab;
+        });
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initZhGalleryTabs);
+  } else {
+    initZhGalleryTabs();
+  }
+</script>
+
+<style>
+  .zh-gallery-en {
+    color: var(--hw-text-very-muted);
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin-left: 0.5rem;
+  }
+</style>

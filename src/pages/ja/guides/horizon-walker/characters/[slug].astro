@@ -1,0 +1,338 @@
+---
+// Japanese character detail pages: /ja/guides/horizon-walker/
+// characters/<slug>/. Renders the EN CharacterPageTemplate with a labels
+// override and a shallow-cloned character record whose game text (name, story,
+// profile, traits, weapon, skins, skill names) is swapped for the official
+// Japanese from src/data/horizon-walker/ja/game-text.js. Stats,
+// per-level values and image references are the wiki's own data, unchanged.
+import HwLangLayout from '../../../../../layouts/lang/HwLangLayout.astro';
+import CharacterPageTemplate from '../../../../../templates/horizon-walker/CharacterPageTemplate.astro';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../../data/horizon-walker/characters.js';
+import {
+  HW_ZH_NAMES,
+  HW_ZH_SKILLS,
+  HW_ZH_TRAITS,
+  HW_ZH_HERO_TRAITS,
+  HW_ZH_HERO_STORY,
+  HW_ZH_HERO_EPITHET,
+  HW_ZH_PROFILE,
+  HW_ZH_STAT_TYPES,
+  HW_ZH_INHERITANCE,
+  HW_ZH_WEAPON_SKILLS,
+  HW_ZH_SKILL_BY_NAME,
+  HW_ZH_SKINS,
+  HW_ZH_ITEMS,
+} from '../../../../../data/horizon-walker/ja/game-text.js';
+import { HW_ZH } from '../../../../../data/horizon-walker/ja/ui.js';
+
+// Same CSS set as the EN CharacterIndividualLayout so the page is pixel-identical
+import '../../../../../styles/global.css';
+import '../../../../../styles/typography.css';
+import '../../../../../styles/games/horizon-walker/hw-colors.css';
+import '../../../../../styles/games/horizon-walker/hw-layout.css';
+import '../../../../../styles/games/horizon-walker/hw-character-page.css';
+import '../../../../../styles/games/horizon-walker/hw-badges.css';
+import '../../../../../styles/games/horizon-walker/hw-community-build.css';
+
+export const prerender = true;
+
+// Per-character detail modules: each file exports one *Data
+const modules = import.meta.glob('/src/data/horizon-walker/characters/*.js', {
+  eager: true,
+});
+const dataBySlug = {};
+for (const [path, mod] of Object.entries(modules)) {
+  const slug = path.split('/').pop().replace('.js', '');
+  // most modules export <name>Data; nari/samarika export the bare name
+  const keys = Object.keys(mod);
+  const exportKey =
+    keys.find(k => k.endsWith('Data')) ||
+    keys.find(k => !k.endsWith('SEO') && !k.endsWith('Highlighting'));
+  if (exportKey) dataBySlug[slug] = mod[exportKey];
+}
+
+// weapon stat label: translate EN StatType names, keep suffixes like (weapon)
+const weaponStatLabel = k => {
+  if (HW_ZH_STAT_TYPES[k]) return HW_ZH_STAT_TYPES[k];
+  const m = k.match(/^(.+?)\s*\((.+)\)$/);
+  if (m && HW_ZH_STAT_TYPES[m[1]]) return `${HW_ZH_STAT_TYPES[m[1]]}（${m[2]}）`;
+  return k;
+};
+
+// EN item name -> official JA name (gifts and gift boxes)
+const jaItemNames = Object.fromEntries(
+  Object.entries(HW_ZH_ITEMS).map(([en, v]) => [en, v.name])
+);
+
+// Only roster heroes that have an official JA name get a Japanese page
+export function getStaticPaths() {
+  return HORIZON_WALKER_CHARACTERS.filter(c => HW_ZH_NAMES[c.id] && c.slug).map(c => ({
+    params: { slug: c.slug },
+    props: { id: c.id },
+  }));
+}
+
+const { id } = Astro.props;
+const char = HORIZON_WALKER_CHARACTERS.find(c => c.id === id);
+const detail = dataBySlug[char.slug] || {};
+const jaName = HW_ZH_NAMES[id];
+const epithet = HW_ZH_HERO_EPITHET[id];
+const jaStory = HW_ZH_HERO_STORY[id];
+const jaProfile = HW_ZH_PROFILE[id] || {};
+const jaTraitIds = HW_ZH_HERO_TRAITS[id] || [];
+
+// Shallow clone + swap: structure, stats, levels and image refs stay EN/wiki;
+// every official game string that has a JA localization is replaced.
+const jaData = { ...detail };
+jaData.name = jaName;
+jaData.nameEn = detail.name || char.name; // used by the template for EN-keyed lookups
+jaData.description = epithet || detail.description;
+jaData.shortDescription = epithet
+  ? `${jaName}、${epithet}。`
+  : String(detail.description || '').split('.')[0] + '.';
+jaData.story = jaStory || detail.story;
+
+// Profile values from the official JA game profile (EN fallback per field)
+if (detail.profile) {
+  jaData.profile = {
+    ...detail.profile,
+    age: jaProfile.age || detail.profile.age,
+    birthday: jaProfile.birthday || detail.profile.birthday,
+    racial: jaProfile.tribe || detail.profile.racial,
+    homeland: jaProfile.hometown || detail.profile.homeland,
+    height: jaProfile.height || detail.profile.height,
+    bwhRatio: jaProfile.threeSize || detail.profile.bwhRatio,
+  };
+}
+
+// Skill names from the game's JA skill table (keyed by gameKey); the wiki's EN
+// descriptions stay when the JA table has no description text
+if (detail.skills) {
+  jaData.skills = Object.fromEntries(
+    Object.entries(detail.skills).map(([k, sk]) => {
+      const ja = sk.gameKey ? HW_ZH_SKILLS[sk.gameKey] : null;
+      return [
+        k,
+        {
+          ...sk,
+          name: (ja && ja.name) || sk.name,
+          description: (ja && ja.desc) || sk.description,
+        },
+      ];
+    })
+  );
+}
+
+// Traits: JA trait ids map positionally onto the EN trait object order; the
+// gift-level-5 trait (Interested / 興味) keeps its special structure
+if (detail.uniqueTraits) {
+  const enTraitValues = Object.values(detail.uniqueTraits);
+  jaData.uniqueTraits = Object.fromEntries(
+    Object.entries(detail.uniqueTraits).map(([k, t], i) => {
+      let ja = jaTraitIds.length === enTraitValues.length ? HW_ZH_TRAITS[jaTraitIds[i]] : null;
+      if (!ja && t.name === 'Interested') ja = HW_ZH_TRAITS[55001]; // 興味
+      if (!ja) return [k, t];
+      return [k, { ...t, name: ja.name, description: ja.desc || t.description }];
+    })
+  );
+}
+
+// EX weapon: official JA name + flavor via the Inheritance (stigma/weapon) loc;
+// stat-label keys translated, unique-skill names via EN-name JA tables
+if (detail.weapon) {
+  const w = detail.weapon;
+  const weaponJa = HW_ZH_INHERITANCE[w.name];
+  jaData.weapon = {
+    ...w,
+    name: weaponJa?.name || w.name,
+    flavor: weaponJa?.desc || w.flavor,
+    stats: w.stats
+      ? Object.fromEntries(Object.entries(w.stats).map(([k, v]) => [weaponStatLabel(k), v]))
+      : w.stats,
+    levelStats: w.levelStats
+      ? Object.fromEntries(Object.entries(w.levelStats).map(([k, v]) => [weaponStatLabel(k), v]))
+      : w.levelStats,
+    uniqueSkills: w.uniqueSkills
+      ? Object.fromEntries(
+          Object.entries(w.uniqueSkills).map(([k, us]) => {
+            const ja = HW_ZH_WEAPON_SKILLS[us.name] || HW_ZH_SKILL_BY_NAME[us.name];
+            return [
+              k,
+              {
+                ...us,
+                name: (ja && ja.name) || us.name,
+                description: (ja && ja.desc) || us.description,
+              },
+            ];
+          })
+        )
+      : w.uniqueSkills,
+  };
+}
+
+// Japanese UI labels for CharacterPageTemplate (official game system
+// terms: スキル skills, 特性 traits, ステータス stats, 聖痕 stigma, 行動力 AP,
+// プレゼント gifts, スキン skins; stat names from the game's own JA StatType table)
+const ZH_LABELS = {
+  portraitAlt: '{name}、ホライゾン・ウォーカー {rarity} レアリティキャラ',
+  crystalAlt: '{name}のクリスタル',
+  costBadge: '編成コスト {n}',
+  defaultSummary: 'いつでも戦闘に加わる準備ができている有能なキャラクター。',
+  profileTitle: 'プロフィール',
+  ageLabel: '年齢：',
+  raceLabel: '種族：',
+  homelandLabel: '出身地：',
+  heightLabel: '身長：',
+  birthdayLabel: '誕生日：',
+  baseStatsTitle: '基礎ステータス',
+  statsCaptionFull: 'レベル 60、EX 最大（EX 6）',
+  statsStageCaption: 'レベル 60、{stage}',
+  statsStageCaptionFullSuffix: '（最大）',
+  statsAtStage: '{stage} のステータス',
+  coreStatsSubtitle: '主要ステータス',
+  statStr: '筋力',
+  statTec: '技巧',
+  statInt: '知能',
+  statVit: '体質',
+  statAgi: '敏捷',
+  coreStrRest: '：近接攻撃力',
+  coreTecRest: '：射撃攻撃力',
+  coreIntRest: '：魔法攻撃力',
+  coreVitRest: '：最大HP',
+  coreAgiRest: '：回避と行動回復力',
+  combatSubtitle: '戦闘',
+  maxHpLabel: '最大HP',
+  meleeAtkLabel: '近接攻撃力',
+  rangedAtkLabel: '射撃攻撃力',
+  magicAtkLabel: '魔法攻撃力',
+  speedLabel: '移動力',
+  startingApLabel: '戦闘開始時の行動力',
+  apRecoveryLabel: '行動回復力',
+  accuracyLabel: '命中',
+  evadeLabel: '回避',
+  critRateLabel: 'クリティカル率',
+  critDmgLabel: 'クリティカルダメージ',
+  blockRateLabel: 'ブロック確率',
+  startingApNote: '戦闘開始時の行動力 = キャラ自身の基礎戦闘開始行動力 + 行動回復力です。',
+  statsFootnote:
+    '* 戦闘開始時の行動力は、戦闘開始時の合計行動力です。キャラ自身の基礎戦闘開始行動力に行動回復力（上記参照）を加えた値になります。行動回復力の部分は、EX 段階の上昇による敏捷の増加に伴って伸びていきます。',
+  attributesSubtitle: '属性強化と防御',
+  boostCol: '強化',
+  defCol: '防御',
+  attrSlash: '斬撃',
+  attrPierce: '刺突',
+  attrCrush: '打撃',
+  attrHeat: '火炎',
+  attrCold: '冷気',
+  attrElectric: '電気',
+  attrImmaterial: '無形',
+  attrPoison: '毒',
+  storyTitle: 'キャラクターストーリー',
+  sentenceJoin: '',
+  skillsTitle: 'スキル',
+  skillsExplanation: 'すべてのスキルは最大レベルの状態で表示されています',
+  reworkPointerPre: '{name}は{date}にリワークされました。現在のページはリワーク後のバージョンを表示しており、リワーク前のテキストはページ下部の',
+  reworkArchiveLink: 'リワークアーカイブ',
+  reworkPointerPost: 'に残っています。',
+  passiveLabel: 'パッシブ',
+  skillLabel: 'スキル',
+  cdLabel: 'クールダウン {n}',
+  apLabel: '行動力 {n}',
+  damageLabel: 'ダメージ：',
+  damageOfType: ' の{type}',
+  damageSplash: '（+{n} スプラッシュ）',
+  triggerCondition: '{name} の発動条件：[Seeker of Pleasure] 効果中',
+  traitsTitle: '固有特性',
+  interestedTraitName: '興味',
+  giftLevel5Badge: '好感度レベル 5',
+  uniqueTraitBadge: '固有特性',
+  interestedNoteStrong: '好感度レベル 5 で解放：',
+  interestedNoteRest: 'プレゼントで好感度を 2000 累計すると、この特性が有効になります。',
+  level5BonusLabel: '好感度レベル 5 ボーナス：',
+  demiTitle: '半神昇格',
+  exRequiredBadge: 'EX 必須',
+  demiBanner:
+    '半神昇格すると、このキャラは主人公に代わって部隊の Executor を務められるようになり、部隊全体がオブリビアへの免疫を獲得します。編成時には {n} 点の神力（DP）を消費します。',
+  authoritySkillBadge: '神位スキル',
+  demiStageValuesLabel: '各昇格段階の数値：',
+  demiStageView: '第 {n} 段階',
+  demiStageAria: '第 {n} 段階',
+  mightTitle: 'ランダム Might スキル',
+  mightIntro:
+    '半神昇格時には、以下の 10 種の Might スキルのうち 1 つをランダムで獲得します。各スキルの等級は 1 から 5 で、等級が高いほど希少です。',
+  effectsTitle: '効果説明',
+  weaponTitlePrefix: '武器：',
+  weaponGrowNote: '基礎数値は武器レベル（Lv 1 から Lv 60）に応じて成長します。EX 強化（EX 1 から EX 5）は特殊スキルのみを強化します。',
+  weaponStaticNote: '数値とスキルはレベル 60、EX 最大の状態です',
+  basicStatsTitle: '基礎数値（Lv 1 → Lv 60）',
+  weaponStatSuffix: '（武器）',
+  ratingStatSuffix: '（評価）',
+  pctSuffix: '（%）',
+  signatureSkillPrefix: '専用スキル：',
+  uniqueSkillPrefix: '特殊スキル：',
+  signatureNameStrip: '^[^：]+専用：\\s*',
+  skillValuesAtRaise: 'EX 強化時のスキル数値：',
+  signatureReqNote: '{name} 必須：{name} がこの武器を装備しているときのみ有効です。固定数値：武器レベルや EX 強化では変化しません。',
+  noteLabel: '注：',
+  storyGalleryTitle: 'ストーリーギャラリー',
+  storyGalleryNote: '{name}のストーリー章のイラストです。',
+  storyCgAlt: '{name}のストーリーイラスト：{caption}',
+  skinsTitle: 'スキン',
+  skinAlt: '{name}の{skin}スキン',
+  skinPromoAlt: '{name}の{skin}スキン宣伝イラスト',
+  skinPortraitAlt: '{name}の{skin}アイコン',
+  videosTitle: '関連動画',
+  videosNote: 'ホライゾン・ウォーカー公式 YouTube チャンネルの{name}関連動画です。',
+  videoTitleTpl: '{name}：{title}',
+  playVideoAria: '動画を再生：{title}',
+  videoThumbAlt: '{title} の動画サムネイル',
+  videoBadgeFallback: '動画',
+  watchMoreLabel: '公式 YouTube チャンネルでさらに見る',
+  videoTypes: {
+    intro: '新しい親衛',
+    costume: 'コスチューム',
+    affection: '好感度',
+    preview: 'プレビュー',
+  },
+  giftTitle: 'プレゼントの好み',
+  giftExplanation: '好感度 2000 ポイントでレベル 5 に到達すると特性ボーナスが解放され、同時にゴールドとゲーム内通貨も獲得できます',
+  level5BonusTitle: '好感度レベル 5 ボーナス',
+  affectionBonusBadge: '好感度ボーナス',
+  highValueGiftsTitle: '高ポイントプレゼント',
+  highValueGiftsDesc: 'これらの希少なプレゼントは非常に高い好感度（合計 80 以上）を提供する、貴重な品々です',
+  favoriteGiftsTitle: '大好きなプレゼント',
+  favoriteGiftsDesc: 'ボーナスポイント（20 以上）を提供する、このキャラが大好きなプレゼントです',
+  likedGiftsTitle: '好きなプレゼント',
+  likedGiftsDesc: '10 ポイントの追加ボーナスを提供する、このキャラが好きなプレゼントです',
+  altHighValueTitle: '代替の高ポイント選択肢',
+  altHighValueDesc: '女王のティアラは好みに関係なく、どのキャラに贈っても最も高い好感度（100 ポイント）を提供します',
+  basePointsLabel: '基本：',
+  bonusPointsLabel: '+ ボーナス：',
+  totalPointsLabel: '= 合計：',
+  maxAffectionLabel: '好感度レベル 5 到達に必要：',
+  giftsCountLabel: '{n} 個',
+  foundInLabel: '入手先：',
+  noGiftsTitle: 'プレゼントの好みは近日公開',
+  noGiftsDesc: '{name}のプレゼントの好みはまだ公開されていません。好きなプレゼントが判明次第、更新します！',
+  reworkTitle: 'リワークアーカイブ',
+  beforeTag: 'リワーク前',
+  afterTag: 'リワーク後',
+  itemNames: jaItemNames,
+  skinNames: HW_ZH_SKINS,
+  statTypeNames: HW_ZH_STAT_TYPES,
+};
+---
+
+<HwLangLayout lang="ja" ui={HW_ZH}
+  title={`${jaName}（${char.name}）- ホライゾン・ウォーカー キャラデータ - GachaWiki`}
+  description={`ホライゾン・ウォーカーのキャラ ${jaName}（${char.name}）の日本語データ：公式スキル説明、固有特性、プロフィール、ステータス、EX 武器とプレゼントの好みを掲載。ゲームテキストはすべてゲーム公式の日本語ローカライズから引用しています。`}
+  keywords={[jaName, char.name, 'ホライゾン・ウォーカー', 'スキル', 'ステータス', '攻略']}
+  breadcrumbItems={[
+    { name: 'ホーム', href: '/' },
+    { name: 'ホライゾン・ウォーカー', href: HW_ZH.baseUrl },
+    { name: 'キャラデータベース', href: `${HW_ZH.baseUrl}characters/` },
+    { name: jaName },
+  ]}
+>
+  <CharacterPageTemplate characterData={jaData} labels={ZH_LABELS} />
+</HwLangLayout>

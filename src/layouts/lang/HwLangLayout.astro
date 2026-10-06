@@ -1,0 +1,114 @@
+---
+// Language-generic layout for localized Horizon Walker wikis (/zh-tw/, /ja/,
+// /ko/). Same house style as the English wiki; the caller passes its language
+// ui module (gameName/baseUrl/nav from src/data/horizon-walker/<lang>/ui.js)
+// and the html lang code. The /zh/ wiki uses its own HwZhLayout wrapper.
+import HWBaseHead from '../../components/horizon-walker/HWBaseHead.astro';
+import GameSEO from '../../components/GameSEO.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationDesktop from '../../components/GameNavigationDesktop.astro';
+import GameNavigationMobile from '../../components/GameNavigationMobile.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import Analytics from '../../components/Analytics.astro';
+import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/horizon-walker/hw-colors.css';
+import '../../styles/games/horizon-walker/hw-layout.css';
+import '../../styles/games/horizon-walker/hw-landing-page.css';
+import '../../styles/games/horizon-walker/hw-badges.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  // html lang code (zh-tw, ja, ko)
+  lang: string;
+  // the language's ui module (HW_ZH export from data/horizon-walker/<lang>/ui.js)
+  ui: any;
+  // page H1 shown in the title-only section (omit for pages with their own hero)
+  pageTitle?: string;
+  // centered hero like the EN LandingLayout: big title + ambient background video
+  heroTitle?: string;
+  ambientVideo?: string;
+  // manual breadcrumb items: [{ name, href }]
+  breadcrumbItems?: { name: string; href?: string }[];
+  keywords?: string[];
+}
+
+const { title, description, lang, ui, pageTitle, heroTitle, ambientVideo, breadcrumbItems, keywords } =
+  Astro.props;
+
+const langNav = {
+  name: ui.gameName,
+  gameUrl: ui.baseUrl,
+  sections: ui.nav,
+};
+---
+
+<html lang={lang}>
+  <head>
+    <HWBaseHead title={title} description={description || ''} />
+    <GameSEO
+      gameKey="horizon-walker"
+      title={title}
+      description={description}
+      additionalKeywords={[...(keywords || []), ui.gameName, ui.langLabel, 'wiki']}
+    />
+    <Analytics />
+  </head>
+  <body class="horizon-walker-body">
+    <CustomScrollbar />
+
+    <div class="bg-layer hw-bg-primary"></div>
+    <div class="bg-layer hw-bg-accent-1"></div>
+    <div class="bg-layer hw-bg-accent-2"></div>
+    <div class="bg-layer hw-bg-accent-3"></div>
+
+    <div class="horizon-walker-content">
+      <Header />
+      <GameNavigationDesktop currentPath={Astro.url.pathname} gameKey="horizon-walker" navOverride={langNav} />
+      <GameNavigationMobile currentPath={Astro.url.pathname} gameKey="horizon-walker" navOverride={langNav} />
+
+      <div class="horizon-walker-container">
+        <main class="horizon-walker-main" id="main-content">
+          {heroTitle && (
+            <section class="hero-section">
+              {ambientVideo && (
+                <div class="hw-bg-video-wrap" aria-hidden="true">
+                  <video class="hw-bg-video" autoplay muted loop playsinline preload="auto">
+                    <source src={ambientVideo} type="video/mp4" />
+                  </video>
+                </div>
+              )}
+              <h1 class="hero-title">{heroTitle}</h1>
+              <DecorativeLines />
+            </section>
+          )}
+
+          {pageTitle && (
+            <section class="title-only-section">
+              <h1 class="title-only-heading">{pageTitle}</h1>
+            </section>
+          )}
+
+          {
+            breadcrumbItems && breadcrumbItems.length > 0 && (
+              <Breadcrumb
+                items={breadcrumbItems.map(c => ({ name: c.name, href: c.href || '#' }))}
+                showBackButton={true}
+              />
+            )
+          }
+
+          <div class="content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>

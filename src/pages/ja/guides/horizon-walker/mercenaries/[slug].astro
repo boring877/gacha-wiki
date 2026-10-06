@@ -1,0 +1,480 @@
+---
+// Japanese mercenary detail pages: /ja/guides/horizon-walker/mercenaries/<slug>/
+// Skill names come from the game's official JA via HW_ZH_SKILLS (EN fallback
+// when the wiki skill has no gameKey or the game has no JA entry); skill
+// descriptions without an official JA entry stay EN verbatim. Stat and
+// attribute labels use the official JA stat names from game-text.js.
+// Re-skinned onto the EN hw-mercenary-page.css classes for visual parity.
+import HwLangLayout from '../../../../../layouts/lang/HwLangLayout.astro';
+import '../../../../../styles/games/horizon-walker/hw-mercenary-page.css';
+import { HORIZON_WALKER_MERCENARIES } from '../../../../../data/horizon-walker/mercenaries.js';
+import { r2Url } from '../../../../../data/r2-config.js';
+import {
+  HW_ZH_SKILLS,
+  HW_ZH_MERCENARIES,
+  HW_ZH_STAT_LABELS,
+  HW_ZH_STAT_TYPES,
+} from '../../../../../data/horizon-walker/ja/game-text.js';
+import { HW_ZH } from '../../../../../data/horizon-walker/ja/ui.js';
+import { MercenaryImage, HWRarityIcon, CrystalIcon } from '../../../../../components/horizon-walker/index.astro';
+import CharacterFullBodyImage from '../../../../../components/horizon-walker/CharacterFullBodyImage.astro';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return HORIZON_WALKER_MERCENARIES.map(m => ({
+    params: { slug: m.slug },
+    props: { slug: m.slug },
+  }));
+}
+
+const { slug } = Astro.props;
+const merc = HORIZON_WALKER_MERCENARIES.find(m => m.slug === slug);
+const nameJa = HW_ZH_MERCENARIES[merc.name] || merc.name;
+// Mercs without an official JA name (Torta Warrior, Wizard Legionnaire) keep
+// the EN name once instead of showing it twice
+const titleName = nameJa === merc.name ? merc.name : `${nameJa}（${merc.name}）`;
+
+// Same image filename mapping as the EN MercenaryPageTemplate
+const mercenaryImageKeyMap = {
+  'Puppy Shooter': 'Puppy_Shooter.jpg',
+  'Puppy Stepper': 'Puppy_Stepper.jpg',
+  'Grrik': 'Grrik_Mercenary.jpg',
+  'Koblod': 'Koblod_Mercenary.jpg',
+  'Kobold': 'Koblod_Mercenary.jpg',
+  'Goliath': 'Goliath.jpg',
+  'Wizard Legionnaire': 'Wizard_Legionnaire.jpg',
+  'War Mercenary': 'War_Mercenary.jpg',
+  'Torta Warrior': 'Torta_warrior.jpg',
+  'Imperial Shieldbearer': 'Imperial_Shieldbearer_Mercenary.jpg',
+  'Split Twigs Priest': 'Split_Twigs_Priest.jpg',
+  'Swamp Elf Vigilante': 'Swamp_Elf_Vigilante_member.jpg',
+  'Headless Knight': 'Headless_Knight.jpg',
+};
+const mercenaryImageKey = mercenaryImageKeyMap[merc.name] || `${merc.name.replace(/ /g, '_')}.jpg`;
+const mercenaryImageBaseName = mercenaryImageKey.replace('.jpg', '');
+
+const formatStat = value => {
+  if (value === null || value === undefined) return '0';
+  return String(value) || '0';
+};
+
+// Wiki editorial role summary (data usage.primaryRole) in Japanese, by EN name
+const roleJa = {
+  'Puppy Stepper': '味方に行動力と HP を回復させるサポートユニットで、ある程度の火力も持ちます。',
+  'Puppy Shooter': '反応射撃で継続的な刺突ダメージとチーム支援を提供する遠距離サポートユニット。',
+  'Imperial Shieldbearer': '部隊の保護と回復に特化したタンク・サポート型の傭兵。',
+  'Grrik': 'カウンターと処刑能力に長けた近接アタッカー。',
+  'Koblod': 'ゲリラ戦術と地下機動に長けた隠密機動ユニット。',
+  'Goliath': '遠距離攻撃とロケット弾幕に特化した重火力アタッカー。',
+  'Swamp Elf Vigilante': '二つのクラス分岐を持ち、さまざまな戦術に対応できる高機動の近接アサシン。',
+  'War Mercenary': '防御力とチーム支援を併せ持つバランス型の戦士傭兵。',
+  'Torta Warrior': '独自の鎖武器ギミックとダメージ反射能力を持つ高火力の近接戦士。',
+  'Split Twigs Priest': '強力な単体・範囲回復と復活能力を持つ回復特化のサポート傭兵。',
+  'Wizard Legionnaire': '炎魔法の範囲ダメージと残り火効果の連携に長けた戦場制御型アタッカー。',
+};
+
+// Wiki editorial trait summaries (data traits[].description) in Japanese
+const traitDescJa = {
+  'Machine-type unit with enhanced defensive capabilities.': '機械タイプのユニットで、防御能力が強化されています。',
+  'Warrior heritage providing enhanced physical combat capabilities.': '戦士の血統を受け継ぎ、物理戦闘能力が強化されています。',
+  'Imperial heritage providing enhanced combat capabilities.': '帝国の血統を受け継ぎ、戦闘能力が強化されています。',
+  'Kobold heritage providing enhanced evasion and survivability.': 'コボルトの血統を受け継ぎ、回避と生存能力が強化されています。',
+  'Swamp elf heritage providing enhanced mobility and AP efficiency.': '沼エルフの血統を受け継ぎ、機動力と行動力効率が強化されています。',
+  'Torta heritage with enhanced vitality but reduced agility.': 'トルタの血統を受け継ぎ、体質が向上する代わりに敏捷が低下します。',
+};
+
+// EN stat label -> official JA; a few wiki spellings alias onto the game keys
+const statTermJa = { ...HW_ZH_STAT_TYPES, 'Starting AP': '戦闘開始時の行動力', 'Block Rate': 'ブロック確率' };
+const statTerms = Object.keys(statTermJa).sort((a, b) => b.length - a.length);
+
+// Replace EN stat names inside wiki trait characteristics with official JA
+const jaStatText = text => {
+  let out = String(text ?? '');
+  for (const en of statTerms) out = out.split(en).join(statTermJa[en]);
+  return out.replace(/, /g, '，');
+};
+
+// Skill damage line: translate the ATK stat name, keep numbers verbatim
+const dmgJa = dmg => {
+  let out = String(dmg ?? '');
+  for (const en of ['Melee ATK', 'Ranged ATK', 'Shoot ATK', 'Magic ATK']) {
+    out = out.split(en).join(HW_ZH_STAT_TYPES[en] || en);
+  }
+  return out;
+};
+
+// Skills: official JA name via gameKey (EN fallback); descs have no official
+// JA entry in the merc data, so the game's EN text stays verbatim
+const skills = (merc.skills || []).map(sk => {
+  const zh = sk.gameKey ? HW_ZH_SKILLS[sk.gameKey] : null;
+  const desc = (zh && zh.desc) || sk.description || '';
+  return {
+    name: (zh && zh.name) || sk.name,
+    lines: desc.split('\n').filter(Boolean),
+    type: sk.type,
+    level: sk.level,
+    apCost: sk.apCost,
+    cooldown: sk.cooldown,
+    damage: sk.damage,
+  };
+});
+
+// Base five stats + combat stats with official JA labels
+const coreKeys = ['strength', 'technic', 'intelligence', 'vitality', 'agility'];
+const combatKeys = [
+  'maxHp', 'meleeAtk', 'rangedAtk', 'magicAtk', 'spd', 'startingAp',
+  'apRecovery', 'accuracy', 'evade', 'critRate', 'critDmg', 'blockRate',
+];
+const labelJa = k => HW_ZH_STAT_LABELS[k] || statTermJa[k] || k;
+
+// Attribute boost/def rows: 斬撃/刺突/打撃/火炎/冷気/電気/無形/毒
+const attrRows = [
+  ['Slash', 'slashBoost', 'slashDef'],
+  ['Pierce', 'pierceBoost', 'pierceDef'],
+  ['Crush', 'crushBoost', 'crushDef'],
+  ['Heat', 'heatBoost', 'heatDef'],
+  ['Cold', 'coldBoost', 'coldDef'],
+  ['Electric', 'electricBoost', 'electricDef'],
+  ['Immaterial', 'immaterialBoost', 'immaterialDef'],
+  ['Poison', 'poisonBoost', 'poisonDef'],
+].map(([k, boostKey, defKey]) => ({
+  label: HW_ZH_STAT_TYPES[`${k} Boost`].replace('強化', ''),
+  boost: merc.stats[boostKey],
+  def: merc.stats[defKey],
+}));
+
+// Rarity stages table (EX to EX6)
+const stageNames = { EX: 'EX', 'EX 1': 'EX1', 'EX 2': 'EX2', 'EX 3': 'EX3', 'EX 4': 'EX4', 'EX 5': 'EX5', 'EX 6': 'EX6' };
+const stageKeys = Object.keys(merc.rarityStages || {});
+const stageStatKeys = ['maxHp', 'meleeAtk', 'rangedAtk', 'magicAtk', 'evade', 'apRecovery', 'startingAp', 'strength', 'technic', 'intelligence', 'vitality', 'agility'];
+
+const traits = (merc.traits || []).map(t => ({
+  name: t.name,
+  desc: traitDescJa[t.description] || t.description,
+  characteristics: t.characteristics ? jaStatText(t.characteristics) : null,
+}));
+
+const enPageUrl = `/guides/horizon-walker/mercenaries/${merc.slug}/`;
+---
+
+<HwLangLayout lang="ja" ui={HW_ZH}
+  title={`${titleName} - ホライゾン・ウォーカー 傭兵データ - GachaWiki`}
+  description={`ホライゾン・ウォーカーの傭兵 ${titleName} のデータ：スキル、ステータス（レベル 60）、突破段階のステータスと固有特性を掲載。ゲームテキストはゲーム公式の日本語から引用しています。`}
+  keywords={[nameJa, merc.name, 'ホライゾン・ウォーカー', '傭兵', 'スキル', 'ステータス']}
+  pageTitle={titleName}
+  breadcrumbItems={[
+    { name: 'ホーム', href: '/' },
+    { name: 'ホライゾン・ウォーカー', href: HW_ZH.baseUrl },
+    { name: '傭兵', href: `${HW_ZH.baseUrl}mercenaries/` },
+    { name: nameJa },
+  ]}
+>
+  <!-- Mercenary Header & Overview -->
+  <section class="content-section character-overview-section">
+    <div class="character-overview-flex">
+      <div class="character-hero-card">
+        <div class="character-portrait-fullbody">
+          <div class="character-portrait-img-wrapper">
+            <CharacterFullBodyImage
+              imageName={mercenaryImageKey}
+              alt={`${nameJa} - ${merc.rarity} レアリティの傭兵`}
+              loading="eager"
+              format="webp"
+              quality={90}
+              class="hw-character-fullbody"
+            />
+            <CrystalIcon characterImage={mercenaryImageBaseName} alt={`${nameJa} のクリスタル`} size={48} class="crystal-icon-portrait" />
+            <div class="character-portrait-overlay"></div>
+            <div class="character-portrait-info">
+              <h1 class="character-name">{nameJa}</h1>
+              {nameJa !== merc.name && <p class="zh-merc-en">{merc.name}</p>}
+              <div class="character-portrait-badges">
+                <HWRarityIcon rarity={merc.rarity} width={56} height={28} />
+                <span class="hw-badge" data-type="Cost">コスト {merc.cost}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="character-info-card">
+          <p class="character-description">
+            {roleJa[merc.name] || merc.usage?.primaryRole}
+          </p>
+        </div>
+      </div>
+
+      <!-- Complete Stats Box (Right) -->
+      <div class="character-stats-container">
+        <div class="character-stats-box">
+          <div class="character-stats-header">
+            <h3 class="character-stats-title">基礎ステータス</h3>
+            <p class="character-stats-explanation" data-stats-caption>レベル 60、突破最大（EX 6）</p>
+          </div>
+          {merc.rarityStages && (
+            <div class="rarity-stage-selector" data-stages={JSON.stringify(merc.rarityStages)}>
+              {['EX', 'EX 1', 'EX 2', 'EX 3', 'EX 4', 'EX 5', 'EX 6'].map((stage, i) => (
+                <button
+                  type="button"
+                  class={`rarity-stage-chip${stage === 'EX 6' ? ' active' : ''}`}
+                  data-stage={stage}
+                  title={`${stage} 段階の数値`}
+                  aria-label={`${stage} 段階の数値`}
+                >
+                  <img
+                    src={r2Url('horizon-walker', `tier-icons/UI_Tier_Icon_${String(5 + i).padStart(2, '0')}.png`)}
+                    alt={stage}
+                    width={40}
+                    height={20}
+                    loading="lazy"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
+
+          <div class="character-stats-subtitle">主要ステータス</div>
+          <div class="core-stats-explanation">
+            <span><span class="stat-name">{HW_ZH_STAT_LABELS.strength}</span> 近接攻撃力</span>
+            <span><span class="stat-name">{HW_ZH_STAT_LABELS.technic}</span> 射撃攻撃力</span>
+            <span><span class="stat-name">{HW_ZH_STAT_LABELS.intelligence}</span> 魔法攻撃力</span>
+            <span><span class="stat-name">{HW_ZH_STAT_LABELS.vitality}</span> 最大HP</span>
+            <span><span class="stat-name">{HW_ZH_STAT_LABELS.agility}</span> 回避と行動回復力</span>
+          </div>
+          <div class="stats-core-row">
+            {coreKeys.map(k => (
+              <div class="stats-core-item">
+                <div class="stats-core-value" data-stat-field={k}>{formatStat(merc.stats[k])}</div>
+                <div class="stats-core-label">{labelJa(k)}</div>
+              </div>
+            ))}
+          </div>
+
+          <div class="character-stats-subtitle">戦闘ステータス</div>
+          <div class="stats-table">
+            {combatKeys.map(k => (
+              <div class="stats-row" title={k === 'startingAp' ? '戦闘開始時の行動力 = ユニット自身の基礎戦闘開始行動力 + スタミナ回復力です。' : undefined}>
+                <span class="stats-row-label">
+                  {labelJa(k)}{k === 'startingAp' ? <sup class="stats-note">*</sup> : ''}
+                </span>
+                <span class="stats-row-value" data-stat-field={k}>
+                  {formatStat(merc.stats[k])}{k === 'critRate' || k === 'critDmg' ? '%' : ''}
+                </span>
+              </div>
+            ))}
+          </div>
+          <p class="stats-footnote">
+            * 戦闘開始時の行動力は、戦闘開始時の合計行動力です。ユニット自身の基礎戦闘開始行動力にスタミナ回復力（上記参照）を加えた値になります。スタミナ回復力の部分は、突破段階（EX）の上昇による敏捷の増加に伴って伸びていきます。
+          </p>
+
+          <div class="character-stats-subtitle">属性強化と防御</div>
+          <div class="stats-attr-table">
+            <div class="stats-attr-header">
+              <span></span>
+              <span class="stats-attr-col">強化</span>
+              <span class="stats-attr-col">防御</span>
+            </div>
+            {attrRows.map(r => (
+              <div class="stats-attr-row">
+                <span class="stats-attr-label">{r.label}</span>
+                <span class="stats-attr-value">{formatStat(r.boost)}</span>
+                <span class="stats-attr-value">{formatStat(r.def)}</span>
+              </div>
+            ))}
+          </div>
+
+          <script is:inline>
+            (function() {
+              document.querySelectorAll('.rarity-stage-selector').forEach(function(sel) {
+                var stages;
+                try { stages = JSON.parse(sel.getAttribute('data-stages') || '{}'); } catch (e) { return; }
+                var box = sel.closest('.character-stats-box');
+                if (!box) return;
+                sel.querySelectorAll('.rarity-stage-chip').forEach(function(chip) {
+                  chip.addEventListener('click', function() {
+                    sel.querySelectorAll('.rarity-stage-chip').forEach(function(c) { c.classList.remove('active'); });
+                    chip.classList.add('active');
+                    var stage = chip.getAttribute('data-stage');
+                    var st = stages[stage];
+                    if (!st) return;
+                    box.querySelectorAll('[data-stat-field]').forEach(function(el) {
+                      var f = el.getAttribute('data-stat-field');
+                      if (st[f] !== undefined) el.textContent = st[f];
+                    });
+                    var cap = box.querySelector('[data-stats-caption]');
+                    if (cap) cap.textContent = 'レベル 60、' + stage + (stage === 'EX 6' ? '（突破最大）' : '');
+                  });
+                });
+              });
+            })();
+          </script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rarity stage table (full per-stage numbers) -->
+  {stageKeys.length > 0 && (
+    <section class="content-section">
+      <h2 class="section-title">突破段階のステータス</h2>
+      <div class="zh-stage-wrap">
+        <table class="zh-stage-table">
+          <thead>
+            <tr>
+              <th>段階</th>
+              {stageStatKeys.map(k => <th>{labelJa(k)}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {stageKeys.map(sk => (
+              <tr>
+                <td class="zh-stage-cell">{stageNames[sk] || sk}</td>
+                {stageStatKeys.map(k => (
+                  <td>{merc.rarityStages[sk][k] ?? '-'}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )}
+
+  <!-- Skills Section -->
+  {skills.length > 0 && (
+    <section class="content-section skills-section">
+      <h2 class="section-title">スキル</h2>
+      <p class="skills-explanation">{HW_ZH.labels.statNote}</p>
+
+      {skills.map(sk => (
+        <div class={`skill-card ${sk.type === 'Passive' ? 'passive-skill' : ''}`}>
+          <div class="skill-header">
+            <h3 class="skill-title">{sk.name}</h3>
+            <div class="skill-meta">
+              {sk.type === 'Passive' ? (
+                <span class="skill-type-label passive-label">パッシブ</span>
+              ) : (
+                <span class="skill-type-label skill-label">アクティブ</span>
+              )}
+              {sk.level && <span class="skill-type-label skill-label">レベル {sk.level}</span>}
+              {sk.type !== 'Passive' && sk.apCost != null && sk.apCost > 0 && (
+                <span class="skill-cost">行動力 {sk.apCost}</span>
+              )}
+              {sk.type !== 'Passive' && sk.cooldown != null && sk.cooldown !== '0R' && (
+                <span class="skill-cooldown">クールダウン {sk.cooldown.replace('R', '')}</span>
+              )}
+            </div>
+          </div>
+          {sk.lines.length > 0 && (
+            <p class="skill-description">
+              {sk.lines.map((line, i) => (
+                <span>
+                  {line}
+                  {i < sk.lines.length - 1 && <br />}
+                </span>
+              ))}
+            </p>
+          )}
+          {sk.damage && (
+            <div class="skill-damage">
+              <span class="damage-label">ダメージ：</span>{' '}
+              <span class="damage-value">{dmgJa(sk.damage)}</span>
+            </div>
+          )}
+        </div>
+      ))}
+    </section>
+  )}
+
+  <!-- Unique Traits Section -->
+  {traits.length > 0 && (
+    <section class="content-section traits-section">
+      <h2 class="section-title">固有特性</h2>
+      <div class="trait-system-note">
+        <strong>特性システム：</strong>
+        傭兵は固有特性と汎用特性をランダムで獲得し、そのうち移動や削除ができるのは汎用特性のみです。一部の傭兵は 1 つまたは複数の固定された固有特性を持ちます。
+      </div>
+
+      {traits.map(t => (
+        <div class="trait-card">
+          <div class="trait-header">
+            <h3 class="trait-title">{t.name}</h3>
+            <span class="hw-badge" data-type="Trait">特性</span>
+          </div>
+          {t.desc && <p class="trait-description">{t.desc}</p>}
+          {t.characteristics && (
+            <div class="trait-characteristics">
+              <strong>効果：</strong>{t.characteristics}
+            </div>
+          )}
+        </div>
+      ))}
+    </section>
+  )}
+
+  <!-- Cross links -->
+  <section class="content-section">
+    <h2 class="section-title">関連リンク</h2>
+    <ul class="zh-link-list">
+      <li><a href={enPageUrl}>完全な英語の傭兵ページ（English）</a></li>
+      <li><a href={`${HW_ZH.baseUrl}mercenaries/`}>傭兵データベースに戻る</a></li>
+      <li><a href={HW_ZH.selectorUrl}>言語を切り替える（English）</a></li>
+    </ul>
+  </section>
+</HwLangLayout>
+
+<style>
+  /* ZH-only elements without an EN equivalent */
+  .zh-merc-en {
+    font-size: 0.95rem;
+    color: var(--hw-text-light);
+    opacity: 0.75;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .zh-stage-wrap {
+    overflow-x: auto;
+    margin-top: 0.25rem;
+  }
+
+  .zh-stage-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    min-width: 640px;
+  }
+
+  .zh-stage-table th,
+  .zh-stage-table td {
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    padding: 0.45rem 0.6rem;
+    text-align: center;
+    color: var(--hw-text-light);
+  }
+
+  .zh-stage-table th {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--hw-primary-warm);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .zh-stage-cell {
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .zh-link-list {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--hw-text-light);
+    font-size: 0.9375rem;
+    line-height: 1.9;
+  }
+
+  .zh-link-list a {
+    color: var(--hw-primary-warm);
+    text-decoration: none;
+    font-weight: 600;
+  }
+</style>

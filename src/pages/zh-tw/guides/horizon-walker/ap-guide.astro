@@ -1,0 +1,219 @@
+---
+// Traditional-Chinese (zh-tw) AP (action points) guide: /zh-tw/guides/horizon-walker/ap-guide/
+// Editorial walkthrough translated from the EN ap-guide data, same numbers
+// (Yeonwoo 56/109/165, 30 AP skill, 100 AP threshold); stat names use the
+// game's official Traditional Chinese from HW_ZH_STAT_LABELS/STAT_TYPES.
+// Re-skinned onto the EN hw-guide.css classes for visual parity.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import { HORIZON_WALKER_CHARACTERS } from '../../../../data/horizon-walker/characters.js';
+import { HW_ZH_NAMES, HW_ZH_STAT_LABELS, HW_ZH_STAT_TYPES } from '../../../../data/horizon-walker/zh-tw/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/zh-tw/ui.js';
+import { APImage } from '../../../../components/horizon-walker/index.astro';
+import '../../../../styles/games/horizon-walker/hw-guide.css';
+
+export const prerender = true;
+
+// Hero names mentioned in the guide -> official ZH (EN fallback)
+const heroZh = enName => {
+  const rosterChar = HORIZON_WALKER_CHARACTERS.find(c => c.name === enName);
+  return (rosterChar && HW_ZH_NAMES[rosterChar.id]) || enName;
+};
+const yeonwoo = heroZh('Yeonwoo');
+const kalma = heroZh('Kalma');
+
+// Official ZH stat names used in the guide
+const apRecovery = HW_ZH_STAT_LABELS.apRecovery; // 體力復原力
+const startingAp = HW_ZH_STAT_LABELS.startingAp; // 戰鬥開始行動力
+const agility = HW_ZH_STAT_LABELS.agility; // 敏捷
+const apRecoveryEn = HW_ZH_STAT_TYPES['AP Recovery'];
+
+const IMG1 = '../../assets/images/games/horizon-walker/AP_recovery/img1.jpg';
+const IMG2 = '../../assets/images/games/horizon-walker/AP_recovery/img2.jpg';
+const IMG3 = '../../assets/images/games/horizon-walker/AP_recovery/img3.jpg';
+---
+
+<HwLangLayout lang="zh-tw" ui={HW_ZH}
+  title="行動力（AP）系統指南 - 地平線行者繁體中文維基 - GachaWiki"
+  description="地平線行者行動力（AP）系統詳解：體力復原力與戰鬥開始行動力的區別、行動順序的計算、100 AP 行動門檻與額外回合等特殊效果。"
+  keywords={['地平線行者', '行動力', 'AP', '回合順序', '體力復原力']}
+  breadcrumbItems={[
+    { name: '首頁', href: '/' },
+    { name: '地平線行者', href: HW_ZH.baseUrl },
+    { name: '行動力指南' },
+  ]}
+>
+  <section class="hw-guide-hero">
+    <h1 class="hw-guide-title">行動力（AP）系統指南</h1>
+    <p class="hw-guide-subtitle">理解 AP 如何決定地平線行者中的行動順序</p>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-guide-content">
+    <section class="hw-guide-section" id="introduction">
+      <h2 class="hw-section-title">AP 如何運作</h2>
+      <div class="hw-section-content">
+        <p>
+          本遊戲使用行動力（AP）來計算行動順序：AP 是衡量誰先行動的度量系統。下面解釋 AP 的運作方式與相關機制。
+        </p>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="ap-stats">
+      <h2 class="hw-section-title">AP 相關屬性一覽</h2>
+      <div class="hw-section-content">
+        <p>首先，影響 AP 的屬性共有兩項：</p>
+      </div>
+      <ul class="hw-guide-list">
+        <li>{apRecovery}（{apRecoveryEn}，AP Recovery）</li>
+        <li>{startingAp}（Starting AP）</li>
+      </ul>
+    </section>
+
+    <section class="hw-guide-section" id="ap-recovery-explanation">
+      <h2 class="hw-section-title">認識{apRecovery}</h2>
+      <div class="hw-section-content">
+        <p>
+          {apRecovery}（AP Recovery）：從第 1 回合開始，每回合獲得的 AP 點數。
+        </p>
+        <p>
+          {startingAp}（Starting AP）：只在戰鬥的第 1 回合生效，幫助你的單位率先行動，提前啟動連鎖或增益。
+        </p>
+      </div>
+      <div class="hw-warning-box">
+        <div class="hw-warning-content">
+          注意：{agility}會提升基礎{apRecovery}。{agility}高的角色從{apRecovery}提升中獲益更大，因為提升的百分比會更高！
+        </div>
+      </div>
+      <div class="hw-guide-image-container">
+        <APImage
+          imageName={IMG1}
+          alt="AP 屬性介面：敏捷影響體力復原力"
+          class="hw-guide-image"
+          width={600}
+          height={400}
+          loading="lazy"
+          format="webp"
+          quality={85}
+        />
+        <p class="hw-guide-image-caption">AP 屬性介面：{agility}影響{apRecovery}</p>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="gameplay-mechanics">
+      <h2 class="hw-section-title">遊戲中如何使用這些屬性</h2>
+      <div class="hw-section-content">
+        <p>接下來看看這兩項屬性在實戰中如何運作。以{yeonwoo}為例：</p>
+      </div>
+      <div class="hw-guide-image-container">
+        <APImage
+          imageName={IMG2}
+          alt={`${yeonwoo}的 AP 屬性：戰鬥開始行動力 56、體力復原力 109`}
+          class="hw-guide-image"
+          width={600}
+          height={400}
+          loading="lazy"
+          format="webp"
+          quality={85}
+        />
+        <p class="hw-guide-image-caption">{yeonwoo}的 AP 屬性：{startingAp} 56、{apRecovery} 109</p>
+      </div>
+      <div class="hw-example-box">
+        <div class="hw-example-title">{yeonwoo}的 AP 計算</div>
+        <div class="hw-example-content">
+          她的{startingAp}為 56，{apRecovery}為 109。第 1 回合合計應有 165 AP（56 + 109）。之後每回合在此基礎上再獲得 109。
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="turn-threshold">
+      <h2 class="hw-section-title">100 AP 行動門檻規則</h2>
+      <div class="hw-section-content">
+        <p>第 1 回合她擁有 165 AP，而她的基礎技能消耗 30 AP。</p>
+      </div>
+      <div class="hw-guide-image-container">
+        <APImage
+          imageName={IMG3}
+          alt="第 1 回合：妍雨擁有 165 AP，基礎技能消耗 30 AP"
+          class="hw-guide-image"
+          width={600}
+          height={400}
+          loading="lazy"
+          format="webp"
+          quality={85}
+        />
+        <p class="hw-guide-image-caption">第 1 回合：{yeonwoo}擁有 165 AP，基礎技能消耗 30 AP</p>
+      </div>
+      <div class="hw-warning-box">
+        <div class="hw-warning-content">
+          非常重要：AP 低於 100 時，必須等待下一回合直到 AP 達到 100 以上才能行動。行動門檻是 100 AP 及以上！
+        </div>
+      </div>
+      <div class="hw-info-box">
+        <div class="hw-info-box-title">AP 累積範例</div>
+        <div class="hw-info-box-content">
+          如果當前為 99 AP，那麼要到下一回合才能行動，並獲得 99 + 109（{apRecovery}）= 208 AP。
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="special-effects">
+      <h2 class="hw-section-title">特殊效果</h2>
+      <div class="hw-section-content">
+        <p>效果：</p>
+      </div>
+      <div class="hw-example-box">
+        <div class="hw-example-title">額外回合效果</div>
+        <div class="hw-example-content">
+          部分技能（如{kalma}的技能）的額外回合效果無需等待 100 AP 即可獲得行動機會：當回合即可行動，相當於無視 100 AP 的行動門檻！
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="tldr">
+      <h2 class="hw-section-title">總結</h2>
+      <div class="hw-info-box">
+        <div class="hw-info-box-title">要點</div>
+        <div class="hw-info-box-content">
+          <ul class="hw-guide-list zh-info-list">
+            <li>AP 決定行動順序</li>
+            <li>{startingAp}只影響第 1 回合</li>
+            <li>{apRecovery}每回合增加你的 AP</li>
+            <li>最低 100 AP 才能行動（特殊效果除外）</li>
+            <li>{agility}提升基礎{apRecovery}</li>
+            <li>額外回合效果無視 100 AP 規則</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="video-explanation">
+      <h2 class="hw-section-title">影片講解</h2>
+      <div class="hw-section-content">
+        <p>想要更詳細的 AP 系統影片講解，可以觀看這部影片：</p>
+      </div>
+      <div class="hw-video-link-container">
+        <a
+          href="https://www.youtube.com/watch?v=AUh3Fhjag24"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hw-video-link"
+        >
+          在 YouTube 觀看 AP 系統講解 →
+        </a>
+      </div>
+    </section>
+  </div>
+</HwLangLayout>
+
+<style>
+  /* Localize the EN pseudo-element labels; the list inside the TL;DR info box
+     needs tighter vertical rhythm than the standalone guide list. */
+  .hw-warning-box::before {
+    content: '⚠️ 注意';
+  }
+
+  .zh-info-list {
+    margin: 0;
+  }
+</style>

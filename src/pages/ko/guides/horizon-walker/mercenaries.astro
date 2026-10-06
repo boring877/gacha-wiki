@@ -1,0 +1,388 @@
+---
+// Korean mercenaries database index: /ko/guides/horizon-walker/mercenaries/
+// Table database of all mercenary units with official Korean names
+// (HW_ZH_MERCENARIES), rarity/cost and Lv60 base stats, client-side search +
+// rarity select + column sorting via the shared character-database.js.
+// Re-skinned onto the EN hw-character.css + hw-mercenary.css classes.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import '../../../../styles/games/horizon-walker/hw-character.css';
+import '../../../../styles/games/horizon-walker/hw-mercenary.css';
+import { HORIZON_WALKER_MERCENARIES, mercenaryGameInfo } from '../../../../data/horizon-walker/mercenaries.js';
+import { HW_ZH_MERCENARIES, HW_ZH_STAT_LABELS } from '../../../../data/horizon-walker/ko/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ko/ui.js';
+import { MercenaryImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
+
+export const prerender = true;
+
+const { rarities } = mercenaryGameInfo;
+
+// Official KO mercenary name; EN fallback when the game has no KO entry
+const mercZhName = name => HW_ZH_MERCENARIES[name] || name;
+
+const roster = HORIZON_WALKER_MERCENARIES.map(m => ({
+  slug: m.slug,
+  name: mercZhName(m.name),
+  nameEn: m.name,
+  rarity: m.rarity,
+  cost: m.cost,
+  strength: m.stats.strength,
+  intelligence: m.stats.intelligence,
+  vitality: m.stats.vitality,
+  agility: m.stats.agility,
+  technic: m.stats.technic,
+  detailUrl: `${HW_ZH.baseUrl}mercenaries/${m.slug}/`,
+  searchName: `${mercZhName(m.name)} ${m.name}`.toLowerCase(),
+}));
+
+const counts = {
+  total: roster.length,
+  EX: roster.filter(m => m.rarity === 'EX').length,
+  SS: roster.filter(m => m.rarity === 'SS').length,
+  S: roster.filter(m => m.rarity === 'S').length,
+  A: roster.filter(m => m.rarity === 'A').length,
+  B: roster.filter(m => m.rarity === 'B').length,
+};
+---
+
+<HwLangLayout lang="ko" ui={HW_ZH}
+  title="용병 데이터베이스 - 호라이즌 워커 한국어 위키 - GachaWiki"
+  description={`호라이즌 워커 전체 ${counts.total}명의 용병: EX ${counts.EX}명, SS ${counts.SS}명, S ${counts.S}명, A ${counts.A}명, B ${counts.B}명. 레벨 60 만렙 수치, 편성 비용과 일반 특성 안내를 담았으며 검색, 등급 필터, 정렬을 지원합니다.`}
+  keywords={['호라이즌 워커', '용병', '일반 특성', '데이터베이스']}
+  breadcrumbItems={[
+    { name: '홈', href: '/' },
+    { name: '호라이즌 워커', href: HW_ZH.baseUrl },
+    { name: '용병' },
+  ]}
+>
+  <section class="hw-char-db-hero-section">
+    <h1 class="hw-char-db-hero-title">용병 데이터베이스</h1>
+    <p class="hw-char-db-hero-subtitle">전체 용병 유닛 데이터베이스</p>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-char-db-content-area">
+  <section class="hw-char-db-page-flex">
+    <div class="hw-char-db-main-content">
+      <div class="hw-char-db-content-wrapper">
+        <!-- Header with stats info -->
+        <div class="hw-character-database-header">
+          <p class="hw-character-database-title">용병 데이터베이스</p>
+          <p class="hw-character-database-subtitle">
+            모든 수치는 만렙(레벨 60) 기준: 일반 특성 유닛
+          </p>
+          <p class="hw-character-database-note">
+            용병은 일반 특성을 얻는 중요한 원천입니다. 다른 캐릭터로 변형시켜 일반 특성을 이전할 수 있습니다. 행이나 카드를 클릭하면 용병 상세 페이지로 이동합니다.
+          </p>
+          <div class="hw-char-db-stats-summary">
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="EX" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{counts.EX}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="SS" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{counts.SS}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="S" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{counts.S}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="A" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{counts.A}</span>
+            </div>
+            <div class="hw-rarity-stat">
+              <HWRarityIcon rarity="B" width={56} height={28} />
+              <span class="hw-rarity-stat-count">{counts.B}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+          <div class="filter-controls">
+            <select class="filter-select" id="rarity-filter">
+              <option value="">등급</option>
+              {rarities.map(rarity => <option value={rarity}>{rarity}</option>)}
+            </select>
+          </div>
+          <div class="hw-search-container">
+            <input
+              type="text"
+              class="hw-search-input"
+              id="character-search"
+              placeholder="이름으로 검색 (한국어 또는 영어)"
+            />
+          </div>
+          <div class="sort-controls">
+            <button class="sort-btn" data-sort="rarity">등급</button>
+            <button class="sort-btn" data-sort="cost">비용</button>
+            <button class="sort-btn" data-sort="strength">{HW_ZH_STAT_LABELS.strength}</button>
+            <button class="sort-btn" data-sort="intelligence">{HW_ZH_STAT_LABELS.intelligence}</button>
+            <button class="sort-btn" data-sort="vitality">{HW_ZH_STAT_LABELS.vitality}</button>
+            <button class="sort-btn" data-sort="agility">{HW_ZH_STAT_LABELS.agility}</button>
+            <button class="sort-btn" data-sort="technic">{HW_ZH_STAT_LABELS.technic}</button>
+            <button class="reset-btn" id="reset-table">초기화</button>
+          </div>
+        </div>
+
+        <!-- Desktop table container with touch optimizations -->
+        <div class="character-table-container">
+          <table class="character-table" id="character-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>이미지</th>
+                <th>이름</th>
+                <th>등급</th>
+                <th>비용</th>
+                <th>{HW_ZH_STAT_LABELS.strength}</th>
+                <th>{HW_ZH_STAT_LABELS.intelligence}</th>
+                <th>{HW_ZH_STAT_LABELS.vitality}</th>
+                <th>{HW_ZH_STAT_LABELS.agility}</th>
+                <th>{HW_ZH_STAT_LABELS.technic}</th>
+              </tr>
+            </thead>
+            <tbody id="character-table-body">
+              {
+                roster.map((m, idx) => (
+                  <tr
+                    data-character-id={m.slug}
+                    data-url={m.detailUrl}
+                    data-name={m.searchName}
+                    data-rarity={m.rarity}
+                    data-tags=""
+                    class="clickable-row"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <td>{idx + 1}</td>
+                    <td>
+                      <div class="desktop-character-image">
+                        <MercenaryImage
+                          imageName={m.nameEn}
+                          alt={m.name}
+                          class="character-img"
+                          width={80}
+                          height={80}
+                          loading="lazy"
+                        />
+                      </div>
+                    </td>
+                    <td>
+                      <span class="character-name">{m.name}</span>
+                    </td>
+                    <td>
+                      <HWRarityIcon rarity={m.rarity} width={48} height={24} />
+                    </td>
+                    <td data-sort-key="cost">
+                      <span class="cost-value">{m.cost}</span>
+                    </td>
+                    <td data-sort-key="strength">
+                      <span class="stat-value">{m.strength}</span>
+                    </td>
+                    <td data-sort-key="intelligence">
+                      <span class="stat-value">{m.intelligence}</span>
+                    </td>
+                    <td data-sort-key="vitality">
+                      <span class="stat-value">{m.vitality}</span>
+                    </td>
+                    <td data-sort-key="agility">
+                      <span class="stat-value">{m.agility}</span>
+                    </td>
+                    <td data-sort-key="technic">
+                      <span class="stat-value">{m.technic}</span>
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile card view container with touch optimization -->
+        <div class="mobile-card-view" id="mobile-cards-container">
+          {
+            roster.map(m => (
+              <div
+                class="mobile-character-card"
+                data-character-id={m.slug}
+                data-slug={m.slug}
+                data-url={m.detailUrl}
+                data-name={m.searchName}
+                data-rarity={m.rarity}
+                data-tags=""
+                role="button"
+                tabindex="0"
+                style="cursor:pointer; touch-action: manipulation;"
+              >
+                <div class="mobile-card-header">
+                  <div class="mobile-card-image">
+                    <div class="mobile-character-image">
+                      <MercenaryImage
+                        imageName={m.nameEn}
+                        alt={m.name}
+                        class="character-img"
+                        width={64}
+                        height={64}
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                  <div class="mobile-card-info">
+                    <h3 class="character-name">{m.name}</h3>
+                    <div class="header-badges">
+                      <HWRarityIcon rarity={m.rarity} width={40} height={20} />
+                      <span class="cost-badge" data-type="Cost">
+                        비용: {m.cost}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mobile-card-stats-grid">
+                  <div class="stat-item">
+                    <span class="stat-label">{HW_ZH_STAT_LABELS.strength}</span>
+                    <span class="stat-value" data-stat="strength">{m.strength}</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">{HW_ZH_STAT_LABELS.intelligence}</span>
+                    <span class="stat-value" data-stat="intelligence">{m.intelligence}</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">{HW_ZH_STAT_LABELS.vitality}</span>
+                    <span class="stat-value" data-stat="vitality">{m.vitality}</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">{HW_ZH_STAT_LABELS.agility}</span>
+                    <span class="stat-value" data-stat="agility">{m.agility}</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">{HW_ZH_STAT_LABELS.technic}</span>
+                    <span class="stat-value" data-stat="technic">{m.technic}</span>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <!-- Table/card sorting + filtering (same behavior as the EN database page) -->
+  <script is:inline>
+    (function () {
+      var tableBody = document.getElementById('character-table-body');
+      var mobileCards = document.getElementById('mobile-cards-container');
+      var rarityFilter = document.getElementById('rarity-filter');
+      var searchInput = document.getElementById('character-search');
+      var sortButtons = document.querySelectorAll('.sort-btn');
+      var resetButton = document.getElementById('reset-table');
+
+      var rows = tableBody ? Array.prototype.slice.call(tableBody.querySelectorAll('tr')) : [];
+      var cards = mobileCards ? Array.prototype.slice.call(mobileCards.querySelectorAll('.mobile-character-card')) : [];
+
+      var currentRarity = '';
+      var currentSearch = '';
+      var sortKey = '';
+      var sortAsc = true;
+
+      var RARITY_ORDER = { EX: 5, SS: 4, S: 3, A: 2, B: 1 };
+
+      function statOf(el, key) {
+        if (!el) return 0;
+        var cell = el.querySelector('[data-sort-key="' + key + '"]');
+        if (!cell && el.hasAttribute('data-stat')) return 0;
+        if (cell) return parseFloat(cell.textContent) || 0;
+        var statSpan = el.querySelector('[data-stat="' + key + '"]');
+        return statSpan ? parseFloat(statSpan.textContent) || 0 : 0;
+      }
+
+      function applyFilters() {
+        var q = currentSearch.trim().toLowerCase();
+        rows.forEach(function (row) {
+          var okRarity = !currentRarity || row.dataset.rarity === currentRarity;
+          var okSearch = !q || (row.dataset.name || '').includes(q);
+          row.style.display = okRarity && okSearch ? '' : 'none';
+        });
+        cards.forEach(function (card) {
+          var okRarity = !currentRarity || card.dataset.rarity === currentRarity;
+          var okSearch = !q || (card.dataset.name || '').includes(q);
+          card.style.display = okRarity && okSearch ? '' : 'none';
+        });
+      }
+
+      function applySort(key) {
+        if (sortKey === key) sortAsc = !sortAsc;
+        else { sortKey = key; sortAsc = true; }
+
+        function cmp(a, b) {
+          var va, vb;
+          if (key === 'rarity') {
+            va = RARITY_ORDER[a.dataset.rarity] || 0;
+            vb = RARITY_ORDER[b.dataset.rarity] || 0;
+          } else if (key === 'cost') {
+            va = statOf(a, 'cost'); vb = statOf(b, 'cost');
+          } else {
+            va = statOf(a, key); vb = statOf(b, key);
+          }
+          if (va === vb) return 0;
+          return (va < vb ? -1 : 1) * (sortAsc ? 1 : -1);
+        }
+
+        rows.sort(cmp).forEach(function (r) { tableBody.appendChild(r); });
+        cards.sort(cmp).forEach(function (c) { mobileCards.appendChild(c); });
+
+        sortButtons.forEach(function (btn) {
+          btn.classList.toggle('active', btn.dataset.sort === sortKey);
+        });
+      }
+
+      if (rarityFilter) {
+        rarityFilter.addEventListener('change', function () {
+          currentRarity = rarityFilter.value;
+          applyFilters();
+        });
+      }
+      if (searchInput) {
+        searchInput.addEventListener('input', function () {
+          currentSearch = searchInput.value;
+          applyFilters();
+        });
+      }
+      sortButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () { applySort(btn.dataset.sort || ''); });
+      });
+      if (resetButton) {
+        resetButton.addEventListener('click', function () {
+          currentRarity = ''; currentSearch = ''; sortKey = '';
+          if (rarityFilter) rarityFilter.value = '';
+          if (searchInput) searchInput.value = '';
+          sortButtons.forEach(function (b) { b.classList.remove('active'); });
+          rows.forEach(function (r) { r.style.display = ''; });
+          cards.forEach(function (c) { c.style.display = ''; });
+        });
+      }
+
+      // rows + cards navigate to their detail page
+      function bindNav(el) {
+        if (!el) return;
+        el.addEventListener('click', function () {
+          var url = el.dataset.url;
+          if (url) window.location.href = url;
+        });
+        el.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            var url = el.dataset.url;
+            if (url) window.location.href = url;
+          }
+        });
+      }
+      rows.forEach(bindNav);
+      cards.forEach(bindNav);
+    })();
+  </script>
+</HwLangLayout>

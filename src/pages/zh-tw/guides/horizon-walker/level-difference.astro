@@ -1,0 +1,144 @@
+---
+// Traditional-Chinese (zh-tw) level difference guide: /zh-tw/guides/horizon-walker/level-difference/
+// Same LEVEL_PENALTY table and highlight rows as the EN page (numbers straight
+// from combat-mechanics.js); prose translated, formula kept as code.
+// Re-skinned onto the EN hw-guide.css + hw-combat-mechanics.css classes.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import { LEVEL_PENALTY } from '../../../../data/horizon-walker/combat-mechanics.js';
+import { HW_ZH_NAMES } from '../../../../data/horizon-walker/zh-tw/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/zh-tw/ui.js';
+import '../../../../styles/games/horizon-walker/hw-guide.css';
+import '../../../../styles/games/horizon-walker/hw-combat-mechanics.css';
+
+export const prerender = true;
+
+const breadcrumbs = [{ name: '首頁', href: '/' }, { name: '地平線行者', href: HW_ZH.baseUrl }, { name: '等級差' }];
+
+// Rows worth highlighting in the table (same gaps as the EN page)
+const highlight = new Set([1, 5, 10, 16, 20, 30]);
+
+const coraZh = HW_ZH_NAMES[45] || 'Cora'; // 罪犯 / 科拉
+
+function pct(v) {
+  return `${parseFloat((v / 100).toFixed(2))}%`;
+}
+---
+
+<HwLangLayout lang="zh-tw" ui={HW_ZH}
+  title="等級差與傷害 - 地平線行者繁體中文維基 - GachaWiki"
+  description="地平線行者等級差傷害指南：完整的低等級懲罰表、高等級傷害加成（每級 8%）與最低傷害規則。等級差對傷害的影響超過幾乎所有其他因素。"
+  keywords={['地平線行者', '等級差', '傷害懲罰', '等級壓制', '戰鬥機制']}
+  breadcrumbItems={breadcrumbs}
+>
+  <section class="hw-guide-hero">
+    <h1 class="hw-guide-title">等級差與傷害</h1>
+    <p class="hw-guide-subtitle">高於或低於目標多少級，對傷害的影響超過幾乎所有其他單一因素</p>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-guide-content">
+    <section class="hw-guide-section" id="rules">
+      <h2 class="hw-section-title">規則</h2>
+      <div class="hw-section-content">
+        <p>每次命中都會比較攻擊方與目標的等級，並對傷害進行乘算：</p>
+      </div>
+      <ul class="hw-guide-list">
+        <li>攻擊方等級<strong>低於</strong>目標：傷害乘以下方懲罰表的倍率。僅低 5 級就會損失 40% 傷害，低 16 級時只能打出約 10%。</li>
+        <li>攻擊方等級<strong>高於</strong>目標：傷害乘以 1 + 每級 8% 的加成。高 10 級即 1.8 倍傷害，且沒有上限。</li>
+        <li>等級相同：無變化，100% 傷害。</li>
+        <li>僅因等級懲罰，傷害永遠不會低於 1。</li>
+      </ul>
+      <div class="hw-info-box">
+        <div class="hw-info-box-title">為什麼這很重要</div>
+        <div class="hw-info-box-content">
+          比 Boss 低 5 級所損失的傷害，就超過大多數增益能補回的量；嚴重低等級的隊伍只能打出個位數百分比傷害。反過來，等級壓制是實打實的戰力來源：為卡關 Boss 刷幾級，往往比換一件裝備更划算。
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="table">
+      <h2 class="hw-section-title">低等級懲罰表</h2>
+      <div class="hw-section-content">
+        <p>直接來自遊戲資料的每級差精確倍率。高亮行是玩家最常問到的等級差。</p>
+      </div>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="低等級時按等級差的傷害倍率">
+          <thead>
+            <tr>
+              <th scope="col">低於目標等級</th>
+              <th scope="col">造成傷害</th>
+            </tr>
+          </thead>
+          <tbody>
+            {LEVEL_PENALTY.map(row => (
+              <tr class={highlight.has(row.diff) ? 'hw-mech-highlight' : ''}>
+                <td>{row.diff}</td>
+                <td>{pct(row.value)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="hw-warning-box">
+        <div class="hw-warning-content">
+          曲線開頭平緩：前 6 級每級 8%，隨後懲罰越來越重。從低 15 級開始，每多低 1 級都會再損失約 15% 的剩餘傷害。
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="overlevel">
+      <h2 class="hw-section-title">高等級加成</h2>
+      <div class="hw-section-content">
+        <p>等級高於目標時是無表格、無上限的線性加成：</p>
+      </div>
+      <div class="hw-mech-formula">1 + 0.08 x (your level minus target level)</div>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="高等級時按等級差的傷害倍率">
+          <thead>
+            <tr>
+              <th scope="col">高於目標等級</th>
+              <th scope="col">造成傷害</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>0（同級）</td><td>100%</td></tr>
+            <tr><td>5</td><td>140%</td></tr>
+            <tr><td>10</td><td>180%</td></tr>
+            <tr><td>15</td><td>220%</td></tr>
+            <tr><td>25</td><td>300%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="hw-example-box">
+        <div class="hw-example-title">範例</div>
+        <div class="hw-example-content">
+          等級 60 的{coraZh}攻擊等級 55 的活動小怪時，在其他修正之前就能打出 1.4 倍傷害。同一角色在等級 50 對陣等級 60 的劇情 Boss 時，只能打出 27.14% 傷害。
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="notes">
+      <h2 class="hw-section-title">補充說明</h2>
+      <ul class="hw-guide-list">
+        <li>等級倍率在主傷害管線內生效，與防禦公式一同計算（見<a href={`${HW_ZH.baseUrl}damage-formula/`} class="zh-link">傷害公式頁面</a>）。</li>
+        <li>暴擊、弱點攻擊與增益效果在等級結果之上繼續乘算。</li>
+        <li>有一個特殊遊戲模式完全跳過等級判定、直接使用原始傷害，因此固定強度的活動模式有時會突然變簡單。</li>
+      </ul>
+    </section>
+  </div>
+</HwLangLayout>
+
+<style>
+  /* Localize the EN pseudo-element label */
+  .hw-warning-box::before {
+    content: '⚠️ 注意';
+  }
+
+  /* EN guide links are plain text color inside list items */
+  .zh-link {
+    color: var(--hw-primary-warm);
+    font-weight: 600;
+    text-decoration: none;
+  }
+</style>

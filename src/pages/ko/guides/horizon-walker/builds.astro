@@ -1,0 +1,149 @@
+---
+// Korean recommended builds index: /ko/guides/horizon-walker/builds/
+// Same build list as the EN builds/index.astro (getEnhancedBuilds), grouped
+// by rarity; character names use the official Korean from game-text.js.
+// Re-skinned onto the EN hw-builds.css classes for visual parity.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import { getEnhancedBuilds } from '../../../../data/horizon-walker/builds/builds-data.js';
+import { HW_ZH_NAMES } from '../../../../data/horizon-walker/ko/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ko/ui.js';
+import { CharacterImage, HWRarityIcon } from '../../../../components/horizon-walker/index.astro';
+import '../../../../styles/games/horizon-walker/hw-builds.css';
+
+export const prerender = true;
+
+const enhancedBuilds = getEnhancedBuilds();
+const availableBuilds = enhancedBuilds.filter((build) => build.available);
+const unavailableBuilds = enhancedBuilds.filter((build) => !build.available);
+
+const zhNameOf = (build) =>
+  (build.characterData && HW_ZH_NAMES[build.characterData.id]) || build.displayName;
+
+// Sort by rarity (EX, SS, S, A, B) then by KO name
+const rarityOrder = { EX: 5, SS: 4, S: 3, A: 2, B: 1 };
+const sortedBuilds = [...availableBuilds].sort((a, b) => {
+  const rarityDiff = rarityOrder[b.rarity] - rarityOrder[a.rarity];
+  if (rarityDiff !== 0) return rarityDiff;
+  return zhNameOf(a).localeCompare(zhNameOf(b), 'ko');
+});
+
+const buildsByRarity = {
+  EX: sortedBuilds.filter((b) => b.rarity === 'EX'),
+  SS: sortedBuilds.filter((b) => b.rarity === 'SS'),
+  S: sortedBuilds.filter((b) => b.rarity === 'S'),
+  A: sortedBuilds.filter((b) => b.rarity === 'A'),
+  B: sortedBuilds.filter((b) => b.rarity === 'B'),
+};
+---
+
+<HwLangLayout lang="ko" ui={HW_ZH}
+  title="추천 빌드 - 호라이즌 워커 한국어 위키 - GachaWiki"
+  description={`호라이즌 워커 추천 빌드: 총 ${availableBuilds.length}명 캐릭터의 직접 작성 추천 빌드로, 추천 성흔, 부옵션과 특성 선택을 담았습니다. 50명을 다루는 커뮤니티 빌드도 있습니다.`}
+  keywords={['호라이즌 워커', '빌드', '성흔', '부옵션', '특성']}
+  pageTitle="추천 빌드"
+  breadcrumbItems={[
+    { name: '홈', href: '/' },
+    { name: '호라이즌 워커', href: HW_ZH.baseUrl },
+    { name: '추천 빌드' },
+  ]}
+>
+  <div class="hw-builds-container">
+    <div class="hw-community-builds-note">
+      <p class="hw-community-builds-text">
+        더 많은 빌드가 필요하신가요? <a href={`${HW_ZH.baseUrl}builds/community/`}>커뮤니티 빌드</a>는
+        50명의 캐릭터를 다루며, Envy, Liauw, Gamekee의 커뮤니티 빌드 표에서 정리했습니다. 성흔 세트명은 인게임 한국어 명칭이 없어 영문 원문으로 표기합니다.
+      </p>
+    </div>
+
+    {
+      Object.entries(buildsByRarity).map(([rarity, builds]) => {
+        if (builds.length === 0) return null;
+        return (
+          <section class="hw-builds-rarity-section">
+            <div class="hw-builds-rarity-header">
+              <HWRarityIcon rarity={rarity} width={48} height={24} />
+              <span class="hw-builds-rarity-count">({builds.length}개 빌드)</span>
+            </div>
+            <div class="hw-builds-grid">
+              {builds.map((build) => {
+                const zh = zhNameOf(build);
+                return (
+                  <a
+                    href={`${HW_ZH.baseUrl}builds/${build.buildSlug}/`}
+                    class="hw-build-card-link"
+                    aria-label={`${zh} 빌드 보기`}
+                  >
+                    <div class="hw-build-card">
+                      <div class="hw-build-card-header">
+                        <div class="hw-build-character-image">
+                          <CharacterImage
+                            imageName={build.characterData?.image || build.displayName}
+                            alt={zh}
+                            width={300}
+                            height={300}
+                            class="hw-character-portrait"
+                            loading="eager"
+                          />
+                        </div>
+                        <div class="hw-build-character-info">
+                          <h3 class="hw-build-character-name">{zh}</h3>
+                          <p class="zh-build-en">{build.characterData?.name || build.displayName}</p>
+                          <div class="hw-build-character-meta">
+                            <span class="hw-badge" data-type="Cost">
+                              비용 {build.cost}
+                            </span>
+                            <HWRarityIcon rarity={build.rarity} width={40} height={20} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })
+    }
+
+    {
+      unavailableBuilds.length > 0 && (
+        <section class="hw-builds-coming-soon">
+          <h3 class="hw-builds-coming-soon-title">추가 예정</h3>
+          <div class="hw-builds-coming-soon-grid">
+            {unavailableBuilds.map((build) => {
+              const zh = zhNameOf(build);
+              return (
+                <div class="hw-build-card hw-build-card-disabled">
+                  <div class="hw-build-card-header">
+                    <div class="hw-build-character-info">
+                      <h3 class="hw-build-character-name">{zh}</h3>
+                      <div class="hw-build-character-meta">
+                        <span class="hw-badge" data-type="Cost">
+                          비용 {build.cost}
+                        </span>
+                        <HWRarityIcon rarity={build.rarity} width={40} height={20} />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="hw-build-card-footer">
+                    <span class="hw-build-coming-soon">추가 예정</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )
+    }
+  </div>
+</HwLangLayout>
+
+<style>
+  /* KO-only: EN gloss under the Korean character name */
+  .zh-build-en {
+    margin: 0.1rem 0 0.45rem 0;
+    font-size: 0.78rem;
+    color: var(--hw-text-very-muted);
+  }
+</style>

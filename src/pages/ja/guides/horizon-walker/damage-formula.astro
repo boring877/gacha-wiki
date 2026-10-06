@@ -1,0 +1,219 @@
+---
+// Japanese damage formula guide: /ja/guides/horizon-walker/damage-formula/
+// Same tables/numbers as the EN page from combat-mechanics.js; formulas stay
+// as code, stat names use the game's official JA from HW_ZH_STAT_TYPES.
+// Re-skinned onto the EN hw-guide.css + hw-combat-mechanics.css classes.
+import HwLangLayout from '../../../../layouts/lang/HwLangLayout.astro';
+import DecorativeLines from '../../../../components/DecorativeLines.astro';
+import {
+  ATK_TYPES,
+  DEFENSE_MAPPING,
+  DEF_EXAMPLES_POSITIVE,
+  DEF_EXAMPLES_NEGATIVE,
+} from '../../../../data/horizon-walker/combat-mechanics.js';
+import {
+  HW_ZH_NAMES,
+  HW_ZH_STAT_TYPES,
+  HW_ZH_WEAPON_SKILLS,
+} from '../../../../data/horizon-walker/ja/game-text.js';
+import { HW_ZH } from '../../../../data/horizon-walker/ja/ui.js';
+import '../../../../styles/games/horizon-walker/hw-guide.css';
+import '../../../../styles/games/horizon-walker/hw-combat-mechanics.css';
+
+export const prerender = true;
+
+const S = HW_ZH_STAT_TYPES;
+const palekarJa = HW_ZH_NAMES[60] || 'Palekar'; // パレッカ
+const coraJa = HW_ZH_NAMES[45] || 'Cora'; // 囚人/コラ
+const verseOfOrdealJa = HW_ZH_WEAPON_SKILLS['Verse of Ordeal']?.name || 'Verse of Ordeal'; // 試練の綴り
+
+// ATK_TYPES rows in JA (official stat names for the ATK/scaling stats)
+const atkRowsJa = {
+  'Melee skills': ['近接スキル', `${S['Melee ATK']}（${S['Strength']}ボーナス）`],
+  'Shooting skills': ['射撃スキル', `${S['Ranged ATK']}（${S['Technic']}ボーナス）`],
+  'Arcane / magic skills': ['魔法系スキル', `${S['Magic ATK']}（${S['Intelligence']}ボーナス）`],
+};
+
+// DEFENSE_MAPPING damage-type column in JA; the stat column keeps the game's
+// internal stat key verbatim
+const defenseRowsJa = {
+  'Fire (Heat)': `火炎（熱気）`,
+  'Ice': '氷結（冷気）',
+  'Lightning': '雷電（電気）',
+  'Poison': '毒',
+  'Odd (Immaterial)': '無形（Immaterial）',
+  'Hack (Slash), physical only': '斬撃（Slash、物理のみ）',
+  'Stab (Pierce), physical only': '刺突（Pierce、物理のみ）',
+  'Blow (Blunt), physical only': '打撃（Blunt、物理のみ）',
+};
+
+const negativeNotesJa = {
+  'Palekar [Unstable]': `${palekarJa} [不安定]`,
+  'Palekar [Unstable] with Evasion scaling': `${palekarJa} [不安定]（${S['Evade']}ボーナス適用後）`,
+};
+---
+
+<HwLangLayout lang="ja" ui={HW_ZH}
+  title="ダメージ計算式と防御 - ホライゾン・ウォーカー日本語ウィキ - GachaWiki"
+  description="ホライゾン・ウォーカーのダメージ計算式を徹底解説：攻撃力と防御の換算、各ダメージタイプが実際に参照する防御ステータス、防御倍率の逓減、そして防御減少（マイナス防御）が最強のダメージ増強手段である理由まで。"
+  keywords={['ホライゾン・ウォーカー', 'ダメージ計算式', '防御', '防御減少', '戦闘システム']}
+  breadcrumbItems={[
+    { name: 'ホーム', href: '/' },
+    { name: 'ホライゾン・ウォーカー', href: HW_ZH.baseUrl },
+    { name: 'ダメージ計算式' },
+  ]}
+>
+  <section class="hw-guide-hero">
+    <h1 class="hw-guide-title">ダメージ計算式と防御</h1>
+    <p class="hw-guide-subtitle">スキルがダメージに変換される仕組みと、防御・防御減少の本当の効き目</p>
+    <DecorativeLines />
+  </section>
+
+  <div class="hw-guide-content">
+    <section class="hw-guide-section" id="formula">
+      <h2 class="hw-section-title">基本式</h2>
+      <div class="hw-section-content">
+        <p>スキルが命中するたびに、次の計算パイプラインを通ります：</p>
+      </div>
+      <div class="hw-mech-formula">damage = skill% x ATK x defense multiplier x level multiplier x battle ratio</div>
+      <ul class="hw-guide-list">
+        <li><strong>skill%</strong> はスキルのダメージ倍率（スキルページに表示されるパーセンテージ）です。</li>
+        <li><strong>ATK</strong> はスキルタイプで決まる攻撃側ステータスで、下の表のとおりです。</li>
+        <li><strong>defense multiplier</strong>（防御倍率）は目標の対応する防御ステータス 1 つだけで決まります。詳細は後述します。</li>
+        <li><strong>level multiplier</strong>（レベル倍率）はレベル差ルールのことで、レベル差のページを参照してください。</li>
+        <li><strong>battle ratio</strong>（戦闘全体係数）は戦闘ごとに設定され、通常は 1 です。</li>
+      </ul>
+      <div class="hw-section-content">
+        <p>クリティカル、弱点攻撃、バフ効果はこの基本値にさらに乗算されます。</p>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="atk">
+      <h2 class="hw-section-title">どの攻撃力が使われるか</h2>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="スキルタイプと攻撃ステータスの対応">
+          <thead>
+            <tr>
+              <th scope="col">スキルタイプ</th>
+              <th scope="col">攻撃ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ATK_TYPES.map(row => (
+              <tr>
+                <td>{atkRowsJa[row.skill]?.[0] || row.skill}</td>
+                <td>{atkRowsJa[row.skill]?.[1] || row.stat}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="defense-stat">
+      <h2 class="hw-section-title">どの防御が使われるか</h2>
+      <div class="hw-section-content">
+        <p>
+          ここが最も間違えやすいポイントです。スキルの<strong>属性が参照される防御ステータスを決め、物理防御を完全に置き換えます</strong>。{coraJa}の火炎ダメージが斬撃防御を参照することは決してありません。参照するのは目標の火炎耐性です。
+        </p>
+      </div>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="ダメージタイプと防御ステータスの対応">
+          <thead>
+            <tr>
+              <th scope="col">ダメージタイプ</th>
+              <th scope="col">参照される防御（ゲーム内データ名）</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DEFENSE_MAPPING.map(row => (
+              <tr>
+                <td>{defenseRowsJa[row.damage] || row.damage}</td>
+                <td><code>{row.stat}</code></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="hw-info-box">
+        <div class="hw-info-box-title">実戦での結論</div>
+        <div class="hw-info-box-content">
+          物理防御は高いが属性耐性が低いボスは、属性アタッカーから大幅に多くのダメージを受けます。ボスで壁に当たったら、どの耐性が最も低いかを確認して対応する属性を編成する方が、攻撃力を盛るより効果的なことがあります。
+        </div>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="defense-multiplier">
+      <h2 class="hw-section-title">防御倍率</h2>
+      <div class="hw-section-content">
+        <p>対応する防御値を D とすると、倍率は 1 - D / (D + 1000) で計算されます：</p>
+      </div>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="防御値と被ダメージの対応">
+          <thead>
+            <tr>
+              <th scope="col">防御値</th>
+              <th scope="col">被ダメージ</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DEF_EXAMPLES_POSITIVE.map(row => (
+              <tr>
+                <td>{row.def}</td>
+                <td>{row.taken}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="hw-section-content">
+        <p>
+          防御には逓減があります。最初の防御 250 で被ダメージは 20% 減少しますが、3000 から 9000 へ上げてもさらに減るのは 15% だけです。防御でダメージを完全に 0 にすることはできません。
+        </p>
+      </div>
+    </section>
+
+    <section class="hw-guide-section" id="negative-def">
+      <h2 class="hw-section-title">マイナス防御：防御減少が本当に強い理由</h2>
+      <div class="hw-section-content">
+        <p>
+          防御減少によって目標の防御が<strong>ゼロ未満</strong>まで下がると、ゲームは別の式に切り替わります：1 + |DEF| / 1000。これは<strong>上限がない</strong>固定のダメージ増強です：
+        </p>
+      </div>
+      <div class="hw-mech-table-wrap">
+        <table class="hw-mech-table" aria-label="マイナス防御値と被ダメージの対応">
+          <thead>
+            <tr>
+              <th scope="col">防御値</th>
+              <th scope="col">被ダメージ</th>
+              <th scope="col">備考</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DEF_EXAMPLES_NEGATIVE.map(row => (
+              <tr class="hw-mech-highlight">
+                <td>{row.def}</td>
+                <td>{row.taken}</td>
+                <td>{negativeNotesJa[row.note] || row.note || ''}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="hw-example-box">
+        <div class="hw-example-title">{palekarJa}がワンキルを決められる理由</div>
+        <div class="hw-example-content">
+          彼女の{verseOfOrdealJa}が付与する [不安定] はすべての防御を 1140 減少させ、{S['Evade']}ボーナスを含めると最大 1340 まで下げます。ボスの防御がゼロを割ると、パーティー全体が 2.14 倍から 2.34 倍のダメージを出せるようになります。しかもこのデバフが同時に付与するダメージ増加効果はまだ含めていません。防御減少が大半の攻撃バフより強いと言われる理由です。
+        </div>
+      </div>
+    </section>
+  </div>
+</HwLangLayout>
+
+<style>
+  .hw-mech-table code {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--hw-primary-warm);
+  }
+</style>
