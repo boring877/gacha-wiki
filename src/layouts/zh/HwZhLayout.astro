@@ -11,11 +11,13 @@ import GameNavigationMobile from '../../components/GameNavigationMobile.astro';
 import CustomScrollbar from '../../components/CustomScrollbar.astro';
 import Analytics from '../../components/Analytics.astro';
 import Breadcrumb from '../../components/horizon-walker/Breadcrumb.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
 import { HW_ZH } from '../../data/horizon-walker/zh/ui.js';
 import '../../styles/global.css';
 import '../../styles/typography.css';
 import '../../styles/games/horizon-walker/hw-colors.css';
 import '../../styles/games/horizon-walker/hw-layout.css';
+import '../../styles/games/horizon-walker/hw-landing-page.css';
 import '../../styles/games/horizon-walker/hw-badges.css';
 
 export interface Props {
@@ -23,12 +25,16 @@ export interface Props {
   description?: string;
   // page H1 shown in the title-only section (omit for pages with their own hero)
   pageTitle?: string;
+  // centered hero like the EN LandingLayout: big title + ambient background video
+  heroTitle?: string;
+  ambientVideo?: string;
   // manual Chinese breadcrumb items: [{ name, href }]
   breadcrumbItems?: { name: string; href?: string }[];
   keywords?: string[];
 }
 
-const { title, description, pageTitle, breadcrumbItems, keywords } = Astro.props;
+const { title, description, pageTitle, heroTitle, ambientVideo, breadcrumbItems, keywords } =
+  Astro.props;
 
 const zhNav = {
   name: HW_ZH.gameName,
@@ -54,6 +60,7 @@ const zhNav = {
     <div class="bg-layer hw-bg-primary"></div>
     <div class="bg-layer hw-bg-accent-1"></div>
     <div class="bg-layer hw-bg-accent-2"></div>
+    <div class="bg-layer hw-bg-accent-3"></div>
 
     <div class="horizon-walker-content">
       <Header />
@@ -62,6 +69,20 @@ const zhNav = {
 
       <div class="horizon-walker-container">
         <main class="horizon-walker-main" id="main-content">
+          {heroTitle && (
+            <section class="hero-section">
+              {ambientVideo && (
+                <div class="hw-bg-video-wrap" aria-hidden="true">
+                  <video class="hw-bg-video" autoplay muted loop playsinline preload="auto">
+                    <source src={ambientVideo} type="video/mp4" />
+                  </video>
+                </div>
+              )}
+              <h1 class="hero-title">{heroTitle}</h1>
+              <DecorativeLines />
+            </section>
+          )}
+
           {pageTitle && (
             <section class="title-only-section">
               <h1 class="title-only-heading">{pageTitle}</h1>
