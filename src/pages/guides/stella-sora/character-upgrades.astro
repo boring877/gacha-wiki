@@ -11,7 +11,9 @@ import { STELLA_SORA_CHARACTERS } from '../../../data/stella-sora/characters.js'
 
 // Build character data with their upgrades and character info
 const charactersWithUpgrades = Object.entries(allCharacterUpgrades).map(([key, charUpgrade]) => {
-  const characterData = STELLA_SORA_CHARACTERS.find(c => c.name.toLowerCase() === key);
+  // Multi-word registry keys are space-stripped (snowishlaru), so match those too
+  const characterData = STELLA_SORA_CHARACTERS.find(c => c.name.toLowerCase() === key)
+    || STELLA_SORA_CHARACTERS.find(c => c.name.toLowerCase().replace(/\s+/g, '') === key);
 
   // Calculate total materials needed for level-up
   const levelUpTotals = {};

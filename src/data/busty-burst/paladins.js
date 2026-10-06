@@ -61,7 +61,7 @@ export const BUSTY_BURST_PALADINS = [
   },
   {
     id: 'noble_succubus_empress_shamshel',
-    characterId: 2065,
+    characterId: 2040,
     name: 'The Noble Succubus Empress: Shamshel',
     fileName: 'Noble_Succubus_Empress_Shamshel',
     rarity: 'SSR',
@@ -241,12 +241,12 @@ export const BUSTY_BURST_PALADINS = [
   },
   {
     id: 'elegant_portrait_shamshel',
-    characterId: 2040,
+    characterId: 2065,
     name: 'Elegant Portrait Shamshel',
     fileName: 'Elegant_Portrait_Shamshel',
     rarity: 'SSR',
     element: 'Dark',
-    role: 'Support',
+    role: 'Attacker',
     tier: 'S',
   },
   {

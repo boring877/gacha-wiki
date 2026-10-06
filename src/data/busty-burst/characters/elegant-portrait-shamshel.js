@@ -199,8 +199,8 @@ export const skills = {
 
 export const stats = {
   "id": "elegant-portrait-shamshel",
-  "characterId": 2040,
-  "name": "【The Noble Succubus Empress】Shamshel",
+  "characterId": 2065,
+  "name": "【Elegant Portrait】Shamshel",
   "rarity": "SSR",
   "element": "魔",
   "weapon": "",

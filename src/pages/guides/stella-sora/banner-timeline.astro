@@ -62,6 +62,10 @@ interface RunCard {
 }
 
 const statusOf = (run: RunCard) => getRunStatus(run as any, buildNow);
+
+// Data slugs are kebab-case but character-info page routes keep two April-era
+// camelCase slugs (snowishLaru); map them so banner links hit real pages.
+const charPageSlug = (slug: string) => (slug === 'snowish-laru' ? 'snowishLaru' : slug);
 ---
 
 <BannerTimelineLayout title={pageTitle} description={pageDescription} gameTitle={gameTitle}>
@@ -127,7 +131,7 @@ const statusOf = (run: RunCard) => getRunStatus(run as any, buildNow);
                 <p class="ss-run-featured">
                   <strong>Featured:</strong> ★5 {run.side === 'trekker' ? 'Trekker' : 'Runic Disc'}{' '}
                   {run.side === 'trekker' && run.charSlug ? (
-                    <a href={`/guides/stella-sora/characters/${run.charSlug}/`}>{run.featured}</a>
+                    <a href={`/guides/stella-sora/characters/${charPageSlug(run.charSlug)}/`}>{run.featured}</a>
                   ) : run.side === 'disc' && run.discSlug ? (
                     <a href={`/guides/stella-sora/discs/${run.discSlug}/`}>{run.featured}</a>
                   ) : (
@@ -203,7 +207,7 @@ const statusOf = (run: RunCard) => getRunStatus(run as any, buildNow);
                 <p class="ss-run-featured">
                   <strong>Featured:</strong> ★5 {run.side === 'trekker' ? 'Trekker' : 'Runic Disc'}{' '}
                   {run.side === 'trekker' && run.charSlug ? (
-                    <a href={`/guides/stella-sora/characters/${run.charSlug}/`}>{run.featured}</a>
+                    <a href={`/guides/stella-sora/characters/${charPageSlug(run.charSlug)}/`}>{run.featured}</a>
                   ) : run.side === 'disc' && run.discSlug ? (
                     <a href={`/guides/stella-sora/discs/${run.discSlug}/`}>{run.featured}</a>
                   ) : (

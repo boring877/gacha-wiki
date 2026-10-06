@@ -26,6 +26,10 @@ datingLocations.forEach(location => {
 // Sort characters alphabetically
 const sortedCharacters = [...datingEvents].sort((a, b) => a.character.localeCompare(b.character));
 
+// Data slugs are kebab-case but character-info page routes keep two April-era
+// camelCase slugs (snowishLaru); map them so dating links hit real pages.
+const charPageSlug = (slug: string) => (slug === 'snowish-laru' ? 'snowishLaru' : slug);
+
 // Generate structured data for SEO
 const structuredData = {
   '@context': 'https://schema.org',
@@ -56,7 +60,7 @@ const structuredData = {
         '@type': 'Thing',
         name: `${character.character} Dating Events`,
         description: `${character.events.length} dating events for ${character.character}: ${character.events.map(e => e.name).join(', ')}`,
-        url: `https://gachawiki.info/guides/stella-sora/characters/${character.slug}`,
+        url: `https://gachawiki.info/guides/stella-sora/characters/${charPageSlug(character.slug)}`,
       },
     })),
   },
@@ -210,7 +214,7 @@ const faqStructuredData = {
               </div>
               <div class="dating-character-info">
                 <h3 class="dating-character-name">
-                  <a href={`/guides/stella-sora/characters/${character.slug}`}>
+                  <a href={`/guides/stella-sora/characters/${charPageSlug(character.slug)}`}>
                     {character.character}
                   </a>
                 </h3>

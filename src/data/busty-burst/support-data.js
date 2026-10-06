@@ -41,7 +41,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
   // ============ SSR Characters ============
   {
     id: 2040,
-    name: '【Elegant Portrait】Shamshel',
+    name: '【The Noble Succubus Empress】Shamshel',
     rarity: 'SSR',
     element: 'Dark',
     weapon: 'Shot',
@@ -516,7 +516,7 @@ export const BUSTY_BURST_SUPPORT_DATA = [
   },
   {
     id: 2065,
-    name: '【Graceful Portrait】Shamshel',
+    name: '【Elegant Portrait】Shamshel',
     rarity: 'SSR',
     element: 'Dark',
     weapon: 'Shot',

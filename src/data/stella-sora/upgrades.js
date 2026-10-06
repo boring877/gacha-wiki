@@ -10023,7 +10023,8 @@ export const allCharacterUpgrades = {
 
 // Helper function to get character upgrades by name
 export const getCharacterUpgrades = name => {
-  const key = name.toLowerCase();
+  // Registry keys strip spaces from display names (snowishlaru)
+  const key = name.toLowerCase().replace(/\s+/g, '');
   return allCharacterUpgrades[key] || null;
 };
 

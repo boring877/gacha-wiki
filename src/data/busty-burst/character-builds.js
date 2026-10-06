@@ -1439,12 +1439,12 @@ export const characterBuilds = {
     })(),
   },
 
-  'noble-succubus-empress-shamshel': {
-    slug: 'noble-succubus-empress-shamshel',
+  'the-noble-succubus-empress-shamshel': {
+    slug: 'the-noble-succubus-empress-shamshel',
     character: {
       name: 'Noble Succubus Empress Shamshel',
       fileName: 'Noble_Succubus_Empress_Shamshel',
-      characterId: 2065,
+      characterId: 2040,
     },
     position: {
       name: 'Mid',
