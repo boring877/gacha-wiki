@@ -1,11 +1,11 @@
-// Character data: aiming-for-your-heart-shati
+// Character data: aiming-for-your-heart-shaty
 // Auto-generated from game data (hero_1.xml + hero_group.xml)
 
 export const info = {
-  "slug": "aiming-for-your-heart-shati",
-  "name": "Aiming for Your Heart♪: Shati",
-  "displayName": "Aiming for Your Heart♪: Shati",
-  "baseName": "Shati",
+  "slug": "aiming-for-your-heart-shaty",
+  "name": "Aiming for Your Heart♪: Shaty",
+  "displayName": "Aiming for Your Heart♪: Shaty",
+  "baseName": "Shaty",
   "title": "Aiming for Your Heart♪",
   "rarity": "SSR",
   "element": "Water",
@@ -21,7 +21,7 @@ export const info = {
   "skillTypes": [
     "Debuff"
   ],
-  "image": "Shati",
+  "image": "Shaty",
   "introduction": "Back Row、Physical、Attacker",
   "profile": {
     "height": "167cm",
@@ -51,11 +51,11 @@ export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Double Bullet - Splash",
+      "name": "Duel bullets splash",
       "icon": "skill001/skill0002",
-      "description": "Deals physical damage to the nearest enemy and inflicts Block-11 DOWN for 6 seconds while [Water Pressure] is active: damage +20%",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Block-11 DOWN for 6 seconds while [Water Pressure] is active: damage +20%",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Block-23 DOWN for 6 seconds while [Water Pressure] is active: damage +20%",
+      "description": "Deals physical damage to the nearest enemy and inflicts Block-11 DOWN for 6 seconds. The damage up 20% when having Water Pressure",
+      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Block-11 DOWN for 6 seconds. The damage up 20% when having Water Pressure",
+      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Block-23 DOWN for 6 seconds. The damage up 20% when having Water Pressure",
       "target": "Nearest Enemy",
       "castTime": 1.5,
       "damageScaling": "350% ATK",
@@ -79,7 +79,7 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Temptation Halo",
+      "name": "Seductive Halo",
       "icon": "skill001/skill0017",
       "description": "Applies Physical Critical Damage 60 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
       "descriptionLv1": "Applies Physical Critical Damage 60 UP to self for 12 seconds and Accuracy 11 UP for 12 seconds",
@@ -118,9 +118,9 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "Summer Sparkle - Water Stream Cannon",
+      "name": "Summer Bright Hydro Cannon",
       "icon": "skill001/skill0003_1",
-      "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 1) for 8 seconds, before casting an ultimate, self gains 15s Hit-Based Damage UP(LV 1), 10s [Water Pressure] status ( Water-type Attack 10%UP)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 1) for 8 seconds. Before casting ultimate, apply Hit-Based Damage UP(LV 1) to self for 15 seconds and Water Pressure(Water property attack up 10%) for 10 seconds",
       "effect": "600% + 1000",
       "buffEffects": [
         {
@@ -145,9 +145,9 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "Summer Sparkle - Water Stream Cannon",
+      "name": "Summer Bright Hydro Cannon",
       "icon": "skill001/skill0003_2",
-      "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 2) for 8 seconds, before casting an ultimate, self gains 15s Hit-Based Damage UP(LV 2), 10s [Water Pressure] status ( Water-type Attack 10%UP)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 2) for 8 seconds. Before casting ultimate, apply Hit-Based Damage UP(LV 2) to self for 15 seconds and Water Pressure(Water property attack up 10%) for 10 seconds",
       "effect": "650% + 1300",
       "buffEffects": [
         {
@@ -172,9 +172,9 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "Summer Sparkle - Water Stream Cannon",
+      "name": "Summer Bright Hydro Cannon",
       "icon": "skill001/skill0003_3",
-      "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 3) for 8 seconds, before casting an ultimate, self gains 15s Hit-Based Damage UP(LV 3), 10s [Water Pressure] status ( Water-type Attack 10%UP)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 3) for 8 seconds. Before casting ultimate, apply Hit-Based Damage UP(LV 3) to self for 15 seconds and Water Pressure(Water property attack up 10%) for 10 seconds",
       "effect": "690% + 1600",
       "buffEffects": [
         {
@@ -199,9 +199,9 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "Summer Sparkle - Water Stream Cannon",
+      "name": "Summer Bright Hydro Cannon",
       "icon": "skill001/skill0003_4",
-      "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 4) for 8 seconds, before casting an ultimate, self gains 15s Hit-Based Damage UP(LV 4), 10s [Water Pressure] status ( Water-type Attack 10%UP)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 4) for 8 seconds. Before casting ultimate, apply Hit-Based Damage UP(LV 4) to self for 15 seconds and Water Pressure(Water property attack up 10%) for 10 seconds",
       "effect": "720% + 1800",
       "buffEffects": [
         {
@@ -226,9 +226,9 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "Summer Sparkle - Water Stream Cannon",
+      "name": "Summer Bright Hydro Cannon",
       "icon": "skill001/skill0003_5",
-      "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 5) for 8 seconds, before casting an ultimate, self gains 15s Hit-Based Damage UP(LV 5), 10s [Water Pressure] status ( Water-type Attack 10%UP)",
+      "description": "Deals physical damage to the nearest enemy and inflicts Water Type Damage Taken UP(LV 5) for 8 seconds. Before casting ultimate, apply Hit-Based Damage UP(LV 5) to self for 15 seconds and Water Pressure(Water property attack up 10%) for 10 seconds",
       "effect": "750% + 2000",
       "buffEffects": [
         {
@@ -296,7 +296,7 @@ export const skills = {
       ]
     }
   ],
-  "name": "Aiming for Your Heart♪: Shati",
+  "name": "Aiming for Your Heart♪: Shaty",
   "id": 2149,
   "rarity": "SSR",
   "element": "Water",
@@ -322,13 +322,13 @@ export const skills = {
     "speedLabel": "Slow",
     "speedValue": "1.11"
   },
-  "slug": "aiming-for-your-heart-shati"
+  "slug": "aiming-for-your-heart-shaty"
 };
 
 export const stats = {
-  "id": "aiming-for-your-heart-shati",
+  "id": "aiming-for-your-heart-shaty",
   "characterId": 2149,
-  "name": "【Aiming for Your Heart♪】Shati",
+  "name": "【Aiming for Your Heart♪】Shaty",
   "rarity": "SSR",
   "element": "水",
   "weapon": "",

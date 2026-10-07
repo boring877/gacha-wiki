@@ -6,7 +6,7 @@ import { info as abigail_info, skills as abigail_skills, stats as abigail_stats 
 import { info as adrienne_info, skills as adrienne_skills, stats as adrienne_stats } from "./adrienne.js";
 import { info as adventurer_henrietti_info, skills as adventurer_henrietti_skills, stats as adventurer_henrietti_stats } from "./adventurer-henrietti.js";
 import { info as agile_mercenary_shaty_info, skills as agile_mercenary_shaty_skills, stats as agile_mercenary_shaty_stats } from "./agile-mercenary-shaty.js";
-import { info as aiming_for_your_heart_shati_info, skills as aiming_for_your_heart_shati_skills, stats as aiming_for_your_heart_shati_stats } from "./aiming-for-your-heart-shati.js";
+import { info as aiming_for_your_heart_shaty_info, skills as aiming_for_your_heart_shaty_skills, stats as aiming_for_your_heart_shaty_stats } from "./aiming-for-your-heart-shaty.js";
 import { info as alluring_naked_apron_zilka_info, skills as alluring_naked_apron_zilka_skills, stats as alluring_naked_apron_zilka_stats } from "./alluring-naked-apron-zilka.js";
 import { info as american_exchange_student_artia_info, skills as american_exchange_student_artia_skills, stats as american_exchange_student_artia_stats } from "./american-exchange-student-artia.js";
 import { info as american_police_lapis_info, skills as american_police_lapis_skills, stats as american_police_lapis_stats } from "./american-police-lapis.js";
@@ -29,7 +29,7 @@ import { info as belubelu_info, skills as belubelu_skills, stats as belubelu_sta
 import { info as bernadette_info, skills as bernadette_skills, stats as bernadette_stats } from "./bernadette.js";
 import { info as bewildered_bride_magdalena_info, skills as bewildered_bride_magdalena_skills, stats as bewildered_bride_magdalena_stats } from "./bewildered-bride-magdalena.js";
 import { info as bianca_info, skills as bianca_skills, stats as bianca_stats } from "./bianca.js";
-import { info as big_wave_surfing_of_love_priscilla_info, skills as big_wave_surfing_of_love_priscilla_skills, stats as big_wave_surfing_of_love_priscilla_stats } from "./big-wave-surfing-of-love-priscilla.js";
+import { info as riding_the_big_wave_of_love_priscilla_info, skills as riding_the_big_wave_of_love_priscilla_skills, stats as riding_the_big_wave_of_love_priscilla_stats } from "./riding-the-big-wave-of-love-priscilla.js";
 import { info as bikini_beatdown_gil_info, skills as bikini_beatdown_gil_skills, stats as bikini_beatdown_gil_stats } from "./bikini-beatdown-gil.js";
 import { info as bikini_celebration_viatrice_info, skills as bikini_celebration_viatrice_skills, stats as bikini_celebration_viatrice_stats } from "./bikini-celebration-viatrice.js";
 import { info as blessed_beer_girl_destra_esquelda_info, skills as blessed_beer_girl_destra_esquelda_skills, stats as blessed_beer_girl_destra_esquelda_stats } from "./blessed-beer-girl-destra-esquelda.js";
@@ -243,7 +243,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
   "adrienne": adrienne_info,
   "adventurer-henrietti": adventurer_henrietti_info,
   "agile-mercenary-shaty": agile_mercenary_shaty_info,
-  "aiming-for-your-heart-shati": aiming_for_your_heart_shati_info,
+  "aiming-for-your-heart-shaty": aiming_for_your_heart_shaty_info,
   "alluring-naked-apron-zilka": alluring_naked_apron_zilka_info,
   "american-exchange-student-artia": american_exchange_student_artia_info,
   "american-police-lapis": american_police_lapis_info,
@@ -266,7 +266,7 @@ export const BUSTY_BURST_CHARACTER_INFO = {
   "bernadette": bernadette_info,
   "bewildered-bride-magdalena": bewildered_bride_magdalena_info,
   "bianca": bianca_info,
-  "big-wave-surfing-of-love-priscilla": big_wave_surfing_of_love_priscilla_info,
+  "riding-the-big-wave-of-love-priscilla": riding_the_big_wave_of_love_priscilla_info,
   "bikini-beatdown-gil": bikini_beatdown_gil_info,
   "bikini-celebration-viatrice": bikini_celebration_viatrice_info,
   "blessed-beer-girl-destra-esquelda": blessed_beer_girl_destra_esquelda_info,
@@ -481,7 +481,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
   "adrienne": adrienne_stats,
   "adventurer-henrietti": adventurer_henrietti_stats,
   "agile-mercenary-shaty": agile_mercenary_shaty_stats,
-  "aiming-for-your-heart-shati": aiming_for_your_heart_shati_stats,
+  "aiming-for-your-heart-shaty": aiming_for_your_heart_shaty_stats,
   "alluring-naked-apron-zilka": alluring_naked_apron_zilka_stats,
   "american-exchange-student-artia": american_exchange_student_artia_stats,
   "american-police-lapis": american_police_lapis_stats,
@@ -504,7 +504,7 @@ export const BUSTY_BURST_CHARACTER_STATS = {
   "bernadette": bernadette_stats,
   "bewildered-bride-magdalena": bewildered_bride_magdalena_stats,
   "bianca": bianca_stats,
-  "big-wave-surfing-of-love-priscilla": big_wave_surfing_of_love_priscilla_stats,
+  "riding-the-big-wave-of-love-priscilla": riding_the_big_wave_of_love_priscilla_stats,
   "bikini-beatdown-gil": bikini_beatdown_gil_stats,
   "bikini-celebration-viatrice": bikini_celebration_viatrice_stats,
   "blessed-beer-girl-destra-esquelda": blessed_beer_girl_destra_esquelda_stats,
@@ -719,7 +719,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
   adrienne_skills,
   adventurer_henrietti_skills,
   agile_mercenary_shaty_skills,
-  aiming_for_your_heart_shati_skills,
+  aiming_for_your_heart_shaty_skills,
   alluring_naked_apron_zilka_skills,
   american_exchange_student_artia_skills,
   american_police_lapis_skills,
@@ -742,7 +742,7 @@ export const BUSTY_BURST_SKILLS_DATA = [
   bernadette_skills,
   bewildered_bride_magdalena_skills,
   bianca_skills,
-  big_wave_surfing_of_love_priscilla_skills,
+  riding_the_big_wave_of_love_priscilla_skills,
   bikini_beatdown_gil_skills,
   bikini_celebration_viatrice_skills,
   blessed_beer_girl_destra_esquelda_skills,
@@ -957,7 +957,7 @@ export const BUSTY_BURST_SKILLS_MAP = {
   "adrienne": adrienne_skills,
   "adventurer-henrietti": adventurer_henrietti_skills,
   "agile-mercenary-shaty": agile_mercenary_shaty_skills,
-  "aiming-for-your-heart-shati": aiming_for_your_heart_shati_skills,
+  "aiming-for-your-heart-shaty": aiming_for_your_heart_shaty_skills,
   "alluring-naked-apron-zilka": alluring_naked_apron_zilka_skills,
   "american-exchange-student-artia": american_exchange_student_artia_skills,
   "american-police-lapis": american_police_lapis_skills,
@@ -980,7 +980,7 @@ export const BUSTY_BURST_SKILLS_MAP = {
   "bernadette": bernadette_skills,
   "bewildered-bride-magdalena": bewildered_bride_magdalena_skills,
   "bianca": bianca_skills,
-  "big-wave-surfing-of-love-priscilla": big_wave_surfing_of_love_priscilla_skills,
+  "riding-the-big-wave-of-love-priscilla": riding_the_big_wave_of_love_priscilla_skills,
   "bikini-beatdown-gil": bikini_beatdown_gil_skills,
   "bikini-celebration-viatrice": bikini_celebration_viatrice_skills,
   "blessed-beer-girl-destra-esquelda": blessed_beer_girl_destra_esquelda_skills,

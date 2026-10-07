@@ -1,12 +1,12 @@
-// Character data: big-wave-surfing-of-love-priscilla
+// Character data: riding-the-big-wave-of-love-priscilla
 // Auto-generated from game data (hero_1.xml + hero_group.xml)
 
 export const info = {
-  "slug": "big-wave-surfing-of-love-priscilla",
-  "name": "Big Wave surfing of Love: Priscilla",
-  "displayName": "Big Wave surfing of Love: Priscilla",
+  "slug": "riding-the-big-wave-of-love-priscilla",
+  "name": "Riding the Big Wave of Love: Priscilla",
+  "displayName": "Riding the Big Wave of Love: Priscilla",
   "baseName": "Priscilla",
-  "title": "Big Wave surfing of Love",
+  "title": "Riding the Big Wave of Love",
   "rarity": "SSR",
   "element": "Wind",
   "role": "Attacker",
@@ -52,7 +52,7 @@ export const skills = {
   "skills": [
     {
       "slot": 2,
-      "name": "Hey... yah...",
+      "name": "Hay……ya……",
       "icon": "skill001/skill0002",
       "description": "Deals physical damage to the 3 nearest enemies and inflicts Block-11 DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds",
       "descriptionLv1": "Deals physical damage to the 3 nearest enemies and inflicts Block-11 DOWN for 6 seconds and Accuracy -11 DOWN for 6 seconds",
@@ -88,11 +88,11 @@ export const skills = {
     },
     {
       "slot": 3,
-      "name": "Ubi, defeat it...",
+      "name": "Woobi, Take down it……",
       "icon": "skill001/skill0011",
-      "description": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds, 5s",
-      "descriptionLv1": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds, 5s",
-      "descriptionLv90": "Deals physical damage to the nearest enemy and inflicts Stun for 3 seconds, 5s",
+      "description": "Deals physical damage to the nearest enemy. Also inflicts Stun for 3 seconds and Curse for 5 seconds",
+      "descriptionLv1": "Deals physical damage to the nearest enemy. Also inflicts Stun for 3 seconds and Curse for 5 seconds",
+      "descriptionLv90": "Deals physical damage to the nearest enemy. Also inflicts Stun for 3 seconds and Curse for 5 seconds",
       "target": "Nearest Enemy",
       "castTime": 0.91,
       "damageScaling": "330% ATK",
@@ -124,7 +124,7 @@ export const skills = {
   "ultimate": [
     {
       "rank": 1,
-      "name": "The surging current that fills my world",
+      "name": "The Great Torrent Filling My World",
       "icon": "skill001/skill0003_1",
       "description": "Deals physical damage to the nearest enemy and inflicts Wind Type Damage Taken UP(LV 1) for 8 seconds and Physical Defense DOWN(LV 1) for 10 seconds",
       "effect": "1200% + 1200",
@@ -145,7 +145,7 @@ export const skills = {
     },
     {
       "rank": 2,
-      "name": "The surging current that fills my world",
+      "name": "The Great Torrent Filling My World",
       "icon": "skill001/skill0003_2",
       "description": "Deals physical damage to the nearest enemy and inflicts Wind Type Damage Taken UP(LV 2) for 8 seconds and Physical Defense DOWN(LV 2) for 10 seconds",
       "effect": "1440% + 1500",
@@ -166,7 +166,7 @@ export const skills = {
     },
     {
       "rank": 3,
-      "name": "The surging current that fills my world",
+      "name": "The Great Torrent Filling My World",
       "icon": "skill001/skill0003_3",
       "description": "Deals physical damage to the nearest enemy and inflicts Wind Type Damage Taken UP(LV 3) for 8 seconds and Physical Defense DOWN(LV 3) for 10 seconds",
       "effect": "1620% + 1750",
@@ -187,7 +187,7 @@ export const skills = {
     },
     {
       "rank": 4,
-      "name": "The surging current that fills my world",
+      "name": "The Great Torrent Filling My World",
       "icon": "skill001/skill0003_4",
       "description": "Deals physical damage to the nearest enemy and inflicts Wind Type Damage Taken UP(LV 4) for 8 seconds and Physical Defense DOWN(LV 4) for 10 seconds",
       "effect": "1739% + 2000",
@@ -208,7 +208,7 @@ export const skills = {
     },
     {
       "rank": 5,
-      "name": "The surging current that fills my world",
+      "name": "The Great Torrent Filling My World",
       "icon": "skill001/skill0003_5",
       "description": "Deals physical damage to the nearest enemy and inflicts Wind Type Damage Taken UP(LV 5) for 8 seconds and Physical Defense DOWN(LV 5) for 10 seconds",
       "effect": "1800% + 2200",
@@ -233,7 +233,7 @@ export const skills = {
       "slot": 1,
       "name": "Physical Attack +, Wind Type ATK +",
       "icon": "skill001/skill1001",
-      "description": "Gain Physical Attack UP(Large), after casting a skill, self gains 3% Wind-type Attack UP(max 15%)",
+      "description": "After casting skills, apply Wind property attack up 3%(Max 15%) to self",
       "effect": "Physical Attack + (+389), Wind Type ATK + (+3%)",
       "effectValues": [
         {
@@ -272,7 +272,7 @@ export const skills = {
       ]
     }
   ],
-  "name": "Big Wave surfing of Love: Priscilla",
+  "name": "Riding the Big Wave of Love: Priscilla",
   "id": 2150,
   "rarity": "SSR",
   "element": "Wind",
@@ -299,13 +299,13 @@ export const skills = {
     "speedLabel": "Fast",
     "speedValue": "0.6"
   },
-  "slug": "big-wave-surfing-of-love-priscilla"
+  "slug": "riding-the-big-wave-of-love-priscilla"
 };
 
 export const stats = {
-  "id": "big-wave-surfing-of-love-priscilla",
+  "id": "riding-the-big-wave-of-love-priscilla",
   "characterId": 2150,
-  "name": "【Big Wave surfing of Love】Priscilla",
+  "name": "【Riding the Big Wave of Love】Priscilla",
   "rarity": "SSR",
   "element": "風",
   "weapon": "",
