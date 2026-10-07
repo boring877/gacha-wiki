@@ -1,0 +1,435 @@
+---
+// 黑色基因角色頁（中文）：頭像卡與基礎資訊、素質計算機、技能組、專屬裝備與檔案，
+// 與英文版同構（gsa-common.css / gsa-characters.css）。角色、技能、素質等遊戲
+// 文字均為官方繁體中文；數值與說明文字取自遊戲資料表。
+import GsaZhLayout from '../../../../../layouts/gene-sys-adam/GsaZhLayout.astro';
+import { gsaCharactersZh, getGsaCharacterZh } from '../../../../../data/gene-sys-adam/zh-tw/characters.js';
+import { gsaPropertyTypes } from '../../../../../data/gene-sys-adam/property-types.js';
+import { GSA_ZH_REVERSE } from '../../../../../data/gene-sys-adam/zh-tw/game-text.js';
+import { GSA_ZH } from '../../../../../data/gene-sys-adam/zh-tw/ui.js';
+import '../../../../../styles/games/gene-sys-adam/gsa-common.css';
+import '../../../../../styles/games/gene-sys-adam/gsa-characters.css';
+
+export async function getStaticPaths() {
+  return gsaCharactersZh.map(c => ({ params: { slug: c.slug } }));
+}
+
+const { slug } = Astro.params;
+const c = getGsaCharacterZh(slug);
+if (!c) return Astro.redirect('/zh-tw/guides/gene-sys-adam/characters/');
+
+const base = GSA_ZH.baseUrl;
+const profile = c.profile || {};
+const stats = c.stats || {};
+
+// 官方 EN 數值名 -> 官方繁中（LanguageSettings 反查），評級列的名稱同時是
+// 好感度軌道的比對鍵，兩側必須一致。
+const ROW_EN = {
+  '傷害強化%': 'Damage Boost %',
+  '命中%': 'ACC %',
+  '暴擊%': 'Crit %',
+  '暴擊傷害%': 'Crit DMG %',
+  '格擋無視%': 'Block PEN %',
+  '攻擊速度%': 'ATK Speed %',
+  '閃避%': 'Evasion %',
+  '暴擊閃避%': 'Crit Evasion %',
+  '暴擊抗性%': 'Crit RES %',
+  '格擋%': 'Block %',
+  '格擋減傷%': 'DMG BLK %',
+  '冰凍抗性%': 'Freeze RES %',
+  '燃燒抗性%': 'Burn RES %',
+  '觸電抗性%': 'Electrocute RES %',
+  '石化抗性%': 'Petrify RES %',
+  '光屬性抗性%': 'Light RES %',
+  '闇屬性抗性%': 'Dark RES %',
+  '治療暴擊%': 'Critical Heal %',
+  '治療暴擊加成%': 'Critical Heal Bonus %',
+  '波次後生命值回復%': 'Post-Wave HP Recovery %',
+  'EN值獲取提升%': 'EN Gain Up %',
+  '冷卻速度%': 'Cooldown Speed %',
+};
+const CORE_EN = { '生命力': 'HP', '攻擊力': 'ATK' };
+// 官方 EN 數值說明 -> 官方繁中說明（反查），找不到就不顯示小字。
+const zhDesc = enLabel => {
+  const en = gsaPropertyTypes[enLabel];
+  return (en && GSA_ZH_REVERSE[en]) || null;
+};
+
+const pct = v => `${Number(v) / 100}%`;
+// 素質評級分組：順序比照遊戲內「數值詳細」面板（RoleDisplayProperty）。
+const statGroups = [
+  { group: '攻擊強度', rows: [
+    ['傷害強化%', '0'],
+    ['命中%', stats.hitPer],
+    ['暴擊%', stats.critPer],
+    ['暴擊傷害%', stats.critAmpPer],
+    ['格擋無視%', stats.blkPenPer],
+    ['攻擊速度%', stats.atkHastePer],
+  ] },
+  { group: '防禦強度', rows: [
+    ['閃避%', stats.ddgPer],
+    ['暴擊閃避%', stats.critRstPer],
+    ['暴擊抗性%', stats.critDmgRdcPer],
+    ['格擋%', stats.blkPer],
+    ['格擋減傷%', stats.blkRdcPer],
+  ] },
+  { group: '狀態強度', rows: [
+    ['冰凍抗性%', stats.freezeHitRdcPer],
+    ['燃燒抗性%', stats.burnHitRdcPer],
+    ['觸電抗性%', stats.shockHitRdcPer],
+    ['石化抗性%', stats.stoneHitRdcPer],
+    ['光屬性抗性%', stats.lightHitRdcPer],
+    ['闇屬性抗性%', stats.darkHitRdcPer],
+  ] },
+  { group: '特殊強度', rows: [
+    ['治療暴擊%', stats.healCritPer],
+    ['治療暴擊加成%', stats.healCritAmpPer],
+    ['波次後生命值回復%', stats.hpRcvPer],
+    ['EN值獲取提升%', stats.manaAmpPer],
+    ['冷卻速度%', stats.cdHastePer],
+  ] },
+]
+  .map(g => ({
+    group: g.group,
+    rows: g.rows
+      .map(([label, value]) => [label, value == null || value === '' ? '0%' : pct(value)]),
+  }))
+  .filter(g => g.rows.length > 0);
+// 評級列的原始值（萬分比）：label -> base。
+const ratingRows = statGroups.map(g => ({
+  group: g.group,
+  rows: g.rows.map(([label, value]) => [label, Number(value.replace('%', '')) * 100 || 0]),
+}));
+const basicTiles = [
+  ['攻擊距離', stats.atkRange],
+  ['普攻間隔', stats.normalAttackGCD ? `${Number(stats.normalAttackGCD) / 1000}s` : null],
+].filter(([label, value]) => value != null && value !== '');
+
+const resumeParas = profile.resumeParas || (profile.resume ? [profile.resume] : []);
+
+const tierStats = (c.tierStats || []).slice().sort((a, b) => a.tier - b.tier);
+const growth = c.growth || { rate: 1, hp: [0, 0, 0, 0, 0, 0], atk: [0, 0, 0, 0, 0, 0] };
+---
+
+<GsaZhLayout
+  title={c.name}
+  description={`${c.name}（${c.nameEn}）黑色基因角色頁：檔案、基礎素質、技能${c.title ? `、${c.title}` : ''}。`}
+  gameTitle={c.name}
+  breadcrumbItems={[{ name: GSA_ZH.gameName, href: base }, { name: '角色資料庫', href: `${base}characters/` }, { name: c.name }]}
+  seoKeywords={[c.name, c.nameEn]}
+>
+  <div class="gsa-content-section">
+    <div class="gsa-detail-header">
+      {c.icon ? (
+        <img src={c.icon} alt={c.name} class="gsa-detail-art" />
+      ) : (
+        <div class="gsa-detail-art-monogram">{c.name?.[0]}</div>
+      )}
+      <div class="gsa-detail-info">
+        <h1>{c.name}</h1>
+        <p class="gsa-detail-name-zh">{c.nameEn}</p>
+        {c.title && <p class="gsa-detail-title">{c.title}</p>}
+        {c.epithet && <p class="gsa-detail-epithet">{c.epithet}</p>}
+        <div class="gsa-meta">
+          {c.attackType && (
+            <span class="gsa-chip gsa-chip-type" title={`${GSA_ZH.labels.attackType}：${c.attackType.name}`}>
+              <img src={c.attackType.icon} alt={c.attackType.name} width="20" height="20" loading="lazy" />
+              {c.attackType.name}
+            </span>
+          )}
+          {c.job && (
+            <span class="gsa-chip gsa-chip-type">
+              {c.job.icon && <img src={c.job.icon} alt={c.job.name} width="20" height="20" loading="lazy" />}
+              {c.job.name}
+            </span>
+          )}
+          {c.element && (
+            <span class="gsa-chip gsa-chip-elem">
+              <img src={c.element.icon} alt={c.element.name} width="20" height="20" loading="lazy" />
+              {c.element.name}
+            </span>
+          )}
+          {c.inGacha ? null : <span class="gsa-chip solid-muted">未在卡池中</span>}
+        </div>
+      </div>
+    </div>
+
+    {
+      (profile.birthday || profile.age || profile.height || profile.interest || resumeParas.length) ? (
+        <div class="gsa-detail-section">
+          <h2>檔案</h2>
+          <div class="gsa-facts-list">
+            {c.sex && <div class="gsa-facts-row"><span>性別</span><b>{c.sex}</b></div>}
+            {profile.birthday && profile.birthday !== '-1' && <div class="gsa-facts-row"><span>生日</span><b>{profile.birthday}</b></div>}
+            {profile.age && profile.age !== '-1' && <div class="gsa-facts-row"><span>年齡</span><b>{profile.age}</b></div>}
+            {profile.height && profile.height !== '-1' && <div class="gsa-facts-row"><span>身高</span><b>{profile.height} cm</b></div>}
+            {profile.weight && profile.weight !== '-1' && <div class="gsa-facts-row"><span>體重</span><b>{profile.weight} kg</b></div>}
+            {profile.interest && <div class="gsa-facts-row gsa-facts-long"><span>興趣</span><b>{profile.interest}</b></div>}
+            {profile.personality && <div class="gsa-facts-row gsa-facts-long"><span>性格</span><b>{profile.personality}</b></div>}
+          </div>
+          {resumeParas.length > 0 && (
+            <div class="gsa-story">
+              <h3 class="gsa-story-title">角色介紹</h3>
+              {resumeParas.map(p => <p>{p}</p>)}
+            </div>
+          )}
+        </div>
+      ) : null
+    }
+
+    <div class="gsa-detail-section" id="gsa-stats">
+      <h2>素質</h2>
+      <p class="gsa-section-note">
+        選擇等級、階級、星級與好感度狀態，即可查看該角色獲得的全部數值。核心數值取自遊戲本身的數值資料：以該階級的基礎值，加上依星級固定的每級成長，乘上角色的稀有度倍率，再套用好感度軌道。武裝、羈絆與屬性祭壇會在遊戲中另外疊加於此之上。
+      </p>
+
+      <div class="gsa-calc" id="gsa-calc">
+        <div class="gsa-calc-controls">
+          <label>
+            等級
+            <span class="gsa-num">
+              <input type="number" id="gsa-calc-lv" min="1" max="50" value="50" />
+              <button type="button" class="gsa-num-up" aria-label="提高等級">&#9650;</button>
+              <button type="button" class="gsa-num-down" aria-label="降低等級">&#9660;</button>
+            </span>
+          </label>
+          <label>
+            階級
+            <select id="gsa-calc-tier">
+              {tierStats.map(t => (
+                <option value={t.tier} selected={t.tier === tierStats.length}>第 {t.tier} 階</option>
+              ))}
+            </select>
+          </label>
+          <label>
+            星級
+            <select id="gsa-calc-star">
+              {[1, 2, 3, 4, 5, 6].map(s => (
+                <option value={s} selected={s === 6}>{s} 星</option>
+              ))}
+            </select>
+          </label>
+          <label>
+            好感度
+            <select id="gsa-calc-aff">
+              <option value="0">關閉</option>
+              <option value="1" selected>最高</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <p class="gsa-section-note" style="margin-top:-2px">
+        階級晉升門檻：等級 2、10、20、25、30、40、40、50、50，對應星級 1、1、2、3、4、5、6、6、6，另需消耗該角色的晉升卡與刻印類道具。每個階級的等級上限都是 50 級。
+      </p>
+
+      <table class="gsa-stats-table" id="gsa-allstats">
+        <tbody>
+          <tr class="gsa-stats-group"><th colSpan={2}>核心</th></tr>
+          <tr>
+            <th scope="row"><span>生命力</span>{zhDesc(CORE_EN['生命力']) && <small class="gsa-stat-desc">{zhDesc(CORE_EN['生命力'])}</small>}</th>
+            <td id="gsa-row-HP">-</td>
+          </tr>
+          <tr>
+            <th scope="row"><span>攻擊力</span>{zhDesc(CORE_EN['攻擊力']) && <small class="gsa-stat-desc">{zhDesc(CORE_EN['攻擊力'])}</small>}</th>
+            <td id="gsa-row-ATK">-</td>
+          </tr>
+          {basicTiles.length > 0 && (
+            <tr class="gsa-stats-group"><th colSpan={2}>基礎</th></tr>
+          )}
+          {basicTiles.map(([label, value]) => (
+            <tr>
+              <th scope="row">{label}</th>
+              <td>{value}</td>
+            </tr>
+          ))}
+          {ratingRows.map(g => (
+            <>
+              <tr class="gsa-stats-group"><th colSpan={2}>{g.group}</th></tr>
+              {g.rows.map(([label, baseVal]) => (
+                <tr>
+                  <th scope="row"><span>{label}</span>{zhDesc(ROW_EN[label]) && <small class="gsa-stat-desc">{zhDesc(ROW_EN[label])}</small>}</th>
+                  <td data-rating={label} data-base={baseVal}>{baseVal / 100}%</td>
+                </tr>
+              ))}
+            </>
+          ))}
+        </tbody>
+      </table>
+
+      <script type="application/json" id="gsa-calc-data" set:html={JSON.stringify({ tierStats, growth, affection: c.affection || [] })}></script>
+      <script is:inline>
+        // 素質計算機：等級 + 階級 + 星級 + 好感度 -> 全部數值。
+        // 核心：rate * (tierBase + perLevelGrowth * Lv)，好感度的攻擊力固定值
+        // 在倍率之後加總。評級：base + 好感度軌道（同為萬分比），差值以括號顯示。
+        (function () {
+          var dataEl = document.getElementById('gsa-calc-data');
+          var lvIn = document.getElementById('gsa-calc-lv');
+          var tierIn = document.getElementById('gsa-calc-tier');
+          var starIn = document.getElementById('gsa-calc-star');
+          var affIn = document.getElementById('gsa-calc-aff');
+          if (!dataEl || !lvIn || !tierIn || !starIn || !affIn) return;
+          var data = JSON.parse(dataEl.textContent);
+          if (!data.tierStats || !data.tierStats.length) return;
+          var fmt = function (n) { return Math.round(n).toLocaleString('en-US'); };
+          var norm = function (s) { return String(s).replace(/ %$/, '').replace(/%/g, '').trim(); };
+          // 列名稱使用遊戲官方繁中，與好感度軌道名稱直接對應。
+          var ALIAS = {};
+          var affMap = {};
+          (data.affection || []).forEach(function (a) { affMap[norm(a.label)] = (affMap[norm(a.label)] || 0) + a.value; });
+          var affOn = false;
+          function statAt(lv, tier, star) {
+            var t = data.tierStats.find(function (r) { return r.tier === tier; }) || data.tierStats[data.tierStats.length - 1];
+            var g = data.growth;
+            var si = Math.max(1, Math.min(6, star)) - 1;
+            var atkFlat = affOn ? (affMap['攻擊力'] || 0) : 0;
+            return {
+              hp: g.rate * (t.hp + g.hp[si] * lv),
+              atk: g.rate * (t.atk + g.atk[si] * lv) + atkFlat,
+              hpPer: g.rate * g.hp[si],
+              atkPer: g.rate * g.atk[si]
+            };
+          }
+          function renderRows(cur) {
+            var hpEl = document.getElementById('gsa-row-HP');
+            var atkEl = document.getElementById('gsa-row-ATK');
+            if (hpEl) hpEl.textContent = fmt(cur.hp) + '（每級 +' + fmt(cur.hpPer) + '）';
+            if (atkEl) atkEl.textContent = fmt(cur.atk) + '（每級 +' + fmt(cur.atkPer) + '）';
+            var matched = {};
+            document.querySelectorAll('#gsa-allstats [data-rating]').forEach(function (td) {
+              var base = Number(td.getAttribute('data-base'));
+              var key = ALIAS[norm(td.getAttribute('data-rating'))] || norm(td.getAttribute('data-rating'));
+              var delta = affOn ? (affMap[key] || 0) : 0;
+              if (affMap[key]) matched[key] = true;
+              td.textContent = delta ? (base + delta) / 100 + '%（+' + delta / 100 + '%）' : base / 100 + '%';
+            });
+            var table = document.getElementById('gsa-allstats');
+            var extras = Object.keys(affMap).filter(function (k) { return !matched[k] && k !== '攻擊力' && k !== '生命力'; });
+            if (extras.length && !document.getElementById('gsa-aff-extra-body') && table) {
+              var wrap = document.createElement('tbody');
+              wrap.id = 'gsa-aff-extra-body';
+              wrap.innerHTML = '<tr class="gsa-stats-group"><th colSpan="2">來自好感度</th></tr>' +
+                extras.map(function (k) {
+                  return '<tr><th scope="row">' + k + '</th><td>' + affMap[k] / 100 + '%</td></tr>';
+                }).join('');
+              table.appendChild(wrap);
+            }
+            var extraBody = document.getElementById('gsa-aff-extra-body');
+            if (extraBody) extraBody.style.display = (affOn && extras.length) ? '' : 'none';
+          }
+          function render() {
+            var lv = Math.max(1, Math.min(50, parseInt(lvIn.value, 10) || 1));
+            var tier = parseInt(tierIn.value, 10);
+            var star = parseInt(starIn.value, 10);
+            affOn = affIn.value === '1';
+            renderRows(statAt(lv, tier, star));
+          }
+          lvIn.addEventListener('input', render);
+          tierIn.addEventListener('change', render);
+          starIn.addEventListener('change', render);
+          affIn.addEventListener('change', render);
+          document.querySelectorAll('.gsa-num button').forEach(function (b) {
+            b.addEventListener('click', function () {
+              var d = b.classList.contains('gsa-num-up') ? 1 : -1;
+              lvIn.value = Math.max(1, Math.min(50, (parseInt(lvIn.value, 10) || 1) + d));
+              render();
+            });
+          });
+          render();
+        })();
+      </script>
+    </div>
+
+    {(c.gear || []).length > 0 && (
+      <div class="gsa-detail-section" id="gsa-armament">
+        <h2>武裝</h2>
+        <p class="gsa-section-note">
+          該角色的專屬裝備（每個部位的最佳版本），直接取自遊戲資料表。屬性線為強化前的基礎值；裝備評級為固定點數，遊戲會透過隨等級縮放的曲線換算。
+        </p>
+        <table class="gsa-stats-table">
+          <thead>
+            <tr><th>部位</th><th>裝備</th><th>屬性線</th></tr>
+          </thead>
+          <tbody>
+            {c.gear.map(g => (
+              <tr>
+                <th scope="row">{g.slot}</th>
+                <td class="gsa-gear-name">{g.name}</td>
+                <td class="gsa-gear-stats">
+                  {g.stats.map(s => (
+                    <span class="gsa-chip solid-muted">{s.label} +{s.pct ? `${s.base / 100}%` : s.base.toLocaleString('en-US')}</span>
+                  ))}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="gsa-section-note" style="margin-top:8px">
+          <a href={`${base}armament/`}>前往武裝頁瀏覽所有專屬裝備</a>，包含 EX 階級成長、強化、升星與拆解費用。
+        </p>
+      </div>
+    )}
+
+  {
+      c.skills && c.skills.length ? (
+        <div class="gsa-detail-section">
+          <h2>技能</h2>
+          <div class="gsa-skills">
+            {c.skills.map(s => (
+              <div class={`gsa-skill ${s.slot === '奧義技' ? 'gsa-skill-ult' : ''}`}>
+                <div class="gsa-skill-head">
+                  <div class="gsa-skill-iconwrap">
+                    {s.icon ? (
+                      <img src={s.icon} alt="" class="gsa-skill-icon" width="52" height="52" loading="lazy" />
+                    ) : (
+                      <span class="gsa-skill-icon gsa-skill-icon-ph" aria-hidden="true"></span>
+                    )}
+                    {s.slot === '奧義技' && <span class="gsa-skill-ex">EX</span>}
+                  </div>
+                  <div class="gsa-skill-heading">
+                    <p class="gsa-skill-name">
+                      <span class="gsa-skill-tag">[{s.slot}]</span>
+                      {s.name}
+                    </p>
+                    <div class="gsa-skill-props">
+                      {s.mainStat && <p class="gsa-skill-prop"><span>主要數值：</span> <b>{s.mainStat}</b></p>}
+                      {s.type && <p class="gsa-skill-prop"><span>型態：</span> <b>{s.type}</b></p>}
+                      {s.cost ? <p class="gsa-skill-prop"><span>消耗：</span> <b>{s.cost} EN</b></p> : null}
+                      {s.gcd ? <p class="gsa-skill-prop"><span>普攻間隔：</span> <b>{s.gcd}</b></p> : null}
+                      {s.cooldown ? <p class="gsa-skill-prop"><span>冷卻時間：</span> <b>{s.cooldown}</b></p> : null}
+                    </div>
+                  </div>
+                  {s.unlockStar > 0 && <span class="gsa-chip gsa-star-chip">{s.unlockStar}★</span>}
+                </div>
+                {s.desc && s.desc.split('\n').map(line => <p class="gsa-skill-desc">{line}</p>)}
+                {s.detail && <p class="gsa-skill-detail">{s.detail}</p>}
+                {s.awakened && (s.awakened.desc || s.awakened.detail) && (
+                  <div class="gsa-skill-awake">
+                    <span class="gsa-chip solid-accent">覺醒</span>
+                    {s.awakened.desc && s.awakened.desc.split('\n').map(line => <p class="gsa-skill-desc">{line}</p>)}
+                    {s.awakened.detail && <p class="gsa-skill-detail">{s.awakened.detail}</p>}
+                  </div>
+                )}
+                {s.statuses?.length ? (
+                  <div class="gsa-skill-statuses">
+                    {s.statuses.map(st => <span class="gsa-chip solid-muted">{st}</span>)}
+                  </div>
+                ) : null}
+              </div>
+            ))}
+          </div>
+          <p class="gsa-section-note">
+            技能數值以 Lv 1 顯示。每個技能都可從 Lv 1 升級至 Lv 99（金幣消耗見上方的養成面板）；每級的數值成長由遊戲用戶端即時運算，不在資料表內。星級標籤代表解鎖該技能所需的星級。主要數值、型態、消耗與冷卻時間皆對應遊戲內技能卡；技能圖示僅提供目前已取得美術素材的角色。
+          </p>
+        </div>
+      ) : (
+        <div class="gsa-detail-section">
+          <h2>技能</h2>
+          <p class="gsa-text-dim">
+            此角色的技能資料尚未出現在遊戲資料表中（未實裝的技能組）。
+          </p>
+        </div>
+      )
+    }
+  </div>
+</GsaZhLayout>

@@ -1,0 +1,168 @@
+---
+// 黑色基因卡池紀錄（中文）：進行中、不刪檔測試期間與排程中的活動卡池，
+// 來自解密的召募資料表與官方公告。卡池名稱使用官方繁中（banners.js 的
+// nameZh 欄），其餘說明為本維基繁中撰寫，版面與英文版相同（gsa-banners.css）。
+import GsaZhLayout from '../../../../layouts/gene-sys-adam/GsaZhLayout.astro';
+import { GSA_BANNERS } from '../../../../data/gene-sys-adam/banners.js';
+import { gsaCharactersZh } from '../../../../data/gene-sys-adam/zh-tw/characters.js';
+import { GSA_ZH } from '../../../../data/gene-sys-adam/zh-tw/ui.js';
+import '../../../../styles/games/gene-sys-adam/gsa-common.css';
+import '../../../../styles/games/gene-sys-adam/gsa-banners.css';
+
+const base = GSA_ZH.baseUrl;
+
+const STATUS_ZH = { live: '進行中', beta: '測試期間', scheduled: '即將開放' };
+const KIND_ZH = {
+  'Solo Rate-Up': '指定召募',
+  'Dual Rate-Up': '雙角色限定召募',
+  'Event Ticket Recruit': '活動票券召募',
+  'Ticket Recruit': '票券召募',
+};
+// 活動代幣：官方繁中優先，查無官方譯文者為本維基譯文。
+const TOKEN_ZH = {
+  'Moonflower Crest': '月華徽記',
+  'Phantom Emblem': '魅影徽記',
+  'Gagaku Emblem': '雅樂徽記',
+  "Heaven's Door summon letters": '天堂之門召募信',
+  'Onyx (event vault currency)': '黑曜石（活動寶庫貨幣）',
+};
+// 每張卡池的檔期與說明（繁中）。卡池名（nameZh）已是官方文字。
+const BANNER_ZH = {
+  'ogino-rui-rate-up': {
+    since: '自 2026年9月29日維護起',
+    note: '進行中的單角色池，用戶端於 10 月 2 日拉取其美術面板證實（面板為純背景圖，因此卡片改顯示當期角色列）。SSR 機率 2 倍、每抽附一張指定印章（Designated Seal），100 抽保底取得當期角色。',
+  },
+  'sugimoto-arina-rate-up': {
+    since: '自 2026年9月29日維護起',
+    note: '與荻野瑠衣池同時進行的單角色池。條件與所有單角色池相同：SSR 機率 2 倍、每抽附指定印章、100 抽保底取得當期角色。',
+  },
+  'lunar-splendor': {
+    since: '正式營運：2026年9月22日至11月3日',
+    note: '正式營運的限定池：120 抽保底當期角色、ECoin 票券通道，兌換商店備有土方千鶴的月華薙刀與足部裝備零件。卡片圖為 genesys-adam.com 的官方活動公告；遊戲內美術面板為 R18 內容，不放在維基上。日期出自同一份官方公告。',
+  },
+  'black-gold-hunter': {
+    since: '不刪檔測試期間，自 2026年9月17日起',
+    note: '依 9 月 17 日官方公告於測試期間登場：遊玩「黑金獵人」活動、收集黑曜石開啟活動寶庫取得召募卡，再投入乳牛貝兒的票券召募（其召募機與美術 Draw_Bg_23 已再次設定於目前的用戶端資料表中，預計復刻）。',
+  },
+  'heavens-door-jessica': {
+    since: '不刪檔測試期間，自 2026年9月17日起',
+    note: '9 月 17 日官方公告列出「天堂之門」特別任務，以及測試版本中的潔西卡票券召募。她的限定機（美術 Draw_Bg_36）已再次設定於目前的用戶端資料表中。',
+  },
+  'heavens-door-connie': {
+    since: '已設定於用戶端資料表，尚未觀測到開放',
+    note: '第二個「天堂之門」召募（美術 Draw_Bg_46），在活動管線中排在潔西卡之後。昆妮的技能資料直到 9 月 22 日的資料表才完整，維基上的評分也於當日重新計分。',
+  },
+  'war-and-music': {
+    since: '已設定於用戶端資料表，尚未觀測到開放',
+    note: '伊蓮娜與維多莉亞的雙角色限定池（美術面板 Draw_Bg_34_1 與 _34_2），附帶「收集魅影徽記」活動。其召募機在活動管線中位於「天堂之門」之後；兩名當期角色的技能組在等待期間於 10 月 2 日的資料表中改版。',
+  },
+  'lingering-echoes': {
+    since: '已設定於用戶端資料表，尚未觀測到開放',
+    note: '下一波新角色：清音與冷鴆的雙角色限定池（美術面板 Draw_Bg_40_1 與 _40_2），附帶「收集雅樂徽記」活動。為目前活動管線的最後一波；兩人的技能組已在資料表中完整齊備。',
+  },
+  'solo-rotation-queue': {
+    since: '已設定於用戶端資料表，尚未觀測到開放',
+    note: '目前的資料表在進行中的荻野瑠衣與杉本有菜之後，另設定了三部單角色機（米蓮娜、鈴鈴、安娜貝爾），同樣是 100 抽保底。另預載了一個 100 萬下載慶祝召募。',
+  },
+};
+
+const SECTIONS = [
+  { key: 'live', title: '進行中' },
+  { key: 'beta', title: '不刪檔測試期間（2026年9月17日至22日）' },
+  { key: 'scheduled', title: '用戶端資料中的預定卡池' },
+];
+
+const charBySlug = Object.fromEntries(gsaCharactersZh.map(c => [c.slug, c]));
+const charZhName = Object.fromEntries(gsaCharactersZh.map(c => [c.nameEn, c.name]));
+
+function charCard(slug) {
+  const c = charBySlug[slug];
+  if (!c) return { name: slug, meta: '', icon: null, slug };
+  const bits = [c.title, c.element?.name, c.job?.name].filter(Boolean);
+  return { name: c.name, meta: bits.join('、'), icon: c.icon, slug };
+}
+const trainingZh = names => names.map(n => charZhName[n] || n).join('、');
+---
+
+<GsaZhLayout
+  title="卡池紀錄"
+  description={`黑色基因卡池紀錄（2026年10月2日更新）：進行中、測試期間與排程中的活動卡池，包含當期角色與保底資訊，來自解密資料表與官方公告。`}
+  gameTitle="卡池紀錄"
+  breadcrumbItems={[{ name: GSA_ZH.gameName, href: base }, { name: '卡池紀錄' }]}
+>
+  <section>
+    <p class="gsa-banner-intro">
+      所有已開跑或已載入待跑的活動卡池，讀取自遊戲自身的召募資料表，並與官方公告及 X
+      帳號（@GeneSysAdamEN）交叉核對。檔期由伺服器端控制，因此條目標注的是其出現的資料波次，而非確切時刻。常駐池（一般、精英、新人、無限與鏡像召募）不列入本頁。更新於
+      2026年10月2日。
+    </p>
+
+    {SECTIONS.map(sec => {
+      const cards = GSA_BANNERS.filter(b => b.status === sec.key);
+      return cards.length > 0 && (
+        <fragment>
+          <h2 class="gsa-banner-section-title">{sec.title}</h2>
+          <div class="gsa-bn-list">
+            {cards.map(b => {
+              const zh = BANNER_ZH[b.slug] || {};
+              return (
+              <article class={`gsa-bn-card${b.status === 'live' ? ' gsa-bn-card-live' : ''}`}>
+                <div class="gsa-bn-art">
+                  {b.image
+                    ? (
+                      <div class="gsa-bn-art-imgs">
+                        <img src={b.image} alt={`${b.nameZh || b.name} 卡池圖`} width="1920" height="1080" loading="lazy" decoding="async" />
+                        {b.image2 && <img src={b.image2} alt={`${b.nameZh || b.name} 第二圖`} width="1920" height="1080" loading="lazy" decoding="async" />}
+                      </div>
+                    )
+                    : (
+                      <div class="gsa-bn-art-none">
+                        {b.featured.length > 0 && b.featured.every(slug => charCard(slug).icon)
+                          ? b.featured.map(slug => {
+                              const c = charCard(slug);
+                              return <img class="gsa-bn-art-icon" src={c.icon} alt={c.name} width="110" height="110" loading="lazy" />;
+                            })
+                          : <span>尚無卡池圖</span>}
+                      </div>
+                    )}
+                </div>
+                <div class="gsa-bn-body">
+                  <div class="gsa-bn-top">
+                    <span class="gsa-bn-kind">{KIND_ZH[b.kind] || b.kind}</span>
+                    <span class={`gsa-bn-status gsa-bn-status-${b.status}`}>{STATUS_ZH[b.status] || b.status}</span>
+                    <span class="gsa-bn-since">{zh.since || b.since}</span>
+                  </div>
+                  <h3 class="gsa-bn-title">{b.nameZh || b.name}</h3>
+                  <p class="gsa-bn-sub">{b.nameZh ? b.name : b.nameZh}</p>
+                  <div class="gsa-banner-featured">
+                    {b.featured.map(slug => {
+                      const c = charCard(slug);
+                      return (
+                        <a class="gsa-banner-char" href={`${base}characters/${slug}/`}>
+                          {c.icon
+                            ? <img class="gsa-banner-char-thumb" src={c.icon} alt={c.name} width="44" height="44" loading="lazy" />
+                            : <span class="gsa-banner-char-thumb gsa-monogram">{c.name?.[0]}</span>}
+                          <span>
+                            <span class="gsa-banner-char-name">{c.name}</span>
+                            <span class="gsa-banner-char-meta">{c.meta}</span>
+                          </span>
+                        </a>
+                      );
+                    })}
+                  </div>
+                  <div class="gsa-banner-facts">
+                    {b.pity && <span class="gsa-banner-fact"><b>保底：</b>{b.pity} 抽</span>}
+                    {b.eventToken && <span class="gsa-banner-fact"><b>活動代幣：</b>{TOKEN_ZH[b.eventToken] || b.eventToken}</span>}
+                    {b.training.length > 0 && <span class="gsa-banner-fact"><b>訓練任務：</b>{trainingZh(b.training)}</span>}
+                  </div>
+                  <p class="gsa-bn-note">{zh.note || b.note}</p>
+                </div>
+              </article>
+              );
+            })}
+          </div>
+        </fragment>
+      );
+    })}
+  </section>
+</GsaZhLayout>

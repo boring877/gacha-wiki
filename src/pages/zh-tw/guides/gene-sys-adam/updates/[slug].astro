@@ -1,0 +1,149 @@
+---
+// 黑色基因更新公告詳細頁（中文）：單一更新條目，附該資料波次的卡池圖、完整
+// 重點列表與前後篇導覽。版面與英文版相同（gsa-banners.css），條目重點為
+// 本維基繁中撰寫，版本號、日期與角色名使用官方資訊。
+import GsaZhLayout from '../../../../../layouts/gene-sys-adam/GsaZhLayout.astro';
+import { GSA_UPDATES } from '../../../../../data/gene-sys-adam/updates.js';
+import { GSA_ZH } from '../../../../../data/gene-sys-adam/zh-tw/ui.js';
+import '../../../../../styles/games/gene-sys-adam/gsa-common.css';
+import '../../../../../styles/games/gene-sys-adam/gsa-banners.css';
+
+export function getStaticPaths() {
+  return GSA_UPDATES.map(u => ({ params: { slug: u.slug } }));
+}
+
+const base = GSA_ZH.baseUrl;
+
+const TAG_ZH = { Update: '更新', Launch: '正式營運', Notice: '官方公告', Datamine: '資料探勘' };
+
+// 條目全文（slug -> 繁中欄位）。英文版條目為資料表差異重建，此處譯為
+// 自然繁中，角色名與技能名使用遊戲官方繁中。
+const UPDATE_ZH = {
+  '2026-10-02-skill-reworks-and-rui-arina-rotation': {
+    date: '2026年10月2日',
+    title: '技能改版與荻野瑠衣、杉本有菜輪替',
+    points: [
+      '指定召募輪替至荻野瑠衣與杉本有菜；用戶端於 10 月 2 日下載了兩者的卡池美術面板（Draw_Bg_19 與 Draw_Bg_21），確認了目前的上架組合。每個單角色池都維持 100 抽保底取得當期角色。',
+      '三名角色的技能資料改版：伊蓮娜（6 個技能）、維多莉亞（7 個技能）與艾琳娜（7 個技能）新增狀態附加與額外的效果行，包含伊蓮娜的引爆（Detonate）互動、維多莉亞的格擋無視與火屬性抗性降低附加，以及艾琳娜的「適者生存」擴增為五個命中目標。',
+      '瑞秋的「瞄準射擊」目標從「一名目標」改為「最遠的目標」，並修正了鈴鈴與石川沼司的技能說明文字。',
+      '活動資料表新增一整套角色養成訓練任務：每名角色的升星、專屬裝備取得、升階與好感度里程碑，另有一個新的訓練活動條目。',
+      '露比的 SNS 第四章劇情內容（劇情動畫、SNS 圖、語音組與劇情 BGM）隨本波資料下載。',
+      '用戶端熱更新模組於 9 月 24 日（84 KB）與 10 月 2 日（137 KB）上線；共有十張遊戲資料表變動，沒有新角色、新道具或新召募機。',
+    ],
+    source: '解密資料表差異比對，2026年9月22日與10月2日的 Patch 擷取。',
+  },
+  '2026-09-29-arisa-investigation-stage': {
+    date: '2026年9月29日',
+    title: '調查關卡：藤原亞璃紗',
+    imageCaption: 'SSR 藤原亞璃紗的官方揭露卡，發布於 X（@GeneSysAdamEN）。',
+    points: [
+      '新 SSR 藤原亞璃紗（剎那的芳華），火屬性突擊職、月華組幹部。她可透過遊玩取得而非僅限卡池：完美通關其調查關卡第 6 關即可招募。',
+      '調查關卡於 2026 年 9 月 29 日維護後開放；遊戲內橫幅建議以剋制屬性的隊伍挑戰各關卡。',
+      '關卡特產徽章可在活動商店兌換升星與晉升卡，藤原亞璃紗的訓練任務也隨同一波開放。',
+      '指定召募機在本次維護前後輪替至荻野瑠衣與杉本有菜；兩者的卡池美術已於 10 月 2 日前送達用戶端。',
+      '藤原亞璃紗已收錄進維基角色資料庫，包含完整技能組。',
+    ],
+    source: '官方 X 公告（@GeneSysAdamEN，2026年9月29日）與解密用戶端資料表。',
+  },
+  '2026-09-22-official-launch-and-lunar-splendor': {
+    date: '2026年9月22日',
+    title: '正式營運與「繁華遊廓的月之華」活動',
+    imageCaption: '官方公告：主題活動「繁華遊廓的月之華」（2026年9月22日至11月3日）。圖片取自 genesys-adam.com。',
+    points: [
+      '2026 年 9 月 22 日正式營運（9 月 17 日的開放為不刪檔公開測試，測試進度全部保留）。',
+      '主題活動「繁華遊廓的月之華」於 9 月 22 日（維護後）至 11 月 3 日 15:00（UTC+8）舉行。',
+      '兩名新 SSR 在「繁華遊廓的月之華」雙角色限定池登場：小町咲香與土方千鶴。此卡池與無限召募、精英召募及一般召募共用機率。第 10 抽保底 SR 以上，120 抽保底取得一名當期 SSR。',
+      '限定池也接受 ECoin 十連召募券，活動另附登入獎勵、活動任務與兌換商店，商店備有土方千鶴的月華薙刀與足部裝備零件。',
+      '營運慶祝期間無限召募免費：想抽幾次就抽幾次，再確認想要的結果；前 10 抽保底一名 SSR 角色。',
+      '營運慶祝期間每位指揮官皆可獲得一張免費 SSR 指定券。',
+    ],
+    source: '官方網站新聞（genesys-adam.com），公告編號 3518 至 3520。',
+  },
+  '2026-09-17-beta-and-500k-pre-registrations': {
+    date: '2026年9月17日',
+    title: '不刪檔測試開放，預約突破 50 萬',
+    imageCaption: '官方公告：50 萬預約達成與不刪檔測試開始。圖片取自 genesys-adam.com。',
+    points: [
+      '不刪檔公開測試於 2026 年 9 月 17 日啟動；測試期間的所有進度都會保留到正式營運。',
+      '預約人數突破 50 萬，正式營運時將向每位指揮官發放全部里程碑獎勵。',
+      '測試版本已包含 54 名已建檔角色的上線名單、附乳牛貝兒票券召募的「黑金獵人」活動，以及附潔西卡票券召募的「天堂之門」特別任務。',
+    ],
+    source: '官方網站新聞（genesys-adam.com），公告編號 3506 與 3519。',
+  },
+  '2026-08-26-pre-registration-opens': {
+    date: '2026年8月26日',
+    title: '開放預約',
+    imageCaption: '官方公告：預約活動。圖片取自 genesys-adam.com。',
+    points: [
+      '預約於 2026 年 8 月 26 日 12:00（UTC+8）開放。',
+      '里程碑獎勵依總預約人數提升，最高至 9 月 17 日確認的 50 萬級距。',
+      '活動於 EROLABS 平台商店頁面進行。',
+    ],
+    source: '官方網站新聞（genesys-adam.com），公告編號 3427。',
+  },
+  'scheduled-war-and-music': {
+    date: '已排程（用戶端資料）',
+    title: '排程中：戰爭與音樂',
+    points: [
+      '「戰爭與音樂」雙角色限定池：SSR 伊蓮娜與 SSR 維多莉亞（美術面板 Draw_Bg_34_1 與 _34_2），120 抽保底取得當期角色。',
+      '「收集魅影徽記」活動，附專屬兌換商店。',
+      '伊蓮娜與維多莉亞的訓練任務，以及排在潔西卡之後的昆妮「天堂之門」票券召募。',
+      '在活動管線中位於「黑金獵人」與「天堂之門」之後；兩名當期角色的技能組已在 10 月 2 日的資料表中改版，等待實裝。',
+    ],
+    source: '召募機與活動資料表，2026年10月2日 Patch 擷取。',
+  },
+  'scheduled-lingering-echoes': {
+    date: '已排程（用戶端資料）',
+    title: '排程中：音行自鳴',
+    points: [
+      '兩名 SSR 角色的完整技能組已在資料表中：清音為風屬性破壞職，整組技能以觸電目標優先並觸發超載追擊；冷鴆為水屬性破壞職，每次命中為隊伍充能 2 點 EN，循環技能每輪都附帶冰凍判定。',
+      '兩人的「音行自鳴」雙角色限定池（美術面板 Draw_Bg_40_1 與 _40_2）附 120 抽保底，並有各自的訓練任務。',
+      '「收集雅樂徽記」活動：徽記從活動關卡掉落，可於活動兌換商店換取獎勵。',
+      '為目前活動管線的最後一波；兩人的技能組於 9 月 22 日的資料表抵達，同波另有 90 個預載道具（編號 1001 至 1078：渾沌之源活動套組、約會與通訊頭像，以及新的 HCG 場景解鎖）與 Assembly-CSharp 1.0.0 熱更新模組。',
+    ],
+    source: '召募機與活動資料表，2026年9月22日與10月2日 Patch 擷取。',
+  },
+};
+
+const { slug } = Astro.params;
+const idx = GSA_UPDATES.findIndex(u => u.slug === slug);
+const entry = GSA_UPDATES[idx];
+const zh = UPDATE_ZH[slug] || {};
+const title = zh.title || entry.title;
+const date = zh.date || entry.date;
+---
+
+<GsaZhLayout
+  title={title}
+  description={`黑色基因更新（${date}）：${title}。由解密遊戲資料表重建。`}
+  gameTitle="更新公告"
+  breadcrumbItems={[{ name: GSA_ZH.gameName, href: base }, { name: '更新公告', href: `${base}updates/` }, { name: title }]}
+>
+  <section>
+    <a class="gsa-update-back" href={`${base}updates/`}>所有更新公告</a>
+
+    <article class="gsa-update-card gsa-update-detail">
+      <div class="gsa-update-artwrap">
+        {entry.image
+          ? (
+            <div class="gsa-banner-art-pair">
+              <img class="gsa-update-art" src={entry.image} alt={zh.imageCaption || title} width={entry.imageW || 1280} height={entry.imageH || 720} />
+              {entry.image2 && <img class="gsa-update-art" src={entry.image2} alt={zh.imageCaption || title} width={entry.imageW || 1280} height={entry.imageH || 720} />}
+            </div>
+          )
+          : <div class="gsa-update-art-band">{date}</div>}
+        <span class="gsa-update-tag">{TAG_ZH[entry.tag] || entry.tag}</span>
+      </div>
+      <div class="gsa-update-head">
+        <h1 class="gsa-update-detail-title">{title}</h1>
+        <span class="gsa-update-date">{date}</span>
+      </div>
+      <ul class="gsa-update-points">
+        {(zh.points || entry.points).map(p => <li>{p}</li>)}
+      </ul>
+      {zh.imageCaption && <p class="gsa-update-caption">{zh.imageCaption}</p>}
+      <p class="gsa-update-source">資料來源：{zh.source || entry.source}</p>
+    </article>
+
+  </section>
+</GsaZhLayout>

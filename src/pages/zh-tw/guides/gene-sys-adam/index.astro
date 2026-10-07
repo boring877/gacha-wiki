@@ -1,0 +1,97 @@
+---
+// 黑色基因（Gene-Sys: Adam）中文維基首頁：與英文版首頁同構（gsa-landing.css），
+// 遊戲文字採官方繁體中文，簡介與說明為本維基撰寫。
+import GsaZhLayout from '../../../../layouts/gene-sys-adam/GsaZhLayout.astro';
+import DiscordPromo from '../../../../components/DiscordPromo.astro';
+import { gsaCharactersZh } from '../../../../data/gene-sys-adam/zh-tw/characters.js';
+import { GSA_ZH } from '../../../../data/gene-sys-adam/zh-tw/ui.js';
+import '../../../../styles/games/gene-sys-adam/gsa-landing.css';
+
+const roster = gsaCharactersZh.length;
+const base = GSA_ZH.baseUrl;
+---
+
+<GsaZhLayout
+  title="首頁"
+  description="黑色基因（Gene-Sys: Adam）中文維基：角色資料庫、技能、素質、卡池與更新公告。遊戲文字均取自遊戲官方繁體中文。"
+  gameTitle={GSA_ZH.gameName}
+  ambientVideo={true}
+  seoKeywords={['黑色基因', 'Gene-Sys Adam', '攻略', '維基']}
+  breadcrumbItems={[{ name: GSA_ZH.gameName, href: base }]}
+>
+  <section class="gsa-content-section">
+    <div class="gsa-story">
+      <p>
+        <strong>黑色基因</strong>（Gene-Sys: Adam）是一款 R18 黑暗都市復仇題材的
+        RPG，舞台是一座罪惡橫行的混亂都會。你將跟隨從瘟疫與無數戰場中倖存的神秘人物
+        <strong>西奧多</strong>，他懷著復仇的渴望回到自己的出生之地。招募來自城中各方勢力的
+        角色，揭開疫情背後的陰謀，在即時小隊戰鬥中一步步奪回街道。
+      </p>
+      <p>
+        遊戲於 2026 年 9 月在 EROLABS 上線，目前維基已收錄 {roster}
+        名完整建檔的角色。本維基內容取自實際遊戲用戶端：頁面上所有資料表皆由遊戲檔案解密產生，數值與遊戲內完全一致。
+      </p>
+    </div>
+
+    <div class="gsa-download-row">
+      <a
+        class="gsa-download-btn"
+        href="https://game.erolabsshare.live/app/f302f717/Gene_Sys_Adam"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        下載並遊玩黑色基因
+        <span class="gsa-download-arrow">→</span>
+      </a>
+
+      <a
+        class="gsa-download-btn"
+        href="https://www.genesys-adam.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        官方網站
+        <span class="gsa-download-arrow">→</span>
+      </a>
+    </div>
+
+    <DiscordPromo accent="#d24a58" />
+
+    <p class="gsa-last-updated">
+      最後更新：<time datetime="2026-09-17">2026年9月17日</time>
+    </p>
+  </section>
+
+  <section class="gsa-resources-section">
+    <h2 class="gsa-resources-title">指南與資源</h2>
+
+    <div class="gsa-resources-grid">
+      <div class="gsa-resource-category">
+        <div class="gsa-category-header">
+          <h3>角色</h3>
+          <p class="gsa-category-description">
+            收錄全部 {roster}
+            名建檔角色，包含素質、技能、檔案與卡池資訊。
+          </p>
+        </div>
+        <div class="gsa-buttons-grid">
+          <a href={`${base}characters/`} class="gsa-resource-button">角色資料庫</a>
+          <a href={`${base}tier-list/`} class="gsa-resource-button">排行榜</a>
+          <a href={`${base}armament/`} class="gsa-resource-button">武裝</a>
+        </div>
+      </div>
+      <div class="gsa-resource-category">
+        <div class="gsa-category-header">
+          <h3>遊戲</h3>
+          <p class="gsa-category-description">
+            附保底參考的卡池一覽，以及由遊戲資料表重建的更新公告。
+          </p>
+        </div>
+        <div class="gsa-buttons-grid">
+          <a href={`${base}banners/`} class="gsa-resource-button">卡池</a>
+          <a href={`${base}updates/`} class="gsa-resource-button">更新公告</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</GsaZhLayout>

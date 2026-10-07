@@ -1,0 +1,277 @@
+---
+// 黑色基因武裝頁（中文）：專屬裝備瀏覽（每名角色的 EX 系列屬性）與強化、
+// 升星、拆解費用參考，結構與英文版相同（gsa-armament.css）。裝備名與屬性
+// 名透過 GSA_ZH_ITEMS / GSA_ZH_REVERSE 查官方繁中，查無官方譯文者保留原文。
+import GsaZhLayout from '../../../../layouts/gene-sys-adam/GsaZhLayout.astro';
+import {
+  gsaSignatureGear,
+  gsaGearSlots,
+  gsaEnhanceCosts,
+  gsaStarUpCosts,
+  gsaDismantleReturns,
+} from '../../../../data/gene-sys-adam/armament.js';
+import { GSA_ZH_ITEMS, GSA_ZH_REVERSE } from '../../../../data/gene-sys-adam/zh-tw/game-text.js';
+import { gsaCharactersZh } from '../../../../data/gene-sys-adam/zh-tw/characters.js';
+import { GSA_ZH } from '../../../../data/gene-sys-adam/zh-tw/ui.js';
+import '../../../../styles/games/gene-sys-adam/gsa-common.css';
+import '../../../../styles/games/gene-sys-adam/gsa-characters.css';
+import '../../../../styles/games/gene-sys-adam/gsa-armament.css';
+
+const base = GSA_ZH.baseUrl;
+// 遊戲自身的部位用語（EquipData 說明前綴，官方繁中）。
+const SLOT_ZH = { Gloves: '手套', Weapon: '武器', Shoes: '足部', Accessory: '飾品' };
+const ELEMENT_ZH = { Fire: '火', Earth: '土', Wind: '風', Water: '水', Light: '光', Dark: '闇' };
+const ELEMENTS = ['Fire', 'Earth', 'Wind', 'Water', 'Light', 'Dark'];
+// 屬性線名稱：官方繁中（與角色專屬裝備、好感度軌道同一套用語）。
+const STAT_ZH = {
+  'ATK': '攻擊力',
+  'Light ATK': '光屬性攻擊',
+  'Fire ATK': '火屬性攻擊',
+  'Earth ATK': '土屬性攻擊',
+  'Wind ATK': '風屬性攻擊',
+  'Water ATK': '水屬性攻擊',
+  'Dark ATK': '闇屬性攻擊',
+  'Healing Up': '治療效果提升',
+  'Healing Received Up': '受治療效果提升',
+  'ACC': '命中',
+  'Critical Heal': '治療暴擊',
+  'Critical Heal Bonus': '治療暴擊加成',
+  'ATK Speed': '攻擊速度',
+  'Evasion': '閃避',
+  'Energy Boost': '能量強化',
+  'Physical Boost': '物理強化',
+  'Burn Hit Rate': '燃燒命中',
+  'Electrocute Hit Rate': '觸電命中',
+  'Judgment Hit Rate': '審判命中',
+  'Judgment RES': '審判抗性',
+  'Stun RES': '暈眩抗性',
+  'Freeze RES': '冰凍抗性',
+  'Skill Boost': '技能強化',
+  'Basic Attack Boost': '普攻強化',
+  'Crit': '暴擊',
+  'Crit DMG': '暴擊傷害',
+  'Crit Evasion': '暴擊閃避',
+  'Block PEN': '格擋無視',
+  'Block': '封鎖',
+  'DMG BLK': '格擋減傷',
+  'EN Gain Up': 'EN值獲取提升',
+};
+const QUALITY_ZH = { White: '白色', Green: '綠色', Blue: '藍色', Purple: '紫色', Gold: '金色', Red: '紅色', Rainbow: '彩虹' };
+const WEAPON_CLASS_ZH = { Physical: '物理', Energy: '能量' };
+
+const charZhName = Object.fromEntries(gsaCharactersZh.map(c => [c.slug, c.name]));
+const pieceZh = g => GSA_ZH_ITEMS[g.nameEx] || GSA_ZH_ITEMS[g.name] || g.nameEx;
+const statZh = label => STAT_ZH[label] || GSA_ZH_REVERSE[label] || label;
+const flavorZh = g => (g.flavor && GSA_ZH_REVERSE[g.flavor]) || g.flavor;
+
+const bySlot = new Map(gsaGearSlots.map(s => [s, gsaSignatureGear.filter(g => g.slot === s)]));
+const charCount = new Set(gsaSignatureGear.map(g => g.slug)).size;
+const fmt = (v, pct) => (pct ? `${v / 100}%` : v.toLocaleString('en-US'));
+const statLine = (s) =>
+  s.max !== null && s.max !== s.base
+    ? `${fmt(s.base, s.pct)} 至 ${fmt(s.max, s.pct)}`
+    : fmt(s.base, s.pct);
+const updatedZh = '2026年9月26日';
+---
+
+<GsaZhLayout
+  title="武裝"
+  description={`黑色基因專屬裝備總覽：每名角色的武器、手套、足部與飾品（含 EX 階級屬性），以及強化、升星與拆解費用表。`}
+  gameTitle="武裝"
+  breadcrumbItems={[{ name: GSA_ZH.gameName, href: base }, { name: '武裝' }]}
+>
+  <div class="gsa-content-section">
+    <p class="gsa-section-note gsa-arm-intro">
+      首波上線之後的每名角色都攜帶四件專屬裝備（武器、手套、足部、飾品），僅限本人裝備，另有共用的頭部、身體與腿部野戰裝備。每件專屬裝備都有六階的基礎系列與六階的 EX
+      系列，此處顯示 EX 階級 1 成長至強化前的 EX 階級 6。首批上線角色（艾拉至塔莉亞）在遊戲資料中沒有專屬裝備。
+    </p>
+
+    <div class="gsa-toolbar">
+      <input type="text" class="gsa-search" placeholder="搜尋角色或裝備..." id="gsa-search" />
+      <span class="gsa-count" id="gsa-count">{gsaSignatureGear.length} 件裝備，{charCount} 名角色</span>
+    </div>
+    <div class="gsa-toolbar gsa-toolbar-filters">
+      <button class="gsa-filter-btn active" data-filter="all">全部部位</button>
+      {gsaGearSlots.map(s => (
+        <button class="gsa-filter-btn" data-filter={s.toLowerCase()}>{SLOT_ZH[s]}（{bySlot.get(s).length}）</button>
+      ))}
+      <span class="gsa-filter-sep" aria-hidden="true"></span>
+      {ELEMENTS.map(e => (
+        <button class="gsa-filter-btn" data-filter={`el-${e.toLowerCase()}`}>{ELEMENT_ZH[e]}</button>
+      ))}
+    </div>
+
+    <div class="gsa-arm-grid" id="gsa-arm-grid">
+      {gsaSignatureGear.map(g => (
+        <a
+          class="gsa-arm-card"
+          href={`${base}characters/${g.slug}/`}
+          data-search={`${charZhName[g.slug] || g.char} ${g.char} ${pieceZh(g)} ${g.nameEx} ${SLOT_ZH[g.slot]}`.toLowerCase()}
+          data-tags={[g.slot.toLowerCase(), `el-${(g.element || '').toLowerCase()}`].join(' ')}
+        >
+          <div class="gsa-arm-head">
+            <div class="gsa-icon-frame gsa-arm-icon">
+              {g.icon
+                ? <img src={`https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/${g.icon}.webp`} alt="" width="56" height="56" loading="lazy" />
+                : <span class="gsa-monogram">{SLOT_ZH[g.slot][0]}</span>}
+            </div>
+            <div class="gsa-arm-id">
+              <p class="gsa-arm-char">{charZhName[g.slug] || g.char}</p>
+              <div class="gsa-arm-chips">
+                <span class="gsa-chip gsa-chip-type">{SLOT_ZH[g.slot]}</span>
+                {g.slot === 'Weapon' && g.weaponClass && (
+                  <span class="gsa-chip solid-muted">{WEAPON_CLASS_ZH[g.weaponClass] || g.weaponClass}</span>
+                )}
+                <span class={`gsa-chip ${g.nameEx.endsWith(' EX') ? 'solid-accent' : 'solid-gold'}`}>
+                  {g.nameEx.endsWith(' EX') ? 'EX' : QUALITY_ZH[g.quality] || g.quality}
+                </span>
+              </div>
+            </div>
+          </div>
+          <p class="gsa-arm-name">{pieceZh(g)}</p>
+          <ul class="gsa-arm-stats">
+            {g.stats.map(s => (
+              <li><span>{statZh(s.label)}</span><span>{statLine(s)}</span></li>
+            ))}
+          </ul>
+          {flavorZh(g) && <p class="gsa-arm-flavor">{flavorZh(g)}</p>}
+        </a>
+      ))}
+    </div>
+
+    <div class="gsa-detail-section gsa-arm-guide">
+      <h2>武裝數值的運作方式</h2>
+      <p class="gsa-section-note">
+        專屬裝備帶有二至四條屬性線。第 1 線固定是攻擊力固定值。第 2
+        線是角色的屬性攻擊，屬於直接的百分比加成（EX 階級 1 時為
+        10%）。後續的屬性線是暴擊、命中、閃避這類評級固定值：評級以點數計，遊戲會透過隨等級縮放的曲線換算，同樣的點數在等級越高時效益越低。百分比屬性線則完全不吃這條曲線。
+      </p>
+      <p class="gsa-section-note">
+        七個品質階級，依遊戲自身順序為白色、綠色、藍色、紫色、金色、紅色與彩虹。基礎專屬裝備為藍色（飾品為金色），每件 EX
+        裝備都是彩虹。裝備沿著三條軸成長：階級（上述系列，每系列六階）、星級（1 至 6 星）與強化（+0 至 +100）。
+      </p>
+    </div>
+
+    <div class="gsa-detail-section" id="gsa-arm-enhance">
+      <h2>強化費用</h2>
+      <p class="gsa-section-note">
+        強化範圍從 +0 到 +100，並受玩家等級限制。費用隨品質階級提高；拆解裝備時強化粉全額返還。
+      </p>
+      <div class="gsa-table-scroll">
+        <table class="gsa-stats-table">
+          <thead>
+            <tr><th>+</th><th>玩家等級</th><th>金幣</th><th>強化粉</th></tr>
+          </thead>
+          <tbody>
+            {gsaEnhanceCosts.map(r => {
+              const coins = [...new Set(Object.values(r.coin))];
+              const powders = [...new Set(Object.values(r.powder))];
+              return (
+                <tr>
+                  <th scope="row">+{r.lv}</th>
+                  <td>{r.playerLv}</td>
+                  <td>{coins.length === 1 ? coins[0].toLocaleString('en-US') : `${Math.min(...coins).toLocaleString('en-US')} 至 ${Math.max(...coins).toLocaleString('en-US')}`}</td>
+                  <td>{powders.length === 1 ? powders[0].toLocaleString('en-US') : `${Math.min(...powders).toLocaleString('en-US')} 至 ${Math.max(...powders).toLocaleString('en-US')}`}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      <p class="gsa-section-note">
+        上表區間涵蓋七個品質階級（白色最便宜，彩虹最貴）。+50 時彩虹裝備每級要 {gsaEnhanceCosts.find(r => r.lv === 50)?.coin.Rainbow.toLocaleString('en-US')} 金幣，白色裝備則是 {gsaEnhanceCosts.find(r => r.lv === 50)?.coin.White.toLocaleString('en-US')} 金幣。
+      </p>
+    </div>
+
+    <div class="gsa-detail-section" id="gsa-arm-starup">
+      <h2>升星費用</h2>
+      <p class="gsa-section-note">
+        將裝備從 N 星升至 N+1 星需要金幣與裝備礦石；礦石種類依裝備而定。下表費用依品質階級列出；野戰裝備最高只到綠色，專屬裝備則為藍色、金色或彩虹。
+      </p>
+      <div class="gsa-table-scroll">
+        <table class="gsa-stats-table">
+          <thead>
+            <tr><th>品質</th><th>1 至 2 星</th><th>2 至 3 星</th><th>3 至 4 星</th><th>4 至 5 星</th><th>5 至 6 星</th></tr>
+          </thead>
+          <tbody>
+            {gsaStarUpCosts.map(t => (
+              <tr>
+                <th scope="row">{QUALITY_ZH[t.quality] || t.quality}</th>
+                {t.stars.map(s => (
+                  <td>{s.money.toLocaleString('en-US')} 金幣 + {s.ore.toLocaleString('en-US')} 礦石</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="gsa-detail-section" id="gsa-arm-dismantle">
+      <h2>拆解回收</h2>
+      <p class="gsa-section-note">
+        拆解裝備會依目前的強化等級與品質階級返還強化粉。下表為抽樣；遊戲資料中的完整表格涵蓋 +1 到 +100 的每一級。
+      </p>
+      <div class="gsa-table-scroll">
+        <table class="gsa-stats-table">
+          <thead>
+            <tr><th>+</th><th>返還強化粉</th></tr>
+          </thead>
+          <tbody>
+            {gsaDismantleReturns.map(r => {
+              const vals = [...new Set(Object.values(r.powder))];
+              return (
+                <tr>
+                  <th scope="row">+{r.lv}</th>
+                  <td>{vals.length === 1 ? vals[0].toLocaleString('en-US') : `${Math.min(...vals).toLocaleString('en-US')} 至 ${Math.max(...vals).toLocaleString('en-US')}`}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="gsa-section-note gsa-arm-updated">
+      資料取自遊戲資料表，{updatedZh}
+      更新。圖示會在遊戲內對應的裝備介面被瀏覽後補上；尚無圖片的裝備顯示文字佔位。
+    </p>
+  </div>
+</GsaZhLayout>
+
+<script>
+  // 專屬裝備卡片格的部位與屬性篩選，以及文字搜尋。
+  const grid = document.getElementById('gsa-arm-grid');
+  const search = document.getElementById('gsa-search') as HTMLInputElement | null;
+  const count = document.getElementById('gsa-count');
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('.gsa-filter-btn'));
+  let activeFilter = 'all';
+  let query = '';
+
+  function apply() {
+    if (!grid) return;
+    let shown = 0;
+    grid.querySelectorAll<HTMLElement>('.gsa-arm-card').forEach(card => {
+      const tags = card.dataset.tags || '';
+      const hay = card.dataset.search || '';
+      const ok =
+        (activeFilter === 'all' || tags.includes(activeFilter)) &&
+        (!query || hay.includes(query));
+      card.style.display = ok ? '' : 'none';
+      if (ok) shown++;
+    });
+    if (count) count.textContent = `${shown} 件裝備`;
+  }
+
+  buttons.forEach(btn =>
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.toggle('active', b === btn));
+      activeFilter = btn.dataset.filter || 'all';
+      apply();
+    })
+  );
+  search?.addEventListener('input', () => {
+    query = search.value.trim().toLowerCase();
+    apply();
+  });
+</script>

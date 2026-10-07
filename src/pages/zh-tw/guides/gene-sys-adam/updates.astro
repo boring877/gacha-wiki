@@ -1,0 +1,93 @@
+---
+// 黑色基因更新公告索引（中文）：官方貼文與解密資料表差異重建的條目，附美術
+// 圖的預告卡，各自連往詳細頁。版面與英文版相同（gsa-banners.css），
+// 條目文字為本維基繁中撰寫，版本日期與角色名使用官方資訊。
+import GsaZhLayout from '../../../../layouts/gene-sys-adam/GsaZhLayout.astro';
+import { GSA_UPDATES } from '../../../../data/gene-sys-adam/updates.js';
+import { GSA_ZH } from '../../../../data/gene-sys-adam/zh-tw/ui.js';
+import '../../../../styles/games/gene-sys-adam/gsa-common.css';
+import '../../../../styles/games/gene-sys-adam/gsa-banners.css';
+
+const base = GSA_ZH.baseUrl;
+
+const TAG_ZH = { Update: '更新', Launch: '正式營運', Notice: '官方公告', Datamine: '資料探勘' };
+
+// 索引卡所需的繁中欄位（slug -> date / title / summary）。
+const UPDATE_ZH = {
+  '2026-10-02-skill-reworks-and-rui-arina-rotation': {
+    date: '2026年10月2日',
+    title: '技能改版與荻野瑠衣、杉本有菜輪替',
+    summary: '指定召募輪替至荻野瑠衣與杉本有菜，伊蓮娜、維多莉亞與艾琳娜的技能組改版，並新增一整套角色養成訓練任務。',
+  },
+  '2026-09-29-arisa-investigation-stage': {
+    date: '2026年9月29日',
+    title: '調查關卡：藤原亞璃紗',
+    summary: '9 月 29 日維護後開放藤原亞璃紗的調查關卡：完美通關第 6 關即可獲得新 SSR，同步開放她的訓練任務與兌換商店。',
+  },
+  '2026-09-22-official-launch-and-lunar-splendor': {
+    date: '2026年9月22日',
+    title: '正式營運與「繁華遊廓的月之華」活動',
+    summary: '黑色基因於 9 月 22 日正式營運，主打活動「繁華遊廓的月之華」帶來 SSR 小町咲香與土方千鶴，另有無限召募免費抽與免費 SSR。',
+  },
+  '2026-09-17-beta-and-500k-pre-registrations': {
+    date: '2026年9月17日',
+    title: '不刪檔測試開放，預約突破 50 萬',
+    summary: '不刪檔公開測試於 9 月 17 日開放，所有進度保留至正式營運；此前遊戲預約人數已突破 50 萬。',
+  },
+  '2026-08-26-pre-registration-opens': {
+    date: '2026年8月26日',
+    title: '開放預約',
+    summary: '黑色基因於 2026 年 8 月 26 日開放預約，所有完成預約的指揮官皆可獲得里程碑獎勵。',
+  },
+  'scheduled-war-and-music': {
+    date: '已排程（用戶端資料）',
+    title: '排程中：戰爭與音樂',
+    summary: '用戶端已載入的下一波活動：伊蓮娜與維多莉亞的「戰爭與音樂」雙角色池、魅影徽記活動，以及昆妮的票券召募。尚無官方公告。',
+  },
+  'scheduled-lingering-echoes': {
+    date: '已排程（用戶端資料）',
+    title: '排程中：音行自鳴',
+    summary: '下一波新角色活動已完整預載於用戶端：清音與冷鴆的「音行自鳴」雙角色池，附帶雅樂徽記活動。',
+  },
+};
+---
+
+<GsaZhLayout
+  title="更新公告"
+  description="黑色基因更新紀錄：所有遊戲更新與排程內容，由解密用戶端資料表重建，最新在前。"
+  gameTitle="更新公告"
+  breadcrumbItems={[{ name: GSA_ZH.gameName, href: base }, { name: '更新公告' }]}
+>
+  <section>
+    <p class="gsa-banner-intro">
+      官方貼文與其美術圖取自 genesys-adam.com 的遊戲內新聞。官方未曾公告的資料波次，是比對解密遊戲資料表的差異重建而成，並標注為資料探勘，因此內容列表完全正確，日期則為概略。每個條目都有獨立頁面提供完整細節。
+    </p>
+
+    {GSA_UPDATES.map(u => {
+      const zh = UPDATE_ZH[u.slug] || {};
+      return (
+        <article class="gsa-update-card">
+          <a class="gsa-update-teaser" href={`${base}updates/${u.slug}/`}>
+            <div class="gsa-update-artwrap">
+              {u.image
+                ? (
+                  <div class="gsa-banner-art-pair">
+                    <img class="gsa-update-art" src={u.image} alt={zh.title || u.title} width={u.imageW || 1280} height={u.imageH || 720} loading="lazy" />
+                    {u.image2 && <img class="gsa-update-art" src={u.image2} alt={zh.title || u.title} width={u.imageW || 1280} height={u.imageH || 720} loading="lazy" />}
+                  </div>
+                )
+                : <div class="gsa-update-art-band">{zh.date || u.date}</div>}
+              <span class="gsa-update-tag">{TAG_ZH[u.tag] || u.tag}</span>
+            </div>
+            <div class="gsa-update-head">
+              <h2 class="gsa-update-title">{zh.title || u.title}</h2>
+              <span class="gsa-update-date">{zh.date || u.date}</span>
+            </div>
+            {zh.summary && <p class="gsa-update-summary">{zh.summary}</p>}
+            <span class="gsa-update-more">閱讀完整更新內容</span>
+          </a>
+        </article>
+      );
+    })}
+  </section>
+</GsaZhLayout>

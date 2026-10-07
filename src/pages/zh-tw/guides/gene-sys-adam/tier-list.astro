@@ -1,0 +1,182 @@
+---
+// 黑色基因排行榜（中文）：依職業戰鬥風格分區、SSR 與 SR 分頁，結構與英文版
+// 相同（gsa-tier.css）。角色卡與名稱改由官方繁中角色資料解析，前期培養
+// 說明與挑選理由為本維基繁中撰寫。
+import GsaZhLayout from '../../../../layouts/gene-sys-adam/GsaZhLayout.astro';
+import { GSA_TIERS, GSA_JOB_SECTIONS, GSA_TIER_PLACEMENTS, gsaRarityBadge } from '../../../../data/gene-sys-adam/tier-list.js';
+import { gsaCharactersZh } from '../../../../data/gene-sys-adam/zh-tw/characters.js';
+import { GSA_ZH } from '../../../../data/gene-sys-adam/zh-tw/ui.js';
+import GSAElementCard from '../../../../components/gene-sys-adam/GSAElementCard.astro';
+import '../../../../styles/games/gene-sys-adam/gsa-common.css';
+import '../../../../styles/games/gene-sys-adam/gsa-tier.css';
+
+const base = GSA_ZH.baseUrl;
+
+// 前期培養說明：排行榜評的是終盤戰力，此框解釋低排名角色前期為何仍值得練。
+const BEGINNER_NOTE = {
+  title: '前期培養重點',
+  intro:
+    '排行榜評估的是後期戰力，但遊戲進度仰賴重複角色：階級系統與重複取得次數綁定，角色無法升階到超過自己持有的重複數量。SR 角色更容易抽到、也更容易疊出重複，是升階與練滿成本最低的選擇，因此投資得當的 SR 反而能撐起你前中期的帳號。',
+  picks: [
+    { slug: 'theodore', note: '武器可取得，SR 重複角色累積快' },
+    { slug: 'adele', note: '武器可取得，SR 重複角色累積快' },
+    { slug: 'belle', note: '武器可取得，SR 重複角色累積快' },
+    { slug: 'ruby', note: 'SSR：任務可獲得重複角色，武器可取得' },
+  ],
+  lastSlot: {
+    name: '最後一個位置',
+    note: '選擇重複數最高的 SSR，或從任務中取得大量重複的 SR，以輸出角色優先。',
+  },
+};
+
+const isReleased = c => Boolean(c.icon);
+const placementOf = slug => GSA_TIER_PLACEMENTS[slug] || { tier: 'C', rarity: null };
+
+// 依稀有度分頁的職業分區（與 gsaTierTabs 同邏輯，但角色名稱使用官方繁中）。
+const tierTabs = ['SSR', 'SR'].map(rarity => ({
+  rarity,
+  jobs: GSA_JOB_SECTIONS.concat([{ job: 'Unclassified', zh: '未分類' }]).map(({ job, zh, icon }) => ({
+    job,
+    zh,
+    en: job,
+    icon,
+    tiers: GSA_TIERS.map(({ tier, color }) => ({
+      tier,
+      color,
+      characters: gsaCharactersZh
+        .filter(c => isReleased(c)
+          && (c.job ? c.job.name === zh : zh === '未分類')
+          && (placementOf(c.slug).rarity || 'SSR') === rarity
+          && placementOf(c.slug).tier === tier)
+        .map(c => ({ ...c, placement: placementOf(c.slug) }))
+        .sort((a, b) => a.name.localeCompare(b.name, 'zh-Hant')),
+    })).filter(t => t.characters.length > 0),
+  })).filter(g => g.tiers.length > 0),
+}));
+
+const tabCount = rarity =>
+  gsaCharactersZh.filter(c => isReleased(c) && (placementOf(c.slug).rarity || 'SSR') === rarity).length;
+
+const total = tierTabs.reduce((n, t) => n + tabCount(t.rarity), 0);
+---
+
+<GsaZhLayout
+  title="排行榜"
+  description={`黑色基因排行榜（2026年9月22日更新）：依職業戰鬥風格評比全部 ${total} 名已實裝角色，評分依據來自解密資料表的技能數據。`}
+  gameTitle="排行榜"
+  breadcrumbItems={[{ name: GSA_ZH.gameName, href: base }, { name: '排行榜' }]}
+>
+  <section>
+    <div class="gsa-beginner-box">
+      <div class="gsa-beginner-head">
+        <div class="gsa-beginner-head-copy">
+          <h2 class="gsa-beginner-title">{BEGINNER_NOTE.title}</h2>
+          <p class="gsa-beginner-intro">{BEGINNER_NOTE.intro}</p>
+        </div>
+        <div class="gsa-elem-side">
+          <GSAElementCard />
+        </div>
+      </div>
+      <div class="gsa-beginner-team">
+        {BEGINNER_NOTE.picks.map(pick => {
+          const c = gsaCharactersZh.find(x => x.slug === pick.slug);
+          const rarity = (GSA_TIER_PLACEMENTS[pick.slug]?.rarity || 'sr').toLowerCase();
+          return (
+            <a class="gsa-beginner-card" href={`${base}characters/${pick.slug}/`}>
+              {c?.icon
+                ? <img class="gsa-beginner-thumb" src={c.icon} alt={c.name} width="64" height="64" loading="lazy" />
+                : <span class="gsa-beginner-thumb gsa-monogram">{c?.name?.[0]}</span>}
+              <span class="gsa-beginner-name">{c?.name ?? pick.slug}</span>
+              {gsaRarityBadge(GSA_TIER_PLACEMENTS[pick.slug]?.rarity) ? (
+                <img class="gsa-rarity-badge" src={gsaRarityBadge(GSA_TIER_PLACEMENTS[pick.slug].rarity)} alt={GSA_TIER_PLACEMENTS[pick.slug].rarity} width="50" height="32" loading="lazy" />
+              ) : (
+                <span class={`gsa-tier-rarity gsa-tier-rarity-${rarity}`}>{GSA_TIER_PLACEMENTS[pick.slug]?.rarity ?? 'SR'}</span>
+              )}
+              <span class="gsa-beginner-note">{pick.note}</span>
+            </a>
+          );
+        })}
+        <div class="gsa-beginner-card gsa-beginner-card-last">
+          <span class="gsa-beginner-thumb gsa-monogram">?</span>
+          <span class="gsa-beginner-name">{BEGINNER_NOTE.lastSlot.name}</span>
+          <span class="gsa-beginner-note">{BEGINNER_NOTE.lastSlot.note}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="gsa-tier-tabs" role="tablist" aria-label="稀有度">
+      {tierTabs.map((tab, i) => (
+        <button
+          class={`gsa-tier-tab${i === 0 ? ' active' : ''}`}
+          data-rarity-tab={tab.rarity}
+          role="tab"
+          aria-selected={i === 0 ? 'true' : 'false'}
+        >
+          {tab.rarity}
+          <span class="gsa-tier-tab-count">{tabCount(tab.rarity)}</span>
+        </button>
+      ))}
+    </div>
+
+    {tierTabs.map((tab, i) => (
+      <div class="gsa-tier-tabpanel" data-rarity-panel={tab.rarity} style={i > 0 ? 'display:none' : undefined}>
+        {tab.jobs.map(group => (
+          <div class="gsa-tier-job-section">
+            <div class="gsa-tier-job-header">
+              {group.icon && <img class="gsa-tier-job-icon" src={group.icon} alt="" width="40" height="40" loading="lazy" />}
+              <h2 class="gsa-tier-job-title">{group.zh}<span class="gsa-tier-job-zh">{group.en === 'Unclassified' ? 'Unclassified' : group.en}</span></h2>
+              <span class="gsa-tier-job-count">
+                {group.tiers.reduce((n, t) => n + t.characters.length, 0)} 名角色
+              </span>
+            </div>
+            <div class="gsa-tier-grid">
+              {group.tiers.map(row => (
+                <div class="gsa-tier-row">
+                  <div class="gsa-tier-label">
+                    <span class="gsa-tier-name" style={`color:${row.color}`}>{row.tier}</span>
+                  </div>
+                  <div class="gsa-tier-characters">
+                    {row.characters.map(c => (
+                      <a class="gsa-tier-card" href={`${base}characters/${c.slug}/`}>
+                        {c.icon ? (
+                          <img class="gsa-tier-thumb" src={c.icon} alt={c.name} loading="lazy" />
+                        ) : (
+                          <span class="gsa-tier-thumb gsa-monogram">{c.name?.[0]}</span>
+                        )}
+                        {gsaRarityBadge(c.placement.rarity) ? (
+                          <img class="gsa-rarity-badge gsa-tier-thumb-badge" src={gsaRarityBadge(c.placement.rarity)} alt={c.placement.rarity} width="50" height="32" loading="lazy" />
+                        ) : (
+                          <span class={`gsa-tier-rarity gsa-tier-rarity-${(c.placement.rarity || 'sr').toLowerCase()}`}>{c.placement.rarity}</span>
+                        )}
+                        <span class="gsa-tier-name-label">{c.name}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    ))}
+  </section>
+</GsaZhLayout>
+
+<script is:inline>
+  // 稀有度分頁：SSR 與 SR 各自獨立評比。
+  (function () {
+    var tabs = document.querySelectorAll('.gsa-tier-tab');
+    var panels = document.querySelectorAll('.gsa-tier-tabpanel');
+    tabs.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        tabs.forEach(function (b) { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        var rarity = btn.getAttribute('data-rarity-tab');
+        panels.forEach(function (p) {
+          p.style.display = p.getAttribute('data-rarity-panel') === rarity ? '' : 'none';
+        });
+      });
+    });
+  })();
+</script>
