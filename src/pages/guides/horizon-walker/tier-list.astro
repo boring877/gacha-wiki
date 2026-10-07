@@ -779,6 +779,6 @@ const charNoteMap: Record<string, { type: string; variant?: string; shortTitle?:
         return;
       }
       document.querySelectorAll('.tier-note-tooltip.active').forEach(t => t.classList.remove('active'));
-    });
+    }, true);
   </script>
 </TierListLayout>

@@ -483,6 +483,7 @@
   pointer-events: auto;
 }
 
+
 .tier-note-tooltip-title {
   font-weight: 700;
   color: var(--hw-note-accent, #e8a735);
@@ -676,12 +677,21 @@
     padding: 1px 7px;
   }
 
+  /* Touch has no hover, and a popover anchored to the badge overflows the
+     screen for cards near the left edge: show the note as a flat bottom
+     sheet pinned to the viewport instead (tapped open/closed via the
+     capture-phase click handler on the badge). */
   .tier-note-tooltip {
-    width: 220px;
-    right: -10px;
-    bottom: auto;
-    top: calc(100% + 8px);
-    font-size: 0.75rem;
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    top: auto;
+    width: auto;
+    max-height: 45vh;
+    overflow-y: auto;
+    z-index: 200;
+    font-size: 0.8rem;
   }
 
   .character-image-wrapper img,
