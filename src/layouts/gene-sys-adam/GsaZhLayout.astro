@@ -1,0 +1,117 @@
+---
+// Traditional-Chinese layout for the Gene-Sys: Adam /zh-tw/ wiki: the same
+// skeleton and CSS as the EN LandingLayout, with html lang zh-tw, the Chinese
+// game navigation (navOverride) and manual Chinese breadcrumbs.
+import GameSEO from '../../components/GameSEO.astro';
+import Analytics from '../../components/Analytics.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import GameNavigationHeader from '../../components/GameNavigationHeader.astro';
+import MobileMenu from '../../components/MobileMenu.astro';
+import CustomScrollbar from '../../components/CustomScrollbar.astro';
+import DecorativeLines from '../../components/DecorativeLines.astro';
+import GSABreadcrumb from '../../components/gene-sys-adam/GSABreadcrumb.astro';
+import { GSA_ZH } from '../../data/gene-sys-adam/zh-tw/ui.js';
+import '../../styles/global.css';
+import '../../styles/typography.css';
+import '../../styles/games/gene-sys-adam/gsa-common.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  gameTitle?: string;
+  heroImage?: string;
+  crumbName?: string;
+  // manual Chinese breadcrumb items: [{ name, href }] (crumbName is ignored
+  // when items are given)
+  breadcrumbItems?: { name: string; href?: string }[];
+  seoKeywords?: readonly string[];
+  ambientVideo?: boolean;
+}
+
+const { title, description, gameTitle, heroImage, crumbName, breadcrumbItems, seoKeywords, ambientVideo = false } =
+  Astro.props;
+const seoTitle = `${title} | 黑色基因 中文維基`;
+const seoDescription =
+  description ||
+  '黑色基因（Gene-Sys: Adam）中文維基：角色資料庫、技能、卡池、武裝與更新公告。遊戲文字均取自遊戲官方繁體中文。';
+
+const zhNav = {
+  name: GSA_ZH.gameName,
+  gameUrl: GSA_ZH.baseUrl,
+  sections: GSA_ZH.nav,
+};
+---
+
+<html lang="zh-tw">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/webp" href="https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/gameimg_icon_a.webp" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{seoTitle}</title>
+    <meta name="description" content={seoDescription} />
+    <GameSEO
+      gameKey="gene-sys-adam"
+      title={seoTitle}
+      description={seoDescription}
+      additionalKeywords={[...(seoKeywords || []), '黑色基因', 'Gene-Sys Adam', '中文', '維基']}
+    />
+    <Analytics />
+  </head>
+  <body class="gsa-body">
+    <CustomScrollbar />
+    <div class="bg-layer gsa-bg"></div>
+
+    <div class="gsa-content">
+      <Header />
+      <GameNavigationHeader currentPath={Astro.url.pathname} gameKey="gene-sys-adam" navOverride={zhNav} />
+      <MobileMenu />
+
+      <div class="gsa-container">
+        <main class="gsa-main" id="main-content">
+          {ambientVideo && (
+            <div class="gsa-bg-video-wrap" aria-hidden="true">
+              <video class="gsa-bg-video" autoplay muted loop playsinline preload="auto">
+                <source src="/videos/gsa-hero.mp4" type="video/mp4" />
+              </video>
+            </div>
+          )}
+          {heroImage && gameTitle && (
+            <section class="gsa-hero-section">
+              <div class="gsa-hero-image-container">
+                <img src={heroImage} alt={gameTitle} class="gsa-hero-image" width={1920} height={1080} loading="eager" decoding="async" />
+                <div class="gsa-hero-overlay" />
+              </div>
+              <h1 class="gsa-title-only-heading">{gameTitle}</h1>
+              <DecorativeLines />
+            </section>
+          )}
+
+          {!heroImage && gameTitle && (
+            <section class="gsa-title-only-section">
+              <h1 class="gsa-title-only-heading">{gameTitle}</h1>
+              <DecorativeLines />
+            </section>
+          )}
+
+          {
+            breadcrumbItems && breadcrumbItems.length > 0 ? (
+              <GSABreadcrumb
+                items={breadcrumbItems.map(c => ({ name: c.name, href: c.href || '#' }))}
+                showBackButton={true}
+              />
+            ) : (
+              <GSABreadcrumb autoGenerate gameKey="gene-sys-adam" showBackButton={true} currentPageName={crumbName} />
+            )
+          }
+
+          <div class="gsa-content-area">
+            <slot />
+          </div>
+        </main>
+      </div>
+      <Footer />
+    </div>
+  </body>
+</html>

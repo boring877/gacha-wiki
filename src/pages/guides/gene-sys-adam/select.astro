@@ -1,0 +1,129 @@
+---
+// Language selection page for Gene-Sys: Adam: shown when entering the wiki
+// from the games list. Two choices, English wiki or the official Traditional
+// Chinese wiki (the game's base language).
+import GameSEO from '../../../components/GameSEO.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import CustomScrollbar from '../../../components/CustomScrollbar.astro';
+import Analytics from '../../../components/Analytics.astro';
+import '../../../styles/global.css';
+import '../../../styles/typography.css';
+import '../../../styles/games/gene-sys-adam/gsa-common.css';
+
+export const prerender = true;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/webp" href="https://pub-dd9a9c01bc7a43d0bb977b255815a5c4.r2.dev/gene-sys-adam/gameimg_icon_a.webp" />
+    <title>Gene-Sys: Adam Wiki: Choose Language - GachaWiki</title>
+    <meta
+      name="description"
+      content="Choose the language for the Gene-Sys: Adam wiki: English or Traditional Chinese (繁體中文, the game's own base language)."
+    />
+    <GameSEO
+      gameKey="gene-sys-adam"
+      title="Gene-Sys: Adam Wiki: Choose Language"
+      description="English or Traditional Chinese Gene-Sys: Adam wiki."
+    />
+    <Analytics />
+  </head>
+  <body class="gsa-body">
+    <CustomScrollbar />
+    <div class="bg-layer gsa-bg"></div>
+
+    <div class="gsa-content">
+      <Header />
+
+      <div class="gsa-container">
+        <main class="gsa-main" style="display:flex;align-items:center;justify-content:center;min-height:72vh;padding:2rem 1rem;" id="main-content">
+          <section class="gsa-select-card">
+            <h1 class="gsa-select-title">Gene-Sys: Adam</h1>
+            <p class="gsa-select-sub">Choose a language · 選擇語言</p>
+
+            <div class="gsa-select-buttons">
+              <a href="/guides/gene-sys-adam/" class="gsa-select-btn">
+                <span class="gsa-select-lang">English</span>
+                <span class="gsa-select-note">English wiki</span>
+              </a>
+              <a href="/zh-tw/guides/gene-sys-adam/" class="gsa-select-btn">
+                <span class="gsa-select-lang">繁體中文</span>
+                <span class="gsa-select-note">遊戲官方文本 · 黑色基因</span>
+              </a>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  </body>
+</html>
+
+<style>
+  .gsa-select-card {
+    width: 100%;
+    max-width: 560px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .gsa-select-title {
+    font-size: var(--text-3xl, 1.875rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .gsa-select-sub {
+    font-size: 1rem;
+    color: #cccccc;
+    margin: 0 0 2.25rem 0;
+  }
+
+  .gsa-select-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .gsa-select-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: center;
+    justify-content: center;
+    padding: 1.75rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    text-decoration: none;
+  }
+
+  .gsa-select-lang {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gsa-accent, #e0596b);
+  }
+
+  .gsa-select-note {
+    font-size: 0.8125rem;
+    color: #cccccc;
+  }
+
+  @media (max-width: 560px) {
+    .gsa-select-buttons {
+      grid-template-columns: 1fr;
+    }
+
+    .gsa-select-card {
+      padding: 2.25rem 1.5rem;
+    }
+  }
+</style>

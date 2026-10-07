@@ -6,13 +6,20 @@ import { type GameKey } from '../data/game-navigation';
 interface Props {
   currentPath?: string;
   gameKey?: GameKey;
+  // Optional override for localized wikis (e.g. /zh/): forwarded to both nav
+  // components; replaces the English section names/links and game landing URL.
+  navOverride?: {
+    name?: string;
+    gameUrl?: string;
+    sections: { title: string; links: { name: string; href: string }[] }[];
+  };
 }
 
-const { currentPath = '', gameKey } = Astro.props;
+const { currentPath = '', gameKey, navOverride } = Astro.props;
 ---
 
 <!-- Desktop Navigation: Clean grid layout with dropdowns -->
-<GameNavigationDesktop currentPath={currentPath} gameKey={gameKey} />
+<GameNavigationDesktop currentPath={currentPath} gameKey={gameKey} navOverride={navOverride} />
 
 <!-- Mobile/Tablet Navigation: Touch-friendly with overlay -->
-<GameNavigationMobile currentPath={currentPath} gameKey={gameKey} />
+<GameNavigationMobile currentPath={currentPath} gameKey={gameKey} navOverride={navOverride} />
