@@ -1,22 +1,21 @@
 ---
 // Site-wide news ticker rendered in Header.astro (below the header bar).
-// A slow CSS marquee that loops: (1) manually pinned items from
-// src/data/ticker.js (shop promos), then (2) the latest wiki updates
-// AUTO-GENERATED from the git history by src/utils/ticker-updates.ts, so
-// new commits show up here without hand-editing anything. The item list is
-// duplicated in the markup so the translateX(-50%) animation loops
-// seamlessly. The live $GW price chip sits pinned on the right.
+// A slow CSS marquee carrying the site closure notice: GachaWiki is
+// closing at the end of December 2026. Items come from src/data/ticker.js
+// (the auto-generated git update items were removed when the closure was
+// announced). The item list is duplicated in the markup so the
+// translateX(-50%) animation loops seamlessly. The live $GW price chip
+// sits pinned on the right.
 import { tickerItems } from '../data/ticker';
-import { getTickerUpdates } from '../utils/ticker-updates';
 
-const items = [...tickerItems, ...getTickerUpdates()];
+const items = [...tickerItems];
 ---
 
 <div class="news-ticker">
   <div class="ticker-inner">
     <span class="ticker-chip">
       <span class="ticker-dot" aria-hidden="true"></span>
-      Latest
+      Notice
     </span>
     <div class="ticker-viewport">
       <div class="ticker-track">
@@ -92,11 +91,13 @@ const items = [...tickerItems, ...getTickerUpdates()];
     flex-shrink: 0;
   }
 
+  /* Red dot for the closure notice (was green when the tape carried live
+     git updates). */
   .ticker-dot {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--success-color, #4caf50);
+    background: #ff7676;
     animation: ticker-blink 2s ease-in-out infinite;
   }
 
@@ -260,16 +261,18 @@ const items = [...tickerItems, ...getTickerUpdates()];
 
 <script>
   // Constant tape speed: the marquee duration is derived from the real track
-  // width so the tape always scrolls at TICKER_SPEED px/s. The update items
-  // come from the git log at build time, so the item count (and track width)
-  // differs between builds; a fixed CSS duration made narrow tickers crawl.
-  // One group = half the doubled track, duration = width / speed.
+  // width so the tape always scrolls at TICKER_SPEED px/s. A minimum
+  // duration keeps a short tape (the closure notice is only a few items)
+  // from looping frantically. One group = half the doubled track,
+  // duration = width / speed.
   const TICKER_SPEED = 95; // px per second
+  const MIN_DURATION = 18; // seconds, so short tapes still scroll calmly
   const track = document.querySelector('.ticker-track');
   if (track) {
     const groupWidth = track.scrollWidth / 2;
     if (groupWidth > 0) {
-      track.style.animationDuration = `${(groupWidth / TICKER_SPEED).toFixed(1)}s`;
+      const duration = Math.max(groupWidth / TICKER_SPEED, MIN_DURATION);
+      track.style.animationDuration = `${duration.toFixed(1)}s`;
     }
   }
 </script>

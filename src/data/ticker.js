@@ -1,14 +1,26 @@
-// Manually pinned ticker items, shown FIRST in the site-wide news ticker
-// (before the auto-generated wiki updates that come from git history via
-// src/utils/ticker-updates.ts). Newest first. Each entry: date label, game
-// or site section, short text (no dashes, colons and commas only), and the
-// page the item links to. Use this only for things git commits can't
-// express, like shop promos; regular wiki updates belong in git, not here.
+// Items shown in the site-wide news ticker below the header. As of October
+// 2026 the ticker carries the site closure notice: GachaWiki is closing at
+// the end of December 2026. These are the only ticker items (the previous
+// auto-generated git update items were removed with the closure). Each
+// entry: date label, game or site section, short text (no dashes, colons
+// and commas only), and the page the item links to.
 export const tickerItems = [
   {
-    date: 'Sep 22',
-    game: 'Shop',
-    text: 'GODDESS OF VICTORY: NIKKE Vol.2 for Weiss Schwarz, English edition Sep 25, Japanese and Korean out now',
-    href: '/shop/',
+    date: 'Oct 8',
+    game: 'GachaWiki',
+    text: 'GachaWiki will be closing at the end of December 2026',
+    href: '/',
+  },
+  {
+    date: 'Oct 8',
+    game: 'GachaWiki',
+    text: 'Thank you to everyone who supported the wiki',
+    href: '/',
+  },
+  {
+    date: 'Oct 8',
+    game: 'GachaWiki',
+    text: 'All guides stay available until the site closes',
+    href: '/',
   },
 ];
